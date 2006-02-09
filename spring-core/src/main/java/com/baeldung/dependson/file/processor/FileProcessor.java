@@ -9,13 +9,7 @@ import com.baeldung.dependson.shared.File;
 public class FileProcessor {
 
     File file;
-    
-    @Autowired
-    FileReader fileReader;
-    
-    @Autowired
-    FileWriter fileWriter;
-    
+      
     public FileProcessor(File file){
         this.file = file;
         if(file.getText().contains("write") && file.getText().contains("read")){
