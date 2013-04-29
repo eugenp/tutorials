@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
 	<artifactId>spring-mvc</artifactId>
@@ -6,6 +7,19 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+
+		<!-- Spring -->
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
 
 		<!-- web -->
 
@@ -102,4 +116,26 @@
 
 	</build>
 
+	<properties>
+		<!-- Spring -->
+		<org.springframework.version>3.2.2.RELEASE</org.springframework.version>
+
+		<!-- logging -->
+		<org.slf4j.version>1.7.5</org.slf4j.version>
+		<logback.version>1.0.11</logback.version>
+
+		<!-- testing -->
+		<org.hamcrest.version>1.3</org.hamcrest.version>
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+
+		<httpcore.version>4.2.4</httpcore.version>
+		<httpclient.version>4.2.4</httpclient.version>
+
+		<rest-assured.version>1.8.0</rest-assured.version>
+		<groovy.version>1.8.9</groovy.version>
+
+	</properties>
+
+	<version>0.1-SNAPSHOT</version>
 </project>

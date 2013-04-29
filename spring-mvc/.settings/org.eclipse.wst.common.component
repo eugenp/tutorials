@@ -4,27 +4,6 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="launchpad-common-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-common/launchpad-common">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-common-client-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-common-client/launchpad-common-client">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-security-api-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-security-api/launchpad-security-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-shared-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-shared/launchpad-shared">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-provisioning-api-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-provisioning-api/launchpad-provisioning-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-touchdata-api-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-touchdata-api/launchpad-touchdata-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="launchpad-cloud-0.19.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/launchpad-cloud/launchpad-cloud">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="launchpad-web"/>
         <property name="java-output-path" value="/launchpad-web/target/classes"/>
     </wb-module>
