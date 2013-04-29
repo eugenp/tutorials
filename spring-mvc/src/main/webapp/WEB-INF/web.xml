@@ -1,38 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="
+      http://java.sun.com/xml/ns/javaee
+      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 
-	<display-name>spring-mvc</display-name>
-
-	<listener>
-		<listener-class>org.rest.common.log.LogContextInitializer</listener-class>
-	</listener>
-
-	<!-- exposes some security request scoped information in the jsp -->
-	<filter>
-		<filter-name>userDetailsFilter</filter-name>
-		<filter-class>com.launchpad.frontend.web.filter.UserDetailsFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>userDetailsFilter</filter-name>
-		<servlet-name>clientapp</servlet-name> <!-- use filter only for clientapp pages -->
-	</filter-mapping>
+	<display-name>Spring MVC Application</display-name>
 
 	<!-- Spring root -->
 	<context-param>
 		<param-name>contextClass</param-name>
-		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+		<param-value>
+         org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      </param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>org.rest.common.spring com.launchpad.frontend.spring com.launchpad.cloud.s3.spring com.launchpad.sec.api.spring com.launchpad.provisioning.api.spring </param-value>
+		<param-value>org.package1.to.scan org.package2.to.scan</param-value>
 	</context-param>
-	<context-param>
-		<param-name>spring.profiles.active</param-name>
-		<param-value>sec_client,client</param-value>
-	</context-param>
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -41,6 +28,7 @@
 	<servlet>
 		<servlet-name>mvc</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mvc</servlet-name>
