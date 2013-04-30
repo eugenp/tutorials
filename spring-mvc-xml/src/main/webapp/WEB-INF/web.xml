@@ -10,14 +10,8 @@
 
 	<!-- Spring root -->
 	<context-param>
-		<param-name>contextClass</param-name>
-		<param-value>
-         org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-      </param-value>
-	</context-param>
-	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>org.baeldung.spring.web.config</param-value>
+		<param-value>/WEB-INF/mvc-servlet.xml</param-value>
 	</context-param>
 
 	<listener>
