@@ -1,4 +1,3 @@
-tutorials
+Spring MVC with Java Configuration
 =========
 
-Baeldung tutorials
