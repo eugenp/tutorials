@@ -7,6 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+		<config>src/main/webapp/WEB-INF/mvc-servlet.xml</config>
 	</configs>
 	<configSets>
 	</configSets>
