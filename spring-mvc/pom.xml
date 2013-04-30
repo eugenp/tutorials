@@ -3,6 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
 	<artifactId>spring-mvc</artifactId>
+	<version>0.1-SNAPSHOT</version>
+
 	<name>spring-mvc</name>
 	<packaging>war</packaging>
 
@@ -137,5 +139,4 @@
 
 	</properties>
 
-	<version>0.1-SNAPSHOT</version>
 </project>

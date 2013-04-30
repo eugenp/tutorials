@@ -11,7 +11,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-// @ComponentScan("org.package1.to.scan.web")
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
 	public ClientWebConfig() {
