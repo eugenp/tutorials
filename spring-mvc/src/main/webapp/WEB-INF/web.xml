@@ -17,7 +17,7 @@
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>org.package1.to.scan org.package2.to.scan</param-value>
+		<param-value>org.baeldung.spring.web.config</param-value>
 	</context-param>
 
 	<listener>

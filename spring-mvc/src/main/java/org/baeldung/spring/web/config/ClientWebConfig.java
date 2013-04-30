@@ -14,6 +14,12 @@ import org.springframework.web.servlet.view.JstlView;
 // @ComponentScan("org.package1.to.scan.web")
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
+	public ClientWebConfig() {
+		super();
+	}
+
+	// API
+
 	@Override
 	public void addViewControllers(final ViewControllerRegistry registry) {
 		super.addViewControllers(registry);
