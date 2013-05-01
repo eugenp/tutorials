@@ -4,7 +4,7 @@
 <body>
 	<h1>Login</h1>
 
-	<form name='f' action="<c:url value='j_spring_security_check' />" method='POST'>
+	<form name='f' action="j_spring_security_check" method='POST'>
 
 		<table>
 			<tr>
