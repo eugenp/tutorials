@@ -9,10 +9,8 @@
 		<intercept-url pattern="/login*" access="isAnonymous()" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
-		<form-login login-page='/login.html' default-target-url="/"
+		<form-login login-page='/login.html' default-target-url="/homepage.html"
 			authentication-failure-url="/login.html?error=true" />
-
-		<logout logout-success-url="/login.html" />
 
 	</http>
 
