@@ -23,6 +23,7 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 	public void addViewControllers(final ViewControllerRegistry registry) {
 		super.addViewControllers(registry);
 
+		registry.addViewController("/login.html");
 		registry.addViewController("/sample.html");
 	}
 
