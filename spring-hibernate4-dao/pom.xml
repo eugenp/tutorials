@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
-    <artifactId>spring-hibernate-dao</artifactId>
+    <artifactId>spring-hibernate4-dao</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-hibernate-dao</name>
+    <name>spring-hibernate4-dao</name>
     <packaging>war</packaging>
 
     <dependencies>
@@ -86,7 +86,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-hibernate-dao</finalName>
+        <finalName>spring-hibernate4-dao</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
