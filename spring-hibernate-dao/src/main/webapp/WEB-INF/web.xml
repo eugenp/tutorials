@@ -22,19 +22,19 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!-- Spring child -->
-    <servlet>
-        <servlet-name>mvc</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>mvc</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
+    <!-- Spring web -->
+<!--     <servlet> -->
+<!--         <servlet-name>mvc</servlet-name> -->
+<!--         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
+<!--         <load-on-startup>1</load-on-startup> -->
+<!--     </servlet> -->
+<!--     <servlet-mapping> -->
+<!--         <servlet-name>mvc</servlet-name> -->
+<!--         <url-pattern>/</url-pattern> -->
+<!--     </servlet-mapping> -->
 
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+<!--     <welcome-file-list> -->
+<!--         <welcome-file>index.html</welcome-file> -->
+<!--     </welcome-file-list> -->
 
 </web-app>
