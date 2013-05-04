@@ -8,17 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "org.baeldung.spring.persistence.dao", "org.baeldung.spring.persistence.service" })
 public class PersistenceConfig {
 
@@ -30,10 +32,10 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public AnnotationSessionFactoryBean alertsSessionFactory() {
-        final AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+    public LocalSessionFactoryBean sessionFactory() {
+        final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "org.rest" });
+        sessionFactory.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
@@ -53,7 +55,7 @@ public class PersistenceConfig {
     @Bean
     public HibernateTransactionManager transactionManager() {
         final HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(alertsSessionFactory().getObject());
+        txManager.setSessionFactory(sessionFactory().getObject());
 
         return txManager;
     }
