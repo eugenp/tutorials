@@ -33,7 +33,7 @@ public class PersistenceConfig {
     @Bean
     public AnnotationSessionFactoryBean sessionFactory() {
         final AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
-        sessionFactory.setDataSource(restDataSource());
+        sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
@@ -41,7 +41,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource restDataSource() {
+    public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));

@@ -1,3 +1,3 @@
-Spring MVC with Java Configuration
+Hibernate 3 with Spring
 =========
 
