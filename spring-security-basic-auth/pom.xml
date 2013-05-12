@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
-	<artifactId>spring-security-login</artifactId>
+	<artifactId>spring-security-basic-auth</artifactId>
 	<version>0.1-SNAPSHOT</version>
 
-	<name>spring-security-login</name>
+	<name>spring-security-basic-auth</name>
 	<packaging>war</packaging>
 
 	<dependencies>
@@ -120,7 +120,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>spring-security-login</finalName>
+		<finalName>spring-security-basic-auth</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
