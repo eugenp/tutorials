@@ -1,3 +1,3 @@
-Spring MVC with Java Configuration
+[Spring MVC Tutorial Project](http://www.baeldung.com/spring-mvc-tutorial)
 =========
 
