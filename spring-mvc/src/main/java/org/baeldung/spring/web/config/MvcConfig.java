@@ -9,8 +9,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan({ "org.baeldung.spring.web.controller" })
 public class MvcConfig {
 
-	public MvcConfig() {
-		super();
-	}
+    public MvcConfig() {
+        super();
+    }
 
 }
