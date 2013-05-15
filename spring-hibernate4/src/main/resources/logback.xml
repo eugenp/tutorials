@@ -1,49 +1,11 @@
 <configuration>
 
-	<variable resource="launchpad-${launchpadTarget}.properties" />
-
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>web - %date [%thread] %-5level %logger{36} - %message%n
 			</pattern>
 		</encoder>
 	</appender>
-
-	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>/var/log/launchpad/launchpad_web.log</file>
-		<encoder>
-			<pattern>web - %date [%thread] %-5level %logger{36} - %message%n
-			</pattern>
-		</encoder>
-	</appender>
-
-	<appender name="EMAIL" class="ch.qos.logback.classic.net.SMTPAppender">
-		<!-- deny all events with a level below ERROR -->
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
-		</filter>
-		<smtpHost>email-smtp.us-east-1.amazonaws.com</smtpHost>
-		<username>AKIAJI6XLSOAQX3IW6HQ</username>
-		<password>AuSWMdcNObKqGGT550SR/6vDrgh50vxgFrqZHwR2tTED</password>
-		<SSL>true</SSL>
-		<to>hanriseldon@gmail.com</to>
-		<from>info@applieddatalabs.com</from>
-		<subject>TESTING: %logger{20} - %m</subject>
-		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>web - |${launchpad.origin}| %date [%thread] %-5level %logger{36} - %message%n</pattern>
-		</layout>
-		<cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTrackerImpl">
-			<bufferSize>1000</bufferSize>
-		</cyclicBufferTracker>
-	</appender>
-
-	
-	<!-- internal -->
-	<logger name="com.launchpad.frontend.web.controller" level="DEBUG" />
-	<logger name="com.launchpad.cloud.s3.client" level="DEBUG" />
-	
-	<!-- frameworks -->
-	<logger name="org.hibernate.tool.hbm2ddl" level="ERROR" />
 
 	<logger name="org.springframework" level="WARN" />
 	<logger name="org.springframework.transaction" level="WARN" />
@@ -53,8 +15,6 @@
 
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="FILE" />
-		<appender-ref ref="EMAIL" />
 	</root>
 
 </configuration>
