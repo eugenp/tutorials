@@ -16,6 +16,6 @@ public class FooController {
 	public String getFoos() {
 		System.out.println("simplePattern method was called");
 		return "someResult";
-
 	}
+
 }
