@@ -23,18 +23,18 @@ public class FooController {
         return "Simple Get some Foos";
     }
 
-    // @RequestMapping(value = "/foos")
-    // @ResponseBody
-    // public String getFoosByAdvancedPath() {
-    // return "Advanced Get some Foos";
-    // }
-
     // with @PathVariable
 
     @RequestMapping(value = "/foos/{id}")
     @ResponseBody
-    public String getFoosBySimplePathWithPathVariable(@PathVariable("id") final long id) {
+    public String getFoosBySimplePathWithPathVariable(@PathVariable final long id) {
         return "Get a specific Foo with id=" + id;
+    }
+
+    @RequestMapping(value = "/foos/{fooid}/bar/{barid}")
+    @ResponseBody
+    public String getFoosBySimplePathWithPathVariables(@PathVariable final long fooid, @PathVariable final long barid) {
+        return "Get a specific Bar with id=" + barid + " from a Foo with id=" + fooid;
     }
 
     // other HTTP verbs
@@ -59,6 +59,12 @@ public class FooController {
         return "Get some Foos with Header";
     }
 
+    @RequestMapping(value = "/foos", produces = { "application/json", "application/xml" })
+    @ResponseBody
+    public String getFoosAsJsonFromREST() {
+        return "Get some Foos with Header Exact";
+    }
+
     // advanced - multiple mappings
 
     @RequestMapping(value = { "/advanced/bars", "/advanced/foos" })
@@ -77,6 +83,12 @@ public class FooController {
     @ResponseBody
     public String allFallback() {
         return "Fallback for All Requests";
+    }
+
+    @RequestMapping(value = "/foos/multiple", method = { RequestMethod.PUT, RequestMethod.POST })
+    @ResponseBody
+    public String putAndPostFoos() {
+        return "Advanced - PUT and POST within single method";
     }
 
 }
