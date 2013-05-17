@@ -1,5 +1,7 @@
 package org.baeldung.spring.persistence.service;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
 import org.baeldung.spring.persistence.config.PersistenceConfig;
 import org.baeldung.spring.persistence.model.Foo;
 import org.junit.Test;
@@ -25,7 +27,7 @@ public class FooServicePersistenceIntegrationTest {
 
     @Test
     public final void whenEntityisCreated_thenNoExceptions() {
-        service.create(new Foo());
+        service.create(new Foo(randomAlphabetic(6)));
     }
 
 }
