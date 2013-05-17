@@ -26,8 +26,14 @@ public class FooServicePersistenceIntegrationTest {
     }
 
     @Test
-    public final void whenEntityisCreated_thenNoExceptions() {
+    public final void whenEntityIsCreated_thenNoExceptions() {
         service.create(new Foo(randomAlphabetic(6)));
+    }
+
+    // @Test(expected = DataIntegrityViolationException.class)
+    @Test
+    public final void whenInvalidEntityIsCreated_thenDataException() {
+        service.create(new Foo());
     }
 
 }
