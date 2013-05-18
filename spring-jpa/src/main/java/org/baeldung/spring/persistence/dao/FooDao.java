@@ -40,9 +40,9 @@ public class FooDao implements IFooDao {
     }
 
     @Override
-    public void update(final Foo entity) {
+    public Foo update(final Foo entity) {
         Preconditions.checkNotNull(entity);
-        entityManager.merge(entity);
+        return entityManager.merge(entity);
     }
 
     @Override

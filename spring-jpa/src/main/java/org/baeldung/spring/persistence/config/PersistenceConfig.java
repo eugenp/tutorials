@@ -40,11 +40,7 @@ public class PersistenceConfig {
         factoryBean.setDataSource(restDataSource());
         factoryBean.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
 
-        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter() {
-            {
-                // JPA properties ...
-            }
-        };
+        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);
         factoryBean.setJpaProperties(additionalProperties());
 

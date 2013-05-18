@@ -12,7 +12,7 @@ public interface IFooDao {
 
     void create(Foo entity);
 
-    void update(Foo entity);
+    Foo update(Foo entity);
 
     void delete(Foo entity);
 

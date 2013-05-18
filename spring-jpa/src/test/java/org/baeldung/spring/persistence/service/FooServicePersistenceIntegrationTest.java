@@ -4,7 +4,6 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import org.baeldung.spring.persistence.config.PersistenceConfig;
 import org.baeldung.spring.persistence.model.Foo;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +50,8 @@ public class FooServicePersistenceIntegrationTest {
     }
 
     @Test
-    @Ignore
     public final void temp_whenInvalidEntityIsCreated_thenDataException() {
-        service.create(new Foo(randomAlphabetic(2048)));
+        service.create(new Foo());
     }
 
 }
