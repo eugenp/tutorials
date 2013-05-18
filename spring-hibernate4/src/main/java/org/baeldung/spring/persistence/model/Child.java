@@ -3,11 +3,9 @@ package org.baeldung.spring.persistence.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Child implements Serializable {
@@ -16,8 +14,7 @@ public class Child implements Serializable {
     @GeneratedValue
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn
+    @OneToOne(mappedBy = "child")
     private Parent parent;
 
     public Child() {
@@ -34,7 +31,6 @@ public class Child implements Serializable {
         this.id = id;
     }
 
-    @OneToOne(mappedBy = "child")
     public Parent getParent() {
         return parent;
     }

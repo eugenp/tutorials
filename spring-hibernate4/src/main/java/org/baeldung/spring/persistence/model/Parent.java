@@ -16,6 +16,8 @@ public class Parent implements Serializable {
     @GeneratedValue
     private long id;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "child_fk")
     private Child child;
 
     public Parent() {
@@ -38,8 +40,6 @@ public class Parent implements Serializable {
         this.id = id;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "child_fk")
     public Child getChild() {
         return child;
     }

@@ -28,7 +28,7 @@ public class ParentServicePersistenceIntegrationTest {
     }
 
     @Test
-    public final void whenEntityIsCreated_thenNoExceptions() {
+    public final void whenOneToOneEntitiesAreCreated_thenNoExceptions() {
         final Child childEntity = new Child();
         childService.create(childEntity);
 
@@ -40,6 +40,17 @@ public class ParentServicePersistenceIntegrationTest {
 
         System.out.println("Parent = " + service.findOne(parentEntity.getId()));
         System.out.println("Parent - child = " + service.findOne(parentEntity.getId()).getChild());
+    }
+
+    @Test
+    public final void whenChildIsDeleted_thenDataException() {
+        final Child childEntity = new Child();
+        childService.create(childEntity);
+
+        final Parent parentEntity = new Parent(childEntity);
+        service.create(parentEntity);
+
+        childService.delete(childEntity);
     }
 
 }
