@@ -34,12 +34,22 @@ public class Child implements Serializable {
         this.id = id;
     }
 
+    @OneToOne(mappedBy = "child")
     public Parent getParent() {
         return parent;
     }
 
     public void setParent(final Parent parent) {
         this.parent = parent;
+    }
+
+    //
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Child [id=").append(id).append(", parent=").append(parent).append("]");
+        return builder.toString();
     }
 
 }

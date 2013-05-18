@@ -32,9 +32,14 @@ public class ParentServicePersistenceIntegrationTest {
         final Child childEntity = new Child();
         childService.create(childEntity);
 
-        service.create(new Parent(childEntity));
+        final Parent parentEntity = new Parent(childEntity);
+        service.create(parentEntity);
 
-        System.out.println();
+        System.out.println("Child = " + childService.findOne(childEntity.getId()));
+        System.out.println("Child - parent = " + childService.findOne(childEntity.getId()).getParent());
+
+        System.out.println("Parent = " + service.findOne(parentEntity.getId()));
+        System.out.println("Parent - child = " + service.findOne(parentEntity.getId()).getChild());
     }
 
 }

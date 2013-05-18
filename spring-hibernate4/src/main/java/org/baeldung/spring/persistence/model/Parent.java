@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,7 +16,6 @@ public class Parent implements Serializable {
     @GeneratedValue
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "parent", cascade = CascadeType.ALL)
     private Child child;
 
     public Parent() {
@@ -39,12 +38,23 @@ public class Parent implements Serializable {
         this.id = id;
     }
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "child_fk")
     public Child getChild() {
         return child;
     }
 
     public void setChild(final Child child) {
         this.child = child;
+    }
+
+    //
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Parent [id=").append(id).append(", child=").append(child).append("]");
+        return builder.toString();
     }
 
 }
