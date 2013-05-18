@@ -4,7 +4,6 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import org.baeldung.spring.persistence.config.PersistenceConfig;
 import org.baeldung.spring.persistence.model.Foo;
-import org.baeldung.spring.persistence.service.impl.FooService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class FooServicePersistenceIntegrationTest {
 
     @Autowired
-    private FooService service;
+    private IFooService service;
 
     // tests
 

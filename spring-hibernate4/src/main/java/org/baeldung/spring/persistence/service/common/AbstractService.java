@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.baeldung.spring.persistence.dao.common.IOperations;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public abstract class AbstractService<T extends Serializable> implements IOperations<T> {
 
     @Override

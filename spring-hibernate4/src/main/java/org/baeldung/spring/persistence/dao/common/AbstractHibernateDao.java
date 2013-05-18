@@ -35,7 +35,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     @Override
     public final void create(final T entity) {
         Preconditions.checkNotNull(entity);
-        getCurrentSession().save(entity);
+        getCurrentSession().persist(entity);
     }
 
     @Override
