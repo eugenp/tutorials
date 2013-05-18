@@ -1,14 +1,16 @@
-package org.baeldung.spring.persistence.service;
+package org.baeldung.spring.persistence.service.impl;
 
 import org.baeldung.spring.persistence.dao.IFooDao;
+import org.baeldung.spring.persistence.dao.common.IOperations;
 import org.baeldung.spring.persistence.model.Foo;
+import org.baeldung.spring.persistence.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class FooService {
+public class FooService extends AbstractService<Foo> {
 
     @Autowired
     private IFooDao dao;
@@ -19,8 +21,9 @@ public class FooService {
 
     // API
 
-    public void create(final Foo entity) {
-        dao.create(entity);
+    @Override
+    protected IOperations<Foo> getDao() {
+        return dao;
     }
 
 }
