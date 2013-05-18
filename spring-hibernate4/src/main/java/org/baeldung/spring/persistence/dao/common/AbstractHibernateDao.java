@@ -19,7 +19,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
     // API
 
     protected final void setClazz(final Class<T> clazzToSet) {
-        clazz = clazzToSet;
+        clazz = Preconditions.checkNotNull(clazzToSet);
     }
 
     @Override
