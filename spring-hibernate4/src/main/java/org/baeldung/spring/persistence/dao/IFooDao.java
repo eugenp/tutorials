@@ -6,16 +6,16 @@ import org.baeldung.spring.persistence.model.Foo;
 
 public interface IFooDao {
 
-    Foo findOne(Long id);
+    Foo findOne(final Long id);
 
     List<Foo> findAll();
 
-    void create(Foo entity);
+    void create(final Foo entity);
 
-    void update(Foo entity);
+    Foo update(final Foo entity);
 
-    void delete(Foo entity);
+    void delete(final Foo entity);
 
-    void deleteById(Long entityId);
+    void deleteById(final Long entityId);
 
 }
