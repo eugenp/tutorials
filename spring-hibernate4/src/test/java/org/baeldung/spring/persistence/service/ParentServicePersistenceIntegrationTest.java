@@ -10,10 +10,10 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class OwnerServicePersistenceIntegrationTest {
+public class ParentServicePersistenceIntegrationTest {
 
     @Autowired
-    private IOwnerService service;
+    private IParentService service;
 
     @Autowired
     private IChildService childService;

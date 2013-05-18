@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Owner implements Serializable {
+public class Parent implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
 
-    public Owner() {
+    public Parent() {
         super();
     }
 

@@ -1,22 +1,22 @@
 package org.baeldung.spring.persistence.dao.impl;
 
-import org.baeldung.spring.persistence.dao.IOwnerDao;
+import org.baeldung.spring.persistence.dao.IParentDao;
 import org.baeldung.spring.persistence.dao.common.AbstractHibernateDao;
-import org.baeldung.spring.persistence.model.Owner;
+import org.baeldung.spring.persistence.model.Parent;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class OwnerDao extends AbstractHibernateDao<Owner> implements IOwnerDao {
+public class ParentDao extends AbstractHibernateDao<Parent> implements IParentDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public OwnerDao() {
+    public ParentDao() {
         super();
 
-        setClazz(Owner.class);
+        setClazz(Parent.class);
     }
 
     // API
