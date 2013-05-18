@@ -1,6 +1,8 @@
 package org.baeldung.spring.persistence.service;
 
 import org.baeldung.spring.persistence.config.PersistenceConfig;
+import org.baeldung.spring.persistence.model.Child;
+import org.baeldung.spring.persistence.model.Parent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,16 @@ public class ParentServicePersistenceIntegrationTest {
     @Test
     public final void whenContextIsBootstrapped_thenNoExceptions() {
         //
+    }
+
+    @Test
+    public final void whenEntityIsCreated_thenNoExceptions() {
+        final Child childEntity = new Child();
+        childService.create(childEntity);
+
+        service.create(new Parent(childEntity));
+
+        System.out.println();
     }
 
 }
