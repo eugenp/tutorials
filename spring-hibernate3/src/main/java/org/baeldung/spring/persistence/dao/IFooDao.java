@@ -1,5 +1,7 @@
 package org.baeldung.spring.persistence.dao;
 
-public interface IFooDao {
+import org.baeldung.spring.persistence.model.Foo;
+
+public interface IFooDao extends IOperations<Foo> {
     //
 }
