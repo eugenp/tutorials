@@ -1,4 +1,4 @@
-package org.baeldung.spring.persistence.dao;
+package org.baeldung.spring.persistence.dao.common;
 
 import java.io.Serializable;
 import java.util.List;

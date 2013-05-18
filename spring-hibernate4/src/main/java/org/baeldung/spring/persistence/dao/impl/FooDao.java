@@ -1,5 +1,7 @@
-package org.baeldung.spring.persistence.dao;
+package org.baeldung.spring.persistence.dao.impl;
 
+import org.baeldung.spring.persistence.dao.IFooDao;
+import org.baeldung.spring.persistence.dao.common.AbstractHibernateDao;
 import org.baeldung.spring.persistence.model.Foo;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
