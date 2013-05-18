@@ -7,6 +7,8 @@ import org.baeldung.spring.persistence.model.Foo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -30,10 +32,26 @@ public class FooServicePersistenceIntegrationTest {
         service.create(new Foo(randomAlphabetic(6)));
     }
 
-    // @Test(expected = DataIntegrityViolationException.class)
-    @Test
+    @Test(expected = DataIntegrityViolationException.class)
     public final void whenInvalidEntityIsCreated_thenDataException() {
         service.create(new Foo());
+    }
+
+    @Test(expected = DataIntegrityViolationException.class)
+    public final void whenEntityWithLongNameIsCreated_thenDataException() {
+        service.create(new Foo(randomAlphabetic(2048)));
+    }
+
+    @Test(expected = InvalidDataAccessApiUsageException.class)
+    public final void whenSameEntityIsCreatedTwice_thenDataException() {
+        final Foo entity = new Foo(randomAlphabetic(8));
+        service.create(entity);
+        service.create(entity);
+    }
+
+    @Test
+    public final void temp_whenInvalidEntityIsCreated_thenDataException() {
+        service.create(new Foo(randomAlphabetic(2048)));
     }
 
 }
