@@ -53,7 +53,7 @@ public class Parent implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Parent [id=").append(id).append(", child=").append(child).append("]");
+        builder.append("Parent [id=").append(id).append("]");
         return builder.toString();
     }
 

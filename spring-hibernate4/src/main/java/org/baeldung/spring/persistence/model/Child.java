@@ -44,7 +44,7 @@ public class Child implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Child [id=").append(id).append(", parent=").append(parent).append("]");
+        builder.append("Child [id=").append(id).append("]");
         return builder.toString();
     }
 

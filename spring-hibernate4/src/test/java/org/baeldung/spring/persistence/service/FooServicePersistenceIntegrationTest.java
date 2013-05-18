@@ -44,6 +44,7 @@ public class FooServicePersistenceIntegrationTest {
     }
 
     @Test(expected = InvalidDataAccessApiUsageException.class)
+    @Ignore("Right now, persist has saveOrUpdate semantics, so this will no longer fail")
     public final void whenSameEntityIsCreatedTwice_thenDataException() {
         final Foo entity = new Foo(randomAlphabetic(8));
         service.create(entity);
