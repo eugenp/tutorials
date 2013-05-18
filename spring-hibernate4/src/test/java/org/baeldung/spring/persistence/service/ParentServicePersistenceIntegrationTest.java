@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -46,14 +47,26 @@ public class ParentServicePersistenceIntegrationTest {
         System.out.println("Parent - child = " + service.findOne(parentEntity.getId()).getChild());
     }
 
-    @Test
-    public final void whenChildIsDeleted_thenDataException() {
+    @Test(expected = DataIntegrityViolationException.class)
+    public final void whenChildIsDeletedWhileParentStillHasForeignKeyToIt_thenDataException() {
         final Child childEntity = new Child();
         childService.create(childEntity);
 
         final Parent parentEntity = new Parent(childEntity);
         service.create(parentEntity);
 
+        childService.delete(childEntity);
+    }
+
+    @Test
+    public final void whenChildIsDeletedAfterTheParent_thenNoExceptions() {
+        final Child childEntity = new Child();
+        childService.create(childEntity);
+
+        final Parent parentEntity = new Parent(childEntity);
+        service.create(parentEntity);
+
+        service.delete(parentEntity);
         childService.delete(childEntity);
     }
 
