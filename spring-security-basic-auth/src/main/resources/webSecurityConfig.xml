@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-    xsi:schemaLocation="
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <http use-expressions="true">
-        <intercept-url pattern="/login*" access="isAnonymous()" />
-        <intercept-url pattern="/**" access="isAuthenticated()" />
 
-        <http-basic />
-        
-    </http>
+	<http use-expressions="true">
+		<intercept-url pattern="/login*" access="isAnonymous()" />
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>
+		<intercept-url pattern="/permitAll" access="permitAll" />
+
+		<intercept-url pattern="/**" access="isAuthenticated()" />
+
+		<http-basic />
+
+	</http>
+
+	<http pattern="/securityNone" security="none" />
+
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user1" password="user1Pass" authorities="ROLE_USER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 
 </beans:beans>

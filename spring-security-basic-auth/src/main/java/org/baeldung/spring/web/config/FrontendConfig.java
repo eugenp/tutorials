@@ -11,9 +11,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-public class ClientWebConfig extends WebMvcConfigurerAdapter {
+public class FrontendConfig extends WebMvcConfigurerAdapter {
 
-	public ClientWebConfig() {
+	public FrontendConfig() {
 		super();
 	}
 
@@ -23,7 +23,6 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 	public void addViewControllers(final ViewControllerRegistry registry) {
 		super.addViewControllers(registry);
 
-		registry.addViewController("/login.html");
 		registry.addViewController("/homepage.html");
 	}
 
