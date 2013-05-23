@@ -3,7 +3,8 @@
 <head></head>
 
 <body>
-	<h1>This is the body of the sample view</h1>
-	<a href="<c:url value="/perform_logout" />">Logout</a>
+	<h1>Anonymous page</h1>
+
+	<a href="<c:url value="/login.html" />">To Login</a>
 </body>
 </html>

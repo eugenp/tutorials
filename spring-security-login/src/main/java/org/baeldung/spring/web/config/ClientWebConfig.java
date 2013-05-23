@@ -13,28 +13,30 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
-	public ClientWebConfig() {
-		super();
-	}
+    public ClientWebConfig() {
+        super();
+    }
 
-	// API
+    // API
 
-	@Override
-	public void addViewControllers(final ViewControllerRegistry registry) {
-		super.addViewControllers(registry);
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
 
-		registry.addViewController("/login.html");
-		registry.addViewController("/homepage.html");
-	}
+        registry.addViewController("/anonymous.html");
 
-	@Bean
-	public ViewResolver viewResolver() {
-		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        registry.addViewController("/login.html");
+        registry.addViewController("/homepage.html");
+    }
 
-		bean.setViewClass(JstlView.class);
-		bean.setPrefix("/WEB-INF/view/");
-		bean.setSuffix(".jsp");
+    @Bean
+    public ViewResolver viewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
 
-		return bean;
-	}
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
+
+        return bean;
+    }
 }
