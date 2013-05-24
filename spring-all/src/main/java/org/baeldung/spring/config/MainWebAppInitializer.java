@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.config;
+package org.baeldung.spring.config;
 
 import java.util.Set;
 

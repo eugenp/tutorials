@@ -1,9 +1,11 @@
 package org.baeldung.web;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class BeanB {
+@Transactional
+public class BeanB implements IBeanB {
 
     public BeanB() {
         super();

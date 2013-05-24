@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class BeanA {
 
     @Autowired
-    private BeanB b;
+    private IBeanB b;
 
     public BeanA() {
         super();
