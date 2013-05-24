@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.2.1.Final</version>
+            <version>4.2.2.Final</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -157,7 +157,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>3.2.2.RELEASE</org.springframework.version>
+        <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.5</org.slf4j.version>
@@ -169,7 +169,7 @@
         <mockito.version>1.9.5</mockito.version>
 
         <httpcore.version>4.2.4</httpcore.version>
-        <httpclient.version>4.2.4</httpclient.version>
+        <httpclient.version>4.2.5</httpclient.version>
 
         <rest-assured.version>1.8.0</rest-assured.version>
         <groovy.version>1.8.9</groovy.version>

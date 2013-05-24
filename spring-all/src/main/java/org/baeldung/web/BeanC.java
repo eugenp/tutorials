@@ -5,9 +5,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-public class BeanB implements IBeanB {
+public class BeanC implements IBeanC {
 
-    public BeanB() {
+    public BeanC() {
         super();
     }
 
