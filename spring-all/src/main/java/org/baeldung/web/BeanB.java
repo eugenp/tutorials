@@ -3,9 +3,9 @@ package org.baeldung.web;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanB2 implements IBeanB {
+public class BeanB implements IBeanB {
 
-    public BeanB2() {
+    public BeanB() {
         super();
     }
 

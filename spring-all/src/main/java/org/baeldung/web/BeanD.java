@@ -1,6 +1,9 @@
 package org.baeldung.web;
 
-public abstract class BeanD implements IBeanD {
+import org.springframework.stereotype.Component;
+
+@Component
+public class BeanD implements IBeanD {
 
     public BeanD() {
         super();
