@@ -1,18 +1,24 @@
 package org.baeldung.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Service
 @Transactional
-public class BeanB {
+public class ServiceB {
 
     @Autowired
-    private BeanA beanA;
+    private IServiceA serviceA;
 
-    public BeanB() {
+    public ServiceB() {
         super();
+    }
+
+    //
+
+    public void testB() {
+        System.out.println();
     }
 
 }
