@@ -1,5 +1,5 @@
 package org.baeldung.web;
 
-public interface IBeanB {
+public interface IServiceB {
     //
 }

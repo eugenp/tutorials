@@ -6,12 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ServiceA implements IServiceA {
+public class ServiceA {
 
     @Autowired
-    private ServiceB serviceB;
-
-    public ServiceA() {
+    public ServiceA(final IServiceB serviceB) {
         super();
     }
 
