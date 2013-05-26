@@ -7,8 +7,8 @@
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <http entry-point-ref="restAuthenticationEntryPoint">
-        <intercept-url pattern="/api/admin/**" access="ROLE_ADMIN" />
+    <http use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
+        <intercept-url pattern="/api/**" access="isAuthenticated()" />
 
         <custom-filter ref="myFilter" position="FORM_LOGIN_FILTER" />
 
