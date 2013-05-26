@@ -10,15 +10,11 @@
     <http use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
         <intercept-url pattern="/api/**" access="isAuthenticated()" />
 
-        <custom-filter ref="myFilter" position="FORM_LOGIN_FILTER" />
+        <sec:form-login authentication-success-handler-ref="mySuccessHandler" />
 
         <logout />
     </http>
 
-    <beans:bean id="myFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
-        <beans:property name="authenticationManager" ref="authenticationManager" />
-        <beans:property name="authenticationSuccessHandler" ref="mySuccessHandler" />
-    </beans:bean>
     <beans:bean id="mySuccessHandler" class="org.baeldung.spring.security.MySavedRequestAwareAuthenticationSuccessHandler" />
 
     <authentication-manager alias="authenticationManager">
