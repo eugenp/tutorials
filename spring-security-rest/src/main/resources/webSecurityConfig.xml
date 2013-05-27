@@ -21,7 +21,7 @@
         <authentication-provider>
             <user-service>
                 <user name="temporary" password="temporary" authorities="ROLE_ADMIN" />
-                <user name="user" password="user" authorities="ROLE_USER" />
+                <user name="user" password="userPass" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>

@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.config;
+package org.baeldung.spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,27 +13,27 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 public class FrontendConfig extends WebMvcConfigurerAdapter {
 
-	public FrontendConfig() {
-		super();
-	}
+    public FrontendConfig() {
+        super();
+    }
 
-	// API
+    // API
 
-	@Override
-	public void addViewControllers(final ViewControllerRegistry registry) {
-		super.addViewControllers(registry);
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
 
-		registry.addViewController("/homepage.html");
-	}
+        registry.addViewController("/homepage.html");
+    }
 
-	@Bean
-	public ViewResolver viewResolver() {
-		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+    @Bean
+    public ViewResolver viewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
 
-		bean.setViewClass(JstlView.class);
-		bean.setPrefix("/WEB-INF/view/");
-		bean.setSuffix(".jsp");
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
 
-		return bean;
-	}
+        return bean;
+    }
 }

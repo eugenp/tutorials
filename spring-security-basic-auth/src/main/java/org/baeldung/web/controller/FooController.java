@@ -1,8 +1,8 @@
-package org.baeldung.spring.web.controller;
+package org.baeldung.web.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.baeldung.spring.web.Foo;
+import org.baeldung.web.dto.Foo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

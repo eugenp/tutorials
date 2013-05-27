@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.config;
+package org.baeldung.spring.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecSecurityConfig {
 
-	public SecSecurityConfig() {
-		super();
-	}
+    public SecSecurityConfig() {
+        super();
+    }
 
 }
