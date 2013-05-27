@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@ComponentScan("org.baeldung.spring.web.controller")
+@ComponentScan("org.baeldung.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
