@@ -25,8 +25,8 @@ class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListe
         final int positionOfLastSlash = requestURL.lastIndexOf("/");
         final String uriForResourceCreation = requestURL.substring(0, positionOfLastSlash);
 
-        // final String linkHeaderValue = RESTURLUtil.createLinkHeader(uriForResourceCreation, "collection");
-        // response.addHeader(LINK_HEADER, linkHeaderValue);
+        final String linkHeaderValue = LinkUtil.createLinkHeader(uriForResourceCreation, "collection");
+        response.addHeader("Link", linkHeaderValue);
     }
 
 }
