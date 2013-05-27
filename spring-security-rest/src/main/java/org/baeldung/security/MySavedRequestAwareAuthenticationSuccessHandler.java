@@ -1,4 +1,4 @@
-package org.baeldung.spring.security;
+package org.baeldung.security;
 
 import java.io.IOException;
 
