@@ -1,3 +1,5 @@
-Hibernate 4 with Spring
+JPA with Spring
 =========
 
+Relevant Articles: 
+- 
