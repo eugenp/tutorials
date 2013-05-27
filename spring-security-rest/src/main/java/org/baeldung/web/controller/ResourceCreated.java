@@ -8,14 +8,14 @@ import org.springframework.context.ApplicationEvent;
 public class ResourceCreated extends ApplicationEvent {
     private final HttpServletResponse response;
     private final HttpServletRequest request;
-    private final long idOfCreatedResource;
+    private final long idOfNewResource;
 
-    public ResourceCreated(final Object source, final HttpServletRequest request, final HttpServletResponse response, final long idOfCreatedResource) {
+    public ResourceCreated(final Object source, final HttpServletRequest request, final HttpServletResponse response, final long idOfNewResource) {
         super(source);
 
         this.request = request;
         this.response = response;
-        this.idOfCreatedResource = idOfCreatedResource;
+        this.idOfNewResource = idOfNewResource;
     }
 
     // API
@@ -28,8 +28,8 @@ public class ResourceCreated extends ApplicationEvent {
         return request;
     }
 
-    public long getIdOfCreatedResource() {
-        return idOfCreatedResource;
+    public long getIdOfNewResource() {
+        return idOfNewResource;
     }
 
 }
