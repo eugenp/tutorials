@@ -152,6 +152,7 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
+        <org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
         <hibernate.version>3.6.10.Final</hibernate.version>
