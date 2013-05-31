@@ -1,19 +1,13 @@
-package org.baeldung.web;
+package org.baeldung.persistence;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
-// @Component
+@Component
 public class Setup implements ApplicationListener<ContextRefreshedEvent> {
 
     private boolean setupDone;
-
-    @Autowired
-    ServiceA serviceA;
-
-    @Autowired
-    IServiceB serviceB;
 
     public Setup() {
         super();
