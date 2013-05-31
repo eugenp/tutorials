@@ -1,4 +1,4 @@
-package org.baeldung.spring.persistence.config;
+package org.baeldung.spring;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "org.baeldung.spring.persistence.dao", "org.baeldung.spring.persistence.service" })
+@ComponentScan({ "org.baeldung.persistence.dao", "org.baeldung.persistence.service" })
 @ImportResource({ "classpath:hibernate4Config.xml" })
 public class HibernateXmlConfig {
 

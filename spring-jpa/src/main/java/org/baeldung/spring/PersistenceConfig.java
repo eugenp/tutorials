@@ -1,4 +1,4 @@
-package org.baeldung.spring.persistence.config;
+package org.baeldung.spring;
 
 import java.util.Properties;
 
@@ -24,7 +24,7 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "org.baeldung.spring.persistence.dao", "org.baeldung.spring.persistence.service" })
+@ComponentScan({ "org.baeldung.persistence" })
 public class PersistenceConfig {
 
     @Autowired
@@ -38,7 +38,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         final LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(restDataSource());
-        factoryBean.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
+        factoryBean.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
 
         final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);

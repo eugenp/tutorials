@@ -1,9 +1,10 @@
-package org.baeldung.spring.persistence.service;
+package org.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import org.baeldung.spring.persistence.config.PersistenceConfig;
-import org.baeldung.spring.persistence.model.Foo;
+import org.baeldung.persistence.model.Foo;
+import org.baeldung.persistence.service.FooService;
+import org.baeldung.spring.PersistenceConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

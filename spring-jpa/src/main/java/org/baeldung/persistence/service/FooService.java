@@ -1,7 +1,7 @@
-package org.baeldung.spring.persistence.service;
+package org.baeldung.persistence.service;
 
-import org.baeldung.spring.persistence.dao.IFooDao;
-import org.baeldung.spring.persistence.model.Foo;
+import org.baeldung.persistence.dao.IFooDao;
+import org.baeldung.persistence.model.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

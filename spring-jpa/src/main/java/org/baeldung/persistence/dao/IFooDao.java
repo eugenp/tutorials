@@ -1,8 +1,8 @@
-package org.baeldung.spring.persistence.dao;
+package org.baeldung.persistence.dao;
 
 import java.util.List;
 
-import org.baeldung.spring.persistence.model.Foo;
+import org.baeldung.persistence.model.Foo;
 
 public interface IFooDao {
 

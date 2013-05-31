@@ -1,11 +1,11 @@
-package org.baeldung.spring.persistence.dao;
+package org.baeldung.persistence.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.baeldung.spring.persistence.model.Foo;
+import org.baeldung.persistence.model.Foo;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.base.Preconditions;
