@@ -25,12 +25,12 @@ import com.google.common.base.Preconditions;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
-public class PersistenceConfig {
+public class PersistenceJPAConfig {
 
     @Autowired
     private Environment env;
 
-    public PersistenceConfig() {
+    public PersistenceJPAConfig() {
         super();
     }
 
