@@ -8,11 +8,9 @@
 	<http pattern="/securityNone" security="none" />
 
 	<http use-expressions="true">
-		<intercept-url pattern="/login*" access="isAnonymous()" />
-		<intercept-url pattern="/permitAll" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
-		<http-basic entry-point-ref="myBasicAuthenticationEntryPoint" />
+        <http-basic entry-point-ref="myBasicAuthenticationEntryPoint" />
 
 	</http>
 
