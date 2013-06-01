@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@ComponentScan("org.baeldung.core")
+@ComponentScan("org.baeldung.properties.core")
 @PropertySource("classpath:foo.properties")
 public class PropertiesWithJavaConfig {
 
@@ -18,7 +18,7 @@ public class PropertiesWithJavaConfig {
     // beans
 
     @Bean
-    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
 

@@ -6,8 +6,13 @@
       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <util:properties id="fooProperties" location="classpath:foo.properties" />
-    <context:property-placeholder properties-ref="fooProperties" />
-    <!-- <context:property-placeholder location="classpath:foo.properties" /> -->
+    <!-- <util:properties id="fooProperties" location="classpath:foo.properties" /> -->
+    <!-- <context:property-placeholder properties-ref="fooProperties" /> -->
+
+    <context:property-placeholder location="classpath:foo.properties" />
+
+    <bean id="componentInXmlUsingProperties" class="org.baeldung.properties.core.ComponentInXmlUsingProperties" >
+        <constructor-arg value="${key.something}" />
+    </bean>
 
 </beans>
