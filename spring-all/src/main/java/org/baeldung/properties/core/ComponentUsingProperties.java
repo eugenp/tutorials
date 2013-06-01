@@ -1,4 +1,4 @@
-package org.baeldung.core;
+package org.baeldung.properties.core;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ public class ComponentUsingProperties implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("via @Value: " + injectedProperty);
-        System.out.println("via Environment: " + env.getProperty("key.something"));
+        System.out.println("in afterPropertiesSet via @Value: " + injectedProperty);
+        System.out.println("in afterPropertiesSet Environment: " + env.getProperty("key.something"));
     }
 
 }
