@@ -1,8 +1,10 @@
 package org.baeldung.spring.persistence.service;
 
-import org.baeldung.spring.persistence.config.PersistenceConfig;
-import org.baeldung.spring.persistence.model.Child;
-import org.baeldung.spring.persistence.model.Parent;
+import org.baeldung.persistence.model.Child;
+import org.baeldung.persistence.model.Parent;
+import org.baeldung.persistence.service.IChildService;
+import org.baeldung.persistence.service.IParentService;
+import org.baeldung.spring.PersistenceConfig;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
