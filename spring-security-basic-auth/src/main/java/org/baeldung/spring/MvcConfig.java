@@ -9,11 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-@EnableWebMvc
 @Configuration
-public class FrontendConfig extends WebMvcConfigurerAdapter {
+@EnableWebMvc
+public class MvcConfig extends WebMvcConfigurerAdapter {
 
-    public FrontendConfig() {
+    public MvcConfig() {
         super();
     }
 

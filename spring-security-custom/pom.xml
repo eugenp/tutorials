@@ -1,142 +1,157 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
-    <artifactId>spring-security-custom</artifactId>
-    <version>0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.baeldung</groupId>
+	<artifactId>spring-security-custom</artifactId>
+	<version>0.1-SNAPSHOT</version>
 
-    <name>spring-security-custom</name>
-    <packaging>war</packaging>
+	<name>spring-security-custom</name>
+	<packaging>war</packaging>
 
-    <dependencies>
+	<dependencies>
 
-        <!-- Spring Security -->
+		<!-- Spring Security -->
 
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
 
-        <!-- Spring -->
+		<!-- Spring -->
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
 
-        <!-- web -->
+		<!-- marshalling -->
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.2</version>
+		</dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-            <scope>runtime</scope>
-        </dependency>
+		<!-- web -->
 
-        <!-- util -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<scope>runtime</scope>
+		</dependency>
 
-        <!-- test scoped -->
+		<!-- util -->
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- test scoped -->
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit-dep</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-    <build>
-        <finalName>spring-security-custom</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <plugins>
-			
+	</dependencies>
+
+	<build>
+		<finalName>spring-security-custom</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -148,80 +163,80 @@
 					<debuglevel>source</debuglevel>
 				</configuration>
 			</plugin>
-			
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
-                    </excludes>
-                    <systemPropertyVariables>
-                        <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
 
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
-                <configuration>
-                    <wait>true</wait>
-                    <container>
-                        <containerId>jetty8x</containerId>
-                        <type>embedded</type>
-                        <systemProperties>
-                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
-                        </systemProperties>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8082</cargo.servlet.port>
-                        </properties>
-                    </configuration>
-                </configuration>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<!-- <exclude>**/*ProductionTest.java</exclude> -->
+					</excludes>
+					<systemPropertyVariables>
+						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
 
-        </plugins>
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>${cargo-maven2-plugin.version}</version>
+				<configuration>
+					<wait>true</wait>
+					<container>
+						<containerId>jetty8x</containerId>
+						<type>embedded</type>
+						<systemProperties>
+							<!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
+						</systemProperties>
+					</container>
+					<configuration>
+						<properties>
+							<cargo.servlet.port>8082</cargo.servlet.port>
+						</properties>
+					</configuration>
+				</configuration>
+			</plugin>
 
-    </build>
+		</plugins>
 
-    <properties>
-        <!-- Spring -->
-        <org.springframework.version>3.2.3.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
+	</build>
 
-        <!-- persistence -->
-        <hibernate.version>4.2.2.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.25</mysql-connector-java.version>
+	<properties>
+		<!-- Spring -->
+		<org.springframework.version>3.2.3.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.5</org.slf4j.version>
-        <logback.version>1.0.11</logback.version>
+		<!-- persistence -->
+		<hibernate.version>4.2.2.Final</hibernate.version>
+		<mysql-connector-java.version>5.1.25</mysql-connector-java.version>
 
-        <!-- various -->
-        <hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
+		<!-- logging -->
+		<org.slf4j.version>1.7.5</org.slf4j.version>
+		<logback.version>1.0.11</logback.version>
 
-        <!-- util -->
-        <guava.version>14.0.1</guava.version>
-        <commons-lang3.version>3.1</commons-lang3.version>
+		<!-- various -->
+		<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
 
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>1.9.5</mockito.version>
+		<!-- util -->
+		<guava.version>14.0.1</guava.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
 
-        <httpcore.version>4.2.4</httpcore.version>
-        <httpclient.version>4.2.5</httpclient.version>
+		<!-- testing -->
+		<org.hamcrest.version>1.3</org.hamcrest.version>
+		<junit.version>4.11</junit.version>
+		<mockito.version>1.9.5</mockito.version>
 
-        <rest-assured.version>1.8.0</rest-assured.version>
-        <groovy.version>1.8.9</groovy.version>
+		<httpcore.version>4.2.4</httpcore.version>
+		<httpclient.version>4.2.5</httpclient.version>
 
-        <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.4.2</cargo-maven2-plugin.version>
-        <maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
-    </properties>
+		<rest-assured.version>1.8.0</rest-assured.version>
+		<groovy.version>1.8.9</groovy.version>
+
+		<!-- Maven plugins -->
+		<cargo-maven2-plugin.version>1.4.2</cargo-maven2-plugin.version>
+		<maven-surefire-plugin.version>2.14.1</maven-surefire-plugin.version>
+	</properties>
 
 </project>
