@@ -7,7 +7,6 @@
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern="/anonymous*" access="isAnonymous()" />
         <intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
 
@@ -17,15 +16,7 @@
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
+        <authentication-provider ref="customAuthenticationProvider" />
     </authentication-manager>
-
-    <!-- <authentication-manager> -->
-    <!-- <authentication-provider ref="customAuthenticationProvider" /> -->
-    <!-- </authentication-manager> -->
 
 </beans:beans>
