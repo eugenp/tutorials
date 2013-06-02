@@ -18,12 +18,7 @@
     <beans:bean id="mySuccessHandler" class="org.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler" />
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider>
-            <user-service>
-                <user name="temporary" password="temporary" authorities="ROLE_ADMIN" />
-                <user name="user" password="userPass" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
+        <authentication-provider ref="customAuthenticationProvider" />
     </authentication-manager>
 
 </beans:beans>
