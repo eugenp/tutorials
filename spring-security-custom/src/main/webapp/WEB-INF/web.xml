@@ -15,7 +15,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.spring.config</param-value>
+        <param-value>org.baeldung.spring</param-value>
     </context-param>
 
     <listener>
@@ -24,13 +24,13 @@
 
     <!-- Spring child -->
     <servlet>
-        <servlet-name>api</servlet-name>
+        <servlet-name>mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>api</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <servlet-name>mvc</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- Spring Security -->
