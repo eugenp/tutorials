@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.config;
+package org.baeldung.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;

@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.config;
+package org.baeldung.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-public class ClientWebConfig extends WebMvcConfigurerAdapter {
+public class MvcConfig extends WebMvcConfigurerAdapter {
 
-    public ClientWebConfig() {
+    public MvcConfig() {
         super();
     }
 
@@ -22,8 +22,6 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-
-        registry.addViewController("/anonymous.html");
 
         registry.addViewController("/login.html");
         registry.addViewController("/homepage.html");
