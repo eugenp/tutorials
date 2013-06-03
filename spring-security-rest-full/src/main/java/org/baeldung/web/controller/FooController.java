@@ -5,8 +5,8 @@ import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.baeldung.persistence.service.FooService;
-import org.baeldung.web.dto.Foo;
+import org.baeldung.persistence.model.Foo;
+import org.baeldung.persistence.service.impl.FooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
