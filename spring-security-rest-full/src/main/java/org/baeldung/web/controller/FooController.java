@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
-import org.baeldung.persistence.service.impl.FooService;
+import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.util.LinkUtil;
 import org.baeldung.web.util.ResourceCreated;
 import org.baeldung.web.util.SingleResourceRetrieved;
@@ -33,7 +33,7 @@ public class FooController {
     private ApplicationEventPublisher eventPublisher;
 
     @Autowired
-    private FooService service;
+    private IFooService service;
 
     public FooController() {
         super();
