@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.impl.FooService;
+import org.baeldung.web.util.LinkUtil;
+import org.baeldung.web.util.ResourceCreated;
+import org.baeldung.web.util.SingleResourceRetrieved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;

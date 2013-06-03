@@ -1,4 +1,4 @@
-package org.baeldung.web.controller;
+package org.baeldung.web.util;
 
 import javax.servlet.http.HttpServletResponse;
 
