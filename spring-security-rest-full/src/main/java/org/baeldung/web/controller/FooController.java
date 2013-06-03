@@ -26,7 +26,7 @@ import org.springframework.web.util.UriTemplate;
 import com.google.common.base.Preconditions;
 
 @Controller
-@RequestMapping(value = "/foo")
+@RequestMapping(value = "/foos")
 public class FooController {
 
     @Autowired
@@ -44,7 +44,7 @@ public class FooController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-        return new Foo();
+        return service.findOne(id);
     }
 
     @RequestMapping(value = "admin/foo/{id}", method = RequestMethod.GET)
