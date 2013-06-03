@@ -47,7 +47,7 @@ public class FooController {
     @RequestMapping(value = "admin/foo/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Foo get(@PathVariable("id") final Long id, final HttpServletRequest request, final HttpServletResponse response) {
-        final Foo resourceById = Preconditions.checkNotNull(service.getById(id));
+        final Foo resourceById = Preconditions.checkNotNull(service.findOne(id));
 
         eventPublisher.publishEvent(new SingleResourceRetrieved(this, request, response));
         return resourceById;
@@ -57,7 +57,7 @@ public class FooController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody final Foo resource, final HttpServletRequest request, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
-        final Long idOfCreatedResource = service.create(resource);
+        final Long idOfCreatedResource = service.create(resource).getId();
 
         eventPublisher.publishEvent(new ResourceCreated(this, request, response, idOfCreatedResource));
     }

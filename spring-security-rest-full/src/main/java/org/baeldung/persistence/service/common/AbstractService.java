@@ -3,30 +3,35 @@ package org.baeldung.persistence.service.common;
 import java.io.Serializable;
 import java.util.List;
 
-import org.baeldung.persistence.dao.common.IOperations;
+import org.baeldung.persistence.IOperations;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.common.collect.Lists;
 
 @Transactional
 public abstract class AbstractService<T extends Serializable> implements IOperations<T> {
 
     @Override
+    @Transactional(readOnly = true)
     public T findOne(final long id) {
         return getDao().findOne(id);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<T> findAll() {
-        return getDao().findAll();
+        return Lists.newArrayList(getDao().findAll());
     }
 
     @Override
-    public void create(final T entity) {
-        getDao().create(entity);
+    public T create(final T entity) {
+        return getDao().save(entity);
     }
 
     @Override
     public T update(final T entity) {
-        return getDao().update(entity);
+        return getDao().save(entity);
     }
 
     @Override
@@ -36,9 +41,9 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
 
     @Override
     public void deleteById(final long entityId) {
-        getDao().deleteById(entityId);
+        getDao().delete(entityId);
     }
 
-    protected abstract IOperations<T> getDao();
+    protected abstract PagingAndSortingRepository<T, Long> getDao();
 
 }

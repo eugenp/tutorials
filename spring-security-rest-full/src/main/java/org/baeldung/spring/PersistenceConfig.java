@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -22,6 +23,7 @@ import com.google.common.base.Preconditions;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
+@ImportResource("classpath*:springDataPersistenceConfig.xml")
 public class PersistenceConfig {
 
     @Autowired
