@@ -10,7 +10,7 @@
 	<http use-expressions="true">
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 
-        <http-basic entry-point-ref="myBasicAuthenticationEntryPoint" />
+		<http-basic />
 
 	</http>
 
