@@ -6,7 +6,7 @@
       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 
-	<display-name>Spring Security Basic Auth Application</display-name>
+	<display-name>Spring Security REST Application</display-name>
 
 	<!-- Spring root -->
 	<context-param>
