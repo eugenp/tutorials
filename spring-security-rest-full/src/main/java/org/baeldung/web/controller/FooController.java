@@ -1,6 +1,7 @@
 package org.baeldung.web.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,10 +42,18 @@ public class FooController {
 
     // API
 
+    // read
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         return service.findOne(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public List<Foo> findAll() {
+        return service.findAll();
     }
 
     @RequestMapping(value = "admin/foo/{id}", method = RequestMethod.GET)
@@ -56,15 +65,6 @@ public class FooController {
         return resourceById;
     }
 
-    @RequestMapping(value = "admin/foo", method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Foo resource, final HttpServletRequest request, final HttpServletResponse response) {
-        Preconditions.checkNotNull(resource);
-        final Long idOfCreatedResource = service.create(resource).getId();
-
-        eventPublisher.publishEvent(new ResourceCreated(this, request, response, idOfCreatedResource));
-    }
-
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void adminRoot(final HttpServletRequest request, final HttpServletResponse response) {
@@ -74,4 +74,16 @@ public class FooController {
         final String linkToFoo = LinkUtil.createLinkHeader(fooUri.toASCIIString(), "collection");
         response.addHeader("Link", linkToFoo);
     }
+
+    // write
+
+    @RequestMapping(value = "admin/foo", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody final Foo resource, final HttpServletRequest request, final HttpServletResponse response) {
+        Preconditions.checkNotNull(resource);
+        final Long idOfCreatedResource = service.create(resource).getId();
+
+        eventPublisher.publishEvent(new ResourceCreated(this, request, response, idOfCreatedResource));
+    }
+
 }
