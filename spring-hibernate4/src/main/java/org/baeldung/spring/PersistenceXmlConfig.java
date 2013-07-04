@@ -9,9 +9,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @ComponentScan({ "org.baeldung.spring.persistence.dao", "org.baeldung.spring.persistence.service" })
 @ImportResource({ "classpath:hibernate4Config.xml" })
-public class HibernateXmlConfig {
+public class PersistenceXmlConfig {
 
-    public HibernateXmlConfig() {
+    public PersistenceXmlConfig() {
         super();
     }
 
