@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-dbcp</artifactId>
-			<version>7.0.41</version>
+			<version>${tomcat-dbcp.version}</version>
 		</dependency>
 
 		<!-- validation -->
@@ -173,6 +173,7 @@
 		<!-- persistence -->
 		<hibernate.version>4.2.2.Final</hibernate.version>
 		<mysql-connector-java.version>5.1.25</mysql-connector-java.version>
+		<tomcat-dbcp.version>7.0.41</tomcat-dbcp.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.5</org.slf4j.version>
