@@ -32,6 +32,7 @@
 		<authentication-provider>
 			<user-service>
 				<user name="user1" password="user1Pass" authorities="ROLE_USER" />
+				<user name="user2" password="user2Pass" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
