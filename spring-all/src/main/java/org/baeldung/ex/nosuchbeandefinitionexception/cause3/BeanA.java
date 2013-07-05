@@ -12,8 +12,8 @@ public class BeanA implements InitializingBean {
     private ApplicationContext context;
 
     @Override
-    public final void afterPropertiesSet() {
-        context.getBean("test");
+    public void afterPropertiesSet() {
+        context.getBean("someBeanName");
     }
 
 }
