@@ -19,7 +19,7 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
      */
     @Override
     public void onStartup(final ServletContext sc) throws ServletException {
-        System.out.println("GreenhouseWebAppInitializer.onStartup()");
+        System.out.println("MainWebAppInitializer.onStartup()");
 
         // Create the 'root' Spring application context
         final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
