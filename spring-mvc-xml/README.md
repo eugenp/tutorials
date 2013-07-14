@@ -1,5 +1,7 @@
-Spring MVC Tutorial
 =========
 
-Relevant Articles: 
+## Spring MVC with XML Configuration Example Project
+
+
+### Relevant Articles: 
 - 

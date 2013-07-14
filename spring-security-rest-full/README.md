@@ -1,6 +1,6 @@
 =========
 
-## Spring Security REST Tutorial
+## Spring Security REST Example Project
 
 
 ### Build the Project
