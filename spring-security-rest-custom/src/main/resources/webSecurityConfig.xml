@@ -7,16 +7,8 @@
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
         
-        <form-login 
-            login-page='/login.html' 
-            login-processing-url="/perform_login" 
-            default-target-url="/homepage.html"
-            authentication-failure-url="/login.html?error=true" 
-            always-use-default-target="true"/>
-            
         <http-basic />
 
     </http>
