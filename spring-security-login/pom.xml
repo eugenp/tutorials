@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
-    <artifactId>spring-security-login</artifactId>
+    <artifactId>spring-security-mvc-login</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-security-login</name>
+    <name>spring-security-mvc-login</name>
     <packaging>war</packaging>
 
     <dependencies>
@@ -124,7 +124,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-login</finalName>
+        <finalName>spring-security-mvc-login</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
