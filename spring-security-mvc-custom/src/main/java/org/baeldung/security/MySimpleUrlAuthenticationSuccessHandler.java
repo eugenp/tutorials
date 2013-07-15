@@ -1,6 +1,7 @@
 package org.baeldung.security;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +11,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     protected final Log logger = LogFactory.getLog(this.getClass());
@@ -47,9 +48,20 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     protected String determineTargetUrl(final HttpServletRequest requestRaw, final HttpServletResponse response) {
         // Check for the parameter and use that if available
 
-        final SecurityContextHolderAwareRequestWrapper req = (SecurityContextHolderAwareRequestWrapper) requestRaw;
-        final boolean isUser = req.isUserInRole("ROLE_USER");
-        final boolean isAdmin = req.isUserInRole("ROLE_ADMIN");
+        boolean isUser = false;
+        boolean isAdmin = false;
+        final Authentication authentication = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (final GrantedAuthority grantedAuthority : authorities) {
+            if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
+                isUser = true;
+                break;
+            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
+                isAdmin = true;
+                break;
+            }
+        }
+
         if (isUser) {
             return "/homepage.html";
         } else if (isAdmin) {
