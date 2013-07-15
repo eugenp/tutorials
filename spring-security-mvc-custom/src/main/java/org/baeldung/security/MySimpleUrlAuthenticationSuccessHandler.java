@@ -7,32 +7,67 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
-import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 
-/**
- * <tt>AuthenticationSuccessHandler</tt> which can be configured with a default URL which users should be
- * sent to upon successful authentication.
- * <p>
- * The logic used is that of the {@link AbstractAuthenticationTargetUrlRequestHandler parent class}.
- *
- * @author Luke Taylor
- * @since 3.0
- */
-public class MySimpleUrlAuthenticationSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements AuthenticationSuccessHandler {
+public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    protected final Log logger = LogFactory.getLog(this.getClass());
 
-    public MySimpleUrlAuthenticationSuccessHandler() {
+    private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
+
+    protected MySimpleUrlAuthenticationSuccessHandler() {
         super();
     }
 
     /**
-     * Constructor which sets the <tt>defaultTargetUrl</tt> property of the base class.
-     * @param defaultTargetUrl the URL to which the user should be redirected on successful authentication.
+     * Invokes the configured {@code RedirectStrategy} with the URL returned by the {@code determineTargetUrl} method.
+     * <p>
+     * The redirect will not be performed if the response has already been committed.
      */
-    public MySimpleUrlAuthenticationSuccessHandler(final String defaultTargetUrl) {
-        setDefaultTargetUrl(defaultTargetUrl);
+    protected void handle(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException, ServletException {
+        final String targetUrl = determineTargetUrl(request, response);
+
+        if (response.isCommitted()) {
+            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
+            return;
+        }
+
+        redirectStrategy.sendRedirect(request, response, targetUrl);
+    }
+
+    /**
+     * Builds the target URL according to the logic defined in the main class Javadoc.
+     */
+    protected String determineTargetUrl(final HttpServletRequest requestRaw, final HttpServletResponse response) {
+        // Check for the parameter and use that if available
+
+        final SecurityContextHolderAwareRequestWrapper req = (SecurityContextHolderAwareRequestWrapper) requestRaw;
+        final boolean isUser = req.isUserInRole("ROLE_USER");
+        final boolean isAdmin = req.isUserInRole("ROLE_ADMIN");
+        if (isUser) {
+            return "/homepage.html";
+        } else if (isAdmin) {
+            return "/console.html";
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+
+    /**
+     * Allows overriding of the behavior when redirecting to a target URL.
+     */
+    public void setRedirectStrategy(final RedirectStrategy redirectStrategy) {
+        this.redirectStrategy = redirectStrategy;
+    }
+
+    protected RedirectStrategy getRedirectStrategy() {
+        return redirectStrategy;
     }
 
     /**
