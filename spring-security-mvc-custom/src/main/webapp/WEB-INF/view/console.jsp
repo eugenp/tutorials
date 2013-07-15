@@ -4,7 +4,7 @@
 <head></head>
 
 <body>
-	<h1>This is the body of the sample view</h1>
+	<h1>This is the landing page for the admin</h1>
 
 	<security:authorize access="hasRole('ROLE_USER')">
 		This text is only visible to a user

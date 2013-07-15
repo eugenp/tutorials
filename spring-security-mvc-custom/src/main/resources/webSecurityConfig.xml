@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="
+<beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+    xsi:schemaLocation="
 		http://www.springframework.org/schema/security 
         http://www.springframework.org/schema/security/spring-security-3.1.xsd
 		http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-	<http use-expressions="true" >
-		<intercept-url pattern="/anonymous*" access="isAnonymous()" />
+    <http use-expressions="true">
+        <intercept-url pattern="/anonymous*" access="isAnonymous()" />
         <intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
 
-		<form-login 
-			login-page='/login.html' 
-			login-processing-url="/perform_login" 
-			authentication-success-handler-ref="myAuthenticationSuccessHandler"
-			authentication-failure-url="/login.html?error=true"
-		/>
-            
-        <logout 
-        	logout-url="/perform_logout"
-            delete-cookies="JSESSIONID" 
-        />
-            
-	</http>
+        <form-login login-page='/login.html' authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-failure-url="/login.html?error=true" />
 
-	<beans:bean id="myAuthenticationSuccessHandler"
-		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
+        <logout delete-cookies="JSESSIONID" />
 
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="user1" password="user1Pass" authorities="ROLE_USER" />
-				<user name="user2" password="user2Pass" authorities="ROLE_USER" />
-				<user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
+    </http>
+
+    <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
+                <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
 
 </beans:beans>

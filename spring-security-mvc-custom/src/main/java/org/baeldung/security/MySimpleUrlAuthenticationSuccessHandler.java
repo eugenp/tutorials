@@ -12,6 +12,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
@@ -46,11 +47,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
      * Builds the target URL according to the logic defined in the main class Javadoc.
      */
     protected String determineTargetUrl(final HttpServletRequest requestRaw, final HttpServletResponse response) {
-        // Check for the parameter and use that if available
-
         boolean isUser = false;
         boolean isAdmin = false;
-        final Authentication authentication = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (final GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
