@@ -15,18 +15,19 @@
 		<form-login 
 			login-page='/login.html' 
 			login-processing-url="/perform_login" 
-			default-target-url="/homepage.html"
-			authentication-failure-url="/login.html?error=true" 
-			always-use-default-target="true"/>
+			authentication-success-handler-ref="myAuthenticationSuccessHandler"
+			authentication-failure-url="/login.html?error=true"
+		/>
             
-            <logout 
-            	logout-url="/perform_logout"
-                delete-cookies="JSESSIONID"
-                success-handler-ref="customLogoutSuccessHandler" />
+        <logout 
+        	logout-url="/perform_logout"
+            delete-cookies="JSESSIONID" 
+        />
             
 	</http>
-    
-    <beans:bean name="customLogoutSuccessHandler" class="org.baeldung.security.CustomLogoutSuccessHandler" />
+
+	<beans:bean id="myAuthenticationSuccessHandler"
+		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
 
 	<authentication-manager>
 		<authentication-provider>
