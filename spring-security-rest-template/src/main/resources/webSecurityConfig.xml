@@ -8,13 +8,17 @@
 
     <http use-expressions="true">
         <intercept-url pattern="/**" access="isAuthenticated()" />
-        
+
         <http-basic />
 
     </http>
 
     <authentication-manager>
-        <authentication-provider ref="customAuthenticationProvider" />
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="userPass" authorities="ROLE_USER" />
+            </user-service>
+        </authentication-provider>
     </authentication-manager>
 
 </beans:beans>
