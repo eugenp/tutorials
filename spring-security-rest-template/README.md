@@ -1,7 +1,7 @@
 =========
 
-## Spring Security for REST Example Project
+## Spring Security with RestTemplate - Example Project
 
 
 ### Relevant Articles: 
-- [Spring Security Authentication Provider](http://www.baeldung.com/spring-security-authentication-provider)
+- [RestTemplate with Basic Authentication in Spring](http://www.baeldung.com/2012/04/16/how-to-use-resttemplate-with-basic-authentication-in-spring-3-1)
