@@ -30,4 +30,10 @@ public class FooController {
         return new Foo();
     }
 
+    @RequestMapping(value = "/{id}/unsecured", method = RequestMethod.GET)
+    @ResponseBody
+    public Foo findOneUnsecured(@PathVariable("id") final Long id) {
+        return new Foo();
+    }
+
 }
