@@ -7,7 +7,6 @@
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <http use-expressions="true">
-        <intercept-url pattern="/**" access="isAuthenticated()" />
 
         <http-basic />
 
@@ -21,4 +20,6 @@
         </authentication-provider>
     </authentication-manager>
 
+    <global-method-security pre-post-annotations="enabled" />
+    
 </beans:beans>
