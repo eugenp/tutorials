@@ -1,9 +1,9 @@
 package org.baeldung.servlet;
 
+
+//public class WebApp implements WebApplicationInitializer {
 //
-//public class NewWebApp extends AbstractAnnotationConfigDispatcherServletInitializer {
-//
-//    public NewWebApp() {
+//    public WebApp() {
 //        super();
 //    }
 //
@@ -18,23 +18,7 @@ package org.baeldung.servlet;
 //
 //        final Dynamic servlet = servletContext.addServlet("mvc", new DispatcherServlet(root));
 //        servlet.setLoadOnStartup(1);
-//        servlet.addMapping("/*");
+//        servlet.addMapping("/");
 //    }
 //
-//    @Override
-//    protected Class<?>[] getRootConfigClasses() {
-//        return null;
-//    }
-//
-//    @Override
-//    protected Class<?>[] getServletConfigClasses() {
-//        return new Class<?>[] { ClientWebConfig.class };
-//    }
-//
-//    @Override
-//    protected String[] getServletMappings() {
-//        return new String[] { "/*" };
-//    }
-//
-//}
-
+// }
