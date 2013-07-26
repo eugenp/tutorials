@@ -1,6 +1,6 @@
 =========
 
-## Spring MVC Example Project
+## Spring REST Example Project
 
 
 ### Relevant Articles: 
