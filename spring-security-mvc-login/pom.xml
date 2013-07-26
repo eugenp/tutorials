@@ -205,7 +205,7 @@
         <groovy.version>1.8.9</groovy.version>
 
         <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.4.2</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
         <maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
     </properties>
 
