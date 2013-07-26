@@ -1,4 +1,4 @@
-package org.baeldung.spring.web.controller;
+package org.baeldung.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
