@@ -6,18 +6,24 @@
       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 
-	<display-name>Spring MVC Application</display-name>
+	<display-name>Spring MVC XML Application</display-name>
 
 	<!-- Spring root -->
 	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+        	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      	</param-value>
+	</context-param>
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/mvc-servlet.xml</param-value>
+		<param-value>org.baeldung.spring</param-value>
 	</context-param>
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
 	<!-- Spring child -->
 	<servlet>
 		<servlet-name>mvc</servlet-name>
@@ -28,6 +34,8 @@
 		<servlet-name>mvc</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- additional config -->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
