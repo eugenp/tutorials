@@ -83,6 +83,15 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<failonmissingwebxml>false</failonmissingwebxml>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
@@ -118,9 +127,10 @@
 		<rest-assured.version>1.8.1</rest-assured.version>
 		<groovy.version>1.8.9</groovy.version>
 
-        <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
-        <maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<!-- Maven plugins -->
+		<cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
+		<maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 	</properties>
 
 </project>

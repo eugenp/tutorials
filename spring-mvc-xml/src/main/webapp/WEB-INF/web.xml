@@ -23,7 +23,7 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 	<!-- Spring child -->
 	<servlet>
 		<servlet-name>mvc</servlet-name>
@@ -36,7 +36,11 @@
 	</servlet-mapping>
 
 	<!-- additional config -->
-
+	
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

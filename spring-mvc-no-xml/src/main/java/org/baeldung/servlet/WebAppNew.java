@@ -1,5 +1,7 @@
 package org.baeldung.servlet;
 
+import javax.servlet.ServletRegistration.Dynamic;
+
 import org.baeldung.spring.ClientWebConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -30,6 +32,11 @@ public class WebAppNew extends AbstractAnnotationConfigDispatcherServletInitiali
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
+    }
+
+    @Override
+    protected void customizeRegistration(final Dynamic registration) {
+        super.customizeRegistration(registration);
     }
 
 }
