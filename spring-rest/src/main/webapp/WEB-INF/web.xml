@@ -12,8 +12,8 @@
 	<context-param>
 		<param-name>contextClass</param-name>
 		<param-value>
-         org.springframework.web.context.support.AnnotationConfigWebApplicationContext
-      </param-value>
+        	org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+      	</param-value>
 	</context-param>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -26,12 +26,12 @@
 
 	<!-- Spring child -->
 	<servlet>
-		<servlet-name>mvc</servlet-name>
+		<servlet-name>api</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>mvc</servlet-name>
+		<servlet-name>api</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
