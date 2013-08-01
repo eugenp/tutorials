@@ -1,32 +1,43 @@
 package org.baeldung.web;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.baeldung.monitoring.MetricRegistrySingleton;
+
+import com.codahale.metrics.Counter;
+
 public class SessionListenerWithMetrics implements HttpSessionListener {
 
-    private static int totalActiveSessions;
+    private final AtomicInteger activeSessions;
+
+    private final Counter counterOfActiveSessions;
 
     public SessionListenerWithMetrics() {
         super();
+
+        activeSessions = new AtomicInteger();
+        counterOfActiveSessions = MetricRegistrySingleton.metrics.counter("web.sessions.active.count");
     }
 
     // API
 
-    public static int getTotalActiveSession() {
-        return totalActiveSessions;
+    public final int getTotalActiveSession() {
+        return activeSessions.get();
     }
 
     @Override
-    public void sessionCreated(final HttpSessionEvent arg0) {
-        totalActiveSessions++;
-        System.out.println("sessionCreated - add one session into counter");
+    public final void sessionCreated(final HttpSessionEvent event) {
+        activeSessions.incrementAndGet();
+        counterOfActiveSessions.inc();
     }
 
     @Override
-    public void sessionDestroyed(final HttpSessionEvent arg0) {
-        totalActiveSessions--;
-        System.out.println("sessionDestroyed - deduct one session from counter");
+    public final void sessionDestroyed(final HttpSessionEvent event) {
+        activeSessions.decrementAndGet();
+        counterOfActiveSessions.dec();
     }
 
 }
