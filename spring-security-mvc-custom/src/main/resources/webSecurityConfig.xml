@@ -15,7 +15,7 @@
 
         <logout delete-cookies="JSESSIONID" />
 		
-		<remember-me/>
+		<remember-me key="uniqueAndSecret" token-validity-seconds="86400"/>
 		
     </http>
 
