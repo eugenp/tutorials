@@ -16,15 +16,14 @@
     </beans:bean>
 
     <http use-expressions="true" create-session="stateless" entry-point-ref="digestEntryPoint">
-        <intercept-url pattern="/**" access="isAuthenticated()" />
-
         <custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service id="userService">
-                <user name="user" password="userPass" authorities="ROLE_USER" />
+                <user name="user1" password="user1Pass" authorities="ROLE_USER" />
+                <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
