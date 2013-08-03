@@ -6,10 +6,19 @@
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-    <http create-session="stateless" use-expressions="true">
+    <beans:bean id="digestFilter">
+        <beans:property name="userDetailsService" ref="userService" />
+        <beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
+    </beans:bean>
+    <beans:bean id="digestEntryPoint">
+        <beans:property name="realmName" value="Contacts Realm via Digest Authentication" />
+        <beans:property name="key" value="acegi" />
+    </beans:bean>
 
-        <http-basic />
+    <http use-expressions="true" create-session="stateless" entry-point-ref="digestEntryPoint">
+        <intercept-url pattern="/**" access="isAuthenticated()" />
 
+        <custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER" />
     </http>
 
     <authentication-manager>
