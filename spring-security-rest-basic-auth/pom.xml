@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
-    <artifactId>spring-security-rest-template</artifactId>
+    <artifactId>spring-security-rest-basic-auth</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-security-rest-template</name>
+    <name>spring-security-rest-basic-auth</name>
     <packaging>war</packaging>
 
     <dependencies>
@@ -217,7 +217,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-rest-template</finalName>
+        <finalName>spring-security-rest-basic-auth</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

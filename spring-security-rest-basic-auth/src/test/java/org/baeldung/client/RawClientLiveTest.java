@@ -34,7 +34,7 @@ public class RawClientLiveTest {
         configureViaRawApi(timeout, httpParams);
         // configureViaHighLevelApi(timeout, httpParams);
 
-        final HttpGet getMethod = new HttpGet("http://localhost:8080/spring-security-rest-template/api/bars/1");
+        final HttpGet getMethod = new HttpGet("http://localhost:8080/spring-security-rest-basic-auth/api/bars/1");
 
         final int hardTimeout = 5; // seconds
         final TimerTask task = new TimerTask() {

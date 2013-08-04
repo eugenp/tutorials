@@ -31,7 +31,7 @@ public class ClientLiveTest {
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
         httpClient.getCredentialsProvider().setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user", "userPass"));
 
-        final ResponseEntity<Foo> responseEntity = restTemplate.exchange("http://localhost:8080/spring-security-rest-template/api/foos/1", HttpMethod.GET, null, Foo.class);
+        final ResponseEntity<Foo> responseEntity = restTemplate.exchange("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
         System.out.println(responseEntity.getStatusCode());
     }
 
