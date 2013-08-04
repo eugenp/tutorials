@@ -11,7 +11,7 @@
         <beans:property name="authenticationEntryPoint" ref="digestEntryPoint" />
     </beans:bean>
     <beans:bean id="digestEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
-        <beans:property name="realmName" value="Contacts Realm via Digest Authentication" />
+        <beans:property name="realmName" value="Custom Realm Name" />
         <beans:property name="key" value="uniqueAndSecret" />
     </beans:bean>
 

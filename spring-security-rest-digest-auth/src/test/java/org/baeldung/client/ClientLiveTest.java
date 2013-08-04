@@ -29,9 +29,10 @@ public class ClientLiveTest {
     public final void whenSecuredRestApiIsConsumed_then200OK() {
         final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) restTemplate.getRequestFactory();
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
-        httpClient.getCredentialsProvider().setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user", "userPass"));
+        httpClient.getCredentialsProvider().setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
 
-        final ResponseEntity<Foo> responseEntity = restTemplate.exchange("http://localhost:8080/spring-security-rest-digest-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
+        final String uri = "http://localhost:8080/spring-security-rest-digest-auth/api/foos/1";
+        final ResponseEntity<Foo> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, Foo.class);
         System.out.println(responseEntity.getStatusCode());
     }
 

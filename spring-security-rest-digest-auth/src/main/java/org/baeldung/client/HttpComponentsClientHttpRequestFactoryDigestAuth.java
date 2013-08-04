@@ -5,17 +5,17 @@ import java.net.URI;
 import org.apache.http.HttpHost;
 import org.apache.http.client.AuthCache;
 import org.apache.http.client.protocol.ClientContext;
-import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
-public class HttpComponentsClientHttpRequestFactoryBasicAuth extends HttpComponentsClientHttpRequestFactory {
+public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpComponentsClientHttpRequestFactory {
     HttpHost host;
 
-    public HttpComponentsClientHttpRequestFactoryBasicAuth(final HttpHost host) {
+    public HttpComponentsClientHttpRequestFactoryDigestAuth(final HttpHost host) {
         super();
         this.host = host;
     }
@@ -30,9 +30,14 @@ public class HttpComponentsClientHttpRequestFactoryBasicAuth extends HttpCompone
     private HttpContext createHttpContext() {
         // Create AuthCache instance
         final AuthCache authCache = new BasicAuthCache();
-        // Generate BASIC scheme object and add it to the local auth cache
-        final BasicScheme basicAuth = new BasicScheme();
-        authCache.put(host, basicAuth);
+        // Generate DIGEST scheme object, initialize it and add it to the local auth cache
+        final DigestScheme digestAuth = new DigestScheme();
+        // If we already know the realm name
+        digestAuth.overrideParamter("realm", "Custom Realm Name");
+
+        // digestAuth.overrideParamter("nonce", "MTM3NTU2OTU4MDAwNzoyYWI5YTQ5MTlhNzc5N2UxMGM5M2Y5M2ViOTc4ZmVhNg==");
+        authCache.put(host, digestAuth);
+
         // Add AuthCache to the execution context
         final BasicHttpContext localcontext = new BasicHttpContext();
         localcontext.setAttribute(ClientContext.AUTH_CACHE, authCache);
