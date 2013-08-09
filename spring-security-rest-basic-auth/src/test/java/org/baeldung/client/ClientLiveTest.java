@@ -32,17 +32,17 @@ import org.springframework.web.client.RestTemplate;
 public class ClientLiveTest {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private RestTemplate secureRestTemplate;
 
     // tests
 
     @Test
     public final void whenSecuredRestApiIsConsumed_then200OK() {
-        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) restTemplate.getRequestFactory();
+        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) secureRestTemplate.getRequestFactory();
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
         httpClient.getCredentialsProvider().setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user", "userPass"));
 
-        final ResponseEntity<Foo> responseEntity = restTemplate.exchange("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
+        final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
         System.out.println(responseEntity.getStatusCode());
     }
 
@@ -55,8 +55,8 @@ public class ClientLiveTest {
 
     @Test
     public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws IOException, GeneralSecurityException {
-        final RestTemplate newRestTemplate = new RestTemplate();
-        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) restTemplate.getRequestFactory();
+        final RestTemplate newRestTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) newRestTemplate.getRequestFactory();
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
 
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
@@ -65,7 +65,6 @@ public class ClientLiveTest {
                 return true;
             }
         };
-
         final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
         httpClient.getConnectionManager().getSchemeRegistry().register(new Scheme("https", 8443, sf));
 
