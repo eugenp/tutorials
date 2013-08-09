@@ -1,26 +1,32 @@
 package org.baeldung.client;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.cert.X509Certificate;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.net.ssl.SSLPeerUnverifiedException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.params.ClientPNames;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
-import org.baeldung.client.spring.ClientConfig;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ClientConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class RawClientLiveTest {
 
     // tests
@@ -49,6 +55,37 @@ public class RawClientLiveTest {
 
         final HttpResponse response = httpClient.execute(getMethod);
         System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
+    }
+
+    @Test(expected = SSLPeerUnverifiedException.class)
+    public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
+        final DefaultHttpClient httpClient = new DefaultHttpClient();
+
+        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
+        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
+
+    @Test
+    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws IOException, GeneralSecurityException {
+        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
+                return true;
+            }
+        };
+        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SchemeRegistry registry = new SchemeRegistry();
+        registry.register(new Scheme("https", 8443, sf));
+        final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
+
+        final DefaultHttpClient httpClient = new DefaultHttpClient(ccm);
+
+        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
+        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
     // util
