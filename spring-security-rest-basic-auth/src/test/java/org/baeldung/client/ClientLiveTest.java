@@ -1,9 +1,9 @@
 package org.baeldung.client;
 
+import static org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
 
@@ -54,9 +54,8 @@ public class ClientLiveTest {
     }
 
     @Test
-    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws IOException, GeneralSecurityException {
-        final RestTemplate newRestTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
-        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) newRestTemplate.getRequestFactory();
+    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws GeneralSecurityException {
+        final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
 
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
@@ -65,11 +64,11 @@ public class ClientLiveTest {
                 return true;
             }
         };
-        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, ALLOW_ALL_HOSTNAME_VERIFIER);
         httpClient.getConnectionManager().getSchemeRegistry().register(new Scheme("https", 8443, sf));
 
         final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
-        final ResponseEntity<String> response = newRestTemplate.exchange(urlOverHttps, HttpMethod.GET, null, String.class);
+        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
 
