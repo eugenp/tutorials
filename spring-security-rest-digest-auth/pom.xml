@@ -93,18 +93,6 @@
 
         <!-- http -->
 
-        <!-- <dependency> -->
-        <!-- <groupId>org.apache.httpcomponents</groupId> -->
-        <!-- <artifactId>fluent-hc</artifactId> -->
-        <!-- <version>4.2.5</version> -->
-        <!-- <exclusions> -->
-        <!-- <exclusion> -->
-        <!-- <artifactId>commons-logging</artifactId> -->
-        <!-- <groupId>commons-logging</groupId> -->
-        <!-- </exclusion> -->
-        <!-- </exclusions> -->
-        <!-- </dependency> -->
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
