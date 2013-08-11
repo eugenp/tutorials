@@ -17,8 +17,8 @@
 
         <remember-me key="uniqueAndSecret" token-validity-seconds="86400" />
 
-        <session-management>
-            <concurrency-control max-sessions="2" />
+        <session-management invalid-session-url="/invalidSession.html">
+            <concurrency-control max-sessions="2" expired-url="/sessionExpired.html" />
         </session-management>
 
     </http>
