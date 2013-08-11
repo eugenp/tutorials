@@ -17,23 +17,9 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ContextConfiguration(classes = { Cause1ContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class Cause1NoSuchBeanDefinitionExceptionIntegrationTest {
 
-    @Autowired
-    private IParentService service;
-
-    @Autowired
-    private IChildService childService;
-
-    // tests
-
-    @Test(expected = DataIntegrityViolationException.class)
-    public void whenChildIsDeletedWhileParentStillHasForeignKeyToIt_thenDataException() {
-        final Child childEntity = new Child();
-        childService.create(childEntity);
-
-        final Parent parentEntity = new Parent(childEntity);
-        service.create(parentEntity);
-
-        childService.delete(childEntity);
+    @Test
+    public final void givenContextIsInitialized_thenNoException() {
+        //
     }
 
 }
