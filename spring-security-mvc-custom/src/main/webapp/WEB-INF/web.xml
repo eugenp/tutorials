@@ -9,9 +9,6 @@
     <session-config>
         <session-timeout>1</session-timeout>
     </session-config>
-    <listener>
-        <listener-class>org.baeldung.web.SessionListenerWithMetrics</listener-class>
-    </listener>
 
     <!-- Spring root -->
     <context-param>
