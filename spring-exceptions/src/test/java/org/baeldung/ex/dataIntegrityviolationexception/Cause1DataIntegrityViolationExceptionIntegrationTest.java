@@ -36,4 +36,16 @@ public class Cause1DataIntegrityViolationExceptionIntegrationTest {
         childService.delete(childEntity);
     }
 
+    @Test
+    public void whenChildIsDeletedAfterTheParent_thenNoExceptions() {
+        final Child childEntity = new Child();
+        childService.create(childEntity);
+
+        final Parent parentEntity = new Parent(childEntity);
+        service.create(parentEntity);
+
+        service.delete(parentEntity);
+        childService.delete(childEntity);
+    }
+
 }
