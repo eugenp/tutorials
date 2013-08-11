@@ -171,9 +171,9 @@
 		<javassist.version>3.18.0-GA</javassist.version>
 
 		<!-- persistence -->
-		<hibernate.version>4.2.3.Final</hibernate.version>
+		<hibernate.version>4.2.4.Final</hibernate.version>
 		<mysql-connector-java.version>5.1.26</mysql-connector-java.version>
-		<tomcat-dbcp.version>7.0.41</tomcat-dbcp.version>
+		<tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.5</org.slf4j.version>

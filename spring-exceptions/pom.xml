@@ -50,6 +50,11 @@
             <version>${mysql-connector-java.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>${tomcat-dbcp.version}</version>
+        </dependency>
 
         <!-- validation -->
 
@@ -188,8 +193,9 @@
         <jstl.version>1.2</jstl.version>
 
         <!-- persistence -->
-        <hibernate.version>4.2.3.Final</hibernate.version>
+        <hibernate.version>4.2.4.Final</hibernate.version>
         <mysql-connector-java.version>5.1.26</mysql-connector-java.version>
+        <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.5</org.slf4j.version>
