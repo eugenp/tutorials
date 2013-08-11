@@ -1,4 +1,4 @@
-package org.baeldung.ex.dataIntegrityviolationexception.spring;
+package org.baeldung.ex.dataintegrityviolationexception.spring;
 
 import org.baeldung.spring.config.PersistenceConfig;
 import org.springframework.context.annotation.Bean;

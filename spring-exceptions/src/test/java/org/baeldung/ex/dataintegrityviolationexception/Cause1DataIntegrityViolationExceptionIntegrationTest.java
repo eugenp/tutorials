@@ -1,6 +1,6 @@
-package org.baeldung.ex.dataIntegrityviolationexception;
+package org.baeldung.ex.dataintegrityviolationexception;
 
-import org.baeldung.ex.dataIntegrityviolationexception.spring.Cause1DataContextWithJavaConfig;
+import org.baeldung.ex.dataintegrityviolationexception.spring.Cause1DataContextWithJavaConfig;
 import org.baeldung.persistence.model.Child;
 import org.baeldung.persistence.model.Parent;
 import org.baeldung.persistence.service.IChildService;
