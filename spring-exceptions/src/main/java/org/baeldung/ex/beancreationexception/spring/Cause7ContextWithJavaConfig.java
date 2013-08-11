@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ComponentScan("org.baeldung.ex.beancreationexception.cause6")
-@ImportResource("classpath:beancreationexception_cause6.xml")
-public class Cause6ContextWithJavaConfig {
+@ComponentScan("org.baeldung.ex.beancreationexception.cause7")
+@ImportResource("classpath:beancreationexception_cause7.xml")
+public class Cause7ContextWithJavaConfig {
 
-    public Cause6ContextWithJavaConfig() {
+    public Cause7ContextWithJavaConfig() {
         super();
     }
 
