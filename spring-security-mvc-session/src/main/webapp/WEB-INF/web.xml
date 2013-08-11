@@ -12,6 +12,9 @@
     <listener>
         <listener-class>org.baeldung.web.SessionListenerWithMetrics</listener-class>
     </listener>
+    <listener>
+        <listener-class>org.springframework.security.ui.session.HttpSessionEventPublisher</listener-class>
+    </listener>
 
     <!-- Spring root -->
     <context-param>
