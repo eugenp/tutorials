@@ -36,8 +36,10 @@ public class Cause3PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setAnnotatedClasses(new Class[] { Foo.class });
         sessionFactory.setHibernateProperties(hibernateProperties());
+
+        // sessionFactory.setPackagesToScan(new String[] { "org.baeldung.ex.mappingexception.cause2.persistence.model" });
+        sessionFactory.setAnnotatedClasses(new Class[] { Foo.class });
 
         return sessionFactory;
     }
