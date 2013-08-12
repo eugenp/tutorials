@@ -21,13 +21,13 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "org.baeldung.persistence" })
-public class PersistenceConfig {
+@ComponentScan({ "org.baeldung.ex.mappingexception.cause1.persistence" })
+public class Cause1PersistenceConfig {
 
     @Autowired
     private Environment env;
 
-    public PersistenceConfig() {
+    public Cause1PersistenceConfig() {
         super();
     }
 
@@ -35,7 +35,7 @@ public class PersistenceConfig {
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
-        sessionFactory.setPackagesToScan(new String[] { "org.baeldung.persistence.model2" });
+        sessionFactory.setPackagesToScan(new String[] { "org.baeldung.ex.mappingexception.cause1.persistence.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
