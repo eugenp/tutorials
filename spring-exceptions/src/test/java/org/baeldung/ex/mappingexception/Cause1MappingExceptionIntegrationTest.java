@@ -1,9 +1,8 @@
 package org.baeldung.ex.mappingexception;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-
 import org.baeldung.ex.mappingexception.cause1.persistence.model.Foo;
 import org.baeldung.ex.mappingexception.spring.Cause1PersistenceConfig;
+import org.hibernate.MappingException;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +21,10 @@ public class Cause1MappingExceptionIntegrationTest {
 
     // tests
 
-    @Test
+    @Test(expected = MappingException.class)
     @Transactional
     public final void givenEntityIsPersisted_thenException() {
-        sessionFactory.getCurrentSession().saveOrUpdate(new Foo(randomAlphabetic(6)));
+        sessionFactory.getCurrentSession().saveOrUpdate(new Foo());
     }
 
 }
