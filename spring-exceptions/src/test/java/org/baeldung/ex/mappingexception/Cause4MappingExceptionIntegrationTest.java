@@ -18,8 +18,16 @@ public class Cause4MappingExceptionIntegrationTest {
 
     @Test
     public final void givenEntityIsPersisted_thenException() throws IOException {
-        final Configuration configuration = new Configuration();
+        final SessionFactory sessionFactory = configureSessionFactory();
 
+        final Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(new Foo());
+        session.getTransaction().commit();
+    }
+
+    private final SessionFactory configureSessionFactory() throws IOException {
+        final Configuration configuration = new Configuration();
         final InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("hibernate-mysql.properties");
         final Properties hibernateProperties = new Properties();
         hibernateProperties.load(inputStream);
@@ -29,11 +37,7 @@ public class Cause4MappingExceptionIntegrationTest {
 
         final ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
         final SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-
-        final Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.saveOrUpdate(new Foo());
-        session.getTransaction().commit();
+        return sessionFactory;
     }
 
 }
