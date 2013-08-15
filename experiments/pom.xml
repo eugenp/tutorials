@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
-	<artifactId>spring-security-rest</artifactId>
+	<artifactId>experiments</artifactId>
 	<version>0.1-SNAPSHOT</version>
 
-	<name>spring-security-rest</name>
+	<name>experiments</name>
 	<packaging>war</packaging>
 
 	<dependencies>
@@ -194,7 +194,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>spring-security-rest</finalName>
+		<finalName>experiments</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
