@@ -86,16 +86,9 @@ public class HttpLiveServiceTemp {
     }
 
     final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
-        HttpGet request = null;
-        HttpEntity httpEntity = null;
-        InputStream entityContentStream = null;
-
+        final HttpGet request = new HttpGet(url);
         try {
-            request = new HttpGet(url);
             final HttpResponse httpResponse = client.execute(request);
-
-            httpEntity = httpResponse.getEntity();
-            entityContentStream = httpEntity.getContent();
 
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode != 301 && statusCode != 302) {
@@ -105,34 +98,20 @@ public class HttpLiveServiceTemp {
             Preconditions.checkState(headers.length == 1);
             final String newUrl = headers[0].getValue();
 
+            EntityUtils.consume(httpResponse.getEntity());
             return new ImmutablePair<Integer, String>(statusCode, newUrl);
         } catch (final IllegalArgumentException uriEx) {
             return new ImmutablePair<Integer, String>(500, url);
         } finally {
-            if (request != null) {
-                request.releaseConnection();
-            }
-            if (entityContentStream != null) {
-                entityContentStream.close();
-            }
-            if (httpEntity != null) {
-                EntityUtils.consume(httpEntity);
-            }
+            request.releaseConnection();
         }
     }
 
     final String expandSingleLevel(final String url) throws IOException {
-        HttpGet request = null;
-        HttpEntity httpEntity = null;
-        InputStream entityContentStream = null;
-
+        final HttpGet request = new HttpGet(url);
         try {
-            request = new HttpGet(url);
+
             final HttpResponse httpResponse = client.execute(request);
-
-            httpEntity = httpResponse.getEntity();
-            entityContentStream = httpEntity.getContent();
-
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode != 301 && statusCode != 302) {
                 return url;
@@ -140,20 +119,12 @@ public class HttpLiveServiceTemp {
             final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
             Preconditions.checkState(headers.length == 1);
             final String newUrl = headers[0].getValue();
-
+            EntityUtils.consume(httpResponse.getEntity());
             return newUrl;
         } catch (final IllegalArgumentException uriEx) {
             return url;
         } finally {
-            if (request != null) {
-                request.releaseConnection();
-            }
-            if (entityContentStream != null) {
-                entityContentStream.close();
-            }
-            if (httpEntity != null) {
-                EntityUtils.consume(httpEntity);
-            }
+            request.releaseConnection();
         }
     }
 
