@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.17.1-GA</version>
+            <version>3.18.0-GA</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -164,7 +164,7 @@
         <org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
-        <hibernate.version>4.2.3.Final</hibernate.version>
+        <hibernate.version>4.2.4.Final</hibernate.version>
         <mysql-connector-java.version>5.1.26</mysql-connector-java.version>
 
         <!-- logging -->
@@ -191,7 +191,7 @@
 
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
-        <maven-surefire-plugin.version>2.15</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
     </properties>
 
 </project>
