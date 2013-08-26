@@ -22,15 +22,13 @@ public class MySavedRequestAwareAuthenticationSuccessHandler extends SimpleUrlAu
         final SavedRequest savedRequest = requestCache.getRequest(request, response);
 
         if (savedRequest == null) {
-            super.onAuthenticationSuccess(request, response, authentication);
-
+            clearAuthenticationAttributes(request);
             return;
         }
         final String targetUrlParameter = getTargetUrlParameter();
         if (isAlwaysUseDefaultTargetUrl() || (targetUrlParameter != null && StringUtils.hasText(request.getParameter(targetUrlParameter)))) {
             requestCache.removeRequest(request, response);
-            super.onAuthenticationSuccess(request, response, authentication);
-
+            clearAuthenticationAttributes(request);
             return;
         }
 
