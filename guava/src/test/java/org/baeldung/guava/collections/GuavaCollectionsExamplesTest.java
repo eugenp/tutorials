@@ -1,11 +1,19 @@
 package org.baeldung.guava.collections;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
 import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 public class GuavaCollectionsExamplesTest {
 
@@ -35,8 +43,69 @@ public class GuavaCollectionsExamplesTest {
     }
 
     @Test
-    public final void when_then() {
-        //
+    public final void whenAddingAnIterableToACollection_thenAddedOK() {
+        final Iterable<String> iter = Lists.newArrayList();
+        final Collection<String> collector = Lists.newArrayList();
+        Iterables.addAll(collector, iter);
+    }
+
+    //
+
+    @Test
+    public final void whenCheckingIfCollectionContainsElementsByCustomMatch1_thenContains() {
+        final Iterable<String> theCollection = Lists.newArrayList("a", "bc", "def");
+        final boolean contains = Iterables.any(theCollection, new Predicate<String>() {
+            @Override
+            public final boolean apply(final String input) {
+                return input.length() == 1;
+            }
+        });
+
+        assertTrue(contains);
+    }
+
+    @Test
+    public final void whenCheckingIfCollectionContainsElementsByCustomMatch2_thenContains() {
+        final Set<String> theCollection = Sets.newHashSet("a", "bc", "def");
+
+        final boolean contains = !Sets.filter(theCollection, new Predicate<String>() {
+            @Override
+            public final boolean apply(final String input) {
+                return input.length() == 1;
+            }
+        }).isEmpty();
+
+        assertTrue(contains);
+    }
+
+    @Test
+    public final void whenCheckingIfCollectionContainsElementsByCustomMatch3_thenContains() {
+        final Iterable<String> theCollection = Sets.newHashSet("a", "bc", "def");
+
+        final boolean contains = Iterables.find(theCollection, new Predicate<String>() {
+            @Override
+            public final boolean apply(final String input) {
+                return input.length() == 1;
+            }
+        }) != null;
+
+        assertTrue(contains);
+    }
+
+    //
+
+    @Test
+    public final void givenNoSearchResult_whenFindingElementInIterable_thenNoException() {
+        final Iterable<String> theCollection = Sets.newHashSet("abcd", "efgh", "ijkl");
+
+        final String found = Iterables.find(theCollection, new Predicate<String>() {
+            @Override
+            public final boolean apply(final String input) {
+                return input.length() == 1;
+            }
+        });
+
+        assertNull(found);
     }
 
 }
