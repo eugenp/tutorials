@@ -7,28 +7,36 @@ import org.junit.Test;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
-public class GuavaCollectionsExamples {
+public class GuavaCollectionsExamplesTest {
 
-    @SuppressWarnings({ "unused", "unchecked" })
+    // tests
+
     @Test
-    public final void whenCastingAllElementsOfACollectionToSubtype_thenCastIsOK() {
+    public final void whenDowncastingGenerifiedCollectionToNewGenerifiedCollection_thenCastIsOK() {
         final class CastFunction<F, T extends F> implements Function<F, T> {
-            @Override
             @SuppressWarnings("unchecked")
+            @Override
             public final T apply(final F from) {
                 return (T) from;
             }
         }
 
         final List<Number> originalList = Lists.newArrayList();
-        final List<Integer> selectedProductsQuick = (List<Integer>) (List<? extends Number>) originalList;
         final List<Integer> selectedProducts = Lists.transform(originalList, new CastFunction<Number, Integer>());
+        System.out.println(selectedProducts);
+    }
+
+    @SuppressWarnings({ "unchecked" })
+    @Test
+    public final void whenDowncastingGenerifiedCollectionToNewGenerifiedCollection_thenCastIsOK2() {
+        final List<Number> originalList = Lists.newArrayList();
+        final List<Integer> selectedProducts = (List<Integer>) (List<? extends Number>) originalList;
         System.out.println(selectedProducts);
     }
 
     @Test
     public final void when_then() {
-
+        //
     }
 
 }
