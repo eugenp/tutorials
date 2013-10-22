@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.junit.Test;
@@ -94,7 +95,7 @@ public class GuavaCollectionsExamplesTest {
 
     //
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public final void givenNoSearchResult_whenFindingElementInIterable_thenNoException() {
         final Iterable<String> theCollection = Sets.newHashSet("abcd", "efgh", "ijkl");
 
