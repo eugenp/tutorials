@@ -1,9 +1,8 @@
 =========
 
-## Spring REST Example Project
+## Guava Cookbooks and Examples
 
 
 ### Relevant Articles: 
-- [Spring @RequestMapping](http://www.baeldung.com/spring-requestmapping)
-
+- [Guava Collections Cookbook](http://www.baeldung.com/guava-collections)
 
