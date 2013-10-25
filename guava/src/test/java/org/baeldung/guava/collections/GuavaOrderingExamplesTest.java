@@ -1,5 +1,6 @@
 package org.baeldung.guava.collections;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -11,6 +12,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.google.common.base.Functions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 import com.google.common.primitives.Ints;
@@ -57,6 +59,16 @@ public class GuavaOrderingExamplesTest {
         Collections.sort(toSort, Ordering.natural());
 
         assertTrue(Ordering.natural().isOrdered(toSort));
+    }
+
+    // checking string ordering
+
+    @Test
+    public final void givenCollectionContainsDuplicates_whenCheckingStringOrdering_thenNo() {
+        final List<Integer> toSort = Arrays.asList(3, 5, 4, 2, 1, 2);
+        Collections.sort(toSort, Ordering.natural());
+
+        assertFalse(Ordering.natural().isStrictlyOrdered(toSort));
     }
 
     // custom - by length
@@ -122,6 +134,46 @@ public class GuavaOrderingExamplesTest {
 
         final Ordering<Integer> expectedOrder = Ordering.explicit(Lists.newArrayList(1, 11, 2));
         assertTrue(expectedOrder.isOrdered(toSort));
+    }
+
+    // binary search
+
+    @Test
+    public final void whenPerformingBinarySearch_thenFound() {
+        final List<Integer> toSort = Arrays.asList(1, 2, 11);
+        Collections.sort(toSort, Ordering.usingToString());
+        final int found = Ordering.usingToString().binarySearch(toSort, 2);
+
+        System.out.println(found);
+    }
+
+    // min/max without actually sorting
+
+    @Test
+    public final void whenFindingTheMinimalElementWithoutSorting_thenFound() {
+        final List<Integer> toSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final int found = Ordering.natural().min(toSort);
+        assertThat(found, equalTo(1));
+    }
+
+    @Test
+    public final void whenFindingTheFirstFewElements_thenCorrect() {
+        final List<Integer> toSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final List<Integer> leastOf = Ordering.natural().leastOf(toSort, 3);
+        final List<Integer> expected = Lists.newArrayList(1, 2, 8);
+        assertThat(expected, equalTo(leastOf));
+    }
+
+    // order the results of a Function
+
+    @Test
+    public final void givenListOfNumbers_whenRunningAToStringFunctionThenSorting_thenCorrect() {
+        final List<Integer> toSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final Ordering<Object> ordering = Ordering.natural().onResultOf(Functions.toStringFunction());
+        final List<Integer> sortedCopy = ordering.sortedCopy(toSort);
+
+        final List<Integer> expected = Lists.newArrayList(1, 100, 11, 14, 2, 8);
+        assertThat(expected, equalTo(sortedCopy));
     }
 
 }
