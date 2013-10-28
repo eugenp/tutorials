@@ -1,4 +1,4 @@
-package org.baeldung.guava.collections;
+package org.baeldung.guava;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.nullValue;
