@@ -98,7 +98,7 @@ public class GuavaFunctionalExamplesTest {
         }
     }
 
-    // char predicates
+    // other predicates
 
     @Test
     public final void when_thenCorrect() {
@@ -126,7 +126,7 @@ public class GuavaFunctionalExamplesTest {
 
     @Test
     public final void whenChainingPredicatesAndFunctions_thenCorrectResults() {
-        final List<Integer> numbersToSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final List<Integer> numbers = Arrays.asList(2, 1, 11, 100, 8, 14);
         final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
             @Override
             public final boolean apply(final Integer number) {
@@ -140,8 +140,22 @@ public class GuavaFunctionalExamplesTest {
             }
         };
 
-        final FluentIterable<Integer> powerOfTwoOnlyForEvenNumbers = FluentIterable.from(numbersToSort).filter(acceptEvenNumber).transform(powerOfTwo);
+        final FluentIterable<Integer> powerOfTwoOnlyForEvenNumbers = FluentIterable.from(numbers).filter(acceptEvenNumber).transform(powerOfTwo);
         assertThat(powerOfTwoOnlyForEvenNumbers, contains(4, 10000, 64, 196));
+    }
+
+    @Test
+    public final void whenUsingFunctionComposition_thenCorrectResults() {
+        final List<Integer> numbers = Arrays.asList(2, 3);
+        final Function<Integer, Integer> powerOfTwo = new Function<Integer, Integer>() {
+            @Override
+            public final Integer apply(final Integer input) {
+                return (int) Math.pow(input, 2);
+            }
+        };
+
+        final List<Integer> result = Lists.transform(numbers, Functions.compose(powerOfTwo, powerOfTwo));
+        assertThat(result, contains(16, 81));
     }
 
     // Set+Function => Map
