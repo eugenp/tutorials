@@ -20,6 +20,7 @@ import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -75,14 +76,14 @@ public class GuavaFunctionalExamplesTest {
     @Test
     public final void givenCollectionOfEvenNumbers_whenCheckingThatCollectionContainsNoOddNumber_thenTrue() {
         final List<Integer> evenNumbers = Lists.newArrayList(2, 6, 8, 10, 34, 90);
-        final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
+        final Predicate<Integer> acceptOddNumber = new Predicate<Integer>() {
             @Override
             public final boolean apply(final Integer number) {
                 return (number % 2) != 0;
             }
         };
 
-        assertTrue(Iterables.all(evenNumbers, Predicates.not(acceptEvenNumber)));
+        assertTrue(Iterables.all(evenNumbers, Predicates.not(acceptOddNumber)));
     }
 
     // try - 1
@@ -95,6 +96,13 @@ public class GuavaFunctionalExamplesTest {
         if (iterator.hasNext()) {
             iterator.remove();
         }
+    }
+
+    // char predicates
+
+    @Test
+    public final void when_thenCorrect() {
+        // CharMatcher.forPredicate(predicate)
     }
 
     // functions
@@ -114,6 +122,26 @@ public class GuavaFunctionalExamplesTest {
 
         final List<Integer> expectedAlphabeticalOrderingOfNumbers = Lists.newArrayList(1, 100, 11, 14, 2, 8);
         assertThat(expectedAlphabeticalOrderingOfNumbers, equalTo(alphabeticalOrderingOfNumbers));
+    }
+
+    @Test
+    public final void whenChainingPredicatesAndFunctions_thenCorrectResults() {
+        final List<Integer> numbersToSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
+            @Override
+            public final boolean apply(final Integer number) {
+                return (number % 2) == 0;
+            }
+        };
+        final Function<Integer, Integer> powerOfTwo = new Function<Integer, Integer>() {
+            @Override
+            public final Integer apply(final Integer input) {
+                return (int) Math.pow(input, 2);
+            }
+        };
+
+        final FluentIterable<Integer> powerOfTwoOnlyForEvenNumbers = FluentIterable.from(numbersToSort).filter(acceptEvenNumber).transform(powerOfTwo);
+        assertThat(powerOfTwoOnlyForEvenNumbers, contains(4, 10000, 64, 196));
     }
 
     // Set+Function => Map
