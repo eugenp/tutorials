@@ -1,11 +1,14 @@
 package org.baeldung.guava;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -13,18 +16,21 @@ import java.util.Set;
 import org.junit.Test;
 
 import com.google.common.base.Function;
+import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
 public class GuavaFunctionalExamplesTest {
 
     // tests
 
-    // predicates
+    // predicates - filtering
 
     @Test
     public final void whenFilteringNumbersAccordingToACondition_thenCorrectResults() {
@@ -42,8 +48,18 @@ public class GuavaFunctionalExamplesTest {
     }
 
     @Test
+    public final void givenCollectionContainsNulls_whenNullsAreFilteredOut_thenResultingCollectionsHasNoNulls() {
+        final List<String> collectionOfStringsWithNulls = Lists.newArrayList("a", "bc", null, "def", null, null, "ghij");
+        final Iterable<String> collectionWithoutNulls = Iterables.filter(collectionOfStringsWithNulls, Predicates.notNull());
+
+        assertTrue(Iterables.all(collectionWithoutNulls, Predicates.notNull()));
+    }
+
+    // predicates - checking
+
+    @Test
     public final void givenEvenNumbers_whenCheckingIfAllSatisfyTheEvenPredicate_thenYes() {
-        final List<Integer> eventNumbers = Lists.newArrayList(2, 6, 8, 10, 34, 90);
+        final List<Integer> evenNumbers = Lists.newArrayList(2, 6, 8, 10, 34, 90);
         final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
             @Override
             public final boolean apply(final Integer number) {
@@ -51,7 +67,53 @@ public class GuavaFunctionalExamplesTest {
             }
         };
 
-        assertTrue(Iterables.all(eventNumbers, acceptEvenNumber));
+        assertTrue(Iterables.all(evenNumbers, acceptEvenNumber));
+    }
+
+    // negating a predicate
+
+    @Test
+    public final void givenCollectionOfEvenNumbers_whenCheckingThatCollectionContainsNoOddNumber_thenTrue() {
+        final List<Integer> evenNumbers = Lists.newArrayList(2, 6, 8, 10, 34, 90);
+        final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
+            @Override
+            public final boolean apply(final Integer number) {
+                return (number % 2) != 0;
+            }
+        };
+
+        assertTrue(Iterables.all(evenNumbers, Predicates.not(acceptEvenNumber)));
+    }
+
+    // try - 1
+
+    @Test(expected = UnsupportedOperationException.class)
+    public final void givenUnmodifiableViewOverIterable_whenTryingToRemove_thenNotAllowed() {
+        final List<Integer> numbers = Lists.newArrayList(1, 2, 3);
+        final Iterable<Integer> unmodifiableIterable = Iterables.unmodifiableIterable(numbers);
+        final Iterator<Integer> iterator = unmodifiableIterable.iterator();
+        if (iterator.hasNext()) {
+            iterator.remove();
+        }
+    }
+
+    // functions
+
+    @Test
+    public final void whenApplyingSimpleFunctionToInputs_thenCorrectlyTransformed() {
+        final List<Integer> numbers = Lists.newArrayList(1, 2, 3);
+        final List<String> numbersAsStrings = Lists.transform(numbers, Functions.toStringFunction());
+        assertThat(numbersAsStrings, contains("1", "2", "3"));
+    }
+
+    @Test
+    public final void whenUsingAnIntermediaryFunctionToOrder_thenCorerctlyOrderedInAlphabeticalOrder() {
+        final List<Integer> numbersToSort = Arrays.asList(2, 1, 11, 100, 8, 14);
+        final Ordering<Object> ordering = Ordering.natural().onResultOf(Functions.toStringFunction());
+        final List<Integer> alphabeticalOrderingOfNumbers = ordering.sortedCopy(numbersToSort);
+
+        final List<Integer> expectedAlphabeticalOrderingOfNumbers = Lists.newArrayList(1, 100, 11, 14, 2, 8);
+        assertThat(expectedAlphabeticalOrderingOfNumbers, equalTo(alphabeticalOrderingOfNumbers));
     }
 
     // Set+Function => Map
