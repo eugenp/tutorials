@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -171,6 +172,18 @@ public class GuavaCollectionsExamplesTest {
 
         final Map<String, String> muttableMap = Maps.newHashMap();
         final ImmutableMap<String, String> imuttableMap = ImmutableMap.<String, String> builder().putAll(muttableMap).build();
+    }
+
+    // unmodifiable
+
+    @Test(expected = UnsupportedOperationException.class)
+    public final void givenUnmodifiableViewOverIterable_whenTryingToRemove_thenNotAllowed() {
+        final List<Integer> numbers = Lists.newArrayList(1, 2, 3);
+        final Iterable<Integer> unmodifiableIterable = Iterables.unmodifiableIterable(numbers);
+        final Iterator<Integer> iterator = unmodifiableIterable.iterator();
+        if (iterator.hasNext()) {
+            iterator.remove();
+        }
     }
 
 }

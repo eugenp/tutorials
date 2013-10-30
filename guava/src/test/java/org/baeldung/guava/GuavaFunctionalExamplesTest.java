@@ -8,7 +8,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,14 +34,14 @@ public class GuavaFunctionalExamplesTest {
 
     @Test
     public final void whenFilteringNumbersAccordingToACondition_thenCorrectResults() {
-        final List<Integer> randomNumbers = Lists.newArrayList(1, 2, 3, 6, 8, 10, 34, 57, 89);
+        final List<Integer> numbers = Lists.newArrayList(1, 2, 3, 6, 8, 10, 34, 57, 89);
         final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
             @Override
             public final boolean apply(final Integer number) {
                 return (number % 2) == 0;
             }
         };
-        final List<Integer> evenNumbers = Lists.newArrayList(Collections2.filter(randomNumbers, acceptEvenNumber));
+        final List<Integer> evenNumbers = Lists.newArrayList(Collections2.filter(numbers, acceptEvenNumber));
 
         final Integer found = Collections.binarySearch(evenNumbers, 57);
         assertThat(found, lessThan(0));
@@ -50,10 +49,10 @@ public class GuavaFunctionalExamplesTest {
 
     @Test
     public final void givenCollectionContainsNulls_whenNullsAreFilteredOut_thenResultingCollectionsHasNoNulls() {
-        final List<String> collectionOfStringsWithNulls = Lists.newArrayList("a", "bc", null, "def", null, null, "ghij");
-        final Iterable<String> collectionWithoutNulls = Iterables.filter(collectionOfStringsWithNulls, Predicates.notNull());
+        final List<String> withNulls = Lists.newArrayList("a", "bc", null, "def");
+        final Iterable<String> withoutNuls = Iterables.filter(withNulls, Predicates.notNull());
 
-        assertTrue(Iterables.all(collectionWithoutNulls, Predicates.notNull()));
+        assertTrue(Iterables.all(withoutNuls, Predicates.notNull()));
     }
 
     // predicates - checking
@@ -86,18 +85,6 @@ public class GuavaFunctionalExamplesTest {
         assertTrue(Iterables.all(evenNumbers, Predicates.not(acceptOddNumber)));
     }
 
-    // try - 1
-
-    @Test(expected = UnsupportedOperationException.class)
-    public final void givenUnmodifiableViewOverIterable_whenTryingToRemove_thenNotAllowed() {
-        final List<Integer> numbers = Lists.newArrayList(1, 2, 3);
-        final Iterable<Integer> unmodifiableIterable = Iterables.unmodifiableIterable(numbers);
-        final Iterator<Integer> iterator = unmodifiableIterable.iterator();
-        if (iterator.hasNext()) {
-            iterator.remove();
-        }
-    }
-
     // other predicates
 
     @Test
@@ -118,10 +105,10 @@ public class GuavaFunctionalExamplesTest {
     public final void whenUsingAnIntermediaryFunctionToOrder_thenCorerctlyOrderedInAlphabeticalOrder() {
         final List<Integer> numbersToSort = Arrays.asList(2, 1, 11, 100, 8, 14);
         final Ordering<Object> ordering = Ordering.natural().onResultOf(Functions.toStringFunction());
-        final List<Integer> alphabeticalOrderingOfNumbers = ordering.sortedCopy(numbersToSort);
+        final List<Integer> inAlphabeticalOrder = ordering.sortedCopy(numbersToSort);
 
-        final List<Integer> expectedAlphabeticalOrderingOfNumbers = Lists.newArrayList(1, 100, 11, 14, 2, 8);
-        assertThat(expectedAlphabeticalOrderingOfNumbers, equalTo(alphabeticalOrderingOfNumbers));
+        final List<Integer> correctAlphabeticalOrder = Lists.newArrayList(1, 100, 11, 14, 2, 8);
+        assertThat(correctAlphabeticalOrder, equalTo(inAlphabeticalOrder));
     }
 
     @Test
@@ -177,6 +164,23 @@ public class GuavaFunctionalExamplesTest {
         final Map<Integer, Integer> numberToPowerOfTwoImuttable = Maps.toMap(lowNumbers, powerOfTwo);
         assertThat(numberToPowerOfTwoMuttable.get(2), equalTo(4));
         assertThat(numberToPowerOfTwoImuttable.get(2), equalTo(4));
+    }
+
+    // Predicate => Function
+
+    @Test
+    public final void whenConvertingPredicateToFunction_thenCorrect() {
+        final List<Integer> numbers = Lists.newArrayList(1, 2, 3, 6);
+        final Predicate<Integer> acceptEvenNumber = new Predicate<Integer>() {
+            @Override
+            public final boolean apply(final Integer number) {
+                return (number % 2) == 0;
+            }
+        };
+        final Function<Integer, Boolean> isEventNumberFunction = Functions.forPredicate(acceptEvenNumber);
+        final List<Boolean> areNumbersEven = Lists.transform(numbers, isEventNumberFunction);
+
+        assertThat(areNumbersEven, contains(false, true, false, true));
     }
 
 }
