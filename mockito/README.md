@@ -1,8 +1,8 @@
 =========
 
-## Guava Cookbooks and Examples
+## Mockito Cookbooks and Examples
 
 
 ### Relevant Articles: 
-- [Guava Collections Cookbook](http://www.baeldung.com/guava-collections)
+- [Mockito Verify Cookbook](http://www.baeldung.com/mockito-verify)
 
