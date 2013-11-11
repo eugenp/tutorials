@@ -17,6 +17,12 @@
 			<version>15.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+
 		<!-- web -->
 
 		<!-- test scoped -->
@@ -73,12 +79,12 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.5.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
-		<hibernate.version>4.2.4.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.26</mysql-connector-java.version>
+		<hibernate.version>4.2.7.SP1</hibernate.version>
+		<mysql-connector-java.version>5.1.27</mysql-connector-java.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.5</org.slf4j.version>
@@ -96,14 +102,14 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.9.5</mockito.version>
 
-		<httpcore.version>4.2.4</httpcore.version>
-		<httpclient.version>4.2.5</httpclient.version>
+		<httpcore.version>4.2.5</httpcore.version>
+		<httpclient.version>4.2.6</httpclient.version>
 
 		<rest-assured.version>1.8.1</rest-assured.version>
 		<groovy.version>1.8.9</groovy.version>
 
 		<!-- Maven plugins -->
-		<cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
 	</properties>
 
