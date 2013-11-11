@@ -1,24 +1,38 @@
 package org.baeldung.mockito;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
 
-@SuppressWarnings("unchecked")
 public class MockitoConfigExamplesTest {
 
     // tests
 
     @Test
-    public final void whenMockBehaviorIsConfigured_thenBehaviorIsVerified() {
+    public final void whenMockReturnBehaviorIsConfigured_thenBehaviorIsVerified() {
         final MyList listMock = Mockito.mock(MyList.class);
         when(listMock.add(anyString())).thenReturn(false);
+
+        final boolean added = listMock.add(randomAlphabetic(6));
+        assertThat(added, is(false));
+    }
+
+    @Test
+    public final void whenMockReturnBehaviorIsConfigured2_thenBehaviorIsVerified() {
+        final MyList listMock = Mockito.mock(MyList.class);
+        doReturn(false).when(listMock).add(anyString());
 
         final boolean added = listMock.add(randomAlphabetic(6));
         assertThat(added, is(false));
@@ -55,6 +69,37 @@ public class MockitoConfigExamplesTest {
 
         listMock.add(randomAlphabetic(6));
         listMock.add(randomAlphabetic(6));
+    }
+
+    @Test
+    public final void whenMockMethodCallIsConfiguredToCallTheRealMethod_thenRealMetehodIsCalled() {
+        final MyList listMock = Mockito.mock(MyList.class);
+        when(listMock.size()).thenCallRealMethod();
+
+        assertThat(listMock.size(), equalTo(1));
+    }
+
+    @Test
+    public final void whenMockMethodCallIsConfiguredWithCustomAnswer_thenRealMetehodIsCalled() {
+        final MyList listMock = Mockito.mock(MyList.class);
+        doAnswer(new Answer<String>() {
+            @Override
+            public final String answer(final InvocationOnMock invocation) {
+                return "Always the same";
+            }
+        }).when(listMock).get(anyInt());
+
+        final String element = listMock.get(1);
+        assertThat(element, is(equalTo("Always the same")));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public final void givenSpy_whenConfiguringBehaviorOfSpy_thenCorrectlyConfigured() {
+        final MyList instance = new MyList();
+        final MyList spy = Mockito.spy(instance);
+
+        doThrow(NullPointerException.class).when(spy).size();
+        spy.size();
     }
 
 }
