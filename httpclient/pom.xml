@@ -23,7 +23,13 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 
-		<!-- web -->
+		<!-- http client -->
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
 
 		<!-- test scoped -->
 
