@@ -63,7 +63,7 @@ public class HttpClientLiveTest {
 
     @Test
     public final void whenExecutingBasicGetRequest_thenNoExceptions() throws ClientProtocolException, IOException {
-        instance.execute(new HttpGet(SAMPLE_URL));
+        response = instance.execute(new HttpGet(SAMPLE_URL));
     }
 
     @Test
