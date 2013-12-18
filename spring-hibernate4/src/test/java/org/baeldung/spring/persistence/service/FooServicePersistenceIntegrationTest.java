@@ -5,11 +5,11 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.spring.PersistenceConfig;
-import org.hibernate.exception.DataException;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.ContextConfiguration;
@@ -53,7 +53,7 @@ public class FooServicePersistenceIntegrationTest {
         service.create(entity);
     }
 
-    @Test(expected = DataException.class)
+    @Test(expected = DataAccessException.class)
     public final void temp_whenInvalidEntityIsCreated_thenDataException() {
         service.create(new Foo(randomAlphabetic(2048)));
     }
