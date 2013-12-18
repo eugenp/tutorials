@@ -192,11 +192,11 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+		<org.springframework.version>3.2.6.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
-		<hibernate.version>4.2.4.Final</hibernate.version>
+		<hibernate.version>4.3.0.Final</hibernate.version>
 		<mysql-connector-java.version>5.1.26</mysql-connector-java.version>
 
 		<!-- logging -->
@@ -207,7 +207,7 @@
 		<hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
 
 		<!-- util -->
-		<guava.version>14.0.1</guava.version>
+		<guava.version>15.0</guava.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
 
 		<!-- testing -->
@@ -215,14 +215,14 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.9.5</mockito.version>
 
-		<httpcore.version>4.2.4</httpcore.version>
-		<httpclient.version>4.2.5</httpclient.version>
+		<httpcore.version>4.3</httpcore.version>
+		<httpclient.version>4.3.1</httpclient.version>
 
-		<rest-assured.version>1.8.1</rest-assured.version>
+		<rest-assured.version>2.1.0</rest-assured.version>
 		<groovy.version>1.8.9</groovy.version>
 
 		<!-- Maven plugins -->
-		<cargo-maven2-plugin.version>1.4.3</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
 	</properties>
 

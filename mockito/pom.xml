@@ -105,7 +105,7 @@
 		<httpcore.version>4.2.5</httpcore.version>
 		<httpclient.version>4.2.6</httpclient.version>
 
-		<rest-assured.version>1.8.1</rest-assured.version>
+		<rest-assured.version>2.1.0</rest-assured.version>
 		<groovy.version>1.8.9</groovy.version>
 
 		<!-- Maven plugins -->
