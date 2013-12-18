@@ -206,6 +206,16 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
@@ -272,11 +282,15 @@
 		<httpclient.version>4.3.1</httpclient.version>
 
 		<rest-assured.version>2.1.0</rest-assured.version>
-		<groovy.version>1.8.9</groovy.version>
 
-		<!-- Maven plugins -->
-		<cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
+		
+		<!-- maven plugins -->
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
+
 	</properties>
 
 </project>
