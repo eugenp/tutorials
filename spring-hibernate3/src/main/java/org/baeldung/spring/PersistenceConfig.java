@@ -21,7 +21,7 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
-@ComponentScan({ "org.baeldung.spring.persistence.dao", "org.baeldung.spring.persistence.service" })
+@ComponentScan({ "org.baeldung.persistence.dao", "org.baeldung.persistence.service" })
 public class PersistenceConfig {
 
     @Autowired
