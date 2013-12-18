@@ -35,7 +35,7 @@ public class Cause4MappingExceptionIntegrationTest {
 
         configuration.addAnnotatedClass(Foo.class);
 
-        final ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+        final ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         final SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         return sessionFactory;
     }

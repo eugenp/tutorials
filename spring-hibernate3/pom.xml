@@ -175,7 +175,7 @@
 	<properties>
 		<!-- Spring -->
 		<org.springframework.version>3.2.6.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.1.4.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>3.2.0.RELEASE</org.springframework.security.version>
 		<javassist.version>3.18.1-GA</javassist.version>
 
 		<!-- persistence -->

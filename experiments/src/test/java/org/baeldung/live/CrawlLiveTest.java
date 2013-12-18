@@ -32,7 +32,7 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-public class CrawlTest {
+public class CrawlLiveTest {
 
     private DefaultHttpClient client;
 
