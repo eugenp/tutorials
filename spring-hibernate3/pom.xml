@@ -164,7 +164,7 @@
 
 		<!-- persistence -->
 		<hibernate.version>3.6.10.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.26</mysql-connector-java.version>
+		<mysql-connector-java.version>5.1.27</mysql-connector-java.version>
 		<tomcat-dbcp.version>7.0.41</tomcat-dbcp.version>
 
 		<!-- logging -->

@@ -285,7 +285,7 @@
 
         <!-- persistence -->
         <hibernate.version>4.3.0.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.26</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.27</mysql-connector-java.version>
 
         <!-- http -->
         <httpcore.version>4.3</httpcore.version>

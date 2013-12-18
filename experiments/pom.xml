@@ -250,7 +250,7 @@
 
 		<!-- persistence -->
 		<hibernate.version>4.3.0.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.26</mysql-connector-java.version>
+		<mysql-connector-java.version>5.1.27</mysql-connector-java.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.5</org.slf4j.version>
