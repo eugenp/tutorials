@@ -282,7 +282,6 @@
 		<httpclient.version>4.3.1</httpclient.version>
 
 		<rest-assured.version>2.1.0</rest-assured.version>
-
 		
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
