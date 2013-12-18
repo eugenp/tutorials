@@ -130,9 +130,34 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>14.0.1</version>
+			<version>${guava.version}</version>
 		</dependency>
+		
+		<!-- logging -->
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
+		</dependency>
+		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		
 		<!-- test scoped -->
 
 		<dependency>
@@ -254,7 +279,6 @@
 		<httpclient.version>4.3.1</httpclient.version>
 
 		<rest-assured.version>2.1.0</rest-assured.version>
-		<groovy.version>1.8.9</groovy.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
