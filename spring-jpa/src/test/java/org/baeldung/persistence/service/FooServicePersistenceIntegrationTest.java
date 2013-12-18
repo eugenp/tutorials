@@ -4,6 +4,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.spring.PersistenceJPAConfig;
+import org.hibernate.exception.DataException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class FooServicePersistenceIntegrationTest {
         service.create(entity);
     }
 
-    @Test
+    @Test(expected = DataException.class)
     public final void temp_whenInvalidEntityIsCreated_thenDataException() {
         service.create(new Foo());
     }
