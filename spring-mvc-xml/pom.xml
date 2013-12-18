@@ -96,7 +96,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>spring-mvc</finalName>
+		<finalName>spring-mvc-xml</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
