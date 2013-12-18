@@ -15,6 +15,7 @@ import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.baeldung.client.spring.ClientConfig;
 import org.baeldung.web.dto.Foo;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,7 @@ public class ClientLiveTest {
     }
 
     @Test
+    @Ignore("Only to run against a Server with HTTPS enabled (on 8443)")
     public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws GeneralSecurityException {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
