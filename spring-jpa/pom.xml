@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.18.0-GA</version>
+			<version>3.18.1-GA</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
