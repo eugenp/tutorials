@@ -9,3 +9,5 @@
 - [Guava Functional Cookbook](http://www.baeldung.com/guava-functions-predicates)
 
 - [Hamcrest Collections Cookbook](http://www.baeldung.com/hamcrest-collections-arrays)
+
+- [Partition a List in Java](http://www.baeldung.com/java-list-split)
