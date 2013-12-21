@@ -7,8 +7,9 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import java.util.List;
 
-import org.baeldung.jackson.MyBooleanMixIn;
+import org.baeldung.jackson.MyMixInForString;
 import org.baeldung.jackson.MyDto;
+import org.baeldung.jackson.MyDtoIgnoreField;
 import org.baeldung.jackson.MyDtoIgnoreFieldByName;
 import org.baeldung.jackson.MyDtoIncludeNonDefault;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenFieldIsIgnored_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
+    public final void givenFieldIsIgnoredByName_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoIgnoreFieldByName dtoObject = new MyDtoIgnoreFieldByName();
         dtoObject.setBooleanValue(true);
@@ -56,9 +57,21 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
+    public final void givenFieldIsIgnoredDirectly_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final MyDtoIgnoreField dtoObject = new MyDtoIgnoreField();
+
+        final String dtoAsString = mapper.writeValueAsString(dtoObject);
+
+        assertThat(dtoAsString, not(containsString("intValue")));
+        assertThat(dtoAsString, containsString("booleanValue"));
+        System.out.println(dtoAsString);
+    }
+
+    @Test
     public final void givenFieldTypeIsIgnored_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixInAnnotations(String.class, MyBooleanMixIn.class);
+        mapper.addMixInAnnotations(String.class, MyMixInForString.class);
         final MyDto dtoObject = new MyDto();
         dtoObject.setBooleanValue(true);
 
