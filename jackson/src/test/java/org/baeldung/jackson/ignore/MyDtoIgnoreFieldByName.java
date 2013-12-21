@@ -1,4 +1,4 @@
-package org.baeldung.jackson;
+package org.baeldung.jackson.ignore;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -6,8 +6,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
-import org.baeldung.jackson.MyDto;
-import org.baeldung.jackson.MyDtoIgnoreUnkown;
+import org.baeldung.jackson.ignore.MyDto;
+import org.baeldung.jackson.ignore.MyDtoIgnoreUnkown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;

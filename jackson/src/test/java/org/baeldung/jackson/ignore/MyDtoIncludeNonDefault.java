@@ -1,21 +1,17 @@
-package org.baeldung.jackson;
+package org.baeldung.jackson.ignore;
 
-public class MyDto {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_DEFAULT)
+public class MyDtoIncludeNonDefault {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDto() {
+    public MyDtoIncludeNonDefault() {
         super();
-    }
-
-    public MyDto(final String stringValue, final int intValue, final boolean booleanValue) {
-        super();
-
-        this.stringValue = stringValue;
-        this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API
