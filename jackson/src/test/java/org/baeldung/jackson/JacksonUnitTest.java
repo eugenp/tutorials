@@ -1,4 +1,4 @@
-package jackson;
+package org.baeldung.jackson;
 
 import java.io.IOException;
 

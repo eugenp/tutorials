@@ -1,4 +1,4 @@
-package jackson;
+package org.baeldung.jackson;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
