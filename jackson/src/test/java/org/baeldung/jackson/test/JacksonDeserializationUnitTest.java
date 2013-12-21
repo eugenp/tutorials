@@ -1,4 +1,4 @@
-package org.baeldung.jackson;
+package org.baeldung.jackson.test;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertNotNull;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
+import org.baeldung.jackson.MyDto;
+import org.baeldung.jackson.MyDtoIgnoreUnkown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;

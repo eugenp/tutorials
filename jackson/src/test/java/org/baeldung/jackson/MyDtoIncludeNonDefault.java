@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_DEFAULT)
-public class FooDto {
+public class MyDtoIncludeNonDefault {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public FooDto() {
+    public MyDtoIncludeNonDefault() {
         super();
     }
 

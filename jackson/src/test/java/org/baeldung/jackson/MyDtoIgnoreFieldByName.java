@@ -3,13 +3,13 @@ package org.baeldung.jackson;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "intValue" })
-public class BarDto {
+public class MyDtoIgnoreFieldByName {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public BarDto() {
+    public MyDtoIgnoreFieldByName() {
         super();
     }
 
