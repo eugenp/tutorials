@@ -11,11 +11,15 @@ import org.baeldung.jackson.ignore.MyDto;
 import org.baeldung.jackson.ignore.MyDtoIgnoreField;
 import org.baeldung.jackson.ignore.MyDtoIgnoreFieldByName;
 import org.baeldung.jackson.ignore.MyDtoIncludeNonDefault;
+import org.baeldung.jackson.ignore.MyDtoWithFilter;
 import org.baeldung.jackson.ignore.MyMixInForString;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.google.common.collect.Lists;
 
 public class JacksonSerializationUnitTest {
@@ -80,6 +84,23 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, containsString("intValue"));
         assertThat(dtoAsString, containsString("booleanValue"));
         assertThat(dtoAsString, not(containsString("stringValue")));
+        System.out.println(dtoAsString);
+    }
+
+    @Test
+    public final void givenTypeHasFilterThatIgnoresIntsOver10_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final SimpleBeanPropertyFilter theFilter = SimpleBeanPropertyFilter.serializeAllExcept("intValue");
+        final FilterProvider filters = new SimpleFilterProvider().addFilter("myFilter", theFilter);
+
+        final MyDtoWithFilter dtoObject = new MyDtoWithFilter();
+        dtoObject.setIntValue(12);
+
+        final String dtoAsString = mapper.writer(filters).writeValueAsString(dtoObject);
+
+        assertThat(dtoAsString, not(containsString("intValue")));
+        assertThat(dtoAsString, containsString("booleanValue"));
+        assertThat(dtoAsString, containsString("stringValue"));
         System.out.println(dtoAsString);
     }
 
