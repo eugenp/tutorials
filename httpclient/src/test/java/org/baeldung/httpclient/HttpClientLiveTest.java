@@ -8,7 +8,6 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.SocketTimeoutException;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -18,8 +17,10 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
@@ -29,7 +30,7 @@ import org.junit.Test;
 
 public class HttpClientLiveTest {
 
-    private static final String SAMPLE_URL = "http://www.google.com";
+    private static final String SAMPLE_URL = "http://www.github.com";
 
     private CloseableHttpClient instance;
 
@@ -88,9 +89,9 @@ public class HttpClientLiveTest {
         assertThat(bodyAsString, notNullValue());
     }
 
-    @Test(expected = SocketTimeoutException.class)
+    @Test(expected = ConnectTimeoutException.class)
     public final void givenLowTimeout_whenExecutingRequestWithTimeout_thenException() throws ClientProtocolException, IOException {
-        final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(50).setConnectTimeout(50).setSocketTimeout(50).build();
+        final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(50).setConnectTimeout(50).setSocketTimeout(20).build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setConfig(requestConfig);
         response = instance.execute(request);
@@ -112,13 +113,6 @@ public class HttpClientLiveTest {
     }
 
     @Test
-    public final void givenRedirectsAreDisabled_whenConsumingUrlWhichRedirects_thenNotRedirected() throws ClientProtocolException, IOException {
-        instance = HttpClientBuilder.create().disableRedirectHandling().build();
-        response = instance.execute(new HttpGet("http://t.co/I5YYd9tddw"));
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(301));
-    }
-
-    @Test
     public final void givenCustomHeaderIsSet_whenSendingRequest_thenNoExceptions() throws ClientProtocolException, IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.addHeader(HttpHeaders.ACCEPT, "application/xml");
@@ -131,6 +125,20 @@ public class HttpClientLiveTest {
 
         final Header[] headers = response.getHeaders(HttpHeaders.CONTENT_TYPE);
         assertThat(headers, not(emptyArray()));
+    }
+
+    // tests - headers
+
+    @SuppressWarnings("deprecation")
+    @Test
+    public final void givenDeprecatedApi_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
+        instance = new DefaultHttpClient();
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+        request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
+
+        response = instance.execute(request);
+
+        System.out.println(response);
     }
 
 }
