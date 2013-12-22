@@ -1,4 +1,4 @@
-package org.baeldung.mockito;
+package org.baeldung.httpclient;
 
 import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.equalTo;
