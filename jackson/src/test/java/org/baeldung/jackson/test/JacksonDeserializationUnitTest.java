@@ -11,14 +11,9 @@ import org.baeldung.jackson.ignore.MyDtoIgnoreUnkown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.DeserializationProblemHandler;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 
 public class JacksonDeserializationUnitTest {
@@ -45,6 +40,7 @@ public class JacksonDeserializationUnitTest {
 
         assertNotNull(readValue);
         assertThat(readValue.getStringValue(), equalTo("a"));
+        assertThat(readValue.isBooleanValue(), equalTo(true));
     }
 
     @Test(expected = UnrecognizedPropertyException.class)
@@ -61,8 +57,12 @@ public class JacksonDeserializationUnitTest {
     }
 
     @Test
-    public final void givenJsonHasUnkownValuesButJacksonIsIgnoringUnkownFields_whenDeserializingAJsonToAClass_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final String jsonAsString = "{\"stringValue\":\"a\",\"intValue\":1,\"booleanValue\":true,\"stringValue2\":\"something\"}";
+    public final void givenJsonHasUnkownValuesButJacksonIsIgnoringUnkownFields_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String jsonAsString =// @formatter:off
+                "{\"stringValue\":\"a\"," +
+                "\"intValue\":1," +
+                "\"booleanValue\":true," +
+                "\"stringValue2\":\"something\"}"; // @formatter:on
         final ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
@@ -75,10 +75,13 @@ public class JacksonDeserializationUnitTest {
     }
 
     @Test
-    public final void givenJsonHasUnkownValuesButUnkownFieldsAreIgnoredOnClass_whenDeserializingAJsonToAClass_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final String jsonAsString = "{\"stringValue\":\"a\",\"intValue\":1,\"booleanValue\":true,\"stringValue2\":\"something\"}";
+    public final void givenJsonHasUnkownValuesButUnkownFieldsAreIgnoredOnClass_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String jsonAsString =// @formatter:off
+                "{\"stringValue\":\"a\"," +
+                "\"intValue\":1," +
+                "\"booleanValue\":true," +
+                "\"stringValue2\":\"something\"}"; // @formatter:on
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         final MyDtoIgnoreUnkown readValue = mapper.readValue(jsonAsString, MyDtoIgnoreUnkown.class);
 
@@ -86,13 +89,6 @@ public class JacksonDeserializationUnitTest {
         assertThat(readValue.getStringValue(), equalTo("a"));
         assertThat(readValue.isBooleanValue(), equalTo(true));
         assertThat(readValue.getIntValue(), equalTo(1));
-
-        mapper.addHandler(new DeserializationProblemHandler() {
-            @Override
-            public boolean handleUnknownProperty(final DeserializationContext ctxt, final JsonParser jp, final JsonDeserializer<?> deserializer, final Object beanOrClass, final String propertyName) throws IOException, JsonProcessingException {
-                return super.handleUnknownProperty(ctxt, jp, deserializer, beanOrClass, propertyName);
-            }
-        });
     }
 
 }
