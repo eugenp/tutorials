@@ -22,7 +22,10 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.util.EntityUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -131,14 +134,28 @@ public class HttpClientLiveTest {
 
     @SuppressWarnings("deprecation")
     @Test
+    public final void givenDeprecatedApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
+        final DefaultHttpClient client = new DefaultHttpClient();
+        client.getParams().setParameter(CoreProtocolPNames.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
+        HttpProtocolParams.setUserAgent(client.getParams(), "Mozilla/5.0 Firefox/26.0");
+
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+        response = client.execute(request);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Test
     public final void givenDeprecatedApi_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        instance = new DefaultHttpClient();
+        final DefaultHttpClient client = new DefaultHttpClient();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
+        response = client.execute(request);
+    }
 
-        response = instance.execute(request);
-
-        System.out.println(response);
+    @Test
+    public final void whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
+        instance = HttpClients.custom().setUserAgent("Mozilla/5.0 Firefox/26.0").build();
+        response = instance.execute(new HttpGet(SAMPLE_URL));
     }
 
 }
