@@ -143,13 +143,12 @@ public class HttpClientLiveTest {
         response = client.execute(request);
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenDeprecatedApi_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        final DefaultHttpClient client = new DefaultHttpClient();
+        instance = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-        response = client.execute(request);
+        response = instance.execute(request);
     }
 
     @Test
