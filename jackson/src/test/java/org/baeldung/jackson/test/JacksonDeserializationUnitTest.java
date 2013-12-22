@@ -36,6 +36,17 @@ public class JacksonDeserializationUnitTest {
         assertThat(readValue.getStringValue(), equalTo("a"));
     }
 
+    @Test
+    public final void givenNotAllFieldsHaveValuesInJson_whenDeserializingAJsonToAClass_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String jsonAsString = "{\"stringValue\":\"a\",\"booleanValue\":true}";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        final MyDto readValue = mapper.readValue(jsonAsString, MyDto.class);
+
+        assertNotNull(readValue);
+        assertThat(readValue.getStringValue(), equalTo("a"));
+    }
+
     @Test(expected = UnrecognizedPropertyException.class)
     public final void givenJsonHasUnkownValues_whenDeserializingAJsonToAClass_thenExceptionIsThrown() throws JsonParseException, JsonMappingException, IOException {
         final String jsonAsString = "{\"stringValue\":\"a\",\"intValue\":1,\"booleanValue\":true,\"stringValue2\":\"something\"}";
@@ -85,4 +96,3 @@ public class JacksonDeserializationUnitTest {
     }
 
 }
-

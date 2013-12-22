@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.baeldung.jackson.ignore.MyDto;
+import org.baeldung.jackson.ignore.MyDtoFieldNameChanged;
 import org.baeldung.jackson.ignore.MyDtoIgnoreField;
 import org.baeldung.jackson.ignore.MyDtoIgnoreFieldByName;
 import org.baeldung.jackson.ignore.MyDtoIncludeNonDefault;
@@ -32,7 +33,7 @@ public class JacksonSerializationUnitTest {
     // tests - single entity to json
 
     @Test
-    public final void givenOnlyNonDefaultValuesAreSerialized_whenDtoHasOnlyDefaultValues_thenCorrect() throws JsonParseException, IOException {
+    public final void givenOnlyNonDefaultValuesAreSerializedAndDtoHasOnlyDefaultValues_whenSerializing_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
         final String dtoAsString = mapper.writeValueAsString(new MyDtoIncludeNonDefault());
 
@@ -41,7 +42,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenOnlyNonDefaultValuesAreSerialized_whenDtoHasNonDefaultValue_thenCorrect() throws JsonParseException, IOException {
+    public final void givenOnlyNonDefaultValuesAreSerializedAndDtoHasNonDefaultValue_whenSerializing_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoIncludeNonDefault dtoObject = new MyDtoIncludeNonDefault();
         dtoObject.setBooleanValue(true);
@@ -51,6 +52,21 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, containsString("booleanValue"));
         System.out.println(dtoAsString);
     }
+
+    @Test
+    public final void givenNameOfFieldIsChanged_whenSerializing_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final MyDtoFieldNameChanged dtoObject = new MyDtoFieldNameChanged();
+        dtoObject.setStringValue("a");
+
+        final String dtoAsString = mapper.writeValueAsString(dtoObject);
+
+        assertThat(dtoAsString, not(containsString("stringValue")));
+        assertThat(dtoAsString, containsString("strVal"));
+        System.out.println(dtoAsString);
+    }
+
+    // ignore
 
     @Test
     public final void givenFieldIsIgnoredByName_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
@@ -110,17 +126,18 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenTypeHasFilterThatIgnoresIntsOver10_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
+    public final void givenTypeHasFilterThatIgnoresNegativeInt_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
         final PropertyFilter theFilter = new SimpleBeanPropertyFilter() {
             @Override
             public final void serializeAsField(final Object pojo, final JsonGenerator jgen, final SerializerProvider provider, final PropertyWriter writer) throws Exception {
                 if (include(writer)) {
-                    if (writer.getName().equals("intValue")) {
-                        final int intValue = ((MyDtoWithFilter) pojo).getIntValue();
-                        if (intValue < 10) {
-                            writer.serializeAsField(pojo, jgen, provider);
-                        }
-                    } else {
+                    if (!writer.getName().equals("intValue")) {
+                        writer.serializeAsField(pojo, jgen, provider);
+                        return;
+                    }
+
+                    final int intValue = ((MyDtoWithFilter) pojo).getIntValue();
+                    if (intValue >= 0) {
                         writer.serializeAsField(pojo, jgen, provider);
                     }
                 } else if (!jgen.canOmitFields()) { // since 2.3
@@ -141,7 +158,7 @@ public class JacksonSerializationUnitTest {
         final FilterProvider filters = new SimpleFilterProvider().addFilter("myFilter", theFilter);
 
         final MyDtoWithFilter dtoObject = new MyDtoWithFilter();
-        dtoObject.setIntValue(12);
+        dtoObject.setIntValue(-1);
 
         final ObjectMapper mapper = new ObjectMapper();
         final String dtoAsString = mapper.writer(filters).writeValueAsString(dtoObject);
