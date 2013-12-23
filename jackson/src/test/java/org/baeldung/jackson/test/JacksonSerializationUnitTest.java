@@ -173,7 +173,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenIgnoringNullFieldsOnClass_whenSerializingObjectWithNullField_thenFieldIsIgnroed() throws JsonProcessingException {
+    public final void givenIgnoringNullFieldsOnClass_whenSerializingObjectWithNullField_thenFieldIsIgnored() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoIgnoreNull dtoObject = new MyDtoIgnoreNull();
 
