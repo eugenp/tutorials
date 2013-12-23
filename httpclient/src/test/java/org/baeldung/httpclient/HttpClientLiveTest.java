@@ -157,4 +157,30 @@ public class HttpClientLiveTest {
         response = instance.execute(new HttpGet(SAMPLE_URL));
     }
 
+    // tests - cancel request
+
+    @Test
+    public final void whenRequestIsCanceled_thenCorrect() throws ClientProtocolException, IOException {
+        instance = HttpClients.custom().build();
+        final HttpGet request = new HttpGet(SAMPLE_URL);
+        response = instance.execute(request);
+
+        try {
+            final HttpEntity entity = response.getEntity();
+
+            System.out.println("----------------------------------------");
+            System.out.println(response.getStatusLine());
+            if (entity != null) {
+                System.out.println("Response content length: " + entity.getContentLength());
+            }
+            System.out.println("----------------------------------------");
+
+            // Do not feel like reading the response body
+            // Call abort on the request object
+            request.abort();
+        } finally {
+            response.close();
+        }
+    }
+
 }

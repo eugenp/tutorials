@@ -11,13 +11,16 @@ import org.baeldung.jackson.ignore.MyDto;
 import org.baeldung.jackson.ignore.MyDtoFieldNameChanged;
 import org.baeldung.jackson.ignore.MyDtoIgnoreField;
 import org.baeldung.jackson.ignore.MyDtoIgnoreFieldByName;
+import org.baeldung.jackson.ignore.MyDtoIgnoreNull;
 import org.baeldung.jackson.ignore.MyDtoIncludeNonDefault;
 import org.baeldung.jackson.ignore.MyDtoWithFilter;
 import org.baeldung.jackson.ignore.MyMixInForString;
 import org.junit.Test;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
@@ -166,6 +169,33 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
         assertThat(dtoAsString, containsString("stringValue"));
+        System.out.println(dtoAsString);
+    }
+
+    @Test
+    public final void givenIgnoringNullFieldsOnClass_whenSerializingObjectWithNullField_thenFieldIsIgnroed() throws JsonProcessingException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final MyDtoIgnoreNull dtoObject = new MyDtoIgnoreNull();
+
+        final String dtoAsString = mapper.writeValueAsString(dtoObject);
+
+        assertThat(dtoAsString, containsString("intValue"));
+        assertThat(dtoAsString, containsString("booleanValue"));
+        assertThat(dtoAsString, not(containsString("stringValue")));
+        System.out.println(dtoAsString);
+    }
+
+    @Test
+    public final void givenIgnoringNullFieldsGlobally_whenSerializingObjectWithNullField_thenFieldIsIgnroed() throws JsonProcessingException {
+        final ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(Include.NON_NULL);
+        final MyDto dtoObject = new MyDto();
+
+        final String dtoAsString = mapper.writeValueAsString(dtoObject);
+
+        assertThat(dtoAsString, containsString("intValue"));
+        assertThat(dtoAsString, containsString("booleanValue"));
+        assertThat(dtoAsString, not(containsString("stringValue")));
         System.out.println(dtoAsString);
     }
 

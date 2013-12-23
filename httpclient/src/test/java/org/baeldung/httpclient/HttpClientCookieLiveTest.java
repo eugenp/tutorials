@@ -69,6 +69,7 @@ public class HttpClientCookieLiveTest {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
+        cookie.setPath("/");
         cookieStore.addCookie(cookie);
         final DefaultHttpClient client = new DefaultHttpClient();
         client.setCookieStore(cookieStore);
@@ -85,6 +86,7 @@ public class HttpClientCookieLiveTest {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
+        cookie.setPath("/");
         cookieStore.addCookie(cookie);
         instance = HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
 
@@ -100,6 +102,7 @@ public class HttpClientCookieLiveTest {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
+        cookie.setPath("/");
         cookieStore.addCookie(cookie);
         instance = HttpClientBuilder.create().build();
 
@@ -107,6 +110,7 @@ public class HttpClientCookieLiveTest {
 
         final HttpContext localContext = new BasicHttpContext();
         localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
+        // localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore); // before 4.3
         response = instance.execute(request, localContext);
 
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
