@@ -1,20 +1,19 @@
-package org.baeldung.jackson.ignore;
+package dtos;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonFilter;
 
-@JsonInclude(Include.NON_NULL)
-public class MyDtoIgnoreNull {
+@JsonFilter("myFilter")
+public class MyDtoWithFilter {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDtoIgnoreNull() {
+    public MyDtoWithFilter() {
         super();
     }
 
-    public MyDtoIgnoreNull(final String stringValue, final int intValue, final boolean booleanValue) {
+    public MyDtoWithFilter(final String stringValue, final int intValue, final boolean booleanValue) {
         super();
 
         this.stringValue = stringValue;

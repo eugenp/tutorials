@@ -1,24 +1,16 @@
-package org.baeldung.jackson.ignore;
+package dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class MyDtoIgnoreUnkown {
+@JsonIgnoreProperties(value = { "intValue" })
+public class MyDtoIgnoreFieldByName {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDtoIgnoreUnkown() {
+    public MyDtoIgnoreFieldByName() {
         super();
-    }
-
-    public MyDtoIgnoreUnkown(final String stringValue, final int intValue, final boolean booleanValue) {
-        super();
-
-        this.stringValue = stringValue;
-        this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API

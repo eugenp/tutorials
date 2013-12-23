@@ -1,4 +1,4 @@
-package org.baeldung.jackson.ignore;
+package dtos;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 

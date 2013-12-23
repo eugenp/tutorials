@@ -1,24 +1,17 @@
-package org.baeldung.jackson.ignore;
+package dtos;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@JsonFilter("myFilter")
-public class MyDtoWithFilter {
+@JsonInclude(Include.NON_DEFAULT)
+public class MyDtoIncludeNonDefault {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDtoWithFilter() {
+    public MyDtoIncludeNonDefault() {
         super();
-    }
-
-    public MyDtoWithFilter(final String stringValue, final int intValue, final boolean booleanValue) {
-        super();
-
-        this.stringValue = stringValue;
-        this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API

@@ -6,19 +6,21 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
-import org.baeldung.jackson.ignore.MyDto;
-import org.baeldung.jackson.ignore.MyDtoIgnoreUnkown;
 import org.junit.Test;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 
-public class JacksonDeserializationUnitTest {
+import dtos.MyDto;
+import dtos.MyDtoIgnoreUnkown;
 
-    // tests - json to single entity
+public class JacksonDeserializationUnitTest {
 
     @Test
     public final void whenDeserializingAJsonToAClass_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
@@ -42,6 +44,8 @@ public class JacksonDeserializationUnitTest {
         assertThat(readValue.getStringValue(), equalTo("a"));
         assertThat(readValue.isBooleanValue(), equalTo(true));
     }
+
+    // tests - json with unknown fields
 
     @Test(expected = UnrecognizedPropertyException.class)
     public final void givenJsonHasUnkownValues_whenDeserializingAJsonToAClass_thenExceptionIsThrown() throws JsonParseException, JsonMappingException, IOException {
@@ -89,6 +93,41 @@ public class JacksonDeserializationUnitTest {
         assertThat(readValue.getStringValue(), equalTo("a"));
         assertThat(readValue.isBooleanValue(), equalTo(true));
         assertThat(readValue.getIntValue(), equalTo(1));
+    }
+
+    // to JsonNode
+
+    @Test
+    public final void whenParsingJsonStringIntoJsonNode_thenCorrect() throws JsonParseException, IOException {
+        final String jsonString = "{\"k1\":\"v1\",\"k2\":\"v2\"}";
+
+        final ObjectMapper mapper = new ObjectMapper();
+        final JsonNode actualObj = mapper.readTree(jsonString);
+
+        assertNotNull(actualObj);
+    }
+
+    @Test
+    public final void givenUsingLowLevelDetails_whenParsingJsonStringIntoJsonNode_thenCorrect() throws JsonParseException, IOException {
+        final String jsonString = "{\"k1\":\"v1\",\"k2\":\"v2\"}";
+
+        final ObjectMapper mapper = new ObjectMapper();
+        final JsonFactory factory = mapper.getFactory();
+        final JsonParser parser = factory.createParser(jsonString);
+        final JsonNode actualObj = mapper.readTree(parser);
+
+        assertNotNull(actualObj);
+    }
+
+    @Test
+    public final void givenTheJsonNode_whenRetrievingDataFromId_thenCorrect() throws JsonParseException, IOException {
+        final String jsonString = "{\"k1\":\"v1\",\"k2\":\"v2\"}";
+        final ObjectMapper mapper = new ObjectMapper();
+        final JsonNode actualObj = mapper.readTree(jsonString);
+
+        // When
+        final JsonNode jsonNode1 = actualObj.get("k1");
+        assertThat(jsonNode1.textValue(), equalTo("v1"));
     }
 
 }

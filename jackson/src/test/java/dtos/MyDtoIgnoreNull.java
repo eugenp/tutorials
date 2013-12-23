@@ -1,16 +1,20 @@
-package org.baeldung.jackson.ignore;
+package dtos;
 
-public class MyDto {
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_NULL)
+public class MyDtoIgnoreNull {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDto() {
+    public MyDtoIgnoreNull() {
         super();
     }
 
-    public MyDto(final String stringValue, final int intValue, final boolean booleanValue) {
+    public MyDtoIgnoreNull(final String stringValue, final int intValue, final boolean booleanValue) {
         super();
 
         this.stringValue = stringValue;

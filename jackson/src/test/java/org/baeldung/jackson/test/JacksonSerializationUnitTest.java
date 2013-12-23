@@ -7,14 +7,6 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import java.util.List;
 
-import org.baeldung.jackson.ignore.MyDto;
-import org.baeldung.jackson.ignore.MyDtoFieldNameChanged;
-import org.baeldung.jackson.ignore.MyDtoIgnoreField;
-import org.baeldung.jackson.ignore.MyDtoIgnoreFieldByName;
-import org.baeldung.jackson.ignore.MyDtoIgnoreNull;
-import org.baeldung.jackson.ignore.MyDtoIncludeNonDefault;
-import org.baeldung.jackson.ignore.MyDtoWithFilter;
-import org.baeldung.jackson.ignore.MyMixInForString;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -30,6 +22,15 @@ import com.fasterxml.jackson.databind.ser.PropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.google.common.collect.Lists;
+
+import dtos.MyDto;
+import dtos.MyDtoFieldNameChanged;
+import dtos.MyDtoIgnoreField;
+import dtos.MyDtoIgnoreFieldByName;
+import dtos.MyDtoIgnoreNull;
+import dtos.MyDtoIncludeNonDefault;
+import dtos.MyDtoWithFilter;
+import dtos.MyMixInForString;
 
 public class JacksonSerializationUnitTest {
 
@@ -173,7 +174,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenIgnoringNullFieldsOnClass_whenSerializingObjectWithNullField_thenFieldIsIgnored() throws JsonProcessingException {
+    public final void givenIgnoringNullFieldsOnClass_whenWritingObjectWithNullField_thenFieldIsIgnored() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoIgnoreNull dtoObject = new MyDtoIgnoreNull();
 
@@ -186,7 +187,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenIgnoringNullFieldsGlobally_whenSerializingObjectWithNullField_thenFieldIsIgnroed() throws JsonProcessingException {
+    public final void givenIgnoringNullFieldsGlobally_whenWritingObjectWithNullField_thenIgnored() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(Include.NON_NULL);
         final MyDto dtoObject = new MyDto();
