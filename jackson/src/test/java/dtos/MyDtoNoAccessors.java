@@ -2,9 +2,9 @@ package dtos;
 
 public class MyDtoNoAccessors {
 
-    private String stringValue;
-    private int intValue;
-    private boolean booleanValue;
+    String stringValue;
+    int intValue;
+    boolean booleanValue;
 
     public MyDtoNoAccessors() {
         super();
