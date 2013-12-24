@@ -36,6 +36,13 @@ public class CoreJavaUnitTest {
     }
 
     @Test(expected = UnsupportedOperationException.class)
+    public final void givenUsingGuavaBuilder_whenUnmodifiableListIsCreatedFromOriginal_thenNoLongerModifiable() {
+        final List<String> list = new ArrayList<String>(Arrays.asList("one", "two", "three"));
+        final ImmutableList<Object> unmodifiableList = ImmutableList.builder().addAll(list).build();
+        unmodifiableList.add("four");
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
     public final void givenUsingCommonsCollections_whenUnmodifiableListIsCreatedFromOriginal_thenNoLongerModifiable() {
         final List<String> list = new ArrayList<String>(Arrays.asList("one", "two", "three"));
         final List<String> unmodifiableList = ListUtils.unmodifiableList(list);
