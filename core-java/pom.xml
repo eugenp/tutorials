@@ -64,7 +64,7 @@
     </dependencies>
 
     <build>
-        <finalName>jackson</finalName>
+        <finalName>core-java</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -102,10 +102,10 @@
         <!-- persistence -->
         <hibernate.version>4.3.0.Final</hibernate.version>
         <mysql-connector-java.version>5.1.27</mysql-connector-java.version>
-        
+
         <!-- marshalling -->
         <jackson.version>2.3.0</jackson.version>
-        
+
         <!-- logging -->
         <org.slf4j.version>1.7.5</org.slf4j.version>
         <logback.version>1.0.11</logback.version>
