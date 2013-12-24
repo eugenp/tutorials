@@ -12,6 +12,10 @@ import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.MyDtoFieldNameChanged;
 import org.baeldung.jackson.dtos.MyDtoNoAccessors;
 import org.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
+import org.baeldung.jackson.dtos.MyDtoWithEnum;
+import org.baeldung.jackson.dtos.MyDtoWithEnumCustom;
+import org.baeldung.jackson.dtos.TypeEnum;
+import org.baeldung.jackson.dtos.TypeEnumWithCustomSerializer;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -20,7 +24,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
-
 
 public class JacksonSerializationUnitTest {
 
@@ -75,6 +78,44 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, containsString("intValue"));
         assertThat(dtoAsString, containsString("stringValue"));
         assertThat(dtoAsString, containsString("booleanValue"));
+    }
+
+    // tests - enums
+
+    @Test
+    public final void whenSerializingSimpleEnum_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String dtoAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
+
+        System.out.println(dtoAsString);
+        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+    }
+
+    @Test
+    public final void whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnum("a", 1, true, TypeEnum.TYPE1));
+
+        System.out.println(dtoAsString);
+        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+    }
+
+    @Test
+    public final void givenCustomSerializer_whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, TypeEnumWithCustomSerializer.TYPE1));
+
+        System.out.println(dtoAsString);
+        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+    }
+
+    @Test
+    public final void whenSerializingArrayOfEnums_thenCorrect() throws JsonParseException, IOException {
+        final ObjectMapper mapper = new ObjectMapper();
+        final String json = mapper.writeValueAsString(new TypeEnum[] { TypeEnum.TYPE1, TypeEnum.TYPE2 });
+
+        System.out.println(json);
+        assertThat(json, containsString("\"name\":\"Type A\""));
     }
 
     // tests - multiple entities to json
