@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.baeldung.jackson.dtos.MyDto;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -16,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.google.common.collect.Lists;
 
-import dtos.MyDto;
 
 public class JacksonCollectionDeserializationUnitTest {
 

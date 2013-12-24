@@ -1,4 +1,4 @@
-package dtos;
+package org.baeldung.jackson.dtos;
 
 public class MyDtoNoAccessors {
 

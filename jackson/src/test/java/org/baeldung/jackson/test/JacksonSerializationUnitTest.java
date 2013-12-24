@@ -8,6 +8,10 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import java.util.List;
 
+import org.baeldung.jackson.dtos.MyDto;
+import org.baeldung.jackson.dtos.MyDtoFieldNameChanged;
+import org.baeldung.jackson.dtos.MyDtoNoAccessors;
+import org.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -17,10 +21,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 
-import dtos.MyDto;
-import dtos.MyDtoFieldNameChanged;
-import dtos.MyDtoNoAccessors;
-import dtos.MyDtoNoAccessorsAndFieldVisibility;
 
 public class JacksonSerializationUnitTest {
 

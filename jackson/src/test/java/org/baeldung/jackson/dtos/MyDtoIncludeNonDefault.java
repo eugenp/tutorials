@@ -1,24 +1,17 @@
-package dtos;
+package org.baeldung.jackson.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class MyDtoIgnoreUnkown {
+@JsonInclude(Include.NON_DEFAULT)
+public class MyDtoIncludeNonDefault {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDtoIgnoreUnkown() {
+    public MyDtoIncludeNonDefault() {
         super();
-    }
-
-    public MyDtoIgnoreUnkown(final String stringValue, final int intValue, final boolean booleanValue) {
-        super();
-
-        this.stringValue = stringValue;
-        this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API

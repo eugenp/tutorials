@@ -6,6 +6,13 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
+import org.baeldung.jackson.dtos.MyDto;
+import org.baeldung.jackson.dtos.MyDtoIgnoreField;
+import org.baeldung.jackson.dtos.MyDtoIgnoreFieldByName;
+import org.baeldung.jackson.dtos.MyDtoIgnoreNull;
+import org.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
+import org.baeldung.jackson.dtos.MyDtoWithFilter;
+import org.baeldung.jackson.dtos.MyMixInForString;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -21,13 +28,6 @@ import com.fasterxml.jackson.databind.ser.PropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
-import dtos.MyDto;
-import dtos.MyDtoIgnoreField;
-import dtos.MyDtoIgnoreFieldByName;
-import dtos.MyDtoIgnoreNull;
-import dtos.MyDtoIncludeNonDefault;
-import dtos.MyDtoWithFilter;
-import dtos.MyMixInForString;
 
 public class JacksonSerializationIgnoreUnitTest {
 

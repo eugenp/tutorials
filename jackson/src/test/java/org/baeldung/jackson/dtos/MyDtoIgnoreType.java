@@ -1,19 +1,19 @@
-package dtos;
+package org.baeldung.jackson.dtos;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonFilter("myFilter")
-public class MyDtoWithFilter {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class MyDtoIgnoreType {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDtoWithFilter() {
+    public MyDtoIgnoreType() {
         super();
     }
 
-    public MyDtoWithFilter(final String stringValue, final int intValue, final boolean booleanValue) {
+    public MyDtoIgnoreType(final String stringValue, final int intValue, final boolean booleanValue) {
         super();
 
         this.stringValue = stringValue;

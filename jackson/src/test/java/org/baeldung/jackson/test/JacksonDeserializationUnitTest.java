@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
+import org.baeldung.jackson.dtos.MyDto;
+import org.baeldung.jackson.dtos.MyDtoIgnoreUnkown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -17,8 +19,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 
-import dtos.MyDto;
-import dtos.MyDtoIgnoreUnkown;
 
 public class JacksonDeserializationUnitTest {
 

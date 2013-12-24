@@ -1,16 +1,18 @@
-package dtos;
+package org.baeldung.jackson.dtos;
 
-public class MyDto {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class MyDtoFieldNameChanged {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
 
-    public MyDto() {
+    public MyDtoFieldNameChanged() {
         super();
     }
 
-    public MyDto(final String stringValue, final int intValue, final boolean booleanValue) {
+    public MyDtoFieldNameChanged(final String stringValue, final int intValue, final boolean booleanValue) {
         super();
 
         this.stringValue = stringValue;
@@ -20,6 +22,7 @@ public class MyDto {
 
     // API
 
+    @JsonProperty("strVal")
     public String getStringValue() {
         return stringValue;
     }
