@@ -1,15 +1,15 @@
-package org.baeldung.jackson.dtos;
+package org.baeldung.jackson.dtos.withEnum;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-@JsonSerialize(using = TypeSerializer.class)
-public enum TypeEnumWithCustomSerializer {
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum TypeEnum {
     TYPE1(1, "Type A"), TYPE2(2, "Type 2");
 
     private Integer id;
     private String name;
 
-    private TypeEnumWithCustomSerializer(final Integer id, final String name) {
+    private TypeEnum(final Integer id, final String name) {
         this.id = id;
         this.name = name;
     }

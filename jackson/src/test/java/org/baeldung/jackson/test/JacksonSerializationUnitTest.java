@@ -12,10 +12,10 @@ import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.MyDtoFieldNameChanged;
 import org.baeldung.jackson.dtos.MyDtoNoAccessors;
 import org.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
-import org.baeldung.jackson.dtos.MyDtoWithEnum;
-import org.baeldung.jackson.dtos.MyDtoWithEnumCustom;
-import org.baeldung.jackson.dtos.TypeEnum;
-import org.baeldung.jackson.dtos.TypeEnumWithCustomSerializer;
+import org.baeldung.jackson.dtos.withEnum.MyDtoWithEnum;
+import org.baeldung.jackson.dtos.withEnum.MyDtoWithEnumCustom;
+import org.baeldung.jackson.dtos.withEnum.TypeEnum;
+import org.baeldung.jackson.dtos.withEnum.TypeEnumWithCustomSerializer;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;

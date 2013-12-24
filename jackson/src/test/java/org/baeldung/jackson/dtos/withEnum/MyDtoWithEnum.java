@@ -1,4 +1,4 @@
-package org.baeldung.jackson.dtos;
+package org.baeldung.jackson.dtos.withEnum;
 
 public class MyDtoWithEnum {
 
