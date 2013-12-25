@@ -1,4 +1,3 @@
-#Sat Jan 21 23:04:06 EET 2012
 eclipse.preferences.version=1
 editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup=true
 sp_cleanup.add_default_serial_version_id=true
@@ -14,6 +13,7 @@ sp_cleanup.always_use_blocks=true
 sp_cleanup.always_use_parentheses_in_expressions=true
 sp_cleanup.always_use_this_for_non_static_field_access=false
 sp_cleanup.always_use_this_for_non_static_method_access=false
+sp_cleanup.convert_functional_interfaces=false
 sp_cleanup.convert_to_enhanced_for_loop=true
 sp_cleanup.correct_indentation=true
 sp_cleanup.format_source_code=true
@@ -46,8 +46,10 @@ sp_cleanup.remove_unused_private_methods=true
 sp_cleanup.remove_unused_private_types=true
 sp_cleanup.sort_members=false
 sp_cleanup.sort_members_all=false
-sp_cleanup.use_blocks=false
+sp_cleanup.use_anonymous_class_creation=false
+sp_cleanup.use_blocks=true
 sp_cleanup.use_blocks_only_for_return_and_throw=false
+sp_cleanup.use_lambda=false
 sp_cleanup.use_parentheses_in_expressions=false
 sp_cleanup.use_this_for_non_static_field_access=true
 sp_cleanup.use_this_for_non_static_field_access_only_if_necessary=true
