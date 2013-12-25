@@ -33,6 +33,16 @@ public class Human {
         this.age = age;
     }
 
+    // compare
+
+    public static int compareByNameThenAge(final Human lhs, final Human rhs) {
+        if (lhs.name.equals(rhs.name)) {
+            return lhs.age - rhs.age;
+        } else {
+            return lhs.name.compareTo(rhs.name);
+        }
+    }
+
     //
 
     @Override
