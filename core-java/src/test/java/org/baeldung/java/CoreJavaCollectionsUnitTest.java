@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.google.common.collect.ImmutableList;
 
-public class CoreJavaUnitTest {
+public class CoreJavaCollectionsUnitTest {
 
     // tests -
 

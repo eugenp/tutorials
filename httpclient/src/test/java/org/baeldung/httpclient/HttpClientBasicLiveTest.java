@@ -12,7 +12,6 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -63,7 +62,7 @@ public class HttpClientBasicLiveTest {
     @Test
     public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws ClientProtocolException, IOException {
         response = instance.execute(new HttpGet(SAMPLE_URL));
-        int statusCode = response.getStatusLine().getStatusCode();
+        final int statusCode = response.getStatusLine().getStatusCode();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
     }
 
@@ -81,13 +80,6 @@ public class HttpClientBasicLiveTest {
         final String bodyAsString = EntityUtils.toString(response.getEntity());
 
         assertThat(bodyAsString, notNullValue());
-    }
-
-    // tests - non-GET
-
-    @Test
-    public final void whenExecutingBasicRequest_thenNoExceptions() throws ClientProtocolException, IOException {
-        instance.execute(new HttpPost(SAMPLE_URL));
     }
 
 }
