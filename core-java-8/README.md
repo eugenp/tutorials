@@ -1,6 +1,6 @@
 =========
 
-## Core Java Cookbooks and Examples
+## Core Java 8 Cookbooks and Examples
 
 ### Relevant Articles: 
-// - [Jackson Ignore Properties on Marshalling](http://www.baeldung.com/jackson-ignore-properties-on-serialization)
+// - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
