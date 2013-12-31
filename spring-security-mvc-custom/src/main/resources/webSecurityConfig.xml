@@ -4,7 +4,7 @@
 		http://www.springframework.org/schema/security 
         http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <http use-expressions="true">
         <intercept-url pattern="/anonymous*" access="isAnonymous()" />
@@ -14,9 +14,9 @@
         <form-login login-page='/login.html' authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-failure-url="/login.html?error=true" />
 
         <logout delete-cookies="JSESSIONID" />
-		
-		<remember-me key="uniqueAndSecret" token-validity-seconds="86400"/>
-		
+
+        <remember-me key="uniqueAndSecret" token-validity-seconds="86400" />
+
     </http>
 
     <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />

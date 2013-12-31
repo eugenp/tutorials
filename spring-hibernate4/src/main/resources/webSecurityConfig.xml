@@ -3,7 +3,7 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
 	<http access-denied-page="/access-denied.html" use-expressions="true">
 		<intercept-url pattern="/access-denied*" access="hasAnyRole('ROLE_LOCATION_WRITE','ROLE_POLYGON_WRITE')" />
