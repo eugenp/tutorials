@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 
 import org.baeldung.jackson.dtos.MyDto;
-import org.baeldung.jackson.dtos.MyDtoIgnoreUnkown;
+import org.baeldung.jackson.dtos.MyDtoIgnoreUnknown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonFactory;
@@ -48,7 +48,7 @@ public class JacksonDeserializationUnitTest {
     // tests - json with unknown fields
 
     @Test(expected = UnrecognizedPropertyException.class)
-    public final void givenJsonHasUnkownValues_whenDeserializingAJsonToAClass_thenExceptionIsThrown() throws JsonParseException, JsonMappingException, IOException {
+    public final void givenJsonHasUnknownValues_whenDeserializingAJsonToAClass_thenExceptionIsThrown() throws JsonParseException, JsonMappingException, IOException {
         final String jsonAsString = "{\"stringValue\":\"a\",\"intValue\":1,\"booleanValue\":true,\"stringValue2\":\"something\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
@@ -61,7 +61,7 @@ public class JacksonDeserializationUnitTest {
     }
 
     @Test
-    public final void givenJsonHasUnkownValuesButJacksonIsIgnoringUnkownFields_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+    public final void givenJsonHasUnknownValuesButJacksonIsIgnoringUnknownFields_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
         final String jsonAsString =// @formatter:off
                 "{\"stringValue\":\"a\"," +
                 "\"intValue\":1," +
@@ -79,7 +79,7 @@ public class JacksonDeserializationUnitTest {
     }
 
     @Test
-    public final void givenJsonHasUnkownValuesButUnkownFieldsAreIgnoredOnClass_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+    public final void givenJsonHasUnknownValuesButUnknownFieldsAreIgnoredOnClass_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
         final String jsonAsString =// @formatter:off
                 "{\"stringValue\":\"a\"," +
                 "\"intValue\":1," +
@@ -87,7 +87,7 @@ public class JacksonDeserializationUnitTest {
                 "\"stringValue2\":\"something\"}"; // @formatter:on
         final ObjectMapper mapper = new ObjectMapper();
 
-        final MyDtoIgnoreUnkown readValue = mapper.readValue(jsonAsString, MyDtoIgnoreUnkown.class);
+        final MyDtoIgnoreUnknown readValue = mapper.readValue(jsonAsString, MyDtoIgnoreUnknown.class);
 
         assertNotNull(readValue);
         assertThat(readValue.getStringValue(), equalTo("a"));
