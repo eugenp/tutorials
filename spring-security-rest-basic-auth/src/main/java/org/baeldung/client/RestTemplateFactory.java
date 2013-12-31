@@ -2,6 +2,8 @@ package org.baeldung.client;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.springframework.beans.factory.FactoryBean;
@@ -51,6 +53,10 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
 
         // - note: timeout via the API
         final HttpParams httpParams = httpClient.getParams();
+        httpParams.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, timeout * 1000);
+        httpParams.setParameter(CoreConnectionPNames.SO_TIMEOUT, timeout * 1000);
+        httpParams.setParameter(ClientPNames.CONN_MANAGER_TIMEOUT, new Long(timeout * 1000));
+
         HttpConnectionParams.setConnectionTimeout(httpParams, timeout * 1000); // http.connection.timeout
         HttpConnectionParams.setSoTimeout(httpParams, timeout * 1000); // http.socket.timeout
     }
