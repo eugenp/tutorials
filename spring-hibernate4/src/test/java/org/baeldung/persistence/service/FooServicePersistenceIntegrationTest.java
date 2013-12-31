@@ -1,4 +1,4 @@
-package org.baeldung.spring.persistence.service;
+package org.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 

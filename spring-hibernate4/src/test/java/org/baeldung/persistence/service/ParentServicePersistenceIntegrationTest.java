@@ -1,4 +1,4 @@
-package org.baeldung.spring.persistence.service;
+package org.baeldung.persistence.service;
 
 import org.baeldung.persistence.model.Child;
 import org.baeldung.persistence.model.Parent;
