@@ -1,31 +1,42 @@
 package org.baeldung.jackson.try1;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.Collection;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
 
 public class JacksonTryUnitTest {
 
     @Test
     public final void whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final URL url = Resources.getResource("example2.json");
-        final String jsonAsString = Resources.toString(url, Charsets.UTF_8);
+        printJsonFromFile("/opt/git/github/eugenp/tutorials/jackson/src/main/resources/example1.json");
+    }
 
-        final Collection<COrder> readValues = new ObjectMapper().readValue(jsonAsString, new TypeReference<Collection<COrder>>() {
-        });
+    //
 
-        assertNotNull(readValues);
+    public static void printJsonFromFile(final String fileName) {
+        System.out.println("-----------------");
+        final ObjectMapper mapper = new ObjectMapper();
+        try {
+            final Object json = mapper.readValue(readFile(fileName, StandardCharsets.UTF_8), Object.class);
+            System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
+        } catch (final IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("-----------------");
+    }
+
+    static String readFile(final String path, final Charset encoding) throws IOException {
+        final byte[] encoded = Files.readAllBytes(Paths.get(path));
+        return encoding.decode(ByteBuffer.wrap(encoded)).toString();
     }
 
 }
