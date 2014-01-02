@@ -82,8 +82,8 @@ public class HttpClientTimeoutLiveTest {
     public final void givenUsingNewApi_whenSettingTimeoutViaHighLevelApi_thenCorrect() throws ClientProtocolException, IOException {
         final int timeout = 5;
 
-        final RequestConfig.Builder requestBuilder = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000);
-        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(requestBuilder.build()).build();
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
+        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
         final HttpGet request = new HttpGet("http://www.github.com");
 
