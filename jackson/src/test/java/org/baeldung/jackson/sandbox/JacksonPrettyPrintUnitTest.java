@@ -1,4 +1,4 @@
-package org.baeldung.jackson.try1;
+package org.baeldung.jackson.sandbox;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -13,7 +13,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JacksonTryUnitTest {
+public class JacksonPrettyPrintUnitTest {
 
     @Test
     public final void whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
