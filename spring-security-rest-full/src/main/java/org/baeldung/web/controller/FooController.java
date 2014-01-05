@@ -68,7 +68,6 @@ public class FooController {
     @RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
     @ResponseBody
     public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-
         final Page<Foo> resultPage = service.findPaginated(page, size);
         if (page > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
