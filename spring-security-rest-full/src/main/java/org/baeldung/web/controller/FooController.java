@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.exception.MyResourceNotFoundException;
+import org.baeldung.web.hateoas.PaginatedResultsRetrievedEvent;
 import org.baeldung.web.util.LinkUtil;
 import org.baeldung.web.util.ResourceCreated;
 import org.baeldung.web.util.RestPreconditions;
@@ -72,7 +73,7 @@ public class FooController {
         if (page > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
-        // eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
+        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
 
         return resultPage.getContent();
     }
