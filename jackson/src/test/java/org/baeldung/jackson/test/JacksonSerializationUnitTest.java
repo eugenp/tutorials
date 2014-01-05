@@ -40,7 +40,7 @@ public class JacksonSerializationUnitTest {
     }
 
     @Test
-    public final void givenNameOfFieldIsChanged_whenSerializing_thenCorrect() throws JsonParseException, IOException {
+    public final void givenNameOfFieldIsChangedViaAnnotationOnGetter_whenSerializing_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
         final MyDtoFieldNameChanged dtoObject = new MyDtoFieldNameChanged();
         dtoObject.setStringValue("a");
@@ -51,6 +51,8 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, containsString("strVal"));
         System.out.println(dtoAsString);
     }
+
+    // tests - serialize via accessors/fields
 
     @Test(expected = JsonMappingException.class)
     public final void givenObjectHasNoAccessors_whenSerializing_thenException() throws JsonParseException, IOException {
