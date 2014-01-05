@@ -48,8 +48,9 @@ public class FooController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletRequest request, final HttpServletResponse response) {
+    public Foo findById(@PathVariable("id") final Long id, final HttpServletRequest request, final HttpServletResponse response) {
         final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+
         eventPublisher.publishEvent(new SingleResourceRetrieved(this, request, response));
         return resourceById;
     }

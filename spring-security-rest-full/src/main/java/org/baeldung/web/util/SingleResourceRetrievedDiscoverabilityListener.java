@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import com.google.common.base.Preconditions;
+import com.google.common.net.HttpHeaders;
 
 @Component
 class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListener<SingleResourceRetrieved> {
@@ -26,7 +27,7 @@ class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListe
         final String uriForResourceCreation = requestURL.substring(0, positionOfLastSlash);
 
         final String linkHeaderValue = LinkUtil.createLinkHeader(uriForResourceCreation, "collection");
-        response.addHeader("Link", linkHeaderValue);
+        response.addHeader(HttpHeaders.LINK, linkHeaderValue);
     }
 
 }

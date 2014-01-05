@@ -25,4 +25,9 @@ public class FooLiveTest extends AbstractLiveTest<Foo> {
         create(new Foo(randomAlphabetic(6)));
     }
 
+    @Override
+    public final String createAsUri() {
+        return createAsUri(new Foo(randomAlphabetic(6)));
+    }
+
 }

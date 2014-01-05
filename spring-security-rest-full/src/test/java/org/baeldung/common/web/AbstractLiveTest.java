@@ -2,6 +2,7 @@ package org.baeldung.common.web;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.baeldung.web.util.HTTPLinkHeaderUtil.extractURIByRel;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.baeldung.test.IMarshaller;
+import org.hamcrest.core.AnyOf;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,6 +38,18 @@ public abstract class AbstractLiveTest<T extends Serializable> {
     }
 
     // tests
+    @Test
+    public void whenInvalidPOSTIsSentToValidURIOfResource_thenAllowHeaderListsTheAllowedActions() {
+        // Given
+        final String uriOfExistingResource = createAsUri();
+
+        // When
+        final Response res = givenAuth().post(uriOfExistingResource);
+
+        // Then
+        final String allowHeader = res.getHeader(HttpHeaders.ALLOW);
+        assertThat(allowHeader, AnyOf.<String> anyOf(containsString("GET"), containsString("PUT"), containsString("DELETE")));
+    }
 
     // find - one
 
@@ -111,11 +125,13 @@ public abstract class AbstractLiveTest<T extends Serializable> {
 
     public abstract void create();
 
+    public abstract String createAsUri();
+
     protected final void create(final T resource) {
         createAsUri(resource);
     }
 
-    final String createAsUri(final T resource) {
+    protected final String createAsUri(final T resource) {
         final Response response = createAsResponse(resource);
         Preconditions.checkState(response.getStatusCode() == 201, "create operation: " + response.getStatusCode());
 
