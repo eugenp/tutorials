@@ -8,17 +8,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
+import org.baeldung.web.exception.MyResourceNotFoundException;
 import org.baeldung.web.util.LinkUtil;
 import org.baeldung.web.util.ResourceCreated;
+import org.baeldung.web.util.RestPreconditions;
 import org.baeldung.web.util.SingleResourceRetrieved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -42,13 +46,17 @@ public class FooController {
 
     // API
 
-    // read
+    // read - one
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-        return service.findOne(id);
+    public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletRequest request, final HttpServletResponse response) {
+        final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+        eventPublisher.publishEvent(new SingleResourceRetrieved(this, request, response));
+        return resourceById;
     }
+
+    // read - all
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
@@ -56,14 +64,20 @@ public class FooController {
         return service.findAll();
     }
 
-    @RequestMapping(value = "admin/foo/{id}", method = RequestMethod.GET)
+    @RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
     @ResponseBody
-    public Foo get(@PathVariable("id") final Long id, final HttpServletRequest request, final HttpServletResponse response) {
-        final Foo resourceById = Preconditions.checkNotNull(service.findOne(id));
+    public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
 
-        eventPublisher.publishEvent(new SingleResourceRetrieved(this, request, response));
-        return resourceById;
+        final Page<Foo> resultPage = service.findPaginated(page, size);
+        if (page > resultPage.getTotalPages()) {
+            throw new MyResourceNotFoundException();
+        }
+        // eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
+
+        return resultPage.getContent();
     }
+
+    // discover
 
     @RequestMapping(value = "admin", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)

@@ -2,6 +2,7 @@ package org.baeldung.web.error;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.baeldung.web.exception.MyResourceNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -50,7 +51,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     // 404
 
-    @ExceptionHandler(value = { EntityNotFoundException.class })
+    @ExceptionHandler(value = { EntityNotFoundException.class, MyResourceNotFoundException.class })
     protected ResponseEntity<Object> handleBadRequest(final EntityNotFoundException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
