@@ -1,6 +1,5 @@
 package org.baeldung.web.controller;
 
-import java.net.URI;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,6 @@ import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.exception.MyResourceNotFoundException;
 import org.baeldung.web.hateoas.PaginatedResultsRetrievedEvent;
-import org.baeldung.web.util.LinkUtil;
 import org.baeldung.web.util.ResourceCreated;
 import org.baeldung.web.util.RestPreconditions;
 import org.baeldung.web.util.SingleResourceRetrieved;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.springframework.web.util.UriTemplate;
 
 import com.google.common.base.Preconditions;
 
@@ -77,21 +74,9 @@ public class FooController {
         return resultPage.getContent();
     }
 
-    // discover
-
-    @RequestMapping(value = "admin", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void adminRoot(final HttpServletRequest request, final HttpServletResponse response) {
-        final String rootUri = request.getRequestURL().toString();
-
-        final URI fooUri = new UriTemplate("{rootUri}/{resource}").expand(rootUri, "foo");
-        final String linkToFoo = LinkUtil.createLinkHeader(fooUri.toASCIIString(), "collection");
-        response.addHeader("Link", linkToFoo);
-    }
-
     // write
 
-    @RequestMapping(value = "admin/foo", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody final Foo resource, final HttpServletRequest request, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);

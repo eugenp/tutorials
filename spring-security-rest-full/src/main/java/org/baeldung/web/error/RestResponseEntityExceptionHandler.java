@@ -28,8 +28,14 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
     // 400
 
-    @ExceptionHandler({ ConstraintViolationException.class, DataIntegrityViolationException.class })
-    public ResponseEntity<Object> handleBadRequest(final RuntimeException ex, final WebRequest request) {
+    @ExceptionHandler({ ConstraintViolationException.class })
+    public ResponseEntity<Object> handleBadRequest(final ConstraintViolationException ex, final WebRequest request) {
+        final String bodyOfResponse = "This should be application specific";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ DataIntegrityViolationException.class })
+    public ResponseEntity<Object> handleBadRequest(final DataIntegrityViolationException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
@@ -52,7 +58,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     // 404
 
     @ExceptionHandler(value = { EntityNotFoundException.class, MyResourceNotFoundException.class })
-    protected ResponseEntity<Object> handleBadRequest(final EntityNotFoundException ex, final WebRequest request) {
+    protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
