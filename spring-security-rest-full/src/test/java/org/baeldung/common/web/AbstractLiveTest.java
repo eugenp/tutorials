@@ -59,7 +59,6 @@ public abstract class AbstractLiveTest<T extends Serializable> {
     }
 
     @Test
-    // @Ignore("create is not done yet")
     public void givenResourcesExist_whenFirstPageIsRetrieved_thenPageContainsResources() {
         create();
 
