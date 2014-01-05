@@ -4,7 +4,8 @@
 
 
 ### Relevant Articles: 
-- [Spring Security Expressions � hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
+- [Spring Security Expressions - hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
+- [REST Pagination in Spring](http://www.baeldung.com/2012/01/18/rest-pagination-in-spring/)
 
 
 ### Build the Project
