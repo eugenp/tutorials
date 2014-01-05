@@ -2,7 +2,7 @@ package org.baeldung.web;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import org.baeldung.common.web.AbstractBasicLiveTest;
+import org.baeldung.common.web.AbstractDiscoverabilityLiveTest;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.spring.ConfigTest;
 import org.junit.runner.RunWith;
@@ -12,9 +12,9 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ConfigTest.class }, loader = AnnotationConfigContextLoader.class)
-public class FooLiveTest extends AbstractBasicLiveTest<Foo> {
+public class FooDiscoverabilityLiveTest extends AbstractDiscoverabilityLiveTest<Foo> {
 
-    public FooLiveTest() {
+    public FooDiscoverabilityLiveTest() {
         super(Foo.class);
     }
 
