@@ -7,8 +7,8 @@ import static org.junit.Assert.assertThat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Charsets;
-import com.google.common.io.ByteSource;
 import com.google.common.io.CharStreams;
 import com.google.common.io.InputSupplier;
 
@@ -43,9 +42,17 @@ public class CoreJavaIoUnitTest {
     }
 
     @Test
-    public final void givenUsingGuavaNoEncoding_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+    public final void givenUsingGuava_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(8);
-        final InputSupplier<StringReader> readerSupplier = CharStreams.newReaderSupplier(originalString);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        final InputSupplier<InputStream> inputSupplier = new InputSupplier<InputStream>() {
+            @Override
+            public final InputStream getInput() throws IOException {
+                return inputStream;
+            }
+        };
+        final InputSupplier<InputStreamReader> readerSupplier = CharStreams.newReaderSupplier(inputSupplier, Charsets.UTF_8);
 
         // When
         final String text = CharStreams.toString(readerSupplier);
@@ -54,18 +61,21 @@ public class CoreJavaIoUnitTest {
     }
 
     @Test
-    public final void givenUsingGuavaWithEncoding_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+    public final void givenUsingGuavaAndJava7_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(8);
-        final InputSupplier<Reader> readerSupplier = ByteSource.wrap(originalString.getBytes()).asCharSource(Charsets.UTF_8);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
         // When
-        final String text = CharStreams.toString(readerSupplier);
+        String text = null;
+        try (final Reader reader = new InputStreamReader(inputStream)) {
+            text = CharStreams.toString(reader);
+        }
 
         assertThat(text, equalTo(originalString));
     }
 
     @Test
-    public final void givenUsingCommonsIoWithEncoding_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+    public final void givenUsingCommonsIo_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(8);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
@@ -75,7 +85,7 @@ public class CoreJavaIoUnitTest {
     }
 
     @Test
-    public final void givenUsingCommonsIoWithEncoding2_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+    public final void givenUsingCommonsIoWithCopy_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(8);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
