@@ -31,13 +31,15 @@ public class FooController {
 
     // API
 
-    // read
+    // read - single
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Foo findOne(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
+    public Foo findById(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         return new Foo(randomAlphabetic(6));
     }
+
+    // read - multiple
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody

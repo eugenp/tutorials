@@ -6,10 +6,10 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({ "org.baeldung.controller" })
-public class MvcConfig {
+@ComponentScan({ "org.baeldung.web" })
+public class WebConfig {
 
-    public MvcConfig() {
+    public WebConfig() {
         super();
     }
 
