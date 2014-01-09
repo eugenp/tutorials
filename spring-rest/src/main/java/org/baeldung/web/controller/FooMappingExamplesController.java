@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping(value = "/ex")
 public class FooMappingExamplesController {
 
     public FooMappingExamplesController() {
@@ -59,10 +60,16 @@ public class FooMappingExamplesController {
         return "Get some Foos with Header";
     }
 
+    // @RequestMapping(value = "/foos", method = RequestMethod.GET, headers = "Accept=application/json")
+    // @ResponseBody
+    // public String getFoosAsJsonFromBrowser() {
+    // return "Get some Foos with Header Old";
+    // }
+
     @RequestMapping(value = "/foos", produces = { "application/json", "application/xml" })
     @ResponseBody
     public String getFoosAsJsonFromREST() {
-        return "Get some Foos with Header Exact";
+        return "Get some Foos with Header New";
     }
 
     // advanced - multiple mappings
