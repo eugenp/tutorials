@@ -23,8 +23,8 @@ public class FooController {
     // API - read
 
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
-    public @ResponseBody
-    Foo findById(@PathVariable final long id) {
+    @ResponseBody
+    public Foo findById(@PathVariable final long id) {
         return new Foo(Long.parseLong(randomNumeric(2)), randomAlphabetic(4));
     }
 
@@ -32,8 +32,9 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/foos/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
+    @ResponseBody
+    public Foo updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
         System.out.println(foo);
+        return foo;
     }
-
 }
