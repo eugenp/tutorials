@@ -20,25 +20,24 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         super();
     }
 
-    // API
+    //
 
     @Override
     public void configureMessageConverters(final List<HttpMessageConverter<?>> messageConverters) {
-        messageConverters.add(marshallingHttpMessageConverter());
+        messageConverters.add(createXmlHttpMessageConverter());
         messageConverters.add(new MappingJackson2HttpMessageConverter());
 
         super.configureMessageConverters(messageConverters);
     }
 
-    // UTIL
+    private HttpMessageConverter<Object> createXmlHttpMessageConverter() {
+        final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
 
-    private final MarshallingHttpMessageConverter marshallingHttpMessageConverter() {
-        final MarshallingHttpMessageConverter marshallingHttpMessageConverter = new MarshallingHttpMessageConverter();
         final XStreamMarshaller xstreamMarshaller = new XStreamMarshaller();
-        marshallingHttpMessageConverter.setMarshaller(xstreamMarshaller);
-        marshallingHttpMessageConverter.setUnmarshaller(xstreamMarshaller);
+        xmlConverter.setMarshaller(xstreamMarshaller);
+        xmlConverter.setUnmarshaller(xstreamMarshaller);
 
-        return marshallingHttpMessageConverter;
+        return xmlConverter;
     }
 
 }
