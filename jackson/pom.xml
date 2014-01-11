@@ -106,7 +106,7 @@
 
         <!-- persistence -->
         <hibernate.version>4.3.0.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.27</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.28</mysql-connector-java.version>
 
         <!-- marshalling -->
         <jackson.version>2.3.0</jackson.version>
@@ -116,11 +116,11 @@
         <logback.version>1.0.11</logback.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>15.0</guava.version>
-        <commons-lang3.version>3.1</commons-lang3.version>
+        <guava.version>16.0-rc1</guava.version>
+        <commons-lang3.version>3.2.1</commons-lang3.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
@@ -137,7 +137,7 @@
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.6</cargo-maven2-plugin.version>
 
     </properties>
 
