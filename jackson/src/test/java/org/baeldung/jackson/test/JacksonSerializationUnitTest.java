@@ -1,30 +1,27 @@
 package org.baeldung.jackson.test;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.List;
 
 import org.baeldung.jackson.dtos.Item;
+import org.baeldung.jackson.dtos.ItemWithSerializer;
 import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.MyDtoFieldNameChanged;
 import org.baeldung.jackson.dtos.MyDtoNoAccessors;
 import org.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
 import org.baeldung.jackson.dtos.User;
-import org.baeldung.jackson.try1.ItemSerializer;
+import org.baeldung.jackson.serialization.ItemSerializer;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -102,19 +99,31 @@ public class JacksonSerializationUnitTest {
     // tests - custom serializer
 
     @Test
+    public final void whenSerializing_thenNoExceptions() throws JsonGenerationException, JsonMappingException, IOException {
+        final Item myItem = new Item(1, "theItem", new User(2, "theUser"));
+        final String serialized = new ObjectMapper().writeValueAsString(myItem);
+        System.out.println(serialized);
+    }
+
+    @Test
     public final void whenSerializingWithCustomSerializer_thenNoExceptions() throws JsonGenerationException, JsonMappingException, IOException {
-        final Item myItem = new Item(Integer.parseInt(randomNumeric(2)), randomAlphabetic(8), new User(Integer.parseInt(randomNumeric(2)), randomAlphabetic(8)));
+        final Item myItem = new Item(1, "theItem", new User(2, "theUser"));
 
         final ObjectMapper mapper = new ObjectMapper();
 
-        final SimpleModule simpleModule = new SimpleModule("SimpleModule", new Version(1, 0, 0, null));
+        final SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Item.class, new ItemSerializer());
-        // simpleModule.addSerializer(User.class, new UserSerializer());
         mapper.registerModule(simpleModule);
 
-        final StringWriter writer = new StringWriter();
-        mapper.writeValue(writer, myItem);
-        final String serialized = writer.toString();
+        final String serialized = mapper.writeValueAsString(myItem);
+        System.out.println(serialized);
+    }
+
+    @Test
+    public final void givenSerializerRegisteredOnClass_whenSerializingWithCustomSerializer_thenNoExceptions() throws JsonGenerationException, JsonMappingException, IOException {
+        final ItemWithSerializer myItem = new ItemWithSerializer(1, "theItem", new User(2, "theUser"));
+
+        final String serialized = new ObjectMapper().writeValueAsString(myItem);
         System.out.println(serialized);
     }
 

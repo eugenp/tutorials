@@ -7,12 +7,12 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 
 import org.baeldung.jackson.dtos.MyDto;
-import org.baeldung.jackson.dtos.MyDtoIgnoreField;
-import org.baeldung.jackson.dtos.MyDtoIgnoreFieldByName;
-import org.baeldung.jackson.dtos.MyDtoIgnoreNull;
 import org.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
 import org.baeldung.jackson.dtos.MyDtoWithFilter;
 import org.baeldung.jackson.dtos.MyMixInForString;
+import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreField;
+import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreFieldByName;
+import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreNull;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

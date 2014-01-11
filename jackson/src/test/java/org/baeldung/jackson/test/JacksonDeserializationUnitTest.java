@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 
 import org.baeldung.jackson.dtos.MyDto;
-import org.baeldung.jackson.dtos.MyDtoIgnoreUnknown;
+import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreUnknown;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonFactory;
