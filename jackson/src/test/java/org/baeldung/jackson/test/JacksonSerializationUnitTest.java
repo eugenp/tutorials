@@ -1,28 +1,33 @@
 package org.baeldung.jackson.test;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.List;
 
+import org.baeldung.jackson.dtos.Item;
 import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.MyDtoFieldNameChanged;
 import org.baeldung.jackson.dtos.MyDtoNoAccessors;
 import org.baeldung.jackson.dtos.MyDtoNoAccessorsAndFieldVisibility;
-import org.baeldung.jackson.dtos.withEnum.MyDtoWithEnum;
-import org.baeldung.jackson.dtos.withEnum.MyDtoWithEnumCustom;
-import org.baeldung.jackson.dtos.withEnum.TypeEnum;
-import org.baeldung.jackson.dtos.withEnum.TypeEnumWithCustomSerializer;
+import org.baeldung.jackson.dtos.User;
+import org.baeldung.jackson.try1.ItemSerializer;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.common.collect.Lists;
 
 public class JacksonSerializationUnitTest {
@@ -82,44 +87,6 @@ public class JacksonSerializationUnitTest {
         assertThat(dtoAsString, containsString("booleanValue"));
     }
 
-    // tests - enums
-
-    @Test
-    public final void whenSerializingSimpleEnum_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
-
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
-    }
-
-    @Test
-    public final void whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnum("a", 1, true, TypeEnum.TYPE1));
-
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
-    }
-
-    @Test
-    public final void givenCustomSerializer_whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, TypeEnumWithCustomSerializer.TYPE1));
-
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
-    }
-
-    @Test
-    public final void whenSerializingArrayOfEnums_thenCorrect() throws JsonParseException, IOException {
-        final ObjectMapper mapper = new ObjectMapper();
-        final String json = mapper.writeValueAsString(new TypeEnum[] { TypeEnum.TYPE1, TypeEnum.TYPE2 });
-
-        System.out.println(json);
-        assertThat(json, containsString("\"name\":\"Type A\""));
-    }
-
     // tests - multiple entities to json
 
     @Test
@@ -130,6 +97,25 @@ public class JacksonSerializationUnitTest {
         final String dtosAsString = mapper.writeValueAsString(listOfDtos);
 
         System.out.println(dtosAsString);
+    }
+
+    // tests - custom serializer
+
+    @Test
+    public final void whenSerializingWithCustomSerializer_thenNoExceptions() throws JsonGenerationException, JsonMappingException, IOException {
+        final Item myItem = new Item(Integer.parseInt(randomNumeric(2)), randomAlphabetic(8), new User(Integer.parseInt(randomNumeric(2)), randomAlphabetic(8)));
+
+        final ObjectMapper mapper = new ObjectMapper();
+
+        final SimpleModule simpleModule = new SimpleModule("SimpleModule", new Version(1, 0, 0, null));
+        simpleModule.addSerializer(Item.class, new ItemSerializer());
+        // simpleModule.addSerializer(User.class, new UserSerializer());
+        mapper.registerModule(simpleModule);
+
+        final StringWriter writer = new StringWriter();
+        mapper.writeValue(writer, myItem);
+        final String serialized = writer.toString();
+        System.out.println(serialized);
     }
 
 }
