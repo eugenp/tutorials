@@ -1,13 +1,17 @@
 package org.baeldung.jackson.dtos;
 
 public class Item {
-    public final int id;
-    public final String itemNr;
-    public final User owner;
+    public int id;
+    public String itemName;
+    public User owner;
 
-    public Item(final int id, final String itemNr, final User owner) {
+    public Item() {
+        super();
+    }
+
+    public Item(final int id, final String itemName, final User owner) {
         this.id = id;
-        this.itemNr = itemNr;
+        this.itemName = itemName;
         this.owner = owner;
     }
 
@@ -17,8 +21,8 @@ public class Item {
         return id;
     }
 
-    public String getItemNr() {
-        return itemNr;
+    public String getItemName() {
+        return itemName;
     }
 
     public User getOwner() {

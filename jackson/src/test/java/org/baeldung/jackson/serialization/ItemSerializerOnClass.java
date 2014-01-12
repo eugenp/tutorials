@@ -15,8 +15,8 @@ public class ItemSerializerOnClass extends JsonSerializer<ItemWithSerializer> {
     public final void serialize(final ItemWithSerializer value, final JsonGenerator jgen, final SerializerProvider provider) throws IOException, JsonProcessingException {
         jgen.writeStartObject();
         jgen.writeNumberField("id", value.id);
-        jgen.writeStringField("itemNr", value.itemNr);
-        jgen.writeNumberField("createdBy", value.owner.id);
+        jgen.writeStringField("itemName", value.itemName);
+        jgen.writeNumberField("owner", value.owner.id);
         jgen.writeEndObject();
     }
 

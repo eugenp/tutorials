@@ -1,11 +1,15 @@
 package org.baeldung.jackson.test;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
+import org.baeldung.jackson.deserialization.ItemDeserializer;
+import org.baeldung.jackson.dtos.Item;
+import org.baeldung.jackson.dtos.ItemWithSerializer;
 import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreUnknown;
 import org.junit.Test;
@@ -18,7 +22,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
-
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class JacksonDeserializationUnitTest {
 
@@ -128,6 +132,37 @@ public class JacksonDeserializationUnitTest {
         // When
         final JsonNode jsonNode1 = actualObj.get("k1");
         assertThat(jsonNode1.textValue(), equalTo("v1"));
+    }
+
+    // custom deserialization
+
+    @Test
+    public final void whenDeserializingTheStandardRepresentation_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"owner\":{\"id\":2,\"name\":\"theUser\"}}";
+
+        final Item readValue = new ObjectMapper().readValue(json, Item.class);
+        assertThat(readValue, notNullValue());
+    }
+
+    @Test
+    public final void whenDeserializingANonStandardRepresentation_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"owner\":2}";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        final SimpleModule module = new SimpleModule();
+        module.addDeserializer(Item.class, new ItemDeserializer());
+        mapper.registerModule(module);
+
+        final Item readValue = mapper.readValue(json, Item.class);
+        assertThat(readValue, notNullValue());
+    }
+
+    @Test
+    public final void givenDeserializerIsOnClass_whenDeserializingCustomRepresentation_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"owner\":2}";
+
+        final ItemWithSerializer readValue = new ObjectMapper().readValue(json, ItemWithSerializer.class);
+        assertThat(readValue, notNullValue());
     }
 
 }

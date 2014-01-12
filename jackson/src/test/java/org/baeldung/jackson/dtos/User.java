@@ -1,8 +1,12 @@
 package org.baeldung.jackson.dtos;
 
 public class User {
-    public final int id;
-    public final String name;
+    public int id;
+    public String name;
+
+    public User() {
+        super();
+    }
 
     public User(final int id, final String name) {
         this.id = id;

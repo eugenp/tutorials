@@ -1,18 +1,21 @@
 package org.baeldung.jackson.dtos;
 
+import org.baeldung.jackson.deserialization.ItemDeserializerOnClass;
 import org.baeldung.jackson.serialization.ItemSerializerOnClass;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(using = ItemSerializerOnClass.class)
+@JsonDeserialize(using = ItemDeserializerOnClass.class)
 public class ItemWithSerializer {
     public final int id;
-    public final String itemNr;
+    public final String itemName;
     public final User owner;
 
-    public ItemWithSerializer(final int id, final String itemNr, final User owner) {
+    public ItemWithSerializer(final int id, final String itemName, final User owner) {
         this.id = id;
-        this.itemNr = itemNr;
+        this.itemName = itemName;
         this.owner = owner;
     }
 
@@ -22,8 +25,8 @@ public class ItemWithSerializer {
         return id;
     }
 
-    public String getItemNr() {
-        return itemNr;
+    public String getItemName() {
+        return itemName;
     }
 
     public User getOwner() {
