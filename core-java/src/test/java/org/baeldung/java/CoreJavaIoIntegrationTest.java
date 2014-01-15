@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,9 +30,9 @@ public class CoreJavaIoIntegrationTest {
     }
 
     @Test
-    public final void givenUsingCommonsIo_whenIteratingAFile_thenCorrect() throws IOException {
-        final String path = "G:\\full\\train\\input\\" + "trainDataNegative.csv";
-        // final String path = "G:\\full\\train\\input\\" + "trainDataPositive.csv";
+    public final void givenUsingCommonsIo_whenIteratingAFileInMemory_thenCorrect() throws IOException {
+        // final String path = "G:\\full\\train\\input\\" + "trainDataNegative.csv";
+        final String path = "G:\\full\\train\\input\\" + "trainDataPositive.csv";
 
         logMemory();
         FileUtils.readLines(new File(path));
@@ -65,6 +66,26 @@ public class CoreJavaIoIntegrationTest {
             if (sc != null) {
                 sc.close();
             }
+        }
+
+        logMemory();
+    }
+
+    @Test
+    public final void givenUsingApacheIo_whenStreamingThroughAFile_thenCorrect() throws IOException {
+        final String path = "G:\\full\\train\\input\\" + "trainDataNegative.csv";
+        // final String path = "G:\\full\\train\\input\\" + "trainDataPositive.csv";
+
+        logMemory();
+
+        final LineIterator it = FileUtils.lineIterator(new File(path), "UTF-8");
+        try {
+            while (it.hasNext()) {
+                final String line = it.nextLine();
+                // do something with line
+            }
+        } finally {
+            LineIterator.closeQuietly(it);
         }
 
         logMemory();
