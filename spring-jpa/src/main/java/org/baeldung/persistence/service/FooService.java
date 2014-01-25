@@ -23,4 +23,8 @@ public class FooService {
         dao.create(entity);
     }
 
+    public Foo findOne(final long id) {
+        return dao.findOne(id);
+    }
+
 }
