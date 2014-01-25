@@ -16,12 +16,9 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpProtocolParams;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,33 +84,6 @@ public class HttpClientLiveTest {
 
         final Header[] headers = response.getHeaders(HttpHeaders.CONTENT_TYPE);
         assertThat(headers, not(emptyArray()));
-    }
-
-    // tests - headers
-
-    @SuppressWarnings("deprecation")
-    @Test
-    public final void givenDeprecatedApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        final DefaultHttpClient client = new DefaultHttpClient();
-        client.getParams().setParameter(CoreProtocolPNames.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-        HttpProtocolParams.setUserAgent(client.getParams(), "Mozilla/5.0 Firefox/26.0");
-
-        final HttpGet request = new HttpGet(SAMPLE_URL);
-        response = client.execute(request);
-    }
-
-    @Test
-    public final void givenDeprecatedApi_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        instance = HttpClients.custom().build();
-        final HttpGet request = new HttpGet(SAMPLE_URL);
-        request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-        response = instance.execute(request);
-    }
-
-    @Test
-    public final void whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        instance = HttpClients.custom().setUserAgent("Mozilla/5.0 Firefox/26.0").build();
-        response = instance.execute(new HttpGet(SAMPLE_URL));
     }
 
     // tests - cancel request
