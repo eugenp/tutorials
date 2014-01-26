@@ -1,8 +1,8 @@
 package org.baeldung.web.controller;
 
+import org.baeldung.service.IFooService;
 import org.baeldung.web.dto.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class FooController {
 
     @Autowired
-    private ApplicationEventPublisher eventPublisher;
+    private IFooService service;
 
     public FooController() {
         super();
@@ -25,7 +25,7 @@ public class FooController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Foo findOne(@PathVariable("id") final Long id) {
-        return new Foo();
+        return service.findOne(id);
     }
 
 }

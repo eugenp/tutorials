@@ -1,4 +1,4 @@
-package org.baeldung.live;
+package org.baeldung.httpclient;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -25,7 +25,7 @@ import org.junit.Test;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
-public class HttpLiveServiceTemp {
+public class HttpClientUnshortenLiveTest {
 
     private CloseableHttpClient client;
 

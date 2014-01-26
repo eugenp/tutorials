@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package org.baeldung.config.child;
 
 import java.util.List;
 
