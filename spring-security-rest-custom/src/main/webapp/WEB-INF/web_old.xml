@@ -37,7 +37,6 @@
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
 
-
     <!-- Spring Security -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

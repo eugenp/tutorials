@@ -2,6 +2,7 @@ package org.baeldung.config;
 
 import java.util.Set;
 
+import javax.servlet.FilterRegistration.Dynamic;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -9,6 +10,7 @@ import javax.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
@@ -43,6 +45,11 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         if (!mappingConflicts.isEmpty()) {
             throw new IllegalStateException("'appServlet' could not be mapped to '/' due " + "to an existing mapping. This is a known issue under Tomcat versions " + "<= 7.0.14; see https://issues.apache.org/bugzilla/show_bug.cgi?id=51278");
         }
+
+        // spring security filter
+        final DelegatingFilterProxy springSecurityFilterChain = new DelegatingFilterProxy("springSecurityFilterChain");
+        final Dynamic addedFilter = sc.addFilter("springSecurityFilterChain", springSecurityFilterChain);
+        addedFilter.addMappingForUrlPatterns(null, false, "/*");
     }
 
 }
