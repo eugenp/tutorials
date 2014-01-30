@@ -27,13 +27,13 @@ public class HttpClientAuthLiveTest {
     private static final String DEFAULT_USER = "user1";
     private static final String DEFAULT_PASS = "user1Pass";
 
-    private CloseableHttpClient instance;
+    private CloseableHttpClient client;
 
     private CloseableHttpResponse response;
 
     @Before
     public final void before() {
-        instance = HttpClientBuilder.create().build();
+        client = HttpClientBuilder.create().build();
     }
 
     @After
@@ -57,9 +57,9 @@ public class HttpClientAuthLiveTest {
 
     @Test
     public final void whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws ClientProtocolException, IOException {
-        instance = HttpClientBuilder.create().setDefaultCredentialsProvider(provider()).build();
+        client = HttpClientBuilder.create().setDefaultCredentialsProvider(provider()).build();
 
-        response = instance.execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION));
+        response = client.execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION));
 
         final int statusCode = response.getStatusLine().getStatusCode();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));

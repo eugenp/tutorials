@@ -1,4 +1,3 @@
-web - 2014-01-30 20:48:07,161 [main] DEBUG o.a.h.c.protocol.RequestAddCookies - CookieSpec selected: best-match
 web - 2014-01-30 20:48:07,171 [main] DEBUG o.a.h.c.protocol.RequestAuthCache - Auth cache not set in the context
 web - 2014-01-30 20:48:07,172 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection request: [route: {}->http://localhost:8080][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
 web - 2014-01-30 20:48:07,185 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection leased: [id: 0][route: {}->http://localhost:8080][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
