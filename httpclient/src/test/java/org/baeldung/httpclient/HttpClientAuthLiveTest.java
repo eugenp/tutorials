@@ -23,6 +23,10 @@ import org.junit.Test;
 
 public class HttpClientAuthLiveTest {
 
+    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8080/spring-security-rest-basic-auth/api/foos/1";
+    private static final String DEFAULT_USER = "user1";
+    private static final String DEFAULT_PASS = "user1Pass";
+
     private CloseableHttpClient instance;
 
     private CloseableHttpResponse response;
@@ -51,22 +55,23 @@ public class HttpClientAuthLiveTest {
 
     // tests
 
-    // simple request - response
-
     @Test
-    public final void whenExecutingBasicGetRequest_thenNoExceptions() throws ClientProtocolException, IOException {
-        final CredentialsProvider provider = new BasicCredentialsProvider();
-        final AuthScope scope = new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, AuthScope.ANY_REALM);
-        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials("user1", "user1Pass");
+    public final void whenExecutingBasicGetRequestWithBasicAuthenticationEnabled_thenSuccess() throws ClientProtocolException, IOException {
+        instance = HttpClientBuilder.create().setDefaultCredentialsProvider(provider()).build();
 
-        provider.setCredentials(scope, credentials);
-
-        instance = HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
-
-        response = instance.execute(new HttpGet("http://localhost:8080/spring-security-mvc-basic-auth/homepage.html"));
+        response = instance.execute(new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION));
 
         final int statusCode = response.getStatusLine().getStatusCode();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+    }
+
+    // UTILS
+
+    private final CredentialsProvider provider() {
+        final CredentialsProvider provider = new BasicCredentialsProvider();
+        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS);
+        provider.setCredentials(AuthScope.ANY, credentials);
+        return provider;
     }
 
 }
