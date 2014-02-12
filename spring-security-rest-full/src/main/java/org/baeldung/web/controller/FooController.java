@@ -2,7 +2,6 @@ package org.baeldung.web.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
@@ -48,10 +47,10 @@ public class FooController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Foo findById(@PathVariable("id") final Long id, final HttpServletRequest request, final HttpServletResponse response) {
+    public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
         final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
 
-        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, request, response));
+        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
         return resourceById;
     }
 
