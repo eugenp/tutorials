@@ -1,10 +1,11 @@
-package org.baeldung.web.util;
+package org.baeldung.web.hateoas.listener;
 
 import java.net.URI;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.http.HttpHeaders;
+import org.baeldung.web.hateoas.event.ResourceCreatedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -12,10 +13,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.google.common.base.Preconditions;
 
 @Component
-class ResourceCreatedDiscoverabilityListener implements ApplicationListener<ResourceCreated> {
+class ResourceCreatedDiscoverabilityListener implements ApplicationListener<ResourceCreatedEvent> {
 
     @Override
-    public void onApplicationEvent(final ResourceCreated resourceCreatedEvent) {
+    public void onApplicationEvent(final ResourceCreatedEvent resourceCreatedEvent) {
         Preconditions.checkNotNull(resourceCreatedEvent);
 
         final HttpServletResponse response = resourceCreatedEvent.getResponse();

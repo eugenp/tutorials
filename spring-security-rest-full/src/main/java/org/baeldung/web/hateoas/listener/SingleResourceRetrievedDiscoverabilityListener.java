@@ -1,8 +1,10 @@
-package org.baeldung.web.util;
+package org.baeldung.web.hateoas.listener;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
+import org.baeldung.web.util.LinkUtil;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +12,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
 
 @Component
-class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListener<SingleResourceRetrieved> {
+class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListener<SingleResourceRetrievedEvent> {
 
     @Override
-    public void onApplicationEvent(final SingleResourceRetrieved resourceRetrievedEvent) {
+    public void onApplicationEvent(final SingleResourceRetrievedEvent resourceRetrievedEvent) {
         Preconditions.checkNotNull(resourceRetrievedEvent);
 
         final HttpServletRequest request = resourceRetrievedEvent.getRequest();

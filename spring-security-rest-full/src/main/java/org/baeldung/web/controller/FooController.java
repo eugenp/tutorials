@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.exception.MyResourceNotFoundException;
-import org.baeldung.web.hateoas.PaginatedResultsRetrievedEvent;
-import org.baeldung.web.util.ResourceCreated;
+import org.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
+import org.baeldung.web.hateoas.event.ResourceCreatedEvent;
+import org.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
 import org.baeldung.web.util.RestPreconditions;
-import org.baeldung.web.util.SingleResourceRetrieved;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
@@ -51,7 +51,7 @@ public class FooController {
     public Foo findById(@PathVariable("id") final Long id, final HttpServletRequest request, final HttpServletResponse response) {
         final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
 
-        eventPublisher.publishEvent(new SingleResourceRetrieved(this, request, response));
+        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, request, response));
         return resourceById;
     }
 
@@ -83,7 +83,7 @@ public class FooController {
         Preconditions.checkNotNull(resource);
         final Long idOfCreatedResource = service.create(resource).getId();
 
-        eventPublisher.publishEvent(new ResourceCreated(this, response, idOfCreatedResource));
+        eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
     }
 
 }
