@@ -138,7 +138,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.0.0.RELEASE</org.springframework.version>
+        <org.springframework.version>4.0.1.RELEASE</org.springframework.version>
 
         <!-- marshalling -->
         <jackson.version>2.3.0</jackson.version>
@@ -148,10 +148,10 @@
         <logback.version>1.0.11</logback.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>16.0-rc1</guava.version>
+        <guava.version>16.0.1</guava.version>
         <commons-lang3.version>3.2.1</commons-lang3.version>
 
         <!-- testing -->
@@ -160,16 +160,16 @@
         <mockito.version>1.9.5</mockito.version>
 
         <httpcore.version>4.3.1</httpcore.version>
-        <httpclient.version>4.3.1</httpclient.version>
+        <httpclient.version>4.3.2</httpclient.version>
 
-        <rest-assured.version>2.1.0</rest-assured.version>
+        <rest-assured.version>2.3.0</rest-assured.version>
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.5</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.7</cargo-maven2-plugin.version>
 
     </properties>
 
