@@ -79,11 +79,11 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Foo resource, final HttpServletRequest request, final HttpServletResponse response) {
+    public void create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
         final Long idOfCreatedResource = service.create(resource).getId();
 
-        eventPublisher.publishEvent(new ResourceCreated(this, request, response, idOfCreatedResource));
+        eventPublisher.publishEvent(new ResourceCreated(this, response, idOfCreatedResource));
     }
 
 }
