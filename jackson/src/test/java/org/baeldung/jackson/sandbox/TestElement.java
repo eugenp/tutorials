@@ -1,13 +1,10 @@
 package org.baeldung.jackson.sandbox;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class TestElement {
 
     int x;
 
-    @JsonIgnore
-    private String y;
+    private transient String y;
 
     public int getX() {
         return x;
