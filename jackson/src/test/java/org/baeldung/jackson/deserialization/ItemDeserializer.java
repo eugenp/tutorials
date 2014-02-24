@@ -22,7 +22,7 @@ public class ItemDeserializer extends JsonDeserializer<Item> {
         final JsonNode node = jp.getCodec().readTree(jp);
         final int id = (Integer) ((IntNode) node.get("id")).numberValue();
         final String itemName = node.get("itemName").asText();
-        final int userId = (Integer) ((IntNode) node.get("owner")).numberValue();
+        final int userId = (Integer) ((IntNode) node.get("createdBy")).numberValue();
 
         return new Item(id, itemName, new User(userId, null));
     }

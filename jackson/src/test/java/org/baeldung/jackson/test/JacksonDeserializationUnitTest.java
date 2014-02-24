@@ -146,7 +146,7 @@ public class JacksonDeserializationUnitTest {
 
     @Test
     public final void whenDeserializingANonStandardRepresentation_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"owner\":2}";
+        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"createdBy\":2}";
         final ObjectMapper mapper = new ObjectMapper();
 
         final SimpleModule module = new SimpleModule();
