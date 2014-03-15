@@ -1,15 +1,10 @@
 package org.baeldung.spring;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
-@EnableWebMvc
+@ImportResource("classpath:webMvcConfig.xml")
 @Configuration
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
@@ -19,21 +14,4 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
     // API
 
-    @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-
-        registry.addViewController("/sample.html");
-    }
-
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
-
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/view/");
-        bean.setSuffix(".jsp");
-
-        return bean;
-    }
 }
