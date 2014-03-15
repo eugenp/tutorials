@@ -4,4 +4,3 @@
 
 
 ### Relevant Articles: 
-- [Spring MVC Tutorial](http://www.baeldung.com/spring-mvc-tutorial) 
