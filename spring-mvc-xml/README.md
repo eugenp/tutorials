@@ -1,6 +1,7 @@
 =========
 
 ## Spring MVC with XML Configuration Example Project
+- access a sample jsp page at: `http://localhost:8080/spring-mvc-xml/sample.html`
 
 
 ### Relevant Articles: 
