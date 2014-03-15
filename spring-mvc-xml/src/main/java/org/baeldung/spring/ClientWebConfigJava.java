@@ -9,9 +9,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 //@EnableWebMvc
 //@Configuration
-public class ClientWebConfigOld extends WebMvcConfigurerAdapter {
+public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
 
-    public ClientWebConfigOld() {
+    public ClientWebConfigJava() {
         super();
     }
 
