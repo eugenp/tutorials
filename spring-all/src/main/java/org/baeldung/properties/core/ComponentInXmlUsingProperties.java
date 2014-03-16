@@ -16,7 +16,7 @@ public class ComponentInXmlUsingProperties implements InitializingBean {
     public ComponentInXmlUsingProperties(final String propertyValue) {
         super();
 
-        System.out.println("Constructor Injection - Property Value resolted to: " + propertyValue);
+        System.out.println("Constructor Injection - Property Value resolved to: " + propertyValue);
     }
 
     //
