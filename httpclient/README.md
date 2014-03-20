@@ -11,3 +11,6 @@
 - [HttpClient 4 Cookbook](http://www.baeldung.com/httpclient4)
 - [Unshorten URLs with HttpClient](http://www.baeldung.com/unshorten-url-httpclient)
 - [HttpClient with SSL](http://www.baeldung.com/httpclient-ssl)
+- [HttpClient 4 – Follow Redirects for POST](http://www.baeldung.com/httpclient-redirect-on-http-post)
+- [HttpClient – Set Custom Header](http://www.baeldung.com/httpclient-custom-http-header)
+- [HttpClient Basic Authentication](http://www.baeldung.com/httpclient-4-basic-authentication)

@@ -9,6 +9,7 @@
 - [HATEOAS for a Spring REST Service](http://www.baeldung.com/2011/11/13/rest-service-discoverability-with-spring-part-5/)
 - [REST API Discoverability and HATEOAS](http://www.baeldung.com/2011/11/06/restful-web-service-discoverability-part-4/)
 - [ETags for REST with Spring](http://www.baeldung.com/2013/01/11/etags-for-rest-with-spring/)
+- [Error Handling for REST with Spring 3](http://www.baeldung.com/2013/01/31/exception-handling-for-rest-with-spring-3-2/)
 
 
 ### Build the Project
