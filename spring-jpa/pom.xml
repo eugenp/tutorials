@@ -178,7 +178,7 @@
 	<properties>
 		<!-- Spring -->
 		<org.springframework.version>4.0.2.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.2.2.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
 		<hibernate.version>4.3.4.Final</hibernate.version>
@@ -193,7 +193,7 @@
 
 		<!-- util -->
 		<guava.version>16.0.1</guava.version>
-		<commons-lang3.version>3.3</commons-lang3.version>
+		<commons-lang3.version>3.3.1</commons-lang3.version>
 
 		<!-- testing -->
 		<org.hamcrest.version>1.3</org.hamcrest.version>
@@ -209,7 +209,7 @@
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.16</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
 		<cargo-maven2-plugin.version>1.4.7</cargo-maven2-plugin.version>
 
