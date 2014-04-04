@@ -275,11 +275,11 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.0.2.RELEASE</org.springframework.version>
+		<org.springframework.version>4.0.3.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
-		<hibernate.version>4.3.4.Final</hibernate.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
 		<mysql-connector-java.version>5.1.29</mysql-connector-java.version>
 
 		<!-- http -->
@@ -287,8 +287,8 @@
 		<httpclient.version>4.3.3</httpclient.version>
 
 		<!-- logging -->
-		<org.slf4j.version>1.7.5</org.slf4j.version>
-		<logback.version>1.0.11</logback.version> <!-- do not upgrade - see http://jira.qos.ch/browse/LOGBACK-851 -->
+		<org.slf4j.version>1.7.6</org.slf4j.version>
+		<logback.version>1.1.1</logback.version> <!-- do not upgrade - see http://jira.qos.ch/browse/LOGBACK-851 -->
 
 		<!-- various -->
 		<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
@@ -302,7 +302,7 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.9.5</mockito.version>
 
-		<rest-assured.version>2.3.0</rest-assured.version>
+		<rest-assured.version>2.3.1</rest-assured.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
