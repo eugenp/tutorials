@@ -1,5 +1,7 @@
 package org.baeldung.persistence.service;
 
+import java.util.List;
+
 import org.baeldung.persistence.dao.IFooDao;
 import org.baeldung.persistence.model.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ public class FooService {
 
     public Foo findOne(final long id) {
         return dao.findOne(id);
+    }
+
+    public List<Foo> findAll() {
+        return dao.findAll();
     }
 
 }
