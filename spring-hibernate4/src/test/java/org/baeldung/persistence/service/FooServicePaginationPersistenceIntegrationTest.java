@@ -17,7 +17,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -149,49 +148,32 @@ public class FooServicePaginationPersistenceIntegrationTest {
 
     @SuppressWarnings("unchecked")
     @Test
-    public final void givenUsingTheScrollableApi_whenRetrievingPaginatedData_thenCorrect2() {
-        final int minId = 0;
-        final int maxId = 10;
-
-        final Criteria criteriaCount = session.createCriteria(Foo.class, "FOO");
-        criteriaCount.add(Restrictions.between("id", minId, maxId));
-        criteriaCount.addOrder(Order.asc("id"));
-        criteriaCount.setProjection(Projections.rowCount());
-        final Long count = (Long) criteriaCount.uniqueResult();
-
-        int pageNumber = 1;
+    public final void givenUsingTheCriteriaApi_whenRetrievingFirstPage_thenCorrect() {
         final int pageSize = 10;
-        final List<Foo> fooList = Lists.newArrayList();
 
-        final Criteria criteria = session.createCriteria(Foo.class, "FOO");
-        criteria.add(Restrictions.between("id", minId, maxId));
+        final Criteria criteria = session.createCriteria(Foo.class);
         criteria.addOrder(Order.asc("id"));
-        int totalEntities = 0;
-        while (totalEntities < count.intValue()) {
-            criteria.setFirstResult((pageNumber - 1) * pageSize);
-            criteria.setMaxResults(pageSize);
-            fooList.addAll(criteria.list());
-            totalEntities = fooList.size();
-            pageNumber++;
-        }
+        criteria.setFirstResult(0);
+        criteria.setMaxResults(pageSize);
+        final List<Foo> firstPage = criteria.list();
+
+        assertThat(firstPage, hasSize(pageSize));
     }
 
+    @SuppressWarnings("unchecked")
     @Test
-    public final void givenUsingTheScrollableApi_whenRetrievingPaginatedData_thenCorrect3() {
-        final int minId = 0;
-        final int maxId = 10;
+    public final void givenUsingTheCriteriaApi_whenRetrievingPaginatedData_thenCorrect() {
+        final Criteria criteriaCount = session.createCriteria(Foo.class);
+        criteriaCount.addOrder(Order.asc("id"));
+        criteriaCount.setProjection(Projections.rowCount());
+        final Long count = (Long) criteriaCount.uniqueResult();
+
         int pageNumber = 1;
         final int pageSize = 10;
         final List<Foo> fooList = Lists.newArrayList();
 
-        final Criteria criteria = session.createCriteria(Foo.class, "FOO");
-        final Criteria criteriaCount = session.createCriteria(Foo.class, "FOO");
-        criteria.add(Restrictions.between("id", minId, maxId));
+        final Criteria criteria = session.createCriteria(Foo.class);
         criteria.addOrder(Order.asc("id"));
-        criteriaCount.add(Restrictions.between("id", minId, maxId));
-        criteriaCount.addOrder(Order.asc("id"));
-        criteriaCount.setProjection(Projections.rowCount());
-        final Long count = (Long) criteriaCount.uniqueResult();
         int totalEntities = 0;
         while (totalEntities < count.intValue()) {
             criteria.setFirstResult((pageNumber - 1) * pageSize);
