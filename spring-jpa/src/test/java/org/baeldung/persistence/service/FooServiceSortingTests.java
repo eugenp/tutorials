@@ -32,16 +32,15 @@ private EntityManager entityManager;
 	       
 	 }
 	
-	 @Test
-		public final void whenSortingByOneAttributeDefault_thenSortedResult() {
+    @Test
+    public final void whenSortingByOneAttributeDefault_thenSortedResult() {
 			
-			
-	        Query sortQuery = entityManager.createQuery
-	        	    ("Select f from Foo as f order by f.id");
-			List<Foo> fooList = sortQuery.getResultList();
-			for(Foo foo:fooList){
+        Query sortQuery = entityManager.createQuery
+            ("Select f from Foo as f order by f.id");
+        List<Foo> fooList = sortQuery.getResultList();
+        for(Foo foo:fooList){
 				System.out.println("Name:"+foo.getName()+"-------Id:"+foo.getId());
-			}
+        }
 			
 	}
 	 
@@ -68,5 +67,34 @@ private EntityManager entityManager;
 		}
 		
 	}
+    
+     @Test
+     public final void whenSortingFooWithCriteria_thenSortedFoos(){
+         
+         Root<Foo> from = criteriaQuery.from(Foo.class); 
+         CriteriaQuery<Foo> select = criteriaQuery.select(from);
+         criteriaQuery.orderBy(criteriaBuilder.asc(from.get("name")));
+         TypedQuery<Foo> typedQuery = entityManager.createQuery(select);
+         List<Foo>fooList = typedQuery.getResultList();
+         for(Foo foo:fooList){
+             System.out.println("Name:"+foo.getName()+"--------Id:"+foo.getId());
+         }
+     
+     }
+    
+     @Test
+     public final void whenSortingFooWithCriteriaAndMultipleAttributes_thenSortedFoos(){
+     
+         Root<Foo> from = criteriaQuery.from(Foo.class);
+         CriteriaQuery<Foo> select = criteriaQuery.select(from);
+         criteriaQuery.orderBy(criteriaBuilder.asc(from.get("name")), criteriaBuilder.desc(from.get("id")));
+         TypedQuery<Foo> typedQuery = entityManager.createQuery(select);
+         List<Foo>fooList = typedQuery.getResultList();
+         for(Foo foo:fooList){
+            System.out.println("Name:"+foo.getName()+"-------Id:"+foo.getId());
+         }
+     }
+    
+    
 
 }
