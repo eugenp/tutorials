@@ -18,11 +18,15 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContextBuilder;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.conn.ssl.TrustStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -67,7 +71,7 @@ public class RawClientLiveTest {
     }
 
     @Test
-    public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws IOException, GeneralSecurityException {
+    public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
             @Override
             public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
@@ -80,6 +84,21 @@ public class RawClientLiveTest {
         final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
 
         final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
+
+        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
+        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
+
+    @Test
+    public final void givenHttpClientPost4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
+        final SSLContextBuilder builder = new SSLContextBuilder();
+        builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(builder.build());
+        final CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+
+        // new
 
         final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
         final HttpGet getMethod = new HttpGet(urlOverHttps);
