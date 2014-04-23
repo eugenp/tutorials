@@ -35,12 +35,12 @@ public class RawClientLiveTest {
     public final void whenSecuredRestApiIsConsumed_then200OK() throws ClientProtocolException, IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-        final int timeout = 20; // seconds
+        final int timeout = 30; // seconds
         final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(timeout).setConnectTimeout(timeout).setSocketTimeout(timeout).build();
         final HttpGet getMethod = new HttpGet("http://localhost:8080/spring-security-rest-basic-auth/api/bars/1");
         getMethod.setConfig(requestConfig);
 
-        final int hardTimeout = 5; // seconds
+        final int hardTimeout = 10; // seconds
         final TimerTask task = new TimerTask() {
             @Override
             public void run() {

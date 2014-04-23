@@ -2,17 +2,16 @@ package org.baeldung.client;
 
 import static org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
 
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.baeldung.client.spring.ClientConfig;
 import org.baeldung.web.dto.Foo;
 import org.junit.Ignore;
@@ -38,13 +37,14 @@ public class ClientLiveTest {
     // tests
 
     @Test
-    public final void whenSecuredRestApiIsConsumed_then200OK() {
-        final HttpComponentsClientHttpRequestFactory requestFactory = (HttpComponentsClientHttpRequestFactory) secureRestTemplate.getRequestFactory();
-        final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
-        httpClient.getCredentialsProvider().setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user", "userPass"));
+    public final void whenContextIsBootstrapped_thenNoExceptions() {
+        //
+    }
 
+    @Test
+    public final void whenSecuredRestApiIsConsumed_then200OK() {
         final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
-        System.out.println(responseEntity.getStatusCode());
+        assertThat(responseEntity.getStatusCode().value(), is(200));
     }
 
     @Test(expected = ResourceAccessException.class)
@@ -58,7 +58,7 @@ public class ClientLiveTest {
     @Ignore("Only to run against a Server with HTTPS enabled (on 8443)")
     public final void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenException() throws GeneralSecurityException {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-        final DefaultHttpClient httpClient = (DefaultHttpClient) requestFactory.getHttpClient();
+        final CloseableHttpClient httpClient = (CloseableHttpClient) requestFactory.getHttpClient();
 
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
             @Override

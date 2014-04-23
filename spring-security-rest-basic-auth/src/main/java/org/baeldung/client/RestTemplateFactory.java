@@ -1,13 +1,15 @@
 package org.baeldung.client;
 
-import org.apache.http.HttpHost;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,27 +40,16 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
 
     @Override
     public void afterPropertiesSet() {
-        final HttpHost host = new HttpHost("localhost", 8080, "http");
-        final HttpComponentsClientHttpRequestFactoryBasicAuth requestFactory = new HttpComponentsClientHttpRequestFactoryBasicAuth(host);
-        restTemplate = new RestTemplate(requestFactory);
-
         final int timeout = 5;
-        final HttpClient httpClient = requestFactory.getHttpClient();
-        // - note: timeout via raw String parameters
-        // httpClient.getParams().setParameter("http.connection.timeout", timeout * 1000);
-        // httpClient.getParams().setParameter("http.socket.timeout", timeout * 1000);
 
-        // httpClient.getParams().setParameter("http.connection-manager.timeout", new Long(timeout * 1000));
-        // httpClient.getParams().setParameter("http.protocol.head-body-timeout", timeout * 1000);
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
 
-        // - note: timeout via the API
-        final HttpParams httpParams = httpClient.getParams();
-        httpParams.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, timeout * 1000);
-        httpParams.setParameter(CoreConnectionPNames.SO_TIMEOUT, timeout * 1000);
-        httpParams.setParameter(ClientPNames.CONN_MANAGER_TIMEOUT, new Long(timeout * 1000));
+        final BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
+        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCredentialsProvider(credentialsProvider).build();
 
-        HttpConnectionParams.setConnectionTimeout(httpParams, timeout * 1000); // http.connection.timeout
-        HttpConnectionParams.setSoTimeout(httpParams, timeout * 1000); // http.socket.timeout
+        final ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(client);
+        restTemplate = new RestTemplate(requestFactory);
     }
 
 }
