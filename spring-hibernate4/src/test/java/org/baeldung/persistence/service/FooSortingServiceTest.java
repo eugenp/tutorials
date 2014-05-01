@@ -16,10 +16,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-package com.cc.code.samples.hibernate.sorting;
-
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -51,9 +47,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
 import org.junit.BeforeClass;
 import org.junit.Test;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 
-import com.cc.example.hibernate.Foo;
-import com.cc.example.hibernate.Bar;
+
 
 public class FooSortingServiceTest {
 
