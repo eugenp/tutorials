@@ -70,8 +70,7 @@ public class FooSortingServiceTest {
 	      for(Foo foo: fooList){
 	        System.out.println(
 	            "Name: " + foo.getName()
-	            + ", Id: " + foo.getId()
-	            
+	            + ", Id: " + foo.getId()	            
 	          );
 	      }
 	      Transaction tr = sess.beginTransaction();
