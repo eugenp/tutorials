@@ -1,21 +1,13 @@
 Spring Tutorials
-=========
+================
 
-Spring MVC
-=========
-[Spring MVC Tutorial](http://www.baeldung.com/spring-mvc-tutorial)
+This project is a collection of small and focused tutorials each covering a single and well defined area of development. 
+Most of the tutorial projects are focused on the `Spring Framework` (and `Spring Security`).  
+In additional to Spring, the following technologies are in focus: `core Java`, `Jackson`, `HttpClient`, `Guava`. 
 
+Working with the code in Eclipse
+================================
+Any IDE can be used to work with the projects, but if you're using Eclipse, consider the following. 
 
-Spring Persistence
-=========
-[Hibernate 3 with Spring](http://www.baeldung.com/hibernate3-spring)
-
-
-Spring Security
-=========
-[Spring Security Login](http://www.baeldung.com/spring-security-login)
-
-
-
-
+- use the included formatter: 
 
