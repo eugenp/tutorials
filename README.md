@@ -10,5 +10,5 @@ Working with the code in Eclipse
 ================================
 Any IDE can be used to work with the projects, but if you're using Eclipse, consider the following. 
 
-- import the included formatter in Eclipse: 
+- import the included **formatter** in Eclipse: 
 `https://github.com/eugenp/tutorials/tree/master/eclipse`
