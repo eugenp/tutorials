@@ -252,6 +252,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*LiveTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
