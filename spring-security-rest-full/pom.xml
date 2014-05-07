@@ -266,7 +266,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -307,7 +307,7 @@
         <!-- persistence -->
         <hibernate.version>4.3.5.Final</hibernate.version>
         <mysql-connector-java.version>5.1.30</mysql-connector-java.version>
-        <spring-data-jpa.version>1.4.3.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.5.2.RELEASE</spring-data-jpa.version>
 
         <!-- marshalling -->
 
