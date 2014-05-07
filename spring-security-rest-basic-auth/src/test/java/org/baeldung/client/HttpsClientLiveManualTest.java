@@ -31,7 +31,11 @@ import org.apache.http.impl.conn.PoolingClientConnectionManager;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class RawClientLiveTest {
+/**
+ * This test requires a localhost server over HTTPS <br>
+ * It should only be manually run, not part of the automated build
+ * */
+public class HttpsClientLiveManualTest {
 
     // tests
 
@@ -70,6 +74,7 @@ public class RawClientLiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
+    @SuppressWarnings("deprecation")
     @Test
     public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
@@ -89,6 +94,8 @@ public class RawClientLiveTest {
         final HttpGet getMethod = new HttpGet(urlOverHttps);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+
+        httpClient.close();
     }
 
     @Test
