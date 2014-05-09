@@ -1,7 +1,6 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,51 +11,51 @@ import javax.persistence.CascadeType;
 @Entity
 public class Bar implements Serializable {
     
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    
-    @Column(nullable = false)
-    private String name;
+    private int id;
     
     @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     List<Foo> fooList;
     
-    public Bar() {
+    private String name;
+    
+    public Bar(){
         super();
     }
     
-    public Bar(final String name) {
+    public Bar(final String name){
         super();
-        
         this.name = name;
     }
-    
-    // API
-    
-    public long getId() {
-        return id;
-    }
-    
-    public void setId(final long id) {
-        this.id = id;
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(final String name) {
-        this.name = name;
-    }
+
+    //API
     
     public List<Foo> getFooList() {
         return fooList;
     }
     
-    public void setFooList(final List<Foo> fooList) {
+    public void setFooList(List<Foo> fooList) {
         this.fooList = fooList;
+    }
+    
+    public int getId() {
+        return this.id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
     
     //
