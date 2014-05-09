@@ -7,60 +7,60 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.CascadeType;
 
 @Entity
-public class Foo implements Serializable {
-
+public class Bar implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(nullable = true)
-    private String name;
-   
-    @ManyToOne(targetEntity= Bar.class,fetch=FetchType.EAGER)
-	@JoinColumn(name="BAR_ID")
-	private Bar bar;
     
-    public Foo() {
+    @Column(nullable = false)
+    private String name;
+    
+    @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OrderBy("name ASC")
+    List<Foo> fooList;
+    
+    public Bar() {
         super();
     }
-
-    public Foo(final String name) {
+    
+    public Bar(final String name) {
         super();
-
+        
         this.name = name;
     }
-
+    
     // API
-
+    
     public long getId() {
         return id;
     }
-
+    
     public void setId(final long id) {
         this.id = id;
     }
-
+    
     public String getName() {
         return name;
     }
-
+    
     public void setName(final String name) {
         this.name = name;
     }
     
-    public Bar getBar() {
-		return bar;
-	}
+    public List<Foo> getFooList() {
+        return fooList;
+    }
     
-	public void setBar(final Bar bar) {
-		this.bar = bar;
-	}
-   
+    public void setFooList(final List<Foo> fooList) {
+        this.fooList = fooList;
+    }
+    
     //
-
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -68,7 +68,7 @@ public class Foo implements Serializable {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-
+    
     @Override
     public boolean equals(final Object obj) {
         if (this == obj)
@@ -77,7 +77,7 @@ public class Foo implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        final Foo other = (Foo) obj;
+        final Bar other = (Bar) obj;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -85,12 +85,12 @@ public class Foo implements Serializable {
             return false;
         return true;
     }
-
+    
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
+        builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
-
+    
 }
