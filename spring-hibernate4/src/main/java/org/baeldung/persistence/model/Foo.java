@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Foo implements Serializable {
@@ -28,7 +32,30 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
-    // API
+    @ManyToOne(targetEntity = Bar.class)
+    @JoinColumn(name = "BAR_ID")
+    @Fetch(FetchMode.JOIN)
+    private Bar bar = new Bar();
+    
+    private int bar_Id;
+    
+    public Bar getBar() {
+        return bar;
+    }
+    
+    public void setBar(Bar bar) {
+        this.bar = bar;
+    }
+    
+    public int getBar_Id() {
+        return bar_Id;
+    }
+    
+    public void setBar_Id(int bar_Id) {
+        this.bar_Id = bar_Id;
+    }
+    
+       // API
 
     public long getId() {
         return id;
