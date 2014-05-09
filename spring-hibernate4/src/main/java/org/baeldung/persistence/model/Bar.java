@@ -1,25 +1,14 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.Set;
+import com.google.common.collect.Sets;
+import javax.persistence.*;
+import org.hibernate.annotations.OrderBy;
 
 @Entity
+@NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
 public class Bar implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Column(nullable = false)
-    private String name;
-
-    private List<Foo> foos;
 
     public Bar() {
         super();
@@ -27,34 +16,48 @@ public class Bar implements Serializable {
 
     public Bar(final String name) {
         super();
-
+    
         this.name = name;
     }
 
-    // API
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    public long getId() {
-        return id;
+    private String name;
+
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy(clause = "NAME DESC")
+    Set<Foo> fooSet = Sets.newHashSet();
+
+    //API
+    
+    public Set<Foo> getFooSet() {
+        return fooSet;
     }
 
-    public void setId(final long id) {
+    public void setFooList(Set<Foo> fooSet) {
+        this.fooSet = fooSet;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
-
-    public List<Foo> getFooList() {
-        return foos;
-    }
-
     //
-
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -62,7 +65,7 @@ public class Bar implements Serializable {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-
+    
     @Override
     public boolean equals(final Object obj) {
         if (this == obj)
@@ -79,12 +82,13 @@ public class Bar implements Serializable {
             return false;
         return true;
     }
-
+    
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
+        builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
+
 
 }
