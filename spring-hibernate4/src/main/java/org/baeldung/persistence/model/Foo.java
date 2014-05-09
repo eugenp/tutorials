@@ -1,7 +1,6 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
