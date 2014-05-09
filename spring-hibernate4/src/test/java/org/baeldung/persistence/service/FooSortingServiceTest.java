@@ -37,7 +37,7 @@ import com.cc.example.hibernate.Bar;
 
 
 
-public class HibernateSortingTestService2 {
+public class FooSortingServiceTest {
     private static Configuration configuration;
     private static StandardServiceRegistryBuilder builder;
     private static SessionFactory sf;
