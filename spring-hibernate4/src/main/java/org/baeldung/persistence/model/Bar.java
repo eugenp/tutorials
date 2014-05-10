@@ -2,9 +2,19 @@ package org.baeldung.persistence.model;
 
 import java.io.Serializable;
 import java.util.Set;
-import com.google.common.collect.Sets;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
 import org.hibernate.annotations.OrderBy;
+
+import com.google.common.collect.Sets;
 
 @Entity
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
@@ -16,7 +26,7 @@ public class Bar implements Serializable {
 
     public Bar(final String name) {
         super();
-    
+
         this.name = name;
     }
 
@@ -31,18 +41,18 @@ public class Bar implements Serializable {
     @OrderBy(clause = "NAME DESC")
     Set<Foo> fooSet = Sets.newHashSet();
 
-    //API
-    
+    // API
+
     public Set<Foo> getFooSet() {
         return fooSet;
     }
-    
+
     public void setFooSet(final Set<Foo> fooSet) {
         this.fooSet = fooSet;
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(final int id) {
@@ -50,14 +60,15 @@ public class Bar implements Serializable {
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(final String name) {
         this.name = name;
     }
+
     //
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -65,7 +76,7 @@ public class Bar implements Serializable {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-    
+
     @Override
     public boolean equals(final Object obj) {
         if (this == obj)
@@ -82,13 +93,12 @@ public class Bar implements Serializable {
             return false;
         return true;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
-
 
 }

@@ -21,6 +21,12 @@ public class Foo implements Serializable {
         super();
 
     }
+
+    public Foo(final String name) {
+        super();
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -38,25 +44,18 @@ public class Foo implements Serializable {
         this.bar = bar;
     }
 
-    public int getBar_Id() {
-        return bar_Id;
-    }
-
-    public void setBar_Id(final int bar_Id) {
-        this.bar_Id = bar_Id;
-    }
-
-    private int bar_Id;
-
     public long getId() {
         return id;
     }
+
     public void setId(final long id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(final String name) {
         this.name = name;
     }
