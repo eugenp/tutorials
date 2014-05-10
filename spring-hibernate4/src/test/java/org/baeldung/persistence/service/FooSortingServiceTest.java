@@ -73,7 +73,6 @@ public class FooSortingServiceTest {
             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -88,7 +87,6 @@ public class FooSortingServiceTest {
 
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -100,10 +98,9 @@ public class FooSortingServiceTest {
         for (final Foo foo : fooList) {
             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
 
-            );
+                    );
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -115,10 +112,9 @@ public class FooSortingServiceTest {
         for (final Foo foo : fooList) {
             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
 
-            );
+                    );
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -131,7 +127,6 @@ public class FooSortingServiceTest {
             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -144,7 +139,6 @@ public class FooSortingServiceTest {
             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -158,7 +152,6 @@ public class FooSortingServiceTest {
             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -170,10 +163,8 @@ public class FooSortingServiceTest {
         assertNull(fooList.get(fooList.toArray().length - 1).getName());
         for (final Foo foo : fooList) {
             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
-
         }
         sess.getTransaction().commit();
-
     }
 
     @Test
@@ -198,7 +189,7 @@ public class FooSortingServiceTest {
         final Query query = sess.createQuery(hql);
         final List<Bar> barList = query.list();
         for (final Bar bar : barList) {
-            final Set<Foo> fooSet = bar.getFooList();
+            final Set<Foo> fooSet = bar.getFooSet();
             System.out.println("Bar Id:" + bar.getId());
             for (final Foo foo : fooSet) {
                 System.out.println("FooName:" + foo.getName());

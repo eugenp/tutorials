@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29-abr-2014 15:39:59 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.baeldung.persistence.model.Bar" table="BAR">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <set name="fooSet" table="FOO" inverse="false" lazy="true" order-by="NAME DESC">
+            <key>
+                <column name="BAR_ID" />
+            </key>
+            <one-to-many class="org.baeldung.persistence.model.Foo" />
+        </set>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+    </class>
+</hibernate-mapping>

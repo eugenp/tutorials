@@ -36,8 +36,8 @@ public class Bar implements Serializable {
     public Set<Foo> getFooSet() {
         return fooSet;
     }
-
-    public void setFooList(Set<Foo> fooSet) {
+    
+    public void setFooSet(final Set<Foo> fooSet) {
         this.fooSet = fooSet;
     }
 
@@ -45,7 +45,7 @@ public class Bar implements Serializable {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -53,7 +53,7 @@ public class Bar implements Serializable {
         return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
     //

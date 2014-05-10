@@ -2,46 +2,61 @@ package org.baeldung.persistence.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Foo implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Column(nullable = false)
-    private String name;
+    private static final long serialVersionUID = 1L;
 
     public Foo() {
         super();
+
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+    private String name;
+    @ManyToOne(targetEntity = Bar.class)
+    @JoinColumn(name = "BAR_ID")
+    @Fetch(FetchMode.JOIN)
+    private Bar bar = new Bar();
+
+    public Bar getBar() {
+        return bar;
     }
 
-    public Foo(final String name) {
-        super();
-
-        this.name = name;
+    public void setBar(final Bar bar) {
+        this.bar = bar;
     }
 
-    // API
+    public int getBar_Id() {
+        return bar_Id;
+    }
+
+    public void setBar_Id(final int bar_Id) {
+        this.bar_Id = bar_Id;
+    }
+
+    private int bar_Id;
 
     public long getId() {
         return id;
     }
-
     public void setId(final long id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(final String name) {
         this.name = name;
     }
