@@ -1,65 +1,69 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Bar implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     List<Foo> fooList;
-    
+
     private String name;
-    
+
     public Bar(){
         super();
     }
-    
+
     public Bar(final String name){
         super();
         this.name = name;
     }
 
     //API
-    
+
     public List<Foo> getFooList() {
         return fooList;
     }
-    
-    public void setFooList(List<Foo> fooList) {
+
+    public void setFooList(final List<Foo> fooList) {
         this.fooList = fooList;
     }
-    
+
     public int getId() {
-        return this.id;
+        return id;
     }
-    
-    public void setId(int id) {
+
+    public void setId(final int id) {
         this.id = id;
     }
-    
+
     public String getName() {
-        return this.name;
+        return name;
     }
-    
-    public void setName(String name) {
+
+    public void setName(final String name) {
         this.name = name;
     }
-    
+
     //
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -67,7 +71,7 @@ public class Bar implements Serializable {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
-    
+
     @Override
     public boolean equals(final Object obj) {
         if (this == obj)
@@ -84,12 +88,12 @@ public class Bar implements Serializable {
             return false;
         return true;
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
-    
+
 }

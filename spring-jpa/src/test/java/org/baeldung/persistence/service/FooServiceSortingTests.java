@@ -1,7 +1,9 @@
 package org.baeldung.persistence.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -11,11 +13,13 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import com.google.common.collect.Lists;
+
+import org.baeldung.persistence.model.Bar;
+import org.baeldung.persistence.model.Foo;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import com.cc.jpa.example.Foo;
-import com.cc.jpa.example.Bar;
+
+import com.google.common.collect.Lists;
 
 public class FooServiceSortingTests {
     private static EntityManager entityManager;
@@ -161,5 +165,6 @@ public class FooServiceSortingTests {
             System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
         }
     }
+
 
 }
