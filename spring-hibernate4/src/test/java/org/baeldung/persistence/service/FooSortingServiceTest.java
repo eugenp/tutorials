@@ -1,26 +1,13 @@
 package org.baeldung.persistence.service;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.junit.Assert.assertNull;
 
-import org.baeldung.persistence.model.Foo;
-import org.baeldung.persistence.service.IFooService;
-import org.baeldung.spring.PersistenceConfig;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import static org.junit.Assert.*;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.After;
 import java.util.List;
 import java.util.Set;
+
+import org.baeldung.persistence.model.Bar;
+import org.baeldung.persistence.model.Foo;
+import org.baeldung.spring.PersistenceConfig;
 import org.hibernate.Criteria;
 import org.hibernate.NullPrecedence;
 import org.hibernate.Query;
@@ -29,8 +16,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
-import com.cc.example.hibernate.Foo;
-import com.cc.example.hibernate.Bar;
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
