@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,43 +15,40 @@ import javax.persistence.OrderBy;
 
 @Entity
 public class Bar implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
+
+    @Column(nullable = false)
+    private String name;
+
 
     @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     List<Foo> fooList;
 
-    private String name;
 
-    public Bar(){
+    public Bar() {
         super();
     }
 
-    public Bar(final String name){
+    public Bar(final String name) {
         super();
+
         this.name = name;
     }
 
-    //API
+    // API
 
-    public List<Foo> getFooList() {
-        return fooList;
-    }
-
-    public void setFooList(final List<Foo> fooList) {
-        this.fooList = fooList;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(final int id) {
+    public void setId(final long id) {
+
         this.id = id;
     }
 
@@ -60,6 +58,14 @@ public class Bar implements Serializable {
 
     public void setName(final String name) {
         this.name = name;
+    }
+
+    public List<Foo> getFooList() {
+        return fooList;
+    }
+
+    public void setFooList(final List<Foo> fooList) {
+        this.fooList = fooList;
     }
 
     //

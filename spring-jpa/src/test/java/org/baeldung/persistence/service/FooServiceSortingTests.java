@@ -29,7 +29,6 @@ public class FooServiceSortingTests {
 
     @BeforeClass
     public static void before() {
-
         emf = Persistence.createEntityManagerFactory("punit");
         entityManager = emf.createEntityManager();
         entityTransaction = entityManager.getTransaction();
@@ -39,43 +38,36 @@ public class FooServiceSortingTests {
 
     @Test
     public final void whenSortingByOneAttributeDefaultOrder_thenPrintSortedResult() {
-
         final String jql = "Select f from Foo as f order by f.id";
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
             System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
         }
-
     }
 
     @Test
     public final void whenSortingByOneAttributeSetOrder_thenSortedPrintResult() {
-
         final String jql = "Select f from Foo as f order by f.id desc";
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
             System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
         }
-
     }
 
     @Test
     public final void whenSortingByTwoAttributes_thenPrintSortedResult() {
-
         final String jql = "Select f from Foo as f order by f.name asc, f.id desc";
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
         for (final Foo foo : fooList) {
             System.out.println("Name:" + foo.getName() + "-------Id:" + foo.getId());
         }
-
     }
 
     @Test
     public final void whenSortingFooByBar_thenBarsSorted() {
-
         final String jql = "Select f from Foo as f order by f.name, f.bar.id";
         final Query barJoinQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = barJoinQuery.getResultList();
@@ -86,7 +78,6 @@ public class FooServiceSortingTests {
 
     @Test
     public final void whenSortinfBar_thenPrintBarsSortedWithFoos() {
-
         final String jql = "Select b from Bar as b order by b.id";
         final Query barQuery = entityManager.createQuery(jql);
         final List<Bar> barList = barQuery.getResultList();
@@ -96,12 +87,10 @@ public class FooServiceSortingTests {
                 System.out.println("FooName:" + foo.getName());
             }
         }
-
     }
 
     @Test
     public final void whenSortingByStringNullLast_thenLastNull() {
-
         final String jql = "Select f from Foo as f order by f.name desc NULLS LAST";
         final Query sortQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = sortQuery.getResultList();
@@ -113,7 +102,6 @@ public class FooServiceSortingTests {
 
     @Test
     public final void whenSortingByStringNullFirst_thenFirstNull() {
-
         final Foo nullNameFoo = new Foo();
         nullNameFoo.setName(null);
 
@@ -137,7 +125,6 @@ public class FooServiceSortingTests {
 
     @Test
     public final void whenSortingFooWithCriteria_thenPrintSortedFoos() {
-
         criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Foo> criteriaQuery = criteriaBuilder.createQuery(Foo.class);
         final Root<Foo> from = criteriaQuery.from(Foo.class);
@@ -148,12 +135,10 @@ public class FooServiceSortingTests {
         for (final Foo foo : fooList) {
             System.out.println("Name:" + foo.getName() + "--------Id:" + foo.getId());
         }
-
     }
 
     @Test
     public final void whenSortingFooWithCriteriaAndMultipleAttributes_thenPrintSortedFoos() {
-
         criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Foo> criteriaQuery = criteriaBuilder.createQuery(Foo.class);
         final Root<Foo> from = criteriaQuery.from(Foo.class);
