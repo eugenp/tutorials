@@ -1,21 +1,16 @@
 package org.baeldung.persistence.service;
 
-import static org.junit.Assert.assertNull;
-
 import java.util.List;
 import java.util.Set;
 
 import org.baeldung.persistence.model.Bar;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.spring.PersistenceConfig;
-import org.hibernate.Criteria;
-import org.hibernate.NullPrecedence;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Order;
 import org.junit.After;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,138 +44,138 @@ public class FooSortingServiceTest {
 
     }
 
-    @Test
-    public final void whenHQlSortingByOneAttribute_thenPrintSortedResults() {
+    /* @Test
+     public final void whenHQlSortingByOneAttribute_thenPrintSortedResults() {
 
-        final String hql = "FROM Foo f ORDER BY f.name";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
-        }
-        sess.getTransaction().commit();
+         final String hql = "FROM Foo f ORDER BY f.name";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+         }
+         sess.getTransaction().commit();
 
-    }
+     }
 
-    @Test
-    public final void whenHQlSortingByStringNullLast_thenLastNull() {
+     @Test
+     public final void whenHQlSortingByStringNullLast_thenLastNull() {
 
-        final String hql = "FROM Foo f ORDER BY f.name NULLS LAST";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        assertNull(fooList.get(fooList.toArray().length - 1).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
-        }
-        sess.getTransaction().commit();
-    }
+         final String hql = "FROM Foo f ORDER BY f.name NULLS LAST";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         assertNull(fooList.get(fooList.toArray().length - 1).getName());
+         for (final Foo foo : fooList) {
+             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenSortingByStringNullsFirst_thenReturnNullsFirst() {
+     @Test
+     public final void whenSortingByStringNullsFirst_thenReturnNullsFirst() {
 
-        final String hql = "FROM Foo f ORDER BY f.name NULLS FIRST";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        assertNull(fooList.get(0).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
+         final String hql = "FROM Foo f ORDER BY f.name NULLS FIRST";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         assertNull(fooList.get(0).getName());
+         for (final Foo foo : fooList) {
+             System.out.println("Name:" + foo.getName());
 
-        }
-        sess.getTransaction().commit();
-    }
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenHQlSortingByOneAttribute_andOrderDirection_thenPrintSortedResults() {
+     @Test
+     public final void whenHQlSortingByOneAttribute_andOrderDirection_thenPrintSortedResults() {
 
-        final String hql = "FROM Foo f ORDER BY f.name ASC";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
+         final String hql = "FROM Foo f ORDER BY f.name ASC";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
 
-                    );
-        }
-        sess.getTransaction().commit();
-    }
+                     );
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenHQlSortingByMultipleAttributes_thenSortedResults() {
+     @Test
+     public final void whenHQlSortingByMultipleAttributes_thenSortedResults() {
 
-        final String hql = "FROM Foo f ORDER BY f.name, f.id";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
+         final String hql = "FROM Foo f ORDER BY f.name, f.id";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId()
 
-                    );
-        }
-        sess.getTransaction().commit();
-    }
+                     );
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenHQlSortingByMultipleAttributes_andOrderDirection_thenPrintSortedResults() {
+     @Test
+     public final void whenHQlSortingByMultipleAttributes_andOrderDirection_thenPrintSortedResults() {
 
-        final String hql = "FROM Foo f ORDER BY f.name DESC, f.id ASC";
-        final Query query = sess.createQuery(hql);
-        final List<Foo> fooList = query.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
-        }
-        sess.getTransaction().commit();
-    }
+         final String hql = "FROM Foo f ORDER BY f.name DESC, f.id ASC";
+         final Query query = sess.createQuery(hql);
+         final List<Foo> fooList = query.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenHQLCriteriaSortingByOneAttr_thenPrintSortedResults() {
+     @Test
+     public final void whenHQLCriteriaSortingByOneAttr_thenPrintSortedResults() {
 
-        final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.asc("id"));
-        final List<Foo> fooList = criteria.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
-        }
-        sess.getTransaction().commit();
-    }
+         final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
+         criteria.addOrder(Order.asc("id"));
+         final List<Foo> fooList = criteria.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenHQLCriteriaSortingByMultipAttr_thenSortedResults() {
+     @Test
+     public final void whenHQLCriteriaSortingByMultipAttr_thenSortedResults() {
 
-        final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.asc("name"));
-        criteria.addOrder(Order.asc("id"));
-        final List<Foo> fooList = criteria.list();
-        for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
-        }
-        sess.getTransaction().commit();
-    }
+         final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
+         criteria.addOrder(Order.asc("name"));
+         criteria.addOrder(Order.asc("id"));
+         final List<Foo> fooList = criteria.list();
+         for (final Foo foo : fooList) {
+             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenCriteriaSortingStringNullsLastAsc_thenNullsLast() {
+     @Test
+     public final void whenCriteriaSortingStringNullsLastAsc_thenNullsLast() {
 
-        final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.asc("name").nulls(NullPrecedence.LAST));
-        final List<Foo> fooList = criteria.list();
-        assertNull(fooList.get(fooList.toArray().length - 1).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
-        }
-        sess.getTransaction().commit();
-    }
+         final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
+         criteria.addOrder(Order.asc("name").nulls(NullPrecedence.LAST));
+         final List<Foo> fooList = criteria.list();
+         assertNull(fooList.get(fooList.toArray().length - 1).getName());
+         for (final Foo foo : fooList) {
+             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+         }
+         sess.getTransaction().commit();
+     }
 
-    @Test
-    public final void whenCriteriaSortingStringNullsFirstDesc_thenNullsFirst() {
+     @Test
+     public final void whenCriteriaSortingStringNullsFirstDesc_thenNullsFirst() {
 
-        final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
-        criteria.addOrder(Order.desc("name").nulls(NullPrecedence.FIRST));
-        final List<Foo> fooList = criteria.list();
-        assertNull(fooList.get(0).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
+         final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
+         criteria.addOrder(Order.desc("name").nulls(NullPrecedence.FIRST));
+         final List<Foo> fooList = criteria.list();
+         assertNull(fooList.get(0).getName());
+         for (final Foo foo : fooList) {
+             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
 
-        }
-        sess.getTransaction().commit();
+         }
+         sess.getTransaction().commit();
 
-    }
+     }*/
 
     @Test
     public final void whenSortingBars_thenBarsWithSortedFoos() {
