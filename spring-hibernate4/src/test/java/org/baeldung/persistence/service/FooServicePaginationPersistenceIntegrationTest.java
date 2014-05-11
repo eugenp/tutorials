@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import org.baeldung.persistence.model.Foo;
+import org.baeldung.persistence.service.IFooService;
 import org.baeldung.spring.PersistenceConfig;
 import org.hibernate.Criteria;
 import org.hibernate.Query;

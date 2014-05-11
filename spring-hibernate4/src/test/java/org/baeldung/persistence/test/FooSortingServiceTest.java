@@ -1,4 +1,4 @@
-package org.baeldung.persistence.service;
+package org.baeldung.persistence.test;
 
 import java.util.List;
 import java.util.Set;

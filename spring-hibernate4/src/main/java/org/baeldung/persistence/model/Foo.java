@@ -30,7 +30,6 @@ public class Foo implements Serializable {
 
     public Foo() {
         super();
-
     }
 
     public Foo(final String name) {
