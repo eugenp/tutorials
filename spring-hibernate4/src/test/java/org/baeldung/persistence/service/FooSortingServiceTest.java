@@ -12,7 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.junit.After;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,32 +21,26 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-
-
-
 public class FooSortingServiceTest {
-    private static Configuration configuration;
-    private static StandardServiceRegistryBuilder builder;
-    private static SessionFactory sf;
-    private static Session sess;
+    private SessionFactory sf;
+    private Session sess;
 
-    @BeforeClass
-    public static void before() {
-
-        configuration = new Configuration().configure();
-        builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+    @Before
+    public void before() {
+        final Configuration configuration = new Configuration().configure();
+        final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
         sf = configuration.buildSessionFactory(builder.build());
         sess = sf.openSession();
         sess.beginTransaction();
     }
+
     @After
     public void after() {
-
+        //
     }
 
     /* @Test
      public final void whenHQlSortingByOneAttribute_thenPrintSortedResults() {
-
          final String hql = "FROM Foo f ORDER BY f.name";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -54,12 +48,10 @@ public class FooSortingServiceTest {
              System.out.println("Name: " + foo.getName() + ", Id: " + foo.getId());
          }
          sess.getTransaction().commit();
-
      }
 
      @Test
      public final void whenHQlSortingByStringNullLast_thenLastNull() {
-
          final String hql = "FROM Foo f ORDER BY f.name NULLS LAST";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -72,7 +64,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenSortingByStringNullsFirst_thenReturnNullsFirst() {
-
          final String hql = "FROM Foo f ORDER BY f.name NULLS FIRST";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -86,7 +77,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenHQlSortingByOneAttribute_andOrderDirection_thenPrintSortedResults() {
-
          final String hql = "FROM Foo f ORDER BY f.name ASC";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -100,7 +90,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenHQlSortingByMultipleAttributes_thenSortedResults() {
-
          final String hql = "FROM Foo f ORDER BY f.name, f.id";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -114,7 +103,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenHQlSortingByMultipleAttributes_andOrderDirection_thenPrintSortedResults() {
-
          final String hql = "FROM Foo f ORDER BY f.name DESC, f.id ASC";
          final Query query = sess.createQuery(hql);
          final List<Foo> fooList = query.list();
@@ -126,7 +114,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenHQLCriteriaSortingByOneAttr_thenPrintSortedResults() {
-
          final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
          criteria.addOrder(Order.asc("id"));
          final List<Foo> fooList = criteria.list();
@@ -138,7 +125,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenHQLCriteriaSortingByMultipAttr_thenSortedResults() {
-
          final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
          criteria.addOrder(Order.asc("name"));
          criteria.addOrder(Order.asc("id"));
@@ -151,7 +137,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenCriteriaSortingStringNullsLastAsc_thenNullsLast() {
-
          final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
          criteria.addOrder(Order.asc("name").nulls(NullPrecedence.LAST));
          final List<Foo> fooList = criteria.list();
@@ -164,7 +149,6 @@ public class FooSortingServiceTest {
 
      @Test
      public final void whenCriteriaSortingStringNullsFirstDesc_thenNullsFirst() {
-
          final Criteria criteria = sess.createCriteria(Foo.class, "FOO");
          criteria.addOrder(Order.desc("name").nulls(NullPrecedence.FIRST));
          final List<Foo> fooList = criteria.list();
@@ -174,12 +158,10 @@ public class FooSortingServiceTest {
 
          }
          sess.getTransaction().commit();
-
      }*/
 
     @Test
     public final void whenSortingBars_thenBarsWithSortedFoos() {
-
         final String hql = "FROM Bar b ORDER BY b.id";
         final Query query = sess.createQuery(hql);
         final List<Bar> barList = query.list();
@@ -192,7 +174,6 @@ public class FooSortingServiceTest {
             }
         }
         sess.getTransaction().commit();
-
     }
 
 }

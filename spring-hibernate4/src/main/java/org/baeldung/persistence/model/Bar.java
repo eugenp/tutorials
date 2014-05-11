@@ -20,6 +20,16 @@ import com.google.common.collect.Sets;
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
 public class Bar implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    private String name;
+
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy(clause = "NAME DESC")
+    private Set<Foo> fooSet = Sets.newHashSet();
+
     public Bar() {
         super();
     }
@@ -29,17 +39,6 @@ public class Bar implements Serializable {
 
         this.name = name;
     }
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    private String name;
-
-    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @OrderBy(clause = "NAME DESC")
-    Set<Foo> fooSet = Sets.newHashSet();
 
     // API
 

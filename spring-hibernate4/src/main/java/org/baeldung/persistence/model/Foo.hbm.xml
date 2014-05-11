@@ -15,7 +15,5 @@
             <column name="BAR_ID" />
         </many-to-one>
         
- 		
-        
     </class>
 </hibernate-mapping>

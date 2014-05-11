@@ -9,9 +9,9 @@
     <session-factory>
     <!-- Database connection settings -->
 <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-<property name="connection.url">jdbc:mysql://localhost:3306/HIBERTEST2_TEST</property>
-<property name="connection.username">root</property>
-<property name="connection.password"></property>
+<property name="connection.url">jdbc:mysql://localhost:3306/spring_hibernate4_01?createDatabaseIfNotExist=true</property>
+<property name="connection.username">tutorialuser</property>
+<property name="connection.password">tutorialmy5ql</property>
  
 <!-- JDBC connection pool (use the built-in) -->
 <property name="connection.pool_size">1</property>
@@ -33,5 +33,5 @@
 <mapping resource="org//baeldung//persistence//model//Foo.hbm.xml"/>
 <mapping resource="org//baeldung//persistence//model//Bar.hbm.xml"/>
 </session-factory>
-   
+
 </hibernate-configuration>

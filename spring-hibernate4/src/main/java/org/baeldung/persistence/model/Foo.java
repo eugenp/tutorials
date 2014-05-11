@@ -2,6 +2,7 @@ package org.baeldung.persistence.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,17 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 public class Foo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @ManyToOne(targetEntity = Bar.class)
+    @JoinColumn(name = "BAR_ID")
+    @Fetch(FetchMode.JOIN)
+    private Bar bar = new Bar();
 
     public Foo() {
         super();
@@ -27,14 +38,7 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String name;
-    @ManyToOne(targetEntity = Bar.class)
-    @JoinColumn(name = "BAR_ID")
-    @Fetch(FetchMode.JOIN)
-    private Bar bar = new Bar();
+    //
 
     public Bar getBar() {
         return bar;
