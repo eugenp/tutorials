@@ -1,4 +1,4 @@
-package org.baeldung.persistence.service;
+package org.baeldung.persistence.hibernate;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.hasSize;
@@ -31,7 +31,7 @@ import com.google.common.collect.Lists;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooServicePaginationPersistenceIntegrationTest {
+public class FooPaginationPersistenceIntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;

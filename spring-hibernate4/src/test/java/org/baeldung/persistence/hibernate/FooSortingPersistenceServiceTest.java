@@ -1,4 +1,4 @@
-package org.baeldung.persistence.test;
+package org.baeldung.persistence.hibernate;
 
 import java.util.List;
 import java.util.Set;
@@ -21,7 +21,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooSortingServiceTest {
+public class FooSortingPersistenceServiceTest {
     private SessionFactory sf;
     private Session sess;
 
