@@ -1,25 +1,34 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.OrderBy;
+
+import com.google.common.collect.Sets;
 
 @Entity
+@NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
 public class Bar implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
-    @Column(nullable = false)
     private String name;
 
-    private List<Foo> foos;
+    @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OrderBy(clause = "NAME DESC")
+    private Set<Foo> fooSet = Sets.newHashSet();
 
     public Bar() {
         super();
@@ -33,11 +42,19 @@ public class Bar implements Serializable {
 
     // API
 
-    public long getId() {
+    public Set<Foo> getFooSet() {
+        return fooSet;
+    }
+
+    public void setFooSet(final Set<Foo> fooSet) {
+        this.fooSet = fooSet;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(final long id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -47,10 +64,6 @@ public class Bar implements Serializable {
 
     public void setName(final String name) {
         this.name = name;
-    }
-
-    public List<Foo> getFooList() {
-        return foos;
     }
 
     //
@@ -83,7 +96,7 @@ public class Bar implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
+        builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
 
