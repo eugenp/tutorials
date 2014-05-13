@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 import java.util.List;
 import java.util.Set;
 
+import javax.imageio.spi.ServiceRegistry;
+
 import org.baeldung.persistence.model.Bar;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.spring.PersistenceConfig;
@@ -14,6 +16,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Order;
 import org.junit.After;
@@ -30,12 +33,25 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class FooSortingPersistenceServiceTest {
     private SessionFactory sf;
     private Session sess;
+    private static ServiceRegistry serviceRegistry;
+    private static Configuration configuration;
+    private static StandardServiceRegistryBuilder builder;
 
     @Before
-    public final void before() {
-        final Configuration configuration = new Configuration().configure();
-        final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-        sf = configuration.buildSessionFactory(builder.build());
+    public void before() {
+
+        // final FooSortingPersistenceServiceData fooData = new FooSortingPersistenceServiceData();
+        // fooData.createBars();
+        configuration = new Configuration();
+        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        configuration.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
+        configuration.setProperty(AvailableSettings.DRIVER, "com.mysql.jdbc.Driver");
+        configuration.setProperty(AvailableSettings.URL, "jdbc:mysql://localhost:3306/HIBERTEST2_TEST");
+        configuration.setProperty(AvailableSettings.USER, "root");
+        configuration.setProperty(AvailableSettings.PASS, "");
+        configuration.setProperty("hibernate.show_sql", "true");
+        builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+        sf = configuration.addPackage("org.baeldung.persistence.model").addAnnotatedClass(Foo.class).addAnnotatedClass(Bar.class).configure().buildSessionFactory(builder.build());
         sess = sf.openSession();
         sess.beginTransaction();
     }

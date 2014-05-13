@@ -2,30 +2,29 @@ package org.baeldung.persistence.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 @Entity
 public class Foo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
 
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @ManyToOne(targetEntity = Bar.class)
+    @ManyToOne(targetEntity = Bar.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "BAR_ID")
-    @Fetch(FetchMode.JOIN)
     private Bar bar = new Bar();
 
     public Foo() {
