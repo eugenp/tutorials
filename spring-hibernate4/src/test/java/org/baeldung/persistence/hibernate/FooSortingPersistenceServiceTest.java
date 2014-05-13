@@ -40,8 +40,8 @@ public class FooSortingPersistenceServiceTest {
     @Before
     public void before() {
 
-        // final FooSortingPersistenceServiceData fooData = new FooSortingPersistenceServiceData();
-        // fooData.createBars();
+        final FooSortingPersistenceServiceData fooData = new FooSortingPersistenceServiceData();
+        fooData.createBars();
         configuration = new Configuration();
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
