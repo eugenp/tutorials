@@ -1,6 +1,5 @@
 package org.baeldung.servlet;
 
-
 //public class WebApp implements WebApplicationInitializer {
 //
 //    public WebApp() {

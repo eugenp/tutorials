@@ -1,6 +1,5 @@
 package org.baeldung.jackson.dtos.withEnum;
 
-
 public enum TypeEnumSimple {
     TYPE1(1, "Type A"), TYPE2(2, "Type 2");
 

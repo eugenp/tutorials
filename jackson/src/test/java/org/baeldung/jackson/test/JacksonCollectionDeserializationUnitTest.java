@@ -17,7 +17,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import com.google.common.collect.Lists;
 
-
 public class JacksonCollectionDeserializationUnitTest {
 
     // tests - json to multiple entity

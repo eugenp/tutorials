@@ -28,7 +28,6 @@ import com.fasterxml.jackson.databind.ser.PropertyWriter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 
-
 public class JacksonSerializationIgnoreUnitTest {
 
     // tests - single entity to json

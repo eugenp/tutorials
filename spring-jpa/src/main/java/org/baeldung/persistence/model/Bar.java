@@ -17,7 +17,6 @@ import javax.persistence.OrderBy;
 public class Bar implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -25,11 +24,9 @@ public class Bar implements Serializable {
     @Column(nullable = false)
     private String name;
 
-
     @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("name ASC")
     List<Foo> fooList;
-
 
     public Bar() {
         super();
