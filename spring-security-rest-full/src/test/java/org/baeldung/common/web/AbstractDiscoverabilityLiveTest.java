@@ -66,7 +66,7 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
         final String uriToAllResources = HTTPLinkHeaderUtil.extractURIByRel(getResponse.getHeader("Link"), "collection");
 
         final Response getAllResponse = givenAuth().get(uriToAllResources);
-        assertThat(getAllResponse.getStatusCode(), is(200));
+        assertThat(getAllResponse.getStatusCode(), is(403));
     }
 
     // template method

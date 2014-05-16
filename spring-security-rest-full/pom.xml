@@ -150,6 +150,12 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
 		<!-- util -->
 
 		<dependency>
@@ -291,7 +297,7 @@
 					</container>
 					<configuration>
 						<properties>
-							<cargo.servlet.port>8082</cargo.servlet.port>
+							<cargo.servlet.port>8080</cargo.servlet.port>
 						</properties>
 					</configuration>
 				</configuration>
@@ -323,10 +329,16 @@
 									</excludes>
 									<includes>
 										<include>**/*IntegrationTest.java</include>
+										<include>**/*LiveTest.java</include>
 									</includes>
 								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
 					</plugin>
 					<plugin>
 						<groupId>org.codehaus.cargo</groupId>
