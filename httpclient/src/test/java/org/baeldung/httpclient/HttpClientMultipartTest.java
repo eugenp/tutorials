@@ -1,5 +1,8 @@
 package org.baeldung.httpclient;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,62 +12,89 @@ import java.io.InputStreamReader;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.client.fluent.Response;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class HttpClientMultipartTest {
 
-    private static final String SERVER = "http://cgi-lib.berkeley.edu/ex/fup.cgi";
-    private static final String SERVER2 = "http://posttestserver.com/post.php";
-    private static final String SERVER3 = "http://postcatcher.in/catchers/53765b0349c306020000077b";
-    private static final String SERVER4 = "http://echo.200please.com";
-    private static final String SERVER5 = "http://greensuisse.zzl.org/product/dump/dump.php";
-    private static final String SERVER6 = "http://www.newburghschools.org/testfolder/dump.php";
-    private static HttpClient client;
-    private static HttpPost post;
-    private static String textFileName;
-    private static String imageFileName;
-    private static String zipFileName;
+    private static final String SERVER = "http://echo.200please.com";
+    private CloseableHttpClient client;
+    private HttpPost post;
+    private String textFileName;
+    private String imageFileName;
+    private String zipFileName;
+    private BufferedReader rd;
+    private CloseableHttpResponse response;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    @Before
+    public final void Before() {
         client = HttpClientBuilder.create().build();
-        post = new HttpPost(SERVER2 /*"fup.cgi"*/);
-        textFileName = ".\temp.txt";
+        post = new HttpPost(SERVER);
+        textFileName = "temp.txt";
         imageFileName = "image.jpg";
         zipFileName = "zipFile.zip";
     }
 
+    @After
+    public final void after() throws IllegalStateException, IOException {
+        post.completed();
+        try {
+            client.close();
+        } catch (final IOException e1) {
+
+            e1.printStackTrace();
+        }
+        try {
+            rd.close();
+        } catch (final IOException e) {
+
+            e.printStackTrace();
+        }
+        try {
+            final HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                final InputStream instream = entity.getContent();
+                instream.close();
+            }
+        } finally {
+            response.close();
+        }
+    }
+
     @Test
-    @Ignore
     public final void whenUploadWithAddPart_thenNoExceptions() throws IOException {
+
         final File file = new File(textFileName);
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
         final StringBody stringBody2 = new StringBody("This is message 2", ContentType.MULTIPART_FORM_DATA);
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addPart("submitted", fileBody);
-        builder.addPart("note", stringBody1);
-        builder.addPart("note2", stringBody2);
+        builder.addPart("upfile", fileBody);
+        builder.addPart("text1", stringBody1);
+        builder.addPart("text2", stringBody2);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
-        final HttpResponse response = client.execute(post);
-        System.out.println(getContent(response));
+        response = client.execute(post);
+        final int statusCode = response.getStatusLine().getStatusCode();
+        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+
+        System.out.println(getContent());
+
         final Header[] headers = response.getAllHeaders();
+        assertThat(headers.length, equalTo(5));
 
         for (final Header thisHeader : headers) {
             System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
@@ -72,92 +102,99 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    @Ignore
     public final void whenUploadWithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
+
         final File file = new File(textFileName);
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("submitted", file, ContentType.DEFAULT_BINARY, textFileName);
-        builder.addTextBody("note", message, ContentType.TEXT_PLAIN);
+        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, textFileName);
+        builder.addTextBody("text", message, ContentType.DEFAULT_BINARY);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
-        final HttpResponse response = client.execute(post);
-        System.out.println(getContent(response));
+        response = client.execute(post);
+        final int statusCode = response.getStatusLine().getStatusCode();
+        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+
+        System.out.println(getContent());
+
         final Header[] headers = response.getAllHeaders();
+        assertThat(headers.length, equalTo(5));
 
         for (final Header thisHeader : headers) {
             System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
         }
+
     }
 
     @Test
-    @Ignore
-    public final void whenUploadWithAddBinaryBody_NoType_andAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
+    public final void whenUploadWithAddBinaryBody_withInputStreamAndFile_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
+
+        final InputStream inputStream = new FileInputStream(zipFileName);
         final File file = new File(imageFileName);
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("submitted", file, ContentType.DEFAULT_BINARY, textFileName);
-        // builder.addBinaryBody("upfile", fileBin);
-        builder.addTextBody("note", message, ContentType.TEXT_PLAIN);
+        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, imageFileName);
+        builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), zipFileName);
+        builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
-        final HttpResponse response = client.execute(post);
-        System.out.println(getContent(response));
+        response = client.execute(post);
+        final int statusCode = response.getStatusLine().getStatusCode();
+        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+
+        System.out.println(getContent());
+
         final Header[] headers = response.getAllHeaders();
+        assertThat(headers.length, equalTo(5));
 
         for (final Header thisHeader : headers) {
             System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
         }
+
+        inputStream.close();
+
     }
 
     @Test
-    @Ignore
-    public final void whenUploadWithAddBinaryBody_InputStream_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
-        final InputStream inputStream = new FileInputStream(zipFileName);
+    public final void whenUploadWithAddBinaryBody_withCharArray_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
+
         final String message = "This is a multipart post";
+        final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        // builder.addBinaryBody("submitted", inputStream, ContentType.create("application/zip"), "zipFileName");
-        builder.addBinaryBody("upfile", inputStream, ContentType.create("application/zip"), "zipFileName");
-        builder.addTextBody("note", message, ContentType.TEXT_PLAIN);
+        builder.addBinaryBody("upfile", bytes, ContentType.DEFAULT_BINARY, textFileName);
+        builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
-        final HttpResponse response = client.execute(post);
+        response = client.execute(post);
+        final int statusCode = response.getStatusLine().getStatusCode();
+        assertThat(statusCode, equalTo(HttpStatus.SC_OK));
 
-        System.out.println(getContent(response));
+        System.out.println(getContent());
+
         final Header[] headers = response.getAllHeaders();
+        assertThat(headers.length, equalTo(5));
 
         for (final Header thisHeader : headers) {
             System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
         }
+
     }
 
-    // BUG
+    public String getContent() throws IOException {
 
-    @Test
-    public final void whenFluentRequestWithBody_ThenNoException() throws IOException {
-        final String fileName = ".\temp.txt";
-        final File fileBin = new File(fileName);
-        final String message = "This is a multipart post";
-        final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", fileBin, ContentType.DEFAULT_BINARY, fileName);
-        builder.addTextBody("note", message, ContentType.TEXT_PLAIN);
-        final HttpEntity entity = builder.build();
-        final Response response = Request.Post(SERVER).body(entity).execute();
-    }
-
-    public static String getContent(final HttpResponse response) throws IOException {
-        final BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+        rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         String body = "";
         String content = "";
 
         while ((body = rd.readLine()) != null) {
             content += body + "\n";
         }
+
         return content.trim();
+
     }
 
 }
