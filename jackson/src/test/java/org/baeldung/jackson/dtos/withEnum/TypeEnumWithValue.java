@@ -2,7 +2,6 @@ package org.baeldung.jackson.dtos.withEnum;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-
 public enum TypeEnumWithValue {
     TYPE1(1, "Type A"), TYPE2(2, "Type 2");
 

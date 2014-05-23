@@ -11,7 +11,6 @@ import org.baeldung.jackson.dtos.withEnum.TypeEnum;
 import org.baeldung.jackson.dtos.withEnum.TypeEnumSimple;
 import org.baeldung.jackson.dtos.withEnum.TypeEnumWithCustomSerializer;
 import org.baeldung.jackson.dtos.withEnum.TypeEnumWithValue;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -24,7 +23,7 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingASimpleEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnumSimple.TYPE1.name());
+        final String dtoAsString = mapper.writeValueAsString(TypeEnumSimple.TYPE1);
         System.out.println(dtoAsString);
 
         assertThat(dtoAsString, containsString("TYPE1"));
@@ -33,10 +32,10 @@ public class JacksonSerializationEnumsUnitTest {
     // tests - enum with main value
 
     @Test
-    @Ignore("https://github.com/FasterXML/jackson-databind/issues/47")
+    // @Ignore("https://github.com/FasterXML/jackson-databind/issues/47")
     public final void whenSerializingAEnumWithValue_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnumWithValue.TYPE1.name());
+        final String dtoAsString = mapper.writeValueAsString(TypeEnumWithValue.TYPE1);
         System.out.println(dtoAsString);
 
         assertThat(dtoAsString, containsString("Type A"));
@@ -47,7 +46,7 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingAnEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnum.TYPE1.name());
+        final String dtoAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
 
         System.out.println(dtoAsString);
         assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
