@@ -31,21 +31,20 @@ import org.junit.Test;
 public class HttpClientMultipartTest {
 
     private static final String SERVER = "http://echo.200please.com";
+    private static final String textFileName = "temp.txt";
+    private static final String imageFileName = "image.jpg";
+    private static final String zipFileName = "zipFile.zip";
     private CloseableHttpClient client;
     private HttpPost post;
-    private String textFileName;
-    private String imageFileName;
-    private String zipFileName;
     private BufferedReader rd;
     private CloseableHttpResponse response;
+    private java.util.logging.Logger log;
 
     @Before
     public final void before() {
         client = HttpClientBuilder.create().build();
         post = new HttpPost(SERVER);
-        textFileName = "temp.txt";
-        imageFileName = "image.jpg";
-        zipFileName = "zipFile.zip";
+        log = java.util.logging.Logger.getAnonymousLogger();
     }
 
     @After
@@ -54,12 +53,12 @@ public class HttpClientMultipartTest {
         try {
             client.close();
         } catch (final IOException e1) {
-            e1.printStackTrace();
+            log.throwing("HttpClientMultipartTest", "after()", e1);
         }
         try {
             rd.close();
         } catch (final IOException e) {
-            e.printStackTrace();
+            log.throwing("HttpClientMultipartTest", "after()", e);
         }
         try {
             final HttpEntity entity = response.getEntity();
@@ -101,7 +100,8 @@ public class HttpClientMultipartTest {
 
     @Test
     public final void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
-        final File file = new File(textFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + textFileName);
+        final File file = new File(url.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -122,8 +122,10 @@ public class HttpClientMultipartTest {
 
     @Test
     public final void givenFileandInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
-        final InputStream inputStream = new FileInputStream(zipFileName);
-        final File file = new File(imageFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + zipFileName);
+        final URL url2 = Thread.currentThread().getContextClassLoader().getResource("uploads/" + imageFileName);
+        final InputStream inputStream = new FileInputStream(url.getPath());
+        final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
