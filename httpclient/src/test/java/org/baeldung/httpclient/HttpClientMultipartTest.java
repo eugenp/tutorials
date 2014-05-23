@@ -170,7 +170,6 @@ public class HttpClientMultipartTest {
         while ((body = rd.readLine()) != null) {
             content += body + "\n";
         }
-        rd.close();
         return content.trim();
     }
 
