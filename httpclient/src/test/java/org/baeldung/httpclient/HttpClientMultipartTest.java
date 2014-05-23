@@ -74,7 +74,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void givenFileandMultipleTextParts_whenUploadWithAddPart_thenNoExceptions() throws IOException {
+    public final void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
         final File file = new File(textFileName);
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
@@ -98,7 +98,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void whenUploadWithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
+    public final void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
         final File file = new File(textFileName);
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -119,7 +119,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void whenUploadWithAddBinaryBody_withInputStreamAndFile_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
+    public final void givenFileandInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
         final InputStream inputStream = new FileInputStream(zipFileName);
         final File file = new File(imageFileName);
         final String message = "This is a multipart post";
@@ -143,7 +143,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void whenUploadWithAddBinaryBody_withCharArray_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
+    public final void givenCharArrayandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
         final String message = "This is a multipart post";
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
