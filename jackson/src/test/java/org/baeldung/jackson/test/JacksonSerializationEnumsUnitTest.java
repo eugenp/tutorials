@@ -1,6 +1,7 @@
 package org.baeldung.jackson.test;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
@@ -23,22 +24,21 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingASimpleEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnumSimple.TYPE1);
-        System.out.println(dtoAsString);
+        final String enumAsString = mapper.writeValueAsString(TypeEnumSimple.TYPE1);
+        System.out.println(enumAsString);
 
-        assertThat(dtoAsString, containsString("TYPE1"));
+        assertThat(enumAsString, containsString("TYPE1"));
     }
 
     // tests - enum with main value
 
     @Test
-    // @Ignore("https://github.com/FasterXML/jackson-databind/issues/47")
     public final void whenSerializingAEnumWithValue_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnumWithValue.TYPE1);
-        System.out.println(dtoAsString);
+        final String enumAsString = mapper.writeValueAsString(TypeEnumWithValue.TYPE1);
+        System.out.println(enumAsString);
 
-        assertThat(dtoAsString, containsString("Type A"));
+        assertThat(enumAsString, is("\"Type A\""));
     }
 
     // tests - enum
@@ -46,19 +46,19 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingAnEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
+        final String enumAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
 
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+        System.out.println(enumAsString);
+        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
     }
 
     @Test
     public final void whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnum("a", 1, true, TypeEnum.TYPE1));
+        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnum("a", 1, true, TypeEnum.TYPE1));
 
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+        System.out.println(enumAsString);
+        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
     }
 
     @Test
@@ -75,10 +75,10 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void givenCustomSerializer_whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, TypeEnumWithCustomSerializer.TYPE1));
+        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, TypeEnumWithCustomSerializer.TYPE1));
 
-        System.out.println(dtoAsString);
-        assertThat(dtoAsString, containsString("\"name\":\"Type A\""));
+        System.out.println(enumAsString);
+        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
     }
 
 }
