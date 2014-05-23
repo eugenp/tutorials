@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -34,17 +36,16 @@ public class HttpClientMultipartTest {
     private static final String textFileName = "temp.txt";
     private static final String imageFileName = "image.jpg";
     private static final String zipFileName = "zipFile.zip";
+    private static final Logger LOGGER = Logger.getLogger("org.baeldung.httpclient.HttpClientMultipartTest");
     private CloseableHttpClient client;
     private HttpPost post;
     private BufferedReader rd;
     private CloseableHttpResponse response;
-    private java.util.logging.Logger log;
 
     @Before
     public final void before() {
         client = HttpClientBuilder.create().build();
         post = new HttpPost(SERVER);
-        log = java.util.logging.Logger.getAnonymousLogger();
     }
 
     @After
@@ -53,12 +54,14 @@ public class HttpClientMultipartTest {
         try {
             client.close();
         } catch (final IOException e1) {
-            log.throwing("HttpClientMultipartTest", "after()", e1);
+            LOGGER.log(Level.SEVERE, e1.getMessage(), e1);
+            throw e1;
         }
         try {
             rd.close();
         } catch (final IOException e) {
-            log.throwing("HttpClientMultipartTest", "after()", e);
+            LOGGER.log(Level.SEVERE, e.getMessage(), e);
+            throw e;
         }
         try {
             final HttpEntity entity = response.getEntity();
