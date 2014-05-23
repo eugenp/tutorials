@@ -41,7 +41,6 @@ public class HttpClientMultipartTest {
     private HttpPost post;
     private BufferedReader rd;
     private CloseableHttpResponse response;
-    private java.util.logging.Logger log;
 
     @Before
     public final void before() {
