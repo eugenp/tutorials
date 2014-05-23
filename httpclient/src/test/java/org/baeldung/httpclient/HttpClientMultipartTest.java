@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -39,7 +40,7 @@ public class HttpClientMultipartTest {
     private CloseableHttpResponse response;
 
     @Before
-    public final void Before() {
+    public final void before() {
         client = HttpClientBuilder.create().build();
         post = new HttpPost(SERVER);
         textFileName = "temp.txt";
@@ -53,13 +54,11 @@ public class HttpClientMultipartTest {
         try {
             client.close();
         } catch (final IOException e1) {
-
             e1.printStackTrace();
         }
         try {
             rd.close();
         } catch (final IOException e) {
-
             e.printStackTrace();
         }
         try {
@@ -73,9 +72,12 @@ public class HttpClientMultipartTest {
         }
     }
 
+    // tests
+
     @Test
     public final void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
-        final File file = new File(textFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + textFileName);
+        final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
         final StringBody stringBody2 = new StringBody("This is message 2", ContentType.MULTIPART_FORM_DATA);
@@ -163,7 +165,9 @@ public class HttpClientMultipartTest {
         System.out.println("POST Content Type: " + contentTypeInHeader);
     }
 
-    public String getContent() throws IOException {
+    // UTIL
+
+    final String getContent() throws IOException {
         rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         String body = "";
         String content = "";
@@ -173,7 +177,7 @@ public class HttpClientMultipartTest {
         return content.trim();
     }
 
-    public String getContentTypeHeader() throws IOException {
+    final String getContentTypeHeader() throws IOException {
         return post.getEntity().getContentType().toString();
     }
 
