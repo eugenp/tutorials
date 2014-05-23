@@ -2,6 +2,7 @@ package org.baeldung.httpclient;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -74,8 +74,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void whenUploadWithAddPart_thenNoExceptions() throws IOException {
-
+    public final void givenFileandMultipleTextParts_whenUploadWithAddPart_thenNoExceptions() throws IOException {
         final File file = new File(textFileName);
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
@@ -89,21 +88,17 @@ public class HttpClientMultipartTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine().getStatusCode();
+        final String responseString = getContent();
+        final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-
-        System.out.println(getContent());
-
-        final Header[] headers = response.getAllHeaders();
-        assertThat(headers.length, equalTo(5));
-
-        for (final Header thisHeader : headers) {
-            System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
-        }
+        assertTrue(responseString.contains("Content-Type: multipart/form-data;"));
+        assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+        System.out.println(responseString);
+        System.out.println("POST Content Type: " + contentTypeInHeader);
     }
 
     @Test
     public final void whenUploadWithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
-
         final File file = new File(textFileName);
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -114,22 +109,17 @@ public class HttpClientMultipartTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine().getStatusCode();
+        final String responseString = getContent();
+        final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-
-        System.out.println(getContent());
-
-        final Header[] headers = response.getAllHeaders();
-        assertThat(headers.length, equalTo(5));
-
-        for (final Header thisHeader : headers) {
-            System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
-        }
-
+        assertTrue(responseString.contains("Content-Type: multipart/form-data;"));
+        assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+        System.out.println(responseString);
+        System.out.println("POST Content Type: " + contentTypeInHeader);
     }
 
     @Test
     public final void whenUploadWithAddBinaryBody_withInputStreamAndFile_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
-
         final InputStream inputStream = new FileInputStream(zipFileName);
         final File file = new File(imageFileName);
         final String message = "This is a multipart post";
@@ -142,24 +132,18 @@ public class HttpClientMultipartTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine().getStatusCode();
+        final String responseString = getContent();
+        final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-
-        System.out.println(getContent());
-
-        final Header[] headers = response.getAllHeaders();
-        assertThat(headers.length, equalTo(5));
-
-        for (final Header thisHeader : headers) {
-            System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
-        }
-
+        assertTrue(responseString.contains("Content-Type: multipart/form-data;"));
+        assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+        System.out.println(responseString);
+        System.out.println("POST Content Type: " + contentTypeInHeader);
         inputStream.close();
-
     }
 
     @Test
     public final void whenUploadWithAddBinaryBody_withCharArray_andTextBody_ThenNoException() throws ClientProtocolException, IOException {
-
         final String message = "This is a multipart post";
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -170,31 +154,27 @@ public class HttpClientMultipartTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine().getStatusCode();
+        final String responseString = getContent();
+        final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-
-        System.out.println(getContent());
-
-        final Header[] headers = response.getAllHeaders();
-        assertThat(headers.length, equalTo(5));
-
-        for (final Header thisHeader : headers) {
-            System.out.println(thisHeader.getName() + ":" + thisHeader.getValue());
-        }
-
+        assertTrue(responseString.contains("Content-Type: multipart/form-data;"));
+        assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+        System.out.println(responseString);
+        System.out.println("POST Content Type: " + contentTypeInHeader);
     }
 
     public String getContent() throws IOException {
-
         rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         String body = "";
         String content = "";
-
         while ((body = rd.readLine()) != null) {
             content += body + "\n";
         }
-
         return content.trim();
+    }
 
+    public String getContentTypeHeader() throws IOException {
+        return post.getEntity().getContentType().toString();
     }
 
 }
