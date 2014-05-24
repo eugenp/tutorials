@@ -141,7 +141,7 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.0.4.RELEASE</org.springframework.version>
+		<org.springframework.version>4.0.5.RELEASE</org.springframework.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.6</org.slf4j.version>
