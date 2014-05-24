@@ -1,6 +1,7 @@
 package org.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.junit.Assert.assertNotNull;
 
 import org.baeldung.persistence.IOperations;
 import org.baeldung.persistence.model.Foo;
@@ -39,16 +40,20 @@ public class FooServicePersistenceIntegrationTest extends AbstractServicePersist
         service.create(new Foo());
     }
 
-    // @Test(expected = DataIntegrityViolationException.class)
-    // public final void whenEntityWithLongNameIsCreated_thenDataException() {
-    // service.create(new Foo(randomAlphabetic(2048)));
-    // }
+    @Test(expected = DataIntegrityViolationException.class)
+    public final void whenEntityWithLongNameIsCreated_thenDataException() {
+        service.create(new Foo(randomAlphabetic(2048)));
+    }
 
     // custom Query method
 
     @Test
-    public final void givenUsingCustomQuery_whenExecuting_thenNoExceptions() {
-        // service.create(new Foo(randomAlphabetic(2048)));
+    public final void givenUsingCustomQuery_whenRetrievingEntity_thenFound() {
+        final String name = randomAlphabetic(6);
+        service.create(new Foo(name));
+
+        final Foo retrievedByName = service.retrieveByName(name);
+        assertNotNull(retrievedByName);
     }
 
     // work in progress
