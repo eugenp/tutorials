@@ -33,9 +33,9 @@ import org.junit.Test;
 public class HttpClientMultipartTest {
 
     private static final String SERVER = "http://echo.200please.com";
-    private static final String textFileName = "temp.txt";
-    private static final String imageFileName = "image.jpg";
-    private static final String zipFileName = "zipFile.zip";
+    private static final String TEXTFILENAME = "temp.txt";
+    private static final String IMAGEFILENAME = "image.jpg";
+    private static final String ZIPFILENAME = "zipFile.zip";
     private static final Logger LOGGER = Logger.getLogger("org.baeldung.httpclient.HttpClientMultipartTest");
     private CloseableHttpClient client;
     private HttpPost post;
@@ -78,7 +78,7 @@ public class HttpClientMultipartTest {
 
     @Test
     public final void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
-        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + textFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + TEXTFILENAME);
         final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
@@ -103,12 +103,12 @@ public class HttpClientMultipartTest {
 
     @Test
     public final void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
-        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + textFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + TEXTFILENAME);
         final File file = new File(url.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, textFileName);
+        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, TEXTFILENAME);
         builder.addTextBody("text", message, ContentType.DEFAULT_BINARY);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
@@ -125,15 +125,15 @@ public class HttpClientMultipartTest {
 
     @Test
     public final void givenFileandInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
-        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + zipFileName);
-        final URL url2 = Thread.currentThread().getContextClassLoader().getResource("uploads/" + imageFileName);
+        final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + ZIPFILENAME);
+        final URL url2 = Thread.currentThread().getContextClassLoader().getResource("uploads/" + IMAGEFILENAME);
         final InputStream inputStream = new FileInputStream(url.getPath());
         final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, imageFileName);
-        builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), zipFileName);
+        builder.addBinaryBody("upfile", file, ContentType.DEFAULT_BINARY, IMAGEFILENAME);
+        builder.addBinaryBody("upstream", inputStream, ContentType.create("application/zip"), ZIPFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
@@ -155,7 +155,7 @@ public class HttpClientMultipartTest {
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
-        builder.addBinaryBody("upfile", bytes, ContentType.DEFAULT_BINARY, textFileName);
+        builder.addBinaryBody("upfile", bytes, ContentType.DEFAULT_BINARY, TEXTFILENAME);
         builder.addTextBody("text", message, ContentType.TEXT_PLAIN);
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
