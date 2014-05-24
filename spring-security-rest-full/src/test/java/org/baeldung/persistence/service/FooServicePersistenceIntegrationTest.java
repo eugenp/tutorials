@@ -2,6 +2,7 @@ package org.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
+import org.baeldung.persistence.IOperations;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.spring.PersistenceConfig;
 import org.junit.Ignore;
@@ -16,7 +17,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooServicePersistenceIntegrationTest {
+public class FooServicePersistenceIntegrationTest extends AbstractServicePersistenceIntegrationTest<Foo> {
 
     @Autowired
     private IFooService service;
@@ -38,10 +39,19 @@ public class FooServicePersistenceIntegrationTest {
         service.create(new Foo());
     }
 
-    @Test(expected = DataIntegrityViolationException.class)
-    public final void whenEntityWithLongNameIsCreated_thenDataException() {
-        service.create(new Foo(randomAlphabetic(2048)));
+    // @Test(expected = DataIntegrityViolationException.class)
+    // public final void whenEntityWithLongNameIsCreated_thenDataException() {
+    // service.create(new Foo(randomAlphabetic(2048)));
+    // }
+
+    // custom Query method
+
+    @Test
+    public final void givenUsingCustomQuery_whenExecuting_thenNoExceptions() {
+        // service.create(new Foo(randomAlphabetic(2048)));
     }
+
+    // work in progress
 
     @Test(expected = InvalidDataAccessApiUsageException.class)
     @Ignore("Right now, persist has saveOrUpdate semantics, so this will no longer fail")
@@ -49,6 +59,13 @@ public class FooServicePersistenceIntegrationTest {
         final Foo entity = new Foo(randomAlphabetic(8));
         service.create(entity);
         service.create(entity);
+    }
+
+    // API
+
+    @Override
+    protected final IOperations<Foo> getApi() {
+        return service;
     }
 
 }
