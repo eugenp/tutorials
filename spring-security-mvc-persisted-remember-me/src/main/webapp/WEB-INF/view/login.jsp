@@ -1,5 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head></head>
+<head>
+<style>
+	.message{
+		margin-top: 20px;
+		padding: 10px;
+		color:#FF0000;
+		border: 1px solid;
+		border-radius: 2px;
+		background-color: #F5F6CE;
+		border-color: #FF0000;
+	}
+</style>
+</head>
 
 <body>
 	<h1>Login</h1>
@@ -23,8 +36,17 @@
 				<td><input name="submit" type="submit" value="submit" /></td>
 			</tr>
 		</table>
+		
+		
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 
 	</form>
+	
+			
+		<c:if test="${not empty message}">
+			<div class="message">${message}</div>
+		</c:if>
 
 </body>
 </html>
