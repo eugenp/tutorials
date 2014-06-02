@@ -2,9 +2,12 @@ package org.baeldung.java.collections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -138,6 +141,47 @@ public class JavaCollectionConversionUnitTest {
 
         final List<Integer> targetList = new ArrayList<>(6);
         CollectionUtils.addAll(targetList, sourceSet);
+    }
+
+    // Map (values) -> Array, List, Set
+
+    @Test
+    public final void givenUsingCoreJava_whenMapValuesConvertedToArray_thenCorrect() {
+        final Map<Integer, String> sourceMap = createMap();
+
+        final Collection<String> values = sourceMap.values();
+        final String[] targetArray = values.toArray(new String[values.size()]);
+    }
+
+    @Test
+    public final void givenUsingCoreJava_whenMapValuesConvertedToList_thenCorrect() {
+        final Map<Integer, String> sourceMap = createMap();
+
+        final List<String> targetList = new ArrayList<>(sourceMap.values());
+    }
+
+    @Test
+    public final void givenUsingGuava_whenMapValuesConvertedToList_thenCorrect() {
+        final Map<Integer, String> sourceMap = createMap();
+
+        final List<String> targetList = Lists.newArrayList(sourceMap.values());
+    }
+
+    @Test
+    public final void givenUsingCoreJava_whenMapValuesConvertedToS_thenCorrect() {
+        final Map<Integer, String> sourceMap = createMap();
+
+        final Set<String> targetSet = new HashSet<>(sourceMap.values());
+    }
+
+    // UTIL
+
+    private final Map<Integer, String> createMap() {
+        final Map<Integer, String> sourceMap = new HashMap<>(3);
+        sourceMap.put(0, "zero");
+        sourceMap.put(1, "one");
+        sourceMap.put(2, "two");
+        return sourceMap;
     }
 
 }
