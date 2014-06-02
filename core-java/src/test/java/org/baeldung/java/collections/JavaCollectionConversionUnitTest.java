@@ -168,7 +168,7 @@ public class JavaCollectionConversionUnitTest {
     }
 
     @Test
-    public final void givenUsingCoreJava_whenMapValuesConvertedToS_thenCorrect() {
+    public final void givenUsingCoreJava_whenMapValuesConvertedToSet_thenCorrect() {
         final Map<Integer, String> sourceMap = createMap();
 
         final Set<String> targetSet = new HashSet<>(sourceMap.values());
