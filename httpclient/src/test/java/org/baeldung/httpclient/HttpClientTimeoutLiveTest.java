@@ -92,4 +92,20 @@ public class HttpClientTimeoutLiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
+    /**
+     * This simulates a timeout against a domain with multiple routes/IPs to it (not a single raw IP)
+     */
+    @Test
+    public final void givenTimeoutIsConfigured_whenTimingOut_thenCorrect() throws ClientProtocolException, IOException {
+        final int timeout = 3;
+
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
+        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+
+        final HttpGet request = new HttpGet("http://www.google.com:81");
+        response = client.execute(request);
+
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
+
 }
