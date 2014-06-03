@@ -20,7 +20,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooServiceSortingTestsWithNulls {
+public class FooServiceSortingWitNullsManualTest {
 
     @PersistenceContext
     private EntityManager entityManager;
