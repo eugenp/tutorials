@@ -1,40 +1,37 @@
 package org.baeldung.persistence.service;
 
-import static org.junit.Assert.assertNull;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.baeldung.config.PersistenceJPAConfig;
 import org.baeldung.persistence.model.Bar;
 import org.baeldung.persistence.model.Foo;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.google.common.collect.Lists;
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
+@SuppressWarnings("unchecked")
 public class FooServiceSortingTests {
-    private static EntityManager entityManager;
-    private static EntityManagerFactory emf;
-    private static EntityTransaction entityTransaction;
-    private static CriteriaBuilder criteriaBuilder;
 
-    @BeforeClass
-    public static void before() {
-        emf = Persistence.createEntityManagerFactory("punit");
-        entityManager = emf.createEntityManager();
-        entityTransaction = entityManager.getTransaction();
-        entityTransaction.begin();
-        criteriaBuilder = entityManager.getCriteriaBuilder();
-    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Autowired
+    private FooService service;
+
+    // tests
 
     @Test
     public final void whenSortingByOneAttributeDefaultOrder_thenPrintSortedResult() {
@@ -90,42 +87,8 @@ public class FooServiceSortingTests {
     }
 
     @Test
-    public final void whenSortingByStringNullLast_thenLastNull() {
-        final String jql = "Select f from Foo as f order by f.name desc NULLS LAST";
-        final Query sortQuery = entityManager.createQuery(jql);
-        final List<Foo> fooList = sortQuery.getResultList();
-        assertNull(fooList.get(fooList.toArray().length - 1).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
-        }
-    }
-
-    @Test
-    public final void whenSortingByStringNullFirst_thenFirstNull() {
-        final Foo nullNameFoo = new Foo();
-        nullNameFoo.setName(null);
-
-        final Bar bar = new Bar();
-        final List<Foo> fooList1 = Lists.newArrayList();
-        bar.setName("Bar_Me");
-        nullNameFoo.setBar(bar);
-        fooList1.add(nullNameFoo);
-        bar.setFooList(fooList1);
-        entityManager.persist(bar);
-        entityManager.persist(nullNameFoo);
-        entityTransaction.commit();
-        final String jql = "Select f from Foo as f order by f.name desc NULLS FIRST";
-        final Query sortQuery = entityManager.createQuery(jql);
-        final List<Foo> fooList = sortQuery.getResultList();
-        assertNull(fooList.get(0).getName());
-        for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName());
-        }
-    }
-
-    @Test
     public final void whenSortingFooWithCriteria_thenPrintSortedFoos() {
-        criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Foo> criteriaQuery = criteriaBuilder.createQuery(Foo.class);
         final Root<Foo> from = criteriaQuery.from(Foo.class);
         final CriteriaQuery<Foo> select = criteriaQuery.select(from);
@@ -139,7 +102,7 @@ public class FooServiceSortingTests {
 
     @Test
     public final void whenSortingFooWithCriteriaAndMultipleAttributes_thenPrintSortedFoos() {
-        criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         final CriteriaQuery<Foo> criteriaQuery = criteriaBuilder.createQuery(Foo.class);
         final Root<Foo> from = criteriaQuery.from(Foo.class);
         final CriteriaQuery<Foo> select = criteriaQuery.select(from);
