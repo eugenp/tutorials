@@ -15,13 +15,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private AuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler;
+    @Autowired
+    private AuthenticationSuccessHandler mySimpleUrlAuthenticationSuccessHandler;
 
-	public SecurityConfig() {
-		super();
-	}
-	
+    public SecurityConfig() {
+        super();
+    }
+
 }
-
-

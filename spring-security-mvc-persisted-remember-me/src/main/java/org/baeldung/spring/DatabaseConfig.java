@@ -20,10 +20,10 @@ import com.google.common.base.Preconditions;
 @PropertySource({ "classpath:persistence-h2.properties" })
 public class DatabaseConfig {
 
-	@Autowired
+    @Autowired
     private Environment env;
 
-	@Bean
+    @Bean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));

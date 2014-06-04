@@ -6,7 +6,6 @@ package org.baeldung.security;
  */
 public enum SecurityRole {
 
-	ROLE_USER,
-	ROLE_ADMIN;
-	
+    ROLE_USER, ROLE_ADMIN;
+
 }

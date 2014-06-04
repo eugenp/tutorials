@@ -17,9 +17,9 @@ import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
-@Component(value="mySimpleUrlAuthenticationSuccessHandler")
+@Component(value = "mySimpleUrlAuthenticationSuccessHandler")
 public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-	
+
     private final Log logger = LogFactory.getLog(this.getClass());
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
