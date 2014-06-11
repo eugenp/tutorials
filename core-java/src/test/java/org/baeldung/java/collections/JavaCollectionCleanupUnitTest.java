@@ -28,16 +28,16 @@ public class JavaCollectionCleanupUnitTest {
 
     @Test
     public final void givenListContainsNulls_whenRemovingNullsWithGuavaV1_thenCorrect() {
-        final List<Integer> listWithNulls = Lists.newArrayList(null, 1, null);
-        Iterables.removeIf(listWithNulls, Predicates.isNull());
+        final List<Integer> list = Lists.newArrayList(null, 1, null);
+        Iterables.removeIf(list, Predicates.isNull());
 
-        assertThat(listWithNulls, hasSize(1));
+        assertThat(list, hasSize(1));
     }
 
     @Test
     public final void givenListContainsNulls_whenRemovingNullsWithGuavaV2_thenCorrect() {
-        final List<Integer> listWithNulls = Lists.newArrayList(null, 1, null, 2, 3);
-        final List<Integer> listWithoutNulls = Lists.newArrayList(Iterables.filter(listWithNulls, Predicates.notNull()));
+        final List<Integer> list = Lists.newArrayList(null, 1, null, 2, 3);
+        final List<Integer> listWithoutNulls = Lists.newArrayList(Iterables.filter(list, Predicates.notNull()));
 
         assertThat(listWithoutNulls, hasSize(3));
     }
