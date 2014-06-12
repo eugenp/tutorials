@@ -1,6 +1,5 @@
 package org.baeldung.java8;
 
-import static org.baeldung.java8.entity.Human.compareByNameThenAge;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.util.Collections;
