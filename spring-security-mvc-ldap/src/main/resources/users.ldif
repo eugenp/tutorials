@@ -1,0 +1,14 @@
+dn: ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: uid=baeldung,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: David Lightman
+sn: Lightman
+uid: baeldung
+userPassword: password
