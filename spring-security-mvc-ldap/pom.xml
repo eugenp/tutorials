@@ -7,11 +7,16 @@
 
 	<name>spring-security-mvc-ldap</name>
 	<packaging>war</packaging>
+ 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.1.1.RELEASE</version>
+	</parent>
 
 	<dependencies>
 
 		<!-- Spring Security -->
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
@@ -30,10 +35,10 @@
 			<artifactId>spring-core</artifactId>
 			<version>${org.springframework.version}</version>
 			<exclusions>
-			    <exclusion>
-			        <artifactId>commons-logging</artifactId>
-			        <groupId>commons-logging</groupId>
-			    </exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -77,6 +82,52 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
+
+
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.1.1.RELEASE</version>
+		</dependency>
+
+<dependency>
+	<groupId>org.springframework.security</groupId>
+	<artifactId>spring-security-ldap</artifactId>
+	<version>3.2.4.RELEASE</version>
+</dependency>
+
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core</artifactId>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.ldap</groupId>
+			<artifactId>spring-ldap-core-tiger</artifactId>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+            <!-- Is the ApacheDS server; as noted above, 1.5.6 and 1.5.7 don't work -->
+            <groupId>org.apache.directory.server</groupId>
+            <artifactId>apacheds-server-jndi</artifactId>
+            <version>1.5.5</version>
+        </dependency>
+        <dependency>
+            <!-- Required by ApacheDS, but not listed in its POM -->
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+	<groupId>org.apache.mina</groupId>
+	<artifactId>mina-core</artifactId>
+	<version>2.0.7</version>
+</dependency>
+
+        
 
 		<!-- web -->
 
@@ -126,7 +177,7 @@
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 		</dependency>
-		
+
 		<!-- test scoped -->
 
 		<dependency>
