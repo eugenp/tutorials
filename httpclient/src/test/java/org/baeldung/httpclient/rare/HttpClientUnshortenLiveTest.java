@@ -1,4 +1,4 @@
-package org.baeldung.httpclient;
+package org.baeldung.httpclient.rare;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
