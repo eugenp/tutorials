@@ -1,6 +1,6 @@
 =========
 
-## Spring Security with Basic Authentication Example Project
+## Spring Security with LDAP Example Project
 
 
 ### Relevant Article: 
@@ -9,4 +9,9 @@
 
 
 ### Notes
-- the project includes both views as well as a REST layer
+- the project uses Spring Boot - simply run 'SampleLDAPApplication.java' to start up Spring Boot with a Tomcat container and embedded LDAP server.
+- Once started, open 'http://localhost:8080'
+- This will display the publicly available Home Page
+- Navigate to 'Secure Page' to trigger authentication
+- Username: 'baeldung', password: 'password'
+- This will authenticate you, and display your allocated roles (as defined in the 'users.ldif' file)
