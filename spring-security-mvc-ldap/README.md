@@ -1,4 +1,3 @@
-=========
 
 ## Spring Security with LDAP Example Project
 
@@ -15,3 +14,4 @@
 - Navigate to 'Secure Page' to trigger authentication
 - Username: 'baeldung', password: 'password'
 - This will authenticate you, and display your allocated roles (as defined in the 'users.ldif' file)
+
