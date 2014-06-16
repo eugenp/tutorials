@@ -3,6 +3,8 @@ package org.baeldung.java.collections;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.collections4.CollectionUtils;
@@ -12,10 +14,11 @@ import org.junit.Test;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 public class JavaCollectionCleanupUnitTest {
 
-    // removing nulls
+    // tests - removing nulls
 
     @Test
     public final void givenListContainsNulls_whenRemovingNullsWithPlainJava_thenCorrect() {
@@ -48,6 +51,24 @@ public class JavaCollectionCleanupUnitTest {
         CollectionUtils.filter(list, PredicateUtils.notNullPredicate());
 
         assertThat(list, hasSize(3));
+    }
+
+    // tests - remove duplicates
+
+    @Test
+    public final void givenListContainsDuplicates_whenRemovingDuplicatesWithPlainJava_thenCorrect() {
+        final List<Integer> listWithDuplicates = Lists.newArrayList(0, 1, 2, 3, 0, 0);
+        final List<Integer> listWithoutDuplicates = new ArrayList<>(new HashSet<>(listWithDuplicates));
+
+        assertThat(listWithoutDuplicates, hasSize(4));
+    }
+
+    @Test
+    public final void givenListContainsDuplicates_whenRemovingDuplicatesWithGuava_thenCorrect() {
+        final List<Integer> listWithDuplicates = Lists.newArrayList(0, 1, 2, 3, 0, 0);
+        final List<Integer> listWithoutDuplicates = Lists.newArrayList(Sets.newHashSet(listWithDuplicates));
+
+        assertThat(listWithoutDuplicates, hasSize(4));
     }
 
 }
