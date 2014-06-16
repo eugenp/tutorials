@@ -15,37 +15,15 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth)
-			throws Exception {
-		
-		auth.ldapAuthentication()
-		.userSearchBase("ou=people")
-		.userSearchFilter("(uid={0})")
-		.groupSearchBase("ou=groups")
-		.groupSearchFilter("member={0}")
-		.contextSource()
-		.root("dc=baeldung,dc=com")
-		.ldif("classpath:users.ldif");
-		
-	}
-	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.ldapAuthentication().userSearchBase("ou=people").userSearchFilter("(uid={0})").groupSearchBase("ou=groups").groupSearchFilter("member={0}").contextSource().root("dc=baeldung,dc=com").ldif("classpath:users.ldif");
+    }
 
-        http
-        .authorizeRequests()
-            .antMatchers("/", "/home").permitAll()
-            .anyRequest().authenticated();
-		http
-        .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .and()
-        .logout()
-            .logoutSuccessUrl("/");
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/", "/home").permitAll().anyRequest().authenticated();
+        http.formLogin().loginPage("/login").permitAll().and().logout().logoutSuccessUrl("/");
+    }
 
-	
-	}
-	
 }
