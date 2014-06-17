@@ -85,4 +85,18 @@ public class FooController {
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@RequestBody final Foo resource) {
+        Preconditions.checkNotNull(resource);
+        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        service.update(resource);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") final Long id) {
+        service.deleteById(id);
+    }
+
 }
