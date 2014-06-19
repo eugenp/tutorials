@@ -1,4 +1,4 @@
-package org.baeldung.java;
+package org.baeldung.java.io;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
@@ -25,7 +25,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 import com.google.common.io.InputSupplier;
 
-public class CoreJavaIoUnitTest {
+public class JavaInputStreamToXUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     private static final int DEFAULT_SIZE = 150000000;
 
