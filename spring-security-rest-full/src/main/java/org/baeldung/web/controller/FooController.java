@@ -85,9 +85,9 @@ public class FooController {
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void update(@RequestBody final Foo resource) {
+    public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
         Preconditions.checkNotNull(resource);
         RestPreconditions.checkFound(service.findOne(resource.getId()));
         service.update(resource);
