@@ -7,15 +7,20 @@ import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -25,6 +30,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.ByteSource;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
+import com.google.common.io.Files;
 import com.google.common.io.InputSupplier;
 
 @SuppressWarnings("unused")
@@ -138,6 +144,43 @@ public class JavaInputStreamToXUnitTest {
     public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
         final ByteArrayInputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
         final byte[] targetArray = IOUtils.toByteArray(initialStream);
+    }
+
+    // tests - InputStream to File
+
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final byte[] buffer = new byte[initialStream.available()];
+        initialStream.read(buffer);
+
+        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final OutputStream outStream = new FileOutputStream(targetFile);
+        outStream.write(buffer);
+
+        IOUtils.closeQuietly(initialStream);
+        IOUtils.closeQuietly(outStream);
+    }
+
+    @Test
+    public final void givenUsingGuava_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final byte[] buffer = new byte[initialStream.available()];
+        initialStream.read(buffer);
+
+        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        Files.write(buffer, targetFile);
+
+        IOUtils.closeQuietly(initialStream);
+    }
+
+    @Test
+    public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+        final InputStream initialStream = FileUtils.openInputStream(new File("src/main/resources/sample.txt"));
+
+        final File targetFile = new File("src/main/resources/targetFile.tmp");
+
+        FileUtils.copyInputStreamToFile(initialStream, targetFile);
     }
 
 }
