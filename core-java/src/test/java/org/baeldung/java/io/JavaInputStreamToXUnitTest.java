@@ -22,20 +22,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Charsets;
+import com.google.common.io.ByteSource;
+import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import com.google.common.io.InputSupplier;
 
+@SuppressWarnings("unused")
 public class JavaInputStreamToXUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
-    private static final int DEFAULT_SIZE = 150000000;
-
-    // private static final int DEFAULT_SIZE = 8;
+    private static final int DEFAULT_SIZE = 1500000;
 
     // tests - InputStream to String
 
-    // 11s
     @Test
-    public void givenUsingJava5_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+    public final void givenUsingJava5_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(DEFAULT_SIZE);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
@@ -49,7 +49,6 @@ public class JavaInputStreamToXUnitTest {
         assertEquals(textBuilder.toString(), originalString);
     }
 
-    // 8s
     @Test
     public final void givenUsingJava7_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
         final String originalString = randomAlphabetic(DEFAULT_SIZE);
@@ -118,6 +117,27 @@ public class JavaInputStreamToXUnitTest {
         IOUtils.copy(inputStream, writer, encoding);
 
         assertThat(writer.toString(), equalTo(originalString));
+    }
+
+    // tests - InputStream to byte[]
+
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+        final byte[] targetArray = new byte[initialStream.available()];
+        initialStream.read(targetArray);
+    }
+
+    @Test
+    public final void givenUsingGuava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final InputStream initialStream = ByteSource.wrap(new byte[] { 0, 1, 2 }).openStream();
+        final byte[] targetArray = ByteStreams.toByteArray(initialStream);
+    }
+
+    @Test
+    public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final ByteArrayInputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+        final byte[] targetArray = IOUtils.toByteArray(initialStream);
     }
 
 }
