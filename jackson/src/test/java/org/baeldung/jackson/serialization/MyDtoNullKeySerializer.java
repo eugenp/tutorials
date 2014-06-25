@@ -1,4 +1,4 @@
-package org.baeldung.jackson.dtos;
+package org.baeldung.jackson.serialization;
 
 import java.io.IOException;
 
@@ -11,9 +11,7 @@ public class MyDtoNullKeySerializer extends JsonSerializer<Object> {
 
     @Override
     public void serialize(final Object value, final JsonGenerator jgen, final SerializerProvider provider) throws IOException, JsonProcessingException {
-
         jgen.writeFieldName("");
-
     }
 
 }

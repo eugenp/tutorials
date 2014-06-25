@@ -10,12 +10,12 @@ import java.util.Map;
 
 import org.baeldung.jackson.dtos.MyDto;
 import org.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
-import org.baeldung.jackson.dtos.MyDtoNullKeySerializer;
 import org.baeldung.jackson.dtos.MyDtoWithFilter;
 import org.baeldung.jackson.dtos.MyMixInForString;
 import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreField;
 import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreFieldByName;
 import org.baeldung.jackson.dtos.ignore.MyDtoIgnoreNull;
+import org.baeldung.jackson.serialization.MyDtoNullKeySerializer;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -186,6 +186,8 @@ public class JacksonSerializationIgnoreUnitTest {
         assertThat(dtoAsString, not(containsString("stringValue")));
         System.out.println(dtoAsString);
     }
+
+    // map
 
     @Test
     public final void givenIgnoringMapNullValue_whenWritingMapObjectWithNullValue_thenIgnored() throws JsonProcessingException {
