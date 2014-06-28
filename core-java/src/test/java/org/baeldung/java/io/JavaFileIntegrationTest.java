@@ -1,5 +1,7 @@
 package org.baeldung.java.io;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystemException;
@@ -17,7 +19,9 @@ public class JavaFileIntegrationTest {
     @Test
     public final void givenUsingJDK6_whenCreatingFile_thenCorrect() throws IOException {
         final File newFile = new File("src/test/resources/newFile_jdk6.txt");
-        newFile.createNewFile();
+        final boolean success = newFile.createNewFile();
+
+        assertTrue(success);
     }
 
     @Test
@@ -27,7 +31,7 @@ public class JavaFileIntegrationTest {
     }
 
     @Test
-    public final void givenUsingApache_whenCreatingFile_thenCorrect() throws IOException {
+    public final void givenUsingCommonsIo_whenCreatingFile_thenCorrect() throws IOException {
         FileUtils.touch(new File("src/test/resources/newFile_commonsio.txt"));
     }
 
@@ -76,6 +80,41 @@ public class JavaFileIntegrationTest {
         FileUtils.moveFileToDirectory(FileUtils.getFile("src/test/resources/fileToMove.txt"), FileUtils.getFile("src/main/resources/"), true);
     }
 
-    // rename a file
+    // delete a file
+
+    @Test
+    public final void givenUsingJDK6_whenDeletingAFile_thenCorrect() throws IOException {
+        new File("src/test/resources/fileToDelete_jdk6.txt").createNewFile();
+
+        final File fileToDelete = new File("src/test/resources/fileToDelete_jdk6.txt");
+        final boolean success = fileToDelete.delete();
+
+        assertTrue(success);
+    }
+
+    @Test
+    public final void givenUsingJDK7nio2_whenDeletingAFile_thenCorrect() throws IOException {
+        // Files.createFile(Paths.get("src/test/resources/fileToDelete_jdk7.txt"));
+
+        final Path fileToDeletePath = Paths.get("src/test/resources/fileToDelete_jdk7.txt");
+        Files.delete(fileToDeletePath);
+    }
+
+    @Test
+    public final void givenUsingCommonsIo_whenDeletingAFileV1_thenCorrect() throws IOException {
+        FileUtils.touch(new File("src/test/resources/fileToDelete_commonsIo.txt"));
+
+        final File fileToDelete = FileUtils.getFile("src/test/resources/fileToDelete_commonsIo.txt");
+        final boolean success = FileUtils.deleteQuietly(fileToDelete);
+
+        assertTrue(success);
+    }
+
+    @Test
+    public void givenUsingCommonsIo_whenDeletingAFileV2_thenCorrect() throws IOException {
+        // FileUtils.touch(new File("src/test/resources/fileToDelete.txt"));
+
+        FileUtils.forceDelete(FileUtils.getFile("src/test/resources/fileToDelete.txt"));
+    }
 
 }
