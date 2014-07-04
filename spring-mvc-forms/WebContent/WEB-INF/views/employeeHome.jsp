@@ -12,7 +12,7 @@
 <body>
 	<h3>Welcome, Enter The Employee Details</h3>
 
-	<form:form method="POST" action="/SpringMVCFormExample/addEmployee"
+	<form:form method="POST" action="/spring-mvc-forms/addEmployee"
 		commandName="employee">
 		<table>
 			<tr>
