@@ -35,6 +35,11 @@ public class JavaFileIntegrationTest {
         FileUtils.touch(new File("src/test/resources/newFile_commonsio.txt"));
     }
 
+    @Test
+    public final void givenUsingGuava_whenCreatingFile_thenCorrect() throws IOException {
+        com.google.common.io.Files.touch(new File("src/test/resources/newFile_guava.txt"));
+    }
+
     // move a file
 
     @Test

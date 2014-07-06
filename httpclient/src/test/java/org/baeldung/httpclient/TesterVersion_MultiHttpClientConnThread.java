@@ -15,6 +15,7 @@ public class TesterVersion_MultiHttpClientConnThread extends Thread {
     private PoolingHttpClientConnectionManager connManager = null;
     private Logger logger;
     public int leasedConn;
+
     public TesterVersion_MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;
         this.get = get;
