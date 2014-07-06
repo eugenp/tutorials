@@ -14,8 +14,10 @@ public class IdleConnectionMonitorThread extends Thread {
         this.connMgr = connMgr;
     }
 
+    // API
+
     @Override
-    public void run() {
+    public final void run() {
         try {
             while (!shutdown) {
                 synchronized (this) {
@@ -26,14 +28,14 @@ public class IdleConnectionMonitorThread extends Thread {
             }
         } catch (final InterruptedException ex) {
             shutdown();
-
         }
     }
 
-    public void shutdown() {
+    public final void shutdown() {
         shutdown = true;
         synchronized (this) {
             notifyAll();
         }
     }
+
 }

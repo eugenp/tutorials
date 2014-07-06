@@ -288,7 +288,7 @@ public class HttpClientConnectionManagementTest {
     }
 
     @Test
-    // 7.2 ARTICLE VERSION
+    // 6.2 ARTICLE VERSION
     // @Ignore
     public final void whenConnectionsNeededGreaterThanMaxTotal_thenLeaseMasTotalandReuse() throws InterruptedException {
         final HttpGet get = new HttpGet("http://echo.200please.com");
@@ -308,9 +308,10 @@ public class HttpClientConnectionManagementTest {
         }
     }
 
+    // 7
+
     @Test
-    // @Ignore
-    // 7.2.1
+    // 7.1
     public final void whenConfiguringTimeOut_thenNoExceptions() {
         route = new HttpRoute(new HttpHost("localhost", 80));
         poolingConnManager = new PoolingHttpClientConnectionManager();
@@ -368,26 +369,20 @@ public class HttpClientConnectionManagementTest {
     @Test(expected = IllegalStateException.class)
     // @Ignore
     // 9.1
-    public final void whenClosingConnectionsandManager_thenCloseWithNoExceptions() throws InterruptedException, ExecutionException, IOException, HttpException {
-        route = new HttpRoute(new HttpHost("google.com", 80));
-        final HttpGet get = new HttpGet("http://google.com");
+    public final void whenClosingConnectionsandManager_thenCloseWithNoExceptions1() throws InterruptedException, ExecutionException, IOException, HttpException {
         poolingConnManager = new PoolingHttpClientConnectionManager();
-        final ConnectionRequest connRequest = poolingConnManager.requestConnection(route, null);
-        context = HttpClientContext.create();
-        conn = connRequest.get(10, TimeUnit.SECONDS);
-        poolingConnManager.connect(conn, route, 10000, context);
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
+        final HttpGet get = new HttpGet("http://google.com");
         response = client.execute(get);
+
         EntityUtils.consume(response.getEntity());
-        client.close();
-        conn.close();
         response.close();
+        client.close();
         poolingConnManager.close();
         poolingConnManager.shutdown();
+
         client.execute(get);
-        conn.sendRequestHeader(get);
-        assertTrue(!conn.isOpen());
-        assertTrue(conn.isOpen());
+
         assertTrue(response.getEntity() == null);
     }
 
