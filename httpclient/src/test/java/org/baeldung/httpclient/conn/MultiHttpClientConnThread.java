@@ -18,14 +18,13 @@ public class MultiHttpClientConnThread extends Thread {
     private final HttpGet get;
 
     private PoolingHttpClientConnectionManager connManager;
-    private static HttpResponse response;
     public int leasedConn;
 
     public MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;
         this.get = get;
         this.connManager = connManager;
-        this.leasedConn = 0;
+        leasedConn = 0;
     }
 
     public MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get) {
@@ -44,14 +43,23 @@ public class MultiHttpClientConnThread extends Thread {
     @Override
     public final void run() {
         try {
-            logger.info("Thread Running: " + getName());
+            logger.debug("Thread Running: " + getName());
 
-            response = client.execute(get);
+            logger.debug("Thread Running: " + getName());
+
             if (connManager != null) {
-                logger.info("Leased Connections " + connManager.getTotalStats().getLeased());
-                leasedConn = connManager.getTotalStats().getLeased();
-                logger.info("Available Connections " + connManager.getTotalStats().getAvailable());
+                logger.info("Before - Leased Connections = " + connManager.getTotalStats().getLeased());
+                logger.info("Before - Available Connections = " + connManager.getTotalStats().getAvailable());
             }
+
+            final HttpResponse response = client.execute(get);
+
+            if (connManager != null) {
+                leasedConn = connManager.getTotalStats().getLeased();
+                logger.info("After - Leased Connections = " + connManager.getTotalStats().getLeased());
+                logger.info("After - Available Connections = " + connManager.getTotalStats().getAvailable());
+            }
+
             EntityUtils.consume(response.getEntity());
         } catch (final ClientProtocolException ex) {
             logger.error("", ex);

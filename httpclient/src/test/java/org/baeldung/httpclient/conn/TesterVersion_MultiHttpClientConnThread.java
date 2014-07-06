@@ -9,37 +9,35 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Preconditions;
+
 public class TesterVersion_MultiHttpClientConnThread extends Thread {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final CloseableHttpClient client;
     private final HttpGet get;
     private PoolingHttpClientConnectionManager connManager;
-    public int leasedConn;
 
     public TesterVersion_MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;
         this.get = get;
-        this.connManager = connManager;
-        leasedConn = 0;
+        this.connManager = Preconditions.checkNotNull(connManager);
     }
 
     //
 
-    public final int getLeasedConn() {
-        return leasedConn;
-    }
-
     @Override
     public final void run() {
         try {
-            logger.info("Thread Running: " + getName());
+            logger.debug("Thread Running: " + getName());
+
+            logger.info("Before - Leased Connections = " + connManager.getTotalStats().getLeased());
+            logger.info("Before - Available Connections = " + connManager.getTotalStats().getAvailable());
+
             client.execute(get);
-            if (connManager != null) {
-                logger.info("Leased Connections " + connManager.getTotalStats().getLeased());
-                leasedConn = connManager.getTotalStats().getLeased();
-                logger.info("Available Connections " + connManager.getTotalStats().getAvailable());
-            }
+
+            logger.info("After - Leased Connections = " + connManager.getTotalStats().getLeased());
+            logger.info("After - Available Connections = " + connManager.getTotalStats().getAvailable());
         } catch (final ClientProtocolException ex) {
             logger.error("", ex);
         } catch (final IOException ex) {

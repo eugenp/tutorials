@@ -33,6 +33,7 @@ import org.apache.http.protocol.HttpRequestExecutor;
 import org.apache.http.util.EntityUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class HttpClientConnectionManagementTest {
@@ -58,31 +59,37 @@ public class HttpClientConnectionManagementTest {
     public final void before() {
         get1 = new HttpGet(SERVER1);
         get2 = new HttpGet(SERVER7);
-        route = new HttpRoute(new HttpHost("localhost", 80));
+        route = new HttpRoute(new HttpHost("www.baeldung.com", 80));
     }
 
     @After
     public final void after() throws IllegalStateException, IOException {
-        if (conn != null)
+        if (conn != null) {
             conn.close();
-        if (conn1 != null)
+        }
+        if (conn1 != null) {
             conn1.close();
-        if (conn2 != null)
+        }
+        if (conn2 != null) {
             conn2.close();
-        if (poolingConnManager != null)
+        }
+        if (poolingConnManager != null) {
             poolingConnManager.shutdown();
-        if (basicConnManager != null)
+        }
+        if (basicConnManager != null) {
             basicConnManager.shutdown();
-        if (client != null)
+        }
+        if (client != null) {
             client.close();
-        if (response != null)
+        }
+        if (response != null) {
             response.close();
+        }
     }
 
     // 2
 
     @Test
-    // @Ignore
     // 2.1 IN ARTCLE
     public final void whenLowLevelConnectionIsEstablished_thenNoExceptions() throws IOException, HttpException, InterruptedException, ExecutionException {
         basicConnManager = new BasicHttpClientConnectionManager();
@@ -98,8 +105,9 @@ public class HttpClientConnectionManagementTest {
         context = HttpClientContext.create();
         final ConnectionRequest connRequest = basicConnManager.requestConnection(route, null);
         conn = connRequest.get(1000, TimeUnit.SECONDS);
-        if (!conn.isOpen())
+        if (!conn.isOpen()) {
             basicConnManager.connect(conn, route, 1000, context);
+        }
         conn.setSocketTimeout(30000);
 
         assertTrue(conn.getSocketTimeout() == 30000);
@@ -109,6 +117,7 @@ public class HttpClientConnectionManagementTest {
     // 3
 
     @Test
+    // Example 3.1.
     public final void whenPollingConnectionManagerIsConfiguredOnHttpClient_thenNoExceptions() throws InterruptedException, ClientProtocolException, IOException {
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
@@ -127,8 +136,8 @@ public class HttpClientConnectionManagementTest {
         final TesterVersion_MultiHttpClientConnThread thread1 = new TesterVersion_MultiHttpClientConnThread(client1, get1, poolingConnManager);
         final TesterVersion_MultiHttpClientConnThread thread2 = new TesterVersion_MultiHttpClientConnThread(client2, get2, poolingConnManager);
         thread1.start();
-        thread1.join();
         thread2.start();
+        thread1.join();
         thread2.join(1000);
         assertTrue(poolingConnManager.getTotalStats().getLeased() == 2);
     }
@@ -148,42 +157,40 @@ public class HttpClientConnectionManagementTest {
         thread2.join();
     }
 
+    // 4
+
     @Test
-    // @Ignore
-    // 3.4
+    // Example 4.1
     public final void whenIncreasingConnectionPool_thenNoEceptions() {
         poolingConnManager = new PoolingHttpClientConnectionManager();
         poolingConnManager.setMaxTotal(5);
         poolingConnManager.setDefaultMaxPerRoute(4);
+
         final HttpHost localhost = new HttpHost("locahost", 80);
         poolingConnManager.setMaxPerRoute(new HttpRoute(localhost), 5);
     }
 
     @Test
     // @Ignore
-    // 3.5 Tester Version
+    // 4.2 Tester Version
     /*tester*/public final void whenExecutingSameRequestsInDifferentThreads_thenUseDefaultConnLimit() throws InterruptedException, IOException {
-        final HttpGet get = new HttpGet("http://google.com");
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
-        final TesterVersion_MultiHttpClientConnThread thread1 = new TesterVersion_MultiHttpClientConnThread(client, get, poolingConnManager);
-        final TesterVersion_MultiHttpClientConnThread thread2 = new TesterVersion_MultiHttpClientConnThread(client, get, poolingConnManager);
-        final TesterVersion_MultiHttpClientConnThread thread3 = new TesterVersion_MultiHttpClientConnThread(client, get, poolingConnManager);
+        final TesterVersion_MultiHttpClientConnThread thread1 = new TesterVersion_MultiHttpClientConnThread(client, new HttpGet("http://www.google.com"), poolingConnManager);
+        final TesterVersion_MultiHttpClientConnThread thread2 = new TesterVersion_MultiHttpClientConnThread(client, new HttpGet("http://www.google.com"), poolingConnManager);
+        final TesterVersion_MultiHttpClientConnThread thread3 = new TesterVersion_MultiHttpClientConnThread(client, new HttpGet("http://www.google.com"), poolingConnManager);
         thread1.start();
-        thread1.join(1000);
-        assertTrue(poolingConnManager.getTotalStats().getLeased() == 1);
         thread2.start();
-        thread2.join(1000);
-        assertTrue(poolingConnManager.getTotalStats().getLeased() == 2);
         thread3.start();
-        thread3.join(1000);
+        thread1.join(10000);
+        thread2.join(10000);
+        thread3.join(10000);
     }
 
     @Test
-    // @Ignore
-    // 3.5 Article version
+    // 4.2 Article version
     public final void whenExecutingSameRequestsInDifferentThreads_thenExecuteReuqest() throws InterruptedException {
-        final HttpGet get = new HttpGet("http://localhost");
+        final HttpGet get = new HttpGet("http://www.google.com");
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
         final MultiHttpClientConnThread thread1 = new MultiHttpClientConnThread(client, get);
@@ -197,11 +204,11 @@ public class HttpClientConnectionManagementTest {
         thread3.join();
     }
 
-    // 4
+    // 5
 
     @Test
     // @Ignore
-    // 4.1
+    // 5.1
     public final void whenCustomizingKeepAliveStrategy_thenNoExceptions() throws ClientProtocolException, IOException {
         final ConnectionKeepAliveStrategy myStrategy = new ConnectionKeepAliveStrategy() {
             @Override
@@ -229,37 +236,36 @@ public class HttpClientConnectionManagementTest {
         client.execute(get2);
     }
 
-    // 5
+    // 6
 
     @Test
     // @Ignore
-    // 5.1
+    // 6.1
     public final void givenBasicHttpClientConnManager_whenConnectionReuse_thenNoExceptions() throws InterruptedException, ExecutionException, IOException, HttpException {
         basicConnManager = new BasicHttpClientConnectionManager();
         context = HttpClientContext.create();
-        final HttpGet get = new HttpGet("http://localhost");
-        HttpResponse thisResponse = null;
+
         final ConnectionRequest connRequest = basicConnManager.requestConnection(route, null);
-        client = HttpClients.custom().setConnectionManager(basicConnManager).build();
-        boolean respAvail = false;
         conn = connRequest.get(10, TimeUnit.SECONDS);
-        if (!conn.isOpen()) {
-            basicConnManager.connect(conn, route, 1000, context);
-            basicConnManager.routeComplete(conn, route, context);
-            final HttpRequestExecutor exeRequest = new HttpRequestExecutor();
-            context.setTargetHost((new HttpHost("localhost", 80)));
-            thisResponse = exeRequest.execute(get, conn, context);
-            respAvail = conn.isResponseAvailable(1000);
-        }
+
+        basicConnManager.connect(conn, route, 1000, context);
+        basicConnManager.routeComplete(conn, route, context);
+        final HttpRequestExecutor exeRequest = new HttpRequestExecutor();
+        context.setTargetHost((new HttpHost("www.baeldung.com", 80)));
+
+        final HttpGet get = new HttpGet("http://www.baeldung.com");
+        exeRequest.execute(get, conn, context);
+        conn.isResponseAvailable(1000);
         basicConnManager.releaseConnection(conn, null, 1, TimeUnit.SECONDS);
-        if (respAvail) {
-            client.execute(get);
-        }
+
+        //
+        client = HttpClients.custom().setConnectionManager(basicConnManager).build();
+        client.execute(get);
     }
 
     @Test
     // @Ignore
-    // 5.2 TESTER VERSION
+    // 6.2 TESTER VERSION
     /*tester*/public final void whenConnectionsNeededGreaterThanMaxTotal_thenReuseConnections() throws InterruptedException {
         poolingConnManager = new PoolingHttpClientConnectionManager();
         poolingConnManager.setDefaultMaxPerRoute(5);
@@ -282,7 +288,7 @@ public class HttpClientConnectionManagementTest {
     }
 
     @Test
-    // 5.2 ARTICLE VERSION
+    // 7.2 ARTICLE VERSION
     // @Ignore
     public final void whenConnectionsNeededGreaterThanMaxTotal_thenLeaseMasTotalandReuse() throws InterruptedException {
         final HttpGet get = new HttpGet("http://echo.200please.com");
@@ -304,7 +310,7 @@ public class HttpClientConnectionManagementTest {
 
     @Test
     // @Ignore
-    // 6.2.1
+    // 7.2.1
     public final void whenConfiguringTimeOut_thenNoExceptions() {
         route = new HttpRoute(new HttpHost("localhost", 80));
         poolingConnManager = new PoolingHttpClientConnectionManager();
@@ -312,17 +318,19 @@ public class HttpClientConnectionManagementTest {
         assertTrue(poolingConnManager.getSocketConfig(route.getTargetHost()).getSoTimeout() == 5000);
     }
 
+    // 8
+
     @Test
     // @Ignore
-    // 7.1
+    // 8.1
     public final void whenHttpClientChecksStaleConns_thenNoExceptions() {
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setDefaultRequestConfig(RequestConfig.custom().setStaleConnectionCheckEnabled(true).build()).setConnectionManager(poolingConnManager).build();
     }
 
     @Test
-    // @Ignore
-    // 7.2 TESTER VERSION
+    @Ignore("Very Long Running")
+    // 8.2 TESTER VERSION
     /*tester*/public final void whenCustomizedIdleConnMonitor_thenEliminateIdleConns() throws InterruptedException, IOException {
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
@@ -345,7 +353,7 @@ public class HttpClientConnectionManagementTest {
 
     @Test
     // @Ignore
-    // 7.2 ARTICLE VERSION
+    // 8.2 ARTICLE VERSION
     public final void whenCustomizedIdleConnMonitor_thenNoExceptions() throws InterruptedException, IOException {
         final HttpGet get = new HttpGet("http://google.com");
         poolingConnManager = new PoolingHttpClientConnectionManager();
@@ -355,9 +363,11 @@ public class HttpClientConnectionManagementTest {
         staleMonitor.join(1000);
     }
 
+    // 9
+
     @Test(expected = IllegalStateException.class)
     // @Ignore
-    // 8.1
+    // 9.1
     public final void whenClosingConnectionsandManager_thenCloseWithNoExceptions() throws InterruptedException, ExecutionException, IOException, HttpException {
         route = new HttpRoute(new HttpHost("google.com", 80));
         final HttpGet get = new HttpGet("http://google.com");
