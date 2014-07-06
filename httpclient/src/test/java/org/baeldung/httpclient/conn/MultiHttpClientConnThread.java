@@ -1,4 +1,4 @@
-package org.baeldung.httpclient;
+package org.baeldung.httpclient.conn;
 
 import java.io.IOException;
 import java.util.logging.Level;

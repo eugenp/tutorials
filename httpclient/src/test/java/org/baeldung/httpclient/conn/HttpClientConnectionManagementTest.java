@@ -1,4 +1,4 @@
-package org.baeldung.httpclient;
+package org.baeldung.httpclient.conn;
 
 import static org.junit.Assert.assertTrue;
 
@@ -109,18 +109,12 @@ public class HttpClientConnectionManagementTest {
     // 3
 
     @Test
-    // @Ignore
-    public final void whenPollingConnectionManagerIsConfiguredOnHttpClient_thenNoExceptions() throws InterruptedException {
+    public final void whenPollingConnectionManagerIsConfiguredOnHttpClient_thenNoExceptions() throws InterruptedException, ClientProtocolException, IOException {
         poolingConnManager = new PoolingHttpClientConnectionManager();
-        final CloseableHttpClient client1 = HttpClients.custom().setConnectionManager(poolingConnManager).build();
-        final CloseableHttpClient client2 = HttpClients.custom().setConnectionManager(poolingConnManager).build();
-        final TesterVersion_MultiHttpClientConnThread thread1 = new TesterVersion_MultiHttpClientConnThread(client1, get1, poolingConnManager);
-        final TesterVersion_MultiHttpClientConnThread thread2 = new TesterVersion_MultiHttpClientConnThread(client2, get2, poolingConnManager);
-        thread1.start();
-        thread1.join();
-        thread2.start();
-        thread2.join(1000);
-        assertTrue(poolingConnManager.getTotalStats().getLeased() == 2);
+        client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
+        client.execute(get1);
+
+        assertTrue(poolingConnManager.getTotalStats().getLeased() == 1);
     }
 
     @Test
@@ -149,8 +143,8 @@ public class HttpClientConnectionManagementTest {
         final MultiHttpClientConnThread thread1 = new MultiHttpClientConnThread(client1, get1);
         final MultiHttpClientConnThread thread2 = new MultiHttpClientConnThread(client2, get2);
         thread1.start();
-        thread1.join();
         thread2.start();
+        thread1.join();
         thread2.join();
     }
 
