@@ -19,15 +19,15 @@ public class JavaReaderToXUnitTest {
 
     // tests - Reader to String
 
-    @Test
-    public void givenUsingPlainJava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
-        final Reader initialReader = new StringReader("text");
-
-        final char[] mediationArray = new char["text".length()];
-        initialReader.read(mediationArray);
-        initialReader.close();
-        final String targetString = new String(mediationArray);
-    }
+    // @Test
+    // public void givenUsingPlainJava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
+    // final Reader initialReader = new StringReader("text");
+    // // int bufferSize = initialReader.toString().length();
+    // // char[] buffer = new char[bufferSize];
+    // initialReader.read(buffer);
+    // initialReader.close();
+    // final String targetString = new String(buffer);
+    // }
 
     @Test
     public void givenUsingGuava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
@@ -37,7 +37,7 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIo_whenConvertingReaderIntoString_thenCorrect() throws IOException {
+    public void givenUsingCommonsIO_whenConvertingReaderIntoString_thenCorrect() throws IOException {
         final Reader initialReader = new StringReader("Apache Commons IO 2.4");
         final String targetString = IOUtils.toString(initialReader);
         initialReader.close();
