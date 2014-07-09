@@ -1,9 +1,13 @@
 package org.baeldung.java.io;
 
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
+import java.nio.charset.Charset;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.input.CharSequenceReader;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -34,6 +38,59 @@ public class JavaXToReaderUnitTest {
     public void givenUsingCommonsIO_whenConvertingStringIntoReader_thenCorrect() throws IOException {
         final String initialString = "With Apache Commons IO";
         final Reader targetReader = new CharSequenceReader(initialString);
+        targetReader.close();
+    }
+
+    // tests - byte array to Reader
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
+        final byte[] initialArray = "Hello world!".getBytes();
+        final Reader targetReader = new StringReader(new String(initialArray));
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
+        final byte[] initialArray = "With Guava".getBytes();
+        final String bufferString = new String(initialArray);
+        final Reader targetReader = CharSource.wrap(bufferString).openStream();
+
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
+        final byte[] initialArray = "With Commons IO".getBytes();
+        final Reader targetReader = new CharSequenceReader(new String(initialArray));
+        targetReader.close();
+    }
+
+    // tests - File to Reader
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingFileIntoReader_thenCorrect() throws IOException {
+        final File initialFile = new File("src/test/resources/initialFile.txt");
+        initialFile.createNewFile();
+        final Reader targetReader = new FileReader(initialFile);
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingFileIntoReader_thenCorrect() throws IOException {
+        final File initialFile = new File("src/test/resources/initialFile.txt");
+        com.google.common.io.Files.touch(initialFile);
+        final Reader targetReader = com.google.common.io.Files.newReader(initialFile, Charset.defaultCharset());
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingFileIntoReader_thenCorrect() throws IOException {
+        final File initialFile = new File("src/test/resources/initialFile.txt");
+        FileUtils.touch(initialFile);
+        FileUtils.write(initialFile, "With Commons IO");
+        final byte[] buffer = FileUtils.readFileToByteArray(initialFile);
+        final Reader targetReader = new CharSequenceReader(new String(buffer));
         targetReader.close();
     }
 
