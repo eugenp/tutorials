@@ -15,6 +15,7 @@ import org.junit.runners.Suite;
     ,JacksonSerializationIgnoreUnitTest.class
     ,JacksonSerializationUnitTest.class
     ,SandboxTest.class
+    ,JacksonFieldUnitTest.class
 }) // @formatter:on
 public class UnitTestSuite {
 }
