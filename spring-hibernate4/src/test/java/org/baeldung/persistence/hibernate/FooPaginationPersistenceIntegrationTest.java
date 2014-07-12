@@ -34,10 +34,10 @@ import com.google.common.collect.Lists;
 public class FooPaginationPersistenceIntegrationTest {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    private IFooService fooService;
 
     @Autowired
-    private IFooService fooService;
+    private SessionFactory sessionFactory;
 
     private Session session;
 
@@ -140,8 +140,9 @@ public class FooPaginationPersistenceIntegrationTest {
         int i = 0;
         while (pageSize > i++) {
             fooPage.add((Foo) resultScroll.get(0));
-            if (!resultScroll.next())
+            if (!resultScroll.next()) {
                 break;
+            }
         }
 
         assertThat(fooPage, hasSize(lessThan(10 + 1)));
