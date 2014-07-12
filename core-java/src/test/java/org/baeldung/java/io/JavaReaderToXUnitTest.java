@@ -26,17 +26,39 @@ public class JavaReaderToXUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
     private static final int DEFAULT_SIZE = 1500000;
 
+    // tests - sandbox
+
     // tests - Reader to String
 
-    // @Test
-    // public void givenUsingPlainJava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
-    // final Reader initialReader = new StringReader("text");
-    // // int bufferSize = initialReader.toString().length();
-    // // char[] buffer = new char[bufferSize];
-    // initialReader.read(buffer);
-    // initialReader.close();
-    // final String targetString = new String(buffer);
-    // }
+    @Test
+    public void givenUsingPlainJava_whenConvertingReaderIntoString1_thenCorrect() throws IOException {
+        final Reader reader = new StringReader("text");
+        int intValueOfChar;
+        String targetString = "";
+        while ((intValueOfChar = reader.read()) != -1) {
+            targetString += (char) intValueOfChar;
+        }
+        reader.close();
+
+        // test
+        System.out.println("targetString: " + targetString);
+    }
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingReaderIntoString2_thenCorrect() throws IOException {
+        final Reader reader = new StringReader("text");
+        final char[] arr = new char[8 * 1024]; // 8K at a time
+        final StringBuffer buf = new StringBuffer();
+        int numChars;
+        while ((numChars = reader.read(arr, 0, arr.length)) > 0) {
+            buf.append(arr, 0, numChars);
+        }
+
+        reader.close();
+
+        // test
+        System.out.println("targetString: " + buf.toString());
+    }
 
     @Test
     public void givenUsingGuava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
