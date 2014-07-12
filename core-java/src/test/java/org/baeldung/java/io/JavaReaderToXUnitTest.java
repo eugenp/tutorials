@@ -31,45 +31,39 @@ public class JavaReaderToXUnitTest {
     // tests - Reader to String
 
     @Test
-    public void givenUsingPlainJava_whenConvertingReaderIntoString1_thenCorrect() throws IOException {
-        final Reader reader = new StringReader("text");
+    public void givenUsingPlainJava_whenConvertingReaderIntoStringV1_thenCorrect() throws IOException {
+        final StringReader reader = new StringReader("With Java 1");
         int intValueOfChar;
         String targetString = "";
         while ((intValueOfChar = reader.read()) != -1) {
             targetString += (char) intValueOfChar;
         }
         reader.close();
-
-        // test
-        System.out.println("targetString: " + targetString);
     }
 
     @Test
-    public void givenUsingPlainJava_whenConvertingReaderIntoString2_thenCorrect() throws IOException {
-        final Reader reader = new StringReader("text");
-        final char[] arr = new char[8 * 1024]; // 8K at a time
-        final StringBuffer buf = new StringBuffer();
-        int numChars;
-        while ((numChars = reader.read(arr, 0, arr.length)) > 0) {
-            buf.append(arr, 0, numChars);
+    public void givenUsingPlainJava_whenConvertingReaderIntoStringV2_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Java 1");
+        final char[] arr = new char[8 * 1024];
+        final StringBuilder buffer = new StringBuilder();
+        int numCharsRead;
+        while ((numCharsRead = initialReader.read(arr, 0, arr.length)) != -1) {
+            buffer.append(arr, 0, numCharsRead);
         }
-
-        reader.close();
-
-        // test
-        System.out.println("targetString: " + buf.toString());
+        initialReader.close();
+        final String targetString = buffer.toString();
     }
 
     @Test
     public void givenUsingGuava_whenConvertingReaderIntoString_thenCorrect() throws IOException {
-        final Reader initialReader = CharSource.wrap("Google Guava v.17.0").openStream();
+        final Reader initialReader = CharSource.wrap("With Google Guava").openStream();
         final String targetString = CharStreams.toString(initialReader);
         initialReader.close();
     }
 
     @Test
     public void givenUsingCommonsIO_whenConvertingReaderIntoString_thenCorrect() throws IOException {
-        final Reader initialReader = new StringReader("Apache Commons IO 2.4");
+        final Reader initialReader = new StringReader("With Apache Commons");
         final String targetString = IOUtils.toString(initialReader);
         initialReader.close();
     }
@@ -111,6 +105,41 @@ public class JavaReaderToXUnitTest {
         FileUtils.touch(targetFile);
         final byte[] buffer = IOUtils.toByteArray(initialReader);
         FileUtils.writeByteArrayToFile(targetFile, buffer);
+        initialReader.close();
+    }
+
+    // tests - Reader to byte[]
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingReaderIntoByteArray_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Java");
+
+        final char[] charArray = new char[8 * 1024];
+        final StringBuilder builder = new StringBuilder();
+        int numCharsRead;
+        while ((numCharsRead = initialReader.read(charArray, 0, charArray.length)) != -1) {
+            builder.append(charArray, 0, numCharsRead);
+        }
+        final byte[] targetArray = builder.toString().getBytes();
+
+        initialReader.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingReaderIntoByteArray_thenCorrect() throws IOException {
+        final Reader initialReader = CharSource.wrap("With Google Guava").openStream();
+
+        final byte[] targetArray = CharStreams.toString(initialReader).getBytes();
+
+        initialReader.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingReaderIntoByteArray_thenCorrect() throws IOException {
+        final StringReader initialReader = new StringReader("With Commons IO");
+
+        final byte[] targetArray = IOUtils.toByteArray(initialReader);
+
         initialReader.close();
     }
 
