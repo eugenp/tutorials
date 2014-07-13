@@ -1,9 +1,11 @@
 package org.baeldung.java.io;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
@@ -141,6 +143,44 @@ public class JavaReaderToXUnitTest {
         final byte[] targetArray = IOUtils.toByteArray(initialReader);
 
         initialReader.close();
+    }
+
+    // tests - Reader to InputStream
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Java");
+
+        final char[] charBuffer = new char[8 * 1024];
+        final StringBuilder builder = new StringBuilder();
+        int numCharsRead;
+        while ((numCharsRead = initialReader.read(charBuffer, 0, charBuffer.length)) != -1) {
+            builder.append(charBuffer, 0, numCharsRead);
+        }
+        final InputStream targetStream = new ByteArrayInputStream(builder.toString().getBytes());
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Guava");
+
+        final InputStream targetStream = new ByteArrayInputStream(CharStreams.toString(initialReader).getBytes());
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream() throws IOException {
+        final Reader initialReader = new StringReader("With Commons IO");
+
+        final InputStream targetStream = IOUtils.toInputStream(initialReader.toString());
+
+        initialReader.close();
+        targetStream.close();
     }
 
 }

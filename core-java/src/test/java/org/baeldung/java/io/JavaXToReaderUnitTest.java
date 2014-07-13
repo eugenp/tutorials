@@ -1,18 +1,24 @@
 package org.baeldung.java.io;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 import java.nio.charset.Charset;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.input.CharSequenceReader;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.io.ByteSource;
+import com.google.common.io.ByteStreams;
 import com.google.common.io.CharSource;
 
 public class JavaXToReaderUnitTest {
@@ -91,6 +97,37 @@ public class JavaXToReaderUnitTest {
         FileUtils.write(initialFile, "With Commons IO");
         final byte[] buffer = FileUtils.readFileToByteArray(initialFile);
         final Reader targetReader = new CharSequenceReader(new String(buffer));
+        targetReader.close();
+    }
+
+    // tests - InputStream to Reader
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingInputStreamIntoReader_thenCorrect() throws IOException {
+        final InputStream initialStream = new ByteArrayInputStream("With Java".getBytes());
+        final Reader targetReader = new InputStreamReader(initialStream);
+
+        initialStream.close();
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingInputStreamIntoReader_thenCorrect() throws IOException {
+        final InputStream initialStream = ByteSource.wrap("With Guava".getBytes()).openStream();
+        final byte[] buffer = ByteStreams.toByteArray(initialStream);
+        final Reader targetReader = CharSource.wrap(new String(buffer)).openStream();
+
+        initialStream.close();
+        targetReader.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingInputStreamIntoReader_thenCorrect() throws IOException {
+        final InputStream initialStream = IOUtils.toInputStream("With Commons IO");
+        final byte[] buffer = IOUtils.toByteArray(initialStream);
+        final Reader targetReader = new CharSequenceReader(new String(buffer));
+
+        initialStream.close();
         targetReader.close();
     }
 
