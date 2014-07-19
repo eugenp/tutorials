@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @Controller
 public class EmployeeController {
 
@@ -30,4 +29,5 @@ public class EmployeeController {
         model.addAttribute("id", employee.getId());
         return "employeeAdded";
     }
+
 }
