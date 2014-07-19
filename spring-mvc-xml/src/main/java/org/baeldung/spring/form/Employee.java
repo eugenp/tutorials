@@ -6,11 +6,17 @@ public class Employee {
     private long id;
     private String contactNumber;
 
+    public Employee() {
+        super();
+    }
+
+    //
+
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -18,7 +24,7 @@ public class Employee {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -26,7 +32,7 @@ public class Employee {
         return contactNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
+    public void setContactNumber(final String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
