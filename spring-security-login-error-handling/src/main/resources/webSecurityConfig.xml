@@ -17,22 +17,20 @@
 		<form-login login-page='/login.html'
 			authentication-failure-url="/login.html?error=true"
 			authentication-success-handler-ref="myAuthenticationSuccessHandler"
-			default-target-url="/homepage.html" />    
-        <session-management invalid-session-url="/invalidSession.html" session-fixation-protection="none" />
-        <logout
-            invalidate-session="false" 
-            logout-success-url="/logout.html?logSucc=1"
-            logout-url="/j_spring_security_logout"
-            delete-cookies="JSESSIONID" />  
-   </http>
-   <beans:bean id="myAuthenticationSuccessHandler"
-        class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
-   <authentication-manager>
-      <authentication-provider>
-         <user-service>
-            <user name="user1" password="user1Pass" authorities="ROLE_USER" />
-             <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
-         </user-service>
-      </authentication-provider>
-   </authentication-manager>
+			default-target-url="/homepage.html" />
+		<session-management invalid-session-url="/invalidSession.html"
+			session-fixation-protection="none" />
+		<logout invalidate-session="false" logout-success-url="/logout.html?logSucc=1"
+			logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
+	</http>
+	<beans:bean id="myAuthenticationSuccessHandler"
+		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="user1" password="user1Pass" authorities="ROLE_USER" />
+				<user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
 </beans:beans>
