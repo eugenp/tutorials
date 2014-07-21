@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.1.RELEASE</version>
+		<version>1.1.4.RELEASE</version>
 	</parent>
 
 	<dependencies>
@@ -91,43 +91,25 @@
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 
-		<!-- Logging -->
+		<!-- logging -->
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<scope>runtime</scope>
+			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
 		</dependency>
-		<dependency>
+		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.mail</groupId>
-					<artifactId>mail</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.jms</groupId>
-					<artifactId>jms</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-			</exclusions>
-			<scope>runtime</scope>
+			<artifactId>log4j-over-slf4j</artifactId>
 		</dependency>
 
 		<!-- @Inject -->
@@ -227,7 +209,11 @@
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		
+		<!-- logging -->
+		<org.slf4j.version>1.7.6</org.slf4j.version>
+		<logback.version>1.1.1</logback.version>
+		
 	</properties>
 
 </project>
