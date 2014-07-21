@@ -3,7 +3,6 @@ package org.baeldung.jackson.field;
 public class MyDtoGetterImplicitDeserialization {
 
     private String stringValue;
-    int intValue;
     public boolean booleanValue;
 
     public MyDtoGetterImplicitDeserialization() {
@@ -14,7 +13,6 @@ public class MyDtoGetterImplicitDeserialization {
         super();
 
         this.stringValue = stringValue;
-        this.intValue = intValue;
         this.booleanValue = booleanValue;
     }
 
@@ -22,10 +20,6 @@ public class MyDtoGetterImplicitDeserialization {
 
     public String getStringValue() {
         return stringValue;
-    }
-
-    public int getIntValue() {
-        return intValue;
     }
 
 }

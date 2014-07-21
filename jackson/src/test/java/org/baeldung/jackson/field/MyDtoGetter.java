@@ -3,8 +3,7 @@ package org.baeldung.jackson.field;
 public class MyDtoGetter {
 
     private String stringValue;
-    int intValue;
-    public boolean booleanValue;
+    private int intValue;
 
     public MyDtoGetter() {
         super();
@@ -15,7 +14,6 @@ public class MyDtoGetter {
 
         this.stringValue = stringValue;
         this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API
