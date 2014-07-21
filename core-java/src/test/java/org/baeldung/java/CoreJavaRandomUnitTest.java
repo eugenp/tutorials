@@ -2,6 +2,7 @@ package org.baeldung.java;
 
 import java.util.Random;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
 
@@ -99,17 +100,17 @@ public class CoreJavaRandomUnitTest {
     }
 
     @Test
-    public void givenUsingPlainJava_whenGeneratingRandomDoubleBounded_thenCorrect() {
-        final double leftLimit = 1D;
-        final double rightLimit = 10D;
-        final double generatedDouble = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
+    public void givenUsingApache_whenGeneratingRandomDoubleUnbounded_thenCorrect() {
+        final double generatedDouble = new RandomDataGenerator().getRandomGenerator().nextDouble();
 
         System.out.println(generatedDouble);
     }
 
     @Test
-    public void givenUsingApache_whenGeneratingRandomDoubleUnbounded_thenCorrect() {
-        final double generatedDouble = new RandomDataGenerator().getRandomGenerator().nextDouble();
+    public void givenUsingPlainJava_whenGeneratingRandomDoubleBounded_thenCorrect() {
+        final double leftLimit = 1D;
+        final double rightLimit = 10D;
+        final double generatedDouble = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
 
         System.out.println(generatedDouble);
     }
@@ -121,6 +122,49 @@ public class CoreJavaRandomUnitTest {
         final double generatedDouble = new RandomDataGenerator().nextUniform(leftLimit, rightLimit);
 
         System.out.println(generatedDouble);
+    }
+
+    // tests - random String
+
+    @Test
+    public void givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect() {
+        final byte[] array = new byte[7]; // length is bounded by 7
+        new Random().nextBytes(array);
+        final String generatedString = new String(array);
+
+        System.out.println(generatedString);
+    }
+
+    @Test
+    public void givenUsingPlainJava_whenGeneratingRandomStringBounded_thenCorrect() {
+        final int leftLimit = 97; // letter 'a'
+        final int rightLimit = 122; // letter 'z'
+        final int targetStringLength = 10;
+        final StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            final int randomLimitedInt = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit));
+            buffer.append((char) randomLimitedInt);
+        }
+        final String generatedString = new String(buffer);
+
+        System.out.println(generatedString);
+    }
+
+    @Test
+    public void givenUsingApache_whenGeneratingRandomStringUnbounded_thenCorrect() {
+        final String generatedString = RandomStringUtils.random(10);
+
+        System.out.println(generatedString);
+    }
+
+    @Test
+    public void givenUsingApache_whenGeneratingRandomStringBounded_thenCorrect() {
+        final int length = 10;
+        final boolean useLetters = true;
+        final boolean useNumbers = false;
+        final String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+
+        System.out.println(generatedString);
     }
 
 }
