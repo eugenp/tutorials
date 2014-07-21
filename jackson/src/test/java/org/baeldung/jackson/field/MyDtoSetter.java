@@ -4,7 +4,6 @@ public class MyDtoSetter {
 
     private String stringValue;
     int intValue;
-    public boolean booleanValue;
 
     public MyDtoSetter() {
         super();
@@ -15,7 +14,6 @@ public class MyDtoSetter {
 
         this.stringValue = stringValue;
         this.intValue = intValue;
-        this.booleanValue = booleanValue;
     }
 
     // API

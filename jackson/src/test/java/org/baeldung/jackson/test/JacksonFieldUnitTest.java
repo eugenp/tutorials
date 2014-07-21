@@ -44,26 +44,24 @@ public class JacksonFieldUnitTest {
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
         assertThat(dtoAsString, containsString("stringValue"));
         assertThat(dtoAsString, not(containsString("intValue")));
-        assertThat(dtoAsString, containsString("booleanValue"));
         System.out.println(dtoAsString);
     }
 
     @Test
     public final void givenDifferentAccessLevels_whenGetterAdded_thenDeserializable() throws JsonProcessingException, JsonMappingException, IOException {
-        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"intValue\":1,\"booleanValue\":\"true\"}";
+        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"booleanValue\":\"true\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoGetterImplicitDeserialization dtoObject = mapper.readValue(jsonAsString, MyDtoGetterImplicitDeserialization.class);
 
         assertNotNull(dtoObject);
         assertThat(dtoObject.getStringValue(), equalTo("dtoString"));
-        assertThat(dtoObject.getIntValue(), equalTo(1));
         assertThat(dtoObject.booleanValue, equalTo(true));
     }
 
     @Test
     public final void givenDifferentAccessLevels_whenSetterAdded_thenDeserializable() throws JsonProcessingException, JsonMappingException, IOException {
-        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"intValue\":1,\"booleanValue\":\"true\"}";
+        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"intValue\":1}";
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoSetter dtoObject = mapper.readValue(jsonAsString, MyDtoSetter.class);
@@ -71,7 +69,6 @@ public class JacksonFieldUnitTest {
         assertNotNull(dtoObject);
         assertThat(dtoObject.getStringValue(), equalTo("dtoString"));
         assertThat(dtoObject.anotherGetIntValue(), equalTo(1));
-        assertThat(dtoObject.booleanValue, equalTo(true));
     }
 
     @Test
@@ -83,7 +80,6 @@ public class JacksonFieldUnitTest {
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
         assertThat(dtoAsString, containsString("stringValue"));
         assertThat(dtoAsString, not(containsString("intValue")));
-        assertThat(dtoAsString, containsString("booleanValue"));
         System.out.println(dtoAsString);
     }
 
