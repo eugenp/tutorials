@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JacksonFieldUnitTest {
 
     @Test
-    public final void givenDifferentAccessLevels_whenSerializing_thenPublicFieldsAreSerialized() throws JsonProcessingException {
+    public final void givenDifferentAccessLevels_whenPublic_thenSerializable() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoAccessLevel dtoObject = new MyDtoAccessLevel();
