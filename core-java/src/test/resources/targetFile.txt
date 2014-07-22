@@ -1,0 +1,1 @@
+CharSequenceReader extends Reader

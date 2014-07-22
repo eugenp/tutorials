@@ -17,13 +17,12 @@ import org.junit.Test;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonFieldUnitTest {
 
     @Test
-    public final void givenDifferentAccessLevels_whenPublic_thenSerializable() throws JsonProcessingException {
+    public final void givenDifferentAccessLevels_whenSerializing_thenPublicFieldsAreSerialized() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoAccessLevel dtoObject = new MyDtoAccessLevel();
@@ -48,7 +47,7 @@ public class JacksonFieldUnitTest {
     }
 
     @Test
-    public final void givenDifferentAccessLevels_whenGetterAdded_thenDeserializable() throws JsonProcessingException, JsonMappingException, IOException {
+    public final void givenDifferentAccessLevels_whenGetterAdded_thenDeserializable() throws IOException {
         final String jsonAsString = "{\"stringValue\":\"dtoString\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
@@ -59,7 +58,7 @@ public class JacksonFieldUnitTest {
     }
 
     @Test
-    public final void givenDifferentAccessLevels_whenSetterAdded_thenDeserializable() throws JsonProcessingException, JsonMappingException, IOException {
+    public final void givenDifferentAccessLevels_whenSetterAdded_thenDeserializable() throws IOException {
         final String jsonAsString = "{\"intValue\":1}";
         final ObjectMapper mapper = new ObjectMapper();
 
@@ -70,7 +69,7 @@ public class JacksonFieldUnitTest {
     }
 
     @Test
-    public final void givenDifferentAccessLevels_whenSetterAdded_thenStillNotSerializable() throws JsonProcessingException {
+    public final void givenDifferentAccessLevels_whenSetterAdded_thenStillNotSerializable() throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoSetter dtoObject = new MyDtoSetter();
@@ -81,7 +80,7 @@ public class JacksonFieldUnitTest {
     }
 
     @Test
-    public final void givenDifferentAccessLevels_whenSetVisibility_thenSerializable() throws JsonProcessingException {
+    public final void givenDifferentAccessLevels_whenSetVisibility_thenSerializable() throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
         mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);

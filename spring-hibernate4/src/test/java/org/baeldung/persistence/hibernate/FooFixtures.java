@@ -8,26 +8,21 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
 import com.google.common.collect.Lists;
 
-public class FooSortingPersistenceServiceData {
-    private static ServiceRegistry serviceRegistry;
-    private static SessionFactory sessionFactory;
-    private static Configuration configuration;
-    private static StandardServiceRegistryBuilder builder;
+public class FooFixtures {
+    private SessionFactory sessionFactory;
 
-    public FooSortingPersistenceServiceData() {
+    public FooFixtures(final SessionFactory sessionFactory) {
         super();
+
+        this.sessionFactory = sessionFactory;
     }
 
-    public void createBars() {
+    // API
 
-        configWork();
+    public void createBars() {
         Session session = null;
         Transaction tx = null;
         session = sessionFactory.openSession();
@@ -66,8 +61,6 @@ public class FooSortingPersistenceServiceData {
     }
 
     public void createFoos() {
-
-        configWork();
         Session session = null;
         Transaction tx = null;
         session = sessionFactory.openSession();
@@ -105,15 +98,4 @@ public class FooSortingPersistenceServiceData {
         }
     }
 
-    public void configWork() {
-        configuration = new Configuration();
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        configuration.setProperty("dialect", "org.hibernate.dialect.MySQLDialect");
-        configuration.setProperty(AvailableSettings.DRIVER, "com.mysql.jdbc.Driver");
-        configuration.setProperty(AvailableSettings.URL, "jdbc:mysql://localhost:3306/HIBERTEST2_TEST");
-        configuration.setProperty(AvailableSettings.USER, "root");
-        configuration.setProperty(AvailableSettings.PASS, "");
-        builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-        sessionFactory = configuration.addPackage("com.cc.example.hibernate").addAnnotatedClass(Foo.class).addAnnotatedClass(Bar.class).configure().buildSessionFactory(builder.build());
-    }
 }
