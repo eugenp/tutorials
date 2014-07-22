@@ -22,7 +22,7 @@ public class MyDtoSetter {
         this.intValue = intValue;
     }
 
-    public int anotherGetIntValue() {
+    public int alternativeGetIntValue() {
         return intValue;
     }
 

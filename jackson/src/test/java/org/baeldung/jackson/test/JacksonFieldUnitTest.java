@@ -65,7 +65,7 @@ public class JacksonFieldUnitTest {
         final MyDtoSetter dtoObject = mapper.readValue(jsonAsString, MyDtoSetter.class);
 
         assertNotNull(dtoObject);
-        assertThat(dtoObject.anotherGetIntValue(), equalTo(1));
+        assertThat(dtoObject.alternativeGetIntValue(), equalTo(1));
     }
 
     @Test
@@ -82,7 +82,6 @@ public class JacksonFieldUnitTest {
     @Test
     public final void givenDifferentAccessLevels_whenSetVisibility_thenSerializable() throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.setVisibility(PropertyAccessor.ALL, Visibility.NONE);
         mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
         final MyDtoAccessLevel dtoObject = new MyDtoAccessLevel();
