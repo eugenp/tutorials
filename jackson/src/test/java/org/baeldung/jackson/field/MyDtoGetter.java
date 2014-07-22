@@ -9,7 +9,7 @@ public class MyDtoGetter {
         super();
     }
 
-    public MyDtoGetter(final String stringValue, final int intValue, final boolean booleanValue) {
+    public MyDtoGetter(final String stringValue, final int intValue) {
         super();
 
         this.stringValue = stringValue;

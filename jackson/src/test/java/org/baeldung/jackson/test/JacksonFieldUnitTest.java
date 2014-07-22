@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JacksonFieldUnitTest {
 
     @Test
-    public final void givenDifferentAccessLevels_whenSerializing_thenPublicFieldsAreSerialized() throws JsonProcessingException {
+    public final void givenDifferentAccessLevels_whenPublic_thenSerializable() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoAccessLevel dtoObject = new MyDtoAccessLevel();
@@ -48,25 +48,23 @@ public class JacksonFieldUnitTest {
 
     @Test
     public final void givenDifferentAccessLevels_whenGetterAdded_thenDeserializable() throws IOException {
-        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"booleanValue\":\"true\"}";
+        final String jsonAsString = "{\"stringValue\":\"dtoString\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoGetterImplicitDeserialization dtoObject = mapper.readValue(jsonAsString, MyDtoGetterImplicitDeserialization.class);
 
         assertNotNull(dtoObject);
         assertThat(dtoObject.getStringValue(), equalTo("dtoString"));
-        assertThat(dtoObject.booleanValue, equalTo(true));
     }
 
     @Test
     public final void givenDifferentAccessLevels_whenSetterAdded_thenDeserializable() throws IOException {
-        final String jsonAsString = "{\"stringValue\":\"dtoString\",\"intValue\":1}";
+        final String jsonAsString = "{\"intValue\":1}";
         final ObjectMapper mapper = new ObjectMapper();
 
         final MyDtoSetter dtoObject = mapper.readValue(jsonAsString, MyDtoSetter.class);
 
         assertNotNull(dtoObject);
-        assertThat(dtoObject.getStringValue(), equalTo("dtoString"));
         assertThat(dtoObject.anotherGetIntValue(), equalTo(1));
     }
 
@@ -77,7 +75,6 @@ public class JacksonFieldUnitTest {
         final MyDtoSetter dtoObject = new MyDtoSetter();
 
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
-        assertThat(dtoAsString, containsString("stringValue"));
         assertThat(dtoAsString, not(containsString("intValue")));
         System.out.println(dtoAsString);
     }
