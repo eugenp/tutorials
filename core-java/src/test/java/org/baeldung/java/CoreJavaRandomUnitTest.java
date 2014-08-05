@@ -18,6 +18,13 @@ public class CoreJavaRandomUnitTest {
     }
 
     @Test
+    public void givenUsingApacheCommons_whenGeneratingRandomLongUnbounded_thenCorrect() {
+        final long generatedLong = new RandomDataGenerator().getRandomGenerator().nextLong();
+
+        System.out.println(generatedLong);
+    }
+
+    @Test
     public void givenUsingPlainJava_whenGeneratingRandomLongBounded_thenCorrect() {
         final long leftLimit = 1L;
         final long rightLimit = 10L;
@@ -54,6 +61,13 @@ public class CoreJavaRandomUnitTest {
     }
 
     @Test
+    public void givenUsingApache_whenGeneratingRandomIntegerUnbounded_thenCorrect() {
+        final Integer generatedInteger = new RandomDataGenerator().getRandomGenerator().nextInt();
+
+        System.out.println(generatedInteger);
+    }
+
+    @Test
     public void givenUsingApache_whenGeneratingRandomIntegerBounded_thenCorrect() {
         final int leftLimit = 1;
         final int rightLimit = 10;
@@ -67,6 +81,13 @@ public class CoreJavaRandomUnitTest {
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomFloatUnbouned_thenCorrect() {
         final float generatedFloat = new Random().nextFloat();
+
+        System.out.println(generatedFloat);
+    }
+
+    @Test
+    public void givenUsingApache_whenGeneratingRandomFloatUnbounded_thenCorrect() {
+        final float generatedFloat = new RandomDataGenerator().getRandomGenerator().nextFloat();
 
         System.out.println(generatedFloat);
     }
