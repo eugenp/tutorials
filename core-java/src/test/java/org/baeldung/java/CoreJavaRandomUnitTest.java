@@ -172,8 +172,22 @@ public class CoreJavaRandomUnitTest {
     }
 
     @Test
-    public void givenUsingApache_whenGeneratingRandomStringUnbounded_thenCorrect() {
+    public void givenUsingApache_whenGeneratingRandomString_thenCorrect() {
         final String generatedString = RandomStringUtils.random(10);
+
+        System.out.println(generatedString);
+    }
+
+    @Test
+    public void givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect() {
+        final String generatedString = RandomStringUtils.randomAlphabetic(10);
+
+        System.out.println(generatedString);
+    }
+
+    @Test
+    public void givenUsingApache_whenGeneratingRandomAlphanumericString_thenCorrect() {
+        final String generatedString = RandomStringUtils.randomAlphanumeric(10);
 
         System.out.println(generatedString);
     }
