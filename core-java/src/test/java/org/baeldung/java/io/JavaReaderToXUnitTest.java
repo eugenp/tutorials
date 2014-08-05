@@ -2,7 +2,6 @@ package org.baeldung.java.io;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -74,24 +73,26 @@ public class JavaReaderToXUnitTest {
 
     @Test
     public void givenUsingPlainJava_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
-        final File sourceFile = new File("src/test/resources/sourceFile.txt");
-        sourceFile.createNewFile();
-        final Reader initialReader = new FileReader(sourceFile);
-        final char[] buffer = new char[(int) sourceFile.length()];
-        initialReader.read(buffer);
+        final Reader initialReader = new StringReader("Some text");
+
+        int intValueOfChar;
+        final StringBuilder buffer = new StringBuilder();
+        while ((intValueOfChar = initialReader.read()) != -1) {
+            buffer.append((char) intValueOfChar);
+        }
         initialReader.close();
 
         final File targetFile = new File("src/test/resources/targetFile.txt");
         targetFile.createNewFile();
 
         final Writer targetFileWriter = new FileWriter(targetFile);
-        targetFileWriter.write(buffer);
+        targetFileWriter.write(buffer.toString());
         targetFileWriter.close();
     }
 
     @Test
     public void givenUsingGuava_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
-        final Reader initialReader = CharSource.wrap("IDDQD").openStream();
+        final Reader initialReader = new StringReader("Some text");
 
         final File targetFile = new File("src/test/resources/targetFile.txt");
         com.google.common.io.Files.touch(targetFile);
@@ -103,6 +104,7 @@ public class JavaReaderToXUnitTest {
     @Test
     public void givenUsingCommonsIO_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
         final Reader initialReader = new CharSequenceReader("CharSequenceReader extends Reader");
+
         final File targetFile = new File("src/test/resources/targetFile.txt");
         FileUtils.touch(targetFile);
         final byte[] buffer = IOUtils.toByteArray(initialReader);
