@@ -34,7 +34,7 @@ public class JavaReaderToXUnitTest {
 
     @Test
     public void givenUsingPlainJava_whenConvertingReaderIntoStringV1_thenCorrect() throws IOException {
-        final StringReader reader = new StringReader("With Java 1");
+        final Reader reader = new StringReader("With Java 1");
         int intValueOfChar;
         String targetString = "";
         while ((intValueOfChar = reader.read()) != -1) {
@@ -73,10 +73,9 @@ public class JavaReaderToXUnitTest {
     // tests - Reader WRITE TO File
 
     @Test
-    public void givenUsingPlainJava_whenConvertingReaderIntoFile_thenCorrect() throws IOException {
+    public void givenUsingPlainJava_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
         final File sourceFile = new File("src/test/resources/sourceFile.txt");
         sourceFile.createNewFile();
-
         final Reader initialReader = new FileReader(sourceFile);
         final char[] buffer = new char[(int) sourceFile.length()];
         initialReader.read(buffer);
@@ -91,8 +90,9 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingGuava_whenConvertingReaderIntoFile_thenCorrect() throws IOException {
+    public void givenUsingGuava_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
         final Reader initialReader = CharSource.wrap("IDDQD").openStream();
+
         final File targetFile = new File("src/test/resources/targetFile.txt");
         com.google.common.io.Files.touch(targetFile);
         final CharSink charSink = com.google.common.io.Files.asCharSink(targetFile, Charset.defaultCharset(), FileWriteMode.APPEND);
@@ -101,7 +101,7 @@ public class JavaReaderToXUnitTest {
     }
 
     @Test
-    public void givenUsingCommonsIO_whenConvertingReaderIntoFile_thenCorrect() throws IOException {
+    public void givenUsingCommonsIO_whenWritingReaderContentsToFile_thenCorrect() throws IOException {
         final Reader initialReader = new CharSequenceReader("CharSequenceReader extends Reader");
         final File targetFile = new File("src/test/resources/targetFile.txt");
         FileUtils.touch(targetFile);
