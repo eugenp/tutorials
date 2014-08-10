@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:setBundle basename="messages" />
-<%@ page session="false"%>
+<%@ page session="true"%>
 <c:if test="${param.error != null}">
 	<div id="error">
 		<spring:message code="message.badCredentials"></spring:message>
@@ -73,5 +73,7 @@
 
 		</form>
 	<br> Current Locale : ${pageContext.response.locale}
+	<a href="<c:url value="/user/registration" />">Sign Up</a>
+	
 </body>
 </html>

@@ -73,5 +73,7 @@
 
 		</form>
 	<br> Current Locale : ${pageContext.response.locale}
+	
+	<a href="<c:url value="/registration.html" />">Home</a>
 </body>
 </html>
