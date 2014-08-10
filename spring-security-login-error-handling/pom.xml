@@ -25,9 +25,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+
 		<!-- Validation -->
-		
+
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -66,9 +70,9 @@
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>${javax.servlet.jsp-api.version}</version>	
+			<version>${javax.servlet.jsp-api.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -86,7 +90,42 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Spring Data JPA dependencies -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
+		<!-- DB dependencies -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>spring-security-login-and-registration</finalName>
 		<resources>
@@ -105,12 +144,18 @@
 		<!-- logging -->
 		<org.slf4j.version>1.7.6</org.slf4j.version>
 		<logback.version>1.1.1</logback.version>
-		
+
 		<!-- javax jsp -->
-        <javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
-        
-        <!-- Inject -->
-        <javax.inject.version>1</javax.inject.version>     
+		<javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
+
+		<!-- Inject -->
+		<javax.inject.version>1</javax.inject.version>
+
+		<!-- Spring Data Jpa -->
+		<spring-data-jpa.version>1.4.1.RELEASE</spring-data-jpa.version>
+
+		<!-- guava -->
+		<guava.version>17.0</guava.version>
 	</properties>
 
 </project>
