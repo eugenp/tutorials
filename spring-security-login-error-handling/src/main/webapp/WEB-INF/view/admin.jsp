@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
-<sec:authorize ifAnyGranted="ROLE_USER">
+<sec:authorize ifAnyGranted ="ROLE_USER">
 <spring:message code="message.unauth" ></spring:message>
 </sec:authorize>
 <head></head>
