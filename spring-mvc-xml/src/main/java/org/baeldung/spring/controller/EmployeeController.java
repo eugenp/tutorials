@@ -24,10 +24,11 @@ public class EmployeeController {
         if (result.hasErrors()) {
             return "error";
         }
+
         model.addAttribute("name", employee.getName());
         model.addAttribute("contactNumber", employee.getContactNumber());
         model.addAttribute("id", employee.getId());
-        return "employeeAdded";
+        return "employeeView";
     }
 
 }

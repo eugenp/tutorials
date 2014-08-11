@@ -1,9 +1,17 @@
 package org.baeldung.spring.form;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Employee {
 
-    private String name;
     private long id;
+
+    @NotNull
+    @Size(min = 1)
+    private String name;
+    @NotNull
+    @Size(min = 1)
     private String contactNumber;
 
     public Employee() {

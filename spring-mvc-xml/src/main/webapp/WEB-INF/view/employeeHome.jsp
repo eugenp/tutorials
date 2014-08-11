@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SpringMVCExample</title>
+<title>Form Example - Register an Employee</title>
 </head>
 <body>
 	<h3>Welcome, Enter The Employee Details</h3>
