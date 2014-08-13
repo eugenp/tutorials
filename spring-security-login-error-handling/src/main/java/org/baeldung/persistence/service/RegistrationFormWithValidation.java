@@ -7,8 +7,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class RegistrationFormWithValidation {
 
- 
-
     @Email
     @NotEmpty
     @Size(max = 100)

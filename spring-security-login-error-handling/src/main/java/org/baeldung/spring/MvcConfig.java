@@ -19,11 +19,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-
 @Configuration
-@ComponentScan(basePackages = {
-        "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao"
-})
+@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -46,9 +43,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/admin.html");
         registry.addViewController("/registration.html");
         registry.addViewController("/successRegister.html");
-        
+
     }
-    
+
     @Bean
     public ViewResolver viewResolver() {
         final InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -82,10 +79,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setCacheSeconds(0);
         return messageSource;
     }
+
     @Bean
     public UserValidator userValidator() {
         UserValidator userValidator = new UserValidator();
         return userValidator;
     }
-  
+
 }
