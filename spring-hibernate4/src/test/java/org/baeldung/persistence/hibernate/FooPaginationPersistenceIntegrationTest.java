@@ -16,7 +16,6 @@ import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.junit.After;
 import org.junit.Before;
@@ -154,7 +153,6 @@ public class FooPaginationPersistenceIntegrationTest {
         final int pageSize = 10;
 
         final Criteria criteria = session.createCriteria(Foo.class);
-        criteria.addOrder(Order.asc("id"));
         criteria.setFirstResult(0);
         criteria.setMaxResults(pageSize);
         final List<Foo> firstPage = criteria.list();
@@ -166,7 +164,6 @@ public class FooPaginationPersistenceIntegrationTest {
     @Test
     public final void givenUsingTheCriteriaApi_whenRetrievingPaginatedData_thenCorrect() {
         final Criteria criteriaCount = session.createCriteria(Foo.class);
-        criteriaCount.addOrder(Order.asc("id"));
         criteriaCount.setProjection(Projections.rowCount());
         final Long count = (Long) criteriaCount.uniqueResult();
 
@@ -175,7 +172,6 @@ public class FooPaginationPersistenceIntegrationTest {
         final List<Foo> fooList = Lists.newArrayList();
 
         final Criteria criteria = session.createCriteria(Foo.class);
-        criteria.addOrder(Order.asc("id"));
         int totalEntities = 0;
         while (totalEntities < count.intValue()) {
             criteria.setFirstResult((pageNumber - 1) * pageSize);
