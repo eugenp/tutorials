@@ -29,22 +29,13 @@
 	</http>
 	<beans:bean id="myAuthenticationSuccessHandler"
 		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
-	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
-		name="user1" password="user1Pass" authorities="ROLE_USER" /> <user name="admin1" 
-		password="admin1Pass" authorities="ROLE_ADMIN" /> </user-service> </authentication-provider> -->
-	<!-- Authentication from database.(For article 2) -->
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
-			<!-- <password-encoder ref="passwordEncoder"/> -->
 		</authentication-provider>
 	</authentication-manager>
-
-	<!-- This is used to hash the password of the user.(For article 2) -->
 	<beans:bean id="passwordEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
 		autowire="constructor" />
-	<!-- <beans:constructor-arg index="0" value="10"/> </beans:bean> -->
-
 	<beans:bean id="userDetailsService" class="org.baeldung.security.MyUserDetailsService"
 		autowire="constructor" />
 </beans:beans>

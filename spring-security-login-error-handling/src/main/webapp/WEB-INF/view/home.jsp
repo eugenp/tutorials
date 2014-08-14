@@ -2,6 +2,7 @@
 <%@ page session="true" %>
 <html>
 <head>
+<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 	<title>Home</title>
 </head>
 <body>

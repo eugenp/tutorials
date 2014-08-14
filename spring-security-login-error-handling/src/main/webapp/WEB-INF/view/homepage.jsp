@@ -2,7 +2,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="true" %>
 <html>
-<head></head>
+<head>
+<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
+</head>
 
 <body>
 	<body>
