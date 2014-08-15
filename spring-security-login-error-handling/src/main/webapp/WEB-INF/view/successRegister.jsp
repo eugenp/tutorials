@@ -8,12 +8,13 @@
 
 <html>
 <head>
+<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Registration Success</title>
 </head>
 <body>
 
-			<spring:message code="message.regSucc"></spring:message>
+		<h1>	<spring:message code="message.regSucc"></spring:message> </h1>
 			<a href="<c:url value="login.html" />"><spring:message code="label.login"></spring:message></a>
 </body>
 </html>

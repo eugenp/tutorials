@@ -1,7 +1,6 @@
 package org.baeldung.spring;
 
 import java.util.Locale;
-
 import org.baeldung.persistence.service.UserValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +11,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
@@ -19,8 +19,11 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
+@ComponentScan(basePackages = {
+        "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao"
+})
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -33,7 +36,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-
         registry.addViewController("/login.html");
         registry.addViewController("/logout.html");
         registry.addViewController("/homepage.html");
@@ -42,18 +44,22 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/console.html");
         registry.addViewController("/admin.html");
         registry.addViewController("/registration.html");
-        registry.addViewController("/successRegister.html");
-
+        registry.addViewController("/successRegister.html");     
     }
-
+    
     @Bean
     public ViewResolver viewResolver() {
         final InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setViewClass(JstlView.class);
         bean.setPrefix("/WEB-INF/view/");
         bean.setSuffix(".jsp");
-
         return bean;
+    }
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+      registry.addResourceHandler("/resources/**")
+        .addResourceLocations("/","/resources/");
     }
 
     @Override
@@ -79,11 +85,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setCacheSeconds(0);
         return messageSource;
     }
-
+    
     @Bean
     public UserValidator userValidator() {
         UserValidator userValidator = new UserValidator();
         return userValidator;
     }
-
+  
 }

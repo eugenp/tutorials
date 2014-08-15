@@ -22,33 +22,33 @@ import org.springframework.transaction.annotation.Transactional;
 public class MyUserDetailsService implements UserDetailsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsService.class);
-
+   
     private UserRepository userRepository;
 
     @Autowired
     public MyUserDetailsService(UserRepository repository) {
         this.userRepository = repository;
     }
-
+    
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             LOGGER.debug("Loading user by username: {}", username);
             User user = userRepository.findByUsername(username);
             LOGGER.debug("Found user: {}", user);
             if (user == null) {
-                // throw new UsernameNotFoundException("No user found with username: " + username);
-                boolean enabled = false;
-                return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
+               //throw new UsernameNotFoundException("No user found with username: " + username);
+               boolean enabled = false;
+               return  new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
             }
             boolean enabled = true;
             boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;
             boolean accountNonLocked = true;
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
+            return  new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }     
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
@@ -60,7 +60,7 @@ public class MyUserDetailsService implements UserDetailsService {
         List<String> roles = new ArrayList<String>();
 
         if (role.intValue() == 2) {
-            // roles.add("ROLE_USER");
+           // roles.add("ROLE_USER");
             roles.add("ROLE_ADMIN");
 
         } else if (role.intValue() == 1) {
@@ -69,7 +69,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         return roles;
     }
-
+    
     public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for (String role : roles) {

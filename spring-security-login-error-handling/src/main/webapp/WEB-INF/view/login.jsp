@@ -5,28 +5,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:setBundle basename="messages" />
 <%@ page session="true"%>
-<c:if test="${param.error != null}">
-	<div id="error">
-		<spring:message code="message.badCredentials"></spring:message>
-	</div>
-</c:if>
-<c:if test="${param.regSucc == 1}">
-		<div id="error">
-			<spring:message code="message.regSucc"></spring:message>
-		</div>
-</c:if>
-<c:if test="${param.regError == 1}">
 
-	<div id="error">
-		<spring:message code="message.regError"></spring:message>
-	</div>
-	<a href="registration.html">Register</a>
-</c:if>
 <fmt:message key="message.password" var="noPass" />
 <fmt:message key="message.username" var="noUser" />
 <html>
 <head>
-
+<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
+<c:if test="${param.error != null}">
+	<div class="alert alert-error">
+		<spring:message code="message.badCredentials"></spring:message>
+	</div>
+</c:if>
 <script type="text/javascript">
 	function validate() {
 		if (document.f.j_username.value == ""
@@ -73,6 +62,7 @@
 
 		</form>
 	<br> Current Locale : ${pageContext.response.locale}
+	<br>
 	<a href="<c:url value="/user/registration" />">Sign Up</a>
 	
 </body>

@@ -5,7 +5,9 @@
 <sec:authorize ifAnyGranted ="ROLE_USER">
 <spring:message code="message.unauth" ></spring:message>
 </sec:authorize>
-<head></head>
+<head>
+<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
+</head>
 
 
 <body>
