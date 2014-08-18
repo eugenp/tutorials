@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "org.baeldung.persistence.model" })
 @EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
 public class PersistenceJPAConfig {
-   
+
     @Autowired
     private Environment env;
 
@@ -69,5 +69,5 @@ public class PersistenceJPAConfig {
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
         return hibernateProperties;
     }
-    
+
 }

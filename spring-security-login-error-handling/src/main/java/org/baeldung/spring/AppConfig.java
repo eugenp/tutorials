@@ -12,7 +12,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Import({ MvcConfig.class, PersistenceJPAConfig.class, SecSecurityConfig.class })
 @PropertySource("classpath:application.properties")
 public class AppConfig {
-  
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
