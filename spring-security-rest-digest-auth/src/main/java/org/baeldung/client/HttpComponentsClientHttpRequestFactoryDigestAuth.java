@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.apache.http.HttpHost;
 import org.apache.http.client.AuthCache;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.protocol.ClientContext;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.BasicAuthCache;
@@ -15,8 +16,8 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpComponentsClientHttpRequestFactory {
     HttpHost host;
 
-    public HttpComponentsClientHttpRequestFactoryDigestAuth(final HttpHost host) {
-        super();
+    public HttpComponentsClientHttpRequestFactoryDigestAuth(final HttpHost host, final HttpClient httpClient) {
+        super(httpClient);
         this.host = host;
     }
 
