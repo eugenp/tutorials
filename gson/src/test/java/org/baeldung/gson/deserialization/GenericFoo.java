@@ -1,10 +1,10 @@
 package org.baeldung.gson.deserialization;
 
-public class GenericTargetClass<INTEGER> {
+public class GenericFoo<INTEGER> {
 
     public INTEGER intField;
 
-    GenericTargetClass(final INTEGER value) {
+    GenericFoo(final INTEGER value) {
         intField = value;
     }
 
