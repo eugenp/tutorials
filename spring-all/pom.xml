@@ -193,13 +193,13 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.0.6.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
         <javassist.version>3.18.1-GA</javassist.version>
         <jstl.version>1.2</jstl.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.6.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.31</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.32</mysql-connector-java.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.7</org.slf4j.version>
@@ -227,7 +227,7 @@
 		<maven-war-plugin.version>2.4</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
 		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.8</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.4.9</cargo-maven2-plugin.version>
 
     </properties>
 

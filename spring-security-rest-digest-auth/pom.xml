@@ -276,11 +276,11 @@
 	<properties>
 		<!-- Spring -->
 		<org.springframework.version>4.0.6.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
 		<hibernate.version>4.3.6.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.31</mysql-connector-java.version>
+		<mysql-connector-java.version>5.1.32</mysql-connector-java.version>
 
 		<!-- http -->
 		<httpcore.version>4.3.2</httpcore.version>
