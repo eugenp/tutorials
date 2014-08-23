@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <html>
+
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 </head>
@@ -10,16 +11,16 @@
 
 	<security:authorize access="hasRole('ROLE_USER')">
 		This text is only visible to a user
-		<br/>
+		<br />
 	</security:authorize>
 
 	<security:authorize access="hasRole('ROLE_ADMIN')">
 		This text is only visible to an admin
-		<br/>
+		<br />
 	</security:authorize>
 
 	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
 	<a href="<c:url value="/admin.html" />">Administrator Page</a>
-
 </body>
+
 </html>

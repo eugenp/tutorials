@@ -3,12 +3,13 @@
 <html>
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-	<title>Home</title>
+<title>Home</title>
 </head>
-<body>
-<h1 class="alert alert-error">
-<spring:message code="message.sessionExpired" ></spring:message>
-</h1>
 
+<body>
+	<h1 class="alert alert-error">
+		<spring:message code="message.sessionExpired"></spring:message>
+	</h1>
 </body>
+
 </html>
