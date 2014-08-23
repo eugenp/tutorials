@@ -9,6 +9,10 @@ public class Foo {
         this.stringValue = stringValue;
     }
 
+    public Foo() {
+        super();
+    }
+
     // API
 
     @Override
