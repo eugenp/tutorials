@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.3</version>
+			<version>${gson.version}</version>
 		</dependency>
 
 		<!-- test scoped -->
@@ -76,7 +76,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jackson</finalName>
+		<finalName>gson</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -116,7 +116,7 @@
 		<mysql-connector-java.version>5.1.31</mysql-connector-java.version>
 
 		<!-- marshalling -->
-		<jackson.version>2.4.1</jackson.version>
+		<gson.version>2.3</gson.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.7</org.slf4j.version>
