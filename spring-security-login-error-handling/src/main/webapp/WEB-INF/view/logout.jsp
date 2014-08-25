@@ -11,17 +11,16 @@
 		<spring:message code="message.logoutError"></spring:message>
 	</div>
 </c:if>
-<c:if test="${param.logSucc == 1}">
-	<div id="success">
-		<spring:message code="message.logoutSucc"></spring:message>
-	</div>
-</c:if>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Logged Out</title>
 </head>
 
 <body>
-
+<c:if test="${param.logSucc == true}">
+	<div id="success">
+		<spring:message code="message.logoutSucc"></spring:message>
+	</div>
+</c:if>
 	<a href="login.html">Login</a>
 </body>
 

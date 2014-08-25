@@ -7,13 +7,11 @@
 	<name>spring-security-login-and-registration</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.1.5.RELEASE</version>
 	</parent>
-
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -29,9 +27,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
-
-		<!-- Validation -->
-
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -40,57 +35,47 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<!-- <scope>runtime</scope> -->
 		</dependency>
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
 		</dependency>
-
 		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
 			<groupId>org.slf4j</groupId>
 			<artifactId>log4j-over-slf4j</artifactId>
 		</dependency>
-
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>${javax.inject.version}</version>
 		</dependency>
-
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>${javax.servlet.jsp-api.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
 		<!-- Taglibs -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- Spring Data JPA dependencies -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -104,7 +89,6 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
-
 		<!-- DB dependencies -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -129,7 +113,6 @@
 			<version>${guava.version}</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<finalName>spring-security-login-and-registration</finalName>
 		<resources>
@@ -144,22 +127,16 @@
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-
 		<!-- logging -->
 		<org.slf4j.version>1.7.6</org.slf4j.version>
 		<logback.version>1.1.1</logback.version>
-
 		<!-- javax jsp -->
 		<javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
-
 		<!-- Inject -->
 		<javax.inject.version>1</javax.inject.version>
-
 		<!-- Spring Data Jpa -->
 		<spring-data-jpa.version>1.4.5.RELEASE</spring-data-jpa.version>
-
 		<!-- guava -->
 		<guava.version>17.0</guava.version>
 	</properties>
-
 </project>

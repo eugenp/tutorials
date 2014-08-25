@@ -6,7 +6,6 @@
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 <title>Home</title>
 </head>
-
 <body>
 	<h1>Welcome back home!</h1>
 </body>

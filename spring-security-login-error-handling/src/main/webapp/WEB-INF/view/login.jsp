@@ -37,13 +37,11 @@
 	}
 </script>
 </head>
-
 <body>
 	<h1>Login</h1>
 	<a href="?lang=en">English</a> |
 	<a href="?lang=es_ES">Spanish</a>
 	<form name='f' action="j_spring_security_check" method='POST' onsubmit="return validate();">
-
 		<table>
 			<tr>
 				<td>User:</td>

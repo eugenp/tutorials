@@ -8,7 +8,10 @@
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 </head>
+<<<<<<< HEAD
+=======
 
+>>>>>>> FETCH_HEAD
 <body>
 	<sec:authorize ifAnyGranted="ROLE_ADMIN">
 		<H1>Hello Admin</H1>
@@ -17,6 +20,4 @@
 	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
 	<a href="<c:url value="/home.html" />">Home</a>
 </body>
-
-
 </html>

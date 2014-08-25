@@ -36,6 +36,11 @@
 			<td><form:input path="password" value="" type="password" /></td>
 			<form:errors path="password" cssClass="alert alert-error" element="div" />
 		</tr>
+		<tr>
+			<td><label>Re-enter password:</label></td>
+			<td><form:input path="matchingPassword" value="" type="password"/></td>
+			<form:errors cssClass="alert alert-error" element="div" />
+		</tr>
 		<input type="hidden" name="role" value="1" />
 		<button type="submit">submit</button>
 	</form:form>

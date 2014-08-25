@@ -23,6 +23,7 @@ public class Role {
     @JoinColumn(name = "user_id")
     private User user;
 
+
     @Column(name = "role")
     private Integer role;
 

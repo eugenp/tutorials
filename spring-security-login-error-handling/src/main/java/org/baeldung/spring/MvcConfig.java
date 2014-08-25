@@ -1,7 +1,9 @@
 package org.baeldung.spring;
 
 import java.util.Locale;
-import org.baeldung.persistence.service.UserValidator;
+
+import org.baeldung.persistence.service.PasswordMatchesValidator;
+import org.baeldung.persistence.service.UsernameValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -81,11 +83,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setCacheSeconds(0);
         return messageSource;
     }
+     
+    @Bean
+    public UsernameValidator usernameValidator() {
+        UsernameValidator userNameValidator = new UsernameValidator();
+        return userNameValidator;
+    }
 
     @Bean
-    public UserValidator userValidator() {
-        UserValidator userValidator = new UserValidator();
-        return userValidator;
+    public PasswordMatchesValidator passwordMatchesValidator() {
+        PasswordMatchesValidator passwordMatchesValidator = new PasswordMatchesValidator();
+        return passwordMatchesValidator;
     }
 
 }

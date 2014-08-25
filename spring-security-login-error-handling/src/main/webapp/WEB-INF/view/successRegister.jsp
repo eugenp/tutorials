@@ -12,7 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Registration Success</title>
 </head>
-
 <body>
 	<h1>
 		<spring:message code="message.regSucc"></spring:message>
