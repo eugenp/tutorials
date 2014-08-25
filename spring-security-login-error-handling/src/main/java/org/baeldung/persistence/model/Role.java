@@ -66,4 +66,33 @@ public class Role {
     public void setRole(Integer role) {
         this.role = role;
     }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((role == null) ? 0 : role.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final Role role = (Role) obj;
+        if (!role.equals(role.role))
+            return false;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Role [role=").append(role).append("]").append("[id=").append(id).append("]");
+        return builder.toString();
+    }
 }
