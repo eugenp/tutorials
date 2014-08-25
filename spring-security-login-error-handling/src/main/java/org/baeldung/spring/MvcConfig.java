@@ -21,11 +21,8 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-
 @Configuration
-@ComponentScan(basePackages = {
-        "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao"
-})
+@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -46,9 +43,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/console.html");
         registry.addViewController("/admin.html");
         registry.addViewController("/registration.html");
-        registry.addViewController("/successRegister.html");     
+        registry.addViewController("/successRegister.html");
     }
-    
+
     @Bean
     public ViewResolver viewResolver() {
         final InternalResourceViewResolver bean = new InternalResourceViewResolver();
@@ -57,11 +54,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
         return bean;
     }
-    
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-      registry.addResourceHandler("/resources/**")
-        .addResourceLocations("/","/resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/");
     }
 
     @Override
@@ -93,11 +89,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         UsernameValidator userNameValidator = new UsernameValidator();
         return userNameValidator;
     }
+
     @Bean
     public PasswordMatchesValidator passwordMatchesValidator() {
         PasswordMatchesValidator passwordMatchesValidator = new PasswordMatchesValidator();
         return passwordMatchesValidator;
     }
-   
-  
+
 }

@@ -66,4 +66,5 @@ public class RegistrationController {
         }
         return registered;
     }
+
 }
