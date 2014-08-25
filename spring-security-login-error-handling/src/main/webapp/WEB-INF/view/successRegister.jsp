@@ -13,8 +13,10 @@
 <title>Registration Success</title>
 </head>
 <body>
-
-		<h1>	<spring:message code="message.regSucc"></spring:message> </h1>
-			<a href="<c:url value="login.html" />"><spring:message code="label.login"></spring:message></a>
+	<div id="success">
+		<spring:message code="message.regSucc"></spring:message>
+	</div>
+	<a href="<c:url value="login.html" />"><spring:message
+			code="label.login"></spring:message></a>
 </body>
 </html>

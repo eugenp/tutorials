@@ -9,6 +9,5 @@
 <h1 class="alert alert-error">
 <spring:message code="message.sessionExpired" ></spring:message>
 </h1>
-
 </body>
 </html>

@@ -38,32 +38,28 @@
 	}
 </script>
 </head>
-
 <body>
 	<h1>Login</h1>
 	<a href="?lang=en">English</a> |
 	<a href="?lang=es_ES">Spanish</a>
-		<form name='f' action="j_spring_security_check" method='POST'
-			onsubmit="return validate();">
-
-			<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='j_username' value=''></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='j_password' /></td>
-				</tr>
-				<tr>
-					<td><input name="submit" type="submit" value="submit" /></td>
-				</tr>
-			</table>
-
-		</form>
+	<form name='f' action="j_spring_security_check" method='POST'
+		onsubmit="return validate();">
+		<table>
+			<tr>
+				<td>User:</td>
+				<td><input type='text' name='j_username' value=''></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input type='password' name='j_password' /></td>
+			</tr>
+			<tr>
+				<td><input name="submit" type="submit" value="submit" /></td>
+			</tr>
+		</table>
+	</form>
 	<br> Current Locale : ${pageContext.response.locale}
 	<br>
 	<a href="<c:url value="/user/registration" />">Sign Up</a>
-	
 </body>
 </html>

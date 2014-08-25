@@ -17,17 +17,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name="firstName")
+    @Column(name = "firstName")
     private String firstName;
-    @Column(name="lastName")
+    @Column(name = "lastName")
     private String lastName;
-    @Column(name="username")
+    @Column(name = "username")
     private String username;
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
-    
-   
-    @OneToOne(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
 
     public Long getId() {
@@ -77,8 +76,7 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -100,11 +98,11 @@ public class User {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").
-            append("[lastName=").append(lastName).append("]").append("[username").append(username).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(username).append("]");
         return builder.toString();
     }
 }

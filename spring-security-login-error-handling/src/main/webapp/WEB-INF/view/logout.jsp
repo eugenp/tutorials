@@ -11,7 +11,7 @@
 		<spring:message code="message.logoutError"></spring:message>
 	</div>
 </c:if>
-<c:if test="${param.logSucc == 1}">
+<c:if test="${param.logSucc == true}">
 	<div id="success">
 		<spring:message code="message.logoutSucc"></spring:message>
 	</div>
@@ -20,7 +20,6 @@
 <title>Logged Out</title>
 </head>
 <body>
-		
 	<a href="login.html">Login</a>
 </body>
 </html>

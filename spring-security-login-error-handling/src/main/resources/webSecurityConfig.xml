@@ -5,8 +5,6 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
-
-
 	<http use-expressions="true">
 		<intercept-url pattern="/login*" access="permitAll" />
 		<intercept-url pattern="/logout*" access="permitAll" />
@@ -16,7 +14,6 @@
 		<intercept-url pattern="/registration*" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" />
 		<intercept-url pattern="/invalidSession*" access="isAnonymous()" />
-		<!-- <intercept-url pattern="/result*" access="isAnonymous()" /> -->
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<form-login login-page='/login.html'
 			authentication-failure-url="/login.html?error=true"
@@ -24,13 +21,14 @@
 			default-target-url="/homepage.html" />
 		<session-management invalid-session-url="/invalidSession.html"
 			session-fixation-protection="none" />
-		<logout invalidate-session="false" logout-success-url="/logout.html?logSucc=1"
+		<logout invalidate-session="false" logout-success-url="/logout.html?logSucc=true"
 			logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
 	</http>
 	<beans:bean id="myAuthenticationSuccessHandler"
 		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
+			<!-- <password-encoder ref="passwordEncoder"/> -->
 		</authentication-provider>
 	</authentication-manager>
 	<beans:bean id="passwordEncoder"

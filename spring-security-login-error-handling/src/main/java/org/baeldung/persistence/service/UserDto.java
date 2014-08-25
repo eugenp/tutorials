@@ -1,10 +1,26 @@
 package org.baeldung.persistence.service;
 
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
+@PasswordMatches
 public class UserDto {
+    @NotNull
+    @NotEmpty
     private String firstName;
+    @NotNull
+    @NotEmpty
     private String lastName;
+    @NotNull
+    @NotEmpty
     private String password;
+    @NotNull
+    @NotEmpty
+    private String matchingPassword;
+    @ValidUsername
+    @NotNull
+    @NotEmpty
     private String username;
+   
     private Integer role; 
    
     public Integer getRole() {
@@ -36,6 +52,12 @@ public class UserDto {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
     }
     @Override
     public String toString() {
