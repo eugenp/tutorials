@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:setBundle basename="messages" />
 <%@ page session="true"%>
-
 <fmt:message key="message.password" var="noPass" />
 <fmt:message key="message.username" var="noUser" />
 <html>
