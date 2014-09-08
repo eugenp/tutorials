@@ -9,43 +9,42 @@
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Registration</title>
+<title><spring:message code="label.form.title"></spring:message></title>
 </head>
 
 <body>
-	<H1>This is the registration page</H1>
-	<form:form modelAttribute="user" method="POST" enctype="utf8" role="form">
+	<H1><spring:message code="label.form.title"></spring:message></H1>
+	<form:form modelAttribute="user"  method="POST" enctype="utf8" >
 		<br>
 		<tr>
-			<td><label>First Name:</label></td>
+			<td><label><spring:message code="label.user.firstName"></spring:message></label></td>
 			<td><form:input path="firstName" value="" /></td>
 			<form:errors path="firstName" cssClass="alert alert-error" element="div" />
 		</tr>
 		<tr>
-			<td><label>Last Name:</label></td>
+			<td><label><spring:message code="label.user.lastName"></spring:message></label></td>
 			<td><form:input path="lastName" value="" /></td>
 			<form:errors path="lastName" cssClass="alert alert-error" element="div" />
 		</tr>
 		<tr>
-			<td><label>Username (your e-mail address):</label></td>
-			<td><form:input path="username" value="" /></td>
-			<form:errors path="username" cssClass="alert alert-error" element="div" />
+			<td><label><spring:message code="label.user.email"></spring:message></label></td>
+			<td><form:input path="email" value="" /></td>
+			<form:errors path="email" cssClass="alert alert-error" element="div" />
 		</tr>
 		<tr>
-			<td><label>Password:</label></td>
+			<td><label><spring:message code="label.user.password"></spring:message></label></td>
 			<td><form:input path="password" value="" type="password" /></td>
 			<form:errors path="password" cssClass="alert alert-error" element="div" />
 		</tr>
 		<tr>
-			<td><label>Re-enter password:</label></td>
+			<td><label><spring:message code="label.user.confirmPass"></spring:message></label></td>
 			<td><form:input path="matchingPassword" value="" type="password"/></td>
 			<form:errors cssClass="alert alert-error" element="div" />
 		</tr>
-		<input type="hidden" name="role" value="1" />
-		<button type="submit">submit</button>
+		<button type="submit"><spring:message code="label.form.submit"></spring:message></button>
 	</form:form>
 	<br>
-	<a href="<c:url value="login.html" />">Back to Login</a>
+	<a href="<c:url value="login.html" />"><spring:message code="label.form.loginLink"></spring:message></a>
 </body>
 
 </html>

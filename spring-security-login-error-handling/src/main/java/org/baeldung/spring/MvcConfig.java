@@ -3,7 +3,7 @@ package org.baeldung.spring;
 import java.util.Locale;
 
 import org.baeldung.persistence.service.PasswordMatchesValidator;
-import org.baeldung.persistence.service.UsernameValidator;
+import org.baeldung.persistence.service.EmailValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -85,8 +85,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
      
     @Bean
-    public UsernameValidator usernameValidator() {
-        UsernameValidator userNameValidator = new UsernameValidator();
+    public EmailValidator usernameValidator() {
+        EmailValidator userNameValidator = new EmailValidator();
         return userNameValidator;
     }
 

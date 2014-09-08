@@ -37,28 +37,28 @@
 </script>
 </head>
 <body>
-	<h1>Login</h1>
-	<a href="?lang=en">English</a> |
-	<a href="?lang=es_ES">Spanish</a>
+	<h1><spring:message code="label.form.loginTitle"></spring:message></h1>
+	<a href="?lang=en"><spring:message code="label.form.loginEnglish"></spring:message></a> |
+	<a href="?lang=es_ES"><spring:message code="label.form.loginSpanish"></spring:message></a>
 	<form name='f' action="j_spring_security_check" method='POST' onsubmit="return validate();">
 		<table>
 			<tr>
-				<td>User:</td>
+				<td><label><spring:message code="label.form.loginEmail"></spring:message></label></td>
 				<td><input type='text' name='j_username' value=''></td>
 			</tr>
 			<tr>
-				<td>Password:</td>
+				<td><label><spring:message code="label.form.loginPass"></spring:message></label></td>
 				<td><input type='password' name='j_password' /></td>
 			</tr>
 			<tr>
-				<td><input name="submit" type="submit" value="submit" /></td>
+				<td><input name="submit" type="submit" value=<spring:message code="label.form.submit"></spring:message> /></td>
 			</tr>
 		</table>
 
 	</form>
 	<br> Current Locale : ${pageContext.response.locale}
 	<br>
-	<a href="<c:url value="/user/registration" />">Sign Up</a>
+	<a href="<c:url value="/user/registration" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
 </body>
 
 </html>

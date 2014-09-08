@@ -28,12 +28,9 @@
 		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
 	<authentication-manager>
 		<authentication-provider user-service-ref="userDetailsService">
-			<!-- <password-encoder ref="passwordEncoder"/> -->
+		
 		</authentication-provider>
 	</authentication-manager>
-	<beans:bean id="passwordEncoder"
-		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"
-		autowire="constructor" />
 	<beans:bean id="userDetailsService" class="org.baeldung.security.MyUserDetailsService"
 		autowire="constructor" />
 </beans:beans>

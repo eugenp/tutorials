@@ -21,19 +21,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MyUserDetailsService implements UserDetailsService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsService.class);
-
-    private UserRepository userRepository;
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    public MyUserDetailsService(UserRepository repository) {
-        this.userRepository = repository;
-    }
+    private UserRepository userRepository;
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+   // @Autowired
+   // public MyUserDetailsService(UserRepository repository) {
+     //   this.userRepository = repository;
+   // }
+
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
-            LOGGER.debug("Loading user by username: {}", username);
-            User user = userRepository.findByUsername(username);
+            LOGGER.debug("Loading user by username: {}", email);
+            User user = userRepository.findByEmail(email);
             LOGGER.debug("Found user: {}", user);
             if (user == null) {
                 // throw new UsernameNotFoundException("No user found with username: " + username);
@@ -44,7 +45,7 @@ public class MyUserDetailsService implements UserDetailsService {
             boolean accountNonExpired = true;
             boolean credentialsNonExpired = true;
             boolean accountNonLocked = true;
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
 
         } catch (Exception e) {
             throw new RuntimeException(e);

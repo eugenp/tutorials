@@ -13,9 +13,9 @@
 <title>Registration Success</title>
 </head>
 <body>
-	<h1>
+	<div id="success">
 		<spring:message code="message.regSucc"></spring:message>
-	</h1>
+	</div>
 	<a href="<c:url value="login.html" />"><spring:message code="label.login"></spring:message></a>
 </body>
 

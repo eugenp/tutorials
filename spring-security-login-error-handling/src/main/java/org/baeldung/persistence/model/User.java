@@ -21,8 +21,8 @@ public class User {
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
-    @Column(name = "username")
-    private String username;
+    @Column(name = "email")
+    private String email;
     @Column(name = "password")
     private String password;
 
@@ -53,12 +53,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -81,7 +81,7 @@ public class User {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((username == null) ? 0 : username.hashCode());
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
         return result;
     }
 
@@ -94,7 +94,7 @@ public class User {
         if (getClass() != obj.getClass())
             return false;
         final User user = (User) obj;
-        if (!username.equals(user.username))
+        if (!email.equals(user.email))
             return false;
         return true;
     }
@@ -102,7 +102,7 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(username).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[email").append(email).append("]");
         return builder.toString();
     }
 }
