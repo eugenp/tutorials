@@ -1,9 +1,11 @@
 package org.baeldung.gson.serialization;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Type;
 import java.util.Collection;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -60,5 +62,18 @@ public class GsonSerializationTest {
         // test
         final String estimatedResult = "{\"intValue\":7}";
         assertEquals(estimatedResult, jsonString);
+    }
+
+    @Test
+    public void givenDate_whenSerializing_thenCorrect() {
+        final Date sourceDate = new Date(1000000L);
+        final Gson gson = new Gson();
+        final Type sourceDateType = new TypeToken<Date>() {
+        }.getType();
+        final String jsonDate = gson.toJson(sourceDate, sourceDateType);
+
+        // test
+        final Date testDate = gson.fromJson(jsonDate, sourceDateType);
+        assertTrue(sourceDate.equals(testDate));
     }
 }

@@ -15,8 +15,8 @@ public class SourceClassChangingFieldNamesSerializer implements JsonSerializer<S
         final String otherStringValueName = "otherStringValue";
 
         final JsonObject jObject = new JsonObject();
-        jObject.addProperty(otherIntValueName, src.intValue);
-        jObject.addProperty(otherStringValueName, src.stringValue);
+        jObject.addProperty(otherIntValueName, src.getIntValue());
+        jObject.addProperty(otherStringValueName, src.getStringValue());
 
         return jObject;
     }
