@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-public class SourceClassChangingFieldNamesSerializer implements JsonSerializer<SourceClass> {
+public class DifferentNameSerializer implements JsonSerializer<SourceClass> {
 
     @Override
     public JsonElement serialize(final SourceClass src, final Type typeOfSrc, final JsonSerializationContext context) {

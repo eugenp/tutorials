@@ -39,10 +39,10 @@ public class GsonSerializationTest {
     }
 
     @Test
-    public void givenUsingCustomSerializer_whenSerializingObjectToJsonWithDissimilarFieldNames_thenCorrect() {
+    public void givenUsingCustomSerializer_whenChangingNameOfFieldOnSerializing_thenCorrect() {
         final SourceClass sourceObject = new SourceClass(7, "seven");
         final GsonBuilder gsonBuildr = new GsonBuilder();
-        gsonBuildr.registerTypeAdapter(SourceClass.class, new SourceClassChangingFieldNamesSerializer());
+        gsonBuildr.registerTypeAdapter(SourceClass.class, new DifferentNameSerializer());
         final Gson gson = gsonBuildr.create();
         final String jsonString = gson.toJson(sourceObject);
 
@@ -52,10 +52,10 @@ public class GsonSerializationTest {
     }
 
     @Test
-    public void givenUsingCustomSerializer_whenSerializingObject_thenFieldIgnored() {
+    public void givenIgnoringAField_whenSerializingWithCustomSerializer_thenFieldIgnored() {
         final SourceClass sourceObject = new SourceClass(7, "seven");
         final GsonBuilder gsonBuildr = new GsonBuilder();
-        gsonBuildr.registerTypeAdapter(SourceClass.class, new SourceClassIgnoringExtraFieldsSerializer());
+        gsonBuildr.registerTypeAdapter(SourceClass.class, new IgnoringFieldsSerializer());
         final Gson gson = gsonBuildr.create();
         final String jsonString = gson.toJson(sourceObject);
 
@@ -76,4 +76,5 @@ public class GsonSerializationTest {
         final String estimatedResult = "\"Jan 1, 1970 3:16:40 AM\"";
         assertTrue(jsonDate.equals(estimatedResult));
     }
+
 }
