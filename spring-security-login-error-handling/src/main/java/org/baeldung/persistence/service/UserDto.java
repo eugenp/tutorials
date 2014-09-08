@@ -16,10 +16,18 @@ public class UserDto {
     @NotNull
     @NotEmpty
     private String matchingPassword;
-    @ValidUsername
+    @ValidEmail
     @NotNull
     @NotEmpty
-    private String username;
+    private String email;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private Integer role;
 
     public Integer getRole() {
@@ -28,14 +36,6 @@ public class UserDto {
 
     public void setRole(Integer role) {
         this.role = role;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getFirstName() {
@@ -71,7 +71,7 @@ public class UserDto {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(username).append("]").append("[password").append(password).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[email").append(email).append("]").append("[password").append(password).append("]");
         return builder.toString();
     }
 }

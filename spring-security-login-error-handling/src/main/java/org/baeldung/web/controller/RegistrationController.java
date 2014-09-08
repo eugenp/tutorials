@@ -1,10 +1,11 @@
 package org.baeldung.web.controller;
 
 import javax.validation.Valid;
+
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.EmailExistsException;
 import org.baeldung.persistence.service.UserDto;
-import org.baeldung.persistence.service.UserService;
+import org.baeldung.persistence.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private UserService service;
+    private IUserService service;
     @Autowired
     private MessageSource messages;
 
     @Autowired
-    public RegistrationController(UserService service) {
+    public RegistrationController(IUserService service) {
         this.service = service;
     }
 
@@ -47,12 +48,20 @@ public class RegistrationController {
         if (!result.hasErrors())
             registered = createUserAccount(userAccountData, result);
         if (registered == null) {
-            result.rejectValue("username", "message.regError");
+            result.rejectValue("email", "message.regError");
         }
         if (result.hasErrors()) {
             return new ModelAndView("registration", "user", userAccountData);
         } else {
+            // Will show the success registration page--ORIGINAL
             return new ModelAndView("successRegister", "user", userAccountData);
+
+            // Will redirect to login view (not in url as login.html) and user model can be accessed
+            // return new ModelAndView("login","user", userAccountData);
+            
+            
+            // Will redirect to login html but no model object---we send a success param to the login form
+            //return new ModelAndView("redirect:/login.html?success=true", "", null);
         }
 
     }
