@@ -65,29 +65,29 @@ public class GsonSerializationTest {
 
     @Test
     public void givenDate_whenSerializing_thenCorrect() {
-        Date sourceDate = new Date(1000000L);
-        Gson gson = new Gson();
-        Type sourceDateType = new TypeToken<Date>() {
+        final Date sourceDate = new Date(1000000L);
+        final Gson gson = new Gson();
+        final Type sourceDateType = new TypeToken<Date>() {
         }.getType();
         String jsonDate = gson.toJson(sourceDate, sourceDateType);
-        // test
+        
         System.out.println("jsonDate:\n" + jsonDate);
-        String expectedResult = "\"Jan 1, 1970 3:16:40 AM\"";
+        final String expectedResult = "\"Jan 1, 1970 3:16:40 AM\"";
         assertTrue(jsonDate.equals(expectedResult));
     }
 
     @Test
     public void givenUsingCustomDeserializer_whenFieldNotMatchesCriteria_thenIgnored() {
-        SourceClass sourceObject = new SourceClass(-1, "minus 1");
-        GsonBuilder gsonBuildr = new GsonBuilder();
+        final SourceClass sourceObject = new SourceClass(-1, "minus 1");
+        final GsonBuilder gsonBuildr = new GsonBuilder();
         gsonBuildr.registerTypeAdapter(SourceClass.class, new IgnoringFieldsNotMatchingCriteriaSerializer());
-        Gson gson = gsonBuildr.create();
-        Type sourceObjectType = new TypeToken<SourceClass>() {
+        final Gson gson = gsonBuildr.create();
+        final Type sourceObjectType = new TypeToken<SourceClass>() {
         }.getType();
         String jsonString = gson.toJson(sourceObject, sourceObjectType);
-        
-        String expectedResult = "{\"stringValue\":\"minus 1\"}";
+
+        final String expectedResult = "{\"stringValue\":\"minus 1\"}";
         assertEquals(expectedResult, jsonString);
     }
-    
+
 }
