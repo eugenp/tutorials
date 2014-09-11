@@ -33,9 +33,7 @@ public class GsonSerializationTest {
     @Test
     public void givenCollection_whenSerializing_thenCorrect() {
         final Collection<SourceClass> sourceCollection = Lists.newArrayList(new SourceClass(1, "one"), new SourceClass(2, "two"));
-        final Type sourceCollectionType = new TypeToken<Collection<SourceClass>>() {
-        }.getType();
-        final String jsonCollection = new Gson().toJson(sourceCollection, sourceCollectionType);
+        final String jsonCollection = new Gson().toJson(sourceCollection);
 
         final String expectedResult = "[{\"intValue\":1,\"stringValue\":\"one\"},{\"intValue\":2,\"stringValue\":\"two\"}]";
         assertEquals(expectedResult, jsonCollection);
@@ -64,19 +62,6 @@ public class GsonSerializationTest {
     }
 
     @Test
-    public void givenDate_whenSerializing_thenCorrect() {
-        final Date sourceDate = new Date(1000000L);
-        final Gson gson = new Gson();
-        final Type sourceDateType = new TypeToken<Date>() {
-        }.getType();
-        String jsonDate = gson.toJson(sourceDate, sourceDateType);
-        
-        System.out.println("jsonDate:\n" + jsonDate);
-        final String expectedResult = "\"Jan 1, 1970 3:16:40 AM\"";
-        assertTrue(jsonDate.equals(expectedResult));
-    }
-
-    @Test
     public void givenUsingCustomDeserializer_whenFieldNotMatchesCriteria_thenIgnored() {
         final SourceClass sourceObject = new SourceClass(-1, "minus 1");
         final GsonBuilder gsonBuildr = new GsonBuilder();
@@ -84,10 +69,23 @@ public class GsonSerializationTest {
         final Gson gson = gsonBuildr.create();
         final Type sourceObjectType = new TypeToken<SourceClass>() {
         }.getType();
-        String jsonString = gson.toJson(sourceObject, sourceObjectType);
+        final String jsonString = gson.toJson(sourceObject, sourceObjectType);
 
         final String expectedResult = "{\"stringValue\":\"minus 1\"}";
         assertEquals(expectedResult, jsonString);
+    }
+
+    @Test
+    public void givenDate_whenSerializing_thenCorrect() {
+        final Date sourceDate = new Date(1000000L);
+        final Gson gson = new Gson();
+        final Type sourceDateType = new TypeToken<Date>() {
+        }.getType();
+        final String jsonDate = gson.toJson(sourceDate, sourceDateType);
+
+        System.out.println("jsonDate:\n" + jsonDate);
+        final String expectedResult = "\"Jan 1, 1970 3:16:40 AM\"";
+        assertTrue(jsonDate.equals(expectedResult));
     }
 
 }

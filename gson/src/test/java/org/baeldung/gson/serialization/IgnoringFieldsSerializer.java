@@ -16,5 +16,4 @@ public class IgnoringFieldsSerializer implements JsonSerializer<SourceClass> {
 
         return jObject;
     }
-
 }
