@@ -4,13 +4,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Type;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.baeldung.gson.serialization.DifferentNameSerializer;
 import org.baeldung.gson.serialization.IgnoringFieldsNotMatchingCriteriaSerializer;
 import org.baeldung.gson.serialization.IgnoringFieldsSerializer;
 import org.baeldung.gson.serialization.SourceClass;
+import org.joda.time.DateTime;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
@@ -77,15 +80,16 @@ public class GsonSerializationTest {
 
     @Test
     public void givenDate_whenSerializing_thenCorrect() {
-        final Date sourceDate = new Date(1000000L);
+        Date sourceDate = new DateTime().withYear(2000).withMonthOfYear(1).withDayOfMonth(1).withHourOfDay(0).withMinuteOfHour(0).withSecondOfMinute(0).toDate();
+
         final Gson gson = new Gson();
-        final Type sourceDateType = new TypeToken<Date>() {
+        Type sourceDateType = new TypeToken<Date>() {
         }.getType();
-        final String jsonDate = gson.toJson(sourceDate, sourceDateType);
+        String jsonDate = gson.toJson(sourceDate, sourceDateType);
 
         System.out.println("jsonDate:\n" + jsonDate);
-        final String expectedResult = "\"Jan 1, 1970 3:16:40 AM\"";
-        assertTrue(jsonDate.equals(expectedResult));
+        String expectedResult = "\"Jan 1, 2000 12:00:00 AM\"";
+        assertEquals(expectedResult, jsonDate);
     }
 
 }
