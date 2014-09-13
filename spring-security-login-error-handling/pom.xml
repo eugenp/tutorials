@@ -137,6 +137,6 @@
 		<!-- Spring Data Jpa -->
 		<spring-data-jpa.version>1.4.5.RELEASE</spring-data-jpa.version>
 		<!-- guava -->
-		<guava.version>17.0</guava.version>
+		<guava.version>18.0</guava.version>
 	</properties>
 </project>

@@ -371,7 +371,7 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.0.6.RELEASE</org.springframework.version>
+		<org.springframework.version>4.1.0.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
@@ -381,7 +381,7 @@
 
 		<!-- marshalling -->
 
-		<jackson.version>2.4.1</jackson.version>
+		<jackson.version>2.4.2</jackson.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.7</org.slf4j.version>
@@ -391,7 +391,7 @@
 		<hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
 
 		<!-- util -->
-		<guava.version>17.0</guava.version>
+		<guava.version>18.0</guava.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 
 		<!-- testing -->
@@ -402,7 +402,7 @@
 		<httpcore.version>4.3.2</httpcore.version>
 		<httpclient.version>4.3.5</httpclient.version>
 
-		<rest-assured.version>2.3.2</rest-assured.version>
+		<rest-assured.version>2.3.3</rest-assured.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
