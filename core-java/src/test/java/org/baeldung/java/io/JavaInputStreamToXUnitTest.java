@@ -142,7 +142,7 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
-        final ByteArrayInputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+        final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
         final byte[] targetArray = IOUtils.toByteArray(initialStream);
     }
 
