@@ -149,7 +149,7 @@ public class JavaInputStreamToXUnitTest {
     // tests - InputStream to File
 
     @Test
-    public final void givenUsingPlainJava_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+    public final void givenUsingPlainJava_whenConvertingAnFullInputStreamToAFile_thenCorrect() throws IOException {
         final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
         final byte[] buffer = new byte[initialStream.available()];
         initialStream.read(buffer);
@@ -157,6 +157,22 @@ public class JavaInputStreamToXUnitTest {
         final File targetFile = new File("src/main/resources/targetFile.tmp");
         final OutputStream outStream = new FileOutputStream(targetFile);
         outStream.write(buffer);
+
+        IOUtils.closeQuietly(initialStream);
+        IOUtils.closeQuietly(outStream);
+    }
+
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInProgressInputStreamToAFile_thenCorrect() throws IOException {
+        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final OutputStream outStream = new FileOutputStream(targetFile);
+
+        final byte[] buffer = new byte[8 * 1024];
+        int bytesRead;
+        while ((bytesRead = initialStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, bytesRead);
+        }
 
         IOUtils.closeQuietly(initialStream);
         IOUtils.closeQuietly(outStream);
