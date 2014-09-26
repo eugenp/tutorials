@@ -3,12 +3,18 @@
 <html>
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-<title>Home</title>
+<title><spring:message code="label.pages.home.title"></spring:message></title>
 </head>
 <body>
-	<h1 class="alert alert-error">
-		<spring:message code="message.sessionExpired"></spring:message>
-	</h1>
+	<div class="container">
+		<div class="span12">
+			<h1 class="alert alert-error">
+				<spring:message code="message.sessionExpired"></spring:message>
+			</h1>
+			<a href="<c:url value="login.html" />"><spring:message
+					code="label.form.loginLink"></spring:message></a>
+		</div>
+	</div>
 </body>
 
 </html>

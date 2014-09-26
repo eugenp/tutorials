@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <fmt:setBundle basename="messages" />
@@ -13,10 +14,14 @@
 <title>Registration Success</title>
 </head>
 <body>
-	<div id="success">
-		<spring:message code="message.regSucc"></spring:message>
+	<div class="container">
+		<div class="span12">
+			<div id="success">
+				<spring:message code="message.regSucc"></spring:message>
+			</div>
+			<a href="<c:url value="login.html" />"><spring:message
+					code="label.login"></spring:message></a>
+		</div>
 	</div>
-	<a href="<c:url value="login.html" />"><spring:message code="label.login"></spring:message></a>
 </body>
-
 </html>

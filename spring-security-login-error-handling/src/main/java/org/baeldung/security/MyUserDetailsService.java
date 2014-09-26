@@ -26,18 +26,12 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-   // @Autowired
-   // public MyUserDetailsService(UserRepository repository) {
-     //   this.userRepository = repository;
-   // }
-
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         try {
             LOGGER.debug("Loading user by username: {}", email);
             User user = userRepository.findByEmail(email);
             LOGGER.debug("Found user: {}", user);
             if (user == null) {
-                // throw new UsernameNotFoundException("No user found with username: " + username);
                 boolean enabled = false;
                 return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
             }
@@ -52,7 +46,7 @@ public class MyUserDetailsService implements UserDetailsService {
         }
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
+    private Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
         List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
         return authList;
     }
@@ -61,17 +55,15 @@ public class MyUserDetailsService implements UserDetailsService {
         List<String> roles = new ArrayList<String>();
 
         if (role.intValue() == 2) {
-            // roles.add("ROLE_USER");
             roles.add("ROLE_ADMIN");
 
         } else if (role.intValue() == 1) {
             roles.add("ROLE_USER");
         }
-
         return roles;
     }
 
-    public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
+    private static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for (String role : roles) {
             authorities.add(new SimpleGrantedAuthority(role));

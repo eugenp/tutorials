@@ -1,7 +1,9 @@
-package org.baeldung.persistence.service;
+package org.baeldung.validation.service;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import org.baeldung.persistence.service.UserDto;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
     
