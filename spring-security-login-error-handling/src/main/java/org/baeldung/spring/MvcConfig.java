@@ -2,8 +2,8 @@ package org.baeldung.spring;
 
 import java.util.Locale;
 
-import org.baeldung.persistence.service.PasswordMatchesValidator;
-import org.baeldung.persistence.service.EmailValidator;
+import org.baeldung.validation.service.EmailValidator;
+import org.baeldung.validation.service.PasswordMatchesValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

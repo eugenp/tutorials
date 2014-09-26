@@ -1,9 +1,11 @@
 package org.baeldung.persistence.service;
 
 import javax.transaction.Transactional;
+
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Role;
 import org.baeldung.persistence.model.User;
+import org.baeldung.validation.service.EmailExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +16,16 @@ public class UserService implements IUserService {
     
     @Transactional
     @Override
-    public User registerNewUserAccount(UserDto userAccountData) throws EmailExistsException {
-        if (emailExist(userAccountData.getEmail())) {
+    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+        if (emailExist(accountDto.getEmail())) {
 
-            throw new EmailExistsException("There is an account with that email adress: " + userAccountData.getEmail());
+            throw new EmailExistsException("There is an account with that email adress: " + accountDto.getEmail());
         }
         User user = new User();
-        user.setFirstName(userAccountData.getFirstName());
-        user.setLastName(userAccountData.getLastName());
-        user.setPassword(userAccountData.getPassword());
-        user.setEmail(userAccountData.getEmail());
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(accountDto.getPassword());
+        user.setEmail(accountDto.getEmail());
         //ROLE WILL ALWAYS BE USER. HARDCODING IT
         user.setRole(new Role(Integer.valueOf(1),user));
         return repository.save(user);

@@ -1,4 +1,4 @@
-package org.baeldung.persistence.service;
+package org.baeldung.validation.service;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +20,7 @@ public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
         return (validateEmail(username));
     }
 
-    public boolean validateEmail(String email) {
+    private boolean validateEmail(String email) {
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
         return matcher.matches();
