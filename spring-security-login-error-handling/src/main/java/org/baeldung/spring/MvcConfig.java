@@ -83,7 +83,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setCacheSeconds(0);
         return messageSource;
     }
-     
+
     @Bean
     public EmailValidator usernameValidator() {
         EmailValidator userNameValidator = new EmailValidator();

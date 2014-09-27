@@ -23,7 +23,6 @@ public class Role {
     @JoinColumn(name = "user_id")
     private User user;
 
-
     @Column(name = "role")
     private Integer role;
 
@@ -66,7 +65,7 @@ public class Role {
     public void setRole(Integer role) {
         this.role = role;
     }
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;

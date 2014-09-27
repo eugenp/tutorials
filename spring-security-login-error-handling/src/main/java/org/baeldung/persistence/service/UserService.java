@@ -10,15 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements IUserService {   
+public class UserService implements IUserService {
     @Autowired
     private UserRepository repository;
-    
+
     @Transactional
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
         if (emailExist(accountDto.getEmail())) {
-
             throw new EmailExistsException("There is an account with that email adress: " + accountDto.getEmail());
         }
         User user = new User();
@@ -26,8 +25,8 @@ public class UserService implements IUserService {
         user.setLastName(accountDto.getLastName());
         user.setPassword(accountDto.getPassword());
         user.setEmail(accountDto.getEmail());
-        //ROLE WILL ALWAYS BE USER. HARDCODING IT
-        user.setRole(new Role(Integer.valueOf(1),user));
+        // ROLE WILL ALWAYS BE USER. HARDCODING IT
+        user.setRole(new Role(Integer.valueOf(1), user));
         return repository.save(user);
     }
 
