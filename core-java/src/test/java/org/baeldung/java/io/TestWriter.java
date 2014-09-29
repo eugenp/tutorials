@@ -1,5 +1,7 @@
 package org.baeldung.java.io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,9 +23,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class TestWriter extends TestCase {
+public class TestWriter {
 
     private String fileName = "test.txt";
     private String fileName1 = "test1.txt";
@@ -32,20 +34,7 @@ public class TestWriter extends TestCase {
     private String fileName4 = "test4.txt";
     private String fileName5 = "test5.txt";
 
-    public TestWriter(final String name) {
-        super(name);
-    }
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-    }
-
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-    }
-
+    @Test
     public void whenWriteStringUsingBufferedWritter_thenCorrect() throws IOException {
         final String str = "Hello";
         final BufferedWriter writer = new BufferedWriter(new FileWriter(fileName3));
@@ -53,6 +42,7 @@ public class TestWriter extends TestCase {
         writer.close();
     }
 
+    @Test
     public void whenAppendStringUsingBufferedWritter_thenOldContentShouldExistToo() throws IOException {
         final String str = "World";
         final BufferedWriter writer = new BufferedWriter(new FileWriter(fileName3, true));
@@ -61,6 +51,7 @@ public class TestWriter extends TestCase {
         writer.close();
     }
 
+    @Test
     public void whenWriteFormattedStringUsingPrintWriter_thenOutputShouldBeFormatted() throws IOException {
         final FileWriter fileWriter = new FileWriter(fileName);
         final PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -68,6 +59,7 @@ public class TestWriter extends TestCase {
         printWriter.close();
     }
 
+    @Test
     public void whenWriteStringUsingFileOutputStream_thenCorrect() throws IOException {
         final String str = "Hello";
         final FileOutputStream outputStream = new FileOutputStream(fileName3);
@@ -76,6 +68,7 @@ public class TestWriter extends TestCase {
         outputStream.close();
     }
 
+    @Test
     public void whenWriteStringWithDataOutputStream_thenReadShouldBeTheSame() throws IOException {
         final String value = "Hello";
         final FileOutputStream fos = new FileOutputStream(fileName1);
@@ -92,7 +85,8 @@ public class TestWriter extends TestCase {
         assertEquals(value, result);
     }
 
-    public void whenWriteToPositionAndEditIt_thenItShouldChange() {
+    @Test
+    public void whenWriteToPositionAndEditIt_thenItShouldChange() throws IOException {
         final int data1 = 2014;
         final int data2 = 1500;
         testWriteToPosition(data1, 4);
@@ -101,6 +95,7 @@ public class TestWriter extends TestCase {
         assertEquals(data2, testReadFromPosition(4));
     }
 
+    @Test
     public void whenTryToLockFile_thenItShouldBeLocked() throws IOException {
         final RandomAccessFile stream = new RandomAccessFile(fileName4, "rw");
         final FileChannel channel = stream.getChannel();
@@ -119,6 +114,7 @@ public class TestWriter extends TestCase {
         channel.close();
     }
 
+    @Test
     public void whenWriteStringUsingFileChannel_thenReadShouldBeTheSame() throws IOException {
         final RandomAccessFile stream = new RandomAccessFile(fileName5, "rw");
         final FileChannel channel = stream.getChannel();
@@ -137,6 +133,7 @@ public class TestWriter extends TestCase {
 
     }
 
+    @Test
     public void whenWriteToTmpFile_thenCorrect() throws IOException {
         final String toWrite = "Hello";
         final File tmpFile = File.createTempFile("test", ".tmp");
@@ -149,6 +146,7 @@ public class TestWriter extends TestCase {
         reader.close();
     }
 
+    @Test
     public void whenWriteUsingJava7_thenCorrect() throws IOException {
         final String str = "Hello";
 
@@ -162,28 +160,20 @@ public class TestWriter extends TestCase {
     }
 
     // use RandomAccessFile to write data at specific position in the file
-    public void testWriteToPosition(final int data, final long position) {
-        try {
-            final RandomAccessFile writer = new RandomAccessFile(fileName2, "rw");
-            writer.seek(position);
-            writer.writeInt(data);
-            writer.close();
-        } catch (final Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
+    private void testWriteToPosition(final int data, final long position) throws IOException {
+        final RandomAccessFile writer = new RandomAccessFile(fileName2, "rw");
+        writer.seek(position);
+        writer.writeInt(data);
+        writer.close();
     }
 
     // use RandomAccessFile to read data from specific position in the file
-    public int testReadFromPosition(final long position) {
+    private int testReadFromPosition(final long position) throws IOException {
         int result = 0;
-        try {
-            final RandomAccessFile reader = new RandomAccessFile(fileName2, "r");
-            reader.seek(position);
-            result = reader.readInt();
-            reader.close();
-        } catch (final Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
+        final RandomAccessFile reader = new RandomAccessFile(fileName2, "r");
+        reader.seek(position);
+        result = reader.readInt();
+        reader.close();
         return result;
     }
 
