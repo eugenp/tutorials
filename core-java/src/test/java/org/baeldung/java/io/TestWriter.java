@@ -1,10 +1,14 @@
 package test;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +17,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.channels.OverlappingFileLockException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import junit.framework.TestCase;
 
 public class TestWriter extends TestCase {
@@ -20,6 +28,7 @@ public class TestWriter extends TestCase {
     private String fileName = "test.txt";
     private String fileName1 = "test1.txt";
     private String fileName2 = "test2.txt";
+    private String fileName3 = "test3.txt";
     private String fileName4 = "test4.txt";
     private String fileName5 = "test5.txt";
 
@@ -35,11 +44,35 @@ public class TestWriter extends TestCase {
         super.tearDown();
     }
     
+    
+    public void whenWriteStringUsingBufferedWritter_thenCorrect() throws IOException{
+        String str = "Hello";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName3));
+        writer.write(str);
+        writer.close();
+    }
+    
+    public void whenAppendStringUsingBufferedWritter_thenOldContentShouldExistToo() throws IOException{
+        String str = "World";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName3 , true));
+        writer.append(' ');
+        writer.append(str);
+        writer.close();
+    }
+    
     public void whenWriteFormattedStringUsingPrintWriter_thenOutputShouldBeFormatted() throws IOException{
         FileWriter fileWriter = new FileWriter(fileName);
         PrintWriter printWriter = new PrintWriter(fileWriter);
         printWriter.printf("Product name is %s and its price is %d $","iPhone",1000);
         printWriter.close();
+    }
+    
+    public void whenWriteStringUsingFileOutputStream_thenCorrect() throws IOException{
+        String str = "Hello";
+        FileOutputStream outputStream = new FileOutputStream(fileName3);
+        byte[] strToBytes = str.getBytes();
+        outputStream.write(strToBytes);
+        outputStream.close();
     }
 
     public void whenWriteStringWithDataOutputStream_thenReadShouldBeTheSame() throws IOException {
@@ -104,6 +137,30 @@ public class TestWriter extends TestCase {
         assertEquals(value , reader.readLine());
         reader.close();
         
+    }
+    
+    public void whenWriteToTmpFile_thenCorrect() throws IOException{
+        String toWrite = "Hello";
+        File tmpFile = File.createTempFile("test", ".tmp");
+        FileWriter writer = new FileWriter(tmpFile);
+        writer.write(toWrite);
+        writer.close();
+        
+        BufferedReader reader = new BufferedReader(new FileReader(tmpFile));
+        assertEquals(toWrite, reader.readLine());
+        reader.close();
+    }
+    
+    public void whenWriteUsingJava7_thenCorrect() throws IOException{
+        String str = "Hello";
+        
+        Path path = Paths.get(fileName3);
+        byte[] strToBytes = str.getBytes();
+        
+        Files.write(path, strToBytes);
+        
+        String read = Files.readAllLines(path).get(0);
+        assertEquals(str, read);
     }
     
     // use RandomAccessFile to write data at specific position in the file
