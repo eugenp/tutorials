@@ -27,12 +27,12 @@ import org.junit.Test;
 
 public class TestWriter {
 
-    private String fileName = "test.txt";
-    private String fileName1 = "test1.txt";
-    private String fileName2 = "test2.txt";
-    private String fileName3 = "test3.txt";
-    private String fileName4 = "test4.txt";
-    private String fileName5 = "test5.txt";
+    private String fileName = "src/test/resources/test_write.txt";
+    private String fileName1 = "src/test/resources/test_write_1.txt";
+    private String fileName2 = "src/test/resources/test_write_2.txt";
+    private String fileName3 = "src/test/resources/test_write_3.txt";
+    private String fileName4 = "src/test/resources/test_write_4.txt";
+    private String fileName5 = "src/test/resources/test_write_5.txt";
 
     @Test
     public void whenWriteStringUsingBufferedWritter_thenCorrect() throws IOException {
@@ -176,5 +176,6 @@ public class TestWriter {
         reader.close();
         return result;
     }
+
 
 }
