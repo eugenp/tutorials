@@ -25,7 +25,7 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-public class TestWriter {
+public class JavaWriteToFileTest {
 
     private String fileName = "src/test/resources/test_write.txt";
     private String fileName1 = "src/test/resources/test_write_1.txt";
@@ -68,8 +68,10 @@ public class TestWriter {
         outputStream.close();
     }
 
+    //
+
     @Test
-    public void whenWriteStringWithDataOutputStream_thenReadShouldBeTheSame() throws IOException {
+    public void givenWritingToFile_whenUsingDataOutputStream_thenCorrect() throws IOException {
         final String value = "Hello";
         final FileOutputStream fos = new FileOutputStream(fileName1);
         final DataOutputStream outStream = new DataOutputStream(new BufferedOutputStream(fos));
@@ -86,13 +88,13 @@ public class TestWriter {
     }
 
     @Test
-    public void whenWriteToPositionAndEditIt_thenItShouldChange() throws IOException {
+    public void whenWritingToSpecificPositionInFile_thenCorrect() throws IOException {
         final int data1 = 2014;
         final int data2 = 1500;
-        testWriteToPosition(data1, 4);
-        assertEquals(data1, testReadFromPosition(4));
-        testWriteToPosition(data2, 4);
-        assertEquals(data2, testReadFromPosition(4));
+        writeToPosition(fileName2, data1, 4);
+        assertEquals(data1, readFromPosition(fileName2, 4));
+        writeToPosition(fileName2, data2, 4);
+        assertEquals(data2, readFromPosition(fileName2, 4));
     }
 
     @Test
@@ -115,7 +117,7 @@ public class TestWriter {
     }
 
     @Test
-    public void whenWriteStringUsingFileChannel_thenReadShouldBeTheSame() throws IOException {
+    public void givenWritingToFile_whenUsingFileChannel_thenCorrect() throws IOException {
         final RandomAccessFile stream = new RandomAccessFile(fileName5, "rw");
         final FileChannel channel = stream.getChannel();
         final String value = "Hello";
@@ -147,7 +149,7 @@ public class TestWriter {
     }
 
     @Test
-    public void whenWriteUsingJava7_thenCorrect() throws IOException {
+    public void givenUsingJava7_whenWritingToFile_thenCorrect() throws IOException {
         final String str = "Hello";
 
         final Path path = Paths.get(fileName3);
@@ -159,23 +161,24 @@ public class TestWriter {
         assertEquals(str, read);
     }
 
+    // UTIL
+
     // use RandomAccessFile to write data at specific position in the file
-    private void testWriteToPosition(final int data, final long position) throws IOException {
-        final RandomAccessFile writer = new RandomAccessFile(fileName2, "rw");
+    private void writeToPosition(final String filename, final int data, final long position) throws IOException {
+        final RandomAccessFile writer = new RandomAccessFile(filename, "rw");
         writer.seek(position);
         writer.writeInt(data);
         writer.close();
     }
 
     // use RandomAccessFile to read data from specific position in the file
-    private int testReadFromPosition(final long position) throws IOException {
+    private int readFromPosition(final String filename, final long position) throws IOException {
         int result = 0;
-        final RandomAccessFile reader = new RandomAccessFile(fileName2, "r");
+        final RandomAccessFile reader = new RandomAccessFile(filename, "r");
         reader.seek(position);
         result = reader.readInt();
         reader.close();
         return result;
     }
-
 
 }
