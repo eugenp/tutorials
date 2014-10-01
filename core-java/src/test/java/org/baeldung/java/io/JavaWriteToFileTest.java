@@ -52,15 +52,16 @@ public class JavaWriteToFileTest {
     }
 
     @Test
-    public void whenWriteFormattedStringUsingPrintWriter_thenOutputShouldBeFormatted() throws IOException {
+    public void givenWritingStringToFile_whenUsingPrintWriter_thenCorrect() throws IOException {
         final FileWriter fileWriter = new FileWriter(fileName);
         final PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.print("Some String");
         printWriter.printf("Product name is %s and its price is %d $", "iPhone", 1000);
         printWriter.close();
     }
 
     @Test
-    public void whenWriteStringUsingFileOutputStream_thenCorrect() throws IOException {
+    public void givenWritingStringToFile_whenUsingFileOutputStream_thenCorrect() throws IOException {
         final String str = "Hello";
         final FileOutputStream outputStream = new FileOutputStream(fileName3);
         final byte[] strToBytes = str.getBytes();
