@@ -138,7 +138,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.1.0.RELEASE</org.springframework.version>
+        <org.springframework.version>4.1.1.RELEASE</org.springframework.version>
 
         <!-- marshalling -->
         <jackson.version>2.4.2</jackson.version>
