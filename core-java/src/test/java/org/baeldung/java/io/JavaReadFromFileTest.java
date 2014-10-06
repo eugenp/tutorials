@@ -33,7 +33,7 @@ public class JavaReadFromFileTest {
     public void whenReadWithBufferedReader_thenCorrect() throws IOException {
         final String expected_value = "Hello world";
 
-        final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read.txt"));
+        final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read.in"));
         final String currentLine = reader.readLine();
         reader.close();
 
@@ -42,7 +42,7 @@ public class JavaReadFromFileTest {
 
     @Test
     public void whenReadWithScanner_thenCorrect() throws IOException {
-        final Scanner scanner = new Scanner(new File("src/test/resources/test_read1.txt"));
+        final Scanner scanner = new Scanner(new File("src/test/resources/test_read1.in"));
         scanner.useDelimiter(" ");
 
         assertTrue(scanner.hasNext());
@@ -56,7 +56,7 @@ public class JavaReadFromFileTest {
 
     @Test
     public void whenReadWithScannerTwoDelimiters_thenCorrect() throws IOException {
-        final Scanner scanner = new Scanner(new File("src/test/resources/test_read2.txt"));
+        final Scanner scanner = new Scanner(new File("src/test/resources/test_read2.in"));
         scanner.useDelimiter(",| ");
 
         assertTrue(scanner.hasNextInt());
@@ -69,7 +69,7 @@ public class JavaReadFromFileTest {
 
     @Test
     public void whenReadWithStreamTokenizer_thenCorrectTokens() throws IOException {
-        final FileReader reader = new FileReader("src/test/resources/test_read3.txt");
+        final FileReader reader = new FileReader("src/test/resources/test_read3.in");
         final StreamTokenizer tokenizer = new StreamTokenizer(reader);
 
         tokenizer.nextToken();
@@ -89,7 +89,7 @@ public class JavaReadFromFileTest {
         final String expected_value = "Hello";
 
         String result;
-        final DataInputStream reader = new DataInputStream(new FileInputStream("src/test/resources/test_read4.txt"));
+        final DataInputStream reader = new DataInputStream(new FileInputStream("src/test/resources/test_read4.in"));
         result = reader.readUTF();
         reader.close();
 
@@ -100,8 +100,8 @@ public class JavaReadFromFileTest {
         final int expected_value1 = 2000;
         final int expected_value2 = 5000;
 
-        final FileInputStream stream1 = new FileInputStream("src/test/resources/test_read5.txt");
-        final FileInputStream stream2 = new FileInputStream("src/test/resources/test_read6.txt");
+        final FileInputStream stream1 = new FileInputStream("src/test/resources/test_read5.in");
+        final FileInputStream stream2 = new FileInputStream("src/test/resources/test_read6.in");
 
         final SequenceInputStream sequence = new SequenceInputStream(stream1, stream2);
         final DataInputStream reader = new DataInputStream(sequence);
@@ -117,7 +117,7 @@ public class JavaReadFromFileTest {
     @Test
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
         final String expected_value = "青空";
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.txt"), "UTF-8"));
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
         final String currentLine = reader.readLine();
         reader.close();
 
@@ -127,7 +127,7 @@ public class JavaReadFromFileTest {
     @Test
     public void whenReadFileContentsIntoString_thenCorrect() throws IOException {
         final String expected_value = "Hello world \n Test line \n";
-        final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read8.txt"));
+        final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read8.in"));
         final StringBuilder builder = new StringBuilder();
         String currentLine = reader.readLine();
         while (currentLine != null) {
@@ -144,7 +144,7 @@ public class JavaReadFromFileTest {
     @Test
     public void whenReadWithFileChannel_thenCorrect() throws IOException {
         final String expected_value = "Hello world";
-        final RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.txt", "r");
+        final RandomAccessFile reader = new RandomAccessFile("src/test/resources/test_read.in", "r");
         final FileChannel channel = reader.getChannel();
 
         int bufferSize = 1024;
@@ -161,7 +161,7 @@ public class JavaReadFromFileTest {
     @Test
     public void whenReadSmallFileJava7_thenCorrect() throws IOException {
         final String expected_value = "Hello world";
-        final Path path = Paths.get("src/test/resources/test_read.txt");
+        final Path path = Paths.get("src/test/resources/test_read.in");
 
         final String read = Files.readAllLines(path).get(0);
         assertEquals(expected_value, read);
@@ -171,7 +171,7 @@ public class JavaReadFromFileTest {
     public void whenReadLargeFileJava7_thenCorrect() throws IOException {
         final String expected_value = "Hello world";
 
-        final Path path = Paths.get("src/test/resources/test_read.txt");
+        final Path path = Paths.get("src/test/resources/test_read.in");
         final BufferedReader reader = Files.newBufferedReader(path);
         final String line = reader.readLine();
         assertEquals(expected_value, line);
