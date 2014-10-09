@@ -158,7 +158,6 @@ public class GuavaCacheTest {
         final LoadingCache<String, String> cache = CacheBuilder.newBuilder().refreshAfterWrite(1, TimeUnit.MINUTES).build(loader);
     }
 
-
     @Test
     public void whenPreloadCache_thenUsePutAll() {
         final CacheLoader<String, String> loader = new CacheLoader<String, String>() {
@@ -199,6 +198,8 @@ public class GuavaCacheTest {
         cache.getUnchecked("last");
         assertEquals(3, cache.size());
     }
+
+    // UTIL
 
     private String getSuffix(final String str) {
         final int lastIndex = str.lastIndexOf('.');
