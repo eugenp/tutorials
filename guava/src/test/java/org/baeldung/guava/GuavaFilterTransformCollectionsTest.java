@@ -21,7 +21,6 @@ import com.google.common.collect.FluentIterable;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-
 public class GuavaFilterTransformCollectionsTest {
 
     @Test
@@ -180,7 +179,4 @@ public class GuavaFilterTransformCollectionsTest {
         assertThat(result, containsInAnyOrder(4, 3));
     }
 
-
-
 }
-
