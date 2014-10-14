@@ -1,5 +1,6 @@
 package org.baeldung.java;
 
+import java.nio.charset.Charset;
 import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -151,7 +152,7 @@ public class CoreJavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect() {
         final byte[] array = new byte[7]; // length is bounded by 7
         new Random().nextBytes(array);
-        final String generatedString = new String(array);
+        final String generatedString = new String(array, Charset.forName("UTF-8"));
 
         System.out.println(generatedString);
     }
@@ -166,7 +167,7 @@ public class CoreJavaRandomUnitTest {
             final int randomLimitedInt = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit));
             buffer.append((char) randomLimitedInt);
         }
-        final String generatedString = new String(buffer);
+        final String generatedString = buffer.toString();
 
         System.out.println(generatedString);
     }

@@ -163,7 +163,7 @@
 		<hibernate-validator.version>5.1.2.Final</hibernate-validator.version>
 
 		<!-- util -->
-		<guava.version>17.0</guava.version>
+		<guava.version>17.0</guava.version> <!-- upgrade to 18.0 -->
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 
 		<!-- testing -->
