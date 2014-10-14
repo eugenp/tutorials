@@ -51,7 +51,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return authList;
     }
 
-    public List<String> getRoles(Integer role) {
+    private List<String> getRoles(Integer role) {
         List<String> roles = new ArrayList<String>();
 
         if (role.intValue() == 2) {
