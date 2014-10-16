@@ -24,6 +24,14 @@ import com.google.common.collect.Lists;
 public class GuavaFilterTransformCollectionsTest {
 
     @Test
+    public void whenFilterWithIterables_thenFiltered() {
+        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
+        final Iterable<String> result = Iterables.filter(names, Predicates.containsPattern("a"));
+
+        assertThat(result, containsInAnyOrder("Jane", "Adam"));
+    }
+
+    @Test
     public void whenFilterWithCollections2_thenFiltered() {
         final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
         final Collection<String> result = Collections2.filter(names, Predicates.containsPattern("a"));
@@ -33,17 +41,17 @@ public class GuavaFilterTransformCollectionsTest {
 
         result.add("anna");
         assertEquals(5, names.size());
-        result.remove("Adam");
-        assertEquals(4, names.size());
     }
 
-    @Test
-    public void whenFilterWithIterables_thenFiltered() {
+    @Test(expected = IllegalArgumentException.class)
+    public void givenFilteredCollection_whenAddingInvalidElement_thenException() {
         final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
-        final Iterable<String> result = Iterables.filter(names, Predicates.containsPattern("a"));
+        final Collection<String> result = Collections2.filter(names, Predicates.containsPattern("a"));
 
-        assertThat(result, containsInAnyOrder("Jane", "Adam"));
+        result.add("elvis");
     }
+
+    //
 
     @Test
     public void whenFilterCollectionWithCustomPredicate_thenFiltered() {
@@ -61,14 +69,7 @@ public class GuavaFilterTransformCollectionsTest {
         assertThat(result, containsInAnyOrder("John", "Jane", "Adam"));
     }
 
-    @Test
-    public void whenFilterUsingMultiplePredicates_thenFiltered() {
-        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
-        final Collection<String> result = Collections2.filter(names, Predicates.or(Predicates.containsPattern("J"), Predicates.not(Predicates.containsPattern("a"))));
-
-        assertEquals(3, result.size());
-        assertThat(result, containsInAnyOrder("John", "Jane", "Tom"));
-    }
+    //
 
     @Test
     public void whenRemoveNullFromCollection_thenRemoved() {
@@ -79,8 +80,10 @@ public class GuavaFilterTransformCollectionsTest {
         assertThat(result, containsInAnyOrder("John", "Jane", "Adam", "Tom"));
     }
 
+    //
+
     @Test
-    public void whenCheckAllElementsForCondition_thenChecked() {
+    public void whenCheckingIfAllElementsMatchACondition_thenCorrect() {
         final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
 
         boolean result = Iterables.all(names, Predicates.containsPattern("n|m"));
@@ -90,8 +93,10 @@ public class GuavaFilterTransformCollectionsTest {
         assertFalse(result);
     }
 
+    //
+
     @Test
-    public void whenTransformWithIterables_thenTransformed() {
+    public void whenTransformingWithIterables_thenTransformed() {
         final Function<String, Integer> function = new Function<String, Integer>() {
             @Override
             public final Integer apply(final String input) {
@@ -104,6 +109,8 @@ public class GuavaFilterTransformCollectionsTest {
 
         assertThat(result, contains(4, 4, 4, 3));
     }
+
+    //
 
     @Test
     public void whenTransformWithCollections2_thenTransformed() {
@@ -124,8 +131,21 @@ public class GuavaFilterTransformCollectionsTest {
         assertEquals(3, names.size());
     }
 
+    //
+
     @Test
-    public void whenTransformUsingComposedFunction_thenTransformed() {
+    public void whenCreatingAFunctionFromAPredicate_thenCorrect() {
+        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
+        final Collection<Boolean> result = Collections2.transform(names, Functions.forPredicate(Predicates.containsPattern("m")));
+
+        assertEquals(4, result.size());
+        assertThat(result, contains(false, false, true, true));
+    }
+
+    //
+
+    @Test
+    public void whenTransformingUsingComposedFunction_thenTransformed() {
         final Function<String, Integer> f1 = new Function<String, Integer>() {
             @Override
             public final Integer apply(final String input) {
@@ -147,17 +167,10 @@ public class GuavaFilterTransformCollectionsTest {
         assertThat(result, contains(true, true, true, false));
     }
 
-    @Test
-    public void whenCreateFunctionFromPredicate_thenCreated() {
-        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
-        final Collection<Boolean> result = Collections2.transform(names, Functions.forPredicate(Predicates.containsPattern("m")));
-
-        assertEquals(4, result.size());
-        assertThat(result, contains(false, false, true, true));
-    }
+    //
 
     @Test
-    public void whenFilterAndTransformCollection_thenCorrect() {
+    public void whenFilteringAndTransformingCollection_thenCorrect() {
         final Predicate<String> predicate = new Predicate<String>() {
             @Override
             public final boolean apply(final String input) {
@@ -177,6 +190,17 @@ public class GuavaFilterTransformCollectionsTest {
 
         assertEquals(2, result.size());
         assertThat(result, containsInAnyOrder(4, 3));
+    }
+
+    //
+
+    @Test
+    public void whenFilterUsingMultiplePredicates_thenFiltered() {
+        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
+        final Collection<String> result = Collections2.filter(names, Predicates.or(Predicates.containsPattern("J"), Predicates.not(Predicates.containsPattern("a"))));
+
+        assertEquals(3, result.size());
+        assertThat(result, containsInAnyOrder("John", "Jane", "Tom"));
     }
 
 }
