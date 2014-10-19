@@ -1,14 +1,12 @@
 package org.baeldung.guava;
 
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +27,7 @@ public class GuavaStringTest {
         final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
         final String result = Joiner.on(",").join(names);
 
-        assertThat(Arrays.asList(result.split(",")), containsInAnyOrder("John", "Jane", "Adam", "Tom"));
+        assertEquals(result, "John,Jane,Adam,Tom");
     }
 
     @Test
@@ -37,7 +35,7 @@ public class GuavaStringTest {
         final List<String> names = Lists.newArrayList("John", null, "Jane", "Adam", "Tom");
         final String result = Joiner.on(",").skipNulls().join(names);
 
-        assertThat(Arrays.asList(result.split(",")), containsInAnyOrder("John", "Jane", "Adam", "Tom"));
+        assertEquals(result, "John,Jane,Adam,Tom");
     }
 
     @Test
@@ -65,6 +63,14 @@ public class GuavaStringTest {
         assertThat(result, containsString("apple-banana-orange"));
         assertThat(result, containsString("cat-dog-bird"));
         assertThat(result, containsString("apple-banana-orange"));
+    }
+
+    @Test
+    public void whenUseForNull_thenUsed() {
+        final List<String> names = Lists.newArrayList("John", null, "Jane", "Adam", "Tom");
+        final String result = Joiner.on(",").useForNull("nameless").join(names);
+
+        assertEquals(result, "John,nameless,Jane,Adam,Tom");
     }
 
     @Test
@@ -98,6 +104,15 @@ public class GuavaStringTest {
         final List<String> result = Splitter.fixedLength(3).splitToList(input);
 
         assertThat(result, contains("Hel", "lo ", "wor", "ld"));
+    }
+
+    @Test
+    public void whenLimitSplitting_thenLimited() {
+        final String input = "a,b,c,d,e";
+        final List<String> result = Splitter.on(",").limit(4).splitToList(input);
+
+        assertEquals(4, result.size());
+        assertThat(result, contains("a", "b", "c", "d,e"));
     }
 
     @Test
@@ -161,6 +176,17 @@ public class GuavaStringTest {
     }
 
     @Test
+    public void whenReplaceFromString_thenReplaced() {
+        final String input = "apple-banana.";
+
+        String result = CharMatcher.anyOf("-.").replaceFrom(input, '!');
+        assertEquals("apple!banana!", result);
+
+        result = CharMatcher.is('-').replaceFrom(input, " and ");
+        assertEquals("apple and banana.", result);
+    }
+
+    @Test
     public void whenCountCharInString_thenCorrect() {
         final String input = "a, c, z, 1, 2";
 
@@ -170,6 +196,7 @@ public class GuavaStringTest {
         result = CharMatcher.inRange('a', 'h').countIn(input);
         assertEquals(2, result);
     }
+
 
 
 }
