@@ -33,7 +33,7 @@
         </dependency>
 
         <!-- persistence -->
-
+		
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -118,7 +118,6 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
