@@ -9,8 +9,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
-@ComponentScan("com.baeldung.spring.integration")
-@PropertySource("classpath:springIntegration.properties")
+@ComponentScan("org.baeldung.scheduling")
+@PropertySource("classpath:springScheduled.properties")
 public class SpringSchedulingConfig {
 
     @Bean
