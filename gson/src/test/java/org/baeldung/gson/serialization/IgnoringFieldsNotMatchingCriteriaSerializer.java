@@ -23,5 +23,5 @@ public class IgnoringFieldsNotMatchingCriteriaSerializer implements JsonSerializ
 
         return jObject;
     }
-    
+
 }

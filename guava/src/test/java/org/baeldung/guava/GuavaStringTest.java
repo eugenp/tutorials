@@ -116,7 +116,7 @@ public class GuavaStringTest {
     }
 
     @Test
-    public void whenRemoveSpecialCharacters_thenRemoved(){
+    public void whenRemoveSpecialCharacters_thenRemoved() {
         final String input = "H*el.lo,}12";
         final CharMatcher matcher = CharMatcher.JAVA_LETTER_OR_DIGIT;
         final String result = matcher.retainFrom(input);
@@ -163,7 +163,6 @@ public class GuavaStringTest {
         assertEquals("hello", result);
     }
 
-
     @Test
     public void whenCollapseFromString_thenCollapsed() {
         final String input = "       hel    lo      ";
@@ -197,7 +196,4 @@ public class GuavaStringTest {
         assertEquals(2, result);
     }
 
-
-
 }
-

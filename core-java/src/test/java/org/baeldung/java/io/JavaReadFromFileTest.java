@@ -22,7 +22,6 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-
 /*
 MappedByteBuffer
 
@@ -113,7 +112,6 @@ public class JavaReadFromFileTest {
         stream2.close();
     }
 
-
     @Test
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
         final String expected_value = "青空";
@@ -176,6 +174,5 @@ public class JavaReadFromFileTest {
         final String line = reader.readLine();
         assertEquals(expected_value, line);
     }
-
 
 }
