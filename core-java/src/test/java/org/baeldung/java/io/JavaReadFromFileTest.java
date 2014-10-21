@@ -15,6 +15,7 @@ import java.io.SequenceInputStream;
 import java.io.StreamTokenizer;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,10 +23,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-/*
-MappedByteBuffer
 
- */
 public class JavaReadFromFileTest {
 
     @Test
@@ -161,7 +159,7 @@ public class JavaReadFromFileTest {
         final String expected_value = "Hello world";
         final Path path = Paths.get("src/test/resources/test_read.in");
 
-        final String read = Files.readAllLines(path).get(0);
+        final String read = Files.readAllLines(path, Charset.defaultCharset()).get(0);
         assertEquals(expected_value, read);
     }
 
@@ -170,7 +168,7 @@ public class JavaReadFromFileTest {
         final String expected_value = "Hello world";
 
         final Path path = Paths.get("src/test/resources/test_read.in");
-        final BufferedReader reader = Files.newBufferedReader(path);
+        final BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset());
         final String line = reader.readLine();
         assertEquals(expected_value, line);
     }
