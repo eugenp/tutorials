@@ -19,6 +19,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.channels.OverlappingFileLockException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -158,7 +159,7 @@ public class JavaWriteToFileTest {
 
         Files.write(path, strToBytes);
 
-        final String read = Files.readAllLines(path).get(0);
+        final String read = Files.readAllLines(path, Charset.defaultCharset()).get(0);
         assertEquals(str, read);
     }
 
