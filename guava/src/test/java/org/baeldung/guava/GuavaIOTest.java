@@ -207,5 +207,4 @@ public class GuavaIOTest {
         assertEquals(value, result);
     }
 
-
 }
