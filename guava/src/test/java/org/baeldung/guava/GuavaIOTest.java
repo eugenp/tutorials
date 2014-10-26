@@ -33,38 +33,25 @@ public class GuavaIOTest {
 
     @Test
     public void whenWriteUsingFiles_thenWritten() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test.out");
 
-        Files.write(expected_value, file, Charsets.UTF_8);
+        Files.write(expectedValue, file, Charsets.UTF_8);
 
         final String result = Files.toString(file, Charsets.UTF_8);
-        assertEquals(expected_value, result);
-    }
-
-    @Test
-    public void whenWriteStringBuilderUsingFiles_thenWritten() throws IOException {
-        final String expected_value = "Hello world";
-        final File file = new File("src/test/resources/test.out");
-        final StringBuilder builder = new StringBuilder();
-        builder.append(expected_value);
-
-        Files.write(builder, file, Charsets.UTF_8);
-
-        final String result = Files.toString(file, Charsets.UTF_8);
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenWriteUsingCharSink_thenWritten() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test.out");
         final CharSink sink = Files.asCharSink(file, Charsets.UTF_8);
 
-        sink.write(expected_value);
+        sink.write(expectedValue);
 
         final String result = Files.toString(file, Charsets.UTF_8);
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
@@ -76,30 +63,30 @@ public class GuavaIOTest {
         sink.writeLines(names, " ");
 
         final String result = Files.toString(file, Charsets.UTF_8);
-        final String expected_value = Joiner.on(" ").join(names);
-        assertEquals(expected_value, result.trim());
+        final String expectedValue = Joiner.on(" ").join(names);
+        assertEquals(expectedValue, result.trim());
 
     }
 
     @Test
     public void whenWriteUsingByteSink_thenWritten() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test.out");
         final ByteSink sink = Files.asByteSink(file);
 
-        sink.write(expected_value.getBytes());
+        sink.write(expectedValue.getBytes());
 
         final String result = Files.toString(file, Charsets.UTF_8);
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenReadUsingFiles_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test1.in");
 
         final String result = Files.toString(file, Charsets.UTF_8);
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
@@ -112,18 +99,18 @@ public class GuavaIOTest {
 
     @Test
     public void whenReadUsingCharSource_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test1.in");
 
         final CharSource source = Files.asCharSource(file, Charsets.UTF_8);
 
         final String result = source.read();
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenReadMultipleCharSources_thenRead() throws IOException {
-        final String expected_value = "Hello worldTest";
+        final String expectedValue = "Hello worldTest";
         final File file1 = new File("src/test/resources/test1.in");
         final File file2 = new File("src/test/resources/test1_1.in");
 
@@ -133,34 +120,34 @@ public class GuavaIOTest {
 
         final String result = source.read();
 
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenReadUsingCharStream_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
 
         final FileReader reader = new FileReader("src/test/resources/test1.in");
         final String result = CharStreams.toString(reader);
         reader.close();
 
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenReadUsingByteSource_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
         final File file = new File("src/test/resources/test1.in");
 
         final ByteSource source = Files.asByteSource(file);
 
         final byte[] result = source.read();
-        assertEquals(expected_value, new String(result));
+        assertEquals(expectedValue, new String(result));
     }
 
     @Test
     public void whenReadAfterOffsetUsingByteSource_thenRead() throws IOException {
-        final String expected_value = "lo world";
+        final String expectedValue = "lo world";
         final File file = new File("src/test/resources/test1.in");
 
         final long offset = 3;
@@ -168,33 +155,33 @@ public class GuavaIOTest {
         final ByteSource source = Files.asByteSource(file).slice(offset, length);
 
         final byte[] result = source.read();
-        assertEquals(expected_value, new String(result));
+        assertEquals(expectedValue, new String(result));
     }
 
     @Test
     public void whenReadUsingByteStream_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
 
         final FileInputStream reader = new FileInputStream("src/test/resources/test1.in");
         final byte[] result = ByteStreams.toByteArray(reader);
         reader.close();
 
-        assertEquals(expected_value, new String(result));
+        assertEquals(expectedValue, new String(result));
     }
 
     @Test
     public void whenReadUsingResources_thenRead() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
 
         final URL url = Resources.getResource("test1.in");
         final String result = Resources.toString(url, Charsets.UTF_8);
 
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void whenCopyFileUsingFiles_thenCopied() throws IOException {
-        final String expected_value = "Hello world";
+        final String expectedValue = "Hello world";
 
         final File file1 = new File("src/test/resources/test1.in");
         final File file2 = new File("src/test/resources/test_copy.in");
@@ -202,7 +189,7 @@ public class GuavaIOTest {
         Files.copy(file1, file2);
         final String result = Files.toString(file2, Charsets.UTF_8);
 
-        assertEquals(expected_value, result);
+        assertEquals(expectedValue, result);
     }
 
     @Test
@@ -222,12 +209,3 @@ public class GuavaIOTest {
 
 
 }
-
-//
-
-//
-//
-//
-//
-//
-
