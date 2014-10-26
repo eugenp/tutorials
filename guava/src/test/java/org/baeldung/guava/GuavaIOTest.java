@@ -129,9 +129,9 @@ public class GuavaIOTest {
 
         final FileReader reader = new FileReader("src/test/resources/test1.in");
         final String result = CharStreams.toString(reader);
-        reader.close();
 
         assertEquals(expectedValue, result);
+        reader.close();
     }
 
     @Test
@@ -164,9 +164,9 @@ public class GuavaIOTest {
 
         final FileInputStream reader = new FileInputStream("src/test/resources/test1.in");
         final byte[] result = ByteStreams.toByteArray(reader);
-        reader.close();
 
         assertEquals(expectedValue, new String(result));
+        reader.close();
     }
 
     @Test
