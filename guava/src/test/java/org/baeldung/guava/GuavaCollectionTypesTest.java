@@ -259,5 +259,4 @@ public class GuavaCollectionTypesTest {
         assertEquals(1.5, numbers.get(Double.class));
     }
 
-
 }
