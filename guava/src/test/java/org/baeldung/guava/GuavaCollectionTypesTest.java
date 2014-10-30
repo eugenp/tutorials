@@ -44,13 +44,22 @@ import com.google.common.collect.TreeRangeSet;
 public class GuavaCollectionTypesTest {
 
     @Test
-    public void whenReverseList_thenReversed() {
+    public void whenCreateList_thenCreated() {
         final List<String> names = Lists.newArrayList("John", "Adam", "Jane");
+
         names.add("Tom");
         assertEquals(4, names.size());
 
+        names.remove("Adam");
+        assertThat(names, contains("John", "Jane", "Tom"));
+    }
+
+    @Test
+    public void whenReverseList_thenReversed() {
+        final List<String> names = Lists.newArrayList("John", "Adam", "Jane");
+
         final List<String> reversed = Lists.reverse(names);
-        assertThat(reversed, contains("Tom", "Jane", "Adam", "John"));
+        assertThat(reversed, contains("Jane", "Adam", "John"));
     }
 
     @Test
@@ -59,6 +68,26 @@ public class GuavaCollectionTypesTest {
 
         assertEquals(4, chars.size());
         assertThat(chars, contains('J', 'o', 'h', 'n'));
+    }
+
+    @Test
+    public void whenPartitionList_thenPartitioned() {
+        final List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom", "Viki", "Tyler");
+        final List<List<String>> result = Lists.partition(names, 2);
+
+        assertEquals(3, result.size());
+        assertThat(result.get(0), contains("John", "Jane"));
+        assertThat(result.get(1), contains("Adam", "Tom"));
+        assertThat(result.get(2), contains("Viki", "Tyler"));
+    }
+
+    @Test
+    public void whenRemoveDuplicatesFromList_thenRemoved() {
+        final List<Character> chars = Lists.newArrayList('h', 'e', 'l', 'l', 'o');
+        assertEquals(5, chars.size());
+
+        final List<Character> result = ImmutableSet.copyOf(chars).asList();
+        assertThat(result, contains('h', 'e', 'l', 'o'));
     }
 
     @Test
@@ -143,7 +172,7 @@ public class GuavaCollectionTypesTest {
     }
 
     @Test
-    public void whenCreateMap_thenCreated() {
+    public void whenCreateImmutableMap_thenCreated() {
         final Map<String, Integer> salary = ImmutableMap.<String, Integer> builder().put("John", 1000).put("Jane", 1500).put("Adam", 2000).put("Tom", 2000).build();
 
         assertEquals(1000, salary.get("John").intValue());
