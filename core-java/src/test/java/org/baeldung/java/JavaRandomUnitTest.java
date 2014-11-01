@@ -7,7 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
 
-public class CoreJavaRandomUnitTest {
+public class JavaRandomUnitTest {
 
     // tests - random long
 
