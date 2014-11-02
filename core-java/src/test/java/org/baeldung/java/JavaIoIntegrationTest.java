@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
-public class CoreJavaIoIntegrationTest {
+public class JavaIoIntegrationTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 
     // tests - iterate lines in a file

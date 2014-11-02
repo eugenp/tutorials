@@ -30,6 +30,7 @@ public class JavaXToReaderUnitTest {
     public void givenUsingPlainJava_whenConvertingStringIntoReader_thenCorrect() throws IOException {
         final String initialString = "With Plain Java";
         final Reader targetReader = new StringReader(initialString);
+
         targetReader.close();
     }
 
@@ -37,6 +38,7 @@ public class JavaXToReaderUnitTest {
     public void givenUsingGuava_whenConvertingStringIntoReader_thenCorrect() throws IOException {
         final String initialString = "With Google Guava";
         final Reader targetReader = CharSource.wrap(initialString).openStream();
+
         targetReader.close();
     }
 
@@ -44,6 +46,7 @@ public class JavaXToReaderUnitTest {
     public void givenUsingCommonsIO_whenConvertingStringIntoReader_thenCorrect() throws IOException {
         final String initialString = "With Apache Commons IO";
         final Reader targetReader = new CharSequenceReader(initialString);
+
         targetReader.close();
     }
 
@@ -53,6 +56,7 @@ public class JavaXToReaderUnitTest {
     public void givenUsingPlainJava_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
         final byte[] initialArray = "Hello world!".getBytes();
         final Reader targetReader = new StringReader(new String(initialArray));
+
         targetReader.close();
     }
 
@@ -69,6 +73,7 @@ public class JavaXToReaderUnitTest {
     public void givenUsingCommonsIO_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
         final byte[] initialArray = "With Commons IO".getBytes();
         final Reader targetReader = new CharSequenceReader(new String(initialArray));
+
         targetReader.close();
     }
 
@@ -79,6 +84,7 @@ public class JavaXToReaderUnitTest {
         final File initialFile = new File("src/test/resources/initialFile.txt");
         initialFile.createNewFile();
         final Reader targetReader = new FileReader(initialFile);
+
         targetReader.close();
     }
 
@@ -87,6 +93,7 @@ public class JavaXToReaderUnitTest {
         final File initialFile = new File("src/test/resources/initialFile.txt");
         com.google.common.io.Files.touch(initialFile);
         final Reader targetReader = com.google.common.io.Files.newReader(initialFile, Charset.defaultCharset());
+
         targetReader.close();
     }
 
@@ -97,6 +104,7 @@ public class JavaXToReaderUnitTest {
         FileUtils.write(initialFile, "With Commons IO");
         final byte[] buffer = FileUtils.readFileToByteArray(initialFile);
         final Reader targetReader = new CharSequenceReader(new String(buffer));
+
         targetReader.close();
     }
 
@@ -107,7 +115,6 @@ public class JavaXToReaderUnitTest {
         final InputStream initialStream = new ByteArrayInputStream("With Java".getBytes());
         final Reader targetReader = new InputStreamReader(initialStream);
 
-        initialStream.close();
         targetReader.close();
     }
 
@@ -117,7 +124,6 @@ public class JavaXToReaderUnitTest {
         final byte[] buffer = ByteStreams.toByteArray(initialStream);
         final Reader targetReader = CharSource.wrap(new String(buffer)).openStream();
 
-        initialStream.close();
         targetReader.close();
     }
 
@@ -127,7 +133,6 @@ public class JavaXToReaderUnitTest {
         final byte[] buffer = IOUtils.toByteArray(initialStream);
         final Reader targetReader = new CharSequenceReader(new String(buffer));
 
-        initialStream.close();
         targetReader.close();
     }
 
