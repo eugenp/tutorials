@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.base.Predicates;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ClassToInstanceMap;
@@ -88,6 +89,26 @@ public class GuavaCollectionTypesTest {
 
         final List<Character> result = ImmutableSet.copyOf(chars).asList();
         assertThat(result, contains('h', 'e', 'l', 'o'));
+    }
+
+    @Test
+    public void whenRemoveNullFromList_thenRemoved() {
+        final List<String> names = Lists.newArrayList("John", null, "Adam", null, "Jane");
+        Iterables.removeIf(names, Predicates.isNull());
+
+        assertEquals(3, names.size());
+        assertThat(names, contains("John", "Adam", "Jane"));
+    }
+
+    @Test
+    public void whenCreateImmutableList_thenCreated() {
+        final List<String> names = Lists.newArrayList("John", "Adam", "Jane");
+
+        names.add("Tom");
+        assertEquals(4, names.size());
+
+        final ImmutableList<String> immutable = ImmutableList.copyOf(names);
+        assertThat(immutable, contains("John", "Adam", "Jane", "Tom"));
     }
 
     @Test
