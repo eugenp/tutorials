@@ -121,6 +121,15 @@ public class GuavaCollectionTypesTest {
     }
 
     @Test
+    public void whenCalculateIntersection_thenCorrect() {
+        final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
+        final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
+
+        final Set<Character> intersection = Sets.intersection(first, second);
+        assertThat(intersection, containsInAnyOrder('b', 'c'));
+    }
+
+    @Test
     public void whenCalculateSetsProduct_thenCorrect() {
         final Set<Character> first = ImmutableSet.of('a', 'b');
         final Set<Character> second = ImmutableSet.of('c', 'd');
@@ -135,6 +144,19 @@ public class GuavaCollectionTypesTest {
 
         final Iterable<String> joined = Iterables.transform(result, func);
         assertThat(joined, containsInAnyOrder("a c", "a d", "b c", "b d"));
+    }
+
+    @Test
+    public void whenCalculatePowerSet_thenCorrect() {
+        final Set<Character> chars = ImmutableSet.of('a', 'b');
+        final Set<Set<Character>> result = Sets.powerSet(chars);
+
+        final Set<Character> empty = ImmutableSet.<Character> builder().build();
+        final Set<Character> a = ImmutableSet.of('a');
+        final Set<Character> b = ImmutableSet.of('b');
+        final Set<Character> aB = ImmutableSet.of('a', 'b');
+
+        assertThat(result, contains(empty, a, b, aB));
     }
 
     @Test
