@@ -127,18 +127,18 @@
 		<!-- testing -->
 		<org.hamcrest.version>1.3</org.hamcrest.version>
 		<junit.version>4.11</junit.version>
-		<mockito.version>1.9.5</mockito.version>
+		<mockito.version>1.10.8</mockito.version>
 
-		<httpcore.version>4.3.2</httpcore.version>
+		<httpcore.version>4.3.3</httpcore.version>
 		<httpclient.version>4.3.4</httpclient.version>
 
 		<rest-assured.version>2.3.2</rest-assured.version>
 
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.4</maven-war-plugin.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.5</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 
 	</properties>
 
