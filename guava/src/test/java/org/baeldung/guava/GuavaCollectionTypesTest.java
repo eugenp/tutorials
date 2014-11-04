@@ -149,7 +149,7 @@ public class GuavaCollectionTypesTest {
     }
 
     @Test
-    public void whenCalculatePowerSet_thenCorrect() {
+    public void whenCalculatingPowerSet_thenCorrect() {
         final Set<Character> chars = ImmutableSet.of('a', 'b');
         final Set<Set<Character>> result = Sets.powerSet(chars);
 
