@@ -111,22 +111,15 @@ public class GuavaCollectionTypesTest {
         assertThat(immutable, contains("John", "Adam", "Jane", "Tom"));
     }
 
+    // sets
+
     @Test
-    public void whenCalculateUnion_thenCorrect() {
+    public void whenCalculateUnionOfSets_thenCorrect() {
         final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
         final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
 
         final Set<Character> union = Sets.union(first, second);
         assertThat(union, containsInAnyOrder('a', 'b', 'c', 'd'));
-    }
-
-    @Test
-    public void whenCalculateIntersection_thenCorrect() {
-        final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
-        final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
-
-        final Set<Character> intersection = Sets.intersection(first, second);
-        assertThat(intersection, containsInAnyOrder('b', 'c'));
     }
 
     @Test
@@ -144,6 +137,15 @@ public class GuavaCollectionTypesTest {
 
         final Iterable<String> joined = Iterables.transform(result, func);
         assertThat(joined, containsInAnyOrder("a c", "a d", "b c", "b d"));
+    }
+
+    @Test
+    public void whenCalculatingSetIntersection_thenCorrect() {
+        final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
+        final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
+
+        final Set<Character> intersection = Sets.intersection(first, second);
+        assertThat(intersection, containsInAnyOrder('b', 'c'));
     }
 
     @Test
