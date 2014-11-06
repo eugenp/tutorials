@@ -7,11 +7,33 @@
 <%@ page session="true"%>
 <fmt:message key="message.password" var="noPass" />
 <fmt:message key="message.username" var="noUser" />
+<c:if test="${param.error != null}">
+	<c:choose>
+		<c:when
+			test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'User is disabled'}">
+			<div class="alert alert-error">
+				<spring:message code="auth.message.disabled"></spring:message>
+			</div>
+		</c:when>
+		<c:when
+			test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'User account has expired'}">
+			<div class="alert alert-error">
+				<spring:message code="auth.message.expired"></spring:message>
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="alert alert-error">
+			<!-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> -->
+				<spring:message code="message.badCredentials"></spring:message>
+			</div>
+		</c:otherwise>
+	</c:choose>
+</c:if>
 <html>
 
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-<c:if test="${param.error != null}">
+<!-- <c:if test="${param.error != null}">
 	<div class="container">
 		<div class="span12">
 			<div class="alert alert-error">
@@ -19,7 +41,7 @@
 			</div>
 		</div>
 	</div>
-</c:if>
+</c:if> -->
 <script type="text/javascript">
 	function validate() {
 		if (document.f.j_username.value == ""

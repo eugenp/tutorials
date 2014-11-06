@@ -10,24 +10,38 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(name = "user")
-@Table(name = "user")
+@Entity
+@Table
 public class User {
-
+  
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "firstName")
+    @Column(name="firstName")
     private String firstName;
-    @Column(name = "lastName")
+    @Column(name="lastName")
     private String lastName;
-    @Column(name = "email")
+    @Column(name="email")
     private String email;
-    @Column(name = "password")
+    @Column(name="password")
     private String password;
-
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   
+    //EMAIL CONF ARTICLE
+    @OneToOne(mappedBy="user",
+            fetch = FetchType.EAGER,
+            cascade= CascadeType.ALL)
+    private VerificationToken verificationToken;
+   
+    @OneToOne(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
+
+    public VerificationToken getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(VerificationToken verificationToken) {
+        this.verificationToken = verificationToken;
+    }
 
     public Long getId() {
         return id;
@@ -57,8 +71,8 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String username) {
+        this.email = username;
     }
 
     public String getPassword() {
@@ -98,11 +112,11 @@ public class User {
             return false;
         return true;
     }
-
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[email").append(email).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").
+            append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
         return builder.toString();
     }
 }
