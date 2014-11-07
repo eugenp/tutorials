@@ -22,7 +22,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
+@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", 
+		"org.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -38,6 +39,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/login.html");
         registry.addViewController("/logout.html");
         registry.addViewController("/homepage.html");
+        registry.addViewController("/expiredAccount.html");
+        registry.addViewController("/regitrationConfirm.html");
+        registry.addViewController("/badUser.html");
         registry.addViewController("/home.html");
         registry.addViewController("/invalidSession.html");
         registry.addViewController("/console.html");
