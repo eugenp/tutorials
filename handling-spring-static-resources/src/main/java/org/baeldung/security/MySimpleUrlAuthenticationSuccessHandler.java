@@ -17,7 +17,6 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         handle(request, response, authentication);
         HttpSession session = request.getSession(false);
