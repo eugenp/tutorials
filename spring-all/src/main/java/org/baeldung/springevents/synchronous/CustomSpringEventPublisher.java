@@ -15,4 +15,5 @@ public class CustomSpringEventPublisher {
         final CustomSpringEvent customSpringEvent = new CustomSpringEvent(this, message);
         applicationEventPublisher.publishEvent(customSpringEvent);
     }
+
 }
