@@ -18,7 +18,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         handle(request, response, authentication);
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -39,9 +39,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
     }
 
     protected String determineTargetUrl(Authentication authentication) {
-       
-            return "/home.html";   
-        
+
+        return "/home.html";
+
     }
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
