@@ -14,22 +14,19 @@ import org.springframework.web.context.request.WebRequest;
 
 @Controller
 public class HomeController {
-    
-   
-    
+
     @Autowired
     Environment env;
-    
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String showHome(WebRequest request, Model model, Locale locale) throws IOException {
-       
+
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-  
+
         String formattedDate = dateFormat.format(date);
-        model.addAttribute("serverTime", formattedDate );
+        model.addAttribute("serverTime", formattedDate);
         return "home";
     }
-    
+
 }

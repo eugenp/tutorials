@@ -1,8 +1,6 @@
 package org.baeldung.spring;
 
-
 import java.util.Locale;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -42,9 +40,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-        registry.addViewController("/login.html"); 
+        registry.addViewController("/login.html");
         registry.addViewController("/home.html");
-       
+
     }
 
     @Bean
@@ -55,23 +53,21 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
         return bean;
     }
-    
+
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {     
-        //For examples using Spring 4.1.0
-      if((env.getProperty("resource.handler.conf")).equals("4.1.0")){
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // For examples using Spring 4.1.0
+        if ((env.getProperty("resource.handler.conf")).equals("4.1.0")) {
             registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(3600).resourceChain(true).addResolver(new GzipResourceResolver()).addResolver(new PathResourceResolver());
             registry.addResourceHandler("/resources/**").addResourceLocations("/resources/", "classpath:/other-resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
             registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/").
-                 setCachePeriod(3600).resourceChain(true).addResolver(new GzipResourceResolver());
-       }
-        //For examples using Spring 4.0.7
-      else if ((env.getProperty("resource.handler.conf")).equals("4.0.7")){
+            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new GzipResourceResolver());
+        }
+        // For examples using Spring 4.0.7
+        else if ((env.getProperty("resource.handler.conf")).equals("4.0.7")) {
             registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/", "classpath:/other-resources/");
-            registry.addResourceHandler("/files/**")
-            .addResourceLocations("file:/Users/Elena/");
-            
+            registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/");
+
         }
     }
 
