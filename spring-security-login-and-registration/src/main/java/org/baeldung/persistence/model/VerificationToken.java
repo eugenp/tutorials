@@ -1,7 +1,6 @@
 package org.baeldung.persistence.model;
 
 import java.util.Calendar;
-import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -14,13 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(/*name = "verrification_token"*/)
-@Table(/*name = "verrification_token"*/)
-public class VerificationToken /*implements Serializable*/ {
+@Entity()
+@Table()
+public class VerificationToken {
 
-	//private static final long serialVersionUID = 1L;
-
-	private static final int EXPIRATION = 60 * 24/* 1 */;
+	private static final int EXPIRATION = 60 * 24;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
