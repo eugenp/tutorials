@@ -13,12 +13,12 @@ import javax.persistence.Table;
 @Entity
 @Table
 public class User {
-  
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(name="firstName")
-    private String firstName;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	@Column(name = "firstName")
+	private String firstName;
     @Column(name="lastName")
     private String lastName;
     @Column(name="email")
@@ -26,7 +26,6 @@ public class User {
     @Column(name="password")
     private String password;
    
-    //EMAIL CONF ARTICLE
     @OneToOne(mappedBy="user",
             fetch = FetchType.EAGER,
             cascade= CascadeType.ALL)
