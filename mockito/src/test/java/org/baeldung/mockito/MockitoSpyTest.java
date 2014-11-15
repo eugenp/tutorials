@@ -14,8 +14,11 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class MockitoSpyTest {
 
+    @Spy
+    private List<String> aSpyList = new ArrayList<String>();
+
     @Test
-    public void whenSpyOnList_thenCorrect() {
+    public void whenSpyingOnList_thenCorrect() {
         final List<String> list = new ArrayList<String>();
         final List<String> spyList = Mockito.spy(list);
 
@@ -28,11 +31,8 @@ public class MockitoSpyTest {
         assertEquals(2, spyList.size());
     }
 
-    @Spy
-    List<String> aSpyList = new ArrayList<String>();
-
     @Test
-    public void whenUseSpyAnnotation_thenCorrect() {
+    public void whenUsingTheSpyAnnotation_thenObjectIsSpied() {
         aSpyList.add("one");
         aSpyList.add("two");
 
@@ -55,7 +55,7 @@ public class MockitoSpyTest {
 
     @Test
     public void whenCreateMock_thenCreated() {
-        final List mockedList = Mockito.mock(List.class);
+        final List<String> mockedList = Mockito.mock(ArrayList.class);
 
         mockedList.add("one");
         Mockito.verify(mockedList).add("one");
@@ -65,7 +65,7 @@ public class MockitoSpyTest {
 
     @Test
     public void whenCreateSpy_thenCreate() {
-        final List spyList = Mockito.spy(new ArrayList());
+        final List<String> spyList = Mockito.spy(new ArrayList<String>());
 
         spyList.add("one");
         Mockito.verify(spyList).add("one");
