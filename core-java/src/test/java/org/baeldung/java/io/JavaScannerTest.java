@@ -73,7 +73,7 @@ public class JavaScannerTest {
     }
 
     @Test
-    public void whenReadInputFromConsole_thenCorrect() {
+    public void whenReadingInputFromConsole_thenCorrect() {
         final String input = "Hello";
         final InputStream stdin = System.in;
         System.setIn(new ByteArrayInputStream(input.getBytes()));

@@ -19,14 +19,22 @@ import org.mockito.Spy;
 //@RunWith(MockitoJUnitRunner.class)
 public class MockitoAnnotationTest {
 
+    @Mock
+    private List<String> mockedList;
+
+    @Spy
+    List<String> spiedList = new ArrayList<String>();
+
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
     }
 
+    // tests
+
     @Test
     public void whenNotUseMockAnnotation_thenCorrect() {
-        final List mockList = Mockito.mock(List.class);
+        final List<String> mockList = Mockito.mock(List.class);
         mockList.add("one");
         Mockito.verify(mockList).add("one");
         assertEquals(0, mockList.size());
@@ -35,11 +43,8 @@ public class MockitoAnnotationTest {
         assertEquals(100, mockList.size());
     }
 
-    @Mock
-    List<String> mockedList;
-
     @Test
-    public void whenUseMockAnnotation_thenTheSame() {
+    public void whenUseMockAnnotation_thenMockIsInjected() {
         mockedList.add("one");
         Mockito.verify(mockedList).add("one");
         assertEquals(0, mockedList.size());
@@ -63,11 +68,8 @@ public class MockitoAnnotationTest {
         assertEquals(100, spyList.size());
     }
 
-    @Spy
-    List<String> spiedList = new ArrayList<String>();
-
     @Test
-    public void whenUseSpyAnnotation_thenTheSame() {
+    public void whenUseSpyAnnotation_thenSpyIsInjectedCorrectly() {
         spiedList.add("one");
         spiedList.add("two");
 
@@ -82,7 +84,7 @@ public class MockitoAnnotationTest {
 
     @Test
     public void whenNotUseCaptorAnnotation_thenCorrect() {
-        final List mockList = Mockito.mock(List.class);
+        final List<String> mockList = Mockito.mock(List.class);
         final ArgumentCaptor<String> arg = ArgumentCaptor.forClass(String.class);
         mockList.add("one");
         Mockito.verify(mockList).add(arg.capture());

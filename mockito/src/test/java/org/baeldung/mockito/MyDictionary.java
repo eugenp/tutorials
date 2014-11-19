@@ -3,7 +3,6 @@ package org.baeldung.mockito;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class MyDictionary {
     Map<String, String> wordMap;
 
@@ -19,4 +18,3 @@ public class MyDictionary {
         return wordMap.get(word);
     }
 }
-

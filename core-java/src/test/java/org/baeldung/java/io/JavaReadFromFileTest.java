@@ -23,7 +23,6 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-
 public class JavaReadFromFileTest {
 
     @Test
