@@ -21,7 +21,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetFolderSizeRecursive_thenCorrect() {
-        final long expectedSize = 124;
+        final long expectedSize = 136;
 
         final File folder = new File("src/test/resources");
         final long size = getFolderSize(folder);
@@ -31,7 +31,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetFolderSizeUsingJava7_thenCorrect() throws IOException {
-        final long expectedSize = 124;
+        final long expectedSize = 136;
 
         final AtomicLong size = new AtomicLong(0);
         final Path folder = Paths.get("src/test/resources");
@@ -49,7 +49,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetFolderSizeUsingJava8_thenCorrect() throws IOException {
-        final long expectedSize = 124;
+        final long expectedSize = 136;
 
         final Path folder = Paths.get("src/test/resources");
         final long size = Files.walk(folder).filter(p -> p.toFile().isFile()).mapToLong(p -> p.toFile().length()).sum();
@@ -59,7 +59,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetFolderSizeUsingApacheCommonsIO_thenCorrect() {
-        final long expectedSize = 124;
+        final long expectedSize = 136;
 
         final File folder = new File("src/test/resources");
         final long size = FileUtils.sizeOfDirectory(folder);
@@ -69,7 +69,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetFolderSizeUsingGuava_thenCorrect() {
-        final long expectedSize = 124;
+        final long expectedSize = 136;
 
         final File folder = new File("src/test/resources");
 
@@ -89,7 +89,7 @@ public class JavaFolderSizeTest {
         final double unitValue = 1 << (unitIndex * 10);
 
         final String readableSize = new DecimalFormat("#,##0.#").format(size / unitValue) + " " + units[unitIndex];
-        assertEquals("124 B", readableSize);
+        assertEquals("136 B", readableSize);
     }
 
     private long getFolderSize(final File folder) {
