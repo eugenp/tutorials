@@ -17,7 +17,6 @@ import java.util.stream.StreamSupport;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-
 public class JavaFolderSizeTest {
 
     @Test

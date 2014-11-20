@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
 	<artifactId>spring-rest</artifactId>
@@ -12,9 +11,15 @@
 		<!-- utils -->
 
 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>17.0</version>
+			<version>${guava.version}</version>
 		</dependency>
 
 		<dependency>
@@ -121,7 +126,7 @@
 		<hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
 
 		<!-- util -->
-		<guava.version>17.0</guava.version>
+		<guava.version>18.0</guava.version>
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 
 		<!-- testing -->
