@@ -147,7 +147,7 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.1.1.RELEASE</org.springframework.version>
+		<org.springframework.version>4.1.2.RELEASE</org.springframework.version>
 
 		<!-- logging -->
 		<org.slf4j.version>1.7.7</org.slf4j.version>
@@ -159,9 +159,9 @@
 		<mockito.version>1.10.8</mockito.version>
 
 		<httpcore.version>4.3.3</httpcore.version>
-		<httpclient.version>4.3.5</httpclient.version>
+		<httpclient.version>4.3.6</httpclient.version>
 
-		<rest-assured.version>2.3.4</rest-assured.version>
+		<rest-assured.version>2.4.0</rest-assured.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>

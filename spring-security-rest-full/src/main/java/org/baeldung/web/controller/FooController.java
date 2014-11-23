@@ -43,6 +43,13 @@ public class FooController {
 
     // API
 
+    @RequestMapping(method = RequestMethod.GET, value = "/count")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public long count() {
+        return 2l;
+    }
+
     // read - one
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

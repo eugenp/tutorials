@@ -179,12 +179,12 @@
 		<javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
 
 		<!-- Spring -->
-		<org.springframework.version>4.1.1.RELEASE</org.springframework.version>
+		<org.springframework.version>4.1.2.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 
 		<!-- persistence -->
 		<hibernate.version>4.3.7.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.32</mysql-connector-java.version>
+		<mysql-connector-java.version>5.1.34</mysql-connector-java.version>
 		<spring-data-jpa.version>1.6.2.RELEASE</spring-data-jpa.version>
 
 		<!-- marshalling -->
@@ -208,9 +208,9 @@
 		<mockito.version>1.10.8</mockito.version>
 
 		<httpcore.version>4.3.3</httpcore.version>
-		<httpclient.version>4.3.5</httpclient.version>
+		<httpclient.version>4.3.6</httpclient.version>
 
-		<rest-assured.version>2.3.4</rest-assured.version>
+		<rest-assured.version>2.4.0</rest-assured.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
