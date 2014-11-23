@@ -1,0 +1,45 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="hyphenate.verbatim">
+<refmeta>
+<refentrytitle>hyphenate.verbatim</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>hyphenate.verbatim</refname>
+<refpurpose>Should verbatim environments be hyphenated on space characters?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="hyphenate.verbatim.frag"><xsl:param name="hyphenate.verbatim" select="0"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the lines of program listing are too long to fit into one
+line it is quite common to split them at space and indicite by hook
+arrow that code continues on the next line. You can turn on this
+behaviour for <tag>programlisting</tag>,
+<tag>screen</tag> and <tag>synopsis</tag> elements by
+using this parameter.</para>
+
+<para>Note that you must also enable line wrapping for verbatim environments and
+select appropriate hyphenation character (e.g. hook arrow). This can
+be done using <parameter>monospace.verbatim.properties</parameter>
+attribute set:</para>
+
+<programlisting>&lt;xsl:attribute-set name="monospace.verbatim.properties" 
+                   use-attribute-sets="verbatim.properties monospace.properties"&gt;
+  &lt;xsl:attribute name="wrap-option"&gt;wrap&lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name="hyphenation-character"&gt;&amp;#x25BA;&lt;/xsl:attribute&gt;
+&lt;/xsl:attribute-set&gt;</programlisting>
+
+<para>For a list of arrows available in Unicode see <uri xlink:href="http://www.unicode.org/charts/PDF/U2190.pdf">http://www.unicode.org/charts/PDF/U2190.pdf</uri> and <uri xlink:href="http://www.unicode.org/charts/PDF/U2900.pdf">http://www.unicode.org/charts/PDF/U2900.pdf</uri> and make sure that
+selected character is available in the font you are using for verbatim
+environments.</para>
+
+</refsection>
+</refentry>

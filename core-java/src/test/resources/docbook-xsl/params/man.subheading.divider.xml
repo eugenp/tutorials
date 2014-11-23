@@ -1,0 +1,37 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.subheading.divider">
+<refmeta>
+<refentrytitle>man.subheading.divider</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.subheading.divider</refname>
+<refpurpose>Specifies string to use as divider comment before/after subheadings</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.subheading.divider.frag">
+<xsl:param name="man.subheading.divider">========================================================================</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of the
+<parameter>man.subheading.divider.enabled</parameter> parameter is
+non-zero, the contents of the
+<parameter>man.subheading.divider</parameter> parameter are used to
+add a "divider" before and after subheadings in the roff
+output. <emphasis role="bold">The divider is not visisble in the
+rendered man page</emphasis>; it is added as a comment, in the source,
+simply for the purpose of increasing reability of the source.</para>
+
+<para>If <parameter>man.subheading.divider.enabled</parameter> is zero
+(the default), the subheading divider is suppressed.</para>
+
+</refsection>
+</refentry>

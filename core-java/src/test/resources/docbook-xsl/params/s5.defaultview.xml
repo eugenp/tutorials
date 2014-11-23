@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="s5.defaultview">
+<refmeta>
+<refentrytitle>s5.defaultview</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">slideshow</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">outline</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>s5.defaultview</refname>
+<refpurpose>Specifies the default S5 view</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="s5.defaultview.frag">
+    <xsl:param name="s5.defaultview">slideshow</xsl:param>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies, which is the default view
+  in the generated S5 presentation.</para>
+
+</refsection>
+</refentry>

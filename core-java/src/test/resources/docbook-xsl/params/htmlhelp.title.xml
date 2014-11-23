@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="htmlhelp.title">
+<refmeta>
+<refentrytitle>htmlhelp.title</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>htmlhelp.title</refname>
+<refpurpose>Title of HTML Help</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="htmlhelp.title.frag">
+<xsl:param name="htmlhelp.title"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Content of this parameter will be used as a title for generated
+HTML Help. If empty, title will be automatically taken from document.</para>
+
+</refsection>
+</refentry>

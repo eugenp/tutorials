@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="feedback.link.text">
+<refmeta>
+<refentrytitle>feedback.link.text</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>feedback.link.text</refname>
+<refpurpose>The text of the feedback link</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="feedback.link.text.frag">
+<xsl:param name="feedback.link.text">Feedback</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The contents of this variable is used as the text of the feedback
+link if <varname>feedback.href</varname> is not empty. If
+<varname>feedback.href</varname> is empty, no feedback link is
+generated.</para>
+</refsection>
+</refentry>

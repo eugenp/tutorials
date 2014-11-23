@@ -1,0 +1,26 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="contrib.inline.enabled">
+<refmeta>
+<refentrytitle>contrib.inline.enabled</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>contrib.inline.enabled</refname>
+<refpurpose>Display contrib output inline?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="contrib.inline.enabled.frag"><xsl:param name="contrib.inline.enabled">1</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero (the default), output of the <tag>contrib</tag> element is
+displayed as inline content rather than as block content.</para>
+
+</refsection>
+</refentry>

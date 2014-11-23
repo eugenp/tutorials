@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+	  xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="javahelp.encoding">
+<refmeta>
+<refentrytitle>javahelp.encoding</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>javahelp.encoding</refname>
+<refpurpose>Character encoding to use in control files for JavaHelp.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="javahelp.encoding.frag">
+<xsl:param name="javahelp.encoding">iso-8859-1</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+  
+<para>JavaHelp crashes on some characters when written as character
+references. In that case you can use this parameter to select an appropriate encoding.</para>
+  
+</refsection>
+</refentry>
+
+
+

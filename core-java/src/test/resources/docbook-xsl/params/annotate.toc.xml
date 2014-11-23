@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="annotate.toc">
+<refmeta>
+<refentrytitle>annotate.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>annotate.toc</refname>
+<refpurpose>Annotate the Table of Contents?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="annotate.toc.frag"><xsl:param name="annotate.toc" select="1"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If true, TOCs will be annotated. At present, this just means
+that the <tag>refpurpose</tag> of <tag>refentry</tag>
+TOC entries will be displayed.
+</para>
+
+</refsection>
+</refentry>

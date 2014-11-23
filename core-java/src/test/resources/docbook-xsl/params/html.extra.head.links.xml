@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.extra.head.links">
+<refmeta>
+<refentrytitle>html.extra.head.links</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.extra.head.links</refname>
+<refpurpose>Toggle extra HTML head link information</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.extra.head.links.frag">
+<xsl:param name="html.extra.head.links" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, extra <tag>link</tag> elements will be
+generated in the <tag>head</tag> of chunked HTML files. These
+extra links point to chapters, appendixes, sections, etc. as supported
+by the <quote>Site Navigation Bar</quote> in Mozilla 1.0 (as of CR1, at least).
+</para>
+
+</refsection>
+</refentry>

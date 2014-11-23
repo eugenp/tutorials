@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="overlay.js">
+<refmeta>
+<refentrytitle>overlay.js</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>overlay.js</refname>
+<refpurpose>Overlay JavaScript file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="overlay.js.frag">
+<xsl:param name="overlay.js">overlay.js</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the overlay JavaScript file. It's unlikely
+that you will ever need to change this parameter.</para>
+
+</refsection>
+</refentry>
