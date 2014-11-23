@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="default.image.width">
+<refmeta>
+<refentrytitle>default.image.width</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>default.image.width</refname>
+<refpurpose>The default width of images</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="default.image.width.frag">
+<xsl:param name="default.image.width"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If specified, this value will be used for the
+<tag class="attribute">width</tag> attribute on images that do not specify any 
+<emphasis xlink:title="DocBook 5: The Definitive Guide"
+	  xlink:href="http://docbook.org/tdg5/en/html/imagedata.html#viewport.area">viewport dimensions</emphasis>.</para>
+
+</refsection>
+</refentry>

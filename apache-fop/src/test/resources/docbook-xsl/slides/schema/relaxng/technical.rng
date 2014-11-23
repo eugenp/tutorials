@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="db.technical.inlines" combine="choice">
+    <choice>
+      <ref name="db.systemitem"/>
+      <ref name="db.option"/>
+      <ref name="db.optional"/>
+      <ref name="db.property"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.systemitem.inlines">
+    <ref name="db._text"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>systemitem</db:refname>
+    <db:refpurpose>A system-related item or term</db:refpurpose>
+    <define name="db.systemitem.class.enumeration">
+      <choice>
+        <value>daemon</value>
+        <a:documentation>A daemon or other system process (syslogd)</a:documentation>
+        <value>domainname</value>
+        <a:documentation>A domain name (example.com)</a:documentation>
+        <value>etheraddress</value>
+        <a:documentation>An ethernet address (00:05:4E:49:FD:8E)</a:documentation>
+        <value>event</value>
+        <a:documentation>An event of some sort (SIGHUP)</a:documentation>
+        <value>eventhandler</value>
+        <a:documentation>An event handler of some sort (hangup)</a:documentation>
+        <value>filesystem</value>
+        <a:documentation>A filesystem (ext3)</a:documentation>
+        <value>fqdomainname</value>
+        <a:documentation>A fully qualified domain name (my.example.com)</a:documentation>
+        <value>groupname</value>
+        <a:documentation>A group name (wheel)</a:documentation>
+        <value>ipaddress</value>
+        <a:documentation>An IP address (127.0.0.1)</a:documentation>
+        <value>library</value>
+        <a:documentation>A library (libncurses)</a:documentation>
+        <value>macro</value>
+        <a:documentation>A macro</a:documentation>
+        <value>netmask</value>
+        <a:documentation>A netmask (255.255.255.192)</a:documentation>
+        <value>newsgroup</value>
+        <a:documentation>A newsgroup (comp.text.xml)</a:documentation>
+        <value>osname</value>
+        <a:documentation>An operating system name (Hurd)</a:documentation>
+        <value>process</value>
+        <a:documentation>A process (gnome-cups-icon)</a:documentation>
+        <value>protocol</value>
+        <a:documentation>A protocol (ftp)</a:documentation>
+        <value>resource</value>
+        <a:documentation>A resource</a:documentation>
+        <value>securitycontext</value>
+        <a:documentation>A security context (a role, permission, or security token, for example)</a:documentation>
+        <value>server</value>
+        <a:documentation>A server (mail.example.com)</a:documentation>
+        <value>service</value>
+        <a:documentation>A service (ppp)</a:documentation>
+        <value>systemname</value>
+        <a:documentation>A system name (hephaistos)</a:documentation>
+        <value>username</value>
+        <a:documentation>A user name (ndw)</a:documentation>
+      </choice>
+    </define>
+    <define name="db.systemitem.class-enum.attribute">
+      <optional>
+        <attribute name="class">
+          <db:refpurpose>Identifies the nature of the system item</db:refpurpose>
+          <ref name="db.systemitem.class.enumeration"/>
+        </attribute>
+      </optional>
+    </define>
+    <define name="db.systemitem.class-other.attribute">
+      <attribute name="otherclass">
+        <db:refpurpose>Identifies the nature of the non-standard system item</db:refpurpose>
+        <data type="NMTOKEN"/>
+      </attribute>
+    </define>
+    <define name="db.systemitem.class-other.attributes">
+      <interleave>
+        <attribute name="class">
+          <db:refpurpose>Identifies the kind of systemitemgraphic identifier</db:refpurpose>
+          <value>other</value>
+          <a:documentation>Indicates that the system item is some 'other' kind.</a:documentation>
+        </attribute>
+        <ref name="db.systemitem.class-other.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.systemitem.class.attribute">
+      <choice>
+        <ref name="db.systemitem.class-enum.attribute"/>
+        <ref name="db.systemitem.class-other.attributes"/>
+      </choice>
+    </define>
+    <define name="db.systemitem.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.systemitem.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.systemitem.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.systemitem.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.systemitem">
+      <element name="systemitem">
+        <ref name="db.systemitem.attlist"/>
+        <zeroOrMore>
+          <ref name="db.systemitem.inlines"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>option</db:refname>
+    <db:refpurpose>An option for a software command</db:refpurpose>
+    <define name="db.option.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.option.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.option.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.option">
+      <element name="option">
+        <ref name="db.option.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>optional</db:refname>
+    <db:refpurpose>Optional information</db:refpurpose>
+    <define name="db.optional.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.optional.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.optional.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.optional">
+      <element name="optional">
+        <ref name="db.optional.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>property</db:refname>
+    <db:refpurpose>A unit of data associated with some part of a computer system</db:refpurpose>
+    <define name="db.property.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.property.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.property.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.property">
+      <element name="property">
+        <ref name="db.property.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+</grammar>

@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="minus.image">
+<refmeta>
+<refentrytitle>minus.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>minus.image</refname>
+<refpurpose>Minus image</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="minus.image.frag">
+<xsl:param name="minus.image">toc/open.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the <quote>minus</quote> image; the image used in a
+<link linkend="dynamic.toc">dynamic ToC</link> to indicate that a section
+can be collapsed.</para>
+
+</refsection>
+</refentry>

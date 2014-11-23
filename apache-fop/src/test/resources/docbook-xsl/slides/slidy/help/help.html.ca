@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ca" lang="ca">
+<head>
+  <title>Ajuda del presentador de diapositives</title><style type="text/css">
+     body {
+        font-family: sans-serif;
+        margin: 10%;
+     }
+     .copyright { font-size: smaller }
+  </style>
+  <script type="text/javascript">
+    window.onload = load;
+    function load()
+    {
+      var back = document.getElementById("back");
+      back.focus();
+    }
+  </script>
+</head>
+<body>
+<h1>Ajuda del presentador de diapositives</h1>
+
+<p>Per avançar a la pròxima diapositiva només cal fer clic amb el ratolí en qualsevol lloc de la pàgina o bé prémer la barra d’espaidora.
+Es pot anar endavant i endarrere per les diapositives amb les tecles "cursor esquerra" i "cursor dreta", "RePàg" i "AvPàg". El tamany de font de les lletres s’ajusta automàticament a l’amplada de la pantalla, però també es pot ajustar manualment fent servir la “S” per fer-la mes petita (Smaller) i la  “B” per fer-la mes gran (“Bigger”),també es poden fer servir les tecles  "&lt;" i "&gt;".
+La tecla “F” fa aparèixer/desaparèixer el menú de la línia de estat a la part de sota.
+Amb la tecla “K” s’habilita/deshabilita l’ús del ratolí per avançar a la pròxima diapositiva. La tecla “C” mostra la taula de continguts, amb qualsevol altra tecla la podem amagar.
+La tecla “F11” serveix per entrar/sortir en el mode pantalla completa del navegador, la tecla “H” dona accés a aquesta pàgina.
+Cal notar que no totes les tecles estan suportades en tots els navegadors donat que els navegadors poden reservar algunes tecles per el control de navegació i aquestes varien d’un navegador a un altre.</p>
+<p>Es recomana als usuaris de Firefox que instal•lin la extensió d’<a href="http://www.krickelkrackel.de/autohide/">autoamagar</a>  per amagar les barres d’eines en entrar al mode pantalla completa. </p>
+<p>Si vol saber com funciona Slidy, feu servir “Veure el codi font” per veure el codi XHTML o vegi  aquesta <a
+href="http://www.w3.org/Talks/Tools/Slidy/">explicació més llarga.</a>, que també explica característiques addicionals. Cada diapositiva està marcada com element div amb classe “slide”. Es fa servir posicionament CSS i amplades per percentatge a les imatges per assegurar-se de que les vostres diapositives riques en imatges s’ajustin perfectament a la grandària de la finestra. El contingut que s’ha de revelar incrementalment es pot marcar amb la classe “incremental”.  La fulla d’estils adjunta i els scripts es van desenvolupar com una alternativa basada en Web a les eines de presentació propietàries i s’han provat en una gran varietat de navegadors actuals. S’està desenvolupant un sistema d’edició integrada. Si us plau envieu els vostres comentaris a : <a href="http://www.w3.org/People/Raggett/">Dave
+Raggett</a> &lt;<a href="mailto:dsr@w3.org">dsr@w3.org</a>&gt;.
+Si trobeu Slidy útil podeu considerar <a href="http://www.w3.org/Consortium/sup">ajudar al W3C</a>.</p>
+<p><em>Sou benvingut a fer servir el presentador de diapositives, les fulles d’estil , scripts i el fitxer d’ajuda sota les condicions d’ <a href="http://www.w3.org/Consortium/Legal/copyright-documents">ùs de document</a> del W3C I les normes  
+<a href="http://www.w3.org/Consortium/Legal/copyright-software">llicència de software</a>.</em></p>
+
+<button id="back" onclick="history.go(-1)">Tornar a la presentació de diapositives </button>
+
+<hr />
+
+<p class="copyright"><a rel="Copyright" href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2005
+<a href="/" shape="rect"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>,
+<a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>,
+<a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+<a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>,
+<a rel="Copyright" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> and <a rel="Copyright" href="http://www.w3.org/Consortium/Legal/copyright-software">software
+licensing</a> rules apply.</p>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="insert.olink.pdf.frag">
+<refmeta>
+<refentrytitle>insert.olink.pdf.frag</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>insert.olink.pdf.frag</refname>
+<refpurpose>Add fragment identifiers for links into PDF files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="insert.olink.pdf.frag.frag">
+<xsl:param name="insert.olink.pdf.frag" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of this parameter determines whether
+the cross reference URIs to PDF documents made with
+<tag>olink</tag> will 
+include fragment identifiers.
+</para>
+
+<para>When forming a URI to link to a PDF document,
+a fragment identifier (typically a '#' followed by an
+id value) appended to the PDF filename can be used by
+the PDF viewer to open
+the PDF file to a location within the document instead of
+the first page.
+However, not all PDF files have id
+values embedded in them, and not all PDF viewers can
+handle fragment identifiers. 
+</para>
+
+<para>If <parameter>insert.olink.pdf.frag</parameter> is set
+to a non-zero value, then any olink targeting a
+PDF file will have the fragment identifier appended to the URI.
+The URI is formed by concatenating the value of the
+<parameter>olink.base.uri</parameter> parameter, the
+value of the <tag class="attribute">baseuri</tag>
+attribute from the <tag class="element">document</tag>
+element in the olink database with the matching
+<tag class="attribute">targetdoc</tag> value,
+and the value of the <tag class="attribute">href</tag>
+attribute for the targeted element in the olink database.
+The <tag class="attribute">href</tag> attribute
+contains the fragment identifier.
+</para>
+
+<para>If <parameter>insert.olink.pdf.frag</parameter> is set
+to zero (the default value), then 
+the <tag class="attribute">href</tag> attribute
+from the olink database
+is not appended to PDF olinks, so the fragment identifier is left off.
+A PDF olink is any olink for which the
+<tag class="attribute">baseuri</tag> attribute
+from the matching <tag class="element">document</tag>
+element in the olink database ends with '.pdf'.
+Any other olinks will still have the fragment identifier added.
+</para>
+</refsection>
+</refentry>

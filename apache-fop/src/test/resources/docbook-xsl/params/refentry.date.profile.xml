@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="refentry.date.profile">
+<refmeta>
+<refentrytitle>refentry.date.profile</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refentry.date.profile</refname>
+<refpurpose>Specifies profile for refentry "date" data</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="refentry.date.profile.frag">
+<xsl:param name="refentry.date.profile">
+  (($info[//date])[last()]/date)[1]|
+  (($info[//pubdate])[last()]/pubdate)[1]
+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of <parameter>refentry.date.profile</parameter> is a
+string representing an XPath expression. It is evaluated at run-time
+and used only if <parameter>refentry.date.profile.enabled</parameter>
+is non-zero. Otherwise, the <tag>refentry</tag> metadata-gathering
+logic "hard coded" into the stylesheets is used.</para>
+
+<para> The <literal>man(7)</literal> man page describes this content
+as "the date of the last revision". In man pages, it is the content
+that is usually displayed in the center footer.</para>
+
+</refsection>
+</refentry>

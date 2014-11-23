@@ -1,0 +1,76 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="default.table.rules">
+<refmeta>
+<refentrytitle>default.table.rules</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>default.table.rules</refname>
+<refpurpose>The default column and row rules for tables using HTML markup</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="default.table.rules.frag">
+<xsl:param name="default.table.rules">none</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Tables using HTML markup elements can use an attribute
+named <tag class="attribute">rules</tag> on the <tag>table</tag> or
+<tag>informaltable</tag> element
+to specify whether column and row border rules should be 
+displayed. This parameter lets you specify a global default
+style for all HTML tables that don't otherwise have
+that attribute.</para>
+<para>These are the supported values:</para>
+
+<variablelist>
+<varlistentry><term>all</term>
+<listitem>
+<para>Rules will appear between all rows and columns.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>rows</term>
+<listitem>
+<para>Rules will appear between rows only.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>cols</term>
+<listitem>
+<para>Rules will appear between columns only.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>groups</term>
+<listitem>
+<para>Rules will appear between row groups (thead, tfoot, tbody).
+No support for rules between column groups yet.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term>none</term>
+<listitem>
+<para>No rules.  This is the default value.
+</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para>The border after the last row and the border after
+the last column are not affected by
+this setting. Those borders are controlled by
+the <tag class="attribute">frame</tag> attribute on the table element.
+</para>
+
+</refsection>
+</refentry>

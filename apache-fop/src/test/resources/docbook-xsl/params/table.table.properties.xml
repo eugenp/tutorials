@@ -1,0 +1,36 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="table.table.properties">
+<refmeta>
+<refentrytitle>table.table.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>table.table.properties</refname>
+<refpurpose>Properties associated with a table</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="table.table.properties.frag">
+<xsl:attribute-set name="table.table.properties">
+  <xsl:attribute name="border-before-width.conditionality">retain</xsl:attribute>
+  <xsl:attribute name="border-collapse">collapse</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for tables. This parameter should really
+have been called <literal>table.properties</literal>, but that parameter
+name was inadvertently established for the block-level properties
+of the table as a whole.
+</para>
+
+<para>See also <parameter>table.properties</parameter>.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="component.titlepage.properties">
+<refmeta>
+<refentrytitle>component.titlepage.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>component.titlepage.properties</refname>
+<refpurpose>Properties for component titlepages</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="component.titlepage.properties.frag">
+<xsl:attribute-set name="component.titlepage.properties">
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The properties that are applied to the outer block containing
+all the component title page information. 
+Its main use is to set a <literal>span="all"</literal>
+property on the block that is a direct child of the flow.</para>
+
+<para>This attribute-set also applies to index titlepages. It is empty by default.</para>
+
+</refsection>
+</refentry>

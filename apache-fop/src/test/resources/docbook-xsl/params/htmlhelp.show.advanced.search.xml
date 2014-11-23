@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="htmlhelp.show.advanced.search">
+<refmeta>
+<refentrytitle>htmlhelp.show.advanced.search</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>htmlhelp.show.advanced.search</refname>
+<refpurpose>Should advanced search features be available?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="htmlhelp.show.advanced.search.frag">
+<xsl:param name="htmlhelp.show.advanced.search" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If you want advanced search features in your help, turn this
+parameter to 1.</para>
+
+</refsection>
+</refentry>

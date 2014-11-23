@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: callouts.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start combine="choice">
+    <choice>
+      <ref name="db.calloutlist"/>
+      <ref name="db.programlistingco"/>
+      <ref name="db.screenco"/>
+      <ref name="db.imageobjectco"/>
+    </choice>
+  </start>
+  <define name="db.publishing.inlines" combine="choice">
+    <ref name="db.coref"/>
+  </define>
+  <define name="db.list.blocks" combine="choice">
+    <ref name="db.calloutlist"/>
+  </define>
+  <define name="db.verbatim.blocks" combine="choice">
+    <choice>
+      <ref name="db.programlistingco"/>
+      <ref name="db.screenco"/>
+    </choice>
+  </define>
+  <define name="db.computeroutput.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.verbatim.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.prompt.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.systemitem.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.userinput.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.replaceable.inlines" combine="choice">
+    <ref name="db.co"/>
+  </define>
+  <define name="db.ubiq.inlines" combine="choice">
+    <ref name="db.coref"/>
+  </define>
+  <define name="db.mediaobject.content" combine="choice">
+    <ref name="db.imageobjectco"/>
+  </define>
+  <!-- ====================================================================== -->
+  <ctrl:other-attribute name="area.units.attrib" enum-name="area.units-enum.attribute" other-name="area.units-other.attributes"/>
+  <define name="db.area.units.enumeration">
+    <choice>
+      <value>calspair</value>
+      <a:documentation>Coordinates expressed as a pair of CALS graphic coordinates.</a:documentation>
+      <value>linecolumn</value>
+      <a:documentation>Coordinates expressed as a line and column.</a:documentation>
+      <value>linecolumnpair</value>
+      <a:documentation>Coordinates expressed as a pair of lines and columns.</a:documentation>
+      <value>linerange</value>
+      <a:documentation>Coordinates expressed as a line range.</a:documentation>
+    </choice>
+  </define>
+  <define name="db.area.units-enum.attribute">
+    <optional>
+      <attribute name="units">
+        <db:refpurpose>Identifies the units used in the coords attribute. The default units vary according to the type of callout specified: <db:tag class="attvalue">calspair</db:tag>
+ for graphics and <db:tag class="attvalue">linecolumn</db:tag>
+ for line-oriented elements.</db:refpurpose>
+        <ref name="db.area.units.enumeration"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="db.area.units-other.attributes">
+    <optional>
+      <attribute name="units">
+        <db:refpurpose>Indicates that non-standard units are used for this <db:tag>area</db:tag>
+. In this case <db:tag class="attribute">otherunits</db:tag>
+ must be specified.</db:refpurpose>
+        <value>other</value>
+        <a:documentation>Coordinates expressed in some non-standard units.</a:documentation>
+      </attribute>
+    </optional>
+    <attribute name="otherunits">
+      <db:refpurpose>Identifies the units used in the <db:tag class="attribute">coords</db:tag>
+ attribute when the <db:tag class="attribute">units</db:tag>
+ attribute is <db:quote>other</db:quote>
+. This attribute is forbidden otherwise.</db:refpurpose>
+      <data type="NMTOKEN"/>
+    </attribute>
+  </define>
+  <define name="db.area.units.attribute">
+    <choice>
+      <ref name="db.area.units-enum.attribute"/>
+      <ref name="db.area.units-other.attributes"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>calloutlist</db:refname>
+    <db:refpurpose>A list of <db:tag>callout</db:tag>
+s</db:refpurpose>
+    <define name="db.calloutlist.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.calloutlist.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.calloutlist.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.calloutlist.info">
+      <ref name="db._info.title.only"/>
+    </define>
+    <define name="db.calloutlist">
+      <element name="calloutlist">
+        <ref name="db.calloutlist.attlist"/>
+        <ref name="db.calloutlist.info"/>
+        <zeroOrMore>
+          <ref name="db.all.blocks"/>
+        </zeroOrMore>
+        <oneOrMore>
+          <ref name="db.callout"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>callout</db:refname>
+    <db:refpurpose>A <db:quote>called out</db:quote>
+ description of a marked area</db:refpurpose>
+    <define name="db.callout.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.callout.arearefs.attribute">
+      <attribute name="arearefs">
+        <db:refpurpose>Identifies the areas described by this callout.</db:refpurpose>
+        <data type="IDREFS"/>
+      </attribute>
+    </define>
+    <define name="db.callout.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.callout.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.callout.arearefs.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.callout">
+      <element name="callout">
+        <ref name="db.callout.attlist"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>programlistingco</db:refname>
+    <db:refpurpose>A program listing with associated areas used in callouts</db:refpurpose>
+    <define name="db.programlistingco.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.programlistingco.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.programlistingco.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.programlistingco.info">
+      <ref name="db._info.title.forbidden"/>
+    </define>
+    <define name="db.programlistingco">
+      <element name="programlistingco">
+        <ref name="db.programlistingco.attlist"/>
+        <ref name="db.programlistingco.info"/>
+        <ref name="db.areaspec"/>
+        <ref name="db.programlisting"/>
+        <zeroOrMore>
+          <ref name="db.calloutlist"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>areaspec</db:refname>
+    <db:refpurpose>A collection of regions in a graphic or code example</db:refpurpose>
+    <define name="db.areaspec.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.areaspec.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.areaspec.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <ref name="db.area.units.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.areaspec">
+      <element name="areaspec">
+        <ref name="db.areaspec.attlist"/>
+        <oneOrMore>
+          <choice>
+            <ref name="db.area"/>
+            <ref name="db.areaset"/>
+          </choice>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>area</db:refname>
+    <db:refpurpose>A region defined for a callout in a graphic or code example</db:refpurpose>
+    <define name="db.area.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.area.linkends.attribute">
+      <attribute name="linkends">
+        <db:refpurpose>Point to the <db:tag>callout</db:tag>
+s which refer to this area. (This provides bidirectional linking which may be useful in online presentation.)</db:refpurpose>
+        <data type="IDREFS"/>
+      </attribute>
+    </define>
+    <define name="db.area.label.attribute">
+      <attribute name="label">
+        <db:refpurpose>Specifies an identifying number or string that may be used in presentation. The area label might be drawn on top of the figure, for example, at the position indicated by the coords attribute.</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.area.coords.attribute">
+      <attribute name="coords">
+        <db:refpurpose>Provides the coordinates of the area. The coordinates must be interpreted using the <db:tag class="attribute">units</db:tag>
+ specified.</db:refpurpose>
+      </attribute>
+    </define>
+    <define name="db.area.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.area.role.attribute"/>
+        </optional>
+        <ref name="db.common.idreq.attributes"/>
+        <ref name="db.area.units.attribute"/>
+        <optional>
+          <choice>
+            <ref name="db.area.linkends.attribute"/>
+            <ref name="db.href.attributes"/>
+          </choice>
+        </optional>
+        <optional>
+          <ref name="db.area.label.attribute"/>
+        </optional>
+        <ref name="db.area.coords.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.area">
+      <element name="area">
+        <ref name="db.area.attlist"/>
+        <optional>
+          <ref name="db.alt"/>
+        </optional>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>area</db:refname>
+    <db:refpurpose>A region defined for a callout in a graphic or code example</db:refpurpose>
+    <!-- The only difference is that xml:id is optional -->
+    <define name="db.area.inareaset.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.area.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.area.units.attribute"/>
+        <optional>
+          <choice>
+            <ref name="db.area.linkends.attribute"/>
+            <ref name="db.href.attributes"/>
+          </choice>
+        </optional>
+        <optional>
+          <ref name="db.area.label.attribute"/>
+        </optional>
+        <ref name="db.area.coords.attribute"/>
+      </interleave>
+    </define>
+    <define name="db.area.inareaset">
+      <element name="area">
+        <ref name="db.area.inareaset.attlist"/>
+        <optional>
+          <ref name="db.alt"/>
+        </optional>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>areaset</db:refname>
+    <db:refpurpose>A set of related areas in a graphic or code example</db:refpurpose>
+    <define name="db.areaset.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.areaset.linkends.attribute">
+      <ref name="db.linkends.attribute"/>
+    </define>
+    <define name="db.areaset.label.attribute">
+      <ref name="db.label.attribute"/>
+    </define>
+    <define name="db.areaset.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.areaset.role.attribute"/>
+        </optional>
+        <ref name="db.common.idreq.attributes"/>
+        <ref name="db.area.units.attribute"/>
+        <optional>
+          <choice>
+            <ref name="db.areaset.linkends.attribute"/>
+            <ref name="db.href.attributes"/>
+          </choice>
+        </optional>
+        <optional>
+          <ref name="db.areaset.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.areaset">
+      <element name="areaset">
+        <ref name="db.areaset.attlist"/>
+        <oneOrMore>
+          <ref name="db.area.inareaset"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>screenco</db:refname>
+    <db:refpurpose>A screen with associated areas used in callouts</db:refpurpose>
+    <define name="db.screenco.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.screenco.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.screenco.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.screenco.info">
+      <ref name="db._info.title.forbidden"/>
+    </define>
+    <define name="db.screenco">
+      <element name="screenco">
+        <ref name="db.screenco.attlist"/>
+        <ref name="db.screenco.info"/>
+        <ref name="db.areaspec"/>
+        <ref name="db.screen"/>
+        <zeroOrMore>
+          <ref name="db.calloutlist"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>imageobjectco</db:refname>
+    <db:refpurpose>A wrapper for an image object with callouts</db:refpurpose>
+    <define name="db.imageobjectco.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.imageobjectco.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.imageobjectco.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.imageobjectco.info">
+      <ref name="db._info.title.forbidden"/>
+    </define>
+    <define name="db.imageobjectco">
+      <element name="imageobjectco">
+        <ref name="db.imageobjectco.attlist"/>
+        <ref name="db.imageobjectco.info"/>
+        <ref name="db.areaspec"/>
+        <oneOrMore>
+          <ref name="db.imageobject"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.calloutlist"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>co</db:refname>
+    <db:refpurpose>The location of a callout embedded in text</db:refpurpose>
+    <define name="db.co.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.co.linkends.attribute">
+      <ref name="db.linkends.attribute"/>
+    </define>
+    <define name="db.co.label.attribute">
+      <ref name="db.label.attribute"/>
+    </define>
+    <define name="db.co.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.co.role.attribute"/>
+        </optional>
+        <ref name="db.common.idreq.attributes"/>
+        <optional>
+          <ref name="db.co.linkends.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.co.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.co">
+      <element name="co">
+        <ref name="db.co.attlist"/>
+        <empty/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>coref</db:refname>
+    <db:refpurpose>A cross reference to a co</db:refpurpose>
+    <define name="db.coref.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.coref.label.attribute">
+      <ref name="db.label.attribute"/>
+    </define>
+    <define name="db.coref.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.coref.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.linkend.attribute"/>
+        <optional>
+          <ref name="db.coref.label.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.coref">
+      <element name="coref">
+        <ref name="db.coref.attlist"/>
+        <empty/>
+      </element>
+    </define>
+  </div>
+</grammar>

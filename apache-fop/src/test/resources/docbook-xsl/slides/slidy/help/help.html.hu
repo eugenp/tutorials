@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hu" lang="hu">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Segítség a bemutatóhoz</title>
+
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+        margin: 10%;
+      }
+      .copyright { font-size: smaller }
+    </style>
+
+    <script type="text/javascript">
+      window.onload = load;
+      function load()
+      {
+        var back = document.getElementById("back");
+        back.focus();
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Segítség a bemutatóhoz</h1>
+
+    <p>Ezt a bemutatót a Power Point-hoz hasonlóan lehet vezérelni.
+       A következő oldalra való lépéshez kattintson bárhova az aktuális
+       oldalon belül, vagy nyomja le a szóköz billentyűt. Az oldalak között
+       a bal és jobb nyíl, illetve a Page Up és Page Down billentyűkkel mozoghat.
+       A szöveg mérete automatikusan kerül beállításra úgy, hogy igazodjon
+       a böngésző ablakának szélességéhez, viszont az "S" billentyűvel
+       csökkentheti, a "B"-vel növelheti azt. Ugyanerre használhatja a "&lt;"
+       és a "&gt;" billentyűket is.
+       Az "F" billentyűvel be- és
+       kikapcsolhatja az alsó állapotsor megjelenítését. A "K" billentyűvel
+       letilthatja, illetve engedélyezheti, hogy egérkattintással a következő
+       oldalra lehessen lépni. A "C" billentyűvel megjelenítheti, bármely másikkal
+       pedig eltűntetheti a tartalomjegyzéket. Az "F11" billenytűvel válthat át
+       a böngésző teljes képernyős üzemmódjára, vagy jöhet onnan vissza.
+       Megjegyezzük, hogy nem minden billentyű támogatott minden böngészőben,
+       mivel a böngészők lefoglalhatnak néhány (böngészőnként eltérő) billentyűt
+       a saját vezérlésükre.
+    </p>
+
+    <p>A Firefox felhasználóknak hasznos lehet az
+       <a href="http://www.krickelkrackel.de/autohide/">autohide</a>
+       bővítmény, amivel elrejthetők az eszköztárak teljes képernyős üzemmódban.
+    </p>
+
+    <p>Ha szeretné látni, hogyan működik a Slidy, nézze meg az oldal
+       forrásában az XHTML jelölésmódot, vagy nézze meg ezt a
+       <a href="http://www.w3.org/Talks/Tools/Slidy/">hosszabb magyarázatot</a>,
+       ami további funkciókat is bemutat. Minden oldalt egy olyan div elem jelöl,
+       amiben be van állítva, hogy class="slide". A képek CSS-sel történő
+       pozicionálása és szélességüknek százalékban való megadása biztosítja,
+       hogy a sok képet tartalmazó oldalak az ablak méretének megfelelően
+       skálázódjanak. Az oldalon belül egymás után megjelenítendő tartalom a
+       class="incremental" megadásával jelölhető. A becsatolt stíluslapok és
+       scriptek a védjegyzett/szabadalmaztatott/más módon védett
+       bemutató-megjelenítő eszközök web-alapú alternatívájaként lettek
+       fejlesztve, és sok, manapság használatos böngészővel tesztelve.
+       Az integrált szerkesztési lehetőség jelenleg fejlesztés alatt áll.
+       Észrevételeit a következő helyre küldje:
+       <a href="http://www.w3.org/People/Raggett/">Dave Raggett</a>
+       &lt;<a href="mailto:dsr@w3.org">dsr@w3.org</a>&gt;.
+    </p>
+
+    <p>
+      <em>Ön jogosult az e bemutatóhoz tartozó stíluslapok, scriptek és
+          segítség fájl használatára, amennyiben betartja a W3C
+          <a href="http://www.w3.org/Consortium/Legal/copyright-documents">
+	   dokumentum használati</a> és
+          <a href="http://www.w3.org/Consortium/Legal/copyright-software">
+	   szoftver licencelési</a> szabályait.
+      </em>
+    </p>
+
+    <button id="back" onclick="history.go(-1)">Visszatérés a bemutatóhoz</button>
+
+    <hr>
+
+    <p class="copyright">
+      <a rel="Copyright" href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2005
+      <a href="http://www.w3.org/" shape="rect"><acronym title="World Wide Web Consortium">W3C</acronym></a>
+      <sup>&reg;</sup>
+      (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>,
+      <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>,
+      <a href="http://www.keio.ac.jp/">Keio</a>), minden jog fenntartva. A következő W3C szabályok alkalmazandók:
+      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">felelősségi</a>,
+      <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">védjegy</a>,
+      <a rel="Copyright" href="http://www.w3.org/Consortium/Legal/copyright-documents">dokumentum használati</a> és
+      <a rel="Copyright" href="http://www.w3.org/Consortium/Legal/copyright-software">szoftver licencelési</a>.
+    </p>
+  </body>
+</html>

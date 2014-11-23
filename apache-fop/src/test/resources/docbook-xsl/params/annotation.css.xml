@@ -1,0 +1,71 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="annotation.css">
+<refmeta>
+<refentrytitle>annotation.css</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>annotation.css</refname>
+<refpurpose>CSS rules for annotations</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="annotation.css.frag">
+<xsl:param name="annotation.css">
+/* ======================================================================
+   Annotations
+*/
+
+div.annotation-list  { visibility: hidden;
+                     }
+
+div.annotation-nocss { position: absolute;
+                       visibility: hidden;
+                     }
+
+div.annotation-popup { position: absolute;
+                       z-index: 4;
+                       visibility: hidden;
+                       padding: 0px;
+                       margin: 2px;
+                       border-style: solid;
+                       border-width: 1px;
+                       width: 200px;
+		       background-color: white;
+                     }
+
+div.annotation-title { padding: 1px;
+                       font-weight: bold;
+                       border-bottom-style: solid;
+                       border-bottom-width: 1px;
+		       color: white;
+		       background-color: black;
+                     }
+
+div.annotation-body  { padding: 2px;
+                     }
+
+div.annotation-body p { margin-top: 0px;
+                        padding-top: 0px;
+                      }
+
+div.annotation-close { position: absolute;
+                       top: 2px;
+                       right: 2px;
+                     }
+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If <parameter>annotation.support</parameter> is enabled and the
+document contains <tag>annotation</tag>s, then the CSS in this
+parameter will be included in the document.</para>
+
+</refsection>
+</refentry>

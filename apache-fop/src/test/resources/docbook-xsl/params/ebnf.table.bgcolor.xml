@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="ebnf.table.bgcolor">
+<refmeta>
+<refentrytitle>ebnf.table.bgcolor</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>ebnf.table.bgcolor</refname>
+<refpurpose>Background color for EBNF tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="ebnf.table.bgcolor.frag">
+<xsl:param name="ebnf.table.bgcolor" >#F5DCB3</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Sets the background color for EBNF tables (a pale brown). No
+<tag>bgcolor</tag> attribute is output if
+<parameter>ebnf.table.bgcolor</parameter> is set to the null string. </para>
+
+
+</refsection>
+</refentry>

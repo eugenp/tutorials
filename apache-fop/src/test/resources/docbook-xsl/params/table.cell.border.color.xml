@@ -1,0 +1,39 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="table.cell.border.color">
+<refmeta>
+<refentrytitle>table.cell.border.color</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>table.cell.border.color</refname>
+<refpurpose>Specifies the border color of table cells</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="table.cell.border.color.frag">
+<xsl:param condition="html" name="table.cell.border.color"></xsl:param>
+<xsl:param condition="fo" name="table.cell.border.color">black</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Set the color of table cell borders. If non-zero, the value is used
+for the border coloration. See <link
+xlink:href="http://www.w3.org/TR/CSS21/syndata.html#value-def-color">CSS</link>. A
+<literal>color</literal> is either a keyword or a numerical RGB specification.
+Keywords are aqua, black, blue, fuchsia, gray, green, lime, maroon,
+navy, olive, orange, purple, red, silver, teal, white, and
+yellow.</para>
+
+<note>
+  <para>To control properties of cell borders in HTML output, you must also turn on the 
+  <parameter>table.borders.with.css</parameter> parameter.</para>
+</note>
+
+</refsection>
+</refentry>

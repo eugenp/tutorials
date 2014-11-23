@@ -1,0 +1,36 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.stylesheet">
+<refmeta>
+<refentrytitle>html.stylesheet</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.stylesheet</refname>
+<refpurpose>Name of the stylesheet(s) to use in the generated HTML</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.stylesheet.frag">
+<xsl:param name="html.stylesheet" ></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The <parameter>html.stylesheet</parameter> parameter is either
+empty, indicating that no stylesheet <tag>link</tag> tag should be
+generated in the html output, or it is a list of one or more
+stylesheet files.</para>
+
+<para>Multiple stylesheets are space-delimited. If you need to
+reference a stylesheet URI that includes a space, encode it with
+<literal>%20</literal>. A separate html <literal>link</literal> element will
+be generated for each stylesheet in the order they are listed in the
+parameter.</para>
+
+</refsection>
+</refentry>
