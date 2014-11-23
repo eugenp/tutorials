@@ -1,4 +1,4 @@
-package org.baeldung.java.io;
+package org.baeldung.java;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -25,7 +25,7 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.tidy.Tidy;
 
-public class ApacheFOPTest {
+public class ApacheFOPConvertHTMLTest {
     private String inputFile = "src/test/resources/hello.html";
     private String style = "src/test/resources/xhtml2fo.xsl";
     private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
