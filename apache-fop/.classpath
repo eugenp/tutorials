@@ -32,5 +32,19 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/build/fop.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/avalon-framework-4.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/batik-all-1.7.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/commons-io-1.3.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/serializer-2.7.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/xalan-2.7.0.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/xercesImpl-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/xml-apis-1.3.04.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/xml-apis-ext-1.3.04.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/fop-1.1/lib/xmlgraphics-commons-1.5.jar"/>
+	<classpathentry kind="lib" path="/Users/ESSAM/Desktop/jtidy-r938.jar"/>
+	<classpathentry kind="lib" path="src/test/resources/herold.jar"/>
+	<classpathentry kind="lib" path="src/test/resources/org.apache.commons.jxpath.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
