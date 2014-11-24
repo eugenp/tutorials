@@ -43,7 +43,6 @@ public class HttpClientTimeoutLiveTest {
 
     // tests
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenUsingDeprecatedApi_whenSettingTimeoutViaRawParams_thenCorrect() throws ClientProtocolException, IOException {
         final int timeout = 2;
@@ -61,7 +60,6 @@ public class HttpClientTimeoutLiveTest {
         client.close();
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenUsingDeprecatedApi_whenSettingTimeoutViaHigherLevelApi_thenCorrect() throws ClientProtocolException, IOException {
         final int timeout = 2;

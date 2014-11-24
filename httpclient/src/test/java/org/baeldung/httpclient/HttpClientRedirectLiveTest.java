@@ -55,7 +55,6 @@ public class HttpClientRedirectLiveTest {
 
     // tests
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenRedirectsAreDisabledViaDeprecatedApi_whenConsumingUrlWhichRedirects_thenNotRedirected() throws ClientProtocolException, IOException {
         instance = new DefaultHttpClient();
@@ -87,7 +86,6 @@ public class HttpClientRedirectLiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(301));
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenRedirectingPOSTViaPre4_2Api_whenConsumingUrlWhichRedirectsWithPOST_thenRedirected() throws ClientProtocolException, IOException {
         final DefaultHttpClient client = new DefaultHttpClient();
@@ -110,7 +108,6 @@ public class HttpClientRedirectLiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenRedirectingPOSTVia4_2Api_whenConsumingUrlWhichRedirectsWithPOST_thenRedirected() throws ClientProtocolException, IOException {
         final DefaultHttpClient client = new DefaultHttpClient();

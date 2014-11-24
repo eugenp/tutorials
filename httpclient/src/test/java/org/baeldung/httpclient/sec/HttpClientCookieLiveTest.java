@@ -63,7 +63,6 @@ public class HttpClientCookieLiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenUsingDeprecatedApi_whenSettingCookiesOnTheHttpClient_thenCorrect() throws ClientProtocolException, IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();

@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
 	<artifactId>apache-fop</artifactId>
@@ -104,27 +103,47 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- new dependencies -->
+
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
 			<version>1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.avalon.framework</groupId>
+					<artifactId>avalon-framework-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.avalon.framework</groupId>
+					<artifactId>avalon-framework-impl</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>avalon-framework</groupId>
+			<artifactId>avalon-framework-api</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>avalon-framework</groupId>
+			<artifactId>avalon-framework-impl</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.dbdoclet</groupId>
 			<artifactId>dbdoclet</artifactId>
 			<version>8.0.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>net.sf.jtidy</groupId>
 			<artifactId>jtidy</artifactId>
 			<version>r938</version>
 		</dependency>
-
-		
 
 	</dependencies>
 
