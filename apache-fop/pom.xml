@@ -104,6 +104,27 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- new dependencies -->
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>fop</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.dbdoclet</groupId>
+			<artifactId>dbdoclet</artifactId>
+			<version>8.0.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.jtidy</groupId>
+			<artifactId>jtidy</artifactId>
+			<version>r938</version>
+		</dependency>
+
+		
 
 	</dependencies>
 
