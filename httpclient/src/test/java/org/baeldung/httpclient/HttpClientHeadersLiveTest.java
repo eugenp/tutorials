@@ -57,10 +57,9 @@ public class HttpClientHeadersLiveTest {
 
     // tests - headers - deprecated
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenDeprecatedApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        client = new DefaultHttpClient();
+        client = HttpClients.custom().build();
         client.getParams().setParameter(CoreProtocolPNames.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
         HttpProtocolParams.setUserAgent(client.getParams(), "Mozilla/5.0 Firefox/26.0");
 
@@ -86,16 +85,14 @@ public class HttpClientHeadersLiveTest {
 
     // tests - headers - content type
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenUsingDeprecatedApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
-        client = new DefaultHttpClient();
+        client = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         response = client.execute(request);
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenRequestBuildWithBuilderWithDeprecatedApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
         final DefaultHttpClient client2 = new DefaultHttpClient();
