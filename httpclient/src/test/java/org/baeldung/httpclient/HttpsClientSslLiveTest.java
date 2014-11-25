@@ -25,24 +25,25 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * This test requires a localhost server over HTTPS <br>
  * It should only be manually run, not part of the automated build
  * */
-public class HttpsClientLiveManualTest {
+public class HttpsClientSslLiveTest {
+
+    // "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1" // local
+    // "https://mms.nw.ru/" // hosted
+    private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
 
     // tests
 
     @Test(expected = SSLPeerUnverifiedException.class)
-    @Ignore("Only for a server that has HTTPS enabled (on 8443)")
     public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
-        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
@@ -58,13 +59,12 @@ public class HttpsClientLiveManualTest {
         };
         final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
         final SchemeRegistry registry = new SchemeRegistry();
-        registry.register(new Scheme("https", 8443, sf));
+        registry.register(new Scheme("https", 443, sf));
         final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
 
         final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
 
-        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
-        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
 
@@ -80,8 +80,7 @@ public class HttpsClientLiveManualTest {
 
         // new
 
-        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
-        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
