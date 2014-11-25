@@ -173,7 +173,7 @@
 		<mockito.version>1.10.8</mockito.version>
 
 		<httpcore.version>4.3.3</httpcore.version>
-		<httpclient.version>4.3.4</httpclient.version>
+		<httpclient.version>4.3.6</httpclient.version>
 
 		<rest-assured.version>2.4.0</rest-assured.version>
 

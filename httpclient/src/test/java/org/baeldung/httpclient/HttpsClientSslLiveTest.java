@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.cert.X509Certificate;
 
-import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -39,7 +39,7 @@ public class HttpsClientSslLiveTest {
 
     // tests
 
-    @Test(expected = SSLPeerUnverifiedException.class)
+    @Test(expected = SSLException.class)
     public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
@@ -51,6 +51,28 @@ public class HttpsClientSslLiveTest {
     @SuppressWarnings("deprecation")
     @Test
     public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
+        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
+                return true;
+            }
+        };
+        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SchemeRegistry registry = new SchemeRegistry();
+        registry.register(new Scheme("https", 443, sf));
+        final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
+
+        final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
+
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+
+        httpClient.close();
+    }
+
+    @Test
+    public final void givenHttpClientAfter4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
             @Override
             public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
