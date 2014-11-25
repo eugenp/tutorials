@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity(name = "role")
-@Table(name = "role")
+@Entity
+@Table
 public class Role {
 
     @Id
@@ -28,7 +28,6 @@ public class Role {
 
     public Role() {
         super();
-
     }
 
     public Role(Integer role) {
