@@ -13,63 +13,78 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements IUserService {
-	@Autowired
-	private UserRepository repository;
-	// NOV 6
-	@Autowired
-	private VerificationTokenRepository tokenRepository;
+    @Autowired
+    private UserRepository repository;
 
-	@Transactional
-	@Override
-	public User registerNewUserAccount(UserDto accountDto)
-			throws EmailExistsException {
-		if (emailExist(accountDto.getEmail())) {
-			throw new EmailExistsException(
-					"There is an account with that email adress: "
-							+ accountDto.getEmail());
-		}
-		User user = new User();
-		user.setFirstName(accountDto.getFirstName());
-		user.setLastName(accountDto.getLastName());
-		user.setPassword(accountDto.getPassword());
-		user.setEmail(accountDto.getEmail());
-		user.setRole(new Role(Integer.valueOf(1), user));
-		return repository.save(user);
-	}
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
 
-	private boolean emailExist(String email) {
-		User user = repository.findByEmail(email);
-		if (user != null) {
-			return true;
-		}
-		return false;
-	}
+    @Transactional
+    @Override
+    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+        if (emailExist(accountDto.getEmail())) {
+            throw new EmailExistsException("There is an account with that email adress: " + accountDto.getEmail());
+        }
+        User user = new User();
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(accountDto.getPassword());
+        user.setEmail(accountDto.getEmail());
+        user.setRole(new Role(Integer.valueOf(1), user));
+        return repository.save(user);
+    }
 
-	@Override
-	public User getRegisteredUser(String email) {
+    private boolean emailExist(String email) {
+        User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
 
-		User user = repository.findByEmail(email);
-		return user;
+    /*  @Override
+      public User getRegisteredUser(String email) {
 
-	}
+          User user = repository.findByEmail(email);
+          return user;
 
-	@Override
-	public User getUser(String verificationToken) {
-		User user = tokenRepository.findByToken(verificationToken).getUser();
-		return user;
-	}
+      }*/
 
-	@Transactional
-	@Override
-	public void verifyRegisteredUser(User user) {
-		repository.save(user);
-	}
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepository.findByToken(verificationToken).getUser();
+        return user;
+    }
 
-	@Transactional
-	@Override
-	public void addVerificationToken(User user, String token) {
-		VerificationToken myToken = new VerificationToken(token, user);
-		user.setVerificationToken(myToken);
-		repository.save(user);
-	}
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Transactional
+    @Override
+    public void saveRegisteredUser(User user) {
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void verifyUser(VerificationToken token) {
+        tokenRepository.save(token);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(User user) {
+        repository.delete(user);
+    }
+
+    @Transactional
+    @Override
+    public void addVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        // user.setVerificationToken(myToken);
+        tokenRepository.save(myToken);
+        // repository.save(user);
+    }
 }

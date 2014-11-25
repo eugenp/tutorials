@@ -14,33 +14,27 @@ import javax.persistence.Table;
 @Table
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	@Column(name = "firstName")
-	private String firstName;
-    @Column(name="lastName")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name = "firstName")
+    private String firstName;
+    
+    @Column(name = "lastName")
     private String lastName;
-    @Column(name="email")
+    
+    @Column(name = "email")
     private String email;
-    @Column(name="password")
+    
+    @Column(name = "password")
     private String password;
-   
-    @OneToOne(mappedBy="user",
-            fetch = FetchType.EAGER,
-            cascade= CascadeType.ALL)
-    private VerificationToken verificationToken;
-   
-    @OneToOne(mappedBy = "user",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
-
-    public VerificationToken getVerificationToken() {
-        return verificationToken;
-    }
-
-    public void setVerificationToken(VerificationToken verificationToken) {
-        this.verificationToken = verificationToken;
-    }
 
     public Long getId() {
         return id;
@@ -90,6 +84,14 @@ public class User {
         this.role = role;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -111,11 +113,11 @@ public class User {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").
-            append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
         return builder.toString();
     }
 }

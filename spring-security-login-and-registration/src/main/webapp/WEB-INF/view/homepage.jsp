@@ -8,7 +8,9 @@
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 </head>
 <body>
+
 	<div class="container">
+	
 		<div class="span12">
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<spring:message code="label.pages.user.message"></spring:message>
@@ -19,6 +21,7 @@
 				<spring:message code="label.pages.admin.message"></spring:message>
 				<br />
 			</sec:authorize>
+			 ${param.user}
 			<a href="<c:url value="/j_spring_security_logout" />"><spring:message
 					code="label.pages.logout"></spring:message></a> <a
 				href="<c:url value="/home.html" />"><spring:message
