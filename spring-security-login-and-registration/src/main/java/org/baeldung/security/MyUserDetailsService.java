@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.dao.VerificationTokenRepository;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +29,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private IUserService service;
     @Autowired
     private MessageSource messages;
-    @Autowired
-    private VerificationTokenRepository tokenRepository;;
-
+  
     @Autowired
     public MyUserDetailsService(UserRepository repository) {
         this.userRepository = repository;
