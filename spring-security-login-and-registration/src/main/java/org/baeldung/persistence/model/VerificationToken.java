@@ -79,7 +79,6 @@ public class VerificationToken {
         cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
-
     }
 
     @Override
