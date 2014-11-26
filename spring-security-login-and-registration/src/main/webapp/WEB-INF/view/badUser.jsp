@@ -13,7 +13,8 @@ code="label.badUser.title"></spring:message></title>
 </head>
 <body>
 <h1>
-  ${message}
+<div class="alert alert-error">
+				 ${param.message}
 </h1>
 <br>
 <a href="<c:url value="/user/registration" />"><spring:message
