@@ -30,13 +30,13 @@ public class RegistrationController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
     private IUserService service;
-    
+
     @Autowired
     private MessageSource messages;
-    
+
     @Autowired
     private JavaMailSender mailSender;
-    
+
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 

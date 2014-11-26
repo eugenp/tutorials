@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
     @Autowired
     private IUserService service;
-    
+
     @Autowired
     private MessageSource messages;
 

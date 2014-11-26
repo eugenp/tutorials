@@ -42,14 +42,6 @@ public class UserService implements IUserService {
         return false;
     }
 
-    /*  @Override
-      public User getRegisteredUser(String email) {
-
-          User user = repository.findByEmail(email);
-          return user;
-
-      }*/
-
     @Override
     public User getUser(String verificationToken) {
         User user = tokenRepository.findByToken(verificationToken).getUser();
@@ -69,12 +61,6 @@ public class UserService implements IUserService {
 
     @Transactional
     @Override
-    public void verifyUser(VerificationToken token) {
-        tokenRepository.save(token);
-    }
-
-    @Transactional
-    @Override
     public void deleteUser(User user) {
         repository.delete(user);
     }
@@ -83,8 +69,6 @@ public class UserService implements IUserService {
     @Override
     public void addVerificationToken(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
-        // user.setVerificationToken(myToken);
         tokenRepository.save(myToken);
-        // repository.save(user);
     }
 }

@@ -29,7 +29,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private IUserService service;
     @Autowired
     private MessageSource messages;
-  
+
     @Autowired
     public MyUserDetailsService(UserRepository repository) {
         this.userRepository = repository;
