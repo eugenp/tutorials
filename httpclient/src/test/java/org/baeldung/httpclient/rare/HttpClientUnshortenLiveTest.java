@@ -25,132 +25,132 @@ import com.google.common.collect.Lists;
 
 public class HttpClientUnshortenLiveTest {
 
-	private CloseableHttpClient client;
+    private CloseableHttpClient client;
 
-	// fixtures
+    // fixtures
 
-	@Before
-	public final void before() {
-		client = HttpClientBuilder.create().disableRedirectHandling().build();
-	}
+    @Before
+    public final void before() {
+        client = HttpClientBuilder.create().disableRedirectHandling().build();
+    }
 
-	// tests
+    // tests
 
-	@Test
-	public final void givenShortenedOnce_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
-		final String expectedResult = "http://www.baeldung.com/rest-versioning";
-		final String actualResult = expandSingleLevel("http://bit.ly/13jEoS1");
-		assertThat(actualResult, equalTo(expectedResult));
-	}
+    @Test
+    public final void givenShortenedOnce_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
+        final String expectedResult = "http://www.baeldung.com/rest-versioning";
+        final String actualResult = expandSingleLevel("http://bit.ly/13jEoS1");
+        assertThat(actualResult, equalTo(expectedResult));
+    }
 
-	@Test
-	public final void givenShortenedMultiple_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
-		final String expectedResult = "http://www.baeldung.com/rest-versioning";
-		final String actualResult = expand("http://t.co/e4rDDbnzmk");
-		assertThat(actualResult, equalTo(expectedResult));
-	}
+    @Test
+    public final void givenShortenedMultiple_whenUrlIsUnshortened_thenCorrectResult() throws IOException {
+        final String expectedResult = "http://www.baeldung.com/rest-versioning";
+        final String actualResult = expand("http://t.co/e4rDDbnzmk");
+        assertThat(actualResult, equalTo(expectedResult));
+    }
 
-	// API
+    // API
 
-	final String expand(final String urlArg) throws IOException {
-		String originalUrl = urlArg;
-		String newUrl = expandSingleLevel(originalUrl);
-		while (!originalUrl.equals(newUrl)) {
-			originalUrl = newUrl;
-			newUrl = expandSingleLevel(originalUrl);
-		}
+    final String expand(final String urlArg) throws IOException {
+        String originalUrl = urlArg;
+        String newUrl = expandSingleLevel(originalUrl);
+        while (!originalUrl.equals(newUrl)) {
+            originalUrl = newUrl;
+            newUrl = expandSingleLevel(originalUrl);
+        }
 
-		return newUrl;
-	}
+        return newUrl;
+    }
 
-	final String expandSafe(final String urlArg) throws IOException {
-		String originalUrl = urlArg;
-		String newUrl = expandSingleLevelSafe(originalUrl).getRight();
-		final List<String> alreadyVisited = Lists.newArrayList(originalUrl, newUrl);
-		while (!originalUrl.equals(newUrl)) {
-			originalUrl = newUrl;
-			final Pair<Integer, String> statusAndUrl = expandSingleLevelSafe(originalUrl);
-			newUrl = statusAndUrl.getRight();
-			final boolean isRedirect = statusAndUrl.getLeft() == 301 || statusAndUrl.getLeft() == 302;
-			if (isRedirect && alreadyVisited.contains(newUrl)) {
-				throw new IllegalStateException("Likely a redirect loop");
-			}
-			alreadyVisited.add(newUrl);
-		}
+    final String expandSafe(final String urlArg) throws IOException {
+        String originalUrl = urlArg;
+        String newUrl = expandSingleLevelSafe(originalUrl).getRight();
+        final List<String> alreadyVisited = Lists.newArrayList(originalUrl, newUrl);
+        while (!originalUrl.equals(newUrl)) {
+            originalUrl = newUrl;
+            final Pair<Integer, String> statusAndUrl = expandSingleLevelSafe(originalUrl);
+            newUrl = statusAndUrl.getRight();
+            final boolean isRedirect = statusAndUrl.getLeft() == 301 || statusAndUrl.getLeft() == 302;
+            if (isRedirect && alreadyVisited.contains(newUrl)) {
+                throw new IllegalStateException("Likely a redirect loop");
+            }
+            alreadyVisited.add(newUrl);
+        }
 
-		return newUrl;
-	}
+        return newUrl;
+    }
 
-	final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
-		HttpGet request = null;
-		HttpEntity httpEntity = null;
-		InputStream entityContentStream = null;
+    final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
+        HttpGet request = null;
+        HttpEntity httpEntity = null;
+        InputStream entityContentStream = null;
 
-		try {
-			request = new HttpGet(url);
-			final HttpResponse httpResponse = client.execute(request);
+        try {
+            request = new HttpGet(url);
+            final HttpResponse httpResponse = client.execute(request);
 
-			httpEntity = httpResponse.getEntity();
-			entityContentStream = httpEntity.getContent();
+            httpEntity = httpResponse.getEntity();
+            entityContentStream = httpEntity.getContent();
 
-			final int statusCode = httpResponse.getStatusLine().getStatusCode();
-			if (statusCode != 301 && statusCode != 302) {
-				return new ImmutablePair<Integer, String>(statusCode, url);
-			}
-			final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
-			Preconditions.checkState(headers.length == 1);
-			final String newUrl = headers[0].getValue();
+            final int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode != 301 && statusCode != 302) {
+                return new ImmutablePair<Integer, String>(statusCode, url);
+            }
+            final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
+            Preconditions.checkState(headers.length == 1);
+            final String newUrl = headers[0].getValue();
 
-			return new ImmutablePair<Integer, String>(statusCode, newUrl);
-		} catch (final IllegalArgumentException uriEx) {
-			return new ImmutablePair<Integer, String>(500, url);
-		} finally {
-			if (request != null) {
-				request.releaseConnection();
-			}
-			if (entityContentStream != null) {
-				entityContentStream.close();
-			}
-			if (httpEntity != null) {
-				EntityUtils.consume(httpEntity);
-			}
-		}
-	}
+            return new ImmutablePair<Integer, String>(statusCode, newUrl);
+        } catch (final IllegalArgumentException uriEx) {
+            return new ImmutablePair<Integer, String>(500, url);
+        } finally {
+            if (request != null) {
+                request.releaseConnection();
+            }
+            if (entityContentStream != null) {
+                entityContentStream.close();
+            }
+            if (httpEntity != null) {
+                EntityUtils.consume(httpEntity);
+            }
+        }
+    }
 
-	final String expandSingleLevel(final String url) throws IOException {
-		HttpGet request = null;
-		HttpEntity httpEntity = null;
-		InputStream entityContentStream = null;
+    final String expandSingleLevel(final String url) throws IOException {
+        HttpGet request = null;
+        HttpEntity httpEntity = null;
+        InputStream entityContentStream = null;
 
-		try {
-			request = new HttpGet(url);
-			final HttpResponse httpResponse = client.execute(request);
+        try {
+            request = new HttpGet(url);
+            final HttpResponse httpResponse = client.execute(request);
 
-			httpEntity = httpResponse.getEntity();
-			entityContentStream = httpEntity.getContent();
+            httpEntity = httpResponse.getEntity();
+            entityContentStream = httpEntity.getContent();
 
-			final int statusCode = httpResponse.getStatusLine().getStatusCode();
-			if (statusCode != 301 && statusCode != 302) {
-				return url;
-			}
-			final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
-			Preconditions.checkState(headers.length == 1);
-			final String newUrl = headers[0].getValue();
+            final int statusCode = httpResponse.getStatusLine().getStatusCode();
+            if (statusCode != 301 && statusCode != 302) {
+                return url;
+            }
+            final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
+            Preconditions.checkState(headers.length == 1);
+            final String newUrl = headers[0].getValue();
 
-			return newUrl;
-		} catch (final IllegalArgumentException uriEx) {
-			return url;
-		} finally {
-			if (request != null) {
-				request.releaseConnection();
-			}
-			if (entityContentStream != null) {
-				entityContentStream.close();
-			}
-			if (httpEntity != null) {
-				EntityUtils.consume(httpEntity);
-			}
-		}
-	}
+            return newUrl;
+        } catch (final IllegalArgumentException uriEx) {
+            return url;
+        } finally {
+            if (request != null) {
+                request.releaseConnection();
+            }
+            if (entityContentStream != null) {
+                entityContentStream.close();
+            }
+            if (httpEntity != null) {
+                EntityUtils.consume(httpEntity);
+            }
+        }
+    }
 
 }

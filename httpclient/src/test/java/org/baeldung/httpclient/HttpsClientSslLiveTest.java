@@ -35,85 +35,77 @@ import org.junit.Test;
  * */
 public class HttpsClientSslLiveTest {
 
-	// "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1" // local
-	// "https://mms.nw.ru/" // hosted
-	private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
+    // "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1" // local
+    // "https://mms.nw.ru/" // hosted
+    private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
 
-	// tests
+    // tests
 
-	@Test(expected = SSLException.class)
-	public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
-		final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+    @Test(expected = SSLException.class)
+    public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
+        final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
-		final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
-		final HttpResponse response = httpClient.execute(getMethod);
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-	}
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
 
-	@SuppressWarnings("deprecation")
-	@Test
-	public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
-		final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
-			@Override
-			public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
-				return true;
-			}
-		};
-		final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-		final SchemeRegistry registry = new SchemeRegistry();
-		registry.register(new Scheme("https", 443, sf));
-		final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
+    @SuppressWarnings("deprecation")
+    @Test
+    public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
+        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
+                return true;
+            }
+        };
+        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SchemeRegistry registry = new SchemeRegistry();
+        registry.register(new Scheme("https", 443, sf));
+        final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
 
-		final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
+        final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
 
-		final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
-		final HttpResponse response = httpClient.execute(getMethod);
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
 
-		httpClient.close();
-	}
+        httpClient.close();
+    }
 
-	@Test
-	public final void givenHttpClientAfter4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
-		final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
-			@Override
-			public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
-				return true;
-			}
-		};
-		final SSLContext sslContext = SSLContexts.custom()
-				.loadTrustMaterial(null, acceptingTrustStrategy).build();
+    @Test
+    public final void givenHttpClientAfter4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
+        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
+                return true;
+            }
+        };
+        final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 
-		final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(
-				sslContext,
-				SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 
-		final CloseableHttpClient httpClient = HttpClients
-				.custom()
-				.setHostnameVerifier(
-						SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
-						.setSSLSocketFactory(sslsf).build();
+        final CloseableHttpClient httpClient = HttpClients.custom().setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).setSSLSocketFactory(sslsf).build();
 
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
 
-		final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
-		final HttpResponse response = httpClient.execute(getMethod);
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        httpClient.close();
+    }
 
-		httpClient.close();
-	}
+    @Test
+    public final void givenHttpClientPost4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
+        final SSLContextBuilder builder = new SSLContextBuilder();
+        builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(builder.build());
+        final CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
 
-	@Test
-	public final void givenHttpClientPost4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
-		final SSLContextBuilder builder = new SSLContextBuilder();
-		builder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
-		final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(builder.build());
-		final CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslsf).build();
+        // new
 
-		// new
-
-		final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
-		final HttpResponse response = httpClient.execute(getMethod);
-		assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-	}
+        final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
+        final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
 
 }
