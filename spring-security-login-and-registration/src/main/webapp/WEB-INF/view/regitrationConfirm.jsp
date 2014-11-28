@@ -12,7 +12,7 @@
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Registration Success</title>
+<title><spring:message code="label.pages.home.title"></spring:message></title>
 </head>
 <body>
 

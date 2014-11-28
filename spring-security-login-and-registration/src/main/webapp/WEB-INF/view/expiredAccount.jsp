@@ -9,7 +9,7 @@
 <html>
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-	<title>Expired</title>
+	<title><spring:message code="label.pages.home.title"></spring:message></title>
 </head>
 <body>
 <h1>

@@ -3,7 +3,9 @@ package org.baeldung.event;
 import java.util.Locale;
 
 import org.baeldung.persistence.model.User;
+import org.baeldung.web.controller.RegistrationController;
 import org.springframework.context.ApplicationEvent;
+import org.springframework.web.context.request.WebRequest;
 
 @SuppressWarnings("serial")
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
@@ -30,5 +32,4 @@ public class OnRegistrationCompleteEvent extends ApplicationEvent {
     public User getUser() {
         return user;
     }
-
 }

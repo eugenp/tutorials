@@ -12,7 +12,7 @@
 	</div>
 </c:if>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Logged Out</title>
+<title><spring:message code="label.pages.home.title"></spring:message></title>
 </head>
 
 <body>
