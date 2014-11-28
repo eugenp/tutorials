@@ -8,6 +8,5 @@
 */META-INF/*
 
 # Packaged files #
-*.jar
 *.war
 *.ear
