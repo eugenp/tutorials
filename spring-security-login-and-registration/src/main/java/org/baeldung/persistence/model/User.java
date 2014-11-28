@@ -32,10 +32,18 @@ public class User {
 
     @Column(name = "enabled")
     private boolean enabled;
+    
+    @Column(name = "token_expired")
+    private boolean tokenExpired;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
-
+    
+    public User() {
+        super();
+        this.enabled = false;
+        this.tokenExpired = false;
+    }
     public Long getId() {
         return id;
     }
@@ -91,6 +99,15 @@ public class User {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+    
+    public boolean isTokenExpired() {
+        return tokenExpired;
+    }
+
+    public void setTokenExpired(boolean expired) {
+        this.tokenExpired = expired;
+    }
+
 
     @Override
     public int hashCode() {

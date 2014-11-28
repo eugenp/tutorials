@@ -1,12 +1,16 @@
 package org.baeldung.event.listener;
 
 import java.util.UUID;
+
+import javax.mail.AuthenticationFailedException;
+
 import org.baeldung.event.OnRegistrationCompleteEvent;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
+import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;

@@ -29,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+
+    @Autowired
     private IUserService service;
 
     @Autowired
@@ -40,9 +42,8 @@ public class RegistrationController {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    @Autowired
-    public RegistrationController(IUserService service) {
-        this.service = service;
+    public RegistrationController() {
+
     }
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.GET)
@@ -59,7 +60,6 @@ public class RegistrationController {
         if (verificationToken == null) {
             model.addAttribute("message", messages.getMessage("auth.message.invalidToken", null, request.getLocale()));
             return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
-
         }
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
@@ -68,10 +68,9 @@ public class RegistrationController {
             return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
         }
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            user.setEnabled(false);
-        } else {
-            user.setEnabled(true);
+            user.setTokenExpired(true);
         }
+        user.setEnabled(true);
         service.saveRegisteredUser(user);
         return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
     }
@@ -88,7 +87,11 @@ public class RegistrationController {
         if (registered == null) {
             result.rejectValue("email", "message.regError");
         }
-        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+        try {
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+        } catch (Exception me) {
+            return new ModelAndView("emailError", "user", accountDto);
+        }
         return new ModelAndView("successRegister", "user", accountDto);
     }
 

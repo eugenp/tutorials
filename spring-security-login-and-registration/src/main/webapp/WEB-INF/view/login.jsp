@@ -33,15 +33,7 @@
 
 <head>
 <link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-<!-- <c:if test="${param.error != null}">
-	<div class="container">
-		<div class="span12">
-			<div class="alert alert-error">
-				<spring:message code="message.badCredentials"></spring:message>
-			</div>
-		</div>
-	</div>
-</c:if> -->
+<title><spring:message code="label.pages.home.title"></spring:message></title>
 <script type="text/javascript">
 	function validate() {
 		if (document.f.j_username.value == ""

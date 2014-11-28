@@ -24,15 +24,15 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private IUserService service;
     @Autowired
     private MessageSource messages;
 
-    @Autowired
-    public MyUserDetailsService(UserRepository repository) {
-        this.userRepository = repository;
+    public MyUserDetailsService() {
+
     }
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -48,8 +48,11 @@ public class MyUserDetailsService implements UserDetailsService {
                 return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
             }
             if (!user.isEnabled()) {
+                enabled = false;
+                return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
+            }
+            if (user.isTokenExpired()) {
                 accountNonExpired = false;
-                service.deleteUser(user);
                 return new org.springframework.security.core.userdetails.User(" ", " ", enabled, accountNonExpired, true, true, getAuthorities(new Integer(1)));
             }
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
