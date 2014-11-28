@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article version="5.0" xml:lang="en-US" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Registration – Activate a New Account by Email | Technical Articles</title>
+    <abstract>
+      <para>1. Overview This article continues our ongoing Registration with Spring Security series by finishing the missing piece of the registration process - verifying</para>
+    </abstract>
+  </info>
+  <!--
+Mobile viewport scale
+-->
+  <anchor xml:id="open-sans-css"/>
+  <anchor xml:id="dashicons-css"/>
+  <anchor xml:id="admin-bar-css"/>
+  <anchor xml:id="digg-digg-css"/>
+  <anchor xml:id="theme-stylesheet-css"/>
+  <anchor xml:id="core3.0-css"/>
+  <anchor xml:id="core-Default3.0-css"/>
+  <anchor xml:id="theme-Default3.0-css"/>
+  <!--
+[if lt IE 9]>
+<link href="http://inprogress.baeldung.com/wp-content/themes/canvas/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<style type="text/css">.col-full, #wrapper { width: 1150px; max-width: 1150px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 1150px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
+<![endif]
+-->
+  <!--
+Adjust the website width
+-->
+  <!--
+Custom CSS Styling
+-->
+  <!--
+Woo Shortcodes CSS
+-->
+  <!--
+Custom Stylesheet
+-->
+  <!--
+Theme version
+-->
+  <!--
+All in one Favicon 4.3
+-->
+  <!--
+All in One SEO Pack 2.2.3.1 by Michael Torbert of Semper Fi Web Design[68,148]
+-->
+  <!--
+/all in one seo pack
+-->
+  <anchor xml:id="wrapper"/>
+  <anchor xml:id="inner-wrapper"/>
+  <section>
+    <title><link linkend="navigation">Navigation</link></title>
+    <anchor xml:id="logo"/>
+    <para><link xl:href="http://inprogress.baeldung.com/">Technical Articles</link></para>
+    <para><link xl:href="http://inprogress.baeldung.com">Home</link></para>
+    <itemizedlist>
+      <listitem>
+        <para><link xl:href="http://inprogress.baeldung.com/">Home</link></para>
+      </listitem>
+    </itemizedlist>
+    <!--
+/#nav
+-->
+    <itemizedlist>
+      <listitem>
+        <para><link xl:href="http://inprogress.baeldung.com/?feed=rss2"/></para>
+      </listitem>
+    </itemizedlist>
+    <!--
+/#side-nav
+-->
+    <!--
+/.menus
+-->
+    <para><link linkend="top">Return to Content</link></para>
+    <!--
+#content Starts
+-->
+    <anchor xml:id="content"/>
+    <anchor xml:id="main-sidebar-container"/>
+    <!--
+#main Starts
+-->
+    <para>Registration – Activate a New Account by Email</para>
+    <para>By</para>
+    <para><link xl:href="http://inprogress.baeldung.com/?author=10">Elena</link></para>
+    <para>on</para>
+    <abbrev>October 23, 2014</abbrev>
+    <para>in</para>
+    <para><link xl:href="http://inprogress.baeldung.com/?cat=9">Spring Security</link></para>
+    <para><link xl:href=""/></para>
+    <section>
+      <title><emphasis role="bold">1. Overview</emphasis></title>
+      <para>This article continues our ongoing <emphasis role="bold">Registration with Spring Security series</emphasis> by finishing the missing piece of the registration process – <emphasis role="bold">verifying the email to confirm the user registration</emphasis>.</para>
+      <para>The registration confirmation mechanism forces the user to respond to a “<emphasis><emphasis role="bold">Confirm Registration</emphasis></emphasis>” email sent after successful registration to verify his email address and activate his account. The user does this by clicking a unique account activation link sent to him as part of the email message.</para>
+      <para>Following this logic, a newly registered user will not be able to log in until email/registration verification is completed.</para>
+    </section>
+    <section>
+      <title><emphasis role="bold">2. A Verification Token</emphasis></title>
+      <para>We will make use of a simple verification token as the key artifact through which a user is verified.</para>
+      <section>
+        <title><emphasis role="bold">2.1. Adding a VerificationToken Entity to Our Model</emphasis></title>
+        <para>The <emphasis>VerificationToken</emphasis> entity must meet the following criteria:</para>
+        <orderedlist><listitem>
+            <para> There will be one <emphasis>VerificationToken </emphasis>associated to a <emphasis>User</emphasis>. So, we need a one-to-one unidirectional association between the<emphasis> VerificationToken</emphasis> and the <emphasis>User</emphasis>.</para>
+          </listitem>
+<listitem>
+            <para> It will be created after the user registration data is persisted.</para>
+          </listitem>
+<listitem>
+            <para> It will expire in 24 hours following initial registration.</para>
+          </listitem>
+<listitem>
+            <para> Its value should be unique and randomly generated.</para>
+          </listitem>
+</orderedlist>
+        <para>Requirements 2 and 3 are part of the registration logic. The other two are implemented in a simple <emphasis>VerificationToken</emphasis> entity like the one in Example 2.1.:</para>
+        <para><emphasis role="bold">Example 2.1.</emphasis></para>
+        <screen>@Entity
+@Table
+public class VerificationToken {
+    private static final int EXPIRATION = 60 * 24;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name = &quot;token&quot;)
+    private String token;
+  
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = &quot;user_id&quot;)
+    private User user;
+    
+    @Column(name = &quot;expiry_date&quot;)
+    private Date expiryDate;
+
+    public VerificationToken() {
+        super();
+    }
+    public VerificationToken(String token, User user) {
+        super();
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+        this.verified = false;
+    } 
+    private Date calculateExpiryDate(int expiryTimeInMinutes) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
+    }
+    
+    // standard getters and setters
+}</screen>
+      </section>
+      <section>
+        <title><emphasis role="bold">2.2. Add an Enabled Flag to the User Entity</emphasis></title>
+        <para>We will set the value of this flag depending on the result of the registration confirmation use case. Lets jus add the following field to our <emphasis>User</emphasis> entity for now:</para>
+        <screen>@Column(name = &quot;enabled&quot;)
+private boolean enabled;</screen>
+      </section>
+    </section>
+    <section>
+      <title><emphasis role="bold">3. The Account Registration Phase</emphasis></title>
+      <para>Lets add two additional pieces of business logic to the user registration use case:</para>
+      <orderedlist><listitem>
+          <para> Generating a <emphasis>VerificationToken</emphasis> for the user and persisting it.</para>
+        </listitem>
+<listitem>
+          <para> Sending the account confirmation email message which includes a confirmation link with the <emphasis>VerificationToken’s </emphasis>value<emphasis/>as a parameter.</para>
+        </listitem>
+</orderedlist>
+      <section>
+        <title><emphasis role="bold">3.1. Using Spring Event Handling to Create the Token and Send the Verification Email</emphasis></title>
+        <para>These two additional pieces of logic should not be performed by the controller directly because they are “collateral” back-end tasks. The controller will publish a Spring <emphasis>ApplicationEvent</emphasis> to trigger the execution of these tasks. This is as simple as injecting an<emphasis> ApplicationEventPublishe</emphasis>r in the controller, and then using it to publish the registration completion. Example 3.1. shows this simple logic:</para>
+        <para><emphasis role="bold">Example 3.1.</emphasis></para>
+        <screen>@Autowired
+ApplicationEventPublisher
+@RequestMapping(value = &quot;/user/registration&quot;, method = RequestMethod.POST)
+public ModelAndView registerUserAccount(@ModelAttribute(&quot;user&quot;) @Valid UserDto accountDto,
+      BindingResult result, WebRequest request, Errors errors) {
+    User registered = new User();
+    String appUrl = request.getContextPath();
+    if (result.hasErrors()) {
+       return new ModelAndView(&quot;registration&quot;, &quot;user&quot;, accountDto);
+    }
+    registered = createUserAccount(accountDto);
+    if (registered == null) {
+        result.rejectValue(&quot;email&quot;, &quot;message.regError&quot;);
+    }
+    eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, 
+      request.getLocale(), appUrl));
+    return new ModelAndView(&quot;successRegister&quot;, &quot;user&quot;, accountDto);
+}</screen>
+      </section>
+      <section>
+        <title><emphasis role="bold">3.2. Spring Event Handler Implementation</emphasis></title>
+        <para>The controller is using an <emphasis>ApplicationEventPublisher</emphasis> to start the <emphasis>RegistrationListener</emphasis> that will handle the verification token creation and confirmation email sending. So it needs to have access to the implementation of the following interfaces:</para>
+        <orderedlist><listitem>
+            <para> An <emphasis role="bold">AplicationEvent</emphasis> representing the completion of the user registration.</para>
+          </listitem>
+<listitem>
+            <para> An <emphasis role="bold">ApplicationListener</emphasis> bean which will listen to the published event and proceed to do all the work.</para>
+          </listitem>
+</orderedlist>
+        <para>The beans we will create are the <emphasis>OnRegistrationCompleteEvent</emphasis> , and the <emphasis>RegistrationListener</emphasis> shown Examples 3.2.1 – 3.2.2.</para>
+        <para><emphasis role="bold">Example 3.2.1.</emphasis> – The <emphasis>OnRegistrationCompleteEvent </emphasis></para>
+        <screen>@SuppressWarnings(&quot;serial&quot;)
+public class OnRegistrationCompleteEvent extends ApplicationEvent {
+    private final String appUrl;
+    private final Locale locale;
+    private final User user;
+
+    public OnRegistrationCompleteEvent(User user, Locale locale, String appUrl) {
+        super(user);
+        this.user = user;
+        this.locale = locale;
+        this.appUrl = appUrl;
+    }
+    
+    // standard getters and setters
+}</screen>
+        <para><emphasis role="bold">Example 3.2.2. </emphasis>- <emphasis role="bold">The RegistrationListener</emphasis> Responds to the <emphasis>OnRegistrationCompleteEvent </emphasis></para>
+        <screen>@Component
+public class RegistrationListener implements ApplicationListener&lt;OnRegistrationCompleteEvent&gt; {
+    @Autowired
+    private IUserService service;
+
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Override
+    public void onApplicationEvent(OnRegistrationCompleteEvent event) {
+        this.confirmRegistration(event);
+    }
+
+    private void confirmRegistration(OnRegistrationCompleteEvent event) {
+        User user = event.getUser();
+        String token = UUID.randomUUID().toString();
+        service.addVerificationToken(user, token);
+        String recipientAddress = user.getEmail();
+        String subject = &quot;Registration Confirmation&quot;;
+        String confirmationUrl = event.getAppUrl() + &quot;/regitrationConfirm.html?token=&quot; + token;
+        String message = messages.getMessage(&quot;message.regSucc&quot;, null, event.getLocale());
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message + &quot; \r\n&quot; + &quot;http://localhost:8080&quot; + confirmationUrl);
+        mailSender.send(email);
+    }
+}</screen>
+        <para>Here, the <emphasis>confirmRegistration</emphasis> method will receive the <emphasis>OnRegistrationCompleteEvent</emphasis>, extract all the necessary <emphasis>User</emphasis> information from it, create the verification token, persist it, and then send it as a parameter in the “Confirm Registration” link sent to the user.</para>
+      </section>
+      <section>
+        <title><emphasis role="bold">3.3. Processing the Verification Token Parameter</emphasis></title>
+        <para>When the user receives the “Confirm Registration” email, he will click on the attached link and fire a GET request. The controller will extract the value of the token parameter in the GET request and will use it to verify the user. Lets see this logic in Example 3.3.1.</para>
+        <para><emphasis role="bold">Example 3.3.1. – RegistrationController Processing the Registration Confirmation Link</emphasis></para>
+        <screen>private IUserService service;
+
+@Autowired
+public RegistrationController(IUserService service){
+    this.service = service
+}
+@RequestMapping(value = &quot;/regitrationConfirm&quot;, method = RequestMethod.GET)
+public String confirmRegistration(WebRequest request, Model model, 
+      @RequestParam(&quot;token&quot;) String token) {
+    VerificationToken verificationToken = service.getVerificationToken(token);
+    if (verificationToken == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidToken&quot;, 
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    User user = verificationToken.getUser();
+    Calendar cal = Calendar.getInstance();
+    if (user == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidUser&quot;,
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) &lt;= 0) {
+        user.setEnabled(false);
+    } else {
+        user.setEnabled(true);
+    }
+    service.saveRegisteredUser(user);
+    return &quot;redirect:/login.html?lang=&quot; + request.getLocale().getLanguage();
+}</screen>
+        <para>Notice that if there is no user associated with the <emphasis>VerificationToken</emphasis> or if the <emphasis>VerificationToken</emphasis> does not exist, the controller will return a<emphasis> badUser.html</emphasis> page with the corresponding error message (See Example 3.3.2.).</para>
+        <para><emphasis role="bold">Example 3.3.2. – The badUser.html</emphasis></para>
+        <screen>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sec&quot; uri=&quot;http://www.springframework.org/security/tags&quot;%&gt;
+&lt;%@taglib uri=&quot;http://www.springframework.org/tags&quot; prefix=&quot;spring&quot;%&gt;
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; prefix=&quot;fmt&quot;%&gt;
+&lt;fmt:setBundle basename=&quot;messages&quot; /&gt;
+&lt;%@ page session=&quot;true&quot;%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link href=&quot;&lt;c:url value=&quot;/resources/bootstrap.css&quot; /&gt;&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;title&gt;Expired&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;${message}&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;a href=&quot;&lt;c:url value=&quot;/user/registration&quot; /&gt;&quot;&gt;
+        &lt;spring:message code=&quot;label.form.loginSignUp&quot;&gt;&lt;/spring:message&gt;
+    &lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</screen>
+        <para>If the token and user exist, the controller then proceeds to set the <emphasis>User</emphasis>‘s <emphasis>enabled</emphasis> field after checking if the <emphasis>VerificationToken</emphasis> has expired.</para>
+      </section>
+    </section>
+    <section>
+      <title><emphasis role="bold">4. Adding Account Activation Checking to the Login Process</emphasis></title>
+      <para>We need to add the following verification logic to My<emphasis>UserDetailsService’s </emphasis><emphasis role="bold">lo</emphasis><emphasis><emphasis role="bold">adUserByUsername</emphasis></emphasis> method:</para>
+      <itemizedlist>
+        <listitem>
+          <para> Make sure that the user is enabled before letting him log in.</para>
+        </listitem>
+      </itemizedlist>
+      <para>Example 4.1. shows the simple <emphasis>isEnabled()</emphasis> check.</para>
+      <para><emphasis role="bold">Example 4.1. – </emphasis>Checking the VerificationToken<emphasis role="bold"> in MyUserDetailsService</emphasis></para>
+      <screen>private UserRepository userRepository;
+@Autowired
+private IUserService service;
+@Autowired
+private MessageSource messages;
+
+@Autowired
+public MyUserDetailsService(UserRepository repository) {
+    this.userRepository = repository;
+}
+
+public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    boolean enabled = true;
+    boolean accountNonExpired = true;
+    boolean credentialsNonExpired = true;
+    boolean accountNonLocked = true;
+    try {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+                    true, true, true, getAuthorities(new Integer(1)));
+        }
+        if (!user.isEnabled()) {
+            accountNonExpired = false;
+            service.deleteUser(user);
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+              accountNonExpired, true, true, getAuthorities(new Integer(1)));
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), 
+          user.getPassword().toLowerCase(), 
+          enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, 
+          getAuthorities(user.getRole().getRole()));
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}</screen>
+      <para>Notice that if the user is not enabled, the account is deleted and the method returns an <emphasis>org.springframework.security.core.userdetails.User</emphasis> with the <emphasis>accountNonExpired</emphasis> flag set to false. This will trigger a <emphasis role="bold">SPRING_SECURITY_LAST_EXCEPTION</emphasis> in the login process. This exception’s String value is: ‘<emphasis>User Account Has Expired</emphasis>‘.</para>
+      <para>Now, we need to modify our<emphasis> login.html</emphasis> page to show this and any other exception messages resulting from en email verification error. The error checking code we added to <emphasis>login.html</emphasis> is shown in Example 4.2.<emphasis>:</emphasis></para>
+      <para><emphasis role="bold">Example 4.2. – Adding Account Activation Error Checking t</emphasis>o l<emphasis>ogin.html</emphasis></para>
+      <screen>&lt;c:if test=&quot;${param.error != null}&quot;&gt;
+    &lt;c:choose&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &apos;User is disabled&apos;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.disabled&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &apos;User account has expired&apos;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.expired&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:otherwise&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+	      &lt;spring:message code=&quot;message.badCredentials&quot;&gt;&lt;/spring:message&gt;
+           &lt;/div&gt;
+        &lt;/c:otherwise&gt;
+    &lt;/c:choose&gt;
+&lt;/c:if&gt;</screen>
+    </section>
+    <section>
+      <title>5. Adapting the Persistence Layer</title>
+      <para>We need to modify the API of the persistence layer by:</para>
+      <orderedlist><listitem>
+          <para> Creating a <emphasis>VerificationTokenRepository</emphasis>. For<emphasis> User</emphasis> and <emphasis>VerificationToken</emphasis> access.</para>
+        </listitem>
+<listitem>
+          <para> Adding methods to the <emphasis>IUserInterface</emphasis> and its implementation for new CRUD operations needed.</para>
+        </listitem>
+</orderedlist>
+      <para>Examples 5.1 – 5.3. show the new interfaces and implementation:</para>
+      <para><emphasis role="bold">Example 5.1.</emphasis> – The <emphasis>VerificationTokenRepository</emphasis></para>
+      <screen>public interface VerificationTokenRepository extends JpaRepository&lt;VerificationToken, Long&gt; {
+
+    VerificationToken findByToken(String token);
+
+    VerificationToken findByUser(User user);
+}</screen>
+      <para><emphasis role="bold">Example 5.2.</emphasis> – The <emphasis>IUserService</emphasis> Interface</para>
+      <screen>public interface IUserService {
+    
+    User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
+
+    User getUser(String verificationToken);
+
+    void saveRegisteredUser(User user);
+
+    void addVerificationToken(User user, String token);
+
+    VerificationToken getVerificationToken(String VerificationToken);
+
+    void deleteUser(User user);
+}</screen>
+      <para><emphasis role="bold">Example 5.3.</emphasis> The <emphasis>UserService </emphasis></para>
+      <screen>@Service
+public class UserService implements IUserService {
+    @Autowired
+    private UserRepository repository;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
+    @Transactional
+    @Override
+    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+        if (emailExist(accountDto.getEmail())) {
+            throw new EmailExistsException(&quot;There is an account with that email adress: &quot; + 
+              accountDto.getEmail());
+        }
+        User user = new User();
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(accountDto.getPassword());
+        user.setEmail(accountDto.getEmail());
+        user.setRole(new Role(Integer.valueOf(1), user));
+        return repository.save(user);
+    }
+
+    private boolean emailExist(String email) {
+        User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepository.findByToken(verificationToken).getUser();
+        return user;
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Transactional
+    @Override
+    public void saveRegisteredUser(User user) {
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(User user) {
+        repository.delete(user);
+    }
+
+    @Transactional
+    @Override
+    public void addVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
+    }
+}</screen>
+    </section>
+    <section>
+      <title>6. Conclusion</title>
+      <para>We have expanded our Spring registration process to include an email based account activation procedure. The account activation logic requires sending a verification token to the user via email, so that he can send it back to the controller to verify his identity. A <emphasis role="italic">Spring event handler layer </emphasis>takes care of the back-end work needed to send the confirmation email after the controller persists a registered.</para>
+      <para><link xl:href=""/></para>
+      <anchor xml:id="dd_ajax_float"/>
+      <para><link xl:href="http://twitter.com/share"/></para>
+      <!--
+/.entry
+-->
+      <section>
+        <title>Subscribe</title>
+        <para>Subscribe to our e-mail newsletter to receive updates.</para>
+        <para><link xl:href="http://inprogress.baeldung.com/?feed=rss2"/></para>
+        <!--
+col-left
+-->
+        <!--
+/.post
+-->
+        <para><link xl:href="http://inprogress.baeldung.com/?p=653"><emphasis role="italic"/> (published) Handling Static Resources With Spring</link></para>
+        <para><link xl:href="http://inprogress.baeldung.com/?p=1430">Convert HTML to PDF using Apache FOP <emphasis role="italic"/></link></para>
+        <anchor xml:id="comments"/>
+        <section>
+          <title>No comments yet.</title>
+          <anchor xml:id="respond"/>
+        </section>
+      </section>
+      <section xml:id="reply-title.1">
+        <title>Leave a Reply <link xl:href="/?p=1092#respond">Click here to cancel reply.</link></title>
+        <anchor xml:id="commentform"/>
+        <para>Logged in as <link xl:href="http://inprogress.baeldung.com/wp-admin/profile.php">odeskAuthor8</link>. <link xl:href="http://inprogress.baeldung.com/wp-login.php?action=logout">Log out?</link></para>
+        <para>Comment<anchor xml:id="comment"/></para>
+        <para><anchor xml:id="submit"/><anchor xml:id="comment_post_ID"/><anchor xml:id="comment_parent"/></para>
+        <!--
+#respond
+-->
+        <!--
+/#main
+-->
+        <!--
+/#main-sidebar-container
+-->
+        <!--
+/#content
+-->
+        <anchor xml:id="copyright"/>
+        <para>© 2014 Technical Articles. All Rights Reserved. </para>
+        <anchor xml:id="credit"/>
+        <!--
+/#inner-wrapper
+-->
+        <!--
+/#wrapper
+-->
+        <!--
+/.fix
+-->
+      </section>
+    </section>
+  </section>
+</article>

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:fox="http://xml.apache.org/fop/extensions">
+	<!-- Creator="html2fo" Version="0.4.2" -->
+	<fo:layout-master-set>
+		<fo:simple-page-master margin-right="2.0cm" margin-left="2.0cm" margin-bottom="1.0cm" margin-top="1.0cm" page-width="21cm" page-height="29.7cm" master-name="first">
+			
+			<fo:region-body margin-bottom="1.5cm" margin-top="1.5cm"/>
+			<fo:region-before extent="1.5cm"/>
+			<fo:region-after extent="1.0cm"/>
+		</fo:simple-page-master>
+	</fo:layout-master-set>
+	<fo:page-sequence master-reference="first" language="en-US" hyphenate="true">
+
+<fo:static-content flow-name="xsl-region-before">
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Registration &#38;#8211; Activate a New Account by Email | Technical Articles</fo:block></fo:static-content>
+
+<fo:static-content flow-name="xsl-region-after">
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">
+
+	... the footer should be inserted here ...
+
+</fo:block></fo:static-content>
+
+<fo:flow flow-name="xsl-region-body"><fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">
+		
+																			
+
+		
+		<fo:inline font-size="10pt"><fo:block>
+
+	</fo:block></fo:inline><fo:block>
+
+	
+
+		<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt"><fo:basic-link color="#0000ff" text-decoration="underline" internal-destination="navigation">Navigation</fo:basic-link></fo:block>
+
+	</fo:block><fo:inline font-size="10pt"><fo:block><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/">Technical Articles</fo:basic-link></fo:block></fo:inline>
+
+	
+	<fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com">Home</fo:basic-link></fo:inline>
+
+			<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+			
+								<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/">Home</fo:basic-link></fo:block></fo:list-item-body></fo:list-item>
+									</fo:list-block><!-- /#nav -->
+		<fo:block>
+	<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+						<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?feed=rss2"></fo:basic-link></fo:block></fo:list-item-body></fo:list-item>
+			 series</fo:list-block></fo:block><!-- /#side-nav --><!-- /.menus -->
+
+	<fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" internal-destination="top">Return to Content</fo:basic-link></fo:inline>
+
+
+       
+    <!-- #content Starts -->
+	    <fo:inline font-size="10pt"><fo:block>
+    
+    	</fo:block></fo:inline><fo:block>    
+
+                                   
+
+	
+		
+			<!-- #main Starts -->
+                        <fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="32pt" font-size="16pt">Registration &#38;#8211; Activate a New Account by Email</fo:block>		
+	
+ </fo:block><fo:block><fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?author=10">Elena</fo:basic-link></fo:inline>  <fo:inline font-size="10pt">October 23, 2014</fo:inline>   <fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?cat=9">Spring Security</fo:basic-link></fo:inline>  </fo:block>
+	<fo:inline font-size="10pt"></fo:inline><fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">1. Overview</fo:block>
+<fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:inline font-size="10pt">This article continues our ongoing </fo:inline><fo:inline font-size="10pt">Registration with Spring Security</fo:inline><fo:inline font-size="10pt"> by finishing the missing piece of the registration process &#38;#8211; </fo:inline><fo:inline font-size="10pt">verifying the email to confirm the user registration</fo:inline><fo:inline font-size="10pt">.</fo:inline></fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Confirm Registration&#38;#8221; email sent after successful registration to verify his email address and activate his account. The user does this by clicking a unique account activation link sent to him as part of the email message.</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Following this logic, a newly registered user will not be able to log in until email/registration verification is completed.</fo:block>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">2. A Verification Token<fo:inline white-space-collapse="false">
+</fo:inline>
+ Entity to Our Modelassociated to a . So, we need a one-to-one unidirectional association between the and the . Entity for the user and persisting it.valueas a parameter.</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">We will make use of a simple verification token as the key artifact through which a user is verified.</fo:block>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">2.1. Adding a VerificationToken entity must meet the following criteria:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">The VerificationToken</fo:block>
+<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">There will be one VerificationToken User VerificationTokenUser</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">It will be created after the user registration data is persisted.</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">It will expire in 24 hours following initial registration.</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Its value should be unique and randomly generated.</fo:block></fo:list-item-body></fo:list-item>
+ entity like the one in Example 2.1.:</fo:list-block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Requirements 2 and 3 are part of the registration logic. The other two are implemented in a simple VerificationToken</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Example 2.1.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@Entity
+@Table
+public class VerificationToken {
+    private static final int EXPIRATION = 60 * 24;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name = &quot;token&quot;)
+    private String token;
+  
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = &quot;user_id&quot;)
+    private User user;
+    
+    @Column(name = &quot;expiry_date&quot;)
+    private Date expiryDate;
+
+    public VerificationToken() {
+        super();
+    }
+    public VerificationToken(String token, User user) {
+        super();
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+        this.verified = false;
+    } 
+    private Date calculateExpiryDate(int expiryTimeInMinutes) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
+    }
+    
+    // standard getters and setters
+}</fo:block></fo:inline>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">2.2. Add an Enabled Flag to the User entity for now:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">We will set the value of this flag depending on the result of the registration confirmation use case. Lets jus add the following field to our User</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@Column(name = &quot;enabled&quot;)
+private boolean enabled;</fo:block></fo:inline>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">3. The Account Registration Phase</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Lets add two additional pieces of business logic to the user registration use case:</fo:block>
+<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Generating a VerificationToken</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Sending the account confirmation email message which includes a confirmation link with the VerificationToken&#38;#8217;s  </fo:block></fo:list-item-body></fo:list-item>
+</fo:list-block>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">3.1. Using Spring Event Handling to Create the Token and Send the Verification Email to trigger the execution of these tasks. This is as simple as injecting anr in the controller, and then using it to publish the registration completion. Example 3.1. shows this simple logic:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">These two additional pieces of logic should not be performed by the controller directly because they are &#38;#8220;collateral&#38;#8221; back-end tasks. The controller will publish a Spring ApplicationEvent ApplicationEventPublishe</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Example 3.1.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@Autowired
+ApplicationEventPublisher
+@RequestMapping(value = &quot;/user/registration&quot;, method = RequestMethod.POST)
+public ModelAndView registerUserAccount(@ModelAttribute(&quot;user&quot;) @Valid UserDto accountDto,
+      BindingResult result, WebRequest request, Errors errors) {
+    User registered = new User();
+    String appUrl = request.getContextPath();
+    if (result.hasErrors()) {
+       return new ModelAndView(&quot;registration&quot;, &quot;user&quot;, accountDto);
+    }
+    registered = createUserAccount(accountDto);
+    if (registered == null) {
+        result.rejectValue(&quot;email&quot;, &quot;message.regError&quot;);
+    }
+    eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, 
+      request.getLocale(), appUrl));
+    return new ModelAndView(&quot;successRegister&quot;, &quot;user&quot;, accountDto);
+}</fo:block></fo:inline>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">3.2. Spring Event Handler Implementation to start the  that will handle the verification token creation and confirmation email sending. So it  needs to have access to the implementation of the following interfaces:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">The controller is using an ApplicationEventPublisherRegistrationListener</fo:block>
+<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">An AplicationEvent representing the completion of the user registration.</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">An ApplicationListener. For and  access. and its implementation for new CRUD operations needed.</fo:block></fo:list-item-body></fo:list-item>
+ , and the  shown Examples 3.2.1 &#38;#8211; 3.2.2.</fo:list-block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">The beans we will create are the OnRegistrationCompleteEventRegistrationListener</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">OnRegistrationCompleteEvent Example 3.2.1.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@SuppressWarnings(&quot;serial&quot;)
+public class OnRegistrationCompleteEvent extends ApplicationEvent {
+    private final String appUrl;
+    private final Locale locale;
+    private final User user;
+
+    public OnRegistrationCompleteEvent(User user, Locale locale, String appUrl) {
+        super(user);
+        this.user = user;
+        this.locale = locale;
+        this.appUrl = appUrl;
+    }
+    
+    // standard getters and setters
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:inline font-size="10pt">OnRegistrationCompleteEvent </fo:inline><fo:inline font-size="10pt">Example 3.2.2. </fo:inline><fo:inline font-size="10pt">- </fo:inline><fo:inline font-size="10pt">The RegistrationListener</fo:inline><fo:inline font-size="10pt"> method will receive the , extract all the necessary  information from it, create the verification token, persist it, and then send it as a parameter in the &#38;#8220;Confirm Registration&#38;#8221; link sent to the user.</fo:inline></fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@Component
+public class RegistrationListener implements ApplicationListener&lt;OnRegistrationCompleteEvent&gt; {
+    @Autowired
+    private IUserService service;
+
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Override
+    public void onApplicationEvent(OnRegistrationCompleteEvent event) {
+        this.confirmRegistration(event);
+    }
+
+    private void confirmRegistration(OnRegistrationCompleteEvent event) {
+        User user = event.getUser();
+        String token = UUID.randomUUID().toString();
+        service.addVerificationToken(user, token);
+        String recipientAddress = user.getEmail();
+        String subject = &quot;Registration Confirmation&quot;;
+        String confirmationUrl = event.getAppUrl() + &quot;/regitrationConfirm.html?token=&quot; + token;
+        String message = messages.getMessage(&quot;message.regSucc&quot;, null, event.getLocale());
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message + &quot; \r\n&quot; + &quot;http://localhost:8080&quot; + confirmationUrl);
+        mailSender.send(email);
+    }
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Here, the confirmRegistrationOnRegistrationCompleteEventUser</fo:block>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">3.3. Processing the Verification Token Parameter</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">When the user receives the &#38;#8220;Confirm Registration&#38;#8221; email, he will click on the attached link and fire a GET request. The controller will extract the value of the token parameter in the GET request and will use it to verify the user. Lets see this logic in Example 3.3.1.</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Example 3.3.1. &#38;#8211; RegistrationController or if the  does not exist, the controller will return a page with the corresponding error message (See Example 3.3.2.).</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">private IUserService service;
+
+@Autowired
+public RegistrationController(IUserService service){
+    this.service = service
+}
+@RequestMapping(value = &quot;/regitrationConfirm&quot;, method = RequestMethod.GET)
+public String confirmRegistration(WebRequest request, Model model, 
+      @RequestParam(&quot;token&quot;) String token) {
+    VerificationToken verificationToken = service.getVerificationToken(token);
+    if (verificationToken == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidToken&quot;, 
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    User user = verificationToken.getUser();
+    Calendar cal = Calendar.getInstance();
+    if (user == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidUser&quot;,
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) &lt;= 0) {
+        user.setEnabled(false);
+    } else {
+        user.setEnabled(true);
+    }
+    service.saveRegisteredUser(user);
+    return &quot;redirect:/login.html?lang=&quot; + request.getLocale().getLanguage();
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Notice that if there is no user associated with the VerificationTokenVerificationToken badUser.html</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Example 3.3.2. &#38;#8211; The badUser.html&#38;#8216;s  field after checking if the  has expired.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sec&quot; uri=&quot;http://www.springframework.org/security/tags&quot;%&gt;
+&lt;%@taglib uri=&quot;http://www.springframework.org/tags&quot; prefix=&quot;spring&quot;%&gt;
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; prefix=&quot;fmt&quot;%&gt;
+&lt;fmt:setBundle basename=&quot;messages&quot; /&gt;
+&lt;%@ page session=&quot;true&quot;%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link href=&quot;&lt;c:url value=&quot;/resources/bootstrap.css&quot; /&gt;&#38;quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;title&gt;Expired&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;${message}&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;a href=&quot;&lt;c:url value=&quot;/user/registration&quot; /&gt;&#38;quot;&gt;
+        &lt;spring:message code=&quot;label.form.loginSignUp&quot;&gt;&lt;/spring:message&gt;
+    &lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">If the token and user exist, the controller then proceeds to set the UserenabledVerificationToken</fo:block>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">4. Adding Account Activation Checking to the Login Process</fo:block>
+<fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:inline font-size="10pt">l</fo:inline><fo:inline font-size="10pt">adUserByUsername</fo:inline><fo:inline font-size="10pt"> method:</fo:inline></fo:block>
+<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Make sure that the user is enabled before letting him log in.</fo:block></fo:list-item-body></fo:list-item>
+ check.</fo:list-block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Example 4.1. shows the simple isEnabled()</fo:block>
+<fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:inline font-size="10pt">Example 4.1. &#38;#8211; </fo:inline><fo:inline font-size="10pt">Checking the VerificationToken</fo:inline><fo:inline font-size="10pt"> in MyUserDetailsService</fo:inline><fo:inline font-size="10pt"> with the  flag set to false. This will trigger a </fo:inline></fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">private UserRepository userRepository;
+@Autowired
+private IUserService service;
+@Autowired
+private MessageSource messages;
+
+@Autowired
+public MyUserDetailsService(UserRepository repository) {
+    this.userRepository = repository;
+}
+
+public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    boolean enabled = true;
+    boolean accountNonExpired = true;
+    boolean credentialsNonExpired = true;
+    boolean accountNonLocked = true;
+    try {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+                    true, true, true, getAuthorities(new Integer(1)));
+        }
+        if (!user.isEnabled()) {
+            accountNonExpired = false;
+            service.deleteUser(user);
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+              accountNonExpired, true, true, getAuthorities(new Integer(1)));
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), 
+          user.getPassword().toLowerCase(), 
+          enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, 
+          getAuthorities(user.getRole().getRole()));
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Notice that if the user is not enabled, the account is deleted and the method returns an org.springframework.security.core.userdetails.UseraccountNonExpiredUser Account Has ExpiredSPRING_SECURITY_LAST_EXCEPTION</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Now, we need to modify our login.htmllogin.html:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">ogin.htmlExample 4.2. &#38;#8211; Adding Account Activation Error Checking t</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">&lt;c:if test=&quot;${param.error != null}&quot;&gt;
+    &lt;c:choose&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &#38;#039;User is disabled&#38;#039;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.disabled&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &#38;#039;User account has expired&#38;#039;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.expired&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:otherwise&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+	      &lt;spring:message code=&quot;message.badCredentials&quot;&gt;&lt;/spring:message&gt;
+           &lt;/div&gt;
+        &lt;/c:otherwise&gt;
+    &lt;/c:choose&gt;
+&lt;/c:if&gt;</fo:block></fo:inline>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">5. Adapting the Persistence Layer</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">We need to modify the API of the persistence layer by:</fo:block>
+<fo:list-block provisional-label-separation="3pt" provisional-distance-between-starts="14pt">
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Creating a VerificationTokenRepository UserVerificationToken</fo:block></fo:list-item-body></fo:list-item>
+<fo:list-item><fo:list-item-label><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">-</fo:block></fo:list-item-label>
+<fo:list-item-body start-indent="body-start()"><fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Adding methods to the IUserInterface</fo:block></fo:list-item-body></fo:list-item>
+</fo:list-block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Examples 5.1 &#38;#8211; 5.3. show the new interfaces and implementation:</fo:block>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">VerificationTokenRepositoryExample 5.1.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">public interface VerificationTokenRepository extends JpaRepository&lt;VerificationToken, Long&gt; {
+
+    VerificationToken findByToken(String token);
+
+    VerificationToken findByUser(User user);
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">IUserServiceExample 5.2. &#38;#8211; The  Interface</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">public interface IUserService {
+    
+    User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
+
+    User getUser(String verificationToken);
+
+    void saveRegisteredUser(User user);
+
+    void addVerificationToken(User user, String token);
+
+    VerificationToken getVerificationToken(String VerificationToken);
+
+    void deleteUser(User user);
+}</fo:block></fo:inline>
+<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">UserService Example 5.3.</fo:block>
+<fo:inline font-size="10pt" font-family="Courier"><fo:block font-family="Courier" white-space-collapse="false">@Service
+public class UserService implements IUserService {
+    @Autowired
+    private UserRepository repository;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
+    @Transactional
+    @Override
+    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+        if (emailExist(accountDto.getEmail())) {
+            throw new EmailExistsException(&quot;There is an account with that email adress: &quot; + 
+              accountDto.getEmail());
+        }
+        User user = new User();
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(accountDto.getPassword());
+        user.setEmail(accountDto.getEmail());
+        user.setRole(new Role(Integer.valueOf(1), user));
+        return repository.save(user);
+    }
+
+    private boolean emailExist(String email) {
+        User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepository.findByToken(verificationToken).getUser();
+        return user;
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Transactional
+    @Override
+    public void saveRegisteredUser(User user) {
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(User user) {
+        repository.delete(user);
+    }
+
+    @Transactional
+    @Override
+    public void addVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
+    }
+}</fo:block></fo:inline>
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" line-height="32pt" font-size="16pt">6. Conclusion</fo:block>
+<fo:block line-height="12pt" font-style="italic" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">We have expanded our Spring registration process to include an email based account activation procedure. The account activation logic requires sending a verification token to the user via email, so that he can send it back to the controller to verify his identity. A Spring event handler layer </fo:block>
+<fo:inline font-size="10pt"></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://twitter.com/share"></fo:basic-link></fo:block></fo:inline><fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><!-- /.entry -->
+	<fo:inline font-size="10pt"><fo:block></fo:block></fo:inline>
+		<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">Subscribe</fo:block>
+
+		<fo:block>
+			<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">Subscribe to our e-mail newsletter to receive updates.</fo:block></fo:block>
+
+			
+			
+						<fo:block>
+		   				   		<fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?feed=rss2"></fo:basic-link></fo:inline></fo:block><!-- col-left -->
+
+		
+        <fo:inline font-size="10pt"><fo:block></fo:block></fo:inline>
+	
+	<fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><!-- /.post -->
+	        <fo:inline font-size="10pt"><fo:block>
+	            </fo:block></fo:inline><fo:inline font-style="italic" font-size="10pt"><fo:block><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?p=653"> (published) Handling Static Resources With Spring</fo:basic-link></fo:block></fo:inline>
+	            <fo:inline font-style="italic" font-size="10pt"><fo:block><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/?p=1430">Convert HTML to PDF using Apache FOP </fo:basic-link></fo:block></fo:inline>
+	            <fo:inline font-size="10pt"><fo:block></fo:block></fo:inline>
+	        
+
+		<fo:inline font-size="10pt"><fo:block><fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="24pt" font-size="12pt">No comments yet.</fo:block></fo:block></fo:inline>								<fo:block>
+				<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" font-weight="bold" line-height="28pt" font-size="14pt">Leave a Reply <fo:basic-link color="#0000ff" text-decoration="underline" external-destination="/?p=1092#respond">Click here to cancel reply.</fo:basic-link></fo:block></fo:block>
+									<fo:block line-height="12pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"><fo:inline font-size="10pt">Logged in as </fo:inline><fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/wp-admin/profile.php">odeskAuthor8</fo:basic-link></fo:inline><fo:inline font-size="10pt">. </fo:inline><fo:inline font-size="10pt"><fo:basic-link color="#0000ff" text-decoration="underline" external-destination="http://inprogress.baeldung.com/wp-login.php?action=logout">Log out?</fo:basic-link></fo:inline></fo:block>																			<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always"></fo:block>												<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">
+							
+							
+
+						</fo:block><!-- #respond --><!-- /#main --><!-- /#main-sidebar-container --><!-- /#content -->
+	
+	<fo:block>
+			<fo:block line-height="12pt" font-size="10pt" space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always">� 2014 Technical Articles. All Rights Reserved. </fo:block></fo:block>		
+
+		<fo:inline font-size="10pt"><fo:block>
+					</fo:block></fo:inline><!-- /#inner-wrapper --><!-- /#wrapper -->
+
+<fo:inline font-size="10pt"><fo:block></fo:block></fo:inline><!--/.fix-->
+
+
+
+<fo:block space-before.optimum="1.5pt" space-after.optimum="1.5pt" keep-together="always" id="LastPage" line-height="1pt" font-size="1pt"></fo:block></fo:block></fo:flow>
+</fo:page-sequence></fo:root>

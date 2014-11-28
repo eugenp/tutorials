@@ -26,20 +26,20 @@ import org.w3c.dom.Document;
 import org.w3c.tidy.Tidy;
 
 public class ApacheFOPConvertHTMLTest {
-    private String inputFile = "src/test/resources/hello.html";
+    private String inputFile = "src/test/resources/input.html";
     private String style = "src/test/resources/xhtml2fo.xsl";
     private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
-    private String output = "src/test/resources/hello.pdf";
-    private String output1 = "src/test/resources/hello1.pdf";
-    private String output2 = "src/test/resources/hello2.pdf";
-    private String foFile = "src/test/resources/hello.fo";
-    private String xmlFile = "src/test/resources/hello.xml";
+    private String output_jtidy = "src/test/resources/output_jtidy.pdf";
+    private String output_html2fo = "src/test/resources/output_html2fo.pdf";
+    private String output_herold = "src/test/resources/output_herold.pdf";
+    private String foFile = "src/test/resources/input.fo";
+    private String xmlFile = "src/test/resources/input.xml";
 
     @Test
     public void whenTransformHTMLToPDFUsingJTidy_thenCorrect() throws Exception {
         final Document xhtml = fromHTMLToXHTML();
         final Document fo = fromXHTMLToFO(xhtml);
-        fromFODocumentToPDF(fo, output);
+        fromFODocumentToPDF(fo, output_jtidy);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ApacheFOPConvertHTMLTest {
     public void whenTransformFromHeroldToPDF_thenCorrect() throws Exception {
         fromHTMLTOXMLUsingHerold();
         final Document fo = fromXMLFileToFO();
-        fromFODocumentToPDF(fo, output2);
+        fromFODocumentToPDF(fo, output_herold);
     }
 
     private Document fromHTMLToXHTML() throws FileNotFoundException {
@@ -92,7 +92,7 @@ public class ApacheFOPConvertHTMLTest {
 
     private void fromFOFileToPDF() throws Exception {
         final FopFactory fopFactory = FopFactory.newInstance();
-        final OutputStream outStream = new BufferedOutputStream(new FileOutputStream(new File(output1)));
+        final OutputStream outStream = new BufferedOutputStream(new FileOutputStream(new File(output_html2fo)));
         final Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outStream);
 
         final TransformerFactory factory = TransformerFactory.newInstance();
