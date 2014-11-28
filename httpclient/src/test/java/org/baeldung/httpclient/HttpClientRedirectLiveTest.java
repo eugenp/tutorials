@@ -12,15 +12,11 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpHead;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.client.params.HttpClientParams;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.DefaultRedirectStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpParams;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -56,15 +52,10 @@ public class HttpClientRedirectLiveTest {
     // tests
 
     @Test
-    public final void givenRedirectsAreDisabledViaDeprecatedApi_whenConsumingUrlWhichRedirects_thenNotRedirected() throws ClientProtocolException, IOException {
-        instance = new DefaultHttpClient();
-
-        final HttpParams params = new BasicHttpParams();
-        params.setParameter(ClientPNames.HANDLE_REDIRECTS, false);
-        HttpClientParams.setRedirecting(params, false);
+    public final void givenRedirectsAreDisabledViaNewApi_whenConsumingUrlWhichRedirects_thenNotRedirected() throws ClientProtocolException, IOException {
+        instance = HttpClients.custom().disableRedirectHandling().build();
 
         final HttpGet httpGet = new HttpGet("http://t.co/I5YYd9tddw");
-        httpGet.setParams(params);
         response = instance.execute(httpGet);
 
         assertThat(response.getStatusLine().getStatusCode(), equalTo(301));
@@ -87,9 +78,8 @@ public class HttpClientRedirectLiveTest {
     }
 
     @Test
-    public final void givenRedirectingPOSTViaPre4_2Api_whenConsumingUrlWhichRedirectsWithPOST_thenRedirected() throws ClientProtocolException, IOException {
-        final DefaultHttpClient client = new DefaultHttpClient();
-        client.setRedirectStrategy(new DefaultRedirectStrategy() {
+    public final void givenRedirectingPOSTViaPost4_2Api_whenConsumingUrlWhichRedirectsWithPOST_thenRedirected() throws ClientProtocolException, IOException {
+        final CloseableHttpClient client = HttpClients.custom().setRedirectStrategy(new DefaultRedirectStrategy() {
             /** Redirectable methods. */
             private final String[] REDIRECT_METHODS = new String[] { HttpGet.METHOD_NAME, HttpPost.METHOD_NAME, HttpHead.METHOD_NAME };
 
@@ -102,7 +92,7 @@ public class HttpClientRedirectLiveTest {
                 }
                 return false;
             }
-        });
+        }).build();
 
         response = client.execute(new HttpPost("http://t.co/I5YYd9tddw"));
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
@@ -110,8 +100,7 @@ public class HttpClientRedirectLiveTest {
 
     @Test
     public final void givenRedirectingPOSTVia4_2Api_whenConsumingUrlWhichRedirectsWithPOST_thenRedirected() throws ClientProtocolException, IOException {
-        final DefaultHttpClient client = new DefaultHttpClient();
-        client.setRedirectStrategy(new LaxRedirectStrategy());
+        final CloseableHttpClient client = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
 
         response = client.execute(new HttpPost("http://t.co/I5YYd9tddw"));
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));

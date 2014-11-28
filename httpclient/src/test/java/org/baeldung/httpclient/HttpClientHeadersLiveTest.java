@@ -13,12 +13,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.params.CoreProtocolPNames;
-import org.apache.http.params.HttpProtocolParams;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,10 +55,8 @@ public class HttpClientHeadersLiveTest {
     // tests - headers - deprecated
 
     @Test
-    public final void givenDeprecatedApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().build();
-        client.getParams().setParameter(CoreProtocolPNames.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-        HttpProtocolParams.setUserAgent(client.getParams(), "Mozilla/5.0 Firefox/26.0");
+    public final void givenNewApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
+        client = HttpClients.custom().setUserAgent("Mozilla/5.0 Firefox/26.0").build();
 
         final HttpGet request = new HttpGet(SAMPLE_URL);
         response = client.execute(request);
@@ -86,7 +81,7 @@ public class HttpClientHeadersLiveTest {
     // tests - headers - content type
 
     @Test
-    public final void givenUsingDeprecatedApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
+    public final void givenUsingNewApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
         client = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
@@ -94,8 +89,8 @@ public class HttpClientHeadersLiveTest {
     }
 
     @Test
-    public final void givenRequestBuildWithBuilderWithDeprecatedApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
-        final DefaultHttpClient client2 = new DefaultHttpClient();
+    public final void givenRequestBuildWithBuilderWithNewApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
+        final CloseableHttpClient client2 = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         response = client2.execute(request);
