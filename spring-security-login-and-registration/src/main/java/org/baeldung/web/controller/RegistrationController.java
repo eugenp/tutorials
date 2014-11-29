@@ -63,10 +63,6 @@ public class RegistrationController {
         }
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
-        if (user == null) {
-            model.addAttribute("message", messages.getMessage("auth.message.invalidUser", null, request.getLocale()));
-            return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
-        }
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
             user.setTokenExpired(true);
         }
