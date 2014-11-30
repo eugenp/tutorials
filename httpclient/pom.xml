@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.baeldung</groupId>
 	<artifactId>httpclient</artifactId>
@@ -36,11 +35,11 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>${httpcore.version}</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.httpcomponents</groupId> -->
+		<!-- <artifactId>httpcore</artifactId> -->
+		<!-- <version>${httpcore.version}</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -61,9 +60,9 @@
 		</dependency>
 
 		<dependency>
-		  <groupId>org.apache.httpcomponents</groupId>
-		  <artifactId>httpasyncclient</artifactId>
-		  <version>4.1-beta1</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpasyncclient</artifactId>
+			<version>4.1-beta1</version> <!-- 4.0.2 --> <!-- 4.1-beta1 -->
 		</dependency>
 
 		<!-- logging -->
@@ -179,7 +178,7 @@
 		<mockito.version>1.10.8</mockito.version>
 
 		<httpcore.version>4.3.3</httpcore.version>
-		<httpclient.version>4.3.6</httpclient.version>
+		<httpclient.version>4.4-beta1</httpclient.version> <!-- 4.3.6 --> <!-- 4.4-beta1 -->
 
 		<rest-assured.version>2.4.0</rest-assured.version>
 

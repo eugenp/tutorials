@@ -3,7 +3,9 @@ package org.baeldung.httpclient;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
@@ -44,14 +46,17 @@ public class HttpAsyncClientTest {
     private static final String COOKIE_DOMAIN = ".yuilibrary.com"; // ".github.com";
     private static final String COOKIE_NAME = "example"; // "JSESSIONID";
 
+    // tests
 
     @Test
-    public void whenUseHttpAsyncClient_thenCorrect() throws Exception {
+    public void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
         final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
-        client.start();
+        // client.start();
         final HttpGet request = new HttpGet(HOST);
+
         final Future<HttpResponse> future = client.execute(request, null);
         final HttpResponse response = future.get();
+
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
         client.close();
     }
@@ -114,7 +119,6 @@ public class HttpAsyncClientTest {
         client.close();
     }
 
-
     @Test
     public void whenUseCookiesWithHttpAsyncClient_thenCorrect() throws Exception {
         final BasicCookieStore cookieStore = new BasicCookieStore();
@@ -138,8 +142,8 @@ public class HttpAsyncClientTest {
     @Test
     public void whenUseAuthenticationWithHttpAsyncClient_thenCorrect() throws Exception {
         final CredentialsProvider provider = new BasicCredentialsProvider();
-        final UsernamePasswordCredentials credentials = new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS);
-        provider.setCredentials(AuthScope.ANY, credentials);
+        final UsernamePasswordCredentials creds = new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS);
+        provider.setCredentials(AuthScope.ANY, creds);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setDefaultCredentialsProvider(provider).build();
 
         final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
@@ -175,4 +179,3 @@ public class HttpAsyncClientTest {
 
     }
 }
-
