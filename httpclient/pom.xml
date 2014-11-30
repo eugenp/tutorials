@@ -60,6 +60,12 @@
 			<version>1.9</version>
 		</dependency>
 
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpasyncclient</artifactId>
+		  <version>4.1-beta1</version>
+		</dependency>
+
 		<!-- logging -->
 
 		<dependency>
