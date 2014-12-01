@@ -64,7 +64,8 @@ public class RegistrationController {
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            user.setTokenExpired(true);
+            model.addAttribute("message", messages.getMessage("auth.message.expired", null, request.getLocale()));
+            return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
         }
         user.setEnabled(true);
         service.saveRegisteredUser(user);
