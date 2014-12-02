@@ -1,49 +1,43 @@
 package org.baeldung.persistence.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "password")
     private String password;
 
-    @Column(name = "enabled")
     private boolean enabled;
-    
-    @Column(name = "token_expired")
+
     private boolean tokenExpired;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Role role;
-    
+
     public User() {
         super();
         this.enabled = false;
         this.tokenExpired = false;
     }
+
+    //
+
     public Long getId() {
         return id;
     }
@@ -99,7 +93,7 @@ public class User {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-    
+
     public boolean isTokenExpired() {
         return tokenExpired;
     }
@@ -108,6 +102,7 @@ public class User {
         this.tokenExpired = expired;
     }
 
+    //
 
     @Override
     public int hashCode() {
@@ -137,4 +132,5 @@ public class User {
         builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
         return builder.toString();
     }
+
 }

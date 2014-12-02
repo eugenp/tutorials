@@ -6,15 +6,16 @@ import org.baeldung.validation.service.EmailExistsException;
 
 public interface IUserService {
 
-    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
+    User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
 
-    public User getUser(String verificationToken);
+    User getUser(String verificationToken);
 
-    public void saveRegisteredUser(User user);
+    void saveRegisteredUser(User user);
 
-    public void addVerificationToken(User user, String token);
+    void deleteUser(User user);
 
-    public VerificationToken getVerificationToken(String VerificationToken);
+    void createVerificationTokenForUser(User user, String token);
 
-    public void deleteUser(User user);
+    VerificationToken getVerificationToken(String VerificationToken);
+
 }

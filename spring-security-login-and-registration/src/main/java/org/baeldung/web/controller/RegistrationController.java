@@ -1,7 +1,10 @@
 package org.baeldung.web.controller;
 
 import java.util.Calendar;
+import java.util.Locale;
+
 import javax.validation.Valid;
+
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
 import org.baeldung.persistence.service.UserDto;
@@ -56,35 +59,40 @@ public class RegistrationController {
 
     @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)
     public String confirmRegistration(WebRequest request, Model model, @RequestParam("token") String token) {
+        Locale locale = request.getLocale();
+        
         VerificationToken verificationToken = service.getVerificationToken(token);
         if (verificationToken == null) {
-            model.addAttribute("message", messages.getMessage("auth.message.invalidToken", null, request.getLocale()));
-            return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
+            String message = messages.getMessage("auth.message.invalidToken", null, locale);
+            model.addAttribute("message", message);
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
         }
+        
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            model.addAttribute("message", messages.getMessage("auth.message.expired", null, request.getLocale()));
-            return "redirect:/badUser.html?lang=" + request.getLocale().getLanguage();
+            model.addAttribute("message", messages.getMessage("auth.message.expired", null, locale));
+            return "redirect:/badUser.html?lang=" + locale.getLanguage();
         }
+        
         user.setEnabled(true);
         service.saveRegisteredUser(user);
-        return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
+        return "redirect:/login.html?lang=" + locale.getLanguage();
     }
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
     public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDto accountDto, BindingResult result, WebRequest request, Errors errors) {
         LOGGER.debug("Registering user account with information: {}", accountDto);
-        User registered = new User();
-        String appUrl = request.getContextPath();
         if (result.hasErrors()) {
             return new ModelAndView("registration", "user", accountDto);
         }
-        registered = createUserAccount(accountDto);
+
+        User registered = createUserAccount(accountDto);
         if (registered == null) {
             result.rejectValue("email", "message.regError");
         }
         try {
+            String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (Exception me) {
             return new ModelAndView("emailError", "user", accountDto);

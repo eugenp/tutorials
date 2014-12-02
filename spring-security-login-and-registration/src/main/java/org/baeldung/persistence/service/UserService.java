@@ -67,8 +67,9 @@ public class UserService implements IUserService {
 
     @Transactional
     @Override
-    public void addVerificationToken(User user, String token) {
+    public void createVerificationTokenForUser(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
+    
 }
