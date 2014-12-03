@@ -47,12 +47,8 @@ public class MyUserDetailsService implements UserDetailsService {
             if (user == null) {
                 return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
             }
-            if (!user.isEnabled()) {
-                enabled = false;
-                return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
-            }
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
-
+            
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), user.isEnabled(), accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
