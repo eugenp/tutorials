@@ -329,6 +329,15 @@
   </xsl:message>
 </xsl:template>
 
+<xsl:template match="screen">
+  <fo:block font-size="9pt" font-family="monospace"
+ white-space-treatment="preserve"
+ linefeed-treatment="preserve"
+ margin-top="0.5em">
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
 <!-- ==================================================================== -->
 
 </xsl:stylesheet>

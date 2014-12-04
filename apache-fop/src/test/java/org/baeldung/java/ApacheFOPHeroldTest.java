@@ -28,7 +28,7 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 
 public class ApacheFOPHeroldTest {
-    private String[] inputUrls = { "http://inprogress.baeldung.com/?p=1430","https://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html" };
+    private String[] inputUrls = { "http://inprogress.baeldung.com/?p=1430","http://www.baeldung.com/spring-events" };
     private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
     private String output_prefix = "src/test/resources/";
     private String xmlFile = "src/test/resources/input.xml";
