@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class UserService implements IUserService {
     @Autowired
     private UserRepository repository;
@@ -19,7 +20,8 @@ public class UserService implements IUserService {
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
-    @Transactional
+    // API
+
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
         if (emailExist(accountDto.getEmail())) {
@@ -34,14 +36,6 @@ public class UserService implements IUserService {
         return repository.save(user);
     }
 
-    private boolean emailExist(String email) {
-        User user = repository.findByEmail(email);
-        if (user != null) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public User getUser(String verificationToken) {
         User user = tokenRepository.findByToken(verificationToken).getUser();
@@ -53,22 +47,30 @@ public class UserService implements IUserService {
         return tokenRepository.findByToken(VerificationToken);
     }
 
-    @Transactional
     @Override
     public void saveRegisteredUser(User user) {
         repository.save(user);
     }
 
-    @Transactional
     @Override
     public void deleteUser(User user) {
         repository.delete(user);
     }
 
-    @Transactional
     @Override
-    public void addVerificationToken(User user, String token) {
+    public void createVerificationTokenForUser(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
+
+    //
+
+    private boolean emailExist(String email) {
+        User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
 }
