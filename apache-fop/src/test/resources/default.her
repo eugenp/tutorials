@@ -1,0 +1,13 @@
+transformation html2docbook;
+
+section HTML {
+	encoding = "UTF-8";
+	exclude = ["//*[@id='inner-wrapper']/*[position()<7]" , "//*[@class='post-meta']" , "//*[@class='entry-title']","//*[@id='respond']" ,"//*[@id='comments']","//*[@class='post-entries']","//*[@class='social']/../../h3[last()]" ,"//*[@class='social']/.." ];
+	section-numbering-pattern = "(((\d\.)+)?\d?\.?\p{Z}*).*";
+}
+
+section DocBook {
+   add-index = false;
+   decompose-tables = false;
+   encoding = "UTF-8";
+}
