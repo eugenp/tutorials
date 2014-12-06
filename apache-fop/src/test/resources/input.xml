@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <article version="5.0" xml:lang="en-US" xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink">
   <info>
-    <title>Registration – Activate a New Account by Email | Technical Articles</title>
+    <title>Spring Security for a REST API</title>
     <abstract>
-      <para>1. Overview This article continues our ongoing Registration with Spring Security series by finishing the missing piece of the registration process - verifying</para>
+      <para>How to Secure a REST API with Spring Security 3 - the XML Configuration, the web.xml, the HTTP status codes for authentication, etc.</para>
     </abstract>
   </info>
   <!--
 Mobile viewport scale
 -->
-  <anchor xml:id="open-sans-css"/>
-  <anchor xml:id="dashicons-css"/>
-  <anchor xml:id="admin-bar-css"/>
+  <anchor xml:id="ois_bootstrap-css"/>
+  <anchor xml:id="ois_reset-css"/>
+  <anchor xml:id="ois_design_8-css"/>
+  <anchor xml:id="ois_design_19-css"/>
+  <anchor xml:id="ois_design_22-css"/>
+  <anchor xml:id="contact-form-7-css"/>
   <anchor xml:id="digg-digg-css"/>
+  <anchor xml:id="foobox-min-css"/>
+  <anchor xml:id="scrollup-css-css"/>
+  <anchor xml:id="onp-sociallocker-css"/>
+  <anchor xml:id="toc-screen-css"/>
+  <anchor xml:id="js_composer_custom_css-css"/>
   <anchor xml:id="theme-stylesheet-css"/>
   <anchor xml:id="core3.0-css"/>
   <anchor xml:id="core-Default3.0-css"/>
   <anchor xml:id="theme-Default3.0-css"/>
   <!--
 [if lt IE 9]>
-<link href="http://inprogress.baeldung.com/wp-content/themes/canvas/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<link href="http://www.baeldung.com/wp-content/themes/canvas/css/non-responsive.css" rel="stylesheet" type="text/css" />
 <style type="text/css">.col-full, #wrapper { width: 1150px; max-width: 1150px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 1150px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
 <![endif]
 -->
@@ -27,7 +35,19 @@ Mobile viewport scale
 Adjust the website width
 -->
   <!--
+<meta name="NextGEN" version="2.0.66.33" />
+-->
+  <!--
+WP SyntaxHighlighter Ver.1.7.3 CSS for code Begin
+-->
+  <!--
+WP SyntaxHighlighter Ver.1.7.3 CSS for code End
+-->
+  <!--
 Custom CSS Styling
+-->
+  <!--
+Custom Favicon
 -->
   <!--
 Woo Shortcodes CSS
@@ -39,486 +59,950 @@ Custom Stylesheet
 Theme version
 -->
   <!--
-All in one Favicon 4.3
+[if IE 8]><link rel="stylesheet" type="text/css" href="http://www.baeldung.com/wp-content/plugins/js_composer/assets/css/vc-ie8.css" media="screen"><![endif]
 -->
   <!--
-All in One SEO Pack 2.2.3.1 by Michael Torbert of Semper Fi Web Design[68,148]
+All in One SEO Pack 2.2.3.1 by Michael Torbert of Semper Fi Web Design[240,288]
 -->
   <!--
 /all in one seo pack
 -->
+  <!--
+Facebook SDK
+        
+            Created by the Social Locker plugin (c) OnePress Ltd
+            http://sociallocker.org
+-->
+  <!--
+/
+-->
+  <!--
+Clean Archives Reloaded v3.2.0 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/
+-->
   <anchor xml:id="wrapper"/>
   <anchor xml:id="inner-wrapper"/>
-  <section>
-    <title><link linkend="navigation">Navigation</link></title>
-    <anchor xml:id="logo"/>
-    <para><link xl:href="http://inprogress.baeldung.com/">Technical Articles</link></para>
-    <para><link xl:href="http://inprogress.baeldung.com">Home</link></para>
-    <itemizedlist>
-      <listitem>
-        <para><link xl:href="http://inprogress.baeldung.com/">Home</link></para>
-      </listitem>
-    </itemizedlist>
-    <!--
-/#nav
--->
-    <itemizedlist>
-      <listitem>
-        <para><link xl:href="http://inprogress.baeldung.com/?feed=rss2"/></para>
-      </listitem>
-    </itemizedlist>
-    <!--
+  <!--
 /#side-nav
 -->
-    <!--
+  <!--
 /.menus
 -->
-    <para><link linkend="top">Return to Content</link></para>
-    <!--
+  <para><link linkend="top">Return to Content</link></para>
+  <!--
 #content Starts
 -->
-    <anchor xml:id="content"/>
-    <anchor xml:id="main-sidebar-container"/>
-    <!--
+  <anchor xml:id="content"/>
+  <anchor xml:id="main-sidebar-container"/>
+  <!--
 #main Starts
 -->
-    <para>Registration – Activate a New Account by Email</para>
-    <para>By</para>
-    <para><link xl:href="http://inprogress.baeldung.com/?author=10">Elena</link></para>
-    <para>on</para>
-    <abbrev>October 23, 2014</abbrev>
-    <para>in</para>
-    <para><link xl:href="http://inprogress.baeldung.com/?cat=9">Spring Security</link></para>
-    <para><link xl:href=""/></para>
+  <anchor xml:id="toc_container"/>
+  <para>Contents</para>
+  <itemizedlist>
+    <listitem>
+      <para><link linkend="Table_of_Contents">Table of Contents</link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="dbdoclet.1_Overview">1. Overview</link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="dbdoclet.2_Spring_Security_in_the_webxml">2. Spring Security in the web.xml</link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="dbdoclet.3_The_Security_Configuration">3. The Security Configuration</link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="dbdoclet.4_Maven_and_other_trouble">4. Maven and other trouble</link></para>
+    </listitem>
+    <listitem>
+      <para><link linkend="dbdoclet.5_Conclusion">5. Conclusion</link></para>
+    </listitem>
+  </itemizedlist>
+  <para>If you&apos;re new here, <link xl:href="https://my.leadpages.net/leadbox/146382273f72a2%3A13a71ac76b46dc/5735865741475840/">you may want to get my &quot;REST APIs with Spring&quot; eBook</link>. Thanks for visiting!</para>
+  <para><link xl:href=""/></para>
+  <!--
+Start Shortcoder content
+-->
+  <section>
+    <title><emphasis role="bold">I usually post about Security on Google+ - you can follow me there:  </emphasis></title>
+    <!--
+End Shortcoder content
+-->
     <section>
-      <title><emphasis role="bold">1. Overview</emphasis></title>
-      <para>This article continues our ongoing <emphasis role="bold">Registration with Spring Security series</emphasis> by finishing the missing piece of the registration process – <emphasis role="bold">verifying the email to confirm the user registration</emphasis>.</para>
-      <para>The registration confirmation mechanism forces the user to respond to a “<emphasis><emphasis role="bold">Confirm Registration</emphasis></emphasis>” email sent after successful registration to verify his email address and activate his account. The user does this by clicking a unique account activation link sent to him as part of the email message.</para>
-      <para>Following this logic, a newly registered user will not be able to log in until email/registration verification is completed.</para>
-    </section>
-    <section>
-      <title><emphasis role="bold">2. A Verification Token</emphasis></title>
-      <para>We will make use of a simple verification token as the key artifact through which a user is verified.</para>
-      <section>
-        <title><emphasis role="bold">2.1. Adding a VerificationToken Entity to Our Model</emphasis></title>
-        <para>The <emphasis>VerificationToken</emphasis> entity must meet the following criteria:</para>
-        <orderedlist><listitem>
-            <para> There will be one <emphasis>VerificationToken </emphasis>associated to a <emphasis>User</emphasis>. So, we need a one-to-one unidirectional association between the<emphasis> VerificationToken</emphasis> and the <emphasis>User</emphasis>.</para>
-          </listitem>
-<listitem>
-            <para> It will be created after the user registration data is persisted.</para>
-          </listitem>
-<listitem>
-            <para> It will expire in 24 hours following initial registration.</para>
-          </listitem>
-<listitem>
-            <para> Its value should be unique and randomly generated.</para>
-          </listitem>
-</orderedlist>
-        <para>Requirements 2 and 3 are part of the registration logic. The other two are implemented in a simple <emphasis>VerificationToken</emphasis> entity like the one in Example 2.1.:</para>
-        <para><emphasis role="bold">Example 2.1.</emphasis></para>
-        <screen>@Entity
-@Table
-public class VerificationToken {
-    private static final int EXPIRATION = 60 * 24;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @Column(name = &quot;token&quot;)
-    private String token;
-  
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = &quot;user_id&quot;)
-    private User user;
-    
-    @Column(name = &quot;expiry_date&quot;)
-    private Date expiryDate;
-
-    public VerificationToken() {
-        super();
-    }
-    public VerificationToken(String token, User user) {
-        super();
-        this.token = token;
-        this.user = user;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-        this.verified = false;
-    } 
-    private Date calculateExpiryDate(int expiryTimeInMinutes) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime().getTime()));
-        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
-        return new Date(cal.getTime().getTime());
-    }
-    
-    // standard getters and setters
-}</screen>
-      </section>
-      <section>
-        <title><emphasis role="bold">2.2. Add an Enabled Flag to the User Entity</emphasis></title>
-        <para>We will set the value of this flag depending on the result of the registration confirmation use case. Lets jus add the following field to our <emphasis>User</emphasis> entity for now:</para>
-        <screen>@Column(name = &quot;enabled&quot;)
-private boolean enabled;</screen>
-      </section>
-    </section>
-    <section>
-      <title><emphasis role="bold">3. The Account Registration Phase</emphasis></title>
-      <para>Lets add two additional pieces of business logic to the user registration use case:</para>
-      <orderedlist><listitem>
-          <para> Generating a <emphasis>VerificationToken</emphasis> for the user and persisting it.</para>
-        </listitem>
-<listitem>
-          <para> Sending the account confirmation email message which includes a confirmation link with the <emphasis>VerificationToken’s </emphasis>value<emphasis/>as a parameter.</para>
-        </listitem>
-</orderedlist>
-      <section>
-        <title><emphasis role="bold">3.1. Using Spring Event Handling to Create the Token and Send the Verification Email</emphasis></title>
-        <para>These two additional pieces of logic should not be performed by the controller directly because they are “collateral” back-end tasks. The controller will publish a Spring <emphasis>ApplicationEvent</emphasis> to trigger the execution of these tasks. This is as simple as injecting an<emphasis> ApplicationEventPublishe</emphasis>r in the controller, and then using it to publish the registration completion. Example 3.1. shows this simple logic:</para>
-        <para><emphasis role="bold">Example 3.1.</emphasis></para>
-        <screen>@Autowired
-ApplicationEventPublisher
-@RequestMapping(value = &quot;/user/registration&quot;, method = RequestMethod.POST)
-public ModelAndView registerUserAccount(@ModelAttribute(&quot;user&quot;) @Valid UserDto accountDto,
-      BindingResult result, WebRequest request, Errors errors) {
-    User registered = new User();
-    String appUrl = request.getContextPath();
-    if (result.hasErrors()) {
-       return new ModelAndView(&quot;registration&quot;, &quot;user&quot;, accountDto);
-    }
-    registered = createUserAccount(accountDto);
-    if (registered == null) {
-        result.rejectValue(&quot;email&quot;, &quot;message.regError&quot;);
-    }
-    eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, 
-      request.getLocale(), appUrl));
-    return new ModelAndView(&quot;successRegister&quot;, &quot;user&quot;, accountDto);
-}</screen>
-      </section>
-      <section>
-        <title><emphasis role="bold">3.2. Spring Event Handler Implementation</emphasis></title>
-        <para>The controller is using an <emphasis>ApplicationEventPublisher</emphasis> to start the <emphasis>RegistrationListener</emphasis> that will handle the verification token creation and confirmation email sending. So it needs to have access to the implementation of the following interfaces:</para>
-        <orderedlist><listitem>
-            <para> An <emphasis role="bold">AplicationEvent</emphasis> representing the completion of the user registration.</para>
-          </listitem>
-<listitem>
-            <para> An <emphasis role="bold">ApplicationListener</emphasis> bean which will listen to the published event and proceed to do all the work.</para>
-          </listitem>
-</orderedlist>
-        <para>The beans we will create are the <emphasis>OnRegistrationCompleteEvent</emphasis> , and the <emphasis>RegistrationListener</emphasis> shown Examples 3.2.1 – 3.2.2.</para>
-        <para><emphasis role="bold">Example 3.2.1.</emphasis> – The <emphasis>OnRegistrationCompleteEvent </emphasis></para>
-        <screen>@SuppressWarnings(&quot;serial&quot;)
-public class OnRegistrationCompleteEvent extends ApplicationEvent {
-    private final String appUrl;
-    private final Locale locale;
-    private final User user;
-
-    public OnRegistrationCompleteEvent(User user, Locale locale, String appUrl) {
-        super(user);
-        this.user = user;
-        this.locale = locale;
-        this.appUrl = appUrl;
-    }
-    
-    // standard getters and setters
-}</screen>
-        <para><emphasis role="bold">Example 3.2.2. </emphasis>- <emphasis role="bold">The RegistrationListener</emphasis> Responds to the <emphasis>OnRegistrationCompleteEvent </emphasis></para>
-        <screen>@Component
-public class RegistrationListener implements ApplicationListener&lt;OnRegistrationCompleteEvent&gt; {
-    @Autowired
-    private IUserService service;
-
-    @Autowired
-    private MessageSource messages;
-
-    @Autowired
-    private JavaMailSender mailSender;
-
-    @Override
-    public void onApplicationEvent(OnRegistrationCompleteEvent event) {
-        this.confirmRegistration(event);
-    }
-
-    private void confirmRegistration(OnRegistrationCompleteEvent event) {
-        User user = event.getUser();
-        String token = UUID.randomUUID().toString();
-        service.addVerificationToken(user, token);
-        String recipientAddress = user.getEmail();
-        String subject = &quot;Registration Confirmation&quot;;
-        String confirmationUrl = event.getAppUrl() + &quot;/regitrationConfirm.html?token=&quot; + token;
-        String message = messages.getMessage(&quot;message.regSucc&quot;, null, event.getLocale());
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(recipientAddress);
-        email.setSubject(subject);
-        email.setText(message + &quot; \r\n&quot; + &quot;http://localhost:8080&quot; + confirmationUrl);
-        mailSender.send(email);
-    }
-}</screen>
-        <para>Here, the <emphasis>confirmRegistration</emphasis> method will receive the <emphasis>OnRegistrationCompleteEvent</emphasis>, extract all the necessary <emphasis>User</emphasis> information from it, create the verification token, persist it, and then send it as a parameter in the “Confirm Registration” link sent to the user.</para>
-      </section>
-      <section>
-        <title><emphasis role="bold">3.3. Processing the Verification Token Parameter</emphasis></title>
-        <para>When the user receives the “Confirm Registration” email, he will click on the attached link and fire a GET request. The controller will extract the value of the token parameter in the GET request and will use it to verify the user. Lets see this logic in Example 3.3.1.</para>
-        <para><emphasis role="bold">Example 3.3.1. – RegistrationController Processing the Registration Confirmation Link</emphasis></para>
-        <screen>private IUserService service;
-
-@Autowired
-public RegistrationController(IUserService service){
-    this.service = service
-}
-@RequestMapping(value = &quot;/regitrationConfirm&quot;, method = RequestMethod.GET)
-public String confirmRegistration(WebRequest request, Model model, 
-      @RequestParam(&quot;token&quot;) String token) {
-    VerificationToken verificationToken = service.getVerificationToken(token);
-    if (verificationToken == null) {
-        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidToken&quot;, 
-          null, request.getLocale()));
-        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
-    }
-    User user = verificationToken.getUser();
-    Calendar cal = Calendar.getInstance();
-    if (user == null) {
-        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidUser&quot;,
-          null, request.getLocale()));
-        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
-    }
-    if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) &lt;= 0) {
-        user.setEnabled(false);
-    } else {
-        user.setEnabled(true);
-    }
-    service.saveRegisteredUser(user);
-    return &quot;redirect:/login.html?lang=&quot; + request.getLocale().getLanguage();
-}</screen>
-        <para>Notice that if there is no user associated with the <emphasis>VerificationToken</emphasis> or if the <emphasis>VerificationToken</emphasis> does not exist, the controller will return a<emphasis> badUser.html</emphasis> page with the corresponding error message (See Example 3.3.2.).</para>
-        <para><emphasis role="bold">Example 3.3.2. – The badUser.html</emphasis></para>
-        <screen>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
-&lt;%@ taglib prefix=&quot;sec&quot; uri=&quot;http://www.springframework.org/security/tags&quot;%&gt;
-&lt;%@taglib uri=&quot;http://www.springframework.org/tags&quot; prefix=&quot;spring&quot;%&gt;
-&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; prefix=&quot;fmt&quot;%&gt;
-&lt;fmt:setBundle basename=&quot;messages&quot; /&gt;
-&lt;%@ page session=&quot;true&quot;%&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;link href=&quot;&lt;c:url value=&quot;/resources/bootstrap.css&quot; /&gt;&quot; rel=&quot;stylesheet&quot;&gt;
-    &lt;title&gt;Expired&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;${message}&lt;/h1&gt;
-    &lt;br&gt;
-    &lt;a href=&quot;&lt;c:url value=&quot;/user/registration&quot; /&gt;&quot;&gt;
-        &lt;spring:message code=&quot;label.form.loginSignUp&quot;&gt;&lt;/spring:message&gt;
-    &lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;</screen>
-        <para>If the token and user exist, the controller then proceeds to set the <emphasis>User</emphasis>‘s <emphasis>enabled</emphasis> field after checking if the <emphasis>VerificationToken</emphasis> has expired.</para>
-      </section>
-    </section>
-    <section>
-      <title><emphasis role="bold">4. Adding Account Activation Checking to the Login Process</emphasis></title>
-      <para>We need to add the following verification logic to My<emphasis>UserDetailsService’s </emphasis><emphasis role="bold">lo</emphasis><emphasis><emphasis role="bold">adUserByUsername</emphasis></emphasis> method:</para>
+      <title><anchor xml:id="Table_of_Contents"/><emphasis role="bold">Table of Contents</emphasis></title>
       <itemizedlist>
         <listitem>
-          <para> Make sure that the user is enabled before letting him log in.</para>
+          <para><link linkend="overview"><emphasis role="bold">1. </emphasis>Overview</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="springsec"><emphasis role="bold">2. </emphasis>Introducing Spring Security in the <literal>web.xml</literal></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="config"><emphasis role="bold">3. </emphasis>The Security Configuration</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_1"><emphasis role="bold">    3.1. </emphasis>The basics</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_2"><emphasis role="bold">    3.2. </emphasis>The Entry Point</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_3"><emphasis role="bold">    3.3. </emphasis>The Login</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_4"><emphasis role="bold">    3.4. </emphasis>Authentication should return <emphasis role="bold">200</emphasis> instead of <emphasis role="bold">301</emphasis></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_5"><emphasis role="bold">    3.5. </emphasis>Failed Authentication should return <emphasis role="bold">401</emphasis> instead of <emphasis role="bold">302</emphasis></link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_6"><emphasis role="bold">    3.6. </emphasis>The Authentication Manager and Provider</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="ch_3_7"><emphasis role="bold">    3.7. </emphasis>Finally – Authentication against the running REST Service</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="maven"><emphasis role="bold">4. </emphasis>Maven and other trouble</link></para>
+        </listitem>
+        <listitem>
+          <para><link linkend="conclusion"><emphasis role="bold">5. </emphasis>Conclusion</link></para>
         </listitem>
       </itemizedlist>
-      <para>Example 4.1. shows the simple <emphasis>isEnabled()</emphasis> check.</para>
-      <para><emphasis role="bold">Example 4.1. – </emphasis>Checking the VerificationToken<emphasis role="bold"> in MyUserDetailsService</emphasis></para>
-      <screen>private UserRepository userRepository;
-@Autowired
-private IUserService service;
-@Autowired
-private MessageSource messages;
-
-@Autowired
-public MyUserDetailsService(UserRepository repository) {
-    this.userRepository = repository;
-}
-
-public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    boolean enabled = true;
-    boolean accountNonExpired = true;
-    boolean credentialsNonExpired = true;
-    boolean accountNonLocked = true;
-    try {
-        User user = userRepository.findByEmail(email);
-        if (user == null) {
-            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
-                    true, true, true, getAuthorities(new Integer(1)));
-        }
-        if (!user.isEnabled()) {
-            accountNonExpired = false;
-            service.deleteUser(user);
-            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
-              accountNonExpired, true, true, getAuthorities(new Integer(1)));
-        }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), 
-          user.getPassword().toLowerCase(), 
-          enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, 
-          getAuthorities(user.getRole().getRole()));
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-}</screen>
-      <para>Notice that if the user is not enabled, the account is deleted and the method returns an <emphasis>org.springframework.security.core.userdetails.User</emphasis> with the <emphasis>accountNonExpired</emphasis> flag set to false. This will trigger a <emphasis role="bold">SPRING_SECURITY_LAST_EXCEPTION</emphasis> in the login process. This exception’s String value is: ‘<emphasis>User Account Has Expired</emphasis>‘.</para>
-      <para>Now, we need to modify our<emphasis> login.html</emphasis> page to show this and any other exception messages resulting from en email verification error. The error checking code we added to <emphasis>login.html</emphasis> is shown in Example 4.2.<emphasis>:</emphasis></para>
-      <para><emphasis role="bold">Example 4.2. – Adding Account Activation Error Checking t</emphasis>o l<emphasis>ogin.html</emphasis></para>
-      <screen>&lt;c:if test=&quot;${param.error != null}&quot;&gt;
-    &lt;c:choose&gt;
-        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &apos;User is disabled&apos;}&quot;&gt;
-            &lt;div class=&quot;alert alert-error&quot;&gt;
-                &lt;spring:message code=&quot;auth.message.disabled&quot;&gt;&lt;/spring:message&gt;
-            &lt;/div&gt;
-        &lt;/c:when&gt;
-        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &apos;User account has expired&apos;}&quot;&gt;
-            &lt;div class=&quot;alert alert-error&quot;&gt;
-                &lt;spring:message code=&quot;auth.message.expired&quot;&gt;&lt;/spring:message&gt;
-            &lt;/div&gt;
-        &lt;/c:when&gt;
-        &lt;c:otherwise&gt;
-            &lt;div class=&quot;alert alert-error&quot;&gt;
-	      &lt;spring:message code=&quot;message.badCredentials&quot;&gt;&lt;/spring:message&gt;
-           &lt;/div&gt;
-        &lt;/c:otherwise&gt;
-    &lt;/c:choose&gt;
-&lt;/c:if&gt;</screen>
     </section>
-    <section>
-      <title>5. Adapting the Persistence Layer</title>
-      <para>We need to modify the API of the persistence layer by:</para>
-      <orderedlist><listitem>
-          <para> Creating a <emphasis>VerificationTokenRepository</emphasis>. For<emphasis> User</emphasis> and <emphasis>VerificationToken</emphasis> access.</para>
-        </listitem>
-<listitem>
-          <para> Adding methods to the <emphasis>IUserInterface</emphasis> and its implementation for new CRUD operations needed.</para>
-        </listitem>
-</orderedlist>
-      <para>Examples 5.1 – 5.3. show the new interfaces and implementation:</para>
-      <para><emphasis role="bold">Example 5.1.</emphasis> – The <emphasis>VerificationTokenRepository</emphasis></para>
-      <screen>public interface VerificationTokenRepository extends JpaRepository&lt;VerificationToken, Long&gt; {
-
-    VerificationToken findByToken(String token);
-
-    VerificationToken findByUser(User user);
-}</screen>
-      <para><emphasis role="bold">Example 5.2.</emphasis> – The <emphasis>IUserService</emphasis> Interface</para>
-      <screen>public interface IUserService {
-    
-    User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
-
-    User getUser(String verificationToken);
-
-    void saveRegisteredUser(User user);
-
-    void addVerificationToken(User user, String token);
-
-    VerificationToken getVerificationToken(String VerificationToken);
-
-    void deleteUser(User user);
-}</screen>
-      <para><emphasis role="bold">Example 5.3.</emphasis> The <emphasis>UserService </emphasis></para>
-      <screen>@Service
-public class UserService implements IUserService {
-    @Autowired
-    private UserRepository repository;
-
-    @Autowired
-    private VerificationTokenRepository tokenRepository;
-
-    @Transactional
-    @Override
-    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
-        if (emailExist(accountDto.getEmail())) {
-            throw new EmailExistsException(&quot;There is an account with that email adress: &quot; + 
-              accountDto.getEmail());
-        }
-        User user = new User();
-        user.setFirstName(accountDto.getFirstName());
-        user.setLastName(accountDto.getLastName());
-        user.setPassword(accountDto.getPassword());
-        user.setEmail(accountDto.getEmail());
-        user.setRole(new Role(Integer.valueOf(1), user));
-        return repository.save(user);
-    }
-
-    private boolean emailExist(String email) {
-        User user = repository.findByEmail(email);
-        if (user != null) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public User getUser(String verificationToken) {
-        User user = tokenRepository.findByToken(verificationToken).getUser();
-        return user;
-    }
-
-    @Override
-    public VerificationToken getVerificationToken(String VerificationToken) {
-        return tokenRepository.findByToken(VerificationToken);
-    }
-
-    @Transactional
-    @Override
-    public void saveRegisteredUser(User user) {
-        repository.save(user);
-    }
-
-    @Transactional
-    @Override
-    public void deleteUser(User user) {
-        repository.delete(user);
-    }
-
-    @Transactional
-    @Override
-    public void addVerificationToken(User user, String token) {
-        VerificationToken myToken = new VerificationToken(token, user);
-        tokenRepository.save(myToken);
-    }
-}</screen>
+    <section xml:id="overview.1">
+      <title><anchor xml:id="dbdoclet.1_Overview"/><emphasis role="bold">1. Overview</emphasis></title>
+      <para>This tutorial shows how to <emphasis role="bold">Secure a REST Service using Spring and Spring Security 3.1</emphasis> with Java based configuration. The article will focus on how to set up the Security Configuration specifically for the REST API using a Login and Cookie approach.</para>
     </section>
-    <section>
-      <title>6. Conclusion</title>
-      <para>We have expanded our Spring registration process to include an email based account activation procedure. The account activation logic requires sending a verification token to the user via email, so that he can send it back to the controller to verify his identity. A <emphasis role="italic">Spring event handler layer </emphasis>takes care of the back-end work needed to send the confirmation email after the controller persists a registered.</para>
-      <para><link xl:href=""/></para>
-      <anchor xml:id="dd_ajax_float"/>
-      <para><link xl:href="http://twitter.com/share"/></para>
+    <section xml:id="springsec.1">
+      <title><anchor xml:id="dbdoclet.2_Spring_Security_in_the_webxml"/><emphasis role="bold">2. Spring Security in the web.xml</emphasis></title>
+      <para>The architecture of Spring Security is based entirely on Servlet Filters and, as such, comes before Spring MVC in regards to the processing of HTTP requests. Keeping this in mind, to begin with, a <emphasis role="bold">filter</emphasis> needs to be declared in the <emphasis>web.xml</emphasis> of the application:</para>
+      <screen>&lt;filter&gt;
+   &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+   &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+   &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+   &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;</screen>
+      <para>The filter must necessarily be named <emphasis>‘springSecurityFilterChain’</emphasis>  to match the default bean created by Spring Security in the container.</para>
+      <para>Note that the defined filter is not the actual class implementing the security logic but a <emphasis>DelegatingFilterProxy</emphasis> with the purpose of delegating the Filter’s methods to an internal bean. This is done so that the target bean can still benefit from the Spring context lifecycle and flexibility.</para>
+      <para>The URL pattern used to configure the Filter is <emphasis role="bold">/*</emphasis> even though the entire web service is mapped to <emphasis role="bold">/api/*</emphasis> so that the security configuration has the option to secure other possible mappings as well, if required.</para>
+    </section>
+    <section xml:id="config.1">
+      <title><anchor xml:id="dbdoclet.3_The_Security_Configuration"/><emphasis role="bold">3. The Security Configuration</emphasis></title>
+      <screen>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans:beans
+   xmlns=&quot;http://www.springframework.org/schema/security&quot;
+   xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+   xmlns:beans=&quot;http://www.springframework.org/schema/beans&quot;
+   xmlns:sec=&quot;http://www.springframework.org/schema/security&quot;
+   xsi:schemaLocation=&quot;
+      http://www.springframework.org/schema/security 
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd&quot;&gt;
+
+   &lt;http entry-point-ref=&quot;restAuthenticationEntryPoint&quot;&gt;
+      &lt;intercept-url pattern=&quot;/api/admin/**&quot; access=&quot;ROLE_ADMIN&quot;/&gt;
+
+      &lt;form-login 
+         authentication-success-handler-ref=&quot;mySuccessHandler&quot; 
+         authentication-failure-handler-ref=&quot;myFailureHandler&quot;
+      /&gt;
+
+      &lt;logout /&gt;
+   &lt;/http&gt;
+
+   &lt;beans:bean id=&quot;mySuccessHandler&quot;
+      class=&quot;org.rest.security.MySavedRequestAwareAuthenticationSuccessHandler&quot;/&gt;
+   &lt;beans:bean id=&quot;myFailureHandler&quot; 
+      class=&quot;org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler&quot;/&gt;
+
+   &lt;authentication-manager alias=&quot;authenticationManager&quot;&gt;
+      &lt;authentication-provider&gt;
+         &lt;user-service&gt;
+            &lt;user name=&quot;temporary&quot; password=&quot;temporary&quot; authorities=&quot;ROLE_ADMIN&quot;/&gt;
+            &lt;user name=&quot;user&quot; password=&quot;user&quot; authorities=&quot;ROLE_USER&quot;/&gt;
+         &lt;/user-service&gt;
+      &lt;/authentication-provider&gt;
+   &lt;/authentication-manager&gt;
+
+&lt;/beans:beans&gt;</screen>
+       <para> Most of the configuration is done using the <emphasis role="bold">security namespace</emphasis> – for this to be enabled, the schema locations must be defined and pointed to the correct 3.1 or 3.2 XSD versions. The namespace is designed so that it expresses the common uses of Spring Security while still providing hooks raw beans to accommodate more advanced scenarios. <link xl:href="http://products.baeldung.com/rest-api-with-spring"><emphasis role="bold">&gt;&gt; Signup for my upcoming Video Course on Building a REST API with Spring 4</emphasis></link></para>
+      <section xml:id="ch_3_1.1">
+        <title><emphasis role="bold">3.1. The &lt;http&gt; element</emphasis></title>
+        <para>The <emphasis>&lt;http&gt;</emphasis> element is the main container element for HTTP security configuration. In the current implementation, it only secured a single mapping: <emphasis>/api/admin/**</emphasis>. Note that the mapping is <emphasis role="bold">relative to the root context</emphasis> of the web application, not to the <emphasis>rest</emphasis> Servlet; this is because the entire security configuration lives in the root Spring context and not in the child context of the Servlet.</para>
+      </section>
+      <section xml:id="ch_3_2.1">
+        <title><emphasis role="bold">3.2. The Entry Point</emphasis></title>
+        <para>In a standard web application, the authentication process may be automatically triggered when the client tries to access a secured resource without being authenticated – this is usually done by redirecting to a login page so that the user can enter credentials. However, for a <emphasis role="bold">REST Web Service </emphasis>this behavior doesn’t make much sense – Authentication should only be done by a request to the correct URI and all other requests should simply fail with a <emphasis role="bold">401 UNAUTHORIZED</emphasis> status code if the user is not authenticated.</para>
+        <para>Spring Security handles this automatic triggering of the authentication process with the concept of an <emphasis role="bold">Entry Point</emphasis> – this is a required part of the configuration, and can be injected via the <emphasis>entry-point-ref</emphasis> attribute of the <emphasis>&lt;http&gt;</emphasis> element. Keeping in mind that this functionality doesn’t make sense in the context of the REST Service, the new custom entry point is defined to simply return 401 whenever it is triggered:</para>
+        <screen>@Component( &quot;restAuthenticationEntryPoint&quot; )
+public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint{
+
+   @Override
+   public void commence( HttpServletRequest request, HttpServletResponse response, 
+    AuthenticationException authException ) throws IOException{
+      response.sendError( HttpServletResponse.SC_UNAUTHORIZED, &quot;Unauthorized&quot; );
+   }
+}</screen>
+        <para>A quick sidenote here is that the 401 is sent without the <emphasis>WWW-Authenticate</emphasis> header, as required by the HTTP Spec – we can of course set the value manually if we need to.</para>
+      </section>
+      <section xml:id="ch_3_3.1">
+        <title><emphasis role="bold">3.3. The Login Form for REST</emphasis></title>
+        <para>There are multiple ways to do Authentication for a REST API – one of the default Spring Security provides is <emphasis role="bold">Form Login</emphasis> – which uses an authentication processing filter – <emphasis>org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter</emphasis>.</para>
+        <para>The <emphasis>&lt;form-login&gt;</emphasis> element will create this filter and will also allow us to set our custom authentication success handler on it. This can also be done manually by using the <emphasis>&lt;custom-filter&gt;</emphasis> element to register a filter at the position <emphasis>FORM_LOGIN_FILTER</emphasis> – but the namespace support is flexible enough.</para>
+        <para>Note that for a standard web application, the <emphasis role="bold">auto-config </emphasis>attribute of the <emphasis>&lt;http&gt; element </emphasis>is shorthand syntax for some useful security configuration. While this may be appropriate for some very simple configurations, it doesn’t fit and should not be used for a REST API.</para>
+      </section>
+      <section xml:id="ch_3_4.1">
+        <title><emphasis role="bold">3.4. Authentication should return 200 instead of 301</emphasis></title>
+        <para>By default, form login will answer a successful authentication request with a <emphasis role="bold">301 MOVED PERMANENTLY</emphasis> status code; this makes sense in the context of an actual login form which needs to redirect after login. For a RESTful web service however, the desired response for a successful authentication should be <emphasis role="bold">200 OK</emphasis>.</para>
+        <para>This is done by injecting a <emphasis role="bold">custom authentication success handler</emphasis> in the form login filter, to replace the default one. The new handler implements the exact same login as the default <emphasis>org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler</emphasis> with one notable difference – the redirect logic is removed:</para>
+        <screen>public class MySavedRequestAwareAuthenticationSuccessHandler 
+      extends SimpleUrlAuthenticationSuccessHandler {
+
+    private RequestCache requestCache = new HttpSessionRequestCache();
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, 
+      Authentication authentication) throws ServletException, IOException {
+        SavedRequest savedRequest = requestCache.getRequest(request, response);
+
+        if (savedRequest == null) {
+            clearAuthenticationAttributes(request);
+            return;
+        }
+        String targetUrlParam = getTargetUrlParameter();
+        if (isAlwaysUseDefaultTargetUrl() || 
+          (targetUrlParam != null &amp;&amp; 
+          StringUtils.hasText(request.getParameter(targetUrlParam)))) {
+            requestCache.removeRequest(request, response);
+            clearAuthenticationAttributes(request);
+            return;
+        }
+
+        clearAuthenticationAttributes(request);
+    }
+
+    public void setRequestCache(RequestCache requestCache) {
+        this.requestCache = requestCache;
+    }
+}</screen>
+      </section>
+      <section xml:id="ch_3_5.1">
+        <title><emphasis role="bold">3.5. Failed Authentication should return 401 instead of 302</emphasis></title>
+        <para>Similarly – we configured the authentication failure handler – same way we did with the success handler.</para>
+        <para>Luckily – in this case, we don’t need to actually define a new class for this handler – the standard implementation – <emphasis>SimpleUrlAuthenticationFailureHandler</emphasis> – does just fine.</para>
+        <para>The only difference is that – now that we’re defining this explicitly in our XML config – it’s <emphasis role="bold">not going to get a default defaultFailureUrl from Spring</emphasis> – and so it won’t redirect.</para>
+      </section>
+      <section xml:id="ch_3_6.1">
+        <title><emphasis role="bold">3.6. The Authentication Manager and Provider</emphasis></title>
+        <para>The authentication process uses an <emphasis role="bold">in-memory provider</emphasis> to perform authentication – this is meant to simplify the configuration as a production implementation of these artifacts is outside the scope of this post.</para>
+      </section>
+      <section xml:id="ch_3_7.1">
+        <title><emphasis role="bold">3.7 Finally – Authentication against the running REST Service</emphasis></title>
+        <para>Now let’s see how we can authenticate against the REST API – the URL for login is <emphasis>/j_spring_security_check</emphasis> – and a simple <emphasis>curl</emphasis> command performing login would be:</para>
+        <screen>curl -i -X POST -d j_username=user -d j_password=userPass
+http://localhost:8080/spring-security-rest/j_spring_security_check</screen>
+        <para>This request will return the Cookie which will then be used by any subsequent request against the REST Service.</para>
+        <para>We can use <emphasis>curl</emphasis> to authentication and <emphasis role="bold">store the cookie it receives in a file</emphasis>:</para>
+        <screen>curl -i -X POST -d j_username=user -d j_password=userPass -c /opt/cookies.txt 
+http://localhost:8080/spring-security-rest/j_spring_security_check</screen>
+        <para>Then <emphasis role="bold">we can use the cookie from the file</emphasis> to do further authenticated requests:</para>
+        <screen>curl -i --header &quot;Accept:application/json&quot; -X GET -b /opt/cookies.txt 
+http://localhost:8080/spring-security-rest/api/foos</screen>
+        <para>This authenticated request will correctly <emphasis role="bold">result in a 200 OK</emphasis>:</para>
+        <screen>HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Wed, 24 Jul 2013 20:31:13 GMT
+
+[{&quot;id&quot;:0,&quot;name&quot;:&quot;JbidXc&quot;}]</screen>
+      </section>
+    </section>
+    <section xml:id="maven.1">
+      <title><anchor xml:id="dbdoclet.4_Maven_and_other_trouble"/><emphasis role="bold">4. Maven and other trouble</emphasis></title>
+      <para>The Spring <link xl:href="http://www.baeldung.com/spring-with-maven#mvc">core dependencies</link> necessary for a web application and for the REST Service have been discussed in detail. For security, we’ll need to add: <emphasis>spring-security-web</emphasis> and <emphasis>spring-security-config</emphasis> – all of these have also been covered in the <link xl:href="http://www.baeldung.com/spring-security-with-maven">Maven for Spring Security</link> tutorial.</para>
+      <para>It’s worth paying close attention to the way Maven will resolve the older Spring dependencies – the resolution strategy will start <link xl:href="http://www.baeldung.com/spring-security-with-maven#maven_problem">causing problems</link> once the security artifacts are added to the pom. To address this problem, some of the core dependencies will need to be overridden in order to keep them at the right version.</para>
+    </section>
+    <section xml:id="conclusion.1">
+      <title><anchor xml:id="dbdoclet.5_Conclusion"/><emphasis role="bold">5. Conclusion</emphasis></title>
+      <para>This post covered the basic security configuration and implementation for a RESTful Service using <emphasis role="bold">Spring Security 3.1</emphasis>, discussing the <emphasis>web.xml</emphasis>, the security configuration, the HTTP status codes for the authentication process and the Maven resolution of the security artifacts.</para>
+      <para><link xl:href="https://my.leadpages.net/leadbox/14476c373f72a2%3A13a71ac76b46dc/5664530495438848/">The implementation of this Spring Security REST Tutorial can be downloaded as a working sample project.</link>This is an Eclipse based project, so it should be easy to import and run as it is.</para>
       <!--
-/.entry
+Start Shortcoder content
 -->
       <section>
-        <title>Subscribe</title>
-        <para>Subscribe to our e-mail newsletter to receive updates.</para>
-        <para><link xl:href="http://inprogress.baeldung.com/?feed=rss2"/></para>
+        <title><emphasis role="bold">I usually post about Security on Google+ - you can follow me there:  </emphasis></title>
         <!--
-col-left
+End Shortcoder content
 -->
+        <para><link xl:href=""/></para>
+        <anchor xml:id="dd_ajax_float"/>
+        <para><link xl:href="http://twitter.com/share"/></para>
+        <!--
+OptinSkin
+-->
+        <anchor xml:id="ois_12"/>
+        <!--
+End OptinSkin
+-->
+        <!--
+/.entry
+-->
+        <para><emphasis role="italic"/><link xl:href="http://www.baeldung.com/tag/rest/">REST</link>, <link xl:href="http://www.baeldung.com/tag/security/">security</link>, <link xl:href="http://www.baeldung.com/tag/spring/">Spring</link></para>
         <!--
 /.post
 -->
-        <para><link xl:href="http://inprogress.baeldung.com/?p=653"><emphasis role="italic"/> (published) Handling Static Resources With Spring</link></para>
-        <para><link xl:href="http://inprogress.baeldung.com/?p=1430">Convert HTML to PDF using Apache FOP <emphasis role="italic"/></link></para>
-        <anchor xml:id="comments"/>
-        <section>
-          <title>No comments yet.</title>
-          <anchor xml:id="respond"/>
-        </section>
-      </section>
-      <section xml:id="reply-title.1">
-        <title>Leave a Reply <link xl:href="/?p=1092#respond">Click here to cancel reply.</link></title>
-        <anchor xml:id="commentform"/>
-        <para>Logged in as <link xl:href="http://inprogress.baeldung.com/wp-admin/profile.php">odeskAuthor8</link>. <link xl:href="http://inprogress.baeldung.com/wp-login.php?action=logout">Log out?</link></para>
-        <para>Comment<anchor xml:id="comment"/></para>
-        <para><anchor xml:id="submit"/><anchor xml:id="comment_post_ID"/><anchor xml:id="comment_parent"/></para>
-        <!--
-#respond
+        <anchor xml:id="disqus_thread"/>
+        <anchor xml:id="dsq-content"/>
+        <itemizedlist>
+          <listitem xml:id="dsq-comment-37">
+            <para><anchor xml:id="dsq-comment-header-37"/><anchor xml:id="dsq-cite-37"/> http://www.toptreadmillsforhome.com/ <anchor xml:id="dsq-author-user-37"/>top 10 treadmills for home<anchor xml:id="dsq-comment-body-37"/><anchor xml:id="dsq-comment-message-37"/> Great information, thanks for the share!</para>
+          </listitem>
+          <!--
+#comment-##
 -->
+          <listitem xml:id="dsq-comment-80">
+            <para><anchor xml:id="dsq-comment-header-80"/><anchor xml:id="dsq-cite-80"/><anchor xml:id="dsq-author-user-80"/>Ben<anchor xml:id="dsq-comment-body-80"/><anchor xml:id="dsq-comment-message-80"/> The issue for me is having users inside my xml. How would you redirect the user auth to an external resource. Would you overwrite authenticationManager?</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-83">
+            <para><anchor xml:id="dsq-comment-header-83"/><anchor xml:id="dsq-cite-83"/><anchor xml:id="dsq-author-user-83"/>Eugen<anchor xml:id="dsq-comment-body-83"/><anchor xml:id="dsq-comment-message-83"/> As it is mentioned in the article, the in memory authentication provider is only used because using a real provider is outside the scope of this post. Thanks for the feedback.</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1489">
+            <para><anchor xml:id="dsq-comment-header-1489"/><anchor xml:id="dsq-cite-1489"/><anchor xml:id="dsq-author-user-1489"/>Sigmund Lundgren<anchor xml:id="dsq-comment-body-1489"/><anchor xml:id="dsq-comment-message-1489"/> Hmm successful auth still redirects for my, done in the spring base class. Had to comment this line in the successhandler:</para>
+            <para> //super.onAuthenticationSuccess(request, response, authentication);</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1558">
+                <para><anchor xml:id="dsq-comment-header-1558"/><anchor xml:id="dsq-cite-1558"/><anchor xml:id="dsq-author-user-1558"/>René Fleischhauer<anchor xml:id="dsq-comment-body-1558"/><anchor xml:id="dsq-comment-message-1558"/> Hi Sigmund, all,</para>
+                <para>I have the same problem…</para>
+                <para>super.onAuthenticationSuccess(request, response, authentication) calls SimpleUrlAuthenticationSuccessHandler#handle which contains the following line</para>
+                <para>redirectStrategy.sendRedirect(request, response, targetUrl);</para>
+                <para>Seems to be pretty non-sense to call the super method and therefore, I also removed it. Additionally I added a response.setStatus(200) for safety purposes…</para>
+                <para>Best,</para>
+                <para> René</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1523">
+            <para><anchor xml:id="dsq-comment-header-1523"/><anchor xml:id="dsq-cite-1523"/><anchor xml:id="dsq-author-user-1523"/>fadi<anchor xml:id="dsq-comment-body-1523"/><anchor xml:id="dsq-comment-message-1523"/> Hi, </para>
+            <para>Am having a problem in understanding one thing, how the actual login will be done. I added the configuration and when trying to access a rest method/url I get 401 error, but am unable to figure out how and where to login. can help me pleas?</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1639">
+                <para><anchor xml:id="dsq-comment-header-1639"/><anchor xml:id="dsq-cite-1639"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1639"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1639"/><anchor xml:id="dsq-comment-message-1639"/> The article is now updated with the exact process of how to perform the login and how to use the cookie in further requests.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-455">
+            <para><anchor xml:id="dsq-comment-header-455"/><anchor xml:id="dsq-cite-455"/><anchor xml:id="dsq-author-user-455"/>Naama<anchor xml:id="dsq-comment-body-455"/><anchor xml:id="dsq-comment-message-455"/> Great article!</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1554">
+            <para><anchor xml:id="dsq-comment-header-1554"/><anchor xml:id="dsq-cite-1554"/> http://profile.yahoo.com/DULVM64SMPX6Q74MRXYD4TFHPA <anchor xml:id="dsq-author-user-1554"/>Marc de Verdelhan<anchor xml:id="dsq-comment-body-1554"/><anchor xml:id="dsq-comment-message-1554"/> Your article was just what I needed. But I tested your solution and it always returned a “401 Unauthorized”.</para>
+            <para> Finally I used the following config:</para>
+            <para>Now it’s simpler and it works fine. Could you explain why?</para>
+            <para>Thank you.</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1638">
+                <para><anchor xml:id="dsq-comment-header-1638"/><anchor xml:id="dsq-cite-1638"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1638"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1638"/><anchor xml:id="dsq-comment-message-1638"/> Hey – thanks for the feedback – I updated the article and explained how exactly to authentication and then how to use the resulting cookie in further requests against the REST API – hope it helps.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1560">
+            <para><anchor xml:id="dsq-comment-header-1560"/><anchor xml:id="dsq-cite-1560"/><anchor xml:id="dsq-author-user-1560"/>René Fleischhauer<anchor xml:id="dsq-comment-body-1560"/><anchor xml:id="dsq-comment-message-1560"/> Hi all,</para>
+            <para>thanks for the tutorial. Great stuff! I have a minor question:</para>
+            <para>I added within the element in order to customize the login url. After starting the application again the following exception occurs:</para>
+            <para>org.springframework.beans.factory.parsing.BeanDefinitionParsingException: Configuration problem: Filter beans ” and ” have the same ‘order’ value. When using custom filters, please make sure the positions do not conflict with default filters. Alternatively you can disable the default filters by removing the corresponding child elements from and avoiding the use of .</para>
+            <para>The problem is clear, however I’m not sure how I can avoid the use of j_spring_security_check. I’d highly appreciate any hint.</para>
+            <para>Best,</para>
+            <para> René</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1637">
+                <para><anchor xml:id="dsq-comment-header-1637"/><anchor xml:id="dsq-cite-1637"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1637"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1637"/><anchor xml:id="dsq-comment-message-1637"/> Hi – yes, using the element is a good alternative as it does keep the configuration simple – please check out the updated configuration section and the new github project for a working implementation. Thanks.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1571">
+            <para><anchor xml:id="dsq-comment-header-1571"/><anchor xml:id="dsq-cite-1571"/><anchor xml:id="dsq-author-user-1571"/>glz<anchor xml:id="dsq-comment-body-1571"/><anchor xml:id="dsq-comment-message-1571"/> Great article, however every time I get 401 Unauthorized, regardless sending or not valid username and password (temporary/temporary) in username or j_username and password or j_password. Tried to figure it out looking at your git project, but there seems to be a lot of other stuff, and the only authentication used in this project is Digest authentication. Did I miss something important here?</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1636">
+                <para><anchor xml:id="dsq-comment-header-1636"/><anchor xml:id="dsq-cite-1636"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1636"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1636"/><anchor xml:id="dsq-comment-message-1636"/> Hi – I updated the article to better explain how to perform login and how to interact with the service; I also added a specific github project to only cover this article – should be simpler to understand. Thanks.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1573">
+            <para><anchor xml:id="dsq-comment-header-1573"/><anchor xml:id="dsq-cite-1573"/><anchor xml:id="dsq-author-user-1573"/>bhecht<anchor xml:id="dsq-comment-body-1573"/><anchor xml:id="dsq-comment-message-1573"/> This was very helpful.</para>
+            <para>I as well got an 401 Unauthorized.</para>
+            <para> After dubugging i found out the problem is at UsernamePasswordAuthenticationFilter.requiresAuthentication() which returns true only if the URI ends with /j_spring_security_check.</para>
+            <para> I had to override this class and return true in the requiresAuthentication(), so it will work.</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1635">
+                <para><anchor xml:id="dsq-comment-header-1635"/><anchor xml:id="dsq-cite-1635"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1635"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1635"/><anchor xml:id="dsq-comment-message-1635"/> Hi – the article is now updated to better explain how to interact with the REST Service – in short, yes, the first request is to /j_spring_security_check – this will return the Cookie which will be used in any further requests against the service.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1665">
+            <para><anchor xml:id="dsq-comment-header-1665"/><anchor xml:id="dsq-cite-1665"/><anchor xml:id="dsq-author-user-1665"/>Stephane<anchor xml:id="dsq-comment-body-1665"/><anchor xml:id="dsq-comment-message-1665"/> Hi,</para>
+            <para>I already have in place a working form based authentication for non-REST requests with a custom provider against a legacy database table of existing administrator credentials.</para>
+            <para>Now, I’m trying to add an authentication, for the REST requests this time.</para>
+            <para>I wish to use the same authentication provider if possible.</para>
+            <para>My existing setup is:</para>
+            <para>I added another http element:</para>
+            <para>before the previous one but it still gives me a: A universal match pattern (‘/**’) is defined before other patterns in the filter chain…</para>
+            <para>I wonder what to do at this point.</para>
+            <para>You’d have some tips on how to have two authentication setups, one for browser web page authentication and one for REST based ?</para>
+            <para>Thanks for the cool article !</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1666">
+                <para><anchor xml:id="dsq-comment-header-1666"/><anchor xml:id="dsq-cite-1666"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1666"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1666"/><anchor xml:id="dsq-comment-message-1666"/> I suggest using two different patterns for the 2 http elements – map the rest one on /rest or something similar and the standard one to /mvc or similar. This should keep things nice and separate.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1667">
+            <para><anchor xml:id="dsq-comment-header-1667"/><anchor xml:id="dsq-cite-1667"/><anchor xml:id="dsq-author-user-1667"/>Stephane<anchor xml:id="dsq-comment-body-1667"/><anchor xml:id="dsq-comment-message-1667"/> Hello,</para>
+            <para> I was trying to use a as you suggested. But it kept doing a redirect if no user credentials were given. This issue is explained and solved (thank you Rob Winch  at <link xl:href="http://forum.springsource.org/showthread.php?139586-Two-lt-http-gt-container-elements-with-one-for-the-browser-and-one-for-REST">http://forum.springsource.org/showthread.php?139586-Two-lt-http-gt-container-elements-with-one-for-the-browser-and-one-for-REST</link></para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1714">
+            <para><anchor xml:id="dsq-comment-header-1714"/><anchor xml:id="dsq-cite-1714"/><anchor xml:id="dsq-author-user-1714"/>Franklin Antony<anchor xml:id="dsq-comment-body-1714"/><anchor xml:id="dsq-comment-message-1714"/> “Authentication should return 200 instead of 301″ portion doesn’t work as expected. In “MySavedRequestAwareAuthenticationSuccessHandler” the super.onAuthenticationSuccess(request, response, authentication) actually triggers a redirectStrategy.sendRedirect(request, response, targetUrl) from the parent AbstractAuthenticationTargetUrlRequestHandler. Just commenting out works, but am not sure if that is expected. Any suggestions ?</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1715">
+                <para><anchor xml:id="dsq-comment-header-1715"/><anchor xml:id="dsq-cite-1715"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1715"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1715"/><anchor xml:id="dsq-comment-message-1715"/> Actually, the sending of the redirect should already be commented</para>
+                <para> out: <link xl:href="https://github.com/eugenp/tutorials/blob/master/spring-security-rest/src/main/java/org/baeldung/security/MySavedRequestAwareAuthenticationSuccessHandler.java">MySavedRequestAwareAuthenticationSuccessHandler</link>.</para>
+                <para> Please let me know if it still doesn’t work.</para>
+                <para> Thanks. Eugen.</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-1716">
+                    <para><anchor xml:id="dsq-comment-header-1716"/><anchor xml:id="dsq-cite-1716"/><anchor xml:id="dsq-author-user-1716"/>Franklin Antony<anchor xml:id="dsq-comment-body-1716"/><anchor xml:id="dsq-comment-message-1716"/> The sending of redirect is commented out as required but the problem lies in the parent class “AbstractAuthenticationTargetUrlRequestHandler” which “SimpleUrlAuthenticationSuccessHandler” extends from. When the “super.onAuthenticationSuccess(request, response, authentication) ” is called from “MySavedRequestAwareAuthenticationSuccessHandler” it triggers “redirectStrategy.sendRedirect(request, response, targetUrl);” in the “AbstractAuthenticationTargetUrlRequestHandler”.</para>
+                    <para>I have seen in this article “http://www.petrikainulainen.net/programming/spring-framework/integration-testing-of-spring-mvc-applications-security” that the author is not calling the “super.onAuthenticationSuccess(request, response, authentication) ” and is just calling “response.setStatus(HttpServletResponse.SC_OK);”</para>
+                    <para>Regards,</para>
+                    <para> Franklin</para>
+                    <itemizedlist>
+                      <listitem xml:id="dsq-comment-1717">
+                        <para><anchor xml:id="dsq-comment-header-1717"/><anchor xml:id="dsq-cite-1717"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1717"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1717"/><anchor xml:id="dsq-comment-message-1717"/> Nice spot on the redirect still possibly occurring in this example – I have updated the example by preserving the exact functionality from the parent classes and just removing the redirect.</para>
+                        <para> Thanks. Eugen.</para>
+                        <itemizedlist>
+                          <listitem xml:id="dsq-comment-1718">
+                            <para><anchor xml:id="dsq-comment-header-1718"/><anchor xml:id="dsq-cite-1718"/><anchor xml:id="dsq-author-user-1718"/>Franklin Antony<anchor xml:id="dsq-comment-body-1718"/><anchor xml:id="dsq-comment-message-1718"/> Cool. Looks fine now. Any idea why “clearAuthenticationAttributes(request)” is being reported as a compilation error “The method clearAuthenticationAttributes(HttpServletRequest) is undefined for the type” ? </para>
+                            <para>Its supposed to be a protected method in</para>
+                            <para><link xl:href="http://static.springsource.org/spring-security/site/docs/3.0.x/apidocs/org/springframework/security/web/authentication/SimpleUrlAuthenticationSuccessHandler.html#clearAuthenticationAttributes(javax.servlet.http.HttpServletRequest)">http://static.springsource.org/spring-security/site/docs/3.0.x/apidocs/org/springframework/security/web/authentication/SimpleUrlAuthenticationSuccessHandler.html#clearAuthenticationAttributes(javax.servlet.http.HttpServletRequest)</link></para>
+                            <para>I am using Spring Security 3.0.2 but somehow its not there in my parent class . Aaarg!!</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                          <listitem xml:id="dsq-comment-1719">
+                            <para><anchor xml:id="dsq-comment-header-1719"/><anchor xml:id="dsq-cite-1719"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1719"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1719"/><anchor xml:id="dsq-comment-message-1719"/> I’m compiling against 3.1.4, so the implementation has probably been opened up a bit.</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                          <listitem xml:id="dsq-comment-1720">
+                            <para><anchor xml:id="dsq-comment-header-1720"/><anchor xml:id="dsq-cite-1720"/><anchor xml:id="dsq-author-user-1720"/>Franklin Antony<anchor xml:id="dsq-comment-body-1720"/><anchor xml:id="dsq-comment-message-1720"/> Ok. Thanks. Should be fine.</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                        </itemizedlist>
+                        <!--
+.children
+-->
+                      </listitem>
+                      <!--
+#comment-##
+-->
+                    </itemizedlist>
+                    <!--
+.children
+-->
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1735">
+            <para><anchor xml:id="dsq-comment-header-1735"/><anchor xml:id="dsq-cite-1735"/><anchor xml:id="dsq-author-user-1735"/>kiran<anchor xml:id="dsq-comment-body-1735"/><anchor xml:id="dsq-comment-message-1735"/> This is very helpful.But when ever login fails with bad credentials it’s returing 302 .</para>
+            <para>And for logout too it’s returning 302.</para>
+            <para> Shouln’t that be changed ?</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1739">
+            <para><anchor xml:id="dsq-comment-header-1739"/><anchor xml:id="dsq-cite-1739"/><anchor xml:id="dsq-author-user-1739"/>Sebastian<anchor xml:id="dsq-comment-body-1739"/><anchor xml:id="dsq-comment-message-1739"/> I am using a combination of form-based login and basic authentication. So the REST endpoints can be used with the users session if he has one but falls back to basic auth if no session exists. So I like your approach with the “restAuthenticationEntryPoint”. The problem however is, that according to the HTTP documentation, a HTTP 401 response must include a WWW-Authenticate header, which you are not sending. On the other hand, this is good, because it means the browser will not display a basic authentication login dialog as it would if the WWW-Authenticate header was present. While my solution now works I am thinking if there is a better solution that allows me to use basic authentication fallback but does not violate the HTTP specification.</para>
+            <para>Update: I have now found a better solution. Instead of calling response.setError(…) I set the Header and Status code individually: </para>
+            <para> response.setHeader(“WWW-Authenticate”, “FormBased”);</para>
+            <para> response.setStatus( HttpServletResponse.SC_UNAUTHORIZED );</para>
+            <para>Setting WWW-Authenticate to “FormBased” still prevents the browser from showing the login screen.</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1873">
+                <para><anchor xml:id="dsq-comment-header-1873"/><anchor xml:id="dsq-cite-1873"/><anchor xml:id="dsq-author-user-1873"/>Abhishek Amte<anchor xml:id="dsq-comment-body-1873"/><anchor xml:id="dsq-comment-message-1873"/> Hello Sebastian,</para>
+                <para> How did you configure your basic authentication to use the credentials from the form-based?</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-1877">
+                    <para><anchor xml:id="dsq-comment-header-1877"/><anchor xml:id="dsq-cite-1877"/><anchor xml:id="dsq-author-user-1877"/>Sebastian<anchor xml:id="dsq-comment-body-1877"/><anchor xml:id="dsq-comment-message-1877"/> Hello Abhishek,</para>
+                    <para>I did not. Sending WWW-Authenticate to “FormBased” is only a means to prevent the browser from showing the basic authentication login dialog, so I can implement it in HTML. You could also set it to “Foobar” or “Custom”, it just has to be different than “Basic”.</para>
+                    <para>I now have the following in my spring security:</para>
+                    <para>authenticationFailureHandler is just an instance of SimpleUrlAuthenticationFailureHandler (without any properties set).</para>
+                    <para>This allows me to login in two ways:</para>
+                    <para>1. By HTTP Basic Auth, sending a HTTP header:</para>
+                    <para>Authorization: Basic </para>
+                    <para>2. With a POST to /session:</para>
+                    <para>method: ‘POST’,</para>
+                    <para> url: ‘../rest/session’,</para>
+                    <para> data: “j_username=” + username + “&amp;j_password=” + password,</para>
+                    <para> headers: {‘Content-Type&apos;: ‘application/x-www-form-urlencoded’ }</para>
+                    <itemizedlist>
+                      <listitem xml:id="dsq-comment-1880">
+                        <para><anchor xml:id="dsq-comment-header-1880"/><anchor xml:id="dsq-cite-1880"/><anchor xml:id="dsq-author-user-1880"/>Abhishek Amte<anchor xml:id="dsq-comment-body-1880"/><anchor xml:id="dsq-comment-message-1880"/> Thanks a lot Sebastian</para>
+                      </listitem>
+                      <!--
+#comment-##
+-->
+                    </itemizedlist>
+                    <!--
+.children
+-->
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+              <listitem xml:id="dsq-comment-1881">
+                <para><anchor xml:id="dsq-comment-header-1881"/><anchor xml:id="dsq-cite-1881"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1881"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1881"/><anchor xml:id="dsq-comment-message-1881"/> Yes, the WWW-Authenticate header is not included as the spec requires. This is because the current solution is a hybrid between a REST API secured with Basic/Digest authentication (for example) and a form-based authentication mechanism.</para>
+                <para> Now – setting your own custom value for WWW-Authenticate is defninitly an option but what may be better – and what I’ve been doing – is to separate the two responsibilities – the API and the UI.</para>
+                <para> What I mean is – the REST API is secured with Basic Auth (for this example – in practice I would suggest Digest) – and that’s it. No fallback and no complexity. Now – the UI is a form-based web application – again, no additional complexity. The bridget between them is a proxy for all of the requests from the UI to the API.</para>
+                <para> Hope that makes sense.</para>
+                <para> Cheers,</para>
+                <para> Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem>
+            <para> Pingback: <link xl:href="http://notesofguclu.wordpress.com/2013/09/30/spring-mvc-token-based-authentication-to-a-rest-service-part-2/">Spring MVC Token Based Authentication to a REST Service – Part 2 | notesofguclu</link>()</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1838">
+            <para><anchor xml:id="dsq-comment-header-1838"/><anchor xml:id="dsq-cite-1838"/><anchor xml:id="dsq-author-user-1838"/>Himalay<anchor xml:id="dsq-comment-body-1838"/><anchor xml:id="dsq-comment-message-1838"/> Whenever login fails with bad credentials it’s returing 302, shouldn’t it return 401?</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1845">
+                <para><anchor xml:id="dsq-comment-header-1845"/><anchor xml:id="dsq-cite-1845"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1845"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1845"/><anchor xml:id="dsq-comment-message-1845"/> You’re right – for correct semantics, it would have to return the 401 – I updated the article and the github project – thanks for the suggestion.</para>
+                <para> Cheers,</para>
+                <para> Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1934">
+            <para><anchor xml:id="dsq-comment-header-1934"/><anchor xml:id="dsq-cite-1934"/><anchor xml:id="dsq-author-user-1934"/>Alessandro Scuderetti<anchor xml:id="dsq-comment-body-1934"/><anchor xml:id="dsq-comment-message-1934"/> Very useful article. I’m also interesting in =&gt; How to use the “login rest” with restful @Controller that accept and response in json format?</para>
+            <para>This: <link xl:href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2002229">http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=2002229</link> according to you, is ti good?</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1936">
+                <para><anchor xml:id="dsq-comment-header-1936"/><anchor xml:id="dsq-cite-1936"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1936"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1936"/><anchor xml:id="dsq-comment-message-1936"/> Hey Alessandro – a few notes on that particular article:</para>
+                <para> – first, it doesn’t really handle authentication for a RESTful API – but instead for a more standard webapp; a REST API will have additional architectural constraints which will impact what you’ll be able to do with Spring Security</para>
+                <para> – next – Spring Security already has all the elements necessary for authentication in place – so adding a custom controller to replace these elements is not really necessary; what’s more – using the framework will help you deal with all of the corner cases and potential vulnerabilities that you will need to keep in mind when rolling your own controller – so, without a solid reason to do so, I would stay away from doing that</para>
+                <para> – and finally, both the framework as well as AJAX are powerful/flexible enough to do this without a custom auth controller; what I mean is – from AJAX – you can definitely handle the default (non-json) response of Spring Security if you need to; also, from Spring Security, you can hook into the authentication process and only override the success handler if you really need to return json to the client</para>
+                <para> Hope that helps.</para>
+                <para> Cheers,</para>
+                <para> Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1979">
+            <para><anchor xml:id="dsq-comment-header-1979"/><anchor xml:id="dsq-cite-1979"/><anchor xml:id="dsq-author-user-1979"/>Richard<anchor xml:id="dsq-comment-body-1979"/><anchor xml:id="dsq-comment-message-1979"/> Have you tried to implement this in spring security 3.2 with the java config? I’ve put most of it together, but the form does not render on accessing /login as a GET request. I wonder if anyone has had the same experience? (Or have I missed the point and you can’t get to the login form with this configuration?)</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-1981">
+                <para><anchor xml:id="dsq-comment-header-1981"/><anchor xml:id="dsq-cite-1981"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1981"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1981"/><anchor xml:id="dsq-comment-message-1981"/> Hey Richard – everything should work fine, but just to be on the safe side, I’m going to go through the implementation again and will get back to you. Cheers,</para>
+                <para> Eugen.</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-2099">
+                    <para><anchor xml:id="dsq-comment-header-2099"/><anchor xml:id="dsq-cite-2099"/><anchor xml:id="dsq-author-user-2099"/>elysch<anchor xml:id="dsq-comment-body-2099"/><anchor xml:id="dsq-comment-message-2099"/> Hi.</para>
+                    <para>How did you register the restAuthenticationEntryPoint using only java config?</para>
+                    <para>Thanks</para>
+                    <itemizedlist>
+                      <listitem xml:id="dsq-comment-2101">
+                        <para><anchor xml:id="dsq-comment-header-2101"/><anchor xml:id="dsq-cite-2101"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2101"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2101"/><anchor xml:id="dsq-comment-message-2101"/> I didn’t – there’s some XML configuration for security in the project. That being said, if you do want to only use Java config, that’s possible now with the new release. Cheers, </para>
+                        <para>Eugen.</para>
+                      </listitem>
+                      <!--
+#comment-##
+-->
+                    </itemizedlist>
+                    <!--
+.children
+-->
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+              <listitem xml:id="dsq-comment-1999">
+                <para><anchor xml:id="dsq-comment-header-1999"/><anchor xml:id="dsq-cite-1999"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1999"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1999"/><anchor xml:id="dsq-comment-message-1999"/> Hey Richard – I checked and everything works well. The project is indeed using Spring 3.2, and some java config. However, note that the security configuration is still XML, so if that is what you meant by java config – that support is still very new and I have not integrated it into these tutorials yet. Hope this helps. Cheers, </para>
+                <para>Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+              <listitem xml:id="dsq-comment-2100">
+                <para><anchor xml:id="dsq-comment-header-2100"/><anchor xml:id="dsq-cite-2100"/><anchor xml:id="dsq-author-user-2100"/>elysch<anchor xml:id="dsq-comment-body-2100"/><anchor xml:id="dsq-comment-message-2100"/> Hi Richard.</para>
+                <para>I asked this to Eugen by mistake, but it was intended for you:</para>
+                <para>How did you register the restAuthenticationEntryPoint using only java config?</para>
+                <para>Thanks</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-2103">
+                    <para><anchor xml:id="dsq-comment-header-2103"/><anchor xml:id="dsq-cite-2103"/><anchor xml:id="dsq-author-user-2103"/>Richard<anchor xml:id="dsq-comment-body-2103"/><anchor xml:id="dsq-comment-message-2103"/> http.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint())</para>
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+              <listitem xml:id="dsq-comment-2104">
+                <para><anchor xml:id="dsq-comment-header-2104"/><anchor xml:id="dsq-cite-2104"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2104"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2104"/><anchor xml:id="dsq-comment-message-2104"/> I haven’t yet, no. I’ll use the java config variant at some point, but I didn’t have the chance yet. Cheers,</para>
+                <para> Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-2038">
+            <para><anchor xml:id="dsq-comment-header-2038"/><anchor xml:id="dsq-cite-2038"/><anchor xml:id="dsq-author-user-2038"/>ohadr dev<anchor xml:id="dsq-comment-body-2038"/><anchor xml:id="dsq-comment-message-2038"/> what about logout? </para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-2042">
+                <para><anchor xml:id="dsq-comment-header-2042"/><anchor xml:id="dsq-cite-2042"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2042"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2042"/><anchor xml:id="dsq-comment-message-2042"/> Hey Ohadr – logout is indeed enabled in the Spring Security config – notice the – so you’ll be able to log out at /j_spring_security_logout. Hope this helps. Cheers,</para>
+                <para> Eugen.</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-2043">
+                    <para><anchor xml:id="dsq-comment-header-2043"/><anchor xml:id="dsq-cite-2043"/><anchor xml:id="dsq-author-user-2043"/>OhadR<anchor xml:id="dsq-comment-body-2043"/><anchor xml:id="dsq-comment-message-2043"/> thanks for your reply! the regular logout redirects to a default target URL. it needs a special treatment… </para>
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                  <listitem xml:id="dsq-comment-2058">
+                    <para><anchor xml:id="dsq-comment-header-2058"/><anchor xml:id="dsq-cite-2058"/><anchor xml:id="dsq-author-user-2058"/>ohadr dev<anchor xml:id="dsq-comment-body-2058"/><anchor xml:id="dsq-comment-message-2058"/> i solved it. you can see here… <link xl:href="http://www.codeproject.com/Tips/521847/Logout-Spring-s-LogoutFilter">http://www.codeproject.com/Tips/521847/Logout-Spring-s-LogoutFilter</link>. thanks!</para>
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-2133">
+            <para><anchor xml:id="dsq-comment-header-2133"/><anchor xml:id="dsq-cite-2133"/><anchor xml:id="dsq-author-user-2133"/>Kaan<anchor xml:id="dsq-comment-body-2133"/><anchor xml:id="dsq-comment-message-2133"/> Can someone give an example how to use restTemplate instead of ‘curl -i -X POST -d j_username=user -d j_password=userPass -c /opt/cookies.txt’ . I am able to do it without cookie file but other requests gives me 401 unauthorized response. Or does anyone know how i can handle the problem? Thanks</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-2161">
+                <para><anchor xml:id="dsq-comment-header-2161"/><anchor xml:id="dsq-cite-2161"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2161"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2161"/><anchor xml:id="dsq-comment-message-2161"/> Hey Kann – sending the cookie with RestTemplate is nothing special – just a matter of adding the cookie header with the cookie value – that should allow you to correctly send the cookie in the request. Cheers,</para>
+                <para> Eugen.</para>
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-2219">
+            <para><anchor xml:id="dsq-comment-header-2219"/><anchor xml:id="dsq-cite-2219"/> http://justincalleja.com/ <anchor xml:id="dsq-author-user-2219"/>Justin<anchor xml:id="dsq-comment-body-2219"/><anchor xml:id="dsq-comment-message-2219"/> Hi Eugen,</para>
+            <para>This post is really helpful – thanks a bunch </para>
+            <para>I would love to hear your opinion regarding the following: I have a login page which I would like to use in a “normal” fashion – i.e. I want spring security to redirect sending back a 301 on success and have the browser take care of storing the session.</para>
+            <para>The idea is that the page which the browser is redirected to is an SPA in which I’ll be making use of Javascript to get the JSESSIONID out of the the cookie and basically replicate the same kind of request a browser would make but using Javascript to access the protected endpoints.</para>
+            <para>The thing that’s annoying me is that I only want this behaviour when hitting security/session (a re-map of j_spring_security_check) from a browser (say login.html). I would love to have the behaviour you illustrated in this post when I’m trying to get the JSESSIONID from a non-browser environment i.e. 200 or 401.</para>
+            <para>What do you think about this situation? Personally, I don’t think I’ll be going down the 2 servers route, one maintaing session state and proxying for the “real” REST server.</para>
+            <para>I was thinking maybe Spring Security can be configured to have 2 or something of the sort. Note that the endpoints they affect would be the same, it’s just that it would be awesome if I could have something like security/session for the browser and api/security/session for REST clients (with different behaviours). I’m not familiar enough with Spring Security to know if this is possible. Is it? Or perhaps you would tackle it differently?</para>
+            <para>Regards,</para>
+            <para> Justin</para>
+            <para>Edit:</para>
+            <para>Note, I am just exploring options. I am currently thinking I will ditch the whole browser shortcut and just store it in a cookie or local storage using Javascript. But I was just curious about the two endpoint for security approach.</para>
+            <itemizedlist>
+              <listitem xml:id="dsq-comment-2220">
+                <para><anchor xml:id="dsq-comment-header-2220"/><anchor xml:id="dsq-cite-2220"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2220"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2220"/><anchor xml:id="dsq-comment-message-2220"/> Hey Justin,</para>
+                <para> Two notes about your usecase. First thing is that – since you’re basically replicating some of the browser behavior in js – why do you need the server response to be a 301? You could simply do a redirect, or hide the login popup regardless of the status code.</para>
+                <para> Second – you probably don’t need 2 services, but yes – you can have 2 authentication paths if you really need to – one for the standard login and the other that’s more focused on the API. Keep in mind that now (since 3.1) you can have multiple elements. If that’s not an option you can always do it manually (but your intuition is right – it would be quite low level and would require a solid understanding of the framework). Hope it helps. Cheers,</para>
+                <para> Eugen.</para>
+                <itemizedlist>
+                  <listitem xml:id="dsq-comment-2221">
+                    <para><anchor xml:id="dsq-comment-header-2221"/><anchor xml:id="dsq-cite-2221"/> http://justincalleja.com/ <anchor xml:id="dsq-author-user-2221"/>Justin<anchor xml:id="dsq-comment-body-2221"/><anchor xml:id="dsq-comment-message-2221"/> Cheers Eugen </para>
+                    <para>True, I was leaning towards sticking to the more REST-like behaviour and doing the rest with Javascript. I was thinking that maybe it would be a shortcut to let the browser handle that part – was considering using a normal for the login. Also, the thought “I could have 2 endpoints for session management one of which is easier to work with in a browser – maybe that would be useful to other people building apps against the REST API. So that’s why I asked.</para>
+                    <para>I will continue with the Javascript approach. Maybe later I’ll do some research on the 2 endpoint approach.</para>
+                    <para>Thanks a lot!</para>
+                    <para>Regards,</para>
+                    <para> Justin</para>
+                    <itemizedlist>
+                      <listitem xml:id="dsq-comment-2222">
+                        <para><anchor xml:id="dsq-comment-header-2222"/><anchor xml:id="dsq-cite-2222"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2222"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2222"/><anchor xml:id="dsq-comment-message-2222"/> Sounds good Justin. Also – it’s probably the kind of thing that will help someone else, so you can always write about it as well. Cheers,</para>
+                        <para> Eugen.</para>
+                        <itemizedlist>
+                          <listitem xml:id="dsq-comment-2223">
+                            <para><anchor xml:id="dsq-comment-header-2223"/><anchor xml:id="dsq-cite-2223"/> http://justincalleja.com/ <anchor xml:id="dsq-author-user-2223"/>Justin<anchor xml:id="dsq-comment-body-2223"/><anchor xml:id="dsq-comment-message-2223"/> hehe yes I have been meaning to set up a blog for quite some time. It will happen eventually (even if just to keep track of things).</para>
+                            <para>Thanks for the suggestion </para>
+                            <para>Regards,</para>
+                            <para> Justin</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                          <listitem xml:id="dsq-comment-2239">
+                            <para><anchor xml:id="dsq-comment-header-2239"/><anchor xml:id="dsq-cite-2239"/> http://justincalleja.com/ <anchor xml:id="dsq-author-user-2239"/>Justin<anchor xml:id="dsq-comment-body-2239"/><anchor xml:id="dsq-comment-message-2239"/> btw, as an update – I ended up going for the page for login and page for SPA approach using a normal no JS for the login page. I came up against problems with server sending back HttpOnly with cookies so couldn’t access from JS. I figured it would be more work (and code) than I liked to change the behaviour on the server side (overriding Spring Security classes – maybe haven’t actually done it). </para>
+                            <para>The 2 page approach is working for now and I can keep a simple Spring Security config.</para>
+                            <para>Regards,</para>
+                            <para> Justin</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                          <listitem xml:id="dsq-comment-2240">
+                            <para><anchor xml:id="dsq-comment-header-2240"/><anchor xml:id="dsq-cite-2240"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-2240"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-2240"/><anchor xml:id="dsq-comment-message-2240"/> Glad it worked out – I’m getting these kinds of questions a lot lately, so I’m thinking of covering the various options in a series. Cheers,</para>
+                            <para> Eugen.</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                          <listitem xml:id="dsq-comment-2241">
+                            <para><anchor xml:id="dsq-comment-header-2241"/><anchor xml:id="dsq-cite-2241"/> http://justincalleja.com/ <anchor xml:id="dsq-author-user-2241"/>Justin<anchor xml:id="dsq-comment-body-2241"/><anchor xml:id="dsq-comment-message-2241"/> +1 to that </para>
+                            <para>Regards,</para>
+                            <para> Justin</para>
+                          </listitem>
+                          <!--
+#comment-##
+-->
+                        </itemizedlist>
+                        <!--
+.children
+-->
+                      </listitem>
+                      <!--
+#comment-##
+-->
+                    </itemizedlist>
+                    <!--
+.children
+-->
+                  </listitem>
+                  <!--
+#comment-##
+-->
+                </itemizedlist>
+                <!--
+.children
+-->
+              </listitem>
+              <!--
+#comment-##
+-->
+            </itemizedlist>
+            <!--
+.children
+-->
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1525">
+            <para><anchor xml:id="dsq-comment-header-1525"/><anchor xml:id="dsq-cite-1525"/><anchor xml:id="dsq-author-user-1525"/>fadi<anchor xml:id="dsq-comment-body-1525"/><anchor xml:id="dsq-comment-message-1525"/> Thank you for the response, but am using FF plugin and I added the Authorization header to the url, the only place fired in my code is the EntryPoint and it never enters my AuthenticationProvider. which makes wounder if am doing something wrong!</para>
+            <para>Thanks</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1549">
+            <para><anchor xml:id="dsq-comment-header-1549"/><anchor xml:id="dsq-cite-1549"/><anchor xml:id="dsq-author-user-1549"/>DropDeadFred<anchor xml:id="dsq-comment-body-1549"/><anchor xml:id="dsq-comment-message-1549"/> If you are using the REST service through AJAX from a browser can you had the necessary Authentication headers? For example, if you are using form based authentication to your website and want to retrieve data from your REST service. I guess I must just be missing something here.</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1563">
+            <para><anchor xml:id="dsq-comment-header-1563"/><anchor xml:id="dsq-cite-1563"/><anchor xml:id="dsq-author-user-1563"/>Branislav Vidovic<anchor xml:id="dsq-comment-body-1563"/><anchor xml:id="dsq-comment-message-1563"/> This is the most interesting part in my opinion…. I am interested which other additional component of spring security you have extended to read request headers and build a required authentication object. Besides i had a look into your git project but in there you did not do it totally like in this post..</para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1550">
+            <para><anchor xml:id="dsq-comment-header-1550"/><anchor xml:id="dsq-cite-1550"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1550"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1550"/><anchor xml:id="dsq-comment-message-1550"/> You can take a look at: <link xl:href="http://code.google.com/p/crypto-js/">http://code.google.com/p/crypto-js/</link></para>
+          </listitem>
+          <!--
+#comment-##
+-->
+          <listitem xml:id="dsq-comment-1552">
+            <para><anchor xml:id="dsq-comment-header-1552"/><anchor xml:id="dsq-cite-1552"/> http://www.baeldung.com/ <anchor xml:id="dsq-author-user-1552"/>Eugen Paraschiv<anchor xml:id="dsq-comment-body-1552"/><anchor xml:id="dsq-comment-message-1552"/> Not sure how you can add the header to the URL – do you mean you added the header to the request? Also, to follow some working examples, you can always clone the project from github and run the tests. </para>
+          </listitem>
+          <!--
+#comment-##
+-->
+        </itemizedlist>
         <!--
 /#main
+-->
+        <anchor xml:id="optinskin-widget-3"/>
+        <!--
+OptinSkin
+-->
+        <anchor xml:id="ois_5"/>
+        <!--
+End OptinSkin
+-->
+        <!--
+/#sidebar
 -->
         <!--
 /#main-sidebar-container
@@ -527,7 +1011,7 @@ col-left
 /#content
 -->
         <anchor xml:id="copyright"/>
-        <para>© 2014 Technical Articles. All Rights Reserved. </para>
+        <para>© 2014 Baeldung. All Rights Reserved. </para>
         <anchor xml:id="credit"/>
         <!--
 /#inner-wrapper
@@ -537,6 +1021,24 @@ col-left
 -->
         <!--
 /.fix
+-->
+        <!--
+ngg_resource_manager_marker
+-->
+        <!--
+WP SyntaxHighlighter Ver.1.7.3 Begin
+-->
+        <!--
+WP SyntaxHighlighter Ver.1.7.3 End
+-->
+        <!--
+Creater Script for Social Locker
+        
+            Created by the Social Locker plugin (c) OnePress Ltd
+            http://sociallocker.org
+-->
+        <!--
+/
 -->
       </section>
     </section>
