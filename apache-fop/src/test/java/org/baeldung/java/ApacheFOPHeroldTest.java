@@ -1,9 +1,12 @@
 package org.baeldung.java;
 
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -31,37 +34,41 @@ public class ApacheFOPHeroldTest {
     private String[] inputUrls = {// @formatter:off
             // "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
             // "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",
-            "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
-            // "http://www.baeldung.com/spring-security-basic-authentication",
+           // "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
+             "http://www.baeldung.com/spring-security-basic-authentication",
             // "http://www.baeldung.com/spring-security-digest-authentication",
             //"http://www.baeldung.com/2011/11/20/basic-and-digest-authentication-for-a-restful-service-with-spring-security-3-1/",
             //"http://www.baeldung.com/spring-httpmessageconverter-rest",
             //"http://www.baeldung.com/2011/11/06/restful-web-service-discoverability-part-4/",
             //"http://www.baeldung.com/2011/11/13/rest-service-discoverability-with-spring-part-5/",
             //"http://www.baeldung.com/2013/01/11/etags-for-rest-with-spring/",
-            //"http://www.baeldung.com/2012/01/18/rest-pagination-in-spring/",
+            "http://www.baeldung.com/2012/01/18/rest-pagination-in-spring/",
+            //"http://inprogress.baeldung.com/?p=1430",
             //"http://www.baeldung.com/2013/01/31/exception-handling-for-rest-with-spring-3-2/",
             //"http://www.baeldung.com/rest-versioning",
             //"http://www.baeldung.com/2013/01/18/testing-rest-with-multiple-mime-types/"
     }; // @formatter:on
 
-    private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
-    private String output_prefix = "src/test/resources/";
-    private String xmlFile = "src/test/resources/input.xml";
+    private String style_file = "src/test/resources/docbook-xsl/fo/docbook.xsl";
+    private String output_file = "src/test/resources/final_output.pdf";
+    private String xmlInput = "src/test/resources/input.xml";
+    private String xmlOutput = "src/test/resources/output.xml";
 
     @Test
     public void whenTransformFromHeroldToPDF_thenCorrect() throws Exception {
         final int len = inputUrls.length;
-        for (int i = 0; i < len; i++) {
-            fromHTMLTOXMLUsingHerold(inputUrls[i]);
-            final Document fo = fromXMLFileToFO();
-            fromFODocumentToPDF(fo, output_prefix + i + ".pdf");
+        fromHTMLTOXMLUsingHerold(inputUrls[0], false);
+        for (int i = 1; i < len; i++) {
+            fromHTMLTOXMLUsingHerold(inputUrls[i], true);
         }
+        fixXML(xmlInput, xmlOutput);
+        final Document fo = fromXMLFileToFO();
+        fromFODocumentToPDF(fo, output_file);
     }
 
     // UTIL
 
-    private void fromHTMLTOXMLUsingHerold(final String input) throws Exception {
+    private void fromHTMLTOXMLUsingHerold(final String input, boolean append) throws Exception {
         Script script;
         final TrafoScriptManager mgr = new TrafoScriptManager();
         final File profileFile = new File("src/test/resources/default.her");
@@ -69,18 +76,18 @@ public class ApacheFOPHeroldTest {
         final DocBookTransformer transformer = new DocBookTransformer();
         transformer.setScript(script);
 
-        transformer.convert(getInputStream(input), new FileOutputStream(xmlFile));
+        transformer.convert(getInputStream(input), new FileOutputStream(xmlInput ,append));
     }
 
     private Document fromXMLFileToFO() throws Exception {
-        final Source source = new StreamSource(new FileInputStream(xmlFile));
+        final Source source = new StreamSource(new FileInputStream(xmlOutput));
         final DOMResult result = new DOMResult();
-        final Transformer transformer = createTransformer(style1);
+        final Transformer transformer = createTransformer(style_file);
         transformer.transform(source, result);
         return (Document) result.getNode();
     }
 
-    private void fromFODocumentToPDF(final Document fo, final String outputFile) throws Exception {
+    private void fromFODocumentToPDF(Document fo, final String outputFile) throws Exception {
         final FopFactory fopFactory = FopFactory.newInstance();
         final OutputStream outStream = new BufferedOutputStream(new FileOutputStream(new File(outputFile)));
 
@@ -104,6 +111,28 @@ public class ApacheFOPHeroldTest {
     private InputStream getInputStream(final String input) throws IOException {
         final URL url = new URL(input);
         return url.openStream();
+    }
+    
+    private void fixXML(String input, String output) throws IOException{
+        BufferedReader reader = new BufferedReader(new FileReader(input)); 
+        FileWriter writer = new FileWriter(output);
+        String line = reader.readLine();
+        int count = 0;
+        while(line != null){
+            if(line.contains("info>")){
+                writer.write(line.replace("info>", "section>"));
+            }
+            else if(!((line.startsWith("<?xml") || line.startsWith("<article") || line.startsWith("</article")) && count > 4)){
+                writer.write(line.replaceAll("xml:id=\"", "xml:id=\""+count));
+            }           
+            writer.write("\n");
+            
+            line = reader.readLine();
+            count++;
+        }
+        writer.write("</article>");
+        reader.close();
+        writer.close();
     }
 
 }
