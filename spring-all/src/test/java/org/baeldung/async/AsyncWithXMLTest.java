@@ -10,16 +10,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration("classpath:springAsync-config.xml")
 public class AsyncWithXMLTest {
 
-	@Autowired
-	AsyncAnnotationExample asyncAnnotationExample;
+    @Autowired
+    private AsyncComponent asyncAnnotationExample;
 
-	@Test
-	public void testAsyncAnnotationForMethodsWithVoidReturnType()
-			throws InterruptedException {
-		System.out.println("Start - invoking an asynchronous method. "
-				+ Thread.currentThread().getName());
-		asyncAnnotationExample.asyncMethodWithVoidReturnType();
-		Thread.sleep(2000);
-		System.out.println("End - invoking an asynchronous method. ");
-	}
+    // tests
+
+    @Test
+    public void testAsyncAnnotationForMethodsWithVoidReturnType() throws InterruptedException {
+        System.out.println("Start - invoking an asynchronous method. " + Thread.currentThread().getName());
+        asyncAnnotationExample.asyncMethodWithVoidReturnType();
+        Thread.sleep(2000);
+        System.out.println("End - invoking an asynchronous method. ");
+    }
+
 }

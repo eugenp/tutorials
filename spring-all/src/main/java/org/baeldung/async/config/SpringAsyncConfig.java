@@ -17,18 +17,18 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @ComponentScan("org.baeldung.async")
 public class SpringAsyncConfig implements AsyncConfigurer {
 
-	@Bean(name = "threadPoolTaskExecutor")
-	public Executor threadPoolTaskExecutor() {
-		return new ThreadPoolTaskExecutor();
-	}
+    @Bean(name = "threadPoolTaskExecutor")
+    public Executor threadPoolTaskExecutor() {
+        return new ThreadPoolTaskExecutor();
+    }
 
-	@Override
-	public Executor getAsyncExecutor() {
-		return new SimpleAsyncTaskExecutor();
-	}
+    @Override
+    public Executor getAsyncExecutor() {
+        return new SimpleAsyncTaskExecutor();
+    }
 
-	@Override
-	public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-		return new CustomAsyncExceptionHandler();
-	}
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        return new CustomAsyncExceptionHandler();
+    }
 }
