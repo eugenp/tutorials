@@ -16,8 +16,9 @@ import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMResult;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.sax.SAXResult;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.apache.fop.apps.Fop;
@@ -27,6 +28,7 @@ import org.dbdoclet.trafo.TrafoScriptManager;
 import org.dbdoclet.trafo.html.docbook.DocBookTransformer;
 import org.dbdoclet.trafo.script.Script;
 import org.junit.Test;
+import org.w3c.dom.Document;
 
 public class ApacheFOPHeroldTest {
     private String[] inputUrls = {// @formatter:off
@@ -49,7 +51,6 @@ public class ApacheFOPHeroldTest {
 
     private String style_file = "src/test/resources/docbook-xsl/fo/docbook.xsl";
     private String output_file = "src/test/resources/final_output.pdf";
-    private String fo_file = "src/test/resources/fofile.fo";
     private String xmlInput = "src/test/resources/input.xml";
     private String xmlOutput = "src/test/resources/output.xml";
 
@@ -61,8 +62,8 @@ public class ApacheFOPHeroldTest {
             fromHTMLTOXMLUsingHerold(inputUrls[i], true);
         }
         fixXML(xmlInput, xmlOutput);
-        fromXMLFileToFO();
-        fromFODocumentToPDF(output_file);
+        final Document fo = fromXMLFileToFO();
+        fromFODocumentToPDF(fo, output_file);
     }
 
     // UTIL
@@ -78,22 +79,22 @@ public class ApacheFOPHeroldTest {
         transformer.convert(getInputStream(input), new FileOutputStream(xmlInput ,append));
     }
 
-    private void fromXMLFileToFO() throws Exception {
+    private Document fromXMLFileToFO() throws Exception {
         final Source source = new StreamSource(new FileInputStream(xmlOutput));
-        final StreamResult result = new StreamResult(new FileOutputStream(fo_file));
+        final DOMResult result = new DOMResult();
         final Transformer transformer = createTransformer(style_file);
         transformer.transform(source, result);
-      //  return (Document) result.getNode();
+        return (Document) result.getNode();
     }
 
-    private void fromFODocumentToPDF(final String outputFile) throws Exception {
+    private void fromFODocumentToPDF(Document fo, final String outputFile) throws Exception {
         final FopFactory fopFactory = FopFactory.newInstance();
         final OutputStream outStream = new BufferedOutputStream(new FileOutputStream(new File(outputFile)));
 
         final Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, outStream);
         final TransformerFactory factory = TransformerFactory.newInstance();
         final Transformer transformer = factory.newTransformer();
-        final StreamSource src = new StreamSource(new File(fo_file));
+        final DOMSource src = new DOMSource(fo);
         final Result res = new SAXResult(fop.getDefaultHandler());
         transformer.transform(src, res);
 
