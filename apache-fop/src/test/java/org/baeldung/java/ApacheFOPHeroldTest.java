@@ -32,7 +32,7 @@ import org.w3c.dom.Document;
 
 public class ApacheFOPHeroldTest {
     private String[] inputUrls = {// @formatter:off
-            // "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
+             "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
             // "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",
            // "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
              "http://www.baeldung.com/spring-security-basic-authentication",
