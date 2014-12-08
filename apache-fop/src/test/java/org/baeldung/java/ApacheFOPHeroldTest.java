@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.text.Normalizer;
-import java.util.regex.Pattern;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -35,11 +33,11 @@ import org.w3c.dom.Document;
 public class ApacheFOPHeroldTest {
     private String[] inputUrls = {// @formatter:off
             "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
-            // "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",
-            // "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
-            // "http://www.baeldung.com/spring-security-basic-authentication",
-            // "http://www.baeldung.com/spring-security-digest-authentication",
-            //"http://www.baeldung.com/2011/11/20/basic-and-digest-authentication-for-a-restful-service-with-spring-security-3-1/",
+            "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",
+            "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
+            "http://www.baeldung.com/spring-security-basic-authentication",
+            "http://www.baeldung.com/spring-security-digest-authentication",
+            "http://www.baeldung.com/2011/11/20/basic-and-digest-authentication-for-a-restful-service-with-spring-security-3-1/",
             //"http://www.baeldung.com/spring-httpmessageconverter-rest",
             //"http://www.baeldung.com/2011/11/06/restful-web-service-discoverability-part-4/",
             //"http://www.baeldung.com/2011/11/13/rest-service-discoverability-with-spring-part-5/",
@@ -55,6 +53,8 @@ public class ApacheFOPHeroldTest {
     private String output_file = "src/test/resources/final_output.pdf";
     private String xmlInput = "src/test/resources/input.xml";
     private String xmlOutput = "src/test/resources/output.xml";
+
+    // tests
 
     @Test
     public void whenTransformFromHeroldToPDF_thenCorrect() throws Exception {
@@ -78,7 +78,7 @@ public class ApacheFOPHeroldTest {
         final DocBookTransformer transformer = new DocBookTransformer();
         transformer.setScript(script);
 
-        transformer.convert(getInputStream(input), new FileOutputStream(xmlInput ,append));
+        transformer.convert(getInputStream(input), new FileOutputStream(xmlInput, append));
     }
 
     private Document fromXMLFileToFO() throws Exception {
@@ -115,19 +115,20 @@ public class ApacheFOPHeroldTest {
         return url.openStream();
     }
 
-    private void fixXML(final String input, final String output) throws IOException{
+    private void fixXML(final String input, final String output) throws IOException {
         final BufferedReader reader = new BufferedReader(new FileReader(input));
         final FileWriter writer = new FileWriter(output);
         String line = reader.readLine();
         int count = 0;
-        while(line != null){
-            line = line.replaceAll("[^\\x00-\\x7F]", "");
-            
-            if(line.contains("info>")){
+        while (line != null) {
+            line = line.replaceAll("”", "\"");
+            line = line.replaceAll("“", "\"");
+            // line = line.replaceAll("[^\\x00-\\x7F]", "");
+
+            if (line.contains("info>")) {
                 writer.write(line.replace("info>", "section>"));
-            }
-            else if(!((line.startsWith("<?xml") || line.startsWith("<article") || line.startsWith("</article")) && count > 4)){
-                writer.write(line.replaceAll("xml:id=\"", "xml:id=\""+count));
+            } else if (!((line.startsWith("<?xml") || line.startsWith("<article") || line.startsWith("</article")) && count > 4)) {
+                writer.write(line.replaceAll("xml:id=\"", "xml:id=\"" + count));
             }
             writer.write("\n");
 
