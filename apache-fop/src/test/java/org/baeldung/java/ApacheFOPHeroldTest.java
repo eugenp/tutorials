@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -119,6 +121,8 @@ public class ApacheFOPHeroldTest {
         String line = reader.readLine();
         int count = 0;
         while(line != null){
+            line = line.replaceAll("[^\\x00-\\x7F]", "");
+            
             if(line.contains("info>")){
                 writer.write(line.replace("info>", "section>"));
             }
