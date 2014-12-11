@@ -3,11 +3,10 @@ package org.baeldung.security;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.IUserService;
@@ -21,8 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class MyUserDetailsService implements UserDetailsService {
-
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private UserRepository userRepository;
@@ -41,14 +38,12 @@ public class MyUserDetailsService implements UserDetailsService {
         boolean credentialsNonExpired = true;
         boolean accountNonLocked = true;
         try {
-            LOGGER.debug("Loading user by username: {}", email);
             User user = userRepository.findByEmail(email);
-            LOGGER.debug("Found user: {}", user);
             if (user == null) {
                 return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(new Integer(1)));
             }
-            
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword().toLowerCase(), user.isEnabled(), accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
+
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole().getRole()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

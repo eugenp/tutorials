@@ -1,7 +1,6 @@
 package org.baeldung.persistence.model;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,6 @@ public class Role {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "role")
     private Integer role;
 
     public Role() {

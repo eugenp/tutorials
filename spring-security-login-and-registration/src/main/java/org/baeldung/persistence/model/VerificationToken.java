@@ -3,7 +3,6 @@ package org.baeldung.persistence.model;
 import java.util.Calendar;
 import java.sql.Date;
 import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
