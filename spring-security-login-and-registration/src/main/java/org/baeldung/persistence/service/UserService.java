@@ -2,6 +2,7 @@ package org.baeldung.persistence.service;
 
 import javax.transaction.Transactional;
 
+import org.baeldung.hashing.HashGenerator;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.VerificationTokenRepository;
 import org.baeldung.persistence.model.Role;
@@ -20,7 +21,8 @@ public class UserService implements IUserService {
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
-    // API
+    @Autowired
+    private HashGenerator hashGenerator;
 
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
@@ -30,7 +32,8 @@ public class UserService implements IUserService {
         User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-        user.setPassword(accountDto.getPassword());
+        String hashedPassword = hashGenerator.getHashedPassword(accountDto.getPassword());
+        user.setPassword(hashedPassword);
         user.setEmail(accountDto.getEmail());
         user.setRole(new Role(Integer.valueOf(1), user));
         return repository.save(user);
@@ -62,8 +65,6 @@ public class UserService implements IUserService {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
-
-    //
 
     private boolean emailExist(String email) {
         User user = repository.findByEmail(email);
