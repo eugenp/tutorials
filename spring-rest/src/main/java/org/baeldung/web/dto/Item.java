@@ -1,4 +1,4 @@
-package org.baeldung.jackson.jsonview;
+package org.baeldung.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

@@ -14,6 +14,7 @@ import org.baeldung.jackson.jsonview.Views;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.BeanSerializerFactory;
 import com.fasterxml.jackson.databind.ser.SerializerFactory;
@@ -25,16 +26,17 @@ public class JacksonJsonViewTest {
         final User user = new User(1, "John");
 
         final ObjectMapper mapper = new ObjectMapper();
+        mapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
+
         final String result = mapper.writerWithView(Views.Public.class).writeValueAsString(user);
 
         assertThat(result, containsString("John"));
-        assertThat(result, containsString("1"));
+        assertThat(result, not(containsString("1")));
     }
 
     @Test
     public void whenUsePublicView_thenOnlyPublicSerialized() throws JsonProcessingException {
-        final User owner = new User(1, "John");
-        final Item item = new Item(2, "book", owner);
+        final Item item = new Item(2, "book", "John");
 
         final ObjectMapper mapper = new ObjectMapper();
         final String result = mapper.writerWithView(Views.Public.class).writeValueAsString(item);
@@ -43,13 +45,11 @@ public class JacksonJsonViewTest {
         assertThat(result, containsString("2"));
 
         assertThat(result, not(containsString("John")));
-        assertThat(result, not(containsString("1")));
     }
 
     @Test
     public void whenUseInternalView_thenAllSerialized() throws JsonProcessingException {
-        final User owner = new User(1, "John");
-        final Item item = new Item(2, "book", owner);
+        final Item item = new Item(2, "book", "John");
 
         final ObjectMapper mapper = new ObjectMapper();
         final String result = mapper.writerWithView(Views.Internal.class).writeValueAsString(item);
@@ -58,7 +58,6 @@ public class JacksonJsonViewTest {
         assertThat(result, containsString("2"));
 
         assertThat(result, containsString("John"));
-        assertThat(result, containsString("1"));
     }
 
     @Test

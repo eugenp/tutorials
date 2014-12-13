@@ -1,5 +1,8 @@
-package org.baeldung.jackson.jsonview;
+package org.baeldung.web.controller;
 
+import org.baeldung.web.dto.Item;
+import org.baeldung.web.dto.ItemManager;
+import org.baeldung.web.dto.Views;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
-public class UserController {
+public class ItemController {
 
     @JsonView(Views.Public.class)
-    @RequestMapping("/{id}")
+    @RequestMapping("/items/{id}")
     public Item getItemPublic(@PathVariable final int id) {
         return ItemManager.getById(id);
     }
 
     @JsonView(Views.Internal.class)
-    @RequestMapping("/internal/{id}")
+    @RequestMapping("/items/internal/{id}")
     public Item getItemInternal(@PathVariable final int id) {
         return ItemManager.getById(id);
     }
