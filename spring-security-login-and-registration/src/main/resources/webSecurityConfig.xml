@@ -15,7 +15,7 @@
 		<intercept-url pattern="/expiredAccount*" access="permitAll" />
 		<intercept-url pattern="/registration*" access="permitAll" />
 		<intercept-url pattern="/badUser*" access="permitAll" />
-		
+
 		<intercept-url pattern="/emailError*" access="permitAll" />
 		<intercept-url pattern="/resources/**" access="permitAll" />
 		<intercept-url pattern="/invalidSession*" access="isAnonymous()" />
@@ -32,10 +32,15 @@
 
 	<beans:bean id="myAuthenticationSuccessHandler"
 		class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
-
 	<authentication-manager>
-		<authentication-provider user-service-ref="userDetailsService" />
+		<authentication-provider ref="authProvider"/>
 	</authentication-manager>
+	<beans:bean id="authProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider"> 
+		<beans:property name="userDetailsService" ref="userDetailsService" /> <beans:property 
+		name="passwordEncoder" ref="encoder" /> </beans:bean>
 	<beans:bean id="userDetailsService" class="org.baeldung.security.MyUserDetailsService" />
-
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="11" />
+	</beans:bean>
 </beans:beans>

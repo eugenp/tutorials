@@ -2,6 +2,7 @@ package org.baeldung.spring;
 
 import java.util.Locale;
 
+import org.baeldung.hashing.HashGenerator;
 import org.baeldung.validation.service.EmailValidator;
 import org.baeldung.validation.service.PasswordMatchesValidator;
 import org.springframework.context.MessageSource;
@@ -98,6 +99,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public PasswordMatchesValidator passwordMatchesValidator() {
         PasswordMatchesValidator passwordMatchesValidator = new PasswordMatchesValidator();
         return passwordMatchesValidator;
+    }
+
+    // DIC 7
+    @Bean
+    public HashGenerator hashGenerator() {
+        HashGenerator hashGenerator = new HashGenerator();
+        return hashGenerator;
     }
 
 }
