@@ -17,7 +17,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("userDetailsService")
+@Service
 @Transactional
 public class MyUserDetailsService implements UserDetailsService {
 
