@@ -9,10 +9,9 @@
 	<div class="container">
 		<div class="span12">
 			<h1 class="alert alert-error">
-				<spring:message code="message.sessionExpired"></spring:message>
+				<spring:message code="message.email.config.error"></spring:message>
 			</h1>
-			<a href="<c:url value="login.html" />"><spring:message
-					code="label.form.loginLink"></spring:message></a>
+			
 		</div>
 	</div>
 </body>

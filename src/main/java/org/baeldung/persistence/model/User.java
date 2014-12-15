@@ -27,6 +27,8 @@ public class User {
 
     private boolean enabled;
 
+    // ERASE
+    @Column(name = "token_expired")
     private boolean tokenExpired;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -37,6 +39,8 @@ public class User {
         this.enabled = false;
         this.tokenExpired = false;
     }
+
+    //
 
     public Long getId() {
         return id;
@@ -101,6 +105,8 @@ public class User {
     public void setTokenExpired(boolean expired) {
         this.tokenExpired = expired;
     }
+
+    //
 
     @Override
     public int hashCode() {

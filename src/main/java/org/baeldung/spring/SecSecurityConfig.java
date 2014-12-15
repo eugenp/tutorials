@@ -10,5 +10,5 @@ public class SecSecurityConfig {
     public SecSecurityConfig() {
         super();
     }
-    
+
 }

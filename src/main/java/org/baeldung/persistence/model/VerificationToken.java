@@ -28,6 +28,7 @@ public class VerificationToken {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
+    @Column(name = "expiry_date")
     private Date expiryDate;
 
     public VerificationToken() {
@@ -49,6 +50,7 @@ public class VerificationToken {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
+    //
 
     public String getToken() {
         return token;
