@@ -6,6 +6,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import org.junit.Test;
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
+import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -194,6 +197,22 @@ public class GuavaStringTest {
 
         result = CharMatcher.inRange('a', 'h').countIn(input);
         assertEquals(2, result);
+    }
+
+    @Test
+    public void whenRemoveCharsNotInCharset_thenRemoved() {
+        final Charset charset = Charset.forName("cp437");
+        final CharsetEncoder encoder = charset.newEncoder();
+
+        final Predicate<Character> inRange = new Predicate<Character>() {
+            @Override
+            public boolean apply(final Character c) {
+                return encoder.canEncode(c);
+            }
+        };
+
+        final String result = CharMatcher.forPredicate(inRange).retainFrom("helloは");
+        assertEquals("hello", result);
     }
 
 }
