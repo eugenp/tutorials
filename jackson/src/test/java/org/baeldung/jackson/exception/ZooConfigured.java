@@ -4,13 +4,16 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class ZooConfigured {
     public AnimalConfigured animal;
+
+    public ZooConfigured() {
+    }
 }
 
 @JsonDeserialize(as = CatConfigured.class)
 abstract class AnimalConfigured {
     public String name;
 
-    protected AnimalConfigured() {
+    public AnimalConfigured() {
     }
 }
 
