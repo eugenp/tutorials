@@ -2,12 +2,15 @@ package org.baeldung.jackson.exception;
 
 public class Zoo {
     public Animal animal;
+
+    public Zoo() {
+    }
 }
 
 abstract class Animal {
     public String name;
 
-    protected Animal() {
+    public Animal() {
     }
 }
 
