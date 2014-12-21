@@ -34,6 +34,11 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 
+		<dependency>
+		   <groupId>commons-fileupload</groupId>
+		   <artifactId>commons-fileupload</artifactId>
+		   <version>1.3.1</version>
+		</dependency>
 		<!-- web -->
 
 		<dependency>
