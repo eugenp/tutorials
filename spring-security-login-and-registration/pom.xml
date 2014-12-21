@@ -142,7 +142,7 @@
 		<!-- Inject -->
 		<javax.inject.version>1</javax.inject.version>
 		<!-- Spring Data Jpa -->
-		<spring-data-jpa.version>1.4.5.RELEASE</spring-data-jpa.version>
+		<spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
 		<!-- guava -->
 		<guava.version>18.0</guava.version>
 	</properties>
