@@ -1,5 +1,7 @@
 package org.baeldung.web.controller;
 
+import java.util.Date;
+
 import org.baeldung.web.dto.Item;
 import org.baeldung.web.dto.ItemManager;
 import org.baeldung.web.dto.Views;
@@ -22,5 +24,10 @@ public class ItemController {
     @RequestMapping("/items/internal/{id}")
     public Item getItemInternal(@PathVariable final int id) {
         return ItemManager.getById(id);
+    }
+
+    @RequestMapping("/date")
+    public Date getCurrentDate() {
+        return new Date();
     }
 }
