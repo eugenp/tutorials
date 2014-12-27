@@ -17,11 +17,14 @@ import org.baeldung.jackson.date.EventWithJodaTime;
 import org.baeldung.jackson.date.EventWithLocalDateTime;
 import org.baeldung.jackson.date.EventWithSerializer;
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
+import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 
 public class JacksonDateTest {
 
@@ -138,6 +141,30 @@ public class JacksonDateTest {
 
         final EventWithSerializer event = mapper.reader(EventWithSerializer.class).readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
+    }
+
+    @Test
+    public void whenSerializeJava8Date_thenCorrect() throws JsonProcessingException {
+        final LocalDateTime date = LocalDateTime.of(2014, 12, 20, 2, 30);
+
+        final ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JSR310Module());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        final String result = mapper.writeValueAsString(date);
+        assertThat(result, containsString("2014-12-20T02:30"));
+    }
+
+    @Test
+    public void whenSerializeJodaTime_thenCorrect() throws JsonProcessingException {
+        final DateTime date = new DateTime(2014, 12, 20, 2, 30, DateTimeZone.forID("Europe/London"));
+
+        final ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JodaModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        final String result = mapper.writeValueAsString(date);
+        assertThat(result, containsString("2014-12-20T02:30:00.000Z"));
     }
 
 }
