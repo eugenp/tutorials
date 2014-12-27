@@ -26,7 +26,7 @@ public class SecSecurityConfig {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
         return encoder;
     }
-    
+
     @Bean
     public DaoAuthenticationProvider authProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
