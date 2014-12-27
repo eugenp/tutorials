@@ -166,6 +166,4 @@ public class JacksonExceptionsTest {
         assertEquals("John", user.name);
     }
 
-
-
 }
