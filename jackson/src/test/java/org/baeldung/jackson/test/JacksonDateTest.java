@@ -29,7 +29,7 @@ import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 public class JacksonDateTest {
 
     @Test
-    public void whenSerializeDateWithJackson_thenSerializedToNumber() throws JsonProcessingException, ParseException {
+    public void whenSerializingDateWithJackson_thenSerializedToNumber() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -43,7 +43,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSerializeDateToISO8601_thenSerializedToText() throws JsonProcessingException, ParseException {
+    public void whenSerializingDateToISO8601_thenSerializedToText() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -59,7 +59,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSetObjectMapperDateFormat_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenSettingObjectMapperDateFormat_thenCorrect() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm");
 
         final String toParse = "20-12-2014 02:30";
@@ -74,7 +74,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenUseJsonFormatAnnotationToFormatDate_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenUsingJsonFormatAnnotationToFormatDate_thenCorrect() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -88,7 +88,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenUseCustomDateSerializer_thenCorrect() throws JsonProcessingException, ParseException {
+    public void whenUsingCustomDateSerializer_thenCorrect() throws JsonProcessingException, ParseException {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
         final String toParse = "20-12-2014 02:30:00";
@@ -101,7 +101,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSerializeJodaTimeWithJackson_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingJodaTimeWithJackson_thenCorrect() throws JsonProcessingException {
         final DateTime date = new DateTime(2014, 12, 20, 2, 30);
         final EventWithJodaTime event = new EventWithJodaTime("party", date);
 
@@ -111,7 +111,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSerializeJava8DateWithCustomSerializer_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingJava8DateWithCustomSerializer_thenCorrect() throws JsonProcessingException {
         final LocalDateTime date = LocalDateTime.of(2014, 12, 20, 2, 30);
         final EventWithLocalDateTime event = new EventWithLocalDateTime("party", date);
 
@@ -121,7 +121,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenDeserializeDateWithJackson_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingDateWithJackson_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -133,7 +133,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenDeserializeDateUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingDateUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -144,7 +144,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSerializeJava8Date_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingJava8Date_thenCorrect() throws JsonProcessingException {
         final LocalDateTime date = LocalDateTime.of(2014, 12, 20, 2, 30);
 
         final ObjectMapper mapper = new ObjectMapper();
@@ -156,7 +156,7 @@ public class JacksonDateTest {
     }
 
     @Test
-    public void whenSerializeJodaTime_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingJodaTime_thenCorrect() throws JsonProcessingException {
         final DateTime date = new DateTime(2014, 12, 20, 2, 30, DateTimeZone.forID("Europe/London"));
 
         final ObjectMapper mapper = new ObjectMapper();
