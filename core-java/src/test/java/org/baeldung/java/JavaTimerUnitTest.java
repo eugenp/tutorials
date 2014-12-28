@@ -85,6 +85,22 @@ public class JavaTimerUnitTest {
     }
 
     @Test
+    public void givenUsingTimer_whenStoppingThread_thenTimerTaskIsCancelled() throws InterruptedException {
+        final TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Task performed on " + new Date());
+                // TODO: stop the thread
+            }
+        };
+        final Timer timer = new Timer("Timer");
+
+        timer.scheduleAtFixedRate(task, 1000L, 1000L);
+
+        Thread.sleep(1000L * 10);
+    }
+
+    @Test
     public void givenUsingTimer_whenCancelingTimer_thenCorrect() throws InterruptedException {
         final TimerTask task = new TimerTask() {
             @Override
