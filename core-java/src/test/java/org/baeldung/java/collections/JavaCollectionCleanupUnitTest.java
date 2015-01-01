@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -25,6 +26,14 @@ public class JavaCollectionCleanupUnitTest {
         final List<Integer> list = Lists.newArrayList(null, 1, null);
         while (list.remove(null))
             ;
+
+        assertThat(list, hasSize(1));
+    }
+
+    @Test
+    public final void givenListContainsNulls_whenRemovingNullsWithPlainJavaAlternative_thenCorrect() {
+        final List<Integer> list = Lists.newArrayList(null, 1, null);
+        list.removeAll(Collections.singleton(null));
 
         assertThat(list, hasSize(1));
     }
