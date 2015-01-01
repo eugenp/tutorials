@@ -116,4 +116,3 @@ public class JacksonBidirectionRelationTest {
     }
 
 }
-

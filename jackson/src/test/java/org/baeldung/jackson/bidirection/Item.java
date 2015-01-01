@@ -1,6 +1,5 @@
 package org.baeldung.jackson.bidirection;
 
-
 public class Item {
     public int id;
     public String itemName;
