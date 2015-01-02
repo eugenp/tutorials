@@ -26,23 +26,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JacksonBidirectionRelationTest {
 
     @Test(expected = JsonMappingException.class)
-    public void givenBidirectionRelation_whenSerialize_thenException() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenSerializing_thenException() throws JsonProcessingException {
         final User user = new User(1, "John");
         final Item item = new Item(2, "book", user);
         user.addItem(item);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValueAsString(item);
+        new ObjectMapper().writeValueAsString(item);
     }
 
     @Test
-    public void givenBidirectionRelation_whenUseJacksonReferenceAnnotation_thenCorrect() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenUsingJacksonReferenceAnnotation_thenCorrect() throws JsonProcessingException {
         final UserWithRef user = new UserWithRef(1, "John");
         final ItemWithRef item = new ItemWithRef(2, "book", user);
         user.addItem(item);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        final String result = mapper.writeValueAsString(item);
+        final String result = new ObjectMapper().writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -50,13 +48,12 @@ public class JacksonBidirectionRelationTest {
     }
 
     @Test
-    public void givenBidirectionRelation_whenUseJsonIdentityInfo_thenCorrect() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenUsingJsonIdentityInfo_thenCorrect() throws JsonProcessingException {
         final UserWithIdentity user = new UserWithIdentity(1, "John");
         final ItemWithIdentity item = new ItemWithIdentity(2, "book", user);
         user.addItem(item);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        final String result = mapper.writeValueAsString(item);
+        final String result = new ObjectMapper().writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -64,13 +61,12 @@ public class JacksonBidirectionRelationTest {
     }
 
     @Test
-    public void givenBidirectionRelation_whenUseJsonIgnore_thenCorrect() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
         final UserWithIgnore user = new UserWithIgnore(1, "John");
         final ItemWithIgnore item = new ItemWithIgnore(2, "book", user);
         user.addItem(item);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        final String result = mapper.writeValueAsString(item);
+        final String result = new ObjectMapper().writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -78,13 +74,12 @@ public class JacksonBidirectionRelationTest {
     }
 
     @Test
-    public void givenBidirectionRelation_whenUseCustomSerializer_thenCorrect() throws JsonProcessingException {
+    public void givenBidirectionRelation_whenUsingCustomSerializer_thenCorrect() throws JsonProcessingException {
         final UserWithSerializer user = new UserWithSerializer(1, "John");
         final ItemWithSerializer item = new ItemWithSerializer(2, "book", user);
         user.addItem(item);
 
-        final ObjectMapper mapper = new ObjectMapper();
-        final String result = mapper.writeValueAsString(item);
+        final String result = new ObjectMapper().writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -92,24 +87,21 @@ public class JacksonBidirectionRelationTest {
     }
 
     @Test
-    public void givenBidirectionRelation_whenDeserializeUsingIdentity_thenCorrect() throws JsonProcessingException, IOException {
+    public void givenBidirectionRelation_whenDeserializingUsingIdentity_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ObjectMapper mapper = new ObjectMapper();
+        final ItemWithIdentity item = new ObjectMapper().reader(ItemWithIdentity.class).readValue(json);
 
-        final ItemWithIdentity item = mapper.reader(ItemWithIdentity.class).readValue(json);
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);
     }
 
     @Test
-    public void givenBidirectionRelation_whenUseCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
+    public void givenBidirectionRelation_whenUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ObjectMapper mapper = new ObjectMapper();
-
-        final ItemWithSerializer item = mapper.reader(ItemWithSerializer.class).readValue(json);
+        final ItemWithSerializer item = new ObjectMapper().reader(ItemWithSerializer.class).readValue(json);
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);
