@@ -20,26 +20,32 @@ public class Java8SortUnitTest {
     @Test
     public final void givenPreLambda_whenSortingEntitiesByName_thenCorrectlySorted() {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
+
         Collections.sort(humans, new Comparator<Human>() {
             @Override
             public final int compare(final Human h1, final Human h2) {
                 return h1.getName().compareTo(h2.getName());
             }
         });
+
         Assert.assertThat(humans.get(0), equalTo(new Human("Jack", 12)));
     }
 
     @Test
     public final void whenSortingEntitiesByName_thenCorrectlySorted() {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
+
         Collections.sort(humans, (final Human h1, final Human h2) -> h1.getName().compareTo(h2.getName()));
+
         Assert.assertThat(humans.get(0), equalTo(new Human("Jack", 12)));
     }
 
     @Test
     public final void givenLambdaShortForm_whenSortingEntitiesByName_thenCorrectlySorted() {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
-        Collections.sort(humans, (h1, h2) -> h1.getName().compareTo(h2.getName()));
+
+        humans.sort((h1, h2) -> h1.getName().compareTo(h2.getName()));
+
         Assert.assertThat(humans.get(0), equalTo(new Human("Jack", 12)));
     }
 
