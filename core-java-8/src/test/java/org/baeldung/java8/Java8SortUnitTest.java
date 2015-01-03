@@ -63,12 +63,20 @@ public class Java8SortUnitTest {
     }
 
     @Test
-    public final void givenComposition_whenSortingEntitiesByNameThenAge_thenCorrectlySorted() {
+    public final void givenCompositionVerbose_whenSortingEntitiesByNameThenAge_thenCorrectlySorted() {
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 12), new Human("Sarah", 10), new Human("Zack", 12));
         final Comparator<Human> byName = (h1, h2) -> h1.getName().compareTo(h2.getName());
         final Comparator<Human> byAge = (h1, h2) -> Ints.compare(h1.getAge(), h2.getAge());
 
         humans.sort(byName.thenComparing(byAge));
+        Assert.assertThat(humans.get(0), equalTo(new Human("Sarah", 10)));
+    }
+
+    @Test
+    public final void givenComposition_whenSortingEntitiesByNameThenAge_thenCorrectlySorted() {
+        final List<Human> humans = Lists.newArrayList(new Human("Sarah", 12), new Human("Sarah", 10), new Human("Zack", 12));
+
+        humans.sort(Comparator.comparing(Human::getName).thenComparing(Human::getAge));
         Assert.assertThat(humans.get(0), equalTo(new Human("Sarah", 10)));
     }
 
