@@ -1,4 +1,4 @@
-package org.baeldung.validation.service;
+package org.baeldung.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

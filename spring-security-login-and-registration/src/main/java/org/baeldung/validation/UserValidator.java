@@ -1,4 +1,4 @@
-package org.baeldung.validation.service;
+package org.baeldung.validation;
 
 import org.baeldung.persistence.service.UserDto;
 import org.springframework.validation.Errors;

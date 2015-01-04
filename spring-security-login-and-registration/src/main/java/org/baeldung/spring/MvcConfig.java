@@ -2,9 +2,9 @@ package org.baeldung.spring;
 
 import java.util.Locale;
 
-import org.baeldung.hashing.HashGenerator;
-import org.baeldung.validation.service.EmailValidator;
-import org.baeldung.validation.service.PasswordMatchesValidator;
+import org.baeldung.security.hash.HashGenerator;
+import org.baeldung.validation.EmailValidator;
+import org.baeldung.validation.PasswordMatchesValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

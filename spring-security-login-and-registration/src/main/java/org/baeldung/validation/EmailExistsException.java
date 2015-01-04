@@ -1,4 +1,4 @@
-package org.baeldung.validation.service;
+package org.baeldung.validation;
 
 @SuppressWarnings("serial")
 public class EmailExistsException extends Throwable {

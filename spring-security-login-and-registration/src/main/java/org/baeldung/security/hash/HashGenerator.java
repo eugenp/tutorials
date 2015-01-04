@@ -1,4 +1,4 @@
-package org.baeldung.hashing;
+package org.baeldung.security.hash;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

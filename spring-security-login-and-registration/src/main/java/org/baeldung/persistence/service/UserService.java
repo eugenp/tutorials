@@ -2,13 +2,13 @@ package org.baeldung.persistence.service;
 
 import javax.transaction.Transactional;
 
-import org.baeldung.hashing.HashGenerator;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.VerificationTokenRepository;
 import org.baeldung.persistence.model.Role;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
-import org.baeldung.validation.service.EmailExistsException;
+import org.baeldung.security.hash.HashGenerator;
+import org.baeldung.validation.EmailExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

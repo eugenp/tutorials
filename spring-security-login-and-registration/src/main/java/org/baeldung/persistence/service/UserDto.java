@@ -2,8 +2,8 @@ package org.baeldung.persistence.service;
 
 import javax.validation.constraints.NotNull;
 
-import org.baeldung.validation.service.PasswordMatches;
-import org.baeldung.validation.service.ValidEmail;
+import org.baeldung.validation.PasswordMatches;
+import org.baeldung.validation.ValidEmail;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @PasswordMatches

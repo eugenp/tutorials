@@ -10,7 +10,7 @@ import org.baeldung.persistence.model.VerificationToken;
 import org.baeldung.persistence.service.UserDto;
 import org.baeldung.persistence.service.IUserService;
 import org.baeldung.registration.OnRegistrationCompleteEvent;
-import org.baeldung.validation.service.EmailExistsException;
+import org.baeldung.validation.EmailExistsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.baeldung.validation.service;
+package org.baeldung.validation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

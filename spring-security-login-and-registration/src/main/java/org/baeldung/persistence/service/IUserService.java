@@ -2,7 +2,7 @@ package org.baeldung.persistence.service;
 
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
-import org.baeldung.validation.service.EmailExistsException;
+import org.baeldung.validation.EmailExistsException;
 
 public interface IUserService {
 
