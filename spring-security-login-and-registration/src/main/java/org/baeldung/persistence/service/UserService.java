@@ -24,6 +24,8 @@ public class UserService implements IUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // API
+
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
         if (emailExist(accountDto.getEmail())) {

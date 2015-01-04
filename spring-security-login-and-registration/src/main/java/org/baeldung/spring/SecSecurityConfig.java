@@ -16,17 +16,13 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 public class SecSecurityConfig {
 
     @Autowired
-    UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
 
     public SecSecurityConfig() {
         super();
     }
 
-    @Bean
-    public BCryptPasswordEncoder encoder() {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(11);
-        return encoder;
-    }
+    // beans
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
@@ -37,8 +33,8 @@ public class SecSecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder(11);
     }
 
 }
