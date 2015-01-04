@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:application.properties" })
-@ComponentScan({ "org.baeldung.persistence.model" })
+@PropertySource({ "classpath:persistence.properties" })
+@ComponentScan({ "org.baeldung.persistence" })
 @EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
 public class PersistenceJPAConfig {
 

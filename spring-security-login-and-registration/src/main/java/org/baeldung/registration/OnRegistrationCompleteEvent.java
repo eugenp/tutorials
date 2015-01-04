@@ -1,4 +1,4 @@
-package org.baeldung.event;
+package org.baeldung.registration;
 
 import java.util.Locale;
 

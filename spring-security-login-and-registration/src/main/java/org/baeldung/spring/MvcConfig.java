@@ -23,7 +23,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.web.controller", "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
+@ComponentScan(basePackages = { "org.baeldung.web" })
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -31,7 +31,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         super();
     }
 
-    // API
+    //
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
@@ -51,15 +51,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/successRegister.html");
     }
 
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/view/");
-        bean.setSuffix(".jsp");
-        return bean;
-    }
-
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/");
@@ -70,6 +61,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor);
+    }
+
+    // beans
+
+    @Bean
+    public ViewResolver viewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
+        return bean;
     }
 
     @Bean
@@ -91,21 +93,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public EmailValidator usernameValidator() {
-        EmailValidator userNameValidator = new EmailValidator();
-        return userNameValidator;
+        return new EmailValidator();
     }
 
     @Bean
     public PasswordMatchesValidator passwordMatchesValidator() {
-        PasswordMatchesValidator passwordMatchesValidator = new PasswordMatchesValidator();
-        return passwordMatchesValidator;
+        return new PasswordMatchesValidator();
     }
 
-    // DIC 7
     @Bean
     public HashGenerator hashGenerator() {
-        HashGenerator hashGenerator = new HashGenerator();
-        return hashGenerator;
+        return new HashGenerator();
     }
 
 }

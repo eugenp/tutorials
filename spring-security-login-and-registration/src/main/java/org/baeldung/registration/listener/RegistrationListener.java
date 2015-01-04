@@ -1,10 +1,10 @@
-package org.baeldung.event.listener;
+package org.baeldung.registration.listener;
 
 import java.util.UUID;
 
-import org.baeldung.event.OnRegistrationCompleteEvent;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.IUserService;
+import org.baeldung.registration.OnRegistrationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
