@@ -7,9 +7,9 @@ import org.baeldung.persistence.dao.VerificationTokenRepository;
 import org.baeldung.persistence.model.Role;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
-import org.baeldung.security.hash.HashGenerator;
 import org.baeldung.validation.EmailExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,19 +22,20 @@ public class UserService implements IUserService {
     private VerificationTokenRepository tokenRepository;
 
     @Autowired
-    private HashGenerator hashGenerator;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
         if (emailExist(accountDto.getEmail())) {
             throw new EmailExistsException("There is an account with that email adress: " + accountDto.getEmail());
         }
-        User user = new User();
+        final User user = new User();
+
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-        String hashedPassword = hashGenerator.getHashedPassword(accountDto.getPassword());
-        user.setPassword(hashedPassword);
+        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
+
         user.setRole(new Role(Integer.valueOf(1), user));
         return repository.save(user);
     }
