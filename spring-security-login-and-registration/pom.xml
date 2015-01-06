@@ -30,7 +30,7 @@
 			<artifactId>spring-security-config</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<!-- @Inject -->
 		<!-- <dependency> -->
 		<!-- <groupId>javax.inject</groupId> -->
@@ -128,6 +128,7 @@
 		</dependency>
 
 	</dependencies>
+
 	<build>
 		<finalName>spring-security-login-and-registration</finalName>
 		<resources>
@@ -136,7 +137,26 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+				</configuration>
+			</plugin>
+	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+
+		</plugins>
 	</build>
+
 	<properties>
 		<java-version>1.7</java-version>
 		<org.springframework-version>3.1.4.RELEASE</org.springframework-version>
