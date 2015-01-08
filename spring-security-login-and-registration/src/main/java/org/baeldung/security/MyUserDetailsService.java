@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Privilege;
@@ -17,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,45 +32,45 @@ public class MyUserDetailsService implements UserDetailsService {
     private MessageSource messages;
     @Autowired
     private RoleRepository roleRepository;
-    
-    public MyUserDetailsService() {
 
+    public MyUserDetailsService() {
+        super();
     }
 
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        boolean enabled = true;
-        boolean accountNonExpired = true;
-        boolean credentialsNonExpired = true;
-        boolean accountNonLocked = true;
+    // API
+
+    @Override
+    public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
         try {
-            User user = userRepository.findByEmail(email);
+            final User user = userRepository.findByEmail(email);
             if (user == null) {
-                return new org.springframework.security.core.userdetails.User(" ", " ", enabled, true, true, true, getAuthorities(roleRepository.findByName("ROLE_USER")));
+                return new org.springframework.security.core.userdetails.User(" ", " ", true, true, true, true, getAuthorities(roleRepository.findByName("ROLE_USER")));
             }
 
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), accountNonExpired, credentialsNonExpired, accountNonLocked, getAuthorities(user.getRole()));
-        } catch (Exception e) {
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities(user.getRole()));
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private Collection<? extends GrantedAuthority> getAuthorities(Role roleName) {
-        List<GrantedAuthority> authList = getGrantedAuthorities(getPrivileges(roleName));
-        return authList;
+    // UTIL
+
+    private final Collection<? extends GrantedAuthority> getAuthorities(final Role roleName) {
+        return getGrantedAuthorities(getPrivileges(roleName));
     }
 
-    public List<String> getPrivileges(Role role) {
-        List<String> privileges = new ArrayList<String>();
-        Collection<Privilege> collection = role.getPrivileges();
-        for (Privilege item : collection) {
+    private final List<String> getPrivileges(final Role role) {
+        final List<String> privileges = new ArrayList<String>();
+        final Collection<Privilege> collection = role.getPrivileges();
+        for (final Privilege item : collection) {
             privileges.add(item.getName());
         }
         return privileges;
     }
 
-    private static List<GrantedAuthority> getGrantedAuthorities(List<String> privileges) {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (String privilege : privileges) {
+    private final List<GrantedAuthority> getGrantedAuthorities(final List<String> privileges) {
+        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (final String privilege : privileges) {
             authorities.add(new SimpleGrantedAuthority(privilege));
         }
         return authorities;
