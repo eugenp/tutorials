@@ -11,10 +11,10 @@
 <body>
 	<div class="container">
 		<div class="span12">
-			<sec:authorize ifAnyGranted="ROLE_USER">
+			<sec:authorize ifAnyGranted="READ_PRIVILEGE">
 				<spring:message code="message.unauth"></spring:message>
 			</sec:authorize>
-			<sec:authorize ifAnyGranted="ROLE_ADMIN">
+			<sec:authorize ifAnyGranted="WRITE_PRIVILEGE">
 				<H1>
 					<spring:message code="label.pages.admin.message"></spring:message>
 				</H1>

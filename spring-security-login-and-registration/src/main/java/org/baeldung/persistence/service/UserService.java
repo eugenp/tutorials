@@ -2,9 +2,9 @@ package org.baeldung.persistence.service;
 
 import javax.transaction.Transactional;
 
+import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.VerificationTokenRepository;
-import org.baeldung.persistence.model.Role;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
 import org.baeldung.validation.EmailExistsException;
@@ -24,6 +24,9 @@ public class UserService implements IUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private RoleRepository roleRepository;
+    
     // API
 
     @Override
@@ -38,7 +41,7 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
 
-        user.setRole(new Role(Integer.valueOf(1), user));
+        user.setRole(roleRepository.findByName("ROLE_USER"));
         return repository.save(user);
     }
 

@@ -1,16 +1,16 @@
 package org.baeldung.persistence.model;
 
-import javax.persistence.CascadeType;
-//ERASE
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class User {
 
     @Id
@@ -29,7 +29,8 @@ public class User {
 
     private boolean tokenExpired;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public User() {

@@ -13,12 +13,12 @@
 	<div class="container">
 	
 		<div class="span12">
-			<sec:authorize access="hasRole('ROLE_USER')">
+			<sec:authorize access="hasRole('READ_PRIVILEGE')">
 				<spring:message code="label.pages.user.message"></spring:message>
 				<br />
 			</sec:authorize>
 
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasRole('WRITE_PRIVILEGE')">
 				<spring:message code="label.pages.admin.message"></spring:message>
 				<br />
 			</sec:authorize>
