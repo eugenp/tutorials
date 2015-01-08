@@ -2,39 +2,30 @@ package org.baeldung.persistence.model;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table
-public class Role {
-
+public class Privilege {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "role")
-    private Collection<User> users;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "roles_privileges", joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "privilege_id", referencedColumnName = "id"))
-    private Collection<Privilege> privileges;
-
     private String name;
 
-    public Role() {
+    @ManyToMany(mappedBy = "privileges")
+    private Collection<Role> roles;
+
+    public Privilege() {
         super();
     }
 
-    public Role(String name) {
+    public Privilege(String name) {
         super();
         this.name = name;
     }
@@ -55,20 +46,12 @@ public class Role {
         this.name = name;
     }
 
-    public Collection<User> getUsers() {
-        return users;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
-
-    public Collection<Privilege> getPrivileges() {
-        return privileges;
-    }
-
-    public void setPrivileges(Collection<Privilege> privileges) {
-        this.privileges = privileges;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -87,8 +70,8 @@ public class Role {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        final Role role = (Role) obj;
-        if (!role.equals(role.name))
+        final Privilege privilege = (Privilege) obj;
+        if (!privilege.equals(privilege.name))
             return false;
         return true;
     }
@@ -96,7 +79,7 @@ public class Role {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Role [name=").append(name).append("]").append("[id=").append(id).append("]");
+        builder.append("Privilege [name=").append(name).append("]").append("[id=").append(id).append("]");
         return builder.toString();
     }
 }

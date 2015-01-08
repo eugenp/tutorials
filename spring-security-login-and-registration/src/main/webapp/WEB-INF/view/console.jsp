@@ -10,11 +10,11 @@
 	<div class="container">
 		<div class="span12">
 			<h1>This is the landing page for the admin</h1>
-			<sec:authorize access="hasRole('ROLE_USER')">
+			<sec:authorize access="hasRole('READ_PRIVILEGE')">
 		This text is only visible to a user
 		<br />
 			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasRole('WRITE_PRIVILEGE')">
 		This text is only visible to an admin
 		<br />
 			</sec:authorize>
