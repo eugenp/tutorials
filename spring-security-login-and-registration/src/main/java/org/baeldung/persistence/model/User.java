@@ -3,7 +3,6 @@ package org.baeldung.persistence.model;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +30,7 @@ public class User {
 
     private boolean tokenExpired;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "users_roles", 
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
