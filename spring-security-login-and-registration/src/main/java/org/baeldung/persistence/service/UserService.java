@@ -1,5 +1,7 @@
 package org.baeldung.persistence.service;
 
+import java.util.Arrays;
+
 import javax.transaction.Transactional;
 
 import org.baeldung.persistence.dao.RoleRepository;
@@ -41,7 +43,7 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
 
-        user.setRole(roleRepository.findByName("ROLE_USER"));
+        user.setRoles(Arrays.asList(roleRepository.findByName("ROLE_USER")));
         return repository.save(user);
     }
 

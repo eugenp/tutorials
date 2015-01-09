@@ -11,7 +11,7 @@
 <body>
 	<div class="container">
 		<div class="span12">
-			<sec:authorize ifAnyGranted="READ_PRIVILEGE">
+			<sec:authorize ifNotGranted="WRITE_PRIVILEGE">
 				<spring:message code="message.unauth"></spring:message>
 			</sec:authorize>
 			<sec:authorize ifAnyGranted="WRITE_PRIVILEGE">

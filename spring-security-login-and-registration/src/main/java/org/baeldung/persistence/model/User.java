@@ -1,16 +1,18 @@
 package org.baeldung.persistence.model;
 
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
-@Table
 public class User {
 
     @Id
@@ -29,9 +31,12 @@ public class User {
 
     private boolean tokenExpired;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles", 
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 
     public User() {
         super();
@@ -79,12 +84,12 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
     public boolean isEnabled() {
