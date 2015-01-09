@@ -1,6 +1,7 @@
 package org.baeldung.security;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -44,10 +45,10 @@ public class MyUserDetailsService implements UserDetailsService {
         try {
             final User user = userRepository.findByEmail(email);
             if (user == null) {
-                return new org.springframework.security.core.userdetails.User(" ", " ", true, true, true, true, getAuthorities(roleRepository.findByName("ROLE_USER")));
+                return new org.springframework.security.core.userdetails.User(" ", " ", true, true, true, true, getAuthorities(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
             }
 
-            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities(user.getRole()));
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities(user.getRoles()));
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
@@ -55,13 +56,16 @@ public class MyUserDetailsService implements UserDetailsService {
 
     // UTIL
 
-    private final Collection<? extends GrantedAuthority> getAuthorities(final Role roleName) {
-        return getGrantedAuthorities(getPrivileges(roleName));
+    private final Collection<? extends GrantedAuthority> getAuthorities(final Collection<Role> roles) {
+        return getGrantedAuthorities(getPrivileges(roles));
     }
 
-    private final List<String> getPrivileges(final Role role) {
+    private final List<String> getPrivileges(final Collection<Role> roles) {
         final List<String> privileges = new ArrayList<String>();
-        final Collection<Privilege> collection = role.getPrivileges();
+        final List<Privilege> collection = new ArrayList<Privilege>();
+        for (Role role : roles) {
+            collection.addAll(role.getPrivileges());
+        }
         for (final Privilege item : collection) {
             privileges.add(item.getName());
         }

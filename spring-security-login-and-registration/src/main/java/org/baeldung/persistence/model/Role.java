@@ -9,19 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
 @Entity
-@Table
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "role")
+    @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 
     @ManyToMany(cascade = CascadeType.ALL)
