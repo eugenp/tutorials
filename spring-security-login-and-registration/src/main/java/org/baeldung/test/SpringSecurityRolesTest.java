@@ -15,13 +15,12 @@ import org.baeldung.persistence.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
@@ -38,9 +37,14 @@ public class SpringSecurityRolesTest {
     @Autowired
     private PrivilegeRepository privilegeRepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     private User user;
     private Role role;
     private Privilege privilege;
+
+    // tests
 
     @Test
     public void testDeleteUser() {
@@ -50,8 +54,7 @@ public class SpringSecurityRolesTest {
         user = new User();
         user.setFirstName("John");
         user.setLastName("Doe");
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode("123"));
+        user.setPassword(passwordEncoder.encode("123"));
         user.setEmail("john@doe.com");
         user.setRoles(Arrays.asList(role));
         user.setEnabled(true);
@@ -78,8 +81,7 @@ public class SpringSecurityRolesTest {
         user = new User();
         user.setFirstName("John");
         user.setLastName("Doe");
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode("123"));
+        user.setPassword(passwordEncoder.encode("123"));
         user.setEmail("john@doe.com");
         user.setRoles(Arrays.asList(role));
         user.setEnabled(true);
@@ -92,7 +94,7 @@ public class SpringSecurityRolesTest {
         user.setRoles(new ArrayList<Role>());
         role.setPrivileges(new ArrayList<Privilege>());
         roleRepository.delete(role);
-        
+
         assertNull(roleRepository.findByName(role.getName()));
         assertNotNull(privilegeRepository.findByName(privilege.getName()));
         assertNotNull(userRepository.findByEmail(user.getEmail()));
@@ -106,13 +108,13 @@ public class SpringSecurityRolesTest {
         role = new Role("TEST_ROLE");
         role.setPrivileges(Arrays.asList(privilege));
         roleRepository.save(role);
-        
+
         assertNotNull(roleRepository.findByName(role.getName()));
         assertNotNull(privilegeRepository.findByName(privilege.getName()));
 
         role.setPrivileges(new ArrayList<Privilege>());
         privilegeRepository.delete(privilege);
-        
+
         assertNull(privilegeRepository.findByName(privilege.getName()));
         assertNotNull(roleRepository.findByName(role.getName()));
     }
