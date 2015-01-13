@@ -28,7 +28,7 @@ public class UserService implements IUserService {
 
     @Autowired
     private RoleRepository roleRepository;
-    
+
     // API
 
     @Override
