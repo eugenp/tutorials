@@ -65,7 +65,7 @@ public class GuavaStringTest {
 
         assertThat(result, containsString("apple-banana-orange"));
         assertThat(result, containsString("cat-dog-bird"));
-        assertThat(result, containsString("apple-banana-orange"));
+        assertThat(result, containsString("John-Jane-Adam"));
     }
 
     @Test
