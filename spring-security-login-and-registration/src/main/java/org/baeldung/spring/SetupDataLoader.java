@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class InitialDataLoader implements ApplicationListener<ContextRefreshedEvent> {
+public class SetupDataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
-    boolean alreadySetup = false;
+    private boolean alreadySetup = false;
 
     @Autowired
     private UserRepository userRepository;
@@ -34,11 +34,14 @@ public class InitialDataLoader implements ApplicationListener<ContextRefreshedEv
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // API
+
     @Override
     @Transactional
     public void onApplicationEvent(final ContextRefreshedEvent event) {
-        if (alreadySetup)
+        if (alreadySetup) {
             return;
+        }
 
         // == create initial privileges
         final Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
