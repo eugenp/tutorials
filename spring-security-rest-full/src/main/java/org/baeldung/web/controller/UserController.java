@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
+import org.baeldung.persistence.service.impl.MyUserService;
 import org.baeldung.persistence.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private MyUserService myService;
 
     public UserController() {
         super();
@@ -55,6 +60,21 @@ public class UserController {
         return service.searchBySpecification(params);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/myusers")
+    @ResponseBody
+    public Iterable<MyUser> findAllByQuerydsl(@RequestParam(value = "search", required = false) final String search) {
+        final Map<String, Object> params = new HashMap<String, Object>();
+
+        if (search != null) {
+            final Pattern pattern = Pattern.compile("(\\w+?):(\\w+?),");
+            final Matcher matcher = pattern.matcher(search + ",");
+            while (matcher.find()) {
+                params.put(matcher.group(1), matcher.group(2));
+            }
+        }
+        return myService.search(params);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/users/new")
     @ResponseBody
     public long addUser(@RequestParam("first") final String first, @RequestParam("last") final String last, @RequestParam("age") final int age) {
@@ -64,6 +84,18 @@ public class UserController {
         user.setEmail("john@doe.com");
         user.setAge(age);
         service.saveUser(user);
+        return user.getId();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/myusers/new")
+    @ResponseBody
+    public long addMyUser(@RequestParam("first") final String first, @RequestParam("last") final String last, @RequestParam("age") final int age) {
+        final MyUser user = new MyUser();
+        user.setFirstName(first);
+        user.setLastName(last);
+        user.setEmail("john@doe.com");
+        user.setAge(age);
+        myService.save(user);
         return user.getId();
     }
 }
