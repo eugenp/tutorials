@@ -30,103 +30,84 @@ public class EmployeeDAO {
 
     @Autowired
     public void setDataSource(final DataSource dataSource) {
-	jdbcTemplate = new JdbcTemplate(dataSource);
-	final CustomSQLErrorCodeTranslator customSQLErrorCodeTranslator = new CustomSQLErrorCodeTranslator();
-	jdbcTemplate.setExceptionTranslator(customSQLErrorCodeTranslator);
+        jdbcTemplate = new JdbcTemplate(dataSource);
+        final CustomSQLErrorCodeTranslator customSQLErrorCodeTranslator = new CustomSQLErrorCodeTranslator();
+        jdbcTemplate.setExceptionTranslator(customSQLErrorCodeTranslator);
 
-	namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-	simpleJdbcInsert = new SimpleJdbcInsert(dataSource)
-	.withTableName("EMPLOYEE");
+        namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+        simpleJdbcInsert = new SimpleJdbcInsert(dataSource).withTableName("EMPLOYEE");
 
     }
 
     public int getCountOfEmployees() {
-	return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EMPLOYEE",
-		Integer.class);
+        return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM EMPLOYEE", Integer.class);
     }
 
     public List<Employee> getAllEmployees() {
-	return jdbcTemplate.query("SELECT * FROM EMPLOYEE",
-		new EmployeeRowMapper());
+        return jdbcTemplate.query("SELECT * FROM EMPLOYEE", new EmployeeRowMapper());
     }
 
     public int addEmplyee(final int id) {
-	return jdbcTemplate.update("INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?)",
-		id, "Bill", "Gates", "USA");
+        return jdbcTemplate.update("INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?)", id, "Bill", "Gates", "USA");
     }
 
     public int addEmplyeeUsingSimpelJdbcInsert(final Employee emp) {
-	final Map<String, Object> parameters = new HashMap<String, Object>();
-	parameters.put("ID", emp.getId());
-	parameters.put("FIRST_NAME", emp.getFirstName());
-	parameters.put("LAST_NAME", emp.getLastName());
-	parameters.put("ADDRESS", emp.getAddress());
+        final Map<String, Object> parameters = new HashMap<String, Object>();
+        parameters.put("ID", emp.getId());
+        parameters.put("FIRST_NAME", emp.getFirstName());
+        parameters.put("LAST_NAME", emp.getLastName());
+        parameters.put("ADDRESS", emp.getAddress());
 
-	return simpleJdbcInsert.execute(parameters);
+        return simpleJdbcInsert.execute(parameters);
     }
 
     public Employee getEmployee(final int id) {
-	final String query = "SELECT * FROM EMPLOYEE WHERE ID = ?";
-	return jdbcTemplate.queryForObject(query, new Object[] { id },
-		new EmployeeRowMapper());
+        final String query = "SELECT * FROM EMPLOYEE WHERE ID = ?";
+        return jdbcTemplate.queryForObject(query, new Object[] { id }, new EmployeeRowMapper());
     }
 
     public void addEmplyeeUsingExecuteMethod() {
-	jdbcTemplate
-	.execute("INSERT INTO EMPLOYEE VALUES (6, 'Bill', 'Gates', 'USA')");
+        jdbcTemplate.execute("INSERT INTO EMPLOYEE VALUES (6, 'Bill', 'Gates', 'USA')");
     }
 
     public String getEmployeeUsingMapSqlParameterSource() {
-	final SqlParameterSource namedParameters = new MapSqlParameterSource()
-	.addValue("id", 1);
+        final SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", 1);
 
-	return namedParameterJdbcTemplate.queryForObject(
-		"SELECT FIRST_NAME FROM EMPLOYEE WHERE ID = :id",
-		namedParameters, String.class);
+        return namedParameterJdbcTemplate.queryForObject("SELECT FIRST_NAME FROM EMPLOYEE WHERE ID = :id", namedParameters, String.class);
     }
 
     public int getEmployeeUsingBeanPropertySqlParameterSource() {
-	final Employee employee = new Employee();
-	employee.setFirstName("James");
+        final Employee employee = new Employee();
+        employee.setFirstName("James");
 
-	final String SELECT_BY_ID = "SELECT COUNT(*) FROM EMPLOYEE WHERE FIRST_NAME = :firstName";
+        final String SELECT_BY_ID = "SELECT COUNT(*) FROM EMPLOYEE WHERE FIRST_NAME = :firstName";
 
-	final SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(
-		employee);
+        final SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(employee);
 
-	return namedParameterJdbcTemplate.queryForObject(SELECT_BY_ID,
-		namedParameters, Integer.class);
+        return namedParameterJdbcTemplate.queryForObject(SELECT_BY_ID, namedParameters, Integer.class);
     }
 
     public int[] batchUpdateUsingJDBCTemplate(final List<Employee> employees) {
-	return jdbcTemplate.batchUpdate(
-		"INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?)",
-		new BatchPreparedStatementSetter() {
+        return jdbcTemplate.batchUpdate("INSERT INTO EMPLOYEE VALUES (?, ?, ?, ?)", new BatchPreparedStatementSetter() {
 
-		    @Override
-		    public void setValues(final PreparedStatement ps,
-			    final int i) throws SQLException {
-			ps.setInt(1, employees.get(i).getId());
-			ps.setString(2, employees.get(i).getFirstName());
-			ps.setString(3, employees.get(i).getLastName());
-			ps.setString(4, employees.get(i).getAddress());
-		    }
+            @Override
+            public void setValues(final PreparedStatement ps, final int i) throws SQLException {
+                ps.setInt(1, employees.get(i).getId());
+                ps.setString(2, employees.get(i).getFirstName());
+                ps.setString(3, employees.get(i).getLastName());
+                ps.setString(4, employees.get(i).getAddress());
+            }
 
-		    @Override
-		    public int getBatchSize() {
-			return 3;
-		    }
-		});
+            @Override
+            public int getBatchSize() {
+                return 3;
+            }
+        });
     }
 
-    public int[] batchUpdateUsingNamedParameterJDBCTemplate(
-	    final List<Employee> employees) {
-	final SqlParameterSource[] batch = SqlParameterSourceUtils
-		.createBatch(employees.toArray());
-	final int[] updateCounts = namedParameterJdbcTemplate
-		.batchUpdate(
-			"INSERT INTO EMPLOYEE VALUES (:id, :firstName, :lastName, :address)",
-			batch);
-	return updateCounts;
+    public int[] batchUpdateUsingNamedParameterJDBCTemplate(final List<Employee> employees) {
+        final SqlParameterSource[] batch = SqlParameterSourceUtils.createBatch(employees.toArray());
+        final int[] updateCounts = namedParameterJdbcTemplate.batchUpdate("INSERT INTO EMPLOYEE VALUES (:id, :firstName, :lastName, :address)", batch);
+        return updateCounts;
     }
 }

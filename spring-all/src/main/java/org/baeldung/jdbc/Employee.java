@@ -10,35 +10,35 @@ public class Employee {
     private String address;
 
     public int getId() {
-	return id;
+        return id;
     }
 
     public void setId(final int id) {
-	this.id = id;
+        this.id = id;
     }
 
     public String getFirstName() {
-	return firstName;
+        return firstName;
     }
 
     public void setFirstName(final String firstName) {
-	this.firstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-	return lastName;
+        return lastName;
     }
 
     public void setLastName(final String lastName) {
-	this.lastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getAddress() {
-	return address;
+        return address;
     }
 
     public void setAddress(final String address) {
-	this.address = address;
+        this.address = address;
     }
 
 }
