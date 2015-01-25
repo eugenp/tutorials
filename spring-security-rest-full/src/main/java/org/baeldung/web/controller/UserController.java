@@ -1,5 +1,6 @@
 package org.baeldung.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.impl.MyUserService;
 import org.baeldung.persistence.service.impl.UserService;
+import org.baeldung.web.util.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +35,13 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     @ResponseBody
     public List<User> findAll(@RequestParam(value = "search", required = false) final String search) {
-        final Map<String, Object> params = new HashMap<String, Object>();
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
 
         if (search != null) {
-            final Pattern pattern = Pattern.compile("(\\w+?):(\\w+?),");
+            final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             final Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
-                params.put(matcher.group(1), matcher.group(2));
+                params.add(new SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3)));
             }
         }
         return service.searchUser(params);
@@ -48,13 +50,13 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
     @ResponseBody
     public List<User> findAllBySpecification(@RequestParam(value = "search", required = false) final String search) {
-        final Map<String, Object> params = new HashMap<String, Object>();
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
 
         if (search != null) {
-            final Pattern pattern = Pattern.compile("(\\w+?):(\\w+?),");
+            final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             final Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
-                params.put(matcher.group(1), matcher.group(2));
+                params.add(new SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3)));
             }
         }
         return service.searchBySpecification(params);
