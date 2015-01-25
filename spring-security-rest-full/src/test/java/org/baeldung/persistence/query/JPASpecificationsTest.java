@@ -1,15 +1,14 @@
 package org.baeldung.persistence.query;
 
-import static org.baeldung.persistence.dao.UserSpecifications.ageIsGreaterThan;
-import static org.baeldung.persistence.dao.UserSpecifications.firstNameIsLike;
-import static org.baeldung.persistence.dao.UserSpecifications.lastNameIsLike;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
 import org.baeldung.persistence.dao.UserRepository;
+import org.baeldung.persistence.dao.UserSpecification;
 import org.baeldung.persistence.model.User;
 import org.baeldung.spring.PersistenceConfig;
+import org.baeldung.web.util.SearchCriteria;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,13 +52,17 @@ public class JPASpecificationsTest {
 
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
-        final List<User> result = repository.findAll(lastNameIsLike("doe"));
+        final UserSpecification spec = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
+        final List<User> result = repository.findAll(spec);
+
         assertEquals(2, result.size());
     }
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final List<User> result = repository.findAll(Specifications.where(lastNameIsLike("doe")).and(firstNameIsLike("john")));
+        final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "john"));
+        final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
+        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
 
         assertEquals(1, result.size());
         assertEquals(userJohn.getEmail(), result.get(0).getEmail());
@@ -67,7 +70,9 @@ public class JPASpecificationsTest {
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
-        final List<User> result = repository.findAll(Specifications.where(lastNameIsLike("doe")).and(ageIsGreaterThan(25)));
+        final UserSpecification spec = new UserSpecification(new SearchCriteria("age", ">", "25"));
+        final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
+        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
 
         assertEquals(1, result.size());
         assertEquals(userTom.getEmail(), result.get(0).getEmail());
@@ -75,13 +80,17 @@ public class JPASpecificationsTest {
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
-        final List<User> result = repository.findAll(Specifications.where(lastNameIsLike("Adam")).and(firstNameIsLike("Fox")));
+        final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "Adam"));
+        final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "Fox"));
+        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
+
         assertEquals(0, result.size());
     }
 
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
-        final List<User> result = repository.findAll(firstNameIsLike("jo"));
+        final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "jo"));
+        final List<User> result = repository.findAll(spec);
 
         assertEquals(1, result.size());
         assertEquals(userJohn.getEmail(), result.get(0).getEmail());

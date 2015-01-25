@@ -1,12 +1,12 @@
 package org.baeldung.persistence.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.baeldung.persistence.model.User;
+import org.baeldung.web.util.SearchCriteria;
 
 public interface IUserDAO {
-    List<User> searchUser(Map<String, Object> params);
+    List<User> searchUser(List<SearchCriteria> params);
 
     void save(User entity);
 }

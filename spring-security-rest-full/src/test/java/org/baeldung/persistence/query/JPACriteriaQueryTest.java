@@ -2,13 +2,13 @@ package org.baeldung.persistence.query;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.service.impl.UserService;
 import org.baeldung.spring.PersistenceConfig;
+import org.baeldung.web.util.SearchCriteria;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,9 +51,9 @@ public class JPACriteriaQueryTest {
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final Map<String, Object> params = new HashMap<String, Object>();
-        params.put("firstName", "John");
-        params.put("lastName", "Doe");
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "John"));
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
 
         final List<User> result = userService.searchUser(params);
 
@@ -63,8 +63,8 @@ public class JPACriteriaQueryTest {
 
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
-        final Map<String, Object> params = new HashMap<String, Object>();
-        params.put("lastName", "doe");
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
 
         final List<User> result = userService.searchUser(params);
         assertEquals(2, result.size());
@@ -72,9 +72,9 @@ public class JPACriteriaQueryTest {
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
-        final Map<String, Object> params = new HashMap<String, Object>();
-        params.put("lastName", "doe");
-        params.put("age", "25");
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
+        params.add(new SearchCriteria("age", ">", "25"));
 
         final List<User> result = userService.searchUser(params);
 
@@ -84,9 +84,9 @@ public class JPACriteriaQueryTest {
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
-        final Map<String, Object> params = new HashMap<String, Object>();
-        params.put("firstName", "Adam");
-        params.put("lastName", "Fox");
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "Adam"));
+        params.add(new SearchCriteria("lastName", ":", "Fox"));
 
         final List<User> result = userService.searchUser(params);
         assertEquals(0, result.size());
@@ -94,8 +94,8 @@ public class JPACriteriaQueryTest {
 
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
-        final Map<String, Object> params = new HashMap<String, Object>();
-        params.put("firstName", "jo");
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "jo"));
 
         final List<User> result = userService.searchUser(params);
 
