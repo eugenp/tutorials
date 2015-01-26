@@ -1,9 +1,7 @@
 package org.baeldung.web.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -65,13 +63,13 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/myusers")
     @ResponseBody
     public Iterable<MyUser> findAllByQuerydsl(@RequestParam(value = "search", required = false) final String search) {
-        final Map<String, Object> params = new HashMap<String, Object>();
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
 
         if (search != null) {
-            final Pattern pattern = Pattern.compile("(\\w+?):(\\w+?),");
+            final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             final Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
-                params.put(matcher.group(1), matcher.group(2));
+                params.add(new SearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3)));
             }
         }
         return myService.search(params);

@@ -1,32 +1,25 @@
 package org.baeldung.persistence.dao;
 
-import static org.baeldung.persistence.dao.MyUserPrdicates.ageIsGreaterThan;
-import static org.baeldung.persistence.dao.MyUserPrdicates.firstNameIsLike;
-import static org.baeldung.persistence.dao.MyUserPrdicates.lastNameIsLike;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import org.baeldung.web.util.SearchCriteria;
 
 import com.mysema.query.types.expr.BooleanExpression;
 
 public class MyUserPredicatesBuilder {
-    public static BooleanExpression buildUserPredicates(final Map<String, Object> params) {
+    public static BooleanExpression buildUserPredicates(final List<SearchCriteria> params) {
         if (params.size() == 0)
             return null;
 
         final List<BooleanExpression> predicates = new ArrayList<BooleanExpression>();
-        String key, value;
+        MyUserPredicate predicate;
 
-        for (final Map.Entry<String, Object> param : params.entrySet()) {
-            key = param.getKey();
-            value = param.getValue().toString();
-            if (key.equalsIgnoreCase("age")) {
-                predicates.add(ageIsGreaterThan(Integer.parseInt(value)));
-            } else if (key.equalsIgnoreCase("firstName")) {
-                predicates.add(firstNameIsLike(value));
-            } else if (key.equalsIgnoreCase("lastName")) {
-                predicates.add(lastNameIsLike(value));
+        for (final SearchCriteria param : params) {
+            predicate = new MyUserPredicate(param);
+            final BooleanExpression exp = predicate.getPredicate();
+            if (exp != null) {
+                predicates.add(exp);
             }
         }
 
