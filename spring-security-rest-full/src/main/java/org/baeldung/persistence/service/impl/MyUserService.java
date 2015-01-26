@@ -1,10 +1,11 @@
 package org.baeldung.persistence.service.impl;
 
-import java.util.Map;
+import java.util.List;
 
 import org.baeldung.persistence.dao.MyUserPredicatesBuilder;
 import org.baeldung.persistence.dao.MyUserRepository;
 import org.baeldung.persistence.model.MyUser;
+import org.baeldung.web.util.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class MyUserService {
         super();
     }
 
-    public Iterable<MyUser> search(final Map<String, Object> params) {
+    public Iterable<MyUser> search(final List<SearchCriteria> params) {
         final BooleanExpression predicate = MyUserPredicatesBuilder.buildUserPredicates(params);
         if (predicate == null)
             return repository.findAll();

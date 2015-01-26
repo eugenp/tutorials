@@ -1,12 +1,14 @@
 package org.baeldung.persistence.query;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIn.isIn;
+import static org.hamcrest.core.IsNot.not;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import org.baeldung.persistence.dao.IUserDAO;
 import org.baeldung.persistence.model.User;
-import org.baeldung.persistence.service.impl.UserService;
 import org.baeldung.spring.PersistenceConfig;
 import org.baeldung.web.util.SearchCriteria;
 import org.junit.Before;
@@ -26,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class JPACriteriaQueryTest {
 
     @Autowired
-    private UserService userService;
+    private IUserDAO userApi;
 
     private User userJohn;
 
@@ -39,14 +41,14 @@ public class JPACriteriaQueryTest {
         userJohn.setLastName("Doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
-        userService.saveUser(userJohn);
+        userApi.save(userJohn);
 
         userTom = new User();
         userTom.setFirstName("Tom");
         userTom.setLastName("Doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
-        userService.saveUser(userTom);
+        userApi.save(userTom);
     }
 
     @Test
@@ -55,10 +57,10 @@ public class JPACriteriaQueryTest {
         params.add(new SearchCriteria("firstName", ":", "John"));
         params.add(new SearchCriteria("lastName", ":", "Doe"));
 
-        final List<User> result = userService.searchUser(params);
+        final List<User> results = userApi.searchUser(params);
 
-        assertEquals(1, result.size());
-        assertEquals(userJohn.getEmail(), result.get(0).getEmail());
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
     }
 
     @Test
@@ -66,8 +68,9 @@ public class JPACriteriaQueryTest {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
         params.add(new SearchCriteria("lastName", ":", "Doe"));
 
-        final List<User> result = userService.searchUser(params);
-        assertEquals(2, result.size());
+        final List<User> results = userApi.searchUser(params);
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, isIn(results));
     }
 
     @Test
@@ -76,10 +79,10 @@ public class JPACriteriaQueryTest {
         params.add(new SearchCriteria("lastName", ":", "Doe"));
         params.add(new SearchCriteria("age", ">", "25"));
 
-        final List<User> result = userService.searchUser(params);
+        final List<User> results = userApi.searchUser(params);
 
-        assertEquals(1, result.size());
-        assertEquals(userTom.getEmail(), result.get(0).getEmail());
+        assertThat(userTom, isIn(results));
+        assertThat(userJohn, not(isIn(results)));
     }
 
     @Test
@@ -88,8 +91,9 @@ public class JPACriteriaQueryTest {
         params.add(new SearchCriteria("firstName", ":", "Adam"));
         params.add(new SearchCriteria("lastName", ":", "Fox"));
 
-        final List<User> result = userService.searchUser(params);
-        assertEquals(0, result.size());
+        final List<User> results = userApi.searchUser(params);
+        assertThat(userJohn, not(isIn(results)));
+        assertThat(userTom, not(isIn(results)));
     }
 
     @Test
@@ -97,9 +101,9 @@ public class JPACriteriaQueryTest {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
         params.add(new SearchCriteria("firstName", ":", "jo"));
 
-        final List<User> result = userService.searchUser(params);
+        final List<User> results = userApi.searchUser(params);
 
-        assertEquals(1, result.size());
-        assertEquals(userJohn.getEmail(), result.get(0).getEmail());
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
     }
 }

@@ -1,17 +1,18 @@
 package org.baeldung.persistence.query;
 
-import static org.baeldung.persistence.dao.MyUserPrdicates.ageIsGreaterThan;
-import static org.baeldung.persistence.dao.MyUserPrdicates.firstNameIsLike;
-import static org.baeldung.persistence.dao.MyUserPrdicates.lastNameIsLike;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsEmptyIterable.emptyIterable;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.core.IsNot.not;
 
-import org.baeldung.persistence.dao.MyUserRepository;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.baeldung.persistence.model.MyUser;
+import org.baeldung.persistence.service.impl.MyUserService;
 import org.baeldung.spring.PersistenceConfig;
+import org.baeldung.web.util.SearchCriteria;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class JPAQuerydslTest {
 
     @Autowired
-    private MyUserRepository repository;
+    private MyUserService service;
 
     private MyUser userJohn;
 
@@ -42,49 +43,67 @@ public class JPAQuerydslTest {
         userJohn.setLastName("Doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
-        repository.save(userJohn);
+        service.save(userJohn);
 
         userTom = new MyUser();
         userTom.setFirstName("Tom");
         userTom.setLastName("Doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
-        repository.save(userTom);
+        service.save(userTom);
     }
 
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
-        final Iterable<MyUser> result = repository.findAll(lastNameIsLike("doe"));
-        assertThat(result, containsInAnyOrder(userJohn, userTom));
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
+
+        final Iterable<MyUser> results = service.search(params);
+        assertThat(results, containsInAnyOrder(userJohn, userTom));
     }
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final Iterable<MyUser> result = repository.findAll(lastNameIsLike("doe").and(firstNameIsLike("john")));
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "John"));
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
 
-        assertThat(result, contains(userJohn));
-        assertThat(result, not(contains(userTom)));
+        final Iterable<MyUser> results = service.search(params);
+
+        assertThat(results, contains(userJohn));
+        assertThat(results, not(contains(userTom)));
     }
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
-        final Iterable<MyUser> result = repository.findAll(lastNameIsLike("doe").and(ageIsGreaterThan(25)));
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("lastName", ":", "Doe"));
+        params.add(new SearchCriteria("age", ">", "25"));
 
-        assertThat(result, contains(userTom));
-        assertThat(result, not(contains(userJohn)));
+        final Iterable<MyUser> results = service.search(params);
+
+        assertThat(results, contains(userTom));
+        assertThat(results, not(contains(userJohn)));
     }
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
-        final Iterable<MyUser> result = repository.findAll(lastNameIsLike("Adam").and(firstNameIsLike("Fox")));
-        assertThat(result, emptyIterable());
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "Adam"));
+        params.add(new SearchCriteria("lastName", ":", "Fox"));
+
+        final Iterable<MyUser> results = service.search(params);
+        assertThat(results, emptyIterable());
     }
 
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
-        final Iterable<MyUser> result = repository.findAll(firstNameIsLike("jo"));
+        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        params.add(new SearchCriteria("firstName", ":", "jo"));
 
-        assertThat(result, contains(userJohn));
-        assertThat(result, not(contains(userTom)));
+        final Iterable<MyUser> results = service.search(params);
+
+        assertThat(results, contains(userJohn));
+        assertThat(results, not(contains(userTom)));
     }
 }

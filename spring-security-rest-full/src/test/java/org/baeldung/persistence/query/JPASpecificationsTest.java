@@ -1,6 +1,8 @@
 package org.baeldung.persistence.query;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsIn.isIn;
+import static org.hamcrest.core.IsNot.not;
 
 import java.util.List;
 
@@ -53,46 +55,48 @@ public class JPASpecificationsTest {
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
-        final List<User> result = repository.findAll(spec);
+        final List<User> results = repository.findAll(spec);
 
-        assertEquals(2, result.size());
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, isIn(results));
     }
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "john"));
         final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
-        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
 
-        assertEquals(1, result.size());
-        assertEquals(userJohn.getEmail(), result.get(0).getEmail());
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
     }
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SearchCriteria("age", ">", "25"));
         final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "doe"));
-        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
 
-        assertEquals(1, result.size());
-        assertEquals(userTom.getEmail(), result.get(0).getEmail());
+        assertThat(userTom, isIn(results));
+        assertThat(userJohn, not(isIn(results)));
     }
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "Adam"));
         final UserSpecification spec1 = new UserSpecification(new SearchCriteria("lastName", ":", "Fox"));
-        final List<User> result = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
 
-        assertEquals(0, result.size());
+        assertThat(userJohn, not(isIn(results)));
+        assertThat(userTom, not(isIn(results)));
     }
 
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SearchCriteria("firstName", ":", "jo"));
-        final List<User> result = repository.findAll(spec);
+        final List<User> results = repository.findAll(spec);
 
-        assertEquals(1, result.size());
-        assertEquals(userJohn.getEmail(), result.get(0).getEmail());
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
     }
 }
