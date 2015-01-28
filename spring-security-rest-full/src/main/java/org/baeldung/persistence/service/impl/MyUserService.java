@@ -34,4 +34,3 @@ public class MyUserService {
         repository.save(user);
     }
 }
-
