@@ -8,7 +8,21 @@ import org.baeldung.web.util.SearchCriteria;
 import com.mysema.query.types.expr.BooleanExpression;
 
 public class MyUserPredicatesBuilder {
-    public static BooleanExpression buildUserPredicates(final List<SearchCriteria> params) {
+    private List<SearchCriteria> params;
+
+    public MyUserPredicatesBuilder() {
+        params = new ArrayList<SearchCriteria>();
+    }
+
+    public MyUserPredicatesBuilder with(final String key, final String operation, final Object value) {
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder();
+        final List<SearchCriteria> newParams = new ArrayList<SearchCriteria>(params);
+        newParams.add(new SearchCriteria(key, operation, value));
+        builder.params = newParams;
+        return builder;
+    }
+
+    public BooleanExpression build() {
         if (params.size() == 0)
             return null;
 
