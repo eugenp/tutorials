@@ -38,7 +38,7 @@ public class UserSpecification implements Specification<User> {
             return builder.lessThanOrEqualTo(root.<String> get(criteria.getKey()), criteria.getValue().toString());
         } else if (criteria.getOperation().equalsIgnoreCase(":")) {
             if (root.get(criteria.getKey()).getJavaType() == String.class) {
-                return builder.like(root.<String>get(criteria.getKey()), "%" + criteria.getValue() + "%");
+                return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue() + "%");
             } else {
                 return builder.equal(root.get(criteria.getKey()), criteria.getValue());
             }
