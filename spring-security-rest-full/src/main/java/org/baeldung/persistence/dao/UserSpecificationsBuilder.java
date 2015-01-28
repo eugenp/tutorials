@@ -10,7 +10,21 @@ import org.springframework.data.jpa.domain.Specifications;
 
 public class UserSpecificationsBuilder {
 
-    public static Specification<User> buildUserSpecs(final List<SearchCriteria> params) {
+    private List<SearchCriteria> params;
+
+    public UserSpecificationsBuilder() {
+        params = new ArrayList<SearchCriteria>();
+    }
+
+    public UserSpecificationsBuilder with(final String key, final String operation, final Object value) {
+        final UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+        final List<SearchCriteria> newParams = new ArrayList<SearchCriteria>(params);
+        newParams.add(new SearchCriteria(key, operation, value));
+        builder.params = newParams;
+        return builder;
+    }
+
+    public Specification<User> build() {
         if (params.size() == 0)
             return null;
 
