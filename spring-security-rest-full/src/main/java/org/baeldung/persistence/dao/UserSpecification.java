@@ -11,11 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class UserSpecification implements Specification<User> {
 
-    private SearchCriteria criteria;
-
-    public UserSpecification() {
-
-    }
+    private final SearchCriteria criteria;
 
     public UserSpecification(final SearchCriteria criteria) {
         super();
@@ -24,10 +20,6 @@ public class UserSpecification implements Specification<User> {
 
     public SearchCriteria getCriteria() {
         return criteria;
-    }
-
-    public void setCriteria(final SearchCriteria criteria) {
-        this.criteria = criteria;
     }
 
     @Override
