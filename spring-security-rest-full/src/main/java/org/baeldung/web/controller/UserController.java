@@ -72,20 +72,16 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/myusers")
     @ResponseBody
     public Iterable<MyUser> findAllByQuerydsl(@RequestParam(value = "search") final String search) {
-        MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder();
-
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder();
         if (search != null) {
             final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             final Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
-                builder = builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+                builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
             }
         }
         final BooleanExpression exp = builder.build();
-        if (exp == null)
-            return mydao.findAll();
-        else
-            return mydao.findAll(exp);
+        return mydao.findAll(exp);
     }
 
     // API - WRITE
