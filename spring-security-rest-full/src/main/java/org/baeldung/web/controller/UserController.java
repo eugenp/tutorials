@@ -39,11 +39,12 @@ public class UserController {
         super();
     }
 
+    // API - READ
+
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     @ResponseBody
     public List<User> findAll(@RequestParam(value = "search", required = false) final String search) {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-
         if (search != null) {
             final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             final Matcher matcher = pattern.matcher(search + ",");
@@ -57,19 +58,15 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/users/spec")
     @ResponseBody
     public List<User> findAllBySpecification(@RequestParam(value = "search") final String search) {
-        UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
-        if (search != null) {
-            final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
-            final Matcher matcher = pattern.matcher(search + ",");
-            while (matcher.find()) {
-                builder = builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
-            }
+        final UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+        final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        final Matcher matcher = pattern.matcher(search + ",");
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
         }
+
         final Specification<User> spec = builder.build();
-        if (spec == null)
-            return dao.findAll();
-        else
-            return dao.findAll(spec);
+        return dao.findAll(spec);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/myusers")
@@ -90,6 +87,8 @@ public class UserController {
         else
             return mydao.findAll(exp);
     }
+
+    // API - WRITE
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/new")
     @ResponseBody
@@ -114,4 +113,5 @@ public class UserController {
         mydao.save(user);
         return user.getId();
     }
+
 }
