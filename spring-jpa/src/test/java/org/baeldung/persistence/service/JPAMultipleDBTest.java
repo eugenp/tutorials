@@ -29,7 +29,7 @@ public class JPAMultipleDBTest {
     private ProductRepository productRepository;
 
     @Test
-    public void whenCreateUser_thenCreated() {
+    public void whenCreatingUser_thenCreated() {
         User user = new User();
         user.setName("John");
         user.setAge(20);
@@ -39,7 +39,7 @@ public class JPAMultipleDBTest {
     }
 
     @Test
-    public void whenCreateProduct_thenCreated() {
+    public void whenCreatingProduct_thenCreated() {
         Product product = new Product();
         product.setName("Book");
         product.setId(2);
