@@ -2,8 +2,10 @@ package org.baeldung.persistence.multiple.model.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(schema = "spring_jpa_product")
 public class Product {
 
     @Id
@@ -41,4 +43,10 @@ public class Product {
         this.price = price;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("Product [name=").append(name).append(", id=").append(id).append("]");
+        return builder.toString();
+    }
 }

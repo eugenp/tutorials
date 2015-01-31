@@ -52,13 +52,6 @@
 			<version>1.6.0.RELEASE</version>
     		<scope>compile</scope>
 		</dependency>
-		
-		<!-- atomikos -->
-		<dependency>
-			<groupId>com.atomikos</groupId>
-			<artifactId>transactions-jta</artifactId>
-			<version>3.9.3</version>
-		</dependency>
 
 		<!-- validation -->
 
