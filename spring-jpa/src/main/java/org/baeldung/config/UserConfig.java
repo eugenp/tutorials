@@ -30,8 +30,11 @@ public class UserConfig {
         super();
     }
 
-    @Bean(name = "userEntityManager")
-    public LocalContainerEntityManagerFactoryBean userEntityManagerFactory() {
+    //
+
+    @Primary
+    @Bean
+    public LocalContainerEntityManagerFactoryBean userEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.user" });
@@ -46,6 +49,7 @@ public class UserConfig {
         return em;
     }
 
+    @Primary
     @Bean
     public DataSource userDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -58,10 +62,10 @@ public class UserConfig {
     }
 
     @Primary
-    @Bean(name = "userTransactionManager")
-    public PlatformTransactionManager transactionManager() {
+    @Bean
+    public PlatformTransactionManager userTransactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(userEntityManagerFactory().getObject());
+        transactionManager.setEntityManagerFactory(userEntityManager().getObject());
         return transactionManager;
     }
 

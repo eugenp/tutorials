@@ -29,8 +29,10 @@ public class ProductConfig {
         super();
     }
 
-    @Bean(name = "productEntityManager")
-    public LocalContainerEntityManagerFactoryBean productEntityManagerFactory() {
+    //
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean productEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(productDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.product" });
@@ -56,10 +58,10 @@ public class ProductConfig {
         return dataSource;
     }
 
-    @Bean(name = "productTransactionManager")
-    public PlatformTransactionManager transactionManager() {
+    @Bean
+    public PlatformTransactionManager productTransactionManager() {
         final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(productEntityManagerFactory().getObject());
+        transactionManager.setEntityManagerFactory(productEntityManager().getObject());
         return transactionManager;
     }
 
