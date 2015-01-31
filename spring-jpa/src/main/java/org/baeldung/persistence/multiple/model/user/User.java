@@ -1,11 +1,14 @@
 package org.baeldung.persistence.multiple.model.user;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(schema = "spring_jpa_user")
 public class User {
 
     @Id
@@ -14,6 +17,7 @@ public class User {
 
     private String name;
 
+    @Column(unique = true, nullable = false)
     private String email;
 
     private int age;
@@ -54,4 +58,10 @@ public class User {
         this.age = age;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("User [name=").append(name).append(", id=").append(id).append("]");
+        return builder.toString();
+    }
 }

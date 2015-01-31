@@ -1,8 +1,8 @@
 package org.baeldung.persistence.service;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
-import org.baeldung.config.MultipleDBJPAConfig;
 import org.baeldung.config.ProductConfig;
 import org.baeldung.config.UserConfig;
 import org.baeldung.persistence.multiple.dao.product.ProductRepository;
@@ -12,15 +12,15 @@ import org.baeldung.persistence.multiple.model.user.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { MultipleDBJPAConfig.class, UserConfig.class, ProductConfig.class })
-@Transactional
-@TransactionConfiguration(transactionManager = "transactionManager")
+@ContextConfiguration(classes = { UserConfig.class, ProductConfig.class })
+@TransactionConfiguration
 public class JPAMultipleDBTest {
     @Autowired
     private UserRepository userRepository;
@@ -29,9 +29,11 @@ public class JPAMultipleDBTest {
     private ProductRepository productRepository;
 
     @Test
+    @Transactional("userTransactionManager")
     public void whenCreatingUser_thenCreated() {
         User user = new User();
         user.setName("John");
+        user.setEmail("john@test.com");
         user.setAge(20);
         user = userRepository.save(user);
 
@@ -39,6 +41,29 @@ public class JPAMultipleDBTest {
     }
 
     @Test
+    @Transactional("userTransactionManager")
+    public void whenCreatingUsersWithSameEmail_thenRollback() {
+        User user1 = new User();
+        user1.setName("John");
+        user1.setEmail("john@test.com");
+        user1.setAge(20);
+        user1 = userRepository.save(user1);
+        assertNotNull(userRepository.findOne(user1.getId()));
+
+        User user2 = new User();
+        user2.setName("Tom");
+        user2.setEmail("john@test.com");
+        user2.setAge(10);
+        try {
+            user2 = userRepository.save(user2);
+        } catch (final DataIntegrityViolationException e) {
+        }
+
+        assertNull(userRepository.findOne(user2.getId()));
+    }
+
+    @Test
+    @Transactional("productTransactionManager")
     public void whenCreatingProduct_thenCreated() {
         Product product = new Product();
         product.setName("Book");
@@ -48,4 +73,5 @@ public class JPAMultipleDBTest {
 
         assertNotNull(productRepository.findOne(product.getId()));
     }
+
 }
