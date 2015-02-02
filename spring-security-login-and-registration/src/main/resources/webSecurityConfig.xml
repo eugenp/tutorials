@@ -15,6 +15,12 @@
         <intercept-url pattern="/expiredAccount*" access="permitAll" />
         <intercept-url pattern="/registration*" access="permitAll" />
         <intercept-url pattern="/badUser*" access="permitAll" />
+        <intercept-url pattern="/user/resendRegistrationToken*" access="permitAll" />
+        <intercept-url pattern="/forgetPassword*" access="permitAll" />
+        <intercept-url pattern="/user/resetPassword*" access="permitAll" />
+        <intercept-url pattern="/user/changePassword*" access="permitAll" />
+        <intercept-url pattern="/updatePassword*" access="isAuthenticated()" />
+        <intercept-url pattern="/user/savePassword*" access="isAuthenticated()" />
 
         <intercept-url pattern="/emailError*" access="permitAll" />
         <intercept-url pattern="/resources/**" access="permitAll" />
