@@ -1,5 +1,6 @@
 package org.baeldung.persistence.model;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -12,9 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class VerificationToken {
+public class PasswordResetToken {
 
-    private static final int EXPIRATION = 2;// 60 * 24;
+    private static final int EXPIRATION = 60 * 24;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,18 +29,18 @@ public class VerificationToken {
 
     private Date expiryDate;
 
-    public VerificationToken() {
+    public PasswordResetToken() {
         super();
     }
 
-    public VerificationToken(String token) {
+    public PasswordResetToken(String token) {
         super();
 
         this.token = token;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public VerificationToken(String token, User user) {
+    public PasswordResetToken(String token, User user) {
         super();
 
         this.token = token;
@@ -73,7 +74,7 @@ public class VerificationToken {
 
     private Date calculateExpiryDate(int expiryTimeInMinutes) {
         Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(new Date().getTime());
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
     }
@@ -103,7 +104,7 @@ public class VerificationToken {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        VerificationToken other = (VerificationToken) obj;
+        PasswordResetToken other = (PasswordResetToken) obj;
         if (expiryDate == null) {
             if (other.expiryDate != null)
                 return false;

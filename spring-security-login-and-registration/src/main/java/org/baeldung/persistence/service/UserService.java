@@ -1,12 +1,15 @@
 package org.baeldung.persistence.service;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.baeldung.persistence.dao.PasswordResetTokenRepository;
 import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.VerificationTokenRepository;
+import org.baeldung.persistence.model.PasswordResetToken;
 import org.baeldung.persistence.model.User;
 import org.baeldung.persistence.model.VerificationToken;
 import org.baeldung.validation.EmailExistsException;
@@ -22,6 +25,9 @@ public class UserService implements IUserService {
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
+
+    @Autowired
+    private PasswordResetTokenRepository passwordTokenRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -72,6 +78,39 @@ public class UserService implements IUserService {
     public void createVerificationTokenForUser(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
+    }
+
+    public VerificationToken updateVerificationToken(String verificationToken) {
+        VerificationToken vToken = tokenRepository.findByToken(verificationToken);
+        vToken.updateToken(UUID.randomUUID().toString());
+        vToken = tokenRepository.save(vToken);
+        return vToken;
+    }
+
+    public void createPasswordResetTokenForUser(User user, String token) {
+        PasswordResetToken myToken = new PasswordResetToken(token, user);
+        passwordTokenRepository.save(myToken);
+    }
+
+    public User findUserByEmail(String email) {
+        return repository.findByEmail(email);
+    }
+
+    public PasswordResetToken getPasswordResetToken(String token) {
+        return passwordTokenRepository.findByToken(token);
+    }
+
+    public User getUserByPasswordResetToken(String token) {
+        return passwordTokenRepository.findByToken(token).getUser();
+    }
+
+    public User getUserByID(long id) {
+        return repository.findOne(id);
+    }
+
+    public void changeUserPassword(User user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
+        repository.save(user);
     }
 
     private boolean emailExist(String email) {

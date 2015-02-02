@@ -25,6 +25,8 @@
 			<div class="alert alert-error">
 			<!-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> -->
 				<spring:message code="message.badCredentials"></spring:message>
+				<a href="<c:url value="/forgetPassword.html" />"><spring:message
+code="message.forgetPassword"></spring:message></a>
 			</div>
 		</c:otherwise>
 	</c:choose>

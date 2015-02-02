@@ -20,5 +20,15 @@ code="label.badUser.title"></spring:message></title>
 <a href="<c:url value="/user/registration" />"><spring:message
 code="label.form.loginSignUp"></spring:message></a>
 
+<c:if test="${param.expired}">
+<br>
+<h1>${label.form.resendRegistrationToken}</h1>
+<a href="<c:url value="/user/resendRegistrationToken">
+			<c:param name="token" value="${param.token}"/>
+		 </c:url>">
+	<spring:message code="label.form.resendRegistrationToken"></spring:message>
+</a>
+</c:if>
+
 </body>
 </html>
