@@ -12,11 +12,14 @@ import org.baeldung.jackson.bidirection.ItemWithIdentity;
 import org.baeldung.jackson.bidirection.ItemWithIgnore;
 import org.baeldung.jackson.bidirection.ItemWithRef;
 import org.baeldung.jackson.bidirection.ItemWithSerializer;
+import org.baeldung.jackson.bidirection.ItemWithView;
 import org.baeldung.jackson.bidirection.User;
 import org.baeldung.jackson.bidirection.UserWithIdentity;
 import org.baeldung.jackson.bidirection.UserWithIgnore;
 import org.baeldung.jackson.bidirection.UserWithRef;
 import org.baeldung.jackson.bidirection.UserWithSerializer;
+import org.baeldung.jackson.bidirection.UserWithView;
+import org.baeldung.jackson.jsonview.Views;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -105,6 +108,28 @@ public class JacksonBidirectionRelationTest {
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);
+    }
+
+    @Test
+    public void givenBidirectionRelation_whenUsingPublicJsonView_thenCorrect() throws JsonProcessingException {
+        final UserWithView user = new UserWithView(1, "John");
+        final ItemWithView item = new ItemWithView(2, "book", user);
+        user.addItem(item);
+
+        final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
+
+        assertThat(result, containsString("book"));
+        assertThat(result, containsString("John"));
+        assertThat(result, not(containsString("userItems")));
+    }
+
+    @Test(expected = JsonMappingException.class)
+    public void givenBidirectionRelation_whenUsingInternalJsonView_thenException() throws JsonProcessingException {
+        final UserWithView user = new UserWithView(1, "John");
+        final ItemWithView item = new ItemWithView(2, "book", user);
+        user.addItem(item);
+
+        new ObjectMapper().writerWithView(Views.Internal.class).writeValueAsString(item);
     }
 
 }
