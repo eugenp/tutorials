@@ -15,12 +15,16 @@ import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.google.common.base.Preconditions;
 import com.mysema.query.types.expr.BooleanExpression;
 
 @Controller
@@ -86,28 +90,18 @@ public class UserController {
 
     // API - WRITE
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users/new")
-    @ResponseBody
-    public long addUser(@RequestParam("first") final String first, @RequestParam("last") final String last, @RequestParam("age") final int age) {
-        final User user = new User();
-        user.setFirstName(first);
-        user.setLastName(last);
-        user.setEmail("john@doe.com");
-        user.setAge(age);
-        dao.save(user);
-        return user.getId();
+    @RequestMapping(method = RequestMethod.POST, value = "/users")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void create(@RequestBody final User resource) {
+        Preconditions.checkNotNull(resource);
+        dao.save(resource);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/myusers/new")
-    @ResponseBody
-    public long addMyUser(@RequestParam("first") final String first, @RequestParam("last") final String last, @RequestParam("age") final int age) {
-        final MyUser user = new MyUser();
-        user.setFirstName(first);
-        user.setLastName(last);
-        user.setEmail("john@doe.com");
-        user.setAge(age);
-        mydao.save(user);
-        return user.getId();
+    @RequestMapping(method = RequestMethod.POST, value = "/myusers")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addMyUser(@RequestBody final MyUser resource) {
+        Preconditions.checkNotNull(resource);
+        mydao.save(resource);
     }
 
 }
