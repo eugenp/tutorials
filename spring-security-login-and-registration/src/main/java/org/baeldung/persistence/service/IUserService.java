@@ -19,7 +19,7 @@ public interface IUserService {
 
     VerificationToken getVerificationToken(String VerificationToken);
 
-    VerificationToken updateVerificationToken(String token);
+    VerificationToken generateNewVerificationToken(String token);
 
     void createPasswordResetTokenForUser(User user, String token);
 

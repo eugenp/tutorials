@@ -38,7 +38,7 @@ public class UserService implements IUserService {
     // API
 
     @Override
-    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+    public User registerNewUserAccount(final UserDto accountDto) throws EmailExistsException {
         if (emailExist(accountDto.getEmail())) {
             throw new EmailExistsException("There is an account with that email adress: " + accountDto.getEmail());
         }
@@ -54,67 +54,74 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User getUser(String verificationToken) {
-        User user = tokenRepository.findByToken(verificationToken).getUser();
+    public User getUser(final String verificationToken) {
+        final User user = tokenRepository.findByToken(verificationToken).getUser();
         return user;
     }
 
     @Override
-    public VerificationToken getVerificationToken(String VerificationToken) {
+    public VerificationToken getVerificationToken(final String VerificationToken) {
         return tokenRepository.findByToken(VerificationToken);
     }
 
     @Override
-    public void saveRegisteredUser(User user) {
+    public void saveRegisteredUser(final User user) {
         repository.save(user);
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(final User user) {
         repository.delete(user);
     }
 
     @Override
-    public void createVerificationTokenForUser(User user, String token) {
-        VerificationToken myToken = new VerificationToken(token, user);
+    public void createVerificationTokenForUser(final User user, final String token) {
+        final VerificationToken myToken = new VerificationToken(token, user);
         tokenRepository.save(myToken);
     }
 
-    public VerificationToken updateVerificationToken(String verificationToken) {
-        VerificationToken vToken = tokenRepository.findByToken(verificationToken);
+    @Override
+    public VerificationToken generateNewVerificationToken(final String existingVerificationToken) {
+        VerificationToken vToken = tokenRepository.findByToken(existingVerificationToken);
         vToken.updateToken(UUID.randomUUID().toString());
         vToken = tokenRepository.save(vToken);
         return vToken;
     }
 
-    public void createPasswordResetTokenForUser(User user, String token) {
-        PasswordResetToken myToken = new PasswordResetToken(token, user);
+    @Override
+    public void createPasswordResetTokenForUser(final User user, final String token) {
+        final PasswordResetToken myToken = new PasswordResetToken(token, user);
         passwordTokenRepository.save(myToken);
     }
 
-    public User findUserByEmail(String email) {
+    @Override
+    public User findUserByEmail(final String email) {
         return repository.findByEmail(email);
     }
 
-    public PasswordResetToken getPasswordResetToken(String token) {
+    @Override
+    public PasswordResetToken getPasswordResetToken(final String token) {
         return passwordTokenRepository.findByToken(token);
     }
 
-    public User getUserByPasswordResetToken(String token) {
+    @Override
+    public User getUserByPasswordResetToken(final String token) {
         return passwordTokenRepository.findByToken(token).getUser();
     }
 
-    public User getUserByID(long id) {
+    @Override
+    public User getUserByID(final long id) {
         return repository.findOne(id);
     }
 
-    public void changeUserPassword(User user, String password) {
+    @Override
+    public void changeUserPassword(final User user, final String password) {
         user.setPassword(passwordEncoder.encode(password));
         repository.save(user);
     }
 
-    private boolean emailExist(String email) {
-        User user = repository.findByEmail(email);
+    private boolean emailExist(final String email) {
+        final User user = repository.findByEmail(email);
         if (user != null) {
             return true;
         }
