@@ -25,8 +25,6 @@
 			<div class="alert alert-error">
 			<!-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> -->
 				<spring:message code="message.badCredentials"></spring:message>
-				<a href="<c:url value="/forgetPassword.html" />"><spring:message
-code="message.forgetPassword"></spring:message></a>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -89,6 +87,9 @@ code="message.forgetPassword"></spring:message></a>
 			<br> Current Locale : ${pageContext.response.locale} <br> <a
 				href="<c:url value="/user/registration" />"><spring:message
 					code="label.form.loginSignUp"></spring:message></a>
+			<br><br><br>
+            <a href="<c:url value="/forgetPassword.html" />"><spring:message
+              code="message.resetPassword"></spring:message></a>
 		</div>
 	</div>
 </body>

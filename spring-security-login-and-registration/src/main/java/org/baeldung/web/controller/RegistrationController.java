@@ -1,7 +1,5 @@
 package org.baeldung.web.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.UUID;
@@ -20,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
+import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -85,9 +84,6 @@ public class RegistrationController {
 
         final User user = verificationToken.getUser();
         final Calendar cal = Calendar.getInstance();
-        final DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        System.out.println(df.format(verificationToken.getExpiryDate()));
-        System.out.println(df.format(cal.getTime()));
 
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
             model.addAttribute("message", messages.getMessage("auth.message.expired", null, locale));
@@ -129,9 +125,13 @@ public class RegistrationController {
         try {
             final SimpleMailMessage email = constructResetVerificationTokenEmail(request.getContextPath(), request.getLocale(), newToken, user);
             mailSender.send(email);
-        } catch (final Exception e) {
-            // MailException
+        } catch (final MailAuthenticationException e) {
+            LOGGER.debug("MailAuthenticationException");
             return "redirect:/emailError.html?lang=" + locale.getLanguage();
+        } catch (final Exception e) {
+            LOGGER.debug(e.getLocalizedMessage());
+            model.addAttribute("error", e.getLocalizedMessage());
+            return "redirect:/login.html?lang=" + locale.getLanguage();
         }
         model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
         return "redirect:/login.html?lang=" + locale.getLanguage();
@@ -141,24 +141,23 @@ public class RegistrationController {
     public String resetPassword(final WebRequest request, final Model model, @RequestParam("email") final String userEmail) {
         final User user = userService.findUserByEmail(userEmail);
         if (user == null) {
-            model.addAttribute("message", messages.getMessage("auth.message.expired", null, request.getLocale()));
+            model.addAttribute("message", messages.getMessage("message.userNotFound", null, request.getLocale()));
             return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
         }
 
         final String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
         try {
-            final String url = request.getContextPath() + "/user/changePassword?id=" + user.getId() + "&token=" + token;
-            final String message = messages.getMessage("message.resetPassword", null, request.getLocale());
-            final SimpleMailMessage email = new SimpleMailMessage();
-            email.setTo(user.getEmail());
-            email.setSubject("Reset Password");
-            email.setText(message + " \r\n" + "http://localhost:8080" + url);
-            System.out.println(email.getText());
+            final SimpleMailMessage email = constructResetTokenEmail(request.getContextPath(), request.getLocale(), token, user);
+            LOGGER.debug(email.getText());
             mailSender.send(email);
-            System.out.println(email.getText());
-        } catch (final Exception e) {
+        } catch (final MailAuthenticationException e) {
+            LOGGER.debug("MailAuthenticationException");
             return "redirect:/emailError.html?lang=" + request.getLocale().getLanguage();
+        } catch (final Exception e) {
+            LOGGER.debug(e.getLocalizedMessage());
+            model.addAttribute("error", e.getLocalizedMessage());
+            return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
         }
         model.addAttribute("message", messages.getMessage("message.resetPassword", null, request.getLocale()));
         return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
@@ -173,8 +172,6 @@ public class RegistrationController {
         if (passToken == null || user.getId() != id) {
             final String message = messages.getMessage("auth.message.invalidToken", null, locale);
             model.addAttribute("message", message);
-            System.out.println(id);
-            System.out.println(passToken);
             return "redirect:/login.html?lang=" + locale.getLanguage();
         }
 
@@ -214,6 +211,16 @@ public class RegistrationController {
         return email;
     }
 
+    private final SimpleMailMessage constructResetTokenEmail(final String contextPath, final Locale locale, final String token, final User user) {
+        final String url = contextPath + "/user/changePassword?id=" + user.getId() + "&token=" + token;
+        final String message = messages.getMessage("message.resetPassword", null, locale);
+        final SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(user.getEmail());
+        email.setSubject("Reset Password");
+        email.setText(message + " \r\n" + "http://localhost:8080" + url);
+        return email;
+    }
+
     private User createUserAccount(final UserDto accountDto) {
         User registered = null;
         try {
@@ -223,5 +230,4 @@ public class RegistrationController {
         }
         return registered;
     }
-
 }

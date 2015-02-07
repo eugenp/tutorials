@@ -13,27 +13,27 @@
 <title><spring:message code="message.resetPassword"></spring:message></title>
 </head>
 <body>
-	<div class="container">
-		<div class="span12">
-			<H1>
-				<spring:message code="message.resetPassword"></spring:message>
-			</H1>
-			<form:form action="user/resetPassword" method="POST" enctype="utf8">
-				<br>
-				
-				<tr>
-					<td><label><spring:message code="label.user.email"></spring:message></label></td>
-					<td><input name="email" type="email" value="" /></td>
-				</tr>
-				
-				<button type="submit">
-					<spring:message code="message.resetPassword"></spring:message>
-				</button>
-			</form:form>
-			<br> <a href="<c:url value="registration.html" />"><spring:message
-					code="label.form.loginSignUp"></spring:message></a>
-		</div>
-	</div>	
+<div class="container">
+<div class="span12">
+<h1>
+<spring:message code="message.resetPassword"></spring:message>
+</h1>
+<form:form action="user/resetPassword" method="POST" enctype="utf8">
+<br>
+
+<tr>
+<td><label><spring:message code="label.user.email"></spring:message></label></td>
+<td><input name="email" type="email" value="" /></td>
+</tr>
+
+<button type="submit">
+<spring:message code="message.resetPassword"></spring:message>
+</button>
+</form:form>
+<br> <a href="<c:url value="registration.html" />"><spring:message
+code="label.form.loginSignUp"></spring:message></a>
+</div>
+</div>
 </body>
 
 </html>
