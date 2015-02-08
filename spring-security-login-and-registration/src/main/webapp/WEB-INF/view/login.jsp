@@ -56,6 +56,12 @@
 </script>
 </head>
 <body>
+<c:if test="${param.message != null}">
+<div class="alert alert-error">
+${param.message}
+</div>
+</c:if>
+
 	<div class="container">
 		<div class="span12">
 			<h1>

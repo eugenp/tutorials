@@ -130,7 +130,7 @@ public class RegistrationController {
             return "redirect:/emailError.html?lang=" + locale.getLanguage();
         } catch (final Exception e) {
             LOGGER.debug(e.getLocalizedMessage());
-            model.addAttribute("error", e.getLocalizedMessage());
+            model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + locale.getLanguage();
         }
         model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
@@ -156,7 +156,7 @@ public class RegistrationController {
             return "redirect:/emailError.html?lang=" + request.getLocale().getLanguage();
         } catch (final Exception e) {
             LOGGER.debug(e.getLocalizedMessage());
-            model.addAttribute("error", e.getLocalizedMessage());
+            model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
         }
         model.addAttribute("message", messages.getMessage("message.resetPassword", null, request.getLocale()));
