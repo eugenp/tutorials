@@ -39,7 +39,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
-
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -111,7 +110,8 @@ public class RegistrationController {
         try {
             final String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
-        } catch (final Exception me) {
+        } catch (final Exception ex) {
+            LOGGER.warn("Unable to register user", ex);
             return new ModelAndView("emailError", "user", accountDto);
         }
         return new ModelAndView("successRegister", "user", accountDto);
@@ -126,10 +126,10 @@ public class RegistrationController {
             final SimpleMailMessage email = constructResetVerificationTokenEmail(request.getContextPath(), request.getLocale(), newToken, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
-            LOGGER.debug("MailAuthenticationException");
+            LOGGER.debug("MailAuthenticationException", e);
             return "redirect:/emailError.html?lang=" + locale.getLanguage();
         } catch (final Exception e) {
-            LOGGER.debug(e.getLocalizedMessage());
+            LOGGER.debug(e.getLocalizedMessage(), e);
             model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + locale.getLanguage();
         }
@@ -149,13 +149,14 @@ public class RegistrationController {
         userService.createPasswordResetTokenForUser(user, token);
         try {
             final SimpleMailMessage email = constructResetTokenEmail(request.getContextPath(), request.getLocale(), token, user);
+
             LOGGER.debug(email.getText());
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
-            LOGGER.debug("MailAuthenticationException");
+            LOGGER.debug("MailAuthenticationException", e);
             return "redirect:/emailError.html?lang=" + request.getLocale().getLanguage();
         } catch (final Exception e) {
-            LOGGER.debug(e.getLocalizedMessage());
+            LOGGER.debug(e.getLocalizedMessage(), e);
             model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
         }
@@ -206,7 +207,6 @@ public class RegistrationController {
         final SimpleMailMessage email = new SimpleMailMessage();
         email.setSubject("Resend Registration Token");
         email.setText(message + " \r\n" + "http://localhost:8080" + confirmationUrl);
-
         email.setTo(user.getEmail());
         return email;
     }
