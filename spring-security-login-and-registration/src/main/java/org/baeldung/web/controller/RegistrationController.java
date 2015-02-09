@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.baeldung.persistence.model.PasswordResetToken;
@@ -34,7 +35,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -63,7 +63,7 @@ public class RegistrationController {
     // API
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.GET)
-    public String showRegistrationForm(final WebRequest request, final Model model) {
+    public String showRegistrationForm(final HttpServletRequest request, final Model model) {
         LOGGER.debug("Rendering registration page.");
         final UserDto accountDto = new UserDto();
         model.addAttribute("user", accountDto);
@@ -71,7 +71,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)
-    public String confirmRegistration(final WebRequest request, final Model model, @RequestParam("token") final String token) {
+    public String confirmRegistration(final HttpServletRequest request, final Model model, @RequestParam("token") final String token) {
         final Locale locale = request.getLocale();
 
         final VerificationToken verificationToken = userService.getVerificationToken(token);
@@ -83,7 +83,6 @@ public class RegistrationController {
 
         final User user = verificationToken.getUser();
         final Calendar cal = Calendar.getInstance();
-
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
             model.addAttribute("message", messages.getMessage("auth.message.expired", null, locale));
             model.addAttribute("expired", true);
@@ -97,7 +96,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final WebRequest request, final Errors errors) {
+    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request, final Errors errors) {
         LOGGER.debug("Registering user account with information: {}", accountDto);
         if (result.hasErrors()) {
             return new ModelAndView("registration", "user", accountDto);
@@ -106,9 +105,10 @@ public class RegistrationController {
         final User registered = createUserAccount(accountDto);
         if (registered == null) {
             result.rejectValue("email", "message.regError");
+            return new ModelAndView("registration", "user", accountDto);
         }
         try {
-            final String appUrl = request.getContextPath();
+            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (final Exception ex) {
             LOGGER.warn("Unable to register user", ex);
@@ -118,12 +118,13 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/resendRegistrationToken", method = RequestMethod.GET)
-    public String resendRegistrationToken(final WebRequest request, final Model model, @RequestParam("token") final String existingToken) {
+    public String resendRegistrationToken(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
         final Locale locale = request.getLocale();
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
         try {
-            final SimpleMailMessage email = constructResetVerificationTokenEmail(request.getContextPath(), request.getLocale(), newToken, user);
+            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
             LOGGER.debug("MailAuthenticationException", e);
@@ -138,7 +139,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/resetPassword", method = RequestMethod.POST)
-    public String resetPassword(final WebRequest request, final Model model, @RequestParam("email") final String userEmail) {
+    public String resetPassword(final HttpServletRequest request, final Model model, @RequestParam("email") final String userEmail) {
         final User user = userService.findUserByEmail(userEmail);
         if (user == null) {
             model.addAttribute("message", messages.getMessage("message.userNotFound", null, request.getLocale()));
@@ -148,9 +149,8 @@ public class RegistrationController {
         final String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
         try {
-            final SimpleMailMessage email = constructResetTokenEmail(request.getContextPath(), request.getLocale(), token, user);
-
-            LOGGER.debug(email.getText());
+            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
             LOGGER.debug("MailAuthenticationException", e);
@@ -165,7 +165,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
-    public String changePassword(final WebRequest request, final Model model, @RequestParam("id") final long id, @RequestParam("token") final String token) {
+    public String changePassword(final HttpServletRequest request, final Model model, @RequestParam("id") final long id, @RequestParam("token") final String token) {
         final Locale locale = request.getLocale();
 
         final PasswordResetToken passToken = userService.getPasswordResetToken(token);
@@ -190,7 +190,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "/user/savePassword", method = RequestMethod.POST)
     @PreAuthorize("hasRole('READ_PRIVILEGE')")
-    public String savePassword(final WebRequest request, final Model model, @RequestParam("password") final String password) {
+    public String savePassword(final HttpServletRequest request, final Model model, @RequestParam("password") final String password) {
         final Locale locale = request.getLocale();
 
         final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -206,7 +206,7 @@ public class RegistrationController {
         final String message = messages.getMessage("message.resendToken", null, locale);
         final SimpleMailMessage email = new SimpleMailMessage();
         email.setSubject("Resend Registration Token");
-        email.setText(message + " \r\n" + "http://localhost:8080" + confirmationUrl);
+        email.setText(message + " \r\n" + confirmationUrl);
         email.setTo(user.getEmail());
         return email;
     }
@@ -217,7 +217,7 @@ public class RegistrationController {
         final SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());
         email.setSubject("Reset Password");
-        email.setText(message + " \r\n" + "http://localhost:8080" + url);
+        email.setText(message + " \r\n" + url);
         return email;
     }
 
