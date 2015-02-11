@@ -121,6 +121,7 @@ public class RegistrationController {
     public String resendRegistrationToken(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
         final Locale locale = request.getLocale();
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
+
         final User user = userService.getUser(newToken.getToken());
         try {
             final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
@@ -134,6 +135,30 @@ public class RegistrationController {
             model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + locale.getLanguage();
         }
+
+        model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
+        return "redirect:/login.html?lang=" + locale.getLanguage();
+    }
+
+    @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET)
+    public String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
+        final Locale locale = request.getLocale();
+        final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
+
+        final User user = userService.getUser(newToken.getToken());
+        try {
+            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
+            mailSender.send(email);
+        } catch (final MailAuthenticationException e) {
+            LOGGER.debug("MailAuthenticationException", e);
+            return "redirect:/emailError.html?lang=" + locale.getLanguage();
+        } catch (final Exception e) {
+            LOGGER.debug(e.getLocalizedMessage(), e);
+            model.addAttribute("message", e.getLocalizedMessage());
+            return "redirect:/login.html?lang=" + locale.getLanguage();
+        }
+
         model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
         return "redirect:/login.html?lang=" + locale.getLanguage();
     }
