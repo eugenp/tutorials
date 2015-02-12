@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
-import org.springframework.http.MediaType;
+import org.springframework.context.NoSuchMessageException;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -38,6 +38,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class RegistrationController {
@@ -140,15 +143,14 @@ public class RegistrationController {
         return "redirect:/login.html?lang=" + locale.getLanguage();
     }
 
-    @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
+    @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET)
+    public @ResponseBody String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) throws JsonProcessingException, NoSuchMessageException {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
         final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
-        System.out.println(email.getText());
         mailSender.send(email);
-        return messages.getMessage("message.resendToken", null, request.getLocale());
+        return new ObjectMapper().writeValueAsString(messages.getMessage("message.resendToken", null, request.getLocale()));
     }
 
     @RequestMapping(value = "/user/resetPassword", method = RequestMethod.POST)
@@ -175,6 +177,22 @@ public class RegistrationController {
         }
         model.addAttribute("message", messages.getMessage("message.resetPassword", null, request.getLocale()));
         return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
+    }
+
+    @RequestMapping(value = "/user/resetPassword2", method = RequestMethod.POST)
+    public @ResponseBody String resetPassword2(final HttpServletRequest request, final Model model, @RequestParam("email") final String userEmail) throws JsonProcessingException, NoSuchMessageException {
+        final User user = userService.findUserByEmail(userEmail);
+        if (user == null) {
+            return new ObjectMapper().writeValueAsString(messages.getMessage("message.userNotFound", null, request.getLocale()));
+        }
+
+        final String token = UUID.randomUUID().toString();
+        userService.createPasswordResetTokenForUser(user, token);
+        final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
+        mailSender.send(email);
+
+        return new ObjectMapper().writeValueAsString(messages.getMessage("message.resetPassword", null, request.getLocale()));
     }
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)

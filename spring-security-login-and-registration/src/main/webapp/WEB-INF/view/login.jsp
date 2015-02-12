@@ -57,7 +57,7 @@
 </head>
 <body>
 <c:if test="${param.message != null}">
-<div class="alert alert-error">
+<div class="alert alert-info">
 ${param.message}
 </div>
 </c:if>
