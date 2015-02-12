@@ -12,9 +12,12 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.client.token.AccessTokenProvider;
+import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.oauth2.client.token.grant.implicit.ImplicitAccessTokenProvider;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
-import org.springframework.web.client.RestOperations;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -45,7 +48,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public RedditController redditController(@Qualifier("redditRestTemplate") RestOperations redditRestTemplate) {
+    public RedditController redditController(@Qualifier("redditRestTemplate") OAuth2RestTemplate redditRestTemplate) {
         RedditController controller = new RedditController();
         controller.setRedditRestTemplate(redditRestTemplate);
         return controller;
@@ -82,12 +85,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             details.setUserAuthorizationUri(userAuthorizationUri);
             details.setTokenName("oauth_token");
             details.setScope(Arrays.asList("identity"));
+            details.setGrantType("authorization_code");
             return details;
         }
 
         @Bean
         public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
             OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
+            AccessTokenProvider accessTokenProvider = new MyAccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
+                    new ClientCredentialsAccessTokenProvider()));
+            template.setAccessTokenProvider(accessTokenProvider);
             return template;
         }
     }

@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>Spring OAuth</title>
+<title>Spring Security OAuth</title>
 </head>
 <body>
-<h1>Your Reddit Info</h1>
-<b>Your reddit username is </b>${info}
+<h1>Test</h1>
+<b>Test </b>
 </body>
 </html>

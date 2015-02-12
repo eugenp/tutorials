@@ -23,12 +23,28 @@ code="label.form.loginSignUp"></spring:message></a>
 <c:if test="${param.expired}">
 <br>
 <h1>${label.form.resendRegistrationToken}</h1>
-<a href="<c:url value="/user/resendRegistrationToken">
-			<c:param name="token" value="${param.token}"/>
-		 </c:url>">
+<button onclick="resendToken()">
 	<spring:message code="label.form.resendRegistrationToken"></spring:message>
-</a>
-</c:if>
+</button>
 
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+function resendToken(){
+	$.get("<c:url value="/user/resendRegistrationToken2"><c:param name="token" value="${param.token}"/></c:url>", function(data){
+        if(data.indexOf("MailAuthenticationException") > -1)
+        {
+        	window.location.href = "<c:url value="/emailError.html"></c:url>";
+        }
+        else if(data.indexOf("Exception") > -1){
+        	window.location.href = "<c:url value="/login"><c:param name="message" value="Error"/></c:url>";
+        }
+        else{
+        	window.location.href = "<c:url value="/login"></c:url>" + "message=" + data;
+        }
+    });
+}
+</script>
+</c:if>
 </body>
 </html>

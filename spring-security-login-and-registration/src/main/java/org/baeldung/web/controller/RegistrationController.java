@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
+import org.springframework.http.MediaType;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -35,6 +36,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -121,7 +123,6 @@ public class RegistrationController {
     public String resendRegistrationToken(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
         final Locale locale = request.getLocale();
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
-
         final User user = userService.getUser(newToken.getToken());
         try {
             final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
@@ -135,32 +136,19 @@ public class RegistrationController {
             model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + locale.getLanguage();
         }
-
         model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
         return "redirect:/login.html?lang=" + locale.getLanguage();
     }
 
-    @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET)
-    public String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
-        final Locale locale = request.getLocale();
+    @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
-
         final User user = userService.getUser(newToken.getToken());
-        try {
-            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-            final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
-            mailSender.send(email);
-        } catch (final MailAuthenticationException e) {
-            LOGGER.debug("MailAuthenticationException", e);
-            return "redirect:/emailError.html?lang=" + locale.getLanguage();
-        } catch (final Exception e) {
-            LOGGER.debug(e.getLocalizedMessage(), e);
-            model.addAttribute("message", e.getLocalizedMessage());
-            return "redirect:/login.html?lang=" + locale.getLanguage();
-        }
-
-        model.addAttribute("message", messages.getMessage("message.resendToken", null, locale));
-        return "redirect:/login.html?lang=" + locale.getLanguage();
+        final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
+        System.out.println(email.getText());
+        mailSender.send(email);
+        return messages.getMessage("message.resendToken", null, request.getLocale());
     }
 
     @RequestMapping(value = "/user/resetPassword", method = RequestMethod.POST)
