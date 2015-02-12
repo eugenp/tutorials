@@ -23,13 +23,13 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler({ MailAuthenticationException.class })
     public @ResponseBody String handleMail(final RuntimeException ex, final WebRequest request) throws JsonProcessingException {
         logger.error("500 Status Code", ex);
-        return new ObjectMapper().writeValueAsString(ex.getClass().toString());
+        return new ObjectMapper().writeValueAsString("MailError");
     }
 
     @ExceptionHandler({ NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class })
     public @ResponseBody String handleInternal(final RuntimeException ex, final WebRequest request) throws JsonProcessingException {
         logger.error("500 Status Code", ex);
-        return new ObjectMapper().writeValueAsString(ex.getClass().toString());
+        return new ObjectMapper().writeValueAsString("InternalError");
     }
 
 }

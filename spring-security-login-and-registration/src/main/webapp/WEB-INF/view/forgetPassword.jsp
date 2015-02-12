@@ -18,22 +18,41 @@
 <h1>
 <spring:message code="message.resetPassword"></spring:message>
 </h1>
-<form:form action="user/resetPassword" method="POST" enctype="utf8">
+<div>
 <br>
 
 <tr>
 <td><label><spring:message code="label.user.email"></spring:message></label></td>
-<td><input name="email" type="email" value="" /></td>
+<td><input id="email" name="email" type="email" value="" /></td>
 </tr>
 
-<button type="submit">
+<button type="submit" onclick="resetPass()">
 <spring:message code="message.resetPassword"></spring:message>
 </button>
-</form:form>
+</div>
 <br> <a href="<c:url value="registration.html" />"><spring:message
 code="label.form.loginSignUp"></spring:message></a>
 </div>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+function resetPass(){
+	var email = $("#email").val();
+    $.post("<c:url value="/user/resetPassword2"></c:url>",{email: email} ,function(data){
+        if(data.indexOf("MailError") > -1)
+        {
+            window.location.href = "<c:url value="/emailError.html"></c:url>";
+        }
+        else if(data.indexOf("InternalError") > -1){
+            window.location.href = "<c:url value="/login.html"><c:param name="message" value="Error Occurred"/></c:url>";
+        }
+        else{
+            window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data;
+        }
+    });
+}
+</script>
 </body>
 
 </html>

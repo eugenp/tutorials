@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class VerificationToken {
 
-    private static final int EXPIRATION = 2;// 60 * 24;
+    private static final int EXPIRATION = 60 * 24;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

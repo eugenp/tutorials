@@ -1,6 +1,5 @@
 package org.baeldung.persistence.model;
 
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -74,7 +73,7 @@ public class PasswordResetToken {
 
     private Date calculateExpiryDate(int expiryTimeInMinutes) {
         Calendar cal = Calendar.getInstance();
-        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        cal.setTimeInMillis(new Date().getTime());
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
     }
