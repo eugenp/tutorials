@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Privilege;
@@ -34,6 +36,12 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private LoginAttemptService loginAttemptService;
+
+    @Autowired
+    private HttpServletRequest request;
+
     public MyUserDetailsService() {
         super();
     }
@@ -42,6 +50,11 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
+        String ip = request.getRemoteAddr();
+        if (loginAttemptService.isBlocked(ip)) {
+            throw new RuntimeException("blocked");
+        }
+
         try {
             final User user = userRepository.findByEmail(email);
             if (user == null) {

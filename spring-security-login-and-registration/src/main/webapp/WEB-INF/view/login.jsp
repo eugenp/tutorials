@@ -21,6 +21,12 @@
 				<spring:message code="auth.message.expired"></spring:message>
 			</div>
 		</c:when>
+		<c:when
+            test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'blocked'}">
+            <div class="alert alert-error">
+               <spring:message code="auth.message.blocked"></spring:message>
+            </div>
+        </c:when>
 		<c:otherwise>
 			<div class="alert alert-error">
 			<!-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> -->
