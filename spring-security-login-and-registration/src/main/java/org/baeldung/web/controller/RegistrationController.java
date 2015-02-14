@@ -190,6 +190,7 @@ public class RegistrationController {
         userService.createPasswordResetTokenForUser(user, token);
         final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
+        email.setFrom("eugen@baeldung.com");
         mailSender.send(email);
 
         return new ObjectMapper().writeValueAsString(messages.getMessage("message.resetPassword", null, request.getLocale()));

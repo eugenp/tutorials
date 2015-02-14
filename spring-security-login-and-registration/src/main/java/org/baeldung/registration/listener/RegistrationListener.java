@@ -23,6 +23,8 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     @Autowired
     private JavaMailSender mailSender;
 
+    // API
+
     @Override
     public void onApplicationEvent(OnRegistrationCompleteEvent event) {
         this.confirmRegistration(event);
@@ -33,14 +35,23 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         String token = UUID.randomUUID().toString();
         service.createVerificationTokenForUser(user, token);
 
-        String recipientAddress = user.getEmail();
-        String subject = "Registration Confirmation";
-        String confirmationUrl = event.getAppUrl() + "/regitrationConfirm.html?token=" + token;
-        String message = messages.getMessage("message.regSucc", null, event.getLocale());
-        SimpleMailMessage email = new SimpleMailMessage();
+        final SimpleMailMessage email = constructEmailMessage(event, user, token);
+        mailSender.send(email);
+    }
+
+    //
+
+    private final SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final User user, final String token) {
+        final String recipientAddress = user.getEmail();
+        final String subject = "Registration Confirmation";
+        final String confirmationUrl = "http://" + event.getAppUrl() + "/regitrationConfirm.html?token=" + token;
+        final String message = messages.getMessage("message.regSucc", null, event.getLocale());
+        final SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(recipientAddress);
         email.setSubject(subject);
         email.setText(message + " \r\n" + confirmationUrl);
-        mailSender.send(email);
+        email.setFrom("eugen@baeldung.com");
+        return email;
     }
+    
 }
