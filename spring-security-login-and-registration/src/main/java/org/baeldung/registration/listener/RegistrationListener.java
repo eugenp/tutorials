@@ -53,5 +53,5 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         email.setFrom("eugen@baeldung.com");
         return email;
     }
-    
+
 }
