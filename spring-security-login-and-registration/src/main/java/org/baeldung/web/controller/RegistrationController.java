@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -43,6 +45,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
+@PropertySource("classpath:email.properties")
 public class RegistrationController {
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
@@ -60,6 +63,9 @@ public class RegistrationController {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private Environment env;
 
     public RegistrationController() {
 
@@ -97,6 +103,7 @@ public class RegistrationController {
 
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
+        model.addAttribute("message", messages.getMessage("message.accountVerified", null, locale));
         return "redirect:/login.html?lang=" + locale.getLanguage();
     }
 
@@ -113,7 +120,7 @@ public class RegistrationController {
             return new ModelAndView("registration", "user", accountDto);
         }
         try {
-            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (final Exception ex) {
             LOGGER.warn("Unable to register user", ex);
@@ -128,7 +135,7 @@ public class RegistrationController {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
         try {
-            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
@@ -147,7 +154,7 @@ public class RegistrationController {
     public @ResponseBody String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) throws JsonProcessingException, NoSuchMessageException {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
-        final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
         mailSender.send(email);
         return new ObjectMapper().writeValueAsString(messages.getMessage("message.resendToken", null, request.getLocale()));
@@ -164,7 +171,7 @@ public class RegistrationController {
         final String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
         try {
-            final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
             mailSender.send(email);
         } catch (final MailAuthenticationException e) {
@@ -175,7 +182,7 @@ public class RegistrationController {
             model.addAttribute("message", e.getLocalizedMessage());
             return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
         }
-        model.addAttribute("message", messages.getMessage("message.resetPassword", null, request.getLocale()));
+        model.addAttribute("message", messages.getMessage("message.resetPasswordEmail", null, request.getLocale()));
         return "redirect:/login.html?lang=" + request.getLocale().getLanguage();
     }
 
@@ -188,12 +195,11 @@ public class RegistrationController {
 
         final String token = UUID.randomUUID().toString();
         userService.createPasswordResetTokenForUser(user, token);
-        final String appUrl = request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
-        email.setFrom("eugen@baeldung.com");
         mailSender.send(email);
 
-        return new ObjectMapper().writeValueAsString(messages.getMessage("message.resetPassword", null, request.getLocale()));
+        return new ObjectMapper().writeValueAsString(messages.getMessage("message.resetPasswordEmail", null, request.getLocale()));
     }
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
@@ -227,7 +233,7 @@ public class RegistrationController {
 
         final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userService.changeUserPassword(user, password);
-
+        model.addAttribute("message", messages.getMessage("message.resetPasswordSuc", null, locale));
         return "redirect:/login.html?lang=" + locale;
     }
 
@@ -240,6 +246,7 @@ public class RegistrationController {
         email.setSubject("Resend Registration Token");
         email.setText(message + " \r\n" + confirmationUrl);
         email.setTo(user.getEmail());
+        email.setFrom(env.getProperty("support.email"));
         return email;
     }
 
@@ -250,6 +257,7 @@ public class RegistrationController {
         email.setTo(user.getEmail());
         email.setSubject("Reset Password");
         email.setText(message + " \r\n" + url);
+        email.setFrom(env.getProperty("support.email"));
         return email;
     }
 

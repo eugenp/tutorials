@@ -30,8 +30,13 @@
 <spring:message code="message.resetPassword"></spring:message>
 </button>
 </div>
-<br> <a href="<c:url value="registration.html" />"><spring:message
-code="label.form.loginSignUp"></spring:message></a>
+
+<br> 
+<a href="<c:url value="registration.html" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
+
+<br>
+<a href="<c:url value="login.html" />"><spring:message code="label.form.loginLink"></spring:message></a>
+
 </div>
 </div>
 
