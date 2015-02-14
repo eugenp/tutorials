@@ -2,7 +2,6 @@ package org.baeldung.config;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,6 @@ import org.springframework.security.oauth2.client.resource.OAuth2AccessDeniedExc
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.client.resource.UserApprovalRequiredException;
 import org.springframework.security.oauth2.client.resource.UserRedirectRequiredException;
-import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.AccessTokenRequest;
 import org.springframework.security.oauth2.client.token.DefaultRequestEnhancer;
 import org.springframework.security.oauth2.client.token.RequestEnhancer;
@@ -34,38 +32,13 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseExtractor;
 
-public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAccessTokenProvider implements AccessTokenProvider {
+public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAccessTokenProvider {
 
     private StateKeyGenerator stateKeyGenerator = new DefaultStateKeyGenerator();
 
     private String scopePrefix = OAuth2Utils.SCOPE_PREFIX;
 
     private RequestEnhancer authorizationRequestEnhancer = new DefaultRequestEnhancer();
-
-    @Override
-    public void setAuthorizationRequestEnhancer(RequestEnhancer authorizationRequestEnhancer) {
-        this.authorizationRequestEnhancer = authorizationRequestEnhancer;
-    }
-
-    @Override
-    public void setScopePrefix(String scopePrefix) {
-        this.scopePrefix = scopePrefix;
-    }
-
-    @Override
-    public void setStateKeyGenerator(StateKeyGenerator stateKeyGenerator) {
-        this.stateKeyGenerator = stateKeyGenerator;
-    }
-
-    @Override
-    public boolean supportsResource(OAuth2ProtectedResourceDetails resource) {
-        return resource instanceof AuthorizationCodeResourceDetails && "authorization_code".equals(resource.getGrantType());
-    }
-
-    @Override
-    public boolean supportsRefresh(OAuth2ProtectedResourceDetails resource) {
-        return supportsResource(resource);
-    }
 
     @Override
     public String obtainAuthorizationCode(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException, OAuth2AccessDeniedException {
@@ -125,15 +98,6 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         request.set("code", code);
         return code;
 
-    }
-
-    @Override
-    protected ResponseExtractor<ResponseEntity<Void>> getAuthorizationResponseExtractor() {
-        return new ResponseExtractor<ResponseEntity<Void>>() {
-            public ResponseEntity<Void> extractData(ClientHttpResponse response) throws IOException {
-                return new ResponseEntity<Void>(response.getHeaders(), response.getStatusCode());
-            }
-        };
     }
 
     @Override
@@ -285,11 +249,6 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
 
         return redirectException;
 
-    }
-
-    protected UserApprovalRequiredException getUserApprovalSignal(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-        String message = String.format("Do you approve the client '%s' to access your resources with scope=%s", resource.getClientId(), resource.getScope());
-        return new UserApprovalRequiredException(resource.getUserAuthorizationUri(), Collections.singletonMap(OAuth2Utils.USER_OAUTH_APPROVAL, message), resource.getClientId(), resource.getScope());
     }
 
 }
