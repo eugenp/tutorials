@@ -151,13 +151,14 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/resendRegistrationToken2", method = RequestMethod.GET)
-    public @ResponseBody String resendRegistrationToken2(final HttpServletRequest request, final Model model, @RequestParam("token") final String existingToken) throws JsonProcessingException, NoSuchMessageException {
+    public @ResponseBody GenericResponse resendRegistrationToken2(final HttpServletRequest request, @RequestParam("token") final String existingToken) {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
         final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
         mailSender.send(email);
-        return new ObjectMapper().writeValueAsString(messages.getMessage("message.resendToken", null, request.getLocale()));
+        
+        return new GenericResponse(messages.getMessage("message.resendToken", null, request.getLocale()));
     }
 
     @RequestMapping(value = "/user/resetPassword", method = RequestMethod.POST)
@@ -187,9 +188,10 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/resetPassword2", method = RequestMethod.POST)
-    public @ResponseBody String resetPassword2(final HttpServletRequest request, final Model model, @RequestParam("email") final String userEmail) throws JsonProcessingException, NoSuchMessageException {
+    public @ResponseBody String resetPassword2(final HttpServletRequest request, @RequestParam("email") final String userEmail) throws JsonProcessingException, NoSuchMessageException {
         final User user = userService.findUserByEmail(userEmail);
         if (user == null) {
+            // throw new NotFoundExceptions(messages.getMessage("message.userNotFound", null, request.getLocale())); // 404
             return new ObjectMapper().writeValueAsString(messages.getMessage("message.userNotFound", null, request.getLocale()));
         }
 
