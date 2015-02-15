@@ -1,5 +1,7 @@
 package org.baeldung.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.UserApprovalRequiredException;
 import org.springframework.security.oauth2.client.resource.UserRedirectRequiredException;
@@ -12,8 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class RedditController {
-
     private OAuth2RestTemplate redditRestTemplate;
+
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @RequestMapping("/info")
     public String getInfo(Model model) {
@@ -27,6 +30,7 @@ public class RedditController {
         } catch (UserRedirectRequiredException e) {
             throw e;
         } catch (Exception e) {
+            LOGGER.error("Error occurred", e);
             model.addAttribute("error", e.getLocalizedMessage());
         }
         return "reddit";
