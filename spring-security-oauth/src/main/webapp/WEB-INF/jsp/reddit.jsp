@@ -10,7 +10,11 @@
         <h1>Your Reddit Info</h1>
         <b>Your reddit username is </b>${info}
     </c:when>
-    <c:otherwise> Sorry, error occurred.</c:otherwise>
+    <c:otherwise> 
+        <b>Sorry, error occurred</b> 
+        <br><br>
+        <div>${error}</div>
+    </c:otherwise>
 </c:choose>
 </body>
 </html>
