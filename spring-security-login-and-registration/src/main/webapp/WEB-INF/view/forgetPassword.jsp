@@ -43,7 +43,7 @@
 <script type="text/javascript">
 function resetPass(){
     var email = $("#email").val();
-    $.post("<c:url value="/user/resetPassword2"></c:url>",{email: email} ,function(data){
+    $.post("<c:url value="/user/resetPassword"></c:url>",{email: email} ,function(data){
             window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.message;
     })
     .fail(function(data) {
@@ -56,6 +56,10 @@ function resetPass(){
         }
     });
 }
+
+$(document).ajaxStart(function() {
+    $("title").html("LOADING ...");
+});
 </script>
 </body>
 

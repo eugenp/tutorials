@@ -31,7 +31,7 @@ code="label.form.loginSignUp"></spring:message></a>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 function resendToken(){
-	$.get("<c:url value="/user/resendRegistrationToken2"><c:param name="token" value="${param.token}"/></c:url>", function(data){
+	$.get("<c:url value="/user/resendRegistrationToken"><c:param name="token" value="${param.token}"/></c:url>", function(data){
 		window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.message;
     })
     .fail(function(data) {
@@ -44,6 +44,10 @@ function resendToken(){
         }
     });
 }
+
+$(document).ajaxStart(function() {
+    $("title").html("LOADING ...");
+});
 </script>
 </c:if>
 </body>

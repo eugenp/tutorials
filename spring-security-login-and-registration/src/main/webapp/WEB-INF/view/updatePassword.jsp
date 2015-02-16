@@ -51,7 +51,7 @@ function savePass(){
       $("#error").show();
       return;
     }
-    $.post("<c:url value="/user/savePassword2"></c:url>",{password: pass} ,function(data){
+    $.post("<c:url value="/user/savePassword"></c:url>",{password: pass} ,function(data){
             window.location.href = "<c:url value="/login.html"></c:url>" + "?message="+data.message;
     })
     .fail(function(data) {
