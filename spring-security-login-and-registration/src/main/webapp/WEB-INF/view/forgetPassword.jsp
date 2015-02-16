@@ -32,8 +32,7 @@
 </div>
 
 <br> 
-<a href="<c:url value="registration.html" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
-
+<a href="<c:url value="/user/registration" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
 <br>
 <a href="<c:url value="login.html" />"><spring:message code="label.form.loginLink"></spring:message></a>
 
@@ -43,17 +42,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 function resetPass(){
-	var email = $("#email").val();
+    var email = $("#email").val();
     $.post("<c:url value="/user/resetPassword2"></c:url>",{email: email} ,function(data){
-        if(data.indexOf("MailError") > -1)
+            window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.message;
+    })
+    .fail(function(data) {
+    	if(data.responseJSON.error.indexOf("MailError") > -1)
         {
             window.location.href = "<c:url value="/emailError.html"></c:url>";
         }
-        else if(data.indexOf("InternalError") > -1){
-            window.location.href = "<c:url value="/login.html"><c:param name="message" value="Error Occurred"/></c:url>";
-        }
         else{
-            window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data;
+            window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.responseJSON.message;
         }
     });
 }
