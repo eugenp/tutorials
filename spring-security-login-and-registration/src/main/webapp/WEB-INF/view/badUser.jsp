@@ -32,15 +32,15 @@ code="label.form.loginSignUp"></spring:message></a>
 <script type="text/javascript">
 function resendToken(){
 	$.get("<c:url value="/user/resendRegistrationToken2"><c:param name="token" value="${param.token}"/></c:url>", function(data){
-        if(data.indexOf("MailError") > -1)
+		window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.message;
+    })
+    .fail(function(data) {
+        if(data.responseJSON.error.indexOf("MailError") > -1)
         {
-        	window.location.href = "<c:url value="/emailError.html"></c:url>";
-        }
-        else if(data.indexOf("InternalError") > -1){
-        	window.location.href = "<c:url value="/login.html"><c:param name="message" value="Error Occurred"/></c:url>";
+            window.location.href = "<c:url value="/emailError.html"></c:url>";
         }
         else{
-        	window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data;
+            window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.responseJSON.message;
         }
     });
 }
