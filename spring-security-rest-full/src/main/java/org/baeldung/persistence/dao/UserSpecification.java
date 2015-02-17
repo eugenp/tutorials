@@ -6,36 +6,44 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.baeldung.persistence.model.User;
-import org.baeldung.web.util.SearchCriteria;
+import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 
 public class UserSpecification implements Specification<User> {
 
-    private final SearchCriteria criteria;
+    private SpecSearchCriteria criteria;
 
-    public UserSpecification(final SearchCriteria criteria) {
+    public UserSpecification(final SpecSearchCriteria criteria) {
         super();
         this.criteria = criteria;
     }
 
-    public SearchCriteria getCriteria() {
+    public SpecSearchCriteria getCriteria() {
         return criteria;
     }
 
     @Override
     public Predicate toPredicate(final Root<User> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
-        if (criteria.getOperation().equalsIgnoreCase(">")) {
-            return builder.greaterThanOrEqualTo(root.<String> get(criteria.getKey()), criteria.getValue().toString());
-        } else if (criteria.getOperation().equalsIgnoreCase("<")) {
+        switch (criteria.getOperation()) {
+        case EQUALITY:
+            return builder.equal(root.get(criteria.getKey()), criteria.getValue());
+        case NEGATION:
+            return builder.notEqual(root.get(criteria.getKey()), criteria.getValue());
+        case GREATER_THAN:
+            return builder.greaterThan(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+        case LESS_THAN:
             return builder.lessThanOrEqualTo(root.<String> get(criteria.getKey()), criteria.getValue().toString());
-        } else if (criteria.getOperation().equalsIgnoreCase(":")) {
-            if (root.get(criteria.getKey()).getJavaType() == String.class) {
-                return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue() + "%");
-            } else {
-                return builder.equal(root.get(criteria.getKey()), criteria.getValue());
-            }
+        case LIKE:
+            return builder.like(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+        case STARTS_WITH:
+            return builder.like(root.<String> get(criteria.getKey()), criteria.getValue() + "%");
+        case ENDS_WITH:
+            return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue());
+        case CONTAINS:
+            return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue() + "%");
+        default:
+            return null;
         }
-        return null;
     }
 
 }

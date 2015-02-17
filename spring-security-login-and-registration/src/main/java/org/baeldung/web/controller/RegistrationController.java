@@ -129,7 +129,7 @@ public class RegistrationController {
         final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
         final User user = userService.getUser(newToken.getToken());
         final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        final SimpleMailMessage email = constructResetVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
+        final SimpleMailMessage email = constructResendVerificationTokenEmail(appUrl, request.getLocale(), newToken, user);
         mailSender.send(email);
 
         return new GenericResponse(messages.getMessage("message.resendToken", null, request.getLocale()));
@@ -187,7 +187,7 @@ public class RegistrationController {
 
     // NON-API
 
-    private final SimpleMailMessage constructResetVerificationTokenEmail(final String contextPath, final Locale locale, final VerificationToken newToken, final User user) {
+    private final SimpleMailMessage constructResendVerificationTokenEmail(final String contextPath, final Locale locale, final VerificationToken newToken, final User user) {
         final String confirmationUrl = contextPath + "/regitrationConfirm.html?token=" + newToken.getToken();
         final String message = messages.getMessage("message.resendToken", null, locale);
         final SimpleMailMessage email = new SimpleMailMessage();
