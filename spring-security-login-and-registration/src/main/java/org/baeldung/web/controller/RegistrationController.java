@@ -32,7 +32,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,20 +65,40 @@ public class RegistrationController {
 
     }
 
-    // API
+    // Registration
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.GET)
-    public String showRegistrationForm(final HttpServletRequest request, final Model model) {
+    public String showRegistrationPage(final Model model) {
         LOGGER.debug("Rendering registration page.");
         final UserDto accountDto = new UserDto();
         model.addAttribute("user", accountDto);
         return "registration";
     }
 
-    @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)
-    public String confirmRegistration(final HttpServletRequest request, final Model model, @RequestParam("token") final String token) {
-        final Locale locale = request.getLocale();
+    @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
+    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request) {
+        LOGGER.debug("Registering user account with information: {}", accountDto);
+        if (result.hasErrors()) {
+            return new ModelAndView("registration", "user", accountDto);
+        }
 
+        final User registered = createUserAccount(accountDto);
+        if (registered == null) {
+            result.rejectValue("email", "message.regError");
+            return new ModelAndView("registration", "user", accountDto);
+        }
+        try {
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+        } catch (final Exception ex) {
+            LOGGER.warn("Unable to register user", ex);
+            return new ModelAndView("emailError", "user", accountDto);
+        }
+        return new ModelAndView("successRegister", "user", accountDto);
+    }
+
+    @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)
+    public String confirmRegistration(final Locale locale, final Model model, @RequestParam("token") final String token) {
         final VerificationToken verificationToken = userService.getVerificationToken(token);
         if (verificationToken == null) {
             final String message = messages.getMessage("auth.message.invalidToken", null, locale);
@@ -102,27 +121,7 @@ public class RegistrationController {
         return "redirect:/login.html?lang=" + locale.getLanguage();
     }
 
-    @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request, final Errors errors) {
-        LOGGER.debug("Registering user account with information: {}", accountDto);
-        if (result.hasErrors()) {
-            return new ModelAndView("registration", "user", accountDto);
-        }
-
-        final User registered = createUserAccount(accountDto);
-        if (registered == null) {
-            result.rejectValue("email", "message.regError");
-            return new ModelAndView("registration", "user", accountDto);
-        }
-        try {
-            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
-        } catch (final Exception ex) {
-            LOGGER.warn("Unable to register user", ex);
-            return new ModelAndView("emailError", "user", accountDto);
-        }
-        return new ModelAndView("successRegister", "user", accountDto);
-    }
+    // user activation - verification
 
     @RequestMapping(value = "/user/resendRegistrationToken", method = RequestMethod.GET)
     @ResponseBody
@@ -156,9 +155,7 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/user/changePassword", method = RequestMethod.GET)
-    public String showChangePasswordPage(final HttpServletRequest request, final Model model, @RequestParam("id") final long id, @RequestParam("token") final String token) {
-        final Locale locale = request.getLocale();
-
+    public String showChangePasswordPage(final Locale locale, final Model model, @RequestParam("id") final long id, @RequestParam("token") final String token) {
         final PasswordResetToken passToken = userService.getPasswordResetToken(token);
         final User user = passToken.getUser();
         if (passToken == null || user.getId() != id) {
@@ -182,10 +179,10 @@ public class RegistrationController {
     @RequestMapping(value = "/user/savePassword", method = RequestMethod.POST)
     @PreAuthorize("hasRole('READ_PRIVILEGE')")
     @ResponseBody
-    public GenericResponse savePassword(final HttpServletRequest request, @RequestParam("password") final String password) {
+    public GenericResponse savePassword(final Locale locale, @RequestParam("password") final String password) {
         final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userService.changeUserPassword(user, password);
-        return new GenericResponse(messages.getMessage("message.resetPasswordSuc", null, request.getLocale()));
+        return new GenericResponse(messages.getMessage("message.resetPasswordSuc", null, locale));
     }
 
     // NON-API
