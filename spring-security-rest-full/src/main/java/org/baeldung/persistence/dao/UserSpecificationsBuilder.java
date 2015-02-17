@@ -4,22 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.baeldung.persistence.model.User;
-import org.baeldung.web.util.SearchCriteria;
+import org.baeldung.web.util.SearchOperation;
+import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 
 public final class UserSpecificationsBuilder {
 
-    private final List<SearchCriteria> params;
+    private final List<SpecSearchCriteria> params;
 
     public UserSpecificationsBuilder() {
-        params = new ArrayList<SearchCriteria>();
+        params = new ArrayList<SpecSearchCriteria>();
     }
 
     // API
 
-    public final UserSpecificationsBuilder with(final String key, final String operation, final Object value) {
-        params.add(new SearchCriteria(key, operation, value));
+    public final UserSpecificationsBuilder with(final String key, final String operation, final Object value, final String prefix, final String suffix) {
+        SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
+        if (op != null) {
+            if (op == SearchOperation.EQUALITY) // the operation may be complex operation
+            {
+                final boolean startWithAsterisk = prefix.contains("*");
+                final boolean endWithAsterisk = suffix.contains("*");
+
+                if (startWithAsterisk && endWithAsterisk) {
+                    op = SearchOperation.CONTAINS;
+                } else if (startWithAsterisk) {
+                    op = SearchOperation.ENDS_WITH;
+                } else if (endWithAsterisk) {
+                    op = SearchOperation.STARTS_WITH;
+                }
+            }
+            params.add(new SpecSearchCriteria(key, op, value));
+        }
         return this;
     }
 
@@ -29,7 +46,7 @@ public final class UserSpecificationsBuilder {
         }
 
         final List<Specification<User>> specs = new ArrayList<Specification<User>>();
-        for (final SearchCriteria param : params) {
+        for (final SpecSearchCriteria param : params) {
             specs.add(new UserSpecification(param));
         }
 

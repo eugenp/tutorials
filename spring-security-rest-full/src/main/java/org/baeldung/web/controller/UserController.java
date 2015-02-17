@@ -13,6 +13,7 @@ import org.baeldung.persistence.dao.UserSpecificationsBuilder;
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchCriteria;
+import org.baeldung.web.util.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.mysema.query.types.expr.BooleanExpression;
 
@@ -63,10 +65,11 @@ public class UserController {
     @ResponseBody
     public List<User> findAllBySpecification(@RequestParam(value = "search") final String search) {
         final UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
-        final Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
+        final String operationSetExper = Joiner.on("|").join(SearchOperation.SIMPLE_OPERATION_SET);
+        final Pattern pattern = Pattern.compile("(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         final Matcher matcher = pattern.matcher(search + ",");
         while (matcher.find()) {
-            builder.with(matcher.group(1), matcher.group(2), matcher.group(3));
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(4), matcher.group(3), matcher.group(5));
         }
 
         final Specification<User> spec = builder.build();
