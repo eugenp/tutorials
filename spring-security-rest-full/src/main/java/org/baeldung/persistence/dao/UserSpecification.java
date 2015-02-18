@@ -32,7 +32,7 @@ public class UserSpecification implements Specification<User> {
         case GREATER_THAN:
             return builder.greaterThan(root.<String> get(criteria.getKey()), criteria.getValue().toString());
         case LESS_THAN:
-            return builder.lessThanOrEqualTo(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+            return builder.lessThan(root.<String> get(criteria.getKey()), criteria.getValue().toString());
         case LIKE:
             return builder.like(root.<String> get(criteria.getKey()), criteria.getValue().toString());
         case STARTS_WITH:
