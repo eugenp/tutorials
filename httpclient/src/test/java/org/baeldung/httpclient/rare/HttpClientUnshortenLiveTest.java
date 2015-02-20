@@ -13,7 +13,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpHead;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
@@ -82,12 +82,12 @@ public class HttpClientUnshortenLiveTest {
     }
 
     final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
-        HttpGet request = null;
+        HttpHead request = null;
         HttpEntity httpEntity = null;
         InputStream entityContentStream = null;
 
         try {
-            request = new HttpGet(url);
+            request = new HttpHead(url);
             final HttpResponse httpResponse = client.execute(request);
 
             httpEntity = httpResponse.getEntity();
@@ -118,16 +118,11 @@ public class HttpClientUnshortenLiveTest {
     }
 
     final String expandSingleLevel(final String url) throws IOException {
-        HttpGet request = null;
-        HttpEntity httpEntity = null;
-        InputStream entityContentStream = null;
+        HttpHead request = null;
 
         try {
-            request = new HttpGet(url);
+            request = new HttpHead(url);
             final HttpResponse httpResponse = client.execute(request);
-
-            httpEntity = httpResponse.getEntity();
-            entityContentStream = httpEntity.getContent();
 
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode != 301 && statusCode != 302) {
@@ -143,12 +138,6 @@ public class HttpClientUnshortenLiveTest {
         } finally {
             if (request != null) {
                 request.releaseConnection();
-            }
-            if (entityContentStream != null) {
-                entityContentStream.close();
-            }
-            if (httpEntity != null) {
-                EntityUtils.consume(httpEntity);
             }
         }
     }
