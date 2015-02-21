@@ -163,7 +163,7 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.1.4.RELEASE</org.springframework.version>
+		<org.springframework.version>4.1.5.RELEASE</org.springframework.version>
 		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 		<javassist.version>3.18.1-GA</javassist.version>
 
@@ -189,7 +189,7 @@
 		<mockito.version>1.10.19</mockito.version>
 
 		<httpcore.version>4.4</httpcore.version>
-		<httpclient.version>4.3.6</httpclient.version>
+		<httpclient.version>4.4</httpclient.version>
 
 		<rest-assured.version>2.4.0</rest-assured.version>
 
@@ -197,7 +197,7 @@
 		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.11</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.4.12</cargo-maven2-plugin.version>
 
 	</properties>
 
