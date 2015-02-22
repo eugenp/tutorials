@@ -17,10 +17,22 @@
 </div>
 <br><br>
 <div class="form-group">
-    <label class="col-sm-3">Content</label>
-    <span class="col-sm-9"><textarea placeholder="content" class="form-control"></textarea></span>
+    <label class="col-sm-3">Url</label>
+    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" /></span>
 </div>
-<br><br>   
+<br><br>  
+<div class="form-group">
+    <label class="col-sm-3">Subreddit</label>
+    <span class="col-sm-9">
+    <select name="sr">
+        <c:forEach items="${subreddits}" var="item">
+            <option value="${item}">${item}</option>
+        </c:forEach>
+    </select>
+    </span>
+</div>
+<br><br>
+ 
     <c:if test="${iden != null}">
     <input type="hidden" name="iden" value="${iden}"/>
     

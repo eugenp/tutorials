@@ -58,12 +58,7 @@ public class RedditController {
 
             Map<String, String> param = new HashMap<String, String>();
             param.put("api_type", "json");
-            param.put("kind", "self");
-            param.put("sr", "api");
-            // param.put("iden", "XCzyTdJveIcYXNhLJ4a2X9WVDswtx83u");
-            // param.put("captcha", "BJMGMU");
-            // param.put("title", "http2 is coming soon");
-            // param.put("text", "http2 is coming soon what do you think about that");
+            param.put("kind", "link");
             param.putAll(formParams);
 
             System.out.println(param.keySet());
@@ -83,20 +78,33 @@ public class RedditController {
 
     @RequestMapping("/post")
     public String showSubmissionForm(Model model) throws JsonProcessingException, IOException {
-        String needsCaptchaResult = needsCaptcha();
-        if (needsCaptchaResult.equalsIgnoreCase("true")) {
-            String newCaptchaResult = getNewCaptcha();
-            String[] split = newCaptchaResult.split("\"");
-            String iden = split[split.length - 2];
-            model.addAttribute("iden", iden.trim());
+        try {
+            List<String> subreddits = getSubreddit();
+            model.addAttribute("subreddits", subreddits);
+
+            String needsCaptchaResult = needsCaptcha();
+            if (needsCaptchaResult.equalsIgnoreCase("true")) {
+                String newCaptchaResult = getNewCaptcha();
+                String[] split = newCaptchaResult.split("\"");
+                String iden = split[split.length - 2];
+                model.addAttribute("iden", iden.trim());
+            }
+        } catch (UserApprovalRequiredException e) {
+            throw e;
+        } catch (UserRedirectRequiredException e) {
+            throw e;
+        } catch (Exception e) {
+            LOGGER.error("Error occurred", e);
+            model.addAttribute("error", e.getLocalizedMessage());
+            return "reddit";
         }
         return "submissionForm";
     }
 
     //
 
-    public List<String> getSubreddit(Model model) throws JsonProcessingException, IOException {
-        String result = redditRestTemplate.getForObject("https://oauth.reddit.com/subreddits/popular", String.class);
+    private List<String> getSubreddit() throws JsonProcessingException, IOException {
+        String result = redditRestTemplate.getForObject("https://oauth.reddit.com/subreddits/popular?limit=50", String.class);
         JsonNode node = new ObjectMapper().readTree(result);
         node = node.get("data").get("children");
         List<String> subreddits = new ArrayList<String>();
@@ -106,12 +114,12 @@ public class RedditController {
         return subreddits;
     }
 
-    public String needsCaptcha() {
+    private String needsCaptcha() {
         String result = redditRestTemplate.getForObject("https://oauth.reddit.com/api/needs_captcha.json", String.class);
         return result;
     }
 
-    public String getNewCaptcha() {
+    private String getNewCaptcha() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity req = new HttpEntity(headers);

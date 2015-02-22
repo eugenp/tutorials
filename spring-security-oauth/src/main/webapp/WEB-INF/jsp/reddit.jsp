@@ -9,7 +9,7 @@
     <c:when test="${info != null}">
         <h1>Your Reddit Info</h1>
         <b>Your reddit username is </b>${info}
-        <br>
+        <br><br><br>
         <a href="post">Submit to Reddit</a>
     </c:when>
     <c:otherwise> 
