@@ -25,12 +25,13 @@ import org.springframework.security.oauth2.client.token.RequestEnhancer;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.common.exceptions.InvalidRequestException;
 import org.springframework.security.oauth2.common.util.OAuth2Utils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseExtractor;
+
+import com.google.common.base.Joiner;
 
 public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAccessTokenProvider {
 
@@ -42,7 +43,6 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
 
     @Override
     public String obtainAuthorizationCode(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException, OAuth2AccessDeniedException {
-
         AuthorizationCodeResourceDetails resource = (AuthorizationCodeResourceDetails) details;
 
         HttpHeaders headers = getHeadersForAuthorizationRequest(request);
@@ -97,12 +97,10 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         }
         request.set("code", code);
         return code;
-
     }
 
     @Override
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException, OAuth2AccessDeniedException {
-
         AuthorizationCodeResourceDetails resource = (AuthorizationCodeResourceDetails) details;
 
         if (request.getAuthorizationCode() == null) {
@@ -112,24 +110,10 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
             obtainAuthorizationCode(resource, request);
         }
         return retrieveToken(request, resource, getParametersForTokenRequest(resource, request), getHeadersForTokenRequest(request));
-
-    }
-
-    @Override
-    public OAuth2AccessToken refreshAccessToken(OAuth2ProtectedResourceDetails resource, OAuth2RefreshToken refreshToken, AccessTokenRequest request) throws UserRedirectRequiredException, OAuth2AccessDeniedException {
-        MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
-        form.add("grant_type", "refresh_token");
-        form.add("refresh_token", refreshToken.getValue());
-        try {
-            return retrieveToken(request, resource, form, getHeadersForTokenRequest(request));
-        } catch (OAuth2AccessDeniedException e) {
-            throw getRedirectForAuthorization((AuthorizationCodeResourceDetails) resource, request);
-        }
     }
 
     private HttpHeaders getHeadersForTokenRequest(AccessTokenRequest request) {
         HttpHeaders headers = new HttpHeaders();
-        // No cookie for token request
         return headers;
     }
 
@@ -143,7 +127,6 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
     }
 
     private MultiValueMap<String, String> getParametersForTokenRequest(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-
         MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
         form.set("grant_type", "authorization_code");
         form.set("code", request.getAuthorizationCode());
@@ -167,11 +150,9 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         }
 
         return form;
-
     }
 
     private MultiValueMap<String, String> getParametersForAuthorizeRequest(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-
         MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
         form.set("response_type", "code");
         form.set("client_id", resource.getClientId());
@@ -179,7 +160,7 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         if (request.get("scope") != null) {
             form.set("scope", request.getFirst("scope"));
         } else {
-            form.set("scope", OAuth2Utils.formatParameterList(resource.getScope()));
+            form.set("scope", Joiner.on(',').join(resource.getScope()));
         }
 
         String redirectUri = resource.getPreEstablishedRedirectUri();
@@ -204,17 +185,13 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         }
 
         return form;
-
     }
 
     private UserRedirectRequiredException getRedirectForAuthorization(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-
-        // we don't have an authorization code yet. So first get that.
         TreeMap<String, String> requestParameters = new TreeMap<String, String>();
-        requestParameters.put("response_type", "code"); // oauth2 spec, section 3
+        requestParameters.put("response_type", "code");
         requestParameters.put("client_id", resource.getClientId());
         requestParameters.put("duration", "permanent");
-        // Client secret is not required in the initial authorization request
 
         String redirectUri = resource.getRedirectUri(request);
         if (redirectUri != null) {
@@ -231,7 +208,7 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
                 while (scopeIt.hasNext()) {
                     builder.append(scopeIt.next());
                     if (scopeIt.hasNext()) {
-                        builder.append(' ');
+                        builder.append(',');
                     }
                 }
             }
@@ -248,7 +225,6 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         request.setPreservedState(redirectUri);
 
         return redirectException;
-
     }
 
 }
