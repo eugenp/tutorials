@@ -64,16 +64,17 @@ public class RedditController {
             System.out.println(param.keySet());
             System.out.println(param.entrySet());
             ResponseEntity<String> result = redditRestTemplate.postForEntity("https://oauth.reddit.com/api/submit", req, String.class, param);
-            model.addAttribute("error", result.getBody());
+            String responseMsg = parseResponseMessage(result.getBody());
+            model.addAttribute("msg", responseMsg);
         } catch (UserApprovalRequiredException e) {
             throw e;
         } catch (UserRedirectRequiredException e) {
             throw e;
         } catch (Exception e) {
             LOGGER.error("Error occurred", e);
-            model.addAttribute("error", e.getLocalizedMessage());
+            model.addAttribute("msg", e.getLocalizedMessage());
         }
-        return "reddit";
+        return "submissionResponse";
     }
 
     @RequestMapping("/post")
@@ -81,10 +82,8 @@ public class RedditController {
         try {
             String needsCaptchaResult = needsCaptcha();
             if (needsCaptchaResult.equalsIgnoreCase("true")) {
-                String newCaptchaResult = getNewCaptcha();
-                String[] split = newCaptchaResult.split("\"");
-                String iden = split[split.length - 2];
-                model.addAttribute("iden", iden.trim());
+                String iden = getNewCaptcha();
+                model.addAttribute("iden", iden);
             }
         } catch (UserApprovalRequiredException e) {
             throw e;
@@ -125,7 +124,19 @@ public class RedditController {
         param.put("api_type", "json");
 
         ResponseEntity<String> result = redditRestTemplate.postForEntity("https://oauth.reddit.com/api/new_captcha", req, String.class, param);
-        return result.getBody();
+        String[] split = result.getBody().split("\"");
+        return split[split.length - 2];
+    }
+
+    private String parseResponseMessage(String responseBody) {
+        System.out.println(responseBody);
+        int index = responseBody.indexOf("error");
+        if (index == -1) {
+            return "Post submitted successfully";
+        } else {
+            int msgEnd = responseBody.indexOf("\"", index);
+            return responseBody.substring(index, msgEnd);
+        }
     }
 
     public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
