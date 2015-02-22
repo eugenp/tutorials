@@ -85,7 +85,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             details.setAccessTokenUri(accessTokenUri);
             details.setUserAuthorizationUri(userAuthorizationUri);
             details.setTokenName("oauth_token");
-            details.setScope(Arrays.asList("identity"));
+            details.setScope(Arrays.asList("identity", "read", "submit"));
             details.setGrantType("authorization_code");
             return details;
         }
