@@ -23,13 +23,7 @@
 <br><br>  
 <div class="form-group">
     <label class="col-sm-3">Subreddit</label>
-    <span class="col-sm-9">
-    <select name="sr">
-        <c:forEach items="${subreddits}" var="item">
-            <option value="${item}">${item}</option>
-        </c:forEach>
-    </select>
-    </span>
+    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" /></span>
 </div>
 <br><br>
  
