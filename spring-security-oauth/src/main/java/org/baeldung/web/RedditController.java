@@ -79,9 +79,6 @@ public class RedditController {
     @RequestMapping("/post")
     public String showSubmissionForm(Model model) throws JsonProcessingException, IOException {
         try {
-            List<String> subreddits = getSubreddit();
-            model.addAttribute("subreddits", subreddits);
-
             String needsCaptchaResult = needsCaptcha();
             if (needsCaptchaResult.equalsIgnoreCase("true")) {
                 String newCaptchaResult = getNewCaptcha();
