@@ -135,16 +135,17 @@ public class RedditController {
         String result = "";
         JsonNode node = new ObjectMapper().readTree(responseBody);
         JsonNode errorNode = node.get("json").get("errors").get(0);
-        for (JsonNode child : errorNode) {
-            result = result + child.toString().replaceAll("\"|null", "") + "<br>";
-        }
-        if (result.length() == 0) {
+        if (errorNode != null) {
+            for (JsonNode child : errorNode) {
+                result = result + child.toString().replaceAll("\"|null", "") + "<br>";
+            }
+            return result;
+        } else {
             if (node.get("json").get("data") != null && node.get("json").get("data").get("url") != null)
                 return "Post submitted successfully <a href=\"" + node.get("json").get("data").get("url").asText() + "\"> check it out </a>";
             else
                 return "Error Occurred";
         }
-        return result;
     }
 
     public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
