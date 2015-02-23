@@ -17,6 +17,8 @@ import org.springframework.security.oauth2.client.resource.UserApprovalRequiredE
 import org.springframework.security.oauth2.client.resource.UserRedirectRequiredException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -43,7 +45,7 @@ public class RedditController {
             throw e;
         } catch (Exception e) {
             LOGGER.error("Error occurred", e);
-            model.addAttribute("error", e.getLocalizedMessage());
+            model.addAttribute("error", e.getMessage());
         }
         return "reddit";
     }
@@ -51,29 +53,31 @@ public class RedditController {
     @RequestMapping("/submit")
     public String submit(Model model, @RequestParam Map<String, String> formParams) {
         try {
-            System.out.println(formParams.keySet());
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            HttpEntity req = new HttpEntity(headers);
+            MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+            param.add("api_type", "json");
+            param.add("kind", "link");
+            param.add("resubmit", "true");
+            param.add("sendreplies", "false");
+            param.add("then", "comments");
 
-            Map<String, String> param = new HashMap<String, String>();
-            param.put("api_type", "json");
-            param.put("kind", "link");
-            param.putAll(formParams);
+            for (Map.Entry<String, String> entry : formParams.entrySet()) {
+                param.add(entry.getKey(), entry.getValue());
+            }
 
-            System.out.println(param.keySet());
-            System.out.println(param.entrySet());
-            ResponseEntity<String> result = redditRestTemplate.postForEntity("https://oauth.reddit.com/api/submit", req, String.class, param);
-            model.addAttribute("error", result.getBody());
+            LOGGER.info("User submitting Link with these parameters: " + formParams.entrySet());
+            String result = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, String.class);
+            LOGGER.info("Full Reddit Response: " + result);
+            String responseMsg = parseResponse(result);
+            model.addAttribute("msg", responseMsg);
         } catch (UserApprovalRequiredException e) {
             throw e;
         } catch (UserRedirectRequiredException e) {
             throw e;
         } catch (Exception e) {
             LOGGER.error("Error occurred", e);
-            model.addAttribute("error", e.getLocalizedMessage());
+            model.addAttribute("msg", e.getLocalizedMessage());
         }
-        return "reddit";
+        return "submissionResponse";
     }
 
     @RequestMapping("/post")
@@ -81,10 +85,8 @@ public class RedditController {
         try {
             String needsCaptchaResult = needsCaptcha();
             if (needsCaptchaResult.equalsIgnoreCase("true")) {
-                String newCaptchaResult = getNewCaptcha();
-                String[] split = newCaptchaResult.split("\"");
-                String iden = split[split.length - 2];
-                model.addAttribute("iden", iden.trim());
+                String iden = getNewCaptcha();
+                model.addAttribute("iden", iden);
             }
         } catch (UserApprovalRequiredException e) {
             throw e;
@@ -98,7 +100,7 @@ public class RedditController {
         return "submissionForm";
     }
 
-    //
+    // === private
 
     private List<String> getSubreddit() throws JsonProcessingException, IOException {
         String result = redditRestTemplate.getForObject("https://oauth.reddit.com/subreddits/popular?limit=50", String.class);
@@ -125,7 +127,25 @@ public class RedditController {
         param.put("api_type", "json");
 
         ResponseEntity<String> result = redditRestTemplate.postForEntity("https://oauth.reddit.com/api/new_captcha", req, String.class, param);
-        return result.getBody();
+        String[] split = result.getBody().split("\"");
+        return split[split.length - 2];
+    }
+
+    private String parseResponse(String responseBody) throws JsonProcessingException, IOException {
+        String result = "";
+        JsonNode node = new ObjectMapper().readTree(responseBody);
+        JsonNode errorNode = node.get("json").get("errors").get(0);
+        if (errorNode != null) {
+            for (JsonNode child : errorNode) {
+                result = result + child.toString().replaceAll("\"|null", "") + "<br>";
+            }
+            return result;
+        } else {
+            if (node.get("json").get("data") != null && node.get("json").get("data").get("url") != null)
+                return "Post submitted successfully <a href=\"" + node.get("json").get("data").get("url").asText() + "\"> check it out </a>";
+            else
+                return "Error Occurred";
+        }
     }
 
     public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
