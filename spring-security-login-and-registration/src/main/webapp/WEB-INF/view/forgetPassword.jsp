@@ -26,7 +26,7 @@
 <td><input id="email" name="email" type="email" value="" /></td>
 </tr>
 
-<button type="submit" onclick="resetPass()">
+<button class="btn btn-primary" type="submit" onclick="resetPass()">
 <spring:message code="message.resetPassword"></spring:message>
 </button>
 </div>

@@ -43,7 +43,7 @@
 					<td><form:input path="matchingPassword" value="" type="password" /></td>
 					<form:errors cssClass="alert alert-error" element="div" />
 				</tr>
-				<button type="submit">
+				<button type="submit" class="btn btn-primary">
 					<spring:message code="label.form.submit"></spring:message>
 				</button>
 			</form:form>
