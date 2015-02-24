@@ -90,7 +90,7 @@ ${param.message}
 						<td><input type='password' name='j_password' /></td>
 					</tr>
 					<tr>
-						<td><input name="submit" type="submit"
+						<td><input class="btn btn-primary" name="submit" type="submit"
 							value=<spring:message code="label.form.submit"></spring:message> /></td>
 					</tr>
 				</table>

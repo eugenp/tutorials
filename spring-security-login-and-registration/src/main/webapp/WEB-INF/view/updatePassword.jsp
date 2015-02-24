@@ -34,7 +34,7 @@
                     </td>
                 </tr>
                 <br><br>
-                <button type="submit" onclick="savePass()">
+                <button class="btn btn-primary" type="submit" onclick="savePass()">
                     <spring:message code="message.updatePassword"></spring:message>
                 </button>
             </div>
