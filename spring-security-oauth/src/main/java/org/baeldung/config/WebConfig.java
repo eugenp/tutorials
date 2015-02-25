@@ -50,7 +50,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public RedditController redditController(@Qualifier("redditRestTemplate") OAuth2RestTemplate redditRestTemplate) {
+    public RedditController redditController(OAuth2RestTemplate redditRestTemplate) {
         RedditController controller = new RedditController();
         controller.setRedditRestTemplate(redditRestTemplate);
         return controller;
