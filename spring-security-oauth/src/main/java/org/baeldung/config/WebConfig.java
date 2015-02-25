@@ -94,7 +94,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         @Bean
         public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
             OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
-            AuthorizationCodeAccessTokenProvider authProvider = new AuthorizationCodeAccessTokenProvider();
+            AuthorizationCodeAccessTokenProvider authProvider = new MyAuthorizationCodeAccessTokenProvider();
             authProvider.setAuthorizationRequestEnhancer(new CustomRequestEnhancer());
             AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(authProvider, new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(), new ClientCredentialsAccessTokenProvider()));
             template.setAccessTokenProvider(accessTokenProvider);
