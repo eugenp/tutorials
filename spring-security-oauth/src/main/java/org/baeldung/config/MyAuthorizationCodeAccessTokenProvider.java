@@ -56,6 +56,7 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
             form.putAll(getParametersForAuthorizeRequest(resource, request));
         }
         form.set("duration", "permanent");
+        System.out.println("===== at enhancer point ===");
         authorizationRequestEnhancer.enhance(request, resource, form, headers);
         final AccessTokenRequest copy = request;
 
@@ -192,6 +193,7 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
         requestParameters.put("response_type", "code");
         requestParameters.put("client_id", resource.getClientId());
         requestParameters.put("duration", "permanent");
+        System.out.println("===== at private message redirect ===");
 
         String redirectUri = resource.getRedirectUri(request);
         if (redirectUri != null) {
