@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import org.baeldung.web.RedditController;
 import org.baeldung.web.RestExceptionHandler;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -50,7 +49,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public RedditController redditController(@Qualifier("redditRestTemplate") OAuth2RestTemplate redditRestTemplate) {
+    public RedditController redditController(OAuth2RestTemplate redditRestTemplate) {
         RedditController controller = new RedditController();
         controller.setRedditRestTemplate(redditRestTemplate);
         return controller;
