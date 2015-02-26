@@ -3,6 +3,7 @@ package org.baeldung.config;
 import java.util.Arrays;
 
 import org.baeldung.web.RedditController;
+import org.baeldung.web.RestExceptionHandler;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,6 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.AccessTokenProviderChain;
 import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider;
-import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.implicit.ImplicitAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
@@ -56,6 +56,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return controller;
     }
 
+    @Bean
+    public RestExceptionHandler restExceptionHandler() {
+        return new RestExceptionHandler();
+    }
+
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
@@ -94,9 +99,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         @Bean
         public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
             OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
-            AuthorizationCodeAccessTokenProvider authProvider = new AuthorizationCodeAccessTokenProvider();
-            authProvider.setAuthorizationRequestEnhancer(new CustomRequestEnhancer());
-            AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(authProvider, new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(), new ClientCredentialsAccessTokenProvider()));
+            AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
+                    new ClientCredentialsAccessTokenProvider()));
             template.setAccessTokenProvider(accessTokenProvider);
             return template;
         }
