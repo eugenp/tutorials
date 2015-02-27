@@ -14,9 +14,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler implements Serializable {
-    /**
-     * 
-     */
     private static final long serialVersionUID = -3861125729653781371L;
 
     public RestExceptionHandler() {
@@ -39,4 +36,5 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler impleme
         String response = "Error Occurred : " + ex.getMessage();
         return handleExceptionInternal(ex, response, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
+
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,12 +23,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class RedditController {
-    private OAuth2RestTemplate redditRestTemplate;
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    private OAuth2RestTemplate redditRestTemplate;
+
+    // API
+
     @RequestMapping("/info")
-    public String getInfo(Model model) {
+    public final String getInfo(Model model) {
         JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
         String name = node.get("name").asText();
         model.addAttribute("info", name);
@@ -35,7 +40,7 @@ public class RedditController {
     }
 
     @RequestMapping("/submit")
-    public String submit(Model model, @RequestParam Map<String, String> formParams) {
+    public final String submit(Model model, @RequestParam Map<String, String> formParams) {
         MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
         param.add("api_type", "json");
         param.add("kind", "link");
@@ -56,7 +61,7 @@ public class RedditController {
     }
 
     @RequestMapping("/post")
-    public String showSubmissionForm(Model model) {
+    public final String showSubmissionForm(Model model) {
         String needsCaptchaResult = needsCaptcha();
         if (needsCaptchaResult.equalsIgnoreCase("true")) {
             String iden = getNewCaptcha();
@@ -67,7 +72,7 @@ public class RedditController {
 
     // === private
 
-    public List<String> getSubreddit() throws JsonProcessingException, IOException {
+    List<String> getSubreddit() throws JsonProcessingException, IOException {
         String result = redditRestTemplate.getForObject("https://oauth.reddit.com/subreddits/popular?limit=50", String.class);
         JsonNode node = new ObjectMapper().readTree(result);
         node = node.get("data").get("children");
@@ -106,10 +111,6 @@ public class RedditController {
             else
                 return "Error Occurred";
         }
-    }
-
-    public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
-        this.redditRestTemplate = redditRestTemplate;
     }
 
 }

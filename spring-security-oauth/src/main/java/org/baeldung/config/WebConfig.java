@@ -2,10 +2,9 @@ package org.baeldung.config;
 
 import java.util.Arrays;
 
-import org.baeldung.web.RedditController;
-import org.baeldung.web.RestExceptionHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -28,6 +27,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan(basePackages = { "org.baeldung.web" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
@@ -46,18 +46,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
-    }
-
-    @Bean
-    public RedditController redditController(OAuth2RestTemplate redditRestTemplate) {
-        RedditController controller = new RedditController();
-        controller.setRedditRestTemplate(redditRestTemplate);
-        return controller;
-    }
-
-    @Bean
-    public RestExceptionHandler restExceptionHandler() {
-        return new RestExceptionHandler();
     }
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
