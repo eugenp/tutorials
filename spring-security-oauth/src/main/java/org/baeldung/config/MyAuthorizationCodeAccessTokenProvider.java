@@ -23,6 +23,9 @@ import org.springframework.util.MultiValueMap;
 
 public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAccessTokenProvider implements Serializable {
 
+    /**
+     * 
+     */
     private static final long serialVersionUID = 3822611002661972274L;
 
     private StateKeyGenerator stateKeyGenerator = new DefaultStateKeyGenerator();
