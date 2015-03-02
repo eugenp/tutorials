@@ -14,9 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler implements Serializable {
-    /**
-     * 
-     */
+
     private static final long serialVersionUID = -3861125729653781371L;
 
     public RestExceptionHandler() {

@@ -1,14 +1,21 @@
 package org.baeldung.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.baeldung.persistence.dao.PostRepository;
+import org.baeldung.persistence.dao.UserRepository;
+import org.baeldung.persistence.model.Post;
+import org.baeldung.persistence.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
@@ -16,26 +23,35 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class RedditController {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+    @Autowired
     private OAuth2RestTemplate redditRestTemplate;
 
-    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    @Autowired
+    private UserRepository userReopsitory;
+
+    @Autowired
+    private PostRepository postReopsitory;
 
     @RequestMapping("/info")
-    public String getInfo(Model model) {
+    public final String getInfo(Model model) {
         JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
         String name = node.get("name").asText();
+        addUser(name, redditRestTemplate.getAccessToken());
         model.addAttribute("info", name);
         return "reddit";
     }
 
     @RequestMapping("/submit")
-    public String submit(Model model, @RequestParam Map<String, String> formParams) {
+    public final String submit(Model model, @RequestParam Map<String, String> formParams) {
         MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
         param.add("api_type", "json");
         param.add("kind", "link");
@@ -47,16 +63,16 @@ public class RedditController {
             param.add(entry.getKey(), entry.getValue());
         }
 
-        LOGGER.info("User submitting Link with these parameters: " + formParams.entrySet());
+        logger.info("User submitting Link with these parameters: " + formParams.entrySet());
         JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
-        LOGGER.info("Full Reddit Response: " + node.toString());
+        logger.info("Full Reddit Response: " + node.toString());
         String responseMsg = parseResponse(node);
         model.addAttribute("msg", responseMsg);
         return "submissionResponse";
     }
 
     @RequestMapping("/post")
-    public String showSubmissionForm(Model model) {
+    public final String showSubmissionForm(Model model) {
         String needsCaptchaResult = needsCaptcha();
         if (needsCaptchaResult.equalsIgnoreCase("true")) {
             String iden = getNewCaptcha();
@@ -65,25 +81,53 @@ public class RedditController {
         return "submissionForm";
     }
 
-    // === private
-
-    public List<String> getSubreddit() throws JsonProcessingException, IOException {
-        String result = redditRestTemplate.getForObject("https://oauth.reddit.com/subreddits/popular?limit=50", String.class);
-        JsonNode node = new ObjectMapper().readTree(result);
-        node = node.get("data").get("children");
-        List<String> subreddits = new ArrayList<String>();
-        for (JsonNode child : node) {
-            subreddits.add(child.get("data").get("display_name").asText());
+    @RequestMapping("/postSchedule")
+    public final String showSchedulePostForm(Model model) {
+        String needsCaptchaResult = needsCaptcha();
+        if (needsCaptchaResult.equalsIgnoreCase("true")) {
+            model.addAttribute("msg", "Sorry, You do not have enought karma");
+            return "submissionResponse";
         }
-        return subreddits;
+        return "schedulePostForm";
     }
 
-    private String needsCaptcha() {
+    @RequestMapping("/schedule")
+    public final String schedule(Model model, @RequestParam Map<String, String> formParams) throws ParseException {
+        logger.info("User scheduling Post with these parameters: " + formParams.entrySet());
+        User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+        Post post = new Post();
+        post.setUser(user);
+        post.setSent(false);
+        post.setTitle(formParams.get("title"));
+        post.setSubreddit(formParams.get("sr"));
+        post.setUrl(formParams.get("url"));
+        post.setSubmissionDate(dateFormat.parse(formParams.get("date")));
+        if (post.getSubmissionDate().before(new Date())) {
+            model.addAttribute("msg", "Invalid date");
+            return "submissionResponse";
+        }
+        postReopsitory.save(post);
+        List<Post> posts = postReopsitory.findByUser(user);
+        model.addAttribute("posts", posts);
+        return "postListView";
+    }
+
+    @RequestMapping("/posts")
+    public final String getScheduledPosts(Model model) {
+        User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+        List<Post> posts = postReopsitory.findByUser(user);
+        model.addAttribute("posts", posts);
+        return "postListView";
+    }
+
+    // === private
+
+    private final String needsCaptcha() {
         String result = redditRestTemplate.getForObject("https://oauth.reddit.com/api/needs_captcha.json", String.class);
         return result;
     }
 
-    private String getNewCaptcha() {
+    private final String getNewCaptcha() {
         Map<String, String> param = new HashMap<String, String>();
         param.put("api_type", "json");
 
@@ -92,7 +136,7 @@ public class RedditController {
         return split[split.length - 2];
     }
 
-    private String parseResponse(JsonNode node) {
+    private final String parseResponse(JsonNode node) {
         String result = "";
         JsonNode errorNode = node.get("json").get("errors").get(0);
         if (errorNode != null) {
@@ -108,8 +152,16 @@ public class RedditController {
         }
     }
 
-    public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
-        this.redditRestTemplate = redditRestTemplate;
+    private final void addUser(String name, OAuth2AccessToken token) {
+        User user = userReopsitory.findByUsername(name);
+        if (user == null) {
+            user = new User();
+            user.setUsername(name);
+            user.setAccessToken(token.getValue());
+            user.setRefreshToken(token.getRefreshToken().getValue());
+            user.setTokenExpiration(token.getExpiration());
+            userReopsitory.save(user);
+        }
     }
 
 }

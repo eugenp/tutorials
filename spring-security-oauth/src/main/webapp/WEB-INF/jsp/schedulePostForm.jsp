@@ -4,6 +4,9 @@
 
 <title>Spring Security OAuth</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value="/resources/datetime-picker.css" />">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value="/resources/datetime-picker.js" />"></script>
 
 </head>
 <body>
@@ -24,16 +27,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="posts">My Scheduled Posts</a></li>
-        <li class="active"><a href="#">Submit Post</a></li>
-        <li><a href="postSchedule">Schedule Post</a></li>
+        <li><a href="post">Submit Post</a></li>
+        <li class="active"><a href="#">Schedule Post</a></li>
       </ul>
       
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-<h1>Submit to Reddit</h1>
-<form action="submit" method="post">
+<h1>Schedule Post</h1>
+<form action="schedule" method="post">
 <div class="row">
 <div class="form-group">
     <label class="col-sm-3">Title</label>
@@ -50,17 +53,15 @@
     <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" /></span>
 </div>
 <br><br>
- 
-    <c:if test="${iden != null}">
-    <input type="hidden" name="iden" value="${iden}"/>
-    
-	<div class="form-group">   
-	    <label class="col-sm-3">Captcha</label>
-	    <span class="col-sm-9"><input name="captcha" placeholder="captcha" class="form-control"/></span>
-	</div>
-	<br><br>
-    <img src="http://www.reddit.com/captcha/${iden}" alt="captcha" width="200"/>
-    </c:if>
+
+<label class="col-sm-3">Submission Date</label>
+<span class="col-sm-9"><input type="text" name="date" class="form-control"></span>
+    <script type="text/javascript">
+        $(function(){
+            $('*[name=date]').appendDtpicker({"inline": true});
+        });
+    </script>
+
     <br><br>
     <button type="submit" class="btn btn-primary">Post</button>
    </div>

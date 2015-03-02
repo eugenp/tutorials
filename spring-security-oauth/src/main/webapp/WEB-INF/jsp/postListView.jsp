@@ -17,13 +17,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Spring Security OAuth</a>
+      <a class="navbar-brand" href="info">Spring Security OAuth</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="posts">My Scheduled Posts</a></li>
+        <li class="active"><a href="#">My Scheduled Posts</a></li>
         <li><a href="post">Submit Post</a></li>
         <li><a href="postSchedule">Schedule Post</a></li>
       </ul>
@@ -32,17 +32,23 @@
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-<c:choose>
-    <c:when test="${info != null}">
-        <h1>Welcome, <small>${info}</small></h1>
-        <a href="post" class="btn btn-primary">Submit to Reddit</a>
-    </c:when>
-    <c:otherwise> 
-        <b>Sorry, error occurred</b> 
-        <br><br>
-        <div>${error}</div>
-    </c:otherwise>
-</c:choose>
+<h1>My Scheduled Posts</h1>
+<table class="table table-bordered">
+<c:forEach var="post" items="${posts}" >
+<thead>
+<tr>
+<th>Post title</th>
+<th>Submission Date</th>
+<th>Notes</th>
+</tr>
+</thead>
+    <tr <c:if test="${post.isSent()}"> class="success"</c:if>>
+        <td><c:out value="${post.getTitle()}"/></td>
+        <td><c:out value="${post.getSubmissionDate()}"/></td>
+        <td><c:out value="${post.getSubmissionResponse()}"/></td>
+    </tr>
+</c:forEach>
+</table>
 </div>
 </body>
 </html>
