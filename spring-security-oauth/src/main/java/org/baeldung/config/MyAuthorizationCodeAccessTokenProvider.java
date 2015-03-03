@@ -25,11 +25,11 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
 
     private static final long serialVersionUID = 3822611002661972274L;
 
-    private StateKeyGenerator stateKeyGenerator = new DefaultStateKeyGenerator();
+    private final StateKeyGenerator stateKeyGenerator = new DefaultStateKeyGenerator();
 
     @Override
     public OAuth2AccessToken obtainAccessToken(OAuth2ProtectedResourceDetails details, AccessTokenRequest request) throws UserRedirectRequiredException, UserApprovalRequiredException, AccessDeniedException, OAuth2AccessDeniedException {
-        AuthorizationCodeResourceDetails resource = (AuthorizationCodeResourceDetails) details;
+        final AuthorizationCodeResourceDetails resource = (AuthorizationCodeResourceDetails) details;
 
         if (request.getAuthorizationCode() == null) {
             if (request.getStateKey() == null) {
@@ -41,16 +41,16 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
     }
 
     private HttpHeaders getHeadersForTokenRequest(AccessTokenRequest request) {
-        HttpHeaders headers = new HttpHeaders();
+        final HttpHeaders headers = new HttpHeaders();
         return headers;
     }
 
     private MultiValueMap<String, String> getParametersForTokenRequest(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-        MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
+        final MultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>();
         form.set("grant_type", "authorization_code");
         form.set("code", request.getAuthorizationCode());
 
-        Object preservedState = request.getPreservedState();
+        final Object preservedState = request.getPreservedState();
         if (request.getStateKey() != null) {
             if (preservedState == null) {
                 throw new InvalidRequestException("Possible CSRF detected - state parameter was present but no state could be found");
@@ -64,7 +64,7 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
             redirectUri = resource.getRedirectUri(request);
         }
 
-        if (redirectUri != null && !"NONE".equals(redirectUri)) {
+        if ((redirectUri != null) && !"NONE".equals(redirectUri)) {
             form.set("redirect_uri", redirectUri);
         }
 
@@ -72,24 +72,23 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
     }
 
     private UserRedirectRequiredException getRedirectForAuthorization(AuthorizationCodeResourceDetails resource, AccessTokenRequest request) {
-        TreeMap<String, String> requestParameters = new TreeMap<String, String>();
+        final TreeMap<String, String> requestParameters = new TreeMap<String, String>();
         requestParameters.put("response_type", "code");
         requestParameters.put("client_id", resource.getClientId());
         requestParameters.put("duration", "permanent");
-        System.out.println("===== at private message redirect ===");
 
-        String redirectUri = resource.getRedirectUri(request);
+        final String redirectUri = resource.getRedirectUri(request);
         if (redirectUri != null) {
             requestParameters.put("redirect_uri", redirectUri);
         }
 
         if (resource.isScoped()) {
 
-            StringBuilder builder = new StringBuilder();
-            List<String> scope = resource.getScope();
+            final StringBuilder builder = new StringBuilder();
+            final List<String> scope = resource.getScope();
 
             if (scope != null) {
-                Iterator<String> scopeIt = scope.iterator();
+                final Iterator<String> scopeIt = scope.iterator();
                 while (scopeIt.hasNext()) {
                     builder.append(scopeIt.next());
                     if (scopeIt.hasNext()) {
@@ -101,9 +100,9 @@ public class MyAuthorizationCodeAccessTokenProvider extends AuthorizationCodeAcc
             requestParameters.put("scope", builder.toString());
         }
 
-        UserRedirectRequiredException redirectException = new UserRedirectRequiredException(resource.getUserAuthorizationUri(), requestParameters);
+        final UserRedirectRequiredException redirectException = new UserRedirectRequiredException(resource.getUserAuthorizationUri(), requestParameters);
 
-        String stateKey = stateKeyGenerator.generateKey(resource);
+        final String stateKey = stateKeyGenerator.generateKey(resource);
         redirectException.setStateKey(stateKey);
         request.setStateKey(stateKey);
         redirectException.setStateToPreserve(redirectUri);
