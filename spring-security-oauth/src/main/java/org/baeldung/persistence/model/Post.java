@@ -100,4 +100,9 @@ public class Post {
         this.submissionResponse = submissionResponse;
     }
 
+    @Override
+    public String toString() {
+        return "Post [title=" + title + ", subreddit=" + subreddit + ", url=" + url + ", submissionDate=" + submissionDate + ", user=" + user + "]";
+    }
+
 }

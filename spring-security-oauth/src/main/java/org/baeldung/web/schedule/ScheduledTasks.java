@@ -7,6 +7,7 @@ import java.util.List;
 import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.model.Post;
 import org.baeldung.persistence.model.User;
+import org.baeldung.reddit.util.RedditApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,50 +35,49 @@ public class ScheduledTasks {
 
     @Scheduled(fixedRate = 1 * 60 * 1000)
     public void reportCurrentTime() {
-        List<Post> posts = postReopsitory.findBySubmissionDateBeforeAndIsSent(new Date(), false);
+        final List<Post> posts = postReopsitory.findBySubmissionDateBeforeAndIsSent(new Date(), false);
         logger.info(posts.size() + " Posts in the queue.");
-        for (Post post : posts) {
+        for (final Post post : posts) {
             submitPost(post);
         }
     }
 
     private void submitPost(Post post) {
         try {
-            User user = post.getUser();
-            DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(user.getAccessToken());
+            final User user = post.getUser();
+            final DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(user.getAccessToken());
             token.setRefreshToken(new DefaultOAuth2RefreshToken((user.getRefreshToken())));
             token.setExpiration(user.getTokenExpiration());
             redditRestTemplate.getOAuth2ClientContext().setAccessToken(token);
             //
-            UsernamePasswordAuthenticationToken userAuthToken = new UsernamePasswordAuthenticationToken(user.getUsername(), token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+            final UsernamePasswordAuthenticationToken userAuthToken = new UsernamePasswordAuthenticationToken(user.getUsername(), token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             SecurityContextHolder.getContext().setAuthentication(userAuthToken);
             //
-
-            MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
-            param.add("api_type", "json");
-            param.add("kind", "link");
-            param.add("resubmit", "true");
-            param.add("sendreplies", "false");
-            param.add("then", "comments");
-            param.add("title", post.getTitle());
-            param.add("sr", post.getSubreddit());
-            param.add("url", post.getUrl());
+            final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+            param.add(RedditApiConstants.TITLE, post.getTitle());
+            param.add(RedditApiConstants.SR, post.getSubreddit());
+            param.add(RedditApiConstants.URL, post.getUrl());
+            param.add(RedditApiConstants.API_TYPE, "json");
+            param.add(RedditApiConstants.KIND, "link");
+            param.add(RedditApiConstants.RESUBMIT, "true");
+            param.add(RedditApiConstants.SENDREPLIES, "false");
+            param.add(RedditApiConstants.THEN, "comments");
 
             logger.info("Submit link with these parameters: " + param.entrySet());
-            JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
-            JsonNode errorNode = node.get("json").get("errors").get(0);
+            final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
+            final JsonNode errorNode = node.get("json").get("errors").get(0);
             if (errorNode == null) {
                 post.setSent(true);
                 post.setSubmissionResponse("Successfully sent");
                 postReopsitory.save(post);
-                logger.info("Successfully sent");
+                logger.info("Successfully sent " + post.toString());
             } else {
                 post.setSubmissionResponse(errorNode.toString());
                 postReopsitory.save(post);
-                logger.info("Error occurred: " + errorNode.toString());
+                logger.info("Error occurred: " + errorNode.toString() + "while submitting post " + post.toString());
             }
-        } catch (Exception e) {
-            logger.error("Error occurred", e);
+        } catch (final Exception e) {
+            logger.error("Error occurred while submitting post " + post.toString(), e);
         }
     }
 

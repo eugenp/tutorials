@@ -26,7 +26,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler impleme
     // 500
     @ExceptionHandler({ UserApprovalRequiredException.class, UserRedirectRequiredException.class })
     public ResponseEntity<Object> handleRedirect(final RuntimeException ex, final WebRequest request) {
-        logger.error("500 Status Code", ex);
+        logger.info(ex.getLocalizedMessage());
         throw ex;
     }
 
@@ -34,7 +34,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler impleme
     public ResponseEntity<Object> handleInternal(final RuntimeException ex, final WebRequest request) {
         logger.info(request.getHeader("x-ratelimit-remaining"));
         logger.error("500 Status Code", ex);
-        String response = "Error Occurred : " + ex.getMessage();
+        final String response = "Error Occurred : " + ex.getMessage();
         return handleExceptionInternal(ex, response, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 }
