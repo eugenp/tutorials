@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    public List<Post> findBySubmissionDateBefore(Date date);
+    public List<Post> findBySubmissionDateBeforeAndIsSent(Date date, boolean isSent);
 
     public List<Post> findByUser(User user);
 }

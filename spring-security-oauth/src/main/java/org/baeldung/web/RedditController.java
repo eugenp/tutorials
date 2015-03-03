@@ -102,6 +102,7 @@ public class RedditController {
         post.setSubreddit(formParams.get("sr"));
         post.setUrl(formParams.get("url"));
         post.setSubmissionDate(dateFormat.parse(formParams.get("date")));
+        post.setSubmissionResponse("Not sent yet");
         if (post.getSubmissionDate().before(new Date())) {
             model.addAttribute("msg", "Invalid date");
             return "submissionResponse";
