@@ -53,18 +53,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
-    // @Bean
-    // public RedditController redditController(OAuth2RestTemplate redditRestTemplate) {
-    // RedditController controller = new RedditController();
-    // controller.setRedditRestTemplate(redditRestTemplate);
-    // return controller;
-    // }
-    //
-    // @Bean
-    // public RestExceptionHandler restExceptionHandler() {
-    // return new RestExceptionHandler();
-    // }
-    //
     @Bean
     public ScheduledTasks scheduledTasks(OAuth2ProtectedResourceDetails reddit) {
         ScheduledTasks s = new ScheduledTasks();

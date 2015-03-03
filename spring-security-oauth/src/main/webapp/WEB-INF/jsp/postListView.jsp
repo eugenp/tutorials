@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -7,7 +9,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -34,7 +36,6 @@
 <div class="container">
 <h1>My Scheduled Posts</h1>
 <table class="table table-bordered">
-<c:forEach var="post" items="${posts}" >
 <thead>
 <tr>
 <th>Post title</th>
@@ -42,9 +43,10 @@
 <th>Notes</th>
 </tr>
 </thead>
+<c:forEach var="post" items="${posts}" >
     <tr <c:if test="${post.isSent()}"> class="success"</c:if>>
         <td><c:out value="${post.getTitle()}"/></td>
-        <td><c:out value="${post.getSubmissionDate()}"/></td>
+        <td><fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${post.getSubmissionDate()}" /></td>
         <td><c:out value="${post.getSubmissionResponse()}"/></td>
     </tr>
 </c:forEach>
