@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Post;
@@ -22,6 +24,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -43,15 +46,15 @@ public class RedditController {
     private PostRepository postReopsitory;
 
     @RequestMapping("/info")
-    public final String getInfo(final Model model) {
+    public final String getInfo(HttpSession session) {
         final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
         final String name = node.get("name").asText();
         addUser(name, redditRestTemplate.getAccessToken());
-        model.addAttribute("info", name);
+        session.setAttribute("username", name);
         return "reddit";
     }
 
-    @RequestMapping("/submit")
+    @RequestMapping(value = "/submit", method = RequestMethod.POST)
     public final String submit(final Model model, @RequestParam final Map<String, String> formParams) {
         final MultiValueMap<String, String> param1 = constructParams(formParams);
 
@@ -83,7 +86,7 @@ public class RedditController {
         return "schedulePostForm";
     }
 
-    @RequestMapping("/schedule")
+    @RequestMapping(value = "/schedule", method = RequestMethod.POST)
     public final String schedule(final Model model, @RequestParam final Map<String, String> formParams) throws ParseException {
         logger.info("User scheduling Post with these parameters: " + formParams.entrySet());
         final User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
@@ -182,6 +185,7 @@ public class RedditController {
             user.setTokenExpiration(token.getExpiration());
             userReopsitory.save(user);
         }
+
     }
 
 }

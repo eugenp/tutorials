@@ -19,15 +19,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="info">Spring Security OAuth</a>
+      <a class="navbar-brand" href="#">Schedule to Reddit</a>
     </div>
+    
+    <p class="navbar-text navbar-right">Logged in as <b><c:out value="${username}"/></b>&nbsp;&nbsp;&nbsp;</p>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">My Scheduled Posts</a></li>
-        <li><a href="post">Submit Post</a></li>
-        <li><a href="postSchedule">Schedule Post</a></li>
+        <li class="active"><a href="posts">My Scheduled Posts</a></li>
+        <li><a href="post">Post to Reddit</a></li>
+        <li><a href="postSchedule">Schedule Post to Reddit</a></li>
       </ul>
       
     </div><!-- /.navbar-collapse -->

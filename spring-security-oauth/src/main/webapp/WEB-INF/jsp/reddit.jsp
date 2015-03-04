@@ -17,32 +17,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Spring Security OAuth</a>
+      <a class="navbar-brand" href="#">Schedule to Reddit</a>
     </div>
+    
+    <p class="navbar-text navbar-right">Logged in as <b><c:out value="${username}"/></b>&nbsp;&nbsp;&nbsp;</p>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="posts">My Scheduled Posts</a></li>
-        <li><a href="post">Submit Post</a></li>
-        <li><a href="postSchedule">Schedule Post</a></li>
+        <li><a href="post">Post to Reddit</a></li>
+        <li><a href="postSchedule">Schedule Post to Reddit</a></li>
       </ul>
       
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-<c:choose>
-    <c:when test="${info != null}">
-        <h1>Welcome, <small>${info}</small></h1>
-        <a href="post" class="btn btn-primary">Submit to Reddit</a>
-    </c:when>
-    <c:otherwise> 
-        <b>Sorry, error occurred</b> 
-        <br><br>
-        <div>${error}</div>
-    </c:otherwise>
-</c:choose>
+        <h1>Welcome, <small><c:out value="${username}"/></small></h1>
+        <br>
+        <a href="posts" class="btn btn-primary">My Scheduled Posts</a>
+        <a href="post" class="btn btn-primary">Post to Reddit</a>
+        <a href="postSchedule" class="btn btn-primary">Schedule Post to Reddit</a>
+        
 </div>
 </body>
 </html>
