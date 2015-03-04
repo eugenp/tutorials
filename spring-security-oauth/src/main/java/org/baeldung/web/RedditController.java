@@ -43,7 +43,7 @@ public class RedditController {
     private PostRepository postReopsitory;
 
     @RequestMapping("/info")
-    public final String getInfo(Model model) {
+    public final String getInfo(final Model model) {
         final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
         final String name = node.get("name").asText();
         addUser(name, redditRestTemplate.getAccessToken());
@@ -52,28 +52,19 @@ public class RedditController {
     }
 
     @RequestMapping("/submit")
-    public final String submit(Model model, @RequestParam Map<String, String> formParams) {
-        final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
-        param.add(RedditApiConstants.API_TYPE, "json");
-        param.add(RedditApiConstants.KIND, "link");
-        param.add(RedditApiConstants.RESUBMIT, "true");
-        param.add(RedditApiConstants.SENDREPLIES, "false");
-        param.add(RedditApiConstants.THEN, "comments");
+    public final String submit(final Model model, @RequestParam final Map<String, String> formParams) {
+        final MultiValueMap<String, String> param1 = constructParams(formParams);
 
-        for (final Map.Entry<String, String> entry : formParams.entrySet()) {
-            param.add(entry.getKey(), entry.getValue());
-        }
-
-        logger.info("User submitting Link with these parameters: " + formParams.entrySet());
-        final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
-        logger.info("Full Reddit Response: " + node.toString());
+        logger.info("Submitting Link with these parameters: " + param1);
+        final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param1, JsonNode.class);
+        logger.info("Submitted Link - Full Response from Reddit: " + node.toString());
         final String responseMsg = parseResponse(node);
         model.addAttribute("msg", responseMsg);
         return "submissionResponse";
     }
 
     @RequestMapping("/post")
-    public final String showSubmissionForm(Model model) {
+    public final String showSubmissionForm(final Model model) {
         final String needsCaptchaResult = needsCaptcha();
         if (needsCaptchaResult.equalsIgnoreCase("true")) {
             final String iden = getNewCaptcha();
@@ -83,7 +74,7 @@ public class RedditController {
     }
 
     @RequestMapping("/postSchedule")
-    public final String showSchedulePostForm(Model model) {
+    public final String showSchedulePostForm(final Model model) {
         final String needsCaptchaResult = needsCaptcha();
         if (needsCaptchaResult.equalsIgnoreCase("true")) {
             model.addAttribute("msg", "Sorry, You do not have enought karma");
@@ -93,7 +84,7 @@ public class RedditController {
     }
 
     @RequestMapping("/schedule")
-    public final String schedule(Model model, @RequestParam Map<String, String> formParams) throws ParseException {
+    public final String schedule(final Model model, @RequestParam final Map<String, String> formParams) throws ParseException {
         logger.info("User scheduling Post with these parameters: " + formParams.entrySet());
         final User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
         final Post post = new Post();
@@ -115,7 +106,7 @@ public class RedditController {
     }
 
     @RequestMapping("/posts")
-    public final String getScheduledPosts(Model model) {
+    public final String getScheduledPosts(final Model model) {
         final User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
         final List<Post> posts = postReopsitory.findByUser(user);
         model.addAttribute("posts", posts);
@@ -123,6 +114,32 @@ public class RedditController {
     }
 
     // === private
+
+    private final MultiValueMap<String, String> constructParams(final Map<String, String> formParams) {
+        final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+        param.add(RedditApiConstants.API_TYPE, "json");
+        param.add(RedditApiConstants.KIND, "link");
+        param.add(RedditApiConstants.RESUBMIT, "true");
+        param.add(RedditApiConstants.SENDREPLIES, "false");
+        param.add(RedditApiConstants.THEN, "comments");
+        for (final Map.Entry<String, String> entry : formParams.entrySet()) {
+            param.add(entry.getKey(), entry.getValue());
+        }
+        return param;
+    }
+
+    private final Map<String, String> constructParams2(final Map<String, String> formParams) {
+        final Map<String, String> param = new HashMap<String, String>();
+        param.put(RedditApiConstants.API_TYPE, "json");
+        param.put(RedditApiConstants.KIND, "link");
+        param.put(RedditApiConstants.RESUBMIT, "true");
+        param.put(RedditApiConstants.SENDREPLIES, "false");
+        param.put(RedditApiConstants.THEN, "comments");
+        for (final Map.Entry<String, String> entry : formParams.entrySet()) {
+            param.put(entry.getKey(), entry.getValue());
+        }
+        return param;
+    }
 
     private final String needsCaptcha() {
         final String result = redditRestTemplate.getForObject("https://oauth.reddit.com/api/needs_captcha.json", String.class);
@@ -138,7 +155,7 @@ public class RedditController {
         return split[split.length - 2];
     }
 
-    private final String parseResponse(JsonNode node) {
+    private final String parseResponse(final JsonNode node) {
         String result = "";
         final JsonNode errorNode = node.get("json").get("errors").get(0);
         if (errorNode != null) {
@@ -155,7 +172,7 @@ public class RedditController {
         }
     }
 
-    private final void addUser(String name, OAuth2AccessToken token) {
+    private final void addUser(final String name, final OAuth2AccessToken token) {
         User user = userReopsitory.findByUsername(name);
         if (user == null) {
             user = new User();
