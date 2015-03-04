@@ -63,7 +63,7 @@
     </script>
 
     <br><br>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <button type="submit" class="btn btn-primary">Schedule</button>
    </div>
 </form>
 </div>

@@ -40,7 +40,7 @@
 <tr>
 <th>Post title</th>
 <th>Submission Date</th>
-<th>Notes</th>
+<th>Status</th>
 </tr>
 </thead>
 <c:forEach var="post" items="${posts}" >
