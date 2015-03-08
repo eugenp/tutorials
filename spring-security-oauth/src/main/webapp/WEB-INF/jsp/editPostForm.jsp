@@ -20,7 +20,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="postSchedule">Schedule to Reddit</a>
+      <a class="navbar-brand" href="info">Schedule to Reddit</a>
     </div>
     
     <p class="navbar-text navbar-right">Logged in as <b><c:out value="${username}"/></b>&nbsp;&nbsp;&nbsp;</p>
