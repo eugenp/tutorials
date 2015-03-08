@@ -30,38 +30,39 @@
       <ul class="nav navbar-nav">
         <li><a href="posts">My Scheduled Posts</a></li>
         <li><a href="post">Post to Reddit</a></li>
-        <li class="active"><a href="postSchedule">Schedule Post to Reddit</a></li>
+        <li><a href="postSchedule">Schedule Post to Reddit</a></li>
       </ul>
       
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container">
-<h1>Schedule Post to Reddit</h1>
-<form action="schedule" method="post">
+<h1>Edit Scheduled Post</h1>
+<form action="<c:url value="/updatePost/${post.getId()}" />" method="post">
 <div class="row">
+<input type="hidden" name="id" value="${post.getId()}"/>
 <div class="form-group">
     <label class="col-sm-3">Title</label>
-    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" required/></span>
+    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" value="${post.getTitle()}" required/></span>
 </div>
 <br><br>
 <div class="form-group">
     <label class="col-sm-3">Url</label>
-    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" required/></span>
+    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" value="${post.getUrl()}" required/></span>
 </div>
 <br><br>  
 <div class="form-group">
     <label class="col-sm-3">Subreddit</label>
-    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" required/></span>
+    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" value="${post.getSubreddit()}" required/></span>
 </div>
 <br><br>
 <div class="col-sm-3">
-<input type="checkbox" name="sendreplies" value="true"/> Send replies to my inbox
+<input type="checkbox" name="sendreplies" value="true" <c:if test="${post.isSendReplies()=='true'}"> checked </c:if> /> Send replies to my inbox
 </div>
 <br><br>
 
 <label class="col-sm-3">Submission Date</label>
-<span class="col-sm-9"><input type="text" name="date" class="form-control"></span>
+<span class="col-sm-9"><input type="text" name="date" class="form-control" value="${dateValue}"></span>
     <script type="text/javascript">
         $(function(){
             $('*[name=date]').appendDtpicker({"inline": true});
@@ -70,7 +71,7 @@
 
     <br><br>
     
-    <button type="submit" class="btn btn-primary">Schedule</button>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
    </div>
 </form>
 </div>

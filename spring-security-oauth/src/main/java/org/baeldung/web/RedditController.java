@@ -17,15 +17,18 @@ import org.baeldung.reddit.util.RedditApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -96,6 +99,9 @@ public class RedditController {
         post.setTitle(formParams.get("title"));
         post.setSubreddit(formParams.get("sr"));
         post.setUrl(formParams.get("url"));
+        if (formParams.containsKey("sendreplies")) {
+            post.setSendReplies(true);
+        }
         post.setSubmissionDate(dateFormat.parse(formParams.get("date")));
         post.setSubmissionResponse("Not sent yet");
         if (post.getSubmissionDate().before(new Date())) {
@@ -116,6 +122,42 @@ public class RedditController {
         return "postListView";
     }
 
+    // === post actions
+
+    @RequestMapping(value = "/deletePost/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void deletePost(@PathVariable("id") final Long id) {
+        postReopsitory.delete(id);
+    }
+
+    @RequestMapping(value = "/editPost/{id}", method = RequestMethod.GET)
+    public String showEditPostForm(final Model model, @PathVariable Long id) {
+        final Post post = postReopsitory.findOne(id);
+        model.addAttribute("post", post);
+        model.addAttribute("dateValue", dateFormat.format(post.getSubmissionDate()));
+        return "editPostForm";
+    }
+
+    @RequestMapping(value = "/updatePost/{id}", method = RequestMethod.POST)
+    public String updatePost(Model model, @PathVariable("id") final Long id, @RequestParam final Map<String, String> formParams) throws ParseException {
+        final Post post = postReopsitory.findOne(id);
+        post.setTitle(formParams.get("title"));
+        post.setSubreddit(formParams.get("sr"));
+        post.setUrl(formParams.get("url"));
+        if (formParams.containsKey("sendreplies")) {
+            post.setSendReplies(true);
+        } else {
+            post.setSendReplies(false);
+        }
+        post.setSubmissionDate(dateFormat.parse(formParams.get("date")));
+        if (post.getSubmissionDate().before(new Date())) {
+            model.addAttribute("msg", "Invalid date");
+            return "submissionResponse";
+        }
+        postReopsitory.save(post);
+        return "redirect:/posts";
+    }
+
     // === private
 
     private final MultiValueMap<String, String> constructParams(final Map<String, String> formParams) {
@@ -123,23 +165,9 @@ public class RedditController {
         param.add(RedditApiConstants.API_TYPE, "json");
         param.add(RedditApiConstants.KIND, "link");
         param.add(RedditApiConstants.RESUBMIT, "true");
-        param.add(RedditApiConstants.SENDREPLIES, "false");
         param.add(RedditApiConstants.THEN, "comments");
         for (final Map.Entry<String, String> entry : formParams.entrySet()) {
             param.add(entry.getKey(), entry.getValue());
-        }
-        return param;
-    }
-
-    private final Map<String, String> constructParams2(final Map<String, String> formParams) {
-        final Map<String, String> param = new HashMap<String, String>();
-        param.put(RedditApiConstants.API_TYPE, "json");
-        param.put(RedditApiConstants.KIND, "link");
-        param.put(RedditApiConstants.RESUBMIT, "true");
-        param.put(RedditApiConstants.SENDREPLIES, "false");
-        param.put(RedditApiConstants.THEN, "comments");
-        for (final Map.Entry<String, String> entry : formParams.entrySet()) {
-            param.put(entry.getKey(), entry.getValue());
         }
         return param;
     }
