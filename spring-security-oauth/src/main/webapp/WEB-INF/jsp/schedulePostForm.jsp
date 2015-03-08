@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 
-<title>Spring Security OAuth</title>
+<title>Schedule to Reddit</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value="/resources/datetime-picker.css" />">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -42,17 +42,21 @@
 <div class="row">
 <div class="form-group">
     <label class="col-sm-3">Title</label>
-    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" /></span>
+    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" required/></span>
 </div>
 <br><br>
 <div class="form-group">
     <label class="col-sm-3">Url</label>
-    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" /></span>
+    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" required/></span>
 </div>
 <br><br>  
 <div class="form-group">
     <label class="col-sm-3">Subreddit</label>
-    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" /></span>
+    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" required/></span>
+</div>
+<br><br>
+<div class="col-sm-3">
+<input type="checkbox" name="sendreplies" value="true"/> Send replies to my inbox
 </div>
 <br><br>
 
@@ -65,6 +69,7 @@
     </script>
 
     <br><br>
+    
     <button type="submit" class="btn btn-primary">Schedule</button>
    </div>
 </form>

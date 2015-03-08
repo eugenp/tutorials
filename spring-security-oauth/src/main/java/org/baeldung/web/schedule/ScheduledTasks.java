@@ -60,8 +60,10 @@ public class ScheduledTasks {
             param.add(RedditApiConstants.API_TYPE, "json");
             param.add(RedditApiConstants.KIND, "link");
             param.add(RedditApiConstants.RESUBMIT, "true");
-            param.add(RedditApiConstants.SENDREPLIES, "false");
             param.add(RedditApiConstants.THEN, "comments");
+            if (post.isSendReplies()) {
+                param.add(RedditApiConstants.SENDREPLIES, "true");
+            }
 
             logger.info("Submit link with these parameters: " + param.entrySet());
             final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);

@@ -22,6 +22,8 @@ public class Post {
 
     private String url;
 
+    private boolean sendReplies;
+
     private Date submissionDate;
 
     private boolean isSent;
@@ -66,6 +68,14 @@ public class Post {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isSendReplies() {
+        return sendReplies;
+    }
+
+    public void setSendReplies(boolean sendReplies) {
+        this.sendReplies = sendReplies;
     }
 
     public Date getSubmissionDate() {
