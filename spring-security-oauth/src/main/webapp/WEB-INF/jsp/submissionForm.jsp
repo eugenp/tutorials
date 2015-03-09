@@ -4,6 +4,8 @@
 
 <title>Schedule to Reddit</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value="/resources/validator.js" />"></script>
 
 </head>
 <body>
@@ -35,25 +37,25 @@
 </nav>
 <div class="container">
 <h1>Post to Reddit</h1>
-<form action="submit" method="post">
+<form action="submit" method="post" role="form" data-toggle="validator">
 <div class="row">
 <div class="form-group">
     <label class="col-sm-3">Title</label>
-    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" required/></span>
+    <span class="col-sm-9"><input name="title" placeholder="title" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>
 <div class="form-group">
     <label class="col-sm-3">Url</label>
-    <span class="col-sm-9"><input name="url" placeholder="url" class="form-control" required /></span>
+    <span class="col-sm-9"><input name="url" type="url" placeholder="url" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>  
 <div class="form-group">
     <label class="col-sm-3">Subreddit</label>
-    <span class="col-sm-9"><input name="sr" placeholder="Subreddit" class="form-control" required/></span>
+    <span class="col-sm-9"><input name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>
 <div class="col-sm-3">
-<input type="checkbox" name="sendreplies" value="true"/> Send replies to my inbox
+<label>Send replies to my inbox</label> &nbsp;<input type="checkbox" name="sendreplies" value="true"/> 
 </div>
 <br><br>
  
@@ -68,7 +70,7 @@
     <img src="http://www.reddit.com/captcha/${iden}" alt="captcha" width="200"/>
     </c:if>
     <br><br>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <span class="col-sm-3"><button type="submit" class="btn btn-primary">Post</button></span>
    </div>
 </form>
 </div>
