@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.Writer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -17,6 +18,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Charsets;
 import com.google.common.io.CharSink;
 import com.google.common.io.CharSource;
 import com.google.common.io.CharStreams;
@@ -179,7 +181,45 @@ public class JavaReaderToXUnitTest {
     public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream() throws IOException {
         final Reader initialReader = new StringReader("With Commons IO");
 
-        final InputStream targetStream = IOUtils.toInputStream(initialReader.toString());
+        final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader));
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    // tests - Reader to InputStream with encoding
+
+    @Test
+    public void givenUsingPlainJava_whenConvertingReaderIntoInputStreamWithCharset_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Java");
+
+        final char[] charBuffer = new char[8 * 1024];
+        final StringBuilder builder = new StringBuilder();
+        int numCharsRead;
+        while ((numCharsRead = initialReader.read(charBuffer, 0, charBuffer.length)) != -1) {
+            builder.append(charBuffer, 0, numCharsRead);
+        }
+        final InputStream targetStream = new ByteArrayInputStream(builder.toString().getBytes(StandardCharsets.UTF_8));
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingGuava_whenConvertingReaderIntoInputStreamWithCharset_thenCorrect() throws IOException {
+        final Reader initialReader = new StringReader("With Guava");
+
+        final InputStream targetStream = new ByteArrayInputStream(CharStreams.toString(initialReader).getBytes(Charsets.UTF_8));
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStreamWithEncoding() throws IOException {
+        final Reader initialReader = new StringReader("With Commons IO");
+
+        final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader), Charsets.UTF_8);
 
         initialReader.close();
         targetStream.close();
