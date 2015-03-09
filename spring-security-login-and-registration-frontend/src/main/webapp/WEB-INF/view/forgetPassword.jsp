@@ -33,7 +33,7 @@
 <script type="text/javascript">
 function resetPass(){
     var email = $("#email").val();
-    $.post("<c:url value="/user/resetPassword"></c:url>",{email: email} ,function(data){
+    $.post("/spring-security-login-and-registration/user/resetPassword",{email: email} ,function(data){
             window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.message;
     })
     .fail(function(data) {

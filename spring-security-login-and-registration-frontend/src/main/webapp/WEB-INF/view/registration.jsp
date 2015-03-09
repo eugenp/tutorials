@@ -59,7 +59,7 @@
 function register(){
 	$(".alert").html("").hide();
     var formData= $('form').serialize();
-    $.post("<c:url value="/user/registration"></c:url>",formData ,function(data){
+    $.post("/spring-security-login-and-registration/user/registration",formData ,function(data){
         if(data.message == "success"){
         	window.location.href = "<c:url value="/successRegister.html"></c:url>";
         }

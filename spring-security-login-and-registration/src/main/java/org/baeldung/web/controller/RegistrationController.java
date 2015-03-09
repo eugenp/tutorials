@@ -32,12 +32,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
@@ -67,34 +65,21 @@ public class RegistrationController {
 
     // Registration
 
-    @RequestMapping(value = "/user/registration", method = RequestMethod.GET)
-    public String showRegistrationPage(final Model model) {
-        LOGGER.debug("Rendering registration page.");
-        final UserDto accountDto = new UserDto();
-        model.addAttribute("user", accountDto);
-        return "registration";
-    }
-
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request) {
+    @ResponseBody
+    public GenericResponse registerUserAccount(@Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request) {
         LOGGER.debug("Registering user account with information: {}", accountDto);
         if (result.hasErrors()) {
-            return new ModelAndView("registration", "user", accountDto);
+            return new GenericResponse(result.getFieldErrors(), result.getGlobalErrors());
         }
-
         final User registered = createUserAccount(accountDto);
         if (registered == null) {
-            result.rejectValue("email", "message.regError");
-            return new ModelAndView("registration", "user", accountDto);
+            return new GenericResponse("email", messages.getMessage("message.regError", null, request.getLocale()));
         }
-        try {
-            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
-        } catch (final Exception ex) {
-            LOGGER.warn("Unable to register user", ex);
-            return new ModelAndView("emailError", "user", accountDto);
-        }
-        return new ModelAndView("successRegister", "user", accountDto);
+        final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
+
+        return new GenericResponse("success");
     }
 
     @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)

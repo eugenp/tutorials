@@ -2,11 +2,8 @@ package org.baeldung.spring;
 
 import java.util.Locale;
 
-import org.baeldung.validation.EmailValidator;
-import org.baeldung.validation.PasswordMatchesValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
@@ -22,7 +19,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "org.baeldung.web" })
+// @ComponentScan(basePackages = { "org.baeldung.web" })
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
@@ -89,16 +86,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         messageSource.setDefaultEncoding("UTF-8");
         messageSource.setCacheSeconds(0);
         return messageSource;
-    }
-
-    @Bean
-    public EmailValidator usernameValidator() {
-        return new EmailValidator();
-    }
-
-    @Bean
-    public PasswordMatchesValidator passwordMatchesValidator() {
-        return new PasswordMatchesValidator();
     }
 
 }
