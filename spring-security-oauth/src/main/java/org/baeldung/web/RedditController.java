@@ -71,8 +71,8 @@ public class RedditController {
 
     @RequestMapping("/post")
     public final String showSubmissionForm(final Model model) {
-        final String needsCaptchaResult = needsCaptcha();
-        if (needsCaptchaResult.equalsIgnoreCase("true")) {
+        final boolean isCaptchaNeeded = getCurrentUser().isCaptchaNeeded();
+        if (isCaptchaNeeded) {
             final String iden = getNewCaptcha();
             model.addAttribute("iden", iden);
         }
@@ -81,8 +81,8 @@ public class RedditController {
 
     @RequestMapping("/postSchedule")
     public final String showSchedulePostForm(final Model model) {
-        final String needsCaptchaResult = needsCaptcha();
-        if (needsCaptchaResult.equalsIgnoreCase("true")) {
+        final boolean isCaptchaNeeded = getCurrentUser().isCaptchaNeeded();
+        if (isCaptchaNeeded) {
             model.addAttribute("msg", "Sorry, You do not have enought karma");
             return "submissionResponse";
         }
@@ -92,7 +92,7 @@ public class RedditController {
     @RequestMapping(value = "/schedule", method = RequestMethod.POST)
     public final String schedule(final Model model, @RequestParam final Map<String, String> formParams) throws ParseException {
         logger.info("User scheduling Post with these parameters: " + formParams.entrySet());
-        final User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+        final User user = getCurrentUser();
         final Post post = new Post();
         post.setUser(user);
         post.setSent(false);
@@ -116,7 +116,7 @@ public class RedditController {
 
     @RequestMapping("/posts")
     public final String getScheduledPosts(final Model model) {
-        final User user = userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+        final User user = getCurrentUser();
         final List<Post> posts = postReopsitory.findByUser(user);
         model.addAttribute("posts", posts);
         return "postListView";
@@ -159,6 +159,10 @@ public class RedditController {
     }
 
     // === private
+
+    private User getCurrentUser() {
+        return userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+    }
 
     private final MultiValueMap<String, String> constructParams(final Map<String, String> formParams) {
         final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
@@ -211,9 +215,15 @@ public class RedditController {
             user.setAccessToken(token.getValue());
             user.setRefreshToken(token.getRefreshToken().getValue());
             user.setTokenExpiration(token.getExpiration());
-            userReopsitory.save(user);
         }
 
+        final String needsCaptchaResult = needsCaptcha();
+        if (needsCaptchaResult.equalsIgnoreCase("true")) {
+            user.setNeedCaptcha(true);
+        } else {
+            user.setNeedCaptcha(false);
+        }
+        userReopsitory.save(user);
     }
 
 }

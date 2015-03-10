@@ -24,6 +24,8 @@ public class User {
 
     private Date tokenExpiration;
 
+    private boolean needCaptcha;
+
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
@@ -69,6 +71,14 @@ public class User {
 
     public void setTokenExpiration(Date tokenExpiration) {
         this.tokenExpiration = tokenExpiration;
+    }
+
+    public boolean isCaptchaNeeded() {
+        return needCaptcha;
+    }
+
+    public void setNeedCaptcha(boolean needCaptcha) {
+        this.needCaptcha = needCaptcha;
     }
 
     public List<Post> getPosts() {
