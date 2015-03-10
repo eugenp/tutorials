@@ -1,13 +1,12 @@
 package org.baeldung.persistence.model;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -16,6 +15,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String username;
 
     private String accessToken;
@@ -25,9 +25,6 @@ public class User {
     private Date tokenExpiration;
 
     private boolean needCaptcha;
-
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts;
 
     public User() {
         super();
@@ -79,14 +76,6 @@ public class User {
 
     public void setNeedCaptcha(boolean needCaptcha) {
         this.needCaptcha = needCaptcha;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
     }
 
     @Override
