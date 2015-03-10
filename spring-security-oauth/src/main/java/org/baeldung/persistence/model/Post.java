@@ -2,6 +2,7 @@ package org.baeldung.persistence.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +17,18 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private String subreddit;
 
+    @Column(nullable = false)
     private String url;
 
     private boolean sendReplies;
 
+    @Column(nullable = false)
     private Date submissionDate;
 
     private boolean isSent;
@@ -31,7 +36,7 @@ public class Post {
     private String submissionResponse;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public Post() {
