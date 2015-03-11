@@ -53,7 +53,7 @@
         <td><c:out value="${post.getSubmissionResponse()}"/></td>
         <td>
             <a href="editPost/${post.getId()}" class="btn btn-warning" >Edit</a>
-            <a href="#" class="btn btn-danger" onclick="deletePost(${post.getId()})">Delete</a>
+            <a href="#" class="btn btn-danger" onclick="confirmDelete(${post.getId()})">Delete</a>
         </td>
     </tr>
 </c:forEach>
@@ -61,6 +61,12 @@
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script>
+function confirmDelete(id) {
+    if (confirm("Do you really want to delete this post?") == true) {
+    	deletePost(id);
+    } 
+}
+
 function deletePost(id){
 	$.ajax({
 	    url: 'deletePost/'+id,
