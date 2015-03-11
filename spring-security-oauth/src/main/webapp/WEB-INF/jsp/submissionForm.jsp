@@ -6,7 +6,17 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="<c:url value="/resources/validator.js" />"></script>
+<style type="text/css">
+.btn.disabled{
+background-color: #ddd;
+border-color: #ddd;
+}
 
+.btn.disabled:hover{
+background-color: #ddd;
+border-color: #ddd;
+}
+</style>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -54,8 +64,8 @@
     <span class="col-sm-9"><input name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>
-<div class="col-sm-3">
-<label>Send replies to my inbox</label> &nbsp;<input type="checkbox" name="sendreplies" value="true"/> 
+<div>
+<label class="col-sm-3">Send replies to my inbox</label> <span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
 </div>
 <br><br>
  
