@@ -42,7 +42,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = username;
     }
 
@@ -50,7 +50,7 @@ public class User {
         return accessToken;
     }
 
-    public void setAccessToken(String accessToken) {
+    public void setAccessToken(final String accessToken) {
         this.accessToken = accessToken;
     }
 
@@ -58,7 +58,7 @@ public class User {
         return refreshToken;
     }
 
-    public void setRefreshToken(String refreshToken) {
+    public void setRefreshToken(final String refreshToken) {
         this.refreshToken = refreshToken;
     }
 
@@ -66,7 +66,7 @@ public class User {
         return tokenExpiration;
     }
 
-    public void setTokenExpiration(Date tokenExpiration) {
+    public void setTokenExpiration(final Date tokenExpiration) {
         this.tokenExpiration = tokenExpiration;
     }
 
@@ -74,9 +74,11 @@ public class User {
         return needCaptcha;
     }
 
-    public void setNeedCaptcha(boolean needCaptcha) {
+    public void setNeedCaptcha(final boolean needCaptcha) {
         this.needCaptcha = needCaptcha;
     }
+
+    //
 
     @Override
     public int hashCode() {
@@ -108,4 +110,5 @@ public class User {
     public String toString() {
         return "User [username=" + username + "]";
     }
+
 }

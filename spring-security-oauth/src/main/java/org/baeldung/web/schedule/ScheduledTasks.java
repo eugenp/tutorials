@@ -11,7 +11,6 @@ import org.baeldung.reddit.util.RedditApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,7 +23,6 @@ import org.springframework.util.MultiValueMap;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-@EnableScheduling
 public class ScheduledTasks {
 
     private OAuth2RestTemplate redditRestTemplate;
@@ -42,48 +40,52 @@ public class ScheduledTasks {
         }
     }
 
-    private void submitPost(Post post) {
+    private void submitPost(final Post post) {
         try {
-            final User user = post.getUser();
-            final DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(user.getAccessToken());
-            token.setRefreshToken(new DefaultOAuth2RefreshToken((user.getRefreshToken())));
-            token.setExpiration(user.getTokenExpiration());
-            redditRestTemplate.getOAuth2ClientContext().setAccessToken(token);
-            //
-            final UsernamePasswordAuthenticationToken userAuthToken = new UsernamePasswordAuthenticationToken(user.getUsername(), token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
-            SecurityContextHolder.getContext().setAuthentication(userAuthToken);
-            //
-            final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
-            param.add(RedditApiConstants.TITLE, post.getTitle());
-            param.add(RedditApiConstants.SR, post.getSubreddit());
-            param.add(RedditApiConstants.URL, post.getUrl());
-            param.add(RedditApiConstants.API_TYPE, "json");
-            param.add(RedditApiConstants.KIND, "link");
-            param.add(RedditApiConstants.RESUBMIT, "true");
-            param.add(RedditApiConstants.THEN, "comments");
-            if (post.isSendReplies()) {
-                param.add(RedditApiConstants.SENDREPLIES, "true");
-            }
-
-            logger.info("Submit link with these parameters: " + param.entrySet());
-            final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
-            final JsonNode errorNode = node.get("json").get("errors").get(0);
-            if (errorNode == null) {
-                post.setSent(true);
-                post.setSubmissionResponse("Successfully sent");
-                postReopsitory.save(post);
-                logger.info("Successfully sent " + post.toString());
-            } else {
-                post.setSubmissionResponse(errorNode.toString());
-                postReopsitory.save(post);
-                logger.info("Error occurred: " + errorNode.toString() + "while submitting post " + post.toString());
-            }
+            submitPostInternal(post);
         } catch (final Exception e) {
             logger.error("Error occurred while submitting post " + post.toString(), e);
         }
     }
 
-    public void setRedditRestTemplate(OAuth2RestTemplate redditRestTemplate) {
+    private void submitPostInternal(final Post post) {
+        final User user = post.getUser();
+        final DefaultOAuth2AccessToken token = new DefaultOAuth2AccessToken(user.getAccessToken());
+        token.setRefreshToken(new DefaultOAuth2RefreshToken((user.getRefreshToken())));
+        token.setExpiration(user.getTokenExpiration());
+        redditRestTemplate.getOAuth2ClientContext().setAccessToken(token);
+        //
+        final UsernamePasswordAuthenticationToken userAuthToken = new UsernamePasswordAuthenticationToken(user.getUsername(), token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        SecurityContextHolder.getContext().setAuthentication(userAuthToken);
+        //
+        final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+        param.add(RedditApiConstants.TITLE, post.getTitle());
+        param.add(RedditApiConstants.SR, post.getSubreddit());
+        param.add(RedditApiConstants.URL, post.getUrl());
+        param.add(RedditApiConstants.API_TYPE, "json");
+        param.add(RedditApiConstants.KIND, "link");
+        param.add(RedditApiConstants.RESUBMIT, "true");
+        param.add(RedditApiConstants.THEN, "comments");
+        if (post.isSendReplies()) {
+            param.add(RedditApiConstants.SENDREPLIES, "true");
+        }
+
+        logger.info("Submit link with these parameters: " + param.entrySet());
+        final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
+        final JsonNode errorNode = node.get("json").get("errors").get(0);
+        if (errorNode == null) {
+            post.setSent(true);
+            post.setSubmissionResponse("Successfully sent");
+            postReopsitory.save(post);
+            logger.info("Successfully sent " + post.toString());
+        } else {
+            post.setSubmissionResponse(errorNode.toString());
+            postReopsitory.save(post);
+            logger.info("Error occurred: " + errorNode.toString() + "while submitting post " + post.toString());
+        }
+    }
+
+    public void setRedditRestTemplate(final OAuth2RestTemplate redditRestTemplate) {
         this.redditRestTemplate = redditRestTemplate;
     }
 }
