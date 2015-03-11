@@ -223,6 +223,8 @@ public class RedditController {
         } else {
             user.setNeedCaptcha(false);
         }
+        user.setAccessToken(token.getValue());
+        user.setRefreshToken(token.getRefreshToken().getValue());
         userReopsitory.save(user);
     }
 
