@@ -54,7 +54,6 @@ public class RedditController {
     public final String redditLogin() {
         final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
         loadAuthentication(node.get("name").asText(), redditRestTemplate.getAccessToken());
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
         return "redirect:home.html";
     }
 
@@ -72,8 +71,6 @@ public class RedditController {
 
     @RequestMapping("/post")
     public final String showSubmissionForm(final Model model) {
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
-
         final boolean isCaptchaNeeded = getCurrentUser().isCaptchaNeeded();
         if (isCaptchaNeeded) {
             final String iden = getNewCaptcha();
