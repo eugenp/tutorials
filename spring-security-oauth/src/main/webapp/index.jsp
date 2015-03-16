@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 <h1>Schedule to Reddit</h1>
-<a href="info" class="btn btn-primary">Login with Reddit</a>
+<a href="login" class="btn btn-primary">Login with Reddit</a>
 </div>		
 </body>
 </html>

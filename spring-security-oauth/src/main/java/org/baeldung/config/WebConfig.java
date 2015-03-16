@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -42,7 +43,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
@@ -53,13 +54,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+        registry.addViewController("/home.html");
+    }
+
     @Bean
     public ScheduledTasks scheduledTasks(OAuth2ProtectedResourceDetails reddit) {
-        ScheduledTasks s = new ScheduledTasks();
+        final ScheduledTasks s = new ScheduledTasks();
         s.setRedditRestTemplate(new OAuth2RestTemplate(reddit));
         return s;
     }
 
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
@@ -83,7 +91,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         @Bean
         public OAuth2ProtectedResourceDetails reddit() {
-            AuthorizationCodeResourceDetails details = new AuthorizationCodeResourceDetails();
+            final AuthorizationCodeResourceDetails details = new AuthorizationCodeResourceDetails();
             details.setId("reddit");
             details.setClientId(clientID);
             details.setClientSecret(clientSecret);
@@ -92,13 +100,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             details.setTokenName("oauth_token");
             details.setScope(Arrays.asList("identity", "read", "submit"));
             details.setGrantType("authorization_code");
+            details.setPreEstablishedRedirectUri("http://localhost:8080/spring-security-oauth/login");
+            details.setUseCurrentUri(false);
             return details;
         }
 
         @Bean
         public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
-            OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
-            AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
+            final OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
+            final AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
                     new ClientCredentialsAccessTokenProvider()));
             template.setAccessTokenProvider(accessTokenProvider);
             return template;

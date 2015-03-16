@@ -2,12 +2,11 @@ package org.baeldung.web;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.dao.UserRepository;
@@ -18,6 +17,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.stereotype.Controller;
@@ -48,13 +50,12 @@ public class RedditController {
     @Autowired
     private PostRepository postReopsitory;
 
-    @RequestMapping("/info")
-    public final String getInfo(HttpSession session) {
+    @RequestMapping("/login")
+    public final String redditLogin() {
         final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
-        final String name = node.get("name").asText();
-        addUser(name, redditRestTemplate.getAccessToken());
-        session.setAttribute("username", name);
-        return "reddit";
+        loadAuthentication(node.get("name").asText(), redditRestTemplate.getAccessToken());
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
+        return "redirect:home.html";
     }
 
     @RequestMapping(value = "/submit", method = RequestMethod.POST)
@@ -71,6 +72,8 @@ public class RedditController {
 
     @RequestMapping("/post")
     public final String showSubmissionForm(final Model model) {
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().toString());
+
         final boolean isCaptchaNeeded = getCurrentUser().isCaptchaNeeded();
         if (isCaptchaNeeded) {
             final String iden = getNewCaptcha();
@@ -207,25 +210,26 @@ public class RedditController {
         }
     }
 
-    private final void addUser(final String name, final OAuth2AccessToken token) {
+    private final void loadAuthentication(final String name, final OAuth2AccessToken token) {
         User user = userReopsitory.findByUsername(name);
         if (user == null) {
             user = new User();
             user.setUsername(name);
-            user.setAccessToken(token.getValue());
-            user.setRefreshToken(token.getRefreshToken().getValue());
-            user.setTokenExpiration(token.getExpiration());
         }
 
-        final String needsCaptchaResult = needsCaptcha();
-        if (needsCaptchaResult.equalsIgnoreCase("true")) {
+        if (needsCaptcha().equalsIgnoreCase("true")) {
             user.setNeedCaptcha(true);
         } else {
             user.setNeedCaptcha(false);
         }
+
         user.setAccessToken(token.getValue());
         user.setRefreshToken(token.getRefreshToken().getValue());
+        user.setTokenExpiration(token.getExpiration());
         userReopsitory.save(user);
+
+        final UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
 }

@@ -21,7 +21,11 @@
             <artifactId>spring-security-config</artifactId>
             <version>${org.springframework.security.version}</version>
         </dependency>
-        
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${org.springframework.security.version}</version>
+        </dependency>
         <dependency>
 	        <groupId>org.springframework.security.oauth</groupId>
 	        <artifactId>spring-security-oauth2</artifactId>
@@ -151,6 +155,7 @@
             <version>1.2</version>
             <scope>runtime</scope>
         </dependency>
+
 
         <!-- marshalling -->
 
