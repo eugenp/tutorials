@@ -161,7 +161,7 @@ public class RedditController {
     // === private
 
     private User getCurrentUser() {
-        return userReopsitory.findByAccessToken(redditRestTemplate.getAccessToken().getValue());
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     private final MultiValueMap<String, String> constructParams(final Map<String, String> formParams) {

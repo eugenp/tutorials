@@ -12,8 +12,8 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
 
     @Override
     protected WebApplicationContext createServletApplicationContext() {
-        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(PersistenceJPAConfig.class, WebConfig.class);
+        final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.register(PersistenceJPAConfig.class, WebConfig.class, SecurityConfig.class);
         return context;
     }
 
@@ -32,12 +32,13 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
         super.onStartup(servletContext);
 
         servletContext.addListener(new SessionListener());
-
         registerProxyFilter(servletContext, "oauth2ClientContextFilter");
+        registerProxyFilter(servletContext, "springSecurityFilterChain");
+
     }
 
     private void registerProxyFilter(ServletContext servletContext, String name) {
-        DelegatingFilterProxy filter = new DelegatingFilterProxy(name);
+        final DelegatingFilterProxy filter = new DelegatingFilterProxy(name);
         filter.setContextAttribute("org.springframework.web.servlet.FrameworkServlet.CONTEXT.dispatcher");
         servletContext.addFilter(name, filter).addMappingForUrlPatterns(null, false, "/*");
     }
