@@ -45,4 +45,10 @@ public class RootController {
     public String getMetric() {
         return metricService.getFullMetric();
     }
+
+    @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
+    @ResponseBody
+    public String getStatusMetric() {
+        return metricService.getStatusMetric();
+    }
 }
