@@ -31,7 +31,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,11 +66,11 @@ public class RegistrationController {
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
     @ResponseBody
-    public GenericResponse registerUserAccount(@Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request) {
+    public GenericResponse registerUserAccount(@Valid final UserDto accountDto, final HttpServletRequest request) {
         LOGGER.debug("Registering user account with information: {}", accountDto);
-        if (result.hasErrors()) {
-            return new GenericResponse(result.getFieldErrors(), result.getGlobalErrors());
-        }
+        // if (result.hasErrors()) {
+        // return new GenericResponse(result.getFieldErrors(), result.getGlobalErrors());
+        // }
         final User registered = createUserAccount(accountDto);
         if (registered == null) {
             return new GenericResponse("email", messages.getMessage("message.regError", null, request.getLocale()));
