@@ -51,4 +51,14 @@ public class RootController {
     public String getStatusMetric() {
         return metricService.getStatusMetric();
     }
+
+    @RequestMapping(value = "/metric-graph", method = RequestMethod.GET)
+    @ResponseBody
+    public Object[][] drawMetric() {
+        final Object[][] result = metricService.getGraphData();
+        for (int i = 1; i < result[0].length; i++) {
+            result[0][i] = result[0][i].toString();
+        }
+        return result;
+    }
 }
