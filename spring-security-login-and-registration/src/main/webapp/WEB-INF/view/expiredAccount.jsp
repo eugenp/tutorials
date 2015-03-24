@@ -16,7 +16,7 @@
   <spring:message code="auth.message.expired"></spring:message> 
 </h1>
 <br>
-<a href="<c:url value="/user/registration" />"><spring:message
+<a href="<c:url value="/old/user/registration" />"><spring:message
 code="label.form.loginSignUp"></spring:message></a>
 
 </body>
