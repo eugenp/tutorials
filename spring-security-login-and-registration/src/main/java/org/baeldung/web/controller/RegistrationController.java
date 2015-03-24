@@ -68,9 +68,7 @@ public class RegistrationController {
     @ResponseBody
     public GenericResponse registerUserAccount(@Valid final UserDto accountDto, final HttpServletRequest request) {
         LOGGER.debug("Registering user account with information: {}", accountDto);
-        // if (result.hasErrors()) {
-        // return new GenericResponse(result.getFieldErrors(), result.getGlobalErrors());
-        // }
+
         final User registered = createUserAccount(accountDto);
         if (registered == null) {
             return new GenericResponse("email", messages.getMessage("message.regError", null, request.getLocale()));

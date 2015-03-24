@@ -36,6 +36,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
         registry.addViewController("/login.html");
+        registry.addViewController("/registration.html");
         registry.addViewController("/logout.html");
         registry.addViewController("/homepage.html");
         registry.addViewController("/expiredAccount.html");

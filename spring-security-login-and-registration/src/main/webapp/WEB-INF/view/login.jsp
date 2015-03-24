@@ -97,7 +97,7 @@ ${param.message}
 
 			</form>
 			<br> Current Locale : ${pageContext.response.locale} <br> <a
-				href="<c:url value="/old/user/registration" />"><spring:message
+				href="<c:url value="/registration.html" />"><spring:message
 					code="label.form.loginSignUp"></spring:message></a>
 			<br><br><br>
             <a href="<c:url value="/forgetPassword.html" />"><spring:message
