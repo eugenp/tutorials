@@ -49,7 +49,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/j_spring_security_check*","/login*", "/logout*", "/signin/**", "/signup/**",
                         "/user/registration*", "/regitrationConfirm*", "/expiredAccount*", "/registration*", 
                         "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*", 
-                        "/user/changePassword*", "/emailError*", "/resources/**").permitAll()
+                        "/user/changePassword*", "/emailError*", "/resources/**","/old/user/registration*").permitAll()
                 .antMatchers("/invalidSession*").anonymous()
                 .anyRequest().authenticated()
                 .and()
