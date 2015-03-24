@@ -17,7 +17,7 @@ code="label.badUser.title"></spring:message></title>
 				 ${param.message}
 </h1>
 <br>
-<a href="<c:url value="/old/user/registration" />"><spring:message
+<a href="<c:url value="/registration.html" />"><spring:message
 code="label.form.loginSignUp"></spring:message></a>
 
 <c:if test="${param.expired}">
