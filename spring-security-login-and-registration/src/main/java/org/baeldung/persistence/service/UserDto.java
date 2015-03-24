@@ -33,7 +33,7 @@ public class UserDto {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -43,7 +43,7 @@ public class UserDto {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(final Integer role) {
         this.role = role;
     }
 
@@ -51,7 +51,7 @@ public class UserDto {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -59,7 +59,7 @@ public class UserDto {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -67,7 +67,7 @@ public class UserDto {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -75,7 +75,7 @@ public class UserDto {
         return matchingPassword;
     }
 
-    public void setMatchingPassword(String matchingPassword) {
+    public void setMatchingPassword(final String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
 

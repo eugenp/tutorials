@@ -30,7 +30,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,25 +101,22 @@ public class OldRegistrationController {
     }
 
     @RequestMapping(value = "/user/registration", method = RequestMethod.POST)
-    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto accountDto, final BindingResult result, final HttpServletRequest request, final Errors errors) {
-        LOGGER.debug("Registering user account with information: {}", accountDto);
-        if (result.hasErrors()) {
-            return new ModelAndView("registration", "user", accountDto);
-        }
+    public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid final UserDto userDto, final HttpServletRequest request, final Errors errors) {
+        LOGGER.debug("Registering user account with information: {}", userDto);
 
-        final User registered = createUserAccount(accountDto);
+        final User registered = createUserAccount(userDto);
         if (registered == null) {
-            result.rejectValue("email", "message.regError");
-            return new ModelAndView("registration", "user", accountDto);
+            // result.rejectValue("email", "message.regError");
+            return new ModelAndView("registration", "user", userDto);
         }
         try {
             final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
         } catch (final Exception ex) {
             LOGGER.warn("Unable to register user", ex);
-            return new ModelAndView("emailError", "user", accountDto);
+            return new ModelAndView("emailError", "user", userDto);
         }
-        return new ModelAndView("successRegister", "user", accountDto);
+        return new ModelAndView("successRegister", "user", userDto);
     }
 
     @RequestMapping(value = "/user/resendRegistrationToken", method = RequestMethod.GET)
