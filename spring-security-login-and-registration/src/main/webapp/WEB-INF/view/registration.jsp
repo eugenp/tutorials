@@ -84,8 +84,18 @@ function register(){
         {
             window.location.href = "<c:url value="/emailError.html"></c:url>";
         }
-        else{
+        else if(data.responseJSON.error.indexOf("InternalError") > -1){
             window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.responseJSON.message;
+        }
+        else{
+        	var errors = $.parseJSON(data.responseJSON.message);
+            $.each( errors, function( index,item ){
+                $("#"+item.field+"Error").show().html(item.defaultMessage);
+            });
+            errors = $.parseJSON(data.responseJSON.error);
+            $.each( errors, function( index,item ){
+                $("#globalError").show().append(item.defaultMessage+"<br>");
+            });
         }
     });
 }
