@@ -63,25 +63,16 @@ function register(){
         if(data.message == "success"){
         	window.location.href = "<c:url value="/successRegister.html"></c:url>";
         }
-        else if(data.message == "email"){
-        	$("#emailError").show().html(data.error);
-        }
-        else{
-        	
-        	var errors = $.parseJSON(data.message);
-        	$.each( errors, function( index,item ){
-        		$("#"+item.field+"Error").show().html(item.defaultMessage);
-        	});
-        	errors = $.parseJSON(data.error);
-            $.each( errors, function( index,item ){
-                $("#globalError").show().append(item.defaultMessage+"<br>");
-            });
-        }
+        
+       
     })
     .fail(function(data) {
         if(data.responseJSON.error.indexOf("MailError") > -1)
         {
             window.location.href = "<c:url value="/emailError.html"></c:url>";
+        }
+        else if(data.responseJSON.error == "UserAlreadyExist"){
+            $("#emailError").show().html(data.responseJSON.message);
         }
         else if(data.responseJSON.error.indexOf("InternalError") > -1){
             window.location.href = "<c:url value="/login.html"></c:url>" + "?message=" + data.responseJSON.message;
