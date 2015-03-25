@@ -52,6 +52,14 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
+    // 409
+    @ExceptionHandler({ UserAlreadyExistException.class })
+    public ResponseEntity<Object> handleUserAlreadyExist(final RuntimeException ex, final WebRequest request) {
+        logger.error("409 Status Code", ex);
+        final GenericResponse bodyOfResponse = new GenericResponse(messages.getMessage("message.regError", null, request.getLocale()), "UserAlreadyExist");
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
+    }
+
     // 500
     @ExceptionHandler({ MailAuthenticationException.class })
     public ResponseEntity<Object> handleMail(final RuntimeException ex, final WebRequest request) {

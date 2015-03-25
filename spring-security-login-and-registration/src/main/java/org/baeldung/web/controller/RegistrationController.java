@@ -14,6 +14,7 @@ import org.baeldung.persistence.service.IUserService;
 import org.baeldung.persistence.service.UserDto;
 import org.baeldung.registration.OnRegistrationCompleteEvent;
 import org.baeldung.validation.EmailExistsException;
+import org.baeldung.web.error.UserAlreadyExistException;
 import org.baeldung.web.error.UserNotFoundException;
 import org.baeldung.web.util.GenericResponse;
 import org.slf4j.Logger;
@@ -71,7 +72,7 @@ public class RegistrationController {
 
         final User registered = createUserAccount(accountDto);
         if (registered == null) {
-            return new GenericResponse("email", messages.getMessage("message.regError", null, request.getLocale()));
+            throw new UserAlreadyExistException();
         }
         final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, request.getLocale(), appUrl));
