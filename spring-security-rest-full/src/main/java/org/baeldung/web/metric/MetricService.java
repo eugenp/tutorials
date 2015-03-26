@@ -11,13 +11,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class MetricService {
 
-    private static HashMap<String, HashMap<Integer, Integer>> metricMap = new HashMap<String, HashMap<Integer, Integer>>();
-    private static HashMap<Integer, Integer> statusMetric = new HashMap<Integer, Integer>();
-    private static HashMap<String, HashMap<Integer, Integer>> timeMap = new HashMap<String, HashMap<Integer, Integer>>();
+    private HashMap<String, HashMap<Integer, Integer>> metricMap;
+    private HashMap<Integer, Integer> statusMetric;
+    private HashMap<String, HashMap<Integer, Integer>> timeMap;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public MetricService() {
         super();
+        metricMap = new HashMap<String, HashMap<Integer, Integer>>();
+        statusMetric = new HashMap<Integer, Integer>();
+        timeMap = new HashMap<String, HashMap<Integer, Integer>>();
     }
 
     public void increaseCount(final String request, final int status) {

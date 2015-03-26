@@ -3,6 +3,7 @@ package org.baeldung;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * class to run up a Jetty Server (on http://localhost:8080)
  * 
  */
+@EnableScheduling
 @EnableAutoConfiguration
 @ComponentScan("org.baeldung")
 public class SampleLDAPApplication extends WebMvcConfigurerAdapter {
@@ -22,6 +24,7 @@ public class SampleLDAPApplication extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/graph").setViewName("graph");
     }
 
 }
