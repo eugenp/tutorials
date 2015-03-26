@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class MetricFilter implements Filter {
 
     @Autowired
-    private MetricService metricService;
+    private IMetricService metricService;
 
     @Override
     public void init(final FilterConfig config) throws ServletException {

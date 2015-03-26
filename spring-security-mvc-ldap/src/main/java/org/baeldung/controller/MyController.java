@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.baeldung.metric.MetricService;
+import org.baeldung.metric.IMetricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MyController {
 
     @Autowired
-    private MetricService metricService;
+    private IMetricService metricService;
 
     @RequestMapping("/")
     public String init(Map<String, Object> model, Principal principal) {

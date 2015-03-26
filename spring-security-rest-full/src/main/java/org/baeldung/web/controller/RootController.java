@@ -5,7 +5,7 @@ import java.net.URI;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.baeldung.web.metric.MetricService;
+import org.baeldung.web.metric.IMetricService;
 import org.baeldung.web.util.LinkUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import org.springframework.web.util.UriTemplate;
 public class RootController {
 
     @Autowired
-    private MetricService metricService;
+    private IMetricService metricService;
 
     public RootController() {
         super();
