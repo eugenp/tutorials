@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MetricService {
+public class MetricService implements IMetricService {
 
     @Autowired
     private MetricRepository repo;
@@ -21,9 +21,8 @@ public class MetricService {
     @Autowired
     private CounterService counter;
 
-    private ArrayList<ArrayList<Integer>> statusMetric;
+    private List<ArrayList<Integer>> statusMetric;
     private List<String> statusList;
-
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public MetricService() {
@@ -32,12 +31,44 @@ public class MetricService {
         statusList = new ArrayList<String>();
     }
 
+    // API
+
     public void increaseCount(final int status) {
         counter.increment("status." + status);
         if (!statusList.contains("counter.status." + status)) {
             statusList.add("counter.status." + status);
         }
     }
+
+    public Object[][] getGraphData() {
+        Date current = new Date();
+        int colCount = statusList.size() + 1;
+        int rowCount = statusMetric.size() + 1;
+        Object[][] result = new Object[rowCount][colCount];
+        result[0][0] = "Time";
+
+        int j = 1;
+        for (final String status : statusList) {
+            result[0][j] = status;
+            j++;
+        }
+
+        List<Integer> temp;
+        for (int i = 1; i < rowCount; i++) {
+            temp = statusMetric.get(i - 1);
+            result[i][0] = dateFormat.format(new Date(current.getTime() - (60000 * (rowCount - i))));
+            for (j = 1; j <= temp.size(); j++) {
+                result[i][j] = temp.get(j - 1);
+            }
+            while (j < colCount) {
+                result[i][j] = 0;
+                j++;
+            }
+        }
+        return result;
+    }
+
+    // Non - API
 
     @Scheduled(fixedDelay = 60000)
     private void exportMetrics() {
@@ -55,35 +86,4 @@ public class MetricService {
         }
         statusMetric.add(statusCount);
     }
-
-    public Object[][] getGraphData() {
-        Date current = new Date();
-        int colCount = statusList.size() + 1;
-        int rowCount = statusMetric.size() + 1;
-
-        Object[][] result = new Object[rowCount][colCount];
-        result[0][0] = "Time";
-
-        int j = 1;
-        for (final String status : statusList) {
-            result[0][j] = status;
-            j++;
-        }
-
-        ArrayList<Integer> temp;
-        for (int i = 1; i < rowCount; i++) {
-            temp = statusMetric.get(i - 1);
-            result[i][0] = dateFormat.format(new Date(current.getTime() - (60000 * (rowCount - i))));
-            for (j = 1; j <= temp.size(); j++) {
-                result[i][j] = temp.get(j - 1);
-            }
-            while (j < colCount) {
-                result[i][j] = 0;
-                j++;
-            }
-        }
-
-        return result;
-    }
-
 }

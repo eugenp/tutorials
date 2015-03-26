@@ -10,7 +10,7 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MetricService {
+public class MetricService implements IMetricService {
 
     private Map<String, HashMap<Integer, Integer>> metricMap;
     private Map<Integer, Integer> statusMetric;
@@ -26,20 +26,24 @@ public class MetricService {
 
     // API
 
+    @Override
     public void increaseCount(final String request, final int status) {
         increaseMainMetric(request, status);
         increaseStatusMetric(status);
         updateTimeMap(status);
     }
 
+    @Override
     public String getFullMetric() {
         return metricMap.entrySet().toString();
     }
 
+    @Override
     public String getStatusMetric() {
         return statusMetric.entrySet().toString();
     }
 
+    @Override
     public Object[][] getGraphData() {
         final int colCount = statusMetric.keySet().size() + 1;
         final Set<Integer> allStatus = statusMetric.keySet();
@@ -54,7 +58,7 @@ public class MetricService {
             j++;
         }
         int i = 1;
-        HashMap<Integer, Integer> tempMap;
+        Map<Integer, Integer> tempMap;
         for (final Entry<String, HashMap<Integer, Integer>> entry : timeMap.entrySet()) {
             result[i][0] = entry.getKey();
             tempMap = entry.getValue();
