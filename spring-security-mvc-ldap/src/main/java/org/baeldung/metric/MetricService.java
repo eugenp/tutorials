@@ -21,8 +21,8 @@ public class MetricService implements IMetricService {
     @Autowired
     private CounterService counter;
 
-    private List<ArrayList<Integer>> statusMetric;
-    private List<String> statusList;
+    private final List<ArrayList<Integer>> statusMetric;
+    private final List<String> statusList;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public MetricService() {
@@ -33,6 +33,7 @@ public class MetricService implements IMetricService {
 
     // API
 
+    @Override
     public void increaseCount(final int status) {
         counter.increment("status." + status);
         if (!statusList.contains("counter.status." + status)) {
@@ -40,11 +41,12 @@ public class MetricService implements IMetricService {
         }
     }
 
+    @Override
     public Object[][] getGraphData() {
-        Date current = new Date();
-        int colCount = statusList.size() + 1;
-        int rowCount = statusMetric.size() + 1;
-        Object[][] result = new Object[rowCount][colCount];
+        final Date current = new Date();
+        final int colCount = statusList.size() + 1;
+        final int rowCount = statusMetric.size() + 1;
+        final Object[][] result = new Object[rowCount][colCount];
         result[0][0] = "Time";
 
         int j = 1;
@@ -73,8 +75,8 @@ public class MetricService implements IMetricService {
     @Scheduled(fixedDelay = 60000)
     private void exportMetrics() {
         Metric<?> metric;
-        ArrayList<Integer> statusCount = new ArrayList<Integer>();
-        for (String status : statusList) {
+        final ArrayList<Integer> statusCount = new ArrayList<Integer>();
+        for (final String status : statusList) {
             metric = repo.findOne(status);
             if (metric != null) {
                 statusCount.add(metric.getValue().intValue());

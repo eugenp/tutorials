@@ -25,6 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
     // API
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
