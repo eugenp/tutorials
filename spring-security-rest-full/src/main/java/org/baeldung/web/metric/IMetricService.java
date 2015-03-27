@@ -1,12 +1,14 @@
 package org.baeldung.web.metric;
 
+import java.util.Map;
+
 public interface IMetricService {
 
     void increaseCount(final String request, final int status);
 
-    String getFullMetric();
+    Map getFullMetric();
 
-    String getStatusMetric();
+    Map getStatusMetric();
 
     Object[][] getGraphData();
 }

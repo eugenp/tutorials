@@ -1,6 +1,7 @@
 package org.baeldung.web.controller;
 
 import java.net.URI;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,13 +43,13 @@ public class RootController {
 
     @RequestMapping(value = "/metric", method = RequestMethod.GET)
     @ResponseBody
-    public String getMetric() {
+    public Map getMetric() {
         return metricService.getFullMetric();
     }
 
     @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
     @ResponseBody
-    public String getStatusMetric() {
+    public Map getStatusMetric() {
         return metricService.getStatusMetric();
     }
 
