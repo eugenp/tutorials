@@ -34,13 +34,13 @@ public class MetricService implements IMetricService {
     }
 
     @Override
-    public String getFullMetric() {
-        return metricMap.entrySet().toString();
+    public Map getFullMetric() {
+        return metricMap;
     }
 
     @Override
-    public String getStatusMetric() {
-        return statusMetric.entrySet().toString();
+    public Map getStatusMetric() {
+        return statusMetric;
     }
 
     @Override
