@@ -1,6 +1,6 @@
-package org.baeldung.metric;
+package org.baeldung.web.metric;
 
-public interface IMetricService {
+public interface IActuatorMetricService {
 
     void increaseCount(final int status);
 

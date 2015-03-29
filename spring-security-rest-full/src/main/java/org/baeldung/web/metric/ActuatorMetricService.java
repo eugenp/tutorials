@@ -1,4 +1,4 @@
-package org.baeldung.metric;
+package org.baeldung.web.metric;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MetricService implements IMetricService {
+public class ActuatorMetricService implements IActuatorMetricService {
 
     @Autowired
     private MetricRepository repo;
@@ -25,7 +25,7 @@ public class MetricService implements IMetricService {
     private final List<String> statusList;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
-    public MetricService() {
+    public ActuatorMetricService() {
         super();
         statusMetric = new ArrayList<ArrayList<Integer>>();
         statusList = new ArrayList<String>();
