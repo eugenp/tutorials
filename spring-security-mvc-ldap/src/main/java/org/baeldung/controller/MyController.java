@@ -7,24 +7,17 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.baeldung.metric.IMetricService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Spring Controller Definitions.
  */
 @Controller
 public class MyController {
-
-    @Autowired
-    private IMetricService metricService;
 
     @RequestMapping("/")
     public String init(Map<String, Object> model, Principal principal) {
@@ -42,12 +35,6 @@ public class MyController {
         model.put("username", getUserName(principal));
         model.put("userroles", getUserRoles(principal));
         return "home";
-    }
-
-    @RequestMapping(value = "/metric-graph-data", method = RequestMethod.GET)
-    @ResponseBody
-    public Object[][] getMetricData() {
-        return metricService.getGraphData();
     }
 
     private String getUserName(Principal principal) {

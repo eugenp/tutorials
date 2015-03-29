@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.baeldung.web.metric.IActuatorMetricService;
 import org.baeldung.web.metric.IMetricService;
 import org.baeldung.web.util.LinkUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class RootController {
 
     @Autowired
     private IMetricService metricService;
+
+    @Autowired
+    private IActuatorMetricService actMetricService;
 
     public RootController() {
         super();
@@ -61,5 +65,11 @@ public class RootController {
             result[0][i] = result[0][i].toString();
         }
         return result;
+    }
+
+    @RequestMapping(value = "/metric-graph-data", method = RequestMethod.GET)
+    @ResponseBody
+    public Object[][] getActuatorMetricData() {
+        return actMetricService.getGraphData();
     }
 }
