@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <title>Metric Graph</title>
@@ -10,7 +11,7 @@
 	});
 
 	function drawChart() {
-		$.get("http://localhost:8080/spring-security-rest-full/metric-graph",
+		$.get("<c:url value="/metric-graph"/>",
 				function(mydata) {
 
 					var data = google.visualization.arrayToDataTable(mydata);
