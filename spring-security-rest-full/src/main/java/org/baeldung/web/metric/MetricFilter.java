@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 @Component
 public class MetricFilter implements Filter {
@@ -23,6 +24,10 @@ public class MetricFilter implements Filter {
 
     @Override
     public void init(final FilterConfig config) throws ServletException {
+        if (metricService == null || actMetricService == null) {
+            metricService = (IMetricService) WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean("metricService");
+            actMetricService = (IActuatorMetricService) WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean("actuatorMetricService");
+        }
     }
 
     @Override
