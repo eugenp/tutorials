@@ -14,6 +14,7 @@ import org.baeldung.persistence.service.IUserService;
 import org.baeldung.persistence.service.UserDto;
 import org.baeldung.registration.OnRegistrationCompleteEvent;
 import org.baeldung.validation.EmailExistsException;
+import org.baeldung.web.error.InvalidOldPasswordException;
 import org.baeldung.web.error.UserAlreadyExistException;
 import org.baeldung.web.error.UserNotFoundException;
 import org.baeldung.web.util.GenericResponse;
@@ -133,7 +134,6 @@ public class RegistrationController {
         final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
         final SimpleMailMessage email = constructResetTokenEmail(appUrl, request.getLocale(), token, user);
         mailSender.send(email);
-
         return new GenericResponse(messages.getMessage("message.resetPasswordEmail", null, request.getLocale()));
     }
 
@@ -166,6 +166,19 @@ public class RegistrationController {
         final User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userService.changeUserPassword(user, password);
         return new GenericResponse(messages.getMessage("message.resetPasswordSuc", null, locale));
+    }
+
+    // change user password
+
+    @RequestMapping(value = "/user/updatePassword", method = RequestMethod.POST)
+    @ResponseBody
+    public GenericResponse changeUserPassword(final Locale locale, @RequestParam("password") final String password, @RequestParam("oldpassword") final String oldPassword) {
+        final User user = userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (!userService.checkIfValidOldPassword(user, oldPassword)) {
+            throw new InvalidOldPasswordException();
+        }
+        userService.changeUserPassword(user, password);
+        return new GenericResponse(messages.getMessage("message.updatePasswordSuc", null, locale));
     }
 
     // NON-API

@@ -67,6 +67,14 @@
 			<scope>test</scope>
 		</dependency>
 
+        <!-- Password Validation -->
+        <dependency>
+		    <groupId>org.passay</groupId>
+		    <artifactId>passay</artifactId>
+		    <version>1.0</version>
+		</dependency>
+        
+        
         <!-- Spring Data JPA dependencies -->
         <dependency>
             <groupId>org.springframework.data</groupId>
