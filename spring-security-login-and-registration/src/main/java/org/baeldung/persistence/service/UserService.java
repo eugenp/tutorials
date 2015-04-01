@@ -120,6 +120,11 @@ public class UserService implements IUserService {
         repository.save(user);
     }
 
+    @Override
+    public boolean checkIfValidOldPassword(final User user, final String oldPassword) {
+        return passwordEncoder.matches(oldPassword, user.getPassword());
+    }
+
     private boolean emailExist(final String email) {
         final User user = repository.findByEmail(email);
         if (user != null) {
