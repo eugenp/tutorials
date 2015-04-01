@@ -4,41 +4,30 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+    uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <html>
 <head>
-<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title><spring:message code="message.resetPassword"></spring:message></title>
 </head>
 <body>
 <div class="container">
-<div class="span12">
-<h1>
-<spring:message code="message.resetPassword"></spring:message>
-</h1>
-<div>
-<br>
-
-<tr>
-<td><label><spring:message code="label.user.email"></spring:message></label></td>
-<td><input id="email" name="email" type="email" value="" /></td>
-</tr>
-
-<button class="btn btn-primary" type="submit" onclick="resetPass()">
-<spring:message code="message.resetPassword"></spring:message>
-</button>
+    <h1><spring:message code="message.resetPassword"></spring:message></h1>
+    <br>
+<div class="row">
+        <label class="col-sm-1"><spring:message code="label.user.email"></spring:message></label>
+        <span class="col-sm-5"><input class="form-control" id="email" name="email" type="email" value="" /></span>
+        <button class="btn btn-primary" type="submit" onclick="resetPass()"><spring:message code="message.resetPassword"></spring:message></button>
 </div>
 
 <br> 
-<a href="<c:url value="/registration.html" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
-<br>
-<a href="<c:url value="login.html" />"><spring:message code="label.form.loginLink"></spring:message></a>
+<a class="btn btn-default" href="<c:url value="registration.html" />"><spring:message code="label.form.loginSignUp"></spring:message></a>
+<br><br>
+<a class="btn btn-default" href="<c:url value="login.html" />"><spring:message code="label.form.loginLink"></spring:message></a>
 
 </div>
-</div>
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 function resetPass(){

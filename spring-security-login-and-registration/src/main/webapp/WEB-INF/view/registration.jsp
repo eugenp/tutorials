@@ -6,7 +6,13 @@
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+.password-verdict{
+color:#000;
+}
+</style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<c:url value="/resources/pwstrength.js" />"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title><spring:message code="label.form.title"></spring:message></title>
 </head>
@@ -57,6 +63,14 @@
     </div>
 
 <script type="text/javascript">
+$(document).ready(function () {
+	options = {
+		    common: {minChar:8},
+		    ui: {showVerdictsInsideProgressBar:true}
+		};
+	 $('#password').pwstrength(options);
+});
+
 function register(){
 	event.preventDefault();
     $(".alert").html("").hide();
