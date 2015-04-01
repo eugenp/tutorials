@@ -1,32 +1,32 @@
 package org.baeldung.persistence.service;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.baeldung.validation.PasswordMatches;
 import org.baeldung.validation.ValidEmail;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.baeldung.validation.ValidPassword;
 
 @PasswordMatches
 public class UserDto {
     @NotNull
-    @NotEmpty
+    @Size(min = 1)
     private String firstName;
 
     @NotNull
-    @NotEmpty
+    @Size(min = 1)
     private String lastName;
 
-    @NotNull
-    @NotEmpty
+    @ValidPassword
     private String password;
 
     @NotNull
-    @NotEmpty
+    @Size(min = 1)
     private String matchingPassword;
 
     @ValidEmail
     @NotNull
-    @NotEmpty
+    @Size(min = 1)
     private String email;
 
     public String getEmail() {
