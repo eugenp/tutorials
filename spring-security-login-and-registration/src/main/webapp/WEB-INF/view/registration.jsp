@@ -68,9 +68,11 @@ $(document).ready(function () {
 		register(event);
 	});
 	
-	$('#password').keyup(function(){
+	$(":password").keyup(function(){
 		if($("#password").val() != $("#matchPassword").val()){
 	        $("#globalError").show().html("Password mismatch");
+	    }else{
+	    	$("#globalError").html("").hide();
 	    }
 	});
 	
