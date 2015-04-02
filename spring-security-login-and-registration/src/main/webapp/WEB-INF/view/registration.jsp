@@ -78,7 +78,16 @@ $(document).ready(function () {
 		    common: {minChar:8},
 		    ui: {
 		    	showVerdictsInsideProgressBar:true,
-		    	showErrors:true
+		    	showErrors:true,
+		    	errorMessages:{
+		    		  wordLength: "Your password is too short",
+		    		  wordNotEmail: "Do not use your email as your password",
+		    		  wordSequences: "Your password contains sequences",
+		    		  wordLowercase: "Use lower case characters",
+		    		  wordUppercase: "Use upper case characters",
+		    	      wordOneNumber: "Use numbers",
+		    		  wordOneSpecialChar: "Use special characters"
+		    		}
 		    	}
 		};
 	 $('#password').pwstrength(options);
