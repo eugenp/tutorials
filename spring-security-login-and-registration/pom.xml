@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.10.RELEASE</version>
+        <version>1.1.12.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -27,14 +27,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <scope>runtime</scope>
         </dependency>
-
-        <!-- <dependency> -->
-        <!-- <groupId>javax.inject</groupId> -->
-        <!-- <artifactId>javax.inject</artifactId> -->
-        <!-- <version>${javax.inject.version}</version> -->
-        <!-- </dependency> -->
 
         <!-- Servlet -->
         <dependency>
@@ -63,7 +56,6 @@
         <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.4.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -177,7 +169,7 @@
 
     <properties>
         <java-version>1.7</java-version>
-        <org.springframework-version>3.1.4.RELEASE</org.springframework-version>
+        <org.springframework-version>4.1.6.RELEASE</org.springframework-version>
         <org.springframework.security.version>3.2.7.RELEASE</org.springframework.security.version>
 
         <!-- logging -->
@@ -191,7 +183,7 @@
         <javax.inject.version>1</javax.inject.version>
 
         <!-- Spring Data Jpa -->
-        <spring-data-jpa.version>1.7.1.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.8.0.RELEASE</spring-data-jpa.version>
 
         <!-- guava -->
         <guava.version>18.0</guava.version>
