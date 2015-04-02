@@ -23,7 +23,7 @@ color:#000;
                 <spring:message code="label.form.title"></spring:message>
             </h1>
             <br>
-            <form action="/" method="POST" enctype="utf8" onsubmit="register()">
+            <form action="/" method="POST" enctype="utf8">
                 <div class="form-group row" >
                     <label class="col-sm-3"><spring:message code="label.user.firstName"></spring:message></label>
                     <span class="col-sm-5"><input class="form-control" name="firstName" value="" required/></span>
@@ -64,14 +64,27 @@ color:#000;
 
 <script type="text/javascript">
 $(document).ready(function () {
+	$('form').submit(function(event) {
+		register(event);
+	});
+	
+	$('#password').keyup(function(){
+		if($("#password").val() != $("#matchPassword").val()){
+	        $("#globalError").show().html("Password mismatch");
+	    }
+	});
+	
 	options = {
 		    common: {minChar:8},
-		    ui: {showVerdictsInsideProgressBar:true,showErrors:true}
+		    ui: {
+		    	showVerdictsInsideProgressBar:true,
+		    	showErrors:true
+		    	}
 		};
 	 $('#password').pwstrength(options);
 });
 
-function register(){
+function register(event){
 	event.preventDefault();
     $(".alert").html("").hide();
     $(".error-list").html("");
