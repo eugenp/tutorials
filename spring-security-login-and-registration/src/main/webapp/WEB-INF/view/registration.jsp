@@ -66,7 +66,7 @@ color:#000;
 $(document).ready(function () {
 	options = {
 		    common: {minChar:8},
-		    ui: {showVerdictsInsideProgressBar:true}
+		    ui: {showVerdictsInsideProgressBar:true,showErrors:true}
 		};
 	 $('#password').pwstrength(options);
 });
@@ -74,6 +74,7 @@ $(document).ready(function () {
 function register(){
 	event.preventDefault();
     $(".alert").html("").hide();
+    $(".error-list").html("");
     if($("#password").val() != $("#matchPassword").val()){
     	$("#globalError").show().html("Password mismatch");
     	return;

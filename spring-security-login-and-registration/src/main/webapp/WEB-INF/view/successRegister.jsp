@@ -9,19 +9,17 @@
 <html>
 
 <head>
-<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title><spring:message code="label.pages.home.title"></spring:message></title>
 </head>
 <body>
-	<div class="container">
-		<div class="span12">
-			<div id="success">
+<div class="container">
+            <h1 class="alert alert-success">
 				<spring:message code="message.regSucc"></spring:message>
-			</div>
-			<a href="<c:url value="login.html" />"><spring:message
+			</h1>
+			<a href="<c:url value="/login.html" />"><spring:message
 					code="label.login"></spring:message></a>
-		</div>
 	</div>
 </body>
 </html>
