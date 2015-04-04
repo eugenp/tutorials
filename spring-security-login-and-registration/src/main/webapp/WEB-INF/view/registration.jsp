@@ -70,7 +70,7 @@ $(document).ready(function () {
 	
 	$(":password").keyup(function(){
 		if($("#password").val() != $("#matchPassword").val()){
-	        $("#globalError").show().html("Password mismatch");
+	        $("#globalError").show().html('<spring:message code="PasswordMatches.user"></spring:message>');
 	    }else{
 	    	$("#globalError").html("").hide();
 	    }
@@ -82,13 +82,13 @@ $(document).ready(function () {
 		    	showVerdictsInsideProgressBar:true,
 		    	showErrors:true,
 		    	errorMessages:{
-		    		  wordLength: "Your password is too short",
-		    		  wordNotEmail: "Do not use your email as your password",
-		    		  wordSequences: "Your password contains sequences",
-		    		  wordLowercase: "Use lower case characters",
-		    		  wordUppercase: "Use upper case characters",
-		    	      wordOneNumber: "Use numbers",
-		    		  wordOneSpecialChar: "Use special characters"
+		    		  wordLength: '<spring:message code="error.wordLength"/>',
+		    		  wordNotEmail: '<spring:message code="error.wordNotEmail"/>',
+		    		  wordSequences: '<spring:message code="error.wordSequences"/>',
+		    		  wordLowercase: '<spring:message code="error.wordLowercase"/>',
+		    		  wordUppercase: '<spring:message code="error.wordUppercase"/>',
+		    	      wordOneNumber: '<spring:message code="error.wordOneNumber"/>',
+		    		  wordOneSpecialChar: '<spring:message code="error.wordOneSpecialChar"/>'
 		    		}
 		    	}
 		};
@@ -100,7 +100,7 @@ function register(event){
     $(".alert").html("").hide();
     $(".error-list").html("");
     if($("#password").val() != $("#matchPassword").val()){
-    	$("#globalError").show().html("Password mismatch");
+    	$("#globalError").show().html('<spring:message code="PasswordMatches.user"></spring:message>');
     	return;
     }
     var formData= $('form').serialize();

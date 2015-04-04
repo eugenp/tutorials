@@ -61,7 +61,7 @@
     }
 </script>
 <style type="text/css">
-.wrapper{width:400px;margin-left:auto;margin-right:auto}
+.wrapper{width:500px;margin-left:auto;margin-right:auto}
 label{padding-left:0 !important}
 </style>
 </head>
@@ -84,12 +84,12 @@ ${param.message}
             <form name='f' action="j_spring_security_check" method='POST'
                 onsubmit="return validate();">
                 
-                <label class="col-sm-2"><spring:message code="label.form.loginEmail"></spring:message></label>
-                <span class="col-sm-10"><input class="form-control" type='text' name='j_username' value=''></span>
+                <label class="col-sm-4"><spring:message code="label.form.loginEmail"></spring:message></label>
+                <span class="col-sm-8"><input class="form-control" type='text' name='j_username' value=''></span>
                 
                 <br><br>        
-                <label class="col-sm-2"><spring:message code="label.form.loginPass"></spring:message></label>
-                <span class="col-sm-10"><input class="form-control" type='password' name='j_password' /></span>
+                <label class="col-sm-4"><spring:message code="label.form.loginPass"></spring:message></label>
+                <span class="col-sm-8"><input class="form-control" type='password' name='j_password' /></span>
                 
                 <br><br>
                 <input class="btn btn-primary" name="submit" type="submit"
