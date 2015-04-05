@@ -13,6 +13,7 @@
 <title><spring:message code="message.changePassword"></spring:message></title>
 </head>
 <body>
+<sec:authorize access="hasRole('READ_PRIVILEGE')">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -66,7 +67,8 @@ function savePass(){
     	$("#errormsg").show().html(data.responseJSON.message);
     });
 }
-</script>    
+</script>  
+</sec:authorize>  
 </body>
 
 </html>

@@ -171,6 +171,7 @@ public class RegistrationController {
     // change user password
 
     @RequestMapping(value = "/user/updatePassword", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('READ_PRIVILEGE')")
     @ResponseBody
     public GenericResponse changeUserPassword(final Locale locale, @RequestParam("password") final String password, @RequestParam("oldpassword") final String oldPassword) {
         final User user = userService.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
