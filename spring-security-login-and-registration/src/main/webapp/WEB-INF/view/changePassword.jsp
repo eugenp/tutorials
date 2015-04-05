@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec"
-    uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -13,7 +11,6 @@
 <title><spring:message code="message.changePassword"></spring:message></title>
 </head>
 <body>
-<sec:authorize access="hasRole('READ_PRIVILEGE')">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -68,7 +65,6 @@ function savePass(){
     });
 }
 </script>  
-</sec:authorize>  
 </body>
 
 </html>
