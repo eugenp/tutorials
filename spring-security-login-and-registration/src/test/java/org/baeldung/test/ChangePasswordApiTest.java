@@ -16,7 +16,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -28,8 +27,10 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ConfigTest.class, PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
-@ActiveProfiles("test")
-public class RegistrationAPIChangePasswordTest {
+public class ChangePasswordApiTest {
+
+    private final String URL_PREFIX = "http://localhost:8080/spring-security-login-and-registration";
+    private final String URL = URL_PREFIX + "/user/updatePassword";
 
     @Autowired
     private UserRepository userRepository;
@@ -37,11 +38,7 @@ public class RegistrationAPIChangePasswordTest {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private final String URL_PREFIX = "http://localhost:8080/spring-security-login-and-registration";
-
-    private final String URL = URL_PREFIX + "/user/updatePassword";
-
-    FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/j_spring_security_check", "j_username", "j_password");
+    private final FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/j_spring_security_check", "j_username", "j_password");
 
     @Before
     public void init() {
@@ -59,6 +56,8 @@ public class RegistrationAPIChangePasswordTest {
             userRepository.save(user);
         }
     }
+
+    // test
 
     @Test
     public void givenLoggedInUser_whenChangingPassword_thenCorrect() {
@@ -99,4 +98,5 @@ public class RegistrationAPIChangePasswordTest {
         assertEquals(302, response.statusCode());
         assertFalse(response.body().asString().contains("Password updated successfully"));
     }
+
 }
