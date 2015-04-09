@@ -1,0 +1,35 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+
+	<persistence-unit name="entityLifecyclePU"
+		transaction-type="RESOURCE_LOCAL">
+		<description>
+            Persistence unit for the JPA audit tutorial
+        </description>
+
+		<!-- Declare entity listeners -->
+		<mapping-file>META-INF/entity-listeners.xml</mapping-file>
+
+		<!-- Declare entities(not needed with hibernate) -->
+		<class>org.baeldung.JPAAuditDemo.model.Post</class>
+
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/entityLifecycleDB?createDatabaseIfNotExist=true" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- Instead of hibernate dialect -->
+			<property name="eclipselink.target-database" value="MySQL" />
+			<!-- generate tables from annotations -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
