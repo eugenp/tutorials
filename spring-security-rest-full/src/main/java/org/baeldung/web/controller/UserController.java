@@ -10,6 +10,7 @@ import org.baeldung.persistence.dao.MyUserPredicatesBuilder;
 import org.baeldung.persistence.dao.MyUserRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.UserSpecificationsBuilder;
+import org.baeldung.persistence.dao.rsql.CustomRsqlVisitor;
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchCriteria;
@@ -28,6 +29,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.mysema.query.types.expr.BooleanExpression;
+
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
 
 @Controller
 public class UserController {
@@ -89,6 +93,14 @@ public class UserController {
         }
         final BooleanExpression exp = builder.build();
         return mydao.findAll(exp);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users/rsql")
+    @ResponseBody
+    public List<User> findAllByRsql(@RequestParam(value = "search") final String search) {
+        final Node rootNode = new RSQLParser().parse(search);
+        final Specification<User> spec = rootNode.accept(new CustomRsqlVisitor<User>());
+        return dao.findAll(spec);
     }
 
     // API - WRITE
