@@ -8,8 +8,6 @@
             Persistence unit for the Envers tutorial
         </description>
 
-		<class>org.baeldung.HibernateAuditDemo.model.Order</class>
-
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
