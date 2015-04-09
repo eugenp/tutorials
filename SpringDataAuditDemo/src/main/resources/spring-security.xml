@@ -1,0 +1,14 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+	<authentication-manager>
+		<!-- refers to spring data repository bean org.baeldung.SpringDataAuditDemo.dao.repos.UserDao -->
+		<authentication-provider user-service-ref="userDao">
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>

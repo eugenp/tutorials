@@ -1,0 +1,91 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.baeldung</groupId>
+	<artifactId>SpringDataAuditDemo</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<name>SpringDataAuditDemo</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.springframework.version>4.0.9.RELEASE</org.springframework.version>
+		<spring-security.version>4.0.0.RELEASE</spring-security.version>
+		<org.hibernate.version>4.3.8.Final</org.hibernate.version>
+		<org.springframework.data.version>1.8.0.RELEASE</org.springframework.data.version>
+		<mysql-connector-java.version>5.1.35</mysql-connector-java.version>
+		<junit.version>4.11</junit.version>
+	</properties>
+
+
+	<dependencies>
+
+		<!-- Spring 4 -->
+		<dependency>
+			<!-- Depends on spring-core,spring-orm, spring-context, spring-aop, spring-tx,spring-jdbc, 
+				etc -->
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${org.springframework.data.version}</version>
+		</dependency>
+		<dependency>
+			<!-- To be able to use org.springframework.data.jpa.domain.support.AuditingEntityListener 
+				in orm.xml -->
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<!-- Spring security to make @CreatedBy and @LastModifiedBy work -->
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+		<dependency>
+			<!-- To be able to use spring-security.xml file -->
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+
+		<!-- Hibernate 4 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${org.hibernate.version}</version>
+		</dependency>
+
+
+		<!-- Mysql driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

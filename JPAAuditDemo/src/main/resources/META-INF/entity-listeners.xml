@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+	version="2.0">
+
+	<!-- This file is described at https://docs.jboss.org/hibernate/stable/annotations/reference/en/html/xml-overriding.html -->
+	<persistence-unit-metadata>
+		<persistence-unit-defaults>
+			<entity-listeners>
+				<!-- Declare entity listeners for entityLifecyclePU -->
+				<entity-listener class="org.baeldung.JPAAuditDemo.listener.LogListener">
+					<!-- Can be used instead of annotations -->
+
+					<!-- <pre-persist method-name="method1" /> <post-persist method-name="method2" 
+						/> <pre-remove method-name="method3" /> <post-remove method-name="method4" 
+						/> <pre-update method-name="method5" /> <post-update method-name="method6" 
+						/> <post-load method-name="method7" /> -->
+				</entity-listener>
+			</entity-listeners>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+</entity-mappings>
