@@ -26,7 +26,6 @@ public class UserRsqlSpecification implements Specification<User> {
         this.arguments = arguments;
     }
 
-
     @Override
     public Predicate toPredicate(final Root<User> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
         final List<Object> args = castArguments(root);
