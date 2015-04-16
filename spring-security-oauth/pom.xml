@@ -156,7 +156,14 @@
             <scope>runtime</scope>
         </dependency>
 
-
+        <!-- apache mahout  -->
+        
+        <dependency>
+	        <groupId>org.apache.mahout</groupId>
+	        <artifactId>mahout-core</artifactId>
+	        <version>0.9</version>
+        </dependency>
+        
         <!-- marshalling -->
 
         <dependency>
