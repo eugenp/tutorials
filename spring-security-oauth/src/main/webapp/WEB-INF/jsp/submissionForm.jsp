@@ -76,9 +76,35 @@ border-color: #ddd;
     <img src="http://www.reddit.com/captcha/${iden}" alt="captcha" width="200"/>
     </c:if>
     <br><br>
-    <span class="col-sm-3"><button type="submit" class="btn btn-primary">Post</button></span>
+    <span class="col-sm-3"><button id="submitbtn" type="submit" class="btn btn-primary">Post</button></span>
    </div>
 </form>
+<div>
+<button id="checkbtn" class="btn btn-default disabled" onclick="predicateResponse()">Predicate Response</button>
+<span id="prediction"></span>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+$("input").change(function() {
+    if($("#submitbtn").hasClass("disabled")){
+    	if(! $("#checkbtn").hasClass("disabled")){
+    		$("#checkbtn").addClass("disabled");
+    	}
+    }else{
+    	$("#checkbtn").removeClass("disabled");
+    }
+});
+function predicateResponse(){
+	var title = $('input[name="title"]').val();
+	var domain = $('input[name="url"]').val();
+	domain =  $('<a>').prop('href', domain).prop('hostname');
+	console.log(domain);
+	$.post("<c:url value="/predicatePostResponse"></c:url>",{title: title, domain: domain} ,function(data){
+        $("#prediction").addClass("alert alert-info").html(data.replace('{','').replace('}',''));
+    });
+}
+</script>
+</div>
 </div>
 </body>
 </html>

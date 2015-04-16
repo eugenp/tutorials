@@ -12,6 +12,7 @@ import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Post;
 import org.baeldung.persistence.model.User;
+import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.util.RedditApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -40,6 +42,7 @@ public class RedditController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    private final SimpleDateFormat dfHour = new SimpleDateFormat("HH");
 
     @Autowired
     private OAuth2RestTemplate redditRestTemplate;
@@ -49,6 +52,9 @@ public class RedditController {
 
     @Autowired
     private PostRepository postReopsitory;
+
+    @Autowired
+    private RedditClassifier redditClassifier;
 
     @RequestMapping("/login")
     public final String redditLogin() {
@@ -120,6 +126,14 @@ public class RedditController {
         final List<Post> posts = postReopsitory.findByUser(user);
         model.addAttribute("posts", posts);
         return "postListView";
+    }
+
+    @RequestMapping(value = "/predicatePostResponse", method = RequestMethod.POST)
+    @ResponseBody
+    public final String predicatePostResponse(@RequestParam(value = "title") final String title, @RequestParam(value = "domain") final String domain) {
+        final int hour = Integer.parseInt(dfHour.format(new Date()));
+        final int result = redditClassifier.classify(redditClassifier.convertPost(title, domain, hour));
+        return (result == RedditClassifier.GOOD) ? "{Good Response}" : "{Bad response}";
     }
 
     // === post actions

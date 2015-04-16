@@ -1,14 +1,24 @@
 package org.baeldung.config;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import org.baeldung.reddit.classifier.RedditClassifier;
+import org.baeldung.reddit.util.UserAgentInterceptor;
 import org.baeldung.web.schedule.ScheduledTasks;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -35,6 +45,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableAsync
 @ComponentScan({ "org.baeldung.web" })
 public class WebConfig extends WebMvcConfigurerAdapter {
+
+    @Autowired
+    private Environment env;
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -63,8 +76,20 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ScheduledTasks scheduledTasks(OAuth2ProtectedResourceDetails reddit) {
         final ScheduledTasks s = new ScheduledTasks();
-        s.setRedditRestTemplate(new OAuth2RestTemplate(reddit));
+        final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
+        list.add(new UserAgentInterceptor());
+        final OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(reddit);
+        restTemplate.setInterceptors(list);
+        s.setRedditRestTemplate(restTemplate);
         return s;
+    }
+
+    @Bean
+    public RedditClassifier redditClassifier() throws IOException {
+        final Resource file = new ClassPathResource("train.csv");
+        final RedditClassifier redditClassifier = new RedditClassifier();
+        redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
+        return redditClassifier;
     }
 
     @Override
@@ -108,6 +133,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         @Bean
         public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
             final OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
+            final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
+            list.add(new UserAgentInterceptor());
+            template.setInterceptors(list);
             final AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
                     new ClientCredentialsAccessTokenProvider()));
             template.setAccessTokenProvider(accessTokenProvider);
