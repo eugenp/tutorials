@@ -14,6 +14,7 @@ import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Post;
 import org.baeldung.persistence.model.User;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = { PersistenceJPAConfig.class })
 @Transactional
 @TransactionConfiguration
+@Ignore
 public class PersistenceJPATest {
     @Autowired
     private PostRepository postRepository;
