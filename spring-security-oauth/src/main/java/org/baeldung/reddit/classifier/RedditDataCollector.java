@@ -34,7 +34,7 @@ public class RedditDataCollector {
         subreddit = "java";
     }
 
-    public RedditDataCollector(String subreddit, int minScore) {
+    public RedditDataCollector(String subreddit) {
         restTemplate = new RestTemplate();
         final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
         list.add(new UserAgentInterceptor());
