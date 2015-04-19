@@ -80,6 +80,7 @@ border-color: #ddd;
    </div>
 </form>
 <div>
+<c:if test="${PREDICTION_FEATURE.isActive()}">
 <button id="checkbtn" class="btn btn-default disabled" onclick="predicateResponse()">Predicate Response</button>
 <span id="prediction"></span>
 
@@ -104,6 +105,7 @@ function predicateResponse(){
     });
 }
 </script>
+</c:if>
 </div>
 </div>
 </body>
