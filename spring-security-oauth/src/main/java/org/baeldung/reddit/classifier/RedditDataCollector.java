@@ -87,7 +87,6 @@ public class RedditDataCollector {
             line += timestamp + ";";
             line += words.size() + ";" + Joiner.on(' ').join(words) + ";";
             line += child.get("data").get("domain").asText() + "\n";
-            System.out.println(line);
             writer.write(line);
         }
     }
