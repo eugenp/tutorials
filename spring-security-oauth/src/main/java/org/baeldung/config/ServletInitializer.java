@@ -13,7 +13,7 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
     @Override
     protected WebApplicationContext createServletApplicationContext() {
         final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(PersistenceJPAConfig.class, WebConfig.class, SecurityConfig.class, FeatureToggleConfig.class);
+        context.register(PersistenceJPAConfig.class, WebConfig.class, SecurityConfig.class);
         return context;
     }
 
@@ -30,7 +30,6 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
-
         servletContext.addListener(new SessionListener());
         registerProxyFilter(servletContext, "oauth2ClientContextFilter");
         registerProxyFilter(servletContext, "springSecurityFilterChain");
