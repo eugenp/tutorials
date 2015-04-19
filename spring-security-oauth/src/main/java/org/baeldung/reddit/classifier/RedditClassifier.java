@@ -3,6 +3,8 @@ package org.baeldung.reddit.classifier;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import org.apache.mahout.classifier.sgd.L2;
 import org.apache.mahout.classifier.sgd.OnlineLogisticRegression;
@@ -18,6 +20,7 @@ public class RedditClassifier {
 
     public static int GOOD = 0;
     public static int BAD = 1;
+    public static int MIN_SCORE = 5;
     private final OnlineLogisticRegression classifier;
     private final FeatureVectorEncoder titleEncoder;
     private final FeatureVectorEncoder domainEncoder;
@@ -44,7 +47,7 @@ public class RedditClassifier {
         }
 
         while ((line != null) && (line != "")) {
-            category = (line.startsWith("good")) ? GOOD : BAD;
+            category = extractCategory(line);
             trainCount[category]++;
             features = convertLineToVector(line);
             classifier.train(category, features);
@@ -76,7 +79,7 @@ public class RedditClassifier {
         Vector features;
         String line = reader.readLine();
         while ((line != null) && (line != "")) {
-            category = (line.startsWith("good")) ? GOOD : BAD;
+            category = extractCategory(line);
             evalCount[category]++;
             features = convertLineToVector(line);
             result = classify(features);
@@ -94,12 +97,21 @@ public class RedditClassifier {
     }
 
     // ==== private
+    private int extractCategory(String line) {
+        final int score = Integer.parseInt(line.substring(0, line.indexOf(';')));
+        return (score < MIN_SCORE) ? BAD : GOOD;
+    }
+
     private Vector convertLineToVector(String line) {
         final Vector features = new RandomAccessSparseVector(4);
         final String[] items = line.split(";");
+        final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+        cal.setTimeInMillis(Long.parseLong(items[1]) * 1000);
+        final int hour = cal.get(Calendar.HOUR_OF_DAY);
+
         titleEncoder.addToVector(items[3], features);
         domainEncoder.addToVector(items[4], features);
-        features.set(2, Integer.parseInt(items[1])); // hour of day
+        features.set(2, hour); // hour of day
         features.set(3, Integer.parseInt(items[2])); // number of words in the title
         return features;
     }

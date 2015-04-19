@@ -185,6 +185,12 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        
+        <dependency>
+		  <groupId>org.togglz</groupId>
+		  <artifactId>togglz-spring</artifactId>
+		  <version>2.1.0.Final</version>
+		</dependency>
 
         <!-- logging -->
 

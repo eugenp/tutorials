@@ -2,9 +2,7 @@ package org.baeldung.reddit.classifier;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.baeldung.reddit.util.UserAgentInterceptor;
@@ -20,20 +18,20 @@ import com.google.common.base.Splitter;
 public class RedditDataCollector {
     public static final String TRAINING_FILE = "src/main/resources/train.csv";
     public static final String TEST_FILE = "src/main/resources/test.csv";
+    public static final int LIMIT = 100;
+    public static final Long YEAR = 31536000L;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private String postAfter;
+    private Long timestamp;
     private final RestTemplate restTemplate;
     private final String subreddit;
-    private final int minScore;
 
     public RedditDataCollector() {
         restTemplate = new RestTemplate();
         final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
         list.add(new UserAgentInterceptor());
         restTemplate.setInterceptors(list);
-        subreddit = "all";
-        minScore = 4;
+        subreddit = "java";
     }
 
     public RedditDataCollector(String subreddit, int minScore) {
@@ -42,35 +40,30 @@ public class RedditDataCollector {
         list.add(new UserAgentInterceptor());
         restTemplate.setInterceptors(list);
         this.subreddit = subreddit;
-        this.minScore = minScore;
     }
 
     public void collectData() {
-        final int limit = 100;
         final int noOfRounds = 80;
+        timestamp = System.currentTimeMillis() / 1000;
         try {
             final FileWriter writer = new FileWriter(TRAINING_FILE);
             for (int i = 0; i < noOfRounds; i++) {
-                getPosts(limit, writer);
+                getPosts(writer);
             }
             writer.close();
 
             final FileWriter testWriter = new FileWriter(TEST_FILE);
-            getPosts(limit, testWriter);
+            getPosts(testWriter);
             testWriter.close();
         } catch (final Exception e) {
             logger.error("write to file error", e);
         }
     }
 
-    // ==== private
+    // ==== Private
 
-    private void getPosts(int limit, FileWriter writer) {
-        String fullUrl = "http://www.reddit.com/r/" + subreddit + "/new.json?limit=" + limit;
-        if (postAfter != null) {
-            fullUrl += "&count=" + limit + "&after=" + postAfter;
-        }
-
+    private void getPosts(FileWriter writer) {
+        final String fullUrl = "http://www.reddit.com/r/" + subreddit + "/search.json?sort=new&q=timestamp:" + (timestamp - YEAR) + ".." + timestamp + "&restrict_sr=on&syntax=cloudsearch&limit=" + LIMIT;
         try {
             final JsonNode node = restTemplate.getForObject(fullUrl, JsonNode.class);
             parseNode(node, writer);
@@ -82,22 +75,19 @@ public class RedditDataCollector {
     }
 
     private void parseNode(JsonNode node, FileWriter writer) throws IOException {
-        postAfter = node.get("data").get("after").asText();
-        System.out.println(postAfter);
         String line;
-        String category;
         List<String> words;
-        final SimpleDateFormat df = new SimpleDateFormat("HH");
+        int score;
         for (final JsonNode child : node.get("data").get("children")) {
-            category = (child.get("data").get("score").asInt() < minScore) ? "bad" : "good";
+            score = child.get("data").get("score").asInt();
             words = Splitter.onPattern("\\W").omitEmptyStrings().splitToList(child.get("data").get("title").asText());
-            final Date date = new Date(child.get("data").get("created_utc").asLong() * 1000);
+            timestamp = child.get("data").get("created_utc").asLong();
 
-            line = category + ";";
-            line += df.format(date) + ";";
+            line = score + ";";
+            line += timestamp + ";";
             line += words.size() + ";" + Joiner.on(' ').join(words) + ";";
             line += child.get("data").get("domain").asText() + "\n";
-
+            System.out.println(line);
             writer.write(line);
         }
     }

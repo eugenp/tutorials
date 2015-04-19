@@ -56,6 +56,8 @@ public class PersistenceJPATest {
         alreadySentPost.setSent(true);
         alreadySentPost.setSubmissionDate(dateFormat.parse("2015-03-03 10:30"));
         alreadySentPost.setUser(userJohn);
+        alreadySentPost.setSubreddit("funny");
+        alreadySentPost.setUrl("www.example.com");
         postRepository.save(alreadySentPost);
 
         notSentYetOld = new Post();
@@ -63,6 +65,8 @@ public class PersistenceJPATest {
         notSentYetOld.setSent(false);
         notSentYetOld.setSubmissionDate(dateFormat.parse("2015-03-03 11:00"));
         notSentYetOld.setUser(userTom);
+        notSentYetOld.setSubreddit("funny");
+        notSentYetOld.setUrl("www.example.com");
         postRepository.save(notSentYetOld);
 
         notSentYet = new Post();
@@ -70,6 +74,8 @@ public class PersistenceJPATest {
         notSentYet.setSent(false);
         notSentYet.setSubmissionDate(dateFormat.parse("2015-03-03 11:30"));
         notSentYet.setUser(userJohn);
+        notSentYet.setSubreddit("funny");
+        notSentYet.setUrl("www.example.com");
         postRepository.save(notSentYet);
     }
 
