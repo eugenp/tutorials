@@ -7,10 +7,9 @@ import java.io.IOException;
 import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.classifier.RedditDataCollector;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
+//@Ignore
 public class RedditClassifierTest {
 
     private RedditClassifier classifier;
@@ -27,4 +26,5 @@ public class RedditClassifierTest {
         System.out.println("Accuracy = " + result);
         assertTrue(result > 0.8);
     }
+
 }
