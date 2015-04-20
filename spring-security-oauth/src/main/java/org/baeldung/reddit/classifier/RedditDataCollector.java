@@ -17,7 +17,7 @@ import com.google.common.base.Splitter;
 
 public class RedditDataCollector {
     public static final String TRAINING_FILE = "src/main/resources/train.csv";
-    public static final String TEST_FILE = "src/main/resources/test.csv";
+    public static final int DATA_SIZE = 8000;
     public static final int LIMIT = 100;
     public static final Long YEAR = 31536000L;
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -42,24 +42,15 @@ public class RedditDataCollector {
         this.subreddit = subreddit;
     }
 
-    public void collectData() {
-        final int noOfRounds = 80;
+    public void collectData() throws IOException {
+        final int noOfRounds = DATA_SIZE / LIMIT;
         timestamp = System.currentTimeMillis() / 1000;
-        try {
-            final FileWriter writer = new FileWriter(TRAINING_FILE);
-            writer.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
-            for (int i = 0; i < noOfRounds; i++) {
-                getPosts(writer);
-            }
-            writer.close();
-
-            final FileWriter testWriter = new FileWriter(TEST_FILE);
-            testWriter.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
-            getPosts(testWriter);
-            testWriter.close();
-        } catch (final Exception e) {
-            logger.error("write to file error", e);
+        final FileWriter writer = new FileWriter(TRAINING_FILE);
+        writer.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
+        for (int i = 0; i < noOfRounds; i++) {
+            getPosts(writer);
         }
+        writer.close();
     }
 
     // ==== Private
@@ -93,7 +84,7 @@ public class RedditDataCollector {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final RedditDataCollector collector = new RedditDataCollector();
         collector.collectData();
     }
