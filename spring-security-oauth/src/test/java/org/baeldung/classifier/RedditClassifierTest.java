@@ -22,7 +22,7 @@ public class RedditClassifierTest {
 
     @Test
     public void testClassifier() throws IOException {
-        final double result = classifier.evaluateClassifier();
+        final double result = classifier.getAccuracy();
         System.out.println("Accuracy = " + result);
         assertTrue(result > 0.8);
     }
