@@ -47,12 +47,14 @@ public class RedditDataCollector {
         timestamp = System.currentTimeMillis() / 1000;
         try {
             final FileWriter writer = new FileWriter(TRAINING_FILE);
+            writer.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
             for (int i = 0; i < noOfRounds; i++) {
                 getPosts(writer);
             }
             writer.close();
 
             final FileWriter testWriter = new FileWriter(TEST_FILE);
+            testWriter.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
             getPosts(testWriter);
             testWriter.close();
         } catch (final Exception e) {
@@ -83,9 +85,9 @@ public class RedditDataCollector {
             words = Splitter.onPattern("\\W").omitEmptyStrings().splitToList(child.get("data").get("title").asText());
             timestamp = child.get("data").get("created_utc").asLong();
 
-            line = score + ";";
-            line += timestamp + ";";
-            line += words.size() + ";" + Joiner.on(' ').join(words) + ";";
+            line = score + ",";
+            line += timestamp + ",";
+            line += words.size() + "," + Joiner.on(' ').join(words) + ",";
             line += child.get("data").get("domain").asText() + "\n";
             writer.write(line);
         }
