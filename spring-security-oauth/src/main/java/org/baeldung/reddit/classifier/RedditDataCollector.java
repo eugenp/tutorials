@@ -16,8 +16,8 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 
 public class RedditDataCollector {
-    public static final String TRAINING_FILE = "src/main/resources/train.csv";
-    public static final int DATA_SIZE = 8000;
+    public static final String DATA_FILE = "src/main/resources/data.csv";
+    public static final int DATA_SIZE = 20000;
     public static final int LIMIT = 100;
     public static final Long YEAR = 31536000L;
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -45,10 +45,11 @@ public class RedditDataCollector {
     public void collectData() throws IOException {
         final int noOfRounds = DATA_SIZE / LIMIT;
         timestamp = System.currentTimeMillis() / 1000;
-        final FileWriter writer = new FileWriter(TRAINING_FILE);
+        final FileWriter writer = new FileWriter(DATA_FILE);
         writer.write("Score, Timestamp in utc, Number of wrods in title, Title, Domain \n");
         for (int i = 0; i < noOfRounds; i++) {
             getPosts(writer);
+            System.out.println(i);
         }
         writer.close();
     }
