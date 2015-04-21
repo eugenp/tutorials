@@ -6,25 +6,38 @@ import java.io.IOException;
 
 import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.classifier.RedditDataCollector;
-import org.junit.Before;
 import org.junit.Test;
 
 //@Ignore
 public class RedditClassifierTest {
 
-    private RedditClassifier classifier;
-
-    @Before
-    public void init() throws IOException {
-        classifier = new RedditClassifier();
-        classifier.trainClassifier(RedditDataCollector.TRAINING_FILE);
+    @Test
+    public void whenUsingDefaultClassifier_thenAccurate() throws IOException {
+        final RedditClassifier classifier = new RedditClassifier();
+        classifier.trainClassifier(RedditDataCollector.DATA_FILE);
+        final double result = classifier.getAccuracy();
+        System.out.println("==== Default Classifier Accuracy = " + result);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++\n\n\n");
+        assertTrue(result > 0.7);
     }
 
     @Test
-    public void testClassifier() throws IOException {
+    public void givenSmallerPoolSizeAndFeatures_whenUsingCustomClassifier_thenAccurate() throws IOException {
+        final RedditClassifier classifier = new RedditClassifier(100, 500);
+        classifier.trainClassifier(RedditDataCollector.DATA_FILE);
         final double result = classifier.getAccuracy();
-        System.out.println("Accuracy = " + result);
-        assertTrue(result > 0.8);
+        System.out.println("==== Custom Classifier (small) Accuracy = " + result);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++\n\n\n");
+        assertTrue(result < 0.7);
     }
 
+    @Test
+    public void givenLargerPoolSizeAndFeatures_whenUsingCustomClassifier_thenAccurate() throws IOException {
+        final RedditClassifier classifier = new RedditClassifier(200, 2000);
+        classifier.trainClassifier(RedditDataCollector.DATA_FILE);
+        final double result = classifier.getAccuracy();
+        System.out.println("==== Custom Classifier (large) Accuracy = " + result);
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++\n\n\n");
+        assertTrue(result > 0.7);
+    }
 }

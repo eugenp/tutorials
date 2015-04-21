@@ -86,7 +86,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public RedditClassifier redditClassifier() throws IOException {
-        final Resource file = new ClassPathResource("train.csv");
+        final Resource file = new ClassPathResource("data.csv");
         final RedditClassifier redditClassifier = new RedditClassifier();
         redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
         return redditClassifier;

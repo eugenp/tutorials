@@ -26,12 +26,12 @@ public class RedditClassifier {
     public static int GOOD = 0;
     public static int BAD = 1;
     public static int MIN_SCORE = 10;
-    public static int NUM_OF_FEATURES = 1000;
 
     private final AdaptiveLogisticRegression classifier;
     private final FeatureVectorEncoder titleEncoder;
     private final FeatureVectorEncoder domainEncoder;
     private CrossFoldLearner learner;
+    private final int noOfFeatures;
     private double accuracy;
 
     private final int[] trainCount = { 0, 0 };
@@ -41,7 +41,8 @@ public class RedditClassifier {
     private final int[] correctCount = { 0, 0 };
 
     public RedditClassifier() {
-        classifier = new AdaptiveLogisticRegression(2, NUM_OF_FEATURES, new L2());
+        noOfFeatures = 1000;
+        classifier = new AdaptiveLogisticRegression(2, 1000, new L2());
         classifier.setPoolSize(150);
         titleEncoder = new AdaptiveWordValueEncoder("title");
         titleEncoder.setProbes(2);
@@ -49,11 +50,22 @@ public class RedditClassifier {
         domainEncoder.setProbes(1);
     }
 
+    public RedditClassifier(int poolSize, int noOfFeatures) {
+        this.noOfFeatures = noOfFeatures;
+        classifier = new AdaptiveLogisticRegression(2, noOfFeatures, new L2());
+        classifier.setPoolSize(poolSize);
+        titleEncoder = new AdaptiveWordValueEncoder("title");
+        titleEncoder.setProbes(1);
+        domainEncoder = new StaticWordValueEncoder("domain");
+        domainEncoder.setProbes(1);
+    }
+
     public void trainClassifier(String fileName) throws IOException {
         final List<NamedVector> vectors = extractVectors(readDataFile(fileName));
-        final int noOfTraining = (int) (RedditDataCollector.DATA_SIZE * 0.8);
+        final int size = vectors.size();
+        final int noOfTraining = (int) (size * 0.8);
         final List<NamedVector> trainingData = vectors.subList(0, noOfTraining);
-        final List<NamedVector> testData = vectors.subList(noOfTraining, RedditDataCollector.DATA_SIZE);
+        final List<NamedVector> testData = vectors.subList(noOfTraining, size);
         int category;
         for (final NamedVector vector : trainingData) {
             category = (vector.getName() == "GOOD") ? GOOD : BAD;
@@ -61,11 +73,12 @@ public class RedditClassifier {
             trainCount[category]++;
         }
         System.out.println("Training count ========= Good = " + trainCount[0] + " ___ Bad = " + trainCount[1]);
+        System.out.println("----------------------------------------------------------------- \n");
         evaluateClassifier(testData);
     }
 
     public Vector convertPost(String title, String domain, int hour) {
-        final Vector vector = new RandomAccessSparseVector(NUM_OF_FEATURES);
+        final Vector vector = new RandomAccessSparseVector(noOfFeatures);
         final List<String> words = Splitter.onPattern("\\W").omitEmptyStrings().splitToList(title);
         vector.set(0, hour);
         vector.set(1, words.size());
@@ -105,10 +118,10 @@ public class RedditClassifier {
                 wrong++;
             }
         }
-        System.out.println("Eval count ========= Good = " + evalCount[0] + " ___ Bad = " + evalCount[1]);
-        System.out.println("Test result ======== Correct prediction = " + correct + " -----  Wrong prediction = " + wrong);
-        System.out.println("Test result ======== Correct Good = " + correctCount[0] + " -----  Correct Bad = " + correctCount[1]);
-        System.out.println("Test result ======== Good accuracy = " + (correctCount[0] / (evalCount[0] + 0.0)) + " ----- Bad accuracy = " + (correctCount[1] / (evalCount[1] + 0.0)));
+        System.out.println("Eval count   =================== Good = " + evalCount[0] + " ----- Bad = " + evalCount[1] + "\n");
+        System.out.println("Overall Evaluation ============= Correct prediction = " + correct + " -----  Wrong prediction = " + wrong);
+        System.out.println("Correctly Evaluated  =========== Correct Good = " + correctCount[0] + " -----  Correct Bad = " + correctCount[1]);
+        System.out.println("Correctly Evaluated (%) ======== Good accuracy = " + (correctCount[0] / (evalCount[0] + 0.0)) + " ----- Bad accuracy = " + (correctCount[1] / (evalCount[1] + 0.0)));
         this.accuracy = correct / (wrong + correct + 0.0);
     }
 
@@ -133,7 +146,7 @@ public class RedditClassifier {
     private NamedVector extractVector(String line) {
         final String[] items = line.split(",");
         final String category = extractCategory(Integer.parseInt(items[0]));
-        final NamedVector vector = new NamedVector(new RandomAccessSparseVector(NUM_OF_FEATURES), category);
+        final NamedVector vector = new NamedVector(new RandomAccessSparseVector(noOfFeatures), category);
         final Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
         cal.setTimeInMillis(Long.parseLong(items[1]) * 1000);
 
