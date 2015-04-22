@@ -23,7 +23,7 @@ public class RedditClassifierTest {
 
     @Test
     public void givenSmallerPoolSizeAndFeatures_whenUsingCustomClassifier_thenAccurate() throws IOException {
-        final RedditClassifier classifier = new RedditClassifier(100, 500);
+        final RedditClassifier classifier = new RedditClassifier(100, 500, 7);
         classifier.trainClassifier(RedditDataCollector.DATA_FILE);
         final double result = classifier.getAccuracy();
         System.out.println("==== Custom Classifier (small) Accuracy = " + result);
@@ -33,7 +33,7 @@ public class RedditClassifierTest {
 
     @Test
     public void givenLargerPoolSizeAndFeatures_whenUsingCustomClassifier_thenAccurate() throws IOException {
-        final RedditClassifier classifier = new RedditClassifier(250, 2500);
+        final RedditClassifier classifier = new RedditClassifier(250, 2500, 7);
         classifier.trainClassifier(RedditDataCollector.DATA_FILE);
         final double result = classifier.getAccuracy();
         System.out.println("==== Custom Classifier (large) Accuracy = " + result);
