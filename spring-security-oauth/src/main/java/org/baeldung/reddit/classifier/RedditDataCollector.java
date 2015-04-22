@@ -27,11 +27,7 @@ public class RedditDataCollector {
     private final String subreddit;
 
     public RedditDataCollector() {
-        restTemplate = new RestTemplate();
-        final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
-        list.add(new UserAgentInterceptor());
-        restTemplate.setInterceptors(list);
-        subreddit = "java";
+        this("java");
     }
 
     public RedditDataCollector(String subreddit) {
