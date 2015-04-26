@@ -31,8 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/home.html","/post","/postSchedule","/posts").hasRole("USER")
                 .and()
-                .httpBasic().authenticationEntryPoint(oauth2AuthenticationEntryPoint());
-
+                .httpBasic().authenticationEntryPoint(oauth2AuthenticationEntryPoint())
+                .and()
+                .logout()
+                .deleteCookies("JSESSIONID","CustomRememberMe")
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/");
         // @formatter:on
     }
 

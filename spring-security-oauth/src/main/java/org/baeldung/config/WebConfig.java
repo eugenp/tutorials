@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.baeldung.persistence.service.RedditTokenService;
 import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.util.UserAgentInterceptor;
 import org.baeldung.web.schedule.ScheduledTasks;
@@ -16,8 +17,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -86,9 +85,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public RedditClassifier redditClassifier() throws IOException {
-        final Resource file = new ClassPathResource("data.csv");
+        // final Resource file = new ClassPathResource("data.csv");
         final RedditClassifier redditClassifier = new RedditClassifier();
-        redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
+        // redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
         return redditClassifier;
     }
 
@@ -131,13 +130,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         }
 
         @Bean
-        public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext) {
+        public OAuth2RestTemplate redditRestTemplate(OAuth2ClientContext clientContext, RedditTokenService redditTokenService) {
             final OAuth2RestTemplate template = new OAuth2RestTemplate(reddit(), clientContext);
             final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
             list.add(new UserAgentInterceptor());
             template.setInterceptors(list);
-            final AccessTokenProvider accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
+            final AccessTokenProviderChain accessTokenProvider = new AccessTokenProviderChain(Arrays.<AccessTokenProvider> asList(new MyAuthorizationCodeAccessTokenProvider(), new ImplicitAccessTokenProvider(), new ResourceOwnerPasswordAccessTokenProvider(),
                     new ClientCredentialsAccessTokenProvider()));
+            accessTokenProvider.setClientTokenServices(redditTokenService);
             template.setAccessTokenProvider(accessTokenProvider);
             return template;
         }
