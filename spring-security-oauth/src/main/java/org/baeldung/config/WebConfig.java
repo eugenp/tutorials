@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -85,9 +87,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public RedditClassifier redditClassifier() throws IOException {
-        // final Resource file = new ClassPathResource("data.csv");
+        final Resource file = new ClassPathResource("data.csv");
         final RedditClassifier redditClassifier = new RedditClassifier();
-        // redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
+        redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
         return redditClassifier;
     }
 
