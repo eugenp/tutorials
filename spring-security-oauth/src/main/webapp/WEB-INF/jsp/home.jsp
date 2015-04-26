@@ -16,6 +16,7 @@
     
     <p class="navbar-text navbar-right">Logged in as 
         <b><sec:authentication property="principal.username" /></b>&nbsp;&nbsp;&nbsp;
+        <a href="logout">Logout</a>&nbsp;&nbsp;&nbsp;
     </p>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

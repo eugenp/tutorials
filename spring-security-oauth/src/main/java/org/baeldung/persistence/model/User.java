@@ -26,6 +26,8 @@ public class User {
 
     private boolean needCaptcha;
 
+    private String rememberMeToken;
+
     public User() {
         super();
     }
@@ -79,6 +81,14 @@ public class User {
     }
 
     //
+
+    public String getRememberMeToken() {
+        return rememberMeToken;
+    }
+
+    public void setRememberMeToken(String rememberMeToken) {
+        this.rememberMeToken = rememberMeToken;
+    }
 
     @Override
     public int hashCode() {

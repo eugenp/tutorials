@@ -8,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.RandomStringUtils;
 import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Post;
@@ -27,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,6 +49,7 @@ public class RedditController {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private final SimpleDateFormat dfHour = new SimpleDateFormat("HH");
+    public static final String REMEMBER_ME_COOKIE = "CustomRememberMe";
 
     @Autowired
     private OAuth2RestTemplate redditRestTemplate;
@@ -57,9 +64,11 @@ public class RedditController {
     private RedditClassifier redditClassifier;
 
     @RequestMapping("/login")
-    public final String redditLogin() {
-        final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
-        loadAuthentication(node.get("name").asText(), redditRestTemplate.getAccessToken());
+    public final String redditLogin(@CookieValue(value = REMEMBER_ME_COOKIE, required = false) String rememberMe, HttpServletRequest request, HttpServletResponse response) {
+        if (!canAutoLogin(rememberMe)) {
+            final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/v1/me", JsonNode.class);
+            loadAuthentication(node.get("name").asText(), redditRestTemplate.getAccessToken(), response);
+        }
         return "redirect:home.html";
     }
 
@@ -221,7 +230,7 @@ public class RedditController {
         }
     }
 
-    private final void loadAuthentication(final String name, final OAuth2AccessToken token) {
+    private void loadAuthentication(final String name, final OAuth2AccessToken token, HttpServletResponse response) {
         User user = userReopsitory.findByUsername(name);
         if (user == null) {
             user = new User();
@@ -239,8 +248,35 @@ public class RedditController {
         user.setTokenExpiration(token.getExpiration());
         userReopsitory.save(user);
 
+        generateRememberMeToken(user, response);
+
         final UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, token.getValue(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
         SecurityContextHolder.getContext().setAuthentication(auth);
+    }
+
+    private void generateRememberMeToken(User user, HttpServletResponse response) {
+        String rememberMe = RandomStringUtils.randomAlphanumeric(30);
+        while (userReopsitory.findByRememberMeToken(rememberMe) != null) {
+            rememberMe = RandomStringUtils.randomAlphanumeric(30);
+        }
+        user.setRememberMeToken(rememberMe);
+        userReopsitory.save(user);
+        final Cookie c = new Cookie(REMEMBER_ME_COOKIE, rememberMe);
+        c.setMaxAge(1209600);
+        response.addCookie(c);
+    }
+
+    private boolean canAutoLogin(String rememberMeToken) {
+        if (rememberMeToken != null) {
+            final User user = userReopsitory.findByRememberMeToken(rememberMeToken);
+            if (user != null) {
+                logger.info("Auto Login successfully");
+                final UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, user.getAccessToken(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+                SecurityContextHolder.getContext().setAuthentication(auth);
+                return true;
+            }
+        }
+        return false;
     }
 
 }
