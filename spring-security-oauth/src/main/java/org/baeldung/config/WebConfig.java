@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.baeldung.persistence.service.RedditTokenService;
 import org.baeldung.reddit.classifier.RedditClassifier;
+import org.baeldung.reddit.util.MyFeatures;
 import org.baeldung.reddit.util.UserAgentInterceptor;
 import org.baeldung.web.schedule.ScheduledTasks;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,9 +88,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public RedditClassifier redditClassifier() throws IOException {
-        final Resource file = new ClassPathResource("data.csv");
         final RedditClassifier redditClassifier = new RedditClassifier();
-        redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
+        if (MyFeatures.PREDICTION_FEATURE.isActive()) {
+            final Resource file = new ClassPathResource("data.csv");
+            redditClassifier.trainClassifier(file.getFile().getAbsolutePath());
+        }
         return redditClassifier;
     }
 

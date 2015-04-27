@@ -10,26 +10,8 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="home.html">Schedule to Reddit</a>
-    </div>
-    
-    <p class="navbar-text navbar-right">Logged in as 
-        <b><sec:authentication property="principal.username" /></b>&nbsp;&nbsp;&nbsp;
-    </p>
-    
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="posts">My Scheduled Posts</a></li>
-        <li><a href="post">Post to Reddit</a></li>
-        <li><a href="postSchedule">Schedule Post to Reddit</a></li>
-      </ul>
-      
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<jsp:include page="header.jsp" />
+
 <div class="container">
 <h1>My Scheduled Posts</h1>
 <table class="table table-bordered">
