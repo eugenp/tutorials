@@ -3,6 +3,7 @@ package org.baeldung.web.schedule;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.baeldung.persistence.dao.PostRepository;
 import org.baeldung.persistence.model.Post;
@@ -38,6 +39,12 @@ public class ScheduledTasks {
         for (final Post post : posts) {
             submitPost(post);
         }
+
+        final List<Post> submitted = postReopsitory.findByRedditIDNotNullAndNoOfAttemptsGreaterThan(0);
+        logger.info(submitted.size() + " Posts to check their score");
+        for (final Post post : submitted) {
+            checkIfNeedResubmit(post);
+        }
     }
 
     private void submitPost(final Post post) {
@@ -72,16 +79,57 @@ public class ScheduledTasks {
 
         logger.info("Submit link with these parameters: " + param.entrySet());
         final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/submit", param, JsonNode.class);
+        parseResponse(node, post);
+    }
+
+    private void parseResponse(JsonNode node, Post post) {
         final JsonNode errorNode = node.get("json").get("errors").get(0);
         if (errorNode == null) {
             post.setSent(true);
             post.setSubmissionResponse("Successfully sent");
+            post.setRedditID(node.get("json").get("data").get("id").asText());
+            post.setNoOfAttempts(post.getNoOfAttempts() - 1);
             postReopsitory.save(post);
             logger.info("Successfully sent " + post.toString());
         } else {
             post.setSubmissionResponse(errorNode.toString());
             postReopsitory.save(post);
             logger.info("Error occurred: " + errorNode.toString() + "while submitting post " + post.toString());
+        }
+    }
+
+    private int getPostScore(String redditId) {
+        final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/api/info?id=t3_" + redditId, JsonNode.class);
+        logger.info(node.toString());
+        final int score = node.get("data").get("children").get(0).get("data").get("score").asInt();
+        logger.info("post score = " + score);
+        return score;
+    }
+
+    private void deletePost(String redditId) {
+        final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+        param.add("id", "t3_" + redditId);
+        final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com/api/del.json", param, JsonNode.class);
+        logger.info(node.toString());
+    }
+
+    private void checkIfNeedResubmit(Post post) {
+        final long currentTime = new Date().getTime();
+        final long interval = currentTime - post.getSubmissionDate().getTime();
+        final long intervalInMinutes = TimeUnit.MINUTES.convert(interval, TimeUnit.MILLISECONDS);
+        if (intervalInMinutes > post.getTimeInterval()) {
+            final int score = getPostScore(post.getRedditID());
+            if (score < post.getMinScoreRequired()) {
+                deletePost(post.getRedditID());
+                post.setRedditID(null);
+                post.setSubmissionDate(new Date(currentTime + interval));
+                post.setSent(false);
+                post.setSubmissionResponse("Not sent yet");
+                postReopsitory.save(post);
+            } else {
+                post.setNoOfAttempts(0);
+                postReopsitory.save(post);
+            }
         }
     }
 

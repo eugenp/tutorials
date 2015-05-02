@@ -13,7 +13,7 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionCreated(HttpSessionEvent event) {
         logger.info("==== Session is created ====");
-        event.getSession().setMaxInactiveInterval(1 * 60);
+        event.getSession().setMaxInactiveInterval(30 * 60);
         event.getSession().setAttribute("PREDICTION_FEATURE", MyFeatures.PREDICTION_FEATURE);
     }
 

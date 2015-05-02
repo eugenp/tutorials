@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="<c:url value="/resources/datetime-picker.css" />">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="<c:url value="/resources/datetime-picker.js" />"></script>
 <script src="<c:url value="/resources/validator.js" />"></script>
 <style type="text/css">
@@ -44,6 +45,31 @@ border-color: #ddd;
     <span class="col-sm-9"><input name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>
+<div class="form-group">
+    <label class="col-sm-3">Resubmit Settings</label>
+    <span class="col-sm-3">Number of Attempts &nbsp;&nbsp;
+    <select name="attempt">
+        <option value="0" selected>None</option>
+        <option value="2">2</option>
+	    <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+	  </select>
+    </span>
+    <span class="col-sm-3">Time interval &nbsp;&nbsp;
+    <select name="interval">
+        <option value="0" selected>None</option>
+        <option value="45">45 minutes</option>
+        <option value="60">1 hour</option>
+        <option value="120">2 hours</option>
+      </select>
+    </span>
+    <span class="col-sm-1">Min score</span>
+    <span class="col-sm-2">
+    <input type="number" class="form-control" value="0" name="score" required/>
+    </span>
+</div>
+<br><br>
 <div >
 <label class="col-sm-3">Send replies to my inbox</label>  <span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
 </div>
@@ -57,7 +83,8 @@ border-color: #ddd;
         });
     </script>
 
-    <br><br>
+<br><br>
+
     
     <button type="submit" class="btn btn-primary">Schedule</button>
    </div>

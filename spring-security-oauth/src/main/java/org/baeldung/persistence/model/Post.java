@@ -35,6 +35,14 @@ public class Post {
 
     private String submissionResponse;
 
+    private String redditID;
+
+    private int noOfAttempts;
+
+    private int timeInterval;
+
+    private int minScoreRequired;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -113,6 +121,38 @@ public class Post {
 
     public void setSubmissionResponse(String submissionResponse) {
         this.submissionResponse = submissionResponse;
+    }
+
+    public String getRedditID() {
+        return redditID;
+    }
+
+    public void setRedditID(String redditID) {
+        this.redditID = redditID;
+    }
+
+    public int getNoOfAttempts() {
+        return noOfAttempts;
+    }
+
+    public void setNoOfAttempts(int noOfAttempts) {
+        this.noOfAttempts = noOfAttempts;
+    }
+
+    public int getTimeInterval() {
+        return timeInterval;
+    }
+
+    public void setTimeInterval(int timeInterval) {
+        this.timeInterval = timeInterval;
+    }
+
+    public int getMinScoreRequired() {
+        return minScoreRequired;
+    }
+
+    public void setMinScoreRequired(int minScoreRequired) {
+        this.minScoreRequired = minScoreRequired;
     }
 
     @Override

@@ -127,7 +127,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
             details.setAccessTokenUri(accessTokenUri);
             details.setUserAuthorizationUri(userAuthorizationUri);
             details.setTokenName("oauth_token");
-            details.setScope(Arrays.asList("identity", "read", "submit"));
+            details.setScope(Arrays.asList("identity", "read", "submit", "edit"));
             details.setGrantType("authorization_code");
             details.setPreEstablishedRedirectUri("http://localhost:8080/spring-security-oauth/login");
             details.setUseCurrentUri(false);
