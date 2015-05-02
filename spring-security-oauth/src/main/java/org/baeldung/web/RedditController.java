@@ -114,6 +114,10 @@ public class RedditController {
         post.setTitle(formParams.get("title"));
         post.setSubreddit(formParams.get("sr"));
         post.setUrl(formParams.get("url"));
+        post.setNoOfAttempts(Integer.parseInt(formParams.get("attempt")));
+        post.setTimeInterval(Integer.parseInt(formParams.get("interval")));
+        post.setMinScoreRequired(Integer.parseInt(formParams.get("score")));
+
         if (formParams.containsKey("sendreplies")) {
             post.setSendReplies(true);
         }

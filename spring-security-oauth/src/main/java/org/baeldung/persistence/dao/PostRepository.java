@@ -12,4 +12,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findBySubmissionDateBeforeAndIsSent(Date date, boolean isSent);
 
     List<Post> findByUser(User user);
+
+    List<Post> findByRedditIDNotNullAndNoOfAttemptsGreaterThan(int attempts);
 }
