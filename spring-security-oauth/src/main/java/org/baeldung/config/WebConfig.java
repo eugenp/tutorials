@@ -9,7 +9,6 @@ import org.baeldung.persistence.service.RedditTokenService;
 import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.util.MyFeatures;
 import org.baeldung.reddit.util.UserAgentInterceptor;
-import org.baeldung.web.schedule.ScheduledTasks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -76,14 +75,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ScheduledTasks scheduledTasks(OAuth2ProtectedResourceDetails reddit) {
-        final ScheduledTasks s = new ScheduledTasks();
+    public OAuth2RestTemplate schedulerRedditTemplate(OAuth2ProtectedResourceDetails reddit) {
         final List<ClientHttpRequestInterceptor> list = new ArrayList<ClientHttpRequestInterceptor>();
         list.add(new UserAgentInterceptor());
         final OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(reddit);
         restTemplate.setInterceptors(list);
-        s.setRedditRestTemplate(restTemplate);
-        return s;
+        return restTemplate;
     }
 
     @Bean

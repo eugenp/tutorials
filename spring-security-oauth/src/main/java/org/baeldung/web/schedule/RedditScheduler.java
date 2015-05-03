@@ -12,6 +12,7 @@ import org.baeldung.reddit.util.RedditApiConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,31 +20,39 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.DefaultOAuth2RefreshToken;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class ScheduledTasks {
+@Component
+public class RedditScheduler {
 
+    @Autowired
+    @Qualifier("schedulerRedditTemplate")
     private OAuth2RestTemplate redditRestTemplate;
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private PostRepository postReopsitory;
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Scheduled(fixedRate = 1 * 60 * 1000)
-    public void reportCurrentTime() {
+    public void schedulePosts() {
         final List<Post> posts = postReopsitory.findBySubmissionDateBeforeAndIsSent(new Date(), false);
         logger.info(posts.size() + " Posts in the queue.");
         for (final Post post : posts) {
             submitPost(post);
         }
+    }
 
+    @Scheduled(fixedRate = 3 * 60 * 1000)
+    public void checkAndReSubmitPosts() {
         final List<Post> submitted = postReopsitory.findByRedditIDNotNullAndNoOfAttemptsGreaterThan(0);
         logger.info(submitted.size() + " Posts to check their score");
         for (final Post post : submitted) {
-            checkIfNeedResubmit(post);
+            checkAndReSubmit(post);
         }
     }
 
@@ -113,7 +122,15 @@ public class ScheduledTasks {
         logger.info(node.toString());
     }
 
-    private void checkIfNeedResubmit(Post post) {
+    private void checkAndReSubmit(Post post) {
+        try {
+            checkAndReSubmitInternal(post);
+        } catch (final Exception e) {
+            logger.error("Error occurred while check post " + post.toString(), e);
+        }
+    }
+
+    private void checkAndReSubmitInternal(Post post) {
         final long currentTime = new Date().getTime();
         final long interval = currentTime - post.getSubmissionDate().getTime();
         final long intervalInMinutes = TimeUnit.MINUTES.convert(interval, TimeUnit.MILLISECONDS);
