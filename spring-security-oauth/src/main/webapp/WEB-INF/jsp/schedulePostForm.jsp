@@ -45,18 +45,21 @@ border-color: #ddd;
     <span class="col-sm-9"><input name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" required data-minlength="3"/></span>
 </div>
 <br><br>
+<div>
+<label class="col-sm-3">Send replies to my inbox</label>  <span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
+</div>
+<br>
+<hr/>
+<br>
 <div class="form-group">
-    <label class="col-sm-3">Resubmit Settings</label>
-    <span class="col-sm-3">Number of Attempts &nbsp;&nbsp;
-    <select name="attempt">
-        <option value="0" selected>None</option>
-        <option value="2">2</option>
-	    <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-	  </select>
+    <label class="col-sm-3">Resubmit If:</label>
+    
+    <span class="col-sm-2">Votes didn't exceed </span>
+    <span class="col-sm-1">
+    <input type="number" class="form-control input-sm" value="0" name="score" required/>
     </span>
-    <span class="col-sm-3">Time interval &nbsp;&nbsp;
+    
+    <span class="col-sm-3">within &nbsp;&nbsp;
     <select name="interval">
         <option value="0" selected>None</option>
         <option value="45">45 minutes</option>
@@ -64,16 +67,22 @@ border-color: #ddd;
         <option value="120">2 hours</option>
       </select>
     </span>
-    <span class="col-sm-1">Min score</span>
-    <span class="col-sm-2">
-    <input type="number" class="form-control" value="0" name="score" required/>
+    
+    <span class="col-sm-3">try resubmitting &nbsp;&nbsp;
+    <select name="attempt">
+        <option value="0" selected>No</option>
+        <option value="2">2</option>
+	    <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+	  </select>
+	  &nbsp;&nbsp; times.
     </span>
+    
+    
 </div>
 <br><br>
-<div >
-<label class="col-sm-3">Send replies to my inbox</label>  <span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
-</div>
-<br><br>
+
 
 <label class="col-sm-3">Submission Date</label>
 <span class="col-sm-9"><input type="text" name="date" class="form-control" readonly></span>
