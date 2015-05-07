@@ -4,19 +4,17 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Foo implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    @Column(nullable = false)
-    private String name;
+    private static final long serialVersionUID = 1L;
 
     public Foo() {
         super();
@@ -28,13 +26,30 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
-    // API
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private long id;
+    @Column(name = "NAME")
+    private String name;
+
+    @ManyToOne(targetEntity = Bar.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "BAR_ID")
+    private Bar bar;
+
+    public Bar getBar() {
+        return bar;
+    }
+
+    public void setBar(final Bar bar) {
+        this.bar = bar;
+    }
 
     public long getId() {
         return id;
     }
 
-    public void setId(final long id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -45,8 +60,6 @@ public class Foo implements Serializable {
     public void setName(final String name) {
         this.name = name;
     }
-
-    //
 
     @Override
     public int hashCode() {

@@ -1,0 +1,10 @@
+################### DataSource Configuration ##########################
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/oauth_reddit?createDatabaseIfNotExist=true
+jdbc.user=tutorialuser
+jdbc.pass=tutorialmy5ql
+init-db=false
+################### Hibernate Configuration ##########################
+hibernate.dialect=org.hibernate.dialect.MySQLDialect
+hibernate.show_sql=false
+hibernate.hbm2ddl.auto=create-drop

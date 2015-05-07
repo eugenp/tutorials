@@ -1,5 +1,6 @@
 package org.baeldung.jackson.sandbox;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -17,7 +18,12 @@ public class JacksonPrettyPrintUnitTest {
 
     @Test
     public final void whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        printJsonFromFile("/opt/git/github/eugenp/tutorials/jackson/src/main/resources/example1.json");
+        // final String fileName = "src/main/resources/example1.json";
+        final String fileName = "src/main/resources/example1.json";
+
+        new File(fileName);
+
+        printJsonFromFile(fileName);
     }
 
     //

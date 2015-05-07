@@ -37,4 +37,5 @@ public class FooController {
         System.out.println(foo);
         return foo;
     }
+
 }

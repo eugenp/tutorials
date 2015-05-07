@@ -1,0 +1,167 @@
+<project default="help" name="mainbuild">
+
+  <dirname property="ant.file.dir" file="${ant.file.mainbuild}"/>
+  <loadproperties srcFile="${ant.file.dir}/build.properties"/>
+  <property name="webhelp.include.search.tab" value="true"/>
+
+  <property name="extensions.dir" value="${ant.file.dir}/../extensions"/>
+
+    <path id="classpath">
+        <pathelement location="${extensions.dir}/webhelpindexer.jar"/>
+	<pathelement location="${extensions.dir}/lucene-analyzers-3.0.0.jar"/>
+	<pathelement location="${extensions.dir}/lucene-core-3.0.0.jar"/>
+	<pathelement location="${extensions.dir}/tagsoup-1.2.1.jar"/>
+    </path>
+
+  <condition property="perform-validation-dtd">
+	<equals arg1="${validate-against-dtd}" arg2="true"/>
+  </condition>
+  <condition property="do-search-indexing">
+	<equals arg1="${webhelp.include.search.tab}" arg2="true"/>
+  </condition>
+
+  <target name="validate" if="perform-validation-dtd">
+    <xmlvalidate file="${input-xml}" classname="org.apache.xerces.parsers.SAXParser"/>
+  </target>
+
+  <target name="chunk" depends="clean">
+	
+	<mkdir dir="${output-dir}"/>
+	<tempfile destdir="${output-dir}" deleteonexit="true" property="xincluded-profiled.xml"/>
+	<tempfile destdir="${output-dir}" deleteonexit="true" property="dummy.html"/>
+	<xslt
+	  in="${input-xml}"
+	    out="${xincluded-profiled.xml}"
+	    style="${ant.file.dir}/../profiling/profile.xsl"
+            classpath="${xercesImpl.jar}">
+	  <sysproperty key="org.apache.xerces.xni.parser.XMLParserConfiguration"
+		       value="org.apache.xerces.parsers.XIncludeParserConfiguration"/>
+	  <param name="profile.arch" expression="${profile.arch}" if="profile.arch"/>
+	  <param name="profile.audience" expression="${profile.audience}" if="profile.audience"/>
+	  <param name="profile.condition" expression="${profile.condition}" if="profile.condition"/>
+	  <param name="profile.conformance" expression="${profile.conformance}" if="profile.conformance"/>
+	  <param name="profile.lang" expression="${profile.lang}" if="profile.lang"/>
+	  <param name="profile.os" expression="${profile.os}" if="profile.os"/>
+	  <param name="profile.revision" expression="${profile.revision}" if="profile.revision"/>
+	  <param name="profile.revisionflag" expression="${profile.revisionflag}" if="profile.revisionflag"/>
+	  <param name="profile.role" expression="${profile.role}" if="profile.role"/>
+	  <param name="profile.security" expression="${profile.security}" if="profile.security"/>
+	  <param name="profile.status" expression="${profile.status}" if="profile.status"/>
+	  <param name="profile.userlevel" expression="${profile.userlevel}" if="profile.userlevel"/>
+	  <param name="profile.vendor" expression="${profile.vendor}" if="profile.vendor"/>
+	  <param name="profile.wordsize" expression="${profile.wordsize}" if="profile.wordsize"/>
+	  <param name="profile.attribute" expression="${profile.attribute}" if="profile.attribute"/>
+	  <param name="profile.value" expression="${profile.value}" if="profile.value"/>
+	</xslt>
+
+	<xslt
+	  in="${xincluded-profiled.xml}"
+	  out="${dummy.html}"
+	  style="${stylesheet-path}"
+	  scanincludeddirectories="false"
+	  classpath="${xslt-processor-classpath}">
+	  <param name="webhelp.include.search.tab" expression="${webhelp.include.search.tab}"
+		if="webhelp.include.search.tab"/>
+	  <param name="output_file_name" expression="${output_file_name}"/>
+	  <param name="webhelp.base.dir" expression="${output-dir}" if="output-dir"/>
+	  <param name="webhelp.indexer.language" expression="${webhelp.indexer.language}" if="webhelp.indexer.language"/>
+	  <param name="branding" expression="${branding}" if="branding"/>
+	  <param name="brandname" expression="${brandname}" if="brandname"/>
+	  <param name="admon.graphics" expression="${admon.graphics}" if="admon.graphics"/>
+	  <param name="suppress.footer.navigation" expression="${suppress.footer.navigation}" if="suppress.footer.navigation"/>
+	</xslt>
+	
+	<!-- Copy common content such as js files of tree, css etc. to template folder. They will be copied to doc folder. They are NOT page specific! -->
+	<copy todir="${output-dir}">
+	  <fileset dir="${ant.file.dir}/template">
+		<include name="**/*"/>
+		<exclude name="**/search/**"/>
+	  </fileset>
+	</copy>
+
+	<!-- Very simple-minded copy to handle the source document's images -->
+	<!-- TODO: Look at html help code that produces a manifest file...list of images -->
+	<!--       Customize webhelp.xsl to produce ant file to copy images actually used? -->
+	<dirname property="input-images-basedir" file="${input-xml}"/>
+	<copy todir="${output-dir}" failonerror="false">
+	  <fileset dir="${input-images-basedir}" includes="${input-images-dirs}" />
+	</copy>
+  </target>
+
+  <target name="index" if="do-search-indexing">
+
+	<copy todir="${output-dir}/search">
+	  <fileset dir="${ant.file.dir}/template/search">
+		<include name="**/*"/>
+		<exclude name="**/*.props"/>
+		<exclude name="**/stemmers/*"/>
+	  </fileset>
+	</copy>
+
+	<!-- We separate this out so we only copy the stopwords list and stemmer for the indexer language -->
+	<copy todir="${output-dir}/search">
+	  <fileset dir="${ant.file.dir}/template/search">
+		<include name="**/default.props"/>
+		<include name="**/punctuation.props"/>
+		<include name="**/${webhelp.indexer.language}*.props"/>
+		<include name="**/stemmers/${webhelp.indexer.language}_stemmer.js"/>
+	  </fileset>
+	</copy>
+
+	<echo>Indexing html files in ${output-dir}</echo>
+
+       <java classname="com.nexwave.nquindexer.IndexerMain" fork="true"> 
+         <sysproperty key="htmlDir" value="${output-dir}"/>
+         <sysproperty key="indexerLanguage" value="${webhelp.indexer.language}"/>
+         <sysproperty key="htmlExtension" value="${html.extension}"/>
+         <sysproperty key="doStem" value="${enable.stemming}"/>
+         <sysproperty key="tocFile" value="${toc.file}"/>
+         <sysproperty key="indexerExcludedFiles" value="${indexer-excluded-files}"/>
+       	
+	 <!--TagSoup SAX Parser for parsing even the bad html contents. see 
+	      http://sourceforge.net/tracker/?func=detail&aid=3401185&group_id=21935&atid=373750-->
+         <sysproperty key="org.xml.sax.driver" value="org.ccil.cowan.tagsoup.Parser"/>
+         <sysproperty key="javax.xml.parsers.SAXParserFactory" value="org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl"/>
+
+         <!-- Uncomment the following if Xerces is your preference as the SAX XML Parser. Note that the indexing will fail with Xerces
+	      if the html files are not XML-conformance -->
+  	 <!--sysproperty key="org.xml.sax.driver" value="org.apache.xerces.parsers.SAXParser"/>	      
+         <sysproperty key="javax.xml.parsers.SAXParserFactory" value="org.apache.xerces.jaxp.SAXParserFactoryImpl"/-->
+
+         <!-- Debug the indexer on port 5005 via remote-debug -->
+         <!--jvmarg line="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"/-->
+         <classpath>
+	    <path refid="classpath"/>
+	    <pathelement location="${xercesImpl.jar}"/>  	
+	    <pathelement location="${xml-apis.jar}"/>  	
+	    <!-- <pathelement location="/usr/share/java/xercesImpl.jar"/>  	 -->
+	    <!-- <pathelement location="/usr/share/java/xml-apis.jar"/>  	  -->
+	    <!-- Gentoo Linux friendly default classpath-->
+	    <pathelement location="/usr/share/xerces-2/lib/xercesImpl.jar"/>  	
+	    <pathelement location="/usr/share/xml-commons/lib/xml-apis.jar"/>  	 
+	  </classpath>
+       </java>	
+ 
+	<delete>
+	  <fileset dir="${output-dir}/search" includes="*.props"/>
+	</delete>
+
+  </target>
+
+  <target name="webhelp" depends="validate,chunk,index"/>
+
+
+  <target name="clean">
+	<delete dir="${output-dir}"/>
+  </target>
+
+  <target name="help">
+	<echo>
+Usage:
+webhelp:       Generates the document in webhelp format and indexes the content.
+clean:         Deletes webhelp output directory.
+index:         Indexes the content.
+	</echo>
+  </target>
+
+</project>

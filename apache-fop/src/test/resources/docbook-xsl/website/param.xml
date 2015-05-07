@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="ASCII"?>
+<book version="5.0">
+<info>
+<title>Website Parameter Reference</title>
+<releaseinfo role="meta">
+$Id: param.xweb 9130 2011-10-11 08:05:37Z dpawson $
+</releaseinfo>
+<author>
+  <personname>
+    <surname>Walsh</surname>
+    <firstname>Norman</firstname>
+  </personname>
+</author>
+<copyright>
+  <year>2002-2011</year>
+  <holder>Norman Walsh</holder>
+</copyright>
+<abstract>
+  <para>This is reference documentation for all user-configurable
+    parameters in the DocBook XSL Website stylesheet (for
+    generating websites from DocBook XML sources). Note that the
+    Website stylesheet is a customization layer of the DocBook XSL
+    HTML stylesheet.  Therefore, in addition to the
+    Website-specific parameters listed in this section, you can
+    also use a number of <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../html/">HTML
+     stylesheet parameters</link> to control Website output.</para>
+</abstract>
+</info>
+<reference xml:id="general">
+<title>General Parameters</title>
+<refentry version="5.0" xml:id="autolayout-file">
+<refmeta>
+<refentrytitle>autolayout-file</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>autolayout-file</refname>
+<refpurpose>Identifies the autolayout.xml file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="autolayout-file.frag">
+&lt;xsl:param name="autolayout-file"&gt;autolayout.xml&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>When the source pages are spread over several directories, this
+parameter can be set (for example, from the command line of a batch-mode
+XSLT processor) to indicate the location of the autolayout.xml file.</para>
+<para>FIXME: for browser-based use, there needs to be a PI for this...
+</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="body.attributes">
+<refmeta>
+<refentrytitle>body.attributes</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>body.attributes</refname>
+<refpurpose>DEPRECATED</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="body.attributes.frag">
+&lt;xsl:attribute-set name="body.attributes"&gt;
+  &lt;xsl:attribute name="bgcolor"&gt;white&lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name="text"&gt;black&lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name="link"&gt;#0000FF&lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name="vlink"&gt;#840084&lt;/xsl:attribute&gt;
+  &lt;xsl:attribute name="alink"&gt;#0000FF&lt;/xsl:attribute&gt;
+&lt;/xsl:attribute-set&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>DEPRECATED</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="currentpage.marker">
+<refmeta>
+<refentrytitle>currentpage.marker</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>currentpage.marker</refname>
+<refpurpose>The text symbol used to mark the current page</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="currentpage.marker.frag">
+&lt;xsl:param name="currentpage.marker"&gt;@&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>Character to use as identifying the current page in </para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="dry-run">
+<refmeta>
+<refentrytitle>dry-run</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>dry-run</refname>
+<refpurpose>Indicates that no files should be produced</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+  <programlisting xml:id="dry-run.frag">
+    &lt;xsl:param name="dry-run" select="0"&gt;&lt;/xsl:param&gt;
+  </programlisting>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>When using the XSLT processor to manage dependencies and construct
+the website, this parameter can be used to suppress the generation of
+new and updated files. Effectively, this allows you to see what the
+stylesheet would do, without actually making any changes.</para>
+<para>Only applies when XSLT-based chunking is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="feedback.href">
+<refmeta>
+<refentrytitle>feedback.href</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>feedback.href</refname>
+<refpurpose>HREF (URI) for feedback link</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="feedback.href.frag">
+&lt;xsl:param name="feedback.href"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The <varname>feedback.href</varname> value is used as the value
+for the <tag class="attribute">href</tag> attribute on the feedback
+link. If <varname>feedback.href</varname>
+is empty, no feedback link is generated.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="feedback.link.text">
+<refmeta>
+<refentrytitle>feedback.link.text</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>feedback.link.text</refname>
+<refpurpose>The text of the feedback link</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="feedback.link.text.frag">
+&lt;xsl:param name="feedback.link.text"&gt;Feedback&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The contents of this variable is used as the text of the feedback
+link if <varname>feedback.href</varname> is not empty. If
+<varname>feedback.href</varname> is empty, no feedback link is
+generated.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="feedback.with.ids">
+<refmeta>
+<refentrytitle>feedback.with.ids</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>feedback.with.ids</refname>
+<refpurpose>Toggle use of IDs in feedback</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="feedback.with.ids.frag">
+&lt;xsl:param name="feedback.with.ids" select="0"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>feedback.with.ids</varname> is non-zero, the ID of the
+current page will be added to the feedback link. This can be used, for
+example, if the <varname>feedback.href</varname> is a CGI script.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="filename-prefix">
+<refmeta>
+<refentrytitle>filename-prefix</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>filename-prefix</refname>
+<refpurpose>Prefix added to all filenames</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="filename-prefix.frag">
+&lt;xsl:param name="filename-prefix"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>To produce the <quote>text-only</quote> (that is, non-tabular) layout
+of a website simultaneously with the tabular layout, the filenames have to
+be distinguished. That's accomplished by adding the
+<varname>filename-prefix</varname> to the front of each filename.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="footer.hr">
+<refmeta>
+<refentrytitle>footer.hr</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>footer.hr</refname>
+<refpurpose>Toggle &lt;HR&gt; before footer</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="footer.hr.frag">
+&lt;xsl:param name="footer.hr" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If non-zero, an &lt;HR&gt; is generated at the bottom of each web page,
+before the footer.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="header.hr">
+<refmeta>
+<refentrytitle>header.hr</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>header.hr</refname>
+<refpurpose>Toggle &lt;HR&gt; after header</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="header.hr.frag">
+&lt;xsl:param name="header.hr" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If non-zero, an &lt;HR&gt; is generated at the bottom of each web page,
+before the footer.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="output-root">
+<refmeta>
+<refentrytitle>output-root</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>output-root</refname>
+<refpurpose>Specifies the root directory of the website</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="output-root.frag">
+&lt;xsl:param name="output-root"&gt;.&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>When using the XSLT processor to manage dependencies and construct
+the website, this parameter can be used to indicate the root directory
+where the resulting pages are placed.</para>
+<para>Only applies when XSLT-based chunking is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="rebuild-all">
+<refmeta>
+<refentrytitle>rebuild-all</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>rebuild-all</refname>
+<refpurpose>Indicates that all files should be produced</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="rebuild-all.frag">
+&lt;xsl:param name="rebuild-all" select="0"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>When using the XSLT processor to manage dependencies and construct
+the website, this parameter can be used to regenerate the whole website,
+updating even pages that don't appear to need to be updated.</para>
+<para>The dependency extension only looks at the source documents. So
+if you change something in the stylesheet, for example, that has a global
+effect, you can use this parameter to force the stylesheet to rebuild the
+whole website.
+</para>
+<para>Only applies when XSLT-based chunking is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="sequential.links">
+<refmeta>
+<refentrytitle>sequential.links</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>sequential.links</refname>
+<refpurpose>Make sequentional links?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="sequential.links.frag">
+&lt;xsl:param name="sequential.links" select="0"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>FIXME</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="suppress.homepage.title">
+<refmeta>
+<refentrytitle>suppress.homepage.title</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>suppress.homepage.title</refname>
+<refpurpose>Suppress title on homepage?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="suppress.homepage.title.frag">
+&lt;xsl:param name="suppress.homepage.title" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>FIXME:If non-zero, the title on the homepage is suppressed?</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="table.spacer.image">
+<refmeta>
+<refentrytitle>table.spacer.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>table.spacer.image</refname>
+<refpurpose>Invisible pixel for tabular accessibility</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="table.spacer.image.frag">
+&lt;xsl:param name="table.spacer.image"&gt;graphics/spacer.gif&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>This is the 1x1 pixel, transparent pixel used for <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://diveintoaccessibility.org/day_10_presenting_your_main_content_first.html">the table trick</link> to increase the accessibility of the tabular
+website presentation.</para>
+</refsection>
+</refentry>
+
+</reference>
+<reference xml:id="nav">
+<title>Navigation Parameters</title>
+<refentry version="5.0" xml:id="banner.before.navigation">
+<refmeta>
+<refentrytitle>banner.before.navigation</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>banner.before.navigation</refname>
+<refpurpose>Put banner before navigation?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="banner.before.navigation.frag">
+&lt;xsl:param name="banner.before.navigation" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>FIXME</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="navbgcolor">
+<refmeta>
+<refentrytitle>navbgcolor</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>navbgcolor</refname>
+<refpurpose>The background color of the navigation TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="navbgcolor.frag">
+&lt;xsl:param name="navbgcolor"&gt;#4080FF&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The background color of the navigation TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="navbodywidth">
+<refmeta>
+<refentrytitle>navbodywidth</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>navbodywidth</refname>
+<refpurpose>Specifies the width of the navigation table body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="navbodywidth.frag">
+&lt;xsl:param name="navbodywidth"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The width of the body column.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="nav.table.summary">
+<refmeta>
+<refentrytitle>nav.table.summary</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>nav.table.summary</refname>
+<refpurpose>HTML Table summary attribute value for navigation tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="nav.table.summary.frag">
+&lt;xsl:param name="nav.table.summary"&gt;Navigation&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The value of this parameter is used as the value of the table
+summary attribute for the navigation table.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="navtocwidth">
+<refmeta>
+<refentrytitle>navtocwidth</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>navtocwidth</refname>
+<refpurpose>Specifies the width of the navigation table TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="navtocwidth.frag">
+&lt;xsl:param name="navtocwidth"&gt;220&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The width, in pixels, of the navigation column.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="textbgcolor">
+<refmeta>
+<refentrytitle>textbgcolor</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>textbgcolor</refname>
+<refpurpose>The background color of the table body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="textbgcolor.frag">
+&lt;xsl:param name="textbgcolor"&gt;white&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The background color of the table body.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+</reference>
+<reference xml:id="toc">
+<title>ToC Parameters</title>
+<refentry version="5.0" xml:id="toc.blank.graphic">
+<refmeta>
+<refentrytitle>toc.blank.graphic</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.blank.graphic</refname>
+<refpurpose>Use graphic for "blanks" in TOC?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.blank.graphic.frag">
+&lt;xsl:param name="toc.blank.graphic" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If non-zero, "blanks" in the the TOC will be accomplished
+with the graphic identified by <varname>toc.spacer.image</varname>.
+</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.blank.image">
+<refmeta>
+<refentrytitle>toc.blank.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.blank.image</refname>
+<refpurpose>The image for "blanks" in the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.blank.image.frag">
+&lt;xsl:param name="toc.blank.image"&gt;graphics/blank.gif&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.blank.graphic</varname> is non-zero, this image
+will be used to for "blanks" in the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.blank.text">
+<refmeta>
+<refentrytitle>toc.blank.text</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.blank.text</refname>
+<refpurpose>The text for "blanks" in the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.blank.text.frag">
+&lt;xsl:param name="toc.blank.text"&gt;&#160;&#160;&#160;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.blank.graphic</varname> is zero, this text string
+will be used for "blanks" in the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.pointer.graphic">
+<refmeta>
+<refentrytitle>toc.pointer.graphic</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.pointer.graphic</refname>
+<refpurpose>Use graphic for TOC pointer?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.pointer.graphic.frag">
+&lt;xsl:param name="toc.pointer.graphic" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If non-zero, the "pointer" in the TOC will be displayed
+with the graphic identified by <varname>toc.pointer.image</varname>.
+</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.pointer.image">
+<refmeta>
+<refentrytitle>toc.pointer.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.pointer.image</refname>
+<refpurpose>The image for the "pointer" in the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.pointer.image.frag">
+&lt;xsl:param name="toc.pointer.image"&gt;graphics/arrow.gif&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.pointer.graphic</varname> is non-zero, this image
+will be used for the "pointer" in the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.pointer.text">
+<refmeta>
+<refentrytitle>toc.pointer.text</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.pointer.text</refname>
+<refpurpose>The text for the "pointer" in the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.pointer.text.frag">
+&lt;xsl:param name="toc.pointer.text"&gt;&#160;&gt;&#160;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.pointer.graphic</varname> is zero, this text string
+will be used to display the "pointer" in the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.spacer.graphic">
+<refmeta>
+<refentrytitle>toc.spacer.graphic</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.spacer.graphic</refname>
+<refpurpose>Use graphic for TOC spacer?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.spacer.graphic.frag">
+&lt;xsl:param name="toc.spacer.graphic" select="1"&gt;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If non-zero, the indentation in the TOC will be accomplished
+with the graphic identified by <varname>toc.spacer.image</varname>.
+</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.spacer.image">
+<refmeta>
+<refentrytitle>toc.spacer.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.spacer.image</refname>
+<refpurpose>The image for spacing the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.spacer.image.frag">
+&lt;xsl:param name="toc.spacer.image"&gt;graphics/blank.gif&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.spacer.graphic</varname> is non-zero, this image
+will be used to indent the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+<refentry version="5.0" xml:id="toc.spacer.text">
+<refmeta>
+<refentrytitle>toc.spacer.text</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.spacer.text</refname>
+<refpurpose>The text for spacing the TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<programlisting xml:id="toc.spacer.text.frag">
+&lt;xsl:param name="toc.spacer.text"&gt;&#160;&#160;&#160;&lt;/xsl:param&gt;
+</programlisting>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>If <varname>toc.spacer.graphic</varname> is zero, this text string
+will be used to indent the TOC.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>
+
+</reference>
+<appendix xml:id="stylesheet"><title>The Stylesheet</title>
+
+<para>The <filename>param.xsl</filename> stylesheet is just a wrapper
+around all these parameters.</para>
+
+<programlisting xml:id="top">
+
+&lt;!-- This file is generated from param.xweb --&gt;
+
+&lt;xsl:stylesheet exclude-result-prefixes="src" version="1.0"&gt;
+
+&lt;!-- ********************************************************************
+     $Id: param.xweb 9130 2011-10-11 08:05:37Z dpawson $
+     ********************************************************************
+
+     This file is part of the DocBook XSL Stylesheets distribution.
+     See ../README or http://docbook.sf.net/release/xsl/current/ for
+     copyright and other information.
+
+     ******************************************************************** --&gt;
+
+&lt;src:fragref linkend="autolayout-file.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="header.hr.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="footer.hr.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="feedback.href.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="feedback.with.ids.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="feedback.link.text.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="filename-prefix.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="output-root.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="dry-run.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="rebuild-all.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="nav.table.summary.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="navtocwidth.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="navbodywidth.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="textbgcolor.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="navbgcolor.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.spacer.graphic.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.spacer.text.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.spacer.image.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.pointer.graphic.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.pointer.text.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.pointer.image.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.blank.graphic.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.blank.text.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="toc.blank.image.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="suppress.homepage.title.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="body.attributes.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="sequential.links.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="currentpage.marker.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="banner.before.navigation.frag"&gt;&lt;/src:fragref&gt;
+&lt;src:fragref linkend="table.spacer.image.frag"&gt;&lt;/src:fragref&gt;
+
+&lt;/xsl:stylesheet&gt;
+</programlisting>
+
+</appendix>
+</book>

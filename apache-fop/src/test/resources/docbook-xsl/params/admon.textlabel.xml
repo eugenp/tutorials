@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="admon.textlabel">
+<refmeta>
+<refentrytitle>admon.textlabel</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>admon.textlabel</refname>
+<refpurpose>Use text label in admonitions?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="admon.textlabel.frag">
+<xsl:param name="admon.textlabel" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If true (non-zero), admonitions are presented with a generated
+text label such as Note or Warning in the appropriate language.
+If zero, such labels are turned off, but any title child
+of the admonition element are still output.
+The default value is 1.
+</para>
+
+</refsection>
+</refentry>

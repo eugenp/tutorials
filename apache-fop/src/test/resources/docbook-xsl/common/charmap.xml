@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+
+<reference xml:id="charmap">
+  <info>
+    <title>Common » Character-Map Template Reference</title>
+    <releaseinfo role="meta">
+      $Id: charmap.xsl 7266 2007-08-22 11:58:42Z xmldoc $
+    </releaseinfo>
+  </info>
+  
+  <partintro xml:id="partintro">
+    <title>Introduction</title>
+    
+<para>This is technical reference documentation for the
+      character-map templates in the DocBook XSL Stylesheets.</para>
+
+    <note>
+      
+<para>These templates are defined in a separate file from the set
+        of “common” templates because some of the common templates
+        reference DocBook XSL stylesheet parameters, requiring the
+        entire set of parameters to be imported/included in any
+        stylesheet that imports/includes the common templates.</para>
+
+      
+<para>The character-map templates don’t import or include
+        any DocBook XSL stylesheet parameters, so the
+        character-map templates can be used without importing the
+        whole set of parameters.</para>
+
+    </note>
+    
+<para>This is not intended to be user documentation. It is
+      provided for developers writing customization layers for the
+      stylesheets.</para>
+
+  </partintro>
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="template.apply-character-map">
+<refnamediv>
+<refname>apply-character-map</refname>
+<refpurpose>Applies an XSLT character map</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="apply-character-map"&gt;
+&lt;xsl:param name="content"/&gt;
+&lt;xsl:param name="map.contents"/&gt;
+  ...
+&lt;/xsl:template&gt;</synopsis>
+</refsynopsisdiv>
+<refsect1><title>Description</title>
+    
+<para>This template applies an <link xlink:href="http://www.w3.org/TR/xslt20/#character-maps">XSLT character map</link>; that is, it causes certain
+      individual characters to be substituted with strings of one
+      or more characters. It is useful mainly for replacing
+      multiple “special” characters or symbols in the same target
+      content. It uses the value of
+      <parameter>map.contents</parameter> to do substitution on
+      <parameter>content</parameter>, and then returns the
+      modified contents.</para>
+
+    <note>
+      
+<para>This template is a very slightly modified version of
+        Jeni Tennison’s <function>replace_strings</function>
+        template in the <link xlink:href="http://www.dpawson.co.uk/xsl/sect2/StringReplace.html#d9351e13">multiple string replacements</link> section of Dave Pawson’s
+        <link xlink:href="http://www.dpawson.co.uk/xsl/index.html">XSLT FAQ</link>.</para>
+
+      
+<para>The <function>apply-string-subst-map</function>
+        template is essentially the same template as the
+        <function>apply-character-map</function> template; the
+        only difference is that in the map that
+        <function>apply-string-subst-map</function> expects, <tag class="attribute">oldstring</tag> and <tag class="attribute">newstring</tag> attributes are used
+        instead of <tag class="attribute">character</tag> and <tag class="attribute">string</tag> attributes.</para>
+
+    </note>
+  </refsect1><refsect1><title>Parameters</title>
+    
+<variablelist>
+      <varlistentry><term>content</term>
+        <listitem>
+          
+<para>The content on which to perform the character-map
+            substitution.</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>map.contents</term>
+        <listitem>
+          
+<para>A node set of elements, with each element having
+            the following attributes:
+            
+<itemizedlist>
+              <listitem>
+                <simpara><tag class="attribute">character</tag>, a
+                  character to be replaced</simpara>
+              </listitem>
+              <listitem>
+                <simpara><tag class="attribute">string</tag>, a
+                  string with which to replace <tag class="attribute">character</tag></simpara>
+              </listitem>
+            </itemizedlist>
+
+          </para>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1></refentry>
+
+<refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="template.read-character-map">
+<refnamediv>
+<refname>read-character-map</refname>
+<refpurpose>Reads in all or part of an XSLT character map</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<synopsis>&lt;xsl:template name="read-character-map"&gt;
+&lt;xsl:param name="use.subset"/&gt;
+&lt;xsl:param name="subset.profile"/&gt;
+&lt;xsl:param name="uri"/&gt;
+  ...
+&lt;/xsl:template&gt;</synopsis>
+</refsynopsisdiv>
+<refsect1><title>Description</title>
+    
+<para>The XSLT 2.0 specification describes <link xlink:href="http://www.w3.org/TR/xslt20/#character-maps">character maps</link> and explains how they may be used
+      to allow a specific character appearing in a text or
+      attribute node in a final result tree to be substituted by
+      a specified string of characters during serialization. The
+      <function>read-character-map</function> template provides a
+      means for reading and using character maps with XSLT
+      1.0-based tools.</para>
+
+    
+<para>This template reads the character-map contents from
+      <parameter>uri</parameter> (in full or in part, depending on
+      the value of the <parameter>use.subset</parameter>
+      parameter), then passes those contents to the
+      <function>apply-character-map</function> template, along with
+      <parameter>content</parameter>, the data on which to perform
+      the character substitution.</para>
+
+    
+<para>Using the character map “in part” means that it uses only
+      those <tag>output-character</tag> elements that match the
+      XPath expression given in the value of the
+      <parameter>subset.profile</parameter> parameter. The current
+      implementation of that capability here relies on the
+      <function>evaluate</function> extension XSLT function.</para>
+
+  </refsect1><refsect1><title>Parameters</title>
+    
+<variablelist>
+      <varlistentry><term>use.subset</term>
+        <listitem>
+          
+<para>Specifies whether to use a subset of the character
+            map instead of the whole map; boolean
+            <literal>0</literal> or <literal>1</literal></para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>subset.profile</term>
+        <listitem>
+          
+<para>XPath expression that specifies what subset of the
+            character map to use</para>
+
+        </listitem>
+      </varlistentry>
+      <varlistentry><term>uri</term>
+        <listitem>
+          
+<para>URI for a character map</para>
+
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+  </refsect1></refentry>
+</reference>
+

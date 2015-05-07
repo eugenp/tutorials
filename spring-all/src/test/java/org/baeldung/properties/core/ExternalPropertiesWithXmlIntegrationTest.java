@@ -1,6 +1,7 @@
 package org.baeldung.properties.core;
 
 import org.baeldung.properties.spring.PropertiesWithXmlConfig;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PropertiesWithXmlConfig.class }, loader = AnnotationConfigContextLoader.class)
+@Ignore("manual only")
 public class ExternalPropertiesWithXmlIntegrationTest {
 
     @Autowired

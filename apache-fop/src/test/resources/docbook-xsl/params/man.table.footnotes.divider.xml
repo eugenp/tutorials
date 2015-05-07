@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.table.footnotes.divider">
+<refmeta>
+<refentrytitle>man.table.footnotes.divider</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.table.footnotes.divider</refname>
+<refpurpose>Specifies divider string that appears before table footnotes</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.table.footnotes.divider.frag">
+<xsl:param name="man.table.footnotes.divider">----</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>In each table that contains footenotes, the string specified by
+the <parameter>man.table.footnotes.divider</parameter> parameter is
+output before the list of footnotes for the table.</para>
+
+</refsection>
+</refentry>

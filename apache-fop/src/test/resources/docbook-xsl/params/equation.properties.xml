@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="equation.properties">
+<refmeta>
+<refentrytitle>equation.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>equation.properties</refname>
+<refpurpose>Properties associated with a equation</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="equation.properties.frag">
+<xsl:attribute-set name="equation.properties" use-attribute-sets="formal.object.properties"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for equations.</para>
+
+</refsection>
+</refentry>

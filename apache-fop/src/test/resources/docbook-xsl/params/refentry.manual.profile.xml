@@ -1,0 +1,72 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="refentry.manual.profile">
+<refmeta>
+<refentrytitle>refentry.manual.profile</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refentry.manual.profile</refname>
+<refpurpose>Specifies profile for refentry "manual" data</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="refentry.manual.profile.frag">
+<xsl:param name="refentry.manual.profile">
+  (($info[//title])[last()]/title)[1]|
+  ../title/node()
+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of <parameter>refentry.manual.profile</parameter> is
+a string representing an XPath expression. It is evaluated at
+run-time and used only if
+<parameter>refentry.manual.profile.enabled</parameter> is
+non-zero. Otherwise, the <tag>refentry</tag> metadata-gathering logic
+"hard coded" into the stylesheets is used.</para>
+
+<para>In man pages, this content is usually displayed in the middle of
+the header of the page. The <literal>man(7)</literal> man page
+describes this as "the title of the manual (e.g., <citetitle>Linux
+Programmer's Manual</citetitle>)". Here are some examples from
+existing man pages:
+<itemizedlist>
+  <listitem>
+    <para><citetitle>dpkg utilities</citetitle>
+    (<command>dpkg-name</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>User Contributed Perl Documentation</citetitle>
+    (<command>GET</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>GNU Development Tools</citetitle>
+    (<command>ld</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>Emperor Norton Utilities</citetitle>
+    (<command>ddate</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>Debian GNU/Linux manual</citetitle>
+    (<command>faked</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>GIMP Manual Pages</citetitle>
+    (<command>gimp</command>)</para>
+  </listitem>
+  <listitem>
+    <para><citetitle>KDOC Documentation System</citetitle>
+    (<command>qt2kdoc</command>)</para>
+  </listitem>
+</itemizedlist>
+</para>
+
+</refsection>
+</refentry>

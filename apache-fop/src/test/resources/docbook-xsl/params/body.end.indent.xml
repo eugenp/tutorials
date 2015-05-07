@@ -1,0 +1,37 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="body.end.indent">
+<refmeta>
+<refentrytitle>body.end.indent</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>body.end.indent</refname>
+<refpurpose>The end-indent for the body text</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="body.end.indent.frag">
+<xsl:param name="body.end.indent">0pt</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This end-indent property is added to the fo:flow
+for certain page sequences.  Which page-sequences it is 
+applied to is determined by the template named
+<literal>set.flow.properties</literal>.
+By default, that template adds it to the flow
+for page-sequences using the <quote>body</quote>
+master-reference, as well as appendixes and prefaces.
+</para>
+
+<para>See also <parameter>body.start.indent</parameter>.
+</para>
+
+</refsection>
+</refentry>

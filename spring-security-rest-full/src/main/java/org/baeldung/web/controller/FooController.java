@@ -43,6 +43,13 @@ public class FooController {
 
     // API
 
+    @RequestMapping(method = RequestMethod.GET, value = "/count")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public long count() {
+        return 2l;
+    }
+
     // read - one
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -83,6 +90,20 @@ public class FooController {
         final Long idOfCreatedResource = service.create(resource).getId();
 
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
+        Preconditions.checkNotNull(resource);
+        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        service.update(resource);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") final Long id) {
+        service.deleteById(id);
     }
 
 }

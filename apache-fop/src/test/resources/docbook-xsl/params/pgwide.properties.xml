@@ -1,0 +1,52 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="pgwide.properties">
+<refmeta>
+<refentrytitle>pgwide.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>pgwide.properties</refname>
+<refpurpose>Properties to make a figure or table page wide.
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="pgwide.properties.frag">
+<xsl:attribute-set name="pgwide.properties">
+  <xsl:attribute name="start-indent">0pt</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This attribute set is used to set the properties
+that make a figure or table "page wide" in fo output.
+It comes into effect when an attribute <literal>pgwide="1"</literal>
+is used.
+</para>
+
+<para>
+By default, it sets <parameter>start-indent</parameter>
+to <literal>0pt</literal>.
+In a stylesheet that sets the parameter
+<parameter>body.start.indent</parameter>
+to a non-zero value in order to indent body text,
+this attribute set can be used to outdent pgwide
+figures to the start margin.
+</para>
+
+<para>If a document uses a multi-column page layout,
+then this attribute set could try setting <parameter>span</parameter>
+to a value of <literal>all</literal>.  However, this may
+not work with some processors because a span property must be on an
+fo:block that is a direct child of fo:flow.  It may work in
+some processors anyway.
+</para>
+
+</refsection>
+</refentry>

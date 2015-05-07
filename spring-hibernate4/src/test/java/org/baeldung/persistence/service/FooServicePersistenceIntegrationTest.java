@@ -3,7 +3,6 @@ package org.baeldung.persistence.service;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import org.baeldung.persistence.model.Foo;
-import org.baeldung.persistence.service.IFooService;
 import org.baeldung.spring.PersistenceConfig;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,6 +35,7 @@ public class FooServicePersistenceIntegrationTest {
     }
 
     @Test(expected = DataIntegrityViolationException.class)
+    @Ignore("work in progress")
     public final void whenInvalidEntityIsCreated_thenDataException() {
         service.create(new Foo());
     }

@@ -2,21 +2,30 @@ package org.baeldung.persistence.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Foo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private long id;
 
-    @Column(nullable = false)
+    @Column(name = "name")
     private String name;
+
+    @ManyToOne(targetEntity = Bar.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "BAR_ID")
+    private Bar bar = new Bar();
 
     public Foo() {
         super();
@@ -24,11 +33,18 @@ public class Foo implements Serializable {
 
     public Foo(final String name) {
         super();
-
         this.name = name;
     }
 
-    // API
+    //
+
+    public Bar getBar() {
+        return bar;
+    }
+
+    public void setBar(final Bar bar) {
+        this.bar = bar;
+    }
 
     public long getId() {
         return id;

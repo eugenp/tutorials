@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: xlink.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:attributeGroup name="db.xlink.from.attribute">
+    <xs:attribute ref="xlink:from" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.xlink.label.attribute">
+    <xs:attribute ref="xlink:label" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.xlink.to.attribute">
+    <xs:attribute ref="xlink:to" use="required"/>
+  </xs:attributeGroup>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.extendedlink.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.extendedlink.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="xlink:type1"/>
+    <xs:attribute ref="xlink:role"/>
+    <xs:attribute ref="xlink:title"/>
+  </xs:attributeGroup>
+  <xs:element name="extendedlink">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="db:locator"/>
+        <xs:element ref="db:arc"/>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.extendedlink.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.locator.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.locator.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="xlink:type2"/>
+    <xs:attributeGroup ref="db:db.xlink.href.attribute"/>
+    <xs:attribute ref="xlink:role"/>
+    <xs:attribute ref="xlink:title"/>
+    <xs:attribute ref="xlink:label"/>
+  </xs:attributeGroup>
+  <xs:element name="locator">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.locator.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.arc.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.arc.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="xlink:type3"/>
+    <xs:attribute ref="xlink:arcrole"/>
+    <xs:attribute ref="xlink:title"/>
+    <xs:attribute ref="xlink:show"/>
+    <xs:attribute ref="xlink:actuate"/>
+    <xs:attribute ref="xlink:from"/>
+    <xs:attribute ref="xlink:to"/>
+  </xs:attributeGroup>
+  <xs:element name="arc">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.arc.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

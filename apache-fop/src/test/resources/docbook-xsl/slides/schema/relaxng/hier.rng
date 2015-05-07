@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: hier.rnc 8994 2011-04-19 20:07:33Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:dbx="http://sourceforge.net/projects/docbook/defguide/schema/extra-markup" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start combine="choice">
+    <choice>
+      <ref name="db.partintro"/>
+      <ref name="db.simplesect"/>
+    </choice>
+  </start>
+  <define name="db.status.attribute">
+    <attribute name="status">
+      <db:refpurpose>Identifies the editorial or publication status of the element on which it occurs</db:refpurpose>
+    </attribute>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.toplevel.sections">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="db.section"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.toplevel.blocks.or.sections">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+        <optional>
+          <ref name="db.toplevel.sections"/>
+        </optional>
+      </group>
+      <ref name="db.toplevel.sections"/>
+    </choice>
+  </define>
+  <define name="db.recursive.sections">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="db.section"/>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.recursive.blocks.or.sections">
+    <choice>
+      <group>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+        <optional>
+          <ref name="db.recursive.sections"/>
+        </optional>
+      </group>
+      <ref name="db.recursive.sections"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.divisions">
+    <ref name="db.part"/>
+  </define>
+  <define name="db.components">
+    <choice>
+      <ref name="db.dedication"/>
+      <ref name="db.acknowledgements"/>
+      <ref name="db.preface"/>
+      <ref name="db.chapter"/>
+      <ref name="db.appendix"/>
+      <ref name="db.article"/>
+      <ref name="db.colophon"/>
+    </choice>
+  </define>
+  <define name="db.navigation.components">
+    <notAllowed/>
+  </define>
+  <define name="db.component.contentmodel">
+    <zeroOrMore>
+      <ref name="db.navigation.components"/>
+    </zeroOrMore>
+    <ref name="db.toplevel.blocks.or.sections"/>
+    <zeroOrMore>
+      <ref name="db.navigation.components"/>
+    </zeroOrMore>
+  </define>
+  <!-- ====================================================================== -->
+  <define name="db.setindex.components">
+    <notAllowed/>
+  </define>
+  <define name="db.toc.components">
+    <notAllowed/>
+  </define>
+  <define name="db.set.components">
+    <choice>
+      <ref name="db.set"/>
+      <ref name="db.book"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>set</db:refname>
+    <db:refpurpose>A collection of books</db:refpurpose>
+    <define name="db.set.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.set.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.set.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.set.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.set.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.set.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.set">
+      <element name="set">
+        <ref name="db.set.attlist"/>
+        <ref name="db.set.info"/>
+        <optional>
+          <ref name="db.toc.components"/>
+        </optional>
+        <oneOrMore>
+          <ref name="db.set.components"/>
+        </oneOrMore>
+        <optional>
+          <ref name="db.setindex.components"/>
+        </optional>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.book.components">
+    <zeroOrMore>
+      <choice>
+        <ref name="db.navigation.components"/>
+        <ref name="db.components"/>
+        <ref name="db.divisions"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>book</db:refname>
+    <db:refpurpose>A book</db:refpurpose>
+    <define name="db.book.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.book.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.book.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.book.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.book.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.book.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.book">
+      <element name="book">
+        <ref name="db.book.attlist"/>
+        <ref name="db.book.info"/>
+        <ref name="db.book.components"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>dedication</db:refname>
+    <db:refpurpose>The dedication of a book or other component</db:refpurpose>
+    <define name="db.dedication.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.dedication.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.dedication.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.dedication.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.dedication.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.dedication.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.dedication">
+      <element name="dedication">
+        <ref name="db.dedication.attlist"/>
+        <ref name="db.dedication.info"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>acknowledgements</db:refname>
+    <db:refpurpose>Acknowledgements of a book or other component</db:refpurpose>
+    <define name="db.acknowledgements.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.acknowledgements.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.acknowledgements.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.acknowledgements.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.acknowledgements.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.acknowledgements.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.acknowledgements">
+      <element name="acknowledgements">
+        <ref name="db.acknowledgements.attlist"/>
+        <ref name="db.acknowledgements.info"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>colophon</db:refname>
+    <db:refpurpose>Text at the back of a book describing facts about its production</db:refpurpose>
+    <define name="db.colophon.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.colophon.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.colophon.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.colophon.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.colophon.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.colophon.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.colophon">
+      <element name="colophon">
+        <ref name="db.colophon.attlist"/>
+        <ref name="db.colophon.info"/>
+        <choice>
+          <group>
+            <oneOrMore>
+              <ref name="db.all.blocks"/>
+            </oneOrMore>
+            <zeroOrMore>
+              <ref name="db.simplesect"/>
+            </zeroOrMore>
+          </group>
+          <group>
+            <zeroOrMore>
+              <ref name="db.all.blocks"/>
+            </zeroOrMore>
+            <oneOrMore>
+              <ref name="db.simplesect"/>
+            </oneOrMore>
+          </group>
+        </choice>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.appendix.contentmodel">
+    <ref name="db.component.contentmodel"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>appendix</db:refname>
+    <db:refpurpose>An appendix in a book or article</db:refpurpose>
+    <define name="db.appendix.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.appendix.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.appendix.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.appendix.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.appendix.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.appendix.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.appendix">
+      <element name="appendix">
+        <ref name="db.appendix.attlist"/>
+        <ref name="db.appendix.info"/>
+        <ref name="db.appendix.contentmodel"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.chapter.contentmodel">
+    <ref name="db.component.contentmodel"/>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>chapter</db:refname>
+    <db:refpurpose>A chapter, as of a book</db:refpurpose>
+    <define name="db.chapter.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.chapter.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.chapter.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.chapter.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.chapter.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.chapter.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.chapter">
+      <element name="chapter">
+        <ref name="db.chapter.attlist"/>
+        <ref name="db.chapter.info"/>
+        <ref name="db.chapter.contentmodel"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.part.components">
+    <choice>
+      <ref name="db.navigation.components"/>
+      <ref name="db.components"/>
+    </choice>
+  </define>
+  <define name="db.part.contentmodel">
+    <oneOrMore>
+      <ref name="db.part.components"/>
+    </oneOrMore>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>part</db:refname>
+    <db:refpurpose>A division in a book</db:refpurpose>
+    <define name="db.part.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.part.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.part.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.part.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.part.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.part.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.part">
+      <element name="part">
+        <ref name="db.part.attlist"/>
+        <ref name="db.part.info"/>
+        <optional>
+          <ref name="db.partintro"/>
+        </optional>
+        <ref name="db.part.contentmodel"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>preface</db:refname>
+    <db:refpurpose>Introductory matter preceding the first chapter of a book</db:refpurpose>
+    <define name="db.preface.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.preface.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.preface.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.preface.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.preface.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.preface.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.preface">
+      <element name="preface">
+        <ref name="db.preface.attlist"/>
+        <ref name="db.preface.info"/>
+        <ref name="db.component.contentmodel"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>partintro</db:refname>
+    <db:refpurpose>An introduction to the contents of a part</db:refpurpose>
+    <define name="db.partintro.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.partintro.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.partintro.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.partintro.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.partintro.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.partintro.info">
+      <ref name="db._info"/>
+    </define>
+    <define name="db.partintro">
+      <element name="partintro">
+        <ref name="db.partintro.attlist"/>
+        <ref name="db.partintro.info"/>
+        <ref name="db.toplevel.blocks.or.sections"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>section</db:refname>
+    <db:refpurpose>A recursive section</db:refpurpose>
+    <define name="db.section.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.section.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.section.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.section.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.section.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.section.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.section">
+      <element name="section">
+        <ref name="db.section.attlist"/>
+        <ref name="db.section.info"/>
+        <ref name="db.recursive.blocks.or.sections"/>
+        <zeroOrMore>
+          <ref name="db.navigation.components"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>simplesect</db:refname>
+    <db:refpurpose>A section of a document with no subdivisions</db:refpurpose>
+    <define name="db.simplesect.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.simplesect.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.simplesect.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.simplesect.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.simplesect.status.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.simplesect.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.simplesect">
+      <element name="simplesect">
+        <ref name="db.simplesect.attlist"/>
+        <ref name="db.simplesect.info"/>
+        <oneOrMore>
+          <ref name="db.all.blocks"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <define name="db.article.components">
+    <ref name="db.toplevel.sections"/>
+  </define>
+  <define name="db.article.navcomponents">
+    <choice>
+      <ref name="db.navigation.components"/>
+      <ref name="db.acknowledgements"/>
+      <ref name="db.dedication"/>
+      <ref name="db.appendix"/>
+      <ref name="db.colophon"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>article</db:refname>
+    <db:refpurpose>An article</db:refpurpose>
+    <define name="db.article.status.attribute">
+      <ref name="db.status.attribute"/>
+    </define>
+    <define name="db.article.class.enumeration">
+      <choice>
+        <value>faq</value>
+        <a:documentation>A collection of frequently asked questions.</a:documentation>
+        <value>journalarticle</value>
+        <a:documentation>An article in a journal or other periodical.</a:documentation>
+        <value>productsheet</value>
+        <a:documentation>A description of a product.</a:documentation>
+        <value>specification</value>
+        <a:documentation>A specification.</a:documentation>
+        <value>techreport</value>
+        <a:documentation>A technical report.</a:documentation>
+        <value>whitepaper</value>
+        <a:documentation>A white paper.</a:documentation>
+      </choice>
+    </define>
+    <define name="db.article.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the nature of the article</db:refpurpose>
+        <ref name="db.article.class.enumeration"/>
+      </attribute>
+    </define>
+    <define name="db.article.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.article.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.article.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.label.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.article.status.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.article.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.article.info">
+      <ref name="db._info.title.req"/>
+    </define>
+    <define name="db.article">
+      <element name="article">
+        <ref name="db.article.attlist"/>
+        <ref name="db.article.info"/>
+        <zeroOrMore>
+          <ref name="db.article.navcomponents"/>
+        </zeroOrMore>
+        <choice>
+          <group>
+            <oneOrMore>
+              <ref name="db.all.blocks"/>
+            </oneOrMore>
+            <optional>
+              <ref name="db.article.components"/>
+            </optional>
+          </group>
+          <ref name="db.article.components"/>
+        </choice>
+        <zeroOrMore>
+          <ref name="db.article.navcomponents"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>

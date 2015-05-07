@@ -2,10 +2,7 @@ package org.baeldung.persistence.service;
 
 import org.baeldung.persistence.model.Child;
 import org.baeldung.persistence.model.Parent;
-import org.baeldung.persistence.service.IChildService;
-import org.baeldung.persistence.service.IParentService;
 import org.baeldung.spring.PersistenceConfig;
-import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +20,6 @@ public class ParentServicePersistenceIntegrationTest {
 
     @Autowired
     private IChildService childService;
-
-    @Autowired
-    private SessionFactory sessionFactory;
 
     // tests
 

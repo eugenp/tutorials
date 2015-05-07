@@ -1,0 +1,46 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="refentry.date.profile.enabled">
+<refmeta>
+<refentrytitle>refentry.date.profile.enabled</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>refentry.date.profile.enabled</refname>
+<refpurpose>Enable refentry "date" profiling?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="refentry.date.profile.enabled.frag">
+<xsl:param name="refentry.date.profile.enabled">0</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of
+<parameter>refentry.date.profile.enabled</parameter> is non-zero, then
+during <tag>refentry</tag> metadata gathering, the info profile
+specified by the customizable
+<parameter>refentry.date.profile</parameter> parameter is used.</para>
+
+<para>If instead the value of
+<parameter>refentry.date.profile.enabled</parameter> is zero (the
+default), then "hard coded" logic within the DocBook XSL stylesheets
+is used for gathering <tag>refentry</tag> "date" data.</para>
+
+<para>If you find that the default <tag>refentry</tag>
+metadata-gathering behavior is causing incorrect "date" data to show
+up in your output, then consider setting a non-zero value for
+<parameter>refentry.date.profile.enabled</parameter> and adjusting the
+value of <parameter>refentry.date.profile</parameter> to cause correct
+data to be gathered. </para>
+
+<para>Note that the terms "source" and "date" have special meanings in
+this context. For details, see the documentation for the
+<parameter>refentry.date.profile</parameter> parameter.</para>
+
+</refsection>
+</refentry>

@@ -32,6 +32,12 @@ public class FooService extends AbstractService<Foo> implements IFooService {
         return dao;
     }
 
+    // custom methods
+
+    public Foo retrieveByName(final String name) {
+        return dao.retrieveByName(name);
+    }
+
     // overridden to be secured
 
     @Override

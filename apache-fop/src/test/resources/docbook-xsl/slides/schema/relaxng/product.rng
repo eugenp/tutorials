@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="db.info.elements" combine="choice">
+    <choice>
+      <ref name="db.productname"/>
+      <ref name="db.productnumber"/>
+    </choice>
+  </define>
+  <define name="db.product.inlines" combine="choice">
+    <choice>
+      <ref name="db.productnumber"/>
+      <ref name="db.productname"/>
+      <ref name="db.database"/>
+      <ref name="db.application"/>
+      <ref name="db.hardware"/>
+    </choice>
+  </define>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>productname</db:refname>
+    <db:refpurpose>The formal name of a product</db:refpurpose>
+    <define name="db.productname.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.productname.class.enumeration">
+      <choice>
+        <value>copyright</value>
+        <a:documentation>A name with a copyright</a:documentation>
+        <value>registered</value>
+        <a:documentation>A name with a registered copyright</a:documentation>
+        <value>service</value>
+        <a:documentation>A name of a service</a:documentation>
+        <value>trade</value>
+        <a:documentation>A name which is trademarked</a:documentation>
+      </choice>
+    </define>
+    <define name="db.productname.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Specifies the class of product name</db:refpurpose>
+        <ref name="db.productname.class.enumeration"/>
+      </attribute>
+    </define>
+    <define name="db.productname.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.productname.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.productname.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.productname">
+      <element name="productname">
+        <ref name="db.productname.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>productnumber</db:refname>
+    <db:refpurpose>A number assigned to a product</db:refpurpose>
+    <define name="db.productnumber.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.productnumber.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.productnumber.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.productnumber">
+      <element name="productnumber">
+        <ref name="db.productnumber.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>database</db:refname>
+    <db:refpurpose>The name of a database, or part of a database</db:refpurpose>
+    <define name="db.database.class.enumeration">
+      <choice>
+        <value>altkey</value>
+        <a:documentation>An alternate or secondary key</a:documentation>
+        <value>constraint</value>
+        <a:documentation>A constraint</a:documentation>
+        <value>datatype</value>
+        <a:documentation>A data type</a:documentation>
+        <value>field</value>
+        <a:documentation>A field</a:documentation>
+        <value>foreignkey</value>
+        <a:documentation>A foreign key</a:documentation>
+        <value>group</value>
+        <a:documentation>A group</a:documentation>
+        <value>index</value>
+        <a:documentation>An index</a:documentation>
+        <value>key1</value>
+        <a:documentation>The first or primary key</a:documentation>
+        <value>key2</value>
+        <a:documentation>An alternate or secondary key</a:documentation>
+        <value>name</value>
+        <a:documentation>A name</a:documentation>
+        <value>primarykey</value>
+        <a:documentation>The primary key</a:documentation>
+        <value>procedure</value>
+        <a:documentation>A (stored) procedure</a:documentation>
+        <value>record</value>
+        <a:documentation>A record</a:documentation>
+        <value>rule</value>
+        <a:documentation>A rule</a:documentation>
+        <value>secondarykey</value>
+        <a:documentation>The secondary key</a:documentation>
+        <value>table</value>
+        <a:documentation>A table</a:documentation>
+        <value>user</value>
+        <a:documentation>A user</a:documentation>
+        <value>view</value>
+        <a:documentation>A view</a:documentation>
+      </choice>
+    </define>
+    <define name="db.database.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the class of database artifact</db:refpurpose>
+        <ref name="db.database.class.enumeration"/>
+      </attribute>
+    </define>
+    <define name="db.database.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.database.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.database.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.database.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.database">
+      <element name="database">
+        <ref name="db.database.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>application</db:refname>
+    <db:refpurpose>The name of a software program</db:refpurpose>
+    <define name="db.application.class.enumeration">
+      <choice>
+        <value>hardware</value>
+        <a:documentation>A hardware application</a:documentation>
+        <value>software</value>
+        <a:documentation>A software application</a:documentation>
+      </choice>
+    </define>
+    <define name="db.application.class.attribute">
+      <attribute name="class">
+        <db:refpurpose>Identifies the class of application</db:refpurpose>
+        <ref name="db.application.class.enumeration"/>
+      </attribute>
+    </define>
+    <define name="db.application.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.application.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.application.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+        <optional>
+          <ref name="db.application.class.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.application">
+      <element name="application">
+        <ref name="db.application.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+  <!-- ====================================================================== -->
+  <div>
+    <db:refname>hardware</db:refname>
+    <db:refpurpose>A physical part of a computer system</db:refpurpose>
+    <define name="db.hardware.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.hardware.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.hardware.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <ref name="db.common.linking.attributes"/>
+      </interleave>
+    </define>
+    <define name="db.hardware">
+      <element name="hardware">
+        <ref name="db.hardware.attlist"/>
+        <ref name="db._text"/>
+      </element>
+    </define>
+  </div>
+</grammar>
