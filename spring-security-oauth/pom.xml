@@ -106,6 +106,26 @@
             <version>${httpcore.version}</version>
         </dependency>
 
+        <!-- thymeleaf -->
+        
+        <dependency>
+		    <groupId>org.thymeleaf</groupId>
+		    <artifactId>thymeleaf</artifactId>
+		    <version>2.1.4.RELEASE</version>
+		</dependency>
+        
+        <dependency>
+		    <groupId>org.thymeleaf</groupId>
+		    <artifactId>thymeleaf-spring4</artifactId>
+		    <version>2.1.4.RELEASE</version>
+		</dependency>
+        
+        <dependency>
+		    <groupId>org.thymeleaf.extras</groupId>
+		    <artifactId>thymeleaf-extras-springsecurity3</artifactId>
+		    <version>2.1.2.RELEASE</version>
+		</dependency>
+        
         <!-- persistence -->
 
         <dependency>
@@ -140,6 +160,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- h2 -->
+        
+        <dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>1.4.187</version>
+		</dependency>
+        
         <!-- web -->
 
         <dependency>
@@ -328,6 +356,29 @@
                     </configuration>
                 </configuration>
             </plugin>
+            
+            <!-- webapp runner -->
+            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>2.3</version>
+			    <executions>
+			        <execution>
+			            <phase>package</phase>
+			            <goals><goal>copy</goal></goals>
+			            <configuration>
+			                <artifactItems>
+			                    <artifactItem>
+			                        <groupId>com.github.jsimone</groupId>
+			                        <artifactId>webapp-runner</artifactId>
+			                        <version>7.0.57.2</version>
+			                        <destFileName>webapp-runner.jar</destFileName>
+			                    </artifactItem>
+			                </artifactItems>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
 
         </plugins>
 
