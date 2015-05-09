@@ -6,9 +6,10 @@ import java.io.IOException;
 
 import org.baeldung.reddit.classifier.RedditClassifier;
 import org.baeldung.reddit.classifier.RedditDataCollector;
+import org.junit.Ignore;
 import org.junit.Test;
 
-//@Ignore
+@Ignore
 public class RedditClassifierTest {
 
     @Test

@@ -8,6 +8,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     User findByAccessToken(String token);
-
-    User findByRememberMeToken(String token);
 }

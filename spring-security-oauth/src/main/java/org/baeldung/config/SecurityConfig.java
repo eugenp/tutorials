@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().authenticationEntryPoint(oauth2AuthenticationEntryPoint())
                 .and()
                 .logout()
-                .deleteCookies("JSESSIONID","CustomRememberMe")
+                .deleteCookies("JSESSIONID")
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
         // @formatter:on

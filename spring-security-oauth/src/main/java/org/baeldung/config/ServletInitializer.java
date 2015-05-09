@@ -13,7 +13,7 @@ public class ServletInitializer extends AbstractDispatcherServletInitializer {
     @Override
     protected WebApplicationContext createServletApplicationContext() {
         final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(PersistenceJPAConfig.class, WebConfig.class, SecurityConfig.class);
+        context.register(PersistenceJPAConfig.class, WebConfig.class, SecurityConfig.class, ThymeleafConfig.class);
         return context;
     }
 
