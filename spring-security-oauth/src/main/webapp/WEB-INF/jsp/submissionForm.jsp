@@ -3,7 +3,9 @@
 
 <title>Schedule to Reddit</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<link rel="stylesheet" th:href="@{/resources/autocomplete.css}"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
 <script th:src="@{/resources/validator.js}"></script>
 <style type="text/css">
 .btn.disabled{
@@ -36,11 +38,19 @@ border-color: #ddd;
 <br/><br/>  
 <div class="form-group">
     <label class="col-sm-3">Subreddit</label>
-    <span class="col-sm-9"><input name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" data-minlength="3" required="required"/></span>
+    <span class="col-sm-9"><input id="sr" name="sr" placeholder="Subreddit (e.g. kitten)" class="form-control" data-minlength="3" required="required"/></span>
 </div>
 <br/><br/>
 <div>
-<label class="col-sm-3">Send replies to my inbox</label> <span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
+<label class="col-sm-3">Send replies to my inbox</label> 
+<span class="col-sm-9"><input type="checkbox" name="sendreplies" value="true"/></span> 
+</div>
+<br/>
+<br/>
+<div>
+<span class="col-sm-2"><a href="#" class="btn btn-default" onclick="checkIfAlreadySubmitted()">Check if already submitted</a></span>
+<span class="col-sm-1"></span>
+<span class=" col-sm-9"><span id="checkResult" class="alert alert-info" style="display:none"></span></span>
 </div>
 <br/><br/>
  
@@ -62,8 +72,6 @@ border-color: #ddd;
 <div th:if="${session.PREDICTION_FEATURE.isActive()}">
 <button id="checkbtn" class="btn btn-default disabled" onclick="predicateResponse()">Predicate Response</button>
 <span id="prediction"></span>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script type="text/javascript">
 /*<![CDATA[*/
 $("input").change(function() {
@@ -89,5 +97,35 @@ function predicateResponse(){
 </div>
 </div>
 </div>
+<script>
+  $(function() {
+    $( "#sr" ).autocomplete({
+      source: "subredditAutoComplete"
+    });
+  });
+</script>
+  
+<script>
+/*<![CDATA[*/
+function checkIfAlreadySubmitted(){
+    var url = $("input[name='url']").val();
+    var sr = $("input[name='sr']").val();
+    console.log(url);
+    if(url.length >3 && sr.length > 3){
+        $.post("checkIfAlreadySubmitted",{url: url, sr: sr}, function(data){
+        	var result = JSON.parse(data);
+        	if(result.length == 0){
+        		$("#checkResult").show().html("Not submitted before");
+        	}else{
+                $("#checkResult").show().html('Already submitted <b><a target="_blank" href="http://www.reddit.com'+result[0].data.permalink+'">here</a></b>');
+        	}
+        });
+    }
+    else{
+        $("#checkResult").show().html("Too short url and/or subreddit");
+    }
+}           
+/*]]>*/          
+</script>
 </body>
 </html>

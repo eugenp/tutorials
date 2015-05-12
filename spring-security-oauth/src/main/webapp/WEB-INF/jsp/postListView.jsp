@@ -16,6 +16,7 @@
 <th>Post title</th>
 <th>Submission Date</th>
 <th>Status</th>
+<th>Resubmit Attempts left</th>
 <th>Actions</th>
 </tr>
 </thead>
@@ -23,6 +24,8 @@
         <td th:text="${post.getTitle()}"></td>
         <td th:text="${#calendars.format(post.getSubmissionDate(),'dd MMMM yyyy  HH:mm z')}"></td>
         <td th:text="${post.getSubmissionResponse()}"></td>
+        <td th:if="${post.getNoOfAttempts() > 0}" th:text="${post.getNoOfAttempts()}"></td>
+        <td th:unless="${post.getNoOfAttempts() > 0}">-</td>
         <td>
             <a th:href="@{/editPost/{id}(id=${post.getId()})}" class="btn btn-warning" >Edit</a>
             <a href="#" class="btn btn-danger" th:onclick="'javascript:confirmDelete(\'' +${post.getId()}+ '\') '">Delete</a>
