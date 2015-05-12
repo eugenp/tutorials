@@ -142,6 +142,24 @@ public class RedditController {
         return (result == RedditClassifier.GOOD) ? "{Good Response}" : "{Bad response}";
     }
 
+    @RequestMapping(value = "/checkIfAlreadySubmitted", method = RequestMethod.POST)
+    @ResponseBody
+    public String checkIfAlreadySubmitted(@RequestParam("url") final String url, @RequestParam("sr") final String sr) {
+        logger.info("check if already submitted");
+        final JsonNode node = redditRestTemplate.getForObject("https://oauth.reddit.com/r/" + sr + "/search?q=url:" + url + "&restrict_sr=on", JsonNode.class);
+        logger.info(node.toString());
+        return node.get("data").get("children").toString();
+    }
+
+    @RequestMapping(value = "/subredditAutoComplete")
+    @ResponseBody
+    public String subredditAutoComplete(@RequestParam("term") final String term) {
+        final MultiValueMap<String, String> param = new LinkedMultiValueMap<String, String>();
+        param.add("query", term);
+        final JsonNode node = redditRestTemplate.postForObject("https://oauth.reddit.com//api/search_reddit_names", param, JsonNode.class);
+        return node.get("names").toString();
+    }
+
     // === post actions
 
     @RequestMapping(value = "/deletePost/{id}", method = RequestMethod.DELETE)
@@ -164,6 +182,11 @@ public class RedditController {
         post.setTitle(formParams.get("title"));
         post.setSubreddit(formParams.get("sr"));
         post.setUrl(formParams.get("url"));
+
+        post.setNoOfAttempts(Integer.parseInt(formParams.get("attempt")));
+        post.setTimeInterval(Integer.parseInt(formParams.get("interval")));
+        post.setMinScoreRequired(Integer.parseInt(formParams.get("score")));
+
         if (formParams.containsKey("sendreplies")) {
             post.setSendReplies(true);
         } else {
