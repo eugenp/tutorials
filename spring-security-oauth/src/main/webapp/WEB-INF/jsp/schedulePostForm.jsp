@@ -111,6 +111,11 @@ border-color: #ddd;
     $( "#sr" ).autocomplete({
       source: "subredditAutoComplete"
     });
+    
+    $("input[name='url'],input[name='sr']").focus(function (){
+        $("#checkResult").hide();
+    });
+    
   });
 </script>
   
