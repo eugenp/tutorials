@@ -61,6 +61,14 @@ public class JavaXToReaderUnitTest {
     }
 
     @Test
+    public void givenUsingPlainJava2_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
+        final byte[] initialArray = "Hello world!".getBytes();
+        final Reader targetReader = new InputStreamReader(new ByteArrayInputStream(initialArray));
+
+        targetReader.close();
+    }
+
+    @Test
     public void givenUsingGuava_whenConvertingByteArrayIntoReader_thenCorrect() throws IOException {
         final byte[] initialArray = "With Guava".getBytes();
         final String bufferString = new String(initialArray);
