@@ -9,9 +9,9 @@ import com.codahale.metrics.MetricRegistry;
 
 @Configuration
 public class MonitoringConfig {
-	@Autowired
+    @Autowired
     private MetricRegistry registry;
- 
+
     @Bean
     public JmxReporter jmxReporter() {
         JmxReporter reporter = JmxReporter.forRegistry(registry).build();

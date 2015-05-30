@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ListEndpoints extends AbstractEndpoint<List<Endpoint>> {
-	private List<Endpoint> endpoints;
+    private List<Endpoint> endpoints;
 
-	@Autowired
-	public ListEndpoints(List<Endpoint> endpoints) {
-		super("listEndpoints");
-		this.endpoints = endpoints;
-	}
+    @Autowired
+    public ListEndpoints(List<Endpoint> endpoints) {
+        super("listEndpoints");
+        this.endpoints = endpoints;
+    }
 
-	public List<Endpoint> invoke() {
-		return this.endpoints;
-	}
+    public List<Endpoint> invoke() {
+        return this.endpoints;
+    }
 }
