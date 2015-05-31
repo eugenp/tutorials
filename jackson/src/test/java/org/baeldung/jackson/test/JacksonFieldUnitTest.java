@@ -9,9 +9,8 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 
 import org.baeldung.jackson.field.MyDtoAccessLevel;
-import org.baeldung.jackson.field.MyDtoGetter;
-import org.baeldung.jackson.field.MyDtoGetterImplicitDeserialization;
 import org.baeldung.jackson.field.MyDtoSetter;
+import org.baeldung.jackson.field.MyDtoWithGetter;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -30,6 +29,7 @@ public class JacksonFieldUnitTest {
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
         assertThat(dtoAsString, not(containsString("stringValue")));
         assertThat(dtoAsString, not(containsString("intValue")));
+        assertThat(dtoAsString, not(containsString("floatValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
         System.out.println(dtoAsString);
     }
@@ -38,7 +38,7 @@ public class JacksonFieldUnitTest {
     public final void givenDifferentAccessLevels_whenGetterAdded_thenSerializable() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
 
-        final MyDtoGetter dtoObject = new MyDtoGetter();
+        final MyDtoWithGetter dtoObject = new MyDtoWithGetter();
 
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
         assertThat(dtoAsString, containsString("stringValue"));
@@ -51,7 +51,7 @@ public class JacksonFieldUnitTest {
         final String jsonAsString = "{\"stringValue\":\"dtoString\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        final MyDtoGetterImplicitDeserialization dtoObject = mapper.readValue(jsonAsString, MyDtoGetterImplicitDeserialization.class);
+        final MyDtoWithGetter dtoObject = mapper.readValue(jsonAsString, MyDtoWithGetter.class);
 
         assertNotNull(dtoObject);
         assertThat(dtoObject.getStringValue(), equalTo("dtoString"));

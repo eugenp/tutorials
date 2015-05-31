@@ -44,4 +44,11 @@ public class MyDto {
         this.booleanValue = booleanValue;
     }
 
+    //
+
+    @Override
+    public String toString() {
+        return "MyDto [stringValue=" + stringValue + ", intValue=" + intValue + ", booleanValue=" + booleanValue + "]";
+    }
+
 }

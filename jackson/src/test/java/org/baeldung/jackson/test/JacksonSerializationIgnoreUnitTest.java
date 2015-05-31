@@ -225,21 +225,25 @@ public class JacksonSerializationIgnoreUnitTest {
     }
 
     @Test
-    public final void givenAllowingMapObjectWithNullKey_whenWritingMapObjectWithNullKey_thenAllowed() throws JsonProcessingException {
+    public final void givenAllowingMapObjectWithNullKey_whenWriting_thenCorrect() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.getSerializerProvider().setNullKeySerializer(new MyDtoNullKeySerializer());
 
-        final MyDto dtoObject = new MyDto();
-        dtoObject.setStringValue("dtoObjectString");
+        final MyDto dtoObject1 = new MyDto();
+        dtoObject1.setStringValue("dtoObjectString1");
+        final MyDto dtoObject2 = new MyDto();
+        dtoObject2.setStringValue("dtoObjectString2");
 
         final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
-        dtoMap.put(null, dtoObject);
+        dtoMap.put(null, dtoObject1);
+        dtoMap.put("obj2", dtoObject2);
 
         final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
 
-        assertThat(dtoMapAsString, containsString(""));
-        assertThat(dtoMapAsString, containsString("dtoObjectString"));
         System.out.println(dtoMapAsString);
+        assertThat(dtoMapAsString, containsString("\"\""));
+        assertThat(dtoMapAsString, containsString("dtoObjectString1"));
+        assertThat(dtoMapAsString, containsString("obj2"));
     }
 
     @Test

@@ -1,17 +1,19 @@
 package org.baeldung.jackson.field;
 
-public class MyDtoGetterImplicitDeserialization {
+public class MyDtoWithGetter {
 
     private String stringValue;
+    private int intValue;
 
-    public MyDtoGetterImplicitDeserialization() {
+    public MyDtoWithGetter() {
         super();
     }
 
-    public MyDtoGetterImplicitDeserialization(final String stringValue) {
+    public MyDtoWithGetter(final String stringValue, final int intValue) {
         super();
 
         this.stringValue = stringValue;
+        this.intValue = intValue;
     }
 
     // API
