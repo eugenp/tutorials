@@ -1,15 +1,15 @@
 package org.baeldung.jackson.field;
 
-public class MyDtoSetter {
+public class MyDtoWithSetter {
 
     private int intValue;
     public boolean booleanValue;
 
-    public MyDtoSetter() {
+    public MyDtoWithSetter() {
         super();
     }
 
-    public MyDtoSetter(final int intValue, final boolean booleanValue) {
+    public MyDtoWithSetter(final int intValue, final boolean booleanValue) {
         super();
 
         this.intValue = intValue;
@@ -22,7 +22,7 @@ public class MyDtoSetter {
         this.intValue = intValue;
     }
 
-    public int alternativeGetIntValue() {
+    public int accessIntValue() {
         return intValue;
     }
 

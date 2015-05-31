@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 
 import org.baeldung.jackson.field.MyDtoAccessLevel;
-import org.baeldung.jackson.field.MyDtoSetter;
+import org.baeldung.jackson.field.MyDtoWithSetter;
 import org.baeldung.jackson.field.MyDtoWithGetter;
 import org.junit.Test;
 
@@ -62,17 +62,17 @@ public class JacksonFieldUnitTest {
         final String jsonAsString = "{\"intValue\":1}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        final MyDtoSetter dtoObject = mapper.readValue(jsonAsString, MyDtoSetter.class);
+        final MyDtoWithSetter dtoObject = mapper.readValue(jsonAsString, MyDtoWithSetter.class);
 
         assertNotNull(dtoObject);
-        assertThat(dtoObject.alternativeGetIntValue(), equalTo(1));
+        assertThat(dtoObject.accessIntValue(), equalTo(1));
     }
 
     @Test
     public final void givenDifferentAccessLevels_whenSetterAdded_thenStillNotSerializable() throws IOException {
         final ObjectMapper mapper = new ObjectMapper();
 
-        final MyDtoSetter dtoObject = new MyDtoSetter();
+        final MyDtoWithSetter dtoObject = new MyDtoWithSetter();
 
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
         assertThat(dtoAsString, not(containsString("intValue")));
