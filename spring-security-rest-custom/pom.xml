@@ -8,6 +8,12 @@
 	<name>spring-security-rest-custom</name>
 	<packaging>war</packaging>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.2.4.RELEASE</version>
+	</parent>
+
 	<dependencies>
 
 		<!-- Spring Security -->
@@ -15,12 +21,10 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${org.springframework.security.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${org.springframework.security.version}</version>
 		</dependency>
 
 		<!-- Spring -->
@@ -28,60 +32,50 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${org.springframework.version}</version>
 			<exclusions>
-			    <exclusion>
-			        <artifactId>commons-logging</artifactId>
-			        <groupId>commons-logging</groupId>
-			    </exclusion>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
-			<version>${org.springframework.version}</version>
 		</dependency>
 
 		<!-- marshalling -->
@@ -89,7 +83,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.2.2</version>
 		</dependency>
 
 		<!-- web -->
@@ -97,14 +90,12 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -125,7 +116,6 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>commons-logging</artifactId>
@@ -159,21 +149,39 @@
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
-			<version>${org.hamcrest.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
-			<version>${org.hamcrest.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- logging -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<!-- <scope>runtime</scope> -->
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
+		</dependency>
+		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -200,16 +208,16 @@
 					<debuglevel>source</debuglevel>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -284,7 +292,7 @@
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<cargo-maven2-plugin.version>1.4.12</cargo-maven2-plugin.version>
-		
+
 	</properties>
 
 </project>
