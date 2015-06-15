@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
+import org.apache.log4j.Logger;
 
 
 
@@ -32,7 +33,7 @@ public class MTConfig {
             return sf;
 
         } catch (Throwable ex) {
-            System.err.println("Failed to load the SessionFactory: " + ex);
+            logger.error("Failed to load the SessionFactory: " , ex);
             throw new ExceptionInInitializerError(ex);
         }
 

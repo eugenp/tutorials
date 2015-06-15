@@ -18,7 +18,8 @@ public class CustomerDataService {
 	CacheManager cacheManager;
 
 	/**
-	 * Gets the address.
+	 * The method returns the customer's address,
+	   only it doesn't find it the cache- addresses and directory.
 	 *
 	 * @param customer the customer
 	 * @return the address
@@ -32,8 +33,9 @@ public class CustomerDataService {
    }
 
 	/**
-		* Gets the address.
-		*
+	  * The method returns the customer's address,
+	    but refreshes all the entries in the cache to load new ones.
+    *
 		* @param customer the customer
 		* @return the address
 		*/
@@ -46,7 +48,8 @@ public class CustomerDataService {
 	}
 
 	/**
-		* Gets the address.
+	  * The method returns the customer's address,
+	    but not before selectively evicting the cache as per specified paramters.
 		*
 		* @param customer the customer
 		* @return the address
@@ -60,7 +63,7 @@ public class CustomerDataService {
 	}
 
 	/**
-	* Gets the address.
+	* The method uses the class level cache to look up for entries.
 	*
 	* @param customer the customer
 	* @return the address
@@ -74,7 +77,7 @@ public class CustomerDataService {
 	}
 
 	/**
-	* Gets the address.
+	* The method selectively caches the results that meet the predefined criteria.
 	*
 	* @param customer the customer
 	* @return the address

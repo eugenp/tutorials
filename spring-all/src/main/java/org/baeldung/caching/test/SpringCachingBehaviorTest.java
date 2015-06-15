@@ -6,26 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 
 
-/**
- * The Class CustomerDataService.
- */
 @Component
 
 public class SpringCachingBehaviorTest {
-/**
- * The main method.
- *
- * @param args the arguments
- */
- public static void main(String[] args) {
+
+ @Test
+ public void testCaching() {
     @SuppressWarnings("resource")
     ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
     example = context.getBean(CustomerDataService.class);
     Customer cust = new Customer("Tom", "67-2, Downing Street, NY");
     example.getAddress(cust);
+    fail("Unable to instantiate the CustomerDataService");
   }
 
 }
