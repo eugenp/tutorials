@@ -6,12 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * MultitenantService-- we use the SessionFactory to save and fetch entities.
- * User: baeldung
- * Date: 9/06/15
- */
-
 @Service
 public class MultiTenantService {
 
