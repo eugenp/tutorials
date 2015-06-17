@@ -9,8 +9,6 @@ import java.sql.SQLException;
 import java.util.Map;
 import org.apache.log4j.Logger;
 
-
-
 @Configuration
 public class MTConfig {
 
