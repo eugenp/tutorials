@@ -1,5 +1,3 @@
-
-
 package org.baeldung.caching.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +6,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import static org.junit.Assert.*;
 import org.junit.Test;
-
-
 
 @Component
 
