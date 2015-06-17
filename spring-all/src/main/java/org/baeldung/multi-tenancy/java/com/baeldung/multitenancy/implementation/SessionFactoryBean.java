@@ -8,11 +8,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: vtajzich
- * Date: 8/21/13
- */
 public class SessionFactoryBean extends org.springframework.orm.hibernate4.LocalSessionFactoryBean {
 
     private Map<String, DataSource> dataSourceMap;
