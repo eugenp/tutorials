@@ -32,7 +32,4 @@ public class MultiTenantService {
                 getCurrentSession().createQuery("from Books").list();
     }
 
-    public void setSessionFactory(SessionFactory sessionFactory){
-        this.sessionFactory = sessionFactory;
-    }
 }
