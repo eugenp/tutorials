@@ -10,7 +10,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 @Configuration
-public class MTConfig {
+public class MtConfig {
 
     @Bean
     public SessionFactoryBean sessionFactory(Map<String, DataSource> dataSourceMap, DataSource dataSource){
