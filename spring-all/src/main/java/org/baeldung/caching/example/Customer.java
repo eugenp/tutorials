@@ -1,20 +1,19 @@
 
 public class Customer {
 
-
     private int id;
-
-
     private String name;
-
-
     private String customerAddress;
+
+    Customer(){
+      this.name="";
+      this.customerAddress="";
+    }
 
     Customer(String name, String address){
         this.name = name;
         this.customerAddress = address;
     }
-
 
     public int getId() {
         return id;
