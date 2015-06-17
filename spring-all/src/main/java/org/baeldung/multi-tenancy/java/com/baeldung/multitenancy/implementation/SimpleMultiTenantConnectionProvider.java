@@ -5,12 +5,6 @@ import org.hibernate.service.jdbc.connections.spi.AbstractDataSourceBasedMultiTe
 import javax.sql.DataSource;
 import java.util.Map;
 
-/**
- * CurrentSessionTenantIdentifierResolver-- here we fetch the DB conection for the given tenantIdentifier.
- * User: baeldung
- * Date: 9/06/15
- */
-
 public class SimpleMultiTenantConnectionProvider extends AbstractDataSourceBasedMultiTenantConnectionProviderImpl {
 
     private Map<String, DataSource> dataSourceMap;
