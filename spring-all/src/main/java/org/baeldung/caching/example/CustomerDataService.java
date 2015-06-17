@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @CacheConfig("addressDemo")
 public class CustomerDataService {
 
-    /** The cache manager. */
     @Autowired
     CacheManager cacheManager;
 
