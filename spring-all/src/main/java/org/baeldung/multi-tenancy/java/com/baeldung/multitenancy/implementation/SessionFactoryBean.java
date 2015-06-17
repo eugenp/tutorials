@@ -26,11 +26,8 @@ public class SessionFactoryBean extends org.springframework.orm.hibernate4.Local
             Connection connection = null;
 
             try {
-
                 connection = entry.getValue().getConnection();
-
                 SchemaExport export = new SchemaExport(getConfiguration(), connection);
-
                 export.setOutputFile(entry.getKey() + "-schema.sql");
                 export.setDelimiter(";");
 
