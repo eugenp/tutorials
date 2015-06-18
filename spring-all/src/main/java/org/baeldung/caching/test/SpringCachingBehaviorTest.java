@@ -8,9 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 @Component
-
 public class SpringCachingBehaviorTest {
-
  @Test
  public void testCaching() {
     @SuppressWarnings("resource")
@@ -20,5 +18,4 @@ public class SpringCachingBehaviorTest {
     example.getAddress(cust);
     fail("Unable to instantiate the CustomerDataService");
   }
-
 }
