@@ -1,5 +1,3 @@
-
-
 package org.baeldung.caching.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
