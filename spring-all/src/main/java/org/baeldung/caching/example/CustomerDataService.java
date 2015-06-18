@@ -71,6 +71,4 @@ public class CustomerDataService {
     public String getAddress5(Customer customer) {
         return customer.getAddress();
     }
-
-
 }
