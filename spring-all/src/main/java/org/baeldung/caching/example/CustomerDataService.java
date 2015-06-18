@@ -20,11 +20,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-
     @Cacheable("addresses", “directory”)
-
     public String getAddress1(Customer customer) {
-
         return customer.getAddress();
     }
 
@@ -35,11 +32,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-
     @CacheEvict(value="addresses", allEntries=true)
-
     public String getAddress2(Customer customer) {
-
         return customer.getAddress();
     }
 
@@ -50,11 +44,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-
     @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value="directory", key="customer.name") })
-
     public String getAddress3(Customer customer) {
-
         return customer.getAddress();
     }
 
@@ -64,11 +55,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-
     @Cacheable // parameter not required as we have declared it using @CacheConfig
-
     public String getAddress4(Customer customer) {
-
         return customer.getAddress();
     }
 
@@ -78,13 +66,9 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-
-
     @CachePut(value="addresses", condition=”#customer.name=’Tom’”)
     @CachePut(value="addresses", unless=”#result.length>64”)
-
     public String getAddress5(Customer customer) {
-
         return customer.getAddress();
     }
 
