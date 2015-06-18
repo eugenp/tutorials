@@ -5,7 +5,7 @@ public class Customer {
     private String name;
     private String customerAddress;
 
-    Customer(){
+    public Customer(){
       this.name="";
       this.customerAddress="";
     }
@@ -26,13 +26,13 @@ public class Customer {
     public String getName() {
         return name;
     }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getCustomerAddress() {
         return this.customerAddress;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setCustomerAddress(String address) {
