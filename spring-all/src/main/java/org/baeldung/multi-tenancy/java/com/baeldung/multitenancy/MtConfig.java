@@ -14,7 +14,6 @@ public class MtConfig {
 
     @Bean
     public SessionFactoryBean sessionFactory(Map<String, DataSource> dataSourceMap, DataSource dataSource){
-
         SessionFactoryBean sf = new SessionFactoryBean();
         sf.setDataSourceMap(dataSourceMap);
         sf.setDataSource(dataSource);
@@ -26,7 +25,6 @@ public class MtConfig {
             prop.setProperty("hibernate.multiTenancy", "DATABASE");
             prop.setProperty("hibernate.tenant_identifier_resolver", "currentSessionTenantIdentifierResolver");
             prop.setProperty("hibernate.multi_tenant_connection_provider", "simpleMultiTenantConnectionProvider");
-
             sf = new AnnotationConfiguration().setProperties(prop).configure().buildSessionFactory();
             return sf;
 
@@ -34,28 +32,19 @@ public class MtConfig {
             logger.error("Failed to load the SessionFactory: " , ex);
             throw new ExceptionInInitializerError(ex);
         }
-
     }
 
     @Bean(name = "currentSessionTenantIdentifierResolver")
     @Scope("request", proxyMode = ScopedProxyMode.INTERFACES)
     public CurrentSessionTenantIdentifierResolver currentSessionTenantIdentifierResolver(){
-
         CurrentSessionTenantIdentifierResolver cstir = new CurrentSessionTenantIdentifierResolver();
         return cstir;
-
     }
 
     @Bean(name = "simpleMultiTenantConnectionProvider")
     public SimpleMultiTenantConnectionProvider simpleMultiTenantConnectionProvider(Map<String, DataSource> dataSourceMap){
-
         SimpleMultiTenantConnectionProvider smtcp = new SimpleMultiTenantConnectionProvider();
         smtcp.setDataSourceMap(dataSourceMap);
         return cstir;
-
     }
-
-
-
-
 }
