@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class CustomerDataService {
 
     @Autowired
-    CacheManager cacheManager;
+    private CacheManager cacheManager;
 
     /**
      * The method returns the customer's address,
