@@ -29,7 +29,7 @@
         <form-login login-page='/login.html' authentication-failure-url="/login.html?error=true" authentication-success-handler-ref="myAuthenticationSuccessHandler"
             default-target-url="/homepage.html" />
         <session-management invalid-session-url="/invalidSession.html" session-fixation-protection="none" />
-        <logout invalidate-session="false" logout-success-url="/logout.html?logSucc=true" logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
+        <logout invalidate-session="true" logout-success-url="/logout.html?logSucc=true" logout-url="/j_spring_security_logout" delete-cookies="JSESSIONID" />
     </http>
 
     <authentication-manager>

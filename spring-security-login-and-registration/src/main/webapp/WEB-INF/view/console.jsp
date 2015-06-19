@@ -34,8 +34,10 @@ ${param.message}
         <br />
             </sec:authorize>
         <a class="btn btn-default" href="<c:url value="/changePassword.html" />"><spring:message code="message.changePassword"></spring:message></a>
-
-        <a class="btn btn-default" href="<c:url value="/admin.html" />"><spring:message code="label.pages.admin"></spring:message></a>
+ 		<sec:authorize access="hasRole('WRITE_PRIVILEGE')">
+        	<a class="btn btn-default" href="<c:url value="/admin.html" />"><spring:message code="label.pages.admin"></spring:message></a>
+        	<a class="btn btn-default" href="<c:url value="/loginUser.html" />"><spring:message code="label.pages.admin.loggedinuser"></spring:message></a>
+        </sec:authorize>
     </div>
 </body>
 
