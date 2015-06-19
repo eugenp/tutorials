@@ -9,11 +9,11 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    Long id;
+    private Long id;
 
     @NotNull
     @Column(name = "name")
-    String name;
+    private String name;
     
     public Long getId() {
         return id;
