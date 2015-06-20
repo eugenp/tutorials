@@ -6,8 +6,6 @@ public class Customer {
     private String customerAddress;
 
     public Customer(){
-      this.name="";
-      this.customerAddress="";
     }
 
     Customer(String name, String address){
