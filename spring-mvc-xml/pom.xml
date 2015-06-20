@@ -116,8 +116,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
@@ -158,17 +158,17 @@
 		<junit.version>4.11</junit.version>
 		<mockito.version>1.10.19</mockito.version>
 
-		<httpcore.version>4.4</httpcore.version>
-		<httpclient.version>4.4</httpclient.version>
+		<httpcore.version>4.4.1</httpcore.version>
+		<httpclient.version>4.5</httpclient.version>
 
-		<rest-assured.version>2.4.0</rest-assured.version>
+		<rest-assured.version>2.4.1</rest-assured.version>
 
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.12</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
 
 	</properties>
 
