@@ -63,7 +63,6 @@ public class ActiveUser {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((activeTime == null) ? 0 : activeTime.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((ipAddress == null) ? 0 : ipAddress.hashCode());
         result = prime * result + ((user == null) ? 0 : user.hashCode());
         return result;
@@ -82,11 +81,6 @@ public class ActiveUser {
             if (other.activeTime != null)
                 return false;
         } else if (!activeTime.equals(other.activeTime))
-            return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
             return false;
         if (ipAddress == null) {
             if (other.ipAddress != null)

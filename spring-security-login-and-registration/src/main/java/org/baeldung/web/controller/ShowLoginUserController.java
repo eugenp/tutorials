@@ -30,7 +30,7 @@ public class ShowLoginUserController {
     @RequestMapping(value = "getAllLoggedInUsers")
     public void getAllLoggedInUsers(HttpServletRequest request, HttpServletResponse response) throws JsonGenerationException, JsonMappingException, IOException {
         List<ActiveUser> activeUsers = activeUserRepository.findAll();
-        // List<ActiveUser> activeUsers = ActiveUserCache.getInstance().getAll();
+        // List<ActiveUser> activeUsers = ActiveUserCache.getInstance().findAll();
         List<ActiveUserView> activeUserViews = new ArrayList<ActiveUserView>(activeUsers == null ? 10 : activeUsers.size());
         if (activeUsers != null && !activeUsers.isEmpty()) {
             ActiveUserView userView;
