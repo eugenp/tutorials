@@ -47,7 +47,7 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value = "directory", key = "customer.name") })
+    @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value = "directory", key = "#customer.name") })
     public String getAddress3(final Customer customer) {
         return customer.getAddress();
     }
@@ -70,7 +70,7 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @CachePut(value = "addresses", condition = "#customer.name='Tom'")
+    @CachePut(value = "addresses", condition = "#customer.name=='Tom'")
     // @CachePut(value = "addresses", unless = "#result.length>64")
     public String getAddress5(final Customer customer) {
         return customer.getAddress();
