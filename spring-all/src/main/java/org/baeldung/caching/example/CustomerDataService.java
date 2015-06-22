@@ -2,12 +2,15 @@ package org.baeldung.caching.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.ApplicationContext;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 @Component
-@CacheConfig("addressDemo")
+@CacheConfig(cacheNames = { "addressDemo" })
 public class CustomerDataService {
 
     @Autowired
@@ -20,8 +23,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @Cacheable("addresses", “directory”)
-    public String getAddress1(Customer customer) {
+    @Cacheable({ "addresses", "directory" })
+    public String getAddress1(final Customer customer) {
         return customer.getAddress();
     }
 
@@ -32,8 +35,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @CacheEvict(value="addresses", allEntries=true)
-    public String getAddress2(Customer customer) {
+    @CacheEvict(value = "addresses", allEntries = true)
+    public String getAddress2(final Customer customer) {
         return customer.getAddress();
     }
 
@@ -44,8 +47,8 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value="directory", key="customer.name") })
-    public String getAddress3(Customer customer) {
+    @Caching(evict = { @CacheEvict("addresses"), @CacheEvict(value = "directory", key = "customer.name") })
+    public String getAddress3(final Customer customer) {
         return customer.getAddress();
     }
 
@@ -55,8 +58,9 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @Cacheable // parameter not required as we have declared it using @CacheConfig
-    public String getAddress4(Customer customer) {
+    @Cacheable
+    // parameter not required as we have declared it using @CacheConfig
+    public String getAddress4(final Customer customer) {
         return customer.getAddress();
     }
 
@@ -66,9 +70,9 @@ public class CustomerDataService {
      * @param customer the customer
      * @return the address
      */
-    @CachePut(value="addresses", condition=”#customer.name=’Tom’”)
-    @CachePut(value="addresses", unless=”#result.length>64”)
-    public String getAddress5(Customer customer) {
+    @CachePut(value = "addresses", condition = "#customer.name='Tom'")
+    // @CachePut(value = "addresses", unless = "#result.length>64")
+    public String getAddress5(final Customer customer) {
         return customer.getAddress();
     }
 }
