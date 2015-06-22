@@ -12,11 +12,21 @@
 	<cache:annotation-driven />
 
 	<context:annotation-config />
-	<bean class="org.baeldung.caching.config.myAppConfig" />
+	<bean class="org.baeldung.caching.config.MyAppConfig" />
 
 	<!-- the service that you wish to make cacheable. -->
 	<bean id="customerDataService" class="org.baeldung.caching.example.CustomerDataService" />
 
+	<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+	    <property name="caches">
+	        <set>
+	            <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="directory"/>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="addresses"/>
+                <bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" name="addressDemo"/>
+	        </set>
+	    </property>
+	</bean>
+	
 	<!-- define caching behavior -->
 	<cache:advice id="cachingBehavior" cache-manager="cacheManager">
 		<cache:caching cache="addresses">
@@ -24,11 +34,12 @@
 		</cache:caching>
 	</cache:advice>
 
+
 	<!-- apply the behavior to all the implementations of CustomerDataService 
 		interface -->
 	<aop:config>
 		<aop:advisor advice-ref="cachingBehavior"
-			pointcut="execution(*org.baeldung.caching.example.CustomerDataService.*(..))" />
+			pointcut="execution(* org.baeldung.caching.example.CustomerDataService.*(..))" />
 	</aop:config>
 
 </beans>

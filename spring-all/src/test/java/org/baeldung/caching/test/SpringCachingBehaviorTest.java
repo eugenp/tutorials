@@ -1,7 +1,5 @@
 package org.baeldung.caching.test;
 
-import static org.junit.Assert.fail;
-
 import org.baeldung.caching.example.Customer;
 import org.baeldung.caching.example.CustomerDataService;
 import org.junit.Test;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SpringCachingBehaviorTest {
+
     @Test
     public void testCaching() {
         @SuppressWarnings("resource")
@@ -19,7 +18,9 @@ public class SpringCachingBehaviorTest {
 
         final Customer cust = new Customer("Tom", "67-2, Downing Street, NY");
         service.getAddress1(cust);
-        fail("Unable to instantiate the CustomerDataService");
+        service.getAddress1(cust);
+
+        // fail("Unable to instantiate the CustomerDataService");
     }
 
 }
