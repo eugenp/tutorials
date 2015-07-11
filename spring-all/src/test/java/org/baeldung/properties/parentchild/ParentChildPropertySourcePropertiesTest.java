@@ -1,8 +1,10 @@
-package org.baeldung.properties.config;
+package org.baeldung.properties.parentchild;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import org.baeldung.properties.parentchild.config.ChildConfig;
+import org.baeldung.properties.parentchild.config.ParentConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +18,13 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextHierarchy({ @ContextConfiguration(classes = ParentConfig.class), @ContextConfiguration(classes = ChildConfig.class) })
-public class ParentChildPropertiesTest {
+public class ParentChildPropertySourcePropertiesTest {
 
     @Autowired
     private WebApplicationContext wac;
 
     @Test
-    public void givenParentPropertySource_whenGetValue_thenCorrect() {
+    public void givenPropertySource_whenGetPropertyUsingEnv_thenCorrect() {
         final Environment childEnv = wac.getEnvironment();
         final Environment parentEnv = wac.getParent().getEnvironment();
 
@@ -32,4 +34,17 @@ public class ParentChildPropertiesTest {
         assertEquals(childEnv.getProperty("parent.name"), "parent");
         assertEquals(childEnv.getProperty("child.name"), "child");
     }
+
+    @Test
+    public void givenPropertySource_whenGetPropertyUsingValueAnnotation_thenCorrect() {
+        final ChildValueHolder childValueHolder = wac.getBean(ChildValueHolder.class);
+        final ParentValueHolder parentValueHolder = wac.getParent().getBean(ParentValueHolder.class);
+
+        assertEquals(parentValueHolder.getParentName(), "parent");
+        assertEquals(parentValueHolder.getChildName(), "-");
+
+        assertEquals(childValueHolder.getParentName(), "parent");
+        assertEquals(childValueHolder.getChildName(), "child");
+    }
+
 }
