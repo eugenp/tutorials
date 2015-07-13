@@ -264,7 +264,7 @@ a:focus {
 }
 
 .row {
-  margin-left: -20px;
+  margin-left: 0px !important;
   *zoom: 1;
 }
 
