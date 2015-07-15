@@ -68,7 +68,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionFixation().none()
             .and()
             .logout()
-                .invalidateHttpSession(false)
+                .invalidateHttpSession(true)
                 .logoutUrl("/j_spring_security_logout")
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
