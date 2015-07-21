@@ -153,6 +153,13 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+             <groupId>org.springframework</groupId> 
+             <artifactId>spring-test</artifactId> 
+             <version>${spring.version}</version> 
+        </dependency>
+		
 
 	</dependencies>
 
@@ -172,8 +179,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 
