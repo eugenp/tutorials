@@ -38,14 +38,15 @@ public class RedirectController {
 		return new RedirectView("redirectedUrl");
 	}
 
-	@RequestMapping(value = "/redirectWithForwardPrefix", method = RequestMethod.GET)
-	public ModelAndView redirectWithUsingForwardPrefix(final ModelMap model) {
+	@RequestMapping(value = "/forwardWithForwardPrefix", method = RequestMethod.GET)
+	public ModelAndView forwardWithUsingForwardPrefix(final ModelMap model) {
 		model.addAttribute("attribute", "redirectWithForwardPrefix");
 		return new ModelAndView("forward:/redirectedUrl", model);
 	}
 
 	@RequestMapping(value = "/redirectedUrl", method = RequestMethod.GET)
-	public ModelAndView redirection(final ModelMap model, @ModelAttribute("flashAttribute") final Object flashAttribute) {
+	public ModelAndView redirection(final ModelMap model,
+			@ModelAttribute("flashAttribute") final Object flashAttribute) {
 		model.addAttribute("redirectionAttribute", flashAttribute);
 		return new ModelAndView("redirection", model);
 	}
