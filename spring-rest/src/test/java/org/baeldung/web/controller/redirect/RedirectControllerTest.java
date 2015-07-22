@@ -26,56 +26,42 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration
 public class RedirectControllerTest {
 
-	private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-	@Autowired
-	protected WebApplicationContext wac;
+    @Autowired
+    protected WebApplicationContext wac;
 
-	@Before
-	public void setup() {
-		mockMvc = webAppContextSetup(wac).build();
-	}
+    @Before
+    public void setup() {
+        mockMvc = webAppContextSetup(wac).build();
+    }
 
-	@Test
-	public void whenRedirectOnUrlWithUsingXMLConfig_thenStatusRedirectionAndRedirectedOnUrl() throws Exception {
-		mockMvc.perform(get("/redirectWithXMLConfig")).andExpect(status().is3xxRedirection())
-		.andExpect(view().name("RedirectedUrl"))
-		.andExpect(model().attribute("attribute", is("redirectWithXMLConfig")))
-		.andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithXMLConfig"));
-	}
+    @Test
+    public void whenRedirectOnUrlWithUsingXMLConfig_thenStatusRedirectionAndRedirectedOnUrl() throws Exception {
+        mockMvc.perform(get("/redirectWithXMLConfig")).andExpect(status().is3xxRedirection()).andExpect(view().name("RedirectedUrl")).andExpect(model().attribute("attribute", is("redirectWithXMLConfig")))
+        .andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithXMLConfig"));
+    }
 
-	@Test
-	public void whenRedirectOnUrlWithUsingRedirectPrefix_thenStatusRedirectionAndRedirectedOnUrl() throws Exception {
-		mockMvc.perform(get("/redirectWithRedirectPrefix")).andExpect(status().is3xxRedirection())
-		.andExpect(view().name("redirect:/redirectedUrl"))
-		.andExpect(model().attribute("attribute", is("redirectWithRedirectPrefix")))
-		.andExpect(redirectedUrl("/redirectedUrl?attribute=redirectWithRedirectPrefix"));
-	}
+    @Test
+    public void whenRedirectOnUrlWithUsingRedirectPrefix_thenStatusRedirectionAndRedirectedOnUrl() throws Exception {
+        mockMvc.perform(get("/redirectWithRedirectPrefix")).andExpect(status().is3xxRedirection()).andExpect(view().name("redirect:/redirectedUrl")).andExpect(model().attribute("attribute", is("redirectWithRedirectPrefix")))
+        .andExpect(redirectedUrl("/redirectedUrl?attribute=redirectWithRedirectPrefix"));
+    }
 
-	@Test
-	public void whenRedirectOnUrlWithUsingRedirectAttributes_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope()
-			throws Exception {
-		mockMvc.perform(get("/redirectWithRedirectAttributes")).andExpect(status().is3xxRedirection())
-		.andExpect(flash().attribute("flashAttribute", is("redirectWithRedirectAttributes")))
-		.andExpect(model().attribute("attribute", is("redirectWithRedirectAttributes")))
-		.andExpect(model().attribute("flashAttribute", is(nullValue())))
-		.andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectAttributes"));
-	}
+    @Test
+    public void whenRedirectOnUrlWithUsingRedirectAttributes_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope() throws Exception {
+        mockMvc.perform(get("/redirectWithRedirectAttributes")).andExpect(status().is3xxRedirection()).andExpect(flash().attribute("flashAttribute", is("redirectWithRedirectAttributes")))
+        .andExpect(model().attribute("attribute", is("redirectWithRedirectAttributes"))).andExpect(model().attribute("flashAttribute", is(nullValue()))).andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectAttributes"));
+    }
 
-	@Test
-	public void whenRedirectOnUrlWithUsingRedirectView_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope()
-			throws Exception {
-		mockMvc.perform(get("/redirectWithRedirectView")).andExpect(status().is3xxRedirection())
-		.andExpect(model().attribute("attribute", is("redirectWithRedirectView")))
-		.andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectView"));
-	}
+    @Test
+    public void whenRedirectOnUrlWithUsingRedirectView_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope() throws Exception {
+        mockMvc.perform(get("/redirectWithRedirectView")).andExpect(status().is3xxRedirection()).andExpect(model().attribute("attribute", is("redirectWithRedirectView"))).andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectView"));
+    }
 
-	@Test
-	public void whenRedirectOnUrlWithUsingForwardPrefix_thenStatusOkAndForwardedOnUrl() throws Exception {
-		mockMvc.perform(get("/forwardWithForwardPrefix")).andExpect(status().isOk())
-		.andExpect(view().name("forward:/redirectedUrl"))
-		.andExpect(model().attribute("attribute", is("redirectWithForwardPrefix")))
-		.andExpect(forwardedUrl("/redirectedUrl"));
-	}
+    @Test
+    public void whenRedirectOnUrlWithUsingForwardPrefix_thenStatusOkAndForwardedOnUrl() throws Exception {
+        mockMvc.perform(get("/forwardWithForwardPrefix")).andExpect(status().isOk()).andExpect(view().name("forward:/redirectedUrl")).andExpect(model().attribute("attribute", is("redirectWithForwardPrefix"))).andExpect(forwardedUrl("/redirectedUrl"));
+    }
 
 }
