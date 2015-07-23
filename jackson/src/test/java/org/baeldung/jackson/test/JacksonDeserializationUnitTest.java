@@ -66,7 +66,7 @@ public class JacksonDeserializationUnitTest {
 
     @Test
     public final void givenJsonHasUnknownValuesButJacksonIsIgnoringUnknownFields_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final String jsonAsString =// @formatter:off
+        final String jsonAsString = // @formatter:off
                 "{\"stringValue\":\"a\"," +
                 "\"intValue\":1," +
                 "\"booleanValue\":true," +
@@ -84,7 +84,7 @@ public class JacksonDeserializationUnitTest {
 
     @Test
     public final void givenJsonHasUnknownValuesButUnknownFieldsAreIgnoredOnClass_whenDeserializing_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
-        final String jsonAsString =// @formatter:off
+        final String jsonAsString = // @formatter:off
                 "{\"stringValue\":\"a\"," +
                 "\"intValue\":1," +
                 "\"booleanValue\":true," +

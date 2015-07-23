@@ -55,12 +55,12 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     } // @formatter:on
 
     @Bean
-    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler(){
+    public MySavedRequestAwareAuthenticationSuccessHandler mySuccessHandler() {
         return new MySavedRequestAwareAuthenticationSuccessHandler();
     }
 
     @Bean
-    public SimpleUrlAuthenticationFailureHandler myFailureHandler(){
+    public SimpleUrlAuthenticationFailureHandler myFailureHandler() {
         return new SimpleUrlAuthenticationFailureHandler();
     }
 

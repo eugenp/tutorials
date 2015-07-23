@@ -6,7 +6,7 @@ import org.baeldung.persistence.model.Parent;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ParentDao extends AbstractHibernateDao<Parent> implements IParentDao {
+public class ParentDao extends AbstractHibernateDao<Parent>implements IParentDao {
 
     public ParentDao() {
         super();

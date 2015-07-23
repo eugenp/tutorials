@@ -11,7 +11,6 @@ public class ParentValueHolder {
     @Value("${child.name:-}")
     private String childName;
 
-
     public String getParentName() {
         return parentName;
     }

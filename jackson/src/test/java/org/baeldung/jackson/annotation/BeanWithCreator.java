@@ -3,7 +3,6 @@ package org.baeldung.jackson.annotation;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class BeanWithCreator {
     public int id;
     public String name;

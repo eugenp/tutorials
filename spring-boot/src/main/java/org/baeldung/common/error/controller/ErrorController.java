@@ -8,12 +8,12 @@ public class ErrorController {
 
     public ErrorController() {
     }
-    
+
     @RequestMapping("/400")
     String error400() {
         return "Error Code: 400 occured.";
     }
-    
+
     @RequestMapping("/errorHeaven")
     String errorHeaven() {
         return "You have reached the heaven of errors!!!";

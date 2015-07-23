@@ -17,7 +17,7 @@ public class MyServletContainerCustomizationBean implements EmbeddedServletConta
     public void customize(ConfigurableEmbeddedServletContainer container) {
         container.setPort(8084);
         container.setContextPath("/springbootapp");
-        
+
         container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400"));
         container.addErrorPages(new ErrorPage("/errorHeaven"));
     }

@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({// @formatter:off
+@Suite.SuiteClasses({ // @formatter:off
     JacksonCollectionDeserializationUnitTest.class
     ,JacksonSerializationEnumsUnitTest.class
     ,JacksonDeserializationUnitTest.class
