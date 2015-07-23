@@ -239,11 +239,11 @@
                 </configuration>
             </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${maven-war-plugin.version}</version>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -317,11 +317,11 @@
         <rest-assured.version>2.4.1</rest-assured.version>
 
         <!-- Maven plugins -->
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-		<cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
-		
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
+
     </properties>
 
 </project>
