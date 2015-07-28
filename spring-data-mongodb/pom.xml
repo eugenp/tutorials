@@ -7,7 +7,6 @@
     <packaging>jar</packaging>
 
     <name>spring-data-mongodb</name>
-    <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,8 +16,6 @@
         <junit.version>4.11</junit.version>
         <rest-assured.version>2.4.1</rest-assured.version>
     </properties>
-
-
 
     <dependencies>
 
