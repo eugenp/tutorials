@@ -8,7 +8,6 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 
 @Configuration
-@EnableMongoRepositories
 public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
