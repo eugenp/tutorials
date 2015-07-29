@@ -18,7 +18,7 @@ public class UserRepository {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    public void insertUser(User user) {
+    public void insertUser(final User user) {
         mongoTemplate.insert(user, "user");
     }
 
@@ -26,42 +26,42 @@ public class UserRepository {
         return mongoTemplate.findAll(User.class, "user");
     }
 
-    public void removeUser(User user) {
+    public void removeUser(final User user) {
         mongoTemplate.remove(user, "user");
     }
 
-    public void saveUser(User user) {
+    public void saveUser(final User user) {
         mongoTemplate.save(user, "user");
     }
 
-    public User findAndModifyUser(String name, String newName) {
-        Query query = new Query();
+    public User findAndModifyUser(final String name, final String newName) {
+        final Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        Update update = new Update();
+        final Update update = new Update();
         update.set("name", newName);
         return mongoTemplate.findAndModify(query, update, User.class);
     }
 
-    public void updateFirstUser(String name, String newName) {
-        Query query = new Query();
+    public void updateFirstUser(final String name, final String newName) {
+        final Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        Update update = new Update();
+        final Update update = new Update();
         update.set("name", newName);
         mongoTemplate.updateFirst(query, update, User.class);
     }
 
-    public WriteResult upsertUser(String name, String newName) {
-        Query query = new Query();
+    public WriteResult upsertUser(final String name, final String newName) {
+        final Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        Update update = new Update();
+        final Update update = new Update();
         update.set("name", newName);
         return mongoTemplate.upsert(query, update, User.class);
     }
 
-    public void updateMultiUser(String name, String newName) {
-        Query query = new Query();
+    public void updateMultiUser(final String name, final String newName) {
+        final Query query = new Query();
         query.addCriteria(Criteria.where("name").is(name));
-        Update update = new Update();
+        final Update update = new Update();
         update.set("name", newName);
         mongoTemplate.updateMulti(query, update, User.class);
     }

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertThat;
 
 import org.baeldung.config.MongoConfig;
 import org.baeldung.model.User;
-import org.baeldung.repository.UserRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +17,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes={MongoConfig.class, UserRepository.class})
+@ContextConfiguration(classes = { MongoConfig.class, UserRepository.class })
 public class UserRepositoryIntegrationTest {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -36,9 +36,11 @@ public class UserRepositoryIntegrationTest {
         mongoOps.dropCollection(User.class);
     }
 
+    // tests
+
     @Test
     public void testInsert() {
-        User user = new User();
+        final User user = new User();
         user.setName("Jon");
         userRepository.insertUser(user);
 
@@ -52,7 +54,7 @@ public class UserRepositoryIntegrationTest {
         userRepository.insertUser(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Jack")), User.class);
-        String id = user.getId();
+        final String id = user.getId();
 
         user.setName("Jim");
         userRepository.saveUser(user);
@@ -107,7 +109,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testUpsert() {
-        User user = new User();
+        final User user = new User();
         user.setName("Markus");
         mongoOps.insert(user);
 
@@ -119,7 +121,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testRemove() {
-        User user = new User();
+        final User user = new User();
         user.setName("Benn");
         mongoOps.insert(user);
 
