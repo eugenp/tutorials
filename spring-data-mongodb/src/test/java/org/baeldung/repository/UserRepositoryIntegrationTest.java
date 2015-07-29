@@ -3,6 +3,7 @@ package org.baeldung.repository;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.baeldung.config.MongoConfig;
 import org.baeldung.model.User;
 import org.baeldung.repository.UserRepository;
 import org.junit.After;
@@ -17,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/resources/mongoConfig.xml")
+@ContextConfiguration(classes={MongoConfig.class, UserRepository.class})
 public class UserRepositoryIntegrationTest {
     @Autowired
     private UserRepository userRepository;
