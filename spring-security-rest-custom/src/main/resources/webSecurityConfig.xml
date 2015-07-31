@@ -4,17 +4,18 @@
         http://www.springframework.org/schema/security 
         http://www.springframework.org/schema/security/spring-security-3.2.xsd
         http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd"
+>
 
     <http use-expressions="true">
-        <intercept-url pattern="/**" access="isAuthenticated()" />
-        
-        <http-basic />
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <http-basic/>
 
     </http>
 
     <authentication-manager>
-        <authentication-provider ref="customAuthenticationProvider" />
+        <authentication-provider ref="customAuthenticationProvider"/>
     </authentication-manager>
 
 </beans:beans>

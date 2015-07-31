@@ -16,12 +16,8 @@ public class Zoo {
         this.animal = animal;
     }
 
-
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = As.PROPERTY, property = "type")
-    @JsonSubTypes({
-        @JsonSubTypes.Type(value = Dog.class, name = "dog"),
-        @JsonSubTypes.Type(value = Cat.class, name = "cat")
-    })
+    @JsonSubTypes({ @JsonSubTypes.Type(value = Dog.class, name = "dog"), @JsonSubTypes.Type(value = Cat.class, name = "cat") })
     public static class Animal {
         public String name;
 

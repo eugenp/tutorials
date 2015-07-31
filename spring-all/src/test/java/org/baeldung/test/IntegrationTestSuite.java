@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({//@formatter:off
+@SuiteClasses({ //@formatter:off
     PropertiesWithXmlIntegrationTest.class,
     ExternalPropertiesWithJavaIntegrationTest.class,
     ExternalPropertiesWithMultipleXmlsIntegrationTest.class,

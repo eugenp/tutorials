@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({// @formatter:off
+@Suite.SuiteClasses({ // @formatter:off
     Cause1BeanCreationExceptionIntegrationTest.class
     ,Cause2BeanCreationExceptionIntegrationTest.class
     ,Cause3BeanCreationExceptionIntegrationTest.class

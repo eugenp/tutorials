@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SpringHelloWorldServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     public SpringHelloWorldServlet() {
         super();
     }
@@ -22,9 +22,8 @@ public class SpringHelloWorldServlet extends HttpServlet {
             out = response.getWriter();
             out.println("SpringHelloWorldServlet: GET METHOD");
             out.flush();
-        }
-        finally {
-            if (!Objects.isNull(out)) 
+        } finally {
+            if (!Objects.isNull(out))
                 out.close();
         }
     }
@@ -35,9 +34,8 @@ public class SpringHelloWorldServlet extends HttpServlet {
             out = response.getWriter();
             out.println("SpringHelloWorldServlet: POST METHOD");
             out.flush();
-        }
-        finally {
-            if (!Objects.isNull(out)) 
+        } finally {
+            if (!Objects.isNull(out))
                 out.close();
         }
     }

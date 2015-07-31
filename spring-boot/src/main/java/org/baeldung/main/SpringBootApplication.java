@@ -19,13 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableAutoConfiguration
-@ComponentScan({ "org.baeldung.common.error", "org.baeldung.common.error.controller", 
-    "org.baeldung.common.properties", "org.baeldung.common.resources", "org.baeldung.endpoints", 
-    "org.baeldung.service", "org.baeldung.monitor.jmx", "org.baeldung.service"})
+@ComponentScan({ "org.baeldung.common.error", "org.baeldung.common.error.controller", "org.baeldung.common.properties", "org.baeldung.common.resources", "org.baeldung.endpoints", "org.baeldung.service", "org.baeldung.monitor.jmx", "org.baeldung.service" })
 public class SpringBootApplication {
-    
+
     private static ApplicationContext applicationContext;
-    
+
     @Autowired
     private LoginService service;
 
@@ -34,21 +32,21 @@ public class SpringBootApplication {
         service.login("admin", "admin".toCharArray());
         return "TADA!!! You are in Spring Boot Actuator test application.";
     }
- 
+
     public static void main(String[] args) {
         applicationContext = SpringApplication.run(SpringBootApplication.class, args);
     }
-    
+
     @Bean
     public ExecutorService executorService() {
-        return Executors.newFixedThreadPool(10); 
+        return Executors.newFixedThreadPool(10);
     }
-    
+
     @Bean
     public HelloWorldServlet helloWorldServlet() {
         return new HelloWorldServlet();
     }
-    
+
     @Bean
     public SpringHelloServletRegistrationBean servletRegistrationBean() {
         SpringHelloServletRegistrationBean bean = new SpringHelloServletRegistrationBean(new SpringHelloWorldServlet(), "/springHelloWorld/*");
@@ -56,35 +54,35 @@ public class SpringBootApplication {
         bean.addInitParameter("message", "SpringHelloWorldServlet special message");
         return bean;
     }
-    
-/*    @Bean
+
+    /*    @Bean
     public JettyEmbeddedServletContainerFactory  jettyEmbeddedServletContainerFactory() {
         JettyEmbeddedServletContainerFactory jettyContainer = new JettyEmbeddedServletContainerFactory();
         jettyContainer.setPort(9000);
         jettyContainer.setContextPath("/springbootapp");
         return jettyContainer;
     }
-
+    
     @Bean
     public UndertowEmbeddedServletContainerFactory embeddedServletContainerFactory() {
         UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory();
         factory.addBuilderCustomizers(new UndertowBuilderCustomizer() {
-
+    
             @Override
             public void customize(io.undertow.Undertow.Builde builder) {
                 builder.addHttpListener(8080, "0.0.0.0");
             }
-
+    
         });
         return factory;
     }*/
-    
-    @Bean 
+
+    @Bean
     @Autowired
     public ExecutorServiceExitCodeGenerator executorServiceExitCodeGenerator(ExecutorService executorService) {
         return new ExecutorServiceExitCodeGenerator(executorService);
     }
-    
+
     public void shutDown(ExecutorServiceExitCodeGenerator executorServiceExitCodeGenerator) {
         SpringApplication.exit(applicationContext, executorServiceExitCodeGenerator);
     }
