@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class UserRepositoryIntegrationTest {
-    
+
     @Autowired
     private UserRepository userRepository;
 
@@ -76,7 +76,7 @@ public class UserRepositoryIntegrationTest {
 
         assertThat(mongoOps.find(Query.query(Criteria.where("name").is("Benn")), User.class).size(), is(0));
     }
-    
+
     @Test
     public void testFindOne() {
         User user = new User();
@@ -88,7 +88,7 @@ public class UserRepositoryIntegrationTest {
 
         assertThat(user.getName(), is(foundUser.getName()));
     }
-    
+
     @Test
     public void testExists() {
         User user = new User();
@@ -100,36 +100,36 @@ public class UserRepositoryIntegrationTest {
 
         assertThat(isExists, is(true));
     }
-    
+
     @Test
     public void testFindAllWithSort() {
         User user = new User();
         user.setName("Brendan");
         mongoOps.insert(user);
-        
+
         user = new User();
         user.setName("Adam");
         mongoOps.insert(user);
 
-        List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC,"name"));
+        List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
         assertThat(users.size(), is(2));
         assertThat(users.get(0).getName(), is("Adam"));
         assertThat(users.get(1).getName(), is("Brendan"));
     }
-    
+
     @Test
     public void testFindAllWithPageable() {
         User user = new User();
         user.setName("Brendan");
         mongoOps.insert(user);
-        
+
         user = new User();
         user.setName("Adam");
         mongoOps.insert(user);
 
         Pageable pageableRequest = new PageRequest(0, 2);
-        
+
         Page<User> users = userRepository.findAll(pageableRequest);
 
         assertThat(users.getTotalPages(), is(1));
