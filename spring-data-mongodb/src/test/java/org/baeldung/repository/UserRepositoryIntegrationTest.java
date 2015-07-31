@@ -44,7 +44,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testInsert() {
-        User user = new User();
+        final User user = new User();
         user.setName("Jon");
         userRepository.insert(user);
 
@@ -58,7 +58,7 @@ public class UserRepositoryIntegrationTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Jack")), User.class);
-        String id = user.getId();
+        final String id = user.getId();
 
         user.setName("Jim");
         userRepository.save(user);
@@ -68,7 +68,7 @@ public class UserRepositoryIntegrationTest {
 
     @Test
     public void testDelete() {
-        User user = new User();
+        final User user = new User();
         user.setName("Benn");
         mongoOps.insert(user);
 
@@ -84,7 +84,7 @@ public class UserRepositoryIntegrationTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Chris")), User.class);
-        User foundUser = userRepository.findOne(user.getId());
+        final User foundUser = userRepository.findOne(user.getId());
 
         assertThat(user.getName(), is(foundUser.getName()));
     }
@@ -96,7 +96,7 @@ public class UserRepositoryIntegrationTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Harris")), User.class);
-        boolean isExists = userRepository.exists(user.getId());
+        final boolean isExists = userRepository.exists(user.getId());
 
         assertThat(isExists, is(true));
     }
@@ -111,7 +111,7 @@ public class UserRepositoryIntegrationTest {
         user.setName("Adam");
         mongoOps.insert(user);
 
-        List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
+        final List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
         assertThat(users.size(), is(2));
         assertThat(users.get(0).getName(), is("Adam"));
@@ -128,9 +128,9 @@ public class UserRepositoryIntegrationTest {
         user.setName("Adam");
         mongoOps.insert(user);
 
-        Pageable pageableRequest = new PageRequest(0, 2);
+        final Pageable pageableRequest = new PageRequest(0, 2);
 
-        Page<User> users = userRepository.findAll(pageableRequest);
+        final Page<User> users = userRepository.findAll(pageableRequest);
 
         assertThat(users.getTotalPages(), is(1));
         assertThat(users.iterator().next().getName(), is("Brendan"));
