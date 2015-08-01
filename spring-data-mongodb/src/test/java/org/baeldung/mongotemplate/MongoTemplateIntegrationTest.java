@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class MongoTemplateIntegrationTest {
-    
+
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -33,10 +33,10 @@ public class MongoTemplateIntegrationTest {
     public void tearDown() {
         mongoTemplate.dropCollection(User.class);
     }
-    
+
     @Test
     public void whenInsertingUser_thenUserIsInserted() {
-        User user = new User();
+        final User user = new User();
         user.setName("Jon");
         mongoTemplate.insert(user);
     }
@@ -46,7 +46,7 @@ public class MongoTemplateIntegrationTest {
         User user = new User();
         user.setName("Jack");
         mongoTemplate.insert(user);
-        
+
         user = new User();
         user.setName("Jim");
         mongoTemplate.save(user);
@@ -61,7 +61,7 @@ public class MongoTemplateIntegrationTest {
         user = new User();
         user.setName("Alex");
         mongoTemplate.insert(user);
-        
+
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is("Alex"));
         Update update = new Update();
@@ -78,7 +78,7 @@ public class MongoTemplateIntegrationTest {
         user = new User();
         user.setName("Eugen");
         mongoTemplate.insert(user);
-        
+
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is("Eugen"));
         Update update = new Update();
@@ -91,13 +91,13 @@ public class MongoTemplateIntegrationTest {
         User user = new User();
         user.setName("Markus");
         mongoTemplate.insert(user);
-        
+
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is("Markus"));
         Update update = new Update();
         update.set("name", "Nick");
         user = mongoTemplate.findAndModify(query, update, User.class);
-        assertThat(user.getName(),is("Markus"));
+        assertThat(user.getName(), is("Markus"));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class MongoTemplateIntegrationTest {
         User user = new User();
         user.setName("Markus");
         mongoTemplate.insert(user);
-        
+
         Query query = new Query();
         query.addCriteria(Criteria.where("name").is("Markus"));
         Update update = new Update();
@@ -115,10 +115,10 @@ public class MongoTemplateIntegrationTest {
 
     @Test
     public void givenUserExists_whenRemovingUser_thenUserIsRemoved() {
-        User user = new User();
+        final User user = new User();
         user.setName("Benn");
         mongoTemplate.insert(user);
-        
+
         mongoTemplate.remove(user, "user");
     }
 
