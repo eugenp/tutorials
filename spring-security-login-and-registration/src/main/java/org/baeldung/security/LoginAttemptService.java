@@ -18,31 +18,34 @@ public class LoginAttemptService {
     public LoginAttemptService() {
         super();
         attemptsCache = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.DAYS).build(new CacheLoader<String, Integer>() {
-            public Integer load(String key) {
+            @Override
+            public Integer load(final String key) {
                 return 0;
             }
         });
     }
 
-    public void loginSucceeded(String key) {
+    //
+
+    public void loginSucceeded(final String key) {
         attemptsCache.invalidate(key);
     }
 
-    public void loginFailed(String key) {
+    public void loginFailed(final String key) {
         int attempts = 0;
         try {
             attempts = attemptsCache.get(key);
-        } catch (ExecutionException e) {
+        } catch (final ExecutionException e) {
             attempts = 0;
         }
         attempts++;
         attemptsCache.put(key, attempts);
     }
 
-    public boolean isBlocked(String key) {
+    public boolean isBlocked(final String key) {
         try {
             return attemptsCache.get(key) >= MAX_ATTEMPT;
-        } catch (ExecutionException e) {
+        } catch (final ExecutionException e) {
             return false;
         }
     }

@@ -61,7 +61,7 @@ public class RegistrationController {
     private Environment env;
 
     public RegistrationController() {
-
+        super();
     }
 
     // Registration

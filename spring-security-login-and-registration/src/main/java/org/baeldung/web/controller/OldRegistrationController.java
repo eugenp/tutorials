@@ -61,7 +61,7 @@ public class OldRegistrationController {
     private Environment env;
 
     public OldRegistrationController() {
-
+        super();
     }
 
     // API

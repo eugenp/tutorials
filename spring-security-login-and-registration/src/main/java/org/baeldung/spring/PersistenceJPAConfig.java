@@ -32,6 +32,8 @@ public class PersistenceJPAConfig {
         super();
     }
 
+    //
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();

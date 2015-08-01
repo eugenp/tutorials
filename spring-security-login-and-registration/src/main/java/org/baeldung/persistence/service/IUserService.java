@@ -34,4 +34,5 @@ public interface IUserService {
     void changeUserPassword(User user, String password);
 
     boolean checkIfValidOldPassword(User user, String password);
+
 }

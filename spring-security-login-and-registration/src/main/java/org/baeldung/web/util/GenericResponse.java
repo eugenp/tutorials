@@ -12,12 +12,12 @@ public class GenericResponse {
     private String message;
     private String error;
 
-    public GenericResponse(String message) {
+    public GenericResponse(final String message) {
         super();
         this.message = message;
     }
 
-    public GenericResponse(String message, String error) {
+    public GenericResponse(final String message, final String error) {
         super();
         this.message = message;
         this.error = error;
@@ -39,7 +39,7 @@ public class GenericResponse {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = message;
     }
 
@@ -47,7 +47,7 @@ public class GenericResponse {
         return error;
     }
 
-    public void setError(String error) {
+    public void setError(final String error) {
         this.error = error;
     }
 

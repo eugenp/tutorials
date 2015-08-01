@@ -10,6 +10,7 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Privilege {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,16 +24,18 @@ public class Privilege {
         super();
     }
 
-    public Privilege(String name) {
+    public Privilege(final String name) {
         super();
         this.name = name;
     }
+
+    //
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -40,7 +43,7 @@ public class Privilege {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -48,7 +51,7 @@ public class Privilege {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(final Collection<Role> roles) {
         this.roles = roles;
     }
 
@@ -62,15 +65,19 @@ public class Privilege {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Privilege privilege = (Privilege) obj;
-        if (!privilege.equals(privilege.name))
+        if (!privilege.equals(privilege.name)) {
             return false;
+        }
         return true;
     }
 

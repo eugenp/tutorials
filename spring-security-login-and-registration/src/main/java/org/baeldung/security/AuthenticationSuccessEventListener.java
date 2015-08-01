@@ -12,10 +12,12 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
     @Autowired
     private LoginAttemptService loginAttemptService;
 
-    public void onApplicationEvent(AuthenticationSuccessEvent e) {
-        WebAuthenticationDetails auth = (WebAuthenticationDetails) e.getAuthentication().getDetails();
+    @Override
+    public void onApplicationEvent(final AuthenticationSuccessEvent e) {
+        final WebAuthenticationDetails auth = (WebAuthenticationDetails) e.getAuthentication().getDetails();
         if (auth != null) {
             loginAttemptService.loginSucceeded(auth.getRemoteAddress());
         }
     }
+
 }

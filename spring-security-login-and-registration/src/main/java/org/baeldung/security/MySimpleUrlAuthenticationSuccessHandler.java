@@ -23,17 +23,18 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+    @Override
+    public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
         handle(request, response, authentication);
-        HttpSession session = request.getSession(false);
+        final HttpSession session = request.getSession(false);
         if (session != null) {
-            session.setMaxInactiveInterval(30);
+            session.setMaxInactiveInterval(30 * 60);
         }
         clearAuthenticationAttributes(request);
     }
 
-    protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
-        String targetUrl = determineTargetUrl(authentication);
+    protected void handle(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
+        final String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
             logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
@@ -43,11 +44,11 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(Authentication authentication) {
+    protected String determineTargetUrl(final Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (GrantedAuthority grantedAuthority : authorities) {
+        final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        for (final GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("READ_PRIVILEGE")) {
                 isUser = true;
             } else if (grantedAuthority.getAuthority().equals("WRITE_PRIVILEGE")) {
@@ -65,15 +66,15 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         }
     }
 
-    protected void clearAuthenticationAttributes(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
+    protected void clearAuthenticationAttributes(final HttpServletRequest request) {
+        final HttpSession session = request.getSession(false);
         if (session == null) {
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
     }
 
-    public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
+    public void setRedirectStrategy(final RedirectStrategy redirectStrategy) {
         this.redirectStrategy = redirectStrategy;
     }
 

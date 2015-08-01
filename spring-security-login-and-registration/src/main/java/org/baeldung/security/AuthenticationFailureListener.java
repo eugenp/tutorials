@@ -12,10 +12,12 @@ public class AuthenticationFailureListener implements ApplicationListener<Authen
     @Autowired
     private LoginAttemptService loginAttemptService;
 
-    public void onApplicationEvent(AuthenticationFailureBadCredentialsEvent e) {
-        WebAuthenticationDetails auth = (WebAuthenticationDetails) e.getAuthentication().getDetails();
+    @Override
+    public void onApplicationEvent(final AuthenticationFailureBadCredentialsEvent e) {
+        final WebAuthenticationDetails auth = (WebAuthenticationDetails) e.getAuthentication().getDetails();
         if (auth != null) {
             loginAttemptService.loginFailed(auth.getRemoteAddress());
         }
     }
+
 }

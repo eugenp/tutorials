@@ -53,13 +53,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/", "/resources/");
     }
 
     @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+    public void addInterceptors(final InterceptorRegistry registry) {
+        final LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor);
     }
@@ -77,14 +77,14 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public LocaleResolver localeResolver() {
-        CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        final CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
         cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
         return cookieLocaleResolver;
     }
 
     @Bean
     public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        final ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages");
         messageSource.setUseCodeAsDefaultMessage(true);
         messageSource.setDefaultEncoding("UTF-8");
