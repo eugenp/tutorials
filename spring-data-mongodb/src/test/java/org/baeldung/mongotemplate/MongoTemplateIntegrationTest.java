@@ -40,7 +40,7 @@ public class MongoTemplateIntegrationTest {
         user.setName("Jon");
         mongoTemplate.insert(user);
     }
-    
+
     @Test
     public void whenSavingNewUser_thenUserIsInserted() {
         final User user = new User();

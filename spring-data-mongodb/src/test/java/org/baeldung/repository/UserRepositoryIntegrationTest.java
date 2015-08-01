@@ -50,9 +50,9 @@ public class UserRepositoryIntegrationTest {
 
         assertThat(mongoOps.findOne(Query.query(Criteria.where("name").is("Jon")), User.class).getName(), is("Jon"));
     }
-    
+
     @Test
-    public void whenSavingNewUser_thenUserIsInserted() { 
+    public void whenSavingNewUser_thenUserIsInserted() {
         final User user = new User();
         user.setName("Albert");
         userRepository.save(user);
@@ -141,7 +141,7 @@ public class UserRepositoryIntegrationTest {
 
         final Page<User> page = userRepository.findAll(pageableRequest);
         List<User> users = page.getContent();
-       
+
         assertThat(users.size(), is(1));
         assertThat(page.getTotalPages(), is(2));
     }
