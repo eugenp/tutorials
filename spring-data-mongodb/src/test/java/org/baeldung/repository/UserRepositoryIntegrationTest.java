@@ -50,6 +50,15 @@ public class UserRepositoryIntegrationTest {
 
         assertThat(mongoOps.findOne(Query.query(Criteria.where("name").is("Jon")), User.class).getName(), is("Jon"));
     }
+    
+    @Test
+    public void whenSavingNewUser_thenUserIsInserted() { 
+        final User user = new User();
+        user.setName("Albert");
+        userRepository.save(user);
+
+        assertThat(mongoOps.findOne(Query.query(Criteria.where("name").is("Albert")), User.class).getName(), is("Albert"));
+    }
 
     @Test
     public void givenUserExists_whenSavingExistUser_thenUserIsUpdated() {
@@ -128,11 +137,12 @@ public class UserRepositoryIntegrationTest {
         user.setName("Adam");
         mongoOps.insert(user);
 
-        final Pageable pageableRequest = new PageRequest(0, 2);
+        final Pageable pageableRequest = new PageRequest(0, 1);
 
-        final Page<User> users = userRepository.findAll(pageableRequest);
-
-        assertThat(users.getTotalPages(), is(1));
-        assertThat(users.iterator().next().getName(), is("Brendan"));
+        final Page<User> page = userRepository.findAll(pageableRequest);
+        List<User> users = page.getContent();
+       
+        assertThat(users.size(), is(1));
+        assertThat(page.getTotalPages(), is(2));
     }
 }
