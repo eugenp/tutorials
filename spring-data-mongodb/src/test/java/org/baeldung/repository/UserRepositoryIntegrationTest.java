@@ -43,7 +43,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testInsert() {
+    public void whenInsertingUser_thenUserIsInserted() {
         final User user = new User();
         user.setName("Jon");
         userRepository.insert(user);
@@ -52,7 +52,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testSave() {
+    public void givenUserExists_whenSavingExistUser_thenUserIsUpdated() {
         User user = new User();
         user.setName("Jack");
         mongoOps.insert(user);
@@ -67,7 +67,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testDelete() {
+    public void givenUserExists_whenDeletingUser_thenUserIsDeleted() {
         final User user = new User();
         user.setName("Benn");
         mongoOps.insert(user);
@@ -78,7 +78,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testFindOne() {
+    public void givenUserExists_whenFindingUser_thenUserIsFound() {
         User user = new User();
         user.setName("Chris");
         mongoOps.insert(user);
@@ -90,7 +90,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testExists() {
+    public void givenUserExists_whenCheckingDoesUserExist_thenUserIsExist() {
         User user = new User();
         user.setName("Harris");
         mongoOps.insert(user);
@@ -102,7 +102,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testFindAllWithSort() {
+    public void givenUsersExist_whenFindingAllUsersWithSorting_thenUsersAreFoundAndSorted() {
         User user = new User();
         user.setName("Brendan");
         mongoOps.insert(user);
@@ -119,7 +119,7 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void testFindAllWithPageable() {
+    public void givenUsersExist_whenFindingAllUsersWithPagination_thenUsersAreFoundAndOrderedOnPage() {
         User user = new User();
         user.setName("Brendan");
         mongoOps.insert(user);
