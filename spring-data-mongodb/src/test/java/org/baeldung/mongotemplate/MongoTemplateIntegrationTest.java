@@ -42,6 +42,13 @@ public class MongoTemplateIntegrationTest {
     }
 
     @Test
+    public void whenSavingNewUser_thenUserIsInserted() {
+        final User user = new User();
+        user.setName("Aaron");
+        mongoTemplate.save(user);
+    }
+
+    @Test
     public void givenUserExists_whenSavingExistUser_thenUserIsUpdated() {
         User user = new User();
         user.setName("Jack");
