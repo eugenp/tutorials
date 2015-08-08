@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.mysema.query.annotations.QueryEntity;
 
-@QueryEntity 
+@QueryEntity
 @Document
 public class User {
 
