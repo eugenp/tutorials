@@ -102,12 +102,16 @@ public class MongoRepositoryQueryIntegrationTest {
     @Test
     public void givenUsersExist_whenFindingUsersAndCount_thenUserAreFound() {
         User user = new User();
-        user.setName("Alexey");
+        user.setName("Alex");
+        mongoOps.insert(user);
+        
+        user = new User();
+        user.setName("Mat");
         mongoOps.insert(user);
 
         QUser qUser = new QUser("user");
 
-        Predicate predicate = qUser.name.eq("Alexey");
+        Predicate predicate = qUser.name.eq("Alex");
         List<User> users = (List<User>) userRepository.findAll(predicate);
 
         assertThat(users.size(), is(1));
