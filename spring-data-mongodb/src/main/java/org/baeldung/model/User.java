@@ -3,6 +3,9 @@ package org.baeldung.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.mysema.query.annotations.QueryEntity;
+
+@QueryEntity
 @Document
 public class User {
 
