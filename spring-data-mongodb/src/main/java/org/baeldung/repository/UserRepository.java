@@ -25,6 +25,6 @@ public interface UserRepository extends MongoRepository<User, String>, QueryDslP
     List<User> findByAgeBetween(int ageGT, int ageLT);
 
     List<User> findByNameStartingWith(String regexp);
-    
+
     List<User> findByNameEndingWith(String regexp);
 }

@@ -18,7 +18,7 @@ import com.mysema.query.types.Predicate;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
-    
+
     @Test
     public void givenUsersExist_whenFindingUsersByName_thenUserAreFound() {
         User user = new User();
@@ -37,7 +37,7 @@ public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
 
         assertThat(users.size(), is(1));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUsersWithAgeCreaterThanAndLessThan_thenUsersAreFound() {
         User user = new User();
@@ -62,7 +62,7 @@ public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
 
         assertThat(users.size(), is(1));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUserWithNameStartWithA_thenUsersAreFound() {
         User user = new User();
@@ -86,7 +86,7 @@ public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
         List<User> users = (List<User>) userRepository.findAll(predicate);
         assertThat(users.size(), is(2));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUserWithNameEndWithC_thenUsersAreFound() {
         User user = new User();
@@ -107,8 +107,7 @@ public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
         QUser qUser = new QUser("user");
         Predicate predicate = qUser.name.endsWith("c");
         List<User> users = (List<User>) userRepository.findAll(predicate);
-        
+
         assertThat(users.size(), is(1));
     }
 }
-

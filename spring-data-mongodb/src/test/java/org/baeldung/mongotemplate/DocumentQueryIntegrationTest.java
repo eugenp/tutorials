@@ -37,7 +37,7 @@ public class DocumentQueryIntegrationTest {
     public void tearDown() {
         mongoTemplate.dropCollection(User.class);
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUsersByName_thenUsersAreFound() {
         User user = new User();
@@ -103,7 +103,7 @@ public class DocumentQueryIntegrationTest {
         List<User> users = mongoTemplate.find(query, User.class);
         assertThat(users.size(), is(2));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUserWithNameEndWithC_thenUsersAreFound() {
         User user = new User();
