@@ -3,6 +3,7 @@ package org.baeldung.mongotemplate;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.baeldung.config.MongoConfig;
@@ -101,6 +102,7 @@ public class DocumentQueryIntegrationTest {
         query.addCriteria(Criteria.where("name").regex("^A"));
 
         List<User> users = mongoTemplate.find(query, User.class);
+        
         assertThat(users.size(), is(2));
     }
 
@@ -125,6 +127,7 @@ public class DocumentQueryIntegrationTest {
         query.addCriteria(Criteria.where("name").regex("c$"));
 
         List<User> users = mongoTemplate.find(query, User.class);
+        
         assertThat(users.size(), is(1));
     }
 
@@ -150,6 +153,7 @@ public class DocumentQueryIntegrationTest {
         query.with(pageableRequest);
 
         List<User> users = mongoTemplate.find(query, User.class);
+        
         assertThat(users.size(), is(2));
     }
 
@@ -174,6 +178,11 @@ public class DocumentQueryIntegrationTest {
         query.with(new Sort(Sort.Direction.ASC, "age"));
 
         List<User> users = mongoTemplate.find(query, User.class);
-        assertThat(users.size(), is(3));
+        
+        Iterator<User> iter = users.iterator();
+        assertThat(users.size(), is(3)); 
+        assertThat(iter.next().getName(), is("Antony"));
+        assertThat(iter.next().getName(), is("Alice"));
+        assertThat(iter.next().getName(), is("Eric"));  
     }
 }
