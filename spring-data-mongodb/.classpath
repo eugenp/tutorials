@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry including="**/*.java" kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
-	<classpathentry including="**/*.java" kind="src" path="target/generated-sources/java"/>
-	<classpathentry excluding="**/*.java" kind="src" path="src/main/resources"/>
-	<classpathentry kind="var" path="M2_REPO/javax/inject/javax.inject/1/javax.inject-1.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-mongodb/1.7.1.RELEASE/spring-data-mongodb-1.7.1.RELEASE.jar" sourcepath="M2_REPO/org/springframework/data/spring-data-mongodb/1.7.1.RELEASE/spring-data-mongodb-1.7.1.RELEASE-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-tx/4.0.9.RELEASE/spring-tx-4.0.9.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-beans/4.0.9.RELEASE/spring-beans-4.0.9.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-core/4.0.9.RELEASE/spring-core-4.0.9.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context/4.0.9.RELEASE/spring-context-4.0.9.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-context/4.0.9.RELEASE/spring-context-4.0.9.RELEASE-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-aop/4.0.9.RELEASE/spring-aop-4.0.9.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" sourcepath="M2_REPO/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-expression/4.0.9.RELEASE/spring-expression-4.0.9.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/data/spring-data-commons/1.10.1.RELEASE/spring-data-commons-1.10.1.RELEASE.jar" sourcepath="M2_REPO/org/springframework/data/spring-data-commons/1.10.1.RELEASE/spring-data-commons-1.10.1.RELEASE-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/jcl-over-slf4j/1.7.12/jcl-over-slf4j-1.7.12.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/mongodb/mongo-java-driver/2.13.0/mongo-java-driver-2.13.0.jar"/>
-	<classpathentry kind="var" path="M2_REPO/junit/junit/4.11/junit-4.11.jar" sourcepath="M2_REPO/junit/junit/4.11/junit-4.11-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar" sourcepath="M2_REPO/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-test/4.1.7.RELEASE/spring-test-4.1.7.RELEASE.jar"/>
-	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/slf4j/log4j-over-slf4j/1.7.12/log4j-over-slf4j-1.7.12.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-mongodb/3.6.6/querydsl-mongodb-3.6.6.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-core/3.6.6/querydsl-core-3.6.6.jar" sourcepath="M2_REPO/com/mysema/querydsl/querydsl-core/3.6.6/querydsl-core-3.6.6-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/guava/guava/18.0/guava-18.0.jar" sourcepath="M2_REPO/com/google/guava/guava/18.0/guava-18.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/commons/mysema-commons-lang/0.2.4/mysema-commons-lang-0.2.4.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/infradna/tool/bridge-method-annotation/1.13/bridge-method-annotation-1.13.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-apt/3.6.6/querydsl-apt-3.6.6.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/querydsl/querydsl-codegen/3.6.6/querydsl-codegen-3.6.6.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/mysema/codegen/codegen/0.6.7/codegen-0.6.7.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/eclipse/jdt/core/compiler/ecj/4.3.1/ecj-4.3.1.jar"/>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/classes" path="target/generated-sources/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
