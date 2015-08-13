@@ -1,7 +1,12 @@
 package org.baeldung.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.mysema.query.annotations.QueryEntity;
 
@@ -13,6 +18,10 @@ public class User {
     private String id;
     private String name;
     private Integer age;
+    @DBRef
+    @Indexed
+    @Field("email")
+    private EmailAddress emailAddress;
 
     public String getId() {
         return id;
@@ -36,5 +45,13 @@ public class User {
 
     public void setAge(final Integer age) {
         this.age = age;
+    }
+
+    public EmailAddress getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(EmailAddress emailAddress) {
+        this.emailAddress = emailAddress;
     }
 }
