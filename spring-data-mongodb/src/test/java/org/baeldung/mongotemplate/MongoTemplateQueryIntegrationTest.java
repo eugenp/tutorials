@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 
 import org.baeldung.config.MongoConfig;
+import org.baeldung.model.EmailAddress;
 import org.baeldung.model.User;
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.index.Index;
+import org.springframework.data.mongodb.core.index.IndexInfo;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
@@ -127,5 +131,43 @@ public class MongoTemplateQueryIntegrationTest {
 
         List<User> users = mongoTemplate.find(query, User.class);
         assertThat(users.size(), is(3));
+    }
+
+    @Test
+    public void givenUserExistsWithIndexAddedFromMapping_whenCheckingIndex_thenIndexIsExisted() {
+        User user = new User();
+        user.setName("Brendan");
+        EmailAddress emailAddress = new EmailAddress();
+        emailAddress.setValue("a@gmail.com");
+        user.setEmailAddress(emailAddress);
+        mongoTemplate.insert(user);
+
+        List<IndexInfo> indexInfos = mongoTemplate.indexOps("user").getIndexInfo();
+
+        assertThat(indexInfos.size(), is(1));
+    }
+
+    @Test
+    public void givenExisted() {
+        User user = new User();
+        user.setName("Brendan");
+        EmailAddress emailAddress = new EmailAddress();
+        emailAddress.setValue("b@gmail.com");
+        user.setEmailAddress(emailAddress);
+        mongoTemplate.insert(user);
+
+        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Brendan")), User.class).getEmailAddress().getValue(), is("b@gmail.com"));
+    }
+
+    @Test
+    public void givenUserExistsWithIndexAddedFromCode_whenCheckingIndex_thenIndexIsExisted() {
+        User user = new User();
+        user.setName("Brendan");
+        mongoTemplate.indexOps(User.class).ensureIndex(new Index().on("name", Direction.ASC));
+        mongoTemplate.insert(user);
+
+        List<IndexInfo> indexInfos = mongoTemplate.indexOps("user").getIndexInfo();
+
+        assertThat(indexInfos.size(), is(2));
     }
 }

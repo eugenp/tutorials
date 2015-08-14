@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.baeldung.config.MongoConfig;
+import org.baeldung.model.EmailAddress;
 import org.baeldung.model.User;
 import org.junit.After;
 import org.junit.Before;
@@ -31,11 +32,14 @@ public class DocumentQueryIntegrationTest {
 
     @Before
     public void testSetup() {
-        mongoTemplate.createCollection(User.class);
+        if (!mongoTemplate.collectionExists(User.class)) {
+            mongoTemplate.createCollection(User.class);
+        }
     }
 
     @After
     public void tearDown() {
+        mongoTemplate.dropCollection(EmailAddress.class);
         mongoTemplate.dropCollection(User.class);
     }
 
@@ -102,7 +106,7 @@ public class DocumentQueryIntegrationTest {
         query.addCriteria(Criteria.where("name").regex("^A"));
 
         List<User> users = mongoTemplate.find(query, User.class);
-        
+
         assertThat(users.size(), is(2));
     }
 
@@ -127,7 +131,7 @@ public class DocumentQueryIntegrationTest {
         query.addCriteria(Criteria.where("name").regex("c$"));
 
         List<User> users = mongoTemplate.find(query, User.class);
-        
+
         assertThat(users.size(), is(1));
     }
 
@@ -153,7 +157,7 @@ public class DocumentQueryIntegrationTest {
         query.with(pageableRequest);
 
         List<User> users = mongoTemplate.find(query, User.class);
-        
+
         assertThat(users.size(), is(2));
     }
 
@@ -178,11 +182,11 @@ public class DocumentQueryIntegrationTest {
         query.with(new Sort(Sort.Direction.ASC, "age"));
 
         List<User> users = mongoTemplate.find(query, User.class);
-        
+
         Iterator<User> iter = users.iterator();
-        assertThat(users.size(), is(3)); 
+        assertThat(users.size(), is(3));
         assertThat(iter.next().getName(), is("Antony"));
         assertThat(iter.next().getName(), is("Alice"));
-        assertThat(iter.next().getName(), is("Eric"));  
+        assertThat(iter.next().getName(), is("Eric"));
     }
 }
