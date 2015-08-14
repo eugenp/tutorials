@@ -34,7 +34,9 @@ public class MongoTemplateQueryIntegrationTest {
 
     @Before
     public void testSetup() {
-        mongoTemplate.createCollection(User.class);
+        if (!mongoTemplate.collectionExists(User.class)) {
+            mongoTemplate.createCollection(User.class);
+        }
     }
 
     @After
@@ -148,7 +150,7 @@ public class MongoTemplateQueryIntegrationTest {
     }
 
     @Test
-    public void givenExisted() {
+    public void whenSavingUserWithEmailAddress_thenUserandEmailAddressSaved() {
         User user = new User();
         user.setName("Brendan");
         EmailAddress emailAddress = new EmailAddress();

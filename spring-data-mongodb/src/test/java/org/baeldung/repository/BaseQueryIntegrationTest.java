@@ -17,7 +17,9 @@ public class BaseQueryIntegrationTest {
 
     @Before
     public void testSetup() {
-        mongoOps.createCollection(User.class);
+        if (!mongoOps.collectionExists(User.class)) {
+            mongoOps.createCollection(User.class);
+        }
     }
 
     @After

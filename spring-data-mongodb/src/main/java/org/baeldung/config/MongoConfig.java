@@ -1,9 +1,16 @@
 package org.baeldung.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
+import org.baeldung.converter.UserWriterConverter;
 import org.baeldung.event.CascadingMongoEventListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.core.convert.CustomConversions;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.mongodb.Mongo;
@@ -12,6 +19,8 @@ import com.mongodb.MongoClient;
 @Configuration
 @EnableMongoRepositories(basePackages = "org.baeldung.repository")
 public class MongoConfig extends AbstractMongoConfiguration {
+
+    private List<Converter<?,?>> converters = new ArrayList<Converter<?,?>>();
 
     @Override
     protected String getDatabaseName() {
@@ -31,5 +40,11 @@ public class MongoConfig extends AbstractMongoConfiguration {
     @Bean
     public CascadingMongoEventListener cascadingMongoEventListener(){
         return new CascadingMongoEventListener();
+    }
+    
+    @Override
+    public CustomConversions customConversions() {
+       converters.add(new UserWriterConverter());
+       return new CustomConversions(converters);
     }
 }
