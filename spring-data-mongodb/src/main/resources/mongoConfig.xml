@@ -25,7 +25,7 @@
 
     <mongo:repositories base-package="org.baeldung.repository" mongo-template-ref="mongoTemplate"/>
 
-    <bean class="org.baeldung.event.CascadingMongoEventListener">
+    <bean class="org.baeldung.event.CascadeSaveMongoEventListener">
     </bean>
 
     <mongo:mapping-converter id="mongoConverter" base-package="org.baeldung.converter">
