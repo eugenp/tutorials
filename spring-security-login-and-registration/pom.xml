@@ -217,7 +217,7 @@
     <properties>
         <java-version>1.7</java-version>
         <org.springframework-version>4.1.6.RELEASE</org.springframework-version>
-        <org.springframework.security.version>3.2.7.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.12</org.slf4j.version>
