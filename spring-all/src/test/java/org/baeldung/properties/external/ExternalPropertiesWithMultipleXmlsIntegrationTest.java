@@ -1,4 +1,4 @@
-package org.baeldung.properties.core;
+package org.baeldung.properties.external;
 
 import org.baeldung.properties.spring.PropertiesWithXmlConfigOne;
 import org.baeldung.properties.spring.PropertiesWithXmlConfigTwo;

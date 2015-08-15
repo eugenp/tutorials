@@ -1,6 +1,7 @@
-package org.baeldung.properties.core;
+package org.baeldung.properties.external;
 
-import org.baeldung.properties.spring.PropertiesWithXmlConfig;
+import org.baeldung.properties.spring.PropertiesWithJavaConfig;
+import org.baeldung.properties.spring.PropertiesWithJavaConfigOther;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PropertiesWithXmlConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class }, loader = AnnotationConfigContextLoader.class)
 @Ignore("manual only")
-public class ExternalPropertiesWithXmlIntegrationTest {
+public class ExternalPropertiesWithJavaIntegrationTest {
 
     @Autowired
     private Environment env;
