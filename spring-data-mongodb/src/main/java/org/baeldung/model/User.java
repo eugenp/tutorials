@@ -26,15 +26,6 @@ public class User {
     @CascadeSave
     private EmailAddress emailAddress;
 
-    public User() {
-    }
-
-    public User(String name, Integer age, String value) {
-        this.name = name;
-        this.age = age;
-        this.emailAddress = new EmailAddress(value);
-    }
-
     public String getId() {
         return id;
     }

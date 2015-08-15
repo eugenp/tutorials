@@ -137,7 +137,7 @@ public class MongoTemplateQueryIntegrationTest {
 
     @Test
     public void givenUserExistsWithIndexAddedFromMapping_whenCheckingIndex_thenIndexIsExisted() {
-        User user = new User();
+        final User user = new User();
         user.setName("Brendan");
         EmailAddress emailAddress = new EmailAddress();
         emailAddress.setValue("a@gmail.com");
@@ -151,7 +151,7 @@ public class MongoTemplateQueryIntegrationTest {
 
     @Test
     public void whenSavingUserWithEmailAddress_thenUserandEmailAddressSaved() {
-        User user = new User();
+        final User user = new User();
         user.setName("Brendan");
         EmailAddress emailAddress = new EmailAddress();
         emailAddress.setValue("b@gmail.com");
@@ -163,7 +163,7 @@ public class MongoTemplateQueryIntegrationTest {
 
     @Test
     public void givenUserExistsWithIndexAddedFromCode_whenCheckingIndex_thenIndexIsExisted() {
-        User user = new User();
+        final User user = new User();
         user.setName("Brendan");
         mongoTemplate.indexOps(User.class).ensureIndex(new Index().on("name", Direction.ASC));
         mongoTemplate.insert(user);

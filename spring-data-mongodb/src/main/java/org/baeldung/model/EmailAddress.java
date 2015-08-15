@@ -9,18 +9,11 @@ public class EmailAddress {
     private String id;
     private String value;
 
-    public EmailAddress() {
-    }
-
-    public EmailAddress(String value) {
-        this.value = value;
-    }
-
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
@@ -28,7 +21,7 @@ public class EmailAddress {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
     }
 }
