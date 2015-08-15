@@ -34,7 +34,9 @@ public class UserRepositoryIntegrationTest {
 
     @Before
     public void testSetup() {
-        mongoOps.createCollection(User.class);
+        if (!mongoOps.collectionExists(User.class)) {
+            mongoOps.createCollection(User.class);
+        }
     }
 
     @After
@@ -67,12 +69,11 @@ public class UserRepositoryIntegrationTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Jack")), User.class);
-        final String id = user.getId();
 
         user.setName("Jim");
         userRepository.save(user);
 
-        assertThat(mongoOps.findOne(Query.query(Criteria.where("id").is(id)), User.class).getName(), is("Jim"));
+        assertThat(mongoOps.findAll(User.class).size(), is(2));
     }
 
     @Test
@@ -145,4 +146,5 @@ public class UserRepositoryIntegrationTest {
         assertThat(users.size(), is(1));
         assertThat(page.getTotalPages(), is(2));
     }
+
 }

@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.baeldung.config.MongoConfig;
+import org.baeldung.model.EmailAddress;
 import org.baeldung.model.User;
 import org.junit.After;
 import org.junit.Before;
@@ -31,11 +32,14 @@ public class DocumentQueryIntegrationTest {
 
     @Before
     public void testSetup() {
-        mongoTemplate.createCollection(User.class);
+        if (!mongoTemplate.collectionExists(User.class)) {
+            mongoTemplate.createCollection(User.class);
+        }
     }
 
     @After
     public void tearDown() {
+        mongoTemplate.dropCollection(EmailAddress.class);
         mongoTemplate.dropCollection(User.class);
     }
 

@@ -10,21 +10,26 @@
        http://www.springframework.org/schema/context/spring-context-3.2.xsd"
 >
     <context:annotation-config/>
-    
+
     <bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
         <property name="host" value="localhost"/>
     </bean>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg name="mongo" ref="mongo"/>
+        <constructor-arg ref="mongoConverter" />
         <constructor-arg name="databaseName" value="test"/>
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
     <mongo:repositories base-package="org.baeldung.repository" mongo-template-ref="mongoTemplate"/>
-    
-    <bean class="org.baeldung.event.BeforeConvertListener">
+
+    <bean class="org.baeldung.event.CascadeSaveMongoEventListener">
     </bean>
+
+    <mongo:mapping-converter id="mongoConverter" base-package="org.baeldung.converter">
+        <mongo:custom-converters base-package="org.baeldung.converter"/>
+    </mongo:mapping-converter>
 
 </beans>
