@@ -32,6 +32,28 @@ public class Java8EncodeDecode {
         assertEquals(originalInput, decodedString);
 
     }
+    
+    @Test
+    public void whenStringIsEncodedWithoutPadding() throws UnsupportedEncodingException {
+        String originalInput = "test input";
+        String encodedString = Base64.getEncoder().withoutPadding().encodeToString(originalInput.getBytes());
+        assertNotNull(encodedString);
+        assertNotEquals(originalInput, encodedString);
+    }
+    
+    @Test
+    public void whenStringIsEncodedWithoutPadding_thenStringCanBeDecoded() throws UnsupportedEncodingException {
+        String originalInput = "test input";
+        String encodedString = Base64.getEncoder().withoutPadding().encodeToString(originalInput.getBytes());
+
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        String decodedString = new String(decodedBytes);
+
+        assertNotNull(decodedString);
+        assertEquals(originalInput, decodedString);
+
+    }
+
 
     @Test
     public void whenURLIsEncoded() throws UnsupportedEncodingException {
