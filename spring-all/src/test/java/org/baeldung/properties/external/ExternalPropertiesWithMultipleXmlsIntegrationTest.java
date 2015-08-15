@@ -1,7 +1,5 @@
 package org.baeldung.properties.external;
 
-import org.baeldung.properties.spring.PropertiesWithXmlConfigOne;
-import org.baeldung.properties.spring.PropertiesWithXmlConfigTwo;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;

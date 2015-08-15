@@ -1,4 +1,4 @@
-package org.baeldung.properties.spring;
+package org.baeldung.properties.external;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package org.baeldung.properties.core;
+package org.baeldung.properties.basic;
 
-import org.baeldung.properties.spring.PropertiesWithJavaConfig;
+import org.baeldung.properties.spring.BasicPropertiesWithJavaConfig;
 import org.baeldung.properties.spring.PropertiesWithJavaConfigOther;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { BasicPropertiesWithJavaConfig.class, PropertiesWithJavaConfigOther.class }, loader = AnnotationConfigContextLoader.class)
 public class PropertiesWithJavaIntegrationTest {
 
     @Autowired

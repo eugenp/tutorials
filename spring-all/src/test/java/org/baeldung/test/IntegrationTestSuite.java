@@ -1,8 +1,8 @@
 package org.baeldung.test;
 
+import org.baeldung.properties.basic.PropertiesWithJavaIntegrationTest;
 import org.baeldung.properties.basic.PropertiesWithMultipleXmlsIntegrationTest;
 import org.baeldung.properties.basic.PropertiesWithXmlIntegrationTest;
-import org.baeldung.properties.core.PropertiesWithJavaIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithJavaIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithMultipleXmlsIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithXmlIntegrationTest;
