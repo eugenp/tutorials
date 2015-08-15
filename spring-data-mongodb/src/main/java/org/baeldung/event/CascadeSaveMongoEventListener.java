@@ -9,7 +9,7 @@ import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 
-public class CascadingMongoEventListener extends AbstractMongoEventListener<Object> {
+public class CascadeSaveMongoEventListener extends AbstractMongoEventListener<Object> {
     @Autowired
     private MongoOperations mongoOperations;
 
@@ -24,7 +24,7 @@ public class CascadingMongoEventListener extends AbstractMongoEventListener<Obje
                     final Object fieldValue = field.get(source);
 
                     if (fieldValue != null) {
-                        DbRefFieldCallback callback = new DbRefFieldCallback();
+                        FieldCallback callback = new FieldCallback();
 
                         ReflectionUtils.doWithFields(fieldValue.getClass(), callback);
 

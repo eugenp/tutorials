@@ -8,12 +8,12 @@ public class EmailAddress {
     @Id
     private String id;
     private String value;
-    
-    public EmailAddress(){
+
+    public EmailAddress() {
     }
-    
+
     public EmailAddress(String value) {
-        this.value =  value;
+        this.value = value;
     }
 
     public String getId() {

@@ -3,9 +3,8 @@ package org.baeldung.config;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.baeldung.converter.UserWriterConverter;
-import org.baeldung.event.CascadingMongoEventListener;
+import org.baeldung.event.CascadeSaveMongoEventListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
@@ -20,7 +19,7 @@ import com.mongodb.MongoClient;
 @EnableMongoRepositories(basePackages = "org.baeldung.repository")
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    private List<Converter<?,?>> converters = new ArrayList<Converter<?,?>>();
+    private List<Converter<?, ?>> converters = new ArrayList<Converter<?, ?>>();
 
     @Override
     protected String getDatabaseName() {
@@ -36,15 +35,15 @@ public class MongoConfig extends AbstractMongoConfiguration {
     public String getMappingBasePackage() {
         return "org.baeldung";
     }
-    
+
     @Bean
-    public CascadingMongoEventListener cascadingMongoEventListener(){
-        return new CascadingMongoEventListener();
+    public CascadeSaveMongoEventListener cascadingMongoEventListener() {
+        return new CascadeSaveMongoEventListener();
     }
-    
+
     @Override
     public CustomConversions customConversions() {
-       converters.add(new UserWriterConverter());
-       return new CustomConversions(converters);
+        converters.add(new UserWriterConverter());
+        return new CustomConversions(converters);
     }
 }
