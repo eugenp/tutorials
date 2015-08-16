@@ -5,9 +5,9 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource("classpath:basicConfigForPropertiesTwo.xml")
-public class PropertiesWithXmlConfigTwo {
+public class ExternalPropertiesWithXmlConfigTwo {
 
-    public PropertiesWithXmlConfigTwo() {
+    public ExternalPropertiesWithXmlConfigTwo() {
         super();
     }
 

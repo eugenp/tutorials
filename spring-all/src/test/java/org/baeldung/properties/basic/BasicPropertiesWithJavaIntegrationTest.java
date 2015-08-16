@@ -1,6 +1,6 @@
-package org.baeldung.properties.external;
+package org.baeldung.properties.basic;
 
-import org.junit.Ignore;
+import org.baeldung.properties.spring.BasicPropertiesWithJavaConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ExternalPropertiesWithXmlConfig.class }, loader = AnnotationConfigContextLoader.class)
-@Ignore("manual only")
-public class ExternalPropertiesWithXmlIntegrationTest {
+@ContextConfiguration(classes = { BasicPropertiesWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
+public class BasicPropertiesWithJavaIntegrationTest {
 
     @Autowired
     private Environment env;
@@ -21,16 +20,10 @@ public class ExternalPropertiesWithXmlIntegrationTest {
     @Value("${key.something}")
     private String injectedProperty;
 
-    @Value("${external.something}")
-    private String injectedExternalProperty;
-
     @Test
     public final void givenContextIsInitialized_thenNoException() {
         System.out.println("in test via @Value: " + injectedProperty);
         System.out.println("in test Environment: " + env.getProperty("key.something"));
-
-        System.out.println("in test via @Value - external: " + injectedExternalProperty);
-        System.out.println("in test Environment - external: " + env.getProperty("external.something"));
     }
 
 }

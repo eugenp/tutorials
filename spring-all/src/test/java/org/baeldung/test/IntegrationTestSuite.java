@@ -1,6 +1,6 @@
 package org.baeldung.test;
 
-import org.baeldung.properties.basic.PropertiesWithJavaIntegrationTest;
+import org.baeldung.properties.basic.ExtendedPropertiesWithJavaIntegrationTest;
 import org.baeldung.properties.basic.PropertiesWithMultipleXmlsIntegrationTest;
 import org.baeldung.properties.basic.PropertiesWithXmlIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithJavaIntegrationTest;
@@ -16,7 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
     ExternalPropertiesWithJavaIntegrationTest.class,
     ExternalPropertiesWithMultipleXmlsIntegrationTest.class,
     ExternalPropertiesWithXmlIntegrationTest.class,
-    PropertiesWithJavaIntegrationTest.class,
+    ExtendedPropertiesWithJavaIntegrationTest.class,
     PropertiesWithMultipleXmlsIntegrationTest.class,
 })// @formatter:on
 public final class IntegrationTestSuite {
