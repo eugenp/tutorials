@@ -1,4 +1,4 @@
-package com.demo.encoding;
+package org.baeldung.java8.base64;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
-public class ApacheCommonsEncodeDecode {
+public class ApacheCommonsEncodeDecodeTest {
 
     @Test
     public void whenStringIsEncoded() throws UnsupportedEncodingException {

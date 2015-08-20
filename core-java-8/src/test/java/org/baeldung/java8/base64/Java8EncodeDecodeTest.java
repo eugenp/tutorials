@@ -1,4 +1,4 @@
-package com.demo.encoding;
+package org.baeldung.java8.base64;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
-public class Java8EncodeDecode {
+public class Java8EncodeDecodeTest {
 
     @Test
     public void whenStringIsEncoded() throws UnsupportedEncodingException {
