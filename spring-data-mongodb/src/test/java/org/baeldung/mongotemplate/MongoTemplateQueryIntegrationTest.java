@@ -153,7 +153,7 @@ public class MongoTemplateQueryIntegrationTest {
     public void whenSavingUserWithEmailAddress_thenUserandEmailAddressSaved() {
         final User user = new User();
         user.setName("Brendan");
-        EmailAddress emailAddress = new EmailAddress();
+        final EmailAddress emailAddress = new EmailAddress();
         emailAddress.setValue("b@gmail.com");
         user.setEmailAddress(emailAddress);
         mongoTemplate.insert(user);
@@ -171,5 +171,23 @@ public class MongoTemplateQueryIntegrationTest {
         List<IndexInfo> indexInfos = mongoTemplate.indexOps("user").getIndexInfo();
 
         assertThat(indexInfos.size(), is(2));
+    }
+
+    @Test
+    public void whenSavingUserWithoutSettingAge_thenAgeIsSetByDefault() {
+        final User user = new User();
+        user.setName("Alex");
+        mongoTemplate.insert(user);
+
+        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Alex")), User.class).getAge(), is(0));
+    }
+
+    @Test
+    public void whenSavingUser_thenYearOfBirthIsCalculated() {
+        final User user = new User();
+        user.setName("Alex");
+        mongoTemplate.insert(user);
+
+        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Alex")), User.class).getYearOfBirth(), is(2015));
     }
 }
