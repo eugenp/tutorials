@@ -1,7 +1,5 @@
 package org.baeldung.model;
 
-import java.util.Calendar;
-
 import org.baeldung.annotation.CascadeSave;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
@@ -80,6 +78,11 @@ public class User {
     }
 
     public Integer getYearOfBirth() {
-        return Calendar.getInstance().get(Calendar.YEAR) - age;
+        return yearOfBirth;
     }
+
+    public void setYearOfBirth(Integer yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
 }
