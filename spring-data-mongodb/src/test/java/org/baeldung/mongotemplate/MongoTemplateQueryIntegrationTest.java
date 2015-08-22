@@ -186,8 +186,9 @@ public class MongoTemplateQueryIntegrationTest {
     public void whenSavingUser_thenYearOfBirthIsCalculated() {
         final User user = new User();
         user.setName("Alex");
+        user.setYearOfBirth(1985);
         mongoTemplate.insert(user);
 
-        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Alex")), User.class).getYearOfBirth(), is(2015));
+        assertThat(user.getYearOfBirth(), is(1985));
     }
 }
