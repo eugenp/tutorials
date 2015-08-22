@@ -2,7 +2,7 @@
 The "REST with Spring" Classes
 ==============================
 This is what I'm working on: 
-[>> THE REST WITH SPRING CLASSES](http://www.baeldung.com)
+[>> THE REST WITH SPRING CLASSES](http://www.restwithspring.com)
 
 
 Spring Tutorials
