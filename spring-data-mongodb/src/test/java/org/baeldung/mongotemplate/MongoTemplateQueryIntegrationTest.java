@@ -2,6 +2,7 @@ package org.baeldung.mongotemplate;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -189,6 +191,6 @@ public class MongoTemplateQueryIntegrationTest {
         user.setYearOfBirth(1985);
         mongoTemplate.insert(user);
 
-        assertThat(user.getYearOfBirth(), is(1985));
+        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Alex")), User.class).getYearOfBirth(), is(nullValue()));
     }
 }
