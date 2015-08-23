@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.baeldung.converter.UserWriterConverter;
 import org.baeldung.event.CascadeSaveMongoEventListener;
+import org.baeldung.event.UserCascadeSaveMongoEventListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -34,6 +35,11 @@ public class MongoConfig extends AbstractMongoConfiguration {
     @Override
     public String getMappingBasePackage() {
         return "org.baeldung";
+    }
+
+    @Bean
+    public UserCascadeSaveMongoEventListener userCascadingMongoEventListener() {
+        return new UserCascadeSaveMongoEventListener();
     }
 
     @Bean
