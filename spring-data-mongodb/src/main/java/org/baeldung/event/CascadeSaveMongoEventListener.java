@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventLis
 import org.springframework.util.ReflectionUtils;
 
 public class CascadeSaveMongoEventListener extends AbstractMongoEventListener<Object> {
-    
+
     @Autowired
     private MongoOperations mongoOperations;
-  
+
     @Override
     public void onBeforeConvert(final Object source) {
         ReflectionUtils.doWithFields(source.getClass(), new CascadeCallback(source, mongoOperations));

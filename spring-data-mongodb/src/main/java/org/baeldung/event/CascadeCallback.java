@@ -8,10 +8,10 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.util.ReflectionUtils;
 
 public class CascadeCallback implements ReflectionUtils.FieldCallback {
-    
+
     private Object source;
     private MongoOperations mongoOperations;
-    
+
     public CascadeCallback(final Object source, final MongoOperations mongoOperations) {
         this.source = source;
         this.setMongoOperations(mongoOperations);
