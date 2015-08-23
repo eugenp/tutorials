@@ -7,6 +7,12 @@
     <name>spring-security-rest-full</name>
     <packaging>war</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.2.5.RELEASE</version>
+    </parent>
+
     <dependencies>
 
         <!-- Spring Boot Dependencies -->
@@ -453,11 +459,5 @@
         <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
 
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.4.RELEASE</version>
-    </parent>
 
 </project>
