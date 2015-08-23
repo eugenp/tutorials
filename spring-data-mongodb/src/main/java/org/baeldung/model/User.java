@@ -73,7 +73,7 @@ public class User {
         return emailAddress;
     }
 
-    public void setEmailAddress(EmailAddress emailAddress) {
+    public void setEmailAddress(final EmailAddress emailAddress) {
         this.emailAddress = emailAddress;
     }
 
@@ -81,7 +81,7 @@ public class User {
         return yearOfBirth;
     }
 
-    public void setYearOfBirth(Integer yearOfBirth) {
+    public void setYearOfBirth(final Integer yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
 

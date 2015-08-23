@@ -18,14 +18,14 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
     }
 
     @Override
-    public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
+    public void doWith(final Field field) throws IllegalArgumentException, IllegalAccessException {
         ReflectionUtils.makeAccessible(field);
 
         if (field.isAnnotationPresent(DBRef.class) && field.isAnnotationPresent(CascadeSave.class)) {
             final Object fieldValue = field.get(getSource());
 
             if (fieldValue != null) {
-                FieldCallback callback = new FieldCallback();
+                final FieldCallback callback = new FieldCallback();
 
                 ReflectionUtils.doWithFields(fieldValue.getClass(), callback);
 
@@ -39,7 +39,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
         return source;
     }
 
-    public void setSource(Object source) {
+    public void setSource(final Object source) {
         this.source = source;
     }
 
@@ -47,7 +47,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
         return mongoOperations;
     }
 
-    public void setMongoOperations(MongoOperations mongoOperations) {
+    public void setMongoOperations(final MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
 }
