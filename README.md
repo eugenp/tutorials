@@ -1,8 +1,8 @@
 
 The "REST with Spring" Classes
 ==============================
-This is what I'm working on: 
-[>> THE REST WITH SPRING CLASSES](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=50off)
+This is what I'm working on: <br/>
+**[>> THE REST WITH SPRING CLASSES](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=50off)**
 
 
 Spring Tutorials
