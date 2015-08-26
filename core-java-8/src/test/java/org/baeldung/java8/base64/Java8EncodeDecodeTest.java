@@ -32,7 +32,6 @@ public class Java8EncodeDecodeTest {
 
         assertNotNull(decodedString);
         assertEquals(originalInput, decodedString);
-
     }
 
     @Test
@@ -53,7 +52,6 @@ public class Java8EncodeDecodeTest {
 
         assertNotNull(decodedString);
         assertEquals(originalInput, decodedString);
-
     }
 
     @Test
