@@ -85,11 +85,15 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Foo resource, final HttpServletResponse response) {
+    @ResponseBody
+    public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
-        final Long idOfCreatedResource = service.create(resource).getId();
+        Foo foo = service.create(resource);
+        final Long idOfCreatedResource = foo.getId();
 
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
+
+        return foo;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
