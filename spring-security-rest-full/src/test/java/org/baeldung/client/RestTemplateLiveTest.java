@@ -102,9 +102,6 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenFooService_whenPostFor2Objects_thenNewObjectIsCreatedEachTime() {
-        ClientHttpRequestFactory requestFactory = getClientHttpRequestFactory();
-        RestTemplate restTemplate = new RestTemplate(requestFactory);
-
         HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
         Foo firstInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
         Foo secondInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
@@ -129,12 +126,12 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenRestService_whenPostResource_thenResourceIsCreated() {
-        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate template = new RestTemplate();
 
         HttpHeaders headers = prepareBasicAuthHeaders();
         HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
-        ResponseEntity<Foo> response = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+        ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
         Foo foo = response.getBody();
         assertThat(foo, notNullValue());
@@ -143,22 +140,22 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenResource_whenPutExistingEntity_thenItIsUpdated() {
-        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate template = new RestTemplate();
         HttpHeaders headers = prepareBasicAuthHeaders();
         HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
         //Create entity
-        ResponseEntity<Foo> response = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+        ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
         //Update entity
         Foo updatedInstance = new Foo("newName");
         updatedInstance.setId(response.getBody().getId());
         String resourceUrl = fooResourceUrl + '/' + response.getBody().getId();
-        restTemplate.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
+        template.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
 
         //Check that entity was updated
-        response = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        response = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         Foo foo = response.getBody();
         assertThat(foo.getName(), is(updatedInstance.getName()));
     }
