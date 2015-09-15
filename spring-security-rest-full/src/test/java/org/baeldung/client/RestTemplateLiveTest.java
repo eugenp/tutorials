@@ -1,38 +1,5 @@
 package org.baeldung.client;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Charsets;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.baeldung.persistence.model.Foo;
-import org.baeldung.persistence.service.IFooService;
-import org.baeldung.spring.PersistenceConfig;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
-import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RequestCallback;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
@@ -41,16 +8,44 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistenceConfig.class})
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.baeldung.persistence.model.Foo;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RequestCallback;
+import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Charsets;
+
 public class RestTemplateLiveTest {
 
     RestTemplate restTemplate;
     private List<HttpMessageConverter<?>> messageConverters;
     private static final String fooResourceUrl = "http://localhost:8080/spring-security-rest-full/foos";
-
-    @Autowired
-    private IFooService fooService;
 
     @Before
     public void beforeTest() {
@@ -114,7 +109,7 @@ public class RestTemplateLiveTest {
     public void givenResource_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
         assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
-        assertTrue(httpHeaders.get("foo").contains("bar"));
+        assertTrue(httpHeaders.get("bar").contains("baz"));
     }
 
     @Test
@@ -162,7 +157,11 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenRestService_whenCallDelete_thenEntityIsRemoved() {
-        String entityUrl = fooResourceUrl + "/1";
+    	Foo foo = new Foo("remove me");
+    	ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
+    	assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+    	
+        String entityUrl = fooResourceUrl + "/" + response.getBody().getId();
         restTemplate.delete(entityUrl);
         try {
             restTemplate.getForEntity(entityUrl, Foo.class);
@@ -174,9 +173,16 @@ public class RestTemplateLiveTest {
 
     private void ensureOneEntityExists() {
         Foo instance = new Foo("bar");
-        if (fooService.findOne(1L) == null) {
-            fooService.create(instance);
+        instance.setId(1L);
+        
+        try {
+        	restTemplate.getForEntity(fooResourceUrl + "/1", Foo.class);
+        } catch (HttpClientErrorException ex) {
+        	if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
+        		restTemplate.postForEntity(fooResourceUrl, instance, Foo.class);
+        	}
         }
+        
     }
 
     private ClientHttpRequestFactory getClientHttpRequestFactory() {
