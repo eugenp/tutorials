@@ -1,6 +1,7 @@
 package org.baeldung.client;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
+import static org.baeldung.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,9 +44,9 @@ import com.google.common.base.Charsets;
 
 public class RestTemplateLiveTest {
 
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
     private List<HttpMessageConverter<?>> messageConverters;
-    private static final String fooResourceUrl = "http://localhost:8080/spring-security-rest-full/foos";
+    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/foos";
 
     @Before
     public void beforeTest() {
@@ -60,13 +61,13 @@ public class RestTemplateLiveTest {
     }
 
     @Test
-    public void givenValidEndpoint_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
+    public void givenResourceUrl_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
         ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
     }
 
     @Test
-    public void givenRepoEndpoint_whenSendGetForRestEntity_thenReceiveCorrectJson() throws IOException {
+    public void givenResourceUrl_whenSendGetForRestEntity_thenReceiveCorrectJson() throws IOException {
         ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -80,7 +81,7 @@ public class RestTemplateLiveTest {
     }
 
     @Test
-    public void givenRepoEndpoint_whenSendGetForObject_thenReturnsRepoObject() {
+    public void givenResourceUrl_whenSendGetForObject_thenReturnsRepoObject() {
         restTemplate.setMessageConverters(messageConverters);
         Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
         assertThat(foo.getName(), is("bar"));
@@ -106,21 +107,21 @@ public class RestTemplateLiveTest {
     }
 
     @Test
-    public void givenResource_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
+    public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
         assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
         assertTrue(httpHeaders.get("bar").contains("baz"));
     }
 
     @Test
-    public void givenResource_whenCallOptionsForAllow_thenReceiveValueOfAllowHeader() {
+    public void givenFooService_whenCallOptionsForAllow_thenReceiveValueOfAllowHeader() {
         Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(fooResourceUrl);
         HttpMethod[] supportedMethods = {HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE};
         assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
     }
 
     @Test
-    public void givenRestService_whenPostResource_thenResourceIsCreated() {
+    public void givenFooService_whenPostResource_thenResourceIsCreated() {
         RestTemplate template = new RestTemplate();
 
         HttpHeaders headers = prepareBasicAuthHeaders();
@@ -134,7 +135,7 @@ public class RestTemplateLiveTest {
     }
 
     @Test
-    public void givenResource_whenPutExistingEntity_thenItIsUpdated() {
+    public void givenFooService_whenPutExistingEntity_thenItIsUpdated() {
         RestTemplate template = new RestTemplate();
         HttpHeaders headers = prepareBasicAuthHeaders();
         HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
@@ -156,7 +157,7 @@ public class RestTemplateLiveTest {
     }
 
     @Test
-    public void givenRestService_whenCallDelete_thenEntityIsRemoved() {
+    public void givenFooService_whenCallDelete_thenEntityIsRemoved() {
     	Foo foo = new Foo("remove me");
     	ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
     	assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
@@ -193,7 +194,7 @@ public class RestTemplateLiveTest {
                 .setSocketTimeout(timeout * 1000).build();
 
         BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM),
+        credentialsProvider.setCredentials(new AuthScope("localhost", APPLICATION_PORT, AuthScope.ANY_REALM),
                 new UsernamePasswordCredentials("user1", "user1Pass"));
 
         CloseableHttpClient client = HttpClientBuilder.create()
@@ -216,10 +217,10 @@ public class RestTemplateLiveTest {
         return new String(authHeaderBytes, Charsets.US_ASCII);
     }
 
-    private RequestCallback requestCallback(Foo updatedInstace) {
+    private RequestCallback requestCallback(Foo updatedInstance) {
         return clientHttpRequest -> {
             ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(clientHttpRequest.getBody(), updatedInstace);
+            mapper.writeValue(clientHttpRequest.getBody(), updatedInstance);
             clientHttpRequest.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
             clientHttpRequest.getHeaders().add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
         };
