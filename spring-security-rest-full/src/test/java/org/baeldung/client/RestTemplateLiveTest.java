@@ -53,7 +53,7 @@ public class RestTemplateLiveTest {
         restTemplate = new RestTemplate(getClientHttpRequestFactory());
 
         messageConverters = new ArrayList<>();
-        MappingJackson2HttpMessageConverter jsonMessageConverter = new MappingJackson2HttpMessageConverter();
+        final MappingJackson2HttpMessageConverter jsonMessageConverter = new MappingJackson2HttpMessageConverter();
         jsonMessageConverter.setObjectMapper(new ObjectMapper());
         messageConverters.add(jsonMessageConverter);
 
@@ -62,45 +62,45 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenResourceUrl_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
-        ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+        final ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
     }
 
     @Test
     public void givenResourceUrl_whenSendGetForRestEntity_thenReceiveCorrectJson() throws IOException {
-        ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+        final ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
 
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(response.getBody());
+        final ObjectMapper mapper = new ObjectMapper();
+        final JsonNode root = mapper.readTree(response.getBody());
 
-        JsonNode name = root.path("name");
+        final JsonNode name = root.path("name");
         assertThat(name.asText(), is("bar"));
 
-        JsonNode owner = root.path("id");
+        final JsonNode owner = root.path("id");
         assertThat(owner.asText(), is("1"));
     }
 
     @Test
     public void givenResourceUrl_whenSendGetForObject_thenReturnsRepoObject() {
         restTemplate.setMessageConverters(messageConverters);
-        Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
+        final Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
         assertThat(foo.getName(), is("bar"));
         assertThat(foo.getId(), is(1L));
     }
 
     @Test
     public void givenFooService_whenPostForObject_thenCreatedObjectIsReturned() {
-        HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
-        Foo foo = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
+        final Foo foo = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
         assertThat(foo, notNullValue());
         assertThat(foo.getName(), is("bar"));
     }
 
     @Test
     public void givenFooService_whenPostFor2Objects_thenNewObjectIsCreatedEachTime() {
-        HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
-        Foo firstInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
-        Foo secondInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
+        final Foo firstInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
+        final Foo secondInstance = restTemplate.postForObject(fooResourceUrl, request, Foo.class);
         assertThat(firstInstance, notNullValue());
         assertThat(secondInstance, notNullValue());
         assertThat(firstInstance.getId(), not(secondInstance.getId()));
@@ -108,118 +108,112 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
-        HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
+        final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
         assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
         assertTrue(httpHeaders.get("bar").contains("baz"));
     }
 
     @Test
     public void givenFooService_whenCallOptionsForAllow_thenReceiveValueOfAllowHeader() {
-        Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(fooResourceUrl);
-        HttpMethod[] supportedMethods = {HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE};
+        final Set<HttpMethod> optionsForAllow = restTemplate.optionsForAllow(fooResourceUrl);
+        final HttpMethod[] supportedMethods = { HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE };
         assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
     }
 
     @Test
     public void givenFooService_whenPostResource_thenResourceIsCreated() {
-        RestTemplate template = new RestTemplate();
+        final RestTemplate template = new RestTemplate();
 
-        HttpHeaders headers = prepareBasicAuthHeaders();
-        HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
+        final HttpHeaders headers = prepareBasicAuthHeaders();
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
-        ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+        final ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
-        Foo foo = response.getBody();
+        final Foo foo = response.getBody();
         assertThat(foo, notNullValue());
         assertThat(foo.getName(), is("bar"));
     }
 
     @Test
     public void givenFooService_whenPutExistingEntity_thenItIsUpdated() {
-        RestTemplate template = new RestTemplate();
-        HttpHeaders headers = prepareBasicAuthHeaders();
-        HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
+        final RestTemplate template = new RestTemplate();
+        final HttpHeaders headers = prepareBasicAuthHeaders();
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
-        //Create entity
+        // Create entity
         ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
-        //Update entity
-        Foo updatedInstance = new Foo("newName");
+        // Update entity
+        final Foo updatedInstance = new Foo("newName");
         updatedInstance.setId(response.getBody().getId());
-        String resourceUrl = fooResourceUrl + '/' + response.getBody().getId();
+        final String resourceUrl = fooResourceUrl + '/' + response.getBody().getId();
         template.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
 
-        //Check that entity was updated
+        // Check that entity was updated
         response = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
-        Foo foo = response.getBody();
+        final Foo foo = response.getBody();
         assertThat(foo.getName(), is(updatedInstance.getName()));
     }
 
     @Test
     public void givenFooService_whenCallDelete_thenEntityIsRemoved() {
-    	Foo foo = new Foo("remove me");
-    	ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
-    	assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
-    	
-        String entityUrl = fooResourceUrl + "/" + response.getBody().getId();
+        final Foo foo = new Foo("remove me");
+        final ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
+        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+
+        final String entityUrl = fooResourceUrl + "/" + response.getBody().getId();
         restTemplate.delete(entityUrl);
         try {
             restTemplate.getForEntity(entityUrl, Foo.class);
             fail();
-        } catch (HttpClientErrorException ex) {
+        } catch (final HttpClientErrorException ex) {
             assertThat(ex.getStatusCode(), is(HttpStatus.NOT_FOUND));
         }
     }
 
     private void ensureOneEntityExists() {
-        Foo instance = new Foo("bar");
+        final Foo instance = new Foo("bar");
         instance.setId(1L);
-        
+
         try {
-        	restTemplate.getForEntity(fooResourceUrl + "/1", Foo.class);
-        } catch (HttpClientErrorException ex) {
-        	if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
-        		restTemplate.postForEntity(fooResourceUrl, instance, Foo.class);
-        	}
+            restTemplate.getForEntity(fooResourceUrl + "/1", Foo.class);
+        } catch (final HttpClientErrorException ex) {
+            if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
+                restTemplate.postForEntity(fooResourceUrl, instance, Foo.class);
+            }
         }
-        
+
     }
 
     private ClientHttpRequestFactory getClientHttpRequestFactory() {
-        int timeout = 5;
-        RequestConfig config = RequestConfig.custom()
-                .setConnectTimeout(timeout * 1000)
-                .setConnectionRequestTimeout(timeout * 1000)
-                .setSocketTimeout(timeout * 1000).build();
+        final int timeout = 5;
+        final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
 
-        BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope("localhost", APPLICATION_PORT, AuthScope.ANY_REALM),
-                new UsernamePasswordCredentials("user1", "user1Pass"));
+        final BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+        credentialsProvider.setCredentials(new AuthScope("localhost", APPLICATION_PORT, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
 
-        CloseableHttpClient client = HttpClientBuilder.create()
-                .setDefaultRequestConfig(config)
-                .setDefaultCredentialsProvider(credentialsProvider).build();
+        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCredentialsProvider(credentialsProvider).build();
 
         return new HttpComponentsClientHttpRequestFactory(client);
     }
 
     private HttpHeaders prepareBasicAuthHeaders() {
-        HttpHeaders headers = new HttpHeaders();
-        String encodedLogPass = getBase64EncodedLogPass();
+        final HttpHeaders headers = new HttpHeaders();
+        final String encodedLogPass = getBase64EncodedLogPass();
         headers.add(HttpHeaders.AUTHORIZATION, "Basic " + encodedLogPass);
         return headers;
     }
 
     private String getBase64EncodedLogPass() {
-        String logPass = "user1:user1Pass";
-        byte[] authHeaderBytes = encodeBase64(logPass.getBytes(Charsets.US_ASCII));
+        final String logPass = "user1:user1Pass";
+        final byte[] authHeaderBytes = encodeBase64(logPass.getBytes(Charsets.US_ASCII));
         return new String(authHeaderBytes, Charsets.US_ASCII);
     }
 
-    private RequestCallback requestCallback(Foo updatedInstance) {
+    private RequestCallback requestCallback(final Foo updatedInstance) {
         return clientHttpRequest -> {
-            ObjectMapper mapper = new ObjectMapper();
+            final ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(clientHttpRequest.getBody(), updatedInstance);
             clientHttpRequest.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
             clientHttpRequest.getHeaders().add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
