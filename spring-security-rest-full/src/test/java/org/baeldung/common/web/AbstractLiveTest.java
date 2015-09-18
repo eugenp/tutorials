@@ -1,15 +1,16 @@
 package org.baeldung.common.web;
 
-import java.io.Serializable;
-
-import org.baeldung.test.IMarshaller;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
+import org.baeldung.test.IMarshaller;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.Serializable;
+
+import static org.baeldung.Consts.APPLICATION_PORT;
 
 public abstract class AbstractLiveTest<T extends Serializable> {
 
@@ -55,7 +56,7 @@ public abstract class AbstractLiveTest<T extends Serializable> {
     //
 
     protected String getURL() {
-        return "http://localhost:8080/spring-security-rest-full/foos";
+        return "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/foos";
     }
 
     protected final RequestSpecification givenAuth() {
