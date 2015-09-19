@@ -10,9 +10,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.http.auth.AuthScope;
@@ -32,8 +30,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
@@ -45,17 +41,11 @@ import com.google.common.base.Charsets;
 public class RestTemplateLiveTest {
 
     private RestTemplate restTemplate;
-    private List<HttpMessageConverter<?>> messageConverters;
     private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/foos";
 
     @Before
     public void beforeTest() {
         restTemplate = new RestTemplate(getClientHttpRequestFactory());
-
-        messageConverters = new ArrayList<>();
-        final MappingJackson2HttpMessageConverter jsonMessageConverter = new MappingJackson2HttpMessageConverter();
-        jsonMessageConverter.setObjectMapper(new ObjectMapper());
-        messageConverters.add(jsonMessageConverter);
 
         ensureOneEntityExists();
     }
@@ -82,7 +72,6 @@ public class RestTemplateLiveTest {
 
     @Test
     public void givenResourceUrl_whenSendGetForObject_thenReturnsRepoObject() {
-        restTemplate.setMessageConverters(messageConverters);
         final Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
         assertThat(foo.getName(), is("bar"));
         assertThat(foo.getId(), is(1L));
