@@ -50,6 +50,8 @@ public class RestTemplateLiveTest {
         ensureOneEntityExists();
     }
 
+    // GET
+
     @Test
     public void givenResourceUrl_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
         final ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
@@ -77,6 +79,8 @@ public class RestTemplateLiveTest {
         assertThat(foo.getId(), is(1L));
     }
 
+    // POST
+
     @Test
     public void givenFooService_whenPostForObject_thenCreatedObjectIsReturned() {
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
@@ -95,6 +99,8 @@ public class RestTemplateLiveTest {
         assertThat(firstInstance.getId(), not(secondInstance.getId()));
     }
 
+    // HEAD, OPTIONS
+
     @Test
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
@@ -108,6 +114,8 @@ public class RestTemplateLiveTest {
         final HttpMethod[] supportedMethods = { HttpMethod.GET, HttpMethod.POST, HttpMethod.PUT, HttpMethod.DELETE };
         assertTrue(optionsForAllow.containsAll(Arrays.asList(supportedMethods)));
     }
+
+    // POST
 
     @Test
     public void givenFooService_whenPostResource_thenResourceIsCreated() {
@@ -123,8 +131,32 @@ public class RestTemplateLiveTest {
         assertThat(foo.getName(), is("bar"));
     }
 
+    // PUT
+
     @Test
     public void givenFooService_whenPutExistingEntity_thenItIsUpdated() {
+        final RestTemplate template = new RestTemplate();
+        final HttpHeaders headers = prepareBasicAuthHeaders();
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
+
+        // Create Resource
+        final ResponseEntity<Foo> createResponse = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+
+        // Update Resource
+        final Foo updatedInstance = new Foo("newName");
+        updatedInstance.setId(createResponse.getBody().getId());
+        final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody().getId();
+        final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedInstance, headers);
+        template.exchange(resourceUrl, HttpMethod.PUT, requestUpdate, Void.class);
+
+        // Check that Resource was updated
+        final ResponseEntity<Foo> updateResponse = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        final Foo foo = updateResponse.getBody();
+        assertThat(foo.getName(), is(updatedInstance.getName()));
+    }
+
+    @Test
+    public void givenFooService_whenPutExistingEntityWithCallback_thenItIsUpdated() {
         final RestTemplate template = new RestTemplate();
         final HttpHeaders headers = prepareBasicAuthHeaders();
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
@@ -145,6 +177,8 @@ public class RestTemplateLiveTest {
         assertThat(foo.getName(), is(updatedInstance.getName()));
     }
 
+    // DELETE
+
     @Test
     public void givenFooService_whenCallDelete_thenEntityIsRemoved() {
         final Foo foo = new Foo("remove me");
@@ -161,6 +195,8 @@ public class RestTemplateLiveTest {
         }
     }
 
+    //
+
     private void ensureOneEntityExists() {
         final Foo instance = new Foo("bar");
         instance.setId(1L);
@@ -172,7 +208,6 @@ public class RestTemplateLiveTest {
                 restTemplate.postForEntity(fooResourceUrl, instance, Foo.class);
             }
         }
-
     }
 
     private ClientHttpRequestFactory getClientHttpRequestFactory() {
