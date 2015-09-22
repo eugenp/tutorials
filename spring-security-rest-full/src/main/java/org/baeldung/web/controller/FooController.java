@@ -1,6 +1,9 @@
 package org.baeldung.web.controller;
 
-import com.google.common.base.Preconditions;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.exception.MyResourceNotFoundException;
@@ -14,11 +17,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import com.google.common.base.Preconditions;
 
 @Controller
 @RequestMapping(value = "/foos")
@@ -81,7 +89,7 @@ public class FooController {
     @ResponseBody
     public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
-        Foo foo = service.create(resource);
+        final Foo foo = service.create(resource);
         final Long idOfCreatedResource = foo.getId();
 
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
@@ -105,7 +113,7 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.HEAD)
     @ResponseStatus(HttpStatus.OK)
-    public void head(HttpServletResponse resp) {
+    public void head(final HttpServletResponse resp) {
         resp.setContentType(MediaType.APPLICATION_JSON_VALUE);
         resp.setHeader("bar", "baz");
     }
