@@ -2,6 +2,7 @@ package org.baeldung.gridfs;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
@@ -32,16 +33,16 @@ import com.mongodb.gridfs.GridFSDBFile;
 @ContextConfiguration(classes = MongoConfig.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class GridFSTest {
-    
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
-       
+
     @Autowired
     private GridFsTemplate gridFsTemplate;
-     
+
     @After
     public void tearDown() {
         List<GridFSDBFile> fileList = gridFsTemplate.find(null);
-        for(GridFSDBFile file: fileList) {
+        for (GridFSDBFile file : fileList) {
             gridFsTemplate.delete(new Query(Criteria.where("filename").is(file.getFilename())));
         }
     }
@@ -52,7 +53,6 @@ public class GridFSTest {
         metaData.put("key", "value");
         InputStream inputStream = null;
         String id = "";
-
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
@@ -77,7 +77,6 @@ public class GridFSTest {
         metaData.put("key", "value");
         InputStream inputStream = null;
         String id = "";
-
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
@@ -92,9 +91,9 @@ public class GridFSTest {
                 }
             }
         }
-        
+
         GridFSDBFile gridFSDBFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
-             
+
         assertNotNull(gridFSDBFile);
         assertThat(gridFSDBFile.getFilename(), is("test.png"));
         assertThat(gridFSDBFile.getMetaData().get("key"), is("value"));
@@ -121,21 +120,19 @@ public class GridFSTest {
                 }
             }
         }
-        
+
         List<GridFSDBFile> gridFSDBFiles = gridFsTemplate.find(null);
-        
+
         assertNotNull(gridFSDBFiles);
         assertThat(gridFSDBFiles.size(), is(2));
     }
-    
-    
+
     @Test
     public void givenFileWithMetadataExist_whenDeletingFileById_thenFileWithMetadataIsDeleted() {
         DBObject metaData = new BasicDBObject();
         metaData.put("key", "value");
         InputStream inputStream = null;
         String id = "";
-
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
@@ -150,19 +147,18 @@ public class GridFSTest {
                 }
             }
         }
-        
+
         gridFsTemplate.delete(new Query(Criteria.where("_id").is(id)));
-             
+
         assertThat(gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id))), is(nullValue()));
     }
-    
+
     @Test
     public void givenFileWithMetadataExist_whenGettingFileByResource_thenFileWithMetadataIsGotten() {
         DBObject metaData = new BasicDBObject();
         metaData.put("key", "value");
         InputStream inputStream = null;
         String id = "";
-
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
@@ -177,10 +173,11 @@ public class GridFSTest {
                 }
             }
         }
-        
+
         GridFsResource[] gridFsResource = gridFsTemplate.getResources("test*");
-             
+
         assertNotNull(gridFsResource);
+        assertEquals(gridFsResource.length, 1);
         assertThat(gridFsResource[0].getFilename(), is("test.png"));
     }
 }
