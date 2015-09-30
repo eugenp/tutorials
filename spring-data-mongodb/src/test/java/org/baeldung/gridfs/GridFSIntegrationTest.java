@@ -57,13 +57,13 @@ public class GridFSIntegrationTest {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
         } catch (FileNotFoundException ex) {
-            logger.error("", ex);
+            logger.error("File not found", ex);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException ex) {
-                    logger.error("", ex);
+                    logger.error("Failed to close", ex);
                 }
             }
         }
@@ -81,13 +81,13 @@ public class GridFSIntegrationTest {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
         } catch (FileNotFoundException ex) {
-            logger.error("", ex);
+            logger.error("File not found", ex);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException ex) {
-                    logger.error("", ex);
+                    logger.error("Failed to close", ex);
                 }
             }
         }
@@ -110,13 +110,13 @@ public class GridFSIntegrationTest {
             gridFsTemplate.store(inputStream, "test.png", "image/png", metaData);
             gridFsTemplate.store(inputStream, "test.png", "image/png", metaData);
         } catch (FileNotFoundException ex) {
-            logger.error("", ex);
+            logger.error("File not found", ex);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException ex) {
-                    logger.error("", ex);
+                    logger.error("Failed to close", ex);
                 }
             }
         }
@@ -137,13 +137,13 @@ public class GridFSIntegrationTest {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
         } catch (FileNotFoundException ex) {
-            logger.error("", ex);
+            logger.error("File not found", ex);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException ex) {
-                    logger.error("", ex);
+                    logger.error("Failed to close", ex);
                 }
             }
         }
@@ -163,13 +163,13 @@ public class GridFSIntegrationTest {
             inputStream = new FileInputStream("src/main/resources/test.png");
             id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).getId().toString();
         } catch (FileNotFoundException ex) {
-            logger.error("", ex);
+            logger.error("File not found", ex);
         } finally {
             if (inputStream != null) {
                 try {
                     inputStream.close();
                 } catch (IOException ex) {
-                    logger.error("", ex);
+                    logger.error("Failed to close", ex);
                 }
             }
         }
