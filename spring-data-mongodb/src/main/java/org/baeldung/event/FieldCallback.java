@@ -8,7 +8,8 @@ import org.springframework.util.ReflectionUtils;
 public class FieldCallback implements ReflectionUtils.FieldCallback {
     private boolean idFound;
 
-    public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
+    @Override
+    public void doWith(final Field field) throws IllegalArgumentException, IllegalAccessException {
         ReflectionUtils.makeAccessible(field);
 
         if (field.isAnnotationPresent(Id.class)) {

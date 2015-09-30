@@ -3,7 +3,8 @@ package org.baeldung.validation;
 @SuppressWarnings("serial")
 public class EmailExistsException extends Throwable {
 
-    public EmailExistsException(String message) {
+    public EmailExistsException(final String message) {
         super(message);
     }
+
 }

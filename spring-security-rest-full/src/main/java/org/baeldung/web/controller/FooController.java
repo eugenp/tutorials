@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -85,11 +86,15 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Foo resource, final HttpServletResponse response) {
+    @ResponseBody
+    public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
-        final Long idOfCreatedResource = service.create(resource).getId();
+        final Foo foo = service.create(resource);
+        final Long idOfCreatedResource = foo.getId();
 
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
+
+        return foo;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -104,6 +109,13 @@ public class FooController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") final Long id) {
         service.deleteById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.HEAD)
+    @ResponseStatus(HttpStatus.OK)
+    public void head(final HttpServletResponse resp) {
+        resp.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        resp.setHeader("bar", "baz");
     }
 
 }

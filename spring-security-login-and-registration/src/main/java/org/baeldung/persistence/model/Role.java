@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
 
 @Entity
 public class Role {
@@ -30,16 +30,18 @@ public class Role {
         super();
     }
 
-    public Role(String name) {
+    public Role(final String name) {
         super();
         this.name = name;
     }
+
+    //
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -47,7 +49,7 @@ public class Role {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -55,7 +57,7 @@ public class Role {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(final Collection<User> users) {
         this.users = users;
     }
 
@@ -63,7 +65,7 @@ public class Role {
         return privileges;
     }
 
-    public void setPrivileges(Collection<Privilege> privileges) {
+    public void setPrivileges(final Collection<Privilege> privileges) {
         this.privileges = privileges;
     }
 
@@ -77,15 +79,19 @@ public class Role {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Role role = (Role) obj;
-        if (!role.equals(role.name))
+        if (!role.equals(role.name)) {
             return false;
+        }
         return true;
     }
 

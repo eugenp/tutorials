@@ -3,7 +3,6 @@ package org.baeldung.repository;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-
 import java.util.List;
 
 import org.baeldung.config.MongoConfig;
@@ -12,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -32,7 +30,7 @@ public class QueryMethodsIntegrationTest extends BaseQueryIntegrationTest {
         List<User> users = userRepository.findByName("Eric");
         assertThat(users.size(), is(1));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUsersWithAgeCreaterThanAndLessThan_thenUsersAreFound() {
         User user = new User();
@@ -53,7 +51,7 @@ public class QueryMethodsIntegrationTest extends BaseQueryIntegrationTest {
         List<User> users = userRepository.findByAgeBetween(26, 40);
         assertThat(users.size(), is(1));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUserWithNameStartWithA_thenUsersAreFound() {
         User user = new User();
@@ -74,7 +72,7 @@ public class QueryMethodsIntegrationTest extends BaseQueryIntegrationTest {
         List<User> users = userRepository.findByNameStartingWith("A");
         assertThat(users.size(), is(2));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUserWithNameEndWithC_thenUsersAreFound() {
         User user = new User();
@@ -93,10 +91,10 @@ public class QueryMethodsIntegrationTest extends BaseQueryIntegrationTest {
         mongoOps.insert(user);
 
         List<User> users = userRepository.findByNameEndingWith("c");
-        
+
         assertThat(users.size(), is(1));
     }
-    
+
     @Test
     public void givenUsersExist_whenFindingUsersAndSortThem_thenUsersAreFoundAndSorted() {
         User user = new User();
@@ -115,8 +113,7 @@ public class QueryMethodsIntegrationTest extends BaseQueryIntegrationTest {
         mongoOps.insert(user);
 
         List<User> users = userRepository.findByNameLikeOrderByAgeAsc("A");
-        
+
         assertThat(users.size(), is(2));
     }
 }
-

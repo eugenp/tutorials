@@ -12,9 +12,7 @@ import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Privilege;
 import org.baeldung.persistence.model.Role;
 import org.baeldung.persistence.model.User;
-import org.baeldung.persistence.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,10 +27,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private IUserService service;
-    @Autowired
-    private MessageSource messages;
+
     @Autowired
     private RoleRepository roleRepository;
 
@@ -50,7 +45,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
-        String ip = request.getRemoteAddr();
+        final String ip = request.getRemoteAddr();
         if (loginAttemptService.isBlocked(ip)) {
             throw new RuntimeException("blocked");
         }
@@ -76,7 +71,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private final List<String> getPrivileges(final Collection<Role> roles) {
         final List<String> privileges = new ArrayList<String>();
         final List<Privilege> collection = new ArrayList<Privilege>();
-        for (Role role : roles) {
+        for (final Role role : roles) {
             collection.addAll(role.getPrivileges());
         }
         for (final Privilege item : collection) {
@@ -92,4 +87,5 @@ public class MyUserDetailsService implements UserDetailsService {
         }
         return authorities;
     }
+
 }

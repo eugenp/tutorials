@@ -47,8 +47,8 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/j_spring_security_check*","/login*", "/logout*", "/signin/**", "/signup/**",
-                        "/user/registration*", "/regitrationConfirm*", "/expiredAccount*", "/registration*", 
-                        "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*", 
+                        "/user/registration*", "/regitrationConfirm*", "/expiredAccount*", "/registration*",
+                        "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*",
                         "/user/changePassword*", "/emailError*", "/resources/**","/old/user/registration*","/successRegister*").permitAll()
                 .antMatchers("/invalidSession*").anonymous()
                 .anyRequest().authenticated()

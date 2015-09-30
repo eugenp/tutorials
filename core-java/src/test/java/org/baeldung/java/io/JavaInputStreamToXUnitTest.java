@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -128,10 +129,25 @@ public class JavaInputStreamToXUnitTest {
     // tests - InputStream to byte[]
 
     @Test
-    public final void givenUsingPlainJava_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+    public final void givenUsingPlainJavaOnFixedSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
         final InputStream initialStream = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
         final byte[] targetArray = new byte[initialStream.available()];
         initialStream.read(targetArray);
+    }
+
+    @Test
+    public final void givenUsingPlainJavaOnUnknownSizeStream_whenConvertingAnInputStreamToAByteArray_thenCorrect() throws IOException {
+        final InputStream is = new ByteArrayInputStream(new byte[] { 0, 1, 2 });
+
+        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        final byte[] data = new byte[1024];
+        while ((nRead = is.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+
+        buffer.flush();
+        final byte[] byteArray = buffer.toByteArray();
     }
 
     @Test

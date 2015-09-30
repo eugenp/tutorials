@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.baeldung</groupId>
     <artifactId>spring-security-login-and-registration</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+
     <name>spring-security-login-and-registration</name>
     <packaging>war</packaging>
-    <version>1.0.1-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.5.RELEASE</version>
+        <version>1.2.6.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -188,13 +190,34 @@
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
+                <configuration>
+                    <wait>true</wait>
+                    <container>
+                        <containerId>tomcat8x</containerId>
+                        <type>embedded</type>
+                        <systemProperties>
+                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
+                        </systemProperties>
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>8081</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
     <properties>
         <java-version>1.7</java-version>
         <org.springframework-version>4.1.6.RELEASE</org.springframework-version>
-        <org.springframework.security.version>3.2.7.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.12</org.slf4j.version>
@@ -212,5 +235,9 @@
         <!-- guava -->
         <guava.version>18.0</guava.version>
 
+        <!-- maven -->
+        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+
     </properties>
+
 </project>

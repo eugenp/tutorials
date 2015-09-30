@@ -31,6 +31,8 @@ public class User {
 
     private boolean tokenExpired;
 
+    //
+
     @ManyToMany
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id") , inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
     private Collection<Role> roles;
@@ -45,7 +47,7 @@ public class User {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -53,7 +55,7 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -61,7 +63,7 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -69,7 +71,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String username) {
+    public void setEmail(final String username) {
         this.email = username;
     }
 
@@ -77,7 +79,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -85,7 +87,7 @@ public class User {
         return roles;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(final Collection<Role> roles) {
         this.roles = roles;
     }
 
@@ -93,7 +95,7 @@ public class User {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
+    public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -101,7 +103,7 @@ public class User {
         return tokenExpired;
     }
 
-    public void setTokenExpired(boolean expired) {
+    public void setTokenExpired(final boolean expired) {
         this.tokenExpired = expired;
     }
 
@@ -115,15 +117,19 @@ public class User {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final User user = (User) obj;
-        if (!email.equals(user.email))
+        if (!email.equals(user.email)) {
             return false;
+        }
         return true;
     }
 
