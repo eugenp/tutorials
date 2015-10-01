@@ -98,10 +98,10 @@ public class GridFSIntegrationTest {
         assertNotNull(gridFSDBFile);
         assertNotNull(gridFSDBFile.getInputStream());
         assertThat(gridFSDBFile.numChunks(), is(1));
-        assertThat(gridFSDBFile.containsField("filename"),is(true));
-        assertThat(gridFSDBFile.get("filename"),is("test.png"));
-        assertThat(gridFSDBFile.getId(),is(id));
-        assertThat(gridFSDBFile.keySet().size(),is(9));
+        assertThat(gridFSDBFile.containsField("filename"), is(true));
+        assertThat(gridFSDBFile.get("filename"), is("test.png"));
+        assertThat(gridFSDBFile.getId(), is(id));
+        assertThat(gridFSDBFile.keySet().size(), is(9));
         assertNotNull(gridFSDBFile.getMD5());
         assertNotNull(gridFSDBFile.getUploadDate());
         assertNull(gridFSDBFile.getAliases());
