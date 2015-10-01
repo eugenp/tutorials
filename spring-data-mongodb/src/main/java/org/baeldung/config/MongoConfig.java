@@ -53,7 +53,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
         converters.add(new UserWriterConverter());
         return new CustomConversions(converters);
     }
-    
+
     @Bean
     public GridFsTemplate gridFsTemplate() throws Exception {
         return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
