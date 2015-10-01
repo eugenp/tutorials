@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.FileInputStream;
@@ -95,6 +96,17 @@ public class GridFSIntegrationTest {
         GridFSDBFile gridFSDBFile = gridFsTemplate.findOne(new Query(Criteria.where("_id").is(id)));
 
         assertNotNull(gridFSDBFile);
+        assertNotNull(gridFSDBFile.getInputStream());
+        assertThat(gridFSDBFile.numChunks(), is(1));
+        assertThat(gridFSDBFile.containsField("filename"),is(true));
+        assertThat(gridFSDBFile.get("filename"),is("test.png"));
+        assertThat(gridFSDBFile.getId(),is(id));
+        assertThat(gridFSDBFile.keySet().size(),is(9));
+        assertNotNull(gridFSDBFile.getMD5());
+        assertNotNull(gridFSDBFile.getUploadDate());
+        assertNull(gridFSDBFile.getAliases());
+        assertNotNull(gridFSDBFile.getChunkSize());
+        assertThat(gridFSDBFile.getContentType(), is("image/png"));
         assertThat(gridFSDBFile.getFilename(), is("test.png"));
         assertThat(gridFSDBFile.getMetaData().get("key"), is("value"));
     }
