@@ -6,7 +6,7 @@
     <groupId>org.baeldung</groupId>
     <artifactId>spring-quartz-basics</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>spring-quartz-basics</name>
     <description>Demo project for Scheduling in Spring with Quartz</description>
