@@ -1,58 +1,25 @@
 package sample.model;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class User {
 
-	@NotNull(message = "First name cannot be null")
-	@NotEmpty(message = "First name cannot be empty")
-	private String fname;
+	@NotNull(message = "Name cannot be null")
+	private String name;
 
-	@NotNull(message = "Last name cannot be null")
-	@NotEmpty(message = "Last name cannot be empty")
-	private String lname;
+	@AssertTrue
+	private boolean working;
 
-	@Min(value = 18, message = "Age must be greater than or equal to 18")
-	@Max(value = 150, message = "Age must be less than or equal to 150")
+	@Size(min = 10, max = 200, message = "About me should not exceed more than 10 characters")
+	private String aboutMe;
+
+	@Min(value = 18, message = "Age should not be less than 18")
+	@Max(value = 150, message = "Age should not be more than 150")
 	private int age;
-
-	@NotNull(message = "Last name cannot be null")
-	@NotEmpty(message = "Last name cannot be empty")
-	private String gender;
-
-	@NotNull(message = "Email Address is compulsory")
-	@NotEmpty(message = "Email Address is compulsory")
-	@Email(message = "Email Address is not a valid format")
-	private String email;
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getFname() {
-		return fname;
-	}
-
-	public void setFname(String fname) {
-		this.fname = fname;
-	}
-
-	public String getLname() {
-		return lname;
-	}
-
-	public void setLname(String lname) {
-		this.lname = lname;
-	}
 
 	public int getAge() {
 		return age;
@@ -62,12 +29,28 @@ public class User {
 		this.age = age;
 	}
 
-	public String getGender() {
-		return gender;
+	public boolean isWorking() {
+		return working;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setWorking(boolean working) {
+		this.working = working;
+	}
+
+	public String getAboutMe() {
+		return aboutMe;
+	}
+
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }
