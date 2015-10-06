@@ -1,6 +1,5 @@
-package org.baeldung.springquartz.service;
+package org.baeldung.springquartz.basics.service;
 
-import org.quartz.JobExecutionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -8,17 +7,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class SampleJobService {
 
-    private Logger _log = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     public void executeSampleJob() {
 
-        _log.info("The sample job has begun...");
+        logger.info("The sample job has begun...");
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            _log.error("Error while executing sample job", e);
+            logger.error("Error while executing sample job", e);
         } finally {
-            _log.info("Sample job has finished...");
+            logger.info("Sample job has finished...");
         }
     }
 }
