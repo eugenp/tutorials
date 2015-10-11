@@ -179,6 +179,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java-version}</source>
                     <target>${java-version}</target>
@@ -188,6 +189,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -208,6 +210,22 @@
                             <cargo.servlet.port>8081</cargo.servlet.port>
                         </properties>
                     </configuration>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                    <systemPropertyVariables>
+                        <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 
@@ -235,8 +253,11 @@
         <!-- guava -->
         <guava.version>18.0</guava.version>
 
-        <!-- maven -->
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <!-- Maven plugins -->
+        <cargo-maven2-plugin.version>1.4.16</cargo-maven2-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
 
     </properties>
 

@@ -27,7 +27,7 @@ import com.jayway.restassured.specification.RequestSpecification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ConfigTest.class, PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class ChangePasswordApiTest {
+public class ChangePasswordLiveTest {
 
     private final String URL_PREFIX = "http://localhost:8080/spring-security-login-and-registration";
     private final String URL = URL_PREFIX + "/user/updatePassword";

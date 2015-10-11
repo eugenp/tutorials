@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
 @Transactional
 @TransactionConfiguration
-public class SpringSecurityRolesTest {
+public class SpringSecurityRolesIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
