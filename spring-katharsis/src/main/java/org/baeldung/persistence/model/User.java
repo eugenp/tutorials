@@ -1,12 +1,20 @@
 package org.baeldung.persistence.model;
 
 import io.katharsis.resource.annotations.JsonApiId;
+import io.katharsis.resource.annotations.JsonApiIncludeByDefault;
 import io.katharsis.resource.annotations.JsonApiResource;
+import io.katharsis.resource.annotations.JsonApiToMany;
+
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 @JsonApiResource(type = "users")
@@ -17,14 +25,24 @@ public class User {
     @JsonApiId
     private Long id;
 
-    private String firstName;
-
-    private String lastName;
+    private String username;
 
     private String email;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JsonApiToMany
+    @JsonApiIncludeByDefault
+    private Set<Role> roles;
+
     public User() {
         super();
+    }
+
+    public User(String username, String email) {
+        super();
+        this.username = username;
+        this.email = email;
     }
 
     public Long getId() {
@@ -35,28 +53,28 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFirstName(final String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(final String lastName) {
-        this.lastName = lastName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(final String username) {
-        email = username;
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -84,7 +102,7 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
+        builder.append("User [id=").append(id).append(", username=").append(username).append(", email=").append(email).append(", roles=").append(roles).append("]");
         return builder.toString();
     }
 
