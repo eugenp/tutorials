@@ -31,7 +31,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 import com.mongodb.gridfs.GridFSDBFile;
 
-@ContextConfiguration(classes = MongoConfig.class)
+@ContextConfiguration("file:src/main/resources/mongoConfig.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class GridFSIntegrationTest {
 
@@ -51,7 +51,7 @@ public class GridFSIntegrationTest {
     @Test
     public void whenStoringFileWithMetadata_thenFileAndMetadataAreStored() {
         DBObject metaData = new BasicDBObject();
-        metaData.put("key", "value");
+        metaData.put("user", "alex");
         InputStream inputStream = null;
         String id = "";
         try {
@@ -75,7 +75,7 @@ public class GridFSIntegrationTest {
     @Test
     public void givenFileWithMetadataExist_whenFindingFileById_thenFileWithMetadataIsFound() {
         DBObject metaData = new BasicDBObject();
-        metaData.put("key", "value");
+        metaData.put("user", "alex");
         InputStream inputStream = null;
         String id = "";
         try {
@@ -108,19 +108,21 @@ public class GridFSIntegrationTest {
         assertNotNull(gridFSDBFile.getChunkSize());
         assertThat(gridFSDBFile.getContentType(), is("image/png"));
         assertThat(gridFSDBFile.getFilename(), is("test.png"));
-        assertThat(gridFSDBFile.getMetaData().get("key"), is("value"));
+        assertThat(gridFSDBFile.getMetaData().get("user"), is("alex"));
     }
 
     @Test
     public void givenMetadataAndFilesExist_whenFindingAllFiles_thenFilesWithMetadataAreFound() {
-        DBObject metaData = new BasicDBObject();
-        metaData.put("key", "value");
+        DBObject metaDataUser1 = new BasicDBObject();
+        metaDataUser1.put("user", "alex");
+        DBObject metaDataUser2 = new BasicDBObject();
+        metaDataUser2.put("user", "david");
         InputStream inputStream = null;
 
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
-            gridFsTemplate.store(inputStream, "test.png", "image/png", metaData);
-            gridFsTemplate.store(inputStream, "test.png", "image/png", metaData);
+            gridFsTemplate.store(inputStream, "test.png", "image/png", metaDataUser1);
+            gridFsTemplate.store(inputStream, "test.png", "image/png", metaDataUser2);
         } catch (FileNotFoundException ex) {
             logger.error("File not found", ex);
         } finally {
@@ -138,11 +140,41 @@ public class GridFSIntegrationTest {
         assertNotNull(gridFSDBFiles);
         assertThat(gridFSDBFiles.size(), is(2));
     }
+    
+    @Test
+    public void givenMetadataAndFilesExist_whenFindingAllFilesOnQuery_thenFilesWithMetadataAreFoundOnQuery() {
+        DBObject metaDataUser1 = new BasicDBObject();
+        metaDataUser1.put("user", "alex");
+        DBObject metaDataUser2 = new BasicDBObject();
+        metaDataUser2.put("user", "david");
+        InputStream inputStream = null;
+
+        try {
+            inputStream = new FileInputStream("src/main/resources/test.png");
+            gridFsTemplate.store(inputStream, "test.png", "image/png", metaDataUser1);
+            gridFsTemplate.store(inputStream, "test.png", "image/png", metaDataUser2);
+        } catch (FileNotFoundException ex) {
+            logger.error("File not found", ex);
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException ex) {
+                    logger.error("Failed to close", ex);
+                }
+            }
+        }
+
+        List<GridFSDBFile> gridFSDBFiles = gridFsTemplate.find(new Query(Criteria.where("metadata.user").is("alex")));
+
+        assertNotNull(gridFSDBFiles);
+        assertThat(gridFSDBFiles.size(), is(1));
+    }
 
     @Test
     public void givenFileWithMetadataExist_whenDeletingFileById_thenFileWithMetadataIsDeleted() {
         DBObject metaData = new BasicDBObject();
-        metaData.put("key", "value");
+        metaData.put("user", "alex");
         InputStream inputStream = null;
         String id = "";
         try {
@@ -168,7 +200,7 @@ public class GridFSIntegrationTest {
     @Test
     public void givenFileWithMetadataExist_whenGettingFileByResource_thenFileWithMetadataIsGotten() {
         DBObject metaData = new BasicDBObject();
-        metaData.put("key", "value");
+        metaData.put("user", "alex");
         InputStream inputStream = null;
         String id = "";
         try {
