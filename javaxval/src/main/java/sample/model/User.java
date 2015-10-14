@@ -14,7 +14,7 @@ public class User {
 	@AssertTrue
 	private boolean working;
 
-	@Size(min = 10, max = 200, message = "About me should not exceed more than 10 characters")
+	@Size(min = 10, max = 200, message = "Number of characters should be in between 10 and 200 inclusive")
 	private String aboutMe;
 
 	@Min(value = 18, message = "Age should not be less than 18")
