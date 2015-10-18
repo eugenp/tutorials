@@ -1,4 +1,4 @@
-package sample.model;
+package org.baeldung;
 
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Max;
