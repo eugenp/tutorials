@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -62,5 +63,19 @@ public class ValidationTest {
 		Validator validator = factory.getValidator();
 		Set<ConstraintViolation<User>> violations = validator.validate(user);
 		Assert.assertEquals(violations.isEmpty(), false);
+	}
+	
+	
+	@Test
+	public void ifFnameNullAgeNotRangeAndWorkingIsFalse_validationFailsWithThreeErrors() {
+		User user = new User();		
+		user.setAboutMe("Its all about me!!");
+		user.setAge(300);
+
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		Validator validator = factory.getValidator();
+		Set<ConstraintViolation<User>> violations = validator.validate(user);		
+		Assert.assertEquals(violations.isEmpty(), false);
+		Assert.assertEquals(violations.size(), 3);
 	}
 }
