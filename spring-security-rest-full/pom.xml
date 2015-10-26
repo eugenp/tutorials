@@ -419,7 +419,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.0.RELEASE</org.springframework.version>
+        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
