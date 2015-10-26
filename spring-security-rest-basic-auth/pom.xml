@@ -287,7 +287,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.0.RELEASE</org.springframework.version>
+        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
@@ -295,8 +295,8 @@
         <mysql-connector-java.version>5.1.36</mysql-connector-java.version>
 
         <!-- http -->
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
+        <httpcore.version>4.4.3</httpcore.version>
+        <httpclient.version>4.5.1</httpclient.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.12</org.slf4j.version>
@@ -314,13 +314,13 @@
         <junit.version>4.11</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
-        <rest-assured.version>2.4.1</rest-assured.version>
+        <rest-assured.version>2.6.0</rest-assured.version>
 
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+        <cargo-maven2-plugin.version>1.4.16</cargo-maven2-plugin.version>
 
     </properties>
 

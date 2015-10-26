@@ -32,7 +32,7 @@ import org.junit.Test;
 
 public class HttpClientAuthLiveTest {
 
-    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8080/spring-security-rest-basic-auth/api/foos/1";
+    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8081/spring-security-rest-basic-auth/api/foos/1";
     private static final String DEFAULT_USER = "user1";
     private static final String DEFAULT_PASS = "user1Pass";
 
@@ -99,7 +99,7 @@ public class HttpClientAuthLiveTest {
     public final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess2() throws ClientProtocolException, IOException {
         final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         final String auth = DEFAULT_USER + ":" + DEFAULT_PASS;
-        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("ISO-8859-1")));
         final String authHeader = "Basic " + new String(encodedAuth);
         request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
 
@@ -139,7 +139,7 @@ public class HttpClientAuthLiveTest {
 
     private final String authorizationHeader(final String username, final String password) {
         final String auth = username + ":" + password;
-        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
+        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("ISO-8859-1")));
         final String authHeader = "Basic " + new String(encodedAuth);
 
         return authHeader;
