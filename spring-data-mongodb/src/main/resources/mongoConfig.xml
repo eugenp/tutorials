@@ -10,15 +10,19 @@
        http://www.springframework.org/schema/context/spring-context-3.2.xsd"
 >
     <context:annotation-config/>
-
-    <bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
-        <property name="host" value="localhost"/>
+    
+    <mongo:mongo id="mongo" host="localhost" />
+    
+    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongo" />
+    
+    <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+        <constructor-arg ref="mongoDbFactory" />
+        <constructor-arg ref="mongoConverter" />
     </bean>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg name="mongo" ref="mongo"/>
+        <constructor-arg ref="mongoDbFactory"/>
         <constructor-arg ref="mongoConverter" />
-        <constructor-arg name="databaseName" value="test"/>
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
