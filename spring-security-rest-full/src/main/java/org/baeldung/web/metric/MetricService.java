@@ -2,26 +2,27 @@ package org.baeldung.web.metric;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class MetricService implements IMetricService {
 
-    private Map<String, HashMap<Integer, Integer>> metricMap;
-    private Map<Integer, Integer> statusMetric;
-    private Map<String, HashMap<Integer, Integer>> timeMap;
+    private ConcurrentMap<String, ConcurrentHashMap<Integer, Integer>> metricMap;
+    private ConcurrentMap<Integer, Integer> statusMetric;
+    private ConcurrentMap<String, ConcurrentHashMap<Integer, Integer>> timeMap;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public MetricService() {
         super();
-        metricMap = new HashMap<String, HashMap<Integer, Integer>>();
-        statusMetric = new HashMap<Integer, Integer>();
-        timeMap = new HashMap<String, HashMap<Integer, Integer>>();
+        metricMap = new ConcurrentHashMap<String, ConcurrentHashMap<Integer, Integer>>();
+        statusMetric = new ConcurrentHashMap<Integer, Integer>();
+        timeMap = new ConcurrentHashMap<String, ConcurrentHashMap<Integer, Integer>>();
     }
 
     // API
@@ -58,8 +59,8 @@ public class MetricService implements IMetricService {
             j++;
         }
         int i = 1;
-        Map<Integer, Integer> tempMap;
-        for (final Entry<String, HashMap<Integer, Integer>> entry : timeMap.entrySet()) {
+        ConcurrentMap<Integer, Integer> tempMap;
+        for (final Entry<String, ConcurrentHashMap<Integer, Integer>> entry : timeMap.entrySet()) {
             result[i][0] = entry.getKey();
             tempMap = entry.getValue();
             for (j = 1; j < colCount; j++) {
@@ -77,9 +78,9 @@ public class MetricService implements IMetricService {
     // NON-API
 
     private void increaseMainMetric(final String request, final int status) {
-        HashMap<Integer, Integer> statusMap = metricMap.get(request);
+        ConcurrentHashMap<Integer, Integer> statusMap = metricMap.get(request);
         if (statusMap == null) {
-            statusMap = new HashMap<Integer, Integer>();
+            statusMap = new ConcurrentHashMap<Integer, Integer>();
         }
 
         Integer count = statusMap.get(status);
@@ -103,9 +104,9 @@ public class MetricService implements IMetricService {
 
     private void updateTimeMap(final int status) {
         final String time = dateFormat.format(new Date());
-        HashMap<Integer, Integer> statusMap = timeMap.get(time);
+        ConcurrentHashMap<Integer, Integer> statusMap = timeMap.get(time);
         if (statusMap == null) {
-            statusMap = new HashMap<Integer, Integer>();
+            statusMap = new ConcurrentHashMap<Integer, Integer>();
         }
 
         Integer count = statusMap.get(status);
