@@ -3,6 +3,7 @@ package org.baeldung.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +32,7 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
     private Environment env;
 
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Value("classpath:schema.sql")
@@ -47,8 +49,14 @@ public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter
         clients.jdbc(dataSource())
                .withClient("clientId")
                .authorizedGrantTypes("implicit")
-               .scopes("read","write")
-               .autoApprove(true);
+               .scopes("read")
+               .autoApprove(true)
+               .and()
+               .withClient("clientIdPassword")
+               .secret("secret")
+               .authorizedGrantTypes("password","authorization_code", "refresh_token")
+               .scopes("read");
+
      // @formatter:on
     }
 
