@@ -22,7 +22,7 @@ var app = angular.module('myApp', ["ngResource","ngRoute","ngCookies"]);
 
 app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,$cookies) {
 	$scope.foo = {id:0 , name:"sample foo"};
-	$scope.foos = $resource("http://localhost:8080/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
+	$scope.foos = $resource("http://localhost:8081/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
     
 	$scope.getFoo = function(){
 		$scope.foo = $scope.foos.get({fooId:$scope.foo.id});
@@ -50,7 +50,7 @@ app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,
     $scope.login = function() {   
      	var req = {
             method: 'POST',
-            url: "http://localhost:8080/spring-security-oauth-server/oauth/token",
+            url: "http://localhost:8081/spring-security-oauth-server/oauth/token",
             headers: {
                 "Authorization": "Basic " + $scope.encoded,
                 "Content-type": "application/x-www-form-urlencoded; charset=utf-8"
