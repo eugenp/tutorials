@@ -10,9 +10,9 @@
 
 
 <oauth
-  site="http://localhost:8080/spring-security-oauth-server"
+  site="http://localhost:8081/spring-security-oauth-server"
   client-id="clientId"
-  redirect-uri="http://localhost:8080/spring-security-oauth-ui-implicit/index"
+  redirect-uri="http://localhost:8081/spring-security-oauth-ui-implicit/index"
   scope="read"
   template="oauthTemp">
 </oauth>
@@ -44,7 +44,7 @@ app.controller('mainCtrl', function($scope,$resource,$http) {
 	});
 
 	$scope.foo = {id:0 , name:"sample foo"};
-    $scope.foos = $resource("http://localhost:8080/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
+    $scope.foos = $resource("http://localhost:8081/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
     
 	$scope.getFoo = function(){
 		$scope.foo = $scope.foos.get({fooId:$scope.foo.id});
