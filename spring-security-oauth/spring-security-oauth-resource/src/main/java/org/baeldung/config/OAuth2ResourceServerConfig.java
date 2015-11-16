@@ -8,12 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 @Configuration
 @PropertySource({ "classpath:persistence.properties" })
-public class OAuth2ResourceConfig {
+@EnableResourceServer
+public class OAuth2ResourceServerConfig {
 
     @Autowired
     private Environment env;

@@ -26,7 +26,7 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @Configuration
 @PropertySource({ "classpath:persistence.properties" })
 @EnableAuthorizationServer
-public class AuthServerOAuth2Config extends AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private Environment env;

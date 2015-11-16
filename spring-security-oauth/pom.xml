@@ -67,8 +67,8 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.1.7.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.2.8.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
         <oauth.version>2.0.7.RELEASE</oauth.version>
 
         <!-- marshalling -->

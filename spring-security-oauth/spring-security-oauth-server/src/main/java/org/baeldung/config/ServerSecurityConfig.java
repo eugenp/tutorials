@@ -23,13 +23,13 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http.authorizeRequests()
             .antMatchers("/login").permitAll()
             .anyRequest().authenticated()
-            .and()
-            .formLogin().permitAll();
+            // .and().formLogin().permitAll()
+            ;
         // @formatter:on
     }
 
