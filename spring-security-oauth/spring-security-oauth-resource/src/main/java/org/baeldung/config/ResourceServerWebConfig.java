@@ -8,6 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "org.baeldung.web.controller" })
-public class ResourceWebConfig extends WebMvcConfigurerAdapter {
+public class ResourceServerWebConfig extends WebMvcConfigurerAdapter {
 
 }
