@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.metrics.CounterService;
 import org.springframework.boot.actuate.metrics.Metric;
+import org.springframework.boot.actuate.metrics.repository.InMemoryMetricRepository;
 import org.springframework.boot.actuate.metrics.repository.MetricRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ActuatorMetricService implements IActuatorMetricService {
 
-    @Autowired
     private MetricRepository repo;
 
     @Autowired
@@ -27,6 +27,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
 
     public ActuatorMetricService() {
         super();
+        repo = new InMemoryMetricRepository();
         statusMetric = new ArrayList<ArrayList<Integer>>();
         statusList = new ArrayList<String>();
     }
