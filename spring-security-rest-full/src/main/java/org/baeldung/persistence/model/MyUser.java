@@ -25,6 +25,16 @@ public class MyUser {
         super();
     }
 
+    public MyUser(final String firstName, final String lastName, final String email, final int age) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+    }
+
+    //
+
     public Long getId() {
         return id;
     }

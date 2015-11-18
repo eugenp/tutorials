@@ -17,6 +17,7 @@ import org.baeldung.web.util.SearchCriteria;
 import org.baeldung.web.util.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,11 +29,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
+import com.mysema.query.types.Predicate;
 import com.mysema.query.types.expr.BooleanExpression;
 
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 
+//@EnableSpringDataWebSupport
 @Controller
 public class UserController {
 
@@ -43,7 +46,7 @@ public class UserController {
     private UserRepository dao;
 
     @Autowired
-    private MyUserRepository mydao;
+    private MyUserRepository myUserRepository;
 
     public UserController() {
         super();
@@ -92,7 +95,7 @@ public class UserController {
             }
         }
         final BooleanExpression exp = builder.build();
-        return mydao.findAll(exp);
+        return myUserRepository.findAll(exp);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/users/rsql")
@@ -101,6 +104,12 @@ public class UserController {
         final Node rootNode = new RSQLParser().parse(search);
         final Specification<User> spec = rootNode.accept(new CustomRsqlVisitor<User>());
         return dao.findAll(spec);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/myusers")
+    @ResponseBody
+    public Iterable<MyUser> findAllByWebQuerydsl(@QuerydslPredicate(root = MyUser.class) final Predicate predicate) {
+        return myUserRepository.findAll(predicate);
     }
 
     // API - WRITE
@@ -116,7 +125,8 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void addMyUser(@RequestBody final MyUser resource) {
         Preconditions.checkNotNull(resource);
-        mydao.save(resource);
+        myUserRepository.save(resource);
+
     }
 
 }
