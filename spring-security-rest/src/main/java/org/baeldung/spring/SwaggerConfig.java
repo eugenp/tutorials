@@ -14,9 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-/**
- * Created by O.Vengrovskiy on 24.11.2015.
- */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
