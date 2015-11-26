@@ -7,6 +7,8 @@
 
 # Eclipse
 .settings/
+.project
+.classpath
 .prefs
 *.prefs
 
