@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <cassandra:session keyspace-name="testKeySpace" />
+
+    <!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
+    <cassandra:mapping />
+
+    <!-- REQUIRED: The Default Cassandra Converter used by CassandraTemplate -->
+    <cassandra:converter />
+
+    <!-- REQUIRED: The Cassandra Template is the building block of all Spring
+      Data Cassandra -->
+    <cassandra:template id="cassandraTemplate" />
+
+</beans>
