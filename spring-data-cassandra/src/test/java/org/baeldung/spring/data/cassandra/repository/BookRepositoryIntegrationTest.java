@@ -31,20 +31,20 @@ public class BookRepositoryIntegrationTest {
 
     private static final Log LOGGER = LogFactory.getLog(BookRepositoryIntegrationTest.class);
 
-    public static final String KEYSPACE_CREATION_QUERY =
-            "CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
+    public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
 
     public static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
 
     public static final String DATA_TABLE_NAME = "book";
 
-    @Autowired private BookRepository bookRepository;
+    @Autowired
+    private BookRepository bookRepository;
 
-    @Autowired private CassandraAdminOperations adminTemplate;
+    @Autowired
+    private CassandraAdminOperations adminTemplate;
 
     @BeforeClass
-    public static void startCassandraEmbedded()
-            throws InterruptedException, TTransportException, ConfigurationException, IOException {
+    public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         EmbeddedCassandraServerHelper.startEmbeddedCassandra();
         Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
         LOGGER.info("Server Started at 127.0.0.1:9142... ");
@@ -55,8 +55,7 @@ public class BookRepositoryIntegrationTest {
     }
 
     @Before
-    public void resetKeySpace()
-            throws InterruptedException, TTransportException, ConfigurationException, IOException {
+    public void resetKeySpace() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
     }
 

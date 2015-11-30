@@ -32,8 +32,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
         cluster.setContactPoints(environment.getProperty("cassandra.contactpoints"));
         cluster.setPort(Integer.parseInt(environment.getProperty("cassandra.port")));
-        LOGGER.info("Cluster created with contact points ["+ environment.getProperty("cassandra.contactpoints") +"] " +
-                "& port [" + Integer.parseInt(environment.getProperty("cassandra.port")) + "].");
+        LOGGER.info("Cluster created with contact points [" + environment.getProperty("cassandra.contactpoints") + "] " + "& port [" + Integer.parseInt(environment.getProperty("cassandra.port")) + "].");
         return cluster;
     }
 
