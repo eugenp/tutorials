@@ -26,8 +26,9 @@ public class UiWebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-        registry.addViewController("/index");
+        registry.addViewController("/").setViewName("forward:/index");
         registry.addViewController("/oauthTemp");
+        registry.addViewController("/index");
     }
 
     @Override
