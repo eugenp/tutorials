@@ -46,25 +46,40 @@ public class BookRepositoryIntegrationTest {
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         EmbeddedCassandraServerHelper.startEmbeddedCassandra();
-        Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
+        Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1")
+                .withPort(9142).build();
         LOGGER.info("Server Started at 127.0.0.1:9142... ");
         Session session = cluster.connect();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
+        LOGGER.info(session.execute("Select * from Book").all().toArray());
+        Thread.sleep(5000);
         LOGGER.info("KeySpace created and activated.");
     }
 
     @Before
-    public void resetKeySpace() throws InterruptedException, TTransportException, ConfigurationException, IOException {
+    public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
         adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
     }
 
     @Test
-    public void whenSavingBooks_thenAvailableOnRetrieval() {
-        Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+    public void whenSavingBook_thenAvailableOnRetrieval() {
+        Book javaBook = new Book(UUIDs.timeBased(), "Head First Java",
+                "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
         bookRepository.save(ImmutableSet.of(javaBook));
         Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
         assertEquals(javaBook.getId(), books.iterator().next().getId());
+    }
+
+    @Test
+    public void whenUpdatingBooks_thenAvailableOnRetrieval() {
+        Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        bookRepository.save(ImmutableSet.of(javaBook));
+        Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
+        javaBook.setTitle("Head First Java Second Edition");
+        bookRepository.save(ImmutableSet.of(javaBook));
+        Iterable<Book> updateBooks = bookRepository.findByTitleAndPublisher("Head First Java Second Edition", "O'Reilly Media");
+        assertEquals(javaBook.getTitle(), updateBooks.iterator().next().getTitle());
     }
 
     @Test(expected = java.util.NoSuchElementException.class)
@@ -72,13 +87,27 @@ public class BookRepositoryIntegrationTest {
         Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
         bookRepository.save(ImmutableSet.of(javaBook));
         bookRepository.delete(javaBook);
-        Iterable<Book> books = bookRepository.findByTitleAndPublisher("type1", "O'Reilly Media");
+        Iterable<Book> books = bookRepository.findByTitleAndPublisher("Head First Java", "O'Reilly Media");
         assertNotEquals(javaBook.getId(), books.iterator().next().getId());
     }
 
+    @Test
+    public void whenSavingBooks_thenAllShouldAvailableOnRetrieval() {
+        Book javaBook = new Book(UUIDs.timeBased(), "Head First Java",
+                "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns",
+                "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        bookRepository.save(ImmutableSet.of(javaBook));
+        bookRepository.save(ImmutableSet.of(dPatternBook));
+        Iterable<Book> books = bookRepository.findAll();
+        int bookCount = 0;
+        for (Book book : books) bookCount++;
+        assertEquals(bookCount, 2);
+    }
+
     @After
-    public void cleanTable() {
-        adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));
+    public void dropTable() {
+       adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));
     }
 
     @AfterClass

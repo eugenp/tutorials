@@ -16,6 +16,7 @@ public class Book {
     private UUID id;
     @PrimaryKeyColumn(name = "title", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String title;
+
     @PrimaryKeyColumn(name = "publisher", ordinal = 1, type = PrimaryKeyType.PARTITIONED)
     private String publisher;
     @Column
@@ -42,5 +43,21 @@ public class Book {
 
     public Set getTags() {
         return tags;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 }
