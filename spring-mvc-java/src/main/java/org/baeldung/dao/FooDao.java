@@ -1,5 +1,6 @@
 package org.baeldung.dao;
 
+import org.baeldung.aop.annotations.Loggable;
 import org.baeldung.model.Foo;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,12 @@ public class FooDao {
         return "Bazz";
     }
 
+    @Loggable
     public Foo create(Long id, String name) {
         return new Foo(id, name);
+    }
+
+    public Foo merge(Foo foo) {
+        return foo;
     }
 }
