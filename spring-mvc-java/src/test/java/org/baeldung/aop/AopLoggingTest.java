@@ -2,6 +2,7 @@ package org.baeldung.aop;
 
 import org.baeldung.config.TestConfig;
 import org.baeldung.dao.FooDao;
+import org.baeldung.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -27,6 +29,8 @@ public class AopLoggingTest {
 
     @Before
     public void setUp() {
+        messages =  new ArrayList<>();
+
         logEventHandler = new Handler() {
             @Override
             public void publish(LogRecord record) {
@@ -42,7 +46,8 @@ public class AopLoggingTest {
             }
         };
 
-        messages = new ArrayList<>();
+        Logger logger = Logger.getLogger(LoggingAspect.class.getName());
+        logger.addHandler(logEventHandler);
     }
 
     @Autowired
@@ -54,14 +59,24 @@ public class AopLoggingTest {
 
     @Test
     public void givenLoggingAspect_whenCallDaoMethod_thenBeforeAdviceIsCalled() {
-        Logger logger = Logger.getLogger(LoggingAspect.class.getName());
-        logger.addHandler(logEventHandler);
-
         dao.findById(1L);
         assertThat(messages, hasSize(1));
 
         String logMessage = messages.get(0);
         Pattern pattern = Pattern.compile("^\\[\\d{4}\\-\\d{2}\\-\\d{2} \\d{2}:\\d{2}:\\d{2}:\\d{3}\\]findById$");
         assertTrue(pattern.matcher(logMessage).matches());
+    }
+
+    @Test
+    public void givenLoggingAspect_whenCallLoggableAnnotatedMethod_thenMethodIsLogged() {
+        dao.create(42L, "baz");
+        assertThat(messages, hasItem("Executing method: create"));
+    }
+
+    @Test
+    public void givenLoggingAspect_whenCallMethodAcceptingAnnotatedArgument_thenArgumentIsLogged() {
+        Foo foo = new Foo(42L, "baz");
+        dao.merge(foo);
+        assertThat(messages, hasItem("Accepting beans with @Entity annotation: " + foo));
     }
 }

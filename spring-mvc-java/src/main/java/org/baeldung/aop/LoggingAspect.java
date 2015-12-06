@@ -26,9 +26,26 @@ public class LoggingAspect {
     @Pointcut("@target(org.springframework.stereotype.Repository)")
     public void repositoryMethods() {}
 
+    @Pointcut("@annotation(org.baeldung.aop.annotations.Loggable)")
+    public void loggableMethods() {}
+
+    @Pointcut("@args(org.baeldung.aop.annotations.Entity)")
+    public void methodsAcceptingEntities() {}
+
     @Before("repositoryMethods()")
-    public void logMethodCall(JoinPoint jp) throws Throwable {
+    public void logMethodCall(JoinPoint jp) {
         String methodName = jp.getSignature().getName();
         logger.info(sdf.get().format(new Date()) + methodName);
+    }
+
+    @Before("loggableMethods()")
+    public void logMethod(JoinPoint jp) {
+        String methodName = jp.getSignature().getName();
+        logger.info("Executing method: " + methodName);
+    }
+
+    @Before("methodsAcceptingEntities()")
+    public void logMethodAcceptionEntityAnnotatedBean(JoinPoint jp) {
+        logger.info("Accepting beans with @Entity annotation: " + jp.getArgs()[0]);
     }
 }
