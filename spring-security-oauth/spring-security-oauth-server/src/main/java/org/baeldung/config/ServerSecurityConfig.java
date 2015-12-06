@@ -28,7 +28,7 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/login").permitAll()
             .anyRequest().authenticated()
-            // .and().formLogin().permitAll()
+            .and().formLogin().permitAll()
             ;
         // @formatter:on
     }
