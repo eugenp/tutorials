@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Student List</title>
+</head>
+<body>
+	<h1>Student List</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th th:text="#{msg.id}"></th>
+				<th th:text="#{msg.name}"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student: ${students}">
+				<td th:text="${#conversions.convert(student.id,'Float')}"></td>
+				<td th:text="${{student.name}}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
