@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.baeldung.web.metric.ActuatorMetricService2;
+import org.baeldung.web.metric.IActuatorMetricService;
 import org.baeldung.web.metric.IMetricService;
 import org.baeldung.web.util.LinkUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class RootController {
     private IMetricService metricService;
 
     @Autowired
-    private ActuatorMetricService2 actMetricService;
+    private IActuatorMetricService actMetricService;
 
     public RootController() {
         super();
