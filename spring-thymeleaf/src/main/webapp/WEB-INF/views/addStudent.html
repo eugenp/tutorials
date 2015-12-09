@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add Student</title>
+</head>
+<body>
+	<h1>Add Student</h1>
+	<form action="#" th:action="@{/saveStudent}" th:object="${student}"
+		method="post">
+		<ul>
+			<li th:errors="*{id}" />
+			<li th:errors="*{name}" />
+		</ul>
+		<table border="1">
+			<tr>
+				<td><label th:text="#{msg.id}"></label></td>
+				<td><input type="number" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td><label th:text="#{msg.name}"></label></td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
