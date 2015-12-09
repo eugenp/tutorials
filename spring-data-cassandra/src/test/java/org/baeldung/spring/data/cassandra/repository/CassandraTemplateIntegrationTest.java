@@ -23,6 +23,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -79,8 +80,10 @@ public class CassandraTemplateIntegrationTest {
     public void whenSavingBooks_thenAllAvailableOnRetrieval() {
         Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
         Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        cassandraTemplate.insert(javaBook);
-        cassandraTemplate.insert(dPatternBook);
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(javaBook);
+        bookList.add(dPatternBook);
+        cassandraTemplate.insert(bookList);
 
         Select select = QueryBuilder.select().from("book").limit(10);
         List<Book> retrievedBooks = cassandraTemplate.select(select, Book.class);
