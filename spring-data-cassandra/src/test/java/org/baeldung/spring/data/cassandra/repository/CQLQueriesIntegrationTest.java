@@ -57,7 +57,7 @@ public class CQLQueriesIntegrationTest {
         Session session = cluster.connect();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         LOGGER.info("KeySpace created and activated.");
     }
 
@@ -96,7 +96,7 @@ public class CQLQueriesIntegrationTest {
         bookList.add("Head First Java");
         bookList.add("OReilly Media");
         bookList.add(ImmutableSet.of("Software"));
-        bookList.add(bookList);
+        bookListOfList.add(bookList);
         cassandraTemplate.ingest(insertPreparedCql, bookListOfList);
         Select select = QueryBuilder.select().from("book").limit(10);
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
