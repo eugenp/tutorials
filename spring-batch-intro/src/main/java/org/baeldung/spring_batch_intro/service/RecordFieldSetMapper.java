@@ -10,24 +10,24 @@ import org.springframework.validation.BindException;
 
 public class RecordFieldSetMapper implements FieldSetMapper<Transaction> {
 
-	public Transaction mapFieldSet(FieldSet fieldSet) throws BindException {
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Transaction transaction = new Transaction();
-		
-		transaction.setUsername(fieldSet.readString("username"));
-		transaction.setUserId(fieldSet.readInt(1));
-		transaction.setAmount(fieldSet.readDouble(3));
-		//Converting the date
-		String dateString = fieldSet.readString(2);
-		try {
-			transaction.setTransactionDate(dateFormat.parse(dateString));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+    public Transaction mapFieldSet(FieldSet fieldSet) throws BindException {
 
-		return transaction;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Transaction transaction = new Transaction();
 
-	}
+        transaction.setUsername(fieldSet.readString("username"));
+        transaction.setUserId(fieldSet.readInt(1));
+        transaction.setAmount(fieldSet.readDouble(3));
+        // Converting the date
+        String dateString = fieldSet.readString(2);
+        try {
+            transaction.setTransactionDate(dateFormat.parse(dateString));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return transaction;
+
+    }
 
 }
