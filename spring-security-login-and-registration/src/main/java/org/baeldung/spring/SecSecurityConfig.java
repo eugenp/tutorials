@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -25,6 +26,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     public SecSecurityConfig() {
         super();
@@ -59,6 +63,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/homepage.html")
                 .failureUrl("/login.html?error=true")
                 .successHandler(myAuthenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .usernameParameter("j_username")
                 .passwordParameter("j_password")
             .permitAll()
