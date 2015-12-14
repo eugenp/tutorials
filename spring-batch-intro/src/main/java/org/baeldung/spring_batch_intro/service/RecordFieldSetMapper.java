@@ -14,9 +14,11 @@ public class RecordFieldSetMapper implements FieldSetMapper<Transaction> {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Transaction transaction = new Transaction();
-
+        // you can either use the indices or custom names
+        // I personally prefer the custom names easy for debugging and
+        // validating the pipelines
         transaction.setUsername(fieldSet.readString("username"));
-        transaction.setUserId(fieldSet.readInt(1));
+        transaction.setUserId(fieldSet.readInt("userid"));
         transaction.setAmount(fieldSet.readDouble(3));
         // Converting the date
         String dateString = fieldSet.readString(2);

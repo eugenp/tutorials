@@ -8,8 +8,6 @@
 
     <import resource="spring.xml" />
 
-    <bean id="record" class="org.baeldung.spring_batch_intro.model.Transaction"></bean>
-
     <bean id="itemReader"
         class="org.springframework.batch.item.file.FlatFileItemReader">
 
