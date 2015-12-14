@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+        <property name="username" value="user@gmail.com" />
+        <property name="password" value="password" />
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+    </bean>
+
+    <bean id="welcomeMessage" 
+    class="org.springframework.mail.SimpleMailMessage"
+        scope="prototype">
+        <property name="from" value="spring_mail_welcome@gmail.com" />
+        <property name="subject" value="Welcome to SpringBasedEmail" />
+        <property name="text">
+            <value>Welcome to the email sent using Spring, via Gmail
+                SMTP.
+            </value>
+        </property>
+    </bean>
+
+    <bean id="promotionMessage" 
+    class="org.springframework.mail.SimpleMailMessage"
+        scope="prototype">
+        <property name="from" 
+        value="spring_mail_offers@gmail.com" />
+        <property name="subject" value="Offers at SpringBasedEmail" />
+        <property name="text">
+            <value>SpringBasedEmail has many features to explore.
+                Try it
+                out and feel good!
+            </value>
+        </property>
+    </bean>
+</beans>
