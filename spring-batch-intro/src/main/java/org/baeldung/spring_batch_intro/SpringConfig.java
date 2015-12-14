@@ -39,7 +39,7 @@ public class SpringConfig {
 
     @Bean
     public DataSourceInitializer dataSourceInitializer(DataSource dataSource)
-            throws MalformedURLException {
+        throws MalformedURLException {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
 
         databasePopulator.addScript(dropReopsitoryTables);
@@ -57,6 +57,8 @@ public class SpringConfig {
         JobRepositoryFactoryBean factory = new JobRepositoryFactoryBean();
         factory.setDataSource(dataSource());
         factory.setTransactionManager(getTransactionManager());
+        // JobRepositoryFactoryBean's methods Throws Generic Exception,
+        // it would have been better to have a specific one
         factory.afterPropertiesSet();
         return (JobRepository) factory.getObject();
     }
@@ -67,6 +69,8 @@ public class SpringConfig {
 
     public JobLauncher getJobLauncher() throws Exception {
         SimpleJobLauncher jobLauncher = new SimpleJobLauncher();
+        // SimpleJobLauncher's methods Throws Generic Exception,
+        // it would have been better to have a specific one
         jobLauncher.setJobRepository(getJobRepository());
         jobLauncher.afterPropertiesSet();
         return jobLauncher;

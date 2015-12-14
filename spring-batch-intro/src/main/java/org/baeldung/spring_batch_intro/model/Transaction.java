@@ -12,6 +12,8 @@ public class Transaction {
     private Date transactionDate;
     private double amount;
 
+    /* getters and setters for the attributes */
+
     public String getUsername() {
         return username;
     }
@@ -47,8 +49,8 @@ public class Transaction {
     @Override
     public String toString() {
         return "Transaction [username=" + username + ", userId=" + userId
-                + ", transactionDate=" + transactionDate + ", amount=" + amount
-                + "]";
+            + ", transactionDate=" + transactionDate + ", amount=" + amount
+            + "]";
     }
 
 }

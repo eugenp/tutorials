@@ -41,7 +41,7 @@ public class SpringBatchConfig {
 
     @Bean
     public ItemReader<Transaction> itemReader()
-            throws UnexpectedInputException, ParseException, Exception {
+        throws UnexpectedInputException, ParseException {
         FlatFileItemReader<Transaction> reader = new FlatFileItemReader<Transaction>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] tokens = { "username", "userid", "transactiondate", "amount" };
@@ -61,7 +61,7 @@ public class SpringBatchConfig {
 
     @Bean
     public ItemWriter<Transaction> itemWriter(Marshaller marshaller)
-            throws MalformedURLException {
+        throws MalformedURLException {
         StaxEventItemWriter<Transaction> itemWriter = new StaxEventItemWriter<Transaction>();
         itemWriter.setMarshaller(marshaller);
         itemWriter.setRootTagName("transactionRecord");
@@ -78,10 +78,10 @@ public class SpringBatchConfig {
 
     @Bean
     protected Step step1(ItemReader<Transaction> reader,
-            ItemProcessor<Transaction, Transaction> processor,
-            ItemWriter<Transaction> writer) {
+        ItemProcessor<Transaction, Transaction> processor,
+        ItemWriter<Transaction> writer) {
         return steps.get("step1").<Transaction, Transaction> chunk(10)
-                .reader(reader).processor(processor).writer(writer).build();
+            .reader(reader).processor(processor).writer(writer).build();
     }
 
     @Bean(name = "firstBatchJob")
