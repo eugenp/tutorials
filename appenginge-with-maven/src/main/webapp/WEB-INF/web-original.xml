@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app
+        version="2.5"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>sign</servlet-name>
+        <servlet-class>appengine_maven.appenginge_with_maven.SignGuestbookServlet</servlet-class>
+    </servlet>
+    <servlet>
+       <servlet-name>guestbook</servlet-name>
+      <servlet-class>appengine_maven.appenginge_with_maven.GuestbookServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sign</servlet-name>
+        <url-pattern>/sign</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+      <servlet-name>guestbook</servlet-name>
+      <url-pattern>/guestbook</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>guestbook.jsp</welcome-file>
+    </welcome-file-list>
+<!-- [START Objectify] -->
+    <filter>
+      <filter-name>ObjectifyFilter</filter-name>
+      <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>ObjectifyFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <listener>
+      <listener-class>appengine_maven.appenginge_with_maven.OfyHelper</listener-class>
+    </listener>
+<!-- [END Objectify] -->
+</web-app>
