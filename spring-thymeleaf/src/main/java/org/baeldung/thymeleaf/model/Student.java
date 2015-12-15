@@ -7,34 +7,54 @@ import javax.validation.constraints.NotNull;
 
 /**
  * 
- * Simple student POJO with two fields - id and name
+ * Simple student POJO with few fields
  *
  */
 public class Student implements Serializable {
 
-    private static final long serialVersionUID = -8582553475226281591L;
+	private static final long serialVersionUID = -8582553475226281591L;
 
-    @NotNull(message = "Student ID is required.")
-    @Min(value = 1000, message = "Student ID must be atleast 4 digits.")
-    private Integer id;
+	@NotNull(message = "Student ID is required.")
+	@Min(value = 1000, message = "Student ID must be atleast 4 digits.")
+	private Integer id;
 
-    @NotNull(message = "Student Name is required.")
-    private String name;
+	@NotNull(message = "Student name is required.")
+	private String name;
 
-    public Integer getId() {
-        return id;
-    }
+	@NotNull(message = "Student gender is required.")
+	private Character gender;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	private Float percentage;
 
-    public String getName() {
-        return name;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Character getGender() {
+		return gender;
+	}
+
+	public void setGender(Character gender) {
+		this.gender = gender;
+	}
+
+	public Float getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(Float percentage) {
+		this.percentage = percentage;
+	}
 }

@@ -26,7 +26,7 @@
 	<!-- Message source -->
 	<beans:bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basename" value="messages"></beans:property>
+		<beans:property name="basename" value="messages" />
 	</beans:bean>
 
 	<!-- Resolves views selected for rendering by @Controllers to .html resources 
@@ -41,11 +41,11 @@
 	<beans:bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<beans:property name="templateResolver" ref="templateResolver" />
 	</beans:bean>
-	
+
 	<beans:bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<beans:property name="templateEngine" ref="templateEngine" />
 		<beans:property name="order" value="1" />
-		<beans:property name="viewNames" value="*"></beans:property>
+		<beans:property name="viewNames" value="*" />
 	</beans:bean>
 
 	<context:component-scan base-package="org.baeldung.thymeleaf.controller" />
