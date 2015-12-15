@@ -10,55 +10,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.google.common.base.Preconditions;
 
 @SuppressWarnings("unchecked")
-public abstract class AbstractHibernateDao<T extends Serializable> implements IOperations<T> {
-    private Class<T> clazz;
+public abstract class AbstractHibernateDao<T extends Serializable> extends AbstractDao<T> implements IOperations<T> {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    protected SessionFactory sessionFactory;
 
     // API
 
-    protected final void setClazz(final Class<T> clazzToSet) {
-        clazz = Preconditions.checkNotNull(clazzToSet);
-    }
-
     @Override
-    public final T findOne(final long id) {
+    public T findOne(final long id) {
         return (T) getCurrentSession().get(clazz, id);
     }
 
     @Override
-    public final List<T> findAll() {
+    public List<T> findAll() {
         return getCurrentSession().createQuery("from " + clazz.getName()).list();
     }
 
     @Override
-    public final void create(final T entity) {
+    public void create(final T entity) {
         Preconditions.checkNotNull(entity);
-        // getCurrentSession().persist(entity);
         getCurrentSession().saveOrUpdate(entity);
     }
 
     @Override
-    public final T update(final T entity) {
+    public T update(final T entity) {
         Preconditions.checkNotNull(entity);
         return (T) getCurrentSession().merge(entity);
     }
 
     @Override
-    public final void delete(final T entity) {
+    public void delete(final T entity) {
         Preconditions.checkNotNull(entity);
         getCurrentSession().delete(entity);
     }
 
     @Override
-    public final void deleteById(final long entityId) {
+    public void deleteById(final long entityId) {
         final T entity = findOne(entityId);
         Preconditions.checkState(entity != null);
         delete(entity);
     }
 
-    protected final Session getCurrentSession() {
+    protected Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 

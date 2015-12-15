@@ -1,6 +1,7 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,14 +13,46 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 
 import org.hibernate.annotations.OrderBy;
+import org.hibernate.envers.Audited;
+import org.jboss.logging.Logger;
 
 import com.google.common.collect.Sets;
 
 @Entity
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
+@Audited
 public class Bar implements Serializable {
+
+    private static Logger logger = Logger.getLogger(Bar.class);
+
+    public enum OPERATION {
+        INSERT, UPDATE, DELETE;
+        private String value;
+
+        OPERATION() {
+            value = toString();
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public static OPERATION parse(final String value) {
+            OPERATION operation = null;
+            for (final OPERATION op : OPERATION.values()) {
+                if (op.getValue().equals(value)) {
+                    operation = op;
+                    break;
+                }
+            }
+            return operation;
+        }
+    };
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +64,14 @@ public class Bar implements Serializable {
 
     @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy(clause = "NAME DESC")
+    // @NotAudited
     private Set<Foo> fooSet = Sets.newHashSet();
+
+    @Column(name = "operation")
+    private String operation;
+
+    @Column(name = "timestamp")
+    private long timestamp;
 
     public Bar() {
         super();
@@ -69,7 +109,21 @@ public class Bar implements Serializable {
         this.name = name;
     }
 
-    //
+    public OPERATION getOperation() {
+        return OPERATION.parse(operation);
+    }
+
+    public void setOperation(final OPERATION operation) {
+        this.operation = operation.getValue();
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(final long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     @Override
     public int hashCode() {
@@ -101,6 +155,29 @@ public class Bar implements Serializable {
         final StringBuilder builder = new StringBuilder();
         builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
+    }
+
+    @PrePersist
+    public void onPrePersist() {
+        logger.info("@PrePersist");
+        audit(OPERATION.INSERT);
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        logger.info("@PreUpdate");
+        audit(OPERATION.UPDATE);
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        logger.info("@PreRemove");
+        audit(OPERATION.DELETE);
+    }
+
+    private void audit(final OPERATION operation) {
+        setOperation(operation);
+        setTimestamp((new Date()).getTime());
     }
 
 }

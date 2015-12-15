@@ -4,14 +4,16 @@ import org.baeldung.persistence.dao.IFooDao;
 import org.baeldung.persistence.dao.common.IOperations;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
-import org.baeldung.persistence.service.common.AbstractService;
+import org.baeldung.persistence.service.common.AbstractHibernateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FooService extends AbstractService<Foo>implements IFooService {
+public class FooService extends AbstractHibernateService<Foo>implements IFooService {
 
     @Autowired
+    @Qualifier("fooHibernateDao")
     private IFooDao dao;
 
     public FooService() {
