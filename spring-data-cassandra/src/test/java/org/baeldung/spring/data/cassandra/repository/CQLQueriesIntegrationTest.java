@@ -57,8 +57,8 @@ public class CQLQueriesIntegrationTest {
         Session session = cluster.connect();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
-        Thread.sleep(2000);
         LOGGER.info("KeySpace created and activated.");
+        Thread.sleep(5000);
     }
 
     @Before
@@ -69,7 +69,7 @@ public class CQLQueriesIntegrationTest {
     @Test
     public void whenSavingBook_thenAvailableOnRetrieval_usingQueryBuilder() {
         UUID uuid = UUIDs.timeBased();
-        Insert insert = QueryBuilder.insertInto(DATA_TABLE_NAME).value("isbn", uuid).value("title", "Head First Java").value("publisher", "OReilly Media").value("tags", ImmutableSet.of("Software"));
+        Insert insert = QueryBuilder.insertInto(DATA_TABLE_NAME).value("id", uuid).value("title", "Head First Java").value("publisher", "OReilly Media").value("tags", ImmutableSet.of("Software"));
         cassandraTemplate.execute(insert);
         Select select = QueryBuilder.select().from("book").limit(10);
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
@@ -79,7 +79,7 @@ public class CQLQueriesIntegrationTest {
     @Test
     public void whenSavingBook_thenAvailableOnRetrieval_usingCQLStatements() {
         UUID uuid = UUIDs.timeBased();
-        String insertCql = "insert into book (isbn, title, publisher, tags) values " + "(" + uuid + ", 'Head First Java', 'OReilly Media', {'Software'})";
+        String insertCql = "insert into book (id, title, publisher, tags) values " + "(" + uuid + ", 'Head First Java', 'OReilly Media', {'Software'})";
         cassandraTemplate.execute(insertCql);
         Select select = QueryBuilder.select().from("book").limit(10);
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
@@ -89,16 +89,16 @@ public class CQLQueriesIntegrationTest {
     @Test
     public void whenSavingBook_thenAvailableOnRetrieval_usingPreparedStatements() {
         UUID uuid = UUIDs.timeBased();
-        String insertPreparedCql = "insert into book (isbn, title, publisher, tags) values (?, ?, ?, ?)";
-        List<Object> bookList = new ArrayList<>();
-        List<List<?>> bookListOfList = new ArrayList<>();
-        bookList.add(uuid);
-        bookList.add("Head First Java");
-        bookList.add("OReilly Media");
-        bookList.add(ImmutableSet.of("Software"));
-        bookListOfList.add(bookList);
-        cassandraTemplate.ingest(insertPreparedCql, bookListOfList);
-        Select select = QueryBuilder.select().from("book").limit(10);
+        String insertPreparedCql = "insert into book (id, title, publisher, tags) values (?, ?, ?, ?)";
+        List<Object> singleBookArgsList = new ArrayList<>();
+        List<List<?>> bookList = new ArrayList<>();
+        singleBookArgsList.add(uuid);
+        singleBookArgsList.add("Head First Java");
+        singleBookArgsList.add("OReilly Media");
+        singleBookArgsList.add(ImmutableSet.of("Software"));
+        bookList.add(singleBookArgsList);
+        cassandraTemplate.ingest(insertPreparedCql, bookList);
+        Select select = QueryBuilder.select().from("book");
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(uuid, retrievedBook.getId());
     }

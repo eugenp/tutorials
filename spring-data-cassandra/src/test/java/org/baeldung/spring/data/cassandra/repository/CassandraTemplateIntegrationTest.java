@@ -58,8 +58,8 @@ public class CassandraTemplateIntegrationTest {
         Session session = cluster.connect();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
-        Thread.sleep(2000);
         LOGGER.info("KeySpace created and activated.");
+        Thread.sleep(5000);
     }
 
     @Before
@@ -98,16 +98,28 @@ public class CassandraTemplateIntegrationTest {
         cassandraTemplate.insert(javaBook);
         Select select = QueryBuilder.select().from("book").limit(10);
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
-        retrievedBook.setTags(ImmutableSet.of("Computer", "Software", "Java"));
+        retrievedBook.setTags(ImmutableSet.of("Java", "Programming"));
         cassandraTemplate.update(retrievedBook);
         Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(retrievedBook.getTags(), retrievedUpdatedBook.getTags());
     }
 
     @Test
-    public void whenDeletingExistingBooks_thenNotAvailableOnRetrieval() {
+    public void whenDeletingASelectedBook_thenNotAvailableOnRetrieval() throws InterruptedException {
+        Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "OReilly Media", ImmutableSet.of("Computer", "Software"));
+        cassandraTemplate.insert(javaBook);
+        cassandraTemplate.delete(javaBook);
+        Select select = QueryBuilder.select().from("book").limit(10);
+        Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
+        assertNull(retrievedUpdatedBook);
+    }
+
+    @Test
+    public void whenDeletingAllBooks_thenNotAvailableOnRetrieval() {
         Book javaBook = new Book(UUIDs.timeBased(), "Head First Java", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
-        Book insertedBook = cassandraTemplate.insert(javaBook);
+        Book dPatternBook = new Book(UUIDs.timeBased(), "Head Design Patterns", "O'Reilly Media", ImmutableSet.of("Computer", "Software"));
+        cassandraTemplate.insert(javaBook);
+        cassandraTemplate.insert(dPatternBook);
         cassandraTemplate.deleteAll(Book.class);
         Select select = QueryBuilder.select().from("book").limit(10);
         Book retrievedUpdatedBook = cassandraTemplate.selectOne(select, Book.class);
