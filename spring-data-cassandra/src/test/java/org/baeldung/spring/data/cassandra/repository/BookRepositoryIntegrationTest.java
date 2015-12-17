@@ -52,8 +52,8 @@ public class BookRepositoryIntegrationTest {
         Session session = cluster.connect();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
-        Thread.sleep(5000);
         LOGGER.info("KeySpace created and activated.");
+        Thread.sleep(5000);
     }
 
     @Before
