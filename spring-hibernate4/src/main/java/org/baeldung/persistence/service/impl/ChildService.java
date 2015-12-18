@@ -4,12 +4,12 @@ import org.baeldung.persistence.dao.IChildDao;
 import org.baeldung.persistence.dao.common.IOperations;
 import org.baeldung.persistence.model.Child;
 import org.baeldung.persistence.service.IChildService;
-import org.baeldung.persistence.service.common.AbstractService;
+import org.baeldung.persistence.service.common.AbstractHibernateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChildService extends AbstractService<Child>implements IChildService {
+public class ChildService extends AbstractHibernateService<Child>implements IChildService {
 
     @Autowired
     private IChildDao dao;
