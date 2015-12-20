@@ -51,7 +51,7 @@ public class CQLQueriesIntegrationTest {
 
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
+        EmbeddedCassandraServerHelper.startEmbeddedCassandra(25000);
         Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
         LOGGER.info("Server Started at 127.0.0.1:9142... ");
         Session session = cluster.connect();
@@ -87,7 +87,7 @@ public class CQLQueriesIntegrationTest {
     }
 
     @Test
-    public void whenSavingBook_thenAvailableOnRetrieval_usingPreparedStatements() {
+    public void whenSavingBook_thenAvailableOnRetrieval_usingPreparedStatements() throws InterruptedException {
         UUID uuid = UUIDs.timeBased();
         String insertPreparedCql = "insert into book (id, title, publisher, tags) values (?, ?, ?, ?)";
         List<Object> singleBookArgsList = new ArrayList<>();
@@ -98,6 +98,8 @@ public class CQLQueriesIntegrationTest {
         singleBookArgsList.add(ImmutableSet.of("Software"));
         bookList.add(singleBookArgsList);
         cassandraTemplate.ingest(insertPreparedCql, bookList);
+        //This may not be required, just added to avoid any transient issues
+        Thread.sleep(5000);
         Select select = QueryBuilder.select().from("book");
         Book retrievedBook = cassandraTemplate.selectOne(select, Book.class);
         assertEquals(uuid, retrievedBook.getId());
