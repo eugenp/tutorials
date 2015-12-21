@@ -149,6 +149,15 @@ public class GuavaCollectionTypesTest {
     }
 
     @Test
+    public void whenCalculatingSetSymetricDifference_thenCorrect() {
+        final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
+        final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
+
+        final Set<Character> intersection = Sets.symmetricDifference(first, second);
+        assertThat(intersection, containsInAnyOrder('a', 'd'));
+    }
+
+    @Test
     public void whenCalculatingPowerSet_thenCorrect() {
         final Set<Character> chars = ImmutableSet.of('a', 'b');
         final Set<Set<Character>> result = Sets.powerSet(chars);
