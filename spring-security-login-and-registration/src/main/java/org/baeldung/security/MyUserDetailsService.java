@@ -1,13 +1,11 @@
 package org.baeldung.security;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.Privilege;
 import org.baeldung.persistence.model.Role;
@@ -29,9 +27,6 @@ public class MyUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
     private LoginAttemptService loginAttemptService;
 
     @Autowired
@@ -45,7 +40,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
-        final String ip = request.getRemoteAddr();
+        final String ip = getClientIP();
         if (loginAttemptService.isBlocked(ip)) {
             throw new RuntimeException("blocked");
         }
@@ -53,7 +48,7 @@ public class MyUserDetailsService implements UserDetailsService {
         try {
             final User user = userRepository.findByEmail(email);
             if (user == null) {
-                return new org.springframework.security.core.userdetails.User(" ", " ", true, true, true, true, getAuthorities(Arrays.asList(roleRepository.findByName("ROLE_USER"))));
+                throw new UsernameNotFoundException("No user found with username: " + email);
             }
 
             return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, getAuthorities(user.getRoles()));
@@ -88,4 +83,11 @@ public class MyUserDetailsService implements UserDetailsService {
         return authorities;
     }
 
+    private String getClientIP() {
+        final String xfHeader = request.getHeader("X-Forwarded-For");
+        if (xfHeader == null) {
+            return request.getRemoteAddr();
+        }
+        return xfHeader.split(",")[0];
+    }
 }

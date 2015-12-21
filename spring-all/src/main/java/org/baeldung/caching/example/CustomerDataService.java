@@ -10,11 +10,17 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Component;
 
 @Component
-@CacheConfig(cacheNames = { "addressDemo" })
+@CacheConfig(cacheNames = { "addresses" })
 public class CustomerDataService {
 
     @Autowired
     CacheManager cacheManager;
+
+    // this method configuration is equivalent to xml configuration
+    @Cacheable(value = "addresses", key = "#customer.name")
+    public String getAddress(final Customer customer) {
+        return customer.getAddress();
+    }
 
     /**
      * The method returns the customer's address,

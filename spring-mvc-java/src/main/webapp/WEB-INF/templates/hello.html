@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+    <span th:text="#{welcome.text}">Hi</span>
+    <span th:text="${name}"> John </span>!
+    <span custom:name="James">Test</span>
+    <div th:replace="footer :: footer1">&copy; 2013 The Static
+        Templates</div>
+</body>
+</html>
