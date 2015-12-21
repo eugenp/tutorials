@@ -149,7 +149,7 @@ public class GuavaCollectionTypesTest {
     }
 
     @Test
-    public void whenCalculatingSetSymetricDifference_thenCorrect() {
+    public void whenCalculatingSetSymmetricDifference_thenCorrect() {
         final Set<Character> first = ImmutableSet.of('a', 'b', 'c');
         final Set<Character> second = ImmutableSet.of('b', 'c', 'd');
 
