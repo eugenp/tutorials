@@ -103,9 +103,23 @@
         </dependency>
         
         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${org.springframework.security.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${org.hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -187,55 +201,35 @@
                     </configuration>
                 </configuration>
             </plugin>
-            <!-- 
-            <plugin>
-                <groupId>de.juplo</groupId>
-                <artifactId>hibernate4-maven-plugin</artifactId>
-                <version>${hibernate4-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>export</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <url>jdbc:mysql://localhost:3306/spring_hibernate4_01?createDatabaseIfNotExist=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                    <hibernateDialect>org.hibernate.dialect.MySQL5Dialect</hibernateDialect>
-                    <hibernateProperties>persistence-mysql.properties</hibernateProperties>
-                </configuration>
-            </plugin>
-            -->
+
         </plugins>
 
     </build>
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
-        <org.springframework.data.version>1.9.2.RELEASE</org.springframework.data.version>
+        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
+	<org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+	<org.springframework.data.version>1.9.2.RELEASE</org.springframework.data.version>
+	<javassist.version>3.20.0-GA</javassist.version>
         
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <hibernate-envers.version>${hibernate.version}</hibernate-envers.version>
-        <mysql-connector-java.version>5.1.36</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
         <tomcat-dbcp.version>7.0.42</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <el-api.version>2.2.4</el-api.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.12</org.slf4j.version>
+        <org.slf4j.version>1.7.13</org.slf4j.version>
         <logback.version>1.1.3</logback.version>
         
         <!-- various -->
-        <hibernate-validator.version>4.3.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>18.0</guava.version>
+        <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
 
         <!-- testing -->
