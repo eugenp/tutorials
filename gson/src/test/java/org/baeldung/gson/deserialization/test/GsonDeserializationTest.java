@@ -12,6 +12,8 @@ import java.util.Collection;
 
 import org.baeldung.gson.deserialization.Foo;
 import org.baeldung.gson.deserialization.FooDeserializerFromJsonWithDifferentFields;
+import org.baeldung.gson.deserialization.FooInstanceCreator;
+import org.baeldung.gson.deserialization.FooWithInner;
 import org.baeldung.gson.deserialization.GenericFoo;
 import org.junit.Test;
 
@@ -106,6 +108,31 @@ public class GsonDeserializationTest {
 
         assertEquals(targetObject.intValue, 7);
         assertEquals(targetObject.stringValue, "seven");
+    }
+
+    // new examples
+
+    @Test
+    public void whenDeserializingToNestedObjects_thenCorrect() {
+        final String json = "{\"intValue\":1,\"stringValue\":\"one\",\"innerFoo\":{\"name\":\"inner\"}}";
+
+        final FooWithInner targetObject = new Gson().fromJson(json, FooWithInner.class);
+
+        assertEquals(targetObject.intValue, 1);
+        assertEquals(targetObject.stringValue, "one");
+        assertEquals(targetObject.innerFoo.name, "inner");
+    }
+
+    @Test
+    public void whenDeserializingUsingInstanceCreator_thenCorrect() {
+        final String json = "{\"intValue\":1}";
+
+        final GsonBuilder gsonBldr = new GsonBuilder();
+        gsonBldr.registerTypeAdapter(Foo.class, new FooInstanceCreator());
+        final Foo targetObject = gsonBldr.create().fromJson(json, Foo.class);
+
+        assertEquals(targetObject.intValue, 1);
+        assertEquals(targetObject.stringValue, "sample");
     }
 
 }

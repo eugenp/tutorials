@@ -9,6 +9,10 @@ public class Foo {
         this.stringValue = stringValue;
     }
 
+    public Foo(final String stringValue) {
+        this.stringValue = stringValue;
+    }
+
     public Foo() {
         super();
     }
@@ -19,27 +23,33 @@ public class Foo {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + intValue;
-        result = prime * result + ((stringValue == null) ? 0 : stringValue.hashCode());
+        result = (prime * result) + intValue;
+        result = (prime * result) + ((stringValue == null) ? 0 : stringValue.hashCode());
         return result;
     }
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Foo other = (Foo) obj;
-        if (intValue != other.intValue)
+        if (intValue != other.intValue) {
             return false;
+        }
         if (stringValue == null) {
-            if (other.stringValue != null)
+            if (other.stringValue != null) {
                 return false;
-        } else if (!stringValue.equals(other.stringValue))
+            }
+        } else if (!stringValue.equals(other.stringValue)) {
             return false;
+        }
         return true;
     }
 
