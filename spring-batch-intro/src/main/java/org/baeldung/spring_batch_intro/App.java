@@ -27,7 +27,7 @@ public class App {
         try {
             JobExecution execution = jobLauncher.run(job, new JobParameters());
             System.out.println("Job Status : " + execution.getStatus());
-            System.out.println("Job completed");
+            System.out.println("Job succeeded");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Job failed");
