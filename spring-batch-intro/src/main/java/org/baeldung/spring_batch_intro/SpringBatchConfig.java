@@ -50,6 +50,7 @@ public class SpringBatchConfig {
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<Transaction>();
         lineMapper.setLineTokenizer(tokenizer);
         lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
+        reader.setLinesToSkip(1);
         reader.setLineMapper(lineMapper);
         return reader;
     }
