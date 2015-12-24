@@ -169,6 +169,7 @@
             </plugin>
         </plugins>
     </build>
+    
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
@@ -197,8 +198,9 @@
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.17</cargo-maven2-plugin.version>
         <!-- AspectJ -->
         <aspectj.version>1.8.7</aspectj.version>
     </properties>
+    
 </project>
