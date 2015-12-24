@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 @Configuration
 @ComponentScan(basePackages = { "org.baeldung.security" })
+// @ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
