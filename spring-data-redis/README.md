@@ -1,4 +1,4 @@
-## Spring Data Cassandra
+## Spring Data Redis
 
 ### Relevant Articles:
 - [Introduction to Spring Data Redis]
