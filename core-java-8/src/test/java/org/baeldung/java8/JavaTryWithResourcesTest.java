@@ -13,13 +13,12 @@ public class JavaTryWithResourcesTest {
     private static final String TEST_STRING_HELLO_WORLD = "Hello World";
     private Date resource1Date, resource2Date;
 
-    /*
-     * Example for using Try_with_resources
-     */
+    // tests
+
+    /* Example for using Try_with_resources */
     @Test
     public void whenWritingToStringWriter_thenCorrectlyWritten() {
-
-        StringWriter sw = new StringWriter();
+        final StringWriter sw = new StringWriter();
         try (PrintWriter pw = new PrintWriter(sw, true)) {
             pw.print(TEST_STRING_HELLO_WORLD);
         }
@@ -27,13 +26,11 @@ public class JavaTryWithResourcesTest {
         Assert.assertEquals(sw.getBuffer().toString(), TEST_STRING_HELLO_WORLD);
     }
 
-    /*
-     * Example for using multiple resources
-     */
+    /* Example for using multiple resources */
     @Test
     public void givenStringToScanner_whenWritingToStringWriter_thenCorrectlyWritten() {
 
-        StringWriter sw = new StringWriter();
+        final StringWriter sw = new StringWriter();
         try (Scanner sc = new Scanner(TEST_STRING_HELLO_WORLD); PrintWriter pw = new PrintWriter(sw, true)) {
             while (sc.hasNext()) {
                 pw.print(sc.nextLine());
@@ -43,12 +40,9 @@ public class JavaTryWithResourcesTest {
         Assert.assertEquals(sw.getBuffer().toString(), TEST_STRING_HELLO_WORLD);
     }
 
-    /*
-     * Example to show order in which the resources are closed
-     */
+    /* Example to show order in which the resources are closed */
     @Test
     public void whenFirstAutoClosableResourceIsinitializedFirst_thenFirstAutoClosableResourceIsReleasedFirst() throws Exception {
-
         try (AutoCloseableResourcesFirst af = new AutoCloseableResourcesFirst(); AutoCloseableResourcesSecond as = new AutoCloseableResourcesSecond()) {
             af.doSomething();
             as.doSomething();
@@ -57,7 +51,6 @@ public class JavaTryWithResourcesTest {
     }
 
     class AutoCloseableResourcesFirst implements AutoCloseable {
-
         public AutoCloseableResourcesFirst() {
             System.out.println("Constructor -> AutoCloseableResources_First");
         }
@@ -70,12 +63,10 @@ public class JavaTryWithResourcesTest {
         public void close() throws Exception {
             System.out.println("Closed AutoCloseableResources_First");
             resource1Date = new Date();
-
         }
     }
 
     class AutoCloseableResourcesSecond implements AutoCloseable {
-
         public AutoCloseableResourcesSecond() {
             System.out.println("Constructor -> AutoCloseableResources_Second");
         }
@@ -91,4 +82,5 @@ public class JavaTryWithResourcesTest {
             Thread.sleep(10000);
         }
     }
+
 }

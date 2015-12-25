@@ -38,8 +38,8 @@ import com.google.common.collect.ImmutableSet;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfig.class)
-public class CQLQueriesIntegrationTest {
-    private static final Log LOGGER = LogFactory.getLog(CQLQueriesIntegrationTest.class);
+public class CqlQueriesIntegrationTest {
+    private static final Log LOGGER = LogFactory.getLog(CqlQueriesIntegrationTest.class);
 
     public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
 
