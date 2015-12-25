@@ -24,7 +24,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     public Student findStudent(final String id) {
-        return (Student)this.redisTemplate.opsForHash().get(KEY, id);
+        return (Student) this.redisTemplate.opsForHash().get(KEY, id);
     }
 
     public Map<Object, Object> findAllStudents() {
@@ -32,6 +32,6 @@ public class StudentRepositoryImpl implements StudentRepository {
     }
 
     public void deleteStudent(final String id) {
-        this.redisTemplate.opsForHash().delete(KEY,id);
+        this.redisTemplate.opsForHash().delete(KEY, id);
     }
 }

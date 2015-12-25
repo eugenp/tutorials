@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:/spring-config.xml"})
+@ContextConfiguration(locations = { "classpath:/spring-config.xml" })
 public class StudentRepositoryTest {
 
     @Autowired

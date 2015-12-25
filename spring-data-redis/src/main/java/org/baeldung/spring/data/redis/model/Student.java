@@ -1,13 +1,15 @@
 package org.baeldung.spring.data.redis.model;
 
-
 import java.io.Serializable;
 
 public class Student implements Serializable {
 
     private static final long serialVersionUID = -1907106213598514113L;
 
-    public enum Gender{Male, Female}
+    public enum Gender {
+        Male, Female
+    }
+
     private String id;
     private String name;
     private Gender gender;
@@ -54,11 +56,6 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", gender=" + gender +
-                ", grade=" + grade +
-                '}';
+        return "Student{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", gender=" + gender + ", grade=" + grade + '}';
     }
 }
