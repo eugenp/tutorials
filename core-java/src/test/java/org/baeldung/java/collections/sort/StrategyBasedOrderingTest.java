@@ -2,7 +2,6 @@ package org.baeldung.java.collections.sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +22,11 @@ public class StrategyBasedOrderingTest {
     private Map<Student, String> studentMap;
     private Map<Student, String> studentLinkedMap;
 
-    private List<Comparator<Student>> studentComparatorList;
-
     private Sorter sorter;
-
-    // private StudentchainedComparator chainedComparator;
 
     @Before
     public void setup() {
-        studentComparatorList = new ArrayList<>();
-        // chainedComparator = new StudentchainedComparator();
-        // studentComparatorList.add(new IdComparator());
-        // studentComparatorList.add(new NameComparator());
-        // chainedComparator.setComparatorlist(studentComparatorList);
+
         studentList = fillStudentDetails();
         studentMap = fillCourseAndStudentDetails();
         Collections.addAll(studentList, s1, s2, s7, s4, s5, s6, s3, s8);
