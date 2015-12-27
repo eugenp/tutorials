@@ -2,7 +2,7 @@ package org.baeldung.java.collections.sort;
 
 import java.util.Comparator;
 
-import org.baeldubng.java.entity.Student;
+import org.baeldung.java.entity.Student;
 
 class NameComparator implements Comparator<Student> {
     @Override

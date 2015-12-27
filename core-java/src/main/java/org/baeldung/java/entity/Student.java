@@ -1,9 +1,8 @@
-package org.baeldubng.java.entity;
+package org.baeldung.java.entity;
 
 public class Student {
     int id;
     String name;
-
 
     public Student() {
         super();
@@ -13,7 +12,6 @@ public class Student {
         this.id = id;
         this.name = name;
     }
-
 
     public int getId() {
         return id;
@@ -27,6 +25,7 @@ public class Student {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + id;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
@@ -40,6 +39,8 @@ public class Student {
         if (!(obj instanceof Student))
             return false;
         final Student other = (Student) obj;
+        if (id != other.id)
+            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -47,5 +48,6 @@ public class Student {
             return false;
         return true;
     }
+
 
 }

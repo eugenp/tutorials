@@ -8,78 +8,84 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
-import org.baeldubng.java.entity.Fruit;
+import org.baeldung.java.entity.Apple;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class NaturalOrderingTest {
 
-    private Set<Fruit> fruitSet, fruitTreeSet;
-    private List<Fruit> fruitList;
-    private Fruit f1, f2, f3, f4, f5, f6;
-    private Map<Integer, Fruit> fruitMap;
-    private NaturalOrderSorter naturalOrderSorter;
+    private Set<Apple> appleSet, appleTreeSet;
+    private List<Apple> appleList;
+    private Apple f1, f2, f3, f4, f5, f6;
+    private Map<Integer, Apple> appleMap;
+    private Sorter naturalOrderSorter;
 
     @Before
     public void setup() {
-        initializeFruitsWithSizeAndName();
-        fruitSet = new HashSet<Fruit>();
-        fruitTreeSet = new TreeSet<>();
-        fruitMap = new HashMap<>();
-        naturalOrderSorter = new NaturalOrderSorter();
+        appleMap = new HashMap<>();
+        appleSet = new HashSet<Apple>();
+        appleTreeSet = new TreeSet<>();
+        naturalOrderSorter = new Sorter();
+        initializeapplesWithSizeAndName();
+        putAppleAndIdsToMap();
     }
 
     @Test
-    public void givenComparablesFruitsHashSet_whensorted_thenOrderedNaturally() {
-        Collections.addAll(fruitSet, f1, f2, f3, f4, f5, f6);
-        fruitList = naturalOrderSorter.sortHashSet(fruitSet);
-        Assert.assertArrayEquals(fruitList.toArray(), new Fruit[] { f2, f5, f1, f4, f3, f6 });
+    public void givenComparablesapplesHashSet_whensorted_thenOrderedNaturally() {
+        Collections.addAll(appleSet, f1, f2, f3, f4, f5, f6);
+        appleList = naturalOrderSorter.sortFruitHashSet(appleSet);
+        Assert.assertArrayEquals(appleList.toArray(), new Apple[] { f2, f5, f1, f4, f3, f6 });
     }
 
     @Test
-    public void givenComparablesFruitsTreeSet_whenAdded_thenOrderedNaturally() {
-        Collections.addAll(fruitTreeSet, f1, f2, f3, f4, f5, f6);
-        Assert.assertArrayEquals(fruitTreeSet.toArray(), new Fruit[] { f2, f5, f1, f4, f3, f6 });
+    public void givenComparablesapplesTreeSet_whenAdded_thenOrderedNaturally() {
+        Collections.addAll(appleTreeSet, f1, f2, f3, f4, f5, f6);
+        Assert.assertArrayEquals(appleTreeSet.toArray(), new Apple[] { f2, f5, f1, f4, f3, f6 });
     }
 
     @Test
     public void givenHashmap_whenaddedwithComparables_thenOrderKeysNaturally() {
-        putFruitsWithIdToMap();
-        fruitMap = naturalOrderSorter.sortHashMapByKeys(fruitMap);
-        Assert.assertArrayEquals(fruitMap.keySet().toArray(), new Integer[] { 5, 7, 10, 13, 20, 60 });
+        appleMap = naturalOrderSorter.sortHashMapByKeys(appleMap);
+        Assert.assertArrayEquals(appleMap.keySet().toArray(), new Integer[] { 5, 7, 10, 13, 20, 60 });
+    }
+
+    @Test
+    public void givenHashmap_whenaddedToTreeMap_thenOrderKeysNaturally() {
+        final TreeMap<Integer, Apple> orderedAppleMap = new TreeMap<>();
+        orderedAppleMap.putAll(appleMap);
+        Assert.assertArrayEquals(orderedAppleMap.keySet().toArray(), new Integer[] { 5, 7, 10, 13, 20, 60 });
     }
 
     @Test
     public void givenHashmap_whenaddedwithComparables_thenOrderValuesNaturally() {
-        putFruitsWithIdToMap();
-        fruitMap = naturalOrderSorter.sortHashMapByVals(fruitMap);
-        final List<Integer> fruitids = new ArrayList<>();
-        for (final Entry<Integer, Fruit> e : fruitMap.entrySet()) {
-            fruitids.add(e.getValue().getSize());
+        appleMap = naturalOrderSorter.sortHashMapByVals(appleMap);
+        final List<Integer> appleids = new ArrayList<>();
+        for (final Entry<Integer, Apple> e : appleMap.entrySet()) {
+            appleids.add(e.getValue().getSize());
         }
-        Assert.assertArrayEquals(fruitids.toArray(), new Integer[] { 10, 20, 70, 100, 200, 2320 });
+        Assert.assertArrayEquals(appleids.toArray(), new Integer[] { 120, 130, 145, 150, 175, 200 });
     }
 
-    private void initializeFruitsWithSizeAndName() {
-        f1 = new Fruit(70, "Aussie");
-        f2 = new Fruit(10, "Irish");
-        f3 = new Fruit(200, "American");
-        f4 = new Fruit(100, "Shimla");
-        f5 = new Fruit(20, "American");
-        f6 = new Fruit(2320, "Shimla");
-
+    private void initializeapplesWithSizeAndName() {
+        f1 = new Apple(145, "Ambrosia Apple");
+        f2 = new Apple(120, "Kinnaur Apple");
+        f3 = new Apple(175, "Albany Beauty Apple");
+        f4 = new Apple(150, "Washington Apple");
+        f5 = new Apple(130, "Albany Beauty Apple");
+        f6 = new Apple(200, "Washington Apple");
     }
 
-    private void putFruitsWithIdToMap() {
-        fruitMap.put(10, f1);
-        fruitMap.put(20, f2);
-        fruitMap.put(5, f3);
-        fruitMap.put(7, f4);
-        fruitMap.put(13, f5);
-        fruitMap.put(60, f6);
+    private void putAppleAndIdsToMap() {
+        appleMap.put(10, f1);
+        appleMap.put(20, f2);
+        appleMap.put(5, f3);
+        appleMap.put(7, f4);
+        appleMap.put(13, f5);
+        appleMap.put(60, f6);
     }
 
 }

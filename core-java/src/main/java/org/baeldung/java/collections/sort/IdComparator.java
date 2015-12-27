@@ -2,7 +2,7 @@ package org.baeldung.java.collections.sort;
 
 import java.util.Comparator;
 
-import org.baeldubng.java.entity.Student;
+import org.baeldung.java.entity.Student;
 
 class IdComparator implements Comparator<Student> {
 
@@ -13,4 +13,3 @@ class IdComparator implements Comparator<Student> {
     }
 
 }
-
