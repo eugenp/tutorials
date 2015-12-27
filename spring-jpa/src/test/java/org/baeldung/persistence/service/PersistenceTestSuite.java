@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
     FooPaginationPersistenceIntegrationTest.class
     ,FooServicePersistenceIntegrationTest.class
     ,FooServiceSortingTests.class
+    ,JpaMultipleDBTest.class
     // manual only
     // ,FooServiceSortingWitNullsManualTest.class
 }) // @formatter:on

@@ -21,12 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { UserConfig.class, ProductConfig.class })
 @TransactionConfiguration
-public class JPAMultipleDBTest {
+public class JpaMultipleDBTest {
+
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private ProductRepository productRepository;
+
+    // tests
 
     @Test
     @Transactional("userTransactionManager")
