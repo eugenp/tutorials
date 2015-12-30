@@ -1,25 +1,65 @@
 package org.baeldung.persistence.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 
 import org.hibernate.annotations.OrderBy;
+import org.hibernate.envers.Audited;
+import org.jboss.logging.Logger;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.google.common.collect.Sets;
 
 @Entity
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
+@Audited
+@EntityListeners(AuditingEntityListener.class)
 public class Bar implements Serializable {
+
+    private static Logger logger = Logger.getLogger(Bar.class);
+
+    public enum OPERATION {
+        INSERT, UPDATE, DELETE;
+        private String value;
+
+        OPERATION() {
+            value = toString();
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        public static OPERATION parse(final String value) {
+            OPERATION operation = null;
+            for (final OPERATION op : OPERATION.values()) {
+                if (op.getValue().equals(value)) {
+                    operation = op;
+                    break;
+                }
+            }
+            return operation;
+        }
+    };
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +71,30 @@ public class Bar implements Serializable {
 
     @OneToMany(mappedBy = "bar", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @OrderBy(clause = "NAME DESC")
+    // @NotAudited
     private Set<Foo> fooSet = Sets.newHashSet();
+
+    @Column(name = "operation")
+    private String operation;
+
+    @Column(name = "timestamp")
+    private long timestamp;
+
+    @Column(name = "created_date")
+    @CreatedDate
+    private long createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private long modifiedDate;
+
+    @Column(name = "created_by")
+    @CreatedBy
+    private String createdBy;
+
+    @Column(name = "modified_by")
+    @LastModifiedBy
+    private String modifiedBy;
 
     public Bar() {
         super();
@@ -69,7 +132,57 @@ public class Bar implements Serializable {
         this.name = name;
     }
 
-    //
+    public OPERATION getOperation() {
+        return OPERATION.parse(operation);
+    }
+
+    public void setOperation(final OPERATION operation) {
+        this.operation = operation.getValue();
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(final long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(final long createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public long getModifiedDate() {
+        return modifiedDate;
+    }
+
+    public void setModifiedDate(final long modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(final String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(final String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public void setOperation(final String operation) {
+        this.operation = operation;
+    }
 
     @Override
     public int hashCode() {
@@ -101,6 +214,29 @@ public class Bar implements Serializable {
         final StringBuilder builder = new StringBuilder();
         builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
+    }
+
+    @PrePersist
+    public void onPrePersist() {
+        logger.info("@PrePersist");
+        audit(OPERATION.INSERT);
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        logger.info("@PreUpdate");
+        audit(OPERATION.UPDATE);
+    }
+
+    @PreRemove
+    public void onPreRemove() {
+        logger.info("@PreRemove");
+        audit(OPERATION.DELETE);
+    }
+
+    private void audit(final OPERATION operation) {
+        setOperation(operation);
+        setTimestamp((new Date()).getTime());
     }
 
 }

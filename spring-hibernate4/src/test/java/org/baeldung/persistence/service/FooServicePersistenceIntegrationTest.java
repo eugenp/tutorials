@@ -8,6 +8,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
@@ -20,6 +21,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class FooServicePersistenceIntegrationTest {
 
     @Autowired
+    @Qualifier("fooHibernateService")
     private IFooService service;
 
     // tests
