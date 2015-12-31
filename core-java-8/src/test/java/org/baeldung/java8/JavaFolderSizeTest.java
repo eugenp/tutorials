@@ -15,15 +15,24 @@ import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.StreamSupport;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Before;
 import org.junit.Test;
 
 public class JavaFolderSizeTest {
+
+    private String path;
+
+    @Before
+    public void init() {
+        final String separator = File.separator;
+        path = "src" + separator + "test" + separator + "resources";
+    }
 
     @Test
     public void whenGetFolderSizeRecursive_thenCorrect() {
         final long expectedSize = 136;
 
-        final File folder = new File("src/test/resources");
+        final File folder = new File(path);
         final long size = getFolderSize(folder);
 
         assertEquals(expectedSize, size);
@@ -34,7 +43,7 @@ public class JavaFolderSizeTest {
         final long expectedSize = 136;
 
         final AtomicLong size = new AtomicLong(0);
-        final Path folder = Paths.get("src/test/resources");
+        final Path folder = Paths.get(path);
 
         Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
             @Override
@@ -51,7 +60,7 @@ public class JavaFolderSizeTest {
     public void whenGetFolderSizeUsingJava8_thenCorrect() throws IOException {
         final long expectedSize = 136;
 
-        final Path folder = Paths.get("src/test/resources");
+        final Path folder = Paths.get(path);
         final long size = Files.walk(folder).filter(p -> p.toFile().isFile()).mapToLong(p -> p.toFile().length()).sum();
 
         assertEquals(expectedSize, size);
@@ -61,7 +70,7 @@ public class JavaFolderSizeTest {
     public void whenGetFolderSizeUsingApacheCommonsIO_thenCorrect() {
         final long expectedSize = 136;
 
-        final File folder = new File("src/test/resources");
+        final File folder = new File(path);
         final long size = FileUtils.sizeOfDirectory(folder);
 
         assertEquals(expectedSize, size);
@@ -71,7 +80,7 @@ public class JavaFolderSizeTest {
     public void whenGetFolderSizeUsingGuava_thenCorrect() {
         final long expectedSize = 136;
 
-        final File folder = new File("src/test/resources");
+        final File folder = new File(path);
 
         final Iterable<File> files = com.google.common.io.Files.fileTreeTraverser().breadthFirstTraversal(folder);
         final long size = StreamSupport.stream(files.spliterator(), false).filter(f -> f.isFile()).mapToLong(File::length).sum();
@@ -81,7 +90,7 @@ public class JavaFolderSizeTest {
 
     @Test
     public void whenGetReadableSize_thenCorrect() {
-        final File folder = new File("src/test/resources");
+        final File folder = new File(path);
         final long size = getFolderSize(folder);
 
         final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
