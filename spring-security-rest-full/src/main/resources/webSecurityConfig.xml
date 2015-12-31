@@ -9,19 +9,24 @@
 
     <http pattern="/securityNone" security="none"/>
 
-    <http use-expressions="true">
+    <http use-expressions="true" >
+        <intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
         <http-basic/>
 
         <csrf disabled="true"/>
         
+        <!-- <access-denied-handler error-page="/my-error-page" /> -->
+        
+        <access-denied-handler ref="customAccessDeniedHandler" />
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <user-service>
                 <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
+                <user name="admin" password="adminPass" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
