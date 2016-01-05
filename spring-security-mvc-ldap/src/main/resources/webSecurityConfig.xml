@@ -13,10 +13,7 @@
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/secure" access="isAuthenticated()"/>
         
-        <form-login login-page='/login' default-target-url="/" 
-            authentication-failure-url="/login?error" 
-            username-parameter="username"
-            password-parameter="password"/>
+        <form-login login-page='/login' default-target-url="/" authentication-failure-url="/login?error" />
         <logout logout-success-url="/" />
     </http>
 

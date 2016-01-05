@@ -35,19 +35,16 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(final HttpSecurity http) throws Exception { // @formatter:off
+    protected void configure(final HttpSecurity http) throws Exception {// @formatter:off
         http
         .csrf().disable()
         .exceptionHandling()
         .authenticationEntryPoint(restAuthenticationEntryPoint)
         .and()
         .authorizeRequests()
-        .antMatchers("/api/foos").authenticated()
+        .antMatchers("/api/**").authenticated()
         .and()
         .formLogin()
-        .loginProcessingUrl("/j_spring_security_check")
-        .usernameParameter("j_username")
-        .passwordParameter("j_password")
         .successHandler(authenticationSuccessHandler)
         .failureHandler(new SimpleUrlAuthenticationFailureHandler())
         .and()
