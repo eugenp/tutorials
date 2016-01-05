@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * Security Configuration - LDAP and HTTP Authorizations.
  */
 @Configuration
-// @ImportResource({ "classpath:webSecurityConfig.xml" })
+// @ImportResource({ "classpath:webSecurityConfig.xml" }) //=> uncomment to use equivalent xml config
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/", "/home").permitAll().anyRequest().authenticated();
-        http.formLogin().loginPage("/login").permitAll().loginProcessingUrl("/j_spring_security_check").and().logout().logoutSuccessUrl("/");
+        http.formLogin().loginPage("/login").permitAll().and().logout().logoutSuccessUrl("/");
     }
 
 }
