@@ -82,14 +82,14 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>14.0.1</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <!-- logging -->
@@ -238,7 +238,9 @@
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
-
+        <jstl.version>1.2</jstl.version>
+        <javax.servlet.version>3.0.1</javax.servlet.version>
+        
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
