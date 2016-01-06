@@ -1,4 +1,4 @@
-package org.baeldung.thymeleaf.controller;
+package com.baeldung.thymeleaf.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
