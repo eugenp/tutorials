@@ -12,10 +12,11 @@
         <intercept-url pattern="/login*" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
+        <csrf disabled="true"/>
+
         <form-login login-page='/login.html' authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-failure-url="/login.html?error=true"/>
 
         <logout delete-cookies="JSESSIONID"/>
-
         <remember-me key="uniqueAndSecret" token-validity-seconds="86400"/>
 
         <session-management invalid-session-url="/invalidSession.html">
