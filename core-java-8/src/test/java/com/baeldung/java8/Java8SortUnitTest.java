@@ -6,10 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import com.baeldung.java8.entity.Human;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.java8.entity.Human;
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
 
