@@ -1,11 +1,12 @@
-package org.baeldung;
+package com.baeldung;
 
 @FunctionalInterface
-public interface Baz {
+public interface Bar {
 
     String method(String string);
 
     default String defaultMethod() {
-        return "String from Baz";
+        return "String from Bar";
     }
+
 }

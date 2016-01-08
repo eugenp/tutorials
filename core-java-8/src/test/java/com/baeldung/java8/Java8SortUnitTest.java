@@ -1,4 +1,4 @@
-package org.baeldung.java8;
+package com.baeldung.java8;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.baeldung.java8.entity.Human;
+import com.baeldung.java8.entity.Human;
 import org.junit.Assert;
 import org.junit.Test;
 
