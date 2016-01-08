@@ -1,15 +1,16 @@
 package com.baeldung.java8;
 
-import com.baeldung.Foo;
-import com.baeldung.FooExtended;
-import com.baeldung.UseFoo;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.function.Function;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.baeldung.Foo;
+import com.baeldung.FooExtended;
+import com.baeldung.UseFoo;
 
 public class Java8FunctionalInteracesLambdasTest {
 
@@ -22,39 +23,35 @@ public class Java8FunctionalInteracesLambdasTest {
 
     @Test
     public void functionalInterfaceInstantiation_whenReturnDefiniteString_thenCorrect() {
-
-        Foo foo = parameter -> parameter + "from lambda";
-        String result = useFoo.add("Message ", foo);
+        final Foo foo = parameter -> parameter + "from lambda";
+        final String result = useFoo.add("Message ", foo);
 
         assertEquals("Message from lambda", result);
     }
 
     @Test
     public void standardFIParameter_whenReturnDefiniteString_thenCorrect() {
-
-        Function<String, String> fn = parameter -> parameter + "from lambda";
-        String result = useFoo.addWithStandardFI("Message ", fn);
+        final Function<String, String> fn = parameter -> parameter + "from lambda";
+        final String result = useFoo.addWithStandardFI("Message ", fn);
 
         assertEquals("Message from lambda", result);
     }
 
     @Test
     public void defaultMethodFromExtendedInterface_whenReturnDefiniteString_thenCorrect() {
-
-        FooExtended fooExtended = string -> string;
-        String result = fooExtended.defaultMethod();
+        final FooExtended fooExtended = string -> string;
+        final String result = fooExtended.defaultMethod();
 
         assertEquals("String from Bar", result);
     }
 
     @Test
     public void lambdaAndInnerClassInstantiation_whenReturnSameString_thenCorrect() {
+        final Foo foo = parameter -> parameter + "from Foo";
 
-        Foo foo = parameter -> parameter + "from Foo";
-
-        Foo fooByIC = new Foo() {
+        final Foo fooByIC = new Foo() {
             @Override
-            public String method(String string) {
+            public String method(final String string) {
                 return string + "from Foo";
             }
         };
@@ -64,35 +61,32 @@ public class Java8FunctionalInteracesLambdasTest {
 
     @Test
     public void accessVariablesFromDifferentScopes_whenReturnPredefinedString_thenCorrect() {
-
-        assertEquals("Results: resultIC = Inner class value, resultLambda = Enclosing scope value",
-                useFoo.scopeExperiment());
+        assertEquals("Results: resultIC = Inner class value, resultLambda = Enclosing scope value", useFoo.scopeExperiment());
     }
 
     @Test
     public void shorteningLambdas_whenReturnEqualsResults_thenCorrect() {
+        final Foo foo = parameter -> buildString(parameter);
 
-        Foo foo = parameter -> buildString(parameter);
-
-        Foo fooHuge = parameter -> { String result = "Something " + parameter;
-            //many lines of code
+        final Foo fooHuge = parameter -> {
+            final String result = "Something " + parameter;
+            // many lines of code
             return result;
         };
 
         assertEquals(foo.method("Something"), fooHuge.method("Something"));
     }
 
-    private String buildString(String parameter) {
-        String result = "Something " + parameter;
-        //many lines of code
+    private String buildString(final String parameter) {
+        final String result = "Something " + parameter;
+        // many lines of code
         return result;
     }
 
     @Test
     public void mutatingOfEffectivelyFinalVariable_whenNotEquals_thenCorrect() {
-
-        int[] total = new int[1];
-        Runnable r = () -> total[0]++;
+        final int[] total = new int[1];
+        final Runnable r = () -> total[0]++;
         r.run();
 
         assertNotEquals(0, total[0]);

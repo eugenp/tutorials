@@ -6,34 +6,32 @@ public class UseFoo {
 
     private String value = "Enclosing scope value";
 
-    public String add(String string, Foo foo) {
+    public String add(final String string, final Foo foo) {
         return foo.method(string);
     }
 
-    public String addWithStandardFI(String string, Function<String, String> fn) {
+    public String addWithStandardFI(final String string, final Function<String, String> fn) {
         return fn.apply(string);
     }
 
     public String scopeExperiment() {
-        Foo fooIC = new Foo() {
+        final Foo fooIC = new Foo() {
             String value = "Inner class value";
 
             @Override
-            public String method(String string) {
-                return this.value;
+            public String method(final String string) {
+                return value;
             }
         };
-        String resultIC = fooIC.method("");
+        final String resultIC = fooIC.method("");
 
-        Foo fooLambda = parameter -> {
-            String value = "Lambda value";
+        final Foo fooLambda = parameter -> {
+            final String value = "Lambda value";
             return this.value;
         };
-        String resultLambda = fooLambda.method("");
+        final String resultLambda = fooLambda.method("");
 
-        return "Results: resultIC = " + resultIC +
-                ", resultLambda = " + resultLambda;
+        return "Results: resultIC = " + resultIC + ", resultLambda = " + resultLambda;
     }
 
-    
 }

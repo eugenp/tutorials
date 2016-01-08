@@ -5,5 +5,6 @@ public interface Foo {
 
     String method(String string);
 
-    default void defaultMethod() {}
+    default void defaultMethod() {
+    }
 }
