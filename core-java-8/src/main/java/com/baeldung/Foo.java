@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 @FunctionalInterface
 public interface Foo {

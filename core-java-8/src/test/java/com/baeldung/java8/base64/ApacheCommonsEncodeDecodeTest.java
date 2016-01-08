@@ -1,4 +1,4 @@
-package org.baeldung.java8.base64;
+package com.baeldung.java8.base64;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
