@@ -1,4 +1,4 @@
-package org.baeldung.java8;
+package com.baeldung.java8;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;

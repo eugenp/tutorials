@@ -1,4 +1,4 @@
-package org.baeldung.java8;
+package com.baeldung.java8;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
