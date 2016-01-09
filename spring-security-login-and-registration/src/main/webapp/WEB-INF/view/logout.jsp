@@ -23,7 +23,7 @@
                     <spring:message code="message.logoutSucc"></spring:message>
                 </h1>
             </c:if>
-            <a class="btn btn-primary" href="<c:url value="login.html" />"><spring:message
+            <a class="btn btn-primary" href="<c:url value="login" />"><spring:message
                     code="label.form.loginLink"></spring:message></a>
     </div>
 </body>

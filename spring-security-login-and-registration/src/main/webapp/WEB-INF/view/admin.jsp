@@ -15,7 +15,7 @@
       <a class="navbar-brand"href="<c:url value="/home.html" />"><spring:message code="label.pages.home.title"></spring:message></a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<c:url value="/j_spring_security_logout" />"><spring:message code="label.pages.logout"></spring:message></a> </li>
+        <li><a href="<c:url value="/logout" />"><spring:message code="label.pages.logout"></spring:message></a> </li>
       </ul>
     </div>
 </nav>

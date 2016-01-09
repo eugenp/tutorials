@@ -38,7 +38,7 @@ public class ChangePasswordLiveTest {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private final FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/j_spring_security_check", "j_username", "j_password");
+    private final FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/login", "username", "password");
 
     @Before
     public void init() {
