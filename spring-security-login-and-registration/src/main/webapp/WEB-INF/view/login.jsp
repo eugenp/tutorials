@@ -15,20 +15,20 @@
 <title><spring:message code="label.pages.home.title"></spring:message></title>
 <script type="text/javascript">
     function validate() {
-        if (document.f.j_username.value == ""
-                && document.f.j_password.value == "") {
+        if (document.f.username.value == ""
+                && document.f.password.value == "") {
             alert("${noUser} & ${noPass}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_username.value == "") {
+        if (document.f.username.value == "") {
             alert("${noUser}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_password.value == "") {
+        if (document.f.password.value == "") {
             alert("${noPass}");
-            document.f.j_password.focus();
+            document.f.password.focus();
             return false;
         }
     }
