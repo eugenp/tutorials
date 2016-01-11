@@ -15,20 +15,20 @@
 <title><spring:message code="label.pages.home.title"></spring:message></title>
 <script type="text/javascript">
     function validate() {
-        if (document.f.j_username.value == ""
-                && document.f.j_password.value == "") {
+        if (document.f.username.value == ""
+                && document.f.password.value == "") {
             alert("${noUser} & ${noPass}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_username.value == "") {
+        if (document.f.username.value == "") {
             alert("${noUser}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_password.value == "") {
+        if (document.f.password.value == "") {
             alert("${noPass}");
-            document.f.j_password.focus();
+            document.f.password.focus();
             return false;
         }
     }
@@ -58,18 +58,17 @@ ${SPRING_SECURITY_LAST_EXCEPTION}
                 <spring:message code="label.form.loginTitle"></spring:message>
             </h1>
             <a href="?lang=en"><spring:message code="label.form.loginEnglish"></spring:message></a>
-            | <a href="?lang=es_ES"><spring:message
-                    code="label.form.loginSpanish"></spring:message></a>
+            | <a href="?lang=es_ES"><spring:message code="label.form.loginSpanish"></spring:message></a>
             <br><br>
-            <form name='f' action="j_spring_security_check" method='POST'
-                onsubmit="return validate();">
+            
+            <form name='f' action="login" method='POST' onsubmit="return validate();">
                 
                 <label class="col-sm-4"><spring:message code="label.form.loginEmail"></spring:message></label>
-                <span class="col-sm-8"><input class="form-control" type='text' name='j_username' value=''></span>
+                <span class="col-sm-8"><input class="form-control" type='text' name='username' value=''></span>
                 
                 <br><br>        
                 <label class="col-sm-4"><spring:message code="label.form.loginPass"></spring:message></label>
-                <span class="col-sm-8"><input class="form-control" type='password' name='j_password' /></span>
+                <span class="col-sm-8"><input class="form-control" type='password' name='password' /></span>
                 
                 <br><br>
                 <input class="btn btn-primary" name="submit" type="submit"

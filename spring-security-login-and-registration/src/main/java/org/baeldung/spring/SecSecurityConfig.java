@@ -51,7 +51,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/j_spring_security_check*","/login*", "/logout*", "/signin/**", "/signup/**",
+                .antMatchers("/login*","/login*", "/logout*", "/signin/**", "/signup/**",
                         "/user/registration*", "/regitrationConfirm*", "/expiredAccount*", "/registration*",
                         "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*",
                         "/user/changePassword*", "/emailError*", "/resources/**","/old/user/registration*","/successRegister*").permitAll()
@@ -59,14 +59,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/j_spring_security_check")
+                .loginPage("/login")
                 .defaultSuccessUrl("/homepage.html")
-                .failureUrl("/login.html?error=true")
+                .failureUrl("/login?error=true")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(authenticationFailureHandler)
-                .usernameParameter("j_username")
-                .passwordParameter("j_password")
             .permitAll()
                 .and()
             .sessionManagement()
@@ -75,7 +72,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
                 .invalidateHttpSession(false)
-                .logoutUrl("/j_spring_security_logout")
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
                 .permitAll();

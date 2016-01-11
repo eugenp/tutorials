@@ -82,14 +82,14 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.2.2</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- util -->
@@ -111,7 +111,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <!-- logging -->
 
@@ -171,13 +171,13 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox.version}</version>
         </dependency>
 
     </dependencies>
@@ -263,7 +263,11 @@
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
-
+        <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+        <jstl.version>1.2</jstl.version>
+        <jackson.version>2.2.2</jackson.version>
+        <springfox.version>2.2.2</springfox.version>
+        
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>

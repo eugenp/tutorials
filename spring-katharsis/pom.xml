@@ -31,7 +31,7 @@
 		<dependency>
 	      <groupId>io.katharsis</groupId>
 	      <artifactId>katharsis-servlet</artifactId>
-	      <version>1.0.0</version>
+	      <version>${katharsis.version}</version>
 	    </dependency>   
 	    
 	    <!-- test -->
@@ -45,7 +45,7 @@
 	    <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>2.4.0</version>
+            <version>${restassured.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -60,6 +60,8 @@
     
     <properties>
         <java.version>1.8</java.version>
+        <katharsis.version>1.0.0</katharsis.version>
+        <restassured.version>2.4.0</restassured.version>
     </properties>
 
 
