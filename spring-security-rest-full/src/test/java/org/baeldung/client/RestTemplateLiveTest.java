@@ -243,4 +243,13 @@ public class RestTemplateLiveTest {
             clientHttpRequest.getHeaders().add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
         };
     }
+
+    // Simply setting restTemplate timeout using ClientHttpRequestFactory
+
+    ClientHttpRequestFactory getSimpleClientHttpRequestFactory() {
+        final int timeout = 5;
+        final HttpComponentsClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
+        return clientHttpRequestFactory;
+    }
 }
