@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+body {
+  margin: 5px; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+hr {
+  border: 0;
+  background-color: #DDDDDD;
+  height: 1px;
+  margin: 5px;
+}
+
+
+
+table th {
+  background:#EFEFEF none repeat scroll 0 0;
+  border-top:1px solid #CCCCCC;
+  font-size:small;
+  padding-left:5px;
+  padding-right:4px;
+  padding-top:4px;
+  vertical-align:top;
+  text-align:left;
+}
+
+table tr {  
+  background-color: #e5ecf9;
+  font-size:small;
+}
+
+
+.topLine {
+  height: 1.25em;
+  background-color: #e5ecf9;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 3px;
+  padding-top: 2px;
+}
+
+.headline {
+  font-weight: bold;
+  color: #3366cc;
+}
+
+
+
+.done {
+  font-size: x-small;
+  vertical-align: top;
+}
+
+
+.email {
+  font-size: x-small;
+  vertical-align: top;
+}
+
+form td {
+  font-size: smaller;
+} 

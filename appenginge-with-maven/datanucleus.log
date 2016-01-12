@@ -1,0 +1,84 @@
+15:48:54,671 (main) ERROR [DataNucleus.Persistence] - Error : Un error ocurrio cuando creando un adaptador "org.datanucleus.api.jdo.JDOAdapter" (quizas no tengas el jar apropiado datanucleus-api-XXX en el CLASSPATH, o el api jar para la especificacion que utilisas?) : org.datanucleus.util.Localiser.getInstance(Ljava/lang/String;Ljava/lang/ClassLoader;)Lorg/datanucleus/util/Localiser;
+java.lang.NoSuchMethodError: org.datanucleus.util.Localiser.getInstance(Ljava/lang/String;Ljava/lang/ClassLoader;)Lorg/datanucleus/util/Localiser;
+	at org.datanucleus.api.jdo.JDOAdapter.<clinit>(JDOAdapter.java:68)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
+	at org.datanucleus.plugin.NonManagedPluginRegistry.createExecutableExtension(NonManagedPluginRegistry.java:606)
+	at org.datanucleus.plugin.PluginManager.createExecutableExtension(PluginManager.java:301)
+	at org.datanucleus.api.ApiAdapterFactory.getApiAdapter(ApiAdapterFactory.java:88)
+	at org.datanucleus.AbstractNucleusContext.<init>(AbstractNucleusContext.java:115)
+	at org.datanucleus.enhancer.EnhancementNucleusContextImpl.<init>(EnhancementNucleusContextImpl.java:48)
+	at org.datanucleus.enhancer.EnhancementNucleusContextImpl.<init>(EnhancementNucleusContextImpl.java:37)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.<init>(DataNucleusEnhancer.java:161)
+	at org.datanucleus.enhancer.CommandLineHelper.createDataNucleusEnhancer(CommandLineHelper.java:148)
+	at org.datanucleus.enhancer.DataNucleusEnhancer.main(DataNucleusEnhancer.java:1108)
+10:48:50,076 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+10:48:50,611 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+10:48:51,103 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+10:48:51,104 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=427 ms, enhance=64 ms, total=491 ms. Consult the log for full details
+10:53:22,095 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+10:53:22,651 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+10:53:23,230 (main) INFO  [DataNucleus.Enhancer] - Class "com.baeldung.model.Foo" is already enhanced.
+10:53:23,230 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=540 ms, enhance=36 ms, total=576 ms. Consult the log for full details
+12:07:27,048 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+12:07:27,283 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:07:27,595 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+12:07:27,621 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=262 ms, enhance=73 ms, total=335 ms. Consult the log for full details
+12:36:17,309 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+12:36:17,598 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:36:18,110 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+12:36:18,111 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=443 ms, enhance=69 ms, total=512 ms. Consult the log for full details
+12:40:46,554 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JPA"
+12:40:46,955 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:40:47,418 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+12:40:47,418 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=382 ms, enhance=80 ms, total=462 ms. Consult the log for full details
+13:05:17,997 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JPA"
+13:05:18,494 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+13:05:19,002 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+13:05:19,019 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=414 ms, enhance=109 ms, total=523 ms. Consult the log for full details
+13:42:34,368 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+13:42:36,704 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+13:42:39,002 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+13:42:39,095 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=2185 ms, enhance=203 ms, total=2388 ms. Consult the log for full details
+16:00:22,830 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+16:00:23,145 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+16:00:23,638 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+16:00:23,638 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=428 ms, enhance=64 ms, total=492 ms. Consult the log for full details
+12:31:07,747 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+12:31:08,320 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:31:09,162 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+12:31:09,187 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=775 ms, enhance=90 ms, total=865 ms. Consult the log for full details
+12:34:01,780 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+12:34:02,382 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:34:02,987 (main) INFO  [DataNucleus.Enhancer] - Class "com.baeldung.model.Foo" is already enhanced.
+12:34:02,988 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=565 ms, enhance=39 ms, total=604 ms. Consult the log for full details
+12:36:35,826 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+12:36:35,992 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:36:36,285 (main) INFO  [DataNucleus.Enhancer] - Class "com.baeldung.model.Foo" is already enhanced.
+12:36:36,285 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=269 ms, enhance=23 ms, total=292 ms. Consult the log for full details
+17:30:54,843 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+17:30:55,295 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+17:30:56,035 (main) INFO  [DataNucleus.Enhancer] - Class "com.baeldung.model.Foo" is already enhanced.
+17:30:56,035 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=700 ms, enhance=39 ms, total=739 ms. Consult the log for full details
+18:51:42,091 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+18:51:42,587 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+18:51:43,147 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+18:51:43,148 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=494 ms, enhance=65 ms, total=559 ms. Consult the log for full details
+10:39:33,174 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+10:39:33,540 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+10:39:34,148 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+10:39:34,152 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=524 ms, enhance=87 ms, total=611 ms. Consult the log for full details
+11:27:00,924 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JPA"
+11:27:01,302 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+11:27:01,903 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+11:27:01,904 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=515 ms, enhance=85 ms, total=600 ms. Consult the log for full details
+11:44:02,438 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JPA"
+11:44:03,039 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+11:44:03,523 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+11:44:03,540 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=410 ms, enhance=89 ms, total=499 ms. Consult the log for full details
+12:05:06,728 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JPA"
+12:05:07,024 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+12:05:07,438 (main) INFO  [DataNucleus.Enhancer] - Writing class file "/Users/Elena/Documents/JavaProjects/appenginge-with-maven/target/appenginge-with-maven-0.0.1-SNAPSHOT/WEB-INF/classes/com/baeldung/model/Foo.class" with enhanced definition
+12:05:07,439 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 1 classes. Timings : input=343 ms, enhance=69 ms, total=412 ms. Consult the log for full details
