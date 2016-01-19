@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import org.junit.Assert;
 import org.junit.Test;
