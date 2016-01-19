@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
