@@ -32,8 +32,9 @@ public class FooLiveTest {
         assertEquals(HttpStatus.BAD_REQUEST, error.getStatus());
         assertEquals(1, error.getErrors().size());
         assertTrue(error.getErrors().get(0).contains("should be of type"));
-
     }
+
+
 
     @Test
     public void whenNoHandlerForHttpRequest_thenNotFound() {
@@ -42,6 +43,8 @@ public class FooLiveTest {
         assertEquals(HttpStatus.NOT_FOUND, error.getStatus());
         assertEquals(1, error.getErrors().size());
         assertTrue(error.getErrors().get(0).contains("No handler found"));
+        System.out.println(response.asString());
+
     }
 
     @Test
@@ -51,6 +54,8 @@ public class FooLiveTest {
         assertEquals(HttpStatus.METHOD_NOT_ALLOWED, error.getStatus());
         assertEquals(1, error.getErrors().size());
         assertTrue(error.getErrors().get(0).contains("Supported methods are"));
+        System.out.println(response.asString());
+
     }
 
     @Test
@@ -60,6 +65,8 @@ public class FooLiveTest {
         assertEquals(HttpStatus.UNSUPPORTED_MEDIA_TYPE, error.getStatus());
         assertEquals(1, error.getErrors().size());
         assertTrue(error.getErrors().get(0).contains("media type is not supported"));
+        System.out.println(response.asString());
+
     }
 
 }
