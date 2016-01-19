@@ -22,10 +22,10 @@ public class UserServiceTest {
 
     @Test
     public void whenUserIdIsProvided_thenRetrievedNameIsCorrect() {
-        Mockito.when(nameService.getUserName("SomeId")).thenReturn("Baeldung");
+        Mockito.when(nameService.getUserName("SomeId")).thenReturn("Mock user name");
 
         String testName = userService.getUserName("SomeId");
 
-        Assert.assertEquals("Baeldung", testName);
+        Assert.assertEquals("Mock user name", testName);
     }
 }
