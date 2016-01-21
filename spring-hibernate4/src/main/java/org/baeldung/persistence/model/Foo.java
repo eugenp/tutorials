@@ -12,7 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.envers.Audited;
+
 @Entity
+@Audited
+// @Proxy(lazy = false)
 public class Foo implements Serializable {
 
     @Id
