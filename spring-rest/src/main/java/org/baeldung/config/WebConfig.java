@@ -11,6 +11,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
@@ -18,33 +19,38 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan({ "org.baeldung.web" })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    public WebConfig() {
-        super();
-    }
+	public WebConfig() {
+		super();
+	}
 
-    //
+	//
 
-    @Override
-    public void configureMessageConverters(final List<HttpMessageConverter<?>> messageConverters) {
-        messageConverters.add(createXmlHttpMessageConverter());
-        // messageConverters.add(new MappingJackson2HttpMessageConverter());
+	@Override
+	public void configureMessageConverters(final List<HttpMessageConverter<?>> messageConverters) {
+		messageConverters.add(createXmlHttpMessageConverter());
+		// messageConverters.add(new MappingJackson2HttpMessageConverter());
 
-        final Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
-        builder.indentOutput(true).dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
-        messageConverters.add(new MappingJackson2HttpMessageConverter(builder.build()));
-        // messageConverters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
+		final Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
+		builder.indentOutput(true).dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
+		messageConverters.add(new MappingJackson2HttpMessageConverter(builder.build()));
+		// messageConverters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
 
-        super.configureMessageConverters(messageConverters);
-    }
+		super.configureMessageConverters(messageConverters);
+	}
 
-    private HttpMessageConverter<Object> createXmlHttpMessageConverter() {
-        final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
+	private HttpMessageConverter<Object> createXmlHttpMessageConverter() {
+		final MarshallingHttpMessageConverter xmlConverter = new MarshallingHttpMessageConverter();
 
-        final XStreamMarshaller xstreamMarshaller = new XStreamMarshaller();
-        xmlConverter.setMarshaller(xstreamMarshaller);
-        xmlConverter.setUnmarshaller(xstreamMarshaller);
+		final XStreamMarshaller xstreamMarshaller = new XStreamMarshaller();
+		xmlConverter.setMarshaller(xstreamMarshaller);
+		xmlConverter.setUnmarshaller(xstreamMarshaller);
 
-        return xmlConverter;
-    }
+		return xmlConverter;
+	}
+
+	@Override
+	public void addViewControllers(final ViewControllerRegistry registry) {
+		registry.addViewController("/fileupload").setViewName("fileupload");
+	}
 
 }
