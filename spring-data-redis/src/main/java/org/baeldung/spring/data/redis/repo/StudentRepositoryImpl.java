@@ -2,16 +2,18 @@ package org.baeldung.spring.data.redis.repo;
 
 import org.baeldung.spring.data.redis.model.Student;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 
+@Repository
 public class StudentRepositoryImpl implements StudentRepository {
 
     private static final String KEY = "Student";
 
-    private RedisTemplate<String, Student> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
-    public void setRedisTemplate(RedisTemplate<String, Student> redisTemplate) {
+    public void setRedisTemplate(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
