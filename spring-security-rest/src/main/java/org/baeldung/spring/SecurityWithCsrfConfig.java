@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @Configuration
 @EnableWebSecurity
 @ComponentScan("org.baeldung.security")
-public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
+public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
@@ -23,7 +23,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
 
-    public SecurityJavaConfig() {
+    public SecurityWithCsrfConfig() {
         super();
     }
 
@@ -37,7 +37,6 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {// @formatter:off
         http
-        .csrf().disable()
         .exceptionHandling()
         .authenticationEntryPoint(restAuthenticationEntryPoint)
         .and()
