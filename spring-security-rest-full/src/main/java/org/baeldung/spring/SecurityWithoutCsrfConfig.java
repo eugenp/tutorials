@@ -17,12 +17,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
-public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomAccessDeniedHandler accessDeniedHandler;
 
-    public SecSecurityConfig() {
+    public SecurityWithoutCsrfConfig() {
         super();
     }
 

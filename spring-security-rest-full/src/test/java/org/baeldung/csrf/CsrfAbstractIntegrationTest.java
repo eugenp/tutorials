@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 public class CsrfAbstractIntegrationTest {
+
     @Autowired
     private WebApplicationContext context;
 
@@ -29,6 +30,8 @@ public class CsrfAbstractIntegrationTest {
     private Filter springSecurityFilterChain;
 
     protected MockMvc mvc;
+
+    //
 
     @Before
     public void setup() {
