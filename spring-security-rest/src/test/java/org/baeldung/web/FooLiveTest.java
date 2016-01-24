@@ -34,8 +34,6 @@ public class FooLiveTest {
         assertTrue(error.getErrors().get(0).contains("should be of type"));
     }
 
-
-
     @Test
     public void whenNoHandlerForHttpRequest_thenNotFound() {
         final Response response = givenAuth().delete(URL_PREFIX + "/api/xx");

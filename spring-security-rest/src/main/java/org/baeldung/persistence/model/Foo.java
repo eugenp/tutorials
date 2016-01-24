@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.validation.constraints.Size;
 
-
 public class Foo implements Serializable {
 
     private long id;

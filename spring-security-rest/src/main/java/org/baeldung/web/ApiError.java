@@ -48,6 +48,7 @@ public class ApiError {
     public void setMessage(final String message) {
         this.message = message;
     }
+
     public List<String> getErrors() {
         return errors;
     }

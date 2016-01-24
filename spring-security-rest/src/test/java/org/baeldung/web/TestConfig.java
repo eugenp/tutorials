@@ -7,5 +7,4 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan({ "org.baeldung.web" })
 public class TestConfig {
 
-
 }

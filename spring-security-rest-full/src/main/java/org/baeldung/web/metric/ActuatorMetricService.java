@@ -27,7 +27,6 @@ public class ActuatorMetricService implements IActuatorMetricService {
         statusList = new ArrayList<String>();
     }
 
-
     @Override
     public Object[][] getGraphData() {
         final Date current = new Date();
