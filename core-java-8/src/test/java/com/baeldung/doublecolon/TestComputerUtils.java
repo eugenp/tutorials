@@ -1,6 +1,6 @@
-package com.baeldung.doublecolumn;
+package com.baeldung.doublecolon;
 
-import com.baeldung.doublecolumn.function.TriFunction;
+import com.baeldung.doublecolon.function.TriFunction;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.function.BiFunction;
 
-import static com.baeldung.doublecolumn.ComputerUtils.*;
+import static com.baeldung.doublecolon.ComputerUtils.*;
 
 public class TestComputerUtils {
 

@@ -1,4 +1,4 @@
-package com.baeldung.doublecolumn;
+package com.baeldung.doublecolon;
 
 public class Computer {
 
