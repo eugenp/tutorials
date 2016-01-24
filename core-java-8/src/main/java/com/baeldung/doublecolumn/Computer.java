@@ -1,6 +1,5 @@
 package com.baeldung.doublecolumn;
 
-
 public class Computer {
 
     private Integer age;
@@ -47,21 +46,20 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "Computer{" +
-                "age=" + age +
-                ", color='" + color + '\'' +
-                ", healty=" + healty +
-                '}';
+        return "Computer{" + "age=" + age + ", color='" + color + '\'' + ", healty=" + healty + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Computer computer = (Computer) o;
 
-        if (age != null ? !age.equals(computer.age) : computer.age != null) return false;
+        if (age != null ? !age.equals(computer.age) : computer.age != null)
+            return false;
         return color != null ? color.equals(computer.color) : computer.color == null;
 
     }
