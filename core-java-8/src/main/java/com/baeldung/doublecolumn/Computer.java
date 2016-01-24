@@ -6,12 +6,12 @@ public class Computer {
     private String color;
     private Integer healty;
 
-    public Computer(int age, String color) {
+    public Computer(final int age, final String color) {
         this.age = age;
         this.color = color;
     }
 
-    public Computer(Integer age, String color, Integer healty) {
+    public Computer(final Integer age, final String color, final Integer healty) {
         this.age = age;
         this.color = color;
         this.healty = healty;
@@ -24,7 +24,7 @@ public class Computer {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(final Integer age) {
         this.age = age;
     }
 
@@ -32,7 +32,7 @@ public class Computer {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(final String color) {
         this.color = color;
     }
 
@@ -40,7 +40,7 @@ public class Computer {
         return healty;
     }
 
-    public void setHealty(Integer healty) {
+    public void setHealty(final Integer healty) {
         this.healty = healty;
     }
 
@@ -50,16 +50,19 @@ public class Computer {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
+    public boolean equals(final Object o) {
+        if (this == o) {
             return true;
-        if (o == null || getClass() != o.getClass())
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
+        }
 
-        Computer computer = (Computer) o;
+        final Computer computer = (Computer) o;
 
-        if (age != null ? !age.equals(computer.age) : computer.age != null)
+        if (age != null ? !age.equals(computer.age) : computer.age != null) {
             return false;
+        }
         return color != null ? color.equals(computer.color) : computer.color == null;
 
     }
