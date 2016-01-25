@@ -23,7 +23,7 @@ public class NodeOperationTest {
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void giveAnObject_whenConvertingIntoANode_thenCorrect() {
+    public void givenAnObject_whenConvertingIntoNode_thenCorrect() {
         final NodeBean fromValue = new NodeBean(2016, "baeldung.com");
 
         final JsonNode node = mapper.valueToTree(fromValue);
