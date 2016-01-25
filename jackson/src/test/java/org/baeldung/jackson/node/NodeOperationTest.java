@@ -19,14 +19,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class JacksonNodeOperationTest {
+public class NodeOperationTest {
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
     public void giveAnObject_whenConvertingIntoANode_thenCorrect() {
-        MyBean fromValue = new MyBean(2016, "baeldung.com");
+        final NodeBean fromValue = new NodeBean(2016, "baeldung.com");
 
-        JsonNode node = mapper.valueToTree(fromValue);
+        final JsonNode node = mapper.valueToTree(fromValue);
 
         assertEquals(2016, node.get("id").intValue());
         assertEquals("baeldung.com", node.get("name").textValue());
@@ -35,9 +35,9 @@ public class JacksonNodeOperationTest {
     @Test
     public void givenANode_whenWritingOutAsAJsonString_thenCorrect() throws IOException {
         final String pathToTestFile = "node_to_json_test.json";
-        char[] characterBuffer = new char[50];
+        final char[] characterBuffer = new char[50];
 
-        JsonNode node = mapper.createObjectNode();
+        final JsonNode node = mapper.createObjectNode();
         ((ObjectNode) node).put("id", 2016);
         ((ObjectNode) node).put("name", "baeldung.com");
 
@@ -48,7 +48,7 @@ public class JacksonNodeOperationTest {
         try (FileReader inputStreamForAssertion = new FileReader(pathToTestFile)) {
             inputStreamForAssertion.read(characterBuffer);
         }
-        String textContentOfTestFile = new String(characterBuffer);
+        final String textContentOfTestFile = new String(characterBuffer);
 
         assertThat(textContentOfTestFile, containsString("2016"));
         assertThat(textContentOfTestFile, containsString("baeldung.com"));
@@ -58,11 +58,11 @@ public class JacksonNodeOperationTest {
 
     @Test
     public void givenANode_whenConvertingIntoAnObject_thenCorrect() throws JsonProcessingException {
-        JsonNode node = mapper.createObjectNode();
+        final JsonNode node = mapper.createObjectNode();
         ((ObjectNode) node).put("id", 2016);
         ((ObjectNode) node).put("name", "baeldung.com");
 
-        MyBean toValue = mapper.treeToValue(node, MyBean.class);
+        final NodeBean toValue = mapper.treeToValue(node, NodeBean.class);
 
         assertEquals(2016, toValue.getId());
         assertEquals("baeldung.com", toValue.getName());
@@ -70,8 +70,8 @@ public class JacksonNodeOperationTest {
 
     @Test
     public void givenANode_whenAddingIntoATree_thenCorrect() throws IOException {
-        JsonNode rootNode = ExampleStructure.getExampleRoot();
-        ObjectNode addedNode = ((ObjectNode) rootNode).putObject("address");
+        final JsonNode rootNode = ExampleStructure.getExampleRoot();
+        final ObjectNode addedNode = ((ObjectNode) rootNode).putObject("address");
         addedNode.put("city", "Seattle").put("state", "Washington").put("country", "United States");
 
         assertFalse(rootNode.path("address").isMissingNode());
@@ -82,10 +82,10 @@ public class JacksonNodeOperationTest {
 
     @Test
     public void givenANode_whenModifyingIt_thenCorrect() throws IOException {
-        String newString = "{\"nick\": \"cowtowncoder\"}";
-        JsonNode newNode = mapper.readTree(newString);
+        final String newString = "{\"nick\": \"cowtowncoder\"}";
+        final JsonNode newNode = mapper.readTree(newString);
 
-        JsonNode rootNode = ExampleStructure.getExampleRoot();
+        final JsonNode rootNode = ExampleStructure.getExampleRoot();
         ((ObjectNode) rootNode).set("name", newNode);
 
         assertFalse(rootNode.path("name").path("nick").isMissingNode());
@@ -94,7 +94,7 @@ public class JacksonNodeOperationTest {
 
     @Test
     public void givenANode_whenRemovingFromATree_thenCorrect() throws IOException {
-        JsonNode rootNode = ExampleStructure.getExampleRoot();
+        final JsonNode rootNode = ExampleStructure.getExampleRoot();
         ((ObjectNode) rootNode).remove("company");
 
         assertTrue(rootNode.path("company").isMissingNode());
