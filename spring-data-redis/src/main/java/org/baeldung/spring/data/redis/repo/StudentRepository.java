@@ -1,6 +1,7 @@
 package org.baeldung.spring.data.redis.repo;
 
 import org.baeldung.spring.data.redis.model.Student;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
