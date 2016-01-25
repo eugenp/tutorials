@@ -1,13 +1,13 @@
 package org.baeldung.jackson.node;
 
-public class MyBean {
+public class NodeBean {
     private int id;
     private String name;
 
-    public MyBean() {
+    public NodeBean() {
     }
 
-    public MyBean(int id, String name) {
+    public NodeBean(int id, String name) {
         this.id = id;
         this.name = name;
     }
