@@ -44,6 +44,18 @@ public class Computer {
         this.healty = healty;
     }
 
+    public void turnOnPc() {
+        System.out.println("Computer turned on");
+    }
+
+    public void turnOffPc() {
+        System.out.println("Computer turned off");
+    }
+
+    public Double calculateValue(Double initialValue) {
+        return initialValue/1.50;
+    }
+
     @Override
     public String toString() {
         return "Computer{" + "age=" + age + ", color='" + color + '\'' + ", healty=" + healty + '}';

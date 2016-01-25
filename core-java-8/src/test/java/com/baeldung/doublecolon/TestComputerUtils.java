@@ -22,7 +22,7 @@ public class TestComputerUtils {
     }
 
     @Test
-    public void testFilter() {
+    public void testConstructorReference() {
 
         Computer c1 = new Computer(2015, "white");
         Computer c2 = new Computer(2009, "black");
@@ -53,7 +53,7 @@ public class TestComputerUtils {
     }
 
     @Test
-    public void testRepair() {
+    public void testStaticMethodReference() {
 
         Computer c1 = new Computer(2015, "white", 35);
         Computer c2 = new Computer(2009, "black", 65);
@@ -64,6 +64,26 @@ public class TestComputerUtils {
         inventory.forEach(ComputerUtils::repair);
 
         Assert.assertEquals("Computer repaired", new Integer(100), c1.getHealty());
+    }
+
+    @Test
+    public void testInstanceMethodArbitraryObjectParticularType() {
+
+        Computer c1 = new Computer(2015, "white", 35);
+        Computer c2 = new MacbookPro(2009, "black", 65);
+        List<Computer> inventory = Arrays.asList(c1, c2);
+        inventory.forEach(Computer::turnOnPc);
+
+    }
+
+    @Test
+    public void testSuperMethodReference() {
+
+        final TriFunction<Integer, String, Integer, MacbookPro> integerStringIntegerObjectTriFunction = MacbookPro::new;
+        final MacbookPro macbookPro = integerStringIntegerObjectTriFunction.apply(2010, "black",100);
+        Double initialValue=new Double(999.99);
+        final Double actualValue = macbookPro.calculateValue(initialValue);
+        Assert.assertEquals(766.659, actualValue,0.0);
     }
 
 }
