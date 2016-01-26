@@ -53,7 +53,7 @@ public class Computer {
     }
 
     public Double calculateValue(Double initialValue) {
-        return initialValue/1.50;
+        return initialValue / 1.50;
     }
 
     @Override

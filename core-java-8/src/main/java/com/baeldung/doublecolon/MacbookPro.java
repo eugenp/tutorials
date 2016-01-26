@@ -2,8 +2,7 @@ package com.baeldung.doublecolon;
 
 import java.util.function.Function;
 
-
-public class MacbookPro extends Computer{
+public class MacbookPro extends Computer {
 
     public MacbookPro(int age, String color) {
         super(age, color);
@@ -24,12 +23,12 @@ public class MacbookPro extends Computer{
     }
 
     @Override
-    public Double calculateValue(Double initialValue){
+    public Double calculateValue(Double initialValue) {
 
-        Function<Double,Double> function = super::calculateValue;
+        Function<Double, Double> function = super::calculateValue;
         final Double pcValue = function.apply(initialValue);
-        System.out.println("First value is:" +pcValue);
-        return pcValue + (initialValue/10) ;
+        System.out.println("First value is:" + pcValue);
+        return pcValue + (initialValue / 10);
 
     }
 }
