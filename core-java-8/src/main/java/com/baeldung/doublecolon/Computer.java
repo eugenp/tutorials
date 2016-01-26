@@ -1,4 +1,4 @@
-package com.baeldung.doublecolumn;
+package com.baeldung.doublecolon;
 
 public class Computer {
 
@@ -42,6 +42,18 @@ public class Computer {
 
     public void setHealty(final Integer healty) {
         this.healty = healty;
+    }
+
+    public void turnOnPc() {
+        System.out.println("Computer turned on");
+    }
+
+    public void turnOffPc() {
+        System.out.println("Computer turned off");
+    }
+
+    public Double calculateValue(Double initialValue) {
+        return initialValue/1.50;
     }
 
     @Override
