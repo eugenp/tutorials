@@ -16,12 +16,6 @@ public class LiveTest {
     }
 
     @Test
-    public void whenSendRequestToUserResource_thenHeaderAdded() {
-        final Response response = RestAssured.get("http://localhost:8080/users/1");
-        assertEquals(200, response.getStatusCode());
-    }
-
-    @Test
     public void whenSendRequest_thenHeaderAdded() {
         final Response response = RestAssured.get("http://localhost:8080/foos/1");
         assertEquals(200, response.getStatusCode());

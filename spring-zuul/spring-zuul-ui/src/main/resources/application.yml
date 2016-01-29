@@ -3,7 +3,3 @@ zuul:
     foos:
       path: /foos/**
       url: http://localhost:8081/spring-zuul-foos-resource/foos
-    users:
-      path: /users/**
-      url: http://localhost:8081/spring-zuul-users-resource/users
-      

@@ -15,7 +15,6 @@
         
     <modules>
         <module>spring-zuul-foos-resource</module>
-        <module>spring-zuul-users-resource</module>
         <module>spring-zuul-ui</module>
     </modules>
 

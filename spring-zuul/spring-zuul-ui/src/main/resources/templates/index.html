@@ -33,17 +33,6 @@ app.controller('mainCtrl', function($scope,$resource,$http) {
         $scope.foo = $scope.foos.get({fooId:$scope.foo.id});
     }
     
-    $scope.user = {id:0 , username:"john", age:11};
-    $scope.users = $resource("/users/:userId",{userId:'@id'});
-    
-    $scope.getUser = function(){
-        $scope.user = $scope.users.get({userId:$scope.user.id});
-    }
-    
-    
-    
-
-    
 });
 /*]]>*/
 </script>
@@ -63,27 +52,6 @@ app.controller('mainCtrl', function($scope,$resource,$http) {
 	<div class="col-sm-12">
 	<a class="btn btn-default" href="#" ng-click="getFoo()">New Foo</a>
 	</div>
-<br/><br/>
-
-    <h1 class="col-sm-12">User Details</h1>
-    <div class="col-sm-12">
-        <label class="col-sm-3">ID</label>
-        <span>{{user.id}}</span>
-    </div>
-    
-    <div class="col-sm-12">
-    <label class="col-sm-3">Username</label>
-    <span>{{user.username}}</span>
-    </div>
-    
-    <div class="col-sm-12">
-    <label class="col-sm-3">Age</label>
-    <span>{{user.age}}</span>
-    </div>
-    
-    <div class="col-sm-12">
-    <a class="btn btn-default" href="#" ng-click="getUser()">New User</a>
-    </div>
 
 </div>
 </body>
