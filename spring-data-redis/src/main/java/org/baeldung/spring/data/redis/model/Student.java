@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
 
-    private static final long serialVersionUID = -1907106213598514113L;
-
     public enum Gender {
         MALE, FEMALE
     }
