@@ -18,20 +18,17 @@ public class MovieCrudService {
 
     private Map<String,Movie> inventory = new HashMap<String, Movie>();
 
-
     @GET
     @Path("/getinfo")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    public Movie movieByImdbID(@QueryParam("imdbId") String imdbID){
+    public Movie movieByImdbID(@QueryParam("imdbID") String imdbID){
 
-        System.out.println("*** Calling  getinfo for a given ImdbID***");
+        System.out.println("*** Calling  getinfo ***");
 
-        if(inventory.containsKey(imdbID)){
-            return inventory.get(imdbID);
-        }else return null;
-
+        Movie movie=new Movie();
+        movie.setImdbID(imdbID);
+        return movie;
     }
-
 
     @POST
     @Path("/addmovie")
@@ -40,12 +37,11 @@ public class MovieCrudService {
 
         System.out.println("*** Calling  addMovie ***");
 
-        if (null!=inventory.get(movie.getImdbId())){
+        if (null!=inventory.get(movie.getImdbID())){
             return Response.status(Response.Status.NOT_MODIFIED)
                     .entity("Movie is Already in the database.").build();
         }
-
-        inventory.put(movie.getImdbId(),movie);
+        inventory.put(movie.getImdbID(),movie);
 
         return Response.status(Response.Status.CREATED).build();
     }
@@ -58,11 +54,11 @@ public class MovieCrudService {
 
         System.out.println("*** Calling  updateMovie ***");
 
-        if (null==inventory.get(movie.getImdbId())){
+        if (null!=inventory.get(movie.getImdbID())){
             return Response.status(Response.Status.NOT_MODIFIED)
                     .entity("Movie is not in the database.\nUnable to Update").build();
         }
-        inventory.put(movie.getImdbId(),movie);
+        inventory.put(movie.getImdbID(),movie);
         return Response.status(Response.Status.OK).build();
 
     }
@@ -70,7 +66,7 @@ public class MovieCrudService {
 
     @DELETE
     @Path("/deletemovie")
-    public Response deleteMovie(@QueryParam("imdbId") String imdbID){
+    public Response deleteMovie(@QueryParam("imdbID") String imdbID){
 
         System.out.println("*** Calling  deleteMovie ***");
 
@@ -82,7 +78,6 @@ public class MovieCrudService {
         inventory.remove(imdbID);
         return Response.status(Response.Status.OK).build();
     }
-
 
     @GET
     @Path("/listmovies")
