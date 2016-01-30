@@ -38,8 +38,7 @@ public class SpringConfig {
     }
 
     @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource)
-        throws MalformedURLException {
+    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) throws MalformedURLException {
         ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
 
         databasePopulator.addScript(dropReopsitoryTables);

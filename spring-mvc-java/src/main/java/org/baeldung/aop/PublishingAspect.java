@@ -21,13 +21,16 @@ public class PublishingAspect {
     }
 
     @Pointcut("@target(org.springframework.stereotype.Repository)")
-    public void repositoryMethods() {}
+    public void repositoryMethods() {
+    }
 
     @Pointcut("execution(* *..create*(Long,..))")
-    public void firstLongParamMethods() {}
+    public void firstLongParamMethods() {
+    }
 
     @Pointcut("repositoryMethods() && firstLongParamMethods()")
-    public void entityCreationMethods() {}
+    public void entityCreationMethods() {
+    }
 
     @AfterReturning(value = "entityCreationMethods()", returning = "entity")
     public void logMethodCall(JoinPoint jp, Object entity) throws Throwable {

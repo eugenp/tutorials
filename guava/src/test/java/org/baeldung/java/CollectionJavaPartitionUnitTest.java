@@ -67,8 +67,4 @@ public class CollectionJavaPartitionUnitTest {
         assertThat(lastPartition, equalTo(expectedLastPartition));
     }
 
-
-
-
-
 }

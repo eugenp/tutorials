@@ -24,13 +24,16 @@ public class LoggingAspect {
     };
 
     @Pointcut("@target(org.springframework.stereotype.Repository)")
-    public void repositoryMethods() {}
+    public void repositoryMethods() {
+    }
 
     @Pointcut("@annotation(org.baeldung.aop.annotations.Loggable)")
-    public void loggableMethods() {}
+    public void loggableMethods() {
+    }
 
     @Pointcut("@args(org.baeldung.aop.annotations.Entity)")
-    public void methodsAcceptingEntities() {}
+    public void methodsAcceptingEntities() {
+    }
 
     @Before("repositoryMethods()")
     public void logMethodCall(JoinPoint jp) {

@@ -41,7 +41,6 @@ public class JPABarAuditTest {
         logger.info("tearDownAfterClass()");
     }
 
-
     @Autowired
     @Qualifier("barJpaService")
     private IBarService barService;
@@ -50,7 +49,6 @@ public class JPABarAuditTest {
     private EntityManagerFactory entityManagerFactory;
 
     private EntityManager em;
-
 
     @Before
     public void setUp() throws Exception {
@@ -63,7 +61,6 @@ public class JPABarAuditTest {
         logger.info("tearDown()");
         em.close();
     }
-
 
     @Test
     public final void whenBarsModified_thenBarsAudited() {
@@ -83,7 +80,6 @@ public class JPABarAuditTest {
         // update BAR1
         bar1.setName("BAR1b");
         barService.update(bar1);
-
 
         // get BAR1 and BAR2 from the DB and check the audit values
         // detach instances from persistence context to make sure we fire db
