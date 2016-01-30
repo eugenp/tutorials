@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="movie">
+    <xs:sequence>
+      <xs:element name="actors" type="xs:string" minOccurs="0"/>
+      <xs:element name="awards" type="xs:string" minOccurs="0"/>
+      <xs:element name="country" type="xs:string" minOccurs="0"/>
+      <xs:element name="director" type="xs:string" minOccurs="0"/>
+      <xs:element name="genre" type="xs:string" minOccurs="0"/>
+      <xs:element name="imdbID" type="xs:string" minOccurs="0"/>
+      <xs:element name="imdbRating" type="xs:string" minOccurs="0"/>
+      <xs:element name="imdbVotes" type="xs:string" minOccurs="0"/>
+      <xs:element name="language" type="xs:string" minOccurs="0"/>
+      <xs:element name="metascore" type="xs:string" minOccurs="0"/>
+      <xs:element name="plot" type="xs:string" minOccurs="0"/>
+      <xs:element name="poster" type="xs:string" minOccurs="0"/>
+      <xs:element name="rated" type="xs:string" minOccurs="0"/>
+      <xs:element name="released" type="xs:string" minOccurs="0"/>
+      <xs:element name="response" type="xs:string" minOccurs="0"/>
+      <xs:element name="runtime" type="xs:string" minOccurs="0"/>
+      <xs:element name="title" type="xs:string" minOccurs="0"/>
+      <xs:element name="type" type="xs:string" minOccurs="0"/>
+      <xs:element name="writer" type="xs:string" minOccurs="0"/>
+      <xs:element name="year" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
