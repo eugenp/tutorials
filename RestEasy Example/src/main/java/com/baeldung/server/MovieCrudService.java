@@ -1,11 +1,10 @@
-package com.baeldung.server.service;
+package com.baeldung.server;
 
-import com.baeldung.Movie;
+import com.baeldung.model.Movie;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.Provider;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
