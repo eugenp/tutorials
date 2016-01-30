@@ -1,5 +1,5 @@
 
-package com.baeldung;
+package com.baeldung.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -532,4 +532,47 @@ public class Movie {
         this.year = value;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "actors='" + actors + '\'' +
+                ", awards='" + awards + '\'' +
+                ", country='" + country + '\'' +
+                ", director='" + director + '\'' +
+                ", genre='" + genre + '\'' +
+                ", imdbID='" + imdbID + '\'' +
+                ", imdbRating='" + imdbRating + '\'' +
+                ", imdbVotes='" + imdbVotes + '\'' +
+                ", language='" + language + '\'' +
+                ", metascore='" + metascore + '\'' +
+                ", poster='" + poster + '\'' +
+                ", rated='" + rated + '\'' +
+                ", released='" + released + '\'' +
+                ", response='" + response + '\'' +
+                ", runtime='" + runtime + '\'' +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", writer='" + writer + '\'' +
+                ", year='" + year + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Movie movie = (Movie) o;
+
+        if (imdbID != null ? !imdbID.equals(movie.imdbID) : movie.imdbID != null) return false;
+        return title != null ? title.equals(movie.title) : movie.title == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = imdbID != null ? imdbID.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
+    }
 }

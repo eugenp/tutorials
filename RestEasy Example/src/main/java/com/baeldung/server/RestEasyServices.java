@@ -1,4 +1,4 @@
-package com.baeldung.server.service;
+package com.baeldung.server;
 
 
 import javax.ws.rs.ApplicationPath;
