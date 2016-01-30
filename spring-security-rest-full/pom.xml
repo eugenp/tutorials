@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.1.RELEASE</version>
+        <version>1.3.2.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -92,13 +92,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-        
-    <dependency>
-	    <groupId>org.springframework.data</groupId>
-	    <artifactId>spring-data-commons</artifactId>
-	</dependency>
-	    
-        
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
 
         <!-- deployment -->
 
@@ -238,7 +236,7 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -435,11 +433,11 @@
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
-        <spring-data-jpa.version>1.7.2.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
 
         <rsql.version>2.0.0</rsql.version>
         <querydsl.version>3.6.2</querydsl.version>
-        
+
         <!-- marshalling -->
         <jackson.version>2.5.5</jackson.version>
         <xml-apis.version>1.4.01</xml-apis.version>
