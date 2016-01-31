@@ -33,7 +33,7 @@
         </servlet-class>
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.baeldung.server.service.RestEasyServices</param-value>
+            <param-value>com.baeldung.server.RestEasyServices</param-value>
         </init-param>
     </servlet>
 
