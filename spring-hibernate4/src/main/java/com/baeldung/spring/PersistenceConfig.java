@@ -4,25 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import com.baeldung.persistence.dao.impl.BarDao;
-import com.baeldung.persistence.dao.impl.FooDao;
-import com.baeldung.persistence.service.IBarAuditableService;
-import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.persistence.service.IFooService;
-import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
-import com.baeldung.persistence.dao.IBarAuditableDao;
-import com.baeldung.persistence.dao.IBarDao;
-import com.baeldung.persistence.dao.IFooAuditableDao;
-import com.baeldung.persistence.dao.IFooDao;
-import com.baeldung.persistence.dao.impl.BarAuditableDao;
-import com.baeldung.persistence.dao.impl.BarJpaDao;
-import com.baeldung.persistence.dao.impl.FooAuditableDao;
-import com.baeldung.persistence.service.IBarService;
-import com.baeldung.persistence.service.impl.BarAuditableService;
-import com.baeldung.persistence.service.impl.BarJpaService;
-import com.baeldung.persistence.service.impl.BarSpringDataJpaService;
-import com.baeldung.persistence.service.impl.FooAuditableService;
-import com.baeldung.persistence.service.impl.FooService;
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -41,6 +23,24 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.baeldung.persistence.dao.IBarAuditableDao;
+import com.baeldung.persistence.dao.IBarDao;
+import com.baeldung.persistence.dao.IFooAuditableDao;
+import com.baeldung.persistence.dao.IFooDao;
+import com.baeldung.persistence.dao.impl.BarAuditableDao;
+import com.baeldung.persistence.dao.impl.BarDao;
+import com.baeldung.persistence.dao.impl.BarJpaDao;
+import com.baeldung.persistence.dao.impl.FooAuditableDao;
+import com.baeldung.persistence.dao.impl.FooDao;
+import com.baeldung.persistence.service.IBarAuditableService;
+import com.baeldung.persistence.service.IBarService;
+import com.baeldung.persistence.service.IFooAuditableService;
+import com.baeldung.persistence.service.IFooService;
+import com.baeldung.persistence.service.impl.BarAuditableService;
+import com.baeldung.persistence.service.impl.BarJpaService;
+import com.baeldung.persistence.service.impl.BarSpringDataJpaService;
+import com.baeldung.persistence.service.impl.FooAuditableService;
+import com.baeldung.persistence.service.impl.FooService;
 import com.google.common.base.Preconditions;
 
 @Configuration
