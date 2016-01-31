@@ -17,6 +17,12 @@ public interface ServicesInterface {
     Movie movieByImdbID(@QueryParam("imdbID") String imdbID);
 
 
+    @GET
+    @Path("/listmovies")
+    @Produces({"application/json"})
+    List<Movie> listMovies();
+
+
     @POST
     @Path("/addmovie")
     @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -34,9 +40,5 @@ public interface ServicesInterface {
     Response deleteMovie(@QueryParam("imdbID") String imdbID);
 
 
-    @GET
-    @Path("/listmovies")
-    @Produces({"application/json"})
-    List<Movie> listMovies();
 
 }
