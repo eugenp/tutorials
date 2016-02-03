@@ -33,7 +33,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -44,12 +43,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
 
         <dependency>
@@ -229,7 +226,6 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
