@@ -9,6 +9,7 @@ import com.mongodb.DBObject;
 
 @Component
 public class UserWriterConverter implements Converter<User, DBObject> {
+
     @Override
     public DBObject convert(final User user) {
         final DBObject dbObject = new BasicDBObject();
@@ -22,4 +23,5 @@ public class UserWriterConverter implements Converter<User, DBObject> {
         dbObject.removeField("_class");
         return dbObject;
     }
+
 }

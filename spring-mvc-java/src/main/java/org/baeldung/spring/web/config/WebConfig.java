@@ -18,43 +18,42 @@ import org.springframework.web.servlet.view.XmlViewResolver;
 @ComponentScan("org.baeldung.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-	public WebConfig() {
-		super();
-	}
+    public WebConfig() {
+        super();
+    }
 
-	@Override
-	public void addViewControllers(final ViewControllerRegistry registry) {
+    //
 
-		super.addViewControllers(registry);
-		registry.addViewController("/sample.html");
-	}
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+        registry.addViewController("/sample.html");
+    }
 
-	@Bean
-	public ViewResolver internalResourceViewResolver() {
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
+        bean.setOrder(2);
+        return bean;
+    }
 
-		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
-		bean.setViewClass(JstlView.class);
-		bean.setPrefix("/WEB-INF/view/");
-		bean.setSuffix(".jsp");
-		bean.setOrder(2);
-		return bean;
-	}
+    @Bean
+    public ViewResolver xmlViewResolver() {
+        final XmlViewResolver bean = new XmlViewResolver();
+        bean.setLocation(new ClassPathResource("views.xml"));
+        bean.setOrder(1);
+        return bean;
+    }
 
-	@Bean
-	public ViewResolver xmlViewResolver() {
+    @Bean
+    public ViewResolver resourceBundleViewResolver() {
+        final ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
+        bean.setBasename("views");
+        bean.setOrder(0);
+        return bean;
+    }
 
-		final XmlViewResolver bean = new XmlViewResolver();
-		bean.setLocation(new ClassPathResource("views.xml"));
-		bean.setOrder(1);
-		return bean;
-	}
-
-	@Bean
-	public ViewResolver resourceBundleViewResolver() {
-
-		final ResourceBundleViewResolver bean = new ResourceBundleViewResolver();
-		bean.setBasename("views");
-		bean.setOrder(0);
-		return bean;
-	}
 }
