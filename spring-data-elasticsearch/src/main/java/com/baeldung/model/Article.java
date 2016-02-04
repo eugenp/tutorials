@@ -8,7 +8,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.List;
 
-@Document(indexName = "article", type = "article")
+@Document(indexName = "blog", type = "article")
 public class Article {
 
     @Id

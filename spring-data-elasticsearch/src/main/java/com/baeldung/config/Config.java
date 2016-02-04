@@ -17,7 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Configuration
-@EnableElasticsearchRepositories(basePackages = "com.baeldung.dao")
+@EnableElasticsearchRepositories(basePackages = "com.baeldung.repository")
 @ComponentScan(basePackages = {"com.baeldung.service"})
 public class Config {
 

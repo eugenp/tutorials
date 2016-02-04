@@ -1,6 +1,6 @@
 package com.baeldung.service;
 
-import com.baeldung.dao.ArticleRepository;
+import com.baeldung.repository.ArticleRepository;
 import com.baeldung.model.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
