@@ -6,8 +6,13 @@
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>org.eclipse.wst.jsdt.core.javascriptValidator</name>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>full,incremental,</triggers>
 			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/org.eclipse.wst.jsdt.core.javascriptValidator.launch</value>
+				</dictionary>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
@@ -22,16 +27,6 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.springframework.ide.eclipse.core.springbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.jboss.tools.jst.web.kb.kbbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.hibernate.eclipse.console.hibernateBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
