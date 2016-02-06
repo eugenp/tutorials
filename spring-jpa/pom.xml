@@ -186,7 +186,7 @@
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
-        <spring-data-jpa.version>1.7.2.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>

@@ -31,6 +31,14 @@ public class Java8CollectionCleanupUnitTest {
     }
 
     @Test
+    public void givenListContainsNulls_whenRemovingNullsWithRemoveIf_thenCorrect() {
+        final List<Integer> listWithoutNulls = Lists.newArrayList(null, 1, 2, null, 3, null);
+        listWithoutNulls.removeIf(p -> p == null);
+
+        assertThat(listWithoutNulls, hasSize(3));
+    }
+
+    @Test
     public void givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect() {
         final List<Integer> listWithDuplicates = Lists.newArrayList(1, 1, 2, 2, 3, 3);
         final List<Integer> listWithoutDuplicates = listWithDuplicates.parallelStream().distinct().collect(Collectors.toList());

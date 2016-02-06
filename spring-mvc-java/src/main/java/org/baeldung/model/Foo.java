@@ -14,9 +14,6 @@ public class Foo {
 
     @Override
     public String toString() {
-        return "Foo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "Foo{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

@@ -92,6 +92,13 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
+        
+        <dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>${javax.validation.version}</version>
+		</dependency>
+        
 
         <!-- marshalling -->
 
@@ -139,7 +146,33 @@
         </dependency>
 
         <!-- test scoped -->
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-test</artifactId>
+		    <version>${org.springframework.security.version}</version>
+		</dependency>
+        
+        
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -264,6 +297,7 @@
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
         <javax.servlet-api.version>3.0.1</javax.servlet-api.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.2.2</jackson.version>
         <springfox.version>2.2.2</springfox.version>
@@ -276,6 +310,7 @@
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
+        <rest-assured.version>2.4.1</rest-assured.version>
 
         <!-- swagger -->
         <springfox-swagger.version>2.2.2</springfox-swagger.version>

@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class AopPublishingTest {
 
     @Before
@@ -60,8 +60,7 @@ public class AopPublishingTest {
         dao.create(1L, "Bar");
 
         String logMessage = messages.get(0);
-        Pattern pattern = Pattern.compile("Created foo instance: " +
-                Pattern.quote(new Foo(1L, "Bar").toString()));
+        Pattern pattern = Pattern.compile("Created foo instance: " + Pattern.quote(new Foo(1L, "Bar").toString()));
         assertTrue(pattern.matcher(logMessage).matches());
     }
 }

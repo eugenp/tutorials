@@ -42,6 +42,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         .authenticationEntryPoint(restAuthenticationEntryPoint)
         .and()
         .authorizeRequests()
+        .antMatchers("/api/csrfAttacker*").permitAll()
         .antMatchers("/api/**").authenticated()
         .and()
         .formLogin()
