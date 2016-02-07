@@ -1,7 +1,6 @@
 package com.baeldung.client;
 
 import com.baeldung.model.Movie;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

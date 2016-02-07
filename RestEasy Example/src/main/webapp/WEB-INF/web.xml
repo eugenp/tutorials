@@ -5,12 +5,9 @@
 
     <display-name>RestEasy Example</display-name>
 
-    <!-- needed only if you want prepend a relative path to your services -->
     <context-param>
         <param-name>resteasy.servlet.mapping.prefix</param-name>
         <param-value>/rest</param-value>
     </context-param>
-
-
 
 </web-app>

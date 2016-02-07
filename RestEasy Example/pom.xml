@@ -36,7 +36,7 @@
     </build>
 
     <dependencies>
-        <!-- core library -->
+
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>jaxrs-api</artifactId>
@@ -100,6 +100,5 @@
         </dependency>
 
     </dependencies>
-
 
 </project>
