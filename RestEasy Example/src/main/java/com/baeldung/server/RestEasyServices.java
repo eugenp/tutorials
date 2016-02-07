@@ -1,18 +1,10 @@
 package com.baeldung.server;
 
-
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-/**
- * Created by Admin on 29/01/2016.
- */
-
-
 
 @ApplicationPath("/rest")
 public class RestEasyServices extends Application {
