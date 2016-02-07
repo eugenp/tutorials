@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<servers>
+  <server auto-publish-setting="2" auto-publish-time="1" com.springsource.tcserver.asf="false" com.springsource.tcserver.name="base-instance" configuration-id="/Servers/VMware vFabric tc Server Developer Edition v2.9-config" deployDir="wtpwebapps" hostname="localhost" id="VMware vFabric tc Server Developer Edition v2.9" id-set="true" name="VMware vFabric tc Server Developer Edition v2.9" runtime-id="VMware vFabric tc Server Developer Edition (Runtime) v2.9" saveSeparateContextFiles="true" server-type="com.vmware.server.tc.70" server-type-id="com.vmware.server.tc.70" start-timeout="120" stop-timeout="15" testEnvironment="false" timestamp="0">
+    <list key="removeExtraVmArgs"/>
+    <list key="addExtraVmArgs" value0="-Dinsight.enabled=false"/>
+  </server>
+</servers>

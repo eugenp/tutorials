@@ -1,0 +1,119 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%; 
+	margin: 0; 
+	padding: 0;
+}
+
+#bg {
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	width: 100%; 
+	height: 100%;
+	z-index:1000;
+}
+
+* {
+	color: #FFFFFF;
+}
+
+#content {
+	position: absolute; 
+	z-index: 3000;
+	width: 100%;
+	height: 100%;
+}
+
+.top-left-logo {
+	background: url('logo_upper_left.png') no-repeat top left;
+}
+
+.lower-right-logo {
+	background: url('logo_lower_right.png') no-repeat bottom right;
+}
+
+.title {
+	background: url('logo_title.png') no-repeat top left;
+}
+
+.copyright {
+	background: url('copyright.png') no-repeat bottom left;
+}
+
+.full-page {
+	height: 100%;
+	width: 100%;
+}
+
+.space {
+	height: 10%;
+}
+
+.v-outer {
+	display: table;
+	#position: relative;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+ 
+.v-middle {
+	display: table-cell;
+	#position: absolute;
+	#top: 50%;
+	width: 100%;
+	vertical-align: middle;
+	align: center;
+}
+
+.v-inner {
+	#position: relative;
+	#top: -50%;
+	width: 100%;
+}
+
+.list {
+	align: center;
+}
+
+.largefont {
+	font-size: 18px;
+}
+
+@media (max-width: 700px),(max-height: 500px) {
+	.largefont {
+		font-size: 14px;
+	}
+	.button {
+		width: 28px;
+		height: 32px;
+	}
+}
+
+img {
+	vertical-align: middle;
+	border: 0;
+}
+
+.left-align {
+	text-align: left;
+}
+
+td {
+	vertical-align: top;
+}
+
+a {
+	font-family: Tahoma,Arial,sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	border: none;
+}
+	
+
