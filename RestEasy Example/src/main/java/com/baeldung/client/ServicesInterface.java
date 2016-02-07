@@ -23,12 +23,6 @@ public interface ServicesInterface {
     List<Movie> listMovies();
 
 
-    @GET
-    @Path("/listmovies")
-    @Produces({"application/json"})
-    List<Movie> listMovies();
-
-
     @POST
     @Path("/addmovie")
     @Consumes({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
