@@ -10,7 +10,6 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.junit.Before;
 import org.junit.Test;
-
 import javax.naming.NamingException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
