@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlType;
     "country",
     "director",
     "genre",
-    "imdbID",
+        "imdbId",
     "imdbRating",
     "imdbVotes",
     "language",
@@ -36,7 +36,7 @@ public class Movie {
     protected String country;
     protected String director;
     protected String genre;
-    protected String imdbID;
+    protected String imdbId;
     protected String imdbRating;
     protected String imdbVotes;
     protected String language;
@@ -173,27 +173,27 @@ public class Movie {
     }
 
     /**
-     * Recupera il valore della propriet� imdbID.
+     * Recupera il valore della propriet� imdbId.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getImdbID() {
-        return imdbID;
+    public String getImdbId() {
+        return imdbId;
     }
 
     /**
-     * Imposta il valore della propriet� imdbID.
+     * Imposta il valore della propriet� imdbId.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setImdbID(String value) {
-        this.imdbID = value;
+    public void setImdbId(String value) {
+        this.imdbId = value;
     }
 
     /**
@@ -540,7 +540,7 @@ public class Movie {
                 ", country='" + country + '\'' +
                 ", director='" + director + '\'' +
                 ", genre='" + genre + '\'' +
-                ", imdbID='" + imdbID + '\'' +
+                ", imdbId='" + imdbId + '\'' +
                 ", imdbRating='" + imdbRating + '\'' +
                 ", imdbVotes='" + imdbVotes + '\'' +
                 ", language='" + language + '\'' +
@@ -564,14 +564,14 @@ public class Movie {
 
         Movie movie = (Movie) o;
 
-        if (imdbID != null ? !imdbID.equals(movie.imdbID) : movie.imdbID != null) return false;
+        if (imdbId != null ? !imdbId.equals(movie.imdbId) : movie.imdbId != null) return false;
         return title != null ? title.equals(movie.title) : movie.title == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = imdbID != null ? imdbID.hashCode() : 0;
+        int result = imdbId != null ? imdbId.hashCode() : 0;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
