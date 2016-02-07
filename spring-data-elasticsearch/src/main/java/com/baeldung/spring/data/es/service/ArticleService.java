@@ -1,6 +1,6 @@
-package com.baeldung.service;
+package com.baeldung.spring.data.es.service;
 
-import com.baeldung.model.Article;
+import com.baeldung.spring.data.es.model.Article;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

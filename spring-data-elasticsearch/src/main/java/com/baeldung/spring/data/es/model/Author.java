@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.spring.data.es.model;
 
 public class Author {
 

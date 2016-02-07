@@ -1,10 +1,9 @@
-package com.baeldung;
+package com.baeldung.spring.data.es;
 
-import com.baeldung.config.Config;
-import com.baeldung.model.Article;
-import com.baeldung.model.Author;
-import com.baeldung.service.ArticleService;
-import org.elasticsearch.index.query.QueryBuilder;
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,6 @@
-package com.baeldung.dao;
+package com.baeldung.spring.data.es.dao;
 
-import com.baeldung.model.Article;
-import com.baeldung.model.Article;
+import com.baeldung.spring.data.es.model.Article;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;

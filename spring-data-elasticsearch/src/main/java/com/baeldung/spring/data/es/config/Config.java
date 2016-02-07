@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.spring.data.es.config;
 
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.node.NodeBuilder;
@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.baeldung.repository")
-@ComponentScan(basePackages = {"com.baeldung.service"})
+@ComponentScan(basePackages = {"com.baeldung.spring.data.es.service"})
 public class Config {
 
     private static Logger logger = LoggerFactory.getLogger(Config.class);
