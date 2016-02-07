@@ -1,7 +1,7 @@
 package com.baeldung.server;
 
-import com.baeldung.model.Movie;
 import com.baeldung.client.ServicesInterface;
+import com.baeldung.model.Movie;
 import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -9,7 +9,6 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.naming.NamingException;
@@ -23,21 +22,12 @@ import java.util.Locale;
 
 public class RestEasyClientTest {
 
-
     Movie  transformerMovie=null;
     Movie   batmanMovie=null;
     ObjectMapper jsonMapper=null;
 
-    @BeforeClass
-    public static void loadMovieInventory(){
-
-
-
-    }
-
     @Before
     public void setup() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NamingException {
-
 
         jsonMapper=new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         jsonMapper.configure(DeserializationConfig.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
@@ -57,133 +47,102 @@ public class RestEasyClientTest {
             batmanMovie = jsonMapper.readValue(batmanMovieAsString, Movie.class);
 
         } catch (Exception e) {
-            e.printStackTrace();
             throw new RuntimeException("Test is going to die ...", e);
         }
-
     }
-
 
     @Test
     public void testListAllMovies() {
 
-        try {
-            ResteasyClient client = new ResteasyClientBuilder().build();
-            ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://localhost:8080/RestEasyTutorial/rest"));
-            ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
+        ServicesInterface simple = target.proxy(ServicesInterface.class);
 
-            Response moviesResponse = simple.addMovie(transformerMovie);
-            moviesResponse.close();
-            moviesResponse = simple.addMovie(batmanMovie);
-            moviesResponse.close();
+        Response moviesResponse = simple.addMovie(transformerMovie);
+        moviesResponse.close();
+        moviesResponse = simple.addMovie(batmanMovie);
+        moviesResponse.close();
 
-            final List<Movie> movies = simple.listMovies();
-            System.out.println(movies);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        List<Movie> movies = simple.listMovies();
+        System.out.println(movies);
     }
 
-
     @Test
-    public void testMovieByImdbID() {
+    public void testMovieByImdbId() {
 
         String transformerImdbId="tt0418279";
 
-        try {
-            ResteasyClient client = new ResteasyClientBuilder().build();
-            ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://localhost:8080/RestEasyTutorial/rest"));
-            ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
+        ServicesInterface simple = target.proxy(ServicesInterface.class);
 
-            Response moviesResponse = simple.addMovie(transformerMovie);
-            moviesResponse.close();
+        Response moviesResponse = simple.addMovie(transformerMovie);
+        moviesResponse.close();
 
-            final Movie movies = simple.movieByImdbID(transformerImdbId);
-            System.out.println(movies);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Movie movies = simple.movieByImdbId(transformerImdbId);
+        System.out.println(movies);
     }
 
 
     @Test
     public void testAddMovie() {
 
-        try {
-            ResteasyClient client = new ResteasyClientBuilder().build();
-            ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://localhost:8080/RestEasyTutorial/rest"));
-            ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
+        ServicesInterface simple = target.proxy(ServicesInterface.class);
 
-            Response moviesResponse = simple.addMovie(batmanMovie);
-            moviesResponse.close();
-            moviesResponse = simple.addMovie(transformerMovie);
+        Response moviesResponse = simple.addMovie(batmanMovie);
+        moviesResponse.close();
+        moviesResponse = simple.addMovie(transformerMovie);
 
-            if (moviesResponse.getStatus() != Response.Status.CREATED.getStatusCode()) {
-                //System.out.println(moviesResponse.readEntity(String.class));
-                System.out.println("Failed : HTTP error code : " + moviesResponse.getStatus());
-            }
-            moviesResponse.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (moviesResponse.getStatus() != Response.Status.CREATED.getStatusCode()) {
+            System.out.println("Failed : HTTP error code : " + moviesResponse.getStatus());
         }
+
+        moviesResponse.close();
+        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
     }
 
 
     @Test
-    public void testDeleteMovie() {
+    public void testDeleteMovi1e() {
 
-        String transformerImdbId="tt0418279";
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
+        ServicesInterface simple = target.proxy(ServicesInterface.class);
 
-        try {
-            ResteasyClient client = new ResteasyClientBuilder().build();
-            ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://localhost:8080/RestEasyTutorial/rest"));
-            ServicesInterface simple = target.proxy(ServicesInterface.class);
+        Response moviesResponse = simple.addMovie(batmanMovie);
+        moviesResponse.close();
+        moviesResponse = simple.deleteMovie(batmanMovie.getImdbId());
 
-            Response moviesResponse = simple.addMovie(batmanMovie);
-            moviesResponse.close();
-            moviesResponse = simple.deleteMovie(transformerImdbId);
-            moviesResponse.close();
-
-            if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
-                System.out.println(moviesResponse.readEntity(String.class));
-                throw new RuntimeException("Failed : HTTP error code : "  + moviesResponse.getStatus());
-            }
-
-            moviesResponse.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
+            System.out.println(moviesResponse.readEntity(String.class));
+            throw new RuntimeException("Failed : HTTP error code : "  + moviesResponse.getStatus());
         }
+
+        moviesResponse.close();
+        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
     }
 
 
     @Test
     public void testUpdateMovie() {
 
-        try {
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
+        ServicesInterface simple = target.proxy(ServicesInterface.class);
 
-            ResteasyClient client = new ResteasyClientBuilder().build();
-            ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://localhost:8080/RestEasyTutorial/rest"));
-            ServicesInterface simple = target.proxy(ServicesInterface.class);
+        Response moviesResponse = simple.addMovie(batmanMovie);
+        moviesResponse.close();
+        batmanMovie.setImdbVotes("300,000");
+        moviesResponse = simple.updateMovie(batmanMovie);
 
-            Response moviesResponse = simple.addMovie(batmanMovie);
-            moviesResponse.close();
-            batmanMovie.setImdbVotes("300,000");
-            moviesResponse = simple.updateMovie(batmanMovie);
-
-            if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
-                //System.out.println(moviesResponse.readEntity(String.class));
-                System.out.println("Failed : HTTP error code : "  + moviesResponse.getStatus());
-            }
-
-            moviesResponse.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
+            System.out.println("Failed : HTTP error code : "  + moviesResponse.getStatus());
         }
+
+        moviesResponse.close();
+        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
     }
 
 }

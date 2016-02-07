@@ -5,47 +5,12 @@
 
     <display-name>RestEasy Example</display-name>
 
-    <listener>
-        <listener-class>
-            org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
-        </listener-class>
-    </listener>
-
-    <description>RestEasy Example</description>
-
-    <context-param>
-        <param-name>webAppRootKey</param-name>
-        <param-value>RestEasyExample</param-value>
-    </context-param>
-
-
-    <!-- this need same with resteasy servlet url-pattern -->
+    <!-- needed only if you want prepend a relative path to your services -->
     <context-param>
         <param-name>resteasy.servlet.mapping.prefix</param-name>
         <param-value>/rest</param-value>
     </context-param>
 
-
-    <servlet>
-        <servlet-name>resteasy-servlet</servlet-name>
-        <servlet-class>
-            org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher
-        </servlet-class>
-        <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>com.baeldung.server.RestEasyServices</param-value>
-        </init-param>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>resteasy-servlet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-
-
-    <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
 
 
 </web-app>

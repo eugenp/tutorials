@@ -14,7 +14,7 @@ public interface ServicesInterface {
     @GET
     @Path("/getinfo")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    Movie movieByImdbID(@QueryParam("imdbID") String imdbID);
+    Movie movieByImdbId(@QueryParam("imdbId") String imdbId);
 
 
     @GET
@@ -37,7 +37,7 @@ public interface ServicesInterface {
 
     @DELETE
     @Path("/deletemovie")
-    Response deleteMovie(@QueryParam("imdbID") String imdbID);
+    Response deleteMovie(@QueryParam("imdbId") String imdbID);
 
 
 
