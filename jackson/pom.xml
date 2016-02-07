@@ -140,7 +140,7 @@
         <mysql-connector-java.version>5.1.35</mysql-connector-java.version>
 
         <!-- marshalling -->
-        <jackson.version>2.5.5</jackson.version>
+        <jackson.version>2.7.1-1</jackson.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
