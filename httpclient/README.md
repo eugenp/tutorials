@@ -15,3 +15,4 @@
 - [HttpClient – Set Custom Header](http://www.baeldung.com/httpclient-custom-http-header)
 - [HttpClient Basic Authentication](http://www.baeldung.com/httpclient-4-basic-authentication)
 - [Multipart Upload with HttpClient 4](http://www.baeldung.com/httpclient-multipart-upload)
+- [HttpAsyncClient Tutorial](http://www.baeldung.com/httpasyncclient-tutorial)
