@@ -12,6 +12,7 @@
 - [Error Handling for REST with Spring 3](http://www.baeldung.com/2013/01/31/exception-handling-for-rest-with-spring-3-2/)
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/2011/10/16/how-to-set-up-integration-testing-with-the-maven-cargo-plugin/)
 - [Introduction to Spring Data JPA](http://www.baeldung.com/2011/12/22/the-persistence-layer-with-spring-data-jpa/)
+- [Project Configuration with Spring](http://www.baeldung.com/2012/03/12/project-configuration-with-spring/)
 
 
 ### Build the Project
