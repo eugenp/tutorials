@@ -14,3 +14,4 @@
 - [Guava – Write to File, Read from File](http://www.baeldung.com/guava-write-to-file-read-from-file)
 - [Guava – Lists](http://www.baeldung.com/guava-lists)
 - [Guava – Sets](http://www.baeldung.com/guava-sets)
+- [Guava – Maps](http://www.baeldung.com/guava-maps)
