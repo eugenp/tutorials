@@ -11,3 +11,4 @@
 - [Partition a List in Java](http://www.baeldung.com/java-list-split)
 - [Filtering and Transforming Collections in Guava](http://www.baeldung.com/guava-filter-and-transform-a-collection)
 - [Guava – Join and Split Collections](http://www.baeldung.com/guava-joiner-and-splitter-tutorial)
+- [Guava – Write to File, Read from File](http://www.baeldung.com/guava-write-to-file-read-from-file)
