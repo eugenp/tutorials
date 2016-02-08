@@ -21,14 +21,14 @@ import java.util.Locale;
 
 public class RestEasyClientTest {
 
-    Movie  transformerMovie=null;
-    Movie   batmanMovie=null;
-    ObjectMapper jsonMapper=null;
+    Movie transformerMovie = null;
+    Movie batmanMovie = null;
+    ObjectMapper jsonMapper = null;
 
     @Before
     public void setup() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NamingException {
 
-        jsonMapper=new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        jsonMapper = new ObjectMapper().configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         jsonMapper.configure(DeserializationConfig.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.ENGLISH);
         jsonMapper.setDateFormat(sdf);
@@ -69,7 +69,7 @@ public class RestEasyClientTest {
     @Test
     public void testMovieByImdbId() {
 
-        String transformerImdbId="tt0418279";
+        String transformerImdbId = "tt0418279";
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
@@ -81,7 +81,6 @@ public class RestEasyClientTest {
         Movie movies = simple.movieByImdbId(transformerImdbId);
         System.out.println(movies);
     }
-
 
     @Test
     public void testAddMovie() {
@@ -99,9 +98,8 @@ public class RestEasyClientTest {
         }
 
         moviesResponse.close();
-        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
+        System.out.println("Response Code: " + Response.Status.OK.getStatusCode());
     }
-
 
     @Test
     public void testDeleteMovi1e() {
@@ -116,13 +114,12 @@ public class RestEasyClientTest {
 
         if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
             System.out.println(moviesResponse.readEntity(String.class));
-            throw new RuntimeException("Failed : HTTP error code : "  + moviesResponse.getStatus());
+            throw new RuntimeException("Failed : HTTP error code : " + moviesResponse.getStatus());
         }
 
         moviesResponse.close();
-        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
+        System.out.println("Response Code: " + Response.Status.OK.getStatusCode());
     }
-
 
     @Test
     public void testUpdateMovie() {
@@ -137,11 +134,11 @@ public class RestEasyClientTest {
         moviesResponse = simple.updateMovie(batmanMovie);
 
         if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
-            System.out.println("Failed : HTTP error code : "  + moviesResponse.getStatus());
+            System.out.println("Failed : HTTP error code : " + moviesResponse.getStatus());
         }
 
         moviesResponse.close();
-        System.out.println("Response Code: "+Response.Status.OK.getStatusCode());
+        System.out.println("Response Code: " + Response.Status.OK.getStatusCode());
     }
 
 }

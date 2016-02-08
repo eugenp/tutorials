@@ -5,28 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "movie", propOrder = {
-    "actors",
-    "awards",
-    "country",
-    "director",
-    "genre",
-        "imdbId",
-    "imdbRating",
-    "imdbVotes",
-    "language",
-    "metascore",
-    "plot",
-    "poster",
-    "rated",
-    "released",
-    "response",
-    "runtime",
-    "title",
-    "type",
-    "writer",
-    "year"
-})
+@XmlType(name = "movie", propOrder = { "actors", "awards", "country", "director", "genre", "imdbId", "imdbRating", "imdbVotes", "language", "metascore", "plot", "poster", "rated", "released", "response", "runtime", "title", "type", "writer", "year" })
 public class Movie {
 
     protected String actors;
@@ -212,37 +191,22 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie{" +
-                "actors='" + actors + '\'' +
-                ", awards='" + awards + '\'' +
-                ", country='" + country + '\'' +
-                ", director='" + director + '\'' +
-                ", genre='" + genre + '\'' +
-                ", imdbId='" + imdbId + '\'' +
-                ", imdbRating='" + imdbRating + '\'' +
-                ", imdbVotes='" + imdbVotes + '\'' +
-                ", language='" + language + '\'' +
-                ", metascore='" + metascore + '\'' +
-                ", poster='" + poster + '\'' +
-                ", rated='" + rated + '\'' +
-                ", released='" + released + '\'' +
-                ", response='" + response + '\'' +
-                ", runtime='" + runtime + '\'' +
-                ", title='" + title + '\'' +
-                ", type='" + type + '\'' +
-                ", writer='" + writer + '\'' +
-                ", year='" + year + '\'' +
-                '}';
+        return "Movie{" + "actors='" + actors + '\'' + ", awards='" + awards + '\'' + ", country='" + country + '\'' + ", director='" + director + '\'' + ", genre='" + genre + '\'' + ", imdbId='" + imdbId + '\'' + ", imdbRating='" + imdbRating + '\''
+                + ", imdbVotes='" + imdbVotes + '\'' + ", language='" + language + '\'' + ", metascore='" + metascore + '\'' + ", poster='" + poster + '\'' + ", rated='" + rated + '\'' + ", released='" + released + '\'' + ", response='" + response + '\''
+                + ", runtime='" + runtime + '\'' + ", title='" + title + '\'' + ", type='" + type + '\'' + ", writer='" + writer + '\'' + ", year='" + year + '\'' + '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Movie movie = (Movie) o;
 
-        if (imdbId != null ? !imdbId.equals(movie.imdbId) : movie.imdbId != null) return false;
+        if (imdbId != null ? !imdbId.equals(movie.imdbId) : movie.imdbId != null)
+            return false;
         return title != null ? title.equals(movie.title) : movie.title == null;
 
     }
