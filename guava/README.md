@@ -10,3 +10,4 @@
 - [Hamcrest Collections Cookbook](http://www.baeldung.com/hamcrest-collections-arrays)
 - [Partition a List in Java](http://www.baeldung.com/java-list-split)
 - [Filtering and Transforming Collections in Guava](http://www.baeldung.com/guava-filter-and-transform-a-collection)
+- [Guava – Join and Split Collections](http://www.baeldung.com/guava-joiner-and-splitter-tutorial)
