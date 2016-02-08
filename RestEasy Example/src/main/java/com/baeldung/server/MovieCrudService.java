@@ -26,7 +26,6 @@ public class MovieCrudService {
             return inventory.get(imdbId);
         } else
             return null;
-
     }
 
     @POST
@@ -41,7 +40,6 @@ public class MovieCrudService {
         }
 
         inventory.put(movie.getImdbId(), movie);
-
         return Response.status(Response.Status.CREATED).build();
     }
 
@@ -55,9 +53,9 @@ public class MovieCrudService {
         if (null == inventory.get(movie.getImdbId())) {
             return Response.status(Response.Status.NOT_MODIFIED).entity("Movie is not in the database.\nUnable to Update").build();
         }
+
         inventory.put(movie.getImdbId(), movie);
         return Response.status(Response.Status.OK).build();
-
     }
 
     @DELETE
@@ -80,7 +78,6 @@ public class MovieCrudService {
     public List<Movie> listMovies() {
 
         return inventory.values().stream().collect(Collectors.toCollection(ArrayList::new));
-
     }
 
 }
