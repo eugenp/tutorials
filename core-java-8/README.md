@@ -4,4 +4,4 @@
 
 ### Relevant Articles: 
 // - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
-// - [Java – Directory Size](http://www.baeldung.com/java-folder-size)
+- [Java – Directory Size](http://www.baeldung.com/java-folder-size)
