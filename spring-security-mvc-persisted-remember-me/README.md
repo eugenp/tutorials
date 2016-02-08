@@ -4,7 +4,7 @@
 
 
 ### Relevant Articles: 
-- [Spring Security Persisted Remember Me]
+- [Spring Security Persisted Remember Me](http://www.baeldung.com/spring-security-persistent-remember-me)
 - [Spring Security Remember Me](http://www.baeldung.com/spring-security-remember-me)
 - [Redirect to different pages after Login with Spring Security](http://www.baeldung.com/spring_redirect_after_login)
 
