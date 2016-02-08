@@ -1,0 +1,74 @@
+#%RAML 1.0
+title: API for REST Services used in the RAML tutorials on Baeldung.com
+documentation:
+  - title: Overview
+  - content: |
+      This document defines the interface for the REST services
+      used in the popular RAML Tutorial series at Baeldung.com.
+  - title: Disclaimer:
+  - content: |
+      All names used in this definition are purely fictional.
+      Any similarities between the names used in this tutorial and those of real persons, whether living or dead, are merely coincidental.
+  - title: Copyright
+  - content: Copyright 2016 by Baeldung.com. All rights reserved.
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: [ basicAuth ]
+securitySchemes:
+  - basicAuth:
+      description: Each request must contain the headers necessary for
+                   basic authentication
+      type: Basic Authentication
+      describedBy:
+        headers:
+          Authorization:
+            description: |
+              Used to send the Base64 encoded "username:password"
+              credentials
+            type: string
+        responses:
+          401:
+            description: |
+              Unauthorized. Either the provided username and password
+              combination is invalid, or the user is not allowed to
+              access the content provided by the requested URL.
+types:
+  Foo:   !include types/Foo.raml
+  Bar:   !include types/Bar.raml
+  Error: !include types/Error.raml
+resourceTypes:
+  - collection: !include resourceTypes/collection.raml
+  - item: !include resourceTypes/item.raml
+traits:
+  - hasRequestItem: !include traits/hasRequestItem.raml
+  - hasResponseItem: !include traits/hasResponseItem.raml
+  - hasResponseCollection: !include traits/hasResponseCollection.raml
+  - hasNotFound: !include traits/hasNotFound.raml
+/foos:
+  type: collection
+  typeName: Foo
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+  /{fooId}:
+    type: item
+    typeName: Foo
+  /name/{name}:
+    get:
+      description: List all foos with a certain name
+      typeName: Foo
+      is: [ hasResponseCollection ]
+/bars:
+  type: collection
+  typeName: Bar
+  /{barId}:
+    type: item
+    typeName: Bar
+  /fooId/{fooId}:
+    get:
+      description: Get all bars for the matching fooId
+      typeName: Bar
+      is: [ hasResponseCollection ]
