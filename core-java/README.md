@@ -8,4 +8,5 @@
 - [Java InputStream to String](http://www.baeldung.com/convert-input-stream-to-string)
 - [Converting between an Array and a List in Java](http://www.baeldung.com/convert-array-to-list-and-list-to-array)
 - [Converting between an Array and a Set in Java](http://www.baeldung.com/convert-array-to-set-and-set-to-array)
+- [Converting between a List and a Set in Java](http://www.baeldung.com/convert-list-to-set-and-set-to-list)
 
