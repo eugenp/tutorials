@@ -4,4 +4,4 @@
 
 
 ### Relevant Articles: 
--[Gson Deserialization Cookbook](http://www.baeldung.com/gson-deserialization-guide)
+- [Gson Deserialization Cookbook](http://www.baeldung.com/gson-deserialization-guide)
