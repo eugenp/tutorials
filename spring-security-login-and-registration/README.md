@@ -7,7 +7,7 @@
 - [Spring Security Registration Tutorial](http://www.baeldung.com/spring-security-registration)
 - [The Registration Process With Spring Security](http://www.baeldung.com/registration-with-spring-mvc-and-spring-security)
 - [Registration – Activate a New Account by Email](http://www.baeldung.com/registration-verify-user-by-email)
-
+- [Registration with Spring Security – Password Encoding](http://www.baeldung.com/spring-security-registration-password-encoding-bcrypt)
 
 ### Build the Project
 ```
