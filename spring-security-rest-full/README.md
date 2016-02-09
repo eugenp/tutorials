@@ -14,6 +14,7 @@
 - [Introduction to Spring Data JPA](http://www.baeldung.com/2011/12/22/the-persistence-layer-with-spring-data-jpa/)
 - [Project Configuration with Spring](http://www.baeldung.com/2012/03/12/project-configuration-with-spring/)
 - [REST Query Language with Spring and JPA Criteria](http://www.baeldung.com/rest-search-language-spring-jpa-criteria)
+- [REST Query Language with Spring Data JPA Specifications](http://www.baeldung.com/rest-api-search-language-spring-data-specifications)
 
 
 ### Build the Project
