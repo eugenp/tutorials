@@ -11,3 +11,4 @@
 - [Jackson Exceptions – Problems and Solutions](http://www.baeldung.com/jackson-exception)
 - [Jackson Date](http://www.baeldung.com/jackson-serialize-dates)
 - [Jackson – Bidirectional Relationships](http://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion)
+- [Jackson JSON Tutorial](http://www.baeldung.com/jackson)
