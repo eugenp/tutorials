@@ -4,4 +4,4 @@
 
 
 ### Relevant Articles: 
-- [http://www.baeldung.com/spring-bean-annotations](http://www.baeldung.com/spring-bean-annotations)
+- [Spring Bean Annotations](http://www.baeldung.com/spring-bean-annotations)
