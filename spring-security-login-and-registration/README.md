@@ -14,6 +14,7 @@
 - [Spring Security Registration – Resend Verification Email](http://www.baeldung.com/spring-security-registration-verification-email)
 - [The Registration API becomes RESTful](http://www.baeldung.com/registration-restful-api)
 - [Registration – Password Strength and Rules](http://www.baeldung.com/registration-password-strength-and-rules)
+- [Updating your Password](http://www.baeldung.com/updating-your-password/)
 
 ### Build the Project
 ```
