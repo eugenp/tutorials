@@ -10,6 +10,7 @@
 - [Registration with Spring Security – Password Encoding](http://www.baeldung.com/spring-security-registration-password-encoding-bcrypt)
 - [Spring Security – Roles and Privileges](http://www.baeldung.com/role-and-privilege-for-spring-security-registration)
 - [Prevent Brute Force Authentication Attempts with Spring Security](http://www.baeldung.com/spring-security-block-brute-force-authentication-attempts)
+- [Spring Security – Reset Your Password](http://www.baeldung.com/spring-security-registration-i-forgot-my-password)
 
 ### Build the Project
 ```
