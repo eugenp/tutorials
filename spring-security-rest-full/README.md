@@ -17,6 +17,7 @@
 - [REST Query Language with Spring Data JPA Specifications](http://www.baeldung.com/rest-api-search-language-spring-data-specifications)
 - [REST Query Language with Spring Data JPA and QueryDSL](http://www.baeldung.com/rest-api-search-language-spring-data-querydsl)
 - [REST Query Language – Advanced Search Operations](http://www.baeldung.com/rest-api-query-search-language-more-operations)
+- [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
 
 
 ### Build the Project
