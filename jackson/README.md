@@ -13,3 +13,4 @@
 - [Jackson – Bidirectional Relationships](http://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion)
 - [Jackson JSON Tutorial](http://www.baeldung.com/jackson)
 - [Jackson – Working with Maps and nulls](http://www.baeldung.com/jackson-map-null-values-or-null-key)
+- [Jackson – Decide What Fields Get Serialized/Deserializaed](http://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
