@@ -20,7 +20,7 @@
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
 - [REST Query Language with RSQL](http://www.baeldung.com/rest-api-search-language-rsql-fiql)
 - [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
-
+- [A Guide to CSRF Protection in Spring Security](http://www.baeldung.com/spring-security-csrf)
 
 ### Build the Project
 ```
