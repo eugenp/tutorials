@@ -56,6 +56,10 @@
 			<td>Notes :</td>
 			<td>${person.notes}</td>
 		</tr>
+		<tr>
+			<td>File :</td>
+			<td>${person.file.originalFilename}</td>
+		</tr>
 	</table>
 </body>
 </html>

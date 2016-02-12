@@ -2,10 +2,17 @@ package org.baeldung.spring.form;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
 public class Person {
 
 	private long id;
+
+	@NotEmpty
 	private String name;
+
+	@NotEmpty
 	private String password;
 	private String sex;
 	private String country;
@@ -16,6 +23,7 @@ public class Person {
 	private List<String> favouriteLanguage;
 	private List<String> fruit;
 	private String notes;
+	private MultipartFile file;
 
 	public Person() {
 		super();
@@ -115,6 +123,14 @@ public class Person {
 
 	public void setBook(final String book) {
 		this.book = book;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(final MultipartFile file) {
+		this.file = file;
 	}
 
 }

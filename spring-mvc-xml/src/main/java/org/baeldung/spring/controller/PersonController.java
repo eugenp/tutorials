@@ -21,7 +21,28 @@ import org.springframework.web.servlet.ModelAndView;
 public class PersonController {
 
 	@RequestMapping(value = "/person", method = RequestMethod.GET)
-	public ModelAndView initForm(final Model model) {
+	public ModelAndView showForm(final Model model) {
+
+		initData(model);
+		return new ModelAndView("personForm", "person", new Person());
+	}
+
+	@RequestMapping(value = "/addPerson", method = RequestMethod.POST)
+	public String submit(@Valid @ModelAttribute("person") final Person person, final BindingResult result,
+			final ModelMap modelMap, final Model model) {
+
+		if (result.hasErrors()) {
+
+			initData(model);
+			return "personForm";
+		}
+
+		modelMap.addAttribute("person", person);
+
+		return "personResume";
+	}
+
+	private void initData(final Model model) {
 
 		final List<String> favouriteLanguage = new ArrayList<String>();
 		favouriteLanguage.add("Java");
@@ -52,35 +73,5 @@ public class PersonController {
 		books.add("Nineteen Eighty-Four");
 		books.add("The Lord of the Rings");
 		model.addAttribute("books", books);
-
-		return new ModelAndView("personForm", "person", new Person());
 	}
-
-	@RequestMapping(value = "/addPerson", method = RequestMethod.POST)
-	public String submit(@Valid @ModelAttribute("person") final Person person, final BindingResult result,
-			final ModelMap model) {
-
-		if (result.hasErrors()) {
-			return "error";
-		}
-
-		model.addAttribute("person", person);
-
-		return "personResume";
-	}
-	//
-	// protected Map<String, List<String>> referenceData(final
-	// HttpServletRequest request) throws Exception {
-	//
-	// final Map<String, List<String>> referenceData = new HashMap<>();
-	//
-	// final List<String> favouriteLanguageList = new ArrayList<String>();
-	// favouriteLanguageList.add("Java");
-	// favouriteLanguageList.add("C++");
-	// favouriteLanguageList.add("Perl");
-	// referenceData.put("favouriteLanguageList", favouriteLanguageList);
-	//
-	// return referenceData;
-	//
-	// }
 }
