@@ -29,7 +29,6 @@ public class Movie {
     protected String writer;
     protected String year;
 
-
     public String getActors() {
         return actors;
     }
