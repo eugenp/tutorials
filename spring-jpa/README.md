@@ -9,3 +9,4 @@
 - [The DAO with JPA and Spring](http://www.baeldung.com/spring-dao-jpa)
 - [JPA Pagination](http://www.baeldung.com/jpa-pagination)
 - [Sorting with JPA](http://www.baeldung.com/jpa-sort)
+- [Spring JPA – Multiple Databases](http://www.baeldung.com/spring-data-jpa-multiple-databases)

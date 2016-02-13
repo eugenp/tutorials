@@ -13,7 +13,14 @@
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/2011/10/16/how-to-set-up-integration-testing-with-the-maven-cargo-plugin/)
 - [Introduction to Spring Data JPA](http://www.baeldung.com/2011/12/22/the-persistence-layer-with-spring-data-jpa/)
 - [Project Configuration with Spring](http://www.baeldung.com/2012/03/12/project-configuration-with-spring/)
-
+- [REST Query Language with Spring and JPA Criteria](http://www.baeldung.com/rest-search-language-spring-jpa-criteria)
+- [REST Query Language with Spring Data JPA Specifications](http://www.baeldung.com/rest-api-search-language-spring-data-specifications)
+- [REST Query Language with Spring Data JPA and QueryDSL](http://www.baeldung.com/rest-api-search-language-spring-data-querydsl)
+- [REST Query Language – Advanced Search Operations](http://www.baeldung.com/rest-api-query-search-language-more-operations)
+- [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
+- [REST Query Language with RSQL](http://www.baeldung.com/rest-api-search-language-rsql-fiql)
+- [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
+- [A Guide to CSRF Protection in Spring Security](http://www.baeldung.com/spring-security-csrf)
 
 ### Build the Project
 ```

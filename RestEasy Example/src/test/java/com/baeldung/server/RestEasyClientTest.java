@@ -130,7 +130,7 @@ public class RestEasyClientTest {
 
         Response moviesResponse = simple.addMovie(batmanMovie);
         moviesResponse.close();
-        batmanMovie.setImdbVotes("300,000");
+        batmanMovie.setTitle("Batman Begins");
         moviesResponse = simple.updateMovie(batmanMovie);
 
         if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
