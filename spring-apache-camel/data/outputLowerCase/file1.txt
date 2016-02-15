@@ -1,1 +1,0 @@
-this is uppercase content. this is lowecase content.
