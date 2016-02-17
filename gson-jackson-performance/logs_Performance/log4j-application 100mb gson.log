@@ -1,0 +1,490 @@
+2016-02-13 19:37:16 INFO  ComplexDataGson:27 - -------Round 1
+2016-02-13 19:37:18 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1278083466
+2016-02-13 19:37:19 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:37:19 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:37:27 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8332113036
+2016-02-13 19:37:27 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:37:30 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1113664562
+2016-02-13 19:37:30 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:37:31 INFO  ComplexDataGson:27 - -------Round 2
+2016-02-13 19:37:33 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1000705020
+2016-02-13 19:37:33 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:37:33 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:37:42 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8658432353
+2016-02-13 19:37:42 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:37:44 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1243221682
+2016-02-13 19:37:44 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:37:45 INFO  ComplexDataGson:27 - -------Round 3
+2016-02-13 19:37:47 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1008859332
+2016-02-13 19:37:48 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:37:48 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:37:56 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8392288043
+2016-02-13 19:37:56 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:37:58 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1277124228
+2016-02-13 19:37:58 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:37:59 INFO  ComplexDataGson:27 - -------Round 4
+2016-02-13 19:38:01 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 995015515
+2016-02-13 19:38:02 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:38:02 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:38:10 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8797346582
+2016-02-13 19:38:10 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:38:13 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1649643681
+2016-02-13 19:38:13 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:38:14 INFO  ComplexDataGson:27 - -------Round 5
+2016-02-13 19:38:17 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1272820685
+2016-02-13 19:38:17 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:38:17 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:38:26 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9312540240
+2016-02-13 19:38:26 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:38:28 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1257408139
+2016-02-13 19:38:28 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:38:30 INFO  ComplexDataGson:27 - -------Round 6
+2016-02-13 19:38:32 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1068332478
+2016-02-13 19:38:32 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:38:32 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:38:41 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8912581452
+2016-02-13 19:38:41 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:38:43 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1264009906
+2016-02-13 19:38:43 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:38:44 INFO  ComplexDataGson:27 - -------Round 7
+2016-02-13 19:38:46 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1008157075
+2016-02-13 19:38:46 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:38:46 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:38:55 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8505211268
+2016-02-13 19:38:55 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:38:57 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1251681923
+2016-02-13 19:38:57 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:38:58 INFO  ComplexDataGson:27 - -------Round 8
+2016-02-13 19:39:01 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1006583609
+2016-02-13 19:39:01 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:39:01 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:39:10 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8752857286
+2016-02-13 19:39:10 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:39:12 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1414701446
+2016-02-13 19:39:12 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:39:13 INFO  ComplexDataGson:27 - -------Round 9
+2016-02-13 19:39:16 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1294525120
+2016-02-13 19:39:16 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:39:16 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:39:26 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10191596918
+2016-02-13 19:39:26 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:39:29 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1658383009
+2016-02-13 19:39:29 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:39:30 INFO  ComplexDataGson:27 - -------Round 10
+2016-02-13 19:39:33 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1309101589
+2016-02-13 19:39:33 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:39:33 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:39:43 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9762623354
+2016-02-13 19:39:43 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:39:45 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1260306380
+2016-02-13 19:39:45 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:39:46 INFO  ComplexDataGson:39 - --------------------------------------------------------------------------
+2016-02-13 19:39:46 INFO  ComplexDataGson:40 - Average Time to Generate JSON : 1124218388
+2016-02-13 19:39:46 INFO  ComplexDataGson:41 - Average Time to Parse JSON To Map : 8961759053
+2016-02-13 19:39:46 INFO  ComplexDataGson:42 - Average Time to Parse JSON To Actual Object : 1339014495
+2016-02-13 19:39:46 INFO  ComplexDataGson:43 - --------------------------------------------------------------------------
+2016-02-13 19:41:32 INFO  ComplexDataGson:27 - -------Round 1
+2016-02-13 19:41:34 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1191851136
+2016-02-13 19:41:35 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:41:35 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:41:45 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10080407033
+2016-02-13 19:41:45 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:41:48 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1379953348
+2016-02-13 19:41:48 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:41:50 INFO  ComplexDataGson:27 - -------Round 2
+2016-02-13 19:41:52 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 956293094
+2016-02-13 19:41:52 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:41:52 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:42:01 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8813430199
+2016-02-13 19:42:01 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:42:03 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1274304543
+2016-02-13 19:42:03 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:42:04 INFO  ComplexDataGson:27 - -------Round 3
+2016-02-13 19:42:06 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 927398321
+2016-02-13 19:42:06 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:42:06 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:42:15 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8356408992
+2016-02-13 19:42:15 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:42:17 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1322685660
+2016-02-13 19:42:17 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:42:18 INFO  ComplexDataGson:27 - -------Round 4
+2016-02-13 19:42:21 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1207259733
+2016-02-13 19:42:21 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:42:21 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:42:31 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10045768675
+2016-02-13 19:42:31 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:42:33 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1245056076
+2016-02-13 19:42:33 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:42:34 INFO  ComplexDataGson:27 - -------Round 5
+2016-02-13 19:42:36 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 915288634
+2016-02-13 19:42:36 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:42:36 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:42:45 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8618376472
+2016-02-13 19:42:45 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:42:47 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1269665068
+2016-02-13 19:42:47 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:42:49 INFO  ComplexDataGson:27 - -------Round 6
+2016-02-13 19:42:50 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 932316093
+2016-02-13 19:42:51 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:42:51 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:43:00 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8813796130
+2016-02-13 19:43:00 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:43:02 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1313783696
+2016-02-13 19:43:02 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:43:03 INFO  ComplexDataGson:27 - -------Round 7
+2016-02-13 19:43:05 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 915598117
+2016-02-13 19:43:05 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:43:05 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:43:14 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8961026913
+2016-02-13 19:43:14 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:43:16 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1261592864
+2016-02-13 19:43:16 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:43:17 INFO  ComplexDataGson:27 - -------Round 8
+2016-02-13 19:43:19 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 920982875
+2016-02-13 19:43:19 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:43:19 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:43:28 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8618532792
+2016-02-13 19:43:28 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:43:30 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1245481219
+2016-02-13 19:43:30 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:43:31 INFO  ComplexDataGson:27 - -------Round 9
+2016-02-13 19:43:33 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 913480688
+2016-02-13 19:43:34 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:43:34 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:43:42 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8243017597
+2016-02-13 19:43:42 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:43:44 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1230475265
+2016-02-13 19:43:44 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:43:45 INFO  ComplexDataGson:27 - -------Round 10
+2016-02-13 19:43:47 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 927227001
+2016-02-13 19:43:47 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:43:47 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:43:55 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 7879612879
+2016-02-13 19:43:55 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:43:58 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1296596758
+2016-02-13 19:43:58 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:43:59 INFO  ComplexDataGson:27 - -------Round 11
+2016-02-13 19:44:01 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1105414720
+2016-02-13 19:44:01 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:44:01 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:44:12 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10599177108
+2016-02-13 19:44:12 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:44:14 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1250150300
+2016-02-13 19:44:14 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:44:15 INFO  ComplexDataGson:27 - -------Round 12
+2016-02-13 19:44:17 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 934354968
+2016-02-13 19:44:18 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:44:18 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:44:26 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8623628596
+2016-02-13 19:44:26 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:44:28 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1266831567
+2016-02-13 19:44:28 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:44:30 INFO  ComplexDataGson:27 - -------Round 13
+2016-02-13 19:44:32 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 915319424
+2016-02-13 19:44:32 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:44:32 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:44:40 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8506292877
+2016-02-13 19:44:40 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:44:43 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1263272517
+2016-02-13 19:44:43 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:44:44 INFO  ComplexDataGson:27 - -------Round 14
+2016-02-13 19:44:46 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 953177742
+2016-02-13 19:44:46 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:44:46 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:44:55 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8520122877
+2016-02-13 19:44:55 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:44:57 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1295778051
+2016-02-13 19:44:57 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:44:58 INFO  ComplexDataGson:27 - -------Round 15
+2016-02-13 19:45:00 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 917475933
+2016-02-13 19:45:00 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:45:00 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:45:09 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8470522382
+2016-02-13 19:45:09 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:45:11 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1220261157
+2016-02-13 19:45:11 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:45:12 INFO  ComplexDataGson:27 - -------Round 16
+2016-02-13 19:45:14 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 915774963
+2016-02-13 19:45:14 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:45:14 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:45:22 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 7762057680
+2016-02-13 19:45:22 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:45:24 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1231289630
+2016-02-13 19:45:24 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:45:25 INFO  ComplexDataGson:27 - -------Round 17
+2016-02-13 19:45:27 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 914879280
+2016-02-13 19:45:27 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:45:27 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:45:36 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8748457028
+2016-02-13 19:45:36 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:45:39 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1555775737
+2016-02-13 19:45:39 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:45:40 INFO  ComplexDataGson:27 - -------Round 18
+2016-02-13 19:45:42 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1093209109
+2016-02-13 19:45:43 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:45:43 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:45:52 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9098222804
+2016-02-13 19:45:52 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:45:54 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1255617562
+2016-02-13 19:45:54 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:45:55 INFO  ComplexDataGson:27 - -------Round 19
+2016-02-13 19:45:57 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 950926099
+2016-02-13 19:45:57 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:45:57 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:46:06 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8670918236
+2016-02-13 19:46:06 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:46:08 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1280563669
+2016-02-13 19:46:08 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:46:09 INFO  ComplexDataGson:27 - -------Round 20
+2016-02-13 19:46:11 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 933908902
+2016-02-13 19:46:12 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:46:12 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:46:21 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9708235748
+2016-02-13 19:46:21 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:46:24 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1574329688
+2016-02-13 19:46:24 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:46:25 INFO  ComplexDataGson:27 - -------Round 21
+2016-02-13 19:46:28 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1066257681
+2016-02-13 19:46:28 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:46:28 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:46:37 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9000526594
+2016-02-13 19:46:37 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:46:39 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1241094778
+2016-02-13 19:46:39 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:46:40 INFO  ComplexDataGson:27 - -------Round 22
+2016-02-13 19:46:42 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 921404072
+2016-02-13 19:46:42 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:46:42 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:46:51 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8424769102
+2016-02-13 19:46:51 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:46:53 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1230215126
+2016-02-13 19:46:53 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:46:54 INFO  ComplexDataGson:27 - -------Round 23
+2016-02-13 19:46:56 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 913987938
+2016-02-13 19:46:56 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:46:56 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:47:06 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10028036985
+2016-02-13 19:47:06 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:47:09 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1651288202
+2016-02-13 19:47:09 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:47:10 INFO  ComplexDataGson:27 - -------Round 24
+2016-02-13 19:47:12 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 916371822
+2016-02-13 19:47:12 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:47:12 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:47:21 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8624285851
+2016-02-13 19:47:21 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:47:23 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1258091448
+2016-02-13 19:47:23 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:47:24 INFO  ComplexDataGson:27 - -------Round 25
+2016-02-13 19:47:26 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 915687329
+2016-02-13 19:47:27 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:47:27 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:47:35 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8610528090
+2016-02-13 19:47:35 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:47:38 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1235425406
+2016-02-13 19:47:38 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:47:39 INFO  ComplexDataGson:27 - -------Round 26
+2016-02-13 19:47:41 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1088816746
+2016-02-13 19:47:41 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:47:41 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:47:52 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10322615396
+2016-02-13 19:47:52 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:47:54 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1234155501
+2016-02-13 19:47:54 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:47:55 INFO  ComplexDataGson:27 - -------Round 27
+2016-02-13 19:47:57 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 933214540
+2016-02-13 19:47:57 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:47:57 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:48:06 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8857891864
+2016-02-13 19:48:06 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:48:08 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1286999247
+2016-02-13 19:48:08 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:48:10 INFO  ComplexDataGson:27 - -------Round 28
+2016-02-13 19:48:12 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 944816187
+2016-02-13 19:48:12 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:48:12 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:48:20 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8230042621
+2016-02-13 19:48:20 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:48:23 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1387615409
+2016-02-13 19:48:23 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:48:24 INFO  ComplexDataGson:27 - -------Round 29
+2016-02-13 19:48:26 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 940160923
+2016-02-13 19:48:26 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:48:26 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:48:35 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8740729045
+2016-02-13 19:48:35 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:48:37 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1315723884
+2016-02-13 19:48:37 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:48:38 INFO  ComplexDataGson:27 - -------Round 30
+2016-02-13 19:48:40 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 949497111
+2016-02-13 19:48:41 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:48:41 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:48:49 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8546455339
+2016-02-13 19:48:49 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:48:52 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1655064756
+2016-02-13 19:48:52 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:48:53 INFO  ComplexDataGson:27 - -------Round 31
+2016-02-13 19:48:56 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1209183341
+2016-02-13 19:48:56 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:48:56 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:49:07 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 10523212176
+2016-02-13 19:49:07 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:49:09 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1385741146
+2016-02-13 19:49:09 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:49:10 INFO  ComplexDataGson:27 - -------Round 32
+2016-02-13 19:49:12 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 926668433
+2016-02-13 19:49:13 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:49:13 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:49:21 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8096297617
+2016-02-13 19:49:21 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:49:23 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1237708235
+2016-02-13 19:49:23 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:49:24 INFO  ComplexDataGson:27 - -------Round 33
+2016-02-13 19:49:26 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1194291074
+2016-02-13 19:49:27 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:49:27 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:49:36 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9445080077
+2016-02-13 19:49:36 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:49:39 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1488176702
+2016-02-13 19:49:39 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:49:40 INFO  ComplexDataGson:27 - -------Round 34
+2016-02-13 19:49:42 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 956147827
+2016-02-13 19:49:42 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:49:42 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:49:50 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8222404640
+2016-02-13 19:49:50 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:49:53 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1235773969
+2016-02-13 19:49:53 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:49:54 INFO  ComplexDataGson:27 - -------Round 35
+2016-02-13 19:49:56 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 908857793
+2016-02-13 19:49:56 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:49:56 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:50:05 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9117024263
+2016-02-13 19:50:05 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:50:07 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1239985931
+2016-02-13 19:50:07 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:50:08 INFO  ComplexDataGson:27 - -------Round 36
+2016-02-13 19:50:10 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 912435394
+2016-02-13 19:50:11 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:50:11 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:50:19 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8580239068
+2016-02-13 19:50:19 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:50:21 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1258180661
+2016-02-13 19:50:21 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:50:23 INFO  ComplexDataGson:27 - -------Round 37
+2016-02-13 19:50:25 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 928991525
+2016-02-13 19:50:25 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:50:25 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:50:34 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8749988257
+2016-02-13 19:50:34 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:50:36 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1259627018
+2016-02-13 19:50:36 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:50:37 INFO  ComplexDataGson:27 - -------Round 38
+2016-02-13 19:50:39 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 912076963
+2016-02-13 19:50:39 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:50:39 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:50:48 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8553354747
+2016-02-13 19:50:48 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:50:50 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1272567256
+2016-02-13 19:50:50 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:50:51 INFO  ComplexDataGson:27 - -------Round 39
+2016-02-13 19:50:53 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 937653878
+2016-02-13 19:50:53 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:50:53 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:51:02 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8570808929
+2016-02-13 19:51:02 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:51:04 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1278280050
+2016-02-13 19:51:04 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:51:05 INFO  ComplexDataGson:27 - -------Round 40
+2016-02-13 19:51:07 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 948231943
+2016-02-13 19:51:08 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:51:08 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:51:16 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8258665807
+2016-02-13 19:51:16 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:51:18 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1226364358
+2016-02-13 19:51:18 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:51:19 INFO  ComplexDataGson:27 - -------Round 41
+2016-02-13 19:51:21 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 913137256
+2016-02-13 19:51:21 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:51:21 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:51:29 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8291304765
+2016-02-13 19:51:29 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:51:31 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1227485837
+2016-02-13 19:51:31 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:51:33 INFO  ComplexDataGson:27 - -------Round 42
+2016-02-13 19:51:35 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 913072123
+2016-02-13 19:51:35 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:51:35 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:51:43 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8564229663
+2016-02-13 19:51:43 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:51:46 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1247028238
+2016-02-13 19:51:46 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:51:47 INFO  ComplexDataGson:27 - -------Round 43
+2016-02-13 19:51:49 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 916980130
+2016-02-13 19:51:49 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:51:49 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:51:58 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8671670625
+2016-02-13 19:51:58 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:52:00 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1270874971
+2016-02-13 19:52:00 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:52:01 INFO  ComplexDataGson:27 - -------Round 44
+2016-02-13 19:52:03 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 948609717
+2016-02-13 19:52:04 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:52:04 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:52:13 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8829447104
+2016-02-13 19:52:13 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:52:15 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1663932772
+2016-02-13 19:52:15 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:52:17 INFO  ComplexDataGson:27 - -------Round 45
+2016-02-13 19:52:19 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 1123397471
+2016-02-13 19:52:19 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:52:19 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:52:29 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 9946999145
+2016-02-13 19:52:29 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:52:32 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1236672021
+2016-02-13 19:52:32 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:52:33 INFO  ComplexDataGson:27 - -------Round 46
+2016-02-13 19:52:35 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 912870802
+2016-02-13 19:52:35 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:52:35 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:52:43 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8255520848
+2016-02-13 19:52:43 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:52:46 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1263055011
+2016-02-13 19:52:46 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:52:47 INFO  ComplexDataGson:27 - -------Round 47
+2016-02-13 19:52:49 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 945563840
+2016-02-13 19:52:49 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:52:49 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:52:58 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8534561184
+2016-02-13 19:52:58 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:53:00 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1230407368
+2016-02-13 19:53:00 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:53:01 INFO  ComplexDataGson:27 - -------Round 48
+2016-02-13 19:53:03 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 936955963
+2016-02-13 19:53:03 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:53:03 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:53:12 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8602107323
+2016-02-13 19:53:12 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:53:14 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1262269462
+2016-02-13 19:53:14 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:53:15 INFO  ComplexDataGson:27 - -------Round 49
+2016-02-13 19:53:17 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 931142113
+2016-02-13 19:53:17 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:53:17 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:53:26 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8802198431
+2016-02-13 19:53:26 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:53:29 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1268525825
+2016-02-13 19:53:29 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:53:30 INFO  ComplexDataGson:27 - -------Round 50
+2016-02-13 19:53:32 INFO  ComplexDataGson:53 - Json Generation Time(ms):: 930833420
+2016-02-13 19:53:32 INFO  ComplexDataGson:29 - Size of Complex content Jackson :: 100 MB
+2016-02-13 19:53:32 INFO  ComplexDataGson:30 - --------------------------------------------------------------------------
+2016-02-13 19:53:41 INFO  ComplexDataGson:63 - Generating Map from json Time(ms):: 8785328081
+2016-02-13 19:53:41 INFO  ComplexDataGson:64 - --------------------------------------------------------------------------
+2016-02-13 19:53:44 INFO  ComplexDataGson:75 - Generating Actual Object from json Time(ms):: 1582174517
+2016-02-13 19:53:44 INFO  ComplexDataGson:76 - --------------------------------------------------------------------------
+2016-02-13 19:53:45 INFO  ComplexDataGson:39 - --------------------------------------------------------------------------
+2016-02-13 19:53:45 INFO  ComplexDataGson:40 - Average Time to Generate JSON : 966789043
+2016-02-13 19:53:45 INFO  ComplexDataGson:41 - Average Time to Parse JSON To Map : 8838486733
+2016-02-13 19:53:45 INFO  ComplexDataGson:42 - Average Time to Parse JSON To Actual Object : 1313279389
+2016-02-13 19:53:45 INFO  ComplexDataGson:43 - --------------------------------------------------------------------------
