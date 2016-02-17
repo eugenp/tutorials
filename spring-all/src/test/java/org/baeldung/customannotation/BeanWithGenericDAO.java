@@ -5,10 +5,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BeanWithGenericDAO {
 
-    @DataAccess(entity=Person.class)
+    @DataAccess(entity = Person.class)
     private GenericDAO<Person> personGenericDAO;
 
-    public BeanWithGenericDAO() {}
+    public BeanWithGenericDAO() {
+    }
 
     public GenericDAO<Person> getPersonGenericDAO() {
         return personGenericDAO;

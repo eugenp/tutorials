@@ -20,7 +20,7 @@ public @interface ValidEmail {
 
     String message() default "Invalid Email";
 
-    Class<?>[]groups() default {};
+    Class<?>[] groups() default {};
 
-    Class<? extends Payload>[]payload() default {};
+    Class<? extends Payload>[] payload() default {};
 }

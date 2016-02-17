@@ -41,15 +41,15 @@
 <body>
 	<h1><spring:message code="label.form.loginTitle"></spring:message></h1>
 
-	<form name='f' action="j_spring_security_check" method='POST'  onsubmit="return validate();">
+	<form name='f' action="login" method='POST'  onsubmit="return validate();">
 		<table>
 			<tr>
 				<td><label><spring:message code="label.form.loginEmail"></spring:message></label></td>
-				<td><input type='text' name='j_username' value=''></td>
+				<td><input type='text' name='username' value=''></td>
 			</tr>
 			<tr>
 				<td><label><spring:message code="label.form.loginPass"></spring:message></label></td>
-				<td><input type='password' name='j_password' /></td>
+				<td><input type='password' name='password' /></td>
 			</tr>
 			<tr>
 				<td><input name="submit" type="submit" value=<spring:message code="label.form.submit"></spring:message> /></td>

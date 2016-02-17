@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD })
 @Documented
 public @interface DataAccess {
-    Class<?>entity();
+    Class<?> entity();
 }

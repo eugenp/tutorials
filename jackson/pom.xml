@@ -72,7 +72,7 @@
 
         <dependency>
             <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
+            <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -140,22 +140,22 @@
         <mysql-connector-java.version>5.1.35</mysql-connector-java.version>
 
         <!-- marshalling -->
-        <jackson.version>2.4.4</jackson.version>
+        <jackson.version>2.7.1-1</jackson.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.12</org.slf4j.version>
+        <org.slf4j.version>1.7.13</org.slf4j.version>
         <logback.version>1.1.3</logback.version>
 
         <!-- various -->
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>18.0</guava.version>
+        <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
         <httpcore.version>4.4.1</httpcore.version>

@@ -15,7 +15,6 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { CustomAnnotationConfiguration.class })
 public class DataAccessFieldCallbackTest {
@@ -36,8 +35,7 @@ public class DataAccessFieldCallbackTest {
     }
 
     @Test
-    public void whenMethodGenericTypeIsValidCalled_thenReturnCorrectValue()
-            throws NoSuchFieldException, SecurityException {
+    public void whenMethodGenericTypeIsValidCalled_thenReturnCorrectValue() throws NoSuchFieldException, SecurityException {
         final DataAccessFieldCallback callback = new DataAccessFieldCallback(configurableListableBeanFactory, beanWithGenericDAO);
         final Type fieldType = BeanWithGenericDAO.class.getDeclaredField("personGenericDAO").getGenericType();
         final boolean result = callback.genericTypeIsValid(Person.class, fieldType);

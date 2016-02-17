@@ -16,7 +16,8 @@ public class PerformanceAspect {
     private static Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
 
     @Pointcut("within(@org.springframework.stereotype.Repository *)")
-    public void repositoryClassMethods() {};
+    public void repositoryClassMethods() {
+    }
 
     @Around("repositoryClassMethods()")
     public Object measureMethodExecutionTime(ProceedingJoinPoint pjp) throws Throwable {

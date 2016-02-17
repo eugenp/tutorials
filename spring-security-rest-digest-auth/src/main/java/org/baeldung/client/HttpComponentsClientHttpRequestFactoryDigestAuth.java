@@ -5,7 +5,7 @@ import java.net.URI;
 import org.apache.http.HttpHost;
 import org.apache.http.client.AuthCache;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.protocol.BasicHttpContext;
@@ -41,7 +41,7 @@ public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpCompon
 
         // Add AuthCache to the execution context
         final BasicHttpContext localcontext = new BasicHttpContext();
-        localcontext.setAttribute(ClientContext.AUTH_CACHE, authCache);
+        localcontext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
         return localcontext;
     }
 

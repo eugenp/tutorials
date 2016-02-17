@@ -32,7 +32,6 @@ import com.google.common.io.ByteSource;
 import com.google.common.io.ByteStreams;
 import com.google.common.io.CharStreams;
 import com.google.common.io.Files;
-import com.google.common.io.InputSupplier;
 
 @SuppressWarnings("unused")
 public class JavaInputStreamToXUnitTest {
@@ -75,16 +74,14 @@ public class JavaInputStreamToXUnitTest {
         final String originalString = randomAlphabetic(DEFAULT_SIZE);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
-        final InputSupplier<InputStream> inputSupplier = new InputSupplier<InputStream>() {
+        final ByteSource byteSource = new ByteSource() {
             @Override
-            public final InputStream getInput() throws IOException {
+            public final InputStream openStream() throws IOException {
                 return inputStream;
             }
         };
-        final InputSupplier<InputStreamReader> readerSupplier = CharStreams.newReaderSupplier(inputSupplier, Charsets.UTF_8);
 
-        // When
-        final String text = CharStreams.toString(readerSupplier);
+        final String text = byteSource.asCharSource(Charsets.UTF_8).read();
 
         assertThat(text, equalTo(originalString));
     }

@@ -13,10 +13,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @ComponentScan(basePackages = { "org.baeldung.security" })
+// @ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -25,6 +27,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
     public SecSecurityConfig() {
         super();
@@ -46,7 +51,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable()
             .authorizeRequests()
-                .antMatchers("/j_spring_security_check*","/login*", "/logout*", "/signin/**", "/signup/**",
+                .antMatchers("/login*","/login*", "/logout*", "/signin/**", "/signup/**",
                         "/user/registration*", "/regitrationConfirm*", "/expiredAccount*", "/registration*",
                         "/badUser*", "/user/resendRegistrationToken*" ,"/forgetPassword*", "/user/resetPassword*",
                         "/user/changePassword*", "/emailError*", "/resources/**","/old/user/registration*","/successRegister*").permitAll()
@@ -54,13 +59,11 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/j_spring_security_check")
+                .loginPage("/login")
                 .defaultSuccessUrl("/homepage.html")
-                .failureUrl("/login.html?error=true")
+                .failureUrl("/login?error=true")
                 .successHandler(myAuthenticationSuccessHandler)
-                .usernameParameter("j_username")
-                .passwordParameter("j_password")
+                .failureHandler(authenticationFailureHandler)
             .permitAll()
                 .and()
             .sessionManagement()
@@ -69,7 +72,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .logout()
                 .invalidateHttpSession(false)
-                .logoutUrl("/j_spring_security_logout")
                 .logoutSuccessUrl("/logout.html?logSucc=true")
                 .deleteCookies("JSESSIONID")
                 .permitAll();

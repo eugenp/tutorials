@@ -7,34 +7,7 @@
 <%@ page session="true"%>
 <fmt:message key="message.password" var="noPass" />
 <fmt:message key="message.username" var="noUser" />
-<c:if test="${param.error != null}">
-    <c:choose>
-        <c:when
-            test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'User is disabled'}">
-            <div class="alert alert-danger">
-                <spring:message code="auth.message.disabled"></spring:message>
-            </div>
-        </c:when>
-        <c:when
-            test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'User account has expired'}">
-            <div class="alert alert-danger">
-                <spring:message code="auth.message.expired"></spring:message>
-            </div>
-        </c:when>
-        <c:when
-            test="${SPRING_SECURITY_LAST_EXCEPTION.message == 'blocked'}">
-            <div class="alert alert-danger">
-               <spring:message code="auth.message.blocked"></spring:message>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div class="alert alert-danger">
-            <!-- <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/> -->
-                <spring:message code="message.badCredentials"></spring:message>
-            </div>
-        </c:otherwise>
-    </c:choose>
-</c:if>
+
 <html>
 
 <head>
@@ -42,20 +15,20 @@
 <title><spring:message code="label.pages.home.title"></spring:message></title>
 <script type="text/javascript">
     function validate() {
-        if (document.f.j_username.value == ""
-                && document.f.j_password.value == "") {
+        if (document.f.username.value == ""
+                && document.f.password.value == "") {
             alert("${noUser} & ${noPass}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_username.value == "") {
+        if (document.f.username.value == "") {
             alert("${noUser}");
-            document.f.j_username.focus();
+            document.f.username.focus();
             return false;
         }
-        if (document.f.j_password.value == "") {
+        if (document.f.password.value == "") {
             alert("${noPass}");
-            document.f.j_password.focus();
+            document.f.password.focus();
             return false;
         }
     }
@@ -72,24 +45,30 @@ ${param.message}
 </div>
 </c:if>
 
+
+<c:if test="${param.error != null}">
+<div class="alert alert-danger">
+${SPRING_SECURITY_LAST_EXCEPTION}
+</div>
+</c:if>
+
     <div class="container">
         <div class="row wrapper">
             <h1>
                 <spring:message code="label.form.loginTitle"></spring:message>
             </h1>
             <a href="?lang=en"><spring:message code="label.form.loginEnglish"></spring:message></a>
-            | <a href="?lang=es_ES"><spring:message
-                    code="label.form.loginSpanish"></spring:message></a>
+            | <a href="?lang=es_ES"><spring:message code="label.form.loginSpanish"></spring:message></a>
             <br><br>
-            <form name='f' action="j_spring_security_check" method='POST'
-                onsubmit="return validate();">
+            
+            <form name='f' action="login" method='POST' onsubmit="return validate();">
                 
                 <label class="col-sm-4"><spring:message code="label.form.loginEmail"></spring:message></label>
-                <span class="col-sm-8"><input class="form-control" type='text' name='j_username' value=''></span>
+                <span class="col-sm-8"><input class="form-control" type='text' name='username' value=''></span>
                 
                 <br><br>        
                 <label class="col-sm-4"><spring:message code="label.form.loginPass"></spring:message></label>
-                <span class="col-sm-8"><input class="form-control" type='password' name='j_password' /></span>
+                <span class="col-sm-8"><input class="form-control" type='password' name='password' /></span>
                 
                 <br><br>
                 <input class="btn btn-primary" name="submit" type="submit"

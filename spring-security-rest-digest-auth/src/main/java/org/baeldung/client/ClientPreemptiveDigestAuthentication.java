@@ -6,11 +6,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.AuthCache;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.ClientContext;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.BasicAuthCache;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.util.EntityUtils;
 
@@ -27,9 +30,11 @@ public class ClientPreemptiveDigestAuthentication {
     public static void main(final String[] args) throws Exception {
         final HttpHost targetHost = new HttpHost("localhost", 8080, "http");
 
-        final DefaultHttpClient httpclient = new DefaultHttpClient();
+        final CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(new AuthScope(targetHost.getHostName(), targetHost.getPort()), new UsernamePasswordCredentials("user1", "user1Pass"));
+
+        final CloseableHttpClient httpclient = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
         try {
-            httpclient.getCredentialsProvider().setCredentials(new AuthScope(targetHost.getHostName(), targetHost.getPort()), new UsernamePasswordCredentials("user1", "user1Pass"));
 
             // Create AuthCache instance
             final AuthCache authCache = new BasicAuthCache();
@@ -43,7 +48,7 @@ public class ClientPreemptiveDigestAuthentication {
 
             // Add AuthCache to the execution context
             final BasicHttpContext localcontext = new BasicHttpContext();
-            localcontext.setAttribute(ClientContext.AUTH_CACHE, authCache);
+            localcontext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
 
             final HttpGet httpget = new HttpGet("http://localhost:8080/spring-security-rest-digest-auth/api/foos/1");
 
@@ -63,7 +68,7 @@ public class ClientPreemptiveDigestAuthentication {
             }
         } finally {
             // When HttpClient instance is no longer needed, shut down the connection manager to ensure immediate deallocation of all system resources
-            httpclient.getConnectionManager().shutdown();
+            httpclient.close();
         }
     }
 

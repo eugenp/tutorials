@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ChildDao extends AbstractHibernateDao<Child>implements IChildDao {
+public class ChildDao extends AbstractHibernateDao<Child> implements IChildDao {
 
     @Autowired
     private SessionFactory sessionFactory;
