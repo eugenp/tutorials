@@ -28,24 +28,4 @@ public class RedisMessageListenerTest {
         Thread.sleep(100);
         assertTrue(RedisMessageSubscriber.messageList.get(0).contains(message));
     }
-
-    public void testOnPMessage() throws Exception {
-
-    }
-
-    public void testOnSubscribe() throws Exception {
-
-    }
-
-    public void testOnUnsubscribe() throws Exception {
-
-    }
-
-    public void testOnPUnsubscribe() throws Exception {
-
-    }
-
-    public void testOnPSubscribe() throws Exception {
-
-    }
 }
