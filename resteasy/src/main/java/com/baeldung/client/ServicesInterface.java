@@ -31,6 +31,6 @@ public interface ServicesInterface {
 
     @DELETE
     @Path("/deletemovie")
-    Response deleteMovie(@QueryParam("imdbId") String imdbID);
+    Response deleteMovie(@QueryParam("imdbId") String imdbId);
 
 }
