@@ -17,7 +17,6 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = RedisConfig.class)
 public class RedisMessageListenerTest {
 
-
     @Autowired
     private RedisMessagePublisher redisMessagePublisher;
 
