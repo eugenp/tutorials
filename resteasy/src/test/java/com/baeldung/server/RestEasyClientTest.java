@@ -102,7 +102,7 @@ public class RestEasyClientTest {
     }
 
     @Test
-    public void testDeleteMovi1e() {
+    public void testDeleteMovie() {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(UriBuilder.fromPath("http://127.0.0.1:8080/RestEasyTutorial/rest"));
