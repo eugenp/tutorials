@@ -60,14 +60,14 @@ public class RestEasyClientTest {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response moviesResponse = simple.addMovie(transformerMovie);
+        Response moviesResponse = proxy.addMovie(transformerMovie);
         moviesResponse.close();
-        moviesResponse = simple.addMovie(batmanMovie);
+        moviesResponse = proxy.addMovie(batmanMovie);
         moviesResponse.close();
 
-        List<Movie> movies = simple.listMovies();
+        List<Movie> movies = proxy.listMovies();
         System.out.println(movies);
     }
 
@@ -78,12 +78,12 @@ public class RestEasyClientTest {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response moviesResponse = simple.addMovie(transformerMovie);
+        Response moviesResponse = proxy.addMovie(transformerMovie);
         moviesResponse.close();
 
-        Movie movies = simple.movieByImdbId(transformerImdbId);
+        Movie movies = proxy.movieByImdbId(transformerImdbId);
         System.out.println(movies);
     }
 
@@ -92,11 +92,11 @@ public class RestEasyClientTest {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response moviesResponse = simple.addMovie(batmanMovie);
+        Response moviesResponse = proxy.addMovie(batmanMovie);
         moviesResponse.close();
-        moviesResponse = simple.addMovie(transformerMovie);
+        moviesResponse = proxy.addMovie(transformerMovie);
 
         if (moviesResponse.getStatus() != Response.Status.CREATED.getStatusCode()) {
             System.out.println("Failed : HTTP error code : " + moviesResponse.getStatus());
@@ -116,10 +116,10 @@ public class RestEasyClientTest {
         ApacheHttpClient4Engine engine = new ApacheHttpClient4Engine(httpClient);
         ResteasyClient client = new ResteasyClientBuilder().httpEngine(engine).build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response batmanResponse = simple.addMovie(batmanMovie);
-        Response transformerResponse = simple.addMovie(transformerMovie);
+        Response batmanResponse = proxy.addMovie(batmanMovie);
+        Response transformerResponse = proxy.addMovie(transformerMovie);
 
         if (batmanResponse.getStatus() != Response.Status.CREATED.getStatusCode()) {
             System.out.println("Batman Movie creation Failed : HTTP error code : " + batmanResponse.getStatus());
@@ -141,11 +141,11 @@ public class RestEasyClientTest {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response moviesResponse = simple.addMovie(batmanMovie);
+        Response moviesResponse = proxy.addMovie(batmanMovie);
         moviesResponse.close();
-        moviesResponse = simple.deleteMovie(batmanMovie.getImdbId());
+        moviesResponse = proxy.deleteMovie(batmanMovie.getImdbId());
 
         if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
             System.out.println(moviesResponse.readEntity(String.class));
@@ -161,12 +161,12 @@ public class RestEasyClientTest {
 
         ResteasyClient client = new ResteasyClientBuilder().build();
         ResteasyWebTarget target = client.target(FULL_PATH);
-        ServicesInterface simple = target.proxy(ServicesInterface.class);
+        ServicesInterface proxy = target.proxy(ServicesInterface.class);
 
-        Response moviesResponse = simple.addMovie(batmanMovie);
+        Response moviesResponse = proxy.addMovie(batmanMovie);
         moviesResponse.close();
         batmanMovie.setTitle("Batman Begins");
-        moviesResponse = simple.updateMovie(batmanMovie);
+        moviesResponse = proxy.updateMovie(batmanMovie);
 
         if (moviesResponse.getStatus() != Response.Status.OK.getStatusCode()) {
             System.out.println("Failed : HTTP error code : " + moviesResponse.getStatus());
