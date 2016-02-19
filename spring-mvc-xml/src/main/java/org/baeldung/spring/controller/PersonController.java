@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.baeldung.spring.form.Person;
+import org.baeldung.spring.validator.PersonValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PersonController {
 
+	@Autowired
+	PersonValidator validator;
+
 	@RequestMapping(value = "/person", method = RequestMethod.GET)
 	public ModelAndView showForm(final Model model) {
 
@@ -31,6 +36,8 @@ public class PersonController {
 	public String submit(@Valid @ModelAttribute("person") final Person person, final BindingResult result,
 			final ModelMap modelMap, final Model model) {
 
+		validator.validate(person, result);
+
 		if (result.hasErrors()) {
 
 			initData(model);
@@ -39,28 +46,28 @@ public class PersonController {
 
 		modelMap.addAttribute("person", person);
 
-		return "personResume";
+		return "personView";
 	}
 
 	private void initData(final Model model) {
 
-		final List<String> favouriteLanguage = new ArrayList<String>();
-		favouriteLanguage.add("Java");
-		favouriteLanguage.add("C++");
-		favouriteLanguage.add("Perl");
-		model.addAttribute("favouriteLanguage", favouriteLanguage);
+		final List<String> favouriteLanguageItem = new ArrayList<String>();
+		favouriteLanguageItem.add("Java");
+		favouriteLanguageItem.add("C++");
+		favouriteLanguageItem.add("Perl");
+		model.addAttribute("favouriteLanguageItem", favouriteLanguageItem);
 
-		final List<String> job = new ArrayList<String>();
-		job.add("Full time");
-		job.add("Part time");
-		model.addAttribute("job", job);
+		final List<String> jobItem = new ArrayList<String>();
+		jobItem.add("Full time");
+		jobItem.add("Part time");
+		model.addAttribute("jobItem", jobItem);
 
-		final Map<String, String> country = new LinkedHashMap<String, String>();
-		country.put("US", "United Stated");
-		country.put("IT", "Italy");
-		country.put("UK", "United Kingdom");
-		country.put("FR", "Grance");
-		model.addAttribute("country", country);
+		final Map<String, String> countryItems = new LinkedHashMap<String, String>();
+		countryItems.put("US", "United Stated");
+		countryItems.put("IT", "Italy");
+		countryItems.put("UK", "United Kingdom");
+		countryItems.put("FR", "Grance");
+		model.addAttribute("countryItems", countryItems);
 
 		final List<String> fruit = new ArrayList<String>();
 		fruit.add("Banana");

@@ -29,6 +29,15 @@
 					<td><form:errors path="name" cssClass="error" /></td>
 				</tr>
 				<tr>
+					<td><form:label path="email">E-mail</form:label></td>
+					<td><form:input type="email" path="email" /></td>
+					<td><form:errors path="email" cssClass="error" /></td>
+				</tr>
+				<tr>
+					<td><form:label path="dateOfBirth">Date of birth</form:label></td>
+					<td><form:input type="date" path="dateOfBirth" /></td>
+				</tr>
+				<tr>
 					<td><form:label path="password">Password</form:label></td>
 					<td><form:password path="password" /></td>
 					<td><form:errors path="password" cssClass="error" /></td>
@@ -43,13 +52,13 @@
 				<tr>
 				    <td><form:label path="job">Job</form:label></td>
 				    <td>
-				        <form:radiobuttons items="${job}" path="job" /> 
+				        <form:radiobuttons items="${jobItem}" path="job" /> 
 				    </td>
 				</tr>
 				<tr>
 				    <td><form:label path="country">Country</form:label></td>
 				    <td>
-				        <form:select path="country" items="${country}" />
+				        <form:select path="country" items="${countryItems}" />
 				    </td>
 				</tr>
 				<tr>
@@ -82,7 +91,7 @@
 	        	<tr>
 		            <td><form:label path="favouriteLanguage">Favourite languages</form:label></td>
 		            <td>
-		                <form:checkboxes items="${favouriteLanguage}" path="favouriteLanguage" /> 
+		                <form:checkboxes items="${favouriteLanguageItem}" path="favouriteLanguage" /> 
 		            </td>
 	        	</tr> 
 				<tr>

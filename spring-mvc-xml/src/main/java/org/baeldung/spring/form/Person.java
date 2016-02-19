@@ -9,8 +9,9 @@ public class Person {
 
 	private long id;
 
-	@NotEmpty
 	private String name;
+	private String email;
+	private String dateOfBirth;
 
 	@NotEmpty
 	private String password;
@@ -18,7 +19,7 @@ public class Person {
 	private String country;
 	private String book;
 	private String job;
-	boolean receiveNewsletter;
+	private boolean receiveNewsletter;
 	private String[] hobbies;
 	private List<String> favouriteLanguage;
 	private List<String> fruit;
@@ -43,6 +44,22 @@ public class Person {
 
 	public void setName(final String name) {
 		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
+
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(final String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public String getPassword() {
@@ -132,5 +149,4 @@ public class Person {
 	public void setFile(final MultipartFile file) {
 		this.file = file;
 	}
-
 }
