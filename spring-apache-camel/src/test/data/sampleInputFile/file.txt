@@ -1,1 +1,1 @@
-THIS IS UPPERCASE CONTENT. this is lowercase content.
+This is data that will be processed by a Camel route!

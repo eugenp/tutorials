@@ -23,6 +23,6 @@ To build this application execute following maven command in ApacheCamelFileProc
 
 <code>mvn clean install</code>
 
-To run this application you can either run our main class org.apache.camel.main.App from your IDE or you can execute following maven command:
+To run this application you can either run our main class App from your IDE or you can execute following maven command:
 
-<code>mvn exec:java -Dexec.mainClass="org.apache.camel.main.App"</code>
+<code>mvn exec:java -Dexec.mainClass="App"</code>
