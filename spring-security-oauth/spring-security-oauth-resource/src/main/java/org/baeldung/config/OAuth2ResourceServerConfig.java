@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecurityExpressionHandler;
+import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
@@ -20,14 +21,25 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @PropertySource({ "classpath:persistence.properties" })
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class OAuth2ResourceServerConfig extends GlobalMethodSecurityConfiguration {
-
+public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private Environment env;
 
     @Override
-    protected MethodSecurityExpressionHandler createExpressionHandler() {
-        return new OAuth2MethodSecurityExpressionHandler();
+    public void configure(HttpSecurity http) throws Exception {
+        // @formatter:off
+        http
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+            .and()
+            .requestMatchers().antMatchers("/foos/**","/bars/**")
+            .and()
+            .authorizeRequests()
+                .antMatchers(HttpMethod.GET,"/foos/**").access("#oauth2.hasScope('read')")
+                .antMatchers(HttpMethod.POST,"/foos/**").access("#oauth2.hasScope('write')")
+                .antMatchers(HttpMethod.GET,"/bars/**").access("#oauth2.hasScope('read') and hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST,"/bars/**").access("#oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
+            ;
+        // @formatter:on
     }
 
     @Bean

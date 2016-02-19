@@ -47,10 +47,10 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // @formatter:off
         clients.jdbc(dataSource())
-               .withClient("clientId")
+               .withClient("sampleClientId")
                .authorizedGrantTypes("implicit")
-               .scopes("read")
-               .autoApprove(true)
+               .scopes("read","write")
+               .autoApprove(false)
                .and()
                .withClient("clientIdPassword")
                .secret("secret")
