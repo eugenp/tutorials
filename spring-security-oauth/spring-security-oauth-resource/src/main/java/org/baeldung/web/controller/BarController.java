@@ -21,7 +21,7 @@ public class BarController {
     }
 
     // API - read
-    // @PreAuthorize("#oauth2.hasScope('read')")
+    // @PreAuthorize("#oauth2.hasScope('read') and hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.GET, value = "/bars/{id}")
     @ResponseBody
     public Bar findById(@PathVariable final long id) {
@@ -29,7 +29,7 @@ public class BarController {
     }
 
     // API - write
-    // @PreAuthorize("#oauth2.hasScope('write')")
+    // @PreAuthorize("#oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
     @RequestMapping(method = RequestMethod.POST, value = "/bars")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody

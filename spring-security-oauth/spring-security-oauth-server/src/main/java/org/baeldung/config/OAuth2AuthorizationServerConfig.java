@@ -55,7 +55,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                .withClient("clientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
-               .scopes("read");
+               .scopes("read","write");
 
      // @formatter:on
     }

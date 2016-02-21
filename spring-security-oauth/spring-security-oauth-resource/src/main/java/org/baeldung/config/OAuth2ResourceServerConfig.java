@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -20,7 +19,6 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @Configuration
 @PropertySource({ "classpath:persistence.properties" })
 @EnableResourceServer
-@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Autowired
     private Environment env;
