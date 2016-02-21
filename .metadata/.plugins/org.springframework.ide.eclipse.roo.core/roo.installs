@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
-<installs>
-<install is-default="true">
-<home>C:\springsourcemaven\spring-roo-1.2.4.RELEASE\</home>
-<name>Roo 1.2.4.RELEASE</name>
-</install>
-</installs>
