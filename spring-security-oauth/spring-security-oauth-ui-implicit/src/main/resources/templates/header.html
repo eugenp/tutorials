@@ -13,7 +13,7 @@
   site="http://localhost:8081/spring-security-oauth-server"
   client-id="sampleClientId"
   redirect-uri="http://localhost:8081/spring-security-oauth-ui-implicit/"
-  scope="read write"
+  scope="read write foo bar"
   template="oauthTemp">
 </oauth>
 
@@ -91,6 +91,26 @@ app.controller('mainCtrl', function($scope,$resource,$http,$rootScope) {
         $scope.bar.id = null;
         $scope.bar = $scope.bars.save($scope.bar, function(){
             $rootScope.message = "Bar Created Successfully";
+        });
+    }
+    
+    // baz
+    $scope.baz = {id:0 , name:"sample baz"};
+    $scope.bazes = $resource("http://localhost:8081/spring-security-oauth-resource/bazes/:bazId",{bazId:'@id'});
+    
+    $scope.getBaz = function(){
+        $scope.baz = $scope.bazes.get({bazId:$scope.baz.id});
+    }
+    
+    $scope.createBaz = function(){
+        if($scope.baz.name.length==0)
+        {
+            $rootScope.message = "Baz name can not be empty";
+            return;
+        }
+        $scope.baz.id = null;
+        $scope.baz = $scope.bazes.save($scope.baz, function(){
+            $rootScope.message = "Baz Created Successfully";
         });
     }
     

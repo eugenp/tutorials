@@ -49,13 +49,19 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
         clients.jdbc(dataSource())
                .withClient("sampleClientId")
                .authorizedGrantTypes("implicit")
-               .scopes("read","write")
+               .scopes("read","write","foo","bar")
                .autoApprove(false)
                .and()
-               .withClient("clientIdPassword")
+               .withClient("fooClientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
-               .scopes("read","write");
+               .scopes("foo","read","write")
+               .and()
+               .withClient("barClientIdPassword")
+               .secret("secret")
+               .authorizedGrantTypes("password","authorization_code", "refresh_token")
+               .scopes("bar","read","write")
+               ;
 
      // @formatter:on
     }

@@ -28,8 +28,8 @@ app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,
 		$scope.foo = $scope.foos.get({fooId:$scope.foo.id});
 	}
 	
-    $scope.data = {grant_type:"password", username: "", password: "", client_id: "clientIdPassword"};
-    $scope.encoded = btoa("clientIdPassword:secret");
+    $scope.data = {grant_type:"password", username: "", password: "", client_id: "fooClientIdPassword"};
+    $scope.encoded = btoa("fooClientIdPassword:secret");
     
     var isLoginPage = window.location.href.indexOf("login") != -1;
     if(isLoginPage){
