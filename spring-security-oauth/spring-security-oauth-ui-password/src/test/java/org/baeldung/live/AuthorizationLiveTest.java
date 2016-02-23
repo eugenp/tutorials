@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
+import org.springframework.http.MediaType;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
@@ -33,56 +34,37 @@ public class AuthorizationLiveTest {
 
         final Response barResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bars/1");
         assertEquals(403, barResponse.getStatusCode());
-
-        final Response bazResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bazes/1");
-        assertEquals(403, bazResponse.getStatusCode());
     }
 
     @Test
-    public void givenUser_whenUseBarClient_thenOkForBarResourceOnly() {
+    public void givenUser_whenUseBarClient_thenOkForBarResourceReadOnly() {
         final String accessToken = obtainAccessToken("barClientIdPassword", "john", "123");
 
-        final Response barResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bars/1");
-        assertEquals(200, barResponse.getStatusCode());
-        assertNotNull(barResponse.jsonPath().get("name"));
-
         final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/foos/1");
         assertEquals(403, fooResponse.getStatusCode());
 
-        final Response bazResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bazes/1");
-        assertEquals(403, bazResponse.getStatusCode());
+        final Response barReadResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bars/1");
+        assertEquals(200, barReadResponse.getStatusCode());
+        assertNotNull(barReadResponse.jsonPath().get("name"));
+
+        final Response barWritResponse = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", "Bearer " + accessToken).body("{\"id\":1,\"name\":\"MyBar\"}").post("http://localhost:8081/spring-security-oauth-resource/bars");
+        assertEquals(403, barWritResponse.getStatusCode());
     }
 
     @Test
-    public void givenAdmin_whenUseFooClient_thenOkForFooAndBazResourceOnly() {
-        final String accessToken = obtainAccessToken("fooClientIdPassword", "tom", "111");
-
-        final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/foos/1");
-        assertEquals(200, fooResponse.getStatusCode());
-        assertNotNull(fooResponse.jsonPath().get("name"));
-
-        final Response bazResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bazes/1");
-        assertEquals(200, bazResponse.getStatusCode());
-        assertNotNull(bazResponse.jsonPath().get("name"));
-
-        final Response barResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bars/1");
-        assertEquals(403, barResponse.getStatusCode());
-    }
-
-    @Test
-    public void givenAdmin_whenUseBarClient_thenOkForBarAndBazResourceOnly() {
+    public void givenAdmin_whenUseBarClient_thenOkForBarResourceReadWrite() {
         final String accessToken = obtainAccessToken("barClientIdPassword", "tom", "111");
 
+        final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/foos/1");
+        assertEquals(403, fooResponse.getStatusCode());
+
         final Response barResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bars/1");
         assertEquals(200, barResponse.getStatusCode());
         assertNotNull(barResponse.jsonPath().get("name"));
 
-        final Response bazResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/bazes/1");
-        assertEquals(200, bazResponse.getStatusCode());
-        assertNotNull(bazResponse.jsonPath().get("name"));
-
-        final Response fooResponse = RestAssured.given().header("Authorization", "Bearer " + accessToken).get("http://localhost:8081/spring-security-oauth-resource/foos/1");
-        assertEquals(403, fooResponse.getStatusCode());
+        final Response barWritResponse = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", "Bearer " + accessToken).body("{\"id\":1,\"name\":\"MyBar\"}").post("http://localhost:8081/spring-security-oauth-resource/bars");
+        assertEquals(201, barWritResponse.getStatusCode());
+        assertEquals("MyBar", barWritResponse.jsonPath().get("name"));
     }
 
 }

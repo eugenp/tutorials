@@ -94,25 +94,6 @@ app.controller('mainCtrl', function($scope,$resource,$http,$rootScope) {
         });
     }
     
-    // baz
-    $scope.baz = {id:0 , name:"sample baz"};
-    $scope.bazes = $resource("http://localhost:8081/spring-security-oauth-resource/bazes/:bazId",{bazId:'@id'});
-    
-    $scope.getBaz = function(){
-        $scope.baz = $scope.bazes.get({bazId:$scope.baz.id});
-    }
-    
-    $scope.createBaz = function(){
-        if($scope.baz.name.length==0)
-        {
-            $rootScope.message = "Baz name can not be empty";
-            return;
-        }
-        $scope.baz.id = null;
-        $scope.baz = $scope.bazes.save($scope.baz, function(){
-            $rootScope.message = "Baz Created Successfully";
-        });
-    }
     
 });
 /*]]>*/

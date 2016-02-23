@@ -29,15 +29,13 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
         http
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
             .and()
-            .requestMatchers().antMatchers("/foos/**","/bars/**","/bazes/**")
+            .requestMatchers().antMatchers("/foos/**","/bars/**")
             .and()
             .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/foos/**").access("#oauth2.hasScope('foo') and #oauth2.hasScope('read')")
                 .antMatchers(HttpMethod.POST,"/foos/**").access("#oauth2.hasScope('foo') and #oauth2.hasScope('write')")
                 .antMatchers(HttpMethod.GET,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('read')")
-                .antMatchers(HttpMethod.POST,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('write')")
-                .antMatchers(HttpMethod.GET,"/bazes/**").access("#oauth2.hasScope('read') and hasRole('ROLE_ADMIN')")
-                .antMatchers(HttpMethod.POST,"/bazes/**").access("#oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
+                .antMatchers(HttpMethod.POST,"/bars/**").access("#oauth2.hasScope('bar') and #oauth2.hasScope('write') and hasRole('ROLE_ADMIN')")
             ;
         // @formatter:on
     }
