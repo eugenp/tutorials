@@ -53,6 +53,16 @@ public class StoredProcedureTest {
         storedProcedure.getResultList().forEach(c -> Assert.assertEquals("Camaro", ((Car) c).getModel()));
     }
 
+    @Test
+    public void findCarsByYearNoNamedStored() {
+        StoredProcedureQuery findByYearProcedure = 
+         entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
+         .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN)
+         .registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR).setParameter("p_year", 2015);
+
+        findByYearProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+    }
+
     @AfterClass
     public static void destroy() {
 
