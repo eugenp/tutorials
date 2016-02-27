@@ -21,52 +21,63 @@
 var app = angular.module('myApp', ["ngResource","ngRoute","ngCookies"]);
 
 app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,$cookies) {
-	$scope.foo = {id:0 , name:"sample foo"};
-	$scope.foos = $resource("http://localhost:8081/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
+    $scope.foo = {id:0 , name:"sample foo"};
+    $scope.foos = $resource("foos/:fooId",{fooId:'@id'});
     
-	$scope.getFoo = function(){
-		$scope.foo = $scope.foos.get({fooId:$scope.foo.id});
-	}
-	
-    $scope.data = {grant_type:"password", username: "", password: "", client_id: "fooClientIdPassword"};
-    $scope.encoded = btoa("fooClientIdPassword:secret");
+    $scope.getFoo = function(){
+        $scope.foo = $scope.foos.get({fooId:$scope.foo.id});
+    }
     
+    $scope.loginData = {grant_type:"password", username: "", password: "", client_id: "fooClientIdPassword"};
+    $scope.refreshData = {grant_type:"refresh_token",  refresh_token:""};
+        
     var isLoginPage = window.location.href.indexOf("login") != -1;
     if(isLoginPage){
-    	if($cookies.get("access_token")){
+        if($cookies.get("access_token")){
             window.location.href = "index";
-        }else{
-            $http.defaults.headers.common.Authorization= 'Basic ' + $scope.encoded;
         }
     }else{
-    	if($cookies.get("access_token")){
-    		$http.defaults.headers.common.Authorization= 'Bearer ' + $cookies.get("access_token");
-    	}else{
-    		window.location.href = "login";
-    	}
-
+        if($cookies.get("access_token")){
+            $http.defaults.headers.common.Authorization= 'Bearer ' + $cookies.get("access_token");
+        }else{
+            refreshAccessToken();
+        }
     }
     
     $scope.login = function() {   
-     	var req = {
+         $scope.obtainAccessToken($scope.loginData);
+   }
+    
+    function refreshAccessToken(){
+        $http.get("refreshToken").
+          success(function(data, status, headers, config) {
+              if(headers("refreshToken") && headers("refreshToken").length>0){
+                  $scope.refreshData.refresh_token = headers("refreshToken");
+                  $scope.obtainAccessToken($scope.refreshData);
+              }else{
+                  window.location.href = "login";
+                  }
+              });
+    }
+    
+    $scope.obtainAccessToken = function(params){
+        var req = {
             method: 'POST',
-            url: "http://localhost:8081/spring-security-oauth-server/oauth/token",
-            headers: {
-                "Authorization": "Basic " + $scope.encoded,
-                "Content-type": "application/x-www-form-urlencoded; charset=utf-8"
-            },
-            data: $httpParamSerializer($scope.data)
+            url: "oauth/token",
+            headers: {"Content-type": "application/x-www-form-urlencoded; charset=utf-8"},
+            data: $httpParamSerializer(params)
         }
         $http(req).then(
-        		function(data){
-        			   $http.defaults.headers.common.Authorization= 'Bearer ' + data.data.access_token;
-        			   $cookies.put("access_token", data.data.access_token);
-        			   window.location.href="index";
-        	    },function(){
-        	    	console.log("error");
-        	    });   
-   } 
-    
+            function(data){
+                $http.defaults.headers.common.Authorization= 'Bearer ' + data.data.access_token;
+                var expireDate = new Date (new Date().getTime() + (1000 * data.data.expires_in));
+                $cookies.put("access_token", data.data.access_token, {'expires': expireDate});
+                window.location.href="index";
+            },function(){
+                console.log("error");
+                window.location.href = "login";
+            });   
+    }
 });
 /*]]>*/
 </script>
