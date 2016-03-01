@@ -22,14 +22,14 @@ var app = angular.module('myApp', ["ngResource","ngRoute","ngCookies"]);
 
 app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,$cookies) {
     $scope.foo = {id:0 , name:"sample foo"};
-    $scope.foos = $resource("foos/:fooId",{fooId:'@id'});
+    $scope.foos = $resource("http://localhost:8081/spring-security-oauth-resource/foos/:fooId",{fooId:'@id'});
     
     $scope.getFoo = function(){
         $scope.foo = $scope.foos.get({fooId:$scope.foo.id});
     }
     
     $scope.loginData = {grant_type:"password", username: "", password: "", client_id: "fooClientIdPassword"};
-    $scope.refreshData = {grant_type:"refresh_token",  refresh_token:""};
+    $scope.refreshData = {grant_type:"refresh_token"};
         
     var isLoginPage = window.location.href.indexOf("login") != -1;
     if(isLoginPage){
@@ -40,27 +40,17 @@ app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,
         if($cookies.get("access_token")){
             $http.defaults.headers.common.Authorization= 'Bearer ' + $cookies.get("access_token");
         }else{
-            refreshAccessToken();
+        	obtainAccessToken($scope.refreshData);
         }
     }
     
     $scope.login = function() {   
-         $scope.obtainAccessToken($scope.loginData);
+         obtainAccessToken($scope.loginData);
    }
     
-    function refreshAccessToken(){
-        $http.get("refreshToken").
-          success(function(data, status, headers, config) {
-              if(headers("refreshToken") && headers("refreshToken").length>0){
-                  $scope.refreshData.refresh_token = headers("refreshToken");
-                  $scope.obtainAccessToken($scope.refreshData);
-              }else{
-                  window.location.href = "login";
-                  }
-              });
-    }
     
-    $scope.obtainAccessToken = function(params){
+    
+    function obtainAccessToken(params){
         var req = {
             method: 'POST',
             url: "oauth/token",
@@ -78,6 +68,7 @@ app.controller('mainCtrl', function($scope,$resource,$http,$httpParamSerializer,
                 window.location.href = "login";
             });   
     }
+    
 });
 /*]]>*/
 </script>
