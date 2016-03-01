@@ -31,10 +31,9 @@ public class OAuth2AuthorizationServerConfig1 extends AuthorizationServerConfigu
         clients.inMemory()
                .withClient("fooClientIdPassword")
                .secret("secret")
-               .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+               .authorizedGrantTypes("password", "authorization_code")
                .scopes("foo", "read", "write")
                .accessTokenValiditySeconds(3600) // 1 hour
-               .refreshTokenValiditySeconds(2592000) // 30 days
                ;
     } // @formatter:on
 
