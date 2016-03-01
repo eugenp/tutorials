@@ -3,7 +3,7 @@
 
 This article will demonstrate how to configure and use Apache Camel with Spring Framework.
 
-<b><h2>Relevant Article</h2></b>
+<b><h2>Relevant Articles</h2></b>
 
 <ul>
   <li><a href="http://camel.apache.org/">Apache Camel</a></li>
@@ -26,3 +26,8 @@ To build this application execute following maven command in ApacheCamelFileProc
 To run this application you can either run our main class App from your IDE or you can execute following maven command:
 
 <code>mvn exec:java -Dexec.mainClass="App"</code>
+
+<b><h2>Relevant Articles on Baeldung</h2></b>
+<ul>
+  <li><a href="http://www.baeldung.com/spring-apache-camel-tutorial">Using Apache Camel with Spring</a></li>
+</ul>
