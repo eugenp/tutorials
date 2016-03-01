@@ -51,16 +51,21 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                .authorizedGrantTypes("implicit")
                .scopes("read","write","foo","bar")
                .autoApprove(false)
+               .accessTokenValiditySeconds(3600)
                .and()
                .withClient("fooClientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
                .scopes("foo","read","write")
+               .accessTokenValiditySeconds(3600) // 1hour
+               .refreshTokenValiditySeconds(2592000) // 30days
                .and()
                .withClient("barClientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
                .scopes("bar","read","write")
+               .accessTokenValiditySeconds(3600) // 1hour
+               .refreshTokenValiditySeconds(2592000) // 30days
                ;
 
      // @formatter:on

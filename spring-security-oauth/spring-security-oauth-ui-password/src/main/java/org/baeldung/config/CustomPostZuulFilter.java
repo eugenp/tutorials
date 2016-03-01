@@ -37,7 +37,8 @@ public class CustomPostZuulFilter extends ZuulFilter {
                 final String refreshToken = json.get("refresh_token").getTextValue();
                 final Cookie cookie = new Cookie("refreshToken", refreshToken);
                 cookie.setHttpOnly(true);
-                // cookie.setPath(ctx.getRequest().getContextPath() + "/refreshToken");
+                // cookie.setSecure(true);
+                cookie.setPath(ctx.getRequest().getContextPath() + "/oauth/token");
                 cookie.setMaxAge(2592000); // 30 days
                 ctx.getResponse().addCookie(cookie);
 
