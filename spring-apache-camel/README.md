@@ -15,6 +15,7 @@ This article will demonstrate how to configure and use Apache Camel with Spring 
 <ul>
   <li>Spring 4.2.4</li>
   <li>Apache Camel 2.16.1</li>
+  <li>Using Apache Camel with Spring</li>
 </ul>
 
 <b><h2>Build and Run Application</h2></b>
