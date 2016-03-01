@@ -16,6 +16,16 @@
 			<property name="hibernate.connection.password" value="JPA" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
+
+		<!-- MySQL properties configuration -->
+		<!--properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/jpa" />
+			<property name="javax.persistence.jdbc.user" value="jpa" />
+			<property name="javax.persistence.jdbc.password" value="bagnara.82" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+		</properties-->
 	</persistence-unit>
 </persistence>
 

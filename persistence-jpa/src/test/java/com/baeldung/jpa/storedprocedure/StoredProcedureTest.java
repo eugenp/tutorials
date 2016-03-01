@@ -28,7 +28,7 @@ public class StoredProcedureTest {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            Car car = new Car("Ford Mustang", 2015);
+            Car car = new Car("Fiat Punto", 2015);
             entityManager.persist(car);
             transaction.commit();
         } catch (Exception e) {
@@ -55,12 +55,21 @@ public class StoredProcedureTest {
 
     @Test
     public void findCarsByYearNoNamedStored() {
-        StoredProcedureQuery findByYearProcedure = 
+        StoredProcedureQuery findByYearProcedure =
          entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
-         .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN)
-         .registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR).setParameter("p_year", 2015);
+           .registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR)
+           .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN)
+           .setParameter("p_year", 2015);
 
         findByYearProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+    }
+
+    @Test @Ignore
+    public void findCarsByYearMySql() {
+        StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR",Car.class)
+          .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
+          .setParameter(1, 2015);
+        storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
     @AfterClass
