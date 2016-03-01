@@ -14,7 +14,7 @@ public class SimpleDataGeneration {
 		Calendar cal = Calendar.getInstance();
 		cal.set(1986 , 01 , 14);
 		customer.setDob(cal.getTime());
-		customer.setFirstName("Xstream");
+		customer.setFirstName("XStream");
 		customer.setLastName("Java");
 
 		List<ContactDetails> contactDetailsList = new ArrayList<ContactDetails>();

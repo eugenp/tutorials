@@ -14,21 +14,21 @@ public class XStreamSimpleXmlTest {
 
 	private Customer customer = null;
 	private String dataXml = null;
-	private XStream xtream = null;
+	private XStream xstream = null;
 
 	@Before
 	public void dataSetup() {
 		customer = SimpleDataGeneration.generateData();
-		xtream = SimpleXstreamInitializer.getXstreamInstance();
-		xtream.processAnnotations(Customer.class);
-		xtream.processAnnotations(AddressDetails.class);
-		xtream.processAnnotations(ContactDetails.class);
-		xtream.omitField(Customer.class , "firstName");
-		xtream.registerConverter(new MyDateConverter());
+		xstream = SimpleXstreamInitializer.getXstreamInstance();
+		xstream.processAnnotations(Customer.class);
+		xstream.processAnnotations(AddressDetails.class);
+		xstream.processAnnotations(ContactDetails.class);
+		xstream.omitField(Customer.class , "firstName");
+		xstream.registerConverter(new MyDateConverter());
 		//xtream.registerConverter(new MySingleValueConverter());
-		xtream.aliasField("fn", Customer.class, "firstName");
+		xstream.aliasField("fn", Customer.class, "firstName");
 		
-		dataXml = xtream.toXML(customer);
+		dataXml = xstream.toXML(customer);
 		System.out.println(dataXml);
 	}
 
@@ -39,7 +39,7 @@ public class XStreamSimpleXmlTest {
 
 	@Test
 	public void convertXmlToObject() {
-		customer = (Customer) xtream.fromXML(dataXml);
+		customer = (Customer) xstream.fromXML(dataXml);
 		Assert.assertNotNull(customer);
 	}
 
