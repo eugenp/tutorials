@@ -20,11 +20,14 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 @PropertySource({ "classpath:persistence.properties" })
 @EnableResourceServer
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
+
     @Autowired
     private Environment env;
 
+    //
+
     @Override
-    public void configure(HttpSecurity http) throws Exception {
+    public void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)

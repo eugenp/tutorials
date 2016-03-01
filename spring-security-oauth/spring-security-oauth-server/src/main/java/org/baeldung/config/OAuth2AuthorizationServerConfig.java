@@ -38,41 +38,42 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Value("classpath:schema.sql")
     private Resource schemaScript;
 
+    //
+
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+    public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
     }
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        // @formatter:off
+    public void configure(final ClientDetailsServiceConfigurer clients) throws Exception { // @formatter:off
         clients.jdbc(dataSource())
                .withClient("sampleClientId")
                .authorizedGrantTypes("implicit")
                .scopes("read","write","foo","bar")
                .autoApprove(false)
                .accessTokenValiditySeconds(3600)
+               
                .and()
                .withClient("fooClientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
                .scopes("foo","read","write")
-               .accessTokenValiditySeconds(3600) // 1hour
-               .refreshTokenValiditySeconds(2592000) // 30days
+               .accessTokenValiditySeconds(3600) // 1 hour
+               .refreshTokenValiditySeconds(2592000) // 30 days
+               
                .and()
                .withClient("barClientIdPassword")
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
                .scopes("bar","read","write")
-               .accessTokenValiditySeconds(3600) // 1hour
-               .refreshTokenValiditySeconds(2592000) // 30days
+               .accessTokenValiditySeconds(3600) // 1 hour
+               .refreshTokenValiditySeconds(2592000) // 30 days
                ;
-
-     // @formatter:on
-    }
+    } // @formatter:on
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore()).authenticationManager(authenticationManager);
     }
 
@@ -104,4 +105,5 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
     public TokenStore tokenStore() {
         return new JdbcTokenStore(dataSource());
     }
+
 }
