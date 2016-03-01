@@ -11,9 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("john").password("123").roles("USER").and().withUser("tom").password("111").roles("ADMIN");
-    }
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {// @formatter:off
+        auth.inMemoryAuthentication().
+            withUser("john").password("123").roles("USER").
+            and().
+            withUser("tom").password("111").roles("ADMIN");
+    }// @formatter:on
 
     @Override
     @Bean
