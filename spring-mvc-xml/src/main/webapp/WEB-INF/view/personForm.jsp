@@ -12,6 +12,12 @@
 			color: #ff0000;
 		}
 		
+		.errorbox {
+		
+			background-color: #ffEEEE;
+			border: 2px solid #ff0000;
+		}
+		
 	</style>
 	
 	<body>
@@ -20,13 +26,13 @@
 	
 		<form:form method="POST" action="/spring-mvc-xml/addPerson" modelAttribute="person" enctype="multipart/form-data">
 			
-			<form:errors path="*" cssClass="error"/>
+			<form:errors path="*" cssClass="errorbox" element="div" />
 			
 			<table>
 				<tr>
 					<td><form:label path="name">Name</form:label></td>
 					<td><form:input path="name" /></td>
-					<td><form:errors path="name" cssClass="error" /></td>
+					<td><form:errors path="name" cssClass="error" element="div"/></td>
 				</tr>
 				<tr>
 					<td><form:label path="email">E-mail</form:label></td>
