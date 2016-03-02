@@ -1,7 +1,0 @@
-server:
-    port: 8081
-zuul:
-  routes:
-    oauth:
-      path: /oauth/**
-      url: http://localhost:8081/spring-security-oauth-server/oauth
