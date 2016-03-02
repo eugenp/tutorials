@@ -55,20 +55,16 @@ public class StoredProcedureTest {
 
     @Test
     public void findCarsByYearNoNamedStored() {
-        StoredProcedureQuery findByYearProcedure =
-         entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
-           .registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR)
-           .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN)
-           .setParameter("p_year", 2015);
+        StoredProcedureQuery findByYearProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR)
+                .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN).setParameter("p_year", 2015);
 
         findByYearProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
-    @Test @Ignore
+    @Test
+    @Ignore
     public void findCarsByYearMySql() {
-        StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR",Car.class)
-          .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
-          .setParameter(1, 2015);
+        StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN).setParameter(1, 2015);
         storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 

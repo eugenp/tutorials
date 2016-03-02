@@ -59,7 +59,7 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
                .secret("secret")
                .authorizedGrantTypes("password","authorization_code", "refresh_token")
                .scopes("foo","read","write")
-               .accessTokenValiditySeconds(3600) // 1 hour
+               .accessTokenValiditySeconds(15) // 1 hour
                .refreshTokenValiditySeconds(2592000) // 30 days
                
                .and()

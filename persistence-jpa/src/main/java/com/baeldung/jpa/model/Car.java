@@ -30,7 +30,7 @@ public class Car {
     @Id
     @SequenceGenerator(name = "CarIdSequence", sequenceName = "SEQ_CAR_ID", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CarIdSequence")
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) -- for MySQL
+    // @GeneratedValue(strategy = GenerationType.IDENTITY) -- for MySQL
     @Column(name = "ID", unique = true, nullable = false, scale = 0)
     public long getId() {
         return id;
