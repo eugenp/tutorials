@@ -1,6 +1,5 @@
 package org.baeldung.spring.controller;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,12 +34,7 @@ public class EmployeeController {
 		return employeeMap.get(Id);
 	}
 
-	@RequestMapping(value = "/allEmployees", method = RequestMethod.GET)
-	public @ResponseBody
-	Collection<Employee> getAllEmployees() {
 
-		return employeeMap.values();
-	}
 
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
 	public String submit(@Valid @ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
