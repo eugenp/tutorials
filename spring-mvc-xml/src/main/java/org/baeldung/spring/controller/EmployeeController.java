@@ -26,12 +26,24 @@ public class EmployeeController {
 		return new ModelAndView("employeeHome", "employee", new Employee());
 	}
 
-	@RequestMapping(value = "/employee/{Id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/employee/{Id}", produces = { "application/json",
+	"application/xml" }, method = RequestMethod.GET)
 	public @ResponseBody
 	Employee getEmployeeById(@PathVariable final long Id) {
 
-		System.out.println(employeeMap.get(Id));
 		return employeeMap.get(Id);
+	}
+
+	@RequestMapping(value = "/employee/{Id}", method = RequestMethod.GET)
+	public String getEmployeeByIdHtmlView(@PathVariable final long Id,
+			final ModelMap model) {
+
+		model.addAttribute("name", employeeMap.get(Id).getName());
+		model.addAttribute("contactNumber", employeeMap.get(Id)
+				.getContactNumber());
+		model.addAttribute("id", employeeMap.get(Id).getId());
+
+		return "employeeView";
 	}
 
 
