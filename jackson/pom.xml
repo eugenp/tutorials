@@ -1,175 +1,182 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
-    <artifactId>jackson</artifactId>
-    <version>0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.baeldung</groupId>
+	<artifactId>jackson</artifactId>
+	<version>0.1-SNAPSHOT</version>
 
-    <name>jackson</name>
+	<name>jackson</name>
 
-    <dependencies>
+	<dependencies>
 
-        <!-- utils -->
+		<!-- utils -->
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
 
-        <!-- web -->
+		<!-- web -->
 
-        <!-- marshalling -->
+		<!-- marshalling -->
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.4.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-joda</artifactId>
-            <version>2.4.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-joda</artifactId>
+			<version>2.4.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>2.6</version>
-        </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jsonSchema</artifactId>
+			<version>2.6.0</version>
+		</dependency>
 
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.3.1</version>
-        </dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.6</version>
+		</dependency>
 
-        <!-- test scoped -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<!-- test scoped -->
 
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-    </dependencies>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-    <build>
-        <finalName>jackson</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+	</dependencies>
 
-        <plugins>
+	<build>
+		<finalName>jackson</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
+		<plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 
-        </plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+			</plugin>
 
-    </build>
+		</plugins>
 
-    <properties>
-        <!-- Spring -->
-        <org.springframework.version>4.1.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
+	</build>
 
-        <!-- persistence -->
-        <hibernate.version>4.3.10.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.35</mysql-connector-java.version>
+	<properties>
+		<!-- Spring -->
+		<org.springframework.version>4.1.5.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
 
-        <!-- marshalling -->
-        <jackson.version>2.7.1-1</jackson.version>
+		<!-- persistence -->
+		<hibernate.version>4.3.10.Final</hibernate.version>
+		<mysql-connector-java.version>5.1.35</mysql-connector-java.version>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
+		<!-- marshalling -->
+		<jackson.version>2.7.1-1</jackson.version>
 
-        <!-- various -->
-        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+		<!-- logging -->
+		<org.slf4j.version>1.7.13</org.slf4j.version>
+		<logback.version>1.1.3</logback.version>
 
-        <!-- util -->
-        <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
+		<!-- various -->
+		<hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
 
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
+		<!-- util -->
+		<guava.version>19.0</guava.version>
+		<commons-lang3.version>3.4</commons-lang3.version>
 
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
+		<!-- testing -->
+		<org.hamcrest.version>1.3</org.hamcrest.version>
+		<junit.version>4.12</junit.version>
+		<mockito.version>1.10.19</mockito.version>
 
-        <rest-assured.version>2.4.1</rest-assured.version>
+		<httpcore.version>4.4.1</httpcore.version>
+		<httpclient.version>4.5</httpclient.version>
 
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
+		<rest-assured.version>2.4.1</rest-assured.version>
 
-    </properties>
+		<!-- maven plugins -->
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+		<cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
+
+	</properties>
 
 </project>
