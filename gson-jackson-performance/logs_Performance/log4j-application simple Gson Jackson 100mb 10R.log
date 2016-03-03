@@ -1,0 +1,160 @@
+2016-02-13 22:32:02 INFO  SimpleDataGson:25 - -------Round 1
+2016-02-13 22:32:07 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1802698961
+2016-02-13 22:32:08 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:08 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:10 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 2003962071
+2016-02-13 22:32:10 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:12 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1005873828
+2016-02-13 22:32:12 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:14 INFO  SimpleDataGson:25 - -------Round 2
+2016-02-13 22:32:16 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1222128229
+2016-02-13 22:32:16 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:16 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:18 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1672580233
+2016-02-13 22:32:18 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:20 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 914391709
+2016-02-13 22:32:20 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:21 INFO  SimpleDataGson:25 - -------Round 3
+2016-02-13 22:32:23 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1232757569
+2016-02-13 22:32:24 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:24 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:25 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1761755454
+2016-02-13 22:32:25 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:28 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1042478282
+2016-02-13 22:32:28 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:29 INFO  SimpleDataGson:25 - -------Round 4
+2016-02-13 22:32:31 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1350677839
+2016-02-13 22:32:31 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:31 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:33 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1997474806
+2016-02-13 22:32:33 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:35 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 999789995
+2016-02-13 22:32:35 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:36 INFO  SimpleDataGson:25 - -------Round 5
+2016-02-13 22:32:39 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1269646240
+2016-02-13 22:32:39 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:39 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:41 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 2061314403
+2016-02-13 22:32:41 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:44 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1455524498
+2016-02-13 22:32:44 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:45 INFO  SimpleDataGson:25 - -------Round 6
+2016-02-13 22:32:47 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1304567889
+2016-02-13 22:32:47 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:47 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:49 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1370549381
+2016-02-13 22:32:49 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:51 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1153593911
+2016-02-13 22:32:51 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:52 INFO  SimpleDataGson:25 - -------Round 7
+2016-02-13 22:32:54 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1258311882
+2016-02-13 22:32:55 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:32:55 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:32:56 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1423511342
+2016-02-13 22:32:56 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:32:58 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1174751932
+2016-02-13 22:32:58 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:32:59 INFO  SimpleDataGson:25 - -------Round 8
+2016-02-13 22:33:02 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1233054419
+2016-02-13 22:33:02 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:33:02 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:33:03 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1644931000
+2016-02-13 22:33:03 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:33:06 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1299340655
+2016-02-13 22:33:06 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:33:07 INFO  SimpleDataGson:25 - -------Round 9
+2016-02-13 22:33:09 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1250320633
+2016-02-13 22:33:09 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:33:09 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:33:11 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1876958683
+2016-02-13 22:33:11 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:33:14 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1180127985
+2016-02-13 22:33:14 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:33:15 INFO  SimpleDataGson:25 - -------Round 10
+2016-02-13 22:33:18 INFO  SimpleDataGson:50 - Json Generation Time(ms):: 1314250627
+2016-02-13 22:33:18 INFO  SimpleDataGson:27 - Size of Simple content Gson :: 101 MB
+2016-02-13 22:33:18 INFO  SimpleDataGson:28 - --------------------------------------------------------------------------
+2016-02-13 22:33:20 INFO  SimpleDataGson:60 - Generating Map from json Time(ms):: 1483840853
+2016-02-13 22:33:20 INFO  SimpleDataGson:61 - --------------------------------------------------------------------------
+2016-02-13 22:33:22 INFO  SimpleDataGson:73 - Generating Actual Object from json Time(ms):: 1179707185
+2016-02-13 22:33:22 INFO  SimpleDataGson:74 - --------------------------------------------------------------------------
+2016-02-13 22:33:23 INFO  SimpleDataGson:36 - --------------------------------------------------------------------------
+2016-02-13 22:33:23 INFO  SimpleDataGson:37 - Average Time to Generate JSON : 1323841428
+2016-02-13 22:33:23 INFO  SimpleDataGson:38 - Average Time to Parse JSON To Map : 1729687822
+2016-02-13 22:33:23 INFO  SimpleDataGson:39 - Average Time to Parse JSON To Actual Object : 1140557998
+2016-02-13 22:33:23 INFO  SimpleDataGson:40 - --------------------------------------------------------------------------
+2016-02-13 22:34:23 INFO  SimpleDataJackson:28 - -------Round 1
+2016-02-13 22:34:28 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 3749361201
+2016-02-13 22:34:29 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:34:29 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:34:34 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 5117887111
+2016-02-13 22:34:34 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:34:36 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 1086143172
+2016-02-13 22:34:38 INFO  SimpleDataJackson:28 - -------Round 2
+2016-02-13 22:34:39 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 434662538
+2016-02-13 22:34:39 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:34:39 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:34:41 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1334135590
+2016-02-13 22:34:41 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:34:43 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 771198580
+2016-02-13 22:34:44 INFO  SimpleDataJackson:28 - -------Round 3
+2016-02-13 22:34:45 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 448593143
+2016-02-13 22:34:45 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:34:45 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:34:50 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 4189457425
+2016-02-13 22:34:50 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:34:52 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 887058668
+2016-02-13 22:34:53 INFO  SimpleDataJackson:28 - -------Round 4
+2016-02-13 22:34:54 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 465465795
+2016-02-13 22:34:54 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:34:54 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:34:56 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1384778810
+2016-02-13 22:34:56 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:34:58 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 772597563
+2016-02-13 22:34:59 INFO  SimpleDataJackson:28 - -------Round 5
+2016-02-13 22:35:01 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 431909574
+2016-02-13 22:35:01 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:01 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:02 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1414299931
+2016-02-13 22:35:02 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:04 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 758118259
+2016-02-13 22:35:05 INFO  SimpleDataJackson:28 - -------Round 6
+2016-02-13 22:35:07 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 420912330
+2016-02-13 22:35:07 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:07 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:08 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1330342865
+2016-02-13 22:35:08 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:11 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 1147846006
+2016-02-13 22:35:12 INFO  SimpleDataJackson:28 - -------Round 7
+2016-02-13 22:35:14 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 637133177
+2016-02-13 22:35:14 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:14 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:16 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1710650775
+2016-02-13 22:35:16 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:18 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 1022232915
+2016-02-13 22:35:20 INFO  SimpleDataJackson:28 - -------Round 8
+2016-02-13 22:35:21 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 469254572
+2016-02-13 22:35:22 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:22 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:23 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1375411079
+2016-02-13 22:35:23 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:25 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 774870908
+2016-02-13 22:35:26 INFO  SimpleDataJackson:28 - -------Round 9
+2016-02-13 22:35:28 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 451041361
+2016-02-13 22:35:28 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:28 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:29 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1419613220
+2016-02-13 22:35:29 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:31 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 772284924
+2016-02-13 22:35:32 INFO  SimpleDataJackson:28 - -------Round 10
+2016-02-13 22:35:34 INFO  SimpleDataJackson:55 - Json Generation Time(ms):: 422704085
+2016-02-13 22:35:34 INFO  SimpleDataJackson:30 - Size of Simple content Jackson :: 101 MB
+2016-02-13 22:35:34 INFO  SimpleDataJackson:31 - --------------------------------------------------------------------------
+2016-02-13 22:35:35 INFO  SimpleDataJackson:65 - Generating Map from json Time(ms):: 1396597916
+2016-02-13 22:35:35 INFO  SimpleDataJackson:66 - --------------------------------------------------------------------------
+2016-02-13 22:35:38 INFO  SimpleDataJackson:78 - Generating Actual Object from json Time(ms):: 794414020
+2016-02-13 22:35:39 INFO  SimpleDataJackson:41 - --------------------------------------------------------------------------
+2016-02-13 22:35:39 INFO  SimpleDataJackson:42 - Average Time to Generate JSON : 793103777
+2016-02-13 22:35:39 INFO  SimpleDataJackson:43 - Average Time to Parse JSON To Map : 2067317472
+2016-02-13 22:35:39 INFO  SimpleDataJackson:44 - Average Time to Parse JSON To Actual Object : 878676501
+2016-02-13 22:35:39 INFO  SimpleDataJackson:45 - --------------------------------------------------------------------------
