@@ -28,6 +28,9 @@
         <servlet-name>mvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+        <multipart-config>
+        	<location>/tmp</location>
+    	</multipart-config>
     </servlet>
     <servlet-mapping>
         <servlet-name>mvc</servlet-name>
