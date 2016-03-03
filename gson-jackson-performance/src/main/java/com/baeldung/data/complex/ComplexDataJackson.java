@@ -1,27 +1,31 @@
-package org.baeldung.data.complex;
+package com.baeldung.data.complex;
 
+import java.io.IOException;
 import java.util.Map;
 
+import com.baeldung.data.utility.Utility;
 import org.apache.log4j.Logger;
-import org.baeldung.data.utility.Utility;
-import org.baeldung.pojo.complex.CustomerPortfolioComplex;
+import com.baeldung.pojo.complex.CustomerPortfolioComplex;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
  * This class is responsible for performing functions for Complex type 
- * 		GSON like 
+ * 		Jackson like 
  * 		Java to Json 
  * 		Json to Map 
  * 		Json to Java Object
  */
 
-public class ComplexDataGson {
+public class ComplexDataJackson {
 
-	private static final Logger logger = Logger.getLogger(ComplexDataGson.class);
+	private static final Logger logger = Logger.getLogger(ComplexDataJackson.class);
 
-	static Gson gson = new Gson();
+	static ObjectMapper mapper = new ObjectMapper();
 
 	static long generateJsonAvgTime = 0L;
 
@@ -29,7 +33,7 @@ public class ComplexDataGson {
 
 	static long parseJsonToActualObjectAvgTime = 0L;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		CustomerPortfolioComplex customerPortfolioComplex = ComplexDataGeneration.generateData();
 		int j = 50;
 		for (int i = 0; i < j; i++) {
@@ -53,10 +57,11 @@ public class ComplexDataGson {
 		logger.info("--------------------------------------------------------------------------");
 	}
 
-	private static String generateJson(CustomerPortfolioComplex customerPortfolioComplex) {
+	private static String generateJson(CustomerPortfolioComplex customerPortfolioComplex)
+			throws JsonProcessingException {
 		Runtime.getRuntime().gc();
 		long startParsTime = System.nanoTime();
-		String json = gson.toJson(customerPortfolioComplex);
+		String json = mapper.writeValueAsString(customerPortfolioComplex);
 		long endParsTime = System.nanoTime();
 		long elapsedTime = endParsTime - startParsTime;
 		generateJsonAvgTime = generateJsonAvgTime + elapsedTime;
@@ -64,28 +69,27 @@ public class ComplexDataGson {
 		return json;
 	}
 
-	private static void parseJsonToMap(String jsonStr) {
+	private static void parseJsonToMap(String jsonStr) throws JsonParseException , JsonMappingException , IOException {
 		long startParsTime = System.nanoTime();
-		Map parsedMap = gson.fromJson(jsonStr , Map.class);
+		Map parsedMap = mapper.readValue(jsonStr , Map.class);
 		long endParsTime = System.nanoTime();
 		long elapsedTime = endParsTime - startParsTime;
 		parseJsonToMapAvgTime = parseJsonToMapAvgTime + elapsedTime;
 		logger.info("Generating Map from json Time(ms):: " + elapsedTime);
-		logger.info("--------------------------------------------------------------------------");
 		parsedMap = null;
 		Runtime.getRuntime().gc();
+
 	}
 
-	private static void parseJsonToActualObject(String jsonStr) {
+	private static void parseJsonToActualObject(String jsonStr) throws JsonParseException , JsonMappingException ,
+			IOException {
 		long startParsTime = System.nanoTime();
-		CustomerPortfolioComplex customerPortfolioComplex = gson.fromJson(jsonStr , CustomerPortfolioComplex.class);
+		CustomerPortfolioComplex customerPortfolioComplex = mapper.readValue(jsonStr , CustomerPortfolioComplex.class);
 		long endParsTime = System.nanoTime();
 		long elapsedTime = endParsTime - startParsTime;
 		parseJsonToActualObjectAvgTime = parseJsonToActualObjectAvgTime + elapsedTime;
 		logger.info("Generating Actual Object from json Time(ms):: " + elapsedTime);
-		logger.info("--------------------------------------------------------------------------");
 		customerPortfolioComplex = null;
 		Runtime.getRuntime().gc();
-
 	}
 }

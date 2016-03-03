@@ -1,11 +1,11 @@
-package org.baeldung.data.complex;
+package com.baeldung.data.simple;
 
 import java.io.IOException;
 import java.util.Map;
 
+import com.baeldung.data.utility.Utility;
 import org.apache.log4j.Logger;
-import org.baeldung.data.utility.Utility;
-import org.baeldung.pojo.complex.CustomerPortfolioComplex;
+import com.baeldung.pojo.simple.CustomerPortfolioSimple;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,16 +14,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
- * This class is responsible for performing functions for Complex type 
- * 		Jackson like 
+ * This class is responsible for performing functions for Simple type 
+ * 		Jackson like
  * 		Java to Json 
  * 		Json to Map 
  * 		Json to Java Object
  */
 
-public class ComplexDataJackson {
+public class SimpleDataJackson {
 
-	private static final Logger logger = Logger.getLogger(ComplexDataJackson.class);
+	private static final Logger logger = Logger.getLogger(SimpleDataJackson.class);
 
 	static ObjectMapper mapper = new ObjectMapper();
 
@@ -34,13 +34,14 @@ public class ComplexDataJackson {
 	static long parseJsonToActualObjectAvgTime = 0L;
 
 	public static void main(String[] args) throws IOException {
-		CustomerPortfolioComplex customerPortfolioComplex = ComplexDataGeneration.generateData();
+		CustomerPortfolioSimple customerPortfolioSimple = SimpleDataGeneration.generateData();
 		int j = 50;
 		for (int i = 0; i < j; i++) {
 			logger.info("-------Round " + (i + 1));
-			String jsonStr = generateJson(customerPortfolioComplex);
-			logger.info("Size of Complex content Jackson :: " + Utility.bytesIntoMB(jsonStr.getBytes().length));
+			String jsonStr = generateJson(customerPortfolioSimple);
+			logger.info("Size of Simple content Jackson :: " + Utility.bytesIntoMB(jsonStr.getBytes().length));
 			logger.info("--------------------------------------------------------------------------");
+
 			parseJsonToMap(jsonStr);
 			parseJsonToActualObject(jsonStr);
 			jsonStr = null;
@@ -57,11 +58,10 @@ public class ComplexDataJackson {
 		logger.info("--------------------------------------------------------------------------");
 	}
 
-	private static String generateJson(CustomerPortfolioComplex customerPortfolioComplex)
-			throws JsonProcessingException {
+	private static String generateJson(CustomerPortfolioSimple customerPortfolioSimple) throws JsonProcessingException {
 		Runtime.getRuntime().gc();
 		long startParsTime = System.nanoTime();
-		String json = mapper.writeValueAsString(customerPortfolioComplex);
+		String json = mapper.writeValueAsString(customerPortfolioSimple);
 		long endParsTime = System.nanoTime();
 		long elapsedTime = endParsTime - startParsTime;
 		generateJsonAvgTime = generateJsonAvgTime + elapsedTime;
@@ -76,20 +76,20 @@ public class ComplexDataJackson {
 		long elapsedTime = endParsTime - startParsTime;
 		parseJsonToMapAvgTime = parseJsonToMapAvgTime + elapsedTime;
 		logger.info("Generating Map from json Time(ms):: " + elapsedTime);
+		logger.info("--------------------------------------------------------------------------");
 		parsedMap = null;
 		Runtime.getRuntime().gc();
-
 	}
 
 	private static void parseJsonToActualObject(String jsonStr) throws JsonParseException , JsonMappingException ,
 			IOException {
 		long startParsTime = System.nanoTime();
-		CustomerPortfolioComplex customerPortfolioComplex = mapper.readValue(jsonStr , CustomerPortfolioComplex.class);
+		CustomerPortfolioSimple customerPortfolioSimple = mapper.readValue(jsonStr , CustomerPortfolioSimple.class);
 		long endParsTime = System.nanoTime();
 		long elapsedTime = endParsTime - startParsTime;
 		parseJsonToActualObjectAvgTime = parseJsonToActualObjectAvgTime + elapsedTime;
 		logger.info("Generating Actual Object from json Time(ms):: " + elapsedTime);
-		customerPortfolioComplex = null;
+		customerPortfolioSimple = null;
 		Runtime.getRuntime().gc();
 	}
 }

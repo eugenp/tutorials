@@ -1,4 +1,4 @@
-package org.baeldung.pojo.complex;
+package com.baeldung.pojo.complex;
 
 import java.util.List;
 

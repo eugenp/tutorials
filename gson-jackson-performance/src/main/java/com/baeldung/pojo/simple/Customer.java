@@ -1,4 +1,4 @@
-package org.baeldung.pojo.simple;
+package com.baeldung.pojo.simple;
 
 
 public class Customer {

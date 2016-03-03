@@ -1,11 +1,11 @@
-package org.baeldung.data.simple;
+package com.baeldung.data.simple;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.baeldung.data.utility.Utility;
-import org.baeldung.pojo.simple.Customer;
-import org.baeldung.pojo.simple.CustomerPortfolioSimple;
+import com.baeldung.data.utility.Utility;
+import com.baeldung.pojo.simple.Customer;
+import com.baeldung.pojo.simple.CustomerPortfolioSimple;
 
 /**
  * 

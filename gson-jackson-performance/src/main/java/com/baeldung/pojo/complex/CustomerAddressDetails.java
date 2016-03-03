@@ -1,8 +1,8 @@
-package org.baeldung.pojo.complex;
+package com.baeldung.pojo.complex;
 
 import java.util.List;
 
-import org.baeldung.pojo.simple.Customer;
+import com.baeldung.pojo.simple.Customer;
 
 public class CustomerAddressDetails extends Customer {
 

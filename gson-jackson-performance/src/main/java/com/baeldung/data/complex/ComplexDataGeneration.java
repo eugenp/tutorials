@@ -1,13 +1,13 @@
-package org.baeldung.data.complex;
+package com.baeldung.data.complex;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.baeldung.data.utility.Utility;
-import org.baeldung.pojo.complex.AddressDetails;
-import org.baeldung.pojo.complex.ContactDetails;
-import org.baeldung.pojo.complex.CustomerAddressDetails;
-import org.baeldung.pojo.complex.CustomerPortfolioComplex;
+import com.baeldung.data.utility.Utility;
+import com.baeldung.pojo.complex.AddressDetails;
+import com.baeldung.pojo.complex.ContactDetails;
+import com.baeldung.pojo.complex.CustomerAddressDetails;
+import com.baeldung.pojo.complex.CustomerPortfolioComplex;
 
 /**
  * 
