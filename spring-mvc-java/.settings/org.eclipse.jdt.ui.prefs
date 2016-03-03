@@ -1,6 +1,7 @@
-#Sat Jan 21 23:04:06 EET 2012
 eclipse.preferences.version=1
 editor_save_participant_org.eclipse.jdt.ui.postsavelistener.cleanup=true
+formatter_profile=_updated-formatter
+formatter_settings_version=12
 sp_cleanup.add_default_serial_version_id=true
 sp_cleanup.add_generated_serial_version_id=false
 sp_cleanup.add_missing_annotations=true
