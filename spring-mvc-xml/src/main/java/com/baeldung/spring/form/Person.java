@@ -1,4 +1,4 @@
-package org.baeldung.spring.form;
+package com.baeldung.spring.form;
 
 import java.util.List;
 

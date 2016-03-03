@@ -1,8 +1,8 @@
-package org.baeldung.spring.controller;
+package com.baeldung.spring.controller;
 
 import javax.validation.Valid;
 
-import org.baeldung.spring.form.Employee;
+import com.baeldung.spring.form.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
