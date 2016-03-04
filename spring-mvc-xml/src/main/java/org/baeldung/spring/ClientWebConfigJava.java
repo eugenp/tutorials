@@ -1,6 +1,12 @@
 package org.baeldung.spring;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.MessageSourceResourceBundle;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -11,27 +17,40 @@ import org.springframework.web.servlet.view.JstlView;
 //@Configuration
 public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
 
-    public ClientWebConfigJava() {
-        super();
-    }
+	public ClientWebConfigJava() {
+		super();
+	}
 
-    // API
+	@Bean
+	public MessageSource messageSource() {
 
-    @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
+		final ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
+		ms.setBasenames("messages");
+		return ms;
+	}
 
-        registry.addViewController("/sample.html");
-    }
+	@Bean
+	public ResourceBundle getBeanResourceBundle() {
 
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+		final Locale locale = Locale.getDefault();
+		return new MessageSourceResourceBundle(messageSource(), locale);
+	}
 
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/view/");
-        bean.setSuffix(".jsp");
+	@Override
+	public void addViewControllers(final ViewControllerRegistry registry) {
+		super.addViewControllers(registry);
 
-        return bean;
-    }
+		registry.addViewController("/sample.html");
+	}
+
+	@Bean
+	public ViewResolver viewResolver() {
+		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+
+		bean.setViewClass(JstlView.class);
+		bean.setPrefix("/WEB-INF/view/");
+		bean.setSuffix(".jsp");
+
+		return bean;
+	}
 }
