@@ -22,7 +22,7 @@
 	
 	<body>
 	
-		<h3>Welcome, Enter The Person Details</h3>
+		<h3>Welcome, Enter the Person Details</h3>
 	
 		<form:form method="POST" action="/spring-mvc-xml/addPerson" modelAttribute="person">
 			
