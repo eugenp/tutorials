@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd"
 >
 
-    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"/>
+    <mvc:annotation-driven />
     <context:component-scan base-package="org.baeldung.spring.controller"/>
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
@@ -19,22 +19,4 @@
 
     <mvc:view-controller path="/sample.html" view-name="sample"/>
     
-    <!-- Simple strategy: only path extension is taken into account -->
-	<bean id="contentNegotiationManager"
-		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-		<property name="favorPathExtension" value="true"/>
-		<property name="ignoreAcceptHeader" value="true" />
-		<property name="defaultContentType" value="text/html" />
-		<property name="useJaf" value="false"/>
-
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html" />
-				<entry key="json" value="application/json" />
-				<entry key="xml" value="application/xml" />
-			</map>
-		</property>
-	</bean>
-	
-
 </beans>

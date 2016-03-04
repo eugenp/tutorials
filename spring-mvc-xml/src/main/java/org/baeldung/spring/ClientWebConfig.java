@@ -4,14 +4,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@ImportResource("classpath:webMvcConfig.xml")
+//@ImportResource("classpath:webMvcConfig.xml")
+@ImportResource("classpath:contentManagementWebMvcConfig.xml")
 @Configuration
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
-    public ClientWebConfig() {
-        super();
-    }
+	public ClientWebConfig() {
+		super();
+	}
 
-    // API
+	// API
 
 }
