@@ -14,13 +14,6 @@
 			<version>${json-path.version}</version>
 		</dependency>
 
-		<!-- utilities -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>${joda-time.version}</version>
-		</dependency>
-
 		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -44,12 +37,23 @@
 		</dependency>
 	</dependencies>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<properties>
 		<!-- json-path -->
 		<json-path.version>2.1.0</json-path.version>
-
-		<!-- utilities -->
-		<joda-time.version>2.9.2</joda-time.version>
 
 		<!-- Testing -->
 		<junit.version>4.12</junit.version>
