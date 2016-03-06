@@ -213,8 +213,8 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
-	<org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+	<org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
 	<org.springframework.data.version>1.9.2.RELEASE</org.springframework.data.version>
 	<javassist.version>3.20.0-GA</javassist.version>
         
@@ -249,7 +249,7 @@
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->

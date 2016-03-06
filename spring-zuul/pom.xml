@@ -65,12 +65,12 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
 
         <!-- marshalling -->
 
-        <jackson.version>2.5.1</jackson.version>
+        <jackson.version>2.7.2</jackson.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.12</org.slf4j.version>

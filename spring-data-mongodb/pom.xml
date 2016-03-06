@@ -118,7 +118,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
 
         <org.springframework.data.version>1.7.1.RELEASE</org.springframework.data.version>
 

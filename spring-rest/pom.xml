@@ -226,7 +226,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
@@ -234,7 +234,7 @@
 
         <!-- marshalling -->
 
-        <jackson.version>2.5.5</jackson.version>
+        <jackson.version>2.7.2</jackson.version>
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
@@ -260,7 +260,7 @@
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
 
     </properties>
