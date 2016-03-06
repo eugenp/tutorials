@@ -47,25 +47,25 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.4.0</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-joda</artifactId>
-            <version>2.4.0</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.6</version>
+            <version>2.9.2</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.3.1</version>
+            <version>2.6.2</version>
         </dependency>
 
         <!-- test scoped -->
@@ -131,16 +131,12 @@
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.version>4.1.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>3.2.5.RELEASE</org.springframework.security.version>
-
         <!-- persistence -->
         <hibernate.version>4.3.10.Final</hibernate.version>
         <mysql-connector-java.version>5.1.35</mysql-connector-java.version>
 
         <!-- marshalling -->
-        <jackson.version>2.7.1-1</jackson.version>
+        <jackson.version>2.7.2</jackson.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
