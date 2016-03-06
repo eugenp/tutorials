@@ -22,7 +22,7 @@
         <module>javaxval</module>
         <module>json-path</module>
         <module>mockito</module>
-        <!-- <module>persistence-jpa</module> -->
+        <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
         <!-- <module>raml</module> -->
         <module>rest-testing</module>
@@ -49,7 +49,7 @@
         <module>spring-openid</module>
         <module>spring-quartz</module>
         <module>spring-rest</module>
-        
+
         <module>spring-security-basic-auth</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
@@ -64,7 +64,7 @@
         <module>spring-security-rest-full</module>
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
-        
+
     </modules>
 
 </project>

@@ -17,7 +17,7 @@
         <java.version>1.6</java.version>
         <junit.version>4.10</junit.version>
         <spring.version>3.1.0.RELEASE</spring.version>
-        <hibernate.version>4.1.1.Final</hibernate.version>
+        <hibernate.version>4.3.11.Final</hibernate.version>
         <querydsl.version>2.5.0</querydsl.version>
         <slf4j.version>1.5.10</slf4j.version>
     </properties>
@@ -184,4 +184,5 @@
             </plugin>
         </plugins>
     </build>
+    
 </project>
