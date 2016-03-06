@@ -23,17 +23,22 @@ public class ContentManagementWebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-        configurer.favorPathExtension(true).favorParameter(false).parameterName("mediaType").ignoreAcceptHeader(true).useJaf(false).defaultContentType(MediaType.TEXT_HTML).mediaType("xml", MediaType.APPLICATION_XML).mediaType("json",
-                MediaType.APPLICATION_JSON);
+        configurer.favorPathExtension(true).
+        favorParameter(false).
+        parameterName("mediaType").
+        ignoreAcceptHeader(true).
+        useJaf(false).
+        defaultContentType(MediaType.TEXT_HTML).
+        mediaType("xml", MediaType.APPLICATION_XML).
+        mediaType("json",
+        MediaType.APPLICATION_JSON);
     }
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-
         registry.addViewController("/sample.html");
     }
-
 
     @Bean
     public ViewResolver viewResolver() {
@@ -44,7 +49,5 @@ public class ContentManagementWebConfig extends WebMvcConfigurerAdapter {
         bean.setOrder(0);
         return bean;
     }
-
-
 
 }
