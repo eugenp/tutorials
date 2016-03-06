@@ -47,13 +47,6 @@ public class StoredProcedureTest {
     }
 
     @Test
-    public void findCarsByModel() {
-        final StoredProcedureQuery findByModelProcedure = entityManager.createNamedStoredProcedureQuery("findByModelProcedure");
-        StoredProcedureQuery storedProcedure = findByModelProcedure.setParameter("p_model", "Camaro");
-        storedProcedure.getResultList().forEach(c -> Assert.assertEquals("Camaro", ((Car) c).getModel()));
-    }
-
-    @Test
     public void findCarsByYearNoNamedStored() {
         StoredProcedureQuery findByYearProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter("data", Void.class, ParameterMode.REF_CURSOR)
                 .registerStoredProcedureParameter("p_year", Integer.class, ParameterMode.IN).setParameter("p_year", 2015);
