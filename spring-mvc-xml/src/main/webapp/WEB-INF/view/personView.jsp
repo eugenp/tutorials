@@ -62,19 +62,5 @@
 			</tr>
 		</table>
 		
-		<h2>Submitted File</h2>
-		<table>
-			
-			<tr>
-				<td>OriginalFileName :</td>
-				<td>${person.file.originalFilename}</td>
-			</tr>
-			
-			<tr>
-				<td>Type :</td>
-				<td>${person.file.contentType}</td>
-			</tr>
-			
-		</table>
 	</body>
 </html>

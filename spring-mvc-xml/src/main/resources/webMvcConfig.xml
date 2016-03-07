@@ -24,12 +24,5 @@
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
 		<property name="basename" value="messages" />
 	</bean>
-	
-	<!-- <bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" /> -->
-		
-	<bean id="multipartResolver"
-        class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
-	</bean>
 
 </beans>

@@ -22,9 +22,9 @@
 	
 	<body>
 	
-		<h3>Welcome, Enter The Person Details</h3>
+		<h3>Welcome, Enter the Person Details</h3>
 	
-		<form:form method="POST" action="addPerson" modelAttribute="person" enctype="multipart/form-data">
+		<form:form method="POST" action="addPerson" modelAttribute="person">
 			
 			<form:errors path="*" cssClass="errorbox" element="div" />
 			
@@ -103,10 +103,6 @@
 				<tr>
 					<td><form:label path="notes">Notes</form:label></td>
 					<td><form:textarea path="notes" rows="3" cols="20"/></td>
-				</tr>
-				<tr>
-					<td><form:label path="file">Select a file to upload</form:label></td>
-					<td><input type="file" name="file" /></td>
 				</tr>
 				<tr>
 					<td><form:hidden path="id" value="12345"/></td>
