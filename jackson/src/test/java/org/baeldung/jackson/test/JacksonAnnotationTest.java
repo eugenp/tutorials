@@ -345,7 +345,7 @@ public class JacksonAnnotationTest {
         assertThat(result, containsString("John"));
 
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixInAnnotations(String.class, MyMixInForString.class);
+        mapper.addMixIn(String.class, MyMixInForString.class);
 
         result = mapper.writeValueAsString(user);
         assertThat(result, not(containsString("John")));

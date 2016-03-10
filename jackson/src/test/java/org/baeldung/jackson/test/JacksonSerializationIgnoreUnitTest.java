@@ -87,7 +87,7 @@ public class JacksonSerializationIgnoreUnitTest {
     @Test
     public final void givenFieldTypeIsIgnored_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixInAnnotations(String.class, MyMixInForString.class);
+        mapper.addMixIn(String.class, MyMixInForString.class);
         final MyDto dtoObject = new MyDto();
         dtoObject.setBooleanValue(true);
 
