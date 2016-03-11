@@ -109,20 +109,15 @@
         
         
          <!-- Json conversion -->
-        <dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-core</artifactId>
-		  <version>2.1.2</version>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.1.2</version>
 		</dependency>
 		<dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-databind</artifactId>
-		  <version>2.1.2</version>
-		</dependency>
-		<dependency>
-		  <groupId>org.codehaus.jackson</groupId>
-		  <artifactId>jackson-mapper-asl</artifactId>
-		  <version>1.9.13</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.1.2</version>
 		</dependency>
 		
     </dependencies>
