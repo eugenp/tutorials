@@ -1,18 +1,17 @@
 package org.baeldung.dao;
 
-import com.mysema.query.group.GroupBy;
-import com.mysema.query.jpa.impl.JPAQuery;
-import com.mysema.query.jpa.impl.JPAQueryFactory;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.baeldung.entity.Person;
 import org.baeldung.entity.QPerson;
 import org.springframework.stereotype.Repository;
 
-import javax.inject.Provider;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Tuple;
-import java.util.List;
-import java.util.Map;
+import com.mysema.query.group.GroupBy;
+import com.mysema.query.jpa.impl.JPAQuery;
 
 @Repository
 public class PersonDaoImpl implements PersonDao {
@@ -20,49 +19,48 @@ public class PersonDaoImpl implements PersonDao {
     @PersistenceContext
     private EntityManager em;
 
-    public Person save(Person person) {
+    @Override
+    public Person save(final Person person) {
         em.persist(person);
         return person;
     }
 
     @Override
-    public List<Person> findPersonsByFirstnameQueryDSL(String firstname) {
-        JPAQuery query = new JPAQuery(em);
-        QPerson person = QPerson.person;
+    public List<Person> findPersonsByFirstnameQueryDSL(final String firstname) {
+        final JPAQuery query = new JPAQuery(em);
+        final QPerson person = QPerson.person;
 
         return query.from(person).where(person.firstname.eq(firstname)).list(person);
     }
 
     @Override
-    public List<Person> findPersonsByFirstnameAndSurnameQueryDSL(String firstname, String surname) {
-        JPAQuery query = new JPAQuery(em);
-        QPerson person = QPerson.person;
+    public List<Person> findPersonsByFirstnameAndSurnameQueryDSL(final String firstname, final String surname) {
+        final JPAQuery query = new JPAQuery(em);
+        final QPerson person = QPerson.person;
 
-        return query.from(person).where(person.firstname.eq(firstname).and(
-                person.surname.eq(surname))).list(person);
+        return query.from(person).where(person.firstname.eq(firstname).and(person.surname.eq(surname))).list(person);
     }
 
     @Override
-    public List<Person> findPersonsByFirstnameInDescendingOrderQueryDSL(String firstname) {
-        JPAQuery query = new JPAQuery(em);
-        QPerson person = QPerson.person;
+    public List<Person> findPersonsByFirstnameInDescendingOrderQueryDSL(final String firstname) {
+        final JPAQuery query = new JPAQuery(em);
+        final QPerson person = QPerson.person;
 
-        return query.from(person).where(person.firstname.eq(firstname)).orderBy(
-                person.surname.desc()).list(person);
+        return query.from(person).where(person.firstname.eq(firstname)).orderBy(person.surname.desc()).list(person);
     }
 
     @Override
     public int findMaxAge() {
-        JPAQuery query = new JPAQuery(em);
-        QPerson person = QPerson.person;
+        final JPAQuery query = new JPAQuery(em);
+        final QPerson person = QPerson.person;
 
         return query.from(person).list(person.age.max()).get(0);
     }
 
     @Override
     public Map<String, Integer> findMaxAgeByName() {
-        JPAQuery query = new JPAQuery(em);
-        QPerson person = QPerson.person;
+        final JPAQuery query = new JPAQuery(em);
+        final QPerson person = QPerson.person;
 
         return query.from(person).transform(GroupBy.groupBy(person.firstname).as(GroupBy.max(person.age)));
     }

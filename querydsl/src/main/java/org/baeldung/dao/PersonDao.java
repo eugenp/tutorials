@@ -1,10 +1,9 @@
 package org.baeldung.dao;
 
-import org.baeldung.entity.Person;
-
-import javax.persistence.Tuple;
 import java.util.List;
 import java.util.Map;
+
+import org.baeldung.entity.Person;
 
 public interface PersonDao {
 

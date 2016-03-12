@@ -18,10 +18,12 @@ import com.google.common.base.Preconditions;
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
-public class DatabaseConfig {
+public class PersistenceConfig {
 
     @Autowired
     private Environment env;
+
+    //
 
     @Bean
     public DataSource dataSource() {
@@ -32,4 +34,5 @@ public class DatabaseConfig {
         dataSource.setPassword(Preconditions.checkNotNull(env.getProperty("jdbc.pass")));
         return dataSource;
     }
+
 }
