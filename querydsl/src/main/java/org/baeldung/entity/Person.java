@@ -15,12 +15,20 @@ public class Person {
     @Column
     private String surname;
 
+    @Column
+    private int age;
+
     Person() {
     }
 
     public Person(String firstname, String surname) {
         this.firstname = firstname;
         this.surname = surname;
+    }
+
+    public Person(String firstname, String surname, int age) {
+        this(firstname, surname);
+        this.age = age;
     }
 
     public Long getId() {
@@ -47,4 +55,11 @@ public class Person {
         this.surname = surname;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

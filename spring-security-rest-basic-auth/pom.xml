@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>spring-security-rest-basic-auth</artifactId>
     <version>0.2-SNAPSHOT</version>
 
@@ -287,12 +287,12 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 
         <!-- http -->
         <httpcore.version>4.4.4</httpcore.version>
@@ -317,13 +317,13 @@
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
-        <rest-assured.version>2.8.0</rest-assured.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.17</cargo-maven2-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
     </properties>
 
