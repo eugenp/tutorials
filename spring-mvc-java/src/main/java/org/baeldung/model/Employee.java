@@ -1,26 +1,23 @@
-package com.baeldung.spring.form;
+package org.baeldung.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Employee {
 
     private long id;
-
-    @NotNull
-    @Size(min = 1)
     private String name;
-    @NotNull
-    @Size(min = 1)
     private String contactNumber;
 
     public Employee() {
         super();
     }
 
-    //
+    public Employee(final long id, final String name, final String contactNumber) {
+        this.id = id;
+        this.name = name;
+        this.contactNumber = contactNumber;
+    }
 
     public String getName() {
         return name;
@@ -44,6 +41,11 @@ public class Employee {
 
     public void setContactNumber(final String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", contactNumber=" + contactNumber + "]";
     }
 
 }
