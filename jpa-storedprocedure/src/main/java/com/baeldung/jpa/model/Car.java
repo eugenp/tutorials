@@ -9,10 +9,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "CAR")
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "findByModelProcedure", procedureName = "FIND_CAR_BY_MODEL", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "data", type = Car.class, mode = ParameterMode.REF_CURSOR),
-                @StoredProcedureParameter(name = "p_model", type = String.class, mode = ParameterMode.IN) }),
-        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "data", type = Car.class, mode = ParameterMode.REF_CURSOR),
-                @StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN) }) })
+        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = { Car.class },
+                parameters = { @StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN) }) })
 public class Car {
 
     private long id;
@@ -28,9 +26,7 @@ public class Car {
     }
 
     @Id
-    @SequenceGenerator(name = "CarIdSequence", sequenceName = "SEQ_CAR_ID", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CarIdSequence")
-    // @GeneratedValue(strategy = GenerationType.IDENTITY) -- for MySQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false, scale = 0)
     public long getId() {
         return id;
