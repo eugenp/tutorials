@@ -9,23 +9,13 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.baeldung.jpa.model.Car</class>
 		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-			<property name="hibernate.connection.url" value="jdbc:oracle:thin:@//127.0.0.1:1521/xe" />
-			<property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />
-			<property name="hibernate.connection.username" value="JPA" />
-			<property name="hibernate.connection.password" value="JPA" />
-			<property name="hibernate.show_sql" value="true" />
-		</properties>
-
-		<!-- MySQL properties configuration -->
-		<!--properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/jpa" />
-			<property name="javax.persistence.jdbc.user" value="jpa" />
-			<property name="javax.persistence.jdbc.password" value="bagnara.82" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/baeldung" />
+			<property name="javax.persistence.jdbc.user" value="baeldung" />
+			<property name="javax.persistence.jdbc.password" value="YourPassword" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
-		</properties-->
+		</properties>
 	</persistence-unit>
 </persistence>
 

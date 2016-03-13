@@ -1,7 +1,0 @@
-create or replace PROCEDURE FIND_CAR_BY_YEAR ( p_year IN NUMBER, data OUT SYS_REFCURSOR ) AS
-  BEGIN
-    OPEN data FOR
-    SELECT ID, MODEL, YEAR
-    FROM CAR
-    WHERE YEAR = p_year;
-  END FIND_CAR_BY_YEAR;
