@@ -1,13 +1,20 @@
 package com.baeldung.jpa.storedprocedure;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.ParameterMode;
+import javax.persistence.Persistence;
+import javax.persistence.StoredProcedureQuery;
+
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 import com.baeldung.jpa.model.Car;
-import org.junit.*;
 
-import javax.persistence.*;
-
-/**
- * Created by Giuseppe Bueti on 23/02/2016.
- */
 public class StoredProcedureTest {
 
     private static EntityManagerFactory factory = null;
@@ -25,13 +32,13 @@ public class StoredProcedureTest {
 
     @Test
     public void createCarTest() {
-        EntityTransaction transaction = entityManager.getTransaction();
+        final EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            Car car = new Car("Fiat Marea", 2015);
+            final Car car = new Car("Fiat Marea", 2015);
             entityManager.persist(car);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             System.out.println(e.getCause());
             if (transaction.isActive()) {
                 transaction.rollback();
@@ -42,13 +49,13 @@ public class StoredProcedureTest {
     @Test
     public void findCarsByYearNamedProcedure() {
         final StoredProcedureQuery findByYearProcedure = entityManager.createNamedStoredProcedureQuery("findByYearProcedure");
-        StoredProcedureQuery storedProcedure = findByYearProcedure.setParameter("p_year", 2015);
+        final StoredProcedureQuery storedProcedure = findByYearProcedure.setParameter("p_year", 2015);
         storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
     @Test
     public void findCarsByYearNoNamed() {
-        StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN).setParameter(1, 2015);
+        final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN).setParameter(1, 2015);
         storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
