@@ -13,30 +13,29 @@
 	<mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" />
 	<context:component-scan base-package="org.baeldung.spring.controller" />
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
+	  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	    <property name="prefix" value="/WEB-INF/view/" />
+	    <property name="suffix" value=".jsp" />
 	</bean>
 
 	<mvc:view-controller path="/sample.html" view-name="sample" />
 
 	<!-- Content strategy using path extension -->
 	<bean id="contentNegotiationManager"
-		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-		<property name="favorPathExtension" value="true" />
-		<property name="favorParameter" value="false"/>
-		<property name="parameterName" value="mediaType"/>
-		<property name="ignoreAcceptHeader" value="true" />
-		<property name="defaultContentType" value="text/html" />
-		<property name="useJaf" value="false" />
+	  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+	    <property name="favorPathExtension" value="false" />
+	    <property name="favorParameter" value="true"/>
+	    <property name="parameterName" value="mediaType"/>
+	    <property name="ignoreAcceptHeader" value="true" />
+	    <property name="defaultContentType" value="application/json" />
+	    <property name="useJaf" value="false" />
 
-		<property name="mediaTypes">
-			<map>
-				<entry key="html" value="text/html" />
-				<entry key="json" value="application/json" />
-				<entry key="xml" value="application/xml" />
-			</map>
-		</property>
+	    <property name="mediaTypes">
+	        <map>
+		    <entry key="json" value="application/json" />
+		    <entry key="xml" value="application/xml" />
+	        </map>
+	    </property>
 	 </bean>
 
 
