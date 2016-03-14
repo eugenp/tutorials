@@ -30,6 +30,15 @@ public class EmployeeController {
 		return employeeMap.get(Id);
 	}
 
+	@RequestMapping(value = "/employee/{Id}", method = RequestMethod.GET)
+	public String getEmployeeByIdHtmlView(@PathVariable final long Id, final ModelMap model) {
+		model.addAttribute("name", employeeMap.get(Id).getName());
+		model.addAttribute("contactNumber", employeeMap.get(Id).getContactNumber());
+		model.addAttribute("id", employeeMap.get(Id).getId());
+
+		return "employeeView";
+	}
+
 	@RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
 	public String submit(@ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
 		if (result.hasErrors()) {
