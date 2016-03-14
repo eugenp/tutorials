@@ -1,25 +1,27 @@
 package com.baeldung.jpa.model;
 
-import javax.persistence.*;
-
-/**
- * Created by Giuseppe Bueti on 22/02/2016.
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "CAR")
 @NamedStoredProcedureQueries({
-        @NamedStoredProcedureQuery(name = "findByModelProcedure", procedureName = "FIND_CAR_BY_MODEL", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "data", type = Car.class, mode = ParameterMode.REF_CURSOR),
-                @StoredProcedureParameter(name = "p_model", type = String.class, mode = ParameterMode.IN) }),
-        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "data", type = Car.class, mode = ParameterMode.REF_CURSOR),
-                @StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN) }) })
+        @NamedStoredProcedureQuery(name = "findByYearProcedure", procedureName = "FIND_CAR_BY_YEAR", resultClasses = { Car.class }, parameters = { @StoredProcedureParameter(name = "p_year", type = Integer.class, mode = ParameterMode.IN) }) })
 public class Car {
 
     private long id;
     private String model;
     private Integer year;
 
-    public Car(String model, Integer year) {
+    public Car(final String model, final Integer year) {
         this.model = model;
         this.year = year;
     }
@@ -28,15 +30,13 @@ public class Car {
     }
 
     @Id
-    @SequenceGenerator(name = "CarIdSequence", sequenceName = "SEQ_CAR_ID", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CarIdSequence")
-    // @GeneratedValue(strategy = GenerationType.IDENTITY) -- for MySQL
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false, scale = 0)
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(final long id) {
         this.id = id;
     }
 
@@ -45,7 +45,7 @@ public class Car {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(final String model) {
         this.model = model;
     }
 
@@ -54,7 +54,7 @@ public class Car {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(final Integer year) {
         this.year = year;
     }
 }

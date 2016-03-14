@@ -7,16 +7,16 @@ public class QueryParameter {
 
     private Map<String, Object> parameters = null;
 
-    private QueryParameter(String name, Object value) {
+    private QueryParameter(final String name, final Object value) {
         this.parameters = new HashMap<>();
         this.parameters.put(name, value);
     }
 
-    public static QueryParameter with(String name, Object value) {
+    public static QueryParameter with(final String name, final Object value) {
         return new QueryParameter(name, value);
     }
 
-    public QueryParameter and(String name, Object value) {
+    public QueryParameter and(final String name, final Object value) {
         this.parameters.put(name, value);
         return this;
     }
@@ -24,4 +24,5 @@ public class QueryParameter {
     public Map<String, Object> parameters() {
         return this.parameters;
     }
+
 }

@@ -9,8 +9,8 @@
 
     <properties>
         <jee.version>7.0</jee.version>
-        <oracle.version>11.2.0.4</oracle.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
+        <mysql.version>5.1.38</mysql.version>
     </properties>
 
     <build>
@@ -33,29 +33,6 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-install-plugin</artifactId>
-                <version>2.3.1</version>
-                <executions>
-                    <execution>
-                        <id>install-oracle-jdbc</id>
-                        <goals>
-                            <goal>install-file</goal>
-                        </goals>
-                        <phase>clean</phase>
-                        <configuration>
-                            <groupId>com.oracle</groupId>
-                            <artifactId>ojdbc6</artifactId>
-                            <version>${oracle.version}</version>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                            <createChecksum>true</createChecksum>
-                            <file>${project.basedir}/src/lib/ojdbc6.jar</file>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -74,20 +51,6 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
-        </dependency>
-
-        <!-- Oracle JDBC -->
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>${oracle.version}</version>
-        </dependency>
-
-        <!-- Postgres JDBC -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.4.1208</version>
         </dependency>
 
         <!-- MySql JDBC -->
