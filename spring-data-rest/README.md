@@ -2,7 +2,7 @@
 This project contains examples from the [Introduction to Spring Data REST](http://www.baeldung.com/spring-data-rest-intro) article from Baeldung.
 
 # Running the project
-The application uses Spring Boot, so it is easy to run. You can start it any of a few ways:
+The application uses [Spring Boot](http://projects.spring.io/spring-boot/), so it is easy to run. You can start it any of a few ways:
 * Run the `main` method from `SpringDataRestApplication`
 * Use the Maven Spring Boot plugin: `mvn spring-boot:run`
 * Package the application as a JAR and run it using `java -jar intro-spring-data-rest.jar`
