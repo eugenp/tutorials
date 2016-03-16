@@ -5,7 +5,7 @@
 
     <groupId>com.baeldung</groupId>
     <artifactId>intro-spring-data-rest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>intro-spring-data-rest</name>
@@ -50,6 +50,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
