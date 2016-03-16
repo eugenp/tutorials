@@ -1,5 +1,6 @@
 package com.baeldung.spring.data.es.config;
 
+import org.elasticsearch.client.Client;
 import org.elasticsearch.common.settings.ImmutableSettings;
 import org.elasticsearch.node.NodeBuilder;
 import org.slf4j.Logger;
@@ -24,13 +25,7 @@ public class Config {
     private static Logger logger = LoggerFactory.getLogger(Config.class);
 
     @Bean
-    public NodeBuilder nodeBuilder() {
-        return new NodeBuilder();
-    }
-
-    @Bean
-    public ElasticsearchOperations elasticsearchTemplate() {
-
+    public Client client() {
         try {
             Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
 
@@ -40,14 +35,19 @@ public class Config {
 
             logger.debug(tmpDir.toAbsolutePath().toString());
 
-            return new ElasticsearchTemplate(nodeBuilder()
+            return new NodeBuilder()
                     .local(true)
                     .settings(elasticsearchSettings.build())
                     .node()
-                    .client());
+                    .client();
         } catch (IOException ioex) {
             logger.error("Cannot create temp dir", ioex);
             throw new RuntimeException();
         }
+    }
+
+    @Bean
+    public ElasticsearchOperations elasticsearchTemplate() {
+        return new ElasticsearchTemplate(client());
     }
 }
