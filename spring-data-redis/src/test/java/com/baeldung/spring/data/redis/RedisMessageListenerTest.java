@@ -1,8 +1,8 @@
-package org.baeldung.spring.data.redis;
+package com.baeldung.spring.data.redis;
 
-import org.baeldung.spring.data.redis.config.RedisConfig;
-import org.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
-import org.baeldung.spring.data.redis.queue.RedisMessagePublisher;
+import com.baeldung.spring.data.redis.config.RedisConfig;
+import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
+import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package org.baeldung.spring.data.redis.queue;
+package com.baeldung.spring.data.redis.queue;
 
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
@@ -14,6 +14,6 @@ public class RedisMessageSubscriber implements MessageListener {
 
     public void onMessage(final Message message, final byte[] pattern) {
         messageList.add(message.toString());
-        System.out.println("Message received: " + message.toString());
+        System.out.println("Message received: " + new String(message.getBody()));
     }
 }

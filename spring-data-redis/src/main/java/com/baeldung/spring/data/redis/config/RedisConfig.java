@@ -1,8 +1,8 @@
-package org.baeldung.spring.data.redis.config;
+package com.baeldung.spring.data.redis.config;
 
-import org.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
-import org.baeldung.spring.data.redis.queue.RedisMessagePublisher;
-import org.baeldung.spring.data.redis.queue.MessagePublisher;
+import com.baeldung.spring.data.redis.queue.MessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,10 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
 
 @Configuration
-@ComponentScan("org.baeldung.spring.data.redis")
+@ComponentScan("com.baeldung.spring.data.redis")
 public class RedisConfig {
 
     @Bean
@@ -25,6 +26,7 @@ public class RedisConfig {
     public RedisTemplate<String, Object> redisTemplate() {
         final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         template.setConnectionFactory(jedisConnectionFactory());
+        template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
         return template;
     }
 

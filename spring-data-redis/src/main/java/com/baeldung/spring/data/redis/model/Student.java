@@ -1,4 +1,4 @@
-package org.baeldung.spring.data.redis.model;
+package com.baeldung.spring.data.redis.model;
 
 import java.io.Serializable;
 
