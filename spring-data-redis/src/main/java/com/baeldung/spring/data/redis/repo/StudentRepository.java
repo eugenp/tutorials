@@ -1,15 +1,13 @@
-package org.baeldung.spring.data.redis.repo;
+package com.baeldung.spring.data.redis.repo;
 
-import org.baeldung.spring.data.redis.model.Student;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import com.baeldung.spring.data.redis.model.Student;
 
 import java.util.Map;
 
 public interface StudentRepository {
 
     void saveStudent(Student person);
-    
+
     void updateStudent(Student student);
 
     Student findStudent(String id);

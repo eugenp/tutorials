@@ -1,8 +1,7 @@
-package org.baeldung.spring.data.redis.repo;
+package com.baeldung.spring.data.redis.repo;
 
-import org.baeldung.spring.data.redis.config.RedisConfig;
-import org.baeldung.spring.data.redis.model.Student;
-import org.junit.Before;
+import com.baeldung.spring.data.redis.config.RedisConfig;
+import com.baeldung.spring.data.redis.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
