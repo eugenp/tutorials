@@ -1,4 +1,4 @@
-package org.baeldung.utility;
+package com.baeldung.utility;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

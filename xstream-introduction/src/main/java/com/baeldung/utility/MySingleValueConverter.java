@@ -1,10 +1,9 @@
-package org.baeldung.utility;
+package com.baeldung.utility;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.baeldung.pojo.Customer;
-
+import com.baeldung.pojo.Customer;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
 
 public class MySingleValueConverter implements SingleValueConverter {

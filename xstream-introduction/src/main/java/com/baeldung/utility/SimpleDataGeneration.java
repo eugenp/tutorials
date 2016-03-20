@@ -1,11 +1,11 @@
-package org.baeldung.utility;
+package com.baeldung.utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import org.baeldung.pojo.ContactDetails;
-import org.baeldung.pojo.Customer;
+import com.baeldung.pojo.ContactDetails;
+import com.baeldung.pojo.Customer;
 
 public class SimpleDataGeneration {
 

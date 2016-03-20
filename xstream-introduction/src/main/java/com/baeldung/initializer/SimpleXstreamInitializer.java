@@ -1,4 +1,4 @@
-package org.baeldung.initializer;
+package com.baeldung.initializer;
 
 import com.thoughtworks.xstream.XStream;
 

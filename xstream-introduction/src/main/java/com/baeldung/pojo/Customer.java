@@ -1,4 +1,4 @@
-package org.baeldung.pojo;
+package com.baeldung.pojo;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +10,7 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 @XStreamAlias("customer")
 public class Customer {
 
-	@XStreamOmitField
+	//@XStreamOmitField
 	private String firstName;
 
 	private String lastName;
