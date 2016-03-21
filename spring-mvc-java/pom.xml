@@ -101,16 +101,24 @@
         </dependency>
         
          <!-- Json conversion -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.1.2</version>
-		</dependency>
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-core</artifactId>
+	    <version>2.7.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.7.2</version>
+	</dependency>
+	
+	<!-- Spring HATEOAS -->
+	<dependency>
+	    <groupId>org.springframework.hateoas</groupId>
+	    <artifactId>spring-hateoas</artifactId>
+	    <version>0.19.0.RELEASE</version>
+	</dependency>
+
 		
     </dependencies>
 
