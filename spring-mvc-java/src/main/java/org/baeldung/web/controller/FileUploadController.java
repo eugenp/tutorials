@@ -36,7 +36,7 @@ public class FileUploadController {
 	public String submit(final HttpServletRequest request, final HttpServletResponse response,
 			final ModelMap modelMap) {
 
-		final String TEMP_PATH = "C:\\Users\\ivan\\Desktop\\tmp\\";
+		final String TEMP_PATH = "/tmp/";
 
 		try {
 
