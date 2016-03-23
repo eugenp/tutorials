@@ -14,28 +14,38 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
-    /**
-     * Register and configure all Servlet container components necessary to power the web application.
-     */
-    @Override
-    public void onStartup(final ServletContext sc) throws ServletException {
-        System.out.println("MainWebAppInitializer.onStartup()");
+	private static final String TMP_FOLDER = "C:/Users/ivan/Desktop/tmp"; // 5
+	// MB
+	private static final int MAX_UPLOAD_SIZE = 5 * 1024 * 1024; // 5 MB
 
-        // Create the 'root' Spring application context
-        final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-        root.scan("org.baeldung.spring.web.config");
-        // root.getEnvironment().setDefaultProfiles("embedded");
+	/**
+	 * Register and configure all Servlet container components necessary to power the web application.
+	 */
+	@Override
+	public void onStartup(final ServletContext sc) throws ServletException {
 
-        // Manages the lifecycle of the root application context
-        sc.addListener(new ContextLoaderListener(root));
+		// Create the 'root' Spring application context
+		final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
+		root.scan("org.baeldung.spring.web.config");
+		// root.getEnvironment().setDefaultProfiles("embedded");
 
-        // Handles requests into the application
-        final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc", new DispatcherServlet(new GenericWebApplicationContext()));
-        appServlet.setLoadOnStartup(1);
-        final Set<String> mappingConflicts = appServlet.addMapping("/");
-        if (!mappingConflicts.isEmpty()) {
-            throw new IllegalStateException("'appServlet' could not be mapped to '/' due " + "to an existing mapping. This is a known issue under Tomcat versions " + "<= 7.0.14; see https://issues.apache.org/bugzilla/show_bug.cgi?id=51278");
-        }
-    }
+		// Manages the lifecycle of the root application context
+		sc.addListener(new ContextLoaderListener(root));
+
+		// Handles requests into the application
+		final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc", new DispatcherServlet(new GenericWebApplicationContext()));
+		appServlet.setLoadOnStartup(1);
+
+		// final MultipartConfigElement multipartConfigElement = new
+		// MultipartConfigElement(TMP_FOLDER, MAX_UPLOAD_SIZE,
+		// MAX_UPLOAD_SIZE * 2, MAX_UPLOAD_SIZE / 2);
+		//
+		// appServlet.setMultipartConfig(multipartConfigElement);
+
+		final Set<String> mappingConflicts = appServlet.addMapping("/");
+		if (!mappingConflicts.isEmpty()) {
+			throw new IllegalStateException("'appServlet' could not be mapped to '/' due " + "to an existing mapping. This is a known issue under Tomcat versions " + "<= 7.0.14; see https://issues.apache.org/bugzilla/show_bug.cgi?id=51278");
+		}
+	}
 
 }
