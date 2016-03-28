@@ -147,7 +147,7 @@
 							<generator>
 								<target>
 									<packageName>com.baeldung.jooq.introduction.db</packageName>
-									<directory>src/test/java</directory>
+									<directory>src/main/java</directory>
 								</target>
 							</generator>
 						</configuration>
