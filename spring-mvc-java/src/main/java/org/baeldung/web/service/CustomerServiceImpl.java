@@ -5,29 +5,26 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.baeldung.model.Customer;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class CustomerMockServiceImpl {
+@Service
+public class CustomerServiceImpl implements CustomerService {
 
     private HashMap<String, Customer> customerMap;
 
-    public CustomerMockServiceImpl() {
+    public CustomerServiceImpl() {
         customerMap = new HashMap<String, Customer>();
 
         customerMap.put("10A", new Customer("10A", "Jane", "ABC Company"));
         customerMap.put("20B", new Customer("20B", "Bob", "XYZ Company"));
     }
 
-    public Customer createCustomer(final Customer customer) {
-        customerMap.put(customer.getCustomerId(), customer);
-        return customer;
-    }
-
+    @Override
     public List<Customer> allCustomers() {
         return new ArrayList<Customer>(customerMap.values());
     }
 
+    @Override
     public Customer getCustomerDetail(final String id) {
         return customerMap.get(id);
     }
