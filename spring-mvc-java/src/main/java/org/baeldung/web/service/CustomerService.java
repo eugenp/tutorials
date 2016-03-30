@@ -6,8 +6,8 @@ import org.baeldung.model.Customer;
 
 public interface CustomerService {
 
-    public List<Customer> allCustomers();
+     List<Customer> allCustomers();
 
-    public Customer getCustomerDetail(final String id);
+     Customer getCustomerDetail(final String id);
 
 }
