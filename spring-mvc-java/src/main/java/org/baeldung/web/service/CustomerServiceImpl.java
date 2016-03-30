@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private HashMap<> customerMap;
+    private HashMap<String, Customer> customerMap;
 
     public CustomerServiceImpl() {
-        customerMap = new HashMap<String, Customer>();
+        customerMap = new HashMap<>();
 
         customerMap.put("10A", new Customer("10A", "Jane", "ABC Company"));
         customerMap.put("20B", new Customer("20B", "Bob", "XYZ Company"));
