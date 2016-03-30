@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private HashMap<String, Customer> customerMap;
+    private HashMap<> customerMap;
 
     public CustomerServiceImpl() {
         customerMap = new HashMap<String, Customer>();
@@ -21,7 +21,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> allCustomers() {
-        return new ArrayList<Customer>(customerMap.values());
+        return new ArrayList<>(customerMap.values());
     }
 
     @Override
