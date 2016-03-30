@@ -4,7 +4,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.hateoas.ResourceSupport;
 
-@XmlRootElement
 public class Customer extends ResourceSupport
 {
     private String customerId;
