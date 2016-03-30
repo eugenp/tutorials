@@ -14,8 +14,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
-	private static final String TMP_FOLDER = "C:/Users/ivan/Desktop/tmp"; // 5
-	// MB
+	private static final String TMP_FOLDER = "C:/Users/ivan/Desktop/tmp";
 	private static final int MAX_UPLOAD_SIZE = 5 * 1024 * 1024; // 5 MB
 
 	/**

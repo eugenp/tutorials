@@ -8,13 +8,13 @@
 	
 	<body>
 	
-		<h3>Enter The File to Upload (MultipartFile handling)</h3>
+		<h3>Enter The File to Upload</h3>
 	
-		<form:form method="POST" action="/spring-mvc-java/addFile1" enctype="multipart/form-data">
+		<form:form method="POST" action="/spring-mvc-java/uploadFile" enctype="multipart/form-data">
 			
 			<table>
 				<tr>
-					<td>Select a file to upload</td>
+					<td>Select a file to upload (Single file)</td>
 					<td><input type="file" name="file" /></td>
 				</tr>
 				<tr>
@@ -24,16 +24,24 @@
 			
 		</form:form>
 		
-		<br />
+		<br /> 
 		
-		<h3>Enter The File to Upload (HttpServletRequest handling)</h3>
+		<h3>Enter The Files to Upload (Multiple files)</h3>
 		
-		<form:form method="POST" action="/spring-mvc-java/addFile2" enctype="multipart/form-data">
+		<form:form method="POST" action="/spring-mvc-java/uploadMultiFile" enctype="multipart/form-data">
 			
 			<table>
 				<tr>
 					<td>Select a file to upload</td>
-					<td><input type="file" name="file" /></td>
+					<td><input type="file" name="files" /></td>
+				</tr>
+				<tr>
+					<td>Select a file to upload</td>
+					<td><input type="file" name="files" /></td>
+				</tr>
+				<tr>
+					<td>Select a file to upload</td>
+					<td><input type="file" name="files" /></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Submit" /></td>

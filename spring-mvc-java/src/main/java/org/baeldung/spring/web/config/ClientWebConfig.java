@@ -36,8 +36,6 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 		super.addViewControllers(registry);
 
 		registry.addViewController("/sample.html");
-		registry.addViewController("/fileUpload.html");
-		registry.addViewController("/fileUploadForm.html");
 	}
 
 	@Bean
