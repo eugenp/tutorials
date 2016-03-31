@@ -21,3 +21,5 @@
 # Maven
 log/
 target/
+
+spring-openid/src/main/resources/application.properties

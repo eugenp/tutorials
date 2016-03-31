@@ -1,5 +1,3 @@
-## Performance of GSON and Jackson
+## Performance of Gson and Jackson
 
-## STandalone java programs to measure the performance of both JSON API's
-
-## based on file size , iterations.
+Standalone java programs to measure the performance of both JSON APIs based on file size and object graph complexity.
