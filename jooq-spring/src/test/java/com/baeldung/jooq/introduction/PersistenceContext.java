@@ -1,14 +1,12 @@
 package com.baeldung.jooq.introduction;
 
 import javax.sql.DataSource;
-import com.zaxxer.hikari.HikariDataSource;
-
+import org.h2.jdbcx.JdbcDataSource;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
 import org.jooq.impl.DefaultExecuteListenerProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -29,11 +27,10 @@ public class PersistenceContext {
 
     @Bean
     public DataSource dataSource() {
-        HikariDataSource dataSource = new HikariDataSource();
-        
-        dataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
-        dataSource.setJdbcUrl(environment.getRequiredProperty("db.url"));
-        dataSource.setUsername(environment.getRequiredProperty("db.username"));
+        JdbcDataSource dataSource = new JdbcDataSource();
+
+        dataSource.setUrl(environment.getRequiredProperty("db.url"));
+        dataSource.setUser(environment.getRequiredProperty("db.username"));
         dataSource.setPassword(environment.getRequiredProperty("db.password"));
 
         return dataSource;
