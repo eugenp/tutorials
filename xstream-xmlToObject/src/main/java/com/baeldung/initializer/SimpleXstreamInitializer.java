@@ -4,9 +4,9 @@ import com.thoughtworks.xstream.XStream;
 
 public class SimpleXstreamInitializer {
 
-	private static XStream xtreamInstance;
+	private XStream xtreamInstance;
 
-	public static XStream getXstreamInstance() {
+	public XStream getXstreamInstance() {
 		if (xtreamInstance == null) {
 			synchronized (SimpleXstreamInitializer.class) {
 				if (xtreamInstance == null) {

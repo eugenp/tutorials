@@ -1,6 +1,5 @@
 package com.baeldung.pojo.test;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -18,14 +17,16 @@ public class ComplexXmlToObjectCollectionTest {
 
 	@Before
 	public void dataSetup() {
-		xstream = SimpleXstreamInitializer.getXstreamInstance();
+		SimpleXstreamInitializer simpleXstreamInitializer = new SimpleXstreamInitializer();
+		xstream = simpleXstreamInitializer.getXstreamInstance();
 		xstream.processAnnotations(Customer.class);
 	}
 	
 	@Test
 	public void convertXmlToObjectFromFile() {
 		try {
-			FileReader reader = new FileReader(new File("data-file-alias-implicit-collection.xml"));
+			ClassLoader classLoader = getClass().getClassLoader();
+			FileReader reader = new FileReader(classLoader.getResource("data-file-alias-implicit-collection.xml").getFile());
 			Customer customer = (Customer) xstream.fromXML(reader);
 			Assert.assertNotNull(customer);
 			Assert.assertNotNull(customer.getContactDetailsList());

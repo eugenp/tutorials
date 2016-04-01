@@ -1,6 +1,5 @@
 package com.baeldung.pojo.test;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -18,7 +17,8 @@ public class XmlToObjectIgnoreFieldsTest {
 
 	@Before
 	public void dataSetup() {
-		xstream = SimpleXstreamInitializer.getXstreamInstance();
+		SimpleXstreamInitializer simpleXstreamInitializer = new SimpleXstreamInitializer();
+		xstream = simpleXstreamInitializer.getXstreamInstance();
 		xstream.alias("customer" , Customer.class);
 		xstream.ignoreUnknownElements();
 	}
@@ -26,7 +26,8 @@ public class XmlToObjectIgnoreFieldsTest {
 	@Test
 	public void convertXmlToObjectFromFile() {
 		try {
-			FileReader reader = new FileReader(new File("data-file-ignore-field.xml"));
+			ClassLoader classLoader = getClass().getClassLoader();
+			FileReader reader = new FileReader(classLoader.getResource("data-file-ignore-field.xml").getFile());
 			Customer customer = (Customer) xstream.fromXML(reader);
 			Assert.assertNotNull(customer);
 			System.out.println(customer);
