@@ -13,6 +13,9 @@
 	<ul>
 		<li><a href="employee">Welcome Page</a></li>
 	</ul>
+	<ul>
+		<li><a href="spring-handler-index.jsp">Spring handler mapping Page</a></li>
+	</ul>
 </body>
 
 </html>
