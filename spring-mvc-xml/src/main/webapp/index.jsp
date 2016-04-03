@@ -12,9 +12,7 @@
 	<h1>Spring MVC Examples</h1>
 	<ul>
 		<li><a href="employee">Welcome Page</a></li>
-	</ul>
-	<ul>
-		<li><a href="spring-handler-index.jsp">Spring handler mapping Page</a></li>
+		<li><a href="spring-handler-index.jsp">Spring Handler Mapping Examples</a></li>
 	</ul>
 </body>
 
