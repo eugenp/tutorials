@@ -1,31 +1,29 @@
 package com.baeldung.jooq.introduction;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
+import com.baeldung.jooq.introduction.db.public_.tables.Author;
+import com.baeldung.jooq.introduction.db.public_.tables.AuthorBook;
+import com.baeldung.jooq.introduction.db.public_.tables.Book;
 import org.jooq.DSLContext;
 import org.jooq.Record3;
 import org.jooq.Result;
 import org.jooq.impl.DSL;
-
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.jooq.introduction.db.public_.tables.Author;
-import com.baeldung.jooq.introduction.db.public_.tables.AuthorBook;
-import com.baeldung.jooq.introduction.db.public_.tables.Book;
+import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration(classes = PersistenceContext.class)
 @Transactional(transactionManager = "transactionManager")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class QueryTest {
+
     @Autowired
-    private DSLContext create;
+    private DSLContext dsl;
 
     Author author = Author.AUTHOR;
     Book book = Book.BOOK;
@@ -33,10 +31,10 @@ public class QueryTest {
 
     @Test
     public void givenValidData_whenInserting_thenSucceed() {
-        create.insertInto(author).set(author.ID, 4).set(author.FIRST_NAME, "Herbert").set(author.LAST_NAME, "Schildt").execute();
-        create.insertInto(book).set(book.ID, 4).set(book.TITLE, "A Beginner's Guide").execute();
-        create.insertInto(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 4).execute();
-        Result<Record3<Integer, String, Integer>> result = create.select(author.ID, author.LAST_NAME, DSL.count()).from(author).join(authorBook).on(author.ID.equal(authorBook.AUTHOR_ID)).join(book).on(authorBook.BOOK_ID.equal(book.ID))
+        dsl.insertInto(author).set(author.ID, 4).set(author.FIRST_NAME, "Herbert").set(author.LAST_NAME, "Schildt").execute();
+        dsl.insertInto(book).set(book.ID, 4).set(book.TITLE, "A Beginner's Guide").execute();
+        dsl.insertInto(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 4).execute();
+        Result<Record3<Integer, String, Integer>> result = dsl.select(author.ID, author.LAST_NAME, DSL.count()).from(author).join(authorBook).on(author.ID.equal(authorBook.AUTHOR_ID)).join(book).on(authorBook.BOOK_ID.equal(book.ID))
                 .groupBy(author.LAST_NAME).fetch();
 
         assertEquals(3, result.size());
@@ -48,15 +46,15 @@ public class QueryTest {
 
     @Test(expected = DataAccessException.class)
     public void givenInvalidData_whenInserting_thenFail() {
-        create.insertInto(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 5).execute();
+        dsl.insertInto(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 5).execute();
     }
 
     @Test
     public void givenValidData_whenUpdating_thenSucceed() {
-        create.update(author).set(author.LAST_NAME, "Baeldung").where(author.ID.equal(3)).execute();
-        create.update(book).set(book.TITLE, "Building your REST API with Spring").where(book.ID.equal(3)).execute();
-        create.insertInto(authorBook).set(authorBook.AUTHOR_ID, 3).set(authorBook.BOOK_ID, 3).execute();
-        Result<Record3<Integer, String, String>> result = create.select(author.ID, author.LAST_NAME, book.TITLE).from(author).join(authorBook).on(author.ID.equal(authorBook.AUTHOR_ID)).join(book).on(authorBook.BOOK_ID.equal(book.ID)).where(author.ID.equal(3))
+        dsl.update(author).set(author.LAST_NAME, "Baeldung").where(author.ID.equal(3)).execute();
+        dsl.update(book).set(book.TITLE, "Building your REST API with Spring").where(book.ID.equal(3)).execute();
+        dsl.insertInto(authorBook).set(authorBook.AUTHOR_ID, 3).set(authorBook.BOOK_ID, 3).execute();
+        Result<Record3<Integer, String, String>> result = dsl.select(author.ID, author.LAST_NAME, book.TITLE).from(author).join(authorBook).on(author.ID.equal(authorBook.AUTHOR_ID)).join(book).on(authorBook.BOOK_ID.equal(book.ID)).where(author.ID.equal(3))
                 .fetch();
 
         assertEquals(1, result.size());
@@ -67,13 +65,13 @@ public class QueryTest {
 
     @Test(expected = DataAccessException.class)
     public void givenInvalidData_whenUpdating_thenFail() {
-        create.update(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 5).execute();
+        dsl.update(authorBook).set(authorBook.AUTHOR_ID, 4).set(authorBook.BOOK_ID, 5).execute();
     }
 
     @Test
     public void givenValidData_whenDeleting_thenSucceed() {
-        create.delete(author).where(author.ID.lt(3)).execute();
-        Result<Record3<Integer, String, String>> result = create.select(author.ID, author.FIRST_NAME, author.LAST_NAME).from(author).fetch();
+        dsl.delete(author).where(author.ID.lt(3)).execute();
+        Result<Record3<Integer, String, String>> result = dsl.select(author.ID, author.FIRST_NAME, author.LAST_NAME).from(author).fetch();
 
         assertEquals(1, result.size());
         assertEquals("Bryan", result.getValue(0, author.FIRST_NAME));
@@ -82,6 +80,6 @@ public class QueryTest {
 
     @Test(expected = DataAccessException.class)
     public void givenInvalidData_whenDeleting_thenFail() {
-        create.delete(book).where(book.ID.equal(1)).execute();
+        dsl.delete(book).where(book.ID.equal(1)).execute();
     }
 }
