@@ -4,16 +4,16 @@ import com.thoughtworks.xstream.XStream;
 
 public class SimpleXstreamInitializer {
 
-	private static XStream xstreamInstance;
+	private XStream xtreamInstance;
 
-	public static XStream getXstreamInstance() {
-		if (xstreamInstance == null) {
+	public XStream getXstreamInstance() {
+		if (xtreamInstance == null) {
 			synchronized (SimpleXstreamInitializer.class) {
-				if (xstreamInstance == null) {
-					xstreamInstance = new XStream();
+				if (xtreamInstance == null) {
+					xtreamInstance = new XStream();
 				}
 			}
 		}
-		return xstreamInstance;
+		return xtreamInstance;
 	}
 }

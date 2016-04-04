@@ -22,7 +22,8 @@ public class XStreamSimpleXmlTest {
 	@Before
 	public void dataSetup() {
 		customer = SimpleDataGeneration.generateData();
-		xstream = SimpleXstreamInitializer.getXstreamInstance();
+		SimpleXstreamInitializer simpleXstreamInitializer = new SimpleXstreamInitializer();
+		xstream = simpleXstreamInitializer.getXstreamInstance();
 		xstream.processAnnotations(Customer.class);
 		xstream.processAnnotations(AddressDetails.class);
 		xstream.processAnnotations(ContactDetails.class);
@@ -30,9 +31,7 @@ public class XStreamSimpleXmlTest {
 		xstream.registerConverter(new MyDateConverter());
 		// xstream.registerConverter(new MySingleValueConverter());
 		xstream.aliasField("fn" , Customer.class , "firstName");
-
 		dataXml = xstream.toXML(customer);
-		System.out.println(dataXml);
 	}
 
 	@Test

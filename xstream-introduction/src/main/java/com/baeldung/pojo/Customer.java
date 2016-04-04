@@ -5,12 +5,10 @@ import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
-import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 @XStreamAlias("customer")
 public class Customer {
 
-	//@XStreamOmitField
 	private String firstName;
 
 	private String lastName;
@@ -52,4 +50,8 @@ public class Customer {
 		this.contactDetailsList = contactDetailsList;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + "]";
+	}
 }

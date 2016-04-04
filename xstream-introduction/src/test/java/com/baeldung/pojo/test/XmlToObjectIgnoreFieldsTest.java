@@ -7,11 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.implicit.collection.pojo.Customer;
 import com.baeldung.initializer.SimpleXstreamInitializer;
+import com.baeldung.pojo.Customer;
 import com.thoughtworks.xstream.XStream;
 
-public class ComplexXmlToObjectCollectionTest {
+public class XmlToObjectIgnoreFieldsTest {
 	
 	private XStream xstream = null;
 
@@ -19,19 +19,18 @@ public class ComplexXmlToObjectCollectionTest {
 	public void dataSetup() {
 		SimpleXstreamInitializer simpleXstreamInitializer = new SimpleXstreamInitializer();
 		xstream = simpleXstreamInitializer.getXstreamInstance();
-		xstream.processAnnotations(Customer.class);
+		xstream.alias("customer" , Customer.class);
+		xstream.ignoreUnknownElements();
 	}
 	
 	@Test
 	public void convertXmlToObjectFromFile() {
 		try {
 			ClassLoader classLoader = getClass().getClassLoader();
-			FileReader reader = new FileReader(classLoader.getResource("data-file-alias-implicit-collection.xml").getFile());
+			FileReader reader = new FileReader(classLoader.getResource("data-file-ignore-field.xml").getFile());
 			Customer customer = (Customer) xstream.fromXML(reader);
 			Assert.assertNotNull(customer);
-			Assert.assertNotNull(customer.getContactDetailsList());
-			System.out.println(customer);
-			
+			//System.out.println(customer);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
