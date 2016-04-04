@@ -8,13 +8,13 @@
 	
 	<body>
 	
-		<h3>Enter The File to Upload</h3>
+		<h3>Enter The File to Upload (Single file)</h3>
 	
 		<form:form method="POST" action="/spring-mvc-java/uploadFile" enctype="multipart/form-data">
 			
 			<table>
 				<tr>
-					<td>Select a file to upload (Single file)</td>
+					<td>Select a file to upload</td>
 					<td><input type="file" name="file" /></td>
 				</tr>
 				<tr>
