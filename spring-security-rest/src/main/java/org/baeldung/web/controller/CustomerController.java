@@ -39,9 +39,10 @@ public class CustomerController {
         for (final Customer customer : allCustomers) {
             final Link selfLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getCustomerById(customer.getCustomerId())).withSelfRel();
             customer.add(selfLink);
-            final Link ordersLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrdersForCustomer(customer.getCustomerId())).withRel("allOrders");
-            customer.add(ordersLink);
-
+            if (customer.getOrders().values().size() > 0) {
+                final Link ordersLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrdersForCustomer(customer.getCustomerId())).withRel("allOrders");
+                customer.add(ordersLink);
+            }
             for (final Order order : customer.getOrders().values()) {
                 final Link orderLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrderByIdForCustomer(customer.getCustomerId(), order.getOrderId())).withRel("order");
                 order.add(orderLink);

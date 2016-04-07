@@ -14,15 +14,18 @@ public class CustomerServiceImpl implements CustomerService {
     private HashMap<String, Customer> customerMap;
     private HashMap<String, Order> customerOneOrderMap;
     private HashMap<String, Order> customerTwoOrderMap;
+    private HashMap<String, Order> customerThreeOrderMap;
 
     public CustomerServiceImpl() {
 
         customerMap = new HashMap<>();
         customerOneOrderMap = new HashMap<>();
         customerTwoOrderMap = new HashMap<>();
+        customerThreeOrderMap = new HashMap<>();
 
         final Customer customerOne = new Customer("10A", "Jane", "ABC Company");
         final Customer customerTwo = new Customer("20B", "Bob", "XYZ Company");
+        final Customer customerThree = new Customer("30C", "Tim", "CKV Company");
 
         customerOneOrderMap.put("001A", new Order("001A", 150.00, 25));
         customerOneOrderMap.put("002A", new Order("002A", 250.00, 15));
@@ -32,8 +35,10 @@ public class CustomerServiceImpl implements CustomerService {
 
         customerOne.setOrders(customerOneOrderMap);
         customerTwo.setOrders(customerTwoOrderMap);
+        customerThree.setOrders(customerThreeOrderMap);
         customerMap.put("10A", customerOne);
         customerMap.put("20B", customerTwo);
+        customerMap.put("30C", customerThree);
 
     }
 
