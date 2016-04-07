@@ -61,6 +61,5 @@
 				<td>${person.notes}</td>
 			</tr>
 		</table>
-		
 	</body>
 </html>
