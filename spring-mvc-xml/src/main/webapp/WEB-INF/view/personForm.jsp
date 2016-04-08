@@ -24,7 +24,7 @@
 	
 		<h3>Welcome, Enter the Person Details</h3>
 	
-		<form:form method="POST" action="addPerson" modelAttribute="person">
+		<form:form method="POST" action="/spring-mvc-xml/addPerson" modelAttribute="person">
 			
 			<form:errors path="*" cssClass="errorbox" element="div" />
 			

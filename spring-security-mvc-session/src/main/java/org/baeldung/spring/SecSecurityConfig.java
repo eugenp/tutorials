@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
@@ -49,7 +50,12 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .rememberMe().key("uniqueAndSecret").tokenValiditySeconds(86400)
         .and()
-        .sessionManagement().invalidSessionUrl("/invalidSession.html").maximumSessions(2).expiredUrl("/sessionExpired.html");
+        .sessionManagement()
+        .sessionFixation().migrateSession()
+        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+        .invalidSessionUrl("/invalidSession.html")
+        .maximumSessions(2)
+        .expiredUrl("/sessionExpired.html");
 
         // @formatter:on
     }
