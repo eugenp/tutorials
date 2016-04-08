@@ -1,7 +1,0 @@
-################### JavaMail Configuration ##########################
-smtp.host=email-smtp.us-east-1.amazonaws.com
-smtp.port=465
-smtp.protocol=smtps
-smtp.username=AKIAJIKXZAQFFJDXI4VQ
-smtp.password=
-support.email=eugen@baeldung.com

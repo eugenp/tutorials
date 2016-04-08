@@ -21,6 +21,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.elasticsearch.index.query.FilterBuilders.regexpFilter;
+import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
 import static org.elasticsearch.index.query.QueryBuilders.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -31,6 +32,7 @@ public class ElasticSearchTest {
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
+
     @Autowired
     private ArticleService articleService;
 
@@ -125,5 +127,14 @@ public class ElasticSearchTest {
         articleService.delete(articles.get(0));
 
         assertEquals(count - 1, articleService.count());
+    }
+
+    @Test
+    public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
+        SearchQuery searchQuery = new NativeSearchQueryBuilder()
+                .withQuery(matchQuery("title", "Search engines").operator(AND))
+                .build();
+        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+        assertEquals(1, articles.size());
     }
 }

@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate3</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -162,13 +162,13 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
         <javassist.version>3.20.0-GA</javassist.version>
 
         <!-- persistence -->
         <hibernate.version>3.6.10.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <tomcat-dbcp.version>7.0.47</tomcat-dbcp.version>
 
         <!-- logging -->
@@ -190,13 +190,13 @@
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
 
-        <rest-assured.version>2.4.1</rest-assured.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
     </properties>
 
