@@ -22,7 +22,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
 @SuppressWarnings("unchecked")
-public class FooServiceSortingTests {
+public class FooServiceSortingIntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -65,7 +65,10 @@ public class FooServiceSortingTests {
         final Query barJoinQuery = entityManager.createQuery(jql);
         final List<Foo> fooList = barJoinQuery.getResultList();
         for (final Foo foo : fooList) {
-            System.out.println("Name:" + foo.getName() + "-------BarId:" + foo.getBar().getId());
+            System.out.println("Name:" + foo.getName());
+            if (foo.getBar() != null) {
+                System.out.print("-------BarId:" + foo.getBar().getId());
+            }
         }
     }
 

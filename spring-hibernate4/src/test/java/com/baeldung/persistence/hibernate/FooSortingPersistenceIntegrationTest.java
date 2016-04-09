@@ -26,7 +26,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 @SuppressWarnings("unchecked")
-public class FooSortingPersistenceServiceTest {
+public class FooSortingPersistenceIntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
