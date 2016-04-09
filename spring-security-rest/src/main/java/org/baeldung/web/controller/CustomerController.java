@@ -5,6 +5,7 @@ import java.util.List;
 import org.baeldung.persistence.model.Customer;
 import org.baeldung.persistence.model.Order;
 import org.baeldung.web.service.CustomerService;
+import org.baeldung.web.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -18,19 +19,22 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private OrderService orderService;
+
     @RequestMapping(value = "/customer/{customerId}", method = RequestMethod.GET)
     public Customer getCustomerById(@PathVariable final String customerId) {
         return customerService.getCustomerDetail(customerId);
     }
 
     @RequestMapping(value = "/customer/{customerId}/{orderId}", method = RequestMethod.GET)
-    public Order getOrderByIdForCustomer(@PathVariable final String customerId, @PathVariable final String orderId) {
-        return customerService.getOrderByIdForCustomer(customerId, orderId);
+    public Order getOrderById(@PathVariable final String customerId, @PathVariable final String orderId) {
+        return orderService.getOrderByIdForCustomer(customerId, orderId);
     }
 
     @RequestMapping(value = "/customer/{customerId}/orders", method = RequestMethod.GET)
     public List<Order> getOrdersForCustomer(@PathVariable final String customerId) {
-        return customerService.getAllOrdersForCustomer(customerId);
+        return orderService.getAllOrdersForCustomer(customerId);
     }
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
@@ -39,14 +43,11 @@ public class CustomerController {
         for (final Customer customer : allCustomers) {
             final Link selfLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getCustomerById(customer.getCustomerId())).withSelfRel();
             customer.add(selfLink);
-            if (customer.getOrders().values().size() > 0) {
+            if (orderService.getAllOrdersForCustomer(customer.getCustomerId()).size() > 0) {
                 final Link ordersLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrdersForCustomer(customer.getCustomerId())).withRel("allOrders");
                 customer.add(ordersLink);
             }
-            for (final Order order : customer.getOrders().values()) {
-                final Link orderLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrderByIdForCustomer(customer.getCustomerId(), order.getOrderId())).withRel("order");
-                order.add(orderLink);
-            }
+
         }
         return allCustomers;
     }
