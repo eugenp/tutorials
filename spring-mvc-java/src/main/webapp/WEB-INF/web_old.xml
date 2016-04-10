@@ -16,7 +16,7 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.spring.web.config</param-value>
+        <param-value>com.baeldung.spring.web.config</param-value>
     </context-param>
 
     <listener>
