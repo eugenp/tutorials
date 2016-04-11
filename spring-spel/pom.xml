@@ -5,15 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>guava</artifactId>
+    <artifactId>spel</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>19.0</version>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -26,13 +21,14 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
+            <artifactId>spring-context</artifactId>
             <version>4.0.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-test</artifactId>
             <version>4.0.6.RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
