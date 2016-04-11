@@ -26,7 +26,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("isFullyAuthenticated() and " +
+        "hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')")
     public List<User> findAll() {
         return userRepository.findAll();
     }

@@ -95,8 +95,8 @@ public class SecuredMethodsTest {
     }
 
     @Test
-    @WithMockUser(value = "admin", roles = {"ADMIN"})
-    public void givenAdmin_whenListUsers_thenGetAllUsers() {
+    @WithMockUser(value = "manager", roles = {"MANAGER"})
+    public void givenRoleManager_whenListUsers_thenGetAllUsers() {
         List<User> users = userService.findAll();
         assertThat(users.size(), is(2));
     }

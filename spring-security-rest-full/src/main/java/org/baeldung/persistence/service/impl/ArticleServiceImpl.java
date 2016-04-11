@@ -30,7 +30,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    @PostFilter("hasRole('ADMIN') or (hasRole('USER') and " +
+    @PostFilter("hasRole('ADMIN') or (isAuthenticated() and " +
         "filterObject.author.username == principal.username)")
     public List<Article> findAll() {
         return articleRepository.findAll();
