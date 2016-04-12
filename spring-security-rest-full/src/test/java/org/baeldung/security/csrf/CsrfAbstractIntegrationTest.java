@@ -1,4 +1,4 @@
-package org.baeldung.csrf;
+package org.baeldung.security.csrf;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;

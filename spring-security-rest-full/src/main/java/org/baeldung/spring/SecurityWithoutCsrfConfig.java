@@ -51,6 +51,8 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
         .and()
         // .exceptionHandling().accessDeniedPage("/my-error-page")
         .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
+        .and()
+        .headers().cacheControl().disable()
         ;
         // @formatter:on
     }
