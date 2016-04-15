@@ -34,7 +34,12 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/{customerId}/orders", method = RequestMethod.GET)
     public List<Order> getOrdersForCustomer(@PathVariable final String customerId) {
-        return orderService.getAllOrdersForCustomer(customerId);
+        final List<Order> orders = orderService.getAllOrdersForCustomer(customerId);
+        for (final Order order : orders) {
+            final Link selfLink = ControllerLinkBuilder.linkTo(ControllerLinkBuilder.methodOn(CustomerController.class).getOrderById(customerId, order.getOrderId())).withSelfRel();
+            order.add(selfLink);
+        }
+        return orders;
     }
 
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
