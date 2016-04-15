@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/rest/api")
 public class MyRestController {
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String index() {
-		return "Hello";
-	}
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String index() {
+        return "Hello";
+    }
 
 }
