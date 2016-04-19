@@ -11,7 +11,6 @@
 	<url>http://maven.apache.org</url>
 
 	<build>
-		<finalName>dss-app</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
