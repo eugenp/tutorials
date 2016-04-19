@@ -3,14 +3,15 @@ package org.baeldung.web;
 import static org.junit.Assert.assertEquals;
 
 import org.baeldung.persistence.model.MyUser;
-import org.baeldung.spring.Application;
+import org.baeldung.spring.ConfigTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,8 +20,8 @@ import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+@ContextConfiguration(classes = { ConfigTest.class }, loader = AnnotationConfigContextLoader.class)
+@ActiveProfiles("test")
 public class MyUserLiveTest {
 
     private ObjectMapper mapper = new ObjectMapper();

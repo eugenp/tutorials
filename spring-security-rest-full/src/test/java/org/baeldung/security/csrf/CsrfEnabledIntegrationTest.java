@@ -1,11 +1,10 @@
-package org.baeldung.csrf;
+package org.baeldung.security.csrf;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.SecurityWithCsrfConfig;
 import org.baeldung.spring.WebConfig;
 import org.junit.Test;
 import org.springframework.http.MediaType;

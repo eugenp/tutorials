@@ -20,7 +20,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceJPAConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooServiceSortingWitNullsManualTest {
+public class FooServiceSortingWitNullsManualIntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -30,6 +30,7 @@ public class FooServiceSortingWitNullsManualTest {
 
     // tests
 
+    @SuppressWarnings("unchecked")
     @Test
     public final void whenSortingByStringNullLast_thenLastNull() {
         service.create(new Foo());
@@ -44,6 +45,7 @@ public class FooServiceSortingWitNullsManualTest {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public final void whenSortingByStringNullFirst_thenFirstNull() {
         service.create(new Foo());

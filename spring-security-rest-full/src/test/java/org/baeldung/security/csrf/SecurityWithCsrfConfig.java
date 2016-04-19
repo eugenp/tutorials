@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package org.baeldung.security.csrf;
 
 import org.baeldung.web.error.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +11,10 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-// @Configuration
-// @EnableAutoConfiguration
-// @EnableWebSecurity
-// @EnableGlobalMethodSecurity(prePostEnabled = true)
+@Configuration
+@EnableAutoConfiguration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -47,6 +47,8 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
         .httpBasic()
         .and()
         .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
+        .and()
+        .headers().cacheControl().disable()
         ;
         // @formatter:on
     }
