@@ -23,7 +23,7 @@ public class CustomRecursiveTask extends RecursiveTask<Integer> {
 
         if (arr.length > THRESHOLD) {
 
-            return  ForkJoinTask.invokeAll(createSubtasks())
+            return ForkJoinTask.invokeAll(createSubtasks())
                     .stream()
                     .mapToInt(ForkJoinTask::join)
                     .sum();

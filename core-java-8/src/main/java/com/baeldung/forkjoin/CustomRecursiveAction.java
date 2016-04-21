@@ -21,20 +21,20 @@ public class CustomRecursiveAction extends RecursiveAction {
     @Override
     protected void compute() {
 
-        if(workLoad.length() > THRESHOLD) {
+        if (workLoad.length() > THRESHOLD) {
             ForkJoinTask.invokeAll(createSubtasks());
         } else {
-           processing(workLoad);
+            processing(workLoad);
         }
     }
 
     private Collection<CustomRecursiveAction> createSubtasks() {
 
         List<CustomRecursiveAction> subtasks =
-                 new ArrayList<>();
+                new ArrayList<>();
 
-        String partOne = workLoad.substring(0, workLoad.length()/2);
-        String partTwo = workLoad.substring(workLoad.length()/2, workLoad.length());
+        String partOne = workLoad.substring(0, workLoad.length() / 2);
+        String partTwo = workLoad.substring(workLoad.length() / 2, workLoad.length());
 
         subtasks.add(new CustomRecursiveAction(partOne));
         subtasks.add(new CustomRecursiveAction(partTwo));
