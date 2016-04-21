@@ -13,7 +13,7 @@ public class UnzipFile {
         final byte[] buffer = new byte[1024];
         final ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
         ZipEntry zipEntry = zis.getNextEntry();
-        while(zipEntry != null){
+        while (zipEntry != null) {
             final String fileName = zipEntry.getName();
             final File newFile = new File("src/main/resources/unzipTest/" + fileName);
             final FileOutputStream fos = new FileOutputStream(newFile);

@@ -1,14 +1,12 @@
 package com.baeldung.java8.base64;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 import java.util.UUID;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class Java8EncodeDecodeTest {
 

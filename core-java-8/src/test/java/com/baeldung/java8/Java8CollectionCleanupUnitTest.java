@@ -1,14 +1,13 @@
 package com.baeldung.java8;
 
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import com.google.common.collect.Lists;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
-
-import com.google.common.collect.Lists;
+import static org.hamcrest.Matchers.hasSize;
+import static org.junit.Assert.assertThat;
 
 public class Java8CollectionCleanupUnitTest {
 
