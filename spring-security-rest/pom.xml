@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.springframework.hateoas</groupId>
             <artifactId>spring-hateoas</artifactId>
-            <version>0.19.0.RELEASE</version>
+            <version>${org.springframework.hateoas.version}</version>
         </dependency>
 
         <!-- web -->
@@ -165,6 +165,7 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${org.springframework.security.version}</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -292,6 +293,7 @@
         <!-- Spring -->
         <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.hateoas.version>0.19.0.RELEASE</org.springframework.hateoas.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
