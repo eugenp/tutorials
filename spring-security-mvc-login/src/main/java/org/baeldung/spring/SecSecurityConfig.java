@@ -39,7 +39,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .anyRequest().authenticated()
         .and()
         //.requiresChannel()
-        //.antMatchers("/login*", "/perform_log*").requiresSecure()
+        //.antMatchers("/login*", "/perform_login").requiresSecure()
         //.anyRequest().requiresInsecure()
         //.and()
         //.sessionManagement()

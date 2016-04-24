@@ -14,12 +14,12 @@
         <!--
         <intercept-url pattern="/anonymous*" access="isAnonymous()" requires-channel="http"/>
         <intercept-url pattern="/login*" access="permitAll" requires-channel="https"/>
-        <intercept-url pattern="/perform_log*" access="permitAll" requires-channel="https"/>
+        <intercept-url pattern="/perform_login" requires-channel="https"/>
         <intercept-url pattern="/**" access="isAuthenticated()" requires-channel="http"/>
         -->
 
         <csrf disabled="true"/>
-        
+
         <form-login login-page='/login.html' login-processing-url="/perform_login" default-target-url="/homepage.html" authentication-failure-url="/login.html?error=true"
             always-use-default-target="true"/>
 
