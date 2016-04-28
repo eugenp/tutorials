@@ -1,17 +1,18 @@
 package com.baeldung.powermockito.introduction;
 
-import static org.junit.Assert.assertEquals;
-import static org.powermock.api.mockito.PowerMockito.*;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.powermock.api.mockito.PowerMockito.*;
+
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(fullyQualifiedNames = "com.baeldung.powermockito.introduction.*")
 public class PowerMockitoTest {
+
     @Test
     public void givenFinalMethods_whenUsingPowerMockito_thenCorrect() throws Exception {
         CollaboratorWithFinalMethods mock = mock(CollaboratorWithFinalMethods.class);
