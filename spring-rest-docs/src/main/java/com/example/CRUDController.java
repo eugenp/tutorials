@@ -8,38 +8,43 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/rest/api")
 public class CRUDController {
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String index() {
+		return "Hello";
+	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResourceSupport read() {
 		ResourceSupport index = new ResourceSupport();
-		index.add(linkTo(MyRestController.class).withRel("notes"));
-		index.add(linkTo(MyRestController.class).withRel("tags"));
+		index.add(linkTo(CRUDController.class).withRel("notes"));
+		index.add(linkTo(CRUDController.class).withRel("tags"));
 		return index;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResourceSupport save() {
 		ResourceSupport index = new ResourceSupport();
-		index.add(linkTo(MyRestController.class).withRel("notes"));
-		index.add(linkTo(MyRestController.class).withRel("tags"));
+		index.add(linkTo(CRUDController.class).withRel("notes"));
+		index.add(linkTo(CRUDController.class).withRel("tags"));
 		return index;
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT)
 	public ResourceSupport update() {
 		ResourceSupport index = new ResourceSupport();
-		index.add(linkTo(MyRestController.class).withRel("notes"));
-		index.add(linkTo(MyRestController.class).withRel("tags"));
+		index.add(linkTo(CRUDController.class).withRel("notes"));
+		index.add(linkTo(CRUDController.class).withRel("tags"));
 		return index;
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE)
 	public ResourceSupport delete() {
 		ResourceSupport index = new ResourceSupport();
-		index.add(linkTo(MyRestController.class).withRel("notes"));
-		index.add(linkTo(MyRestController.class).withRel("tags"));
+		index.add(linkTo(CRUDController.class).withRel("notes"));
+		index.add(linkTo(CRUDController.class).withRel("tags"));
 		return index;
 	}
 
