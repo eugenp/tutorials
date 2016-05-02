@@ -45,6 +45,13 @@
 			<version>1.0.1.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		
 	</dependencies>
 	
 	<build>
