@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class IndexController {
 
 	@RequestMapping(method=RequestMethod.GET)
 	public ResourceSupport index() {
 		ResourceSupport index = new ResourceSupport();
-		index.add(linkTo(MyRestController.class).withRel("notes"));
-		index.add(linkTo(MyRestController.class).withRel("tags"));
+		index.add(linkTo(CRUDController.class).withRel("crud"));
 		return index;
 	}
 
