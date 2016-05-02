@@ -11,12 +11,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
-// @ImportResource({ "classpath:webSecurityConfig.xml" })
+// @ImportResource({ "classpath:channelWebSecurityConfig.xml" })
 @EnableWebSecurity
-@Profile("!https")
-public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
+@Profile("https")
+public class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    public SecSecurityConfig() {
+    public ChannelSecSecurityConfig() {
         super();
     }
 
@@ -39,6 +39,14 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/anonymous*").anonymous()
         .antMatchers("/login*").permitAll()
         .anyRequest().authenticated()
+        .and()
+        .requiresChannel()
+        .antMatchers("/login*", "/perform_login").requiresSecure()
+        .anyRequest().requiresInsecure()
+        .and()
+        .sessionManagement()
+        .sessionFixation()
+        .none()
         .and()
         .formLogin()
         .loginPage("/login.html")
