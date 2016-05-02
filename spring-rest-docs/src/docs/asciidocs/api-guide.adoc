@@ -116,7 +116,7 @@ include::{snippets}/crud-create-example/response-fields.adoc[]
 
 ==== Example response
 
-include::{snippets}/index-example/http-response.adoc[]
+include::{snippets}/crud-create-example/http-response.adoc[]
 
 [[resources-crud-create-links]]
 ==== Links
