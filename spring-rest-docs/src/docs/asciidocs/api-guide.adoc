@@ -70,3 +70,31 @@ responses. Responses are in http://stateless.co/hal_specification.html[Hypertext
 from resource to resource.
 Language (HAL)] format. Links can be found beneath the `_links` key. Users of the API should
 not create URIs themselves, instead they should use the above-described links to navigate
+
+[[resources]]
+= Resources
+
+
+
+[[resources-index]]
+== Index
+
+The index provides the entry point into the service.
+
+[[resources-index-access]]
+=== Accessing the index
+
+A `GET` request is used to access the index
+
+==== Response structure
+
+include::{snippets}/index-example/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/index-example/http-response.adoc[]
+
+[[resources-index-links]]
+==== Links
+
+include::{snippets}/index-example/links.adoc[]
