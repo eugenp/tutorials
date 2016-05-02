@@ -2,6 +2,7 @@ package com.baeldung;
 
 import org.junit.gen5.api.Test;
 
+import static org.junit.gen5.api.Assertions.assertEquals;
 import static org.junit.gen5.api.Assumptions.assumeFalse;
 import static org.junit.gen5.api.Assumptions.assumeTrue;
 import static org.junit.gen5.api.Assumptions.assumingThat;
@@ -11,13 +12,13 @@ public class AssumptionTest {
     @Test
     void trueAssumption() {
         assumeTrue(5 > 1);
-        System.out.println("Was true");
+        assertEquals(5 + 2, 7);
     }
 
     @Test
     void falseAssumption() {
         assumeFalse(5 < 1);
-        System.out.println("Was false");
+        assertEquals(5 + 2, 7);
     }
 
     @Test
@@ -25,7 +26,7 @@ public class AssumptionTest {
         String someString = "Just a string";
         assumingThat(
                 someString.equals("Just a string"),
-                () -> System.out.println("Assumption was correct")
+                () -> assertEquals(2 + 2, 4)
         );
     }
 }

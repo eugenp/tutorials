@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import org.junit.gen5.api.Disabled;
 import org.junit.gen5.api.Test;
 
 import static org.junit.gen5.api.Assertions.assertAll;
@@ -11,7 +12,7 @@ class FirstTest {
     @Test
     void lambdaExpressions() {
         String string = "";
-        assertTrue(() -> string.isEmpty(), "String should be empty");
+        assertTrue(string::isEmpty, "String should be empty");
     }
 
     @Test
@@ -24,4 +25,9 @@ class FirstTest {
         });
     }
 
+    @Test
+    @Disabled
+    void disabledTest() {
+        assertTrue(false);
+    }
 }
