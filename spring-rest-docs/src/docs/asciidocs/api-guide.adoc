@@ -98,3 +98,27 @@ include::{snippets}/index-example/http-response.adoc[]
 ==== Links
 
 include::{snippets}/index-example/links.adoc[]
+
+
+[[resources-crud]]
+== crud
+
+The index provides the entry point into the service.
+
+[[resources-index-access]]
+=== Accessing the crud
+
+A `GET` request is used to access the index
+
+==== Response structure
+
+include::{snippets}/crud-create-example/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/index-example/http-response.adoc[]
+
+[[resources-crud-create-links]]
+==== Links
+
+include::{snippets}/crud-create-example/links.adoc[]
