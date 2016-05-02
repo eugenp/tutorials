@@ -12,7 +12,7 @@
         <intercept-url pattern="/login*" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
         <!--
-        <intercept-url pattern="/anonymous*" access="isAnonymous()" requires-channel="http"/>
+        <intercept-url pattern="/anonymous*" access="isAnonymous()"/>
         <intercept-url pattern="/login*" access="permitAll" requires-channel="https"/>
         <intercept-url pattern="/perform_login" requires-channel="https"/>
         <intercept-url pattern="/**" access="isAuthenticated()" requires-channel="http"/>
