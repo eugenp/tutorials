@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriTemplate;
 
 @RestController
 @RequestMapping("/crud")
@@ -35,6 +34,12 @@ public class CRUDController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	void delete(@PathVariable("id") long id) {
+		
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	void patch(@PathVariable("id") long id, @RequestBody CrudInput crudInput) {
 		
 	}
 }
