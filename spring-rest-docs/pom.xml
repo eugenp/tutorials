@@ -86,6 +86,8 @@
 	                        <attributes>
 	                            <snippets>${snippetsDirectory}</snippets> 
 	                        </attributes>
+	                        <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+	                        <outputDirectory>target/generated-docs</outputDirectory>
 	                    </configuration>
 	                </execution>
 	            </executions>
