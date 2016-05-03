@@ -1,15 +1,11 @@
 package org.baeldung.caching.example;
 
-import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
-import org.springframework.stereotype.Component;
 
-@Component
-@CacheConfig(cacheNames = { "addresses" })
-public class CustomerDataService {
+public abstract class AbstractService {
 
     // this method configuration is equivalent to xml configuration
     @Cacheable(value = "addresses", key = "#customer.name")
@@ -76,4 +72,5 @@ public class CustomerDataService {
     public String getAddress5(final Customer customer) {
         return customer.getAddress();
     }
+    
 }
