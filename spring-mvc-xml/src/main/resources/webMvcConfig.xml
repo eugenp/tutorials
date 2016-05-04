@@ -11,12 +11,18 @@
 >
 
     <mvc:annotation-driven/>
-    <context:component-scan base-package="org.baeldung.spring.controller"/>
+    
+    <context:component-scan base-package="com.baeldung.spring.controller"/>
+    
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
     <mvc:view-controller path="/sample.html" view-name="sample"/>
+
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+		<property name="basename" value="messages" />
+	</bean>
 
 </beans>
