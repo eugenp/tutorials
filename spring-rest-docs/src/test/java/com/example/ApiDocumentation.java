@@ -8,6 +8,8 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -75,7 +77,6 @@ public class ApiDocumentation {
 	@Test
 	public void indexExample() throws Exception {
 		this.document.snippets(links(linkWithRel("crud").description("The <<resources-tags,Tags resource>>")),responseFields(fieldWithPath("_links").description("<<resources-index-links,Links>> to other resources")));
-		
 		this.mockMvc.perform(get("/")).andExpect(status().isOk());
 	}
 	
@@ -92,11 +93,43 @@ public class ApiDocumentation {
 		crud.put("tags", Arrays.asList(tagLocation));
 
 		ConstrainedFields fields = new ConstrainedFields(CrudInput.class);
-		
-		this.document.snippets(requestFields(fields.withPath("title").description("The title of the note"),fields.withPath("body").description("The body of the note"),
-						fields.withPath("tags").description("An array of tag resource URIs")));
+		this.document.snippets(requestFields(fields.withPath("title").description("The title of the note"),fields.withPath("body").description("The body of the note"),fields.withPath("tags").description("An array of tag resource URIs")));
 		this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isCreated());
+		
+		
 	}
+	
+	@Test
+	public void crudDeleteExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "REST");
+		
+		String tagLocation =this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void crudPatchExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "REST");
+		
+		String tagLocation =this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isNoContent()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isNoContent());
+	}
+	
+	
 	
 	@Test
 	public void contextLoads() {
@@ -114,4 +147,6 @@ public class ApiDocumentation {
 			return fieldWithPath(path).attributes(key("constraints").value(StringUtils.collectionToDelimitedString(this.constraintDescriptions.descriptionsForProperty(path), ". ")));
 		}
 	}
+	
+	
 }
