@@ -5,6 +5,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +34,12 @@ public class CRUDController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	void delete(@PathVariable("id") long id) {
-		
+	@ResponseStatus(HttpStatus.OK)
+	HttpHeaders delete(@RequestBody CrudInput crudInput) {
+		HttpHeaders httpHeaders = new HttpHeaders();
+		return httpHeaders;
 	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
