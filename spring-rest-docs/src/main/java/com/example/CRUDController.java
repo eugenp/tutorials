@@ -5,7 +5,6 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class CRUDController {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public List<CrudInput> read() {
+	@ResponseStatus(HttpStatus.OK)
+	public List<CrudInput> read(@RequestBody CrudInput crudInput) {
 		List<CrudInput> returnList=new ArrayList<CrudInput>();
+		returnList.add(crudInput);
 		return returnList;
 	}
 	
@@ -40,6 +41,11 @@ public class CRUDController {
 		return httpHeaders;
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	void put(@PathVariable("id") long id, @RequestBody CrudInput crudInput) {
+		
+	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
