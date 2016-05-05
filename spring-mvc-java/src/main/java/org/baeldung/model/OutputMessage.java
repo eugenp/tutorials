@@ -2,10 +2,13 @@ package org.baeldung.model;
 
 public class OutputMessage {
 
+	private String from;
 	private String text;
 	private String time;
 
-	public OutputMessage(final String text, final String time) {
+	public OutputMessage(final String from, final String text, final String time) {
+
+		this.from = from;
 		this.text = text;
 		this.time = time;
 	}
@@ -16,5 +19,9 @@ public class OutputMessage {
 
 	public String getTime() {
 		return time;
+	}
+
+	public String getFrom() {
+		return from;
 	}
 }

@@ -45,8 +45,9 @@
 	        
 	        function sendMessage() {
 	        	
+	        	var from = document.getElementById('from').value;
 	            var text = document.getElementById('text').value;
-	            stompClient.send("/app/chat", {}, JSON.stringify({ 'text': text }));
+	            stompClient.send("/app/chat", {}, JSON.stringify({'from':from, 'text':text}));
 	        }
 	        
 	        function showMessageOutput(messageOutput) {
@@ -54,7 +55,7 @@
 	            var response = document.getElementById('response');
 	            var p = document.createElement('p');
 	            p.style.wordWrap = 'break-word';
-	            p.appendChild(document.createTextNode(messageOutput.time + ": " + messageOutput.text));
+	            p.appendChild(document.createTextNode(messageOutput.from + ": " + messageOutput.text + " (" + messageOutput.time + ")"));
 	            response.appendChild(p);
 	        }
 	        
@@ -65,6 +66,12 @@
 	<body onload="disconnect()">
 
 		<div>
+		
+		
+			<div>
+				<input type="text" id="from" placeholder="Choose a nickname"/>
+			</div>
+			<br />
 		    <div>
 		        <button id="connect" onclick="connect();">Connect</button>
 		        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
