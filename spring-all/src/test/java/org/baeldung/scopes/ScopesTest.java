@@ -9,10 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ScopesTest {
 
 	private static final String NAME = "John Smith";
-	private static final int AGE = 30;
-
 	private static final String NAME_OTHER = "Anna Jones";
-	private static final int AGE_OTHER = 40;
 
 	@Test
 	public void testScopeSingleton() {
@@ -22,10 +19,7 @@ public class ScopesTest {
 		final Person personSingletonB = (Person) applicationContext.getBean("personSingleton");
 
 		personSingletonA.setName(NAME);
-		personSingletonB.setAge(AGE);
-
 		Assert.assertEquals(NAME, personSingletonB.getName());
-		Assert.assertEquals(AGE, personSingletonB.getAge());
 
 		((AbstractApplicationContext) applicationContext).close();
 	}
@@ -38,10 +32,7 @@ public class ScopesTest {
 		final Person personPrototypeB = (Person) applicationContext.getBean("personPrototype");
 
 		personPrototypeA.setName(NAME);
-		personPrototypeA.setAge(AGE);
-
 		personPrototypeB.setName(NAME_OTHER);
-		personPrototypeB.setAge(AGE_OTHER);
 
 		Assert.assertEquals(NAME, personPrototypeA.getName());
 		Assert.assertEquals(NAME_OTHER, personPrototypeB.getName());

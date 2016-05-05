@@ -8,9 +8,7 @@ public class Person {
 	}
 
 	public Person(final String name, final int age) {
-		super();
 		this.name = name;
-		this.age = age;
 	}
 
 	public String getName() {
@@ -21,17 +19,9 @@ public class Person {
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(final int age) {
-		this.age = age;
-	}
-
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", age=" + age + "]";
+		return "Person [name=" + name + "]";
 	}
 
 }
