@@ -10,6 +10,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -80,10 +81,27 @@ public class ApiDocumentation {
 		this.mockMvc.perform(get("/")).andExpect(status().isOk());
 	}
 	
+	
+	@Test
+	public void crudGetExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "GET");
+
+		String tagLocation =this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
+
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
+	}
+	
 	@Test
 	public void crudCreateExample() throws Exception {
 		Map<String, String> tag = new HashMap<String, String>();
-		tag.put("name", "REST");
+		tag.put("name", "CREATE");
 
 		String tagLocation =this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isCreated()).andReturn().getResponse().getHeader("Location");
 
@@ -103,7 +121,7 @@ public class ApiDocumentation {
 	public void crudDeleteExample() throws Exception {
 		
 		Map<String, String> tag = new HashMap<String, String>();
-		tag.put("name", "REST");
+		tag.put("name", "DELETE");
 		
 		String tagLocation =this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
 		Map<String, Object> crud = new HashMap<String, Object>();
@@ -118,7 +136,7 @@ public class ApiDocumentation {
 	public void crudPatchExample() throws Exception {
 		
 		Map<String, String> tag = new HashMap<String, String>();
-		tag.put("name", "REST");
+		tag.put("name", "PATCH");
 		
 		String tagLocation =this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isNoContent()).andReturn().getResponse().getHeader("Location");
 		Map<String, Object> crud = new HashMap<String, Object>();
@@ -129,6 +147,20 @@ public class ApiDocumentation {
 		this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isNoContent());
 	}
 	
+	
+	@Test
+	public void crudPutExample() throws Exception {
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "PUT");
+		
+		String tagLocation =this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isAccepted()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isAccepted());
+	}
 	
 	
 	@Test
