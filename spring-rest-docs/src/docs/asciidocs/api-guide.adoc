@@ -1,5 +1,5 @@
 = RESTful Notes API Guide
-Andy Wilkinson;
+Baeldung;
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -88,11 +88,19 @@ A `GET` request is used to access the index
 
 ==== Response structure
 
-include::{snippets}/index-example/response-fields.adoc[]
+include::{snippets}/index-example/http-response.adoc[]
 
 ==== Example response
 
 include::{snippets}/index-example/http-response.adoc[]
+
+==== Example request
+
+include::{snippets}/index-example/http-request.adoc[]
+
+==== CURL request
+
+include::{snippets}/index-example/curl-request.adoc[]
 
 [[resources-index-links]]
 ==== Links
@@ -100,25 +108,96 @@ include::{snippets}/index-example/http-response.adoc[]
 include::{snippets}/index-example/links.adoc[]
 
 
-[[resources-crud]]
-== crud
+[[resources-CRUD]]
+== CRUD REST Service 
 
-The index provides the entry point into the service.
+The CRUD provides the entry point into the service.
 
-[[resources-index-access]]
-=== Accessing the crud
+[[resources-crud-access]]
+=== Accessing the crud GET
 
-A `GET` request is used to access the index
+A `GET` request is used to access the CRUD read
 
 ==== Response structure
 
-include::{snippets}/crud-create-example/response-fields.adoc[]
+include::{snippets}/crud-get-example/http-request.adoc[]
+
+==== Example response
+
+include::{snippets}/crud-get-example/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/crud-get-example/curl-request.adoc[]
+
+[[resources-crud-access]]
+=== Accessing the crud POST
+
+A `POST` request is used to access the CRUD create
+
+==== Response structure
+
+include::{snippets}/crud-create-example/http-request.adoc[]
 
 ==== Example response
 
 include::{snippets}/crud-create-example/http-response.adoc[]
 
-[[resources-crud-create-links]]
-==== Links
+==== CURL request
 
-include::{snippets}/crud-create-example/links.adoc[]
+include::{snippets}/crud-create-example/curl-request.adoc[]
+
+[[resources-crud-access]]
+=== Accessing the crud DELETE
+
+A `DELETE` request is used to access the CRUD create
+
+==== Response structure
+
+include::{snippets}/crud-delete-example/http-request.adoc[]
+
+==== Example response
+
+include::{snippets}/crud-delete-example/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/crud-delete-example/curl-request.adoc[]
+
+[[resources-crud-access]]
+=== Accessing the crud PATCH
+
+A `PATCH` request is used to access the CRUD create
+
+==== Response structure
+
+include::{snippets}/crud-patch-example/http-request.adoc[]
+
+==== Example response
+
+include::{snippets}/crud-patch-example/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/crud-patch-example/curl-request.adoc[]
+
+[[resources-crud-access]]
+=== Accessing the crud PUT
+
+A `PUT` request is used to access the CRUD create
+
+==== Response structure
+
+include::{snippets}/crud-put-example/http-request.adoc[]
+
+==== Example response
+
+include::{snippets}/crud-put-example/http-response.adoc[]
+
+==== CURL request
+
+include::{snippets}/crud-put-example/curl-request.adoc[]
+
+
+
+
