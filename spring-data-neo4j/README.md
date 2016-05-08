@@ -1,7 +1,7 @@
-## Spring Data Redis
+## Spring Data Neo4j
 
 ### Relevant Articles:
-- [Introduction to Spring Data Redis](http://www.baeldung.com/spring-data-redis-tutorial)
+- [Introduction to Spring Data Neo4j](http://www.baeldung.com/spring-data-neo4j-tutorial)
 
 ### Build the Project with Tests Running
 ```
