@@ -23,19 +23,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         super();
     }
 
-	// @Bean
-	// public StandardServletMultipartResolver multipartResolver() {
-	// return new StandardServletMultipartResolver();
-	// }
+    // @Bean
+    // public StandardServletMultipartResolver multipartResolver() {
+    // return new StandardServletMultipartResolver();
+    // }
 
-	@Bean(name = "multipartResolver")
-	public CommonsMultipartResolver multipartResolver() {
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
 
-		final CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		multipartResolver.setMaxUploadSize(100000);
+        final CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(100000);
 
-		return multipartResolver;
-	}
+        return multipartResolver;
+    }
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
