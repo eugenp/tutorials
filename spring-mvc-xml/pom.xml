@@ -109,7 +109,13 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.7.2</version>
 		</dependency>
-		
+
+        <!-- IO -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.2</version>
+        </dependency>
     </dependencies>
 
     <build>
