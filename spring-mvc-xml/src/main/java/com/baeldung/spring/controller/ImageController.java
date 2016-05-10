@@ -57,7 +57,9 @@ public class ImageController {
 
     @RequestMapping(value = "/image-resource", method = RequestMethod.GET)
     @ResponseBody
-    public Resource getImageAsResource() {
-        return new ServletContextResource(servletContext, "/WEB-INF/images/image-example.jpg");
+    public ResponseEntity<Resource> getImageAsResource() {
+        final HttpHeaders headers = new HttpHeaders();
+        Resource resource = new ServletContextResource(servletContext, "/WEB-INF/images/image-example.jpg");
+        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 }
