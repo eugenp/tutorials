@@ -11,8 +11,8 @@ public class ExceptionTest {
 
     @Test
     void shouldThrowException() {
-        ArrayList list = null;
-        Throwable exception = expectThrows(NullPointerException.class, list::clear);
-        assertEquals(exception.getClass(), NullPointerException.class);
+        Throwable exception = expectThrows(UnsupportedOperationException.class,
+                () -> {throw new UnsupportedOperationException("Not supported");});
+        assertEquals(exception.getMessage(), "Not supported");
     }
 }

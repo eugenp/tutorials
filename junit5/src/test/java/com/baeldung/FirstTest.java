@@ -3,6 +3,10 @@ package com.baeldung;
 import org.junit.gen5.api.Disabled;
 import org.junit.gen5.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.gen5.api.Assertions.assertAll;
 import static org.junit.gen5.api.Assertions.assertEquals;
 import static org.junit.gen5.api.Assertions.assertTrue;
@@ -11,13 +15,16 @@ class FirstTest {
 
     @Test
     void lambdaExpressions() {
-        String string = "";
-        assertTrue(string::isEmpty, "String should be empty");
+        List<Integer> numbers = Arrays.asList(1, 2, 3);
+        assertTrue(numbers
+                .stream()
+                .mapToInt(i -> i)
+                .sum() > 5, "Sum should be greater than 5");
     }
 
     @Test
     void groupAssertions() {
-        int[] numbers = {0,1,2,3,4};
+        int[] numbers = {0, 1, 2, 3, 4};
         assertAll("numbers", () -> {
             assertEquals(numbers[0], 1);
             assertEquals(numbers[3], 3);
