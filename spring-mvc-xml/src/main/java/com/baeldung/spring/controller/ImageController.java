@@ -1,54 +1,64 @@
 package com.baeldung.spring.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.servlet.ServletContext;
-
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.support.ServletContextResourceLoader;
+import org.springframework.web.context.support.ServletContextResource;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 public class ImageController {
 
     @Autowired
-    ServletContext servletContext;
+    private ServletContext servletContext;
 
-    @RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> getImageAsREsponseEntity() throws IOException {
-        final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
-        byte[] media = IOUtils.toByteArray(in);
-
-        final HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-
-        return new ResponseEntity<byte[]>(media, headers, HttpStatus.OK);
+    @RequestMapping(value = "/image-view", method = RequestMethod.GET)
+    public String imageView() throws IOException {
+        return "image-download";
     }
-    
-    @RequestMapping(value = "/image-byte-array", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
-    public @ResponseBody byte[] getImageAsByteArray() throws IOException {
+
+    @RequestMapping(value = "/image-manual-response", method = RequestMethod.GET)
+    public void getImageAsByteArray(HttpServletResponse response) throws IOException {
+        final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+        response.setContentType(MediaType.IMAGE_JPEG_VALUE);
+        IOUtils.copy(in, response.getOutputStream());
+    }
+
+    @RequestMapping(value = "/image-byte-array", method = RequestMethod.GET)
+    @ResponseBody
+    public byte[] getImageAsByteArray() throws IOException {
         final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
         return IOUtils.toByteArray(in);
     }
-    
-    
 
+    @RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> getImageAsResponseEntity() {
+        ResponseEntity<byte[]> responseEntity;
+        final HttpHeaders headers = new HttpHeaders();
+        try {
+            final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+            byte[] media = IOUtils.toByteArray(in);
+            headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+            responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+        } catch (IOException ioe) {
+            responseEntity = new ResponseEntity<>(null, headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/image-resource", method = RequestMethod.GET)
     @ResponseBody
-    @RequestMapping(value = "/image-resource",  method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
     public Resource getImageAsResource() {
-       ResourceLoader resourceLoader = new ServletContextResourceLoader(servletContext);
-       return resourceLoader.getResource("/WEB-INF/images/image-example.jpg");
+        return new ServletContextResource(servletContext, "/WEB-INF/images/image-example.jpg");
     }
 }
