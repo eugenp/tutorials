@@ -39,6 +39,11 @@
             <artifactId>commons-math3</artifactId>
             <version>3.3</version>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.collections</groupId>
+            <artifactId>collections-generic</artifactId>
+            <version>4.01</version>
+        </dependency>
 
         <!-- web -->
 
