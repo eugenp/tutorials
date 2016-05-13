@@ -21,7 +21,7 @@ public class BookServiceTest {
     private static final Log LOGGER = LogFactory.getLog(BookServiceTest.class);
 
     @Autowired
-    private BookService bookService;
+    private BookService bookServiceImpl;
 
     @Test
     public void testSaveBook() {
@@ -33,8 +33,7 @@ public class BookServiceTest {
         book.setReleased(1876);
         book.setPerson(author1);
 
-        bookService.save(book);
-        final Book savedBook = bookService.findBookById(book.getId());
+        final Book savedBook = bookServiceImpl.save(book);
         assertEquals(book.getTitle(), savedBook.getTitle());
    }
 }
