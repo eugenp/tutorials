@@ -15,7 +15,7 @@ import org.junit.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-public class TestClass {
+public class TestXMLSerializeDeserialize {
 
 	@Test
 	public void whenJavaSerializedToXmlStr_thenCorrect() throws JsonProcessingException{
