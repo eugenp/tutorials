@@ -42,19 +42,13 @@ public class ImageController {
     }
 
     @RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
-    public ResponseEntity<byte[]> getImageAsResponseEntity() {
+    public ResponseEntity<byte[]> getImageAsResponseEntity() throws IOException {
         ResponseEntity<byte[]> responseEntity;
         final HttpHeaders headers = new HttpHeaders();
-        try {
-            final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
-            byte[] media = IOUtils.toByteArray(in);
-            headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-            responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-        } catch (FileNotFoundException fnfe) {
-            responseEntity = new ResponseEntity<>(null, headers, HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            responseEntity = new ResponseEntity<>(null, headers, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        final InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+        byte[] media = IOUtils.toByteArray(in);
+        headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+        responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
         return responseEntity;
     }
 
