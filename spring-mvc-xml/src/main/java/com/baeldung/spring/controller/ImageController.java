@@ -12,6 +12,7 @@ import org.springframework.web.context.support.ServletContextResource;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -49,7 +50,9 @@ public class ImageController {
             byte[] media = IOUtils.toByteArray(in);
             headers.setCacheControl(CacheControl.noCache().getHeaderValue());
             responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-        } catch (IOException ioe) {
+        } catch (FileNotFoundException fnfe) {
+            responseEntity = new ResponseEntity<>(null, headers, HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
             responseEntity = new ResponseEntity<>(null, headers, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
