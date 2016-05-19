@@ -81,6 +81,13 @@ public abstract class PersonServiceTest extends IntegrationTest {
         assertFalse(resultList.isEmpty());
         assertTrue(allResultsContainExpectedFirstName(resultList, expectedFirstName));
     }
+    
+    @Test
+    public void whenFindingByFirstNameJohn_thenReturnsOnePersonNamedJohn() {
+        String expectedFirstName = john;
+        List<Person> resultList = personService.findByFirstName(expectedFirstName);
+        assertTrue(resultList.size() == 1);
+    }
 
     @Test
     public void whenFindingByLastNameSmith_thenReturnsOnlyPersonsNamedSmith() {
