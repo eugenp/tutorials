@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <title>Baeldung | Register</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <f:ajax>
+                <h:panelGrid id="theGrid" columns="3">
+                    <h:outputText value="Username"/>
+                    <h:inputText id="firstName" binding="#{userNameTextbox}" required="true" requiredMessage="#{msg['message.valueRequired']}" value="#{registration.userName}"/>
+                    <h:message for="firstName" />
+                    <h:commandButton  value="#{msg['label.saveButton']}" action="#{registration.theUserDao.createUser(userNameTextbox.value)}"/>
+                    <h:outputText value="#{registration.operationMessage}"/>
+                </h:panelGrid>
+            </f:ajax>
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+       xmlns:lang="http://www.springframework.org/schema/lang/spring-lang-2.5.xsd"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+          http://www.springframework.org/schema/context/spring-context-2.5.xsd http://www.springframework.org/schema/context/spring-context-2.5.xsd/spring-spring-context-2.5.xsd-3.1.1.RELEASE.xsd
+          http://www.springframework.org/schema/jee/spring-jee-2.5.xsd http://www.springframework.org/schema/jee/spring-jee-2.5.xsd/spring-spring-jee-2.5.xsd-3.1.1.RELEASE.xsd
+          http://www.springframework.org/schema/lang/spring-lang-2.5.xsd http://www.springframework.org/schema/lang/spring-lang-2.5.xsd/spring-spring-lang-2.5.xsd-3.1.1.RELEASE.xsd
+">
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+    <bean class="com.baeldung.dao.UserManagementDAOImpl" id="userManagementDAO"/>
+    
+</beans>

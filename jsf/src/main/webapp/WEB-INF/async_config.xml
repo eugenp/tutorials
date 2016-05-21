@@ -1,0 +1,11 @@
+<bindings
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    wsdlLocation="http://localhost:8084/AxiaTest/TestIt?wsdl"
+    xmlns="http://java.sun.com/xml/ns/jaxws">
+    <bindings node="wsdl:definitions">
+        <package name="com.me.transport.test"/>
+        <enableAsyncMapping>true</enableAsyncMapping>
+       
+    </bindings>
+</bindings>
