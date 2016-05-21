@@ -18,12 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.baeldung.jooq.introduction.ExceptionTranslator;
 
-@SpringBootApplication(scanBasePackages = "com.baeldung.jooq.introduction.db.public_.tables")
+@SpringBootApplication
 @EnableTransactionManagement
 public class Application {
     @Autowired
     private Environment environment;
-    @Autowired
     private DataSource dataSource;
 
     public DataSource dataSource() {
@@ -41,11 +40,11 @@ public class Application {
         return new TransactionAwareDataSourceProxy(dataSource());
     }
 
-    // Compulsory bean if not using Boot
     public DataSourceTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource);
     }
-
+    
+    @Bean
     public DataSourceConnectionProvider connectionProvider() {
         return new DataSourceConnectionProvider(transactionAwareDataSource());
     }
