@@ -21,6 +21,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 
     <dependencies>
@@ -44,16 +45,53 @@
             <version>1.0.1.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.0.0</version>
+		</dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+   <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin> 
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+	            <configuration>
+	                <includes>
+	                    <include>**/*Documentation.java</include>
+	                </includes>
+	            </configuration>
+        	</plugin>
+			<plugin> 
+	            <groupId>org.asciidoctor</groupId>
+	            <artifactId>asciidoctor-maven-plugin</artifactId>
+	            <version>1.5.2</version>
+	            <executions>
+	                <execution>
+	                    <id>generate-docs</id>
+	                    <phase>package</phase> 
+	                    <goals>
+	                        <goal>process-asciidoc</goal>
+	                    </goals>
+	                    <configuration>
+	                        <backend>html</backend>
+	                        <doctype>book</doctype>
+	                        <attributes>
+	                            <snippets>${snippetsDirectory}</snippets> 
+	                        </attributes>
+	                        <sourceDirectory>src/docs/asciidocs</sourceDirectory>
+	                        <outputDirectory>target/generated-docs</outputDirectory>
+	                    </configuration>
+	                </execution>
+	            </executions>
+        	</plugin>
+		</plugins>
+	</build>
 
 
 </project>

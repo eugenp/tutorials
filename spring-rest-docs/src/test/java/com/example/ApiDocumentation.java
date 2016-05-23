@@ -1,66 +1,184 @@
 package com.example;
 
+import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
+import static org.springframework.restdocs.headers.HeaderDocumentation.responseHeaders;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
+import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
+import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.restdocs.snippet.Attributes.key;
+import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.restdocs.RestDocumentation;
+import org.springframework.restdocs.constraints.ConstraintDescriptions;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
+import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.linkWithRel;
-import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.operation.preprocess.Preprocessors.*;
-import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
-import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringRestDocsApplication.class)
 @WebAppConfiguration
 public class ApiDocumentation {
 
-    @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
+	@Rule
+	public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
+	
+	@Autowired
+	private WebApplicationContext context;
+	
+	@Autowired
+	private ObjectMapper objectMapper;
+	
+	private RestDocumentationResultHandler document; 
+	
+	private MockMvc mockMvc;
+	
+	@Before
+	public void setUp() {
+		this.document = document("{method-name}",preprocessRequest(prettyPrint()),preprocessResponse(prettyPrint()));
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).alwaysDo(this.document).build();
+	}
+	
 
-    @Autowired
-    private WebApplicationContext context;
+	@Test
+	public void headersExample() throws Exception {
+		this.document.snippets(responseHeaders(headerWithName("Content-Type").description("The Content-Type of the payload, e.g. `application/hal+json`")));
+		this.mockMvc.perform(get("/")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void indexExample() throws Exception {
+		this.document.snippets(links(linkWithRel("crud").description("The <<resources-tags,Tags resource>>")),responseFields(fieldWithPath("_links").description("<<resources-index-links,Links>> to other resources")));
+		this.mockMvc.perform(get("/")).andExpect(status().isOk());
+	}
+	
+	
+	@Test
+	public void crudGetExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "GET");
 
-    private RestDocumentationResultHandler document;
+		String tagLocation =this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
 
-    private MockMvc mockMvc;
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void crudCreateExample() throws Exception {
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "CREATE");
 
-    @Before
-    public void setUp() {
-        this.document = document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()));
+		String tagLocation =this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isCreated()).andReturn().getResponse().getHeader("Location");
 
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(documentationConfiguration(this.restDocumentation))
-                .alwaysDo(this.document).build();
-    }
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
 
-    @Test
-    public void indexExample() throws Exception {
-        this.document.snippets(
-                links(
-                    linkWithRel("notes").description("The <<Simple description about the REST Service >>"),
-                    linkWithRel("tags").description("The <<resources-tags,Tags resource>>")
-                ),
-                responseFields(fieldWithPath("_links").description("<<resources-index-links,Links>> to other resources")));
+		ConstrainedFields fields = new ConstrainedFields(CrudInput.class);
+		this.document.snippets(requestFields(fields.withPath("title").description("The title of the note"),fields.withPath("body").description("The body of the note"),fields.withPath("tags").description("An array of tag resource URIs")));
+		this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isCreated());
+		
+		
+	}
+	
+	@Test
+	public void crudDeleteExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "DELETE");
+		
+		String tagLocation =this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void crudPatchExample() throws Exception {
+		
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "PATCH");
+		
+		String tagLocation =this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isNoContent()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isNoContent());
+	}
+	
+	
+	@Test
+	public void crudPutExample() throws Exception {
+		Map<String, String> tag = new HashMap<String, String>();
+		tag.put("name", "PUT");
+		
+		String tagLocation =this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isAccepted()).andReturn().getResponse().getHeader("Location");
+		Map<String, Object> crud = new HashMap<String, Object>();
+		crud.put("title", "Sample Model");
+		crud.put("body", "http://www.baeldung.com/");
+		crud.put("tags", Arrays.asList(tagLocation));
+		
+		this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isAccepted());
+	}
+	
+	
+	@Test
+	public void contextLoads() {
+	}
+	
+	private static class ConstrainedFields {
 
-        this.mockMvc.perform(get("/api")).andExpect(status().isOk());
-    }
+		private final ConstraintDescriptions constraintDescriptions;
 
-    @Test
-    public void contextLoads() {
-    }
+		ConstrainedFields(Class<?> input) {
+			this.constraintDescriptions = new ConstraintDescriptions(input);
+		}
+
+		private FieldDescriptor withPath(String path) {
+			return fieldWithPath(path).attributes(key("constraints").value(StringUtils.collectionToDelimitedString(this.constraintDescriptions.descriptionsForProperty(path), ". ")));
+		}
+	}
+	
+	
 }
