@@ -3,13 +3,10 @@ package com.baeldung;
 import org.junit.gen5.api.Disabled;
 import org.junit.gen5.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.gen5.api.Assertions.assertAll;
-import static org.junit.gen5.api.Assertions.assertEquals;
-import static org.junit.gen5.api.Assertions.assertTrue;
+import static org.junit.gen5.api.Assertions.*;
 
 class FirstTest {
 

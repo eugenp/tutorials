@@ -11,6 +11,6 @@ public class TaggedTest {
     @Test
     @Tag("Method")
     void testMethod() {
-        assertEquals(2+2, 4);
+        assertEquals(2 + 2, 4);
     }
 }
