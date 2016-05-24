@@ -2,9 +2,6 @@ package com.baeldung.java_8_features;
 
 import java.util.Optional;
 
-/**
- * Created by Alex Vengrov
- */
 public class User {
 
     private String name;

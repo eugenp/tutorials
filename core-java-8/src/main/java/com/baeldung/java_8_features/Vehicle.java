@@ -1,8 +1,5 @@
 package com.baeldung.java_8_features;
 
-/**
- * Created by Alex Vengrov
- */
 public interface Vehicle {
 
     void moveTo(long altitude, long longitude);
