@@ -10,7 +10,7 @@
     <application>
         <resource-bundle>
             <base-name>
-               messages
+                messages
             </base-name>
             <var>
                 msg
@@ -26,7 +26,7 @@
         </resource-bundle>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
-  
+
     <navigation-rule>
         <from-view-id>/*</from-view-id>
         <navigation-case>
@@ -35,16 +35,5 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
-        
-    <navigation-rule>
-        <from-view-id>/register.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>review registration</from-outcome>
-            <to-view-id>/review_registration.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
-    
- 
-    
+
 </faces-config>
