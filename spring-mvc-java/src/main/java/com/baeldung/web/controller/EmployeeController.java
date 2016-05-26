@@ -1,18 +1,24 @@
 package com.baeldung.web.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import com.baeldung.model.Employee;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.baeldung.model.Employee;
 
 @Controller
 public class EmployeeController {
@@ -41,6 +47,38 @@ public class EmployeeController {
         employeeMap.put(employee.getId(), employee);
 
         return "employeeView";
+    }
+
+    @RequestMapping(value = "/employees/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Employee>> getEmployeeByNameAndBeginContactNumber(@PathVariable final String name, @MatrixVariable final String beginContactNumber) {
+        final List<Employee> employeesList = new ArrayList<Employee>();
+        for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
+            final Employee employee = employeeEntry.getValue();
+            if (employee.getName().equalsIgnoreCase(name) && employee.getContactNumber().startsWith(beginContactNumber)) {
+                employeesList.add(employee);
+            }
+        }
+        return new ResponseEntity<>(employeesList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/employeesContacts/{contactNumber}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Employee>> getEmployeeBycontactNumber(@MatrixVariable(required = true) final String contactNumber) {
+        final List<Employee> employeesList = new ArrayList<Employee>();
+        for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
+            final Employee employee = employeeEntry.getValue();
+            if (employee.getContactNumber().equalsIgnoreCase(contactNumber)) {
+                employeesList.add(employee);
+            }
+        }
+        return new ResponseEntity<>(employeesList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "employeeData/{employee}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> getEmployeeData(@MatrixVariable final Map<String, String> matrixVars) {
+        return new ResponseEntity<>(matrixVars, HttpStatus.OK);
     }
 
 }
