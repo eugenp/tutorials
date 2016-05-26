@@ -10,28 +10,21 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 
-
 @ManagedBean(name = "registration")
 @ViewScoped
 public class RegistrationBean implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationBean.class);
 
     @ManagedProperty(value = "#{userManagementDAO}")
-    transient private IUserManagementDAO theUserDao;
+    transient private IUserManagementDAO userDao;
     private String userName;
     private String operationMessage;
 
-    /**
-     * Creates a new instance of RegistrationBean
-     */
-    public RegistrationBean() {
-    }
-
-    public String createNewUser() {
+    public void createNewUser() {
         try {
             LOGGER.info("Creating new user");
             FacesContext context = FacesContext.getCurrentInstance();
-            boolean operationStatus = theUserDao.createUser(userName);
+            boolean operationStatus = userDao.createUser(userName);
             context.isValidationFailed();
             if (operationStatus) {
                 operationMessage = "User " + userName + " created";
@@ -39,8 +32,8 @@ public class RegistrationBean implements Serializable {
         } catch (Exception ex) {
             LOGGER.error("Error registering new user ");
             ex.printStackTrace();
+            operationMessage = "Error " + userName + " not created";
         }
-        return null;
     }
 
     public String getUserName() {
@@ -51,15 +44,12 @@ public class RegistrationBean implements Serializable {
         this.userName = userName;
     }
 
-    /**
-     * @param theUserDao the theUserDao to set
-     */
-    public void setTheUserDao(IUserManagementDAO theUserDao) {
-        this.theUserDao = theUserDao;
+    public void setUserDao(IUserManagementDAO userDao) {
+        this.userDao = userDao;
     }
 
-    public IUserManagementDAO getTheUserDao() {
-        return this.theUserDao;
+    public IUserManagementDAO getUserDao() {
+        return this.userDao;
     }
 
     public String getOperationMessage() {
