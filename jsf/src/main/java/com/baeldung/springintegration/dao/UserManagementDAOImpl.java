@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.baeldung.springintegration.dao;
 
 import java.util.ArrayList;
@@ -10,16 +6,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 
-/**
- * @author Tayo
- */
 public class UserManagementDAOImpl extends IUserManagementDAO {
 
     private List<String> users;
 
     @PostConstruct
     public void initUserList() {
-        users = new ArrayList<String>();
+        users = new ArrayList<>();
     }
 
     @Override

@@ -10,6 +10,6 @@
 ">
 
     <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-    <bean class="com.baeldung.dao.UserManagementDAOImpl" id="userManagementDAO"/>
+    <bean class="com.baeldung.springintegration.dao.UserManagementDAOImpl" id="userManagementDAO"/>
     
 </beans>

@@ -13,12 +13,39 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <dependencies>
-        <!-- http://mvnrepository.com/artifact/com.sun.faces/mojarra-jsf-impl -->
         <dependency>
             <groupId>com.sun.faces</groupId>
-            <artifactId>mojarra-jsf-impl</artifactId>
-            <version>2.0.0-b04</version>
+            <artifactId>jsf-api</artifactId>
+            <version>${com.sun.faces.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>${com.sun.faces.version}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -34,4 +61,9 @@
         </plugins>
     </build>
 
+    <properties>
+        <!-- Spring -->
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <com.sun.faces.version>2.1.7</com.sun.faces.version>
+    </properties>
 </project>

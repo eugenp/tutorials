@@ -10,7 +10,7 @@
     <application>
         <resource-bundle>
             <base-name>
-                com.baeldung.resources.messages
+               messages
             </base-name>
             <var>
                 msg
@@ -18,7 +18,7 @@
         </resource-bundle>
         <resource-bundle>
             <base-name>
-                com.baeldung.resources.constraints
+                constraints
             </base-name>
             <var>
                 constraints
