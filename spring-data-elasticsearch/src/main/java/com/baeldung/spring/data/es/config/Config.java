@@ -10,6 +10,7 @@ import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.node.NodeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,9 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @ComponentScan(basePackages = { "com.baeldung.spring.data.es.service" })
 public class Config {
 
+    @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/2.3.2}")
+    private String elasticsearchHome;
+
     private static Logger logger = LoggerFactory.getLogger(Config.class);
 
     @Bean
@@ -29,7 +33,13 @@ public class Config {
         try {
             final Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
 
-            final Settings.Builder elasticsearchSettings = Settings.settingsBuilder().put("http.enabled", "false").put("path.data", tmpDir.toAbsolutePath().toString()).put("path.home", "/usr/local/Cellar/elasticsearch/2.3.2");
+            // @formatter:off
+
+            final Settings.Builder elasticsearchSettings =
+                    Settings.settingsBuilder().put("http.enabled", "false")
+                                              .put("path.data", tmpDir.toAbsolutePath().toString())
+                                              .put("path.home", elasticsearchHome);
+            // @formatter:on
 
             logger.debug(tmpDir.toAbsolutePath().toString());
 
