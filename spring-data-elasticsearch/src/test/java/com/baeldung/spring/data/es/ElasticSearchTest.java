@@ -27,7 +27,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Config.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { Config.class }, loader = AnnotationConfigContextLoader.class)
 public class ElasticSearchTest {
 
     @Autowired
@@ -59,8 +59,7 @@ public class ElasticSearchTest {
 
     @Test
     public void givenArticleService_whenSaveArticle_thenIdIsAssigned() {
-        List<Author> authors = asList(
-                new Author("John Smith"), johnDoe);
+        List<Author> authors = asList(new Author("John Smith"), johnDoe);
 
         Article article = new Article("Making Search Elastic");
         article.setAuthors(authors);
@@ -83,13 +82,10 @@ public class ElasticSearchTest {
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
-
     @Test
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withFilter(regexpFilter("title", ".*data.*"))
-                .build();
+        SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpFilter("title", ".*data.*")).build();
         List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
@@ -97,9 +93,7 @@ public class ElasticSearchTest {
 
     @Test
     public void givenSavedDoc_whenTitleUpdated_thenCouldFindByUpdatedTitle() {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(fuzzyQuery("title", "serch"))
-                .build();
+        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(fuzzyQuery("title", "serch")).build();
         List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
@@ -117,9 +111,7 @@ public class ElasticSearchTest {
 
         final String articleTitle = "Spring Data Elasticsearch";
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%"))
-                .build();
+        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
         List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
         final long count = articleService.count();
@@ -131,9 +123,7 @@ public class ElasticSearchTest {
 
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", "Search engines").operator(AND))
-                .build();
+        SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Search engines").operator(AND)).build();
         List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
     }

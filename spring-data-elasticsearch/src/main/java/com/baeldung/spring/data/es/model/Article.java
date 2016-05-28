@@ -16,12 +16,7 @@ public class Article {
     @Id
     private String id;
 
-    @MultiField(
-        mainField = @Field(type = String),
-        otherFields = {
-            @NestedField(index = not_analyzed, dotSuffix = "verbatim", type = String)
-        }
-    )
+    @MultiField(mainField = @Field(type = String), otherFields = { @NestedField(index = not_analyzed, dotSuffix = "verbatim", type = String) })
     private String title;
 
     @Field(type = Nested)
@@ -71,11 +66,6 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                ", tags=" + Arrays.toString(tags) +
-                '}';
+        return "Article{" + "id='" + id + '\'' + ", title='" + title + '\'' + ", authors=" + authors + ", tags=" + Arrays.toString(tags) + '}';
     }
 }
