@@ -1,7 +1,12 @@
 package com.baeldung.spring.data.es.config;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.elasticsearch.client.Client;
-import org.elasticsearch.common.settings.ImmutableSettings;
+import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.node.NodeBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +16,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.baeldung.spring.data.es.repository")
@@ -27,14 +27,14 @@ public class Config {
     @Bean
     public Client client() {
         try {
-            Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
+            final Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
 
-            ImmutableSettings.Builder elasticsearchSettings = ImmutableSettings.settingsBuilder().put("http.enabled", "false").put("path.data", tmpDir.toAbsolutePath().toString());
+            final Settings.Builder elasticsearchSettings = Settings.settingsBuilder().put("http.enabled", "false").put("path.data", tmpDir.toAbsolutePath().toString()).put("path.home", "/usr/local/Cellar/elasticsearch/2.3.2");
 
             logger.debug(tmpDir.toAbsolutePath().toString());
 
             return new NodeBuilder().local(true).settings(elasticsearchSettings.build()).node().client();
-        } catch (IOException ioex) {
+        } catch (final IOException ioex) {
             logger.error("Cannot create temp dir", ioex);
             throw new RuntimeException();
         }
