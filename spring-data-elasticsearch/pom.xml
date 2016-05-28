@@ -18,7 +18,7 @@
 		<junit.version>4.11</junit.version>
 		<org.slf4j.version>1.7.12</org.slf4j.version>
 		<logback.version>1.1.3</logback.version>
-		<elasticsearch.version>2.0.0.RELEASE</elasticsearch.version>
+		<elasticsearch.version>2.0.1.RELEASE</elasticsearch.version>
 	</properties>
 
 	<dependencies>
