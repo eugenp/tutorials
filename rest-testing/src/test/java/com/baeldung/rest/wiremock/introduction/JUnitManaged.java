@@ -51,20 +51,21 @@ public class JUnitManaged {
 
     @Test
     public void givenJUnitManagedServer_whenMatchingHeaders_thenCorrect() throws IOException {
-        stubFor(get(urlPathEqualTo("/baeldung/wiremock")).withHeader("Accept", matching("text/.*")).willReturn(aResponse().withStatus(503).withBody("!!! Service Unavailable !!!")));
+        stubFor(get(urlPathEqualTo("/baeldung/wiremock")).withHeader("Accept", matching("text/.*")).willReturn(aResponse().withStatus(503).withHeader("Content-Type", "text/html").withBody("!!! Service Unavailable !!!")));
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet request = new HttpGet("http://localhost:8080/baeldung/wiremock");
-        request.addHeader("Accept", "text/xml");
+        request.addHeader("Accept", "text/html");
         HttpResponse httpResponse = httpClient.execute(request);
         String stringResponse = convertHttpResponseToString(httpResponse);
 
         verify(getRequestedFor(urlEqualTo("/baeldung/wiremock")));
         assertEquals(503, httpResponse.getStatusLine().getStatusCode());
+        assertEquals("text/html", httpResponse.getFirstHeader("Content-Type").getValue());
         assertEquals("!!! Service Unavailable !!!", stringResponse);
     }
 
-    // @Test
+    @Test
     public void givenJUnitManagedServer_whenMatchingBody_thenCorrect() throws IOException {
         stubFor(post(urlEqualTo("/baeldung/wiremock")).withHeader("Content-Type", equalTo("application/json")).withRequestBody(containing("\"testing-library\": \"WireMock\"")).withRequestBody(containing("\"creator\": \"Tom Akehurst\""))
                 .withRequestBody(containing("\"website\": \"wiremock.org\"")).willReturn(aResponse().withStatus(200)));
@@ -75,13 +76,12 @@ public class JUnitManaged {
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpPost request = new HttpPost("http://localhost:8080/baeldung/wiremock");
-
         request.addHeader("Content-Type", "application/json");
         request.setEntity(entity);
         HttpResponse response = httpClient.execute(request);
 
-        assertEquals(200, response.getStatusLine().getStatusCode());
         verify(postRequestedFor(urlEqualTo("/baeldung/wiremock")).withHeader("Content-Type", equalTo("application/json")));
+        assertEquals(200, response.getStatusLine().getStatusCode());
     }
 
     @Test
