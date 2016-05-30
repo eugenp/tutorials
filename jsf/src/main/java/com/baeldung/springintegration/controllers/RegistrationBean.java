@@ -1,6 +1,6 @@
 package com.baeldung.springintegration.controllers;
 
-import com.baeldung.springintegration.dao.IUserManagementDAO;
+import com.baeldung.springintegration.dao.UserManagementDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +16,7 @@ public class RegistrationBean implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationBean.class);
 
     @ManagedProperty(value = "#{userManagementDAO}")
-    transient private IUserManagementDAO userDao;
+    transient private UserManagementDAO userDao;
     private String userName;
     private String operationMessage;
 
@@ -44,11 +44,11 @@ public class RegistrationBean implements Serializable {
         this.userName = userName;
     }
 
-    public void setUserDao(IUserManagementDAO userDao) {
+    public void setUserDao(UserManagementDAO userDao) {
         this.userDao = userDao;
     }
 
-    public IUserManagementDAO getUserDao() {
+    public UserManagementDAO getUserDao() {
         return this.userDao;
     }
 
