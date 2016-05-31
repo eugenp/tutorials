@@ -2,8 +2,10 @@ package com.baeldung.collectors;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.BiConsumer;
@@ -25,7 +27,7 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
     public ImmutableMapCollector() {
     }
 
-    private void setUp(Function<T, K> keyMapper) {
+    public void setUp(Function<T, K> keyMapper) {
         this.keyMapper = keyMapper;
     }
 
@@ -62,51 +64,78 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
         empList.add(new Employee(1, "John", 100000, 1));
         empList.add(new Employee(2, "Joe", 200000, 2));
         empList.add(new Employee(3, "Smith", 300000, 3));
-        empList.add(new Employee(4, "Jack", 200000, 1));
+        empList.add(new Employee(4, "Jack", 900000, 1));
         empList.add(new Employee(5, "Alex", 500000, 3));
-        empList.add(new Employee(6, "Justin", 300000, 2));
+        empList.add(new Employee(6, "Justin", 800000, 2));
         empList.add(new Employee(7, "Bob", 700000, 1));
 
         ImmutableMapCollector<Employee, Integer, Builder<Integer, Employee>, ImmutableMap<Integer, Employee>> immutableMapCollector = new ImmutableMapCollector<Employee, Integer, ImmutableMap.Builder<Integer, Employee>, ImmutableMap<Integer, Employee>>();
 
         immutableMapCollector.setUp((Employee e) -> e.getEmpId());
         final ImmutableMap<Integer, Employee> empMap = empList.stream().collect(immutableMapCollector);
-
-        // Joining(delimiter, prefix, suffix)
-        Stream.of("1", "2", "3").collect(Collectors.joining(",", "<", ">"));
-
-        // mapping(function, collector)
-        empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.mapping(Employee::getSalary, Collectors.toSet())));
-
-        // averagingDouble
-        empList.stream().collect(Collectors.averagingDouble(e -> e.getSalary()));
-
-        // groupingBy(Function, Collector)
+        
+        //joining();
+        //mapping(empList);
+        //averagingDouble(empList);
+        //groupBy(empList);
+        //Optional<Employee> max = employeeWithMaxSalary(empList);
+        //Optional<Employee> min = employeeWithMinSalary(empList);
+        //summarizingDouble(empList);
+        //summingDouble(empList);
+        //reducing(BinaryOperator)
         empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
 
-        // maxBy(Comparator)
-        Optional<Employee> max = empList.stream().collect(Collectors.maxBy(new Comparator<Employee>() {
-            public int compare(Employee o1, Employee o2) {
-                return compare(o1, o2);
-            }
-        }));
+        
+    }
 
-        // minBy(Comparator)
+    //summingDouble(ToDoubleFunction)
+    public Double summingEmployeeSalaryDouble(List<Employee> empList) {
+        return empList.stream().collect(Collectors.summingDouble(e -> e.getSalary()));
+    }
+
+    //summarizingDouble(ToDoubleFunction)
+    public DoubleSummaryStatistics summarizingEmployeeSalaryDouble(List<Employee> empList) {
+        return empList.stream().collect(Collectors.summarizingDouble(e -> e.getSalary()));
+    }
+
+    //min(Comparator)
+    public Optional<Employee> employeeWithMinSalary(List<Employee> empList) {
         Optional<Employee> min = empList.stream().collect(Collectors.minBy(new Comparator<Employee>() {
             public int compare(Employee o1, Employee o2) {
                 return o1.compare(o1, o2);
             }
         }));
+        return min;
+    }
 
-        // reducing(BinaryOperator)
-        empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
+    //max(Comparator)
+    public Optional<Employee> employeeWithMaxSalary(List<Employee> empList) {
+        Optional<Employee> max = empList.stream().collect(Collectors.maxBy(new Comparator<Employee>() {
+            public int compare(Employee o1, Employee o2) {
+                return o1.compare(o1, o2);
+            }
+        }));
+        return max;
+    }
 
-        // summarizingDouble(ToDoubleFunction)
-        empList.stream().collect(Collectors.summarizingDouble(e -> e.getSalary()));
+    //groupingBy(Function, Collector)
+    public Map<Integer, Optional<Employee>> groupByReducingMax(List<Employee> empList) {
+        return empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
+    }
 
-        // summingDouble(ToDoubleFunction)
-        empList.stream().collect(Collectors.summingDouble(e -> e.getSalary()));
+    //averagingDouble
+    public Double averagingDouble(List<Employee> empList) {
+        return empList.stream().collect(Collectors.averagingDouble(e -> e.getSalary()));
+    }
 
+    //mappingDeptEmpSal(function, collector)
+    public Map<Integer, Set<Long>> mappingDeptEmpSal(List<Employee> empList) {
+        return empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.mapping(Employee::getSalary, Collectors.toSet())));
+    }
+
+    //Joining(delimiter, prefix, suffix)
+    public String joining() {
+        return Stream.of("1", "2", "3").collect(Collectors.joining(",", "<", ">"));
     }
 
 }
