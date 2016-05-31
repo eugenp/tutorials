@@ -10,6 +10,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 
 public class PizzaTest {
+
     @Test
     public void givenPizaOrder_whenReady_thenDeliverable() {
         Pizza testPz = new Pizza();
@@ -19,7 +20,7 @@ public class PizzaTest {
 
     @Test
     public void givenPizaOrders_whenRetrievingUnDeliveredPzs_thenCorrectlyRetrieved() {
-        List<Pizza> pzList = new ArrayList<Pizza>();
+        List<Pizza> pzList = new ArrayList<>();
         Pizza pz1 = new Pizza();
         pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
 
@@ -44,7 +45,7 @@ public class PizzaTest {
     @Test
     public void givenPizaOrders_whenGroupByStatusCalled_thenCorrectlyGrouped() {
 
-        List<Pizza> pzList = new ArrayList<Pizza>();
+        List<Pizza> pzList = new ArrayList<>();
         Pizza pz1 = new Pizza();
         pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
 
@@ -75,4 +76,5 @@ public class PizzaTest {
         pz.deliver();
         assertTrue(pz.getStatus() == Pizza.PizzaStatusEnum.DELIVERED);
     }
+
 }
