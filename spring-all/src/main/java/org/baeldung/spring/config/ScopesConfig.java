@@ -1,6 +1,7 @@
 package org.baeldung.spring.config;
 
 import org.baeldung.scopes.HelloMessageGenerator;
+import org.baeldung.scopes.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -42,4 +43,15 @@ public class ScopesConfig {
 		return new HelloMessageGenerator();
 	}
 
+	@Bean
+	@Scope("prototype")
+	public Person personPrototype() {
+		return new Person();
+	}
+
+	@Bean
+	@Scope("singleton")
+	public Person personSingleton() {
+		return new Person();
+	}
 }

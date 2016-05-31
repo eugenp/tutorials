@@ -2,45 +2,30 @@ package org.baeldung.scopes;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ScopesController {
+	public static final Logger LOG = Logger.getLogger(ScopesController.class);
 
 	@Resource(name = "requestMessage")
-	HelloMessageGenerator firstRequestMessage;
-
-	@Resource(name = "requestMessage")
-	HelloMessageGenerator secondRequestMessage;
+	HelloMessageGenerator requestMessage;
 
 	@Resource(name = "sessionMessage")
-	HelloMessageGenerator firstSessionMessage;
-
-	@Resource(name = "sessionMessage")
-	HelloMessageGenerator secondSessionMessage;
+	HelloMessageGenerator sessionMessage;
 
 	@RequestMapping("/scopes")
-	public String getScopes() {
+	public String getScopes(final Model model) {
+		LOG.info("Request Message:" + requestMessage.getMessage());
+		LOG.info("Session Message" + sessionMessage.getMessage());
+		requestMessage.setMessage("Good morning!");
+		sessionMessage.setMessage("Good afternoon!");
+		model.addAttribute("requestMessage", requestMessage.getMessage());
+		model.addAttribute("sessionMessage", sessionMessage.getMessage());
 		return "scopesExample";
-	}
-
-	@RequestMapping("/scopes/firstRequest")
-	public String getFirstRequest(final Model model) {
-		firstRequestMessage.setMessage("Good morning!");
-		firstSessionMessage.setMessage("Good afternoon!");
-		model.addAttribute("requestMessage", firstRequestMessage.getMessage());
-		model.addAttribute("sessionMessage", firstSessionMessage.getMessage());
-		return "scopesFirstRequest";
-	}
-
-	@RequestMapping("/scopes/secondRequest")
-	public String getSecondRequest(final Model model) {
-		secondRequestMessage.setMessage("Good evening!");
-		model.addAttribute("requestMessage", secondRequestMessage.getMessage());
-		model.addAttribute("sessionMessage", secondSessionMessage.getMessage());
-		return "scopesSecondRequest";
 	}
 
 }
