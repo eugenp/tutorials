@@ -15,16 +15,17 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.configuration.ApplicationContextTestResourceNameType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader=AnnotationConfigContextLoader.class,
-                      classes=ApplicationContextTestResourceNameType.class)
-public class NamedResourceTest {
+@ContextConfiguration(
+    loader=AnnotationConfigContextLoader.class,
+    classes=ApplicationContextTestResourceNameType.class)
+public class FieldResourceInjectionTest {
 
     @Resource(name="namedFile")
-    private File testFile;
+    private File defaultFile;
 
     @Test
-    public void givenResourceAnnotation_WhenOnField_THEN_DEPENDENCY_Found() {
-        assertNotNull(testFile);
-        assertEquals("namedFile.txt", testFile.getName());
+    public void givenResourceAnnotation_WhenOnField_ThenDependencyValid(){
+        assertNotNull(defaultFile);
+        assertEquals("namedFile.txt", defaultFile.getName());
     }
 }

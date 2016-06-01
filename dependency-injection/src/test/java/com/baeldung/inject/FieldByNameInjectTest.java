@@ -10,21 +10,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.configuration.ApplicationContextTestInjectName;
 import com.baeldung.dependency.ArbitraryDependency;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={
-		"/applicationContextTest-@Inject-Name.xml"})
-public class FieldByNameInjectDemo {
+@ContextConfiguration(
+    loader=AnnotationConfigContextLoader.class,
+    classes=ApplicationContextTestInjectName.class)
+public class FieldByNameInjectTest {
 
     @Inject
     @Named("yetAnotherFieldInjectDependency")
     private ArbitraryDependency yetAnotherFieldInjectDependency;
 
     @Test
-    public void yetAnotherFieldInjectDependency_MUST_BE_INJECTED_Correctly() {
+    public void givenInjectQualifier_WhenSetOnField_ThenDependencyValid() {
         assertNotNull(yetAnotherFieldInjectDependency);
-        assertEquals("Yet Another Arbitrary Dependency", yetAnotherFieldInjectDependency.toString());
+        assertEquals("Yet Another Arbitrary Dependency",
+        		       yetAnotherFieldInjectDependency.toString());
     }
 }
