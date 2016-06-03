@@ -64,6 +64,7 @@
         <module>spring-security-rest-full</module>
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
+        <module>jsf</module>
 
     </modules>
 

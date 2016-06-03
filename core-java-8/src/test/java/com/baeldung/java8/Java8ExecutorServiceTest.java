@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
+
 import static org.junit.Assert.*;
 
 
@@ -53,8 +54,8 @@ public class Java8ExecutorServiceTest {
     public void creationSubmittingTasksShuttingDownNow_whenShutDownAfterAwating_thenCorrect() {
 
         ExecutorService threadPoolExecutor =
-          new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<>());
+                new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<>());
 
         for (int i = 0; i < 100; i++) {
             threadPoolExecutor.submit(callableTask);

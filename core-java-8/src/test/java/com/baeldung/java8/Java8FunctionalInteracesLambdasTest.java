@@ -1,16 +1,15 @@
 package com.baeldung.java8;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
-import java.util.function.Function;
-
-import org.junit.Before;
-import org.junit.Test;
-
 import com.baeldung.Foo;
 import com.baeldung.FooExtended;
 import com.baeldung.UseFoo;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.function.Function;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class Java8FunctionalInteracesLambdasTest {
 

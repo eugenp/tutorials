@@ -1,12 +1,12 @@
 package com.baeldung.java8;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
 import java.util.Scanner;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class JavaTryWithResourcesTest {
 

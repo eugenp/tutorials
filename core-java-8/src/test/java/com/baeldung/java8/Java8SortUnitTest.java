@@ -1,17 +1,16 @@
 package com.baeldung.java8;
 
-import static org.hamcrest.Matchers.equalTo;
+import com.baeldung.java8.entity.Human;
+import com.google.common.collect.Lists;
+import com.google.common.primitives.Ints;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-
-import com.baeldung.java8.entity.Human;
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Ints;
+import static org.hamcrest.Matchers.equalTo;
 
 public class Java8SortUnitTest {
 

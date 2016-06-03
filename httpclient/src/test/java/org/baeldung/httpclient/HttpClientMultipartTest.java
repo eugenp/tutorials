@@ -79,18 +79,22 @@ public class HttpClientMultipartTest {
     @Test
     public final void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
         final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + TEXTFILENAME);
+
         final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
         final StringBody stringBody1 = new StringBody("This is message 1", ContentType.MULTIPART_FORM_DATA);
         final StringBody stringBody2 = new StringBody("This is message 2", ContentType.MULTIPART_FORM_DATA);
+        //
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE);
         builder.addPart("upfile", fileBody);
         builder.addPart("text1", stringBody1);
         builder.addPart("text2", stringBody2);
         final HttpEntity entity = builder.build();
+        //
         post.setEntity(entity);
         response = client.execute(post);
+
         final int statusCode = response.getStatusLine().getStatusCode();
         final String responseString = getContent();
         final String contentTypeInHeader = getContentTypeHeader();
@@ -124,7 +128,7 @@ public class HttpClientMultipartTest {
     }
 
     @Test
-    public final void givenFileandInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
+    public final void givenFileAndInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
         final URL url = Thread.currentThread().getContextClassLoader().getResource("uploads/" + ZIPFILENAME);
         final URL url2 = Thread.currentThread().getContextClassLoader().getResource("uploads/" + IMAGEFILENAME);
         final InputStream inputStream = new FileInputStream(url.getPath());
