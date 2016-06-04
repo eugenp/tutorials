@@ -8,7 +8,7 @@ public class LoginController {
         if(null == userForm){
             return "ERROR";
         }else{
-            boolean logged = false;
+            boolean logged;
 
             try {
                 logged = loginService.login(userForm);
@@ -17,6 +17,7 @@ public class LoginController {
             }
 
             if(logged){
+                loginService.setCurrentUser(userForm.username);
                 return "OK ";
             }else{
                 return "KO";

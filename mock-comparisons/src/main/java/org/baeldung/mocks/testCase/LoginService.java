@@ -4,6 +4,8 @@ public class LoginService {
 
     private LoginDao loginDao;
 
+    private String currentUser;
+
     public boolean login(UserForm userForm) {
         assert null != userForm;
 
@@ -14,6 +16,12 @@ public class LoginService {
                 return true;
             default:
                 return false;
+        }
+    }
+
+    public void setCurrentUser(String username) {
+        if(null != username){
+            this.currentUser = username;
         }
     }
 

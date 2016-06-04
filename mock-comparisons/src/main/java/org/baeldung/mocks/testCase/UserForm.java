@@ -2,9 +2,10 @@ package org.baeldung.mocks.testCase;
 
 public class UserForm {
 
-    private String username;
+    // public access modifiers as only for testing
 
-    private String password;
+    public String password;
 
-    // standard setters and getters
+    public String username;
+
 }
