@@ -22,6 +22,13 @@
 			<scope>test</scope>
 		</dependency>
 
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 	</dependencies>
 
 	<build>
@@ -68,6 +75,7 @@
 
 		<!-- testing -->
 		<junit.version>4.12</junit.version>
+        <mockito.version>1.10.19</mockito.version>
 
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
