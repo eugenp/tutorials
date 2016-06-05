@@ -8,4 +8,8 @@ public class UserForm {
 
     public String username;
 
+    public String getUsername(){
+        return username;
+    }
+
 }

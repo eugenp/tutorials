@@ -17,8 +17,8 @@ public class LoginController {
             }
 
             if(logged){
-                loginService.setCurrentUser(userForm.username);
-                return "OK ";
+                loginService.setCurrentUser(userForm.getUsername());
+                return "OK";
             }else{
                 return "KO";
             }
