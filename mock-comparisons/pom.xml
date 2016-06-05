@@ -29,6 +29,20 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 	</dependencies>
 
 	<build>
@@ -76,6 +90,8 @@
 		<!-- testing -->
 		<junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
+        <easymock.version>3.4</easymock.version>
+        <jmockit.version>1.24</jmockit.version>
 
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
