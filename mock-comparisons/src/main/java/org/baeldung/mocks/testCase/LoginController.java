@@ -2,7 +2,7 @@ package org.baeldung.mocks.testCase;
 
 public class LoginController {
 
-    private LoginService loginService;
+    public LoginService loginService;
 
     public String login(UserForm userForm){
         if(null == userForm){

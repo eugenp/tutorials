@@ -1,6 +1,7 @@
 package org.baeldung.mocks.mockito;
 
 import org.baeldung.mocks.testCase.LoginController;
+import org.baeldung.mocks.testCase.LoginDao;
 import org.baeldung.mocks.testCase.LoginService;
 import org.baeldung.mocks.testCase.UserForm;
 import org.junit.Assert;
@@ -9,6 +10,13 @@ import org.junit.Test;
 import org.mockito.*;
 
 public class LoginControllerTest {
+
+    @Mock
+    private LoginDao loginDao;
+
+    @Spy
+    @InjectMocks
+    private LoginService spiedLoginService;
 
     @Mock
     private LoginService loginService;
@@ -68,7 +76,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void stubAnObjectToPassAround() throws Exception {
+    public void stubAnObjectToPassAround() {
         UserForm userForm = Mockito.when(Mockito.mock(UserForm.class).getUsername()).thenReturn("foo").getMock();
         Mockito.when(loginService.login(userForm)).thenReturn(true);
 
@@ -80,7 +88,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void argumentMatching() throws Exception {
+    public void argumentMatching() {
         UserForm userForm = new UserForm();
         userForm.username = "foo";
         // default matcher
@@ -97,5 +105,21 @@ public class LoginControllerTest {
                 return argument instanceof String && ((String) argument).startsWith("foo");
             }
         }));
+    }
+
+    @Test
+    public void partialMocking() {
+        // use partial mock
+        loginController.loginService = spiedLoginService;
+        UserForm userForm = new UserForm();
+        userForm.username = "foo";
+        // let service's login use implementation so let's mock DAO call
+        Mockito.when(loginDao.login(userForm)).thenReturn(1);
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("OK", login);
+        // verify mocked call
+        Mockito.verify(spiedLoginService).setCurrentUser("foo");
     }
 }
