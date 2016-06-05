@@ -72,20 +72,6 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
         ImmutableMapCollector<Employee, Integer, Builder<Integer, Employee>, ImmutableMap<Integer, Employee>> immutableMapCollector = new ImmutableMapCollector<Employee, Integer, ImmutableMap.Builder<Integer, Employee>, ImmutableMap<Integer, Employee>>();
 
         immutableMapCollector.setUp((Employee e) -> e.getEmpId());
-        final ImmutableMap<Integer, Employee> empMap = empList.stream().collect(immutableMapCollector);
-        
-        //joining();
-        //mapping(empList);
-        //averagingDouble(empList);
-        //groupBy(empList);
-        //Optional<Employee> max = employeeWithMaxSalary(empList);
-        //Optional<Employee> min = employeeWithMinSalary(empList);
-        //summarizingDouble(empList);
-        //summingDouble(empList);
-        //reducing(BinaryOperator)
-        empList.stream().collect(Collectors.groupingBy(Employee::getDeptId, Collectors.reducing(BinaryOperator.maxBy(Comparator.comparing(Employee::getSalary)))));
-
-        
     }
 
     //summingDouble(ToDoubleFunction)

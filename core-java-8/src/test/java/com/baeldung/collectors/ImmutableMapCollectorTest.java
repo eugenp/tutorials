@@ -56,25 +56,25 @@ public class ImmutableMapCollectorTest {
 
     @Test
     public void joiningTest() {
-        Assert.assertEquals("", immutableMapCollector.joining(), "<1,2,3>");
+        Assert.assertEquals("simple example of joining characters sequences", immutableMapCollector.joining(), "<1,2,3>");
     }
 
     @Test
     public void mappingDeptEmployeeSalaryTest() {
         Map<Integer, Set<Long>> deptSalaryMap = new HashMap<Integer, Set<Long>>();
         Set<Long> dept1SalarySet = new HashSet<Long>();
+        deptSalaryMap.put(1, dept1SalarySet);
         dept1SalarySet.add(100000L);
         dept1SalarySet.add(900000L);
         dept1SalarySet.add(700000L);
-        deptSalaryMap.put(1, dept1SalarySet);
         Set<Long> dept2SalarySet = new HashSet<Long>();
+        deptSalaryMap.put(2, dept2SalarySet);
         dept2SalarySet.add(200000L);
         dept2SalarySet.add(800000L);
-        deptSalaryMap.put(2, dept2SalarySet);
         Set<Long> dept3SalarySet = new HashSet<Long>();
+        deptSalaryMap.put(3, dept3SalarySet);
         dept3SalarySet.add(300000L);
         dept3SalarySet.add(500000L);
-        deptSalaryMap.put(3, dept3SalarySet);
         Assert.assertEquals("Mapping employee salaries to department", immutableMapCollector.mappingDeptEmpSal(empList), deptSalaryMap);
     }
 
@@ -104,7 +104,7 @@ public class ImmutableMapCollectorTest {
 
     @Test
     public void summarizingDouble() {
-        Assert.assertEquals("Statistics of employee salaries", immutableMapCollector.summarizingEmployeeSalaryDouble(empList).toString(), stats.toString());
+        Assert.assertEquals("Statistics of employee salaries like count, sum, min, average, max", immutableMapCollector.summarizingEmployeeSalaryDouble(empList).toString(), stats.toString());
     }
 
     @Test
