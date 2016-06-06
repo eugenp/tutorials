@@ -44,7 +44,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers("/api/csrfAttacker*").permitAll()
         .antMatchers("/api/customer/**").permitAll()
-        .antMatchers("/api/**").authenticated()
+        .antMatchers("/api/foos/**").authenticated()
         .and()
         .formLogin()
         .successHandler(authenticationSuccessHandler)
