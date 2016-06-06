@@ -1,9 +1,15 @@
 package com.baeldung.spring.data.es;
 
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import static java.util.Arrays.asList;
+import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
+import static org.elasticsearch.index.query.QueryBuilders.fuzzyQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,17 +23,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.elasticsearch.index.query.FilterBuilders.regexpFilter;
-import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
-import static org.elasticsearch.index.query.QueryBuilders.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Config.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { Config.class }, loader = AnnotationConfigContextLoader.class)
 public class ElasticSearchTest {
 
     @Autowired
@@ -59,8 +61,7 @@ public class ElasticSearchTest {
 
     @Test
     public void givenArticleService_whenSaveArticle_thenIdIsAssigned() {
-        List<Author> authors = asList(
-                new Author("John Smith"), johnDoe);
+        final List<Author> authors = asList(new Author("John Smith"), johnDoe);
 
         Article article = new Article("Making Search Elastic");
         article.setAuthors(authors);
@@ -72,39 +73,34 @@ public class ElasticSearchTest {
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
-        Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
 
-        Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("John Smith", new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("John Smith", new PageRequest(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
-
 
     @Test
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withFilter(regexpFilter("title", ".*data.*"))
-                .build();
-        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*")).build();
+        final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
     }
 
     @Test
     public void givenSavedDoc_whenTitleUpdated_thenCouldFindByUpdatedTitle() {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(fuzzyQuery("title", "serch"))
-                .build();
-        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(fuzzyQuery("title", "serch")).build();
+        final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
 
-        Article article = articles.get(0);
+        final Article article = articles.get(0);
         final String newTitle = "Getting started with Search Engines";
         article.setTitle(newTitle);
         articleService.save(article);
@@ -117,10 +113,8 @@ public class ElasticSearchTest {
 
         final String articleTitle = "Spring Data Elasticsearch";
 
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%"))
-                .build();
-        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
+        final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
         final long count = articleService.count();
 
@@ -131,10 +125,8 @@ public class ElasticSearchTest {
 
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
-        SearchQuery searchQuery = new NativeSearchQueryBuilder()
-                .withQuery(matchQuery("title", "Search engines").operator(AND))
-                .build();
-        List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Search engines").operator(AND)).build();
+        final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
     }
 }
