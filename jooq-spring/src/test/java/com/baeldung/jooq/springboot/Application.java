@@ -1,12 +1,10 @@
 package com.baeldung.jooq.springboot;
 
-import javax.sql.DataSource;
-
+import com.baeldung.jooq.introduction.ExceptionTranslator;
 import org.jooq.impl.DataSourceConnectionProvider;
 import org.jooq.impl.DefaultConfiguration;
 import org.jooq.impl.DefaultDSLContext;
 import org.jooq.impl.DefaultExecuteListenerProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,14 +14,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.baeldung.jooq.introduction.ExceptionTranslator;
+import javax.sql.DataSource;
 
 @SpringBootApplication
 @EnableTransactionManagement
 public class Application {
+
     @Autowired
     private Environment environment;
-    private DataSource dataSource;
 
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -41,7 +39,7 @@ public class Application {
     }
 
     public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource);
+        return new DataSourceTransactionManager(dataSource());
     }
     
     @Bean
@@ -60,6 +58,7 @@ public class Application {
 
     public DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
+
         jooqConfiguration.set(connectionProvider());
         jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));
 

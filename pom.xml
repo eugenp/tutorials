@@ -20,6 +20,7 @@
         <module>httpclient</module>
         <module>jackson</module>
         <module>javaxval</module>
+        <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
         <!-- <module>jpa-storedprocedure</module> -->
