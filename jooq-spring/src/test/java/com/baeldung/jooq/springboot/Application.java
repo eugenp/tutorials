@@ -23,6 +23,8 @@ public class Application {
     @Autowired
     private Environment environment;
 
+    private DataSource dataSource;
+
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
@@ -39,7 +41,7 @@ public class Application {
     }
 
     public DataSourceTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+        return new DataSourceTransactionManager(dataSource);
     }
     
     @Bean
