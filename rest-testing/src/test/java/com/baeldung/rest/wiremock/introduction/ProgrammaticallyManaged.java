@@ -1,5 +1,16 @@
 package com.baeldung.rest.wiremock.introduction;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -9,40 +20,31 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.junit.Test;
-
-import com.github.tomakehurst.wiremock.WireMockServer;
-
 public class ProgrammaticallyManaged {
-    WireMockServer wireMockServer = new WireMockServer();
-    CloseableHttpClient httpClient = HttpClients.createDefault();
+
+    private static final String BAELDUNG_PATH = "/baeldung";
+
+    private WireMockServer wireMockServer = new WireMockServer();
+    private CloseableHttpClient httpClient = HttpClients.createDefault();
 
     @Test
     public void givenProgrammaticallyManagedServer_whenUsingSimpleStubbing_thenCorrect() throws IOException {
         wireMockServer.start();
 
         configureFor("localhost", 8080);
-        stubFor(get(urlEqualTo("/baeldung")).willReturn(aResponse().withBody("Welcome to Baeldung!")));
+        stubFor(get(urlEqualTo(BAELDUNG_PATH)).willReturn(aResponse().withBody("Welcome to Baeldung!")));
 
         HttpGet request = new HttpGet("http://localhost:8080/baeldung");
         HttpResponse httpResponse = httpClient.execute(request);
         String stringResponse = convertResponseToString(httpResponse);
 
-        verify(getRequestedFor(urlEqualTo("/baeldung")));
+        verify(getRequestedFor(urlEqualTo(BAELDUNG_PATH)));
         assertEquals("Welcome to Baeldung!", stringResponse);
 
         wireMockServer.stop();
     }
 
-    private String convertResponseToString(HttpResponse response) throws IOException {
+    private static String convertResponseToString(HttpResponse response) throws IOException {
         InputStream responseStream = response.getEntity().getContent();
         Scanner scanner = new Scanner(responseStream, "UTF-8");
         String stringResponse = scanner.useDelimiter("\\Z").next();

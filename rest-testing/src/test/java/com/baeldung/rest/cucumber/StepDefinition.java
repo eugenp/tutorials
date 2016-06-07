@@ -1,13 +1,8 @@
 package com.baeldung.rest.cucumber;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.containsString;
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Scanner;
-
+import com.github.tomakehurst.wiremock.WireMockServer;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -15,33 +10,55 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-import com.github.tomakehurst.wiremock.WireMockServer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.postRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class StepDefinition {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("cucumber.json");
-    String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
 
-    WireMockServer wireMockServer = new WireMockServer();
-    CloseableHttpClient httpClient = HttpClients.createDefault();
+    private static final String CREATE_PATH = "/create";
+    private static final String APPLICATION_JSON = "application/json";
+
+    private final InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("cucumber.json");
+    private final String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+
+    private final WireMockServer wireMockServer = new WireMockServer();
+    private final CloseableHttpClient httpClient = HttpClients.createDefault();
 
     @When("^users upload data on a project$")
     public void usersUploadDataOnAProject() throws IOException {
         wireMockServer.start();
 
         configureFor("localhost", 8080);
-        stubFor(post(urlEqualTo("/create")).withHeader("content-type", equalTo("application/json")).withRequestBody(containing("testing-framework")).willReturn(aResponse().withStatus(200)));
+        stubFor(post(urlEqualTo(CREATE_PATH))
+                .withHeader("content-type", equalTo(APPLICATION_JSON))
+                .withRequestBody(containing("testing-framework"))
+                .willReturn(aResponse().withStatus(200)));
 
         HttpPost request = new HttpPost("http://localhost:8080/create");
         StringEntity entity = new StringEntity(jsonString);
-        request.addHeader("content-type", "application/json");
+        request.addHeader("content-type", APPLICATION_JSON);
         request.setEntity(entity);
         HttpResponse response = httpClient.execute(request);
 
         assertEquals(200, response.getStatusLine().getStatusCode());
-        verify(postRequestedFor(urlEqualTo("/create")).withHeader("content-type", equalTo("application/json")));
+        verify(postRequestedFor(urlEqualTo(CREATE_PATH))
+                .withHeader("content-type", equalTo(APPLICATION_JSON)));
 
         wireMockServer.stop();
     }
@@ -51,16 +68,17 @@ public class StepDefinition {
         wireMockServer.start();
 
         configureFor("localhost", 8080);
-        stubFor(get(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo("application/json")).willReturn(aResponse().withBody(jsonString)));
+        stubFor(get(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo(APPLICATION_JSON))
+                .willReturn(aResponse().withBody(jsonString)));
 
         HttpGet request = new HttpGet("http://localhost:8080/projects/" + projectName.toLowerCase());
-        request.addHeader("accept", "application/json");
+        request.addHeader("accept", APPLICATION_JSON);
         HttpResponse httpResponse = httpClient.execute(request);
         String responseString = convertResponseToString(httpResponse);
 
         assertThat(responseString, containsString("\"testing-framework\": \"cucumber\""));
         assertThat(responseString, containsString("\"website\": \"cucumber.io\""));
-        verify(getRequestedFor(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo("application/json")));
+        verify(getRequestedFor(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo(APPLICATION_JSON)));
 
         wireMockServer.stop();
     }
