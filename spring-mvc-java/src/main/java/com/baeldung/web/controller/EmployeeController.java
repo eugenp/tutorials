@@ -2,6 +2,7 @@ package com.baeldung.web.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +43,7 @@ public class EmployeeController {
         }
         model.addAttribute("name", employee.getName());
         model.addAttribute("contactNumber", employee.getContactNumber());
+        model.addAttribute("workingArea", employee.getWorkingArea());
         model.addAttribute("id", employee.getId());
 
         employeeMap.put(employee.getId(), employee);
@@ -79,6 +81,23 @@ public class EmployeeController {
     @ResponseBody
     public ResponseEntity<Map<String, String>> getEmployeeData(@MatrixVariable final Map<String, String> matrixVars) {
         return new ResponseEntity<>(matrixVars, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "employeeArea/{workingArea}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Employee>> getEmployeeByWorkingArea(@MatrixVariable final Map<String, LinkedList<String>> matrixVars) {
+        final List<Employee> employeesList = new ArrayList<Employee>();
+        final LinkedList<String> workingArea = matrixVars.get("workingArea");
+        for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
+            final Employee employee = employeeEntry.getValue();
+            for (final String area : workingArea) {
+                if (employee.getWorkingArea().equalsIgnoreCase(area)) {
+                    employeesList.add(employee);
+                    break;
+                }
+            }
+        }
+        return new ResponseEntity<>(employeesList, HttpStatus.OK);
     }
 
 }
