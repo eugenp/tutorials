@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	<h2>Submitted Employee Information</h2>
+	<h2>Submitted Company Information</h2>
 	<table>
 		<tr>
 			<td>Name :</td>
@@ -14,14 +14,6 @@
 		<tr>
 			<td>ID :</td>
 			<td>${id}</td>
-		</tr>
-		<tr>
-			<td>Contact Number :</td>
-			<td>${contactNumber}</td>
-		</tr>
-		<tr>
-			<td>Working Area :</td>
-			<td>${workingArea}</td>
 		</tr>
 	</table>
 </body>
