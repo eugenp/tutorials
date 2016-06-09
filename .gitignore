@@ -11,6 +11,7 @@
 *.classpath
 .prefs
 *.prefs
+.metadata/
 
 # Intellij
 .idea/
@@ -25,3 +26,4 @@ log/
 target/
 
 spring-openid/src/main/resources/application.properties
+.recommenders/
