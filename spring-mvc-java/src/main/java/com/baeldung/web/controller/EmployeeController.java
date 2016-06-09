@@ -3,10 +3,11 @@ package com.baeldung.web.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.baeldung.model.Employee;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.baeldung.model.Employee;
+
 @Controller
+@ControllerAdvice
 public class EmployeeController {
 
     Map<Long, Employee> employeeMap = new HashMap<>();
@@ -41,6 +45,11 @@ public class EmployeeController {
         employeeMap.put(employee.getId(), employee);
 
         return "employeeView";
+    }
+
+    @ModelAttribute
+    public void addAttributes(final Model model) {
+        model.addAttribute("msg", "Welcome to the Netherlands!");
     }
 
 }
