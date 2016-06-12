@@ -4,36 +4,40 @@ import org.baeldung.mocks.testCase.LoginController;
 import org.baeldung.mocks.testCase.LoginDao;
 import org.baeldung.mocks.testCase.LoginService;
 import org.baeldung.mocks.testCase.UserForm;
+import org.easymock.EasyMock;
+import org.easymock.EasyMockRunner;
+import org.easymock.Mock;
+import org.easymock.TestSubject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.junit.runner.RunWith;
 
 /**
  * <p>Test for LoginController using EasyMock.</p>
  * Created by Alvaro on 12/06/2016.
  */
+@RunWith(EasyMockRunner.class)
 public class LoginControllerTest {
 
+    @Mock
     private LoginDao loginDao;
 
     private LoginService spiedLoginService;
 
+    @Mock
     private LoginService loginService;
 
-    private LoginController loginController;
-
-    @Before
-    public void setUp() {
-        loginController = new LoginController();
-    }
+    @TestSubject
+    private LoginController loginController = new LoginController();
 
     @Test
     public void assertThatNoMethodHasBeenCalled() {
+        EasyMock.replay(loginService);
         loginController.login(null);
 
         // no method called
-        Mockito.verifyZeroInteractions(loginService);
+        EasyMock.verify(loginService);
     }
 
     @Test
