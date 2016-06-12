@@ -9,6 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
 
+/**
+ * <p>Test for LoginController using Mockito.</p>
+ * Created by Alvaro on 12/06/2016.
+ */
 public class LoginControllerTest {
 
     @Mock
@@ -33,7 +37,7 @@ public class LoginControllerTest {
     @Test
     public void assertThatNoMethodHasBeenCalled() {
         loginController.login(null);
-
+        // no method called
         Mockito.verifyZeroInteractions(loginService);
     }
 
@@ -64,7 +68,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void mockExceptionThrowin() {
+    public void mockExceptionThrowing() {
         UserForm userForm = new UserForm();
         Mockito.when(loginService.login(userForm)).thenThrow(IllegalArgumentException.class);
 
