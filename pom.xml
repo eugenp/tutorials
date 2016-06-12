@@ -67,6 +67,8 @@
         <module>spring-zuul</module>
         <module>jsf</module>
         <module>xml</module>
+
+        <module>lombok-intro</module>
     </modules>
 
 </project>
