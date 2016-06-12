@@ -68,7 +68,7 @@
         <module>jsf</module>
         <module>xml</module>
 
-        <module>lombok-intro</module>
+        <module>lombok</module>
     </modules>
 
 </project>

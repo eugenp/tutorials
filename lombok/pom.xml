@@ -6,10 +6,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>lombok-intro</name>
+    <name>lombok</name>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>lombok-intro</artifactId>
+    <artifactId>lombok</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <dependencies>
@@ -56,7 +56,7 @@
 
     <build>
 
-        <finalName>lombok-intro</finalName>
+        <finalName>lombok</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
