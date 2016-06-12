@@ -25,5 +25,9 @@ public class LoginService {
         }
     }
 
+    public void setLoginDao(LoginDao loginDao) {
+        this.loginDao = loginDao;
+    }
+
     // standard setters and getters
 }
