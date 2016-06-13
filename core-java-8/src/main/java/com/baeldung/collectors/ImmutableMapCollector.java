@@ -1,6 +1,5 @@
 package com.baeldung.collectors;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.DoubleSummaryStatistics;
 import java.util.EnumSet;
@@ -23,9 +22,6 @@ import com.google.common.collect.ImmutableMap.Builder;
 public class ImmutableMapCollector<T extends Employee, K extends Number, A extends ImmutableMap.Builder<K, T>, R extends ImmutableMap<K, T>> implements Collector<T, ImmutableMap.Builder<K, T>, ImmutableMap<K, T>> {
 
     private Function<T, K> keyMapper;
-
-    public ImmutableMapCollector() {
-    }
 
     public void setUp(Function<T, K> keyMapper) {
         this.keyMapper = keyMapper;
@@ -58,22 +54,7 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
     public Set<java.util.stream.Collector.Characteristics> characteristics() {
         return EnumSet.of(Characteristics.UNORDERED);
     }
-
-    public static void main(String[] a) {
-        List<Employee> empList = new ArrayList<Employee>();
-        empList.add(new Employee(1, "John", 100000, 1));
-        empList.add(new Employee(2, "Joe", 200000, 2));
-        empList.add(new Employee(3, "Smith", 300000, 3));
-        empList.add(new Employee(4, "Jack", 900000, 1));
-        empList.add(new Employee(5, "Alex", 500000, 3));
-        empList.add(new Employee(6, "Justin", 800000, 2));
-        empList.add(new Employee(7, "Bob", 700000, 1));
-
-        ImmutableMapCollector<Employee, Integer, Builder<Integer, Employee>, ImmutableMap<Integer, Employee>> immutableMapCollector = new ImmutableMapCollector<Employee, Integer, ImmutableMap.Builder<Integer, Employee>, ImmutableMap<Integer, Employee>>();
-
-        immutableMapCollector.setUp((Employee e) -> e.getEmpId());
-    }
-
+    
     //summingDouble(ToDoubleFunction)
     public Double summingEmployeeSalaryDouble(List<Employee> empList) {
         return empList.stream().collect(Collectors.summingDouble(e -> e.getSalary()));
@@ -86,21 +67,13 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
 
     //min(Comparator)
     public Optional<Employee> employeeWithMinSalary(List<Employee> empList) {
-        Optional<Employee> min = empList.stream().collect(Collectors.minBy(new Comparator<Employee>() {
-            public int compare(Employee o1, Employee o2) {
-                return o1.compare(o1, o2);
-            }
-        }));
+        Optional<Employee> min = empList.stream().collect(Collectors.minBy(Comparator.comparing(Employee::getSalary)));
         return min;
     }
 
     //max(Comparator)
     public Optional<Employee> employeeWithMaxSalary(List<Employee> empList) {
-        Optional<Employee> max = empList.stream().collect(Collectors.maxBy(new Comparator<Employee>() {
-            public int compare(Employee o1, Employee o2) {
-                return o1.compare(o1, o2);
-            }
-        }));
+        Optional<Employee> max = empList.stream().collect(Collectors.maxBy(Comparator.comparing(Employee::getSalary)));
         return max;
     }
 
@@ -123,5 +96,4 @@ public class ImmutableMapCollector<T extends Employee, K extends Number, A exten
     public String joining() {
         return Stream.of("1", "2", "3").collect(Collectors.joining(",", "<", ">"));
     }
-
 }

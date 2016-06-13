@@ -46,12 +46,24 @@ public class ImmutableMapCollectorTest {
         immutableMapCollector = new ImmutableMapCollector<Employee, Integer, ImmutableMap.Builder<Integer, Employee>, ImmutableMap<Integer, Employee>>();
 
         immutableMapCollector.setUp((Employee e) -> e.getEmpId());
-
-        empList.stream().collect(immutableMapCollector);
     }
 
     @After
     public void tearDown() {
+    }
+
+    @Test
+    public void customCollector() {
+        ImmutableMap<Integer, Employee> empMap = ImmutableMap.<Integer, Employee>builder()
+                .put(Integer.valueOf(1), empList.get(0))
+                .put(Integer.valueOf(2), empList.get(1))
+                .put(Integer.valueOf(3), empList.get(2))
+                .put(Integer.valueOf(4), empList.get(3))
+                .put(Integer.valueOf(5), empList.get(4))
+                .put(Integer.valueOf(6), empList.get(5))
+                .put(Integer.valueOf(7), empList.get(6))
+                .build();
+        Assert.assertEquals("ImmutableMapCollector custom collector", empList.stream().collect(immutableMapCollector), empMap);
     }
 
     @Test

@@ -1,9 +1,7 @@
 package com.baeldung;
 
-import java.util.Comparator;
-
 //Collector and Collectors Example
-public class Employee implements Comparator<Employee> {
+public class Employee {
 
 	private String name;
 	private long salary;
@@ -52,10 +50,4 @@ public class Employee implements Comparator<Employee> {
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
-
-	@Override
-	public int compare(Employee o1, Employee o2) {
-		return o1.getSalary() > o2.getSalary() ? 1 : o1.getSalary() < o2.getSalary() ? -1 : 0;
-	}
-
 }
