@@ -23,6 +23,7 @@
         <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
+        <module>jee7schedule</module>
         <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
         <!-- <module>raml</module> -->
