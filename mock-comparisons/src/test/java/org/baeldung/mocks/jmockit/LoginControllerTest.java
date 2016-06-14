@@ -15,23 +15,14 @@ import org.mockito.*;
  */
 public class LoginControllerTest {
 
-    @Mock
+    @Injectable
     private LoginDao loginDao;
 
-    @Spy
-    @InjectMocks
-    private LoginService spiedLoginService;
-
-    @Mock
+    @Injectable
     private LoginService loginService;
 
-    @InjectMocks
+    @Tested
     private LoginController loginController;
-
-    @Before
-    public void setUp() {
-        loginController = new LoginController();
-    }
 
     @Test
     public void assertThatNoMethodHasBeenCalled() {
