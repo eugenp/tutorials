@@ -33,7 +33,17 @@ public class LoginControllerTest {
 
     @Test
     public void assertTwoMethodsHaveBeenCalled() {
-      
+        UserForm userForm = new UserForm();
+        userForm.username = "foo";
+        new Expectations(){{
+            loginService.login(userForm); result = true;
+            loginService.setCurrentUser("foo");
+        }};
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("OK", login);
+        new FullVerifications(loginService) {};
     }
 
     @Test
