@@ -63,7 +63,16 @@ public class LoginControllerTest {
 
     @Test
     public void mockExceptionThrowing() {
-      
+        UserForm userForm = new UserForm();
+        new Expectations(){{
+            loginService.login(userForm); result = new IllegalArgumentException();
+            // no expectation for setCurrentUser
+        }};
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("ERROR", login);
+        new FullVerifications(loginService) {};
     }
 
     @Test
