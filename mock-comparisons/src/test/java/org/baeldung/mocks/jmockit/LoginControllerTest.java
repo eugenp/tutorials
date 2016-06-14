@@ -112,6 +112,25 @@ public class LoginControllerTest {
 
     @Test
     public void partialMocking() {
-      
+        // use partial mock
+        LoginService partialLoginService = new LoginService();
+        partialLoginService.setLoginDao(loginDao);
+        loginController.loginService = partialLoginService;
+        
+        UserForm userForm = new UserForm();
+        userForm.username = "foo";
+        // let service's login use implementation so let's mock DAO call
+         new Expectations(){{
+            loginDao.login(userForm); result = 1;
+            // no expectation for loginService.login
+            partialLoginService.setCurrentUser("foo");
+        }};
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("OK", login);
+        // verify mocked call
+        new FullVerifications(partialLoginService) {};
+        new FullVerifications(loginDao) {};
     }
 }
