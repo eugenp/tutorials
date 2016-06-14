@@ -26,7 +26,9 @@ public class LoginControllerTest {
 
     @Test
     public void assertThatNoMethodHasBeenCalled() {
-      
+        loginController.login(null);
+        // no method called
+        new FullVerifications(loginService) {};
     }
 
     @Test
