@@ -76,8 +76,18 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void stubAnObjectToPassAround() {
-      
+    public void stubAnObjectToPassAround(@Mocked final UserForm userForm) {
+        new Expectations(){{
+            userForm.getUsername(); result = "foo";
+            loginService.login(userForm); result = true;
+            loginService.setCurrentUser("foo");
+        }};
+        
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("OK", login);
+        new FullVerifications(loginService) {};
+        new FullVerifications(userForm) {};
     }
 
     @Test
