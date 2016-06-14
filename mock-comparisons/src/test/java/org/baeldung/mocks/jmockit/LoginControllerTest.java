@@ -1,18 +1,23 @@
-package org.baeldung.mocks.mockito;
+package org.baeldung.mocks.jmockit;
 
+import mockit.*;
+import mockit.integration.junit4.JMockit;
 import org.baeldung.mocks.testCase.LoginController;
 import org.baeldung.mocks.testCase.LoginDao;
 import org.baeldung.mocks.testCase.LoginService;
 import org.baeldung.mocks.testCase.UserForm;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.junit.runner.RunWith;
 
 /**
- * <p>Test for LoginController using Mockito.</p>
+ * <p>Test for LoginController using JMockit.</p>
  * Created by Alvaro on 12/06/2016.
  */
+@RunWith(JMockit.class)
 public class LoginControllerTest {
 
     @Injectable
@@ -33,9 +38,9 @@ public class LoginControllerTest {
 
     @Test
     public void assertTwoMethodsHaveBeenCalled() {
-        UserForm userForm = new UserForm();
+        final UserForm userForm = new UserForm();
         userForm.username = "foo";
-        new Expectations(){{
+        new Expectations() {{
             loginService.login(userForm); result = true;
             loginService.setCurrentUser("foo");
         }};
@@ -48,9 +53,9 @@ public class LoginControllerTest {
 
     @Test
     public void assertOnlyOneMethodHasBeenCalled() {
-        UserForm userForm = new UserForm();
+        final UserForm userForm = new UserForm();
         userForm.username = "foo";
-        new Expectations(){{
+        new Expectations() {{
             loginService.login(userForm); result = false;
             // no expectation for setCurrentUser
         }};
@@ -63,8 +68,8 @@ public class LoginControllerTest {
 
     @Test
     public void mockExceptionThrowing() {
-        UserForm userForm = new UserForm();
-        new Expectations(){{
+        final UserForm userForm = new UserForm();
+        new Expectations() {{
             loginService.login(userForm); result = new IllegalArgumentException();
             // no expectation for setCurrentUser
         }};
@@ -77,7 +82,7 @@ public class LoginControllerTest {
 
     @Test
     public void stubAnObjectToPassAround(@Mocked final UserForm userForm) {
-        new Expectations(){{
+        new Expectations() {{
             userForm.getUsername(); result = "foo";
             loginService.login(userForm); result = true;
             loginService.setCurrentUser("foo");
@@ -92,15 +97,23 @@ public class LoginControllerTest {
 
     @Test
     public void argumentMatching() {
-        UserForm userForm = new UserForm();
+        final UserForm userForm = new UserForm();
         userForm.username = "foo";
         // default matcher
-        new Expectations(){{
-            loginService.login((UserForm) any)); result = true;
+        new Expectations() {{
+            loginService.login((UserForm) any);
+            result = true;
             // complex matcher
-            loginService.setCurrentUser(withDelegate(new Delegate(){
-                boolean delegate(Object argument) {
-                    return argument instanceof String && ((String) argument).startsWith("foo");
+            loginService.setCurrentUser(withArgThat(new BaseMatcher<String>() {
+                @Override
+                public boolean matches(Object item) {
+                    return item instanceof String && ((String) item).startsWith("foo");
+                }
+
+                @Override
+                public void describeTo(Description description) {
+                    //NOOP
+                }
             }));
         }};
 
@@ -113,14 +126,14 @@ public class LoginControllerTest {
     @Test
     public void partialMocking() {
         // use partial mock
-        LoginService partialLoginService = new LoginService();
+        final LoginService partialLoginService = new LoginService();
         partialLoginService.setLoginDao(loginDao);
         loginController.loginService = partialLoginService;
-        
-        UserForm userForm = new UserForm();
+
+        final UserForm userForm = new UserForm();
         userForm.username = "foo";
         // let service's login use implementation so let's mock DAO call
-         new Expectations(){{
+        new Expectations() {{
             loginDao.login(userForm); result = 1;
             // no expectation for loginService.login
             partialLoginService.setCurrentUser("foo");
