@@ -48,7 +48,17 @@ public class LoginControllerTest {
 
     @Test
     public void assertOnlyOneMethodHasBeenCalled() {
-      
+        UserForm userForm = new UserForm();
+        userForm.username = "foo";
+        new Expectations(){{
+            loginService.login(userForm); result = false;
+            // no expectation for setCurrentUser
+        }};
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("KO", login);
+        new FullVerifications(loginService) {};
     }
 
     @Test
