@@ -92,7 +92,22 @@ public class LoginControllerTest {
 
     @Test
     public void argumentMatching() {
-      
+        UserForm userForm = new UserForm();
+        userForm.username = "foo";
+        // default matcher
+        new Expectations(){{
+            loginService.login((UserForm) any)); result = true;
+            // complex matcher
+            loginService.setCurrentUser(withDelegate(new Delegate(){
+                boolean delegate(Object argument) {
+                    return argument instanceof String && ((String) argument).startsWith("foo");
+            }));
+        }};
+
+        String login = loginController.login(userForm);
+
+        Assert.assertEquals("OK", login);
+        new FullVerifications(loginService) {};
     }
 
     @Test
