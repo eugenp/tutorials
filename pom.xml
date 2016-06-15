@@ -20,9 +20,11 @@
         <module>httpclient</module>
         <module>jackson</module>
         <module>javaxval</module>
+        <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
         <module>mock-comparisons</module>
+        <module>jee7schedule</module>
         <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
         <!-- <module>raml</module> -->
@@ -65,7 +67,10 @@
         <module>spring-security-rest-full</module>
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
+        <module>jsf</module>
+        <module>xml</module>
 
+        <module>lombok</module>
     </modules>
 
 </project>
