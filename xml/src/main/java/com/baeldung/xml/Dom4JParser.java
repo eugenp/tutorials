@@ -108,7 +108,7 @@ public class Dom4JParser {
 		        .addText("XML with Dom4J");
 
 	         tutorialElement.addElement("description")
-	            .addText("Improve XML handling with Dom4J");
+	            .addText("XML handling with Dom4J");
 
 	         tutorialElement.addElement("date")
 	            .addText("14/06/2016");

@@ -1,0 +1,28 @@
+package com.baeldung.xml;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.util.List;
+
+import org.jdom.Element;
+import org.junit.Test;
+
+public class JDomParserTest {
+	
+	final String fileName = "src/test/resources/example.xml";
+
+	JDomParser parser;
+	
+	@Test
+	public void getFirstElementListTest() {
+		parser = new JDomParser(new File(fileName));
+		List<Element> firstList = parser.getAllTitles();
+
+		assertNotNull(firstList);
+		assertTrue(firstList.size() == 4);
+		assertTrue(firstList.get(0).getAttributeValue("type").equals("java"));
+	}
+	
+}
