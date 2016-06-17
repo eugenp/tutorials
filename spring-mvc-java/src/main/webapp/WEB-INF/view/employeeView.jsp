@@ -20,6 +20,10 @@
 			<td>Contact Number :</td>
 			<td>${contactNumber}</td>
 		</tr>
+		<tr>
+			<td>Working Area :</td>
+			<td>${workingArea}</td>
+		</tr>
 	</table>
 </body>
 </html>

@@ -11,15 +11,18 @@ import org.apache.http.auth.MalformedChallengeException;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.AuthCache;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.impl.auth.DigestScheme;
 import org.apache.http.impl.client.BasicAuthCache;
+import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
@@ -33,10 +36,17 @@ public class SandboxTest {
         final CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(new AuthScope(targetHost.getHostName(), targetHost.getPort()), new UsernamePasswordCredentials("user", "passwd"));
 
+        // This endpoint need fake cookie to work properly
+        final CookieStore cookieStore = new BasicCookieStore();
+        final BasicClientCookie cookie = new BasicClientCookie("fake", "fake_value");
+        cookie.setDomain("httpbin.org");
+        cookie.setPath("/");
+        cookieStore.addCookie(cookie);
+
         // We need a first run to get a 401 to seed the digest auth
 
         // Make a client using those creds
-        final CloseableHttpClient client = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
+        final CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore).setDefaultCredentialsProvider(credsProvider).build();
 
         // And make a call to the URL we are after
         final HttpGet httpget = new HttpGet("http://httpbin.org/digest-auth/auth/user/passwd");
@@ -60,7 +70,7 @@ public class SandboxTest {
         // Need an auth cache to use the new digest we made
         final AuthCache authCache = new BasicAuthCache();
         authCache.put(targetHost, digest);
-        
+
         // Add the authCache and thus solved digest to the context
         context.setAuthCache(authCache);
 
@@ -81,6 +91,56 @@ public class SandboxTest {
                 responseGood.close();
             }
         }
+        client.close();
+    }
 
+    // This test needs module spring-security-rest-digest-auth to be running
+    @Test
+    public final void whenWeKnowDigestParameters_thenNo401Status() throws AuthenticationException, ClientProtocolException, IOException, MalformedChallengeException {
+        final HttpHost targetHost = new HttpHost("localhost", 8080, "http");
+
+        final CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("user1", "user1Pass"));
+
+        final CloseableHttpClient client = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
+
+        final HttpGet httpget = new HttpGet("http://localhost:8080/spring-security-rest-digest-auth/api/foos/1");
+
+        final HttpClientContext context = HttpClientContext.create();
+        // == make it preemptive
+        final AuthCache authCache = new BasicAuthCache();
+        final DigestScheme digestAuth = new DigestScheme();
+        digestAuth.overrideParamter("realm", "Custom Realm Name");
+        digestAuth.overrideParamter("nonce", "nonce value goes here");
+        authCache.put(targetHost, digestAuth);
+        context.setAuthCache(authCache);
+        // == end
+        System.out.println("Executing The Request knowing the digest parameters ==== ");
+        final HttpResponse authResponse = client.execute(targetHost, httpget, context);
+        System.out.println(authResponse.toString());
+        client.close();
+    }
+
+    // This test needs module spring-security-rest-digest-auth to be running
+    @Test
+    public final void whenDoNotKnowParameters_thenOnlyOne401() throws AuthenticationException, ClientProtocolException, IOException, MalformedChallengeException {
+        final HttpClientContext context = HttpClientContext.create();
+        final HttpHost targetHost = new HttpHost("localhost", 8080, "http");
+        final CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("user1", "user1Pass"));
+        final CloseableHttpClient client = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
+
+        final HttpGet httpget = new HttpGet("http://localhost:8080/spring-security-rest-digest-auth/api/foos/1");
+        System.out.println("Executing The Request NOT knowing the digest parameters ==== ");
+        final HttpResponse tempResponse = client.execute(targetHost, httpget, context);
+        System.out.println(tempResponse.toString());
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("No more Challenges or 401");
+            final CloseableHttpResponse authResponse = client.execute(targetHost, httpget, context);
+            System.out.println(authResponse.toString());
+            authResponse.close();
+        }
+        client.close();
     }
 }
