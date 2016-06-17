@@ -80,7 +80,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void stubAnObjectToPassAround() {
+    public void mockAnObjectToPassAround() {
         UserForm userForm = Mockito.when(Mockito.mock(UserForm.class).getUsername()).thenReturn("foo").getMock();
         Mockito.when(loginService.login(userForm)).thenReturn(true);
 

@@ -74,7 +74,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void stubAnObjectToPassAround() {
+    public void mockAnObjectToPassAround() {
         UserForm userForm = EasyMock.mock(UserForm.class);
         EasyMock.expect(userForm.getUsername()).andReturn("foo");
         EasyMock.expect(loginService.login(userForm)).andReturn(true);

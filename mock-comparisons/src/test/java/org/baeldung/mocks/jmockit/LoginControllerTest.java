@@ -81,7 +81,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void stubAnObjectToPassAround(@Mocked final UserForm userForm) {
+    public void mockAnObjectToPassAround(@Mocked final UserForm userForm) {
         new Expectations() {{
             userForm.getUsername(); result = "foo";
             loginService.login(userForm); result = true;
