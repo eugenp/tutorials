@@ -1,5 +1,7 @@
 package org.baeldung.httpclient;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.apache.http.Header;
@@ -24,29 +26,25 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.util.EntityUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class SandboxTest {
 
+    // original example
+    @Ignore
     @Test
-    public final void whenInterestingDigestAuthScenario_then200OK() throws AuthenticationException, ClientProtocolException, IOException, MalformedChallengeException {
+    public final void whenInterestingDigestAuthScenario_then401UnAuthorized() throws AuthenticationException, ClientProtocolException, IOException, MalformedChallengeException {
         final HttpHost targetHost = new HttpHost("httpbin.org", 80, "http");
 
         // set up the credentials to run agains the server
         final CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(new AuthScope(targetHost.getHostName(), targetHost.getPort()), new UsernamePasswordCredentials("user", "passwd"));
 
-        // This endpoint need fake cookie to work properly
-        final CookieStore cookieStore = new BasicCookieStore();
-        final BasicClientCookie cookie = new BasicClientCookie("fake", "fake_value");
-        cookie.setDomain("httpbin.org");
-        cookie.setPath("/");
-        cookieStore.addCookie(cookie);
-
         // We need a first run to get a 401 to seed the digest auth
 
         // Make a client using those creds
-        final CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore).setDefaultCredentialsProvider(credsProvider).build();
+        final CloseableHttpClient client = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
 
         // And make a call to the URL we are after
         final HttpGet httpget = new HttpGet("http://httpbin.org/digest-auth/auth/user/passwd");
@@ -91,6 +89,49 @@ public class SandboxTest {
                 responseGood.close();
             }
         }
+    }
+
+    @Test
+    public final void whenInterestingDigestAuthScenario_then200OK() throws AuthenticationException, ClientProtocolException, IOException, MalformedChallengeException {
+        final HttpHost targetHost = new HttpHost("httpbin.org", 80, "http");
+
+        // set up the credentials to run agains the server
+        final CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(new AuthScope(targetHost.getHostName(), targetHost.getPort()), new UsernamePasswordCredentials("user", "passwd"));
+
+        // This endpoint need fake cookie to work properly
+        final CookieStore cookieStore = new BasicCookieStore();
+        final BasicClientCookie cookie = new BasicClientCookie("fake", "fake_value");
+        cookie.setDomain("httpbin.org");
+        cookie.setPath("/");
+        cookieStore.addCookie(cookie);
+
+        // Make a client using those creds
+        final CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore).setDefaultCredentialsProvider(credsProvider).build();
+
+        // And make a call to the URL we are after
+        final HttpGet httpget = new HttpGet("http://httpbin.org/digest-auth/auth/user/passwd");
+
+        // Create a context to use
+        final HttpClientContext context = HttpClientContext.create();
+
+        // Get a response from the sever (401 implicitly)
+        final HttpResponse authResponse = client.execute(targetHost, httpget, context);
+        assertEquals(200, authResponse.getStatusLine().getStatusCode());
+
+        // HttpClient will use cached digest parameters for future requests
+        System.out.println("Executing request " + httpget.getRequestLine() + " to target " + targetHost);
+
+        for (int i = 0; i < 3; i++) {
+            final CloseableHttpResponse responseGood = client.execute(targetHost, httpget, context);
+
+            try {
+                System.out.println("----------------------------------------");
+                assertEquals(200, responseGood.getStatusLine().getStatusCode());
+            } finally {
+                responseGood.close();
+            }
+        }
         client.close();
     }
 
@@ -117,7 +158,7 @@ public class SandboxTest {
         // == end
         System.out.println("Executing The Request knowing the digest parameters ==== ");
         final HttpResponse authResponse = client.execute(targetHost, httpget, context);
-        System.out.println(authResponse.toString());
+        assertEquals(200, authResponse.getStatusLine().getStatusCode());
         client.close();
     }
 
@@ -133,12 +174,12 @@ public class SandboxTest {
         final HttpGet httpget = new HttpGet("http://localhost:8080/spring-security-rest-digest-auth/api/foos/1");
         System.out.println("Executing The Request NOT knowing the digest parameters ==== ");
         final HttpResponse tempResponse = client.execute(targetHost, httpget, context);
-        System.out.println(tempResponse.toString());
+        assertEquals(200, tempResponse.getStatusLine().getStatusCode());
 
         for (int i = 0; i < 3; i++) {
             System.out.println("No more Challenges or 401");
             final CloseableHttpResponse authResponse = client.execute(targetHost, httpget, context);
-            System.out.println(authResponse.toString());
+            assertEquals(200, authResponse.getStatusLine().getStatusCode());
             authResponse.close();
         }
         client.close();
