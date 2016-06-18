@@ -32,17 +32,9 @@ public class Application {
     public CourseRepository createStubCourses() {
         Map<Integer, Course> courses = new HashMap<>();
 
-        Course course1 = Course.newBuilder()
-                .setId(1)
-                .setCourseName("REST with Spring")
-                .addAllStudent(createStubStudents())
-                .build();
+        Course course1 = Course.newBuilder().setId(1).setCourseName("REST with Spring").addAllStudent(createStubStudents()).build();
 
-        Course course2 = Course.newBuilder()
-                .setId(2)
-                .setCourseName("Learn Spring Security")
-                .addAllStudent(new ArrayList<>())
-                .build();
+        Course course2 = Course.newBuilder().setId(2).setCourseName("Learn Spring Security").addAllStudent(new ArrayList<>()).build();
 
         courses.put(course1.getId(), course1);
         courses.put(course2.getId(), course2);
