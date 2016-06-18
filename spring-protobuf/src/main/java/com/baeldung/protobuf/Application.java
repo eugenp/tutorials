@@ -29,10 +29,10 @@ public class Application {
     }
 
     @Bean
-    public CourseRepository createStubCourses() {
+    public CourseRepository createTestCourses() {
         Map<Integer, Course> courses = new HashMap<>();
 
-        Course course1 = Course.newBuilder().setId(1).setCourseName("REST with Spring").addAllStudent(createStubStudents()).build();
+        Course course1 = Course.newBuilder().setId(1).setCourseName("REST with Spring").addAllStudent(createTestStudents()).build();
 
         Course course2 = Course.newBuilder().setId(2).setCourseName("Learn Spring Security").addAllStudent(new ArrayList<>()).build();
 
@@ -42,7 +42,7 @@ public class Application {
         return new CourseRepository(courses);
     }
 
-    private List<Student> createStubStudents() {
+    private List<Student> createTestStudents() {
         PhoneNumber phone1 = createPhone("123456", PhoneType.MOBILE);
         Student student1 = createStudent(1, "John", "Doe", "john.doe@baeldung.com", Arrays.asList(phone1));
 
