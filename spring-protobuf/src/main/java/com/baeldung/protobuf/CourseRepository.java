@@ -1,11 +1,12 @@
 package com.baeldung.protobuf;
 
-import java.util.Map;
-
 import com.baeldung.protobuf.BaeldungTraining.Course;
 
+import java.util.Map;
+
 public class CourseRepository {
-    Map<Integer, Course> courses;
+
+    private final Map<Integer, Course> courses;
     
     public CourseRepository (Map<Integer, Course> courses) {
         this.courses = courses;

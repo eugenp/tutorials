@@ -9,6 +9,7 @@ import com.baeldung.protobuf.BaeldungTraining.Course;
 
 @RestController
 public class CourseController {
+
     @Autowired
     CourseRepository courseRepo;
 

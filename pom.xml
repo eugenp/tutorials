@@ -50,6 +50,7 @@
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-xml</module>
         <module>spring-openid</module>
+        <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest</module>
 
