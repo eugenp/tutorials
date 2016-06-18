@@ -8,7 +8,6 @@ import org.baeldung.mocks.testCase.LoginService;
 import org.baeldung.mocks.testCase.UserForm;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
-import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
