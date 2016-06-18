@@ -7,14 +7,18 @@
 
 	<name>mockito</name>
 
+	<properties>
+		<junit.version>4.12</junit.version>
+		<mockito.version>1.10.19</mockito.version>
+		<easymock.version>3.4</easymock.version>
+		<jmockit.version>1.24</jmockit.version>
+
+		<!-- maven plugins -->
+		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+	</properties>
+
 	<dependencies>
-
-		<!-- utils -->
-
-		<!-- web -->
-
-		<!-- test scoped -->
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -61,8 +65,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 
@@ -76,30 +80,5 @@
 
 	</build>
 
-	<properties>
-		<!-- Spring -->
-
-		<!-- persistence -->
-
-		<!-- logging -->
-
-		<!-- various -->
-
-		<!-- util -->
-
-		<!-- testing -->
-		<junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-        <easymock.version>3.4</easymock.version>
-        <jmockit.version>1.24</jmockit.version>
-
-		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.14</cargo-maven2-plugin.version>
-
-	</properties>
 
 </project>

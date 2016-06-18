@@ -4,10 +4,10 @@ public class LoginController {
 
     public LoginService loginService;
 
-    public String login(UserForm userForm){
-        if(null == userForm){
+    public String login(UserForm userForm) {
+        if (null == userForm) {
             return "ERROR";
-        }else{
+        } else {
             boolean logged;
 
             try {
@@ -16,10 +16,10 @@ public class LoginController {
                 return "ERROR";
             }
 
-            if(logged){
+            if (logged) {
                 loginService.setCurrentUser(userForm.getUsername());
                 return "OK";
-            }else{
+            } else {
                 return "KO";
             }
         }

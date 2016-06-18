@@ -9,10 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
 
-/**
- * <p>Test for LoginController using Mockito.</p>
- * Created by Alvaro on 12/06/2016.
- */
 public class LoginControllerTest {
 
     @Mock

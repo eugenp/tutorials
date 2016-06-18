@@ -12,10 +12,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- * <p>Test for LoginController using JMockit.</p>
- * Created by Alvaro on 12/06/2016.
- */
 @RunWith(JMockit.class)
 public class LoginControllerTest {
 
@@ -32,7 +28,8 @@ public class LoginControllerTest {
     public void assertThatNoMethodHasBeenCalled() {
         loginController.login(null);
         // no method called
-        new FullVerifications(loginService) {};
+        new FullVerifications(loginService) {
+        };
     }
 
     @Test
@@ -40,14 +37,16 @@ public class LoginControllerTest {
         final UserForm userForm = new UserForm();
         userForm.username = "foo";
         new Expectations() {{
-            loginService.login(userForm); result = true;
+            loginService.login(userForm);
+            result = true;
             loginService.setCurrentUser("foo");
         }};
 
         String login = loginController.login(userForm);
 
         Assert.assertEquals("OK", login);
-        new FullVerifications(loginService) {};
+        new FullVerifications(loginService) {
+        };
     }
 
     @Test
@@ -55,43 +54,51 @@ public class LoginControllerTest {
         final UserForm userForm = new UserForm();
         userForm.username = "foo";
         new Expectations() {{
-            loginService.login(userForm); result = false;
+            loginService.login(userForm);
+            result = false;
             // no expectation for setCurrentUser
         }};
 
         String login = loginController.login(userForm);
 
         Assert.assertEquals("KO", login);
-        new FullVerifications(loginService) {};
+        new FullVerifications(loginService) {
+        };
     }
 
     @Test
     public void mockExceptionThrowing() {
         final UserForm userForm = new UserForm();
         new Expectations() {{
-            loginService.login(userForm); result = new IllegalArgumentException();
+            loginService.login(userForm);
+            result = new IllegalArgumentException();
             // no expectation for setCurrentUser
         }};
 
         String login = loginController.login(userForm);
 
         Assert.assertEquals("ERROR", login);
-        new FullVerifications(loginService) {};
+        new FullVerifications(loginService) {
+        };
     }
 
     @Test
     public void mockAnObjectToPassAround(@Mocked final UserForm userForm) {
         new Expectations() {{
-            userForm.getUsername(); result = "foo";
-            loginService.login(userForm); result = true;
+            userForm.getUsername();
+            result = "foo";
+            loginService.login(userForm);
+            result = true;
             loginService.setCurrentUser("foo");
         }};
-        
+
         String login = loginController.login(userForm);
 
         Assert.assertEquals("OK", login);
-        new FullVerifications(loginService) {};
-        new FullVerifications(userForm) {};
+        new FullVerifications(loginService) {
+        };
+        new FullVerifications(userForm) {
+        };
     }
 
     @Test
@@ -119,7 +126,8 @@ public class LoginControllerTest {
         String login = loginController.login(userForm);
 
         Assert.assertEquals("OK", login);
-        new FullVerifications(loginService) {};
+        new FullVerifications(loginService) {
+        };
     }
 
     @Test
@@ -133,7 +141,8 @@ public class LoginControllerTest {
         userForm.username = "foo";
         // let service's login use implementation so let's mock DAO call
         new Expectations() {{
-            loginDao.login(userForm); result = 1;
+            loginDao.login(userForm);
+            result = 1;
             // no expectation for loginService.login
             partialLoginService.setCurrentUser("foo");
         }};
@@ -142,7 +151,9 @@ public class LoginControllerTest {
 
         Assert.assertEquals("OK", login);
         // verify mocked call
-        new FullVerifications(partialLoginService) {};
-        new FullVerifications(loginDao) {};
+        new FullVerifications(partialLoginService) {
+        };
+        new FullVerifications(loginDao) {
+        };
     }
 }
