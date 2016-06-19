@@ -8,15 +8,11 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.jaxen.JaxenException;
 import org.jaxen.XPath;
 import org.jaxen.dom.DOMXPath;
 import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class JaxenDemo {
@@ -36,7 +32,7 @@ public class JaxenDemo {
 
             Document xmlDocument = builder.parse(fileIS);
 
-            String expression = "/Tutorials/Tutorial";
+            String expression = "/tutorials/tutorial";
             
             XPath path = new DOMXPath(expression);
             List result = path.selectNodes(xmlDocument);

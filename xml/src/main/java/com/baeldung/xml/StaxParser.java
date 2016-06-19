@@ -43,7 +43,7 @@ public class StaxParser {
 				case XMLStreamConstants.START_ELEMENT:
 					StartElement startElement = event.asStartElement();
 					String qName = startElement.getName().getLocalPart();
-					if (qName.equalsIgnoreCase("Tutorial")) {
+					if (qName.equalsIgnoreCase("tutorial")) {
 						current = new Tutorial();
 						Iterator<Attribute> attributes = startElement.getAttributes();
 						while (attributes.hasNext()) {
@@ -93,7 +93,7 @@ public class StaxParser {
 					break;
 				case XMLStreamConstants.END_ELEMENT:
 					EndElement endElement = event.asEndElement();
-					if (endElement.getName().getLocalPart().equalsIgnoreCase("Tutorial")) {
+					if (endElement.getName().getLocalPart().equalsIgnoreCase("tutorial")) {
 						if(current != null){
 							tutorials.add(current);
 						}

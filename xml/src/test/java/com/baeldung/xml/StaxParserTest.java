@@ -23,5 +23,6 @@ public class StaxParserTest {
 		
 		assertNotNull(tutorials);
 		assertTrue(tutorials.size() == 4);
+		assertTrue(tutorials.get(0).getType().equalsIgnoreCase("java"));
 	}
 }

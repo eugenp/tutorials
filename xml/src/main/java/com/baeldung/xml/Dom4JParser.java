@@ -62,7 +62,7 @@ public class Dom4JParser {
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(file);
 			List<Node> elements = document
-					.selectNodes("//Tutorial[descendant::title[text()=" + "'" + name + "'" + "]]");
+					.selectNodes("//tutorial[descendant::title[text()=" + "'" + name + "'" + "]]");
 			return elements.get(0);
 		} catch (DocumentException e) {
 			e.printStackTrace();
@@ -74,7 +74,7 @@ public class Dom4JParser {
 		try {
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(file);
-			List<Node> nodes = document.selectNodes("/Tutorials/Tutorial");		       
+			List<Node> nodes = document.selectNodes("/tutorials/tutorial");		       
 	         for (Node node : nodes) {
 	            Element element = (Element)node;
 	            Iterator<Element> iterator=element.elementIterator("title");

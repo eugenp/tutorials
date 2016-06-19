@@ -22,7 +22,7 @@ public class JDomParser {
 			SAXBuilder builder = new SAXBuilder();
 			Document doc = builder.build(this.getFile());
 			Element tutorials = doc.getRootElement();
-			List<Element> titles = tutorials.getChildren("Tutorial");
+			List<Element> titles = tutorials.getChildren("tutorial");
 			return titles;
 		} catch (JDOMException | IOException e) {
 			// TODO Auto-generated catch block
