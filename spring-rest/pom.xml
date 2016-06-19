@@ -155,7 +155,16 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+		<dependency>
+    		<groupId>com.google.protobuf</groupId>
+    		<artifactId>protobuf-java</artifactId>
+    		<version>2.6.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.esotericsoftware.kryo</groupId>
+    		<artifactId>kryo</artifactId>
+    		<version>2.24.0</version>
+		</dependency>
     </dependencies>
 
     <build>
