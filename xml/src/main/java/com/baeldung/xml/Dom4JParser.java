@@ -74,19 +74,18 @@ public class Dom4JParser {
 		try {
 			SAXReader reader = new SAXReader();
 			Document document = reader.read(file);
-			List<Node> nodes = document.selectNodes("/tutorials/tutorial");		       
-	         for (Node node : nodes) {
-	            Element element = (Element)node;
-	            Iterator<Element> iterator=element.elementIterator("title");
-	            while(iterator.hasNext()){
-	               Element title =(Element)iterator.next();
-	               title.setText(title.getText() + " updated");
-	            }
-	         }
-	         XMLWriter writer = new XMLWriter( new FileWriter(new File(
-	                  "src/test/resources/example_updated.xml")));
-	         writer.write( document );
-	         writer.close();
+			List<Node> nodes = document.selectNodes("/tutorials/tutorial");
+			for (Node node : nodes) {
+				Element element = (Element) node;
+				Iterator<Element> iterator = element.elementIterator("title");
+				while (iterator.hasNext()) {
+					Element title = (Element) iterator.next();
+					title.setText(title.getText() + " updated");
+				}
+			}
+			XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_updated.xml")));
+			writer.write(document);
+			writer.close();
 		} catch (DocumentException e) {
 			e.printStackTrace();
 
@@ -95,32 +94,26 @@ public class Dom4JParser {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void generateNewDocument() {
 		try {
 			Document document = DocumentHelper.createDocument();
-	         Element root = document.addElement( "XMLTutorials" );
-	         Element tutorialElement= root.addElement("tutorial")
-		        .addAttribute("tutId", "01");
-	         tutorialElement.addAttribute("type", "xml");
+			Element root = document.addElement("XMLTutorials");
+			Element tutorialElement = root.addElement("tutorial").addAttribute("tutId", "01");
+			tutorialElement.addAttribute("type", "xml");
 
-	         tutorialElement.addElement("title")
-		        .addText("XML with Dom4J");
+			tutorialElement.addElement("title").addText("XML with Dom4J");
 
-	         tutorialElement.addElement("description")
-	            .addText("XML handling with Dom4J");
+			tutorialElement.addElement("description").addText("XML handling with Dom4J");
 
-	         tutorialElement.addElement("date")
-	            .addText("14/06/2016");
-	         
-	         tutorialElement.addElement("author")
-	            .addText("Dom4J tech writer");
-	         
-	         OutputFormat format = OutputFormat.createPrettyPrint();
-	         XMLWriter writer = new XMLWriter( new FileWriter(new File(
-	                  "src/test/resources/example_new.xml")), format);
-	         writer.write( document );
-	         writer.close();
+			tutorialElement.addElement("date").addText("14/06/2016");
+
+			tutorialElement.addElement("author").addText("Dom4J tech writer");
+
+			OutputFormat format = OutputFormat.createPrettyPrint();
+			XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_new.xml")), format);
+			writer.write(document);
+			writer.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -134,6 +127,5 @@ public class Dom4JParser {
 	public void setFile(File file) {
 		this.file = file;
 	}
-	
-	
+
 }

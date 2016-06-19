@@ -48,7 +48,6 @@ public class JaxbParser {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Tutorials.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-			// output pretty printed
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 			jaxbMarshaller.marshal(tutorials, file);
