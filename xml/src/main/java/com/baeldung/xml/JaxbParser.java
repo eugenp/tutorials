@@ -19,8 +19,8 @@ public class JaxbParser {
 	public JaxbParser(File file) {
 		this.file = file;
 	}
-	
-	public Tutorials getFullDocument(){
+
+	public Tutorials getFullDocument() {
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Tutorials.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -31,20 +31,20 @@ public class JaxbParser {
 			return null;
 		}
 	}
-	
-	public void createNewDocument(){
-		  Tutorials tutorials = new Tutorials();
-		  tutorials.setTutorial(new ArrayList<Tutorial>());
-		  Tutorial tut = new Tutorial();
-		  tut.setTutId("01");
-		  tut.setType("XML");
-		  tut.setTitle("XML with Jaxb");
-		  tut.setDescription("XML Binding with Jaxb");
-		  tut.setDate(new Date());
-		  tut.setAuthor("Jaxb author");
-		  tutorials.getTutorial().add(tut);
-		
-		try{
+
+	public void createNewDocument() {
+		Tutorials tutorials = new Tutorials();
+		tutorials.setTutorial(new ArrayList<Tutorial>());
+		Tutorial tut = new Tutorial();
+		tut.setTutId("01");
+		tut.setType("XML");
+		tut.setTitle("XML with Jaxb");
+		tut.setDescription("XML Binding with Jaxb");
+		tut.setDate(new Date());
+		tut.setAuthor("Jaxb author");
+		tutorials.getTutorial().add(tut);
+
+		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Tutorials.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
@@ -52,10 +52,10 @@ public class JaxbParser {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
 			jaxbMarshaller.marshal(tutorials, file);
-			
-		}catch (JAXBException e) {
+
+		} catch (JAXBException e) {
 			e.printStackTrace();
-	      }
+		}
 
 	}
 
@@ -66,6 +66,5 @@ public class JaxbParser {
 	public void setFile(File file) {
 		this.file = file;
 	}
-	
-	
+
 }
