@@ -1,6 +1,8 @@
 package com.baeldung.assertj;
 
 import com.baeldung.assertj.domain.Dog;
+import com.baeldung.assertj.domain.Person;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -61,5 +63,15 @@ public class AssertJDemoTest {
     @Test
     public void whenComparingWithOffset_thenEquals() throws Exception {
         assertThat(5.1).isEqualTo(5, withPrecision(1d));
+    }
+
+    @Ignore // IN ORDER TO TEST, REMOVE THIS LINE
+    @Test
+    public void whenRunningAssertion_thenDescribed() throws Exception {
+        Person person = new Person("Alex", 34);
+
+        assertThat(person.getAge())
+                .as("%s's age should be equal to 100")
+                .isEqualTo(100);
     }
 }
