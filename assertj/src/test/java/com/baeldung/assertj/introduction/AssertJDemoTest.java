@@ -1,7 +1,7 @@
-package com.baeldung.assertj;
+package com.baeldung.assertj.introduction;
 
-import com.baeldung.assertj.domain.Dog;
-import com.baeldung.assertj.domain.Person;
+import com.baeldung.assertj.introduction.domain.Dog;
+import com.baeldung.assertj.introduction.domain.Person;
 import org.junit.Ignore;
 import org.junit.Test;
 
