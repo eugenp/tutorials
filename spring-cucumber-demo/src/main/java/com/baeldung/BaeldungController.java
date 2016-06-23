@@ -13,10 +13,5 @@ public class BaeldungController {
     public String sayHello(HttpServletResponse response){
         return "hello";
     }
-	
-//	@RequestMapping(method={RequestMethod.GET},value={"/poop"})
-//    public String getVersion(HttpServletResponse response){
-//        return "poop";
-//    }
 
 }
