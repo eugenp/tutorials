@@ -9,7 +9,7 @@
 
     <modules>
         <module>apache-fop</module>
-        <module>assertj-introduction</module>
+        <module>assertj</module>
 
         <module>core-java</module>
         <module>core-java-8</module>
