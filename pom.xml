@@ -71,6 +71,7 @@
         <module>xml</module>
 
         <module>lombok</module>
+        <module>redis</module>
     </modules>
 
 </project>
