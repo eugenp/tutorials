@@ -1,39 +1,27 @@
 package io.jsonwebtoken.jjwtfun.controller;
 
+import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Collections;
+import java.time.Instant;
+import java.util.Date;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class DynamicJWTController {
     @Value("#{ @environment['jjwtfun.secret'] ?: 'secret' }")
     String secret;
 
-    Map<String, String> map = Collections.unmodifiableMap(Stream.of(
-        new SimpleEntry<>("iss", ""),
-        new SimpleEntry<>("a", ""),
-        new SimpleEntry<>("b", ""),
-        new SimpleEntry<>("c", ""),
-        new SimpleEntry<>("d", ""),
-        new SimpleEntry<>("e", ""),
-        new SimpleEntry<>("f", ""),
-        new SimpleEntry<>("g", ""),
-        new SimpleEntry<>("h", ""))
-        .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
-
-    @RequestMapping(value = "/dynamic-builder", method = RequestMethod.POST)
-    public String dynamicBuilder(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
+    @RequestMapping(value = "/dynamic-builder-general", method = POST)
+    public String dynamicBuilderGeneric(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         return Jwts.builder()
             .setClaims(claims)
             .signWith(
@@ -41,5 +29,42 @@ public class DynamicJWTController {
                 secret.getBytes("UTF-8")
             )
             .compact();
+    }
+
+    @RequestMapping(value = "/dynamic-builder-specific", method = POST)
+    public String dynamicBuilderSpecific(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
+        JwtBuilder builder = Jwts.builder();
+
+        claims.forEach((key, value) -> {
+            switch (key) {
+                case "iss":
+                    builder.setIssuer((String)value);
+                    break;
+                case "sub":
+                    builder.setSubject((String)value);
+                    break;
+                case "aud":
+                    builder.setAudience((String)value);
+                    break;
+                case "exp":
+                    builder.setExpiration(Date.from(Instant.ofEpochSecond(Long.parseLong((String)value))));
+                    break;
+                case "nbf":
+                    builder.setNotBefore(Date.from(Instant.ofEpochSecond(Long.parseLong((String)value))));
+                    break;
+                case "iat":
+                    builder.setIssuedAt(Date.from(Instant.ofEpochSecond(Long.parseLong((String)value))));
+                    break;
+                case "jti":
+                    builder.setId((String)value);
+                    break;
+                default:
+                    builder.claim(key, value);
+            }
+        });
+
+        builder.signWith(SignatureAlgorithm.HS256, secret.getBytes("UTF-8"));
+
+        return builder.compact();
     }
 }

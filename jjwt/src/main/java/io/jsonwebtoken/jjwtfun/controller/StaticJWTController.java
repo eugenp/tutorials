@@ -9,6 +9,7 @@ import io.jsonwebtoken.SignatureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,10 +21,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController
-public class FixedJWTController {
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-    @RequestMapping("/fixed-builder")
+@RestController
+public class StaticJWTController {
+
+    @RequestMapping(value = "/static-builder", method = POST)
     public String fixedBuilder() throws UnsupportedEncodingException {
 
         String jws = Jwts.builder()
@@ -40,7 +44,7 @@ public class FixedJWTController {
         return jws;
     }
 
-    @RequestMapping("/fixed-parser")
+    @RequestMapping(value = "/parser", method = GET)
     public Jws<Claims> fixedParser(@RequestParam String jws) throws UnsupportedEncodingException {
         Jws<Claims> claims = Jwts.parser()
             .setSigningKey("secret".getBytes("UTF-8"))
