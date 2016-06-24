@@ -11,7 +11,7 @@ public class LoginService {
 
         int loginResults = loginDao.login(userForm);
 
-        switch (loginResults){
+        switch (loginResults) {
             case 1:
                 return true;
             default:
@@ -20,7 +20,7 @@ public class LoginService {
     }
 
     public void setCurrentUser(String username) {
-        if(null != username){
+        if (null != username) {
             this.currentUser = username;
         }
     }

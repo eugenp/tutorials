@@ -9,10 +9,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-/**
- * <p>Test for LoginController using EasyMock.</p>
- * Created by Alvaro on 12/06/2016.
- */
 @RunWith(EasyMockRunner.class)
 public class LoginControllerTest {
 
@@ -133,7 +129,7 @@ public class LoginControllerTest {
 
         loginServicePartial.setLoginDao(loginDao);
         loginController.loginService = loginServicePartial;
-        
+
         EasyMock.replay(loginDao);
         EasyMock.replay(loginServicePartial);
 
