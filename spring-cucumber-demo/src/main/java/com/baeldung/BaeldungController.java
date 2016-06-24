@@ -13,5 +13,10 @@ public class BaeldungController {
     public String sayHello(HttpServletResponse response){
         return "hello";
     }
+	
+	@RequestMapping(method={RequestMethod.POST},value={"/baeldung"})
+    public String sayHelloPost(HttpServletResponse response){
+        return "hello";
+    }
 
 }

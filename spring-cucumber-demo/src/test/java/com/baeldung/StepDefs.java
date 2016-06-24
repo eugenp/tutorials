@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class StepDefs extends AbstractDefs{
+public class StepDefs extends SpringIntegrationTest{
    
 	@When("^the client calls /version$")
     public void the_client_issues_GET_version() throws Throwable{

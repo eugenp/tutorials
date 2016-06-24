@@ -17,11 +17,11 @@ import org.springframework.web.client.ResponseExtractor;
 import org.springframework.web.client.RestTemplate;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SpringDemoApplication.class, loader = SpringApplicationContextLoader.class)
 @WebAppConfiguration
 @IntegrationTest
-public class AbstractDefs{
+public class SpringIntegrationTest {
 	protected static ResponseResults latestResponse = null;
 
 	protected RestTemplate restTemplate = null;
@@ -39,6 +39,33 @@ public class AbstractDefs{
 		restTemplate.setErrorHandler(errorHandler);
 		latestResponse = restTemplate.execute(url,
 				HttpMethod.GET,
+				requestCallback,
+				new ResponseExtractor<ResponseResults>(){
+			@Override
+			public ResponseResults extractData(ClientHttpResponse response) throws IOException {
+				if (errorHandler.hadError){
+					return (errorHandler.getResults());
+				} else{
+					return (new ResponseResults(response));
+				}
+			}
+		});
+
+	}
+	
+	protected void executePost(String url) throws IOException{
+		final Map<String,String> headers = new HashMap<>();
+		headers.put("Accept","application/json");
+		final HeaderSettingRequestCallback requestCallback = new HeaderSettingRequestCallback(headers);
+		final ResponseResultErrorHandler errorHandler = new ResponseResultErrorHandler();
+
+		if (restTemplate == null){
+			restTemplate = new RestTemplate();
+		}
+
+		restTemplate.setErrorHandler(errorHandler);
+		latestResponse = restTemplate.execute(url,
+				HttpMethod.POST,
 				requestCallback,
 				new ResponseExtractor<ResponseResults>(){
 			@Override
