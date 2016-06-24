@@ -22,6 +22,7 @@
         <module>httpclient</module>
         <module>jackson</module>
         <module>javaxval</module>
+        <module>jjwt</module>
         <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
