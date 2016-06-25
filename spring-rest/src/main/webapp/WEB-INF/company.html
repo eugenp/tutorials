@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Company Data</title>
+<script>
+     function getCompanyData(data) { 
+		document.write("<b>ID:</b> "+data.id+"<br/>");	 
+		document.write("<b>NAME:</b> "+data.name+"<br/>");
+		document.write("<br/>");
+     }
+   </script>
+</head>
+<body>
+	<!-- Using REST URL-->
+	<script
+		src="http://localhost:8080/spring-rest/companyRest?callback=getCompanyData"
+		type="application/javascript"> </script>
+
+</body>
+</html>
+
