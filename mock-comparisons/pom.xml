@@ -12,6 +12,8 @@
 		<mockito.version>1.10.19</mockito.version>
 		<easymock.version>3.4</easymock.version>
 		<jmockit.version>1.24</jmockit.version>
+        
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
