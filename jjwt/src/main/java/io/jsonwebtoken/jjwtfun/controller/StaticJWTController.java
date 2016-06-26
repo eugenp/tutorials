@@ -27,14 +27,16 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @RestController
 public class StaticJWTController {
 
-    @RequestMapping(value = "/static-builder", method = POST)
+    @RequestMapping(value = "/static-builder", method = GET)
     public String fixedBuilder() throws UnsupportedEncodingException {
 
         String jws = Jwts.builder()
+            .setIssuer("Stormpath")
             .setSubject("msilverman")
-            .setExpiration(Date.from(Instant.now().plus(1, ChronoUnit.DAYS)))
             .claim("name", "Micah Silverman")
             .claim("scope", "admins")
+            .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822)))   // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
+            .setExpiration(Date.from(Instant.ofEpochSecond(1466883222))) // Sat Jun 25 2016 15:33:42 GMT-0400 (EDT)
             .signWith(
                 SignatureAlgorithm.HS256,
                 "secret".getBytes("UTF-8")

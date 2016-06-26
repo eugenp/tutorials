@@ -12,7 +12,7 @@ public class HomeController {
     public String home(HttpServletRequest req) {
         String requestUrl = getUrl(req);
         return "Available commands (assumes httpie - https://github.com/jkbrzt/httpie):\n" +
-            "  http " + requestUrl + "/\n\tThis usage\n" +
+            "  http " + requestUrl + "/\n\tThis usage message\n" +
             "  http " + requestUrl + "/static-builder\n\tbuild JWT from hardcoded claims\n" +
             "  http " + requestUrl + "/dynamic-builder-general claim-1=value-1 ... [claim-n=value-n]\n\tbuild JWT from passed in claims (using general claims map)\n" +
             "  http " + requestUrl + "/dynamic-builder-specific claim-1=value-1 ... [claim-n=value-n]\n\tbuild JWT from passed in claims (using specific claims methods)\n" +
