@@ -1,25 +1,25 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.util.List;
-
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.junit.Test;
 
+import java.io.File;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 public class Dom4JParserTest {
 
-	final String fileName = "src/test/resources/example.xml";
+	private static final String FILE_NAME = "src/test/resources/example.xml";
 
-	Dom4JParser parser;
+	private Dom4JParser parser;
 
 	@Test
 	public void getRootElementTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		Element root = parser.getRootElement();
 
 		assertNotNull(root);
@@ -28,7 +28,7 @@ public class Dom4JParserTest {
 
 	@Test
 	public void getFirstElementListTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		List<Element> firstList = parser.getFirstElementList();
 
 		assertNotNull(firstList);
@@ -38,7 +38,7 @@ public class Dom4JParserTest {
 
 	@Test
 	public void getElementByIdTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		Node element = parser.getNodeById("03");
 
 		String type = element.valueOf("@type");
@@ -47,7 +47,7 @@ public class Dom4JParserTest {
 
 	@Test
 	public void getElementsListByTitleTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		Node element = parser.getElementsListByTitle("XML");
 
 		assertEquals("java", element.valueOf("@type"));
@@ -58,7 +58,7 @@ public class Dom4JParserTest {
 
 	@Test
 	public void generateModifiedDocumentTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		parser.generateModifiedDocument();
 
 		File generatedFile = new File("src/test/resources/example_updated.xml");
@@ -73,7 +73,7 @@ public class Dom4JParserTest {
 	
 	@Test
 	public void generateNewDocumentTest() {
-		parser = new Dom4JParser(new File(fileName));
+		parser = new Dom4JParser(new File(FILE_NAME));
 		parser.generateNewDocument();
 
 		File newFile = new File("src/test/resources/example_new.xml");

@@ -1,20 +1,19 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.xml.model.Tutorial;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
 
-import org.junit.Test;
-
-import com.baeldung.xml.model.Tutorial;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class StaxParserTest {
 
-	final String fileName = "src/test/resources/example.xml";
+	private final String fileName = "src/test/resources/example.xml";
 
-	StaxParser parser;
+	private StaxParser parser;
 	
 	@Test
 	public void getAllTutorialsTest(){

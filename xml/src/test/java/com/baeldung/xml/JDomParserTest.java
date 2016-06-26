@@ -1,20 +1,20 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.jdom2.Element;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
 
-import org.jdom2.Element;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class JDomParserTest {
 	
-	final String fileName = "src/test/resources/example.xml";
+	private final String fileName = "src/test/resources/example.xml";
 
-	JDomParser parser;
+	private JDomParser parser;
 	
 	@Test
 	public void getFirstElementListTest() {

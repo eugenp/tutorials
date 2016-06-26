@@ -1,18 +1,18 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class JaxenDemoTest {
 
-	final String fileName = "src/test/resources/example.xml";
+	private final String fileName = "src/test/resources/example.xml";
 	
-	JaxenDemo jaxenDemo;
+	private JaxenDemo jaxenDemo;
 	
 	@Test
     public void getFirstLevelNodeListTest() {

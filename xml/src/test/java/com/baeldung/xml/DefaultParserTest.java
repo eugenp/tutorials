@@ -1,20 +1,22 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.*;
-
-import java.io.File;
-
 import org.junit.Test;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 public class DefaultParserTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    private final String fileName = "src/test/resources/example.xml";
     
-    final String fileNameSpace = "src/test/resources/example_namespace.xml";
+    private final String fileNameSpace = "src/test/resources/example_namespace.xml";
 
-    DefaultParser parser;
+    private DefaultParser parser;
 
     @Test
     public void getFirstLevelNodeListTest() {
@@ -30,7 +32,7 @@ public class DefaultParserTest {
         parser = new DefaultParser(new File(fileName));
         NodeList list = parser.getNodeListByTitle("XML");
 
-        for (int i = 0; null != list && i < list.getLength(); i++) {
+        for (int i = 0; i < list.getLength(); i++) {
             Node nod = list.item(i);
             assertEquals("java", nod.getAttributes().getNamedItem("type").getTextContent());
             assertEquals("02", nod.getAttributes().getNamedItem("tutId").getTextContent());
@@ -56,7 +58,7 @@ public class DefaultParserTest {
     public void getNodeListByDateTest(){
         parser = new DefaultParser(new File(fileName));
         NodeList list = parser.getNodeListByTitle("04022016");
-        for (int i = 0; null != list && i < list.getLength(); i++) {
+        for (int i = 0; i < list.getLength(); i++) {
             Node nod = list.item(i);
             assertEquals("java", nod.getAttributes().getNamedItem("type").getTextContent());
             assertEquals("04", nod.getAttributes().getNamedItem("tutId").getTextContent());
