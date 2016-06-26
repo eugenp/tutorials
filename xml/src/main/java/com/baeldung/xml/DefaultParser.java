@@ -39,7 +39,7 @@ public class DefaultParser {
 
             XPath xPath = XPathFactory.newInstance().newXPath();
 
-            String expression = "/Tutorials/Tutorial";
+            String expression = "/tutorials/tutorial";
 
             nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 
@@ -60,7 +60,7 @@ public class DefaultParser {
 
             XPath xPath = XPathFactory.newInstance().newXPath();
 
-            String expression = "/Tutorials/Tutorial[@tutId=" + "'" + id + "'" + "]";
+            String expression = "/tutorials/tutorial[@tutId=" + "'" + id + "'" + "]";
 
             node = (Node) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODE);
 
@@ -83,7 +83,7 @@ public class DefaultParser {
 
             XPath xPath = XPathFactory.newInstance().newXPath();
 
-            String expression = "//Tutorial[descendant::title[text()=" + "'" + name + "'" + "]]";
+            String expression = "//tutorial[descendant::title[text()=" + "'" + name + "'" + "]]";
 
             nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 
@@ -107,7 +107,7 @@ public class DefaultParser {
 
             XPath xPath = XPathFactory.newInstance().newXPath();
 
-            String expression = "//Tutorial[number(translate(date, '/', '')) > " + date + "]";
+            String expression = "//tutorial[number(translate(date, '/', '')) > " + date + "]";
 
             nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 
@@ -151,7 +151,7 @@ public class DefaultParser {
                 }
             });
 
-            String expression = "/bdn:Tutorials/bdn:Tutorial";
+            String expression = "/bdn:tutorials/bdn:tutorial";
 
             nodeList = (NodeList) xPath.compile(expression).evaluate(xmlDocument, XPathConstants.NODESET);
 
