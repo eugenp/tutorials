@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+      http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+    <bean id="simpleDocumentParser" class="org.baeldung.di.constructor.SimpleDocumentParser">
+        <constructor-arg ref="documentReader" />
+    </bean>
+
+    <bean id="SimpleMediaConverter" class="org.baeldung.di.constructor.SimpleMediaConverter">
+        <constructor-arg ref="documentWriter" />
+        <constructor-arg ref="mediaReader" />
+    </bean>
+
+    <bean id="SimpleBufferedReader" class="org.baeldung.di.constructor.SimpleBufferedReader">
+        <constructor-arg type="int" value="20000" />
+        <constructor-arg ref="documentReader" />
+    </bean>
+
+    <bean id="SimpleBufferedReader" class="org.baeldung.di.constructor.SimpleBufferedReader">
+        <constructor-arg index="0" value="20000" />
+        <constructor-arg index="1" ref="documentReader" />
+    </bean>
+
+    <bean id="SimpleBufferedReader" class="org.baeldung.di.constructor.SimpleBufferedReader">
+        <constructor-arg name="bufferSize" value="20000" />
+        <constructor-arg name="documentReader" ref="documentReader" />
+    </bean>
+</beans>
