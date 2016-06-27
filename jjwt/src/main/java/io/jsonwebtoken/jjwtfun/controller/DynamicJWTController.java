@@ -41,31 +41,31 @@ public class DynamicJWTController extends BaseController {
         claims.forEach((key, value) -> {
             switch (key) {
                 case "iss":
-                    ensureType(key, value,  String.class);
+                    ensureType(key, value, String.class);
                     builder.setIssuer((String) value);
                     break;
                 case "sub":
-                    ensureType(key, value,  String.class);
+                    ensureType(key, value, String.class);
                     builder.setSubject((String) value);
                     break;
                 case "aud":
-                    ensureType(key, value,  String.class);
+                    ensureType(key, value, String.class);
                     builder.setAudience((String) value);
                     break;
                 case "exp":
-                    value = ensureType(key, value,  Long.class);
-                    builder.setExpiration(Date.from(Instant.ofEpochSecond((Long) value)));
+                    ensureType(key, value, Long.class);
+                    builder.setExpiration(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
                     break;
                 case "nbf":
-                    value = ensureType(key, value,  Long.class);
-                    builder.setNotBefore(Date.from(Instant.ofEpochSecond((Long) value)));
+                    ensureType(key, value, Long.class);
+                    builder.setNotBefore(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
                     break;
                 case "iat":
-                    value = ensureType(key, value,  Long.class);
-                    builder.setIssuedAt(Date.from(Instant.ofEpochSecond((Long) value)));
+                    ensureType(key, value, Long.class);
+                    builder.setIssuedAt(Date.from(Instant.ofEpochSecond(Long.parseLong(value.toString()))));
                     break;
                 case "jti":
-                    ensureType(key, value,  String.class);
+                    ensureType(key, value, String.class);
                     builder.setId((String) value);
                     break;
                 default:
@@ -78,20 +78,15 @@ public class DynamicJWTController extends BaseController {
         return new JwtResponse(builder.compact());
     }
 
-    private Object ensureType(String registeredClaim, Object value, Class expectedType) {
-        // we want to promote Integers to Longs in this case
-        if (expectedType == Long.class && value instanceof Integer) {
-            value = ((Integer) value).longValue();
-        }
-
-        boolean isCorrectType = expectedType.isInstance(value);
+    private void ensureType(String registeredClaim, Object value, Class expectedType) {
+        boolean isCorrectType =
+            expectedType.isInstance(value) ||
+            expectedType == Long.class && value instanceof Integer;
 
         if (!isCorrectType) {
             String msg = "Expected type: " + expectedType.getCanonicalName() + " for registered claim: '" +
                 registeredClaim + "', but got value: " + value + " of type: " + value.getClass().getCanonicalName();
             throw new JwtException(msg);
         }
-
-        return value;
     }
 }
