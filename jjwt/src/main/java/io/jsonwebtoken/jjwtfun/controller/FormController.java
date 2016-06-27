@@ -18,9 +18,12 @@ public class FormController {
 
     @RequestMapping(value = "/jwt-csrf-form", method = POST)
     public String csrfFormPost(@RequestParam(name = "_csrf") String csrf, Model model) {
-
         model.addAttribute("csrf", csrf);
-
         return "jwt-csrf-form-result";
+    }
+
+    @RequestMapping("/expired-jwt")
+    public String expiredJwt() {
+        return "expired-jwt";
     }
 }
