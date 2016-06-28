@@ -40,7 +40,7 @@ public class JaxbParser {
 		tut.setType("XML");
 		tut.setTitle("XML with Jaxb");
 		tut.setDescription("XML Binding with Jaxb");
-		tut.setDate(new Date());
+		tut.setDate("04/02/2015");
 		tut.setAuthor("Jaxb author");
 		tutorials.getTutorial().add(tut);
 

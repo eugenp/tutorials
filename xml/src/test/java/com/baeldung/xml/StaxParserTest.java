@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.baeldung.xml.model.Tutorial;
+import com.baeldung.xml.binding.Tutorial;
 
 public class StaxParserTest {
 
