@@ -2,8 +2,10 @@
 
 ## REST Example Project with Spring Security
 
-### The Course
- The "REST With Spring" Classes: http://bit.ly/restwithspring
+### Courses
+The "REST With Spring" Classes: http://bit.ly/restwithspring
+
+The "Learn Spring Security" Classes: http://bit.ly/learnspringsecurity
 
 ### Relevant Articles: 
 - [Spring Security Expressions - hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
