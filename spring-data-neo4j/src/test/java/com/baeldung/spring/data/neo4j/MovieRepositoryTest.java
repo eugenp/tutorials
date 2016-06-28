@@ -27,7 +27,7 @@ import static org.junit.Assert.assertNotNull;
 public class MovieRepositoryTest {
 
     @Autowired
-    private MovieRepository instance;
+    private MovieRepository movieRepository;
 
     @Autowired
     private PersonRepository personRepository;
@@ -41,7 +41,7 @@ public class MovieRepositoryTest {
         Movie italianJob = new Movie();
         italianJob.setTitle("The Italian Job");
         italianJob.setReleased(1999);
-        instance.save(italianJob);
+        movieRepository.save(italianJob);
 
         Person mark = new Person();
         mark.setName("Mark Wahlberg");
@@ -56,7 +56,7 @@ public class MovieRepositoryTest {
         List<Role> roles = new ArrayList();
         roles.add(charlie);
         italianJob.setRoles(roles);
-        instance.save(italianJob);
+        movieRepository.save(italianJob);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class MovieRepositoryTest {
     public void testFindByTitle() {
         System.out.println("findByTitle");
         String title = "The Italian Job";
-        Movie result = instance.findByTitle(title);
+        Movie result = movieRepository.findByTitle(title);
         assertNotNull(result);
         assertEquals(1999, result.getReleased());
     }
@@ -73,9 +73,9 @@ public class MovieRepositoryTest {
     @DirtiesContext
     public void testCount() {
         System.out.println("count");
-        long result = instance.count();
-        assertNotNull(result);
-        assertEquals(1, result);
+        long movieCount = movieRepository.count();
+        assertNotNull(movieCount);
+        assertEquals(1, movieCount);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class MovieRepositoryTest {
     public void testFindAll() {
         System.out.println("findAll");
         Collection<Movie> result =
-                (Collection<Movie>) instance.findAll();
+                (Collection<Movie>) movieRepository.findAll();
         assertNotNull(result);
         assertEquals(1, result.size());
     }
@@ -94,7 +94,7 @@ public class MovieRepositoryTest {
         System.out.println("findByTitleContaining");
         String title = "Italian";
         Collection<Movie> result =
-                instance.findByTitleContaining(title);
+                movieRepository.findByTitleContaining(title);
         assertNotNull(result);
         assertEquals(1, result.size());
     }
@@ -103,7 +103,7 @@ public class MovieRepositoryTest {
     @DirtiesContext
     public void testGraph() {
         System.out.println("graph");
-        List<Map<String, Object>> graph = instance.graph(5);
+        List<Map<String, Object>> graph = movieRepository.graph(5);
         assertEquals(1, graph.size());
         Map<String, Object> map = graph.get(0);
         assertEquals(2, map.size());
@@ -117,17 +117,17 @@ public class MovieRepositoryTest {
     @DirtiesContext
     public void testDeleteMovie() {
         System.out.println("deleteMovie");
-        instance.delete(instance.findByTitle("The Italian Job"));
-        assertNull(instance.findByTitle("The Italian Job"));
+        movieRepository.delete(movieRepository.findByTitle("The Italian Job"));
+        assertNull(movieRepository.findByTitle("The Italian Job"));
     }
 
     @Test
     @DirtiesContext
     public void testDeleteAll() {
         System.out.println("deleteAll");
-        instance.deleteAll();
+        movieRepository.deleteAll();
         Collection<Movie> result =
-                (Collection<Movie>) instance.findAll();
+                (Collection<Movie>) movieRepository.findAll();
         assertEquals(0, result.size());
     }
 }
