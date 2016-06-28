@@ -1,7 +1,5 @@
 package com.baeldung.xml.binding;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -11,7 +9,7 @@ public class Tutorial {
 	private String type;
 	private String title;
 	private String description;
-	private Date date;
+	private String date;
 	private String author;
 	
 	
@@ -44,11 +42,11 @@ public class Tutorial {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 	@XmlElement
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getAuthor() {
