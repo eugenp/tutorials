@@ -2,6 +2,9 @@
 
 ## Spring General Example Project
 
+###The Course
+The "REST With Spring" Classes: http://bit.ly/restwithspring
+
 This project is used to replicate Spring Exceptions only.
 
  
