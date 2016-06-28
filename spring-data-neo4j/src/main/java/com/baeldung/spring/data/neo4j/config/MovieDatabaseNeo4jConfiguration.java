@@ -10,8 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
-@EnableTransactionManagement
-@EnableScheduling
 @ComponentScan(basePackages = {"com.baeldung.spring.data.neo4j.services"})
 @Configuration
 @EnableNeo4jRepositories(basePackages = "com.baeldung.spring.data.neo4j.repostory")
