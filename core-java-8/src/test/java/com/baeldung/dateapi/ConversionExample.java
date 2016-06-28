@@ -1,4 +1,4 @@
-package com.baeldung.date_migration;
+package com.baeldung.dateapi;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-public class Conversion {
+public class ConversionExample {
     public static void main(String[] args) {
         Instant instantFromCalendar = GregorianCalendar.getInstance().toInstant();
         ZonedDateTime zonedDateTimeFromCalendar = new GregorianCalendar().toZonedDateTime();
