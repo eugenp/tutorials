@@ -25,38 +25,38 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(classes = MovieDatabaseNeo4jTestConfiguration.class)
 @ActiveProfiles(profiles = "test")
 public class MovieRepositoryTest {
-    
+
     @Autowired
     private MovieRepository instance;
 
     @Autowired
     private PersonRepository personRepository;
-    
+
     public MovieRepositoryTest() {
     }
-    
-    @Before 
+
+    @Before
     public void initializeDatabase() {
-       System.out.println("seeding embedded database");
-       Movie matrix = new Movie();
-       matrix.setTitle("The Italian Job");
-       matrix.setReleased(1999);
-       instance.save(matrix);
-       
-       Person mark = new Person();
-       mark.setName("Mark Wahlberg");
-       personRepository.save(mark);
-       
-       Role neo = new Role();
-       neo.setMovie(matrix);
-       neo.setPerson(mark);
-       Collection<String> roleNames = new HashSet();
-       roleNames.add("Charlie Croker");
-       neo.setRoles(roleNames);
-       List<Role> roles = new ArrayList();
-       roles.add(neo);
-       matrix.setRoles(roles);
-       instance.save(matrix);
+        System.out.println("seeding embedded database");
+        Movie italianJob = new Movie();
+        italianJob.setTitle("The Italian Job");
+        italianJob.setReleased(1999);
+        instance.save(italianJob);
+
+        Person mark = new Person();
+        mark.setName("Mark Wahlberg");
+        personRepository.save(mark);
+
+        Role charlie = new Role();
+        charlie.setMovie(italianJob);
+        charlie.setPerson(mark);
+        Collection<String> roleNames = new HashSet();
+        roleNames.add("Charlie Croker");
+        charlie.setRoles(roleNames);
+        List<Role> roles = new ArrayList();
+        roles.add(charlie);
+        italianJob.setRoles(roles);
+        instance.save(italianJob);
     }
 
     @Test
@@ -96,20 +96,20 @@ public class MovieRepositoryTest {
         Collection<Movie> result =
                 instance.findByTitleContaining(title);
         assertNotNull(result);
-        assertEquals(1,result.size());
+        assertEquals(1, result.size());
     }
 
     @Test
     @DirtiesContext
     public void testGraph() {
         System.out.println("graph");
-        List<Map<String,Object>> graph = instance.graph(5);
-        assertEquals(1,graph.size());
-        Map<String,Object> map = graph.get(0);
-        assertEquals(2,map.size());
-        String[] cast = (String[])map.get("cast");
-        String movie = (String)map.get("movie");
-        assertEquals("The Italian Job",movie);
+        List<Map<String, Object>> graph = instance.graph(5);
+        assertEquals(1, graph.size());
+        Map<String, Object> map = graph.get(0);
+        assertEquals(2, map.size());
+        String[] cast = (String[]) map.get("cast");
+        String movie = (String) map.get("movie");
+        assertEquals("The Italian Job", movie);
         assertEquals("Mark Wahlberg", cast[0]);
     }
 
@@ -128,6 +128,6 @@ public class MovieRepositoryTest {
         instance.deleteAll();
         Collection<Movie> result =
                 (Collection<Movie>) instance.findAll();
-        assertEquals(0,result.size());
+        assertEquals(0, result.size());
     }
 }

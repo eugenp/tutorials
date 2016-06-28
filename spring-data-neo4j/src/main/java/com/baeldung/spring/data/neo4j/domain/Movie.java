@@ -23,8 +23,6 @@ public class Movie {
 
     @Relationship(type="ACTED_IN", direction = Relationship.INCOMING) private List<Role> roles;
 
-// end::movie[]
-
     public Movie() { }
 
     public String getTitle() {
