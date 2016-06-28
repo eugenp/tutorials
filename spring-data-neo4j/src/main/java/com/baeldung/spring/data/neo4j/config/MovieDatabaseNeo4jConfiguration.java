@@ -1,7 +1,6 @@
 package com.baeldung.spring.data.neo4j.config;
 
 import org.neo4j.ogm.session.SessionFactory;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 @EnableScheduling
-@EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.baeldung.spring.data.neo4j.services"})
 @Configuration
 @EnableNeo4jRepositories(basePackages = "com.baeldung.spring.data.neo4j.repostory")
