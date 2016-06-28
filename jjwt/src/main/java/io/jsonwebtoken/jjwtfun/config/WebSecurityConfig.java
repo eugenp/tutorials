@@ -3,7 +3,6 @@ package io.jsonwebtoken.jjwtfun.config;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -37,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrfTokenRepository(jwtCsrfTokenRepository)
                 .ignoringAntMatchers("/dynamic-builder-general")
                 .ignoringAntMatchers("/dynamic-builder-specific")
+                .ignoringAntMatchers("/dynamic-builder-compress")
             .and().authorizeRequests()
                 .antMatchers("/**")
                 .permitAll();

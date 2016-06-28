@@ -28,7 +28,6 @@ public class JWTCsrfTokenRepository implements CsrfTokenRepository {
 
     @Override
     public CsrfToken generateToken(HttpServletRequest request) {
-
         String id = UUID.randomUUID().toString().replace("-", "");
 
         Date now = new Date();

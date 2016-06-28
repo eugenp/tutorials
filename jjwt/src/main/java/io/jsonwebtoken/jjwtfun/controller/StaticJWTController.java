@@ -49,4 +49,15 @@ public class StaticJWTController extends BaseController {
 
         return new JwtResponse(claims);
     }
+
+    @RequestMapping(value = "/parser-enforce", method = GET)
+    public JwtResponse parserEnforce(@RequestParam String jwt) throws UnsupportedEncodingException {
+        Jws<Claims> claims = Jwts.parser()
+            .requireIssuer("Stormpath")
+            .require("hasMotorcycle", true)
+            .setSigningKey(secret.getBytes("UTF-8"))
+            .parseClaimsJws(jwt);
+
+        return new JwtResponse(claims);
+    }
 }
