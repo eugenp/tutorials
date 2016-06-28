@@ -4,6 +4,7 @@
 
 ### Courses
 The "REST With Spring" Classes: http://bit.ly/restwithspring
+
 The "Learn Spring Security" Classes: http://bit.ly/learnspringsecurity
 
 ### Relevant Articles: 
