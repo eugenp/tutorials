@@ -65,7 +65,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <configuration>
 	                <includes>
-	                    <include>**/*Demo.java</include>
+	                    <include>**/*Test.java</include>
 	                </includes>
 	            </configuration>
         	</plugin>

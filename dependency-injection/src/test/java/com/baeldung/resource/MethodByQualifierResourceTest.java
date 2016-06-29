@@ -12,17 +12,21 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.configuration.ApplicationContextTestResourceQualifier;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={
-		"/applicationContextTest-@Resource-Qualifier.xml"})
-public class MethodByQualifierResourceDemo {
+@ContextConfiguration(
+    loader=AnnotationConfigContextLoader.class,
+    classes=ApplicationContextTestResourceQualifier.class)
+public class MethodByQualifierResourceTest {
 
 	private File arbDependency;
 	private File anotherArbDependency;
 
 	@Test
-	public void dependencies_MUST_BE_INJECTED_Correctly() {
+	public void givenResourceQualifier_WhenSetter_ThenValidDependencies(){
 		assertNotNull(arbDependency);
 		assertEquals("namedFile.txt", arbDependency.getName());
 		assertNotNull(anotherArbDependency);

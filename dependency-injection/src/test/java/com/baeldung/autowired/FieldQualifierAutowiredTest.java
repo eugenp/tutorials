@@ -9,13 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.configuration.ApplicationContextTestAutowiredQualifier;
 import com.baeldung.dependency.ArbitraryDependency;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={
-		"/applicationContextTest-@Autowired-Qualifier.xml"})
-public class FieldQualifierAutowiredDemo {
+@ContextConfiguration(
+    loader=AnnotationConfigContextLoader.class,
+    classes=ApplicationContextTestAutowiredQualifier.class)
+public class FieldQualifierAutowiredTest {
 
     @Autowired
     @Qualifier("autowiredFieldDependency")
@@ -26,14 +29,15 @@ public class FieldQualifierAutowiredDemo {
     private ArbitraryDependency fieldDependency2;
 
     @Test
-    public void fieldDependency1_MUST_BE_AUTOWIRED_Correctly() {
+    public void givenAutowiredQualifier_WhenOnField_ThenDep1Valid(){
         assertNotNull(fieldDependency1);
         assertEquals("Arbitrary Dependency", fieldDependency1.toString());
     }
 
     @Test
-    public void fieldDependency2_MUST_BE_AUTOWIRED_Correctly() {
+    public void givenAutowiredQualifier_WhenOnField_ThenDep2Valid(){
         assertNotNull(fieldDependency2);
-        assertEquals("Another Arbitrary Dependency", fieldDependency2.toString());
+        assertEquals("Another Arbitrary Dependency",
+                        fieldDependency2.toString());
     }
 }
