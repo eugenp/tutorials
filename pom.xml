@@ -72,7 +72,7 @@
         <module>spring-zuul</module>
         <module>jsf</module>
         <module>xml</module>
-
+        <module>spring-4.3</module>
         <module>lombok</module>
     </modules>
 
