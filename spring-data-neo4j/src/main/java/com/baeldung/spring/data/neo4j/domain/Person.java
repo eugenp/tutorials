@@ -12,10 +12,12 @@ import java.util.List;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 @NodeEntity
 public class Person {
+
     @GraphId
     Long id;
 
     private String name;
+
     private int born;
 
     @Relationship(type = "ACTED_IN")

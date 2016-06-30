@@ -10,9 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-
 @NodeEntity
 public class Movie {
+
     @GraphId
     Long id;
 
