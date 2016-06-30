@@ -1,8 +1,8 @@
 
 The "REST with Spring" Classes
 ==============================
-This is what I'm working on: <br/>
-**[>> THE REST WITH SPRING CLASSES](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=25off)**
+After 5 months of work, here's the Master Class of REST With Spring: <br/>
+**[>> THE REST WITH SPRING MASTER CLASS](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
 
 
 Spring Tutorials
@@ -19,3 +19,8 @@ Any IDE can be used to work with the projects, but if you're using Eclipse, cons
 
 - import the included **formatter** in Eclipse: 
 `https://github.com/eugenp/tutorials/tree/master/eclipse`
+
+
+CI - Jenkins
+================================
+This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/tutorials/)**

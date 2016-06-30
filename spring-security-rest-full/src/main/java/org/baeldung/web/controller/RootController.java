@@ -11,6 +11,7 @@ import org.baeldung.web.metric.IMetricService;
 import org.baeldung.web.util.LinkUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +52,7 @@ public class RootController {
         return metricService.getFullMetric();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
     @ResponseBody
     public Map getStatusMetric() {
@@ -67,9 +69,16 @@ public class RootController {
         return result;
     }
 
-    @RequestMapping(value = "/metric-graph-data", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/x", method = RequestMethod.GET)
     @ResponseBody
-    public Object[][] getActuatorMetricData() {
-        return actMetricService.getGraphData();
+    public String sampleAdminPage() {
+        return "Hello";
     }
+
+    @RequestMapping(value = "/my-error-page", method = RequestMethod.GET)
+    @ResponseBody
+    public String sampleErrorPage() {
+        return "Error Occurred";
+    }
+
 }

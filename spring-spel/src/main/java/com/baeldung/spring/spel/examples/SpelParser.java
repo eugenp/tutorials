@@ -2,15 +2,10 @@ package com.baeldung.spring.spel.examples;
 
 import com.baeldung.spring.spel.entity.Car;
 import com.baeldung.spring.spel.entity.CarPark;
-import org.springframework.expression.EvaluationContext;
-import org.springframework.expression.Expression;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SpelParser {
     public static void main(String[] args) {

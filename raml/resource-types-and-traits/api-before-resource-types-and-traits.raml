@@ -1,0 +1,177 @@
+#%RAML 1.0
+title: Baeldung Foo REST Services API
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: basicAuth
+securitySchemes:
+  - basicAuth:
+      description: Each request must contain the headers necessary for
+                   basic authentication
+      type: Basic Authentication
+      describedBy:
+        headers:
+          Authorization:
+            description: Used to send the Base64 encoded "username:password"
+                         credentials
+            type: string
+        responses:
+          401:
+            description: |
+              Unauthorized. Either the provided username and password
+              combination is invalid, or the user is not allowed to access
+              the content provided by the requested URL.
+types:
+  Foo:   !include types/Foo.raml
+  Bar:   !include types/Bar.raml
+  Error: !include types/Error.raml
+traits:
+/foos:
+  get:
+    description: List all foos matching query criteria, if provided;
+                 otherwise list all foos
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Foo[]
+            example: !include examples/Foos.json
+  post:
+    description: Create a new foo
+    body:
+      application/json:
+        type: Foo
+        example: !include examples/Foo.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: Foo
+            example: !include examples/Foo.json
+  /{fooId}:
+    get:
+      description: Get a foo by fooId
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo
+              example: !include examples/Foo.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    put:
+      description: Update a foo by fooId
+      body:
+        application/json:
+          type: Foo
+          example: !include examples/Foo.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo
+              example: !include examples/Foo.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    delete:
+      description: Delete a foo by fooId
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+  /name/{name}:
+    get:
+      description: List all foos with a certain name
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo[]
+              example: !include examples/Foos.json
+/bars:
+  get:
+    description: List all bars matching query criteria, if provided;
+                 otherwise list all bars
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Bar[]
+            example: !include examples/Bars.json
+  post:
+    description: Create a new bar
+    body:
+      application/json:
+        type: Bar
+        example: !include examples/Bar.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: Bar
+            example: !include examples/Bar.json
+  /{barId}:
+    get:
+      description: Get a bar by barId
+      responses:
+        200:
+          body:
+            application/json:
+              type: Bar
+              example: !include examples/Bar.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    put:
+      description: Update a bar by barId
+      body:
+        application/json:
+          type: Bar
+          example: !include examples/Bar.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: Bar
+              example: !include examples/Bar.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    delete:
+      description: Delete a bar by barId
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+  /fooId/{fooId}:
+    get:
+      description: Get all bars for the matching fooId
+    responses:
+      200:
+        body:
+          application/json:
+            type: Bar[]
+            example: !include examples/Bars.json

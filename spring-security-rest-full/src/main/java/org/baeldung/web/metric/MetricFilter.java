@@ -26,7 +26,7 @@ public class MetricFilter implements Filter {
     public void init(final FilterConfig config) throws ServletException {
         if (metricService == null || actMetricService == null) {
             metricService = (IMetricService) WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean("metricService");
-            actMetricService = (ICustomActuatorMetricService) WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean("actuatorMetricService");
+            actMetricService = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext()).getBean(CustomActuatorMetricService.class);
         }
     }
 

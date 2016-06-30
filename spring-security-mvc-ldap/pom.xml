@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.2.4.RELEASE</version>
+        <version>1.3.3.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -36,28 +36,12 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.ldap</groupId>
-            <artifactId>spring-ldap-core</artifactId>
-            <version>2.0.3.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.ldap</groupId>
-            <artifactId>spring-ldap-core-tiger</artifactId>
-            <version>2.0.3.RELEASE</version>
-        </dependency>
-
-        <dependency>
             <!-- Is the ApacheDS server - 1.5.6 and 1.5.7 don't work -->
             <groupId>org.apache.directory.server</groupId>
             <artifactId>apacheds-server-jndi</artifactId>
-            <version>1.5.5</version>
+            <version>${apacheds.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>2.0.9</version>
-        </dependency>
-
+        
     </dependencies>
 
     <build>
@@ -74,7 +58,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -85,42 +68,8 @@
 
     </build>
 
-    <properties>
-        <!-- Spring -->
-        <org.springframework.version>4.2.2.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.2.RELEASE</org.springframework.security.version>
-
-        <!-- persistence -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.36</mysql-connector-java.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.12</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
-
-        <!-- various -->
-        <hibernate-validator.version>5.2.1.Final</hibernate-validator.version>
-
-        <!-- util -->
-        <guava.version>18.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
-
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-
-        <rest-assured.version>2.4.1</rest-assured.version>
-
-        <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
-
+    <properties>     
+        <apacheds.version>1.5.5</apacheds.version>
     </properties>
 
 </project>

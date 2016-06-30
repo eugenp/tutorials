@@ -1,5 +1,6 @@
 package org.baeldung.java.io;
 
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -57,9 +58,8 @@ public class JavaFileIntegrationTest {
 
     @Test
     public final void givenUsingJDK7Nio2_whenMovingFile_thenCorrect() throws IOException {
-        final Path fileToMovePath = Files.createFile(Paths.get("src/test/resources/fileToMove.txt"));
-        final Path dirPath = Paths.get("src/test/resources/");
-        final Path targetPath = Files.createDirectory(dirPath);
+        final Path fileToMovePath = Files.createFile(Paths.get("src/test/resources/" + randomAlphabetic(5) + ".txt"));
+        final Path targetPath = Paths.get("src/main/resources/");
 
         Files.move(fileToMovePath, targetPath.resolve(fileToMovePath.getFileName()));
     }

@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
-    <artifactId>spring-rest</artifactId>
+    <groupId>com.baeldung</groupId>
+    <artifactId>core-java8</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-rest</name>
+    <name>core-java8</name>
 
     <dependencies>
 
@@ -40,6 +41,12 @@
             <version>3.3.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${org.slf4j.version}</version>
+        </dependency>
+
         <!-- test scoped -->
 
         <dependency>
@@ -54,6 +61,12 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.4.1</version>
         </dependency>
 
         <dependency>
@@ -98,14 +111,14 @@
 
     <properties>
         <!-- logging -->
-        <org.slf4j.version>1.7.12</org.slf4j.version>
+        <org.slf4j.version>1.7.13</org.slf4j.version>
         <logback.version>1.0.13</logback.version>
 
         <!-- various -->
         <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>18.0</guava.version>
+        <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
 
         <!-- testing -->
@@ -114,9 +127,9 @@
         <mockito.version>1.10.19</mockito.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 
     </properties>

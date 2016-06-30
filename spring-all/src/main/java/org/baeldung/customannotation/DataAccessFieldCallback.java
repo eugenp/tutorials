@@ -12,18 +12,14 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
 
-
 public final class DataAccessFieldCallback implements FieldCallback {
 
     private static Logger logger = LoggerFactory.getLogger(DataAccessFieldCallback.class);
     private static int AUTOWIRE_MODE = AutowireCapableBeanFactory.AUTOWIRE_BY_NAME;
 
-    private static String ERROR_ENTITY_VALUE_NOT_SAME = "@DataAccess(entity) "
-            + "value should have same type with injected generic type.";
-    private static String WARN_NON_GENERIC_VALUE = "@DataAccess annotation assigned "
-            + "to raw (non-generic) declaration. This will make your code less type-safe.";
-    private static String ERROR_CREATE_INSTANCE = "Cannot create instance of "
-            + "type '{}' or instance creation is failed because: {}";
+    private static String ERROR_ENTITY_VALUE_NOT_SAME = "@DataAccess(entity) " + "value should have same type with injected generic type.";
+    private static String WARN_NON_GENERIC_VALUE = "@DataAccess annotation assigned " + "to raw (non-generic) declaration. This will make your code less type-safe.";
+    private static String ERROR_CREATE_INSTANCE = "Cannot create instance of " + "type '{}' or instance creation is failed because: {}";
 
     private ConfigurableListableBeanFactory configurableListableBeanFactory;
     private Object bean;
@@ -34,15 +30,14 @@ public final class DataAccessFieldCallback implements FieldCallback {
     }
 
     @Override
-    public void doWith(final Field field) 
-    throws IllegalArgumentException, IllegalAccessException {
+    public void doWith(final Field field) throws IllegalArgumentException, IllegalAccessException {
         if (!field.isAnnotationPresent(DataAccess.class)) {
             return;
         }
         ReflectionUtils.makeAccessible(field);
         final Type fieldGenericType = field.getGenericType();
-       // In this example, get actual "GenericDAO' type.
-        final Class<?> generic = field.getType(); 
+        // In this example, get actual "GenericDAO' type.
+        final Class<?> generic = field.getType();
         final Class<?> classValue = field.getDeclaredAnnotation(DataAccess.class).entity();
 
         if (genericTypeIsValid(classValue, fieldGenericType)) {
@@ -53,7 +48,6 @@ public final class DataAccessFieldCallback implements FieldCallback {
             throw new IllegalArgumentException(ERROR_ENTITY_VALUE_NOT_SAME);
         }
     }
-
 
     /**
      * For example, if user write:
@@ -75,8 +69,6 @@ public final class DataAccessFieldCallback implements FieldCallback {
         }
     }
 
-
-
     public final Object getBeanInstance(final String beanName, final Class<?> genericClass, final Class<?> paramClass) {
         Object daoInstance = null;
         if (!configurableListableBeanFactory.containsBean(beanName)) {
@@ -90,7 +82,7 @@ public final class DataAccessFieldCallback implements FieldCallback {
                 logger.error(ERROR_CREATE_INSTANCE, genericClass.getTypeName(), e);
                 throw new RuntimeException(e);
             }
-            
+
             daoInstance = configurableListableBeanFactory.initializeBean(toRegister, beanName);
             configurableListableBeanFactory.autowireBeanProperties(daoInstance, AUTOWIRE_MODE, true);
             configurableListableBeanFactory.registerSingleton(beanName, daoInstance);
