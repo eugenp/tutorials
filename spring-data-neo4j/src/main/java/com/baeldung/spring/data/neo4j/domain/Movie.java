@@ -19,9 +19,11 @@ public class Movie {
     private String title;
 
     private int released;
+
     private String tagline;
 
-    @Relationship(type="ACTED_IN", direction = Relationship.INCOMING) private List<Role> roles;
+    @Relationship(type="ACTED_IN", direction = Relationship.INCOMING)
+    private List<Role> roles;
 
     public Movie() { }
 
