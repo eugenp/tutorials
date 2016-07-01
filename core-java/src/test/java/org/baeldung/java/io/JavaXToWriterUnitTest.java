@@ -1,5 +1,7 @@
 package org.baeldung.java.io;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -23,6 +25,8 @@ public class JavaXToWriterUnitTest {
         final Writer targetWriter = new StringWriter().append(new String(initialArray));
 
         targetWriter.close();
+
+        assertEquals("With Java", targetWriter.toString());
     }
 
     @Test
@@ -40,6 +44,8 @@ public class JavaXToWriterUnitTest {
         charSink.write(buffer);
 
         stringWriter.close();
+
+        assertEquals("With Guava", stringWriter.toString());
     }
 
     @Test
@@ -48,6 +54,8 @@ public class JavaXToWriterUnitTest {
         final Writer targetWriter = new StringBuilderWriter(new StringBuilder(new String(initialArray)));
 
         targetWriter.close();
+
+        assertEquals("With Commons IO", targetWriter.toString());
     }
 
 }

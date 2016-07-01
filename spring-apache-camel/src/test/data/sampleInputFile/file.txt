@@ -1,0 +1,1 @@
+This is data that will be processed by a Camel route!

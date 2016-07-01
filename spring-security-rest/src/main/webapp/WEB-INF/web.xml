@@ -26,8 +26,11 @@
     <!-- Spring child -->
     <servlet>
         <servlet-name>api</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>        
+        <init-param>
+	        <param-name>throwExceptionIfNoHandlerFound</param-name>
+	        <param-value>true</param-value>
+	    </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>api</servlet-name>

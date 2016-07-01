@@ -9,7 +9,7 @@
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="org.baeldung.persistence.model"/>
+        <property name="packagesToScan" value="com.baeldung.persistence.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
@@ -18,7 +18,7 @@
         </property>
     </bean>
 
-    <bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+    <bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.user}"/>

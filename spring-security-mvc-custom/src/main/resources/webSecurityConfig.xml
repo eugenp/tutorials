@@ -12,6 +12,8 @@
         <intercept-url pattern="/login*" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
+        <csrf disabled="true"/>
+        
         <form-login login-page='/login.html' authentication-success-handler-ref="myAuthenticationSuccessHandler" authentication-failure-url="/login.html?error=true"/>
 
         <logout delete-cookies="JSESSIONID"/>

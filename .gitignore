@@ -7,8 +7,11 @@
 
 # Eclipse
 .settings/
+*.project
+*.classpath
 .prefs
 *.prefs
+.metadata/
 
 # Intellij
 .idea/
@@ -21,3 +24,6 @@
 # Maven
 log/
 target/
+
+spring-openid/src/main/resources/application.properties
+.recommenders/

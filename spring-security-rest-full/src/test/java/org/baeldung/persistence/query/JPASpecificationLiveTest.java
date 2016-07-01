@@ -32,7 +32,7 @@ public class JPASpecificationLiveTest {
 
     private User userTom;
 
-    private final String URL_PREFIX = "http://localhost:8080/spring-security-rest-full/users/spec?search=";
+    private final String URL_PREFIX = "http://localhost:8080/users/spec?search=";
 
     @Before
     public void init() {

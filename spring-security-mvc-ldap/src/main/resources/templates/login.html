@@ -21,7 +21,7 @@
 			<p th:if="${param.logout}" class="alert">You have been logged out</p>
 			<p th:if="${param.error}" class="alert alert-error">There was an error, please try again</p>
 			<h2>Login with Username and Password</h2>
-			<form name="form" th:action="@{/login}" action="/login" method="POST">
+			<form name="form" th:action="@{/login}" method="POST">
 				<fieldset>
 					<input type="text" name="username" value="" placeholder="Username" />
 					<input type="password" name="password" placeholder="Password" />

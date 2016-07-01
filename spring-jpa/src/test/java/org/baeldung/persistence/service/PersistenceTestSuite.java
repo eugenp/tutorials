@@ -7,9 +7,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ // @formatter:off
     FooPaginationPersistenceIntegrationTest.class
     ,FooServicePersistenceIntegrationTest.class
-    ,FooServiceSortingTests.class
-    // manual only
-    // ,FooServiceSortingWitNullsManualTest.class
+    ,FooServiceSortingIntegrationTest.class
+    ,JpaMultipleDBIntegrationTest.class
+    ,FooServiceSortingWitNullsManualIntegrationTest.class
 }) // @formatter:on
 public class PersistenceTestSuite {
     //

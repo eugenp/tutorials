@@ -31,6 +31,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
         registry.addViewController("/graph.html");
+        registry.addViewController("/csrfHome.html");
     }
 
 }

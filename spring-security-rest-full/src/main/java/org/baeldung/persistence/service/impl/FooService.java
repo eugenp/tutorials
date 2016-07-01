@@ -16,7 +16,7 @@ import com.google.common.collect.Lists;
 
 @Service
 @Transactional
-public class FooService extends AbstractService<Foo>implements IFooService {
+public class FooService extends AbstractService<Foo> implements IFooService {
 
     @Autowired
     private IFooDao dao;

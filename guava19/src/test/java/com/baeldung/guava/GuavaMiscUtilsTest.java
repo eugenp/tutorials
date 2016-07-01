@@ -1,16 +1,9 @@
 package com.baeldung.guava;
 
-import com.baeldung.guava.entity.User;
-import com.google.common.base.CharMatcher;
 import com.google.common.base.Throwables;
 import com.google.common.collect.*;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.reflect.TypeToken;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

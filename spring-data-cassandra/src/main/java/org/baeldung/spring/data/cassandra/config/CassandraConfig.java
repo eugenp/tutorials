@@ -17,8 +17,8 @@ import org.springframework.data.cassandra.repository.config.EnableCassandraRepos
 @PropertySource(value = { "classpath:cassandra.properties" })
 @EnableCassandraRepositories(basePackages = "org.baeldung.spring.data.cassandra.repository")
 public class CassandraConfig extends AbstractCassandraConfiguration {
-
     private static final Log LOGGER = LogFactory.getLog(CassandraConfig.class);
+
     @Autowired
     private Environment environment;
 
@@ -27,15 +27,17 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
         return environment.getProperty("cassandra.keyspace");
     }
 
+    @Override
     @Bean
     public CassandraClusterFactoryBean cluster() {
-        CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
+        final CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
         cluster.setContactPoints(environment.getProperty("cassandra.contactpoints"));
         cluster.setPort(Integer.parseInt(environment.getProperty("cassandra.port")));
         LOGGER.info("Cluster created with contact points [" + environment.getProperty("cassandra.contactpoints") + "] " + "& port [" + Integer.parseInt(environment.getProperty("cassandra.port")) + "].");
         return cluster;
     }
 
+    @Override
     @Bean
     public CassandraMappingContext cassandraMapping() throws ClassNotFoundException {
         return new BasicCassandraMappingContext();
