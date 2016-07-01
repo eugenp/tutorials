@@ -9,8 +9,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>@Resource vs @Inject vs @Autowired</name>
-	<description>Accompanying the demonstration of the use of the annotations related to injection mechanisms, namely @Resource, @Inject, and @Autowired</description>
+	<name>Resource vs Inject vs Autowired</name>
+	<description>Accompanying the demonstration of the use of the annotations related to injection mechanisms, namely Resource, Inject, and Autowired</description>
 
 	<dependencies>
 		<dependency>
@@ -56,8 +56,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
