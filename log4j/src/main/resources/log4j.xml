@@ -13,7 +13,7 @@
         <param name="file" value="baeldung.log" />
         <param name="append" value="false" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n" />
         </layout>
     </appender>
 
