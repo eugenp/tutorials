@@ -1,10 +1,9 @@
 package com.baeldung.configuration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import com.baeldung.dependency.ArbitraryDependency;
 import com.baeldung.dependency.YetAnotherArbitraryDependency;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApplicationContextTestInjectName {

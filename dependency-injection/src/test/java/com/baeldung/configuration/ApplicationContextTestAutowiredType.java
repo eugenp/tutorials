@@ -1,9 +1,8 @@
 package com.baeldung.configuration;
 
+import com.baeldung.dependency.ArbitraryDependency;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.baeldung.dependency.ArbitraryDependency;
 
 @Configuration
 public class ApplicationContextTestAutowiredType {
