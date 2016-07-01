@@ -10,7 +10,7 @@
   # File appender
   <appender name="fout" class="ch.qos.logback.core.FileAppender">
     # Name of a log file
-    <file>baeldung.log</file>
+    <file>log4j/target/baeldung-logback.log</file>
     <append>false</append>
     <encoder>
       # Pattern of log message for file appender
@@ -19,7 +19,7 @@
   </appender>
 
   # Override log level for specified package
-  <logger name="com.baeldung.log4j" level="TRACE"/>
+  <logger name="com.baeldung.logback" level="ERROR"/>
 
   <root level="DEBUG">
     <appender-ref ref="stdout" />

@@ -8,7 +8,7 @@
         </Console>
 
         # File appender
-        <File name="fout" fileName="baeldung.log" immediateFlush="false" append="false">
+        <File name="fout" fileName="log4j/target/baeldung-log4j2.log" immediateFlush="false" append="false">
             # Pattern of log message for file appender
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n"/>
         </File>
@@ -16,7 +16,7 @@
 
     <Loggers>
         # Override log level for specified package
-        <Logger name="com.baeldung.log4j" level="TRACE"/>
+        <Logger name="com.baeldung.log4j2" level="ERROR"/>
 
         <Root level="DEBUG">
             <AppenderRef ref="stdout" />
