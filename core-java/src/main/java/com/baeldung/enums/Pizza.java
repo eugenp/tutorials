@@ -3,37 +3,36 @@ package com.baeldung.enums;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections15.CollectionUtils;
 import org.apache.commons.collections15.Predicate;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Pizza {
 
-    private static EnumSet<PizzaStatusEnum> undeliveredPizzaStatuses =
-      EnumSet.of(PizzaStatusEnum.ORDERED, PizzaStatusEnum.READY);
+    private static EnumSet<PizzaStatus> undeliveredPizzaStatuses =
+            EnumSet.of(PizzaStatus.ORDERED, PizzaStatus.READY);
 
-    private PizzaStatusEnum status;
+    private PizzaStatus status;
 
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-    public enum PizzaStatusEnum {
-        ORDERED (5){
+    public enum PizzaStatus {
+        ORDERED(5) {
             @Override
             public boolean isOrdered() {
                 return true;
             }
         },
-        READY (2){
+        READY(2) {
             @Override
             public boolean isReady() {
                 return true;
             }
         },
-        DELIVERED (0){
+        DELIVERED(0) {
             @Override
             public boolean isDelivered() {
                 return true;
@@ -42,26 +41,33 @@ public class Pizza {
 
         private int timeToDelivery;
 
-        public boolean isOrdered() {return false;}
+        public boolean isOrdered() {
+            return false;
+        }
 
-        public boolean isReady() {return false;}
+        public boolean isReady() {
+            return false;
+        }
 
-        public boolean isDelivered(){return  false;}
+        public boolean isDelivered() {
+            return false;
+        }
+
         @JsonProperty("timeToDelivery")
         public int getTimeToDelivery() {
             return timeToDelivery;
         }
 
-        private PizzaStatusEnum (int timeToDelivery) {
+        PizzaStatus(int timeToDelivery) {
             this.timeToDelivery = timeToDelivery;
         }
     }
 
-    public PizzaStatusEnum getStatus() {
+    public PizzaStatus getStatus() {
         return status;
     }
 
-    public void setStatus(PizzaStatusEnum status) {
+    public void setStatus(PizzaStatus status) {
         this.status = status;
     }
 
@@ -73,32 +79,23 @@ public class Pizza {
         System.out.println("Time to delivery is " + this.getStatus().getTimeToDelivery() + " days");
     }
 
-    public static List<Pizza> getAllUndeliveredPizza(List<Pizza> input) {
-        List<Pizza> undelivered = input;
-        CollectionUtils.filter(undelivered, thatAreNotDelivered());
-        return undelivered;
+    public static List<Pizza> getAllUndeliveredPizzas(List<Pizza> input) {
+        return input.stream().filter(
+                (s) -> undeliveredPizzaStatuses.contains(s.getStatus()))
+                .collect(Collectors.toList());
     }
 
-    public static EnumMap<PizzaStatusEnum, List<Pizza>> groupPizzaByStatus(List<Pizza> pizzaList) {
-        EnumMap<PizzaStatusEnum, List<Pizza>> pzByStatus = new EnumMap<PizzaStatusEnum, List<Pizza>>(PizzaStatusEnum.class);
-        for (Pizza pz : pizzaList) {
-            PizzaStatusEnum status = pz.getStatus();
-
-            if (pzByStatus.containsKey(status)) {
-                pzByStatus.get(status).add(pz);
-            } else {
-                List<Pizza> newPzList = new ArrayList<Pizza>();
-                newPzList.add(pz);
-                pzByStatus.put(status, newPzList);
-            }
-        }
-        return pzByStatus;
+    public static EnumMap<PizzaStatus, List<Pizza>>
+    groupPizzaByStatus(List<Pizza> pzList) {
+        return pzList.stream().collect(
+                Collectors.groupingBy(Pizza::getStatus,
+                        () -> new EnumMap<>(PizzaStatus.class), Collectors.toList()));
     }
 
     public void deliver() {
         if (isDeliverable()) {
             PizzaDeliverySystemConfiguration.getInstance().getDeliveryStrategy().deliver(this);
-            this.setStatus(PizzaStatusEnum.DELIVERED);
+            this.setStatus(PizzaStatus.DELIVERED);
         }
     }
 
@@ -108,10 +105,6 @@ public class Pizza {
     }
 
     private static Predicate<Pizza> thatAreNotDelivered() {
-        return new Predicate<Pizza>() {
-            public boolean evaluate(Pizza entry) {
-                return undeliveredPizzaStatuses.contains(entry.getStatus());
-            }
-        };
+        return entry -> undeliveredPizzaStatuses.contains(entry.getStatus());
     }
 }
