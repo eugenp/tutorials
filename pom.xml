@@ -13,7 +13,6 @@
 	</properties>
 
     <modules>
-        <module>apache-fop</module>
         <module>assertj</module>
 
         <module>core-java</module>
