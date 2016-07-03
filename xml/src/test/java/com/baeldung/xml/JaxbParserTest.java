@@ -1,19 +1,20 @@
 package com.baeldung.xml;
 
-import com.baeldung.xml.binding.Tutorials;
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+import com.baeldung.xml.binding.Tutorials;
 
 public class JaxbParserTest {
 
 	
-	private final String fileName = "src/test/resources/example.xml";
+	final String fileName = "src/test/resources/example.xml";
 
-	private JaxbParser parser;
+	JaxbParser parser;
 	
 	@Test
 	public void getFullDocumentTest(){
