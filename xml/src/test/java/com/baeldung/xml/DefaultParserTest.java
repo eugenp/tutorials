@@ -8,9 +8,6 @@ import org.junit.Test;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- * Unit test for simple App.
- */
 public class DefaultParserTest {
 
     final String fileName = "src/test/resources/example.xml";
@@ -29,7 +26,7 @@ public class DefaultParserTest {
     }
 
     @Test
-    public void getNodeListByTitle() {
+    public void getNodeListByTitleTest() {
         parser = new DefaultParser(new File(fileName));
         NodeList list = parser.getNodeListByTitle("XML");
 
@@ -47,7 +44,7 @@ public class DefaultParserTest {
     }
 
     @Test
-    public void getNodeById() {
+    public void getNodeByIdTest() {
         parser = new DefaultParser(new File(fileName));
         Node node = parser.getNodeById("03");
 
@@ -56,7 +53,7 @@ public class DefaultParserTest {
     }
     
     @Test
-    public void getNodeListByDate(){
+    public void getNodeListByDateTest(){
         parser = new DefaultParser(new File(fileName));
         NodeList list = parser.getNodeListByTitle("04022016");
         for (int i = 0; null != list && i < list.getLength(); i++) {
@@ -73,7 +70,7 @@ public class DefaultParserTest {
     }
     
     @Test
-    public void getNodeListWithNamespace(){
+    public void getNodeListWithNamespaceTest(){
         parser = new DefaultParser(new File(fileNameSpace));
         NodeList list = parser.getAllTutorials();
         assertNotNull(list);

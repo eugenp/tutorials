@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.baeldung.config.converter.KryoHttpMessageConverter;
 import org.baeldung.web.dto.Foo;
+import org.baeldung.web.dto.FooProtos;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
@@ -17,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.client.RestTemplate;
@@ -92,6 +95,38 @@ public class SpringHttpMessageConvertersIntegrationTestsCase {
         final Foo fooResponse = response.getBody();
 
         Assert.assertEquals(resource.getId(), fooResponse.getId());
+    }
+
+    @Test
+    public void givenConsumingProtobuf_whenReadingTheFoo_thenCorrect() {
+        final String URI = BASE_URI + "foos/{id}";
+
+        final RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setMessageConverters(Arrays.asList(new ProtobufHttpMessageConverter()));
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(ProtobufHttpMessageConverter.PROTOBUF));
+        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+        final ResponseEntity<FooProtos.Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, FooProtos.Foo.class, "1");
+        final FooProtos.Foo resource = response.getBody();
+
+        assertThat(resource, notNullValue());
+    }
+
+    @Test
+    public void givenConsumingKryo_whenReadingTheFoo_thenCorrect() {
+        final String URI = BASE_URI + "foos/{id}";
+
+        final RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setMessageConverters(Arrays.asList(new KryoHttpMessageConverter()));
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(Arrays.asList(KryoHttpMessageConverter.KRYO));
+        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+
+        final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, Foo.class, "1");
+        final Foo resource = response.getBody();
+
+        assertThat(resource, notNullValue());
     }
 
     // UTIL
