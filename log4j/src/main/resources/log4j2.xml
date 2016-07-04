@@ -18,9 +18,9 @@
         # Override log level for specified package
         <Logger name="com.baeldung.log4j2" level="TRACE"/>
 
-        <Root level="DEBUG">
+        <AsyncRoot level="DEBUG">
             <AppenderRef ref="stdout" />
             <AppenderRef ref="fout"/>
-        </Root>
+        </AsyncRoot>
     </Loggers>
 </Configuration>
