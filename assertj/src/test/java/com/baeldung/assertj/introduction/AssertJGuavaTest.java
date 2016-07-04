@@ -2,16 +2,17 @@ package com.baeldung.assertj.introduction;
 
 import com.google.common.base.Optional;
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Range;
-import com.google.common.collect.SetMultimap;
+import com.google.common.collect.Sets;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
 import org.assertj.guava.data.MapEntry;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.HashMap;
 
 import static org.assertj.guava.api.Assertions.assertThat;
 import static org.assertj.guava.api.Assertions.entry;
@@ -30,12 +31,15 @@ public class AssertJGuavaTest {
 
     @Test
     public void givenMultimap_whenVerifying_thenCorrect() throws Exception {
-        final SetMultimap<Object, Object> mmap = Multimaps.forMap(ImmutableMap.of(1, "one"));
+        final Multimap<Integer, String> mmap = Multimaps.newMultimap(new HashMap<>(), Sets::newHashSet);
+        mmap.put(1, "one");
+        mmap.put(1, "1");
 
         assertThat(mmap)
-                .hasSize(1)
+                .hasSize(2)
                 .containsKeys(1)
-                .contains(entry(1, "one"));
+                .contains(entry(1, "one"))
+                .contains(entry(1, "1"));
     }
 
     @Test
