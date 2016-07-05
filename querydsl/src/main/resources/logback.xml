@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<configuration>
 
-    <!-- Appenders -->
-    <appender name="console" class="org.apache.log4j.ConsoleAppender">
-        <param name="Target" value="System.out" />
-        <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p: %c - %m%n" />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p: %c - %m%n</Pattern>
         </layout>
     </appender>
 
@@ -33,10 +30,8 @@
         <level value="warn" />
     </logger>
 
-    <!-- Root Logger -->
-    <root>
-        <priority value="warn" />
-        <appender-ref ref="console" />
+    <root level="warn">
+        <appender-ref ref="STDOUT"/>
     </root>
 
-</log4j:configuration>
+</configuration>
