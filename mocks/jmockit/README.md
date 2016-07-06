@@ -1,6 +1,6 @@
 =========
 
-## JMockit realated tutorials
+## JMockit related tutorials
 
 
 ### Relevant Articles: 
