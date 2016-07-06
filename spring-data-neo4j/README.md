@@ -1,0 +1,15 @@
+## Spring Data Neo4j
+
+### Relevant Articles:
+- [Introduction to Spring Data Neo4j](http://www.baeldung.com/spring-data-neo4j-tutorial)
+
+### Build the Project with Tests Running
+```
+mvn clean install
+```
+
+### Run Tests Directly
+```
+mvn test
+```
+
