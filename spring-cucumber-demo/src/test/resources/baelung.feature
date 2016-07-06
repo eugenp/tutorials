@@ -1,4 +1,4 @@
-Feature: the poop can be retrieved
+Feature: the message can be retrieved
   Scenario: client makes call to POST /baeldung
     When the client calls /baeldung
     Then the client receives status code of 200
