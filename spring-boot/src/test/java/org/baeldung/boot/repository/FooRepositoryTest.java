@@ -30,4 +30,5 @@ public class FooRepositoryTest extends DemoApplicationTests {
         assertThat(foo, notNullValue());
         assertThat(foo.getId(), is(2));
     }
+
 }
