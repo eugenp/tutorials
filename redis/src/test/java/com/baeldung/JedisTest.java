@@ -31,13 +31,13 @@ public class JedisTest {
 	public JedisTest() {
 		jedis = new Jedis();
 	}
-	
+
 	@BeforeClass
 	public static void setUp() throws IOException {
 		redisServer = new RedisServer(6379);
 		redisServer.start();
 	}
-	
+
 	@AfterClass
 	public static void destroy() {
 		redisServer.stop();
@@ -186,15 +186,15 @@ public class JedisTest {
 		Assert.assertTrue(pipeExists.get());
 		Assert.assertEquals(2, pipeRanking.get().size());
 	}
-	
+
 	@Test
 	public void givenAPoolConfigurationThenCreateAJedisPool() {
 		final JedisPoolConfig poolConfig = buildPoolConfig();
-		
-		try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost"); 
-				Jedis jedis = jedisPool.getResource()) {
-			
-			// do simple operation to verify that the Jedis resource is working properly
+
+		try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost"); Jedis jedis = jedisPool.getResource()) {
+
+			// do simple operation to verify that the Jedis resource is working
+			// properly
 			String key = "key";
 			String value = "value";
 
@@ -202,24 +202,24 @@ public class JedisTest {
 			String value2 = jedis.get(key);
 
 			Assert.assertEquals(value, value2);
-			
+
 			// flush Redis
 			jedis.flushAll();
 		}
 	}
-	
+
 	private JedisPoolConfig buildPoolConfig() {
-        final JedisPoolConfig poolConfig = new JedisPoolConfig();
-        poolConfig.setMaxTotal(128);
-        poolConfig.setMaxIdle(128);
-        poolConfig.setMinIdle(16);
-        poolConfig.setTestOnBorrow(true);
-        poolConfig.setTestOnReturn(true);
-        poolConfig.setTestWhileIdle(true);
-        poolConfig.setMinEvictableIdleTimeMillis(Duration.ofSeconds(60).toMillis());
-        poolConfig.setTimeBetweenEvictionRunsMillis(Duration.ofSeconds(30).toMillis());
-        poolConfig.setNumTestsPerEvictionRun(3);
-        poolConfig.setBlockWhenExhausted(true);
-        return poolConfig;
-    }
+		final JedisPoolConfig poolConfig = new JedisPoolConfig();
+		poolConfig.setMaxTotal(128);
+		poolConfig.setMaxIdle(128);
+		poolConfig.setMinIdle(16);
+		poolConfig.setTestOnBorrow(true);
+		poolConfig.setTestOnReturn(true);
+		poolConfig.setTestWhileIdle(true);
+		poolConfig.setMinEvictableIdleTimeMillis(Duration.ofSeconds(60).toMillis());
+		poolConfig.setTimeBetweenEvictionRunsMillis(Duration.ofSeconds(30).toMillis());
+		poolConfig.setNumTestsPerEvictionRun(3);
+		poolConfig.setBlockWhenExhausted(true);
+		return poolConfig;
+	}
 }
