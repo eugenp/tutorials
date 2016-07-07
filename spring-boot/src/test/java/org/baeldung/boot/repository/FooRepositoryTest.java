@@ -15,19 +15,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class FooRepositoryTest extends DemoApplicationTests {
-	@Autowired
-	private FooRepository fooRepository;
+    @Autowired
+    private FooRepository fooRepository;
 
-	@Before
-	public void setUp() {
-		fooRepository.save(new Foo("Foo"));
-		fooRepository.save(new Foo("Bar"));
-	}
+    @Before
+    public void setUp() {
+        fooRepository.save(new Foo("Foo"));
+        fooRepository.save(new Foo("Bar"));
+    }
 
-	@Test
-	public void testFindByName() {
-		Foo foo = fooRepository.findByName("Bar");
-		assertThat(foo, notNullValue());
-		assertThat(foo.getId(), is(2));
-	}
+    @Test
+    public void testFindByName() {
+        Foo foo = fooRepository.findByName("Bar");
+        assertThat(foo, notNullValue());
+        assertThat(foo.getId(), is(2));
+    }
+
 }
