@@ -14,6 +14,8 @@ import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -23,106 +25,102 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class FooStoredProceduresIntegrationTest {
 
-	@Autowired
-	private SessionFactory sessionFactory;
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooStoredProceduresIntegrationTest.class);
 
-	@Autowired
-	private IFooService fooService;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	private Session session;
+    @Autowired
+    private IFooService fooService;
 
-	@Before
-	public final void before() {
-		session = sessionFactory.openSession();
-		Assume.assumeTrue(getAllFoosExists());
-		Assume.assumeTrue(getFoosByNameExists());
-	}
+    private Session session;
 
-	private boolean getFoosByNameExists() {
-		try {
-			Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
-					.addEntity(Foo.class);
-			sqlQuery.list();
-			return true;
-		} catch (SQLGrammarException e) {
-			System.out
-					.println("WARNING : GetFoosByName() Procedure is may be missing ");
-			return false;
-		}
-	}
+    @Before
+    public final void before() {
+        session = sessionFactory.openSession();
+        Assume.assumeTrue(getAllFoosExists());
+        Assume.assumeTrue(getFoosByNameExists());
+    }
 
-	private boolean getAllFoosExists() {
-		try {
-			Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
-					.addEntity(Foo.class);
-			sqlQuery.list();
-			return true;
-		} catch (SQLGrammarException e) {
-			System.out
-					.println("WARNING : GetAllFoos() Procedure is may be missing ");
-			return false;
-		}
-	}
+    private boolean getFoosByNameExists() {
+        try {
+            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
+                    .addEntity(Foo.class);
+            sqlQuery.list();
+            return true;
+        } catch (SQLGrammarException e) {
+            LOGGER.error("WARNING : GetFoosByName() Procedure is may be missing ", e);
+            return false;
+        }
+    }
 
-	@After
-	public final void after() {
-		session.close();
-	}
+    private boolean getAllFoosExists() {
+        try {
+            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
+                    .addEntity(Foo.class);
+            sqlQuery.list();
+            return true;
+        } catch (SQLGrammarException e) {
+            LOGGER.error("WARNING : GetAllFoos() Procedure is may be missing ", e);
+            return false;
+        }
+    }
 
-	@Test
-	public final void getAllFoosUsingStoredProcedures() {
+    @After
+    public final void after() {
+        session.close();
+    }
 
-		fooService.create(new Foo(randomAlphabetic(6)));
+    @Test
+    public final void getAllFoosUsingStoredProcedures() {
 
-		// Stored procedure getAllFoos using createSQLQuery
-		Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(
-				Foo.class);
-		@SuppressWarnings("unchecked")
-		List<Foo> allFoos = sqlQuery.list();
-		for (Foo foo : allFoos) {
-			System.out.println("getAllFoos() SQL Query result : "
-					+ foo.getName());
-		}
-		assertEquals(allFoos.size(), fooService.findAll().size());
+        fooService.create(new Foo(randomAlphabetic(6)));
 
-		// Stored procedure getAllFoos using a Named Query
-		Query namedQuery = session.getNamedQuery("callGetAllFoos");
-		@SuppressWarnings("unchecked")
-		List<Foo> allFoos2 = namedQuery.list();
-		for (Foo foo : allFoos2) {
-			System.out.println("getAllFoos() NamedQuery result : "
-					+ foo.getName());
-		}
-		assertEquals(allFoos2.size(), fooService.findAll().size());
-	}
+        // Stored procedure getAllFoos using createSQLQuery
+        Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(
+                Foo.class);
+        @SuppressWarnings("unchecked")
+        List<Foo> allFoos = sqlQuery.list();
+        for (Foo foo : allFoos) {
+            LOGGER.info("getAllFoos() SQL Query result : {}", foo.getName());
+        }
+        assertEquals(allFoos.size(), fooService.findAll().size());
 
-	@Test
-	public final void getFoosByNameUsingStoredProcedures() {
+        // Stored procedure getAllFoos using a Named Query
+        Query namedQuery = session.getNamedQuery("callGetAllFoos");
+        @SuppressWarnings("unchecked")
+        List<Foo> allFoos2 = namedQuery.list();
+        for (Foo foo : allFoos2) {
+            LOGGER.info("getAllFoos() NamedQuery result : {}", foo.getName());
+        }
+        assertEquals(allFoos2.size(), fooService.findAll().size());
+    }
 
-		fooService.create(new Foo("NewFooName"));
+    @Test
+    public final void getFoosByNameUsingStoredProcedures() {
 
-		// Stored procedure getFoosByName using createSQLQuery()
-		Query sqlQuery = session.createSQLQuery("CALL GetFoosByName(:fooName)")
-				.addEntity(Foo.class).setParameter("fooName", "NewFooName");
-		@SuppressWarnings("unchecked")
-		List<Foo> allFoosByName = sqlQuery.list();
-		for (Foo foo : allFoosByName) {
-			System.out.println("getFoosByName() using SQL Query : found => "
-					+ foo.toString());
-		}
+        fooService.create(new Foo("NewFooName"));
 
-		// Stored procedure getFoosByName using getNamedQuery()
-		Query namedQuery = session.getNamedQuery("callGetFoosByName")
-				.setParameter("fooName", "NewFooName");
-		@SuppressWarnings("unchecked")
-		List<Foo> allFoosByName2 = namedQuery.list();
-		for (Foo foo : allFoosByName2) {
-			System.out.println("getFoosByName() using Native Query : found => "
-					+ foo.toString());
-		}
+        // Stored procedure getFoosByName using createSQLQuery()
+        Query sqlQuery = session.createSQLQuery("CALL GetFoosByName(:fooName)")
+                .addEntity(Foo.class).setParameter("fooName", "NewFooName");
+        @SuppressWarnings("unchecked")
+        List<Foo> allFoosByName = sqlQuery.list();
+        for (Foo foo : allFoosByName) {
+            LOGGER.info("getFoosByName() using SQL Query : found => {}", foo.toString());
+        }
 
-	}
+        // Stored procedure getFoosByName using getNamedQuery()
+        Query namedQuery = session.getNamedQuery("callGetFoosByName")
+                .setParameter("fooName", "NewFooName");
+        @SuppressWarnings("unchecked")
+        List<Foo> allFoosByName2 = namedQuery.list();
+        for (Foo foo : allFoosByName2) {
+            LOGGER.info("getFoosByName() using Native Query : found => {}", foo.toString());
+        }
+
+    }
 }
