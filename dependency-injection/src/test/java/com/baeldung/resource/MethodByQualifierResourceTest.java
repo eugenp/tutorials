@@ -1,12 +1,6 @@
 package com.baeldung.resource;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
-
-import javax.annotation.Resource;
-
+import com.baeldung.configuration.ApplicationContextTestResourceQualifier;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,34 +8,38 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.configuration.ApplicationContextTestResourceQualifier;
+import javax.annotation.Resource;
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
-    loader=AnnotationConfigContextLoader.class,
-    classes=ApplicationContextTestResourceQualifier.class)
+  loader = AnnotationConfigContextLoader.class,
+  classes = ApplicationContextTestResourceQualifier.class)
 public class MethodByQualifierResourceTest {
 
-	private File arbDependency;
-	private File anotherArbDependency;
+    private File arbDependency;
+    private File anotherArbDependency;
 
-	@Test
-	public void givenResourceQualifier_WhenSetter_ThenValidDependencies(){
-		assertNotNull(arbDependency);
-		assertEquals("namedFile.txt", arbDependency.getName());
-		assertNotNull(anotherArbDependency);
-		assertEquals("defaultFile.txt", anotherArbDependency.getName());
-	}
+    @Test
+    public void givenResourceQualifier_WhenSetter_ThenValidDependencies() {
+        assertNotNull(arbDependency);
+        assertEquals("namedFile.txt", arbDependency.getName());
+        assertNotNull(anotherArbDependency);
+        assertEquals("defaultFile.txt", anotherArbDependency.getName());
+    }
 
-	@Resource
-	@Qualifier("namedFile")
-	public void setArbDependency(File arbDependency) {
-		this.arbDependency = arbDependency;
-	}
+    @Resource
+    @Qualifier("namedFile")
+    public void setArbDependency(File arbDependency) {
+        this.arbDependency = arbDependency;
+    }
 
-	@Resource
-	@Qualifier("defaultFile")
-	public void setAnotherArbDependency(File anotherArbDependency) {
-		this.anotherArbDependency = anotherArbDependency;
-	}
+    @Resource
+    @Qualifier("defaultFile")
+    public void setAnotherArbDependency(File anotherArbDependency) {
+        this.anotherArbDependency = anotherArbDependency;
+    }
 }

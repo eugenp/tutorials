@@ -7,8 +7,12 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
+
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
     <modules>
-        <module>apache-fop</module>
         <module>assertj</module>
 
         <module>core-java</module>
@@ -25,7 +29,7 @@
         <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
-        <module>mock-comparisons</module>
+        <module>mocks</module>
         <module>jee7schedule</module>
         <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
