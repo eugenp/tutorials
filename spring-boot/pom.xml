@@ -17,6 +17,8 @@
     </parent>
 
     <properties>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>org.baeldung.boot.DemoApplication</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <!-- <spring.version>4.3.0.RELEASE</spring.version> -->
