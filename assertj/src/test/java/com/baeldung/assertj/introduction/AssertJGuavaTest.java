@@ -6,6 +6,7 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Range;
 import com.google.common.collect.Sets;
+import com.google.common.collect.Table;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
 import org.assertj.guava.data.MapEntry;
@@ -78,7 +79,7 @@ public class AssertJGuavaTest {
 
     @Test
     public void givenTable_whenVerifying_thenShouldBeCorrect() throws Exception {
-        final HashBasedTable<Integer, String, String> table = HashBasedTable.create(2, 2);
+        final Table<Integer, String, String> table = HashBasedTable.create(2, 2);
 
         table.put(1, "A", "PRESENT");
         table.put(1, "B", "ABSENT");
