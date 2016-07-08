@@ -17,7 +17,7 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
-import com.baeldung.xml.model.Tutorial;
+import com.baeldung.xml.binding.Tutorial;
 
 public class StaxParser {
 

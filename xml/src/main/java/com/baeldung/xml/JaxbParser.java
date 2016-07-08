@@ -2,7 +2,6 @@ package com.baeldung.xml;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -40,7 +39,7 @@ public class JaxbParser {
 		tut.setType("XML");
 		tut.setTitle("XML with Jaxb");
 		tut.setDescription("XML Binding with Jaxb");
-		tut.setDate(new Date());
+		tut.setDate("04/02/2015");
 		tut.setAuthor("Jaxb author");
 		tutorials.getTutorial().add(tut);
 

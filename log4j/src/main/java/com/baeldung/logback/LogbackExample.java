@@ -1,6 +1,5 @@
 package com.baeldung.logback;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,4 +12,5 @@ public class LogbackExample {
         logger.info("Info log message");
         logger.error("Error log message");
     }
+
 }
