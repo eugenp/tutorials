@@ -19,9 +19,9 @@ public class StudentTest {
     private static QName SERVICE_NAME = new QName("http://introduction.cxf.baeldung.com/", "Baeldung");
     private static QName PORT_NAME = new QName("http://introduction.cxf.baeldung.com/", "BaeldungPort");
 
-    Service service;
-    Baeldung baeldungProxy;
-    Baeldung baeldungImpl;
+    private Service service;
+    private Baeldung baeldungProxy;
+    private Baeldung baeldungImpl;
 
     {
         service = Service.create(SERVICE_NAME);

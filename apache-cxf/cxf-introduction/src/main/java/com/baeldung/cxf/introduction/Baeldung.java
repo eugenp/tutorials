@@ -7,10 +7,10 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @WebService
 public interface Baeldung {
-    String hello(String name);
+    public String hello(String name);
 
-    String helloStudent(Student student);
+    public String helloStudent(Student student);
 
     @XmlJavaTypeAdapter(StudentMapAdapter.class)
-    Map<Integer, Student> getStudents();
+    public Map<Integer, Student> getStudents();
 }

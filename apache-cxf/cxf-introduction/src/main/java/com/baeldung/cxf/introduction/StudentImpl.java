@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "Student")
 public class StudentImpl implements Student {
-    String name;
+    private String name;
 
     StudentImpl() {
     }

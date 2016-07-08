@@ -7,7 +7,7 @@ import javax.jws.WebService;
 
 @WebService(endpointInterface = "com.baeldung.cxf.introduction.Baeldung")
 public class BaeldungImpl implements Baeldung {
-    Map<Integer, Student> students = new LinkedHashMap<Integer, Student>();
+    private Map<Integer, Student> students = new LinkedHashMap<Integer, Student>();
 
     public String hello(String name) {
         return "Hello " + name;

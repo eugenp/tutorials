@@ -16,7 +16,7 @@ public class StudentMap {
     }
 
     @XmlType(name = "StudentEntry")
-    static class StudentEntry {
+    public static class StudentEntry {
         private Integer id;
         private Student student;
 
