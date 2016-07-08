@@ -1,7 +1,6 @@
 package org.baeldung.json.schema;
 
 import org.everit.json.schema.Schema;
-import org.everit.json.schema.ValidationException;
 import org.everit.json.schema.loader.SchemaLoader;
 
 import org.json.JSONObject;
@@ -17,17 +16,7 @@ public class JSONSchemaTest {
         JSONObject jsonSubject = new JSONObject(new JSONTokener(JSONSchemaTest.class.getResourceAsStream("/product_invalid.json")));
 
         Schema schema = SchemaLoader.load(jsonSchema);
-
-        try {
-
-            schema.validate(jsonSubject);
-        }
-
-        catch (ValidationException e) {
-
-            System.out.println(e.getMessage());
-            e.getCausingExceptions().stream().map(ValidationException::getMessage).forEach(System.out::println);
-        }
+        schema.validate(jsonSubject);
     }
 
     @Test
@@ -37,16 +26,6 @@ public class JSONSchemaTest {
         JSONObject jsonSubject = new JSONObject(new JSONTokener(JSONSchemaTest.class.getResourceAsStream("/product_valid.json")));
 
         Schema schema = SchemaLoader.load(jsonSchema);
-
-        try {
-
-            schema.validate(jsonSubject);
-        }
-
-        catch (ValidationException e) {
-
-            System.out.println(e.getMessage());
-            e.getCausingExceptions().stream().map(ValidationException::getMessage).forEach(System.out::println);
-        }
+        schema.validate(jsonSubject);
     }
 }
