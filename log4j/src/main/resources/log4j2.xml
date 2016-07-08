@@ -4,7 +4,7 @@
         # Console appender
         <Console name="stdout" target="SYSTEM_OUT">
             # Pattern of log message for console appender
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n" />
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
         </Console>
 
         # File appender
@@ -19,7 +19,7 @@
         <Logger name="com.baeldung.log4j2" level="TRACE"/>
 
         <AsyncRoot level="DEBUG">
-            <AppenderRef ref="stdout" />
+            <AppenderRef ref="stdout"/>
             <AppenderRef ref="fout"/>
         </AsyncRoot>
     </Loggers>
