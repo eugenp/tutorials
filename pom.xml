@@ -14,7 +14,7 @@
 
     <modules>
         <module>assertj</module>
-
+        <module>apache-cxf</module>
         <module>core-java</module>
         <module>core-java-8</module>
         <module>gson</module>
