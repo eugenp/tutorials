@@ -29,6 +29,7 @@
 		<profile>
 			<id>server</id>
 			<build>
+				<defaultGoal>test</defaultGoal>
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
