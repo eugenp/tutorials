@@ -108,7 +108,7 @@ public class SandboxTest {
 
         // Make a client using those creds
         final CloseableHttpClient client = HttpClients.custom().setDefaultCookieStore(cookieStore).setDefaultCredentialsProvider(credsProvider).build();
-
+        
         // And make a call to the URL we are after
         final HttpGet httpget = new HttpGet("http://httpbin.org/digest-auth/auth/user/passwd");
 
@@ -127,6 +127,7 @@ public class SandboxTest {
 
             try {
                 System.out.println("----------------------------------------");
+                System.out.println(responseGood.getStatusLine());
                 assertEquals(200, responseGood.getStatusLine().getStatusCode());
             } finally {
                 responseGood.close();

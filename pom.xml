@@ -7,8 +7,14 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
+
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
     <modules>
-        <module>apache-fop</module>
+        <module>assertj</module>
+
         <module>core-java</module>
         <module>core-java-8</module>
         <module>gson</module>
@@ -23,12 +29,14 @@
         <module>jooq-spring</module>
         <module>json-path</module>
         <module>mockito</module>
+        <module>mocks</module>
         <module>jee7schedule</module>
         <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
         <!-- <module>raml</module> -->
         <module>rest-testing</module>
         <module>resteasy</module>
+		<module>log4j</module>
 
         <module>spring-all</module>
         <module>spring-apache-camel</module>
@@ -49,6 +57,7 @@
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-xml</module>
         <module>spring-openid</module>
+        <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest</module>
 
