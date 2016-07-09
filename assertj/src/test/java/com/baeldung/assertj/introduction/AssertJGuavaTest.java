@@ -24,10 +24,10 @@ public class AssertJGuavaTest {
 
     @Test
     public void givenTwoEmptyFiles_whenComparingContent_thenEqual() throws Exception {
-        final File temp = File.createTempFile("bael", "dung");
+        final File temp1 = File.createTempFile("bael", "dung1");
         final File temp2 = File.createTempFile("bael", "dung2");
 
-        assertThat(Files.asByteSource(temp))
+        assertThat(Files.asByteSource(temp1))
                 .hasSize(0)
                 .hasSameContentAs(Files.asByteSource(temp2));
     }
