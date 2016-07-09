@@ -6,7 +6,6 @@ import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Range;
-import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
@@ -14,8 +13,8 @@ import org.assertj.guava.data.MapEntry;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import static org.assertj.guava.api.Assertions.assertThat;
 import static org.assertj.guava.api.Assertions.entry;
@@ -53,18 +52,19 @@ public class AssertJGuavaTest {
         mmap1.put(2, "two");
         mmap1.put(2, "2");
 
-        final Multimap<Integer, String> mmap1_clone = Multimaps.newListMultimap(new HashMap<>(), ArrayList::new);
+        final Multimap<Integer, String> mmap1_clone = Multimaps.newSetMultimap(new HashMap<>(), HashSet::new);
         mmap1_clone.put(1, "one");
         mmap1_clone.put(1, "1");
         mmap1_clone.put(2, "two");
         mmap1_clone.put(2, "2");
 
-        final Multimap<Integer, String> mmap2 = Multimaps.newMultimap(new HashMap<>(), Sets::newHashSet);
-        mmap1.put(1, "one");
-        mmap1.put(1, "1");
+        final Multimap<Integer, String> mmap2 = Multimaps.newSetMultimap(new HashMap<>(), HashSet::new);
+        mmap2.put(1, "one");
+        mmap2.put(1, "1");
 
         assertThat(mmap1)
                 .containsAllEntriesOf(mmap2)
+                .containsAllEntriesOf(mmap1_clone)
                 .hasSameEntriesAs(mmap1_clone)
                 .isNotEqualTo(mmap1_clone);
     }
