@@ -60,13 +60,12 @@ public class AssertJGuavaTest {
         mmap1_clone.put(2, "2");
 
         final Multimap<Integer, String> mmap2 = Multimaps.newMultimap(new HashMap<>(), Sets::newHashSet);
-        mmap1.put(1, "one");
-        mmap1.put(1, "1");
+        mmap2.put(1, "one");
+        mmap2.put(1, "1");
 
         assertThat(mmap1)
                 .containsAllEntriesOf(mmap2)
-                .hasSameEntriesAs(mmap1_clone)
-                .isNotEqualTo(mmap1_clone);
+                .hasSameEntriesAs(mmap1_clone);
     }
 
     @Test
