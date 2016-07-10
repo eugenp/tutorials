@@ -65,8 +65,7 @@ public class AssertJGuavaTest {
         assertThat(mmap1)
                 .containsAllEntriesOf(mmap2)
                 .containsAllEntriesOf(mmap1_clone)
-                .hasSameEntriesAs(mmap1_clone)
-                .isNotEqualTo(mmap1_clone);
+                .hasSameEntriesAs(mmap1_clone);
     }
 
     @Test
