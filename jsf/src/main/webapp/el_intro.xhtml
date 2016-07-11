@@ -31,6 +31,19 @@
                     <h:outputText value="JavaScript (click after saving First Name)"/>
                     <h:button  value="Alert" onclick="alert('Hello #{ELBean.firstName}')"/>
                 </h:panelGrid>
+                
+                <br/>
+                    <h:outputText value="Current Request HTTP Headers:"/>
+                    <table border="1">
+                        <th>Key</th>
+                        <th>Value</th>
+                        <c:forEach items="#{header}" var="header">
+                            <tr>
+                                <td>#{header.key}</td>
+                                <td>#{header.value}</td>
+                           </tr>
+                       </c:forEach>
+                    </table>
             
         </h:form>
     </h:body>
