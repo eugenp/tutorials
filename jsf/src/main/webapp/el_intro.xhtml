@@ -32,13 +32,18 @@
                     <h:button  value="Alert" onclick="alert('Hello #{ELBean.firstName}')"/>
                 </h:panelGrid>
                 
-                <h:outputText value="Current Request HTTP Headers:"/>
-                <h:panelGrid columns="2" >
-                    <ui:repeat value="#{header}" var="header">
-                        <h:outputText value="#{header.key}: "/>
-                        <h:outputText value="#{header.value}"/>
-                    </ui:repeat>
-                </h:panelGrid>
+                <br/>
+                    <h:outputText value="Current Request HTTP Headers:"/>
+                    <table border="1">
+                        <th>Key</th>
+                        <th>Value</th>
+                        <c:forEach items="#{header}" var="header">
+                            <tr>
+                                <td>#{header.key}</td>
+                                <td>#{header.value}</td>
+                           </tr>
+                       </c:forEach>
+                    </table>
             
         </h:form>
     </h:body>
