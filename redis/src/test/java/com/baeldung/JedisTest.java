@@ -49,7 +49,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenAStringThenSaveItAsRedisStrings() {
+    public void givenAString_thenSaveItAsRedisStrings() {
         String key = "key";
         String value = "value";
 
@@ -60,7 +60,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenListElementsThenSaveThemInRedisList() {
+    public void givenListElements_thenSaveThemInRedisList() {
         String queue = "queue#tasks";
 
         String taskOne = "firstTask";
@@ -85,7 +85,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenSetElementsThenSaveThemInRedisSet() {
+    public void givenSetElements_thenSaveThemInRedisSet() {
         String countries = "countries";
 
         String countryOne = "Spain";
@@ -110,7 +110,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenObjectFieldsThenSaveThemInRedisHash() {
+    public void givenObjectFields_thenSaveThemInRedisHash() {
         String key = "user#1";
 
         String field = "name";
@@ -131,7 +131,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenARankingThenSaveItInRedisSortedSet() {
+    public void givenARanking_thenSaveItInRedisSortedSet() {
         String key = "ranking";
 
         Map<String, Double> scores = new HashMap<>();
@@ -152,7 +152,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenMultipleOperationsThatNeedToBeExecutedAtomicallyThenWrapThemInATransaction() {
+    public void givenMultipleOperationsThatNeedToBeExecutedAtomically_thenWrapThemInATransaction() {
         String friendsPrefix = "friends#";
 
         String userOneId = "4352523";
@@ -171,7 +171,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenMultipleIndependentOperationsWhenNetworkOptimizationIsImportantThenWrapThemInAPipeline() {
+    public void givenMultipleIndependentOperations_whenNetworkOptimizationIsImportant_thenWrapThemInAPipeline() {
         String userOneId = "4352523";
         String userTwoId = "4849888";
 
@@ -188,7 +188,7 @@ public class JedisTest {
     }
 
     @Test
-    public void givenAPoolConfigurationThenCreateAJedisPool() {
+    public void givenAPoolConfiguration_thenCreateAJedisPool() {
         final JedisPoolConfig poolConfig = buildPoolConfig();
 
         try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost"); Jedis jedis = jedisPool.getResource()) {
