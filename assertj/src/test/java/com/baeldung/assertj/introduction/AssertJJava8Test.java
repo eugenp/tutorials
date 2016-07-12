@@ -63,6 +63,7 @@ public class AssertJJava8Test {
         final LocalTime givenLocalTime = LocalTime.of(12, 15);
 
         assertThat(givenLocalTime)
+          .isAfter(LocalTime.of(1, 0))
           .hasSameHourAs(LocalTime.of(12, 0));
     }
 
@@ -73,6 +74,24 @@ public class AssertJJava8Test {
         assertThat(givenList)
           .flatExtracting(LocalDate::getYear)
           .contains(2015);
+    }
+
+    @Test
+    public void givenList_shouldAssertFlatExtractingLeapYear() throws Exception {
+        final List<LocalDate> givenList = asList(ofYearDay(2016, 5), ofYearDay(2015, 6));
+
+        assertThat(givenList)
+          .flatExtracting(LocalDate::isLeapYear)
+          .contains(true);
+    }
+
+    @Test
+    public void givenList_shouldAssertFlatExtractingClass() throws Exception {
+        final List<LocalDate> givenList = asList(ofYearDay(2016, 5), ofYearDay(2015, 6));
+
+        assertThat(givenList)
+          .flatExtracting(Object::getClass)
+          .contains(LocalDate.class);
     }
 
     @Test
