@@ -116,9 +116,9 @@ public class AssertJJava8Test {
 
     @Test
     public void givenString_shouldMatch() throws Exception {
-        final String givenString = "";
+        final String emptyString = "";
 
-        assertThat(givenString)
+        assertThat(emptyString)
           .matches(String::isEmpty);
     }
 
