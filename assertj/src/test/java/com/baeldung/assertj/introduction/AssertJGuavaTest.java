@@ -1,11 +1,11 @@
 package com.baeldung.assertj.introduction;
 
 import com.google.common.base.Optional;
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Range;
-import com.google.common.collect.Sets;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import static org.assertj.guava.api.Assertions.assertThat;
 import static org.assertj.guava.api.Assertions.entry;
@@ -22,17 +23,17 @@ public class AssertJGuavaTest {
 
     @Test
     public void givenTwoEmptyFiles_whenComparingContent_thenEqual() throws Exception {
-        final File temp = File.createTempFile("bael", "dung");
+        final File temp1 = File.createTempFile("bael", "dung1");
         final File temp2 = File.createTempFile("bael", "dung2");
 
-        assertThat(Files.asByteSource(temp))
+        assertThat(Files.asByteSource(temp1))
                 .hasSize(0)
                 .hasSameContentAs(Files.asByteSource(temp2));
     }
 
     @Test
     public void givenMultimap_whenVerifying_thenCorrect() throws Exception {
-        final Multimap<Integer, String> mmap = Multimaps.newMultimap(new HashMap<>(), Sets::newHashSet);
+        final Multimap<Integer, String> mmap = ArrayListMultimap.create();
         mmap.put(1, "one");
         mmap.put(1, "1");
 
@@ -41,6 +42,30 @@ public class AssertJGuavaTest {
                 .containsKeys(1)
                 .contains(entry(1, "one"))
                 .contains(entry(1, "1"));
+    }
+
+    @Test
+    public void givenMultimaps_whenVerifyingContent_thenCorrect() throws Exception {
+        final Multimap<Integer, String> mmap1 = ArrayListMultimap.create();
+        mmap1.put(1, "one");
+        mmap1.put(1, "1");
+        mmap1.put(2, "two");
+        mmap1.put(2, "2");
+
+        final Multimap<Integer, String> mmap1_clone = Multimaps.newSetMultimap(new HashMap<>(), HashSet::new);
+        mmap1_clone.put(1, "one");
+        mmap1_clone.put(1, "1");
+        mmap1_clone.put(2, "two");
+        mmap1_clone.put(2, "2");
+
+        final Multimap<Integer, String> mmap2 = Multimaps.newSetMultimap(new HashMap<>(), HashSet::new);
+        mmap2.put(1, "one");
+        mmap2.put(1, "1");
+
+        assertThat(mmap1)
+                .containsAllEntriesOf(mmap2)
+                .containsAllEntriesOf(mmap1_clone)
+                .hasSameEntriesAs(mmap1_clone);
     }
 
     @Test
