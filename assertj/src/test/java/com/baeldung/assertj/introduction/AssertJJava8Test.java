@@ -42,7 +42,8 @@ public class AssertJJava8Test {
         final LocalDate todayDate = LocalDate.now();
 
         assertThat(givenLocalDate)
-                .isBefore(LocalDate.of(2020, 7, 8));
+                .isBefore(LocalDate.of(2020, 7, 8))
+                .isAfterOrEqualTo(LocalDate.of(1989, 7, 8));
 
         assertThat(todayDate)
                 .isAfter(LocalDate.of(1989, 7, 8))
