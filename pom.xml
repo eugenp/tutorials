@@ -14,7 +14,7 @@
 
     <modules>
         <module>assertj</module>
-
+        <module>apache-cxf</module>
         <module>core-java</module>
         <module>core-java-8</module>
         <module>gson</module>
@@ -36,6 +36,7 @@
         <!-- <module>raml</module> -->
         <module>rest-testing</module>
         <module>resteasy</module>
+		<module>log4j</module>
 
         <module>spring-all</module>
         <module>spring-apache-camel</module>
@@ -78,6 +79,7 @@
         <module>xml</module>
 
         <module>lombok</module>
+        <module>redis</module>
 		
 		<module>mutation-testing</module>
     </modules>
