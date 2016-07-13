@@ -80,6 +80,8 @@
 
         <module>lombok</module>
         <module>redis</module>
+		
+		<module>mutation-testing</module>
     </modules>
 
 </project>
