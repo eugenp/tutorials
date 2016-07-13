@@ -5,6 +5,6 @@ import org.springframework.web.context.annotation.RequestScope;
 
 @Component
 @RequestScope
-public class RequestScopedService extends InstanceCountingService {
+public class LoginAction extends InstanceCountingService {
 
 }

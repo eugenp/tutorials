@@ -1,37 +1,36 @@
 package com.baeldung.spring43.scopeannotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/appointments")
-public class TestController {
+public class ScopeTestController {
 
     @Autowired
-    private RequestScopedService requestScopedService;
+    private LoginAction loginAction;
 
     @Autowired
-    private SessionScopedService sessionScopedService;
+    private UserPreferences userPreferences;
 
     @Autowired
-    private ApplicationScopedService applicationScopedService;
+    private AppPreferences appPreferences;
 
     @GetMapping("/request")
     public String getRequestNumber() {
-        return Integer.toString(requestScopedService.getInstanceNumber());
+        return Integer.toString(loginAction.getInstanceNumber());
     }
 
     @GetMapping("/session")
     public String getSessionNumber() {
-        return Integer.toString(sessionScopedService.getInstanceNumber());
+        return Integer.toString(userPreferences.getInstanceNumber());
     }
 
     @GetMapping("/application")
     public String getApplicationNumber() {
-        return Integer.toString(applicationScopedService.getInstanceNumber());
+        return Integer.toString(appPreferences.getInstanceNumber());
     }
 
 }

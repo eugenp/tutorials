@@ -5,6 +5,6 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @Component
 @SessionScope
-public class SessionScopedService extends InstanceCountingService {
+public class UserPreferences extends InstanceCountingService {
 
 }
