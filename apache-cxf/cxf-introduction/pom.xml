@@ -10,9 +10,28 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<properties>
-		<skipTests>true</skipTests>
 		<cxf.version>3.1.6</cxf.version>
 	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.baeldung.cxf.introduction.Server</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<excludes>
+						<exclude>**/StudentTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -25,29 +44,4 @@
 			<version>${cxf.version}</version>
 		</dependency>
 	</dependencies>
-	<profiles>
-		<profile>
-			<id>server</id>
-			<build>
-				<defaultGoal>test</defaultGoal>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>test</phase>
-								<goals>
-									<goal>java</goal>
-								</goals>
-								<configuration>
-									<mainClass>com.baeldung.cxf.introduction.Server</mainClass>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

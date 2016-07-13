@@ -21,7 +21,7 @@ public class StudentTest {
 
     private Service service;
     private Baeldung baeldungProxy;
-    private Baeldung baeldungImpl;
+    private BaeldungImpl baeldungImpl;
 
     {
         service = Service.create(SERVICE_NAME);
