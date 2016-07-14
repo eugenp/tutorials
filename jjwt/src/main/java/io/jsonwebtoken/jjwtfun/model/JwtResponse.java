@@ -10,7 +10,7 @@ public class JwtResponse {
     private Status status;
     private String exceptionType;
     private String jwt;
-    private Jws<Claims> claims;
+    private Jws<Claims> jws;
 
     public enum Status {
         SUCCESS, ERROR
@@ -23,8 +23,8 @@ public class JwtResponse {
         this.status = Status.SUCCESS;
     }
 
-    public JwtResponse(Jws<Claims> claims) {
-        this.claims = claims;
+    public JwtResponse(Jws<Claims> jws) {
+        this.jws = jws;
         this.status = Status.SUCCESS;
     }
 
@@ -60,11 +60,11 @@ public class JwtResponse {
         this.jwt = jwt;
     }
 
-    public Jws<Claims> getClaims() {
-        return claims;
+    public Jws<Claims> getJws() {
+        return jws;
     }
 
-    public void setClaims(Jws<Claims> claims) {
-        this.claims = claims;
+    public void setJws(Jws<Claims> jws) {
+        this.jws = jws;
     }
 }

@@ -1,6 +1,7 @@
 package io.jsonwebtoken.jjwtfun.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import io.jsonwebtoken.jjwtfun.service.SecretService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,12 +10,12 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 @Configuration
 public class CSRFConfig {
 
-    @Value("#{ @environment['jjwtfun.secret'] ?: 'secret' }")
-    String secret;
+    @Autowired
+    SecretService secretService;
 
     @Bean
     @ConditionalOnMissingBean
     public CsrfTokenRepository jwtCsrfTokenRepository() {
-        return new JWTCsrfTokenRepository(secret);
+        return new JWTCsrfTokenRepository(secretService.getHS256Secret());
     }
 }

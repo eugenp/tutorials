@@ -2,6 +2,8 @@ package io.jsonwebtoken.jjwtfun.config;
 
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.impl.TextCodec;
+import io.jsonwebtoken.jjwtfun.service.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -22,11 +24,11 @@ import java.io.IOException;
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("#{ @environment['jjwtfun.secret'] ?: 'secret' }")
-    String secret;
-
     @Autowired
     CsrfTokenRepository jwtCsrfTokenRepository;
+
+    @Autowired
+    SecretService secretService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/dynamic-builder-general")
                 .ignoringAntMatchers("/dynamic-builder-specific")
                 .ignoringAntMatchers("/dynamic-builder-compress")
+                .ignoringAntMatchers("/set-secrets")
             .and().authorizeRequests()
                 .antMatchers("/**")
                 .permitAll();
@@ -55,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             if ("POST".equals(request.getMethod()) && token != null) {
                 try {
                     Jwts.parser()
-                        .setSigningKey(secret.getBytes("UTF-8"))
+                        .setSigningKeyResolver(secretService.getSigningKeyResolver())
                         .parseClaimsJws(token.getToken());
                 } catch (JwtException e) {
                     // most likely an ExpiredJwtException, but this will handle any

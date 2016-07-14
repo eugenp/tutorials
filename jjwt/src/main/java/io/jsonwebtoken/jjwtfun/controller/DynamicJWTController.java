@@ -1,17 +1,15 @@
 package io.jsonwebtoken.jjwtfun.controller;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.compression.CompressionCodecs;
 import io.jsonwebtoken.jjwtfun.model.JwtResponse;
-import org.springframework.beans.factory.annotation.Value;
+import io.jsonwebtoken.jjwtfun.service.SecretService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
@@ -20,12 +18,12 @@ import java.util.Date;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class DynamicJWTController extends BaseController {
-    @Value("#{ @environment['jjwtfun.secret'] ?: 'secret' }")
-    String secret;
+
+    @Autowired
+    SecretService secretService;
 
     @RequestMapping(value = "/dynamic-builder-general", method = POST)
     public JwtResponse dynamicBuilderGeneric(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
@@ -33,7 +31,7 @@ public class DynamicJWTController extends BaseController {
             .setClaims(claims)
             .signWith(
                 SignatureAlgorithm.HS256,
-                secret.getBytes("UTF-8")
+                secretService.getHS256Secret()
             )
             .compact();
         return new JwtResponse(jws);
@@ -46,7 +44,7 @@ public class DynamicJWTController extends BaseController {
             .compressWith(CompressionCodecs.DEFLATE)
             .signWith(
                 SignatureAlgorithm.HS256,
-                secret.getBytes("UTF-8")
+                secretService.getHS256Secret()
             )
             .compact();
         return new JwtResponse(jws);
@@ -91,7 +89,7 @@ public class DynamicJWTController extends BaseController {
             }
         });
 
-        builder.signWith(SignatureAlgorithm.HS256, secret.getBytes("UTF-8"));
+        builder.signWith(SignatureAlgorithm.HS256, secretService.getHS256Secret());
 
         return new JwtResponse(builder.compact());
     }

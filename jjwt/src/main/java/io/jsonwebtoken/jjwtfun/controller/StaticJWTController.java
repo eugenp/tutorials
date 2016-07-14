@@ -4,8 +4,10 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.jjwtfun.model.JwtResponse;
-import org.springframework.beans.factory.annotation.Value;
+import io.jsonwebtoken.jjwtfun.service.SecretService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,12 +21,11 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 public class StaticJWTController extends BaseController {
 
-    @Value("#{ @environment['jjwtfun.secret'] ?: 'secret' }")
-    String secret;
+    @Autowired
+    SecretService secretService;
 
     @RequestMapping(value = "/static-builder", method = GET)
     public JwtResponse fixedBuilder() throws UnsupportedEncodingException {
-
         String jws = Jwts.builder()
             .setIssuer("Stormpath")
             .setSubject("msilverman")
@@ -34,7 +35,7 @@ public class StaticJWTController extends BaseController {
             .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L))) // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
             .signWith(
                 SignatureAlgorithm.HS256,
-                "secret".getBytes("UTF-8")
+                TextCodec.BASE64.decode(secretService.getHS256Secret())
             )
             .compact();
 
@@ -43,8 +44,9 @@ public class StaticJWTController extends BaseController {
 
     @RequestMapping(value = "/parser", method = GET)
     public JwtResponse parser(@RequestParam String jwt) throws UnsupportedEncodingException {
+
         Jws<Claims> claims = Jwts.parser()
-            .setSigningKey(secret.getBytes("UTF-8"))
+            .setSigningKeyResolver(secretService.getSigningKeyResolver())
             .parseClaimsJws(jwt);
 
         return new JwtResponse(claims);
@@ -55,7 +57,7 @@ public class StaticJWTController extends BaseController {
         Jws<Claims> claims = Jwts.parser()
             .requireIssuer("Stormpath")
             .require("hasMotorcycle", true)
-            .setSigningKey(secret.getBytes("UTF-8"))
+            .setSigningKeyResolver(secretService.getSigningKeyResolver())
             .parseClaimsJws(jwt);
 
         return new JwtResponse(claims);
