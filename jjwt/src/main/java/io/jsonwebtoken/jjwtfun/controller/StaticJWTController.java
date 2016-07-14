@@ -44,21 +44,21 @@ public class StaticJWTController extends BaseController {
     @RequestMapping(value = "/parser", method = GET)
     public JwtResponse parser(@RequestParam String jwt) throws UnsupportedEncodingException {
 
-        Jws<Claims> claims = Jwts.parser()
+        Jws<Claims> jws = Jwts.parser()
             .setSigningKeyResolver(secretService.getSigningKeyResolver())
             .parseClaimsJws(jwt);
 
-        return new JwtResponse(claims);
+        return new JwtResponse(jws);
     }
 
     @RequestMapping(value = "/parser-enforce", method = GET)
     public JwtResponse parserEnforce(@RequestParam String jwt) throws UnsupportedEncodingException {
-        Jws<Claims> claims = Jwts.parser()
+        Jws<Claims> jws = Jwts.parser()
             .requireIssuer("Stormpath")
             .require("hasMotorcycle", true)
             .setSigningKeyResolver(secretService.getSigningKeyResolver())
             .parseClaimsJws(jwt);
 
-        return new JwtResponse(claims);
+        return new JwtResponse(jws);
     }
 }
