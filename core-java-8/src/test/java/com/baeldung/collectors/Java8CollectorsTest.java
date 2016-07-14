@@ -25,7 +25,7 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.*;
 import static java.util.stream.Collectors.partitioningBy;
 import static java.util.stream.Collectors.summarizingDouble;
 import static java.util.stream.Collectors.summingDouble;
@@ -38,10 +38,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class Java8CollectorsTest {
 
+    private final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
+
     @Test
     public void whenCollectingToList_shouldCollectToList() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final List<String> result = givenList.stream()
           .collect(toList());
 
@@ -51,8 +51,6 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenCollectingToList_shouldCollectToSet() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Set<String> result = givenList.stream()
           .collect(toSet());
 
@@ -62,8 +60,6 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenCollectingToCollection_shouldCollectToCollection() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final List<String> result = givenList.stream()
           .collect(toCollection(LinkedList::new));
 
@@ -74,8 +70,6 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenCollectingToImmutableCollection_shouldThrowException() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         assertThatThrownBy(() -> {
             givenList.stream()
               .collect(toCollection(ImmutableList::of));
@@ -85,8 +79,6 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenCollectingToMap_shouldCollectToMap() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Map<String, Integer> result = givenList.stream()
           .collect(toMap(Function.identity(), String::length));
 
@@ -94,13 +86,11 @@ public class Java8CollectorsTest {
           .containsEntry("a", 1)
           .containsEntry("bb", 2)
           .containsEntry("ccc", 3)
-          .containsEntry("dddd", 4);
+          .containsEntry("dd", 2);
     }
 
     @Test
     public void whenCollectingToMap_shouldCollectToMapMerging() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Map<String, Integer> result = givenList.stream()
           .collect(toMap(Function.identity(), String::length, (i1, i2) -> i1));
 
@@ -108,13 +98,11 @@ public class Java8CollectorsTest {
           .containsEntry("a", 1)
           .containsEntry("bb", 2)
           .containsEntry("ccc", 3)
-          .containsEntry("dddd", 4);
+          .containsEntry("dd", 2);
     }
 
     @Test
     public void whenCollectingAndThen_shouldCollect() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final List<String> result = givenList.stream()
           .collect(collectingAndThen(toList(), ImmutableList::copyOf));
 
@@ -125,41 +113,33 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenJoining_shouldJoin() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final String result = givenList.stream()
           .collect(joining());
 
         assertThat(result)
-          .isEqualTo("abbcccdddd");
+          .isEqualTo("abbcccdd");
     }
 
     @Test
     public void whenJoiningWithSeparator_shouldJoinWithSeparator() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final String result = givenList.stream()
           .collect(joining(" "));
 
         assertThat(result)
-          .isEqualTo("a bb ccc dddd");
+          .isEqualTo("a bb ccc dd");
     }
 
     @Test
     public void whenJoiningWithSeparatorAndPrefixAndPostfix_shouldJoinWithSeparatorPrePost() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final String result = givenList.stream()
           .collect(joining(" ", "PRE-", "-POST"));
 
         assertThat(result)
-          .isEqualTo("PRE-a bb ccc dddd-POST");
+          .isEqualTo("PRE-a bb ccc dd-POST");
     }
 
     @Test
     public void whenPartitioningBy_shouldPartition() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Map<Boolean, List<String>> result = givenList.stream()
           .collect(partitioningBy(s -> s.length() > 2));
 
@@ -167,17 +147,15 @@ public class Java8CollectorsTest {
           .containsKeys(true, false)
           .satisfies(booleanListMap -> {
               assertThat(booleanListMap.get(true))
-                .contains("ccc", "dddd");
+                .contains("ccc");
 
               assertThat(booleanListMap.get(false))
-                .contains("a", "bb");
+                .contains("a", "bb", "dd");
           });
     }
 
     @Test
     public void whenCounting_shouldCount() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Long result = givenList.stream()
           .collect(counting());
 
@@ -187,10 +165,8 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenSummarizing_shouldSummarize() throws Exception {
-        final List<Double> givenList = Arrays.asList(1d, 2d, 3d, 2d);
-
         final DoubleSummaryStatistics result = givenList.stream()
-          .collect(summarizingDouble(d -> d));
+          .collect(summarizingDouble(String::length));
 
         assertThat(result.getAverage())
           .isEqualTo(2);
@@ -206,10 +182,8 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenAveraging_shouldAverage() throws Exception {
-        final List<Double> givenList = Arrays.asList(1d, 2d, 3d, 2d);
-
         final Double result = givenList.stream()
-          .collect(averagingDouble(d -> d));
+          .collect(averagingDouble(String::length));
 
         assertThat(result)
           .isEqualTo(2);
@@ -217,10 +191,8 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenSumming_shouldSum() throws Exception {
-        final List<Double> givenList = Arrays.asList(1d, 2d, 3d, 2d);
-
         final Double result = givenList.stream()
-          .collect(summingDouble(d -> d));
+          .collect(summingDouble(String::length));
 
         assertThat(result)
           .isEqualTo(8);
@@ -228,41 +200,34 @@ public class Java8CollectorsTest {
 
     @Test
     public void whenMaxingBy_shouldMaxBy() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final Optional<String> result = givenList.stream()
           .collect(maxBy(Comparator.naturalOrder()));
 
         assertThat(result)
           .isPresent()
-          .hasValue("dddd");
+          .hasValue("dd");
     }
 
     @Test
     public void whenGroupingBy_shouldGroupBy() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "b", "bb", "ccc", "dddd");
-
         final Map<Integer, Set<String>> result = givenList.stream()
           .collect(groupingBy(String::length, toSet()));
 
         assertThat(result)
-          .containsEntry(1, newHashSet("a", "b"))
-          .containsEntry(2, newHashSet("bb"))
-          .containsEntry(3, newHashSet("ccc"))
-          .containsEntry(4, newHashSet("dddd"));
+          .containsEntry(1, newHashSet("a"))
+          .containsEntry(2, newHashSet("bb", "dd"))
+          .containsEntry(3, newHashSet("ccc"));
     }
 
 
     @Test
     public void whenCreatingCustomCollector_shouldCollect() throws Exception {
-        final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dddd");
-
         final ImmutableSet<String> result = givenList.stream()
           .collect(toImmutableSet());
 
         assertThat(result)
           .isInstanceOf(ImmutableSet.class)
-          .contains("a", "bb", "ccc", "dddd");
+          .contains("a", "bb", "ccc", "dd");
 
     }
 
