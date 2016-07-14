@@ -26,5 +26,15 @@ public class Student
 		this.id = id;
 	}
 	
+	@Override
+	public int hashCode(){
+		return this.id;
+	}
+	
+	@Override
+	public boolean equals(Object obj){
+		return this.name.equals(((Student)obj).getName());
+	}
+	
 	
 }
