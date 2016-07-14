@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Properties with Spring](http://www.baeldung.com/2012/02/06/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
+- [What's New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3/)
