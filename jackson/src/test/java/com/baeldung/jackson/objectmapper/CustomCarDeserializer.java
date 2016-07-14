@@ -13,26 +13,22 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class CustomCarDeserializer extends JsonDeserializer<Car>
-{
+public class CustomCarDeserializer extends JsonDeserializer<Car> {
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
-    public CustomCarDeserializer() { }
+    public CustomCarDeserializer() {
+    }
 
     @Override
-    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException, JsonProcessingException
-    {
+    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException, JsonProcessingException {
         final Car car = new Car();
         final ObjectCodec codec = parser.getCodec();
         final JsonNode node = codec.readTree(parser);
-        try
-        {
+        try {
             final JsonNode colorNode = node.get("color");
             final String color = colorNode.asText();
             car.setColor(color);
-        }
-        catch(final Exception e)
-        {
+        } catch (final Exception e) {
             Logger.debug("101_parse_exeption: unknown json.");
         }
         return car;

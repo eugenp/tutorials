@@ -5,7 +5,8 @@ public class Car {
     private String color;
     private String type;
 
-    public Car() { }
+    public Car() {
+    }
 
     public Car(final String color, final String type) {
         this.color = color;

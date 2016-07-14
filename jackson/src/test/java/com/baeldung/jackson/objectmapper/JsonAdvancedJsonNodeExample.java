@@ -11,27 +11,24 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class JsonAdvancedJsonNodeExample extends Example
-{
+public class JsonAdvancedJsonNodeExample extends Example {
 
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
-    public JsonAdvancedJsonNodeExample() { }
+    public JsonAdvancedJsonNodeExample() {
+    }
 
     String jsonString = "{ \"color\" : \"Black\", \"type\" : \"Fiat\", \"year\" : \"1970\" }";
 
     @Override
-    public String name()
-    {
+    public String name() {
         return this.getClass().getName();
     }
 
     @Override
-    public void execute()
-    {
-        Logger.debug("Executing: "+name());
-        try
-        {
+    public void execute() {
+        Logger.debug("Executing: " + name());
+        try {
             final ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             final Car car = objectMapper.readValue(jsonString, Car.class);
@@ -45,10 +42,8 @@ public class JsonAdvancedJsonNodeExample extends Example
             objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
             final StringWriter string = new StringWriter();
             objectMapper.writeValue(string, car);
-            Logger.debug("Car JSON is:"+string);
-        }
-        catch (final Exception e)
-        {
+            Logger.debug("Car JSON is:" + string);
+        } catch (final Exception e) {
             Logger.error(e.toString());
         }
     }

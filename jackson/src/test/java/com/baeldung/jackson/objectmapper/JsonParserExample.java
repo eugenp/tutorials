@@ -12,47 +12,42 @@ public class JsonParserExample extends Example {
 
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
-    public JsonParserExample() { }
+    public JsonParserExample() {
+    }
 
     @Override
-    public String name()
-    {
+    public String name() {
         return this.getClass().getName();
     }
 
     @Override
-    public void execute()
-    {
-        Logger.debug("Executing: "+name());
+    public void execute() {
+        Logger.debug("Executing: " + name());
         final String carJson = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
         final JsonFactory factory = new JsonFactory();
         JsonParser parser;
-        try
-        {
+        try {
             final Car car = new Car();
             parser = factory.createParser(carJson);
-            while(!parser.isClosed())
-            {
+            while (!parser.isClosed()) {
                 JsonToken jsonToken = parser.nextToken();
                 Logger.debug("jsonToken = " + jsonToken);
 
-                if(JsonToken.FIELD_NAME.equals(jsonToken)){
+                if (JsonToken.FIELD_NAME.equals(jsonToken)) {
                     final String fieldName = parser.getCurrentName();
                     System.out.println(fieldName);
 
                     jsonToken = parser.nextToken();
 
-                    if("color".equals(fieldName)){
+                    if ("color".equals(fieldName)) {
                         car.setColor(parser.getValueAsString());
-                    } else if ("type".equals(fieldName)){
+                    } else if ("type".equals(fieldName)) {
                         car.setType(parser.getValueAsString());
                     }
                 }
             }
-            Logger.debug("car:"+car.getColor());
-        }
-        catch (final Exception e)
-        {
+            Logger.debug("car:" + car.getColor());
+        } catch (final Exception e) {
             Logger.error(e.toString());
         }
     }

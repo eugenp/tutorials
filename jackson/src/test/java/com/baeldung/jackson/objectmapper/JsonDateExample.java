@@ -39,9 +39,11 @@ public class JsonDateExample extends Example {
             Logger.error(e.toString());
         }
     }
+
     class Request {
         Car car;
         Date datePurchased;
+
         public Car getCar() {
             return car;
         }
