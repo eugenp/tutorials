@@ -25,7 +25,7 @@ import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.maxBy;
 import static java.util.stream.Collectors.partitioningBy;
 import static java.util.stream.Collectors.summarizingDouble;
 import static java.util.stream.Collectors.summingDouble;
