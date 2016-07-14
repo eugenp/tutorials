@@ -151,11 +151,10 @@
             <artifactId>protobuf-java</artifactId>
             <version>2.6.1</version>
         </dependency>
-
         <dependency>
-            <groupId>com.esotericsoftware.kryo</groupId>
+            <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
-            <version>2.24.0</version>
+            <version>4.0.0</version>
         </dependency>
     </dependencies>
 
