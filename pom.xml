@@ -42,6 +42,7 @@
         <module>spring-apache-camel</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-controller</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-mongodb</module>
