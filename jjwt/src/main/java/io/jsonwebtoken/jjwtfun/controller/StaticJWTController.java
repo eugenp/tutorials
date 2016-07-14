@@ -4,7 +4,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.TextCodec;
 import io.jsonwebtoken.jjwtfun.model.JwtResponse;
 import io.jsonwebtoken.jjwtfun.service.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,7 @@ public class StaticJWTController extends BaseController {
             .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L))) // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
             .signWith(
                 SignatureAlgorithm.HS256,
-                TextCodec.BASE64.decode(secretService.getHS256Secret())
+                secretService.getHS256SecretBytes()
             )
             .compact();
 

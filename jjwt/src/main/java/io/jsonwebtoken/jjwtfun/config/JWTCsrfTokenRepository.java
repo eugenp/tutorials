@@ -2,7 +2,6 @@ package io.jsonwebtoken.jjwtfun.config;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.TextCodec;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -22,8 +21,8 @@ public class JWTCsrfTokenRepository implements CsrfTokenRepository {
     private static final Logger log = LoggerFactory.getLogger(JWTCsrfTokenRepository.class);
     private byte[] secret;
 
-    public JWTCsrfTokenRepository(String base64Secret) {
-        this.secret = TextCodec.BASE64.decode(base64Secret);
+    public JWTCsrfTokenRepository(byte[] secret) {
+        this.secret = secret;
     }
 
     @Override

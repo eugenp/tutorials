@@ -42,23 +42,23 @@ public class SecretService {
 
     public void setSecrets(Map<String, String> secrets) {
         Assert.notNull(secrets);
-        Assert.isTrue(secrets.get(SignatureAlgorithm.HS256.getValue()) != null);
-        Assert.isTrue(secrets.get(SignatureAlgorithm.HS384.getValue()) != null);
-        Assert.isTrue(secrets.get(SignatureAlgorithm.HS512.getValue()) != null);
+        Assert.hasText(secrets.get(SignatureAlgorithm.HS256.getValue()));
+        Assert.hasText(secrets.get(SignatureAlgorithm.HS384.getValue()));
+        Assert.hasText(secrets.get(SignatureAlgorithm.HS512.getValue()));
 
         this.secrets = secrets;
     }
 
-    public String getHS256Secret() {
-        return secrets.get(SignatureAlgorithm.HS256.getValue());
+    public byte[] getHS256SecretBytes() {
+        return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS256.getValue()));
     }
 
-    public String getHS384Secret() {
-        return secrets.get(SignatureAlgorithm.HS384.getValue());
+    public byte[] getHS384SecretBytes() {
+        return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS384.getValue()));
     }
 
-    public String getHS512Secret() {
-        return secrets.get(SignatureAlgorithm.HS512.getValue());
+    public byte[] getHS512SecretBytes() {
+        return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS384.getValue()));
     }
 
 

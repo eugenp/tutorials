@@ -31,7 +31,7 @@ public class DynamicJWTController extends BaseController {
             .setClaims(claims)
             .signWith(
                 SignatureAlgorithm.HS256,
-                secretService.getHS256Secret()
+                secretService.getHS256SecretBytes()
             )
             .compact();
         return new JwtResponse(jws);
@@ -44,7 +44,7 @@ public class DynamicJWTController extends BaseController {
             .compressWith(CompressionCodecs.DEFLATE)
             .signWith(
                 SignatureAlgorithm.HS256,
-                secretService.getHS256Secret()
+                secretService.getHS256SecretBytes()
             )
             .compact();
         return new JwtResponse(jws);
@@ -89,7 +89,7 @@ public class DynamicJWTController extends BaseController {
             }
         });
 
-        builder.signWith(SignatureAlgorithm.HS256, secretService.getHS256Secret());
+        builder.signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes());
 
         return new JwtResponse(builder.compact());
     }
