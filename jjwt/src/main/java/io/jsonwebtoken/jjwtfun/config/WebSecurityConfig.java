@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -28,16 +29,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     SecretService secretService;
 
+    // ordered so we can use binary search below
+    private String[] ignoreCsrfAntMatchers = {
+        "/dynamic-builder-compress",
+        "/dynamic-builder-general",
+        "/dynamic-builder-specific",
+        "/set-secrets"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .addFilterAfter(new JwtCsrfValidatorFilter(), CsrfFilter.class)
             .csrf()
                 .csrfTokenRepository(jwtCsrfTokenRepository)
-                .ignoringAntMatchers("/dynamic-builder-general")
-                .ignoringAntMatchers("/dynamic-builder-specific")
-                .ignoringAntMatchers("/dynamic-builder-compress")
-                .ignoringAntMatchers("/set-secrets")
+                .ignoringAntMatchers(ignoreCsrfAntMatchers)
             .and().authorizeRequests()
                 .antMatchers("/**")
                 .permitAll();
@@ -51,9 +57,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 
-            // CsrfFilter already made sure the token matched.
-            // Here, we'll make sure it's not expired
-            if ("POST".equals(request.getMethod()) && token != null) {
+            if (
+                // only care if it's a POST
+                "POST".equals(request.getMethod()) &&
+                // ignore if the request path is in our list
+                Arrays.binarySearch(ignoreCsrfAntMatchers, request.getServletPath()) < 0 &&
+                // make sure we have a token
+                token != null
+            ) {
+                // CsrfFilter already made sure the token matched. Here, we'll make sure it's not expired
                 try {
                     Jwts.parser()
                         .setSigningKeyResolver(secretService.getSigningKeyResolver())
