@@ -49,6 +49,4 @@ public class SpringBootApplicationTest {
                 andExpect(MockMvcResultMatchers.content().contentType(contentType)).
                 andExpect(jsonPath("$", hasSize(4)));
     }
-
-
 }
