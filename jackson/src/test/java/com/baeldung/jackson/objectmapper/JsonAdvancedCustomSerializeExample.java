@@ -1,5 +1,11 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,8 +20,6 @@ public class JsonAdvancedCustomSerializeExample extends Example
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public JsonAdvancedCustomSerializeExample() { }
-
-    String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
 
     @Override
     public String name()
@@ -49,7 +53,7 @@ public class JsonAdvancedCustomSerializeExample extends Example
             module.addDeserializer(Car.class, new CustomCarDeserializer());
             mapper = new ObjectMapper();
             mapper.registerModule(module);
-            final Car car = mapper.readValue(json, Car.class);
+            final Car car = mapper.readValue(EXAMPLE_JSON, Car.class);
             Logger.debug("car type  = " + car.getType());
             Logger.debug("car color = " + car.getColor());
         }
@@ -57,5 +61,25 @@ public class JsonAdvancedCustomSerializeExample extends Example
         {
             Logger.error(e.toString());
         }
+    }
+
+    @Override
+    @Test
+    public void test() throws Exception {
+        final ObjectMapper mapper = new ObjectMapper();
+        final SimpleModule serializerModule = new SimpleModule("CustomSerializer", new Version(1, 0, 0, null, null, null));
+        serializerModule.addSerializer(Car.class, new CustomCarSerializer());
+        mapper.registerModule(serializerModule);
+        final Car car = new Car("yellow", "renault");
+        final String carJson = mapper.writeValueAsString(car);
+        assertThat(carJson, containsString("renault"));
+        assertThat(carJson, containsString("model"));
+
+        final SimpleModule deserializerModule = new SimpleModule("CustomCarDeserializer", new Version(1, 0, 0, null, null, null));
+        deserializerModule.addDeserializer(Car.class, new CustomCarDeserializer());
+        mapper.registerModule(deserializerModule);
+        final Car carResult = mapper.readValue(EXAMPLE_JSON, Car.class);
+        assertNotNull(carResult);
+        assertThat(carResult.getColor(), equalTo("Black"));
     }
 }

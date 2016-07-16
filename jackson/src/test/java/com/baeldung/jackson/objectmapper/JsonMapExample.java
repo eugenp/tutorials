@@ -1,7 +1,10 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.util.Map;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,10 +27,10 @@ public class JsonMapExample extends Example {
     public void execute()
     {
         final ObjectMapper objectMapper = new ObjectMapper();
-        final String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
         try
         {
-            final Map<String, Object> map = objectMapper.readValue(json, new TypeReference<Map<String,Object>>(){});
+            final Map<String, Object> map = objectMapper.readValue(EXAMPLE_JSON, new TypeReference<Map<String, Object>>() {
+            });
             for(final String key : map.keySet())
             {
                 Logger.debug("key = " + key + " | value = " + map.get(key));
@@ -36,6 +39,18 @@ public class JsonMapExample extends Example {
         catch (final Exception e)
         {
             Logger.error(e.toString());
+        }
+    }
+
+    @Override
+    @Test
+    public void test() throws Exception {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final Map<String, Object> map = objectMapper.readValue(EXAMPLE_JSON, new TypeReference<Map<String, Object>>() {
+        });
+        assertNotNull(map);
+        for (final String key : map.keySet()) {
+            assertNotNull(key);
         }
     }
 }

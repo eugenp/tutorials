@@ -16,7 +16,7 @@ public class CustomCarSerializer extends JsonSerializer<Car>
     public void serialize(final Car car, final JsonGenerator jsonGenerator, final SerializerProvider serializer) throws IOException, JsonProcessingException
     {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("car_brand", car.getType());
+        jsonGenerator.writeStringField("model: ", car.getType());
         jsonGenerator.writeEndObject();
     }
 }

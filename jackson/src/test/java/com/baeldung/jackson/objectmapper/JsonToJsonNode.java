@@ -1,5 +1,10 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,8 +16,6 @@ public class JsonToJsonNode extends Example
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public JsonToJsonNode() { }
-
-    String jsonString = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
 
     @Override
     public String name()
@@ -27,12 +30,21 @@ public class JsonToJsonNode extends Example
         try
         {
             final ObjectMapper objectMapper = new ObjectMapper();
-            final JsonNode jsonNode = objectMapper.readTree(jsonString);
+            final JsonNode jsonNode = objectMapper.readTree(EXAMPLE_JSON);
             Logger.debug(jsonNode.get("color").asText());
         }
         catch (final Exception e)
         {
             Logger.error(e.toString());
         }
+    }
+
+    @Override
+    @Test
+    public void test() throws Exception {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final JsonNode jsonNode = objectMapper.readTree(EXAMPLE_JSON);
+        assertNotNull(jsonNode);
+        assertThat(jsonNode.get("color").asText(), containsString("Black"));
     }
 }

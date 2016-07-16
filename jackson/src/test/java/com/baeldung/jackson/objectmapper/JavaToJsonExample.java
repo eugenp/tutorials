@@ -1,5 +1,9 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,8 +30,6 @@ public class JavaToJsonExample extends Example
         {
             final ObjectMapper objectMapper = new ObjectMapper();
             final Car car = new Car("yellow", "renault");
-            final Request request = new Request();
-            request.setCar(car);
             final String carAsString = objectMapper.writeValueAsString(car);
             Logger.debug(carAsString);
         }
@@ -37,18 +39,13 @@ public class JavaToJsonExample extends Example
         }
     }
 
-    class Request
-    {
-        Car car;
-
-        public Car getCar()
-        {
-            return car;
-        }
-
-        public void setCar(final Car car)
-        {
-            this.car = car;
-        }
+    @Override
+    @Test
+    public void test() throws Exception {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final Car car = new Car("yellow", "renault");
+        final String carAsString = objectMapper.writeValueAsString(car);
+        assertThat(carAsString, containsString("yellow"));
+        assertThat(carAsString, containsString("renault"));
     }
 }

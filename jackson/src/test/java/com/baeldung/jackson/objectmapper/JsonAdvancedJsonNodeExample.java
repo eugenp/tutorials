@@ -1,7 +1,13 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
 import java.io.StringWriter;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +24,7 @@ public class JsonAdvancedJsonNodeExample extends Example
 
     public JsonAdvancedJsonNodeExample() { }
 
-    String jsonString = "{ \"color\" : \"Black\", \"type\" : \"Fiat\", \"year\" : \"1970\" }";
+    String LOCAL_JSON = "{ \"color\" : \"Black\", \"type\" : \"Fiat\", \"year\" : \"1970\" }";
 
     @Override
     public String name()
@@ -34,8 +40,8 @@ public class JsonAdvancedJsonNodeExample extends Example
         {
             final ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            final Car car = objectMapper.readValue(jsonString, Car.class);
-            final JsonNode jsonNodeRoot = objectMapper.readTree(jsonString);
+            final Car car = objectMapper.readValue(LOCAL_JSON, Car.class);
+            final JsonNode jsonNodeRoot = objectMapper.readTree(LOCAL_JSON);
             final JsonNode jsonNodeYear = jsonNodeRoot.get("year");
             final String year = jsonNodeYear.asText();
             Logger.debug("Year = " + year);
@@ -53,4 +59,19 @@ public class JsonAdvancedJsonNodeExample extends Example
         }
     }
 
+    @Override
+    @Test
+    public void test() throws Exception {
+
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        final Car car = objectMapper.readValue(LOCAL_JSON, Car.class);
+        final JsonNode jsonNodeRoot = objectMapper.readTree(LOCAL_JSON);
+        final JsonNode jsonNodeYear = jsonNodeRoot.get("year");
+        final String year = jsonNodeYear.asText();
+
+        assertNotNull(car);
+        assertThat(car.getColor(), equalTo("Black"));
+        assertThat(year, containsString("1970"));
+    }
 }

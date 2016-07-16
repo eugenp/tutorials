@@ -1,10 +1,14 @@
 package com.baeldung.jackson.objectmapper;
 
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonToJavaExample extends Example
@@ -12,8 +16,6 @@ public class JsonToJavaExample extends Example
     protected final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public JsonToJavaExample() { }
-
-    String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
 
     @Override
     public String name()
@@ -28,7 +30,7 @@ public class JsonToJavaExample extends Example
         try
         {
             final ObjectMapper objectMapper = new ObjectMapper();
-            final Car car = objectMapper.readValue(json, Car.class);
+            final Car car = objectMapper.readValue(EXAMPLE_JSON, Car.class);
             Logger.debug("Color = " + car.getColor());
             Logger.debug("Type = " + car.getType());
         }
@@ -36,34 +38,14 @@ public class JsonToJavaExample extends Example
         {
             Logger.error(e.toString());
         }
-
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
-
-            final String jsonCar = "\"car\" : { \"color\" : \"Red\", \"type\" : \"FIAT\" }";
-            final Response response = objectMapper.readValue(jsonCar, Response.class);
-
-            Logger.debug("response: "+response);
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
     }
 
-    class Response {
-
-        Car car;
-
-        public Car getCar() {
-            return car;
-        }
-
-        public void setCars(final Car car) {
-            this.car = car;
-        }
-
+    @Override
+    @Test
+    public void test() throws Exception {
+        final ObjectMapper objectMapper = new ObjectMapper();
+        final Car car = objectMapper.readValue(EXAMPLE_JSON, Car.class);
+        assertNotNull(car);
+        assertThat(car.getColor(), containsString("Black"));
     }
 }
