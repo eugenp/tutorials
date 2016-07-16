@@ -8,17 +8,17 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
-import com.baeldung.jackson.dtos.MyDtoWithFilter;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreNull;
-import com.baeldung.jackson.dtos.MyDto;
-import com.baeldung.jackson.dtos.MyMixInForString;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreField;
-import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreFieldByName;
-import com.baeldung.jackson.serialization.MyDtoNullKeySerializer;
-import org.junit.Ignore;
 import org.junit.Test;
 
+import com.baeldung.jackson.dtos.MyDto;
+import com.baeldung.jackson.dtos.MyDtoIncludeNonDefault;
+import com.baeldung.jackson.dtos.MyDtoWithFilter;
+import com.baeldung.jackson.dtos.MyDtoWithSpecialField;
+import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
+import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreField;
+import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreFieldByName;
+import com.baeldung.jackson.dtos.ignore.MyDtoIgnoreNull;
+import com.baeldung.jackson.serialization.MyDtoNullKeySerializer;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -85,12 +85,12 @@ public class JacksonSerializationIgnoreUnitTest {
         System.out.println(dtoAsString);
     }
 
-    @Ignore("Jackson 2.7.1-1 seems to have changed the API for this case")
+    // @Ignore("Jackson 2.7.1-1 seems to have changed the API for this case")
     @Test
     public final void givenFieldTypeIsIgnored_whenDtoIsSerialized_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixIn(String.class, MyMixInForString.class);
-        final MyDto dtoObject = new MyDto();
+        mapper.addMixIn(String[].class, MyMixInForIgnoreType.class);
+        final MyDtoWithSpecialField dtoObject = new MyDtoWithSpecialField();
         dtoObject.setBooleanValue(true);
 
         final String dtoAsString = mapper.writeValueAsString(dtoObject);
