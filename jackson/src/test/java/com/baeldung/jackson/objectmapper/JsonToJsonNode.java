@@ -24,24 +24,8 @@ public class JsonToJsonNode extends Example
     }
 
     @Override
-    public void execute()
-    {
-        Logger.debug("Executing: "+name());
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            final JsonNode jsonNode = objectMapper.readTree(EXAMPLE_JSON);
-            Logger.debug(jsonNode.get("color").asText());
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-    }
-
-    @Override
     @Test
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final JsonNode jsonNode = objectMapper.readTree(EXAMPLE_JSON);
         assertNotNull(jsonNode);

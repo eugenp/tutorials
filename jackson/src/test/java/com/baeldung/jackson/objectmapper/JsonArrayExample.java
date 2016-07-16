@@ -27,46 +27,6 @@ public class JsonArrayExample extends Example {
         return this.getClass().getName();
     }
 
-    @Override
-    public void execute()
-    {
-        Logger.debug("Executing: "+name());
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
-
-            final String jsonCarArray = "[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
-            final Car[] cars = objectMapper.readValue(jsonCarArray, Car[].class);
-            for(final Car car : cars)
-            {
-                Logger.debug("Color = " + car.getColor());
-                Logger.debug("Type = " + car.getType());
-            }
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
-
-            final String jsonCarArray = "[{ \"color\" : \"Black\", \"type\" : \"BMW\" }, { \"color\" : \"Red\", \"type\" : \"FIAT\" }]";
-            final List<Car> listCar = objectMapper.readValue(jsonCarArray, new TypeReference<List<Car>>(){});
-            for(final Car car : listCar)
-            {
-                Logger.debug("Color = " + car.getColor());
-                Logger.debug("Type = " + car.getType());
-            }
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-    }
-
     class Response {
 
         public Response(final List<Car> cars) {
@@ -89,7 +49,7 @@ public class JsonArrayExample extends Example {
 
     @Override
     @Test
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
         final Car[] cars = objectMapper.readValue(LOCAL_JSON, Car[].class);

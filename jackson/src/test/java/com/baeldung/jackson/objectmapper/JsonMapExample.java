@@ -24,27 +24,8 @@ public class JsonMapExample extends Example {
     }
 
     @Override
-    public void execute()
-    {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        try
-        {
-            final Map<String, Object> map = objectMapper.readValue(EXAMPLE_JSON, new TypeReference<Map<String, Object>>() {
-            });
-            for(final String key : map.keySet())
-            {
-                Logger.debug("key = " + key + " | value = " + map.get(key));
-            }
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-    }
-
-    @Override
     @Test
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final Map<String, Object> map = objectMapper.readValue(EXAMPLE_JSON, new TypeReference<Map<String, Object>>() {
         });

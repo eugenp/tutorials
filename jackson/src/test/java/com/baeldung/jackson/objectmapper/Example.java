@@ -8,8 +8,6 @@ public abstract class Example {
 
     public abstract String name();
 
-    public abstract void execute();
-
     @Test
-    public abstract void test() throws Exception;
+    public abstract void testExample() throws Exception;
 }

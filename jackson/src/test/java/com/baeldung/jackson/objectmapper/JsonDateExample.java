@@ -26,23 +26,6 @@ public class JsonDateExample extends Example {
         return this.getClass().getName();
     }
 
-    @Override
-    public void execute() {
-        Logger.debug("Executing: " + name());
-        try {
-            final Car car = new Car("yellow", "renault");
-            final Request request = new Request();
-            request.setCar(car);
-            request.setDatePurchased(new Date());
-            final ObjectMapper objectMapper = new ObjectMapper();
-            final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
-            objectMapper.setDateFormat(df);
-            final String carAsString = objectMapper.writeValueAsString(request);
-            Logger.debug(carAsString);
-        } catch (final Exception e) {
-            Logger.error(e.toString());
-        }
-    }
     class Request {
         Car car;
         Date datePurchased;
@@ -64,7 +47,7 @@ public class JsonDateExample extends Example {
     }
 
     @Override
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final Car car = new Car("yellow", "renault");
         final Request request = new Request();

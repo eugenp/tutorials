@@ -3,7 +3,6 @@ package com.baeldung.jackson.objectmapper;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,24 +23,7 @@ public class JavaToJsonExample extends Example
     }
 
     @Override
-    public void execute()
-    {
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            final Car car = new Car("yellow", "renault");
-            final String carAsString = objectMapper.writeValueAsString(car);
-            Logger.debug(carAsString);
-        }
-        catch(final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-    }
-
-    @Override
-    @Test
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final Car car = new Car("yellow", "renault");
         final String carAsString = objectMapper.writeValueAsString(car);

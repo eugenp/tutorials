@@ -24,25 +24,8 @@ public class JsonToJavaExample extends Example
     }
 
     @Override
-    public void execute()
-    {
-        Logger.debug("Executing: "+name());
-        try
-        {
-            final ObjectMapper objectMapper = new ObjectMapper();
-            final Car car = objectMapper.readValue(EXAMPLE_JSON, Car.class);
-            Logger.debug("Color = " + car.getColor());
-            Logger.debug("Type = " + car.getType());
-        }
-        catch (final Exception e)
-        {
-            Logger.error(e.toString());
-        }
-    }
-
-    @Override
     @Test
-    public void test() throws Exception {
+    public void testExample() throws Exception {
         final ObjectMapper objectMapper = new ObjectMapper();
         final Car car = objectMapper.readValue(EXAMPLE_JSON, Car.class);
         assertNotNull(car);
