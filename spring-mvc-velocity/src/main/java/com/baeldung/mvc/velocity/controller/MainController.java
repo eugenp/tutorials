@@ -17,8 +17,8 @@ public class MainController {
    @Autowired
    private TutorialsService tutService;
  
-   @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-   public String welcomePage(Model model) {
+   @RequestMapping(value = { "/" }, method = RequestMethod.GET)
+   public String listTutorialsPage(Model model) {
        List<Tutorial> list = tutService.listTutorials();
        model.addAttribute("tutorials", list);
        return "index";

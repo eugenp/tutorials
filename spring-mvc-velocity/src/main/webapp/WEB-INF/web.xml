@@ -4,8 +4,10 @@
       http://java.sun.com/xml/ns/javaee
       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
 
+	<display-name>Spring MVC Velocity</display-name>
+
 	<servlet>
-	    <servlet-name>servlet</servlet-name>
+	    <servlet-name>mvc</servlet-name>
 	    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	    <init-param>
 	        <param-name>contextConfigLocation</param-name>
@@ -15,7 +17,7 @@
 	</servlet>
 	
 	<servlet-mapping>
-	    <servlet-name>servlet</servlet-name>
+	    <servlet-name>mvc</servlet-name>
 	    <url-pattern>/*</url-pattern>
 	</servlet-mapping>
  
