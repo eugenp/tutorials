@@ -22,5 +22,15 @@ public class ExpectationsTest {
         };
         mock.methodForAny("barfooxyz", 0, Boolean.FALSE, new ArrayList<>());
     }
+
+    @Test
+    public void testForWith(@Mocked ExpectationsCollaborator mock) throws Exception {
+        new Expectations() {
+            {
+                mock.methodForWith(withSubstring("foo"), withNotEqual(1), withNotNull(), withInstanceOf(List.class));
+            }
+        };
+        mock.methodForWith("barfooxyz", 2, Boolean.TRUE, new ArrayList<>());
+    }
     }
 }
