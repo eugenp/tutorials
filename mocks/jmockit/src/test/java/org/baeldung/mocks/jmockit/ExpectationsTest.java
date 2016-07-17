@@ -3,6 +3,8 @@ package org.baeldung.mocks.jmockit;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -67,5 +69,24 @@ public class ExpectationsTest {
         mock.methodForTimes2();
         mock.methodForTimes3();
     }
+
+    @Test
+    public void testCustomArgumentMatching(@Mocked ExpectationsCollaborator mock) {
+        new Expectations() {
+            {
+                mock.methodForArgThat(withArgThat(new BaseMatcher<Object>() {
+                    @Override
+                    public boolean matches(Object item) {
+                        return item instanceof Model && "info".equals(((Model) item).getInfo());
+                    }
+
+                    @Override
+                    public void describeTo(Description description) {
+                        // NOOP
+                    }
+                }));
+            }
+        };
+        mock.methodForArgThat(new Model());
     }
 }
