@@ -1,5 +1,7 @@
 package org.baeldung.mocks.jmockit;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import mockit.Expectations;
 import mockit.Mocked;
+import mockit.StrictExpectations;
 import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
@@ -88,5 +91,40 @@ public class ExpectationsTest {
             }
         };
         mock.methodForArgThat(new Model());
+    }
+
+    @Test
+    public void testResultAndReturns(@Mocked ExpectationsCollaborator mock) {
+        new StrictExpectations() {
+            {
+                // return "foo", an exception and lastly "bar"
+                mock.methodReturnsString();
+                result = "foo";
+                result = new Exception();
+                result = "bar";
+                // return 1, 2, 3
+                mock.methodReturnsInt();
+                result = new int[] { 1, 2, 3 };
+                // return "foo" and "bar"
+                mock.methodReturnsString();
+                returns("foo", "bar");
+                // return only 1
+                mock.methodReturnsInt();
+                result = 1;
+            }
+        };
+        assertEquals("Should return foo", "foo", mock.methodReturnsString());
+        try {
+            mock.methodReturnsString();
+        } catch (Exception e) {
+            // NOOP
+        }
+        assertEquals("Should return bar", "bar", mock.methodReturnsString());
+        assertEquals("Should return 1", 1, mock.methodReturnsInt());
+        assertEquals("Should return 2", 2, mock.methodReturnsInt());
+        assertEquals("Should return 3", 3, mock.methodReturnsInt());
+        assertEquals("Should return foo", "foo", mock.methodReturnsString());
+        assertEquals("Should return bar", "bar", mock.methodReturnsString());
+        assertEquals("Should return 1", 1, mock.methodReturnsInt());
     }
 }

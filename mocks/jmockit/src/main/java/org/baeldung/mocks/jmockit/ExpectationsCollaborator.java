@@ -10,4 +10,6 @@ public interface ExpectationsCollaborator {
     void methodForTimes2();
     void methodForTimes3();
     void methodForArgThat(Object o);
+    String methodReturnsString();
+    int methodReturnsInt();
 }
