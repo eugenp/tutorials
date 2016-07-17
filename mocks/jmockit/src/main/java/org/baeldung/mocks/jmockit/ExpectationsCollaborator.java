@@ -12,4 +12,5 @@ public interface ExpectationsCollaborator {
     void methodForArgThat(Object o);
     String methodReturnsString();
     int methodReturnsInt();
+    Object methodForDelegate(int i);
 }

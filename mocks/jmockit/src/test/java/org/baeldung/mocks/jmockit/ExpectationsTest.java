@@ -10,6 +10,7 @@ import org.hamcrest.Description;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
 import mockit.StrictExpectations;
@@ -126,5 +127,31 @@ public class ExpectationsTest {
         assertEquals("Should return foo", "foo", mock.methodReturnsString());
         assertEquals("Should return bar", "bar", mock.methodReturnsString());
         assertEquals("Should return 1", 1, mock.methodReturnsInt());
+    }
+
+    @Test
+    public void testDelegate(@Mocked ExpectationsCollaborator mock) {
+        new StrictExpectations() {
+            {
+                // return "foo", an exception and lastly "bar"
+                mock.methodForDelegate(anyInt);
+                times = 2;
+                result = new Delegate() {
+                    public int delegate(int i) throws Exception {
+                        if (i < 3) {
+                            return 5;
+                        } else {
+                            throw new Exception();
+                        }
+                    }
+                };
+            }
+        };
+        assertEquals("Should return 5", 5, mock.methodForDelegate(1));
+        try {
+            mock.methodForDelegate(3);
+        } catch (Exception e) {
+            // NOOP
+        }
     }
 }
