@@ -1,0 +1,22 @@
+<employees>
+	<employee category="skilled">
+		<first-name>Jane</first-name>
+		<last-name>Daisy</last-name>
+		<sex>f</sex>
+	</employee>
+	<employee category="unskilled">
+		<first-name>John</first-name>
+		<last-name>Doe</last-name>
+		<sex>m</sex>
+	</employee>
+	<employee category="skilled">
+		<first-name>Billy</first-name>
+		<last-name>Getty</last-name>
+		<sex>m</sex>
+	</employee>
+	<employee category="skilled">
+		<first-name>Hill</first-name>
+		<last-name>Clinton</last-name>
+		<sex>f</sex>
+	</employee>
+</employees>
