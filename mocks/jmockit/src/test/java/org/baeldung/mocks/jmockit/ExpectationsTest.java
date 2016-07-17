@@ -44,5 +44,28 @@ public class ExpectationsTest {
         };
         mock.methodForNulls("blablabla", new ArrayList<String>(), null);
     }
+
+    @Test
+    public void testWithTimes(@Mocked ExpectationsCollaborator mock) {
+        // more config
+        new Expectations() {
+            {
+                // exactly 2 invocations to foo() are expected
+                mock.methodForTimes1();
+                times = 2;
+                // we expect from 1 to 3 invocations to bar()
+                mock.methodForTimes2();
+                minTimes = 1;
+                maxTimes = 3;
+                mock.methodForTimes3(); // "minTimes = 1" is implied
+            }
+        };
+        mock.methodForTimes1();
+        mock.methodForTimes1();
+        mock.methodForTimes2();
+        mock.methodForTimes2();
+        mock.methodForTimes2();
+        mock.methodForTimes3();
+    }
     }
 }
