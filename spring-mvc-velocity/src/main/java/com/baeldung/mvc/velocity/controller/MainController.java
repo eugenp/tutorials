@@ -23,4 +23,14 @@ public class MainController {
        model.addAttribute("tutorials", list);
        return "index";
    }
+
+public TutorialsService getTutService() {
+	return tutService;
+}
+
+public void setTutService(TutorialsService tutService) {
+	this.tutService = tutService;
+}
+   
+   
 }
