@@ -1,5 +1,6 @@
 package org.baeldung.mocks.jmockit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -31,6 +32,17 @@ public class ExpectationsTest {
             }
         };
         mock.methodForWith("barfooxyz", 2, Boolean.TRUE, new ArrayList<>());
+    }
+
+    @Test
+    public void testWithNulls(@Mocked ExpectationsCollaborator mock) {
+        // more config
+        new Expectations() {
+            {
+                mock.methodForNulls(anyString, null, (List<Integer>) withNull());
+            }
+        };
+        mock.methodForNulls("blablabla", new ArrayList<String>(), null);
     }
     }
 }
