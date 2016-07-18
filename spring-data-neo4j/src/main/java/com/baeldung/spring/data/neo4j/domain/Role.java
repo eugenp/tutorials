@@ -13,11 +13,15 @@ import java.util.Collection;
 @JsonIdentityInfo(generator=JSOGGenerator.class)
 @RelationshipEntity(type = "ACTED_IN")
 public class Role {
+
     @GraphId
     Long id;
+
     private Collection<String> roles;
+
     @StartNode
     private Person person;
+
     @EndNode
     private Movie movie;
 

@@ -10,18 +10,20 @@ import java.util.Collection;
 import java.util.List;
 
 @JsonIdentityInfo(generator=JSOGGenerator.class)
-
 @NodeEntity
 public class Movie {
+
     @GraphId
     Long id;
 
     private String title;
 
     private int released;
+
     private String tagline;
 
-    @Relationship(type="ACTED_IN", direction = Relationship.INCOMING) private List<Role> roles;
+    @Relationship(type="ACTED_IN", direction = Relationship.INCOMING)
+    private List<Role> roles;
 
     public Movie() { }
 
