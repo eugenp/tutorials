@@ -14,13 +14,13 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
 public class CustomCarDeserializer extends JsonDeserializer<Car> {
-    protected final Logger Logger = LoggerFactory.getLogger(getClass());
+    private final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public CustomCarDeserializer() {
     }
 
     @Override
-    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException, JsonProcessingException {
+    public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException {
         final Car car = new Car();
         final ObjectCodec codec = parser.getCodec();
         final JsonNode node = codec.readTree(parser);
