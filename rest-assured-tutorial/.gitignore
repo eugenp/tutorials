@@ -11,3 +11,6 @@
 *.jar
 *.war
 *.ear
+
+.externalToolBuilders
+.settings
