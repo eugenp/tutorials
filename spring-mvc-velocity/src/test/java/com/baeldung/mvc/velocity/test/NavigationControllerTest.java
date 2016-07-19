@@ -26,7 +26,7 @@ import com.baeldung.mvc.velocity.service.TutorialsService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/mvc-servlet.xml"})
+@ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
 public class NavigationControllerTest {
 
 	private MainController mainController = new MainController(Mockito.mock(TutorialsService.class));
