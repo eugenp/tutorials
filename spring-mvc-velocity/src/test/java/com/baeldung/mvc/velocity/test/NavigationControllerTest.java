@@ -1,32 +1,59 @@
 package com.baeldung.mvc.velocity.test;
 
 
-import com.baeldung.mvc.velocity.controller.MainController;
-import com.baeldung.mvc.velocity.domain.Tutorial;
-import com.baeldung.mvc.velocity.service.TutorialsService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.ui.ExtendedModelMap;
-import org.springframework.ui.Model;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.ui.ExtendedModelMap;
+import org.springframework.ui.Model;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver;
+
+import com.baeldung.mvc.velocity.config.TestContext;
+import com.baeldung.mvc.velocity.controller.MainController;
+import com.baeldung.mvc.velocity.domain.Tutorial;
+import com.baeldung.mvc.velocity.service.ITutorialsService;
+import com.baeldung.mvc.velocity.service.TutorialsService;
 
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration(locations={"classpath:mvc-servlet.xml"})
 public class NavigationControllerTest {
 
-	private final MainController mainController = new MainController(Mockito.mock(TutorialsService.class));
+	private MainController mainController = new MainController(Mockito.mock(TutorialsService.class));
 	
 	private final Model model = new ExtendedModelMap();
+
 	
 	@Test
-	public final void shouldGoToTutorialListView() {
+	public void shouldGoToTutorialListView() {
 		Mockito.when(mainController.getTutService().listTutorials())
           .thenReturn(createTutorialList());
 
@@ -35,6 +62,24 @@ public class NavigationControllerTest {
 		
 		assertEquals("index", view);
 		assertNotNull(tutorialListAttribute);
+	}
+	
+	@Test
+	public void testContent() throws Exception{
+
+        List<Tutorial> tutorials = Arrays.asList(
+		          new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"),
+		          new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor")
+		        );
+        Mockito.when(mainController.getTutService().listTutorials()).thenReturn(tutorials);
+
+        String view = mainController.listTutorialsPage(model);
+
+        verify(mainController.getTutService(), times(1)).listTutorials();
+        verifyNoMoreInteractions(mainController.getTutService());
+        
+        assertEquals("index", view);
+        assertEquals(tutorials, model.asMap().get("tutorials"));   
 	}
 
 

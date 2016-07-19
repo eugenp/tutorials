@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class TutorialsService {
+public class TutorialsService implements ITutorialsService {
 
     public List<Tutorial> listTutorials() {
         return Arrays.asList(
