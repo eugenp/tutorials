@@ -3,15 +3,12 @@ package com.baeldung.cxf.spring;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class StudentTest {
-    private ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "client-beans.xml" });
-    private Baeldung baeldungProxy;
-
-    {
-        baeldungProxy = (Baeldung) context.getBean("client");
-    }
+    private ApplicationContext context = new AnnotationConfigApplicationContext(ClientConfiguration.class);
+    private Baeldung baeldungProxy = (Baeldung) context.getBean("client");
 
     @Test
     public void whenUsingHelloMethod_thenCorrect() {
