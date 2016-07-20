@@ -146,6 +146,7 @@ public class ExpectationsTest {
                 result = 1;
             }
         };
+        
         assertEquals("Should return foo", "foo", mock.methodReturnsString());
         try {
             mock.methodReturnsString();
