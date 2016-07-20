@@ -80,25 +80,30 @@ public class ExpectationsTest {
 
     @Test
     public void testWithTimes(@Mocked ExpectationsCollaborator mock) {
-        // more config
         new Expectations() {
             {
-                // exactly 2 invocations to foo() are expected
+                // exactly 2 invocations are expected
                 mock.methodForTimes1();
                 times = 2;
-                // we expect from 1 to 3 invocations to bar()
-                mock.methodForTimes2();
-                minTimes = 1;
-                maxTimes = 3;
-                mock.methodForTimes3(); // "minTimes = 1" is implied
+                mock.methodForTimes2(); // "minTimes = 1" is implied
             }
         };
+        
         mock.methodForTimes1();
         mock.methodForTimes1();
-        mock.methodForTimes2();
-        mock.methodForTimes2();
         mock.methodForTimes2();
         mock.methodForTimes3();
+        mock.methodForTimes3();
+        mock.methodForTimes3();
+        
+        new Verifications() {
+            {
+                // we expect from 1 to 3 invocations
+                mock.methodForTimes3();
+                minTimes = 1;
+                maxTimes = 3;
+            }
+        };
     }
 
     @Test
