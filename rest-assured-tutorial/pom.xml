@@ -5,7 +5,6 @@
 	<artifactId>rest-assured-tutorial</artifactId>
 	<version>1.0</version>
 	<name>rest-assured</name>
-<<<<<<< HEAD
    <build>
     <plugins>
       <plugin>
@@ -214,108 +213,38 @@
     <artifactId>wiremock</artifactId>
     <version>2.1.7</version>
 </dependency>
-=======
-
-    <properties>
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-
-        <mockito.version>1.10.19</mockito.version>
-        <junit.version>4.12</junit.version>
-        <wiremock.version>2.1.7</wiremock.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
-        <json-schema-core.version>1.2.5</json-schema-core.version>
-        <json-schema-validator.version>2.2.6</json-schema-validator.version>
-        <rest-assured.version>3.0.0</rest-assured.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
-    </properties>
-
-	<dependencies>
-        <!-- logging -->
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-		<!-- utils -->
->>>>>>> upstream/master
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
-			<version>${rest-assured.version}</version>
+			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>
-			<version>${rest-assured.version}</version>
+			<version>3.0.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.fge</groupId>
 			<artifactId>json-schema-validator</artifactId>
-			<version>${json-schema-validator.version}</version>
+			<version>2.2.6</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.fge</groupId>
 			<artifactId>json-schema-core</artifactId>
-			<version>${json-schema-core.version}</version>
+			<version>1.2.5</version>
 		</dependency>
-<<<<<<< HEAD
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.3</version>
 			<scope>test</scope>
 		</dependency>
-=======
-
-
-		<!-- test scoped -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
-            <version>${wiremock.version}</version>
-            <scope>test</scope>
-        </dependency>
->>>>>>> upstream/master
 
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-all</artifactId>
-			<version>${hamcrest-all.version}</version>
-            <scope>test</scope>
+			<version>1.3</version>
 		</dependency>
 <!-- https://mvnrepository.com/artifact/commons-collections/commons-collections -->
 <dependency>
@@ -323,13 +252,6 @@
     <artifactId>commons-collections</artifactId>
     <version>3.2.2</version>
 </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
 
 	</dependencies>
 </project>
