@@ -44,10 +44,19 @@ public class ExpectationsTest {
     public void testForWith(@Mocked ExpectationsCollaborator mock) throws Exception {
         new Expectations() {
             {
-                mock.methodForWith(withSubstring("foo"), withNotEqual(1), withNotNull(), withInstanceOf(List.class));
+                mock.methodForWith1(withSubstring("foo"), withNotEqual(1));
+                result = "with";
             }
         };
-        mock.methodForWith("barfooxyz", 2, Boolean.TRUE, new ArrayList<>());
+        
+        assertEquals("with", mock.methodForWith1("barfooxyz", 2));
+        mock.methodForWith2(Boolean.TRUE, new ArrayList<>());
+        
+        new Verifications() {
+            {
+                mock.methodForWith2(withNotNull(), withInstanceOf(List.class));
+            }
+        };
     }
 
     @Test
