@@ -14,6 +14,7 @@ import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
 import mockit.StrictExpectations;
+import mockit.Verifications;
 import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
@@ -24,10 +25,19 @@ public class ExpectationsTest {
     public void testForAny(@Mocked ExpectationsCollaborator mock) throws Exception {
         new Expectations() {
             {
-                mock.methodForAny(anyString, anyInt, anyBoolean, (List<String>) any);
+                mock.methodForAny1(anyString, anyInt, anyBoolean);
+                result = "any";
             }
         };
-        mock.methodForAny("barfooxyz", 0, Boolean.FALSE, new ArrayList<>());
+
+        assertEquals("any", mock.methodForAny1("barfooxyz", 0, Boolean.FALSE));
+        mock.methodForAny2(2L, new ArrayList<>());
+
+        new Verifications() {
+            {
+                mock.methodForAny2(anyLong, (List<String>) any);
+            }
+        };
     }
 
     @Test
