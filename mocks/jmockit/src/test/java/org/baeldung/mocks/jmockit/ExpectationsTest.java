@@ -61,13 +61,21 @@ public class ExpectationsTest {
 
     @Test
     public void testWithNulls(@Mocked ExpectationsCollaborator mock) {
-        // more config
         new Expectations() {
             {
-                mock.methodForNulls(anyString, null, (List<Integer>) withNull());
+                mock.methodForNulls1(anyString, null);
+                result = "null";
             }
         };
-        mock.methodForNulls("blablabla", new ArrayList<String>(), null);
+        
+        assertEquals("null", mock.methodForNulls1("blablabla", new ArrayList<String>()));
+        mock.methodForNulls2("blablabla", null);
+        
+        new Verifications() {
+            {
+                mock.methodForNulls2(anyString, (List<String>) withNull());
+            }
+        };
     }
 
     @Test

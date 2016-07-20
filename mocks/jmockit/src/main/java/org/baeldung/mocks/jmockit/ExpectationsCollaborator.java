@@ -7,7 +7,8 @@ public interface ExpectationsCollaborator {
     void methodForAny2(Long l,  List<String> lst);
     String methodForWith1(String s, int i);
     void methodForWith2(Boolean b, List<String> l);
-    void methodForNulls(String s, List<String> l, List<Integer> m);
+    String methodForNulls1(String s, List<String> l);
+    void methodForNulls2(String s, List<String> l);
     void methodForTimes1();
     void methodForTimes2();
     void methodForTimes3();
