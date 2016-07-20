@@ -99,7 +99,7 @@ public class RestAssuredTest {
 	}
 
 	private static String getEventJson() {
-		return Util.inputStreamToString(new RestAssuredTest().getClass()
+		return Util.inputStreamToString(RestAssuredTest.class
 				.getResourceAsStream("/event_0.json"));
 	}
 
