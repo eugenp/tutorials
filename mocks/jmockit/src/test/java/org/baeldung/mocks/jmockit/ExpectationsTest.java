@@ -82,10 +82,8 @@ public class ExpectationsTest {
     public void testWithTimes(@Mocked ExpectationsCollaborator mock) {
         new Expectations() {
             {
-                // exactly 2 invocations are expected
-                mock.methodForTimes1();
-                times = 2;
-                mock.methodForTimes2(); // "minTimes = 1" is implied
+                mock.methodForTimes1(); times = 2;
+                mock.methodForTimes2();
             }
         };
         
@@ -98,10 +96,7 @@ public class ExpectationsTest {
         
         new Verifications() {
             {
-                // we expect from 1 to 3 invocations
-                mock.methodForTimes3();
-                minTimes = 1;
-                maxTimes = 3;
+                mock.methodForTimes3(); minTimes = 1; maxTimes = 3;
             }
         };
     }
@@ -117,9 +112,7 @@ public class ExpectationsTest {
                     }
 
                     @Override
-                    public void describeTo(Description description) {
-                        // NOOP
-                    }
+                    public void describeTo(Description description) { }
                 }));
             }
         };
@@ -130,18 +123,14 @@ public class ExpectationsTest {
     public void testResultAndReturns(@Mocked ExpectationsCollaborator mock) {
         new StrictExpectations() {
             {
-                // return "foo", an exception and lastly "bar"
                 mock.methodReturnsString();
                 result = "foo";
                 result = new Exception();
                 result = "bar";
-                // return 1, 2, 3
                 mock.methodReturnsInt();
                 result = new int[] { 1, 2, 3 };
-                // return "foo" and "bar"
                 mock.methodReturnsString();
                 returns("foo", "bar");
-                // return only 1
                 mock.methodReturnsInt();
                 result = 1;
             }
@@ -164,11 +153,9 @@ public class ExpectationsTest {
 
     @Test
     public void testDelegate(@Mocked ExpectationsCollaborator mock) {
-        new StrictExpectations() {
+        new Expectations() {
             {
-                // return "foo", an exception and lastly "bar"
                 mock.methodForDelegate(anyInt);
-                times = 2;
                 result = new Delegate() {
                     public int delegate(int i) throws Exception {
                         if (i < 3) {
@@ -180,11 +167,10 @@ public class ExpectationsTest {
                 };
             }
         };
+        
         assertEquals("Should return 5", 5, mock.methodForDelegate(1));
         try {
             mock.methodForDelegate(3);
-        } catch (Exception e) {
-            // NOOP
-        }
+        } catch (Exception e) { }
     }
 }
