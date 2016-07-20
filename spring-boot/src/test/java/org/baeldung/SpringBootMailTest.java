@@ -37,7 +37,7 @@ public class SpringBootMailTest {
 
     @Before
     public void setUp() throws Exception {
-        final int TEST_PORT = 25;
+        final int TEST_PORT = 8025;
         wiser = new Wiser(TEST_PORT);
         wiser.start();
     }
