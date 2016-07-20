@@ -1,17 +1,8 @@
 package com.baeldung.mvc.velocity.test;
 
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
-import java.util.Arrays;
-
+import com.baeldung.mvc.velocity.domain.Tutorial;
+import com.baeldung.mvc.velocity.service.ITutorialsService;
+import com.baeldung.mvc.velocity.service.TutorialsService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,9 +15,19 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.mvc.velocity.domain.Tutorial;
-import com.baeldung.mvc.velocity.service.ITutorialsService;
-import com.baeldung.mvc.velocity.service.TutorialsService;
+import java.util.Arrays;
+
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
@@ -52,8 +53,7 @@ public class DataContentControllerTest {
 	
 	@Test
 	public void testModel() throws Exception{
-		
- 
+
         Mockito.when(tutServiceMock.listTutorials()).thenReturn(Arrays.asList(
 		          new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"),
 		          new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor")
@@ -62,6 +62,11 @@ public class DataContentControllerTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
+                .andExpect(content().string(containsString("GuavaAuthor")))
+                .andExpect(content().string(containsString("Introduction to Guava")))
+                .andExpect(content().string(containsString("AndroidAuthor")))
+                .andExpect(content().string(containsString("Introduction to Android")))
+                .andExpect(model().attribute("tutorials", hasSize(2)))
                 .andExpect(model().attribute("tutorials", hasSize(2)))
                 .andExpect(model().attribute("tutorials", hasItem(
                         allOf(

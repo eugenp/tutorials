@@ -1,15 +1,9 @@
 package com.baeldung.mvc.velocity.test;
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-
-import java.util.Arrays;
-import java.util.List;
-
+import com.baeldung.mvc.velocity.controller.MainController;
+import com.baeldung.mvc.velocity.domain.Tutorial;
+import com.baeldung.mvc.velocity.service.TutorialsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,10 +13,14 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
-import com.baeldung.mvc.velocity.controller.MainController;
-import com.baeldung.mvc.velocity.domain.Tutorial;
-import com.baeldung.mvc.velocity.service.TutorialsService;
+import java.util.Arrays;
+import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -61,7 +59,7 @@ public class NavigationControllerTest {
         verifyNoMoreInteractions(mainController.getTutService());
         
         assertEquals("index", view);
-        assertEquals(tutorials, model.asMap().get("tutorials"));   
+        assertEquals(tutorials, model.asMap().get("tutorials"));
 	}
 
 	private static List<Tutorial> createTutorialList() {
