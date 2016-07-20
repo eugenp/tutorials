@@ -11,15 +11,15 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
-import com.baeldung.jackson.date.EventWithLocalDateTime;
-import com.baeldung.jackson.date.Event;
-import com.baeldung.jackson.date.EventWithFormat;
-import com.baeldung.jackson.date.EventWithJodaTime;
-import com.baeldung.jackson.date.EventWithSerializer;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
+import com.baeldung.jackson.date.Event;
+import com.baeldung.jackson.date.EventWithFormat;
+import com.baeldung.jackson.date.EventWithJodaTime;
+import com.baeldung.jackson.date.EventWithLocalDateTime;
+import com.baeldung.jackson.date.EventWithSerializer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -128,7 +128,7 @@ public class JacksonDateTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setDateFormat(df);
 
-        final Event event = mapper.reader(Event.class).readValue(json);
+        final Event event = mapper.readerFor(Event.class).readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
@@ -139,7 +139,7 @@ public class JacksonDateTest {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         final ObjectMapper mapper = new ObjectMapper();
 
-        final EventWithSerializer event = mapper.reader(EventWithSerializer.class).readValue(json);
+        final EventWithSerializer event = mapper.readerFor(EventWithSerializer.class).readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 

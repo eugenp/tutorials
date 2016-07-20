@@ -1,13 +1,12 @@
 package org.baeldung.hamcrest;
 
+import org.junit.Test;
+
+import java.util.*;
+
 import static org.baeldung.hamcrest.IsPositiveInteger.isAPositiveInteger;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.lessThan;
-import static org.hamcrest.Matchers.lessThanOrEqualTo;
-import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.beans.HasProperty.hasProperty;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.hamcrest.beans.SamePropertyValuesAs.samePropertyValuesAs;
@@ -19,37 +18,29 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
 import static org.hamcrest.collection.IsIn.isIn;
 import static org.hamcrest.collection.IsIn.isOneOf;
-import static org.hamcrest.collection.IsMapContaining.hasKey;
-import static org.hamcrest.collection.IsMapContaining.hasEntry;
-import static org.hamcrest.collection.IsMapContaining.hasValue;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
-import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
-import static org.hamcrest.text.IsEmptyString.isEmptyOrNullString;
-import static org.hamcrest.text.IsEmptyString.isEmptyString;
-import static org.hamcrest.text.IsEqualIgnoringWhiteSpace.equalToIgnoringWhiteSpace;
-import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder;
-import static org.hamcrest.object.HasToString.hasToString;
-import static org.hamcrest.object.IsCompatibleType.typeCompatibleWith;
+import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.hamcrest.collection.IsMapContaining.hasKey;
+import static org.hamcrest.collection.IsMapContaining.hasValue;
 import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.Every.everyItem;
-import static org.hamcrest.core.Is.is;//class
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.hamcrest.core.IsNot.not;//matcher
-import static org.hamcrest.core.IsNull.notNullValue;//without arg
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsSame.sameInstance;
 import static org.hamcrest.core.StringContains.containsString;
 import static org.hamcrest.core.StringEndsWith.endsWith;
 import static org.hamcrest.core.StringStartsWith.startsWith;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Test;
+import static org.hamcrest.object.HasToString.hasToString;
+import static org.hamcrest.object.IsCompatibleType.typeCompatibleWith;
+import static org.hamcrest.text.IsEmptyString.isEmptyOrNullString;
+import static org.hamcrest.text.IsEmptyString.isEmptyString;
+import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
+import static org.hamcrest.text.IsEqualIgnoringWhiteSpace.equalToIgnoringWhiteSpace;
+import static org.hamcrest.text.StringContainsInOrder.stringContainsInOrder;
 
 public class HamcrestMatcherTest {
 	@Test
@@ -150,7 +141,7 @@ public class HamcrestMatcherTest {
 	public void givenValueAndArray_whenValueFoundInArray_thenCorrect() {
 		String[] array = new String[] { "collections", "beans", "text",
 				"number" };
-		assertThat("bean", isIn(array));
+		assertThat("beans", isIn(array));
 
 	}
 
@@ -299,7 +290,7 @@ public class HamcrestMatcherTest {
 	public void givenString_whenMeetsAllOfGivenConditions_thenCorrect() {
 		String str = "calligraphy";
 		String start = "call";
-		String end = "foo";
+		String end = "phy";
 		assertThat(str, allOf(startsWith(start), endsWith(end)));
 	}
 

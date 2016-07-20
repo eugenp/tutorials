@@ -1,6 +1,5 @@
 package com.baeldung.jooq.introduction;
 
-import javax.sql.DataSource;
 import org.h2.jdbcx.JdbcDataSource;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DataSourceConnectionProvider;
@@ -17,11 +16,14 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import javax.sql.DataSource;
+
 @Configuration
 @ComponentScan({ "com.baeldung.jooq.introduction.db.public_.tables" })
 @EnableTransactionManagement
 @PropertySource("classpath:intro_config.properties")
 public class PersistenceContext {
+
     @Autowired
     private Environment environment;
 

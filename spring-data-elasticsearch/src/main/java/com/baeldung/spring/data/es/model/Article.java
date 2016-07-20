@@ -1,14 +1,17 @@
 package com.baeldung.spring.data.es.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.*;
+import static org.springframework.data.elasticsearch.annotations.FieldIndex.not_analyzed;
+import static org.springframework.data.elasticsearch.annotations.FieldType.Nested;
+import static org.springframework.data.elasticsearch.annotations.FieldType.String;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.springframework.data.elasticsearch.annotations.FieldIndex.not_analyzed;
-import static org.springframework.data.elasticsearch.annotations.FieldType.Nested;
-import static org.springframework.data.elasticsearch.annotations.FieldType.String;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.InnerField;
+import org.springframework.data.elasticsearch.annotations.MultiField;
 
 @Document(indexName = "blog", type = "article")
 public class Article {
@@ -16,12 +19,7 @@ public class Article {
     @Id
     private String id;
 
-    @MultiField(
-        mainField = @Field(type = String),
-        otherFields = {
-            @NestedField(index = not_analyzed, dotSuffix = "verbatim", type = String)
-        }
-    )
+    @MultiField(mainField = @Field(type = String), otherFields = { @InnerField(index = not_analyzed, suffix = "verbatim", type = String) })
     private String title;
 
     @Field(type = Nested)
@@ -71,11 +69,6 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", authors=" + authors +
-                ", tags=" + Arrays.toString(tags) +
-                '}';
+        return "Article{" + "id='" + id + '\'' + ", title='" + title + '\'' + ", authors=" + authors + ", tags=" + Arrays.toString(tags) + '}';
     }
 }
