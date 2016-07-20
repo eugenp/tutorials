@@ -14,6 +14,7 @@ import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
 import mockit.StrictExpectations;
+import mockit.Verifications;
 import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
@@ -24,54 +25,85 @@ public class ExpectationsTest {
     public void testForAny(@Mocked ExpectationsCollaborator mock) throws Exception {
         new Expectations() {
             {
-                mock.methodForAny(anyString, anyInt, anyBoolean, (List<String>) any);
+                mock.methodForAny1(anyString, anyInt, anyBoolean);
+                result = "any";
             }
         };
-        mock.methodForAny("barfooxyz", 0, Boolean.FALSE, new ArrayList<>());
+
+        assertEquals("any", mock.methodForAny1("barfooxyz", 0, Boolean.FALSE));
+        mock.methodForAny2(2L, new ArrayList<>());
+
+        new Verifications() {
+            {
+                mock.methodForAny2(anyLong, (List<String>) any);
+            }
+        };
     }
 
     @Test
     public void testForWith(@Mocked ExpectationsCollaborator mock) throws Exception {
         new Expectations() {
             {
-                mock.methodForWith(withSubstring("foo"), withNotEqual(1), withNotNull(), withInstanceOf(List.class));
+                mock.methodForWith1(withSubstring("foo"), withNotEqual(1));
+                result = "with";
             }
         };
-        mock.methodForWith("barfooxyz", 2, Boolean.TRUE, new ArrayList<>());
+        
+        assertEquals("with", mock.methodForWith1("barfooxyz", 2));
+        mock.methodForWith2(Boolean.TRUE, new ArrayList<>());
+        
+        new Verifications() {
+            {
+                mock.methodForWith2(withNotNull(), withInstanceOf(List.class));
+            }
+        };
     }
 
     @Test
     public void testWithNulls(@Mocked ExpectationsCollaborator mock) {
-        // more config
         new Expectations() {
             {
-                mock.methodForNulls(anyString, null, (List<Integer>) withNull());
+                mock.methodForNulls1(anyString, null);
+                result = "null";
             }
         };
-        mock.methodForNulls("blablabla", new ArrayList<String>(), null);
+        
+        assertEquals("null", mock.methodForNulls1("blablabla", new ArrayList<String>()));
+        mock.methodForNulls2("blablabla", null);
+        
+        new Verifications() {
+            {
+                mock.methodForNulls2(anyString, (List<String>) withNull());
+            }
+        };
     }
 
     @Test
     public void testWithTimes(@Mocked ExpectationsCollaborator mock) {
-        // more config
         new Expectations() {
             {
-                // exactly 2 invocations to foo() are expected
+                // exactly 2 invocations are expected
                 mock.methodForTimes1();
                 times = 2;
-                // we expect from 1 to 3 invocations to bar()
-                mock.methodForTimes2();
-                minTimes = 1;
-                maxTimes = 3;
-                mock.methodForTimes3(); // "minTimes = 1" is implied
+                mock.methodForTimes2(); // "minTimes = 1" is implied
             }
         };
+        
         mock.methodForTimes1();
         mock.methodForTimes1();
-        mock.methodForTimes2();
-        mock.methodForTimes2();
         mock.methodForTimes2();
         mock.methodForTimes3();
+        mock.methodForTimes3();
+        mock.methodForTimes3();
+        
+        new Verifications() {
+            {
+                // we expect from 1 to 3 invocations
+                mock.methodForTimes3();
+                minTimes = 1;
+                maxTimes = 3;
+            }
+        };
     }
 
     @Test
@@ -114,6 +146,7 @@ public class ExpectationsTest {
                 result = 1;
             }
         };
+        
         assertEquals("Should return foo", "foo", mock.methodReturnsString());
         try {
             mock.methodReturnsString();
