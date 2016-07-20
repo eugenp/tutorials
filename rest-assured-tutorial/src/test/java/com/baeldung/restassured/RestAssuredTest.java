@@ -55,7 +55,7 @@ public class RestAssuredTest {
 	@Test
 	public void givenUrl_whenJsonResponseHasArrayWithGivenValuesUnderKey_thenCorrect() {
 		get("/events?id=390").then().assertThat()
-				.body("odds.price", hasItems(1.30f, 5.25f, 2.70f, 1.20f));
+				.body("odds.price", hasItems("1.30", "5.25", "2.70", "1.20"));
 	}
 
 	@Test
