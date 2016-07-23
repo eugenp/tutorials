@@ -1,6 +1,6 @@
 package com.baeldung.test;
 
-import com.baeldung.service.SuperService;
+import com.baeldung.cdi.service.SuperService;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
 import org.junit.Assert;

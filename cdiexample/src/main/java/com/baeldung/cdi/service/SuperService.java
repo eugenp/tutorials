@@ -1,6 +1,6 @@
-package com.baeldung.service;
+package com.baeldung.cdi.service;
 
-import com.baeldung.interceptor.Audited;
+import com.baeldung.cdi.interceptor.Audited;
 
 public class SuperService {
     @Audited

@@ -1,4 +1,4 @@
-package com.baeldung.interceptor;
+package com.baeldung.cdi.interceptor;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
