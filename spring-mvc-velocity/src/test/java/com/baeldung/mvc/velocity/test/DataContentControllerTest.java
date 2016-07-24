@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 import java.util.Arrays;
 
@@ -26,10 +27,12 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.baeldung.mvc.velocity.domain.Tutorial;
 import com.baeldung.mvc.velocity.service.ITutorialsService;
-import com.baeldung.mvc.velocity.service.TutorialsService;
+import com.baeldung.mvc.velocity.spring.config.WebConfig;
+import com.baeldung.mvc.velocity.test.config.TestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
+//@ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
+@ContextConfiguration(classes = {TestConfig.class, WebConfig.class})
 @WebAppConfiguration
 public class DataContentControllerTest {
 	
@@ -44,10 +47,9 @@ public class DataContentControllerTest {
     
     @Before
     public void setUp() {
-    	tutServiceMock = Mockito.mock(TutorialsService.class);
         Mockito.reset(tutServiceMock);
 
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).dispatchOptions(true).build();
     }
 	
 	@Test
@@ -77,5 +79,7 @@ public class DataContentControllerTest {
                                 hasProperty("title", is("Android"))
                         )
                 )));
+        
+        mockMvc.perform(get("/")).andExpect(xpath("//table").exists());
 	}
 }

@@ -10,10 +10,10 @@
 </tr>
 #foreach($tut in $tutorials)
   <tr>
-   <td>$tut.tutId</td>
-   <td>$tut.title</td>
-   <td>$tut.description</td>
-   <td>$tut.author</td>
+   <td id="tutId_$foreach.count">$tut.tutId</td>
+   <td id="title_$foreach.count">$tut.title</td>
+   <td id="desc_$foreach.count">$tut.description</td>
+   <td id="auth_$foreach.count">$tut.author</td>
   </tr>
 #end
 </table>

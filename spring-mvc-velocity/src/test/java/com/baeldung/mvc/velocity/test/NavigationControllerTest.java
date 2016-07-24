@@ -22,11 +22,13 @@ import org.springframework.ui.Model;
 import com.baeldung.mvc.velocity.controller.MainController;
 import com.baeldung.mvc.velocity.domain.Tutorial;
 import com.baeldung.mvc.velocity.service.TutorialsService;
+import com.baeldung.mvc.velocity.test.config.TestConfig;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
+//@ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
+@ContextConfiguration(classes = {TestConfig.class})
 public class NavigationControllerTest {
 
 	private MainController mainController = new MainController(Mockito.mock(TutorialsService.class));
