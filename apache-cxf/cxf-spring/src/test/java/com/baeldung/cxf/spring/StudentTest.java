@@ -22,7 +22,7 @@ public class StudentTest {
         Student student2 = new Student("Eve");
         String student1Response = baeldungProxy.register(student1);
         String student2Response = baeldungProxy.register(student2);
-        
+
         assertEquals("Adam is registered student number 1", student1Response);
         assertEquals("Eve is registered student number 2", student2Response);
     }

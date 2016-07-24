@@ -18,7 +18,7 @@ public class ServiceConfiguration {
     @Bean
     public Endpoint endpoint() {
         EndpointImpl endpoint = new EndpointImpl(springBus(), new BaeldungImpl());
-        endpoint.publish("http://localhost:8080/services/baeldung");
+        endpoint.publish("http://localhost:8081/services/baeldung");
         return endpoint;
     }
 }

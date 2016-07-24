@@ -15,7 +15,7 @@ public class ClientConfiguration {
     public JaxWsProxyFactoryBean proxyFactoryBean() {
         JaxWsProxyFactoryBean proxyFactory = new JaxWsProxyFactoryBean();
         proxyFactory.setServiceClass(Baeldung.class);
-        proxyFactory.setAddress("http://localhost:8080/services/baeldung");
+        proxyFactory.setAddress("http://localhost:8081/services/baeldung");
         return proxyFactory;
     }
 }
