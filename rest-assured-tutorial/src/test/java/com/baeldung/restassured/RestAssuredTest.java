@@ -45,7 +45,7 @@ public class RestAssuredTest {
 	}
 
 	@Test
-	public void givenUrl_whenSuccessOnGetsResponse_andJsonHasRequiredKV_thenCorrect() {
+	public void givenUrl_whenSuccessOnGetsResponseAndJsonHasRequiredKV_thenCorrect() {
 
 		get("/events?id=390").then().statusCode(200).assertThat()
 				.body("id", equalTo("390"));
