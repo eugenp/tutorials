@@ -1,4 +1,4 @@
-package com.baledung.student;
+package com.baeldung.student;
 
 public class Student {
 	private String name;

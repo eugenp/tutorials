@@ -1,6 +1,6 @@
-package com.baledung.controller;
+package com.baeldung.controller;
 
-import com.baledung.student.Student;
+import com.baeldung.student.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
