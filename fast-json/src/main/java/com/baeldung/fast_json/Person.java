@@ -30,6 +30,12 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
+    @Override
+    public String toString() {
+        return "Person [age=" + age + ", lastName=" + lastName + ", firstName="
+                + firstName + ", dateOfBirth=" + dateOfBirth + "]";
+    }
+    
     public int getAge() {
         return age;
     }
@@ -60,11 +66,5 @@ public class Person {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    @Override
-    public String toString() {
-        return "Person [age=" + age + ", lastName=" + lastName + ", firstName="
-                + firstName + ", dateOfBirth=" + dateOfBirth + "]";
     }
 }
