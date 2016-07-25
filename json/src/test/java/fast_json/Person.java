@@ -1,8 +1,8 @@
-package com.baeldung.fast_json;
-
-import java.util.Date;
+package fast_json;
 
 import com.alibaba.fastjson.annotation.JSONField;
+
+import java.util.Date;
 
 public class Person {
 
