@@ -1,6 +1,7 @@
 package com.baeldung.hystrix;
 
 import com.netflix.hystrix.*;
+import com.netflix.hystrix.collapser.RequestCollapserFactory;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
 import org.junit.After;
 import org.junit.Before;
@@ -23,8 +24,13 @@ public class HystrixTimeoutTest {
     @Before
     public void setup() {
         config = HystrixCommand
-                .Setter
-                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
+          .Setter
+          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
+    }
+
+    @Test
+    public void givenInputBob_andDefaultSettings_thenReturnHelloBob(){
+        assertThat(new CommandHelloWorld("Bob").execute(), equalTo("Hello Bob!"));
     }
 
     @Test
@@ -36,7 +42,6 @@ public class HystrixTimeoutTest {
     public void givenTimeoutEqualTo10000_andDefaultSettings_thenExpectHystrixRuntimeException() throws InterruptedException {
         exception.expect(HystrixRuntimeException.class);
         new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(10_000)).execute();
-
     }
 
     @Test
@@ -53,6 +58,5 @@ public class HystrixTimeoutTest {
         config.andCommandPropertiesDefaults(commandProperties);
         new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(15_000)).execute();
     }
-
 
 }
