@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+</head>
+<body>
+	<h1>
+		<span th:text="#{welcome.message}" />
+	</h1>
+	<p>
+		Current time is <span th:text="${serverTime}" />
+	</p>
+	<table>
+		<tr>
+			<td><a th:href="@{/addStudent}" th:text="#{msg.AddStudent}" /></td>
+		</tr>
+		<tr>
+			<td><a th:href="@{/listStudents}" th:text="#{msg.ListStudents}" /></td>
+		</tr>
+	</table>
+</body>
+</html>
