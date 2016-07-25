@@ -8,18 +8,42 @@
         <artifactId>apache-cxf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <properties>
-        <cxf.version>3.1.6</cxf.version>
-        <spring.version>4.3.1.RELEASE</spring.version>
-        <surefire.version>2.19.1</surefire.version>
-    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+    </dependencies>
+    
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.6</version>
                 <configuration>
-                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
             <plugin>
@@ -33,6 +57,7 @@
             </plugin>
         </plugins>
     </build>
+    
     <profiles>
         <profile>
             <id>integration</id>
@@ -50,7 +75,7 @@
                             <configuration>
                                 <properties>
                                     <cargo.hostname>localhost</cargo.hostname>
-                                    <cargo.servlet.port>8080</cargo.servlet.port>
+                                    <cargo.servlet.port>8081</cargo.servlet.port>
                                 </properties>
                             </configuration>
                         </configuration>
@@ -71,6 +96,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${surefire.version}</version>
@@ -91,27 +117,13 @@
                 </plugins>
             </build>
         </profile>
+        
     </profiles>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxws</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-transports-http-jetty</artifactId>
-            <version>${cxf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-    </dependencies>
+    
+    <properties>
+        <cxf.version>3.1.6</cxf.version>
+        <spring.version>4.3.1.RELEASE</spring.version>
+        <surefire.version>2.19.1</surefire.version>
+    </properties>
+    
 </project>
