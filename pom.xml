@@ -29,6 +29,7 @@
         <module>jjwt</module>
         <module>jooq-spring</module>
         <module>json-path</module>
+        <module>json</module>
         <module>mockito</module>
         <module>mocks</module>
         <module>jee7schedule</module>
