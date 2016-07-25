@@ -45,7 +45,7 @@
         <!-- <module>jpa-storedprocedure</module> -->
         <module>querydsl</module>
         <!-- <module>raml</module> -->
-        <module>rest-assured-tutorial</module>
+        <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
 		<module>log4j</module>
