@@ -49,7 +49,7 @@ public class DataContentControllerTest {
     public void setUp() {
         Mockito.reset(tutServiceMock);
 
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).dispatchOptions(true).build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 	
 	@Test

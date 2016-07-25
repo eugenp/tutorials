@@ -31,7 +31,7 @@ public class TestConfig {
     }
     
     @Bean
-    public ITutorialsService getTutService() {
+    public ITutorialsService getTutServiceMock() {
         return Mockito.mock(ITutorialsService.class);
     }
 

@@ -1,6 +1,7 @@
 package com.baeldung.mvc.velocity.controller;
 
 import com.baeldung.mvc.velocity.domain.Tutorial;
+import com.baeldung.mvc.velocity.service.ITutorialsService;
 import com.baeldung.mvc.velocity.service.TutorialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +15,10 @@ import java.util.List;
 @RequestMapping("/")
 public class MainController {
 
-    private final TutorialsService tutService;
+    private final ITutorialsService tutService;
 
     @Autowired
-    public MainController(TutorialsService tutService) {
+    public MainController(ITutorialsService tutService) {
         this.tutService = tutService;
     }
 
@@ -28,7 +29,7 @@ public class MainController {
         return "index";
     }
 
-    public TutorialsService getTutService() {
+    public ITutorialsService getTutService() {
         return tutService;
     }
 }
