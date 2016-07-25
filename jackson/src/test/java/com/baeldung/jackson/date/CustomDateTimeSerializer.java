@@ -8,10 +8,20 @@ import org.joda.time.format.DateTimeFormatter;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class CustomDateTimeSerializer extends JsonSerializer<DateTime> {
+public class CustomDateTimeSerializer extends StdSerializer<DateTime> {
+
+    private static final long serialVersionUID = -3927232057990121460L;
+
+    public CustomDateTimeSerializer() {
+        this(null);
+    }
+
+    public CustomDateTimeSerializer(final Class<DateTime> t) {
+        super(t);
+    }
 
     private static DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
 
