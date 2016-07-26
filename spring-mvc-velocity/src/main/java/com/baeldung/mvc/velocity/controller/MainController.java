@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@Controller @RequestMapping("/") public class MainController {
+@Controller
+@RequestMapping("/")
+public class MainController {
 
     private final ITutorialsService tutService;
 
-    @Autowired public MainController(ITutorialsService tutService) {
+    @Autowired
+    public MainController(ITutorialsService tutService) {
         this.tutService = tutService;
     }
 
-    @RequestMapping(method = RequestMethod.GET) public String listTutorialsPage(Model model) {
+    @RequestMapping(method = RequestMethod.GET)
+    public String listTutorialsPage(Model model) {
         List<Tutorial> list = tutService.listTutorials();
         model.addAttribute("tutorials", list);
         return "index";

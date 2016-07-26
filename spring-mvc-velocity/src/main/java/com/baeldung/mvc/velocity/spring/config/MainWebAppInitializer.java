@@ -13,15 +13,12 @@ import java.util.Set;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
-    /**
-     * Register and configure all Servlet container components necessary to
-     * power the web application.
-     */
-    @Override public void onStartup(final ServletContext sc) throws ServletException {
+    @Override
+    public void onStartup(final ServletContext sc) throws ServletException {
 
         // Create the 'root' Spring application context
         final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-        root.register(WebConfig.class, SpringConfig.class);
+        root.register(WebConfig.class);
 
         // Manages the lifecycle of the root application context
         sc.addListener(new ContextLoaderListener(root));
