@@ -11,27 +11,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
 import org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver;
 
-@Configuration
-@EnableWebMvc
-@ComponentScan(basePackages={"com.baeldung.mvc.velocity.controller"})
-public class WebConfig extends WebMvcConfigurerAdapter {
+@Configuration @EnableWebMvc @ComponentScan(basePackages = { "com.baeldung.mvc.velocity.controller" }) public class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
         super();
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    @Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
- 
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+
+    @Override public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
-    @Bean
-    public ViewResolver viewResolver() {
+    @Bean public ViewResolver viewResolver() {
         final VelocityLayoutViewResolver bean = new VelocityLayoutViewResolver();
         bean.setCache(true);
         bean.setPrefix("/WEB-INF/views/");
@@ -39,9 +33,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         bean.setSuffix(".vm");
         return bean;
     }
-    
-    @Bean
-    public VelocityConfigurer velocityConfig() {
+
+    @Bean public VelocityConfigurer velocityConfig() {
         VelocityConfigurer velocityConfigurer = new VelocityConfigurer();
         velocityConfigurer.setResourceLoaderPath("/");
         return velocityConfigurer;
