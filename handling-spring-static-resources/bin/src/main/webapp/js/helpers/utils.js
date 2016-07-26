@@ -1,6 +1,0 @@
-/**
- * 
- */
-define({
-    helloWorld : 'hola'
-});
