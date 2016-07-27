@@ -1,13 +1,10 @@
 package com.baeldung.mvc.velocity.spring.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.baeldung.mvc.velocity.service.TutorialsService;
+@Configuration
+@ComponentScan(basePackages = { "com.baeldung.mvc.velocity.service" })
+public class SpringConfig {
 
-@Configuration public class SpringConfig {
-
-    @Bean public TutorialsService tutService() {
-        return new TutorialsService();
-    }
 }
