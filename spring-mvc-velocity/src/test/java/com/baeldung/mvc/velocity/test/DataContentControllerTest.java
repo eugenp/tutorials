@@ -31,43 +31,40 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 // @ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
-@ContextConfiguration(classes = { TestConfig.class, WebConfig.class }) @WebAppConfiguration public class DataContentControllerTest {
+@ContextConfiguration(classes = { TestConfig.class, WebConfig.class })
+@WebAppConfiguration
+public class DataContentControllerTest {
 
     private MockMvc mockMvc;
 
-    @Autowired private ITutorialsService tutServiceMock;
+    @Autowired
+    private ITutorialsService tutServiceMock;
 
-    @Autowired private WebApplicationContext webApplicationContext;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
-    @Before public void setUp() {
+    @Before
+    public void setUp() {
         Mockito.reset(tutServiceMock);
 
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-    @Test public void testModel() throws Exception {
+    @Test
+    public void whenCallingList_ThenModelAndContentOK() throws Exception {
 
-        Mockito.when(tutServiceMock.listTutorials())
-          .thenReturn(Arrays.asList(
-            new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"),
-            new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor")));
+        Mockito.when(tutServiceMock.listTutorials()).thenReturn(Arrays.asList(new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"), new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor")));
 
-        mockMvc.perform(get("/"))
-          .andExpect(status().isOk()).andExpect(view().name("index"))
-          .andExpect(model().attribute("tutorials", hasSize(2)))
-          .andExpect(model()
-            .attribute("tutorials",
-              hasItem(allOf(hasProperty("tutId", is(1)),
-              hasProperty("author", is("GuavaAuthor")),
-              hasProperty("title", is("Guava"))))))
-          .andExpect(model()
-            .attribute("tutorials", hasItem(allOf(hasProperty("tutId", is(2)),
-              hasProperty("author", is("AndroidAuthor")),
-              hasProperty("title", is("Android"))))));
+        mockMvc.perform(get("/list")).andExpect(status().isOk()).andExpect(view().name("list")).andExpect(model().attribute("tutorials", hasSize(2)))
+                .andExpect(model().attribute("tutorials", hasItem(allOf(hasProperty("tutId", is(1)), hasProperty("author", is("GuavaAuthor")), hasProperty("title", is("Guava"))))))
+                .andExpect(model().attribute("tutorials", hasItem(allOf(hasProperty("tutId", is(2)), hasProperty("author", is("AndroidAuthor")), hasProperty("title", is("Android"))))));
 
-        mockMvc.perform(get("/"))
-          .andExpect(xpath("//table").exists());
-        mockMvc.perform(get("/"))
-          .andExpect(xpath("//td[@id='tutId_1']").exists());
+        mockMvc.perform(get("/list")).andExpect(xpath("//table").exists());
+        mockMvc.perform(get("/list")).andExpect(xpath("//td[@id='tutId_1']").exists());
+    }
+    
+    @Test
+    public void whenCallingIndex_thenViewOK() throws Exception{
+        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index")).andExpect(model().size(0));
     }
 }

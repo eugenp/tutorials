@@ -14,21 +14,29 @@ import java.util.List;
 @RequestMapping("/")
 public class MainController {
 
-    private final ITutorialsService tutService;
-
     @Autowired
-    public MainController(ITutorialsService tutService) {
-        this.tutService = tutService;
-    }
+    private ITutorialsService tutService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value ="/", method = RequestMethod.GET)
+    public String welcomePage() {
+       return "index";
+    }
+    
+    
+    @RequestMapping(value ="/list", method = RequestMethod.GET)
     public String listTutorialsPage(Model model) {
         List<Tutorial> list = tutService.listTutorials();
         model.addAttribute("tutorials", list);
-        return "index";
+        return "list";
     }
 
     public ITutorialsService getTutService() {
         return tutService;
     }
+
+    public void setTutService(ITutorialsService tutService) {
+        this.tutService = tutService;
+    }
+    
+    
 }
