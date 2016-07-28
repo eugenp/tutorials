@@ -130,6 +130,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>javax.el</groupId>
+        	<artifactId>el-api</artifactId>
+        	<version>2.2</version>
+        </dependency>
     </dependencies>
 
     <build>
