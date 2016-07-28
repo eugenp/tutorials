@@ -1,4 +1,4 @@
-package com.baeldung.student;
+package org.baeldung.controller.student;
 
 public class Student {
 	private String name;
