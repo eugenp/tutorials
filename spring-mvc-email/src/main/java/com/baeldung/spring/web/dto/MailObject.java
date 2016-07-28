@@ -3,15 +3,19 @@ package com.baeldung.spring.web.dto;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Olga on 7/20/2016.
  */
 public class MailObject {
     @Email
-    private String from;
     @NotNull
+    @Size(min = 1, message = "Please, specify your email address")
+    private String from;
     @Email
+    @NotNull
+    @Size(min = 1, message = "Please, set an email address to send the message to it")
     private String to;
     private String subject;
     private String text;
