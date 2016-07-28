@@ -55,7 +55,6 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-controller</module>
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
