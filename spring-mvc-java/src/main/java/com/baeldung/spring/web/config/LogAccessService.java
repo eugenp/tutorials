@@ -5,15 +5,12 @@ import com.baeldung.spring.web.services.LogService;
 import com.baeldung.spring.web.services.SocketLogService;
 
 public class LogAccessService {
-
     private String service;
     private LogService serviceImpl;
-
-    public void setService(String service) {
+    public void setService(final String service) {
         this.service = service;
     }
-
-    public String logAccess(String logPoint, int id) {
+    public String logAccess(final String logPoint, final int id) {
         if (service.compareTo("socket") == 0) {
             serviceImpl = new SocketLogService();
         }

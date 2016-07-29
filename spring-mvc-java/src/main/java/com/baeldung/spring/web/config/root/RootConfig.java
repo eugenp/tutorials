@@ -1,18 +1,24 @@
 package com.baeldung.spring.web.config.root;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.baeldung.spring.web.config.LogAccessService;
 import com.baeldung.spring.web.config.LogConfiguration;
 
 @Configuration
-@ComponentScan(basePackages = "com.baeldung.spring.web.controller")
-public class AppConfig {
+public class RootConfig {
 
 	@Bean
 	public LogConfiguration logConfiguration() {
-		LogConfiguration configuration = new LogConfiguration();
+		final LogConfiguration configuration = new LogConfiguration();
 		return configuration;
+	}
+
+	@Bean
+	public LogAccessService logAccessService() {
+		final LogAccessService service = new LogAccessService();
+		service.setService("socket");
+		return service;
 	}
 }

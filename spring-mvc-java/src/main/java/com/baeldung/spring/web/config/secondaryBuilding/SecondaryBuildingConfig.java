@@ -8,11 +8,11 @@ import com.baeldung.spring.web.config.LogAccessService;
 
 @Configuration
 @ComponentScan(basePackages = "com.baeldung.spring.web.controller")
-public class AppConfig {
+public class SecondaryBuildingConfig {
 
 	@Bean
 	public LogAccessService logAccessService() {
-		LogAccessService service = new LogAccessService();
+		final LogAccessService service = new LogAccessService();
 		service.setService("file");
 		return service;
 	}
