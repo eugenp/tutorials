@@ -31,6 +31,7 @@
         <module>guava19</module>
         <module>handling-spring-static-resources</module>
         <module>httpclient</module>
+        <module>immutables</module>
         <module>jackson</module>
         <module>javaxval</module>
         <module>jjwt</module>
