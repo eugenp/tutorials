@@ -8,6 +8,9 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+@import "another.css";
+
+
 .clearfix {
   *zoom: 1;
 }
@@ -6142,26 +6145,3 @@ a.badge:focus {
   line-height: 30px;
 }
 
-.pull-right {
-  float: right;
-}
-
-.pull-left {
-  float: left;
-}
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
-
-.invisible {
-  visibility: hidden;
-}
-
-.affix {
-  position: fixed;
-}
