@@ -5,7 +5,6 @@ import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,8 @@ public class MainController {
     @Autowired
     private OrganizationRepository organizationRepository;
 
-    @PostAuthorize("hasPermission(returnObject, 'read')")
+    // @PostAuthorize("hasPermission(returnObject, 'read')")
+    @PreAuthorize("hasPermission(#id, 'Foo', 'read')")
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id) {
