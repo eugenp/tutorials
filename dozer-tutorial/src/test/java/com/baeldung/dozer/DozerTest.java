@@ -12,14 +12,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DozerTest {
-	DozerBeanMapper mapper = new DozerBeanMapper();
+
+	private DozerBeanMapper mapper = new DozerBeanMapper();
 
 	@Before
 	public void before() throws Exception {
 		mapper = new DozerBeanMapper();
 	}
 
-	BeanMappingBuilder builder = new BeanMappingBuilder() {
+	private BeanMappingBuilder builder = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
@@ -28,7 +29,7 @@ public class DozerTest {
 
 		}
 	};
-	BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
+	private BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
