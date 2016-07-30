@@ -1,11 +1,12 @@
 package org.baeldung.mocks.jmockit;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import mockit.Deencapsulation;
+import mockit.Invocation;
 import mockit.Mock;
 import mockit.MockUp;
 import mockit.Tested;
@@ -27,6 +28,18 @@ public class AdvancedCollaboratorTest {
         };
         String res = mock.methodThatCallsPrivateMethod(1);
         assertEquals("mocked: 1", res);
+    }
+    
+    @Test
+    public void testToMockUpDifficultConstructor() throws Exception{
+        new MockUp<AdvancedCollaborator>() {
+            @Mock
+            public void $init(Invocation invocation, String string) {
+                ((AdvancedCollaborator)invocation.getInvokedInstance()).i = 1;
+            }
+        };
+        AdvancedCollaborator coll = new AdvancedCollaborator(null);
+        assertEquals(1, coll.i);
     }
     
     @Test
