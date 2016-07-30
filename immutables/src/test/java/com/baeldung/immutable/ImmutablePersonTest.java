@@ -17,6 +17,7 @@ public class ImmutablePersonTest {
 
         assertThat(john)
           .isNotSameAs(john43);
+
         assertThat(john.getAge())
           .isEqualTo(42);
     }
