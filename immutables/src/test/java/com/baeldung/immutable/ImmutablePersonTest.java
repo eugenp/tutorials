@@ -3,6 +3,7 @@ package com.baeldung.immutable;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 
 public class ImmutablePersonTest {
 
@@ -20,5 +21,7 @@ public class ImmutablePersonTest {
 
         assertThat(john.getAge())
           .isEqualTo(42);
+
+        assertImmutable(com.baeldung.immutable.ImmutablePerson.class);
     }
 }
