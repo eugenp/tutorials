@@ -16,4 +16,5 @@ public class AdvancedCollaborator {
     private String privateMethod(){
         return "default:";
     }
+    class InnerAdvancedCollaborator{}
 }

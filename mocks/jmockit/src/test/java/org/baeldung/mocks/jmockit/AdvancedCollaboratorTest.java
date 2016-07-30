@@ -2,6 +2,7 @@ package org.baeldung.mocks.jmockit;
 
 import static org.junit.Assert.*;
 
+import org.baeldung.mocks.jmockit.AdvancedCollaborator.InnerAdvancedCollaborator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -64,5 +65,11 @@ public class AdvancedCollaboratorTest {
     public void testToCreateNewInstanceDirectly(){
         AdvancedCollaborator coll = Deencapsulation.newInstance(AdvancedCollaborator.class, "foo");
         assertEquals(3, coll.i);
+    }
+    
+    @Test
+    public void testToCreateNewInnerClassInstanceDirectly(){
+        InnerAdvancedCollaborator innerCollaborator = Deencapsulation.newInnerInstance(InnerAdvancedCollaborator.class, mock);
+        assertNotNull(innerCollaborator);
     }
 }
