@@ -47,4 +47,22 @@ public class AdvancedCollaboratorTest {
         Object value = Deencapsulation.invoke(mock, "privateMethod");
         assertEquals("default:", value);
     }
+    
+    @Test
+    public void testToSetPrivateFieldDirectly(){
+        Deencapsulation.setField(mock, "privateField", 10);
+        assertEquals(10, mock.methodThatReturnsThePrivateField());
+    }
+    
+    @Test
+    public void testToGetPrivateFieldDirectly(){
+        int value = Deencapsulation.getField(mock, "privateField");
+        assertEquals(5, value);
+    }
+    
+    @Test
+    public void testToCreateNewInstanceDirectly(){
+        AdvancedCollaborator coll = Deencapsulation.newInstance(AdvancedCollaborator.class, "foo");
+        assertEquals(3, coll.i);
+    }
 }
