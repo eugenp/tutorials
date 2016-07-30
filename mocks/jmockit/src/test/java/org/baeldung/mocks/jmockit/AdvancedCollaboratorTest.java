@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import mockit.Deencapsulation;
 import mockit.Mock;
 import mockit.MockUp;
 import mockit.Tested;
@@ -28,4 +29,9 @@ public class AdvancedCollaboratorTest {
         assertEquals("mocked: 1", res);
     }
     
+    @Test
+    public void testToCallPrivateMethodsDirectly(){
+        Object value = Deencapsulation.invoke(mock, "privateMethod");
+        assertEquals("default:", value);
+    }
 }
