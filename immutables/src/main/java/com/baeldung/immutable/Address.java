@@ -1,5 +1,9 @@
 package com.baeldung.immutable;
 
-public class Address {
+import org.immutables.value.Value;
 
+@Value.Immutable
+public interface Address {
+    String getStreetName();
+    Integer getNumber();
 }

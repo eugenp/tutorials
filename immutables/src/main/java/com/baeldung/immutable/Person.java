@@ -3,6 +3,7 @@ package com.baeldung.immutable;
 import org.immutables.value.Value;
 
 @Value.Immutable
-public class Person {
-    private String name;
+public abstract class Person {
+    abstract String getName();
+    abstract Integer getAge();
 }
