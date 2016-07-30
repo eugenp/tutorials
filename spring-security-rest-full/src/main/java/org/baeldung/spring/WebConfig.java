@@ -14,24 +14,25 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableWebMvc
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    public WebConfig() {
-        super();
-    }
+	public WebConfig() {
+		super();
+	}
 
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/view/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+	@Bean
+	public ViewResolver viewResolver() {
+		final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
+		return viewResolver;
+	}
 
-    // API
-    @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-        registry.addViewController("/graph.html");
-        registry.addViewController("/csrfHome.html");
-    }
+	// API
+	@Override
+	public void addViewControllers(final ViewControllerRegistry registry) {
+		super.addViewControllers(registry);
+		registry.addViewController("/graph.html");
+		registry.addViewController("/csrfHome.html");
+		registry.addViewController("/homepage.html");
+	}
 
 }

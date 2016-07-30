@@ -14,30 +14,25 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
-        <junit.version>4.10</junit.version>
-        <spring.version>3.1.0.RELEASE</spring.version>
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <querydsl.version>2.5.0</querydsl.version>
-        <slf4j.version>1.5.10</slf4j.version>
+        <java.version>1.8</java.version>
+        <junit.version>4.12</junit.version>
+        <spring.version>4.3.1.RELEASE</spring.version>
+        <hibernate.version>5.2.1.Final</hibernate.version>
+        <querydsl.version>4.1.3</querydsl.version>
+        <slf4j.version>1.7.21</slf4j.version>
     </properties>
 
     <dependencies>
         <!-- QueryDSL -->
-        <dependency>
-            <groupId>com.mysema.querydsl</groupId>
-            <artifactId>querydsl-core</artifactId>
-            <version>${querydsl.version}</version>
-        </dependency>
 
         <dependency>
-            <groupId>com.mysema.querydsl</groupId>
+            <groupId>com.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.mysema.querydsl</groupId>
+            <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
             <scope>provided</scope>
@@ -53,7 +48,7 @@
 
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>1.0.0.Final</version>
             <scope>compile</scope>
         </dependency>
@@ -69,7 +64,7 @@
         <dependency>
             <groupId>commons-pool</groupId>
             <artifactId>commons-pool</artifactId>
-            <version>1.5.5</version>
+            <version>1.6</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -77,8 +72,8 @@
         <!-- HSQLDB Dependencies -->
         <dependency>
             <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb-j5</artifactId>
-            <version>2.2.4</version>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.4</version>
         </dependency>
 
         <!-- Spring Dependencies -->
@@ -118,26 +113,15 @@
 
         <!-- Logging -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.7</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
         </dependency>
 
         <!-- Test Dependencies -->
@@ -157,7 +141,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.5.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -168,16 +152,16 @@
             <!-- QueryDSL plugin -->
             <plugin>
                 <groupId>com.mysema.maven</groupId>
-                <artifactId>maven-apt-plugin</artifactId>
-                <version>1.0.3</version>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.1.3</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>process</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/metamodel</outputDirectory>
-                            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                         </configuration>
                     </execution>
                 </executions>

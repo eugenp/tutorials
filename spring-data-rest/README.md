@@ -1,3 +1,6 @@
+###The Course
+The "REST With Spring" Classes: http://bit.ly/restwithspring
+
 # About this project
 This project contains examples from the [Introduction to Spring Data REST](http://www.baeldung.com/spring-data-rest-intro) article from Baeldung.
 

@@ -213,13 +213,13 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
     </dependencies>
@@ -309,7 +309,6 @@
         <javax.validation.version>1.1.0.Final</javax.validation.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.2.2</jackson.version>
-        <springfox.version>2.2.2</springfox.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
@@ -322,8 +321,7 @@
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- swagger -->
-        <springfox-swagger.version>2.2.2</springfox-swagger.version>
-        <springfox-swagger-ui.version>2.2.2</springfox-swagger-ui.version>
+        <springfox-swagger.version>2.4.0</springfox-swagger.version>
 
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>

@@ -13,12 +13,11 @@
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
         <csrf disabled="true"/>
-        
+
         <form-login login-page='/login.html' login-processing-url="/perform_login" default-target-url="/homepage.html" authentication-failure-url="/login.html?error=true"
             always-use-default-target="true"/>
 
         <logout logout-url="/perform_logout" delete-cookies="JSESSIONID" success-handler-ref="customLogoutSuccessHandler"/>
-
     </http>
 
     <beans:bean name="customLogoutSuccessHandler" class="org.baeldung.security.CustomLogoutSuccessHandler"/>
