@@ -8,13 +8,13 @@ public class ImmutablePersonAuxiliaryTest {
 
     @Test
     public void whenComparing_shouldIgnore() throws Exception {
-        final com.baeldung.immutable.auxiliary.ImmutablePerson john1 = com.baeldung.immutable.auxiliary.ImmutablePerson.builder()
+        final ImmutablePerson john1 = ImmutablePerson.builder()
           .name("John")
           .age(42)
           .auxiliaryField("Value1")
           .build();
 
-        final com.baeldung.immutable.auxiliary.ImmutablePerson john2 = com.baeldung.immutable.auxiliary.ImmutablePerson.builder()
+        final ImmutablePerson john2 = ImmutablePerson.builder()
           .name("John")
           .age(42)
           .auxiliaryField("Value2")

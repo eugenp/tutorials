@@ -9,12 +9,12 @@ public class ImmutablePersonTest {
 
     @Test
     public void whenModifying_shouldCreateNewInstance() throws Exception {
-        final com.baeldung.immutable.ImmutablePerson john = com.baeldung.immutable.ImmutablePerson.builder()
+        final ImmutablePerson john = ImmutablePerson.builder()
           .age(42)
           .name("John")
           .build();
 
-        final com.baeldung.immutable.ImmutablePerson john43 = john.withAge(43);
+        final ImmutablePerson john43 = john.withAge(43);
 
         assertThat(john)
           .isNotSameAs(john43);
@@ -22,6 +22,6 @@ public class ImmutablePersonTest {
         assertThat(john.getAge())
           .isEqualTo(42);
 
-        assertImmutable(com.baeldung.immutable.ImmutablePerson.class);
+        assertImmutable(ImmutablePerson.class);
     }
 }
