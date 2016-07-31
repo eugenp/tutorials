@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-derby.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
 public class Cause1NonTransientConfig {
 
