@@ -2,17 +2,26 @@ package com.baeldung.jackson.deserialization;
 
 import java.io.IOException;
 
-import com.baeldung.jackson.dtos.User;
 import com.baeldung.jackson.dtos.Item;
-
+import com.baeldung.jackson.dtos.User;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.node.IntNode;
 
-public class ItemDeserializer extends JsonDeserializer<Item> {
+public class ItemDeserializer extends StdDeserializer<Item> {
+
+    private static final long serialVersionUID = 1883547683050039861L;
+
+    public ItemDeserializer() {
+        this(null);
+    }
+
+    public ItemDeserializer(final Class<?> vc) {
+        super(vc);
+    }
 
     /**
      * {"id":1,"itemNr":"theItem","owner":2}
