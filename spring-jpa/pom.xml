@@ -30,6 +30,11 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
@@ -49,6 +54,11 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-data-jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
         </dependency>
 
         <!-- validation -->
@@ -186,6 +196,7 @@
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
+        <h2.version>1.4.192</h2.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
