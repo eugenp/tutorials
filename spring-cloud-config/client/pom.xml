@@ -8,10 +8,11 @@
 		<artifactId>spring-cloud-config</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>server</artifactId>
+	<artifactId>client</artifactId>
+	<packaging>jar</packaging>
 
-	<name>server</name>
-	<description>Demo project for Spring Cloud Config Server</description>
+	<name>client</name>
+	<description>Demo project for Spring Cloud Config Client</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,11 +23,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-server</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
