@@ -14,21 +14,20 @@ public class Tutorial {
         this.author = author;
     }
 
-	public Integer getTutId() {
-		return tutId;
-	}
+    public Integer getTutId() {
+        return tutId;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
-    
-    
+    public String getAuthor() {
+        return author;
+    }
+
 }
