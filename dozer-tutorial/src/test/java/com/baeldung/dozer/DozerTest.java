@@ -1,9 +1,13 @@
 package com.baeldung.dozer;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
@@ -13,6 +17,7 @@ import org.junit.Test;
 
 public class DozerTest {
 	DozerBeanMapper mapper = new DozerBeanMapper();
+	private final long GMT_DIFFERENCE=46800000;
 
 	@Before
 	public void before() throws Exception {
@@ -182,7 +187,8 @@ public class DozerTest {
 		mapper.setMappingFiles(Arrays
 				.asList(new String[] { "dozer_custom_convertor.xml" }));
 		Personne3 person0 = mapper.map(person, Personne3.class);
-		assertEquals(timestamp, person0.getDtob());
+		long timestampToTest=person0.getDtob();
+		assertTrue(timestampToTest==timestamp||timestampToTest>=timestamp-GMT_DIFFERENCE||timestampToTest<=timestamp+GMT_DIFFERENCE);
 	}
 
 	@Test
@@ -193,7 +199,7 @@ public class DozerTest {
 		mapper.setMappingFiles(Arrays
 				.asList(new String[] { "dozer_custom_convertor.xml" }));
 		Person3 person0 = mapper.map(person, Person3.class);
-		assertEquals(dateTime, person0.getDtob());
+		String timestampTest=person0.getDtob();
+		assertTrue(timestampTest.charAt(10)=='T'&&timestampTest.charAt(19)=='Z');
 	}
-
 }
