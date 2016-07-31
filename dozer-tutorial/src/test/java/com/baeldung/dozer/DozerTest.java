@@ -16,15 +16,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class DozerTest {
+<<<<<<< HEAD
 	DozerBeanMapper mapper = new DozerBeanMapper();
 	private final long GMT_DIFFERENCE=46800000;
+=======
+
+	private DozerBeanMapper mapper = new DozerBeanMapper();
+>>>>>>> 6f2ccdf18729969951fc37e635d24c30dd9b43d5
 
 	@Before
 	public void before() throws Exception {
 		mapper = new DozerBeanMapper();
 	}
 
-	BeanMappingBuilder builder = new BeanMappingBuilder() {
+	private BeanMappingBuilder builder = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
@@ -33,7 +38,7 @@ public class DozerTest {
 
 		}
 	};
-	BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
+	private BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
