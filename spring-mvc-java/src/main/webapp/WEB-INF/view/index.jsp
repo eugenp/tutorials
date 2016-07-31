@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+		 pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -45,26 +47,20 @@
 				});	
 			});
 		
-		    function getCompanyData(data) { 
-				document.write("<b>ID:</b> "+data.id+"<br/>");	 
-				document.write("<b>NAME:</b> "+data.name+"<br/>");
-				document.write("<br/>");
+		    function getCompanyData(data) {
+				$("#response").append("<b>ID:</b> "+data.id+"<br/>");
+				$("#response").append("<b>NAME:</b> "+data.name+"<br/>");
+				$("#response").append("<br/>");
 		     }
 	     </script>
 	</head>
 	<body>
 	
-		<!-- Using REST URL-->
-		<button id="REST-button">Test REST JSON-P!</button>
-		<div id="infoREST"></div>
-	
 		<!--Using @ResponseBody -->
-		<button id="ResponseBody-button">Test ResponseBody JSON-P!</button>
-		<div id="infoResponseBody"></div>
+		<button id="ResponseBody-button">Send AJAX JSON-P request!</button>
+
+		<div id="response"></div>
 	
-		<!--Using ResponseEntity -->
-		<button id="ResponseEntity-button">Test ResponseEntity JSON-P!</button>
-		<div id="ResponseEntity"></div>
-	
+
 	</body>
 </html>
