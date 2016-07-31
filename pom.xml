@@ -31,6 +31,7 @@
         <module>guava19</module>
         <module>handling-spring-static-resources</module>
         <module>httpclient</module>
+        <module>immutables</module>
         <module>jackson</module>
         <module>javaxval</module>
         <module>jjwt</module>
@@ -55,7 +56,7 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-controller</module>
+        <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-couchbase-2b</module>

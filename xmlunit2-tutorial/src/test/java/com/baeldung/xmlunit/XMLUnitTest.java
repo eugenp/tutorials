@@ -15,6 +15,7 @@ import static org.xmlunit.matchers.HasXPathMatcher.hasXPath;
 import java.io.File;
 import java.util.Iterator;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -36,10 +37,10 @@ public class XMLUnitTest {
 	public void givenWrongXml_whenValidateFailsAgainstXsd_thenCorrect() {
 		Validator v = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI);
 		v.setSchemaSource(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students.xsd")).build());
 		ValidationResult r = v.validateInstance(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students_with_error.xml")).build());
 		assertFalse(r.isValid());
 	}
@@ -48,10 +49,10 @@ public class XMLUnitTest {
 	public void givenXmlWithErrors_whenReturnsValidationProblems_thenCorrect() {
 		Validator v = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI);
 		v.setSchemaSource(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students.xsd")).build());
 		ValidationResult r = v.validateInstance(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students_with_error.xml")).build());
 		Iterator<ValidationProblem> probs = r.getProblems().iterator();
 		int count = 0;
@@ -66,10 +67,10 @@ public class XMLUnitTest {
 	public void givenXml_whenValidatesAgainstXsd_thenCorrect() {
 		Validator v = Validator.forLanguage(Languages.W3C_XML_SCHEMA_NS_URI);
 		v.setSchemaSource(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students.xsd")).build());
 		ValidationResult r = v.validateInstance(Input.fromStream(
-				new XMLUnitTest().getClass().getResourceAsStream(
+				XMLUnitTest.class.getResourceAsStream(
 						"/students.xml")).build());
 		Iterator<ValidationProblem> probs = r.getProblems().iterator();
 		while (probs.hasNext()) {
@@ -117,10 +118,26 @@ public class XMLUnitTest {
 	@Test
 	public void givenXmlSource_whenFailsToValidateInExistentXPath_thenCorrect() {
 		ClassLoader classLoader = getClass().getClassLoader();
-
 		assertThat(Input.fromFile(new File(classLoader.getResource(
 				"teachers.xml").getFile())), not(hasXPath("//sujet")));
 	}
+
+	// NOTE: ignore as this test demonstrates that two XMLs that contain the same data
+    // will fail the isSimilarTo test.
+    @Test @Ignore
+    public void given2XMLS_whenSimilar_thenCorrect_fails() {
+        String controlXml = "<struct><int>3</int><boolean>false</boolean></struct>";
+        String testXml = "<struct><boolean>false</boolean><int>3</int></struct>";
+        assertThat(testXml, isSimilarTo(controlXml));
+    }
+
+    @Test
+    public void given2XMLS_whenSimilar_thenCorrect() {
+        String controlXml = "<struct><int>3</int><boolean>false</boolean></struct>";
+        String testXml = "<struct><boolean>false</boolean><int>3</int></struct>";
+        assertThat(testXml,isSimilarTo(controlXml).withNodeMatcher(
+          new DefaultNodeMatcher(ElementSelectors.byName)));
+    }
 
 	@Test
 	public void given2XMLs_whenSimilarWithDiff_thenCorrect() throws Exception {
@@ -160,6 +177,7 @@ public class XMLUnitTest {
 		Diff myDiff = DiffBuilder.compare(control).withTest(test)
 				.checkForSimilar().build();
 
+        //  assertFalse(myDiff.toString(), myDiff.hasDifferences());
 		assertTrue(myDiff.toString(), myDiff.hasDifferences());
 	}
 
@@ -177,27 +195,23 @@ public class XMLUnitTest {
 	@Test
 	public void givenFileSourceAsObject_whenAbleToInput_thenCorrect() {
 		ClassLoader classLoader = getClass().getClassLoader();
-		assertThat(Input.from(new File(classLoader.getResource("test.xml")
-				.getFile())), isSimilarTo(Input.from(new File(classLoader
-				.getResource("control.xml").getFile()))));
-
+		assertThat(Input.from(new File(classLoader.getResource("test.xml").getFile())),
+		isSimilarTo(Input.from(new File(classLoader.getResource("control.xml").getFile()))));
 	}
 
 	@Test
 	public void givenStreamAsSource_whenAbleToInput_thenCorrect() {
-		assertThat(Input.fromStream(new XMLUnitTest().getClass()
+		assertThat(Input.fromStream(XMLUnitTest.class
 				.getResourceAsStream("/test.xml")),
-				isSimilarTo(Input.fromStream(new XMLUnitTest().getClass()
+				isSimilarTo(Input.fromStream(XMLUnitTest.class
 						.getResourceAsStream("/control.xml"))));
 
 	}
 
 	@Test
 	public void givenStreamAsObject_whenAbleToInput_thenCorrect() {
-		assertThat(Input.from(new XMLUnitTest().getClass().getResourceAsStream(
-				"/test.xml")), isSimilarTo(Input.from(new XMLUnitTest()
-				.getClass().getResourceAsStream("/control.xml"))));
-
+		assertThat(Input.from(XMLUnitTest.class.getResourceAsStream("/test.xml")),
+          isSimilarTo(Input.from(XMLUnitTest.class.getResourceAsStream("/control.xml"))));
 	}
 
 	@Test
@@ -206,7 +220,6 @@ public class XMLUnitTest {
 				Input.from("<struct><int>3</int><boolean>false</boolean></struct>"),
 				isSimilarTo(Input
 						.from("<struct><int>3</int><boolean>false</boolean></struct>")));
-
 	}
 
 	@Test
@@ -216,7 +229,6 @@ public class XMLUnitTest {
 		String controlPath = classLoader.getResource("control.xml").getPath();
 		assertThat(Input.fromFile(testPath),
 				isSimilarTo(Input.fromFile(controlPath)));
-
 	}
 
 	@Test
