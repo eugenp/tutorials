@@ -117,6 +117,12 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+	    <groupId>net.sourceforge.htmlunit</groupId>
+	    <artifactId>htmlunit</artifactId>
+	    <version>${net.sourceforge.htmlunit}</version>
+	    <scope>test</scope>
+	</dependency>
         <!-- Thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -234,6 +240,7 @@
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
         <rest-assured.version>2.9.0</rest-assured.version>
+        <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
