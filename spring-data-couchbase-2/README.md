@@ -2,11 +2,12 @@
 
 ### Relevant Articles:
 - [Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase)
+- [Entity Validation, Query Consistency, and Optimistic Locking in Spring Data Couchbase](http://www.baeldung.com/entity-validation-locking-and-query-consistency-in-spring-data-couchbase)
 
 ### Overview
 This Maven project contains the Java code for Spring Data Couchbase
 entities, repositories, and template-based services
-as described in the tutorial, as well as a unit test
+as described in the tutorials, as well as a unit/integration test
 for each service implementation.
 
 ### Working with the Code
@@ -22,13 +23,16 @@ mvn clean install
 ```
 
 ### Running the tests
-There are three test classes in src/test/java in the package
+The following test classes are in src/test/java in the package
 org.baeldung.spring.data.couchbase.service:
 - PersonServiceTest (abstract)
 - PersonRepositoryTest (concrete)
 - PersonTemplateServiceTest (concrete)
+- StudentServiceTest (abstract)
+- StudentRepositoryTest (concrete)
+- StudentTemplateServiceTest (concrete)
 
-The latter two may be run as JUnit tests from your IDE
+The concrete test classes may be run as JUnit tests from your IDE
 or using the Maven command line:
 ```
 mvn test

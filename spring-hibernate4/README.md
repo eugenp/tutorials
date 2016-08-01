@@ -8,7 +8,8 @@
 - [Hibernate Pagination](http://www.baeldung.com/hibernate-pagination)
 - [Sorting with Hibernate](http://www.baeldung.com/hibernate-sort)
 - [Auditing with JPA, Hibernate, and Spring Data JPA](http://www.baeldung.com/database-auditing-jpa)
-
+- [Stored Procedures with Hibernate](http://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
+- [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate/)
 
 ### Quick Start
 
