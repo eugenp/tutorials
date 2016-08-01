@@ -8,6 +8,7 @@ import java.util.Arrays;
 import org.dozer.DozerBeanMapper;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DozerTest {
@@ -130,7 +131,8 @@ public class DozerTest {
 				englishAppPerson.getNickname());
 		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
 	}
-/*
+
+	@Ignore("place dozer_mapping.xml at a location of your choice and copy/paste the path after file: in configureMapper method")
 	@Test
 	public void givenMappingFileOutsideClasspath_whenMaps_thenCorrect() {
 		configureMapper("file:e:/dozer_mapping.xml");
@@ -144,33 +146,6 @@ public class DozerTest {
 				englishAppPerson.getNickname());
 		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
 	}
-	*/
-//	@Test
-//	public void givenMappingFileOutsideClasspath_whenMapsOnUnix_thenCorrect() {
-//		configureMapper("file:/home/dozer_mapping.xml");
-//
-//		Person englishAppPerson = new Person("Marshall Bruce Mathers III",
-//				"Eminem", 43);
-//		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
-//
-//		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
-//		assertEquals(frenchAppPerson.getSurnom(),
-//				englishAppPerson.getNickname());
-//		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
-//	}
-//	@Test
-//	public void givenMappingFileOutsideClasspath_whenMapsOnMacOs_thenCorrect() {
-//		configureMapper("file:/Users/me/dozer_mapping.xml");
-//
-//		Person englishAppPerson = new Person("Marshall Bruce Mathers III",
-//				"Eminem", 43);
-//		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
-//
-//		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
-//		assertEquals(frenchAppPerson.getSurnom(),
-//				englishAppPerson.getNickname());
-//		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
-//	}
 
 	@Test
 	public void givenSrcAndDest_whenMapsOnlySpecifiedFields_thenCorrect() {
