@@ -16,6 +16,7 @@
         <module>assertj</module>
         <module>apache-cxf</module>
         <module>apache-fop</module>
+        <module>autovalue-tutorial</module>
         <module>core-java</module>
         <module>core-java-8</module>
         <module>couchbase-sdk-intro</module>
