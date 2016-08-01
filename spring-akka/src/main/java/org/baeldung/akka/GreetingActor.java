@@ -1,13 +1,12 @@
 package org.baeldung.akka;
 
 import akka.actor.UntypedActor;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.beans.factory.config.ConfigurableBeanFactory.SCOPE_PROTOTYPE;
-
 @Component
-@Scope(SCOPE_PROTOTYPE)
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class GreetingActor extends UntypedActor {
 
     private GreetingService greetingService;
