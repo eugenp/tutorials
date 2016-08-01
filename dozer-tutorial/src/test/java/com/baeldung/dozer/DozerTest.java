@@ -1,26 +1,27 @@
 package com.baeldung.dozer;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DozerTest {
+	private final long GMT_DIFFERENCE = 46800000;
 
-	private DozerBeanMapper mapper = new DozerBeanMapper();
+	DozerBeanMapper mapper;
 
 	@Before
 	public void before() throws Exception {
 		mapper = new DozerBeanMapper();
 	}
 
-	private BeanMappingBuilder builder = new BeanMappingBuilder() {
+	BeanMappingBuilder builder = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
@@ -29,7 +30,7 @@ public class DozerTest {
 
 		}
 	};
-	private BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
+	BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
 
 		@Override
 		protected void configure() {
@@ -41,10 +42,12 @@ public class DozerTest {
 
 	@Test
 	public void givenApiMapper_whenMaps_thenCorrect() {
+		mapper.addMapping(builder);
+
 		Personne frenchAppPerson = new Personne("Sylvester Stallone", "Rambo",
 				70);
-		mapper.addMapping(builder);
 		Person englishAppPerson = mapper.map(frenchAppPerson, Person.class);
+
 		assertEquals(englishAppPerson.getName(), frenchAppPerson.getNom());
 		assertEquals(englishAppPerson.getNickname(),
 				frenchAppPerson.getSurnom());
@@ -53,9 +56,11 @@ public class DozerTest {
 
 	@Test
 	public void givenApiMapper_whenMapsOnlySpecifiedFields_thenCorrect() {
-		Person englishAppPerson = new Person("Sylvester Stallone", "Rambo", 70);
 		mapper.addMapping(builderMinusAge);
+
+		Person englishAppPerson = new Person("Sylvester Stallone", "Rambo", 70);
 		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
+
 		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
 		assertEquals(frenchAppPerson.getSurnom(),
 				englishAppPerson.getNickname());
@@ -64,9 +69,11 @@ public class DozerTest {
 
 	@Test
 	public void givenApiMapper_whenMapsBidirectionally_thenCorrect() {
-		Person englishAppPerson = new Person("Sylvester Stallone", "Rambo", 70);
 		mapper.addMapping(builder);
+
+		Person englishAppPerson = new Person("Sylvester Stallone", "Rambo", 70);
 		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
+
 		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
 		assertEquals(frenchAppPerson.getSurnom(),
 				englishAppPerson.getNickname());
@@ -100,12 +107,12 @@ public class DozerTest {
 
 	@Test
 	public void givenSrcAndDestWithDifferentFieldNamesWithCustomMapper_whenMaps_thenCorrect() {
-		List<String> mappingFiles = new ArrayList<>();
-		mappingFiles.add("dozer_mapping.xml");
+		configureMapper("dozer_mapping.xml");
+
 		Personne frenchAppPerson = new Personne("Sylvester Stallone", "Rambo",
 				70);
-		mapper.setMappingFiles(mappingFiles);
 		Person englishAppPerson = mapper.map(frenchAppPerson, Person.class);
+
 		assertEquals(englishAppPerson.getName(), frenchAppPerson.getNom());
 		assertEquals(englishAppPerson.getNickname(),
 				frenchAppPerson.getSurnom());
@@ -114,38 +121,39 @@ public class DozerTest {
 
 	@Test
 	public void givenSrcAndDestWithDifferentFieldNamesWithCustomMapper_whenMapsBidirectionally_thenCorrect() {
-		List<String> mappingFiles = new ArrayList<>();
-		mappingFiles.add("dozer_mapping.xml");
+		configureMapper("dozer_mapping.xml");
+
 		Person englishAppPerson = new Person("Dwayne Johnson", "The Rock", 44);
-		mapper.setMappingFiles(mappingFiles);
 		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
+
 		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
 		assertEquals(frenchAppPerson.getSurnom(),
 				englishAppPerson.getNickname());
 		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
 	}
 
-//	@Test
-//	public void givenMappingFileOutsideClasspath_whenMaps_thenCorrect() {
-//		List<String> mappingFiles = new ArrayList<>();
-//		mappingFiles.add("file:E:\\dozer_mapping.xml");
-//		Person englishAppPerson = new Person("Marshall Bruce Mathers III",
-//				"Eminem", 43);
-//		mapper.setMappingFiles(mappingFiles);
-//		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
-//		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
-//		assertEquals(frenchAppPerson.getSurnom(),
-//				englishAppPerson.getNickname());
-//		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
-//	}
+	@Ignore("place dozer_mapping.xml at a location of your choice and copy/paste the path after file: in configureMapper method")
+	@Test
+	public void givenMappingFileOutsideClasspath_whenMaps_thenCorrect() {
+		configureMapper("file:e:/dozer_mapping.xml");
+
+		Person englishAppPerson = new Person("Marshall Bruce Mathers III",
+				"Eminem", 43);
+		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
+
+		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
+		assertEquals(frenchAppPerson.getSurnom(),
+				englishAppPerson.getNickname());
+		assertEquals(frenchAppPerson.getAge(), englishAppPerson.getAge());
+	}
 
 	@Test
 	public void givenSrcAndDest_whenMapsOnlySpecifiedFields_thenCorrect() {
-		List<String> mappingFiles = new ArrayList<>();
-		mappingFiles.add("dozer_mapping2.xml");
+		configureMapper("dozer_mapping2.xml");
+
 		Person englishAppPerson = new Person("Shawn Corey Carter", "Jay Z", 46);
-		mapper.setMappingFiles(mappingFiles);
 		Personne frenchAppPerson = mapper.map(englishAppPerson, Personne.class);
+
 		assertEquals(frenchAppPerson.getNom(), englishAppPerson.getName());
 		assertEquals(frenchAppPerson.getSurnom(),
 				englishAppPerson.getNickname());
@@ -177,24 +185,35 @@ public class DozerTest {
 
 	@Test
 	public void givenSrcAndDestWithDifferentFieldTypes_whenAbleToCustomConvert_thenCorrect() {
+		configureMapper("dozer_custom_convertor.xml");
+
 		String dateTime = "2007-06-26T21:22:39Z";
 		long timestamp = new Long("1182882159000");
+
 		Person3 person = new Person3("Rich", dateTime);
-		mapper.setMappingFiles(Arrays
-				.asList(new String[] { "dozer_custom_convertor.xml" }));
 		Personne3 person0 = mapper.map(person, Personne3.class);
-		assertEquals(timestamp, person0.getDtob());
+
+		long timestampToTest = person0.getDtob();
+		assertTrue(timestampToTest == timestamp
+				|| timestampToTest >= timestamp - GMT_DIFFERENCE
+				|| timestampToTest <= timestamp + GMT_DIFFERENCE);
 	}
 
 	@Test
 	public void givenSrcAndDestWithDifferentFieldTypes_whenAbleToCustomConvertBidirectionally_thenCorrect() {
-		String dateTime = "2007-06-26T21:22:39Z";
 		long timestamp = new Long("1182882159000");
 		Personne3 person = new Personne3("Rich", timestamp);
-		mapper.setMappingFiles(Arrays
-				.asList(new String[] { "dozer_custom_convertor.xml" }));
+		configureMapper("dozer_custom_convertor.xml");
+
 		Person3 person0 = mapper.map(person, Person3.class);
-		assertEquals(dateTime, person0.getDtob());
+		String timestampTest = person0.getDtob();
+
+		assertTrue(timestampTest.charAt(10) == 'T'
+				&& timestampTest.charAt(19) == 'Z');
+	}
+
+	public void configureMapper(String... mappingFileUrls) {
+		mapper.setMappingFiles(Arrays.asList(mappingFileUrls));
 	}
 
 }

@@ -20,7 +20,7 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-derby.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
 public class Cause4NonTransientConfig {
 
@@ -72,5 +72,4 @@ public class Cause4NonTransientConfig {
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
         return hibernateProperties;
     }
-
 }
