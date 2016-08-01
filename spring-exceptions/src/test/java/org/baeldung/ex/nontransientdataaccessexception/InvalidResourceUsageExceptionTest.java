@@ -17,22 +17,27 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class InvalidResourceUsageExceptionTest {
-    @Autowired
-    private IFooService fooService;
+	@Autowired
+	private IFooService fooService;
 
-    @Autowired
-    private DataSource restDataSource;
+	@Autowired
+	private DataSource restDataSource;
 
-    @Test(expected = InvalidDataAccessResourceUsageException.class)
-    public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
-        fooService.findAll();
-    }
+	@Test(expected = InvalidDataAccessResourceUsageException.class)
+	public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
+		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+		jdbcTemplate.execute("revoke select from tutorialuser");
 
-    @Test(expected = BadSqlGrammarException.class)
-    public void whenIncorrectSql_thenBadSqlGrammarException() {
-        final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+		fooService.findAll();
 
-        jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
-    }
+		jdbcTemplate.execute("grant select to tutorialuser");
+	}
+
+	@Test(expected = BadSqlGrammarException.class)
+	public void whenIncorrectSql_thenBadSqlGrammarException() {
+		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+
+		jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
+	}
 
 }
