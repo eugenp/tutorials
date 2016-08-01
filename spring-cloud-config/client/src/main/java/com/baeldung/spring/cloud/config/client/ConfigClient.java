@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication @RestController public class ConfigClient {
-
         @Value("${user.role}") private String role;
 
         @Value("${user.password}") private String password;
