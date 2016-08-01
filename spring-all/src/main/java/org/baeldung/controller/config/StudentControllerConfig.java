@@ -12,26 +12,22 @@ import org.springframework.web.servlet.DispatcherServlet;
 
 public class StudentControllerConfig implements WebApplicationInitializer {
 
+	@Override
+	public void onStartup(ServletContext sc) throws ServletException {
+		AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
+		root.register(WebConfig.class);
 
-		@Override
-		public void onStartup(ServletContext sc) throws ServletException {
-			AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-			root.register(WebConfig.class);
-			
-			root.refresh();
-			root.setServletContext(sc);
-			
-			// Manages the lifecycle of the root application context
-			sc.addListener(new ContextLoaderListener(root));
-			
-			
-			
-			DispatcherServlet dv =new DispatcherServlet(new GenericWebApplicationContext());
-			
-			ServletRegistration.Dynamic appServlet = sc.addServlet("test-mvc",dv ); 
-			appServlet.setLoadOnStartup(1); 
-			appServlet.addMapping("/test/*");
-		}
+		root.setServletContext(sc);
 
+		// Manages the lifecycle of the root application context
+		sc.addListener(new ContextLoaderListener(root));
+
+		DispatcherServlet dv = new DispatcherServlet(
+				new GenericWebApplicationContext());
+
+		ServletRegistration.Dynamic appServlet = sc.addServlet("test-mvc", dv);
+		appServlet.setLoadOnStartup(1);
+		appServlet.addMapping("/test/*");
 	}
 
+}
