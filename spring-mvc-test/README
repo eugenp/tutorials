@@ -1,0 +1,5 @@
+To compile and run the project, execute following command:
+
+	mvn clean install org.codehaus.cargo:cargo-maven2-plugin:run
+
+URL: http://localhost:8080/spring-mvc-test/
