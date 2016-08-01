@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @ContextConfiguration(classes={WebConfig.class},loader=AnnotationConfigContextLoader.class )
 public class ControllerAnnotationTest {
 	
+	@Autowired
 	private MockMvc mockMvc;
 
     @Autowired
