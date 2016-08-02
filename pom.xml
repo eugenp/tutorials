@@ -108,6 +108,7 @@
 		<module>mutation-testing</module>
 		<module>spring-mvc-velocity</module>
         <module>xstream</module>
+		<module>dozer</module>
     </modules>
 
 </project>
