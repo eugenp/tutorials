@@ -1,43 +1,43 @@
 package com.baeldung.dozer;
 
 public class Person2 {
-	private String name;
-	private String nickname;
-	private int age;
+    private String name;
+    private String nickname;
+    private int age;
 
-	public Person2() {
+    public Person2() {
 
-	}
+    }
 
-	public Person2(String name, String nickname, int age) {
-		super();
-		this.name = name;
-		this.nickname = nickname;
-		this.age = age;
-	}
+    public Person2(String name, String nickname, int age) {
+        super();
+        this.name = name;
+        this.nickname = nickname;
+        this.age = age;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getNickname() {
-		return nickname;
-	}
+    public String getNickname() {
+        return nickname;
+    }
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
-	public int getAge() {
-		return age;
-	}
+    public int getAge() {
+        return age;
+    }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
 }
