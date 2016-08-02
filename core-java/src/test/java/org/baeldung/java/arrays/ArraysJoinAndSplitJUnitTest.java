@@ -32,7 +32,7 @@ public class ArraysJoinAndSplitJUnitTest {
     
     private final String[] customers = {"Jay", "Harry", "Ronnie", "Gary", "Ross"};
     @Test
-    public void givenOneStringArray_whenSplittingInHalfBetweenTwoStringArrays_ShouldSucceed() throws Exception {
+    public void givenOneStringArray_whenSplittingInHalfTwoStringArrays_ShouldSucceed() throws Exception {
         int ordersHalved = (customers.length / 2) + (customers.length % 2);
         
         String[] driverOne = Arrays.copyOf(customers, ordersHalved);
