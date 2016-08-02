@@ -109,6 +109,7 @@
 		<module>spring-mvc-velocity</module>
         <module>xstream</module>
 		<module>dozer</module>
+		<module>orika</module>
     </modules>
 
 </project>
