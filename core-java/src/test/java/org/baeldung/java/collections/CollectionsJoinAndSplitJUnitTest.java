@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-//import java.util.AbstractSet;
-
 public class CollectionsJoinAndSplitJUnitTest {
 
     public ArrayList<String> sauces = new ArrayList<String>();
@@ -17,7 +14,6 @@ public class CollectionsJoinAndSplitJUnitTest {
     public ArrayList<ArrayList<String>> ingredients = new ArrayList<ArrayList<String>>();
 
     public CollectionsJoinAndSplitJUnitTest() throws Exception {
-        //generate test data
         whenGeneratingTestData_ShouldSucceed();
     }
 
