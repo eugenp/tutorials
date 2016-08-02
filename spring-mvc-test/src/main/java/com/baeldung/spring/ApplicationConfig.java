@@ -15,11 +15,11 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = {"com.baeldung.spring.controller"})
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
-	public ApplicationConfig() {
-		super();
-	}
-	
-	@Override
+    public ApplicationConfig() {
+        super();
+    }
+
+    @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
         registry.addViewController("/").setViewName("index");
@@ -27,7 +27,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver viewResolver() {
-    	final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
         bean.setViewClass(JstlView.class);
         bean.setPrefix("/WEB-INF/jsp/");
         bean.setSuffix(".jsp");
