@@ -17,12 +17,12 @@ public class ArraysJoinAndSplitJUnitTest {
         String[] toppings = new String[sauces.length + cheeses.length + vegetables.length];
         
         System.arraycopy(sauces, 0, toppings, 0, sauces.length);
-        int AddedSoFarCount = sauces.length;
+        int AddedSoFar = sauces.length;
         
-        System.arraycopy(cheeses, 0, toppings, AddedSoFarCount, cheeses.length);
-        AddedSoFarCount += cheeses.length;
+        System.arraycopy(cheeses, 0, toppings, AddedSoFar, cheeses.length);
+        AddedSoFar += cheeses.length;
 
-        System.arraycopy(vegetables, 0, toppings, AddedSoFarCount, vegetables.length);
+        System.arraycopy(vegetables, 0, toppings, AddedSoFar, vegetables.length);
         
         Assert.assertArrayEquals(toppings,
           new String[] {"Marinara", "Olive Oil", "Mozzarella", "Feta",
