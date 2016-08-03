@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.http.HttpMethod;
@@ -21,7 +22,8 @@ import org.springframework.web.client.RestTemplate;
 public class SpringIntegrationTest {
     protected static ResponseResults latestResponse = null;
 
-    protected RestTemplate restTemplate = null;
+    @Autowired
+    protected RestTemplate restTemplate;
 
     protected void executeGet(String url) throws IOException {
         final Map<String, String> headers = new HashMap<>();
