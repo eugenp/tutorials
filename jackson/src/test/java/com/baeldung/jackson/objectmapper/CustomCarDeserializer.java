@@ -7,17 +7,25 @@ import org.slf4j.LoggerFactory;
 
 import com.baeldung.jackson.objectmapper.dto.Car;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class CustomCarDeserializer extends JsonDeserializer<Car> {
+public class CustomCarDeserializer extends StdDeserializer<Car> {
+
+    private static final long serialVersionUID = -5918629454846356161L;
     private final Logger Logger = LoggerFactory.getLogger(getClass());
 
     public CustomCarDeserializer() {
+        this(null);
     }
+
+    public CustomCarDeserializer(final Class<?> vc) {
+        super(vc);
+    }
+
+
 
     @Override
     public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException {

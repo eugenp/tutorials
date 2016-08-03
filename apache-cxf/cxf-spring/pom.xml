@@ -66,10 +66,10 @@
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>1.5.0</version>
+                        <version>1.4.19</version>
                         <configuration>
                             <container>
-                                <containerId>jetty9x</containerId>
+                                <containerId>tomcat8x</containerId>
                                 <type>embedded</type>
                             </container>
                             <configuration>
