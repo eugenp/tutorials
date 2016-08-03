@@ -4,7 +4,7 @@ import org.baeldung.boot.model.Foo;
 
 public interface FooRepository {
 
-    public void save(Foo foo);
+    void save(Foo foo);
 
-    public Foo get(Integer id);
+    Foo get(Integer id);
 }

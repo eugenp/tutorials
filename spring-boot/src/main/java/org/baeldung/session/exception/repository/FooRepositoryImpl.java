@@ -19,7 +19,7 @@ public class FooRepositoryImpl implements FooRepository {
 
     @Override
     public Foo get(Integer id) {
-        return (Foo) sessionFactory.getCurrentSession().get(Foo.class, id);
+        return sessionFactory.getCurrentSession().get(Foo.class, id);
     }
 
 }
