@@ -1,7 +1,5 @@
 package org.baeldung.ex.nontransientdataaccessexception;
 
-import javax.sql.DataSource;
-
 import org.baeldung.ex.nontransientexception.cause.Cause1NonTransientConfig;
 import org.baeldung.persistence.service.IFooService;
 import org.junit.Test;
@@ -14,25 +12,35 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import javax.sql.DataSource;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class InvalidResourceUsageExceptionTest {
-    @Autowired
-    private IFooService fooService;
 
-    @Autowired
-    private DataSource restDataSource;
+	@Autowired
+	private IFooService fooService;
 
-    @Test(expected = InvalidDataAccessResourceUsageException.class)
-    public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
-        fooService.findAll();
+	@Autowired
+	private DataSource restDataSource;
+
+	@Test(expected = InvalidDataAccessResourceUsageException.class)
+	public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
+		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+		jdbcTemplate.execute("revoke select from tutorialuser");
+
+        try {
+            fooService.findAll();
+        } finally {
+            jdbcTemplate.execute("grant select to tutorialuser");
+        }
     }
 
-    @Test(expected = BadSqlGrammarException.class)
-    public void whenIncorrectSql_thenBadSqlGrammarException() {
-        final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+	@Test(expected = BadSqlGrammarException.class)
+	public void whenIncorrectSql_thenBadSqlGrammarException() {
+		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
 
-        jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
-    }
+		jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
+	}
 
 }
