@@ -83,6 +83,7 @@
         <module>spring-spel</module>
         <module>spring-rest</module>
         <module>spring-rest-docs</module>
+        <module>spring-cloud-config</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
