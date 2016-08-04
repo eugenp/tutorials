@@ -46,6 +46,12 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>${postgresql.version}</version>
+		    <scope>runtime</scope>
+		</dependency>
+        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring-data-jpa.version}</version>
@@ -185,6 +191,7 @@
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <postgresql.version>9.4.1209</postgresql.version>
         <spring-data-jpa.version>1.8.2.RELEASE</spring-data-jpa.version>
 
         <!-- logging -->
