@@ -1,6 +1,7 @@
 PASSWORD=changeit
 KEYSTORE=keystore.jks
 HOSTNAME=localhost
+CLIENTNAME=cid
 # CN = Common Name
 # OU = Organization Unit
 # O  = Organization Name
@@ -11,14 +12,14 @@ HOSTNAME=localhost
 DNAME_CA='CN=Baeldung CA,OU=baeldung.com,O=Baeldung,L=SomeCity,ST=SomeState,C=CC'
 # For server certificates, the Common Name (CN) must be the hostname
 DNAME_HOST='CN=$(HOSTNAME),OU=baeldung.com,O=Baeldung,L=SomeCity,ST=SomeState,C=CC'
+DNAME_CLIENT='CN=$(CLIENTNAME),OU=baeldung.com,O=Baeldung,L=SomeCity,ST=SomeState,C=CC'
 TRUSTSTORE=truststore.jks
-CLIENTNAME=cid
 
 all:	clean create-keystore add-host create-truststore add-client
 
 create-keystore:
 	# Generate a certificate authority (CA)
-	keytool -genkey -alias ca \
+	keytool -genkey -alias ca -ext BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
 	    -validity 3650 -dname $(DNAME_CA) \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
@@ -30,7 +31,7 @@ add-host:
 	    -validity 3650 -dname $(DNAME_HOST) \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 	# Generate a host certificate signing request
-	keytool -certreq -alias $(HOSTNAME) \
+	keytool -certreq -alias $(HOSTNAME) -ext BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
 	    -validity 3650 -file "$(HOSTNAME).csr" \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
@@ -44,10 +45,14 @@ add-host:
 	    -file "$(HOSTNAME).crt" \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 
-create-truststore:
-	# Export certificate authority into truststore
-	keytool -export -alias ca -file ca.crt \
+export-authority:
+	# Export certificate authority
+	keytool -export -alias ca -file ca.crt -rfc \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
+
+
+create-truststore: export-authority
+	# Import certificate authority into a new truststore
 	keytool -import -trustcacerts -noprompt -alias ca -file ca.crt \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 
@@ -55,10 +60,10 @@ add-client:
 	# Generate client certificate
 	keytool -genkey -alias $(CLIENTNAME) \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
-	    -validity 3650 -dname $(DNAME_HOST) \
+	    -validity 3650 -dname $(DNAME_CLIENT) \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Generate a host certificate signing request
-	keytool -certreq -alias $(CLIENTNAME) \
+	keytool -certreq -alias $(CLIENTNAME) -ext BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
 	    -validity 3650 -file "$(CLIENTNAME).csr" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
@@ -73,4 +78,5 @@ add-client:
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 
 clean:
-	rm -f $(KEYSTORE) *.csr *.crt $(TRUSTSTORE)
+	# Remove generated artifacts
+	find . ! -name Makefile -type f -exec rm -f {} \;
