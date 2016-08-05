@@ -31,10 +31,6 @@ public class SpringIntegrationTest {
         final HeaderSettingRequestCallback requestCallback = new HeaderSettingRequestCallback(headers);
         final ResponseResultErrorHandler errorHandler = new ResponseResultErrorHandler();
 
-        if (restTemplate == null) {
-            restTemplate = new RestTemplate();
-        }
-
         restTemplate.setErrorHandler(errorHandler);
         latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, new ResponseExtractor<ResponseResults>() {
             @Override
