@@ -1,5 +1,8 @@
 package org.baeldung.ex.nontransientdataaccessexception;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.baeldung.ex.nontransientexception.cause.Cause1NonTransientConfig;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
@@ -12,15 +15,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class CleanupFailureExceptionTest {
 
-	private static final Logger LOG = Logger.getLogger(CleanupFailureExceptionTest.class.getName());
-	
+    private static final Logger LOG = Logger.getLogger(CleanupFailureExceptionTest.class.getName());
+
     @Autowired
     private SessionFactory sessionFactory;
 
