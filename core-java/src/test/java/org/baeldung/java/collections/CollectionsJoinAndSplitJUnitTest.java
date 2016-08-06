@@ -1,5 +1,6 @@
 package org.baeldung.java.collections;
 
+import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -9,11 +10,11 @@ import org.junit.Test;
 
 public class CollectionsJoinAndSplitJUnitTest {
 
-    private ArrayList<String> sauces = new ArrayList<>();
-    private ArrayList<String> cheeses = new ArrayList<>();
-    private ArrayList<String> vegetables = new ArrayList<>();
+    private Collection<String> sauces = new ArrayList<>();
+    private Collection<String> cheeses = new ArrayList<>();
+    private Collection<String> vegetables = new ArrayList<>();
 
-    private ArrayList<ArrayList<String>> ingredients = new ArrayList<>();
+    private Collection<ArrayList<String>> ingredients = new ArrayList<>();
 
     @Before
     public void init() {
