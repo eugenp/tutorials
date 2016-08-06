@@ -23,7 +23,7 @@
         <h:outputText id="avgPageVar" value="#{pageLevelNumberList.stream().average().get()}"/>
         <br/>
         <h:panelGrid title="Data Structures" border="3" >
-            <h:dataTable var="streamResult" value="#{ELBean.numberList.stream().filter(x-> x>1).toList()}">
+            <h:dataTable var="streamResult" value="#{pageLevelNumberList.stream().filter(x-> x>1).toList()}">
                 <h:column id="nameCol">
                     <h:outputText id="name" value="#{streamResult}"/>
                 </h:column>
