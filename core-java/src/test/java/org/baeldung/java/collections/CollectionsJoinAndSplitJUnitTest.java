@@ -14,7 +14,7 @@ public class CollectionsJoinAndSplitJUnitTest {
     private Collection<String> cheeses = new ArrayList<>();
     private Collection<String> vegetables = new ArrayList<>();
 
-    private Collection<ArrayList<String>> ingredients = new ArrayList<>();
+    private Collection<String> ingredients = new ArrayList<>();
 
     @Before
     public void init() {
@@ -29,23 +29,25 @@ public class CollectionsJoinAndSplitJUnitTest {
         vegetables.add("Spinach");
         vegetables.add("Green Peppers");
 
-        ingredients.add(sauces);
-        ingredients.add(cheeses);
-        ingredients.add(vegetables);
+        //ingredients.add(sauces);
+        //ingredients.add(cheeses);
+        //ingredients.add(vegetables);
     }
 
     @Test
-    public void givenThreeArrayLists_whenJoiningIntoOneArrayList_shouldSucceed() {
-        ArrayList<ArrayList<String>> toppings = new ArrayList<>();
+    public void givenThreeCollections_whenJoiningIntoOneCollection_shouldSucceed() {
+        Collection<String> toppings = new ArrayList<>();
 
-        toppings.add(sauces);
-        toppings.add(cheeses);
-        toppings.add(vegetables);
+        
 
-        Assert.assertTrue(toppings.size() == 3);
-        Assert.assertTrue(toppings.contains(sauces));
-        Assert.assertTrue(toppings.contains(cheeses));
-        Assert.assertTrue(toppings.contains(vegetables));
+        //toppings.add(sauces);
+        //toppings.add(cheeses);
+        //toppings.add(vegetables);
+
+        //Assert.assertTrue(toppings.size() == 3);
+        //Assert.assertTrue(toppings.contains(sauces));
+        //Assert.assertTrue(toppings.contains(cheeses));
+        //Assert.assertTrue(toppings.contains(vegetables));
     }
 
     @Test
