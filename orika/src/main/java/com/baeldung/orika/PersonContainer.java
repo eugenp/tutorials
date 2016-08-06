@@ -4,7 +4,6 @@ public class PersonContainer {
 	private Name name;
 
 	public PersonContainer(Name name) {
-		super();
 		this.name = name;
 	}
 

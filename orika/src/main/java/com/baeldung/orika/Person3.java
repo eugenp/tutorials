@@ -9,7 +9,6 @@ public class Person3 {
 	}
 
 	public Person3(String name, String dtob) {
-		super();
 		this.name = name;
 		this.dtob = dtob;
 	}

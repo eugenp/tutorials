@@ -6,7 +6,6 @@ public class PersonListContainer {
 	private List<Name> names;
 
 	public PersonListContainer(List<Name> names) {
-		super();
 		this.names = names;
 	}
 

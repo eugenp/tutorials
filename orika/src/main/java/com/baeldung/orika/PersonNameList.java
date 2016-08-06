@@ -6,7 +6,6 @@ public class PersonNameList {
 	private List<String> nameList;
 
 	public PersonNameList(List<String> nameList) {
-		super();
 		this.nameList = nameList;
 	}
 

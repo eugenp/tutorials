@@ -14,7 +14,6 @@ public class Dest {
 	}
 
 	public Dest(String name, int age) {
-		super();
 		this.name = name;
 		this.age = age;
 	}

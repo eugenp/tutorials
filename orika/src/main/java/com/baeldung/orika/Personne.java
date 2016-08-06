@@ -5,12 +5,7 @@ public class Personne {
 	private String surnom;
 	private int age;
 
-	public Personne() {
-
-	}
-
 	public Personne(String nom, String surnom, int age) {
-		super();
 		this.nom = nom;
 		this.surnom = surnom;
 		this.age = age;

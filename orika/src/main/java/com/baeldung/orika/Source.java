@@ -13,7 +13,6 @@ public class Source {
 	}
 
 	public Source(String name, int age) {
-		super();
 		this.name = name;
 		this.age = age;
 	}

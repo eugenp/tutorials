@@ -4,7 +4,6 @@ public class PersonNameArray {
 	private String[] nameArray;
 
 	public PersonNameArray(String[] nameArray) {
-		super();
 		this.nameArray = nameArray;
 	}
 

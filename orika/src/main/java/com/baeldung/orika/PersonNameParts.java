@@ -5,7 +5,6 @@ public class PersonNameParts {
 	private String lastName;
 
 	public PersonNameParts(String firstName, String lastName) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
