@@ -12,22 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class ConfigClient {
-
     @Value("${user.role}")
     private String role;
 
     @Value("${user.password}")
     private String password;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConfigClient.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigClient.class, args);
+    }
 
-    @RequestMapping(
-            value = "/whoami/{username}",
-            method = RequestMethod.GET,
-            produces = MediaType.TEXT_PLAIN_VALUE
-    )
+    @RequestMapping(value = "/whoami/{username}", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
     public String whoami(@PathVariable("username") String username) {
         return String.format("Hello %s! You are a(n) %s and your password is '%s'.\n", username, role, password);
     }
