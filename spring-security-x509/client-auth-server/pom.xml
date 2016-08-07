@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.spring.security</groupId>
-    <artifactId>server</artifactId>
+    <artifactId>client-auth-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>server</name>
-    <description>Spring x.509 Authentication Demo</description>
+    <name>client-auth-server</name>
+    <description>Spring x.509 Client Authentication Demo</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -2,6 +2,7 @@ PASSWORD=changeit
 KEYSTORE=keystore.jks
 HOSTNAME=localhost
 CLIENTNAME=cid
+
 # CN = Common Name
 # OU = Organization Unit
 # O  = Organization Name
@@ -76,6 +77,11 @@ add-client:
 	keytool -import -trustcacerts -alias $(CLIENTNAME) \
 	    -file "$(CLIENTNAME).crt" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
+	# Export private certificate for importing into a browser
+	keytool -importkeystore -srcalias $(CLIENTNAME) \
+	    -srckeystore $(TRUSTSTORE) -srcstorepass $(PASSWORD) \
+	    -destkeystore "$(CLIENTNAME).p12" -deststorepass $(PASSWORD) \
+	    -deststoretype PKCS12
 
 clean:
 	# Remove generated artifacts
