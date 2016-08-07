@@ -16,6 +16,7 @@ public class ELSampleBean {
     private String firstName;
     private String lastName;
     private String pageDescription = "This page demos JSF EL Basics";
+    public static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
     private int pageCounter;
     private Random randomIntGen = new Random();
 
@@ -27,11 +28,19 @@ public class ELSampleBean {
     public void save() {
 
     }
+    
+    public static String getConstantField() {
+        return constantField;
+    }
 
     public void saveFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String multiplyValue(LambdaExpression expr){
+        String theResult = (String) expr.invoke(FacesContext.getCurrentInstance().getELContext(), pageCounter);
+        return theResult;
+    }
 
     public void saveByELEvaluation() {
         firstName = (String) evaluateEL("#{firstName.value}", String.class);
