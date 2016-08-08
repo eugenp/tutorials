@@ -52,7 +52,7 @@ public class HystrixTimeoutTest {
             throws InterruptedException {
         commandProperties.withExecutionTimeoutInMilliseconds(10_000);
         config.andCommandPropertiesDefaults(commandProperties);
-        assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(5_000)).execute(),
+        assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
                 equalTo("Success"));
     }
 
@@ -74,7 +74,7 @@ public class HystrixTimeoutTest {
                 .withMaxQueueSize(10)
                 .withCoreSize(3)
                 .withQueueSizeRejectionThreshold(10));
-        assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(9_000)).execute(),
+        assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
                 equalTo("Success"));
     }
 
@@ -98,7 +98,6 @@ public class HystrixTimeoutTest {
 
         assertThat(this.invokeRemoteService(10000), equalTo(null));
         assertThat(this.invokeRemoteService(10000), equalTo(null));
-        assertThat(this.invokeRemoteService(500), equalTo(null));
         Thread.sleep(5000);
 
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(500)).execute(),
