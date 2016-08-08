@@ -56,31 +56,20 @@ public class ApiDocumentation {
     @Before
     public void setUp() {
         this.document = document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()));
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-                .apply(documentationConfiguration(this.restDocumentation))
-                .alwaysDo(this.document)
-                .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).alwaysDo(this.document).build();
     }
-
 
     @Test
     public void headersExample() throws Exception {
-        this.document.snippets(responseHeaders(headerWithName("Content-Type")
-                .description("The Content-Type of the payload, e.g. `application/hal+json`")));
-        this.mockMvc.perform(get("/"))
-                .andExpect(status().isOk());
+        this.document.snippets(responseHeaders(headerWithName("Content-Type").description("The Content-Type of the payload, e.g. `application/hal+json`")));
+        this.mockMvc.perform(get("/")).andExpect(status().isOk());
     }
 
     @Test
     public void indexExample() throws Exception {
-        this.document.snippets(
-                links(linkWithRel("crud").description("The <<resources-tags,Tags resource>>")),
-                responseFields(fieldWithPath("_links").description("<<resources-index-links,Links>> to other resources"))
-        );
-        this.mockMvc.perform(get("/"))
-                .andExpect(status().isOk());
+        this.document.snippets(links(linkWithRel("crud").description("The <<resources-tags,Tags resource>>")), responseFields(fieldWithPath("_links").description("<<resources-index-links,Links>> to other resources")));
+        this.mockMvc.perform(get("/")).andExpect(status().isOk());
     }
-
 
     @Test
     public void crudGetExample() throws Exception {
@@ -88,23 +77,14 @@ public class ApiDocumentation {
         Map<String, String> tag = new HashMap<>();
         tag.put("name", "GET");
 
-        String tagLocation = this.mockMvc.perform(get("/crud")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(tag)))
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getHeader("Location");
+        String tagLocation = this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
         crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
-        this.mockMvc.perform(get("/crud")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(crud)))
-                .andExpect(status().isOk());
+        this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
     }
 
     @Test
@@ -112,13 +92,7 @@ public class ApiDocumentation {
         Map<String, String> tag = new HashMap<>();
         tag.put("name", "CREATE");
 
-        String tagLocation = this.mockMvc.perform(post("/crud")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(tag)))
-                .andExpect(status().isCreated())
-                .andReturn()
-                .getResponse()
-                .getHeader("Location");
+        String tagLocation = this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isCreated()).andReturn().getResponse().getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
@@ -126,12 +100,8 @@ public class ApiDocumentation {
         crud.put("tags", singletonList(tagLocation));
 
         ConstrainedFields fields = new ConstrainedFields(CrudInput.class);
-        this.document.snippets(requestFields(
-                fields.withPath("title").description("The title of the note"),
-                fields.withPath("body").description("The body of the note"),
-                fields.withPath("tags").description("An array of tag resource URIs")));
+        this.document.snippets(requestFields(fields.withPath("title").description("The title of the note"), fields.withPath("body").description("The body of the note"), fields.withPath("tags").description("An array of tag resource URIs")));
         this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isCreated());
-
 
     }
 
@@ -141,23 +111,14 @@ public class ApiDocumentation {
         Map<String, String> tag = new HashMap<>();
         tag.put("name", "DELETE");
 
-        String tagLocation = this.mockMvc.perform(delete("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(tag)))
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getHeader("Location");
+        String tagLocation = this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isOk()).andReturn().getResponse().getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
         crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
-        this.mockMvc.perform(delete("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(crud)))
-                .andExpect(status().isOk());
+        this.mockMvc.perform(delete("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isOk());
     }
 
     @Test
@@ -166,50 +127,30 @@ public class ApiDocumentation {
         Map<String, String> tag = new HashMap<>();
         tag.put("name", "PATCH");
 
-        String tagLocation = this.mockMvc.perform(patch("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(tag)))
-                .andExpect(status().isNoContent())
-                .andReturn()
-                .getResponse()
-                .getHeader("Location");
+        String tagLocation = this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isNoContent()).andReturn().getResponse().getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
         crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
-        this.mockMvc.perform(patch("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(crud)))
-                .andExpect(status().isNoContent());
+        this.mockMvc.perform(patch("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isNoContent());
     }
-
 
     @Test
     public void crudPutExample() throws Exception {
         Map<String, String> tag = new HashMap<>();
         tag.put("name", "PUT");
 
-        String tagLocation = this.mockMvc.perform(put("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(tag)))
-                .andExpect(status().isAccepted())
-                .andReturn()
-                .getResponse()
-                .getHeader("Location");
+        String tagLocation = this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(tag))).andExpect(status().isAccepted()).andReturn().getResponse().getHeader("Location");
 
         Map<String, Object> crud = new HashMap<>();
         crud.put("title", "Sample Model");
         crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
-        this.mockMvc.perform(put("/crud/10")
-                .contentType(MediaTypes.HAL_JSON)
-                .content(this.objectMapper.writeValueAsString(crud)))
-                .andExpect(status().isAccepted());
+        this.mockMvc.perform(put("/crud/10").contentType(MediaTypes.HAL_JSON).content(this.objectMapper.writeValueAsString(crud))).andExpect(status().isAccepted());
     }
-
 
     @Test
     public void contextLoads() {
@@ -224,11 +165,8 @@ public class ApiDocumentation {
         }
 
         private FieldDescriptor withPath(String path) {
-            return fieldWithPath(path)
-                    .attributes(key("constraints")
-                            .value(collectionToDelimitedString(this.constraintDescriptions.descriptionsForProperty(path), ". ")));
+            return fieldWithPath(path).attributes(key("constraints").value(collectionToDelimitedString(this.constraintDescriptions.descriptionsForProperty(path), ". ")));
         }
     }
-
 
 }

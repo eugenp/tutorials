@@ -27,12 +27,6 @@
 			<version>2.0.6</version>
 		</dependency>
 
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.9.1</version>
-		</dependency>
-
 		<!-- utils -->
 		<dependency>
 			<groupId>commons-io</groupId>

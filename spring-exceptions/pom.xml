@@ -130,6 +130,32 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>javax.el</groupId>
+        	<artifactId>el-api</artifactId>
+        	<version>2.2</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derby</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbyclient</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbynet</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbytools</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -203,8 +229,8 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.1.1.RELEASE</org.springframework.security.version>
         <javassist.version>3.20.0-GA</javassist.version>
         <jstl.version>1.2</jstl.version>
 
