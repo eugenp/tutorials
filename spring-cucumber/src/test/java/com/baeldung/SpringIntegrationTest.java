@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationContextLoader;
 import org.springframework.http.HttpMethod;
@@ -21,17 +22,14 @@ import org.springframework.web.client.RestTemplate;
 public class SpringIntegrationTest {
     protected static ResponseResults latestResponse = null;
 
-    protected RestTemplate restTemplate = null;
+    @Autowired
+    protected RestTemplate restTemplate;
 
     protected void executeGet(String url) throws IOException {
         final Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         final HeaderSettingRequestCallback requestCallback = new HeaderSettingRequestCallback(headers);
         final ResponseResultErrorHandler errorHandler = new ResponseResultErrorHandler();
-
-        if (restTemplate == null) {
-            restTemplate = new RestTemplate();
-        }
 
         restTemplate.setErrorHandler(errorHandler);
         latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, new ResponseExtractor<ResponseResults>() {
