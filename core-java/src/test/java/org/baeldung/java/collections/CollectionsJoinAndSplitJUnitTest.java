@@ -35,11 +35,6 @@ public class CollectionsJoinAndSplitJUnitTest {
     }
 
     @Test
-    public void givenThreeCollections_whenJoiningUsingApacheCommons_shouldSucceed() {
-        
-    }
-
-    @Test
     public void givenThreeCollections_whenJoiningIntoOneCollection_shouldSucceed() {
         Collection<String> toppings = new ArrayList<>();
 
