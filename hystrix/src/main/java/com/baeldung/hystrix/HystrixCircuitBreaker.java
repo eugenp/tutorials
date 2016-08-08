@@ -1,7 +1,11 @@
 package com.baeldung.hystrix;
 
-/**
- * Created by sbalachandran on 8/5/2016.
- */
-public class HystrixCircuitBreaker {
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface HystrixCircuitBreaker {
 }
