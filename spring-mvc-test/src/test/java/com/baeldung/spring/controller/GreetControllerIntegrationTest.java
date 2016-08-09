@@ -39,7 +39,7 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void verifyWac() {
+    public void givenWAC_whenServletContext_thenItProvidesGreetController() {
         ServletContext servletContext = wac.getServletContext();
         Assert.assertNotNull(servletContext);
         Assert.assertTrue(servletContext instanceof MockServletContext);
@@ -47,42 +47,42 @@ public class GreetControllerIntegrationTest {
     }
 
     @Test
-    public void verifyIndexJspViewName() throws Exception {
+    public void givenHomePageURI_whenMockMVC_thenReturnsIndexJSPViewName() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/homePage")).andDo(print()).andExpect(MockMvcResultMatchers.view().name("index"));
     }
 
     @Test
-    public void verifyGreet() throws Exception {
+    public void givenGreetURI_whenMockMVC_thenVerifyResponse() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/greet")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!")).andReturn();
         Assert.assertEquals("application/json;charset=UTF-8", mvcResult.getResponse().getContentType());
     }
 
     @Test
-    public void verifyGreetWithPathVariable() throws Exception {
+    public void givenGreetURIWithPathVariable_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithPathVariable/John")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John!!!"));
     }
 
     @Test
-    public void verifyGreetWithPathVariable_2() throws Exception {
+    public void givenGreetURIWithPathVariable_2_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithPathVariable/{name}", "Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World Doe!!!"));
     }
 
     @Test
-    public void verifyGreetWithQueryVariable() throws Exception {
+    public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8")).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!"));
     }
 
     @Test
-    public void verifyGreetWithPost() throws Exception {
+    public void givenGreetURIWithPost_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPost")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!"));
     }
 
     @Test
-    public void verifyGreetWithPostAndFormData() throws Exception {
+    public void givenGreetURIWithPostAndFormData_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json;charset=UTF-8")).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
     }
