@@ -17,6 +17,5 @@
 		<property name="itemName" type="string">
 			<column name="ITEM_NAME" not-null="true" />
 		</property>
-
 	</class>
 </hibernate-mapping>

@@ -16,7 +16,6 @@ public class HibernateUtil {
 	// factory = new Configuration().configure().buildSessionFactory();
 	final Session session = sf.openSession();
 	return session;
-
     }
 
 }

@@ -77,5 +77,4 @@ public class Item implements Serializable {
 	public void setItemDescription(final String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
-
 }

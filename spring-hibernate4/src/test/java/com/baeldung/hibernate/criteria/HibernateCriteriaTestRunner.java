@@ -6,12 +6,10 @@ import org.junit.runner.notification.Failure;
 
 public class HibernateCriteriaTestRunner {
 
-    public static void main(final String[] args) {
+	public static void main(final String[] args) {
 
-	final Result result = JUnitCore.runClasses(HibernateCriteriaTestSuite.class);
-	for (final Failure failure : result.getFailures()) {
+		Result result = JUnitCore.runClasses(HibernateCriteriaTestSuite.class);
+		for (Failure failure : result.getFailures()) {
+		}
 	}
-
-    }
 }
-
