@@ -8,11 +8,20 @@ import java.util.Date;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class CustomDateDeserializer extends JsonDeserializer<Date> {
+public class CustomDateDeserializer extends StdDeserializer<Date> {
 
+    private static final long serialVersionUID = -5451717385630622729L;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
+    public CustomDateDeserializer() {
+        this(null);
+    }
+
+    public CustomDateDeserializer(final Class<?> vc) {
+        super(vc);
+    }
 
     @Override
     public Date deserialize(final JsonParser jsonparser, final DeserializationContext context) throws IOException, JsonProcessingException {
