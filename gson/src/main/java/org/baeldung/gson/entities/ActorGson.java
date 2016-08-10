@@ -16,6 +16,10 @@ public class ActorGson {
         this.filmography = filmography;
     }
 
+    @Override
+    public String toString() {
+        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + dateOfBirth + ", filmography=" + filmography + "]";
+    }
 
     public String getImdbId() {
         return imdbId;
@@ -41,8 +45,5 @@ public class ActorGson {
         this.filmography = filmography;
     }
 
-    @Override
-    public String toString() {
-        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + dateOfBirth + ", filmography=" + filmography + "]";
-    }
+
 }
