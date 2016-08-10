@@ -5,14 +5,17 @@ import java.util.List;
 
 public class ActorGson {
 
-    @Override
-    public String toString() {
-        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + dateOfBirth + ", filmography=" + filmography + "]";
-    }
-
     private String imdbId;
     private Date dateOfBirth;
     private List<String> filmography;
+
+    public ActorGson(String imdbId, Date dateOfBirth, List<String> filmography) {
+        super();
+        this.imdbId = imdbId;
+        this.dateOfBirth = dateOfBirth;
+        this.filmography = filmography;
+    }
+
 
     public String getImdbId() {
         return imdbId;
@@ -38,11 +41,8 @@ public class ActorGson {
         this.filmography = filmography;
     }
 
-    public ActorGson(String imdbId, Date dateOfBirth, List<String> filmography) {
-        super();
-        this.imdbId = imdbId;
-        this.dateOfBirth = dateOfBirth;
-        this.filmography = filmography;
+    @Override
+    public String toString() {
+        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + dateOfBirth + ", filmography=" + filmography + "]";
     }
-
 }
