@@ -1,9 +1,8 @@
 package org.baeldung.jackson.entities;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.annotations.Expose;
+
+import java.util.List;
 
 public class MovieWithNullValue {
 
