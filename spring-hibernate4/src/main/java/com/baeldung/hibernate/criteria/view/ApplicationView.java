@@ -35,7 +35,7 @@ public class ApplicationView {
 		final Session session = HibernateUtil.getHibernateSession();
 		final Criteria cr = session.createCriteria(Item.class);
 		Transaction tx = null;
-
+		
 		// calculate the time taken by criteria
 		final long startTimeCriteria = System.nanoTime();
 		cr.add(Restrictions.like("itemName", "%item One%"));

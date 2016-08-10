@@ -20,7 +20,7 @@ public class HibernateCriteriaTest {
 	public void testPerformanceOfCriteria() {
 		assertTrue(av.checkIfCriteriaTimeLower());
 	}
-
+	
 	@Test
 	public void testLikeCriteriaQuery() {
 		final Session session = HibernateUtil.getHibernateSession();
