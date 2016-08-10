@@ -1,15 +1,14 @@
 package com.baeldung.hystrix;
 
-import com.netflix.hystrix.*;
-import com.netflix.hystrix.collapser.RequestCollapserFactory;
+import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
+import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -48,7 +47,7 @@ public class HystrixTimeoutTest {
     }
 
     @Test
-    public void givenServiceTimeoutEqualTo5000_andExecutionTimeoutEqualTo10000_thenReturnSuccess()
+    public void givenServiceTimeoutEqualTo500_andExecutionTimeoutEqualTo10000_thenReturnSuccess()
             throws InterruptedException {
         commandProperties.withExecutionTimeoutInMilliseconds(10_000);
         config.andCommandPropertiesDefaults(commandProperties);

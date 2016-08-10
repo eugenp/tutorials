@@ -2,6 +2,7 @@ package org.baeldung.persistence.service;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 import org.baeldung.config.ProductConfig;
 import org.baeldung.config.UserConfig;
@@ -57,10 +58,13 @@ public class JpaMultipleDBIntegrationTest {
         user2.setAge(10);
         try {
             user2 = userRepository.save(user2);
+            userRepository.flush();
+            fail("DataIntegrityViolationException should be thrown!");
         } catch (final DataIntegrityViolationException e) {
+            // Expected
+        } catch (final Exception e) {
+            fail("DataIntegrityViolationException should be thrown, instead got: " + e);
         }
-
-        assertNull(userRepository.findOne(user2.getId()));
     }
 
     @Test

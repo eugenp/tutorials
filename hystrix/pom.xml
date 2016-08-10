@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
 
         <!-- Hystrix -->
-        <hystrix-core.version>1.4.10</hystrix-core.version>
+        <hystrix-core.version>1.5.4</hystrix-core.version>
         <rxjava-core.version>0.20.7</rxjava-core.version>
 
         <!-- Testing -->
