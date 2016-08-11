@@ -1,13 +1,13 @@
 package com.baeldung.springintegration.controllers;
 
-import java.util.Random;
 import javax.annotation.PostConstruct;
+import javax.el.LambdaExpression;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
+import java.util.Random;
 
 @ManagedBean(name = "ELBean")
 @ViewScoped

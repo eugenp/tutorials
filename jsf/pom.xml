@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
+            <artifactId>javax.el-api</artifactId>
             <version>${javax.el.version}</version>
         </dependency>
 
@@ -127,7 +127,7 @@
 
         <!-- JSF -->
         <com.sun.faces.version>2.1.7</com.sun.faces.version>
-        <javax.el.version>2.2</javax.el.version>
+        <javax.el.version>3.0.0</javax.el.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
