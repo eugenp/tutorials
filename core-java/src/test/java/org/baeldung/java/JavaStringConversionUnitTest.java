@@ -16,105 +16,105 @@ import java.util.Date;
  */
 public class JavaStringConversionUnitTest {
     @Test
-    public void given_StringToboolean_thenCorrect() {
+    public void stringToboolean() {
         boolean stringToBoolean = Boolean.parseBoolean("true");
 
         System.out.println(stringToBoolean);
     }
 
     @Test
-    public void given_StringToBoolean_thenCorrect() {
+    public void stringToBoolean() {
         Boolean stringToBoolean = Boolean.valueOf("false");
 
         System.out.println(stringToBoolean);
     }
 
     @Test
-    public void given_StringTobyte_thenCorrect() {
+    public void stringTobyte() {
         byte stringToByte = Byte.parseByte("1");
 
         System.out.println(stringToByte);
     }
 
     @Test
-    public void given_StringToByte_thenCorrect() {
+    public void stringToByte() {
         Byte stringToByte = Byte.valueOf("1");
 
         System.out.println(stringToByte);
     }
 
     @Test
-    public void given_StringToshort_thenCorrect() {
+    public void stringToshort() {
         short stringToShort = Short.parseShort("1");
 
         System.out.println(stringToShort);
     }
 
     @Test
-    public void given_StringToShort_thenCorrect() {
+    public void stringToShort() {
         Short stringToShort = Short.valueOf("1");
 
         System.out.println(stringToShort);
     }
 
     @Test
-    public void given_StringToint_thenCorrect() {
+    public void stringToint() {
         int stringToInt = Integer.parseInt("1");
 
         System.out.println(stringToInt);
     }
 
     @Test
-    public void given_StringToInteger_thenCorrect() {
+    public void stringToInteger() {
         Integer stringToInt = Integer.valueOf("1");
 
         System.out.println(stringToInt);
     }
 
     @Test
-    public void given_StringTolong_thenCorrect() {
+    public void stringTolong() {
         long stringToLong = Long.parseLong("1");
 
         System.out.println(stringToLong);
     }
 
     @Test
-    public void given_StringToLong_thenCorrect() {
+    public void stringToLong() {
         Long stringToLong = Long.valueOf("1");
 
         System.out.println(stringToLong);
     }
 
     @Test
-    public void given_StringTofloat_thenCorrect() {
+    public void stringTofloat() {
         float stringToFloat = Float.parseFloat("1.1");
 
         System.out.println(stringToFloat);
     }
 
     @Test
-    public void given_StringToFloat_thenCorrect() {
+    public void stringToFloat() {
         Float stringToFloat = Float.valueOf("1.1");
 
         System.out.println(stringToFloat);
     }
 
     @Test
-    public void given_StringTodouble_thenCorrect() {
+    public void stringTodouble() {
         double stringToDouble = Double.parseDouble("1");
 
         System.out.println(stringToDouble);
     }
 
     @Test
-    public void given_StringToDouble_thenCorrect() {
+    public void stringToDouble() {
         Double stringToDouble = Double.valueOf("1.1");
 
         System.out.println(stringToDouble);
     }
 
     @Test
-    public void given_StringTochar_thenCorrect() {
+    public void stringTochar() {
         String stringToChar = "C";
         char h = stringToChar.charAt(0);
 
@@ -123,15 +123,15 @@ public class JavaStringConversionUnitTest {
 
 
     @Test
-    public void given_StringTocharArray_thenCorrect() {
+    public void stringTocharArray() {
         String stringToChars = "Hello world";
-        char[] chars= stringToChars.toCharArray();
+        char[] chars = stringToChars.toCharArray();
 
         System.out.println(Arrays.toString(chars));
     }
 
     @Test
-    public void given_StringTobyteArray_default_thenCorrect() {
+    public void stringTobyteArray_default() {
         String strToBytes = "Hello world";
         byte[] bytes = strToBytes.getBytes();
 
@@ -139,7 +139,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void given_StringTobyteArray_CharsetName_thenCorrect() throws UnsupportedEncodingException {
+    public void stringTobyteArray_CharsetName() throws UnsupportedEncodingException {
         String stringToBytes = "Hello world";
         byte[] bytes = stringToBytes.getBytes("UTF-8");
 
@@ -147,7 +147,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void given_StringTobyteArray_Charset_thenCorrect() {
+    public void stringTobyteArray_Charset() {
         String stringToBytes = "Hello world";
         byte[] bytes = stringToBytes.getBytes(StandardCharsets.UTF_8);
 
@@ -155,7 +155,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void given_java7String_To_Date_thenCorrect() throws ParseException {
+    public void java7StringToDate() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateInString = "05/30/2016";
         Date date = formatter.parse(dateInString);
@@ -164,14 +164,14 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void given_java8String_To_Date_thenCorrect() {
+    public void java8StringToDate() {
         LocalDate localDate = LocalDate.parse("2016-06-26", DateTimeFormatter.ISO_LOCAL_DATE);
 
         System.out.println(localDate);
     }
 
     @Test
-    public void given_java7DateToString_thenCorrect() {
+    public void java7DateToString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String dateToString = formatter.format(new Date());
 
@@ -179,7 +179,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void given_java8DateToString_thenCorrect() {
+    public void java8DateToString() {
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
         String dateToString = dateTimeFormatter.format(localDate);//2016-06-26
