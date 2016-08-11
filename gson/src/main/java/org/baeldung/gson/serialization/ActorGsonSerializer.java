@@ -1,16 +1,15 @@
 package org.baeldung.gson.serialization;
 
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.baeldung.gson.entities.ActorGson;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import org.baeldung.gson.entities.ActorGson;
+
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ActorGsonSerializer implements JsonSerializer<ActorGson> {
 

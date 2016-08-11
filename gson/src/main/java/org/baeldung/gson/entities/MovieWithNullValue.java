@@ -1,14 +1,15 @@
 package org.baeldung.gson.entities;
 
-import java.util.List;
-
 import com.google.gson.annotations.Expose;
+
+import java.util.List;
 
 public class MovieWithNullValue {
 
     @Expose
     private String imdbId;
     private String director;
+
     @Expose
     private List<ActorGson> actors;
 
