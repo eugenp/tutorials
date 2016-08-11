@@ -126,7 +126,7 @@
         <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
 
         <!-- JSF -->
-        <com.sun.faces.version>2.1.7</com.sun.faces.version>
+        <com.sun.faces.version>2.2.13</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
 
         <!-- logging -->
