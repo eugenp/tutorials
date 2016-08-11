@@ -22,7 +22,7 @@ import io.restassured.response.Response;
 public class StudentServiceTest{
 
 	private String getURL() {
-        return "/StudentDirectory/student/get";
+        return "/student/get";
     }
 	
 	@Test
