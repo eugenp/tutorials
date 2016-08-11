@@ -17,6 +17,7 @@ app.controller('StudentCtrl', ['$scope','StudentService', function ($scope,Stude
     paginationPageSizes: [5, 10, 20],
     paginationPageSize: paginationOptions.pageSize,
     enableColumnMenus:false,
+	useExternalPagination: true,
     columnDefs: [
       { name: 'studentId' },
       { name: 'name' },
