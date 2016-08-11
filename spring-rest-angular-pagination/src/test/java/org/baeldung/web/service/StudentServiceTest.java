@@ -19,7 +19,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 @IntegrationTest("server.port:8888")
 public class StudentServiceTest {
 
-    private static final String ENDPOINT = "http://localhost:8888/StudentDirectory/student/get";
+    private static final String ENDPOINT = "http://localhost:8888/student/get";
 
     @Test
     public void givenRequestForStudents_whenPageIsOne_expectContainsNames() {
