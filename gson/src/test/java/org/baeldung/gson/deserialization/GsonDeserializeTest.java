@@ -1,14 +1,14 @@
 package org.baeldung.gson.deserialization;
 
-import java.text.ParseException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.baeldung.gson.entities.ActorGson;
 import org.baeldung.gson.entities.Movie;
 import org.baeldung.gson.serialization.ActorGsonDeserializer;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import java.text.ParseException;
 
 public class GsonDeserializeTest {
 
