@@ -4,6 +4,6 @@ import org.springframework.data.domain.Page;
 
 public interface IOperations<T> {
 
-	Page<T> findPaginated(int page, int size);
+	public Page<T> findPaginated(final int page, final int size);
 
 }

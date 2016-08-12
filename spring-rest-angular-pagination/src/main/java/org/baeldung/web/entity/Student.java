@@ -1,7 +1,12 @@
-package org.baeldung.web.vo;
+package org.baeldung.web.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Student implements Serializable {
 
 	/**
@@ -12,25 +17,29 @@ public class Student implements Serializable {
 	public Student() {
 	}
 
-	public Student(String studentId, String name, String gender, Integer age) {
+	public Student(long id, String name, String gender, Integer age) {
 		super();
-		this.studentId = studentId;
+		this.id = id;
 		this.name = name;
 		this.gender = gender;
 		this.age = age;
 	}
 
-	private String studentId;
+	@Id
+	private long id;
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private String gender;
+	@Column(nullable = false)
 	private Integer age;
 
-	public String getStudentId() {
-		return studentId;
+	public long getId() {
+		return id;
 	}
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
