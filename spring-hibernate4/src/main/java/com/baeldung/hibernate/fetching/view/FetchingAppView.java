@@ -51,9 +51,7 @@ public class FetchingAppView {
 	public void createTestData() {
 
 		final Session session = HibernateUtil.getHibernateSession();
-
 		Transaction tx = null;
-
 		tx = session.beginTransaction();
 		final User user1 = new User();
 		final User user2 = new User();
