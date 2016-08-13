@@ -16,7 +16,7 @@ public class SpringTestAspect {
     private List<String> accumulator;
 
     @Around("execution(* com.baeldung.spring.service.SpringSuperService.*(..))")
-    public Object advice(ProceedingJoinPoint jp) throws Throwable {
+    public Object auditMethod(ProceedingJoinPoint jp) throws Throwable {
         String methodName = jp.getSignature().getName();
         accumulator.add("Call to "+methodName);
         Object obj = jp.proceed();
