@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.el.LambdaExpression;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.el.LambdaExpression;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -15,6 +16,7 @@ public class ELSampleBean {
 
     private String firstName;
     private String lastName;
+    private Collection<Integer> numberList;
     private String pageDescription = "This page demos JSF EL Basics";
     public static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
     private int pageCounter;
