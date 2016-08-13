@@ -9,8 +9,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>basic-secured-server</module>
-        <module>client-auth-server</module>
+        <module>spring-security-x509-basic-auth</module>
+        <module>spring-security-x509-client-auth</module>
     </modules>
 
     <parent>
