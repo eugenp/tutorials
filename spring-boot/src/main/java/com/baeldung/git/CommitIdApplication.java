@@ -2,15 +2,13 @@ package com.baeldung.git;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
-@SpringBootApplication
 @PropertySource("classpath:/git.properties")
-@ComponentScan({ "com.baeldung.git"})
-public class Application {
+@SpringBootApplication(scanBasePackages = { "com.baeldung.git"})
+public class CommitIdApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(CommitIdApplication.class, args);
     }
 }
 
