@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 @Scope(value = "prototype")
 public class LogicInConstructorExampleBean {
@@ -18,6 +20,6 @@ public class LogicInConstructorExampleBean {
     public LogicInConstructorExampleBean(Environment environment) {
         this.environment = environment;
 
-        LOG.info(environment);
+        LOG.info(Arrays.asList(environment.getDefaultProfiles()));
     }
 }

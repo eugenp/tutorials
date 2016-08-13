@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 
 @Component
 @Scope(value = "prototype")
@@ -19,6 +20,6 @@ public class PostConstructExampleBean {
 
     @PostConstruct
     public void init() {
-        LOG.info(environment);
+        LOG.info(Arrays.asList(environment.getDefaultProfiles()));
     }
 }

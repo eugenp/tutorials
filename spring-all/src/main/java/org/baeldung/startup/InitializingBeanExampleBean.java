@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 @Scope(value = "prototype")
 public class InitializingBeanExampleBean implements InitializingBean {
@@ -18,6 +20,6 @@ public class InitializingBeanExampleBean implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        LOG.info(environment);
+        LOG.info(Arrays.asList(environment.getDefaultProfiles()));
     }
 }
