@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.baeldung.hibernate.fetching.model.User" table="USER">
+		<id name="userId" type="long" unsaved-value="null">
+			<column name="USER_ID" />
+			<generator class="native" />
+		</id>
+
+		<property name="userName" type="string">
+			<column name="USERNAME" length="100" />
+		</property>
+		<property name="firstName" type="string">
+			<column name="FIRST_NAME" not-null="true" />
+		</property>
+		<property name="lastName" type="string">
+			<column name="LAST_NAME" not-null="true" />
+		</property>
+		
+		<set name="orderDetail" table="USER_ORDER" 
+				inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="USER_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.baeldung.hibernate.fetching.model.OrderDetail" />
+        </set>
+
+	</class>
+</hibernate-mapping>

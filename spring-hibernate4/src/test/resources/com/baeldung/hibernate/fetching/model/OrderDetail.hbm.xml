@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.baeldung.hibernate.fetching.model.OrderDetail" table="USER_ORDER">
+
+ 		<id name="orderId" type="java.lang.Long" column="ORDER_ID" >
+			<generator class="native" />
+		</id>
+	
+		<property name="orderDate" type="date">
+			<column name="ORDER_DATE"  />
+		</property>
+		<property name="orderDesc" type="string">
+			<column name="ORDER_DESC" not-null="true" />
+		</property>
+
+
+  		<many-to-one name="user" class="com.baeldung.hibernate.fetching.model.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+                
+	</class>
+</hibernate-mapping>
