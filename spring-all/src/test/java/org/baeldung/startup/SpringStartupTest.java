@@ -17,9 +17,22 @@ public class SpringStartupTest {
     private ApplicationContext ctx;
 
     @Test(expected = BeanCreationException.class)
-    public void whenInstantiating_shouldThrowNPE() throws Exception {
+    public void whenInstantiating_shouldThrowBCE() throws Exception {
+        ctx.getBean(InvalidInitExampleBean.class);
+    }
+
+    @Test
+    public void whenPostConstruct_shouldLogEnv() throws Exception {
+        ctx.getBean(PostConstructExampleBean.class);
+    }
+
+    @Test
+    public void whenConstructorInjection_shouldLogEnv() throws Exception {
         ctx.getBean(LogicInConstructorExampleBean.class);
     }
 
-
+    @Test
+    public void whenInitializingBean_shouldLogEnv() throws Exception {
+        ctx.getBean(InitializingBeanExampleBean.class);
+    }
 }
