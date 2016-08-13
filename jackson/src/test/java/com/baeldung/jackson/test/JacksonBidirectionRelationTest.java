@@ -7,6 +7,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
+import org.junit.Test;
+
 import com.baeldung.jackson.bidirection.Item;
 import com.baeldung.jackson.bidirection.ItemWithIdentity;
 import com.baeldung.jackson.bidirection.ItemWithIgnore;
@@ -20,8 +22,6 @@ import com.baeldung.jackson.bidirection.UserWithRef;
 import com.baeldung.jackson.bidirection.UserWithSerializer;
 import com.baeldung.jackson.bidirection.UserWithView;
 import com.baeldung.jackson.jsonview.Views;
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -93,7 +93,7 @@ public class JacksonBidirectionRelationTest {
     public void givenBidirectionRelation_whenDeserializingUsingIdentity_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ItemWithIdentity item = new ObjectMapper().reader(ItemWithIdentity.class).readValue(json);
+        final ItemWithIdentity item = new ObjectMapper().readerFor(ItemWithIdentity.class).readValue(json);
 
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
@@ -104,7 +104,7 @@ public class JacksonBidirectionRelationTest {
     public void givenBidirectionRelation_whenUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ItemWithSerializer item = new ObjectMapper().reader(ItemWithSerializer.class).readValue(json);
+        final ItemWithSerializer item = new ObjectMapper().readerFor(ItemWithSerializer.class).readValue(json);
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);

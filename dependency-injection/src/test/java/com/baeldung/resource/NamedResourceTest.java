@@ -1,27 +1,29 @@
 package com.baeldung.resource;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-import java.io.File;
-
-import javax.annotation.Resource;
-
+import com.baeldung.configuration.ApplicationContextTestResourceNameType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import javax.annotation.Resource;
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations={
-		"/applicationContextTest-@Resource-NameType.xml"})
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
+  classes = ApplicationContextTestResourceNameType.class)
 public class NamedResourceTest {
 
-    @Resource(name="namedFile")
+    @Resource(name = "namedFile")
     private File testFile;
 
     @Test
-    public void namedResource_MUST_FIND_SPECIFIED_File() {
+    public void givenResourceAnnotation_WhenOnField_THEN_DEPENDENCY_Found() {
         assertNotNull(testFile);
-        assertTrue(testFile.getName().equals("namedFile.txt"));
+        assertEquals("namedFile.txt", testFile.getName());
     }
 }

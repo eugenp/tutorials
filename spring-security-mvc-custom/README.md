@@ -2,6 +2,8 @@
 
 ## Spring Security Login Example Project
 
+###The Course
+The "REST With Spring" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Remember Me](http://www.baeldung.com/spring-security-remember-me)

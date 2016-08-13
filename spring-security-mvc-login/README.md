@@ -2,11 +2,13 @@
 
 ## Spring Security Login Example Project
 
+###The Course
+The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Form Login](http://www.baeldung.com/spring-security-login)
 - [Spring Security Logout](http://www.baeldung.com/spring-security-logout)
-- [Spring Security Expressions – hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
+- [Spring Security Expressions â€“ hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
 
 
 ### Build the Project
