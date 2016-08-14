@@ -5,7 +5,7 @@
 ### Courses
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
-The "Learn Spring Security" Classes: http://bit.ly/learnspringsecurity
+The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Expressions - hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
