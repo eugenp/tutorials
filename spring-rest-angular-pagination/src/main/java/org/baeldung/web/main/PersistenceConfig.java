@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
-@EnableJpaRepositories("org.baeldung")
+@EnableJpaRepositories("org.baeldung.web.dao")
 @ComponentScan(basePackages = { "org.baeldung.web" })
 @EntityScan("org.baeldung.web.entity") 
 @Configuration
@@ -25,7 +25,6 @@ public class PersistenceConfig {
 
 	@Bean
 	public DataSource dataSource() {
-
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		EmbeddedDatabase db = builder
 			.setType(EmbeddedDatabaseType.HSQL)

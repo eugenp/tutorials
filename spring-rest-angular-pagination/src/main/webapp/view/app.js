@@ -19,7 +19,7 @@ app.controller('StudentCtrl', ['$scope','StudentService', function ($scope,Stude
     enableColumnMenus:false,
 	useExternalPagination: true,
     columnDefs: [
-      { name: 'studentId' },
+      { name: 'id' },
       { name: 'name' },
       { name: 'gender' },
       { name: 'age' }
@@ -42,6 +42,7 @@ app.controller('StudentCtrl', ['$scope','StudentService', function ($scope,Stude
 app.service('StudentService',['$http', function ($http) {
 	
 	function getStudents(pageNumber,size) {
+		pageNumber = pageNumber > 0?pageNumber - 1:0;
         return  $http({
           method: 'GET',
           url: 'student/get?page='+pageNumber+'&size='+size
