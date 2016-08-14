@@ -11,7 +11,7 @@
         <h:outputText id="valueOutput" value="#{(cube=(x->x*x*x);cube(4))}"/>
         <br/>
         <h:outputLabel id="staticLabel" for="staticFieldOutput" value="Static Field Output:"/>
-        <h:outputText id="staticFieldOutput" value="#{com.baeldung.el.controllers.ELSampleBean.constantField}"/>
+        <h:outputText id="staticFieldOutput" value="#{ElBean.constantField}"/>
         <br/>
         <h:outputLabel id="avgLabel" for="avg" value="Average of Integer List Value:"/>
         <h:outputText id="avg" value="#{['1','2','3'].stream().average().get()}"/>
@@ -19,6 +19,7 @@
         <h:outputLabel id="lambdaLabel" for="lambdaPass" value="Passing Lambda Expressions:"/>
         <h:outputText id="lambdaPass" value="#{ELBean.multiplyValue(x->x*x*x)}"/>
         <br/>
+        <c:set var='pageLevelNumberList' value="#{[1,2,3]}"/>
         <h:outputLabel id="avgPageVarLabel" for="avgPageVar" value="Average of Page-Level Integer List Value:"/>
         <h:outputText id="avgPageVar" value="#{pageLevelNumberList.stream().average().get()}"/>
         <br/>
@@ -29,7 +30,6 @@
                 </h:column>
             </h:dataTable>
         </h:panelGrid>
-        <c:set var='pageLevelNumberList' value="#{[1,2,3]}"/>
     </h:body>
 </html>
 
