@@ -1,5 +1,6 @@
 package org.baeldung.startup;
 
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.BeanCreationException;
@@ -34,5 +35,10 @@ public class SpringStartupTest {
     @Test
     public void whenInitializingBean_shouldLogEnv() throws Exception {
         ctx.getBean(InitializingBeanExampleBean.class);
+    }
+
+    @Test
+    public void whenApplicationListener_shouldRunOnce() throws Exception {
+        Assertions.assertThat(StartupApplicationListenerExample.counter).isEqualTo(1);
     }
 }
