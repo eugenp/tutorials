@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CommitInfoController {
+
     @Value("${git.commit.message.short}")
     private String commitMessage;
 
