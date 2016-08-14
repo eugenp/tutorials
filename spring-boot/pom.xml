@@ -126,7 +126,6 @@
                 </executions>
                 <configuration>
                     <verbose>true</verbose>
-                    <dotGitDirectory>${project.basedir}/src/main/resources/testgitrepo/.git</dotGitDirectory>
                 </configuration>
             </plugin>
 
