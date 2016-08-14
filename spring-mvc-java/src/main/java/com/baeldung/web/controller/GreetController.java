@@ -1,13 +1,8 @@
-package com.baeldung.spring.controller;
+package com.baeldung.web.controller;
 
+import com.baeldung.model.Greeting;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.baeldung.spring.bean.Greeting;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GreetController {

@@ -1,4 +1,4 @@
-package com.baeldung.spring.bean;
+package com.baeldung.model;
 
 public class Greeting {
     private int id;
