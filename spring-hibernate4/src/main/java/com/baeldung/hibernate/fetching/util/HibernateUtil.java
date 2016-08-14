@@ -1,35 +1,30 @@
 package com.baeldung.hibernate.fetching.util;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-	private static SessionFactory factory;
 
-	@SuppressWarnings("deprecation")
-	public static Session getHibernateSession(String fetchMethod) {
-		//two config files are there
-		//one with lazy loading enabled 
-		//another lazy = false
-		SessionFactory sf = null;
-		if ("lazy".equals(fetchMethod)) {
-			sf = new Configuration().configure("fetchingLazy.cfg.xml").buildSessionFactory();
-		} else {
+    @SuppressWarnings("deprecation")
+    public static Session getHibernateSession(String fetchMethod) {
+        //two config files are there
+        //one with lazy loading enabled
+        //another lazy = false
 
-			sf = new Configuration().configure("fetching.cfg.xml").buildSessionFactory();
-		}
-		// fetching.cfg.xml is used for this example
-		final Session session = sf.openSession();
-		return session;
-	}
+        final String configFileName = "lazy".equals(fetchMethod) ?
+          "fetchingLazy.cfg.xml" :
+          "fetching.cfg.xml";
 
-	public static Session getHibernateSession() {
-		System.out.println("Loading eager");
-		SessionFactory sf = null;
-		sf = new Configuration().configure("fetching.cfg.xml").buildSessionFactory();
-		final Session session = sf.openSession();
-		return session;
-	}
+        return new Configuration()
+          .configure(configFileName)
+          .buildSessionFactory().openSession();
+    }
+
+    public static Session getHibernateSession() {
+        return new Configuration()
+          .configure("fetching.cfg.xml")
+          .buildSessionFactory()
+          .openSession();
+    }
 
 }
