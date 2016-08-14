@@ -11,27 +11,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(classes = CommitIdApplication.class)
 public class CommitIdTest {
 
-    @Value("${git.commit.message.short}")
+    @Value("${git.commit.message.short:#{null}}")
     private String commitMessage;
 
-    @Value("${git.branch}")
+    @Value("${git.branch:#{null}}")
     private String branch;
 
-    @Value("${git.commit.id}")
+    @Value("${git.commit.iddd:#{null}}")
     private String commitId;
 
     @Test
     public void shouldInjectGitInfoProperties() throws Exception {
         assertThat(commitMessage)
-          .isNotNull()
-          .isNotEqualTo("${git.commit.message.short}");
+          .isNotNull();
 
         assertThat(branch)
-          .isNotNull()
-          .isNotEqualTo("${git.branch}");
+          .isNotNull();
 
         assertThat(commitId)
-          .isNotNull()
-          .isNotEqualTo("${git.commit.id}");
+          .isNotNull();
     }
 }
