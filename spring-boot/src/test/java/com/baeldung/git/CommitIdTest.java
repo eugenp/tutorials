@@ -22,11 +22,16 @@ public class CommitIdTest {
 
     @Test
     public void shouldInjectGitInfoProperties() throws Exception {
-        assertThat(commitMessage).isNotNull();
-        assertThat(commitMessage).isNotEqualTo("${git.commit.message.short}");
-        assertThat(branch).isNotNull();
-        assertThat(branch).isNotEqualTo("${git.branch}");
-        assertThat(commitId).isNotNull();
-        assertThat(commitId).isNotEqualTo("${git.commit.id}");
+        assertThat(commitMessage)
+          .isNotNull()
+          .isNotEqualTo("${git.commit.message.short}");
+
+        assertThat(branch)
+          .isNotNull()
+          .isNotEqualTo("${git.branch}");
+
+        assertThat(commitId)
+          .isNotNull()
+          .isNotEqualTo("${git.commit.id}");
     }
 }
