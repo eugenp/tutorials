@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-	@Autowired
-	private StudentRepository dao;
-	
-	@Override
-	public Page<Student> findPaginated(int page, int size) {
-		return dao.findAll(new PageRequest(page,size));
-	}
+    @Autowired
+    private StudentRepository dao;
+
+    @Override
+    public Page<Student> findPaginated(int page, int size) {
+        return dao.findAll(new PageRequest(page, size));
+    }
 
 }

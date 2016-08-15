@@ -13,18 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StudentDirectoryRestController {
 
-	@Autowired
-	private StudentService service;
+    @Autowired
+    private StudentService service;
 
-	@RequestMapping(value = "/student/get", params = { "page",
-			"size" }, method = RequestMethod.GET, produces = "application/json")
-	public Page<Student> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size) {
+    @RequestMapping(value = "/student/get", params = { "page", "size" }, method = RequestMethod.GET, produces = "application/json")
+    public Page<Student> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size) {
 
-		Page<Student> resultPage = service.findPaginated(page, size);
-		if (page > resultPage.getTotalPages()) {
-			throw new MyResourceNotFoundException();
-		}
-		return resultPage;
-	}
+        Page<Student> resultPage = service.findPaginated(page, size);
+        if (page > resultPage.getTotalPages()) {
+            throw new MyResourceNotFoundException();
+        }
+        return resultPage;
+    }
 
 }

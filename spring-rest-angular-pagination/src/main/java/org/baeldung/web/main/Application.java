@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Import(PersistenceConfig.class)
 public class Application extends WebMvcConfigurerAdapter {
 
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -22,5 +21,5 @@ public class Application extends WebMvcConfigurerAdapter {
     public ShallowEtagHeaderFilter shallowEtagHeaderFilter() {
         return new ShallowEtagHeaderFilter();
     }
-    
+
 }

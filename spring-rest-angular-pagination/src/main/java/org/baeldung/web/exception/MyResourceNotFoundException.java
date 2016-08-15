@@ -3,11 +3,11 @@ package org.baeldung.web.exception;
 public class MyResourceNotFoundException extends RuntimeException {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 4088649120307193208L;
+     * 
+     */
+    private static final long serialVersionUID = 4088649120307193208L;
 
-	public MyResourceNotFoundException() {
+    public MyResourceNotFoundException() {
         super();
     }
 
@@ -22,6 +22,5 @@ public class MyResourceNotFoundException extends RuntimeException {
     public MyResourceNotFoundException(final Throwable cause) {
         super(cause);
     }
-
 
 }
