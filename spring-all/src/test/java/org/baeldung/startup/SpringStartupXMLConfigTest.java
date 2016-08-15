@@ -18,4 +18,9 @@ public class SpringStartupXMLConfigTest {
     public void whenPostConstruct_shouldLogEnv() throws Exception {
         ctx.getBean(InitMethodExampleBean.class);
     }
+
+    @Test
+    public void whenAllStrategies_shouldLogOrder() throws Exception {
+        ctx.getBean(AllStrategiesExampleBean.class);
+    }
 }
