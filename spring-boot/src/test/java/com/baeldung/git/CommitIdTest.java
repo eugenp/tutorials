@@ -7,28 +7,32 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CommitIdApplication.class)
 public class CommitIdTest {
 
-    @Value("${git.commit.message.short:#{null}}")
+    private static final String UNKNOWN_STATUS = "UNKNOWN";
+
+    @Value("${git.commit.message.short:#{'UNKNOWN'}}")
     private String commitMessage;
 
-    @Value("${git.branch:#{null}}")
+    @Value("${git.branch:#{'UNKNOWN'}")
     private String branch;
 
-    @Value("${git.commit.id:#{null}}")
+    @Value("${git.commit.id:#{'UNKNOWN'}")
     private String commitId;
 
     @Test
     public void shouldInjectGitInfoProperties() throws Exception {
+
         assertThat(commitMessage)
-          .isNotNull();
+                .isNotEqualTo(UNKNOWN_STATUS);
 
         assertThat(branch)
-          .isNotNull();
+                .isNotEqualTo(UNKNOWN_STATUS);
 
         assertThat(commitId)
-          .isNotNull();
+                .isNotEqualTo(UNKNOWN_STATUS);
     }
 }
