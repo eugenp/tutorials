@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class HystrixTimeoutTest {
 
     private HystrixCommand.Setter config;
-    private HystrixCommandProperties.Setter commandProperties ;
+    private HystrixCommandProperties.Setter commandProperties;
 
 
     @Rule
@@ -26,12 +26,12 @@ public class HystrixTimeoutTest {
     public void setup() {
         commandProperties = HystrixCommandProperties.Setter();
         config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
     }
 
     @Test
-    public void givenInputBob_andDefaultSettings_thenReturnHelloBob(){
+    public void givenInputBob_andDefaultSettings_thenReturnHelloBob() {
         assertThat(new CommandHelloWorld("Bob").execute(), equalTo("Hello Bob!"));
     }
 
@@ -107,12 +107,12 @@ public class HystrixTimeoutTest {
                 equalTo("Success"));
     }
 
-    public String invokeRemoteService(long timeout) throws InterruptedException{
+    public String invokeRemoteService(long timeout) throws InterruptedException {
         String response = null;
-        try{
+        try {
             response = new RemoteServiceTestCommand(config,
                     new RemoteServiceTestSimulator(timeout)).execute();
-        }catch(HystrixRuntimeException ex){
+        } catch (HystrixRuntimeException ex) {
             System.out.println("ex = " + ex);
         }
         return response;
