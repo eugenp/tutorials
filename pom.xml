@@ -82,6 +82,7 @@
         <module>spring-quartz</module>
         <module>spring-spel</module>
         <module>spring-rest</module>
+        <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud-config</module>
 
