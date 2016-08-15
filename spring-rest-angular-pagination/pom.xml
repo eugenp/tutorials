@@ -13,9 +13,6 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.3.3.RELEASE</version>
 	</parent>
-	<properties>
-		<spring.data.version>1.12.2.RELEASE</spring.data.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
