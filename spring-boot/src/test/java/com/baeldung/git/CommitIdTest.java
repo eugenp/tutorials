@@ -17,7 +17,7 @@ public class CommitIdTest {
     @Value("${git.branch:#{null}}")
     private String branch;
 
-    @Value("${git.commit.iddd:#{null}}")
+    @Value("${git.commit.id:#{null}}")
     private String commitId;
 
     @Test
