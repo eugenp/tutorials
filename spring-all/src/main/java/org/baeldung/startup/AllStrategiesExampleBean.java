@@ -2,9 +2,13 @@ package org.baeldung.startup;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Component
+@Scope(value = "prototype")
 public class AllStrategiesExampleBean implements InitializingBean {
 
     private static final Logger LOG = Logger.getLogger(AllStrategiesExampleBean.class);
