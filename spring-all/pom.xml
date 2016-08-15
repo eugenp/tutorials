@@ -87,14 +87,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Akka -->
-
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.11</artifactId>
-            <version>2.4.8</version>
-        </dependency>
-
         <!-- util -->
 
         <dependency>
