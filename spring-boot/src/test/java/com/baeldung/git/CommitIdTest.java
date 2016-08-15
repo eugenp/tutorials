@@ -2,6 +2,8 @@ package com.baeldung.git;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -12,27 +14,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(classes = CommitIdApplication.class)
 public class CommitIdTest {
 
-    private static final String UNKNOWN_STATUS = "UNKNOWN";
+    private static final Logger LOG = LoggerFactory.getLogger(CommitIdTest.class);
 
     @Value("${git.commit.message.short:#{'UNKNOWN'}}")
     private String commitMessage;
 
-    @Value("${git.branch:#{'UNKNOWN'}")
+    @Value("${git.branch:#{'UNKNOWN'}}")
     private String branch;
 
-    @Value("${git.commit.id:#{'UNKNOWN'}")
+    @Value("${git.commit.id:#{'UNKNOWN'}}")
     private String commitId;
 
     @Test
     public void shouldInjectGitInfoProperties() throws Exception {
 
+        LOG.info(commitId);
+        LOG.info(commitMessage);
+        LOG.info(branch);
+
         assertThat(commitMessage)
-                .isNotEqualTo(UNKNOWN_STATUS);
+                .isNotEqualTo("UNKNOWN");
 
         assertThat(branch)
-                .isNotEqualTo(UNKNOWN_STATUS);
+                .isNotEqualTo("UNKNOWN");
 
         assertThat(commitId)
-                .isNotEqualTo(UNKNOWN_STATUS);
+                .isNotEqualTo("UNKNOWN");
     }
 }
