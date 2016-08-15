@@ -1,5 +1,7 @@
 package com.baeldung.completablefuture;
 
+import org.junit.Test;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -7,15 +9,13 @@ import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CompletableFutureTest {
 
     @Test
-    public void whenRunningCompletableFutureAsyncronously_thenGetMethodWaitsForResult() throws InterruptedException, ExecutionException {
+    public void whenRunningCompletableFutureAsynchronously_thenGetMethodWaitsForResult() throws InterruptedException, ExecutionException {
 
         Future<String> completableFuture = calculateAsync();
 
@@ -144,7 +144,7 @@ public class CompletableFutureTest {
     }
 
     @Test
-    public void whenFutureThrows_thenHandleMethodRecievesException() throws ExecutionException, InterruptedException {
+    public void whenFutureThrows_thenHandleMethodReceivesException() throws ExecutionException, InterruptedException {
 
         String name = null;
 
@@ -155,13 +155,7 @@ public class CompletableFutureTest {
                 throw new RuntimeException("Computation error!");
             }
             return "Hello, " + name;
-        }).handle((s, t) -> {
-            if (s != null) {
-                return s;
-            } else {
-                return "Hello, Stranger!";
-            }
-        });
+        }).handle((s, t) -> s != null ? s : "Hello, Stranger!");
 
         assertEquals("Hello, Stranger!", completableFuture.get());
 
