@@ -16,17 +16,17 @@ public class CommitIdTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CommitIdTest.class);
 
-    @Value("${git.commit.message.short:#{'UNKNOWN'}}")
+    @Value("${git.commit.message.short:UNKNOWN}")
     private String commitMessage;
 
-    @Value("${git.branch:#{'UNKNOWN'}}")
+    @Value("${git.branch:UNKNOWN}")
     private String branch;
 
-    @Value("${git.commit.id:#{'UNKNOWN'}}")
+    @Value("${git.commit.id:UNKNOWN}")
     private String commitId;
 
     @Test
-    public void shouldInjectGitInfoProperties() throws Exception {
+    public void whenInjecting_shouldDisplay() throws Exception {
 
         LOG.info(commitId);
         LOG.info(commitMessage);
