@@ -21,20 +21,20 @@ public class FetchingAppView {
 	public FetchingAppView(){
 		
 	}
-
+	
 	//lazily loaded 
-	public boolean lazyLoaded(){
+	public Set<OrderDetail> lazyLoaded(){
 		final Session sessionLazy = HibernateUtil.getHibernateSession("lazy");
 		List<User> users = sessionLazy.createQuery("From User").list();
 		User userLazyLoaded = new User();
 		userLazyLoaded = users.get(3); 
 		//since data is lazyloaded so data won't be initialized
 		Set<OrderDetail> orderDetailSet = userLazyLoaded.getOrderDetail();
-		return (Hibernate.isInitialized(orderDetailSet));	
+		return (orderDetailSet);	
 	}
 	
 	//eagerly loaded
-	public boolean eagerLoaded(){
+	public Set<OrderDetail> eagerLoaded(){
 		final Session sessionEager = HibernateUtil.getHibernateSession();
 		//data should be loaded in the following line
 		//also note the queries generated
@@ -42,7 +42,7 @@ public class FetchingAppView {
 		User userEagerLoaded = new User();
 		userEagerLoaded = users.get(3); 
 		Set<OrderDetail> orderDetailSet = userEagerLoaded.getOrderDetail();
-		return (Hibernate.isInitialized(orderDetailSet));	
+		return orderDetailSet;	
 	}
 	
 	
@@ -98,14 +98,12 @@ public class FetchingAppView {
 		order5.setOrderDate(new Date(2014, 9, 11));
 		order5.setUser(user3);
 		
-		
 		session.saveOrUpdate(order1);
 		session.saveOrUpdate(order2);
 		session.saveOrUpdate(order3);
 		session.saveOrUpdate(order4);
 		session.saveOrUpdate(order5);
 
-		// session.saveOrUpdate(user1);
 		tx.commit();
 		session.close();
 

@@ -11,8 +11,7 @@ public class OrderDetail implements Serializable{
 	private String orderDesc;
 	private User user;
 	
-	public OrderDetail(){
-		
+	public OrderDetail(){	
 	}
 		
 	public OrderDetail(Date orderDate, String orderDesc) {

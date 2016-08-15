@@ -14,7 +14,6 @@ public class User implements Serializable {
     private Set<OrderDetail> orderDetail = new HashSet<OrderDetail>();
 
     public User() {
-
     }
 
     public User(final Long userId, final String userName, final String firstName, final String lastName) {
@@ -23,7 +22,6 @@ public class User implements Serializable {
 	this.userName = userName;
 	this.firstName = firstName;
 	this.lastName = lastName;
-
     }
 
     @Override

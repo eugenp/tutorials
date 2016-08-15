@@ -18,6 +18,7 @@ public class HibernateUtil {
 		} else {
 			sf = new Configuration().configure("fetching.cfg.xml").buildSessionFactory();
 		}
+		
 		// fetching.cfg.xml is used for this example
 		final Session session = sf.openSession();
 		return session;
