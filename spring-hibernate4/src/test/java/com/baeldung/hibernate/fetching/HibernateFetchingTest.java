@@ -1,7 +1,6 @@
 package com.baeldung.hibernate.fetching;
 
 import static org.junit.Assert.*;
-
 import java.util.Set;
 
 import org.hibernate.Hibernate;
@@ -41,5 +40,4 @@ public class HibernateFetchingTest {
 		Set<OrderDetail> orderDetalSetEager = fav.eagerLoaded();
 		assertTrue(Hibernate.isInitialized(orderDetalSetEager));
 	}
-	
 }

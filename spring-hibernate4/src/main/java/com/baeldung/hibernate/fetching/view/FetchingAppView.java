@@ -18,7 +18,6 @@ import com.baeldung.hibernate.fetching.model.User;
 
 public class FetchingAppView {
 
-	
 	public FetchingAppView(){
 		
 	}

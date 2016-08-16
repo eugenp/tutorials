@@ -23,8 +23,6 @@ public class HibernateUtil {
 		return session;
 	}
 
-
-
     public static Session getHibernateSession() {
         return new Configuration()
           .configure("fetching.cfg.xml")
