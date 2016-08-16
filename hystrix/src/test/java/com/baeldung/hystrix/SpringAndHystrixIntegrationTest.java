@@ -23,10 +23,14 @@ public class SpringAndHystrixIntegrationTest {
     public final ExpectedException exception = ExpectedException.none();
 
     @Test
-    public void givenTimeOutOf15000_whenExistingClientCalled_thenExpectHystrixRuntimeException() throws InterruptedException {
+    public void givenTimeOutOf15000_whenClientCalledWithHystrix_thenExpectHystrixRuntimeException() throws InterruptedException {
         exception.expect(HystrixRuntimeException.class);
-        assertThat(hystrixController.index(), equalTo("Success"));
+        hystrixController.withHystrix();
     }
 
+    @Test
+    public void givenTimeOutOf15000_whenClientCalledWithOutHystrix_thenExpectSuccess() throws InterruptedException {
+        assertThat(hystrixController.withOutHystrix(), equalTo("Success"));
+    }
 
 }
