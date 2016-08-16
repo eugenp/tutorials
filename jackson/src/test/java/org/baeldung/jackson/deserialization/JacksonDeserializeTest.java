@@ -1,20 +1,18 @@
 package org.baeldung.jackson.deserialization;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.baeldung.jackson.entities.Movie;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class JacksonDeserializeTest {
 
     @Test
-    public void whenSimpleDeserialize_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+    public void whenSimpleDeserialize_thenCorrect() throws IOException {
 
         String jsonInput = "{\"imdbId\":\"tt0472043\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"1982-09-21T12:00:00+01:00\",\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
         ObjectMapper mapper = new ObjectMapper();
@@ -25,7 +23,7 @@ public class JacksonDeserializeTest {
     }
 
     @Test
-    public void whenCustomDeserialize_thenCorrect() throws JsonParseException, JsonMappingException, IOException {
+    public void whenCustomDeserialize_thenCorrect() throws IOException {
 
         String jsonInput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"1982-09-21T12:00:00+01:00\",\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
 
