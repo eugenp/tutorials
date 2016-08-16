@@ -16,6 +16,7 @@
         <module>assertj</module>
         <module>apache-cxf</module>
         <module>apache-fop</module>
+        <module>autovalue-tutorial</module>
         <module>core-java</module>
         <module>core-java-8</module>
         <module>couchbase-sdk-intro</module>
@@ -52,6 +53,7 @@
 		<module>log4j</module>
 
         <module>spring-all</module>
+        <module>spring-akka</module>
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
         <module>spring-batch</module>
@@ -80,7 +82,9 @@
         <module>spring-quartz</module>
         <module>spring-spel</module>
         <module>spring-rest</module>
+        <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
+        <module>spring-cloud-config</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
@@ -95,6 +99,7 @@
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
+        <module>spring-security-x509</module>
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
         <module>jsf</module>
@@ -106,6 +111,8 @@
 		<module>mutation-testing</module>
 		<module>spring-mvc-velocity</module>
         <module>xstream</module>
+		<module>dozer</module>
+		<module>orika</module>
     </modules>
 
 </project>

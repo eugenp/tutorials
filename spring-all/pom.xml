@@ -87,14 +87,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Akka -->
-
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor_2.11</artifactId>
-            <version>2.4.8</version>
-        </dependency>
-
         <!-- util -->
 
         <dependency>
@@ -135,6 +127,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.5.1</version>
             <scope>test</scope>
         </dependency>
 

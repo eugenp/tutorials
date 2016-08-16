@@ -1,15 +1,14 @@
 package com.baeldung.hystrix;
 
-import com.netflix.hystrix.*;
-import com.netflix.hystrix.collapser.RequestCollapserFactory;
+import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
+import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-
-import java.util.concurrent.ExecutionException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -17,7 +16,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class HystrixTimeoutTest {
 
     private HystrixCommand.Setter config;
-    private HystrixCommandProperties.Setter commandProperties ;
+    private HystrixCommandProperties.Setter commandProperties;
 
 
     @Rule
@@ -27,8 +26,8 @@ public class HystrixTimeoutTest {
     public void setup() {
         commandProperties = HystrixCommandProperties.Setter();
         config = HystrixCommand
-          .Setter
-          .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
+                .Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup1"));
     }
 
     @Test
@@ -118,12 +117,12 @@ public class HystrixTimeoutTest {
                 equalTo("Success"));
     }
 
-    public String invokeRemoteService(long timeout) throws InterruptedException{
+    public String invokeRemoteService(long timeout) throws InterruptedException {
         String response = null;
-        try{
+        try {
             response = new RemoteServiceTestCommand(config,
                     new RemoteServiceTestSimulator(timeout)).execute();
-        }catch(HystrixRuntimeException ex){
+        } catch (HystrixRuntimeException ex) {
             System.out.println("ex = " + ex);
         }
         return response;
