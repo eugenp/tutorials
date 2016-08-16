@@ -11,145 +11,144 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 
-/**
- * Created by sic.org on 8/2/2016.
- */
+
+
 public class JavaStringConversionUnitTest {
     @Test
-    public void stringToboolean() {
-        boolean stringToBoolean = Boolean.parseBoolean("true");
+    public void stringToPrimitiveBoolean() {
+        boolean primitiveBoolean = Boolean.parseBoolean("true");
 
-        System.out.println(stringToBoolean);
+        System.out.println(primitiveBoolean);
     }
 
     @Test
-    public void stringToBoolean() {
-        Boolean stringToBoolean = Boolean.valueOf("false");
+    public void stringToWrapperBoolean() {
+        Boolean wrapperBoolean = Boolean.valueOf("false");
 
-        System.out.println(stringToBoolean);
+        System.out.println(wrapperBoolean);
     }
 
     @Test
-    public void stringTobyte() {
-        byte stringToByte = Byte.parseByte("1");
+    public void stringToPrimitiveByte() {
+        byte primitiveByte = Byte.parseByte("1");
 
-        System.out.println(stringToByte);
+        System.out.println(primitiveByte);
     }
 
     @Test
-    public void stringToByte() {
-        Byte stringToByte = Byte.valueOf("1");
+    public void stringToWrapperByte() {
+        Byte wrapperByte = Byte.valueOf("1");
 
-        System.out.println(stringToByte);
+        System.out.println(wrapperByte);
     }
 
     @Test
-    public void stringToshort() {
-        short stringToShort = Short.parseShort("1");
+    public void stringToPrimitiveShort() {
+        short primitiveShort = Short.parseShort("1");
 
-        System.out.println(stringToShort);
+        System.out.println(primitiveShort);
     }
 
     @Test
-    public void stringToShort() {
-        Short stringToShort = Short.valueOf("1");
+    public void stringToWrapperShort() {
+        Short wrapperShort = Short.valueOf("1");
 
-        System.out.println(stringToShort);
+        System.out.println(wrapperShort);
     }
 
     @Test
-    public void stringToint() {
-        int stringToInt = Integer.parseInt("1");
+    public void stringToPrimitiveInt() {
+        int primitiveInt = Integer.parseInt("1");
 
-        System.out.println(stringToInt);
+        System.out.println(primitiveInt);
     }
 
     @Test
-    public void stringToInteger() {
-        Integer stringToInt = Integer.valueOf("1");
+    public void stringToWrapperInteger() {
+        Integer wrapperInt = Integer.valueOf("1");
 
-        System.out.println(stringToInt);
+        System.out.println(wrapperInt);
     }
 
     @Test
-    public void stringTolong() {
-        long stringToLong = Long.parseLong("1");
+    public void stringToPrimitiveLong() {
+        long primitiveLong = Long.parseLong("1");
 
-        System.out.println(stringToLong);
+        System.out.println(primitiveLong);
     }
 
     @Test
-    public void stringToLong() {
-        Long stringToLong = Long.valueOf("1");
+    public void stringToWrapperLong() {
+        Long wrapperLong = Long.valueOf("1");
 
-        System.out.println(stringToLong);
+        System.out.println(wrapperLong);
     }
 
     @Test
-    public void stringTofloat() {
-        float stringToFloat = Float.parseFloat("1.1");
+    public void stringToPrimitiveFloat() {
+        float primitiveFloat = Float.parseFloat("1.1");
 
-        System.out.println(stringToFloat);
+        System.out.println(primitiveFloat);
     }
 
     @Test
-    public void stringToFloat() {
-        Float stringToFloat = Float.valueOf("1.1");
+    public void stringToWrapperFloat() {
+        Float wrapperFloat = Float.valueOf("1.1");
 
-        System.out.println(stringToFloat);
+        System.out.println(wrapperFloat);
     }
 
     @Test
-    public void stringTodouble() {
-        double stringToDouble = Double.parseDouble("1");
+    public void stringToPrimitiveDouble() {
+        double primitiveDouble = Double.parseDouble("1.1");
 
-        System.out.println(stringToDouble);
+        System.out.println(primitiveDouble);
     }
 
     @Test
-    public void stringToDouble() {
-        Double stringToDouble = Double.valueOf("1.1");
+    public void stringToWrapperDouble() {
+        Double wrapperDouble = Double.valueOf("1.1");
 
-        System.out.println(stringToDouble);
+        System.out.println(wrapperDouble);
     }
 
     @Test
-    public void stringTochar() {
-        String stringToChar = "C";
-        char h = stringToChar.charAt(0);
+    public void stringToPrimitiveChar() {
+        String primitiveChar = "C";
+        char h = primitiveChar.charAt(0);
 
-        System.out.println(stringToChar);
+        System.out.println(h);
     }
 
 
     @Test
-    public void stringTocharArray() {
-        String stringToChars = "Hello world";
-        char[] chars = stringToChars.toCharArray();
+    public void stringToPrimitiveCharArray() {
+        String primitiveChars = "Hello world";
+        char[] chars = primitiveChars.toCharArray();
 
         System.out.println(Arrays.toString(chars));
     }
 
     @Test
-    public void stringTobyteArray_default() {
-        String strToBytes = "Hello world";
-        byte[] bytes = strToBytes.getBytes();
+    public void stringToPrimitiveByteArray_default() {
+        String primitiveBytes = "Hello world";
+        byte[] bytes = primitiveBytes.getBytes();
 
         System.out.println(Arrays.toString(bytes));
     }
 
     @Test
-    public void stringTobyteArray_CharsetName() throws UnsupportedEncodingException {
-        String stringToBytes = "Hello world";
-        byte[] bytes = stringToBytes.getBytes("UTF-8");
+    public void stringToPrimitiveByteArray_CharsetName() throws UnsupportedEncodingException {
+        String primitiveBytes = "Hello world";
+        byte[] bytes = primitiveBytes.getBytes("UTF-8");
 
         System.out.println(Arrays.toString(bytes));
     }
 
     @Test
-    public void stringTobyteArray_Charset() {
-        String stringToBytes = "Hello world";
-        byte[] bytes = stringToBytes.getBytes(StandardCharsets.UTF_8);
+    public void stringToPrimitiveByteArray_Charset() {
+        String primitiveBytes = "Hello world";
+        byte[] bytes = primitiveBytes.getBytes(StandardCharsets.UTF_8);
 
         System.out.println(Arrays.toString(bytes));
     }
