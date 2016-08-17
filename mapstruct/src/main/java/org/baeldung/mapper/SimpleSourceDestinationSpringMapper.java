@@ -4,10 +4,11 @@ import org.baeldung.dto.SimpleSource;
 import org.baeldung.entity.SimpleDestination;
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel="spring")
+@Mapper(componentModel = "spring")
 public interface SimpleSourceDestinationSpringMapper {
 
-	SimpleDestination sourceToDestination(SimpleSource source);
+    SimpleDestination sourceToDestination(SimpleSource source);
+
     SimpleSource destinationToSource(SimpleDestination destination);
-	
+
 }
