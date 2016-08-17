@@ -85,6 +85,7 @@
         <module>spring-rest-angular-pagination</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud-config</module>
+        <module>spring-cloud-eureka</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>

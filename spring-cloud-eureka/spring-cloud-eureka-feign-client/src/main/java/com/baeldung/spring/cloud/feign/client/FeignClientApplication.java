@@ -1,12 +1,10 @@
 package com.baeldung.spring.cloud.feign.client;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +24,6 @@ public class FeignClientApplication {
     @RequestMapping("/get-greeting")
     public String greeting(Model model) {
         model.addAttribute("greeting", greetingClient.greeting());
-        return "show-greeting";
+        return "greeting-view";
     }
 }
