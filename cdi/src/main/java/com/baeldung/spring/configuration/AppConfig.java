@@ -1,13 +1,14 @@
 package com.baeldung.spring.configuration;
 
-import com.baeldung.spring.aspect.SpringTestAspect;
-import com.baeldung.spring.service.SpringSuperService;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.baeldung.spring.aspect.SpringTestAspect;
+import com.baeldung.spring.service.SpringSuperService;
 
 @Configuration
 @EnableAspectJAutoProxy
@@ -18,12 +19,12 @@ public class AppConfig {
     }
 
     @Bean
-    public SpringTestAspect springTestAspect(){
+    public SpringTestAspect springTestAspect() {
         return new SpringTestAspect();
     }
 
     @Bean
-    public List<String> getAccumulator(){
+    public List<String> getAccumulator() {
         return new ArrayList<String>();
     }
 }

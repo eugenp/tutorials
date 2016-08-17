@@ -17,12 +17,11 @@ public class User implements Serializable {
     }
 
     public User(final Long userId, final String userName, final String firstName, final String lastName) {
-        super();
-        this.userId = userId;
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-
+	super();
+	this.userId = userId;
+	this.userName = userName;
+	this.firstName = firstName;
+	this.lastName = lastName;
     }
 
     @Override
