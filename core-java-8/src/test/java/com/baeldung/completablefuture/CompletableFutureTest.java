@@ -1,23 +1,11 @@
 package com.baeldung.completablefuture;
 
-<<<<<<< HEAD
-import org.junit.Test;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-=======
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Test;
 
->>>>>>> upstream/master
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -55,8 +43,6 @@ public class CompletableFutureTest {
 
     }
 
-<<<<<<< HEAD
-=======
 
     public Future<String> calculateAsyncWithCancellation() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
@@ -79,7 +65,6 @@ public class CompletableFutureTest {
 
     }
 
->>>>>>> upstream/master
     @Test
     public void whenCreatingCompletableFutureWithSupplyAsync_thenFutureReturnsValue() throws ExecutionException, InterruptedException {
 
