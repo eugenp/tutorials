@@ -4,11 +4,10 @@ import static org.junit.Assert.*;
 import java.util.Set;
 
 import org.hibernate.Hibernate;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.hibernate.fetching.model.OrderDetailEager;
-import com.baeldung.hibernate.fetching.model.OrderDetailLazy;
+import com.baeldung.hibernate.fetching.model.OrderDetail;
 import com.baeldung.hibernate.fetching.view.FetchingAppView;
 
 public class HibernateFetchingTest {
@@ -27,7 +26,7 @@ public class HibernateFetchingTest {
 	@Test
 	public void testLazyFetching() {
 		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetailLazy> orderDetalSetLazy = fav.lazyLoaded();
+		Set<OrderDetail> orderDetalSetLazy = fav.lazyLoaded();
 		assertFalse(Hibernate.isInitialized(orderDetalSetLazy));
 	}
 	

@@ -1,25 +1,9 @@
 package com.baeldung.hibernate.fetching.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
 
 @Entity
 @Table (name = "USER")
@@ -33,7 +17,7 @@ public class UserEager implements Serializable {
 	private Long userId;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-	private Set<OrderDetailEager> orderDetail = new HashSet();
+	private Set<OrderDetail> orderDetail = new HashSet();
 
 	public UserEager() {
 	}
@@ -76,11 +60,11 @@ public class UserEager implements Serializable {
 		this.userId = userId;
 	}
 
-	public Set<OrderDetailEager> getOrderDetail() {
+	public Set<OrderDetail> getOrderDetail() {
 		return orderDetail;
 	}
 
-	public void setOrderDetail(Set<OrderDetailEager> orderDetail) {
+	public void setOrderDetail(Set<OrderDetail> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
 

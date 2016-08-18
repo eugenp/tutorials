@@ -1,20 +1,12 @@
 package com.baeldung.hibernate.fetching.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 @Entity
 @Table (name = "USER_ORDER")
-public class OrderDetailLazy implements Serializable{
+public class OrderDetail implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,23 +15,11 @@ public class OrderDetailLazy implements Serializable{
 	@Column(name="ORDER_ID")
 	private Long orderId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="USER_ID")
-	private UserLazy user;
-	
-	public OrderDetailLazy(){	
+	public OrderDetail(){
 	}
 		
-	public OrderDetailLazy(Date orderDate, String orderDesc) {
+	public OrderDetail(Date orderDate, String orderDesc) {
 		super();	
-	}
-	
-	public UserLazy getUser() {
-		return user;
-	}
-	
-	public void setUser(UserLazy user) {
-		this.user = user;
 	}
 	
 	@Override
@@ -57,7 +37,7 @@ public class OrderDetailLazy implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrderDetailLazy other = (OrderDetailLazy) obj;
+		OrderDetail other = (OrderDetail) obj;
 		if (orderId == null) {
 			if (other.orderId != null)
 				return false;

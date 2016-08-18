@@ -19,8 +19,7 @@ public class HibernateUtil {
 		}
 		
 		// fetching.cfg.xml is used for this example
-		final Session session = sf.openSession();
-		return session;
+		return sf.openSession();
 	}
 
     public static Session getHibernateSession() {
