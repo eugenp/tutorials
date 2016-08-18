@@ -2,11 +2,13 @@ package com.baeldung.spring.mail;
 
 import com.baeldung.spring.web.dto.MailObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -16,21 +18,23 @@ import java.io.File;
 /**
  * Created by Olga on 7/15/2016.
  */
-@Service
-public class MailService {
-    @Autowired
-    public JavaMailSender mailSender;
+@Component
+@ConditionalOnClass(JavaMailSender.class)
+public class EmailServiceImpl {
 
-    public void sendMail(MimeMessage message) {
+    @Autowired
+    public JavaMailSender emailSender;
+
+    /*public void sendMail(MimeMessage message) {
         try {
-            mailSender.send(message);
+            emailSender.send(message);
         } catch (MailException exception) {
             exception.printStackTrace();
         }
     }
 
     public MimeMessage createMessageWithAttachment(MailObject mailObject) {
-        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessage message = emailSender.createMimeMessage();
         try {
             // pass 'true' to the constructor to create a multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -47,17 +51,17 @@ public class MailService {
             e.printStackTrace();
         }
         return message;
-    }
+    }*/
 
     public void sendMail(SimpleMailMessage message) {
         try {
-            mailSender.send(message);
+            emailSender.send(message);
         } catch (MailException exception) {
             exception.printStackTrace();
         }
     }
 
-    @Autowired
+    /*@Autowired
     public SimpleMailMessage template;
 
     public SimpleMailMessage createSimpleMailMessage(MailObject mailObject) {
@@ -69,5 +73,5 @@ public class MailService {
         mailMessage.setText(String.format(template.getText(), mailObject.getText()));
 
         return mailMessage;
-    }
+    }*/
 }

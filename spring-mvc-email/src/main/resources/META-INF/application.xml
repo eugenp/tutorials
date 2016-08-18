@@ -13,7 +13,7 @@
     <module id="SpringMVCEmail-Web">
         <web>
             <web-uri>web.war</web-uri>
-            <context-root>SpringMVCEmail</context-root>
+            <context-root>SpringMVCEmailWeb</context-root>
         </web>
     </module>
 </application>

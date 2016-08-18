@@ -1,24 +1,19 @@
-package com.baeldung.spring.config;
+package com.baeldung.spring.app.config;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
-import java.util.Properties;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Olga
  */
-@Configuration
-@ComponentScan("com.baeldung.spring")
-@EnableWebMvc //tha same as <mvc:annotation-driven/>
+//@Configuration
+//@ComponentScan("com.baeldung.spring")
+//@EnableWebMvc //tha same as <mvc:annotation-driven/>
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -47,7 +42,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     /* Gmail */
-    @Bean
+    /*@Bean
     public JavaMailSenderImpl mailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
@@ -63,7 +58,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         props.setProperty("mail.smtp.auth", "true");
         props.setProperty("mail.smtp.starttls.enable", "true");
         return props;
-    }
+    }*/
 
     @Bean
     public SimpleMailMessage templateMessage() {
