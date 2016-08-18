@@ -3,6 +3,7 @@ package com.baeldung.hibernate.fetching;
 import com.baeldung.hibernate.fetching.model.OrderDetail;
 import com.baeldung.hibernate.fetching.view.FetchingAppView;
 import org.hibernate.Hibernate;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Set;
@@ -14,7 +15,7 @@ public class HibernateFetchingTest {
 
 
 	//this loads sample data in the database
-//	@Before 
+	@Before
 	public void addFecthingTestData(){
 		FetchingAppView fav = new FetchingAppView();
 		fav.createTestData();
