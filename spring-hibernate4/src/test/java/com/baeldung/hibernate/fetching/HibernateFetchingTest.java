@@ -1,14 +1,14 @@
 package com.baeldung.hibernate.fetching;
 
-import static org.junit.Assert.*;
-import java.util.Set;
-
+import com.baeldung.hibernate.fetching.model.OrderDetail;
+import com.baeldung.hibernate.fetching.view.FetchingAppView;
 import org.hibernate.Hibernate;
 import org.junit.Test;
 
-import com.baeldung.hibernate.fetching.model.OrderDetailEager;
-import com.baeldung.hibernate.fetching.model.OrderDetail;
-import com.baeldung.hibernate.fetching.view.FetchingAppView;
+import java.util.Set;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class HibernateFetchingTest {
 
@@ -36,7 +36,7 @@ public class HibernateFetchingTest {
 	@Test
 	public void testEagerFetching() {
 		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetailEager> orderDetalSetEager = fav.eagerLoaded();
+		Set<OrderDetail> orderDetalSetEager = fav.eagerLoaded();
 		assertTrue(Hibernate.isInitialized(orderDetalSetEager));
 	}
 }
