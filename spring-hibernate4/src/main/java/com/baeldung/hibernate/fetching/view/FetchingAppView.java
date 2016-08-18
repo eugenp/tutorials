@@ -1,103 +1,74 @@
 package com.baeldung.hibernate.fetching.view;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
 import com.baeldung.hibernate.fetching.util.HibernateUtil;
+import com.baeldung.hibernate.fetching.model.OrderDetailEager;
+import com.baeldung.hibernate.fetching.model.OrderDetailLazy;
 
-import com.baeldung.hibernate.fetching.model.OrderDetail;
-
-import com.baeldung.hibernate.fetching.model.User;
-
+import com.baeldung.hibernate.fetching.model.UserLazy;
+import com.baeldung.hibernate.fetching.model.UserEager;
 
 public class FetchingAppView {
 
-	public FetchingAppView(){
-		
+	public FetchingAppView() {
+
 	}
-	
-	//lazily loaded 
-	public Set<OrderDetail> lazyLoaded(){
+
+	// lazily loaded
+	public Set<OrderDetailLazy> lazyLoaded() {
 		final Session sessionLazy = HibernateUtil.getHibernateSession("lazy");
-		List<User> users = sessionLazy.createQuery("From User").list();
-		User userLazyLoaded = new User();
-		userLazyLoaded = users.get(3); 
-		//since data is lazyloaded so data won't be initialized
-		Set<OrderDetail> orderDetailSet = userLazyLoaded.getOrderDetail();
-		return (orderDetailSet);	
+		List<UserLazy> users = sessionLazy.createQuery("From UserLazy").list();
+		UserLazy userLazyLoaded = new UserLazy();
+		userLazyLoaded = users.get(3);
+		// since data is lazyloaded so data won't be initialized
+		Set<OrderDetailLazy> orderDetailSet = userLazyLoaded.getOrderDetail();
+		return (orderDetailSet);
 	}
-	
-	//eagerly loaded
-	public Set<OrderDetail> eagerLoaded(){
+
+	// eagerly loaded
+	public Set<OrderDetailEager> eagerLoaded() {
 		final Session sessionEager = HibernateUtil.getHibernateSession();
-		//data should be loaded in the following line
-		//also note the queries generated
-		List<User> users =sessionEager.createQuery("From User").list();
-		User userEagerLoaded = new User();
-		userEagerLoaded = users.get(3); 
-		Set<OrderDetail> orderDetailSet = userEagerLoaded.getOrderDetail();
-		return orderDetailSet;	
+		// data should be loaded in the following line
+		// also note the queries generated
+		List<UserEager> user = sessionEager.createQuery("From UserEager").list();
+		UserEager userEagerLoaded = new UserEager();
+		userEagerLoaded = user.get(3);
+		Set<OrderDetailEager> orderDetailSet = userEagerLoaded.getOrderDetail();
+		return orderDetailSet;
 	}
-	
-	
-	//creates test data
-	//call this method to create the data in the database
+
+	// creates test data
+	// call this method to create the data in the database
 	public void createTestData() {
 
-		final Session session = HibernateUtil.getHibernateSession();
+		final Session session = HibernateUtil.getHibernateSession("lazy");
 		Transaction tx = null;
 		tx = session.beginTransaction();
-		final User user1 = new User();
-		final User user2 = new User();
-		final User user3 = new User();
-				
-		user1.setFirstName("Priyam");
-		user1.setLastName("Banerjee");
-		user1.setUserName("priyambanerjee");
+		final UserLazy user1 = new UserLazy();
+		final UserLazy user2 = new UserLazy();
+		final UserLazy user3 = new UserLazy();
+
 		session.save(user1);
-		
-		user2.setFirstName("Navneeta");
-		user2.setLastName("Mukherjee");
-		user2.setUserName("nmukh");
 		session.save(user2);
-		
-		user3.setFirstName("Molly");
-		user3.setLastName("Banerjee");
-		user3.setUserName("mollyb");
 		session.save(user3);
 
-		final OrderDetail order1 = new OrderDetail();
-		final OrderDetail order2 = new OrderDetail();
-		final OrderDetail order3 = new OrderDetail();
-		final OrderDetail order4 = new OrderDetail();
-		final OrderDetail order5 = new OrderDetail();
+		final OrderDetailLazy order1 = new OrderDetailLazy();
+		final OrderDetailLazy order2 = new OrderDetailLazy();
+		final OrderDetailLazy order3 = new OrderDetailLazy();
+		final OrderDetailLazy order4 = new OrderDetailLazy();
+		final OrderDetailLazy order5 = new OrderDetailLazy();
 
-		order1.setOrderDesc("First Order");
-		order1.setOrderDate(new Date(2014, 10, 12));
 		order1.setUser(user1);
-		
-		order2.setOrderDesc("Second Order");
-		order2.setOrderDate(new Date(2016, 10, 25));
 		order2.setUser(user1);
-		
-		order3.setOrderDesc("Third Order");
-		order3.setOrderDate(new Date(2015, 2, 17));
 		order3.setUser(user2);
-		
-		order4.setOrderDesc("Fourth Order");
-		order4.setOrderDate(new Date(2014, 10, 1));
 		order4.setUser(user2);
-		
-		order5.setOrderDesc("Fifth Order");
-		order5.setOrderDate(new Date(2014, 9, 11));
 		order5.setUser(user3);
-		
+
 		session.saveOrUpdate(order1);
 		session.saveOrUpdate(order2);
 		session.saveOrUpdate(order3);

@@ -3,41 +3,45 @@ package com.baeldung.hibernate.fetching.model;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class OrderDetail implements Serializable{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table (name = "USER_ORDER")
+public class OrderDetailLazy implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Long orderId;
-	private Date orderDate;
-	private String orderDesc;
-	private User user;
 	
-	public OrderDetail(){	
+	@Id
+	@GeneratedValue
+	@Column(name="ORDER_ID")
+	private Long orderId;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="USER_ID")
+	private UserLazy user;
+	
+	public OrderDetailLazy(){	
 	}
 		
-	public OrderDetail(Date orderDate, String orderDesc) {
-		super();
-		this.orderDate = orderDate;
-		this.orderDesc = orderDesc;
+	public OrderDetailLazy(Date orderDate, String orderDesc) {
+		super();	
 	}
 	
-	public Date getOrderDate() {
-		return orderDate;
-	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-	public String getOrderDesc() {
-		return orderDesc;
-	}
-	public void setOrderDesc(String orderDesc) {
-		this.orderDesc = orderDesc;
-	}
-	public User getUser() {
+	public UserLazy getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	
+	public void setUser(UserLazy user) {
 		this.user = user;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,7 +57,7 @@ public class OrderDetail implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrderDetail other = (OrderDetail) obj;
+		OrderDetailLazy other = (OrderDetailLazy) obj;
 		if (orderId == null) {
 			if (other.orderId != null)
 				return false;
@@ -62,6 +66,7 @@ public class OrderDetail implements Serializable{
 		
 		return true;
 	}
+
 	public Long getOrderId() {
 		return orderId;
 	}
