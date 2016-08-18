@@ -1,7 +1,6 @@
 package com.baeldung.hibernate.fetching.view;
 
 import com.baeldung.hibernate.fetching.model.OrderDetail;
-import com.baeldung.hibernate.fetching.model.OrderDetailEager;
 import com.baeldung.hibernate.fetching.model.UserEager;
 import com.baeldung.hibernate.fetching.model.UserLazy;
 import com.baeldung.hibernate.fetching.util.HibernateUtil;

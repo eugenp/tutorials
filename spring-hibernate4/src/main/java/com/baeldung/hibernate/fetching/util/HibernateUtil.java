@@ -11,7 +11,7 @@ public class HibernateUtil {
 		//two config files are there
 		//one with lazy loading enabled 
 		//another lazy = false
-		SessionFactory sf = null;
+		SessionFactory sf;
 		if ("lazy".equals(fetchMethod)) {
 			sf = new Configuration().configure("fetchingLazy.cfg.xml").buildSessionFactory();
 		} else {
