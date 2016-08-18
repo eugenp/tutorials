@@ -53,7 +53,6 @@ public class JavaProcessUnitTest {
         ProcessBuilder builder = new ProcessBuilder();
         if (IS_WINDOWS) {
             builder.command("cmd.exe", "/c", "dir");
-            builder.inheritIO();
         } else {
             builder.command("sh", "-c", "ls");
         }
