@@ -30,7 +30,9 @@ public class TestInterceptor {
         SuperService superService = container.select(SuperService.class).get();
         String code = "123456";
         superService.deliverService(code);
+
         Assert.assertTrue(AuditedInterceptor.calledBefore);
         Assert.assertTrue(AuditedInterceptor.calledAfter);
     }
+
 }
