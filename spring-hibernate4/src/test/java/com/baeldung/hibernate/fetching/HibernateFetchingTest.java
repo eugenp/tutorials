@@ -1,21 +1,21 @@
 package com.baeldung.hibernate.fetching;
 
-import static org.junit.Assert.*;
-import java.util.Set;
-
+import com.baeldung.hibernate.fetching.model.OrderDetail;
+import com.baeldung.hibernate.fetching.view.FetchingAppView;
 import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.hibernate.fetching.model.OrderDetail;
+import java.util.Set;
 
-import com.baeldung.hibernate.fetching.view.FetchingAppView;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class HibernateFetchingTest {
 
 
 	//this loads sample data in the database
-	@Before 
+	@Before
 	public void addFecthingTestData(){
 		FetchingAppView fav = new FetchingAppView();
 		fav.createTestData();

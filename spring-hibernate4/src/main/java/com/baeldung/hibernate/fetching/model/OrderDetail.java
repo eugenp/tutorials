@@ -1,43 +1,27 @@
 package com.baeldung.hibernate.fetching.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 
+@Entity
+@Table (name = "USER_ORDER")
 public class OrderDetail implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Long orderId;
-	private Date orderDate;
-	private String orderDesc;
-	private User user;
 	
-	public OrderDetail(){	
+	@Id
+	@GeneratedValue
+	@Column(name="ORDER_ID")
+	private Long orderId;
+	
+	public OrderDetail(){
 	}
 		
 	public OrderDetail(Date orderDate, String orderDesc) {
-		super();
-		this.orderDate = orderDate;
-		this.orderDesc = orderDesc;
+		super();	
 	}
 	
-	public Date getOrderDate() {
-		return orderDate;
-	}
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
-	public String getOrderDesc() {
-		return orderDesc;
-	}
-	public void setOrderDesc(String orderDesc) {
-		this.orderDesc = orderDesc;
-	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +46,7 @@ public class OrderDetail implements Serializable{
 		
 		return true;
 	}
+
 	public Long getOrderId() {
 		return orderId;
 	}
