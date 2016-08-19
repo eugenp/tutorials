@@ -5,6 +5,7 @@ public class EmployeeDTO {
     private int employeeId;
     private String employeeName;
     private DivisionDTO division;
+    private String employeeStartDt;
 
     public int getEmployeeId() {
         return employeeId;
@@ -28,6 +29,14 @@ public class EmployeeDTO {
 
     public void setDivision(DivisionDTO division) {
         this.division = division;
+    }
+
+    public String getEmployeeStartDt() {
+        return employeeStartDt;
+    }
+
+    public void setEmployeeStartDt(String employeeStartDt) {
+        this.employeeStartDt = employeeStartDt;
     }
 
 }

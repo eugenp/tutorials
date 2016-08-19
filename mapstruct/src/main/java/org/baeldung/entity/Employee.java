@@ -1,10 +1,13 @@
 package org.baeldung.entity;
 
+import java.util.Date;
+
 public class Employee {
 
     private int id;
     private String name;
     private Division division;
+    private Date startDt;
 
     public int getId() {
         return id;
@@ -28,6 +31,14 @@ public class Employee {
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public Date getStartDt() {
+        return startDt;
+    }
+
+    public void setStartDt(Date startDt) {
+        this.startDt = startDt;
     }
 
 }
