@@ -18,7 +18,7 @@ import org.mapstruct.factory.Mappers;
 public class EmployeeMapperTest {
 
     EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
-    
+
     private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 
     @Test
@@ -108,10 +108,9 @@ public class EmployeeMapperTest {
 
         EmployeeDTO dto = mapper.employeeToEmployeeDTO(entity);
         SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(), 
-                                       entity.getStartDt().toString());
+        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(), entity.getStartDt().toString());
     }
-    
+
     @Test
     public void givenEmployeeDTOWithStartDateMappingToEmployee_whenMaps_thenCorrect() throws ParseException {
         EmployeeDTO dto = new EmployeeDTO();
@@ -119,7 +118,6 @@ public class EmployeeMapperTest {
 
         Employee entity = mapper.employeeDTOtoEmployee(dto);
         SimpleDateFormat format = new SimpleDateFormat(DATE_FORMAT);
-        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(), 
-                                       entity.getStartDt().toString());
+        assertEquals(format.parse(dto.getEmployeeStartDt()).toString(), entity.getStartDt().toString());
     }
 }

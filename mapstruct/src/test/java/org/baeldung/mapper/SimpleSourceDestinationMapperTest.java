@@ -16,7 +16,7 @@ public class SimpleSourceDestinationMapperTest {
 
     @Autowired
     SimpleSourceDestinationMapper simpleSourceDestinationMapper;
-    
+
     @Test
     public void givenSimpleSourceToSimpleDestination_whenMaps_thenCorrect() {
         SimpleSource simpleSource = new SimpleSource();
