@@ -1,6 +1,7 @@
 package org.baeldung.spring;
 
 import org.baeldung.web.interceptor.LoggerInterceptor;
+import org.baeldung.web.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -40,5 +41,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(final InterceptorRegistry registry) {
 		registry.addInterceptor(new LoggerInterceptor());
+		registry.addInterceptor(new UserInterceptor());
 	}
 }
