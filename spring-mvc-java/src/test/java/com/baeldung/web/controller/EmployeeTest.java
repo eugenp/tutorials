@@ -25,24 +25,18 @@ import com.baeldung.spring.web.config.WebConfig;
 @ContextConfiguration(classes = WebConfig.class)
 public class EmployeeTest {
 
-	@Autowired
-	private WebApplicationContext webAppContext;
-	private MockMvc mockMvc;
+    @Autowired
+    private WebApplicationContext webAppContext;
+    private MockMvc mockMvc;
 
-	@Before
-	public void setup() {
-		MockitoAnnotations.initMocks(this);
-		mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
-	}
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
+    }
 
-	@Test
-	public void
-	whenEmployeeGETisPerformed_thenRetrievedStatusAndViewNameAndAttributeAreCorrect() throws Exception {
-
-		mockMvc.perform(get("/employee")).
-		andExpect(status().isOk()).
-		andExpect(view().name("employeeHome")).
-		andExpect(model().attributeExists("employee")).
-		andDo(print());
-	}
+    @Test
+    public void whenEmployeeGETisPerformed_thenRetrievedStatusAndViewNameAndAttributeAreCorrect() throws Exception {
+        mockMvc.perform(get("/employee")).andExpect(status().isOk()).andExpect(view().name("employeeHome")).andExpect(model().attributeExists("employee")).andDo(print());
+    }
 }
