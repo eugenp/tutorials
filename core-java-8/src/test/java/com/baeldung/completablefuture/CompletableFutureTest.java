@@ -1,13 +1,10 @@
 package com.baeldung.completablefuture;
 
-import org.junit.Test;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -43,6 +40,28 @@ public class CompletableFutureTest {
 
         String result = completableFuture.get();
         assertEquals("Hello", result);
+
+    }
+
+
+    public Future<String> calculateAsyncWithCancellation() throws InterruptedException {
+        CompletableFuture<String> completableFuture = new CompletableFuture<>();
+
+        Executors.newCachedThreadPool().submit(() -> {
+            Thread.sleep(500);
+            completableFuture.cancel(false);
+            return null;
+        });
+
+        return completableFuture;
+    }
+
+
+    @Test(expected = CancellationException.class)
+    public void whenCancelingTheFuture_thenThrowsCancellationException() throws ExecutionException, InterruptedException {
+
+        Future<String> future = calculateAsyncWithCancellation();
+        future.get();
 
     }
 

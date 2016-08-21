@@ -11,7 +11,10 @@
 		<property name="hibernate.connection.password">iamtheking</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
-		<mapping resource="com/baeldung/hibernate/fetching/model/User.hbm.xml" />
-		<mapping resource="com/baeldung/hibernate/fetching/model/OrderDetail.hbm.xml" />
+        <property name="hbm2ddl.auto">validate</property>
+ 
+		
+		<mapping class="com.baeldung.hibernate.fetching.model.UserEager" />
+        <mapping class="com.baeldung.hibernate.fetching.model.OrderDetailEager" />
 	</session-factory>
 </hibernate-configuration>
