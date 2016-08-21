@@ -25,6 +25,7 @@ public class HystrixTimeoutTest {
         HystrixCommand.Setter config = HystrixCommand
                 .Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroup2"));
+
         assertThat(new RemoteServiceTestCommand(config, new RemoteServiceTestSimulator(100)).execute(),
                 equalTo("Success"));
     }
@@ -89,7 +90,7 @@ public class HystrixTimeoutTest {
 
         HystrixCommand.Setter config = HystrixCommand
                 .Setter
-                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupCircuitBreakerTest"));
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupCircuitBreaker"));
         HystrixCommandProperties.Setter commandProperties = HystrixCommandProperties.Setter();
         commandProperties.withExecutionTimeoutInMilliseconds(1000);
 
@@ -119,7 +120,8 @@ public class HystrixTimeoutTest {
                 equalTo("Success"));
     }
 
-    public String invokeRemoteService(HystrixCommand.Setter config, int timeout) throws InterruptedException {
+    public String invokeRemoteService(HystrixCommand.Setter config, int timeout)
+            throws InterruptedException {
         String response = null;
         try {
             response = new RemoteServiceTestCommand(config,
