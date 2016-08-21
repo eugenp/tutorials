@@ -34,6 +34,11 @@
 			<artifactId>jstl</artifactId>
 			<version>${javax.servlet.jstl.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.servlet-api.version}</version>
+		</dependency>
 
         <!-- persistence -->
 
@@ -201,6 +206,16 @@
                     </configuration>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
 
         </plugins>
 
@@ -213,6 +228,7 @@
         
         <!-- web -->
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+        <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
@@ -247,6 +263,7 @@
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
         <!-- <maven-war-plugin.version>2.6</maven-war-plugin.version> -->
 
     </properties>
