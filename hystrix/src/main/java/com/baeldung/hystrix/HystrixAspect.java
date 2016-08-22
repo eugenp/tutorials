@@ -17,6 +17,28 @@ public class HystrixAspect {
     private HystrixCommandProperties.Setter commandProperties;
     private HystrixThreadPoolProperties.Setter threadPoolProperties;
 
+    @Value("${remoteservice.command.execution.timeout}")
+    private int executionTimeout;
+
+    @Value("${remoteservice.command.sleepwindow}")
+    private int sleepWindow;
+
+    @Value("${remoteservice.command.threadpool.maxsize}")
+    private int maxThreadCount;
+
+    @Value("${remoteservice.command.threadpool.coresize}")
+    private int coreThreadCount;
+
+    @Value("${remoteservice.command.task.queue.size}")
+    private int queueCount;
+
+    @Value("${remoteservice.command.group.key}")
+    private String groupKey;
+
+    @Value("${remoteservice.command.key}")
+    private String key;
+
+
     @Around("@annotation(com.baeldung.hystrix.HystrixCircuitBreaker)")
     public Object circuitBreakerAround(final ProceedingJoinPoint aJoinPoint) {
         return new RemoteServiceCommand(config, aJoinPoint).execute();
@@ -31,7 +53,7 @@ public class HystrixAspect {
         this.commandProperties.withExecutionTimeoutInMilliseconds(executionTimeout);
         this.commandProperties.withCircuitBreakerSleepWindowInMilliseconds(sleepWindow);
 
-        this.threadPoolProperties= HystrixThreadPoolProperties.Setter();
+        this.threadPoolProperties = HystrixThreadPoolProperties.Setter();
         this.threadPoolProperties.withMaxQueueSize(maxThreadCount).withCoreSize(coreThreadCount).withMaxQueueSize(queueCount);
 
         this.config.andCommandPropertiesDefaults(commandProperties);
@@ -58,24 +80,4 @@ public class HystrixAspect {
         }
     }
 
-    @Value("${remoteservice.command.execution.timeout}")
-    private int executionTimeout;
-
-    @Value("${remoteservice.command.sleepwindow}")
-    private int sleepWindow;
-
-    @Value("${remoteservice.command.threadpool.maxsize}")
-    private int maxThreadCount;
-
-    @Value("${remoteservice.command.threadpool.coresize}")
-    private int coreThreadCount;
-
-    @Value("${remoteservice.command.task.queue.size}")
-    private int queueCount;
-
-    @Value("${remoteservice.command.group.key}")
-    private String groupKey;
-
-    @Value("${remoteservice.command.key}")
-    private String key;
 }
