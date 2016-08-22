@@ -126,7 +126,11 @@
                 </executions>
                 <configuration>
                     <verbose>true</verbose>
-                </configuration>
+					<generateGitPropertiesFilename>
+						${project.build.outputDirectory}/git.properties
+					</generateGitPropertiesFilename>
+
+				</configuration>
             </plugin>
 
         </plugins>
