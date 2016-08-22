@@ -62,11 +62,11 @@
             <artifactId>hystrix-metrics-event-stream</artifactId>
             <version>${hystrix-metrics-event-stream.version}</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-dashboard</artifactId>
             <version>${hystrix-dashboard.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.netflix.rxjava</groupId>
             <artifactId>rxjava-core</artifactId>
