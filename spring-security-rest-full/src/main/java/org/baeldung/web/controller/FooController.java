@@ -32,90 +32,90 @@ import com.google.common.base.Preconditions;
 @RequestMapping(value = "/auth/foos")
 public class FooController {
 
-	@Autowired
-	private ApplicationEventPublisher eventPublisher;
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
-	@Autowired
-	private IFooService service;
+    @Autowired
+    private IFooService service;
 
-	public FooController() {
-		super();
-	}
+    public FooController() {
+        super();
+    }
 
-	// API
+    // API
 
-	@RequestMapping(method = RequestMethod.GET, value = "/count")
-	@ResponseBody
-	@ResponseStatus(value = HttpStatus.OK)
-	public long count() {
-		return 2l;
-	}
+    @RequestMapping(method = RequestMethod.GET, value = "/count")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public long count() {
+        return 2l;
+    }
 
-	// read - one
+    // read - one
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	@ResponseBody
-	public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
-		final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
+        final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
 
-		eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
-		return resourceById;
-	}
+        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
+        return resourceById;
+    }
 
-	// read - all
+    // read - all
 
-	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public List<Foo> findAll() {
-		return service.findAll();
-	}
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public List<Foo> findAll() {
+        return service.findAll();
+    }
 
-	@RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
-	@ResponseBody
-	public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-		final Page<Foo> resultPage = service.findPaginated(page, size);
-		if (page > resultPage.getTotalPages()) {
-			throw new MyResourceNotFoundException();
-		}
-		eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
+    @RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
+    @ResponseBody
+    public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
+        final Page<Foo> resultPage = service.findPaginated(page, size);
+        if (page > resultPage.getTotalPages()) {
+            throw new MyResourceNotFoundException();
+        }
+        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
 
-		return resultPage.getContent();
-	}
+        return resultPage.getContent();
+    }
 
-	// write
+    // write
 
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	@ResponseBody
-	public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
-		Preconditions.checkNotNull(resource);
-		final Foo foo = service.create(resource);
-		final Long idOfCreatedResource = foo.getId();
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
+        Preconditions.checkNotNull(resource);
+        final Foo foo = service.create(resource);
+        final Long idOfCreatedResource = foo.getId();
 
-		eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
+        eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
 
-		return foo;
-	}
+        return foo;
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	@ResponseStatus(HttpStatus.OK)
-	public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
-		Preconditions.checkNotNull(resource);
-		RestPreconditions.checkFound(service.findOne(resource.getId()));
-		service.update(resource);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
+        Preconditions.checkNotNull(resource);
+        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        service.update(resource);
+    }
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.OK)
-	public void delete(@PathVariable("id") final Long id) {
-		service.deleteById(id);
-	}
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") final Long id) {
+        service.deleteById(id);
+    }
 
-	@RequestMapping(method = RequestMethod.HEAD)
-	@ResponseStatus(HttpStatus.OK)
-	public void head(final HttpServletResponse resp) {
-		resp.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		resp.setHeader("bar", "baz");
-	}
+    @RequestMapping(method = RequestMethod.HEAD)
+    @ResponseStatus(HttpStatus.OK)
+    public void head(final HttpServletResponse resp) {
+        resp.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        resp.setHeader("bar", "baz");
+    }
 
 }
