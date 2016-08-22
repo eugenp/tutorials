@@ -25,27 +25,27 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, PersistenceConfig.class, WebConfig.class })
 public class LoggerInterceptorTest {
 
-	@Autowired
-	WebApplicationContext wac;
-	@Autowired
-	MockHttpSession session;
+    @Autowired
+    WebApplicationContext wac;
+    @Autowired
+    MockHttpSession session;
 
-	private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    @Before
+    public void setup() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
-	/**
-	 * After execution of HTTP GET logs from interceptor will be displayed in
-	 * the console
-	 *
-	 * @throws Exception
-	 */
-	@Test
-	public void testInterceptors() throws Exception {
-		mockMvc.perform(get("/graph.html")).andExpect(status().isOk());
-	}
+    /**
+     * After execution of HTTP GET logs from interceptor will be displayed in
+     * the console
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testInterceptors() throws Exception {
+        mockMvc.perform(get("/graph.html")).andExpect(status().isOk());
+    }
 
 }

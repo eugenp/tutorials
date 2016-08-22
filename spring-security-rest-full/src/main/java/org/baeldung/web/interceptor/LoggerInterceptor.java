@@ -27,8 +27,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
      * Executed before after handler is executed
      **/
     @Override
-    public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler,
-                           final ModelAndView modelAndView) throws Exception {
+    public void postHandle(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final ModelAndView modelAndView) throws Exception {
         log.info("[postHandle][" + request + "]");
     }
 
@@ -36,8 +35,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
      * Executed after complete request is finished
      **/
     @Override
-    public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex)
-      throws Exception {
+    public void afterCompletion(final HttpServletRequest request, final HttpServletResponse response, final Object handler, final Exception ex) throws Exception {
         if (ex != null)
             ex.printStackTrace();
         log.info("[afterCompletion][" + request + "][exception: " + ex + "]");
