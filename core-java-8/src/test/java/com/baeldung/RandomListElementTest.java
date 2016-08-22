@@ -9,10 +9,9 @@ import java.util.Random;
 public class RandomListElementTest {
 
     @Test
-    public void givenList_shouldReturnARandomElement1() throws Exception {
+    public void givenList_whenRandomNumberChosen_shouldReturnARandomElement() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
         Random rand = new Random();
-
-        Integer result = givenList.get(rand.nextInt(givenList.size()));
+        givenList.get(rand.nextInt(givenList.size()));
     }
 }
