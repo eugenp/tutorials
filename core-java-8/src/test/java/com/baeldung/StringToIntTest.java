@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import com.google.common.primitives.Ints;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -39,6 +40,15 @@ public class StringToIntTest {
         String givenString = "42";
 
         int result = Integer.decode(givenString);
+
+        assertThat(result).isEqualTo(42);
+    }
+
+    @Test
+    public void givenString_shouldConvertToInt5() throws Exception {
+        String givenString = "42";
+
+        Integer result = Ints.tryParse(givenString);
 
         assertThat(result).isEqualTo(42);
     }
