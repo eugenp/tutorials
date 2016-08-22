@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
         name = "rest-producer",
-        url = "http://localhost:9090/greeting/{username}",
+        url = "http://localhost:9090",
+        //path = "/greeting/{username}",
         fallback = GreetingClient.GreetingClientFallback.class
 )
 public interface GreetingClient extends GreetingController {
