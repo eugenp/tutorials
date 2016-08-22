@@ -10,12 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
  * Created with IntelliJ IDEA.
  * User: Olga
  */
-@RestController
+@Controller
 @RequestMapping({"/","/home"})
 public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView showHomePage() {
-        return new ModelAndView("home");
+    public String showHomePage() {
+        return "home";
     }
 }

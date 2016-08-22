@@ -1,6 +1,8 @@
 package com.baeldung.spring.app.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -11,9 +13,9 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
  * Created with IntelliJ IDEA.
  * User: Olga
  */
-//@Configuration
-//@ComponentScan("com.baeldung.spring")
-//@EnableWebMvc //tha same as <mvc:annotation-driven/>
+@Configuration
+@ComponentScan("com.baeldung.spring")
+@EnableWebMvc //tha same as <mvc:annotation-driven/>
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -41,6 +43,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
+    @Bean
+    public SimpleMailMessage templateMessage() {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText("Dear %s %s, \nthank you for placing order.\n" +
+                "\n" +
+                "Sincerely yours,\n" +
+                "Yourcompany.");
+        return message;
+    }
+
     /* Gmail */
     /*@Bean
     public JavaMailSenderImpl mailSender() {
@@ -59,17 +71,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         props.setProperty("mail.smtp.starttls.enable", "true");
         return props;
     }*/
-
-    @Bean
-    public SimpleMailMessage templateMessage() {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setText("This is automatically generated email,\n" +
-                "Original mail text is included : %s\n" +
-                "\n" +
-                "Sincerely yours,\n" +
-                "Yourcompany.");
-        return message;
-    }
 
     /*Amazon SES
     @Bean
