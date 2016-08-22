@@ -124,13 +124,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <verbose>true</verbose>
-					<generateGitPropertiesFilename>
-						${project.build.outputDirectory}/git.properties
-					</generateGitPropertiesFilename>
-
-				</configuration>
             </plugin>
 
         </plugins>
