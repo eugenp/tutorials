@@ -5,9 +5,7 @@ import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandProperties;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
 import com.netflix.hystrix.exception.HystrixRuntimeException;
-import org.junit.*;
-import org.junit.rules.ExpectedException;
-import org.junit.runners.MethodSorters;
+import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -15,12 +13,12 @@ import static org.hamcrest.Matchers.equalTo;
 public class HystrixTimeoutTest {
 
     @Test
-    public void givenInputBobAndDefaultSettings_whenExecuted_thenReturnHelloBob(){
+    public void givenInputBobAndDefaultSettings_whenCommandExecuted_thenReturnHelloBob(){
         assertThat(new CommandHelloWorld("Bob").execute(), equalTo("Hello Bob!"));
     }
 
     @Test
-    public void givenSvcTimeoutOf100AndDefaultSettings_whenExecuted_thenReturnSuccess()
+    public void givenSvcTimeoutOf100AndDefaultSettings_whenRemoteSvcExecuted_thenReturnSuccess()
             throws InterruptedException {
         HystrixCommand.Setter config = HystrixCommand
                 .Setter
@@ -31,7 +29,7 @@ public class HystrixTimeoutTest {
     }
 
     @Test(expected = HystrixRuntimeException.class)
-    public void givenSvcTimeoutOf10000AndDefaultSettings__whenExecuted_thenExpectHRE() throws InterruptedException {
+    public void givenSvcTimeoutOf10000AndDefaultSettings__whenRemoteSvcExecuted_thenExpectHRE() throws InterruptedException {
         HystrixCommand.Setter config = HystrixCommand
                 .Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupTest3"));
@@ -39,7 +37,7 @@ public class HystrixTimeoutTest {
     }
 
     @Test
-    public void givenSvcTimeoutOf5000AndExecTimeoutOf10000__whenExecuted_thenReturnSuccess()
+    public void givenSvcTimeoutOf5000AndExecTimeoutOf10000_whenRemoteSvcExecuted_thenReturnSuccess()
             throws InterruptedException {
 
         HystrixCommand.Setter config = HystrixCommand
