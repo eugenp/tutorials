@@ -9,6 +9,7 @@
     <modules>
         <module>spring-cloud-hystrix-rest-producer</module>
         <module>spring-cloud-hystrix-rest-consumer</module>
+        <module>spring-cloud-hystrix-feign-rest-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
