@@ -84,5 +84,20 @@ public class ArraySort {
 
         });
     }
+    
+    @Test
+    public void arraySortVariant() {
+        System.out.println(Arrays.toString(numbers));
+        Arrays.sort(numbers, 3, 7);
+        System.out.println(Arrays.toString(numbers));
+        
+    }
+    
+    @Test 
+    public void arrayParallelSortVariant() {
+        
+        Arrays.parallelSort(numbers);
+        
+    }
 
 }
