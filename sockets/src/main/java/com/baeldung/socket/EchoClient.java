@@ -15,7 +15,7 @@ public class EchoClient {
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 		} catch (IOException e) {
-			
+			System.out.print(e);
 		}
 
 	}

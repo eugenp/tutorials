@@ -41,6 +41,6 @@ public class GreetClient {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
+
 }

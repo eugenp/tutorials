@@ -21,7 +21,7 @@ public class GreetServer {
 			if ("hello server".equals(greeting))
 				out.println("hello client");
 			else
-				out.println("unrecognised greetin");
+				out.println("unrecognised greeting");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
