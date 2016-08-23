@@ -1,11 +1,11 @@
-package org.baeldung.entity;
+package org.baeldung.dto;
 
-public class Division {
+public class DivisionDTO {
 
-    public Division() {
+    public DivisionDTO() {
     }
 
-    public Division(int id, String name) {
+    public DivisionDTO(int id, String name) {
         super();
         this.id = id;
         this.name = name;
