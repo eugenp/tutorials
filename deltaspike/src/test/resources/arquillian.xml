@@ -31,9 +31,9 @@
      <!-- Example configuration for a remote WildFly instance -->
    <container qualifier="jboss" default="true">
         <!-- By default, arquillian will use the JBOSS_HOME environment variable.  Alternatively, the configuration below can be uncommented. -->
-        <!--<configuration> -->
-        <!--<property name="jbossHome">/path/to/wildfly</property> -->
-        <!--</configuration> -->
+       <configuration>
+           <property name="jbossHome">target\wildfly-run\wildfly-10.0.0.Final</property>
+       </configuration>
    </container>
 
 </arquillian>

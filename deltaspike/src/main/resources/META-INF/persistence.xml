@@ -18,5 +18,4 @@
          <property name="hibernate.show_sql" value="false" />
       </properties>
    </persistence-unit>
-
 </persistence>

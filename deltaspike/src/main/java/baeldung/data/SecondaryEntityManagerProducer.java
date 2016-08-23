@@ -10,8 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
 @ApplicationScoped
-public class SecondaryEntityManagerProducer
-{
+public class SecondaryEntityManagerProducer {
     @PersistenceUnit(unitName = "secondary")
     private EntityManagerFactory entityManagerFactory;
 
@@ -19,15 +18,12 @@ public class SecondaryEntityManagerProducer
     @Default
     @RequestScoped
     @SecondaryPersistenceUnit
-    public EntityManager create()
-    {
+    public EntityManager create() {
         return this.entityManagerFactory.createEntityManager();
     }
 
-    public void dispose(@Disposes @Default EntityManager entityManager)
-    {
-        if (entityManager.isOpen())
-        {
+    public void dispose(@Disposes @Default EntityManager entityManager) {
+        if (entityManager.isOpen()) {
             entityManager.close();
         }
     }
