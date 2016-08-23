@@ -6,10 +6,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-        name = "rest-producer",
-        url = "http://localhost:9090",
-        //path = "/greeting/{username}",
-        fallback = GreetingClient.GreetingClientFallback.class
+  name = "rest-producer",
+  url = "http://localhost:9090",
+  fallback = GreetingClient.GreetingClientFallback.class
 )
 public interface GreetingClient extends GreetingController {
     @Component
