@@ -7,28 +7,27 @@ import java.io.StringWriter;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.client.ClientHttpResponse;
 
-
-public class ResponseResults{
+public class ResponseResults {
     private final ClientHttpResponse theResponse;
     private final String body;
 
-    protected ResponseResults(final ClientHttpResponse response) throws IOException{
+    protected ResponseResults(final ClientHttpResponse response) throws IOException {
         this.theResponse = response;
         final InputStream bodyInputStream = response.getBody();
-        if (null == bodyInputStream){
+        if (null == bodyInputStream) {
             this.body = "{}";
-        }else{
+        } else {
             final StringWriter stringWriter = new StringWriter();
             IOUtils.copy(bodyInputStream, stringWriter);
             this.body = stringWriter.toString();
         }
     }
 
-    protected ClientHttpResponse getTheResponse(){
+    protected ClientHttpResponse getTheResponse() {
         return theResponse;
     }
 
-    protected String getBody(){
+    protected String getBody() {
         return body;
     }
 }
