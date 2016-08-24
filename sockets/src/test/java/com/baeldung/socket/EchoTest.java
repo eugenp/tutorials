@@ -4,19 +4,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertEquals;
 
 public class EchoTest {
-	EchoClient client = null;
+	{
+		Executors.newSingleThreadExecutor().submit(() -> new EchoServer().start(4444));
+	}
+
+	EchoClient client = new EchoClient();
 
 	@Before
-	public void setup() {
-		client = new EchoClient();
+	public void init() {
 		client.startConnection("127.0.0.1", 4444);
 	}
 
-	@Test @Ignore
+	@Test
 	public void givenClient_whenServerEchosMessage_thenCorrect() {
 
 		String resp1 = client.sendMessage("hello");
