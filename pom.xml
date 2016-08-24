@@ -24,6 +24,7 @@
         <module>couchbase-sdk-spring-service</module>
 
         <module>dependency-injection</module>
+        <module>deltaspike</module>
         <module>gatling</module>
 
         <module>gson</module>
