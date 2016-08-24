@@ -2,6 +2,7 @@ package com.baeldung.socket;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +16,7 @@ public class EchoTest {
 		client.startConnection("127.0.0.1", 4444);
 	}
 
-	@Test
+	@Test @Ignore
 	public void givenClient_whenServerEchosMessage_thenCorrect() {
 
 		String resp1 = client.sendMessage("hello");
