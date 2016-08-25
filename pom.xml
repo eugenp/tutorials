@@ -116,6 +116,7 @@
         <module>xstream</module>
 		<module>dozer</module>
 		<module>orika</module>
+		<module>java-cassandra</module>
     </modules>
 
 </project>
