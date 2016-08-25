@@ -24,7 +24,8 @@
         <module>couchbase-sdk-spring-service</module>
 
         <module>dependency-injection</module>
-        <module>gatling</module>
+        <module>deltaspike</module>
+        <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
         <module>gson-jackson-performance</module>

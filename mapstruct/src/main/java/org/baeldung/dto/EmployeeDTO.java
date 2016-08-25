@@ -2,41 +2,41 @@ package org.baeldung.dto;
 
 public class EmployeeDTO {
 
-	private int employeeId;
-	private String employeeName;
-	private int divisionId;
-	private String divisionName;
+    private int employeeId;
+    private String employeeName;
+    private DivisionDTO division;
+    private String employeeStartDt;
 
-	public int getEmployeeId() {
-		return employeeId;
-	}
+    public int getEmployeeId() {
+        return employeeId;
+    }
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
-	}
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
 
-	public String getEmployeeName() {
-		return employeeName;
-	}
+    public String getEmployeeName() {
+        return employeeName;
+    }
 
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
-	}
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
 
-	public int getDivisionId() {
-		return divisionId;
-	}
+    public DivisionDTO getDivision() {
+        return division;
+    }
 
-	public void setDivisionId(int divisionId) {
-		this.divisionId = divisionId;
-	}
+    public void setDivision(DivisionDTO division) {
+        this.division = division;
+    }
 
-	public String getDivisionName() {
-		return divisionName;
-	}
+    public String getEmployeeStartDt() {
+        return employeeStartDt;
+    }
 
-	public void setDivisionName(String divisionName) {
-		this.divisionName = divisionName;
-	}
+    public void setEmployeeStartDt(String employeeStartDt) {
+        this.employeeStartDt = employeeStartDt;
+    }
 
 }
