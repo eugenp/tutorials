@@ -4,10 +4,10 @@ import java.net.*;
 import java.io.*;
 
 public class GreetServer {
-	private ServerSocket serverSocket = null;
-	private Socket clientSocket = null;
-	private PrintWriter out = null;
-	private BufferedReader in = null;
+	private ServerSocket serverSocket;
+	private Socket clientSocket;
+	private PrintWriter out;
+	private BufferedReader in;
 
 
 	public void start(int port) {
