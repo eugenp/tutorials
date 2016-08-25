@@ -1,5 +1,7 @@
 package com.baeldung.functionalinterface;
 
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -7,8 +9,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -63,13 +63,7 @@ public class FunctionalInterfaceTest {
         salaries.put("Freddy", 30000);
         salaries.put("Samuel", 50000);
 
-        salaries.replaceAll((name, oldValue) -> {
-            if (name.equals("Freddy")) {
-                return oldValue;
-            } else {
-                return oldValue + 10000;
-            }
-        });
+        salaries.replaceAll((name, oldValue) -> name.equals("Freddy") ? oldValue : oldValue + 10000);
 
         assertEquals(new Integer(50000), salaries.get("John"));
         assertEquals(new Integer(30000), salaries.get("Freddy"));
@@ -163,8 +157,7 @@ public class FunctionalInterfaceTest {
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
 
         int sum = values.stream()
-                .reduce((acc, value) -> acc + value)
-                .get();
+                .reduce(0, (acc, value) -> acc + value);
 
         assertEquals(37, sum);
 
