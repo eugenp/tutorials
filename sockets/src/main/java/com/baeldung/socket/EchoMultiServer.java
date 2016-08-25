@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 
 public class EchoMultiServer {
-	private ServerSocket serverSocket = null;
+	private ServerSocket serverSocket;
 
 	public void start(int port) {
 		try {
@@ -32,8 +32,8 @@ public class EchoMultiServer {
 
 	private static class EchoClientHandler extends Thread {
 		private Socket clientSocket;
-		private PrintWriter out = null;
-		private BufferedReader in = null;
+		private PrintWriter out;
+		private BufferedReader in;
 
 		public EchoClientHandler(Socket socket) {
 			this.clientSocket = socket;
