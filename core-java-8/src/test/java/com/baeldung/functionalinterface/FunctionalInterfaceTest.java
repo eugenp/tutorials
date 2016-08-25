@@ -1,14 +1,17 @@
 package com.baeldung.functionalinterface;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.google.common.util.concurrent.Uninterruptibles;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -157,7 +160,7 @@ public class FunctionalInterfaceTest {
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
 
         int sum = values.stream()
-                .reduce(0, (acc, value) -> acc + value);
+                .reduce(0, (i1, i2) -> i1 + i2);
 
         assertEquals(37, sum);
 
@@ -175,5 +178,22 @@ public class FunctionalInterfaceTest {
 
     }
 
+    public double squareLazy(Supplier<Double> lazyValue) {
+        return Math.pow(lazyValue.get(), 2);
+    }
+
+    @Test
+    public void whenUsingSupplierToGenerateValue_thenValueIsGeneratedLazily() {
+
+        Supplier<Double> lazyValue = () -> {
+            Uninterruptibles.sleepUninterruptibly(1000, TimeUnit.MILLISECONDS);
+            return 9d;
+        };
+
+        double valueSquared = squareLazy(lazyValue);
+
+        assertEquals(81d, valueSquared, 0);
+
+    }
 
 }
