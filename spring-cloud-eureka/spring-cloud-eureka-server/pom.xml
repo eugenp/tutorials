@@ -6,8 +6,7 @@
     <artifactId>spring-cloud-eureka-server</artifactId>
     <packaging>jar</packaging>
 
-    <name>Spring Cloud Eureka Server</name>
-    <description>Spring Cloud Eureka Server Demo</description>
+    <name>spring-cloud-eureka-server</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

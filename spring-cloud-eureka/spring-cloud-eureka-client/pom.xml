@@ -6,8 +6,7 @@
     <artifactId>spring-cloud-eureka-client</artifactId>
     <packaging>jar</packaging>
 
-    <name>Spring Cloud Eureka Client</name>
-    <description>Spring Cloud Eureka Sample Client</description>
+    <name>spring-cloud-eureka-client</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

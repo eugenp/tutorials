@@ -12,8 +12,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>Spring Cloud Eureka</name>
-    <description>Spring Cloud Eureka Server and Sample Clients</description>
+    <name>spring-cloud-eureka</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
