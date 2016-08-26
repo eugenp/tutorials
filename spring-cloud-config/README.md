@@ -24,4 +24,4 @@ $> mvn install spring-boot:repackage
 ```
 
 Don't forget to download the *Java JCE* package from
-(Oracle)[http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html].
+[Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html).
