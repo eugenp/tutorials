@@ -3,7 +3,7 @@
 ## Spring Security Login Example Project
 
 ###The Course
-The "Learn Spring Security" Classes: http://bit.ly/learnspringsecurity
+The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Form Login](http://www.baeldung.com/spring-security-login)

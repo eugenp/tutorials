@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 @RequestMapping(value = "/auth/")
 public class BankController {
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	@RequestMapping(value = "/transfer", method = RequestMethod.GET)
-	@ResponseBody
-	public int transfer(@RequestParam("accountNo") final int accountNo, @RequestParam("amount") final int amount) {
-		logger.info("Transfer to {}", accountNo);
-		return amount;
-	}
+    @RequestMapping(value = "/transfer", method = RequestMethod.GET)
+    @ResponseBody
+    public int transfer(@RequestParam("accountNo") final int accountNo, @RequestParam("amount") final int amount) {
+        logger.info("Transfer to {}", accountNo);
+        return amount;
+    }
 
-	// write - just for test
-	@RequestMapping(value = "/transfer", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.OK)
-	public void create(@RequestParam("accountNo") final int accountNo, @RequestParam("amount") final int amount) {
-		logger.info("Transfer to {}", accountNo);
+    // write - just for test
+    @RequestMapping(value = "/transfer", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void create(@RequestParam("accountNo") final int accountNo, @RequestParam("amount") final int amount) {
+        logger.info("Transfer to {}", accountNo);
 
-	}
+    }
 }

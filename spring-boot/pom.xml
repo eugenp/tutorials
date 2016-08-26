@@ -112,7 +112,13 @@
 				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 
-		</plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.1</version>
+            </plugin>
+
+        </plugins>
 
 	</build>
 

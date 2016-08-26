@@ -17,13 +17,15 @@
         <module>apache-cxf</module>
         <module>apache-fop</module>
         <module>autovalue-tutorial</module>
+        <module>cdi</module>
         <module>core-java</module>
         <module>core-java-8</module>
         <module>couchbase-sdk-intro</module>
         <module>couchbase-sdk-spring-service</module>
 
         <module>dependency-injection</module>
-        <module>gatling</module>
+        <module>deltaspike</module>
+        <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
         <module>gson-jackson-performance</module>
@@ -82,8 +84,10 @@
         <module>spring-quartz</module>
         <module>spring-spel</module>
         <module>spring-rest</module>
+        <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud-config</module>
+        <module>spring-cloud-eureka</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
@@ -98,6 +102,7 @@
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
+        <module>spring-security-x509</module>
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
         <module>jsf</module>
