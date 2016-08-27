@@ -117,6 +117,7 @@
         <module>xstream</module>
 		<module>dozer</module>
 		<module>orika</module>
+		<module>reflection</module>
     </modules>
 
 </project>
