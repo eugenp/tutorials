@@ -13,17 +13,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler({ RepositoryConstraintViolationException.class })
-	public ResponseEntity<Object> handleAccessDeniedException(Exception ex, WebRequest request) {
-		RepositoryConstraintViolationException nevEx = (RepositoryConstraintViolationException) ex;
+    @ExceptionHandler({ RepositoryConstraintViolationException.class })
+    public ResponseEntity<Object> handleAccessDeniedException(Exception ex, WebRequest request) {
+        RepositoryConstraintViolationException nevEx = (RepositoryConstraintViolationException) ex;
 
-		StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-		for (ObjectError e : nevEx.getErrors().getAllErrors()) {
-			sb.append(e.toString() + "\n");
-		}
+        for (ObjectError e : nevEx.getErrors().getAllErrors()) {
+            sb.append(e.toString() + "\n");
+        }
 
-		return new ResponseEntity<Object>(sb.toString(), new HttpHeaders(), HttpStatus.PARTIAL_CONTENT);
-	}
+        return new ResponseEntity<Object>(sb.toString(), new HttpHeaders(), HttpStatus.PARTIAL_CONTENT);
+    }
 
 }

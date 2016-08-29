@@ -13,34 +13,33 @@ import org.springframework.data.rest.core.event.ValidatingRepositoryEventListene
 import org.springframework.validation.Validator;
 
 @Configuration
-public class ValidatorEventRegister implements InitializingBean{
+public class ValidatorEventRegister implements InitializingBean {
 
-        private static final List<String> EVENTS;
-        static {
-            List<String> events = new ArrayList<String>();
-            events.add("beforeCreate");
-            events.add("afterCreate");
-            events.add("beforeSave");
-            events.add("afterSave");
-            events.add("beforeLinkSave");
-            events.add("afterLinkSave");
-            events.add("beforeDelete");
-            events.add("afterDelete");
-            EVENTS = Collections.unmodifiableList(events);
+    private static final List<String> EVENTS;
+    static {
+        List<String> events = new ArrayList<String>();
+        events.add("beforeCreate");
+        events.add("afterCreate");
+        events.add("beforeSave");
+        events.add("afterSave");
+        events.add("beforeLinkSave");
+        events.add("afterLinkSave");
+        events.add("beforeDelete");
+        events.add("afterDelete");
+        EVENTS = Collections.unmodifiableList(events);
+    }
+
+    @Autowired
+    ListableBeanFactory beanFactory;
+
+    @Autowired
+    ValidatingRepositoryEventListener validatingRepositoryEventListener;
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        Map<String, Validator> validators = beanFactory.getBeansOfType(Validator.class);
+        for (Map.Entry<String, Validator> entry : validators.entrySet()) {
+            EVENTS.stream().filter(p -> entry.getKey().startsWith(p)).findFirst().ifPresent(p -> validatingRepositoryEventListener.addValidator(p, entry.getValue()));
         }
-
-        @Autowired
-        ListableBeanFactory beanFactory;
-
-        @Autowired
-        ValidatingRepositoryEventListener validatingRepositoryEventListener;
-
-        @Override
-        public void afterPropertiesSet() throws Exception {
-            Map<String, Validator> validators = beanFactory.getBeansOfType(Validator.class);
-            for (Map.Entry<String, Validator> entry : validators.entrySet()) {
-                EVENTS.stream().filter(p -> entry.getKey().startsWith(p)).findFirst()
-                        .ifPresent(p -> validatingRepositoryEventListener.addValidator(p, entry.getValue()));
-            }
-        }
+    }
 }
