@@ -89,16 +89,16 @@ public class HystrixTimeoutTest {
         HystrixCommand.Setter config = HystrixCommand
                 .Setter
                 .withGroupKey(HystrixCommandGroupKey.Factory.asKey("RemoteServiceGroupCircuitBreaker"));
-        HystrixCommandProperties.Setter commandProperties = HystrixCommandProperties.Setter();
-        commandProperties.withExecutionTimeoutInMilliseconds(1000);
+        HystrixCommandProperties.Setter properties = HystrixCommandProperties.Setter();
+        properties.withExecutionTimeoutInMilliseconds(1000);
 
-        commandProperties.withCircuitBreakerSleepWindowInMilliseconds(4000);
-        commandProperties.withExecutionIsolationStrategy(
+        properties.withCircuitBreakerSleepWindowInMilliseconds(4000);
+        properties.withExecutionIsolationStrategy(
                 HystrixCommandProperties.ExecutionIsolationStrategy.THREAD);
-        commandProperties.withCircuitBreakerEnabled(true);
-        commandProperties.withCircuitBreakerRequestVolumeThreshold(1);
+        properties.withCircuitBreakerEnabled(true);
+        properties.withCircuitBreakerRequestVolumeThreshold(1);
 
-        config.andCommandPropertiesDefaults(commandProperties);
+        config.andCommandPropertiesDefaults(properties);
 
         config.andThreadPoolPropertiesDefaults(HystrixThreadPoolProperties.Setter()
                 .withMaxQueueSize(1)
