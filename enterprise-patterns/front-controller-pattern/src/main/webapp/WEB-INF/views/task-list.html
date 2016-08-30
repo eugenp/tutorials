@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="|${username}: task list|"></title>
+    </head>
+    <body>
+        <h2 th:text="|${username}'s tasks:|"></h2>
+        <ul>
+            <li th:each="task : ${tasks}">
+                <p th:text="*{task.due}"></p>
+                <p th:text="*{task.description}"></p>
+            </li>
+        </ul>
+        <p>
+            <a th:href="@{/example}">Home</a>
+            <a th:href="@{/example/tasks/{username}/add(username=${username})}">Add new</a>
+        </p>
+    </body>
+</html>
