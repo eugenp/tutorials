@@ -110,7 +110,7 @@
         <module>xml</module>
         <module>lombok</module>
         <module>redis</module>
-        <module>webjars</module>
+
 
 		<module>mutation-testing</module>
 		<module>spring-mvc-velocity</module>
