@@ -1,7 +1,10 @@
 package com.baeldung.web.controller;
 
 
-import com.baeldung.spring.web.config.ApplicationConfig;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
+import javax.servlet.ServletContext;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,9 +21,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import javax.servlet.ServletContext;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import com.baeldung.spring.web.config.ApplicationConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
