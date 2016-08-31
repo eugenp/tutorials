@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_0.dtd">
+<!-- ============================================================= -->
+<!-- Configure a HTTPS connector.                                  -->
+<!-- This configuration must be used in conjunction with jetty.xml -->
+<!-- and jetty-ssl.xml.                                            -->
+<!-- ============================================================= -->
+<Configure id="Server" class="org.eclipse.jetty.server.Server">
+  <!-- =========================================================== -->
+  <!-- Add a HTTPS Connector.                                      -->
+  <!-- Configure an o.e.j.server.ServerConnector with connection   -->
+  <!-- factories for TLS (aka SSL) and HTTP to provide HTTPS.      -->
+  <!-- All accepted TLS connections are wired to a HTTP connection.-->
+  <!--                                                             -->
+  <!-- Consult the javadoc of o.e.j.server.ServerConnector,        -->
+  <!-- o.e.j.server.SslConnectionFactory and                       -->
+  <!-- o.e.j.server.HttpConnectionFactory for all configuration    -->
+  <!-- that may be set here.                                       -->
+  <!-- =========================================================== -->
+  <Call id="httpsConnector" name="addConnector">
+    <Arg>
+      <New class="org.eclipse.jetty.server.ServerConnector">
+        <Arg name="server"><Ref refid="Server" /></Arg>
+          <Arg name="factories">
+            <Array type="org.eclipse.jetty.server.ConnectionFactory">
+              <Item>
+                <New class="org.eclipse.jetty.server.SslConnectionFactory">
+                  <Arg name="next">http/1.1</Arg>
+                  <Arg name="sslContextFactory"><Ref refid="sslContextFactory"/></Arg>
+                </New>
+              </Item>
+              <Item>
+                <New class="org.eclipse.jetty.server.HttpConnectionFactory">
+                  <Arg name="config"><Ref refid="sslHttpConfig"/></Arg>
+                </New>
+              </Item>
+            </Array>
+          </Arg>
+          <Set name="host"><Property name="jetty.host" /></Set>
+          <Set name="port"><Property name="jetty.https.port" default="8443" /></Set>
+          <Set name="idleTimeout">30000</Set>
+        </New>
+    </Arg>
+  </Call>
+</Configure>
