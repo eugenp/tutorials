@@ -51,7 +51,7 @@ public class ArraySort {
     }
 
     @Test
-    public void comparatorSortIntArray_Java8Lambda() {
+    public void givenArray_whenUsingSortWithLambdas_thenSortedArray() {
         Arrays.sort(integers, (a, b) -> {
             return a - b;
         });
@@ -86,7 +86,7 @@ public class ArraySort {
     }
     
     @Test
-    public void arraySortVariant() {
+    public void givenIntArray_whenUsingRangeSort_thenRangeSortedArray() {
         System.out.println(Arrays.toString(numbers));
         Arrays.sort(numbers, 3, 7);
         System.out.println(Arrays.toString(numbers));
@@ -94,7 +94,7 @@ public class ArraySort {
     }
     
     @Test 
-    public void arrayParallelSortVariant() {
+    public void givenIntArray_whenUsingParallelSort_thenParallelSortedArray() {
         
         Arrays.parallelSort(numbers);
         
