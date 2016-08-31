@@ -21,7 +21,7 @@ public class Bookshelf {
 
     public Book findByTitle(String title) {
         return books.stream()
-          .filter(book -> book.getTitle().equalsIgnoreCase(title))
+          .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
           .findFirst()
           .orElse(null);
     }

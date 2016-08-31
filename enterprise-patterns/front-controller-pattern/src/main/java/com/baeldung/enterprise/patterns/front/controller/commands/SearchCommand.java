@@ -6,7 +6,7 @@ import com.baeldung.enterprise.patterns.front.controller.data.Bookshelf;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-public class BookCommand extends FrontCommand {
+public class SearchCommand extends FrontCommand {
     @Override
     public void process() throws ServletException, IOException {
         Book book = Bookshelf.getInstance()
