@@ -1,5 +1,7 @@
 package org.baeldung.java;
 
+import org.assertj.core.internal.cglib.core.Local;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
@@ -7,130 +9,133 @@ import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class JavaStringConversionUnitTest {
     @Test
-    public void stringToPrimitiveBoolean() {
+    public void whenConvertingStringToPrimitiveBoolean_thenCorrect() {
         boolean primitiveBoolean = Boolean.parseBoolean("true");
 
-        System.out.println(primitiveBoolean);
+        Assert.assertTrue(primitiveBoolean);
     }
 
     @Test
-    public void stringToWrapperBoolean() {
+    public void whenConvertingStringToWrapperBoolean_thenCorrect() {
         Boolean wrapperBoolean = Boolean.valueOf("false");
 
-        System.out.println(wrapperBoolean);
+        Assert.assertFalse(wrapperBoolean);
     }
 
     @Test
-    public void stringToPrimitiveByte() {
+    public void whenConvertingStringToPrimitiveByte_thenCorrect() {
         byte primitiveByte = Byte.parseByte("1");
 
-        System.out.println(primitiveByte);
+        assertThat(primitiveByte == 1).isTrue();
     }
 
     @Test
-    public void stringToWrapperByte() {
+    public void whenConvertingStringToWrapperByte_thenCorrect() {
         Byte wrapperByte = Byte.valueOf("1");
 
-        System.out.println(wrapperByte);
+        assertThat(wrapperByte == 1).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveShort() {
+    public void whenConvertingStringToPrimitiveShort_thenCorrect() {
         short primitiveShort = Short.parseShort("1");
 
-        System.out.println(primitiveShort);
+        assertThat(primitiveShort == 1).isTrue();
     }
 
     @Test
-    public void stringToWrapperShort() {
+    public void whenConvertingStringToWrapperShort_thenCorrect() {
         Short wrapperShort = Short.valueOf("1");
 
-        System.out.println(wrapperShort);
+        assertThat(wrapperShort == 1).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveInt() {
+    public void whenConvertingStringToPrimitiveInt_thenCorrect() {
         int primitiveInt = Integer.parseInt("1");
 
-        System.out.println(primitiveInt);
+        assertThat(primitiveInt == 1).isTrue();
     }
 
     @Test
-    public void stringToWrapperInteger() {
+    public void whenConvertingStringToWrapperInteger_thenCorrect() {
         Integer wrapperInt = Integer.valueOf("1");
 
-        System.out.println(wrapperInt);
+        assertThat(wrapperInt == 1).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveLong() {
+    public void whenConvertingStringToPrimitiveLong_thenCorrect() {
         long primitiveLong = Long.parseLong("1");
 
-        System.out.println(primitiveLong);
+        assertThat(primitiveLong == 1).isTrue();
     }
 
     @Test
-    public void stringToWrapperLong() {
+    public void whenConvertingStringToWrapperLong_thenCorrect() {
         Long wrapperLong = Long.valueOf("1");
 
-        System.out.println(wrapperLong);
+        assertThat(wrapperLong == 1).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveFloat() {
+    public void whenConvertingStringToPrimitiveFloat_thenCorrect() {
         float primitiveFloat = Float.parseFloat("1.1");
 
-        System.out.println(primitiveFloat);
+        assertThat(primitiveFloat == 1.1F).isTrue();
     }
 
     @Test
-    public void stringToWrapperFloat() {
+    public void whenConvertingStringToWrapperFloat_thenCorrect() {
         Float wrapperFloat = Float.valueOf("1.1");
 
-        System.out.println(wrapperFloat);
+        assertThat(wrapperFloat == 1.1F).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveDouble() {
+    public void whenConvertingStringToPrimitiveDouble_thenCorrect() {
         double primitiveDouble = Double.parseDouble("1.1");
 
-        System.out.println(primitiveDouble);
+        assertThat(primitiveDouble == 1.1).isTrue();
     }
 
     @Test
-    public void stringToWrapperDouble() {
+    public void whenConvertingStringToWrapperDouble_thenCorrect() {
         Double wrapperDouble = Double.valueOf("1.1");
 
-        System.out.println(wrapperDouble);
+        assertThat(wrapperDouble == 1.1).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveChar() {
+    public void whenConvertingStringToPrimitiveChar_thenCorrect() {
         String primitiveChar = "C";
         char h = primitiveChar.charAt(0);
 
-        System.out.println(h);
+        assertThat(h == 'C').isTrue();
     }
 
 
     @Test
-    public void stringToPrimitiveCharArray() {
+    public void whenConvertingStringToPrimitiveCharArray_thenCorrect() {
         String primitiveChars = "Hello world";
         char[] chars = primitiveChars.toCharArray();
 
-        System.out.println(Arrays.toString(chars));
+        assertThat(Arrays.equals(chars,new char[]{'H','e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'})).isTrue();
     }
 
     @Test
-    public void stringToPrimitiveByteArray_default() {
+    public void whenConvertingStringToPrimitiveByteArray_default_thenCorrect() {
         String primitiveBytes = "Hello world";
         byte[] bytes = primitiveBytes.getBytes();
 
@@ -138,7 +143,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void stringToPrimitiveByteArray_CharsetName() throws UnsupportedEncodingException {
+    public void stringToPrimitiveByteArray_CharsetName_thenCorrect() throws UnsupportedEncodingException {
         String primitiveBytes = "Hello world";
         byte[] bytes = primitiveBytes.getBytes("UTF-8");
 
@@ -146,7 +151,7 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void stringToPrimitiveByteArray_Charset() {
+    public void whenConvertingStringToPrimitiveByteArray_Charset_thenCorrect() {
         String primitiveBytes = "Hello world";
         byte[] bytes = primitiveBytes.getBytes(StandardCharsets.UTF_8);
 
@@ -154,35 +159,35 @@ public class JavaStringConversionUnitTest {
     }
 
     @Test
-    public void java7StringToDate() throws ParseException {
+    public void whenConvertingStringToDate_java7_thenCorrect() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String dateInString = "05/30/2016";
+        String dateInString = "26/06/2016";
         Date date = formatter.parse(dateInString);
 
-        System.out.println(date);
+        assertThat(date.equals(Date.from(LocalDate.of(2016,06,26).atStartOfDay(ZoneId.systemDefault()).toInstant()))).isTrue();
     }
 
     @Test
-    public void java8StringToDate() {
+    public void whenConvertingStringToDate_java8_thenCorrect() {
         LocalDate localDate = LocalDate.parse("2016-06-26", DateTimeFormatter.ISO_LOCAL_DATE);
 
-        System.out.println(localDate);
+        assertThat(localDate.equals(LocalDate.of(2016,06,26))).isTrue();
     }
 
     @Test
-    public void java7DateToString() {
+    public void whenConvertingDateToString_java7_thenCorrect() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String dateToString = formatter.format(new Date());
+        String dateToString = formatter.format(Date.from(LocalDate.of(2016,06,26).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
-        System.out.println(dateToString);
+        assertThat(dateToString.equals("26/06/2016")).isTrue();
     }
 
     @Test
-    public void java8DateToString() {
-        LocalDate localDate = LocalDate.now();
+    public void whenConvertingDateToString_java8_thenCorrect() {
+        LocalDate localDate = LocalDate.of(2016,06,26);
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE;
-        String dateToString = dateTimeFormatter.format(localDate);//2016-06-26
+        String dateToString = dateTimeFormatter.format(localDate);
 
-        System.out.println(dateToString);
+        assertThat(dateToString.equals("2016-06-26")).isTrue();
     }
 }
