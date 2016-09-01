@@ -1,22 +1,15 @@
-package com.baeldung.java9;
+package com.baeldung.java9.language;
 
 import com.baeldung.java9.language.PrivateInterface;
-import com.baeldung.java9.language.TryWithResourcesTest;
+import org.junit.Test;
 
-public class Main {
+public class PrivateInterfaceTest {
 
-    public static void main(String args[]){
-        PrivateInterface pi =new PrivateInterface() {
+    @Test
+    public void test() {
+        PrivateInterface piClass = new PrivateInterface() {
         };
-        pi.check();
+        piClass.check();
     }
-    
-//    public static void main(String[] args) throws Exception {
-//        MultiResultionImageTest mri = new MultiResultionImageTest();
-//        mri.baseMultiResImageTest();
-//
-//        TryWithResourcesTest tt = new TryWithResourcesTest();
-// //       tt.test1();
-//    }
 
 }

@@ -1,4 +1,6 @@
-package com.baeldung.java9.httpclient;
+package com.baeldung.java9.httpclient;         
+
+
 
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.junit.Assert.assertTrue;
@@ -24,61 +26,40 @@ import javax.net.ssl.SSLParameters;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SimpleHttpRequests {
+public class SimpleHttpRequestsTest {
 
- //   private URI httpURI =   
+   private URI httpURI; 
     
     @Before
-    public void init() {
-
+    public void init() throws URISyntaxException {
+        httpURI = new URI("http://www.baeldung.com/");
     }
 
     @Test
     public void quickGet() throws IOException, InterruptedException, URISyntaxException {
-        HttpRequest request = HttpRequest.create(new URI("http://localhost:8080")).GET();
+        HttpRequest request = HttpRequest.create( httpURI ).GET();
         HttpResponse response = request.response();
-        System.out.println(printHeaders(response.headers()));
+        int responseStatusCode = response.statusCode();
         String responseBody = response.body(HttpResponse.asString());
-        assertTrue("Get response body size",  responseBody.length() > 10);
+        assertTrue("Get response status code is bigger then 400",  responseStatusCode < 400);
     }
     
     @Test
-    public void asyncGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException{
-        HttpRequest request = HttpRequest.create(new URI("http://localhost:8080")).GET();
+    public void asynchronousGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException{
+        HttpRequest request = HttpRequest.create(httpURI).GET();
         long before = System.currentTimeMillis();
         CompletableFuture<HttpResponse> futureResponse = request.responseAsync();
         futureResponse.thenAccept( response -> {
-            HttpHeaders hs = response.headers();
-            System.out.println(Thread.currentThread()+"\nHeaders:----------------------\n"+ printHeaders(hs));
             String responseBody = response.body(HttpResponse.asString());
-            
-            
-            //System.out.println(responseBody);
-        });
-        
-        
-        
-                
-        long after = System.currentTimeMillis();
-        System.out.println(Thread.currentThread()+" waits "+ (after - before));
-        assertTrue("Thread waits", (after - before) < 1500);
-        
-        futureResponse.join();
-        
-        // Calculate some other thing in this Thread
-        //HttpResponse response = futureResponse.get();
-        long afterAfter = System.currentTimeMillis();
-        System.out.println(Thread.currentThread()+ "(afterAfter - before)"+ (afterAfter - before));
-       
-        //String responseBody = response.body(HttpResponse.asString());
-        //HttpHeaders hs = response.headers();
-        //System.out.println(responseBody);
-       // assertTrue("Get response body size",  responseBody.length() > 10);
+        });     
+        HttpResponse resp = futureResponse.get();
+        HttpHeaders hs = resp.headers();
+        assertTrue("There should be more then 1 header.", hs.map().size() >1);
     }
     
     @Test
-    public void PostMehtod() throws URISyntaxException, IOException, InterruptedException {
-        HttpRequest.Builder requestBuilder = HttpRequest.create(new URI("http://localhost:8080"));
+    public void postMehtod() throws URISyntaxException, IOException, InterruptedException {
+        HttpRequest.Builder requestBuilder = HttpRequest.create(httpURI);
         requestBuilder.body(HttpRequest.fromString("param1=foo,param2=bar")).followRedirects(HttpClient.Redirect.SECURE);
         HttpRequest request = requestBuilder.POST();
         HttpResponse response = request.response();
@@ -96,12 +77,11 @@ public class SimpleHttpRequests {
         HttpClient.Builder hcBuilder = HttpClient.create();
         hcBuilder.cookieManager(cManager).sslContext(SSLContext.getDefault()).sslParameters(sslParam);
         HttpClient httpClient = hcBuilder.build();
-        HttpRequest.Builder reqBuilder = httpClient.request(new URI("https://localhost:8443"));
+        HttpRequest.Builder reqBuilder = httpClient.request(new URI("https://www.facebook.com"));
         
         HttpRequest request = reqBuilder.followRedirects(HttpClient.Redirect.ALWAYS).GET();
         HttpResponse response = request.response();
         int statusCode = response.statusCode();
-        System.out.println(response.body(HttpResponse.asString()));
         assertTrue("HTTP return code", statusCode == HTTP_OK);
     }
     
