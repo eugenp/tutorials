@@ -8,7 +8,7 @@ import org.springframework.cloud.dataflow.server.EnableDataFlowServer;
 @SpringBootApplication
 public class DataFlowServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DataFlowServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DataFlowServerApplication.class, args);
+    }
 }

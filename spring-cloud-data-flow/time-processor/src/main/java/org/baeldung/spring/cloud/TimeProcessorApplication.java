@@ -13,15 +13,15 @@ import org.springframework.integration.annotation.Transformer;
 @SpringBootApplication
 public class TimeProcessorApplication {
 
-	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
-	public Object transform(Long timestamp) {
+    @Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
+    public Object transform(Long timestamp) {
 
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-		String date = dateFormat.format(timestamp);
-		return date;
-	}
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+        String date = dateFormat.format(timestamp);
+        return date;
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(TimeProcessorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TimeProcessorApplication.class, args);
+    }
 }

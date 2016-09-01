@@ -12,15 +12,15 @@ import org.springframework.cloud.stream.messaging.Sink;
 @SpringBootApplication
 public class LogSinkApplication {
 
-	private static Logger logger = LoggerFactory.getLogger(LogSinkApplication.class);
+    private static Logger logger = LoggerFactory.getLogger(LogSinkApplication.class);
 
-	@StreamListener(Sink.INPUT)
-	public void loggerSink(String date) {
+    @StreamListener(Sink.INPUT)
+    public void loggerSink(String date) {
 
-		logger.info("Received: " + date);
-	}
+        logger.info("Received: " + date);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(LogSinkApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LogSinkApplication.class, args);
+    }
 }

@@ -8,7 +8,7 @@ import org.springframework.cloud.dataflow.shell.EnableDataFlowShell;
 @SpringBootApplication
 public class DataFlowShellApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DataFlowShellApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DataFlowShellApplication.class, args);
+    }
 }
