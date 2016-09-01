@@ -107,15 +107,6 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty9.version}</version>
-                <configuration>
-                    <systemProperties>
-                        <systemProperty>
-                            <name>maven.project.build.directory.test-classes</name>
-                            <value>${project.build.directory}/test-classes</value>
-                        </systemProperty>
-                    </systemProperties>
-                    <jettyXml>${project.basedir}/src/test/jetty/jetty.xml,${project.basedir}/src/test/jetty/jetty-ssl.xml,${project.basedir}/src/test/jetty/jetty-http.xml,${project.basedir}/src/test/jetty/jetty-https.xml</jettyXml>
-                </configuration>
             </plugin>
         </plugins>
     </build>
