@@ -1,7 +1,7 @@
-package org.baeldung.mapper;
+package com.baeldung.mapper;
 
-import org.baeldung.dto.SimpleSource;
-import org.baeldung.entity.SimpleDestination;
+import com.baeldung.dto.SimpleSource;
+import com.baeldung.entity.SimpleDestination;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

@@ -1,14 +1,14 @@
-package org.baeldung.mapper;
+package com.baeldung.mapper;
 
-import java.util.List;
-
-import org.baeldung.dto.DivisionDTO;
-import org.baeldung.dto.EmployeeDTO;
-import org.baeldung.entity.Division;
-import org.baeldung.entity.Employee;
+import com.baeldung.dto.DivisionDTO;
+import com.baeldung.dto.EmployeeDTO;
+import com.baeldung.entity.Division;
+import com.baeldung.entity.Employee;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+
+import java.util.List;
 
 @Mapper
 public interface EmployeeMapper {

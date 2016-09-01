@@ -1,6 +1,11 @@
-package org.baeldung.mapper;
+package com.baeldung.mapper;
 
-import static org.junit.Assert.assertEquals;
+import com.baeldung.dto.DivisionDTO;
+import com.baeldung.dto.EmployeeDTO;
+import com.baeldung.entity.Division;
+import com.baeldung.entity.Employee;
+import org.junit.Test;
+import org.mapstruct.factory.Mappers;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,12 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.baeldung.dto.DivisionDTO;
-import org.baeldung.dto.EmployeeDTO;
-import org.baeldung.entity.Division;
-import org.baeldung.entity.Employee;
-import org.junit.Test;
-import org.mapstruct.factory.Mappers;
+import static org.junit.Assert.assertEquals;
 
 public class EmployeeMapperTest {
 

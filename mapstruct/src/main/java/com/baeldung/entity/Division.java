@@ -1,4 +1,4 @@
-package org.baeldung.entity;
+package com.baeldung.entity;
 
 public class Division {
 

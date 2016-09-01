@@ -1,4 +1,4 @@
-package org.baeldung.dto;
+package com.baeldung.dto;
 
 public class EmployeeDTO {
 

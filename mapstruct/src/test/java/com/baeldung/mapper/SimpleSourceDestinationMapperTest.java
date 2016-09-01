@@ -1,9 +1,9 @@
-package org.baeldung.mapper;
+package com.baeldung.mapper;
 
 import static org.junit.Assert.assertEquals;
 
-import org.baeldung.dto.SimpleSource;
-import org.baeldung.entity.SimpleDestination;
+import com.baeldung.dto.SimpleSource;
+import com.baeldung.entity.SimpleDestination;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

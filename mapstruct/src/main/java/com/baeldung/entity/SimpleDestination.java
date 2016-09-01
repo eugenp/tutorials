@@ -1,6 +1,6 @@
-package org.baeldung.dto;
+package com.baeldung.entity;
 
-public class SimpleSource {
+public class SimpleDestination {
 
     private String name;
     private String description;
