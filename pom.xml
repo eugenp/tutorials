@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -8,9 +9,9 @@
     <packaging>pom</packaging>
 
 
-	<properties>
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    </properties>
 
     <modules>
         <module>assertj</module>
@@ -52,7 +53,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
-		<module>log4j</module>
+        <module>log4j</module>
 
         <module>spring-all</module>
         <module>spring-akka</module>
@@ -74,7 +75,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
-	<module>spring-jpa-jndi</module>
+        <module>spring-jpa-jndi</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
@@ -87,8 +88,7 @@
         <module>spring-rest</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
-        <module>spring-cloud-config</module>
-        <module>spring-cloud-hystrix</module>
+        <module>spring-cloud</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
@@ -110,13 +110,13 @@
         <module>xml</module>
         <module>lombok</module>
         <module>redis</module>
-        <module>webjars</module>
 
-		<module>mutation-testing</module>
-		<module>spring-mvc-velocity</module>
+
+        <module>mutation-testing</module>
+        <module>spring-mvc-velocity</module>
         <module>xstream</module>
-		<module>dozer</module>
-		<module>orika</module>
+        <module>dozer</module>
+        <module>orika</module>
     </modules>
 
 </project>
