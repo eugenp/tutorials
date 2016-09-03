@@ -38,7 +38,7 @@ public class BookRepositoryIntegrationTest {
     @BeforeClass
     public static void init() throws ConfigurationException, TTransportException, IOException, InterruptedException {
         // Start an embedded Cassandra Server
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
+        EmbeddedCassandraServerHelper.startEmbeddedCassandra(20000L);
     }
 
     @Before

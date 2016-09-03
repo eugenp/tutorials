@@ -24,7 +24,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         
         <!-- Cassandra -->
-        <cassandra-driver-core.version>3.0.3</cassandra-driver-core.version>
+        <cassandra-driver-core.version>3.1.0</cassandra-driver-core.version>
   	</properties>
   
   	<dependencies>
@@ -40,10 +40,16 @@
 		<dependency>
 		    <groupId>org.cassandraunit</groupId>
 		    <artifactId>cassandra-unit</artifactId>
-		    <version>2.2.2.1</version>
+		    <version>3.0.0.1</version>
 		</dependency>
 		
-		
+		<!-- This guava version is required for cassandra-unit 3.0.0.1 -->
+		<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+        
   		<!-- logging -->
 
         <dependency>

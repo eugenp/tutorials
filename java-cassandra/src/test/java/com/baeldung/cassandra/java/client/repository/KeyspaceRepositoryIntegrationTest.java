@@ -32,7 +32,7 @@ public class KeyspaceRepositoryIntegrationTest {
     @BeforeClass
     public static void init() throws ConfigurationException, TTransportException, IOException, InterruptedException {
         // Start an embedded Cassandra Server
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
+        EmbeddedCassandraServerHelper.startEmbeddedCassandra(20000L);
     }
 
     @Before
@@ -50,7 +50,7 @@ public class KeyspaceRepositoryIntegrationTest {
 
         // ResultSet result = session.execute("SELECT * FROM system_schema.keyspaces WHERE keyspace_name = 'testBaeldungKeyspace';");
 
-        ResultSet result = session.execute("SELECT * FROM system.schema_keyspaces;");
+        ResultSet result = session.execute("SELECT * FROM system_schema.keyspaces;");
 
         // Check if the Keyspace exists in the returned keyspaces.
         List<String> matchedKeyspaces = result.all().stream().filter(r -> r.getString(0).equals(keyspaceName.toLowerCase())).map(r -> r.getString(0)).collect(Collectors.toList());
@@ -65,7 +65,7 @@ public class KeyspaceRepositoryIntegrationTest {
         // schemaRepository.createKeyspace(keyspaceName, "SimpleStrategy", 1);
         schemaRepository.deleteKeyspace(keyspaceName);
 
-        ResultSet result = session.execute("SELECT * FROM system.schema_keyspaces;");
+        ResultSet result = session.execute("SELECT * FROM system_schema.keyspaces;");
         boolean isKeyspaceCreated = result.all().stream().anyMatch(r -> r.getString(0).equals(keyspaceName.toLowerCase()));
         assertFalse(isKeyspaceCreated);
     }
