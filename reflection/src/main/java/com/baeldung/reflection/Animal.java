@@ -5,7 +5,6 @@ public abstract class Animal implements Eating{
 	private String name;
 
 	public Animal(String name) {
-		super();
 		this.name = name;
 	}
 
