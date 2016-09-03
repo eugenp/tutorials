@@ -115,6 +115,9 @@
         <module>mutation-testing</module>
         <module>spring-mvc-velocity</module>
         <module>xstream</module>
+		<module>dozer</module>
+		<module>orika</module>
+		<module>reflection</module>
         <module>dozer</module>
         <module>orika</module>
     </modules>
