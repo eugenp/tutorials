@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class XmlController
-{
+public class XmlController {
 
     @RequestMapping(value = "/endpoint")
     public ModelAndView handleRequestFromXmlConfiguredServlet() {

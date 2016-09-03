@@ -19,9 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(loader=GenericXmlWebContextLoader.class, locations = "classpath*:mvc-configuration.xml")
-public class XmlServletTest
-{
-	private MockMvc mockMvc;
+public class XmlServletTest {
+
+    private MockMvc mockMvc;
 
     @Autowired
     private WebApplicationContext wac;
