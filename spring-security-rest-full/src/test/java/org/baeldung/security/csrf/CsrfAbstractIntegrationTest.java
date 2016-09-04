@@ -23,30 +23,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebAppConfiguration
 public class CsrfAbstractIntegrationTest {
 
-	@Autowired
-	private WebApplicationContext context;
+    @Autowired
+    private WebApplicationContext context;
 
-	@Autowired
-	private Filter springSecurityFilterChain;
+    @Autowired
+    private Filter springSecurityFilterChain;
 
-	protected MockMvc mvc;
+    protected MockMvc mvc;
 
-	//
+    //
 
-	@Before
-	public void setup() {
-		mvc = MockMvcBuilders.webAppContextSetup(context).addFilters(springSecurityFilterChain).build();
-	}
+    @Before
+    public void setup() {
+        mvc = MockMvcBuilders.webAppContextSetup(context).addFilters(springSecurityFilterChain).build();
+    }
 
-	protected RequestPostProcessor testUser() {
-		return user("user").password("userPass").roles("USER");
-	}
+    protected RequestPostProcessor testUser() {
+        return user("user").password("userPass").roles("USER");
+    }
 
-	protected RequestPostProcessor testAdmin() {
-		return user("admin").password("adminPass").roles("USER", "ADMIN");
-	}
+    protected RequestPostProcessor testAdmin() {
+        return user("admin").password("adminPass").roles("USER", "ADMIN");
+    }
 
-	protected String createFoo() throws JsonProcessingException {
-		return new ObjectMapper().writeValueAsString(new Foo(randomAlphabetic(6)));
-	}
+    protected String createFoo() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(new Foo(randomAlphabetic(6)));
+    }
 }
