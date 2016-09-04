@@ -10,18 +10,16 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>config</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>config</module>
+        <module>discovery</module>
+        <module>gateway</module>
+        <module>resource</module>
+    </modules>
 
-    <dependencies>
-        <!--cloud-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>part-1</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    
 </project>
