@@ -268,7 +268,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>4.1.3.RELEASE</org.springframework.security.version>
         <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
         <javassist.version>3.20.0-GA</javassist.version>
 
