@@ -24,16 +24,10 @@ public class LoggingFilter extends BaseFilter {
         chain.doFilter(request, response);
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String username = (String) httpServletRequest.getAttribute("username");
-        if (username != null && username.length() > 0) {
-            username = username.concat("@");
-        } else {
-            username = "";
+        if (username == null) {
+            username = "guest";
         }
-        String intro = "Request";
-        if (username.length() > 0) {
-            intro = "Authenticated request";
-        }
-        log.info("{} from '{}{}': {}?{}", intro, username, request.getRemoteAddr(),
+        log.info("Request from '{}@{}': {}?{}", username, request.getRemoteAddr(),
           httpServletRequest.getRequestURI(), request.getParameterMap());
     }
 }

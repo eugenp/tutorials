@@ -1,6 +1,10 @@
 package com.baeldung.enterprise.patterns.front.controller.data;
 
 public interface Book {
+    String getIsbn();
+
+    void setIsbn(String isbn);
+
     String getAuthor();
 
     void setAuthor(String author);

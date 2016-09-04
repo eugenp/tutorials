@@ -5,6 +5,5 @@
     </head>
     <body>
         <p>Sorry, this command is not known!</p>
-        <%@include file="visitor-counter.jsp"%>
     </body>
 </html>

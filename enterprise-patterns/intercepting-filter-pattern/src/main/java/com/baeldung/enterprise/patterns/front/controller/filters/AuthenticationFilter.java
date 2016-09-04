@@ -29,10 +29,10 @@ public class AuthenticationFilter extends BaseFilter {
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         HttpSession session = httpServletRequest.getSession(false);
         if (session == null || session.getAttribute("username") == null) {
+            callback.intercept();
             FrontCommand command = new LoginCommand();
             command.init(httpServletRequest, httpServletResponse);
             command.process();
-            callback.intercept();
         } else {
             chain.doFilter(request, response);
         }

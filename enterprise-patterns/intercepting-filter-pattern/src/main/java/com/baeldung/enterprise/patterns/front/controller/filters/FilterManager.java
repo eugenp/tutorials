@@ -14,7 +14,7 @@ public class FilterManager {
     ) throws ServletException, IOException {
         FilterChain filterChain = new FilterChainImpl(
           new AuthenticationFilter(callback),
-          new AuditFilter()
+          new VisitorCounterFilter()
         );
         filterChain.doFilter(request, response);
     }

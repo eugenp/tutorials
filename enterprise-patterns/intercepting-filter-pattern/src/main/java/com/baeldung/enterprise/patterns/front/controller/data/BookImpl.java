@@ -1,6 +1,7 @@
 package com.baeldung.enterprise.patterns.front.controller.data;
 
 public class BookImpl implements Book {
+    private String isbn;
     private String author;
     private String title;
     private Double price;
@@ -8,10 +9,21 @@ public class BookImpl implements Book {
     public BookImpl() {
     }
 
-    public BookImpl(String author, String title, Double price) {
+    public BookImpl(String isbn, String author, String title, Double price) {
+        this.isbn = isbn;
         this.author = author;
         this.title = title;
         this.price = price;
+    }
+
+    @Override
+    public String getIsbn() {
+        return isbn;
+    }
+
+    @Override
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     @Override
