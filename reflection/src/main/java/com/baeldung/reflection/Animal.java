@@ -1,25 +1,27 @@
 package com.baeldung.reflection;
 
-public abstract class Animal implements Eating{
-	public static final String CATEGORY = "domestic";
-	private String name;
+public abstract class Animal implements Eating {
 
-	public Animal(String name) {
-		this.name = name;
-	}
+    public static final String CATEGORY = "domestic";
 
-	public String getName() {
-		return name;
-	}
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Animal(String name) {
+        this.name = name;
+    }
 
-	public String makeSound() {
-		return getSound();
-	}
+    public String getName() {
+        return name;
+    }
 
-	protected abstract String getSound();
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String makeSound() {
+        return getSound();
+    }
+
+    protected abstract String getSound();
 
 }

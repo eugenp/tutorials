@@ -1,33 +1,36 @@
 package com.baeldung.reflection;
 
 public class Bird extends Animal {
-	private boolean walks;
-	public Bird() {
-		super("bird");
-	}
-	public Bird(String name, boolean walks) {
-		super(name);
-		setWalks(walks);
-	}
-	public Bird(String name) {
-		super(name);
-	}
+    private boolean walks;
 
-	@Override
-	public String eats() {
-		return "grains";
-	}
+    public Bird() {
+        super("bird");
+    }
 
-	@Override
-	protected String getSound() {
-		return "chaps";
-	}
+    public Bird(String name, boolean walks) {
+        super(name);
+        setWalks(walks);
+    }
 
-	public boolean walks() {
-		return walks;
-	}
+    public Bird(String name) {
+        super(name);
+    }
 
-	public void setWalks(boolean walks) {
-		this.walks = walks;
-	}
+    @Override
+    public String eats() {
+        return "grains";
+    }
+
+    @Override
+    protected String getSound() {
+        return "chaps";
+    }
+
+    public boolean walks() {
+        return walks;
+    }
+
+    public void setWalks(boolean walks) {
+        this.walks = walks;
+    }
 }

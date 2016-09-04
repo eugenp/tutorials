@@ -1,5 +1,5 @@
 package com.baeldung.reflection;
 
 public interface Locomotion {
-	 String getLocomotion();
+    String getLocomotion();
 }
