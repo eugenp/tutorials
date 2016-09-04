@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.baeldung.persistence.model.MyUser;
-import org.baeldung.persistence.multiple.dao.user.MyUserDAO;
+import org.baeldung.user.dao.MyUserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

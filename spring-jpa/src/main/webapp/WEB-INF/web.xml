@@ -6,7 +6,8 @@
 
     <display-name>Spring MVC Application</display-name>
 
-    <!-- Spring root -->
+
+    <!-- 
     <context-param>
         <param-name>contextClass</param-name>
         <param-value>
@@ -21,7 +22,7 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+-->
     <!-- Spring child -->
     <servlet>
         <servlet-name>mvc-dispatcher</servlet-name>

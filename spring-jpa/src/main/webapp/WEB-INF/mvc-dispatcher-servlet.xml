@@ -40,7 +40,7 @@
     </bean>
     
    <context:component-scan base-package="org.baeldung.security"></context:component-scan>
-   <context:component-scan base-package="org.baeldung.persistence"></context:component-scan>
+   <context:component-scan base-package="org.baeldung.user"></context:component-scan>
    
    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">

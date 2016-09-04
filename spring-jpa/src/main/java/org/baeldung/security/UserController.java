@@ -2,7 +2,7 @@ package org.baeldung.security;
 
 import javax.annotation.Resource;
 
-import org.baeldung.persistence.service.MyUserService;
+import org.baeldung.user.service.MyUserService;
 import org.baeldung.web.MyUserDto;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

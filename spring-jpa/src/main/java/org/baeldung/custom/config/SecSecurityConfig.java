@@ -1,7 +1,7 @@
 package org.baeldung.custom.config;
 
-import org.baeldung.persistence.service.MyUserService;
 import org.baeldung.security.MyUserDetailsService;
+import org.baeldung.user.service.MyUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

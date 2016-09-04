@@ -1,4 +1,4 @@
-package org.baeldung.persistence.multiple.dao.user;
+package org.baeldung.user.dao;
 
 import java.util.List;
 

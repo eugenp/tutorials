@@ -1,9 +1,9 @@
-package org.baeldung.persistence.service;
+package org.baeldung.user.service;
 
 import javax.transaction.Transactional;
 
 import org.baeldung.persistence.model.MyUser;
-import org.baeldung.persistence.multiple.dao.user.MyUserDAO;
+import org.baeldung.user.dao.MyUserDAO;
 import org.baeldung.web.MyUserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
