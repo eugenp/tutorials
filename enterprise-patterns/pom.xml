@@ -9,6 +9,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>front-controller-pattern</module>
+        <module>intercepting-filter-pattern</module>
     </modules>
 
     <parent>
