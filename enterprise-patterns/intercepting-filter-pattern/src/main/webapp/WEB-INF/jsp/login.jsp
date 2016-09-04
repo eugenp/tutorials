@@ -6,10 +6,11 @@
     <body>
         <p>Please input a username:</p>
         <h2>Login</h2>
-        <form action="/intercepting-filter/?command=Login" method="POST">
+        <form action="index?command=Login" method="POST">
             <input type="text" name="username" placeholder="Username">
-            <input type="hidden" name="redirect" value="${redirect}">
+            <input type="hidden" name="redirect" value="<%= (String) request.getAttribute("redirect") %>">
             <input type="submit" value="Proceed">
         </form>
+        <%@ include file="visitor-counter.jsp" %>
     </body>
 </html>

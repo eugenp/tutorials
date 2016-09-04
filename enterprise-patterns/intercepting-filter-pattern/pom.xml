@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.3.11.v20160721</version>
+                <version>9.4.0.M1</version>
                 <configuration>
                     <webApp>
                         <contextPath>/intercepting-filter</contextPath>

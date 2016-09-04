@@ -1,24 +1,23 @@
 package com.baeldung.enterprise.patterns.front.controller.data;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookshelfImpl extends ArrayList<Book> implements Bookshelf {
-    private static Bookshelf INSTANCE;
-
     @Override
-    public Bookshelf getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new BookshelfImpl();
-            INSTANCE.init();
-        }
-        return INSTANCE;
+    public Book get(String isbn) {
+        return this.stream()
+          .filter(book -> book.getIsbn().equals(isbn))
+          .findFirst()
+          .orElse(null);
     }
 
     @Override
-    public Book findByTitle(String title) {
+    public List<Book> find(String q) {
         return this.stream()
-          .filter(book -> book.getTitle().toLowerCase().contains(title.toLowerCase()))
-          .findFirst()
-          .orElse(null);
+          .filter(book -> book.getTitle().toLowerCase().contains(q.toLowerCase())
+            || book.getAuthor().toLowerCase().contains(q.toLowerCase()))
+          .collect(Collectors.toList());
     }
 }
