@@ -10,10 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>config</module>
-        <module>discovery</module>
-        <module>gateway</module>
-        <module>resource</module>
+        <module>part-1</module>
     </modules>
 
     <parent>
@@ -37,13 +34,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Brixton.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>Hopper-SR2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
