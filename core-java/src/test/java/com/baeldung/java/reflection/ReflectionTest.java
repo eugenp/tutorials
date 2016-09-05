@@ -124,7 +124,7 @@ public class ReflectionTest {
 
         assertEquals(4, actualMethods.size());
         assertTrue(actualMethods.containsAll(Arrays.asList("getName",
-          "setName", "getSound", "makeSound")));
+          "setName", "getSound")));
     }
 
     @Test
