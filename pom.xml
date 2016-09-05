@@ -29,6 +29,8 @@
         <module>dozer</module>
         <module>dependency-injection</module>
         <module>deltaspike</module>
+
+        <module>enterprise-patterns</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
