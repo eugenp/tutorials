@@ -18,10 +18,6 @@ public abstract class Animal implements Eating {
         this.name = name;
     }
 
-    public String makeSound() {
-        return getSound();
-    }
-
     protected abstract String getSound();
 
 }
