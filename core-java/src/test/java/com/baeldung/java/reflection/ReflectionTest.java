@@ -8,9 +8,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
+import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class ReflectionTest {
@@ -24,7 +22,6 @@ public class ReflectionTest {
 
         assertTrue(Arrays.asList("name", "age")
           .containsAll(actualFieldNames));
-
     }
 
     @Test
@@ -311,16 +308,19 @@ public class ReflectionTest {
 
     }
 
-    private static List<String> getMethodNames(Method[] methods) {
-        return Stream.of(methods)
-          .map((Method::getName))
-          .collect(toList());
-    }
+	private static List<String> getFieldNames(Field[] fields) {
+		List<String> fieldNames = new ArrayList<>();
+		for (Field field : fields)
+			fieldNames.add(field.getName());
+		return fieldNames;
 
-    private static List<String> getFieldNames(Field[] fields) {
-        return Stream.of(fields)
-          .map(Field::getName)
-          .collect(toList());
-    }
+	}
+
+	private static List<String> getMethodNames(Method[] methods) {
+		List<String> methodNames = new ArrayList<>();
+		for (Method method : methods)
+			methodNames.add(method.getName());
+		return methodNames;
+	}
 
 }
