@@ -5,7 +5,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class Task {
-
     private String description;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
