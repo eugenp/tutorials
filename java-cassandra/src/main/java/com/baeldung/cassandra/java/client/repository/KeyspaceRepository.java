@@ -1,8 +1,5 @@
 package com.baeldung.cassandra.java.client.repository;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.datastax.driver.core.Session;
 
 /**
@@ -10,8 +7,6 @@ import com.datastax.driver.core.Session;
  *
  */
 public class KeyspaceRepository {
-    private static final Logger LOG = LoggerFactory.getLogger(KeyspaceRepository.class);
-
     private Session session;
 
     public KeyspaceRepository(Session session) {
