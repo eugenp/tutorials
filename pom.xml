@@ -129,7 +129,7 @@
         <module>redis</module>
 
         <module>xstream</module>
-
+        <module>java-cassandra</module>
     </modules>
 
 </project>
