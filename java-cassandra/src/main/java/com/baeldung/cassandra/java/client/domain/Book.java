@@ -15,7 +15,6 @@ public class Book {
     private String publisher;
 
     Book() {
-        
     }
     
     public Book(UUID id, String title, String author, String subject) {
