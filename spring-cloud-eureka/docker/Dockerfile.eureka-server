@@ -1,0 +1,4 @@
+FROM alpine:edge
+MAINTAINER baeldung.com
+RUN apk add --no-cache openjdk8
+COPY ./spring-cloud-eureka-server/target/spring-cloud-eureka-server-1.0.0-SNAPSHOT.jar /opt/eureka-server/eureka-server.jar

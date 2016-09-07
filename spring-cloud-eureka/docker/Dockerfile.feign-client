@@ -1,0 +1,4 @@
+FROM alpine:edge
+MAINTAINER baeldung.com
+RUN apk add --no-cache openjdk8
+COPY ./spring-cloud-eureka-feign-client/target/spring-cloud-eureka-feign-client-1.0.0-SNAPSHOT.jar /opt/feign-client/feign-client.jar

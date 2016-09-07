@@ -1,0 +1,51 @@
+version: '2'
+services:
+    eureka-server:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile.eureka-server
+        image: eureka-server:latest
+        entrypoint: /usr/bin/java -jar /opt/eureka-server/eureka-server.jar
+        expose:
+            - 8761
+        ports:
+            - 8761:8761
+        networks:
+            - spring-cloud-network
+    eureka-client:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile.eureka-client
+        image: eureka-client:latest
+        environment:
+            - EUREKA_URI=http://eureka-server:8761/eureka
+        entrypoint: /usr/bin/java -jar /opt/eureka-client/eureka-client.jar
+        networks:
+            - spring-cloud-network
+        links:
+            - eureka-server
+        depends_on:
+            - eureka-server
+    feign-client:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile.feign-client
+        image: feign-client:latest
+        environment:
+            - EUREKA_URI=http://eureka-server:8761/eureka
+        entrypoint: /usr/bin/java -jar /opt/feign-client/feign-client.jar
+        expose:
+            - 8080
+        ports:
+            - 8080:8080
+        networks:
+            - spring-cloud-network
+        links:
+            - eureka-server
+            - eureka-client
+        depends_on:
+            - eureka-server
+            - eureka-client
+networks:
+    spring-cloud-network:
+        driver: bridge
