@@ -1,6 +1,7 @@
 package org.baeldung.spring;
 
 import org.baeldung.web.interceptor.LoggerInterceptor;
+import org.baeldung.web.interceptor.SessionTimerInterceptor;
 import org.baeldung.web.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan("org.baeldung.web")
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig extends WebMvcConfigurerAdapter{
 
     public WebConfig() {
         super();
@@ -42,5 +43,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public void addInterceptors(final InterceptorRegistry registry) {
 		registry.addInterceptor(new LoggerInterceptor());
 		registry.addInterceptor(new UserInterceptor());
+		registry.addInterceptor(new SessionTimerInterceptor());
 	}
+
 }
