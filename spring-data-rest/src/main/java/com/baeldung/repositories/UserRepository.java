@@ -1,14 +1,11 @@
 package com.baeldung.repositories;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.baeldung.models.WebsiteUser;
 
-import java.util.List;
-
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
-public interface UserRepository extends PagingAndSortingRepository<WebsiteUser, Long> {
-    List<WebsiteUser> findByName(@Param("name") String name);
+public interface UserRepository extends CrudRepository<WebsiteUser, Long> {
+   
 }
