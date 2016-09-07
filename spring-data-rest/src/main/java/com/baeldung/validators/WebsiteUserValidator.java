@@ -18,11 +18,15 @@ public class WebsiteUserValidator implements Validator {
     public void validate(Object obj, Errors errors) {
 
         WebsiteUser user = (WebsiteUser) obj;
-        if (user.getName() == null || user.getName().trim().length() == 0)
+        if (checkInputString(user.getName()))
             errors.rejectValue("name", "name.empty");
 
-        if (user.getEmail() == null || user.getEmail().trim().length() == 0) {
+        if (checkInputString(user.getEmail())) {
             errors.rejectValue("email", "email.empty");
         }
+    }
+
+    private boolean checkInputString(String input) {
+        return (input == null || input.trim().length() == 0);
     }
 }
