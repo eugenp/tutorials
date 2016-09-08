@@ -57,8 +57,8 @@ public class ArrayListTest {
     @Test
     public void givenCollection_whenAddToArrayList_thenIsAdded() {
         List<Long> xs = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
-        Collection<Long> ys = LongStream.range(4, 10).boxed().collect(toList());
-        xs.addAll(0, ys);
+        LongStream.range(4, 10).boxed()
+            .collect(collectingAndThen(toList(), ys -> xs.addAll(0, ys)));
 
         assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(xs));
     }
