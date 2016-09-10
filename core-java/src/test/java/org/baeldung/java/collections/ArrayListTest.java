@@ -7,8 +7,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.stream.*;
 
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
+import static java.util.stream.Collectors.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
@@ -22,7 +21,7 @@ public class ArrayListTest {
         List<String> xs = LongStream.range(0, 16)
             .boxed()
             .map(Long::toHexString)
-            .collect(toList());
+            .collect(toCollection(ArrayList::new));
         stringsToSearch = new ArrayList<>(xs);
         stringsToSearch.addAll(xs);
     }
@@ -92,7 +91,7 @@ public class ArrayListTest {
         List<String> result = stringsToSearch
             .stream()
             .filter(matchingStrings::contains)
-            .collect(toList());
+            .collect(toCollection(ArrayList::new));
 
         assertEquals(6, result.size());
     }
@@ -107,7 +106,7 @@ public class ArrayListTest {
 
     @Test
     public void givenIndex_whenRemove_thenCorrectElementRemoved() {
-        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toList());
+        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
         Collections.reverse(xs);
 
         xs.remove(0);
@@ -119,7 +118,7 @@ public class ArrayListTest {
 
     @Test
     public void givenListIterator_whenReverseTraversal_thenRetrieveElementsInOppositeOrder() {
-        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toList());
+        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
         ListIterator<Integer> it = xs.listIterator(xs.size());
         List<Integer> result = new ArrayList<>(xs.size());
         while (it.hasPrevious()) {
