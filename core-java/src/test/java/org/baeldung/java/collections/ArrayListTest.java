@@ -19,9 +19,9 @@ public class ArrayListTest {
     @Before
     public void setUp() {
         List<String> xs = LongStream.range(0, 16)
-            .boxed()
-            .map(Long::toHexString)
-            .collect(toCollection(ArrayList::new));
+          .boxed()
+          .map(Long::toHexString)
+          .collect(toCollection(ArrayList::new));
         stringsToSearch = new ArrayList<>(xs);
         stringsToSearch.addAll(xs);
     }
@@ -35,7 +35,7 @@ public class ArrayListTest {
     @Test
     public void givenCollection_whenProvideItToArrayListCtor_thenArrayListIsPopulatedWithItsElements() {
         Collection<Integer> numbers =
-            IntStream.range(0, 10).boxed().collect(toSet());
+          IntStream.range(0, 10).boxed().collect(toSet());
 
         List<Integer> xs = new ArrayList<>(numbers);
         assertEquals(10, xs.size());
@@ -57,7 +57,7 @@ public class ArrayListTest {
     public void givenCollection_whenAddToArrayList_thenIsAdded() {
         List<Long> xs = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
         LongStream.range(4, 10).boxed()
-            .collect(collectingAndThen(toList(), ys -> xs.addAll(0, ys)));
+          .collect(collectingAndThen(toCollection(ArrayList::new), ys -> xs.addAll(0, ys)));
 
         assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(xs));
     }
@@ -89,9 +89,9 @@ public class ArrayListTest {
         Set<String> matchingStrings = new HashSet<>(Arrays.asList("a", "c", "9"));
 
         List<String> result = stringsToSearch
-            .stream()
-            .filter(matchingStrings::contains)
-            .collect(toCollection(ArrayList::new));
+          .stream()
+          .filter(matchingStrings::contains)
+          .collect(toCollection(ArrayList::new));
 
         assertEquals(6, result.size());
     }
@@ -132,7 +132,7 @@ public class ArrayListTest {
     @Test
     public void givenCondition_whenIterateArrayList_thenRemoveAllElementsSatisfyingCondition() {
         Set<String> matchingStrings
-            = Sets.newHashSet("a", "b", "c", "d", "e", "f");
+          = Sets.newHashSet("a", "b", "c", "d", "e", "f");
 
         Iterator<String> it = stringsToSearch.iterator();
         while (it.hasNext()) {
