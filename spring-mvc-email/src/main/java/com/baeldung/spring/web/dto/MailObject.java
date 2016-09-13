@@ -11,22 +11,10 @@ import javax.validation.constraints.Size;
 public class MailObject {
     @Email
     @NotNull
-    @Size(min = 1, message = "Please, specify your email address")
-    private String from;
-    @Email
-    @NotNull
     @Size(min = 1, message = "Please, set an email address to send the message to it")
     private String to;
     private String subject;
     private String text;
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
 
     public String getTo() {
         return to;

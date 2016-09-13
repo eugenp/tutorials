@@ -69,46 +69,4 @@ public class EmailServiceImpl implements EmailService {
             e.printStackTrace();
         }
     }
-
-    /*public void sendMail(MimeMessage message) {
-        try {
-            emailSender.send(message);
-        } catch (MailException exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    public MimeMessage createMessageWithAttachment(MailObject mailObject) {
-        MimeMessage message = emailSender.createMimeMessage();
-        try {
-            // pass 'true' to the constructor to create a multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            helper.setFrom(mailObject.getFrom());
-            helper.setTo(mailObject.getTo());
-            helper.setSubject(mailObject.getSubject());
-            helper.setText(mailObject.getText());
-
-            // attach a sample image attachment
-            FileSystemResource file = new FileSystemResource(new File("c:/attachment.jpg"));
-            helper.addAttachment("Attachment.jpg", file);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        return message;
-    }*/
-
-    /*@Autowired
-    public SimpleMailMessage template;
-
-    public SimpleMailMessage createSimpleMailMessage(MailObject mailObject) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage(template);
-
-        mailMessage.setFrom(mailObject.getFrom());
-        mailMessage.setTo(mailObject.getTo());
-        mailMessage.setSubject(mailObject.getSubject());
-        mailMessage.setText(String.format(template.getText(), mailObject.getText()));
-
-        return mailMessage;
-    }*/
 }

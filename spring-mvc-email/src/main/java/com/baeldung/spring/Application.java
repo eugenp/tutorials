@@ -27,8 +27,7 @@ public class Application {
 
     @PostConstruct
     public void postConstruct() {
-        //emailService.sendSimpleMessage("to@gmail.com", "Test Subject", "Test Message");
-        Order order = new Order("reva.olga@gmail.com", "First Name", "Last Name");
+        Order order = new Order("user_email_address", "First Name", "Last Name");
         orderManager.placeOrder(order);
     }
 }

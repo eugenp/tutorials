@@ -25,13 +25,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><label for="input_from">From</label></th>
-                        <td><form:input path="from" id="input_from" type="email"/>
-                            <small>Enter your email address</small><br/>
-                            <form:errors path="from" cssStyle="color:red;font-size:small"/>
-                        </td>
-                    </tr>
-                    <tr>
                         <th><label for="input_subject">Subject</label></th>
                         <td><form:input path="subject" id="input_subject"/>
                             <small>Enter the subject</small><br/>
@@ -48,8 +41,11 @@
                         </td>
                     </tr>
                     <tr>
+                        <th></th>
                         <td>
-                            <form:button>Send</form:button>
+                            <input type="submit" formaction="send" value="Send">
+                            <input type="submit" formaction="sendTemplate" value="Send Using Template">
+                            <input type="submit" formaction="sendAttachment" value="Send With Attachment">
                         </td>
                     </tr>
                 </table>

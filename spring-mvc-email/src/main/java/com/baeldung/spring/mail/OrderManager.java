@@ -1,6 +1,7 @@
 package com.baeldung.spring.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,8 @@ public class OrderManager {
     @Value("${attachment.invoice}")
     private String invoiceAttachmentPath;
 
-    @Autowired
+    @Autowired()
+    @Qualifier("templateOrderMessage")
     public SimpleMailMessage template;
 
     public void placeOrder(Order order) {

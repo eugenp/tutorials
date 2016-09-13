@@ -44,7 +44,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public SimpleMailMessage templateMessage() {
+    public SimpleMailMessage templateOrderMessage() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("Dear %s %s, \nthank you for placing order.\n" +
                 "\n" +
@@ -53,44 +53,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return message;
     }
 
-    /* Gmail */
-    /*@Bean
-    public JavaMailSenderImpl mailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-        mailSender.setUsername("username");
-        mailSender.setPassword("password");
-        mailSender.setJavaMailProperties(javaMailProperties());
-        return mailSender;
-    }
-
-    private Properties javaMailProperties() {
-        Properties props = new Properties();
-        props.setProperty("mail.smtp.auth", "true");
-        props.setProperty("mail.smtp.starttls.enable", "true");
-        return props;
-    }*/
-
-    /*Amazon SES
     @Bean
-    public JavaMailSenderImpl mailSender() {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("email-smtp.us-west-2.amazonaws.com");
-        mailSender.setUsername("username");
-        mailSender.setPassword("password");
-        mailSender.setJavaMailProperties(javaMailProperties());
-        return mailSender;
+    public SimpleMailMessage templateSimpleMessage() {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setText("This is the test email template for your email:\n%s\n");
+        return message;
     }
-
-    private Properties javaMailProperties() {
-        Properties props = new Properties();
-        props.setProperty("mail.transport.protocol", "smtps");
-        props.setProperty("mail.smtp.port", "25");
-
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.starttls.required", "true");
-        return props;
-    }*/
 }
