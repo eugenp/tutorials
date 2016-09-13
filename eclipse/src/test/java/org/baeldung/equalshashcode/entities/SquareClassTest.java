@@ -15,18 +15,10 @@ public class SquareClassTest {
 
         Square dObject = new Square(20, Color.BLUE);
 
-<<<<<<< HEAD
         Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
 
         Assert.assertTrue(aObject.hashCode() == bObject.hashCode());
 
-=======
-        // equals()
-        Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
-        // hashCode()
-        Assert.assertTrue(aObject.hashCode() == bObject.hashCode());
-        // non-equal objects are not equals() and have different hashCode()
->>>>>>> 25a939665971866fadd0b1b78e09dd732d736193
         Assert.assertFalse(aObject.equals(dObject));
         Assert.assertFalse(aObject.hashCode() == dObject.hashCode());
     }
