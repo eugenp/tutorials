@@ -8,10 +8,6 @@ public class MyUserDto {
     @Size(min = 1)
     private String username;
 
-    @NotNull
-    @Size(min = 1)
-    private String name;
-
     private String password;
 
     public String getUsername() {
@@ -21,15 +17,7 @@ public class MyUserDto {
     public void setUsername(final String username) {
         this.username = username;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
+    
     public String getPassword() {
         return password;
     }

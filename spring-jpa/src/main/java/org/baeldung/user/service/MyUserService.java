@@ -26,8 +26,6 @@ public class MyUserService {
 
         user.setUsername(accountDto.getUsername());
         user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
-        user.setName(accountDto.getName());
-        user.setEnabled(true);
         return myUserDAO.save(user);
     }
 

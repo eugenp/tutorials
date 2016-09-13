@@ -16,7 +16,6 @@ Register here:<br><br>
 <form action="${registerUrl }" method="POST">
 Username: <input type="text" name="username"/><br>
 Password: <input type="password" name="password"/><br>
-Name: <input type="text" name="name" /><br><br>
 <input type="submit" value="Register"/>
 </form>
 

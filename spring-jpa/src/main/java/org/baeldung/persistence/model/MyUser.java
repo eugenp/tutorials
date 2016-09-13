@@ -15,15 +15,11 @@ public class MyUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String name;
-
     @Column(unique = true, nullable = false)
     private String username;
 
     @Column(nullable = false)
     private String password;
-
-    private boolean enabled;
 
     public MyUser() {
     }
@@ -34,14 +30,6 @@ public class MyUser {
 
     public void setId(final int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
     }
 
     public String getUsername() {
@@ -59,18 +47,4 @@ public class MyUser {
     public void setPassword(final String password) {
         this.password = password;
     }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(final boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @Override
-    public String toString() {
-        return "MyUser [name=" + name + ", username=" + username + ", password=" + password + ", enabled=" + enabled + "]";
-    }
-
 }
