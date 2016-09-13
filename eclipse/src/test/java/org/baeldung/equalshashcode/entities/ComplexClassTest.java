@@ -22,10 +22,18 @@ public class ComplexClassTest {
         strArrayListD.add("pqr");
         ComplexClass dObject = new ComplexClass(strArrayListD, new HashSet<Integer>(45, 67));
 
+<<<<<<< HEAD
         Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
 
         Assert.assertTrue(aObject.hashCode() == bObject.hashCode());
 
+=======
+        // equals()
+        Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
+        // hashCode()
+        Assert.assertTrue(aObject.hashCode() == bObject.hashCode());
+        // non-equal objects are not equals() and have different hashCode()
+>>>>>>> 25a939665971866fadd0b1b78e09dd732d736193
         Assert.assertFalse(aObject.equals(dObject));
         Assert.assertFalse(aObject.hashCode() == dObject.hashCode());
     }

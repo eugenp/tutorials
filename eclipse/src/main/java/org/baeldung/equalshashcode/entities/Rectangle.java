@@ -11,11 +11,19 @@ public class Rectangle extends Shape {
 
     @Override
     public double area() {
+<<<<<<< HEAD
+=======
+        // A = w * l
+>>>>>>> 25a939665971866fadd0b1b78e09dd732d736193
         return width * length;
     }
 
     @Override
     public double perimeter() {
+<<<<<<< HEAD
+=======
+        // P = 2(w + l)
+>>>>>>> 25a939665971866fadd0b1b78e09dd732d736193
         return 2 * (width + length);
     }
 
