@@ -1,8 +1,6 @@
 package com.baeldung.streamApi;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -13,8 +11,6 @@ public class Product {
     private int price;
 
     private String name;
-
-    private boolean utilize;
 
     public Product(int price, String name) {
         this(price);
