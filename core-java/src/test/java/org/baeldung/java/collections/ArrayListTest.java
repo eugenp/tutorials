@@ -1,25 +1,27 @@
 package org.baeldung.java.collections;
 
+import com.google.common.collect.Sets;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.*;
 
+import static java.util.stream.Collectors.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class ArrayListTest {
 
-    List<String> stringsToSearch;
+    private List<String> stringsToSearch;
 
     @Before
     public void setUp() {
         List<String> xs = LongStream.range(0, 16)
-            .boxed()
-            .map(Long::toHexString)
-            .collect(Collectors.toList());
+          .boxed()
+          .map(Long::toHexString)
+          .collect(toCollection(ArrayList::new));
         stringsToSearch = new ArrayList<>(xs);
         stringsToSearch.addAll(xs);
     }
@@ -33,7 +35,7 @@ public class ArrayListTest {
     @Test
     public void givenCollection_whenProvideItToArrayListCtor_thenArrayListIsPopulatedWithItsElements() {
         Collection<Integer> numbers =
-            IntStream.range(0, 10).boxed().collect(Collectors.toSet());
+          IntStream.range(0, 10).boxed().collect(toSet());
 
         List<Integer> xs = new ArrayList<>(numbers);
         assertEquals(10, xs.size());
@@ -54,8 +56,8 @@ public class ArrayListTest {
     @Test
     public void givenCollection_whenAddToArrayList_thenIsAdded() {
         List<Long> xs = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
-        Collection<Long> ys = LongStream.range(4, 10).boxed().collect(Collectors.toList());
-        xs.addAll(0, ys);
+        LongStream.range(4, 10).boxed()
+          .collect(collectingAndThen(toCollection(ArrayList::new), ys -> xs.addAll(0, ys)));
 
         assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(xs));
     }
@@ -87,9 +89,9 @@ public class ArrayListTest {
         Set<String> matchingStrings = new HashSet<>(Arrays.asList("a", "c", "9"));
 
         List<String> result = stringsToSearch
-            .stream()
-            .filter(matchingStrings::contains)
-            .collect(Collectors.toList());
+          .stream()
+          .filter(matchingStrings::contains)
+          .collect(toCollection(ArrayList::new));
 
         assertEquals(6, result.size());
     }
@@ -104,9 +106,7 @@ public class ArrayListTest {
 
     @Test
     public void givenIndex_whenRemove_thenCorrectElementRemoved() {
-        List<Integer> xs = new ArrayList<>(
-            IntStream.range(0, 10).boxed().collect(Collectors.toList())
-        );
+        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
         Collections.reverse(xs);
 
         xs.remove(0);
@@ -118,9 +118,7 @@ public class ArrayListTest {
 
     @Test
     public void givenListIterator_whenReverseTraversal_thenRetrieveElementsInOppositeOrder() {
-        List<Integer> xs = new ArrayList<>(
-            IntStream.range(0, 10).boxed().collect(Collectors.toList())
-        );
+        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
         ListIterator<Integer> it = xs.listIterator(xs.size());
         List<Integer> result = new ArrayList<>(xs.size());
         while (it.hasPrevious()) {
@@ -134,7 +132,7 @@ public class ArrayListTest {
     @Test
     public void givenCondition_whenIterateArrayList_thenRemoveAllElementsSatisfyingCondition() {
         Set<String> matchingStrings
-            = new HashSet<>(Arrays.asList("a", "b", "c", "d", "e", "f"));
+          = Sets.newHashSet("a", "b", "c", "d", "e", "f");
 
         Iterator<String> it = stringsToSearch.iterator();
         while (it.hasNext()) {
