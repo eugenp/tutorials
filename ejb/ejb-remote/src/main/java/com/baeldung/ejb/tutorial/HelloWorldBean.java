@@ -6,14 +6,18 @@ import javax.ejb.Stateless;
  * Session Bean implementation class HelloWorldBean
  */
 @Stateless
-public class HelloWorldBean implements HelloWorldBeanRemote {
+public class HelloWorldBean implements HelloWorldRemote {
 
     /**
      * Default constructor. 
      */
     public HelloWorldBean() {
-        // TODO Auto-generated constructor stub
-    	
+
+    }
+
+    @Override
+    public String getHelloWorld() {
+        return ("Hello World");
     }
 
 }

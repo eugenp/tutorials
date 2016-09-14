@@ -1,10 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.baeldung.ejb</groupId>
-	<artifactId>ejbpersistence</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>EJB</name>
+	<parent>
+		<groupId>com.baeldung.ejb</groupId>
+		<artifactId>ejb</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>ejb-remote</artifactId>
+	<name>EJB Remote</name>
+	<description>EJB Remote Bean </description>
 	<properties>
 		<!-- Explicitly declaring the source encoding eliminates the following 
 			message: -->
@@ -21,11 +26,12 @@
 		<version.ejb.plugin>2.3</version.ejb.plugin>
 
 		<!-- maven-compiler-plugin -->
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
 
 		<!-- Optional: to use jboss-as:run goal -->
-		<!--<jboss-as.home>C:\Users\iByteCode\Desktop\jboss-as-7.1.0.Final</jboss-as.home> -->
+		<jboss-as.home>/Users/pritambanerjee/Desktop/Servers/jboss-as-7.1.1.Final</jboss-as.home>
+
 	</properties>
 
 	<dependencyManagement>
@@ -57,16 +63,14 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Import the EJB 3.1 API, we use provided scope as the API is included 
-			in JBoss AS 7 -->
+		<!-- https://mvnrepository.com/artifact/org.jboss.spec.javax.ejb/jboss-ejb-api_3.2_spec -->
 		<dependency>
 			<groupId>org.jboss.spec.javax.ejb</groupId>
-			<artifactId>jboss-ejb-api_3.1_spec</artifactId>
-			<scope>provided</scope>
+			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
+			<version>1.0.0.Final</version>
 		</dependency>
 
 	</dependencies>
-
 	<build>
 		<!-- Set the name of the deployment -->
 		<plugins>
@@ -101,4 +105,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>
