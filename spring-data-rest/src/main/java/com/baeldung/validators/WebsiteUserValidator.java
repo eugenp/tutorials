@@ -18,8 +18,9 @@ public class WebsiteUserValidator implements Validator {
     public void validate(Object obj, Errors errors) {
 
         WebsiteUser user = (WebsiteUser) obj;
-        if (checkInputString(user.getName()))
+        if (checkInputString(user.getName())) {
             errors.rejectValue("name", "name.empty");
+        }
 
         if (checkInputString(user.getEmail())) {
             errors.rejectValue("email", "email.empty");

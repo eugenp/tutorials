@@ -1,7 +1,6 @@
 package com.baeldung.config;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -23,10 +22,9 @@ public class ValidatorEventRegister implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         List<String> events = Arrays.asList("beforeCreate", "afterCreate", "beforeSave", "afterSave", "beforeLinkSave", "afterLinkSave", "beforeDelete", "afterDelete");
-        List<String> EVENTS = Collections.unmodifiableList(events);
         
         for (Map.Entry<String, Validator> entry : validators.entrySet()) {
-            EVENTS.stream().filter(p -> entry.getKey().startsWith(p)).findFirst().ifPresent(p -> validatingRepositoryEventListener.addValidator(p, entry.getValue()));
+            events.stream().filter(p -> entry.getKey().startsWith(p)).findFirst().ifPresent(p -> validatingRepositoryEventListener.addValidator(p, entry.getValue()));
         }
     }
 }

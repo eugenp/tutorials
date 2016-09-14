@@ -19,7 +19,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         RepositoryConstraintViolationException nevEx = (RepositoryConstraintViolationException) ex;
 
         String errors = nevEx.getErrors().getAllErrors().stream().map(p -> p.toString()).collect(Collectors.joining("\n"));
-        return new ResponseEntity<Object>(errors, new HttpHeaders(), HttpStatus.PARTIAL_CONTENT);
+        return new ResponseEntity<Object>(errors, new HttpHeaders(), HttpStatus.NOT_ACCEPTABLE);
     }
 
 }
