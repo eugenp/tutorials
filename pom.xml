@@ -31,6 +31,7 @@
         <module>deltaspike</module>
 
         <module>enterprise-patterns</module>
+        <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
@@ -104,6 +105,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud</module>
+        <module>spring-cloud-data-flow</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>

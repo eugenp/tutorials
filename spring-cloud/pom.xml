@@ -10,6 +10,7 @@
         <module>spring-cloud-config</module>
         <module>spring-cloud-eureka</module>
         <module>spring-cloud-hystrix</module>
+       <!-- <module>spring-cloud-integration</module>-->
     </modules>
     <packaging>pom</packaging>
 
