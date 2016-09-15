@@ -104,6 +104,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud</module>
+        <module>spring-cloud-data-flow</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
