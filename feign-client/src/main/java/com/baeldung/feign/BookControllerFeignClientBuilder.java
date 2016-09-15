@@ -10,7 +10,7 @@ import feign.slf4j.Slf4jLogger;
 import lombok.Getter;
 
 @Getter
-public class Controller {
+public class BookControllerFeignClientBuilder {
     private BookClient bookClient = createClient(BookClient.class,
       "http://localhost:8081/api/books");
 
