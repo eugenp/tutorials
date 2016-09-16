@@ -26,7 +26,6 @@ import com.alibaba.fastjson.JSON;
 public class ElasticSearchUnitTests {
     private List<Person> listOfPersons = new ArrayList<Person>();
     String jsonString = null;
-    
     Client client = null;
 
     @Before
@@ -44,71 +43,68 @@ public class ElasticSearchUnitTests {
     public void givenJsonString_whenJavaObject_thenIndexDocument() {
         String jsonObject = "{\"age\":20,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
         IndexResponse response = client.prepareIndex("people", "Doe")
-                .setSource(jsonObject).get();
-        String id = response.getId();
+          .setSource(jsonObject).get();
         String index = response.getIndex();
         String type = response.getType();
         assertTrue(response.isCreated());
         assertEquals(index, "people");
         assertEquals(type, "Doe");
     }
-    
+
     @Test
     public void givenDocumentId_whenJavaObject_thenDeleteDocument() {
         String jsonObject = "{\"age\":10,\"dateOfBirth\":1471455886564,\"fullName\":\"Johan Doe\"}";
         IndexResponse response = client.prepareIndex("people", "Doe")
-                .setSource(jsonObject).get();
+          .setSource(jsonObject).get();
         String id = response.getId();
         DeleteResponse deleteResponse = client.prepareDelete("people", "Doe", id).get();
         assertTrue(deleteResponse.isFound());
     }
-    
+
     @Test
     public void givenSearchRequest_whenMatchAll_thenReturnAllResults() {
         SearchResponse response = client.prepareSearch().execute().actionGet();
         SearchHit[] searchHits = response.getHits().getHits();
         List<Person> results = new ArrayList<Person>();
-        for(SearchHit hit : searchHits){
+        for (SearchHit hit : searchHits) {
             String sourceAsString = hit.getSourceAsString();
             Person person = JSON.parseObject(sourceAsString, Person.class);
             results.add(person);
         }
     }
-    
+
     @Test
     public void givenSearchParamters_thenReturnResults() {
         boolean isExecutedSuccessfully = true;
         SearchResponse response = client.prepareSearch()
-                .setTypes()
-                .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-                .setPostFilter(QueryBuilders.rangeQuery("age").from(5).to(15))
-                .setFrom(0).setSize(60).setExplain(true)
-                .execute()
-                .actionGet();
-        
+          .setTypes()
+          .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+          .setPostFilter(QueryBuilders.rangeQuery("age").from(5).to(15))
+          .setFrom(0).setSize(60).setExplain(true)
+          .execute()
+          .actionGet();
+
         SearchResponse response2 = client.prepareSearch()
-                .setTypes()
-                .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-                .setPostFilter(QueryBuilders
-                        .simpleQueryStringQuery("+John -Doe OR Janette"))
-                .setFrom(0).setSize(60).setExplain(true)
-                .execute()
-                .actionGet();
-        
+          .setTypes()
+          .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+          .setPostFilter(QueryBuilders.simpleQueryStringQuery("+John -Doe OR Janette"))
+          .setFrom(0).setSize(60).setExplain(true)
+          .execute()
+          .actionGet();
+
         SearchResponse response3 = client.prepareSearch()
-                .setTypes()
-                .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
-                .setPostFilter(QueryBuilders.matchQuery(
-                        "John", "Name*"))
-                .setFrom(0).setSize(60).setExplain(true)
-                .execute()
-                .actionGet();
+          .setTypes()
+          .setSearchType(SearchType.DFS_QUERY_THEN_FETCH)
+          .setPostFilter(QueryBuilders.matchQuery("John", "Name*"))
+          .setFrom(0).setSize(60).setExplain(true)
+          .execute()
+          .actionGet();
         try {
             response2.getHits();
             response3.getHits();
             SearchHit[] searchHits = response.getHits().getHits();
             List<Person> results = new ArrayList<Person>();
-            for(SearchHit hit : searchHits){
+            for (SearchHit hit : searchHits) {
                 String sourceAsString = hit.getSourceAsString();
                 Person person = JSON.parseObject(sourceAsString, Person.class);
                 results.add(person);
@@ -118,17 +114,17 @@ public class ElasticSearchUnitTests {
         }
         assertTrue(isExecutedSuccessfully);
     }
-    
+
     @Test
     public void givenContentBuilder_whenHelpers_thanIndexJson() throws IOException {
         XContentBuilder builder = XContentFactory.jsonBuilder()
-                .startObject()
-                    .field("fullName", "Test")
-                    .field("salary", "11500")
-                    .field("age", "10")
-                .endObject();
+          .startObject()
+          .field("fullName", "Test")
+          .field("salary", "11500")
+          .field("age", "10")
+          .endObject();
         IndexResponse response = client.prepareIndex("people", "Doe")
-                .setSource(builder).get();
+          .setSource(builder).get();
         assertTrue(response.isCreated());
     }
 }
