@@ -22,7 +22,7 @@ public class EmployeeMapperTest {
     private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 
     @Test
-    public void givenEmployeeDTOwithDiffNametoEmployee_whenMaps_thenCorrect() {
+    public void givenEmpDTODiffNametoEmp_whenMaps_thenCorrect() {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setEmployeeId(1);
         dto.setEmployeeName("John");
@@ -34,7 +34,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeewithDiffNametoEmployeeDTO_whenMaps_thenCorrect() {
+    public void givenEmpDiffNametoEmpDTO_whenMaps_thenCorrect() {
         Employee entity = new Employee();
         entity.setId(1);
         entity.setName("John");
@@ -46,7 +46,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeDTOwithNestedMappingToEmployee_whenMaps_thenCorrect() {
+    public void givenEmpDTONestedMappingToEmp_whenMaps_thenCorrect() {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setDivision(new DivisionDTO(1, "Division1"));
 
@@ -57,7 +57,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeWithNestedMappingToEmployeeDTO_whenMaps_thenCorrect() {
+    public void givenEmpNestedMappingToEmpDTO_whenMaps_thenCorrect() {
         Employee entity = new Employee();
         entity.setDivision(new Division(1, "Division1"));
 
@@ -68,7 +68,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeListToEmployeeDTOList_whenMaps_thenCorrect() {
+    public void givenEmpListToEmpDTOList_whenMaps_thenCorrect() {
         List<Employee> employeeList = new ArrayList<>();
         Employee emp = new Employee();
         emp.setId(1);
@@ -85,7 +85,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeDTOListToEmployeeList_whenMaps_thenCorrect() {
+    public void givenEmpDTOListToEmpList_whenMaps_thenCorrect() {
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         EmployeeDTO empDTO = new EmployeeDTO();
         empDTO.setEmployeeId(1);
@@ -102,7 +102,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeWithStartDateMappingToEmployeeDTO_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpStartDateMappingToEmpDTO_whenMaps_thenCorrect() throws ParseException {
         Employee entity = new Employee();
         entity.setStartDt(new Date());
 
@@ -112,7 +112,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmployeeDTOWithStartDateMappingToEmployee_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpDTOStartDateMappingToEmp_whenMaps_thenCorrect() throws ParseException {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setEmployeeStartDt("01-04-2016 01:00:00");
 
