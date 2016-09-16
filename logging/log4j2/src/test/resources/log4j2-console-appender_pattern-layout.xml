@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <Appenders>
+        <xi:include href="log4j2-includes/console-appender_pattern-layout_colored.xml"/>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

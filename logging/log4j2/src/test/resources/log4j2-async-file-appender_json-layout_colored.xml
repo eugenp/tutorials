@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <File name="JSONLogfile" fileName="target/logfile.json">
+            <JSONLayout compact="true" eventEol="true"/>
+        </File>
+        <Async name="Async">
+            <AppenderRef ref="JSONLogfile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Async"/>
+        </Root>
+    </Loggers>
+</Configuration>
