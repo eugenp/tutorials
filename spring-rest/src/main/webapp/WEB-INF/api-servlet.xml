@@ -8,7 +8,12 @@
 
     <context:component-scan base-package="org.baeldung.web" />
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+           <bean class="org.baeldung.config.converter.KryoHttpMessageConverter"/>  
+           <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
     <bean class="org.springframework.web.servlet.view.XmlViewResolver">

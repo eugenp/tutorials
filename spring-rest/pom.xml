@@ -15,10 +15,7 @@
     <dependencies>
 
         <!-- Spring Boot Dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -74,6 +71,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
+        
+        <dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
 
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
@@ -147,10 +149,18 @@
         </dependency>
 
         <dependency>
+		    <groupId>com.jayway.restassured</groupId>
+		    <artifactId>rest-assured</artifactId>
+		    <version>${rest-assured.version}</version>
+		</dependency>
+        
+        <!--  -->
+        <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>2.6.1</version>
         </dependency>
+        
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
@@ -230,10 +240,6 @@
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.39</mysql-connector-java.version>
-
-        <!-- marshalling -->
-
-        <jackson.version>2.7.2</jackson.version>
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
