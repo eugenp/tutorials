@@ -19,7 +19,7 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenRandomNumberChosen_shouldReturnARandomElementUsingMathRandom() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
-        givenList.get((int)Math.random() * 3);
+        givenList.get((int)Math.random() * givenList.size());
     }
 
     @Test
