@@ -101,7 +101,7 @@
         <module>lombok</module>
         <module>redis</module>
         <module>webjars</module>
-        <module>wicket-intro</module>
+        <module>wicket</module>
 
 		<module>mutation-testing</module>
 		<module>spring-mvc-velocity</module>

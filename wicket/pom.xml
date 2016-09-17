@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.wicket.examples</groupId>
@@ -13,13 +13,9 @@
         <jetty9.version>9.2.13.v20150730</jetty9.version>
         <log4j.version>2.5</log4j.version>
         <junit.version>4.12</junit.version>
-        <spring-web.version>4.1.1.RELEASE</spring-web.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <wicket-spring.version>8.0.0-M1</wicket-spring.version>
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <wtp.version>none</wtp.version>
     </properties>
     <dependencies>
         <!-- WICKET DEPENDENCIES -->
@@ -27,24 +23,6 @@
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-core</artifactId>
             <version>${wicket.version}</version>
-        </dependency>
-
-        <!-- SPRING DEPENDENCIES -->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-spring</artifactId>
-            <version>${wicket-spring.version}</version>
         </dependency>
 
         <!-- JUNIT DEPENDENCY FOR TESTING -->
@@ -64,7 +42,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>WicketIntro</finalName>
         <resources>
             <resource>
                 <filtering>false</filtering>
@@ -81,6 +58,22 @@
                 </excludes>
             </resource>
         </resources>
+        <testResources>
+            <testResource>
+                <filtering>false</filtering>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <filtering>false</filtering>
+                <directory>src/test/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <inherited>true</inherited>
@@ -110,17 +103,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>Apache Nexus</id>
-            <url>https://repository.apache.org/content/repositories/snapshots/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 </project>
