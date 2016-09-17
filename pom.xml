@@ -130,6 +130,7 @@
         <module>lombok</module>
         <module>redis</module>
 
+        <module>wicket</module>
         <module>xstream</module>
         <module>java-cassandra</module>
     </modules>
