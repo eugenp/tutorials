@@ -1,8 +1,5 @@
 package org.baeldung.persistence.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,14 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 @Entity
-public class User implements UserDetails {
-
-    private static final long serialVersionUID = 1L;
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,7 +48,6 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    @Override
     public String getUsername() {
         return username;
     }
@@ -66,7 +56,6 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-    @Override
     public String getPassword() {
         return password;
     }
@@ -89,37 +78,6 @@ public class User implements UserDetails {
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
-    }
-
-    //
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (final Privilege privilege : this.getPrivileges()) {
-            authorities.add(new SimpleGrantedAuthority(privilege.getName()));
-        }
-        return authorities;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 
     //
