@@ -6,27 +6,32 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomListElementTest {
 
     @Test
-    public void givenList_whenRandomNumberChosen_shouldReturnARandomElementUsingRandom() {
+    public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingRandom() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
         Random rand = new Random();
+
         givenList.get(rand.nextInt(givenList.size()));
     }
 
     @Test
-    public void givenList_whenRandomNumberChosen_shouldReturnARandomElementUsingMathRandom() {
+    public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingMathRandom() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
+
         givenList.get((int)Math.random() * (givenList.size() - 1));
     }
 
     @Test
-    public void givenList_whenNumberElementsChoesem_shouldReturnRandomElementsWithReapeating() {
-        int numberOfElements = 2;
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithReapeating() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
+
+        int numberOfElements = 2;
+
         for (int i = 0; i < numberOfElements; i++) {
             int randomIndex = rand.nextInt(givenList.size());
             givenList.get(randomIndex);
@@ -34,10 +39,12 @@ public class RandomListElementTest {
     }
 
     @Test
-    public void givenList_whenNumberElementsChoesem_shouldReturnRandomElementsWithoutReapeating() {
-        int numberOfElements = 2;
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithoutReapeating() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
+
+        int numberOfElements = 2;
+
         for (int i = 0; i < numberOfElements; i++) {
             int randomIndex = rand.nextInt(givenList.size());
             givenList.get(randomIndex);
@@ -48,8 +55,10 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenSeriesLengthChosen_shouldReturnRandomSeries() {
         List<Integer> givenList = Arrays.asList(1, 2, 3, 4, 5, 6);
-        int randomSeriesLength = 3;
         Collections.shuffle(givenList);
+
+        int randomSeriesLength = 3;
+
         givenList.subList(0, randomSeriesLength - 1);
     }
 
@@ -57,10 +66,20 @@ public class RandomListElementTest {
     public void givenList_whenSeriesLengthChosen_shouldReturnOrderedSeries() {
         List<Integer> givenList = Arrays.asList(1, 2, 3, 4, 5, 6);
         Random rand = new Random();
+        Collections.sort(givenList);
+
         int startIndex = rand.nextInt(givenList.size());
         int endIndex = startIndex + rand.nextInt(givenList.size() - startIndex);
-        Collections.sort(givenList);
+
         givenList.subList(startIndex, endIndex);
+    }
+
+    @Test
+    public void givenList_whenRandomIndexChosen_shouldReturnElementThreadSafely() {
+        List<Integer> givenList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        int randomIndex = ThreadLocalRandom.current().nextInt(10);
+
+        givenList.get(randomIndex);
     }
 
 }
