@@ -19,7 +19,30 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenRandomNumberChosen_shouldReturnARandomElementUsingMathRandom() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
-        givenList.get((int)Math.random() * givenList.size());
+        givenList.get((int)Math.random() * (givenList.size() - 1));
+    }
+
+    @Test
+    public void givenList_whenNumberElementsChoesem_shouldReturnRandomElementsWithReapeating() {
+        int numberOfElements = 2;
+        Random rand = new Random();
+        List<String> givenList = Arrays.asList("one", "two", "three", "four");
+        for (int i = 0; i < numberOfElements; i++) {
+            int randomIndex = rand.nextInt(givenList.size());
+            givenList.get(randomIndex);
+        }
+    }
+
+    @Test
+    public void givenList_whenNumberElementsChoesem_shouldReturnRandomElementsWithoutReapeating() {
+        int numberOfElements = 2;
+        Random rand = new Random();
+        List<String> givenList = Arrays.asList("one", "two", "three", "four");
+        for (int i = 0; i < numberOfElements; i++) {
+            int randomIndex = rand.nextInt(givenList.size());
+            givenList.get(randomIndex);
+            givenList.remove(randomIndex);
+        }
     }
 
     @Test
