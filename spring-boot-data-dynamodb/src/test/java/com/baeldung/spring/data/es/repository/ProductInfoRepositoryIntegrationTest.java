@@ -25,7 +25,6 @@ import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.ResourceInUseException;
 import com.baeldung.spring.data.es.model.ProductInfo;
-import com.baeldung.spring.data.es.repository.ProductInfoRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -73,10 +72,10 @@ public class ProductInfoRepositoryIntegrationTest {
 
     @Ignore
     @Test
-    public void sampleTestCase() {
+    public void givenItemWithExpectedCost_whenRunFindAll_thenItemIsFound() {
 
-        ProductInfo dave = new ProductInfo(EXPECTED_COST, EXPECTED_PRICE);
-        ProductInfoRepository.save(dave);
+        ProductInfo productInfo = new ProductInfo(EXPECTED_COST, EXPECTED_PRICE);
+        ProductInfoRepository.save(productInfo);
 
         List<ProductInfo> result = (List<ProductInfo>) ProductInfoRepository.findAll();
         assertTrue("Not empty", result.size() > 0);
