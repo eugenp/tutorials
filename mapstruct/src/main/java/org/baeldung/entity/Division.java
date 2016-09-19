@@ -2,15 +2,6 @@ package org.baeldung.entity;
 
 public class Division {
 
-    public Division() {
-    }
-
-    public Division(int id, String name) {
-        super();
-        this.id = id;
-        this.name = name;
-    }
-
     private int id;
     private String name;
 

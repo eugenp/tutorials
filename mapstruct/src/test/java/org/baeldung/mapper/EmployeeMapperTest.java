@@ -59,7 +59,10 @@ public class EmployeeMapperTest {
     @Test
     public void givenEmpNestedMappingToEmpDTO_whenMaps_thenCorrect() {
         Employee entity = new Employee();
-        entity.setDivision(new Division(1, "Division1"));
+        Division division = new Division();
+        division.setId(1);
+        division.setName("Division2");
+        entity.setDivision(division);
 
         EmployeeDTO dto = mapper.employeeToEmployeeDTO(entity);
 
@@ -73,7 +76,10 @@ public class EmployeeMapperTest {
         Employee emp = new Employee();
         emp.setId(1);
         emp.setName("EmpName");
-        emp.setDivision(new Division(1, "Division1"));
+        Division division = new Division();
+        division.setId(1);
+        division.setName("Division1");
+        emp.setDivision(division);
         employeeList.add(emp);
 
         List<EmployeeDTO> employeeDtoList = mapper.convertEmployeeListToEmployeeDTOList(employeeList);
