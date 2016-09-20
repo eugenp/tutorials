@@ -29,6 +29,7 @@
         <module>dozer</module>
         <module>dependency-injection</module>
         <module>deltaspike</module>
+        <module>elasticsearch</module>
 
         <module>enterprise-patterns</module>
         <module>feign-client</module>

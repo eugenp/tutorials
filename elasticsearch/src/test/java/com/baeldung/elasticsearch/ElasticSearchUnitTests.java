@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -102,13 +103,9 @@ public class ElasticSearchUnitTests {
         try {
             response2.getHits();
             response3.getHits();
-            SearchHit[] searchHits = response.getHits().getHits();
-            List<Person> results = new ArrayList<Person>();
-            for (SearchHit hit : searchHits) {
-                String sourceAsString = hit.getSourceAsString();
-                Person person = JSON.parseObject(sourceAsString, Person.class);
-                results.add(person);
-            }
+            List<SearchHit> searchHits = Arrays.asList(response.getHits().getHits());
+            final List<Person> results = new ArrayList<Person>();
+            searchHits.forEach(hit -> results.add(JSON.parseObject(hit.getSourceAsString(), Person.class)));
         } catch (Exception e) {
             isExecutedSuccessfully = false;
         }
