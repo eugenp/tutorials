@@ -26,7 +26,7 @@ public class RandomListElementTest {
     }
 
     @Test
-    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithReapeating() {
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithRepeating() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
 
@@ -39,7 +39,7 @@ public class RandomListElementTest {
     }
 
     @Test
-    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithoutReapeating() {
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithoutRepeating() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
 
