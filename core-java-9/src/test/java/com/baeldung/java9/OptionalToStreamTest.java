@@ -7,15 +7,15 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class OptionalToStreamTest {
-    
+
     @Test
-    public void testOptionalToStream(){
+    public void testOptionalToStream() {
         Optional<String> op = Optional.ofNullable("String value");
         Stream<String> strOptionalStream = op.stream();
-        Stream<String> filteredStream = strOptionalStream.filter(
-               (str) -> { return str != null && str.startsWith("String"); }
-               );
+        Stream<String> filteredStream = strOptionalStream.filter((str) -> {
+            return str != null && str.startsWith("String");
+        });
         assertEquals(1, filteredStream.count());
-        
+
     }
 }
