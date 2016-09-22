@@ -18,18 +18,18 @@ public class ArrayListTest {
 
     @Before
     public void setUp() {
-        List<String> xs = LongStream.range(0, 16)
+        List<String> list = LongStream.range(0, 16)
           .boxed()
           .map(Long::toHexString)
           .collect(toCollection(ArrayList::new));
-        stringsToSearch = new ArrayList<>(xs);
-        stringsToSearch.addAll(xs);
+        stringsToSearch = new ArrayList<>(list);
+        stringsToSearch.addAll(list);
     }
 
     @Test
     public void givenNewArrayList_whenCheckCapacity_thenDefaultValue() {
-        List<String> xs = new ArrayList<>();
-        assertTrue(xs.isEmpty());
+        List<String> list = new ArrayList<>();
+        assertTrue(list.isEmpty());
     }
 
     @Test
@@ -37,29 +37,29 @@ public class ArrayListTest {
         Collection<Integer> numbers =
           IntStream.range(0, 10).boxed().collect(toSet());
 
-        List<Integer> xs = new ArrayList<>(numbers);
-        assertEquals(10, xs.size());
-        assertTrue(numbers.containsAll(xs));
+        List<Integer> list = new ArrayList<>(numbers);
+        assertEquals(10, list.size());
+        assertTrue(numbers.containsAll(list));
     }
 
     @Test
     public void givenElement_whenAddToArrayList_thenIsAdded() {
-        List<Long> xs = new ArrayList<>();
+        List<Long> list = new ArrayList<>();
 
-        xs.add(1L);
-        xs.add(2L);
-        xs.add(1, 3L);
+        list.add(1L);
+        list.add(2L);
+        list.add(1, 3L);
 
-        assertThat(Arrays.asList(1L, 3L, 2L), equalTo(xs));
+        assertThat(Arrays.asList(1L, 3L, 2L), equalTo(list));
     }
 
     @Test
     public void givenCollection_whenAddToArrayList_thenIsAdded() {
-        List<Long> xs = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
+        List<Long> list = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
         LongStream.range(4, 10).boxed()
-          .collect(collectingAndThen(toCollection(ArrayList::new), ys -> xs.addAll(0, ys)));
+          .collect(collectingAndThen(toCollection(ArrayList::new), ys -> list.addAll(0, ys)));
 
-        assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(xs));
+        assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(list));
     }
 
     @Test
@@ -106,27 +106,27 @@ public class ArrayListTest {
 
     @Test
     public void givenIndex_whenRemove_thenCorrectElementRemoved() {
-        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
-        Collections.reverse(xs);
+        List<Integer> list = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
+        Collections.reverse(list);
 
-        xs.remove(0);
-        assertThat(xs.get(0), equalTo(8));
+        list.remove(0);
+        assertThat(list.get(0), equalTo(8));
 
-        xs.remove(Integer.valueOf(0));
-        assertFalse(xs.contains(0));
+        list.remove(Integer.valueOf(0));
+        assertFalse(list.contains(0));
     }
 
     @Test
     public void givenListIterator_whenReverseTraversal_thenRetrieveElementsInOppositeOrder() {
-        List<Integer> xs = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
-        ListIterator<Integer> it = xs.listIterator(xs.size());
-        List<Integer> result = new ArrayList<>(xs.size());
+        List<Integer> list = IntStream.range(0, 10).boxed().collect(toCollection(ArrayList::new));
+        ListIterator<Integer> it = list.listIterator(list.size());
+        List<Integer> result = new ArrayList<>(list.size());
         while (it.hasPrevious()) {
             result.add(it.previous());
         }
 
-        Collections.reverse(xs);
-        assertThat(result, equalTo(xs));
+        Collections.reverse(list);
+        assertThat(result, equalTo(list));
     }
 
     @Test
