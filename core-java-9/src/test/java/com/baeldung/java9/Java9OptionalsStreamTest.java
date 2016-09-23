@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Java8OptionalsStreamTest {
+public class Java9OptionalsStreamTest {
 
     private List<Optional<String>> listOfOptionals;
 
