@@ -35,7 +35,6 @@ public class FooController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public Foo updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
-        System.out.println(foo);
         return foo;
     }
 
