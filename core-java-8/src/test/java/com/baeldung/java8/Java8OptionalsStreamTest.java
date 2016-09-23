@@ -52,8 +52,7 @@ public class Java8OptionalsStreamTest {
         assertEquals(4, listOfOptionals.size());
         //@format:off
         List<String> filteredList = listOfOptionals.stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
+                .flatMap(Optional::stream)
                 .collect(Collectors.toList());
         //@format:on
         assertEquals(2, filteredList.size());
