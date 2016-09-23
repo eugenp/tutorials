@@ -21,9 +21,9 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Integration Test class. Tests methods hits the server's rest services.
  */
-public class SpringHttpMessageConvertersIntegrationTestsCase {
+public class SpringHttpMessageConvertersLiveTest {
 
-    private static String BASE_URI = "http://localhost:8080/spring-rest/";
+    private static String BASE_URI = "http://localhost:8082/spring-rest/";
 
     /**
      * Without specifying Accept Header, uses the default response from the
