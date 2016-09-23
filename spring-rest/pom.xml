@@ -213,7 +213,7 @@
                 <configuration>
                     <wait>true</wait>
                     <container>
-                        <containerId>jetty8x</containerId>
+                        <containerId>tomcat8x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                             <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
@@ -318,7 +318,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
 
     </properties>
 
