@@ -43,7 +43,6 @@ public class WebMVCSecurity extends WebSecurityConfigurerAdapter {
         .authenticated()
         .and()
         .httpBasic()
-        .and()
         ;
     }
 
