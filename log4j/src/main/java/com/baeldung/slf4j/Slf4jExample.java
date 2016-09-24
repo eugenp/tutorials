@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 /**
  * To switch between logging frameworks you need only to uncomment needed framework dependencies in pom.xml
  */
-public class SLF4JExample {
-    private static Logger logger = LoggerFactory.getLogger(SLF4JExample.class);
+public class Slf4jExample {
+    private static Logger logger = LoggerFactory.getLogger(Slf4jExample.class);
 
     public static void main(String[] args) {
         logger.debug("Debug log message");
