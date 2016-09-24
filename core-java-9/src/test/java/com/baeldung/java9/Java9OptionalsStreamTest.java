@@ -13,36 +13,31 @@ import org.junit.Test;
 
 public class Java9OptionalsStreamTest {
 
-    private List<Optional<String>> listOfOptionals;
+    private static List<Optional<String>> listOfOptionals = Arrays.asList(Optional.empty(), Optional.of("foo"), Optional.empty(), Optional.of("bar"));
 
-    @Before
-    public void populateStream() {
-        listOfOptionals = Arrays.asList(Optional.empty(), Optional.of("foo"), Optional.empty(), Optional.of("bar"));
-    }
-    
     @Test
     public void filterOutPresentOptionalsWithFilter() {
         assertEquals(4, listOfOptionals.size());
-        //@format:off
+
         List<String> filteredList = listOfOptionals.stream()
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
-        //@format:on
+          .filter(Optional::isPresent)
+          .map(Optional::get)
+          .collect(Collectors.toList());
+
         assertEquals(2, filteredList.size());
         assertEquals("foo", filteredList.get(0));
         assertEquals("bar", filteredList.get(1));
     }
-    
+
     @Test
     public void filterOutPresentOptionalsWithFlatMap() {
         assertEquals(4, listOfOptionals.size());
-        //@format:off
+
         List<String> filteredList = listOfOptionals.stream()
-                .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty())
-                .collect(Collectors.toList());
-        //@format:on
+          .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty())
+          .collect(Collectors.toList());
         assertEquals(2, filteredList.size());
+
         assertEquals("foo", filteredList.get(0));
         assertEquals("bar", filteredList.get(1));
     }
@@ -50,11 +45,11 @@ public class Java9OptionalsStreamTest {
     @Test
     public void filterOutPresentOptionalsWithJava9() {
         assertEquals(4, listOfOptionals.size());
-        //@format:off
+
         List<String> filteredList = listOfOptionals.stream()
-                .flatMap(Optional::stream)
-                .collect(Collectors.toList());
-        //@format:on
+          .flatMap(Optional::stream)
+          .collect(Collectors.toList());
+
         assertEquals(2, filteredList.size());
         assertEquals("foo", filteredList.get(0));
         assertEquals("bar", filteredList.get(1));
