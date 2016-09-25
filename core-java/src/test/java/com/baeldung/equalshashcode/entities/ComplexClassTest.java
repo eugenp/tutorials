@@ -1,4 +1,4 @@
-package org.baeldung.equalshashcode.entities;
+package com.baeldung.equalshashcode.entities;
 
 import java.util.ArrayList;
 import java.util.HashSet;
