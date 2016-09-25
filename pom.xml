@@ -31,6 +31,7 @@
         <module>deltaspike</module>
 
         <module>enterprise-patterns</module>
+        <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
@@ -129,6 +130,7 @@
         <module>lombok</module>
         <module>redis</module>
 
+        <module>wicket</module>
         <module>xstream</module>
         <module>java-cassandra</module>
     </modules>
