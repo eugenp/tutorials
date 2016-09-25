@@ -30,17 +30,17 @@ import com.baeldung.thymeleaf.config.WebMVCSecurity;
 @WebAppConfiguration
 @ContextConfiguration(classes = { WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class })
 public class CsrfEnabledIntegrationTest {
-	
-	@Autowired
+
+    @Autowired
     WebApplicationContext wac;
     @Autowired
     MockHttpSession session;
 
     private MockMvc mockMvc;
-    
+
     @Autowired
     private Filter springSecurityFilterChain;
-    
+
     protected RequestPostProcessor testUser() {
         return user("user1").password("user1Pass").roles("USER");
     }
@@ -52,12 +52,12 @@ public class CsrfEnabledIntegrationTest {
 
     @Test
     public void addStudentWithoutCSRF() throws Exception {
-    	mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser())).andExpect(status().isForbidden());
+        mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser())).andExpect(status().isForbidden());
     }
 
     @Test
     public void addStudentWithCSRF() throws Exception {
-    	mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser()).with(csrf())).andExpect(status().isOk());
+        mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser()).with(csrf())).andExpect(status().isOk());
     }
 
 }

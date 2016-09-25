@@ -37,31 +37,31 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 	}
 
 	@Bean
-	  public ViewResolver viewResolver() {
-	    ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-	    resolver.setTemplateEngine(templateEngine());
-	    resolver.setCharacterEncoding("UTF-8");
-	    resolver.setOrder(1);
-	    return resolver;
-	  }
+	public ViewResolver viewResolver() {
+		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+		resolver.setTemplateEngine(templateEngine());
+		resolver.setCharacterEncoding("UTF-8");
+		resolver.setOrder(1);
+		return resolver;
+	}
 
-	  @Bean
-	  public TemplateEngine templateEngine() {
-	    SpringTemplateEngine engine = new SpringTemplateEngine();
-	    engine.setEnableSpringELCompiler(true);
-	    engine.setTemplateResolver(templateResolver());
-	    return engine;
-	  }
+	@Bean
+	public TemplateEngine templateEngine() {
+		SpringTemplateEngine engine = new SpringTemplateEngine();
+		engine.setEnableSpringELCompiler(true);
+		engine.setTemplateResolver(templateResolver());
+		return engine;
+	}
 
-	  private ITemplateResolver templateResolver() {
-	    SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-	    resolver.setApplicationContext(applicationContext);
-	    resolver.setPrefix("/WEB-INF/views/");
-	    resolver.setSuffix(".html");
-	    resolver.setTemplateMode(TemplateMode.HTML);
-	    return resolver;
-	  }
-	
+	private ITemplateResolver templateResolver() {
+		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+		resolver.setApplicationContext(applicationContext);
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".html");
+		resolver.setTemplateMode(TemplateMode.HTML);
+		return resolver;
+	}
+
 	@Bean
 	@Description("Spring Message Resolver")
 	public ResourceBundleMessageSource messageSource() {
@@ -80,5 +80,4 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addFormatter(new NameFormatter());
 	}
-
 }
