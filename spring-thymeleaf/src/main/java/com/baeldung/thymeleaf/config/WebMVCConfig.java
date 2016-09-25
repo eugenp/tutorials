@@ -24,51 +24,51 @@ import com.baeldung.thymeleaf.formatter.NameFormatter;
  */
 public class WebMVCConfig extends WebMvcConfigurerAdapter {
 
-	@Bean
-	@Description("Thymeleaf Template Resolver")
-	public ServletContextTemplateResolver templateResolver() {
-		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-		templateResolver.setPrefix("/WEB-INF/views/");
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode("HTML5");
+    @Bean
+    @Description("Thymeleaf Template Resolver")
+    public ServletContextTemplateResolver templateResolver() {
+        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
+        templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode("HTML5");
 
-		return templateResolver;
-	}
+        return templateResolver;
+    }
 
-	@Bean
-	@Description("Thymeleaf Template Engine")
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
+    @Bean
+    @Description("Thymeleaf Template Engine")
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver(templateResolver());
 
-		return templateEngine;
-	}
+        return templateEngine;
+    }
 
-	@Bean
-	@Description("Thymeleaf View Resolver")
-	public ThymeleafViewResolver viewResolver() {
-		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(templateEngine());
-		viewResolver.setOrder(1);
-		return viewResolver;
-	}
+    @Bean
+    @Description("Thymeleaf View Resolver")
+    public ThymeleafViewResolver viewResolver() {
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setOrder(1);
+        return viewResolver;
+    }
 
-	@Bean
-	@Description("Spring Message Resolver")
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
+    @Bean
+    @Description("Spring Message Resolver")
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
+    }
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+    }
 
-	@Override
-	@Description("Custom Conversion Service")
-	public void addFormatters(FormatterRegistry registry) {
-		registry.addFormatter(new NameFormatter());
-	}
+    @Override
+    @Description("Custom Conversion Service")
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new NameFormatter());
+    }
 }
