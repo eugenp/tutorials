@@ -45,11 +45,6 @@
             <artifactId>spring-aspects</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-        </dependency>
-
         <!-- persistence -->
 
         <dependency>
@@ -132,6 +127,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.5.1</version>
             <scope>test</scope>
         </dependency>
 
