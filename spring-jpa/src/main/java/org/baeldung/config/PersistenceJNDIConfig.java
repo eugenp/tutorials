@@ -36,7 +36,7 @@ public class PersistenceJNDIConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
@@ -46,12 +46,8 @@ public class PersistenceJNDIConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
-        try {
-            return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
-        } catch (NamingException e) {
-            throw new IllegalArgumentException("Error looking up JNDI datasource", e);
-        }
+    public DataSource dataSource() throws NamingException {
+        return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
     }
 
     @Bean
