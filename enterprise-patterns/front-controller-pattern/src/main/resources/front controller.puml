@@ -1,5 +1,5 @@
 @startuml
-
+scale 1.5
 class Handler {
 doGet
 doPost
