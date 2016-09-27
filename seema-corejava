@@ -1,0 +1,1 @@
+Maps in Java are used to represent associations between key-value pairs. These 	implementations of the java.util.Map interface contain specialized features that make it 	suitable for specific situations. This article explains the right ways to use maps to get the 	best out of them in different circumstances.
