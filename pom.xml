@@ -91,7 +91,6 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
-        <module>spring-jpa-jndi</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>

@@ -22,24 +22,17 @@ public class FrontControllerServlet extends HttpServlet {
 
     private FrontCommand getCommand(HttpServletRequest request) {
         try {
-            return (FrontCommand) getCommandClass(request)
-              .asSubclass(FrontCommand.class)
-              .newInstance();
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to get command!", e);
-        }
-    }
-
-    private Class getCommandClass(HttpServletRequest request) {
-        try {
-            return Class.forName(
+            Class type = Class.forName(
               String.format(
                 "com.baeldung.enterprise.patterns.front.controller.commands.%sCommand",
                 request.getParameter("command")
               )
             );
-        } catch (ClassNotFoundException e) {
-            return UnknownCommand.class;
+            return (FrontCommand) type
+              .asSubclass(FrontCommand.class)
+              .newInstance();
+        } catch (Exception e) {
+            return new UnknownCommand();
         }
     }
 }

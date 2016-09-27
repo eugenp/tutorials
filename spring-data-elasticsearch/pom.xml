@@ -69,6 +69,17 @@
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>2.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.13</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
