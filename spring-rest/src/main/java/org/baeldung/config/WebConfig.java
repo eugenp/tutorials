@@ -15,6 +15,11 @@ import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+/*
+ * Please note that main web configuration is in src/main/webapp/WEB-INF/api-servlet.xml
+ *
+ */
+
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "org.baeldung.web" })
