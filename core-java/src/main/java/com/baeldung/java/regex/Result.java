@@ -1,4 +1,4 @@
-package com.baeldung.regex;
+package com.baeldung.java.regex;
 
 public class Result {
     private boolean found = false;
