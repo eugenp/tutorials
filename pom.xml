@@ -132,7 +132,7 @@
         <module>wicket</module>
         <module>xstream</module>
         <module>java-cassandra</module>
-        <module>annotation-processing</module>
+        <module>annotations</module>
     </modules>
 
 </project>
