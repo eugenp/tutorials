@@ -13,13 +13,13 @@
 </head>
 
 <body>
-	<div class="flex-container">
-		<tiles:insertAttribute name="header" />
-		<tiles:insertAttribute name="menu" />
-		<article class="article">
-			<tiles:insertAttribute name="body" />
-		</article>
-		<tiles:insertAttribute name="footer" />
-	</div>
+    <div class="flex-container">
+        <tiles:insertAttribute name="header" />
+        <tiles:insertAttribute name="menu" />
+        <article class="article">
+		    <tiles:insertAttribute name="body" />
+        </article>
+    <tiles:insertAttribute name="footer" />
+    </div>
 </body>
 </html>
