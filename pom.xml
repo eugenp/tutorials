@@ -133,6 +133,7 @@
         <module>xstream</module>
         <module>java-cassandra</module>
         <module>annotations</module>
+		<module>regex</module>
     </modules>
 
 </project>
