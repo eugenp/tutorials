@@ -1,8 +1,5 @@
 package org.baeldung.user.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.user.dao.MyUserDAO;
 import org.baeldung.web.MyUserDto;
@@ -17,9 +14,6 @@ public class MyUserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Autowired
     MyUserDAO myUserDAO;
