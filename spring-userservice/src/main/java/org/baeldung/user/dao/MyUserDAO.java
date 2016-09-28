@@ -29,6 +29,12 @@ public class MyUserDAO {
         entityManager.persist(user);
         return user;
     }
+    
+    public void removeUserByUsername(String username) {
+        final Query query = entityManager.createQuery("delete from MyUser where username=:username");
+        query.setParameter("username", username);
+        query.executeUpdate();
+    }
 
     public EntityManager getEntityManager() {
         return entityManager;
