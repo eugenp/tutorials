@@ -15,33 +15,33 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 @ComponentScan(basePackages = "com.baeldung.tiles.springmvc")
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
-	/**
-	 * Configure TilesConfigurer.
-	 */
-	@Bean
-	public TilesConfigurer tilesConfigurer() {
-		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		tilesConfigurer.setDefinitions(new String[] { "/WEB-INF/views/**/tiles.xml" });
-		tilesConfigurer.setCheckRefresh(true);
-		return tilesConfigurer;
-	}
+    /**
+     * Configure TilesConfigurer.
+     */
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions(new String[] { "/WEB-INF/views/**/tiles.xml" });
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
 
-	/**
-	 * Configure ViewResolvers to deliver views.
-	 */
-	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-		TilesViewResolver viewResolver = new TilesViewResolver();
-		registry.viewResolver(viewResolver);
-	}
+    /**
+     * Configure ViewResolvers to deliver views.
+     */
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        TilesViewResolver viewResolver = new TilesViewResolver();
+        registry.viewResolver(viewResolver);
+    }
 
-	/**
-	 * Configure ResourceHandlers to serve static resources
-	 */
+    /**
+     * Configure ResourceHandlers to serve static resources
+     */
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+    }
 
 }
