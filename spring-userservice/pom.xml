@@ -195,7 +195,17 @@
             <artifactId>jstl-api</artifactId>
             <version>1.2</version>
         </dependency>
-    </dependencies>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-test</artifactId>
+        	<version>1.4.1.RELEASE</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot</artifactId>
+        	<version>1.4.1.RELEASE</version>
+        </dependency>
+  </dependencies>
 
     <build>
         <finalName>spring-userservice</finalName>
