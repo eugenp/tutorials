@@ -66,34 +66,19 @@ public class JavaSorting {
           new Employee("Earl", 43, 10000), 
           new Employee("Jessica", 23, 4000), 
           new Employee("Pearl", 33, 6000)};
-        String sortedArrayString = "[(John,23,5000.0), (Jessica,23,4000.0), "
-          + "(Steve,26,6000.0), (Frank,33,7000.0), (Pearl,33,6000.0), "
-          + "(Earl,43,10000.0)]";
-        
+        Employee[] employeesSorted = new Employee[] { 
+            new Employee("John", 23, 5000), 
+            new Employee("Jessica", 23, 4000), 
+            new Employee("Steve", 26, 6000),
+            new Employee("Frank", 33, 70000), 
+            new Employee("Pearl", 33, 4000), 
+            new Employee("Earl", 43, 10000)};
+                
         Arrays.sort(employees);
 
-        assertTrue(Arrays.toString(employees).equals(sortedArrayString));
+        assertTrue(Arrays.equals(employees, employeesSorted));
     }
 
-//    @Test
-//    public void comparatorSortEmployeeArrayByName() {
-//        Arrays.sort(employees, new Comparator<Employee>() {
-//
-//            @Override
-//            public int compare(Employee o1, Employee o2) {
-//
-//                return o1.getName().compareTo(o2.getName());
-//            }
-//        });
-//    }
-
-//    @Test
-//    public void comparatorSortEmployeeArrayByName_Java8Lambda() {
-//        Arrays.sort(employees, (o1, o2) -> {
-//            return o1.getName().compareTo(o2.getName());
-//
-//        });
-//    }
     
     @Test
     public void givenIntArray_whenUsingRangeSort_thenRangeSortedArray() {
@@ -123,13 +108,17 @@ public class JavaSorting {
           new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000),
           new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), 
           new Employee("Pearl", 33, 6000) });
-        String sortedArrayString = "[(John,23,5000.0), (Jessica,23,4000.0), "
-            + "(Steve,26,6000.0), (Frank,33,7000.0), (Pearl,33,6000.0), "
-            + "(Earl,43,10000.0)]";
+        Employee[] employeesSorted = new Employee[] { 
+          new Employee("John", 23, 5000), 
+          new Employee("Jessica", 23, 4000), 
+          new Employee("Steve", 26, 6000),
+          new Employee("Frank", 33, 70000), 
+          new Employee("Pearl", 33, 4000), 
+          new Employee("Earl", 43, 10000)};
 
         employees.sort(Comparator.comparing(Employee::getAge));//.thenComparing(Employee::getName));
 
-        assertTrue(Arrays.toString(employees.toArray()).equals(sortedArrayString));
+        assertTrue(Arrays.equals(employees.toArray(), employeesSorted));
     }
     
     @Test
