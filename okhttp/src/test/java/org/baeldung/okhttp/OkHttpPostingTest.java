@@ -1,13 +1,11 @@
 package org.baeldung.okhttp;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.baeldung.okhttp.ProgressRequestWrapper;
 import org.junit.Test;
 
 import okhttp3.Call;
@@ -107,62 +105,5 @@ public class OkHttpPostingTest {
         Response response = call.execute();
 
         assertThat(response.code(), equalTo(200));
-    }
-
-    @Test
-    public void whenUploadFileUsingOkHttp_thenCorrect() throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = new MultipartBody.Builder()
-          .setType(MultipartBody.FORM)
-          .addFormDataPart("file", "file.ext",
-            RequestBody.create(MediaType.parse("image/png"), new File("src/test/resources/test.in")))
-          .build();
-
-        Request request = new Request.Builder()
-                .url(BASE_URL + "/users/upload")
-                .post(requestBody)
-                .build();
-
-        Call call = client.newCall(request);
-        Response response = call.execute();
-
-        assertThat(response.code(), equalTo(200));
-    }
-
-    @Test
-    public void whenGetUploadFileProgressUsingOkHttp_thenCorrect() throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-
-        RequestBody requestBody = new MultipartBody.Builder()
-          .setType(MultipartBody.FORM)
-          .addFormDataPart("file", "file.ext",
-            RequestBody.create(MediaType.parse("image/png"), new File("src/test/resources/test.in")))
-          .build();
-
-
-        ProgressRequestWrapper.ProgressListener listener = new ProgressRequestWrapper.ProgressListener() {
-
-            public void onRequestProgress(long bytesWritten, long contentLength) {
-
-                float percentage = 100f * bytesWritten / contentLength;
-                assertFalse(Float.compare(percentage, 100) > 0);
-            }
-        };
-
-        ProgressRequestWrapper countingBody = new ProgressRequestWrapper(requestBody, listener);
-
-        Request request = new Request.Builder()
-                .url(BASE_URL + "/users/upload")
-                .post(countingBody)
-                .build();
-
-        Call call = client.newCall(request);
-        Response response = call.execute();
-
-        assertThat(response.code(), equalTo(200));
-
     }
 }

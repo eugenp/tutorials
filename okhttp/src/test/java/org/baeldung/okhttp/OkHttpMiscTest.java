@@ -92,13 +92,22 @@ public class OkHttpMiscTest {
                 //.cacheControl(CacheControl.FORCE_CACHE)
                 .build();
 
-        Response response = client.newCall(request).execute();
+        Response response1 = client.newCall(request).execute();
 
-        String responseBody = response.body().string();
+        String responseBody1 = response1.body().string();
 
-        System.out.println("Response response:          " + response);
-        System.out.println("Response cache response:    " + response.cacheResponse());
-        System.out.println("Response network response:  " + response.networkResponse());
-        System.out.println("Response responseBody:      " + responseBody);
+        System.out.println("Response 1 response:          " + response1);
+        System.out.println("Response 1 cache response:    " + response1.cacheResponse());
+        System.out.println("Response 1 network response:  " + response1.networkResponse());
+        System.out.println("Response 1 responseBody:      " + responseBody1);
+
+        Response response2 = client.newCall(request).execute();
+
+        String responseBody2 = response2.body().string();
+
+        System.out.println("Response 2 response:          " + response2);
+        System.out.println("Response 2 cache response:    " + response2.cacheResponse());
+        System.out.println("Response 2 network response:  " + response2.networkResponse());
+        System.out.println("Response 2 responseBody:      " + responseBody2);
     }
 }
