@@ -21,7 +21,7 @@ public class JavaFolderSizeTest {
     @Before
     public void init() {
         final String separator = File.separator;
-        path = "src" + separator + "test" + separator + "resources";
+        path = String.format("src%stest%sresources", separator, separator);
     }
 
     @Test
@@ -79,7 +79,9 @@ public class JavaFolderSizeTest {
         final File folder = new File(path);
 
         final Iterable<File> files = com.google.common.io.Files.fileTreeTraverser().breadthFirstTraversal(folder);
-        final long size = StreamSupport.stream(files.spliterator(), false).filter(f -> f.isFile()).mapToLong(File::length).sum();
+        final long size = StreamSupport.stream(files.spliterator(), false)
+          .filter(File::isFile)
+          .mapToLong(File::length).sum();
 
         assertEquals(expectedSize, size);
     }
@@ -101,13 +103,11 @@ public class JavaFolderSizeTest {
         long length = 0;
         final File[] files = folder.listFiles();
 
-        final int count = files.length;
-
-        for (int i = 0; i < count; i++) {
-            if (files[i].isFile()) {
-                length += files[i].length();
+        for (File file : files) {
+            if (file.isFile()) {
+                length += file.length();
             } else {
-                length += getFolderSize(files[i]);
+                length += getFolderSize(file);
             }
         }
         return length;

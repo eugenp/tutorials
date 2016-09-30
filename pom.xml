@@ -29,6 +29,9 @@
         <module>dozer</module>
         <module>dependency-injection</module>
         <module>deltaspike</module>
+
+        <module>patterns</module>
+        <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
@@ -88,12 +91,12 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
-        <module>spring-jpa-jndi</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-xml</module>
+	<module>spring-mvc-tiles</module>
         <module>spring-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
@@ -102,6 +105,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-cloud</module>
+        <module>spring-cloud-data-flow</module>
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
@@ -126,8 +130,10 @@
         <module>lombok</module>
         <module>redis</module>
 
+        <module>wicket</module>
         <module>xstream</module>
-
+        <module>java-cassandra</module>
+        <module>annotations</module>
     </modules>
 
 </project>
