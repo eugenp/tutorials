@@ -43,6 +43,19 @@ public class Java9OptionalsStreamTest {
     }
 
     @Test
+    public void filterOutPresentOptionalsWithFlatMap2() {
+        assertEquals(4, listOfOptionals.size());
+
+        List<String> filteredList = listOfOptionals.stream()
+          .flatMap(o -> o.map(Stream::of).orElseGet(Stream::empty))
+          .collect(Collectors.toList());
+        assertEquals(2, filteredList.size());
+
+        assertEquals("foo", filteredList.get(0));
+        assertEquals("bar", filteredList.get(1));
+    }
+
+    @Test
     public void filterOutPresentOptionalsWithJava9() {
         assertEquals(4, listOfOptionals.size());
 

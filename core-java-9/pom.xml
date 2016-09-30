@@ -60,12 +60,8 @@
 				<configuration>
 					<source>1.9</source>
 					<target>1.9</target>
-
 					<verbose>true</verbose>
-					<!-- <executable>C:\develop\jdks\jdk-9_ea122\bin\javac</executable> 
-						<compilerVersion>1.9</compilerVersion> -->
 				</configuration>
-
 			</plugin>
 
 			<plugin>
@@ -85,12 +81,7 @@
 
 
 		<!-- maven plugins -->
-		<!-- 
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version> -->
-		<maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>
-
-		
+		<maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>	
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
 		<!-- testing -->
