@@ -30,7 +30,7 @@
         <module>dependency-injection</module>
         <module>deltaspike</module>
 
-        <module>enterprise-patterns</module>
+        <module>patterns</module>
         <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
