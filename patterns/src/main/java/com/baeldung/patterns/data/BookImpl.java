@@ -1,39 +1,57 @@
-package com.baeldung.enterprise.patterns.front.controller.data;
+package com.baeldung.patterns.data;
 
-public class Book {
+public class BookImpl implements Book {
+    private String isbn;
     private String author;
     private String title;
     private Double price;
 
-    public Book() {
+    public BookImpl() {
     }
 
-    public Book(String author, String title, Double price) {
+    public BookImpl(String isbn, String author, String title, Double price) {
+        this.isbn = isbn;
         this.author = author;
         this.title = title;
         this.price = price;
     }
 
+    @Override
+    public String getIsbn() {
+        return isbn;
+    }
+
+    @Override
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    @Override
     public String getAuthor() {
         return author;
     }
 
+    @Override
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @Override
     public Double getPrice() {
         return price;
     }
 
+    @Override
     public void setPrice(Double price) {
         this.price = price;
     }
