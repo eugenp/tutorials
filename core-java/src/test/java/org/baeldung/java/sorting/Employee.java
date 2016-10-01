@@ -45,10 +45,15 @@ public class Employee implements Comparable {
         return "(" + name + "," + age + "," + salary + ")";
 
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        return ((Employee) obj).getName().equals(getName());
+    }
 
     @Override
     public int compareTo(Object o) {
         Employee e = (Employee) o;
-        return getAge() - e.getAge();
+        return getName().compareTo(e.getName());
     }
 }

@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -28,7 +29,7 @@ public class JavaSorting {
     }
 
     @Test
-    public void givenArrayObjects_whenUsingSort_thenSortedArrayObjects() {
+    public void givenIntegerArray_whenUsingSort_thenSortedArray() {
         Integer[] integers = new Integer[] 
           { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
             sortedIntegers = {1, 5, 7, 66, 88, 89, 123, 200, 255};
@@ -66,13 +67,13 @@ public class JavaSorting {
           new Employee("Earl", 43, 10000), 
           new Employee("Jessica", 23, 4000), 
           new Employee("Pearl", 33, 6000)};
-        Employee[] employeesSorted = new Employee[] { 
-            new Employee("John", 23, 5000), 
-            new Employee("Jessica", 23, 4000), 
-            new Employee("Steve", 26, 6000),
-            new Employee("Frank", 33, 70000), 
-            new Employee("Pearl", 33, 4000), 
-            new Employee("Earl", 43, 10000)};
+        Employee[] employeesSorted = new Employee[] {
+          new Employee("Earl", 43, 10000),
+          new Employee("Frank", 33, 70000),
+          new Employee("Jessica", 23, 4000),
+          new Employee("John", 23, 5000), 
+          new Employee("Pearl", 33, 4000), 
+          new Employee("Steve", 26, 6000)};
                 
         Arrays.sort(employees);
 
@@ -198,17 +199,16 @@ public class JavaSorting {
 
     @Test
     public void givenSet_whenUsingSort_thenSortedSet() {
-        HashSet<Integer> integers = new HashSet<>(Arrays.asList(new Integer[] 
+        HashSet<Integer> integers = new LinkedHashSet<>(Arrays.asList(new Integer[] 
             { 5, 1, 89, 255, 7, 88, 200, 123, 66 })),
-              sortedIntegers = new HashSet<>(Arrays.asList(new Integer[] 
-                {1, 5, 7, 66, 88, 89, 123, 200, 255}));
-        
+              sortedIntegers = new LinkedHashSet<>(Arrays.asList(new Integer[] 
+                {255, 200, 123, 89, 88, 66, 7, 5, 1}));
         
         ArrayList<Integer> list = new ArrayList<Integer>(integers);
         Collections.sort(list, (i1, i2) -> {
             return i2 - i1;
         });
-        integers = new HashSet<>(list);
+        integers = new LinkedHashSet<>(list);
         
         assertTrue(Arrays.equals(integers.toArray(), sortedIntegers.toArray()));
     }
