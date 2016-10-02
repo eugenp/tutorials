@@ -182,7 +182,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -192,16 +191,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
+                         <exclude>**/*LiveTest.java</exclude> 
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -216,7 +213,7 @@
                 <configuration>
                     <wait>true</wait>
                     <container>
-                        <containerId>jetty8x</containerId>
+                        <containerId>tomcat8x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                             <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
@@ -234,6 +231,61 @@
 
     </build>
 
+    <profiles>
+        <profile>
+            <id>live</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>start-server</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop-server</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*LiveTest.java</include>
+                                    </includes>
+                                    <systemPropertyVariables>
+                                        <webTarget>cargo</webTarget>
+                                    </systemPropertyVariables>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+        
     <properties>
         <!-- Spring -->
 
@@ -266,7 +318,7 @@
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
 
     </properties>
 

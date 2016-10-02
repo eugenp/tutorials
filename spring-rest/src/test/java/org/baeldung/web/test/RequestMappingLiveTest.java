@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.jayway.restassured.RestAssured;
 
 public class RequestMappingLiveTest {
-    private static String BASE_URI = "http://localhost:8080/spring-rest/ex/";
+    private static String BASE_URI = "http://localhost:8082/spring-rest/ex/";
 
     @Test
     public void givenSimplePath_whenGetFoos_thenOk() {
