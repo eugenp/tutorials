@@ -1,4 +1,4 @@
-package com.baeldung.core.exceptions;
+package org.baeldung.core.exceptions;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,20 +7,15 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.junit.Test;
 
-public class FileNotFoundExceptionExample {
+public class FileNotFoundExceptionTest {
 
-    private static final Logger LOG = Logger.getLogger(FileNotFoundExceptionExample.class);
+    private static final Logger LOG = Logger.getLogger(FileNotFoundExceptionTest.class);
 
     private String fileName = Double.toString(Math.random());
 
-    public void readFailingFile() throws IOException {
-        BufferedReader rd = null;
-        rd = new BufferedReader(new FileReader(new File(fileName)));
-        rd.readLine();
-        // no need to close file
-    }
-
+    @Test(expected = BusinessException.class)
     public void raiseBusinessSpecificException() throws IOException {
         try {
             readFailingFile();
@@ -29,6 +24,7 @@ public class FileNotFoundExceptionExample {
         }
     }
 
+    @Test
     public void createFile() throws IOException {
         try {
             readFailingFile();
@@ -43,6 +39,7 @@ public class FileNotFoundExceptionExample {
         }
     }
 
+    @Test
     public void logError() throws IOException {
         try {
             readFailingFile();
@@ -51,24 +48,17 @@ public class FileNotFoundExceptionExample {
             System.out.println("File was logged.");
         }
     }
-
-    public static void main(String[] args) throws IOException {
-        FileNotFoundExceptionExample example = new FileNotFoundExceptionExample();
-
-        try {
-            example.raiseBusinessSpecificException();
-        } catch (Exception e) {
-            System.out.println("Bussines exception was thrown");
-        }
-        example.createFile();
-        example.logError();
+    
+    protected void readFailingFile() throws IOException {
+        BufferedReader rd = null;
+        rd = new BufferedReader(new FileReader(new File(fileName)));
+        rd.readLine();
+        // no need to close file
     }
 
     class BusinessException extends RuntimeException {
-
         public BusinessException(String string, FileNotFoundException ex) {
             super(string, ex);
         }
-
     }
 }
