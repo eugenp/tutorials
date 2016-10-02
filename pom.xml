@@ -19,8 +19,7 @@
         <module>autovalue-tutorial</module>
         <module>core-java</module>
         <module>core-java-8</module>
-        <module>couchbase-sdk-intro</module>
-        <module>couchbase-sdk-spring-service</module>
+        <module>couchbase-sdk</module>
 
         <module>dependency-injection</module>
         <module>gatling</module>
@@ -61,7 +60,6 @@
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-couchbase-2b</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-mongodb</module>

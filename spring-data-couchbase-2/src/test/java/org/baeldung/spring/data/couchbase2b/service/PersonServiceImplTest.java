@@ -1,4 +1,4 @@
-package org.baeldung.spring.data.couchbase.service;
+package org.baeldung.spring.data.couchbase2b.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -7,12 +7,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import org.baeldung.spring.data.couchbase.IntegrationTest;
-import org.baeldung.spring.data.couchbase.MyCouchbaseConfig;
 import org.baeldung.spring.data.couchbase.model.Person;
+import org.baeldung.spring.data.couchbase2b.MultiBucketCouchbaseConfig;
+import org.baeldung.spring.data.couchbase2b.MultiBucketIntegationTest;
 import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
@@ -20,7 +21,7 @@ import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 
-public abstract class PersonServiceTest extends IntegrationTest {
+public class PersonServiceImplTest extends MultiBucketIntegationTest {
 
     static final String typeField = "_class";
     static final String john = "John";
@@ -35,12 +36,13 @@ public abstract class PersonServiceTest extends IntegrationTest {
     static final Person foobar = new Person(foobarId, foo, bar);
     static final JsonObject jsonFooBar = JsonObject.empty().put(typeField, Person.class.getName()).put("firstName", foo).put("lastName", bar).put("created", DateTime.now().getMillis());
 
-    PersonService personService;
+    @Autowired
+    private PersonServiceImpl personService;
 
     @BeforeClass
     public static void setupBeforeClass() {
-        final Cluster cluster = CouchbaseCluster.create(MyCouchbaseConfig.NODE_LIST);
-        final Bucket bucket = cluster.openBucket(MyCouchbaseConfig.BUCKET_NAME, MyCouchbaseConfig.BUCKET_PASSWORD);
+        final Cluster cluster = CouchbaseCluster.create(MultiBucketCouchbaseConfig.NODE_LIST);
+        final Bucket bucket = cluster.openBucket(MultiBucketCouchbaseConfig.DEFAULT_BUCKET_NAME, MultiBucketCouchbaseConfig.DEFAULT_BUCKET_PASSWORD);
         bucket.upsert(JsonDocument.create(johnSmithId, jsonJohnSmith));
         bucket.upsert(JsonDocument.create(foobarId, jsonFooBar));
         bucket.close();
