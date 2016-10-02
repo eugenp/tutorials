@@ -1,14 +1,11 @@
 package com.baeldung.patterns.filters;
 
-import javax.servlet.Filter;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class FilterChainImpl implements javax.servlet.FilterChain {
+public class FilterChainImpl implements FilterChain {
     private Iterator<Filter> filters;
 
     public FilterChainImpl(Filter... filters) {
