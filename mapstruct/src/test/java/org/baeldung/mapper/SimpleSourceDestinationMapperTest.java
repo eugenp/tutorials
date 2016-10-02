@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class SimpleSourceDestinationMapperTest {
 
     @Autowired
-    SimpleSourceDestinationMapper simpleSourceDestinationMapper;
+    SimpleSourceDestinationMapper mapper;
 
     @Test
     public void givenSourceToDestination_whenMaps_thenCorrect() {
@@ -23,7 +23,7 @@ public class SimpleSourceDestinationMapperTest {
         simpleSource.setName("SourceName");
         simpleSource.setDescription("SourceDescription");
 
-        SimpleDestination destination = simpleSourceDestinationMapper.sourceToDestination(simpleSource);
+        SimpleDestination destination = mapper.sourceToDestination(simpleSource);
 
         assertEquals(simpleSource.getName(), destination.getName());
         assertEquals(simpleSource.getDescription(), destination.getDescription());
@@ -35,7 +35,7 @@ public class SimpleSourceDestinationMapperTest {
         destination.setName("DestinationName");
         destination.setDescription("DestinationDescription");
 
-        SimpleSource source = simpleSourceDestinationMapper.destinationToSource(destination);
+        SimpleSource source = mapper.destinationToSource(destination);
 
         assertEquals(destination.getName(), source.getName());
         assertEquals(destination.getDescription(), source.getDescription());

@@ -108,7 +108,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmpStartDateMappingToEmpDTO_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpStartDtMappingToEmpDTO_whenMaps_thenCorrect() throws ParseException {
         Employee entity = new Employee();
         entity.setStartDt(new Date());
 
@@ -118,7 +118,7 @@ public class EmployeeMapperTest {
     }
 
     @Test
-    public void givenEmpDTOStartDateMappingToEmp_whenMaps_thenCorrect() throws ParseException {
+    public void givenEmpDTOStartDtMappingToEmp_whenMaps_thenCorrect() throws ParseException {
         EmployeeDTO dto = new EmployeeDTO();
         dto.setEmployeeStartDt("01-04-2016 01:00:00");
 
