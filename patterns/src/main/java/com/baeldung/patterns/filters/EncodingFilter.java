@@ -2,9 +2,13 @@ package com.baeldung.patterns.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
-@WebFilter(servletNames = "front-controller")
+@WebFilter(
+  servletNames = {"front-controller"},
+  initParams = {@WebInitParam(name = "encoding", value = "UTF-8")}
+)
 public class EncodingFilter extends BaseFilter {
     private String encoding;
 
