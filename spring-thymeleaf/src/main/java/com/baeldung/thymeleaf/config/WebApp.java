@@ -9,28 +9,28 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  */
 public class WebApp extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	public WebApp() {
-		super();
-	}
+    public WebApp() {
+        super();
+    }
 
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		return null;
-	}
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return null;
+    }
 
-	@Override
-	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { WebMVCConfig.class };
-	}
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[] { WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class };
+    }
 
-	@Override
-	protected String[] getServletMappings() {
-		return new String[] { "/" };
-	}
+    @Override
+    protected String[] getServletMappings() {
+        return new String[] { "/" };
+    }
 
-	@Override
-	protected void customizeRegistration(final Dynamic registration) {
-		super.customizeRegistration(registration);
-	}
+    @Override
+    protected void customizeRegistration(final Dynamic registration) {
+        super.customizeRegistration(registration);
+    }
 
 }
