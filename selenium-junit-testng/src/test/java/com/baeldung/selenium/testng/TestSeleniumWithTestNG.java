@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 public class TestSeleniumWithTestNG {
 
     private SeleniumExample seleniumExample;
+	private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
 
     @BeforeSuite
     public void setUp() {
@@ -23,8 +24,8 @@ public class TestSeleniumWithTestNG {
 
     @Test
     public void whenPageIsLoaded_thenTitleIsAsPerExpectation() {
-        String expectedTitle = seleniumExample.getExpectedTitle();
-        String actualTitle = seleniumExample.getActualTitle();
+        String actualTitle = seleniumExample.getTitle();
+		assertNotNull(actualTitle);
         assertEquals(actualTitle, expectedTitle);
     }
 }
