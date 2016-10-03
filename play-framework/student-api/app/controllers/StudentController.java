@@ -38,8 +38,8 @@ public class StudentController extends Controller {
         return ok(Util.createResponse(jsonObjects,true));
     }
 	public Result listStudents() {
-		List<Student> result=StudentStore.getInstance().getAllStudents();
-		    	ObjectMapper mapper = new ObjectMapper();
+		Set<Student> result=StudentStore.getInstance().getAllStudents();
+		ObjectMapper mapper = new ObjectMapper();
 
 		JsonNode jsonData=mapper.convertValue(result, JsonNode.class);
         return ok(Util.createResponse(jsonData,true));
