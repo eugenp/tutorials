@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <RollingFile name="XMLLogfile" fileName="target/logfile.xml"
+        <RollingFile name="XMLLogfileAppender"
+                     fileName="target/logfile.xml"
                      filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
             <XMLLayout/>
             <Policies>
@@ -10,8 +11,8 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level="trace">
-            <AppenderRef ref="XMLLogfile"/>
+        <Root level="TRACE">
+            <AppenderRef ref="XMLLogfileAppender"/>
         </Root>
     </Loggers>
 </Configuration>

@@ -6,15 +6,15 @@
 
         <Syslog name="Syslog" host="localhost" port="514" protocol="TCP" ignoreExceptions="false"/>
 
-        <Failover name="Failover" primary="Syslog">
+        <Failover name="FailoverAppender" primary="Syslog">
             <Failovers>
-                <AppenderRef ref="Console"/>
+                <AppenderRef ref="ConsoleAppender"/>
             </Failovers>
         </Failover>
     </Appenders>
     <Loggers>
-        <Root level="debug">
-            <AppenderRef ref="Failover"/>
+        <Root level="TRACE">
+            <AppenderRef ref="FailoverAppender"/>
         </Root>
     </Loggers>
 </Configuration>

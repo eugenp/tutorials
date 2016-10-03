@@ -4,8 +4,8 @@
         <xi:include href="log4j2-includes/console-appender_pattern-layout_colored.xml"/>
     </Appenders>
     <Loggers>
-        <Root level="trace">
-            <AppenderRef ref="Console"/>
+        <Root level="TRACE">
+            <AppenderRef ref="ConsoleAppender"/>
         </Root>
     </Loggers>
 </Configuration>

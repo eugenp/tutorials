@@ -4,13 +4,13 @@
         <File name="JSONLogfile" fileName="target/logfile.json">
             <JSONLayout compact="true" eventEol="true"/>
         </File>
-        <Async name="Async">
+        <Async name="AsyncAppender" bufferSize="80">
             <AppenderRef ref="JSONLogfile"/>
         </Async>
     </Appenders>
     <Loggers>
-        <Root level="trace">
-            <AppenderRef ref="Async"/>
+        <Root level="INFO">
+            <AppenderRef ref="AsyncAppender"/>
         </Root>
     </Loggers>
 </Configuration>
