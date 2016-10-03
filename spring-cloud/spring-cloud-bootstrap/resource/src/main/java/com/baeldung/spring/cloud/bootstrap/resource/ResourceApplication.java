@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.integration.resource;
+package com.baeldung.spring.cloud.bootstrap.resource;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

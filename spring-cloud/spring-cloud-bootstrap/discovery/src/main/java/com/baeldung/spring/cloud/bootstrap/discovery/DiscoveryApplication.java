@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.integration.discovery;
+package com.baeldung.spring.cloud.bootstrap.discovery;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
