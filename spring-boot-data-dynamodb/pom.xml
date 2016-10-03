@@ -105,9 +105,9 @@
     		<version>1.11.34</version>
 		</dependency>
 		<dependency>
-  			<groupId>org.socialsignin</groupId>
+  			<groupId>com.github.derjust</groupId>
   			<artifactId>spring-data-dynamodb</artifactId>
-  			<version>4.2.1</version>
+  			<version>4.3.1</version>
 		</dependency>		
 	</dependencies>
 
@@ -161,10 +161,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</repository>
-		<repository>
-    		<id>opensourceagility-release</id>
-    		<url>http://repo.opensourceagility.com/release/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
