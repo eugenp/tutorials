@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class StudentStore {
     private static StudentStore instance;
@@ -22,19 +23,16 @@ public class StudentStore {
     }
 
     public Student getStudent(int id) {
-        if (students.containsKey(id))
-            return students.get(id);
-        return null;
+        return students.get(id);
     }
 
-    public List<Student> getAllStudents() {
-        return new ArrayList<Student>(students.values());
+    public Set<Student> getAllStudents() {
+        return (Set<Student>)students.values();
     }
 
     public Student updateStudent(Student student) {
 		int id=student.getId();
         if (students.containsKey(id)) {
-            student.setId(id);
             students.put(id, student);
             return student;
         }
@@ -42,11 +40,11 @@ public class StudentStore {
     }
 
     public boolean deleteStudent(int id) {
-
-        if (!students.containsKey(id))
+        Student student=students.remove(id);
+        if (student == null)
             return false;
-        students.remove(id);
-        return true;
+		else
+            return true;
 
     }
 }
