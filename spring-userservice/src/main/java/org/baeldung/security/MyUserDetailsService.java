@@ -1,6 +1,7 @@
 package org.baeldung.security;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.baeldung.persistence.model.MyUser;
@@ -27,11 +28,8 @@ public class MyUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user found with username: " + username);
         }
-        else {
-            final Collection<GrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-            return new User(user.getUsername(), user.getPassword(), authorities);
-        }
+        return new User(user.getUsername(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+
     }
 
 }
