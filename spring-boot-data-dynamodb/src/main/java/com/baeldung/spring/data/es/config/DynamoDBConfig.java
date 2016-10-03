@@ -12,7 +12,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.spring.data.es.service" })
+@ComponentScan(basePackages = { "com.baeldung.spring.data.es" })
 public class DynamoDBConfig {
 
     @Value("${amazon.dynamodb.endpoint}")
