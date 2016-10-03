@@ -1,8 +1,10 @@
-package com.baeldung.spring.cloud.integration.discovery;
+package com.baeldung.spring.cloud.bootstrap.discovery;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -15,14 +17,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("disc_configUser")
                 .password("configPassword")
+                .roles("SYSTEM")
             .and()
                 .withUser("disc_discUser")
                 .password("discPassword")
+                .roles("SYSTEM")
             .and()
                 .withUser("disc_gatewayUser")
                 .password("gatewayPassword")
+                .roles("SYSTEM")
             .and()
                 .withUser("disc_resourceUser")
-                .password("resourcePassword");
+                .password("resourcePassword")
+                .roles("SYSTEM")
+            .and()
+                .withUser("admin")
+                .password("password")
+                .roles("ADMIN");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                    .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
+                    .anyRequest().authenticated()
+                .and()
+                    .httpBasic()
+                .and()
+                    .csrf().disable();
     }
 }
