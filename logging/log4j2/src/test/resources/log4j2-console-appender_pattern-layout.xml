@@ -2,9 +2,16 @@
 <Configuration status="WARN" xmlns:xi="http://www.w3.org/2001/XInclude">
     <Appenders>
         <xi:include href="log4j2-includes/console-appender_pattern-layout_colored.xml"/>
+        <Console name="ConsoleRedAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%style{%message}{red}%n"/>
+            <MarkerFilter marker="CONN_TRACE"/>
+        </Console>
     </Appenders>
     <Loggers>
-        <Root level="TRACE">
+        <Logger name="ConnTrace" level="TRACE" additivity="false">
+            <AppenderRef ref="ConsoleRedAppender"/>
+        </Logger>
+        <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender"/>
         </Root>
     </Loggers>
