@@ -3,6 +3,7 @@ package com.baeldung.logging.log4j2.tests;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import org.apache.logging.log4j.ThreadContext;
 import org.apache.logging.log4j.junit.LoggerContextRule;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,5 +35,15 @@ public class ConsoleAppenderUsingPatternLayoutWithColorsTest {
         logger.error(appError, "This marker message at ERROR level should be hidden.");
         Marker connectionTrace = MarkerManager.getMarker("CONN_TRACE");
         logger.trace(connectionTrace, "This is a marker message at TRACE level.");
+    }
+
+    @Test
+    public void givenLoggerWithConsoleConfig_shouldFilterByThreadContext() throws Exception {
+        Logger logger = contextRule.getLogger("UserAudit");
+        ThreadContext.put("userId", "1000");
+        logger.info("This is a log-visible user login. Maybe from an admin account?");
+        ThreadContext.put("userId", "1001");
+        logger.info("This is a log-invisible user login.");
+        boolean b = true;
     }
 }
