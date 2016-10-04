@@ -4,7 +4,7 @@
 
 
 ### Relevant Articles: 
-
+- [Introduction to Using Thymeleaf in Spring](http://www.baeldung.com/thymeleaf-in-spring-mvc)
 
 ### Build the Project
 
