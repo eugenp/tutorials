@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                    .antMatchers("/eureka/js/**","/eureka/css/**","/eureka/images/**","/eureka/fonts/**").authenticated()
+                    .antMatchers("/eureka/**").hasRole("SYSTEM")
                     .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
                     .anyRequest().authenticated()
                 .and()
