@@ -1,9 +1,5 @@
-Spring Integration - Simple Standalone Template
+Spring Integration
 ================================================================================
-
-This template is meant for running Spring Integration standalone (No runtime
-container needed). This template by default only uses core Spring Integration
-components.
 
 You can run the application by either
 
