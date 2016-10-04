@@ -40,11 +40,6 @@ public class StudentStore {
     }
 
     public boolean deleteStudent(int id) {
-        Student student=students.remove(id);
-        if (student == null)
-            return false;
-		else
-            return true;
-
+        return students.remove(id) != null;
     }
 }
