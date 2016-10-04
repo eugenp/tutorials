@@ -29,8 +29,8 @@ public class OkHttpFileUploadingTest {
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
-          .addFormDataPart("file", "file.ext",
-            RequestBody.create(MediaType.parse("image/png"), new File("src/test/resources/test.in")))
+          .addFormDataPart("file", "file.txt",
+            RequestBody.create(MediaType.parse("application/octet-stream"), new File("src/test/resources/test.txt")))
           .build();
 
         Request request = new Request.Builder()
@@ -51,8 +51,8 @@ public class OkHttpFileUploadingTest {
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
-          .addFormDataPart("file", "file.ext",
-            RequestBody.create(MediaType.parse("image/png"), new File("src/test/resources/test.in")))
+          .addFormDataPart("file", "file.txt",
+            RequestBody.create(MediaType.parse("application/octet-stream"), new File("src/test/resources/test.txt")))
           .build();
 
 
