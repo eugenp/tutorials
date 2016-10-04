@@ -16,7 +16,7 @@ public class StudentStore {
     }
 
     public Student addStudent(Student student) {
-        int id = students.size() + 1;
+        int id = students.size();
         student.setId(id);
         students.put(id, student);
         return student;
