@@ -1,5 +1,5 @@
 package models;
-import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -10,13 +10,14 @@ public class StudentStore {
     private Map<Integer, Student> students = new HashMap<>();
 
     public static StudentStore getInstance() {
-        if (instance == null)
+        if (instance == null) {
             instance = new StudentStore();
+        }
         return instance;
     }
 
     public Student addStudent(Student student) {
-        int id = students.size() + 1;
+        int id = students.size();
         student.setId(id);
         students.put(id, student);
         return student;
@@ -31,7 +32,7 @@ public class StudentStore {
     }
 
     public Student updateStudent(Student student) {
-		int id=student.getId();
+        int id = student.getId();
         if (students.containsKey(id)) {
             students.put(id, student);
             return student;
