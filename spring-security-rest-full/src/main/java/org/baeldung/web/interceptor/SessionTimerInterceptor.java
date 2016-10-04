@@ -31,9 +31,8 @@ public class SessionTimerInterceptor extends HandlerInterceptorAdapter {
 		request.setAttribute("executionTime", startTime);
 		if (UserInterceptor.isUserLogged()) {
 			session = request.getSession();
-			log.info("Who is logged in: " + SecurityContextHolder.getContext().getAuthentication().getName());
-			log.info("Time since last request in this session: "
-					+ (System.currentTimeMillis() - request.getSession().getLastAccessedTime()) + " ms");
+			log.info("Time since last request in this session: {} ms",
+					System.currentTimeMillis() - request.getSession().getLastAccessedTime());
 			if (System.currentTimeMillis() - session.getLastAccessedTime() > MAX_INACTIVE_SESSION_TIME) {
 				log.warn("Logging out, due to inactive session");
 				SecurityContextHolder.clearContext();
@@ -52,6 +51,6 @@ public class SessionTimerInterceptor extends HandlerInterceptorAdapter {
 			final ModelAndView model) throws Exception {
 		log.info("Post handle method - check execution time of handling");
 		long startTime = (Long) request.getAttribute("executionTime");
-		log.info("Execution time for handling the request was: " + (System.currentTimeMillis() - startTime) + " ms");
+		log.info("Execution time for handling the request was: {} ms", System.currentTimeMillis() - startTime);
 	}
 }
