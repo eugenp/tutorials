@@ -28,6 +28,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Intro to Spring Security Expressions](http://www.baeldung.com/spring-security-expressions)
 - [Changing Spring Model Parameters with Handler Interceptor](http://www.baeldung.com/spring-model-parameters-with-handler-interceptor)
 - [Introduction to Spring MVC HandlerInterceptor](http://www.baeldung.com/spring-mvc-handlerinterceptor)
+- [Using a Custom Spring MVC’s Handler Interceptor to Manage Sessions](http://www.baeldung.com/spring-mvc-custom-handler-interceptor)
 
 ### Build the Project
 ```
