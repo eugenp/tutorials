@@ -3,6 +3,7 @@
 
 ###Relevant Articles:
 - [Elasticsearch Queries with Spring Data](http://www.baeldung.com/spring-data-elasticsearch-queries)
+- [Guide to Elasticsearch in Java](http://www.baeldung.com/elasticsearch-java)
 
 ### Build the Project with Tests Running
 ```
