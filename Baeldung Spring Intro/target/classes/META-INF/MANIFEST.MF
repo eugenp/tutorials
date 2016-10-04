@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Built-By: Tayo
-Build-Jdk: 1.8.0_101
-Created-By: Maven Integration for Eclipse
-
