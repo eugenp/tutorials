@@ -22,11 +22,11 @@ public class RandomListElementTest {
     public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingMathRandom() {
         List<Integer> givenList = Arrays.asList(1, 2, 3);
 
-        givenList.get((int)Math.random() * (givenList.size() - 1));
+        givenList.get((int)(Math.random() * givenList.size()));
     }
 
     @Test
-    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithRepeating() {
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
 
@@ -39,7 +39,7 @@ public class RandomListElementTest {
     }
 
     @Test
-    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsWithoutRepeating() {
+    public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsNoRepeat() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("one", "two", "three", "four");
 
@@ -60,18 +60,6 @@ public class RandomListElementTest {
         int randomSeriesLength = 3;
 
         givenList.subList(0, randomSeriesLength - 1);
-    }
-
-    @Test
-    public void givenList_whenSeriesLengthChosen_shouldReturnOrderedSeries() {
-        List<Integer> givenList = Arrays.asList(1, 2, 3, 4, 5, 6);
-        Random rand = new Random();
-        Collections.sort(givenList);
-
-        int startIndex = rand.nextInt(givenList.size());
-        int endIndex = startIndex + rand.nextInt(givenList.size() - startIndex);
-
-        givenList.subList(startIndex, endIndex);
     }
 
     @Test
