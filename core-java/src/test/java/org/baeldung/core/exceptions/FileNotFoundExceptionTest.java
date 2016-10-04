@@ -28,7 +28,6 @@ public class FileNotFoundExceptionTest {
             try {
                 new File(fileName).createNewFile();
                 readFailingFile();
-                System.out.println("File was created and read.");
             } catch (IOException ioe) {
                 throw new RuntimeException("BusinessException: even creation is not possible.", ioe);
             }
@@ -41,7 +40,6 @@ public class FileNotFoundExceptionTest {
             readFailingFile();
         } catch (FileNotFoundException ex) {
             LOG.error("Optional file " + fileName + " was not found.", ex);
-            System.out.println("File was logged.");
         }
     }
     
