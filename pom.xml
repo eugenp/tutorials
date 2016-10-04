@@ -69,6 +69,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>okhttp</module>
 
         <module>spring-all</module>
         <module>spring-akka</module>
