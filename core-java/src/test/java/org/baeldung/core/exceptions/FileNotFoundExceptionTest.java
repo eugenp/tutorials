@@ -1,13 +1,9 @@
 package org.baeldung.core.exceptions;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
+import java.io.*;
 
 public class FileNotFoundExceptionTest {
 
@@ -49,15 +45,14 @@ public class FileNotFoundExceptionTest {
         }
     }
     
-    protected void readFailingFile() throws IOException {
-        BufferedReader rd = null;
-        rd = new BufferedReader(new FileReader(new File(fileName)));
+    private void readFailingFile() throws IOException {
+        BufferedReader rd = new BufferedReader(new FileReader(new File(fileName)));
         rd.readLine();
         // no need to close file
     }
 
-    class BusinessException extends RuntimeException {
-        public BusinessException(String string, FileNotFoundException ex) {
+    private class BusinessException extends RuntimeException {
+        BusinessException(String string, FileNotFoundException ex) {
             super(string, ex);
         }
     }
