@@ -36,10 +36,10 @@ public class FileOperationsTest {
 
     @Test
     public void givenFileNameAsAbsolutePath_whenUsingClasspath_thenFileData() throws IOException {
-        String expectedData = "Hello World from fileTest_2.txt!!!";
+        String expectedData = "Hello World from fileTest.txt!!!";
         
         Class clazz = FileOperationsTest.class;
-        InputStream inputStream = clazz.getResourceAsStream("/fileTest_2.txt");
+        InputStream inputStream = clazz.getResourceAsStream("/fileTest.txt");
         String data = readFromInputStream(inputStream);
 
         Assert.assertEquals(expectedData, data.trim());
