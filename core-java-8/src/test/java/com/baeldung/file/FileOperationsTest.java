@@ -56,18 +56,6 @@ public class FileOperationsTest {
         Assert.assertThat(data.trim(), CoreMatchers.containsString(expectedData));
     }
 
-    /*@Test
-    public void givenFileName_whenUsingJarFile_thenFileData() throws IOException {
-        String expectedData = "BSD License";
-
-        Class clazz = Matchers.class;
-        ClassLoader classLoader = clazz.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("LICENSE.txt");
-        String data = readFromInputStream(inputStream);
-
-        Assert.assertThat(data.trim(), CoreMatchers.containsString(expectedData));
-    }*/
-
     @Test
     public void givenURLName_whenUsingURL_thenFileData() throws IOException {
         String expectedData = "Baeldung";
