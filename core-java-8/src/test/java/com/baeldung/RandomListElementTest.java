@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
 import java.util.*;
@@ -38,7 +39,7 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsNoRepeat() {
         Random rand = new Random();
-        List<String> givenList = new LinkedList<>(Arrays.asList("one", "two", "three", "four"));
+        List<String> givenList = Lists.newArrayList("one", "two", "three", "four");
 
         int numberOfElements = 2;
 
@@ -62,7 +63,7 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenRandomIndexChosen_shouldReturnElementThreadSafely() {
         List<Integer> givenList = Arrays.asList(1, 2, 3, 4, 5, 6);
-        int randomIndex = ThreadLocalRandom.current().nextInt(10);
+        int randomIndex = ThreadLocalRandom.current().nextInt(10) % givenList.size();
 
         givenList.get(randomIndex);
     }
