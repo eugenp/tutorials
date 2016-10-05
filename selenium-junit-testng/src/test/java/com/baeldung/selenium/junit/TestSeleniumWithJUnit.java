@@ -1,6 +1,7 @@
 package test.java.com.baeldung.selenium.junit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import main.java.com.baeldung.selenium.SeleniumExample;
 
 import org.junit.After;
@@ -25,7 +26,7 @@ public class TestSeleniumWithJUnit {
     @Test
     public void whenPageIsLoaded_thenTitleIsAsPerExpectation() {
         String actualTitle = seleniumExample.getTitle();
-		assertNotNull(actualTitle);
+        assertNotNull(actualTitle);
         assertEquals(actualTitle, expectedTitle);
     }
 }
