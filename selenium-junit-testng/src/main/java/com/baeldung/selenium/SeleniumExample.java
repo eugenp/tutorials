@@ -6,9 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class SeleniumExample {
 
     private WebDriver webDriver;
-    private final String url = "http://www.baeldung.com/";
-    private final String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
-
+    private String url = "http://www.baeldung.com/";
+    
     public SeleniumExample() {
         webDriver = new FirefoxDriver();
         webDriver.get(url);
@@ -18,12 +17,8 @@ public class SeleniumExample {
         webDriver.close();
     }
 
-    public String getActualTitle() {
+    public String getTitle() {
         return webDriver.getTitle();
-    }
-
-    public String getExpectedTitle() {
-        return expectedTitle;
     }
 
 }
