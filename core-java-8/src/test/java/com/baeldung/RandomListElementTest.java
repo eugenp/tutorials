@@ -2,10 +2,7 @@ package com.baeldung;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomListElementTest {
@@ -41,7 +38,7 @@ public class RandomListElementTest {
     @Test
     public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsNoRepeat() {
         Random rand = new Random();
-        List<String> givenList = Arrays.asList("one", "two", "three", "four");
+        List<String> givenList = new LinkedList<>(Arrays.asList("one", "two", "three", "four"));
 
         int numberOfElements = 2;
 
