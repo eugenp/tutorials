@@ -1,20 +1,17 @@
 package org.baeldung.gson.serialization;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-
-import org.baeldung.gson.entities.ActorGson;
-import org.baeldung.gson.entities.Movie;
-import org.baeldung.gson.entities.MovieWithNullValue;
-import org.baeldung.gson.serialization.ActorGsonDeserializer;
-import org.baeldung.gson.serialization.ActorGsonSerializer;
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
+import org.baeldung.gson.entities.ActorGson;
+import org.baeldung.gson.entities.Movie;
+import org.baeldung.gson.entities.MovieWithNullValue;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
 public class GsonSerializeTest {
 
@@ -40,12 +37,12 @@ public class GsonSerializeTest {
         MovieWithNullValue movieWithNullValue = new MovieWithNullValue(null, "Mel Gibson", Arrays.asList(rudyYoungblood));
 
         String expectedOutput = new GsonBuilder()
-                .setPrettyPrinting()
-                .serializeNulls()
-                .disableHtmlEscaping()
-                .create()
-                .toJson(new JsonParser()
-                        .parse("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
+          .setPrettyPrinting()
+          .serializeNulls()
+          .disableHtmlEscaping()
+          .create()
+          .toJson(new JsonParser()
+            .parse("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
         Assert.assertEquals(gson.toJson(movieWithNullValue), expectedOutput);
     }
 }

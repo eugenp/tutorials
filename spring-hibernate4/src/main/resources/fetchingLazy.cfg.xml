@@ -10,7 +10,8 @@
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">iamtheking</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<mapping resource="com/baeldung/hibernate/fetching/model/OrderDetail.hbm.xml" />
-		<mapping resource="com/baeldung/hibernate/fetching/model/UserLazy.hbm.xml" />
+		<property name="show_sql">true</property>
+		<mapping class="com.baeldung.hibernate.fetching.model.UserLazy" />
+        <mapping class="com.baeldung.hibernate.fetching.model.OrderDetail" />
 	</session-factory>
 </hibernate-configuration>
