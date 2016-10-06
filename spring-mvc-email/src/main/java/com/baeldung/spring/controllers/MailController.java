@@ -31,7 +31,7 @@ public class MailController {
     @Qualifier("templateSimpleMessage")
     public SimpleMailMessage template;
 
-    @RequestMapping(value = "/send", method = RequestMethod.GET)
+    @RequestMapping(value = {"/send", "/sendTemplate", "/sendAttachment"}, method = RequestMethod.GET)
     public String createMail(Model model) {
         model.addAttribute("mailObject", new MailObject());
         return "mail/send";

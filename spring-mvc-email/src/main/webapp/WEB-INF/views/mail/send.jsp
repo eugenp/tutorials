@@ -43,9 +43,7 @@
                     <tr>
                         <th></th>
                         <td>
-                            <input type="submit" formaction="send" value="Send">
-                            <input type="submit" formaction="sendTemplate" value="Send Using Template">
-                            <input type="submit" formaction="sendAttachment" value="Send With Attachment">
+                            <input type="submit" value="Send">
                         </td>
                     </tr>
                 </table>
