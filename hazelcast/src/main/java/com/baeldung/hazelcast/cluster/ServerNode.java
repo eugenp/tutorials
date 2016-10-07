@@ -16,8 +16,9 @@ public class ServerNode {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();
         Map<Long, String> countryMap = hazelcastInstance.getMap("country");
         IdGenerator idGenerator = hazelcastInstance.getIdGenerator("newid");
-        Long countryIdGenerator = idGenerator.newId() == 0L ? 1L : idGenerator.newId();
-        countryMap.put(countryIdGenerator, "Country1");
+        for (int i = 0; i < 10; i++) {
+            countryMap.put(idGenerator.newId(), "message" + 1);
+        }
         logger.info("Country map size: " + countryMap.size());
     }
 }
