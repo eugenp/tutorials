@@ -1,5 +1,8 @@
 package org.baeldung.java.io;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileWriter;
@@ -187,10 +190,24 @@ public class JavaReaderToXUnitTest {
         targetStream.close();
     }
 
+    @Test
+    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStream_thenCorrect() throws IOException {
+        String initialString = "With Commons IO";
+        final Reader initialReader = new StringReader(initialString);
+
+        final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader));
+
+        final String finalString = IOUtils.toString(targetStream);
+        assertThat(finalString, equalTo(initialString));
+
+        initialReader.close();
+        targetStream.close();
+    }
+
     // tests - Reader to InputStream with encoding
 
     @Test
-    public void givenUsingPlainJava_whenConvertingReaderIntoInputStreamWithCharset_thenCorrect() throws IOException {
+    public void givenUsingPlainJava_whenConvertingReaderIntoInputStreamWithCharset() throws IOException {
         final Reader initialReader = new StringReader("With Java");
 
         final char[] charBuffer = new char[8 * 1024];
@@ -220,6 +237,19 @@ public class JavaReaderToXUnitTest {
         final Reader initialReader = new StringReader("With Commons IO");
 
         final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader), Charsets.UTF_8);
+
+        initialReader.close();
+        targetStream.close();
+    }
+
+    @Test
+    public void givenUsingCommonsIO_whenConvertingReaderIntoInputStreamWithEncoding_thenCorrect() throws IOException {
+        String initialString = "With Commons IO";
+        final Reader initialReader = new StringReader(initialString);
+        final InputStream targetStream = IOUtils.toInputStream(IOUtils.toString(initialReader), Charsets.UTF_8);
+
+        String finalString = IOUtils.toString(targetStream, Charsets.UTF_8);
+        assertThat(finalString, equalTo(initialString));
 
         initialReader.close();
         targetStream.close();
