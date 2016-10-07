@@ -1,6 +1,8 @@
 package test.java.com.baeldung.selenium.testng;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 import main.java.com.baeldung.selenium.SeleniumExample;
 
 import org.testng.annotations.AfterSuite;
@@ -10,7 +12,7 @@ import org.testng.annotations.Test;
 public class TestSeleniumWithTestNG {
 
     private SeleniumExample seleniumExample;
-	private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
+    private String expecteTilteAboutBaeldungPage = "About Baeldung | Baeldung";
 
     @BeforeSuite
     public void setUp() {
@@ -23,9 +25,16 @@ public class TestSeleniumWithTestNG {
     }
 
     @Test
-    public void whenPageIsLoaded_thenTitleIsAsPerExpectation() {
-        String actualTitle = seleniumExample.getTitle();
-		assertNotNull(actualTitle);
-        assertEquals(actualTitle, expectedTitle);
+    public void whenAboutBaeldungIsLoaded_thenAboutEugenIsMentionedOnPage() {
+        try {
+            seleniumExample.getAboutBaeldungPage();
+            String actualTitle = seleniumExample.getTitle();
+            assertNotNull(actualTitle);
+            assertEquals(actualTitle, expecteTilteAboutBaeldungPage);
+            assertTrue(seleniumExample.isAuthorInformationAvailable());
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            seleniumExample.closeWindow();
+        }
     }
 }

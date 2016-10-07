@@ -1,31 +1,41 @@
 package test.java.com.baeldung.selenium.junit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 import main.java.com.baeldung.selenium.SeleniumExample;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestSeleniumWithJUnit {
 
-    private SeleniumExample seleniumExample;
-	private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
+    private static SeleniumExample seleniumExample;
+    private String expecteTilteAboutBaeldungPage = "About Baeldung | Baeldung";
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         seleniumExample = new SeleniumExample();
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         seleniumExample.closeWindow();
     }
 
     @Test
-    public void whenPageIsLoaded_thenTitleIsAsPerExpectation() {
-        String actualTitle = seleniumExample.getTitle();
-		assertNotNull(actualTitle);
-        assertEquals(actualTitle, expectedTitle);
+    public void whenAboutBaeldungIsLoaded_thenAboutEugenIsMentionedOnPage() {
+        try {
+            seleniumExample.getAboutBaeldungPage();
+            String actualTitle = seleniumExample.getTitle();
+            assertNotNull(actualTitle);
+            assertEquals(actualTitle, expecteTilteAboutBaeldungPage);
+            assertTrue(seleniumExample.isAuthorInformationAvailable());
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            seleniumExample.closeWindow();
+        }
     }
+
 }
