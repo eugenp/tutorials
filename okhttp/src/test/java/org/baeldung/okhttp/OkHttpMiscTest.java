@@ -21,7 +21,7 @@ public class OkHttpMiscTest {
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
     private static Logger logger = LoggerFactory.getLogger(OkHttpMiscTest.class);
 
-    //@Test
+    @Test
     public void whenSetRequestTimeout_thenFail() throws IOException {
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -75,7 +75,7 @@ public class OkHttpMiscTest {
         }
     }
 
-    //@Test
+    @Test
     public void  whenSetResponseCache_thenCorrect() throws IOException {
 
         int cacheSize = 10 * 1024 * 1024; // 10 MiB
@@ -91,21 +91,17 @@ public class OkHttpMiscTest {
           .build();
 
         Response response1 = client.newCall(request).execute();
-
-        String responseBody1 = response1.body().string();
-
-        logger.debug("Response 1 response:          " + response1);
-        logger.debug("Response 1 cache response:    " + response1.cacheResponse());
-        logger.debug("Response 1 network response:  " + response1.networkResponse());
-        logger.debug("Response 1 responseBody:      " + responseBody1);
+        logResponse(response1);
 
         Response response2 = client.newCall(request).execute();
+        logResponse(response2);
+    }
 
-        String responseBody2 = response2.body().string();
+    private void logResponse(Response response) throws IOException {
 
-        logger.debug("Response 2 response:          " + response2);
-        logger.debug("Response 2 cache response:    " + response2.cacheResponse());
-        logger.debug("Response 2 network response:  " + response2.networkResponse());
-        logger.debug("Response 2 responseBody:      " + responseBody2);
+    	logger.debug("Response response:          " + response);
+        logger.debug("Response cache response:    " + response.cacheResponse());
+        logger.debug("Response network response:  " + response.networkResponse());
+        logger.debug("Response responseBody:      " + response.body().string());
     }
 }
