@@ -24,7 +24,7 @@ public class OkHttpPostingTest {
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
 
     @Test
-    public void whenSendPostRequestUsingOkHttp_thenCorrect() throws IOException {
+    public void whenSendPostRequest_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -45,7 +45,7 @@ public class OkHttpPostingTest {
     }
 
     @Test
-    public void whenSendPostRequestWithAuthorizationUsingOkHttp_thenCorrect() throws IOException {
+    public void whenSendPostRequestWithAuthorization_thenCorrect() throws IOException {
 
         String postBody = "test post";
 
@@ -64,7 +64,7 @@ public class OkHttpPostingTest {
     }
 
     @Test
-    public void whenPostJsonUsingOkHttp_thenCorrect() throws IOException {
+    public void whenPostJson_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -84,7 +84,7 @@ public class OkHttpPostingTest {
     }
 
     @Test
-    public void whenSendMultipartRequestUsingOkHttp_thenCorrect() throws IOException {
+    public void whenSendMultipartRequest_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 

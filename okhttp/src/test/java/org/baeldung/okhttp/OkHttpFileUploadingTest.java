@@ -23,7 +23,7 @@ public class OkHttpFileUploadingTest {
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 
     @Test
-    public void whenUploadFileUsingOkHttp_thenCorrect() throws IOException {
+    public void whenUploadFile_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -45,7 +45,7 @@ public class OkHttpFileUploadingTest {
     }
 
     @Test
-    public void whenGetUploadFileProgressUsingOkHttp_thenCorrect() throws IOException {
+    public void whenGetUploadFileProgress_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 

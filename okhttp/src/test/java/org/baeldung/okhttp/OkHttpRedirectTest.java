@@ -15,7 +15,7 @@ import okhttp3.Response;
 public class OkHttpRedirectTest {
 
     @Test
-    public void whenSetFollowRedirectsUsingOkHttp_thenNotRedirected() throws IOException {
+    public void whenSetFollowRedirects_thenNotRedirected() throws IOException {
 
         OkHttpClient client = new OkHttpClient().newBuilder()
           .followRedirects(false)

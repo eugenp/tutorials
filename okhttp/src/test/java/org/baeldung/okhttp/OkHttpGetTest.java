@@ -19,7 +19,7 @@ public class OkHttpGetTest {
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 
     @Test
-    public void whenGetRequestUsingOkHttp_thenCorrect() throws IOException {
+    public void whenGetRequest_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -34,7 +34,7 @@ public class OkHttpGetTest {
     }
 
     @Test
-    public void whenGetRequestWithQueryParameterUsingOkHttp_thenCorrect() throws IOException {
+    public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -54,7 +54,7 @@ public class OkHttpGetTest {
     }
 
     @Test
-    public void whenAsynchronousGetRequestUsingOkHttp_thenCorrect() {
+    public void whenAsynchronousGetRequest_thenCorrect() {
 
         OkHttpClient client = new OkHttpClient();
 
