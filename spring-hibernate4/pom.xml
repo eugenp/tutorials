@@ -149,6 +149,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.4</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -213,15 +220,15 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
-	<org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+	<org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
 	<org.springframework.data.version>1.9.2.RELEASE</org.springframework.data.version>
 	<javassist.version>3.20.0-GA</javassist.version>
         
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <hibernate-envers.version>${hibernate.version}</hibernate-envers.version>
-        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
         <tomcat-dbcp.version>8.0.30</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <el-api.version>2.2.4</el-api.version>
@@ -245,13 +252,13 @@
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
 
-        <rest-assured.version>2.4.1</rest-assured.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
 
     </properties>

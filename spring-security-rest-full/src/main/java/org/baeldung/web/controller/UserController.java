@@ -37,6 +37,7 @@ import cz.jirutka.rsql.parser.ast.Node;
 
 //@EnableSpringDataWebSupport
 @Controller
+@RequestMapping(value = "/auth/")
 public class UserController {
 
     @Autowired

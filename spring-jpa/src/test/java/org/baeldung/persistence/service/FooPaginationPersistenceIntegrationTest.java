@@ -88,11 +88,12 @@ public class FooPaginationPersistenceIntegrationTest {
     public final void givenEntitiesExist_whenRetrievingPage_thenCorrect() {
         final int pageSize = 10;
 
-        final Query queryIds = entityManager.createQuery("Select f.id from Foo f order by f.lastName");
+        final Query queryIds = entityManager.createQuery("Select f.id from Foo f order by f.name");
         final List<Integer> fooIds = queryIds.getResultList();
 
-        final Query query = entityManager.createQuery("Select f from Foo e whet f.id in :ids");
+        final Query query = entityManager.createQuery("Select f from Foo as f where f.id in :ids");
         query.setParameter("ids", fooIds.subList(0, pageSize));
+
         final List<Foo> fooList = query.getResultList();
 
         // Then
@@ -129,13 +130,15 @@ public class FooPaginationPersistenceIntegrationTest {
         final Root<Foo> from = criteriaQuery.from(Foo.class);
         final CriteriaQuery<Foo> select = criteriaQuery.select(from);
 
-        final TypedQuery<Foo> typedQuery = entityManager.createQuery(select);
+        TypedQuery<Foo> typedQuery;
         while (pageNumber < count.intValue()) {
+            typedQuery = entityManager.createQuery(select);
             typedQuery.setFirstResult(pageNumber - 1);
             typedQuery.setMaxResults(pageSize);
             System.out.println("Current page: " + typedQuery.getResultList());
             pageNumber += pageSize;
         }
+
     }
 
     // UTIL

@@ -1,6 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.baeldung</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>spring-security-rest</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -77,6 +78,13 @@
             <version>${org.springframework.version}</version>
         </dependency>
 
+        <!-- Spring HATEOAS -->
+        <dependency>
+            <groupId>org.springframework.hateoas</groupId>
+            <artifactId>spring-hateoas</artifactId>
+            <version>${org.springframework.hateoas.version}</version>
+        </dependency>
+
         <!-- web -->
 
         <dependency>
@@ -92,13 +100,13 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        
+
         <dependency>
-		    <groupId>javax.validation</groupId>
-		    <artifactId>validation-api</artifactId>
-		    <version>${javax.validation.version}</version>
-		</dependency>
-        
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax.validation.version}</version>
+        </dependency>
+
 
         <!-- marshalling -->
 
@@ -152,14 +160,15 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-test</artifactId>
-		    <version>${org.springframework.security.version}</version>
-		</dependency>
-        
-        
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${org.springframework.security.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -172,7 +181,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -204,13 +213,13 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
+            <version>${springfox-swagger.version}</version>
         </dependency>
 
     </dependencies>
@@ -261,7 +270,6 @@
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <wait>true</wait>
                     <container>
                         <containerId>jetty8x</containerId>
                         <type>embedded</type>
@@ -283,12 +291,13 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.3.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.hateoas.version>0.19.0.RELEASE</org.springframework.hateoas.version>
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
@@ -300,8 +309,7 @@
         <javax.validation.version>1.1.0.Final</javax.validation.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.2.2</jackson.version>
-        <springfox.version>2.2.2</springfox.version>
-        
+
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
@@ -310,22 +318,21 @@
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
-        <rest-assured.version>2.4.1</rest-assured.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- swagger -->
-        <springfox-swagger.version>2.2.2</springfox-swagger.version>
-        <springfox-swagger-ui.version>2.2.2</springfox-swagger-ui.version>
+        <springfox-swagger.version>2.4.0</springfox-swagger.version>
 
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
 
-        <rest-assured.version>2.4.1</rest-assured.version>
+        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.15</cargo-maven2-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
     </properties>
 

@@ -1,0 +1,6 @@
+
+
+    <Resource name="jdbc/BaeldungDatabase" auth="Container"
+              type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://localhost:5432/postgres"
+              username="baeldung" password="pass1234" maxActive="20" maxIdle="10" maxWait="-1"/>

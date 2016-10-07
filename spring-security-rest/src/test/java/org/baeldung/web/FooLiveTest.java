@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.authentication.FormAuthConfig;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
@@ -19,10 +18,22 @@ import com.jayway.restassured.specification.RequestSpecification;
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class FooLiveTest {
     private static final String URL_PREFIX = "http://localhost:8080/spring-security-rest";
-    private FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/login", "username", "password");
+    // private FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/login", "temporary", "temporary");
 
+    private String cookie;
     private RequestSpecification givenAuth() {
-        return RestAssured.given().auth().form("user", "userPass", formConfig);
+        // return RestAssured.given().auth().form("user", "userPass", formConfig);
+        if (cookie == null)
+            cookie = RestAssured.given().contentType("application/x-www-form-urlencoded").formParam("password", "userPass").formParam("username", "user").post(URL_PREFIX + "/login").getCookie("JSESSIONID");
+        return RestAssured.given().cookie("JSESSIONID", cookie);
+    }
+
+    @Test
+    public void whenTry_thenOK() {
+        final Response response = givenAuth().get(URL_PREFIX + "/api/foos");
+        assertEquals(200, response.statusCode());
+        System.out.println(response.asString());
+
     }
 
     @Test

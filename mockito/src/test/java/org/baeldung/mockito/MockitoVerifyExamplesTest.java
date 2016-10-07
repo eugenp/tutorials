@@ -1,26 +1,18 @@
 package org.baeldung.mockito;
 
-import static org.hamcrest.Matchers.hasItem;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.atMost;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.verifyZeroInteractions;
-
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InOrder;
 import org.mockito.Mockito;
 import org.mockito.exceptions.verification.NoInteractionsWanted;
 
-import com.google.common.collect.Lists;
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasItem;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
 
 public class MockitoVerifyExamplesTest {
 
@@ -115,10 +107,10 @@ public class MockitoVerifyExamplesTest {
     @Test
     public final void whenVerifyingAnInteractionWithArgumentCapture_thenCorrect() {
         final List<String> mockedList = mock(MyList.class);
-        mockedList.addAll(Lists.<String> newArrayList("someElement"));
+        mockedList.addAll(Lists.<String>newArrayList("someElement"));
         final ArgumentCaptor<List> argumentCaptor = ArgumentCaptor.forClass(List.class);
         verify(mockedList).addAll(argumentCaptor.capture());
-        final List<String> capturedArgument = argumentCaptor.<List<String>> getValue();
+        final List<String> capturedArgument = argumentCaptor.<List<String>>getValue();
         assertThat(capturedArgument, hasItem("someElement"));
     }
 

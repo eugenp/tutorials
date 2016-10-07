@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriTemplate;
 
 @Controller
+@RequestMapping(value = "/auth/")
 public class RootController {
 
     @Autowired

@@ -17,13 +17,13 @@ public class ActuatorMetricService implements IActuatorMetricService {
     @Autowired
     private MetricReaderPublicMetrics publicMetrics;
 
-    private final List<ArrayList<Integer>> statusMetric;
+    private final List<ArrayList<Integer>> statusMetricsByMinute;
     private final List<String> statusList;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public ActuatorMetricService() {
         super();
-        statusMetric = new ArrayList<ArrayList<Integer>>();
+        statusMetricsByMinute = new ArrayList<ArrayList<Integer>>();
         statusList = new ArrayList<String>();
     }
 
@@ -31,7 +31,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
     public Object[][] getGraphData() {
         final Date current = new Date();
         final int colCount = statusList.size() + 1;
-        final int rowCount = statusMetric.size() + 1;
+        final int rowCount = statusMetricsByMinute.size() + 1;
         final Object[][] result = new Object[rowCount][colCount];
         result[0][0] = "Time";
         int j = 1;
@@ -41,19 +41,23 @@ public class ActuatorMetricService implements IActuatorMetricService {
             j++;
         }
 
-        List<Integer> temp;
-        List<Integer> last = new ArrayList<Integer>();
         for (int i = 1; i < rowCount; i++) {
-            temp = statusMetric.get(i - 1);
             result[i][0] = dateFormat.format(new Date(current.getTime() - (60000 * (rowCount - i))));
-            for (j = 1; j <= temp.size(); j++) {
-                result[i][j] = temp.get(j - 1) - (last.size() >= j ? last.get(j - 1) : 0);
+        }
+
+        List<Integer> minuteOfStatuses;
+        List<Integer> last = new ArrayList<Integer>();
+
+        for (int i = 1; i < rowCount; i++) {
+            minuteOfStatuses = statusMetricsByMinute.get(i - 1);
+            for (j = 1; j <= minuteOfStatuses.size(); j++) {
+                result[i][j] = minuteOfStatuses.get(j - 1) - (last.size() >= j ? last.get(j - 1) : 0);
             }
             while (j < colCount) {
                 result[i][j] = 0;
                 j++;
             }
-            last = temp;
+            last = minuteOfStatuses;
         }
         return result;
     }
@@ -62,16 +66,16 @@ public class ActuatorMetricService implements IActuatorMetricService {
 
     @Scheduled(fixedDelay = 60000)
     private void exportMetrics() {
-        final ArrayList<Integer> statusCount = initializeCounterList(statusList.size());
+        final ArrayList<Integer> lastMinuteStatuses = initializeStatuses(statusList.size());
 
         for (final Metric<?> counterMetric : publicMetrics.metrics()) {
-            updateStatusCount(counterMetric, statusCount);
+            updateMetrics(counterMetric, lastMinuteStatuses);
         }
 
-        statusMetric.add(statusCount);
+        statusMetricsByMinute.add(lastMinuteStatuses);
     }
 
-    private ArrayList<Integer> initializeCounterList(final int size) {
+    private ArrayList<Integer> initializeStatuses(final int size) {
         final ArrayList<Integer> counterList = new ArrayList<Integer>();
         for (int i = 0; i < size; i++) {
             counterList.add(0);
@@ -79,20 +83,24 @@ public class ActuatorMetricService implements IActuatorMetricService {
         return counterList;
     }
 
-    private void updateStatusCount(final Metric<?> counterMetric, final ArrayList<Integer> statusCount) {
+    private void updateMetrics(final Metric<?> counterMetric, final ArrayList<Integer> statusCount) {
         String status = "";
         int index = -1;
         int oldCount = 0;
 
         if (counterMetric.getName().contains("counter.status.")) {
             status = counterMetric.getName().substring(15, 18); // example 404, 200
-            if (!statusList.contains(status)) {
-                statusList.add(status);
-                statusCount.add(0);
-            }
+            appendStatusIfNotExist(status, statusCount);
             index = statusList.indexOf(status);
             oldCount = statusCount.get(index) == null ? 0 : statusCount.get(index);
             statusCount.set(index, counterMetric.getValue().intValue() + oldCount);
+        }
+    }
+
+    private void appendStatusIfNotExist(final String status, final ArrayList<Integer> statusCount) {
+        if (!statusList.contains(status)) {
+            statusList.add(status);
+            statusCount.add(0);
         }
     }
 

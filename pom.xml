@@ -1,116 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.baeldung</groupId>
-	<artifactId>spring-security-login-and-registration</artifactId>
-	<name>spring-security-login-and-registration</name>
-	<packaging>war</packaging>
-	<version>1.0.0-BUILD-SNAPSHOT</version>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>parent-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.4.RELEASE</version>
-	</parent>
+    <name>parent-modules</name>
+    <packaging>pom</packaging>
 
-	<dependencies>
-		<!-- Spring -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		
-		<!-- Validation -->
-		
-		<!-- logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-		</dependency>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
-		</dependency>
-
-		<!-- @Inject -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>${javax.inject.version}</version>
-		</dependency>
-
-		<!-- Servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>${javax.servlet.jsp-api.version}</version>	
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
-
-		<!-- Taglibs -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-		</dependency>
-
-		<!-- Test -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<build>
-		<finalName>spring-security-login-and-registration</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-	</build>
-	<properties>
-		<java-version>1.7</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
-		<org.springframework.security.version>3.2.4.RELEASE</org.springframework.security.version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-
-		<!-- logging -->
-		<org.slf4j.version>1.7.6</org.slf4j.version>
-		<logback.version>1.1.1</logback.version>
-		
-		<!-- javax jsp -->
-        <javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
+    <modules>
+        <module>assertj</module>
+        <module>apache-cxf</module>
+        <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
+        <module>autovalue-tutorial</module>
         
-        <!-- Inject -->
-        <javax.inject.version>1</javax.inject.version>     
-	</properties>
+        <module>cdi</module>
+        <module>core-java</module>
+        <module>core-java-8</module>
+        <module>couchbase-sdk</module>
+        <!-- <module>core-java-9</module> -->
+
+        <module>dozer</module>
+        <module>dependency-injection</module>
+        <module>deltaspike</module>
+
+        <module>patterns</module>
+        <module>feign-client</module>
+        <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
+
+        <module>gson</module>
+        <module>gson-jackson-performance</module>
+        <module>guava</module>
+        <module>guava18</module>
+        <module>guava19</module>
+
+        <module>handling-spring-static-resources</module>
+        <module>httpclient</module>
+
+        <module>immutables</module>
+
+        <module>jackson</module>
+        <module>javaxval</module>
+        <module>jjwt</module>
+        <module>jooq-spring</module>
+        <module>jpa-storedprocedure</module>
+        <module>json</module>
+        <module>json-path</module>
+        <module>junit5</module>
+        <module>jee7schedule</module>
+        <!-- <module>jpa-storedprocedure</module> -->
+
+        <module>log4j</module>
+
+        <module>mockito</module>
+        <module>mocks</module>
+        <module>mutation-testing</module>
+
+        <module>orika</module>
+
+        <module>querydsl</module>
+
+        <!-- <module>raml</module> -->
+        <module>rest-assured</module>
+        <module>rest-testing</module>
+        <module>resteasy</module>
+        <module>okhttp</module>
+
+        <module>spring-all</module>
+        <module>spring-akka</module>
+        <module>spring-apache-camel</module>
+        <module>spring-autowire</module>
+        <module>spring-batch</module>
+        <module>spring-boot</module>
+        <module>spring-cucumber</module>
+        <module>spring-data-cassandra</module>
+        <module>spring-data-couchbase-2</module>
+        <module>spring-data-elasticsearch</module>
+        <module>spring-data-neo4j</module>
+        <module>spring-data-mongodb</module>
+        <module>spring-data-redis</module>
+        <module>spring-data-rest</module>
+        <module>spring-exceptions</module>
+        <module>spring-freemarker</module>
+        <module>spring-hibernate3</module>
+        <module>spring-hibernate4</module>
+        <module>spring-jpa</module>
+        <module>spring-jms</module>
+        <module>spring-katharsis</module>
+        <module>spring-mockito</module>
+        <module>spring-mvc-java</module>
+        <module>spring-mvc-no-xml</module>
+        <module>spring-mvc-xml</module>
+        <module>spring-mvc-tiles</module>
+        <module>spring-openid</module>
+        <module>spring-protobuf</module>
+        <module>spring-quartz</module>
+        <module>spring-spel</module>
+        <module>spring-rest</module>
+        <module>spring-rest-angular</module>
+        <module>spring-rest-docs</module>
+        <module>spring-cloud</module>
+        <module>spring-cloud-data-flow</module>
+
+        <module>spring-security-basic-auth</module>
+        <module>spring-security-custom-permission</module>
+        <module>spring-security-mvc-custom</module>
+        <module>spring-security-mvc-digest-auth</module>
+        <module>spring-security-mvc-ldap</module>
+        <module>spring-security-mvc-login</module>
+        <module>spring-security-mvc-persisted-remember-me</module>
+        <module>spring-security-mvc-session</module>
+        <module>spring-security-rest</module>
+        <module>spring-security-rest-basic-auth</module>
+        <module>spring-security-rest-custom</module>
+        <module>spring-security-rest-digest-auth</module>
+        <module>spring-security-rest-full</module>
+        <module>spring-security-x509</module>
+        <module>spring-thymeleaf</module>
+        <module>spring-zuul</module>
+        <module>spring-mvc-velocity</module>
+
+        <module>jsf</module>
+        <module>xml</module>
+        <module>lombok</module>
+        <module>redis</module>
+
+        <module>wicket</module>
+        <module>xstream</module>
+        <module>java-cassandra</module>
+        <module>annotations</module>
+    </modules>
 
 </project>

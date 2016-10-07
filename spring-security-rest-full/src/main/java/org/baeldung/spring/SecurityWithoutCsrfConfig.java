@@ -44,13 +44,16 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
         http
         .csrf().disable()
         .authorizeRequests()
-        .antMatchers("/admin/*").hasAnyRole("ROLE_ADMIN")
-        .anyRequest().authenticated()
+        .antMatchers("/auth/admin/*").hasRole("ADMIN")
+        .antMatchers("/auth/*").hasAnyRole("ADMIN","USER")
+        .antMatchers("/*").permitAll()
         .and()
         .httpBasic()
         .and()
         // .exceptionHandling().accessDeniedPage("/my-error-page")
         .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
+        .and()
+        .headers().cacheControl().disable()
         ;
         // @formatter:on
     }

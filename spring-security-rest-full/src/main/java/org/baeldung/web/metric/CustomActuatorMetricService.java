@@ -21,14 +21,14 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
     @Autowired
     private CounterService counter;
 
-    private final List<ArrayList<Integer>> statusMetric;
+    private final List<ArrayList<Integer>> statusMetricsByMinute;
     private final List<String> statusList;
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     public CustomActuatorMetricService() {
         super();
         repo = new InMemoryMetricRepository();
-        statusMetric = new ArrayList<ArrayList<Integer>>();
+        statusMetricsByMinute = new ArrayList<ArrayList<Integer>>();
         statusList = new ArrayList<String>();
     }
 
@@ -46,7 +46,7 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
     public Object[][] getGraphData() {
         final Date current = new Date();
         final int colCount = statusList.size() + 1;
-        final int rowCount = statusMetric.size() + 1;
+        final int rowCount = statusMetricsByMinute.size() + 1;
         final Object[][] result = new Object[rowCount][colCount];
         result[0][0] = "Time";
 
@@ -56,12 +56,15 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
             j++;
         }
 
-        List<Integer> temp;
         for (int i = 1; i < rowCount; i++) {
-            temp = statusMetric.get(i - 1);
             result[i][0] = dateFormat.format(new Date(current.getTime() - (60000 * (rowCount - i))));
-            for (j = 1; j <= temp.size(); j++) {
-                result[i][j] = temp.get(j - 1);
+        }
+
+        List<Integer> minuteOfStatuses;
+        for (int i = 1; i < rowCount; i++) {
+            minuteOfStatuses = statusMetricsByMinute.get(i - 1);
+            for (j = 1; j <= minuteOfStatuses.size(); j++) {
+                result[i][j] = minuteOfStatuses.get(j - 1);
             }
             while (j < colCount) {
                 result[i][j] = 0;
@@ -87,6 +90,6 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
             }
 
         }
-        statusMetric.add(statusCount);
+        statusMetricsByMinute.add(statusCount);
     }
 }

@@ -29,7 +29,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.google.common.base.Preconditions;
 
 @Controller
-@RequestMapping(value = "/foos")
+@RequestMapping(value = "/auth/foos")
 public class FooController {
 
     @Autowired
