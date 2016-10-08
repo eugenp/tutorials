@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,15 +18,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import static org.junit.Assert.*;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
 @WebAppConfiguration
 public class CustomUserDetailsServiceTest {
-
-    private static final Logger LOG = Logger.getLogger("CustomUserDetailsServiceTest");
 
     public static final String USERNAME = "user";
     public static final String PASSWORD = "pass";

@@ -1,6 +1,5 @@
 package org.baeldung.config;
 
-import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.security.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
