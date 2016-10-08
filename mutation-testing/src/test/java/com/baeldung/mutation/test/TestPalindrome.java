@@ -8,21 +8,26 @@ import org.junit.Test;
 import com.baeldung.testing.mutation.Palindrome;
 
 public class TestPalindrome {
+    @Test
+    public void whenEmptyString_thanAccept() {
+        Palindrome palindromeTester = new Palindrome();
+        assertTrue(palindromeTester.isPalindrome("noon"));
+    }
 
     @Test
-	public void acceptsPalindrome() {
+	public void whenPalindrom_thanAccept() {
 	    Palindrome palindromeTester = new Palindrome();
 	    assertTrue(palindromeTester.isPalindrome("noon"));
     }
     
     @Test
-    public void rejectsNonPalindrome(){
+    public void whenNotPalindrom_thanReject(){
     	Palindrome palindromeTester = new Palindrome();
     	assertFalse(palindromeTester.isPalindrome("box"));
     }
     
     @Test
-    public void rejectsNearPalindrome(){
+    public void whenNearPalindrom_thanReject(){
     	Palindrome palindromeTester = new Palindrome();
     	assertFalse(palindromeTester.isPalindrome("neon"));
     }
