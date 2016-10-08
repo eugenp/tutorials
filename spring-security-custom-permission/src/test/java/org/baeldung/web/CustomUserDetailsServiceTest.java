@@ -9,9 +9,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.Authentication;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -36,13 +38,16 @@ public class CustomUserDetailsServiceTest {
 
     @Autowired
     AuthenticationProvider authenticationProvider;
+    
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Test
     public void givenExistingUser_whenAuthenticate_thenRetrieveFromDb() {
         try {
             User user = new User();
             user.setUsername(USERNAME);
-            user.setPassword(PASSWORD);
+            user.setPassword(passwordEncoder.encode(PASSWORD));
 
             myUserRepository.save(user);
 
@@ -51,31 +56,23 @@ public class CustomUserDetailsServiceTest {
 
             assertEquals(authentication.getName(), USERNAME);
 
-        } catch (Exception exc) {
-            LOG.log(Level.SEVERE, "Error creating account");
         } finally {
             myUserRepository.removeUserByUsername(USERNAME);
         }
     }
-    
-    @Test (expected = BadCredentialsException.class)
+
+    @Test(expected = BadCredentialsException.class)
     public void givenIncorrectUser_whenAuthenticate_thenBadCredentialsException() {
         try {
             User user = new User();
             user.setUsername(USERNAME);
-            user.setPassword(PASSWORD);
+            user.setPassword(passwordEncoder.encode(PASSWORD));
 
-            try {
-                myUserRepository.save(user);
-            }
-            catch (Exception exc) {
-                LOG.log(Level.SEVERE, "Error creating account");
-            } 
-            
+            myUserRepository.save(user);
+
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
-            Authentication authentication = authenticationProvider.authenticate(auth);
-        }  
-        finally {
+            authenticationProvider.authenticate(auth);
+        } finally {
             myUserRepository.removeUserByUsername(USERNAME);
         }
     }
