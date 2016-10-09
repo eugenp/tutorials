@@ -3,16 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="messageDestination" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg value="messageQueue1" />
-	</bean>
-	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="connectionFactory" />
-		<property name="receiveTimeout" value="10000" />
-	</bean>
-
+	 <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <constructor-arg index="0" value="tcp://localhost:61616" />
+    </bean>
+ 
+    <!-- ConnectionFactory Definition -->
+    <bean id="connectionFactory"
+        class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory" />
+    </bean>
+	
+	<bean id="destinationQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="IN_QUEUE" />
+    </bean>
+ 
+    <!-- JmsTemplate Definition -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="defaultDestination" ref="destinationQueue" />
+    </bean>
 	<bean id="SampleJmsMessageSender" class="com.baeldung.spring.jms.SampleJmsMessageSender">
-		<property name="destination" ref="messageDestination" />
+		<property name="queue" ref="destinationQueue" />
 		<property name="jmsTemplate" ref="jmsTemplate" />
 	</bean>
 
@@ -23,8 +34,7 @@
 	<bean id="jmsContainer"
 		class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
-		<property name="destination" ref="messageDestination" />
+		<property name="destinationName" value="IN_QUEUE" />
 		<property name="messageListener" ref="messageListener" />
-		<property name="jmsTemplate" ref="jmsTemplate" />
 	</bean>
 </beans>
