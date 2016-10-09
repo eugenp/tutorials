@@ -11,17 +11,17 @@ import org.springframework.jms.support.converter.MessageConverter;
 public class SampleMessageConverter implements MessageConverter {
 
     public Message toMessage(Object object, Session session) throws JMSException, MessageConversionException {
-        Employee person = (Employee) object;
+        Employee employee = (Employee) object;
         MapMessage message = session.createMapMessage();
-        message.setString("name", person.getName());
-        message.setInt("age", person.getAge());
+        message.setString("name", employee.getName());
+        message.setInt("age", employee.getAge());
         return message;
     }
 
     public Object fromMessage(Message message) throws JMSException, MessageConversionException {
         MapMessage mapMessage = (MapMessage) message;
-        Employee person = new Employee(mapMessage.getString("name"), mapMessage.getInt("age"));
-        return person;
+        Employee employee = new Employee(mapMessage.getString("name"), mapMessage.getInt("age"));
+        return employee;
     }
 
 }
