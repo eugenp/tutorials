@@ -37,11 +37,7 @@ public class SeleniumExample {
     private void closeOverlay() {
         List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
         if (webElementList != null && !webElementList.isEmpty()) {
-            for (WebElement webElement : webElementList) {
-                if (webElement.getAttribute("title").equalsIgnoreCase("Close")) {
-                    webElement.click();
-                }
-            }
+            webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().get().click();
         }
     }
 
