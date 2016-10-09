@@ -1,13 +1,12 @@
 package com.baeldung.spring.jms;
 
-import java.util.Map;
+import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
-
-import org.springframework.jms.core.JmsTemplate;
+import java.util.Map;
 
 public class SampleListener implements MessageListener {
 
@@ -31,7 +30,6 @@ public class SampleListener implements MessageListener {
 
     public Employee receiveMessage() throws JMSException {
         Map map = (Map) getJmsTemplate().receiveAndConvert();
-        Employee employee = new Employee((String) map.get("name"), (Integer) map.get("age"));
-        return employee;
+        return new Employee((String) map.get("name"), (Integer) map.get("age"));
     }
 }
