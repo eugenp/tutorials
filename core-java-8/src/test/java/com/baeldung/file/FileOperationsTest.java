@@ -1,24 +1,24 @@
 package com.baeldung.file;
 
+import org.apache.commons.io.FileUtils;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.function.Consumer;
 import java.util.stream.Stream;
-
-import org.apache.commons.io.FileUtils;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class FileOperationsTest {
 
@@ -82,12 +82,10 @@ public class FileOperationsTest {
     }
     
     @Test
-    public void givenFilePath_whenUsingFilesReadAllBytes_thenFileData() throws IOException {
+    public void givenFilePath_whenUsingFilesReadAllBytes_thenFileData() throws IOException, URISyntaxException {
         String expectedData = "Hello World from fileTest.txt!!!";
-        
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("fileTest.txt").getFile());
-        Path path = Paths.get(file.getAbsolutePath());
+
+        Path path = Paths.get(getClass().getClassLoader().getResource("fileTest.txt").toURI());
         
         byte[] fileBytes = Files.readAllBytes(path);
         String data = new String(fileBytes);
@@ -96,21 +94,14 @@ public class FileOperationsTest {
     }
     
     @Test
-    public void givenFilePath_whenUsingFilesLines_thenFileData() throws IOException {
+    public void givenFilePath_whenUsingFilesLines_thenFileData() throws IOException, URISyntaxException {
         String expectedData = "Hello World from fileTest.txt!!!";
-        
-        ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("fileTest.txt").getFile());
-        Path path = Paths.get(file.getAbsolutePath());
+
+        Path path = Paths.get(getClass().getClassLoader().getResource("fileTest.txt").toURI());
         
         StringBuilder data = new StringBuilder();
         Stream<String> lines = Files.lines(path);
-        lines.forEach(new Consumer<String>() {
-            @Override
-            public void accept(String line) {
-                data.append(line).append("\n");
-            }
-        });
+        lines.forEach(line -> data.append(line).append("\n"));
         
         Assert.assertEquals(expectedData, data.toString().trim());
     }
