@@ -111,8 +111,7 @@ public class FileOperationsTest {
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                resultStringBuilder.append(line);
-                resultStringBuilder.append("\n");
+                resultStringBuilder.append(line).append("\n");
             }
         }
         return resultStringBuilder.toString();
