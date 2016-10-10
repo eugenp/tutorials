@@ -107,17 +107,14 @@ public class FileOperationsTest {
     }
     
     private String readFromInputStream(InputStream inputStream) throws IOException {
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         StringBuilder resultStringBuilder = new StringBuilder();
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            resultStringBuilder.append(line);
-            resultStringBuilder.append("\n");
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                resultStringBuilder.append(line);
+                resultStringBuilder.append("\n");
+            }
         }
-        bufferedReader.close();
-        inputStreamReader.close();
-        inputStream.close();
         return resultStringBuilder.toString();
     }
 }
