@@ -114,6 +114,7 @@ public class FileOperationsTest {
                 resultStringBuilder.append(line).append("\n");
             }
         }
+
         return resultStringBuilder.toString();
     }
 }

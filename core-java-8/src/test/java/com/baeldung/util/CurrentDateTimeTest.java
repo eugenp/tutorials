@@ -1,31 +1,15 @@
 package com.baeldung.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import org.junit.Test;
 
-import java.time.Clock;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.temporal.ChronoField;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.mockito.Mockito;
+import static org.junit.Assert.assertEquals;
 
 public class CurrentDateTimeTest {
 
-    private static Clock clock;
-
-    @BeforeClass
-    public static void setup() {
-        final Instant currentTime = Instant.parse("2016-10-09T15:10:30.00Z");
-
-        clock = Mockito.mock(Clock.class);
-        when(clock.instant()).thenAnswer((invocation) -> currentTime);
-        when(clock.getZone()).thenAnswer((invocation) -> ZoneId.of("UTC"));
-    }
+    private static final Clock clock = Clock.fixed(Instant.parse("2016-10-09T15:10:30.00Z"), ZoneId.of("UTC"));
 
     @Test
     public void shouldReturnCurrentDate() {
