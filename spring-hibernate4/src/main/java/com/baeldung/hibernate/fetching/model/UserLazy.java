@@ -1,9 +1,25 @@
 package com.baeldung.hibernate.fetching.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 
 @Entity
 @Table (name = "USER")
@@ -17,7 +33,7 @@ public class UserLazy implements Serializable {
 	private Long userId;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<OrderDetail> orderDetail = new HashSet();
+	private Set<OrderDetailLazy> orderDetail = new HashSet();
 
 	public UserLazy() {
 	}
@@ -61,11 +77,11 @@ public class UserLazy implements Serializable {
 	}
 
 	
-	public Set<OrderDetail> getOrderDetail() {
+	public Set<OrderDetailLazy> getOrderDetail() {
 		return orderDetail;
 	}
 
-	public void setOrderDetail(Set<OrderDetail> orderDetail) {
+	public void setOrderDetail(Set<OrderDetailLazy> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
 

@@ -1,21 +1,21 @@
 package com.baeldung.hibernate.fetching;
 
-import com.baeldung.hibernate.fetching.model.OrderDetail;
-import com.baeldung.hibernate.fetching.view.FetchingAppView;
+import static org.junit.Assert.*;
+import java.util.Set;
+
 import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Set;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.hibernate.fetching.model.OrderDetailEager;
+import com.baeldung.hibernate.fetching.model.OrderDetailLazy;
+import com.baeldung.hibernate.fetching.view.FetchingAppView;
 
 public class HibernateFetchingTest {
 
 
 	//this loads sample data in the database
-	@Before
+//	@Before 
 	public void addFecthingTestData(){
 		FetchingAppView fav = new FetchingAppView();
 		fav.createTestData();
@@ -27,7 +27,7 @@ public class HibernateFetchingTest {
 	@Test
 	public void testLazyFetching() {
 		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetail> orderDetalSetLazy = fav.lazyLoaded();
+		Set<OrderDetailLazy> orderDetalSetLazy = fav.lazyLoaded();
 		assertFalse(Hibernate.isInitialized(orderDetalSetLazy));
 	}
 	
@@ -37,7 +37,7 @@ public class HibernateFetchingTest {
 	@Test
 	public void testEagerFetching() {
 		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetail> orderDetalSetEager = fav.eagerLoaded();
+		Set<OrderDetailEager> orderDetalSetEager = fav.eagerLoaded();
 		assertTrue(Hibernate.isInitialized(orderDetalSetEager));
 	}
 }

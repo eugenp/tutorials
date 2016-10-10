@@ -11,7 +11,7 @@ public class HibernateUtil {
 		//two config files are there
 		//one with lazy loading enabled 
 		//another lazy = false
-		SessionFactory sf;
+		SessionFactory sf = null;
 		if ("lazy".equals(fetchMethod)) {
 			sf = new Configuration().configure("fetchingLazy.cfg.xml").buildSessionFactory();
 		} else {
@@ -19,7 +19,8 @@ public class HibernateUtil {
 		}
 		
 		// fetching.cfg.xml is used for this example
-		return sf.openSession();
+		final Session session = sf.openSession();
+		return session;
 	}
 
     public static Session getHibernateSession() {
