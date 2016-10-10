@@ -28,11 +28,7 @@ public class StudentStore {
     }
 
     public Set<Student> getAllStudents() {
-<<<<<<< HEAD
-        return (Set<Student>)students.values();
-=======
         return new HashSet<>(students.values());
->>>>>>> e7d5f617adc2071f91af87cd7dc06dafe715eda1
     }
 
     public Student updateStudent(Student student) {
@@ -45,15 +41,6 @@ public class StudentStore {
     }
 
     public boolean deleteStudent(int id) {
-<<<<<<< HEAD
-        Student student=students.remove(id);
-        if (student == null)
-            return false;
-		else
-            return true;
-
-=======
         return students.remove(id) != null;
->>>>>>> e7d5f617adc2071f91af87cd7dc06dafe715eda1
     }
 }

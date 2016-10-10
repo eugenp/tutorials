@@ -43,12 +43,6 @@ public class StudentController extends Controller {
         JsonNode jsonObjects = Json.toJson(StudentStore.getInstance().getStudent(id));
         return ok(Util.createResponse(jsonObjects, true));
     }
-<<<<<<< HEAD
-	public Result listStudents() {
-		Set<Student> result=StudentStore.getInstance().getAllStudents();
-		ObjectMapper mapper = new ObjectMapper();
-=======
->>>>>>> e7d5f617adc2071f91af87cd7dc06dafe715eda1
 
     public Result listStudents() {
         Set<Student> result = StudentStore.getInstance().getAllStudents();
