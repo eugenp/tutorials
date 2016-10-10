@@ -22,15 +22,14 @@
         <module>cdi</module>
         <module>core-java</module>
         <module>core-java-8</module>
+        <module>couchbase-sdk</module>
         <!-- <module>core-java-9</module> -->
-        <module>couchbase-sdk-intro</module>
-        <module>couchbase-sdk-spring-service</module>
 
         <module>dozer</module>
         <module>dependency-injection</module>
         <module>deltaspike</module>
 
-        <module>enterprise-patterns</module>
+        <module>patterns</module>
         <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
@@ -70,6 +69,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>okhttp</module>
 
         <module>spring-all</module>
         <module>spring-akka</module>
@@ -80,7 +80,6 @@
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-couchbase-2b</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-mongodb</module>
@@ -91,11 +90,13 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
+        <module>spring-jms</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-xml</module>
+        <module>spring-mvc-tiles</module>
         <module>spring-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
@@ -132,6 +133,7 @@
         <module>wicket</module>
         <module>xstream</module>
         <module>java-cassandra</module>
+        <module>annotations</module>
     </modules>
 
 </project>
