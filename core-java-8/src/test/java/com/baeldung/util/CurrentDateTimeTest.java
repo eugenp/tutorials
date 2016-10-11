@@ -1,47 +1,41 @@
 package com.baeldung.util;
 
-import static org.junit.Assert.assertEquals;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.temporal.ChronoField;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
+import java.time.*;
+import java.time.temporal.ChronoField;
+
+import static org.junit.Assert.assertEquals;
+
 public class CurrentDateTimeTest {
+
+    private static final Clock clock = Clock.fixed(Instant.parse("2016-10-09T15:10:30.00Z"), ZoneId.of("UTC"));
 
     @Test
     public void shouldReturnCurrentDate() {
 
-        final LocalDate now = LocalDate.now();
-        final Calendar calendar = GregorianCalendar.getInstance();
+        final LocalDate now = LocalDate.now(clock);
 
-        assertEquals("10-10-2010".length(), now.toString().length());
-        assertEquals(calendar.get(Calendar.DATE), now.get(ChronoField.DAY_OF_MONTH));
-        assertEquals(calendar.get(Calendar.MONTH), now.get(ChronoField.MONTH_OF_YEAR) - 1);
-        assertEquals(calendar.get(Calendar.YEAR), now.get(ChronoField.YEAR));
+        assertEquals(9, now.get(ChronoField.DAY_OF_MONTH));
+        assertEquals(10, now.get(ChronoField.MONTH_OF_YEAR));
+        assertEquals(2016, now.get(ChronoField.YEAR));
     }
 
     @Test
     public void shouldReturnCurrentTime() {
 
-        final LocalTime now = LocalTime.now();
-        final Calendar calendar = GregorianCalendar.getInstance();
+        final LocalTime now = LocalTime.now(clock);
 
-        assertEquals(calendar.get(Calendar.HOUR_OF_DAY), now.get(ChronoField.HOUR_OF_DAY));
-        assertEquals(calendar.get(Calendar.MINUTE), now.get(ChronoField.MINUTE_OF_HOUR));
-        assertEquals(calendar.get(Calendar.SECOND), now.get(ChronoField.SECOND_OF_MINUTE));
+        assertEquals(15, now.get(ChronoField.HOUR_OF_DAY));
+        assertEquals(10, now.get(ChronoField.MINUTE_OF_HOUR));
+        assertEquals(30, now.get(ChronoField.SECOND_OF_MINUTE));
     }
 
     @Test
     public void shouldReturnCurrentTimestamp() {
 
-        final Instant now = Instant.now();
-        final Calendar calendar = GregorianCalendar.getInstance();
+        final Instant now = Instant.now(clock);
 
-        assertEquals(calendar.getTimeInMillis() / 1000, now.getEpochSecond());
+        assertEquals(clock.instant().getEpochSecond(), now.getEpochSecond());
     }
 }
