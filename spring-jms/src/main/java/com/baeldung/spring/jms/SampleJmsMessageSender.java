@@ -24,6 +24,10 @@ public class SampleJmsMessageSender {
     }
 
     public void sendMessage(final Employee employee) {
+        System.out.println("Jms Message Sender : " + employee);
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", employee.getName());
+        map.put("age", employee.getAge());
         this.jmsTemplate.convertAndSend(map);
     }
 }
