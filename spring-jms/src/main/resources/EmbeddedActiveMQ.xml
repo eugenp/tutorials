@@ -9,7 +9,7 @@
                         http://activemq.apache.org/schema/core/activemq-core-5.2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
  
     <!-- Embedded ActiveMQ Broker -->
-    <amq:broker id="broker" useJmx="false" persistent="false">
+    <amq:broker id="broker" useJmx="false" persistent="false" useShutdownHook="false">
         <amq:transportConnectors>
             <amq:transportConnector uri="tcp://localhost:61616" />
         </amq:transportConnectors>
