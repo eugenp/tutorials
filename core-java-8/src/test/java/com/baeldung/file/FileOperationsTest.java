@@ -102,6 +102,7 @@ public class FileOperationsTest {
         StringBuilder data = new StringBuilder();
         Stream<String> lines = Files.lines(path);
         lines.forEach(line -> data.append(line).append("\n"));
+        lines.close();
         
         Assert.assertEquals(expectedData, data.toString().trim());
     }
