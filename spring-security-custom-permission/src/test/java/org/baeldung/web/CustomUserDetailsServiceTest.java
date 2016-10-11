@@ -1,5 +1,7 @@
 package org.baeldung.web;
 
+import static org.junit.Assert.assertEquals;
+
 import org.baeldung.config.MvcConfig;
 import org.baeldung.config.PersistenceConfig;
 import org.baeldung.config.SecurityConfig;
@@ -12,13 +14,10 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import static org.junit.Assert.*;
-
-import java.util.logging.Logger;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
