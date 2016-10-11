@@ -10,8 +10,9 @@ import java.util.Map;
 
 public class SampleListener implements MessageListener {
 
+    private JmsTemplate jmsTemplate;
     public JmsTemplate getJmsTemplate() {
-        return getJmsTemplate();
+        this.jmsTemplate = jmsTemplate;
     }
 
     public void onMessage(Message message) {
@@ -19,7 +20,6 @@ public class SampleListener implements MessageListener {
             try {
 
                 String msg = ((TextMessage) message).getText();
-                System.out.println("Message has been consumed : " + msg);
             } catch (JMSException ex) {
                 throw new RuntimeException(ex);
             }
