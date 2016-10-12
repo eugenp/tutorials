@@ -18,17 +18,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes={WebConfig.class}, loader=AnnotationConfigWebContextLoader.class )
+@ContextConfiguration(classes = { WebConfig.class }, loader = AnnotationConfigWebContextLoader.class)
 public class ControllerAnnotationTest {
-	
-	private MockMvc mockMvc;
+
+    private MockMvc mockMvc;
 
     @Autowired
     private WebApplicationContext wac;
-    
+
     private Student selectedStudent;
 
     @Before
@@ -43,9 +42,7 @@ public class ControllerAnnotationTest {
     @Test
     public void testTestController() throws Exception {
 
-        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test/"))
-          .andReturn()
-          .getModelAndView();
+        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test/")).andReturn().getModelAndView();
 
         // validate modal data
         Assert.assertSame(mv.getModelMap().get("data").toString(), "Welcome home man");
@@ -57,9 +54,7 @@ public class ControllerAnnotationTest {
     @Test
     public void testRestController() throws Exception {
 
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/student/{studentId}", 1))
-          .andReturn().getResponse()
-          .getContentAsString();
+        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/student/{studentId}", 1)).andReturn().getResponse().getContentAsString();
 
         ObjectMapper reader = new ObjectMapper();
 
@@ -72,9 +67,7 @@ public class ControllerAnnotationTest {
     @Test
     public void testRestAnnotatedController() throws Exception {
 
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/annotated/student/{studentId}", 1))
-          .andReturn().getResponse()
-          .getContentAsString();
+        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/annotated/student/{studentId}", 1)).andReturn().getResponse().getContentAsString();
 
         ObjectMapper reader = new ObjectMapper();
 

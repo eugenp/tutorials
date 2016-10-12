@@ -17,9 +17,6 @@ public class CustomStudentRepositoryImpl implements CustomStudentRepository {
     private CouchbaseTemplate template;
 
     public List<Student> findByFirstNameStartsWith(String s) {
-        return template.findByView(ViewQuery.from(DESIGN_DOC, "byFirstName")
-                .startKey(s)
-                .stale(Stale.FALSE),
-                Student.class);
+        return template.findByView(ViewQuery.from(DESIGN_DOC, "byFirstName").startKey(s).stale(Stale.FALSE), Student.class);
     }
 }

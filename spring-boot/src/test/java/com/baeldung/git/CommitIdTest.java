@@ -32,13 +32,10 @@ public class CommitIdTest {
         LOG.info(commitMessage);
         LOG.info(branch);
 
-        assertThat(commitMessage)
-                .isNotEqualTo("UNKNOWN");
+        assertThat(commitMessage).isNotEqualTo("UNKNOWN");
 
-        assertThat(branch)
-                .isNotEqualTo("UNKNOWN");
+        assertThat(branch).isNotEqualTo("UNKNOWN");
 
-        assertThat(commitId)
-                .isNotEqualTo("UNKNOWN");
+        assertThat(commitId).isNotEqualTo("UNKNOWN");
     }
 }

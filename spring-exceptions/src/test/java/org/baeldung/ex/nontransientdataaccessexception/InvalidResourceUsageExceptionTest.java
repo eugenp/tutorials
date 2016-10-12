@@ -18,16 +18,16 @@ import javax.sql.DataSource;
 @ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class InvalidResourceUsageExceptionTest {
 
-	@Autowired
-	private IFooService fooService;
+    @Autowired
+    private IFooService fooService;
 
-	@Autowired
-	private DataSource restDataSource;
+    @Autowired
+    private DataSource restDataSource;
 
-	@Test(expected = InvalidDataAccessResourceUsageException.class)
-	public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
-		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
-		jdbcTemplate.execute("revoke select from tutorialuser");
+    @Test(expected = InvalidDataAccessResourceUsageException.class)
+    public void whenRetrievingDataUserNoSelectRights_thenInvalidResourceUsageException() {
+        final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+        jdbcTemplate.execute("revoke select from tutorialuser");
 
         try {
             fooService.findAll();
@@ -36,11 +36,11 @@ public class InvalidResourceUsageExceptionTest {
         }
     }
 
-	@Test(expected = BadSqlGrammarException.class)
-	public void whenIncorrectSql_thenBadSqlGrammarException() {
-		final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
+    @Test(expected = BadSqlGrammarException.class)
+    public void whenIncorrectSql_thenBadSqlGrammarException() {
+        final JdbcTemplate jdbcTemplate = new JdbcTemplate(restDataSource);
 
-		jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
-	}
+        jdbcTemplate.queryForObject("select * fro foo where id=3", Integer.class);
+    }
 
 }

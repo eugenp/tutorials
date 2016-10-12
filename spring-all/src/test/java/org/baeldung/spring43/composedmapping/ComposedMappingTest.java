@@ -29,15 +29,12 @@ public class ComposedMappingTest extends AbstractJUnit4SpringContextTests {
 
     @Before
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-                .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
     public void whenRequestingMethodWithGetMapping_thenReceiving200Answer() throws Exception {
-        this.mockMvc.perform(get("/appointments")
-                .accept(MediaType.ALL))
-                .andExpect(status().isOk());
+        this.mockMvc.perform(get("/appointments").accept(MediaType.ALL)).andExpect(status().isOk());
         verify(appointmentService);
     }
 

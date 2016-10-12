@@ -51,9 +51,7 @@ public class MyUserDetailsService implements UserDetailsService {
     private User createUser(final String username, final String password, final List<SecurityRole> roles) {
         logger.info("Create user " + username);
 
-        final List<GrantedAuthority> authorities = roles.stream()
-          .map(role -> new SimpleGrantedAuthority(role.toString()))
-          .collect(Collectors.toList());
+        final List<GrantedAuthority> authorities = roles.stream().map(role -> new SimpleGrantedAuthority(role.toString())).collect(Collectors.toList());
 
         return new User(username, password, true, true, true, true, authorities);
     }

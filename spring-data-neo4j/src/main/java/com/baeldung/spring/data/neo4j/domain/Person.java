@@ -1,6 +1,5 @@
 package com.baeldung.spring.data.neo4j.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 import org.neo4j.ogm.annotation.GraphId;
@@ -9,7 +8,7 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import java.util.List;
 
-@JsonIdentityInfo(generator=JSOGGenerator.class)
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity
 public class Person {
     @GraphId
@@ -21,7 +20,8 @@ public class Person {
     @Relationship(type = "ACTED_IN")
     private List<Movie> movies;
 
-    public Person() { }
+    public Person() {
+    }
 
     public String getName() {
         return name;
@@ -46,5 +46,5 @@ public class Person {
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
     }
-    
+
 }

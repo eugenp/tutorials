@@ -26,18 +26,12 @@ public class AttributeAnnotationTest extends AbstractJUnit4SpringContextTests {
 
     @Before
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-                .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
     public void whenInterceptorAddsRequestAndSessionParams_thenParamsInjectedWithAttributesAnnotations() throws Exception {
-        String result = this.mockMvc.perform(get("/test")
-                .accept(MediaType.ALL))
-                .andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+        String result = this.mockMvc.perform(get("/test").accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
         Assert.assertEquals("login = john, query = invoices", result);
     }

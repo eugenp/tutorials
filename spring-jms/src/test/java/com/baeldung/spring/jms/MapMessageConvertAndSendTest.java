@@ -12,8 +12,7 @@ public class MapMessageConvertAndSendTest {
     @SuppressWarnings("resource")
     @BeforeClass
     public static void setUp() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-          "classpath:EmbeddedActiveMQ.xml", "classpath:applicationContext.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:EmbeddedActiveMQ.xml", "classpath:applicationContext.xml");
         messageProducer = (SampleJmsMessageSender) applicationContext.getBean("SampleJmsMessageSender");
     }
 

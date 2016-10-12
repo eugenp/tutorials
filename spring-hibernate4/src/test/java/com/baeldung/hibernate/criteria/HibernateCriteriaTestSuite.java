@@ -7,5 +7,5 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({ HibernateCriteriaTest.class })
 
 public class HibernateCriteriaTestSuite {
-	
+
 }
