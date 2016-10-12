@@ -23,7 +23,7 @@ import com.baeldung.spring.web.config.WebConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = WebConfig.class)
-public class EmployeeTest {
+public class EmployeeMvcIntegrationTest {
 
     @Autowired
     private WebApplicationContext webAppContext;

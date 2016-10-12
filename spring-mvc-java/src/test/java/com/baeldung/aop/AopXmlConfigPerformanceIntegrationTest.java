@@ -1,6 +1,5 @@
 package com.baeldung.aop;
 
-import com.baeldung.config.TestConfig;
 import com.baeldung.dao.FooDao;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +21,8 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AopPerformanceTest {
+@ContextConfiguration("/com/baeldung/aop/beans.xml")
+public class AopXmlConfigPerformanceIntegrationTest {
 
     @Before
     public void setUp() {

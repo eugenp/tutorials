@@ -1,17 +1,19 @@
 package com.baeldung.web.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-public class GreetControllerTest {
+public class GreetControllerUnitTest {
 
     private MockMvc mockMvc;
     private static final String CONTENT_TYPE = "application/json";
@@ -43,19 +45,17 @@ public class GreetControllerTest {
 
     @Test
     public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(status().isOk())
-          .andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World John Doe!!!"));
+        this.mockMvc.perform(get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World John Doe!!!"));
     }
 
     @Test
     public void givenGreetURIWithPost_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPost")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE))
-          .andExpect(jsonPath("$.message").value("Hello World!!!"));
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPost")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World!!!"));
     }
 
     @Test
     public void givenGreetURIWithPostAndFormData_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(status().isOk())
-          .andExpect(content().contentType(CONTENT_TYPE)).andExpect(jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(jsonPath("$.id").value(1));
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/greetWithPostAndFormData").param("id", "1").param("name", "John Doe")).andDo(print()).andExpect(status().isOk()).andExpect(content().contentType(CONTENT_TYPE))
+                .andExpect(jsonPath("$.message").value("Hello World John Doe!!!")).andExpect(jsonPath("$.id").value(1));
     }
 }

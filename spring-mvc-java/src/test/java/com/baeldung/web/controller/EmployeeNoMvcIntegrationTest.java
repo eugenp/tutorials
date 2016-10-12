@@ -1,7 +1,7 @@
 package com.baeldung.web.controller;
 
-import org.junit.Before;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import com.baeldung.spring.web.config.WebConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = WebConfig.class)
-public class EmployeeTestWithoutMockMvc {
+public class EmployeeNoMvcIntegrationTest {
 
     @Autowired
     private EmployeeController employeeController;
@@ -25,9 +25,10 @@ public class EmployeeTestWithoutMockMvc {
         employeeController.initEmployees();
     }
 
+    //
+
     @Test
     public void whenInitEmployees_thenVerifyValuesInitiation() {
-
         Employee employee1 = employeeController.employeeMap.get(1L);
         Employee employee2 = employeeController.employeeMap.get(2L);
         Employee employee3 = employeeController.employeeMap.get(3L);

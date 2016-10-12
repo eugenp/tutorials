@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AopLoggingTest {
+public class AopLoggingIntegrationTest {
 
     @Before
     public void setUp() {

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AopPublishingTest {
+public class AopPublishingIntegrationTest {
 
     @Before
     public void setUp() {
