@@ -13,31 +13,30 @@ import static org.junit.Assert.assertTrue;
 
 public class HibernateFetchingTest {
 
+    // this loads sample data in the database
+    @Before
+    public void addFecthingTestData() {
+        FetchingAppView fav = new FetchingAppView();
+        fav.createTestData();
+    }
 
-	//this loads sample data in the database
-	@Before
-	public void addFecthingTestData(){
-		FetchingAppView fav = new FetchingAppView();
-		fav.createTestData();
-	}
-	
-	//testLazyFetching() tests the lazy loading
-	//Since it lazily loaded so orderDetalSetLazy won't
-	//be initialized
-	@Test
-	public void testLazyFetching() {
-		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetail> orderDetalSetLazy = fav.lazyLoaded();
-		assertFalse(Hibernate.isInitialized(orderDetalSetLazy));
-	}
-	
-	//testEagerFetching() tests the eager loading
-	//Since it eagerly loaded so orderDetalSetLazy would
-	//be initialized
-	@Test
-	public void testEagerFetching() {
-		FetchingAppView fav = new FetchingAppView();
-		Set<OrderDetail> orderDetalSetEager = fav.eagerLoaded();
-		assertTrue(Hibernate.isInitialized(orderDetalSetEager));
-	}
+    // testLazyFetching() tests the lazy loading
+    // Since it lazily loaded so orderDetalSetLazy won't
+    // be initialized
+    @Test
+    public void testLazyFetching() {
+        FetchingAppView fav = new FetchingAppView();
+        Set<OrderDetail> orderDetalSetLazy = fav.lazyLoaded();
+        assertFalse(Hibernate.isInitialized(orderDetalSetLazy));
+    }
+
+    // testEagerFetching() tests the eager loading
+    // Since it eagerly loaded so orderDetalSetLazy would
+    // be initialized
+    @Test
+    public void testEagerFetching() {
+        FetchingAppView fav = new FetchingAppView();
+        Set<OrderDetail> orderDetalSetEager = fav.eagerLoaded();
+        assertTrue(Hibernate.isInitialized(orderDetalSetEager));
+    }
 }

@@ -55,7 +55,12 @@
         </dependency>
     
         <!--  -->
-        
+        <dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-test</artifactId>
+		  <scope>test</scope>
+		</dependency>
+		
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -95,13 +100,54 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            
+            <plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>${unit-tests.skip}</skipTests>
+					<excludes>
+						<exclude>**/*LiveTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			
+				<plugin>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>integration-test</id>
+							<goals>
+								<goal>integration-test</goal>
+							</goals>
+							<configuration>
+								<skipTests>${live-tests.skip}</skipTests>
+								<includes>
+									<include>**/*LiveTest.class</include>
+								</includes>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			
         </plugins>
     </build>
+
+	<profiles>
+		<profile>
+			<id>live</id>
+			<properties>
+				<unit-tests.skip>false</unit-tests.skip>
+				<live-tests.skip>false</live-tests.skip>
+			</properties>
+		</profile>
+	</profiles>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <rest-assured.version>2.4.0</rest-assured.version>
+        <unit-tests.skip>false</unit-tests.skip>
+        <live-tests.skip>true</live-tests.skip>
     </properties>
     
 </project>

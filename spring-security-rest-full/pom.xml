@@ -439,7 +439,7 @@
         <querydsl.version>3.6.2</querydsl.version>
 
         <!-- marshalling -->
-        <jackson.version>2.7.2</jackson.version>
+        <jackson.version>2.7.8</jackson.version>
         <xml-apis.version>1.4.01</xml-apis.version>
 
         <!-- logging -->

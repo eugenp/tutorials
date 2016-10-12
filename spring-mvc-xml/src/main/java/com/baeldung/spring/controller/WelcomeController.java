@@ -11,8 +11,7 @@ public class WelcomeController extends AbstractController {
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         ModelAndView model = new ModelAndView("welcome");
-        model.addObject("msg", " Baeldung's Spring Handler Mappings Guide.<br>This request was mapped" +
-                " using SimpleUrlHandlerMapping.");
+        model.addObject("msg", " Baeldung's Spring Handler Mappings Guide.<br>This request was mapped" + " using SimpleUrlHandlerMapping.");
 
         return model;
     }

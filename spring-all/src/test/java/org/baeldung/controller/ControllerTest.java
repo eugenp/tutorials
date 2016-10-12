@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({"classpath:test-mvc.xml"})
+@ContextConfiguration({ "classpath:test-mvc.xml" })
 public class ControllerTest {
 
     private MockMvc mockMvc;
@@ -41,9 +41,7 @@ public class ControllerTest {
     @Test
     public void testTestController() throws Exception {
 
-        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test/"))
-          .andReturn()
-          .getModelAndView();
+        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test/")).andReturn().getModelAndView();
 
         // validate modal data
         Assert.assertSame(mv.getModelMap().get("data").toString(), "Welcome home man");
@@ -55,9 +53,7 @@ public class ControllerTest {
     @Test
     public void testRestController() throws Exception {
 
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/student/{studentId}", 1))
-          .andReturn().getResponse()
-          .getContentAsString();
+        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/student/{studentId}", 1)).andReturn().getResponse().getContentAsString();
 
         ObjectMapper reader = new ObjectMapper();
 
@@ -70,9 +66,7 @@ public class ControllerTest {
     @Test
     public void testRestAnnotatedController() throws Exception {
 
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/annotated/student/{studentId}", 1))
-          .andReturn().getResponse()
-          .getContentAsString();
+        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/annotated/student/{studentId}", 1)).andReturn().getResponse().getContentAsString();
 
         ObjectMapper reader = new ObjectMapper();
 
