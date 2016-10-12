@@ -77,5 +77,12 @@
 		<property name="username" value="yourUsername" />
 		<property name="password" value="yourPassword" />
 	</bean>	
+	
+	<int:bridge input-channel="videoChannel" output-channel="activatorChannel"/>
+	<int:channel id="activatorChannel"/>
+	
+	<int:service-activator input-channel="activatorChannel" method="handleMessage" ref="customActivator"/>
+	
+	<bean name="customActivator" class="com.baeldung.samples.endpoints.ActivatorImpl"/>
 
 </beans>
