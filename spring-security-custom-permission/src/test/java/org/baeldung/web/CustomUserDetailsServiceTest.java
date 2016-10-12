@@ -39,37 +39,33 @@ public class CustomUserDetailsServiceTest {
 
     @Test
     public void givenExistingUser_whenAuthenticate_thenRetrieveFromDb() {
-        try {
-            User user = new User();
-            user.setUsername(USERNAME);
-            user.setPassword(passwordEncoder.encode(PASSWORD));
+        User user = new User();
+        user.setUsername(USERNAME);
+        user.setPassword(passwordEncoder.encode(PASSWORD));
 
-            myUserRepository.save(user);
+        myUserRepository.save(user);
 
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME, PASSWORD);
-            Authentication authentication = authenticationProvider.authenticate(auth);
+        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME, PASSWORD);
+        Authentication authentication = authenticationProvider.authenticate(auth);
 
-            assertEquals(authentication.getName(), USERNAME);
-
-        } finally {
-            myUserRepository.removeUserByUsername(USERNAME);
-        }
+        assertEquals(authentication.getName(), USERNAME);
     }
 
     @Test(expected = BadCredentialsException.class)
     public void givenIncorrectUser_whenAuthenticate_thenBadCredentialsException() {
-        try {
-            User user = new User();
-            user.setUsername(USERNAME);
-            user.setPassword(passwordEncoder.encode(PASSWORD));
+        User user = new User();
+        user.setUsername(USERNAME);
+        user.setPassword(passwordEncoder.encode(PASSWORD));
 
-            myUserRepository.save(user);
+        myUserRepository.save(user);
 
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
-            authenticationProvider.authenticate(auth);
-        } finally {
-            myUserRepository.removeUserByUsername(USERNAME);
-        }
+        UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
+        authenticationProvider.authenticate(auth);
+    }
+    
+    @After
+    public void tearDown() {
+        myUserRepository.removeUserByUsername(USERNAME);
     }
 
 }
