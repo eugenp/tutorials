@@ -11,10 +11,10 @@ import javax.jms.Session;
 public class SampleMessageConverter implements MessageConverter {
 
     public Message toMessage(Object object, Session session) throws JMSException, MessageConversionException {
-        Employee person = (Employee) object;
+        Employee employee = (Employee) object;
         MapMessage message = session.createMapMessage();
-        message.setString("name", person.getName());
-        message.setInt("age", person.getAge());
+        message.setString("name", employee.getName());
+        message.setInt("age", employee.getAge());
         return message;
     }
 

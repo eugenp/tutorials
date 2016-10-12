@@ -102,22 +102,20 @@ public class FileOperationsTest {
         StringBuilder data = new StringBuilder();
         Stream<String> lines = Files.lines(path);
         lines.forEach(line -> data.append(line).append("\n"));
+        lines.close();
         
         Assert.assertEquals(expectedData, data.toString().trim());
     }
     
     private String readFromInputStream(InputStream inputStream) throws IOException {
-        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         StringBuilder resultStringBuilder = new StringBuilder();
-        String line;
-        while ((line = bufferedReader.readLine()) != null) {
-            resultStringBuilder.append(line);
-            resultStringBuilder.append("\n");
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                resultStringBuilder.append(line).append("\n");
+            }
         }
-        bufferedReader.close();
-        inputStreamReader.close();
-        inputStream.close();
+
         return resultStringBuilder.toString();
     }
 }

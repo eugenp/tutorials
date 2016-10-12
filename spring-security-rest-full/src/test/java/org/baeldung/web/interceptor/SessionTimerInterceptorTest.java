@@ -30,27 +30,26 @@ import org.springframework.web.context.WebApplicationContext;
 @WithMockUser(username = "admin", roles = { "USER", "ADMIN" })
 public class SessionTimerInterceptorTest {
 
-	@Autowired
-	WebApplicationContext wac;
+    @Autowired
+    WebApplicationContext wac;
 
-	private MockMvc mockMvc;
+    private MockMvc mockMvc;
 
-	@Before
-	public void setup() {
-		MockitoAnnotations.initMocks(this);
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    @Before
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
 
-	/**
-	 * After execution of HTTP GET logs from interceptor will be displayed in
-	 * the console
-	 */
-	@Test
-	public void testInterceptors() throws Exception {
-		HttpSession session = mockMvc.perform(get("/auth/admin")).andExpect(status().is2xxSuccessful()).andReturn()
-				.getRequest().getSession();
-		Thread.sleep(51000);
-		mockMvc.perform(get("/auth/admin").session((MockHttpSession) session)).andExpect(status().is2xxSuccessful());
-	}
+    /**
+     * After execution of HTTP GET logs from interceptor will be displayed in
+     * the console
+     */
+    @Test
+    public void testInterceptors() throws Exception {
+        HttpSession session = mockMvc.perform(get("/auth/admin")).andExpect(status().is2xxSuccessful()).andReturn().getRequest().getSession();
+        Thread.sleep(51000);
+        mockMvc.perform(get("/auth/admin").session((MockHttpSession) session)).andExpect(status().is2xxSuccessful());
+    }
 
 }

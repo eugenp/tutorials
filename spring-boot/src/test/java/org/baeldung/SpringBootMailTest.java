@@ -69,7 +69,6 @@ public class SpringBootMailTest {
         return wiserMessage.getMimeMessage().getSubject();
     }
 
-
     private SimpleMailMessage composeEmailMessage() {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(userTo);

@@ -28,27 +28,16 @@ public class ScopeAnnotationsTest extends AbstractJUnit4SpringContextTests {
 
     @Before
     public void setup() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-                .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     }
 
     @Test
     public void whenDifferentRequests_thenDifferentInstancesOfRequestScopedBeans() throws Exception {
         MockHttpSession session = new MockHttpSession();
 
-        String requestScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/request")
-                .session(session)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+        String requestScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/request").session(session).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
-        String requestScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/request")
-                .session(session)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+        String requestScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/request").session(session).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
         assertNotEquals(requestScopedServiceInstanceNumber1, requestScopedServiceInstanceNumber2);
     }
@@ -59,24 +48,9 @@ public class ScopeAnnotationsTest extends AbstractJUnit4SpringContextTests {
         MockHttpSession session1 = new MockHttpSession();
         MockHttpSession session2 = new MockHttpSession();
 
-        String sessionScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/session")
-                .session(session1)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-        String sessionScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/session")
-                .session(session1)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-        String sessionScopedServiceInstanceNumber3 = this.mockMvc.perform(get("/appointments/session")
-                .session(session2)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+        String sessionScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/session").session(session1).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        String sessionScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/session").session(session1).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        String sessionScopedServiceInstanceNumber3 = this.mockMvc.perform(get("/appointments/session").session(session2).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
         assertEquals(sessionScopedServiceInstanceNumber1, sessionScopedServiceInstanceNumber2);
 
@@ -90,18 +64,8 @@ public class ScopeAnnotationsTest extends AbstractJUnit4SpringContextTests {
         MockHttpSession session1 = new MockHttpSession();
         MockHttpSession session2 = new MockHttpSession();
 
-        String applicationScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/application")
-                .session(session1)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
-        String applicationScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/application")
-                .session(session2)
-                .accept(MediaType.ALL)).andExpect(status().isOk())
-                .andReturn()
-                .getResponse()
-                .getContentAsString();
+        String applicationScopedServiceInstanceNumber1 = this.mockMvc.perform(get("/appointments/application").session(session1).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        String applicationScopedServiceInstanceNumber2 = this.mockMvc.perform(get("/appointments/application").session(session2).accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
         assertEquals(applicationScopedServiceInstanceNumber1, applicationScopedServiceInstanceNumber2);
 

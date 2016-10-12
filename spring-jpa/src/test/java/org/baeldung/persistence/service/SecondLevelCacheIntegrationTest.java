@@ -43,8 +43,7 @@ public class SecondLevelCacheIntegrationTest {
         final Foo foo = new Foo(randomAlphabetic(6));
         fooService.create(foo);
         fooService.findOne(foo.getId());
-        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0)
-                .getCache("org.baeldung.persistence.model.Foo").getSize();
+        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("org.baeldung.persistence.model.Foo").getSize();
         assertThat(size, greaterThan(0));
     }
 
@@ -64,21 +63,17 @@ public class SecondLevelCacheIntegrationTest {
             return nativeQuery.executeUpdate();
         });
 
-        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0)
-                .getCache("org.baeldung.persistence.model.Foo").getSize();
+        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("org.baeldung.persistence.model.Foo").getSize();
         assertThat(size, greaterThan(0));
     }
 
     @Test
     public final void givenCacheableQueryIsExecuted_thenItIsCached() {
         new TransactionTemplate(platformTransactionManager).execute(status -> {
-            return entityManager.createQuery("select f from Foo f")
-                    .setHint("org.hibernate.cacheable", true)
-                    .getResultList();
+            return entityManager.createQuery("select f from Foo f").setHint("org.hibernate.cacheable", true).getResultList();
         });
 
-        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0)
-                .getCache("org.hibernate.cache.internal.StandardQueryCache").getSize();
+        final int size = CacheManager.ALL_CACHE_MANAGERS.get(0).getCache("org.hibernate.cache.internal.StandardQueryCache").getSize();
         assertThat(size, greaterThan(0));
     }
 }

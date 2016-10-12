@@ -38,29 +38,25 @@ public class MultiBucketCouchbaseConfig extends AbstractCouchbaseConfiguration {
     protected String getBucketPassword() {
         return DEFAULT_BUCKET_PASSWORD;
     }
-    
+
     @Bean
     public Bucket campusBucket() throws Exception {
         return couchbaseCluster().openBucket("baeldung2", "");
     }
-    
+
     @Bean(name = "campusTemplate")
     public CouchbaseTemplate campusTemplate() throws Exception {
-        CouchbaseTemplate template = new CouchbaseTemplate(
-          couchbaseClusterInfo(),
-          campusBucket(),
-          mappingCouchbaseConverter(),
-          translationService());
+        CouchbaseTemplate template = new CouchbaseTemplate(couchbaseClusterInfo(), campusBucket(), mappingCouchbaseConverter(), translationService());
         template.setDefaultConsistency(getDefaultConsistency());
         return template;
     }
-    
+
     @Override
     public void configureRepositoryOperationsMapping(RepositoryOperationsMapping baseMapping) {
         try {
             baseMapping.mapEntity(Campus.class, campusTemplate());
         } catch (Exception e) {
-            //custom Exception handling
+            // custom Exception handling
         }
     }
 
