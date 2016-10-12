@@ -18,24 +18,24 @@
 	<bean id="connectionFactory"
 		class="org.springframework.jms.connection.SingleConnectionFactory">
 		<constructor-arg ref="amqConnectionFactory" />
-		
+
 	</bean>
-	
+
 
 	<bean id="destinationQueue" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg index="0" value="IN_QUEUE" />
 	</bean>
 
-	
+
 	<bean id="SampleJmsMessageSender" class="com.baeldung.spring.jms.SampleJmsMessageSender">
 		<property name="queue" ref="destinationQueue" />
 		<property name="jmsTemplate" ref="jmsTemplate" />
 	</bean>
-	
+
 	<bean id="myMessageConverter" class="com.baeldung.spring.jms.SampleMessageConverter" />
 
 	<!-- this is the Message-Driven POJO (MDP) -->
-	<bean id="messageListener" class="com.baeldung.spring.jms.SampleListener" >
+	<bean id="messageListener" class="com.baeldung.spring.jms.SampleListener">
 		<property name="jmsTemplate" ref="jmsTemplate" />
 		<property name="queue" ref="destinationQueue" />
 	</bean>
