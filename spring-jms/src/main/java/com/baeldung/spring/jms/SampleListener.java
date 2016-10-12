@@ -5,13 +5,21 @@ import org.springframework.jms.core.JmsTemplate;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.Queue;
 import javax.jms.TextMessage;
 import java.util.Map;
 
 public class SampleListener implements MessageListener {
 
-    public JmsTemplate getJmsTemplate() {
-        return getJmsTemplate();
+    private JmsTemplate jmsTemplate;
+    private Queue queue;
+
+    public void setJmsTemplate(JmsTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    public void setQueue(Queue queue) {
+        this.queue = queue;
     }
 
     public void onMessage(Message message) {
@@ -19,17 +27,14 @@ public class SampleListener implements MessageListener {
             try {
 
                 String msg = ((TextMessage) message).getText();
-                System.out.println("Message has been consumed : " + msg);
             } catch (JMSException ex) {
                 throw new RuntimeException(ex);
             }
-        } else {
-            throw new IllegalArgumentException("Message Error");
         }
     }
 
     public Employee receiveMessage() throws JMSException {
-        Map map = (Map) getJmsTemplate().receiveAndConvert();
+        Map map = (Map) this.jmsTemplate.receiveAndConvert();
         return new Employee((String) map.get("name"), (Integer) map.get("age"));
     }
 }

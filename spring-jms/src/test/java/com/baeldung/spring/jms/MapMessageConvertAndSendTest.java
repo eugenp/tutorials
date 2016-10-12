@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class MapMessageConvertAndSendTest {
+public class DefaultTextMessageSenderTest {
 
     private static SampleJmsMessageSender messageProducer;
 
@@ -17,8 +17,8 @@ public class MapMessageConvertAndSendTest {
     }
 
     @Test
-    public void testSendMessage() {
-        messageProducer.sendMessage(new Employee("JavaDeveloper2", 22));
+    public void testSimpleSend() {
+        messageProducer.simpleSend();
     }
 
 }
