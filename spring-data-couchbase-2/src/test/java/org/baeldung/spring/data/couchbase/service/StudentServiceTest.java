@@ -30,27 +30,17 @@ public abstract class StudentServiceTest extends IntegrationTest {
     static final String joeCollegeId = "student:" + joe + ":" + college;
     static final DateTime joeCollegeDob = DateTime.now().minusYears(21);
     static final Student joeCollege = new Student(joeCollegeId, joe, college, joeCollegeDob);
-    static final JsonObject jsonJoeCollege = JsonObject.empty()
-            .put(typeField, Student.class.getName())
-            .put("firstName", joe)
-            .put("lastName", college)
-            .put("created", DateTime.now().getMillis())
-            .put("version", 1);
+    static final JsonObject jsonJoeCollege = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", joe).put("lastName", college).put("created", DateTime.now().getMillis()).put("version", 1);
 
     static final String judy = "Judy";
     static final String jetson = "Jetson";
     static final String judyJetsonId = "student:" + judy + ":" + jetson;
     static final DateTime judyJetsonDob = DateTime.now().minusYears(19).minusMonths(5).minusDays(3);
     static final Student judyJetson = new Student(judyJetsonId, judy, jetson, judyJetsonDob);
-    static final JsonObject jsonJudyJetson = JsonObject.empty()
-            .put(typeField, Student.class.getName())
-            .put("firstName", judy)
-            .put("lastName", jetson)
-            .put("created", DateTime.now().getMillis())
-            .put("version", 1);
-    
+    static final JsonObject jsonJudyJetson = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", judy).put("lastName", jetson).put("created", DateTime.now().getMillis()).put("version", 1);
+
     StudentService studentService;
-    
+
     @BeforeClass
     public static void setupBeforeClass() {
         Cluster cluster = CouchbaseCluster.create(MyCouchbaseConfig.NODE_LIST);
@@ -60,7 +50,7 @@ public abstract class StudentServiceTest extends IntegrationTest {
         bucket.close();
         cluster.disconnect();
     }
-    
+
     @Test
     public void whenCreatingStudent_thenDocumentIsPersisted() {
         String firstName = "Eric";
@@ -75,7 +65,7 @@ public abstract class StudentServiceTest extends IntegrationTest {
         assertEquals(expectedStudent.getId(), actualStudent.getId());
     }
 
-    @Test(expected=ConstraintViolationException.class)
+    @Test(expected = ConstraintViolationException.class)
     public void whenCreatingStudentWithInvalidFirstName_thenConstraintViolationException() {
         String firstName = "Er+ic";
         String lastName = "Stratton";
@@ -85,7 +75,7 @@ public abstract class StudentServiceTest extends IntegrationTest {
         studentService.create(student);
     }
 
-    @Test(expected=ConstraintViolationException.class)
+    @Test(expected = ConstraintViolationException.class)
     public void whenCreatingStudentWithFutureDob_thenConstraintViolationException() {
         String firstName = "Jane";
         String lastName = "Doe";
@@ -130,11 +120,11 @@ public abstract class StudentServiceTest extends IntegrationTest {
         assertFalse(resultList.isEmpty());
         assertTrue(allResultsContainExpectedLastName(resultList, expectedLastName));
     }
-    
+
     private boolean resultContains(List<Student> resultList, Student student) {
         boolean found = false;
-        for(Student p : resultList) {
-            if(p.getId().equals(student.getId())) {
+        for (Student p : resultList) {
+            if (p.getId().equals(student.getId())) {
                 found = true;
                 break;
             }
@@ -144,8 +134,8 @@ public abstract class StudentServiceTest extends IntegrationTest {
 
     private boolean allResultsContainExpectedFirstName(List<Student> resultList, String firstName) {
         boolean found = false;
-        for(Student p : resultList) {
-            if(p.getFirstName().equals(firstName)) {
+        for (Student p : resultList) {
+            if (p.getFirstName().equals(firstName)) {
                 found = true;
                 break;
             }
@@ -155,8 +145,8 @@ public abstract class StudentServiceTest extends IntegrationTest {
 
     private boolean allResultsContainExpectedLastName(List<Student> resultList, String lastName) {
         boolean found = false;
-        for(Student p : resultList) {
-            if(p.getLastName().equals(lastName)) {
+        for (Student p : resultList) {
+            if (p.getLastName().equals(lastName)) {
                 found = true;
                 break;
             }

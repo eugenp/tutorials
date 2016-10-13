@@ -31,22 +31,15 @@ public class SpringBootApplicationTest {
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
 
-
     @Before
     public void setupMockMvc() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-                .build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test
     public void givenRequestHasBeenMade_whenMeetsAllOfGivenConditions_thenCorrect() throws Exception {
-        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
-                MediaType.APPLICATION_JSON.getSubtype(),
-                Charset.forName("utf8"));
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all")).
-                andExpect(MockMvcResultMatchers.status().isOk()).
-                andExpect(MockMvcResultMatchers.content().contentType(contentType)).
-                andExpect(jsonPath("$", hasSize(4)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(contentType)).andExpect(jsonPath("$", hasSize(4)));
     }
 }

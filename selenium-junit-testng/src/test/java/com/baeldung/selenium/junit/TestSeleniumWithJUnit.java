@@ -1,6 +1,7 @@
 package test.java.com.baeldung.selenium.junit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import main.java.com.baeldung.selenium.SeleniumExample;
 
 import org.junit.After;
@@ -10,6 +11,7 @@ import org.junit.Test;
 public class TestSeleniumWithJUnit {
 
     private SeleniumExample seleniumExample;
+	private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
 
     @Before
     public void setUp() {
@@ -23,8 +25,8 @@ public class TestSeleniumWithJUnit {
 
     @Test
     public void whenPageIsLoaded_thenTitleIsAsPerExpectation() {
-        String expectedTitle = seleniumExample.getExpectedTitle();
-        String actualTitle = seleniumExample.getActualTitle();
+        String actualTitle = seleniumExample.getTitle();
+        assertNotNull(actualTitle);
         assertEquals(actualTitle, expectedTitle);
     }
 }

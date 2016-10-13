@@ -27,9 +27,7 @@ public class SpringAkkaTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void whenCallingGreetingActor_thenActorGreetsTheCaller() throws Exception {
-        ActorRef greeter = system.actorOf(
-                SPRING_EXTENSION_PROVIDER.get(system)
-                        .props("greetingActor"), "greeter");
+        ActorRef greeter = system.actorOf(SPRING_EXTENSION_PROVIDER.get(system).props("greetingActor"), "greeter");
 
         FiniteDuration duration = FiniteDuration.create(1, TimeUnit.SECONDS);
         Timeout timeout = Timeout.durationToTimeout(duration);

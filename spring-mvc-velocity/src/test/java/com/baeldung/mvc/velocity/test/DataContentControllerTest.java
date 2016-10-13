@@ -38,7 +38,6 @@ public class DataContentControllerTest {
 
     @Before
     public void setUp() {
-        
 
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
@@ -53,9 +52,9 @@ public class DataContentControllerTest {
         mockMvc.perform(get("/list")).andExpect(xpath("//table").exists());
         mockMvc.perform(get("/list")).andExpect(xpath("//td[@id='tutId_1']").exists());
     }
-    
+
     @Test
-    public void whenCallingIndex_thenViewOK() throws Exception{
+    public void whenCallingIndex_thenViewOK() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index")).andExpect(model().size(0));
     }
 }

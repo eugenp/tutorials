@@ -82,8 +82,7 @@ public class MovieRepositoryTest {
     @DirtiesContext
     public void testFindAll() {
         System.out.println("findAll");
-        Collection<Movie> result =
-                (Collection<Movie>) movieRepository.findAll();
+        Collection<Movie> result = (Collection<Movie>) movieRepository.findAll();
         assertNotNull(result);
         assertEquals(1, result.size());
     }
@@ -93,8 +92,7 @@ public class MovieRepositoryTest {
     public void testFindByTitleContaining() {
         System.out.println("findByTitleContaining");
         String title = "Italian";
-        Collection<Movie> result =
-                movieRepository.findByTitleContaining(title);
+        Collection<Movie> result = movieRepository.findByTitleContaining(title);
         assertNotNull(result);
         assertEquals(1, result.size());
     }
@@ -126,8 +124,7 @@ public class MovieRepositoryTest {
     public void testDeleteAll() {
         System.out.println("deleteAll");
         movieRepository.deleteAll();
-        Collection<Movie> result =
-                (Collection<Movie>) movieRepository.findAll();
+        Collection<Movie> result = (Collection<Movie>) movieRepository.findAll();
         assertEquals(0, result.size());
     }
 }

@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class SpringQuartzApp {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(SpringQuartzApp.class)
-                .showBanner(false).run(args);
+        new SpringApplicationBuilder(SpringQuartzApp.class).showBanner(false).run(args);
     }
 }
