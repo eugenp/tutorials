@@ -61,13 +61,11 @@ public class Course {
     @Path("{studentOrder}")
     public Response deleteStudent(@PathParam("studentOrder") int studentOrder) {
         Student student = students.get(studentOrder);
-        Response response;
         if (student != null) {
             students.remove(studentOrder);
-            response = Response.ok().build();
+            return Response.ok().build();
         } else {
-            response = Response.notModified().build();
+            return Response.notModified().build();
         }
-        return response;
     }
 }
