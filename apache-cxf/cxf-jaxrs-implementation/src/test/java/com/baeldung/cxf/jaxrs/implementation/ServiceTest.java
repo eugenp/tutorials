@@ -1,18 +1,5 @@
 package com.baeldung.cxf.jaxrs.implementation;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-
-import javax.xml.bind.JAXB;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpPost;
@@ -20,6 +7,17 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import javax.xml.bind.JAXB;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import static org.junit.Assert.assertEquals;
 
 public class ServiceTest {
     private static final String BASE_URL = "http://localhost:8080/baeldung/courses/";
@@ -80,14 +78,12 @@ public class ServiceTest {
     private Course getCourse(int courseOrder) throws IOException {
         URL url = new URL(BASE_URL + courseOrder);
         InputStream input = url.openStream();
-        Course course = JAXB.unmarshal(new InputStreamReader(input), Course.class);
-        return course;
+        return JAXB.unmarshal(new InputStreamReader(input), Course.class);
     }
 
     private Student getStudent(int courseOrder, int studentOrder) throws IOException {
         URL url = new URL(BASE_URL + courseOrder + "/students/" + studentOrder);
         InputStream input = url.openStream();
-        Student student = JAXB.unmarshal(new InputStreamReader(input), Student.class);
-        return student;
+        return JAXB.unmarshal(new InputStreamReader(input), Student.class);
     }
 }
