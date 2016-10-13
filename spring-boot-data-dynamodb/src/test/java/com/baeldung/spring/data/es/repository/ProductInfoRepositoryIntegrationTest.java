@@ -48,9 +48,9 @@ public class ProductInfoRepositoryIntegrationTest {
     private static final String EXPECTED_COST = "20";
     private static final String EXPECTED_PRICE = "50";
 
-    @Before
+    @BeforeClass
     @Ignore
-    public void setUp() throws Exception {
+    public static void setUp() throws Exception {
 
         try {
             dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
