@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class OkHttpPostingTest {
+public class OkHttpPostingLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";

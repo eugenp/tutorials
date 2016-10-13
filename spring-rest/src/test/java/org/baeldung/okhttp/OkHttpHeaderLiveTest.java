@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class OkHttpHeaderTest {
+public class OkHttpHeaderLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 

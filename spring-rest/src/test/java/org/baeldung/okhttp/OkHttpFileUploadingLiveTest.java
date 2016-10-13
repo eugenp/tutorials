@@ -18,7 +18,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class OkHttpFileUploadingTest {
+public class OkHttpFileUploadingLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 

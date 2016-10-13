@@ -14,7 +14,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class OkHttpGetTest {
+public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 

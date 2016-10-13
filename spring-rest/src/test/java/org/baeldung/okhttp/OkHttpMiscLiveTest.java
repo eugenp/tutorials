@@ -16,10 +16,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class OkHttpMiscTest {
+public class OkHttpMiscLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
-    private static Logger logger = LoggerFactory.getLogger(OkHttpMiscTest.class);
+    private static Logger logger = LoggerFactory.getLogger(OkHttpMiscLiveTest.class);
 
     @Test
     public void whenSetRequestTimeout_thenFail() throws IOException {

@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class OkHttpRedirectTest {
+public class OkHttpRedirectLiveTest {
 
     @Test
     public void whenSetFollowRedirects_thenNotRedirected() throws IOException {
