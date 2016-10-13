@@ -25,8 +25,8 @@ public class SampleListener implements MessageListener {
     public void onMessage(Message message) {
         if (message instanceof TextMessage) {
             try {
-
                 String msg = ((TextMessage) message).getText();
+                System.out.println("Received message: " + msg);
             } catch (JMSException ex) {
                 throw new RuntimeException(ex);
             }
