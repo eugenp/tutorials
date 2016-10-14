@@ -8,10 +8,10 @@ import java.lang.annotation.Target;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 @Qualifier
-@Target({ElementType.FIELD, ElementType.METHOD,ElementType.TYPE, ElementType.PARAMETER})
+@Target({ ElementType.FIELD, ElementType.METHOD, ElementType.TYPE, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FormatterType {
-    
+
     String value();
 
 }

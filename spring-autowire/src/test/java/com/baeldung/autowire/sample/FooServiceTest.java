@@ -9,14 +9,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=AppConfig.class, loader=AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = AppConfig.class, loader = AnnotationConfigContextLoader.class)
 public class FooServiceTest {
-    
+
     @Autowired
     FooService fooService;
-    
+
     @Test
-    public void whenFooFormatterType_thenReturnFoo(){
+    public void whenFooFormatterType_thenReturnFoo() {
         Assert.assertEquals("foo", fooService.doStuff());
     }
 }

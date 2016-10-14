@@ -34,7 +34,6 @@
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
-        <module>gson-jackson-performance</module>
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>

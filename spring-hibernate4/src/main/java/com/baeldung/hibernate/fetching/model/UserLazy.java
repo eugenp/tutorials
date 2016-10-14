@@ -6,67 +6,66 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table (name = "USER")
+@Table(name = "USER")
 public class UserLazy implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue
-	@Column(name="USER_ID")
-	private Long userId;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<OrderDetail> orderDetail = new HashSet();
 
-	public UserLazy() {
-	}
+    private static final long serialVersionUID = 1L;
 
-	public UserLazy(final Long userId) {
-		super();
-		this.userId = userId;
-	}
+    @Id
+    @GeneratedValue
+    @Column(name = "USER_ID")
+    private Long userId;
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		return result;
-	}
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<OrderDetail> orderDetail = new HashSet();
 
-	@Override
-	public boolean equals(final Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final UserLazy other = (UserLazy) obj;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		return true;
-	}
+    public UserLazy() {
+    }
 
-	public Long getUserId() {
-		return userId;
-	}
+    public UserLazy(final Long userId) {
+        super();
+        this.userId = userId;
+    }
 
-	public void setUserId(final Long userId) {
-		this.userId = userId;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        return result;
+    }
 
-	
-	public Set<OrderDetail> getOrderDetail() {
-		return orderDetail;
-	}
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final UserLazy other = (UserLazy) obj;
+        if (userId == null) {
+            if (other.userId != null)
+                return false;
+        } else if (!userId.equals(other.userId))
+            return false;
+        return true;
+    }
 
-	public void setOrderDetail(Set<OrderDetail> orderDetail) {
-		this.orderDetail = orderDetail;
-	}
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(final Long userId) {
+        this.userId = userId;
+    }
+
+    public Set<OrderDetail> getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(Set<OrderDetail> orderDetail) {
+        this.orderDetail = orderDetail;
+    }
 
 }

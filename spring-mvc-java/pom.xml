@@ -6,6 +6,7 @@
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java</name>
     <packaging>war</packaging>
+
     <dependencies>
         <!-- Spring -->
         <dependency>
@@ -34,16 +35,12 @@
             <artifactId>spring-messaging</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
+
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.7.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.7.3</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- web -->
@@ -59,6 +56,7 @@
             <version>1.2</version>
             <scope>runtime</scope>
         </dependency>
+
         <!-- AOP -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -82,6 +80,11 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.1</version>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>${net.sourceforge.htmlunit}</version>
+        </dependency>
 
         <!-- Thymeleaf -->
         <dependency>
@@ -93,18 +96,6 @@
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
             <version>${thymeleaf.version}</version>
-        </dependency>
-
-        <!-- Json conversion -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.1.2</version>
         </dependency>
 
         <!-- logging -->
@@ -210,7 +201,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
+                        <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -244,18 +235,23 @@
         <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
         <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
+        <jackson.version>2.7.8</jackson.version>
+
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.5</logback.version>
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
+
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
+
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
@@ -264,6 +260,7 @@
         <httpclient.version>4.5</httpclient.version>
         <rest-assured.version>2.9.0</rest-assured.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
+
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
