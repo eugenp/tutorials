@@ -9,7 +9,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-public class TestSeleniumWithTestNG {
+public class SeleniumWithTestNGLiveTest {
 
     private SeleniumExample seleniumExample;
     private String expecteTilteAboutBaeldungPage = "About Baeldung | Baeldung";

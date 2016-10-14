@@ -9,7 +9,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestSeleniumWithJUnit {
+public class SeleniumWithJUnitLiveTest {
 
     private static SeleniumExample seleniumExample;
     private String expecteTilteAboutBaeldungPage = "About Baeldung | Baeldung";
