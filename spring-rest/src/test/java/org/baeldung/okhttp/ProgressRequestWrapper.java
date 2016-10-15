@@ -1,10 +1,15 @@
 package org.baeldung.okhttp;
 
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okio.*;
+import okhttp3.MediaType;
 
 import java.io.IOException;
+
+import okio.Buffer;
+import okio.BufferedSink;
+import okio.ForwardingSink;
+import okio.Okio;
+import okio.Sink;
 
 public class ProgressRequestWrapper extends RequestBody {
 
@@ -61,6 +66,7 @@ public class ProgressRequestWrapper extends RequestBody {
     }
 
     public interface ProgressListener {
+
         void onRequestProgress(long bytesWritten, long contentLength);
 
     }

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * Main Application Class - uses Spring Boot. Just run this as a normal Java
- * class to run up a Jetty Server (on http://localhost:8080)
+ * class to run up a Jetty Server (on http://localhost:8082/spring-security-rest-full)
  *
  */
 @EnableScheduling

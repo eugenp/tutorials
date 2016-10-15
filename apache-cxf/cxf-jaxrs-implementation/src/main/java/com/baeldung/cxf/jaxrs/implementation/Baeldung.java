@@ -1,16 +1,11 @@
 package com.baeldung.cxf.jaxrs.implementation;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
 
 @Path("baeldung")
 @Produces("text/xml")
@@ -51,14 +46,13 @@ public class Baeldung {
     @Path("courses/{courseOrder}")
     public Response putCourse(@PathParam("courseOrder") int courseOrder, Course course) {
         Course existingCourse = courses.get(courseOrder);
-        Response response;
+
         if (existingCourse == null || existingCourse.getId() != course.getId() || !(existingCourse.getName().equals(course.getName()))) {
             courses.put(courseOrder, course);
-            response = Response.ok().build();
-        } else {
-            response = Response.notModified().build();
+            return Response.ok().build();
         }
-        return response;
+
+        return Response.notModified().build();
     }
 
     @Path("courses/{courseOrder}/students")
