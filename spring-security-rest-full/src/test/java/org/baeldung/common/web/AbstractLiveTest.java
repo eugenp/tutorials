@@ -57,7 +57,7 @@ public abstract class AbstractLiveTest<T extends Serializable> {
     //
 
     protected String getURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/foos";
+        return "http://localhost:" + APPLICATION_PORT + "/auth/foos";
     }
 
     protected final RequestSpecification givenAuth() {
