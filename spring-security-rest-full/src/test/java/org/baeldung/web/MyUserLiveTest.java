@@ -6,30 +6,14 @@ import org.baeldung.persistence.model.MyUser;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = { ConfigTest.class }, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class MyUserLiveTest {
 
-    private final ObjectMapper mapper = new ObjectMapper();
     private final MyUser userJohn = new MyUser("john", "doe", "john@doe.com", 11);
-    private final MyUser userTom = new MyUser("tom", "doe", "tom@doe.com", 20);
-
-    // private static boolean setupDataCreated = false;
-    //
-    // @Before
-    // public void setupData() throws JsonProcessingException {
-    // if (!setupDataCreated) {
-    // withRequestBody(givenAuth(), userJohn).post("http://localhost:8080/auth/myusers");
-    // withRequestBody(givenAuth(), userTom).post("http://localhost:8080/auth/myusers");
-    // setupDataCreated = true;
-    // }
-    // }
 
     @Test
     public void whenGettingListOfUsers_thenCorrect() {
