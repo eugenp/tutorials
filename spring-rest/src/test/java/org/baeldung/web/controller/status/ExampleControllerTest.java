@@ -32,13 +32,11 @@ public class ExampleControllerTest {
 
     @Test
     public void whenGetRequestSentToController_thenReturnsStatusNotAcceptable() throws Exception {
-        mockMvc.perform(get("/controller"))
-            .andExpect(status().isNotAcceptable());
+        mockMvc.perform(get("/controller")).andExpect(status().isNotAcceptable());
     }
 
     @Test
     public void whenGetRequestSentToException_thenReturnsStatusForbidden() throws Exception {
-        mockMvc.perform(get("/exception"))
-                .andExpect(status().isForbidden());
+        mockMvc.perform(get("/exception")).andExpect(status().isForbidden());
     }
 }

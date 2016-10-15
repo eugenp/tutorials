@@ -16,42 +16,42 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @ComponentScan("org.baeldung.scopes")
 @EnableWebMvc
 public class ScopesConfig {
-	@Bean
-	public UrlBasedViewResolver setupViewResolver() {
-		final UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-		resolver.setPrefix("/WEB-INF/view/");
-		resolver.setSuffix(".jsp");
-		resolver.setViewClass(JstlView.class);
-		return resolver;
-	}
+    @Bean
+    public UrlBasedViewResolver setupViewResolver() {
+        final UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+        resolver.setPrefix("/WEB-INF/view/");
+        resolver.setSuffix(".jsp");
+        resolver.setViewClass(JstlView.class);
+        return resolver;
+    }
 
-	@Bean
-	@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public HelloMessageGenerator requestMessage() {
-		return new HelloMessageGenerator();
-	}
+    @Bean
+    @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public HelloMessageGenerator requestMessage() {
+        return new HelloMessageGenerator();
+    }
 
-	@Bean
-	@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public HelloMessageGenerator sessionMessage() {
-		return new HelloMessageGenerator();
-	}
+    @Bean
+    @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public HelloMessageGenerator sessionMessage() {
+        return new HelloMessageGenerator();
+    }
 
-	@Bean
-	@Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public HelloMessageGenerator globalSessionMessage() {
-		return new HelloMessageGenerator();
-	}
+    @Bean
+    @Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public HelloMessageGenerator globalSessionMessage() {
+        return new HelloMessageGenerator();
+    }
 
-	@Bean
-	@Scope("prototype")
-	public Person personPrototype() {
-		return new Person();
-	}
+    @Bean
+    @Scope("prototype")
+    public Person personPrototype() {
+        return new Person();
+    }
 
-	@Bean
-	@Scope("singleton")
-	public Person personSingleton() {
-		return new Person();
-	}
+    @Bean
+    @Scope("singleton")
+    public Person personSingleton() {
+        return new Person();
+    }
 }

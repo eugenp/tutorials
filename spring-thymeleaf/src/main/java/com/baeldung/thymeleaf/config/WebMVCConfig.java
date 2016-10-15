@@ -22,6 +22,9 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import com.baeldung.thymeleaf.formatter.NameFormatter;
 import com.baeldung.thymeleaf.utils.ArrayUtil;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
+
 
 @Configuration
 @EnableWebMvc
@@ -70,6 +73,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 
 	private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.addDialect(new LayoutDialect(new GroupingStrategy()));
         engine.setTemplateResolver(templateResolver);
         return engine;
     }

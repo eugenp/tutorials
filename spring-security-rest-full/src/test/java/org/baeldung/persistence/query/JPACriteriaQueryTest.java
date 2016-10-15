@@ -98,7 +98,7 @@ public class JPACriteriaQueryTest {
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        params.add(new SearchCriteria("firstName", ":", "jo"));
+        params.add(new SearchCriteria("firstName", ":", "Jo"));
 
         final List<User> results = userApi.searchUser(params);
 
