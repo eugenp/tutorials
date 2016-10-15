@@ -24,7 +24,7 @@ public class JPASpecificationLiveTest {
 
     private User userTom;
 
-    private final String URL_PREFIX = "http://localhost:8080/auth/users/spec?search=";
+    private final String URL_PREFIX = "http://localhost:8082/spring-security-rest-full/auth/users/spec?search=";
 
     @Before
     public void init() {
