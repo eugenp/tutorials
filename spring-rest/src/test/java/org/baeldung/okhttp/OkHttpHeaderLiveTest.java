@@ -9,12 +9,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class OkHttpHeaderTest {
+public class OkHttpHeaderLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
     @Test
-    public void whenSetHeaderUsingOkHttp_thenCorrect() throws IOException {
+    public void whenSetHeader_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -29,7 +29,7 @@ public class OkHttpHeaderTest {
     }
 
     @Test
-    public void whenSetDefaultHeaderUsingOkHttp_thenCorrect() throws IOException {
+    public void whenSetDefaultHeader_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient.Builder()
           .addInterceptor(new DefaultContentTypeInterceptor("application/json"))
