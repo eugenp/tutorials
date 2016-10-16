@@ -21,7 +21,6 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.spring.data.es.config.Config;
 import com.baeldung.spring.data.es.model.Article;
@@ -29,7 +28,7 @@ import com.baeldung.spring.data.es.model.Author;
 import com.baeldung.spring.data.es.service.ArticleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Config.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = Config.class)
 public class ElasticSearchTest {
 
     @Autowired
