@@ -29,7 +29,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class SandboxTest {
+public class SandboxLiveTest {
 
     // original example
     @Ignore

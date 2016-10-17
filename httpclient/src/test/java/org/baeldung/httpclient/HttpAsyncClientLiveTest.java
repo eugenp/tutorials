@@ -33,7 +33,7 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.junit.Test;
 
-public class HttpAsyncClientTest {
+public class HttpAsyncClientLiveTest {
 
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";

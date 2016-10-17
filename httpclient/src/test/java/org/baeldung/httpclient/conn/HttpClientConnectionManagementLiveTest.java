@@ -36,7 +36,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class HttpClientConnectionManagementTest {
+public class HttpClientConnectionManagementLiveTest {
     private static final String SERVER1 = "http://www.petrikainulainen.net/";
     private static final String SERVER7 = "http://www.baeldung.com/";
 
