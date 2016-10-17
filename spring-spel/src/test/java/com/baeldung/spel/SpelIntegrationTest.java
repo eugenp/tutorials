@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-public class SpelTest {
+public class SpelIntegrationTest {
 
     @Autowired
     private SpelArithmetic spelArithmetic = new SpelArithmetic();
