@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { MvcConfig.class, PersistenceDerbyJPAConfig.class, SecSecurityConfig.class })
 @WebAppConfiguration
-public class CustomUserDetailsServiceTest {
+public class CustomUserDetailsServiceIntegrationTest {
 
     private static final Logger LOG = Logger.getLogger("CustomUserDetailsServiceTest");
 
