@@ -24,7 +24,7 @@ import static org.junit.Assert.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebIntegrationTest
-public class ApplicationTest {
+public class ApplicationIntegrationTest {
 
     private static final String COURSE1_URL = "http://localhost:8080/courses/1";
 

@@ -18,7 +18,7 @@ import static org.hamcrest.core.IsEqual.*;
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:8888")
-public class StudentServiceTest {
+public class StudentServiceIntegrationTest {
 
     private static final String ENDPOINT = "http://localhost:8888/student/get";
 
