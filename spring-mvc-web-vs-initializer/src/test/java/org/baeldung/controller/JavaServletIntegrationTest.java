@@ -20,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(loader=AnnotationConfigWebContextLoader.class, classes = MvcConfig.class)
-public class JavaServletTest {
+public class JavaServletIntegrationTest {
 
     private MockMvc mockMvc;
 
