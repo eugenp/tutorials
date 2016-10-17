@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class X509AuthenticationServerTests {
+public class X509AuthenticationServerIntegrationTest {
     @Test
     public void contextLoads() {
     }
