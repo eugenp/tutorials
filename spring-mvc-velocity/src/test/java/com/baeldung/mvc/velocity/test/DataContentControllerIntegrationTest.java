@@ -29,7 +29,7 @@ import com.baeldung.mvc.velocity.test.config.TestConfig;
 // @ContextConfiguration(locations = {"classpath:mvc-servlet.xml"})
 @ContextConfiguration(classes = { TestConfig.class, WebConfig.class })
 @WebAppConfiguration
-public class DataContentControllerTest {
+public class DataContentControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
