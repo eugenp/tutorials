@@ -6,6 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ThemeResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -110,5 +112,10 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         ThemeChangeInterceptor themeChangeInterceptor = new ThemeChangeInterceptor();
         themeChangeInterceptor.setParamName("theme");
         return themeChangeInterceptor;
+    }
+
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 }
