@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
-public class StudentRepositoryTest {
+public class StudentRepositoryIntegrationTest {
 
     @Autowired
     private StudentRepository studentRepository;

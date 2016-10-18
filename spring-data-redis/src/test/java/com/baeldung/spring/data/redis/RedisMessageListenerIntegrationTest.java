@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
-public class RedisMessageListenerTest {
+public class RedisMessageListenerIntegrationTest {
 
     @Autowired
     private RedisMessagePublisher redisMessagePublisher;
