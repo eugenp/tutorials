@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:file="http://www.springframework.org/schema/integration/file"
+       xmlns:ftp="http://www.springframework.org/schema/integration/ftp"
+       xmlns:mail="http://www.springframework.org/schema/integration/mail"
+       xmlns:twitter="http://www.springframework.org/schema/integration/twitter"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file
+        http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+        http://www.springframework.org/schema/integration/ftp
+        http://www.springframework.org/schema/integration/ftp/spring-integration-ftp.xsd
+        http://www.springframework.org/schema/integration/mail 
+        http://www.springframework.org/schema/integration/mail/spring-integration-mail.xsd
+        http://www.springframework.org/schema/integration/twitter 
+        http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd">
+
+    <file:inbound-channel-adapter id="videoFolder"
+                                  directory="C:\projects\baeldung\clean-start-tutorials\tutorials\spring-integration\src\main\resources\source"
+                                  channel="videoChannel"
+                                  prevent-duplicates="true">
+        <int:poller fixed-rate="1000"/>
+    </file:inbound-channel-adapter>
+
+    <file:outbound-channel-adapter id="destFileFolder"
+                                   directory="C:\projects\baeldung\clean-start-tutorials\tutorials\spring-integration\src\main\resources\destination"
+                                   channel="videoChannel"
+    >
+    </file:outbound-channel-adapter>
+
+    <int:channel id="videoChannel"/>
+
+   <!-- <int:service-activator input-channel="videoChannel" output-channel="destFileFolder" method="handleMessage"
+                           ref="customActivator"/>
+
+    <bean name="customActivator" class="com.baeldung.samples.endpoints.ActivatorImpl"/>-->
+
+
+</beans>

@@ -17,21 +17,21 @@
         <module>assertj</module>
         <module>apache-cxf</module>
         <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
-        <module>autovalue</module>
-
+        <module>autovalue-tutorial</module>
+        
         <module>cdi</module>
         <module>core-java</module>
+        <module>core-java-8</module>
         <module>couchbase-sdk</module>
         <!-- <module>core-java-9</module> -->
 
         <module>dozer</module>
+        <module>dependency-injection</module>
         <module>deltaspike</module>
 
         <module>patterns</module>
-        <module>feign</module>
+        <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
-
-        <module>flyway</module>
 
         <module>gson</module>
         <module>guava</module>
@@ -46,12 +46,12 @@
         <module>jackson</module>
         <module>javaxval</module>
         <module>jjwt</module>
-
+        <module>jooq-spring</module>
         <module>jpa-storedprocedure</module>
         <module>json</module>
         <module>json-path</module>
         <module>junit5</module>
-        <module>jee7</module>
+        <module>jee7schedule</module>
         <!-- <module>jpa-storedprocedure</module> -->
 
         <module>log4j</module>
@@ -68,6 +68,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>okhttp</module>
 
         <module>spring-all</module>
         <module>spring-akka</module>
@@ -75,7 +76,6 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-core</module>
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
@@ -84,14 +84,13 @@
         <module>spring-data-mongodb</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
-        <!--<module>spring-dispatcher-servlet</module>-->
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
-        <module>spring-jms</module>
-        <module>spring-jooq</module>
+        <module>spring-integration</module>
         <module>spring-jpa</module>
+        <module>spring-jms</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
@@ -110,7 +109,6 @@
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
-        <module>spring-security-custom-voter</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-ldap</module>
@@ -129,7 +127,6 @@
 
         <module>jsf</module>
         <module>xml</module>
-        <module>xmlunit2</module>
         <module>lombok</module>
         <module>redis</module>
 
