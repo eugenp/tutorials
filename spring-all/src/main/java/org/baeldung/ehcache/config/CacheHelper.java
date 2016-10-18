@@ -8,18 +8,23 @@ import org.ehcache.config.builders.ResourcePoolsBuilder;
 
 public class CacheHelper {
 
-    private CacheManager cacheManager;
-    private Cache<Integer, Integer> squareNumberCache;
+	private CacheManager cacheManager;
+	private Cache<Integer, Integer> squareNumberCache;
 
-    public CacheHelper() {
-        cacheManager = CacheManagerBuilder.newCacheManagerBuilder().withCache("squaredNumber", CacheConfigurationBuilder.newCacheConfigurationBuilder(Integer.class, Integer.class, ResourcePoolsBuilder.heap(10))).build();
-        cacheManager.init();
+	public CacheHelper() {
+		cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build();
+		cacheManager.init();
 
-        squareNumberCache = cacheManager.getCache("squaredNumber", Integer.class, Integer.class);
-    }
+		squareNumberCache = cacheManager.createCache("squaredNumber", CacheConfigurationBuilder
+				.newCacheConfigurationBuilder(Integer.class, Integer.class, ResourcePoolsBuilder.heap(10)));
+	}
 
-    public Cache<Integer, Integer> getSquareNumberCache() {
-        return squareNumberCache;
-    }
+	public Cache<Integer, Integer> getSquareNumberCache() {
+		return squareNumberCache;
+	}
+
+	public Cache<Integer, Integer> getSquareNumberCacheFromCacheManager() {
+		return cacheManager.getCache("squaredNumber", Integer.class, Integer.class);
+	}
 
 }
