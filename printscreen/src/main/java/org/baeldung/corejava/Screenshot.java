@@ -20,16 +20,12 @@ public class Screenshot {
         this.timeToWait = timeToWait;
     }
 
-    public void getScreenshot() {
-        try {
-            Thread.sleep(timeToWait);
-            Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-            Robot robot = new Robot();
-            BufferedImage img = robot.createScreenCapture(rectangle);
-            ImageIO.write(img, fileType, setupFileNamePath());
-        } catch (Exception ex) {
-            System.out.println("Error occurred while getting the Print Screen.");
-        }
+    public void getScreenshot() throws Exception {
+        Thread.sleep(timeToWait);
+        Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        Robot robot = new Robot();
+        BufferedImage img = robot.createScreenCapture(rectangle);
+        ImageIO.write(img, fileType, setupFileNamePath());
     }
 
     private File setupFileNamePath() {
