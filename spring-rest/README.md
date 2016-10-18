@@ -1,5 +1,3 @@
-=========
-
 ## Spring REST Example Project
 
 ###The Course
@@ -11,3 +9,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Redirect in Spring](http://www.baeldung.com/spring-redirect-and-forward)
 - [Returning Custom Status Codes from Spring Controllers](http://www.baeldung.com/spring-mvc-controller-custom-http-status-code)
 - [A Guide to OkHttp](http://www.baeldung.com/guide-to-okhttp)
+- [Binary Data Formats in a Spring REST API](http://www.baeldung.com/spring-rest-api-with-binary-data-formats)
