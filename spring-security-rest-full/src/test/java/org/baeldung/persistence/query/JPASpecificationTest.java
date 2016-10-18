@@ -38,15 +38,15 @@ public class JPASpecificationTest {
     @Before
     public void init() {
         userJohn = new User();
-        userJohn.setFirstName("John");
-        userJohn.setLastName("Doe");
+        userJohn.setFirstName("john");
+        userJohn.setLastName("doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
         repository.save(userJohn);
 
         userTom = new User();
-        userTom.setFirstName("Tom");
-        userTom.setLastName("Doe");
+        userTom.setFirstName("tom");
+        userTom.setLastName("doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
         repository.save(userTom);
@@ -54,8 +54,8 @@ public class JPASpecificationTest {
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "John"));
-        final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "Doe"));
+        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john"));
+        final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe"));
         final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
 
         assertThat(userJohn, isIn(results));
@@ -64,7 +64,7 @@ public class JPASpecificationTest {
 
     @Test
     public void givenFirstNameInverse_whenGettingListOfUsers_thenCorrect() {
-        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.NEGATION, "John"));
+        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.NEGATION, "john"));
         final List<User> results = repository.findAll(Specifications.where(spec));
 
         assertThat(userTom, isIn(results));
@@ -82,7 +82,7 @@ public class JPASpecificationTest {
 
     @Test
     public void givenFirstNamePrefix_whenGettingListOfUsers_thenCorrect() {
-        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.STARTS_WITH, "Jo"));
+        final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.STARTS_WITH, "jo"));
         final List<User> results = repository.findAll(spec);
 
         assertThat(userJohn, isIn(results));

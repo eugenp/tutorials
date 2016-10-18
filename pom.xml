@@ -18,7 +18,7 @@
         <module>apache-cxf</module>
         <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
         <module>autovalue-tutorial</module>
-        
+
         <module>cdi</module>
         <module>core-java</module>
         <module>core-java-8</module>
@@ -68,7 +68,6 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
-        <module>okhttp</module>
 
         <module>spring-all</module>
         <module>spring-akka</module>
