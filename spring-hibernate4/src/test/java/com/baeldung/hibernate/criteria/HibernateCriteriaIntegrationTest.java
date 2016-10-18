@@ -12,7 +12,7 @@ import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 import com.baeldung.hibernate.criteria.view.ApplicationView;
 
-public class HibernateCriteriaTest {
+public class HibernateCriteriaIntegrationTest {
 
     final private ApplicationView av = new ApplicationView();
 

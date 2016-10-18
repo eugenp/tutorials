@@ -11,7 +11,7 @@ import java.util.Set;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class HibernateFetchingTest {
+public class HibernateFetchingIntegrationTest {
 
     // this loads sample data in the database
     @Before

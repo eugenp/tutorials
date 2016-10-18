@@ -1,14 +1,12 @@
 package com.baeldung.persistence.audit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 import com.baeldung.persistence.model.Bar;
-import com.baeldung.persistence.model.Bar.OPERATION;
 import com.baeldung.persistence.service.IBarService;
 import com.baeldung.spring.PersistenceConfig;
 import org.junit.After;
@@ -21,15 +19,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class JPABarAuditTest {
+public class SpringDataJPABarAuditIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(JPABarAuditTest.class);
+    private static Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -42,7 +41,7 @@ public class JPABarAuditTest {
     }
 
     @Autowired
-    @Qualifier("barJpaService")
+    @Qualifier("barSpringDataJpaService")
     private IBarService barService;
 
     @Autowired
@@ -63,40 +62,15 @@ public class JPABarAuditTest {
     }
 
     @Test
+    @WithMockUser(username = "tutorialuser")
     public final void whenBarsModified_thenBarsAudited() {
-
-        // insert BAR1
-        Bar bar1 = new Bar("BAR1");
-        barService.create(bar1);
-
-        // update BAR1
-        bar1.setName("BAR1a");
-        barService.update(bar1);
-
-        // insert BAR2
-        Bar bar2 = new Bar("BAR2");
-        barService.create(bar2);
-
-        // update BAR1
-        bar1.setName("BAR1b");
-        barService.update(bar1);
-
-        // get BAR1 and BAR2 from the DB and check the audit values
-        // detach instances from persistence context to make sure we fire db
-        em.detach(bar1);
-        em.detach(bar2);
-        bar1 = barService.findOne(bar1.getId());
-        bar2 = barService.findOne(bar2.getId());
-
-        assertNotNull(bar1);
-        assertNotNull(bar2);
-        assertEquals(OPERATION.UPDATE, bar1.getOperation());
-        assertEquals(OPERATION.INSERT, bar2.getOperation());
-        assertTrue(bar1.getTimestamp() > bar2.getTimestamp());
-
-        barService.deleteById(bar1.getId());
-        barService.deleteById(bar2.getId());
-
+        Bar bar = new Bar("BAR1");
+        barService.create(bar);
+        assertEquals(bar.getCreatedDate(), bar.getModifiedDate());
+        assertEquals("tutorialuser", bar.getCreatedBy(), bar.getModifiedBy());
+        bar.setName("BAR2");
+        bar = barService.update(bar);
+        assertTrue(bar.getCreatedDate() < bar.getModifiedDate());
+        assertEquals("tutorialuser", bar.getCreatedBy(), bar.getModifiedBy());
     }
-
 }

@@ -28,9 +28,9 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class EnversFooBarAuditTest {
+public class EnversFooBarAuditIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(EnversFooBarAuditTest.class);
+    private static Logger logger = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
