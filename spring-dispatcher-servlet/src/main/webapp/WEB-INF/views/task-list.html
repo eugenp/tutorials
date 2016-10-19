@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title th:text="#{task.list.title(${username})}"></title>
+        <link rel="stylesheet" type="text/css" href="/public/css/base.css">
         <link rel="stylesheet" type="text/css" th:href="${#themes.code('stylesheet')}">
     </head>
     <body>
@@ -10,6 +11,7 @@
             <li th:each="task : ${tasks}">
                 <p th:text="*{task.due}"></p>
                 <p th:text="*{task.description}"></p>
+                <a th:href="@{/tasks/{username}/get/{id}(username=${username},id=${taskStat.index})}" th:text="#{task.list.details}"></a>
             </li>
         </ul>
         <p>
