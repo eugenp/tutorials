@@ -3,12 +3,16 @@ package com.baeldung.spring.dispatcher.servlet.models;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Task {
     private String description;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     private Date due;
+
+    private Set<Attachment> attachments = new HashSet<>();
 
     public Task() {
     }
@@ -36,5 +40,13 @@ public class Task {
 
     public void setDue(Date due) {
         this.due = due;
+    }
+
+    public Set<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(Set<Attachment> attachments) {
+        this.attachments = attachments;
     }
 }
