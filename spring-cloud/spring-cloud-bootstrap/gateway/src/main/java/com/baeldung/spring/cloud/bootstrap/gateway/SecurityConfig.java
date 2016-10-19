@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/resource/hello/cloud").permitAll()
+                .antMatchers("/static/eureka/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
