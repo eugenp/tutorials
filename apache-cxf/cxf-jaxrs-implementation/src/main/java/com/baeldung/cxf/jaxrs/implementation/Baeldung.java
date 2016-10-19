@@ -44,15 +44,16 @@ public class Baeldung {
 
     @PUT
     @Path("courses/{courseOrder}")
-    public Response putCourse(@PathParam("courseOrder") int courseOrder, Course course) {
-        Course existingCourse = courses.get(courseOrder);
-
-        if (existingCourse == null || existingCourse.getId() != course.getId() || !(existingCourse.getName().equals(course.getName()))) {
-            courses.put(courseOrder, course);
-            return Response.ok().build();
+    public Response updateCourse(@PathParam("courseOrder") int courseOrder, Course course) {
+        Course existingCourse = courses.get(courseOrder);        
+        if (existingCourse == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
-
-        return Response.notModified().build();
+        if (existingCourse.equals(course)) {
+            return Response.notModified().build();    
+        }
+        courses.put(courseOrder, course);
+        return Response.ok().build();
     }
 
     @Path("courses/{courseOrder}/students")
