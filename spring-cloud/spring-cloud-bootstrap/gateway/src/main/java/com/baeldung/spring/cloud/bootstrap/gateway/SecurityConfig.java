@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .successHandler(new CustomAuthenticationHandler("/resource/hello/user"))
                 .and()
             .logout().permitAll()
                 .logoutSuccessUrl("/resource/hello/cloud").permitAll()
