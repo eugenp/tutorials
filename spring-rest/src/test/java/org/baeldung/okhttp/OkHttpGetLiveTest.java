@@ -2,6 +2,7 @@ package org.baeldung.okhttp;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
 
@@ -21,7 +22,7 @@ public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 
-    @Test
+    //@Test
     public void whenGetRequest_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
@@ -36,7 +37,7 @@ public class OkHttpGetLiveTest {
         assertThat(response.code(), equalTo(200));
     }
 
-    @Test
+    //@Test
     public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
 
         OkHttpClient client = new OkHttpClient();
@@ -57,7 +58,7 @@ public class OkHttpGetLiveTest {
     }
 
     @Test
-    public void whenAsynchronousGetRequest_thenCorrect() {
+    public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -70,12 +71,16 @@ public class OkHttpGetLiveTest {
         call.enqueue(new Callback() {
 
             public void onResponse(Call call, Response response) throws IOException {
+
                 assertThat(response.code(), equalTo(200));
             }
 
             public void onFailure(Call call, IOException e) {
 
+            	fail();
             }
         });
+
+        Thread.sleep(3000);
     }
 }
