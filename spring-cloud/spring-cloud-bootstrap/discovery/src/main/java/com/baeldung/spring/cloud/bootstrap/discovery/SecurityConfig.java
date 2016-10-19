@@ -17,10 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-                .withUser("discUser")
-                .password("discPassword")
-                .roles("SYSTEM");
+        auth.inMemoryAuthentication().withUser("discUser").password("discPassword").roles("SYSTEM");
     }
 
     @Override
@@ -38,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .and()
                 .httpBasic()
                     .and()
-                .csrf().disable();
+                .csrf()
+                    .disable();
     }
 
     @Configuration
@@ -59,10 +57,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                         .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
                         .antMatchers("/info","/health").authenticated()
-                        .antMatchers("/eureka/js/**", "/eureka/css/**", "/eureka/images/**", "/eureka/fonts/**").authenticated()
                         .anyRequest().denyAll()
                         .and()
-                    .csrf().disable();
+                    .csrf()
+                        .disable();
         }
     }
 }

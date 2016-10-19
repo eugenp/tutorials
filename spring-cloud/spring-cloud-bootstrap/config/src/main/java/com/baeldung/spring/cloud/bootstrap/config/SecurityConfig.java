@@ -13,10 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication()
-                .withUser("configUser")
-                .password("configPassword")
-                .roles("SYSTEM");
+        auth.inMemoryAuthentication().withUser("configUser").password("configPassword").roles("SYSTEM");
     }
 
     @Override
@@ -24,9 +21,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .anyRequest().hasRole("SYSTEM")
-                .and()
-                    .httpBasic()
-                .and()
-                    .csrf().disable();
+                    .and()
+                .httpBasic()
+                    .and()
+                .csrf()
+                    .disable();
     }
 }

@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER")
-            .and()
+                    .and()
                 .withUser("admin").password("admin").roles("ADMIN");
     }
 
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/resource/hello/cloud").permitAll()
-                .antMatchers("/static/eureka/**").hasRole("ADMIN")
+                .antMatchers("/eureka/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logout().permitAll()
                 .logoutSuccessUrl("/resource/hello/cloud").permitAll()
                 .and()
-            .csrf().disable();
+            .csrf()
+                .disable();
     }
 }

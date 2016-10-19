@@ -1,13 +1,11 @@
 package com.baeldung.spring.cloud.bootstrap.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
@@ -27,14 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/hello/cloud").permitAll()
                 .antMatchers("/hello/user").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/hello/admin").hasAnyRole("ADMIN")
+                .antMatchers("/hello/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-            .csrf().disable();
-    }
-
-    @Bean
-    public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder(11);
+            .csrf()
+                .disable();
     }
 }
