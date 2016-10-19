@@ -14,6 +14,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@WebAppConfiguration
+//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/api-servlet.xml")
 public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
