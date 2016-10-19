@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MovieDatabaseNeo4jTestConfiguration.class)
 @ActiveProfiles(profiles = "test")
-public class MovieRepositoryTest {
+public class MovieRepositoryIntegrationTest {
 
     @Autowired
     private MovieRepository movieRepository;
@@ -32,7 +32,7 @@ public class MovieRepositoryTest {
     @Autowired
     private PersonRepository personRepository;
 
-    public MovieRepositoryTest() {
+    public MovieRepositoryIntegrationTest() {
     }
 
     @Before
