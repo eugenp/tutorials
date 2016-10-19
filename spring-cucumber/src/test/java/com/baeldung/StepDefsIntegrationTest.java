@@ -9,7 +9,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefs extends SpringIntegrationTest {
+public class StepDefsIntegrationTest extends SpringIntegrationTest {
 
     @When("^the client calls /version$")
     public void the_client_issues_GET_version() throws Throwable {
