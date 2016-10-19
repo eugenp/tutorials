@@ -29,7 +29,7 @@ import com.baeldung.spring.data.es.service.ArticleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-public class ElasticSearchTest {
+public class ElasticSearchIntegrationTest {
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
