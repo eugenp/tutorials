@@ -21,7 +21,7 @@ import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 
-public class PersonServiceImplTest extends MultiBucketIntegationTest {
+public class PersonServiceImplIntegrationTest extends MultiBucketIntegationTest {
 
     static final String typeField = "_class";
     static final String john = "John";

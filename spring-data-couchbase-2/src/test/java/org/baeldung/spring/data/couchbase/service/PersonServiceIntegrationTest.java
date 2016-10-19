@@ -20,7 +20,7 @@ import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 
-public abstract class PersonServiceTest extends IntegrationTest {
+public abstract class PersonServiceIntegrationTest extends IntegrationTest {
 
     static final String typeField = "_class";
     static final String john = "John";

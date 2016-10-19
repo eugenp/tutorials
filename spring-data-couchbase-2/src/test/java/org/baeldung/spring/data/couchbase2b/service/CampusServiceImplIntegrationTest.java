@@ -18,7 +18,7 @@ import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
 
-public class CampusServiceImplTest extends MultiBucketIntegationTest {
+public class CampusServiceImplIntegrationTest extends MultiBucketIntegationTest {
 
     @Autowired
     private CampusServiceImpl campusService;
