@@ -1,4 +1,4 @@
-package org.baeldung.corejava;;
+package com.baeldung.printscreen;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
