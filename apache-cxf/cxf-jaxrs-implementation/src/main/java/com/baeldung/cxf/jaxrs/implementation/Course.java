@@ -45,8 +45,10 @@ public class Course {
 
     @POST
     public Response createStudent(Student student) {
-        if (students.contains(student)) {
-            return Response.status(Response.Status.CONFLICT).build();
+        for (Student element : students) {
+            if (element.getId() == student.getId()) {
+                return Response.status(Response.Status.CONFLICT).build();
+            }
         }
         students.add(student);
         return Response.ok(student).build();
@@ -62,7 +64,7 @@ public class Course {
         students.remove(student);
         return Response.ok().build();
     }
-    
+
     private Student findById(int id) {
         for (Student student : students) {
             if (student.getId() == id) {
