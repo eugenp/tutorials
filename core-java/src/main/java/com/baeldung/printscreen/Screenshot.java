@@ -7,20 +7,17 @@ import java.io.File;
 
 public class Screenshot {
 
-    private String filePath;
-    private String filenamePrefix;
-    private String fileType;
-    private int timeToWait;
+    private final String filePath;
+    private final String filenamePrefix;
+    private final String fileType;
 
-    public Screenshot(String filePath, String filenamePrefix,
-                      String fileType, int timeToWait) {
+    public Screenshot(String filePath, String filenamePrefix, String fileType) {
         this.filePath = filePath;
         this.filenamePrefix = filenamePrefix;
         this.fileType = fileType;
-        this.timeToWait = timeToWait;
     }
 
-    public void getScreenshot() throws Exception {
+    public void getScreenshot(int timeToWait) throws Exception {
         Thread.sleep(timeToWait);
         Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         Robot robot = new Robot();
