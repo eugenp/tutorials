@@ -1,14 +1,15 @@
 package com.baeldung.java.nio.selector;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.channels.Selector;
-import java.nio.channels.SelectionKey;
-import java.nio.ByteBuffer;
-import java.io.IOException;
-import java.util.Set;
 import java.util.Iterator;
-import java.net.InetSocketAddress;
+import java.util.Set;
 
 public class EchoServer {
 
@@ -46,5 +47,16 @@ public class EchoServer {
                 iter.remove();
             }
         }
+    }
+
+    public static Process start() throws IOException, InterruptedException {
+        String javaHome = System.getProperty("java.home");
+        String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
+        String classpath = System.getProperty("java.class.path");
+        String className = EchoServer.class.getCanonicalName();
+
+        ProcessBuilder builder = new ProcessBuilder(javaBin, "-cp", classpath, className);
+
+        return builder.start();
     }
 }
