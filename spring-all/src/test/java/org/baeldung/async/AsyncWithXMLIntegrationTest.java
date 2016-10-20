@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:springAsync-config.xml")
-public class AsyncWithXMLTest {
+public class AsyncWithXMLIntegrationTest {
 
     @Autowired
     private AsyncComponent asyncAnnotationExample;

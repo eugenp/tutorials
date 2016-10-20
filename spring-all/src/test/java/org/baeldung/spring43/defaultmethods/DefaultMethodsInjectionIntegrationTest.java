@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration("classpath:defaultmethods-context.xml")
-public class DefaultMethodsInjectionTest extends AbstractJUnit4SpringContextTests {
+public class DefaultMethodsInjectionIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
     private IDateHolder dateHolder;

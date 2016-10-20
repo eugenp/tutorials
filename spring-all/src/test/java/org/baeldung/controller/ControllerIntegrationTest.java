@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({ "classpath:test-mvc.xml" })
-public class ControllerTest {
+public class ControllerIntegrationTest {
 
     private MockMvc mockMvc;
 

@@ -15,7 +15,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringJdbcConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class EmployeeDAOTest {
+public class EmployeeDAOIntegrationTest {
 
     @Autowired
     private EmployeeDAO employeeDao;

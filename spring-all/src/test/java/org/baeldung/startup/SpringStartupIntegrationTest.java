@@ -12,7 +12,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringStartupConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class SpringStartupTest {
+public class SpringStartupIntegrationTest {
 
     @Autowired
     private ApplicationContext ctx;

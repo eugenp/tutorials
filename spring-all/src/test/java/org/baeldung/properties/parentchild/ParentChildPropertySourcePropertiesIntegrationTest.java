@@ -3,8 +3,8 @@ package org.baeldung.properties.parentchild;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.baeldung.properties.parentchild.config.ChildConfig2;
-import org.baeldung.properties.parentchild.config.ParentConfig2;
+import org.baeldung.properties.parentchild.config.ChildConfig;
+import org.baeldung.properties.parentchild.config.ParentConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,33 +17,33 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextHierarchy({ @ContextConfiguration(classes = ParentConfig2.class), @ContextConfiguration(classes = ChildConfig2.class) })
-public class ParentChildPropertyPlaceHolderPropertiesTest {
+@ContextHierarchy({ @ContextConfiguration(classes = ParentConfig.class), @ContextConfiguration(classes = ChildConfig.class) })
+public class ParentChildPropertySourcePropertiesIntegrationTest {
 
     @Autowired
     private WebApplicationContext wac;
 
     @Test
-    public void givenPropertyPlaceHolder_whenGetPropertyUsingEnv_thenCorrect() {
+    public void givenPropertySource_whenGetPropertyUsingEnv_thenCorrect() {
         final Environment childEnv = wac.getEnvironment();
         final Environment parentEnv = wac.getParent().getEnvironment();
 
-        assertNull(parentEnv.getProperty("parent.name"));
+        assertEquals(parentEnv.getProperty("parent.name"), "parent");
         assertNull(parentEnv.getProperty("child.name"));
 
-        assertNull(childEnv.getProperty("parent.name"));
-        assertNull(childEnv.getProperty("child.name"));
+        assertEquals(childEnv.getProperty("parent.name"), "parent");
+        assertEquals(childEnv.getProperty("child.name"), "child");
     }
 
     @Test
-    public void givenPropertyPlaceHolder_whenGetPropertyUsingValueAnnotation_thenCorrect() {
+    public void givenPropertySource_whenGetPropertyUsingValueAnnotation_thenCorrect() {
         final ChildValueHolder childValueHolder = wac.getBean(ChildValueHolder.class);
         final ParentValueHolder parentValueHolder = wac.getParent().getBean(ParentValueHolder.class);
 
         assertEquals(parentValueHolder.getParentName(), "parent");
         assertEquals(parentValueHolder.getChildName(), "-");
 
-        assertEquals(childValueHolder.getParentName(), "-");
+        assertEquals(childValueHolder.getParentName(), "parent");
         assertEquals(childValueHolder.getChildName(), "child");
     }
 

@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { CustomAnnotationConfiguration.class })
-public class DataAccessAnnotationTest {
+public class DataAccessAnnotationIntegrationTest {
 
     @DataAccess(entity = Person.class)
     private GenericDAO<Person> personGenericDAO;

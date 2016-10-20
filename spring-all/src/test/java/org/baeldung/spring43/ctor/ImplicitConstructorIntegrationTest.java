@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import static org.junit.Assert.assertNotNull;
 
 @ContextConfiguration("classpath:implicit-ctor-context.xml")
-public class ImplicitConstructorTest extends AbstractJUnit4SpringContextTests {
+public class ImplicitConstructorIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
     private FooService fooService;

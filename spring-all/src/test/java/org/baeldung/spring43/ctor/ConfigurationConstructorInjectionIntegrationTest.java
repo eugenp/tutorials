@@ -1,4 +1,4 @@
-package org.baeldung.spring43.depresolution;
+package org.baeldung.spring43.ctor;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,17 +7,15 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import static org.junit.Assert.assertNotNull;
 
-@ContextConfiguration(classes = ObjectProviderConfiguration.class)
-public class ObjectProviderTest extends AbstractJUnit4SpringContextTests {
+@ContextConfiguration(classes = { FooRepositoryConfiguration.class, FooServiceConfiguration.class })
+public class ConfigurationConstructorInjectionIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
-    private FooService fooService;
+    public FooService fooService;
 
     @Test
-    public void whenArgumentIsObjectProvider_thenObjectProviderInjected() {
-
+    public void whenSingleCtorInConfiguration_thenContextLoadsNormally() {
         assertNotNull(fooService.getRepository());
-
     }
 
 }

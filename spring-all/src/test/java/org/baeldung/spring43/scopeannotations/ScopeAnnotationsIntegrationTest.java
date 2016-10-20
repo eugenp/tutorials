@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ContextConfiguration(classes = ScopeAnnotationsConfiguration.class)
 @WebAppConfiguration
-public class ScopeAnnotationsTest extends AbstractJUnit4SpringContextTests {
+public class ScopeAnnotationsIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     private MockMvc mockMvc;
 

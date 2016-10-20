@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import static org.junit.Assert.assertEquals;
 
 @ContextConfiguration(classes = CacheRefinementsConfiguration.class)
-public class CacheRefinementsTest extends AbstractJUnit4SpringContextTests {
+public class CacheRefinementsIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     private ExecutorService executorService = Executors.newFixedThreadPool(10);
 

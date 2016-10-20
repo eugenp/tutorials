@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:startupConfig.xml")
-public class SpringStartupXMLConfigTest {
+public class SpringStartupXMLConfigIntegrationTest {
 
     @Autowired
     private ApplicationContext ctx;

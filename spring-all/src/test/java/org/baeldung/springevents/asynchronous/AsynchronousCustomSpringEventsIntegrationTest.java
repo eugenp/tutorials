@@ -10,7 +10,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { AsynchronousSpringEventsConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AsynchronousCustomSpringEventsTest {
+public class AsynchronousCustomSpringEventsIntegrationTest {
 
     @Autowired
     private CustomSpringEventPublisher publisher;

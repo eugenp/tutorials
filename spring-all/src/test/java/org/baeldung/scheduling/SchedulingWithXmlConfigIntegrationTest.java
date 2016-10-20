@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:springScheduled-config.xml")
-public class SchedulingWithXmlConfigTest {
+public class SchedulingWithXmlConfigIntegrationTest {
 
     @Test
     public void testXmlBasedScheduling() throws InterruptedException {

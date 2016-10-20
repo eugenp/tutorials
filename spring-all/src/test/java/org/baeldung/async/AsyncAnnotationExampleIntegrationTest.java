@@ -13,7 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AsyncAnnotationExampleTest {
+public class AsyncAnnotationExampleIntegrationTest {
 
     @Autowired
     private AsyncComponent asyncAnnotationExample;

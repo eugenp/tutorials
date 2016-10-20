@@ -1,5 +1,6 @@
-package org.baeldung.spring43.composedmapping;
+package org.baeldung.spring43.attributeannotations;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.easymock.EasyMock.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ContextConfiguration(classes = ComposedMappingConfiguration.class)
+@ContextConfiguration(classes = AttributeAnnotationConfiguration.class)
 @WebAppConfiguration
-public class ComposedMappingTest extends AbstractJUnit4SpringContextTests {
-
-    @Autowired
-    private AppointmentService appointmentService;
+public class AttributeAnnotationIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     private MockMvc mockMvc;
 
@@ -33,9 +30,10 @@ public class ComposedMappingTest extends AbstractJUnit4SpringContextTests {
     }
 
     @Test
-    public void whenRequestingMethodWithGetMapping_thenReceiving200Answer() throws Exception {
-        this.mockMvc.perform(get("/appointments").accept(MediaType.ALL)).andExpect(status().isOk());
-        verify(appointmentService);
+    public void whenInterceptorAddsRequestAndSessionParams_thenParamsInjectedWithAttributesAnnotations() throws Exception {
+        String result = this.mockMvc.perform(get("/test").accept(MediaType.ALL)).andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+
+        Assert.assertEquals("login = john, query = invoices", result);
     }
 
 }

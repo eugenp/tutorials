@@ -8,7 +8,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringSchedulingConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class ScheduledAnnotationExampleTest {
+public class ScheduledAnnotationExampleIntegrationTest {
 
     @Test
     public void testScheduledAnnotation() throws InterruptedException {
