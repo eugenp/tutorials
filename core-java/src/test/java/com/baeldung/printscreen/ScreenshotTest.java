@@ -1,4 +1,4 @@
-package org.baeldung.corejava;
+package com.baeldung.printscreen;
 
 import org.junit.After;
 import org.junit.Before;
