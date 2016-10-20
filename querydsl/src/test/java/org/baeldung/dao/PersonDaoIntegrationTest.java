@@ -17,7 +17,7 @@ import junit.framework.Assert;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @TransactionConfiguration(defaultRollback = true)
-public class PersonDaoTest {
+public class PersonDaoIntegrationTest {
 
     @Autowired
     private PersonDao personDao;
