@@ -7,14 +7,10 @@ import java.io.File;
 
 public class Screenshot {
 
-    private final String filePath;
-    private final String filenamePrefix;
-    private final String fileType;
+    private final String path;
 
-    public Screenshot(String filePath, String filenamePrefix, String fileType) {
-        this.filePath = filePath;
-        this.filenamePrefix = filenamePrefix;
-        this.fileType = fileType;
+    public Screenshot(String path) {
+        this.path = path;
     }
 
     public void getScreenshot(int timeToWait) throws Exception {
@@ -22,14 +18,6 @@ public class Screenshot {
         Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         Robot robot = new Robot();
         BufferedImage img = robot.createScreenCapture(rectangle);
-        ImageIO.write(img, fileType, setupFileNamePath());
-    }
-
-    private File setupFileNamePath() {
-        return new File(filePath + filenamePrefix + "." + fileType);
-    }
-
-    private Rectangle getScreenSizedRectangle(final Dimension d) {
-        return new Rectangle(0, 0, d.width, d.height);
+        ImageIO.write(img, "jpg", new File(path));
     }
 }
