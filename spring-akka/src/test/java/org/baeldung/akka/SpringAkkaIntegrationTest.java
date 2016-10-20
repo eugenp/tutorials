@@ -20,7 +20,7 @@ import static akka.pattern.Patterns.ask;
 import static org.baeldung.akka.SpringExtension.SPRING_EXTENSION_PROVIDER;
 
 @ContextConfiguration(classes = AppConfiguration.class)
-public class SpringAkkaTest extends AbstractJUnit4SpringContextTests {
+public class SpringAkkaIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
     private ActorSystem system;
