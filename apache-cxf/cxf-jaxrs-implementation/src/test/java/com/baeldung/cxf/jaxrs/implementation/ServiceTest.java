@@ -91,21 +91,21 @@ public class ServiceTest {
         HttpResponse response = client.execute(httpPost);
         assertEquals(200, response.getStatusLine().getStatusCode());
         
-        Student student = getStudent(2, 0);
+        Student student = getStudent(2, 3);
         assertEquals(3, student.getId());
         assertEquals("Student C", student.getName());
     }
     
     @Test
     public void whenDeleteInvalidStudent_thenReceiveNotFoundResponse() throws IOException {
-        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/2");
+        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/3");
         HttpResponse response = client.execute(httpDelete);
         assertEquals(404, response.getStatusLine().getStatusCode());
     }   
     
     @Test
     public void whenDeleteValidStudent_thenReceiveOKResponse() throws IOException {
-        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/0");
+        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/1");
         HttpResponse response = client.execute(httpDelete);
         assertEquals(200, response.getStatusLine().getStatusCode());
         
