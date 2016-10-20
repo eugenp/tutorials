@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class SpringBootJPATest {
+public class SpringBootJPAIntegrationTest {
     @Autowired
     private GenericEntityRepository genericEntityRepository;
 

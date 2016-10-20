@@ -24,7 +24,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-public class SpringBootMailTest {
+public class SpringBootMailIntegrationTest {
     @Autowired
     private JavaMailSender javaMailSender;
 

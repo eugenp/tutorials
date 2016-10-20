@@ -16,7 +16,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RunWith(SpringRunner.class)
 @RestClientTest(DetailsServiceClient.class)
-public class DetailsServiceClientTest {
+public class DetailsServiceClientIntegrationTest {
 
     @Autowired
     private DetailsServiceClient client;

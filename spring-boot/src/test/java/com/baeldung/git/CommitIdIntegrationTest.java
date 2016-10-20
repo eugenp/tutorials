@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = CommitIdApplication.class)
-public class CommitIdTest {
+public class CommitIdIntegrationTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CommitIdTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CommitIdIntegrationTest.class);
 
     @Value("${git.commit.message.short:UNKNOWN}")
     private String commitMessage;

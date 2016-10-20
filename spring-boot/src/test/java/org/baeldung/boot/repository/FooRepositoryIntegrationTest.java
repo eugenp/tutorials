@@ -2,7 +2,7 @@ package org.baeldung.boot.repository;
 
 import static org.junit.Assert.assertThat;
 
-import org.baeldung.boot.DemoApplicationTests;
+import org.baeldung.boot.DemoApplicationIntegrationTest;
 import org.baeldung.boot.model.Foo;
 
 import static org.hamcrest.Matchers.notNullValue;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-public class FooRepositoryTest extends DemoApplicationTests {
+public class FooRepositoryIntegrationTest extends DemoApplicationIntegrationTest {
     @Autowired
     private FooRepository fooRepository;
 
