@@ -19,9 +19,9 @@ public class WebApplicationInitializer implements org.springframework.web.WebApp
         AnnotationConfigWebApplicationContext webContext =
           new AnnotationConfigWebApplicationContext();
         webContext.register(WebConfiguration.class);
-        webContext.scan("com.baeldung.spring.dispatcher.servlet.web");
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(webContext);
         ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher",
-          new DispatcherServlet(webContext));
+          dispatcherServlet);
         servlet.addMapping("/*");
         MultipartConfigElement multipartConfigElement =
           new MultipartConfigElement("/tmp");
