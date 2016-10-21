@@ -1,6 +1,5 @@
 package com.baeldung.persistence.save;
 
-
 import com.baeldung.persistence.model.Person;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -25,16 +24,9 @@ public class SaveMethodsTest {
 
     @BeforeClass
     public static void beforeTests() {
-        Configuration configuration = new Configuration()
-                .addAnnotatedClass(Person.class)
-                .setProperty("hibernate.dialect", HSQLDialect.class.getName())
-                .setProperty("hibernate.connection.driver_class", org.hsqldb.jdbcDriver.class.getName())
-                .setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test")
-                .setProperty("hibernate.connection.username", "sa")
-                .setProperty("hibernate.connection.password", "")
-                .setProperty("hibernate.hbm2ddl.auto", "update");
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
-                configuration.getProperties()).build();
+        Configuration configuration = new Configuration().addAnnotatedClass(Person.class).setProperty("hibernate.dialect", HSQLDialect.class.getName()).setProperty("hibernate.connection.driver_class", org.hsqldb.jdbcDriver.class.getName())
+                .setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test").setProperty("hibernate.connection.username", "sa").setProperty("hibernate.connection.password", "").setProperty("hibernate.hbm2ddl.auto", "update");
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
@@ -43,7 +35,6 @@ public class SaveMethodsTest {
         session = sessionFactory.openSession();
         session.beginTransaction();
     }
-
 
     @Test
     public void whenPersistTransient_thenSavedToDatabaseOnCommit() {
@@ -243,7 +234,6 @@ public class SaveMethodsTest {
         session.beginTransaction();
 
         assertNotNull(session.get(Person.class, person.getId()));
-
 
     }
 

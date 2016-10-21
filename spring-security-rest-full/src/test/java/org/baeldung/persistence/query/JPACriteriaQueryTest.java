@@ -36,15 +36,15 @@ public class JPACriteriaQueryTest {
     @Before
     public void init() {
         userJohn = new User();
-        userJohn.setFirstName("John");
-        userJohn.setLastName("Doe");
+        userJohn.setFirstName("john");
+        userJohn.setLastName("doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
         userApi.save(userJohn);
 
         userTom = new User();
-        userTom.setFirstName("Tom");
-        userTom.setLastName("Doe");
+        userTom.setFirstName("tom");
+        userTom.setLastName("doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
         userApi.save(userTom);
@@ -53,8 +53,8 @@ public class JPACriteriaQueryTest {
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        params.add(new SearchCriteria("firstName", ":", "John"));
-        params.add(new SearchCriteria("lastName", ":", "Doe"));
+        params.add(new SearchCriteria("firstName", ":", "john"));
+        params.add(new SearchCriteria("lastName", ":", "doe"));
 
         final List<User> results = userApi.searchUser(params);
 
@@ -65,7 +65,7 @@ public class JPACriteriaQueryTest {
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        params.add(new SearchCriteria("lastName", ":", "Doe"));
+        params.add(new SearchCriteria("lastName", ":", "doe"));
 
         final List<User> results = userApi.searchUser(params);
         assertThat(userJohn, isIn(results));
@@ -75,7 +75,7 @@ public class JPACriteriaQueryTest {
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        params.add(new SearchCriteria("lastName", ":", "Doe"));
+        params.add(new SearchCriteria("lastName", ":", "doe"));
         params.add(new SearchCriteria("age", ">", "25"));
 
         final List<User> results = userApi.searchUser(params);
@@ -87,8 +87,8 @@ public class JPACriteriaQueryTest {
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
         final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        params.add(new SearchCriteria("firstName", ":", "Adam"));
-        params.add(new SearchCriteria("lastName", ":", "Fox"));
+        params.add(new SearchCriteria("firstName", ":", "adam"));
+        params.add(new SearchCriteria("lastName", ":", "fox"));
 
         final List<User> results = userApi.searchUser(params);
         assertThat(userJohn, not(isIn(results)));

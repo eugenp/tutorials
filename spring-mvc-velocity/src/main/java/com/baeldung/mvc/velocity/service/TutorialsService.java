@@ -10,9 +10,6 @@ import java.util.List;
 public class TutorialsService implements ITutorialsService {
 
     public List<Tutorial> listTutorials() {
-        return Arrays.asList(
-          new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"),
-          new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor")
-        );
+        return Arrays.asList(new Tutorial(1, "Guava", "Introduction to Guava", "GuavaAuthor"), new Tutorial(2, "Android", "Introduction to Android", "AndroidAuthor"));
     }
 }
