@@ -1,14 +1,12 @@
-package com.baeldung.spring.data.es.repository;
+package com.baeldung.spring.data.es.repositories;
 
-import java.util.List;
-
+import com.baeldung.spring.data.es.model.ProductInfo;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 import org.springframework.data.repository.CrudRepository;
 
-import com.baeldung.spring.data.es.model.ProductInfo;
+import java.util.List;
 
 @EnableScan
 public interface ProductInfoRepository extends CrudRepository<ProductInfo, String> {
-
     List<ProductInfo> findById(String id);
 }
