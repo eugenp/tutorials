@@ -45,4 +45,16 @@ public final class FileCopyTest {
 
 
 	}
+
+	@Test
+	public void publish() throws InterruptedException {
+
+
+		final AbstractApplicationContext context =
+				new ClassPathXmlApplicationContext("classpath:META-INF/spring/integration/spring-integration-file-publish-context.xml");
+
+		Thread.sleep(15000);
+
+
+	}
 }
