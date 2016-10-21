@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 @SpringApplicationConfiguration(Application.class)
 @Transactional("transactionManager")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class SpringBootTest {
+public class SpringBootIntegrationTest {
 
     @Autowired
     private DSLContext dsl;

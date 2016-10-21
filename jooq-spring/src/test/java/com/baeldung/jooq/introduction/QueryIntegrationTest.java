@@ -17,10 +17,10 @@ import static com.baeldung.jooq.introduction.db.public_.tables.AuthorBook.AUTHOR
 import static com.baeldung.jooq.introduction.db.public_.tables.Book.BOOK;
 import static org.junit.Assert.assertEquals;
 
-@ContextConfiguration(classes = PersistenceContext.class)
+@ContextConfiguration(classes = PersistenceContextIntegrationTest.class)
 @Transactional(transactionManager = "transactionManager")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class QueryTest {
+public class QueryIntegrationTest {
 
     @Autowired
     private DSLContext dsl;

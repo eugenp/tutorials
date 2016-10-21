@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 @ComponentScan({ "com.baeldung.jooq.introduction.db.public_.tables" })
 @EnableTransactionManagement
 @PropertySource("classpath:intro_config.properties")
-public class PersistenceContext {
+public class PersistenceContextIntegrationTest {
 
     @Autowired
     private Environment environment;
