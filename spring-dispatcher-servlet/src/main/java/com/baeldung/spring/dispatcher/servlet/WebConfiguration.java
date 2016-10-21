@@ -27,7 +27,7 @@ import javax.servlet.ServletContext;
 import java.util.Locale;
 
 @Configuration
-@ComponentScan("com.baeldung.enterprise.patterns.dispatcher.servlet.web")
+@ComponentScan("com.baeldung.spring.dispatcher.servlet.web")
 @EnableWebMvc
 public class WebConfiguration extends WebMvcConfigurerAdapter {
     @Override
