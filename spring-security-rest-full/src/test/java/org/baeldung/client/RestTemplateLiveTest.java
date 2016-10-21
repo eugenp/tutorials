@@ -51,7 +51,7 @@ import com.google.common.base.Charsets;
 public class RestTemplateLiveTest {
 
     private RestTemplate restTemplate;
-    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/foos";
+    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/auth/foos";
 
     @Before
     public void beforeTest() {
