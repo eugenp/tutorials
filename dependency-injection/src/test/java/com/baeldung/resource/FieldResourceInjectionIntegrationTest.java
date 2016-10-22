@@ -17,17 +17,13 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestResourceNameType.class)
-public class MethodByTypeResourceTest {
+public class FieldResourceInjectionIntegrationTest {
 
+    @Resource(name = "namedFile")
     private File defaultFile;
 
-    @Resource
-    protected void setDefaultFile(File defaultFile) {
-        this.defaultFile = defaultFile;
-    }
-
     @Test
-    public void givenResourceAnnotation_WhenSetter_ThenValidDependency() {
+    public void givenResourceAnnotation_WhenOnField_ThenDependencyValid() {
         assertNotNull(defaultFile);
         assertEquals("namedFile.txt", defaultFile.getName());
     }

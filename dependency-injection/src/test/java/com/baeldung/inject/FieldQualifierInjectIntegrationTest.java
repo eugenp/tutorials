@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestInjectQualifier.class)
-public class FieldQualifierInjectTest {
+public class FieldQualifierInjectIntegrationTest {
 
     @Inject
     @Qualifier("defaultFile")

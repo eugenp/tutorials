@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestResourceQualifier.class)
-public class QualifierResourceInjectionTest {
+public class QualifierResourceInjectionIntegrationTest {
 
     @Resource
     @Qualifier("defaultFile")
