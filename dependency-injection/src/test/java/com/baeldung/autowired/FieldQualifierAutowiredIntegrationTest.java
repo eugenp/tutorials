@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestAutowiredQualifier.class)
-public class FieldQualifierAutowiredTest {
+public class FieldQualifierAutowiredIntegrationTest {
 
     @Autowired
     @Qualifier("autowiredFieldDependency")
