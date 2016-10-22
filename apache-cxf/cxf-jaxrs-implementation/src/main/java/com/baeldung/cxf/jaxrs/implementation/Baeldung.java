@@ -37,26 +37,36 @@ public class Baeldung {
     }
 
     @GET
-    @Path("courses/{courseOrder}")
-    public Course getCourse(@PathParam("courseOrder") int courseOrder) {
-        return courses.get(courseOrder);
+    @Path("courses/{courseId}")
+    public Course getCourse(@PathParam("courseId") int courseId) {
+        return findById(courseId);
     }
 
     @PUT
-    @Path("courses/{courseOrder}")
-    public Response putCourse(@PathParam("courseOrder") int courseOrder, Course course) {
-        Course existingCourse = courses.get(courseOrder);
-
-        if (existingCourse == null || existingCourse.getId() != course.getId() || !(existingCourse.getName().equals(course.getName()))) {
-            courses.put(courseOrder, course);
-            return Response.ok().build();
+    @Path("courses/{courseId}")
+    public Response updateCourse(@PathParam("courseId") int courseId, Course course) {
+        Course existingCourse = findById(courseId);
+        if (existingCourse == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
-
-        return Response.notModified().build();
+        if (existingCourse.equals(course)) {
+            return Response.notModified().build();
+        }
+        courses.put(courseId, course);
+        return Response.ok().build();
     }
 
-    @Path("courses/{courseOrder}/students")
-    public Course pathToStudent(@PathParam("courseOrder") int courseOrder) {
-        return courses.get(courseOrder);
+    @Path("courses/{courseId}/students")
+    public Course pathToStudent(@PathParam("courseId") int courseId) {
+        return findById(courseId);
+    }
+
+    private Course findById(int id) {
+        for (Map.Entry<Integer, Course> course : courses.entrySet()) {
+            if (course.getKey() == id) {
+                return course.getValue();
+            }
+        }
+        return null;
     }
 }

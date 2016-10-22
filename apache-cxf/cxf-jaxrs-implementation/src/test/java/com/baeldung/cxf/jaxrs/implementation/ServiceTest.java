@@ -34,38 +34,78 @@ public class ServiceTest {
     }
     
     @Test
-    public void whenPutCourse_thenCorrect() throws IOException {
+    public void whenUpdateNonExistentCourse_thenReceiveNotFoundResponse() throws IOException {
         HttpPut httpPut = new HttpPut(BASE_URL + "3");
-        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("course.xml");
+        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("non_existent_course.xml");
+        httpPut.setEntity(new InputStreamEntity(resourceStream));
+        httpPut.setHeader("Content-Type", "text/xml");
+        
+        HttpResponse response = client.execute(httpPut);
+        assertEquals(404, response.getStatusLine().getStatusCode());
+    }
+    
+    @Test
+    public void whenUpdateUnchangedCourse_thenReceiveNotModifiedResponse() throws IOException {
+        HttpPut httpPut = new HttpPut(BASE_URL + "1");
+        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("unchanged_course.xml");
+        httpPut.setEntity(new InputStreamEntity(resourceStream));
+        httpPut.setHeader("Content-Type", "text/xml");
+        
+        HttpResponse response = client.execute(httpPut);
+        assertEquals(304, response.getStatusLine().getStatusCode());
+    }
+    
+    @Test
+    public void whenUpdateValidCourse_thenReceiveOKResponse() throws IOException {
+        HttpPut httpPut = new HttpPut(BASE_URL + "2");
+        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("changed_course.xml");
         httpPut.setEntity(new InputStreamEntity(resourceStream));
         httpPut.setHeader("Content-Type", "text/xml");
         
         HttpResponse response = client.execute(httpPut);
         assertEquals(200, response.getStatusLine().getStatusCode());
         
-        Course course = getCourse(3);
-        assertEquals(3, course.getId());
+        Course course = getCourse(2);
+        assertEquals(2, course.getId());
         assertEquals("Apache CXF Support for RESTful", course.getName());
+    }
+    
+    @Test
+    public void whenCreateConflictStudent_thenReceiveConflictResponse() throws IOException {
+        HttpPost httpPost = new HttpPost(BASE_URL + "1/students");
+        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("conflict_student.xml");
+        httpPost.setEntity(new InputStreamEntity(resourceStream));
+        httpPost.setHeader("Content-Type", "text/xml");
+        
+        HttpResponse response = client.execute(httpPost);
+        assertEquals(409, response.getStatusLine().getStatusCode());
     }
 
     @Test
-    public void whenPostStudent_thenCorrect() throws IOException {
+    public void whenCreateValidStudent_thenReceiveOKResponse() throws IOException {
         HttpPost httpPost = new HttpPost(BASE_URL + "2/students");
-        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("student.xml");
+        InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("created_student.xml");
         httpPost.setEntity(new InputStreamEntity(resourceStream));
         httpPost.setHeader("Content-Type", "text/xml");
         
         HttpResponse response = client.execute(httpPost);
         assertEquals(200, response.getStatusLine().getStatusCode());
         
-        Student student = getStudent(2, 0);
+        Student student = getStudent(2, 3);
         assertEquals(3, student.getId());
         assertEquals("Student C", student.getName());
     }
     
     @Test
-    public void whenDeleteStudent_thenCorrect() throws IOException {
-        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/0");
+    public void whenDeleteInvalidStudent_thenReceiveNotFoundResponse() throws IOException {
+        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/3");
+        HttpResponse response = client.execute(httpDelete);
+        assertEquals(404, response.getStatusLine().getStatusCode());
+    }   
+    
+    @Test
+    public void whenDeleteValidStudent_thenReceiveOKResponse() throws IOException {
+        HttpDelete httpDelete = new HttpDelete(BASE_URL + "1/students/1");
         HttpResponse response = client.execute(httpDelete);
         assertEquals(200, response.getStatusLine().getStatusCode());
         
