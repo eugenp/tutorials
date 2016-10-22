@@ -8,36 +8,36 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ScopesTest {
 
-	private static final String NAME = "John Smith";
-	private static final String NAME_OTHER = "Anna Jones";
+    private static final String NAME = "John Smith";
+    private static final String NAME_OTHER = "Anna Jones";
 
-	@Test
-	public void testScopeSingleton() {
-		final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
+    @Test
+    public void testScopeSingleton() {
+        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
-		final Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
-		final Person personSingletonB = (Person) applicationContext.getBean("personSingleton");
+        final Person personSingletonA = (Person) applicationContext.getBean("personSingleton");
+        final Person personSingletonB = (Person) applicationContext.getBean("personSingleton");
 
-		personSingletonA.setName(NAME);
-		Assert.assertEquals(NAME, personSingletonB.getName());
+        personSingletonA.setName(NAME);
+        Assert.assertEquals(NAME, personSingletonB.getName());
 
-		((AbstractApplicationContext) applicationContext).close();
-	}
+        ((AbstractApplicationContext) applicationContext).close();
+    }
 
-	@Test
-	public void testScopePrototype() {
-		final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
+    @Test
+    public void testScopePrototype() {
+        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("scopes.xml");
 
-		final Person personPrototypeA = (Person) applicationContext.getBean("personPrototype");
-		final Person personPrototypeB = (Person) applicationContext.getBean("personPrototype");
+        final Person personPrototypeA = (Person) applicationContext.getBean("personPrototype");
+        final Person personPrototypeB = (Person) applicationContext.getBean("personPrototype");
 
-		personPrototypeA.setName(NAME);
-		personPrototypeB.setName(NAME_OTHER);
+        personPrototypeA.setName(NAME);
+        personPrototypeB.setName(NAME_OTHER);
 
-		Assert.assertEquals(NAME, personPrototypeA.getName());
-		Assert.assertEquals(NAME_OTHER, personPrototypeB.getName());
+        Assert.assertEquals(NAME, personPrototypeA.getName());
+        Assert.assertEquals(NAME_OTHER, personPrototypeB.getName());
 
-		((AbstractApplicationContext) applicationContext).close();
-	}
+        ((AbstractApplicationContext) applicationContext).close();
+    }
 
 }

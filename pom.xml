@@ -18,24 +18,22 @@
         <module>apache-cxf</module>
         <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
         <module>autovalue-tutorial</module>
-        
+
         <module>cdi</module>
         <module>core-java</module>
         <module>core-java-8</module>
+        <module>couchbase-sdk</module>
         <!-- <module>core-java-9</module> -->
-        <module>couchbase-sdk-intro</module>
-        <module>couchbase-sdk-spring-service</module>
 
         <module>dozer</module>
         <module>dependency-injection</module>
         <module>deltaspike</module>
 
-        <module>enterprise-patterns</module>
+        <module>patterns</module>
         <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>gson</module>
-        <module>gson-jackson-performance</module>
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
@@ -80,7 +78,6 @@
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-couchbase-2b</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-mongodb</module>
@@ -91,11 +88,13 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
+        <module>spring-jms</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-xml</module>
+        <module>spring-mvc-tiles</module>
         <module>spring-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
@@ -108,6 +107,7 @@
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
+        <module>spring-security-custom-voter</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-ldap</module>
@@ -132,6 +132,7 @@
         <module>wicket</module>
         <module>xstream</module>
         <module>java-cassandra</module>
+        <module>annotations</module>
     </modules>
 
 </project>

@@ -11,7 +11,6 @@ public class PropertiesWithPlaceHolderConfigurer {
         super();
     }
 
-
     @Bean
     public PropertyPlaceholderConfigurer propertyConfigurer() {
         final PropertyPlaceholderConfigurer props = new PropertyPlaceholderConfigurer();

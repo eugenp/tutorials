@@ -13,3 +13,8 @@
 - [Java – Write to File](http://www.baeldung.com/java-write-to-file)
 - [Java Scanner](http://www.baeldung.com/java-scanner)
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
+- [Java – Byte Array to Writer](http://www.baeldung.com/java-convert-byte-array-to-writer)
+- [How to Run a Shell Command in Java](http://www.baeldung.com/run-shell-command-in-java)
+- [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
+- [Guide to the Java ArrayList](http://www.baeldung.com/java-arraylist)
+- [Guide to Java Reflection](http://www.baeldung.com/java-reflection)

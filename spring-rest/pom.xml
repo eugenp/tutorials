@@ -15,7 +15,7 @@
     <dependencies>
 
         <!-- Spring Boot Dependencies -->
-        
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -71,7 +71,7 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-        
+
         <dependency>
 		    <groupId>com.fasterxml.jackson.dataformat</groupId>
 		    <artifactId>jackson-dataformat-xml</artifactId>
@@ -118,6 +118,14 @@
             <artifactId>log4j-over-slf4j</artifactId>
         </dependency>
 
+        <!-- okhttp -->
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${com.squareup.okhttp3.version}</version>
+        </dependency>
+
         <!-- test scoped -->
 
         <dependency>
@@ -153,14 +161,14 @@
 		    <artifactId>rest-assured</artifactId>
 		    <version>${rest-assured.version}</version>
 		</dependency>
-        
+
         <!--  -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>2.6.1</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
@@ -198,7 +206,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                         <exclude>**/*LiveTest.java</exclude> 
+                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -285,7 +293,7 @@
             </build>
         </profile>
     </profiles>
-        
+
     <properties>
         <!-- Spring -->
 
@@ -319,6 +327,9 @@
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
+
+        <!-- okhttp -->
+        <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
 
     </properties>
 
