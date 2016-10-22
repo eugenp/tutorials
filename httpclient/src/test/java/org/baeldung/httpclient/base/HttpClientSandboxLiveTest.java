@@ -59,15 +59,4 @@ public class HttpClientSandboxLiveTest {
 
         System.out.println(response.getStatusLine());
     }
-
-    @Test
-    public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws ClientProtocolException, IOException {
-        final CloseableHttpClient httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
-
-        final HttpGet httpGet = new HttpGet("https://sesar3.geoinfogeochem.org/sample/igsn/ODP000002");
-        httpGet.setHeader("Accept", "application/xml");
-
-        response = httpClient.execute(httpGet);
-    }
-    
 }

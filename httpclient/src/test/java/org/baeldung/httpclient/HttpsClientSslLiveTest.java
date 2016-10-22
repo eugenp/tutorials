@@ -1,10 +1,12 @@
 package org.baeldung.httpclient;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.X509Certificate;
 
 import javax.net.ssl.SSLContext;
@@ -16,6 +18,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContextBuilder;
 import org.apache.http.conn.ssl.SSLContexts;
@@ -105,6 +108,32 @@ public class HttpsClientSslLiveTest {
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
+
+    @Test
+    public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws ClientProtocolException, IOException {
+
+        TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
+            @Override
+            public boolean isTrusted(X509Certificate[] certificate, String authType) {
+                return true;
+            }
+        };
+
+        SSLContext sslContext = null;
+        try {
+            sslContext = new SSLContextBuilder().loadTrustMaterial(null, acceptingTrustStrategy).build();
+
+        } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
+            e.printStackTrace();
+        }
+
+        CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
+        final HttpGet httpGet = new HttpGet("https://sesar3.geoinfogeochem.org/sample/igsn/ODP000002");
+        httpGet.setHeader("Accept", "application/xml");
+
+        final HttpResponse response = client.execute(httpGet);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
