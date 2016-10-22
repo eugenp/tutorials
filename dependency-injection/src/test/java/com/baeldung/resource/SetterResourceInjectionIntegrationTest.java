@@ -16,14 +16,18 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestResourceNameType.class)
-public class NamedResourceTest {
+public class SetterResourceInjectionIntegrationTest {
 
-    @Resource(name = "namedFile")
-    private File testFile;
+    private File defaultFile;
+
+    @Resource
+    protected void setDefaultFile(File defaultFile) {
+        this.defaultFile = defaultFile;
+    }
 
     @Test
-    public void givenResourceAnnotation_WhenOnField_THEN_DEPENDENCY_Found() {
-        assertNotNull(testFile);
-        assertEquals("namedFile.txt", testFile.getName());
+    public void givenResourceAnnotation_WhenOnSetter_THEN_MUST_INJECT_Dependency() {
+        assertNotNull(defaultFile);
+        assertEquals("namedFile.txt", defaultFile.getName());
     }
 }

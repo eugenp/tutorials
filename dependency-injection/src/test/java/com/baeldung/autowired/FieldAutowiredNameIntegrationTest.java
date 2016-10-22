@@ -1,6 +1,6 @@
 package com.baeldung.autowired;
 
-import com.baeldung.configuration.ApplicationContextTestAutowiredType;
+import com.baeldung.configuration.ApplicationContextTestAutowiredName;
 import com.baeldung.dependency.ArbitraryDependency;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,15 +15,15 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
-  classes = ApplicationContextTestAutowiredType.class)
-public class FieldAutowiredTest {
+  classes = ApplicationContextTestAutowiredName.class)
+public class FieldAutowiredNameIntegrationTest {
 
     @Autowired
-    private ArbitraryDependency fieldDependency;
+    private ArbitraryDependency autowiredFieldDependency;
 
     @Test
-    public void givenAutowired_WhenSetOnField_ThenDependencyResolved() {
-        assertNotNull(fieldDependency);
-        assertEquals("Arbitrary Dependency", fieldDependency.toString());
+    public void givenAutowiredAnnotation_WhenOnField_ThenDependencyValid() {
+        assertNotNull(autowiredFieldDependency);
+        assertEquals("Arbitrary Dependency", autowiredFieldDependency.toString());
     }
 }

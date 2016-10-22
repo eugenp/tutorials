@@ -14,19 +14,20 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
+@ContextConfiguration(
+  loader = AnnotationConfigContextLoader.class,
   classes = ApplicationContextTestResourceNameType.class)
-public class SetterResourceInjectionTest {
+public class MethodResourceInjectionIntegrationTest {
 
     private File defaultFile;
 
-    @Resource
+    @Resource(name = "namedFile")
     protected void setDefaultFile(File defaultFile) {
         this.defaultFile = defaultFile;
     }
 
     @Test
-    public void givenResourceAnnotation_WhenOnSetter_THEN_MUST_INJECT_Dependency() {
+    public void givenResourceAnnotation_WhenSetter_ThenDependencyValid() {
         assertNotNull(defaultFile);
         assertEquals("namedFile.txt", defaultFile.getName());
     }
