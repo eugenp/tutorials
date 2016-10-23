@@ -1,5 +1,8 @@
 package com.baeldung.functionalinterface;
 
+import com.google.common.util.concurrent.Uninterruptibles;
+import org.junit.Test;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +12,6 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import com.google.common.util.concurrent.Uninterruptibles;
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

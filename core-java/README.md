@@ -21,3 +21,4 @@
 - [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
 - [Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
 - [Guide To CompletableFuture](http://www.baeldung.com/java-completablefuture)
+- [Guide to Java 8’s Functional Interfaces](http://www.baeldung.com/java-8-functional-interfaces)
