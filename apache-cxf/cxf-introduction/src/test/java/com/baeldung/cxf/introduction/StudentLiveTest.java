@@ -21,7 +21,7 @@ public class StudentLiveTest {
 
     {
         service = Service.create(SERVICE_NAME);
-        final String endpointAddress = "http://localhost:8082/cxf-introduction/baeldung";
+        final String endpointAddress = "http://localhost:8080/baeldung";
         service.addPort(PORT_NAME, SOAPBinding.SOAP11HTTP_BINDING, endpointAddress);
     }
 
