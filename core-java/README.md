@@ -25,7 +25,6 @@
 - [Convert char to String in Java](http://www.baeldung.com/java-convert-char-to-string)
 - [Random List Element](http://www.baeldung.com/java-random-list-element)
 - [Convert String to int or Integer in Java](http://www.baeldung.com/java-convert-string-to-int-or-integer)
-
 - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
 - [Java – Directory Size](http://www.baeldung.com/java-folder-size)
 - [Java – Try with Resources](http://www.baeldung.com/java-try-with-resources)
@@ -35,8 +34,5 @@
 - [The Double Colon Operator in Java 8](http://www.baeldung.com/java-8-double-colon-operator)
 - [Java 8 Streams Advanced](http://www.baeldung.com/java-8-streams)
 - [Introduction to Thread Pools in Java](http://www.baeldung.com/thread-pool-java-and-guava)
-- [Guide to Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
-- [The Java 8 Stream API Tutorial](http://www.baeldung.com/java-8-streams)
-- [New Features in Java 8](http://www.baeldung.com/java-8-new-features)
 - [Introduction to Java 8 Streams](http://www.baeldung.com/java-8-streams-introduction)
 - [Guide to the Fork/Join Framework in Java](http://www.baeldung.com/java-fork-join)
