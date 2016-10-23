@@ -26,8 +26,7 @@ public class GreetClient {
 	public String sendMessage(String msg) {
 		try {
 			out.println(msg);
-			String resp = in.readLine();
-			return resp;
+			return in.readLine();
 		} catch (Exception e) {
 			return null;
 		}

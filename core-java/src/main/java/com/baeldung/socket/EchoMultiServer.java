@@ -46,7 +46,7 @@ public class EchoMultiServer {
 						clientSocket.getInputStream()));
 				String inputLine;
 				while ((inputLine = in.readLine()) != null) {
-					if ("".equals(inputLine)) {
+					if (".".equals(inputLine)) {
 						out.println("bye");
 						break;
 					}

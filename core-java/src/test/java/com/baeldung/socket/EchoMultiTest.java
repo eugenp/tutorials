@@ -23,7 +23,7 @@ public class EchoMultiTest {
 		client.startConnection("127.0.0.1", PORT);
 		String msg1 = client.sendMessage("hello");
 		String msg2 = client.sendMessage("world");
-		String terminate = client.sendMessage("");
+		String terminate = client.sendMessage(".");
 
 		assertEquals(msg1, "hello");
 		assertEquals(msg2, "world");
@@ -37,7 +37,7 @@ public class EchoMultiTest {
 		client.startConnection("127.0.0.1", PORT);
 		String msg1 = client.sendMessage("hello");
 		String msg2 = client.sendMessage("world");
-		String terminate = client.sendMessage("");
+		String terminate = client.sendMessage(".");
 		assertEquals(msg1, "hello");
 		assertEquals(msg2, "world");
 		assertEquals(terminate, "bye");
@@ -50,7 +50,7 @@ public class EchoMultiTest {
 		client.startConnection("127.0.0.1", PORT);
 		String msg1 = client.sendMessage("hello");
 		String msg2 = client.sendMessage("world");
-		String terminate = client.sendMessage("");
+		String terminate = client.sendMessage(".");
 		assertEquals(msg1, "hello");
 		assertEquals(msg2, "world");
 		assertEquals(terminate, "bye");
