@@ -194,7 +194,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->

@@ -11,8 +11,6 @@
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
 - [The Double Colon Operator in Java 8](http://www.baeldung.com/java-8-double-colon-operator)
 - [Java 8 Streams Advanced](http://www.baeldung.com/java-8-streams)
-- [Convert String to int or Integer in Java](http://www.baeldung.com/java-convert-string-to-int-or-integer)
-- [Convert char to String in Java](http://www.baeldung.com/java-convert-char-to-string)
 - [Introduction to Thread Pools in Java](http://www.baeldung.com/thread-pool-java-and-guava)
 - [Guide to Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
 - [The Java 8 Stream API Tutorial](http://www.baeldung.com/java-8-streams)
