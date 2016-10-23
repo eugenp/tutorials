@@ -45,7 +45,7 @@
         <module>jackson</module>
         <module>javaxval</module>
         <module>jjwt</module>
-        <module>jooq-spring</module>
+
         <module>jpa-storedprocedure</module>
         <module>json</module>
         <module>json-path</module>
@@ -87,8 +87,9 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
-        <module>spring-jpa</module>
         <module>spring-jms</module>
+        <module>spring-jooq</module>
+        <module>spring-jpa</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
