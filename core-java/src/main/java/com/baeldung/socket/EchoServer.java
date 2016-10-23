@@ -18,7 +18,7 @@ public class EchoServer {
 					clientSocket.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				if (".".equals(inputLine)) {
+				if ("".equals(inputLine)) {
 					out.println("good bye");
 					break;
 				}
