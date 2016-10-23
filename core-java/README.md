@@ -23,3 +23,4 @@
 - [Guide To CompletableFuture](http://www.baeldung.com/java-completablefuture)
 - [Guide to Java 8’s Functional Interfaces](http://www.baeldung.com/java-8-functional-interfaces)
 - [Convert char to String in Java](http://www.baeldung.com/java-convert-char-to-string)
+- [Random List Element](http://www.baeldung.com/java-random-list-element)
