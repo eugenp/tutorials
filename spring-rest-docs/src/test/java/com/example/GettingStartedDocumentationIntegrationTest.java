@@ -33,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringRestDocsApplication.class)
 @WebAppConfiguration
-public class GettingStartedDocumentation {
+public class GettingStartedDocumentationIntegrationTest {
 
     @Rule
     public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");

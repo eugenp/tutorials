@@ -38,7 +38,7 @@ import static org.springframework.util.StringUtils.collectionToDelimitedString;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringRestDocsApplication.class)
 @WebAppConfiguration
-public class ApiDocumentation {
+public class ApiDocumentationIntegrationTest {
 
     @Rule
     public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
