@@ -32,6 +32,8 @@
         <module>feign-client</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
+        <module>flyway</module>
+
         <module>gson</module>
         <module>guava</module>
         <module>guava18</module>
