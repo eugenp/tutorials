@@ -1,8 +1,7 @@
 package org.baeldung.ex.mappingexception;
 
-import org.baeldung.ex.mappingexception.cause1.persistence.model.Foo;
-import org.baeldung.ex.mappingexception.spring.Cause1PersistenceConfig;
-import org.hibernate.MappingException;
+import org.baeldung.ex.mappingexception.cause2.persistence.model.Foo;
+import org.baeldung.ex.mappingexception.spring.Cause2PersistenceConfig;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +12,16 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause1PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause1MappingExceptionIntegrationTest {
+@ContextConfiguration(classes = { Cause2PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+public class Cause2MappingExceptionManualTest {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     // tests
 
-    @Test(expected = MappingException.class)
+    // @Test(expected = MappingException.class)
+    @Test
     @Transactional
     public final void givenEntityIsPersisted_thenException() {
         sessionFactory.getCurrentSession().saveOrUpdate(new Foo());

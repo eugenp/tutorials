@@ -1,7 +1,7 @@
 package org.baeldung.ex.mappingexception;
 
-import org.baeldung.ex.mappingexception.cause3.persistence.model.Foo;
-import org.baeldung.ex.mappingexception.spring.Cause3PersistenceConfig;
+import org.baeldung.ex.mappingexception.cause1.persistence.model.Foo;
+import org.baeldung.ex.mappingexception.spring.Cause1PersistenceConfig;
 import org.hibernate.MappingException;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -13,8 +13,8 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause3PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause3MappingExceptionIntegrationTest {
+@ContextConfiguration(classes = { Cause1PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+public class Cause1MappingExceptionManualTest {
 
     @Autowired
     private SessionFactory sessionFactory;

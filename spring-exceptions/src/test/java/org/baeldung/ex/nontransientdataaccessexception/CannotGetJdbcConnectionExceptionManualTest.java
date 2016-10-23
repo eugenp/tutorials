@@ -18,7 +18,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause5NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class CannotGetJdbcConnectionExceptionIntegrationTest {
+public class CannotGetJdbcConnectionExceptionManualTest {
 
     @Autowired
     private DataSource restDataSource;

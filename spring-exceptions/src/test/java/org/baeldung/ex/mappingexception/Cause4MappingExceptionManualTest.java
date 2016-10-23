@@ -12,7 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.Test;
 
-public class Cause4MappingExceptionIntegrationTest {
+public class Cause4MappingExceptionManualTest {
 
     // tests
 

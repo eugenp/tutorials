@@ -15,7 +15,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1ContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause1NoSuchBeanDefinitionExceptionIntegrationTest {
+public class Cause1NoSuchBeanDefinitionExceptionManualTest {
 
     @Test
     public final void givenContextIsInitialized_thenNoException() {

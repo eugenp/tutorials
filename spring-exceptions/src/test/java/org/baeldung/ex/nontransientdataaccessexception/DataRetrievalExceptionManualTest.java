@@ -17,7 +17,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class DataRetrievalExceptionIntegrationTest {
+public class DataRetrievalExceptionManualTest {
 
     @Autowired
     private DataSource restDataSource;

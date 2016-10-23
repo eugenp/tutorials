@@ -1,8 +1,6 @@
 package org.baeldung.ex.dataintegrityviolationexception;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-
-import org.baeldung.ex.dataintegrityviolationexception.spring.Cause3DataContextWithJavaConfig;
+import org.baeldung.ex.dataintegrityviolationexception.spring.Cause2DataContextWithJavaConfig;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.junit.Test;
@@ -14,8 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause3DataContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause3DataIntegrityViolationExceptionIntegrationTest {
+@ContextConfiguration(classes = { Cause2DataContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
+public class Cause2DataIntegrityViolationExceptionManualTest {
 
     @Autowired
     private IFooService fooService;
@@ -23,8 +21,7 @@ public class Cause3DataIntegrityViolationExceptionIntegrationTest {
     // tests
 
     @Test(expected = DataIntegrityViolationException.class)
-    public final void whenEntityWithLongNameIsCreated_thenDataException() {
-        fooService.create(new Foo(randomAlphabetic(2048)));
+    public void whenInvalidEntityIsCreated_thenDataException() {
+        fooService.create(new Foo());
     }
-
 }

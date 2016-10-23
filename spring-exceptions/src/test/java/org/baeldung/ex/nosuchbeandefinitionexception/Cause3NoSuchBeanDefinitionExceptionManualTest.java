@@ -1,6 +1,6 @@
-package org.baeldung.ex.beandefinitionstoreexception;
+package org.baeldung.ex.nosuchbeandefinitionexception;
 
-import org.baeldung.ex.beandefinitionstoreexception.spring.Cause1ContextWithJavaConfig;
+import org.baeldung.ex.nosuchbeandefinitionexception.spring.Cause3ContextWithJavaConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -8,8 +8,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Cause1ContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause1BeanDefinitionStoreExceptionIntegrationTest {
+@ContextConfiguration(classes = { Cause3ContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
+public class Cause3NoSuchBeanDefinitionExceptionManualTest {
 
     @Test
     public final void givenContextIsInitialized_thenNoException() {

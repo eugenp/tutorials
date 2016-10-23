@@ -15,7 +15,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause1DataContextWithJavaConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class Cause1DataIntegrityViolationExceptionIntegrationTest {
+public class Cause1DataIntegrityViolationExceptionManualTest {
 
     @Autowired
     private IParentService service;

@@ -13,7 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { Cause4NonTransientConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class DataSourceLookupExceptionIntegrationTest {
+public class DataSourceLookupExceptionManualTest {
 
     @Test(expected = DataSourceLookupFailureException.class)
     public void whenLookupNonExistentDataSource_thenDataSourceLookupFailureException() {
