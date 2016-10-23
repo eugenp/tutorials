@@ -1,9 +1,12 @@
 package com.baeldung.socket;
 
-import java.io.*;
-import java.net.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
-public class EchoClient {
+public class GreetClient {
 	private Socket clientSocket;
 	private PrintWriter out;
 	private BufferedReader in;
@@ -15,7 +18,7 @@ public class EchoClient {
 			in = new BufferedReader(new InputStreamReader(
 					clientSocket.getInputStream()));
 		} catch (IOException e) {
-			System.out.print(e);
+			
 		}
 
 	}
@@ -23,8 +26,7 @@ public class EchoClient {
 	public String sendMessage(String msg) {
 		try {
 			out.println(msg);
-			String resp = in.readLine();
-			return resp;
+			return in.readLine();
 		} catch (Exception e) {
 			return null;
 		}
@@ -38,6 +40,6 @@ public class EchoClient {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
+
 }

@@ -2,6 +2,7 @@ package com.baeldung.socket;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.concurrent.Executors;
@@ -9,15 +10,19 @@ import java.util.concurrent.Executors;
 import static org.junit.Assert.assertEquals;
 
 public class EchoTest {
-	{
-		Executors.newSingleThreadExecutor().submit(() -> new EchoServer().start(4444));
-	}
+    private static final Integer PORT = 4444;
 
-	EchoClient client = new EchoClient();
+    @BeforeClass
+    public static void start() throws InterruptedException {
+        Executors.newSingleThreadExecutor().submit(() -> new EchoServer().start(PORT));
+        Thread.sleep(500);
+    }
+
+	private EchoClient client = new EchoClient();
 
 	@Before
 	public void init() {
-		client.startConnection("127.0.0.1", 4444);
+		client.startConnection("127.0.0.1", PORT);
 	}
 
 	@Test
@@ -37,5 +42,4 @@ public class EchoTest {
 	public void tearDown() {
 		client.stopConnection();
 	}
-
 }

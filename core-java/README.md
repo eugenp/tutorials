@@ -18,3 +18,4 @@
 - [MD5 Hashing in Java](http://www.baeldung.com/java-md5)
 - [Guide to the Java ArrayList](http://www.baeldung.com/java-arraylist)
 - [Guide to Java Reflection](http://www.baeldung.com/java-reflection)
+- [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
