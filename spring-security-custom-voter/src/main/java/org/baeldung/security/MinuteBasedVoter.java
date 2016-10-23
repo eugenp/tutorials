@@ -23,16 +23,17 @@ public class MinuteBasedVoter implements AccessDecisionVoter {
 
     @Override
     public int vote(Authentication authentication, Object object, Collection collection) {
-        List<String> roles = authentication
+        String role = authentication
                 .getAuthorities()
                 .stream().map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+                .filter("ROLE_USER"::equals)
+                .findAny()
+                .orElseGet(() -> "ROLE_ADMIN");
 
-        for (String role: roles) {
-            if ("ROLE_USER".equals(role) && LocalDateTime.now().getMinute() % 2 != 0) {
+        if ("ROLE_USER".equals(role) && LocalDateTime.now().getMinute() % 2 != 0) {
                 return ACCESS_DENIED;
-            }
         }
+
         return ACCESS_ABSTAIN;
     }
 }
