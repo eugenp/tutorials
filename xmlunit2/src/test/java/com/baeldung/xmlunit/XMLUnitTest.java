@@ -1,36 +1,29 @@
 package com.baeldung.xmlunit;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
-import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
-import static org.xmlunit.matchers.HasXPathMatcher.hasXPath;
-
-import java.io.File;
-import java.util.Iterator;
-
 import org.junit.Ignore;
 import org.junit.Test;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.builder.Input;
-import org.xmlunit.diff.ComparisonControllers;
-import org.xmlunit.diff.DefaultNodeMatcher;
-import org.xmlunit.diff.Diff;
-import org.xmlunit.diff.Difference;
-import org.xmlunit.diff.ElementSelectors;
+import org.xmlunit.diff.*;
 import org.xmlunit.validation.Languages;
 import org.xmlunit.validation.ValidationProblem;
 import org.xmlunit.validation.ValidationResult;
 import org.xmlunit.validation.Validator;
 import org.xmlunit.xpath.JAXPXPathEngine;
+
+import java.io.File;
+import java.util.Iterator;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.*;
+import static org.xmlunit.matchers.CompareMatcher.isIdenticalTo;
+import static org.xmlunit.matchers.CompareMatcher.isSimilarTo;
+import static org.xmlunit.matchers.HasXPathMatcher.hasXPath;
 
 public class XMLUnitTest {
 	@Test

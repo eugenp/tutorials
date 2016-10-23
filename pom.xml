@@ -52,7 +52,7 @@
         <module>json</module>
         <module>json-path</module>
         <module>junit5</module>
-        <module>jee7schedule</module>
+        <module>jee7</module>
         <!-- <module>jpa-storedprocedure</module> -->
 
         <module>log4j</module>
