@@ -4,9 +4,9 @@ import java.io.*;
 import java.net.*;
 
 public class EchoClient {
-	private Socket clientSocket = null;
-	private PrintWriter out = null;
-	private BufferedReader in = null;
+	private Socket clientSocket;
+	private PrintWriter out;
+	private BufferedReader in;
 
 	public void startConnection(String ip, int port) {
 		try {

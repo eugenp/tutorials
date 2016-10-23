@@ -38,15 +38,15 @@ public class JPASpecificationTest {
     @Before
     public void init() {
         userJohn = new User();
-        userJohn.setFirstName("John");
-        userJohn.setLastName("Doe");
+        userJohn.setFirstName("john");
+        userJohn.setLastName("doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
         repository.save(userJohn);
 
         userTom = new User();
-        userTom.setFirstName("Tom");
-        userTom.setLastName("Doe");
+        userTom.setFirstName("tom");
+        userTom.setLastName("doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
         repository.save(userTom);

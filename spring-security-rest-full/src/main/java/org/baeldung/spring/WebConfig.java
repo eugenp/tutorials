@@ -1,6 +1,7 @@
 package org.baeldung.spring;
 
 import org.baeldung.web.interceptor.LoggerInterceptor;
+import org.baeldung.web.interceptor.SessionTimerInterceptor;
 import org.baeldung.web.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -38,9 +39,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/homepage.html");
     }
 
-	@Override
-	public void addInterceptors(final InterceptorRegistry registry) {
-		registry.addInterceptor(new LoggerInterceptor());
-		registry.addInterceptor(new UserInterceptor());
-	}
+    @Override
+    public void addInterceptors(final InterceptorRegistry registry) {
+        registry.addInterceptor(new LoggerInterceptor());
+        registry.addInterceptor(new UserInterceptor());
+        registry.addInterceptor(new SessionTimerInterceptor());
+    }
+
 }

@@ -4,7 +4,8 @@
 
 
 ### Relevant Articles: 
-
+- [Introduction to Using Thymeleaf in Spring](http://www.baeldung.com/thymeleaf-in-spring-mvc)
+- [CSRF Protection with Spring MVC and Thymeleaf](http://www.baeldung.com/csrf-thymeleaf-with-spring-security)
 
 ### Build the Project
 

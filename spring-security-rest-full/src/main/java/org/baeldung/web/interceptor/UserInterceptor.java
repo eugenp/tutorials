@@ -31,8 +31,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
      * Executed before after handler is executed. If view is a redirect view, we don't need to execute postHandle
      **/
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView model)
-      throws Exception {
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView model) throws Exception {
         if (model != null && !isRedirectView(model)) {
             if (isUserLogged()) {
                 addToModelUserDetails(model);
