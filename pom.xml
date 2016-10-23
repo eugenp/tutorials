@@ -21,7 +21,6 @@
 
         <module>cdi</module>
         <module>core-java</module>
-        <module>core-java-8</module>
         <module>couchbase-sdk</module>
         <!-- <module>core-java-9</module> -->
 
