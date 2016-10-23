@@ -17,7 +17,7 @@
         <module>assertj</module>
         <module>apache-cxf</module>
         <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
-        <module>autovalue-tutorial</module>
+        <module>autovalue</module>
 
         <module>cdi</module>
         <module>core-java</module>
