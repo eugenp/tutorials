@@ -129,6 +129,7 @@
 
         <module>jsf</module>
         <module>xml</module>
+        <module>xmlunit2</module>
         <module>lombok</module>
         <module>redis</module>
 
