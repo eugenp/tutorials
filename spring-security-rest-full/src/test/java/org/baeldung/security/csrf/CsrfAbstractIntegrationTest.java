@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @Transactional
-public class CsrfAbstractIntegrationTest {
+public abstract class CsrfAbstractIntegrationTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -41,7 +41,7 @@ public class CsrfAbstractIntegrationTest {
     }
 
     protected RequestPostProcessor testUser() {
-        return user("user").password("userPass").roles("USER");
+        return user("user1").password("user1Pass").roles("USER");
     }
 
     protected RequestPostProcessor testAdmin() {

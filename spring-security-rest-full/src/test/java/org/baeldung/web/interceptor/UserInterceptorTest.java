@@ -23,8 +23,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @Transactional
-@ContextConfiguration(classes = {SecurityWithoutCsrfConfig.class, PersistenceConfig.class, WebConfig.class})
-@WithMockUser(username = "admin", roles = {"USER", "ADMIN"})
+@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, PersistenceConfig.class, WebConfig.class })
+@WithMockUser(username = "admin", roles = { "USER", "ADMIN" })
 public class UserInterceptorTest {
 
     @Autowired
@@ -46,8 +46,7 @@ public class UserInterceptorTest {
      */
     @Test
     public void testInterceptors() throws Exception {
-        mockMvc.perform(get("/auth/admin"))
-          .andExpect(status().is2xxSuccessful());
+        mockMvc.perform(get("/auth/admin")).andExpect(status().is2xxSuccessful());
     }
 
 }

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan("org.baeldung.web")
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter{
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
         super();
@@ -39,11 +39,11 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         registry.addViewController("/homepage.html");
     }
 
-	@Override
-	public void addInterceptors(final InterceptorRegistry registry) {
-		registry.addInterceptor(new LoggerInterceptor());
-		registry.addInterceptor(new UserInterceptor());
-		registry.addInterceptor(new SessionTimerInterceptor());
-	}
+    @Override
+    public void addInterceptors(final InterceptorRegistry registry) {
+        registry.addInterceptor(new LoggerInterceptor());
+        registry.addInterceptor(new UserInterceptor());
+        registry.addInterceptor(new SessionTimerInterceptor());
+    }
 
 }

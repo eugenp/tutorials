@@ -51,7 +51,7 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>StudentTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -60,7 +60,7 @@
     
     <profiles>
         <profile>
-            <id>integration</id>
+            <id>live</id>
             <build>
                 <plugins>
                     <plugin>

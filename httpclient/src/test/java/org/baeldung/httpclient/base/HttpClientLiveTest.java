@@ -1,16 +1,8 @@
 package org.baeldung.httpclient.base;
 
-import static org.hamcrest.Matchers.emptyArray;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -22,6 +14,13 @@ import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.hamcrest.Matchers.emptyArray;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertThat;
 
 public class HttpClientLiveTest {
 
@@ -56,7 +55,7 @@ public class HttpClientLiveTest {
     // tests
 
     @Test(expected = ConnectTimeoutException.class)
-    public final void givenLowTimeout_whenExecutingRequestWithTimeout_thenException() throws ClientProtocolException, IOException {
+    public final void givenLowTimeout_whenExecutingRequestWithTimeout_thenException() throws IOException {
         final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(50).setConnectTimeout(50).setSocketTimeout(20).build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setConfig(requestConfig);
@@ -66,20 +65,20 @@ public class HttpClientLiveTest {
     // tests - configs
 
     @Test
-    public final void givenHttpClientIsConfiguredWithCustomConnectionManager_whenExecutingRequest_thenNoExceptions() throws ClientProtocolException, IOException {
+    public final void givenHttpClientIsConfiguredWithCustomConnectionManager_whenExecutingRequest_thenNoExceptions() throws IOException {
         instance = HttpClientBuilder.create().setConnectionManager(new BasicHttpClientConnectionManager()).build();
         response = instance.execute(new HttpGet(SAMPLE_URL));
     }
 
     @Test
-    public final void givenCustomHeaderIsSet_whenSendingRequest_thenNoExceptions() throws ClientProtocolException, IOException {
+    public final void givenCustomHeaderIsSet_whenSendingRequest_thenNoExceptions() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.addHeader(HttpHeaders.ACCEPT, "application/xml");
         response = instance.execute(request);
     }
 
     @Test
-    public final void givenRequestWasSet_whenAnalyzingTheHeadersOfTheResponse_thenCorrect() throws ClientProtocolException, IOException {
+    public final void givenRequestWasSet_whenAnalyzingTheHeadersOfTheResponse_thenCorrect() throws IOException {
         response = instance.execute(new HttpGet(SAMPLE_URL));
 
         final Header[] headers = response.getHeaders(HttpHeaders.CONTENT_TYPE);
@@ -89,7 +88,7 @@ public class HttpClientLiveTest {
     // tests - cancel request
 
     @Test
-    public final void whenRequestIsCanceled_thenCorrect() throws ClientProtocolException, IOException {
+    public final void whenRequestIsCanceled_thenCorrect() throws IOException {
         instance = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         response = instance.execute(request);
