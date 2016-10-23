@@ -29,7 +29,7 @@
         <module>deltaspike</module>
 
         <module>patterns</module>
-        <module>feign-client</module>
+        <module>feign</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>flyway</module>
