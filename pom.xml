@@ -26,7 +26,6 @@
         <!-- <module>core-java-9</module> -->
 
         <module>dozer</module>
-        <module>dependency-injection</module>
         <module>deltaspike</module>
 
         <module>patterns</module>
@@ -75,6 +74,7 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-core</module>
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
