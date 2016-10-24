@@ -1,11 +1,5 @@
 package com.baeldung.enums;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections15.Predicate;
-
-import java.io.IOException;
 import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
@@ -13,13 +7,12 @@ import java.util.stream.Collectors;
 
 public class Pizza {
 
-    private static EnumSet<PizzaStatus> undeliveredPizzaStatuses =
-            EnumSet.of(PizzaStatus.ORDERED, PizzaStatus.READY);
+    private static EnumSet<PizzaStatusEnum> deliveredPizzaStatuses =
+            EnumSet.of(PizzaStatusEnum.DELIVERED);
 
-    private PizzaStatus status;
+    private PizzaStatusEnum status;
 
-    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-    public enum PizzaStatus {
+    public enum PizzaStatusEnum {
         ORDERED(5) {
             @Override
             public boolean isOrdered() {
@@ -53,21 +46,20 @@ public class Pizza {
             return false;
         }
 
-        @JsonProperty("timeToDelivery")
         public int getTimeToDelivery() {
             return timeToDelivery;
         }
 
-        PizzaStatus(int timeToDelivery) {
+        PizzaStatusEnum(int timeToDelivery) {
             this.timeToDelivery = timeToDelivery;
         }
     }
 
-    public PizzaStatus getStatus() {
+    public PizzaStatusEnum getStatus() {
         return status;
     }
 
-    public void setStatus(PizzaStatus status) {
+    public void setStatus(PizzaStatusEnum status) {
         this.status = status;
     }
 
@@ -80,31 +72,20 @@ public class Pizza {
     }
 
     public static List<Pizza> getAllUndeliveredPizzas(List<Pizza> input) {
-        return input.stream().filter(
-                (s) -> undeliveredPizzaStatuses.contains(s.getStatus()))
-                .collect(Collectors.toList());
+        return input.stream().filter((s) -> !deliveredPizzaStatuses.contains(s.getStatus())).collect(Collectors.toList());
     }
 
-    public static EnumMap<PizzaStatus, List<Pizza>>
-    groupPizzaByStatus(List<Pizza> pzList) {
+    public static EnumMap<PizzaStatusEnum, List<Pizza>> groupPizzaByStatus(List<Pizza> pzList) {
         return pzList.stream().collect(
                 Collectors.groupingBy(Pizza::getStatus,
-                        () -> new EnumMap<>(PizzaStatus.class), Collectors.toList()));
+                        () -> new EnumMap<>(PizzaStatusEnum.class), Collectors.toList()));
     }
 
     public void deliver() {
         if (isDeliverable()) {
             PizzaDeliverySystemConfiguration.getInstance().getDeliveryStrategy().deliver(this);
-            this.setStatus(PizzaStatus.DELIVERED);
+            this.setStatus(PizzaStatusEnum.DELIVERED);
         }
     }
 
-    public static String getJsonString(Pizza pz) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(pz);
-    }
-
-    private static Predicate<Pizza> thatAreNotDelivered() {
-        return entry -> undeliveredPizzaStatuses.contains(entry.getStatus());
-    }
 }

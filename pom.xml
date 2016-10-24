@@ -21,7 +21,6 @@
 
         <module>cdi</module>
         <module>core-java</module>
-        <module>core-java-8</module>
         <module>couchbase-sdk</module>
         <!-- <module>core-java-9</module> -->
 
@@ -29,8 +28,10 @@
         <module>deltaspike</module>
 
         <module>patterns</module>
-        <module>feign-client</module>
+        <module>feign</module>
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
+
+        <module>flyway</module>
 
         <module>gson</module>
         <module>guava</module>
@@ -45,12 +46,12 @@
         <module>jackson</module>
         <module>javaxval</module>
         <module>jjwt</module>
-        <module>jooq-spring</module>
+
         <module>jpa-storedprocedure</module>
         <module>json</module>
         <module>json-path</module>
         <module>junit5</module>
-        <module>jee7schedule</module>
+        <module>jee7</module>
         <!-- <module>jpa-storedprocedure</module> -->
 
         <module>log4j</module>
@@ -88,8 +89,9 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
-        <module>spring-jpa</module>
         <module>spring-jms</module>
+        <module>spring-jooq</module>
+        <module>spring-jpa</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
@@ -127,6 +129,7 @@
 
         <module>jsf</module>
         <module>xml</module>
+        <module>xmlunit2</module>
         <module>lombok</module>
         <module>redis</module>
 

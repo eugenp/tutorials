@@ -21,7 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ServiceLiveTest {
-    private static final String BASE_URL = "http://localhost:8082/baeldung/courses/";
+    private static final String BASE_URL = "http://localhost:8080/baeldung/courses/";
     private static CloseableHttpClient client;
 
     @BeforeClass
