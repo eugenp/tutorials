@@ -1,0 +1,7 @@
+# https://docs.npmjs.com/misc/developers
+
+*
+!.gitignore
+!LICENSE
+!ngStorage.js
+!ngStorage.min.js

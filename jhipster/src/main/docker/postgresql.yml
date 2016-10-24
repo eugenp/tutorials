@@ -1,0 +1,12 @@
+version: '2'
+services:
+    baeldung-postgresql:
+        container_name: baeldung-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/baeldung/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=baeldung
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

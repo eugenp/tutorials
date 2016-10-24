@@ -1,0 +1,37 @@
+<div>
+    <h2>Active sessions for [<b>{{vm.account.login}}</b>]</h2>
+
+    <div class="alert alert-success" ng-show="vm.success">
+        <strong>Session invalidated!</strong>
+    </div>
+    <div class="alert alert-danger" ng-show="vm.error">
+        <strong>An error has occured!</strong> The session could not be invalidated.
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>IP Address</th>
+                    <th>User agent</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="session in vm.sessions">
+                    <td>{{session.ipAddress}}</td>
+                    <td>{{session.userAgent}}</td>
+                    <td>{{session.tokenDate | date:'longDate'}}</td>
+                    <td>
+                        <button type="submit"
+                                class="btn btn-primary"
+                                ng-click="vm.invalidate(session.series)">
+                                 Invalidate
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

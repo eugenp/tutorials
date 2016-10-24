@@ -1,0 +1,31 @@
+{
+  "name": "angular-loading-bar",
+  "main": [
+    "build/loading-bar.js",
+    "build/loading-bar.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "test",
+    "example"
+  ],
+  "dependencies": {
+    "angular": "^1.2.9"
+  },
+  "devDependencies": {
+    "angular": "~1.2.23",
+    "angular-1.3": "angular#1.3",
+    "angular-1.4": "angular#1.4",
+    "angular-mocks": "~1.2.9",
+    "angular-mocks-1.3": "angular-mocks#1.3",
+    "angular-mocks-1.4": "angular-mocks#1.4",
+    "angular-animate": "~1.2.9",
+    "angular-animate-1.3": "angular-animate#1.3",
+    "angular-animate-1.4": "angular-animate#1.4"
+  },
+  "resolutions": {
+    "angular": "~1.2.23"
+  }
+}

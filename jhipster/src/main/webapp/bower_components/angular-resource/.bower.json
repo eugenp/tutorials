@@ -1,0 +1,20 @@
+{
+  "name": "angular-resource",
+  "version": "1.5.8",
+  "license": "MIT",
+  "main": "./angular-resource.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.5.8"
+  },
+  "homepage": "https://github.com/angular/bower-angular-resource",
+  "_release": "1.5.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.8",
+    "commit": "26254617a7f9716d80bc2e32117585f33480a4e3"
+  },
+  "_source": "https://github.com/angular/bower-angular-resource.git",
+  "_target": "1.5.8",
+  "_originalSource": "angular-resource"
+}
