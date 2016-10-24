@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class TemplateFilter extends BaseFilter {
-
     protected abstract void preFilter(
       HttpServletRequest request,
       HttpServletResponse response
