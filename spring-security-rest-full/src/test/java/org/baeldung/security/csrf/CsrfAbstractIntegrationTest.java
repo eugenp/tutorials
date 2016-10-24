@@ -14,6 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,7 +22,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-public class CsrfAbstractIntegrationTest {
+@Transactional
+public abstract class CsrfAbstractIntegrationTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -39,7 +41,7 @@ public class CsrfAbstractIntegrationTest {
     }
 
     protected RequestPostProcessor testUser() {
-        return user("user").password("userPass").roles("USER");
+        return user("user1").password("user1Pass").roles("USER");
     }
 
     protected RequestPostProcessor testAdmin() {

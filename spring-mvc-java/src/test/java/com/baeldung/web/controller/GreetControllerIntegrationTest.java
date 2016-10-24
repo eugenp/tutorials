@@ -1,6 +1,5 @@
 package com.baeldung.web.controller;
 
-
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import javax.servlet.ServletContext;
@@ -25,7 +24,7 @@ import com.baeldung.spring.web.config.ApplicationConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = {ApplicationConfig.class})
+@ContextConfiguration(classes = { ApplicationConfig.class })
 public class GreetControllerIntegrationTest {
 
     @Autowired
@@ -34,7 +33,6 @@ public class GreetControllerIntegrationTest {
     private MockMvc mockMvc;
 
     private static final String CONTENT_TYPE = "application/json";
-
 
     @Before
     public void setup() throws Exception {
@@ -74,8 +72,8 @@ public class GreetControllerIntegrationTest {
 
     @Test
     public void givenGreetURIWithQueryParameter_whenMockMVC_thenVerifyResponse() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE)).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!"));
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/greetWithQueryVariable").param("name", "John Doe")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World John Doe!!!"));
     }
 
     @Test

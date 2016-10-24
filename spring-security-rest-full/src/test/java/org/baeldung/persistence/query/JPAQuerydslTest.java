@@ -35,15 +35,15 @@ public class JPAQuerydslTest {
     @Before
     public void init() {
         userJohn = new MyUser();
-        userJohn.setFirstName("John");
-        userJohn.setLastName("Doe");
+        userJohn.setFirstName("john");
+        userJohn.setLastName("doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
         repo.save(userJohn);
 
         userTom = new MyUser();
-        userTom.setFirstName("Tom");
-        userTom.setLastName("Doe");
+        userTom.setFirstName("tom");
+        userTom.setLastName("doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
         repo.save(userTom);
@@ -51,7 +51,7 @@ public class JPAQuerydslTest {
 
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
-        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("lastName", ":", "Doe");
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("lastName", ":", "doe");
 
         final Iterable<MyUser> results = repo.findAll(builder.build());
         assertThat(results, containsInAnyOrder(userJohn, userTom));
@@ -59,7 +59,7 @@ public class JPAQuerydslTest {
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("firstName", ":", "John").with("lastName", ":", "Doe");
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("firstName", ":", "john").with("lastName", ":", "doe");
 
         final Iterable<MyUser> results = repo.findAll(builder.build());
 
@@ -69,7 +69,7 @@ public class JPAQuerydslTest {
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
-        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("lastName", ":", "Doe").with("age", ">", "25");
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("lastName", ":", "doe").with("age", ">", "25");
 
         final Iterable<MyUser> results = repo.findAll(builder.build());
 
@@ -79,7 +79,7 @@ public class JPAQuerydslTest {
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
-        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("firstName", ":", "Adam").with("lastName", ":", "Fox");
+        final MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder().with("firstName", ":", "adam").with("lastName", ":", "fox");
 
         final Iterable<MyUser> results = repo.findAll(builder.build());
         assertThat(results, emptyIterable());

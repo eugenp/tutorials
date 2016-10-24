@@ -10,3 +10,5 @@
 - [JPA Pagination](http://www.baeldung.com/jpa-pagination)
 - [Sorting with JPA](http://www.baeldung.com/jpa-sort)
 - [Spring JPA – Multiple Databases](http://www.baeldung.com/spring-data-jpa-multiple-databases)
+- [Hibernate Second-Level Cache](http://www.baeldung.com/hibernate-second-level-cache)
+- [Spring, Hibernate and a JNDI Datasource](http://www.baeldung.com/spring-persistence-jpa-jndi-datasource)

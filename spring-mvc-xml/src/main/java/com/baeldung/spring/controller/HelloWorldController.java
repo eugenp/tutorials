@@ -10,8 +10,7 @@ public class HelloWorldController extends AbstractController {
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
         ModelAndView model = new ModelAndView("helloworld");
-        model.addObject("msg", "Welcome to Baeldung's Spring Handler Mappings Guide.<br>This request was mapped" +
-                " using BeanNameUrlHandlerMapping.");
+        model.addObject("msg", "Welcome to Baeldung's Spring Handler Mappings Guide.<br>This request was mapped" + " using BeanNameUrlHandlerMapping.");
 
         return model;
     }

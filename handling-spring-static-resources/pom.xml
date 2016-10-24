@@ -115,6 +115,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -221,8 +222,7 @@
         <spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
 
         <!-- marshalling -->
-
-        <jackson.version>2.7.2</jackson.version>
+        <jackson.version>2.7.8</jackson.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.13</org.slf4j.version>
