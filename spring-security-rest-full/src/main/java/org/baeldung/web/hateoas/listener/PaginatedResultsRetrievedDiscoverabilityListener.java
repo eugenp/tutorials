@@ -77,7 +77,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
     }
 
     final boolean hasNextPage(final int page, final int totalPages) {
-        return page < totalPages - 1;
+        return page < (totalPages - 1);
     }
 
     final boolean hasPreviousPage(final int page) {
@@ -89,7 +89,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
     }
 
     final boolean hasLastPage(final int page, final int totalPages) {
-        return totalPages > 1 && hasNextPage(page, totalPages);
+        return (totalPages > 1) && hasNextPage(page, totalPages);
     }
 
     final void appendCommaIfNecessary(final StringBuilder linkHeader) {
@@ -102,7 +102,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
 
     protected void plural(final UriComponentsBuilder uriBuilder, final Class clazz) {
         final String resourceName = clazz.getSimpleName().toLowerCase() + "s";
-        uriBuilder.path("/" + resourceName);
+        uriBuilder.path("/auth/" + resourceName);
     }
 
 }

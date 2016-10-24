@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class StudentServiceImpl implements StudentService {
 
     private StudentRepository repo;
+
     @Autowired
     public void setStudentRepository(StudentRepository repo) {
         this.repo = repo;
@@ -26,7 +27,7 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAll() {
         List<Student> people = new ArrayList<Student>();
         Iterator<Student> it = repo.findAll().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             people.add(it.next());
         }
         return people;

@@ -11,7 +11,6 @@ public class Foo {
 
     private static final AtomicInteger instanceCount = new AtomicInteger(0);
 
-
     private final int instanceNum;
 
     public Foo() {

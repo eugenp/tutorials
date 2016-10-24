@@ -17,40 +17,40 @@ import org.springframework.web.servlet.view.JstlView;
 //@Configuration
 public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
 
-	public ClientWebConfigJava() {
-		super();
-	}
+    public ClientWebConfigJava() {
+        super();
+    }
 
-	@Bean
-	public MessageSource messageSource() {
+    @Bean
+    public MessageSource messageSource() {
 
-		final ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
-		ms.setBasenames("messages");
-		return ms;
-	}
+        final ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
+        ms.setBasenames("messages");
+        return ms;
+    }
 
-	@Bean
-	public ResourceBundle getBeanResourceBundle() {
+    @Bean
+    public ResourceBundle getBeanResourceBundle() {
 
-		final Locale locale = Locale.getDefault();
-		return new MessageSourceResourceBundle(messageSource(), locale);
-	}
+        final Locale locale = Locale.getDefault();
+        return new MessageSourceResourceBundle(messageSource(), locale);
+    }
 
-	@Override
-	public void addViewControllers(final ViewControllerRegistry registry) {
-		super.addViewControllers(registry);
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
 
-		registry.addViewController("/sample.html");
-	}
+        registry.addViewController("/sample.html");
+    }
 
-	@Bean
-	public ViewResolver viewResolver() {
-		final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+    @Bean
+    public ViewResolver viewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
 
-		bean.setViewClass(JstlView.class);
-		bean.setPrefix("/WEB-INF/view/");
-		bean.setSuffix(".jsp");
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
 
-		return bean;
-	}
+        return bean;
+    }
 }

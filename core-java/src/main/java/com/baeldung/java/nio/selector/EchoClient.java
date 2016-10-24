@@ -6,9 +6,15 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 public class EchoClient {
+<<<<<<< HEAD
     private static SocketChannel client = null;
     private static ByteBuffer buffer;
     private static EchoClient instance = null;
+=======
+    private static SocketChannel client;
+    private static ByteBuffer buffer;
+    private static EchoClient instance;
+>>>>>>> 92d320cd9a02af33413a1c229c3234587bae5db1
 
     public static EchoClient start() {
         if (instance == null)

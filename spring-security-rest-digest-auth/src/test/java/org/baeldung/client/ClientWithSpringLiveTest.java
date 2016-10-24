@@ -23,7 +23,7 @@ public class ClientWithSpringLiveTest {
 
     @Test
     public final void whenSecuredRestApiIsConsumed_then200OK() {
-        final String uri = "http://localhost:8080/spring-security-rest-digest-auth/api/foos/1";
+        final String uri = "http://localhost:8082/spring-security-rest-digest-auth/api/foos/1";
         final ResponseEntity<Foo> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, Foo.class);
 
         System.out.println(responseEntity.getStatusCode());
