@@ -17,7 +17,7 @@ import com.couchbase.client.java.Bucket;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { IntegrationTestConfig.class })
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
-public class ClusterServiceTest extends IntegrationTest {
+public class ClusterServiceIntegrationTest extends IntegrationTest {
 
     @Autowired
     private ClusterService couchbaseService;
