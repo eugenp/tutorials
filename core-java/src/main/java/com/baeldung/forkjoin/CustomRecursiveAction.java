@@ -30,8 +30,7 @@ public class CustomRecursiveAction extends RecursiveAction {
 
     private Collection<CustomRecursiveAction> createSubtasks() {
 
-        List<CustomRecursiveAction> subtasks =
-                new ArrayList<>();
+        List<CustomRecursiveAction> subtasks = new ArrayList<>();
 
         String partOne = workLoad.substring(0, workLoad.length() / 2);
         String partTwo = workLoad.substring(workLoad.length() / 2, workLoad.length());

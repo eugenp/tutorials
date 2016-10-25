@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomListElementTest {
+public class RandomListElementUnitTest {
 
     @Test
     public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingRandom() {
@@ -20,7 +20,7 @@ public class RandomListElementTest {
     public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingMathRandom() {
         List<Integer> givenList = Lists.newArrayList(1, 2, 3);
 
-        givenList.get((int)(Math.random() * givenList.size()));
+        givenList.get((int) (Math.random() * givenList.size()));
     }
 
     @Test

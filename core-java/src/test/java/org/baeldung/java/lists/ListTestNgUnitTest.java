@@ -1,13 +1,12 @@
 package org.baeldung.java.lists;
 
-import org.junit.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class ListAssertJTest {
+public class ListTestNgUnitTest {
 
     private final List<String> list1 = Arrays.asList("1", "2", "3", "4");
     private final List<String> list2 = Arrays.asList("1", "2", "3", "4");
@@ -15,11 +14,8 @@ public class ListAssertJTest {
 
     @Test
     public void whenTestingForEquality_ShouldBeEqual() throws Exception {
-        assertThat(list1)
-          .isEqualTo(list2)
-          .isNotEqualTo(list3);
-
-        assertThat(list1.equals(list2)).isTrue();
-        assertThat(list1.equals(list3)).isFalse();
+        Assert.assertEquals(list1, list2);
+        Assert.assertNotSame(list1, list2);
+        Assert.assertNotEquals(list1, list3);
     }
 }

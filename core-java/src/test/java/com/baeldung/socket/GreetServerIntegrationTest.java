@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertEquals;
 
-public class GreetServerTest {
+public class GreetServerIntegrationTest {
 
     private GreetClient client;
 
@@ -24,7 +24,7 @@ public class GreetServerTest {
     @Before
     public void init() {
         client = new GreetClient();
-		client.startConnection("127.0.0.1", PORT);
+        client.startConnection("127.0.0.1", PORT);
 
     }
 

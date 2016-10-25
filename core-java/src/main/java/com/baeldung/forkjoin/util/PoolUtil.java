@@ -1,6 +1,5 @@
 package com.baeldung.forkjoin.util;
 
-
 import java.util.concurrent.ForkJoinPool;
 
 public class PoolUtil {

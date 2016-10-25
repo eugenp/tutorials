@@ -1,11 +1,12 @@
 package com.baeldung;
 
-import com.google.common.primitives.Ints;
-import org.junit.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringToIntOrIntegerTest {
+import org.junit.Test;
+
+import com.google.common.primitives.Ints;
+
+public class StringToIntOrIntegerUnitTest {
 
     @Test
     public void givenString_whenParsingInt_shouldConvertToInt() {
@@ -15,7 +16,6 @@ public class StringToIntOrIntegerTest {
 
         assertThat(result).isEqualTo(42);
     }
-
 
     @Test
     public void givenString_whenCallingIntegerValueOf_shouldConvertToInt() {

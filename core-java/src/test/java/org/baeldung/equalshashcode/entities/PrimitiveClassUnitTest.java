@@ -1,19 +1,16 @@
 package org.baeldung.equalshashcode.entities;
 
-import java.awt.Color;
-
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SquareClassTest {
+public class PrimitiveClassUnitTest {
 
     @Test
-    public void testEqualsAndHashcodes() {
+    public void testTwoEqualsObjects() {
 
-        Square aObject = new Square(10, Color.BLUE);
-        Square bObject = new Square(10, Color.BLUE);
-
-        Square dObject = new Square(20, Color.BLUE);
+        PrimitiveClass aObject = new PrimitiveClass(false, 2);
+        PrimitiveClass bObject = new PrimitiveClass(false, 2);
+        PrimitiveClass dObject = new PrimitiveClass(true, 2);
 
         Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
 

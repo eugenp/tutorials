@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-public class JavaReadFromFileTest {
+public class JavaReadFromFileIntegrationTest {
 
     @Test
     public void whenReadWithBufferedReader_thenCorrect() throws IOException {
@@ -111,7 +111,7 @@ public class JavaReadFromFileTest {
 
     @Test
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
-        final String expected_value = "ÈùíÁ©∫";
+        final String expected_value = "È?íÁ©∫";
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
         final String currentLine = reader.readLine();
         reader.close();

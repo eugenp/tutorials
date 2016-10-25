@@ -6,7 +6,7 @@ import java.util.TimerTask;
 
 import org.junit.Test;
 
-public class SandboxJavaTest {
+public class SandboxJavaUnitTest {
 
     @Test
     public void givenUsingTimer_whenSchedulingTimerTaskOnce_thenCorrect() throws InterruptedException {

@@ -43,7 +43,6 @@ public class CompletableFutureTest {
 
     }
 
-
     public Future<String> calculateAsyncWithCancellation() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
@@ -55,7 +54,6 @@ public class CompletableFutureTest {
 
         return completableFuture;
     }
-
 
     @Test(expected = CancellationException.class)
     public void whenCancelingTheFuture_thenThrowsCancellationException() throws ExecutionException, InterruptedException {
@@ -110,8 +108,7 @@ public class CompletableFutureTest {
     @Test
     public void whenUsingThenCompose_thenFuturesExecuteSequentially() throws ExecutionException, InterruptedException {
 
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
-                .thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello").thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
 
         assertEquals("Hello World", completableFuture.get());
 
@@ -120,9 +117,7 @@ public class CompletableFutureTest {
     @Test
     public void whenUsingThenCombine_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
 
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
-                .thenCombine(CompletableFuture.supplyAsync(() -> " World"),
-                        (s1, s2) -> s1 + s2);
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello").thenCombine(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> s1 + s2);
 
         assertEquals("Hello World", completableFuture.get());
 
@@ -131,9 +126,7 @@ public class CompletableFutureTest {
     @Test
     public void whenUsingThenAcceptBoth_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
 
-        CompletableFuture.supplyAsync(() -> "Hello")
-                .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"),
-                        (s1, s2) -> System.out.println(s1 + s2));
+        CompletableFuture.supplyAsync(() -> "Hello").thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> System.out.println(s1 + s2));
 
     }
 
@@ -154,9 +147,7 @@ public class CompletableFutureTest {
         assertTrue(future2.isDone());
         assertTrue(future3.isDone());
 
-        String combined = Stream.of(future1, future2, future3)
-                .map(CompletableFuture::join)
-                .collect(Collectors.joining(" "));
+        String combined = Stream.of(future1, future2, future3).map(CompletableFuture::join).collect(Collectors.joining(" "));
 
         assertEquals("Hello Beautiful World", combined);
 

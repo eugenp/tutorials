@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-public class RegexTest {
+public class RegexUnitTest {
     private static Pattern pattern;
     private static Matcher matcher;
 
@@ -499,4 +499,3 @@ public class RegexTest {
         return matches;
     }
 }
-

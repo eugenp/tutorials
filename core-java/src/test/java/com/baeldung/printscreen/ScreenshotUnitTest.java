@@ -7,8 +7,7 @@ import java.io.File;
 
 import static org.junit.Assert.assertTrue;
 
-
-public class ScreenshotTest {
+public class ScreenshotUnitTest {
 
     private Screenshot screenshot = new Screenshot("Screenshot.jpg");
     private File file = new File("Screenshot.jpg");
