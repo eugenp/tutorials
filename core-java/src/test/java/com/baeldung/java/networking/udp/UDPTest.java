@@ -1,8 +1,6 @@
-package com.baeldung.java.networking.url;
+package com.baeldung.java.networking.udp;
 
 
-import com.baeldung.java.networking.udp.EchoClient;
-import com.baeldung.java.networking.udp.EchoServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
