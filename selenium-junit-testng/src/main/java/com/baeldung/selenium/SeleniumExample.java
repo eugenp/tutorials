@@ -1,6 +1,7 @@
 package main.java.com.baeldung.selenium;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -28,16 +29,16 @@ public class SeleniumExample {
         return webDriver.getTitle();
     }
 
-    public void getAboutBaeldungPage() {
+    public void getAboutBaeldungPage() throws Exception {
         closeOverlay();
         clickAboutLink();
         clickAboutUsLink();
     }
 
-    private void closeOverlay() {
+    private void closeOverlay() throws Exception {
         List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
-        if (webElementList != null && !webElementList.isEmpty()) {
-            webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().get().click();
+        if (webElementList != null && !webElementList.isEmpty() && webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().isPresent()) {
+            webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().orElseThrow(NoSuchElementException::new).click();
         }
     }
 
@@ -50,8 +51,6 @@ public class SeleniumExample {
     }
 
     public boolean isAuthorInformationAvailable() {
-        return webDriver
-                .findElement(By.xpath("//*[contains(text(), 'Eugen – an engineer')]"))
-                .isDisplayed();
+        return webDriver.findElement(By.xpath("//*[contains(text(), 'Eugen – an engineer')]")).isDisplayed();
     }
 }

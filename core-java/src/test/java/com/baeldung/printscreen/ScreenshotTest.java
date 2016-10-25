@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ScreenshotTest {
 
-    private Screenshot screenshot = new Screenshot("", "Screenshot", "jpg");
+    private Screenshot screenshot = new Screenshot("Screenshot.jpg");
     private File file = new File("Screenshot.jpg");
 
     @Test
