@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-public class CompletableFutureLongRunningUnitTest {
+public class CompletableFutureUnitTest {
 
     @Test
     public void whenRunningCompletableFutureAsynchronously_thenGetMethodWaitsForResult() throws InterruptedException, ExecutionException {
