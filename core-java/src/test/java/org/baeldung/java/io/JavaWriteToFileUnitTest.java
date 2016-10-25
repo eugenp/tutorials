@@ -26,7 +26,7 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-public class JavaWriteToFileIntegrationTest {
+public class JavaWriteToFileUnitTest {
 
     private String fileName = "src/test/resources/test_write.txt";
     private String fileName1 = "src/test/resources/test_write_1.txt";

@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
-public class JavaFileIntegrationTest {
+public class JavaFileUnitTest {
 
     // create a file
 

@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-public class JavaScannerIntegrationTest {
+public class JavaScannerUnitTest {
 
     @Test
     public void whenReadFileWithScanner_thenCorrect() throws IOException {

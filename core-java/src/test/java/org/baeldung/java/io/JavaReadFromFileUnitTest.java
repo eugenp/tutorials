@@ -23,7 +23,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-public class JavaReadFromFileIntegrationTest {
+public class JavaReadFromFileUnitTest {
 
     @Test
     public void whenReadWithBufferedReader_thenCorrect() throws IOException {
