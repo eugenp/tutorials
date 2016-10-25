@@ -1,15 +1,19 @@
-package com.baeldung.java.networking.udp;
+package com.baeldung.java.networking.url;
 
-import static org.junit.Assert.*;
 
-import java.io.IOException;
-
+import com.baeldung.java.networking.udp.EchoClient;
+import com.baeldung.java.networking.udp.EchoServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+
 public class UDPTest {
-    EchoClient client = null;
+    private EchoClient client;
 
     @Before
     public void setup() throws IOException {
