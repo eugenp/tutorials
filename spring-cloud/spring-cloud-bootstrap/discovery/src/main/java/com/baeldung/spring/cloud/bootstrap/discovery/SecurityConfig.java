@@ -36,11 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //no order tag means this is the last security filter to be evaluated
         public static class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
-                @Autowired
-                public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-                        auth.inMemoryAuthentication();
-                }
-
                 @Override
                 protected void configure(HttpSecurity http) throws Exception {
                         http
