@@ -2,10 +2,10 @@ package com.baeldung.java.conversion;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.Date;
 
-import com.baeldung.datetime.UseLocalTime;
+import com.baeldung.datetime.UseLocalDateTime;
 
 public class StringConversion {
 
@@ -54,7 +54,7 @@ public class StringConversion {
         return formatter.parse(str);
     }
 
-    public static LocalTime getJava8Date(String str) throws ParseException {
-        return new UseLocalTime().getLocalTimeUsingParseMethod(str);
+    public static LocalDateTime getJava8Date(String str) throws ParseException {
+        return new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
     }
 }
