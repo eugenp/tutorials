@@ -1,15 +1,15 @@
 package com.baeldung.java.nio.selector;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.util.Iterator;
+import java.nio.channels.Selector;
+import java.nio.channels.SelectionKey;
+import java.nio.ByteBuffer;
+import java.io.IOException;
 import java.util.Set;
+import java.util.Iterator;
+import java.net.InetSocketAddress;
+import java.io.File;
 
 public class EchoServer {
 
@@ -48,6 +48,7 @@ public class EchoServer {
             }
         }
     }
+
 
     public static Process start() throws IOException, InterruptedException {
         String javaHome = System.getProperty("java.home");

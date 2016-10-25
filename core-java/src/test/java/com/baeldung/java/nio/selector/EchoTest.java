@@ -16,6 +16,7 @@ public class EchoTest {
         String resp2 = client.sendMessage("world");
         assertEquals("hello", resp1);
         assertEquals("world", resp2);
+
         process.destroy();
     }
 }
