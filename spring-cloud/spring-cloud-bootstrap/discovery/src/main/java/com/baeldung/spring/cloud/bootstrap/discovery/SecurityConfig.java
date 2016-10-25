@@ -22,7 +22,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-                http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).and().requestMatchers().antMatchers("/eureka/**").and().authorizeRequests().antMatchers("/eureka/**").hasRole("SYSTEM").anyRequest().denyAll().and().httpBasic().and()
+                http
+                        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).and()
+                        .requestMatchers().antMatchers("/eureka/**").and()
+                        .authorizeRequests()
+                                .antMatchers("/eureka/**").hasRole("SYSTEM")
+                                .anyRequest().denyAll().and()
+                        .httpBasic().and()
                         .csrf().disable();
         }
 
@@ -37,8 +43,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 @Override
                 protected void configure(HttpSecurity http) throws Exception {
-                        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and().httpBasic().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/").hasRole("ADMIN").antMatchers("/info", "/health").authenticated().anyRequest()
-                                .denyAll().and().csrf().disable();
+                        http
+                                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and()
+                                .httpBasic().disable()
+                                .authorizeRequests()
+                                        .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN")
+                                        .antMatchers("/info", "/health").authenticated()
+                                        .anyRequest().denyAll().and()
+                                .csrf().disable();
                 }
         }
 }

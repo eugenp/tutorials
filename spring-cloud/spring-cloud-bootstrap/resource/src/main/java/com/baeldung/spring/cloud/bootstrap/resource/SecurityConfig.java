@@ -11,6 +11,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-                http.httpBasic().disable().authorizeRequests().antMatchers("/hello/cloud").permitAll().antMatchers("/hello/user").hasAnyRole("USER", "ADMIN").antMatchers("/hello/admin").hasRole("ADMIN").anyRequest().authenticated().and().csrf().disable();
+                http
+                        .httpBasic().disable()
+                        .authorizeRequests()
+                                .antMatchers("/hello/cloud").permitAll()
+                                .antMatchers("/hello/user").hasAnyRole("USER", "ADMIN")
+                                .antMatchers("/hello/admin").hasRole("ADMIN")
+                                .anyRequest().authenticated().and()
+                        .csrf().disable();
         }
 }
