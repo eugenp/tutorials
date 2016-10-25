@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = { PersistenceConfig.class })
 @Transactional
 @Rollback
-public class JPACriteriaQueryTest {
+public class JPACriteriaQueryIntegrationTest {
 
     @Autowired
     private IUserDAO userApi;

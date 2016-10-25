@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = { PersistenceConfig.class })
 @Transactional
 @Rollback
-public class JPAQuerydslTest {
+public class JPAQuerydslIntegrationTest {
 
     @Autowired
     private MyUserRepository repo;
