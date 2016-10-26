@@ -29,7 +29,11 @@ public class UDPTest {
 
     @After
     public void tearDown() {
-        client.sendEcho("end");
+        stopEchoServer();
         client.close();
+    }
+
+    private void stopEchoServer() {
+        client.sendEcho("end");
     }
 }
