@@ -42,7 +42,7 @@ public class FileNotFoundExceptionTest {
             LOG.error("Optional file " + fileName + " was not found.", ex);
         }
     }
-    
+
     private void readFailingFile() throws IOException {
         BufferedReader rd = new BufferedReader(new FileReader(new File(fileName)));
         rd.readLine();

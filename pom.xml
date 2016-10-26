@@ -58,7 +58,7 @@
 
         <module>mockito</module>
         <module>mocks</module>
-        <module>mutation-testing</module>
+        <module>testing</module>
 
         <module>orika</module>
 
