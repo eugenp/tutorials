@@ -1,6 +1,5 @@
 package com.baeldung.enums;
 
-
 public enum PizzaDeliverySystemConfiguration {
     INSTANCE;
 
