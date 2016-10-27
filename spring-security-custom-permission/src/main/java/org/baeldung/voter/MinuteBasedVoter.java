@@ -1,4 +1,4 @@
-package org.baeldung.security;
+package org.baeldung.voter;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
