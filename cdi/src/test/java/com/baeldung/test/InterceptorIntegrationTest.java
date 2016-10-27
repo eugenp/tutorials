@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.baeldung.interceptor.AuditedInterceptor;
 import com.baeldung.service.SuperService;
 
-public class TestInterceptor {
+public class InterceptorIntegrationTest {
     Weld weld;
     WeldContainer container;
 
