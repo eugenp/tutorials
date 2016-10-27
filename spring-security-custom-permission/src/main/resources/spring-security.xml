@@ -4,7 +4,7 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xsi:schemaLocation="
       http://www.springframework.org/schema/security
-      http://www.springframework.org/schema/security/spring-security-4.1.xsd
+      http://www.springframework.org/schema/security/spring-security-4.0.xsd
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -22,12 +22,12 @@
                 <beans:bean class="org.springframework.security.web.access.expression.WebExpressionVoter"/>
                 <beans:bean class="org.springframework.security.access.vote.AuthenticatedVoter"/>
                 <beans:bean class="org.springframework.security.access.vote.RoleVoter"/>
-                <beans:bean class="com.example.security.MinuteBasedVoter"/>
+                <beans:bean class="org.baeldung.voter.MinuteBasedVoter"/>
             </beans:list>
         </beans:constructor-arg>
     </beans:bean>
 
-    <beans:bean id="minuteBasedVoter" class="com.example.security.MinuteBasedVoter"/>
+    <beans:bean id="minuteBasedVoter" class="org.baeldung.voter.MinuteBasedVoter"/>
 
     <authentication-manager>
         <authentication-provider>
