@@ -110,7 +110,6 @@
 
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
-        <module>spring-security-custom-voter</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-ldap</module>
