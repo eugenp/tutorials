@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.TimeZone;
 
 import org.baeldung.jackson.entities.ActorJackson;
 import org.baeldung.jackson.entities.Movie;
@@ -23,6 +24,7 @@ public class JacksonSerializeTest {
     public void whenSimpleSerialize_thenCorrect() throws JsonProcessingException, ParseException {
 
         final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         final ActorJackson rudyYoungblood = new ActorJackson("nm2199632", sdf.parse("21-09-1982"), Arrays.asList("Apocalypto", "Beatdown", "Wind Walkers"));
         final Movie movie = new Movie("tt0472043", "Mel Gibson", Arrays.asList(rudyYoungblood));
@@ -30,7 +32,7 @@ public class JacksonSerializeTest {
         final ObjectMapper mapper = new ObjectMapper();
         final String jsonResult = mapper.writeValueAsString(movie);
 
-        final String expectedOutput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":401403600000,\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
+        final String expectedOutput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":401414400000,\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
         Assert.assertEquals(jsonResult, expectedOutput);
     }
 

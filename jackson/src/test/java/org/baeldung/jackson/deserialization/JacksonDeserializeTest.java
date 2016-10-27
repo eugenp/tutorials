@@ -29,12 +29,12 @@ public class JacksonDeserializeTest {
         final String jsonInput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"1982-09-21T12:00:00+01:00\",\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
 
         final ObjectMapper mapper = new ObjectMapper();
-        final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        final DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX");
         mapper.setDateFormat(df);
 
         final Movie movie = mapper.readValue(jsonInput, Movie.class);
 
-        final String expectedOutput = "Movie [imdbId=tt0472043, director=Mel Gibson, actors=[ActorJackson [imdbId=nm2199632, dateOfBirth=Tue Sep 21 09:00:00 GMT 1982, filmography=[Apocalypto, Beatdown, Wind Walkers]]]]";
+        final String expectedOutput = "Movie [imdbId=tt0472043, director=Mel Gibson, actors=[ActorJackson [imdbId=nm2199632, dateOfBirth=Tue Sep 21 11:00:00 GMT 1982, filmography=[Apocalypto, Beatdown, Wind Walkers]]]]";
         Assert.assertEquals(movie.toString(), expectedOutput);
     }
 
