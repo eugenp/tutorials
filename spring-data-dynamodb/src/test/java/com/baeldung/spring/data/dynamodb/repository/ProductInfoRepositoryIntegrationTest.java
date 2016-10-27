@@ -9,6 +9,7 @@ import com.baeldung.Application;
 import com.baeldung.spring.data.dynamodb.model.ProductInfo;
 import com.baeldung.spring.data.dynamodb.repositories.ProductInfoRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class ProductInfoRepositoryIntegrationTest {
     private static final String EXPECTED_PRICE = "50";
 
     @Before
+    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
     public  void setup() throws Exception {
 
         try {
@@ -62,6 +64,7 @@ public class ProductInfoRepositoryIntegrationTest {
     }
 
     @Test
+    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
     public void givenItemWithExpectedCost_whenRunFindAll_thenItemIsFound() {
 
         ProductInfo productInfo = new ProductInfo(EXPECTED_COST, EXPECTED_PRICE);
