@@ -9,7 +9,7 @@ public interface Vehicle {
     }
 
     default long[] startPosition() {
-        return new long[]{23, 15};
+        return new long[] { 23, 15 };
     }
 
     default String getOverview() {

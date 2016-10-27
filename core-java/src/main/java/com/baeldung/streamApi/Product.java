@@ -44,7 +44,6 @@ public class Product {
         this.name = name;
     }
 
-
     public static Stream<String> streamOf(List<String> list) {
         return (list == null || list.isEmpty()) ? Stream.empty() : list.stream();
     }
