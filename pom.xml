@@ -136,6 +136,8 @@
         <module>xstream</module>
         <module>java-cassandra</module>
         <module>annotations</module>
+
+        <module>rabbitmq</module>
     </modules>
 
 </project>
