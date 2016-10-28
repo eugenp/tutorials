@@ -24,7 +24,7 @@ public class RollingFileAppenderUsingXMLLayoutTest {
         Logger logger = contextRule.getLogger(getClass().getSimpleName());
         final int count = 88;
         for (int i = 0; i < count; i++) {
-            logger.info("This is rolling file XML message #{} at INFO level.", count);
+            logger.info("This is rolling file XML message #{} at INFO level.", i);
         }
         String[] logEvents = Files.readAllLines(Paths.get("target/logfile.xml")).stream()
           .collect(Collectors.joining(System.lineSeparator()))
