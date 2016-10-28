@@ -1,16 +1,23 @@
 package com.baeldung.java8;
 
-import com.baeldung.java_8_features.*;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
-public class Java8OptionalTest {
+import com.baeldung.java_8_features.Address;
+import com.baeldung.java_8_features.CustomException;
+import com.baeldung.java_8_features.OptionalAddress;
+import com.baeldung.java_8_features.OptionalUser;
+import com.baeldung.java_8_features.User;
+
+public class Java8OptionalUnitTest {
 
     private List<String> list;
 
@@ -32,7 +39,6 @@ public class Java8OptionalTest {
 
     @Test
     public void checkOptional_whenAsExpected_thenCorrect() {
-
         Optional<String> optionalEmpty = Optional.empty();
         assertFalse(optionalEmpty.isPresent());
 
@@ -52,27 +58,19 @@ public class Java8OptionalTest {
         assertTrue(listOptNull.isEmpty());
 
         Optional<User> user = Optional.ofNullable(getUser());
-        String result = user.map(User::getAddress)
-                .map(Address::getStreet)
-                .orElse("not specified");
+        String result = user.map(User::getAddress).map(Address::getStreet).orElse("not specified");
         assertEquals(result, "1st Avenue");
 
         Optional<OptionalUser> optionalUser = Optional.ofNullable(getOptionalUser());
-        String resultOpt = optionalUser.flatMap(OptionalUser::getAddress)
-                .flatMap(OptionalAddress::getStreet)
-                .orElse("not specified");
+        String resultOpt = optionalUser.flatMap(OptionalUser::getAddress).flatMap(OptionalAddress::getStreet).orElse("not specified");
         assertEquals(resultOpt, "1st Avenue");
 
         Optional<User> userNull = Optional.ofNullable(getUserNull());
-        String resultNull = userNull.map(User::getAddress)
-                .map(Address::getStreet)
-                .orElse("not specified");
+        String resultNull = userNull.map(User::getAddress).map(Address::getStreet).orElse("not specified");
         assertEquals(resultNull, "not specified");
 
         Optional<OptionalUser> optionalUserNull = Optional.ofNullable(getOptionalUserNull());
-        String resultOptNull = optionalUserNull.flatMap(OptionalUser::getAddress)
-                .flatMap(OptionalAddress::getStreet)
-                .orElse("not specified");
+        String resultOptNull = optionalUserNull.flatMap(OptionalUser::getAddress).flatMap(OptionalAddress::getStreet).orElse("not specified");
         assertEquals(resultOptNull, "not specified");
 
     }

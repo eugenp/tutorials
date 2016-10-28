@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertEquals;
 
-public class EchoMultiTest {
+public class SocketEchoMultiIntegrationTest {
 
     private static final Integer PORT = 5555;
 

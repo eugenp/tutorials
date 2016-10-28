@@ -1,18 +1,20 @@
 package com.baeldung.java8;
 
-
-import com.baeldung.forkjoin.CustomRecursiveAction;
-import com.baeldung.forkjoin.CustomRecursiveTask;
-import com.baeldung.forkjoin.util.PoolUtil;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
 import java.util.concurrent.ForkJoinPool;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
-public class Java8ForkJoinTest {
+import com.baeldung.forkjoin.CustomRecursiveAction;
+import com.baeldung.forkjoin.CustomRecursiveTask;
+import com.baeldung.forkjoin.util.PoolUtil;
+
+public class Java8ForkJoinIntegrationTest {
 
     private int[] arr;
     private CustomRecursiveTask customRecursiveTask;
@@ -27,28 +29,23 @@ public class Java8ForkJoinTest {
         customRecursiveTask = new CustomRecursiveTask(arr);
     }
 
-
     @Test
     public void callPoolUtil_whenExistsAndExpectedType_thenCorrect() {
-
         ForkJoinPool forkJoinPool = PoolUtil.forkJoinPool;
         ForkJoinPool forkJoinPoolTwo = PoolUtil.forkJoinPool;
 
         assertNotNull(forkJoinPool);
         assertEquals(2, forkJoinPool.getParallelism());
         assertEquals(forkJoinPool, forkJoinPoolTwo);
-
     }
 
     @Test
     public void callCommonPool_whenExistsAndExpectedType_thenCorrect() {
-
         ForkJoinPool commonPool = ForkJoinPool.commonPool();
         ForkJoinPool commonPoolTwo = ForkJoinPool.commonPool();
 
         assertNotNull(commonPool);
         assertEquals(commonPool, commonPoolTwo);
-
     }
 
     @Test
@@ -63,7 +60,6 @@ public class Java8ForkJoinTest {
 
     @Test
     public void executeRecursiveTask_whenExecuted_thenCorrect() {
-
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 
         forkJoinPool.execute(customRecursiveTask);
@@ -73,12 +69,10 @@ public class Java8ForkJoinTest {
         forkJoinPool.submit(customRecursiveTask);
         int resultTwo = customRecursiveTask.join();
         assertTrue(customRecursiveTask.isDone());
-
     }
 
     @Test
     public void executeRecursiveTaskWithFJ_whenExecuted_thenCorrect() {
-
         CustomRecursiveTask customRecursiveTaskFirst = new CustomRecursiveTask(arr);
         CustomRecursiveTask customRecursiveTaskSecond = new CustomRecursiveTask(arr);
         CustomRecursiveTask customRecursiveTaskLast = new CustomRecursiveTask(arr);
@@ -95,6 +89,6 @@ public class Java8ForkJoinTest {
         assertTrue(customRecursiveTaskSecond.isDone());
         assertTrue(customRecursiveTaskLast.isDone());
         assertTrue(result != 0);
-
     }
+
 }

@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import static org.junit.Assert.*;
 
-public class Java8EncodeDecodeTest {
+public class Java8EncodeDecodeUnitTest {
 
     // tests
 

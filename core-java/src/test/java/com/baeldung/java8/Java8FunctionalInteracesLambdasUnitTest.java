@@ -11,7 +11,7 @@ import java.util.function.Function;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class Java8FunctionalInteracesLambdasTest {
+public class Java8FunctionalInteracesLambdasUnitTest {
 
     private UseFoo useFoo;
 

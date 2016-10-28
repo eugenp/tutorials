@@ -1,17 +1,26 @@
 package com.baeldung.java8;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
-
-import static org.junit.Assert.*;
-
-
-public class Java8ExecutorServiceTest {
+public class Java8ExecutorServiceIntegrationTest {
 
     private Runnable runnableTask;
     private Callable<String> callableTask;
@@ -53,9 +62,7 @@ public class Java8ExecutorServiceTest {
     @Test
     public void creationSubmittingTasksShuttingDownNow_whenShutDownAfterAwating_thenCorrect() {
 
-        ExecutorService threadPoolExecutor =
-                new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS,
-                        new LinkedBlockingQueue<>());
+        ExecutorService threadPoolExecutor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>());
 
         for (int i = 0; i < 100; i++) {
             threadPoolExecutor.submit(callableTask);
@@ -138,8 +145,7 @@ public class Java8ExecutorServiceTest {
     @Test
     public void submittingTaskScheduling_whenExecuted_thenCorrect() {
 
-        ScheduledExecutorService executorService = Executors
-                .newSingleThreadScheduledExecutor();
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
         Future<String> resultFuture = executorService.schedule(callableTask, 1, TimeUnit.SECONDS);
         String result = null;

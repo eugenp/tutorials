@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class Java8DefaultStaticIntefaceMethodsTest {
+public class Java8DefaultStaticIntefaceMethodsUnitTest {
 
     @Test
     public void callStaticInterfaceMethdosMethods_whenExpectedResults_thenCorrect() {

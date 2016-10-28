@@ -1,13 +1,23 @@
 package com.baeldung.threadpool;
 
-import java.util.concurrent.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
-public class CoreThreadPoolTest {
+public class CoreThreadPoolIntegrationTest {
 
     @Test(timeout = 1000)
     public void whenCallingExecuteWithRunnable_thenRunnableIsExecuted() throws InterruptedException {
@@ -132,15 +142,12 @@ public class CoreThreadPoolTest {
     @Test
     public void whenUsingForkJoinPool_thenSumOfTreeElementsIsCalculatedCorrectly() {
 
-        TreeNode tree = new TreeNode(5,
-                new TreeNode(3), new TreeNode(2,
-                new TreeNode(2), new TreeNode(8)));
+        TreeNode tree = new TreeNode(5, new TreeNode(3), new TreeNode(2, new TreeNode(2), new TreeNode(8)));
 
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
         int sum = forkJoinPool.invoke(new CountingTask(tree));
 
         assertEquals(20, sum);
     }
-
 
 }

@@ -1,15 +1,15 @@
 package com.baeldung.socket;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.concurrent.Executors;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.concurrent.Executors;
-
-import static org.junit.Assert.assertEquals;
-
-public class EchoTest {
+public class EchoIntegrationTest {
     private static final Integer PORT = 4444;
 
     @BeforeClass
@@ -25,9 +25,15 @@ public class EchoTest {
         client.startConnection("127.0.0.1", PORT);
     }
 
+    @After
+    public void tearDown() {
+        client.stopConnection();
+    }
+
+    //
+
     @Test
     public void givenClient_whenServerEchosMessage_thenCorrect() {
-
         String resp1 = client.sendMessage("hello");
         String resp2 = client.sendMessage("world");
         String resp3 = client.sendMessage("!");
@@ -38,8 +44,4 @@ public class EchoTest {
         assertEquals("good bye", resp4);
     }
 
-    @After
-    public void tearDown() {
-        client.stopConnection();
-    }
 }

@@ -1,13 +1,17 @@
 package org.baeldung.core.exceptions;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import java.io.*;
+public class FileNotFoundExceptionUnitTest {
 
-public class FileNotFoundExceptionTest {
-
-    private static final Logger LOG = Logger.getLogger(FileNotFoundExceptionTest.class);
+    private static final Logger LOG = Logger.getLogger(FileNotFoundExceptionUnitTest.class);
 
     private String fileName = Double.toString(Math.random());
 
