@@ -39,7 +39,7 @@ public class ServiceLiveTest {
         final HttpPut httpPut = new HttpPut(BASE_URL + "3");
         final InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("non_existent_course.xml");
         httpPut.setEntity(new InputStreamEntity(resourceStream));
-        httpPut.setHeader("Content-Type", "text/xml");
+        httpPut.setHeader("Content-Type", "application/xml");
 
         final HttpResponse response = client.execute(httpPut);
         assertEquals(404, response.getStatusLine().getStatusCode());
@@ -50,7 +50,7 @@ public class ServiceLiveTest {
         final HttpPut httpPut = new HttpPut(BASE_URL + "1");
         final InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("unchanged_course.xml");
         httpPut.setEntity(new InputStreamEntity(resourceStream));
-        httpPut.setHeader("Content-Type", "text/xml");
+        httpPut.setHeader("Content-Type", "application/xml");
 
         final HttpResponse response = client.execute(httpPut);
         assertEquals(304, response.getStatusLine().getStatusCode());
@@ -61,7 +61,7 @@ public class ServiceLiveTest {
         final HttpPut httpPut = new HttpPut(BASE_URL + "2");
         final InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("changed_course.xml");
         httpPut.setEntity(new InputStreamEntity(resourceStream));
-        httpPut.setHeader("Content-Type", "text/xml");
+        httpPut.setHeader("Content-Type", "application/xml");
 
         final HttpResponse response = client.execute(httpPut);
         assertEquals(200, response.getStatusLine().getStatusCode());
@@ -76,7 +76,7 @@ public class ServiceLiveTest {
         final HttpPost httpPost = new HttpPost(BASE_URL + "1/students");
         final InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("conflict_student.xml");
         httpPost.setEntity(new InputStreamEntity(resourceStream));
-        httpPost.setHeader("Content-Type", "text/xml");
+        httpPost.setHeader("Content-Type", "application/xml");
 
         final HttpResponse response = client.execute(httpPost);
         assertEquals(409, response.getStatusLine().getStatusCode());
@@ -87,7 +87,7 @@ public class ServiceLiveTest {
         final HttpPost httpPost = new HttpPost(BASE_URL + "2/students");
         final InputStream resourceStream = this.getClass().getClassLoader().getResourceAsStream("created_student.xml");
         httpPost.setEntity(new InputStreamEntity(resourceStream));
-        httpPost.setHeader("Content-Type", "text/xml");
+        httpPost.setHeader("Content-Type", "application/xml");
 
         final HttpResponse response = client.execute(httpPost);
         assertEquals(200, response.getStatusLine().getStatusCode());
