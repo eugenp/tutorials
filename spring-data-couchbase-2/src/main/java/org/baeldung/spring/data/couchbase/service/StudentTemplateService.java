@@ -14,17 +14,18 @@ import com.couchbase.client.java.view.ViewQuery;
 @Service
 @Qualifier("StudentTemplateService")
 public class StudentTemplateService implements StudentService {
-    
+
     private static final String DESIGN_DOC = "student";
 
     private CouchbaseTemplate template;
+
     @Autowired
     public void setCouchbaseTemplate(CouchbaseTemplate template) {
         this.template = template;
     }
 
-   public Student findOne(String id) {
-       return template.findById(id, Student.class);
+    public Student findOne(String id) {
+        return template.findById(id, Student.class);
     }
 
     public List<Student> findAll() {

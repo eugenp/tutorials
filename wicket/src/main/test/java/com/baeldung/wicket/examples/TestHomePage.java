@@ -9,15 +9,15 @@ public class TestHomePage {
 
     @Before
     public void setUp() {
-        tester = new WicketTester(new ExamplesApplication());
+        tester = new WicketTester(new HelloWorldApplication());
     }
 
     @Test
     public void whenPageInvoked_thanRenderedOK() {
         //start and render the test page
-        tester.startPage(Examples.class);
+        tester.startPage(HelloWorld.class);
 
         //assert rendered page class
-        tester.assertRenderedPage(Examples.class);
+        tester.assertRenderedPage(HelloWorld.class);
     }
 }

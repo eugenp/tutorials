@@ -18,10 +18,7 @@ public class ArrayListTest {
 
     @Before
     public void setUp() {
-        List<String> list = LongStream.range(0, 16)
-          .boxed()
-          .map(Long::toHexString)
-          .collect(toCollection(ArrayList::new));
+        List<String> list = LongStream.range(0, 16).boxed().map(Long::toHexString).collect(toCollection(ArrayList::new));
         stringsToSearch = new ArrayList<>(list);
         stringsToSearch.addAll(list);
     }
@@ -34,8 +31,7 @@ public class ArrayListTest {
 
     @Test
     public void givenCollection_whenProvideItToArrayListCtor_thenArrayListIsPopulatedWithItsElements() {
-        Collection<Integer> numbers =
-          IntStream.range(0, 10).boxed().collect(toSet());
+        Collection<Integer> numbers = IntStream.range(0, 10).boxed().collect(toSet());
 
         List<Integer> list = new ArrayList<>(numbers);
         assertEquals(10, list.size());
@@ -56,8 +52,7 @@ public class ArrayListTest {
     @Test
     public void givenCollection_whenAddToArrayList_thenIsAdded() {
         List<Long> list = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
-        LongStream.range(4, 10).boxed()
-          .collect(collectingAndThen(toCollection(ArrayList::new), ys -> list.addAll(0, ys)));
+        LongStream.range(4, 10).boxed().collect(collectingAndThen(toCollection(ArrayList::new), ys -> list.addAll(0, ys)));
 
         assertThat(Arrays.asList(4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L), equalTo(list));
     }
@@ -88,10 +83,7 @@ public class ArrayListTest {
     public void givenPredicate_whenIterateArrayList_thenFindAllElementsSatisfyingPredicate() {
         Set<String> matchingStrings = new HashSet<>(Arrays.asList("a", "c", "9"));
 
-        List<String> result = stringsToSearch
-          .stream()
-          .filter(matchingStrings::contains)
-          .collect(toCollection(ArrayList::new));
+        List<String> result = stringsToSearch.stream().filter(matchingStrings::contains).collect(toCollection(ArrayList::new));
 
         assertEquals(6, result.size());
     }
@@ -131,8 +123,7 @@ public class ArrayListTest {
 
     @Test
     public void givenCondition_whenIterateArrayList_thenRemoveAllElementsSatisfyingCondition() {
-        Set<String> matchingStrings
-          = Sets.newHashSet("a", "b", "c", "d", "e", "f");
+        Set<String> matchingStrings = Sets.newHashSet("a", "b", "c", "d", "e", "f");
 
         Iterator<String> it = stringsToSearch.iterator();
         while (it.hasNext()) {

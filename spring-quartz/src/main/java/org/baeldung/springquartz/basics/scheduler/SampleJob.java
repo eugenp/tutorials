@@ -19,8 +19,7 @@ public class SampleJob implements Job {
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
-        logger.info("Job ** {} ** fired @ {}", context.getJobDetail().getKey().getName(),
-                context.getFireTime());
+        logger.info("Job ** {} ** fired @ {}", context.getJobDetail().getKey().getName(), context.getFireTime());
 
         jobService.executeSampleJob();
 
