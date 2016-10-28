@@ -21,7 +21,7 @@ import com.baeldung.couchbase.async.service.BucketService;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.document.JsonDocument;
 
-public class PersonCrudServiceTest extends AsyncIntegrationTest {
+public class PersonCrudServiceIntegrationTest extends AsyncIntegrationTest {
 
     @Autowired
     private PersonCrudService personService;
