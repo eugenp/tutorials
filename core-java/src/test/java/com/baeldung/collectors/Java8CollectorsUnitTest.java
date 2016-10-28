@@ -36,7 +36,7 @@ import static java.util.stream.Collectors.toSet;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class Java8CollectorsTest {
+public class Java8CollectorsUnitTest {
 
     private final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
 

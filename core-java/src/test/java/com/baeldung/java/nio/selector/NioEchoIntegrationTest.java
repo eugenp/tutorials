@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class EchoTest {
+public class NioEchoIntegrationTest {
 
     @Test
     public void givenClient_whenServerEchosMessage_thenCorrect() throws IOException, InterruptedException {

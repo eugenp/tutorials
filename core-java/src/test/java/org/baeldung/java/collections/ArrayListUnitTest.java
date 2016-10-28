@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
-public class ArrayListTest {
+public class ArrayListUnitTest {
 
     private List<String> stringsToSearch;
 
