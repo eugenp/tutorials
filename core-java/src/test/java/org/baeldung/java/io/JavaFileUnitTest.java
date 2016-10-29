@@ -76,6 +76,7 @@ public class JavaFileUnitTest {
 
     @Test
     public final void givenUsingApache_whenMovingFile_thenCorrect() throws IOException {
+        FileUtils.touch(new File("src/test/resources/fileToMove_apache.txt"));
         FileUtils.moveFile(FileUtils.getFile("src/test/resources/fileToMove_apache.txt"), FileUtils.getFile("src/test/resources/fileMoved_apache2.txt"));
     }
 
