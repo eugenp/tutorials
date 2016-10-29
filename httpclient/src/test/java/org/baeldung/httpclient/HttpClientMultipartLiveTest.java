@@ -28,15 +28,17 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore("Server is not available")
 public class HttpClientMultipartLiveTest {
 
     private static final String SERVER = "http://echo.200please.com";
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";
     private static final String ZIPFILENAME = "zipFile.zip";
-    private static final Logger LOGGER = Logger.getLogger("org.baeldung.httpclient.HttpClientMultipartTest");
+    private static final Logger LOGGER = Logger.getLogger("org.baeldung.httpclient.HttpClientMultipartLiveTest");
     private CloseableHttpClient client;
     private HttpPost post;
     private BufferedReader rd;
