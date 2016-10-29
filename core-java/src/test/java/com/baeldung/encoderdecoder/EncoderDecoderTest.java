@@ -14,9 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.joining;
 
 public class EncoderDecoderTest {
@@ -62,8 +60,8 @@ public class EncoderDecoderTest {
         requestParams.put("key3", "value%3");
 
         String encodedURL = requestParams.keySet().stream()
-                .map(key -> key + "=" + encodeValue(requestParams.get(key)))
-                .collect(collectingAndThen(joining("&"), params -> "http://www.baeldung.com?" + params));
+          .map(key -> key + "=" + encodeValue(requestParams.get(key)))
+          .collect(joining("&", "http://www.baeldung.com?", ""));
 
         Assert.assertThat(testUrl, CoreMatchers.is(encodedURL));
     }
@@ -75,11 +73,11 @@ public class EncoderDecoderTest {
         String query = url.getQuery();
 
         String decodedQuery = Arrays.stream(query.split("&"))
-                .map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1]))
-                .collect(joining("&"));
+          .map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1]))
+          .collect(joining("&"));
 
         Assert.assertEquals(
-                "http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
+          "http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
     }
 
 }
