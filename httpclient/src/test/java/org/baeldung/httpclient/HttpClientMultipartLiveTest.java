@@ -30,7 +30,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class HttpClientMultipartTest {
+public class HttpClientMultipartLiveTest {
 
     private static final String SERVER = "http://echo.200please.com";
     private static final String TEXTFILENAME = "temp.txt";
