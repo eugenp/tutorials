@@ -22,21 +22,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-                    .and()
-                .requestMatchers()
-                    .antMatchers("/eureka/**")
-                    .and()
-                .authorizeRequests()
-                    .antMatchers("/eureka/**").hasRole("SYSTEM")
-                    .anyRequest().denyAll()
-                    .and()
-                .httpBasic()
-                    .and()
-                .csrf()
-                    .disable();
+        http.sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+            .and()
+        .requestMatchers()
+            .antMatchers("/eureka/**")
+            .and()
+        .authorizeRequests()
+            .antMatchers("/eureka/**").hasRole("SYSTEM")
+            .anyRequest().denyAll()
+            .and()
+        .httpBasic()
+            .and()
+        .csrf()
+            .disable();
     }
 
     @Configuration
