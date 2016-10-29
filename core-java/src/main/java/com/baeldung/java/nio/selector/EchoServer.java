@@ -15,7 +15,7 @@ public class EchoServer {
 
     public static void main(String[] args)
 
-    throws IOException {
+            throws IOException {
         Selector selector = Selector.open();
         ServerSocketChannel serverSocket = ServerSocketChannel.open();
         serverSocket.bind(new InetSocketAddress("localhost", 5454));

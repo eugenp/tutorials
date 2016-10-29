@@ -15,6 +15,7 @@ public class SeleniumExample {
     private String url = "http://www.baeldung.com/";
 
     public SeleniumExample() {
+        System.setProperty("webdriver.firefox.marionette", "C:\\selenium\\geckodriver.exe");
         webDriver = new FirefoxDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -29,16 +30,20 @@ public class SeleniumExample {
         return webDriver.getTitle();
     }
 
-    public void getAboutBaeldungPage() throws Exception {
+    public void getAboutBaeldungPage() {
         closeOverlay();
         clickAboutLink();
         clickAboutUsLink();
     }
 
-    private void closeOverlay() throws Exception {
+    private void closeOverlay() {
         List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
-        if (webElementList != null && !webElementList.isEmpty() && webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().isPresent()) {
-            webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().orElseThrow(NoSuchElementException::new).click();
+        try {
+            if (webElementList != null && !webElementList.isEmpty()) {
+                webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().orElseThrow(NoSuchElementException::new).click();
+            }
+        } catch (NoSuchElementException exception) {
+            exception.printStackTrace();
         }
     }
 
