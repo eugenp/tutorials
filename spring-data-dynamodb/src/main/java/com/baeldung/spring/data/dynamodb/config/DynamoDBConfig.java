@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.es.config;
+package com.baeldung.spring.data.dynamodb.config;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 @Configuration
-@EnableDynamoDBRepositories(basePackages = "com.baeldung.spring.data.es.repositories")
+@EnableDynamoDBRepositories(basePackages = "com.baeldung.spring.data.dynamodb.repositories")
 public class DynamoDBConfig {
 
     @Value("${amazon.dynamodb.endpoint}")
