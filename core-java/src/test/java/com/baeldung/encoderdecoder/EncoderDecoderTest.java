@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -15,13 +14,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class EncoderDecoder {
+public class EncoderDecoderTest {
 
-    private static final String URL = "http://www.baeldung.com?key1=value+1&key2=value%40%21%242&key3=value%253";
-    private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoder.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoderTest.class);
+    private static final String testUrl = "http://www.baeldung.com?key1=value+1&key2=value%40%21%242&key3=value%253";
 
     private String encodeValue(String value) {
         String encoded = null;
@@ -46,7 +44,7 @@ public class EncoderDecoder {
 
     @Test
     public void givenURL_whenAnalyze_thenCorrect() throws Exception {
-        URL url = new URL(URL);
+        URL url = new URL(testUrl);
 
         Assert.assertThat(url.getProtocol(), CoreMatchers.is("http"));
         Assert.assertThat(url.getHost(), CoreMatchers.is("www.baeldung.com"));
@@ -63,14 +61,15 @@ public class EncoderDecoder {
         String encodedQuery = requestParams.keySet().stream()
                 .map(key -> key + "=" + encodeValue(requestParams.get(key)))
                 .collect(Collectors.joining("&"));
+
         String encodedURL = "http://www.baeldung.com?" + encodedQuery;
 
-        Assert.assertThat(URL, CoreMatchers.is(encodedURL));
+        Assert.assertThat(testUrl, CoreMatchers.is(encodedURL));
     }
 
     @Test
     public void givenRequestParam_whenUTF8Scheme_thenDecodeRequestParams() throws Exception {
-        URL url = new URL(URL);
+        URL url = new URL(testUrl);
         String query = url.getQuery();
 
         String decodedQuery = Arrays.stream(query.split("&"))
