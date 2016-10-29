@@ -14,7 +14,6 @@ public class Screenshot {
     }
 
     public void getScreenshot(int timeToWait) throws Exception {
-        Thread.sleep(timeToWait);
         Rectangle rectangle = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         Robot robot = new Robot();
         BufferedImage img = robot.createScreenCapture(rectangle);

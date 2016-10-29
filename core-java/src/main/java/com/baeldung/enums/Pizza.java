@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 
 public class Pizza {
 
-    private static EnumSet<PizzaStatusEnum> deliveredPizzaStatuses =
-            EnumSet.of(PizzaStatusEnum.DELIVERED);
+    private static EnumSet<PizzaStatusEnum> deliveredPizzaStatuses = EnumSet.of(PizzaStatusEnum.DELIVERED);
 
     private PizzaStatusEnum status;
 
@@ -76,9 +75,7 @@ public class Pizza {
     }
 
     public static EnumMap<PizzaStatusEnum, List<Pizza>> groupPizzaByStatus(List<Pizza> pzList) {
-        return pzList.stream().collect(
-                Collectors.groupingBy(Pizza::getStatus,
-                        () -> new EnumMap<>(PizzaStatusEnum.class), Collectors.toList()));
+        return pzList.stream().collect(Collectors.groupingBy(Pizza::getStatus, () -> new EnumMap<>(PizzaStatusEnum.class), Collectors.toList()));
     }
 
     public void deliver() {
