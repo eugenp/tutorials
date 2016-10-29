@@ -3,7 +3,6 @@ package org.baeldung.persistence.dao.rsql;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.baeldung.persistence.model.User;
 import org.springframework.data.jpa.domain.Specifications;
 
 import cz.jirutka.rsql.parser.ast.ComparisonNode;
@@ -11,9 +10,9 @@ import cz.jirutka.rsql.parser.ast.LogicalNode;
 import cz.jirutka.rsql.parser.ast.LogicalOperator;
 import cz.jirutka.rsql.parser.ast.Node;
 
-public class UserRsqlSpecBuilder {
+public class GenericRsqlSpecBuilder<T> {
 
-    public Specifications<User> createSpecification(final Node node) {
+    public Specifications<T> createSpecification(final Node node) {
         if (node instanceof LogicalNode) {
             return createSpecification((LogicalNode) node);
         }
@@ -23,9 +22,9 @@ public class UserRsqlSpecBuilder {
         return null;
     }
 
-    public Specifications<User> createSpecification(final LogicalNode logicalNode) {
-        final List<Specifications<User>> specs = new ArrayList<Specifications<User>>();
-        Specifications<User> temp;
+    public Specifications<T> createSpecification(final LogicalNode logicalNode) {
+        final List<Specifications<T>> specs = new ArrayList<Specifications<T>>();
+        Specifications<T> temp;
         for (final Node node : logicalNode.getChildren()) {
             temp = createSpecification(node);
             if (temp != null) {
@@ -33,7 +32,7 @@ public class UserRsqlSpecBuilder {
             }
         }
 
-        Specifications<User> result = specs.get(0);
+        Specifications<T> result = specs.get(0);
 
         if (logicalNode.getOperator() == LogicalOperator.AND) {
             for (int i = 1; i < specs.size(); i++) {
@@ -50,8 +49,8 @@ public class UserRsqlSpecBuilder {
         return result;
     }
 
-    public Specifications<User> createSpecification(final ComparisonNode comparisonNode) {
-        final Specifications<User> result = Specifications.where(new GenericRsqlSpecification<User>(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
+    public Specifications<T> createSpecification(final ComparisonNode comparisonNode) {
+        final Specifications<T> result = Specifications.where(new GenericRsqlSpecification<T>(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
         return result;
     }
 
