@@ -9,7 +9,7 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class PizzaTest {
+public class PizzaUnitTest {
 
     @Test
     public void givenPizaOrder_whenReady_thenDeliverable() {

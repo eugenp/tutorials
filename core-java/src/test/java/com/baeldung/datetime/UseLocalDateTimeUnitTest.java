@@ -7,7 +7,7 @@ import java.time.Month;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UseLocalDateTimeTest {
+public class UseLocalDateTimeUnitTest {
     
     UseLocalDateTime useLocalDateTime = new UseLocalDateTime();
     

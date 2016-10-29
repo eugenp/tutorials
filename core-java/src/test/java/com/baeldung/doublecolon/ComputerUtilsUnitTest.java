@@ -13,7 +13,7 @@ import java.util.function.BiFunction;
 
 import static com.baeldung.doublecolon.ComputerUtils.*;
 
-public class TestComputerUtils {
+public class ComputerUtilsUnitTest {
 
     @Before
     public void setup() {

@@ -7,7 +7,7 @@ import java.net.URL;
 
 import org.junit.Test;
 
-public class UrlTest {
+public class UrlUnitTest {
 
     @Test
     public void givenUrl_whenCanIdentifyProtocol_thenCorrect() throws MalformedURLException {

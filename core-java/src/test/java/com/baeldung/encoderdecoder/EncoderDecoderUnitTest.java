@@ -17,9 +17,9 @@ import java.util.Map;
 
 import static java.util.stream.Collectors.joining;
 
-public class EncoderDecoderTest {
+public class EncoderDecoderUnitTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoderTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoderUnitTest.class);
     private static final String testUrl = "http://www.baeldung.com?key1=value+1&key2=value%40%21%242&key3=value%253";
 
     private String encodeValue(String value) {

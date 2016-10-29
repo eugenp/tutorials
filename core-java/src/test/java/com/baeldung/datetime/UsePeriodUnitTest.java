@@ -6,7 +6,7 @@ import java.time.Period;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UsePeriodTest {
+public class UsePeriodUnitTest {
     UsePeriod usingPeriod=new UsePeriod();
     
     @Test

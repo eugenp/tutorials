@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UseZonedDateTimeTest {
+public class UseZonedDateTimeUnitTest {
     
     UseZonedDateTime zonedDateTime=new UseZonedDateTime();
     

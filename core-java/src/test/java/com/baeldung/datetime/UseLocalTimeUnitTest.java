@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class UseLocalTimeTest {
+public class UseLocalTimeUnitTest {
     
     UseLocalTime useLocalTime = new UseLocalTime();
     
