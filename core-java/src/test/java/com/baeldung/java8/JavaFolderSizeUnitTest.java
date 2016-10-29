@@ -19,7 +19,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JavaFolderSizeUnitTest {
-    private final long EXPECTED_SIZE = 260;
+    private final long EXPECTED_SIZE = 381;
     private String path;
 
     @Before

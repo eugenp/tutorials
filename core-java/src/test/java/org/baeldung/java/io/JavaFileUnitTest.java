@@ -76,13 +76,13 @@ public class JavaFileUnitTest {
 
     @Test
     public final void givenUsingApache_whenMovingFile_thenCorrect() throws IOException {
-        FileUtils.moveFile(FileUtils.getFile("src/test/resources/fileToMove.txt"), FileUtils.getFile("src/test/resources/fileMoved.txt"));
+        FileUtils.moveFile(FileUtils.getFile("src/test/resources/fileToMove_apache.txt"), FileUtils.getFile("src/test/resources/fileMoved_apache2.txt"));
     }
 
     @Test
     public final void givenUsingApache_whenMovingFileApproach2_thenCorrect() throws IOException {
-        FileUtils.touch(new File("src/test/resources/fileToMove.txt"));
-        FileUtils.moveFileToDirectory(FileUtils.getFile("src/test/resources/fileToMove.txt"), FileUtils.getFile("src/main/resources/"), true);
+        FileUtils.touch(new File("src/test/resources/fileToMove_apache.txt"));
+        FileUtils.moveFileToDirectory(FileUtils.getFile("src/test/resources/fileToMove_apache.txt"), FileUtils.getFile("src/main/resources/"), true);
     }
 
     // delete a file
