@@ -8,18 +8,17 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.baeldung.persistence.model.User;
 import org.springframework.data.jpa.domain.Specification;
 
 import cz.jirutka.rsql.parser.ast.ComparisonOperator;
 
-public class UserRsqlSpecification implements Specification<User> {
+public class GenericRsqlSpecification<T> implements Specification<T> {
 
     private String property;
     private ComparisonOperator operator;
     private List<String> arguments;
 
-    public UserRsqlSpecification(final String property, final ComparisonOperator operator, final List<String> arguments) {
+    public GenericRsqlSpecification(final String property, final ComparisonOperator operator, final List<String> arguments) {
         super();
         this.property = property;
         this.operator = operator;
@@ -27,7 +26,7 @@ public class UserRsqlSpecification implements Specification<User> {
     }
 
     @Override
-    public Predicate toPredicate(final Root<User> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
+    public Predicate toPredicate(final Root<T> root, final CriteriaQuery<?> query, final CriteriaBuilder builder) {
         final List<Object> args = castArguments(root);
         final Object argument = args.get(0);
         switch (RsqlSearchOperation.getSimpleOperator(operator)) {
@@ -73,7 +72,7 @@ public class UserRsqlSpecification implements Specification<User> {
 
     // === private
 
-    private List<Object> castArguments(final Root<User> root) {
+    private List<Object> castArguments(final Root<T> root) {
         final List<Object> args = new ArrayList<Object>();
         final Class<? extends Object> type = root.get(property).getJavaType();
 

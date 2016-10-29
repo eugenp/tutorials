@@ -51,7 +51,7 @@ public class UserRsqlSpecBuilder {
     }
 
     public Specifications<User> createSpecification(final ComparisonNode comparisonNode) {
-        final Specifications<User> result = Specifications.where(new UserRsqlSpecification(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
+        final Specifications<User> result = Specifications.where(new GenericRsqlSpecification<User>(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
         return result;
     }
 
