@@ -162,6 +162,8 @@
 				<configuration>
 					<excludes>
 						<exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>

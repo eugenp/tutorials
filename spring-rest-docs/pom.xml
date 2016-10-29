@@ -63,7 +63,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
 	            <configuration>
 	                <includes>
-	                    <include>**/*Documentation.java</include>
+	                    <include>**/*IntegrationTest.java</include>
 	                </includes>
 	            </configuration>
         	</plugin>

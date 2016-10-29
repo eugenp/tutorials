@@ -11,7 +11,7 @@ import java.util.List;
 public class Course {
     private int id;
     private String name;
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -38,31 +38,40 @@ public class Course {
     }
 
     @GET
-    @Path("{studentOrder}")
-    public Student getStudent(@PathParam("studentOrder") int studentOrder) {
-        return students.get(studentOrder);
+    @Path("{studentId}")
+    public Student getStudent(@PathParam("studentId") int studentId) {
+        return findById(studentId);
     }
 
     @POST
     public Response createStudent(Student student) {
-        if (students == null) {
-            students = new ArrayList<>();
-        }
-        if (students.contains(student)) {
-            return Response.status(Response.Status.CONFLICT).build();
+        for (Student element : students) {
+            if (element.getId() == student.getId()) {
+                return Response.status(Response.Status.CONFLICT).build();
+            }
         }
         students.add(student);
         return Response.ok(student).build();
     }
 
     @DELETE
-    @Path("{studentOrder}")
-    public Response deleteStudent(@PathParam("studentOrder") int studentOrder) {
-        if (students == null || studentOrder >= students.size()) {
+    @Path("{studentId}")
+    public Response deleteStudent(@PathParam("studentId") int studentId) {
+        Student student = findById(studentId);
+        if (student == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        students.remove(studentOrder);
+        students.remove(student);
         return Response.ok().build();
+    }
+
+    private Student findById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
     }
 
     @Override

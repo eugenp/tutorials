@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.3.RELEASE</version>
+        <version>1.3.8.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -128,6 +128,7 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>4.1.3.RELEASE</version>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
@@ -239,6 +240,9 @@
 
 
     <properties>
+        <start-class>org.baeldung.Application</start-class>
+        <!--If you want to run the example with the voters comment the tag above and uncomment the one below-->
+        <!--<start-class>org.baeldung.voter.VoterApplication</start-class>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <rest-assured.version>2.4.0</rest-assured.version>
