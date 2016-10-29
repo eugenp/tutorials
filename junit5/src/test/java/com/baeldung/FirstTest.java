@@ -19,6 +19,7 @@ class FirstTest {
                 .sum() > 5, "Sum should be greater than 5");
     }
 
+    @Disabled("test to show MultipleFailuresError")
     @Test
     void groupAssertions() {
         int[] numbers = {0, 1, 2, 3, 4};
