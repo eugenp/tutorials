@@ -17,11 +17,11 @@ import java.util.stream.*;
 
 import static org.junit.Assert.*;
 
-public class Java8StreamApiTest {
+public class Java8StreamApiUnitTest {
 
     private long counter;
 
-    private static Logger log = LoggerFactory.getLogger(Java8StreamApiTest.class);
+    private static Logger log = LoggerFactory.getLogger(Java8StreamApiUnitTest.class);
 
     private List<Product> productList;
 

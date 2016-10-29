@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
-public class Java8StreamsTest {
+public class Java8StreamsUnitTest {
 
     private List<String> list;
 
