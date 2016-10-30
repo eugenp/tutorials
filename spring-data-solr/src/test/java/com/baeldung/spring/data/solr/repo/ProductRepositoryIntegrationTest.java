@@ -18,59 +18,56 @@ import com.baeldung.spring.data.solr.config.SolrConfig;
 import com.baeldung.spring.data.solr.model.Product;
 import com.baeldung.spring.data.solr.repository.ProductRepository;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SolrConfig.class)
 public class ProductRepositoryIntegrationTest {
-    
+
     @Autowired
     private ProductRepository productRepository;
-    
+
     @Before
-    public void clearSolrData(){
+    public void clearSolrData() {
         productRepository.deleteAll();
     }
-    
+
     @Test
-    public void whenSavingProduct_thenAvailableOnRetrieval() throws Exception{
-        final Product product = new Product("P00001","Desk","Furniture");
+    public void whenSavingProduct_thenAvailableOnRetrieval() throws Exception {
+        final Product product = new Product("P00001", "Desk", "Furniture");
         product.setDescription("New Desk");
         productRepository.save(product);
         final Product retrievedProduct = productRepository.findOne(product.getId());
-        assertEquals(product.getId(),retrievedProduct.getId());
+        assertEquals(product.getId(), retrievedProduct.getId());
     }
-    
+
     @Test
     public void whenUpdatingProduct_thenChangeAvailableOnRetrieval() throws Exception {
-        final Product product = new Product("P0001", "T-Shirt","Kitchen");
+        final Product product = new Product("P0001", "T-Shirt", "Kitchen");
         product.setDescription("New T-Shirt");
         productRepository.save(product);
-        
+
         product.setCategory("Clothes");
         productRepository.save(product);
-        
+
         final Product retrievedProduct = productRepository.findOne(product.getId());
         assertEquals(product.getCategory(), retrievedProduct.getCategory());
     }
-    
-    
-    
+
     @Test
     public void whenDeletingProduct_thenNotAvailableOnRetrieval() throws Exception {
-        final Product product = new Product("P0001", "Desk","Furniture");
+        final Product product = new Product("P0001", "Desk", "Furniture");
         product.setDescription("New Desk");
         productRepository.save(product);
-        
+
         productRepository.delete(product);
-        
-        Product  retrievedProduct = productRepository.findOne(product.getId());
+
+        Product retrievedProduct = productRepository.findOne(product.getId());
         assertNull(retrievedProduct);
-        
+
     }
-    
+
     @Test
-    public void whenFindByName_thenAvailableOnRetrieval() throws Exception{
-        final Product phone = new Product("P0001", "Phone", "Electronics");
+    public void whenFindByName_thenAvailableOnRetrieval() throws Exception {
+        Product phone = new Product("P0001", "Phone", "Electronics");
         phone.setDescription("New Phone");
         productRepository.save(phone);
 
@@ -92,7 +89,7 @@ public class ProductRepositoryIntegrationTest {
         wirelessCharger.setDescription("Wireless Charger for Phone");
         productRepository.save(wirelessCharger);
 
-        Page<Product> result = productRepository.findByCustomQuery("Pho", new PageRequest(0, 10));
+        Page<Product> result = productRepository.findByCustomQuery("Phone", new PageRequest(0, 10));
         assertEquals(3, result.getNumberOfElements());
     }
 

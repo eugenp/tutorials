@@ -4,7 +4,7 @@ import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
-@SolrDocument(solrCoreName="product")
+@SolrDocument(solrCoreName = "product")
 public class Product {
 
     @Id
@@ -20,13 +20,12 @@ public class Product {
     @Field("description")
     private String description;
 
-    
-    public Product(String id,String name,String category){
+    public Product(String id, String name, String category) {
         this.id = id;
         this.name = name;
         this.category = category;
     }
-    
+
     public String getId() {
         return id;
     }
