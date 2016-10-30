@@ -70,7 +70,7 @@
 
         <module>querydsl</module>
 
-        <module>raml</module>
+        <!-- <module>raml</module> -->
         <module>redis</module>        
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -89,7 +89,7 @@
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-boot-dynamodb</module>
+        <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
@@ -99,7 +99,7 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
-        <module>baeldungSIsample</module>  <!-- spring-integration -->
+        <module>spring-integration</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
