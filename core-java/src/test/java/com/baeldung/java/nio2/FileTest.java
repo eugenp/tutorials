@@ -16,7 +16,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-public class FileUnitTest {
+public class FileTest {
     private static final String HOME = System.getProperty("user.home");
 
     // checking file or dir
