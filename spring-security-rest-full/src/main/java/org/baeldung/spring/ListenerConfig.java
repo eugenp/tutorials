@@ -8,9 +8,9 @@ import org.springframework.web.context.request.RequestContextListener;
 
 public class ListenerConfig implements WebApplicationInitializer {
 
-	@Override
-	public void onStartup(ServletContext sc) throws ServletException {
-		// Manages the lifecycle of the root application context
-		sc.addListener(new RequestContextListener());
-	}
+    @Override
+    public void onStartup(ServletContext sc) throws ServletException {
+        // Manages the lifecycle of the root application context
+        sc.addListener(new RequestContextListener());
+    }
 }

@@ -9,7 +9,7 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.Collection;
 import java.util.List;
 
-@JsonIdentityInfo(generator=JSOGGenerator.class)
+@JsonIdentityInfo(generator = JSOGGenerator.class)
 
 @NodeEntity
 public class Movie {
@@ -21,9 +21,11 @@ public class Movie {
     private int released;
     private String tagline;
 
-    @Relationship(type="ACTED_IN", direction = Relationship.INCOMING) private List<Role> roles;
+    @Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
+    private List<Role> roles;
 
-    public Movie() { }
+    public Movie() {
+    }
 
     public String getTitle() {
         return title;
@@ -56,6 +58,5 @@ public class Movie {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
-    
-    
+
 }

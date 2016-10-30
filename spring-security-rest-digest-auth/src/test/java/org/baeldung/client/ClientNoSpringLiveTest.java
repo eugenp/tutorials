@@ -22,16 +22,16 @@ public class ClientNoSpringLiveTest {
 
     @Test
     public final void givenUsingCustomHttpRequestFactory_whenSecuredRestApiIsConsumed_then200OK() {
-        final HttpHost host = new HttpHost("localhost", 8080, "http");
+        final HttpHost host = new HttpHost("localhost", 8082, "http");
 
         final CredentialsProvider credentialsProvider = provider();
         final CloseableHttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).useSystemProperties().build();
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactoryDigestAuth(host, client);
         final RestTemplate restTemplate = new RestTemplate(requestFactory);
 
-        // credentialsProvider.setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
+        // credentialsProvider.setCredentials(new AuthScope("localhost", 8082, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
 
-        final String uri = "http://localhost:8080/spring-security-rest-digest-auth/api/foos/1";
+        final String uri = "http://localhost:8082/spring-security-rest-digest-auth/api/foos/1";
         final ResponseEntity<Foo> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, Foo.class);
 
         System.out.println(responseEntity.getStatusCode());
@@ -46,7 +46,7 @@ public class ClientNoSpringLiveTest {
 
         // credentialsProvider.setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
 
-        final String uri = "http://localhost:8080/spring-security-rest-digest-auth/api/foos/1";
+        final String uri = "http://localhost:8082/spring-security-rest-digest-auth/api/foos/1";
         final ResponseEntity<Foo> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, Foo.class);
 
         System.out.println(responseEntity.getStatusCode());

@@ -23,6 +23,7 @@
 		<cassandra-unit-spring.version>2.1.9.2</cassandra-unit-spring.version>
 		<cassandra-unit-shaded>2.1.9.2</cassandra-unit-shaded>
 		<hector-core.version>2.0-0</hector-core.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
 	</properties>
 
 	<dependencies>
@@ -108,6 +109,52 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build>
+		             <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-surefire-plugin</artifactId>
+		                <version>${maven-surefire-plugin.version}</version>
+		                <configuration>
+		                    <excludes>
+		                        <exclude>**/*IntegrationTest.java</exclude>
+		                        <exclude>**/*LiveTest.java</exclude>
+		                    </excludes>
+		                </configuration>
+		            </plugin>
+		        </plugins>
+		    </build>
+
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
