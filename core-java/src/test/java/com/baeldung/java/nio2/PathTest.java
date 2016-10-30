@@ -6,10 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.net.URI;
-<<<<<<< HEAD
 import java.nio.file.NoSuchFileException;
-=======
->>>>>>> e88fe8b904b93cca57aebd9dc393f9fa70395e42
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
@@ -130,22 +127,11 @@ public class PathTest {
         assertEquals(HOME, p.toRealPath().toString());
     }
 
-<<<<<<< HEAD
     @Test(expected = NoSuchFileException.class)
     public void givenInExistentPath_whenFailsToConvert_thenCorrect() throws IOException {
         Path p = Paths.get("E:\\home\\baeldung\\articles.html");
 
         p.toRealPath();
-=======
-    @Test
-    public void givenInExistentPath_whenFailsToConvert_thenCorrect() {
-        Path p = Paths.get("E:\\home\\baeldung\\articles.html");
-        try {
-            p.toRealPath();
-        } catch (IOException e) {
-            assertTrue(true);
-        }
->>>>>>> e88fe8b904b93cca57aebd9dc393f9fa70395e42
     }
 
     // joining paths
