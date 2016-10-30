@@ -19,13 +19,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JavaFolderSizeUnitTest {
-    private final long EXPECTED_SIZE = 381;
+    private final long EXPECTED_SIZE = 24;
     private String path;
 
     @Before
     public void init() {
         final String separator = File.separator;
-        path = String.format("src%stest%sresources", separator, separator);
+        path = String.format("src%stest%sresources%stestFolder", separator, separator, separator);
     }
 
     @Test
