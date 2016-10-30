@@ -25,7 +25,7 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.tidy.Tidy;
 
-public class ApacheFOPConvertHTMLTest {
+public class ApacheFOPConvertHTMLIntegrationTest {
     private String inputFile = "src/test/resources/input.html";
     private String style = "src/test/resources/xhtml2fo.xsl";
     private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
