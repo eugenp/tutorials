@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
+@Ignore("need large file for testing")
 public class JavaIoUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
 

@@ -1,7 +1,5 @@
 package org.baeldung.equalshashcode.entities;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +8,7 @@ public class ComplexClass {
     private List<?> genericList;
     private Set<Integer> integerSet;
 
-    public ComplexClass(ArrayList<?> genericArrayList, HashSet<Integer> integerHashSet) {
+    public ComplexClass(List<?> genericArrayList, Set<Integer> integerHashSet) {
         super();
         this.genericList = genericArrayList;
         this.integerSet = integerHashSet;

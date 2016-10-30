@@ -46,7 +46,7 @@ public class JavaFileUnitTest {
     @Test
     public final void givenUsingJDK6_whenMovingFile_thenCorrect() throws IOException {
         final File fileToMove = new File("src/test/resources/toMoveFile_jdk6.txt");
-        fileToMove.exists();
+        fileToMove.createNewFile();// .exists();
         final File destDir = new File("src/test/resources/");
         destDir.mkdir();
 
@@ -68,7 +68,7 @@ public class JavaFileUnitTest {
     public final void givenUsingGuava_whenMovingFile_thenCorrect() throws IOException {
         final File fileToMove = new File("src/test/resources/fileToMove.txt");
         fileToMove.createNewFile();
-        final File destDir = new File("src/test/resources/");
+        final File destDir = new File("src/main/resources/");
         final File targetFile = new File(destDir, fileToMove.getName());
         com.google.common.io.Files.createParentDirs(targetFile);
         com.google.common.io.Files.move(fileToMove, targetFile);
@@ -76,13 +76,14 @@ public class JavaFileUnitTest {
 
     @Test
     public final void givenUsingApache_whenMovingFile_thenCorrect() throws IOException {
-        FileUtils.moveFile(FileUtils.getFile("src/test/resources/fileToMove.txt"), FileUtils.getFile("src/test/resources/fileMoved.txt"));
+        FileUtils.touch(new File("src/test/resources/fileToMove_apache.txt"));
+        FileUtils.moveFile(FileUtils.getFile("src/test/resources/fileToMove_apache.txt"), FileUtils.getFile("src/test/resources/fileMoved_apache2.txt"));
     }
 
     @Test
     public final void givenUsingApache_whenMovingFileApproach2_thenCorrect() throws IOException {
-        FileUtils.touch(new File("src/test/resources/fileToMove.txt"));
-        FileUtils.moveFileToDirectory(FileUtils.getFile("src/test/resources/fileToMove.txt"), FileUtils.getFile("src/main/resources/"), true);
+        FileUtils.touch(new File("src/test/resources/fileToMove_apache.txt"));
+        FileUtils.moveFileToDirectory(FileUtils.getFile("src/test/resources/fileToMove_apache.txt"), FileUtils.getFile("src/main/resources/"), true);
     }
 
     // delete a file
@@ -99,7 +100,7 @@ public class JavaFileUnitTest {
 
     @Test
     public final void givenUsingJDK7nio2_whenDeletingAFile_thenCorrect() throws IOException {
-        // Files.createFile(Paths.get("src/test/resources/fileToDelete_jdk7.txt"));
+        Files.createFile(Paths.get("src/test/resources/fileToDelete_jdk7.txt"));
 
         final Path fileToDeletePath = Paths.get("src/test/resources/fileToDelete_jdk7.txt");
         Files.delete(fileToDeletePath);
@@ -117,7 +118,7 @@ public class JavaFileUnitTest {
 
     @Test
     public void givenUsingCommonsIo_whenDeletingAFileV2_thenCorrect() throws IOException {
-        // FileUtils.touch(new File("src/test/resources/fileToDelete.txt"));
+        FileUtils.touch(new File("src/test/resources/fileToDelete.txt"));
 
         FileUtils.forceDelete(FileUtils.getFile("src/test/resources/fileToDelete.txt"));
     }

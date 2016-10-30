@@ -1,32 +1,35 @@
 package com.baeldung.java.reflection;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
-import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 public class ReflectionUnitTest {
 
     @Test
     public void givenObject_whenGetsFieldNamesAtRuntime_thenCorrect() {
-        Object person = new Person();
-        Field[] fields = person.getClass().getDeclaredFields();
+        final Object person = new Person();
+        final Field[] fields = person.getClass().getDeclaredFields();
 
-        List<String> actualFieldNames = getFieldNames(fields);
+        final List<String> actualFieldNames = getFieldNames(fields);
 
         assertTrue(Arrays.asList("name", "age").containsAll(actualFieldNames));
     }
 
     @Test
     public void givenObject_whenGetsClassName_thenCorrect() {
-        Object goat = new Goat("goat");
-        Class<?> clazz = goat.getClass();
+        final Object goat = new Goat("goat");
+        final Class<?> clazz = goat.getClass();
 
         assertEquals("Goat", clazz.getSimpleName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getName());
@@ -35,7 +38,7 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClassName_whenCreatesObject_thenCorrect() throws ClassNotFoundException {
-        Class<?> clazz = Class.forName("com.baeldung.java.reflection.Goat");
+        final Class<?> clazz = Class.forName("com.baeldung.java.reflection.Goat");
 
         assertEquals("Goat", clazz.getSimpleName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getName());
@@ -44,10 +47,10 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenRecognisesModifiers_thenCorrect() throws ClassNotFoundException {
-        Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
-        Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
-        int goatMods = goatClass.getModifiers();
-        int animalMods = animalClass.getModifiers();
+        final Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
+        final Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
+        final int goatMods = goatClass.getModifiers();
+        final int animalMods = animalClass.getModifiers();
 
         assertTrue(Modifier.isPublic(goatMods));
         assertTrue(Modifier.isAbstract(animalMods));
@@ -56,20 +59,20 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsPackageInfo_thenCorrect() {
-        Goat goat = new Goat("goat");
-        Class<?> goatClass = goat.getClass();
-        Package pkg = goatClass.getPackage();
+        final Goat goat = new Goat("goat");
+        final Class<?> goatClass = goat.getClass();
+        final Package pkg = goatClass.getPackage();
 
         assertEquals("com.baeldung.java.reflection", pkg.getName());
     }
 
     @Test
     public void givenClass_whenGetsSuperClass_thenCorrect() {
-        Goat goat = new Goat("goat");
-        String str = "any string";
+        final Goat goat = new Goat("goat");
+        final String str = "any string";
 
-        Class<?> goatClass = goat.getClass();
-        Class<?> goatSuperClass = goatClass.getSuperclass();
+        final Class<?> goatClass = goat.getClass();
+        final Class<?> goatSuperClass = goatClass.getSuperclass();
 
         assertEquals("Animal", goatSuperClass.getSimpleName());
         assertEquals("Object", str.getClass().getSuperclass().getSimpleName());
@@ -78,10 +81,10 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsImplementedInterfaces_thenCorrect() throws ClassNotFoundException {
-        Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
-        Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
-        Class<?>[] goatInterfaces = goatClass.getInterfaces();
-        Class<?>[] animalInterfaces = animalClass.getInterfaces();
+        final Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
+        final Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
+        final Class<?>[] goatInterfaces = goatClass.getInterfaces();
+        final Class<?>[] animalInterfaces = animalClass.getInterfaces();
 
         assertEquals(1, goatInterfaces.length);
         assertEquals(1, animalInterfaces.length);
@@ -91,8 +94,8 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsConstructor_thenCorrect() throws ClassNotFoundException {
-        Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
-        Constructor<?>[] constructors = goatClass.getConstructors();
+        final Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
+        final Constructor<?>[] constructors = goatClass.getConstructors();
 
         assertEquals(1, constructors.length);
         assertEquals("com.baeldung.java.reflection.Goat", constructors[0].getName());
@@ -100,10 +103,10 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsFields_thenCorrect() throws ClassNotFoundException {
-        Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
-        Field[] fields = animalClass.getDeclaredFields();
+        final Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
+        final Field[] fields = animalClass.getDeclaredFields();
 
-        List<String> actualFields = getFieldNames(fields);
+        final List<String> actualFields = getFieldNames(fields);
 
         assertEquals(2, actualFields.size());
         assertTrue(actualFields.containsAll(Arrays.asList("name", "CATEGORY")));
@@ -111,41 +114,41 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsMethods_thenCorrect() throws ClassNotFoundException {
-        Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
-        Method[] methods = animalClass.getDeclaredMethods();
-        List<String> actualMethods = getMethodNames(methods);
+        final Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
+        final Method[] methods = animalClass.getDeclaredMethods();
+        final List<String> actualMethods = getMethodNames(methods);
 
-        assertEquals(4, actualMethods.size());
+        assertEquals(3, actualMethods.size());
         assertTrue(actualMethods.containsAll(Arrays.asList("getName", "setName", "getSound")));
     }
 
     @Test
     public void givenClass_whenGetsAllConstructors_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Constructor<?>[] constructors = birdClass.getConstructors();
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Constructor<?>[] constructors = birdClass.getConstructors();
 
         assertEquals(3, constructors.length);
     }
 
     @Test
     public void givenClass_whenGetsEachConstructorByParamTypes_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Constructor<?> cons1 = birdClass.getConstructor();
-        Constructor<?> cons2 = birdClass.getConstructor(String.class);
-        Constructor<?> cons3 = birdClass.getConstructor(String.class, boolean.class);
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        birdClass.getConstructor();
+        birdClass.getConstructor(String.class);
+        birdClass.getConstructor(String.class, boolean.class);
     }
 
     @Test
     public void givenClass_whenInstantiatesObjectsAtRuntime_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
 
-        Constructor<?> cons1 = birdClass.getConstructor();
-        Constructor<?> cons2 = birdClass.getConstructor(String.class);
-        Constructor<?> cons3 = birdClass.getConstructor(String.class, boolean.class);
+        final Constructor<?> cons1 = birdClass.getConstructor();
+        final Constructor<?> cons2 = birdClass.getConstructor(String.class);
+        final Constructor<?> cons3 = birdClass.getConstructor(String.class, boolean.class);
 
-        Bird bird1 = (Bird) cons1.newInstance();
-        Bird bird2 = (Bird) cons2.newInstance("Weaver bird");
-        Bird bird3 = (Bird) cons3.newInstance("dove", true);
+        final Bird bird1 = (Bird) cons1.newInstance();
+        final Bird bird2 = (Bird) cons2.newInstance("Weaver bird");
+        final Bird bird3 = (Bird) cons3.newInstance("dove", true);
 
         assertEquals("bird", bird1.getName());
         assertEquals("Weaver bird", bird2.getName());
@@ -156,8 +159,8 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsPublicFields_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Field[] fields = birdClass.getFields();
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Field[] fields = birdClass.getFields();
         assertEquals(1, fields.length);
         assertEquals("CATEGORY", fields[0].getName());
 
@@ -165,40 +168,40 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsPublicFieldByName_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Field field = birdClass.getField("CATEGORY");
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Field field = birdClass.getField("CATEGORY");
         assertEquals("CATEGORY", field.getName());
 
     }
 
     @Test
     public void givenClass_whenGetsDeclaredFields_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Field[] fields = birdClass.getDeclaredFields();
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Field[] fields = birdClass.getDeclaredFields();
         assertEquals(1, fields.length);
         assertEquals("walks", fields[0].getName());
     }
 
     @Test
     public void givenClass_whenGetsFieldsByName_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Field field = birdClass.getDeclaredField("walks");
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Field field = birdClass.getDeclaredField("walks");
         assertEquals("walks", field.getName());
 
     }
 
     @Test
     public void givenClassField_whenGetsType_thenCorrect() throws Exception {
-        Field field = Class.forName("com.baeldung.java.reflection.Bird").getDeclaredField("walks");
-        Class<?> fieldClass = field.getType();
+        final Field field = Class.forName("com.baeldung.java.reflection.Bird").getDeclaredField("walks");
+        final Class<?> fieldClass = field.getType();
         assertEquals("boolean", fieldClass.getSimpleName());
     }
 
     @Test
     public void givenClassField_whenSetsAndGetsValue_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Bird bird = (Bird) birdClass.newInstance();
-        Field field = birdClass.getDeclaredField("walks");
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Bird bird = (Bird) birdClass.newInstance();
+        final Field field = birdClass.getDeclaredField("walks");
         field.setAccessible(true);
 
         assertFalse(field.getBoolean(bird));
@@ -213,8 +216,8 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClassField_whenGetsAndSetsWithNull_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Field field = birdClass.getField("CATEGORY");
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Field field = birdClass.getField("CATEGORY");
         field.setAccessible(true);
 
         assertEquals("domestic", field.get(null));
@@ -222,9 +225,9 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsAllPublicMethods_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Method[] methods = birdClass.getMethods();
-        List<String> methodNames = getMethodNames(methods);
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Method[] methods = birdClass.getMethods();
+        final List<String> methodNames = getMethodNames(methods);
 
         assertTrue(methodNames.containsAll(Arrays.asList("equals", "notifyAll", "hashCode", "walks", "eats", "toString")));
 
@@ -232,10 +235,10 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenClass_whenGetsOnlyDeclaredMethods_thenCorrect() throws ClassNotFoundException {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        List<String> actualMethodNames = getMethodNames(birdClass.getDeclaredMethods());
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final List<String> actualMethodNames = getMethodNames(birdClass.getDeclaredMethods());
 
-        List<String> expectedMethodNames = Arrays.asList("setWalks", "walks", "getSound", "eats");
+        final List<String> expectedMethodNames = Arrays.asList("setWalks", "walks", "getSound", "eats");
 
         assertEquals(expectedMethodNames.size(), actualMethodNames.size());
         assertTrue(expectedMethodNames.containsAll(actualMethodNames));
@@ -245,9 +248,9 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenMethodName_whenGetsMethod_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Method walksMethod = birdClass.getDeclaredMethod("walks");
-        Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Method walksMethod = birdClass.getDeclaredMethod("walks");
+        final Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
 
         assertFalse(walksMethod.isAccessible());
         assertFalse(setWalksMethod.isAccessible());
@@ -262,17 +265,17 @@ public class ReflectionUnitTest {
 
     @Test
     public void givenMethod_whenInvokes_thenCorrect() throws Exception {
-        Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
-        Bird bird = (Bird) birdClass.newInstance();
-        Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
-        Method walksMethod = birdClass.getDeclaredMethod("walks");
-        boolean walks = (boolean) walksMethod.invoke(bird);
+        final Class<?> birdClass = Class.forName("com.baeldung.java.reflection.Bird");
+        final Bird bird = (Bird) birdClass.newInstance();
+        final Method setWalksMethod = birdClass.getDeclaredMethod("setWalks", boolean.class);
+        final Method walksMethod = birdClass.getDeclaredMethod("walks");
+        final boolean walks = (boolean) walksMethod.invoke(bird);
 
         assertFalse(walks);
         assertFalse(bird.walks());
 
         setWalksMethod.invoke(bird, true);
-        boolean walks2 = (boolean) walksMethod.invoke(bird);
+        final boolean walks2 = (boolean) walksMethod.invoke(bird);
 
         assertTrue(walks2);
         assertTrue(bird.walks());
@@ -280,17 +283,19 @@ public class ReflectionUnitTest {
     }
 
     private static List<String> getFieldNames(Field[] fields) {
-        List<String> fieldNames = new ArrayList<>();
-        for (Field field : fields)
+        final List<String> fieldNames = new ArrayList<>();
+        for (final Field field : fields) {
             fieldNames.add(field.getName());
+        }
         return fieldNames;
 
     }
 
     private static List<String> getMethodNames(Method[] methods) {
-        List<String> methodNames = new ArrayList<>();
-        for (Method method : methods)
+        final List<String> methodNames = new ArrayList<>();
+        for (final Method method : methods) {
             methodNames.add(method.getName());
+        }
         return methodNames;
     }
 
