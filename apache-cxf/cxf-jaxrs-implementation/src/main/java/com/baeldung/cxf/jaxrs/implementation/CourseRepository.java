@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Path("baeldung")
-@Produces("application/xml")
+@Produces("text/xml")
 public class CourseRepository {
     private Map<Integer, Course> courses = new HashMap<>();
 
