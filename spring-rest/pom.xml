@@ -332,5 +332,17 @@
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
 
     </properties>
-
+	<reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.4</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <omitVisitors>FindDeadLocalStores,FindNullDeref</omitVisitors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
