@@ -1,0 +1,14 @@
+<configuration>
+
+	# Console appender
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>logback %d{yyyy-MM-dd HH:mm:ss} %p %m %X{transaction.owner} %X{transaction.createdAt} %n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="TRACE">
+		<appender-ref ref="stdout" />
+	</root>
+
+</configuration>
