@@ -21,7 +21,7 @@
         <module>autovalue</module>
 
         <module>cdi</module>
-        <module>core-java-9</module>
+        <!-- <module>core-java-9</module> -->
         <module>core-java</module>
         <module>couchbase-sdk</module>
 
