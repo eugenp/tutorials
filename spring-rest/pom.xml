@@ -263,5 +263,17 @@
         <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
     </properties>
-
+	<reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.4</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <omitVisitors>FindDeadLocalStores,FindNullDeref</omitVisitors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
