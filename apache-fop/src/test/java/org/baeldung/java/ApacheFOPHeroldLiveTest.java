@@ -30,7 +30,7 @@ import org.dbdoclet.trafo.script.Script;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-public class ApacheFOPHeroldTest {
+public class ApacheFOPHeroldLiveTest {
     private String[] inputUrls = {// @formatter:off
             "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
             "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",

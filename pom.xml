@@ -14,24 +14,25 @@
     </properties>
 
     <modules>
-        <module>assertj</module>
+        <module>annotations</module>
         <module>apache-cxf</module>
-        <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
+        <module>apache-fop</module> <!-- TODO: has a compilation issue -->
+        <module>assertj</module>
         <module>autovalue</module>
 
         <module>cdi</module>
+        <!-- <module>core-java-9</module> -->
         <module>core-java</module>
         <module>couchbase-sdk</module>
-        <!-- <module>core-java-9</module> -->
 
-        <module>dozer</module>
         <module>deltaspike</module>
+        <module>dozer</module>
 
-        <module>patterns</module>
         <module>feign</module>
+        <module>flyway</module>
+
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
-        <module>flyway</module>
 
         <module>gson</module>
         <module>guava</module>
@@ -39,56 +40,66 @@
         <module>guava19</module>
 
         <module>handling-spring-static-resources</module>
+        <module>hazelcast</module>
         <module>httpclient</module>
+        <module>hystrix</module>
 
         <module>immutables</module>
 
         <module>jackson</module>
+        <module>java-cassandra</module>
         <module>javaxval</module>
-        <module>jjwt</module>
-
-        <module>jpa-storedprocedure</module>
-        <module>json</module>
-        <module>json-path</module>
-        <module>junit5</module>
         <module>jee7</module>
-        <!-- <module>jpa-storedprocedure</module> -->
-
+        <module>jjwt</module>
+        <module>jpa-storedprocedure</module>
+        <module>jsf</module>       
+        <module>json-path</module>
+        <module>json</module>
+        <module>junit5</module>
+        
         <module>log4j</module>
+        <module>lombok</module>
 
+        <module>mapstruct</module>
         <module>mockito</module>
         <module>mocks</module>
-        <module>testing</module>
 
         <module>orika</module>
+
+        <module>patterns</module>
 
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>redis</module>        
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
 
+        <module>selenium-junit-testng</module>
+        <module>spring-akka</module>        
         <module>spring-all</module>
-        <module>spring-akka</module>
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-cloud-data-flow</module>        
+        <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
+        <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-neo4j</module>
         <module>spring-data-mongodb</module>
+        <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
-        <!--<module>spring-dispatcher-servlet</module>-->
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
+        <module>spring-integration</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -96,18 +107,16 @@
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-no-xml</module>
-        <module>spring-mvc-xml</module>
         <module>spring-mvc-tiles</module>
+        <module>spring-mvc-velocity</module>
+        <module>spring-mvc-web-vs-initializer</module>
+        <module>spring-mvc-xml</module>
         <module>spring-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
-        <module>spring-spel</module>
-        <module>spring-rest</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
-        <module>spring-cloud</module>
-        <module>spring-cloud-data-flow</module>
-
+        <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
         <module>spring-security-custom-permission</module>
         <module>spring-security-mvc-custom</module>
@@ -116,26 +125,24 @@
         <module>spring-security-mvc-login</module>
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-session</module>
-        <module>spring-security-rest</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
+        <module>spring-security-rest</module>        
         <module>spring-security-x509</module>
+        <module>spring-spel</module>
         <module>spring-thymeleaf</module>
+        <module>spring-userservice</module>
         <module>spring-zuul</module>
-        <module>spring-mvc-velocity</module>
 
-        <module>jsf</module>
-        <module>xml</module>
-        <module>xmlunit2</module>
-        <module>lombok</module>
-        <module>redis</module>
+        <module>testing</module>
 
         <module>wicket</module>
+
+        <module>xml</module>
+        <module>xmlunit2</module>
         <module>xstream</module>
-        <module>java-cassandra</module>
-        <module>annotations</module>
     </modules>
 
 </project>

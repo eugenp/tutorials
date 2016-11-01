@@ -98,6 +98,14 @@
 		</dependency>
 
 		<dependency>
+		  <groupId>org.dbdoclet</groupId>
+		  <artifactId>herold</artifactId>
+		  <version>6.1.0</version>
+		  <scope>system</scope>
+		  <systemPath>${basedir}/src/test/resources/jars/herold.jar</systemPath>
+		</dependency>
+		
+		<dependency>
 			<groupId>net.sf.jtidy</groupId>
 			<artifactId>jtidy</artifactId>
 			<version>r938</version>
@@ -132,7 +140,8 @@
 				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
 					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
@@ -141,6 +150,42 @@
 
 	</build>
 
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*ManualTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                        <exclude>**/*LiveTest.java</exclude>                                        
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
 	<properties>
 		<!-- persistence -->
 		<hibernate.version>4.3.11.Final</hibernate.version>
