@@ -1,8 +1,6 @@
 package com.baeldung.java.networking.interfaces;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.net.InetAddress;
 import java.net.InterfaceAddress;
@@ -18,44 +16,44 @@ public class NetworkInterfaceTest {
     @Test
     public void givenName_whenReturnsNetworkInterface_thenCorrect() throws SocketException {
         NetworkInterface nif = NetworkInterface.getByName("lo");
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
     public void givenInExistentName_whenReturnsNull_thenCorrect() throws SocketException {
         NetworkInterface nif = NetworkInterface.getByName("inexistent_name");
-        assertTrue(nif == null);
+        assertNull(nif);
     }
 
     @Test
     public void givenIP_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
         byte[] ip = new byte[] { 127, 0, 0, 1 };
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getByAddress(ip));
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
     public void givenHostName_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getByName("localhost"));
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
     public void givenLocalHost_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
     public void givenLoopBack_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
         NetworkInterface nif = NetworkInterface.getByInetAddress(InetAddress.getLoopbackAddress());
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
     public void givenIndex_whenReturnsNetworkInterface_thenCorrect() throws SocketException, UnknownHostException {
         NetworkInterface nif = NetworkInterface.getByIndex(0);
-        assertFalse(nif == null);
+        assertNotNull(nif);
     }
 
     @Test
@@ -112,12 +110,13 @@ public class NetworkInterfaceTest {
     public void givenInterface_whenGetsMacAddress_thenCorrect() throws SocketException, UnknownHostException {
         NetworkInterface nif = NetworkInterface.getByName("lo");
         byte[] bytes = nif.getHardwareAddress();
-        assertFalse(bytes == null);
+        assertNotNull(bytes);
     }
 
     @Test
     public void givenInterface_whenGetsMTU_thenCorrect() throws SocketException, UnknownHostException {
-        NetworkInterface nif = NetworkInterface.getByName("lo");
+        NetworkInterface nif = NetworkInterface.getByName("net0");
         int mtu = nif.getMTU();
+        assertEquals(1500, mtu);
     }
 }
