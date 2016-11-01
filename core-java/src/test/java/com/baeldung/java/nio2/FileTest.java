@@ -1,13 +1,19 @@
 package com.baeldung.java.nio2;
 
-import org.junit.Test;
-
-import java.io.IOException;
-import java.nio.file.*;
-import java.util.UUID;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+
+import org.junit.Test;
 
 public class FileTest {
     private static final String HOME = System.getProperty("user.home");
@@ -86,6 +92,7 @@ public class FileTest {
         Path p = Paths.get(HOME + "/" + dirName);
         assertFalse(Files.exists(p));
         Files.createDirectory(p);
+
     }
 
     @Test
@@ -151,11 +158,16 @@ public class FileTest {
 
     }
 
-    @Test(expected = NoSuchFileException.class)
+    @Test
     public void givenInexistentFile_whenDeleteFails_thenCorrect() throws IOException {
         Path p = Paths.get(HOME + "/inexistentFile.txt");
         assertFalse(Files.exists(p));
-        Files.delete(p);
+        try {
+            Files.delete(p);
+        } catch (IOException e) {
+            assertTrue(e instanceof NoSuchFileException);
+        }
+
     }
 
     @Test
@@ -234,4 +246,5 @@ public class FileTest {
         assertTrue(Files.exists(file2));
         assertFalse(Files.exists(file1));
     }
+
 }
