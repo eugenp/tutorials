@@ -51,7 +51,7 @@ public class HttpAsyncClientLiveTest {
     @Test
     public void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
         final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
-        // client.start();
+        client.start();
         final HttpGet request = new HttpGet(HOST);
 
         final Future<HttpResponse> future = client.execute(request, null);

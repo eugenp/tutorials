@@ -111,11 +111,11 @@ public class JavaReadFromFileUnitTest {
 
     @Test
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
-        final String expected_value = "é?’ç©º";
+        final String expected_value = "é’ç©º";
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
         final String currentLine = reader.readLine();
         reader.close();
-
+        System.out.println(currentLine);
         assertEquals(expected_value, currentLine);
     }
 
@@ -143,8 +143,9 @@ public class JavaReadFromFileUnitTest {
         final FileChannel channel = reader.getChannel();
 
         int bufferSize = 1024;
-        if (bufferSize > channel.size())
+        if (bufferSize > channel.size()) {
             bufferSize = (int) channel.size();
+        }
         final ByteBuffer buff = ByteBuffer.allocate(bufferSize);
         channel.read(buff);
         buff.flip();
