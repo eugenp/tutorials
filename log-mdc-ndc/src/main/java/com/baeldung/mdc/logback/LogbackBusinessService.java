@@ -10,8 +10,9 @@ public class LogbackBusinessService implements BusinessService {
 	private static final Logger logger = LoggerFactory.getLogger(LogbackBusinessService.class);
 
 	@Override
-	public void businessMethod(String transactionId) {
-		logger.info("Executing transaction #{}", transactionId);
+	public boolean transfer(Long amount) {
+		logger.info("Executing transaction #{}", amount);
+		return false;
 	}
 
 }

@@ -2,6 +2,6 @@ package com.baeldung.mdc;
 
 public interface BusinessService {
 
-	void businessMethod(String transactionId);
+	boolean transfer(Long amount);
 
 }

@@ -9,8 +9,9 @@ public class Log4jBusinessService implements BusinessService {
 	private final static Logger logger = Logger.getLogger(Log4jBusinessService.class);
 	
 	@Override
-	public void businessMethod(String transactionId) {
-		logger.info("Executing transaction #" + transactionId );
+	public boolean transfer(Long amount) {
+		logger.info("Executing transaction #" + amount );
+		return false;
 	}
 	
 }

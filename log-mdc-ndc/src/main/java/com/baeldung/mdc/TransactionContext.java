@@ -7,11 +7,13 @@ public class TransactionContext {
 	private String transactionId;
 	private String owner;
 	private Date createdAt;
+	private Long amount;
 	
 	public TransactionContext(String transactionId, String owner) {
 		this.transactionId = transactionId;
 		this.owner = owner;
 		this.createdAt = new Date();
+		this.amount = (long) (Math.random()*100);
 	}
 
 	public String getOwner() {
@@ -24,6 +26,10 @@ public class TransactionContext {
 	
 	public Date getCreatedAt() {
 		return createdAt;
+	}
+	
+	public Long getAmount() {
+		return amount;
 	}
 	
 }
