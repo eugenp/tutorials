@@ -12,3 +12,6 @@
 - [Spring JPA – Multiple Databases](http://www.baeldung.com/spring-data-jpa-multiple-databases)
 - [Hibernate Second-Level Cache](http://www.baeldung.com/hibernate-second-level-cache)
 - [Spring, Hibernate and a JNDI Datasource](http://www.baeldung.com/spring-persistence-jpa-jndi-datasource)
+
+To ignore "No persistence xml file found in project", you do:
+Project -> Properties -> Java Persistance -> JPA -> Error/Warnings -> Select Ignore on "No persistence xml file found in project"

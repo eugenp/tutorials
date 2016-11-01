@@ -1,6 +1,7 @@
 package main.java.com.baeldung.selenium;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -14,6 +15,7 @@ public class SeleniumExample {
     private String url = "http://www.baeldung.com/";
 
     public SeleniumExample() {
+        System.setProperty("webdriver.firefox.marionette", "C:\\selenium\\geckodriver.exe");
         webDriver = new FirefoxDriver();
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -36,8 +38,12 @@ public class SeleniumExample {
 
     private void closeOverlay() {
         List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
-        if (webElementList != null && !webElementList.isEmpty()) {
-            webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().get().click();
+        try {
+            if (webElementList != null && !webElementList.isEmpty()) {
+                webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().orElseThrow(NoSuchElementException::new).click();
+            }
+        } catch (NoSuchElementException exception) {
+            exception.printStackTrace();
         }
     }
 
@@ -50,8 +56,6 @@ public class SeleniumExample {
     }
 
     public boolean isAuthorInformationAvailable() {
-        return webDriver
-                .findElement(By.xpath("//*[contains(text(), 'Eugen – an engineer')]"))
-                .isDisplayed();
+        return webDriver.findElement(By.xpath("//*[contains(text(), 'Eugen – an engineer')]")).isDisplayed();
     }
 }
