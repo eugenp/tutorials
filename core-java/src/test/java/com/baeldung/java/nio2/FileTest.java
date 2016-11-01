@@ -158,16 +158,10 @@ public class FileTest {
 
     }
 
-    @Test
+    @Test(expected = NoSuchFileException.class)
     public void givenInexistentFile_whenDeleteFails_thenCorrect() throws IOException {
         Path p = Paths.get(HOME + "/inexistentFile.txt");
-        assertFalse(Files.exists(p));
-        try {
-            Files.delete(p);
-        } catch (IOException e) {
-            assertTrue(e instanceof NoSuchFileException);
-        }
-
+        Files.delete(p);
     }
 
     @Test
