@@ -23,27 +23,17 @@ public class PDF2HTMLExample {
 	}
 
 	private static void generateHTMLFromPDF(String filename) throws ParserConfigurationException, IOException {
-		System.out.println("Creating HTML file from a PDF file: " + filename);
-		PDDocument pdf = null;
 		try {
-			// load the PDF file using PDFBox
-			pdf = PDDocument.load(new File(filename));
-			// create the DOM parser
+			PDDocument pdf = PDDocument.load(new File(filename));
 			PDFDomTree parser = new PDFDomTree();
-			// parse the file and get the DOM Document
 			Writer output = new PrintWriter("src/output/pdf.html", "utf-8");
 			parser.writeText(pdf, output);
 			output.close();
-		} finally {
 			if (pdf != null) {
-				try {
-					pdf.close();
-				} catch (IOException e) {
-					System.err.println("Error: " + e.getMessage());
-				}
+				pdf.close();
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		System.out.println("Done.");
 	}
-
 }
