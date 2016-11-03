@@ -1,4 +1,4 @@
-package org.baeldung.executable;
+package com.baeldung.executable;
 
 import javax.swing.JOptionPane;
 

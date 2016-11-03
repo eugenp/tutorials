@@ -5,6 +5,8 @@ import java.awt.Color;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.equalshashcode.entities.Square;
+
 public class SquareClassUnitTest {
 
     @Test
