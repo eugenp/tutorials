@@ -8,6 +8,7 @@ import com.baeldung.patterns.intercepting.filter.data.OrderImpl;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
 public class OrderCommand extends FrontCommand {
     @Override
@@ -15,11 +16,10 @@ public class OrderCommand extends FrontCommand {
         super.process();
         if (request.getMethod().equals("POST")) {
             HttpSession session = request.getSession(false);
-            Order order = (Order) session.getAttribute("order");
-            if (order == null) {
-                String username = (String) session.getAttribute("username");
-                order = new OrderImpl(username);
-            }
+            Order order = Optional
+              .ofNullable(session.getAttribute("order"))
+              .map(Order.class::cast)
+              .orElseGet(() -> new OrderImpl((String) session.getAttribute("username")));
             Bookshelf bookshelf = (Bookshelf) request.getServletContext()
               .getAttribute("bookshelf");
             String isbn = request.getParameter("isbn");

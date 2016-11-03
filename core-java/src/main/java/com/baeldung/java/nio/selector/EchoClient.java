@@ -17,6 +17,11 @@ public class EchoClient {
         return instance;
     }
 
+    public static void stop() throws IOException {
+        client.close();
+        buffer = null;
+    }
+
     private EchoClient() {
         try {
             client = SocketChannel.open(new InetSocketAddress("localhost", 5454));
@@ -42,5 +47,4 @@ public class EchoClient {
         return response;
 
     }
-
 }

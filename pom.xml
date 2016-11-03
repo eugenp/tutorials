@@ -95,6 +95,7 @@
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
+        <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
