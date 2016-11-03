@@ -2,17 +2,14 @@ package com.baeldung.hexToAscii;
 
 public class HexToAscii {
 
-    public static void main(String[] args) {
+    @Test
+    public static void main() {
 
-        String demoString = "http://www.baeldung.com/jackson-serialize-dates";
+        String asciiString = "http://www.baeldung.com/jackson-serialize-dates";
+        String hexEquivalent = "687474703a2f2f7777772e6261656c64756e672e636f6d2f6a61636b736f6e2d73657269616c697a652d6461746573";
 
-        System.out.println("Original statement: " + demoString);
-
-        String hexEquivalent = asciiToHex(demoString);
-        System.out.println("Hex equivalent: " + hexEquivalent);
-
-        String asciiEquivalent = hexToASCII(hexEquivalent);
-        System.out.println("Ascii equivalent: " + asciiEquivalent);
+        assertEquals(hexEquivalent, asciiToHex(asciiString));
+        assertEquals(asciiString, hexToAscii(hexEquivalent));
     }
 
     private static String asciiToHex(String asciiStr) {
