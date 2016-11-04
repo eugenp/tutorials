@@ -43,4 +43,7 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <error-page>
+        <location>/errors</location>
+    </error-page>
 </web-app>
