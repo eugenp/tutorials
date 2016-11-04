@@ -14,15 +14,67 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.manipulation.Sortable;
 
 public class JavaSorting {
     
+    private int [] numbers;
+    private int [] sortedInts;
+    private int [] sortedRangeInts;
+    private Integer [] integers;
+    private Integer [] sortedIntegers;
+    private List<Integer> integersList;
+    private List<Integer> sortedIntegersList;
+    
+    private Employee[] employees;
+    private Employee[] employeesSorted;
+    private Employee[] employeesSortedByAge;
+    
+    @Before
+    public void initVariables () {
+        numbers = new int[] 
+          { 5, 1, 89, 255, 7, 88, 200, 123, 66 }; 
+        sortedInts = new int[] 
+          {1, 5, 7, 66, 88, 89, 123, 200, 255};
+        sortedRangeInts = new int[] 
+          {5, 1, 89, 7, 88, 200, 255, 123, 66};
+        
+        integers = new Integer[] 
+          { 5, 1, 89, 255, 7, 88, 200, 123, 66 }; 
+        sortedIntegers = new Integer[]
+          {1, 5, 7, 66, 88, 89, 123, 200, 255};
+        
+        integersList = Arrays.asList(new Integer[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 }); 
+        sortedIntegersList = Arrays.asList(new Integer[] {1, 5, 7, 66, 88, 89, 123, 200, 255});
+        
+        employees = new Employee[] { 
+            new Employee("John", 23, 5000), 
+            new Employee("Steve", 26, 6000), 
+            new Employee("Frank", 33, 7000),
+            new Employee("Earl", 43, 10000), 
+            new Employee("Jessica", 23, 4000), 
+            new Employee("Pearl", 33, 6000)};
+        employeesSorted = new Employee[] {
+            new Employee("Earl", 43, 10000),
+            new Employee("Frank", 33, 70000),
+            new Employee("Jessica", 23, 4000),
+            new Employee("John", 23, 5000), 
+            new Employee("Pearl", 33, 4000), 
+            new Employee("Steve", 26, 6000)};
+        employeesSortedByAge = new Employee[] { 
+            new Employee("John", 23, 5000), 
+            new Employee("Jessica", 23, 4000), 
+            new Employee("Steve", 26, 6000),
+            new Employee("Frank", 33, 70000), 
+            new Employee("Pearl", 33, 4000), 
+            new Employee("Earl", 43, 10000)};
+
+    }
+    
     @Test
     public void givenIntArray_whenUsingSort_thenSortedArray() {
-        int [] numbers = new int[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
-          sortedInts = {1, 5, 7, 66, 88, 89, 123, 200, 255};
-        
         Arrays.sort(numbers);
 
         assertTrue(Arrays.equals(numbers, sortedInts));
@@ -30,11 +82,6 @@ public class JavaSorting {
 
     @Test
     public void givenIntegerArray_whenUsingSort_thenSortedArray() {
-        Integer[] integers = new Integer[] 
-          { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
-            sortedIntegers = {1, 5, 7, 66, 88, 89, 123, 200, 255};
-        
-        
         Arrays.sort(integers, new Comparator<Integer>() {
             @Override
             public int compare(Integer a, Integer b) {
@@ -47,10 +94,6 @@ public class JavaSorting {
 
     @Test
     public void givenArray_whenUsingSortWithLambdas_thenSortedArray() {
-        Integer[] integers = new Integer[] 
-            { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
-              sortedIntegers = {1, 5, 7, 66, 88, 89, 123, 200, 255};
-        
         Arrays.sort(integers, (a, b) -> {
             return a - b;
         });
@@ -60,21 +103,6 @@ public class JavaSorting {
 
     @Test
     public void givenEmpArray_SortEmpArray_thenSortedArrayinNaturalOrder() {
-        Employee[] employees = new Employee[] { 
-          new Employee("John", 23, 5000), 
-          new Employee("Steve", 26, 6000), 
-          new Employee("Frank", 33, 7000),
-          new Employee("Earl", 43, 10000), 
-          new Employee("Jessica", 23, 4000), 
-          new Employee("Pearl", 33, 6000)};
-        Employee[] employeesSorted = new Employee[] {
-          new Employee("Earl", 43, 10000),
-          new Employee("Frank", 33, 70000),
-          new Employee("Jessica", 23, 4000),
-          new Employee("John", 23, 5000), 
-          new Employee("Pearl", 33, 4000), 
-          new Employee("Steve", 26, 6000)};
-                
         Arrays.sort(employees);
 
         assertTrue(Arrays.equals(employees, employeesSorted));
@@ -83,9 +111,6 @@ public class JavaSorting {
     
     @Test
     public void givenIntArray_whenUsingRangeSort_thenRangeSortedArray() {
-        int [] numbers = new int[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
-            sortedRangeInts = {5, 1, 89, 7, 88, 200, 255, 123, 66};
-        
         Arrays.sort(numbers, 3, 7);
         
         assertTrue(Arrays.equals(numbers, sortedRangeInts));
@@ -93,9 +118,6 @@ public class JavaSorting {
     
     @Test 
     public void givenIntArray_whenUsingParallelSort_thenParallelSortedArray() {
-        int [] numbers = new int[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 }, 
-            sortedInts = {1, 5, 7, 66, 88, 89, 123, 200, 255};
-        
         Arrays.parallelSort(numbers);
         
         assertTrue(Arrays.equals(numbers, sortedInts));
@@ -105,31 +127,19 @@ public class JavaSorting {
 
     @Test
     public void givenArrayObjects_whenUsingComparing_thenSortedArrayObjects() {
-        List<Employee> employees = Arrays.asList(new Employee[] { new Employee("John", 23, 5000), 
-          new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000),
-          new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), 
-          new Employee("Pearl", 33, 6000) });
-        Employee[] employeesSorted = new Employee[] { 
-          new Employee("John", 23, 5000), 
-          new Employee("Jessica", 23, 4000), 
-          new Employee("Steve", 26, 6000),
-          new Employee("Frank", 33, 70000), 
-          new Employee("Pearl", 33, 4000), 
-          new Employee("Earl", 43, 10000)};
+        List<Employee> employeesList = Arrays.asList(employees);
+        
+        employeesList.sort(Comparator.comparing(Employee::getAge));//.thenComparing(Employee::getName));
 
-        employees.sort(Comparator.comparing(Employee::getAge));//.thenComparing(Employee::getName));
-
-        assertTrue(Arrays.equals(employees.toArray(), employeesSorted));
+        assertTrue(Arrays.equals(employeesList.toArray(), employeesSortedByAge));
     }
     
     @Test
     public void givenList_whenUsingSort_thenSortedList() {
-        List<Integer> integers = Arrays.asList(new Integer[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 }), 
-          sortedIntegers = Arrays.asList(new Integer[] {1, 5, 7, 66, 88, 89, 123, 200, 255});
+        Collections.sort(integersList);
 
-        Collections.sort(integers);
-
-        assertTrue(Arrays.equals(integers.toArray(), sortedIntegers.toArray()));
+        assertTrue(Arrays.equals(integersList.toArray(), 
+          sortedIntegersList.toArray()));
     }
 
     @Test
