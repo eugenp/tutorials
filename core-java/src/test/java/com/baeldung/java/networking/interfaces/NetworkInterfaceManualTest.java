@@ -1,18 +1,14 @@
 package com.baeldung.java.networking.interfaces;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
-import java.net.InetAddress;
-import java.net.InterfaceAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
-public class NetworkInterfaceTest {
+public class NetworkInterfaceManualTest {
     @Test
     public void givenName_whenReturnsNetworkInterface_thenCorrect() throws SocketException {
         NetworkInterface nif = NetworkInterface.getByName("lo");
