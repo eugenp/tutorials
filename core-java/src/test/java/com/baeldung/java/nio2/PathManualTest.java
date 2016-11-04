@@ -13,7 +13,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-public class PathTest {
+public class PathManualTest {
 
     private static final String HOME = System.getProperty("user.home");
 
