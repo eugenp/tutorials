@@ -11,23 +11,27 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-        @Autowired
-        public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-                auth.inMemoryAuthentication()
-                        .withUser("user").password("password").roles("USER").and()
-                        .withUser("admin").password("admin").roles("ADMIN");
-        }
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+            .withUser("user").password("password").roles("USER")
+                .and()
+            .withUser("admin").password("admin").roles("ADMIN");
+    }
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
-                http
-                        .authorizeRequests()
-                                .antMatchers("/resource/hello/cloud").permitAll()
-                                .antMatchers("/eureka/**").hasRole("ADMIN")
-                                .anyRequest().authenticated().and()
-                        .formLogin().and()
-                        .logout().permitAll()
-                        .logoutSuccessUrl("/resource/hello/cloud").permitAll().and()
-                        .csrf().disable();
-        }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/resource/hello/cloud").permitAll()
+            .antMatchers("/eureka/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
+            .and()
+        .formLogin()
+            .and()
+        .logout().permitAll()
+            .logoutSuccessUrl("/resource/hello/cloud").permitAll()
+            .and()
+        .csrf()
+            .disable();
+    }
 }
