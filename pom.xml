@@ -122,6 +122,7 @@
         <module>spring-thymeleaf</module>
         <module>spring-zuul</module>
         <module>spring-mvc-velocity</module>
+        <module>spring-session</module>
 
         <module>jsf</module>
         <module>xml</module>
