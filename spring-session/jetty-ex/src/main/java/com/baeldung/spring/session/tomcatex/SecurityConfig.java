@@ -16,7 +16,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .sessionManagement()
                                 .sessionCreationPolicy(SessionCreationPolicy.NEVER)
                                 .and()
-                        .authorizeRequests().anyRequest().hasRole("ADMIN").and()
-                        .httpBasic().disable();
+                        .authorizeRequests().anyRequest().hasRole("ADMIN").and();
         }
 }
