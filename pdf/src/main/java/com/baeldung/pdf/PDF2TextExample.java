@@ -23,30 +23,26 @@ public class PDF2TextExample {
 	}
 
 	private static void generateTxtFromPDF(String filename) throws IOException {
-		try {
-			File f = new File(filename);
-			String parsedText;
-			PDFParser parser = new PDFParser(new RandomAccessFile(f, "r"));
-			parser.parse();
+		File f = new File(filename);
+		String parsedText;
+		PDFParser parser = new PDFParser(new RandomAccessFile(f, "r"));
+		parser.parse();
 
-			COSDocument cosDoc = parser.getDocument();
+		COSDocument cosDoc = parser.getDocument();
 
-			PDFTextStripper pdfStripper = new PDFTextStripper();
-			PDDocument pdDoc = new PDDocument(cosDoc);
+		PDFTextStripper pdfStripper = new PDFTextStripper();
+		PDDocument pdDoc = new PDDocument(cosDoc);
 
-			parsedText = pdfStripper.getText(pdDoc);
+		parsedText = pdfStripper.getText(pdDoc);
 
-			if (cosDoc != null)
-				cosDoc.close();
-			if (pdDoc != null)
-				pdDoc.close();
-			
-			PrintWriter pw = new PrintWriter("src/output/pdf.txt");
-			pw.print(parsedText);
-			pw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		if (cosDoc != null)
+			cosDoc.close();
+		if (pdDoc != null)
+			pdDoc.close();
+
+		PrintWriter pw = new PrintWriter("src/output/pdf.txt");
+		pw.print(parsedText);
+		pw.close();
 	}
 
 }
