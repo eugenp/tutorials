@@ -14,7 +14,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>jetty-ex</module>
-        <module>tomcat-ex</module>
+        <module>jetty-session-demo</module>
+        <module>tomcat-session-demo</module>
     </modules>
 </project>
