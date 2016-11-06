@@ -1,32 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
-    <Appenders>
-        # Console appender
-        <Console name="stdout" target="SYSTEM_OUT">
-            # Pattern of log message for console appender
-            <PatternLayout pattern="Log4j2 - %d{yyyy-MM-dd HH:mm:ss} %p %m owner=%X{transaction.owner} creation=%X{transaction.createdAt}%n"/>
-        </Console>
+	<Appenders>
+		<Console name="stdout" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%-4r [%t] %5p %c{1} - %m - tx.id=%X{transaction.id} tx.owner=%X{transaction.owner}%n" />
+		</Console>
+	</Appenders>
 
-        # File appender
-        <!--  
-        
-        <File name="fout" fileName="log4j/target/baeldung-log4j2.log" immediateFlush="false" append="false">
-            # Pattern of log message for file appender
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
-        </File>
-        -->
-    </Appenders>
+	<Loggers>
+		<Logger name="com.baeldung.log4j2" level="TRACE" />
 
-    <Loggers>
-        # Override log level for specified package
-        <Logger name="com.baeldung.log4j2" level="TRACE"/>
-
-        <AsyncRoot level="DEBUG">
-            <AppenderRef ref="stdout"/>
-            <!--  
-            
-            <AppenderRef ref="fout"/>
-            -->
-        </AsyncRoot>
-    </Loggers>
+		<AsyncRoot level="DEBUG">
+			<AppenderRef ref="stdout" />
+		</AsyncRoot>
+	</Loggers>
 </Configuration>
