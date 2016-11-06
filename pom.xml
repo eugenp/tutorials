@@ -132,6 +132,7 @@
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>        
         <module>spring-security-x509</module>
+        <module>spring-session</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
