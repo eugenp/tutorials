@@ -9,21 +9,20 @@ public abstract class DelegateBusiness {
 		this.delegate = delegate;
 	}
 	
-
 	public DelegateBusiness() {
 		this( new DefaultBusinessService() );
 	}
 
-	public boolean transfer(Long amount) {
-		preTransfer();
+	public boolean transfer(long amount) {
+		preTransfer(amount);
 		boolean outcome = delegate.transfer(amount);
-		postTransfer(outcome);
+		postTransfer(amount, outcome);
 		return outcome;
 	}
 
-	abstract protected void postTransfer(boolean outcome);
+	abstract protected void postTransfer(long amount, boolean outcome);
 
-	abstract protected void preTransfer();
+	abstract protected void preTransfer(long amount);
 	
 	
 	

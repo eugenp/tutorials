@@ -2,18 +2,18 @@ package com.baeldung.mdc;
 
 import java.util.Date;
 
-public class TransactionContext {
+public class Transaction {
 	
 	private String transactionId;
 	private String owner;
 	private Date createdAt;
 	private Long amount;
 	
-	public TransactionContext(String transactionId, String owner) {
+	public Transaction(String transactionId, String owner, long amount) {
 		this.transactionId = transactionId;
 		this.owner = owner;
 		this.createdAt = new Date();
-		this.amount = (long) (Math.random()*100);
+		this.amount = amount;
 	}
 
 	public String getOwner() {

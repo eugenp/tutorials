@@ -1,15 +1,19 @@
 package com.baeldung.mdc;
 
+/**
+ * A fake {@link BusinessService} simulating an actual one.
+ */
 public class DefaultBusinessService implements BusinessService {
 
-	@Override
-	public boolean transfer(Long amount) {
+	public boolean transfer(long amount) {
 		try {
-			Thread.sleep((long) (Math.random()*1000));
+			// let's pause randomly to properly simulate an actual system. 
+			Thread.sleep((long) (500 + Math.random()*500));
 		} catch (InterruptedException e) {
-			// should not happen
+			// should never happen
 		}
-		return Math.random() >= 0.5;
+		// let's simulate both failing and successful transfers 
+		return Math.random() >= 0.25;
 	}
 
 }
