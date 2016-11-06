@@ -13,40 +13,44 @@
 </head>
 <body>
     <div>
-        <h3>Create Email</h3>
-        <form:form method="POST" modelAttribute="mailObject">
+        <h3>${headerText}</h3>
+        <form:form method="POST" modelAttribute="mailObject" >
             <fieldset>
-                <table cellspacing="0">
-                    <tr>
-                        <th><label for="input_to">To</label></th>
-                        <td><form:input path="to" id="input_to" type="email"/>
-                            <small>Enter email address</small><br/>
-                            <form:errors path="to" cssStyle="color:red;font-size:small"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="input_subject">Subject</label></th>
-                        <td><form:input path="subject" id="input_subject"/>
-                            <small>Enter the subject</small><br/>
-                            <form:errors path="subject" cssStyle="color:red;font-size:small"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="input_text">Message:</label></th>
-                        <td><form:textarea path="text"
-                                         rows="5" cols="50"
-                                         id="input_text"/>
-                            <small>Enter message text</small><br/>
-                            <form:errors path="text" cssStyle="color:red;font-size:small"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>
-                            <input type="submit" value="Send">
-                        </td>
-                    </tr>
-                </table>
+                <div style="float:left;">
+                    <table cellspacing="0" width="300">
+                        <tr>
+                            <th><label for="input_to">To</label></th>
+                            <td><form:input path="to" id="input_to" type="email"/>
+                                <small>Enter email address</small><br/>
+                                <form:errors path="to" cssStyle="color:red;font-size:small"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="input_subject">Subject</label></th>
+                            <td><form:input path="subject" id="input_subject"/>
+                                <small>Enter the subject</small><br/>
+                                <form:errors path="subject" cssStyle="color:red;font-size:small"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><label for="input_text">${messageLabel}:</label></th>
+                            <td><form:textarea path="text"
+                                             rows="5" cols="50"
+                                             id="input_text"/>
+                                <form:errors path="text" cssStyle="color:red;font-size:small"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <input type="submit" value="Send">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="float:left; word-wrap: break-word; margin-left: 50px; width: 400px; color: grey">
+                    ${additionalInfo}
+                </div>
             </fieldset>
         </form:form>
     </div>
