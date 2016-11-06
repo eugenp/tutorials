@@ -16,4 +16,9 @@ public class JettyWebApplication {
         public String helloJetty() {
                 return "hello Jetty";
         }
+
+        @RequestMapping("/test")
+        public String lksjdf() {
+                return "";
+        }
 }
