@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CompanyController {
 
-	@RequestMapping(value = "/companyRest", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Company getCompanyRest() {
-		final Company company = new Company(1, "Xpto");
-		return company;
-	}
+    @RequestMapping(value = "/companyRest", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Company getCompanyRest() {
+        final Company company = new Company(1, "Xpto");
+        return company;
+    }
 }

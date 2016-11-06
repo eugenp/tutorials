@@ -41,7 +41,7 @@ public class SecurityWithCsrfConfig extends WebSecurityConfigurerAdapter {
         // @formatter:off
         http
         .authorizeRequests()
-        .antMatchers("/admin/*").hasAnyRole("ROLE_ADMIN")
+        .antMatchers("/auth/admin/*").hasAnyRole("ROLE_ADMIN")
         .anyRequest().authenticated()
         .and()
         .httpBasic()

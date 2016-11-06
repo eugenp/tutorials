@@ -20,13 +20,13 @@ public class Student {
     private String id;
     @Field
     @NotNull
-    @Size(min=1, max=20)
-    @Pattern(regexp=NAME_REGEX)
+    @Size(min = 1, max = 20)
+    @Pattern(regexp = NAME_REGEX)
     private String firstName;
     @Field
     @NotNull
-    @Size(min=1, max=20)
-    @Pattern(regexp=NAME_REGEX)
+    @Size(min = 1, max = 20)
+    @Pattern(regexp = NAME_REGEX)
     private String lastName;
     @Field
     @Past
@@ -38,8 +38,9 @@ public class Student {
     private DateTime updated;
     @Version
     private long version;
-    
-    public Student() {}
+
+    public Student() {
+    }
 
     public Student(String id, String firstName, String lastName, DateTime dateOfBirth) {
         this.id = id;
@@ -51,36 +52,47 @@ public class Student {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public DateTime getDateOfBirth() {
         return dateOfBirth;
     }
+
     public void setDateOfBirth(DateTime dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
     public DateTime getCreated() {
         return created;
     }
+
     public void setCreated(DateTime created) {
         this.created = created;
     }
+
     public DateTime getUpdated() {
         return updated;
     }
+
     public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
@@ -88,16 +100,16 @@ public class Student {
     @Override
     public int hashCode() {
         int hash = 1;
-        if(id != null) {
+        if (id != null) {
             hash = hash * 31 + id.hashCode();
         }
-        if(firstName != null) {
+        if (firstName != null) {
             hash = hash * 31 + firstName.hashCode();
         }
-        if(lastName != null) {
+        if (lastName != null) {
             hash = hash * 31 + lastName.hashCode();
         }
-        if(dateOfBirth != null) {
+        if (dateOfBirth != null) {
             hash = hash * 31 + dateOfBirth.hashCode();
         }
         return hash;
@@ -105,8 +117,10 @@ public class Student {
 
     @Override
     public boolean equals(Object obj) {
-        if((obj == null) || (obj.getClass() != this.getClass())) return false;
-        if(obj == this) return true;
+        if ((obj == null) || (obj.getClass() != this.getClass()))
+            return false;
+        if (obj == this)
+            return true;
         Student other = (Student) obj;
         return this.hashCode() == other.hashCode();
     }

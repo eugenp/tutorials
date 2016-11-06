@@ -18,7 +18,5 @@ public interface MovieRepository extends GraphRepository<Movie> {
     Collection<Movie> findByTitleContaining(@Param("title") String title);
 
     @Query("MATCH (m:Movie)<-[:ACTED_IN]-(a:Person) RETURN m.title as movie, collect(a.name) as cast LIMIT {limit}")
-    List<Map<String,Object>> graph(@Param("limit") int limit);
+    List<Map<String, Object>> graph(@Param("limit") int limit);
 }
-
-

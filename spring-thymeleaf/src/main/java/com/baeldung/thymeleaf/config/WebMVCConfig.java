@@ -1,18 +1,30 @@
 package com.baeldung.thymeleaf.config;
 
-import com.baeldung.thymeleaf.formatter.NameFormatter;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import com.baeldung.thymeleaf.formatter.NameFormatter;
+import com.baeldung.thymeleaf.utils.ArrayUtil;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
+
 
 @Configuration
 @EnableWebMvc
@@ -21,36 +33,77 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
  * Java configuration file that is used for Spring MVC and Thymeleaf
  * configurations
  */
-public class WebMVCConfig extends WebMvcConfigurerAdapter {
+public class WebMVCConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
-	@Bean
-	@Description("Thymeleaf Template Resolver")
-	public ServletContextTemplateResolver templateResolver() {
-		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
-		templateResolver.setPrefix("/WEB-INF/views/");
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode("HTML5");
+	private ApplicationContext applicationContext;
 
-		return templateResolver;
+	public void setApplicationContext(ApplicationContext applicationContext) {
+		this.applicationContext = applicationContext;
 	}
 
 	@Bean
-	@Description("Thymeleaf Template Engine")
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-
-		return templateEngine;
+	public ViewResolver htmlViewResolver() {
+		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+		resolver.setTemplateEngine(templateEngine(htmlTemplateResolver()));
+		resolver.setContentType("text/html");
+		resolver.setCharacterEncoding("UTF-8");
+		resolver.setViewNames(ArrayUtil.array("*.html"));
+		return resolver;
 	}
-
+	
 	@Bean
-	@Description("Thymeleaf View Resolver")
-	public ThymeleafViewResolver viewResolver() {
-		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-		viewResolver.setTemplateEngine(templateEngine());
-		viewResolver.setOrder(1);
-		return viewResolver;
-	}
+    public ViewResolver javascriptViewResolver() {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine(javascriptTemplateResolver()));
+        resolver.setContentType("application/javascript");
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setViewNames(ArrayUtil.array("*.js"));
+        return resolver;
+    }
+	
+	@Bean
+    public ViewResolver plainViewResolver() {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine(plainTemplateResolver()));
+        resolver.setContentType("text/plain");
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setViewNames(ArrayUtil.array("*.txt"));
+        return resolver;
+    }
+
+	private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.addDialect(new LayoutDialect(new GroupingStrategy()));
+        engine.setTemplateResolver(templateResolver);
+        return engine;
+    }
+
+    private ITemplateResolver htmlTemplateResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setCacheable(false);
+        resolver.setTemplateMode(TemplateMode.HTML);
+        return resolver;
+    }
+    
+    private ITemplateResolver javascriptTemplateResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/js/");
+        resolver.setCacheable(false);
+        resolver.setTemplateMode(TemplateMode.JAVASCRIPT);
+        return resolver;
+    }
+    
+    private ITemplateResolver plainTemplateResolver() {
+        SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
+        resolver.setApplicationContext(applicationContext);
+        resolver.setPrefix("/WEB-INF/txt/");
+        resolver.setCacheable(false);
+        resolver.setTemplateMode(TemplateMode.TEXT);
+        return resolver;
+    }
 
 	@Bean
 	@Description("Spring Message Resolver")

@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FooService {
-    
+
     @Autowired
     @FormatterType("Foo")
     private Formatter formatter;
-    
-    public String doStuff(){
+
+    public String doStuff() {
         return formatter.format();
     }
-    
+
 }
