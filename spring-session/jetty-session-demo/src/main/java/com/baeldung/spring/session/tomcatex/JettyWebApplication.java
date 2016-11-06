@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class JettyWebApplication {
-        public static void main(String[] args) {
-                SpringApplication.run(JettyWebApplication.class, args);
-        }
+    public static void main(String[] args) {
+        SpringApplication.run(JettyWebApplication.class, args);
+    }
 
-        @RequestMapping
-        public String helloJetty() {
-                return "hello Jetty";
-        }
+    @RequestMapping
+    public String helloJetty() {
+        return "hello Jetty";
+    }
 
-        @RequestMapping("/test")
-        public String lksjdf() {
-                return "";
-        }
+    @RequestMapping("/test")
+    public String lksjdf() {
+        return "";
+    }
 }
