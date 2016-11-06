@@ -24,7 +24,6 @@ public class EmailServiceImpl implements EmailService {
     public void sendSimpleMessage(String to, String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-
             message.setTo(to);
             message.setSubject(subject);
             message.setText(text);
@@ -40,7 +39,7 @@ public class EmailServiceImpl implements EmailService {
                                                String subject,
                                                SimpleMailMessage template,
                                                String ...templateArgs) {
-        String text = String.format(template.getText(), templateArgs);
+        String text = String.format(template.getText(), templateArgs);  
         sendSimpleMessage(to, subject, text);
     }
 

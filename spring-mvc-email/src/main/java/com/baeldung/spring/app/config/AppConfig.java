@@ -46,16 +46,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public SimpleMailMessage templateOrderMessage() {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setText("Dear %s %s, \nthank you for placing order.\n" +
-                "\n" +
-                "Sincerely yours,\n" +
-                "Yourcompany.");
-        return message;
-    }
-
-    @Bean
     public SimpleMailMessage templateSimpleMessage() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setText("This is the test email template for your email:\n%s\n");
