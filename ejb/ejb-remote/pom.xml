@@ -10,7 +10,7 @@
 	<artifactId>ejb-remote</artifactId>
 	<packaging>ejb</packaging>
 
-	<name>ejb-remote</name>
+	<!-- <name>ejb-remote</name> -->
 	<dependencies>
 		<dependency>
 			<groupId>org.jboss.spec.javax.ejb</groupId>
@@ -20,6 +20,20 @@
 	</dependencies>
 
 	<build>
-		<finalName>ejb-remote</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.1.0.Alpha5</version>
+				<configuration>
+					<hostname>127.0.0.1</hostname>
+					<port>9990</port>
+					<username>pritamtest</username>
+					<password>iamtheki9g</password>
+					<filename>${build.finalName}.jar</filename>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- <finalName>ejb-remote</finalName> -->
 	</build>
 </project>
