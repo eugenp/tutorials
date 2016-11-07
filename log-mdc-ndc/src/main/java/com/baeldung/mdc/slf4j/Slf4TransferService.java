@@ -1,13 +1,13 @@
-package com.baeldung.mdc.log4j2;
+package com.baeldung.mdc.slf4j;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.baeldung.mdc.TransferService;
 
-public class Log4J2BusinessService extends TransferService {
+final class Slf4TransferService extends TransferService {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(Slf4TransferService.class);
 
     @Override
     protected void beforeTransfer(long amount) {

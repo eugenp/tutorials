@@ -9,7 +9,7 @@ import com.baeldung.mdc.log4j.Log4JRunnable;
 import com.baeldung.mdc.log4j2.Log4J2Runnable;
 import com.baeldung.mdc.slf4j.Slf4jRunnable;
 
-public class GenericApp {
+public class TransferDemo {
 
     public static void main(String[] args) {
 
@@ -17,7 +17,7 @@ public class GenericApp {
         TransactionFactory transactionFactory = new TransactionFactory();
 
         for (int i = 0; i < 10; i++) {
-            final Transaction tx = transactionFactory.newInstance();
+            Transfer tx = transactionFactory.newInstance();
             
             //Runnable task = new Log4JRunnable(tx);
             //Runnable task = new Log4J2Runnable(tx);

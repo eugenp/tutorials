@@ -4,9 +4,9 @@ import org.apache.log4j.Logger;
 
 import com.baeldung.mdc.TransferService;
 
-public class Log4JBusinessService extends TransferService {
+public class Log4JTransferService extends TransferService {
 
-    private Logger logger = Logger.getLogger(Log4JBusinessService.class);
+    private Logger logger = Logger.getLogger(Log4JTransferService.class);
 
     @Override
     protected void beforeTransfer(long amount) {

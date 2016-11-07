@@ -1,19 +1,19 @@
 package com.baeldung.mdc;
 
-public class Transaction {
+public class Transfer {
 
     private String transactionId;
-    private String owner;
+    private String sender;
     private Long amount;
 
-    public Transaction(String transactionId, String owner, long amount) {
+    public Transfer(String transactionId, String sender, long amount) {
         this.transactionId = transactionId;
-        this.owner = owner;
+        this.sender = sender;
         this.amount = amount;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getSender() {
+        return sender;
     }
 
     public String getTransactionId() {

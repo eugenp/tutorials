@@ -1,7 +1,7 @@
 package com.baeldung.mdc;
 
 /**
- * A fake {@link IBusinessService} simulating an actual one.
+ * A fake transfer service simulating an actual one.
  */
 public abstract class TransferService {
 
