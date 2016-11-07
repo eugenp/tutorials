@@ -3,9 +3,9 @@ package com.baeldung.mdc.log4j2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.baeldung.mdc.BusinessService;
+import com.baeldung.mdc.TransferService;
 
-public class Log4J2BusinessService extends BusinessService {
+public class Log4J2BusinessService extends TransferService {
 
     private static final Logger logger = LogManager.getLogger();
 

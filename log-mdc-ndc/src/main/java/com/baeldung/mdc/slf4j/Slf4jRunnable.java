@@ -15,7 +15,6 @@ public class Slf4jRunnable implements Runnable {
 
         MDC.put("transaction.id", tx.getTransactionId());
         MDC.put("transaction.owner", tx.getOwner());
-        MDC.put("transaction.createdAt", tx.getCreatedAt().toString());
 
         new Slf4jBusinessService().transfer(tx.getAmount());
 

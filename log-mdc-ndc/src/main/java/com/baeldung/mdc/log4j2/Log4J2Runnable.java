@@ -15,9 +15,7 @@ public class Log4J2Runnable implements Runnable {
     public void run() {
 
         ThreadContext.put("transaction.id", tx.getTransactionId());
-        ThreadContext.put("transaction.id", tx.getTransactionId());
         ThreadContext.put("transaction.owner", tx.getOwner());
-        ThreadContext.put("transaction.createdAt", tx.getCreatedAt().toString());
 
         log4j2BusinessService.transfer(tx.getAmount());
 

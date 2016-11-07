@@ -3,9 +3,9 @@ package com.baeldung.mdc.slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baeldung.mdc.BusinessService;
+import com.baeldung.mdc.TransferService;
 
-final class Slf4jBusinessService extends BusinessService {
+final class Slf4jBusinessService extends TransferService {
 
     private static final Logger logger = LoggerFactory.getLogger(Slf4jBusinessService.class);
 
