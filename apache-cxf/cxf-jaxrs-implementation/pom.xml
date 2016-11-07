@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <cxf.version>3.1.7</cxf.version>
         <httpclient.version>4.5.2</httpclient.version>
+        <surefire.version>2.19.1</surefire.version>        
     </properties>
     <build>
         <plugins>
@@ -28,7 +29,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/ServiceTest</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>

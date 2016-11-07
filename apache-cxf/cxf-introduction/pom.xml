@@ -11,6 +11,7 @@
     </parent>
     <properties>
         <cxf.version>3.1.6</cxf.version>
+        <surefire.version>2.19.1</surefire.version>        
     </properties>
     <build>
         <plugins>
@@ -26,7 +27,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/StudentTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -44,4 +45,5 @@
             <version>${cxf.version}</version>
         </dependency>
     </dependencies>
+
 </project>

@@ -3,6 +3,7 @@ package com.baeldung.cxf.jaxrs.implementation;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class Course {
     private int id;
     private String name;
-    private List<Student> students;
+    private List<Student> students = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -35,31 +36,51 @@ public class Course {
     public void setStudents(List<Student> students) {
         this.students = students;
     }
-    
+
     @GET
-    @Path("{studentOrder}")
-    public Student getStudent(@PathParam("studentOrder")int studentOrder) {
-        return students.get(studentOrder);
+    @Path("{studentId}")
+    public Student getStudent(@PathParam("studentId") int studentId) {
+        return findById(studentId);
     }
-    
+
     @POST
-    public Response postStudent(Student student) {
-        if (students == null) {
-            students = new ArrayList<>();
+    public Response createStudent(Student student) {
+        for (Student element : students) {
+            if (element.getId() == student.getId()) {
+                return Response.status(Response.Status.CONFLICT).build();
+            }
         }
         students.add(student);
         return Response.ok(student).build();
     }
-    
+
     @DELETE
-    @Path("{studentOrder}")
-    public Response deleteStudent(@PathParam("studentOrder") int studentOrder) {
-        Student student = students.get(studentOrder);
-        if (student != null) {
-            students.remove(studentOrder);
-            return Response.ok().build();
-        } else {
-            return Response.notModified().build();
+    @Path("{studentId}")
+    public Response deleteStudent(@PathParam("studentId") int studentId) {
+        Student student = findById(studentId);
+        if (student == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
+        students.remove(student);
+        return Response.ok().build();
+    }
+
+    private Student findById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id + name.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (obj instanceof Course) && (id == ((Course) obj).getId()) && (name.equals(((Course) obj).getName()));
     }
 }

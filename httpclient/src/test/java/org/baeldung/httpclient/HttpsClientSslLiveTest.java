@@ -1,21 +1,23 @@
 package org.baeldung.httpclient;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.security.cert.X509Certificate;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.conn.ssl.SSLContextBuilder;
 import org.apache.http.conn.ssl.SSLContexts;
@@ -42,7 +44,7 @@ public class HttpsClientSslLiveTest {
     // tests
 
     @Test(expected = SSLException.class)
-    public final void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
+    public final void whenHttpsUrlIsConsumed_thenException() throws IOException {
         final CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
@@ -53,12 +55,7 @@ public class HttpsClientSslLiveTest {
     @SuppressWarnings("deprecation")
     @Test
     public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
-        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
-            @Override
-            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
-                return true;
-            }
-        };
+        final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
         final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
         final SchemeRegistry registry = new SchemeRegistry();
         registry.register(new Scheme("https", 443, sf));
@@ -75,12 +72,7 @@ public class HttpsClientSslLiveTest {
 
     @Test
     public final void givenHttpClientAfter4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
-        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
-            @Override
-            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
-                return true;
-            }
-        };
+        final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 
         final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
@@ -105,6 +97,27 @@ public class HttpsClientSslLiveTest {
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+    }
+
+    @Test
+    public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
+
+        final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
+
+        SSLContext sslContext = null;
+        try {
+            sslContext = new SSLContextBuilder().loadTrustMaterial(null, acceptingTrustStrategy).build();
+
+        } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
+            e.printStackTrace();
+        }
+
+        final CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
+        final HttpGet httpGet = new HttpGet(HOST_WITH_SSL);
+        httpGet.setHeader("Accept", "application/xml");
+
+        final HttpResponse response = client.execute(httpGet);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
