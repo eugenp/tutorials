@@ -1,23 +1,14 @@
 package org.baeldung.okhttp;
 
+import okhttp3.*;
+import org.junit.Test;
+
+import java.io.IOException;
+
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 
-import java.io.IOException;
-
-import org.junit.Test;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
-//@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/api-servlet.xml")
 public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
