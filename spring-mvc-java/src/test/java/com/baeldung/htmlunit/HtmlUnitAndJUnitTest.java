@@ -8,15 +8,23 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class HtmlUnitAndJUnitTest {
 
+	@Before
+	public void init() throws Exception {
+	    webClient = new WebClient();
+	}
+
+	@After
+	public void close() throws Exception {
+	    webClient.close();
+	}
+
 	@Test
-	public void givenAClient_whenEnteringBaeldung_thenPageTitleIsCorrect() throws Exception {
-		try (final WebClient webClient = new WebClient()) {
-
-			webClient.getOptions().setThrowExceptionOnScriptError(false);
-
-			final HtmlPage page = webClient.getPage("http://www.baeldung.com/");
-			Assert.assertEquals("Baeldung | Java, Spring and Web Development tutorials", page.getTitleText());
-		}
+	public void givenAClient_whenEnteringBaeldung_thenPageTitleIsOk()
+	  throws Exception {
+	    HtmlPage page = webClient.getPage("http://www.baeldung.com/");
+	    Assert.assertEquals(
+	      "Baeldung | Java, Spring and Web Development tutorials",
+		page.getTitleText());
 	}
 
 }
