@@ -26,54 +26,36 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 @ContextConfiguration(classes = { TestConfig.class })
 public class HtmlUnitAndSpringTest {
 
-	@Autowired
-	private WebApplicationContext wac;
+    @Autowired
+    private WebApplicationContext wac;
 
-	private WebClient webClient;
+    private WebClient webClient;
 
-	@Before
-	public void setup() {
-		webClient = MockMvcWebClientBuilder.webAppContextSetup(wac).build();
-	}
+    @Before
+    public void setup() {
+        webClient = MockMvcWebClientBuilder
+            .webAppContextSetup(wac).build();
+    }
 
-	@Test
-	@Ignore
-	public void givenAMessage_whenSent_thenItShows() {
-		final String text = "Hello world!";
-		HtmlPage page;
+    @Test
+    public void givenAMessage_whenSent_thenItShows() throws Exception {
+        String text = "Hello world!";
+        HtmlPage page;
 
-		try {
+        String url = "http://localhost/message/showForm";
+        page = webClient.getPage(url);
+            
+        HtmlTextInput messageText = page.getHtmlElementById("message");
+        messageText.setValueAttribute(text);
 
-			page = webClient.getPage("http://localhost/message/showForm");
-			System.out.println(page.asXml());
+        HtmlForm form = page.getForms().get(0);
+        HtmlSubmitInput submit = form.getOneHtmlElementByAttribute(
+          "input", "type", "submit");
+        HtmlPage newPage = submit.click();
 
-			final HtmlTextInput messageText = page.getHtmlElementById("message");
-			messageText.setValueAttribute(text);
+        String receivedText = newPage.getHtmlElementById("received")
+            .getTextContent();
 
-			final HtmlForm form = page.getForms().get(0);
-			final HtmlSubmitInput submit = form.getOneHtmlElementByAttribute("input", "type", "submit");
-			final HtmlPage newPage = submit.click();
-
-			final String receivedText = newPage.getHtmlElementById("received").getTextContent();
-
-			Assert.assertEquals(receivedText, text);
-			System.out.println(newPage.asXml());
-
-		} catch (FailingHttpStatusCodeException | IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@Test
-	public void givenAClient_whenEnteringBaeldung_thenPageTitleIsCorrect() throws Exception {
-		try (final WebClient client = new WebClient()) {
-
-			webClient.getOptions().setThrowExceptionOnScriptError(false);
-
-			final HtmlPage page = webClient.getPage("http://www.baeldung.com/");
-			Assert.assertEquals("Baeldung | Java, Spring and Web Development tutorials", page.getTitleText());
-		}
-	}
-
+        Assert.assertEquals(receivedText, text);     
+    }
 }
