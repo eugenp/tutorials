@@ -80,7 +80,7 @@ public class Bar implements Serializable {
     @Column(name = "timestamp")
     private long timestamp;
 
-    @Column(name = "created_date")
+    @Column(name = "created_date", updatable = false, nullable = false)
     @CreatedDate
     private long createdDate;
 
