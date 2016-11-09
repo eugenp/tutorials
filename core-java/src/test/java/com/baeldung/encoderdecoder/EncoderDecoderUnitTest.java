@@ -32,7 +32,6 @@ public class EncoderDecoderUnitTest {
         return encoded;
     }
 
-
     private String decode(String value) {
         String decoded = null;
         try {
@@ -59,9 +58,7 @@ public class EncoderDecoderUnitTest {
         requestParams.put("key2", "value@!$2");
         requestParams.put("key3", "value%3");
 
-        String encodedURL = requestParams.keySet().stream()
-          .map(key -> key + "=" + encodeValue(requestParams.get(key)))
-          .collect(joining("&", "http://www.baeldung.com?", ""));
+        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com?", ""));
 
         Assert.assertThat(testUrl, CoreMatchers.is(encodedURL));
     }
@@ -72,12 +69,9 @@ public class EncoderDecoderUnitTest {
 
         String query = url.getQuery();
 
-        String decodedQuery = Arrays.stream(query.split("&"))
-          .map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1]))
-          .collect(joining("&"));
+        String decodedQuery = Arrays.stream(query.split("&")).map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1])).collect(joining("&"));
 
-        Assert.assertEquals(
-          "http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
+        Assert.assertEquals("http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
     }
 
 }

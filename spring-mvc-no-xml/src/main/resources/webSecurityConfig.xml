@@ -5,7 +5,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd"
 >
 
-    <http access-denied-page="/access-denied.html" use-expressions="true">
+    <http use-expressions="true">
+    	<access-denied-handler error-page="/access-denied.html" />
         <intercept-url pattern="/access-denied*" access="hasAnyRole('ROLE_LOCATION_WRITE','ROLE_POLYGON_WRITE')"/>
         <intercept-url pattern="/admin/**" access="hasAnyRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/organization/**" access="hasAnyRole('ROLE_ORGANIZATION')"/>
