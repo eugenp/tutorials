@@ -9,7 +9,6 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class FailoverSyslogConsoleAppenderTest {
-
     @Rule
     public LoggerContextRule contextRule = 
       new LoggerContextRule("log4j2-failover-syslog-console-appender_pattern-layout.xml");

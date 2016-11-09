@@ -16,7 +16,6 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class JDBCAppenderTest {
-
     @Rule
     public LoggerContextRule contextRule = new LoggerContextRule("log4j2-jdbc-appender.xml");
 
