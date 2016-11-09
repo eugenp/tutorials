@@ -14,12 +14,13 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class AsyncFileAppenderUsingJsonLayoutTest {
-
     @Rule
-    public LoggerContextRule contextRule = new LoggerContextRule("log4j2-async-file-appender_json-layout.xml");
+    public LoggerContextRule contextRule =
+      new LoggerContextRule("log4j2-async-file-appender_json-layout.xml");
 
     @Test
-    public void givenLoggerWithAsyncConfig_shouldLogToJsonFile() throws Exception {
+    public void givenLoggerWithAsyncConfig_shouldLogToJsonFile()
+      throws Exception {
         Logger logger = contextRule.getLogger(getClass().getSimpleName());
         final int count = 88;
         for (int i = 0; i < count; i++) {

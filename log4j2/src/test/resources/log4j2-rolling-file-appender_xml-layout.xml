@@ -6,7 +6,7 @@
                      filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
             <XMLLayout/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="256 kB"/>
+                <SizeBasedTriggeringPolicy size="17 kB"/>
             </Policies>
         </RollingFile>
     </Appenders>

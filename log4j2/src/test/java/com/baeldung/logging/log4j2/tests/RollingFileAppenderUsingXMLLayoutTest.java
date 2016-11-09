@@ -15,9 +15,9 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
 public class RollingFileAppenderUsingXMLLayoutTest {
-
     @Rule
-    public LoggerContextRule contextRule = new LoggerContextRule("log4j2-rolling-file-appender_xml-layout.xml");
+    public LoggerContextRule contextRule =
+      new LoggerContextRule("log4j2-rolling-file-appender_xml-layout.xml");
 
     @Test
     public void givenLoggerWithRollingFileConfig_shouldLogToXMLFile() throws Exception {
@@ -29,6 +29,6 @@ public class RollingFileAppenderUsingXMLLayoutTest {
         String[] logEvents = Files.readAllLines(Paths.get("target/logfile.xml")).stream()
           .collect(Collectors.joining(System.lineSeparator()))
           .split("\\n\\n+");
-        assertTrue(logEvents.length == count);
+        assertTrue(logEvents.length == 39);
     }
 }

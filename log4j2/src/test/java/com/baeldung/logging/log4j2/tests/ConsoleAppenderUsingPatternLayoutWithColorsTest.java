@@ -12,15 +12,17 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class ConsoleAppenderUsingPatternLayoutWithColorsTest {
-
     @Rule
-    public LoggerContextRule contextRule = new LoggerContextRule("log4j2-console-appender_pattern-layout.xml");
+    public LoggerContextRule contextRule =
+      new LoggerContextRule("log4j2-console-appender_pattern-layout.xml");
 
     @Test
-    public void givenLoggerWithConsoleConfig_shouldLogToConsoleInColors() throws Exception {
+    public void givenLoggerWithConsoleConfig_shouldLogToConsoleInColors()
+      throws Exception {
         Logger logger = contextRule.getLogger(getClass().getSimpleName());
         logger.trace("This is a colored message at TRACE level.");
-        logger.debug("This is a colored message at DEBUG level. This is the minimum visible level.");
+        logger.debug("This is a colored message at DEBUG level. " +
+          "This is the minimum visible level.");
         logger.info("This is a colored message at INFO level.");
         logger.warn("This is a colored message at WARN level.");
         Exception e = new RuntimeException("This is only a test!");
