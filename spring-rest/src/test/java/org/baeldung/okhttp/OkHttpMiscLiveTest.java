@@ -37,7 +37,7 @@ public class OkHttpMiscLiveTest {
         response.close();
     }
 
-    @Test
+    @Test(expected = IOException.class)
     public void whenCancelRequest_thenCorrect() throws IOException {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -49,30 +49,22 @@ public class OkHttpMiscLiveTest {
           .build();
 
         final int seconds = 1;
-
         final long startNanos = System.nanoTime();
+
         final Call call = client.newCall(request);
 
         // Schedule a job to cancel the call in 1 second.
-        executor.schedule(new Runnable() {
-            public void run() {
+        executor.schedule(() -> {
 
-                logger.debug("Canceling call: " + (System.nanoTime() - startNanos) / 1e9f);
-                call.cancel();
-                logger.debug("Canceled call: " + (System.nanoTime() - startNanos) / 1e9f);
-            }
+        	logger.debug("Canceling call: " + (System.nanoTime() - startNanos) / 1e9f);
+            call.cancel();
+            logger.debug("Canceled call: " + (System.nanoTime() - startNanos) / 1e9f);
+
         }, seconds, TimeUnit.SECONDS);
 
-        try {
-
-            logger.debug("Executing call: " + (System.nanoTime() - startNanos) / 1e9f);
-            Response response = call.execute();
-            logger.debug("Call was expected to fail, but completed: " + (System.nanoTime() - startNanos) / 1e9f, response);
-
-        } catch (IOException e) {
-
-            logger.debug("Call failed as expected: " + (System.nanoTime() - startNanos) / 1e9f, e);
-        }
+        logger.debug("Executing call: " + (System.nanoTime() - startNanos) / 1e9f);
+        Response response = call.execute();
+        logger.debug("Call completed: " + (System.nanoTime() - startNanos) / 1e9f, response);
     }
 
     @Test

@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung.samples.spring.integration</groupId>
-	<artifactId>baeldungSIsample</artifactId>
+	<artifactId>spring-integration</artifactId>
 	<version>1.0.0.BUILD-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Baeldung Spring Intro</name>
+	<name>spring-integration</name>
 	<url>http://www.springsource.org/spring-integration</url>
 
 	<prerequisites>
