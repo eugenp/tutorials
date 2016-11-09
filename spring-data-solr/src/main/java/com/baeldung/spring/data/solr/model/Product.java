@@ -1,30 +1,32 @@
 package com.baeldung.spring.data.solr.model;
 
-import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.solr.core.mapping.Indexed;
 import org.springframework.data.solr.core.mapping.SolrDocument;
 
 @SolrDocument(solrCoreName = "product")
 public class Product {
 
     @Id
-    @Field("id")
+    @Indexed(name="id",type = "string")
     private String id;
 
-    @Field("name")
+    
+    @Indexed(name="name",type = "string")
     private String name;
 
-    @Field("category")
+    
+    @Indexed(name="category",type = "string")
     private String category;
 
-    @Field("description")
+    
+    @Indexed(name="description",type = "string")
     private String description;
-
-    public Product(String id, String name, String category) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
+    
+    public Product(){
+        
     }
+
 
     public String getId() {
         return id;
