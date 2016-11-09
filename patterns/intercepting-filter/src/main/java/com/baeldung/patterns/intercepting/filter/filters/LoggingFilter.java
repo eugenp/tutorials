@@ -10,6 +10,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebFilter(servletNames = "intercepting-filter")
 public class LoggingFilter extends BaseFilter {
@@ -23,10 +24,10 @@ public class LoggingFilter extends BaseFilter {
     ) throws IOException, ServletException {
         chain.doFilter(request, response);
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        String username = (String) httpServletRequest.getAttribute("username");
-        if (username == null) {
-            username = "guest";
-        }
+        String username = Optional
+          .ofNullable(httpServletRequest.getAttribute("username"))
+          .map(Object::toString)
+          .orElse("guest");
         log.info("Request from '{}@{}': {}?{}", username, request.getRemoteAddr(),
           httpServletRequest.getRequestURI(), request.getParameterMap());
     }

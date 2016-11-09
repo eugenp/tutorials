@@ -1,28 +1,35 @@
 package org.baeldung.httpclient;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.*;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingClientConnectionManager;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContextBuilder;
+import org.apache.http.conn.ssl.SSLContexts;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.junit.Test;
 
 /**
  * This test requires a localhost server over HTTPS <br>
@@ -96,7 +103,7 @@ public class HttpsClientSslLiveTest {
     @Test
     public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
 
-        TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
+        final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
 
         SSLContext sslContext = null;
         try {
@@ -106,8 +113,8 @@ public class HttpsClientSslLiveTest {
             e.printStackTrace();
         }
 
-        CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
-        final HttpGet httpGet = new HttpGet("https://sesar3.geoinfogeochem.org/sample/igsn/ODP000002");
+        final CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
+        final HttpGet httpGet = new HttpGet(HOST_WITH_SSL);
         httpGet.setHeader("Accept", "application/xml");
 
         final HttpResponse response = client.execute(httpGet);
