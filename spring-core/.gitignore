@@ -5,8 +5,8 @@ RemoteSystemsTempFiles/
 bin/
 .metadata/
 docs/*.autosave
-docs/*.autosave
 .recommenders/
 build/
 .gradle/
 .DS_Store
+.idea/
