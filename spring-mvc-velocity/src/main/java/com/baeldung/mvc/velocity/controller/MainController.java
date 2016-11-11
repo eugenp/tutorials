@@ -17,13 +17,12 @@ public class MainController {
     @Autowired
     private ITutorialsService tutService;
 
-    @RequestMapping(value ="/", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcomePage() {
-       return "index";
+        return "index";
     }
-    
-    
-    @RequestMapping(value ="/list", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String listTutorialsPage(Model model) {
         List<Tutorial> list = tutService.listTutorials();
         model.addAttribute("tutorials", list);
@@ -37,6 +36,5 @@ public class MainController {
     public void setTutService(ITutorialsService tutService) {
         this.tutService = tutService;
     }
-    
-    
+
 }

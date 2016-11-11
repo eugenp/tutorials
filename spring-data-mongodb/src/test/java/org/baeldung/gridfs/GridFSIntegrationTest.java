@@ -140,7 +140,7 @@ public class GridFSIntegrationTest {
         assertNotNull(gridFSDBFiles);
         assertThat(gridFSDBFiles.size(), is(2));
     }
-    
+
     @Test
     public void givenMetadataAndFilesExist_whenFindingAllFilesOnQuery_thenFilesWithMetadataAreFoundOnQuery() {
         DBObject metaDataUser1 = new BasicDBObject();

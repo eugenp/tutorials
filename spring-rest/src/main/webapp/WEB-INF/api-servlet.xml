@@ -8,7 +8,24 @@
 
     <context:component-scan base-package="org.baeldung.web" />
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+           <!--  
+           <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+             
+           <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+		        <property name="marshaller" ref="xstreamMarshaller" />
+		        <property name="unmarshaller" ref="xstreamMarshaller" />
+		    </bean> 
+            -->     
+           <bean class="org.baeldung.config.converter.KryoHttpMessageConverter"/>  
+           <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller" />
+    
+    <!--  -->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
     <bean class="org.springframework.web.servlet.view.XmlViewResolver">

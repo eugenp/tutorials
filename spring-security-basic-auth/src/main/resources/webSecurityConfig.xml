@@ -12,6 +12,7 @@
 
         <http-basic entry-point-ref="myBasicAuthenticationEntryPoint"/>
 
+        <custom-filter after="BASIC_AUTH_FILTER" ref="myFilter" />
     </http>
 
     <authentication-manager>
@@ -21,5 +22,7 @@
             </user-service>
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id="myFilter" class="org.baeldung.security.filter.CustomFilter"/>
 
 </beans:beans>

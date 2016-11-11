@@ -21,7 +21,7 @@ public class HomeController {
 
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault());
         model.addAttribute("serverTime", dateFormat.format(new Date()));
-        return "home";
+        return "home.html";
     }
 
 }

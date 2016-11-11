@@ -135,6 +135,27 @@
         	<artifactId>el-api</artifactId>
         	<version>2.2</version>
         </dependency>
+
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derby</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbyclient</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbynet</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.derby</groupId>
+        	<artifactId>derbytools</artifactId>
+        	<version>10.12.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -173,32 +194,11 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
+                        <exclude>**/*ManualTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
                     </systemPropertyVariables>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
-                <configuration>
-                    <wait>true</wait>
-                    <container>
-                        <containerId>jetty8x</containerId>
-                        <type>embedded</type>
-                        <systemProperties>
-                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
-                        </systemProperties>
-                    </container>
-                    <configuration>
-                        <properties>
-                            <cargo.servlet.port>8082</cargo.servlet.port>
-                        </properties>
-                    </configuration>
                 </configuration>
             </plugin>
 
@@ -208,8 +208,8 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.1.1.RELEASE</org.springframework.security.version>
         <javassist.version>3.20.0-GA</javassist.version>
         <jstl.version>1.2</jstl.version>
 
