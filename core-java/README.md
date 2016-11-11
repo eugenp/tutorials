@@ -37,3 +37,5 @@
 - [Introduction to Java 8 Streams](http://www.baeldung.com/java-8-streams-introduction)
 - [Guide to the Fork/Join Framework in Java](http://www.baeldung.com/java-fork-join)
 - [How to Print Screen in Java](http://www.baeldung.com/print-screen-in-java)
+- [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
+- [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
