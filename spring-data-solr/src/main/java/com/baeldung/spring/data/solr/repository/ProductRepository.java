@@ -13,7 +13,7 @@ public interface ProductRepository extends SolrCrudRepository<Product, String> {
 
 	public List<Product> findByName(String name);
 
-	@Query("name:*?0* OR description:*?0*")
+	@Query("id:*?0* OR name:*?0*")
 	public Page<Product> findByCustomQuery(String searchTerm, Pageable pageable);
 
 	@Query(name = "Product.findByNamedQuery")
