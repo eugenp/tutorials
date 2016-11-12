@@ -36,3 +36,4 @@
 - [Introduction to Thread Pools in Java](http://www.baeldung.com/thread-pool-java-and-guava)
 - [Introduction to Java 8 Streams](http://www.baeldung.com/java-8-streams-introduction)
 - [Guide to the Fork/Join Framework in Java](http://www.baeldung.com/java-fork-join)
+- [How to Print Screen in Java](http://www.baeldung.com/print-screen-in-java)

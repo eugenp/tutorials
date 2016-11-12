@@ -95,6 +95,7 @@
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
+        <module>spring-data-solr</module>
         <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
@@ -132,6 +133,7 @@
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>        
         <module>spring-security-x509</module>
+        <module>spring-session</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
