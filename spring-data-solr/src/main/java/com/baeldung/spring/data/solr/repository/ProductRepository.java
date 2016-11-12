@@ -11,12 +11,12 @@ import com.baeldung.spring.data.solr.model.Product;
 
 public interface ProductRepository extends SolrCrudRepository<Product, String> {
 
-    public List<Product> findByName(String name);
+	public List<Product> findByName(String name);
 
-    @Query("name:*?0* OR category:*?0* OR description:*?0*")
-    public Page<Product> findByCustomQuery(String searchTerm, Pageable pageable);
+	@Query("name:*?0* OR description:*?0*")
+	public Page<Product> findByCustomQuery(String searchTerm, Pageable pageable);
 
-    @Query(name = "Product.findByNamedQuery")
-    public Page<Product> findByNamedQuery(String searchTerm, Pageable pageable);
+	@Query(name = "Product.findByNamedQuery")
+	public Page<Product> findByNamedQuery(String searchTerm, Pageable pageable);
 
 }

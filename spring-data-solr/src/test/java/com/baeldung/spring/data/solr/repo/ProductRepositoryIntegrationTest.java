@@ -35,8 +35,6 @@ public class ProductRepositoryIntegrationTest {
         final Product product = new Product();
         product.setId("P000089998");
         product.setName("Desk");
-        product.setCategory("Furniture");
-        product.setDescription("New Desk");
         productRepository.save(product);
         final Product retrievedProduct = productRepository.findOne(product.getId());
         assertEquals(product.getId(), retrievedProduct.getId());
@@ -47,15 +45,14 @@ public class ProductRepositoryIntegrationTest {
         final Product product = new Product();
         product.setId("P0001");
         product.setName("T-Shirt");
-        product.setCategory("Kitchen");
-        product.setDescription("New T-Shirt");
+   
         productRepository.save(product);
         
-        product.setCategory("Clothes");
+        product.setName("Shirt");
         productRepository.save(product);
         
         final Product retrievedProduct = productRepository.findOne(product.getId());
-        assertEquals(product.getCategory(), retrievedProduct.getCategory());
+        assertEquals(product.getName(), retrievedProduct.getName());
     }
     
     @Test
@@ -63,8 +60,6 @@ public class ProductRepositoryIntegrationTest {
         final Product product = new Product();
         product.setId("P0001");
         product.setName("Desk");
-        product.setCategory("Furniture");
-        product.setDescription("New Desk");
         productRepository.save(product);
         
         productRepository.delete(product);
@@ -79,8 +74,6 @@ public class ProductRepositoryIntegrationTest {
         Product phone = new Product();
         phone.setId("P0001");
         phone.setName("Phone");
-        phone.setCategory("Electronics");
-        phone.setDescription("New Phone");
         productRepository.save(phone);
         
         List<Product> retrievedProducts = productRepository.findByName("Phone");
@@ -89,26 +82,20 @@ public class ProductRepositoryIntegrationTest {
     
     @Test
     public void whenSearchingProductsByQuery_thenAllMatchingProductsShouldAvialble() throws Exception {
-        final Product phone = new Product();
-        phone.setId("P0001");
-        phone.setName("Smart Phone");
-        phone.setCategory("Electronics");
-        phone.setDescription("New Item");
-        productRepository.save(phone);
-        
-        final Product phoneCover = new Product();
-        phoneCover.setId("P0002");
-        phoneCover.setName("Cover");
-        phoneCover.setCategory("Phone");
-        phoneCover.setDescription("New Product");
-        productRepository.save(phoneCover);
-        
-        final Product wirelessCharger = new Product();
-        wirelessCharger.setId("P0003");
-        wirelessCharger.setName("Charging Cable");
-        wirelessCharger.setCategory("Cable");
-        wirelessCharger.setDescription("Wireless Charger for Phone");
-        productRepository.save(wirelessCharger);
+    	 final Product phone = new Product();
+         phone.setId("P0001");
+         phone.setName("Smart Phone");
+         productRepository.save(phone);
+         
+         final Product phoneCover = new Product();
+         phoneCover.setId("P0002");
+         phoneCover.setName("Phone Cover");
+         productRepository.save(phoneCover);
+         
+         final Product wirelessCharger = new Product();
+         wirelessCharger.setId("P0003");
+         wirelessCharger.setName("Phone Charging Cable");
+         productRepository.save(wirelessCharger);
         
         Page<Product> result = productRepository.findByCustomQuery("Phone", new PageRequest(0, 10));
         assertEquals(3, result.getNumberOfElements());
@@ -119,22 +106,16 @@ public class ProductRepositoryIntegrationTest {
         final Product phone = new Product();
         phone.setId("P0001");
         phone.setName("Smart Phone");
-        phone.setCategory("Electronics");
-        phone.setDescription("New Item");
         productRepository.save(phone);
         
         final Product phoneCover = new Product();
         phoneCover.setId("P0002");
-        phoneCover.setName("Cover");
-        phoneCover.setCategory("Phone");
-        phoneCover.setDescription("New Product");
+        phoneCover.setName("Phone Cover");
         productRepository.save(phoneCover);
         
         final Product wirelessCharger = new Product();
         wirelessCharger.setId("P0003");
-        wirelessCharger.setName("Charging Cable");
-        wirelessCharger.setCategory("Cable");
-        wirelessCharger.setDescription("Wireless Charger for Phone");
+        wirelessCharger.setName("Phone Charging Cable");
         productRepository.save(wirelessCharger);
         
         Page<Product> result = productRepository.findByNamedQuery("one", new PageRequest(0, 10));
