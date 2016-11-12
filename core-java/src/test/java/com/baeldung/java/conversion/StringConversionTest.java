@@ -19,7 +19,7 @@ import com.baeldung.datetime.UseLocalDateTime;
 public class StringConversionTest {
 
     @Test
-    public void whenConvertedToint_thenCorrect() {
+    public void whenConvertedToInt_thenCorrect() {
         assertEquals(Integer.parseInt("1"), 1);
     }
 
@@ -75,7 +75,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvertedToJava6Date_thenCorrect() throws ParseException {
+    public void whenConvertedToDate_thenCorrect() throws ParseException {
         String str = "15/10/2013";
         SimpleDateFormat formatter = new SimpleDateFormat("dd/M/yyyy");
         Date date1 = formatter.parse(str);
@@ -86,7 +86,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvertedToJava8Date_thenCorrect() throws ParseException {
+    public void whenConvertedToLocalDateTime_thenCorrect() throws ParseException {
         String str = "2007-12-03T10:15:30";
         LocalDateTime localDateTime = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
 
