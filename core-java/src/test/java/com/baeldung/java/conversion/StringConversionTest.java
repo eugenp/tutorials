@@ -19,84 +19,77 @@ import com.baeldung.datetime.UseLocalDateTime;
 public class StringConversionTest {
 
     @Test
-    public void givenString_whenConvertedToint_thenCorrect() {
-        String str = "1";
-        assertEquals(Integer.parseInt(str), 1);
+    public void whenConvertedToint_thenCorrect() {
+        assertEquals(Integer.parseInt("1"), 1);
     }
 
     @Test
-    public void givenString_whenConvertedToInteger_thenCorrect() {
-        String str = "12";
-        Integer number = Integer.valueOf(str);
-        assertEquals(number.intValue(), 12);
+    public void whenConvertedToInteger_thenCorrect() {
+        assertEquals(Integer.valueOf("12").equals(12), true);
     }
 
     @Test
-    public void givenString_whenConvertedTolong_thenCorrect() {
-        String str = "12345";
-        assertEquals(Long.parseLong(str), 12345);
+    public void whenConvertedTolong_thenCorrect() {
+        assertEquals(Long.parseLong("12345"), 12345);
     }
 
     @Test
-    public void givenString_whenConvertedToLong_thenCorrect() {
-        String str = "14567";
-        Long number = Long.valueOf(str);
-        assertEquals(number.longValue(), 14567);
+    public void whenConvertedToLong_thenCorrect() {
+        assertEquals(Long.valueOf("14567").equals(14567L), true);
     }
 
     @Test
-    public void givenString_whenConvertedTodouble_thenCorrect() {
-        String str = "1.4";
-        assertEquals(Double.parseDouble(str), 1.4, 0.0);
+    public void whenConvertedTodouble_thenCorrect() {
+        assertEquals(Double.parseDouble("1.4"), 1.4, 0.0);
     }
 
     @Test
-    public void givenString_whenConvertedToDouble_thenCorrect() {
-        String str = "145.67";
-        Double number = Double.valueOf(str);
-        assertEquals(number.doubleValue(), 145.67, 0.0);
+    public void whenConvertedToDouble_thenCorrect() {
+        assertEquals(Double.valueOf("145.67").equals(145.67d), true);
     }
 
     @Test
-    public void givenString_whenConvertedToByteArray_thenCorrect() throws UnsupportedEncodingException {
+    public void whenConvertedToByteArray_thenCorrect() throws UnsupportedEncodingException {
         byte[] byteArray1 = new byte[] { 'a', 'b', 'c' };
-        String str = new String(byteArray1, "UTF-8");
-        assertEquals(Arrays.equals(str.getBytes(), byteArray1), true);
+        String string = new String(byteArray1, "UTF-8");
+
+        assertEquals(Arrays.equals(string.getBytes(), byteArray1), true);
     }
 
     @Test
-    public void givenString_whenConvertedToboolean_thenCorrect() {
-        String str = "true";
-        assertEquals(Boolean.parseBoolean(str), true);
+    public void whenConvertedToboolean_thenCorrect() {
+        assertEquals(Boolean.parseBoolean("true"), true);
     }
 
     @Test
-    public void givenString_whenConvertedToBoolean_thenCorrect() {
-        String str = "true";
-        assertEquals(Boolean.valueOf(str), true);
+    public void whenConvertedToBoolean_thenCorrect() {
+        assertEquals(Boolean.valueOf("true"), true);
     }
 
     @Test
-    public void givenString_whenConvertedToCharArray_thenCorrect() {
+    public void whenConvertedToCharArray_thenCorrect() {
         String str = "hello";
         char[] charArray = { 'h', 'e', 'l', 'l', 'o' };
+
         assertEquals(Arrays.equals(charArray, str.toCharArray()), true);
     }
 
     @Test
-    public void givenString_whenConvertedToJava6Date_thenCorrect() throws ParseException {
+    public void whenConvertedToJava6Date_thenCorrect() throws ParseException {
         String str = "15/10/2013";
         SimpleDateFormat formatter = new SimpleDateFormat("dd/M/yyyy");
         Date date1 = formatter.parse(str);
         Calendar calendar = new GregorianCalendar(2013, 9, 15);
         Date date2 = calendar.getTime();
+
         assertEquals(date1.compareTo(date2), 0);
     }
 
     @Test
-    public void givenString_whenConvertedToJava8Date_thenCorrect() throws ParseException {
+    public void whenConvertedToJava8Date_thenCorrect() throws ParseException {
         String str = "2007-12-03T10:15:30";
         LocalDateTime localDateTime = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
+
         assertEquals(localDateTime.getDayOfMonth(), 3);
         assertEquals(localDateTime.getMonth(), Month.DECEMBER);
         assertEquals(localDateTime.getYear(), 2007);
