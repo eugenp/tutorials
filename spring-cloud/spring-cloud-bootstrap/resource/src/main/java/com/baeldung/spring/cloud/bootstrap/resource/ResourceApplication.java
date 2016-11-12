@@ -11,31 +11,31 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableEurekaClient
 @RestController
 public class ResourceApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(ResourceApplication.class, args);
-    }
+        public static void main(String[] args) {
+                SpringApplication.run(ResourceApplication.class, args);
+        }
 
-    @Value("${resource.returnString}")
-    private String returnString;
+        @Value("${resource.returnString}")
+        private String returnString;
 
-    @Value("${resource.user.returnString}")
-    private String userReturnString;
+        @Value("${resource.user.returnString}")
+        private String userReturnString;
 
-    @Value("${resource.admin.returnString}")
-    private String adminReturnString;
+        @Value("${resource.admin.returnString}")
+        private String adminReturnString;
 
-    @RequestMapping("/hello/cloud")
-    public String getString() {
-        return returnString;
-    }
+        @RequestMapping("/hello/cloud")
+        public String getString() {
+                return returnString;
+        }
 
-    @RequestMapping("/hello/user")
-    public String getUserString() {
-        return userReturnString;
-    }
+        @RequestMapping("/hello/user")
+        public String getUserString() {
+                return userReturnString;
+        }
 
-    @RequestMapping("/hello/admin")
-    public String getAdminString() {
-        return adminReturnString;
-    }
+        @RequestMapping("/hello/admin")
+        public String getAdminString() {
+                return adminReturnString;
+        }
 }
