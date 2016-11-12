@@ -10,8 +10,8 @@ import org.springframework.session.web.http.HttpSessionStrategy;
 @Configuration
 @EnableRedisHttpSession
 public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
-        @Bean
-        public HttpSessionStrategy httpSessionStrategy() {
-                return new HeaderHttpSessionStrategy();
-        }
+    @Bean
+    public HttpSessionStrategy httpSessionStrategy() {
+        return new HeaderHttpSessionStrategy();
+    }
 }
