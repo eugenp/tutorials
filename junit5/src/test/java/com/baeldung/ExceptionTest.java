@@ -17,7 +17,7 @@ public class ExceptionTest {
 	}
 
 	@Test
-	public void convertToIntNullParameterAssertThrows() {
+	void assertThrowsException() {
 		String str = null;
 		assertThrows(IllegalArgumentException.class, () -> {
 			Integer.valueOf(str);
