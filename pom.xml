@@ -58,6 +58,7 @@
         <module>junit5</module>
         
         <module>log4j</module>
+        <module>log-mdc</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
