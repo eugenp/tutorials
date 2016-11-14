@@ -11,6 +11,7 @@
 		// getting the public ip address from api and setting on text box
 		// ip api : https://www.ipify.org/
 		$.get( "https://api.ipify.org?format=json", function( data ) {
+			  console.log(data);
 			  $("#ip").val(data.ip) ;
 	    });
 		
