@@ -119,7 +119,8 @@ public class StringConversionTest {
         int afterConvCalendarDay = 03;
         Month afterConvCalendarMonth = Month.DECEMBER;
         int afterConvCalendarYear = 2007;
-        LocalDateTime afterConvDate = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
+        LocalDateTime afterConvDate 
+          = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
 
         assertEquals(afterConvDate.getDayOfMonth(), afterConvCalendarDay);
         assertEquals(afterConvDate.getMonth(), afterConvCalendarMonth);
