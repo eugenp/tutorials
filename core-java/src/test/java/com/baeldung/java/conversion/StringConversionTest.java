@@ -2,7 +2,6 @@ package com.baeldung.java.conversion;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -20,78 +19,111 @@ public class StringConversionTest {
 
     @Test
     public void whenConvertedToInt_thenCorrect() {
-        assertEquals(Integer.parseInt("1"), 1);
+        String beforeConvStr = "1";
+        int afterConvInt = 1;
+
+        assertEquals(Integer.parseInt(beforeConvStr), afterConvInt);
     }
 
     @Test
     public void whenConvertedToInteger_thenCorrect() {
-        assertEquals(Integer.valueOf("12").equals(12), true);
+        String beforeConvStr = "12";
+        Integer afterConvInteger = 12;
+
+        assertEquals(Integer.valueOf(beforeConvStr).equals(afterConvInteger), true);
     }
 
     @Test
     public void whenConvertedTolong_thenCorrect() {
-        assertEquals(Long.parseLong("12345"), 12345);
+        String beforeConvStr = "12345";
+        long afterConvLongPrimitive = 12345;
+
+        assertEquals(Long.parseLong(beforeConvStr), afterConvLongPrimitive);
     }
 
     @Test
     public void whenConvertedToLong_thenCorrect() {
-        assertEquals(Long.valueOf("14567").equals(14567L), true);
+        String beforeConvStr = "14567";
+        Long afterConvLong = 14567l;
+
+        assertEquals(Long.valueOf(beforeConvStr).equals(afterConvLong), true);
     }
 
     @Test
     public void whenConvertedTodouble_thenCorrect() {
-        assertEquals(Double.parseDouble("1.4"), 1.4, 0.0);
+        String beforeConvStr = "1.4";
+        double afterConvDoublePrimitive = 1.4;
+
+        assertEquals(Double.parseDouble(beforeConvStr), afterConvDoublePrimitive, 0.0);
     }
 
     @Test
     public void whenConvertedToDouble_thenCorrect() {
-        assertEquals(Double.valueOf("145.67").equals(145.67d), true);
+        String beforeConvStr = "145.67";
+        double afterConvDouble = 145.67d;
+
+        assertEquals(Double.valueOf(beforeConvStr).equals(afterConvDouble), true);
     }
 
     @Test
-    public void whenConvertedToByteArray_thenCorrect() throws UnsupportedEncodingException {
-        byte[] byteArray1 = new byte[] { 'a', 'b', 'c' };
-        String string = new String(byteArray1, "UTF-8");
+    public void whenConvertedToByteArr_thenCorrect() {
+        String beforeConvStr = "abc";
+        byte[] afterConvByteArr = new byte[] { 'a', 'b', 'c' };
 
-        assertEquals(Arrays.equals(string.getBytes(), byteArray1), true);
+        assertEquals(Arrays.equals(beforeConvStr.getBytes(), afterConvByteArr), true);
     }
 
     @Test
     public void whenConvertedToboolean_thenCorrect() {
-        assertEquals(Boolean.parseBoolean("true"), true);
+        String beforeConvStr = "true";
+        boolean afterConvBooleanPrimitive = true;
+
+        assertEquals(Boolean.parseBoolean(beforeConvStr), afterConvBooleanPrimitive);
     }
 
     @Test
     public void whenConvertedToBoolean_thenCorrect() {
-        assertEquals(Boolean.valueOf("true"), true);
+        String beforeConvStr = "true";
+        Boolean afterConvBoolean = true;
+
+        assertEquals(Boolean.valueOf(beforeConvStr), afterConvBoolean);
     }
 
     @Test
-    public void whenConvertedToCharArray_thenCorrect() {
-        String str = "hello";
-        char[] charArray = { 'h', 'e', 'l', 'l', 'o' };
+    public void whenConvertedToCharArr_thenCorrect() {
+        String beforeConvStr = "hello";
+        char[] afterConvCharArr = { 'h', 'e', 'l', 'l', 'o' };
 
-        assertEquals(Arrays.equals(charArray, str.toCharArray()), true);
+        assertEquals(Arrays.equals(beforeConvStr.toCharArray(), afterConvCharArr), true);
     }
 
     @Test
     public void whenConvertedToDate_thenCorrect() throws ParseException {
-        String str = "15/10/2013";
+        String beforeConvStr = "15/10/2013";
+        int afterConvCalendarDay = 15;
+        int afterConvCalendarMonth = 9;
+        int afterConvCalendarYear = 2013;
         SimpleDateFormat formatter = new SimpleDateFormat("dd/M/yyyy");
-        Date date1 = formatter.parse(str);
-        Calendar calendar = new GregorianCalendar(2013, 9, 15);
-        Date date2 = calendar.getTime();
+        Date afterConvDate = formatter.parse(beforeConvStr);
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(afterConvDate);
 
-        assertEquals(date1.compareTo(date2), 0);
+        assertEquals(calendar.get(Calendar.DAY_OF_MONTH), afterConvCalendarDay);
+        assertEquals(calendar.get(Calendar.MONTH), afterConvCalendarMonth);
+        assertEquals(calendar.get(Calendar.YEAR), afterConvCalendarYear);
     }
 
     @Test
-    public void whenConvertedToLocalDateTime_thenCorrect() throws ParseException {
+    public void whenConvertedToLocalDateTime_thenCorrect() {
         String str = "2007-12-03T10:15:30";
-        LocalDateTime localDateTime = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
+        int afterConvCalendarDay = 03;
+        Month afterConvCalendarMonth = Month.DECEMBER;
+        int afterConvCalendarYear = 2007;
+        LocalDateTime afterConvDate 
+          = new UseLocalDateTime().getLocalDateTimeUsingParseMethod(str);
 
-        assertEquals(localDateTime.getDayOfMonth(), 3);
-        assertEquals(localDateTime.getMonth(), Month.DECEMBER);
-        assertEquals(localDateTime.getYear(), 2007);
+        assertEquals(afterConvDate.getDayOfMonth(), afterConvCalendarDay);
+        assertEquals(afterConvDate.getMonth(), afterConvCalendarMonth);
+        assertEquals(afterConvDate.getYear(), afterConvCalendarYear);
     }
 }
