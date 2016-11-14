@@ -18,7 +18,7 @@ import com.baeldung.datetime.UseLocalDateTime;
 public class StringConversionTest {
 
     @Test
-    public void whenConvedToInt_thenCorrect() {
+    public void whenConvertedToInt_thenCorrect() {
         String beforeConvStr = "1";
         int afterConvInt = 1;
 
@@ -26,7 +26,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToInteger_thenCorrect() {
+    public void whenConvertedToInteger_thenCorrect() {
         String beforeConvStr = "12";
         Integer afterConvInteger = 12;
 
@@ -34,7 +34,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedTolong_thenCorrect() {
+    public void whenConvertedTolong_thenCorrect() {
         String beforeConvStr = "12345";
         long afterConvLongPrimitive = 12345;
 
@@ -42,7 +42,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToLong_thenCorrect() {
+    public void whenConvertedToLong_thenCorrect() {
         String beforeConvStr = "14567";
         Long afterConvLong = 14567l;
 
@@ -50,7 +50,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedTodouble_thenCorrect() {
+    public void whenConvertedTodouble_thenCorrect() {
         String beforeConvStr = "1.4";
         double afterConvDoublePrimitive = 1.4;
 
@@ -58,7 +58,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToDouble_thenCorrect() {
+    public void whenConvertedToDouble_thenCorrect() {
         String beforeConvStr = "145.67";
         double afterConvDouble = 145.67d;
 
@@ -66,7 +66,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToByteArr_thenCorrect() {
+    public void whenConvertedToByteArr_thenCorrect() {
         String beforeConvStr = "abc";
         byte[] afterConvByteArr = new byte[] { 'a', 'b', 'c' };
 
@@ -74,7 +74,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToboolean_thenCorrect() {
+    public void whenConvertedToboolean_thenCorrect() {
         String beforeConvStr = "true";
         boolean afterConvBooleanPrimitive = true;
 
@@ -82,7 +82,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToBoolean_thenCorrect() {
+    public void whenConvertedToBoolean_thenCorrect() {
         String beforeConvStr = "true";
         Boolean afterConvBoolean = true;
 
@@ -90,7 +90,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToCharArr_thenCorrect() {
+    public void whenConvertedToCharArr_thenCorrect() {
         String beforeConvStr = "hello";
         char[] afterConvCharArr = { 'h', 'e', 'l', 'l', 'o' };
 
@@ -98,7 +98,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToDate_thenCorrect() throws ParseException {
+    public void whenConvertedToDate_thenCorrect() throws ParseException {
         String beforeConvStr = "15/10/2013";
         int afterConvCalendarDay = 15;
         int afterConvCalendarMonth = 9;
@@ -114,7 +114,7 @@ public class StringConversionTest {
     }
 
     @Test
-    public void whenConvedToLocalDateTime_thenCorrect() {
+    public void whenConvertedToLocalDateTime_thenCorrect() {
         String str = "2007-12-03T10:15:30";
         int afterConvCalendarDay = 03;
         Month afterConvCalendarMonth = Month.DECEMBER;
