@@ -24,7 +24,7 @@ public aspect AccountAspect {
         }
     }
 
-    after(int amount, Account balance) : callAtWithDraw(amount, balance) {
+    after(int amount, Account balance) : callWithDraw(amount, balance) {
         logger.info("Balance after withdrawal : {}", balance.balance);
     }
 }
