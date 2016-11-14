@@ -2,4 +2,4 @@
 
 ## Core Java 9  Examples
 
-http://inprogress.baeldung.com/java-9-new-features/
+[Java 9 New Features](http://www.baeldung.com/new-java-9)

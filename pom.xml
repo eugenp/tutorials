@@ -58,6 +58,7 @@
         <module>junit5</module>
         
         <module>log4j</module>
+        <module>log-mdc</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
@@ -95,6 +96,7 @@
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
+        <module>spring-data-solr</module>
         <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
