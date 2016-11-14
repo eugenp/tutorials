@@ -1,6 +1,8 @@
 package com.baeldung.pdf;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
@@ -10,14 +12,21 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.fit.pdfdom.PDFDomTree;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.tool.xml.XMLWorkerHelper;
+
 public class PDF2HTMLExample {
 
-	private static final String FILENAME = "src/main/resources/pdf.pdf";
+	private static final String PDF = "src/main/resources/pdf.pdf";
+	private static final String HTML = "src/main/resources/html.html";
 
 	public static void main(String[] args) {
 		try {
-			generateHTMLFromPDF(FILENAME);
-		} catch (IOException | ParserConfigurationException e) {
+			generateHTMLFromPDF(PDF);
+			generatePDFFromHTML(HTML);
+		} catch (IOException | ParserConfigurationException | DocumentException e) {
 			e.printStackTrace();
 		}
 	}
@@ -31,5 +40,13 @@ public class PDF2HTMLExample {
 		if (pdf != null) {
 			pdf.close();
 		}
+	}
+
+	private static void generatePDFFromHTML(String filename) throws ParserConfigurationException, IOException, DocumentException {
+		Document document = new Document();
+		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("src/output/html.pdf"));
+		document.open();
+		XMLWorkerHelper.getInstance().parseXHtml(writer, document, new FileInputStream(filename));
+		document.close();
 	}
 }
