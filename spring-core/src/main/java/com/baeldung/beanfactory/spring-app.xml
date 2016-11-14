@@ -8,4 +8,6 @@
         <constructor-arg name="name" value="Hello! My name is Java"/>
         <constructor-arg name="age" value="18"/>
     </bean>
+    
+    <alias name="employee" alias="empalias" />
 </beans>
