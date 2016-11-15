@@ -1,4 +1,4 @@
-package com.baeldung.spring.session.tomcatex;
+package com.baeldung.spring.session.jettyex;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

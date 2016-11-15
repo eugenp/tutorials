@@ -1,4 +1,4 @@
-package com.baeldung.spring.session.tomcatex;
+package com.baeldung.spring.session.jettyex;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
