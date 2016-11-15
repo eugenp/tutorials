@@ -1,18 +1,13 @@
 package org.baeldung.okhttp;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
+import okhttp3.*;
+import org.junit.Test;
 
 import java.io.IOException;
 
-import org.junit.Test;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class OkHttpGetLiveTest {
 
@@ -54,7 +49,7 @@ public class OkHttpGetLiveTest {
     }
 
     @Test
-    public void whenAsynchronousGetRequest_thenCorrect() {
+    public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -65,14 +60,15 @@ public class OkHttpGetLiveTest {
         Call call = client.newCall(request);
 
         call.enqueue(new Callback() {
-
             public void onResponse(Call call, Response response) throws IOException {
-                assertThat(response.code(), equalTo(200));
+                System.out.println("OK");
             }
 
             public void onFailure(Call call, IOException e) {
-
+            	fail();
             }
         });
+
+        Thread.sleep(3000);
     }
 }

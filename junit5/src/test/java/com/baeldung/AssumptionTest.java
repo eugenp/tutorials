@@ -1,9 +1,11 @@
 package com.baeldung;
 
-import org.junit.gen5.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assumptions.assumeFalse;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
-import static org.junit.gen5.api.Assertions.assertEquals;
-import static org.junit.gen5.api.Assumptions.*;
+import org.junit.jupiter.api.Test;
 
 public class AssumptionTest {
 

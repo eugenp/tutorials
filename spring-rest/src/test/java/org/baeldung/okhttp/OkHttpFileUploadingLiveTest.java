@@ -56,13 +56,10 @@ public class OkHttpFileUploadingLiveTest {
           .build();
 
 
-        ProgressRequestWrapper.ProgressListener listener = new ProgressRequestWrapper.ProgressListener() {
+        ProgressRequestWrapper.ProgressListener listener = (bytesWritten, contentLength) -> {
 
-            public void onRequestProgress(long bytesWritten, long contentLength) {
-
-                float percentage = 100f * bytesWritten / contentLength;
-                assertFalse(Float.compare(percentage, 100) > 0);
-            }
+            float percentage = 100f * bytesWritten / contentLength;
+            assertFalse(Float.compare(percentage, 100) > 0);
         };
 
         ProgressRequestWrapper countingBody = new ProgressRequestWrapper(requestBody, listener);
