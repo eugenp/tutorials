@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-public class WebApplicationInitializer implements org.springframework.web.WebApplicationInitializer {
+public class DispatcherServletApplication implements org.springframework.web.WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext rootContext =

@@ -32,7 +32,7 @@ public class FileTest {
     }
 
     @Test
-    public void givenExistentDirPath_whenConfirmsNotRegularFile_thenCorrect() {
+    public void givenDirPath_whenConfirmsNotRegularFile_thenCorrect() {
         Path p = Paths.get(HOME);
         assertFalse(Files.isRegularFile(p));
     }
@@ -118,7 +118,7 @@ public class FileTest {
     }
 
     @Test
-    public void givenFilePath_whenCreatesTempFileWithDefaultsNaming_thenCorrect() throws IOException {
+    public void givenPath_whenCreatesTempFileWithDefaults_thenCorrect() throws IOException {
         Path p = Paths.get(HOME + "/");
         p = Files.createTempFile(p, null, null);
         // like 8600179353689423985.tmp
@@ -161,7 +161,9 @@ public class FileTest {
     @Test(expected = NoSuchFileException.class)
     public void givenInexistentFile_whenDeleteFails_thenCorrect() throws IOException {
         Path p = Paths.get(HOME + "/inexistentFile.txt");
+        assertFalse(Files.exists(p));
         Files.delete(p);
+
     }
 
     @Test

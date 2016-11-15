@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.equalshashcode.entities.ComplexClass;
+
 public class ComplexClassUnitTest {
 
     @Test

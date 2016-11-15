@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -58,6 +58,7 @@
         <module>junit5</module>
         
         <module>log4j</module>
+        <module>log-mdc</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
@@ -95,6 +96,7 @@
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest</module>
+        <module>spring-data-solr</module>
         <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
@@ -132,6 +134,7 @@
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>        
         <module>spring-security-x509</module>
+        <module>spring-session</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
@@ -144,6 +147,7 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    </modules>
+    <module>pdf</module>
+  </modules>
 
 </project>
