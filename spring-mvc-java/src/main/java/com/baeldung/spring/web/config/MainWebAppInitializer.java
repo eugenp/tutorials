@@ -24,7 +24,8 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
 
         // Create the 'root' Spring application context
         final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
-        root.scan("com.baeldung.spring.web.config");
+        //root.scan("com.baeldung.spring.web.config");
+        root.scan("com.baeldung");
         // root.getEnvironment().setDefaultProfiles("embedded");
 
         sc.addListener(new ContextLoaderListener(root));
