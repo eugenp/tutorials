@@ -1,13 +1,12 @@
 package main.java.com.baeldung.selenium;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SeleniumExample {
 
@@ -38,12 +37,11 @@ public class SeleniumExample {
 
     private void closeOverlay() {
         List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
-        try {
-            if (webElementList != null && !webElementList.isEmpty()) {
-                webElementList.stream().filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title"))).findAny().orElseThrow(NoSuchElementException::new).click();
-            }
-        } catch (NoSuchElementException exception) {
-            exception.printStackTrace();
+        if (webElementList != null) {
+            webElementList.stream()
+              .filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title")))
+              .findAny()
+              .ifPresent(WebElement::click);
         }
     }
 
