@@ -15,7 +15,7 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class AppTest extends TestCase {
+public class AppIntegrationTest extends TestCase {
 
     private static final String FILE_NAME = "file.txt";
     private static final String SAMPLE_INPUT_DIR = "src/test/data/sampleInputFile/";
