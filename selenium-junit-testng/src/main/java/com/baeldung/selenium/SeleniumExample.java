@@ -56,6 +56,6 @@ public class SeleniumExample {
     }
 
     public boolean isAuthorInformationAvailable() {
-        return webDriver.findElement(By.xpath("//*[contains(text(), 'Eugen – an engineer')]")).isDisplayed();
+        return webDriver.findElement(By.xpath("//*[contains(text(), 'an engineer with a passion for teaching and building stuff on the web')]")).isDisplayed();
     }
 }

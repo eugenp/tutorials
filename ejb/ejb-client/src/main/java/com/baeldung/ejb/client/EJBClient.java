@@ -55,8 +55,8 @@ public class EJBClient {
         prop.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
         prop.put(Context.INITIAL_CONTEXT_FACTORY, "org.jboss.naming.remote.client.InitialContextFactory");
         prop.put(Context.PROVIDER_URL, "http-remoting://127.0.0.1:8080");
-        prop.put(Context.SECURITY_PRINCIPAL, "pritamtest");
-        prop.put(Context.SECURITY_CREDENTIALS, "iamtheki9g");
+        prop.put(Context.SECURITY_PRINCIPAL, "testUser");
+        prop.put(Context.SECURITY_CREDENTIALS, "admin1234!");
         prop.put("jboss.naming.client.ejb.context", false);
 
         context = new InitialContext(prop);
