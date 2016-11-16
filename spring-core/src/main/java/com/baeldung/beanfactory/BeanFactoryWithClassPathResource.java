@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
 public class BeanFactoryWithClassPathResource {
 
     @Test
-    public void createBeanFactory() {
+    public void createBeanFactoryAndCheckEmployeeBean() {
 
         Resource res = new ClassPathResource("spring-app.xml");
         BeanFactory factory = new XmlBeanFactory(res);
