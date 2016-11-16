@@ -13,7 +13,6 @@ public class BeanFactoryWithClassPathResource {
 
     @Test
     public void createBeanFactoryAndCheckEmployeeBean() {
-
         Resource res = new ClassPathResource("spring-app.xml");
         BeanFactory factory = new XmlBeanFactory(res);
         Employee emp = (Employee) factory.getBean("employee");
