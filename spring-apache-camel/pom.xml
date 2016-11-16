@@ -11,6 +11,7 @@
 	<properties>
 		<env.camel.version>2.16.1</env.camel.version>
 		<env.spring.version>4.2.4.RELEASE</env.spring.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<java.version>1.7</java.version>
 		<junit.version>4.12</junit.version>
 	</properties>
@@ -78,4 +79,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 </project>
