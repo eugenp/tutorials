@@ -26,7 +26,7 @@ public class FileCopyConfig {
 
     public final String INPUT_DIR = "source";
     public final String OUTPUT_DIR = "target";
-    public final String FILE_PATTERN = ".jpg";
+    public final String FILE_PATTERN = "*.jpg";
 
     @Bean
     public MessageChannel fileChannel() {
@@ -47,11 +47,12 @@ public class FileCopyConfig {
     public MessageHandler fileWritingMessageHandler() {
         FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(OUTPUT_DIR));
         handler.setFileExistsMode(FileExistsMode.REPLACE);
+        handler.setExpectReply(false);
         return handler;
     }
 
     public static void main(final String... args) {
-        final AbstractApplicationContext context = new AnnotationConfigApplicationContext(FileCopyConfig.class.getCanonicalName());
+        final AbstractApplicationContext context = new AnnotationConfigApplicationContext(FileCopyConfig.class);
         context.registerShutdownHook();
         final Scanner scanner = new Scanner(System.in);
         System.out.print("Please enter a string and press <enter>: ");
