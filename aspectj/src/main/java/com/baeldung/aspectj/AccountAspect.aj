@@ -16,7 +16,7 @@ public aspect AccountAspect {
     }
 
     boolean around(int amount, Account account) : callWithDraw(amount, account) {
-        if (account.balance < amount) {
+        if (account.balance < amount){
             logger.info("Withdrawal Rejected!");
             return false;
         }
