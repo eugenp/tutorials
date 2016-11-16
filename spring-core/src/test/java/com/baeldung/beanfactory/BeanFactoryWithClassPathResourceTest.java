@@ -9,7 +9,7 @@ import org.springframework.core.io.Resource;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class BeanFactoryWithClassPathResource {
+public class BeanFactoryWithClassPathResourceTest {
 
     @Test
     public void createBeanFactoryAndCheckEmployeeBean() {
