@@ -1,5 +1,7 @@
 package com.baeldung.spring.controller;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,12 +13,16 @@ import com.baeldung.spring.service.RawDBDemoGeoIPLocationService;
 
 @Controller
 public class GeoIPTestController {
+    private RawDBDemoGeoIPLocationService locationService;
+    public GeoIPTestController() throws IOException {
+        locationService 
+        = new RawDBDemoGeoIPLocationService();
+    }
     @RequestMapping(value="/GeoIPTest", method = RequestMethod.POST)
     @ResponseBody
     public GeoIP getLocation(
       @RequestParam(value="ipAddress", required=true) String ipAddress) throws Exception {
-        RawDBDemoGeoIPLocationService locationService 
-          = new RawDBDemoGeoIPLocationService();
+        
         return locationService.getLocation(ipAddress);
     }
 }

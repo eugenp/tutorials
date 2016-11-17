@@ -10,10 +10,14 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 
 public class RawDBDemoGeoIPLocationService{
-    public GeoIP getLocation(String ip) throws IOException, GeoIp2Exception {
+    private DatabaseReader dbReader;
+    
+    public RawDBDemoGeoIPLocationService() throws IOException {
         File database = new File("C:\\Users\\Parth Joshi\\Desktop\\GeoLite2-City.mmdb\\GeoLite2-City.mmdb");
-        DatabaseReader dbReader = new DatabaseReader.Builder(database).build();
-                
+        dbReader = new DatabaseReader.Builder(database).build();
+    }
+    
+    public GeoIP getLocation(String ip) throws IOException, GeoIp2Exception {
         InetAddress ipAddress = InetAddress.getByName(ip);
         CityResponse response = dbReader.city(ipAddress);
         
