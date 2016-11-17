@@ -40,6 +40,7 @@ public class SeleniumExample {
         if (webElementList != null) {
             webElementList.stream()
               .filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title")))
+              .filter(WebElement::isDisplayed)
               .findAny()
               .ifPresent(WebElement::click);
         }
