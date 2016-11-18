@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class TomcatController {
     @RequestMapping("/tomcat/admin")
     public String helloTomcatAdmin() {
         return "hello tomcat admin";
