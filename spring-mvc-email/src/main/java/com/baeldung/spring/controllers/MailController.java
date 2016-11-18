@@ -26,6 +26,7 @@ import java.util.Set;
 @Controller
 @RequestMapping("/mail")
 public class MailController {
+
     @Autowired
     public EmailServiceImpl emailService;
 
@@ -33,7 +34,6 @@ public class MailController {
     private String attachmentPath;
 
     @Autowired
-    @Qualifier("templateSimpleMessage")
     public SimpleMailMessage template;
 
     private static final Map<String, Map<String, String>> labels;
