@@ -11,7 +11,7 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CityResponse;
 
 
-public class GeoIpTest {
+public class GeoIpIntegrationTest {
     
     @Test
     public void givenIP_whenFetchingCity_thenReturnsCityData() throws IOException, GeoIp2Exception {
