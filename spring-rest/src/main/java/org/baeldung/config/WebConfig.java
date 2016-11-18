@@ -36,7 +36,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         messageConverters.add(new MappingJackson2HttpMessageConverter(builder.build()));
         // messageConverters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
         
-        messageConverters.add(createXmlHttpMessageConverter());
+        // messageConverters.add(createXmlHttpMessageConverter());
         // messageConverters.add(new MappingJackson2HttpMessageConverter());
         
         messageConverters.add(new ProtobufHttpMessageConverter());

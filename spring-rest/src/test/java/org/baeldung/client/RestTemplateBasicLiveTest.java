@@ -2,10 +2,14 @@ package org.baeldung.client;
 
 import static org.baeldung.client.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Matchers.notNull;
 
 import java.io.IOException;
 
+import org.baeldung.web.dto.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
@@ -41,7 +45,15 @@ public class RestTemplateBasicLiveTest {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(response.getBody());
         JsonNode name = root.path("name");
-        assertThat(name.asText(), equalTo("bar"));
+        assertThat(name.asText(), is(notNull()));
     }
-    
+
+    @Test
+    public void givenResourceUrl_whenRetrievingResource_thenCorrect() throws IOException {
+        final Foo foo = restTemplate.getForObject(fooResourceUrl + "/1", Foo.class);
+
+        assertThat(foo.getName(), notNullValue());
+        assertThat(foo.getId(), is(1L));
+    }
+
 }
