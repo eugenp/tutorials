@@ -25,6 +25,7 @@
                         <include>**/*UnitTest.java</include>
                     </includes>
                     <systemPropertyVariables></systemPropertyVariables>
+                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
@@ -42,6 +43,7 @@
                             <includes>
                                 <include>**/*LiveTest.java</include>
                             </includes>
+                            <testFailureIgnore>false</testFailureIgnore>
                         </configuration>
                     </plugin>
                 </plugins>
