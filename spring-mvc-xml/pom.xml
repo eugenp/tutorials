@@ -112,6 +112,11 @@
             <artifactId>commons-io</artifactId>
             <version>2.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.maxmind.geoip2</groupId>
+            <artifactId>geoip2</artifactId>
+            <version>2.8.0</version>
+    </dependency>
     </dependencies>
 
     <build>
@@ -146,7 +151,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
-                        <!-- <exclude>**/*ProductionTest.java</exclude> -->
+                        <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
