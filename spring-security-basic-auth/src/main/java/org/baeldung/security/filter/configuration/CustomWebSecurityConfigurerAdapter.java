@@ -1,9 +1,8 @@
-package org.baeldung.spring;
+package org.baeldung.security.filter.configuration;
 
 import org.baeldung.security.basic.MyBasicAuthenticationEntryPoint;
 import org.baeldung.security.filter.CustomFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,28 +12,29 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("org.baeldung.security")
-public class SecSecurityConfigJava extends WebSecurityConfigurerAdapter {
+public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyBasicAuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth)
+            throws Exception {
         auth
-          .inMemoryAuthentication()
-          .withUser("user1").password("user1Pass").authorities("ROLE_USER");
+            .inMemoryAuthentication()
+            .withUser("user1").password("user1Pass")
+            .authorities("ROLE_USER");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/securityNone").permitAll()
-                .anyRequest().authenticated()
-                .and()
+            .antMatchers("/securityNone").permitAll()
+            .anyRequest().authenticated()
+            .and()
             .httpBasic()
-                .authenticationEntryPoint(authenticationEntryPoint);
+            .authenticationEntryPoint(authenticationEntryPoint);
 
-        http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
+        http.addFilterAfter(new CustomFilter(),
+                BasicAuthenticationFilter.class);
     }
-
 }

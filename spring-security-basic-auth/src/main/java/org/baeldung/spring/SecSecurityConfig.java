@@ -2,14 +2,13 @@ package org.baeldung.spring;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 
-//@Configuration
+@Configuration
+@ComponentScan("org.baeldung.security")
 //@ImportResource({ "classpath:webSecurityConfig.xml" })
-//@ComponentScan("org.baeldung.security")
-public class SecSecurityConfigXML {
+public class SecSecurityConfig {
 
-    public SecSecurityConfigXML() {
+    public SecSecurityConfig() {
         super();
     }
 
