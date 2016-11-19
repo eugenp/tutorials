@@ -12,11 +12,24 @@
             # Pattern of log message for file appender
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %p %m%n"/>
         </File>
+
+		# Rolling appender
+		<RollingFile name="rollout1" fileName="log4j/target/log4j2/roll1/baeldung-log4j.log"
+			filePattern="log4j/target/log4j2/roll1/baeldung-%d{MM-dd-yyyy}.log.gz" ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+			</PatternLayout>
+			<TimeBasedTriggeringPolicy />
+		</RollingFile>        
     </Appenders>
 
     <Loggers>
         # Override log level for specified package
         <Logger name="com.baeldung.log4j2" level="TRACE"/>
+        
+		<Logger name="com.baeldung.log4j2.Log4j2RollingExample" level="TRACE" >
+			<AppenderRef ref="rollout1"/>
+		</Logger>        
 
         <AsyncRoot level="DEBUG">
             <AppenderRef ref="stdout"/>
