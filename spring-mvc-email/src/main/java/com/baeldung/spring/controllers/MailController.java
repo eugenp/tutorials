@@ -20,9 +20,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Olga on 7/20/2016.
- */
 @Controller
 @RequestMapping("/mail")
 public class MailController {
