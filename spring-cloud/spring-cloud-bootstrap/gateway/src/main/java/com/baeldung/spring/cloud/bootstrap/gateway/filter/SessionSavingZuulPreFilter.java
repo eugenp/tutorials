@@ -14,34 +14,34 @@ import javax.servlet.http.HttpSession;
 @Component
 public class SessionSavingZuulPreFilter extends ZuulFilter {
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+        private Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private SessionRepository repository;
+        @Autowired
+        private SessionRepository repository;
 
-    @Override public boolean shouldFilter() {
-        return true;
-    }
+        @Override
+        public boolean shouldFilter() {
+                return true;
+        }
 
-    @Override
-    public Object run() {
-        RequestContext context = RequestContext.getCurrentContext();
+        @Override
+        public Object run() {
+                RequestContext context = RequestContext.getCurrentContext();
+                HttpSession httpSession = context.getRequest().getSession();
+                Session session = repository.getSession(httpSession.getId());
 
-        HttpSession httpSession = context.getRequest().getSession();
-        Session session = repository.getSession(httpSession.getId());
+                context.addZuulRequestHeader("Cookie", "SESSION=" + httpSession.getId());
+                log.info("ZuulPreFilter session proxy: {}", session.getId());
+                return null;
+        }
 
-        context.addZuulRequestHeader("Cookie", "SESSION=" + httpSession.getId());
+        @Override
+        public String filterType() {
+                return "pre";
+        }
 
-        log.info("ZuulPreFilter session proxy: {}", session.getId());
-
-        return null;
-    }
-
-    @Override public String filterType() {
-        return "pre";
-    }
-
-    @Override public int filterOrder() {
-        return 0;
-    }
+        @Override
+        public int filterOrder() {
+                return 0;
+        }
 }

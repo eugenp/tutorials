@@ -1,4 +1,4 @@
-package org.baeldung.spring;
+package org.baeldung.security.spring;
 
 import org.baeldung.web.error.CustomAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
