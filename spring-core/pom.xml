@@ -4,14 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>dependency-injection</artifactId>
+    <artifactId>spring-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>dependency-injection</name>
-    <description>Accompanying the demonstration of the use of the annotations related to injection mechanisms, namely
-        Resource, Inject, and Autowired
-    </description>
+    <name>spring-core</name>
 
     <dependencies>
         <dependency>
