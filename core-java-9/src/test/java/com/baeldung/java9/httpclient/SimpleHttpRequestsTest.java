@@ -5,6 +5,7 @@ package com.baeldung.java9.httpclient;
 import static java.net.HttpURLConnection.HTTP_OK;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
@@ -15,6 +16,7 @@ import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
+import java.nio.file.Path;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +31,9 @@ import org.junit.Test;
 
 public class SimpleHttpRequestsTest {
 
-   private URI httpURI; 
-    
+    private URI httpURI; 
+    private static final String jsonBody = "{  \"object\": { \"a\": \"b\", \"c\": \"d\" }," +
+  "\"array\": [ 1, 2 ], \"string\": \"Hello World\" }";
     @Before
     public void init() throws URISyntaxException {
         httpURI = new URI("http://www.baeldung.com/");
@@ -55,7 +58,18 @@ public class SimpleHttpRequestsTest {
         assertTrue("HTTP return code", statusCode == HTTP_OK);
     }
     
-
+    @Test
+    public void putMehtod() throws URISyntaxException, IOException, InterruptedException {
+        HttpRequest.Builder requestBuilder = HttpRequest.create(httpURI);
+        requestBuilder.setHeader("content-type", "application/json")
+                      .body(HttpRequest.fromFile(
+                              (new File("target/test-classes/request_body.json")).toPath()));
+        HttpRequest request = requestBuilder.PUT();
+        HttpResponse response = request.response();
+        int statusCode = response.statusCode();
+        assertTrue("HTTP return code", statusCode == HTTP_OK);
+    }
+    
     @Test
     public void customeHeaderRequest() throws IOException, InterruptedException {
         Builder requestBuilder = HttpRequest.create(httpURI).
