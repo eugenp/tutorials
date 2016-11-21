@@ -27,7 +27,7 @@ public class CollectionsConcatenateUnitTest {
 
         Stream<String> combinedStream = Stream.concat(Stream.concat(collectionA.stream(), collectionB.stream()), collectionC.stream());
 
-        List<Object> collectionCombined = combinedStream.collect(Collectors.toList());
+        Collection<String> collectionCombined = combinedStream.collect(Collectors.toList());
 
         Assert.assertEquals(collectionCombined, asList("S", "T", "U", "V", "W", "X"));
     }
@@ -38,7 +38,7 @@ public class CollectionsConcatenateUnitTest {
         Collection<String> collectionB = asList("U", "V");
 
         Stream<String> combinedStream = Stream.of(collectionA, collectionB).flatMap(Collection::stream);
-        List<Object> collectionCombined = combinedStream.collect(Collectors.toList());
+        Collection<String> collectionCombined = combinedStream.collect(Collectors.toList());
 
         Assert.assertEquals(collectionCombined, asList("S", "T", "U", "V"));
     }
@@ -64,7 +64,7 @@ public class CollectionsConcatenateUnitTest {
         Assert.assertEquals(collectionCombined, Arrays.asList("S", "T", "U", "V"));
     }
 
-    public static <E> Iterable<E> concat(final Iterable<? extends E> list1, final Iterable<? extends E> list2) {
+    public static <E> Iterable<E> concat(Iterable<? extends E> list1, Iterable<? extends E> list2) {
         return new Iterable<E>() {
             public Iterator<E> iterator() {
                 return new Iterator<E>() {
