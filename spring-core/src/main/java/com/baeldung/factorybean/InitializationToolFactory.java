@@ -1,22 +1,21 @@
 package com.baeldung.factorybean;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.util.StringUtils;
 
 public class InitializationToolFactory implements FactoryBean<Tool>, InitializingBean {
-    private int factoryId;// standard setters and getters
-    private int toolId;// standard setters and getters
-    private String toolName;// standard setters and getters
-    private double toolPrice;// standard setters and getters
+    private int factoryId;
+    private int toolId;
+    private String toolName;
+    private double toolPrice;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if (toolName == null || toolName.equals("")) {
-            throw new IllegalArgumentException("tool name cannot be empty");
-        }
-        if (toolPrice < 0) {
-            throw new IllegalArgumentException("tool price should not be less than 0");
-        }
+        checkArgument(!StringUtils.isEmpty(toolName), "tool name cannot be empty");
+        checkArgument(toolPrice >= 0, "tool price should not be less than 0");
     }
 
     @Override

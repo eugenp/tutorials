@@ -3,10 +3,10 @@ package com.baeldung.factorybean;
 import org.springframework.beans.factory.FactoryBean;
 
 public class ToolFactory implements FactoryBean<Tool> {
-    private int factoryId;// standard setters and getters
-    private int toolId;// standard setters and getters
-    private String toolName;// standard setters and getters
-    private double toolPrice;// standard setters and getters
+    private int factoryId;
+    private int toolId;
+    private String toolName;
+    private double toolPrice;
 
     @Override
     public Tool getObject() throws Exception {

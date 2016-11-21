@@ -1,8 +1,8 @@
 package com.baeldung.factorybean;
 
 public class Worker {
-    private String number;// standard setters and getters
-    private Tool tool;// standard setters and getters
+    private String number;
+    private Tool tool;
 
     public Worker() {
     }

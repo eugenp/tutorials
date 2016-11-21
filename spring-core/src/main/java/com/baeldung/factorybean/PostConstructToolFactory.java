@@ -1,14 +1,17 @@
 package com.baeldung.factorybean;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.util.StringUtils;
 
 public class PostConstructToolFactory implements FactoryBean<Tool> {
-    private int factoryId;// standard setters and getters
-    private int toolId;// standard setters and getters
-    private String toolName;// standard setters and getters
-    private double toolPrice;// standard setters and getters
+    private int factoryId;
+    private int toolId;
+    private String toolName;
+    private double toolPrice;
 
     @Override
     public Tool getObject() throws Exception {
@@ -27,12 +30,8 @@ public class PostConstructToolFactory implements FactoryBean<Tool> {
 
     @PostConstruct
     public void checkParams() {
-        if (toolName == null || toolName.equals("")) {
-            throw new IllegalArgumentException("tool name cannot be empty");
-        }
-        if (toolPrice < 0) {
-            throw new IllegalArgumentException("tool price should not be less than 0");
-        }
+        checkArgument(!StringUtils.isEmpty(toolName), "tool name cannot be empty");
+        checkArgument(toolPrice >= 0, "tool price should not be less than 0");
     }
 
     public int getFactoryId() {

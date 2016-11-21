@@ -1,9 +1,9 @@
 package com.baeldung.factorybean;
 
 public class Tool {
-    private int id;// standard setters and getters
-    private String name;// standard setters and getters
-    private double price;// standard setters and getters
+    private int id;
+    private String name;
+    private double price;
 
     public Tool() {
     }
