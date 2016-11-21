@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+
 public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
@@ -27,9 +28,6 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenGetRequest_thenCorrect() throws IOException {
-
-        client = new OkHttpClient();
-
         Request request = new Request.Builder()
           .url(BASE_URL + "/date")
           .build();
@@ -42,9 +40,6 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
-
-        client = new OkHttpClient();
-
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/ex/bars").newBuilder();
         urlBuilder.addQueryParameter("id", "1");
 
@@ -62,9 +57,6 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
-
-        client = new OkHttpClient();
-
         Request request = new Request.Builder()
           .url(BASE_URL + "/date")
           .build();
