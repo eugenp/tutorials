@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.baeldung.okhttp.ProgressRequestWrapper;
+import org.junit.Before;
 import org.junit.Test;
 
 import okhttp3.Call;
@@ -22,10 +23,18 @@ public class OkHttpFileUploadingLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
+
     @Test
     public void whenUploadFile_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
@@ -47,7 +56,7 @@ public class OkHttpFileUploadingLiveTest {
     @Test
     public void whenGetUploadFileProgress_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+    	client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
@@ -55,17 +64,12 @@ public class OkHttpFileUploadingLiveTest {
             RequestBody.create(MediaType.parse("application/octet-stream"), new File("src/test/resources/test.txt")))
           .build();
 
+        ProgressRequestWrapper countingBody = new ProgressRequestWrapper(requestBody, (long bytesWritten, long contentLength) -> {
 
-        ProgressRequestWrapper.ProgressListener listener = new ProgressRequestWrapper.ProgressListener() {
+        	float percentage = 100f * bytesWritten / contentLength;
+            assertFalse(Float.compare(percentage, 100) > 0);
 
-            public void onRequestProgress(long bytesWritten, long contentLength) {
-
-                float percentage = 100f * bytesWritten / contentLength;
-                assertFalse(Float.compare(percentage, 100) > 0);
-            }
-        };
-
-        ProgressRequestWrapper countingBody = new ProgressRequestWrapper(requestBody, listener);
+        });
 
         Request request = new Request.Builder()
                 .url(BASE_URL + "/users/upload")

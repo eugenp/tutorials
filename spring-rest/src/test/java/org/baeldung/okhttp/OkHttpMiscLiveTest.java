@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,14 @@ public class OkHttpMiscLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
     private static Logger logger = LoggerFactory.getLogger(OkHttpMiscLiveTest.class);
+
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
 
     @Test
     public void whenSetRequestTimeout_thenFail() throws IOException {
@@ -42,7 +51,7 @@ public class OkHttpMiscLiveTest {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(BASE_URL + "/delay/2")  // This URL is served with a 2 second delay.
