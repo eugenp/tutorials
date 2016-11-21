@@ -34,8 +34,7 @@ public class OkHttpMiscLiveTest {
 
     @Test
     public void whenSetRequestTimeout_thenFail() throws IOException {
-
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient clientWithTimeout = new OkHttpClient.Builder()
           .readTimeout(1, TimeUnit.SECONDS)
           .build();
 
@@ -43,17 +42,14 @@ public class OkHttpMiscLiveTest {
           .url(BASE_URL + "/delay/2")  // This URL is served with a 2 second delay.
           .build();
 
-        Call call = client.newCall(request);
+        Call call = clientWithTimeout.newCall(request);
         Response response = call.execute();
         response.close();
     }
 
     @Test(expected = IOException.class)
     public void whenCancelRequest_thenCorrect() throws IOException {
-
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
-        client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(BASE_URL + "/delay/2")  // This URL is served with a 2 second delay.
@@ -85,7 +81,7 @@ public class OkHttpMiscLiveTest {
         File cacheDirectory = new File("src/test/resources/cache");
         Cache cache = new Cache(cacheDirectory, cacheSize);
 
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient clientCached = new OkHttpClient.Builder()
           .cache(cache)
           .build();
 
@@ -93,10 +89,10 @@ public class OkHttpMiscLiveTest {
           .url("http://publicobject.com/helloworld.txt")
           .build();
 
-        Response response1 = client.newCall(request).execute();
+        Response response1 = clientCached.newCall(request).execute();
         logResponse(response1);
 
-        Response response2 = client.newCall(request).execute();
+        Response response2 = clientCached.newCall(request).execute();
         logResponse(response2);
     }
 

@@ -24,9 +24,6 @@ public class OkHttpHeaderLiveTest {
 
     @Test
     public void whenSetHeader_thenCorrect() throws IOException {
-
-        client = new OkHttpClient();
-
         Request request = new Request.Builder()
           .url(SAMPLE_URL)
           .addHeader("Content-Type", "application/json")
@@ -40,7 +37,7 @@ public class OkHttpHeaderLiveTest {
     @Test
     public void whenSetDefaultHeader_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient clientWithInterceptor = new OkHttpClient.Builder()
           .addInterceptor(new DefaultContentTypeInterceptor("application/json"))
           .build();
 
@@ -48,7 +45,7 @@ public class OkHttpHeaderLiveTest {
           .url(SAMPLE_URL)
           .build();
 
-        Call call = client.newCall(request);
+        Call call = clientWithInterceptor.newCall(request);
         Response response = call.execute();
         response.close();
     }

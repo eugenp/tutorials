@@ -27,14 +27,11 @@ public class OkHttpFileUploadingLiveTest {
 
     @Before
     public void init() {
-
     	client = new OkHttpClient();
     }
 
     @Test
     public void whenUploadFile_thenCorrect() throws IOException {
-
-        client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
@@ -55,8 +52,6 @@ public class OkHttpFileUploadingLiveTest {
 
     @Test
     public void whenGetUploadFileProgress_thenCorrect() throws IOException {
-
-    	client = new OkHttpClient();
 
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
