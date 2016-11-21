@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FactoryBeanTest {
+    
     @Test
     public void testConstructWorkerByXml() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:factorybean-spring-ctx.xml");

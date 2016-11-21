@@ -1,11 +1,11 @@
 package com.baeldung.factorybean;
 
 public class Worker {
+
     private String number;
     private Tool tool;
 
-    public Worker() {
-    }
+    public Worker() {}
 
     public Worker(String number, Tool tool) {
         this.number = number;

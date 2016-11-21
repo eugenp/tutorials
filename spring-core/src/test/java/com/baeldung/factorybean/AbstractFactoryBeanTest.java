@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class AbstractFactoryBeanTest {
+    
     @Test
     public void testSingleToolFactory() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:factorybean-abstract-spring-ctx.xml");

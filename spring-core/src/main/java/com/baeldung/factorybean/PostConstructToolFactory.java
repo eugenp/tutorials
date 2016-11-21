@@ -8,6 +8,7 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.util.StringUtils;
 
 public class PostConstructToolFactory implements FactoryBean<Tool> {
+    
     private int factoryId;
     private int toolId;
     private String toolName;

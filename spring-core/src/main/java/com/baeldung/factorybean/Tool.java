@@ -1,12 +1,10 @@
 package com.baeldung.factorybean;
 
 public class Tool {
+    
     private int id;
     private String name;
     private double price;
-
-    public Tool() {
-    }
 
     public Tool(int id, String name, double price) {
         this.id = id;

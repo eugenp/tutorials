@@ -7,6 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.util.StringUtils;
 
 public class InitializationToolFactory implements FactoryBean<Tool>, InitializingBean {
+    
     private int factoryId;
     private int toolId;
     private String toolName;

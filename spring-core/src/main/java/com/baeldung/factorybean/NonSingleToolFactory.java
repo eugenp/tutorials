@@ -3,6 +3,7 @@ package com.baeldung.factorybean;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
 public class NonSingleToolFactory extends AbstractFactoryBean<Tool> {
+    
     private int factoryId;
     private int toolId;
     private String toolName;

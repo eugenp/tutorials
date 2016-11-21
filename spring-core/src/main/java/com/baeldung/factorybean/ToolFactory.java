@@ -3,6 +3,7 @@ package com.baeldung.factorybean;
 import org.springframework.beans.factory.FactoryBean;
 
 public class ToolFactory implements FactoryBean<Tool> {
+   
     private int factoryId;
     private int toolId;
     private String toolName;
