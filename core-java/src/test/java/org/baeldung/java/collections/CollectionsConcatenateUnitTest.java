@@ -11,43 +11,42 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import junit.framework.Assert;
-
 public class CollectionsConcatenateUnitTest {
 
     @Test
     public void givenUsingJava8_whenConcatenatingUsingConcat_thenCorrect() {
-        Collection collectionA = asList("S", "T");
-        Collection collectionB = asList("U", "V");
-        Collection collectionC = asList("W", "X");
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
+        Collection<String> collectionC = asList("W", "X");
 
         Stream<String> combinedStream = Stream.concat(Stream.concat(collectionA.stream(), collectionB.stream()), collectionC.stream());
 
-        Collection collectionCombined = combinedStream.collect(Collectors.toList());
+        List<Object> collectionCombined = combinedStream.collect(Collectors.toList());
 
         Assert.assertEquals(collectionCombined, asList("S", "T", "U", "V", "W", "X"));
     }
 
     @Test
     public void givenUsingJava8_whenConcatenatingUsingflatMap_thenCorrect() {
-        Collection collectionA = asList("S", "T");
-        Collection collectionB = asList("U", "V");
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
 
         Stream<String> combinedStream = Stream.of(collectionA, collectionB).flatMap(Collection::stream);
-        Collection<String> collectionCombined = combinedStream.collect(Collectors.toList());
+        List<Object> collectionCombined = combinedStream.collect(Collectors.toList());
 
         Assert.assertEquals(collectionCombined, asList("S", "T", "U", "V"));
     }
 
     @Test
     public void givenUsingGuava_whenConcatenatingUsingIterables_thenCorrect() {
-        Collection collectionA = asList("S", "T");
-        Collection collectionB = asList("U", "V");
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
 
         Iterable<String> combinedIterables = Iterables.unmodifiableIterable(Iterables.concat(collectionA, collectionB));
         Collection<String> collectionCombined = Lists.newArrayList(combinedIterables);
@@ -57,8 +56,8 @@ public class CollectionsConcatenateUnitTest {
 
     @Test
     public void givenUsingJava7_whenConcatenatingUsingIterables_thenCorrect() {
-        Collection collectionA = asList("S", "T");
-        Collection collectionB = asList("U", "V");
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
 
         Iterable<String> combinedIterables = concat(collectionA, collectionB);
         Collection<String> collectionCombined = makeListFromIterable(combinedIterables);
