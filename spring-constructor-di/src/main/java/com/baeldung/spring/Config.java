@@ -1,12 +1,11 @@
 package com.baeldung.spring;
 
-import com.baeldung.spring.domain.Car;
-import com.baeldung.spring.domain.Engine;
-import com.baeldung.spring.domain.Transmission;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.baeldung.spring.domain.Engine;
+import com.baeldung.spring.domain.Transmission;
 
 @Configuration
 @ComponentScan("com.baeldung.spring")
