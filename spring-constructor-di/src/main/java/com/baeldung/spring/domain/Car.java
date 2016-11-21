@@ -1,0 +1,24 @@
+package com.baeldung.spring.domain;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
+@Component
+public class Car {
+    private Engine engine;
+    private Transmission transmission;
+
+    @Autowired
+    public Car(Engine engine, Transmission transmission) {
+        this.engine = engine;
+        this.transmission = transmission;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Engine: %s Transmission: %s", engine, transmission);
+    }
+}
