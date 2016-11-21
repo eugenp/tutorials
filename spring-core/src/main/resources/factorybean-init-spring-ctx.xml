@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="initializationTool" class="com.baeldung.factorybean.InitializationToolFactory">
+        <property name="factoryId" value="1010"/>
+        <property name="toolId" value="1"/>
+        <property name="toolName" value="screwdriver"/>
+        <property name="toolPrice" value="-1"/>
+    </bean>
+
+    <bean id="worker" class="com.baeldung.factorybean.Worker">
+        <property name="number" value="36"/>
+        <property name="tool" ref="initializationTool"/>
+    </bean>
+</beans>

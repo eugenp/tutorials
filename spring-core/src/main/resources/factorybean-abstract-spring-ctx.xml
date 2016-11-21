@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="singleTool" class="com.baeldung.factorybean.SingleToolFactory">
+        <property name="factoryId" value="3001"/>
+        <property name="toolId" value="1"/>
+        <property name="toolName" value="screwdriver"/>
+        <property name="toolPrice" value="1.5"/>
+    </bean>
+
+    <bean id="nonSingleTool" class="com.baeldung.factorybean.NonSingleToolFactory">
+        <property name="factoryId" value="3002"/>
+        <property name="toolId" value="2"/>
+        <property name="toolName" value="screwdriver"/>
+        <property name="toolPrice" value="1.5"/>
+    </bean>
+
+    <bean id="worker1" class="com.baeldung.factorybean.Worker">
+        <property name="number" value="50001"/>
+        <property name="tool" ref="singleTool"/>
+    </bean>
+
+    <bean id="worker2" class="com.baeldung.factorybean.Worker">
+        <property name="number" value="50002"/>
+        <property name="tool" ref="singleTool"/>
+    </bean>
+
+    <bean id="worker3" class="com.baeldung.factorybean.Worker">
+        <property name="number" value="50003"/>
+        <property name="tool" ref="nonSingleTool"/>
+    </bean>
+
+    <bean id="worker4" class="com.baeldung.factorybean.Worker">
+        <property name="number" value="50004"/>
+        <property name="tool" ref="nonSingleTool"/>
+    </bean>
+</beans>
