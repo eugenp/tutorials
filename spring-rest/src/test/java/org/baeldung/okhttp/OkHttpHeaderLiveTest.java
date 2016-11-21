@@ -2,6 +2,7 @@ package org.baeldung.okhttp;
 
 import java.io.IOException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import okhttp3.Call;
@@ -13,10 +14,18 @@ public class OkHttpHeaderLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
+
     @Test
     public void whenSetHeader_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(SAMPLE_URL)
@@ -43,6 +52,4 @@ public class OkHttpHeaderLiveTest {
         Response response = call.execute();
         response.close();
     }
-
-
 }

@@ -4,19 +4,31 @@ import okhttp3.*;
 import org.junit.Test;
 
 import java.io.IOException;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
 
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
+
     @Test
     public void whenGetRequest_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(BASE_URL + "/date")
@@ -31,7 +43,7 @@ public class OkHttpGetLiveTest {
     @Test
     public void whenGetRequestWithQueryParameter_thenCorrect() throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         HttpUrl.Builder urlBuilder = HttpUrl.parse(BASE_URL + "/ex/bars").newBuilder();
         urlBuilder.addQueryParameter("id", "1");
@@ -51,7 +63,7 @@ public class OkHttpGetLiveTest {
     @Test
     public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
 
-        OkHttpClient client = new OkHttpClient();
+        client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(BASE_URL + "/date")
