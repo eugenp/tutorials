@@ -11,15 +11,14 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.http.ssl.SSLContexts;
 import org.junit.Test;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -94,20 +93,12 @@ public class HttpsClientSslLiveTest {
     }
 
     @Test
-    public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
+    public final void givenIgnoringCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws Exception {
+        SSLContext sslContext = new SSLContextBuilder()
+          .loadTrustMaterial(null, (certificate, authType) -> true).build();
 
-        TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
-
-        SSLContext sslContext = null;
-        try {
-            sslContext = new SSLContextBuilder().loadTrustMaterial(null, acceptingTrustStrategy).build();
-
-        } catch (KeyManagementException | NoSuchAlgorithmException | KeyStoreException e) {
-            e.printStackTrace();
-        }
-
-        CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
-        final HttpGet httpGet = new HttpGet("https://sesar3.geoinfogeochem.org/sample/igsn/ODP000002");
+        final CloseableHttpClient client = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
+        final HttpGet httpGet = new HttpGet(HOST_WITH_SSL);
         httpGet.setHeader("Accept", "application/xml");
 
         final HttpResponse response = client.execute(httpGet);

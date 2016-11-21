@@ -11,6 +11,7 @@
         <jee.version>7.0</jee.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
         <mysql.version>5.1.38</mysql.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
     </properties>
 
     <build>
@@ -33,6 +34,16 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>            
         </plugins>
     </build>
 

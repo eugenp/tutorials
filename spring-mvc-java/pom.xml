@@ -248,8 +248,8 @@
     
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
         <jackson.version>2.7.8</jackson.version>
 

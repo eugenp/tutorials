@@ -1,7 +1,10 @@
 package org.baeldung.gson.entities;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class ActorGson {
 
@@ -18,7 +21,7 @@ public class ActorGson {
 
     @Override
     public String toString() {
-        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + dateOfBirth + ", filmography=" + filmography + "]";
+        return "ActorGson [imdbId=" + imdbId + ", dateOfBirth=" + formatDateOfBirth() + ", filmography=" + filmography + "]";
     }
 
     public String getImdbId() {
@@ -45,5 +48,10 @@ public class ActorGson {
         this.filmography = filmography;
     }
 
+    private String formatDateOfBirth() {
+        final DateFormat formatter = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
+        formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
+        return formatter.format(dateOfBirth);
+    }
 
 }

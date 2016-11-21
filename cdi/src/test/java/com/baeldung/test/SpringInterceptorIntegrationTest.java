@@ -23,12 +23,16 @@ public class SpringInterceptorIntegrationTest {
     @Autowired
     private List<String> accumulator;
 
+    //
+
     @Test
     public void givenService_whenServiceAndAspectExecuted_thenOk() {
         String code = "123456";
         String result = springSuperService.getInfoFromService(code);
+
         Assert.assertThat(accumulator.size(), is(2));
         Assert.assertThat(accumulator.get(0), is("Call to getInfoFromService"));
         Assert.assertThat(accumulator.get(1), is("Method called successfully: getInfoFromService"));
     }
+
 }

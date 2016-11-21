@@ -1,5 +1,8 @@
 package org.baeldung.httpclient.base;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -11,9 +14,9 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-
+/*
+ * NOTE : Need module spring-security-rest-basic-auth to be running
+ */
 public class HttpClientSandboxLiveTest {
 
     @Test
@@ -22,10 +25,10 @@ public class HttpClientSandboxLiveTest {
         final AuthScope authscp = new AuthScope("localhost", 8080);
         credentialsProvider.setCredentials(authscp, new UsernamePasswordCredentials("user1", "user1Pass"));
 
-        CloseableHttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
+        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultCredentialsProvider(credentialsProvider).build();
 
         final HttpGet httpGet = new HttpGet("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1");
-        CloseableHttpResponse response = client.execute(httpGet);
+        final CloseableHttpResponse response = client.execute(httpGet);
 
         System.out.println(response.getStatusLine());
 

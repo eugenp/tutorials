@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+	<Appenders>
+		<Console name="stdout" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%-4r [%t] %5p %c{1} - %m - tx.id=%X{transaction.id} tx.owner=%X{transaction.owner}%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.baeldung.log4j2" level="TRACE" />
+
+		<AsyncRoot level="DEBUG">
+			<AppenderRef ref="stdout" />
+		</AsyncRoot>
+	</Loggers>
+</Configuration>
