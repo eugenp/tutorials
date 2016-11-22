@@ -56,14 +56,12 @@ public class OkHttpPostingLiveTest {
     @Test
     public void whenSendPostRequestWithAuthorization_thenCorrect() throws IOException {
 
-        String postBody = "test post";
-
         client = new OkHttpClient();
 
         Request request = new Request.Builder()
                 .url(URL_SECURED_BY_BASIC_AUTHENTICATION)
                 .addHeader("Authorization", Credentials.basic("test", "test"))
-                .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), postBody))
+                .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), "test post"))
                 .build();
 
         Call call = client.newCall(request);
@@ -77,9 +75,7 @@ public class OkHttpPostingLiveTest {
 
         client = new OkHttpClient();
 
-        String json = "{\"id\":1,\"name\":\"John\"}";
-
-        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), "{\"id\":1,\"name\":\"John\"}");
 
         Request request = new Request.Builder()
             .url(BASE_URL + "/users/detail")
