@@ -27,68 +27,66 @@ import org.springframework.context.annotation.Profile;
 @Controller
 @Profile("manual")
 public class RegistrationController {
-	private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
-	@Autowired
-	AuthenticationManager authenticationManager;
+    @Autowired
+    AuthenticationManager authenticationManager;
 
-	/**
-	 * For demo purposes this need only be a GET request method
-	 * 
-	 * @param request
-	 * @param response
-	 * @return The view. Page confirming either successful registration (and/or
-	 *         successful authentication) or failed registration.
-	 */
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String registerAndAuthenticate(HttpServletRequest request, HttpServletResponse response) {
-		logger.debug("registerAndAuthenticate: attempt to register, application should manually authenticate.");
+    /**
+     * For demo purposes this need only be a GET request method
+     * 
+     * @param request
+     * @param response
+     * @return The view. Page confirming either successful registration (and/or
+     *         successful authentication) or failed registration.
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String registerAndAuthenticate(HttpServletRequest request, HttpServletResponse response) {
+        logger.debug("registerAndAuthenticate: attempt to register, application should manually authenticate.");
 
-		// Mocked values. Potentially could come from an HTML registration form,
-		// in which case this mapping would match on an HTTP POST, rather than a GET
-		String username = "user";
-		String password = "password";
+        // Mocked values. Potentially could come from an HTML registration form,
+        // in which case this mapping would match on an HTTP POST, rather than a GET
+        String username = "user";
+        String password = "password";
 
-		String view = "registrationSuccess";
+        String view = "registrationSuccess";
 
-		if (requestQualifiesForManualAuthentication()) {
-			try {
-				authenticate(username, password, request, response);
-				logger.debug("registerAndAuthenticate: authentication completed.");
-			} catch (BadCredentialsException bce) {
-				logger.debug("Authentication failure: bad credentials");
-				bce.printStackTrace();
-				view = "systemError"; // assume a low-level error, since the registration 
-				// form would have been successfully validated
-			}
-		}
+        if (requestQualifiesForManualAuthentication()) {
+            try {
+                authenticate(username, password, request, response);
+                logger.debug("registerAndAuthenticate: authentication completed.");
+            } catch (BadCredentialsException bce) {
+                logger.debug("Authentication failure: bad credentials");
+                bce.printStackTrace();
+                view = "systemError"; // assume a low-level error, since the registration
+                // form would have been successfully validated
+            }
+        }
 
-		return view;
-	}
+        return view;
+    }
 
-	private boolean requestQualifiesForManualAuthentication() {
-		// Some processing to determine that the user requires a Spring Security-recognized, 
-		// application-directed login e.g. successful account registration.
-		return true;
-	}
+    private boolean requestQualifiesForManualAuthentication() {
+        // Some processing to determine that the user requires a Spring Security-recognized,
+        // application-directed login e.g. successful account registration.
+        return true;
+    }
 
-	private void authenticate(String username, String password, HttpServletRequest request,
-			HttpServletResponse response) throws BadCredentialsException {
-		logger.debug("attempting to authenticated, manually ... ");
+    private void authenticate(String username, String password, HttpServletRequest request, HttpServletResponse response) throws BadCredentialsException {
+        logger.debug("attempting to authenticated, manually ... ");
 
-		// create and populate the token
-		AbstractAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-		authToken.setDetails(new WebAuthenticationDetails(request));
-		
-		// This call returns an authentication object, which holds principle and user credentials
-		Authentication authentication = this.authenticationManager
-				.authenticate(authToken);
+        // create and populate the token
+        AbstractAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+        authToken.setDetails(new WebAuthenticationDetails(request));
 
-		// The security context holds the authentication object, and is stored
-		// in thread local scope.
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+        // This call returns an authentication object, which holds principle and user credentials
+        Authentication authentication = this.authenticationManager.authenticate(authToken);
 
-		logger.debug("User should now be authenticated.");
-	}
+        // The security context holds the authentication object, and is stored
+        // in thread local scope.
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        logger.debug("User should now be authenticated.");
+    }
 
 }
