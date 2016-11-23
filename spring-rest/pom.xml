@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-rest</artifactId>
@@ -9,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.5.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -23,6 +24,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
         <!-- Spring -->
@@ -49,7 +54,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>1.3.2</version>
         </dependency>
         <!-- web -->
 
@@ -73,9 +78,9 @@
         </dependency>
 
         <dependency>
-		    <groupId>com.fasterxml.jackson.dataformat</groupId>
-		    <artifactId>jackson-dataformat-xml</artifactId>
-		</dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
@@ -94,7 +99,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.2.1</version>
+            <version>3.5</version>
         </dependency>
 
         <!-- logging -->
@@ -157,16 +162,21 @@
         </dependency>
 
         <dependency>
-		    <groupId>com.jayway.restassured</groupId>
-		    <artifactId>rest-assured</artifactId>
-		    <version>${rest-assured.version}</version>
-		</dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
 
-        <!--  -->
+        <!-- -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>2.6.1</version>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.protobuf-java-format</groupId>
+            <artifactId>protobuf-java-format</artifactId>
+            <version>1.4</version>
         </dependency>
 
         <dependency>
@@ -206,7 +216,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                         <exclude>**/*LiveTest.java</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -240,6 +251,36 @@
     </build>
 
     <profiles>
+
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+
         <profile>
             <id>live</id>
             <build>
@@ -292,6 +333,7 @@
                 </plugins>
             </build>
         </profile>
+
     </profiles>
 
     <properties>
@@ -299,13 +341,13 @@
 
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.39</mysql-connector-java.version>
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 
         <!-- various -->
         <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
 
         <!-- util -->
-        <guava.version>19.0</guava.version>
+        <guava.version>20.0</guava.version>
         <commons-lang3.version>3.4</commons-lang3.version>
 
         <!-- testing -->
@@ -323,7 +365,7 @@
         <logback.version>1.1.3</logback.version>
 
         <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
@@ -332,7 +374,8 @@
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
 
     </properties>
-	<reporting>
+
+    <reporting>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -345,4 +388,5 @@
             </plugin>
         </plugins>
     </reporting>
+
 </project>
