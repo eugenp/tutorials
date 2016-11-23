@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import java.io.File;
 import java.io.IOException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import okhttp3.Call;
@@ -23,11 +24,16 @@ public class OkHttpPostingLiveTest {
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
 
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
+
     @Test
     public void whenSendPostRequest_thenCorrect() throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-
         RequestBody formBody = new FormBody.Builder()
           .add("username", "test")
           .add("password", "test")
@@ -46,10 +52,7 @@ public class OkHttpPostingLiveTest {
 
     @Test
     public void whenSendPostRequestWithAuthorization_thenCorrect() throws IOException {
-
         String postBody = "test post";
-
-        OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
                 .url(URL_SECURED_BY_BASIC_AUTHENTICATION)
@@ -65,9 +68,6 @@ public class OkHttpPostingLiveTest {
 
     @Test
     public void whenPostJson_thenCorrect() throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-
         String json = "{\"id\":1,\"name\":\"John\"}";
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
@@ -85,9 +85,6 @@ public class OkHttpPostingLiveTest {
 
     @Test
     public void whenSendMultipartRequest_thenCorrect() throws IOException {
-
-        OkHttpClient client = new OkHttpClient();
-
         RequestBody requestBody = new MultipartBody.Builder()
           .setType(MultipartBody.FORM)
           .addFormDataPart("username", "test")
