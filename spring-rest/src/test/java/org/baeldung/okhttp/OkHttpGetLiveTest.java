@@ -1,18 +1,20 @@
 package org.baeldung.okhttp;
 
-import okhttp3.*;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import java.io.IOException;
+
 import org.junit.Before;
 import org.junit.Test;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
 
 public class OkHttpGetLiveTest {
 
@@ -23,14 +25,12 @@ public class OkHttpGetLiveTest {
     @Before
     public void init() {
 
-    	client = new OkHttpClient();
+        client = new OkHttpClient();
     }
 
     @Test
     public void whenGetRequest_thenCorrect() throws IOException {
-        Request request = new Request.Builder()
-          .url(BASE_URL + "/date")
-          .build();
+        Request request = new Request.Builder().url(BASE_URL + "/date").build();
 
         Call call = client.newCall(request);
         Response response = call.execute();
@@ -45,9 +45,7 @@ public class OkHttpGetLiveTest {
 
         String url = urlBuilder.build().toString();
 
-        Request request = new Request.Builder()
-          .url(url)
-          .build();
+        Request request = new Request.Builder().url(url).build();
 
         Call call = client.newCall(request);
         Response response = call.execute();
@@ -57,9 +55,7 @@ public class OkHttpGetLiveTest {
 
     @Test
     public void whenAsynchronousGetRequest_thenCorrect() throws InterruptedException {
-        Request request = new Request.Builder()
-          .url(BASE_URL + "/date")
-          .build();
+        Request request = new Request.Builder().url(BASE_URL + "/date").build();
 
         Call call = client.newCall(request);
 
@@ -69,7 +65,7 @@ public class OkHttpGetLiveTest {
             }
 
             public void onFailure(Call call, IOException e) {
-            	fail();
+                fail();
             }
         });
 
