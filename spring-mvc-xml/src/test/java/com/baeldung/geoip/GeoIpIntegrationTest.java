@@ -15,10 +15,10 @@ public class GeoIpIntegrationTest {
     
     @Test
     public void givenIP_whenFetchingCity_thenReturnsCityData() throws IOException, GeoIp2Exception {
-        File database = new File("C:\\Users\\Parth Joshi\\Desktop\\GeoLite2-City.mmdb\\GeoLite2-City.mmdb");
+        File database = new File("your-path-to-db-file");
         DatabaseReader dbReader = new DatabaseReader.Builder(database).build();
         
-        InetAddress ipAddress = InetAddress.getByName("202.47.112.9");
+        InetAddress ipAddress = InetAddress.getByName("your-public-ip");
         CityResponse response = dbReader.city(ipAddress);
         
         String countryName = response.getCountry().getName();
