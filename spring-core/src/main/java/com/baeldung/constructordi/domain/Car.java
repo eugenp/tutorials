@@ -1,4 +1,4 @@
-package com.baeldung.spring.domain;
+package com.baeldung.constructordi.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

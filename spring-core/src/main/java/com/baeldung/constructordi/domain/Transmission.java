@@ -1,4 +1,4 @@
-package com.baeldung.spring.domain;
+package com.baeldung.constructordi.domain;
 
 public class Transmission {
 	private String type;

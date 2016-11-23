@@ -1,14 +1,14 @@
-package com.baeldung.spring;
+package com.baeldung.constructordi;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.baeldung.spring.domain.Engine;
-import com.baeldung.spring.domain.Transmission;
+import com.baeldung.constructordi.domain.Engine;
+import com.baeldung.constructordi.domain.Transmission;
 
 @Configuration
-@ComponentScan("com.baeldung.spring")
+@ComponentScan("com.baeldung.constructordi")
 public class Config {
 
     @Bean
