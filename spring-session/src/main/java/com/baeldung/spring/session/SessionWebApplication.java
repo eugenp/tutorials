@@ -1,11 +1,11 @@
-package com.baeldung.spring.session.jettyex;
+package com.baeldung.spring.session;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JettyWebApplication {
+public class SessionWebApplication {
     public static void main(String[] args) {
-        SpringApplication.run(JettyWebApplication.class, args);
+        SpringApplication.run(SessionWebApplication.class, args);
     }
 }

@@ -1,4 +1,4 @@
-package com.baeldung.spring.session.tomcatex;
+package com.baeldung.spring.session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .httpBasic().and()
             .authorizeRequests()
-            .antMatchers("/tomcat/admin").hasRole("ADMIN")
+            .antMatchers("/").hasRole("ADMIN")
             .anyRequest().authenticated();
     }
 }

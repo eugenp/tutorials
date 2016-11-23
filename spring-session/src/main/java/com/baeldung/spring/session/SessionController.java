@@ -1,12 +1,12 @@
-package com.baeldung.spring.session.tomcatex;
+package com.baeldung.spring.session;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TomcatController {
-    @RequestMapping("/tomcat/admin")
+public class SessionController {
+    @RequestMapping("/")
     public String helloTomcatAdmin() {
-        return "hello tomcat admin";
+        return "hello admin";
     }
 }
