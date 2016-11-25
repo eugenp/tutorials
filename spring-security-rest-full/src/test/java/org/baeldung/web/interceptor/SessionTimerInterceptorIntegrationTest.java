@@ -5,8 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import javax.servlet.http.HttpSession;
 
+import org.baeldung.security.spring.SecurityWithoutCsrfConfig;
 import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.SecurityWithoutCsrfConfig;
 import org.baeldung.spring.WebConfig;
 import org.junit.Before;
 import org.junit.Test;

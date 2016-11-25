@@ -20,12 +20,10 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * Created by Olga on 7/20/2016.
- */
 @Controller
 @RequestMapping("/mail")
 public class MailController {
+
     @Autowired
     public EmailServiceImpl emailService;
 
@@ -33,7 +31,6 @@ public class MailController {
     private String attachmentPath;
 
     @Autowired
-    @Qualifier("templateSimpleMessage")
     public SimpleMailMessage template;
 
     private static final Map<String, Map<String, String>> labels;

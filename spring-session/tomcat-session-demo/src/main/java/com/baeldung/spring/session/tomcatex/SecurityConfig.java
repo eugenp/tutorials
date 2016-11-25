@@ -13,8 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER").and()
+        auth
+                .inMemoryAuthentication()
                 .withUser("admin").password("password").roles("ADMIN");
     }
 
@@ -23,8 +23,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic().and()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/tomcat").hasRole("USER")
                 .antMatchers("/tomcat/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
     }
