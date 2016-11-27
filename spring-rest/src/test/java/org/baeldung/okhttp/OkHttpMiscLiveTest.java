@@ -4,22 +4,37 @@ import okhttp3.*;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import org.junit.Before;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import okhttp3.Cache;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class OkHttpMiscLiveTest {
 
     private static final String BASE_URL = "http://localhost:8080/spring-rest";
     private static Logger logger = LoggerFactory.getLogger(OkHttpMiscLiveTest.class);
 
+    OkHttpClient client;
+
+    @Before
+    public void init() {
+
+    	client = new OkHttpClient();
+    }
+
     @Test
     public void whenSetRequestTimeout_thenFail() throws IOException {
-
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient clientWithTimeout = new OkHttpClient.Builder()
           .readTimeout(1, TimeUnit.SECONDS)
           .build();
 
@@ -27,17 +42,14 @@ public class OkHttpMiscLiveTest {
           .url(BASE_URL + "/delay/2")  // This URL is served with a 2 second delay.
           .build();
 
-        Call call = client.newCall(request);
+        Call call = clientWithTimeout.newCall(request);
         Response response = call.execute();
         response.close();
     }
 
     @Test(expected = IOException.class)
     public void whenCancelRequest_thenCorrect() throws IOException {
-
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
-        OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
           .url(BASE_URL + "/delay/2")  // This URL is served with a 2 second delay.
@@ -69,7 +81,7 @@ public class OkHttpMiscLiveTest {
         File cacheDirectory = new File("src/test/resources/cache");
         Cache cache = new Cache(cacheDirectory, cacheSize);
 
-        OkHttpClient client = new OkHttpClient.Builder()
+        OkHttpClient clientCached = new OkHttpClient.Builder()
           .cache(cache)
           .build();
 
@@ -77,10 +89,10 @@ public class OkHttpMiscLiveTest {
           .url("http://publicobject.com/helloworld.txt")
           .build();
 
-        Response response1 = client.newCall(request).execute();
+        Response response1 = clientCached.newCall(request).execute();
         logResponse(response1);
 
-        Response response2 = client.newCall(request).execute();
+        Response response2 = clientCached.newCall(request).execute();
         logResponse(response2);
     }
 

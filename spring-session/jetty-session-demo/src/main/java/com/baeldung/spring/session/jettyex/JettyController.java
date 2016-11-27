@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class JettyController {
     @RequestMapping
     public String helloJetty() {
         return "hello Jetty";

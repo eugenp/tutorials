@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class FactoryBeanAppConfig {
+    
     @Bean
     public ToolFactory toolFactory() {
         ToolFactory factory = new ToolFactory();
