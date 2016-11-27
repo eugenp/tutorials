@@ -51,6 +51,7 @@ public class UserResourceIntTest {
         user.setPassword(RandomStringUtils.random(60));
         user.setActivated(true);
         user.setEmail("test@test.com");
+        user.setPhoneNumber("123-123-1234");
         user.setFirstName("test");
         user.setLastName("test");
         user.setLangKey("en");

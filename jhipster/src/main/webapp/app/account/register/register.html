@@ -72,6 +72,31 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="phoneNumber">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Your phone number"
+                           ng-model="vm.registerAccount.phoneNumber" ng-minlength=5 ng-maxlength=20 required>
+                    <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.required">
+                            Your phone number is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.email">
+                            Your phone number is invalid.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.minlength">
+                            Your phone number is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.maxlength">
+                            Your phone number cannot be longer than 20 characters.
+                        </p>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="control-label" for="password">New password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="New password"
