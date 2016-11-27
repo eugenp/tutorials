@@ -14,7 +14,6 @@
 		<param name="append" value="false" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %p %m%n" />
 		</layout>
 	</appender>
 
@@ -45,7 +44,7 @@
 			<param name="MaxFileSize" value="5" />
 		</triggeringPolicy>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %c - %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
 		</layout>
 	</appender>
 	<appender name="rollout4" class="org.apache.log4j.rolling.RollingFileAppender">

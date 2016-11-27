@@ -1,13 +1,13 @@
-package com.baeldung.log4j2;
+package com.baeldung.logback;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.stream.IntStream;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+public class LogbackRollingExample {
 
-public class Log4j2RollingExample {
-
-    private static final Logger logger = LogManager.getLogger(Log4j2RollingExample.class);
+    private static final Logger logger = LoggerFactory.getLogger(LogbackRollingExample.class);
 
     public static void main(String[] args) {
         IntStream.range(1, 100).forEach(i -> {
