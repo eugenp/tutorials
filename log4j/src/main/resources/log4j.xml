@@ -49,10 +49,22 @@
 	</appender>
 	<appender name="rollout4" class="org.apache.log4j.rolling.RollingFileAppender">
 		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-			<param name="FileNamePattern" value="log4j/target/log4j/roll4/baeldung-log4j-%d{yyyy-MM-dd-HH-mm}.log.gz" />
+			<param name="FileNamePattern" value="log4j/target/log4j/roll4/baeldung-log4j-%d{HH-mm-ss}.log.gz" />
 		</rollingPolicy>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %c - %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %m%n" />
+		</layout>
+	</appender>
+	<appender name="rollout5" class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="ActiveFileName" value="log4j/target/log4j/roll5/baeldung-log4j-current.log" />
+			<param name="FileNamePattern" value="log4j/target/log4j/roll5/baeldung-log4j-%d{HH-mm-ss}.%i.log.gz" />
+		</rollingPolicy>
+		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+			<param name="MaxFileSize" value="100" />
+		</triggeringPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %m%n" />
 		</layout>
 	</appender>
 
@@ -67,6 +79,7 @@
 		<appender-ref ref="rollout2" />
 		<appender-ref ref="rollout3" />
 		<appender-ref ref="rollout4" />
+		<appender-ref ref="rollout5" />
 	</category>
 
 	<root>

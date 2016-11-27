@@ -20,7 +20,25 @@
 				<Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
 			</PatternLayout>
 			<TimeBasedTriggeringPolicy />
-		</RollingFile>        
+		</RollingFile>
+
+        <RollingFile name="rollout2" fileName="log4j/target/log4j2/roll2/baeldung-log4j.log"
+                     filePattern="log4j/target/log4j2/roll1/baeldung-%d{MM-dd-yyyy}.%i.log.gz" ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="1 KB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy>
+                <Delete basePath="${baseDir}" maxDepth="2">
+                    <IfFileName glob="log4j/target/log4j2/roll1/baeldung-*.log.gz" />
+                    <IfLastModified age="20s" />
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
     </Appenders>
 
     <Loggers>
