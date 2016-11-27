@@ -1,13 +1,12 @@
 package com.baeldung.service.dto;
 
 import com.baeldung.config.Constants;
-
 import com.baeldung.domain.Authority;
 import com.baeldung.domain.User;
-
 import org.hibernate.validator.constraints.Email;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,27 +15,19 @@ import java.util.stream.Collectors;
  */
 public class UserDTO {
 
-    @Pattern(regexp = Constants.LOGIN_REGEX)
-    @Size(min = 1, max = 50)
-    private String login;
+    @Pattern(regexp = Constants.LOGIN_REGEX) @Size(min = 1, max = 50) private String login;
 
-    @Size(max = 50)
-    private String firstName;
+    @Size(max = 50) private String firstName;
 
-    @Size(max = 50)
-    private String lastName;
+    @Size(max = 50) private String lastName;
 
-    @Email
-    @Size(min = 5, max = 100)
-    private String email;
+    @Email @Size(min = 5, max = 100) private String email;
 
-    @Size(min = 5, max = 20)
-    private String phoneNumber;
+    @Size(min = 5, max = 20) private String phoneNumber;
 
     private boolean activated = false;
 
-    @Size(min = 2, max = 5)
-    private String langKey;
+    @Size(min = 2, max = 5) private String langKey;
 
     private Set<String> authorities;
 
@@ -44,14 +35,10 @@ public class UserDTO {
     }
 
     public UserDTO(User user) {
-        this(user.getLogin(), user.getFirstName(), user.getLastName(),
-            user.getEmail(), user.getPhoneNumber(), user.getActivated(), user.getLangKey(),
-            user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+        this(user.getLogin(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhoneNumber(), user.getActivated(), user.getLangKey(), user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()));
     }
 
-    public UserDTO(String login, String firstName, String lastName,
-                   String email, String phoneNumber, boolean activated, String langKey, Set<String> authorities) {
+    public UserDTO(String login, String firstName, String lastName, String email, String phoneNumber, boolean activated, String langKey, Set<String> authorities) {
 
         this.login = login;
         this.firstName = firstName;
@@ -95,8 +82,7 @@ public class UserDTO {
         return authorities;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "UserDTO{" +
             "login='" + login + '\'' +
             ", firstName='" + firstName + '\'' +

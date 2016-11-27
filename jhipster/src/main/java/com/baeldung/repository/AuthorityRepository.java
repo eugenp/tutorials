@@ -1,7 +1,6 @@
 package com.baeldung.repository;
 
 import com.baeldung.domain.Authority;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

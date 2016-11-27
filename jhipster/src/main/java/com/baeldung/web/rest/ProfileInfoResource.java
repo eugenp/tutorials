@@ -13,20 +13,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api")
-public class ProfileInfoResource {
+@RestController @RequestMapping("/api") public class ProfileInfoResource {
 
-    @Inject
-    Environment env;
+    @Inject Environment env;
 
-    @Inject
-    private JHipsterProperties jHipsterProperties;
+    @Inject private JHipsterProperties jHipsterProperties;
 
     @RequestMapping(value = "/profile-info",
         method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    public ProfileInfoResponse getActiveProfiles() {
+        produces = MediaType.APPLICATION_JSON_VALUE) public ProfileInfoResponse getActiveProfiles() {
         return new ProfileInfoResponse(DefaultProfileUtil.getActiveProfiles(env), getRibbonEnv());
     }
 

@@ -11,7 +11,7 @@ public final class HeaderUtil {
 
     private static final Logger log = LoggerFactory.getLogger(HeaderUtil.class);
 
-    private HeaderUtil(){
+    private HeaderUtil() {
     }
 
     public static HttpHeaders createAlert(String message, String param) {

@@ -2,7 +2,6 @@ package com.baeldung.service;
 
 import com.baeldung.config.JHipsterProperties;
 import com.baeldung.domain.User;
-
 import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 
-
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import java.util.Locale;
@@ -25,30 +23,21 @@ import java.util.Locale;
  * We use the @Async annotation to send e-mails asynchronously.
  * </p>
  */
-@Service
-public class MailService {
-
-    private final Logger log = LoggerFactory.getLogger(MailService.class);
+@Service public class MailService {
 
     private static final String USER = "user";
     private static final String BASE_URL = "baseUrl";
+    private final Logger log = LoggerFactory.getLogger(MailService.class);
+    @Inject private JHipsterProperties jHipsterProperties;
 
-    @Inject
-    private JHipsterProperties jHipsterProperties;
+    @Inject private JavaMailSenderImpl javaMailSender;
 
-    @Inject
-    private JavaMailSenderImpl javaMailSender;
+    @Inject private MessageSource messageSource;
 
-    @Inject
-    private MessageSource messageSource;
+    @Inject private SpringTemplateEngine templateEngine;
 
-    @Inject
-    private SpringTemplateEngine templateEngine;
-
-    @Async
-    public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
-        log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}",
-            isMultipart, isHtml, to, subject, content);
+    @Async public void sendEmail(String to, String subject, String content, boolean isMultipart, boolean isHtml) {
+        log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}", isMultipart, isHtml, to, subject, content);
 
         // Prepare message using a Spring helper
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -65,8 +54,7 @@ public class MailService {
         }
     }
 
-    @Async
-    public void sendActivationEmail(User user, String baseUrl) {
+    @Async public void sendActivationEmail(User user, String baseUrl) {
         log.debug("Sending activation e-mail to '{}'", user.getEmail());
         Locale locale = Locale.forLanguageTag(user.getLangKey());
         Context context = new Context(locale);
@@ -77,8 +65,7 @@ public class MailService {
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 
-    @Async
-    public void sendCreationEmail(User user, String baseUrl) {
+    @Async public void sendCreationEmail(User user, String baseUrl) {
         log.debug("Sending creation e-mail to '{}'", user.getEmail());
         Locale locale = Locale.forLanguageTag(user.getLangKey());
         Context context = new Context(locale);
@@ -89,8 +76,7 @@ public class MailService {
         sendEmail(user.getEmail(), subject, content, false, true);
     }
 
-    @Async
-    public void sendPasswordResetMail(User user, String baseUrl) {
+    @Async public void sendPasswordResetMail(User user, String baseUrl) {
         log.debug("Sending password reset e-mail to '{}'", user.getEmail());
         Locale locale = Locale.forLanguageTag(user.getLangKey());
         Context context = new Context(locale);

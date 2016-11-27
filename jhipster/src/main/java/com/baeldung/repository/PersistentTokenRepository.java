@@ -2,9 +2,9 @@ package com.baeldung.repository;
 
 import com.baeldung.domain.PersistentToken;
 import com.baeldung.domain.User;
-import java.time.LocalDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**

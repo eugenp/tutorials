@@ -2,7 +2,6 @@ package com.baeldung.repository;
 
 import com.baeldung.config.audit.AuditEventConverter;
 import com.baeldung.domain.PersistentAuditEvent;
-
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.stereotype.Repository;
@@ -19,52 +18,40 @@ import java.util.List;
 /**
  * An implementation of Spring Boot's AuditEventRepository.
  */
-@Repository
-public class CustomAuditEventRepository implements AuditEventRepository {
+@Repository public class CustomAuditEventRepository implements AuditEventRepository {
 
     private static final String AUTHORIZATION_FAILURE = "AUTHORIZATION_FAILURE";
 
     private static final String ANONYMOUS_USER = "anonymoususer";
 
-    @Inject
-    private PersistenceAuditEventRepository persistenceAuditEventRepository;
+    @Inject private PersistenceAuditEventRepository persistenceAuditEventRepository;
 
-    @Inject
-    private AuditEventConverter auditEventConverter;
+    @Inject private AuditEventConverter auditEventConverter;
 
-    @Override
-    public List<AuditEvent> find(Date after) {
-        Iterable<PersistentAuditEvent> persistentAuditEvents =
-            persistenceAuditEventRepository.findByAuditEventDateAfter(LocalDateTime.from(after.toInstant()));
+    @Override public List<AuditEvent> find(Date after) {
+        Iterable<PersistentAuditEvent> persistentAuditEvents = persistenceAuditEventRepository.findByAuditEventDateAfter(LocalDateTime.from(after.toInstant()));
         return auditEventConverter.convertToAuditEvent(persistentAuditEvents);
     }
 
-    @Override
-    public List<AuditEvent> find(String principal, Date after) {
+    @Override public List<AuditEvent> find(String principal, Date after) {
         Iterable<PersistentAuditEvent> persistentAuditEvents;
         if (principal == null && after == null) {
             persistentAuditEvents = persistenceAuditEventRepository.findAll();
         } else if (after == null) {
             persistentAuditEvents = persistenceAuditEventRepository.findByPrincipal(principal);
         } else {
-            persistentAuditEvents =
-                persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfter(principal, LocalDateTime.from(after.toInstant()));
+            persistentAuditEvents = persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfter(principal, LocalDateTime.from(after.toInstant()));
         }
         return auditEventConverter.convertToAuditEvent(persistentAuditEvents);
     }
 
-    @Override
-    public List<AuditEvent> find(String principal, Date after, String type) {
-        Iterable<PersistentAuditEvent> persistentAuditEvents =
-            persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfterAndAuditEventType(principal, LocalDateTime.from(after.toInstant()), type);
+    @Override public List<AuditEvent> find(String principal, Date after, String type) {
+        Iterable<PersistentAuditEvent> persistentAuditEvents = persistenceAuditEventRepository.findByPrincipalAndAuditEventDateAfterAndAuditEventType(principal, LocalDateTime.from(after.toInstant()), type);
         return auditEventConverter.convertToAuditEvent(persistentAuditEvents);
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void add(AuditEvent event) {
-        if (!AUTHORIZATION_FAILURE.equals(event.getType()) &&
-            !ANONYMOUS_USER.equals(event.getPrincipal().toString())) {
+    @Override @Transactional(propagation = Propagation.REQUIRES_NEW) public void add(AuditEvent event) {
+        if (!AUTHORIZATION_FAILURE.equals(event.getType()) && !ANONYMOUS_USER.equals(event.getPrincipal().toString())) {
 
             PersistentAuditEvent persistentAuditEvent = new PersistentAuditEvent();
             persistentAuditEvent.setPrincipal(event.getPrincipal());

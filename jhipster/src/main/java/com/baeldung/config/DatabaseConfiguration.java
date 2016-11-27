@@ -1,7 +1,6 @@
 package com.baeldung.config;
 
 import com.baeldung.config.liquibase.AsyncSpringLiquibase;
-
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import liquibase.integration.spring.SpringLiquibase;
 import org.h2.tools.Server;
@@ -20,16 +19,11 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
-@Configuration
-@EnableJpaRepositories("com.baeldung.repository")
-@EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
-@EnableTransactionManagement
-public class DatabaseConfiguration {
+@Configuration @EnableJpaRepositories("com.baeldung.repository") @EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware") @EnableTransactionManagement public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
-    @Inject
-    private Environment env;
+    @Inject private Environment env;
 
     /**
      * Open the TCP port for the H2 database, so it is available remotely.
@@ -37,14 +31,11 @@ public class DatabaseConfiguration {
      * @return the H2 database TCP server
      * @throws SQLException if the server failed to start
      */
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    @Profile(Constants.SPRING_PROFILE_DEVELOPMENT)
-    public Server h2TCPServer() throws SQLException {
-        return Server.createTcpServer("-tcp","-tcpAllowOthers");
+    @Bean(initMethod = "start", destroyMethod = "stop") @Profile(Constants.SPRING_PROFILE_DEVELOPMENT) public Server h2TCPServer() throws SQLException {
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers");
     }
 
-    @Bean
-    public SpringLiquibase liquibase(DataSource dataSource, LiquibaseProperties liquibaseProperties) {
+    @Bean public SpringLiquibase liquibase(DataSource dataSource, LiquibaseProperties liquibaseProperties) {
 
         // Use liquibase.integration.spring.SpringLiquibase if you don't want Liquibase to start asynchronously
         SpringLiquibase liquibase = new AsyncSpringLiquibase();
@@ -62,8 +53,7 @@ public class DatabaseConfiguration {
         return liquibase;
     }
 
-    @Bean
-    public Hibernate4Module hibernate4Module() {
+    @Bean public Hibernate4Module hibernate4Module() {
         return new Hibernate4Module();
     }
 }

@@ -4,7 +4,6 @@ import com.baeldung.BaeldungApp;
 import com.baeldung.domain.User;
 import com.baeldung.repository.UserRepository;
 import com.baeldung.service.UserService;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,15 +26,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @see UserResource
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = BaeldungApp.class)
-public class UserResourceIntTest {
+@RunWith(SpringRunner.class) @SpringBootTest(classes = BaeldungApp.class) public class UserResourceIntTest {
 
-    @Inject
-    private UserRepository userRepository;
+    @Inject private UserRepository userRepository;
 
-    @Inject
-    private UserService userService;
+    @Inject private UserService userService;
 
     private MockMvc restUserMockMvc;
 
@@ -60,27 +55,18 @@ public class UserResourceIntTest {
         return user;
     }
 
-    @Before
-    public void setup() {
+    @Before public void setup() {
         UserResource userResource = new UserResource();
         ReflectionTestUtils.setField(userResource, "userRepository", userRepository);
         ReflectionTestUtils.setField(userResource, "userService", userService);
         this.restUserMockMvc = MockMvcBuilders.standaloneSetup(userResource).build();
     }
 
-    @Test
-    public void testGetExistingUser() throws Exception {
-        restUserMockMvc.perform(get("/api/users/admin")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
-                .andExpect(jsonPath("$.lastName").value("Administrator"));
+    @Test public void testGetExistingUser() throws Exception {
+        restUserMockMvc.perform(get("/api/users/admin").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)).andExpect(jsonPath("$.lastName").value("Administrator"));
     }
 
-    @Test
-    public void testGetUnknownUser() throws Exception {
-        restUserMockMvc.perform(get("/api/users/unknown")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+    @Test public void testGetUnknownUser() throws Exception {
+        restUserMockMvc.perform(get("/api/users/unknown").accept(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
     }
 }

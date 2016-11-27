@@ -25,60 +25,36 @@ import static com.google.common.collect.Lists.newArrayList;
 import static springfox.documentation.schema.ResolvedTypes.modelRefFactory;
 import static springfox.documentation.spi.schema.contexts.ModelContext.inputParam;
 
-@Component
-@Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER)
-@Profile(Constants.SPRING_PROFILE_SWAGGER)
-public class PageableParameterBuilderPlugin implements ParameterBuilderPlugin {
+@Component @Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER) @Profile(Constants.SPRING_PROFILE_SWAGGER) public class PageableParameterBuilderPlugin implements ParameterBuilderPlugin {
     private final TypeNameExtractor nameExtractor;
     private final TypeResolver resolver;
 
-    @Autowired
-    public PageableParameterBuilderPlugin(TypeNameExtractor nameExtractor, TypeResolver resolver) {
+    @Autowired public PageableParameterBuilderPlugin(TypeNameExtractor nameExtractor, TypeResolver resolver) {
         this.nameExtractor = nameExtractor;
         this.resolver = resolver;
     }
 
-    @Override
-    public boolean supports(DocumentationType delimiter) {
+    @Override public boolean supports(DocumentationType delimiter) {
         return true;
     }
 
-    private Function<ResolvedType, ? extends ModelReference>
-    createModelRefFactory(ParameterContext context) {
-        ModelContext modelContext = inputParam(context.methodParameter().getParameterType(),
-            context.getDocumentationType(),
-            context.getAlternateTypeProvider(),
-            context.getGenericNamingStrategy(),
-            context.getIgnorableParameterTypes());
+    private Function<ResolvedType, ? extends ModelReference> createModelRefFactory(ParameterContext context) {
+        ModelContext modelContext = inputParam(context.methodParameter().getParameterType(), context.getDocumentationType(), context.getAlternateTypeProvider(), context.getGenericNamingStrategy(), context.getIgnorableParameterTypes());
         return modelRefFactory(modelContext, nameExtractor);
     }
 
-    @Override
-    public void apply(ParameterContext context) {
+    @Override public void apply(ParameterContext context) {
         MethodParameter parameter = context.methodParameter();
         Class<?> type = parameter.getParameterType();
         if (type != null && Pageable.class.isAssignableFrom(type)) {
-            Function<ResolvedType, ? extends ModelReference> factory =
-                createModelRefFactory(context);
+            Function<ResolvedType, ? extends ModelReference> factory = createModelRefFactory(context);
 
             ModelReference intModel = factory.apply(resolver.resolve(Integer.TYPE));
             ModelReference stringModel = factory.apply(resolver.resolve(List.class, String.class));
 
-            List<Parameter> parameters = newArrayList(
-                context.parameterBuilder()
-                    .parameterType("query").name("page").modelRef(intModel)
-                    .description("Page number of the requested page")
-                    .build(),
-                context.parameterBuilder()
-                    .parameterType("query").name("size").modelRef(intModel)
-                    .description("Size of a page")
-                    .build(),
-                context.parameterBuilder()
-                    .parameterType("query").name("sort").modelRef(stringModel).allowMultiple(true)
-                    .description("Sorting criteria in the format: property(,asc|desc). "
-                        + "Default sort order is ascending. "
-                        + "Multiple sort criteria are supported.")
-                    .build());
+            List<Parameter> parameters = newArrayList(context.parameterBuilder().parameterType("query").name("page").modelRef(intModel).description("Page number of the requested page").build(),
+                context.parameterBuilder().parameterType("query").name("size").modelRef(intModel).description("Size of a page").build(), context.parameterBuilder().parameterType("query").name("sort").modelRef(stringModel).allowMultiple(true)
+                    .description("Sorting criteria in the format: property(,asc|desc). " + "Default sort order is ascending. " + "Multiple sort criteria are supported.").build());
 
             context.getOperationContext().operationBuilder().parameters(parameters);
         }

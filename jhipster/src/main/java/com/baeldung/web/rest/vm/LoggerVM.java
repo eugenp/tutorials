@@ -17,8 +17,7 @@ public class LoggerVM {
         this.level = logger.getEffectiveLevel().toString();
     }
 
-    @JsonCreator
-    public LoggerVM() {
+    @JsonCreator public LoggerVM() {
     }
 
     public String getName() {
@@ -37,8 +36,7 @@ public class LoggerVM {
         this.level = level;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "LoggerVM{" +
             "name='" + name + '\'' +
             ", level='" + level + '\'' +

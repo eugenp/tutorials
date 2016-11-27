@@ -15,11 +15,10 @@ import java.net.URISyntaxException;
  */
 public final class PaginationUtil {
 
-    private PaginationUtil(){
+    private PaginationUtil() {
     }
 
-    public static HttpHeaders generatePaginationHttpHeaders(Page<?> page, String baseUrl)
-        throws URISyntaxException {
+    public static HttpHeaders generatePaginationHttpHeaders(Page<?> page, String baseUrl) throws URISyntaxException {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Count", "" + page.getTotalElements());

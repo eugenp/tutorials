@@ -1,13 +1,11 @@
 package com.baeldung.web.rest.vm;
 
-import java.time.ZonedDateTime;
-
-import java.util.Set;
-
 import com.baeldung.domain.User;
 import com.baeldung.service.dto.UserDTO;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
+import java.time.ZonedDateTime;
+import java.util.Set;
 
 /**
  * View Model extending the UserDTO, which is meant to be used in the user management UI.
@@ -27,8 +25,7 @@ public class ManagedUserVM extends UserDTO {
 
     private ZonedDateTime lastModifiedDate;
 
-    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
-    private String password;
+    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH) private String password;
 
     public ManagedUserVM() {
     }
@@ -43,9 +40,8 @@ public class ManagedUserVM extends UserDTO {
         this.password = null;
     }
 
-    public ManagedUserVM(Long id, String login, String password, String firstName, String lastName,
-                         String email, String phone, boolean activated, String langKey, Set<String> authorities,
-                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
+    public ManagedUserVM(Long id, String login, String password, String firstName, String lastName, String email, String phone, boolean activated, String langKey, Set<String> authorities, String createdBy, ZonedDateTime createdDate, String lastModifiedBy,
+        ZonedDateTime lastModifiedDate) {
         super(login, firstName, lastName, email, phone, activated, langKey, authorities);
         this.id = id;
         this.createdBy = createdBy;
@@ -62,7 +58,6 @@ public class ManagedUserVM extends UserDTO {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getCreatedBy() {
         return createdBy;
@@ -100,8 +95,7 @@ public class ManagedUserVM extends UserDTO {
         return password;
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return "ManagedUserVM{" +
             "id=" + id +
             ", createdBy=" + createdBy +

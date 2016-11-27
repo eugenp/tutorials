@@ -6,10 +6,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 import java.util.TimeZone;
-
-import javax.servlet.http.*;
 
 /**
  * Angular cookie saved the locale with a double quote (%22en%22).
@@ -20,30 +21,25 @@ import javax.servlet.http.*;
  */
 public class AngularCookieLocaleResolver extends CookieLocaleResolver {
 
-    @Override
-    public Locale resolveLocale(HttpServletRequest request) {
+    @Override public Locale resolveLocale(HttpServletRequest request) {
         parseLocaleCookieIfNecessary(request);
         return (Locale) request.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME);
     }
 
-    @Override
-    public LocaleContext resolveLocaleContext(final HttpServletRequest request) {
+    @Override public LocaleContext resolveLocaleContext(final HttpServletRequest request) {
         parseLocaleCookieIfNecessary(request);
         return new TimeZoneAwareLocaleContext() {
-            @Override
-            public Locale getLocale() {
+            @Override public Locale getLocale() {
                 return (Locale) request.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME);
             }
 
-            @Override
-            public TimeZone getTimeZone() {
+            @Override public TimeZone getTimeZone() {
                 return (TimeZone) request.getAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME);
             }
         };
     }
 
-    @Override
-    public void addCookie(HttpServletResponse response, String cookieValue) {
+    @Override public void addCookie(HttpServletResponse response, String cookieValue) {
         // Mandatory cookie modification for AngularJS to support the locale switching on the server side.
         super.addCookie(response, "%22" + cookieValue + "%22");
     }
@@ -76,11 +72,9 @@ public class AngularCookieLocaleResolver extends CookieLocaleResolver {
                         "'" + (timeZone != null ? " and time zone '" + timeZone.getID() + "'" : ""));
                 }
             }
-            request.setAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME,
-                (locale != null ? locale: determineDefaultLocale(request)));
+            request.setAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME, (locale != null ? locale : determineDefaultLocale(request)));
 
-            request.setAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME,
-                (timeZone != null ? timeZone : determineDefaultTimeZone(request)));
+            request.setAttribute(TIME_ZONE_REQUEST_ATTRIBUTE_NAME, (timeZone != null ? timeZone : determineDefaultTimeZone(request)));
         }
     }
 }

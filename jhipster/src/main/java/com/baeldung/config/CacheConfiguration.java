@@ -7,8 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.*;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.util.Assert;
 
 import javax.annotation.PreDestroy;
@@ -20,24 +21,17 @@ import javax.persistence.metamodel.PluralAttribute;
 import java.util.Set;
 import java.util.SortedSet;
 
-@SuppressWarnings("unused")
-@Configuration
-@EnableCaching
-@AutoConfigureAfter(value = { MetricsConfiguration.class, DatabaseConfiguration.class })
-public class CacheConfiguration {
+@SuppressWarnings("unused") @Configuration @EnableCaching @AutoConfigureAfter(value = { MetricsConfiguration.class, DatabaseConfiguration.class }) public class CacheConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(CacheConfiguration.class);
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    @PersistenceContext private EntityManager entityManager;
 
-    @Inject
-    private MetricRegistry metricRegistry;
+    @Inject private MetricRegistry metricRegistry;
 
     private net.sf.ehcache.CacheManager cacheManager;
 
-    @PreDestroy
-    public void destroy() {
+    @PreDestroy public void destroy() {
         log.info("Remove Cache Manager metrics");
         SortedSet<String> names = metricRegistry.getNames();
         names.forEach(metricRegistry::remove);
@@ -45,8 +39,7 @@ public class CacheConfiguration {
         cacheManager.shutdown();
     }
 
-    @Bean
-    public CacheManager cacheManager(JHipsterProperties jHipsterProperties) {
+    @Bean public CacheManager cacheManager(JHipsterProperties jHipsterProperties) {
         log.debug("Starting Ehcache");
         cacheManager = net.sf.ehcache.CacheManager.create();
         cacheManager.getConfiguration().setMaxBytesLocalHeap(jHipsterProperties.getCache().getEhcache().getMaxBytesLocalHeap());

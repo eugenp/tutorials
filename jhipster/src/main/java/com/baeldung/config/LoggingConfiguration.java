@@ -12,25 +12,19 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
-@Configuration
-public class LoggingConfiguration {
+@Configuration public class LoggingConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(LoggingConfiguration.class);
 
     private LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
 
-    @Value("${spring.application.name}")
-    private String appName;
+    @Value("${spring.application.name}") private String appName;
 
-    @Value("${server.port}")
-    private String serverPort;
+    @Value("${server.port}") private String serverPort;
 
+    @Inject private JHipsterProperties jHipsterProperties;
 
-    @Inject
-    private JHipsterProperties jHipsterProperties;
-
-    @PostConstruct
-    private void init() {
+    @PostConstruct private void init() {
         if (jHipsterProperties.getLogging().getLogstash().isEnabled()) {
             addLogstashAppender();
         }

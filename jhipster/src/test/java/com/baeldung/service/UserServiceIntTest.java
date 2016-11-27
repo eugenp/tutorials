@@ -5,42 +5,35 @@ import com.baeldung.domain.PersistentToken;
 import com.baeldung.domain.User;
 import com.baeldung.repository.PersistentTokenRepository;
 import com.baeldung.repository.UserRepository;
-import java.time.ZonedDateTime;
 import com.baeldung.service.util.RandomUtil;
-import java.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-import java.util.Optional;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test class for the UserResource REST controller.
  *
  * @see UserService
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = BaeldungApp.class)
-@Transactional
-public class UserServiceIntTest {
+@RunWith(SpringRunner.class) @SpringBootTest(classes = BaeldungApp.class) @Transactional public class UserServiceIntTest {
 
-    @Inject
-    private PersistentTokenRepository persistentTokenRepository;
+    @Inject private PersistentTokenRepository persistentTokenRepository;
 
-    @Inject
-    private UserRepository userRepository;
+    @Inject private UserRepository userRepository;
 
-    @Inject
-    private UserService userService;
+    @Inject private UserService userService;
 
-    @Test
-    public void testRemoveOldPersistentTokens() {
+    @Test public void testRemoveOldPersistentTokens() {
         User admin = userRepository.findOneByLogin("admin").get();
         int existingCount = persistentTokenRepository.findByUser(admin).size();
         generateUserToken(admin, "1111-1111", LocalDate.now());
@@ -51,8 +44,7 @@ public class UserServiceIntTest {
         assertThat(persistentTokenRepository.findByUser(admin)).hasSize(existingCount + 1);
     }
 
-    @Test
-    public void assertThatUserMustExistToResetPassword() {
+    @Test public void assertThatUserMustExistToResetPassword() {
         Optional<User> maybeUser = userService.requestPasswordReset("john.doe@localhost");
         assertThat(maybeUser.isPresent()).isFalse();
 
@@ -64,16 +56,14 @@ public class UserServiceIntTest {
         assertThat(maybeUser.get().getResetKey()).isNotNull();
     }
 
-    @Test
-    public void assertThatOnlyActivatedUserCanRequestPasswordReset() {
+    @Test public void assertThatOnlyActivatedUserCanRequestPasswordReset() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
         Optional<User> maybeUser = userService.requestPasswordReset("john.doe@localhost");
         assertThat(maybeUser.isPresent()).isFalse();
         userRepository.delete(user);
     }
 
-    @Test
-    public void assertThatResetKeyMustNotBeOlderThan24Hours() {
+    @Test public void assertThatResetKeyMustNotBeOlderThan24Hours() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
 
         ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(25);
@@ -91,8 +81,7 @@ public class UserServiceIntTest {
         userRepository.delete(user);
     }
 
-    @Test
-    public void assertThatResetKeyMustBeValid() {
+    @Test public void assertThatResetKeyMustBeValid() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
 
         ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(25);
@@ -105,8 +94,7 @@ public class UserServiceIntTest {
         userRepository.delete(user);
     }
 
-    @Test
-    public void assertThatUserCanResetPassword() {
+    @Test public void assertThatUserCanResetPassword() {
         User user = userService.createUser("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
         String oldPassword = user.getPassword();
         ZonedDateTime daysAgo = ZonedDateTime.now().minusHours(2);
@@ -124,8 +112,7 @@ public class UserServiceIntTest {
         userRepository.delete(user);
     }
 
-    @Test
-    public void testFindNotActivatedUsersByCreationDateBefore() {
+    @Test public void testFindNotActivatedUsersByCreationDateBefore() {
         userService.removeNotActivatedUsers();
         ZonedDateTime now = ZonedDateTime.now();
         List<User> users = userRepository.findAllByActivatedIsFalseAndCreatedDateBefore(now.minusDays(3));

@@ -1,7 +1,8 @@
 package com.baeldung.config.liquibase;
 
-import javax.inject.Inject;
-
+import com.baeldung.config.Constants;
+import liquibase.exception.LiquibaseException;
+import liquibase.integration.spring.SpringLiquibase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,9 +10,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.util.StopWatch;
 
-import com.baeldung.config.Constants;
-import liquibase.exception.LiquibaseException;
-import liquibase.integration.spring.SpringLiquibase;
+import javax.inject.Inject;
 
 /**
  * Specific liquibase.integration.spring.SpringLiquibase that will update the database asynchronously.
@@ -33,15 +32,11 @@ public class AsyncSpringLiquibase extends SpringLiquibase {
     // named "logger" because there is already a field called "log" in "SpringLiquibase"
     private final Logger logger = LoggerFactory.getLogger(AsyncSpringLiquibase.class);
 
-    @Inject
-    @Qualifier("taskExecutor")
-    private TaskExecutor taskExecutor;
+    @Inject @Qualifier("taskExecutor") private TaskExecutor taskExecutor;
 
-    @Inject
-    private Environment env;
+    @Inject private Environment env;
 
-    @Override
-    public void afterPropertiesSet() throws LiquibaseException {
+    @Override public void afterPropertiesSet() throws LiquibaseException {
         if (!env.acceptsProfiles(Constants.SPRING_PROFILE_NO_LIQUIBASE)) {
             if (env.acceptsProfiles(Constants.SPRING_PROFILE_DEVELOPMENT, Constants.SPRING_PROFILE_HEROKU)) {
                 taskExecutor.execute(() -> {

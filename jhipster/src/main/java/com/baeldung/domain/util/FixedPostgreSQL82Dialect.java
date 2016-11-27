@@ -13,8 +13,7 @@ public class FixedPostgreSQL82Dialect extends PostgreSQL82Dialect {
         registerColumnType(Types.BLOB, "bytea");
     }
 
-    @Override
-    public SqlTypeDescriptor remapSqlTypeDescriptor(SqlTypeDescriptor sqlTypeDescriptor) {
+    @Override public SqlTypeDescriptor remapSqlTypeDescriptor(SqlTypeDescriptor sqlTypeDescriptor) {
         if (sqlTypeDescriptor.getSqlType() == java.sql.Types.BLOB) {
             return BinaryTypeDescriptor.INSTANCE;
         }
