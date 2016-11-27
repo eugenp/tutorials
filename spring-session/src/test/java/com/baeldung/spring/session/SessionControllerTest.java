@@ -83,5 +83,4 @@ public class SessionControllerTest {
 
         return new HttpEntity<>(headers);
     }
-
 }
