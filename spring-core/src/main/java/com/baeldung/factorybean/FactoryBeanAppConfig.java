@@ -6,20 +6,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FactoryBeanAppConfig {
     @Bean
-    public ToolFactory tool() {
+    public ToolFactory toolFactory() {
         ToolFactory factory = new ToolFactory();
         factory.setFactoryId(7070);
         factory.setToolId(2);
-        factory.setToolName("wrench");
-        factory.setToolPrice(3.7);
         return factory;
     }
 
     @Bean
-    public Worker worker() throws Exception {
-        Worker worker = new Worker();
-        worker.setNumber("1002");
-        worker.setTool(tool().getObject());
-        return worker;
+    public Tool tool() throws Exception {
+        return toolFactory().getObject();
     }
 }
