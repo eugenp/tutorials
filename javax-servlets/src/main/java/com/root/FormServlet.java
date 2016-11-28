@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "FormServlet", urlPatterns = "/calculateServlet")
 public class FormServlet extends HttpServlet {
@@ -21,10 +20,10 @@ public class FormServlet extends HttpServlet {
 
         try {
             double bmi = calculateBMI(Double.parseDouble(weight), Double.parseDouble(height));
-            request.setAttribute("bmi", bmi);
 
-            PrintWriter out= response.getWriter();
-            out.write(String.valueOf(bmi));
+            request.setAttribute("bmi", bmi);
+            response.setHeader("Test", "Success");
+            response.setHeader("BMI", String.valueOf(bmi));
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
@@ -32,6 +31,13 @@ public class FormServlet extends HttpServlet {
 
             response.sendRedirect("index.jsp");
         }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // do something else here
     }
 
     private Double calculateBMI(Double weight, Double height) {
