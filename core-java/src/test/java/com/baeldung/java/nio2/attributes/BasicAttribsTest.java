@@ -1,7 +1,12 @@
 package com.baeldung.java.nio2.attributes;
 
+<<<<<<< HEAD
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+=======
+import org.junit.BeforeClass;
+import org.junit.Test;
+>>>>>>> 88a8d5838f8b0dd15cadea9564879c403a22946c
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,6 +16,7 @@ import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 
+<<<<<<< HEAD
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,6 +26,17 @@ public class BasicAttribsTest {
 
     @Before
     public void setup() throws IOException {
+=======
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class BasicAttribsTest {
+    private static final String HOME = System.getProperty("user.home");
+    private static BasicFileAttributes basicAttribs;
+
+    @BeforeClass
+    public static void setup() throws IOException {
+>>>>>>> 88a8d5838f8b0dd15cadea9564879c403a22946c
         Path home = Paths.get(HOME);
         BasicFileAttributeView basicView = Files.getFileAttributeView(home, BasicFileAttributeView.class);
         basicAttribs = basicView.readAttributes();
@@ -31,9 +48,16 @@ public class BasicAttribsTest {
         FileTime modified = basicAttribs.lastModifiedTime();
         FileTime accessed = basicAttribs.lastAccessTime();
 
+<<<<<<< HEAD
         assertTrue(0 > created.compareTo(accessed));
         assertTrue(0 < modified.compareTo(created));
         assertTrue(0 == created.compareTo(created));
+=======
+        System.out.println("Created: " + created);
+        System.out.println("Modified: " + modified);
+        System.out.println("Accessed: " + accessed);
+
+>>>>>>> 88a8d5838f8b0dd15cadea9564879c403a22946c
     }
 
     @Test
