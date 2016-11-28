@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="use.embed.for.svg">
+<refmeta>
+<refentrytitle>use.embed.for.svg</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>use.embed.for.svg</refname>
+<refpurpose>Use HTML <tag>embed</tag> for SVG?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="use.embed.for.svg.frag">
+<xsl:param name="use.embed.for.svg" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, an <tag>embed</tag> element will be created for
+SVG figures. An <tag>object</tag> is <emphasis>always</emphasis> created,
+this parameter merely controls whether or not an additional <tag>embed</tag>
+is generated inside the <tag>object</tag>.</para>
+
+<para>On the plus side, this may be more portable among browsers and plug-ins.
+On the minus side, it isn't valid HTML.</para>
+
+</refsection>
+</refentry>

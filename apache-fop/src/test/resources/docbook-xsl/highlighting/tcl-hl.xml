@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+xslthl highlighter definition fof Tcl/Tk.
+written by Arndt Roger Schneider
+
+Copyright 2008 Arndt Roger Schneider
+License: xlib/libpng
+
+This software is provided "as-is", without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must
+   not claim that you wrote the original software. If you use this
+   software in a product, an acknowledgment in the product
+   documentation would be appreciated but is not required.
+
+2. Altered source versions must be plainly marked as such, and must
+   not be misrepresented as being the original software.
+
+3. This notice may not be removed or altered from any source
+   distribution.
+   
+-->
+<highlighters>
+	<highlighter type="oneline-comment">#</highlighter>
+	<highlighter type="string">
+		<string>"</string>
+		<escape>\</escape>
+	</highlighter>
+	<highlighter type="regex">
+		<pattern>-[\p{javaJavaIdentifierStart}][\p{javaJavaIdentifierPart}]+
+		</pattern>
+		<style>none</style>
+	</highlighter>
+	<highlighter type="number">
+		<point>.</point>
+		<ignoreCase />
+	</highlighter>
+	<highlighter type="keywords">
+		<!-- Tcl and itcl / structural -->
+		<keyword>if</keyword>
+		<keyword>then</keyword>
+		<keyword>else</keyword>
+		<keyword>elseif</keyword>
+		<keyword>for</keyword>
+		<keyword>foreach</keyword>
+		<keyword>break</keyword>
+		<keyword>continue</keyword>
+		<keyword>while</keyword>
+		<keyword>eval</keyword>
+		<keyword>case</keyword>
+		<keyword>in</keyword>
+		<keyword>switch</keyword>
+		<keyword>default</keyword>
+		<keyword>exit</keyword>
+		<keyword>error</keyword>
+		<keyword>proc</keyword>
+		<keyword>rename</keyword>
+		<keyword>exec</keyword>
+		<keyword>return</keyword>
+		<keyword>uplevel</keyword>
+		<keyword>upvar</keyword>
+		<keyword>constructor</keyword>
+		<keyword>destructor</keyword>
+		<keyword>itcl_class</keyword>
+		<keyword>loop</keyword>
+		<keyword>for_array_keys</keyword>
+		<keyword>for_recursive_glob</keyword>
+		<keyword>for_file</keyword>
+		<keyword>method</keyword>
+		<keyword>body</keyword>
+		<keyword>configbody</keyword>
+		<keyword>catch</keyword>
+		<keyword>namespace</keyword>
+		<keyword>class</keyword>
+		<keyword>array</keyword>
+		<keyword>set</keyword>
+		<keyword>unset</keyword>
+		<keyword>package</keyword>
+		<keyword>source</keyword>
+
+    <!-- Additional commands -->
+		<keyword>subst</keyword>
+		<keyword>list</keyword>
+		<keyword>format</keyword>
+		<keyword>lappend</keyword>
+		<keyword>option</keyword>
+		<keyword>expr</keyword>
+		<keyword>puts</keyword>
+		<keyword>winfo</keyword>
+		<keyword>lindex</keyword>
+		<keyword>string</keyword>
+
+
+    <!-- Runtime Library / structural -->
+		<keyword>verified</keyword>
+		<keyword>seteach</keyword>
+		<keyword>fixme</keyword>
+		<keyword>debug</keyword>
+		<keyword>rtl::debug</keyword>
+		<keyword>rtl::verified</keyword>
+		<keyword>rtl::template</keyword>
+		<keyword>rtl::seteach</keyword>
+
+    <!-- Runtime Library / Additional -->
+		<keyword>mkProc</keyword>
+		<keyword>getCreator</keyword>
+		<keyword>properties</keyword>
+		<keyword>lappendunique</keyword>
+		<keyword>rtl::lappendunique</keyword>
+
+    <!-- geometry managers from Tk -->
+		<keyword>place</keyword>
+		<keyword>pack</keyword>
+		<keyword>grid</keyword>
+
+
+    <!-- Additional Tk stuff -->
+		<keyword>image</keyword>
+		<keyword>font</keyword>
+		<keyword>focus</keyword>
+		<keyword>tk</keyword>
+		<keyword>bind</keyword>
+		<keyword>after</keyword>
+
+    <!-- Window classes from Tk, ... -->
+		<keyword>toplevel</keyword>
+		<keyword>frame</keyword>
+		<keyword>entry</keyword>
+		<keyword>listbox</keyword>
+		<keyword>button</keyword>
+		<keyword>radiobutton</keyword>
+		<keyword>checkbutton</keyword>
+		<keyword>canvas</keyword>
+		<keyword>menu</keyword>
+		<keyword>menubutton</keyword>
+		<keyword>text</keyword>
+		<keyword>label</keyword>
+		<keyword>message</keyword>
+		<!--
+			The rest of Tk's windows is omitted: scrollbar, scale, panedwindow, labelframe, spinbox ...
+		-->
+
+    <!-- ... from tkZinc, ... -->
+		<keyword>zinc</keyword>
+  
+    <!-- ... from tkpath, ... -->
+		<keyword>tkpath::gradient</keyword>
+
+    <!-- ... from Runtime Library, ... -->
+		<keyword>rtl_combobox</keyword>
+		<keyword>rtl_tree</keyword>
+		<keyword>rtl_tabset</keyword>
+		<keyword>rtl_mlistbox</keyword>
+		<keyword>rtl_gridwin</keyword>
+		<keyword>rtlysizer</keyword>
+		<keyword>rtlxsizer</keyword>
+		<!--
+			The rest of RTL's windows is omitted: spinbox, decoratedframe, symbolbar, symbolbarcustomize, question ...
+		-->
+
+    <!-- ... from GEI, ... -->
+		<keyword>goolbar</keyword>
+		<keyword>gstripes</keyword>
+		<keyword>zoolbar</keyword>
+		<keyword>gistbox</keyword>
+		<keyword>gooleditor</keyword>
+		<keyword>galette</keyword>
+	</highlighter>
+</highlighters>
+	<!--
+		Local Variables: mode: sgml coding: utf-8-unix sgml-indent-step: 2 sgml-indent-data: t sgml-set-face: t
+		sgml-insert-missing-element-comment: nil End:
+	-->

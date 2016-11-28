@@ -1,0 +1,53 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="svg.embedding.mode">
+<refmeta>
+<refentrytitle>svg.embedding.mode</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">external-graphic</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">instream-foreign-object</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>svg.embedding.mode</refname>
+<refpurpose>Specifies how inline SVG is processed</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="svg.embedding.mode.fo.frag">
+    <xsl:param name="svg.embedding.mode">instream-foreign-object</xsl:param>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies how inline SVG graphics
+  are embedded into the output document.</para>
+
+<variablelist>
+  <varlistentry>
+    <term>inline</term>
+    <listitem>
+      <para>Content is copied over inline with its namespace.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>external-graphic</term>
+    <listitem>
+      <para>Content is extracted into an externel file and referenced
+        by an <markup>external-graphic</markup> element.</para>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>instream-foreign-object</term>
+    <listitem>
+      <para>Content is copied over with its namespace inside an
+        <markup>instream-foreign-object</markup> element.</para>
+    </listitem>
+  </varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>

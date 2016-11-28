@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="olink.outline.ext">
+<refmeta>
+<refentrytitle>olink.outline.ext</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>olink.outline.ext</refname>
+<refpurpose>The extension of OLink outline files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="olink.outline.ext.frag">
+<xsl:param name="olink.outline.ext">.olink</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The extension to be expected for  OLink outline files</para>
+<para>Bob has this parameter as dead. Please don't use</para>
+
+</refsection>
+</refentry>

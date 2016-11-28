@@ -1,0 +1,83 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="docbook.css.source">
+  <refmeta>
+    <refentrytitle>docbook.css.source</refentrytitle>
+    <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>docbook.css.source</refname>
+    <refpurpose>Name of the default CSS input file</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <src:fragment xml:id="docbook.css.source.frag"><xsl:param name="docbook.css.source">docbook.css.xml</xsl:param></src:fragment>
+  </refsynopsisdiv>
+
+  <refsection><info><title>Description</title></info>
+
+<para>The <parameter>docbook.css.source</parameter> parameter
+specifies the name of the file containing the default DocBook
+CSS styles.  Those styles are necessary when the
+<parameter>make.clean.html</parameter> parameter is nonzero.</para>
+
+<para>The file is a well-formed XML file that
+must consist of a single <tag>style</tag> root
+element that contains CSS styles as its text content.
+The default value of the parameter (and filename)
+is <literal>docbook.css.xml</literal>.
+The stylesheets ship with the default file. You can substitute
+your own and specify its path in this parameter.</para>
+
+<para>If <parameter>docbook.css.source</parameter> is not blank,
+and <parameter>make.clean.html</parameter> is nonzero, then
+the stylesheet takes the following actions:</para>
+
+<orderedlist>
+  <listitem>
+    <para>The stylesheet uses the XSLT <literal>document()</literal>
+    function to open the file specified by the parameter and
+    load it into a variable.</para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet forms an output pathname consisting of the
+    value of the <parameter>base.dir</parameter> parameter (if it is set)
+    and the value of <parameter>docbook.css.source</parameter>,
+    with the <literal>.xml</literal> suffix stripped off.
+    </para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet removes the <tag>style</tag>
+    wrapper element and writes just the CSS text content to the output file.</para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet adds a <tag>link</tag> element to the
+    HTML <tag>HEAD</tag> element to reference the external CSS stylesheet.
+    For example:</para>
+    <programlisting>&lt;link rel="stylesheet" href="docbook.css" type="text/css"&gt;
+    </programlisting>
+    <para>However, if the <parameter>docbook.css.link</parameter>
+    parameter is set to zero, then no <tag>link</tag> is written
+    for the default CSS file.  That is useful if a custom
+    CSS file will import the default CSS stylesheet to ensure
+    proper cascading of styles.</para>
+  </listitem>
+</orderedlist>
+
+<para>If the <parameter>docbook.css.source</parameter> parameter
+is changed from its default <literal>docbook.css.xml</literal> to blank,
+then no default CSS is generated. Likewise if the
+<parameter>make.clean.html</parameter> parameter is set to zero,
+then no default CSS is generated. The 
+<parameter>custom.css.source</parameter> parameter can be used
+instead to generate a complete custom CSS file.</para>
+
+<para>You can use the <parameter>generate.css.header</parameter>
+parameter to instead write the CSS to each HTML <tag>HEAD</tag>
+element in a <tag>style</tag> tag instead of an external CSS file.</para>
+
+  </refsection>
+</refentry>

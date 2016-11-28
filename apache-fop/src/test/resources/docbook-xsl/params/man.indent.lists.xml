@@ -1,0 +1,35 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.indent.lists">
+<refmeta>
+<refentrytitle>man.indent.lists</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.indent.lists</refname>
+<refpurpose>Adjust indentation of lists?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.indent.lists.frag">
+<xsl:param name="man.indent.lists" select="1"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of <parameter>man.indent.lists</parameter> is
+non-zero, the width of the left margin for list items in
+<tag>itemizedlist</tag>,
+<tag>orderedlist</tag>,
+<tag>variablelist</tag> output (and output of some other
+lists) is set to the value of the
+<parameter>man.indent.width</parameter> parameter
+(<literal>4n</literal> by default). If instead the value of
+<parameter>man.indent.lists</parameter> is zero, the built-in roff
+default width (<literal>7.2n</literal>) is used.</para>
+
+</refsection>
+</refentry>

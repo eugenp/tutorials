@@ -1,0 +1,40 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="preferred.mediaobject.role">
+<refmeta>
+<refentrytitle>preferred.mediaobject.role</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>preferred.mediaobject.role</refname>
+<refpurpose>Select which mediaobject to use based on
+this value of an object's <tag class="attribute">role</tag> attribute.
+</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="preferred.mediaobject.role.frag">
+<xsl:param name="preferred.mediaobject.role"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>A mediaobject may contain several objects such as imageobjects.
+If the parameter <parameter>use.role.for.mediaobject</parameter> is
+non-zero, then the <literal>role</literal> attribute on
+<tag>imageobject</tag>s and other objects within a
+<tag>mediaobject</tag> container will be used to select which object
+will be used.  If one of the objects has a role value that matches the
+<parameter>preferred.mediaobject.role</parameter> parameter, then it
+has first priority for selection.  If more than one has such a role
+value, the first one is used.
+</para>
+<para>
+See the <parameter>use.role.for.mediaobject</parameter> parameter
+for the sequence of selection.</para>
+</refsection>
+</refentry>

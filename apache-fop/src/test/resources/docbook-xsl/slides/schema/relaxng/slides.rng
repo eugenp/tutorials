@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:dbs="http://docbook.org/ns/docbook-slides" ns="" xmlns:db="http://docbook.org/ns/docbook" xmlns:svg="http://www.w3.org/2000/svg" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <!-- See http://docbook.org/ns/docbook-slides -->
+  <!--
+    This file is part of DocBook Slides V5.0
+    
+    Copyright 2012 Gabor Kovesdan
+    
+    Release: $Id$
+    
+    Permission to use, copy, modify and distribute the DocBook Slides
+    schema and its accompanying documentation for any purpose and without
+    fee is hereby granted in perpetuity, provided that the above copyright
+    notice and this paragraph appear in all copies. The copyright
+    holders make no representation about the suitability of the schema
+    for any purpose. It is provided "as is" without expressed or implied
+    warranty.
+    
+    If you modify the DocBook Slides schema in any way, label your schema
+    as a variant of DocBook Slides. See the reference documentation
+    (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+    for more information.
+    
+    Please direct all questions, bug reports, or suggestions for changes
+    to the docbook@lists.oasis-open.org mailing list. For more
+    information, see http://www.oasis-open.org/docbook/.
+    
+    ======================================================================
+  -->
+  <include href="docbook.rng" ns="http://docbook.org/ns/docbook">
+    <start>
+      <ref name="dbs.slides"/>
+    </start>
+    <!-- Avoid ID clashes -->
+    <define name="db._any.attribute">
+      <attribute>
+        <anyName>
+          <except>
+            <name>xml:id</name>
+            <name ns="">linkend</name>
+          </except>
+        </anyName>
+      </attribute>
+    </define>
+    <define name="db.common.attributes">
+      <interleave>
+        <optional>
+          <ref name="db.xml.id.attribute"/>
+        </optional>
+        <ref name="db.common.base.attributes"/>
+        <optional>
+          <ref name="db.annotations.attribute"/>
+        </optional>
+        <optional>
+          <ref name="dbs.style.attributes"/>
+        </optional>
+      </interleave>
+    </define>
+    <!-- Any element and attribute from the SVG namespace -->
+    <define name="db._any.svg">
+      <element>
+        <nsName ns="http://www.w3.org/2000/svg"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="dbs._any.attribute"/>
+            <text/>
+            <ref name="db._any"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+    <!-- Any element and attribute from the MathML namespace -->
+    <define name="db._any.mml">
+      <element>
+        <nsName ns="http://www.w3.org/1998/Math/MathML"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="dbs._any.attribute"/>
+            <text/>
+            <ref name="db._any"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </include>
+  <!-- Any attribute from any namespace -->
+  <define name="dbs._any.attribute">
+    <attribute>
+      <anyName/>
+    </attribute>
+  </define>
+  <define name="dbs.all.content">
+    <interleave>
+      <optional>
+        <ref name="db.all.blocks"/>
+      </optional>
+      <ref name="dbs.speakernotes"/>
+      <ref name="dbs.handoutnotes"/>
+      <optional>
+        <ref name="db._any.svg"/>
+      </optional>
+      <optional>
+        <ref name="db._any.mml"/>
+      </optional>
+      <optional>
+        <ref name="dbs.block"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.block">
+    <element>
+      <a:documentation>Indicates a formatting block that can have its own styling applied</a:documentation>
+      <name ns="http://docbook.org/ns/docbook-slides">block</name>
+      <ref name="dbs.block.attlist"/>
+      <zeroOrMore>
+        <ref name="dbs.all.content"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="dbs.block.role.attribute">
+    <attribute name="role">
+      <a:documentation>Role attribute for the block element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.block.status.attribute">
+    <ref name="db.status.attribute">
+      <a:documentation>Status attribute for the block element</a:documentation>
+    </ref>
+  </define>
+  <define name="dbs.block.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.block.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+      <optional>
+        <ref name="db.label.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.block.status.attribute"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.slides">
+    <element>
+      <a:documentation>Root element of a slides document</a:documentation>
+      <name ns="http://docbook.org/ns/docbook-slides">slides</name>
+      <ref name="dbs.slides.attlist"/>
+      <ref name="db._info.title.req"/>
+      <optional>
+        <ref name="dbs.speakernotes"/>
+      </optional>
+      <optional>
+        <ref name="dbs.handoutnotes"/>
+      </optional>
+      <zeroOrMore>
+        <interleave>
+          <optional>
+            <ref name="dbs.foil"/>
+          </optional>
+          <optional>
+            <ref name="dbs.foilgroup"/>
+          </optional>
+        </interleave>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="dbs.slides.role.attribute">
+    <attribute name="role">
+      <a:documentation>Role attribute for the slides element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.slides.status.attribute">
+    <ref name="db.status.attribute">
+      <a:documentation>Status attribute for the slides element</a:documentation>
+    </ref>
+  </define>
+  <define name="dbs.slides.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.slides.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+      <optional>
+        <ref name="db.label.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.slides.status.attribute"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.foilgroup">
+    <element>
+      <name ns="http://docbook.org/ns/docbook-slides">foilgroup</name>
+      <ref name="dbs.foilgroup.attlist"/>
+      <ref name="db._info.title.req"/>
+      <zeroOrMore>
+        <ref name="dbs.all.content"/>
+      </zeroOrMore>
+      <oneOrMore>
+        <ref name="dbs.foil"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dbs.foilgroup.role.attribute">
+    <attribute name="role">
+      <a:documentation>Role attribute for the foilgroup element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.foilgroup.status.attribute">
+    <ref name="db.status.attribute">
+      <a:documentation>Status attribute for the foilgroup element</a:documentation>
+    </ref>
+  </define>
+  <define name="dbs.foilgroup.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.foilgroup.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+      <optional>
+        <ref name="db.label.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.slides.status.attribute"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.foil">
+    <element>
+      <a:documentation>Indicates a foil that may have some info and content</a:documentation>
+      <name ns="http://docbook.org/ns/docbook-slides">foil</name>
+      <ref name="dbs.foil.attlist"/>
+      <ref name="db._info.title.req"/>
+      <zeroOrMore>
+        <ref name="dbs.all.content"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="db.navigation.components"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="dbs.foil.role.attribute">
+    <attribute name="role">
+      <a:documentation>Role attribute for the foil element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.foil.status.attribute">
+    <ref name="db.status.attribute">
+      <a:documentation>Status attribute for the foil element</a:documentation>
+    </ref>
+  </define>
+  <define name="dbs.foil.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.foil.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+      <optional>
+        <ref name="db.label.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.foil.status.attribute"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.speakernotes">
+    <element>
+      <a:documentation>Indicates notes for the speaker</a:documentation>
+      <name ns="http://docbook.org/ns/docbook-slides">speakernotes</name>
+      <ref name="dbs.speakernotes.attlist"/>
+      <oneOrMore>
+        <ref name="db.all.blocks"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dbs.speakernotes.role.attribute">
+    <attribute name="role">
+      <a:documentation>Role attribute for the speakernotes element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.speakernotes.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.speakernotes.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+    </interleave>
+  </define>
+  <define name="dbs.handoutnotes">
+    <element>
+      <a:documentation>Indicates notes that are meant for printed copies</a:documentation>
+      <name ns="http://docbook.org/ns/docbook-slides">handoutnotes</name>
+      <ref name="dbs.handoutnotes.attlist"/>
+      <oneOrMore>
+        <ref name="db.all.blocks"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="dbs.handoutnotes.role.attribute">
+    <a:documentation>Role attribute for the handoutnotes element</a:documentation>
+    <attribute name="role">
+      <a:documentation>Role attribute for the handoutnotes element</a:documentation>
+    </attribute>
+  </define>
+  <define name="dbs.handoutnotes.attlist">
+    <interleave>
+      <optional>
+        <ref name="dbs.handoutnotes.role.attribute"/>
+      </optional>
+      <ref name="db.common.attributes"/>
+      <ref name="db.common.linking.attributes"/>
+    </interleave>
+  </define>
+  <define name="dbs.style.attributes">
+    <interleave>
+      <optional>
+        <ref name="dbs.incremental.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.collapsible.attribute"/>
+      </optional>
+      <optional>
+        <ref name="dbs.style.attribute"/>
+      </optional>
+    </interleave>
+  </define>
+  <define name="dbs.incremental.attribute">
+    <attribute name="dbs:incremental">
+      <a:documentation>Attribute indicating an incremental part</a:documentation>
+      <choice>
+        <value>0</value>
+        <a:documentation>disabled</a:documentation>
+        <value>1</value>
+        <a:documentation>enabled</a:documentation>
+      </choice>
+    </attribute>
+  </define>
+  <define name="dbs.collapsible.attribute">
+    <attribute name="dbs:collapsible">
+      <a:documentation>Attribute indicating a collapsible part</a:documentation>
+      <choice>
+        <value>0</value>
+        <a:documentation>disabled</a:documentation>
+        <value>1</value>
+        <a:documentation>enabled</a:documentation>
+        <value>expanded</value>
+        <a:documentation>enabled and expanded by default</a:documentation>
+      </choice>
+    </attribute>
+  </define>
+  <define name="dbs.style.attribute">
+    <attribute name="dbs:style">
+      <a:documentation>Attribute indicating a formatting style class</a:documentation>
+    </attribute>
+  </define>
+</grammar>
