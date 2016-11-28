@@ -60,7 +60,7 @@ public class AsyncFileTest {
     @Test
     public void givenPathAndContent_whenWritesToFileWithFuture_thenCorrect() throws IOException, ExecutionException, InterruptedException {
         String fileName = UUID.randomUUID().toString();
-        Path path = Paths.get(fileName);
+        Path path = Paths.get(Paths.get(HOME));
         AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE,StandardOpenOption.DELETE_ON_CLOSE);
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
