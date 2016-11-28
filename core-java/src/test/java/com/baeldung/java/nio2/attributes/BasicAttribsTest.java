@@ -1,7 +1,7 @@
 package com.baeldung.java.nio2.attributes;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,15 +11,15 @@ import java.nio.file.attribute.BasicFileAttributeView;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BasicAttribsTest {
     private static final String HOME = System.getProperty("user.home");
-    BasicFileAttributes basicAttribs;
+    private static BasicFileAttributes basicAttribs;
 
-    @Before
-    public void setup() throws IOException {
+    @BeforeClass
+    public static void setup() throws IOException {
         Path home = Paths.get(HOME);
         BasicFileAttributeView basicView = Files.getFileAttributeView(home, BasicFileAttributeView.class);
         basicAttribs = basicView.readAttributes();
