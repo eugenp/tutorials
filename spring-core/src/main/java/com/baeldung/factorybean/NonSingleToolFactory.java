@@ -6,8 +6,6 @@ public class NonSingleToolFactory extends AbstractFactoryBean<Tool> {
     
     private int factoryId;
     private int toolId;
-    private String toolName;
-    private double toolPrice;
 
     public NonSingleToolFactory() {
         setSingleton(false);
@@ -20,7 +18,7 @@ public class NonSingleToolFactory extends AbstractFactoryBean<Tool> {
 
     @Override
     protected Tool createInstance() throws Exception {
-        return new Tool(toolId, toolName, toolPrice);
+        return new Tool(toolId);
     }
 
     public int getFactoryId() {
@@ -37,21 +35,5 @@ public class NonSingleToolFactory extends AbstractFactoryBean<Tool> {
 
     public void setToolId(int toolId) {
         this.toolId = toolId;
-    }
-
-    public String getToolName() {
-        return toolName;
-    }
-
-    public void setToolName(String toolName) {
-        this.toolName = toolName;
-    }
-
-    public double getToolPrice() {
-        return toolPrice;
-    }
-
-    public void setToolPrice(double toolPrice) {
-        this.toolPrice = toolPrice;
     }
 }
