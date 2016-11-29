@@ -16,11 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = FactoryBeanAppConfig.class)
 public class FactoryBeanJavaConfigTest {
 
-    @Resource
-    private Tool tool;
-
     @Autowired
-    @Qualifier("&tool")
+    private Tool tool;
+    @Resource(name = "&tool")
     private ToolFactory toolFactory;
 
     @Test
