@@ -1,51 +1,34 @@
 package com.root;
 
-import org.junit.Before;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class FormServletTest {
 
-    @Mock
-    HttpServletRequest request;
-
-    @Mock
-    HttpServletResponse response;
-
-    @Mock
-    RequestDispatcher requestDispatcher;
-
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-    }
-
     @Test
-    public void testFormServlet() throws Exception {
+    public void whenPostRequestUsingHttpClient_thenCorrect() throws Exception {
 
-        when(request.getParameter("height")).thenReturn("2");
-        when(request.getParameter("weight")).thenReturn("80");
+        HttpClient client = new DefaultHttpClient();
+        HttpPost method = new HttpPost("http://localhost:8080/calculateServlet");
 
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        when(response.getWriter()).thenReturn(pw);
+        List<BasicNameValuePair> nvps = new ArrayList<BasicNameValuePair>();
+        nvps.add(new BasicNameValuePair("height", String.valueOf(2)));
+        nvps.add(new BasicNameValuePair("weight", String.valueOf(80)));
 
-        new FormServlet().doPost(request, response);
+        method.setEntity(new UrlEncodedFormEntity(nvps));
+        HttpResponse httpResponse = client.execute(method);
 
-        verify(request).setAttribute("bmi", 20.0);
-
-        String result = sw.getBuffer().toString().trim();
-        assertEquals("20.0", result);
+        assertEquals("Success", httpResponse.getHeaders("Test")[0].getValue());
+        assertEquals("20.0", httpResponse.getHeaders("BMI")[0].getValue());
     }
 }

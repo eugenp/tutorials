@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet(name = "FormServlet", urlPatterns = "/calculateServlet")
 public class FormServlet extends HttpServlet {
@@ -26,8 +25,8 @@ public class FormServlet extends HttpServlet {
             response.setHeader("Test", "Success");
             response.setHeader("BMI", String.valueOf(bmi));
 
-            PrintWriter out= response.getWriter();
-            out.write(String.valueOf(bmi));
+            response.setHeader("Test", "Success");
+            response.setHeader("BMI", String.valueOf(bmi));
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request, response);
