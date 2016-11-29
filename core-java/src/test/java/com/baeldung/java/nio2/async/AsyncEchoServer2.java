@@ -58,19 +58,18 @@ public class AsyncEchoServer2 {
 
         @Override
         public void completed(Integer result, Map<String, Object> attachment) {
-            Map<String, Object> actionInfo = attachment;
-            String action = (String) actionInfo.get("action");
+            String action = (String) attachment.get("action");
             if ("read".equals(action)) {
-                ByteBuffer buffer = (ByteBuffer) actionInfo.get("buffer");
+                ByteBuffer buffer = (ByteBuffer) attachment.get("buffer");
                 buffer.flip();
-                actionInfo.put("action", "write");
-                clientChannel.write(buffer, actionInfo, this);
+                attachment.put("action", "write");
+                clientChannel.write(buffer, attachment, this);
                 buffer.clear();
             } else if ("write".equals(action)) {
                 ByteBuffer buffer = ByteBuffer.allocate(32);
-                actionInfo.put("action", "read");
-                actionInfo.put("buffer", buffer);
-                clientChannel.read(buffer, actionInfo, this);
+                attachment.put("action", "read");
+                attachment.put("buffer", buffer);
+                clientChannel.read(buffer, attachment, this);
             }
 
         }
