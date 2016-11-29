@@ -11,29 +11,60 @@ import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+import javax.security.auth.login.LoginException;
+
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.Result;
 
 public class AsyncHttpClientTest {
 
-    private URI httpURI;
+    private static final int size = 3;
+    private URI [] URIs = new URI[size] ;
+    private String status;
+    private HttpRequest [] requests = new HttpRequest[size];
+    private CompletableFuture<HttpResponse>[] futureResponses = new CompletableFuture[size]; 
 
     @Before
     public void init() throws URISyntaxException {
-        httpURI = new URI("http://www.baeldung.com/");
+        URIs[0] = new URI("http://www.baeldung.com/");
+        URIs[1] = new URI("http://www.baeldung.com/category/java/");
+        URIs[2] = new URI("http://www.baeldung.com/category/http/");
     }
 
     @Test
     public void asynchronousGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-        HttpRequest request = HttpRequest.create(httpURI).GET();
         long before = System.currentTimeMillis();
-        CompletableFuture<HttpResponse> futureResponse = request.responseAsync();
-        futureResponse.thenAccept(response -> {
-            String responseBody = response.body(HttpResponse.asString());
-        });
-        HttpResponse resp = futureResponse.get();
-        HttpHeaders hs = resp.headers();
-        assertTrue("There should be more then 1 header.", hs.map().size() > 1);
+        for(int i=0; i< URIs.length; i++){
+            futureResponses[i] = HttpRequest.create(URIs[i]).GET().responseAsync().exceptionally(this::processException)
+                    ;
+            //futureResponses[i].get();
+        }
+        //futureResponses[0].thenAccept(this::processResponse).
+        
+//        futureResponses[0].exceptionally(this::processException)
+//            .thenAccept(this::processResponse);
+        
+        
+//        HttpResponse resp = futureResponses[0].get();
+//        HttpHeaders hs = resp.headers();
+//        assertTrue("There should be more then 1 header.", hs.map().size() > 1);
     }
 
+    
+   private void processResponse(HttpResponse response) {
+       String responseBody = response.body(HttpResponse.asString());
+       if(! responseBody.contains("Login Success")){
+           status = "FAIL";
+       }else{
+           status = "SUCCESS";
+       }
+       System.out.println("Status is "+ status);
+   } 
+   
+   private HttpResponse processException(Throwable th){
+       System.out.println("Exception Caught");
+       th.printStackTrace();
+       return null;
+   }
 }
