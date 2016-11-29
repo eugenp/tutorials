@@ -1,23 +1,19 @@
 package com.baeldung.java.nio2.visitor;
 
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.TERMINATE;
 
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.FileVisitor;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
-
 public class FileSearchExample implements FileVisitor<Path> {
-    private static String FILE_NAME;
-    private static Path START_DIR;
+    private final String fileName;
+    private final Path startDir;
 
     public FileSearchExample(String fileName, Path startingDir) {
-        FILE_NAME = fileName;
-        START_DIR = startingDir;
+        this.fileName = fileName;
+        startDir = startingDir;
     }
 
     @Override
@@ -28,7 +24,7 @@ public class FileSearchExample implements FileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         String fileName = file.getFileName().toString();
-        if (FILE_NAME.equals(fileName)) {
+        if (this.fileName.equals(fileName)) {
             System.out.println("File found: " + file.toString());
             return TERMINATE;
         }
@@ -43,9 +39,9 @@ public class FileSearchExample implements FileVisitor<Path> {
 
     @Override
     public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-        boolean finishedSearch = Files.isSameFile(dir, START_DIR);
+        boolean finishedSearch = Files.isSameFile(dir, startDir);
         if (finishedSearch) {
-            System.out.println("File:" + FILE_NAME + " not found");
+            System.out.println("File:" + fileName + " not found");
             return TERMINATE;
         }
         return CONTINUE;
