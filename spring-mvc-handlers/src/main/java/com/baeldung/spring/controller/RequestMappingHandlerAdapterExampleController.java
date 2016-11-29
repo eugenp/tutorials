@@ -6,12 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RequestMappingHandlerAdapterExampleController {
-    @RequestMapping("/requestName")
-    public ModelAndView getEmployeeName() {
-            ModelAndView model = new ModelAndView("Greeting");
-         
-            model.addObject("message", "Madhwal");
-         
-            return model;  
-    }  
+	@RequestMapping("/requestName")
+	public ModelAndView getEmployeeName() {
+		ModelAndView model = new ModelAndView("Greeting");
+		model.addObject("message", "Madhwal");
+		return model;
+	}
 }

@@ -7,15 +7,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 public class SimpleControllerHandlerAdapterExampleController extends
-AbstractController {
+		AbstractController {
 
-@Override
-protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
-    HttpServletResponse arg1) throws Exception {
-ModelAndView model = new ModelAndView("Greeting");
-
-model.addObject("message", "Dinesh Madhwal");
-
-return model;
-}
+	@Override
+	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
+			HttpServletResponse arg1) throws Exception {
+		ModelAndView model = new ModelAndView("Greeting");
+		model.addObject("message", "Dinesh Madhwal");
+		return model;
+	}
 }
