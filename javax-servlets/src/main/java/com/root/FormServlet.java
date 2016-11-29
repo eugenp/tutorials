@@ -34,6 +34,13 @@ public class FormServlet extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // do something else here
+    }
+
     private Double calculateBMI(Double weight, Double height) {
 
         return weight / (height * height);
