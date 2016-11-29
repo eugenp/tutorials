@@ -9,7 +9,7 @@ public class RequestMappingHandlerAdapterExampleController {
 	@RequestMapping("/requestName")
 	public ModelAndView getEmployeeName() {
 		ModelAndView model = new ModelAndView("Greeting");
-		model.addObject("message", "Madhwal");
+		model.addObject("message","Madhwal");
 		return model;
 	}
 }
