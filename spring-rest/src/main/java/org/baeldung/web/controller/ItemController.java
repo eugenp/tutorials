@@ -14,26 +14,26 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RestController
 public class ItemController {
 
-	@JsonView(Views.Public.class)
-	@RequestMapping("/items/{id}")
-	public Item getItemPublic(@PathVariable final int id) {
-		return ItemManager.getById(id);
-	}
+    @JsonView(Views.Public.class)
+    @RequestMapping("/items/{id}")
+    public Item getItemPublic(@PathVariable final int id) {
+        return ItemManager.getById(id);
+    }
 
-	@JsonView(Views.Internal.class)
-	@RequestMapping("/items/internal/{id}")
-	public Item getItemInternal(@PathVariable final int id) {
-		return ItemManager.getById(id);
-	}
+    @JsonView(Views.Internal.class)
+    @RequestMapping("/items/internal/{id}")
+    public Item getItemInternal(@PathVariable final int id) {
+        return ItemManager.getById(id);
+    }
 
-	@RequestMapping("/date")
-	public Date getCurrentDate() throws Exception {
-		return new Date();
-	}
+    @RequestMapping("/date")
+    public Date getCurrentDate() throws Exception {
+        return new Date();
+    }
 
-	@RequestMapping("/delay/{seconds}")
-	public void getCurrentTime(@PathVariable final int seconds) throws Exception {
+    @RequestMapping("/delay/{seconds}")
+    public void getCurrentTime(@PathVariable final int seconds) throws Exception {
 
-		Thread.sleep(seconds * 1000);
-	}
+        Thread.sleep(seconds * 1000);
+    }
 }

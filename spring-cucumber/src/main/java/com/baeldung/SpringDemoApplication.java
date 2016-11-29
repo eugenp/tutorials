@@ -18,9 +18,9 @@ public class SpringDemoApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(SpringDemoApplication.class);
     }
-    
+
     @Bean
-    public RestTemplate getRestTemplate(){
-    	return new RestTemplate();
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
     }
 }

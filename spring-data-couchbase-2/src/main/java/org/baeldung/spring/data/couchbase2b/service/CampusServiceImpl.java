@@ -15,21 +15,22 @@ import org.springframework.stereotype.Service;
 public class CampusServiceImpl implements CampusService {
 
     private CampusRepository repo;
+
     @Autowired
     public void setCampusRepository(CampusRepository repo) {
         this.repo = repo;
     }
-    
+
     @Override
     public Campus find(String id) {
         return repo.findOne(id);
     }
-    
+
     @Override
     public Set<Campus> findByName(String name) {
         return repo.findByName(name);
     }
-    
+
     @Override
     public Set<Campus> findByLocationNear(Point point, Distance distance) {
         return repo.findByLocationNear(point, distance);
@@ -39,7 +40,7 @@ public class CampusServiceImpl implements CampusService {
     public Set<Campus> findAll() {
         Set<Campus> campuses = new HashSet<>();
         Iterator<Campus> it = repo.findAll().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             campuses.add(it.next());
         }
         return campuses;

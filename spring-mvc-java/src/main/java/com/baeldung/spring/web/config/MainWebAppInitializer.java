@@ -1,16 +1,15 @@
 package com.baeldung.spring.web.config;
 
-import java.util.Set;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import java.util.Set;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
@@ -28,7 +27,6 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         root.scan("com.baeldung.spring.web.config");
         // root.getEnvironment().setDefaultProfiles("embedded");
 
-        // Manages the lifecycle of the root application context
         sc.addListener(new ContextLoaderListener(root));
 
         // Handles requests into the application

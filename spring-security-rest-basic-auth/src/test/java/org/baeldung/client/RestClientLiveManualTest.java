@@ -30,7 +30,7 @@ import org.springframework.web.client.RestTemplate;
  * */
 public class RestClientLiveManualTest {
 
-    final String urlOverHttps = "http://localhost:8080/spring-security-rest-basic-auth/api/bars/1";
+    final String urlOverHttps = "http://localhost:8082/spring-security-rest-basic-auth/api/bars/1";
 
     // tests
 
