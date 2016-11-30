@@ -45,14 +45,13 @@ public class AsyncEchoClient {
         ByteBuffer buffer = ByteBuffer.wrap(byteMsg);
         Future<Integer> writeResult = client.write(buffer);
 
-        while (!writeResult.isDone()) {
-            // do nothing
-        }
+        //run some code
+		writeResult.get();
         buffer.flip();
         Future<Integer> readResult = client.read(buffer);
-        while (!readResult.isDone()) {
-
-        }
+        
+		//run some code
+		readResult.get();
         String echo = new String(buffer.array()).trim();
         buffer.clear();
         return echo;
