@@ -10,6 +10,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.security.auth.login.LoginException;
 
@@ -23,7 +24,8 @@ public class AsyncHttpClientTest {
     private URI [] URIs = new URI[size] ;
     private String status;
     private HttpRequest [] requests = new HttpRequest[size];
-    private CompletableFuture<HttpResponse>[] futureResponses = new CompletableFuture[size]; 
+    private CompletableFuture<HttpResponse>[] futureResponses = new CompletableFuture[size];
+    private static final AtomicInteger counter = new AtomicInteger(0);
 
     @Before
     public void init() throws URISyntaxException {
@@ -35,11 +37,17 @@ public class AsyncHttpClientTest {
     @Test
     public void asynchronousGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException {
         long before = System.currentTimeMillis();
-        for(int i=0; i< URIs.length; i++){
-            futureResponses[i] = HttpRequest.create(URIs[i]).GET().responseAsync().exceptionally(this::processException)
-                    ;
-            //futureResponses[i].get();
-        }
+        CompletableFuture<HttpResponse> futureResponses0 = HttpRequest.create(URIs[0]).GET().responseAsync();
+        CompletableFuture<HttpResponse> futureResponses1 = futureResponses0.thenCompose(this::checkResponseAndFireRequest);
+        
+        
+        
+        
+//        for(int i=0; i< URIs.length; i++){
+//            futureResponses[i] = HttpRequest.create(URIs[i]).GET().responseAsync().exceptionally(this::processException);
+//                    
+//            //futureResponses[i].get();
+//        }
         //futureResponses[0].thenAccept(this::processResponse).
         
 //        futureResponses[0].exceptionally(this::processException)
@@ -51,6 +59,15 @@ public class AsyncHttpClientTest {
 //        assertTrue("There should be more then 1 header.", hs.map().size() > 1);
     }
 
+    
+    private CompletableFuture<HttpResponse> checkResponseAndFireRequest(HttpResponse response){
+    	if(response.statusCode() == 200){
+    		int c = counter.incrementAndGet();
+    		return HttpRequest.create(URIs[c]).GET().responseAsync();
+    	}else
+    		return null;
+    }
+    
     
    private void processResponse(HttpResponse response) {
        String responseBody = response.body(HttpResponse.asString());
