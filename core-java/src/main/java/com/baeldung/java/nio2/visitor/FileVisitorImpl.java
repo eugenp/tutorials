@@ -19,12 +19,12 @@ public class FileVisitorImpl implements FileVisitor<Path> {
     }
 
     @Override
-    public FileVisitResult visitFileFailed(Path file, IOException exc) {       
+    public FileVisitResult visitFileFailed(Path file, IOException exc) {
         return null;
     }
 
     @Override
-    public FileVisitResult postVisitDirectory(Path dir, IOException exc) {    
+    public FileVisitResult postVisitDirectory(Path dir, IOException exc) {
         return null;
     }
 }

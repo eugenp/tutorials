@@ -1,5 +1,6 @@
 package com.baeldung.java.nio2.async;
 
+import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URI;
@@ -10,9 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.UUID;
-import java.util.concurrent.Future;
-
-import org.junit.Test;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -28,7 +26,6 @@ public class AsyncFileTest {
 
         Future<Integer> operation = fileChannel.read(buffer, 0);
 
-
         operation.get();
 
         String fileContent = new String(buffer.array()).trim();
@@ -39,7 +36,6 @@ public class AsyncFileTest {
 
     @Test
     public void givenPath_whenReadsContentWithCompletionHandler_thenCorrect() throws IOException {
-
         Path path = Paths.get(URI.create(AsyncFileTest.class.getResource("/file.txt").toString()));
         AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
 
@@ -62,11 +58,10 @@ public class AsyncFileTest {
     }
 
     @Test
-
     public void givenPathAndContent_whenWritesToFileWithFuture_thenCorrect() throws IOException, ExecutionException, InterruptedException {
-        String fileName = UUID.randomUUID().toString();
+        String fileName = "temp";
         Path path = Paths.get(fileName);
-        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE,StandardOpenOption.DELETE_ON_CLOSE);
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         long position = 0;
@@ -76,7 +71,6 @@ public class AsyncFileTest {
 
         Future<Integer> operation = fileChannel.write(buffer, position);
         buffer.clear();
-
 
         operation.get();
 
@@ -88,8 +82,7 @@ public class AsyncFileTest {
     public void givenPathAndContent_whenWritesToFileWithHandler_thenCorrect() throws IOException {
         String fileName = UUID.randomUUID().toString();
         Path path = Paths.get(fileName);
-        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE,StandardOpenOption.DELETE_ON_CLOSE);
-
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DELETE_ON_CLOSE);
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         buffer.put("hello world".getBytes());
@@ -124,7 +117,6 @@ public class AsyncFileTest {
 
         Future<Integer> operation = fileChannel.read(buffer, 0);
 
-        //perform other computation
         operation.get();
 
         String fileContent = new String(buffer.array()).trim();

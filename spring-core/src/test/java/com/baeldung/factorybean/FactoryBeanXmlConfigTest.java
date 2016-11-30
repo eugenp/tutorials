@@ -7,6 +7,10 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+<<<<<<< HEAD
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> f354f9e3057481c76c10a1e2aa127d3abb95b329
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -14,7 +18,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = { "classpath:factorybean-spring-ctx.xml" })
 public class FactoryBeanXmlConfigTest {
 
+<<<<<<< HEAD
     @Resource
+=======
+    @Autowired
+>>>>>>> f354f9e3057481c76c10a1e2aa127d3abb95b329
     private Tool tool;
     @Resource(name = "&tool")
     private ToolFactory toolFactory;
