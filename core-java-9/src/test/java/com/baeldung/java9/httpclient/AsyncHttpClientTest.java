@@ -39,7 +39,10 @@ public class AsyncHttpClientTest {
         long before = System.currentTimeMillis();
         CompletableFuture<HttpResponse> futureResponses0 = HttpRequest.create(URIs[0]).GET().responseAsync();
         CompletableFuture<HttpResponse> futureResponses1 = futureResponses0.thenCompose(this::checkResponseAndFireRequest);
+        futureResponses1.thenAccept(this::processResponse);
         
+        futureResponses1.get();
+        System.out.println("End.");
         
         
         
@@ -62,6 +65,7 @@ public class AsyncHttpClientTest {
     
     private CompletableFuture<HttpResponse> checkResponseAndFireRequest(HttpResponse response){
     	if(response.statusCode() == 200){
+    		System.out.println("Success");
     		int c = counter.incrementAndGet();
     		return HttpRequest.create(URIs[c]).GET().responseAsync();
     	}else
