@@ -6,9 +6,11 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,14 +27,25 @@ public class JoinSplitCollectionsUnitTest {
 
 		assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
 	}
+	
+	@Test
+	public void whenJoiningTwoCollections_thenJoined() {
+		Collection<Integer> collection1 = Arrays.asList(7, 8, 9);
+		Collection<Integer> collection2 = Arrays.asList(10, 11, 12);
+		Collection<Integer> result = Stream.concat(collection1.stream(), collection2.stream())
+				.collect(Collectors.toList());
+	
+		assertTrue(result.equals(Arrays.asList(7, 8, 9, 10, 11, 12)));
+	}
 
 	@Test
-	public void whenJoiningTwoListsWithFilter_thenJoined() {
-		List<Integer> list1 = Arrays.asList(7, 8, 11);
-		List<Integer> list2 = Arrays.asList(9, 12, 10);
-		List<Integer> result = Stream.concat(list1.stream(), list2.stream()).filter(next -> next <= 10)
+	public void whenJoiningTwoCollectionsWithFilter_thenJoined() {
+		Collection<Integer> collection1 = Arrays.asList(7, 8, 11);
+		Collection<Integer> collection2 = Arrays.asList(9, 12, 10);
+		Collection<Integer> result = Stream.concat(collection1.stream(), collection2.stream())
+				.filter(next -> next <= 10)
 				.collect(Collectors.toList());
-
+	
 		assertTrue(result.equals(Arrays.asList(7, 8, 9, 10)));
 	}
 
@@ -46,11 +59,11 @@ public class JoinSplitCollectionsUnitTest {
 	}
 
 	@Test
-	public void whenConvertListToString_thenConverted() {
-		List<String> directions = Arrays.asList("Left", "Right", "Top", "Bottom");
+	public void whenConvertCollectionToString_thenConverted() {
+		Collection<String> directions = Arrays.asList("Left", "Right", "Top", "Bottom");
 		String result = directions.stream()
 				.collect(Collectors.joining(", "));
-
+	
 		assertEquals(result, "Left, Right, Top, Bottom");
 	}
 
@@ -68,49 +81,60 @@ public class JoinSplitCollectionsUnitTest {
 	}
 
 	@Test
-	public void whenConvertNestedListToString_thenConverted() {
-		List<List<String>> nested = new ArrayList<>();
+	public void whenConvertNestedCollectionToString_thenConverted() {
+		Collection<List<String>> nested = new ArrayList<>();
 		nested.add(Arrays.asList("Left", "Right", "Top", "Bottom"));
 		nested.add(Arrays.asList("Red", "Blue", "Green", "Yellow"));
-
+	
 		String result = nested.stream()
 				.map(nextList -> nextList.stream()
 						.collect(Collectors.joining("-")))
 				.collect(Collectors.joining("; "));
-
+	
 		assertEquals(result, "Left-Right-Top-Bottom; Red-Blue-Green-Yellow");
 	}
 
 	@Test
-	public void whenConvertListToStringAndSkipNull_thenConverted() {
-		List<String> fruits = Arrays.asList("Apple", "Orange", null, "Grape");
+	public void whenConvertCollectionToStringAndSkipNull_thenConverted() {
+		Collection<String> fruits = Arrays.asList("Apple", "Orange", null, "Grape");
 		String result = fruits.stream()
 				.filter(next -> next != null)
 				.collect(Collectors.joining(", "));
-
+	
 		assertEquals(result, "Apple, Orange, Grape");
 	}
 
 	@Test
-	public void whenSplitListGroupOddEven_thenConverted() {
-		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-		Map<Boolean, List<Integer>> result = list.stream()
-				.collect(Collectors.partitioningBy(number -> number % 2 == 0));
+	public void whenSplitCollectionHalf_thenConverted() {
+		Collection<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		Collection<Integer> result1 = new ArrayList<>();
+		Collection<Integer> result2 = new ArrayList<>();
+		AtomicInteger count = new AtomicInteger();
+		int midpoint = Math.round(numbers.size() / 2);
 		
-		assertTrue(result.get(true).equals(Arrays.asList(2, 4, 6, 8, 10)));
-		assertTrue(result.get(false).equals(Arrays.asList(1, 3, 5, 7, 9)));
+		numbers.forEach(next -> {
+			int index = count.getAndIncrement();
+			if(index < midpoint){
+				result1.add(next);
+			}else{
+				result2.add(next);
+			}
+		});
+		
+		assertTrue(result1.equals(Arrays.asList(1, 2, 3, 4, 5)));
+		assertTrue(result2.equals(Arrays.asList(6, 7, 8, 9, 10)));
 	}
 	
-@Test
-public void whenSplitArrayByWordLength_thenConverted() {
-	String[] words = new String[]{"bye", "cold", "it", "and", "my", "word"};
-	Map<Integer, List<String>> result = Arrays.stream(words)
-			.collect(Collectors.groupingBy(word -> word.length()));
-	
-	assertTrue(result.get(2).equals(Arrays.asList("it", "my")));
-	assertTrue(result.get(3).equals(Arrays.asList("bye", "and")));
-	assertTrue(result.get(4).equals(Arrays.asList("cold", "word")));
-}
+	@Test
+	public void whenSplitArrayByWordLength_thenConverted() {
+		String[] words = new String[]{"bye", "cold", "it", "and", "my", "word"};
+		Map<Integer, List<String>> result = Arrays.stream(words)
+				.collect(Collectors.groupingBy(word -> word.length()));
+		
+		assertTrue(result.get(2).equals(Arrays.asList("it", "my")));
+		assertTrue(result.get(3).equals(Arrays.asList("bye", "and")));
+		assertTrue(result.get(4).equals(Arrays.asList("cold", "word")));
+	}
 
 	@Test
 	public void whenConvertStringToArray_thenConverted() {
@@ -121,9 +145,9 @@ public void whenSplitArrayByWordLength_thenConverted() {
 	}
 
 	@Test
-	public void whenConvertStringToList_thenConverted() {
+	public void whenConvertStringToCollection_thenConverted() {
 		String colors = "Left, Right, Top, Bottom";
-		List<String> result = Arrays.asList(colors.split(", "));
+		Collection<String> result = Arrays.asList(colors.split(", "));
 
 		assertTrue(result.equals(Arrays.asList("Left", "Right", "Top", "Bottom")));
 	}
@@ -142,10 +166,10 @@ public void whenSplitArrayByWordLength_thenConverted() {
 	}
 
 	@Test
-	public void whenConvertListToStringMultipleSeparators_thenConverted() {
+	public void whenConvertCollectionToStringMultipleSeparators_thenConverted() {
 		String fruits = "Apple. , Orange, Grape. Lemon";
 
-		List<String> result = Arrays.stream(fruits.split("[,|.]"))
+		Collection<String> result = Arrays.stream(fruits.split("[,|.]"))
 				.map(String::trim).filter(next -> !next.isEmpty())
 				.collect(Collectors.toList());
 
