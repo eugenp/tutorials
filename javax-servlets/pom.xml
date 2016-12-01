@@ -13,22 +13,27 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5</version>
+            <version>${org.apache.httpcomponents.version}</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
+    <properties>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <junit.version>4.12</junit.version>
+        <org.apache.httpcomponents.version>4.5</org.apache.httpcomponents.version>
+    </properties>
 
 </project>
