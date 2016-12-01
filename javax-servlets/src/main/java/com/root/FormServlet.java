@@ -20,7 +20,7 @@ public class FormServlet extends HttpServlet {
 
         try {
             double bmi = calculateBMI(Double.parseDouble(weight), Double.parseDouble(height));
-            
+
             request.setAttribute("bmi", bmi);
             response.setHeader("Test", "Success");
             response.setHeader("BMI", String.valueOf(bmi));
