@@ -98,13 +98,14 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                               <goal>test-compile</goal> 
+                            <goal>test-compile</goal> 
                         </goals>
                     </execution>
                 </executions>
            </plugin>
             
-            <!-- <plugin>
+            <!-- 
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.10</version>
@@ -113,7 +114,8 @@
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <forkMode>always</forkMode>
                 </configuration>
-            </plugin>   -->
+            </plugin>
+             -->
         </plugins>
     </build>
 
