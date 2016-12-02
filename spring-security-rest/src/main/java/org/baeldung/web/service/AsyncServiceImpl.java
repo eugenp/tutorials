@@ -3,6 +3,7 @@ package org.baeldung.web.service;
 import java.util.concurrent.Callable;
 
 import org.apache.log4j.Logger;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,14 @@ public class AsyncServiceImpl implements AsyncService {
 				return before == after;
 			}
 		};
+	}
+
+	@Async
+	@Override
+	public Boolean checkIfContextPropagated(Object context) {
+		log.info("Before @Async: " + context);
+		log.info("Inside @Async: " + SecurityContextHolder.getContext());
+		return context == SecurityContextHolder.getContext();
 	}
 
 }

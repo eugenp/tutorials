@@ -4,6 +4,7 @@ import java.util.concurrent.Callable;
 
 import org.baeldung.web.service.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +31,7 @@ public class AsyncController {
 	@RequestMapping(method = RequestMethod.GET, value = "/async")
 	@ResponseBody
 	public Boolean checkIfContextPropagated() throws Exception{
-		return asyncService.checkIfPrincipalPropagated().call();
+		return asyncService.checkIfPrincipalPropagated().call() && asyncService.checkIfContextPropagated(SecurityContextHolder.getContext());
 	}
 
 }
