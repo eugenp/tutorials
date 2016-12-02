@@ -23,7 +23,7 @@ public class JoinSplitCollectionsUnitTest {
 		String[] animals1 = new String[] { "Dog", "Cat" };
 		String[] animals2 = new String[] { "Bird", "Cow" };
 		String[] result = Stream.concat(Arrays.stream(animals1), Arrays.stream(animals2))
-				.toArray(size -> new String[size]);
+				.toArray(String[]::new);
 
 		assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
 	}
@@ -170,7 +170,8 @@ public class JoinSplitCollectionsUnitTest {
 		String fruits = "Apple. , Orange, Grape. Lemon";
 
 		Collection<String> result = Arrays.stream(fruits.split("[,|.]"))
-				.map(String::trim).filter(next -> !next.isEmpty())
+				.map(String::trim)
+				.filter(next -> !next.isEmpty())
 				.collect(Collectors.toList());
 
 		assertTrue(result.equals(Arrays.asList("Apple", "Orange", "Grape", "Lemon")));
