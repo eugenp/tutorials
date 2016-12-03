@@ -1,3 +1,5 @@
+package com.baeldung.generics;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,9 +23,7 @@ public class Generics {
 	// example of a generic method with a wild card, this method can be used
 	// with a list of any subtype of Building
 	public static boolean paintAllBuildings(List<? extends Building> buildings) {
-		for (Building building : buildings) {
-			building.paint();
-		}
+		buildings.stream().forEach(Building::paint);
 		return true;
 	}
 
