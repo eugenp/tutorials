@@ -12,32 +12,32 @@
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
-			<version>1.6.1</version>
+			<version>${dom4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
-			<version>1.1.6</version>
+			<version>${jaxen.version}</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
-			<version>2.0.6</version>
+			<version>${jdom2.version}</version>
 		</dependency>
 
 		<!-- utils -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
-			<version>4.0</version>
+			<version>${commons-collections4.version}</version>
 		</dependency>
 
 		<dependency>
@@ -90,20 +90,21 @@
 	</build>
 
 	<properties>
+		<dom4j.version>1.6.1</dom4j.version>		
+		<jaxen.version>1.1.6</jaxen.version>		
+		<jdom2.version>2.0.6</jdom2.version>		
+		<commons-io.version>2.5</commons-io.version>
+		<commons-collections4.version>4.1</commons-collections4.version>
 
 		<!-- util -->
-		<guava.version>19.0</guava.version>
-		<commons-lang3.version>3.4</commons-lang3.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
 
 		<!-- testing -->
 		<junit.version>4.12</junit.version>
 
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
 	</properties>
 

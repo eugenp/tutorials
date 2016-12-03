@@ -16,12 +16,11 @@ public aspect AccountAspect {
     }
 
     boolean around(int amount, Account account) : callWithDraw(amount, account) {
-        if (account.balance - amount >= MIN_BALANCE)
-            return proceed(amount, account);
-        else {
+        if (account.balance < amount) {
             logger.info("Withdrawal Rejected!");
             return false;
         }
+        return proceed(amount, account);
     }
 
     after(int amount, Account balance) : callWithDraw(amount, balance) {
