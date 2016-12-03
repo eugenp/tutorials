@@ -40,8 +40,8 @@ public class AsyncEchoClient {
         }
     }
 
-    public String sendMessage(String message) {
-        byte[] byteMsg = new String(message).getBytes();
+    public String sendMessage(String message) throws Exception {
+        byte[] byteMsg = message.getBytes();
         ByteBuffer buffer = ByteBuffer.wrap(byteMsg);
         Future<Integer> writeResult = client.write(buffer);
 
@@ -65,7 +65,7 @@ public class AsyncEchoClient {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         AsyncEchoClient client = AsyncEchoClient.getInstance();
         client.start();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
