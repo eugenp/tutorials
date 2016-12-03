@@ -11,6 +11,12 @@ public class Foo {
         super();
     }
 
+    public Foo(final String name) {
+        super();
+
+        this.name = name;
+    }
+
     public Foo(final long id, final String name) {
         super();
 

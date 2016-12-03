@@ -3,10 +3,10 @@ package org.baeldung.persistence.dao;
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.web.util.SearchCriteria;
 
-import com.mysema.query.types.expr.BooleanExpression;
-import com.mysema.query.types.path.NumberPath;
-import com.mysema.query.types.path.PathBuilder;
-import com.mysema.query.types.path.StringPath;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.NumberPath;
+import com.querydsl.core.types.dsl.PathBuilder;
+import com.querydsl.core.types.dsl.StringPath;
 
 public class MyUserPredicate {
 

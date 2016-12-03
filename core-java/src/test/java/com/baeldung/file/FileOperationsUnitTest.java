@@ -1,11 +1,12 @@
 package com.baeldung.file;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import org.apache.commons.io.FileUtils;
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -13,12 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
-import org.apache.commons.io.FileUtils;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class FileOperationsUnitTest {
 
@@ -58,9 +53,9 @@ public class FileOperationsUnitTest {
 
     @Test
     public void givenURLName_whenUsingURL_thenFileData() throws IOException {
-        String expectedData = "Baeldung";
+        String expectedData = "Example Domain";
 
-        URL urlObject = new URL("http://www.baeldung.com/");
+        URL urlObject = new URL("http://www.example.com/");
 
         URLConnection urlConnection = urlObject.openConnection();
 
