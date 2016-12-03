@@ -18,8 +18,26 @@
         </encoder>
     </appender>
 
+    # Rolling appender
+    <appender name="rollout1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log4j/target/logback/roll1/baeldung-slf4j.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>logFile.%d{yyyy-MM-dd HH:mm:ss}.%i.log</fileNamePattern>
+
+            <maxFileSize>10Kb</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</pattern>
+        </encoder>
+    </appender>
+
     # Override log level for specified package
-    <logger name="com.baeldung.logback" level="TRACE"/>
+    <logger name="com.baeldung.slf4j.Slf4jRollingExample" level="TRACE">
+        <appender-ref ref="rollout1"/>
+    </logger>
 
     <root level="DEBUG">
         <appender-ref ref="stdout"/>
