@@ -1,13 +1,12 @@
 package com.baeldung.java.nio2.async;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 public class AsyncEchoTest {
 
@@ -21,7 +20,7 @@ public class AsyncEchoTest {
     }
 
     @Test
-    public void givenServerClient_whenServerEchosMessage_thenCorrect() throws ExecutionException, InterruptedException {
+    public void givenServerClient_whenServerEchosMessage_thenCorrect() throws Exception {
         String resp1 = client.sendMessage("hello");
         String resp2 = client.sendMessage("world");
         assertEquals("hello", resp1);
