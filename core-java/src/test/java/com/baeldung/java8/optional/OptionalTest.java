@@ -185,12 +185,6 @@ public class OptionalTest {
           .orElseGet(() -> "john");
         assertEquals("john", name);
 
-        name = Optional.ofNullable(nullName)
-          .orElseGet(() -> {
-              return "doe";
-          });
-        assertEquals("doe", name);
-
     }
 
     @Test
