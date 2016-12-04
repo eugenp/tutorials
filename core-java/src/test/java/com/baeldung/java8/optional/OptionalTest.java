@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import com.baeldung.java_8_features.Person;
 
 import org.junit.Test;
 
@@ -102,7 +101,7 @@ public class OptionalTest {
         List<String> companyNames = Arrays.asList("paypal", "oracle", "", "microsoft", "", "apple");
         Optional<List<String>> listOptional = Optional.of(companyNames);
 
-        int size = listOptional.map(list -> list.size()).get();
+        int size = listOptional.map(List::size).orElse(0);
         assertEquals(6, size);
     }
 
@@ -111,7 +110,7 @@ public class OptionalTest {
         String name = "baeldung";
         Optional<String> nameOptional = Optional.of(name);
 
-        int len = nameOptional.map(s -> s.length()).get();
+        int len = nameOptional.map(String::length).orElse(0);
         assertEquals(8, len);
     }
 
@@ -122,7 +121,7 @@ public class OptionalTest {
         boolean correctPassword = passOpt.filter(pass -> pass.equals("password")).isPresent();
         assertFalse(correctPassword);
 
-        correctPassword = passOpt.map(pass -> pass.trim()).filter(pass -> pass.equals("password")).isPresent();
+        correctPassword = passOpt.map(String::trim).filter(pass -> pass.equals("password")).isPresent();
         assertTrue(correctPassword);
     }
 
@@ -132,12 +131,12 @@ public class OptionalTest {
         Person person = new Person("john", 26);
         Optional<Person> personOptional = Optional.of(person);
 
-        Optional<Optional<String>> nameOptionalWrapper = personOptional.map(p -> p.getName());
-        Optional<String> nameOptional = nameOptionalWrapper.get();
-        String name1 = nameOptional.get();
+        Optional<Optional<String>> nameOptionalWrapper = personOptional.map(Person::getName);
+        Optional<String> nameOptional = nameOptionalWrapper.orElseThrow(IllegalArgumentException::new);
+        String name1 = nameOptional.orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name1);
 
-        String name = personOptional.flatMap(p -> p.getName()).get();
+        String name = personOptional.flatMap(Person::getName).orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name);
     }
 
@@ -147,7 +146,7 @@ public class OptionalTest {
         person.setPassword("password");
         Optional<Person> personOptional = Optional.of(person);
 
-        String password = personOptional.flatMap(p -> p.getPassword()).filter(cleanPass -> cleanPass.equals("password")).get();
+        String password = personOptional.flatMap(Person::getPassword).filter(cleanPass -> cleanPass.equals("password")).orElseThrow(IllegalArgumentException::new);
         assertEquals("password", password);
     }
 
