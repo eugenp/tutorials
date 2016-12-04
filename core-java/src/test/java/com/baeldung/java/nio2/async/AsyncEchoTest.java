@@ -1,77 +1,36 @@
 package com.baeldung.java.nio2.async;
 
-import java.io.File;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.nio.ByteBuffer;
-import java.nio.channels.AsynchronousServerSocketChannel;
-import java.nio.channels.AsynchronousSocketChannel;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
-public class AsyncEchoServer {
-    private AsynchronousServerSocketChannel serverChannel;
-    private Future<AsynchronousSocketChannel> acceptResult;
-    private AsynchronousSocketChannel clientChannel;
+import static org.junit.Assert.assertEquals;
 
-    public AsyncEchoServer() {
-        try {
-            serverChannel = AsynchronousServerSocketChannel.open();
-            InetSocketAddress hostAddress = new InetSocketAddress("localhost", 4999);
-            serverChannel.bind(hostAddress);
-            acceptResult = serverChannel.accept();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+public class AsyncEchoTest {
+
+    Process server;
+    AsyncEchoClient client;
+
+    @Before
+    public void setup() throws IOException, InterruptedException {
+        server = AsyncEchoServer2.start();
+        client = AsyncEchoClient.getInstance();
     }
 
-    public void runServer() {
-        try {
-            clientChannel = acceptResult.get();
-            if ((clientChannel != null) && (clientChannel.isOpen())) {
-                while (true) {
-
-                    ByteBuffer buffer = ByteBuffer.allocate(32);
-                    Future<Integer> readResult = clientChannel.read(buffer);
-
-                    //do other things as operation continues in background
-                    readResult.get();
-
-                    buffer.flip();
-                    String message = new String(buffer.array()).trim();
-                    if (message.equals("bye")) {
-                        break; // while loop
-                    }
-                    buffer = ByteBuffer.wrap(new String(message).getBytes());
-                    Future<Integer> writeResult = clientChannel.write(buffer);
-                    //run other code
-                    writeResult.get();
-                    buffer.clear();
-
-                } // while()
-
-                clientChannel.close();
-                serverChannel.close();
-
-            }
-        } catch (InterruptedException | ExecutionException | IOException e) {
-            e.printStackTrace();
-        }
-
+    @Test
+    public void givenServerClient_whenServerEchosMessage_thenCorrect() throws Exception {
+        String resp1 = client.sendMessage("hello");
+        String resp2 = client.sendMessage("world");
+        assertEquals("hello", resp1);
+        assertEquals("world", resp2);
     }
 
-    public static void main(String[] args) {
-        AsyncEchoServer server = new AsyncEchoServer();
-        server.runServer();
+    @After
+    public void teardown() throws IOException {
+        server.destroy();
+        client.stop();
     }
-    public static Process start() throws IOException, InterruptedException {
-        String javaHome = System.getProperty("java.home");
-        String javaBin = javaHome + File.separator + "bin" + File.separator + "java";
-        String classpath = System.getProperty("java.class.path");
-        String className = AsyncEchoServer.class.getCanonicalName();
 
-        ProcessBuilder builder = new ProcessBuilder(javaBin, "-cp", classpath, className);
-
-        return builder.start();
-    }
 }
