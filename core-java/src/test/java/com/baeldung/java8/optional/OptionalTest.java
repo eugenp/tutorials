@@ -1,15 +1,14 @@
 package com.baeldung.java8.optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.java_8_features.Person;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class OptionalTest {
     // creating Optional
@@ -89,9 +88,11 @@ public class OptionalTest {
     public void whenOptionalFilterWorks_thenCorrect() {
         Integer year = 2016;
         Optional<Integer> yearOptional = Optional.of(year);
-        boolean is2016 = yearOptional.filter(y -> y == 2016).isPresent();
+        boolean is2016 = yearOptional.filter(y -> y == 2016)
+          .isPresent();
         assertTrue(is2016);
-        boolean is2017 = yearOptional.filter(y -> y == 2017).isPresent();
+        boolean is2017 = yearOptional.filter(y -> y == 2017)
+          .isPresent();
         assertFalse(is2017);
     }
 
@@ -101,7 +102,8 @@ public class OptionalTest {
         List<String> companyNames = Arrays.asList("paypal", "oracle", "", "microsoft", "", "apple");
         Optional<List<String>> listOptional = Optional.of(companyNames);
 
-        int size = listOptional.map(List::size).orElse(0);
+        int size = listOptional.map(List::size)
+          .orElse(0);
         assertEquals(6, size);
     }
 
@@ -110,7 +112,8 @@ public class OptionalTest {
         String name = "baeldung";
         Optional<String> nameOptional = Optional.of(name);
 
-        int len = nameOptional.map(String::length).orElse(0);
+        int len = nameOptional.map(String::length)
+          .orElse(0);
         assertEquals(8, len);
     }
 
@@ -118,10 +121,13 @@ public class OptionalTest {
     public void givenOptional_whenMapWorksWithFilter_thenCorrect() {
         String password = " password ";
         Optional<String> passOpt = Optional.of(password);
-        boolean correctPassword = passOpt.filter(pass -> pass.equals("password")).isPresent();
+        boolean correctPassword = passOpt.filter(pass -> pass.equals("password"))
+          .isPresent();
         assertFalse(correctPassword);
 
-        correctPassword = passOpt.map(String::trim).filter(pass -> pass.equals("password")).isPresent();
+        correctPassword = passOpt.map(String::trim)
+          .filter(pass -> pass.equals("password"))
+          .isPresent();
         assertTrue(correctPassword);
     }
 
@@ -131,12 +137,17 @@ public class OptionalTest {
         Person person = new Person("john", 26);
         Optional<Person> personOptional = Optional.of(person);
 
-        Optional<Optional<String>> nameOptionalWrapper = personOptional.map(Person::getName);
-        Optional<String> nameOptional = nameOptionalWrapper.orElseThrow(IllegalArgumentException::new);
-        String name1 = nameOptional.orElseThrow(IllegalArgumentException::new);
+        Optional<Optional<String>> nameOptionalWrapper = personOptional
+          .map(Person::getName);
+        Optional<String> nameOptional = nameOptionalWrapper
+          .orElseThrow(IllegalArgumentException::new);
+        String name1 = nameOptional
+          .orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name1);
 
-        String name = personOptional.flatMap(Person::getName).orElseThrow(IllegalArgumentException::new);
+        String name = personOptional
+          .flatMap(Person::getName)
+          .orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name);
     }
 
@@ -146,7 +157,10 @@ public class OptionalTest {
         person.setPassword("password");
         Optional<Person> personOptional = Optional.of(person);
 
-        String password = personOptional.flatMap(Person::getPassword).filter(cleanPass -> cleanPass.equals("password")).orElseThrow(IllegalArgumentException::new);
+        String password = personOptional
+          .flatMap(Person::getPassword)
+          .filter(cleanPass -> cleanPass.equals("password"))
+          .orElseThrow(IllegalArgumentException::new);
         assertEquals("password", password);
     }
 
@@ -154,7 +168,8 @@ public class OptionalTest {
     @Test
     public void whenOrElseWorks_thenCorrect() {
         String nullName = null;
-        String name = Optional.ofNullable(nullName).orElse("john");
+        String name = Optional.ofNullable(nullName)
+          .orElse("john");
         assertEquals("john", name);
     }
 
@@ -162,12 +177,14 @@ public class OptionalTest {
     @Test
     public void whenOrElseGetWorks_thenCorrect() {
         String nullName = null;
-        String name = Optional.ofNullable(nullName).orElseGet(() -> "john");
+        String name = Optional.ofNullable(nullName)
+          .orElseGet(() -> "john");
         assertEquals("john", name);
 
-        name = Optional.ofNullable(nullName).orElseGet(() -> {
-            return "doe";
-        });
+        name = Optional.ofNullable(nullName)
+          .orElseGet(() -> {
+              return "doe";
+          });
         assertEquals("doe", name);
 
     }
@@ -176,7 +193,8 @@ public class OptionalTest {
     public void whenOrElseGetAndOrElseOverlap_thenCorrect() {
         String text = null;
         System.out.println("Using orElseGet:");
-        String defaultText = Optional.ofNullable(text).orElseGet(this::getMyDefault);
+        String defaultText = Optional.ofNullable(text)
+          .orElseGet(this::getMyDefault);
         assertEquals("Default Value", defaultText);
 
         System.out.println("Using orElse:");
@@ -188,7 +206,8 @@ public class OptionalTest {
     public void whenOrElseGetAndOrElseDiffer_thenCorrect() {
         String text = "Text present";
         System.out.println("Using orElseGet:");
-        String defaultText = Optional.ofNullable(text).orElseGet(this::getMyDefault);
+        String defaultText = Optional.ofNullable(text)
+          .orElseGet(this::getMyDefault);
         assertEquals("Text present", defaultText);
 
         System.out.println("Using orElse:");
@@ -200,7 +219,8 @@ public class OptionalTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenOrElseThrowWorks_thenCorrect() {
         String nullName = null;
-        String name = Optional.ofNullable(nullName).orElseThrow(IllegalArgumentException::new);
+        String name = Optional.ofNullable(nullName)
+          .orElseThrow(IllegalArgumentException::new);
     }
 
     public String getMyDefault() {
