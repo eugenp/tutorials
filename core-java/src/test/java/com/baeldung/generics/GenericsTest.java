@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class GenericsTest {
 
@@ -18,6 +18,15 @@ public class GenericsTest {
         List<Integer> list = Generics.fromArrayToList(intArray);
 
         assertThat(list, hasItems(intArray));
+    }
+
+    // testing the generic method with Integer and String type
+    @Test
+    public void givenArrayOfIntegers_thanListOfStringReturnedOK() {
+        Integer[] intArray = {1, 2, 3, 4, 5};
+        List<String> stringList = new ArrayList<>();
+        stringList = Generics.fromArrayToList(intArray, stringList, Object::toString);
+        assertThat(stringList, hasItems("1", "2", "3", "4", "5"));
     }
 
     // testing the generic method with String
@@ -43,14 +52,19 @@ public class GenericsTest {
     // testing paintAllBuildings method with a subtype of Building, the method
     // will work with all subtypes of Building
     @Test
-    public void givenSubTypeOfWildCardBoundedGenericMethod_thanOK() {
+    public void givenSubTypeOfWildCardBoundedGenericType_thanPaintingOK() {
+        try {
+            List<Building> subBuildingsList = new ArrayList<>();
+            subBuildingsList.add(new Building());
+            subBuildingsList.add(new House());
 
-        List<Building> subBuildingsList = new ArrayList<>();
-        subBuildingsList.add(new Building());
-        subBuildingsList.add(new House());
-
-        boolean result = Generics.paintAllBuildings(subBuildingsList);
-        assertTrue(result);
+            // prints
+            // Painting Building
+            // Painting House
+            Generics.paintAllBuildings(subBuildingsList);
+        } catch (Exception e) {
+            fail();
+        }
     }
 
 }
