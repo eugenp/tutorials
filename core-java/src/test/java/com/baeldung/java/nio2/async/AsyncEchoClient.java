@@ -56,6 +56,7 @@ public class AsyncEchoClient {
             readResult.get();
         } catch (Exception e) {
             e.printStackTrace();
+        }
         String echo = new String(buffer.array()).trim();
         buffer.clear();
         return echo;
@@ -73,7 +74,7 @@ public class AsyncEchoClient {
         AsyncEchoClient client = AsyncEchoClient.getInstance();
         client.start();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line = null;
+        String line;
         System.out.println("Message to server:");
         while ((line = br.readLine()) != null) {
             String response = client.sendMessage(line);
