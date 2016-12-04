@@ -88,10 +88,12 @@ public class OptionalTest {
     public void whenOptionalFilterWorks_thenCorrect() {
         Integer year = 2016;
         Optional<Integer> yearOptional = Optional.of(year);
-        boolean is2016 = yearOptional.filter(y -> y == 2016)
+        boolean is2016 = yearOptional
+          .filter(y -> y == 2016)
           .isPresent();
         assertTrue(is2016);
-        boolean is2017 = yearOptional.filter(y -> y == 2017)
+        boolean is2017 = yearOptional
+          .filter(y -> y == 2017)
           .isPresent();
         assertFalse(is2017);
     }
@@ -112,7 +114,8 @@ public class OptionalTest {
         String name = "baeldung";
         Optional<String> nameOptional = Optional.of(name);
 
-        int len = nameOptional.map(String::length)
+        int len = nameOptional
+          .map(String::length)
           .orElse(0);
         assertEquals(8, len);
     }
@@ -121,7 +124,8 @@ public class OptionalTest {
     public void givenOptional_whenMapWorksWithFilter_thenCorrect() {
         String password = " password ";
         Optional<String> passOpt = Optional.of(password);
-        boolean correctPassword = passOpt.filter(pass -> pass.equals("password"))
+        boolean correctPassword = passOpt
+          .filter(pass -> pass.equals("password"))
           .isPresent();
         assertFalse(correctPassword);
 
@@ -198,7 +202,8 @@ public class OptionalTest {
         assertEquals("Default Value", defaultText);
 
         System.out.println("Using orElse:");
-        defaultText = Optional.ofNullable(text).orElse(getMyDefault());
+        defaultText = Optional.ofNullable(text)
+          .orElse(getMyDefault());
         assertEquals("Default Value", defaultText);
     }
 
@@ -211,7 +216,8 @@ public class OptionalTest {
         assertEquals("Text present", defaultText);
 
         System.out.println("Using orElse:");
-        defaultText = Optional.ofNullable(text).orElse(getMyDefault());
+        defaultText = Optional.ofNullable(text)
+          .orElse(getMyDefault());
         assertEquals("Text present", defaultText);
     }
 
