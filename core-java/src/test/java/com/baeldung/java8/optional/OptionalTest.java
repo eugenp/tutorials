@@ -66,7 +66,6 @@ public class OptionalTest {
     public void givenOptional_whenIfPresentWorks_thenCorrect() {
         Optional<String> opt = Optional.of("baeldung");
         opt.ifPresent(name -> System.out.println(name.length()));
-        opt.ifPresent(String::length);
     }
 
     // returning Value With get()
@@ -184,12 +183,6 @@ public class OptionalTest {
         String name = Optional.ofNullable(nullName)
           .orElseGet(() -> "john");
         assertEquals("john", name);
-
-        name = Optional.ofNullable(nullName)
-          .orElseGet(() -> {
-              return "doe";
-          });
-        assertEquals("doe", name);
 
     }
 
