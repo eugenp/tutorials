@@ -1,12 +1,15 @@
 package com.baeldung.htmlunit;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 public class HtmlUnitAndJUnitTest {
+
+	private WebClient webClient;
 
 	@Before
 	public void init() throws Exception {
