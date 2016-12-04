@@ -1,21 +1,15 @@
 package org.baeldung.java.collections;
 
-import static java.util.Arrays.asList;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Arrays.asList;
 
 public class CollectionsConcatenateUnitTest {
 
@@ -63,16 +57,16 @@ public class CollectionsConcatenateUnitTest {
         Assert.assertEquals(Arrays.asList("S", "T", "U", "V"), collectionCombined);
     }
 
-    public static <E> Iterable<E> concat(Iterable<? extends E> list1, Iterable<? extends E> list2) {
+    public static <E> Iterable<E> concat(Iterable<? extends E> i1, Iterable<? extends E> i2) {
         return new Iterable<E>() {
             public Iterator<E> iterator() {
                 return new Iterator<E>() {
-                    protected Iterator<? extends E> listIterator = list1.iterator();
-                    protected Boolean checkedHasNext;
-                    protected E nextValue;
+                    Iterator<? extends E> listIterator = i1.iterator();
+                    Boolean checkedHasNext;
+                    E nextValue;
                     private boolean startTheSecond;
 
-                    public void theNext() {
+                    void theNext() {
                         if (listIterator.hasNext()) {
                             checkedHasNext = true;
                             nextValue = listIterator.next();
@@ -80,7 +74,7 @@ public class CollectionsConcatenateUnitTest {
                             checkedHasNext = false;
                         else {
                             startTheSecond = true;
-                            listIterator = list2.iterator();
+                            listIterator = i2.iterator();
                             theNext();
                         }
                     }
@@ -107,7 +101,7 @@ public class CollectionsConcatenateUnitTest {
     }
 
     public static <E> List<E> makeListFromIterable(Iterable<E> iter) {
-        List<E> list = new ArrayList<E>();
+        List<E> list = new ArrayList<>();
         for (E item : iter) {
             list.add(item);
         }

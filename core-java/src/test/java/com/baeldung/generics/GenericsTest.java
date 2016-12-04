@@ -2,10 +2,12 @@ package com.baeldung.generics;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class GenericsTest {
 
@@ -36,6 +38,19 @@ public class GenericsTest {
         List<Integer> list = Generics.fromArrayToListWithUpperBound(intArray);
 
         assertThat(list, hasItems(intArray));
+    }
+
+    // testing paintAllBuildings method with a subtype of Building, the method
+    // will work with all subtypes of Building
+    @Test
+    public void givenSubTypeOfWildCardBoundedGenericMethod_thanOK() {
+
+        List<Building> subBuildingsList = new ArrayList<>();
+        subBuildingsList.add(new Building());
+        subBuildingsList.add(new House());
+
+        boolean result = Generics.paintAllBuildings(subBuildingsList);
+        assertTrue(result);
     }
 
 }

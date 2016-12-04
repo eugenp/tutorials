@@ -1,5 +1,6 @@
 package org.baeldung.web.test;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class RequestMappingLiveTest {
 
     @Test
     public void givenAcceptHeader_whenGetFoos_thenOk() {
-        RestAssured.given().accept("application/json").get(BASE_URI + "foos").then().assertThat().body(equalTo("Get some Foos with Header New"));
+        RestAssured.given().accept("application/json").get(BASE_URI + "foos").then().assertThat().body(containsString("Get some Foos with Header New"));
     }
 
     @Test
