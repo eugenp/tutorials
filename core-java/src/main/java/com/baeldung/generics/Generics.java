@@ -13,9 +13,8 @@ public class Generics {
     }
 
     // definition of a generic method
-    public static <T, G> List<G> fromArrayToList(T[] a, List<G> list, Function<T, G> mapperFunction) {
-        List<T> listWithTypeT = Arrays.stream(a).collect(Collectors.toList());
-        return listWithTypeT.stream().map(mapperFunction)
+    public static <T, G> List<G> fromArrayToList(T[] a, Function<T, G> mapperFunction) {
+        return Arrays.stream(a).map(mapperFunction)
           .collect(Collectors.toList());
     }
 

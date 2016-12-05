@@ -24,8 +24,7 @@ public class GenericsTest {
     @Test
     public void givenArrayOfIntegers_thanListOfStringReturnedOK() {
         Integer[] intArray = {1, 2, 3, 4, 5};
-        List<String> stringList = new ArrayList<>();
-        stringList = Generics.fromArrayToList(intArray, stringList, Object::toString);
+        List<String> stringList = Generics.fromArrayToList(intArray, Object::toString);
         assertThat(stringList, hasItems("1", "2", "3", "4", "5"));
     }
 
