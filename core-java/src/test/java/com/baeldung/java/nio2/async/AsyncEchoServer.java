@@ -34,9 +34,9 @@ public class AsyncEchoServer {
                     ByteBuffer buffer = ByteBuffer.allocate(32);
                     Future<Integer> readResult = clientChannel.read(buffer);
 
-                    //do some computation
-					
-					readResult.get();
+                    // do some computation
+
+                    readResult.get();
 
                     buffer.flip();
                     String message = new String(buffer.array()).trim();
@@ -45,9 +45,9 @@ public class AsyncEchoServer {
                     }
                     buffer = ByteBuffer.wrap(new String(message).getBytes());
                     Future<Integer> writeResult = clientChannel.write(buffer);
-                    
-					//do some computation
-					writeResult.get();
+
+                    // do some computation
+                    writeResult.get();
                     buffer.clear();
 
                 } // while()

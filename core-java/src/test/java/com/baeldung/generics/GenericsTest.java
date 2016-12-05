@@ -14,7 +14,7 @@ public class GenericsTest {
     // testing the generic method with Integer
     @Test
     public void givenArrayOfIntegers_thanListOfIntegersReturnedOK() {
-        Integer[] intArray = {1, 2, 3, 4, 5};
+        Integer[] intArray = { 1, 2, 3, 4, 5 };
         List<Integer> list = Generics.fromArrayToList(intArray);
 
         assertThat(list, hasItems(intArray));
@@ -23,7 +23,7 @@ public class GenericsTest {
     // testing the generic method with Integer and String type
     @Test
     public void givenArrayOfIntegers_thanListOfStringReturnedOK() {
-        Integer[] intArray = {1, 2, 3, 4, 5};
+        Integer[] intArray = { 1, 2, 3, 4, 5 };
         List<String> stringList = new ArrayList<>();
         stringList = Generics.fromArrayToList(intArray, stringList, Object::toString);
         assertThat(stringList, hasItems("1", "2", "3", "4", "5"));
@@ -32,7 +32,7 @@ public class GenericsTest {
     // testing the generic method with String
     @Test
     public void givenArrayOfStrings_thanListOfStringsReturnedOK() {
-        String[] stringArray = {"hello1", "hello2", "hello3", "hello4", "hello5"};
+        String[] stringArray = { "hello1", "hello2", "hello3", "hello4", "hello5" };
         List<String> list = Generics.fromArrayToList(stringArray);
 
         assertThat(list, hasItems(stringArray));
@@ -43,7 +43,7 @@ public class GenericsTest {
     // extend Number it will fail to compile
     @Test
     public void givenArrayOfIntegersAndNumberUpperBound_thanListOfIntegersReturnedOK() {
-        Integer[] intArray = {1, 2, 3, 4, 5};
+        Integer[] intArray = { 1, 2, 3, 4, 5 };
         List<Integer> list = Generics.fromArrayToListWithUpperBound(intArray);
 
         assertThat(list, hasItems(intArray));
