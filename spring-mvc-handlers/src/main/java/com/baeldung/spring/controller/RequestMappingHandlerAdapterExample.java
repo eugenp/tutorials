@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class RequestMappingHandlerAdapterExampleController {
+public class RequestMappingHandlerAdapterExample {
 	@RequestMapping("/requestName")
 	public ModelAndView getEmployeeName() {
 		ModelAndView model = new ModelAndView("Greeting");
-		model.addObject("message","Madhwal");
+		model.addObject("message", "Madhwal");
 		return model;
 	}
 }
