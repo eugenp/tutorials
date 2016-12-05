@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
-public class SimpleControllerHandlerAdapterExampleController extends
+public class SimpleControllerHandlerAdapterExample extends
 		AbstractController {
 	@Override
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
