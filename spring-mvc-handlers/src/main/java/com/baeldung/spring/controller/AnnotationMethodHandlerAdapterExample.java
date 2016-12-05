@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class AnnotationMethodHandlerAdapterExampleController {
+public class AnnotationMethodHandlerAdapterExample {
 	@RequestMapping("/annotedName")
 	public ModelAndView getEmployeeName() {
 		ModelAndView model = new ModelAndView("Greeting");
