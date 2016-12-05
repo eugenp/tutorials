@@ -13,11 +13,10 @@ public class Generics {
     }
 
     // definition of a generic method
-    public static <T, G> List<G> fromArrayToList(T[] a, Function<T, G> mapperFunction) {
-        return Arrays.stream(a).map(mapperFunction)
-          .collect(Collectors.toList());
+    public static <T, G> List<G> fromArrayToList(T[] a, List<G> list, Function<T, G> mapperFunction) {
+        List<T> listWithTypeT = Arrays.stream(a).collect(Collectors.toList());
+        return listWithTypeT.stream().map(mapperFunction).collect(Collectors.toList());
     }
-
 
     // example of a generic method that has Number as an upper bound for T
     public static <T extends Number> List<T> fromArrayToListWithUpperBound(T[] a) {
