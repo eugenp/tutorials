@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import com.baeldung.java_8_features.Person;
+import com.baeldung.optional.Person;
 
 public class OptionalTest {
     // creating Optional
