@@ -1,18 +1,15 @@
 package com.baeldung.java8.optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.optional.Modem;
+import com.baeldung.optional.Person;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.junit.Test;
-
-import com.baeldung.optional.Person;
-import com.baeldung.optional.Modem;
+import static org.junit.Assert.*;
 
 public class OptionalTest {
     // creating Optional
@@ -122,9 +119,11 @@ public class OptionalTest {
     }
 
     public boolean priceIsInRange2(Modem modem2) {
-        Optional<Modem> modemOptional = Optional.ofNullable(modem2);
-        boolean isInRange = modemOptional.filter(modem -> Optional.ofNullable(modem.getPrice()).orElse(-1.0) >= 10 && modem.getPrice() <= 15).isPresent();
-        return isInRange;
+        return Optional.ofNullable(modem2)
+          .map(Modem::getPrice)
+          .filter(p -> p >= 10)
+          .filter(p -> p <= 15)
+          .isPresent();
     }
     // Transforming Value With map()
     @Test
