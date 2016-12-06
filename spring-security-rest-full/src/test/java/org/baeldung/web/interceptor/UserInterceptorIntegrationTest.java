@@ -1,7 +1,7 @@
 package org.baeldung.web.interceptor;
 
+import org.baeldung.security.spring.SecurityWithoutCsrfConfig;
 import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.SecurityWithoutCsrfConfig;
 import org.baeldung.spring.WebConfig;
 import org.junit.Before;
 import org.junit.Test;

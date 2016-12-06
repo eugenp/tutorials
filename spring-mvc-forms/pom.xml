@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <version>0.1-SNAPSHOT</version>
+    <artifactId>spring-mvc-forms</artifactId>
+
+    <name>spring-mvc-forms</name>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${springframework.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${javax.servlet.jsp-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+
+
+    </dependencies>
+    <profiles>
+        <!-- Local -->
+        <profile>
+            <id>spring-mvc-forms</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-compiler-plugin</artifactId>
+                            <version>${maven-compiler-plugin.version}</version>
+                            <configuration>
+                                <source>${maven-compiler-plugin.source}</source>
+                                <target>${maven-compiler-plugin.source}</target>
+                            </configuration>
+                        </plugin>
+
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-war-plugin</artifactId>
+                            <version>${maven-war-plugin.version}</version>
+                            <configuration>
+                                <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                                <warName>spring-mvc-forms</warName>
+                                <failOnMissingWebXml>false</failOnMissingWebXml>
+                                <outputDirectory>${deploy-path}</outputDirectory>
+                            </configuration>
+                        </plugin>
+
+                    </plugins>
+                </pluginManagement>
+                <finalName>spring-mvc-forms</finalName>
+            </build>
+        </profile>
+    </profiles>
+
+    <properties>
+        <springframework.version>4.0.6.RELEASE</springframework.version>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+        <jstl.version>1.2</jstl.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
+        <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
+        <deploy-path>enter-location-of-server</deploy-path>
+    </properties>
+
+</project>
+

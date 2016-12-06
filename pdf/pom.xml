@@ -40,9 +40,9 @@
 			<version>5.5.10</version>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.15</version>
+			<groupId>com.itextpdf.tool</groupId>
+			<artifactId>xmlworker</artifactId>
+			<version>5.5.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>

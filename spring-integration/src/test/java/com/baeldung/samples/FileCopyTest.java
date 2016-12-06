@@ -17,10 +17,9 @@ package com.baeldung.samples;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.Scanner;
 
 
 /**
@@ -35,15 +34,10 @@ public final class FileCopyTest {
 	private static final Logger LOGGER = Logger.getLogger(FileCopyTest.class);
 
 	@Test
-	public void test() throws InterruptedException {
-
-
-		final AbstractApplicationContext context =
-				new ClassPathXmlApplicationContext("classpath:META-INF/spring/integration/spring-integration-file-copy-context.xml");
-
+	public void whenFileCopyConfiguration_thanFileCopiedSuccessfully() throws InterruptedException {
+		final AbstractApplicationContext context = new AnnotationConfigApplicationContext(FileCopyConfig.class.getCanonicalName());
+		context.registerShutdownHook();
 		Thread.sleep(5000);
-
-
 	}
 
 	@Test
