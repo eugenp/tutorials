@@ -11,7 +11,8 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import com.baeldung.java_8_features.Person;
+import com.baeldung.optional.Person;
+import com.baeldung.optional.Modem;
 
 public class OptionalTest {
     // creating Optional
@@ -95,7 +96,36 @@ public class OptionalTest {
         boolean is2017 = yearOptional.filter(y -> y == 2017).isPresent();
         assertFalse(is2017);
     }
+    @Test
+    public void whenFiltersWithoutOptional_thenCorrect() {
+        assertTrue(priceIsInRange1(new Modem(10.0)));
+        assertFalse(priceIsInRange1(new Modem(9.9)));
+        assertFalse(priceIsInRange1(new Modem(null)));
+        assertFalse(priceIsInRange1(new Modem(15.5)));
 
+    }
+
+    @Test
+    public void whenFiltersWithOptional_thenCorrect() {
+        assertTrue(priceIsInRange2(new Modem(10.0)));
+        assertFalse(priceIsInRange2(new Modem(9.9)));
+        assertFalse(priceIsInRange2(new Modem(null)));
+        assertFalse(priceIsInRange2(new Modem(15.5)));
+    }
+
+    public boolean priceIsInRange1(Modem modem) {
+        boolean isInRange = false;
+        if (modem != null && modem.getPrice() != null && (modem.getPrice() >= 10 && modem.getPrice() <= 15)) {
+            isInRange = true;
+        }
+        return isInRange;
+    }
+
+    public boolean priceIsInRange2(Modem modem2) {
+        Optional<Modem> modemOptional = Optional.ofNullable(modem2);
+        boolean isInRange = modemOptional.filter(modem -> Optional.ofNullable(modem.getPrice()).orElse(-1.0) >= 10 && modem.getPrice() <= 15).isPresent();
+        return isInRange;
+    }
     // Transforming Value With map()
     @Test
     public void givenOptional_whenMapWorks_thenCorrect() {
