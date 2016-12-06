@@ -47,6 +47,7 @@
         <module>immutables</module>
 
         <module>jackson</module>
+        <module>jackson-annotations</module>
         <module>java-cassandra</module>
         <module>javaxval</module>
         <module>jee7</module>
