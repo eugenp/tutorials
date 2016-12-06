@@ -17,7 +17,23 @@ public class Log4J2Runnable implements Runnable {
         ThreadContext.put("transaction.id", tx.getTransactionId());
         ThreadContext.put("transaction.owner", tx.getSender());
 
-        log4j2BusinessService.transfer(tx.getAmount());
+        // Use NDC to add accountId
+        ThreadContext.push("accountId " + tx.getAccountId());
+
+        boolean transferSuccess = log4j2BusinessService.transfer(tx.getAmount(), tx.getAccountId());
+
+        // Pop accountId
+        ThreadContext.pop();
+
+        if (transferSuccess && tx.isInvestmentFund()) {
+            // Use NDC to add investmentFundId
+            ThreadContext.push("investmentFundId " + tx.getInvestmentFundId());
+
+            log4j2BusinessService.transfer(tx.getAmount(), tx.getInvestmentFundId());
+
+            // Pop investmentFundId
+            ThreadContext.pop();
+        }
 
         ThreadContext.clearAll();
 

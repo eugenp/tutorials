@@ -3,7 +3,7 @@
 	<Appenders>
 		<Console name="stdout" target="SYSTEM_OUT">
 			<PatternLayout
-				pattern="%-4r [%t] %5p %c{1} - %m - tx.id=%X{transaction.id} tx.owner=%X{transaction.owner}%n" />
+				pattern="%-4r [%t] %5p %c{1} - %x - %m - tx.id=%X{transaction.id} tx.owner=%X{transaction.owner}%n" />
 		</Console>
 	</Appenders>
 
