@@ -49,6 +49,7 @@
         <module>jackson</module>
         <module>jackson-annotations</module>
         <module>java-cassandra</module>
+        <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jee7</module>
         <module>jjwt</module>

@@ -20,7 +20,6 @@ public class JavaFileUnitTest {
 
     private static final String TEMP_DIR = "src/test/resources/temp" + UUID.randomUUID().toString();
 
-
     @BeforeClass
     public static void setup() throws IOException {
         Files.createDirectory(Paths.get(TEMP_DIR));
