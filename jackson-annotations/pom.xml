@@ -9,7 +9,6 @@
     <packaging>jar</packaging>
 
     <name>jackson-annotations</name>
-    <url>http://www.baeldung.com</url>
 
     <dependencies>
 
@@ -45,8 +44,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
-        <!-- web -->
 
         <!-- marshalling -->
 
@@ -95,14 +92,12 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>3.0.0</version>
             <scope>test</scope>
         </dependency>
-
 
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -132,20 +127,12 @@
             <scope>test</scope>
         </dependency>
 
-
-
-
-
-
-
-
         <!-- logging -->
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
         </dependency>
 
         <dependency>
@@ -158,7 +145,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
 
         <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
