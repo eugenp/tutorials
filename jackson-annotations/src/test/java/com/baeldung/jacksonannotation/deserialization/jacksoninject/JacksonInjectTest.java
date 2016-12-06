@@ -32,7 +32,6 @@ public class JacksonInjectTest {
         // assert
         assertThat(author.getId()).isEqualTo(id);
 
-
         /*
             {
               "firstName": "Alex",
