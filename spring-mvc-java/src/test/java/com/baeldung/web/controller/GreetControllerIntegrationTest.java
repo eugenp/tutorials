@@ -32,7 +32,7 @@ public class GreetControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
-    private static final String CONTENT_TYPE = "application/json";
+    private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 
     @Before
     public void setup() throws Exception {
@@ -41,7 +41,7 @@ public class GreetControllerIntegrationTest {
 
     @Test
     public void givenWAC_whenServletContext_thenItProvidesGreetController() {
-        ServletContext servletContext = wac.getServletContext();
+        final ServletContext servletContext = wac.getServletContext();
         Assert.assertNotNull(servletContext);
         Assert.assertTrue(servletContext instanceof MockServletContext);
         Assert.assertNotNull(wac.getBean("greetController"));
@@ -54,7 +54,7 @@ public class GreetControllerIntegrationTest {
 
     @Test
     public void givenGreetURI_whenMockMVC_thenVerifyResponse() throws Exception {
-        MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/greet")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!")).andReturn();
+        final MvcResult mvcResult = this.mockMvc.perform(MockMvcRequestBuilders.get("/greet")).andDo(print()).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Hello World!!!")).andReturn();
         Assert.assertEquals(CONTENT_TYPE, mvcResult.getResponse().getContentType());
     }
 

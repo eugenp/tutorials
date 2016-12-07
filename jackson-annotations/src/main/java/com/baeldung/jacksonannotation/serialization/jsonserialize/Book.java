@@ -19,9 +19,7 @@ public class Book extends Item {
     private Date published;
     private BigDecimal pages;
 
-    public Book(){
-        super();
-    }
+    public Book(){}
 
     public Book(String title, Author author) {
         super(title, author);

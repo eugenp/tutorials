@@ -1,4 +1,4 @@
-package com.baeldung.java_8_features;
+package com.baeldung.optional;
 
 import java.util.Optional;
 
