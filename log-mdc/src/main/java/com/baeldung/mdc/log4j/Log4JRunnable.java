@@ -1,7 +1,6 @@
 package com.baeldung.mdc.log4j;
 
 import org.apache.log4j.MDC;
-import org.apache.log4j.NDC;
 
 import com.baeldung.mdc.Transfer;
 
@@ -19,27 +18,9 @@ public class Log4JRunnable implements Runnable {
         MDC.put("transaction.id", tx.getTransactionId());
         MDC.put("transaction.owner", tx.getSender());
 
-        // Use NDC to add accountId
-        NDC.push("accountId " + tx.getAccountId());
-
-        boolean transferSuccess = log4jBusinessService.transfer(tx.getAmount(), tx.getAccountId());
-
-        // Pop accountId
-        NDC.pop();
-
-        if (transferSuccess && tx.isInvestmentFund()) {
-            // Use NDC to add investmentFundId
-            NDC.push("investmentFundId " + tx.getInvestmentFundId());
-
-            log4jBusinessService.transfer(tx.getAmount(), tx.getInvestmentFundId());
-
-            // Pop investmentFundId
-            NDC.pop();
-        }
+        log4jBusinessService.transfer(tx.getAmount());
 
         MDC.clear();
-
-        NDC.remove();
 
     }
 }

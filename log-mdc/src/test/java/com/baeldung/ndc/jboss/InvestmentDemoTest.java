@@ -1,4 +1,4 @@
-package com.baeldung.mdc.jboss;
+package com.baeldung.ndc.jboss;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
@@ -7,17 +7,17 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
-import com.baeldung.mdc.TransactionFactory;
-import com.baeldung.mdc.Transfer;
+import com.baeldung.ndc.Investment;
+import com.baeldung.ndc.InvestmentTransactionFactory;
 
-public class Demo {
+public class InvestmentDemoTest {
 
     @Test
-    public void givenJBossLogger_whenMDCAndNDCAdded_thenMDCAndNDCToLog() throws InterruptedException {
+    public void givenJBossLogger_whenNDCAdded_thenNDCInLog() throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(3);
-        TransactionFactory transactionFactory = new TransactionFactory();
+        InvestmentTransactionFactory transactionFactory = new InvestmentTransactionFactory();
         for (int i = 0; i < 10; i++) {
-            Transfer tx = transactionFactory.newInstance();
+            Investment tx = transactionFactory.newInstance();
             Properties props = System.getProperties();
             props.setProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager");
             Runnable task = new JBossLoggingRunnable(tx);

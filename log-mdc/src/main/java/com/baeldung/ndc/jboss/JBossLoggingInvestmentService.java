@@ -1,12 +1,11 @@
-package com.baeldung.mdc.jboss;
+package com.baeldung.ndc.jboss;
 
 import org.jboss.logging.Logger;
 
-import com.baeldung.mdc.TransferService;
+import com.baeldung.ndc.InvestmentService;
 
-public class JBossLoggingTransferService extends TransferService {
-
-    private static final Logger logger = Logger.getLogger(JBossLoggingTransferService.class);
+public class JBossLoggingInvestmentService extends InvestmentService {
+    private static final Logger logger = Logger.getLogger(JBossLoggingInvestmentService.class);
 
     @Override
     protected void beforeTransfer(long amount) {
@@ -17,5 +16,4 @@ public class JBossLoggingTransferService extends TransferService {
     protected void afterTransfer(long amount, boolean outcome) {
         logger.infov("Has transfer of {0}$ completed successfully ? {1}.", amount, outcome);
     }
-
 }
