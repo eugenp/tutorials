@@ -99,6 +99,7 @@ public class OptionalTest {
         assertFalse(priceIsInRange1(new Modem(9.9)));
         assertFalse(priceIsInRange1(new Modem(null)));
         assertFalse(priceIsInRange1(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
 
     }
 
@@ -108,6 +109,7 @@ public class OptionalTest {
         assertFalse(priceIsInRange2(new Modem(9.9)));
         assertFalse(priceIsInRange2(new Modem(null)));
         assertFalse(priceIsInRange2(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
     }
 
     public boolean priceIsInRange1(Modem modem) {
