@@ -18,16 +18,53 @@
         </encoder>
     </appender>
 
-    # Rolling appender
-    <appender name="rollout1" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>log4j/target/logback/roll1/baeldung-slf4j.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <!-- daily rollover -->
-            <fileNamePattern>logFile.%d{yyyy-MM-dd HH:mm:ss}.%i.log</fileNamePattern>
+    # Rolling appenders
+    <appender name="roll-by-size"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>target/slf4j/roll-by-size/app.log</file>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>target/slf4j/roll-by-size/app.%i.log.zip
+            </fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>3</maxIndex>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <triggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>5KB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
 
-            <maxFileSize>10Kb</maxFileSize>
+    <appender name="roll-by-time"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>target/slf4j/roll-by-time/app.log</file>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>target/slf4j/roll-by-time/app.%d{yyyy-MM-dd-HH-mm}.log.zip
+            </fileNamePattern>
             <maxHistory>20</maxHistory>
-            <totalSizeCap>20GB</totalSizeCap>
+            <totalSizeCap>1MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="roll-by-time-and-size"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>target/slf4j/roll-by-time-and-size/app.log</file>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>target/slf4j/roll-by-time-and-size/app.%d{yyyy-MM-dd-mm}.%i.log.zip
+            </fileNamePattern>
+            <maxFileSize>5KB</maxFileSize>
+            <maxHistory>20</maxHistory>
+            <totalSizeCap>1MB</totalSizeCap>
         </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</pattern>
@@ -36,11 +73,13 @@
 
     # Override log level for specified package
     <logger name="com.baeldung.slf4j.Slf4jRollingExample" level="TRACE">
-        <appender-ref ref="rollout1"/>
+        <appender-ref ref="roll-by-size" />
+        <appender-ref ref="roll-by-time" />
+        <appender-ref ref="roll-by-time-and-size" />
     </logger>
 
     <root level="DEBUG">
-        <appender-ref ref="stdout"/>
-        <appender-ref ref="fout"/>
+        <appender-ref ref="stdout" />
+        <appender-ref ref="fout" />
     </root>
 </configuration>
