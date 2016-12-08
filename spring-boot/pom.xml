@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.0.RC1</version>
+		<version>1.4.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
@@ -21,10 +21,10 @@
 		<start-class>org.baeldung.boot.DemoApplication</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<spring.version>4.3.1.RELEASE</spring.version>
+		<spring.version>4.3.4.RELEASE</spring.version>
 	</properties>
 
-	<dependencies>	
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -84,7 +84,7 @@
 			<version>3.1.7</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -111,6 +111,16 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>org.baeldung.boot.DemoApplication</mainClass>
+					<layout>ZIP</layout>
+					<requiresUnpack>
+						<dependency>
+							<groupId>org.jruby</groupId>
+							<artifactId>jruby-complete</artifactId>
+						</dependency>
+					</requiresUnpack>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -143,7 +153,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            
+
         </plugins>
 
 	</build>
@@ -182,7 +192,7 @@
             </build>
         </profile>
     </profiles>
-    
+
 	<repositories>
 		<repository>
 			<id>spring-snapshots</id>
