@@ -7,9 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ import static java.util.stream.Collectors.joining;
 public class EncoderDecoderUnitTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoderUnitTest.class);
-    private static final String testUrl = "http://www.baeldung.com?key1=value+1&key2=value%40%21%242&key3=value%253";
+    private static final String testUrl = "http://www.baeldung.com/path+1?key1=value+1&key2=value%40%21%242&key3=value%253#dummy+Fragment";
 
     private String encodeValue(String value) {
         String encoded = null;
@@ -44,11 +42,13 @@ public class EncoderDecoderUnitTest {
 
     @Test
     public void givenURL_whenAnalyze_thenCorrect() throws Exception {
-        URL url = new URL(testUrl);
+        URI uri = new URI(testUrl);
 
-        Assert.assertThat(url.getProtocol(), CoreMatchers.is("http"));
-        Assert.assertThat(url.getHost(), CoreMatchers.is("www.baeldung.com"));
-        Assert.assertThat(url.getQuery(), CoreMatchers.is("key1=value+1&key2=value%40%21%242&key3=value%253"));
+        Assert.assertThat(uri.getScheme(), CoreMatchers.is("http"));
+        Assert.assertThat(uri.getHost(), CoreMatchers.is("www.baeldung.com"));
+        Assert.assertThat(uri.getRawPath(), CoreMatchers.is("/path+1"));
+        Assert.assertThat(uri.getRawQuery(), CoreMatchers.is("key1=value+1&key2=value%40%21%242&key3=value%253"));
+        Assert.assertThat(uri.getRawFragment(), CoreMatchers.is("dummy+Fragment"));
     }
 
     @Test
@@ -58,20 +58,44 @@ public class EncoderDecoderUnitTest {
         requestParams.put("key2", "value@!$2");
         requestParams.put("key3", "value%3");
 
-        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com?", ""));
+        String path = "path+1";
+        String fragment = "dummy Fragment";
+
+        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com/" + getPath(path) + "?", "#" + encodeValue(fragment)));
 
         Assert.assertThat(testUrl, CoreMatchers.is(encodedURL));
     }
 
     @Test
     public void givenRequestParam_whenUTF8Scheme_thenDecodeRequestParams() throws Exception {
-        URL url = new URL(testUrl);
+        URI uri = new URI(testUrl);
 
-        String query = url.getQuery();
+        String scheme = uri.getScheme();
+        String host = uri.getHost();
+        String query = uri.getRawQuery();
+        String path = uri.getRawPath();
+        String fragment = uri.getRawFragment();
 
         String decodedQuery = Arrays.stream(query.split("&")).map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1])).collect(joining("&"));
+        String decodedPath = Arrays.stream(path.split("/")).map(param -> getPath(param)).collect(joining("/"));
 
-        Assert.assertEquals("http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
+        Assert.assertEquals("http://www.baeldung.com/path+1?key1=value 1&key2=value@!$2&key3=value%3#dummy Fragment", scheme + "://" + host + decodedPath + "?" + decodedQuery + "#" + decode(fragment));
     }
 
+    private String getPath(String path) {
+        try {
+            path = new URI(null, null, path, null).getPath();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return path;
+    }
+
+    @Test
+    public void givenPath_thenEncodeDecodePath() throws URISyntaxException {
+        URI uri = new URI(null, null, "/Path 1/Path+2", null);
+
+        Assert.assertEquals("/Path 1/Path+2", uri.getPath());
+        Assert.assertEquals("/Path%201/Path+2", uri.getRawPath());
+    }
 }

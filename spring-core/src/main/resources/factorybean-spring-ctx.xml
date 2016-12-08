@@ -6,12 +6,5 @@
     <bean id="tool" class="com.baeldung.factorybean.ToolFactory">
         <property name="factoryId" value="9090"/>
         <property name="toolId" value="1"/>
-        <property name="toolName" value="screwdriver"/>
-        <property name="toolPrice" value="1.5"/>
-    </bean>
-
-    <bean id="worker" class="com.baeldung.factorybean.Worker">
-        <property name="number" value="1001"/>
-        <property name="tool" ref="tool"/>
     </bean>
 </beans>

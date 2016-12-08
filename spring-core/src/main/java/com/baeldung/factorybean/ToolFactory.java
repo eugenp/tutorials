@@ -6,12 +6,10 @@ public class ToolFactory implements FactoryBean<Tool> {
    
     private int factoryId;
     private int toolId;
-    private String toolName;
-    private double toolPrice;
 
     @Override
     public Tool getObject() throws Exception {
-        return new Tool(toolId, toolName, toolPrice);
+        return new Tool(toolId);
     }
 
     @Override
@@ -38,21 +36,5 @@ public class ToolFactory implements FactoryBean<Tool> {
 
     public void setToolId(int toolId) {
         this.toolId = toolId;
-    }
-
-    public String getToolName() {
-        return toolName;
-    }
-
-    public void setToolName(String toolName) {
-        this.toolName = toolName;
-    }
-
-    public double getToolPrice() {
-        return toolPrice;
-    }
-
-    public void setToolPrice(double toolPrice) {
-        this.toolPrice = toolPrice;
     }
 }

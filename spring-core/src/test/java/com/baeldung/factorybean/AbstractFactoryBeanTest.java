@@ -4,33 +4,36 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import javax.annotation.Resource;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:factorybean-abstract-spring-ctx.xml" })
 public class AbstractFactoryBeanTest {
-    
+
+    @Resource(name = "singleTool")
+    private Tool tool1;
+    @Resource(name = "singleTool")
+    private Tool tool2;
+    @Resource(name = "nonSingleTool")
+    private Tool tool3;
+    @Resource(name = "nonSingleTool")
+    private Tool tool4;
+
     @Test
     public void testSingleToolFactory() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:factorybean-abstract-spring-ctx.xml");
-
-        Worker worker1 = (Worker) context.getBean("worker1");
-        Worker worker2 = (Worker) context.getBean("worker2");
-
-        assertThat(worker1.getNumber(), equalTo("50001"));
-        assertThat(worker2.getNumber(), equalTo("50002"));
-        assertTrue(worker1.getTool() == worker2.getTool());
+        assertThat(tool1.getId(), equalTo(1));
+        assertTrue(tool1 == tool2);
     }
 
     @Test
     public void testNonSingleToolFactory() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("classpath:factorybean-abstract-spring-ctx.xml");
-
-        Worker worker3 = (Worker) context.getBean("worker3");
-        Worker worker4 = (Worker) context.getBean("worker4");
-
-        assertThat(worker3.getNumber(), equalTo("50003"));
-        assertThat(worker4.getNumber(), equalTo("50004"));
-        assertTrue(worker3.getTool() != worker4.getTool());
+        assertThat(tool3.getId(), equalTo(2));
+        assertThat(tool4.getId(), equalTo(2));
+        assertTrue(tool3 != tool4);
     }
 }
