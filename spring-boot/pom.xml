@@ -73,19 +73,19 @@
         <dependency>
             <groupId>org.subethamail</groupId>
             <artifactId>subethasmtp</artifactId>
-            <version>3.1.7</version>
+            <version>${subethasmtp.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>3.3.7-1</version>
+            <version>${bootstrap.version}</version>
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
-            <version>3.1.1</version>
+            <version>${jquery.version}</version>
         </dependency>
     </dependencies>
 
@@ -122,7 +122,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>${git-commit-id-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -182,6 +182,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring.version>4.3.4.RELEASE</spring.version>
+        <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
+        <jquery.version>3.1.1</jquery.version>
+        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <subethasmtp.version>3.1.7</subethasmtp.version>
     </properties>
 
 </project>

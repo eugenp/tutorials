@@ -11,9 +11,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.2.0.RELEASE</spring.version>
-        <spring.batch.version>3.0.5.RELEASE</spring.batch.version>
-        <sqlite.version>3.8.11.2</sqlite.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.batch.version>3.0.7.RELEASE</spring.batch.version>
+        <sqlite.version>3.15.1</sqlite.version>
     </properties>
 
     <dependencies>
