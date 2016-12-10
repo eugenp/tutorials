@@ -10,7 +10,7 @@ public class Log4j2RollingExample {
     private static final Logger logger = LogManager.getLogger(Log4j2RollingExample.class);
 
     public static void main(String[] args) {
-        IntStream.range(1, 100).forEach(i -> {
+        IntStream.range(1, 2000).forEach(i -> {
             logger.info("This is the {} time I say 'Hello World'.", i);
             try {
                 Thread.sleep(100);
