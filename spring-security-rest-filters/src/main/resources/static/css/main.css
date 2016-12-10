@@ -1,0 +1,34 @@
+#newTasks {
+	margin-top: 40px;	
+}
+
+#taskQueue, #task {
+	float: left;
+	padding-left: 20px;
+	min-height: 200px;
+	min-width: 200px;
+}
+
+.field label {
+	width: 100px;
+	text-align: right;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+nav {
+	position: absolute;
+	right: 40px;
+}
+
+header {
+	font-size: 22pt;
+}
+
+#taskList {
+	font-size: 14pt;
+}
+
+footer {
+	text-align: center;
+}

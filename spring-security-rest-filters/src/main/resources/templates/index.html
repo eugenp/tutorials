@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8" />
+<title>Spring Security with Filters</title>
+<link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+	<nav>
+		<button type="button" id="logout">Logout</button>
+	</nav>
+
+	<header>Tasks</header>
+	<section>
+		<ul id="taskList">
+		</ul>
+	</section>
+
+	<section id="newTasks">
+		
+		<fieldset id="task">
+			<legend>Add tasks</legend>
+			<div class="field">
+				<label for="description">Description</label> <input id="description"
+					type="text" />
+			</div>
+			<div class="field">
+				<label for="assignee">Assignee</label> 
+				<select id="assignee">
+					<option>jim</option>
+					<option>michael</option>
+					<option>pam</option>
+				</select>
+			</div>
+			<footer>
+				<button type="button" id="addTask">Add to queue</button>
+			</footer>
+		</fieldset>
+		<fieldset id="taskQueue">
+			<legend>Queue</legend>
+			<ul></ul>
+			<footer>
+				<button type="button" id="saveAll">Save all</button>
+				<button type="button" id="clearAll">Clear all</button>
+			</footer>
+		</fieldset>
+	</section>
+
+	<section></section>
+
+	<script src="js/main.js"></script>
+
+</body>
+</html>
