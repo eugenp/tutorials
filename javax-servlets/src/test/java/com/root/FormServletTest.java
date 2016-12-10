@@ -21,7 +21,7 @@ public class FormServletTest {
         HttpClient client = new DefaultHttpClient();
         HttpPost method = new HttpPost("http://localhost:8080/calculateServlet");
 
-        List<BasicNameValuePair> nvps = new ArrayList<BasicNameValuePair>();
+        List<BasicNameValuePair> nvps = new ArrayList<>();
         nvps.add(new BasicNameValuePair("height", String.valueOf(2)));
         nvps.add(new BasicNameValuePair("weight", String.valueOf(80)));
 
