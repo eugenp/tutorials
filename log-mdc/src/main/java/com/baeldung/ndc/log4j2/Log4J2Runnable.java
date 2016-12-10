@@ -13,27 +13,20 @@ public class Log4J2Runnable implements Runnable {
     }
 
     public void run() {
-        // Add transactionId and owner to NDC. They will remain throughout
+        // Add transactionId and owner to NDC
         ThreadContext.push("tx.id=" + tx.getTransactionId());
         ThreadContext.push("tx.owner=" + tx.getOwner());
 
-        // Add the destination savingsAccountId to NDC
-        ThreadContext.push("Destination savingsAccountId=" + tx.getSavingsAccountId());
-
-        boolean transferSuccess = log4j2BusinessService.transfer(tx.getAmount(), tx.getSavingsAccountId());
-
-        // take out savingsAccountId from NDC stack
-        ThreadContext.pop();
-
-        if (transferSuccess && tx.isInvestmentFund()) {
-            // Add the destination investmentFundId to NDC
-            ThreadContext.push("Destination investmentFundId=" + tx.getInvestmentFundId());
-
-            log4j2BusinessService.transfer(tx.getAmount(), tx.getInvestmentFundId());
-
-            // take out investmentFundId from NDC
+        try {
+            log4j2BusinessService.transfer(tx.getAmount());
+        } finally {
+            // take out owner from the NDC stack
             ThreadContext.pop();
+
+            // take out transactionId from the NDC stack
+            ThreadContext.pop();
+
+            ThreadContext.clearAll();
         }
-        ThreadContext.clearAll();
     }
 }

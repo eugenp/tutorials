@@ -10,13 +10,10 @@ public class InvestmentTransactionFactory {
     public Investment newInstance() {
         String transactionId = String.valueOf(nextId++);
         String owner = NAMES[(int) floor(random() * NAMES.length)];
-        String savingsAccountId = Long.toString((long) (random() * 900000000 + 100000000));
         long amount = (long) (random() * 1500 + 500);
 
-        // indicate if this is an investment fund
-        boolean isInvestmentFund = Math.random() < 0.50;
-        String investmentFundId = Long.toString((long) (random() * 900000 + 100000));
-        Investment tx = new Investment(transactionId, owner, amount, savingsAccountId, isInvestmentFund, investmentFundId);
+        Investment tx = new Investment(transactionId, owner, amount);
+
         return tx;
     }
 }
