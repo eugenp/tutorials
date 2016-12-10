@@ -19,8 +19,8 @@
 
     <!-- Rolling appenders -->
     <appender name="roll-by-size" class="org.apache.log4j.RollingFileAppender">
-        <param name="file" value="log4j/target/log4j/roll-by-size/app.log" />
-        <param name="MaxFileSize" value="10KB" />
+        <param name="file" value="target/log4j/roll-by-size/app.log" />
+        <param name="MaxFileSize" value="5KB" />
         <param name="MaxBackupIndex" value="2" /> <!-- It's one by default. -->
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
@@ -45,7 +45,7 @@
         </rollingPolicy>
         <triggeringPolicy
             class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
-            <param name="MaxFileSize" value="5" />
+            <param name="MaxFileSize" value="50000" />
         </triggeringPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %m%n" />
@@ -55,7 +55,7 @@
         class="org.apache.log4j.rolling.RollingFileAppender">
         <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
             <param name="FileNamePattern"
-                value="log4j/roll-by-time/app.%d{HH-mm-ss}.log.gz" />
+                value="target/log4j/roll-by-time/app.%d{HH-mm}.log.gz" />
         </rollingPolicy>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %m%n" />
@@ -64,13 +64,12 @@
 <appender name="roll-by-time-and-size"
     class="org.apache.log4j.rolling.RollingFileAppender">
     <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-        <param name="ActiveFileName" value="log4j/roll-by-time-and-size/app.log" />
         <param name="FileNamePattern"
-            value="log4j/roll-by-time-and-size/app.%d{HH-mm-ss}.%i.log.gz" />
+            value="target/log4j/roll-by-time-and-size/app.%d{HH-mm}.%i.log.gz" />
     </rollingPolicy>
     <triggeringPolicy
         class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
-        <param name="MaxFileSize" value="100" />
+        <param name="MaxFileSize" value="50000" />
     </triggeringPolicy>
     <layout class="org.apache.log4j.PatternLayout">
         <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p - %m%n" />
@@ -84,11 +83,11 @@
 
     <category name="com.baeldung.log4j.Log4jRollingExample">
         <priority value="TRACE" />
-        <appender-ref ref="rollout1" />
-        <appender-ref ref="rollout2" />
-        <appender-ref ref="rollout3" />
-        <appender-ref ref="rollout4" />
-        <appender-ref ref="rollout5" />
+        <appender-ref ref="roll-by-size" />
+        <appender-ref ref="roll-by-size-2" />
+        <appender-ref ref="roll-by-window" />
+        <appender-ref ref="roll-by-time" />
+        <appender-ref ref="roll-by-time-and-size" />
     </category>
 
     <root>
