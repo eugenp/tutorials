@@ -9,6 +9,11 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author felipereis
+ *
+ */
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
@@ -17,6 +22,7 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
+        // Force authentication to avoid error when calling repository methods
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken("admin", "any password", AuthorityUtils.createAuthorityList("ROLE_MANAGER")));
 
         this.taskRepository.save(new Task("Send a fax", "pam"));

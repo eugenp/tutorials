@@ -32,3 +32,10 @@ header {
 footer {
 	text-align: center;
 }
+
+#logBackIn {
+	display: block;
+	margin-top: 40px;
+	font-size: 20pt;
+	text-align: center;
+}
