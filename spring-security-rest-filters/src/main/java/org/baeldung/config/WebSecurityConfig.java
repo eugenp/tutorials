@@ -25,9 +25,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/css/**", "/js/**", "/loggedout").permitAll()
             .anyRequest().authenticated()
                 .and()
-            .sessionManagement().disable()
             .httpBasic()
                 .and()
+            .logout().disable()
             .csrf().disable();
     }
 

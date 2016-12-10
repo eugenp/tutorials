@@ -1,5 +1,7 @@
 "use strict"
 
+
+//Helper function to make ajax calls
 var ajax = function(method, url, json) {
 	return new Promise(function(resolve, reject) {
 		var xhr = new XMLHttpRequest();
@@ -22,12 +24,18 @@ var ajax = function(method, url, json) {
 	})
 }
 
-ajax('GET', '/api/tasks').then(function(response) {	
+// Add tasks to list
+function addTasks(tasks) {
 	var taskList = document.querySelector('#taskList');
 	
-	response._embedded.tasks.forEach(function(task) {
+	tasks.forEach(function(task) {
 		taskList.insertAdjacentHTML('afterbegin', '<li>' + task.description + ' [ ' + task.assignee  +' ]</li>')
-	})
+	})	
+}
+
+// Load tasks
+ajax('GET', '/api/tasks').then(function(data) {	
+	addTasks(data);
 }).catch(function(err) {
 	if(err == 403) {
 		alert('Unauthorized');
@@ -36,33 +44,38 @@ ajax('GET', '/api/tasks').then(function(response) {
 	}
 })
 
+// Click event on logout buton
 document.querySelector('#logout').addEventListener('click', function() {
 	window.location = "logout";
 })
 
-
+// Click event on addTask button
 document.querySelector('#addTask').addEventListener('click', function() {		
-	var description = document.querySelector('#description').value;
+	var description = document.querySelector('#description');
 	var assignee 	= document.querySelector('#assignee').options[document.querySelector('#assignee').selectedIndex].value;
 	
 	if(description && assignee) {
 	 	document.querySelector('#taskQueue ul')
-		.insertAdjacentHTML('afterbegin', '<li>' + description + ' [ ' + assignee + ' ]</li>');
+	 			.insertAdjacentHTML('afterbegin', '<li>' + description.value + ' [ ' + assignee + ' ]</li>');
+	 	// Clear description input field
+	 	description.value = '';
+	 	
 	}
 })
 
+// Click event on clearAll button
 document.querySelector('#clearAll').addEventListener('click', function() {		
 	document.querySelector('#taskQueue ul').innerHTML = '';
 })
 
-
+// Click event on saveAll button
 document.querySelector('#saveAll').addEventListener('click', function() {
 	var newTasks = [];
+	var taskQueueList = document.querySelector('#taskQueue ul');
 	
-	document.querySelectorAll('#taskQueue li').forEach(function(task) { 
+	// Read tasks from queue and build list of new tasks
+	taskQueueList.querySelectorAll('li').forEach(function(task) { 
 		var groups = /^(.*) \[ (.*) \]$/g.exec(task.textContent);
-		
-		console.log(task.textContent, groups);
 		
 		newTasks.push({
 			description: groups[1],
@@ -71,6 +84,11 @@ document.querySelector('#saveAll').addEventListener('click', function() {
 		
 	})
 	
-	ajax('POST', 'api/taskList', newTasks );
+	// POST new tasks to the server
+	ajax('POST', 'api/tasks', newTasks ).then(function(data) {
+		addTasks(data);
+		// Clear queue list after successful post
+		taskQueueList.innerHTML = '';
+	});
 	
 })
