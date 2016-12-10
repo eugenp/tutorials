@@ -73,13 +73,13 @@
 
     # Override log level for specified package
     <logger name="com.baeldung.slf4j.Slf4jRollingExample" level="TRACE">
-        <appender-ref ref="roll-by-size" />
-        <appender-ref ref="roll-by-time" />
-        <appender-ref ref="roll-by-time-and-size" />
+        <appender-ref ref="roll-by-size"/>
+        <appender-ref ref="roll-by-time"/>
+        <appender-ref ref="roll-by-time-and-size"/>
     </logger>
 
     <root level="DEBUG">
-        <appender-ref ref="stdout" />
-        <appender-ref ref="fout" />
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="fout"/>
     </root>
 </configuration>
