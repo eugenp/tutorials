@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.sun.istack</groupId>
             <artifactId>istack-commons-runtime</artifactId>
-            <version>3.0.2</version>
+            <version>${istack.version}</version>
         </dependency>
 
         <dependency>
@@ -60,7 +60,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle-mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
@@ -158,12 +158,15 @@
         <!-- jaxb -->
         <jaxb.version>2.2.11</jaxb.version>
 
+        <istack.version>3.0.2</istack.version>
+        
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
     </properties>
 
