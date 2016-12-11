@@ -12,50 +12,50 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class JavaFileSizeUnitTest {
-    private final long EXPECTED_SIZE = 11;
-    private String path;
+    private static final long EXPECTED_FILE_SIZE_IN_BYTES = 11;
+    private String filePath;
 
     @Before
     public void init() {
         final String separator = File.separator;
-        path = String.format("src%stest%sresources%stestFolder%ssample_file_1.in", separator, separator, separator, separator);
+        filePath = String.join(separator, new String[] {"src", "test", "resources", "testFolder", "sample_file_1.in"});
     }
 
     @Test
     public void whenGetFileSize_thenCorrect() {
-        final File file = new File(path);
+        final File file = new File(filePath);
         
         final long size = getFileSize(file);
 
-        assertEquals(EXPECTED_SIZE, size);
+        assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, size);
     }
 
     @Test
     public void whenGetFileSizeUsingNioApi_thenCorrect() throws IOException {
-        final Path path = Paths.get(this.path);
+        final Path path = Paths.get(this.filePath);
         final FileChannel fileChannel = FileChannel.open(path);
         
         final long fileSize = fileChannel.size();
         
-        assertEquals(EXPECTED_SIZE, fileSize);
+        assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, fileSize);
     }
 
     @Test
     public void whenGetFileSizeUsingApacheCommonsIO_thenCorrect() {
-        final File file = new File(path);
+        final File file = new File(filePath);
         
         final long size = FileUtils.sizeOf(file);
 
-        assertEquals(EXPECTED_SIZE, size);
+        assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, size);
     }
 
     @Test
     public void whenGetReadableFileSize_thenCorrect() {
-        final File file = new File(path);
+        final File file = new File(filePath);
         
         final long size = getFileSize(file);
         
-        assertEquals(EXPECTED_SIZE + " bytes", FileUtils.byteCountToDisplaySize(size));
+        assertEquals(EXPECTED_FILE_SIZE_IN_BYTES + " bytes", FileUtils.byteCountToDisplaySize(size));
     }
 
     private long getFileSize(final File file) {
