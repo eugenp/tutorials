@@ -8,7 +8,7 @@ import java.io.StringWriter;
 import java.util.Date;
 import java.util.Scanner;
 
-public class JavaTryWithResourcesUnitTest {
+public class JavaTryWithResourcesLongRunningUnitTest {
 
     private static final String TEST_STRING_HELLO_WORLD = "Hello World";
     private Date resource1Date, resource2Date;
