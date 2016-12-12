@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.is;
 
 
 @RunWith(Arquillian.class)
-public class ProgrammaticAtFixedRateTimerBeanTest {
+public class ProgrammaticAtFixedRateTimerBeanIntegrationTest {
 
     final static long TIMEOUT = 1000;
     final static long TOLERANCE = 500l;

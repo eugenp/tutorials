@@ -14,7 +14,7 @@
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 
-    <name>Orika</name>
+    <name>orika</name>
 
     <dependencies>
 
