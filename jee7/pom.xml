@@ -12,12 +12,21 @@
       <java.min.version>1.7</java.min.version>
       <maven.min.version>3.0.0</maven.min.version>
 
-      <version.junit>4.11</version.junit>
-      <version.javaee_api>7.0</version.javaee_api>
-
-      <version.arquillian_core>1.1.4.Final</version.arquillian_core>
-
-      <version.wildfly>8.0.0.Final</version.wildfly>
+      <junit.version>4.12</junit.version>
+      <javaee_api.version>7.0</javaee_api.version>
+      <arquillian_core.version>1.1.11.Final</arquillian_core.version>
+      <wildfly.version>8.2.1.Final</wildfly.version>
+      <awaitility.version>1.7.0</awaitility.version>
+      <undertow-websockets-jsr.version>1.4.6.Final</undertow-websockets-jsr.version>
+      <resteasy.version>3.0.19.Final</resteasy.version>
+      <glassfish-embedded-all.version>4.1.1</glassfish-embedded-all.version>
+      <javax.json.version>1.0.4</javax.json.version>
+      <tyrus.version>1.13</tyrus.version>
+      <jersey.version>2.25</jersey.version>
+      <arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
+      
+      <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+      <maven-war-plugin.version>2.6</maven-war-plugin.version>
    </properties>
 
    <prerequisites>
@@ -29,7 +38,7 @@
          <dependency>
             <groupId>org.jboss.arquillian</groupId>
             <artifactId>arquillian-bom</artifactId>
-            <version>${version.arquillian_core}</version>
+            <version>${arquillian_core.version}</version>
             <scope>import</scope>
             <type>pom</type>
          </dependency>
@@ -40,14 +49,14 @@
       <dependency>
          <groupId>javax</groupId>
          <artifactId>javaee-api</artifactId>
-         <version>${version.javaee_api}</version>
+         <version>${javaee_api.version}</version>
          <scope>provided</scope>
       </dependency>
 
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <version>${version.junit}</version>
+         <version>${junit.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -58,7 +67,7 @@
       <dependency>
          <groupId>com.jayway.awaitility</groupId>
          <artifactId>awaitility</artifactId>
-         <version>1.6.0</version>
+         <version>${awaitility.version}</version>
          <scope>test</scope>
       </dependency>
 
@@ -82,7 +91,7 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.1</version>
+            <version>${maven-compiler-plugin.version}</version>
             <configuration>
                <source>${java.min.version}</source>
                <target>${java.min.version}</target>
@@ -91,7 +100,7 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
-            <version>2.1.1</version>
+            <version>${maven-war-plugin.version}</version>
             <configuration>
                <failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
@@ -114,31 +123,31 @@
             <dependency>
                <groupId>io.undertow</groupId>
                <artifactId>undertow-websockets-jsr</artifactId>
-               <version>1.0.0.Beta25</version>
+               <version>${undertow-websockets-jsr.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-client</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-jaxb-provider</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-json-p-provider</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.wildfly</groupId>
                <artifactId>wildfly-arquillian-container-managed</artifactId>
-               <version>${version.wildfly}</version>
+               <version>${wildfly.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -162,7 +171,7 @@
                               <artifactItem>
                                  <groupId>org.wildfly</groupId>
                                  <artifactId>wildfly-dist</artifactId>
-                                 <version>${version.wildfly}</version>
+                                 <version>${wildfly.version}</version>
                                  <type>zip</type>
                                  <overWrite>false</overWrite>
                                  <outputDirectory>${project.build.directory}</outputDirectory>
@@ -177,7 +186,7 @@
                   <version>2.17</version>
                   <configuration>
                      <environmentVariables>
-                        <JBOSS_HOME>${project.build.directory}/wildfly-${version.wildfly}</JBOSS_HOME>
+                        <JBOSS_HOME>${project.build.directory}/wildfly-${wildfly.version}</JBOSS_HOME>
                      </environmentVariables>
                   </configuration>
                </plugin>
@@ -190,31 +199,31 @@
             <dependency>
                <groupId>io.undertow</groupId>
                <artifactId>undertow-websockets-jsr</artifactId>
-               <version>1.0.0.Beta25</version>
+               <version>${undertow-websockets-jsr.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-client</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-jaxb-provider</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.resteasy</groupId>
                <artifactId>resteasy-json-p-provider</artifactId>
-               <version>3.0.5.Final</version>
+               <version>${resteasy.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.wildfly</groupId>
                <artifactId>wildfly-arquillian-container-remote</artifactId>
-               <version>${version.wildfly}</version>
+               <version>${wildfly.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -225,37 +234,37 @@
             <dependency>
                <groupId>org.glassfish.main.extras</groupId>
                <artifactId>glassfish-embedded-all</artifactId>
-               <version>4.0</version>
+               <version>${glassfish-embedded-all.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish</groupId>
                <artifactId>javax.json</artifactId>
-               <version>1.0.4</version>
+               <version>${javax.json.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.tyrus</groupId>
                <artifactId>tyrus-client</artifactId>
-               <version>1.3</version>
+               <version>${tyrus.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.tyrus</groupId>
                <artifactId>tyrus-container-grizzly-client</artifactId>
-               <version>1.3</version>
+               <version>${tyrus.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.jersey.core</groupId>
                <artifactId>jersey-client</artifactId>
-               <version>2.4</version>
+               <version>${jersey.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.arquillian.container</groupId>
                <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
-               <version>1.0.0.CR4</version>
+               <version>${arquillian-glassfish.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>
@@ -266,43 +275,43 @@
             <dependency>
                <groupId>org.glassfish</groupId>
                <artifactId>javax.json</artifactId>
-               <version>1.0.4</version>
+               <version>${javax.json.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.tyrus</groupId>
                <artifactId>tyrus-client</artifactId>
-               <version>1.3</version>
+               <version>${tyrus.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.tyrus</groupId>
                <artifactId>tyrus-container-grizzly-client</artifactId>
-               <version>1.3</version>
+               <version>${tyrus.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.jersey.core</groupId>
                <artifactId>jersey-client</artifactId>
-               <version>2.4</version>
+               <version>${jersey.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.jersey.media</groupId>
                <artifactId>jersey-media-json-jackson</artifactId>
-               <version>2.4</version>
+               <version>${jersey.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.glassfish.jersey.media</groupId>
                <artifactId>jersey-media-json-processing</artifactId>
-               <version>2.4</version>
+               <version>${jersey.version}</version>
                <scope>test</scope>
             </dependency>
             <dependency>
                <groupId>org.jboss.arquillian.container</groupId>
                <artifactId>arquillian-glassfish-remote-3.1</artifactId>
-               <version>1.0.0.CR4</version>
+               <version>${arquillian-glassfish.version}</version>
                <scope>test</scope>
             </dependency>
          </dependencies>

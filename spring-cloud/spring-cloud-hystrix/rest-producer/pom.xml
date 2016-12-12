@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.4.0.RELEASE</version>
+            <version>${spring-boot-starter-web.version}</version>
         </dependency>
     </dependencies>
 
@@ -36,4 +36,8 @@
             </plugin>
         </plugins>
     </build>
+
+        <properties>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+    </properties>
 </project>
