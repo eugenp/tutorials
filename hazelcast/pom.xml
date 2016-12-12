@@ -64,14 +64,14 @@
 
     <properties>
         <!-- hazelcast -->
-        <hazelcast.version>3.7.2</hazelcast.version>
+        <hazelcast.version>3.7.4</hazelcast.version>
         
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 
 </project>
