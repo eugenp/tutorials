@@ -16,10 +16,10 @@ public class ExitingExecutorServiceExample {
 
     public static void main(String... args) {
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
-        ExecutorService executorService = MoreExecutors.getExitingExecutorService(executor, 100, TimeUnit.MILLISECONDS);
+        final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(5);
+        final ExecutorService executorService = MoreExecutors.getExitingExecutorService(executor, 100, TimeUnit.MILLISECONDS);
 
-        executorService.submit(() -> {
+        executorService.submit((Runnable) () -> {
             while (true) {
             }
         });

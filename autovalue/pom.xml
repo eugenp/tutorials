@@ -5,12 +5,13 @@
     <artifactId>autovalue-tutorial</artifactId>
     <version>1.0</version>
     <name>AutoValue</name>
+    
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>7</source>
                     <target>7</target>
@@ -19,19 +20,25 @@
             </plugin>
         </plugins>
     </build>
+    
     <dependencies>
         <dependency>
             <groupId>com.google.auto.value</groupId>
             <artifactId>auto-value</artifactId>
-            <version>1.2</version>
+            <version>${auto-value.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.3</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+    
+    <properties>
+        <auto-value.version>1.3</auto-value.version>
+        <junit.version>4.12</junit.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
 </project>
