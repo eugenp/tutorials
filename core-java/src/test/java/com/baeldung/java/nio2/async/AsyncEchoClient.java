@@ -41,17 +41,22 @@ public class AsyncEchoClient {
     }
 
     public String sendMessage(String message) {
-        byte[] byteMsg = new String(message).getBytes();
+        byte[] byteMsg = message.getBytes();
         ByteBuffer buffer = ByteBuffer.wrap(byteMsg);
         Future<Integer> writeResult = client.write(buffer);
 
-        //run some code
-		writeResult.get();
+        try {
+            writeResult.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         buffer.flip();
         Future<Integer> readResult = client.read(buffer);
-        
-		//run some code
-		readResult.get();
+        try {
+            readResult.get();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String echo = new String(buffer.array()).trim();
         buffer.clear();
         return echo;
@@ -65,11 +70,11 @@ public class AsyncEchoClient {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         AsyncEchoClient client = AsyncEchoClient.getInstance();
         client.start();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String line = null;
+        String line;
         System.out.println("Message to server:");
         while ((line = br.readLine()) != null) {
             String response = client.sendMessage(line);

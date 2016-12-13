@@ -20,19 +20,19 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <!--jackson for xml-->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-            <version>2.7.4</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.0</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
 
         <dependency>
@@ -40,8 +40,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
-        <!-- web -->
 
         <!-- marshalling -->
 
@@ -66,19 +64,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jsonSchema</artifactId>
-            <version>2.7.2</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.9.2</version>
+            <version>${joda-time.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.6.2</version>
+            <version>${gson.version}</version>
         </dependency>
 
         <!-- test scoped -->
@@ -169,40 +167,30 @@
     </build>
 
     <properties>
-        <!-- persistence -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-
         <!-- marshalling -->
-        <jackson.version>2.7.8</jackson.version>
+        <jackson.version>2.8.5</jackson.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
-
-        <!-- various -->
-        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <logback.version>1.1.7</logback.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-io.version>2.5</commons-io.version>        
+        <joda-time.version>2.9.6</joda-time.version>
+        <gson.version>2.8.0</gson.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
-
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
     </properties>
 

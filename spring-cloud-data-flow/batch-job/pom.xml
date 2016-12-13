@@ -14,7 +14,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.4.0.RELEASE</version>
+    <version>1.4.2.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -22,13 +22,14 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
+    <spring-cloud-task-starter.version>1.0.3.RELEASE</spring-cloud-task-starter.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
       <artifactId>spring-cloud-task-starter</artifactId>
-      <version>1.0.1.RELEASE</version>
+      <version>${spring-cloud-task-starter.version}</version>
     </dependency>
 
     <dependency>

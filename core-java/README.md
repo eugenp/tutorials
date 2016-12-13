@@ -38,3 +38,4 @@
 - [Guide to the Fork/Join Framework in Java](http://www.baeldung.com/java-fork-join)
 - [How to Print Screen in Java](http://www.baeldung.com/print-screen-in-java)
 - [How to Convert String to different data types in Java](http://www.baeldung.com/java-string-conversions)
+- [Introduction to Java Generics](http://www.baeldung.com/java-generics)

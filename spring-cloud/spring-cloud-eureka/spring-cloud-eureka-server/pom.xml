@@ -21,7 +21,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka-server</artifactId>
-            <version>1.1.5.RELEASE</version>
+            <version>${spring-cloud-starter-eureka.version}</version>
         </dependency>
     </dependencies>
 
@@ -30,7 +30,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-parent</artifactId>
-                <version>Brixton.SR4</version>
+                <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -49,4 +49,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+        <spring-cloud-starter-eureka.version>1.2.3.RELEASE</spring-cloud-starter-eureka.version>
+    </properties>
 </project>

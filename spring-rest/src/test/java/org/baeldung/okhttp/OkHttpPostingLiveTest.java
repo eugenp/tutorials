@@ -49,7 +49,11 @@ public class OkHttpPostingLiveTest {
     public void whenSendPostRequestWithAuthorization_thenCorrect() throws IOException {
         final String postBody = "test post";
 
-        final Request request = new Request.Builder().url(URL_SECURED_BY_BASIC_AUTHENTICATION).addHeader("Authorization", Credentials.basic("test", "test")).post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), postBody)).build();
+        final Request request = new Request.Builder()
+          .url(URL_SECURED_BY_BASIC_AUTHENTICATION)
+          .addHeader("Authorization", Credentials.basic("test", "test"))
+          .post(RequestBody.create(MediaType.parse("text/x-markdown; charset=utf-8"), "test post"))
+          .build();
 
         final Call call = client.newCall(request);
         final Response response = call.execute();
@@ -61,8 +65,7 @@ public class OkHttpPostingLiveTest {
     public void whenPostJson_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"name\":\"John\"}";
 
-        final RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json);
-
+        final RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), "{\"id\":1,\"name\":\"John\"}");
         final Request request = new Request.Builder().url(BASE_URL + "/users/detail").post(body).build();
 
         final Call call = client.newCall(request);

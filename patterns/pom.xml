@@ -24,7 +24,7 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <version>3.1.0</version>
+                <version>${javax.servlet-api.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -36,7 +36,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
@@ -45,14 +45,22 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>${maven-war-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.jetty</groupId>
                     <artifactId>jetty-maven-plugin</artifactId>
-                    <version>9.3.12.v20160915</version>
+                    <version>${jetty-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+    
+    <properties>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+           
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
+    </properties>
 </project>

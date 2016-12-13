@@ -84,14 +84,14 @@
     </profiles>
 
     <properties>
-        <springframework.version>4.0.6.RELEASE</springframework.version>
-        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
-        <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
     </properties>
 

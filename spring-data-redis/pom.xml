@@ -9,9 +9,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.2.5.RELEASE</spring.version>
-        <spring-data-redis>1.6.2.RELEASE</spring-data-redis>
-        <nosqlunit.version>0.8.0</nosqlunit.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring-data-redis>1.7.5.RELEASE</spring-data-redis>
+        <cglib.version>3.2.4</cglib.version>       
+        <jedis.version>2.9.0</jedis.version> 
+        <log4j.version>1.2.17</log4j.version>
+        <junit.version>4.12</junit.version>
+        <nosqlunit.version>0.10.0</nosqlunit.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
     </properties>
 
@@ -25,19 +29,19 @@
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
-            <version>2.2</version>
+            <version>${cglib.version}</version>
         </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.16</version>
+            <version>${log4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.5.1</version>
+            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
 
@@ -56,7 +60,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 

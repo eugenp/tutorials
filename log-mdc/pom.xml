@@ -12,19 +12,19 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.3.3.RELEASE</version>
+			<version>${springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>4.3.3.RELEASE</version>
+			<version>${springframework.version}</version>
 		</dependency>
 
 		<!--log4j dependencies -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>${log4j.version}</version>
 		</dependency>
 
 		<!--log4j2 dependencies -->
@@ -36,31 +36,38 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>2.7</version>
+			<version>${log4j-api.version}</version>
 		</dependency>
 
 		<!--disruptor for log4j2 async logging -->
 		<dependency>
 			<groupId>com.lmax</groupId>
 			<artifactId>disruptor</artifactId>
-			<version>3.3.4</version>
+			<version>${disruptor.version}</version>
 		</dependency>
 
 		<!--logback dependencies -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.7</version>
+			<version>${logback.version}</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>junit</groupId>
 		    <artifactId>junit</artifactId>
-		    <version>4.12</version>
+		    <version>${junit.version}</version>
 		    <scope>test</scope>
 		</dependency>
 		
-
 	</dependencies>
 
+    <properties>
+        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <log4j.version>1.2.17</log4j.version>
+        <log4j-api.version>2.7</log4j-api.version>
+        <disruptor.version>3.3.6</disruptor.version>
+        <logback.version>1.1.7</logback.version>
+        <junit.version>4.12</junit.version>
+    </properties>
 </project>
