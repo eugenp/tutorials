@@ -9,15 +9,11 @@ public class Log4j2RollingExample {
 
     private static final Logger logger = LogManager.getLogger(Log4j2RollingExample.class);
 
-    public static void main(String[] args) {
-        IntStream.range(1, 2000).forEach(i -> {
+    public static void main(String[] args) throws InterruptedException {
+        for(int i = 0; i<2000; i++){
             logger.info("This is the {} time I say 'Hello World'.", i);
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                // should not happen
-            }
-        });
+            Thread.sleep(100);
+        }
     }
 
 }
