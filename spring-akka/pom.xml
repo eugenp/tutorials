@@ -115,11 +115,11 @@
     </profiles>
 
     <properties>
-        <spring.version>4.3.2.RELEASE</spring.version>
-        <akka.version>2.4.8</akka.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <akka.version>2.4.14</akka.version>
         <junit.version>4.12</junit.version>
 
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         
     </properties>

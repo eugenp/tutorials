@@ -2,39 +2,43 @@ package com.baeldung.htmlunit;
 
 import java.util.List;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlHeading1;
-import com.gargoylesoftware.htmlunit.html.HtmlHeading2;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class HtmlUnitWebScraping {
 
-    public static void main(final String[] args) throws Exception {
-        try (final WebClient webClient = new WebClient()) {
+    private WebClient webClient;
 
-            webClient.getOptions().setCssEnabled(false);
-            webClient.getOptions().setJavaScriptEnabled(false);
-
-            final HtmlPage page = webClient.getPage("http://www.baeldung.com/full_archive");
-            final HtmlAnchor latestPostLink = (HtmlAnchor) page.getByXPath("(//ul[@class='car-monthlisting']/li)[1]/a").get(0);
-
-            System.out.println("Entering: " + latestPostLink.getHrefAttribute());
-
-            final HtmlPage postPage = latestPostLink.click();
-
-            final HtmlHeading1 heading1 = (HtmlHeading1) postPage.getByXPath("//h1").get(0);
-            System.out.println("Title: " + heading1.getTextContent());
-
-            final List<HtmlHeading2> headings2 = (List<HtmlHeading2>) postPage.getByXPath("//h2");
-
-            final StringBuilder sb = new StringBuilder(heading1.getTextContent());
-            for (final HtmlHeading2 h2 : headings2) {
-                sb.append("\n").append(h2.getTextContent());
-            }
-
-            System.out.println(sb.toString());
-        }
+    @Before
+    public void init() throws Exception {
+        webClient = new WebClient();
     }
 
+    @After
+    public void close() throws Exception {
+        webClient.close();
+    }
+
+    @Test
+    public void givenBaeldungArchive_whenRetrievingArticle_thenHasH1() throws Exception {
+        webClient.getOptions().setCssEnabled(false);
+        webClient.getOptions().setJavaScriptEnabled(false);
+
+        final String url = "http://www.baeldung.com/full_archive";
+        final HtmlPage page = webClient.getPage(url);
+        final String xpath = "(//ul[@class='car-monthlisting']/li)[1]/a";
+        final HtmlAnchor latestPostLink = (HtmlAnchor) page.getByXPath(xpath).get(0);
+        final HtmlPage postPage = latestPostLink.click();
+
+        final List<HtmlHeading1> h1 = (List<HtmlHeading1>) postPage.getByXPath("//h1");
+
+        Assert.assertTrue(h1.size() > 0);
+    }
 }

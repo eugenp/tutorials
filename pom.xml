@@ -47,7 +47,9 @@
         <module>immutables</module>
 
         <module>jackson</module>
+        <module>jackson-annotations</module>
         <module>java-cassandra</module>
+        <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jee7</module>
         <module>jjwt</module>
@@ -109,6 +111,7 @@
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
+        <module>spring-mvc-forms</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>

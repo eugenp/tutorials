@@ -1,64 +1,72 @@
 package com.baeldung.java.nio2;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
+import java.util.UUID;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
-import java.nio.file.FileAlreadyExistsException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
-
-import org.junit.Test;
-
 public class FileTest {
-    private static final String HOME = System.getProperty("user.home");
+    private static final String TEMP_DIR = String.format("%s/temp%s", System.getProperty("user.home"), UUID.randomUUID().toString());
+
+    @BeforeClass
+    public static void setup() throws IOException {
+        Files.createDirectory(Paths.get(TEMP_DIR));
+    }
+
+    @AfterClass
+    public static void cleanup() throws IOException {
+        FileUtils.deleteDirectory(new File(TEMP_DIR));
+    }
 
     // checking file or dir
     @Test
     public void givenExistentPath_whenConfirmsFileExists_thenCorrect() {
-        Path p = Paths.get(HOME);
+        Path p = Paths.get(TEMP_DIR);
         assertTrue(Files.exists(p));
     }
 
     @Test
     public void givenNonexistentPath_whenConfirmsFileNotExists_thenCorrect() {
-        Path p = Paths.get(HOME + "/inexistent_file.txt");
+        Path p = Paths.get(TEMP_DIR + "/inexistent_file.txt");
         assertTrue(Files.notExists(p));
     }
 
     @Test
     public void givenDirPath_whenConfirmsNotRegularFile_thenCorrect() {
-        Path p = Paths.get(HOME);
+        Path p = Paths.get(TEMP_DIR);
         assertFalse(Files.isRegularFile(p));
     }
 
     @Test
     public void givenExistentDirPath_whenConfirmsReadable_thenCorrect() {
-        Path p = Paths.get(HOME);
+        Path p = Paths.get(TEMP_DIR);
         assertTrue(Files.isReadable(p));
     }
 
     @Test
     public void givenExistentDirPath_whenConfirmsWritable_thenCorrect() {
-        Path p = Paths.get(HOME);
+        Path p = Paths.get(System.getProperty("user.home"));
         assertTrue(Files.isWritable(p));
     }
 
     @Test
     public void givenExistentDirPath_whenConfirmsExecutable_thenCorrect() {
-        Path p = Paths.get(HOME);
+        Path p = Paths.get(System.getProperty("user.home"));
         assertTrue(Files.isExecutable(p));
     }
 
     @Test
     public void givenSameFilePaths_whenConfirmsIsSame_thenCorrect() throws IOException {
-        Path p1 = Paths.get(HOME);
-        Path p2 = Paths.get(HOME);
+        Path p1 = Paths.get(TEMP_DIR);
+        Path p2 = Paths.get(TEMP_DIR);
         assertTrue(Files.isSameFile(p1, p2));
     }
 
@@ -67,7 +75,7 @@ public class FileTest {
     @Test
     public void givenFilePath_whenCreatesNewFile_thenCorrect() throws IOException {
         String fileName = "myfile_" + UUID.randomUUID().toString() + ".txt";
-        Path p = Paths.get(HOME + "/" + fileName);
+        Path p = Paths.get(TEMP_DIR + "/" + fileName);
         assertFalse(Files.exists(p));
         Files.createFile(p);
         assertTrue(Files.exists(p));
@@ -77,7 +85,7 @@ public class FileTest {
     @Test
     public void givenDirPath_whenCreatesNewDir_thenCorrect() throws IOException {
         String dirName = "myDir_" + UUID.randomUUID().toString();
-        Path p = Paths.get(HOME + "/" + dirName);
+        Path p = Paths.get(TEMP_DIR + "/" + dirName);
         assertFalse(Files.exists(p));
         Files.createDirectory(p);
         assertTrue(Files.exists(p));
@@ -89,7 +97,7 @@ public class FileTest {
     @Test(expected = NoSuchFileException.class)
     public void givenDirPath_whenFailsToCreateRecursively_thenCorrect() throws IOException {
         String dirName = "myDir_" + UUID.randomUUID().toString() + "/subdir";
-        Path p = Paths.get(HOME + "/" + dirName);
+        Path p = Paths.get(TEMP_DIR + "/" + dirName);
         assertFalse(Files.exists(p));
         Files.createDirectory(p);
 
@@ -97,7 +105,7 @@ public class FileTest {
 
     @Test
     public void givenDirPath_whenCreatesRecursively_thenCorrect() throws IOException {
-        Path dir = Paths.get(HOME + "/myDir_" + UUID.randomUUID().toString());
+        Path dir = Paths.get(TEMP_DIR + "/myDir_" + UUID.randomUUID().toString());
         Path subdir = dir.resolve("subdir");
         assertFalse(Files.exists(dir));
         assertFalse(Files.exists(subdir));
@@ -110,7 +118,7 @@ public class FileTest {
     public void givenFilePath_whenCreatesTempFile_thenCorrect() throws IOException {
         String prefix = "log_";
         String suffix = ".txt";
-        Path p = Paths.get(HOME + "/");
+        Path p = Paths.get(TEMP_DIR + "/");
         p = Files.createTempFile(p, prefix, suffix);
         // like log_8821081429012075286.txt
         assertTrue(Files.exists(p));
@@ -119,7 +127,7 @@ public class FileTest {
 
     @Test
     public void givenPath_whenCreatesTempFileWithDefaults_thenCorrect() throws IOException {
-        Path p = Paths.get(HOME + "/");
+        Path p = Paths.get(TEMP_DIR + "/");
         p = Files.createTempFile(p, null, null);
         // like 8600179353689423985.tmp
         assertTrue(Files.exists(p));
@@ -136,7 +144,7 @@ public class FileTest {
     // delete file
     @Test
     public void givenPath_whenDeletes_thenCorrect() throws IOException {
-        Path p = Paths.get(HOME + "/fileToDelete.txt");
+        Path p = Paths.get(TEMP_DIR + "/fileToDelete.txt");
         assertFalse(Files.exists(p));
         Files.createFile(p);
         assertTrue(Files.exists(p));
@@ -147,7 +155,7 @@ public class FileTest {
 
     @Test(expected = DirectoryNotEmptyException.class)
     public void givenPath_whenFailsToDeleteNonEmptyDir_thenCorrect() throws IOException {
-        Path dir = Paths.get(HOME + "/emptyDir" + UUID.randomUUID().toString());
+        Path dir = Paths.get(TEMP_DIR + "/emptyDir" + UUID.randomUUID().toString());
         Files.createDirectory(dir);
         assertTrue(Files.exists(dir));
         Path file = dir.resolve("file.txt");
@@ -160,7 +168,7 @@ public class FileTest {
 
     @Test(expected = NoSuchFileException.class)
     public void givenInexistentFile_whenDeleteFails_thenCorrect() throws IOException {
-        Path p = Paths.get(HOME + "/inexistentFile.txt");
+        Path p = Paths.get(TEMP_DIR + "/inexistentFile.txt");
         assertFalse(Files.exists(p));
         Files.delete(p);
 
@@ -168,7 +176,7 @@ public class FileTest {
 
     @Test
     public void givenInexistentFile_whenDeleteIfExistsWorks_thenCorrect() throws IOException {
-        Path p = Paths.get(HOME + "/inexistentFile.txt");
+        Path p = Paths.get(TEMP_DIR + "/inexistentFile.txt");
         assertFalse(Files.exists(p));
         Files.deleteIfExists(p);
 
@@ -177,8 +185,8 @@ public class FileTest {
     // copy file
     @Test
     public void givenFilePath_whenCopiesToNewLocation_thenCorrect() throws IOException {
-        Path dir1 = Paths.get(HOME + "/firstdir_" + UUID.randomUUID().toString());
-        Path dir2 = Paths.get(HOME + "/otherdir_" + UUID.randomUUID().toString());
+        Path dir1 = Paths.get(TEMP_DIR + "/firstdir_" + UUID.randomUUID().toString());
+        Path dir2 = Paths.get(TEMP_DIR + "/otherdir_" + UUID.randomUUID().toString());
         Files.createDirectory(dir1);
         Files.createDirectory(dir2);
         Path file1 = dir1.resolve("filetocopy.txt");
@@ -193,8 +201,8 @@ public class FileTest {
 
     @Test(expected = FileAlreadyExistsException.class)
     public void givenPath_whenCopyFailsDueToExistingFile_thenCorrect() throws IOException {
-        Path dir1 = Paths.get(HOME + "/firstdir_" + UUID.randomUUID().toString());
-        Path dir2 = Paths.get(HOME + "/otherdir_" + UUID.randomUUID().toString());
+        Path dir1 = Paths.get(TEMP_DIR + "/firstdir_" + UUID.randomUUID().toString());
+        Path dir2 = Paths.get(TEMP_DIR + "/otherdir_" + UUID.randomUUID().toString());
         Files.createDirectory(dir1);
         Files.createDirectory(dir2);
         Path file1 = dir1.resolve("filetocopy.txt");
@@ -210,8 +218,8 @@ public class FileTest {
     // moving files
     @Test
     public void givenFilePath_whenMovesToNewLocation_thenCorrect() throws IOException {
-        Path dir1 = Paths.get(HOME + "/firstdir_" + UUID.randomUUID().toString());
-        Path dir2 = Paths.get(HOME + "/otherdir_" + UUID.randomUUID().toString());
+        Path dir1 = Paths.get(TEMP_DIR + "/firstdir_" + UUID.randomUUID().toString());
+        Path dir2 = Paths.get(TEMP_DIR + "/otherdir_" + UUID.randomUUID().toString());
         Files.createDirectory(dir1);
         Files.createDirectory(dir2);
         Path file1 = dir1.resolve("filetocopy.txt");
@@ -227,8 +235,8 @@ public class FileTest {
 
     @Test(expected = FileAlreadyExistsException.class)
     public void givenFilePath_whenMoveFailsDueToExistingFile_thenCorrect() throws IOException {
-        Path dir1 = Paths.get(HOME + "/firstdir_" + UUID.randomUUID().toString());
-        Path dir2 = Paths.get(HOME + "/otherdir_" + UUID.randomUUID().toString());
+        Path dir1 = Paths.get(TEMP_DIR + "/firstdir_" + UUID.randomUUID().toString());
+        Path dir2 = Paths.get(TEMP_DIR + "/otherdir_" + UUID.randomUUID().toString());
         Files.createDirectory(dir1);
         Files.createDirectory(dir2);
         Path file1 = dir1.resolve("filetocopy.txt");
