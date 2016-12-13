@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class LiveTest {
+public class FormServletLiveTest {
 
     @Test
     public void whenPostRequestUsingHttpClient_thenCorrect() throws Exception {
