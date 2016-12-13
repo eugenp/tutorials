@@ -1,6 +1,5 @@
 package com.baeldung.log4j;
 
-
 import org.apache.log4j.Logger;
 
 public class Log4jExample {
