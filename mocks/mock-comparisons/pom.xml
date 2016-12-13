@@ -16,13 +16,13 @@
 		<junit.version>4.12</junit.version>
 		<mockito.version>1.10.19</mockito.version>
 		<easymock.version>3.4</easymock.version>
-		<jmockit.version>1.24</jmockit.version>
+		<jmockit.version>1.29</jmockit.version>
         
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 	</properties>
 
 	<dependencies>

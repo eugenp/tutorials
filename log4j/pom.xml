@@ -13,39 +13,39 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
 
         <!--log4j2 dependencies-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.7</version>
+            <version>${log4j-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.7</version>
+            <version>${log4j-core.version}</version>
         </dependency>
 		<!--disruptor for log4j2 async logging-->
         <dependency>
             <groupId>com.lmax</groupId>
             <artifactId>disruptor</artifactId>
-            <version>3.3.4</version>
+            <version>${disruptor.version}</version>
         </dependency>
 
         <!--logback dependencies-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.7</version>
+            <version>${logback.version}</version>
         </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <debug>true</debug>
                     <optimize>true</optimize>
@@ -58,5 +58,15 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <log4j.version>1.2.17</log4j.version>
+        <log4j-api.version>2.7</log4j-api.version>
+        <log4j-core.version>2.7</log4j-core.version>
+        <disruptor.version>3.3.6</disruptor.version>
+        <logback.version>1.1.7</logback.version>
+        
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
 
 </project>

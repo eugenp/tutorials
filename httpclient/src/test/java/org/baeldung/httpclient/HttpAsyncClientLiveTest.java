@@ -37,7 +37,7 @@ public class HttpAsyncClientLiveTest {
 
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
-    private static final String HOST_WITH_PROXY = "https://issues.apache.org/";
+    private static final String HOST_WITH_PROXY = "http://httpbin.org/";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";// "http://localhost:8080/spring-security-rest-basic-auth/api/foos/1";
     private static final String DEFAULT_USER = "test";// "user1";
     private static final String DEFAULT_PASS = "test";// "user1Pass";
@@ -89,7 +89,7 @@ public class HttpAsyncClientLiveTest {
     public void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
         final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
         client.start();
-        final HttpHost proxy = new HttpHost("74.50.126.248", 3127);
+        final HttpHost proxy = new HttpHost("127.0.0.1", 8080);
         final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
         final HttpGet request = new HttpGet(HOST_WITH_PROXY);
         request.setConfig(config);

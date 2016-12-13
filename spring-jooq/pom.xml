@@ -11,7 +11,7 @@
 				<!-- Import dependency management from Spring Boot -->
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.3.5.RELEASE</version>
+				<version>1.4.2.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -23,14 +23,12 @@
 		<dependency>
 			<groupId>org.jooq</groupId>
 			<artifactId>jooq</artifactId>
-			<version>${org.jooq.version}</version>
 		</dependency>
 
 		<!-- Database Access -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>${com.h2database.version}</version>
 		</dependency>
 
 		<!-- Spring -->
@@ -70,6 +68,11 @@
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -77,7 +80,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0.0</version>
+				<version>${properties-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -96,7 +99,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>
-				<version>1.5</version>
+				<version>${sql-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>initialize</phase>
@@ -179,7 +182,7 @@
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
+					<version>${lifecycle-mapping.version}</version>
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
@@ -244,15 +247,19 @@
     </profiles>
     
 	<properties>
-		<org.jooq.version>3.7.3</org.jooq.version>
-		<com.h2database.version>1.4.191</com.h2database.version>
-		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
-		<org.slf4j.version>1.7.18</org.slf4j.version>
-		<ch.qos.logback.version>1.1.3</ch.qos.logback.version>
+		<org.jooq.version>3.8.6</org.jooq.version>
+		<com.h2database.version>1.4.193</com.h2database.version>
+		<org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+		<org.slf4j.version>1.7.21</org.slf4j.version>
+		<ch.qos.logback.version>1.1.7</ch.qos.logback.version>
 		<junit.version>4.12</junit.version>
 		
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>		
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
+        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>	
+        	
 	</properties>
 
 </project>
