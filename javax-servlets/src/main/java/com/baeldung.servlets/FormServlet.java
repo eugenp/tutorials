@@ -1,4 +1,4 @@
-package com.root;
+package com.baeldung.servlets;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
