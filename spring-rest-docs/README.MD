@@ -1,5 +1,3 @@
-###The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+# Spring-Rest-Docs
+Example of how to use spring-rest-docs to generate your API documentation.
 
-###Relevant Articles:
-- [Introduction to Spring REST Docs](http://www.baeldung.com/spring-rest-docs)
