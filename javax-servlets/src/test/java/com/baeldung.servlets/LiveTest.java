@@ -1,4 +1,4 @@
-package com.root;
+package com.baeldung.servlets;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -13,7 +13,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class FormServletTest {
+public class FormServletLiveTest {
 
     @Test
     public void whenPostRequestUsingHttpClient_thenCorrect() throws Exception {
