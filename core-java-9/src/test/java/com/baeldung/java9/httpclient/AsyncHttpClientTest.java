@@ -13,6 +13,11 @@ import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyProcessor;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.CompletableFuture;
@@ -26,6 +31,9 @@ import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.Delay;
 import org.mockserver.model.Header;
 import org.slf4j.LoggerFactory;
+
+import org.junit.Assert;
+
 import org.slf4j.Logger;
 
 public class AsyncHttpClientTest {
@@ -57,7 +65,20 @@ public class AsyncHttpClientTest {
     }
 
     @Test
-    public void asynchronousGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException {
+    public void asyncResponseBody() throws IOException, InterruptedException, URISyntaxException, ExecutionException{
+    	Path file = Paths.get(".", "responses");
+    	HttpResponse response = httpClient
+    			.request(new URI(baseURL + "/http"))
+    			.GET()
+    			.response();
+		CompletableFuture<Path> futureResponseWrite =  response.bodyAsync(HttpResponse.asFile(file));
+		// do some other stuff
+		Path res = futureResponseWrite.get();
+		Assert.assertTrue(res.getNameCount() > 0);
+    }
+    
+    @Test
+    public void asynchronousRequests() throws URISyntaxException, IOException, InterruptedException, ExecutionException {
         long before = System.currentTimeMillis();
         logger.info("@@@@@  "+ before);       
         CompletableFuture<Void> futureResponses = httpClient
@@ -73,11 +94,9 @@ public class AsyncHttpClientTest {
     }
 
     private CompletableFuture<Void> checkResponseAndFireRequest(HttpResponse response) {
-        System.out.println(Thread.currentThread());
         int respCode = response.statusCode();
         if (respCode == 200) {
-        	logger.info("Success "+ Thread.currentThread() + 
-                    "---" + response.body(HttpResponse.asString()));
+        	logger.info("Success body is [" +  response.body(HttpResponse.asString()) + "]");
 
             CompletableFuture<Void> download1 = httpClient
             		.request(uriIterator.next())
