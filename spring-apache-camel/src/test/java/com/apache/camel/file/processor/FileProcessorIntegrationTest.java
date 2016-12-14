@@ -1,4 +1,4 @@
-package org.apache.camel.file.processor;
+package com.apache.camel.file.processor;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.baeldung.camel.file.FileProcessor;
 
 
-public class FileProcessorTest {
+public class FileProcessorIntegrationTest {
 
     private static final long DURATION_MILIS = 10000;
     private static final String SOURCE_FOLDER = "src/test/source-folder";

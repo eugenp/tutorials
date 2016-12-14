@@ -1,14 +1,13 @@
-package org.apache.camel.file.processor;
+package com.apache.camel.file.processor;
 
 import java.io.File;
-import java.io.FileWriter;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SplitterFileRouterIntegrationTest {
+public class MessageTranslatorFileRouterIntegrationTest {
 
     private static final long DURATION_MILIS = 10000;
     private static final String SOURCE_FOLDER = "src/test/source-folder";
@@ -23,11 +22,10 @@ public class SplitterFileRouterIntegrationTest {
         cleanFolder(destinationFolder);
 
         sourceFolder.mkdirs();
-        File file = new File(SOURCE_FOLDER + "/File.txt");
-        FileWriter fileWriter = new FileWriter(file, false);
-        fileWriter.write("Hello\nWorld");
-        file.createNewFile();
-        fileWriter.close();
+        File file1 = new File(SOURCE_FOLDER + "/File1.txt");
+        File file2 = new File(SOURCE_FOLDER + "/File2.txt");
+        file1.createNewFile();
+        file2.createNewFile();
     }
 
     private void cleanFolder(File folder) {
@@ -43,8 +41,8 @@ public class SplitterFileRouterIntegrationTest {
 
     @Test
     @Ignore
-    public void routeTests() throws InterruptedException {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-SplitterFileRouter.xml");
+    public void routeTest() throws InterruptedException {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-MessageTranslatorFileRouterTest.xml");
         Thread.sleep(DURATION_MILIS);
         applicationContext.close();
 
