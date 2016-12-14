@@ -1,16 +1,16 @@
-package com.baeldung.ndc;
+package com.baeldung.ndc.service;
 
 /**
  * A fake investment service.
  */
-public abstract class InvestmentService {
+public interface InvestmentService {
 
     /**
      * Sample service transferring a given amount of money.
      * @param amount
      * @return {@code true} when the transfer complete successfully, {@code false} otherwise.
      */
-    public boolean transfer(long amount) {
+    default public boolean transfer(long amount) {
         beforeTransfer(amount);
         // exchange messages with a remote system to transfer the money
         try {
@@ -25,7 +25,7 @@ public abstract class InvestmentService {
         return outcome;
     }
 
-    abstract protected void beforeTransfer(long amount);
+    void beforeTransfer(long amount);
 
-    abstract protected void afterTransfer(long amount, boolean outcome);
+    void afterTransfer(long amount, boolean outcome);
 }

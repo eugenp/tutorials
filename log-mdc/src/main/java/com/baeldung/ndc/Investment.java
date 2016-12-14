@@ -5,6 +5,9 @@ public class Investment {
     private String owner;
     private Long amount;
 
+    public Investment() {
+    }
+
     public Investment(String transactionId, String owner, Long amount) {
         this.transactionId = transactionId;
         this.owner = owner;
