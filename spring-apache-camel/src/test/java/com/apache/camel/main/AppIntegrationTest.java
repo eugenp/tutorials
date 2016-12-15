@@ -1,4 +1,4 @@
-package org.apache.camel.main;
+package com.apache.camel.main;
 
 import com.baeldung.camel.main.App;
 import junit.framework.TestCase;

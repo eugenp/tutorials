@@ -1,13 +1,18 @@
-package org.apache.camel.file.processor;
+package com.apache.camel.file.processor;
 
 import java.io.File;
 
+import org.apache.camel.CamelContext;
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.impl.DefaultCamelContext;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class MessageTranslatorFileRouterIntegrationTest {
+import com.baeldung.camel.file.FileProcessor;
+
+
+public class FileProcessorTest {
 
     private static final long DURATION_MILIS = 10000;
     private static final String SOURCE_FOLDER = "src/test/source-folder";
@@ -40,9 +45,22 @@ public class MessageTranslatorFileRouterIntegrationTest {
     }
 
     @Test
-    @Ignore
-    public void routeTest() throws InterruptedException {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-MessageTranslatorFileRouterTest.xml");
+    public void moveFolderContentJavaDSLTest() throws Exception {
+        final CamelContext camelContext = new DefaultCamelContext();
+        camelContext.addRoutes(new RouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                from("file://" + SOURCE_FOLDER + "?delete=true").process(new FileProcessor()).to("file://" + DESTINATION_FOLDER);
+            }
+        });
+        camelContext.start();
+        Thread.sleep(DURATION_MILIS);
+        camelContext.stop();
+    }
+
+    @Test
+    public void moveFolderContentSpringDSLTest() throws InterruptedException {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-test.xml");
         Thread.sleep(DURATION_MILIS);
         applicationContext.close();
 
