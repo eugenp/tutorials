@@ -35,7 +35,6 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session</artifactId>
-            <version>${spring-session.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -79,8 +78,7 @@
         </plugins>
     </build>
     <properties>
-        <spring-session.version>1.2.2.RELEASE</spring-session.version>
         <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-    </properties>    
+    </properties>
 </project>
