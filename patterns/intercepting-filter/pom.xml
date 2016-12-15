@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.21</version>
+            <version>${slf4j.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -51,4 +51,8 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <slf4j.version>1.7.21</slf4j.version>
+    </properties>
 </project>

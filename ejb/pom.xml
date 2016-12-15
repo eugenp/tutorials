@@ -38,14 +38,14 @@
 			<dependency>
 				<groupId>javax</groupId>
 				<artifactId>javaee-api</artifactId>
-				<version>7.0</version>
+				<version>${javaee-api.version}</version>
 				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.wildfly</groupId>
 				<artifactId>wildfly-ejb-client-bom</artifactId>
-				<version>10.1.0.Final</version>
+				<version>${wildfly.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -57,7 +57,7 @@
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
@@ -66,7 +66,7 @@
 
 				<plugin>
 					<artifactId>maven-ejb-plugin</artifactId>
-					<version>2.4</version>
+					<version>${maven-ejb-plugin.version}</version>
 					<configuration>
 						<ejbVersion>3.2</ejbVersion>
 					</configuration>
@@ -79,4 +79,11 @@
 		<module>ejb-remote</module>
 		<module>ejb-client</module>
 	</modules>
+	
+	<properties>
+	    <javaee-api.version>7.0</javaee-api.version>
+	    <wildfly.version>10.1.0.Final</wildfly.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-ejb-plugin.version>2.5.1</maven-ejb-plugin.version>        	   
+	</properties>
 </project>

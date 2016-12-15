@@ -1,10 +1,7 @@
 package com.baeldung.htmlunit;
 
-import java.io.IOException;
-
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -33,8 +29,7 @@ public class HtmlUnitAndSpringTest {
 
     @Before
     public void setup() {
-        webClient = MockMvcWebClientBuilder
-            .webAppContextSetup(wac).build();
+        webClient = MockMvcWebClientBuilder.webAppContextSetup(wac).build();
     }
 
     @Test
@@ -44,18 +39,16 @@ public class HtmlUnitAndSpringTest {
 
         String url = "http://localhost/message/showForm";
         page = webClient.getPage(url);
-            
+
         HtmlTextInput messageText = page.getHtmlElementById("message");
         messageText.setValueAttribute(text);
 
         HtmlForm form = page.getForms().get(0);
-        HtmlSubmitInput submit = form.getOneHtmlElementByAttribute(
-          "input", "type", "submit");
+        HtmlSubmitInput submit = form.getOneHtmlElementByAttribute("input", "type", "submit");
         HtmlPage newPage = submit.click();
 
-        String receivedText = newPage.getHtmlElementById("received")
-            .getTextContent();
+        String receivedText = newPage.getHtmlElementById("received").getTextContent();
 
-        Assert.assertEquals(receivedText, text);     
+        Assert.assertEquals(receivedText, text);
     }
 }
