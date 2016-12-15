@@ -11,13 +11,13 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -26,7 +26,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <debug>true</debug>
                     <optimize>true</optimize>
@@ -39,5 +39,10 @@
             </plugin>
         </plugins>
     </build>
-
+    
+    <properties>
+        <guava.version>18.0</guava.version>
+        <junit.version>4.12</junit.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
 </project>

@@ -82,8 +82,7 @@ public class AsyncFileTest {
     public void givenPathAndContent_whenWritesToFileWithHandler_thenCorrect() throws IOException {
         String fileName = UUID.randomUUID().toString();
         Path path = Paths.get(fileName);
-        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE,StandardOpenOption.DELETE_ON_CLOSE);
-
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DELETE_ON_CLOSE);
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         buffer.put("hello world".getBytes());

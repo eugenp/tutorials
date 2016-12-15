@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.3.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -22,6 +22,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <restdocs.version>1.1.2.RELEASE</restdocs.version>
+        <jsonpath.version>2.2.0</jsonpath.version>
+        <asciidoctor-plugin.version>1.5.3</asciidoctor-plugin.version>
     </properties>
 
     <dependencies>
@@ -42,23 +45,23 @@
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
-            <version>1.0.1.RELEASE</version>
+            <version>${restdocs.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
-			<version>2.0.0</version>
-		</dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${jsonpath.version}</version>
+        </dependency>
     </dependencies>
 
    <build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin> 
+	<plugins>
+	    <plugin>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+	    </plugin>
+	<plugin> 
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
 	            <configuration>
@@ -70,7 +73,7 @@
 			<plugin> 
 	            <groupId>org.asciidoctor</groupId>
 	            <artifactId>asciidoctor-maven-plugin</artifactId>
-	            <version>1.5.2</version>
+	            <version>${asciidoctor-plugin.version}</version>
 	            <executions>
 	                <execution>
 	                    <id>generate-docs</id>
