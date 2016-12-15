@@ -6,6 +6,8 @@ import java.text.ParseException;
 import org.baeldung.spring_batch_intro.model.Transaction;
 import org.baeldung.spring_batch_intro.service.CustomItemProcessor;
 import org.baeldung.spring_batch_intro.service.RecordFieldSetMapper;
+import org.baeldung.spring_batch_partitioner.listener.JobListener;
+import org.baeldung.spring_batch_partitioner.partitioner.TransactionPartitioner;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -23,6 +25,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
@@ -32,6 +35,9 @@ public class SpringBatchConfig {
 
     @Autowired
     private StepBuilderFactory steps;
+
+    @Autowired
+    private TaskExecutor taskExecutor;
 
     @Value("input/record.csv")
     private Resource inputCsv;
@@ -83,6 +89,33 @@ public class SpringBatchConfig {
     @Bean(name = "firstBatchJob")
     public Job job(@Qualifier("step1") Step step1) {
         return jobs.get("firstBatchJob").start(step1).build();
+    }
+
+    @Bean(name = "partitioningJob")
+    public Job partitioningJob() throws UnexpectedInputException, MalformedURLException, ParseException {
+        return jobs.get("partitioningJob").listener(jobListener()).start(partitionStep()).build();
+    }
+
+    @Bean
+    public Step partitionStep() throws UnexpectedInputException, MalformedURLException, ParseException {
+        return steps.get("partitionStep").partitioner(step2()).partitioner("step2", partitioner()).taskExecutor(taskExecutor).build();
+    }
+
+    @Bean
+    public Step step2() throws UnexpectedInputException, MalformedURLException, ParseException {
+        return steps.get("step2").<Transaction, Transaction> chunk(1).reader(itemReader()).processor(itemProcessor()).writer(itemWriter(marshaller())).build();
+    }
+
+    @Bean
+    public TransactionPartitioner partitioner() {
+        TransactionPartitioner partitioner = new TransactionPartitioner();
+        partitioner.partition(10);
+        return partitioner;
+    }
+
+    @Bean
+    public JobListener jobListener() {
+        return new JobListener();
     }
 
 }
