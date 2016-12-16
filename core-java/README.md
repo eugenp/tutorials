@@ -43,4 +43,3 @@
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
-- [A Guide To HTTP Cookies In Java](http://www.baeldung.com/cookies-java)
