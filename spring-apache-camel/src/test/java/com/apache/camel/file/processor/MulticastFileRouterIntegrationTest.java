@@ -1,35 +1,32 @@
-package org.apache.camel.file.processor;
+package com.apache.camel.file.processor;
 
 import java.io.File;
 
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@RunWith(JUnit4.class)
-public class ContentBasedFileRouterIntegrationTest {
+public class MulticastFileRouterIntegrationTest {
 
     private static final long DURATION_MILIS = 10000;
     private static final String SOURCE_FOLDER = "src/test/source-folder";
-    private static final String DESTINATION_FOLDER_TXT = "src/test/destination-folder-txt";
-    private static final String DESTINATION_FOLDER_OTHER = "src/test/destination-folder-other";
+    private static final String DESTINATION_FOLDER_WORLD = "src/test/destination-folder-world";
+    private static final String DESTINATION_FOLDER_HELLO = "src/test/destination-folder-hello";
 
     @Before
     public void setUp() throws Exception {
         File sourceFolder = new File(SOURCE_FOLDER);
-        File destinationFolderTxt = new File(DESTINATION_FOLDER_TXT);
-        File destinationFolderOther = new File(DESTINATION_FOLDER_OTHER);
+        File destinationFolderWorld = new File(DESTINATION_FOLDER_WORLD);
+        File destinationFolderHello = new File(DESTINATION_FOLDER_HELLO);
 
         cleanFolder(sourceFolder);
-        cleanFolder(destinationFolderTxt);
-        cleanFolder(destinationFolderOther);
+        cleanFolder(destinationFolderWorld);
+        cleanFolder(destinationFolderHello);
 
         sourceFolder.mkdirs();
         File file1 = new File(SOURCE_FOLDER + "/File1.txt");
-        File file2 = new File(SOURCE_FOLDER + "/File2.csv");
+        File file2 = new File(SOURCE_FOLDER + "/File2.txt");
         file1.createNewFile();
         file2.createNewFile();
     }
@@ -48,7 +45,7 @@ public class ContentBasedFileRouterIntegrationTest {
     @Test
     @Ignore
     public void routeTest() throws InterruptedException {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-ContentBasedFileRouterTest.xml");
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-MulticastFileRouterTest.xml");
         Thread.sleep(DURATION_MILIS);
         applicationContext.close();
 
