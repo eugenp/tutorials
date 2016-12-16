@@ -85,6 +85,12 @@
 			<artifactId>log4j-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.12</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- test scoped -->
 
