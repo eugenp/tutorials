@@ -1,86 +1,64 @@
 package com.baeldung.spring.session;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.http.*;
-import org.springframework.test.context.junit4.SpringRunner;
+import redis.clients.jedis.Jedis;
 
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SessionControllerTest {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
-    @Autowired
-    private JedisConnectionFactory jedisConnectionFactory;
-
-    private RedisConnection connection;
+    private Jedis jedis;
+    private TestRestTemplate testRestTemplate;
+    private TestRestTemplate testRestTemplateWithAuth;
+    private String testUrl = "http://localhost:8080/";
 
     @Before
     public void clearRedisData() {
-        connection = jedisConnectionFactory.getConnection();
-        connection.flushAll();
+        testRestTemplate = new TestRestTemplate();
+        testRestTemplateWithAuth = new TestRestTemplate("admin", "password", null);
+
+        jedis = new Jedis("localhost", 6379);
+        jedis.flushAll();
     }
 
     @Test
     public void testRedisIsEmpty() {
-        Set<byte[]> result = connection.keys("*".getBytes());
+        Set<String> result = jedis.keys("*");
         assertEquals(0, result.size());
     }
 
     @Test
     public void testUnauthenticatedCantAccess() {
-        ResponseEntity<String> result = restTemplate.getForEntity("/", String.class);
+        ResponseEntity<String> result = testRestTemplate.getForEntity(testUrl, String.class);
         assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());
     }
 
     @Test
     public void testRedisControlsSession() {
-        ResponseEntity<String> result = restTemplate.exchange("/", HttpMethod.GET, makeAuthRequest(), String.class);
+        ResponseEntity<String> result = testRestTemplateWithAuth.getForEntity(testUrl, String.class);
         assertEquals("hello admin", result.getBody()); //login worked
 
-        Set<byte[]> redisResult = connection.keys("*".getBytes());
+        Set<String> redisResult = jedis.keys("*");
         assertTrue(redisResult.size() > 0); //redis is populated with session data
 
         String sessionCookie = result.getHeaders().get("Set-Cookie").get(0).split(";")[0];
-        result = restTemplate.exchange("/", HttpMethod.GET, makeRequestWithCookie(sessionCookie), String.class);
-        assertEquals("hello admin", result.getBody()); //access with session works worked
-
-        connection.flushAll(); //clear all keys in redis
-
-        result = restTemplate.exchange("/", HttpMethod.GET, makeRequestWithCookie(sessionCookie), String.class);
-        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());//access denied after sessions are removed in redis
-
-    }
-
-    private HttpEntity<String> makeRequestWithCookie(String sessionCookie) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cookie", sessionCookie);
+        HttpEntity<String> httpEntity = new HttpEntity<>(headers);
 
-        return new HttpEntity<>(headers);
-    }
+        result = testRestTemplate.exchange(testUrl, HttpMethod.GET, httpEntity, String.class);
+        assertEquals("hello admin", result.getBody()); //access with session works worked
 
-    private HttpEntity<String> makeAuthRequest() {
-        String plainCreds = "admin:password";
-        byte[] plainCredsBytes = plainCreds.getBytes();
-        byte[] base64CredsBytes = Base64.encodeBase64(plainCredsBytes);
-        String base64Creds = new String(base64CredsBytes);
+        jedis.flushAll(); //clear all keys in redis
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic " + base64Creds);
+        result = testRestTemplate.exchange(testUrl, HttpMethod.GET, httpEntity, String.class);
+        assertEquals(HttpStatus.UNAUTHORIZED, result.getStatusCode());//access denied after sessions are removed in redis
 
-        return new HttpEntity<>(headers);
     }
 }

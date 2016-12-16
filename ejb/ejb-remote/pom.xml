@@ -15,7 +15,7 @@
 		 <dependency>
         <groupId>javax</groupId>
         <artifactId>javaee-api</artifactId>
-        <version>7.0</version>
+        <version>${javaee-api.version}</version>
         <scope>provided</scope>
     </dependency>
 	</dependencies>
@@ -25,7 +25,7 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.1.0.Alpha5</version>
+				<version>${wildfly-maven-plugin.version}</version>
 				<configuration>
 					<hostname>127.0.0.1</hostname>
 					<port>9990</port>
@@ -37,4 +37,9 @@
 		</plugins>
 		<!-- <finalName>ejb-remote</finalName> -->
 	</build>
+	
+	<properties>
+        <javaee-api.version>7.0</javaee-api.version>
+        <wildfly-maven-plugin.version>1.1.0.Beta1</wildfly-maven-plugin.version>
+    </properties>
 </project>

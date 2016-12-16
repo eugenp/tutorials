@@ -4,17 +4,20 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-jaxrs-implementation</artifactId>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>apache-cxf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>3.1.7</cxf.version>
+        <cxf.version>3.1.8</cxf.version>
         <httpclient.version>4.5.2</httpclient.version>
         <surefire.version>2.19.1</surefire.version>        
     </properties>
+    
     <build>
         <plugins>
             <plugin>
@@ -26,7 +29,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*LiveTest.java</exclude>
@@ -35,6 +38,7 @@
             </plugin>
         </plugins>
     </build>
+    
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>

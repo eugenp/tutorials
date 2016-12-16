@@ -13,7 +13,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>7</source>
                     <target>7</target>
@@ -26,33 +26,41 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.5</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.5</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.2.1</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
-            <version>5.5.1</version>
+            <version>${dozer.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.3</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
+    
+    <properties>
+        <slf4j.version>1.7.21</slf4j.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <dozer.version>5.5.1</dozer.version>
+        <junit.version>4.12</junit.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
     
 </project>
