@@ -42,3 +42,4 @@
 - [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
+- [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
