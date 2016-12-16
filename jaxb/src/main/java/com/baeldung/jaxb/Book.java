@@ -55,4 +55,38 @@ public class Book {
     public String toString() {
         return "Book [id=" + id + ", name=" + name + ", author=" + author + ", date=" + date + "]";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Book other = (Book) obj;
+        if (author == null) {
+            if (other.author != null)
+                return false;
+        } else if (!author.equals(other.author))
+            return false;
+        if (date == null) {
+            if (other.date != null)
+                return false;
+        } else if (!date.equals(other.date))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        return true;
+    }
+    
+    
 }
