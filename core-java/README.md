@@ -41,3 +41,4 @@
 - [Introduction to Java Generics](http://www.baeldung.com/java-generics)
 - [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
+- [Sorting in Java](http://www.baeldung.com/java-sorting)
