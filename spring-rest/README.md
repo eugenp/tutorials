@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to OkHttp](http://www.baeldung.com/guide-to-okhttp)
 - [Binary Data Formats in a Spring REST API](http://www.baeldung.com/spring-rest-api-with-binary-data-formats)
 - [Guide to UriComponentsBuilder in Spring](http://www.baeldung.com/spring-uricomponentsbuilder)
+- [Introduction to FindBugs](http://www.baeldung.com/intro-to-findbugs)
