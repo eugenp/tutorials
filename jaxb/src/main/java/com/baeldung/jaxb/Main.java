@@ -16,7 +16,7 @@ public class Main {
         book.setId(1L);
         book.setName("Book1");
         book.setAuthor("Author1");
-        book.setDate(new Date());
+        book.setDate(new Date(1481909329718L));
 
         JAXBContext context = JAXBContext.newInstance(Book.class);
         Marshaller marshaller = context.createMarshaller();
