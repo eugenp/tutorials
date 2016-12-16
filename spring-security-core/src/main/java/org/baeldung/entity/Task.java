@@ -4,11 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-/**
- * 
- * @author felipereis
- *
- */
 @Entity
 public class Task {
     private @Id @GeneratedValue Long id;
