@@ -1,4 +1,4 @@
-package jaxb;
+package com.baeldung.jaxb.test;
 
 import java.io.File;
 import java.io.FileReader;

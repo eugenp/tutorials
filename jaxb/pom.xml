@@ -49,6 +49,12 @@
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -171,6 +177,7 @@
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 </project>
