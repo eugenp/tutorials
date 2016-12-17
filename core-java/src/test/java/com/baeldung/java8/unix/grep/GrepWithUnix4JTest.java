@@ -19,7 +19,7 @@ public class GrepWithUnix4JTest {
     @Before
     public void init() {
         final String separator = File.separator;
-        final String filePath = String.join(separator, new String[] {"src", "test", "resources", "dictionary.txt"});
+        final String filePath = String.join(separator, new String[] {"src", "test", "resources", "dictionary.in"});
         fileToGrep = new File(filePath);
     }
 	
