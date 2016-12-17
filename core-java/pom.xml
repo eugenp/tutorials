@@ -51,6 +51,18 @@
 			<artifactId>bcprov-jdk15on</artifactId>
 			<version>${bouncycastle.version}</version>
 		</dependency>
+		
+		<dependency>
+	        <groupId>org.unix4j</groupId>
+	        <artifactId>unix4j-command</artifactId>
+	        <version>0.4</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>com.googlecode.grep4j</groupId> 
+		    <artifactId>grep4j</artifactId> 
+		    <version>1.8.7</version> 
+        </dependency>
 		<!-- web -->
 
 		<!-- marshalling -->
