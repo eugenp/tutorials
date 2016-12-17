@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
-	<artifactId>SpringMVCHandlers</artifactId>
+	<artifactId>spring-mvc-simple</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringMVCHandlers Maven Webapp</name>
+	<name>Spring MVC simple Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -59,12 +59,12 @@
 					<version>${maven-war-plugin.version}</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
-						<warName>springMVCHandlers</warName>
+						<warName>springMvcSimple</warName>
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>springMVCHandlers</finalName>
+		<finalName>springMvcSimple</finalName>
 	</build>
 </project>
