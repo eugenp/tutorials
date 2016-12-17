@@ -18,13 +18,13 @@ public class JavaFileSizeUnitTest {
     @Before
     public void init() {
         final String separator = File.separator;
-        filePath = String.join(separator, new String[] {"src", "test", "resources", "testFolder", "sample_file_1.in"});
+        filePath = String.join(separator, new String[] { "src", "test", "resources", "testFolder", "sample_file_1.in" });
     }
 
     @Test
     public void whenGetFileSize_thenCorrect() {
         final File file = new File(filePath);
-        
+
         final long size = getFileSize(file);
 
         assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, size);
@@ -34,16 +34,16 @@ public class JavaFileSizeUnitTest {
     public void whenGetFileSizeUsingNioApi_thenCorrect() throws IOException {
         final Path path = Paths.get(this.filePath);
         final FileChannel fileChannel = FileChannel.open(path);
-        
+
         final long fileSize = fileChannel.size();
-        
+
         assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, fileSize);
     }
 
     @Test
     public void whenGetFileSizeUsingApacheCommonsIO_thenCorrect() {
         final File file = new File(filePath);
-        
+
         final long size = FileUtils.sizeOf(file);
 
         assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, size);
@@ -52,9 +52,9 @@ public class JavaFileSizeUnitTest {
     @Test
     public void whenGetReadableFileSize_thenCorrect() {
         final File file = new File(filePath);
-        
+
         final long size = getFileSize(file);
-        
+
         assertEquals(EXPECTED_FILE_SIZE_IN_BYTES + " bytes", FileUtils.byteCountToDisplaySize(size));
     }
 
