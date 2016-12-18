@@ -4,8 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * To switch between logging frameworks you need only to uncomment needed
- * framework dependencies in pom.xml
+ * To switch between logging frameworks you need only to uncomment needed framework dependencies in pom.xml
  */
 public class Slf4jExample {
     private static Logger logger = LoggerFactory.getLogger(Slf4jExample.class);
