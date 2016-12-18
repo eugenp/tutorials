@@ -1,4 +1,4 @@
-package com.baeldung.java8.unix.grep;
+package com.baeldung.grep;
 
 import java.io.File;
 import java.util.List;
