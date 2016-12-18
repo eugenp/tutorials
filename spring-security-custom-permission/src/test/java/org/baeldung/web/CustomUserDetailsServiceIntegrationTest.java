@@ -7,9 +7,9 @@ import org.baeldung.config.PersistenceConfig;
 import org.baeldung.config.SecurityConfig;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.User;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -23,7 +23,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
 @WebAppConfiguration
-public class CustomUserDetailsServiceTest {
+public class CustomUserDetailsServiceIntegrationTest {
 
     public static final String USERNAME = "user";
     public static final String PASSWORD = "pass";
@@ -34,9 +34,11 @@ public class CustomUserDetailsServiceTest {
 
     @Autowired
     AuthenticationProvider authenticationProvider;
-    
+
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    //
 
     @Test
     public void givenExistingUser_whenAuthenticate_thenRetrieveFromDb() {
@@ -63,7 +65,9 @@ public class CustomUserDetailsServiceTest {
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
         authenticationProvider.authenticate(auth);
     }
-    
+
+    //
+
     @After
     public void tearDown() {
         myUserRepository.removeUserByUsername(USERNAME);
