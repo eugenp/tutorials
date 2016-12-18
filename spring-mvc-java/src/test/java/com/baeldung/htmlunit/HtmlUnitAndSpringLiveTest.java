@@ -20,7 +20,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = { TestConfig.class })
-public class HtmlUnitAndSpringTest {
+public class HtmlUnitAndSpringLiveTest {
 
     @Autowired
     private WebApplicationContext wac;
