@@ -43,4 +43,4 @@
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
-- [Grep in Java](http://www.baeldung.com/pattern-search-grep-in-java)
+- [Grep in Java](http://www.baeldung.com/grep-in-java)
