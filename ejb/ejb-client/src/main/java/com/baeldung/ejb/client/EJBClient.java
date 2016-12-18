@@ -45,8 +45,7 @@ public class EJBClient {
         final String distinctName = "";
         final String beanName = "HelloWorld";
         final String viewClassName = HelloWorld.class.getName();
-        final String toLookup = "ejb:" + appName + "/" + moduleName 
-                + "/" + distinctName + "/" + beanName + "!" + viewClassName;
+        final String toLookup = String.format("ejb:%s/%s/%s/%s!%s", appName, moduleName, distinctName, beanName, viewClassName);
         return (HelloWorld) context.lookup(toLookup);
     }
 
