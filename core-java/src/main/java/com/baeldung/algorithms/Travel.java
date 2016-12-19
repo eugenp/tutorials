@@ -27,7 +27,10 @@ public class Travel {
         int a = generateRandomIndex();
         int b = generateRandomIndex();
         previousTravel = travel;
-        travel.set(a, travel.get(b));
+        City x = travel.get(a);
+        City y = travel.get(b);
+        travel.set(a, y);
+        travel.set(b, x);
     }
 
     public void revertSwap() {

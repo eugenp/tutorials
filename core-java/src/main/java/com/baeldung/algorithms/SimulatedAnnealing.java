@@ -25,6 +25,8 @@ public class SimulatedAnnealing {
                     currentSolution.revertSwap();
                 }
                 t *= coolingRate;
+            } else {
+            	continue;
             }
             if (i % 100 == 0) {
                 System.out.println("Iteration #" + i);
@@ -34,7 +36,7 @@ public class SimulatedAnnealing {
     }
 
     public static void main(String[] args) {
-        System.out.println("Optimized distance for travel: " + simulateAnnealing(10, 10000, 0.9));
+        System.out.println("Optimized distance for travel: " + simulateAnnealing(10, 10000, 0.9995));
     }
 
 }

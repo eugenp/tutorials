@@ -45,3 +45,4 @@
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
 - [Grep in Java](http://www.baeldung.com/grep-in-java)
 - [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
+- [Simulated Annealing for Travelling Salesman Problem](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
