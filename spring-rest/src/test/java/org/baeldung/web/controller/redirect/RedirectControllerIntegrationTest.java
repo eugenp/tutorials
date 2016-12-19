@@ -1,7 +1,6 @@
 package org.baeldung.web.controller.redirect;
 
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.nullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.flash;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
@@ -51,7 +50,7 @@ public class RedirectControllerIntegrationTest {
     @Test
     public void whenRedirectOnUrlWithUsingRedirectAttributes_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope() throws Exception {
         mockMvc.perform(get("/redirectWithRedirectAttributes")).andExpect(status().is3xxRedirection()).andExpect(flash().attribute("flashAttribute", equalTo("redirectWithRedirectAttributes")))
-                .andExpect(model().attribute("attribute", equalTo("redirectWithRedirectAttributes"))).andExpect(model().attribute("flashAttribute", equalTo(nullValue()))).andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectAttributes"));
+                .andExpect(model().attribute("attribute", equalTo("redirectWithRedirectAttributes"))).andExpect(model().attribute("flashAttribute", equalTo(null))).andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectAttributes"));
     }
 
     @Test

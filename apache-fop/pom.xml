@@ -67,7 +67,7 @@
 		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>fop</artifactId>
-			<version>1.1</version>
+			<version>${fop.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.avalon.framework</groupId>
@@ -83,18 +83,18 @@
 		<dependency>
 			<groupId>avalon-framework</groupId>
 			<artifactId>avalon-framework-api</artifactId>
-			<version>4.2.0</version>
+			<version>${avalon-framework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>avalon-framework</groupId>
 			<artifactId>avalon-framework-impl</artifactId>
-			<version>4.2.0</version>
+			<version>${avalon-framework.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.dbdoclet</groupId>
 			<artifactId>dbdoclet</artifactId>
-			<version>8.0.2</version>
+			<version>${dbdoclet.version}</version>
 		</dependency>
 
 		<dependency>
@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>net.sf.jtidy</groupId>
 			<artifactId>jtidy</artifactId>
-			<version>r938</version>
+			<version>${jtidy.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -187,40 +187,22 @@
     </profiles>
     
 	<properties>
-		<!-- persistence -->
-		<hibernate.version>4.3.11.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-
-		<!-- marshalling -->
-		<jackson.version>2.7.2</jackson.version>
-
+	    <fop.version>1.1</fop.version> 
+	    <avalon-framework.version>4.3</avalon-framework.version>
+	    <dbdoclet.version>8.0.2</dbdoclet.version>
+	    <jtidy.version>r938</jtidy.version>
 		<!-- logging -->
-		<org.slf4j.version>1.7.9</org.slf4j.version>
-		<logback.version>1.1.2</logback.version>
-
-		<!-- various -->
-		<hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
-
-		<!-- util -->
-		<guava.version>19.0</guava.version>
-		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<org.slf4j.version>1.7.21</org.slf4j.version>
+		<logback.version>1.1.7</logback.version>
 
 		<!-- testing -->
 		<org.hamcrest.version>1.3</org.hamcrest.version>
 		<junit.version>4.12</junit.version>
 		<mockito.version>1.10.19</mockito.version>
 
-		<httpcore.version>4.4</httpcore.version>
-		<httpclient.version>4.4</httpclient.version>
-
-		<rest-assured.version>2.9.0</rest-assured.version>
-
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
 
 	</properties>
 

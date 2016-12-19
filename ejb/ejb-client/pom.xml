@@ -44,4 +44,10 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <junit.version>4.12</junit.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        
+    </properties>
 </project>
