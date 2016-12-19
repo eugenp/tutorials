@@ -44,3 +44,4 @@
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
 - [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
 - [Grep in Java](http://www.baeldung.com/grep-in-java)
+- [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
