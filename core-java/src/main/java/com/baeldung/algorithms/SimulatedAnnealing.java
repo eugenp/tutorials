@@ -17,11 +17,9 @@ public class SimulatedAnnealing {
             if (t > 0.1) {
                 currentSolution.swapCities();
                 double currentDistance = currentSolution.getDistance();
-                if (currentDistance == 0)
-                    continue;
                 if (currentDistance < bestDistance) {
                     bestDistance = currentDistance;
-                } else if (Math.exp((currentDistance - bestDistance) / t) < Math.random()) {
+                } else if (Math.exp((bestDistance - currentDistance) / t) < Math.random()) {
                     currentSolution.revertSwap();
                 }
                 t *= coolingRate;
