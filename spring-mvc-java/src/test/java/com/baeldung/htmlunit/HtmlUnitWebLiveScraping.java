@@ -12,7 +12,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlHeading1;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-public class HtmlUnitWebScraping {
+public class HtmlUnitWebLiveScraping {
 
     private WebClient webClient;
 

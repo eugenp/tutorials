@@ -41,3 +41,8 @@
 - [Introduction to Java Generics](http://www.baeldung.com/java-generics)
 - [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [A Guide To Java Regular Expressions API](http://www.baeldung.com/regular-expressions-java)
+- [Sorting in Java](http://www.baeldung.com/java-sorting)
+- [Getting Started with Java Properties](http://www.baeldung.com/java-properties)
+- [Grep in Java](http://www.baeldung.com/grep-in-java)
+- [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
+- [Simulated Annealing for Travelling Salesman Problem](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
