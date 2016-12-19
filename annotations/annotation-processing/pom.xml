@@ -15,7 +15,7 @@
 
     <properties>
         <auto-service.version>1.0-rc2</auto-service.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 
     <dependencies>

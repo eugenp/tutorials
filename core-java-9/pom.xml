@@ -76,9 +76,7 @@
 
 	<properties>
 		<!-- logging -->
-		<org.slf4j.version>1.7.13</org.slf4j.version>
-		<logback.version>1.0.13</logback.version>
-
+		<org.slf4j.version>1.7.21</org.slf4j.version>
 
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>	

@@ -25,17 +25,22 @@
             resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <slf4j.version>1.7.21</slf4j.version>
+        <querydsl.version>3.7.4</querydsl.version>
+        <deltaspike.version>1.7.2</deltaspike.version>
+        
         <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+        <wildfly.maven.plugin.version>1.0.2.Final</wildfly.maven.plugin.version>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify 
             tested stacks. -->
-        <version.jboss.bom>8.2.1.Final</version.jboss.bom>
+        <jboss.bom.version>8.2.2.Final</jboss.bom.version>
 
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.1</version.compiler.plugin>
-        <version.surefire.plugin>2.16</version.surefire.plugin>
-        <version.war.plugin>2.5</version.war.plugin>
+        <version.compiler.plugin>3.6.0</version.compiler.plugin>
+        <surefire.plugin.version>2.19.1</surefire.plugin.version>
+        <war.plugin.version>2.6</war.plugin.version>
+        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -56,14 +61,14 @@
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>jboss-javaee-7.0-with-tools</artifactId>
-                <version>${version.jboss.bom}</version>
+                <version>${jboss.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>jboss-javaee-7.0-with-hibernate</artifactId>
-                <version>${version.jboss.bom}</version>
+                <version>${jboss.bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -187,14 +192,14 @@
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-data-module-api</artifactId>
-            <version>1.7.1</version>
+            <version>${deltaspike.version}</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.deltaspike.modules</groupId>
             <artifactId>deltaspike-data-module-impl</artifactId>
-            <version>1.7.1</version>
+            <version>${deltaspike.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -202,20 +207,20 @@
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
-            <version>3.7.4</version>
+            <version>${querydsl.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
-            <version>3.7.4</version>
+            <version>${querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.1</version>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -226,7 +231,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${version.war.plugin}</version>
+                <version>${war.plugin.version}</version>
                 <configuration>
                     <!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -235,7 +240,7 @@
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
-                <version>1.0.9</version>
+                <version>${apt-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -253,7 +258,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${version.wildfly.maven.plugin}</version>
+                <version>${wildfly.maven.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -272,7 +277,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${version.surefire.plugin}</version>
+                        <version>${surefire.plugin.version}</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>

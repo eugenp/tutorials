@@ -5,23 +5,28 @@
 	<artifactId>spring-protobuf</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<name>spring-protobuf</name>
-
+             
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.4.RELEASE</version>
+		<version>1.4.2.RELEASE</version>
 	</parent>
+
+             <properties>
+                 <protobuf-java.version>3.1.0</protobuf-java.version>
+                 <protobuf-java-format.version>1.4</protobuf-java-format.version>
+             </properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
-			<version>3.0.0-beta-3</version>
+			<version>${protobuf-java.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.protobuf-java-format</groupId>
 			<artifactId>protobuf-java-format</artifactId>
-			<version>1.4</version>
+			<version>${protobuf-java-format.version}</version>
 		</dependency>
 
 		<dependency>
