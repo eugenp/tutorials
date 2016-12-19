@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -29,6 +30,7 @@ public class JaxbTest {
         book = new Book();
         book.setId(1L);
         book.setName("Book1");
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         book.setDate(new Date(1481909329718L));
         context = JAXBContext.newInstance(Book.class);
     }
