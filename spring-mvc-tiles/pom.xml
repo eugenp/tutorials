@@ -9,8 +9,14 @@
 	<description>Integrating Spring MVC with Apache Tiles</description>
 
 	<properties>
-		<springframework.version>4.3.2.RELEASE</springframework.version>
-		<apachetiles.version>3.0.5</apachetiles.version>
+		<springframework.version>4.3.4.RELEASE</springframework.version>
+		<apache-tiles.version>3.0.7</apache-tiles.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+		<jstl.version>1.2</jstl.version>
+
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -34,24 +40,24 @@
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
-			<version>${apachetiles.version}</version>
+			<version>${apache-tiles.version}</version>
 		</dependency>
 
 		<!-- Servlet+JSP+JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
+			<version>${javax.servlet.jsp-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -62,16 +68,16 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
+					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>1.8</source>
+						<target>1.8</target>
 					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
+					<version>${maven-war-plugin.version}</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
 						<warName>spring-mvc-tiles</warName>

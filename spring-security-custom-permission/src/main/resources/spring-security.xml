@@ -4,7 +4,7 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xsi:schemaLocation="
       http://www.springframework.org/schema/security
-      http://www.springframework.org/schema/security/spring-security-4.0.xsd
+      http://www.springframework.org/schema/security/spring-security-4.2.xsd
       http://www.springframework.org/schema/beans
       http://www.springframework.org/schema/beans/spring-beans.xsd">
 

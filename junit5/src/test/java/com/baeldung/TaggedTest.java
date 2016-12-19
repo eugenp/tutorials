@@ -1,9 +1,9 @@
 package com.baeldung;
 
-import org.junit.gen5.api.Tag;
-import org.junit.gen5.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.gen5.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 @Tag("Test case")
 public class TaggedTest {

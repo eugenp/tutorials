@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -47,17 +48,20 @@
         <module>immutables</module>
 
         <module>jackson</module>
+        <module>jackson-annotations</module>
         <module>java-cassandra</module>
+        <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jee7</module>
         <module>jjwt</module>
         <module>jpa-storedprocedure</module>
-        <module>jsf</module>       
+        <module>jsf</module>
         <module>json-path</module>
         <module>json</module>
         <module>junit5</module>
-        
+
         <module>log4j</module>
+        <module>log-mdc</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
@@ -71,19 +75,19 @@
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
-        <module>redis</module>        
+        <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
-        <module>spring-akka</module>        
+        <module>spring-akka</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-cloud-data-flow</module>        
+        <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
@@ -108,11 +112,13 @@
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
         <module>spring-mvc-java</module>
+        <module>spring-mvc-forms</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-xml</module>
+        <module>spring-mvc-simple</module>
         <module>spring-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
@@ -131,7 +137,7 @@
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
-        <module>spring-security-rest</module>        
+        <module>spring-security-rest</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
         <module>spring-spel</module>
@@ -146,7 +152,7 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    <module>pdf</module>
-  </modules>
+        <module>pdf</module>
+    </modules>
 
 </project>
