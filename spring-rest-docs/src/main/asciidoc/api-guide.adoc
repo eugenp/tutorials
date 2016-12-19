@@ -1,0 +1,95 @@
+= RESTful Users API Guide
+Baeldung Example;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+
+[[overview]]
+= Overview
+
+[[overview-http-verbs]]
+== HTTP verbs
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP verbs.
+
+|===
+| Verb | Usage
+
+| `GET`
+| Used to retrieve a resource
+
+| `POST`
+| Used to create a new resource
+
+| `PUT`
+| Used to update an existing resource, including partial updates
+
+| `DELETE`
+| Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP status codes
+
+RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
+use of HTTP status codes.
+
+|===
+| Status code | Usage
+
+| `200 OK`
+| The request completed successfully
+
+| `201 Created`
+| A new resource has been created successfully. The resource's URI is available from the response's
+`Location` header
+
+| `204 No Content`
+| A resource has been deleted successfully
+
+| `400 Bad Request`
+| The request was malformed.
+
+| `404 Not Found`
+| The requested resource did not exist
+
+| `409 Conflict`
+| The resource aleady exists
+|===
+
+[[overview-hypermedia]]
+== Hypermedia
+
+RESTful Notes uses hypermedia and resources include links to other resources in their
+responses. Responses are in http://stateless.co/hal_specification.html[Hypertext Application
+Language (HAL)] format. Links can be found beneath the `_links` key. Users of the API should
+not create URIs themselves, instead they should use the above-described links to navigate
+
+[[resources]]
+= Resources
+
+
+
+[[resources-user]]
+== User
+
+The user resource is used to show users available in the system.
+
+
+
+[[resources-user-get]]
+=== Retrieving a user
+
+A `GET` request is used to get a specific user
+
+==== Response structure
+
+include::{snippets}/user-get-success/response-fields.adoc[]
+
+==== Example response
+
+include::{snippets}/user-get-success/http-response.adoc[]
