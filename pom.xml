@@ -18,6 +18,7 @@
         <module>annotations</module>
         <module>apache-cxf</module>
         <module>apache-fop</module> <!-- TODO: has a compilation issue -->
+        <module>apache-poi</module>
         <module>assertj</module>
         <module>autovalue</module>
 
