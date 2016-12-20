@@ -14,18 +14,18 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class DocumentTest {
-    static BaeldungDocument baeldungDocument;
+public class WordTest {
+    static WordDocument wordDocument;
 
     @BeforeClass
     public static void generateMSWordFile() throws Exception {
-        DocumentTest.baeldungDocument = new BaeldungDocument();
-        baeldungDocument.handleSimpleDoc();
+        WordTest.wordDocument = new WordDocument();
+        wordDocument.handleSimpleDoc();
     }
 
     @Test
     public void whenParsingOutputDocument_thenCorrect() throws Exception {
-        Path msWordPath = Paths.get(BaeldungDocument.output);
+        Path msWordPath = Paths.get(WordDocument.output);
         XWPFDocument document = new XWPFDocument(Files.newInputStream(msWordPath));
         List<XWPFParagraph> paragraphs = document.getParagraphs();
         document.close();
@@ -40,8 +40,8 @@ public class DocumentTest {
 
         assertEquals("from HTTP fundamentals to API Mastery", paragraphs.get(1).getText());
         assertEquals("What makes a good API?", paragraphs.get(3).getText());
-        assertEquals(baeldungDocument.convertTextFileToString(BaeldungDocument.paragraph1), paragraphs.get(4).getText());
-        assertEquals(baeldungDocument.convertTextFileToString(BaeldungDocument.paragraph2), paragraphs.get(5).getText());
-        assertEquals(baeldungDocument.convertTextFileToString(BaeldungDocument.paragraph3), paragraphs.get(6).getText());
+        assertEquals(wordDocument.convertTextFileToString(WordDocument.paragraph1), paragraphs.get(4).getText());
+        assertEquals(wordDocument.convertTextFileToString(WordDocument.paragraph2), paragraphs.get(5).getText());
+        assertEquals(wordDocument.convertTextFileToString(WordDocument.paragraph3), paragraphs.get(6).getText());
     }
 }

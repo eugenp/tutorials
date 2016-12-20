@@ -16,7 +16,7 @@ import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 
-public class BaeldungDocument {
+public class WordDocument {
     public static String logo = "logo-leaf.png";
     public static String paragraph1 = "poi-word-para1.txt";
     public static String paragraph2 = "poi-word-para2.txt";
