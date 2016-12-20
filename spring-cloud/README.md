@@ -16,4 +16,5 @@
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
 - [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
 
-
+### Relevant Articles:
+- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)

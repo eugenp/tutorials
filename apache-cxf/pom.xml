@@ -10,6 +10,7 @@
         <module>cxf-introduction</module>
         <module>cxf-spring</module>
         <module>cxf-jaxrs-implementation</module>
+        <module>cxf-aegis</module>
     </modules>
     
     <properties>

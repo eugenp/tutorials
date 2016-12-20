@@ -203,6 +203,7 @@
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
                     </systemPropertyVariables>
