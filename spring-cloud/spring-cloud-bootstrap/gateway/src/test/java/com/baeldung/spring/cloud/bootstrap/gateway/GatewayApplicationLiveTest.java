@@ -7,7 +7,7 @@ import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-public class GatewayApplicationTest {
+public class GatewayApplicationLiveTest {
 
     @Test
     public void testAccess() throws Exception {
