@@ -10,7 +10,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
 
-public class TestJsoup {
+public class JsoupExample {
 
     public static void main(String[] args) throws IOException {
         scrapeSpringBlog();
