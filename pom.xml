@@ -17,7 +17,8 @@
     <modules>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> <!-- TODO: has a compilation issue -->
+        <module>apache-fop</module> 
+        <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
 
@@ -28,6 +29,8 @@
 
         <module>deltaspike</module>
         <module>dozer</module>
+
+        <module>ejb</module>
 
         <module>feign</module>
         <module>flyway</module>
@@ -45,6 +48,7 @@
         <module>httpclient</module>
         <module>hystrix</module>
 
+        <module>imageprocessing</module>
         <module>immutables</module>
 
         <module>jackson</module>
@@ -52,6 +56,7 @@
         <module>java-cassandra</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
+        <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
         <module>jpa-storedprocedure</module>
@@ -60,8 +65,9 @@
         <module>json</module>
         <module>junit5</module>
 
-        <module>log4j</module>
         <module>log-mdc</module>
+        <module>log4j</module>
+        <module>log4j2</module>        
         <module>lombok</module>
 
         <module>mapstruct</module>
@@ -71,6 +77,7 @@
         <module>orika</module>
 
         <module>patterns</module>
+        <module>pdf</module>
 
         <module>querydsl</module>
 
@@ -111,8 +118,9 @@
         <module>spring-jpa</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
+        <module>spring-mvc-email</module>        
+        <module>spring-mvc-forms</module>        
         <module>spring-mvc-java</module>
-        <module>spring-mvc-forms</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
@@ -126,6 +134,13 @@
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
+        <module>spring-security-client/spring-security-jsp-authentication</module>
+        <module>spring-security-client/spring-security-jsp-authorize</module>
+        <module>spring-security-client/spring-security-jsp-config</module>
+        <module>spring-security-client/spring-security-mvc</module>
+        <module>spring-security-client/spring-security-thymeleaf-authentication</module>
+        <module>spring-security-client/spring-security-thymeleaf-authorize</module>
+        <module>spring-security-client/spring-security-thymeleaf-config</module>
         <module>spring-security-core</module>
         <module>spring-security-custom-permission</module>
         <module>spring-security-mvc-custom</module>
@@ -141,6 +156,7 @@
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
+        <module>spring-social-login</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
@@ -153,7 +169,6 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-        <module>pdf</module>
     </modules>
 
 </project>
