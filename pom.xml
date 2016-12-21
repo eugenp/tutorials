@@ -126,6 +126,7 @@
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
+        <module>spring-security-core</module>
         <module>spring-security-custom-permission</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>

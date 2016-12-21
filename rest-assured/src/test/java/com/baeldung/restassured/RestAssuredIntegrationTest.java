@@ -20,7 +20,7 @@ import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-public class RestAssuredTest {
+public class RestAssuredIntegrationTest {
 
 	private WireMockServer wireMockServer = new WireMockServer();
 	private static final String EVENTS_PATH = "/events?id=390";
@@ -99,7 +99,7 @@ public class RestAssuredTest {
 	}
 
 	private static String getEventJson() {
-		return Util.inputStreamToString(RestAssuredTest.class
+		return Util.inputStreamToString(RestAssuredIntegrationTest.class
 				.getResourceAsStream("/event_0.json"));
 	}
 

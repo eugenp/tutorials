@@ -25,7 +25,7 @@ import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.tomakehurst.wiremock.WireMockServer;
-public class RestAssuredXMLTest {
+public class RestAssuredXMLIntegrationTest {
 	private WireMockServer wireMockServer = new WireMockServer();
 	private static final String EVENTS_PATH = "/employees";
 	private static final String APPLICATION_XML = "application/xml";
@@ -88,7 +88,7 @@ public class RestAssuredXMLTest {
 	private static String getXml() {
 		
 		return Util
-				.inputStreamToString(new RestAssuredXMLTest().getClass().getResourceAsStream("/employees.xml"));
+				.inputStreamToString(new RestAssuredXMLIntegrationTest().getClass().getResourceAsStream("/employees.xml"));
 	
 }
 	@After 
