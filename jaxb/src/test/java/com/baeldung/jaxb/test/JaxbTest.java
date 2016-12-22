@@ -1,16 +1,6 @@
 package com.baeldung.jaxb.test;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Date;
-import java.util.TimeZone;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
+import com.baeldung.jaxb.Book;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,12 +8,20 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import com.baeldung.jaxb.Book;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Date;
+import java.util.TimeZone;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JaxbTest {
-    Book book;
-    JAXBContext context;
+    private Book book;
+    private JAXBContext context;
 
     @Before
     public void before() throws JAXBException {
@@ -42,6 +40,7 @@ public class JaxbTest {
         marshaller.marshal(book, new File("./book.xml"));
         String sampleBookXML = FileUtils.readFileToString(new File("./sample_book.xml"), "UTF-8");
         String marshallerBookXML = FileUtils.readFileToString(new File("./book.xml"), "UTF-8");
+
         Assert.assertEquals(sampleBookXML, marshallerBookXML);
     }
 
@@ -49,6 +48,7 @@ public class JaxbTest {
     public void unMashal() throws JAXBException, IOException {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Book unMarshallerbook = (Book) unmarshaller.unmarshal(new FileReader("./book.xml"));
+
         Assert.assertEquals(book, unMarshallerbook);
     }
 }
