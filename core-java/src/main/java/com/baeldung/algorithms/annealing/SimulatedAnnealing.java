@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.annealing;
 
 public class SimulatedAnnealing {
 
@@ -31,10 +31,6 @@ public class SimulatedAnnealing {
             }
         }
         return bestDistance;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Optimized distance for travel: " + simulateAnnealing(10, 10000, 0.9995));
     }
 
 }
