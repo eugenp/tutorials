@@ -14,7 +14,12 @@
     </properties>
 
     <modules>
+<<<<<<< HEAD
         <module>annotations</module>
+=======
+		<module>jaxb</module>
+        <module>assertj</module>
+>>>>>>> ff24e84f40bed0efdfc076a5c4e12c9fec74edf1
         <module>apache-cxf</module>
         <module>apache-fop</module> <!-- TODO: has a compilation issue -->
         <module>assertj</module>
