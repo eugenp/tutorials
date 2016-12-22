@@ -15,7 +15,7 @@ import static io.restassured.RestAssured.get;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-public class RestAssured2Test {
+public class RestAssured2IntegrationTest {
 	private WireMockServer wireMockServer = new WireMockServer();
 
 	private static final String EVENTS_PATH = "/odds";
@@ -41,7 +41,7 @@ public class RestAssured2Test {
 
 	private static String getJson() {
 
-		return Util.inputStreamToString(new RestAssured2Test().getClass()
+		return Util.inputStreamToString(new RestAssured2IntegrationTest().getClass()
 				.getResourceAsStream("/odds.json"));
 
 	}
