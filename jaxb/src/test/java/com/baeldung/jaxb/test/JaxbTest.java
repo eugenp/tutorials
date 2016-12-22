@@ -1,5 +1,6 @@
 package com.baeldung.jaxb.test;
 
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,16 +40,19 @@ public class JaxbTest {
     public void marshal() throws JAXBException, IOException {
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        marshaller.marshal(book, new File("./book.xml"));
-        String sampleBookXML = FileUtils.readFileToString(new File("./sample_book.xml"), "UTF-8");
-        String marshallerBookXML = FileUtils.readFileToString(new File("./book.xml"), "UTF-8");
+        marshaller.marshal(book, new File(this.getClass().getResource("/").getPath() + "/book.xml"));
+        File sampleBookFile = new File(this.getClass().getResource("/sample_book.xml").getFile());
+        File bookFile = new File(this.getClass().getResource("/book.xml").getFile());
+        String sampleBookXML = FileUtils.readFileToString(sampleBookFile, "UTF-8");
+        String marshallerBookXML = FileUtils.readFileToString(bookFile, "UTF-8");
         Assert.assertEquals(sampleBookXML, marshallerBookXML);
     }
 
     @Test
     public void unMashal() throws JAXBException, IOException {
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        Book unMarshallerbook = (Book) unmarshaller.unmarshal(new FileReader("./book.xml"));
+        String bookFile = this.getClass().getResource("/book.xml").getFile();
+        Book unMarshallerbook = (Book) unmarshaller.unmarshal(new FileReader(bookFile));
         Assert.assertEquals(book, unMarshallerbook);
     }
 }
