@@ -17,9 +17,7 @@ public class Java8CollectionCleanupUnitTest {
     @Test
     public void givenListContainsNulls_whenFilteringParallel_thenCorrect() {
         final List<Integer> list = Lists.newArrayList(null, 1, 2, null, 3, null);
-        final List<Integer> listWithoutNulls = list.parallelStream()
-          .filter(Objects::nonNull)
-          .collect(Collectors.toList());
+        final List<Integer> listWithoutNulls = list.parallelStream().filter(Objects::nonNull).collect(Collectors.toList());
 
         assertThat(listWithoutNulls, hasSize(3));
     }
@@ -27,9 +25,7 @@ public class Java8CollectionCleanupUnitTest {
     @Test
     public void givenListContainsNulls_whenFilteringSerial_thenCorrect() {
         final List<Integer> list = Lists.newArrayList(null, 1, 2, null, 3, null);
-        final List<Integer> listWithoutNulls = list.stream()
-          .filter(Objects::nonNull)
-          .collect(Collectors.toList());
+        final List<Integer> listWithoutNulls = list.stream().filter(Objects::nonNull).collect(Collectors.toList());
 
         assertThat(listWithoutNulls, hasSize(3));
     }
@@ -45,9 +41,7 @@ public class Java8CollectionCleanupUnitTest {
     @Test
     public void givenListContainsDuplicates_whenRemovingDuplicatesWithJava8_thenCorrect() {
         final List<Integer> listWithDuplicates = Lists.newArrayList(1, 1, 2, 2, 3, 3);
-        final List<Integer> listWithoutDuplicates = listWithDuplicates.parallelStream()
-          .distinct()
-          .collect(Collectors.toList());
+        final List<Integer> listWithoutDuplicates = listWithDuplicates.parallelStream().distinct().collect(Collectors.toList());
 
         assertThat(listWithoutDuplicates, hasSize(3));
     }
