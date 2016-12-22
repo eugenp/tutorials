@@ -14,6 +14,7 @@
     </properties>
 
     <modules>
+		<module>jaxb</module>
         <module>assertj</module>
         <module>apache-cxf</module>
         <!-- <module>apache-fop</module> --> <!-- TODO: has a compilation issue -->
