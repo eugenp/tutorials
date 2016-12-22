@@ -10,7 +10,7 @@ import java.util.List;
 import org.jdom2.Element;
 import org.junit.Test;
 
-public class JDomParserTest {
+public class JDomParserUnitTest {
 	
 	final String fileName = "src/test/resources/example.xml";
 

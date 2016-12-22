@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.baeldung.xml.binding.Tutorials;
 
-public class JaxbParserTest {
+public class JaxbParserUnitTest {
 
 	
 	final String fileName = "src/test/resources/example.xml";
