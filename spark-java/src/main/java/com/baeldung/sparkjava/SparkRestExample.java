@@ -10,9 +10,11 @@ import com.google.gson.GsonBuilder;
 
 public class SparkRestExample {
     public static void main(String[] args) {
+        final UserService userService = new UserServiceMapImpl();
+        
         post("/users", (request, response) -> {
             User user = new Gson().fromJson(request.body(), User.class);
-            UserStore.addUser(user);
+            userService.addUser(user);
 
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
         });
@@ -20,17 +22,17 @@ public class SparkRestExample {
         get("/users", (request, response) -> {
             return new Gson().toJson(
                 new StandardResponse(StatusResponse.SUCCESS,new Gson()
-                    .toJsonTree(UserStore.getUsers())));
+                    .toJsonTree(userService.getUsers())));
         });
 
         get("/users/:id", (request, response) -> {
             return new Gson().toJson(
                 new StandardResponse(StatusResponse.SUCCESS,new Gson()
-                  .toJsonTree(UserStore.getUser(request.params(":id")))));
+                  .toJsonTree(userService.getUser(request.params(":id")))));
         });
 
         put("/users/:id", (request, response) -> {
-            User editedUser = UserStore.editUser(request.params(":id"), 
+            User editedUser = userService.editUser(request.params(":id"), 
                 new Gson().fromJson(request.body(), HashMap.class));
             
             if (editedUser != null) {
@@ -45,7 +47,7 @@ public class SparkRestExample {
         });
 
         delete("/users/:id", (request, response) -> {
-            UserStore.deleteUser(request.params(":id"));
+            userService.deleteUser(request.params(":id"));
             return new Gson().toJson(
                 new StandardResponse(StatusResponse.SUCCESS, "user deleted"));
         });
@@ -53,7 +55,7 @@ public class SparkRestExample {
         options("/users/:id", (request, response) -> {
             return new Gson().toJson(
                 new StandardResponse(StatusResponse.SUCCESS, 
-                    (UserStore.userExist(
+                    (userService.userExist(
                         request.params(":id"))) ? "User exists" : "User does not exists" ));
         });
 
