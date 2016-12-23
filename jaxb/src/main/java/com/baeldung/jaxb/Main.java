@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,7 +17,8 @@ public class Main {
         book.setId(1L);
         book.setName("Book1");
         book.setAuthor("Author1");
-        book.setDate(new Date());
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        book.setDate(new Date(1481909329718L));
 
         JAXBContext context = JAXBContext.newInstance(Book.class);
         Marshaller marshaller = context.createMarshaller();

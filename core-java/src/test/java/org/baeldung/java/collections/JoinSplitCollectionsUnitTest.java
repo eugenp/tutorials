@@ -15,8 +15,7 @@ public class JoinSplitCollectionsUnitTest {
     public void whenJoiningTwoArrays_thenJoined() {
         String[] animals1 = new String[] { "Dog", "Cat" };
         String[] animals2 = new String[] { "Bird", "Cow" };
-        String[] result = Stream.concat(
-          Arrays.stream(animals1), Arrays.stream(animals2)).toArray(String[]::new);
+        String[] result = Stream.concat(Arrays.stream(animals1), Arrays.stream(animals2)).toArray(String[]::new);
 
         assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
     }
@@ -25,9 +24,7 @@ public class JoinSplitCollectionsUnitTest {
     public void whenJoiningTwoCollections_thenJoined() {
         Collection<String> collection1 = Arrays.asList("Dog", "Cat");
         Collection<String> collection2 = Arrays.asList("Bird", "Cow", "Moose");
-        Collection<String> result = Stream.concat(
-          collection1.stream(), collection2.stream())
-          .collect(Collectors.toList());
+        Collection<String> result = Stream.concat(collection1.stream(), collection2.stream()).collect(Collectors.toList());
 
         assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Bird", "Cow", "Moose")));
     }
@@ -36,10 +33,7 @@ public class JoinSplitCollectionsUnitTest {
     public void whenJoiningTwoCollectionsWithFilter_thenJoined() {
         Collection<String> collection1 = Arrays.asList("Dog", "Cat");
         Collection<String> collection2 = Arrays.asList("Bird", "Cow", "Moose");
-        Collection<String> result = Stream.concat(
-          collection1.stream(), collection2.stream())
-          .filter(e -> e.length() == 3)
-          .collect(Collectors.toList());
+        Collection<String> result = Stream.concat(collection1.stream(), collection2.stream()).filter(e -> e.length() == 3).collect(Collectors.toList());
 
         assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Cow")));
     }
@@ -67,9 +61,7 @@ public class JoinSplitCollectionsUnitTest {
         animals.put(2, "Cat");
         animals.put(3, "Cow");
 
-        String result = animals.entrySet().stream()
-          .map(entry -> entry.getKey() + " = " + entry.getValue())
-          .collect(Collectors.joining(", "));
+        String result = animals.entrySet().stream().map(entry -> entry.getKey() + " = " + entry.getValue()).collect(Collectors.joining(", "));
 
         assertEquals(result, "1 = Dog, 2 = Cat, 3 = Cow");
     }
@@ -80,10 +72,7 @@ public class JoinSplitCollectionsUnitTest {
         nested.add(Arrays.asList("Dog", "Cat"));
         nested.add(Arrays.asList("Cow", "Pig"));
 
-        String result = nested.stream().map(
-          nextList -> nextList.stream()
-            .collect(Collectors.joining("-")))
-          .collect(Collectors.joining("; "));
+        String result = nested.stream().map(nextList -> nextList.stream().collect(Collectors.joining("-"))).collect(Collectors.joining("; "));
 
         assertEquals(result, "Dog-Cat; Cow-Pig");
     }
@@ -91,17 +80,14 @@ public class JoinSplitCollectionsUnitTest {
     @Test
     public void whenConvertCollectionToStringAndSkipNull_thenConverted() {
         Collection<String> animals = Arrays.asList("Dog", "Cat", null, "Moose");
-        String result = animals.stream()
-          .filter(Objects::nonNull)
-          .collect(Collectors.joining(", "));
+        String result = animals.stream().filter(Objects::nonNull).collect(Collectors.joining(", "));
 
         assertEquals(result, "Dog, Cat, Moose");
     }
 
     @Test
     public void whenSplitCollectionHalf_thenConverted() {
-        Collection<String> animals = Arrays.asList(
-            "Dog", "Cat", "Cow", "Bird", "Moose", "Pig");
+        Collection<String> animals = Arrays.asList("Dog", "Cat", "Cow", "Bird", "Moose", "Pig");
         Collection<String> result1 = new ArrayList<>();
         Collection<String> result2 = new ArrayList<>();
         AtomicInteger count = new AtomicInteger();
@@ -122,9 +108,8 @@ public class JoinSplitCollectionsUnitTest {
 
     @Test
     public void whenSplitArrayByWordLength_thenConverted() {
-        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow", "Pig", "Moose"};
-        Map<Integer, List<String>> result = Arrays.stream(animals)
-          .collect(Collectors.groupingBy(String::length));
+        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow", "Pig", "Moose" };
+        Map<Integer, List<String>> result = Arrays.stream(animals).collect(Collectors.groupingBy(String::length));
 
         assertTrue(result.get(3).equals(Arrays.asList("Dog", "Cat", "Cow", "Pig")));
         assertTrue(result.get(4).equals(Arrays.asList("Bird")));
@@ -151,9 +136,7 @@ public class JoinSplitCollectionsUnitTest {
     public void whenConvertStringToMap_thenConverted() {
         String animals = "1 = Dog, 2 = Cat, 3 = Bird";
 
-        Map<Integer, String> result = Arrays.stream(
-          animals.split(", ")).map(next -> next.split(" = "))
-          .collect(Collectors.toMap(entry -> Integer.parseInt(entry[0]), entry -> entry[1]));
+        Map<Integer, String> result = Arrays.stream(animals.split(", ")).map(next -> next.split(" = ")).collect(Collectors.toMap(entry -> Integer.parseInt(entry[0]), entry -> entry[1]));
 
         assertEquals(result.get(1), "Dog");
         assertEquals(result.get(2), "Cat");
@@ -164,10 +147,7 @@ public class JoinSplitCollectionsUnitTest {
     public void whenConvertCollectionToStringMultipleSeparators_thenConverted() {
         String animals = "Dog. , Cat, Bird. Cow";
 
-        Collection<String> result = Arrays.stream(animals.split("[,|.]"))
-          .map(String::trim)
-          .filter(next -> !next.isEmpty())
-          .collect(Collectors.toList());
+        Collection<String> result = Arrays.stream(animals.split("[,|.]")).map(String::trim).filter(next -> !next.isEmpty()).collect(Collectors.toList());
 
         assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Bird", "Cow")));
     }
