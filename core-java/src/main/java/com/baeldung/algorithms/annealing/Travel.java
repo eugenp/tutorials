@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.annealing;
 
 import java.util.ArrayList;
 import java.util.Collections;
