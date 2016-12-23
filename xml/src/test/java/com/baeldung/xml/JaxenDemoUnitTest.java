@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class JaxenDemoTest {
+public class JaxenDemoUnitTest {
 
 	final String fileName = "src/test/resources/example.xml";
 	

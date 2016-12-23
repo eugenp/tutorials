@@ -15,7 +15,7 @@ import static io.restassured.RestAssured.get;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 
-public class RestAssuredXML2Test {
+public class RestAssuredXML2IntegrationTest {
 	private WireMockServer wireMockServer = new WireMockServer();
 
 	private static final String EVENTS_PATH = "/teachers";
@@ -42,7 +42,7 @@ public class RestAssuredXML2Test {
 	private static String getXml() {
 		
 		return Util
-				.inputStreamToString(new RestAssuredXML2Test().getClass().getResourceAsStream("/teachers.xml"));
+				.inputStreamToString(new RestAssuredXML2IntegrationTest().getClass().getResourceAsStream("/teachers.xml"));
 	
 }
 	@After 

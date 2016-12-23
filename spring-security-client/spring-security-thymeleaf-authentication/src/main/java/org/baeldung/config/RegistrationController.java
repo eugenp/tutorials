@@ -30,7 +30,7 @@ public class RegistrationController {
     private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     /**
      * For demo purposes this need only be a GET request method
@@ -49,8 +49,6 @@ public class RegistrationController {
         String username = "user";
         String password = "password";
 
-        String view = "registrationSuccess";
-
         if (requestQualifiesForManualAuthentication()) {
             try {
                 authenticate(username, password, request, response);
@@ -58,12 +56,12 @@ public class RegistrationController {
             } catch (BadCredentialsException bce) {
                 logger.debug("Authentication failure: bad credentials");
                 bce.printStackTrace();
-                view = "systemError"; // assume a low-level error, since the registration
+                return "systemError"; // assume a low-level error, since the registration
                 // form would have been successfully validated
             }
         }
 
-        return view;
+        return "registrationSuccess";
     }
 
     private boolean requestQualifiesForManualAuthentication() {
