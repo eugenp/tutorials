@@ -1,4 +1,4 @@
-package swing;
+package com.baeldung.imageprocessing.swing;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class DrawRect {
+public class SwingRectExample {
     public static void main(String[] args) throws IOException {
         BufferedImage image  = loadImage();
         drawRectangle(image);
@@ -15,7 +15,7 @@ public class DrawRect {
     }
 
     private static BufferedImage loadImage() throws IOException {
-        String imagePath = DrawRect.class.getClassLoader().getResource("lena.jpg").getPath();
+        String imagePath = SwingRectExample.class.getClassLoader().getResource("lena.jpg").getPath();
         return ImageIO.read(new File(imagePath));
     }
 
