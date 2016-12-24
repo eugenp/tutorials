@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.annealing;
 
 import lombok.Data;
 

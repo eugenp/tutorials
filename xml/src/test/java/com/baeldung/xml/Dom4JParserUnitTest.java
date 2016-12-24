@@ -11,7 +11,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.junit.Test;
 
-public class Dom4JParserTest {
+public class Dom4JParserUnitTest {
 
 	final String fileName = "src/test/resources/example.xml";
 

@@ -1,4 +1,4 @@
-package imagej;
+package com.baeldung.imageprocessing.imagej;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -6,9 +6,9 @@ import ij.process.ImageProcessor;
 
 import java.awt.*;
 
-public class DrawRect {
+public class ImageJRectExample {
     public static void main(String[] args) {
-        ImagePlus imp = IJ.openImage(DrawRect.class.getClassLoader().getResource("lena.jpg").getPath());
+        ImagePlus imp = IJ.openImage(ImageJRectExample.class.getClassLoader().getResource("lena.jpg").getPath());
         drawRect(imp);
         imp.show();
     }

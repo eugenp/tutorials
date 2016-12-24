@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class DefaultParserTest {
+public class DefaultParserUnitTest {
 
     final String fileName = "src/test/resources/example.xml";
     

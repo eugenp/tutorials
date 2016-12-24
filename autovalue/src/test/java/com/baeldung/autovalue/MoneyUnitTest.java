@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class MoneyTest {
+public class MoneyUnitTest {
 	@Test
 	public void givenTwoSameValueMoneyObjects_whenEqualityTestFails_thenCorrect() {
 		MutableMoney m1 = new MutableMoney(10000, "USD");

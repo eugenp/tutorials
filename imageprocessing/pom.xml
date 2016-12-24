@@ -8,12 +8,21 @@
     <artifactId>imageprocessing</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <core-image.version>1.3.5</core-image.version>
+        <ij.version>1.51h</ij.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>net.imagej</groupId>
             <artifactId>ij</artifactId>
-            <version>1.51h</version>
+            <version>${ij.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openimaj</groupId>
+            <artifactId>core-image</artifactId>
+            <version>${core-image.version}</version>
         </dependency>
     </dependencies>
-
 </project>

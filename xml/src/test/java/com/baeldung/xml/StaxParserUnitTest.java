@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.baeldung.xml.binding.Tutorial;
 
-public class StaxParserTest {
+public class StaxParserUnitTest {
 
 	final String fileName = "src/test/resources/example.xml";
 

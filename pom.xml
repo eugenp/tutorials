@@ -17,7 +17,8 @@
     <modules>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module>
+        <module>apache-fop</module> 
+        <module>apache-poi</module> 
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
