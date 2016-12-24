@@ -19,10 +19,10 @@ public class OpenIMAJRectExample {
 
     private static void drawRectangle(MBFImage image) {
         Point2d tl = new Point2dImpl(10, 10);
-        Point2d bl = new Point2dImpl(10, image.getHeight()-10);
-        Point2d br = new Point2dImpl(image.getWidth()-10, image.getHeight()-10);
+        Point2d bl = new Point2dImpl(10, image.getHeight() - 10);
+        Point2d br = new Point2dImpl(image.getWidth() - 10, image.getHeight() - 10);
         Point2d tr = new Point2dImpl(image.getWidth() - 10, 10);
         Polygon polygon = new Polygon(Arrays.asList(tl, bl, br, tr));
-        image.drawPolygon(polygon, 4, new Float[] {new Float(0),new Float(0),new Float(255.0)});
+        image.drawPolygon(polygon, 4, new Float[] { 0f, 0f, 255.0f });
     }
 }
