@@ -17,4 +17,3 @@ var math = {
 
 
 math;
-
