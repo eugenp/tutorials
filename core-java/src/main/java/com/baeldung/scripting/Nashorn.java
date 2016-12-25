@@ -1,14 +1,14 @@
 package com.baeldung.scripting;
 
+import java.io.InputStreamReader;
+import java.util.List;
+import java.util.Map;
+
 import javax.script.Bindings;
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.util.List;
-import java.util.Map;
 
 public class Nashorn {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException {
