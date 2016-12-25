@@ -2,6 +2,9 @@ package org.baeldung.java.collections;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.IterableUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -106,5 +109,27 @@ public class CollectionsConcatenateUnitTest {
             list.add(item);
         }
         return list;
+    }
+
+    @Test
+    public void givenUsingApacheCommons_whenConcatenatingUsingUnion_thenCorrect() {
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
+
+        Iterable<String> combinedIterables = CollectionUtils.union(collectionA, collectionB);
+        Collection<String> collectionCombined = Lists.newArrayList(combinedIterables);
+
+        Assert.assertEquals(asList("S", "T", "U", "V"), collectionCombined);
+    }
+
+    @Test
+    public void givenUsingApacheCommons_whenConcatenatingUsingChainedIterable_thenCorrect() {
+        Collection<String> collectionA = asList("S", "T");
+        Collection<String> collectionB = asList("U", "V");
+
+        Iterable<String> combinedIterables = IterableUtils.chainedIterable(collectionA, collectionB);
+        Collection<String> collectionCombined = Lists.newArrayList(combinedIterables);
+
+        Assert.assertEquals(asList("S", "T", "U", "V"), collectionCombined);
     }
 }

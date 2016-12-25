@@ -93,6 +93,7 @@ public class OptionalTest {
         boolean is2017 = yearOptional.filter(y -> y == 2017).isPresent();
         assertFalse(is2017);
     }
+
     @Test
     public void whenFiltersWithoutOptional_thenCorrect() {
         assertTrue(priceIsInRange1(new Modem(10.0)));
@@ -121,12 +122,9 @@ public class OptionalTest {
     }
 
     public boolean priceIsInRange2(Modem modem2) {
-        return Optional.ofNullable(modem2)
-          .map(Modem::getPrice)
-          .filter(p -> p >= 10)
-          .filter(p -> p <= 15)
-          .isPresent();
+        return Optional.ofNullable(modem2).map(Modem::getPrice).filter(p -> p >= 10).filter(p -> p <= 15).isPresent();
     }
+
     // Transforming Value With map()
     @Test
     public void givenOptional_whenMapWorks_thenCorrect() {
