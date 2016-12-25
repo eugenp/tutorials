@@ -16,7 +16,7 @@ public class CharArrayToStringUnitTest {
     }
 
     @Test
-    public void givenACharArray_whenPassingItInConstructorWithOffsetAndCount_thenShouldGetStringWithCorrectCharSequence() {
+    public void givenACharArray_whenPassingItInStringConstructorWithOffsetAndCount_thenShouldGetAStringWithCorrectCharSequence() {
         char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
         String sampleString = new String(charArray, 7, 6);
 
@@ -34,7 +34,7 @@ public class CharArrayToStringUnitTest {
     }
 
     @Test
-    public void givenACharArray_whenPassingItInFactoryMethodWithOffsetAndCound_thenShouldGetStringWithCorrectCharSequence() {
+    public void givenACharArray_whenPassingItInStringFactoryMethodWithOffsetAndCound_thenShouldGetAStringWithCorrectCharSequence() {
         char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
         String sampleString1 = String.valueOf(charArray, 7, 6);
         String sampleString2 = String.copyValueOf(charArray, 7, 6);
@@ -44,7 +44,7 @@ public class CharArrayToStringUnitTest {
     }
 
     @Test
-    public void givenAString_whenConvertingItToACharArray_thenShouldGetAnArrayWithTheSameCharSequence() {
+    public void givenAString_whenConvertingItToACharArray_thenShouldGetACharArrayWithTheSameCharSequence() {
         String sampleString7 = "Hello, world!";
         char[] charArray = sampleString7.toCharArray();
         char[] expected = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
@@ -53,7 +53,7 @@ public class CharArrayToStringUnitTest {
     }
 
     @Test
-    public void givenAString_whenConvertingAPartToCharArray_thenShouldGetCharArrayWithCorrectCharSequence() {
+    public void givenAString_whenConvertingAPartToCharArray_thenShouldGetACharArrayWithCorrectCharSequence() {
         String sampleString = "Hello, world!";
         char[] charArray = new char[6];
         sampleString.getChars(7, sampleString.length(), charArray, 0);
