@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -64,11 +64,12 @@
         <module>jsf</module>
         <module>json-path</module>
         <module>json</module>
+        <module>jsoup</module>
         <module>junit5</module>
 
         <module>log-mdc</module>
         <module>log4j</module>
-        <module>log4j2</module>        
+        <module>log4j2</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
@@ -119,8 +120,8 @@
         <module>spring-jpa</module>
         <module>spring-katharsis</module>
         <module>spring-mockito</module>
-        <module>spring-mvc-email</module>        
-        <module>spring-mvc-forms</module>        
+        <module>spring-mvc-email</module>
+        <module>spring-mvc-forms</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
