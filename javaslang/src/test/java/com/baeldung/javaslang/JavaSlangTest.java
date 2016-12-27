@@ -3,12 +3,8 @@ package com.baeldung.javaslang;
 import static javaslang.API.$;
 import static javaslang.API.Case;
 import static javaslang.API.Match;
-import static javaslang.API.run;
-import static javaslang.Predicates.is;
-import static javaslang.Predicates.isIn;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -159,83 +155,6 @@ public class JavaSlangTest {
         return a + b;
     }
 
-    // composition
-    @Test
-    public void givenTwoFunctions_whenComposes_thenCorrect() {
-        Function1<Integer, Integer> plusOne = a -> a + 1;
-        Function1<Integer, Integer> multiplyByTwo = a -> a * 2;
-
-        Function1<Integer, Integer> add1AndMultiplyBy2 = plusOne.andThen(multiplyByTwo);
-
-        int result = add1AndMultiplyBy2.apply(3);
-        assertEquals(8, result);
-    }
-
-    @Test
-    public void givenTwoFunctions_whenComposes_thenCorrect2() {
-        Function1<Integer, Integer> plusOne = a -> a + 1;
-        Function1<Integer, Integer> multiplyByTwo = a -> a * 2;
-
-        Function1<Integer, Integer> add1AndMultiplyBy2 = multiplyByTwo.compose(plusOne);
-
-        int result = add1AndMultiplyBy2.apply(3);
-        assertEquals(8, result);
-    }
-
-    // lifting
-    @Test(expected = ArithmeticException.class)
-    public void givenBuggyFunctionWithoutLift_whenThrowsExc_thenCorrect() {
-        Function2<Integer, Integer, Integer> divide = (a, b) -> a / b;
-        divide.apply(5, 0);
-    }
-
-    @Test
-    public void givenBuggyFunctionWithLift_whenWorks_thenCorrect() {
-        Function2<Integer, Integer, Integer> divide = (a, b) -> a / b;
-        Function2<Integer, Integer, Option<Integer>> safeDivide = Function2.lift(divide);
-        Option<Integer> result = safeDivide.apply(5, 0);
-        int safeResult = result.getOrElse(-1);
-
-        assertEquals("None", result.toString());
-        assertEquals(-1, safeResult);
-
-        result = safeDivide.apply(10, 5);
-        safeResult = result.getOrElse(-1);
-
-        assertEquals("Some(2)", result.toString());
-        assertEquals(2, safeResult);
-    }
-
-    // currying
-    @Test
-    public void whenCurryWorks_thenCorrect() {
-        Function2<Integer, Integer, Integer> sum = (a, b) -> a + b;
-        Function1<Integer, Integer> add2 = sum.curried().apply(2);
-
-        int result = add2.apply(4);
-        assertEquals(6, result);
-    }
-
-    // memoization
-    @Test
-    public void whenCachesWithMemoization_thenCorrect() {
-        Function0<Double> hashCache = Function0.of(Math::random).memoized();
-
-        double randomValue1 = hashCache.apply();
-        double randomValue2 = hashCache.apply();
-
-        assertEquals(randomValue1, randomValue2, 0.1);
-    }
-
-    @Test
-    public void whenNoCacheWithoutMemoization_thenCorrect() {
-        Function0<Double> hashCache = Function0.of(Math::random);
-
-        double randomValue1 = hashCache.apply();
-        double randomValue2 = hashCache.apply();
-
-        assertNotEquals(randomValue1, randomValue2, 0.1);
-    }
 
     /*
      * Values
@@ -295,13 +214,13 @@ public class JavaSlangTest {
         int errorSentinel = result.getOrElse(-1);
         assertEquals(-1, errorSentinel);
     }
-/*
-    @Test(expected = ArithmeticException.class)
-    public void givenBadCode_whenTryHandles_thenCorrect3() {
-        Try<Integer> result = Try.of(() -> 1 / 0);
-        result.getOrElseThrow(ArithmeticException::new);
-    }
-*/
+
+//    @Test(expected = ArithmeticException.class)
+//    public void givenBadCode_whenTryHandles_thenCorrect3() {
+//        Try<Integer> result = Try.of(() -> 1 / 0);
+//        result.getOrElseThrow(ArithmeticException::new);
+//    }
+
     // lazy
     @Test
     public void givenFunction_whenEvaluatesWithLazy_thenCorrect() {
@@ -414,53 +333,6 @@ public class JavaSlangTest {
         assertEquals("two", output);
     }
 
-    @Test
-    public void whenMatchWorksWithOption_thenCorrect() {
-        int i = 10;
-        Option<String> s = Match(i).option(Case($(0), "zero"));
-        assertTrue(s.isEmpty());
-        assertEquals("None", s.toString());
-    }
 
-    @Test
-    public void whenMatchWorksWithPredicate_thenCorrect() {
-        int i = 10;
-        String s = Match(i).of(Case(is(1), "one"), Case(is(2), "two"), Case($(), "?"));
-        assertEquals("?", s);
-    }
-
-    @Test
-    public void whenMatchWorksWithPredicate_thenCorrect2() {
-        int i = 5;
-        String s = Match(i).of(Case(isIn(2, 4, 6, 8), "Even Single Digit"), Case(isIn(1, 3, 5, 7, 9), "Odd Single Digit"), Case($(), "Out of range"));
-        assertEquals("Odd Single Digit", s);
-    }
-
-    @Test
-    public void whenMatchCreatesSideEffects_thenCorrect() {
-        int i = 4;
-        Match(i).of(Case(isIn(2, 4, 6, 8), o -> run(this::displayEven)), Case(isIn(1, 3, 5, 7, 9), o -> run(this::displayOdd)), Case($(), o -> run(() -> {
-            throw new IllegalArgumentException(String.valueOf(i));
-        })));
-    }
-
-    @Test
-    public void whenMatchWorksWithNamedValues_thenCorrect() {
-        // Object obj=new Integer(10);
-        // Number plusOne = Match(obj).of(
-        // Case(instanceOf(Integer.class), i -> i + 1),
-        // Case(instanceOf(Double.class), d -> d + 1),
-        // Case($(), o -> { throw new NumberFormatException(); })
-        // );
-        // assertEquals(11, plusOne);
-    }
-
-    public void displayEven() {
-        System.out.println("Input is even");
-    }
-
-    public void displayOdd() {
-        System.out.println("Input is odd");
-    }
 
 }
