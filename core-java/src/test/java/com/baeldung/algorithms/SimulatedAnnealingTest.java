@@ -3,6 +3,8 @@ package com.baeldung.algorithms;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.algorithms.annealing.SimulatedAnnealing;
+
 public class SimulatedAnnealingTest {
 
     @Test
