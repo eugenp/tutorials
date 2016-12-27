@@ -6,13 +6,15 @@
     <version>1.0</version>
 
     <properties>
-        <slf4j-api.version>1.7.5</slf4j-api.version>
-        <jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
-        <orika-core.version>1.4.6</orika-core.version>
-        <junit.version>4.3</junit.version>
+        <slf4j-api.version>1.7.21</slf4j-api.version>
+        <jcl-over-slf4j.version>1.7.21</jcl-over-slf4j.version>
+        <orika-core.version>1.5.0</orika-core.version>
+        <junit.version>4.12</junit.version>
+        
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 
-    <name>Orika</name>
+    <name>orika</name>
 
     <dependencies>
 
@@ -48,7 +50,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>7</source>
                     <target>7</target>

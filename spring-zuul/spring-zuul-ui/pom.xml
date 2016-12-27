@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
-            <version>1.0.4.RELEASE</version>
+            <version>${spring-cloud.version}</version>
         </dependency>
         <!-- <dependency>
             <groupId>org.springframework.cloud</groupId>

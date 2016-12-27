@@ -8,6 +8,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 @XmlRootElement(name = "book")
 @XmlType(propOrder = { "id", "name", "date" })
 public class Book {
@@ -53,6 +57,17 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book [id=" + id + ", name=" + name + ", author=" + author + ", date=" + date + "]";
+        return ToStringBuilder.reflectionToString(this);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this);
+    }
+
 }

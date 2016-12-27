@@ -16,3 +16,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Intro to WebSockets with Spring](http://www.baeldung.com/websockets-spring)
 - [File Upload with Spring MVC](http://www.baeldung.com/spring-file-upload)
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
+- [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)

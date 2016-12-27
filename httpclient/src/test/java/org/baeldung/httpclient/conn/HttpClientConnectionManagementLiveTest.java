@@ -218,7 +218,7 @@ public class HttpClientConnectionManagementLiveTest {
                     final HeaderElement he = it.nextElement();
                     final String param = he.getName();
                     final String value = he.getValue();
-                    if (value != null && param.equalsIgnoreCase("timeout")) {
+                    if ((value != null) && param.equalsIgnoreCase("timeout")) {
                         return Long.parseLong(value) * 1000;
                     }
                 }
@@ -251,9 +251,9 @@ public class HttpClientConnectionManagementLiveTest {
         basicConnManager.connect(conn, route, 1000, context);
         basicConnManager.routeComplete(conn, route, context);
         final HttpRequestExecutor exeRequest = new HttpRequestExecutor();
-        context.setTargetHost((new HttpHost("www.baeldung.com", 80)));
+        context.setTargetHost((new HttpHost("http://httpbin.org", 80)));
 
-        final HttpGet get = new HttpGet("http://www.baeldung.com");
+        final HttpGet get = new HttpGet("http://httpbin.org");
         exeRequest.execute(get, conn, context);
         conn.isResponseAvailable(1000);
         basicConnManager.releaseConnection(conn, null, 1, TimeUnit.SECONDS);
@@ -282,8 +282,9 @@ public class HttpClientConnectionManagementLiveTest {
         for (final MultiHttpClientConnThread thread : threads) {
             thread.join(10000);
             countConnMade++;
-            if (countConnMade == 0)
+            if (countConnMade == 0) {
                 assertTrue(thread.getLeasedConn() == 5);
+            }
         }
     }
 
@@ -356,7 +357,7 @@ public class HttpClientConnectionManagementLiveTest {
     // @Ignore
     // 8.2 ARTICLE VERSION
     public final void whenCustomizedIdleConnMonitor_thenNoExceptions() throws InterruptedException, IOException {
-        final HttpGet get = new HttpGet("http://google.com");
+        new HttpGet("http://google.com");
         poolingConnManager = new PoolingHttpClientConnectionManager();
         client = HttpClients.custom().setConnectionManager(poolingConnManager).build();
         final IdleConnectionMonitorThread staleMonitor = new IdleConnectionMonitorThread(poolingConnManager);

@@ -5,17 +5,23 @@
     <artifactId>mutation-testing</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>mutation-testing</name>
+    
+    <properties>
+        <pitest.version>1.1.10</pitest.version>
+        <junit.version>4.12</junit.version>
+        <jacoco.version>0.7.7.201606060606</jacoco.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.pitest</groupId>
             <artifactId>pitest-parent</artifactId>
-            <version>1.1.10</version>
+            <version>${pitest.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.9</version>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -23,7 +29,7 @@
             <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
-                <version>1.1.10</version>
+                <version>${pitest.version}</version>
                 <configuration>
                     <targetClasses>
                         <param>com.baeldung.testing.mutation.*</param>
@@ -36,7 +42,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.7.201606060606</version>
+                <version>${jacoco.version}</version>
                 <executions>
                     <execution>
                         <goals>

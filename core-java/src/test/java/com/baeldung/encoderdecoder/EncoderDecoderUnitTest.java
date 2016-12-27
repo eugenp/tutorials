@@ -14,11 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.stream.Collectors.joining;
+import static org.hamcrest.CoreMatchers.*;
 
 public class EncoderDecoderUnitTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EncoderDecoderUnitTest.class);
-    private static final String testUrl = "http://www.baeldung.com/path+1?key1=value+1&key2=value%40%21%242&key3=value%253#dummy+Fragment";
+    private static final String testUrl = "http://www.baeldung.com?key1=value+1&key2=value%40%21%242&key3=value%253";
+    private static final String testUrlWithPath = "http://www.baeldung.com/path+1?key1=value+1&key2=value%40%21%242&key3=value%253";
 
     private String encodeValue(String value) {
         String encoded = null;
@@ -42,13 +44,11 @@ public class EncoderDecoderUnitTest {
 
     @Test
     public void givenURL_whenAnalyze_thenCorrect() throws Exception {
-        URI uri = new URI(testUrl);
+        URL url = new URL(testUrl);
 
-        Assert.assertThat(uri.getScheme(), CoreMatchers.is("http"));
-        Assert.assertThat(uri.getHost(), CoreMatchers.is("www.baeldung.com"));
-        Assert.assertThat(uri.getRawPath(), CoreMatchers.is("/path+1"));
-        Assert.assertThat(uri.getRawQuery(), CoreMatchers.is("key1=value+1&key2=value%40%21%242&key3=value%253"));
-        Assert.assertThat(uri.getRawFragment(), CoreMatchers.is("dummy+Fragment"));
+        Assert.assertThat(url.getProtocol(), is("http"));
+        Assert.assertThat(url.getHost(), is("www.baeldung.com"));
+        Assert.assertThat(url.getQuery(), is("key1=value+1&key2=value%40%21%242&key3=value%253"));
     }
 
     @Test
@@ -58,35 +58,27 @@ public class EncoderDecoderUnitTest {
         requestParams.put("key2", "value@!$2");
         requestParams.put("key3", "value%3");
 
-        String path = "path+1";
-        String fragment = "dummy Fragment";
+        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com?", ""));
 
-        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com/" + getPath(path) + "?", "#" + encodeValue(fragment)));
-
-        Assert.assertThat(testUrl, CoreMatchers.is(encodedURL));
+        Assert.assertThat(testUrl, is(encodedURL));
     }
 
     @Test
     public void givenRequestParam_whenUTF8Scheme_thenDecodeRequestParams() throws Exception {
-        URI uri = new URI(testUrl);
+        URL url = new URL(testUrl);
 
-        String scheme = uri.getScheme();
-        String host = uri.getHost();
-        String query = uri.getRawQuery();
-        String path = uri.getRawPath();
-        String fragment = uri.getRawFragment();
+        String query = url.getQuery();
 
         String decodedQuery = Arrays.stream(query.split("&")).map(param -> param.split("=")[0] + "=" + decode(param.split("=")[1])).collect(joining("&"));
-        String decodedPath = Arrays.stream(path.split("/")).map(param -> getPath(param)).collect(joining("/"));
 
-        Assert.assertEquals("http://www.baeldung.com/path+1?key1=value 1&key2=value@!$2&key3=value%3#dummy Fragment", scheme + "://" + host + decodedPath + "?" + decodedQuery + "#" + decode(fragment));
+        Assert.assertEquals("http://www.baeldung.com?key1=value 1&key2=value@!$2&key3=value%3", url.getProtocol() + "://" + url.getHost() + "?" + decodedQuery);
     }
 
-    private String getPath(String path) {
+    private String encodePath(String path) {
         try {
             path = new URI(null, null, path, null).getPath();
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            LOGGER.error("Error encoding parameter {}", e.getMessage(), e);
         }
         return path;
     }
@@ -98,4 +90,19 @@ public class EncoderDecoderUnitTest {
         Assert.assertEquals("/Path 1/Path+2", uri.getPath());
         Assert.assertEquals("/Path%201/Path+2", uri.getRawPath());
     }
+
+    @Test
+    public void givenPathAndRequestParam_whenUTF8Scheme_thenEncode() throws Exception {
+        Map<String, String> requestParams = new HashMap<>();
+        requestParams.put("key1", "value 1");
+        requestParams.put("key2", "value@!$2");
+        requestParams.put("key3", "value%3");
+
+        String path = "path+1";
+
+        String encodedURL = requestParams.keySet().stream().map(key -> key + "=" + encodeValue(requestParams.get(key))).collect(joining("&", "http://www.baeldung.com/" + encodePath(path) + "?", ""));
+
+        Assert.assertThat(testUrlWithPath, is(encodedURL));
+    }
+
 }

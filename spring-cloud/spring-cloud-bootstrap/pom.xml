@@ -18,7 +18,7 @@
     </modules>
 
 
-    <artifactId>spring-cloud-integration</artifactId>
+    <artifactId>spring-cloud-bootstrap</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
