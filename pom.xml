@@ -163,6 +163,7 @@
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
+        <module>spring-reactor</module>
 
         <module>testing</module>
 
