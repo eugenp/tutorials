@@ -13,25 +13,25 @@ import reactor.bus.EventBus;
 
 @Controller
 public class NotificationController {
-	
-	@Autowired
-	private EventBus eventBus;
 
-	@RequestMapping(value = "/startNotification/{param}", method = RequestMethod.GET)
-	public void startNotification(@PathVariable("param") String param) {
-	
-		int notificationSize = Integer.parseInt(param);
-		
-		for(int i = 0; i < notificationSize; i++) {
-		
-			NotificationData data = new NotificationData();
-			data.setId(i);
-			
-			eventBus.notify("notificationConsumer",Event.wrap(data));
-			
-			System.out.println("Notification " +i +": notification task submitted successfully");
-		}
-		
-	}
-	
+    @Autowired
+    private EventBus eventBus;
+
+    @RequestMapping(value = "/startNotification/{param}", method = RequestMethod.GET)
+    public void startNotification(@PathVariable("param") String param) {
+
+        int notificationSize = Integer.parseInt(param);
+
+        for (int i = 0; i < notificationSize; i++) {
+
+            NotificationData data = new NotificationData();
+            data.setId(i);
+
+            eventBus.notify("notificationConsumer", Event.wrap(data));
+
+            System.out.println("Notification " + i + ": notification task submitted successfully");
+        }
+
+    }
+
 }

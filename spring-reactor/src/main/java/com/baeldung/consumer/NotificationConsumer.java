@@ -12,17 +12,18 @@ import reactor.fn.Consumer;
 @Service
 public class NotificationConsumer implements Consumer<Event<NotificationData>> {
 
-	@Autowired
-	private NotificationService notificationService;
-	
-	@Override
-	public void accept(Event<NotificationData> notificationDataEvent) {
-		
-		NotificationData notificationData = notificationDataEvent.getData();
-		try {
-			notificationService.initiateNotofication(notificationData);
-		} catch (InterruptedException e) {}
-		
-	}
+    @Autowired
+    private NotificationService notificationService;
+
+    @Override
+    public void accept(Event<NotificationData> notificationDataEvent) {
+
+        NotificationData notificationData = notificationDataEvent.getData();
+        try {
+            notificationService.initiateNotification(notificationData);
+        } catch (InterruptedException e) {
+        }
+
+    }
 
 }
