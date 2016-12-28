@@ -15,11 +15,9 @@ public class NotificationController {
     private EventBus eventBus;
 
     @GetMapping("/startNotification/{param}")
-    public void startNotification(@PathVariable("param") String param) {
+    public void startNotification(@PathVariable Integer param) {
 
-        int notificationSize = Integer.parseInt(param);
-
-        for (int i = 0; i < notificationSize; i++) {
+        for (int i = 0; i < param; i++) {
 
             NotificationData data = new NotificationData();
             data.setId(i);
