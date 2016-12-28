@@ -8,7 +8,6 @@ public class BaeldungItem {
         this.itemId = itemId;
     }
 
-
     public String getItemId() {
         return itemId;
     }
