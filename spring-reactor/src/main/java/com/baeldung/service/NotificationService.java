@@ -4,6 +4,6 @@ import com.baeldung.doman.NotificationData;
 
 public interface NotificationService {
 
-	public void initiateNotofication(NotificationData notificationData) throws InterruptedException;
-	
+    void initiateNotification(NotificationData notificationData) throws InterruptedException;
+
 }
