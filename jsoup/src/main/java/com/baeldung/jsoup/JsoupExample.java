@@ -64,6 +64,14 @@ public class JsoupExample {
     void examplesTraversing() {
         Elements sections = doc.select("section");
 
+        Elements sections = doc.select("section");
+        Element firstSection = sections.first();
+        Elements sectionParagraphs = firstSection.select(".paragraph");
+    }
+
+    void examplesTraversing() {
+        Elements sections = doc.select("section");
+
         Element firstSection = sections.first();
         Element lastSection = sections.last();
         Element secondSection = sections.get(2);
