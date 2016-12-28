@@ -1,9 +1,6 @@
 package com.baeldung.web.controller;
 
 import com.baeldung.model.Employee;
-import com.baeldung.validator.EmployeeValidator;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,9 +16,6 @@ import java.util.*;
 @Controller
 @ControllerAdvice
 public class EmployeeController {
-
-    @Autowired
-    EmployeeValidator validator;
     
     Map<Long, Employee> employeeMap = new HashMap<>();
 
@@ -44,8 +38,6 @@ public class EmployeeController {
 
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
-      
-        validator.validate(employee, result);
         if (result.hasErrors()) {
             return "employeeHome";
         }
