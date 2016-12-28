@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/", produces = "application/vnd.baeldung.api.v1+json",
+        consumes = "application/vnd.baeldung.api.v1+json")
 public class CustomMediaTypeController {
-
 
     @RequestMapping(value = "/public/api/endpoint", produces = "application/vnd.baeldung.api.v1+json",
             consumes = "application/vnd.baeldung.api.v1+json")
