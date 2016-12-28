@@ -8,7 +8,7 @@
 
     <context:component-scan base-package="org.baeldung.web" />
 
-    <mvc:annotation-driven>
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
         <mvc:message-converters register-defaults="true">
            <!--  
            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
@@ -18,6 +18,7 @@
 		        <property name="unmarshaller" ref="xstreamMarshaller" />
 		    </bean> 
             -->     
+           <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
            <bean class="org.baeldung.config.converter.KryoHttpMessageConverter"/>  
            <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         
         </mvc:message-converters>
@@ -43,6 +44,11 @@
         <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
 
     </bean>
+    
+    <bean id="contentNegotiationManager"
+             class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+       <property name="defaultContentType" value="application/json" />
+  </bean>
 
 
 </beans>

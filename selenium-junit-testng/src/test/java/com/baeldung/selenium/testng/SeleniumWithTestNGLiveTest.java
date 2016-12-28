@@ -26,15 +26,10 @@ public class SeleniumWithTestNGLiveTest {
 
     @Test
     public void whenAboutBaeldungIsLoaded_thenAboutEugenIsMentionedOnPage() {
-        try {
-            seleniumExample.getAboutBaeldungPage();
-            String actualTitle = seleniumExample.getTitle();
-            assertNotNull(actualTitle);
-            assertEquals(actualTitle, expecteTilteAboutBaeldungPage);
-            assertTrue(seleniumExample.isAuthorInformationAvailable());
-        } catch (Exception exception) {
-            exception.printStackTrace();
-            seleniumExample.closeWindow();
-        }
+        seleniumExample.getAboutBaeldungPage();
+        String actualTitle = seleniumExample.getTitle();
+        assertNotNull(actualTitle);
+        assertEquals(actualTitle, expecteTilteAboutBaeldungPage);
+        assertTrue(seleniumExample.isAuthorInformationAvailable());
     }
 }

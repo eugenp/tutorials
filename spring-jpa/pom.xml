@@ -43,7 +43,7 @@
         <dependency>
             <groupId>xml-apis</groupId>
             <artifactId>xml-apis</artifactId>
-            <version>1.4.01</version>
+            <version>${xml-apis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
-            <version>2.2.5</version>
+            <version>${javax.el-api.version}</version>
         </dependency>
         
         <!-- web -->
@@ -196,47 +196,48 @@
     
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.2.RELEASE</org.springframework.version>
-        <javassist.version>3.20.0-GA</javassist.version>
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <javassist.version>3.21.0-GA</javassist.version>
 
         <!-- persistence -->
-        <hibernate.version>5.2.2.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-        <spring-data-jpa.version>1.10.2.RELEASE</spring-data-jpa.version>
-        <h2.version>1.4.192</h2.version>
+        <hibernate.version>5.2.5.Final</hibernate.version>
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <spring-data-jpa.version>1.10.5.RELEASE</spring-data-jpa.version>
+        <h2.version>1.4.193</h2.version>
         
         <!-- web -->
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
         <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <logback.version>1.1.7</logback.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <xml-apis.version>1.4.01</xml-apis.version>
+        <javax.el-api.version>2.2.5</javax.el-api.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
 
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
 
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
-        <maven-war-plugin.version>2.4</maven-war-plugin.version>
-        <!-- <maven-war-plugin.version>2.6</maven-war-plugin.version> -->
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
 
     </properties>
 

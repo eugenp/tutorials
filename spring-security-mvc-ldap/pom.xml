@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.3.8.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -69,7 +69,7 @@
     </build>
 
     <properties>     
-        <apacheds.version>1.5.5</apacheds.version>
+        <apacheds.version>1.5.7</apacheds.version>
     </properties>
 
 </project>

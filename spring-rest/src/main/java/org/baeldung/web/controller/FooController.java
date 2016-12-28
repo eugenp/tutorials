@@ -1,7 +1,6 @@
 package org.baeldung.web.controller;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
 import org.baeldung.web.dto.Foo;
 import org.baeldung.web.dto.FooProtos;
@@ -26,7 +25,7 @@ public class FooController {
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id) {
-        return new Foo(Long.parseLong(randomNumeric(2)), randomAlphabetic(4));
+        return new Foo(id, randomAlphabetic(4));
     }
 
     // API - write
