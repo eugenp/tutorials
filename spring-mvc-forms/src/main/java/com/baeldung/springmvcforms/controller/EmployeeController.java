@@ -1,6 +1,9 @@
 package com.baeldung.springmvcforms.controller;
 
 import com.baeldung.springmvcforms.domain.Employee;
+import com.baeldung.springmvcforms.validator.EmployeeValidator;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -13,6 +16,9 @@ import java.util.Map;
 
 @Controller
 public class EmployeeController {
+    
+    @Autowired
+    EmployeeValidator validator;
 
     Map<Long, Employee> employeeMap = new HashMap<>();
 
@@ -28,9 +34,11 @@ public class EmployeeController {
 
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
+        validator.validate(employee, result);
         if (result.hasErrors()) {
-            return "error";
+            return "employeeHome";
         }
+        
         model.addAttribute("name", employee.getName());
         model.addAttribute("contactNumber", employee.getContactNumber());
         model.addAttribute("id", employee.getId());

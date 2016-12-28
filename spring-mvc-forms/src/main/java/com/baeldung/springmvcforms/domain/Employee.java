@@ -8,11 +8,11 @@ public class Employee {
     private long id;
 
     @NotNull
-    @Size(min = 5)
+//    @Size(min = 5)
     private String name;
 
     @NotNull
-    @Size(min = 7)
+//    @Size(min = 7)
     private String contactNumber;
 
     public Employee() {
