@@ -35,10 +35,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         builder.indentOutput(true).dateFormat(new SimpleDateFormat("dd-MM-yyyy hh:mm"));
         messageConverters.add(new MappingJackson2HttpMessageConverter(builder.build()));
         // messageConverters.add(new MappingJackson2XmlHttpMessageConverter(builder.createXmlMapper(true).build()));
-        
+
         // messageConverters.add(createXmlHttpMessageConverter());
         // messageConverters.add(new MappingJackson2HttpMessageConverter());
-        
+
         messageConverters.add(new ProtobufHttpMessageConverter());
         messageConverters.add(new KryoHttpMessageConverter());
         super.configureMessageConverters(messageConverters);
