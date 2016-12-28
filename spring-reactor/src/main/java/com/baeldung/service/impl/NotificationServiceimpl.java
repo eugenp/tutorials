@@ -9,15 +9,11 @@ import com.baeldung.service.NotificationService;
 public class NotificationServiceimpl implements NotificationService {
 	
 	@Override
-	public void initiateNotofication(NotificationData notificationData) {
+	public void initiateNotofication(NotificationData notificationData) throws InterruptedException {
 
 		System.out.println("Notification service started for Notification ID: " +notificationData.getId());
 		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		Thread.sleep(5000);
 		
 		System.out.println("Notification service ended for Notification ID: " +notificationData.getId());
 	}

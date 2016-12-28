@@ -19,7 +19,9 @@ public class NotificationConsumer implements Consumer<Event<NotificationData>> {
 	public void accept(Event<NotificationData> notificationDataEvent) {
 		
 		NotificationData notificationData = notificationDataEvent.getData();
-		notificationService.initiateNotofication(notificationData);
+		try {
+			notificationService.initiateNotofication(notificationData);
+		} catch (InterruptedException e) {}
 		
 	}
 
