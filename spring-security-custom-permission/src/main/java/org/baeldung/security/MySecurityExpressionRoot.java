@@ -47,6 +47,14 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
         throw new RuntimeException("method hasAuthority() not allowed");
     }
 
+    //
+    public boolean isMember(Long OrganizationId) {
+        final User user = ((MyUserPrincipal) this.getPrincipal()).getUser();
+        return user.getOrganization().getId().longValue() == OrganizationId.longValue();
+    }
+
+    //
+
     @Override
     public final boolean hasAnyAuthority(String... authorities) {
         return hasAnyAuthorityName(null, authorities);
@@ -167,14 +175,6 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
         }
         return defaultRolePrefix + role;
     }
-
-    //
-    public boolean isMember(Long OrganizationId) {
-        final User user = (User) this.getPrincipal();
-        return user.getOrganization().getId().longValue() == OrganizationId.longValue();
-    }
-
-    //
 
     @Override
     public Object getFilterObject() {

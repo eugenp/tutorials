@@ -1,12 +1,12 @@
 package com.baeldung;
 
-import org.junit.gen5.api.Disabled;
-import org.junit.gen5.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.gen5.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 class FirstTest {
 
@@ -19,6 +19,7 @@ class FirstTest {
                 .sum() > 5, "Sum should be greater than 5");
     }
 
+    @Disabled("test to show MultipleFailuresError")
     @Test
     void groupAssertions() {
         int[] numbers = {0, 1, 2, 3, 4};

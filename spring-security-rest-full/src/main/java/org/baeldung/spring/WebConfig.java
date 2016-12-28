@@ -1,10 +1,14 @@
 package org.baeldung.spring;
 
+import org.baeldung.web.interceptor.LoggerInterceptor;
+import org.baeldung.web.interceptor.SessionTimerInterceptor;
+import org.baeldung.web.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -32,6 +36,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         super.addViewControllers(registry);
         registry.addViewController("/graph.html");
         registry.addViewController("/csrfHome.html");
+        registry.addViewController("/homepage.html");
+    }
+
+    @Override
+    public void addInterceptors(final InterceptorRegistry registry) {
+        registry.addInterceptor(new LoggerInterceptor());
+        registry.addInterceptor(new UserInterceptor());
+        registry.addInterceptor(new SessionTimerInterceptor());
     }
 
 }

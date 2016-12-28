@@ -16,7 +16,7 @@ public class CustomMethodSecurityExpressionRoot extends SecurityExpressionRoot i
 
     //
     public boolean isMember(Long OrganizationId) {
-        final User user = (User) this.getPrincipal();
+        final User user = ((MyUserPrincipal) this.getPrincipal()).getUser();
         return user.getOrganization().getId().longValue() == OrganizationId.longValue();
     }
 

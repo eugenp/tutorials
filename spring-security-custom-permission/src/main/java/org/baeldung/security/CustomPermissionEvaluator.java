@@ -10,17 +10,10 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
 
     @Override
     public boolean hasPermission(Authentication auth, Object targetDomainObject, Object permission) {
-        System.out.println(auth);
         if ((auth == null) || (targetDomainObject == null) || !(permission instanceof String)) {
             return false;
         }
-        String targetType = "";
-        if (targetDomainObject instanceof String) {
-            targetType = targetDomainObject.toString().toUpperCase();
-        } else {
-            targetType = targetDomainObject.getClass().getSimpleName().toUpperCase();
-            System.out.println(targetType);
-        }
+        final String targetType = targetDomainObject.getClass().getSimpleName().toUpperCase();
         return hasPrivilege(auth, targetType, permission.toString().toUpperCase());
     }
 

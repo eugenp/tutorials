@@ -1,0 +1,1 @@
+spring-userservice is using a in memory derby db. Right click -> run on server to run the project

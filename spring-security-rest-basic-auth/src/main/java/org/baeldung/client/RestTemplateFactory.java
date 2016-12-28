@@ -45,7 +45,7 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
         final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
 
         final BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope("localhost", 8080, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
+        credentialsProvider.setCredentials(new AuthScope("localhost", 8082, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
         final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCredentialsProvider(credentialsProvider).build();
 
         final ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(client);

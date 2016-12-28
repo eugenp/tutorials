@@ -17,8 +17,8 @@
 		<jmockit.version>1.24</jmockit.version>
 
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-		<maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 	</properties>
 
 	<dependencies>

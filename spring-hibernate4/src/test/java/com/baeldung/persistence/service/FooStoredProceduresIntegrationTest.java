@@ -25,7 +25,7 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class FooStoredProceduresIntegrationTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FooStoredProceduresIntegrationTest.class);
@@ -47,8 +47,7 @@ public class FooStoredProceduresIntegrationTest {
 
     private boolean getFoosByNameExists() {
         try {
-            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
-                    .addEntity(Foo.class);
+            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
             sqlQuery.list();
             return true;
         } catch (SQLGrammarException e) {
@@ -59,8 +58,7 @@ public class FooStoredProceduresIntegrationTest {
 
     private boolean getAllFoosExists() {
         try {
-            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()")
-                    .addEntity(Foo.class);
+            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
             sqlQuery.list();
             return true;
         } catch (SQLGrammarException e) {
@@ -80,8 +78,7 @@ public class FooStoredProceduresIntegrationTest {
         fooService.create(new Foo(randomAlphabetic(6)));
 
         // Stored procedure getAllFoos using createSQLQuery
-        Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(
-                Foo.class);
+        Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
         @SuppressWarnings("unchecked")
         List<Foo> allFoos = sqlQuery.list();
         for (Foo foo : allFoos) {
@@ -105,8 +102,7 @@ public class FooStoredProceduresIntegrationTest {
         fooService.create(new Foo("NewFooName"));
 
         // Stored procedure getFoosByName using createSQLQuery()
-        Query sqlQuery = session.createSQLQuery("CALL GetFoosByName(:fooName)")
-                .addEntity(Foo.class).setParameter("fooName", "NewFooName");
+        Query sqlQuery = session.createSQLQuery("CALL GetFoosByName(:fooName)").addEntity(Foo.class).setParameter("fooName", "NewFooName");
         @SuppressWarnings("unchecked")
         List<Foo> allFoosByName = sqlQuery.list();
         for (Foo foo : allFoosByName) {
@@ -114,8 +110,7 @@ public class FooStoredProceduresIntegrationTest {
         }
 
         // Stored procedure getFoosByName using getNamedQuery()
-        Query namedQuery = session.getNamedQuery("callGetFoosByName")
-                .setParameter("fooName", "NewFooName");
+        Query namedQuery = session.getNamedQuery("callGetFoosByName").setParameter("fooName", "NewFooName");
         @SuppressWarnings("unchecked")
         List<Foo> allFoosByName2 = namedQuery.list();
         for (Foo foo : allFoosByName2) {

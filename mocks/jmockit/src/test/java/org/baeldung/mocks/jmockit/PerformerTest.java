@@ -21,7 +21,9 @@ public class PerformerTest {
     		model.getInfo();result = "bar";
     		collaborator.collaborate("bar"); result = true;
     	}};
+
     	performer.perform(model);
+
     	new Verifications() {{
     		collaborator.receive(true);
     	}};

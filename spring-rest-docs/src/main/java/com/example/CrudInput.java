@@ -10,33 +10,32 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CrudInput {
-	
-	//@NotBlank
-	private final String title;
 
-	private final String body;
+    // @NotBlank
+    private final String title;
 
-	private final List<URI> tagUris;
+    private final String body;
 
-	@JsonCreator
-	public CrudInput(@JsonProperty("title") String title,
-			@JsonProperty("body") String body, @JsonProperty("tags") List<URI> tagUris) {
-		this.title = title;
-		this.body = body;
-		this.tagUris = tagUris == null ? Collections.<URI>emptyList() : tagUris;
-	}
+    private final List<URI> tagUris;
 
-	public String getTitle() {
-		return title;
-	}
+    @JsonCreator
+    public CrudInput(@JsonProperty("title") String title, @JsonProperty("body") String body, @JsonProperty("tags") List<URI> tagUris) {
+        this.title = title;
+        this.body = body;
+        this.tagUris = tagUris == null ? Collections.<URI> emptyList() : tagUris;
+    }
 
-	public String getBody() {
-		return body;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	@JsonProperty("tags")
-	public List<URI> getTagUris() {
-		return this.tagUris;
-	}
+    public String getBody() {
+        return body;
+    }
+
+    @JsonProperty("tags")
+    public List<URI> getTagUris() {
+        return this.tagUris;
+    }
 
 }

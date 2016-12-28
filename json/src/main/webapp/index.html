@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="jsonforms-intro">
+<head>
+    <title>Introduction to JSONForms</title>
+    <script src="node_modules/jsonforms/dist/jsonforms.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/schema.js" type="text/javascript"></script>
+    <script src="js/ui-schema.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container" ng-controller="MyController">
+        <div class="row" id="demo">
+            <div class="col-sm-12">
+                <div class="panel-primary panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Introduction to JSONForms</strong></h3>
+                    </div>
+                    <div class="panel-body jsf">
+                    	Bound data: {{data}}
+                        <jsonforms schema="schema" ui-schema="uiSchema" data="data"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

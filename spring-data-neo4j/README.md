@@ -1,7 +1,7 @@
 ## Spring Data Neo4j
 
 ### Relevant Articles:
-- [Introduction to Spring Data Neo4j](http://www.baeldung.com/spring-data-neo4j-tutorial)
+- [Introduction to Spring Data Neo4j](http://www.baeldung.com/spring-data-neo4j-intro)
 
 ### Build the Project with Tests Running
 ```

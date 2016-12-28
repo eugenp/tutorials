@@ -3,7 +3,7 @@
 ## Spring Security for REST Example Project
 
 ###The Course
-The "REST With Spring" Classes: http://bit.ly/restwithspring
+The "REST With Spring" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Authentication Provider](http://www.baeldung.com/spring-security-authentication-provider)

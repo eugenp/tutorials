@@ -1,28 +1,15 @@
 package com.baeldung;
 
+import org.junit.*;
+import redis.clients.jedis.*;
+import redis.embedded.RedisServer;
+
 import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.Pipeline;
-import redis.clients.jedis.Response;
-import redis.clients.jedis.Transaction;
-import redis.embedded.RedisServer;
-
-/**
- * Unit test for Redis Java library - Jedis.
- */
 public class JedisTest {
 
     private Jedis jedis;
@@ -140,9 +127,9 @@ public class JedisTest {
         scores.put("PlayerTwo", 1500.0);
         scores.put("PlayerThree", 8200.0);
 
-        for (String player : scores.keySet()) {
+        scores.keySet().forEach(player -> {
             jedis.zadd(key, scores.get(player), player);
-        }
+        });
 
         Set<String> players = jedis.zrevrange(key, 0, 1);
         Assert.assertEquals("PlayerThree", players.iterator().next());

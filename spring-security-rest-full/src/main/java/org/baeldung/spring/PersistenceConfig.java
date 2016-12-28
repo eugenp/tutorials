@@ -23,7 +23,7 @@ import com.google.common.base.Preconditions;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-${envTarget:mysql}.properties" })
+@PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
 // @ImportResource("classpath*:springDataPersistenceConfig.xml")
 @EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")

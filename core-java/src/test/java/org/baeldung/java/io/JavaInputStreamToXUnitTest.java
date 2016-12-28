@@ -19,6 +19,7 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 import org.apache.commons.io.FileUtils;
@@ -189,6 +190,16 @@ public class JavaInputStreamToXUnitTest {
 
         IOUtils.closeQuietly(initialStream);
         IOUtils.closeQuietly(outStream);
+    }
+
+    @Test
+    public final void givenUsingPlainJava8_whenConvertingAnInProgressInputStreamToAFile_thenCorrect() throws IOException {
+        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final File targetFile = new File("src/main/resources/targetFile.tmp");
+
+        java.nio.file.Files.copy(initialStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+        IOUtils.closeQuietly(initialStream);
     }
 
     @Test

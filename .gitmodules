@@ -1,0 +1,3 @@
+[submodule "testgitrepo"]
+	path = testgitrepo
+	url = /home/prd/Development/projects/idea/tutorials/spring-boot/src/main/resources/testgitrepo/
