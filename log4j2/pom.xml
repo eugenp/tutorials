@@ -97,6 +97,9 @@
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
         <log4j-core.version>2.7</log4j-core.version>
         <junit.version>4.12</junit.version>
+        
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
+
 </project>

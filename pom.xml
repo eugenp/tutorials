@@ -163,6 +163,7 @@
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
+        <module>spring-reactor</module>
 
         <module>testing</module>
 
@@ -171,6 +172,7 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
+		<module>javaslang</module>
     </modules>
 
 </project>
