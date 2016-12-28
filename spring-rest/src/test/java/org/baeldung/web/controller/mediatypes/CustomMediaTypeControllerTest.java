@@ -15,7 +15,6 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebConfig.class)
 @WebAppConfiguration
@@ -33,9 +32,6 @@ public class CustomMediaTypeControllerTest {
 
     @Test
     public void shouldSendRequestForItem() throws Exception {
-        mockMvc.perform(get("/public/api/endpoint")
-                .contentType("application/vnd.baeldung.api.v1+json")
-                .accept("application/vnd.baeldung.api.v1+json"))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/public/api/endpoint").contentType("application/vnd.baeldung.api.v1+json").accept("application/vnd.baeldung.api.v1+json")).andExpect(status().isOk());
     }
 }
