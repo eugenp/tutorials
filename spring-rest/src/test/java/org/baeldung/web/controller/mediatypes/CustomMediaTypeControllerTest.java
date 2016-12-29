@@ -32,6 +32,6 @@ public class CustomMediaTypeControllerTest {
 
     @Test
     public void shouldSendRequestForItem() throws Exception {
-        mockMvc.perform(get("/public/api/endpoint").contentType("application/vnd.baeldung.api.v1+json").accept("application/vnd.baeldung.api.v1+json")).andExpect(status().isOk());
+        mockMvc.perform(get("/public/api/endpoint").accept("application/vnd.baeldung.api.v1+json")).andExpect(status().isOk());
     }
 }
