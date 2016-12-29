@@ -15,7 +15,9 @@ public class CustomMediaTypeController {
 
     @RequestMapping(value = "/public/api/endpoint", produces = "application/vnd.baeldung.api.v1+json",
             consumes = "application/vnd.baeldung.api.v1+json")
-    public @ResponseBody ResponseEntity<BaeldungItem> getItem() {
+    public
+    @ResponseBody
+    ResponseEntity<BaeldungItem> getItem() {
         return new ResponseEntity<>(new BaeldungItem("itemId1"), HttpStatus.OK);
     }
 }
