@@ -5,14 +5,12 @@ import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
+import org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Configuration
-public class SimpleUrlHandlerMappingConfig {
+public class BeanNameHandlerMappingConfig {
 
 	@Bean
 	public ViewResolver viewResolver() {
@@ -23,22 +21,18 @@ public class SimpleUrlHandlerMappingConfig {
 	}
 
 	@Bean
-	public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
-		SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
-		Map<String, Object> urlMap = new HashMap<>();
-		urlMap.put("/simpleUrlWelcome", welcome());
-		urlMap.put("/exampleTwo", exampleTwo());
-		simpleUrlHandlerMapping.setUrlMap(urlMap);
-		return simpleUrlHandlerMapping;
+	public BeanNameUrlHandlerMapping controllerClassNameHandlerMapping() {
+		BeanNameUrlHandlerMapping beanNameUrlHandlerMapping = new BeanNameUrlHandlerMapping();
+		return beanNameUrlHandlerMapping;
 	}
 
-	@Bean
-	public WelcomeController welcome() {
+	@Bean(name="/welcomeBean")
+	public WelcomeController welcomeBean() {
 		WelcomeController welcome = new WelcomeController();
 		return welcome;
 	}
 
-	@Bean
+	@Bean(name="/ex")
 	public ExampleTwoController exampleTwo() {
 		ExampleTwoController exampleTwo = new ExampleTwoController();
 		return exampleTwo;
