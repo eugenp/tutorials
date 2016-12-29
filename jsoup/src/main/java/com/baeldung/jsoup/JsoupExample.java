@@ -1,8 +1,7 @@
 package com.baeldung.jsoup;
 
-import java.io.File;
 import java.io.IOException;
-import org.apache.commons.io.FileUtils;
+import org.jsoup.Connection;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,36 +11,43 @@ import org.jsoup.select.Elements;
 
 public class JsoupExample {
 
-    public static void main(String[] args) throws IOException {
-        scrapeSpringBlog();
-    }
+    Document doc;
 
-    static void scrapeSpringBlog() throws IOException {
-        String blogUrl = "https://spring.io/blog";
-        Document doc = Jsoup.connect(blogUrl).get();
-
+    void test404() throws IOException {
         try {
-            Document doc404 = Jsoup.connect("https://spring.io/will-not-be-found").get();
+            loadDocument("https://spring.io/will-not-be-found");
         } catch (HttpStatusException ex) {
             System.out.println(ex.getMessage());
         }
+    }
 
-        Document docCustomConn = Jsoup.connect(blogUrl).userAgent("Mozilla").get();
-        docCustomConn = Jsoup.connect(blogUrl).timeout(5000).get();
-        docCustomConn = Jsoup.connect(blogUrl).cookie("cookiename", "val234").get();
-        // docCustomConn = Jsoup.connect(blogUrl).data("datakey", "datavalue").post();
-        docCustomConn = Jsoup.connect(blogUrl).header("headersecurity", "xyz123").get();
+    void loadDocument(String blogUrl) throws IOException {
+        doc = Jsoup.connect(blogUrl).get();
+    }
 
-        docCustomConn = Jsoup.connect(blogUrl)
+    void loadDocumentCustomized(String blogUrl) throws IOException {
+        Connection connection = Jsoup.connect(blogUrl);
+        connection.userAgent("Mozilla");
+        connection.timeout(5000);
+        connection.cookie("cookiename", "val234");
+        connection.cookie("cookiename", "val234");
+        connection.referrer("http://google.com");
+        connection.header("headersecurity", "xyz123");
+        doc = connection.get();
+
+        // in alternative:
+        doc = Jsoup.connect(blogUrl)
                 .userAgent("Mozilla")
                 .timeout(5000)
                 .cookie("cookiename", "val234")
                 .cookie("anothercookie", "ilovejsoup")
+                .referrer("http://google.com")
                 .header("headersecurity", "xyz123")
                 .get();
+    }
 
+    void examplesSelectors() {
         Elements links = doc.select("a");
-        Elements sections = doc.select("section");
         Elements logo = doc.select(".spring-logo--container");
         Elements pagination = doc.select("#pagination_control");
         Elements divsDescendant = doc.select("header div");
@@ -49,6 +55,14 @@ public class JsoupExample {
 
         Element pag = doc.getElementById("pagination_control");
         Elements desktopOnly = doc.getElementsByClass("desktopOnly");
+
+        Elements sections = doc.select("section");
+        Element firstSection = sections.first();
+        Elements sectionParagraphs = firstSection.select(".paragraph");
+    }
+
+    void examplesTraversing() {
+        Elements sections = doc.select("section");
 
         Element firstSection = sections.first();
         Element lastSection = sections.last();
@@ -59,9 +73,9 @@ public class JsoupExample {
         Elements siblings = firstSection.siblingElements();
 
         sections.stream().forEach(el -> System.out.println("section: " + el));
+    }
 
-        Elements sectionParagraphs = firstSection.select(".paragraph");
-
+    void examplesExtracting() {
         Element firstArticle = doc.select("article").first();
         Element timeElement = firstArticle.select("time").first();
         String dateTimeOfFirstArticle = timeElement.attr("datetime");
@@ -69,7 +83,14 @@ public class JsoupExample {
         String sectionDivText = sectionDiv.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
+    }
 
+    void examplesModifying() {
+        Element firstArticle = doc.select("article").first();
+        Element timeElement = firstArticle.select("time").first();
+        Element sectionDiv = firstArticle.select("section div").first();
+
+        String dateTimeOfFirstArticle = timeElement.attr("datetime");
         timeElement.attr("datetime", "2016-12-16 15:19:54.3");
         sectionDiv.text("foo bar");
         firstArticle.select("h2").html("<div><span></span></div>");
@@ -83,7 +104,10 @@ public class JsoupExample {
         doc.select("li.navbar-link").remove();
         firstArticle.select("img").remove();
 
-        File indexFile = new File("/tmp", "spring_blog_home.html");
-        FileUtils.writeStringToFile(indexFile, doc.html(), doc.charset());
+        System.out.println(doc.html());
+    }
+
+    String getTidyHtml() {
+        return doc.html();
     }
 }
