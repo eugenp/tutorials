@@ -8,22 +8,6 @@ import org.junit.Test;
 
 public class StringToCharArray {
 
-	public char[] stringToCharArray(String originalString) {
-		char[] charArray = new char[originalString.length()];
-		for (int i = 0; i < originalString.length(); i++) {
-			charArray[i] = originalString.charAt(i);
-		}
-		return charArray;
-	}
-
-	@Test
-	public void whenStringConvertedToCharArray_thenCorrect() {
-		String testString = "test";
-		char[] charArray = { 't', 'e', 's', 't' };
-
-		assertEquals(Arrays.equals(stringToCharArray(testString), charArray), true);
-	}
-
 	@Test
 	public void whenStringConvertedToCharArrayUsingStringMethods_thenCorrect() {
 		String testString = "test";
