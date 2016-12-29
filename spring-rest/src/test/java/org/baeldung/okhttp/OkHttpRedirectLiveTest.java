@@ -17,13 +17,9 @@ public class OkHttpRedirectLiveTest {
     @Test
     public void whenSetFollowRedirects_thenNotRedirected() throws IOException {
 
-        OkHttpClient client = new OkHttpClient().newBuilder()
-          .followRedirects(false)
-          .build();
+        OkHttpClient client = new OkHttpClient().newBuilder().followRedirects(false).build();
 
-        Request request = new Request.Builder()
-          .url("http://t.co/I5YYd9tddw")
-          .build();
+        Request request = new Request.Builder().url("http://t.co/I5YYd9tddw").build();
 
         Call call = client.newCall(request);
         Response response = call.execute();
