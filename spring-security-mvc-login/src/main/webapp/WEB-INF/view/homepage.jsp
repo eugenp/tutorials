@@ -14,6 +14,8 @@
 	<security:authorize access="hasRole('ROLE_ADMIN')">
 		This text is only visible to an admin
 		<br/>
+        <a href="<c:url value="/admin/adminpage.html" />">Admin Page</a>
+        <br/>
 	</security:authorize>
 
 	<a href="<c:url value="/perform_logout" />">Logout</a>
