@@ -1,7 +1,7 @@
 package com.baeldung.spring.web.config;
 
-import com.baeldung.ExampleTwoController;
-import com.baeldung.WelcomeController;
+import com.baeldung.web.controller.handlermapping.ExampleTwoController;
+import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
