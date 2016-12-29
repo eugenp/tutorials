@@ -1,18 +1,16 @@
 package test.java.com.baeldung.selenium.testng;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
 import main.java.com.baeldung.selenium.SeleniumExample;
-
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.*;
+
 public class SeleniumWithTestNGLiveTest {
 
     private SeleniumExample seleniumExample;
-    private String expecteTilteAboutBaeldungPage = "About Baeldung | Baeldung";
+    private String expectedTitle = "About Baeldung | Baeldung";
 
     @BeforeSuite
     public void setUp() {
@@ -29,7 +27,7 @@ public class SeleniumWithTestNGLiveTest {
         seleniumExample.getAboutBaeldungPage();
         String actualTitle = seleniumExample.getTitle();
         assertNotNull(actualTitle);
-        assertEquals(expecteTilteAboutBaeldungPage, actualTitle);
+        assertEquals(expectedTitle, actualTitle);
         assertTrue(seleniumExample.isAuthorInformationAvailable());
     }
 }
