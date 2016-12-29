@@ -18,12 +18,10 @@ public class StringToCharArrayTest {
     }
 
     @Test
-    public void whenConvertedFromCharArrayToString_thenCorrect() {
-
-        char[] beforeConvCharArr = { 'h', 'e', 'l', 'l', 'o' };
-        String afterConvStr = "hello";
-
-        assertEquals(afterConvStr.equals(String.valueOf(beforeConvCharArr)), true);
+    public void givenCharArray_ConvertedToString_ThenSuccessful() {
+        char[] charArrayToBeConverted = { 'h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd'};
+        assertEquals(new String(charArrayToBeConverted), "hello world");
+        assertEquals(String.valueOf(charArrayToBeConverted), "hello world");
     }
 
 }
