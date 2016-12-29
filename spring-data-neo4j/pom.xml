@@ -5,21 +5,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-neo4j</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <neo4j.version>3.0.7</neo4j.version>
-        <spring-data-neo4j.version>4.1.5.RELEASE</spring-data-neo4j.version>
-        <jackson-jsog.version>1.1</jackson-jsog.version>
-        <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
-        <spring-test.version>4.3.4.RELEASE</spring-test.version>
-        <neo4j-ogm-test.version>2.0.5</neo4j-ogm-test.version>
-        <junit.version>4.12</junit.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
-    </properties>
 
     <dependencies>
         <dependency>
@@ -76,6 +61,7 @@
             <version>${neo4j.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -89,57 +75,75 @@
 
     </dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
-						<exclude>**/*LiveTest.java</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<profiles>
-		<profile>
-			<id>integration</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>integration-test</phase>
-								<goals>
-									<goal>test</goal>
-								</goals>
-								<configuration>
-									<excludes>
-										<exclude>**/*LiveTest.java</exclude>
-									</excludes>
-									<includes>
-										<include>**/*IntegrationTest.java</include>
-									</includes>
-								</configuration>
-							</execution>
-						</executions>
-						<configuration>
-							<systemPropertyVariables>
-								<test.mime>json</test.mime>
-							</systemPropertyVariables>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <neo4j.version>3.0.7</neo4j.version>
+        <spring-data-neo4j.version>4.1.6.RELEASE</spring-data-neo4j.version>
+        <jackson-jsog.version>1.1</jackson-jsog.version>
+        <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
+        <spring-test.version>4.3.5.RELEASE</spring-test.version>
+        <neo4j-ogm-test.version>2.0.6</neo4j-ogm-test.version>
+
+        <junit.version>4.12</junit.version>
+
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+    </properties>
+
 </project>

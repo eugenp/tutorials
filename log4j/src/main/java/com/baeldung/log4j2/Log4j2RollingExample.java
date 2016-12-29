@@ -1,7 +1,5 @@
 package com.baeldung.log4j2;
 
-import java.util.stream.IntStream;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +12,7 @@ public class Log4j2RollingExample {
             logger.info("This is the {} time I say 'Hello World'.", i);
             Thread.sleep(100);
         }
+        LogManager.shutdown();
     }
 
 }

@@ -19,15 +19,12 @@ public class OkHttpHeaderLiveTest {
     @Before
     public void init() {
 
-    	client = new OkHttpClient();
+        client = new OkHttpClient();
     }
 
     @Test
     public void whenSetHeader_thenCorrect() throws IOException {
-        Request request = new Request.Builder()
-          .url(SAMPLE_URL)
-          .addHeader("Content-Type", "application/json")
-          .build();
+        Request request = new Request.Builder().url(SAMPLE_URL).addHeader("Content-Type", "application/json").build();
 
         Call call = client.newCall(request);
         Response response = call.execute();
@@ -37,13 +34,9 @@ public class OkHttpHeaderLiveTest {
     @Test
     public void whenSetDefaultHeader_thenCorrect() throws IOException {
 
-        OkHttpClient clientWithInterceptor = new OkHttpClient.Builder()
-          .addInterceptor(new DefaultContentTypeInterceptor("application/json"))
-          .build();
+        OkHttpClient clientWithInterceptor = new OkHttpClient.Builder().addInterceptor(new DefaultContentTypeInterceptor("application/json")).build();
 
-        Request request = new Request.Builder()
-          .url(SAMPLE_URL)
-          .build();
+        Request request = new Request.Builder().url(SAMPLE_URL).build();
 
         Call call = clientWithInterceptor.newCall(request);
         Response response = call.execute();
