@@ -17,7 +17,6 @@ public class JsonpMessageConverter extends AbstractHttpMessageConverter<Baeldung
     public static final MediaType JSONP_MEDIA_TYPE = new MediaType("application", "x-jsonp");
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-
     public JsonpMessageConverter() {
         super(JSONP_MEDIA_TYPE);
     }

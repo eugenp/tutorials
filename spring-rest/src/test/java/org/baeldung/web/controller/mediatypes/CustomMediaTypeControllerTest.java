@@ -31,7 +31,7 @@ public class CustomMediaTypeControllerTest {
     }
 
     @Test
-    public void shouldSendRequestForItem() throws Exception {
+    public void givenServiceUrl_whenGetWithProperAcceptHeader_thenReturn200() throws Exception {
         mockMvc.perform(get("/public/api/endpoint").accept("application/x-jsonp")).andExpect(status().isOk());
     }
 }
