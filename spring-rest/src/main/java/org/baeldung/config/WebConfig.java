@@ -3,6 +3,7 @@ package org.baeldung.config;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import org.baeldung.config.converter.JsonpMessageConverter;
 import org.baeldung.config.converter.KryoHttpMessageConverter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
