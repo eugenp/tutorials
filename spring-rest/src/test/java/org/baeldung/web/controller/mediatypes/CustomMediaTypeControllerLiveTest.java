@@ -18,7 +18,7 @@ public class CustomMediaTypeControllerLiveTest {
     private static final String CUSTOM_CONTENT_TYPE = "application/vnd.baeldung.api.v1+json";
 
     @Test
-    public void getFor_customMediaType() {
+    public void givenServiceEndpoint_whenGetRequest_thenShouldReturn200() {
         //given
         String url = URL_PREFIX + "/public/api/endpoint";
 
