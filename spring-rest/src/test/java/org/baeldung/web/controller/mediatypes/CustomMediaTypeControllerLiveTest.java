@@ -19,7 +19,7 @@ public class CustomMediaTypeControllerLiveTest {
         given()
                 .accept("application/vnd.baeldung.api.v1+json")
         .when()
-                .get(URL_PREFIX + "/public/api/endpoint")
+                .get(URL_PREFIX + "/public/api/items/1")
         .then()
                 .contentType(ContentType.JSON).and().statusCode(200);
     }
@@ -30,7 +30,7 @@ public class CustomMediaTypeControllerLiveTest {
         given()
                 .accept("application/vnd.baeldung.api.v2+json")
         .when()
-                .get(URL_PREFIX + "/public/api/endpoint")
+                .get(URL_PREFIX + "/public/api/items/2")
         .then()
                 .contentType(ContentType.JSON).and().statusCode(200);
     }

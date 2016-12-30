@@ -1,10 +1,10 @@
 package org.baeldung.web.dto;
 
 
-public class BaeldungItemSecondVersion {
+public class BaeldungItemV2 {
     private final String itemName;
 
-    public BaeldungItemSecondVersion(String itemName) {
+    public BaeldungItemV2(String itemName) {
         this.itemName = itemName;
     }
 
