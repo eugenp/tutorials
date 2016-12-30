@@ -2,6 +2,7 @@ package org.baeldung.web.controller.mediatypes;
 
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
+import org.baeldung.config.converter.JsonpMessageConverter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class CustomMediaTypeControllerLiveTest {
     private static final String URL_PREFIX = "http://localhost:8082/spring-rest";
-    private static final String CUSTOM_CONTENT_TYPE = "application/vnd.baeldung.api.v1+json";
+    private static final String CUSTOM_CONTENT_TYPE = "application/x-jsonp";
 
     @Test
     public void givenServiceEndpoint_whenGetRequest_thenShouldReturn200() {

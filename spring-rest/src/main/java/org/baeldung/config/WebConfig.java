@@ -41,6 +41,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         messageConverters.add(new ProtobufHttpMessageConverter());
         messageConverters.add(new KryoHttpMessageConverter());
+        messageConverters.add(new JsonpMessageConverter());
         super.configureMessageConverters(messageConverters);
     }
 
