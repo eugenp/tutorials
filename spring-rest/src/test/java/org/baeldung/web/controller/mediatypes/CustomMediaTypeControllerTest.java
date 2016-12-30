@@ -31,7 +31,12 @@ public class CustomMediaTypeControllerTest {
     }
 
     @Test
-    public void shouldSendRequestForItem() throws Exception {
+    public void givenServiceUrl_whenGetWithProperAcceptHeaderFirstAPIVersion_thenReturn200() throws Exception {
         mockMvc.perform(get("/public/api/endpoint").accept("application/vnd.baeldung.api.v1+json")).andExpect(status().isOk());
+    }
+
+    @Test
+    public void givenServiceUrl_whenGetWithProperAcceptHeaderSecondVersion_thenReturn200() throws Exception {
+        mockMvc.perform(get("/public/api/endpoint").accept("application/vnd.baeldung.api.v2+json")).andExpect(status().isOk());
     }
 }
