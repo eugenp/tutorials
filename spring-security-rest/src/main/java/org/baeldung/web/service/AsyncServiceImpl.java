@@ -13,7 +13,7 @@ public class AsyncServiceImpl implements AsyncService {
 	@Async
 	@Override
 	public void asyncCall() {
-		log.info("Inside the @Async logic: " + SecurityContextHolder.getContext());
+		log.info("Inside the @Async logic: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 	}
 
 }

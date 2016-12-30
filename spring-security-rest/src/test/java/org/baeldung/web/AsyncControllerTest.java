@@ -42,7 +42,7 @@ public class AsyncControllerTest {
 
 	@Test
 	public void testAsync() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().isOk());
+		mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().is5xxServerError());
 	}
 
 }

@@ -5,7 +5,6 @@ import java.util.concurrent.Callable;
 import org.apache.log4j.Logger;
 import org.baeldung.web.service.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +33,13 @@ public class AsyncController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/async")
 	@ResponseBody
-	public SecurityContext standardProcessing() throws Exception {
-		log.info("Outside the @Async logic - before the async call: " + SecurityContextHolder.getContext());
+	public Object standardProcessing() throws Exception {
+		log.info("Outside the @Async logic - before the async call: "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 		asyncService.asyncCall();
-		log.info("Inside the @Async logic - after the async call: " + SecurityContextHolder.getContext());
-		return SecurityContextHolder.getContext();
+		log.info("Inside the @Async logic - after the async call: "
+				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+		return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	}
 
 }
