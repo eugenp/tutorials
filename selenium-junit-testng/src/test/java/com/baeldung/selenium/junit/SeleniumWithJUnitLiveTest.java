@@ -29,7 +29,7 @@ public class SeleniumWithJUnitLiveTest {
             seleniumExample.getAboutBaeldungPage();
             String actualTitle = seleniumExample.getTitle();
             assertNotNull(actualTitle);
-            assertEquals(actualTitle, expecteTilteAboutBaeldungPage);
+            assertEquals(expecteTilteAboutBaeldungPage, actualTitle);
             assertTrue(seleniumExample.isAuthorInformationAvailable());
     }
 
