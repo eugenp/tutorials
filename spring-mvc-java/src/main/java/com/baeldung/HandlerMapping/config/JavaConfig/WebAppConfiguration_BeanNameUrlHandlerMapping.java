@@ -1,19 +1,15 @@
 package com.baeldung.config;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
+import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.baeldung.controller.WelcomeController;
 
-
 @Configuration
-public class WebAppConfiguration_SimpleUrlHandlerMapping {
+public class WebAppConfiguration_BeanNameUrlHandlerMapping {
 
     @Bean
     public ViewResolver viewResolver() {
@@ -24,15 +20,12 @@ public class WebAppConfiguration_SimpleUrlHandlerMapping {
     }
 
     @Bean
-    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
-        SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
-        Map<String, Object> urlMap = new HashMap<>();
-        urlMap.put("/welcome", welcome());
-        simpleUrlHandlerMapping.setUrlMap(urlMap);
-        return simpleUrlHandlerMapping;
+    BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
+        BeanNameUrlHandlerMapping bean = new BeanNameUrlHandlerMapping();
+        return bean;
     }
 
-    @Bean
+    @Bean("/welcome")
     public WelcomeController welcome() {
         WelcomeController welcome = new WelcomeController();
         return welcome;

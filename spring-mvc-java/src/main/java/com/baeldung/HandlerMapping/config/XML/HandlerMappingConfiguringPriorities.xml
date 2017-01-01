@@ -14,18 +14,29 @@
 
 
 	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/" />
-		<property name="suffix" value=".jsp" />
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="order" value="2" />
 	</bean>
+	<bean name="/welcome" class="com.baeldung.WelcomeController" />
+	
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				/welcome=welcome
+				/*/welcome=welcome
+			</value>
+		</property>
+		<property name="order" value="0" />
+	</bean>
+	<bean id="welcome" class="com.baeldung.WelcomeTwoController" />
+
 
 	<bean
-		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		<property name="order" value="1" />
 	</bean>
-	
-	<bean name="welcome" class="com.baeldung.WelcomeController" />
-	
-	<bean name="/exampleTwo" class="com.baeldung.ExampleTwoController" />
+	<bean class="com.baeldung.WelcomeController" />
 
 
 

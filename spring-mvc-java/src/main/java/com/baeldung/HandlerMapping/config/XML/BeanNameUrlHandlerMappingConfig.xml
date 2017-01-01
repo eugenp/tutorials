@@ -19,15 +19,12 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-
-
 	<bean
-		class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
 	</bean>
 
-	<!-- register beans -->
-	<bean class="com.baeldung.WelcomeController" />
-	
+	<bean name="welcome" class="com.baeldung.WelcomeController" />
+
 
 
 
