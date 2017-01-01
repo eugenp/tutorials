@@ -1,16 +1,15 @@
 package com.baeldung.java8.optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.optional.Modem;
+import com.baeldung.optional.Person;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import com.baeldung.java_8_features.Person;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class OptionalTest {
     // creating Optional
@@ -68,7 +67,6 @@ public class OptionalTest {
     public void givenOptional_whenIfPresentWorks_thenCorrect() {
         Optional<String> opt = Optional.of("baeldung");
         opt.ifPresent(name -> System.out.println(name.length()));
-        opt.ifPresent(String::length);
     }
 
     // returning Value With get()
@@ -96,13 +94,44 @@ public class OptionalTest {
         assertFalse(is2017);
     }
 
+    @Test
+    public void whenFiltersWithoutOptional_thenCorrect() {
+        assertTrue(priceIsInRange1(new Modem(10.0)));
+        assertFalse(priceIsInRange1(new Modem(9.9)));
+        assertFalse(priceIsInRange1(new Modem(null)));
+        assertFalse(priceIsInRange1(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
+
+    }
+
+    @Test
+    public void whenFiltersWithOptional_thenCorrect() {
+        assertTrue(priceIsInRange2(new Modem(10.0)));
+        assertFalse(priceIsInRange2(new Modem(9.9)));
+        assertFalse(priceIsInRange2(new Modem(null)));
+        assertFalse(priceIsInRange2(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
+    }
+
+    public boolean priceIsInRange1(Modem modem) {
+        boolean isInRange = false;
+        if (modem != null && modem.getPrice() != null && (modem.getPrice() >= 10 && modem.getPrice() <= 15)) {
+            isInRange = true;
+        }
+        return isInRange;
+    }
+
+    public boolean priceIsInRange2(Modem modem2) {
+        return Optional.ofNullable(modem2).map(Modem::getPrice).filter(p -> p >= 10).filter(p -> p <= 15).isPresent();
+    }
+
     // Transforming Value With map()
     @Test
     public void givenOptional_whenMapWorks_thenCorrect() {
         List<String> companyNames = Arrays.asList("paypal", "oracle", "", "microsoft", "", "apple");
         Optional<List<String>> listOptional = Optional.of(companyNames);
 
-        int size = listOptional.map(list -> list.size()).get();
+        int size = listOptional.map(List::size).orElse(0);
         assertEquals(6, size);
     }
 
@@ -111,7 +140,7 @@ public class OptionalTest {
         String name = "baeldung";
         Optional<String> nameOptional = Optional.of(name);
 
-        int len = nameOptional.map(s -> s.length()).get();
+        int len = nameOptional.map(String::length).orElse(0);
         assertEquals(8, len);
     }
 
@@ -122,7 +151,7 @@ public class OptionalTest {
         boolean correctPassword = passOpt.filter(pass -> pass.equals("password")).isPresent();
         assertFalse(correctPassword);
 
-        correctPassword = passOpt.map(pass -> pass.trim()).filter(pass -> pass.equals("password")).isPresent();
+        correctPassword = passOpt.map(String::trim).filter(pass -> pass.equals("password")).isPresent();
         assertTrue(correctPassword);
     }
 
@@ -132,12 +161,12 @@ public class OptionalTest {
         Person person = new Person("john", 26);
         Optional<Person> personOptional = Optional.of(person);
 
-        Optional<Optional<String>> nameOptionalWrapper = personOptional.map(p -> p.getName());
-        Optional<String> nameOptional = nameOptionalWrapper.get();
-        String name1 = nameOptional.get();
+        Optional<Optional<String>> nameOptionalWrapper = personOptional.map(Person::getName);
+        Optional<String> nameOptional = nameOptionalWrapper.orElseThrow(IllegalArgumentException::new);
+        String name1 = nameOptional.orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name1);
 
-        String name = personOptional.flatMap(p -> p.getName()).get();
+        String name = personOptional.flatMap(Person::getName).orElseThrow(IllegalArgumentException::new);
         assertEquals("john", name);
     }
 
@@ -147,7 +176,7 @@ public class OptionalTest {
         person.setPassword("password");
         Optional<Person> personOptional = Optional.of(person);
 
-        String password = personOptional.flatMap(p -> p.getPassword()).filter(cleanPass -> cleanPass.equals("password")).get();
+        String password = personOptional.flatMap(Person::getPassword).filter(cleanPass -> cleanPass.equals("password")).orElseThrow(IllegalArgumentException::new);
         assertEquals("password", password);
     }
 
@@ -165,11 +194,6 @@ public class OptionalTest {
         String nullName = null;
         String name = Optional.ofNullable(nullName).orElseGet(() -> "john");
         assertEquals("john", name);
-
-        name = Optional.ofNullable(nullName).orElseGet(() -> {
-            return "doe";
-        });
-        assertEquals("doe", name);
 
     }
 

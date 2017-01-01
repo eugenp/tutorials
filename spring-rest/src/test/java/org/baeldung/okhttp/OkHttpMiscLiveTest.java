@@ -4,6 +4,7 @@ import static org.baeldung.client.Consts.APPLICATION_PORT;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +33,7 @@ public class OkHttpMiscLiveTest {
         client = new OkHttpClient();
     }
 
-    @Test
+    @Test(expected = SocketTimeoutException.class)
     public void whenSetRequestTimeout_thenFail() throws IOException {
         final OkHttpClient clientWithTimeout = new OkHttpClient.Builder().readTimeout(1, TimeUnit.SECONDS).build();
 

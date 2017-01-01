@@ -121,12 +121,11 @@
 
     <properties>
         <source.version>1.8</source.version>
-        <aspectj.version>1.6.11</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.9</aspectj.version>
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <junit.version>4.12</junit.version>
     </properties>
 
