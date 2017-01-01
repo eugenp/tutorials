@@ -1,22 +1,16 @@
 package com.baeldung.disruptor;
 
 import java.util.concurrent.ThreadFactory;
-import static org.junit.Assert.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import com.lmax.disruptor.BusySpinWaitStrategy;
-import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.WaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 
-@SuppressWarnings("unchecked")
 public class DisruptorTest {
-    private int expectedValue = -1;
-    private int otherExpectedValue = -1;
     private Disruptor<ValueEvent> disruptor;
     private WaitStrategy waitStrategy;
 
@@ -24,63 +18,66 @@ public class DisruptorTest {
     public void setUp() throws Exception {
         waitStrategy = new BusySpinWaitStrategy();
     }
-    
-    @After
-    public void tearDown() throws Exception {
-        disruptor.halt();
-        disruptor.shutdown();
-    }
 
-    private void assertExpectedValue(final int id) {
-        assertEquals(++expectedValue, id);
-    }
-    
-    private void assertOtherExpectedValue(final int id) {
-        assertEquals(++otherExpectedValue, id);
-    }
-
-    private void createDisruptor(final ProducerType producerType, final EventHandler<ValueEvent>... eventHandlers) {
+    private void createDisruptor(final ProducerType producerType, final EventConsumer eventConsumer) {
         final ThreadFactory threadFactory = DaemonThreadFactory.INSTANCE;
         disruptor = new Disruptor<ValueEvent>(ValueEvent.EVENT_FACTORY, 16, threadFactory, producerType, waitStrategy);
-        disruptor.handleEventsWith(eventHandlers);
+        disruptor.handleEventsWith(eventConsumer.getEventHandler());
     }
 
-    private EventHandler<ValueEvent> getEventHandler() {
-        final EventHandler<ValueEvent> eventHandler = (event, sequence, endOfBatch) -> assertExpectedValue(event.getValue());
-        return eventHandler;
+    private void startProducing(final RingBuffer<ValueEvent> ringBuffer, final int count, final EventProducer eventProducer) {
+        eventProducer.startProducing(ringBuffer, count);
     }
     
-    private EventHandler<ValueEvent>[] getEventHandlers() {
-        final EventHandler<ValueEvent> eventHandler = (event, sequence, endOfBatch) -> assertExpectedValue(event.getValue());
-        final EventHandler<ValueEvent> otherEventHandler = (event, sequence, endOfBatch) -> assertOtherExpectedValue(event.getValue());
-        return new EventHandler[] {eventHandler, otherEventHandler};
-    }
+    @Test
+    public void whenMultipleProducerSingleConsumer_thenOutputInFifoOrder() {
+        final EventConsumer eventConsumer = new SingleEventPrintConsumer();
+        final EventProducer eventProducer = new DelayedMultiEventProducer();
+        createDisruptor(ProducerType.MULTI, eventConsumer);
+        final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
+        
+        startProducing(ringBuffer, 32, eventProducer);
 
-    private void produce(final RingBuffer<ValueEvent> ringBuffer) {
-        for (int i = 0; i < 32; i++) {
-            final long seq = ringBuffer.next();
-            final ValueEvent valueEvent = ringBuffer.get(seq);
-            valueEvent.setValue(i);
-            ringBuffer.publish(seq);
-        }
-    }
-    
-    private void startProducer(final RingBuffer<ValueEvent> ringBuffer) {
-        final Runnable runnable = () -> produce(ringBuffer);
-        new Thread(runnable).start();
+        disruptor.halt();
+        disruptor.shutdown();
     }
     
     @Test
     public void whenSingleProducerSingleConsumer_thenOutputInFifoOrder() {
-        createDisruptor(ProducerType.SINGLE, getEventHandler());
+        final EventConsumer eventConsumer = new SingleEventConsumer();
+        final EventProducer eventProducer = new SingleEventProducer();
+        createDisruptor(ProducerType.SINGLE, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        startProducer(ringBuffer);
+        
+        startProducing(ringBuffer, 32, eventProducer);
+        
+        disruptor.halt();
+        disruptor.shutdown();
     }
     
     @Test
     public void whenSingleProducerMultipleConsumer_thenOutputInFifoOrder() {
-        createDisruptor(ProducerType.SINGLE, getEventHandlers());
+        final EventConsumer eventConsumer = new MultiEventConsumer();
+        final EventProducer eventProducer = new SingleEventProducer();
+        createDisruptor(ProducerType.SINGLE, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        startProducer(ringBuffer);
+        
+        startProducing(ringBuffer, 32, eventProducer);
+        
+        disruptor.halt();
+        disruptor.shutdown();
+    }
+    
+    @Test
+    public void whenMultipleProducerMultipleConsumer_thenOutputInFifoOrder() {
+        final EventConsumer eventConsumer = new MultiEventPrintConsumer();
+        final EventProducer eventProducer = new DelayedMultiEventProducer();
+        createDisruptor(ProducerType.MULTI, eventConsumer);
+        final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
+        
+        startProducing(ringBuffer, 32, eventProducer);
+        
+        disruptor.halt();
+        disruptor.shutdown();
     }
 }
