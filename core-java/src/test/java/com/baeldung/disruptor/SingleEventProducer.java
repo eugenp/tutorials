@@ -9,14 +9,14 @@ public class SingleEventProducer implements EventProducer {
         final Runnable producer = () -> produce(ringBuffer, count);
         new Thread(producer).start();
     }
-    
+
     private void produce(final RingBuffer<ValueEvent> ringBuffer, final int count) {
         for (int i = 0; i < count; i++) {
             final long seq = ringBuffer.next();
             final ValueEvent valueEvent = ringBuffer.get(seq);
             valueEvent.setValue(i);
             ringBuffer.publish(seq);
-        }        
+        }
     }
 
 }

@@ -28,55 +28,55 @@ public class DisruptorTest {
     private void startProducing(final RingBuffer<ValueEvent> ringBuffer, final int count, final EventProducer eventProducer) {
         eventProducer.startProducing(ringBuffer, count);
     }
-    
+
     @Test
     public void whenMultipleProducerSingleConsumer_thenOutputInFifoOrder() {
         final EventConsumer eventConsumer = new SingleEventPrintConsumer();
         final EventProducer eventProducer = new DelayedMultiEventProducer();
         createDisruptor(ProducerType.MULTI, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        
+
         startProducing(ringBuffer, 32, eventProducer);
 
         disruptor.halt();
         disruptor.shutdown();
     }
-    
+
     @Test
     public void whenSingleProducerSingleConsumer_thenOutputInFifoOrder() {
         final EventConsumer eventConsumer = new SingleEventConsumer();
         final EventProducer eventProducer = new SingleEventProducer();
         createDisruptor(ProducerType.SINGLE, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        
+
         startProducing(ringBuffer, 32, eventProducer);
-        
+
         disruptor.halt();
         disruptor.shutdown();
     }
-    
+
     @Test
     public void whenSingleProducerMultipleConsumer_thenOutputInFifoOrder() {
         final EventConsumer eventConsumer = new MultiEventConsumer();
         final EventProducer eventProducer = new SingleEventProducer();
         createDisruptor(ProducerType.SINGLE, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        
+
         startProducing(ringBuffer, 32, eventProducer);
-        
+
         disruptor.halt();
         disruptor.shutdown();
     }
-    
+
     @Test
     public void whenMultipleProducerMultipleConsumer_thenOutputInFifoOrder() {
         final EventConsumer eventConsumer = new MultiEventPrintConsumer();
         final EventProducer eventProducer = new DelayedMultiEventProducer();
         createDisruptor(ProducerType.MULTI, eventConsumer);
         final RingBuffer<ValueEvent> ringBuffer = disruptor.start();
-        
+
         startProducing(ringBuffer, 32, eventProducer);
-        
+
         disruptor.halt();
         disruptor.shutdown();
     }

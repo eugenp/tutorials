@@ -11,7 +11,7 @@ public class DelayedMultiEventProducer implements EventProducer {
         new Thread(simpleProducer).start();
         new Thread(delayedProducer).start();
     }
-    
+
     private void produce(final RingBuffer<ValueEvent> ringBuffer, final int count, final boolean addDelay) {
         for (int i = 0; i < count; i++) {
             final long seq = ringBuffer.next();
@@ -23,12 +23,12 @@ public class DelayedMultiEventProducer implements EventProducer {
             }
         }
     }
-    
+
     private void addDelay() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException interruptedException) {
-            //No-Op lets swallow it
-        }        
+            // No-Op lets swallow it
+        }
     }
 }
