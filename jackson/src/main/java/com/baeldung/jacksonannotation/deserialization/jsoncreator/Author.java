@@ -1,22 +1,22 @@
-package com.baeldung.jacksonannotation.deserialization.jsondeserialize;
+package com.baeldung.jacksonannotation.deserialization.jsoncreator;
+
 
 import com.baeldung.jacksonannotation.domain.Item;
 import com.baeldung.jacksonannotation.domain.Person;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Source code github.com/readlearncode
- *
- * @author Alex Theedom www.readlearncode.com
- * @version 1.0
- */
 public class Author extends Person {
 
     List<Item> items = new ArrayList<>();
 
-    public Author(String firstName, String lastName) {
+    @JsonCreator
+    public Author(
+            @JsonProperty("christianName") String firstName,
+            @JsonProperty("surname") String lastName) {
         super(firstName, lastName);
     }
 

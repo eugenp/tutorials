@@ -89,6 +89,27 @@
         </dependency>
 
         <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <version>${org.hamcrest.version}</version>
@@ -186,7 +207,8 @@
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <rest-assured.version>3.0.1</rest-assured.version>
+        <assertj.version>3.6.1</assertj.version>
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
