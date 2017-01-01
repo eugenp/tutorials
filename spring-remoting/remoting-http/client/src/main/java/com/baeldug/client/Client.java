@@ -1,4 +1,4 @@
-package com.baeldug;
+package com.baeldug.client;
 
 import com.baeldung.api.GreetingsService;
 

@@ -1,4 +1,4 @@
-package com.baeldug;
+package com.baeldug.client;
 
 import com.baeldung.api.GreetingsService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -27,9 +27,7 @@ public class Main {
                 new AnnotationConfigApplicationContext();
         rootContext.scan(Main.class.getPackage().getName());
         rootContext.refresh();
-
         rootContext.getBean(Client.class).run();
-
     }
 
 }

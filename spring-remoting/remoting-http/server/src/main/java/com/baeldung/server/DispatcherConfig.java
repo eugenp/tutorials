@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.server;
 
 import com.baeldung.api.GreetingsService;
 import org.springframework.context.annotation.Bean;

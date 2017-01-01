@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.server;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
