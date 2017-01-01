@@ -68,6 +68,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>4.2.4.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>api</artifactId>
+            <version>${pom.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>

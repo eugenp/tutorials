@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import com.baeldung.api.GreetingsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;

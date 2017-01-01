@@ -15,7 +15,8 @@
 	<modules>
 		<module>server</module>
         <module>client</module>
-	</modules>
+        <module>api</module>
+    </modules>
 
     <dependencies>
         <dependency>
