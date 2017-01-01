@@ -55,6 +55,7 @@
         <module>jackson</module>
         <module>jackson-annotations</module>
         <module>java-cassandra</module>
+        <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
@@ -172,7 +173,6 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-		<module>javaslang</module>
     </modules>
 
 </project>
