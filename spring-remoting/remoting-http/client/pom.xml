@@ -3,18 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>4.2.4.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>api</artifactId>
-            <version>${version}</version>
-        </dependency>
-    </dependencies>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -23,4 +11,20 @@
     </parent>
 
     <artifactId>spring-remoting-http-client</artifactId>
+    <description>Shows how to invoke a remote service using Spring Remoting.</description>
+
+    <dependencies>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <!-- companion modules -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>
