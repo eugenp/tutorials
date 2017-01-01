@@ -5,12 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * Source code github.com/readlearncode
- *
- * @author Alex Theedom www.readlearncode.com
- * @version 1.0
- */
 public class Book extends Item {
 
     private String ISBN;

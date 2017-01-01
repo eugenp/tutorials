@@ -53,7 +53,6 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>jackson-annotations</module>
         <module>java-cassandra</module>
         <module>javaslang</module>
         <module>javax-servlets</module>

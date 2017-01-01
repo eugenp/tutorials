@@ -1,7 +1,6 @@
 package com.baeldung.jacksonannotation.deserialization.jsondeserialize;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
@@ -10,12 +9,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Source code github.com/readlearncode
- *
- * @author Alex Theedom www.readlearncode.com
- * @version 1.0
- */
 public class CustomDateDeserializer extends StdDeserializer<Date> {
 
     private static SimpleDateFormat formatter =
@@ -31,7 +24,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
 
     @Override
     public Date deserialize(JsonParser jsonparser, DeserializationContext context)
-            throws IOException, JsonProcessingException {
+            throws IOException {
         String date = jsonparser.getText();
         try {
             return formatter.parse(date);
