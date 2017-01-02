@@ -34,9 +34,4 @@
 		</authentication-provider>
 	</authentication-manager>
 
-	<beans:bean
-		class="org.springframework.beans.factory.config.MethodInvoki‌​ngFactoryBean"
-		p:targetClass="org.springframework.security.core.context.Sec‌​urityContextHolder"
-		p:targetMethod="setStrategyName" p:arguments="MODE_INHERITABLETHREADLOCAL" />
-
 </beans:beans>

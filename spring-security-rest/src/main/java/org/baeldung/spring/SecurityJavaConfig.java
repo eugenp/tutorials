@@ -1,7 +1,6 @@
 package org.baeldung.spring;
 
 import org.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler;
-import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +24,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
     public SecurityJavaConfig() {
         super();
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
 
     //
@@ -47,7 +47,7 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/api/csrfAttacker*").permitAll()
         .antMatchers("/api/customer/**").permitAll()
         .antMatchers("/api/foos/**").authenticated()
-        .antMatchers("/api/async/**").authenticated()
+        .antMatchers("/api/async/**").permitAll()
         .and()
         .httpBasic()
 //        .and()
@@ -65,15 +65,6 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public SimpleUrlAuthenticationFailureHandler myFailureHandler() {
         return new SimpleUrlAuthenticationFailureHandler();
-    }
-    
-    @Bean
-    public MethodInvokingFactoryBean methodInvokingFactoryBean() {
-        MethodInvokingFactoryBean methodInvokingFactoryBean = new MethodInvokingFactoryBean();
-        methodInvokingFactoryBean.setTargetClass(SecurityContextHolder.class);
-        methodInvokingFactoryBean.setTargetMethod("setStrategyName");
-        methodInvokingFactoryBean.setArguments(new String[]{SecurityContextHolder.MODE_INHERITABLETHREADLOCAL});
-        return methodInvokingFactoryBean;
     }
 
 }
