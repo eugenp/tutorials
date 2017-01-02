@@ -5,7 +5,7 @@ import kotlin.test.assertNotNull
 
 class ItemServiceTest {
     @Test
-    fun givenItemId_whenGetForOptionalName_shouldMakeActionOnNonNullValue() {
+    fun givenItemId_whenGetForOptionalItem_shouldMakeActionOnNonNullValue() {
         //given
         val id = "item_id"
         val itemService = ItemService()
