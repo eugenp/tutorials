@@ -67,6 +67,8 @@
         <module>jsoup</module>
         <module>junit5</module>
 
+        <module>kotlin</module>
+
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
