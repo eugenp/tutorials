@@ -2,7 +2,6 @@ package com.baeldung
 
 import java.util.concurrent.ThreadLocalRandom
 
-
 class ListExtension {
     fun <T> List<T>.random(): T? {
         if (this.isEmpty()) return null
