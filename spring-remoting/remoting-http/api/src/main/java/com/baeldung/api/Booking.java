@@ -38,6 +38,12 @@ public class Booking implements Serializable {
     }
 
     @Override public String toString() {
-        return String.format("Booking: pick up @ %s in %s, drop down in %s after %d minutes, %s $.", pickUptime, pickUpAddress, dropDownAddress, etaInSeconds, costInCent);
+        return String.format("Booking: pick up @ %tr in %s, drop down in %s after %d minutes, %.2f $.", pickUptime, pickUpAddress, dropDownAddress, etaInSeconds/60, costInCent/100.0);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(
+        new Booking(new Address("a", "b"), new Date(), new Address("c", "d"), 123_00, 600, "abc")
+        );
     }
 }

@@ -1,6 +1,6 @@
 package com.baeldung.server;
 
-import com.baeldung.api.SampleServices;
+import com.baeldung.api.CabService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
@@ -10,8 +10,8 @@ public class DispatcherConfig {
 
     @Bean(name = "/account") HttpInvokerServiceExporter accountService() {
         HttpInvokerServiceExporter exporter = new HttpInvokerServiceExporter();
-        exporter.setService( new SampleServicesImpl() );
-        exporter.setServiceInterface( SampleServices.class );
+        exporter.setService( new CabServiceImpl() );
+        exporter.setServiceInterface( CabService.class );
         return exporter;
     }
 

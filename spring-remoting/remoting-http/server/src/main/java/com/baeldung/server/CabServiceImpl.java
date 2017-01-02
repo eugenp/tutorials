@@ -5,12 +5,12 @@ import com.baeldung.api.*;
 import java.util.Date;
 import java.util.UUID;
 
-public class SampleServicesImpl implements SampleServices {
+public class CabServiceImpl implements CabService {
 
-    @Override public Booking bookPickUp(Address pickUp, Address dropDown, int people) throws BookinkException {
+    @Override public Booking bookPickUp(Address pickUp, Address dropDown, int people) throws BookingException {
 
         if(Math.random()<0.3){
-            throw new BookinkException("Cab unavailable");
+            throw new BookingException("Cab unavailable");
         }
 
         int tripTimeInMinutes = (int) (5 + Math.random() * 15);
