@@ -1,6 +1,6 @@
 package com.baeldug.client;
 
-import com.baeldung.api.GreetingsService;
+import com.baeldung.api.SampleServices;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +13,12 @@ public class Main {
     public HttpInvokerProxyFactoryBean invoker() {
         HttpInvokerProxyFactoryBean invoker = new HttpInvokerProxyFactoryBean();
         invoker.setServiceUrl("http://localhost:9090/spring-remoting-http-server/account");
-        invoker.setServiceInterface(GreetingsService.class);
+        invoker.setServiceInterface(SampleServices.class);
         return invoker;
     }
 
     @Bean
-    public Client client(GreetingsService service){
+    public Client client(SampleServices service){
         return new Client(service);
     }
 

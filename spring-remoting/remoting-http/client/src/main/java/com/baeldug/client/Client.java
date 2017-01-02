@@ -1,17 +1,25 @@
 package com.baeldug.client;
 
-import com.baeldung.api.GreetingsService;
+import com.baeldung.api.*;
 
 public class Client {
 
-    private GreetingsService greetingsService;
+    private SampleServices sampleServices;
 
-    public Client(GreetingsService greetingsService) {
-        this.greetingsService = greetingsService;
+    public Client(SampleServices sampleServices) {
+        this.sampleServices = sampleServices;
     }
 
     public void run() {
-        System.out.println( greetingsService.sayHello() );
+
+        Address pickUp = new Address("13 Seagate Blvd, Key Largo, FL 33037", "US");
+        Address dropDown = new Address("91831 Overseas Hwy, Tavernier, FL 33070", "US");
+        try {
+            System.out.println( sampleServices.bookPickUp(pickUp, dropDown, 3) );
+        } catch (BookinkException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
