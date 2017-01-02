@@ -2,11 +2,11 @@ package com.baeldug.client;
 
 import com.baeldung.api.*;
 
-public class Client {
+public class CabBookingClient {
 
-    private CabService cabService;
+    private CabBookingServer cabService;
 
-    public Client(CabService cabService) {
+    public CabBookingClient(CabBookingServer cabService) {
         this.cabService = cabService;
     }
 

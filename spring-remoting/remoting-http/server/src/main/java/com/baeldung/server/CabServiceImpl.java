@@ -5,7 +5,7 @@ import com.baeldung.api.*;
 import java.util.Date;
 import java.util.UUID;
 
-public class CabServiceImpl implements CabService {
+public class CabServiceImpl implements CabBookingServer {
 
     @Override public Booking bookPickUp(Address pickUp, Address dropDown, int people) throws BookingException {
 
