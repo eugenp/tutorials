@@ -91,14 +91,14 @@
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
-            <version>1</version>
+            <version>${inject.version}</version>
         </dependency>
 
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -108,7 +108,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -126,14 +126,14 @@
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>2.6</version>
+            <version>${joda-time.version}</version>
         </dependency>
 
         <!-- Handlebars.java -->
         <dependency>
             <groupId>com.github.jknack</groupId>
             <artifactId>handlebars</artifactId>
-            <version>1.3.2</version>
+            <version>${handlebars.version}</version>
         </dependency>
 
         <!-- logging -->
@@ -175,7 +175,7 @@
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>yuicompressor-maven-plugin</artifactId>
-                <version>1.5.1</version>
+                <version>${yuicompressor-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -210,46 +210,29 @@
         <java-version>1.8</java-version>
 
         <!-- Spring -->
-        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.0.4.RELEASE</org.springframework.security.version>
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
 
-        <org.aspectj-version>1.8.1</org.aspectj-version>
-        <javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
-
-        <!-- persistence -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
-        <spring-data-jpa.version>1.9.2.RELEASE</spring-data-jpa.version>
+        <org.aspectj-version>1.8.9</org.aspectj-version>
+        <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
 
         <!-- marshalling -->
-        <jackson.version>2.7.8</jackson.version>
+        <jackson.version>2.8.5</jackson.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <logback.version>1.1.7</logback.version>
 
-        <!-- various -->
-        <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
-
-        <!-- util -->
-        <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
-
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <!-- various 1.3.2-->
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <handlebars.version>4.0.6</handlebars.version>
+        <joda-time.version>2.9.6</joda-time.version>
+        <jstl.version>1.2</jstl.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <inject.version>1</inject.version>
 
         <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+        <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
     </properties>
 
 </project>
