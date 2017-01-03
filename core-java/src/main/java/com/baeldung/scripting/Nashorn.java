@@ -1,5 +1,7 @@
 package com.baeldung.scripting;
 
+import org.junit.Assert;
+
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class Nashorn {
                 "print(greeting);" +
                 "greeting");
 
-        System.out.println(result);
+        Assert.assertEquals("hello world", result);
 
         bindingsExamples(engine);
 
@@ -49,8 +51,9 @@ public class Nashorn {
     private static void jsonObjectExample(ScriptEngine engine) throws ScriptException {
         Object obj = engine.eval("Java.asJSONCompatible({ number: 42, greet: 'hello', primes: [2,3,5,7,11,13] })");
         Map<String, Object> map = (Map<String, Object>) obj;
-        System.out.println(map.get("greet"));
-        System.out.println(List.class.isAssignableFrom(map.get("primes").getClass()));
+
+        Assert.assertEquals("hello", map.get("greet"));
+        Assert.assertTrue(List.class.isAssignableFrom(map.get("primes").getClass()));
     }
 
     private static void tryCatchGuard(ScriptEngine engine) throws ScriptException {
@@ -79,7 +82,7 @@ public class Nashorn {
                 "greeting";
 
         Object bindingsResult = engine.eval(script, bindings);
-        System.out.println(bindingsResult);
+        Assert.assertEquals("Hello baeldung baeldung baeldung ", bindingsResult);
     }
 
     private static void jvmBoundaryExamples(ScriptEngine engine) throws ScriptException, NoSuchMethodException {
@@ -90,25 +93,26 @@ public class Nashorn {
         Invocable invocable = (Invocable) engine;
 
         Object funcResult = invocable.invokeFunction("composeGreeting", "baeldung");
-        System.out.println(funcResult);
+        Assert.assertEquals("Hello baeldung", funcResult);
 
         Object map = engine.eval("var HashMap = Java.type('java.util.HashMap');" +
                 "var map = new HashMap();" +
                 "map.put('hello', 'world');" +
                 "map");
 
-        System.out.println(map);
+        Assert.assertTrue(Map.class.isAssignableFrom(map.getClass()));
     }
 
     private static void loadExamples(ScriptEngine engine) throws ScriptException {
         Object loadResult = engine.eval("load('classpath:js/script.js');" +
                 "increment(5)");
 
-        System.out.println(loadResult);
+        Assert.assertEquals(6.0, loadResult);
 
         Object math = engine.eval("var math = loadWithNewGlobal('classpath:js/math_module.js');" +
                 "math.increment(5);");
 
-        System.out.println(math);
+        Assert.assertEquals(6.0, math);
+
     }
 }
