@@ -1,12 +1,10 @@
 package com.baeldung.jackson.inheritance;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.MINIMAL_CLASS, include = JsonTypeInfo.As.PROPERTY, property = "eventType")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Event {
     private final Metadata metadata;
 
