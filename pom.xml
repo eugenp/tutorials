@@ -15,6 +15,7 @@
     </properties>
 
     <modules>
+        <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
         <module>apache-fop</module> 
