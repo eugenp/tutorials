@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class StringCharArrayConversionTest {
 
     @Test
-    public void stringToCharArray() throws Exception {
+    public void givenString_whenConvertedToCharArray_ThenCorrect() throws Exception {
         String beforeConvCharArr = "Text";
         char[] afterConvCharArr = {'T','e','x','t'};
 
@@ -16,7 +16,7 @@ public class StringCharArrayConversionTest {
     }
 
     @Test
-    public void charArrayToString() throws Exception {
+    public void givenCharArray_whenConvertedToString_ThenCorrect() throws Exception {
         char[] beforeConvStr = {'T','e','x','t'};
         String afterConvStr = "Text";
 
