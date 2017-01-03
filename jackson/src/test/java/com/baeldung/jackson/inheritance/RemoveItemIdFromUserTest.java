@@ -22,6 +22,7 @@ public class RemoveItemIdFromUserTest {
         //then
         assertTrue(result instanceof RemoveItemIdFromUser);
         assertEquals("item_1", ((RemoveItemIdFromUser) result).getItemId());
+        new EventProcessor().process(result);
     }
 
 }
