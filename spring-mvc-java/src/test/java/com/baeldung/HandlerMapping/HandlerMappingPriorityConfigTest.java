@@ -35,7 +35,7 @@ public class HandlerMappingPriorityConfigTest {
     }
 
     @Test
-    public void whenBeanNameMapping_thenMappedOK() throws Exception {
+    public void whenConfiguringPriorities_thenMappedOK() throws Exception {
         mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("test")).andDo(print());
     }
 }
