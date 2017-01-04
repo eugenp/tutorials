@@ -1,4 +1,4 @@
-package com.baeldung.springretry;
+package org.baeldung.springretry;
 
 import java.sql.SQLException;
 
@@ -9,12 +9,12 @@ import org.springframework.util.StringUtils;
 public class MyServiceImpl implements MyService {
 
     @Override
-    public void defaultRetryService() {
+    public void retryService() {
         throw new RuntimeException();
     }
 
     @Override
-    public void customRetryService(String sql) throws SQLException {
+    public void retryServiceWithRecovery(String sql) throws SQLException {
         if (StringUtils.isEmpty(sql)) {
             throw new SQLException();
         } 

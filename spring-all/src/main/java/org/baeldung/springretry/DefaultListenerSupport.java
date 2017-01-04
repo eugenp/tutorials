@@ -1,4 +1,4 @@
-package com.baeldung.springretry;
+package org.baeldung.springretry;
 
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
