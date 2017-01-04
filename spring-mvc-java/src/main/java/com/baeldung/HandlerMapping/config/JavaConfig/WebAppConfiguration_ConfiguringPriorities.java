@@ -9,9 +9,9 @@ import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping;
 
-import com.baeldung.controller.WelcomeBaeldungController;
+import com.baeldung.controller.BaeldungController;
 import com.baeldung.controller.WelcomeController;
-import com.baeldung.controller.WelcomeTwoController;
+import com.baeldung.controller.TestController;
 
 @Configuration
 public class WebAppConfiguration_ConfiguringPriorities {
@@ -24,32 +24,32 @@ public class WebAppConfiguration_ConfiguringPriorities {
     }
 
     @Bean("/welcome")
-    public WelcomeBaeldungController welcomeBaeldungController() {
-        WelcomeBaeldungController welcomeBaeldungController = new WelcomeBaeldungController();
-        return welcomeBaeldungController;
+    public BaeldungController welcomeBaeldungController() {
+        BaeldungController baeldungController = new BaeldungController();
+        return baeldungController;
     }
 
     @Bean
     public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         Map<String, Object> urlMap = new HashMap<>();
-        urlMap.put("/welcome", welcome());
+        urlMap.put("/welcome", test());
         simpleUrlHandlerMapping.setUrlMap(urlMap);
         simpleUrlHandlerMapping.setOrder(0);
         return simpleUrlHandlerMapping;
     }
 
     @Bean
-    public WelcomeTwoController welcome() {
-        WelcomeTwoController bean = new WelcomeTwoController();
-        return bean;
+    public TestController test() {
+        TestController test = new TestController();
+        return test;
     }
 
     @Bean
     public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
-        ControllerClassNameHandlerMapping controllerClassNameHandlerMapping = new ControllerClassNameHandlerMapping();
-        controllerClassNameHandlerMapping.setOrder(1);
-        return controllerClassNameHandlerMapping;
+        ControllerClassNameHandlerMapping bean = new ControllerClassNameHandlerMapping();
+        bean.setOrder(1);
+        return bean;
     }
 
     @Bean

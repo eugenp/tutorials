@@ -17,19 +17,19 @@
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
 		<property name="order" value="2" />
 	</bean>
-	<bean name="/welcome" class="com.baeldung.WelcomeController" />
+	<bean name="/welcome" class="com.baeldung.BaeldungController" />
 	
 
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/welcome=welcome
-				/*/welcome=welcome
+				/welcome=test
+				/*/welcome=test
 			</value>
 		</property>
 		<property name="order" value="0" />
 	</bean>
-	<bean id="welcome" class="com.baeldung.WelcomeTwoController" />
+	<bean id="test" class="com.baeldung.TestController" />
 
 
 	<bean

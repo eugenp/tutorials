@@ -25,7 +25,7 @@ public class WebAppConfiguration_BeanNameUrlHandlerMapping {
         return bean;
     }
 
-    @Bean("/welcome")
+    @Bean("/beanNameUrl")
     public WelcomeController welcome() {
         WelcomeController welcome = new WelcomeController();
         return welcome;

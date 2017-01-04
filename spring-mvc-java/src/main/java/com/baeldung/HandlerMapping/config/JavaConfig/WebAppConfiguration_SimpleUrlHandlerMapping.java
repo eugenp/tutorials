@@ -27,7 +27,7 @@ public class WebAppConfiguration_SimpleUrlHandlerMapping {
     public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
         Map<String, Object> urlMap = new HashMap<>();
-        urlMap.put("/welcome", welcome());
+        urlMap.put("/simpleUrlWelcome", welcome());
         simpleUrlHandlerMapping.setUrlMap(urlMap);
         return simpleUrlHandlerMapping;
     }
