@@ -19,7 +19,6 @@ public class UtilsTest {
         }
 
         @Test public void givenCharArray_whenCallingCharArrayToString_shouldConvertToString() {
-
                 char[] givenCharArray = new char[] { 'a', 'b', 'c', 'd' };
 
                 assertThat(Utils.charArrayToString(givenCharArray)).isEqualTo("abcd");
