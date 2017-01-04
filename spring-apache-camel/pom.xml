@@ -9,10 +9,10 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<env.camel.version>2.16.1</env.camel.version>
-		<env.spring.version>4.2.4.RELEASE</env.spring.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-		<java.version>1.7</java.version>
+		<env.camel.version>2.18.1</env.camel.version>
+		<env.spring.version>4.3.4.RELEASE</env.spring.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 
@@ -47,6 +47,16 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${env.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.21</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-javaconfig</artifactId>
+			<version>${env.camel.version}</version>
 		</dependency>
 
 	</dependencies>

@@ -47,13 +47,13 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
+            <version>${commons-fileupload.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
@@ -150,7 +150,7 @@
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.2.0</version>
+            <version>${jsonpath.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -184,7 +184,7 @@
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
+                <version>${maven-resources-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -202,10 +202,33 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
+                    <testFailureIgnore>true</testFailureIgnore>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
                     </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
+                <configuration>
+                    <wait>true</wait>
+                    <container>
+                        <containerId>jetty8x</containerId>
+                        <type>embedded</type>
+                        <systemProperties>
+                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
+                        </systemProperties>
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>8082</cargo.servlet.port>
+                        </properties>
+                    </configuration>
                 </configuration>
             </plugin>
         </plugins>
@@ -244,48 +267,109 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>live</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*IntegrationTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*LiveTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <configuration>
+                            <wait>false</wait>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>start-server</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop-server</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>        
     </profiles>
     
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-        <thymeleaf.version>2.1.4.RELEASE</thymeleaf.version>
-        <jackson.version>2.7.8</jackson.version>
+        <thymeleaf.version>2.1.5.RELEASE</thymeleaf.version>
+        <jackson.version>2.8.5</jackson.version>
 
         <!-- persistence -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+        <hibernate.version>5.2.5.Final</hibernate.version>
+        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.5</logback.version>
+        <logback.version>1.1.7</logback.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.2.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <jstl.version>1.2</jstl.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-fileupload.version>1.3.2</commons-fileupload.version>
+        <jsonpath.version>2.2.0</jsonpath.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
         <rest-assured.version>2.9.0</rest-assured.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 
         <!-- AspectJ -->
-        <aspectj.version>1.8.7</aspectj.version>
+        <aspectj.version>1.8.9</aspectj.version>
     </properties>
 
 </project>

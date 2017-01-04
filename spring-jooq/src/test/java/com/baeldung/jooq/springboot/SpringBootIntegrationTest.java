@@ -1,5 +1,10 @@
 package com.baeldung.jooq.springboot;
 
+import static com.baeldung.jooq.introduction.db.public_.tables.Author.AUTHOR;
+import static com.baeldung.jooq.introduction.db.public_.tables.AuthorBook.AUTHOR_BOOK;
+import static com.baeldung.jooq.introduction.db.public_.tables.Book.BOOK;
+import static org.junit.Assert.assertEquals;
+
 import org.jooq.DSLContext;
 import org.jooq.Record3;
 import org.jooq.Result;
@@ -7,19 +12,14 @@ import org.jooq.impl.DSL;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.baeldung.jooq.introduction.db.public_.tables.Author.AUTHOR;
-import static com.baeldung.jooq.introduction.db.public_.tables.AuthorBook.AUTHOR_BOOK;
-import static com.baeldung.jooq.introduction.db.public_.tables.Book.BOOK;
-import static org.junit.Assert.assertEquals;
-
-@SpringApplicationConfiguration(Application.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
 @Transactional("transactionManager")
-@RunWith(SpringJUnit4ClassRunner.class)
 public class SpringBootIntegrationTest {
 
     @Autowired

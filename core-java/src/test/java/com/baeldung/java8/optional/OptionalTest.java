@@ -1,17 +1,15 @@
 package com.baeldung.java8.optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.optional.Modem;
+import com.baeldung.optional.Person;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-import org.junit.Test;
-
-import com.baeldung.java_8_features.Person;
+import static org.junit.Assert.*;
 
 public class OptionalTest {
     // creating Optional
@@ -94,6 +92,37 @@ public class OptionalTest {
         assertTrue(is2016);
         boolean is2017 = yearOptional.filter(y -> y == 2017).isPresent();
         assertFalse(is2017);
+    }
+
+    @Test
+    public void whenFiltersWithoutOptional_thenCorrect() {
+        assertTrue(priceIsInRange1(new Modem(10.0)));
+        assertFalse(priceIsInRange1(new Modem(9.9)));
+        assertFalse(priceIsInRange1(new Modem(null)));
+        assertFalse(priceIsInRange1(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
+
+    }
+
+    @Test
+    public void whenFiltersWithOptional_thenCorrect() {
+        assertTrue(priceIsInRange2(new Modem(10.0)));
+        assertFalse(priceIsInRange2(new Modem(9.9)));
+        assertFalse(priceIsInRange2(new Modem(null)));
+        assertFalse(priceIsInRange2(new Modem(15.5)));
+        assertFalse(priceIsInRange1(null));
+    }
+
+    public boolean priceIsInRange1(Modem modem) {
+        boolean isInRange = false;
+        if (modem != null && modem.getPrice() != null && (modem.getPrice() >= 10 && modem.getPrice() <= 15)) {
+            isInRange = true;
+        }
+        return isInRange;
+    }
+
+    public boolean priceIsInRange2(Modem modem2) {
+        return Optional.ofNullable(modem2).map(Modem::getPrice).filter(p -> p >= 10).filter(p -> p <= 15).isPresent();
     }
 
     // Transforming Value With map()

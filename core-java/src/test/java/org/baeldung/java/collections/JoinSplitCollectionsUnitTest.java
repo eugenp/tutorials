@@ -22,78 +22,78 @@ public class JoinSplitCollectionsUnitTest {
 
     @Test
     public void whenJoiningTwoCollections_thenJoined() {
-        Collection<Integer> collection1 = Arrays.asList(7, 8, 9);
-        Collection<Integer> collection2 = Arrays.asList(10, 11, 12);
-        Collection<Integer> result = Stream.concat(collection1.stream(), collection2.stream()).collect(Collectors.toList());
+        Collection<String> collection1 = Arrays.asList("Dog", "Cat");
+        Collection<String> collection2 = Arrays.asList("Bird", "Cow", "Moose");
+        Collection<String> result = Stream.concat(collection1.stream(), collection2.stream()).collect(Collectors.toList());
 
-        assertTrue(result.equals(Arrays.asList(7, 8, 9, 10, 11, 12)));
+        assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Bird", "Cow", "Moose")));
     }
 
     @Test
     public void whenJoiningTwoCollectionsWithFilter_thenJoined() {
-        Collection<Integer> collection1 = Arrays.asList(7, 8, 11);
-        Collection<Integer> collection2 = Arrays.asList(9, 12, 10);
-        Collection<Integer> result = Stream.concat(collection1.stream(), collection2.stream()).filter(next -> next <= 10).collect(Collectors.toList());
+        Collection<String> collection1 = Arrays.asList("Dog", "Cat");
+        Collection<String> collection2 = Arrays.asList("Bird", "Cow", "Moose");
+        Collection<String> result = Stream.concat(collection1.stream(), collection2.stream()).filter(e -> e.length() == 3).collect(Collectors.toList());
 
-        assertTrue(result.equals(Arrays.asList(7, 8, 9, 10)));
+        assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Cow")));
     }
 
     @Test
     public void whenConvertArrayToString_thenConverted() {
-        String[] colors = new String[] { "Red", "Blue", "Green", "Yellow" };
-        String result = Arrays.stream(colors).collect(Collectors.joining(", "));
+        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow" };
+        String result = Arrays.stream(animals).collect(Collectors.joining(", "));
 
-        assertEquals(result, "Red, Blue, Green, Yellow");
+        assertEquals(result, "Dog, Cat, Bird, Cow");
     }
 
     @Test
     public void whenConvertCollectionToString_thenConverted() {
-        Collection<String> directions = Arrays.asList("Left", "Right", "Top", "Bottom");
-        String result = directions.stream().collect(Collectors.joining(", "));
+        Collection<String> animals = Arrays.asList("Dog", "Cat", "Bird", "Cow");
+        String result = animals.stream().collect(Collectors.joining(", "));
 
-        assertEquals(result, "Left, Right, Top, Bottom");
+        assertEquals(result, "Dog, Cat, Bird, Cow");
     }
 
     @Test
     public void whenConvertMapToString_thenConverted() {
-        Map<Integer, String> users = new HashMap<>();
-        users.put(1, "John Doe");
-        users.put(2, "Paul Smith");
-        users.put(3, "Susan Anderson");
+        Map<Integer, String> animals = new HashMap<>();
+        animals.put(1, "Dog");
+        animals.put(2, "Cat");
+        animals.put(3, "Cow");
 
-        String result = users.entrySet().stream().map(entry -> entry.getKey() + " = " + entry.getValue()).collect(Collectors.joining(", "));
+        String result = animals.entrySet().stream().map(entry -> entry.getKey() + " = " + entry.getValue()).collect(Collectors.joining(", "));
 
-        assertEquals(result, "1 = John Doe, 2 = Paul Smith, 3 = Susan Anderson");
+        assertEquals(result, "1 = Dog, 2 = Cat, 3 = Cow");
     }
 
     @Test
     public void whenConvertNestedCollectionToString_thenConverted() {
         Collection<List<String>> nested = new ArrayList<>();
-        nested.add(Arrays.asList("Left", "Right", "Top", "Bottom"));
-        nested.add(Arrays.asList("Red", "Blue", "Green", "Yellow"));
+        nested.add(Arrays.asList("Dog", "Cat"));
+        nested.add(Arrays.asList("Cow", "Pig"));
 
         String result = nested.stream().map(nextList -> nextList.stream().collect(Collectors.joining("-"))).collect(Collectors.joining("; "));
 
-        assertEquals(result, "Left-Right-Top-Bottom; Red-Blue-Green-Yellow");
+        assertEquals(result, "Dog-Cat; Cow-Pig");
     }
 
     @Test
     public void whenConvertCollectionToStringAndSkipNull_thenConverted() {
-        Collection<String> fruits = Arrays.asList("Apple", "Orange", null, "Grape");
-        String result = fruits.stream().filter(Objects::nonNull).collect(Collectors.joining(", "));
+        Collection<String> animals = Arrays.asList("Dog", "Cat", null, "Moose");
+        String result = animals.stream().filter(Objects::nonNull).collect(Collectors.joining(", "));
 
-        assertEquals(result, "Apple, Orange, Grape");
+        assertEquals(result, "Dog, Cat, Moose");
     }
 
     @Test
     public void whenSplitCollectionHalf_thenConverted() {
-        Collection<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        Collection<Integer> result1 = new ArrayList<>();
-        Collection<Integer> result2 = new ArrayList<>();
+        Collection<String> animals = Arrays.asList("Dog", "Cat", "Cow", "Bird", "Moose", "Pig");
+        Collection<String> result1 = new ArrayList<>();
+        Collection<String> result2 = new ArrayList<>();
         AtomicInteger count = new AtomicInteger();
-        int midpoint = Math.round(numbers.size() / 2);
+        int midpoint = Math.round(animals.size() / 2);
 
-        numbers.forEach(next -> {
+        animals.forEach(next -> {
             int index = count.getAndIncrement();
             if (index < midpoint) {
                 result1.add(next);
@@ -102,53 +102,53 @@ public class JoinSplitCollectionsUnitTest {
             }
         });
 
-        assertTrue(result1.equals(Arrays.asList(1, 2, 3, 4, 5)));
-        assertTrue(result2.equals(Arrays.asList(6, 7, 8, 9, 10)));
+        assertTrue(result1.equals(Arrays.asList("Dog", "Cat", "Cow")));
+        assertTrue(result2.equals(Arrays.asList("Bird", "Moose", "Pig")));
     }
 
     @Test
     public void whenSplitArrayByWordLength_thenConverted() {
-        String[] words = new String[] { "bye", "cold", "it", "and", "my", "word" };
-        Map<Integer, List<String>> result = Arrays.stream(words).collect(Collectors.groupingBy(String::length));
+        String[] animals = new String[] { "Dog", "Cat", "Bird", "Cow", "Pig", "Moose" };
+        Map<Integer, List<String>> result = Arrays.stream(animals).collect(Collectors.groupingBy(String::length));
 
-        assertTrue(result.get(2).equals(Arrays.asList("it", "my")));
-        assertTrue(result.get(3).equals(Arrays.asList("bye", "and")));
-        assertTrue(result.get(4).equals(Arrays.asList("cold", "word")));
+        assertTrue(result.get(3).equals(Arrays.asList("Dog", "Cat", "Cow", "Pig")));
+        assertTrue(result.get(4).equals(Arrays.asList("Bird")));
+        assertTrue(result.get(5).equals(Arrays.asList("Moose")));
     }
 
     @Test
     public void whenConvertStringToArray_thenConverted() {
-        String colors = "Red, Blue, Green, Yellow";
-        String[] result = colors.split(", ");
+        String animals = "Dog, Cat, Bird, Cow";
+        String[] result = animals.split(", ");
 
-        assertArrayEquals(result, new String[] { "Red", "Blue", "Green", "Yellow" });
+        assertArrayEquals(result, new String[] { "Dog", "Cat", "Bird", "Cow" });
     }
 
     @Test
     public void whenConvertStringToCollection_thenConverted() {
-        String colors = "Left, Right, Top, Bottom";
-        Collection<String> result = Arrays.asList(colors.split(", "));
+        String animals = "Dog, Cat, Bird, Cow";
+        Collection<String> result = Arrays.asList(animals.split(", "));
 
-        assertTrue(result.equals(Arrays.asList("Left", "Right", "Top", "Bottom")));
+        assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Bird", "Cow")));
     }
 
     @Test
     public void whenConvertStringToMap_thenConverted() {
-        String users = "1 = John Doe, 2 = Paul Smith, 3 = Susan Anderson";
+        String animals = "1 = Dog, 2 = Cat, 3 = Bird";
 
-        Map<Integer, String> result = Arrays.stream(users.split(", ")).map(next -> next.split(" = ")).collect(Collectors.toMap(entry -> Integer.parseInt(entry[0]), entry -> entry[1]));
+        Map<Integer, String> result = Arrays.stream(animals.split(", ")).map(next -> next.split(" = ")).collect(Collectors.toMap(entry -> Integer.parseInt(entry[0]), entry -> entry[1]));
 
-        assertEquals(result.get(1), "John Doe");
-        assertEquals(result.get(2), "Paul Smith");
-        assertEquals(result.get(3), "Susan Anderson");
+        assertEquals(result.get(1), "Dog");
+        assertEquals(result.get(2), "Cat");
+        assertEquals(result.get(3), "Bird");
     }
 
     @Test
     public void whenConvertCollectionToStringMultipleSeparators_thenConverted() {
-        String fruits = "Apple. , Orange, Grape. Lemon";
+        String animals = "Dog. , Cat, Bird. Cow";
 
-        Collection<String> result = Arrays.stream(fruits.split("[,|.]")).map(String::trim).filter(next -> !next.isEmpty()).collect(Collectors.toList());
+        Collection<String> result = Arrays.stream(animals.split("[,|.]")).map(String::trim).filter(next -> !next.isEmpty()).collect(Collectors.toList());
 
-        assertTrue(result.equals(Arrays.asList("Apple", "Orange", "Grape", "Lemon")));
+        assertTrue(result.equals(Arrays.asList("Dog", "Cat", "Bird", "Cow")));
     }
 }

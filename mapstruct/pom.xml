@@ -10,7 +10,11 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<org.mapstruct.version>1.0.0.Final</org.mapstruct.version>
+		<org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
+		<junit.version>4.12</junit.version>
+		<springframework.version>4.3.4.RELEASE</springframework.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -21,18 +25,18 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.3.2.RELEASE</version>
+			<version>${springframework.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.3.2.RELEASE</version>
+			<version>${springframework.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -42,7 +46,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -56,10 +60,10 @@
 				</configuration>
 			</plugin>
 		    
-		                <plugin>
+		    <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>

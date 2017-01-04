@@ -36,7 +36,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -123,21 +123,23 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.2.5.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 
         <!-- JSF -->
-        <com.sun.faces.version>2.2.13</com.sun.faces.version>
+        <com.sun.faces.version>2.2.14</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
 
         <!-- logging -->
-        <org.slf4j.version>1.7.13</org.slf4j.version>
-        <logback.version>1.1.3</logback.version>
+        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <logback.version>1.1.7</logback.version>
 
         <!--Tomcat-->
         <javax.servlet.version>3.1.0</javax.servlet.version>
+        
+        <jstl.version>1.2</jstl.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
 
     </properties>

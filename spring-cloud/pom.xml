@@ -26,6 +26,16 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-session.version>1.2.2.RELEASE</spring-session.version>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+        <spring-cloud-starter-config.version>1.2.2.RELEASE</spring-cloud-starter-config.version>
+        <spring-cloud-config-server.version>1.2.2.RELEASE</spring-cloud-config-server.version>
+        <spring-cloud-starter-eureka.version>1.2.3.RELEASE</spring-cloud-starter-eureka.version>
+        <spring-cloud-starter-feign.version>1.2.3.RELEASE</spring-cloud-starter-feign.version>
+        <spring-cloud-starter-hystrix.version>1.2.3.RELEASE</spring-cloud-starter-hystrix.version>
+        <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
     <build>
@@ -34,7 +44,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
@@ -43,7 +53,7 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.4.0.RELEASE</version>
+                    <version>${spring-boot-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
