@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.baeldung.server" />
+
+    <bean id="employeeRepository" class="com.baeldung.server.repo.EmployeeRepository">
+        <property name="employeeList">
+            <list>
+                <bean class="com.baeldung.server.representation.Employee">
+                    <property name="firstName" value="Jane" />
+                    <property name="lastName" value="Doe" />
+                    <property name="age" value="22" />
+                    <property name="id" value="1" />
+                </bean>
+                <bean class="com.baeldung.server.representation.Employee">
+                    <property name="firstName" value="Jack" />
+                    <property name="lastName" value="Doe" />
+                    <property name="age" value="25" />
+                    <property name="id" value="2" />
+                </bean>
+                <bean class="com.baeldung.server.representation.Employee">
+                    <property name="firstName" value="George" />
+                    <property name="lastName" value="Doe" />
+                    <property name="age" value="30" />
+                    <property name="id" value="3" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+</beans>
