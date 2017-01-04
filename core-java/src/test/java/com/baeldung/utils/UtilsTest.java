@@ -1,32 +1,28 @@
 package com.baeldung.utils;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by dsharew on 1/4/17.
- */
 public class UtilsTest {
 
-        @Test
-        public void givenString_whenCallingStringToCharArray_shouldConvertToCharArray() {
-                String givenString = "abcd";
+    @Test public void givenString_whenCallingStringToCharArray_shouldConvertToCharArray() {
+        String givenString = "abcd";
 
-                char[] result = Utils.stringToCharArray(givenString);
+        char[] result = Utils.stringToCharArray(givenString);
 
-                assertTrue(Arrays.equals(result, new char[]{'a', 'b', 'c', 'd'}));
-        }
+        assertTrue(Arrays.equals(result, new char[] { 'a', 'b', 'c', 'd' }));
+    }
 
-        @Test
-        public void givenCharArray_whenCallingCharArrayToString_shouldConvertToString() {
+    @Test public void givenCharArray_whenCallingCharArrayToString_shouldConvertToString() {
 
-                char[] givenCharArray = new char[]{'a', 'b', 'c', 'd'};
+        char[] givenCharArray = new char[] { 'a', 'b', 'c', 'd' };
 
-                assertThat(Utils.charArrayToString(givenCharArray)).isEqualTo("abcd");
-        }
+        assertThat(Utils.charArrayToString(givenCharArray)).isEqualTo("abcd");
+    }
 
 }
