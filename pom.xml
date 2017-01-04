@@ -173,6 +173,7 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
+        <module>metrics</module>
     </modules>
 
 </project>
