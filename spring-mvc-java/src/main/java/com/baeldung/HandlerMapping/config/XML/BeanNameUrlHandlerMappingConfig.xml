@@ -23,7 +23,7 @@
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
 	</bean>
 
-	<bean name="welcome" class="com.baeldung.WelcomeController" />
+	<bean name="beanNameUrl" class="com.baeldung.WelcomeController" />
 
 
 

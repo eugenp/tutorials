@@ -25,8 +25,8 @@
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-				/test=welcome
-				/*/test=welcome
+				/simpleUrlWelcome=welcome
+				/*/simpleUrlWelcome=welcome
 			</value>
 		</property>
 	</bean>
