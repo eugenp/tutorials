@@ -23,12 +23,6 @@ public class HandlerMappingPrioritiesConfig {
         return beanNameUrlHandlerMapping;
     }
 
-    @Bean("/welcome")
-    public BaeldungController welcomeBaeldungController() {
-        BaeldungController baeldungController = new BaeldungController();
-        return baeldungController;
-    }
-
     @Bean
     public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
@@ -40,21 +34,24 @@ public class HandlerMappingPrioritiesConfig {
     }
 
     @Bean
-    public TestController test() {
-        TestController test = new TestController();
-        return test;
-    }
-
-    @Bean
     public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
         ControllerClassNameHandlerMapping bean = new ControllerClassNameHandlerMapping();
         bean.setOrder(1);
         return bean;
     }
 
+    @Bean("/welcome")
+    public BaeldungController welcomeBaeldungController() {
+        return new BaeldungController();
+    }
+
+    @Bean
+    public TestController test() {
+        return new TestController();
+    }
+
     @Bean
     public WelcomeController welcomeController() {
-        WelcomeController bean = new WelcomeController();
-        return bean;
+        return new WelcomeController();
     }
 }

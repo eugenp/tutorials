@@ -11,14 +11,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class BeanNameUrlHandlerMappingConfig {
 
     @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
-
-    @Bean
     BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
         return new BeanNameUrlHandlerMapping();
     }
