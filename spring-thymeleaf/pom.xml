@@ -15,7 +15,7 @@
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>
 		<!-- thymeleaf -->
-		<org.thymeleaf-version>3.0.2.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>
 		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
 		<!-- validation -->
 		<javax.validation-version>1.1.0.Final</javax.validation-version>
@@ -77,6 +77,11 @@
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.thymeleaf.extras</groupId>
+    		<artifactId>thymeleaf-extras-java8time</artifactId>
+    		<version>3.0.0.RELEASE</version>
 		</dependency>
 		<!-- Logging -->
 		<dependency>

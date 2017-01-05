@@ -53,6 +53,8 @@ public class ExpressionUtilityObjectsControllerIntegrationTest {
 	@Test
 	public void testGetDates() throws Exception{
 		mockMvc.perform(get("/objects").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("objects.html"));
+		mockMvc.perform(get("/dates").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("objects.html"));
+
 	}
 
 }
