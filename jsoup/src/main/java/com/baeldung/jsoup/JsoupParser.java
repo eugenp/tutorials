@@ -1,41 +1,21 @@
 package com.baeldung.jsoup;
 
 import java.io.IOException;
-import org.jsoup.Connection;
-import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
 
-public class JsoupExample {
+public class JsoupParser {
 
     Document doc;
 
-    void test404() throws IOException {
-        try {
-            loadDocument("https://spring.io/will-not-be-found");
-        } catch (HttpStatusException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    void loadDocument(String blogUrl) throws IOException {
+    public void loadDocument(String blogUrl) throws IOException {
         doc = Jsoup.connect(blogUrl).get();
     }
 
     void loadDocumentCustomized(String blogUrl) throws IOException {
-        Connection connection = Jsoup.connect(blogUrl);
-        connection.userAgent("Mozilla");
-        connection.timeout(5000);
-        connection.cookie("cookiename", "val234");
-        connection.cookie("cookiename", "val234");
-        connection.referrer("http://google.com");
-        connection.header("headersecurity", "xyz123");
-        doc = connection.get();
-
-        // in alternative:
         doc = Jsoup.connect(blogUrl)
                 .userAgent("Mozilla")
                 .timeout(5000)
@@ -103,8 +83,6 @@ public class JsoupExample {
 
         doc.select("li.navbar-link").remove();
         firstArticle.select("img").remove();
-
-        System.out.println(doc.html());
     }
 
     String getTidyHtml() {
