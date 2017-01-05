@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.lambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
 

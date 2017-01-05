@@ -1,7 +1,6 @@
-package com.baeldung;
+package com.baeldung.lambda;
 
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
 import org.apache.commons.io.IOUtils;
 
