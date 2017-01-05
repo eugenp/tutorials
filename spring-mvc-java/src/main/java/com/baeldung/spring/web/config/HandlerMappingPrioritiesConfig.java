@@ -1,20 +1,20 @@
-package com.baeldung.config;
+package com.baeldung.spring.web.config;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import com.baeldung.web.controller.handlermapping.BaeldungController;
+import com.baeldung.web.controller.handlermapping.TestController;
+import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping;
 
-import com.baeldung.controller.BaeldungController;
-import com.baeldung.controller.WelcomeController;
-import com.baeldung.controller.TestController;
 
 @Configuration
-public class WebAppConfiguration_ConfiguringPriorities {
+public class HandlerMappingPrioritiesConfig {
 
     @Bean
     BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {

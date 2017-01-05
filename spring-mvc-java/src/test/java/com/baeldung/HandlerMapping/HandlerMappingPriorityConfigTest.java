@@ -1,4 +1,4 @@
-package come.baeldung.test;
+package com.baeldung.handlermapping;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -17,11 +17,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.config.WebAppConfiguration_ConfiguringPriorities;
+import com.baeldung.spring.web.config.HandlerMappingPrioritiesConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = WebAppConfiguration_ConfiguringPriorities.class)
+@ContextConfiguration(classes = HandlerMappingPrioritiesConfig.class)
 public class HandlerMappingPriorityConfigTest {
 
     @Autowired

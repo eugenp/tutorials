@@ -1,4 +1,4 @@
-package come.baeldung.test;
+package com.baeldung.handlermapping;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -17,11 +17,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.config.WebAppConfiguration_ControllerClassNameHandlerMapping;
+import com.baeldung.spring.web.config.ControllerClassNameHandlerMappingConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = WebAppConfiguration_ControllerClassNameHandlerMapping.class)
+@ContextConfiguration(classes = ControllerClassNameHandlerMappingConfig.class)
 public class ControllerClassNameHandlerMappingTest {
 
     @Autowired
@@ -36,6 +36,6 @@ public class ControllerClassNameHandlerMappingTest {
 
     @Test
     public void whenControllerClassNameMapping_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcometest")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
     }
 }
