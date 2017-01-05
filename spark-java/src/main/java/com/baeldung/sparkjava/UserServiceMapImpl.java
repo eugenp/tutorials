@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceMapImpl  implements UserService{
     private HashMap<String, User> userMap;
@@ -24,15 +25,29 @@ public class UserServiceMapImpl  implements UserService{
         return userMap.get(id);
     }
     
-    public User editUser (String id, HashMap userArg) throws Exception{
-        User toEdit = userMap.get(id);
-        if (toEdit == null )
-            return null;
-        toEdit.setEmail((userArg.get("email")!=null) ? (String) userArg.get("email") : toEdit.getEmail() );
-        toEdit.setFirstName((userArg.get("firstName")!=null) ? (String) userArg.get("firstName") : toEdit.getFirstName());
-        toEdit.setLastName((userArg.get("lastName")!=null) ? (String) userArg.get("lastName") : toEdit.getLastName());
-        toEdit.setId((userArg.get("id")!=null) ? String.valueOf (userArg.get("id")) : toEdit.getId() );
-        return toEdit;
+    public User editUser (String id, Map userArg) throws UserException{
+        try{
+            User toEdit = userMap.get(id);
+            if (toEdit == null )
+                return null;
+            
+            if (userArg.get("email")!=null) {
+                toEdit.setEmail((String) userArg.get("email"));
+            }
+            if (userArg.get("firstName")!=null) {
+                toEdit.setFirstName((String) userArg.get("firstName"));
+            }
+            if (userArg.get("lastName")!=null) {
+                toEdit.setLastName((String) userArg.get("lastName"));
+            }
+            if (userArg.get("id")!=null) {
+                toEdit.setId(String.valueOf (userArg.get("id")));
+            }
+
+            return toEdit;
+        }catch (Exception ex) {
+            throw new UserException(ex.getMessage());
+        }
     }
     public void deleteUser (String id) {
         userMap.remove(id);

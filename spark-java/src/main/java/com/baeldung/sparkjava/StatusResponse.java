@@ -4,7 +4,7 @@ public enum StatusResponse {
     SUCCESS ("Success"),
     ERROR ("Error");
     
-    private String status;
+    final private String status;
    
     StatusResponse(String status) {
         this.status = status;
@@ -14,8 +14,4 @@ public enum StatusResponse {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
 }
