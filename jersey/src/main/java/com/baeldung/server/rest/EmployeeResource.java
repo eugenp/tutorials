@@ -16,21 +16,20 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-import com.baeldung.server.repo.EmployeeRepository;
-import com.baeldung.server.representation.Employee;
+import com.baeldung.server.model.Employee;
+import com.baeldung.server.repository.EmployeeRepository;
 
-@Component
 @Path("/employees")
 public class EmployeeResource {
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
     @GET
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<Employee> getAllEmployees() {
-        return employeeRepository.getEmployeeList();
+        return employeeRepository.getAllEmployees();
     }
 
     @GET
@@ -73,13 +72,5 @@ public class EmployeeResource {
             return Response.status(Response.Status.CONFLICT.getStatusCode()).build();
         }
         return Response.status(Response.Status.CREATED.getStatusCode()).header("Location", String.format("%s/%s", uriInfo.getAbsolutePath().toString(), employee.getId())).build();
-    }
-
-    public EmployeeRepository getEmployeeRepository() {
-        return employeeRepository;
-    }
-
-    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
     }
 }

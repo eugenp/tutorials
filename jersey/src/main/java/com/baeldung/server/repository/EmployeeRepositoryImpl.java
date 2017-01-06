@@ -1,13 +1,24 @@
-package com.baeldung.server.repo;
+package com.baeldung.server.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
 
 import com.baeldung.server.exception.EmployeeAlreadyExists;
 import com.baeldung.server.exception.EmployeeNotFound;
-import com.baeldung.server.representation.Employee;
+import com.baeldung.server.model.Employee;
 
-public class EmployeeRepository {
+@Component
+public class EmployeeRepositoryImpl implements EmployeeRepository {
     private List<Employee> employeeList;
+
+    public EmployeeRepositoryImpl() {
+        employeeList = new ArrayList<Employee>();
+        employeeList.add(new Employee(1, "Jane", "Doe", 23));
+        employeeList.add(new Employee(2, "Jack", "Doe", 25));
+        employeeList.add(new Employee(3, "George", "Doe", 30));
+    }
 
     public List<Employee> getAllEmployees() {
         return employeeList;
@@ -52,13 +63,5 @@ public class EmployeeRepository {
             }
         }
         employeeList.add(employee);
-    }
-
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
-
-    public void setEmployeeList(List<Employee> employeeList) {
-        this.employeeList = employeeList;
     }
 }

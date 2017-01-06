@@ -1,4 +1,4 @@
-package com.baeldung.server.representation;
+package com.baeldung.server.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
