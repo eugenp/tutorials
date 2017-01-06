@@ -46,3 +46,4 @@
 - [Grep in Java](http://www.baeldung.com/grep-in-java)
 - [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
 - [Simulated Annealing for Travelling Salesman Problem](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
+- [Slope One Algorithm: Collaborative Filtering Recommendation Systems](http://www.baeldung.com/java-collaborative-filtering-recommendations)
