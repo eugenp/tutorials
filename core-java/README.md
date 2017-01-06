@@ -52,3 +52,4 @@
 - [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
 - [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)
+- [A Guide To NIO2 Asynchronous File Channel](http://www.baeldung.com/java-nio2-async-file-channel)
