@@ -24,11 +24,6 @@ public class NashornTest {
     }
 
     @Test
-    public void ok() {
-        System.out.println("~~~~~~~~~~~~~~~~~~");
-    }
-
-    @Test
     public void trim() throws ScriptException {
         engine.eval(new InputStreamReader(NashornTest.class.getResourceAsStream("/js/trim.js")));
     }
