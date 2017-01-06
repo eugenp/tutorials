@@ -49,3 +49,4 @@
 - [Slope One Algorithm: Collaborative Filtering Recommendation Systems](http://www.baeldung.com/java-collaborative-filtering-recommendations)
 - [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](http://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
 - [Pattern Search with Grep in Java](http://www.baeldung.com/grep-in-java)
+- [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
