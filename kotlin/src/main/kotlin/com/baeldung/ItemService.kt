@@ -43,7 +43,8 @@ fun main(args: Array<String>) {
 
     val firstName = "Tom"
     val secondName = "Mary"
-    println("Names: $firstName, $secondName")
+    val concatOfNames = "$firstName + $secondName"
+    println("Names: $concatOfNames")
 
     val itemManager = ItemManager("cat_id", "db://connection")
     print("function result: ${itemManager.isFromSpecificCategory("1")}")
