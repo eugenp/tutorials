@@ -31,12 +31,14 @@ class ItemManager(val categoryId: String, val dbConnection: String) {
 fun main(args: Array<String>) {
     val numbers = arrayOf("first", "second", "third", "fourth")
 
+    var concat = ""
     for (n in numbers) {
-        println(n)
+        concat += n
     }
 
-    for (i in 0..9) {
-        println(i)
+    var sum = 0
+    for (i in 2..9) {
+        sum += i
     }
 
     val firstName = "Tom"
