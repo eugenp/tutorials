@@ -1,6 +1,7 @@
 package org.baeldung.controller;
 
 import org.baeldung.domain.GenericEntity;
+import org.baeldung.domain.Modes;
 import org.baeldung.web.resolver.Version;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +43,11 @@ public class GenericEntityController {
 
     @RequestMapping("/entity/findbydate/{date}")
     public GenericEntity findByDate(@PathVariable("date") LocalDateTime date) {
+        return entityList.stream().findFirst().get();
+    }
+
+    @RequestMapping("/entity/findbymode/{mode}")
+    public GenericEntity findByEnum(@PathVariable("mode") Modes mode) {
         return entityList.stream().findFirst().get();
     }
 

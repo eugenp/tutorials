@@ -51,6 +51,16 @@ public class SpringBootApplicationIntegrationTest {
     }
 
     @Test
+    public void givenRequestHasBeenMade_whenMeetsFindByModeOfGivenConditions_thenCorrect() throws Exception {
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbymode/{mode}", "Alpha"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType(contentType))
+            .andExpect(jsonPath("$.id", equalTo(1)));
+    }
+
+    @Test
     public void givenRequestHasBeenMade_whenMeetsFindByVersionOfGivenConditions_thenCorrect() throws Exception {
         MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
