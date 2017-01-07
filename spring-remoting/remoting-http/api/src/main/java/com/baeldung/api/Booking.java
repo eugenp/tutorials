@@ -10,15 +10,15 @@ public class Booking implements Serializable {
     private String bookingCode;
     private Date pickUptime;
     private Address pickUpAddress;
-    private Address dropDownAddress;
+    private Address dropOffAddress;
 
-    public Booking(Address pickUpAddress, Date pickUptime, Address dropDownAddress, int costInCent, int etaInSeconds, String bookingCode) {
+    public Booking(Address pickUpAddress, Date pickUptime, Address dropOffAddress, int costInCent, int etaInSeconds, String bookingCode) {
         this.costInCent = costInCent;
         this.etaInSeconds = etaInSeconds;
         this.bookingCode = bookingCode;
         this.pickUptime = pickUptime;
         this.pickUpAddress = pickUpAddress;
-        this.dropDownAddress = dropDownAddress;
+        this.dropOffAddress = dropOffAddress;
     }
 
     public int getCostInCent() {
@@ -37,13 +37,17 @@ public class Booking implements Serializable {
         return pickUptime;
     }
 
-    @Override public String toString() {
-        return String.format("Booking: pick up @ %tr in %s, drop down in %s after %d minutes, %.2f $.", pickUptime, pickUpAddress, dropDownAddress, etaInSeconds/60, costInCent/100.0);
+    public Address getDropOffAddress() {
+        return dropOffAddress;
     }
 
-    public static void main(String[] args) {
+    @Override public String toString() {
+        return String.format("Booking: pick up @ %tr in %s, drop down in %s after %d minutes, %.2f $.", pickUptime, pickUpAddress, dropOffAddress, etaInSeconds/60, costInCent/100.0);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(
-        new Booking(new Address("a", "b"), new Date(), new Address("c", "d"), 123_00, 600, "abc")
+                new Booking(new Address("a", "b"), new Date(), new Address("c", "d"), 123_00, 600, "abc")
         );
     }
 }

@@ -8,14 +8,13 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
-public class MyWebApplicationInitializer implements WebApplicationInitializer {
+public class CabBookingInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext container) {
-        // Create the 'root' Spring application context
         AnnotationConfigWebApplicationContext rootContext =
                 new AnnotationConfigWebApplicationContext();
-        rootContext.register(AppConfig.class);
+        rootContext.register(CabBookingConfig.class);
 
         // Manage the lifecycle of the root application context
         container.addListener(new ContextLoaderListener(rootContext));
@@ -30,7 +29,6 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
                 container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/*");
-
     }
 
 }

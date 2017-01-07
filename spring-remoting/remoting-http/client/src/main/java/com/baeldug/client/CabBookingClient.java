@@ -4,9 +4,9 @@ import com.baeldung.api.*;
 
 public class CabBookingClient {
 
-    private CabBookingServer cabService;
+    private CabBookingService cabService;
 
-    public CabBookingClient(CabBookingServer cabService) {
+    public CabBookingClient(CabBookingService cabService) {
         this.cabService = cabService;
     }
 
