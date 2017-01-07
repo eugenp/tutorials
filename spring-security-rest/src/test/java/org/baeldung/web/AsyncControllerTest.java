@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -42,10 +41,8 @@ public class AsyncControllerTest {
 	}
 
 	@Test
-	public void testProcessUpload() throws Exception {
-		MockMultipartFile jsonFile = new MockMultipartFile("json", "", "application/json",
-				"{\"json\": \"someValue\"}".getBytes());
-		mockMvc.perform(MockMvcRequestBuilders.fileUpload("/upload").file(jsonFile)).andExpect(status().isOk());
+	public void testAsync() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().is5xxServerError());
 	}
 
 }
