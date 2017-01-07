@@ -32,7 +32,7 @@ public class EmployeeController {
         return employeeMap.get(Id);
     }
 
-    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
+    @PostMapping("/addEmployee")
     public String submit(@Valid @ModelAttribute("employee") final Employee employee, final BindingResult result, final ModelMap model) {
         validator.validate(employee, result);
         if (result.hasErrors()) {
