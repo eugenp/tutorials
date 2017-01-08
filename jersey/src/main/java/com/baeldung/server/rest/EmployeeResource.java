@@ -43,11 +43,7 @@ public class EmployeeResource {
     @Path("/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response updateEmployee(Employee employee, @PathParam("id") int id) {
-        try {
-            employeeRepository.updateEmployee(employee, id);
-        } catch (Exception e) {
-            return Response.status(Response.Status.NOT_FOUND.getStatusCode()).build();
-        }
+        employeeRepository.updateEmployee(employee, id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
@@ -55,22 +51,14 @@ public class EmployeeResource {
     @Path("/{id}")
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response deleteEmployee(@PathParam("id") int id) {
-        try {
-            employeeRepository.deleteEmployee(id);
-        } catch (Exception e) {
-            return Response.status(Response.Status.NOT_FOUND.getStatusCode()).build();
-        }
+        employeeRepository.deleteEmployee(id);
         return Response.status(Response.Status.OK.getStatusCode()).build();
     }
 
     @POST
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response addEmployee(Employee employee, @Context UriInfo uriInfo) {
-        try {
-            employeeRepository.addEmployee(new Employee(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getAge()));
-        } catch (Exception e) {
-            return Response.status(Response.Status.CONFLICT.getStatusCode()).build();
-        }
+        employeeRepository.addEmployee(new Employee(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getAge()));
         return Response.status(Response.Status.CREATED.getStatusCode()).header("Location", String.format("%s/%s", uriInfo.getAbsolutePath().toString(), employee.getId())).build();
     }
 }
