@@ -12,12 +12,12 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.amqp</groupId>
+		    <groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
 			<version>1.6.6.RELEASE</version>
 		</dependency>
