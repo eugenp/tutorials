@@ -85,7 +85,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect() throws IOException {
+    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
         final String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
 
         assertThat(enumAsString, is("\"Type A\""));
@@ -153,7 +153,7 @@ public class JacksonAnnotationTest {
     // ========================= Inclusion annotations ============================
 
     @Test
-    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws IOException {
+    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -162,7 +162,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIgnore_thenCorrect() throws IOException {
+    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -183,7 +183,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonInclude_thenCorrect() throws IOException {
+    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -192,7 +192,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws IOException {
+    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException {
         final PrivateBean bean = new PrivateBean(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -203,7 +203,7 @@ public class JacksonAnnotationTest {
     // ========================= Polymorphic annotations ============================
 
     @Test
-    public void whenSerializingPolymorphic_thenCorrect() throws IOException {
+    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException {
         final Zoo.Dog dog = new Zoo.Dog("lacy");
         final Zoo zoo = new Zoo(dog);
 
@@ -260,7 +260,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException, JsonProcessingException {
         final Item item = new Item(2, "book", "John");
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
@@ -336,7 +336,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDisablingAllAnnotations_thenAllDisabled() throws IOException {
+    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final ObjectMapper mapper = new ObjectMapper();
