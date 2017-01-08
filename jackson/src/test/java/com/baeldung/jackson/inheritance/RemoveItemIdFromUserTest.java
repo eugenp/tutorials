@@ -12,7 +12,7 @@ public class RemoveItemIdFromUserTest {
     @Test
     public void givenRemoveItemJson_whenDeserialize_shouldHaveProperClassType() throws IOException {
         //given
-        Event event = new RemoveItemIdFromUser(new Event.Metadata("1", 12345567L), "item_1", 2L);
+        Event event = new RemoveItemIdFromUser("1", 12345567L, "item_1", 2L);
         ObjectMapper objectMapper = new ObjectMapper();
         String eventJson = objectMapper.writeValueAsString(event);
 
