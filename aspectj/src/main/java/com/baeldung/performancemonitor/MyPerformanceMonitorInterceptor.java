@@ -4,10 +4,7 @@ import java.util.Date;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.logging.Log;
-import org.apache.log4j.Logger;
-import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.interceptor.AbstractMonitoringInterceptor;
-import org.springframework.util.StopWatch;
 
 public class MyPerformanceMonitorInterceptor extends AbstractMonitoringInterceptor {
     

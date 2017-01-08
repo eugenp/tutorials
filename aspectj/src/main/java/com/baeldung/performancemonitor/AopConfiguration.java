@@ -1,11 +1,8 @@
 package com.baeldung.performancemonitor;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Date;
 
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;

@@ -6,10 +6,10 @@ import org.springframework.web.servlet.mvc.AbstractController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class BaeldungController extends AbstractController {
+public class BeanNameHandlerMappingController extends AbstractController {
     @Override
     protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        ModelAndView model = new ModelAndView("baeldung");
+         ModelAndView model = new ModelAndView("bean-name-handler-mapping");
         return model;
     }
 

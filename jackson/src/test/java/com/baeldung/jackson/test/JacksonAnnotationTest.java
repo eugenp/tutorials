@@ -1,32 +1,6 @@
 package com.baeldung.jackson.test;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-
-import org.junit.Test;
-
-import com.baeldung.jackson.annotation.BeanWithCreator;
-import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
-import com.baeldung.jackson.annotation.BeanWithFilter;
-import com.baeldung.jackson.annotation.BeanWithGetter;
-import com.baeldung.jackson.annotation.BeanWithIgnore;
-import com.baeldung.jackson.annotation.BeanWithInject;
-import com.baeldung.jackson.annotation.ExtendableBean;
-import com.baeldung.jackson.annotation.MyBean;
-import com.baeldung.jackson.annotation.PrivateBean;
-import com.baeldung.jackson.annotation.RawBean;
-import com.baeldung.jackson.annotation.UnwrappedUser;
-import com.baeldung.jackson.annotation.UserWithIgnoreType;
-import com.baeldung.jackson.annotation.Zoo;
+import com.baeldung.jackson.annotation.*;
 import com.baeldung.jackson.bidirection.ItemWithIdentity;
 import com.baeldung.jackson.bidirection.ItemWithRef;
 import com.baeldung.jackson.bidirection.UserWithIdentity;
@@ -38,7 +12,6 @@ import com.baeldung.jackson.dtos.withEnum.TypeEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -47,6 +20,17 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class JacksonAnnotationTest {
 
@@ -101,7 +85,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonParseException, IOException {
+    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
         final String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
 
         assertThat(enumAsString, is("\"Type A\""));
@@ -122,7 +106,7 @@ public class JacksonAnnotationTest {
     // ========================= Deserializing annotations ============================
 
     @Test
-    public void whenDeserializingUsingJsonCreator_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonCreator_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"theName\":\"My bean\"}";
 
         final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class).readValue(json);
@@ -130,7 +114,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonInject_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonInject_thenCorrect() throws IOException {
         final String json = "{\"name\":\"My bean\"}";
         final InjectableValues inject = new InjectableValues.Std().addValue(int.class, 1);
 
@@ -140,7 +124,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws IOException {
         final String json = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
 
         final ExtendableBean bean = new ObjectMapper().readerFor(ExtendableBean.class).readValue(json);
@@ -149,7 +133,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonSetter_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonSetter_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"name\":\"My bean\"}";
 
         final BeanWithGetter bean = new ObjectMapper().readerFor(BeanWithGetter.class).readValue(json);
@@ -157,7 +141,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingUsingJsonDeserialize_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonDeserialize_thenCorrect() throws IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
@@ -169,7 +153,7 @@ public class JacksonAnnotationTest {
     // ========================= Inclusion annotations ============================
 
     @Test
-    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -178,7 +162,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -199,7 +183,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -208,7 +192,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException {
         final PrivateBean bean = new PrivateBean(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -219,7 +203,7 @@ public class JacksonAnnotationTest {
     // ========================= Polymorphic annotations ============================
 
     @Test
-    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException {
         final Zoo.Dog dog = new Zoo.Dog("lacy");
         final Zoo zoo = new Zoo(dog);
 
@@ -230,7 +214,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingPolymorphic_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingPolymorphic_thenCorrect() throws IOException {
         final String json = "{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\"}}";
 
         final Zoo zoo = new ObjectMapper().readerFor(Zoo.class).readValue(json);
@@ -276,7 +260,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException, JsonProcessingException {
         final Item item = new Item(2, "book", "John");
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
@@ -352,7 +336,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException, IOException {
+    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final ObjectMapper mapper = new ObjectMapper();
