@@ -1,5 +1,7 @@
 ### Relevant Articles:
 - TBD
+- [Improved Java Logging with Mapped Diagnostic Context (MDC)](http://www.baeldung.com/mdc-in-log4j-2-logback)
+- [Java Logging with Nested Diagnostic Context (NDC)](http://www.baeldung.com/java-logging-ndc-log4j)
 
 ### References
 

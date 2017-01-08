@@ -1,16 +1,18 @@
 package com.baeldung.ejb.setup.test;
 
-import static org.junit.Assert.*;
-import org.junit.Test;
 import com.baeldung.ejb.client.EJBClient;
 import com.baeldung.ejb.tutorial.HelloWorldBean;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class EJBSetupTest {
 
     @Test
-    public void testEJBClient() {
+    public void EJBClientTest() {
         EJBClient ejbClient = new EJBClient();
         HelloWorldBean bean = new HelloWorldBean();
         assertEquals(bean.getHelloWorld(), ejbClient.getEJBRemoteMessage());
     }
+
 }

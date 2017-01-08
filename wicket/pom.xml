@@ -9,11 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <name>WicketIntro</name>
     <properties>
-        <wicket.version>7.4.0</wicket.version>
+        <wicket.version>7.5.0</wicket.version>
         <jetty9.version>9.2.13.v20150730</jetty9.version>
-        <log4j.version>2.5</log4j.version>
         <junit.version>4.12</junit.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

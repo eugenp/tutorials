@@ -7,9 +7,9 @@ import java.util.Properties;
 import org.baeldung.ex.mappingexception.cause4.persistence.model.Foo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.Test;
 
 public class Cause4MappingExceptionManualTest {
@@ -35,7 +35,7 @@ public class Cause4MappingExceptionManualTest {
 
         configuration.addAnnotatedClass(Foo.class);
 
-        final ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        final ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         final SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         return sessionFactory;
     }

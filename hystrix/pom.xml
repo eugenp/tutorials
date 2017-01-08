@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.0.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
     </parent>
 
 
@@ -21,7 +21,7 @@
         <java.version>1.8</java.version>
 
         <!-- Hystrix -->
-        <hystrix-core.version>1.5.4</hystrix-core.version>
+        <hystrix-core.version>1.5.8</hystrix-core.version>
         <rxjava-core.version>0.20.7</rxjava-core.version>
 
         <!-- Testing -->
@@ -29,13 +29,13 @@
         <junit.version>4.12</junit.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <hystrix-metrics-event-stream.version>1.3.16</hystrix-metrics-event-stream.version>
-        <hystrix-dashboard.version>1.4.3</hystrix-dashboard.version>
-        <spring-boot-starter-test.version>1.4.0.RELEASE</spring-boot-starter-test.version>
+        <hystrix-metrics-event-stream.version>1.5.8</hystrix-metrics-event-stream.version>
+        <hystrix-dashboard.version>1.5.8</hystrix-dashboard.version>
+        <spring-boot-starter-test.version>1.4.2.RELEASE</spring-boot-starter-test.version>
     </properties>
 
     <dependencies>

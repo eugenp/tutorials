@@ -27,8 +27,8 @@ public class SetupData {
 
     @PostConstruct
     public void init() {
-        initPrivileges();
         initOrganizations();
+        initPrivileges();
         initUsers();
     }
 
@@ -57,7 +57,6 @@ public class SetupData {
         //
         final Organization org2 = new Organization("SecondOrg");
         organizationRepository.save(org2);
-
     }
 
     private void initPrivileges() {

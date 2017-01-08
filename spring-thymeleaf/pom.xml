@@ -8,22 +8,28 @@
 	<properties>
 		<java-version>1.8</java-version>
 		<!-- spring -->
-		<org.springframework-version>4.3.3.RELEASE</org.springframework-version>
-		<javax.servlet-version>3.0.1</javax.servlet-version>
+		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
+		<springframework-security.version>4.2.0.RELEASE</springframework-security.version>
+		<javax.servlet-version>3.1.0</javax.servlet-version>
 		<!-- logging -->
-		<org.slf4j.version>1.7.12</org.slf4j.version>
-		<logback.version>1.1.3</logback.version>
+		<org.slf4j.version>1.7.21</org.slf4j.version>
+		<logback.version>1.1.7</logback.version>
 		<!-- thymeleaf -->
-		<org.thymeleaf-version>3.0.1.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf.extras-version>3.0.0.RELEASE</org.thymeleaf.extras-version>
+		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
 		<!-- validation -->
 		<javax.validation-version>1.1.0.Final</javax.validation-version>
-		<org.hibernate-version>5.1.2.Final</org.hibernate-version>
+		<hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+		<org.hibernate-version>5.2.5.Final</org.hibernate-version>
 
+		<junit.version>4.12</junit.version>
 		<!-- Maven plugins -->
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-		<cargo-maven2-plugin.version>1.4.18</cargo-maven2-plugin.version>
+		<cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+		<tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -49,12 +55,12 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>4.1.3.RELEASE</version>
+			<version>${springframework-security.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>4.1.3.RELEASE</version>
+			<version>${springframework-security.version}</version>
 		</dependency>
 		<!-- Thymeleaf -->
 		<dependency>
@@ -71,7 +77,12 @@
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>2.0.4</version>
+			<version>${thymeleaf-layout-dialect.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
+			<version>${org.thymeleaf.extras-version}</version>
 		</dependency>
 		<!-- Logging -->
 		<dependency>
@@ -112,14 +123,14 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>${org.hibernate-version}</version>
+			<version>${hibernate-validator.version}</version>
 		</dependency>
 		<!-- test scoped -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>4.1.3.RELEASE</version>
+			<version>${org.springframework-version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -127,7 +138,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
-			<version>4.1.3.RELEASE</version>
+			<version>${springframework-security.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -135,7 +146,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -194,7 +205,7 @@
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.0</version>
+				<version>${tomcat7-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>tomcat-run</id>

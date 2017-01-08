@@ -1,8 +1,6 @@
 package org.baeldung.spring;
 
 import org.baeldung.security.MySavedRequestAwareAuthenticationSuccessHandler;
-import org.baeldung.security.RestAuthenticationEntryPoint;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
 @Configuration
@@ -17,14 +16,15 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @ComponentScan("org.baeldung.security")
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+//    @Autowired
+//    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-    @Autowired
-    private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
+//    @Autowired
+//    private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
 
     public SecurityJavaConfig() {
         super();
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
     }
 
     //
@@ -38,17 +38,21 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {// @formatter:off
         http
         .csrf().disable()
+        .authorizeRequests()
+        .and()
         .exceptionHandling()
-        .authenticationEntryPoint(restAuthenticationEntryPoint)
+//        .authenticationEntryPoint(restAuthenticationEntryPoint)
         .and()
         .authorizeRequests()
         .antMatchers("/api/csrfAttacker*").permitAll()
         .antMatchers("/api/customer/**").permitAll()
         .antMatchers("/api/foos/**").authenticated()
+        .antMatchers("/api/async/**").permitAll()
         .and()
-        .formLogin()
-        .successHandler(authenticationSuccessHandler)
-        .failureHandler(new SimpleUrlAuthenticationFailureHandler())
+        .httpBasic()
+//        .and()
+//        .successHandler(authenticationSuccessHandler)
+//        .failureHandler(new SimpleUrlAuthenticationFailureHandler())
         .and()
         .logout();
     } // @formatter:on

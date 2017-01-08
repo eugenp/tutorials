@@ -26,7 +26,9 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
         .withUser("user1").password("user1Pass").roles("USER")
         .and()
-        .withUser("user2").password("user2Pass").roles("USER");
+        .withUser("user2").password("user2Pass").roles("USER")
+        .and()
+        .withUser("admin").password("adminPass").roles("ADMIN");
         // @formatter:on
     }
 
@@ -36,6 +38,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         http
         .csrf().disable()
         .authorizeRequests()
+        .antMatchers("/admin/**").hasRole("ADMIN")
         .antMatchers("/anonymous*").anonymous()
         .antMatchers("/login*").permitAll()
         .anyRequest().authenticated()

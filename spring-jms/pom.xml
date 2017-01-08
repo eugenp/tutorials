@@ -9,9 +9,12 @@
 	<description>Introduction to Spring JMS</description>
 
 	<properties>
-		<springframework.version>4.3.2.RELEASE</springframework.version>
-		<activemq.version>5.12.0</activemq.version>
+		<springframework.version>4.3.4.RELEASE</springframework.version>
+		<activemq.version>5.14.1</activemq.version>
 		<junit.version>4.12</junit.version>
+		
+		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -41,7 +44,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
+					<version>${maven-compiler-plugin.version}</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
@@ -50,7 +53,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
+					<version>${maven-war-plugin.version}</version>
 					<configuration>
 						<warSourceDirectory>src/main/webapp</warSourceDirectory>
 						<warName>spring-jms</warName>
