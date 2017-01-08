@@ -3,6 +3,7 @@ package com.baeldung.server.javaconfig;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import com.baeldung.server.exception.AlreadyExistsExceptionHandler;
 import com.baeldung.server.exception.NotFoundExceptionHandler;
 import com.baeldung.server.rest.EmployeeResource;
 
@@ -13,6 +14,6 @@ import java.util.Set;
 @ApplicationPath("/resources")
 public class RestConfig extends Application {
     public Set<Class<?>> getClasses() {
-        return new HashSet<Class<?>>(Arrays.asList(EmployeeResource.class, NotFoundExceptionHandler.class));
+        return new HashSet<Class<?>>(Arrays.asList(EmployeeResource.class, NotFoundExceptionHandler.class, AlreadyExistsExceptionHandler.class));
     }
 }
