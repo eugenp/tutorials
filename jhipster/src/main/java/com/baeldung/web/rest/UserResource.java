@@ -81,8 +81,6 @@ import java.util.stream.Collectors;
         produces = MediaType.APPLICATION_JSON_VALUE) @Timed @Secured(AuthoritiesConstants.ADMIN) public ResponseEntity<?> createUser(@RequestBody ManagedUserVM managedUserVM, HttpServletRequest request) throws URISyntaxException {
         log.debug("REST request to save User : {}", managedUserVM);
 
-        System.out.println("managedUserVM = " + managedUserVM);
-
         //Lowercase the user login before comparing with database
         if (userRepository.findOneByLogin(managedUserVM.getLogin().toLowerCase()).isPresent()) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert("userManagement", "userexists", "Login already in use")).body(null);

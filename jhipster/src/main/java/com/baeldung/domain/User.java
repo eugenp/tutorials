@@ -35,7 +35,7 @@ import java.util.Set;
 
     @Email @Size(max = 100) @Column(length = 100, unique = true) private String email;
 
-    @Email @Size(max = 20) @Column(length = 20) private String phoneNumber;
+    @Size(max = 20) @Column(length = 20) private String phoneNumber;
 
     @NotNull @Column(nullable = false) private boolean activated = false;
 
