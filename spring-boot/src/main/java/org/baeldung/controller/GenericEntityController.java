@@ -5,6 +5,7 @@ import org.baeldung.domain.Modes;
 import org.baeldung.web.resolver.Version;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,17 +42,17 @@ public class GenericEntityController {
         return entityList.stream().filter(entity -> entity.getId().equals(id)).findFirst().get();
     }
 
-    @RequestMapping("/entity/findbydate/{date}")
+    @GetMapping("/entity/findbydate/{date}")
     public GenericEntity findByDate(@PathVariable("date") LocalDateTime date) {
         return entityList.stream().findFirst().get();
     }
 
-    @RequestMapping("/entity/findbymode/{mode}")
+    @GetMapping("/entity/findbymode/{mode}")
     public GenericEntity findByEnum(@PathVariable("mode") Modes mode) {
         return entityList.stream().findFirst().get();
     }
 
-    @RequestMapping("/entity/findbyversion")
+    @GetMapping("/entity/findbyversion")
     public ResponseEntity findByVersion(@Version String version) {
         return version != null
             ? new ResponseEntity(entityList.stream().findFirst().get(), HttpStatus.OK)
