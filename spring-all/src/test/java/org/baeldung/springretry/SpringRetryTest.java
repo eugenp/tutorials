@@ -42,9 +42,4 @@ public class SpringRetryTest {
             }
         });
     }
-
-    @Test(expected = RuntimeException.class)
-    public void givenXmlRetryService_whenCallWithException_thenRetry() {
-        myService.xmlRetryService();
-    }
 }

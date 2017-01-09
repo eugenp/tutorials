@@ -12,7 +12,7 @@ public class DefaultListenerSupport extends RetryListenerSupport {
 
     @Override
     public <T, E extends Throwable> void close(RetryContext context, RetryCallback<T, E> callback, Throwable throwable) {
-        logger.info("close");
+        logger.info("onClose");
         super.close(context, callback, throwable);
     }
 
@@ -24,7 +24,7 @@ public class DefaultListenerSupport extends RetryListenerSupport {
 
     @Override
     public <T, E extends Throwable> boolean open(RetryContext context, RetryCallback<T, E> callback) {
-        logger.info("open");
+        logger.info("onOpen");
         return super.open(context, callback);
     }
 
