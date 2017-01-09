@@ -1,7 +1,6 @@
 package com.baeldung.handlermappings;
 
-import com.baeldung.spring.web.config.HandlerMappingCustomPrioritiesConfig;
-import com.baeldung.spring.web.config.HandlerMappingPrioritiesConfig;
+import com.baeldung.config.HandlerMappingPrioritiesConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

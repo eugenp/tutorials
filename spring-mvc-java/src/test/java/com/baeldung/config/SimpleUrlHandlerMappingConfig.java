@@ -1,4 +1,4 @@
-package com.baeldung.spring.web.config;
+package com.baeldung.config;
 
 import java.util.HashMap;
 import java.util.Map;

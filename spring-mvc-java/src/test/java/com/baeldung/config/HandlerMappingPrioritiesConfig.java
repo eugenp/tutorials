@@ -1,18 +1,19 @@
-package com.baeldung.spring.web.config;
+package com.baeldung.config;
 
-import com.baeldung.web.controller.handlermapping.BeanNameHandlerMappingController;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.baeldung.web.controller.handlermapping.SimpleUrlMappingController;
+import com.baeldung.web.controller.handlermapping.BeanNameHandlerMappingController;
+import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 
-import java.util.HashMap;
-import java.util.Map;
-
 
 @Configuration
-public class HandlerMappingCustomPrioritiesConfig {
+public class HandlerMappingPrioritiesConfig {
 
     @Bean
     BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
@@ -27,7 +28,6 @@ public class HandlerMappingCustomPrioritiesConfig {
         Map<String, Object> urlMap = new HashMap<>();
         urlMap.put("/welcome", simpleUrlMapping());
         simpleUrlHandlerMapping.setUrlMap(urlMap);
-        simpleUrlHandlerMapping.setOrder(1);
         return simpleUrlHandlerMapping;
     }
 

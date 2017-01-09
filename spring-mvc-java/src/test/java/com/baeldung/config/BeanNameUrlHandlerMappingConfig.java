@@ -1,4 +1,4 @@
-package com.baeldung.spring.web.config;
+package com.baeldung.config;
 
 import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
