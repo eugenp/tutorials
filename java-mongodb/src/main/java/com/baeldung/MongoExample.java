@@ -6,7 +6,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 
-public class App {
+public class MongoExample {
     public static void main( String[] args ) {
         
     	MongoClient mongoClient = new MongoClient("localhost", 27017);
