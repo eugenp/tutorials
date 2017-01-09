@@ -150,7 +150,9 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    <module>pdf</module>
+        <module>pdf</module>
+        
+        <module>static-analysis</module>
   </modules>
 
 </project>
