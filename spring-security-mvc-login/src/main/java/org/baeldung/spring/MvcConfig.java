@@ -27,6 +27,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
         registry.addViewController("/login.html");
         registry.addViewController("/homepage.html");
+        registry.addViewController("/admin/adminpage.html");
     }
 
     @Bean

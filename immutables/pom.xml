@@ -12,24 +12,24 @@
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
-            <version>2.2.10</version>
+            <version>${immutables.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.5.2</version>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mutabilitydetector</groupId>
             <artifactId>MutabilityDetector</artifactId>
-            <version>0.9.5</version>
+            <version>${mutabilitydetector.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -39,7 +39,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -47,4 +47,13 @@
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <immutables.version>2.3.10</immutables.version>
+        <junit.version>4.12</junit.version>
+        <assertj.version>3.6.1</assertj.version>
+        <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
+        
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
 </project>

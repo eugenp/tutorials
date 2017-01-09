@@ -14,14 +14,15 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.3.5.RELEASE</version>
+		<version>1.4.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<cucumber.java.version>1.2.4</cucumber.java.version>
+		<cucumber.java.version>1.2.5</cucumber.java.version>
+		<commons-io.version>1.3.2</commons-io.version>
 	</properties>
 
 	<dependencies>
@@ -68,13 +69,10 @@
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-io</artifactId>
-		    <version>1.3.2</version>
+		    <version>${commons-io.version}</version>
 		</dependency>
-
         
 	</dependencies>
-
-
 
 	<build>
 		<plugins>
@@ -130,6 +128,5 @@
 			</build>
 		</profile>
 	</profiles>
-	
 
 </project>

@@ -10,6 +10,12 @@
 	<artifactId>ejb-client</artifactId>
 	<name>EJB3 Client Maven</name>
 	<description>EJB3 Client Maven</description>
+
+    <properties>
+        <junit.version>4.12</junit.version>
+        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.wildfly</groupId>

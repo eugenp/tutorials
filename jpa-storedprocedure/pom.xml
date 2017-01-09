@@ -9,8 +9,10 @@
 
     <properties>
         <jee.version>7.0</jee.version>
-        <hibernate.version>5.1.0.Final</hibernate.version>
-        <mysql.version>5.1.38</mysql.version>
+        <hibernate.version>5.2.5.Final</hibernate.version>
+        <mysql.version>6.0.5</mysql.version>
+        <junit.version>4.12</junit.version>
+        <commons-io.version>2.5</commons-io.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
     </properties>
 
@@ -69,7 +71,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.38</version>
+            <version>${mysql.version}</version>
         </dependency>
 
         <!-- Junit Library -->
@@ -77,13 +79,13 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.4</version>
+            <version>${junit.version}</version>
         </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.4</version>
+            <version>${commons-io.version}</version>
         </dependency>
 
     </dependencies>
