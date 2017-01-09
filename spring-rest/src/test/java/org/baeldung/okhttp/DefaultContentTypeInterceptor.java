@@ -17,9 +17,7 @@ public class DefaultContentTypeInterceptor implements Interceptor {
     public Response intercept(Interceptor.Chain chain) throws IOException {
 
         Request originalRequest = chain.request();
-        Request requestWithUserAgent = originalRequest.newBuilder()
-          .header("Content-Type", contentType)
-          .build();
+        Request requestWithUserAgent = originalRequest.newBuilder().header("Content-Type", contentType).build();
 
         return chain.proceed(requestWithUserAgent);
     }
