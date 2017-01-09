@@ -175,6 +175,8 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    </modules>
+
+        <module>static-analysis</module>
+  </modules>
 
 </project>
