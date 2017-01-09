@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class RemoveItemIdFromUserTest {
@@ -22,7 +23,19 @@ public class RemoveItemIdFromUserTest {
         //then
         assertTrue(result instanceof RemoveItemIdFromUser);
         assertEquals("item_1", ((RemoveItemIdFromUser) result).getItemId());
-        new EventProcessor().process(result);
+    }
+
+    @Test
+    public void givenAdddItemJson_whenSerialize_shouldIgnoreIdPropertyFromSuperclass() throws IOException {
+        //given
+        Event event = new AddItemIdToUser("1", 12345567L, "item_1", 2L);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        //when
+        String eventJson = objectMapper.writeValueAsString(event);
+
+        //then
+        assertFalse(eventJson.contains("id"));
     }
 
 }

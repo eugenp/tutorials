@@ -1,10 +1,12 @@
 package com.baeldung.jackson.inheritance;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("addItemIdToUserEvent")
+@JsonIgnoreProperties("id")
 public class AddItemIdToUser extends Event {
     private final String itemId;
     private final Long quantity;
