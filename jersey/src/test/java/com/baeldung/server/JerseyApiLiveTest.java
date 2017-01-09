@@ -17,48 +17,75 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JerseyApiLiveTest {
 
+    private static final String SERVICE_URL = "http://localhost:8082/jersey-api/resources/employees";
+
     @Test
-    public void getAllEmployees_ifCorrectRequest_ResponseCodeSuccess() throws ClientProtocolException, IOException {
-        final HttpUriRequest request = new HttpGet("http://localhost:8082/JerseyTutorial/resources/employees");
+    public void givenGetAllEmployees_whenCorrectRequest_thenResponseCodeSuccess() throws ClientProtocolException, IOException {
+        final HttpUriRequest request = new HttpGet(SERVICE_URL);
+
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+
         assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
     }
 
     @Test
-    public void getEmployee_ifEmployeeExists_ResponseCodeSuccess() throws ClientProtocolException, IOException {
-        final HttpUriRequest request = new HttpGet("http://localhost:8082/JerseyTutorial/resources/employees/1");
+    public void givenGetEmployee_whenEmployeeExists_thenResponseCodeSuccess() throws ClientProtocolException, IOException {
+        final HttpUriRequest request = new HttpGet(SERVICE_URL + "/1");
+
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+
         assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
     }
 
     @Test
-    public void getEmployee_ifEmployeeDoesNotExist_ResponseCodeNotFound() throws ClientProtocolException, IOException {
-        final HttpUriRequest request = new HttpGet("http://localhost:8082/JerseyTutorial/resources/employees/1000");
+    public void givenGetEmployee_whenEmployeeDoesNotExist_thenResponseCodeNotFound() throws ClientProtocolException, IOException {
+        final HttpUriRequest request = new HttpGet(SERVICE_URL + "/1000");
+
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+
         assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND);
     }
 
     @Test
-    public void getEmployee_ifJsonRequested_CorrectDataRetrieved() throws ClientProtocolException, IOException {
-        final HttpUriRequest request = new HttpGet("http://localhost:8082/JerseyTutorial/resources/employees/1");
+    public void givenGetEmployee_whenJsonRequested_thenCorrectDataRetrieved() throws ClientProtocolException, IOException {
+        final HttpUriRequest request = new HttpGet(SERVICE_URL + "/1");
+
         request.setHeader("Accept", "application/json");
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
         ObjectMapper mapper = new ObjectMapper();
         Employee emp = mapper.readValue(httpResponse.getEntity().getContent(), Employee.class);
+
         assert(emp.getFirstName().equals("Jane"));
     }
 
     @Test
-    public void addEmployee_ifJsonRequestSent_ResponseCodeCreated() throws ClientProtocolException, IOException {
-        final HttpPost request = new HttpPost("http://localhost:8082/JerseyTutorial/resources/employees");
-        Employee emp = new Employee(5, "Johny", "Doe", 33);
+    public void givenAddEmployee_whenJsonRequestSent_thenResponseCodeCreated() throws ClientProtocolException, IOException {
+        final HttpPost request = new HttpPost(SERVICE_URL);
+
+        Employee emp = new Employee(5, "Johny");
         ObjectMapper mapper = new ObjectMapper();
         String empJson = mapper.writeValueAsString(emp);
         StringEntity input = new StringEntity(empJson);
         input.setContentType("application/json");
         request.setEntity(input);
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+
         assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CREATED);
+    }
+
+    @Test
+    public void givenAddEmployee_whenRequestForExistingObjectSent_thenResponseCodeConflict() throws ClientProtocolException, IOException {
+        final HttpPost request = new HttpPost(SERVICE_URL);
+
+        Employee emp = new Employee(1, "Johny");
+        ObjectMapper mapper = new ObjectMapper();
+        String empJson = mapper.writeValueAsString(emp);
+        StringEntity input = new StringEntity(empJson);
+        input.setContentType("application/json");
+        request.setEntity(input);
+        final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+
+        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CONFLICT);
     }
 
 }

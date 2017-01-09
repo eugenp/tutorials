@@ -15,9 +15,9 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     public EmployeeRepositoryImpl() {
         employeeList = new ArrayList<Employee>();
-        employeeList.add(new Employee(1, "Jane", "Doe", 23));
-        employeeList.add(new Employee(2, "Jack", "Doe", 25));
-        employeeList.add(new Employee(3, "George", "Doe", 30));
+        employeeList.add(new Employee(1, "Jane"));
+        employeeList.add(new Employee(2, "Jack"));
+        employeeList.add(new Employee(3, "George"));
     }
 
     public List<Employee> getAllEmployees() {
@@ -38,8 +38,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             if (emp.getId() == id) {
                 emp.setId(employee.getId());
                 emp.setFirstName(employee.getFirstName());
-                emp.setLastName(employee.getLastName());
-                emp.setAge(employee.getAge());
                 return;
             }
         }

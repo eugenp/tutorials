@@ -58,7 +58,7 @@ public class EmployeeResource {
     @POST
     @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public Response addEmployee(Employee employee, @Context UriInfo uriInfo) {
-        employeeRepository.addEmployee(new Employee(employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getAge()));
+        employeeRepository.addEmployee(new Employee(employee.getId(), employee.getFirstName()));
         return Response.status(Response.Status.CREATED.getStatusCode()).header("Location", String.format("%s/%s", uriInfo.getAbsolutePath().toString(), employee.getId())).build();
     }
 }

@@ -1,4 +1,4 @@
-package com.baeldung.server.javaconfig;
+package com.baeldung.server.config;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
