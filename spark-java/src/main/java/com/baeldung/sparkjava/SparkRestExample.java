@@ -32,7 +32,6 @@ public class SparkRestExample {
         });
 
         put("/users/:id", (request, response) -> {
-            try{
                 User toEdit = new Gson().fromJson(request.body(), User.class);
                 User editedUser = userService.editUser(toEdit);
                 
@@ -45,11 +44,6 @@ public class SparkRestExample {
                         new StandardResponse(StatusResponse.ERROR,new Gson()
                             .toJson("User not found or error in edit")));
                 }
-            }catch(Exception e)
-            {
-                e.printStackTrace();
-                return e.getMessage();
-            }
             
         });
 
