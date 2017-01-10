@@ -33,7 +33,7 @@ import com.mongodb.gridfs.GridFSDBFile;
 
 @ContextConfiguration("file:src/main/resources/mongoConfig.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-public class GridFSIntegrationTest {
+public class GridFSLiveTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 

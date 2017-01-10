@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
-public class UserRepositoryIntegrationTest {
+public class UserRepositoryLiveTest {
 
     @Autowired
     private UserRepository userRepository;

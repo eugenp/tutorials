@@ -17,7 +17,7 @@ import com.mysema.query.types.Predicate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
-public class DSLQueryIntegrationTest extends BaseQueryIntegrationTest {
+public class DSLQueryLiveTest extends BaseQueryLiveTest {
 
     @Test
     public void givenUsersExist_whenFindingUsersByName_thenUserAreFound() {

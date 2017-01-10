@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
-public class DocumentQueryIntegrationTest {
+public class DocumentQueryLiveTest {
 
     @Autowired
     private MongoTemplate mongoTemplate;
