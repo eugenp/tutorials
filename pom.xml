@@ -160,6 +160,7 @@
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
+        <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
