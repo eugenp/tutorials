@@ -25,23 +25,27 @@ public class UserServiceMapImpl  implements UserService{
         return userMap.get(id);
     }
     
-    public User editUser (String id, Map userArg) throws UserException{
+    public User editUser (User forEdit) throws UserException{
         try{
-            User toEdit = userMap.get(id);
-            if (toEdit == null )
-                return null;
+            if (forEdit.getId() == null) 
+                throw new UserException("ID cannot be blank");
             
-            if (userArg.get("email")!=null) {
-                toEdit.setEmail((String) userArg.get("email"));
+            User toEdit = userMap.get(forEdit.getId());
+            
+            if (toEdit == null )
+                throw new UserException("User not found");
+            
+            if (forEdit.getEmail()!=null) {
+                toEdit.setEmail(forEdit.getEmail());
             }
-            if (userArg.get("firstName")!=null) {
-                toEdit.setFirstName((String) userArg.get("firstName"));
+            if (forEdit.getFirstName()!=null) {
+                toEdit.setFirstName(forEdit.getFirstName());
             }
-            if (userArg.get("lastName")!=null) {
-                toEdit.setLastName((String) userArg.get("lastName"));
+            if (forEdit.getLastName()!=null) {
+                toEdit.setLastName(forEdit.getLastName());
             }
-            if (userArg.get("id")!=null) {
-                toEdit.setId(String.valueOf (userArg.get("id")));
+            if (forEdit.getId()!=null) {
+                toEdit.setId(forEdit.getId());
             }
 
             return toEdit;

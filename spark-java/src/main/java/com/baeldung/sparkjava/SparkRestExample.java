@@ -32,18 +32,25 @@ public class SparkRestExample {
         });
 
         put("/users/:id", (request, response) -> {
-            User editedUser = userService.editUser(request.params(":id"), 
-                new Gson().fromJson(request.body(), HashMap.class));
-            
-            if (editedUser != null) {
-                return new Gson().toJson(
-                    new StandardResponse(StatusResponse.SUCCESS,new Gson()
-                        .toJsonTree(editedUser)));
-            }else  {
-                return new Gson().toJson(
-                    new StandardResponse(StatusResponse.ERROR,new Gson()
-                        .toJson("User not found or error in edit")));
+            try{
+                User toEdit = new Gson().fromJson(request.body(), User.class);
+                User editedUser = userService.editUser(toEdit);
+                
+                if (editedUser != null) {
+                    return new Gson().toJson(
+                        new StandardResponse(StatusResponse.SUCCESS,new Gson()
+                            .toJsonTree(editedUser)));
+                }else  {
+                    return new Gson().toJson(
+                        new StandardResponse(StatusResponse.ERROR,new Gson()
+                            .toJson("User not found or error in edit")));
+                }
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+                return e.getMessage();
             }
+            
         });
 
         delete("/users/:id", (request, response) -> {
