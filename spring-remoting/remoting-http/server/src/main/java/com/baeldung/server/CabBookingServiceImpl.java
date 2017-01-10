@@ -20,7 +20,7 @@ public class CabBookingServiceImpl implements CabBookingService {
         int tripTimeInMinutes = (int) (5 + random() * 15);
         int costInCent = 15_00 + tripTimeInMinutes * 5 * pax;
         Date pickUpDate = new Date((long) (currentTimeMillis() + (1000 * 60 * random() * 15)));
-        return new Booking(pickUpLocation, pickUpDate, dropOffLocation, costInCent, tripTimeInMinutes,
+        return new Booking(pickUpLocation, pickUpDate, dropOffLocation, costInCent, tripTimeInMinutes * 60,
                 randomUUID().toString());
     }
 }

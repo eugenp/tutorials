@@ -12,7 +12,7 @@ public class Main {
     @Bean
     public HttpInvokerProxyFactoryBean invoker() {
         HttpInvokerProxyFactoryBean invoker = new HttpInvokerProxyFactoryBean();
-        invoker.setServiceUrl("http://localhost:9090/spring-remoting-http-server/account");
+        invoker.setServiceUrl("http://localhost:9090/spring-remoting-http-server/booking");
         invoker.setServiceInterface(CabBookingService.class);
         return invoker;
     }
@@ -28,10 +28,7 @@ public class Main {
         rootContext.scan(Main.class.getPackage().getName());
         rootContext.refresh();
         CabBookingClient bean = rootContext.getBean(CabBookingClient.class);
-        for (int i = 0; i < 1000; i++) {
-            bean.run();
-            Thread.sleep(1000);
-        }
+        bean.run();
     }
 
 }
