@@ -1,4 +1,4 @@
-package com.baeldung.java8;
+package com.baeldung.java9;
 
 import static org.junit.Assert.assertEquals;
 

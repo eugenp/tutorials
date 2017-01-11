@@ -1,0 +1,13 @@
+{
+  "object": {
+    "a1": "b2",
+    "c3": "d4",
+    "e5": "f6"
+  },
+  "array": [
+    1,
+    2,
+    3
+ ],
+  "string": "Hello World"
+}
