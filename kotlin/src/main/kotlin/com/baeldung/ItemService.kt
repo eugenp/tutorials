@@ -47,5 +47,23 @@ fun main(args: Array<String>) {
     println("Names: $concatOfNames")
 
     val itemManager = ItemManager("cat_id", "db://connection")
-    print("function result: ${itemManager.isFromSpecificCategory("1")}")
+    val result = "function result: ${itemManager.isFromSpecificCategory("1")}"
+    println(result)
+
+    val number = 2
+    if (number < 10) {
+        println("number less that 10")
+    } else if (number > 10) {
+        println("number is greater that 10")
+    }
+
+    val name = "John"
+    when (name) {
+        "John" -> println("Hi man")
+        "Alice" -> println("Hi lady")
+        else -> {
+            println("Hi")
+        }
+    }
+
 }
