@@ -1,16 +1,18 @@
 package com.baeldung.jsoup;
 
-import java.io.IOException;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JsoupParserTest {
 
@@ -70,7 +72,7 @@ public class JsoupParserTest {
         Elements children = firstSection.children();
         Elements siblings = firstSection.siblingElements();
 
-        sections.stream().forEach(el -> System.out.println("section: " + el));
+        sections.forEach(el -> System.out.println("section: " + el));
     }
 
     @Test
@@ -96,9 +98,9 @@ public class JsoupParserTest {
         firstArticle.select("h2").html("<div><span></span></div>");
 
         Element link = new Element(Tag.valueOf("a"), "")
-                .text("Checkout this amazing website!")
-                .attr("href", "http://baeldung.com")
-                .attr("target", "_blank");
+          .text("Checkout this amazing website!")
+          .attr("href", "http://baeldung.com")
+          .attr("target", "_blank");
         firstArticle.appendChild(link);
 
         doc.select("li.navbar-link").remove();
