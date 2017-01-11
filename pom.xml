@@ -59,7 +59,6 @@
         <module>javaxval</module>
         <module>jaxb</module>
         <module>jee7</module>
-        <module>jersey</module>
         <module>jjwt</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
@@ -116,6 +115,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
+        <module>spring-jersey</module>		
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
