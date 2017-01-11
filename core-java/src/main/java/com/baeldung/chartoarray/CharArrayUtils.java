@@ -12,13 +12,13 @@ public class CharArrayUtils {
         System.out.println(Arrays.toString(testArray) + " to string => " + charArrayToString1(testArray));
     }
 
-    public static char[] stringToCharArray1(final String input) {
+    public static char[] stringToCharArray1(String input) {
         if (null == input) return null;
 
         return input.toCharArray();
     }
 
-    public static char[] stringToCharArray2(final String input) {
+    public static char[] stringToCharArray2(String input) {
         if (null == input) return null;
 
         char[] charArray = new char[input.length()];
@@ -29,7 +29,7 @@ public class CharArrayUtils {
         return charArray;
     }
 
-    public static String charArrayToString1(final char[] charArray) {
+    public static String charArrayToString1(char[] charArray) {
         if (null == charArray) return null;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -41,7 +41,7 @@ public class CharArrayUtils {
         return stringBuilder.toString();
     }
 
-    public static String charArrayToString2(final char[] charArray) {
+    public static String charArrayToString2(char[] charArray) {
         if (null == charArray) return null;
 
         return String.valueOf(charArray);
