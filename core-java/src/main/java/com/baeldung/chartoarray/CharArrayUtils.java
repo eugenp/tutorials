@@ -8,17 +8,28 @@ public class CharArrayUtils {
         String testString = "abcdefg";
         char[] testArray = { 'e', 'g', 'p' };
 
-        System.out.println(testString + " to array => " + Arrays.toString(stringToCharArray(testString)));
-        System.out.println(Arrays.toString(testArray) + " to string => " + charArrayToString(testArray));
+        System.out.println(testString + " to array => " + Arrays.toString(stringToCharArray1(testString)));
+        System.out.println(Arrays.toString(testArray) + " to string => " + charArrayToString1(testArray));
     }
 
-    public static char[] stringToCharArray(final String input) {
+    public static char[] stringToCharArray1(final String input) {
         if (null == input) return null;
 
         return input.toCharArray();
     }
 
-    public static String charArrayToString(final char[] charArray) {
+    public static char[] stringToCharArray2(final String input) {
+        if (null == input) return null;
+
+        char[] charArray = new char[input.length()];
+
+        for(int i = 0; i < input.length(); ++i)
+            charArray[i] = input.charAt(i);
+
+        return charArray;
+    }
+
+    public static String charArrayToString1(final char[] charArray) {
         if (null == charArray) return null;
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,5 +39,11 @@ public class CharArrayUtils {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static String charArrayToString2(final char[] charArray) {
+        if (null == charArray) return null;
+
+        return String.valueOf(charArray);
     }
 }
