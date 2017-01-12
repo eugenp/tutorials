@@ -19,6 +19,7 @@ public class User {
     private String email;
 
     private int age;
+    private String username;
 
     public User() {
         super();
@@ -89,8 +90,15 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username").append(email).append("]");
+        builder.append("User [firstName=").append(firstName).append("]").append("[lastName=").append(lastName).append("]").append("[username=").append(email).append("]");
         return builder.toString();
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
 }
