@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class MultimapTest {
 
     @Test
-    public void givenMap_whenAddTwoValuesFroSameKey_shouldOverridePreviousKey() {
+    public void givenMap_whenAddTwoValuesForSameKey_shouldOverridePreviousKey() {
         //given
         String key = "a-key";
         Map<String, String> map = new LinkedHashMap<>();
@@ -28,7 +28,7 @@ public class MultimapTest {
     }
 
     @Test
-    public void givenMultiMap_whenAddTwoValuesFroSameKey_shouldHaveTwoEntriesInMap() {
+    public void givenMultiMap_whenAddTwoValuesForSameKey_shouldHaveTwoEntriesInMap() {
         //given
         String key = "a-key";
         Multimap<String, String> map = ArrayListMultimap.create();
@@ -42,7 +42,7 @@ public class MultimapTest {
     }
 
     @Test
-    public void givenMapOfListValues_whenAddTwoValuesFroSameKey_shouldHaveTwoElementInList() {
+    public void givenMapOfListValues_whenAddTwoValuesForSameKey_shouldHaveTwoElementsInList() {
         //given
         String key = "a-key";
         Map<String, List<String>> map = new LinkedHashMap<>();
