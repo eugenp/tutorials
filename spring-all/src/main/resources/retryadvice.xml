@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
     xsi:schemaLocation="http://www.springframework.org/schema/aop 
                            http://www.springframework.org/schema/aop/spring-aop.xsd
                            http://www.springframework.org/schema/beans
@@ -8,12 +8,10 @@
     <aop:config>
         <aop:pointcut id="transactional"
             expression="execution(* com.baeldung.springretry..*MyService.defaultXmlRetryService(..))" />
-        <aop:advisor pointcut-ref="transactional" advice-ref="taskRetryAdvice"
-            order="-1" />
+        <aop:advisor pointcut-ref="transactional" advice-ref="taskRetryAdvice" order="-1" />
     </aop:config>
 
-    <bean id="taskRetryAdvice"
-        class="org.springframework.retry.interceptor.RetryOperationsInterceptor">
+    <bean id="taskRetryAdvice" class="org.springframework.retry.interceptor.RetryOperationsInterceptor">
         <property name="RetryOperations" ref="taskBatchRetryTemplate" />
     </bean>
 
@@ -31,8 +29,7 @@
         </constructor-arg>
     </bean>
 
-    <bean id="ExponentialBackOffPolicy"
-        class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+    <bean id="ExponentialBackOffPolicy" class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
         <property name="initialInterval" value="300">
             <description>
                 Initial sleep interval value, default 300 ms
