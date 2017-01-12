@@ -25,12 +25,22 @@ public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingCo
 
     @Bean
     public Executor executor() {
-        return makeExecutor();
+        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.setCorePoolSize(1);
+        threadPoolTaskExecutor.setMaxPoolSize(1);
+        threadPoolTaskExecutor.initialize();
+
+        return new LazyTraceExecutor(beanFactory, threadPoolTaskExecutor);
     }
 
     @Override
     public Executor getAsyncExecutor() {
-        return makeExecutor();
+        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
+        threadPoolTaskExecutor.setCorePoolSize(1);
+        threadPoolTaskExecutor.setMaxPoolSize(1);
+        threadPoolTaskExecutor.initialize();
+
+        return new LazyTraceExecutor(beanFactory, threadPoolTaskExecutor);
     }
 
     @Override
@@ -40,17 +50,6 @@ public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingCo
 
     @Bean(destroyMethod = "shutdown")
     public Executor schedulingExecutor() {
-        return Executors.newScheduledThreadPool(100);
+        return Executors.newScheduledThreadPool(1);
     }
-
-    private Executor makeExecutor() {
-        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setCorePoolSize(5);
-        threadPoolTaskExecutor.setMaxPoolSize(10);
-        threadPoolTaskExecutor.initialize();
-
-        return new LazyTraceExecutor(beanFactory, threadPoolTaskExecutor);
-    }
-
-
 }

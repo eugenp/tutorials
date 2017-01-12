@@ -65,7 +65,4 @@ public class SleuthController {
         logger.info("After Async Method Call");
         return "success";
     }
-
-
-
 }
