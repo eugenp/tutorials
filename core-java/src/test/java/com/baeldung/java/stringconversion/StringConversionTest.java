@@ -1,25 +1,24 @@
 package com.baeldung.java.stringconversion;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.Test;
 
 public class StringConversionTest {
     @Test
     public void testStringToCharArray() {
-        String testString = "JavaString";
+        String testString = "String";
+        char[] expectedArr = {'S', 't', 'r', 'i', 'n', 'g'};
         char[] testStringCharArr = testString.toCharArray();
-        for (int i = 0; i < testString.length(); i++) {
-            assertEquals("Invalid StringToCharArray conversion", testString.charAt(i), testStringCharArr[i]);
-        }
+        assertArrayEquals(expectedArr, testStringCharArr);
     }
 
     @Test
     public void testCharArrayToString() {
-        char[] testStringCharArr = {'J', 'a', 'v', 'a', 'S', 't', 'r', 'i', 'n', 'g'};
+        char[] testStringCharArr = {'S', 't', 'r', 'i', 'n', 'g'};
+        String expectedString = "String";
         String testString = new String(testStringCharArr);
-        for (int i = 0; i < testString.length(); i++) {
-            assertEquals("Invalid CharArrayToString conversion", testString.charAt(i), testStringCharArr[i]);
-        }
+        assertEquals(expectedString, testString);
     }  
 }
