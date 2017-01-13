@@ -30,7 +30,6 @@
       <artifactId>org.eclipse.jgit.archive</artifactId>
       <version>4.5.0.201609210915-r</version>
     </dependency>
-
 	<dependency>
 		<groupId>commons-io</groupId>
 		<artifactId>commons-io</artifactId>
@@ -41,7 +40,6 @@
 		<artifactId>slf4j-simple</artifactId>
 		<version>1.7.21</version>
 	</dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -49,7 +47,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>

@@ -3,13 +3,10 @@ package com.baeldung.jgit.porcelain;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
-
-
 
 /**
  * Simple snippet which shows how to commit all files

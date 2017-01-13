@@ -1,10 +1,7 @@
 package com.baeldung.jgit;
 
-
-
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;

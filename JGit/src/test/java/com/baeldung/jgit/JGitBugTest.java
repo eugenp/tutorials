@@ -1,6 +1,3 @@
-
-
-
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.lib.ObjectLoader;
 import org.eclipse.jgit.lib.ObjectReader;
@@ -8,9 +5,7 @@ import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevWalk;
 import org.junit.Test;
-
 import java.io.IOException;
-
 import static org.junit.Assert.assertNotNull;
 
 /**
