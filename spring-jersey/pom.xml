@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>jersey-api</artifactId>
+    <artifactId>spring-jersey</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -90,6 +90,12 @@
             <artifactId>jersey-media-json-jackson</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+
         <!-- servlet api -->
         <dependency>
             <groupId>javax.servlet</groupId>

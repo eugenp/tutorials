@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JerseyApiLiveTest {
 
-    private static final String SERVICE_URL = "http://localhost:8082/jersey-api/resources/employees";
+    private static final String SERVICE_URL = "http://localhost:8082/spring-jersey/resources/employees";
 
     @Test
     public void givenGetAllEmployees_whenCorrectRequest_thenResponseCodeSuccess() throws ClientProtocolException, IOException {
