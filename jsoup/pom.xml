@@ -25,6 +25,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <jsoup.version>1.10.1</jsoup.version>
+        <jsoup.version>1.10.2</jsoup.version>
     </properties>
 </project>
