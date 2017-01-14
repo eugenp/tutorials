@@ -46,4 +46,14 @@
 - [Grep in Java](http://www.baeldung.com/grep-in-java)
 - [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
 - [Simulated Annealing for Travelling Salesman Problem](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
+<<<<<<< HEAD
 - [An introduction to Disruptor](http://www.baeldung.com/concurrency-with-lmax-disruptor-an-introduction)
+=======
+- [Slope One Algorithm: Collaborative Filtering Recommendation Systems](http://www.baeldung.com/java-collaborative-filtering-recommendations)
+- [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](http://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
+- [Pattern Search with Grep in Java](http://www.baeldung.com/grep-in-java)
+- [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
+- [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)
+- [The Basics of Java Generics](http://www.baeldung.com/java-generics)
+- [The Traveling Salesman Problem in Java](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
+>>>>>>> branch 'master' of https://github.com/eugenp/tutorials.git

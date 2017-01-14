@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
@@ -160,10 +161,10 @@
             </build>
         </profile>
     </profiles>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 
         <org.springframework.data.version>1.8.6.RELEASE</org.springframework.data.version>
@@ -177,7 +178,7 @@
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
 </project>
