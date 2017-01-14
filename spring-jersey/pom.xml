@@ -76,11 +76,6 @@
         <!-- core library -->
 
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-servlet</artifactId>
             <version>${jersey.version}</version>
@@ -103,8 +98,8 @@
             <version>${servlet-api-version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- optional library -->
 
+        <!-- optional library -->
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
