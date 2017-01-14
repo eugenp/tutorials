@@ -1,5 +1,6 @@
 package com.baeldung.handlermappings;
 
+import com.baeldung.config.HandlerMappingDefaultConfig;
 import com.baeldung.config.HandlerMappingPrioritiesConfig;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = HandlerMappingPrioritiesConfig.class)
-public class HandlerMappingPriorityConfigTest {
+@ContextConfiguration(classes = HandlerMappingDefaultConfig.class)
+public class HandlerMappingDefaultConfigTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
@@ -34,7 +35,7 @@ public class HandlerMappingPriorityConfigTest {
     }
 
     @Test
-    public void whenConfiguringPriorities_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("simple-url-handler-mapping")).andDo(print());
+    public void whenDefaultConfig_thenMappedOK() throws Exception {
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("bean-name-handler-mapping")).andDo(print());
     }
 }
