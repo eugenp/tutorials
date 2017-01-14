@@ -61,9 +61,6 @@ fun main(args: Array<String>) {
     when (name) {
         "John" -> println("Hi man")
         "Alice" -> println("Hi lady")
-        else -> {
-            println("Hi")
-        }
     }
 
 }
