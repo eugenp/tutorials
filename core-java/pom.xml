@@ -358,7 +358,7 @@
         <logback.version>1.1.7</logback.version>
 
         <!-- util -->
-        <guava.version>19.0</guava.version>
+        <guava.version>21.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <bouncycastle.version>1.55</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
