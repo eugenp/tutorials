@@ -17,17 +17,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ExpressionUtilityObjectsController {
 
-	@RequestMapping(value = "/objects", method = RequestMethod.GET)
-	public String getDates(Model model) {
-		model.addAttribute("date", new Date());
-		model.addAttribute("calendar", Calendar.getInstance());
-		model.addAttribute("num", Math.random() * 10);
-		model.addAttribute("string", "new text");
-		model.addAttribute("emptyString", "");
-		model.addAttribute("nullString", null);
-		model.addAttribute("array", new int[] { 1, 3, 4, 5 });
-		model.addAttribute("set", new HashSet<Integer>(Arrays.asList(1, 3, 8)));
-		return "objects.html";
-	}
+    @RequestMapping(value = "/objects", method = RequestMethod.GET)
+    public String getDates(Model model) {
+        model.addAttribute("date", new Date());
+        model.addAttribute("calendar", Calendar.getInstance());
+        model.addAttribute("num", Math.random() * 10);
+        model.addAttribute("string", "new text");
+        model.addAttribute("emptyString", "");
+        model.addAttribute("nullString", null);
+        model.addAttribute("array", new int[] { 1, 3, 4, 5 });
+        model.addAttribute("set", new HashSet<Integer>(Arrays.asList(1, 3, 8)));
+        return "objects.html";
+    }
 
 }
