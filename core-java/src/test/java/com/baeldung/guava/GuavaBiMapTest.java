@@ -7,7 +7,9 @@ import java.util.Map;
 
 import org.junit.Test;
 import com.google.common.collect.BiMap;
+import com.google.common.collect.EnumHashBiMap;
 import com.google.common.collect.HashBiMap;
+import com.google.common.collect.ImmutableBiMap;
 
 public class GuavaBiMapTest {
     @Test
@@ -57,7 +59,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void givenSameValueIsBeingPresent_whenForPutIsUsed_shouldThrowException() {
+    public void givenSameValueIsBeingPresent_whenForcePutIsUsed_shouldCompleteSuccessfully() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
 
         personCountryHeadBiMap.put("Modi", "India");
@@ -81,4 +83,40 @@ public class GuavaBiMapTest {
         assertEquals("HongKong", personCountryHeadBiMap.get("Obama"));
     }
 
+    @Test
+    public void whenUsingImmutableBiMap_shouldAllowPutSuccessfully() {
+        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+
+        assertEquals("USA", personCountryHeadBiMap.get("Obama"));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void whenUsingImmutableBiMap_shouldNotAllowRemove() {
+        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+
+        personCountryHeadBiMap.remove("Modi");
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void whenUsingImmutableBiMap_shouldNotAllowPut() {
+        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+
+        personCountryHeadBiMap.put("Trump", "USA");
+    }
+
+    private enum Operation {
+        ADD, SUBTRACT, MULTIPLY, DIVIDE
+    }
+
+    @Test
+    public void whenUsingEnumAsKeyInMap_shouldReplaceAlreadyPresent() {
+        final BiMap<Operation, String> operationStringBiMap = EnumHashBiMap.create(Operation.class);
+
+        operationStringBiMap.put(Operation.ADD, "Add");
+        operationStringBiMap.put(Operation.SUBTRACT, "Subtract");
+        operationStringBiMap.put(Operation.MULTIPLY, "Multiply");
+        operationStringBiMap.put(Operation.DIVIDE, "Divide");
+
+        assertEquals("Divide", operationStringBiMap.get(Operation.DIVIDE));
+    }
 }
