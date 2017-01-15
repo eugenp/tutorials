@@ -18,13 +18,14 @@ public class HandlerMappingPrioritiesConfig {
     @Bean
     BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
         BeanNameUrlHandlerMapping beanNameUrlHandlerMapping = new BeanNameUrlHandlerMapping();
-        beanNameUrlHandlerMapping.setOrder(0);
+        beanNameUrlHandlerMapping.setOrder(1);
         return beanNameUrlHandlerMapping;
     }
 
     @Bean
     public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
         SimpleUrlHandlerMapping simpleUrlHandlerMapping = new SimpleUrlHandlerMapping();
+        simpleUrlHandlerMapping.setOrder(0);
         Map<String, Object> urlMap = new HashMap<>();
         urlMap.put("/welcome", simpleUrlMapping());
         simpleUrlHandlerMapping.setUrlMap(urlMap);
