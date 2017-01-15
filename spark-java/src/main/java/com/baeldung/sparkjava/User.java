@@ -5,8 +5,6 @@
  */
 package com.baeldung.sparkjava;
 
-import java.util.Map;
-
 class User {
 
     private String id;

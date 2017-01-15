@@ -1,12 +1,12 @@
 package com.baeldung.sparkjava;
 
-import static spark.Spark.*;
-
-import java.util.HashMap;
-import java.util.Map;
+import static spark.Spark.delete;
+import static spark.Spark.get;
+import static spark.Spark.options;
+import static spark.Spark.post;
+import static spark.Spark.put;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class SparkRestExample {
     public static void main(String[] args) {

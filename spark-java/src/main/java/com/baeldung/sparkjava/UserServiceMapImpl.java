@@ -1,10 +1,7 @@
 package com.baeldung.sparkjava;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class UserServiceMapImpl  implements UserService{
     private HashMap<String, User> userMap;
@@ -13,18 +10,22 @@ public class UserServiceMapImpl  implements UserService{
         userMap = new HashMap<>();
     }
 
+    @Override
     public void addUser (User user) {
         userMap.put(user.getId(), user);
     }
     
+    @Override
     public Collection<User> getUsers () {
         return  userMap.values();
     }
     
+    @Override
     public User getUser (String id) {
         return userMap.get(id);
     }
     
+    @Override
     public User editUser (User forEdit) throws UserException{
         try{
             if (forEdit.getId() == null) 
@@ -53,10 +54,13 @@ public class UserServiceMapImpl  implements UserService{
             throw new UserException(ex.getMessage());
         }
     }
+    
+    @Override
     public void deleteUser (String id) {
         userMap.remove(id);
     }
     
+    @Override
     public boolean userExist (String id) {
         return userMap.containsKey(id);
     }
