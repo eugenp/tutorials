@@ -35,6 +35,6 @@ public class HandlerMappingPriorityConfigTest {
 
     @Test
     public void whenConfiguringPriorities_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("bean-name-handler-mapping")).andDo(print());
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("simple-url-handler-mapping")).andDo(print());
     }
 }

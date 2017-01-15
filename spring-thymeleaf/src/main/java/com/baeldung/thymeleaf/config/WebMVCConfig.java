@@ -26,7 +26,6 @@ import com.baeldung.thymeleaf.utils.ArrayUtil;
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
 
-
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "com.baeldung.thymeleaf" })
@@ -36,23 +35,23 @@ import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
  */
 public class WebMVCConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
-	private ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
-	public void setApplicationContext(ApplicationContext applicationContext) {
-		this.applicationContext = applicationContext;
-	}
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
-	@Bean
-	public ViewResolver htmlViewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine(htmlTemplateResolver()));
-		resolver.setContentType("text/html");
-		resolver.setCharacterEncoding("UTF-8");
-		resolver.setViewNames(ArrayUtil.array("*.html"));
-		return resolver;
-	}
-	
-	@Bean
+    @Bean
+    public ViewResolver htmlViewResolver() {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine(htmlTemplateResolver()));
+        resolver.setContentType("text/html");
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setViewNames(ArrayUtil.array("*.html"));
+        return resolver;
+    }
+
+    @Bean
     public ViewResolver javascriptViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine(javascriptTemplateResolver()));
@@ -61,8 +60,8 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         resolver.setViewNames(ArrayUtil.array("*.js"));
         return resolver;
     }
-	
-	@Bean
+
+    @Bean
     public ViewResolver plainViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine(plainTemplateResolver()));
@@ -72,7 +71,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         return resolver;
     }
 
-	private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
+    private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.addDialect(new LayoutDialect(new GroupingStrategy()));
         engine.addDialect(new Java8TimeDialect());
@@ -88,7 +87,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         resolver.setTemplateMode(TemplateMode.HTML);
         return resolver;
     }
-    
+
     private ITemplateResolver javascriptTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(applicationContext);
@@ -97,7 +96,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         resolver.setTemplateMode(TemplateMode.JAVASCRIPT);
         return resolver;
     }
-    
+
     private ITemplateResolver plainTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(applicationContext);
@@ -107,22 +106,22 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         return resolver;
     }
 
-	@Bean
-	@Description("Spring Message Resolver")
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
+    @Bean
+    @Description("Spring Message Resolver")
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
+    }
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+    }
 
-	@Override
-	@Description("Custom Conversion Service")
-	public void addFormatters(FormatterRegistry registry) {
-		registry.addFormatter(new NameFormatter());
-	}
+    @Override
+    @Description("Custom Conversion Service")
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new NameFormatter());
+    }
 }
