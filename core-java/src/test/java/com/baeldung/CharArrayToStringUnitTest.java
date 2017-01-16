@@ -54,7 +54,7 @@ public class CharArrayToStringUnitTest {
     @Test
     public void givenCharArray_whenCallingStringValueOfWithOffsetAndLength_shouldConvertToString(){
         char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
-        String result = String.copyValueOf(charArray, 3, 4);
+        String result = String.valueOf(charArray, 3, 4);
         String expectedValue = "ract";
         
         assertEquals(expectedValue, result);
