@@ -1,5 +1,7 @@
 package com.baeldung.server;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 
 import org.apache.http.HttpResponse;
@@ -25,7 +27,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
     @Test
@@ -34,7 +36,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
     @Test
@@ -43,7 +45,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_NOT_FOUND);
     }
 
     @Test
@@ -55,7 +57,7 @@ public class JerseyApiLiveTest {
         ObjectMapper mapper = new ObjectMapper();
         Employee emp = mapper.readValue(httpResponse.getEntity().getContent(), Employee.class);
 
-        assert(emp.getFirstName().equals("Jane"));
+        assertEquals(emp.getFirstName(), "Jane");
     }
 
     @Test
@@ -70,7 +72,7 @@ public class JerseyApiLiveTest {
         request.setEntity(input);
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CREATED);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_CREATED);
     }
 
     @Test
@@ -85,7 +87,7 @@ public class JerseyApiLiveTest {
         request.setEntity(input);
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CONFLICT);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_CONFLICT);
     }
 
 }

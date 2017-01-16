@@ -1,5 +1,7 @@
 package com.baeldung.client;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.ws.rs.core.Response;
 
 import org.junit.Test;
@@ -19,7 +21,7 @@ public class JerseyClientLiveTest {
 
         Response response = client.createJsonEmployee(emp);
 
-        assert(response.getStatus() == HTTP_CREATED);
+        assertEquals(response.getStatus(), HTTP_CREATED);
     }
 
     @Test
@@ -28,7 +30,7 @@ public class JerseyClientLiveTest {
 
         Response response = client.createXmlEmployee(emp);
 
-        assert(response.getStatus() == HTTP_CREATED);
+        assertEquals(response.getStatus(), HTTP_CREATED);
     }
 
     @Test
@@ -37,7 +39,7 @@ public class JerseyClientLiveTest {
 
         Employee emp = client.getJsonEmployee(employeeId);
 
-        assert(emp.getFirstName().equals("Jane"));
+        assertEquals(emp.getFirstName(), "Jane");
     }
 
     @Test
@@ -46,6 +48,6 @@ public class JerseyClientLiveTest {
 
         Employee emp = client.getXmlEmployee(employeeId);
 
-        assert(emp.getFirstName().equals("Jane"));
+        assertEquals(emp.getFirstName(), "Jane");
     }
 }
