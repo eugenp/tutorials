@@ -45,7 +45,7 @@
 
     </dependencies>
 
-    
+
     <build>
         <plugins>
             <plugin>
@@ -61,7 +61,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <profiles>
         <profile>
             <id>integration</id>
@@ -101,7 +101,7 @@
         <aspectjweaver.version>1.8.9</aspectjweaver.version>
         <weld-se-core.version>2.4.1.Final</weld-se-core.version>
         <junit.version>4.12</junit.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
 </project>

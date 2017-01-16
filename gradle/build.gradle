@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories{
+   mavenCentral()
+}
+
+dependencies{ 
+     compile 'org.springframework:spring-context:4.3.5.RELEASE' 
+} 
+
+task hello {   
+    println "this Baeldung's tutorial is ${awesomeness}"  
+}
+
+uploadArchives {  
+    repositories {  
+        mavenDeployer {  
+            repository(url: 'http://yourmavenrepo/repository') {  
+                authentication(userName: 'user', password: 'password');  
+            }  
+      
+        }  
+    }  
+}

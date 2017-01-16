@@ -8,6 +8,7 @@
 >
 
     <http use-expressions="true">
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/anonymous*" access="isAnonymous()"/>
         <intercept-url pattern="/login*" access="permitAll"/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
@@ -27,6 +28,7 @@
             <user-service>
                 <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
                 <user name="user2" password="user2Pass" authorities="ROLE_USER"/>
+                <user name="admin" password="adminPass" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>

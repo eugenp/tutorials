@@ -323,9 +323,9 @@
                 </plugins>
 
             </build>
-        </profile>        
+        </profile>
     </profiles>
-    
+
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
