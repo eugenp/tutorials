@@ -1,19 +1,21 @@
 package com.baeldung.jackson.inheritance;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonTypeName("removeItemIdFromUser")
-public class RemoveItemIdFromUser extends Event {
+@JsonTypeName("itemIdAddedToUser")
+@JsonIgnoreProperties("id")
+public class ItemIdAddedToUser extends Event {
     private final String itemId;
     private final Long quantity;
 
     @JsonCreator
-    public RemoveItemIdFromUser(@JsonProperty("id") String id,
-                                @JsonProperty("timestamp") Long timestamp,
-                                @JsonProperty("itemId") String itemId,
-                                @JsonProperty("quantity") Long quantity) {
+    public ItemIdAddedToUser(@JsonProperty("id") String id,
+                             @JsonProperty("timestamp") Long timestamp,
+                             @JsonProperty("itemId") String itemId,
+                             @JsonProperty("quantity") Long quantity) {
         super(id, timestamp);
         this.itemId = itemId;
         this.quantity = quantity;

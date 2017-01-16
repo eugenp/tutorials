@@ -9,11 +9,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class RemoveItemIdFromUserTest {
+public class ItemIdRemovedFromUserTest {
     @Test
     public void givenRemoveItemJson_whenDeserialize_shouldHaveProperClassType() throws IOException {
         //given
-        Event event = new RemoveItemIdFromUser("1", 12345567L, "item_1", 2L);
+        Event event = new ItemIdRemovedFromUser("1", 12345567L, "item_1", 2L);
         ObjectMapper objectMapper = new ObjectMapper();
         String eventJson = objectMapper.writeValueAsString(event);
 
@@ -21,14 +21,14 @@ public class RemoveItemIdFromUserTest {
         Event result = new ObjectMapper().readValue(eventJson, Event.class);
 
         //then
-        assertTrue(result instanceof RemoveItemIdFromUser);
-        assertEquals("item_1", ((RemoveItemIdFromUser) result).getItemId());
+        assertTrue(result instanceof ItemIdRemovedFromUser);
+        assertEquals("item_1", ((ItemIdRemovedFromUser) result).getItemId());
     }
 
     @Test
     public void givenAdddItemJson_whenSerialize_shouldIgnoreIdPropertyFromSuperclass() throws IOException {
         //given
-        Event event = new AddItemIdToUser("1", 12345567L, "item_1", 2L);
+        Event event = new ItemIdAddedToUser("1", 12345567L, "item_1", 2L);
         ObjectMapper objectMapper = new ObjectMapper();
 
         //when
