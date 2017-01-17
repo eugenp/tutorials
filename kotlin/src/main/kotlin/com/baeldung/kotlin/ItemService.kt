@@ -26,25 +26,32 @@ class ItemManager(val categoryId: String, val dbConnection: String) {
         println(result)
 
     }
+
+    fun sum(a: Int, b: Int): Int {
+        return a + b
+    }
 }
 
 fun main(args: Array<String>) {
     val numbers = arrayOf("first", "second", "third", "fourth")
 
-    var concat = ""
     for (n in numbers) {
-        concat += n
+        println(n)
     }
 
-    var sum = 0
-    for (i in 2..9) {
-        sum += i
+
+    for (i in 2..9 step 2) {
+        println(i)
     }
+
+    val res = 1.rangeTo(10).map { it * 2 }
+    println(res)
 
     val firstName = "Tom"
     val secondName = "Mary"
     val concatOfNames = "$firstName + $secondName"
     println("Names: $concatOfNames")
+    val sum = "four: ${2 + 2}"
 
     val itemManager = ItemManager("cat_id", "db://connection")
     val result = "function result: ${itemManager.isFromSpecificCategory("1")}"
