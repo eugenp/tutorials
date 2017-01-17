@@ -74,6 +74,7 @@
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
