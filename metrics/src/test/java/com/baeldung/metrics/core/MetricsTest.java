@@ -14,7 +14,7 @@ import com.codahale.metrics.*;
 
 public class MetricsTest {
     @Test
-    public void testMeter() throws InterruptedException {
+    public void whenMarkMeter_thenCorrectRates() throws InterruptedException {
         Meter meter = new Meter();
 
         long initCount = meter.getCount();
@@ -38,13 +38,13 @@ public class MetricsTest {
     }
 
     @Test
-    public void testRatioGauge() {
+    public void whenInitRatioGauge_thenCorrectRatio() {
         Gauge<Double> ratioGauge = new AttendanceRatioGauge(15, 20);
         assertThat(ratioGauge.getValue(), equalTo(0.75));
     }
 
     @Test
-    public void testCacheGauge() {
+    public void whenUseCacheGauge_thenCorrectGauge() {
         Gauge<List<Long>> activeUsersGauge = new ActiveUsersGauge(15, TimeUnit.MINUTES);
         List<Long> expected = new ArrayList<Long>();
         expected.add(12L);
@@ -52,14 +52,14 @@ public class MetricsTest {
     }
 
     @Test
-    public void testDerivativeGauge() {
+    public void whenUseDerivativeGauge_thenCorrectGaugeFromBase() {
         Gauge<List<Long>> activeUsersGauge = new ActiveUsersGauge(15, TimeUnit.MINUTES);
         Gauge<Integer> activeUserCountGauge = new ActiveUserCountGauge(activeUsersGauge);
         assertThat(activeUserCountGauge.getValue(), equalTo(1));
     }
 
     @Test
-    public void testCounter() {
+    public void whenIncDecCounter_thenCorrectCount() {
         Counter counter = new Counter();
 
         long initCount = counter.getCount();
@@ -79,7 +79,7 @@ public class MetricsTest {
     }
 
     @Test
-    public void testHistogram() {
+    public void whenUpdateHistogram_thenCorrectDistributionData() {
         Histogram histogram = new Histogram(new UniformReservoir());
 
         histogram.update(5);
@@ -119,7 +119,7 @@ public class MetricsTest {
     }
 
     @Test
-    public void testTimer() throws InterruptedException {
+    public void whenUseTimer_thenCorrectTimerContexts() throws InterruptedException {
         Timer timer = new Timer();
 
         Timer.Context context1 = timer.time();

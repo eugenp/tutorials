@@ -15,6 +15,8 @@
 
     <properties>
         <dep.ver.metrics>3.1.0</dep.ver.metrics>
+        <dep.ver.servlet>3.1.0</dep.ver.servlet>
+        <dep.ver.junit>4.12</dep.ver.junit>
     </properties>
 
     <dependencies>
@@ -41,12 +43,13 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${dep.ver.servlet}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${dep.ver.junit}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

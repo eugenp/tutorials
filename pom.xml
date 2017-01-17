@@ -74,6 +74,7 @@
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -173,7 +174,6 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-        <module>metrics</module>
     </modules>
 
 </project>

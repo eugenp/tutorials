@@ -8,7 +8,7 @@ import com.codahale.metrics.*;
 
 public class ReporterTest {
     @Test
-    public void testConsoleReporter() {
+    public void whenConsoleReporter_thenOutputReport() {
         MetricRegistry metricRegistry = new MetricRegistry();
 
         Meter meter = metricRegistry.meter("meter");

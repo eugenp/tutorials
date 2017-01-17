@@ -12,7 +12,7 @@ import com.codahale.metrics.health.HealthCheckRegistry;
 
 public class HealthCheckTest {
     @Test
-    public void testHealthCheck() {
+    public void whenUseHealthCheck_thenHealthChecked() {
         HealthCheckRegistry healthCheckRegistry = new HealthCheckRegistry();
 
         healthCheckRegistry.register("db", new DatabaseHealthCheck());
