@@ -1,5 +1,6 @@
-package com.baeldung
+package com.baeldung.kotlin
 
+import com.baeldung.kotlin.ListExtension
 import org.junit.Test
 import kotlin.test.assertTrue
 

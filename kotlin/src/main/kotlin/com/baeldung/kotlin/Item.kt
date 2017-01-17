@@ -1,4 +1,4 @@
-package com.baeldung
+package com.baeldung.kotlin
 
 open class Item(val id: String, val name: String = "unknown_name") {
     open fun getIdOfItem(): String {

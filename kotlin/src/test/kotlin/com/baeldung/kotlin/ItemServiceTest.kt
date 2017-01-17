@@ -1,4 +1,4 @@
-package com.baeldung
+package com.baeldung.kotlin
 
 import org.junit.Test
 import kotlin.test.assertNotNull

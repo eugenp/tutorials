@@ -12,18 +12,18 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>1.0.4</version>
+            <version>${kotlin-stdlib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
-            <version>1.0.4</version>
+            <version>${kotlin-test-junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -35,7 +35,7 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>1.0.4</version>
+                <version>${kotlin-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>compile</id>
@@ -54,5 +54,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <junit.version>4.12</junit.version>
+        <kotlin-test-junit.version>1.0.4</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.0.4</kotlin-stdlib.version>
+        <kotlin-maven-plugin.version>1.0.4</kotlin-maven-plugin.version>
+    </properties>
 
 </project>
