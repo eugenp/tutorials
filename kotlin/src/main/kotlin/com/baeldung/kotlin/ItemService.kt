@@ -54,6 +54,7 @@ fun main(args: Array<String>) {
     val sum = "four: ${2 + 2}"
 
     val itemManager = ItemManager("cat_id", "db://connection")
+    ItemManager(categoryId = "catId", dbConnection = "db://Connection")
     val result = "function result: ${itemManager.isFromSpecificCategory("1")}"
     println(result)
 
