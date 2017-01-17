@@ -1,11 +1,11 @@
 package com.baeldung.java8.lambda.exceptions;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import static com.baeldung.java8.lambda.exceptions.LambdaExceptionWrappers.*;
 
@@ -38,7 +38,7 @@ public class LambdaExceptionWrappersTest {
         integers.forEach(handlingConsumerWrapper(i -> writeToFile(i), IOException.class));
     }
 
-    void writeToFile(Integer i) throws IOException {
+    private void writeToFile(Integer i) throws IOException {
         if (i == 0) {
             throw new IOException(); // mock IOException
         }
