@@ -30,6 +30,7 @@ class ItemManager(val categoryId: String, val dbConnection: String) {
     fun sum(a: Int, b: Int): Int {
         return a + b
     }
+
 }
 
 fun main(args: Array<String>) {
@@ -38,7 +39,6 @@ fun main(args: Array<String>) {
     for (n in numbers) {
         println(n)
     }
-
 
     for (i in 2..9 step 2) {
         println(i)
@@ -71,4 +71,9 @@ fun main(args: Array<String>) {
         "Alice" -> println("Hi lady")
     }
 
+    val items = listOf(1, 2, 3, 4)
+
+
+    val rwList = mutableListOf(1, 2, 3)
+    rwList.add(5)
 }
