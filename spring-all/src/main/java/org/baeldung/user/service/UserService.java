@@ -1,6 +1,6 @@
 package org.baeldung.user.service;
 
-import org.baeldung.persistence.model.MyUser;
+import org.baeldung.user.model.MyUser;
 
 public interface UserService {
 

@@ -1,21 +1,17 @@
 package org.baeldung.user.service;
 
-import org.baeldung.persistence.model.MyUser;
 import org.baeldung.user.dao.MyUserDAO;
+import org.baeldung.user.model.MyUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class MyDerbyUserService implements UserService {
-
-    private final MyUserDAO myUserDAO;
+public class MyUserService implements UserService {
 
     @Autowired
-    public MyDerbyUserService(final MyUserDAO myUserDAO) {
-        this.myUserDAO = myUserDAO;
-    }
+    MyUserDAO myUserDAO;
 
     /*
      * (non-Javadoc)
@@ -25,4 +21,17 @@ public class MyDerbyUserService implements UserService {
     public MyUser getUserByUsername(final String username) {
         return myUserDAO.findByUsername(username);
     }
+
+    public void removeUserByUsername(String username) {
+        myUserDAO.removeUserByUsername(username);
+    }
+
+    private boolean usernameExists(final String username) {
+        final MyUser user = myUserDAO.findByUsername(username);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
 }
