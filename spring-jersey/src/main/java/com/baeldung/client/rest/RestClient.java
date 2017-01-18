@@ -3,7 +3,6 @@ package com.baeldung.client.rest;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -19,8 +18,7 @@ public class RestClient {
     }
 
     public Employee getJsonEmployee(int id) {
-        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_JSON).get(new GenericType<Employee>() {
-        });
+        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_JSON).get(Employee.class);
     }
 
     public Response createXmlEmployee(Employee emp) {
@@ -28,7 +26,6 @@ public class RestClient {
     }
 
     public Employee getXmlEmployee(int id) {
-        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_XML).get(new GenericType<Employee>() {
-        });
+        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_XML).get(Employee.class);
     }
 }
