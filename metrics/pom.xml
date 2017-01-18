@@ -18,7 +18,7 @@
         <dep.ver.servlet>3.1.0</dep.ver.servlet>
         <dep.ver.junit>4.12</dep.ver.junit>
 
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven.compiler-plugin.version>3.6.0</maven.compiler-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
