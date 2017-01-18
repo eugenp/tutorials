@@ -27,11 +27,11 @@ public class Java8GroupingByCollectorUnitTest {
         public String getTitle() {
             return title;
         }
-        
+
         public String getAuthor() {
             return author;
         }
-        
+
         public BlogPostType getType() {
             return type;
         }
@@ -50,13 +50,8 @@ public class Java8GroupingByCollectorUnitTest {
         NEWS, REVIEW, GUIDE
     }
 
-    private static final List<BlogPost> POSTS = Arrays.asList(
-            new BlogPost("News item 1", "Author 1", BlogPostType.NEWS, 15), 
-            new BlogPost("Tech review 1", "Author 2", BlogPostType.REVIEW, 5), 
-            new BlogPost("Programming guide", "Author 1", BlogPostType.GUIDE, 20),
-            new BlogPost("News item 2", "Author 2", BlogPostType.NEWS, 35), 
-            new BlogPost("Tech review 2", "Author 1", BlogPostType.REVIEW, 15)
-    );
+    private static final List<BlogPost> POSTS = Arrays.asList(new BlogPost("News item 1", "Author 1", BlogPostType.NEWS, 15), new BlogPost("Tech review 1", "Author 2", BlogPostType.REVIEW, 5),
+            new BlogPost("Programming guide", "Author 1", BlogPostType.GUIDE, 20), new BlogPost("News item 2", "Author 2", BlogPostType.NEWS, 35), new BlogPost("Tech review 2", "Author 1", BlogPostType.REVIEW, 15));
 
     @Test
     public void givenAListOfPosts_whenGroupedByType_thenGetAMapBetweenTypeAndPosts() {
@@ -136,25 +131,38 @@ public class Java8GroupingByCollectorUnitTest {
 
         assertTrue(maxLikesPerPostType.get(BlogPostType.NEWS).isPresent());
         assertEquals(35, maxLikesPerPostType.get(BlogPostType.NEWS).get().getLikes());
-        
+
         assertTrue(maxLikesPerPostType.get(BlogPostType.GUIDE).isPresent());
         assertEquals(20, maxLikesPerPostType.get(BlogPostType.GUIDE).get().getLikes());
-        
+
         assertTrue(maxLikesPerPostType.get(BlogPostType.REVIEW).isPresent());
         assertEquals(15, maxLikesPerPostType.get(BlogPostType.REVIEW).get().getLikes());
     }
-    
+
     @Test
     public void givenAListOfPosts_whenGroupedByAuthorAndThenByType_thenGetAMapBetweenAuthorAndMapsBetweenTypeAndBlogPosts() {
         Map<String, Map<BlogPostType, List<BlogPost>>> map = POSTS.stream().collect(groupingBy(BlogPost::getAuthor, groupingBy(BlogPost::getType)));
-        
+
         assertEquals(1, map.get("Author 1").get(BlogPostType.NEWS).size());
         assertEquals(1, map.get("Author 1").get(BlogPostType.GUIDE).size());
         assertEquals(1, map.get("Author 1").get(BlogPostType.REVIEW).size());
-        
+
         assertEquals(1, map.get("Author 2").get(BlogPostType.NEWS).size());
         assertEquals(1, map.get("Author 2").get(BlogPostType.REVIEW).size());
         assertNull(map.get("Author 2").get(BlogPostType.GUIDE));
+    }
+
+    @Test
+    public void givenAListOfPosts_whenGroupedByTypeAndSummarizingLikes_thenGetAMapBetweenTypeAndSummary() {
+        Map<BlogPostType, IntSummaryStatistics> likeStatisticsPerType = POSTS.stream().collect(groupingBy(BlogPost::getType, summarizingInt(BlogPost::getLikes)));
+        
+        IntSummaryStatistics newsLikeStatistics = likeStatisticsPerType.get(BlogPostType.NEWS);
+        
+        assertEquals(2, newsLikeStatistics.getCount());
+        assertEquals(50, newsLikeStatistics.getSum());
+        assertEquals(25.0, newsLikeStatistics.getAverage(), 0.001);
+        assertEquals(35, newsLikeStatistics.getMax());
+        assertEquals(15, newsLikeStatistics.getMin());
     }
 
 }
