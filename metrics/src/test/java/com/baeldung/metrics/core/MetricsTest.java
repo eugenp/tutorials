@@ -1,16 +1,15 @@
 package com.baeldung.metrics.core;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import com.codahale.metrics.*;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-
-import com.codahale.metrics.*;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class MetricsTest {
     @Test
@@ -139,7 +138,7 @@ public class MetricsTest {
 
         long elapsed1 = context1.stop();
 
-        assertEquals(5000000000L, elapsed1, 1000000);
+        assertEquals(5000000000L, elapsed1, 10000000);
         assertThat(timer.getCount(), equalTo(1L));
         assertEquals(0.2, timer.getMeanRate(), 0.1);
 
