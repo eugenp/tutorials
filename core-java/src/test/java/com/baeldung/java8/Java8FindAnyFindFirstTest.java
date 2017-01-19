@@ -24,7 +24,7 @@ public class Java8FindAnyFindFirstTest {
     }
 
     @Test
-    public void createParallelStream_whenFindAnyResultIsNotFirst_ThenCorrect() throws Exception {
+    public void createParallelStream_whenFindAnyResultIsPresent_ThenCorrect() throws Exception {
         List<Integer> list = Arrays.asList(1,2,3,4,5);
         Optional<Integer> result = list
                 .stream()
