@@ -50,16 +50,14 @@ public class ExpressionUtilityObjectsControllerIntegrationTest {
 		mockMvc = MockMvcBuilders.webAppContextSetup(wac).addFilters(springSecurityFilterChain).build();
 	}
 
-	@Test
-	public void testGetObjects() throws Exception {
-		mockMvc.perform(get("/objects").with(testUser()).with(csrf())).andExpect(status().isOk())
-				.andExpect(view().name("objects.html"));
-	}
+    @Test
+    public void testGetObjects() throws Exception {
+        mockMvc.perform(get("/objects").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("objects.html"));
+    }
 
-	@Test
-	public void testDates() throws Exception {
-		mockMvc.perform(get("/dates").with(testUser()).with(csrf())).andExpect(status().isOk())
-				.andExpect(view().name("dates.html"));
-	}
+    @Test
+    public void testDates() throws Exception {
+        mockMvc.perform(get("/dates").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("dates.html"));
+    }
 
 }

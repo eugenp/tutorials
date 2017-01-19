@@ -41,11 +41,11 @@ import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
  */
 public class WebMVCConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
-	private ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
-	public void setApplicationContext(ApplicationContext applicationContext) {
-		this.applicationContext = applicationContext;
-	}
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
 	@Bean
 	public ViewResolver htmlViewResolver() {
@@ -112,13 +112,13 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 		return resolver;
 	}
 
-	@Bean
-	@Description("Spring Message Resolver")
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-		messageSource.setBasename("messages");
-		return messageSource;
-	}
+    @Bean
+    @Description("Spring Message Resolver")
+    public ResourceBundleMessageSource messageSource() {
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        return messageSource;
+    }
 
 	@Bean
     public LocaleResolver localeResolver() {
@@ -145,8 +145,8 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 	}
 
 	@Override
-	@Description("Custom Conversion Service")
-	public void addFormatters(FormatterRegistry registry) {
-		registry.addFormatter(new NameFormatter());
-	}
+    @Description("Custom Conversion Service")
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new NameFormatter());
+    }
 }
