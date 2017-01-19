@@ -1,9 +1,6 @@
 package com.baeldung.java8;
 
 
-import org.assertj.core.condition.AnyOf;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -22,8 +19,21 @@ public class Java8FindAnyFindFirstTest {
 
         Optional<String> result = list.stream().findAny();
 
-        assert result.isPresent();
+        assertTrue(result.isPresent());
         assertThat(result.get(), anyOf(is("A"), is("B"), is("C"), is("D")));
+    }
+
+    @Test
+    public void createParallelStream_whenFindAnyResultIsNotFirst_ThenCorrect() throws Exception {
+        List<Integer> list = Arrays.asList(1,2,3,4,5);
+        Optional<Integer> result = list
+                .stream()
+                .parallel()
+                .filter(num -> num<4)
+                .findAny();
+
+        assertTrue(result.isPresent());
+        assertThat(result.get(),anyOf(is(1), is(2), is(3)));
     }
 
     @Test
@@ -33,7 +43,7 @@ public class Java8FindAnyFindFirstTest {
 
         Optional<String> result = list.stream().findFirst();
 
-        assert result.isPresent();
+        assertTrue(result.isPresent());
         assertThat(result.get(),is("A"));
     }
 }
