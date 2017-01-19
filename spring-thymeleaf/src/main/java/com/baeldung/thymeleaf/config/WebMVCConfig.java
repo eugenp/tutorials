@@ -82,6 +82,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 		engine.addDialect(new LayoutDialect(new GroupingStrategy()));
 		engine.addDialect(new Java8TimeDialect());
 		engine.setTemplateResolver(templateResolver);
+		engine.setTemplateEngineMessageSource(messageSource());
 		return engine;
 	}
 
