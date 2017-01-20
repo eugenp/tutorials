@@ -1,10 +1,8 @@
 package com.baeldung.guava;
 
 import static org.junit.Assert.*;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import org.junit.Test;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.EnumHashBiMap;
@@ -14,94 +12,94 @@ import com.google.common.collect.ImmutableBiMap;
 public class GuavaBiMapTest {
     @Test
     public void whenQueryByValue_returnsKey() {
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
-        personCountryHeadBiMap.put("Modi", "India");
-        personCountryHeadBiMap.put("Obama", "USA");
-        personCountryHeadBiMap.put("Putin", "USSR");
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create();
+        capitalCountryBiMap.put("New Delhi", "India");
+        capitalCountryBiMap.put("Washingon, D.C.", "USA");
+        capitalCountryBiMap.put("Moscow", "Russia");
 
-        final String countryHeadName = personCountryHeadBiMap.inverse().get("India");
+        final String countryHeadName = capitalCountryBiMap.inverse().get("India");
 
-        assertEquals("Modi", countryHeadName);
+        assertEquals("New Delhi", countryHeadName);
     }
 
     @Test
     public void whenCreateBiMapFromExistingMap_returnsKey() {
-        final Map<String, String> personCountryHeadMap = new HashMap<>();
-        personCountryHeadMap.put("Modi", "India");
-        personCountryHeadMap.put("Obama", "USA");
-        personCountryHeadMap.put("Putin", "USSR");
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create(personCountryHeadMap);
+        final Map<String, String> capitalCountryMap = new HashMap<>();
+        capitalCountryMap.put("New Delhi", "India");
+        capitalCountryMap.put("Washingon, D.C.", "USA");
+        capitalCountryMap.put("Moscow", "Russia");
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create(capitalCountryMap);
 
-        final String countryHeadName = personCountryHeadBiMap.inverse().get("India");
+        final String countryHeadName = capitalCountryBiMap.inverse().get("India");
 
-        assertEquals("Modi", countryHeadName);
+        assertEquals("New Delhi", countryHeadName);
     }
 
     @Test
     public void whenQueryByKey_returnsValue() {
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create();
 
-        personCountryHeadBiMap.put("Modi", "India");
-        personCountryHeadBiMap.put("Obama", "USA");
-        personCountryHeadBiMap.put("Putin", "USSR");
+        capitalCountryBiMap.put("New Delhi", "India");
+        capitalCountryBiMap.put("Washingon, D.C.", "USA");
+        capitalCountryBiMap.put("Moscow", "Russia");
 
-        assertEquals("USA", personCountryHeadBiMap.get("Obama"));
+        assertEquals("USA", capitalCountryBiMap.get("Washingon, D.C."));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenSameValueIsPresent_throwsException() {
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create();
 
-        personCountryHeadBiMap.put("Modi", "India");
-        personCountryHeadBiMap.put("Obama", "USA");
-        personCountryHeadBiMap.put("Putin", "USSR");
-        personCountryHeadBiMap.put("Trump", "USA");
+        capitalCountryBiMap.put("New Delhi", "India");
+        capitalCountryBiMap.put("Washingon, D.C.", "USA");
+        capitalCountryBiMap.put("Moscow", "Russia");
+        capitalCountryBiMap.put("Trump", "USA");
     }
 
     @Test
     public void givenSameValueIsPresent_whenForcePut_completesSuccessfully() {
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create();
 
-        personCountryHeadBiMap.put("Modi", "India");
-        personCountryHeadBiMap.put("Obama", "USA");
-        personCountryHeadBiMap.put("Putin", "USSR");
-        personCountryHeadBiMap.forcePut("Trump", "USA");
+        capitalCountryBiMap.put("New Delhi", "India");
+        capitalCountryBiMap.put("Washingon, D.C.", "USA");
+        capitalCountryBiMap.put("Moscow", "Russia");
+        capitalCountryBiMap.forcePut("Trump", "USA");
 
-        assertEquals("USA", personCountryHeadBiMap.get("Trump"));
-        assertEquals("Trump", personCountryHeadBiMap.inverse().get("USA"));
+        assertEquals("USA", capitalCountryBiMap.get("Trump"));
+        assertEquals("Trump", capitalCountryBiMap.inverse().get("USA"));
     }
 
     @Test
     public void whenSameKeyIsPresent_replacesAlreadyPresent() {
-        final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
+        final BiMap<String, String> capitalCountryBiMap = HashBiMap.create();
 
-        personCountryHeadBiMap.put("Modi", "India");
-        personCountryHeadBiMap.put("Obama", "USA");
-        personCountryHeadBiMap.put("Putin", "USSR");
-        personCountryHeadBiMap.put("Obama", "HongKong");
+        capitalCountryBiMap.put("New Delhi", "India");
+        capitalCountryBiMap.put("Washingon, D.C.", "USA");
+        capitalCountryBiMap.put("Moscow", "Russia");
+        capitalCountryBiMap.put("Washingon, D.C.", "HongKong");
 
-        assertEquals("HongKong", personCountryHeadBiMap.get("Obama"));
+        assertEquals("HongKong", capitalCountryBiMap.get("Washingon, D.C."));
     }
 
     @Test
     public void whenUsingImmutableBiMap_allowsPutSuccessfully() {
-        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+        final BiMap<String, String> capitalCountryBiMap = new ImmutableBiMap.Builder<String, String>().put("New Delhi", "India").put("Washingon, D.C.", "USA").put("Moscow", "Russia").build();
 
-        assertEquals("USA", personCountryHeadBiMap.get("Obama"));
+        assertEquals("USA", capitalCountryBiMap.get("Washingon, D.C."));
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void whenUsingImmutableBiMap_shouldNotAllowRemove() {
-        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+    public void whenUsingImmutableBiMap_doesntAllowRemove() {
+        final BiMap<String, String> capitalCountryBiMap = new ImmutableBiMap.Builder<String, String>().put("New Delhi", "India").put("Washingon, D.C.", "USA").put("Moscow", "Russia").build();
 
-        personCountryHeadBiMap.remove("Modi");
+        capitalCountryBiMap.remove("New Delhi");
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void whenUsingImmutableBiMap_shouldNotAllowPut() {
-        final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
+    public void whenUsingImmutableBiMap_doesntAllowPut() {
+        final BiMap<String, String> capitalCountryBiMap = new ImmutableBiMap.Builder<String, String>().put("New Delhi", "India").put("Washingon, D.C.", "USA").put("Moscow", "Russia").build();
 
-        personCountryHeadBiMap.put("Trump", "USA");
+        capitalCountryBiMap.put("New York", "USA");
     }
 
     private enum Operation {
