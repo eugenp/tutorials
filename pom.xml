@@ -180,6 +180,7 @@
         <module>xmlunit2</module>
         <module>xstream</module>
     <module>java-mongodb</module>
+    <module>spark-java</module>
   </modules>
 
 </project>
