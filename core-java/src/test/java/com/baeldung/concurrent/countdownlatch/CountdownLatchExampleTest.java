@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CountdownLatchExampleTest {
     @Test
-    public void shouldBlockUntilLatchIsReleased() throws InterruptedException {
+    public void whenParallelProcessing_thenMainThreadWillBlockUntilCompletion() throws InterruptedException {
 
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
@@ -45,7 +45,7 @@ public class CountdownLatchExampleTest {
     }
 
     @Test
-    public void shouldEventuallyTimeout() throws InterruptedException {
+    public void whenFailingToParallelProcess_thenMainThreadShouldTimeout() throws InterruptedException {
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
