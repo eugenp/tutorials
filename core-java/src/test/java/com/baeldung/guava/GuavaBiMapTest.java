@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableBiMap;
 
 public class GuavaBiMapTest {
     @Test
-    public void whenQueryByValue_shouldReturnKey() {
+    public void whenQueryByValue_returnsKey() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
         personCountryHeadBiMap.put("Modi", "India");
         personCountryHeadBiMap.put("Obama", "USA");
@@ -25,7 +25,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void whenCreateBiMapFromExistingMap_shouldReturnKey() {
+    public void whenCreateBiMapFromExistingMap_returnsKey() {
         final Map<String, String> personCountryHeadMap = new HashMap<>();
         personCountryHeadMap.put("Modi", "India");
         personCountryHeadMap.put("Obama", "USA");
@@ -38,7 +38,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void whenQueryByKey_shouldReturnValue() {
+    public void whenQueryByKey_returnsValue() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
 
         personCountryHeadBiMap.put("Modi", "India");
@@ -49,7 +49,7 @@ public class GuavaBiMapTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void whenSameValueIsBeingPresent_shouldThrowException() {
+    public void whenSameValueIsPresent_throwsException() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
 
         personCountryHeadBiMap.put("Modi", "India");
@@ -59,7 +59,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void givenSameValueIsBeingPresent_whenForcePutIsUsed_shouldCompleteSuccessfully() {
+    public void givenSameValueIsPresent_whenForcePut_completesSuccessfully() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
 
         personCountryHeadBiMap.put("Modi", "India");
@@ -72,7 +72,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void whenSameKeyIsBeingPresent_shouldReplaceAlreadyPresent() {
+    public void whenSameKeyIsPresent_replacesAlreadyPresent() {
         final BiMap<String, String> personCountryHeadBiMap = HashBiMap.create();
 
         personCountryHeadBiMap.put("Modi", "India");
@@ -84,7 +84,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void whenUsingImmutableBiMap_shouldAllowPutSuccessfully() {
+    public void whenUsingImmutableBiMap_allowsPutSuccessfully() {
         final BiMap<String, String> personCountryHeadBiMap = new ImmutableBiMap.Builder<String, String>().put("Modi", "India").put("Obama", "USA").put("Putin", "USSR").build();
 
         assertEquals("USA", personCountryHeadBiMap.get("Obama"));
@@ -109,7 +109,7 @@ public class GuavaBiMapTest {
     }
 
     @Test
-    public void whenUsingEnumAsKeyInMap_shouldReplaceAlreadyPresent() {
+    public void whenUsingEnumAsKeyInMap_replacesAlreadyPresent() {
         final BiMap<Operation, String> operationStringBiMap = EnumHashBiMap.create(Operation.class);
 
         operationStringBiMap.put(Operation.ADD, "Add");
