@@ -17,9 +17,9 @@ public class GuavaBiMapTest {
         capitalCountryBiMap.put("Washingon, D.C.", "USA");
         capitalCountryBiMap.put("Moscow", "Russia");
 
-        final String countryHeadName = capitalCountryBiMap.inverse().get("India");
+        final String countryCapitalName = capitalCountryBiMap.inverse().get("India");
 
-        assertEquals("New Delhi", countryHeadName);
+        assertEquals("New Delhi", countryCapitalName);
     }
 
     @Test
@@ -30,9 +30,9 @@ public class GuavaBiMapTest {
         capitalCountryMap.put("Moscow", "Russia");
         final BiMap<String, String> capitalCountryBiMap = HashBiMap.create(capitalCountryMap);
 
-        final String countryHeadName = capitalCountryBiMap.inverse().get("India");
+        final String countryCapitalName = capitalCountryBiMap.inverse().get("India");
 
-        assertEquals("New Delhi", countryHeadName);
+        assertEquals("New Delhi", countryCapitalName);
     }
 
     @Test
