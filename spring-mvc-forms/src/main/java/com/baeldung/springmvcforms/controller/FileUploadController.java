@@ -23,7 +23,7 @@ public class FileUploadController implements HandlerExceptionResolver {
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-    public ModelAndView uploadImage(MultipartFile file) {
+    public ModelAndView uploadFile(MultipartFile file) {
         ModelAndView modelAndView = new ModelAndView("file");
         try {
             InputStream in = file.getInputStream();
