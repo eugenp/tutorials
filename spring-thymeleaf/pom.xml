@@ -15,14 +15,15 @@
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>
 		<!-- thymeleaf -->
-		<org.thymeleaf-version>3.0.2.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>
+		<org.thymeleaf.extras-version>3.0.0.RELEASE</org.thymeleaf.extras-version>
 		<thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
 		<!-- validation -->
 		<javax.validation-version>1.1.0.Final</javax.validation-version>
 		<hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
 		<org.hibernate-version>5.2.5.Final</org.hibernate-version>
 
-        <junit.version>4.12</junit.version>
+		<junit.version>4.12</junit.version>
 		<!-- Maven plugins -->
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
@@ -77,6 +78,11 @@
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
+			<version>${org.thymeleaf.extras-version}</version>
 		</dependency>
 		<!-- Logging -->
 		<dependency>

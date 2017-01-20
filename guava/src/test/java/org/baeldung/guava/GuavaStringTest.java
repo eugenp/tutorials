@@ -8,10 +8,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.google.common.collect.*;
 import org.junit.Test;
 
 import com.google.common.base.CharMatcher;
@@ -19,9 +18,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Joiner;
 import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 
 public class GuavaStringTest {
 

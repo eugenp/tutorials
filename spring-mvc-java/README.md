@@ -17,3 +17,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [File Upload with Spring MVC](http://www.baeldung.com/spring-file-upload)
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)
+- [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)

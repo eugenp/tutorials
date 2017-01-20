@@ -12,3 +12,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Binary Data Formats in a Spring REST API](http://www.baeldung.com/spring-rest-api-with-binary-data-formats)
 - [Guide to UriComponentsBuilder in Spring](http://www.baeldung.com/spring-uricomponentsbuilder)
 - [Introduction to FindBugs](http://www.baeldung.com/intro-to-findbugs)
+- [A Custom Media Type for a Spring REST API](http://www.baeldung.com/spring-rest-custom-media-type)
