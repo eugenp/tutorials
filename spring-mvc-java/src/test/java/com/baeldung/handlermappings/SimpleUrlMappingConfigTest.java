@@ -1,6 +1,6 @@
 package com.baeldung.handlermappings;
 
-import com.baeldung.spring.web.config.SimpleUrlHandlerMappingConfig;
+import com.baeldung.config.SimpleUrlHandlerMappingConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

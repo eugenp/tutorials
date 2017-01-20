@@ -1,7 +1,6 @@
 package com.baeldung.handlermappings;
 
-import com.baeldung.spring.web.config.HandlerMappingCustomPrioritiesConfig;
-import com.baeldung.spring.web.config.HandlerMappingPrioritiesConfig;
+import com.baeldung.config.HandlerMappingPrioritiesConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,6 +35,6 @@ public class HandlerMappingPriorityConfigTest {
 
     @Test
     public void whenConfiguringPriorities_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("bean-name-handler-mapping")).andDo(print());
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("simple-url-handler-mapping")).andDo(print());
     }
 }

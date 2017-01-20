@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.spring.web.config.ControllerClassNameHandlerMappingConfig;
+import com.baeldung.config.ControllerClassNameHandlerMappingConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

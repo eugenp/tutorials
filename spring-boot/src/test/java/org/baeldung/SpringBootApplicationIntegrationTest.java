@@ -4,6 +4,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
+import org.baeldung.domain.Modes;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,7 +55,7 @@ public class SpringBootApplicationIntegrationTest {
     public void givenRequestHasBeenMade_whenMeetsFindByModeOfGivenConditions_thenCorrect() throws Exception {
         MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbymode/{mode}", "Alpha"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbymode/{mode}", Modes.ALPHA.name()))
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.content().contentType(contentType))
             .andExpect(jsonPath("$.id", equalTo(1)));

@@ -63,6 +63,12 @@
             <artifactId>grep4j</artifactId>
             <version>${grep4j.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
         <!-- web -->
 
         <!-- marshalling -->
@@ -352,7 +358,7 @@
         <logback.version>1.1.7</logback.version>
 
         <!-- util -->
-        <guava.version>19.0</guava.version>
+        <guava.version>21.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <bouncycastle.version>1.55</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
@@ -363,6 +369,7 @@
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <lombok.version>1.16.12</lombok.version>
+        <disruptor.version>3.3.6</disruptor.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
