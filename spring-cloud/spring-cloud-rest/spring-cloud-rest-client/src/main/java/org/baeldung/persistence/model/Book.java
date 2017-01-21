@@ -12,11 +12,8 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String title;
-
-    @Column(nullable = false)
-    private String isbn;
 
     @Column(nullable = false)
     private String author;
@@ -27,10 +24,9 @@ public class Book {
         super();
     }
 
-    public Book(String title, String isbn, String author) {
+    public Book(String title, String author) {
         super();
         this.title = title;
-        this.isbn = isbn;
         this.author = author;
     }
 
@@ -52,14 +48,6 @@ public class Book {
         this.title = title;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
     public String getAuthor() {
         return author;
     }
@@ -76,7 +64,6 @@ public class Book {
         int result = 1;
         result = (prime * result) + ((author == null) ? 0 : author.hashCode());
         result = (prime * result) + (int) (id ^ (id >>> 32));
-        result = (prime * result) + ((isbn == null) ? 0 : isbn.hashCode());
         result = (prime * result) + ((title == null) ? 0 : title.hashCode());
         return result;
     }
@@ -103,13 +90,7 @@ public class Book {
         if (id != other.id) {
             return false;
         }
-        if (isbn == null) {
-            if (other.isbn != null) {
-                return false;
-            }
-        } else if (!isbn.equals(other.isbn)) {
-            return false;
-        }
+
         if (title == null) {
             if (other.title != null) {
                 return false;
@@ -127,8 +108,6 @@ public class Book {
             .append(id)
             .append(", title=")
             .append(title)
-            .append(", isbn=")
-            .append(isbn)
             .append(", author=")
             .append(author)
             .append("]");
