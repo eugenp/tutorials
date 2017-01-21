@@ -8,11 +8,5 @@ import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
 @Configuration
 public class DispatcherConfig {
 
-    @Bean(name = "/booking") HttpInvokerServiceExporter accountService() {
-        HttpInvokerServiceExporter exporter = new HttpInvokerServiceExporter();
-        exporter.setService( new CabBookingServiceImpl() );
-        exporter.setServiceInterface( CabBookingService.class );
-        return exporter;
-    }
 
 }
