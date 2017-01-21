@@ -18,8 +18,8 @@
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> 
-        <module>apache-poi</module> 
+        <module>apache-fop</module>
+        <module>apache-poi</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -66,6 +66,7 @@
         <module>jsf</module>
         <module>json-path</module>
         <module>json</module>
+        <module>json-java7</module>
         <module>jsoup</module>
         <module>junit5</module>
 
@@ -122,7 +123,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
-        <module>spring-jersey</module>		
+        <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
