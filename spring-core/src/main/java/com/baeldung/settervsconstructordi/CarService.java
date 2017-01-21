@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * This class demonstrates the dependency injection through constructor.
  * EngineService is the dependency that is injected through the constructor.
  */
-@Component(value = "carService")
+@Component
 public class CarService {
 
     EngineService engineService;

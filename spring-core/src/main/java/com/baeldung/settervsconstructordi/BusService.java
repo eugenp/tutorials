@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * This class demonstrates the dependency injection through setter.
  * EngineService is the dependency that is injected through the setter.
  */
-@Component(value = "busService")
+@Component
 public class BusService {
 
     @Autowired
