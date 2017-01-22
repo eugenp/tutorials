@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import static io.restassured.RestAssured.preemptive;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.junit.Assert.assertEquals;
@@ -8,6 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 import org.baeldung.persistence.model.Book;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class RestApiLiveTest {
 
     private static final String API_URI = "http://localhost:8084/books";
+
+    @Before
+    public void setUp() {
+        RestAssured.authentication = preemptive().basic("user", "userPass");
+    }
 
     // GET
 
@@ -148,14 +155,14 @@ public class RestApiLiveTest {
 
     // =============================== Util
 
-    public Book createRandomBook() {
+    private Book createRandomBook() {
         final Book book = new Book();
         book.setTitle(randomAlphabetic(10));
         book.setAuthor(randomAlphabetic(15));
         return book;
     }
 
-    public String createBookAsUri(Book book) {
+    private String createBookAsUri(Book book) {
         final Response response = RestAssured.given()
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .body(book)
@@ -163,4 +170,5 @@ public class RestApiLiveTest {
         return response.jsonPath()
             .get("_links.self.href");
     }
+
 }
