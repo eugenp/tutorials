@@ -8,7 +8,8 @@ import com.baeldung.constructordi.domain.Transmission;
 
 @Component
 public class Bike {
-    @Autowired
+
+	@Autowired
 	private Engine engine;
     @Autowired
     private Transmission transmission;
