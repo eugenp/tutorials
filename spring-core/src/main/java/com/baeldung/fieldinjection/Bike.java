@@ -8,14 +8,10 @@ import com.baeldung.constructordi.domain.Transmission;
 
 @Component
 public class Bike {
-    private Engine engine;
-    private Transmission transmission;
-
     @Autowired
-    public Bike(Engine engine, Transmission transmission) {
-        this.engine = engine;
-        this.transmission = transmission;
-    }
+	private Engine engine;
+    @Autowired
+    private Transmission transmission;
 
     @Override
     public String toString() {
