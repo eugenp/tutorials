@@ -104,8 +104,12 @@ public class GuavaRangeMapTest {
 
     @Test
     public void givenImmutableRangeMap_whenQueryWithinRange_returnsSucessfully() {
-        final RangeMap<Integer, String> experienceRangeDesignationMap = ImmutableRangeMap.<Integer, String> builder().put(Range.closed(0, 2), "Associate").put(Range.closed(3, 5), "Senior Associate").put(Range.closed(6, 8), "Vice President")
-                .put(Range.closed(9, 15), "Executive Director").put(Range.closed(16, 30), "Managing Director").build();
+        final RangeMap<Integer, String> experienceRangeDesignationMap = ImmutableRangeMap.<Integer, String> builder()
+	    .put(Range.closed(0, 2), "Associate")
+	    .put(Range.closed(3, 5), "Senior Associate")
+	    .put(Range.closed(6, 8), "Vice President")
+            .put(Range.closed(9, 15), "Executive Director")
+	    .put(Range.closed(16, 30), "Managing Director").build();
 
         assertEquals("Vice President", experienceRangeDesignationMap.get(6));
         assertEquals("Executive Director", experienceRangeDesignationMap.get(15));
@@ -113,8 +117,12 @@ public class GuavaRangeMapTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void givenImmutableRangeMap_whenRangeOverlaps_ThrowsException() {
-        ImmutableRangeMap.<Integer, String> builder().put(Range.closed(0, 2), "Associate").put(Range.closed(3, 5), "Senior Associate").put(Range.closed(6, 8), "Vice President")
-                .put(Range.closed(8, 15), "Executive Director").put(Range.closed(16, 30), "Managing Director").build();
+        ImmutableRangeMap.<Integer, String> builder()
+	      .put(Range.closed(0, 2), "Associate")
+	      .put(Range.closed(3, 5), "Senior Associate")
+	      .put(Range.closed(6, 8), "Vice President")
+              .put(Range.closed(8, 15), "Executive Director")
+	      .put(Range.closed(16, 30), "Managing Director").build();
 
     }
 }
