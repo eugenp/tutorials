@@ -44,6 +44,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
@@ -68,12 +69,15 @@
         <module>jsoup</module>
         <module>junit5</module>
 
+        <module>kotlin</module>
+
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -91,6 +95,7 @@
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
+        <module>spark-java</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
