@@ -13,15 +13,15 @@ import org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter;
 @EnableAutoConfiguration
 public class Server {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Server.class, args);
-    }
-
     @Bean(name = "/booking") HttpInvokerServiceExporter accountService() {
         HttpInvokerServiceExporter exporter = new HttpInvokerServiceExporter();
         exporter.setService( new CabBookingServiceImpl() );
         exporter.setServiceInterface( CabBookingService.class );
         return exporter;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Server.class, args);
     }
 
 }

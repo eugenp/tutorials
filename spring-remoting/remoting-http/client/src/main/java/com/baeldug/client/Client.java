@@ -1,19 +1,17 @@
 package com.baeldug.client;
 
+import com.baeldung.api.Booking;
 import com.baeldung.api.BookingException;
 import com.baeldung.api.CabBookingService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean;
 
+import static java.lang.System.out;
+
 @Configuration
-@ComponentScan
-@EnableAutoConfiguration
 public class Client {
 
     @Bean
@@ -24,14 +22,10 @@ public class Client {
         return invoker;
     }
 
-    @Bean
-    public CabBookingClient bc(CabBookingService service){
-        return new CabBookingClient(service);
-    }
-
     public static void main(String[] args) throws BookingException {
         ConfigurableApplicationContext ctx = SpringApplication.run(Client.class, args);
-        ctx.getBean(CabBookingClient.class).run();
+        Booking booking = ctx.getBean(CabBookingService.class).bookRide("13 Seagate Blvd, Key Largo, FL 33037");
+        out.println(booking);
     }
 
 }

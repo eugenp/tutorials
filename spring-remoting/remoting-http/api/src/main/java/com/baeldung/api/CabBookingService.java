@@ -1,5 +1,5 @@
 package com.baeldung.api;
 
 public interface CabBookingService {
-    Booking bookPickUp(String pickUpLocation) throws BookingException;
+    Booking bookRide(String pickUpLocation) throws BookingException;
 }

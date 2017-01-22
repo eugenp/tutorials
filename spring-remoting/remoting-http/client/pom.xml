@@ -9,12 +9,9 @@
         <artifactId>spring-remoting-http</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>spring-remoting-http-client</artifactId>
-    <description>Shows how to invoke a remote service using Spring Remoting.</description>
-
+    <description>Shows how to invoke a remote service using Spring Remoting HTTP.</description>
     <dependencies>
-        <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -25,12 +22,9 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!-- companion modules -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>api</artifactId>
         </dependency>
     </dependencies>
-
 </project>

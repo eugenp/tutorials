@@ -8,74 +8,18 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.3.RELEASE</version>
     </parent>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-remoting</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <description>Parent for all projects related to Spring Remoting.</description>
     <packaging>pom</packaging>
 
     <properties>
         <java.version>1.8</java.version>
-
-        <!--
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-
-        <servlet.version>3.1.0</servlet.version>
-        <logback.version>1.1.8</logback.version>
-        <spring.version>4.3.5.RELEASE</spring.version>
-        -->
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- spring -->
-            <!--
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            -->
-            <!-- logback -->
-            <!--
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            -->
-
-            <!-- servlet -->
-            <!--
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            -->
 
             <!-- companion modules -->
             <dependency>
@@ -87,7 +31,6 @@
         </dependencies>
 
     </dependencyManagement>
-
 
     <modules>
         <module>remoting-http</module>

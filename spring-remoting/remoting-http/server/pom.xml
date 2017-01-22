@@ -8,24 +8,16 @@
         <artifactId>spring-remoting-http</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <packaging>war</packaging>
-
     <artifactId>spring-remoting-http-server</artifactId>
-    <description>Shows how to expose a service using Spring Remoting</description>
-
+    <description>Shows how to expose a service using Spring Remoting HTTP.</description>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!-- companion modules -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>api</artifactId>
         </dependency>
-
     </dependencies>
-
 </project>
