@@ -1,4 +1,4 @@
-package com.baeldung.guava;
+package org.baeldung.guava;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -11,7 +11,8 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class MultimapTest {
+
+public class GuavaMultiMapTest {
 
     @Test
     public void givenMap_whenAddTwoValuesForSameKey_shouldOverridePreviousKey() {

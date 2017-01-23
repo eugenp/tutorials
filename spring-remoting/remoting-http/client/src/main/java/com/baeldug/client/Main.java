@@ -22,7 +22,7 @@ public class Main {
         return new CabBookingClient(service);
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws Exception {
         AnnotationConfigApplicationContext rootContext =
                 new AnnotationConfigApplicationContext();
         rootContext.scan(Main.class.getPackage().getName());
