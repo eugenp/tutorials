@@ -1,4 +1,4 @@
-package com.baeldung.controller;
+package com.baeldung.intro.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
