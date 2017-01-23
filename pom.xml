@@ -181,7 +181,12 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
+<<<<<<< HEAD
     <module>java-mongodb</module>
   </modules>
+=======
+		<module>javaslang</module>
+    </modules>
+>>>>>>> d1edffccc36ef43d18c328737de874d0d277aca3
 
 </project>
