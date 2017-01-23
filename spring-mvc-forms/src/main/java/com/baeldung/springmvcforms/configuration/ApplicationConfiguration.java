@@ -31,7 +31,7 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
     @Bean
     public MultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(500000);
+        multipartResolver.setMaxUploadSize(5242880);
         return multipartResolver;
     }
 }
