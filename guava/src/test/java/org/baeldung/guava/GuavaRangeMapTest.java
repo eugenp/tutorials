@@ -19,7 +19,6 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(16, 30), "Managing Director");
 
         assertEquals("Vice President", experienceRangeDesignationMap.get(6));
         assertEquals("Executive Director", experienceRangeDesignationMap.get(15));
@@ -33,7 +32,6 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(16, 30), "Managing Director");
 
         assertNull(experienceRangeDesignationMap.get(31));
     }
@@ -46,14 +44,13 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(16, 30), "Managing Director");
-        experienceRangeDesignationMap.remove(Range.closed(8, 15));
-        experienceRangeDesignationMap.remove(Range.closed(20, 26));
+        experienceRangeDesignationMap.remove(Range.closed(9, 15));
+        experienceRangeDesignationMap.remove(Range.closed(1, 4));
 
         assertNull(experienceRangeDesignationMap.get(9));
-        assertEquals("Managing Director", experienceRangeDesignationMap.get(16));
-        assertEquals("Managing Director", experienceRangeDesignationMap.get(30));
-        assertNull(experienceRangeDesignationMap.get(25));
+        assertEquals("Associate", experienceRangeDesignationMap.get(0));
+        assertEquals("Senior Associate", experienceRangeDesignationMap.get(5));
+        assertNull(experienceRangeDesignationMap.get(1));
     }
 
     @Test
@@ -64,11 +61,10 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(16, 30), "Managing Director");
         final Range<Integer> experienceSpan = experienceRangeDesignationMap.span();
 
         assertEquals(0, experienceSpan.lowerEndpoint().intValue());
-        assertEquals(30, experienceSpan.upperEndpoint().intValue());
+        assertEquals(15, experienceSpan.upperEndpoint().intValue());
     }
 
     @Test
@@ -79,7 +75,6 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(9, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(20, 30), "Managing Director");
         final Map.Entry<Range<Integer>, String> experiencEntry = experienceRangeDesignationMap.getEntry(10);
 
         assertEquals(Range.closed(9, 15), experiencEntry.getKey());
@@ -94,7 +89,6 @@ public class GuavaRangeMapTest {
         experienceRangeDesignationMap.put(Range.closed(3, 5), "Senior Associate");
         experienceRangeDesignationMap.put(Range.closed(6, 8), "Vice President");
         experienceRangeDesignationMap.put(Range.closed(8, 15), "Executive Director");
-        experienceRangeDesignationMap.put(Range.closed(16, 30), "Managing Director");
         final RangeMap<Integer, String> experiencedSubRangeDesignationMap = experienceRangeDesignationMap.subRangeMap(Range.closed(4, 14));
 
         assertNull(experiencedSubRangeDesignationMap.get(3));
@@ -105,16 +99,15 @@ public class GuavaRangeMapTest {
     @Test
     public void givenImmutableRangeMap_whenQueryWithinRange_returnsSucessfully() {
         final RangeMap<Integer, String> experienceRangeDesignationMap = ImmutableRangeMap.<Integer, String> builder().put(Range.closed(0, 2), "Associate").put(Range.closed(3, 5), "Senior Associate").put(Range.closed(6, 8), "Vice President")
-                .put(Range.closed(9, 15), "Executive Director").put(Range.closed(16, 30), "Managing Director").build();
+                .put(Range.closed(9, 15), "Executive Director").build();
 
         assertEquals("Vice President", experienceRangeDesignationMap.get(6));
         assertEquals("Executive Director", experienceRangeDesignationMap.get(15));
     }
-    
+
     @Test(expected = IllegalArgumentException.class)
     public void givenImmutableRangeMap_whenRangeOverlaps_ThrowsException() {
-        ImmutableRangeMap.<Integer, String> builder().put(Range.closed(0, 2), "Associate").put(Range.closed(3, 5), "Senior Associate").put(Range.closed(6, 8), "Vice President")
-                .put(Range.closed(8, 15), "Executive Director").put(Range.closed(16, 30), "Managing Director").build();
+        ImmutableRangeMap.<Integer, String> builder().put(Range.closed(0, 2), "Associate").put(Range.closed(3, 5), "Senior Associate").put(Range.closed(6, 8), "Vice President").put(Range.closed(8, 15), "Executive Director").build();
 
     }
 }
