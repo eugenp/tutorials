@@ -31,7 +31,16 @@
                     <groupId>org.eclipse.birt.runtime</groupId>
                     <artifactId>org.eclipse.orbit.mongodb</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi</artifactId>
+                </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.9</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
