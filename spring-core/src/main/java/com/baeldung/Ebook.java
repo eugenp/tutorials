@@ -3,7 +3,7 @@ package com.baeldung;
 public class Ebook {
 
     private int bookId;
-    private String bookTotle;
+    private String bookTitle;
     
     public int getBookId() {
         return bookId;
@@ -11,12 +11,10 @@ public class Ebook {
     public void setBookId(int bookId) {
         this.bookId = bookId;
     }
-    public String getBookTotle() {
-        return bookTotle;
+    public String getBookTitle() {
+        return bookTitle;
     }
-    public void setBookTotle(String bookTotle) {
-        this.bookTotle = bookTotle;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
-    
-    
 }
