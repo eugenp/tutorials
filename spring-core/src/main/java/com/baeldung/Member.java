@@ -2,14 +2,14 @@ package com.baeldung;
 
 public class Member {
 
-    private int memebrId;
+    private int memberId;
     private String memberName;
     
-    public int getMemebrId() {
-        return memebrId;
+    public int getMemberId() {
+        return memberId;
     }
-    public void setMemebrId(int memebrId) {
-        this.memebrId = memebrId;
+    public void setMemberId(int memberId) {
+        this.memberId = memberId;
     }
     public String getMemberName() {
         return memberName;
@@ -17,6 +17,4 @@ public class Member {
     public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
-    
-    
 }
