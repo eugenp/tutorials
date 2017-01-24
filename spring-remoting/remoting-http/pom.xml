@@ -9,9 +9,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>spring-remoting-http</artifactId>
-    <description>Parent for all modules related to HTTP Spring Remoting</description>
+    <description>Parent for all modules related to HTTP Spring Remoting.</description>
     <packaging>pom</packaging>
-
 	<modules>
 		<module>server</module>
         <module>client</module>
