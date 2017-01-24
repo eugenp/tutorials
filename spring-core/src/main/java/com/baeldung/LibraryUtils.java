@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LibraryUtils {
     @Autowired
-    private EbookRepositiry eBookRepository;
+    private EbookRepository eBookRepository;
  
     public String findBook(int id) {
         return eBookRepository.titleById(id);
