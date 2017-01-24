@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.mysema.query.annotations.QueryEntity;
+import com.querydsl.core.annotations.QueryEntity;
 
 @QueryEntity
 @Document
@@ -36,6 +36,11 @@ public class User {
     private Integer yearOfBirth;
 
     public User() {
+    }
+    
+    public User(String name, Integer age) {
+        this.name = name;
+        this.age = age;
     }
 
     @PersistenceConstructor
