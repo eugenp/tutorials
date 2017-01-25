@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ConstructorInjection {
 
-	EmployeeRepository employeeRepository;
+	private final EmployeeRepository employeeRepository;
 
 	@Autowired
 	public ConstructorInjection(EmployeeRepository employeeRepository) {
