@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>servletreg</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.0</version>
+    <name>servletreg</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <tomcat.version>9.0.0.M15</tomcat.version>
+    </properties>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+    </parent>
+    <dependencies>
+        <!-- Spring Boot Dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Embedded EmbeddedTomcatExample Dependencies -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.0.M15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.0.M15</version>
+        </dependency>
+        <!-- Alternative Embedded EmbeddedTomcatExample Servlet Dependency -->
+        <!-- <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-tomcat</artifactId>
+             <scope>provided</scope>
+         </dependency> -->
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- Alternative Embedded EmbeddedTomcatExample Servlet Dependency -->
+            <!--  <plugin>
+                  <groupId>org.codehaus.mojo</groupId>
+                  <artifactId>appassembler-maven-plugin</artifactId>
+                  <version>2.0.0</version>
+                  <configuration>
+                      <assembleDirectory>target</assembleDirectory>
+                      <programs>
+                          <program>
+                              <mainClass>launch.Main</mainClass>
+                              <name>webapp</name>
+                          </program>
+                      </programs>
+                  </configuration>
+                  <executions>
+                      <execution>
+                          <phase>package</phase>
+                          <goals>
+                              <goal>assemble</goal>
+                          </goals>
+                      </execution>
+                  </executions>
+              </plugin> -->
+        </plugins>
+    </build>
+</project>
