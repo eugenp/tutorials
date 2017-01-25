@@ -13,6 +13,11 @@
 <input type="file" name="file"/>
 <input type="submit" value="Upload file"/>
 </form>
-${message }   
+<br />
+${message }
+<br /> <br />
+<form method="GET" action="${uploadFileUrl}" >
+<input type="submit" value="Reset" />
+</form>   
 </body>
 </html>
