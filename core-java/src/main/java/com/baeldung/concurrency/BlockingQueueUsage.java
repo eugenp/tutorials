@@ -64,8 +64,8 @@ public class BlockingQueueUsage {
             try {
                 while (true) {
                     Integer number = queue.take();
-                    int result = fibonacci(number);
-                    System.out.println("fibonacci result: " + result);
+                    String result = number.toString();
+                    System.out.println(Thread.currentThread().getName()  + " result: " + result);
 
                 }
             } catch (InterruptedException e) {
@@ -73,9 +73,5 @@ public class BlockingQueueUsage {
             }
         }
 
-        public int fibonacci(Integer number) {
-            if (number <= 1) return number;
-            else return fibonacci(number - 1) + fibonacci(number - 2);
-        }
     }
 }
