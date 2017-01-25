@@ -1,13 +1,17 @@
 package com.baeldung.springintegration.controllers;
 
-import java.util.Random;
 import javax.annotation.PostConstruct;
+import javax.el.ELContextEvent;
+import javax.el.ELContextListener;
+import javax.el.LambdaExpression;
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
+import javax.el.LambdaExpression;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.html.HtmlInputText;
 import javax.faces.context.FacesContext;
+import java.util.Collection;
+import java.util.Random;
 
 @ManagedBean(name = "ELBean")
 @ViewScoped
@@ -16,22 +20,37 @@ public class ELSampleBean {
     private String firstName;
     private String lastName;
     private String pageDescription = "This page demos JSF EL Basics";
+    public static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
     private int pageCounter;
     private Random randomIntGen = new Random();
 
     @PostConstruct
     public void init() {
         pageCounter = randomIntGen.nextInt();
+        FacesContext.getCurrentInstance().getApplication().addELContextListener(new ELContextListener() {
+            @Override
+            public void contextCreated(ELContextEvent evt) {
+                evt.getELContext().getImportHandler().importClass("com.baeldung.springintegration.controllers.ELSampleBean");
+            }
+        });
     }
 
     public void save() {
 
+    }
+    
+    public static String constantField() {
+        return constantField;
     }
 
     public void saveFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public Long multiplyValue(LambdaExpression expr) {
+        Long theResult = (Long) expr.invoke(FacesContext.getCurrentInstance().getELContext(), pageCounter);
+        return theResult;
+    }
 
     public void saveByELEvaluation() {
         firstName = (String) evaluateEL("#{firstName.value}", String.class);

@@ -15,3 +15,4 @@
 - [Guava – Lists](http://www.baeldung.com/guava-lists)
 - [Guava – Sets](http://www.baeldung.com/guava-sets)
 - [Guava – Maps](http://www.baeldung.com/guava-maps)
+- [Guava Set + Function = Map](http://www.baeldung.com/guava-set-function-map-tutorial)

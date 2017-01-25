@@ -23,63 +23,63 @@ import org.springframework.web.util.UriTemplate;
 @RequestMapping(value = "/auth/")
 public class RootController {
 
-	@Autowired
-	private IMetricService metricService;
+    @Autowired
+    private IMetricService metricService;
 
-	@Autowired
-	private IActuatorMetricService actMetricService;
+    @Autowired
+    private IActuatorMetricService actMetricService;
 
-	public RootController() {
-		super();
-	}
+    public RootController() {
+        super();
+    }
 
-	// API
+    // API
 
-	// discover
+    // discover
 
-	@RequestMapping(value = "admin", method = RequestMethod.GET)
-	@ResponseStatus(value = HttpStatus.NO_CONTENT)
-	public void adminRoot(final HttpServletRequest request, final HttpServletResponse response) {
-		final String rootUri = request.getRequestURL().toString();
+    @RequestMapping(value = "admin", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void adminRoot(final HttpServletRequest request, final HttpServletResponse response) {
+        final String rootUri = request.getRequestURL().toString();
 
-		final URI fooUri = new UriTemplate("{rootUri}/{resource}").expand(rootUri, "foo");
-		final String linkToFoo = LinkUtil.createLinkHeader(fooUri.toASCIIString(), "collection");
-		response.addHeader("Link", linkToFoo);
-	}
+        final URI fooUri = new UriTemplate("{rootUri}/{resource}").expand(rootUri, "foo");
+        final String linkToFoo = LinkUtil.createLinkHeader(fooUri.toASCIIString(), "collection");
+        response.addHeader("Link", linkToFoo);
+    }
 
-	@RequestMapping(value = "/metric", method = RequestMethod.GET)
-	@ResponseBody
-	public Map getMetric() {
-		return metricService.getFullMetric();
-	}
+    @RequestMapping(value = "/metric", method = RequestMethod.GET)
+    @ResponseBody
+    public Map getMetric() {
+        return metricService.getFullMetric();
+    }
 
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@RequestMapping(value = "/status-metric", method = RequestMethod.GET)
-	@ResponseBody
-	public Map getStatusMetric() {
-		return metricService.getStatusMetric();
-	}
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/status-metric", method = RequestMethod.GET)
+    @ResponseBody
+    public Map getStatusMetric() {
+        return metricService.getStatusMetric();
+    }
 
-	@RequestMapping(value = "/metric-graph", method = RequestMethod.GET)
-	@ResponseBody
-	public Object[][] drawMetric() {
-		final Object[][] result = metricService.getGraphData();
-		for (int i = 1; i < result[0].length; i++) {
-			result[0][i] = result[0][i].toString();
-		}
-		return result;
-	}
+    @RequestMapping(value = "/metric-graph", method = RequestMethod.GET)
+    @ResponseBody
+    public Object[][] drawMetric() {
+        final Object[][] result = metricService.getGraphData();
+        for (int i = 1; i < result[0].length; i++) {
+            result[0][i] = result[0][i].toString();
+        }
+        return result;
+    }
 
-	@RequestMapping(value = "/admin/x", method = RequestMethod.GET)
-	@ResponseBody
-	public String sampleAdminPage() {
-		return "Hello";
-	}
+    @RequestMapping(value = "/admin/x", method = RequestMethod.GET)
+    @ResponseBody
+    public String sampleAdminPage() {
+        return "Hello";
+    }
 
-	@RequestMapping(value = "/my-error-page", method = RequestMethod.GET)
-	@ResponseBody
-	public String sampleErrorPage() {
-		return "Error Occurred";
-	}
+    @RequestMapping(value = "/my-error-page", method = RequestMethod.GET)
+    @ResponseBody
+    public String sampleErrorPage() {
+        return "Error Occurred";
+    }
 
 }

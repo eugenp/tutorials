@@ -1,0 +1,7 @@
+GET     /    controllers.HomeController.index(author="Baeldung",id:Int?=1)
+GET     /:author     controllers.HomeController.index(author,id:Int?=1)
+GET     /greet/:name/:age    controllers.HomeController.greet(name,age:Integer)
+GET     /square/$num<[0-9]+>    controllers.HomeController.squareMe(num:Long)
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /*data    controllers.HomeController.introduceMe(data)

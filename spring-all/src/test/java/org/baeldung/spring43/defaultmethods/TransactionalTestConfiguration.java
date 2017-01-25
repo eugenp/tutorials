@@ -1,6 +1,5 @@
 package org.baeldung.spring43.defaultmethods;
 
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;

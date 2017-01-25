@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class RestController{
+public class RestController {
 
-	@GetMapping(value="/student/{studentId}")
-	public @ResponseBody Student getTestData(@PathVariable Integer studentId) {
-		Student student = new Student();
-		student.setName("Peter");
-		student.setId(studentId);
+    @GetMapping(value = "/student/{studentId}")
+    public @ResponseBody Student getTestData(@PathVariable Integer studentId) {
+        Student student = new Student();
+        student.setName("Peter");
+        student.setId(studentId);
 
-		return student;
+        return student;
 
-	}
+    }
 }

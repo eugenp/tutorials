@@ -8,7 +8,6 @@ import org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver;
 
 @Configuration
 public class TestConfig {
-	
 
     @Bean
     public ViewResolver viewResolver() {
@@ -19,14 +18,12 @@ public class TestConfig {
         bean.setSuffix(".vm");
         return bean;
     }
-    
+
     @Bean
     public VelocityConfigurer velocityConfig() {
         VelocityConfigurer velocityConfigurer = new VelocityConfigurer();
         velocityConfigurer.setResourceLoaderPath("/");
         return velocityConfigurer;
     }
-    
-    
 
 }

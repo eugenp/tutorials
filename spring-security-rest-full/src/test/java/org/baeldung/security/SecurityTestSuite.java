@@ -1,6 +1,5 @@
 package org.baeldung.security;
 
-
 import org.baeldung.security.csrf.CsrfDisabledIntegrationTest;
 import org.baeldung.security.csrf.CsrfEnabledIntegrationTest;
 import org.junit.runner.RunWith;

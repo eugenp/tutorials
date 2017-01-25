@@ -1,0 +1,202 @@
+/*
+ * JBoss, Home of Professional Open Source
+ * Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+ * contributors by the @authors tag. See the copyright.txt in the
+ * distribution for a full listing of individual contributors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* Core styles for the page */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F1F1F1;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 0.8em;
+  color:#363636;
+}
+
+#container {
+  margin: 0 auto;
+  padding: 0 20px 10px 20px;
+  border-top: 5px solid #000000;
+  border-left: 5px solid #8c8f91;
+  border-right: 5px solid #8c8f91;
+  border-bottom: 25px solid #8c8f91;
+  width: 865px; /* subtract 40px from banner width for padding */
+  background: #FFFFFF;
+  background-image: url(#{request.contextPath}/resources/gfx/headerbkg.png);
+  background-repeat: repeat-x;
+  padding-top: 30px;
+  box-shadow: 3px 3px 15px #d5d5d5;
+}
+#content {
+  float: left;
+  width: 500px;
+  margin: 20px;
+}
+#aside {
+  font-size: 0.9em;
+  width: 275px;
+  float: left;
+  margin: 20px 0px;
+  border: 1px solid #D5D5D5;
+  background: #F1F1F1;
+  background-image: url(#{request.contextPath}/resources/gfx/asidebkg.png);
+  background-repeat: repeat-x;
+  padding: 20px;
+}
+
+#aside ul {
+  padding-left: 30px;
+}
+.dualbrand {
+  float: right;
+  padding-right: 10px;
+}
+#footer {
+  clear: both;
+  text-align: center;
+  color: #666666;
+  font-size: 0.85em;
+}
+code {
+  font-size: 1.1em;
+}
+a {
+  color: #4a5d75;
+  text-decoration: none;
+}
+a:hover {
+  color: #369;
+  text-decoration: underline;
+}
+h1 {
+  color:#243446;
+  font-size: 2.25em;
+}
+h2 {
+  font-size: 1em;
+}
+h3 {
+  color:#243446;
+}
+h4 {
+}
+h5 {
+}
+h6 {
+}
+/* Member registration styles */
+span.invalid {
+  padding-left: 3px;
+  color: red;
+}
+form {
+  padding: 1em;
+  font: 80%/1 sans-serif;
+  width: 375px;
+  border: 1px solid #D5D5D5;
+}
+label {
+  float: left;
+  width: 15%;
+  margin-left: 20px;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+  text-align: right;
+  font-weight: bold;
+  color:#363636;
+}
+input {
+  margin-bottom: 8px;
+}
+.register {
+  float: left;
+  margin-left: 85px;
+}
+
+/*  -----  table style  -------  */
+
+
+/*  = Simple Table style (black header, grey/white stripes  */
+
+.simpletablestyle {
+  background-color:#E6E7E8;
+  clear:both;
+  width: 550px;
+}
+
+.simpletablestyle img {
+  border:0px;
+}
+
+.simpletablestyle td {
+  height:2em;
+  padding-left: 6px;
+  font-size:11px;
+  padding:5px 5px;
+}
+
+.simpletablestyle th {
+	background: url(#{request.contextPath}/resources/gfx/bkg-blkheader.png) black repeat-x top left;
+  font-size:12px;
+  font-weight:normal;
+  padding:0 10px 0 5px;
+  border-bottom:#999999 dotted 1px;
+}
+
+.simpletablestyle thead {
+  background: url(#{request.contextPath}/resources/gfx/bkg-blkheader.png) black repeat-x top left;
+  height:31px;
+  font-size:10px;
+  font-weight:bold;
+  color:#FFFFFF;
+  text-align:left;
+}
+
+.simpletablestyle .header a {
+  color:#94aebd;
+}
+
+.simpletablestype tfoot {
+	height: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  background-color: #EAECEE;
+  text-align: center;
+}
+
+.simpletablestyle tr.header td {
+  padding: 0px 10px 0px 5px;
+}
+
+
+.simpletablestyle .subheader {
+  background-color: #e6e7e8;
+  font-size:10px;
+  font-weight:bold;
+  color:#000000;
+  text-align:left;
+}
+
+/* Using new CSS3 selectors for styling*/
+.simpletablestyle tr:nth-child(odd) {
+  background: #f4f3f3;
+}
+.simpletablestyle tr:nth-child(even) {
+  background: #ffffff;
+}
+
+.simpletablestyle td a:hover {
+  color:#3883ce;
+  text-decoration:none; 
+}

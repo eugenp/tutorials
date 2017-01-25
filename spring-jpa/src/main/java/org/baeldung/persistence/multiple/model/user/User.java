@@ -1,10 +1,13 @@
 package org.baeldung.persistence.multiple.model.user;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,9 @@ public class User {
     private String email;
 
     private int age;
+
+    @OneToMany
+    List<Possession> possessionList;
 
     public User() {
         super();
@@ -56,6 +62,14 @@ public class User {
 
     public void setAge(final int age) {
         this.age = age;
+    }
+
+    public List<Possession> getPossessionList() {
+        return possessionList;
+    }
+
+    public void setPossessionList(List<Possession> possessionList) {
+        this.possessionList = possessionList;
     }
 
     @Override

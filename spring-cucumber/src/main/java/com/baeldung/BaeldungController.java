@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BaeldungController {
-	
-	@RequestMapping(method={RequestMethod.GET},value={"/hello"})
-    public String sayHello(HttpServletResponse response){
+
+    @RequestMapping(method = { RequestMethod.GET }, value = { "/hello" })
+    public String sayHello(HttpServletResponse response) {
         return "hello";
     }
-	
-	@RequestMapping(method={RequestMethod.POST},value={"/baeldung"})
-    public String sayHelloPost(HttpServletResponse response){
+
+    @RequestMapping(method = { RequestMethod.POST }, value = { "/baeldung" })
+    public String sayHelloPost(HttpServletResponse response) {
         return "hello";
     }
 

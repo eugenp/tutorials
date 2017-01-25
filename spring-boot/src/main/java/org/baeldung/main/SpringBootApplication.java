@@ -1,8 +1,5 @@
 package org.baeldung.main;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import org.baeldung.common.error.SpringHelloServletRegistrationBean;
 import org.baeldung.common.resources.ExecutorServiceExitCodeGenerator;
 import org.baeldung.controller.servlet.HelloWorldServlet;
@@ -16,6 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @RestController
 @EnableAutoConfiguration
@@ -54,28 +54,6 @@ public class SpringBootApplication {
         bean.addInitParameter("message", "SpringHelloWorldServlet special message");
         return bean;
     }
-
-    /*    @Bean
-    public JettyEmbeddedServletContainerFactory  jettyEmbeddedServletContainerFactory() {
-        JettyEmbeddedServletContainerFactory jettyContainer = new JettyEmbeddedServletContainerFactory();
-        jettyContainer.setPort(9000);
-        jettyContainer.setContextPath("/springbootapp");
-        return jettyContainer;
-    }
-    
-    @Bean
-    public UndertowEmbeddedServletContainerFactory embeddedServletContainerFactory() {
-        UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory();
-        factory.addBuilderCustomizers(new UndertowBuilderCustomizer() {
-    
-            @Override
-            public void customize(io.undertow.Undertow.Builde builder) {
-                builder.addHttpListener(8080, "0.0.0.0");
-            }
-    
-        });
-        return factory;
-    }*/
 
     @Bean
     @Autowired
