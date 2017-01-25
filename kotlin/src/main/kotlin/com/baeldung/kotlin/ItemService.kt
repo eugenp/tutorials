@@ -24,11 +24,15 @@ class ItemManager(val categoryId: String, val dbConnection: String) {
     fun makeAnalyisOfCategory(catId: String): Unit {
         val result = if (catId == "100") "Yes" else "No"
         println(result)
-
+        `object`()
     }
 
     fun sum(a: Int, b: Int): Int {
         return a + b
+    }
+
+    fun `object`(): String {
+        return "this is object"
     }
 
 }
