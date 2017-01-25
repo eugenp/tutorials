@@ -15,12 +15,10 @@ public class BlockingQueueUsage {
         BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(BOUND);
 
         for (int i = 0; i < N_PRODUCERS; i++) {
-            System.out.println("new Producer");
             new Thread(new NumbersProducer(queue)).start();
         }
 
         for (int j = 0; j < N_CONSUMERS; j++) {
-            System.out.println("new Consumer");
             new Thread(new NumbersConsumer(queue)).start();
         }
     }
