@@ -32,4 +32,10 @@ public class ResourceEndpoint {
                 .cacheControl(CacheControl.noCache())
                 .body(new TimestampDto(LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli()));
     }
+
+    @RequestMapping(value = "/private/users/{name}", method = RequestMethod.GET)
+    public ResponseEntity<UserDto> getUserNotCached(@PathVariable("name") String name) {
+        return ResponseEntity.ok()
+                .body(new UserDto(name));
+    }
 }
