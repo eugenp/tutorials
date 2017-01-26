@@ -1,4 +1,4 @@
-package com.baeldung.spring;
+package com.baeldung.spring-injections;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
