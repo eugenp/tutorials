@@ -31,7 +31,7 @@ public class CollectorImprovementTest {
         }
     }
     
-    @Test 
+    @Test
     public void givenList_whenSatifyPredicate_thenMapValueWithOccurences() {
         List<Integer> numbers = List.of(1, 2, 3, 5, 5);
  
