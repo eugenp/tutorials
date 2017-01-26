@@ -64,11 +64,6 @@
             <version>${grep4j.version}</version>
         </dependency>
         
-        <dependency>
-            <groupId>com.lmax</groupId>
-            <artifactId>disruptor</artifactId>
-            <version>${disruptor.version}</version>
-        </dependency>
         <!-- web -->
 
         <!-- marshalling -->
@@ -369,7 +364,6 @@
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <lombok.version>1.16.12</lombok.version>
-        <disruptor.version>3.3.6</disruptor.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
