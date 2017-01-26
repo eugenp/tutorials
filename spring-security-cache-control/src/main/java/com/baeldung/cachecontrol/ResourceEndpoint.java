@@ -29,7 +29,6 @@ public class ResourceEndpoint {
     public ResponseEntity<TimestampDto> getServerTimestamp() {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
-                .cacheControl(CacheControl.noCache())
                 .body(new TimestampDto(LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli()));
     }
 
