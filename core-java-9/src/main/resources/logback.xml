@@ -1,16 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>web - %date [%thread] %-5level %logger{36} - %message%n
-            </pattern>
-        </encoder>
-    </appender>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
 
-    <!-- <logger name="org.springframework" level="WARN" /> -->
+<logger name="org.mockserver.matchers.HttpRequestMatcher" level="DEBUG" />
+<logger name="org.mockserver.mockserver.MockServerHandler" level="ERROR" />
+<logger name="io.netty.handler.logging.LoggingHandler" level="ERROR" />
 
-    <root level="INFO">
-        <appender-ref ref="STDOUT"/>
-    </root>
 
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+  </root>
 </configuration>
