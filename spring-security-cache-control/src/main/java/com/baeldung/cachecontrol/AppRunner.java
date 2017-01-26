@@ -1,4 +1,4 @@
-package com.baeldung.cachecontrol.app;
+package com.baeldung.cachecontrol;
 
 
 import org.springframework.boot.SpringApplication;
