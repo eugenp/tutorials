@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.model;
+package com.baeldung.hibernate.oneToMany.model;
 
 import java.util.Set;
 

@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.config;
+package com.baeldung.hibernate.oneToMany.config;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

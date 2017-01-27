@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.main;
+package com.baeldung.hibernate.oneToMany.main;
 
 import java.util.HashSet;
 import java.util.Set;
