@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.blockingqueue;
 
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -9,7 +8,6 @@ public class BlockingQueueUsage {
         int BOUND = 10;
         int N_PRODUCERS = 4;
         int N_CONSUMERS = Runtime.getRuntime().availableProcessors();
-
 
         BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(BOUND);
 

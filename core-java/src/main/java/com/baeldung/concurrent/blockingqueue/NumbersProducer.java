@@ -1,19 +1,15 @@
 package com.baeldung.concurrent.blockingqueue;
 
-
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
-
-class NumbersProducer implements Runnable {
+public class NumbersProducer implements Runnable {
     private final Random random = new Random();
     private final BlockingQueue<Integer> numbersQueue;
-
 
     public NumbersProducer(BlockingQueue<Integer> numbersQueue) {
         this.numbersQueue = numbersQueue;
     }
-
 
     public void run() {
         try {
