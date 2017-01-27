@@ -31,8 +31,8 @@ public class CollectorImprovementTest {
         }
     }
     
-    @Test 
-    public void testFiltering() {
+    @Test
+    public void givenList_whenSatifyPredicate_thenMapValueWithOccurences() {
         List<Integer> numbers = List.of(1, 2, 3, 5, 5);
  
         Map<Integer, Long> result = numbers.stream()
@@ -49,7 +49,7 @@ public class CollectorImprovementTest {
     }
     
     @Test
-    public void testFlatMapping() {
+    public void givenListOfBlogs_whenAuthorName_thenMapAuthorWithComments() {
         Blog blog1 = new CollectorImprovementTest.Blog("1");
         blog1.addComment("Nice");
         blog1.addComment("Very Nice");
