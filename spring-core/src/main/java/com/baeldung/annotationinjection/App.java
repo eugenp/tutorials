@@ -1,9 +1,10 @@
-package baeldung.java_bean_injection;
-
-import baeldung.java_bean_injection.*;
+package com.baeldung.java_bean_injection;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.baeldung.java_bean_injection.*;
 
 import org.springframework.context.ApplicationContext;  
 import org.springframework.context.support.ClassPathXmlApplicationContext;  
@@ -35,10 +36,13 @@ public class App
             TestFailure failure = null;
             while(failures.hasMoreElements()){
                 failure = failures.nextElement();
+                
+                System.out.println(failure.exceptionMessage());
                 System.out.println(String.format("Test Failure %d\n",failNum));
-                System.out.println(failure.trace());
+                System.out.println(failure.trace());            
                 System.out.print("\n");
             }
         }
+       
     }
 }
