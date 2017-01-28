@@ -10,9 +10,6 @@
     <resources>
       <resource>
         <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
       </resource>
     </resources>
     <plugins>
@@ -22,6 +19,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <excludes>**/*TestCarAction.java</excludes>
         </configuration>
       </plugin>
       <plugin>
@@ -39,6 +37,12 @@
     <groupId>org.apache.struts</groupId>
     <artifactId>struts2-core</artifactId>
     <version>2.5.5</version>
-</dependency>
-  </dependencies>
+    </dependency>
+   <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-junit-plugin -->
+ <dependency>
+    <groupId>org.apache.struts</groupId>
+    <artifactId>struts2-junit-plugin</artifactId>
+    <version>2.5.5</version>
+ </dependency>
+   </dependencies>
 </project>
