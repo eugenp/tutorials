@@ -1,23 +1,22 @@
 package com.java.test;
-
-/**
- * Created by s738204 on 11/01/2017.
- */
+import org.junit.Assert;
+import org.junit.Test;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+
 public class FileUtility {
     public static void serializeGivenObject(String filePath , Object object ) {
         try {
             FileOutputStream fileOut =
-                    new FileOutputStream(filePath);
+              new FileOutputStream(filePath);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(object);
             out.close();
             fileOut.close();
         } catch(Exception e) {
-            System.out.println("Exception in serializeGivenObject "+e.getMessage());
+            
             e.printStackTrace();
         }
     }
@@ -33,19 +32,23 @@ public class FileUtility {
             in.close();
             fileIn.close();
         } catch(Exception e) {
-            System.out.println("Exception in deserializeTheObjectBack "+e.getMessage());
+        	e.printStackTrace();
         }
         return deserializedObject;
     }
 
-    public static void main(String ar[]) {
+       
+    @Test 
+    public void employeeSerializationeserializationTest() {
         Emp emp=new Emp();
         emp.setId(123);
         emp.setName("Derek");
-        FileUtility.serializeGivenObject("C:\\Users\\S738204\\EGSWORKSPACE\\TestCases\\src\\test\\java\\com\\ek\\test\\steps\\emp.ser",emp);
+        FileUtility.serializeGivenObject("src/com/java/test/employee.ser",emp);
 
-        Emp empDeserialized = (Emp) FileUtility.deserializeTheObjectBack("C:\\Users\\S738204\\EGSWORKSPACE\\TestCases\\src\\test\\java\\com\\ek\\test\\steps\\emp.ser");
-        System.out.println("Id , Name : " + empDeserialized.getId()+" , "+empDeserialized.getName());
+        Emp empDeserialized = (Emp) FileUtility.deserializeTheObjectBack("src/com/java/test/employee.ser");
+        Assert.assertEquals(emp.id, 123);
+        Assert.assertEquals(emp.name, "Derek");
+        
     }
 }
 
