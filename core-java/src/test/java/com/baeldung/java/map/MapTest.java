@@ -311,13 +311,7 @@ public class MapTest {
 
     @Test
     public void givenTreeMap_whenOrdersEntriesByComparator_thenCorrect() {
-        TreeMap<Integer, String> map = new TreeMap<>(new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        TreeMap<Integer, String> map = new TreeMap<>(Comparator.reverseOrder());
         map.put(3, "val");
         map.put(2, "val");
         map.put(1, "val");
