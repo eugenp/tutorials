@@ -181,6 +181,8 @@
         <module>xmlunit2</module>
         <module>xstream</module>
     <module>java-mongodb</module>
+    <module>rest-with-spark-java</module>
+    <module>spring-mobile</module>
   </modules>
 
 </project>
