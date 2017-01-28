@@ -27,18 +27,14 @@ public class Java8StreamApiUnitTest {
 
     @Before
     public void init() {
-        productList = Arrays.asList(
-                new Product(23, "potatoes"), new Product(14, "orange"),
-                new Product(13, "lemon"), new Product(23, "bread"),
-                new Product(13, "sugar"));
+        productList = Arrays.asList(new Product(23, "potatoes"), new Product(14, "orange"), new Product(13, "lemon"), new Product(23, "bread"), new Product(13, "sugar"));
     }
 
     @Test
     public void checkPipeline_whenStreamOneElementShorter_thenCorrect() {
 
         List<String> list = Arrays.asList("abc1", "abc2", "abc3");
-        long size = list.stream().skip(1)
-                .map(element -> element.substring(0, 3)).count();
+        long size = list.stream().skip(1).map(element -> element.substring(0, 3)).count();
         assertEquals(list.size() - 1, size);
     }
 
@@ -48,11 +44,10 @@ public class Java8StreamApiUnitTest {
         List<String> list = Arrays.asList("abc1", "abc2", "abc3");
 
         counter = 0;
-        long sizeFirst = list.stream()
-                .skip(2).map(element -> {
-                    wasCalled();
-                    return element.substring(0, 3);
-                }).count();
+        long sizeFirst = list.stream().skip(2).map(element -> {
+            wasCalled();
+            return element.substring(0, 3);
+        }).count();
         assertEquals(1, counter);
 
         counter = 0;
@@ -84,7 +79,7 @@ public class Java8StreamApiUnitTest {
         Stream<String> streamOfArray = Stream.of("a", "b", "c");
         assertEquals(3, streamOfArray.count());
 
-        String[] arr = new String[]{"a", "b", "c"};
+        String[] arr = new String[] { "a", "b", "c" };
         Stream<String> streamOfArrayPart = Arrays.stream(arr, 1, 3);
         assertEquals(2, streamOfArrayPart.count());
 
@@ -112,7 +107,7 @@ public class Java8StreamApiUnitTest {
         }
         assertEquals("a", streamOfStrings.findFirst().get());
 
-        Stream<String> streamBuilder = Stream.<String>builder().add("a").add("b").add("c").build();
+        Stream<String> streamBuilder = Stream.<String> builder().add("a").add("b").add("c").build();
         assertEquals(3, streamBuilder.count());
 
         Stream<String> streamGenerated = Stream.generate(() -> "element").limit(10);
@@ -126,14 +121,13 @@ public class Java8StreamApiUnitTest {
     public void runStreamPipeline_whenOrderIsRight_thenCorrect() {
 
         List<String> list = Arrays.asList("abc1", "abc2", "abc3");
-        Optional<String> stream = list.stream()
-                .filter(element -> {
-                    log.info("filter() was called");
-                    return element.contains("2");
-                }).map(element -> {
-                    log.info("map() was called");
-                    return element.toUpperCase();
-                }).findFirst();
+        Optional<String> stream = list.stream().filter(element -> {
+            log.info("filter() was called");
+            return element.contains("2");
+        }).map(element -> {
+            log.info("map() was called");
+            return element.toUpperCase();
+        }).findFirst();
     }
 
     @Test
@@ -145,32 +139,28 @@ public class Java8StreamApiUnitTest {
         int reducedTwoParams = IntStream.range(1, 4).reduce(10, (a, b) -> a + b);
         assertEquals(16, reducedTwoParams);
 
-        int reducedThreeParams = Stream.of(1, 2, 3)
-                .reduce(10, (a, b) -> a + b, (a, b) -> {
-                    log.info("combiner was called");
-                    return a + b;
-                });
+        int reducedThreeParams = Stream.of(1, 2, 3).reduce(10, (a, b) -> a + b, (a, b) -> {
+            log.info("combiner was called");
+            return a + b;
+        });
         assertEquals(16, reducedThreeParams);
 
-        int reducedThreeParamsParallel = Arrays.asList(1, 2, 3).parallelStream()
-                .reduce(10, (a, b) -> a + b, (a, b) -> {
-                    log.info("combiner was called");
-                    return a + b;
-                });
+        int reducedThreeParamsParallel = Arrays.asList(1, 2, 3).parallelStream().reduce(10, (a, b) -> a + b, (a, b) -> {
+            log.info("combiner was called");
+            return a + b;
+        });
         assertEquals(36, reducedThreeParamsParallel);
     }
 
     @Test
     public void collecting_whenAsExpected_thenCorrect() {
 
-        List<String> collectorCollection = productList.stream()
-                .map(Product::getName).collect(Collectors.toList());
+        List<String> collectorCollection = productList.stream().map(Product::getName).collect(Collectors.toList());
 
         assertTrue(collectorCollection instanceof List);
         assertEquals(5, collectorCollection.size());
 
-        String listToString = productList.stream().map(Product::getName)
-                .collect(Collectors.joining(", ", "[", "]"));
+        String listToString = productList.stream().map(Product::getName).collect(Collectors.joining(", ", "[", "]"));
 
         assertTrue(listToString.contains(",") && listToString.contains("[") && listToString.contains("]"));
 
@@ -180,36 +170,29 @@ public class Java8StreamApiUnitTest {
         int summingPrice = productList.stream().collect(Collectors.summingInt(Product::getPrice));
         assertEquals(86, summingPrice);
 
-        IntSummaryStatistics statistics = productList.stream()
-                .collect(Collectors.summarizingInt(Product::getPrice));
+        IntSummaryStatistics statistics = productList.stream().collect(Collectors.summarizingInt(Product::getPrice));
         assertEquals(23, statistics.getMax());
 
-        Map<Integer, List<Product>> collectorMapOfLists = productList.stream()
-                .collect(Collectors.groupingBy(Product::getPrice));
+        Map<Integer, List<Product>> collectorMapOfLists = productList.stream().collect(Collectors.groupingBy(Product::getPrice));
         assertEquals(3, collectorMapOfLists.keySet().size());
 
-        Map<Boolean, List<Product>> mapPartioned = productList.stream()
-                .collect(Collectors.partitioningBy(element -> element.getPrice() > 15));
+        Map<Boolean, List<Product>> mapPartioned = productList.stream().collect(Collectors.partitioningBy(element -> element.getPrice() > 15));
         assertEquals(2, mapPartioned.keySet().size());
 
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void collect_whenThrows_thenCorrect() {
-        Set<Product> unmodifiableSet = productList.stream()
-                .collect(Collectors.collectingAndThen(Collectors.toSet(),
-                        Collections::unmodifiableSet));
+        Set<Product> unmodifiableSet = productList.stream().collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
         unmodifiableSet.add(new Product(4, "tea"));
     }
 
     @Test
     public void customCollector_whenResultContainsAllElementsFrSource_thenCorrect() {
-        Collector<Product, ?, LinkedList<Product>> toLinkedList =
-                Collector.of(LinkedList::new, LinkedList::add,
-                        (first, second) -> {
-                            first.addAll(second);
-                            return first;
-                        });
+        Collector<Product, ?, LinkedList<Product>> toLinkedList = Collector.of(LinkedList::new, LinkedList::add, (first, second) -> {
+            first.addAll(second);
+            return first;
+        });
 
         LinkedList<Product> linkedListOfPersons = productList.stream().collect(toLinkedList);
         assertTrue(linkedListOfPersons.containsAll(productList));
@@ -219,23 +202,20 @@ public class Java8StreamApiUnitTest {
     public void parallelStream_whenWorks_thenCorrect() {
         Stream<Product> streamOfCollection = productList.parallelStream();
         boolean isParallel = streamOfCollection.isParallel();
-        boolean haveBigPrice = streamOfCollection.map(product -> product.getPrice() * 12)
-                .anyMatch(price -> price > 200);
+        boolean haveBigPrice = streamOfCollection.map(product -> product.getPrice() * 12).anyMatch(price -> price > 200);
         assertTrue(isParallel && haveBigPrice);
     }
 
     @Test
     public void parallel_whenIsParallel_thenCorrect() {
-        IntStream intStreamParallel =
-                IntStream.range(1, 150).parallel().map(element -> element * 34);
+        IntStream intStreamParallel = IntStream.range(1, 150).parallel().map(element -> element * 34);
         boolean isParallel = intStreamParallel.isParallel();
         assertTrue(isParallel);
     }
 
     @Test
     public void parallel_whenIsSequential_thenCorrect() {
-        IntStream intStreamParallel =
-                IntStream.range(1, 150).parallel().map(element -> element * 34);
+        IntStream intStreamParallel = IntStream.range(1, 150).parallel().map(element -> element * 34);
         IntStream intStreamSequential = intStreamParallel.sequential();
         boolean isParallel = intStreamParallel.isParallel();
         assertFalse(isParallel);

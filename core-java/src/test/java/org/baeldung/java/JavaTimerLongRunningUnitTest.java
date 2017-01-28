@@ -90,7 +90,6 @@ public class JavaTimerLongRunningUnitTest {
             @Override
             public void run() {
                 System.out.println("Task performed on " + new Date());
-                // TODO: stop the thread
             }
         };
         final Timer timer = new Timer("Timer");

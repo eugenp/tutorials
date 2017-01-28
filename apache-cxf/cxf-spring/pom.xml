@@ -33,7 +33,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
     </dependencies>
     
@@ -41,7 +41,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -66,7 +66,7 @@
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>1.4.19</version>
+                        <version>${cargo-maven2-plugin.version}</version>
                         <configuration>
                             <container>
                                 <containerId>tomcat8x</containerId>
@@ -121,9 +121,13 @@
     </profiles>
     
     <properties>
-        <cxf.version>3.1.6</cxf.version>
-        <spring.version>4.3.1.RELEASE</spring.version>
+        <cxf.version>3.1.8</cxf.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>        
         <surefire.version>2.19.1</surefire.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>        
     </properties>
     
 </project>

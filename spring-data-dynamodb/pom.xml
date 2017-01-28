@@ -11,7 +11,7 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>1.2.3.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
         <relativePath/>
     </parent>
             
@@ -20,7 +20,11 @@
 		<start-class>com.baeldung.Application</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<spring.version>4.3.1.RELEASE</spring.version>
+		<spring.version>4.3.4.RELEASE</spring.version>
+		<httpclient.version>4.5.2</httpclient.version>
+		<spring-data-dynamodb.version>4.4.1</spring-data-dynamodb.version>
+		<aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
+		<bootstrap.version>3.3.7-1</bootstrap.version>
 	</properties>
 
 	<dependencyManagement>
@@ -83,23 +87,23 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.4</version>
+			<version>${bootstrap.version}</version>
 		</dependency>
 
 		<dependency>
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk-dynamodb</artifactId>
-    		<version>1.11.34</version>
+    		<version>${aws-java-sdk-dynamodb.version}</version>
 		</dependency>
 		<dependency>
   			<groupId>com.github.derjust</groupId>
   			<artifactId>spring-data-dynamodb</artifactId>
-  			<version>4.3.1</version>
+  			<version>${spring-data-dynamodb.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.2</version>
+			<version>${httpclient.version}</version>
 		</dependency>
 	</dependencies>
 

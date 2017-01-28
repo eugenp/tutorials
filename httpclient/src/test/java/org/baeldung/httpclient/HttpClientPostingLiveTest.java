@@ -27,10 +27,11 @@ import org.apache.http.impl.auth.BasicScheme;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore("need spring-rest module running")
+/*
+ * NOTE : Need module spring-rest to be running
+ */
 public class HttpClientPostingLiveTest {
     private static final String SAMPLE_URL = "http://localhost:8080/spring-rest/users";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
