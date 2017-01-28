@@ -39,7 +39,7 @@ public class FileUtility {
 
        
     @Test 
-    public void employeeSerializationeserializationTest() {
+    public void employeeSerializationDeserializationTest() {
         Emp emp=new Emp();
         emp.setId(123);
         emp.setName("Derek");
