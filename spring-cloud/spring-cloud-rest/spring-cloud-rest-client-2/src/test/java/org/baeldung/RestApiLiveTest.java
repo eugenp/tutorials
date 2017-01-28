@@ -22,7 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = { SpringCloudRestClientApplication.class }, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class RestApiLiveTest {
 
-    private static final String API_URI = "http://localhost:8084/reviews";
+    private static final String API_URI = "http://localhost:8085/reviews";
 
     @Before
     public void setUp() {

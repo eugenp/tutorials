@@ -9,30 +9,8 @@ import java.util.function.Function;
 import static org.junit.Assert.assertEquals;
 
 public class CollectorImprovementTest {
-    private static class Blog {
-        private String authorName;
-        private List<String> comments;        
-        
-        public Blog(String authorName) {
-            this.authorName = authorName;
-            this.comments = new LinkedList<String>();
-        }
-        
-        public String getAuthorName() {
-            return this.authorName;
-        }
-        
-        public List<String> getComments() {
-            return new LinkedList<String>(this.comments);
-        }
-        
-        public void addComment(String comment) {
-            this.comments.add(comment);
-        }
-    }
-    
-    @Test 
-    public void testFiltering() {
+    @Test
+    public void givenList_whenSatifyPredicate_thenMapValueWithOccurences() {
         List<Integer> numbers = List.of(1, 2, 3, 5, 5);
  
         Map<Integer, Long> result = numbers.stream()
@@ -49,14 +27,9 @@ public class CollectorImprovementTest {
     }
     
     @Test
-    public void testFlatMapping() {
-        Blog blog1 = new CollectorImprovementTest.Blog("1");
-        blog1.addComment("Nice");
-        blog1.addComment("Very Nice");
-        Blog blog2 = new CollectorImprovementTest.Blog("2");
-        blog2.addComment("Disappointing");
-        blog2.addComment("Ok");
-        blog2.addComment("Could be better");
+    public void givenListOfBlogs_whenAuthorName_thenMapAuthorWithComments() {
+        Blog blog1 = new Blog("1", "Nice", "Very Nice");
+        Blog blog2 = new Blog("2", "Disappointing", "Ok", "Could be better");
         List<Blog> blogs = List.of(blog1, blog2);
              
         Map<String,  List<List<String>>> authorComments1 = 
@@ -77,5 +50,23 @@ public class CollectorImprovementTest {
         assertEquals(2, authorComments2.size());
         assertEquals(2, authorComments2.get("1").size());
         assertEquals(3, authorComments2.get("2").size());
+    }
+}
+
+class Blog {
+	private String authorName;
+    private List<String> comments;        
+    
+    public Blog(String authorName, String... comments) {
+        this.authorName = authorName;
+        this.comments = List.of(comments);
+    }
+    
+    public String getAuthorName() {
+        return this.authorName;
+    }
+    
+    public List<String> getComments() {
+        return this.comments;
     }
 }
