@@ -7,27 +7,6 @@ import junit.framework.Assert;
 
 public class DeserializationExample {
 
-	public static void main(String[] args) {
-		Employee emp = null;
-		try {
-
-			FileInputStream fileIn = new FileInputStream("src/com/java/test/employee.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			emp = (Employee) in.readObject();
-			in.close();
-			fileIn.close();
-			System.out.printf("Serialized data is saved in /src/com/java/test/employee.ser");
-		} catch (IOException i) {
-			i.printStackTrace();
-		} catch (ClassNotFoundException c) {
-			System.out.println("Employee class not found");
-		}
-		System.out.println("\nDeserialized Employee...");
-		System.out.println("Id: " + emp.id);
-		System.out.println("Name: " + emp.name);
-		System.out.println("Address: " + emp.address);
-
-	}
 	
 	@Test
     public void deserializationTest() {

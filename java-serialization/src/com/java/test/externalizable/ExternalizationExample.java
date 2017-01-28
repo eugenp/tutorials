@@ -43,14 +43,7 @@ public class ExternalizationExample {
         return emp;
     }
  
-    public static void main(String[] args)
-      throws ClassNotFoundException, IOException {
-    	ExternalizationExample externalizationExample = new ExternalizationExample();
-    	externalizationExample.serialize();
-        externalizationExample.deserialize();
- 
-    }
-    
+        
     @Test
     public void externalizableTest() throws Exception {
     	ExternalizationExample externalizationExample = new ExternalizationExample();
