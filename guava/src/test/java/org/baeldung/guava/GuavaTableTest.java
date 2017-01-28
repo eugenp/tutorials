@@ -1,11 +1,16 @@
 package org.baeldung.guava;
 
 import static org.junit.Assert.*;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.junit.Test;
+import com.google.common.collect.ArrayTable;
 import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableTable;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Table;
+import com.google.common.collect.TreeBasedTable;
 
 public class GuavaTableTest {
 
@@ -127,5 +132,43 @@ public class GuavaTableTest {
         final Set<String> courseSet = universityCourseSeatTable.columnKeySet();
 
         assertEquals(3, courseSet.size());
+    }
+
+    @Test
+    public void givenTreeTable_whenGet_returnsSuccessfully() {
+        final Table<String, String, Integer> universityCourseSeatTable = TreeBasedTable.create();
+        universityCourseSeatTable.put("Mumbai University", "Chemical", 120);
+        universityCourseSeatTable.put("Mumbai University", "IT", 60);
+        universityCourseSeatTable.put("Harvard University", "Electrical", 60);
+        universityCourseSeatTable.put("Harvard University", "IT", 120);
+
+        final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
+
+        assertEquals(60, seatCount);
+    }
+
+    @Test
+    public void givenImmutableTable_whenGet_returnsSuccessfully() {
+        final Table<String, String, Integer> universityCourseSeatTable = ImmutableTable.<String, String, Integer> builder().put("Mumbai University", "Chemical", 120).put("Mumbai University", "IT", 60).put("Harvard University", "Electrical", 60)
+                .put("Harvard University", "IT", 120).build();
+
+        final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
+
+        assertEquals(60, seatCount);
+    }
+
+    @Test
+    public void givenArrayTable_whenGet_returnsSuccessfully() {
+        final List<String> universityRowTable = Lists.newArrayList("Mumbai University", "Harvard University");
+        final List<String> courseColumnTables = Lists.newArrayList("Chemical", "IT", "Electrical");
+        final Table<String, String, Integer> universityCourseSeatTable = ArrayTable.create(universityRowTable, courseColumnTables);
+        universityCourseSeatTable.put("Mumbai University", "Chemical", 120);
+        universityCourseSeatTable.put("Mumbai University", "IT", 60);
+        universityCourseSeatTable.put("Harvard University", "Electrical", 60);
+        universityCourseSeatTable.put("Harvard University", "IT", 120);
+
+        final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
+
+        assertEquals(60, seatCount);
     }
 }
