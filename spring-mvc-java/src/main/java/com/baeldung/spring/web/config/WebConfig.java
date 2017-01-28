@@ -12,6 +12,7 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -105,5 +106,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         urlPathHelper.setRemoveSemicolonContent(false);
 
         configurer.setUrlPathHelper(urlPathHelper);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/account/**").allowedOrigins("*").allowedMethods("DELETE");
+
     }
 }
