@@ -14,7 +14,8 @@ import org.junit.Test;
 public class ThreadPoolInParallelStream {
     
     @Test
-    public void giveRangeOfInts_whenSumedInParallel_shouldBeEqualToExpectedTotal() throws InterruptedException, ExecutionException {
+    public void giveRangeOfInts_whenSumedInParallel_shouldBeEqualToExpectedTotal() 
+        throws InterruptedException, ExecutionException {
         List<Integer> aList = new ArrayList<>();        
         int lastNum = 1_000_000;    
         int firstNum = 1;
