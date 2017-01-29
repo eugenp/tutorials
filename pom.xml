@@ -185,6 +185,7 @@
         <module>xstream</module>
 
         <module>struts2</module>
+
   </modules>
 
 </project>
