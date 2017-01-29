@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ConcurrentMapPerformanceTest {
@@ -28,6 +27,7 @@ public class ConcurrentMapPerformanceTest {
 
         assertTrue(hashtableAvgRuntime > concurrentHashMapAvgRuntime);
         assertTrue(syncHashMapAvgRuntime > concurrentHashMapAvgRuntime);
+
     }
 
     private long timeElapseForGetPut(Map<String, Object> map) throws InterruptedException {
