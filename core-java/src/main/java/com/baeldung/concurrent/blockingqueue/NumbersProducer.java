@@ -5,8 +5,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class NumbersProducer implements Runnable {
 
-class NumbersProducer implements Runnable {
-
     private final BlockingQueue<Integer> numbersQueue;
     private final int poisonPill;
     private final int poisonPillPerProducer;
