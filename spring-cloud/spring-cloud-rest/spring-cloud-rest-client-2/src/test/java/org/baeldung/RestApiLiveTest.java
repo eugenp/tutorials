@@ -44,8 +44,7 @@ public class RestApiLiveTest {
 
         final Response response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertEquals(review.getContent(), response.jsonPath()
-            .get("content"));
+        assertEquals(review.getContent(), response.jsonPath().get("content"));
     }
 
     @Test
@@ -55,8 +54,7 @@ public class RestApiLiveTest {
 
         final Response response = RestAssured.get(API_URI + "/search/findByBookId?bookId=" + review.getBookId());
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertTrue(response.jsonPath()
-            .getLong("page.totalElements") > 0);
+        assertTrue(response.jsonPath().getLong("page.totalElements") > 0);
     }
 
     @Test
@@ -69,8 +67,7 @@ public class RestApiLiveTest {
     public void whenGetNotExistReviewByBookId_thenNotFound() {
         final Response response = RestAssured.get(API_URI + "/search/findByBookId?bookId=" + randomNumeric(4));
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertTrue(response.jsonPath()
-            .getLong("page.totalElements") == 0);
+        assertTrue(response.jsonPath().getLong("page.totalElements") == 0);
     }
 
     // POST
@@ -78,10 +75,7 @@ public class RestApiLiveTest {
     public void whenCreateNewReview_thenCreated() {
         final BookReview review = createRandomReview();
 
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(review)
-            .post(API_URI);
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(review).post(API_URI);
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
     }
 
@@ -90,10 +84,7 @@ public class RestApiLiveTest {
         final BookReview review = createRandomReview();
         review.setBookId(null);
 
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(review)
-            .post(API_URI);
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(review).post(API_URI);
         assertEquals(HttpStatus.CONFLICT.value(), response.getStatusCode());
     }
 
@@ -105,17 +96,13 @@ public class RestApiLiveTest {
 
         // update
         review.setRating(4);
-        Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(review)
-            .put(location);
+        Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(review).put(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 
         // check if changes saved
         response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertEquals(4, response.jsonPath()
-            .getInt("rating"));
+        assertEquals(4, response.jsonPath().getInt("rating"));
 
     }
 
@@ -151,12 +138,8 @@ public class RestApiLiveTest {
     }
 
     private String createReviewAsUri(BookReview review) {
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(review)
-            .post(API_URI);
-        return response.jsonPath()
-            .get("_links.self.href");
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(review).post(API_URI);
+        return response.jsonPath().get("_links.self.href");
     }
 
 }

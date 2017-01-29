@@ -45,11 +45,7 @@ public class SessionLiveTest {
     @Test
     public void givenAuthorizedUser_whenDeleteSession_thenUnauthorized() {
         // authorize User
-        Response response = RestAssured.given()
-            .auth()
-            .preemptive()
-            .basic("user", "userPass")
-            .get(API_URI);
+        Response response = RestAssured.given().auth().preemptive().basic("user", "userPass").get(API_URI);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         final String sessionCookie = response.getCookie("SESSION");
 
@@ -58,18 +54,14 @@ public class SessionLiveTest {
         assertTrue(redisResult.size() > 0);
 
         // login with cookie
-        response = RestAssured.given()
-            .cookie("SESSION", sessionCookie)
-            .get(API_URI);
+        response = RestAssured.given().cookie("SESSION", sessionCookie).get(API_URI);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 
         // empty redis
         jedis.flushAll();
 
         // login with cookie again
-        response = RestAssured.given()
-            .cookie("SESSION", sessionCookie)
-            .get(API_URI);
+        response = RestAssured.given().cookie("SESSION", sessionCookie).get(API_URI);
         assertEquals(HttpStatus.UNAUTHORIZED.value(), response.getStatusCode());
     }
 }

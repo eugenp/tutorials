@@ -113,15 +113,7 @@ public class BookReview {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("BookReview [id=")
-            .append(id)
-            .append(", content=")
-            .append(content)
-            .append(", rating=")
-            .append(rating)
-            .append(", bookId=")
-            .append(bookId)
-            .append("]");
+        builder.append("BookReview [id=").append(id).append(", content=").append(content).append(", rating=").append(rating).append(", bookId=").append(bookId).append("]");
         return builder.toString();
     }
 

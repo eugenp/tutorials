@@ -104,13 +104,7 @@ public class Book {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Book [id=")
-            .append(id)
-            .append(", title=")
-            .append(title)
-            .append(", author=")
-            .append(author)
-            .append("]");
+        builder.append("Book [id=").append(id).append(", title=").append(title).append(", author=").append(author).append("]");
         return builder.toString();
     }
 

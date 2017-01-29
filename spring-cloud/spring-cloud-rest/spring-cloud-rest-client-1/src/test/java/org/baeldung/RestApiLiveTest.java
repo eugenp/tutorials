@@ -44,8 +44,7 @@ public class RestApiLiveTest {
 
         final Response response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertEquals(book.getTitle(), response.jsonPath()
-            .get("title"));
+        assertEquals(book.getTitle(), response.jsonPath().get("title"));
     }
 
     @Test
@@ -55,8 +54,7 @@ public class RestApiLiveTest {
 
         final Response response = RestAssured.get(API_URI + "/search/findByTitle?title=" + book.getTitle());
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertTrue(response.jsonPath()
-            .getLong("page.totalElements") > 0);
+        assertTrue(response.jsonPath().getLong("page.totalElements") > 0);
     }
 
     @Test
@@ -69,8 +67,7 @@ public class RestApiLiveTest {
     public void whenGetNotExistBookByName_thenNotFound() {
         final Response response = RestAssured.get(API_URI + "/search/findByTitle?title=" + randomAlphabetic(20));
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertTrue(response.jsonPath()
-            .getLong("page.totalElements") == 0);
+        assertTrue(response.jsonPath().getLong("page.totalElements") == 0);
     }
 
     // POST
@@ -78,10 +75,7 @@ public class RestApiLiveTest {
     public void whenCreateNewBook_thenCreated() {
         final Book book = createRandomBook();
 
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_URI);
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(book).post(API_URI);
         assertEquals(HttpStatus.CREATED.value(), response.getStatusCode());
     }
 
@@ -91,10 +85,7 @@ public class RestApiLiveTest {
         createBookAsUri(book);
 
         // duplicate
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_URI);
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(book).post(API_URI);
         assertEquals(HttpStatus.CONFLICT.value(), response.getStatusCode());
     }
 
@@ -103,10 +94,7 @@ public class RestApiLiveTest {
         final Book book = createRandomBook();
         book.setAuthor(null);
 
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_URI);
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(book).post(API_URI);
         assertEquals(HttpStatus.CONFLICT.value(), response.getStatusCode());
     }
 
@@ -118,17 +106,13 @@ public class RestApiLiveTest {
 
         // update
         book.setAuthor("newAuthor");
-        Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .put(location);
+        Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(book).put(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
 
         // check if changes saved
         response = RestAssured.get(location);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-        assertEquals("newAuthor", response.jsonPath()
-            .get("author"));
+        assertEquals("newAuthor", response.jsonPath().get("author"));
 
     }
 
@@ -163,12 +147,8 @@ public class RestApiLiveTest {
     }
 
     private String createBookAsUri(Book book) {
-        final Response response = RestAssured.given()
-            .contentType(MediaType.APPLICATION_JSON_VALUE)
-            .body(book)
-            .post(API_URI);
-        return response.jsonPath()
-            .get("_links.self.href");
+        final Response response = RestAssured.given().contentType(MediaType.APPLICATION_JSON_VALUE).body(book).post(API_URI);
+        return response.jsonPath().get("_links.self.href");
     }
 
 }
