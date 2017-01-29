@@ -1,6 +1,7 @@
 package org.baeldung.java.streams;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,27 +10,28 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.stream.Stream;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ThreadPoolInParallelStream {
-    Integer total = 1784293664;
-    Logger log = LoggerFactory.getLogger(ThreadPoolInParallelStream.class);
     
     @Test
-    public void givenListOfInteger_calculateSumOfIntegers() throws InterruptedException, ExecutionException {
+    public void giveRangeOfInts_whenSumedInParallel_shouldBeEqualToExpectedTotal() throws InterruptedException, ExecutionException {
         List<Integer> aList = new ArrayList<>();        
-        int listSize = 1_000_000;        
-        for(int i = 1; i <= listSize; i++){
+        int lastNum = 1_000_000;    
+        int firstNum = 1;
+        
+        int expectedTotal = (lastNum - firstNum  + 1) * (firstNum  + lastNum ) / 2;
+        
+        for(int i = firstNum; i <= lastNum; i++){
             aList.add(i);
-        }        
-        ForkJoinPool customThreadPool = new ForkJoinPool(5);
-        Integer sum = customThreadPool.submit(() -> aList.parallelStream().reduce(
+        } 
+        
+        ForkJoinPool customThreadPool = new ForkJoinPool(4);
+        int actualTotal = customThreadPool.submit(() -> aList.parallelStream().reduce(
             0, (x, y) -> { 
                 return x + y;
             })).get();
         
-        assertEquals(total, sum);
+        assertEquals(expectedTotal, actualTotal);
     }
     
     @Test
