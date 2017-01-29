@@ -1,6 +1,5 @@
 package com.baeldung.java8;
 
-
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -28,11 +27,7 @@ public class Java8FindAnyFindFirstTest {
     @Test
     public void createParallelStream_whenFindAnyResultIsPresent_thenCorrect() throws Exception {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-        Optional<Integer> result = list
-                .stream()
-                .parallel()
-                .filter(num -> num < 4)
-                .findAny();
+        Optional<Integer> result = list.stream().parallel().filter(num -> num < 4).findAny();
 
         assertTrue(result.isPresent());
         assertThat(result.get(), anyOf(is(1), is(2), is(3)));
