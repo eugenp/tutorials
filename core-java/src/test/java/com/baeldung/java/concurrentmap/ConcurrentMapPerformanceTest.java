@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ConcurrentMapPerformanceTest {
@@ -24,10 +23,10 @@ public class ConcurrentMapPerformanceTest {
         long syncHashMapAvgRuntime = timeElapseForGetPut(synchronizedHashMap);
         long concurrentHashMapAvgRuntime = timeElapseForGetPut(concurrentHashMap);
 
+        System.out.println(String.format("Hashtable: %s, syncHashMap: %s, ConcurrentHashMap: %s", hashtableAvgRuntime, syncHashMapAvgRuntime, concurrentHashMapAvgRuntime));
+
         assertTrue(hashtableAvgRuntime > concurrentHashMapAvgRuntime);
         assertTrue(syncHashMapAvgRuntime > concurrentHashMapAvgRuntime);
-
-        System.out.println(String.format("Hashtable: %s, syncHashMap: %s, ConcurrentHashMap: %s", hashtableAvgRuntime, syncHashMapAvgRuntime, concurrentHashMapAvgRuntime));
 
     }
 
@@ -90,7 +89,7 @@ public class ConcurrentMapPerformanceTest {
 
         long mapOfDefaultHashDuration = System.currentTimeMillis() - defaultHashStartTime;
         assertEquals(executeTimes * 2, mapOfDefaultHash.size());
-        assertNotEquals(executeTimes * 2, mapOfSameHash.size());
+        assertEquals(executeTimes * 2, mapOfSameHash.size());
         System.out.println(String.format("same-hash: %s, default-hash: %s", mapOfSameHashDuration, mapOfDefaultHashDuration));
         assertTrue("same hashCode() should greatly degrade performance", mapOfSameHashDuration > mapOfDefaultHashDuration * 10);
     }
