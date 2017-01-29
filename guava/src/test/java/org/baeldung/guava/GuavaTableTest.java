@@ -1,6 +1,6 @@
 package org.baeldung.guava;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,8 +25,8 @@ public class GuavaTableTest {
         final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
         final Integer seatCountForNoEntry = universityCourseSeatTable.get("Oxford University", "IT");
 
-        assertEquals(60, seatCount);
-        assertNull(seatCountForNoEntry);
+        assertThat(seatCount).isEqualTo(60);
+        assertThat(seatCountForNoEntry).isEqualTo(null);
     }
 
     @Test
@@ -43,11 +43,11 @@ public class GuavaTableTest {
         final boolean universityIsPresent = universityCourseSeatTable.containsRow("Mumbai University");
         final boolean seatCountIsPresent = universityCourseSeatTable.containsValue(60);
 
-        assertTrue(entryIsPresent);
-        assertFalse(entryIsAbsent);
-        assertTrue(courseIsPresent);
-        assertTrue(universityIsPresent);
-        assertTrue(seatCountIsPresent);
+        assertThat(entryIsPresent).isEqualTo(true);
+        assertThat(entryIsAbsent).isEqualTo(false);
+        assertThat(courseIsPresent).isEqualTo(true);
+        assertThat(universityIsPresent).isEqualTo(true);
+        assertThat(seatCountIsPresent).isEqualTo(true);
     }
 
     @Test
@@ -58,8 +58,8 @@ public class GuavaTableTest {
 
         final int seatCount = universityCourseSeatTable.remove("Mumbai University", "IT");
 
-        assertEquals(60, seatCount);
-        assertNull(universityCourseSeatTable.remove("Mumbai University", "IT"));
+        assertThat(seatCount).isEqualTo(60);
+        assertThat(universityCourseSeatTable.remove("Mumbai University", "IT")).isEqualTo(null);
     }
 
     @Test
@@ -72,9 +72,9 @@ public class GuavaTableTest {
 
         final Map<String, Integer> universitySeatMap = universityCourseSeatTable.column("IT");
 
-        assertEquals(2, universitySeatMap.size());
-        assertEquals(60, universitySeatMap.get("Mumbai University").intValue());
-        assertEquals(120, universitySeatMap.get("Harvard University").intValue());
+        assertThat(universitySeatMap).hasSize(2);
+        assertThat(universitySeatMap.get("Mumbai University")).isEqualTo(60);
+        assertThat(universitySeatMap.get("Harvard University")).isEqualTo(120);
     }
 
     @Test
@@ -87,10 +87,10 @@ public class GuavaTableTest {
 
         final Map<String, Map<String, Integer>> courseKeyUniversitySeatMap = universityCourseSeatTable.columnMap();
 
-        assertEquals(3, courseKeyUniversitySeatMap.size());
-        assertEquals(2, courseKeyUniversitySeatMap.get("IT").size());
-        assertEquals(1, courseKeyUniversitySeatMap.get("Electrical").size());
-        assertEquals(1, courseKeyUniversitySeatMap.get("Chemical").size());
+        assertThat(courseKeyUniversitySeatMap).hasSize(3);
+        assertThat(courseKeyUniversitySeatMap.get("IT")).hasSize(2);
+        assertThat(courseKeyUniversitySeatMap.get("Electrical")).hasSize(1);
+        assertThat(courseKeyUniversitySeatMap.get("Chemical")).hasSize(1);
     }
 
     @Test
@@ -103,9 +103,9 @@ public class GuavaTableTest {
 
         final Map<String, Integer> courseSeatMap = universityCourseSeatTable.row("Mumbai University");
 
-        assertEquals(2, courseSeatMap.size());
-        assertEquals(60, courseSeatMap.get("IT").intValue());
-        assertEquals(120, courseSeatMap.get("Chemical").intValue());
+        assertThat(courseSeatMap).hasSize(2);
+        assertThat(courseSeatMap.get("IT")).isEqualTo(60);
+        assertThat(courseSeatMap.get("Chemical")).isEqualTo(120);
     }
 
     @Test
@@ -118,7 +118,7 @@ public class GuavaTableTest {
 
         final Set<String> universitySet = universityCourseSeatTable.rowKeySet();
 
-        assertEquals(2, universitySet.size());
+        assertThat(universitySet).hasSize(2);
     }
 
     @Test
@@ -131,7 +131,7 @@ public class GuavaTableTest {
 
         final Set<String> courseSet = universityCourseSeatTable.columnKeySet();
 
-        assertEquals(3, courseSet.size());
+        assertThat(courseSet).hasSize(3);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class GuavaTableTest {
 
         final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
 
-        assertEquals(60, seatCount);
+        assertThat(seatCount).isEqualTo(60);
     }
 
     @Test
@@ -154,7 +154,7 @@ public class GuavaTableTest {
 
         final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
 
-        assertEquals(60, seatCount);
+        assertThat(seatCount).isEqualTo(60);
     }
 
     @Test
@@ -169,6 +169,6 @@ public class GuavaTableTest {
 
         final int seatCount = universityCourseSeatTable.get("Mumbai University", "IT");
 
-        assertEquals(60, seatCount);
+        assertThat(seatCount).isEqualTo(60);
     }
 }
