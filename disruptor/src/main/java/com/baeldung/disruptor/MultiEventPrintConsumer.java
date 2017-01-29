@@ -8,7 +8,7 @@ import com.lmax.disruptor.EventHandler;
 public class MultiEventPrintConsumer implements EventConsumer {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    
+
     @Override
     @SuppressWarnings("unchecked")
     public EventHandler<ValueEvent>[] getEventHandler() {
