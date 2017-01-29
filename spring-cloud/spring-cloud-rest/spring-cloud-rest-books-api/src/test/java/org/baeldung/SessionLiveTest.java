@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { SpringCloudRestClientApplication.class, SessionConfig.class }, webEnvironment = WebEnvironment.DEFINED_PORT)
+@SpringBootTest(classes = { BooksApiApplication.class, SessionConfig.class }, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class SessionLiveTest {
 
     private Jedis jedis;

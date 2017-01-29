@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.baeldung</groupId>
-	<artifactId>spring-cloud-rest-client-1</artifactId>
+	<artifactId>spring-cloud-rest-books-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-cloud-rest-client-1</name>
-	<description>Client Service for books</description>
+	<name>spring-cloud-rest-books-api</name>
+	<description>Simple books API</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
