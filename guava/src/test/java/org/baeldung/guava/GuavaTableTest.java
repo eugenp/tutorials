@@ -149,7 +149,12 @@ public class GuavaTableTest {
 
     @Test
     public void givenImmutableTable_whenGet_returnsSuccessfully() {
-        final Table<String, String, Integer> universityCourseSeatTable = ImmutableTable.<String, String, Integer> builder().put("Mumbai", "Chemical", 120).put("Mumbai", "IT", 60).put("Harvard", "Electrical", 60).put("Harvard", "IT", 120).build();
+        final Table<String, String, Integer> universityCourseSeatTable = ImmutableTable.<String, String, Integer> builder()
+            .put("Mumbai", "Chemical", 120)
+            .put("Mumbai", "IT", 60)
+            .put("Harvard", "Electrical", 60)
+            .put("Harvard", "IT", 120)
+            .build();
 
         final int seatCount = universityCourseSeatTable.get("Mumbai", "IT");
 
