@@ -49,7 +49,7 @@ public class RestApiLiveTest {
     }
 
     @Test
-    public void whenGetCreatedReviewByName_thenOK() {
+    public void whenGetCreatedReviewByBookId_thenOK() {
         final BookReview review = createRandomReview();
         createReviewAsUri(review);
 
@@ -66,7 +66,7 @@ public class RestApiLiveTest {
     }
 
     @Test
-    public void whenGetNotExistReviewByName_thenNotFound() {
+    public void whenGetNotExistReviewByBookId_thenNotFound() {
         final Response response = RestAssured.get(API_URI + "/search/findByBookId?bookId=" + randomNumeric(4));
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         assertTrue(response.jsonPath()
@@ -86,7 +86,7 @@ public class RestApiLiveTest {
     }
 
     @Test
-    public void whenInvalidReview_thenError() {
+    public void whenCreateInvalidReview_thenError() {
         final BookReview review = createRandomReview();
         review.setBookId(null);
 
