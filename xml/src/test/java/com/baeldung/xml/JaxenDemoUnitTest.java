@@ -10,13 +10,13 @@ import org.junit.Test;
 
 public class JaxenDemoUnitTest {
 
-	final String fileName = "src/test/resources/example.xml";
-	
-	JaxenDemo jaxenDemo;
-	
-	@Test
+    final String fileName = "src/test/resources/example.xml";
+
+    JaxenDemo jaxenDemo;
+
+    @Test
     public void getFirstLevelNodeListTest() {
-		jaxenDemo = new JaxenDemo(new File(fileName));
+        jaxenDemo = new JaxenDemo(new File(fileName));
         List<?> list = jaxenDemo.getAllTutorial();
 
         assertNotNull(list);

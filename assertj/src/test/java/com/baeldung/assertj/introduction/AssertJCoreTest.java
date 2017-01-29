@@ -38,8 +38,7 @@ public class AssertJCoreTest {
     public void whenCheckingForElement_thenContains() throws Exception {
         List<String> list = Arrays.asList("1", "2", "3");
 
-        assertThat(list)
-                .contains("1");
+        assertThat(list).contains("1");
     }
 
     @Test
@@ -50,12 +49,7 @@ public class AssertJCoreTest {
         assertThat(list).startsWith("1");
         assertThat(list).doesNotContainNull();
 
-        assertThat(list)
-                .isNotEmpty()
-                .contains("1")
-                .startsWith("1")
-                .doesNotContainNull()
-                .containsSequence("2", "3");
+        assertThat(list).isNotEmpty().contains("1").startsWith("1").doesNotContainNull().containsSequence("2", "3");
     }
 
     @Test
@@ -67,11 +61,7 @@ public class AssertJCoreTest {
     public void whenCheckingCharacter_thenIsUnicode() throws Exception {
         char someCharacter = 'c';
 
-        assertThat(someCharacter)
-                .isNotEqualTo('a')
-                .inUnicode()
-                .isGreaterThanOrEqualTo('b')
-                .isLowerCase();
+        assertThat(someCharacter).isNotEqualTo('a').inUnicode().isGreaterThanOrEqualTo('b').isLowerCase();
     }
 
     @Test
@@ -94,11 +84,7 @@ public class AssertJCoreTest {
         final File someFile = File.createTempFile("aaa", "bbb");
         someFile.deleteOnExit();
 
-        assertThat(someFile)
-                .exists()
-                .isFile()
-                .canRead()
-                .canWrite();
+        assertThat(someFile).exists().isFile().canRead().canWrite();
     }
 
     @Test
@@ -113,20 +99,14 @@ public class AssertJCoreTest {
     public void whenGivenMap_then() throws Exception {
         Map<Integer, String> map = Maps.newHashMap(2, "a");
 
-        assertThat(map)
-                .isNotEmpty()
-                .containsKey(2)
-                .doesNotContainKeys(10)
-                .contains(entry(2, "a"));
+        assertThat(map).isNotEmpty().containsKey(2).doesNotContainKeys(10).contains(entry(2, "a"));
     }
 
     @Test
     public void whenGivenException_then() throws Exception {
         Exception ex = new Exception("abc");
 
-        assertThat(ex)
-                .hasNoCause()
-                .hasMessageEndingWith("c");
+        assertThat(ex).hasNoCause().hasMessageEndingWith("c");
     }
 
     @Ignore // IN ORDER TO TEST, REMOVE THIS LINE
@@ -134,8 +114,6 @@ public class AssertJCoreTest {
     public void whenRunningAssertion_thenDescribed() throws Exception {
         Person person = new Person("Alex", 34);
 
-        assertThat(person.getAge())
-                .as("%s's age should be equal to 100")
-                .isEqualTo(100);
+        assertThat(person.getAge()).as("%s's age should be equal to 100").isEqualTo(100);
     }
 }

@@ -11,7 +11,7 @@ import com.datastax.driver.core.Session;
 public class BookRepository {
 
     private static final String TABLE_NAME = "books";
-    
+
     private static final String TABLE_NAME_BY_TITLE = TABLE_NAME + "ByTitle";
 
     private Session session;
@@ -29,7 +29,7 @@ public class BookRepository {
         final String query = sb.toString();
         session.execute(query);
     }
-    
+
     /**
      * Creates the books table.
      */
@@ -62,7 +62,7 @@ public class BookRepository {
         final String query = sb.toString();
         session.execute(query);
     }
-    
+
     /**
      * Insert a row in the table booksByTitle.
      * @param book
@@ -73,19 +73,15 @@ public class BookRepository {
         final String query = sb.toString();
         session.execute(query);
     }
-    
+
     /**
      * Insert a book into two identical tables using a batch query.
      * 
      * @param book
      */
     public void insertBookBatch(Book book) {
-        StringBuilder sb = new StringBuilder("BEGIN BATCH ")
-                .append("INSERT INTO ").append(TABLE_NAME).append("(id, title, author, subject) ")
-                .append("VALUES (").append(book.getId()).append(", '").append(book.getTitle()).append("', '").append(book.getAuthor()).append("', '")
-                .append(book.getSubject()).append("');")
-                .append("INSERT INTO ").append(TABLE_NAME_BY_TITLE).append("(id, title) ")
-                .append("VALUES (").append(book.getId()).append(", '").append(book.getTitle()).append("');")
+        StringBuilder sb = new StringBuilder("BEGIN BATCH ").append("INSERT INTO ").append(TABLE_NAME).append("(id, title, author, subject) ").append("VALUES (").append(book.getId()).append(", '").append(book.getTitle()).append("', '").append(book.getAuthor())
+                .append("', '").append(book.getSubject()).append("');").append("INSERT INTO ").append(TABLE_NAME_BY_TITLE).append("(id, title) ").append("VALUES (").append(book.getId()).append(", '").append(book.getTitle()).append("');")
                 .append("APPLY BATCH;");
 
         final String query = sb.toString();
@@ -101,7 +97,7 @@ public class BookRepository {
         StringBuilder sb = new StringBuilder("SELECT * FROM ").append(TABLE_NAME_BY_TITLE).append(" WHERE title = '").append(title).append("';");
 
         final String query = sb.toString();
-        
+
         ResultSet rs = session.execute(query);
 
         List<Book> books = new ArrayList<Book>();
@@ -133,7 +129,7 @@ public class BookRepository {
         }
         return books;
     }
-    
+
     /**
      * Select all books from booksByTitle
      * @return

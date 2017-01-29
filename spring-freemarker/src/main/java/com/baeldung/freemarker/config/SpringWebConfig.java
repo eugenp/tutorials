@@ -11,28 +11,28 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan({"com.baeldung.freemarker"})
+@ComponentScan({ "com.baeldung.freemarker" })
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-	}
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
 
-	@Bean 
-	public FreeMarkerViewResolver freemarkerViewResolver() { 
-		FreeMarkerViewResolver resolver = new FreeMarkerViewResolver(); 
-		resolver.setCache(true); 
-		resolver.setPrefix(""); 
-		resolver.setSuffix(".ftl"); 
-		return resolver; 
-	}
+    @Bean
+    public FreeMarkerViewResolver freemarkerViewResolver() {
+        FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(true);
+        resolver.setPrefix("");
+        resolver.setSuffix(".ftl");
+        return resolver;
+    }
 
-	@Bean 
-	public FreeMarkerConfigurer freemarkerConfig() { 
-		FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer(); 
-		freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
-		return freeMarkerConfigurer; 
-	}
+    @Bean
+    public FreeMarkerConfigurer freemarkerConfig() {
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+        return freeMarkerConfigurer;
+    }
 
 }
