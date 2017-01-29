@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.baeldung.persistence.model.MyUser;
+import org.baeldung.user.model.MyUser;
 import org.springframework.stereotype.Repository;
 
 @Repository

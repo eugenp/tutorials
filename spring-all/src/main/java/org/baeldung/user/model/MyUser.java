@@ -1,4 +1,4 @@
-package org.baeldung.persistence.model;
+package org.baeldung.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
