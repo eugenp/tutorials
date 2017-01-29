@@ -18,10 +18,7 @@ public class CountdownLatchExampleTest {
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
-        List<Thread> workers = Stream
-          .generate(() -> new Thread(new Worker(outputScraper, countDownLatch)))
-          .limit(5)
-          .collect(toList());
+        List<Thread> workers = Stream.generate(() -> new Thread(new Worker(outputScraper, countDownLatch))).limit(5).collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -30,15 +27,7 @@ public class CountdownLatchExampleTest {
 
         // Then
         outputScraper.forEach(Object::toString);
-        assertThat(outputScraper)
-          .containsExactly(
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Latch released"
-          );
+        assertThat(outputScraper).containsExactly("Counted down", "Counted down", "Counted down", "Counted down", "Counted down", "Latch released");
     }
 
     @Test
@@ -46,10 +35,7 @@ public class CountdownLatchExampleTest {
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
-        List<Thread> workers = Stream
-          .generate(() -> new Thread(new BrokenWorker(outputScraper, countDownLatch)))
-          .limit(5)
-          .collect(toList());
+        List<Thread> workers = Stream.generate(() -> new Thread(new BrokenWorker(outputScraper, countDownLatch))).limit(5).collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -66,10 +52,7 @@ public class CountdownLatchExampleTest {
         CountDownLatch readyThreadCounter = new CountDownLatch(5);
         CountDownLatch callingThreadBlocker = new CountDownLatch(1);
         CountDownLatch completedThreadCounter = new CountDownLatch(5);
-        List<Thread> workers = Stream
-          .generate(() -> new Thread(new WaitingWorker(outputScraper, readyThreadCounter, callingThreadBlocker, completedThreadCounter)))
-          .limit(5)
-          .collect(toList());
+        List<Thread> workers = Stream.generate(() -> new Thread(new WaitingWorker(outputScraper, readyThreadCounter, callingThreadBlocker, completedThreadCounter))).limit(5).collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -81,16 +64,7 @@ public class CountdownLatchExampleTest {
 
         // Then
         outputScraper.forEach(Object::toString);
-        assertThat(outputScraper)
-          .containsExactly(
-            "Workers ready",
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Counted down",
-            "Workers complete"
-          );
+        assertThat(outputScraper).containsExactly("Workers ready", "Counted down", "Counted down", "Counted down", "Counted down", "Counted down", "Workers complete");
     }
 
 }

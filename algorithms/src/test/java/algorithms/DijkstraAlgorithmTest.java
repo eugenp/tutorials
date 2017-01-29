@@ -55,29 +55,19 @@ public class DijkstraAlgorithmTest {
         for (Node node : graph.getNodes()) {
             switch (node.getName()) {
             case "B":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeB));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeB));
                 break;
             case "C":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeC));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeC));
                 break;
             case "D":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeD));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeD));
                 break;
             case "E":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeE));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeE));
                 break;
             case "F":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeF));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeF));
                 break;
             }
         }

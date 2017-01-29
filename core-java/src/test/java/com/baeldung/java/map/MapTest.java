@@ -201,8 +201,6 @@ public class MapTest {
         assertEquals("val1", rtnVal);
     }
 
-
-
     @Test
     public void whenCallsEqualsOnCollision_thenCorrect() {
         HashMap<MyKey, String> map = new HashMap<>();
@@ -329,7 +327,7 @@ public class MapTest {
         map.put(1, "val");
         map.put(5, "val");
         map.put(4, "val");
-        
+
         Integer highestKey = map.lastKey();
         Integer lowestKey = map.firstKey();
         Set<Integer> keysLessThan3 = map.headMap(3).keySet();
