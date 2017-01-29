@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.blockingqueue;
 
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -11,7 +10,6 @@ public class BlockingQueueUsage {
         int N_CONSUMERS = Runtime.getRuntime().availableProcessors();
         int poisonPill = Integer.MAX_VALUE;
         int poisonPillPerProducer = N_CONSUMERS / N_PRODUCERS;
-
 
         BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(BOUND);
 

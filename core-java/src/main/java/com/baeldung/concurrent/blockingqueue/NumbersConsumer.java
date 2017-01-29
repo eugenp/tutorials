@@ -1,9 +1,8 @@
 package com.baeldung.concurrent.blockingqueue;
 
-
 import java.util.concurrent.BlockingQueue;
 
-class NumbersConsumer implements Runnable {
+public class NumbersConsumer implements Runnable {
     private final BlockingQueue<Integer> queue;
     private final int poisonPill;
 
@@ -21,7 +20,6 @@ class NumbersConsumer implements Runnable {
                 }
                 String result = number.toString();
                 System.out.println(Thread.currentThread().getName() + " result: " + result);
-
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

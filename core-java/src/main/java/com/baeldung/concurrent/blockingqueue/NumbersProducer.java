@@ -1,22 +1,21 @@
 package com.baeldung.concurrent.blockingqueue;
 
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ThreadLocalRandom;
 
+public class NumbersProducer implements Runnable {
 
 class NumbersProducer implements Runnable {
+
     private final BlockingQueue<Integer> numbersQueue;
     private final int poisonPill;
     private final int poisonPillPerProducer;
-
 
     public NumbersProducer(BlockingQueue<Integer> numbersQueue, int poisonPill, int poisonPillPerProducer) {
         this.numbersQueue = numbersQueue;
         this.poisonPill = poisonPill;
         this.poisonPillPerProducer = poisonPillPerProducer;
     }
-
 
     public void run() {
         try {
