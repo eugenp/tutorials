@@ -77,14 +77,14 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         return resolver;
     }
 
-    private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
-        SpringTemplateEngine engine = new SpringTemplateEngine();
-        engine.addDialect(new LayoutDialect(new GroupingStrategy()));
-        engine.addDialect(new Java8TimeDialect());
-        engine.setTemplateResolver(templateResolver);
-        engine.setTemplateEngineMessageSource(messageSource());
-        return engine;
-    }
+	private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
+		SpringTemplateEngine engine = new SpringTemplateEngine();
+		engine.addDialect(new LayoutDialect(new GroupingStrategy()));
+		engine.addDialect(new Java8TimeDialect());
+		engine.setTemplateResolver(templateResolver);
+		engine.setTemplateEngineMessageSource(messageSource());
+		return engine;
+	}
 
     private ITemplateResolver htmlTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
