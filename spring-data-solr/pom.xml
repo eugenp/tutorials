@@ -51,6 +51,11 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+  	<dependency>
+  	    <groupId>org.apache.solr</groupId>
+  	    <artifactId>solr-solrj</artifactId>
+ 	    <version>6.4.0</version>
+  	</dependency>
     </dependencies>
 
     <build>
