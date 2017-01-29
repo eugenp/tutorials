@@ -71,13 +71,13 @@ public class SlopeOne {
 	 *            existing user data and their items' ratings
 	 */
 	private static void predict(Map<User, HashMap<Item, Double>> data) {
-		HashMap<Item, Double> uPred = new HashMap<Item, Double>();
-		HashMap<Item, Integer> uFreq = new HashMap<Item, Integer>();
-		for (Item j : diff.keySet()) {
-			uFreq.put(j, 0);
-			uPred.put(j, 0.0);
-		}
 		for (Entry<User, HashMap<Item, Double>> e : data.entrySet()) {
+			HashMap<Item, Double> uPred = new HashMap<Item, Double>();
+			HashMap<Item, Integer> uFreq = new HashMap<Item, Integer>();
+			for (Item j : diff.keySet()) {
+				uFreq.put(j, 0);
+				uPred.put(j, 0.0);
+			}
 			for (Item j : e.getValue().keySet()) {
 				for (Item k : diff.keySet()) {
 					try {
@@ -98,7 +98,7 @@ public class SlopeOne {
 			for (Item j : InputData.items) {
 				if (e.getValue().containsKey(j)) {
 					clean.put(j, e.getValue().get(j));
-				} else {
+				} else if (!clean.containsKey(j)) {
 					clean.put(j, -1.0);
 				}
 			}
