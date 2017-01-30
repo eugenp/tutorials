@@ -12,6 +12,7 @@ import java.io.InputStream;
 import org.springframework.stereotype.Service;
 import jxl.write.*;
 import java.util.Date;
+import jxl.write.Number;
 
 @Service
 public class JExcelHelper {
@@ -46,20 +47,31 @@ public class JExcelHelper {
 
             WritableSheet sheet = workbook.createSheet("Sheet 1", 0);
 
-            WritableCellFormat cellFormat = new WritableCellFormat();
+            WritableCellFormat headerFormat = new WritableCellFormat();
             WritableFont font = new WritableFont(WritableFont.ARIAL, 16, WritableFont.BOLD);
-            cellFormat.setFont(font);
-            cellFormat.setBackground(Colour.YELLOW);
-            cellFormat.setWrap(true);
-            Label dateLabel = new Label(0, 0, "Today is", cellFormat);
-            sheet.setColumnView(0, 20);
-            sheet.addCell(dateLabel);
+            headerFormat.setFont(font);
+            headerFormat.setBackground(Colour.LIGHT_BLUE);
+            headerFormat.setWrap(true);
+            Label headerLabel = new Label(0, 0, "Name", headerFormat);
+            sheet.setColumnView(0, 60);
+            sheet.addCell(headerLabel);
 
-            WritableCellFormat dateFormat = new WritableCellFormat(DateFormats.FORMAT1);
-            dateFormat.setWrap(true);
-            DateTime dateTime = new DateTime(1, 0, new Date(), dateFormat);
-            sheet.setColumnView(0, 20);
-            sheet.addCell(dateTime);
+            headerLabel = new Label(1, 0, "Age", headerFormat);
+            sheet.setColumnView(0, 40);
+            sheet.addCell(headerLabel);
+
+            WritableCellFormat cellFormat = new WritableCellFormat();
+            cellFormat.setWrap(true);
+
+            Label cellLabel = new Label(0, 2, "John Smith", cellFormat);
+            sheet.addCell(cellLabel);
+            Number cellNumber = new Number(1, 2, 20, cellFormat);
+            sheet.addCell(cellNumber);
+
+            cellLabel = new Label(0, 3, "Ana Johnson", cellFormat);
+            sheet.addCell(cellLabel);
+            cellNumber = new Number(1, 3, 30, cellFormat);
+            sheet.addCell(cellNumber);
 
             workbook.write();
         } finally {

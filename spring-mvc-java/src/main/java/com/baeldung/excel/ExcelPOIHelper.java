@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.ss.usermodel.DateUtil;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -70,15 +71,21 @@ public class ExcelPOIHelper {
 
         try {
             Sheet sheet = workbook.createSheet("Persons");
-            sheet.setColumnWidth(0, 4000);
-            sheet.setColumnWidth(1, 6000);
+            sheet.setColumnWidth(0, 6000);
+            sheet.setColumnWidth(1, 4000);
 
             Row header = sheet.createRow(0);
 
             CellStyle headerStyle = workbook.createCellStyle();
 
-            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_CORNFLOWER_BLUE.getIndex());
+            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
             headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+
+            XSSFFont font = ((XSSFWorkbook) workbook).createFont();
+            font.setFontName("Arial");
+            font.setFontHeightInPoints((short) 16);
+            font.setBold(true);
+            headerStyle.setFont(font);
 
             Cell headerCell = header.createCell(0);
             headerCell.setCellValue("Name");
