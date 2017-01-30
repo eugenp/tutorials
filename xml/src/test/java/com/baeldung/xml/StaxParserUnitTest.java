@@ -12,17 +12,17 @@ import com.baeldung.xml.binding.Tutorial;
 
 public class StaxParserUnitTest {
 
-	final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example.xml";
 
-	StaxParser parser;
-	
-	@Test
-	public void getAllTutorialsTest(){
-		parser = new StaxParser(new File(fileName));
-		List<Tutorial> tutorials = parser.getAllTutorial();
-		
-		assertNotNull(tutorials);
-		assertTrue(tutorials.size() == 4);
-		assertTrue(tutorials.get(0).getType().equalsIgnoreCase("java"));
-	}
+    StaxParser parser;
+
+    @Test
+    public void getAllTutorialsTest() {
+        parser = new StaxParser(new File(fileName));
+        List<Tutorial> tutorials = parser.getAllTutorial();
+
+        assertNotNull(tutorials);
+        assertTrue(tutorials.size() == 4);
+        assertTrue(tutorials.get(0).getType().equalsIgnoreCase("java"));
+    }
 }

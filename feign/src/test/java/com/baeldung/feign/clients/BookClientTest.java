@@ -31,9 +31,7 @@ public class BookClientTest {
 
     @Test
     public void givenBookClient_shouldRunSuccessfully() throws Exception {
-        List<Book> books = bookClient.findAll().stream()
-          .map(BookResource::getBook)
-          .collect(Collectors.toList());
+        List<Book> books = bookClient.findAll().stream().map(BookResource::getBook).collect(Collectors.toList());
         assertTrue(books.size() > 2);
         log.info("{}", books);
     }

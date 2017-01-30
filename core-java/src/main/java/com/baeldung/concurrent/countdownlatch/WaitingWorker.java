@@ -10,10 +10,7 @@ public class WaitingWorker implements Runnable {
     private final CountDownLatch callingThreadBlocker;
     private final CountDownLatch completedThreadCounter;
 
-    public WaitingWorker(final List<String> outputScraper,
-                         final CountDownLatch readyThreadCounter,
-                         final CountDownLatch callingThreadBlocker,
-                         CountDownLatch completedThreadCounter) {
+    public WaitingWorker(final List<String> outputScraper, final CountDownLatch readyThreadCounter, final CountDownLatch callingThreadBlocker, CountDownLatch completedThreadCounter) {
 
         this.outputScraper = outputScraper;
         this.readyThreadCounter = readyThreadCounter;

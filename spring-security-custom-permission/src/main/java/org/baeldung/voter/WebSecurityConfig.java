@@ -24,10 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // @formatter: off
-        auth.inMemoryAuthentication()
-                .withUser("user").password("pass").roles("USER")
-                .and()
-                .withUser("admin").password("pass").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER").and().withUser("admin").password("pass").roles("ADMIN");
         // @formatter: on
     }
 
@@ -36,33 +33,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // @formatter: off
         http
                 // needed so our login could work
-                .csrf()
-                  .disable()
-                .authorizeRequests()
-                .anyRequest()
-                  .authenticated()
-                  .accessDecisionManager(accessDecisionManager())
-                .antMatchers("/").hasAnyRole("ROLE_ADMIN", "ROLE_USER")
-                .and()
-                .formLogin()
-                  .permitAll()
-                .and()
-                .logout()
-                  .permitAll()
-                  .deleteCookies("JSESSIONID")
-                  .logoutSuccessUrl("/login");
+                .csrf().disable().authorizeRequests().anyRequest().authenticated().accessDecisionManager(accessDecisionManager()).antMatchers("/").hasAnyRole("ROLE_ADMIN", "ROLE_USER").and().formLogin().permitAll().and().logout().permitAll()
+                .deleteCookies("JSESSIONID").logoutSuccessUrl("/login");
         // @formatter: on
     }
 
     @Bean
     public AccessDecisionManager accessDecisionManager() {
         // @formatter: off
-        List<AccessDecisionVoter<? extends Object>> decisionVoters =
-                Arrays.asList(
-                        new WebExpressionVoter(),
-                        new RoleVoter(),
-                        new AuthenticatedVoter(),
-                        new MinuteBasedVoter());
+        List<AccessDecisionVoter<? extends Object>> decisionVoters = Arrays.asList(new WebExpressionVoter(), new RoleVoter(), new AuthenticatedVoter(), new MinuteBasedVoter());
         // @formatter: on
         return new UnanimousBased(decisionVoters);
     }

@@ -7,9 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.baeldung.hibernate.model.Cart;
-import com.baeldung.hibernate.model.Items;
-import com.baeldung.hibernate.config.HibernateAnnotationUtil;
+import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
+import com.baeldung.hibernate.oneToMany.model.Cart;
+import com.baeldung.hibernate.oneToMany.model.Items;
 
 public class HibernateOneToManyAnnotationMain {
 
