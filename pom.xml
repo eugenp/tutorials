@@ -102,6 +102,7 @@
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
         <module>spring-batch</module>
+        <module>spring-bean-injection</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
