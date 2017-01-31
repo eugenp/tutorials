@@ -17,16 +17,11 @@ public class StreamFeaturesTest {
     public static class TakeAndDropWhileTest {
 
         public Stream<String> getStreamAfterTakeWhileOperation() {
-            return Stream
-                    .iterate("", s -> s + "s")
-                    .takeWhile(s -> s.length() < 10);
+            return Stream.iterate("", s -> s + "s").takeWhile(s -> s.length() < 10);
         }
 
         public Stream<String> getStreamAfterDropWhileOperation() {
-            return Stream
-                    .iterate("", s -> s + "s")
-                    .takeWhile(s -> s.length() < 10)
-                    .dropWhile(s -> !s.contains("sssss"));
+            return Stream.iterate("", s -> s + "s").takeWhile(s -> s.length() < 10).dropWhile(s -> !s.contains("sssss"));
         }
 
         @Test
@@ -72,25 +67,25 @@ public class StreamFeaturesTest {
 
     }
 
-    public  static class OfNullableTest {
+    public static class OfNullableTest {
 
         private List<String> collection = Arrays.asList("A", "B", "C");
-        private Map<String, Integer> map = new HashMap<>() {{
-           put("A", 10);
-           put("C", 30);
-        }};
+        private Map<String, Integer> map = new HashMap<>() {
+            {
+                put("A", 10);
+                put("C", 30);
+            }
+        };
 
         private Stream<Integer> getStreamWithOfNullable() {
-            return collection.stream()
-                    .flatMap(s -> Stream.ofNullable(map.get(s)));
+            return collection.stream().flatMap(s -> Stream.ofNullable(map.get(s)));
         }
 
         private Stream<Integer> getStream() {
-            return collection.stream()
-                            .flatMap(s -> {
-                                Integer temp = map.get(s);
-                                return temp != null ? Stream.of(temp) : Stream.empty();
-                            });
+            return collection.stream().flatMap(s -> {
+                Integer temp = map.get(s);
+                return temp != null ? Stream.of(temp) : Stream.empty();
+            });
         }
 
         private List<Integer> testOfNullableFrom(Stream<Integer> stream) {
@@ -107,10 +102,7 @@ public class StreamFeaturesTest {
         @Test
         public void testOfNullable() {
 
-            assertEquals(
-                    testOfNullableFrom(getStream()),
-                    testOfNullableFrom(getStreamWithOfNullable())
-            );
+            assertEquals(testOfNullableFrom(getStream()), testOfNullableFrom(getStreamWithOfNullable()));
 
         }
 
