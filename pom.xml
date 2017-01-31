@@ -95,6 +95,7 @@
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
+        <module>solr-fulltext-search</module>
         <module>spark-java</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
