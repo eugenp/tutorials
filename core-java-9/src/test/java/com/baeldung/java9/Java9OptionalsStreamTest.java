@@ -19,10 +19,7 @@ public class Java9OptionalsStreamTest {
     public void filterOutPresentOptionalsWithFilter() {
         assertEquals(4, listOfOptionals.size());
 
-        List<String> filteredList = listOfOptionals.stream()
-          .filter(Optional::isPresent)
-          .map(Optional::get)
-          .collect(Collectors.toList());
+        List<String> filteredList = listOfOptionals.stream().filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
 
         assertEquals(2, filteredList.size());
         assertEquals("foo", filteredList.get(0));
@@ -33,9 +30,7 @@ public class Java9OptionalsStreamTest {
     public void filterOutPresentOptionalsWithFlatMap() {
         assertEquals(4, listOfOptionals.size());
 
-        List<String> filteredList = listOfOptionals.stream()
-          .flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty())
-          .collect(Collectors.toList());
+        List<String> filteredList = listOfOptionals.stream().flatMap(o -> o.isPresent() ? Stream.of(o.get()) : Stream.empty()).collect(Collectors.toList());
         assertEquals(2, filteredList.size());
 
         assertEquals("foo", filteredList.get(0));
@@ -46,9 +41,7 @@ public class Java9OptionalsStreamTest {
     public void filterOutPresentOptionalsWithFlatMap2() {
         assertEquals(4, listOfOptionals.size());
 
-        List<String> filteredList = listOfOptionals.stream()
-          .flatMap(o -> o.map(Stream::of).orElseGet(Stream::empty))
-          .collect(Collectors.toList());
+        List<String> filteredList = listOfOptionals.stream().flatMap(o -> o.map(Stream::of).orElseGet(Stream::empty)).collect(Collectors.toList());
         assertEquals(2, filteredList.size());
 
         assertEquals("foo", filteredList.get(0));
@@ -59,9 +52,7 @@ public class Java9OptionalsStreamTest {
     public void filterOutPresentOptionalsWithJava9() {
         assertEquals(4, listOfOptionals.size());
 
-        List<String> filteredList = listOfOptionals.stream()
-          .flatMap(Optional::stream)
-          .collect(Collectors.toList());
+        List<String> filteredList = listOfOptionals.stream().flatMap(Optional::stream).collect(Collectors.toList());
 
         assertEquals(2, filteredList.size());
         assertEquals("foo", filteredList.get(0));

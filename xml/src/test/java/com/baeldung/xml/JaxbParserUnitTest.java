@@ -11,34 +11,32 @@ import com.baeldung.xml.binding.Tutorials;
 
 public class JaxbParserUnitTest {
 
-	
-	final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example.xml";
 
-	JaxbParser parser;
-	
-	@Test
-	public void getFullDocumentTest(){
-		parser = new JaxbParser(new File(fileName));
-		Tutorials tutorials = parser.getFullDocument();
+    JaxbParser parser;
 
-		assertNotNull(tutorials);
-		assertTrue(tutorials.getTutorial().size() == 4);
-		assertTrue(tutorials.getTutorial().get(0).getType().equalsIgnoreCase("java"));
-	}
-	
-	@Test
-	public void createNewDocumentTest(){
-		File newFile = new File("src/test/resources/example_new.xml");
-		parser = new JaxbParser(newFile);
-		parser.createNewDocument();
+    @Test
+    public void getFullDocumentTest() {
+        parser = new JaxbParser(new File(fileName));
+        Tutorials tutorials = parser.getFullDocument();
 
-		
-		assertTrue(newFile.exists());
+        assertNotNull(tutorials);
+        assertTrue(tutorials.getTutorial().size() == 4);
+        assertTrue(tutorials.getTutorial().get(0).getType().equalsIgnoreCase("java"));
+    }
 
-		Tutorials tutorials = parser.getFullDocument();
+    @Test
+    public void createNewDocumentTest() {
+        File newFile = new File("src/test/resources/example_new.xml");
+        parser = new JaxbParser(newFile);
+        parser.createNewDocument();
 
-		assertNotNull(tutorials);
-		assertTrue(tutorials.getTutorial().size() == 1);
-		assertTrue(tutorials.getTutorial().get(0).getTitle().equalsIgnoreCase("XML with Jaxb"));
-	}
+        assertTrue(newFile.exists());
+
+        Tutorials tutorials = parser.getFullDocument();
+
+        assertNotNull(tutorials);
+        assertTrue(tutorials.getTutorial().size() == 1);
+        assertTrue(tutorials.getTutorial().get(0).getTitle().equalsIgnoreCase("XML with Jaxb"));
+    }
 }

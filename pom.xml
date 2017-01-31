@@ -18,8 +18,8 @@
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> 
-        <module>apache-poi</module> 
+        <module>apache-fop</module>
+        <module>apache-poi</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -44,6 +44,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
@@ -68,12 +69,15 @@
         <module>jsoup</module>
         <module>junit5</module>
 
+        <module>kotlin</module>
+
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -91,6 +95,7 @@
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
+        <module>spark-java</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
@@ -117,7 +122,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
-        <module>spring-jersey</module>		
+        <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -171,12 +176,16 @@
 
         <module>testing</module>
 
+        <module>video-tutorials</module>
+
         <module>wicket</module>
 
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    <module>java-mongodb</module>
+
+        <module>struts2</module>
+
   </modules>
 
 </project>
