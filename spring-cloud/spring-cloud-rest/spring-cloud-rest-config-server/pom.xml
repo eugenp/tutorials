@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.baeldung</groupId>
-	<artifactId>spring-cloud-rest-server</artifactId>
+	<artifactId>spring-cloud-rest-config-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-cloud-rest-server</name>
-	<description>Spring Cloud REST server</description>
+	<name>spring-cloud-rest-config-server</name>
+	<description>Spring Cloud REST configuration server</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,25 +28,17 @@
 	<dependencies>
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-config</artifactId>
+		    <artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-eureka-server</artifactId>
-		</dependency>
-		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+        </dependency>
+        <dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<dependency>
-		    <groupId>org.springframework.session</groupId>
-		    <artifactId>spring-session</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		
+        
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
