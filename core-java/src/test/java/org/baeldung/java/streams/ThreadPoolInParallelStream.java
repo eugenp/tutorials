@@ -16,19 +16,19 @@ public class ThreadPoolInParallelStream {
     @Test
     public void giveRangeOfInts_whenSumedInParallel_shouldBeEqualToExpectedTotal() 
         throws InterruptedException, ExecutionException {
-        List<Integer> aList = new ArrayList<>();        
-        int lastNum = 1_000_000;    
-        int firstNum = 1;
+        List<Long> aList = new ArrayList<>();        
+        long lastNum = 1_000_000;    
+        long firstNum = 1;
         
-        int expectedTotal = (lastNum - firstNum  + 1) * (firstNum  + lastNum ) / 2;
+        long expectedTotal = (lastNum + firstNum) * lastNum / 2;
         
-        for(int i = firstNum; i <= lastNum; i++){
+        for(long i = firstNum; i <= lastNum; i++){
             aList.add(i);
         } 
         
         ForkJoinPool customThreadPool = new ForkJoinPool(4);
-        int actualTotal = customThreadPool.submit(() -> aList.parallelStream().reduce(
-            0, (x, y) -> { 
+        long actualTotal = customThreadPool.submit(() -> aList.parallelStream().reduce(
+            0L, (x, y) -> { 
                 return x + y;
             })).get();
         
