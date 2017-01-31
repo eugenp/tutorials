@@ -16,10 +16,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JsonGetterTest {
 
     @Test
-    public void whenSerializingUsingJsonGetter_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonGetter_andNoPropertyNameSet_thenCorrect() throws JsonProcessingException {
 
         // arrange
-        Author author = new Author("Alex", "Theedom");
+        Author1 author = new Author1("Alex", "Theedom");
+
+        // act
+        String result = new ObjectMapper().writeValueAsString(author);
+
+        // assert
+        assertThat(from(result).getList("items")).isNotNull();
+
+        /*
+            {
+              "firstName": "Alex",
+              "lastName": "Theedom",
+              "items": []
+            }
+        */
+
+    }
+
+
+    @Test
+    public void whenSerializingUsingJsonGetter_andPropertyNameSet_thenCorrect() throws JsonProcessingException {
+
+        // arrange
+        Author2 author = new Author2("Alex", "Theedom");
 
         // act
         String result = new ObjectMapper().writeValueAsString(author);
