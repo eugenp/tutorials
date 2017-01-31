@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ThreadPoolInParallelStream {
     
     @Test
-    public void giveRangeOfInts_whenSumedInParallel_shouldBeEqualToExpectedTotal() 
+    public void giveRangeOfLongs_whenSummedInParallel_shouldBeEqualToExpectedTotal() 
         throws InterruptedException, ExecutionException {
         List<Long> aList = new ArrayList<>();        
         long lastNum = 1_000_000;    
@@ -37,8 +37,8 @@ public class ThreadPoolInParallelStream {
     
     @Test
     public void givenList_whenCallingParallelStream_shouldBeParallelStream(){
-        List<Integer> aList = new ArrayList<>();
-        Stream<Integer> parallelStream = aList.parallelStream();
+        List<Long> aList = new ArrayList<>();
+        Stream<Long> parallelStream = aList.parallelStream();
         
         assertTrue(parallelStream.isParallel());
     }
