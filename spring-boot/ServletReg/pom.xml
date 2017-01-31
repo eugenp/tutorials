@@ -39,12 +39,7 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>9.0.0.M15</version>
         </dependency>
-        <!-- Alternative Embedded EmbeddedTomcatExample Servlet Dependency -->
-        <!-- <dependency>
-             <groupId>org.springframework.boot</groupId>
-             <artifactId>spring-boot-starter-tomcat</artifactId>
-             <scope>provided</scope>
-         </dependency> -->
+
     </dependencies>
     <build>
         <plugins>
@@ -52,29 +47,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- Alternative Embedded EmbeddedTomcatExample Servlet Dependency -->
-            <!--  <plugin>
-                  <groupId>org.codehaus.mojo</groupId>
-                  <artifactId>appassembler-maven-plugin</artifactId>
-                  <version>2.0.0</version>
-                  <configuration>
-                      <assembleDirectory>target</assembleDirectory>
-                      <programs>
-                          <program>
-                              <mainClass>launch.Main</mainClass>
-                              <name>webapp</name>
-                          </program>
-                      </programs>
-                  </configuration>
-                  <executions>
-                      <execution>
-                          <phase>package</phase>
-                          <goals>
-                              <goal>assemble</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-              </plugin> -->
         </plugins>
     </build>
 </project>
