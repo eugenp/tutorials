@@ -3,10 +3,13 @@ package com.baeldung.javaslang.exception.handling;
 import com.baeldung.javaslang.exception.handling.client.ClientException;
 import com.baeldung.javaslang.exception.handling.client.HttpClient;
 import com.baeldung.javaslang.exception.handling.client.Response;
+import javaslang.collection.Stream;
+import javaslang.control.Option;
 import javaslang.control.Try;
 import org.junit.Test;
 
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static javaslang.API.Case;
 import static javaslang.API.Match;
@@ -27,10 +30,13 @@ public class JavaslangTryTest {
         Integer chainedResult = response
                 .map(this::actionThatTakesResponse)
                 .getOrElse(defaultChainedResult);
+        Stream<String> stream = response.toStream().map(it -> it.id);
 
         //then
+        assertTrue(!stream.isEmpty());
         assertTrue(response.isSuccess());
         response.onSuccess(r -> assertEquals(id, r.id));
+        response.andThen(r -> assertEquals(id, r.id));
         assertNotEquals(defaultChainedResult, chainedResult);
     }
 
@@ -47,8 +53,10 @@ public class JavaslangTryTest {
         Integer chainedResult = response
                 .map(this::actionThatTakesResponse)
                 .getOrElse(defaultChainedResult);
+        Option<Response> optionalResponse = response.toOption();
 
         //then
+        assertTrue(optionalResponse.isEmpty());
         assertTrue(response.isFailure());
         response.onFailure(ex -> assertTrue(ex instanceof ClientException));
         assertEquals(defaultChainedResult, chainedResult);
@@ -97,6 +105,10 @@ public class JavaslangTryTest {
 
     public int actionThatTakesResponse(Response response) {
         return response.id.hashCode();
+    }
+
+    public int actionThatTakesTryResponse(Try<Response> response, int defaultTransformation){
+        return response.transform(responses -> response.map(it -> it.id.hashCode()).getOrElse(defaultTransformation));
     }
 
 }
