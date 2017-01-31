@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.bootstrap.resource;
+package com.baeldung.spring.cloud.bootstrap.svcrating;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;

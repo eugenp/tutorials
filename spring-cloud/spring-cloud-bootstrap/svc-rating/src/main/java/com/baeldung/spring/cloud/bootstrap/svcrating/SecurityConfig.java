@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.bootstrap.gateway;
+package com.baeldung.spring.cloud.bootstrap.svcrating;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -12,24 +12,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("user").password("password").roles("USER")
-                .and()
-            .withUser("admin").password("admin").roles("ADMIN");
+    public void configureGlobal1(AuthenticationManagerBuilder auth) throws Exception {
+        //try in memory auth with no users to support the case that this will allow for users that are logged in to go anywhere
+        auth.inMemoryAuthentication();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/book-service/books").permitAll()
-            .antMatchers("/eureka/**").hasRole("ADMIN")
+        http.httpBasic()
+            .disable()
+        .authorizeRequests()
+            .antMatchers("/ratings").hasRole("USER")
+            .antMatchers("/ratings/all").hasAnyRole("USER", "ADMIN")
             .anyRequest().authenticated()
-            .and()
-        .formLogin()
-            .and()
-        .logout().permitAll()
-            .logoutSuccessUrl("/book-service/books").permitAll()
             .and()
         .csrf()
             .disable();

@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.bootstrap.resource;
+package com.baeldung.spring.cloud.bootstrap.svcbook;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +22,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic()
             .disable()
         .authorizeRequests()
-            .antMatchers("/hello/cloud").permitAll()
-            .antMatchers("/hello/user").hasAnyRole("USER", "ADMIN")
-            .antMatchers("/hello/admin").hasRole("ADMIN")
+            .antMatchers("/books").permitAll()
+            .antMatchers("/books/*").hasAnyRole("USER", "ADMIN")
             .anyRequest().authenticated()
             .and()
         .csrf()

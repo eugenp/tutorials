@@ -14,7 +14,8 @@
         <module>config</module>
         <module>discovery</module>
         <module>gateway</module>
-        <module>resource</module>
+        <module>svc-book</module>
+        <module>svc-rating</module>
     </modules>
 
 
