@@ -26,9 +26,9 @@ public class JExcelHelper {
         int columns = sheet.getColumns();
 
         for (int i = 0; i < rows; i++) {
-            data.put(new Integer(i), new ArrayList<String>());
+            data.put(i, new ArrayList<String>());
             for (int j = 0; j < columns; j++) {
-                data.get(new Integer(i))
+                data.get(i)
                     .add(sheet.getCell(j, i)
                         .getContents());
             }
@@ -76,13 +76,7 @@ public class JExcelHelper {
             workbook.write();
         } finally {
             if (workbook != null) {
-                try {
-                    workbook.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (WriteException e) {
-                    e.printStackTrace();
-                }
+                workbook.close();
             }
         }
 

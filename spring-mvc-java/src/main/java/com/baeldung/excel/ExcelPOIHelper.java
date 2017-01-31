@@ -31,37 +31,40 @@ public class ExcelPOIHelper {
         Sheet sheet = workbook.getSheetAt(0);
         int i = 0;
         for (Row row : sheet) {
-            data.put(new Integer(i), new ArrayList<String>());
+            data.put(i, new ArrayList<String>());
             for (Cell cell : row) {
                 switch (cell.getCellTypeEnum()) {
                 case STRING:
-                    data.get(new Integer(i))
+                    data.get(i)
                         .add(cell.getRichStringCellValue()
                             .getString());
                     break;
                 case NUMERIC:
                     if (DateUtil.isCellDateFormatted(cell)) {
-                        data.get(new Integer(i))
+                        data.get(i)
                             .add(cell.getDateCellValue() + "");
                     } else {
-                        data.get(new Integer(i))
+                        data.get(i)
                             .add(cell.getNumericCellValue() + "");
                     }
                     break;
                 case BOOLEAN:
-                    data.get(new Integer(i))
+                    data.get(i)
                         .add(cell.getBooleanCellValue() + "");
                     break;
                 case FORMULA:
-                    data.get(new Integer(i))
+                    data.get(i)
                         .add(cell.getCellFormula() + "");
                     break;
                 default:
-                    data.get(new Integer(i))
+                    data.get(i)
                         .add(" ");
                 }
             }
             i++;
+        }
+        if (workbook != null){
+            workbook.close();
         }
         return data;
     }
