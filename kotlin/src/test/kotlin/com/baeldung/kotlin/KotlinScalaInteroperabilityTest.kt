@@ -6,12 +6,13 @@ import kotlin.test.assertEquals
 
 
 class KotlinScalaInteroperabilityTest {
+
     @Test
     fun givenLowercaseString_whenExecuteMethodFromJavaStringUtils_shouldReturnStringUppercase() {
         //given
         val name = "tom"
 
-        //when
+        //whene
         val res = StringUtils.toUpperCase(name)
 
         //then

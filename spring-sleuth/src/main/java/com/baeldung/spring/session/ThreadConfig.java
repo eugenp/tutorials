@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 @Configuration
 @EnableAsync
 @EnableScheduling
-public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingConfigurer{
+public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingConfigurer {
 
     @Autowired
     private BeanFactory beanFactory;

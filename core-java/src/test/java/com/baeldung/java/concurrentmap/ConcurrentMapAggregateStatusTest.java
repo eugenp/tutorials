@@ -47,9 +47,7 @@ public class ConcurrentMapAggregateStatusTest {
         executorService.awaitTermination(1, TimeUnit.MINUTES);
 
         for (int i = 1; i <= MAX_SIZE; i++) {
-            assertEquals("map size should be consistently reliable", i, mapSizes
-              .get(i - 1)
-              .intValue());
+            assertEquals("map size should be consistently reliable", i, mapSizes.get(i - 1).intValue());
         }
         assertEquals(MAX_SIZE, concurrentMap.size());
     }
@@ -71,9 +69,7 @@ public class ConcurrentMapAggregateStatusTest {
         executorService.shutdown();
         executorService.awaitTermination(1, TimeUnit.MINUTES);
 
-        assertNotEquals("map size collected with concurrent updates not reliable", MAX_SIZE, mapSizes
-          .get(MAX_SIZE - 1)
-          .intValue());
+        assertNotEquals("map size collected with concurrent updates not reliable", MAX_SIZE, mapSizes.get(MAX_SIZE - 1).intValue());
         assertEquals(MAX_SIZE, concurrentMap.size());
     }
 

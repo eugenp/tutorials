@@ -24,7 +24,7 @@ public class PersonCrudServiceIntegrationTest extends IntegrationTest {
     @PostConstruct
     private void init() {
         clarkKent = personService.read(CLARK_KENT_ID);
-        if(clarkKent == null) {
+        if (clarkKent == null) {
             clarkKent = buildClarkKent();
             personService.create(clarkKent);
         }
@@ -50,7 +50,7 @@ public class PersonCrudServiceIntegrationTest extends IntegrationTest {
         personService.create(expected);
         String updatedHomeTown = RandomStringUtils.randomAlphabetic(12);
         expected.setHomeTown(updatedHomeTown);
-        personService.update(expected);     
+        personService.update(expected);
         Person actual = personService.read(expected.getId());
         assertNotNull(actual);
         assertEquals(expected.getHomeTown(), actual.getHomeTown());
@@ -66,17 +66,10 @@ public class PersonCrudServiceIntegrationTest extends IntegrationTest {
     }
 
     private Person buildClarkKent() {
-        return Person.Builder.newInstance()
-          .id(CLARK_KENT_ID)
-          .name(CLARK_KENT)
-          .homeTown(SMALLVILLE)
-          .build();
+        return Person.Builder.newInstance().id(CLARK_KENT_ID).name(CLARK_KENT).homeTown(SMALLVILLE).build();
     }
 
     private Person randomPerson() {
-        return Person.Builder.newInstance()
-          .name(RandomStringUtils.randomAlphabetic(10))
-          .homeTown(RandomStringUtils.randomAlphabetic(10))
-          .build();
+        return Person.Builder.newInstance().name(RandomStringUtils.randomAlphabetic(10)).homeTown(RandomStringUtils.randomAlphabetic(10)).build();
     }
 }

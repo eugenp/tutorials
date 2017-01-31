@@ -36,9 +36,7 @@ public class ConcurrentMapPerformanceTest {
         for (int i = 0; i < 4; i++) {
             executorService.execute(() -> {
                 for (int j = 0; j < 500_000; j++) {
-                    int value = ThreadLocalRandom
-                      .current()
-                      .nextInt(10000);
+                    int value = ThreadLocalRandom.current().nextInt(10000);
                     String key = String.valueOf(value);
                     map.put(key, value);
                     map.get(key);

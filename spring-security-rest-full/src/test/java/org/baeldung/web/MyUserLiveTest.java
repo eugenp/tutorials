@@ -15,6 +15,7 @@ public class MyUserLiveTest {
 
     private final MyUser userJohn = new MyUser("john", "doe", "john@doe.com", 11);
     private String URL_PREFIX = "http://localhost:8082/spring-security-rest-full/auth/api/myusers";
+
     @Test
     public void whenGettingListOfUsers_thenCorrect() {
         final Response response = givenAuth().get(URL_PREFIX);
