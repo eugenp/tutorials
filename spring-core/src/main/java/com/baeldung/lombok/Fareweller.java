@@ -8,7 +8,6 @@ public class Fareweller {
 
     private final Translator translator;
 
-    @Autowired
     public Fareweller(Translator translator) {
         this.translator = translator;
     }
