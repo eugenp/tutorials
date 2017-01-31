@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.future;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
@@ -13,12 +12,9 @@ public class SquareCalculator {
     }
 
     public Future<Integer> calculate(Integer input) {
-        return executor.submit(new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                Thread.sleep(1000);
-                return input * input;
-            }
-        });
+        return executor.submit(() -> {
+            Thread.sleep(1000);
+            return input * input;
+        });        
     }
 }
