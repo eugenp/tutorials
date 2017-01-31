@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class JavaslangTryTest {
 
     @Test
-    public void givenHttpClientThatSuccess_whenMakeACall_shouldReturnTryOfSuccess() {
+    public void givenHttpClient_whenMakeACall_shouldReturnSuccess() {
         //given
         Integer defaultChainedResult = 1;
         String id = "a";
@@ -41,7 +41,7 @@ public class JavaslangTryTest {
     }
 
     @Test
-    public void givenHttpClientThatFailure_whenMakeACall_shouldReturnTryOfFailure() {
+    public void givenHttpClientFailure_whenMakeACall_shouldReturnFailure() {
         //given
         Integer defaultChainedResult = 1;
         HttpClient httpClient = () -> {
@@ -63,7 +63,7 @@ public class JavaslangTryTest {
     }
 
     @Test
-    public void givenHttpClientThatFailure_whenMakeACall_shouldReturnTryOfFailureAndNotRecoverFromCriticalProblem() {
+    public void givenHttpClientThatFailure_whenMakeACall_shouldReturnFailureAndNotRecover() {
         //given
         Response defaultResponse = new Response("b");
         HttpClient httpClient = () -> {
@@ -85,7 +85,7 @@ public class JavaslangTryTest {
     }
 
     @Test
-    public void givenHttpClientThatFailure_whenMakeACall_shouldReturnTryOfFailureAndNotRecoverFromNonCriticalProblem() {
+    public void givenHttpClientThatFailure_whenMakeACall_shouldReturnFailureAndRecover() {
         //given
         Response defaultResponse = new Response("b");
         HttpClient httpClient = () -> {
@@ -95,7 +95,8 @@ public class JavaslangTryTest {
         //when
         Try<Response> recovered = new JavaslangTry(httpClient).getResponse()
                 .recover(r -> Match(r).of(
-                        Case(instanceOf(ClientException.class), defaultResponse)
+                        Case(instanceOf(ClientException.class), defaultResponse),
+                        Case(instanceOf(IllegalArgumentException.class), defaultResponse)
                 ));
 
         //then
