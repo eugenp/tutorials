@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -82,7 +83,7 @@ public class ExcelPOIHelper {
             CellStyle headerStyle = workbook.createCellStyle();
 
             headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
-            headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
             XSSFFont font = ((XSSFWorkbook) workbook).createFont();
             font.setFontName("Arial");

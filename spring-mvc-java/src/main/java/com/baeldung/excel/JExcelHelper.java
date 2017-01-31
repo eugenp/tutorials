@@ -6,13 +6,11 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import jxl.read.biff.BiffException;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import org.springframework.stereotype.Service;
 import jxl.write.*;
-import java.util.Date;
 import jxl.write.Number;
+import jxl.format.Colour;
 
 @Service
 public class JExcelHelper {
@@ -28,9 +26,7 @@ public class JExcelHelper {
         for (int i = 0; i < rows; i++) {
             data.put(i, new ArrayList<String>());
             for (int j = 0; j < columns; j++) {
-                data.get(i)
-                    .add(sheet.getCell(j, i)
-                        .getContents());
+                data.get(i).add(sheet.getCell(j, i).getContents());
             }
         }
         return data;
