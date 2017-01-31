@@ -13,7 +13,7 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         
-        <mapping class="com.baeldung.hibernate.model.Cart"/>
-        <mapping class="com.baeldung.hibernate.model.Items"/>
+        <mapping class="com.baeldung.hibernate.oneToMany.model.Cart"/>
+        <mapping class="com.baeldung.hibernate.oneToMany.model.Items"/>
     </session-factory>
 </hibernate-configuration>

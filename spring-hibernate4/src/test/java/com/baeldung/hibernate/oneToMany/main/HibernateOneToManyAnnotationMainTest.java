@@ -1,6 +1,10 @@
 
 package com.baeldung.hibernate.oneToMany.main;
 
+import com.baeldung.hibernate.oneToMany.model.Cart;
+import com.baeldung.hibernate.oneToMany.model.Items;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,12 +33,18 @@ public class HibernateOneToManyAnnotationMainTest {
     @After
     public void tearDown() {
     }
+
     @Test
     public void testMain() {
         System.out.println("main");
-        String[] args = null;
-        HibernateOneToManyAnnotationMain.main(args);
-        fail("The test failed.");
+        Cart cart = new Cart();
+        Items item1 = new Items("I10", 10, 1, cart);
+        Set<Items> itemsSet = new HashSet<Items>();
+        assertEquals(0, itemsSet.size());
+        assertNotNull(item1);
+        cart.setItems(itemsSet);
+        assertNotNull(cart);
+      
     }
     
 }

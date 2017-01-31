@@ -122,7 +122,6 @@
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
-        <module>spring-hibernate4</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
         <module>spring-jms</module>

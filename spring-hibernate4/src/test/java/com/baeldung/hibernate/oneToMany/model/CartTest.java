@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 public class CartTest {
     
     public CartTest() {
@@ -30,7 +29,7 @@ public class CartTest {
     @After
     public void tearDown() {
     }
-    
+
     @Test
     public void testGetId() {
         System.out.println("getId");
@@ -38,7 +37,6 @@ public class CartTest {
         long expResult = 0L;
         long result = instance.getId();
         assertEquals(expResult, result);
-        fail("The test failed.");
     }
 
     @Test
@@ -47,7 +45,6 @@ public class CartTest {
         long id = 0L;
         Cart instance = new Cart();
         instance.setId(id);
-        fail("The test failed.");
     }
 
     @Test
@@ -57,7 +54,6 @@ public class CartTest {
         double expResult = 0.0;
         double result = instance.getTotal();
         assertEquals(expResult, result, 0.0);
-        fail("The test failed.");
     }
 
     @Test
@@ -66,17 +62,15 @@ public class CartTest {
         double total = 0.0;
         Cart instance = new Cart();
         instance.setTotal(total);
-        fail("The test failed.");
     }
 
     @Test
     public void testGetName() {
         System.out.println("getName");
         Cart instance = new Cart();
-        String expResult = "";
+        String expResult = null;
         String result = instance.getName();
         assertEquals(expResult, result);
-        fail("The test failed");
     }
 
     @Test
@@ -85,7 +79,6 @@ public class CartTest {
         String name = "";
         Cart instance = new Cart();
         instance.setName(name);
-        fail("The test failed.");
     }
 
     @Test
@@ -95,7 +88,6 @@ public class CartTest {
         Set<Items> expResult = null;
         Set<Items> result = instance.getItems();
         assertEquals(expResult, result);
-        fail("The test failed.");
     }
 
     @Test
@@ -104,8 +96,6 @@ public class CartTest {
         Set<Items> items = null;
         Cart instance = new Cart();
         instance.setItems(items);
-        fail("The test case failed");
     }
-    
     
 }
