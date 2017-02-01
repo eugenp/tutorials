@@ -3,6 +3,7 @@ package org.baeldung.guava;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class GuavaEventBusTest {
@@ -25,7 +26,7 @@ public class GuavaEventBusTest {
         listener.resetEventsHandled();
 
         EventBusWrapper.post("String Event");
-        assertEquals(1,listener.getEventsHandled());
+        assertEquals(1, listener.getEventsHandled());
 
     }
 
@@ -36,6 +37,6 @@ public class GuavaEventBusTest {
         CustomEvent customEvent = new CustomEvent("Custom Event");
         EventBusWrapper.post(customEvent);
 
-        assertEquals(1,listener.getEventsHandled());
+        assertEquals(1, listener.getEventsHandled());
     }
 }
