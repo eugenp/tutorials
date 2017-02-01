@@ -27,7 +27,7 @@ public class GuavaOrderingTest {
     public void givenListOfPersonObject_whenSortedUsingCustomOrdering_shouldSortProperly() {
         //given
         List<Person> persons = Arrays.asList(new Person("Michael", 10), new Person("Alice", 3));
-        Ordering<Person> orderingByName = new Ordering<Person>() {
+        Ordering<Person> orderingByAge = new Ordering<Person>() {
             @Override
             public int compare(Person p1, Person p2) {
                 return Ints.compare(p1.age, p2.age);
@@ -35,7 +35,7 @@ public class GuavaOrderingTest {
         };
 
         //when
-        persons.sort(orderingByName);
+        persons.sort(orderingByAge);
 
         //then
         assertEquals(Arrays.asList(new Person("Alice", 3), new Person("Michael", 10)), persons);
