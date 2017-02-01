@@ -1,23 +1,17 @@
 
 package com.baeldung.hibernate.oneToMany.main;
 
-import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
+
 import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.Items;
-import com.baeldung.persistence.model.Person;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.Entity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.HSQLDialect;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
