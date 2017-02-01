@@ -77,15 +77,5 @@ public class HibernateOneToManyAnnotationMainTest {
         
     }
     
-    @After
-    public void tearDown() {
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @AfterClass
-    public static void afterTests() {
-        sessionFactory.close();
-    }
     
 }
