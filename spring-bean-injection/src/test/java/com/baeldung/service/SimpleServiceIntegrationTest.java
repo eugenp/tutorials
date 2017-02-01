@@ -1,62 +1,45 @@
 package com.baeldung.service;
 
-import com.baeldung.SpringBeanInjectionApplication;
+import com.baeldung.config.AppConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.annotation.Resource;
-import javax.inject.Inject;
+import static org.junit.Assert.assertEquals;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringBeanInjectionApplication.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = AppConfig.class)
 public class SimpleServiceIntegrationTest {
 
-    @Inject
+    @Autowired
     private SimpleService simpleService;
 
-    @Inject
-    private SimpleService simpleInjectService;
-
     @Autowired
-    private SimpleService simpleAutowiredService;
-
-    @Resource
-    private SimpleService simpleResourceService;
-
-    @Inject
     private SimpleServiceTwo simpleServiceTwo;
 
-    @Inject
+   @Autowired
     private SimpleServiceThree simpleServiceThree;
 
     @Test
     public void whenCallingGetName_thenWeGetNameOfSimpleServiceClass() {
         String simpleServiceClassName = SimpleService.class.getName();
-        String classInjectName = simpleAutowiredService.getName();
-        String classAutowiredName = simpleInjectService.getName();
-        String classResourceName = simpleResourceService.getName();
-
-        assertThat(classInjectName).isEqualTo(simpleServiceClassName);
-        assertThat(classAutowiredName).isEqualTo(simpleServiceClassName);
-        assertThat(classResourceName).isEqualTo(simpleServiceClassName);
+        String classInjectName = simpleService.getName();
+        assertEquals(classInjectName, simpleServiceClassName);
     }
 
     @Test
     public void whenCallingGetNameViaSimpleServiceTwo_thenWeGetNameOfSimpleServiceClass(){
         String nameFromsimpleService = simpleService.getName();
         String nameFromSimpleServiceTwo = simpleServiceTwo.getNameViaSimpleService();
-        assertThat(nameFromSimpleServiceTwo).isEqualTo(nameFromsimpleService);
+        assertEquals(nameFromSimpleServiceTwo, nameFromsimpleService);
     }
 
     @Test
     public void whenCallingGetNameViaSimpleServiceThree_thenWeGetNameOfSimpleServiceClass(){
         String nameFromsimpleService = simpleService.getName();
         String nameFromSimpleServiceThree = simpleServiceThree.getNameViaSimpleService();
-        assertThat(nameFromSimpleServiceThree).isEqualTo(nameFromsimpleService);
+        assertEquals(nameFromSimpleServiceThree, nameFromsimpleService);
     }
 }
