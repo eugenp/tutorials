@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -15,10 +14,12 @@
     </properties>
 
     <modules>
+        <module>aws</module>
+        <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> 
-        <module>apache-poi</module> 
+        <module>apache-fop</module>
+        <module>apache-poi</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -43,6 +44,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
@@ -67,12 +69,15 @@
         <module>jsoup</module>
         <module>junit5</module>
 
+        <module>kotlin</module>
+
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -90,7 +95,10 @@
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
+        <module>solr-fulltext-search</module>
+        <module>spark-java</module>
         <module>spring-akka</module>
+        <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
@@ -115,6 +123,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
+        <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -158,6 +167,7 @@
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
+        <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
@@ -167,11 +177,16 @@
 
         <module>testing</module>
 
+        <module>video-tutorials</module>
+
         <module>wicket</module>
 
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    </modules>
+
+        <module>struts2</module>
+
+  </modules>
 
 </project>

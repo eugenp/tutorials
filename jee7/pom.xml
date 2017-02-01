@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <java.min.version>1.7</java.min.version>
+        <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
 
         <junit.version>4.12</junit.version>
