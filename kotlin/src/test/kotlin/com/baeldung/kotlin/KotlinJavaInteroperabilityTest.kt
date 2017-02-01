@@ -5,7 +5,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 
 
-class KotlinScalaInteroperabilityTest {
+class KotlinJavaInteroperabilityTest {
 
     @Test
     fun givenLowercaseString_whenExecuteMethodFromJavaStringUtils_shouldReturnStringUppercase() {
