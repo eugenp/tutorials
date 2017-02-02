@@ -8,7 +8,6 @@ public class HotObservableBackPressureBuffering {
     public static void main(String[] args) throws InterruptedException {
         PublishSubject<Integer> source = PublishSubject.<Integer>create();
 
-        //buffer
         source
                 .buffer(1024)
                 .observeOn(Schedulers.computation())

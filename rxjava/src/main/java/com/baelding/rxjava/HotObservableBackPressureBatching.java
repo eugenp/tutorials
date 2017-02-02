@@ -7,7 +7,6 @@ public class HotObservableBackPressureBatching {
     public static void main(String[] args) throws InterruptedException {
         PublishSubject<Integer> source = PublishSubject.<Integer>create();
 
-        //buffer
         source.window(500)
                 .observeOn(Schedulers.computation())
                 .subscribe(ComputeFunction::compute, Throwable::printStackTrace);

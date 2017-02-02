@@ -26,7 +26,7 @@ public class ComputeFunction {
 
     public static void compute(Observable<Integer> v) {
         try {
-            System.out.println("compute integer v: " + v);
+            v.forEach(System.out::println);
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -9,12 +9,8 @@ public class HotObservableBackPressureSkipping {
     public static void main(String[] args) throws InterruptedException {
         PublishSubject<Integer> source = PublishSubject.<Integer>create();
 
-        //buffer
-        source
-//              .debounce(1, TimeUnit.SECONDS)
-//              .sample(1, TimeUnit.SECONDS)
-//              .throttleFirst(100, TimeUnit.MILLISECONDS)
-                .throttleLast(100, TimeUnit.MILLISECONDS)
+        source.sample(100, TimeUnit.MILLISECONDS)
+//                .throttleFirst(100, TimeUnit.MILLISECONDS)
                 .observeOn(Schedulers.computation())
                 .subscribe(ComputeFunction::compute, Throwable::printStackTrace);
 
