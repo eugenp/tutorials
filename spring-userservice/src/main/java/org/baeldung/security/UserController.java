@@ -25,8 +25,7 @@ public class UserController {
             myUserService.registerNewUserAccount(accountDto);
             model.addAttribute("message", "Registration successful");
             return "index";
-        }
-        catch(final Exception exc){
+        } catch (final Exception exc) {
             model.addAttribute("message", "Registration failed");
 
             return "index";

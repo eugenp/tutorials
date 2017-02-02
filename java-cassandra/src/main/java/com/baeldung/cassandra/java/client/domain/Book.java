@@ -16,14 +16,14 @@ public class Book {
 
     Book() {
     }
-    
+
     public Book(UUID id, String title, String author, String subject) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.subject = subject;
     }
-    
+
     public UUID getId() {
         return id;
     }
