@@ -29,7 +29,7 @@ public class ComplexXmlToObjectCollectionTest {
             Customer customer = (Customer) xstream.fromXML(reader);
             Assert.assertNotNull(customer);
             Assert.assertNotNull(customer.getContactDetailsList());
-            //System.out.println(customer);
+            // System.out.println(customer);
 
         } catch (IOException e) {
             e.printStackTrace();

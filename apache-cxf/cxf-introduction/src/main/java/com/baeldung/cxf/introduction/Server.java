@@ -8,7 +8,7 @@ public class Server {
         String address = "http://localhost:8080/baeldung";
         Endpoint.publish(address, implementor);
         System.out.println("Server ready...");
-        Thread.sleep(60 * 1000);        
+        Thread.sleep(60 * 1000);
         System.out.println("Server exiting");
         System.exit(0);
     }

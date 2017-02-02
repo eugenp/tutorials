@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class LayoutDialectController {
-	
-	@RequestMapping(value = "/layout", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/layout", method = RequestMethod.GET)
     public String getNewPage(Model model) {
         return "content.html";
     }

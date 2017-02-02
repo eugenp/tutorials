@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("org.baeldung.security")
-//@ImportResource({ "classpath:webSecurityConfig.xml" })
+// @ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecSecurityConfig {
 
     public SecSecurityConfig() {

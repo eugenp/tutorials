@@ -11,10 +11,7 @@ public class PersonDocumentConverter implements JsonDocumentConverter<Person> {
 
     @Override
     public JsonDocument toDocument(Person p) {
-        JsonObject content = JsonObject.empty()
-                .put("type", "Person")
-                .put("name", p.getName())
-                .put("homeTown", p.getHomeTown());
+        JsonObject content = JsonObject.empty().put("type", "Person").put("name", p.getName()).put("homeTown", p.getHomeTown());
         return JsonDocument.create(p.getId(), content);
     }
 

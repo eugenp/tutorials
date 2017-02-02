@@ -14,15 +14,15 @@ public class TutorialBucketService implements BucketService {
 
     @Autowired
     private ClusterService couchbase;
-    
+
     private Bucket bucket;
-    
+
     @PostConstruct
     private void init() {
         bucket = couchbase.openBucket("baeldung-tutorial", "");
     }
 
-   @Override
+    @Override
     public Bucket getBucket() {
         return bucket;
     }

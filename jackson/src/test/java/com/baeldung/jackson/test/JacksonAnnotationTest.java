@@ -1,6 +1,32 @@
 package com.baeldung.jackson.test;
 
-import com.baeldung.jackson.annotation.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import org.junit.Test;
+
+import com.baeldung.jackson.annotation.BeanWithCreator;
+import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
+import com.baeldung.jackson.annotation.BeanWithFilter;
+import com.baeldung.jackson.annotation.BeanWithGetter;
+import com.baeldung.jackson.annotation.BeanWithIgnore;
+import com.baeldung.jackson.annotation.BeanWithInject;
+import com.baeldung.jackson.annotation.ExtendableBean;
+import com.baeldung.jackson.annotation.MyBean;
+import com.baeldung.jackson.annotation.PrivateBean;
+import com.baeldung.jackson.annotation.RawBean;
+import com.baeldung.jackson.annotation.UnwrappedUser;
+import com.baeldung.jackson.annotation.UserWithIgnoreType;
+import com.baeldung.jackson.annotation.Zoo;
 import com.baeldung.jackson.bidirection.ItemWithIdentity;
 import com.baeldung.jackson.bidirection.ItemWithRef;
 import com.baeldung.jackson.bidirection.UserWithIdentity;
@@ -8,7 +34,7 @@ import com.baeldung.jackson.bidirection.UserWithRef;
 import com.baeldung.jackson.date.EventWithFormat;
 import com.baeldung.jackson.date.EventWithSerializer;
 import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
-import com.baeldung.jackson.dtos.withEnum.TypeEnumWithValue;
+import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
@@ -20,17 +46,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import org.junit.Test;
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class JacksonAnnotationTest {
 
@@ -85,10 +100,10 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonProcessingException {
-        final String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
+    public void whenSerializingUsingJsonValue_thenCorrect() throws IOException {
+        final String enumAsString = new ObjectMapper().writeValueAsString(DistanceEnumWithValue.MILE);
 
-        assertThat(enumAsString, is("\"Type A\""));
+        assertThat(enumAsString, is("1609.34"));
     }
 
     @Test

@@ -22,27 +22,27 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class})
+@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class })
 public class AsyncControllerTest {
 
-	@Autowired
-	WebApplicationContext wac;
-	@Autowired
-	MockHttpSession session;
-	
-	@Mock
-	AsyncController controller;
+    @Autowired
+    WebApplicationContext wac;
+    @Autowired
+    MockHttpSession session;
 
-	private MockMvc mockMvc;
+    @Mock
+    AsyncController controller;
 
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    private MockMvc mockMvc;
 
-	@Test
-	public void testAsync() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().is5xxServerError());
-	}
+    @Before
+    public void setup() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
+
+    @Test
+    public void testAsync() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().is5xxServerError());
+    }
 
 }
