@@ -57,8 +57,8 @@ public class NashornTest {
 
         Assert.assertEquals("hello", map.get("greet"));
         Assert.assertTrue(List.class.isAssignableFrom(map
-                .get("primes")
-                .getClass()));
+          .get("primes")
+          .getClass()));
     }
 
     @Test
