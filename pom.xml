@@ -189,6 +189,9 @@
 
         <module>struts2</module>
 
+        <module>rabbitmq</module>
+
+
   </modules>
 
 </project>
