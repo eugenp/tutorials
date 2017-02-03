@@ -18,8 +18,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
+//@RunWith(SpringJUnit4ClassRunner.class)
 public class HibernateOneToManyAnnotationMainTest {
     
     private static SessionFactory sessionFactory;
@@ -45,6 +47,15 @@ public class HibernateOneToManyAnnotationMainTest {
         
     }
     
+    @Test
+    public void givenSession_checkIfDatabaseIsEmpty(){
+        Cart cart = (Cart) session.get(Cart.class, new Long(1));
+        assertNull(cart);
+    
+    }
+    
+    
+    
     
 
     @Test
@@ -63,7 +74,7 @@ public class HibernateOneToManyAnnotationMainTest {
     }
     
     @Test
-    public void testSaveCart(){
+    public void givenSession_checkIfDatabaseIsPopulated_afterCommit(){
        Cart cart = new Cart();
        Set <Items> cartItems = new HashSet<>();
        cartItems = cart.getItems();
@@ -81,6 +92,8 @@ public class HibernateOneToManyAnnotationMainTest {
        assertNotNull(cart);
        session.persist(cart);
        session.getTransaction().commit();
+       cart = (Cart) session.get(Cart.class, new Long(1));
+       assertNotNull(cart);
        session.close();
         
     }
