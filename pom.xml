@@ -20,6 +20,7 @@
         <module>apache-cxf</module>
         <module>apache-fop</module>
         <module>apache-poi</module>
+        <module>apache-thrift</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -95,6 +96,7 @@
         <module>resteasy</module>
 
         <module>selenium-junit-testng</module>
+        <module>solr-fulltext-search</module>
         <module>spark-java</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
@@ -137,7 +139,7 @@
         <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
-        <module>spring-openid</module>
+        <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
