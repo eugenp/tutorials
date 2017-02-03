@@ -160,6 +160,28 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>${jexcel.version}</version>
+        </dependency>	
+		
     </dependencies>
 
     <build>
@@ -370,6 +392,10 @@
 
         <!-- AspectJ -->
         <aspectj.version>1.8.9</aspectj.version>
+		
+        <!-- excel -->
+        <poi.version>3.16-beta1</poi.version>
+        <jexcel.version>1.0.6</jexcel.version>
     </properties>
 
 </project>

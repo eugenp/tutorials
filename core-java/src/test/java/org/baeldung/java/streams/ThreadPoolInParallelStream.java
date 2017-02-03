@@ -17,11 +17,11 @@ public class ThreadPoolInParallelStream {
     
     @Test
     public void giveRangeOfLongs_whenSummedInParallel_shouldBeEqualToExpectedTotal() 
-        throws InterruptedException, ExecutionException {
+      throws InterruptedException, ExecutionException {
         long firstNum = 1;
         long lastNum = 1_000_000;
 
-        List<Long> aList = LongStream.range(firstNum, lastNum).boxed()
+        List<Long> aList = LongStream.rangeClosed(firstNum, lastNum).boxed()
           .collect(Collectors.toList());
 
         ForkJoinPool customThreadPool = new ForkJoinPool(4);
