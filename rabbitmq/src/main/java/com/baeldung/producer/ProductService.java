@@ -27,14 +27,12 @@ public class ProductService {
 
         channel.exchangeDeclare("products", "topic");
 
-
         channel.basicPublish(EXCHANGE_NAME, "accepted.special", null, specialProductMessage.getBytes());
         System.out.println("Sent message '" + specialProductMessage + "'");
         channel.basicPublish(EXCHANGE_NAME, "accepted.", null, acceptedProductMessage.getBytes());
         System.out.println("Sent message '" + acceptedProductMessage + "'");
         channel.basicPublish(EXCHANGE_NAME, "rejected.", null, rejectedProductMessage.getBytes());
         System.out.println("Sent message '" + rejectedProductMessage + "'");
-
 
         channel.close();
         connection.close();
