@@ -32,6 +32,9 @@ public class SpringRetryTest {
 
     @Test(expected = RuntimeException.class)
     public void givenTemplateRetryService_whenCallWithException_thenRetry() {
-        retryTemplate.execute(arg0 -> myService.templateRetryService());
+        retryTemplate.execute(arg0 -> {
+            myService.templateRetryService();
+            return null;
+        });
     }
 }

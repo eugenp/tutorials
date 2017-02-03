@@ -14,7 +14,7 @@
 
 
     <properties>
-        <dep.ver.metrics>3.1.0</dep.ver.metrics>
+        <dep.ver.metrics>3.1.2</dep.ver.metrics>
         <dep.ver.servlet>3.1.0</dep.ver.servlet>
         <dep.ver.junit>4.12</dep.ver.junit>
 

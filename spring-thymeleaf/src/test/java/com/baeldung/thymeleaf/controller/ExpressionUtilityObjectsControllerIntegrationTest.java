@@ -33,7 +33,6 @@ public class ExpressionUtilityObjectsControllerIntegrationTest {
 
     @Autowired
     WebApplicationContext wac;
-    
     @Autowired
     MockHttpSession session;
 

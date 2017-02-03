@@ -23,10 +23,13 @@ public class HealthCheckTest {
         assertThat(healthCheckRegistry.getNames().size(), equalTo(2));
 
         Map<String, HealthCheck.Result> results = healthCheckRegistry.runHealthChecks();
+
         assertFalse(results.isEmpty());
+
         results.forEach((k, v) -> assertTrue(v.isHealthy()));
 
         healthCheckRegistry.unregister("uc");
+
         assertThat(healthCheckRegistry.getNames().size(), equalTo(1));
     }
 }

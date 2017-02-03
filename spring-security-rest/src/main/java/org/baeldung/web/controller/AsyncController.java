@@ -14,26 +14,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AsyncController {
 
-	private static final Logger log = Logger.getLogger(AsyncService.class);
+    private static final Logger log = Logger.getLogger(AsyncService.class);
 
-	@Autowired
-	private AsyncService asyncService;
+    @Autowired
+    private AsyncService asyncService;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/async")
-	@ResponseBody
-	public Object standardProcessing() throws Exception {
-		log.info("Outside the @Async logic - before the async call: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		asyncService.asyncCall();
-		log.info("Inside the @Async logic - after the async call: "
-				+ SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-		return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/async2")
-	@ResponseBody
-	public Callable<Boolean> springMVCAsyncTest() {
-		return asyncService.checkIfPrincipalPropagated();
-	}
+    @RequestMapping(method = RequestMethod.GET, value = "/async")
+    @ResponseBody
+    public Object standardProcessing() throws Exception {
+        log.info("Outside the @Async logic - before the async call: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        asyncService.asyncCall();
+        log.info("Inside the @Async logic - after the async call: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        return SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/async2")
+    @ResponseBody
+    public Callable<Boolean> springMVCAsyncTest() {
+        return asyncService.checkIfPrincipalPropagated();
+    }
 
 }

@@ -13,7 +13,6 @@ import org.junit.Test;
 
 public class MultiResultionImageTest {
 
-
     @Test
     public void baseMultiResImageTest() {
         int baseIndex = 1;
@@ -38,10 +37,8 @@ public class MultiResultionImageTest {
         return 8 * (i + 1);
     }
 
-
     private static BufferedImage createImage(int i) {
-        return new BufferedImage(getSize(i), getSize(i),
-                BufferedImage.TYPE_INT_RGB);
+        return new BufferedImage(getSize(i), getSize(i), BufferedImage.TYPE_INT_RGB);
     }
 
 }
