@@ -8,32 +8,21 @@ import java.io.ObjectInputStream;
 
 public class FileUtility {
     public static void serializeGivenObject(String filePath , Object object ) {
-        try {
-            FileOutputStream fileOut =
-              new FileOutputStream(filePath);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(object);
-            out.close();
-            fileOut.close();
-        } catch(Exception e) {
-            
-            e.printStackTrace();
-        }
+        FileOutputStream fileOut =
+          new FileOutputStream(filePath);
+        ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        out.writeObject(object);
+        out.close();
+        fileOut.close();
     }
 
     public static Object deserializeTheObjectBack(String filePath) {
-        Object deserializedObject = null;
-        try {
-            FileInputStream fileIn =
-                    new FileInputStream(filePath);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            deserializedObject = in.readObject();
-
-            in.close();
-            fileIn.close();
-        } catch(Exception e) {
-        	e.printStackTrace();
-        }
+        FileInputStream fileIn =
+          new FileInputStream(filePath);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        Object deserializedObject = in.readObject();
+        in.close();
+        fileIn.close();
         return deserializedObject;
     }
 

@@ -57,5 +57,5 @@ public class ExternalizationExample {
     	Assert.assertEquals(empAfterSerialization.name,"Roger");
     	Assert.assertEquals(empAfterSerialization.address,"Robinson Road , 2nd Cross");
     }
-}
+}	
 

@@ -46,7 +46,6 @@ public class Employee implements Externalizable {
 	    out.writeInt(id);
 	    out.writeObject(name);
 	    out.writeObject(address);
-
 	}
 	
 	public String toString() {
