@@ -25,9 +25,7 @@
 			<td><input name="submit" type="submit" value="submit" /></td>
 		</tr>
 	</table>
-
 	</form>
-
 	<%
 	    if (request.getParameter("error") != null) {
 	        out.println("Login failed!");
