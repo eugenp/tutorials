@@ -29,7 +29,7 @@ public class XmlToObjectIgnoreFieldsTest {
             FileReader reader = new FileReader(classLoader.getResource("data-file-ignore-field.xml").getFile());
             Customer customer = (Customer) xstream.fromXML(reader);
             Assert.assertNotNull(customer);
-            //System.out.println(customer);
+            // System.out.println(customer);
         } catch (IOException e) {
             e.printStackTrace();
         }

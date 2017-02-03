@@ -14,3 +14,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Returning Image/Media Data with Spring MVC](http://www.baeldung.com/spring-mvc-image-media-data)
 - [Geolocation by IP in Java](http://www.baeldung.com/geolocation-by-ip-with-maxmind)
 - [Guide to JavaServer Pages (JSP)](http://www.baeldung.com/jsp)
+- [Exploring SpringMVC’s Form Tag Library](http://www.baeldung.com/spring-mvc-form-tags)

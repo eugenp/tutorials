@@ -57,7 +57,6 @@
                 <configuration>
                     <source>1.9</source>
                     <target>1.9</target>
-                    <verbose>true</verbose>
                 </configuration>
             </plugin>
 
@@ -72,6 +71,9 @@
     </build>
 
     <properties>
+        <!-- project build encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
 
