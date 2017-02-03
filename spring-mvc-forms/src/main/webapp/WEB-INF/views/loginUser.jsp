@@ -10,6 +10,7 @@
 <body>
 
 	<p>User login page</p>
+	<form name='f' action='user_login' method='POST'>
 
 	<table>
 		<tr>

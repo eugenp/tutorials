@@ -10,7 +10,6 @@
 <body>
 
 	<p>Admin login page</p>
-	<c:url value="admin/admin_login" var="loginUrl" />
 	<form name='f' action='admin_login' method='POST'>
 
 		<table>

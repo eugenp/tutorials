@@ -60,7 +60,7 @@ public class SecurityConfig {
                 .loginPage("/loginAdmin")
                 .loginProcessingUrl("/admin_login")
                 .failureUrl("/loginAdmin?error=loginError")
-                .defaultSuccessUrl("/admin/adminPage")
+                .defaultSuccessUrl("/adminPage")
                 // logout
                 .and()
                 .logout()
@@ -103,7 +103,7 @@ public class SecurityConfig {
                 .loginPage("/loginUser")
                 .loginProcessingUrl("/user_login")
                 .failureUrl("/loginUser?error=loginError")
-                .defaultSuccessUrl("/user/userPage")
+                .defaultSuccessUrl("/userPage")
                 // logout
                 .and()
                 .logout()
