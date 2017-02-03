@@ -14,7 +14,7 @@ import static org.assertj.core.util.Lists.newArrayList;
 public class PriorityBlockingQueueUnitTest {
 
     @Test
-    public void shouldOrderQueue_whenPolling() throws InterruptedException {
+    public void givenUnorderedValues_whenPolling_thenShouldOrderQueue() throws InterruptedException {
         PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
         ArrayList<Integer> polledElements = new ArrayList<>();
 
@@ -34,7 +34,7 @@ public class PriorityBlockingQueueUnitTest {
     }
 
     @Test
-    public void shouldBlockThread_WhenPollingEmptyQueue() throws InterruptedException {
+    public void whenPollingEmptyQueue_thenShouldBlockThread() throws InterruptedException {
         PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
 
         final Thread thread = new Thread(() -> {
