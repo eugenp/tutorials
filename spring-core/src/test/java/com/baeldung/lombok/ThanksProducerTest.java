@@ -6,15 +6,15 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class FarewellerTest {
+public class ThanksProducerTest {
 
     private final static String TRANSLATED = "TRANSLATED";
 
     @Test
-    public void sayByeWithTranslatedMessage() {
+    public void thankWithTranslatedMessage() {
         Translator translator = mock(Translator.class);
-        when(translator.translate("bye")).thenReturn(TRANSLATED);
-        Fareweller fareweller = new Fareweller(translator);
-        assertEquals(TRANSLATED, fareweller.farewell());
+        when(translator.translate("thank you")).thenReturn(TRANSLATED);
+        ThanksProducer thanksProducer = new ThanksProducer(translator);
+        assertEquals(TRANSLATED, thanksProducer.produce());
     }
 }

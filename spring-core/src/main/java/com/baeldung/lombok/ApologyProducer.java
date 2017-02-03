@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class Apologizer {
+public class ApologyProducer {
 
     private final Translator translator;
     private final String message;
 
     @Autowired
-    public Apologizer(Translator translator) {
+    public ApologyProducer(Translator translator) {
         this(translator, "sorry");
     }
 
-    public String apologize() {
+    public String produce() {
         return translator.translate(message);
     }
 }
