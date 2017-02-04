@@ -22,7 +22,7 @@ import com.baeldung.config.ControllerClassNameHandlerMappingConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = ControllerClassNameHandlerMappingConfig.class)
-public class ControllerClassNameHandlerMappingTest {
+public class ControllerClassNameHandlerMappingIntegrationTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
