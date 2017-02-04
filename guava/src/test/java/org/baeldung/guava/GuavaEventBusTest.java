@@ -10,32 +10,32 @@ public class GuavaEventBusTest {
     private EventListener listener;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         listener = new EventListener();
         EventBusWrapper.register(listener);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         EventBusWrapper.unregister(listener);
     }
 
     @Test
-    public void givenStringEvent_whenEventHandled_thenSuccess() throws Exception {
+    public void givenStringEvent_whenEventHandled_thenSuccess() {
         listener.resetEventsHandled();
 
         EventBusWrapper.post("String Event");
-        assertEquals(1,listener.getEventsHandled());
+        assertEquals(1, listener.getEventsHandled());
 
     }
 
     @Test
-    public void givenCustomEvent_whenEventHandled_thenSuccess() throws Exception {
+    public void givenCustomEvent_whenEventHandled_thenSuccess() {
         listener.resetEventsHandled();
 
         CustomEvent customEvent = new CustomEvent("Custom Event");
         EventBusWrapper.post(customEvent);
 
-        assertEquals(1,listener.getEventsHandled());
+        assertEquals(1, listener.getEventsHandled());
     }
 }
