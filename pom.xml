@@ -79,7 +79,6 @@
 
         <module>mapstruct</module>
         <module>metrics</module>
-        <module>mesos-marathon</module>
         <module>mockito</module>
         <module>mocks</module>
 
