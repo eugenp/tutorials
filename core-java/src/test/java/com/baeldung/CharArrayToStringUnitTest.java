@@ -1,65 +1,62 @@
 package com.baeldung;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertArrayEquals;
+import org.junit.Test;
 
 public class CharArrayToStringUnitTest {
 
     @Test
-    public void givenACharArray_whenPassingItInStringConstructor_thenShouldGetStringWithSameCharSequence() {
-        char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
-        String sampleString = new String(charArray);
-
-        assertEquals("Hello, world!", sampleString);
+    public void givenCharArray_whenCallingStringConstructor_shouldConvertToString() {
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = new String(charArray);
+        String expectedValue = "character";
+        
+        assertEquals(expectedValue, result);
     }
-
+    
     @Test
-    public void givenACharArray_whenPassingItInStringConstructorWithOffsetAndCount_thenShouldGetAStringWithCorrectCharSequence() {
-        char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
-        String sampleString = new String(charArray, 7, 6);
-
-        assertEquals("world!", sampleString);
+    public void givenCharArray_whenCallingStringConstructorWithOffsetAndLength_shouldConvertToString(){
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = new String(charArray, 4, 3);
+        String expectedValue = "act";
+        
+        assertEquals(expectedValue, result);
     }
-
+    
     @Test
-    public void givenACharArray_whenPassingItInStringFactoryMethod_thenShouldGetAStringWithSameCharSequence() {
-        char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
-        String sampleString1 = String.valueOf(charArray);
-        String sampleString2 = String.copyValueOf(charArray);
-
-        assertEquals("Hello, world!", sampleString1);
-        assertEquals("Hello, world!", sampleString2);
+    public void givenCharArray_whenCallingStringCopyValueOf_shouldConvertToString(){
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = String.copyValueOf(charArray);
+        String expectedValue = "character";
+        
+        assertEquals(expectedValue, result);
     }
-
+    
     @Test
-    public void givenACharArray_whenPassingItInStringFactoryMethodWithOffsetAndCound_thenShouldGetAStringWithCorrectCharSequence() {
-        char[] charArray = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
-        String sampleString1 = String.valueOf(charArray, 7, 6);
-        String sampleString2 = String.copyValueOf(charArray, 7, 6);
-
-        assertEquals("world!", sampleString1);
-        assertEquals("world!", sampleString2);
+    public void givenCharArray_whenCallingStringCopyValueOfWithOffsetAndLength_shouldConvertToString(){
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = String.copyValueOf(charArray, 0, 4);
+        String expectedValue = "char";
+        
+        assertEquals(expectedValue, result);
     }
-
+    
     @Test
-    public void givenAString_whenConvertingItToACharArray_thenShouldGetACharArrayWithTheSameCharSequence() {
-        String sampleString7 = "Hello, world!";
-        char[] charArray = sampleString7.toCharArray();
-        char[] expected = { 'H', 'e', 'l', 'l', 'o', ',', ' ', 'w', 'o', 'r', 'l', 'd', '!' };
-
-        assertArrayEquals(expected, charArray);
+    public void givenCharArray_whenCallingStringValueOf_shouldConvertToString(){
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = String.valueOf(charArray);
+        String expectedValue = "character";
+        
+        assertEquals(expectedValue, result);
     }
-
+    
     @Test
-    public void givenAString_whenConvertingAPartToCharArray_thenShouldGetACharArrayWithCorrectCharSequence() {
-        String sampleString = "Hello, world!";
-        char[] charArray = new char[6];
-        sampleString.getChars(7, sampleString.length(), charArray, 0);
-        char[] expected = { 'w', 'o', 'r', 'l', 'd', '!' };
-
-        assertArrayEquals(expected, charArray);
+    public void givenCharArray_whenCallingStringValueOfWithOffsetAndLength_shouldConvertToString(){
+        char[] charArray = {'c', 'h', 'a', 'r', 'a', 'c', 't', 'e', 'r'};
+        String result = String.valueOf(charArray, 3, 4);
+        String expectedValue = "ract";
+        
+        assertEquals(expectedValue, result);
     }
-
 }
