@@ -35,9 +35,7 @@
         </authentication-provider>
     </authentication-manager>
 
-   <beans:bean id="accessDeniedHandler"
-	   class="org.baeldung.security.CustomAccessDeniedHandler">
-	   <beans:constructor-arg name="errorPage" value="/403" />
-   </beans:bean>
-   
+    <beans:bean id="accessDeniedHandler" class="org.baeldung.security.CustomAccessDeniedHandler">
+	    <beans:constructor-arg name="errorPage" value="/403" />
+    </beans:bean>
 </beans:beans>
