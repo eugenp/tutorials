@@ -1,5 +1,6 @@
 package org.baeldung.spring;
 
+import org.baeldung.security.CustomAccessDeniedHandler;
 import org.baeldung.security.CustomLogoutSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +9,13 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
-@Profile("!https")
+@Profile("http")
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public SecSecurityConfig() {
@@ -52,13 +54,22 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         .logout()
         .logoutUrl("/perform_logout")
         .deleteCookies("JSESSIONID")
-        .logoutSuccessHandler(logoutSuccessHandler());
+        .logoutSuccessHandler(logoutSuccessHandler())
+        .and()
+        .exceptionHandling()
+        //.accessDeniedPage("/403");
+        .accessDeniedHandler(accessDeniedHandler());
         // @formatter:on
     }
 
     @Bean
     public LogoutSuccessHandler logoutSuccessHandler() {
         return new CustomLogoutSuccessHandler();
+    }
+    
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new CustomAccessDeniedHandler("/403");
     }
 
 }
