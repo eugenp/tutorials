@@ -1,4 +1,4 @@
-package com.java.test.externalizable;
+package com.baeldung.javaSerialization.externalizable;
 
 import java.io.Externalizable;
 import java.io.ObjectInput;

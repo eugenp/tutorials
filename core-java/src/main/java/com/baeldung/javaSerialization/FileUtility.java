@@ -1,4 +1,4 @@
-package com.java.test;
+package com.baeldung.javaSerialization;
 
 import org.junit.Assert;
 import org.junit.Test;

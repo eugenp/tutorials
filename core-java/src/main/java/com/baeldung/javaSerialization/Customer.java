@@ -1,4 +1,4 @@
-package com.java.test;
+package com.baeldung.javaSerialization;
 
 import java.io.Serializable;
 
