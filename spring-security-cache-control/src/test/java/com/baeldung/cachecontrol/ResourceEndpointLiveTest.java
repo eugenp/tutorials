@@ -11,7 +11,7 @@ import static com.jayway.restassured.RestAssured.given;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
-public class ResourceEndpointTest {
+public class ResourceEndpointLiveTest {
         private static final String URL_PREFIX = "http://localhost:8080";
 
     @Test
