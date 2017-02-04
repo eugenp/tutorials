@@ -1,6 +1,5 @@
 package com.baelding.rxjava;
 
-
 import rx.Observable;
 
 import java.util.List;
@@ -32,7 +31,6 @@ public class ComputeFunction {
             e.printStackTrace();
         }
     }
-
 
     public static void compute(Long v) {
         try {
