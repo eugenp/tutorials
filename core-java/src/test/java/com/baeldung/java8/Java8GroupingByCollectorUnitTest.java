@@ -2,6 +2,9 @@ package com.baeldung.java8;
 
 import org.junit.Test;
 
+import com.baeldung.java_8_features.groupingby.BlogPost;
+import com.baeldung.java_8_features.groupingby.BlogPostType;
+
 import java.util.*;
 import java.util.concurrent.ConcurrentMap;
 
@@ -10,45 +13,6 @@ import static java.util.stream.Collectors.*;
 import static org.junit.Assert.*;
 
 public class Java8GroupingByCollectorUnitTest {
-
-    private static class BlogPost {
-        private String title;
-        private String author;
-        private BlogPostType type;
-        private int likes;
-
-        public BlogPost(String title, String author, BlogPostType type, int likes) {
-            this.title = title;
-            this.author = author;
-            this.type = type;
-            this.likes = likes;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public BlogPostType getType() {
-            return type;
-        }
-
-        public int getLikes() {
-            return likes;
-        }
-
-        @Override
-        public String toString() {
-            return "BlogPost{" + "title='" + title + '\'' + ", type=" + type + ", likes=" + likes + '}';
-        }
-    }
-
-    private enum BlogPostType {
-        NEWS, REVIEW, GUIDE
-    }
 
     private static final List<BlogPost> POSTS = Arrays.asList(new BlogPost("News item 1", "Author 1", BlogPostType.NEWS, 15), new BlogPost("Tech review 1", "Author 2", BlogPostType.REVIEW, 5),
             new BlogPost("Programming guide", "Author 1", BlogPostType.GUIDE, 20), new BlogPost("News item 2", "Author 2", BlogPostType.NEWS, 35), new BlogPost("Tech review 2", "Author 1", BlogPostType.REVIEW, 15));
