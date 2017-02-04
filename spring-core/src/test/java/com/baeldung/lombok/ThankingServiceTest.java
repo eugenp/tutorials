@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ThankerTest {
+public class ThankingServiceTest {
 
     private final static String TRANSLATED = "TRANSLATED";
 
@@ -14,7 +14,7 @@ public class ThankerTest {
     public void thankWithTranslatedMessage() {
         Translator translator = mock(Translator.class);
         when(translator.translate("thank you")).thenReturn(TRANSLATED);
-        Thanker thanker = new Thanker(translator);
-        assertEquals(TRANSLATED, thanker.thank());
+        ThankingService thankingService = new ThankingService(translator);
+        assertEquals(TRANSLATED, thankingService.thank());
     }
 }
