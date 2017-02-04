@@ -21,6 +21,7 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.XmlViewResolver;
 import org.springframework.web.util.UrlPathHelper;
+import com.baeldung.excel.*;
 
 @Configuration
 @EnableWebMvc
@@ -106,4 +107,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         configurer.setUrlPathHelper(urlPathHelper);
     }
+
+    @Bean
+    public JExcelHelper jExcelHelper() {
+        return new JExcelHelper();
+    }
+
+    @Bean
+    public ExcelPOIHelper excelPOIHelper() {
+        return new ExcelPOIHelper();
+    }
+
 }
