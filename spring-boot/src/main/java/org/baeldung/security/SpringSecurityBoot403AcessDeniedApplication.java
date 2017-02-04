@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringSecurityBoot403AcessDeniedApplication {
 
     public static void main(String[] args) {
-        System.setProperty("spring.config.name", "accessDenied");
+       System.setProperty("spring.config.name", "accessDenied");
        SpringApplication.run(SpringSecurityBoot403AcessDeniedApplication.class, args);
     }
 }
