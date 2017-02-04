@@ -14,18 +14,24 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = TestConfig.class)
-public class ThankerAutowiringTest {
+public class GreetingServiceTest {
 
     @Autowired
-    private Thanker thanker;
+    private GreetingService greetingService;
 
     @Autowired
     private Translator translator;
 
     @Test
-    public void thankWithTranslatedMessage() {
+    public void greetWithTranslatedMessage() {
         String translated = "translated";
-        when(translator.translate("thank you")).thenReturn(translated);
-        assertEquals(translated, thanker.thank());
+        when(translator.translate("hello")).thenReturn(translated);
+        assertEquals(translated, greetingService.greet());
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void throwWhenInstantiated() {
+        GreetingService greetingService = new GreetingService();
+        greetingService.greet();
     }
 }
