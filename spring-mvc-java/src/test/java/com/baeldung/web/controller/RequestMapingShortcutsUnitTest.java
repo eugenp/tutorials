@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.web.controller;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +16,12 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.baeldung.spring.web.config.WebConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = Application.class)
-public class AppTest {
+@ContextConfiguration(classes = WebConfig.class)
+public class RequestMapingShortcutsUnitTest {
 	
 	@Autowired
     private WebApplicationContext ctx;
@@ -33,7 +35,7 @@ public class AppTest {
     }
 
 	@Test 
-	public void get() throws Exception {
+	public void giventUrl_whenGetRequest_thenFindGetResponse() throws Exception {
 	    
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get("/get");
 		
@@ -44,7 +46,7 @@ public class AppTest {
 	}
 	
 	@Test 
-	public void post() throws Exception {
+	public void giventUrl_whenPostRequest_thenFindPostResponse() throws Exception {
 	    
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/post");
 		
@@ -55,7 +57,7 @@ public class AppTest {
 	}
 	
 	@Test 
-	public void put() throws Exception {
+	public void giventUrl_whenPutRequest_thenFindPutResponse() throws Exception {
 	    
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.put("/put");
 		
@@ -66,7 +68,7 @@ public class AppTest {
 	}
 	
 	@Test 
-	public void delete() throws Exception {
+	public void giventUrl_whenDeleteRequest_thenFindDeleteResponse() throws Exception {
 	    
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.delete("/delete");
 		
@@ -77,7 +79,7 @@ public class AppTest {
 	}
 
 	@Test 
-	public void patch() throws Exception {
+	public void giventUrl_whenPatchRequest_thenFindPatchResponse() throws Exception {
 	    
 		MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.patch("/patch");
 		
