@@ -1,4 +1,4 @@
-package com.baeldung.excel;
+package com.baeldung.jexcel;
 
 import jxl.*;
 import java.util.Map;
