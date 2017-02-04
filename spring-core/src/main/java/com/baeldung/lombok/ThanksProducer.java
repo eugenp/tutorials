@@ -1,18 +1,16 @@
 package com.baeldung.lombok;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Fareweller {
+@AllArgsConstructor
+public class ThanksProducer {
 
     private final Translator translator;
 
-    public Fareweller(Translator translator) {
-        this.translator = translator;
-    }
-
-    public String farewell() {
-        return translator.translate("bye");
+    public String produce() {
+        return translator.translate("produce you");
     }
 }
