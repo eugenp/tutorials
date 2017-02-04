@@ -17,13 +17,17 @@ import java.util.concurrent.TimeUnit;
 @Controller
 public class ResourceEndpoint {
 
+    @RequestMapping(value = "/default/users/{name}", method = RequestMethod.GET)
+    public ResponseEntity<UserDto> getUserWithDefaultCaching(@PathVariable(value = "name") String name) {
+        return ResponseEntity.ok(new UserDto(name));
+    }
+
     @RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
     public ResponseEntity<UserDto> getUser(@PathVariable(value = "name") String name) {
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
                 .body(new UserDto(name));
     }
-
 
     @RequestMapping(value = "/timestamp", method = RequestMethod.GET)
     public ResponseEntity<TimestampDto> getServerTimestamp() {
