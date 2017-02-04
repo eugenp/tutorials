@@ -18,7 +18,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.Items;
 
@@ -44,16 +43,17 @@ public class HibernateOneToManyAnnotationMainTest {
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}
 
-    @Before
-    public void setUp() {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-    }
+	@Before
+	public void setUp() {
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+	}
 
 	@Test
 	public void givenSession_checkIfDatabaseIsEmpty() {
 		Cart cart = (Cart) session.get(Cart.class, new Long(1));
 		assertNull(cart);
+
 	}
 
 	@Test
@@ -77,8 +77,8 @@ public class HibernateOneToManyAnnotationMainTest {
 		session.getTransaction().commit();
 		session.close();
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+		session = sessionFactory.openSession();
+		session.beginTransaction();
 		cart = (Cart) session.get(Cart.class, new Long(1));
 		assertNotNull(cart);
 	}

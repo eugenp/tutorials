@@ -14,20 +14,18 @@ import static org.mockito.Mockito.when;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = TestConfig.class)
-public class ApologizerAutowiringTest {
-
-    private final static String TRANSLATED = "TRANSLATED";
+public class ThankingServiceAutowiringTest {
 
     @Autowired
-    private Apologizer apologizer;
+    private ThankingService thankingService;
 
     @Autowired
     private Translator translator;
 
     @Test
-    public void apologizeWithTranslatedMessage() {
-        when(translator.translate("sorry")).thenReturn(TRANSLATED);
-        assertEquals(TRANSLATED, apologizer.apologize());
+    public void thankWithTranslatedMessage() {
+        String translated = "translated";
+        when(translator.translate("thank you")).thenReturn(translated);
+        assertEquals(translated, thankingService.thank());
     }
-
 }
