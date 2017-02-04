@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ThreadPoolInParallelStream {
+public class ThreadPoolInParallelStreamTest {
     
     @Test
     public void giveRangeOfLongs_whenSummedInParallel_shouldBeEqualToExpectedTotal() 
