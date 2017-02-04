@@ -18,7 +18,7 @@ public class HotObservableOnBackPressure {
 
         Observable.range(1, 1_000_000)
                 .onBackpressureDrop()
-                .observeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
                 .doOnNext(ComputeFunction::compute)
                 .subscribe(v -> {
                 }, Throwable::printStackTrace);

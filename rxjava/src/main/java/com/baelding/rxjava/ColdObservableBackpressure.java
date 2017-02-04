@@ -9,7 +9,7 @@ public class ColdObservableBackPressure {
     public static void main(String[] args) throws InterruptedException {
         Observable.range(1, 1_000_000)
                 .observeOn(Schedulers.computation())
-                .subscribe(v -> ComputeFunction.compute(v), Throwable::printStackTrace);
+                .subscribe(ComputeFunction::compute);
 
         Thread.sleep(10_000);
 
