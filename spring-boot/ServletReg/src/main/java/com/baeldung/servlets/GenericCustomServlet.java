@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class GenericCustomServlet extends HttpServlet{
+public class GenericCustomServlet extends HttpServlet {
 
-        @Override
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                response.setContentType("text/html");
-                PrintWriter out = response.getWriter();
-                out.println(
-                        "<p>Hello World</p>"
-                );
-        }
+    @Override protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<p>Hello World</p>");
+    }
 }

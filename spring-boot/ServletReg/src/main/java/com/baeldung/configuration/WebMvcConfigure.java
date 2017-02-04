@@ -1,6 +1,5 @@
 package com.baeldung.configuration;
 
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,27 +12,27 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration public class WebMvcConfigure extends WebMvcConfigurerAdapter {
 
-        //JSP view resolver
-        @Bean public ViewResolver getViewResolver() {
-                InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-                resolver.setPrefix("/WEB-INF/");
-                resolver.setSuffix(".jsp");
-                return resolver;
-        }
+    //JSP view resolver
+    @Bean public ViewResolver getViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
 
-        //To ensure other default settings
-        @Override public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-                configurer.enable();
-        }
+    //To ensure other default settings
+    @Override public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 
-        //Get Resources in WebApp
-        @Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
-                registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-        }
+    //Get Resources in WebApp
+    @Override public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
+    }
 
-        //Remove ErrorPageFilter
-        @Bean public ErrorPageFilter errorPageFilter() {
-                return new ErrorPageFilter();
-        }
+    //Remove ErrorPageFilter
+    @Bean public ErrorPageFilter errorPageFilter() {
+        return new ErrorPageFilter();
+    }
 }
 
