@@ -18,8 +18,9 @@
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> 
-        <module>apache-poi</module> 
+        <module>apache-fop</module>
+        <module>apache-poi</module>
+        <module>apache-thrift</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -44,6 +45,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
@@ -92,8 +94,10 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
+        <module>solr-fulltext-search</module>
         <module>spark-java</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
@@ -121,7 +125,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
-        <module>spring-jersey</module>		
+        <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -136,7 +140,7 @@
         <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
-        <module>spring-openid</module>
+        <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
@@ -175,12 +179,16 @@
 
         <module>testing</module>
 
+        <module>video-tutorials</module>
+
         <module>wicket</module>
 
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
-    <module>java-mongodb</module>
+
+        <module>struts2</module>
+
   </modules>
 
 </project>

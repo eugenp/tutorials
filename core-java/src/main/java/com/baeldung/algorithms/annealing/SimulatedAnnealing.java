@@ -24,7 +24,7 @@ public class SimulatedAnnealing {
                 }
                 t *= coolingRate;
             } else {
-            	continue;
+                continue;
             }
             if (i % 100 == 0) {
                 System.out.println("Iteration #" + i);
