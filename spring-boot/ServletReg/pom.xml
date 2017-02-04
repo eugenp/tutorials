@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <tomcat.version>9.0.0.M15</tomcat.version>
+        <tomcat.version>8.5.11</tomcat.version>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -32,12 +32,12 @@
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
-            <version>9.0.0.M15</version>
+            <version>${tomcat.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <version>9.0.0.M15</version>
+            <version>${tomcat.version}</version>
         </dependency>
 
     </dependencies>
