@@ -7,6 +7,7 @@ import java.io.InputStream;
 import jxl.read.biff.BiffException;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.baeldung.poi.excel.ExcelPOIHelper;
 
@@ -36,7 +37,7 @@ public class ExcelTest {
 
     @Test
     public void whenParsingPOIExcelFile_thenCorrect() throws IOException {
-        Map<Integer, ArrayList<String>> data = excelPOIHelper.readExcel(fileLocation);
+        Map<Integer, List<String>> data = excelPOIHelper.readExcel(fileLocation);
 
         assertEquals("Name", data.get(0)
             .get(0));

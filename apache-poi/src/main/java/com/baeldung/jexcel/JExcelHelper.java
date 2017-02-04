@@ -4,6 +4,7 @@ import jxl.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 import jxl.read.biff.BiffException;
 import java.io.File;
 import java.io.IOException;
@@ -13,8 +14,8 @@ import jxl.format.Colour;
 
 public class JExcelHelper {
 
-    public Map<Integer, ArrayList<String>> readJExcel(String fileLocation) throws IOException, BiffException {
-        Map<Integer, ArrayList<String>> data = new HashMap<>();
+    public Map<Integer, List<String>> readJExcel(String fileLocation) throws IOException, BiffException {
+        Map<Integer, List<String>> data = new HashMap<>();
 
         Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
         Sheet sheet = workbook.getSheet(0);

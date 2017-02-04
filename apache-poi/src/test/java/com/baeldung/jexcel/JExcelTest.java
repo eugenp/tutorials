@@ -7,6 +7,7 @@ import java.io.InputStream;
 import jxl.read.biff.BiffException;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.baeldung.jexcel.JExcelHelper;
 
@@ -39,7 +40,7 @@ public class JExcelTest {
 
     @Test
     public void whenParsingJExcelFile_thenCorrect() throws IOException, BiffException {
-        Map<Integer, ArrayList<String>> data = jExcelHelper.readJExcel(fileLocation);
+        Map<Integer, List<String>> data = jExcelHelper.readJExcel(fileLocation);
 
         assertEquals("Name", data.get(0)
             .get(0));

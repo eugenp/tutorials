@@ -19,12 +19,13 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExcelPOIHelper {
 
-    public Map<Integer, ArrayList<String>> readExcel(String fileLocation) throws IOException {
+    public Map<Integer, List<String>> readExcel(String fileLocation) throws IOException {
 
-        Map<Integer, ArrayList<String>> data = new HashMap<>();
+        Map<Integer, List<String>> data = new HashMap<>();
         FileInputStream file = new FileInputStream(new File(fileLocation));
         Workbook workbook = new XSSFWorkbook(file);
         Sheet sheet = workbook.getSheetAt(0);
