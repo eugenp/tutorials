@@ -16,7 +16,7 @@ public class Worker implements Runnable {
     public void run() {
         // Do some work
         System.out.println("Doing some logic");
-        countDownLatch.countDown();
         outputScraper.add("Counted down");
+        countDownLatch.countDown();
     }
 }

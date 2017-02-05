@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DatesController {
 
-	@RequestMapping(value = "/dates", method = RequestMethod.GET)
-	public String getInfo(Model model) {
-		model.addAttribute("standardDate", new Date());
-		model.addAttribute("localDateTime", LocalDateTime.now());
-		model.addAttribute("localDate", LocalDate.now());
-		model.addAttribute("timestamp", Instant.now());
-		return "dates.html";
-	}
+    @RequestMapping(value = "/dates", method = RequestMethod.GET)
+    public String getInfo(Model model) {
+        model.addAttribute("standardDate", new Date());
+        model.addAttribute("localDateTime", LocalDateTime.now());
+        model.addAttribute("localDate", LocalDate.now());
+        model.addAttribute("timestamp", Instant.now());
+        return "dates.html";
+    }
 
 }

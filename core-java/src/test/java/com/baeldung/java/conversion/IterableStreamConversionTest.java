@@ -24,8 +24,7 @@ public class IterableStreamConversionTest {
     public void whenConvertedToList_thenCorrect() {
         Iterable<String> iterable = Arrays.asList("Testing", "Iterable", "conversion", "to", "Stream");
 
-        List<String> result = StreamSupport.stream(iterable.spliterator(), false)
-          .map(String::toUpperCase).collect(Collectors.toList());
+        List<String> result = StreamSupport.stream(iterable.spliterator(), false).map(String::toUpperCase).collect(Collectors.toList());
 
         assertThat(result, contains("TESTING", "ITERABLE", "CONVERSION", "TO", "STREAM"));
     }

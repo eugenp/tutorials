@@ -56,9 +56,7 @@ public class NashornTest {
         Map<String, Object> map = (Map<String, Object>) obj;
 
         Assert.assertEquals("hello", map.get("greet"));
-        Assert.assertTrue(List.class.isAssignableFrom(map
-          .get("primes")
-          .getClass()));
+        Assert.assertTrue(List.class.isAssignableFrom(map.get("primes").getClass()));
     }
 
     @Test
