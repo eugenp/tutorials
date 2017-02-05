@@ -1,10 +1,6 @@
-package com.baeldung.handlermapping;
+package com.baeldung.handlermappings;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
+import com.baeldung.spring.web.config.SimpleUrlHandlerMappingConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,12 +13,15 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.spring.web.config.ControllerClassNameHandlerMappingConfig;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = ControllerClassNameHandlerMappingConfig.class)
-public class ControllerClassNameHandlerMappingTest {
+@ContextConfiguration(classes = SimpleUrlHandlerMappingConfig.class)
+public class SimpleUrlMappingConfigTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
@@ -35,7 +34,7 @@ public class ControllerClassNameHandlerMappingTest {
     }
 
     @Test
-    public void whenControllerClassNameMapping_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
+    public void whenSimpleUrlMapping_thenMappedOK() throws Exception {
+        mockMvc.perform(get("/simpleUrlWelcome")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
     }
 }

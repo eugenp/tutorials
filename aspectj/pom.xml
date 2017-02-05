@@ -44,7 +44,37 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-        
+
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-context</artifactId>
+        	<version>4.3.4.RELEASE</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-beans</artifactId>
+        	<version>4.3.4.RELEASE</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-core</artifactId>
+        	<version>4.3.4.RELEASE</version>
+        </dependency>
+        <dependency>
+        	<groupId>cglib</groupId>
+        	<artifactId>cglib</artifactId>
+        	<version>3.2.4</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework</groupId>
+        	<artifactId>spring-aop</artifactId>
+        	<version>4.3.4.RELEASE</version>
+        </dependency>
+        <dependency>
+        	<groupId>log4j</groupId>
+        	<artifactId>log4j</artifactId>
+        	<version>1.2.17</version>
+        </dependency>
     </dependencies>
 
     <build>

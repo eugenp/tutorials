@@ -1,6 +1,10 @@
-package com.baeldung.handlermapping;
+package com.baeldung.handlermappings;
 
-import com.baeldung.spring.web.config.BeanNameUrlHandlerMappingConfig;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,16 +17,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-
+import com.baeldung.spring.web.config.ControllerClassNameHandlerMappingConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = BeanNameUrlHandlerMappingConfig.class)
-public class BeanNameMappingConfigTest {
+@ContextConfiguration(classes = ControllerClassNameHandlerMappingConfig.class)
+public class ControllerClassNameHandlerMappingTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
@@ -35,7 +35,7 @@ public class BeanNameMappingConfigTest {
     }
 
     @Test
-    public void whenBeanNameMapping_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/beanNameUrl")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
+    public void whenControllerClassNameMapping_thenMappedOK() throws Exception {
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
     }
 }

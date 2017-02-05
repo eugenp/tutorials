@@ -1,6 +1,7 @@
-package com.baeldung.handlermapping;
+package com.baeldung.handlermappings;
 
-import com.baeldung.spring.web.config.SimpleUrlHandlerMappingConfig;
+import com.baeldung.spring.web.config.HandlerMappingCustomPrioritiesConfig;
+import com.baeldung.spring.web.config.HandlerMappingPrioritiesConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = SimpleUrlHandlerMappingConfig.class)
-public class SimpleUrlMappingConfigTest {
+@ContextConfiguration(classes = HandlerMappingPrioritiesConfig.class)
+public class HandlerMappingPriorityConfigTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
@@ -34,7 +35,7 @@ public class SimpleUrlMappingConfigTest {
     }
 
     @Test
-    public void whenSimpleUrlMapping_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/simpleUrlWelcome")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
+    public void whenConfiguringPriorities_thenMappedOK() throws Exception {
+        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("bean-name-handler-mapping")).andDo(print());
     }
 }

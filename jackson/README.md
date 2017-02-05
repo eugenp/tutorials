@@ -24,3 +24,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [XML Serialization and Deserialization with Jackson](http://www.baeldung.com/jackson-xml-serialization-and-deserialization)
 - [More Jackson Annotations](http://www.baeldung.com/jackson-advanced-annotations)
 - [Inheritance with Jackson](http://www.baeldung.com/jackson-inheritance)
+- [Guide to @JsonFormat in Jackson](http://www.baeldung.com/jackson-jsonformat)
