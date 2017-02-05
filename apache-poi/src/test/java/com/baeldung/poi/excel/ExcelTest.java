@@ -48,7 +48,6 @@ public class ExcelTest {
             .get(0));
         assertEquals("20", data.get(1)
             .get(1));
-
     }
 
 }

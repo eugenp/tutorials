@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
-	<artifactId>logmdc</artifactId>
+	<artifactId>log-mdc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>logmdc</name>
+	<name>log-mdc</name>
     <packaging>war</packaging>
 	<description>tutorial on logging with MDC and NDC</description>
 

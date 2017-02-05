@@ -12,6 +12,7 @@
         <module>spring-cloud-hystrix</module>
         <module>spring-cloud-bootstrap</module>
         <module>spring-cloud-ribbon-client</module>
+        <module>spring-cloud-rest</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -51,7 +51,6 @@ public class JExcelTest {
             .get(0));
         assertEquals("20", data.get(2)
             .get(1));
-
     }
 
 }

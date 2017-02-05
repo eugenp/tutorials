@@ -1,6 +1,8 @@
 package com.baeldung.performancemonitor;
 
-import org.aspectj.lang.annotation.Aspect;
+import java.time.LocalDate;
+import java.time.Month;
+
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
@@ -14,10 +16,10 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @EnableAspectJAutoProxy
 public class AopConfiguration {
     
-    @Pointcut("execution(public int com.baeldung.performancemonitor.Person.getAge())")
+    @Pointcut("execution(public String com.baeldung.performancemonitor.PersonService.getFullName(..))")
     public void monitor() { }
     
-    @Pointcut("execution(public void com.baeldung.performancemonitor.Person.setAge(int))")
+    @Pointcut("execution(public int com.baeldung.performancemonitor.PersonService.getAge(..))")
     public void myMonitor() { }
     
     @Bean
@@ -34,7 +36,12 @@ public class AopConfiguration {
     
     @Bean
     public Person person(){
-        return new Person();
+        return new Person("John","Smith", LocalDate.of(1980, Month.JANUARY, 12));
+    }
+    
+    @Bean
+    public PersonService personService(){
+        return new PersonService();
     }
     
     @Bean

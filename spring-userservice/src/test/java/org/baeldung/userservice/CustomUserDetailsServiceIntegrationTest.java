@@ -59,8 +59,8 @@ public class CustomUserDetailsServiceIntegrationTest {
             myUserService.removeUserByUsername(USERNAME);
         }
     }
-    
-    @Test (expected = BadCredentialsException.class)
+
+    @Test(expected = BadCredentialsException.class)
     public void givenIncorrectUser_whenAuthenticate_thenBadCredentialsException() {
         try {
             MyUserDto userDTO = new MyUserDto();
@@ -69,15 +69,13 @@ public class CustomUserDetailsServiceIntegrationTest {
 
             try {
                 myUserService.registerNewUserAccount(userDTO);
-            }
-            catch (Exception exc) {
+            } catch (Exception exc) {
                 LOG.log(Level.SEVERE, "Error creating account");
-            } 
-            
+            }
+
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(USERNAME2, PASSWORD);
             Authentication authentication = authenticationProvider.authenticate(auth);
-        }  
-        finally {
+        } finally {
             myUserService.removeUserByUsername(USERNAME);
         }
     }
