@@ -1,21 +1,22 @@
 package com.baeldung.java8;
 
-
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class Java8FindAnyFindFirstTest {
 
     @Test
     public void createStream_whenFindAnyResultIsPresent_thenCorrect() {
 
-        List<String> list = Arrays.asList("A","B","C","D");
+        List<String> list = Arrays.asList("A", "B", "C", "D");
 
         Optional<String> result = list.stream().findAny();
 
@@ -24,26 +25,22 @@ public class Java8FindAnyFindFirstTest {
     }
 
     @Test
-    public void createParallelStream_whenFindAnyResultIsPresent_ThenCorrect() throws Exception {
-        List<Integer> list = Arrays.asList(1,2,3,4,5);
-        Optional<Integer> result = list
-                .stream()
-                .parallel()
-                .filter(num -> num<4)
-                .findAny();
+    public void createParallelStream_whenFindAnyResultIsPresent_thenCorrect() throws Exception {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        Optional<Integer> result = list.stream().parallel().filter(num -> num < 4).findAny();
 
         assertTrue(result.isPresent());
-        assertThat(result.get(),anyOf(is(1), is(2), is(3)));
+        assertThat(result.get(), anyOf(is(1), is(2), is(3)));
     }
 
     @Test
     public void createStream_whenFindFirstResultIsPresent_thenCorrect() {
 
-        List<String> list = Arrays.asList("A","B","C","D");
+        List<String> list = Arrays.asList("A", "B", "C", "D");
 
         Optional<String> result = list.stream().findFirst();
 
         assertTrue(result.isPresent());
-        assertThat(result.get(),is("A"));
+        assertThat(result.get(), is("A"));
     }
 }

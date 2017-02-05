@@ -11,7 +11,7 @@ import org.w3c.dom.NodeList;
 public class DefaultParserUnitTest {
 
     final String fileName = "src/test/resources/example.xml";
-    
+
     final String fileNameSpace = "src/test/resources/example_namespace.xml";
 
     DefaultParser parser;
@@ -51,9 +51,9 @@ public class DefaultParserUnitTest {
         String type = node.getAttributes().getNamedItem("type").getNodeValue();
         assertEquals("android", type);
     }
-    
+
     @Test
-    public void getNodeListByDateTest(){
+    public void getNodeListByDateTest() {
         parser = new DefaultParser(new File(fileName));
         NodeList list = parser.getNodeListByTitle("04022016");
         for (int i = 0; null != list && i < list.getLength(); i++) {
@@ -68,9 +68,9 @@ public class DefaultParserUnitTest {
             assertEquals("SpringAuthor", nod.getLastChild().getTextContent());
         }
     }
-    
+
     @Test
-    public void getNodeListWithNamespaceTest(){
+    public void getNodeListWithNamespaceTest() {
         parser = new DefaultParser(new File(fileNameSpace));
         NodeList list = parser.getAllTutorials();
         assertNotNull(list);
