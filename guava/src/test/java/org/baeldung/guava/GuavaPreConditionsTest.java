@@ -1,9 +1,12 @@
 package org.baeldung.guava;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.Arrays;
+
 import org.junit.Test;
-import com.google.common.base.*;
+
+import com.google.common.base.Preconditions;
 
 public class GuavaPreConditionsTest {
 
