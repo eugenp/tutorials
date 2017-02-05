@@ -5,7 +5,10 @@ import rx.schedulers.Schedulers;
 
 public class ColdObservableBackpressure {
     public static void main(String[] args) throws InterruptedException {
-        Observable.range(1, 1_000_000).observeOn(Schedulers.computation()).subscribe(v -> ComputeFunction.compute(v), Throwable::printStackTrace);
+        Observable
+          .range(1, 1_000_000)
+          .observeOn(Schedulers.computation())
+          .subscribe(ComputeFunction::compute, Throwable::printStackTrace);
 
         Thread.sleep(10_000);
 
