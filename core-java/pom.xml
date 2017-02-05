@@ -154,6 +154,12 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
@@ -371,6 +377,7 @@
         <mockito.version>1.10.19</mockito.version>
         <testng.version>6.10</testng.version>
         <assertj.version>3.6.1</assertj.version>
+        <avaitility.version>1.7.0</avaitility.version>
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
