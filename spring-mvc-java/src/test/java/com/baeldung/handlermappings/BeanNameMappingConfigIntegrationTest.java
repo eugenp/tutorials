@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = BeanNameUrlHandlerMappingConfig.class)
-public class BeanNameMappingConfigTest {
+public class BeanNameMappingConfigIntegrationTest {
 
     @Autowired
     private WebApplicationContext webAppContext;

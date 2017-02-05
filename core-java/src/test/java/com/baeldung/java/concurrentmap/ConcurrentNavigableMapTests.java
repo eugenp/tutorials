@@ -18,9 +18,7 @@ public class ConcurrentNavigableMapTests {
 
         updateMapConcurrently(skipListMap, 4);
 
-        Iterator<Integer> skipListIter = skipListMap
-          .keySet()
-          .iterator();
+        Iterator<Integer> skipListIter = skipListMap.keySet().iterator();
         int previous = skipListIter.next();
         while (skipListIter.hasNext()) {
             int current = skipListIter.next();

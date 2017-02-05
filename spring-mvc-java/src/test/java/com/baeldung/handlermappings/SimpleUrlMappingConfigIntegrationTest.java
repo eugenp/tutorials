@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = SimpleUrlHandlerMappingConfig.class)
-public class SimpleUrlMappingConfigTest {
+public class SimpleUrlMappingConfigIntegrationTest {
 
     @Autowired
     private WebApplicationContext webAppContext;

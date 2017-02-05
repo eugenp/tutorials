@@ -13,7 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ExternalPropertiesWithXmlConfig.class }, loader = AnnotationConfigContextLoader.class)
 @Ignore("manual only")
-public class ExternalPropertiesWithXmlIntegrationTest {
+public class ExternalPropertiesWithXmlManualTest {
 
     @Autowired
     private Environment env;
