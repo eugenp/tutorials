@@ -9,30 +9,30 @@
 </head>
 <body>
 
-	<p>Admin login page</p>
-	<form name='f' action='admin_login' method='POST'>
+    <p>Admin login page</p>
+    <form name="f" action="admin_login" method="POST">
 
-		<table>
-			<tr>
-				<td>User:</td>
-				<td><input type='text' name='username' value=''></td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type='password' name='password' /></td>
-			</tr>
-			<tr>
-				<td><input name="submit" type="submit" value="submit" /></td>
-			</tr>
-		</table>
+        <table>
+            <tr>
+                <td>User:</td>
+                <td><input type="text" name="username" value=""></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" /></td>
+            </tr>
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
 
-	</form>
+    </form>
 
-	<%
-	    if (request.getParameter("error") != null) {
-	        out.println("Login failed!");
-	    }
-	%>
+    <%
+        if (request.getParameter("error") != null) {
+            out.println("Login failed!");
+        }
+    %>
 
 </body>
 </html>

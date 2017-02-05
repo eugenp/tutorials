@@ -9,28 +9,29 @@
 </head>
 <body>
 
-	<p>User login page</p>
-	<form name='f' action='user_login' method='POST'>
+    <p>User login page</p>
+	
+    <form name="f" action="user_login" method="POST">	
+        <table>
+            <tr>
+                <td>User:</td>
+                <td><input type="text" name="username" value=""></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" /></td>
+            </tr>
+            <tr>
+                <td><input name="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
 
-	<table>
-		<tr>
-			<td>User:</td>
-			<td><input type='text' name='username' value=''></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type='password' name='password' /></td>
-		</tr>
-		<tr>
-			<td><input name="submit" type="submit" value="submit" /></td>
-		</tr>
-	</table>
-	</form>
-	<%
-	    if (request.getParameter("error") != null) {
-	        out.println("Login failed!");
-	    }
-	%>
+    </form>
+    <%
+        if (request.getParameter("error") != null) {
+            out.println("Login failed!");
+        }
+    %>
 
 </body>
 </html>
