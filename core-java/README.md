@@ -54,4 +54,3 @@
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)
 - [The Traveling Salesman Problem in Java](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
 - [How to Create an Executable JAR with Maven](http://www.baeldung.com/executable-jar-with-maven)
-- [Introduction to Java Serialization](http://inprogress.baeldung.com/introduction-to-java-serialization/)
