@@ -15,13 +15,13 @@ public class WeakHashMapTest {
     public void givenWeakHashMap_whenCacheValueThatHasNoReferenceToIt_GCShouldReclaimThatObject() {
         //given
         WeakHashMap<UniqueImageName, BigImage> map = new WeakHashMap<>();
-        BigImage bigImage = new BigImage("foo");
+        BigImage bigImage = new BigImage("image_id");
         UniqueImageName imageName = new UniqueImageName("name_of_big_image");
 
         map.put(imageName, bigImage);
         assertTrue(map.containsKey(imageName));
 
-        //when big image is not in use anymore
+        //when big image key is not reference anywhere
         imageName = null;
         System.gc();
 
