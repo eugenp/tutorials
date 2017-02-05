@@ -68,6 +68,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda-time.version}</version>
@@ -128,8 +134,8 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-        
-         <!-- logging -->
+
+        <!-- logging -->
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -152,7 +158,7 @@
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
-</dependency>
+        </dependency>
 
     </dependencies>
 
@@ -198,7 +204,7 @@
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <commons-io.version>2.5</commons-io.version>        
+        <commons-io.version>2.5</commons-io.version>
         <joda-time.version>2.9.6</joda-time.version>
         <gson.version>2.8.0</gson.version>
         <commons-collections4.version>4.1</commons-collections4.version>
