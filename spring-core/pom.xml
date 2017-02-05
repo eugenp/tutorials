@@ -52,6 +52,11 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -131,6 +136,7 @@
         <junit.version>4.12</junit.version>
         <guava.version>20.0</guava.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <lombok.version>1.16.12</lombok.version>
     </properties>
 
     <repositories>
