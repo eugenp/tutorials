@@ -58,7 +58,7 @@ public class GuavaPreConditionsTest {
         final String nullObject = null;
         final String message = "Please check the Object supplied, its %s!";
 
-        assertThatThrownBy(() -> Preconditions.checkNotNull(nullObject, message, nullObject)).isInstanceOf(NullPointerException.class).hasMessage(message, nullObject).hasNoCause();
+        assertThatThrownBy(() -> Preconditions.checkNotNull(nullObject, message, new Object[] {null})).isInstanceOf(NullPointerException.class).hasMessage(message, nullObject).hasNoCause();
     }
 
     @Test
