@@ -12,10 +12,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Tayo
- */
+
 public class Communication {
 
     final Date start = new Date();
