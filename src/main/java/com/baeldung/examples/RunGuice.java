@@ -12,10 +12,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import java.util.Scanner;
 
-/**
- *
- * @author Tayo
- */
+
 public class RunGuice {
 
     public static void main(String[] args) {
