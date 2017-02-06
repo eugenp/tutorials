@@ -5,10 +5,6 @@
  */
 package com.baeldung.examples.guice.constant;
 
-/**
- *
- * @author Tayo
- */
 public enum CommunicationModel {
 
     EMAIL("Email"), SMS("SMS"), IM("IM"), PHONE("Phone");
