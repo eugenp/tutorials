@@ -1,4 +1,4 @@
-package org.baeldung.http.client;
+package org.baeldung.client;
 
 import java.net.URI;
 

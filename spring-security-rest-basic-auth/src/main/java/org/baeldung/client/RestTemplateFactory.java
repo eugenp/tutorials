@@ -1,7 +1,6 @@
 package org.baeldung.client;
 
 import org.apache.http.HttpHost;
-import org.baeldung.http.client.HttpComponentsClientHttpRequestFactoryBasicAuth;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.client.ClientHttpRequestFactory;
