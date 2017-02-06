@@ -3,10 +3,12 @@ package com.baeldung.strategy;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
+import static com.baeldung.strategy.Discounter.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.util.Lists.newArrayList;
 
 public class StrategyDesignPatternUnitTest {
     @Test
@@ -14,7 +16,7 @@ public class StrategyDesignPatternUnitTest {
         Discounter staffDiscounter = new EasterDiscounter();
 
         final BigDecimal discountedValue = staffDiscounter
-          .applyDiscount(BigDecimal.valueOf(100));
+          .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
           .isEqualByComparingTo(BigDecimal.valueOf(50));
@@ -24,13 +26,13 @@ public class StrategyDesignPatternUnitTest {
     public void shouldDivideByTwo_WhenApplyingStaffDiscounterWithAnonyousTypes() {
         Discounter staffDiscounter = new Discounter() {
             @Override
-            public BigDecimal applyDiscount(final BigDecimal amount) {
+            public BigDecimal apply( BigDecimal amount) {
                 return amount.multiply(BigDecimal.valueOf(0.5));
             }
         };
 
         final BigDecimal discountedValue = staffDiscounter
-          .applyDiscount(BigDecimal.valueOf(100));
+          .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
           .isEqualByComparingTo(BigDecimal.valueOf(50));
@@ -41,18 +43,31 @@ public class StrategyDesignPatternUnitTest {
         Discounter staffDiscounter = amount -> amount.multiply(BigDecimal.valueOf(0.5));
 
         final BigDecimal discountedValue = staffDiscounter
-          .applyDiscount(BigDecimal.valueOf(100));
+          .apply(BigDecimal.valueOf(100));
 
         assertThat(discountedValue)
           .isEqualByComparingTo(BigDecimal.valueOf(50));
     }
 
     @Test
-    public void shouldApplyListOfDiscounts() {
-        List<Discounter> discounters = newArrayList();
+    public void shouldApplyAllDiscounts() {
+        List<Discounter> discounters = Arrays.asList(christmas(), newYear(), easter());
 
         BigDecimal amount = BigDecimal.valueOf(100);
 
-        discounters.forEach((d) -> d.applyDiscount(amount));
+        final Discounter combinedDiscounter = discounters
+          .stream()
+          .reduce(v -> v, (d1, d2) -> (Discounter) d1.andThen(d2));
+
+        combinedDiscounter.apply(amount);
+    }
+
+    @Test
+    public void shouldChainDiscounters() {
+        final Function<BigDecimal, BigDecimal> combinedDiscounters = Discounter
+          .christmas()
+          .andThen(newYear());
+
+        combinedDiscounters.apply(BigDecimal.valueOf(100));
     }
 }
