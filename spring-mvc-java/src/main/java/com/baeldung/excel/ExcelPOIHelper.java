@@ -16,18 +16,20 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.DateUtil;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExcelPOIHelper {
 
-    public Map<Integer, ArrayList<MyCell>> readExcel(String fileLocation) throws IOException {
+    public Map<Integer, List<MyCell>> readExcel(String fileLocation) throws IOException {
 
-        Map<Integer, ArrayList<MyCell>> data = new HashMap<Integer, ArrayList<MyCell>>();
+        Map<Integer, List<MyCell>> data = new HashMap<>();
         FileInputStream fis = new FileInputStream(new File(fileLocation));
 
         if (fileLocation.endsWith(".xls")) {
@@ -38,13 +40,13 @@ public class ExcelPOIHelper {
 
         int maxNrCols = 0;
 
-        for (ArrayList<MyCell> ls : data.values()) {
+        for (List<MyCell> ls : data.values()) {
             if (ls.size() > maxNrCols) {
                 maxNrCols = ls.size();
             }
         }
 
-        for (ArrayList<MyCell> ls : data.values()) {
+        for (List<MyCell> ls : data.values()) {
             if (ls.size() < maxNrCols) {
                 for (int i = ls.size(); i < maxNrCols; i++) {
                     ls.add(new MyCell(""));
@@ -80,8 +82,8 @@ public class ExcelPOIHelper {
         return content;
     }
 
-    private Map<Integer, ArrayList<MyCell>> readHSSFWorkbook(FileInputStream fis) throws IOException {
-        Map<Integer, ArrayList<MyCell>> data = new HashMap<Integer, ArrayList<MyCell>>();
+    private Map<Integer, List<MyCell>> readHSSFWorkbook(FileInputStream fis) throws IOException {
+        Map<Integer, List<MyCell>> data = new HashMap<>();
         HSSFWorkbook workbook = null;
         try {
             workbook = new HSSFWorkbook(fis);
@@ -132,9 +134,9 @@ public class ExcelPOIHelper {
         return data;
     }
 
-    private Map<Integer, ArrayList<MyCell>> readXSSFWorkbook(FileInputStream fis) throws IOException {
+    private Map<Integer, List<MyCell>> readXSSFWorkbook(FileInputStream fis) throws IOException {
         XSSFWorkbook workbook = null;
-        Map<Integer, ArrayList<MyCell>> data = new HashMap<Integer, ArrayList<MyCell>>();
+        Map<Integer, List<MyCell>> data = new HashMap<>();
         try {
 
             workbook = new XSSFWorkbook(fis);

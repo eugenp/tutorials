@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import com.baeldung.excel.*;
 import java.util.Map;
-import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Resource;
 
 @Controller
@@ -49,7 +49,7 @@ public class ExcelController {
 
         if (fileLocation != null) {
             if (fileLocation.endsWith(".xlsx") || fileLocation.endsWith(".xls")) {
-                Map<Integer, ArrayList<MyCell>> data = excelPOIHelper.readExcel(fileLocation);
+                Map<Integer, List<MyCell>> data = excelPOIHelper.readExcel(fileLocation);
                 model.addAttribute("data", data);
             } else {
                 model.addAttribute("message", "Not a valid excel file!");
