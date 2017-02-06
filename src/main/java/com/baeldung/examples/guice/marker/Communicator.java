@@ -5,10 +5,7 @@
  */
 package com.baeldung.examples.guice.marker;
 
-/**
- *
- * @author Tayo
- */
+
 public interface Communicator {
     
 }
