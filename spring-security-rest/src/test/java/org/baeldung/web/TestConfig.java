@@ -10,10 +10,10 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 @ComponentScan({ "org.baeldung.web" })
 public class TestConfig {
 
-	@Bean
-	public MultipartResolver multipartResolver() {
-		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		return multipartResolver;
-	}
+    @Bean
+    public MultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        return multipartResolver;
+    }
 
 }

@@ -26,9 +26,7 @@ public class AssertJGuavaTest {
         final File temp1 = File.createTempFile("bael", "dung1");
         final File temp2 = File.createTempFile("bael", "dung2");
 
-        assertThat(Files.asByteSource(temp1))
-                .hasSize(0)
-                .hasSameContentAs(Files.asByteSource(temp2));
+        assertThat(Files.asByteSource(temp1)).hasSize(0).hasSameContentAs(Files.asByteSource(temp2));
     }
 
     @Test
@@ -37,11 +35,7 @@ public class AssertJGuavaTest {
         mmap.put(1, "one");
         mmap.put(1, "1");
 
-        assertThat(mmap)
-                .hasSize(2)
-                .containsKeys(1)
-                .contains(entry(1, "one"))
-                .contains(entry(1, "1"));
+        assertThat(mmap).hasSize(2).containsKeys(1).contains(entry(1, "one")).contains(entry(1, "1"));
     }
 
     @Test
@@ -62,31 +56,21 @@ public class AssertJGuavaTest {
         mmap2.put(1, "one");
         mmap2.put(1, "1");
 
-        assertThat(mmap1)
-                .containsAllEntriesOf(mmap2)
-                .containsAllEntriesOf(mmap1_clone)
-                .hasSameEntriesAs(mmap1_clone);
+        assertThat(mmap1).containsAllEntriesOf(mmap2).containsAllEntriesOf(mmap1_clone).hasSameEntriesAs(mmap1_clone);
     }
 
     @Test
     public void givenOptional_whenVerifyingContent_thenShouldBeEqual() throws Exception {
         final Optional<String> something = Optional.of("something");
 
-        assertThat(something)
-                .isPresent()
-                .extractingValue()
-                .isEqualTo("something");
+        assertThat(something).isPresent().extractingValue().isEqualTo("something");
     }
 
     @Test
     public void givenRange_whenVerifying_thenShouldBeCorrect() throws Exception {
         final Range<String> range = Range.openClosed("a", "g");
 
-        assertThat(range)
-                .hasOpenedLowerBound()
-                .isNotEmpty()
-                .hasClosedUpperBound()
-                .contains("b");
+        assertThat(range).hasOpenedLowerBound().isNotEmpty().hasClosedUpperBound().contains("b");
     }
 
     @Test
@@ -96,10 +80,7 @@ public class AssertJGuavaTest {
         map.put(Range.closed(0, 60), "F");
         map.put(Range.closed(61, 70), "D");
 
-        assertThat(map)
-                .isNotEmpty()
-                .containsKeys(0)
-                .contains(MapEntry.entry(34, "F"));
+        assertThat(map).isNotEmpty().containsKeys(0).contains(MapEntry.entry(34, "F"));
     }
 
     @Test
@@ -109,13 +90,7 @@ public class AssertJGuavaTest {
         table.put(1, "A", "PRESENT");
         table.put(1, "B", "ABSENT");
 
-        assertThat(table)
-                .hasRowCount(1)
-                .containsValues("ABSENT")
-                .containsCell(1, "B", "ABSENT");
+        assertThat(table).hasRowCount(1).containsValues("ABSENT").containsCell(1, "B", "ABSENT");
     }
-
-
-
 
 }

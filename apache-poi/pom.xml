@@ -9,6 +9,7 @@
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <junit.version>4.12</junit.version>
         <poi.version>3.15</poi.version>
+		<jexcel.version>1.0.6</jexcel.version>
     </properties>
 
     <build>
@@ -37,5 +38,20 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
         </dependency>
+		 <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+		 <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>${jexcel.version}</version>
+        </dependency>	
     </dependencies>
 </project>
