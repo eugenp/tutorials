@@ -12,7 +12,7 @@ import static org.assertj.core.util.Lists.newArrayList;
 
 public class ConcurrentModificationUnitTest {
     @Test(expected = ConcurrentModificationException.class)
-    public void whilstRemovingDuringIteration_shouldThrowException() throws InterruptedException {
+    public void givenIterating_whenRemoving_thenThrowException() throws InterruptedException {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
 
@@ -22,7 +22,7 @@ public class ConcurrentModificationUnitTest {
     }
 
     @Test
-    public void whilstRemovingDuringIteration_shouldNotThrowException() throws InterruptedException {
+    public void givenIterating_whenUsingIteratorRemove_thenDontError() throws InterruptedException {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
 
@@ -37,7 +37,7 @@ public class ConcurrentModificationUnitTest {
     }
 
     @Test
-    public void whilstRemovingDuringForEach_shouldNotThrowException() throws InterruptedException {
+    public void givenIterating_whenUsingRemovalList_thenDontError() throws InterruptedException {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
         ArrayList<Integer> toRemove = newArrayList();
@@ -48,6 +48,16 @@ public class ConcurrentModificationUnitTest {
             }
         }
         integers.removeAll(toRemove);
+
+        assertThat(integers).containsExactly(1, 3);
+    }
+
+    @Test
+    public void whenUsingRemoveIf_thenRemoveElements() throws InterruptedException {
+
+        ArrayList<Integer> integers = newArrayList(1, 2, 3);
+
+        integers.removeIf((i) -> i == 2);
 
         assertThat(integers).containsExactly(1, 3);
     }
