@@ -1,6 +1,5 @@
 package com.baeldung.cachecontrol;
 
-
 import com.baeldung.cachecontrol.model.TimestampDto;
 import com.baeldung.cachecontrol.model.UserDto;
 import org.springframework.http.CacheControl;
@@ -21,23 +20,29 @@ public class ResourceEndpoint {
         return ResponseEntity.ok(new UserDto(name));
     }
 
-    @GetMapping(value = "/users/{name}")
+    @GetMapping("/users/{name}")
     public ResponseEntity<UserDto> getUser(@PathVariable String name) {
-        return ResponseEntity.ok()
-                .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
-                .body(new UserDto(name));
+        return ResponseEntity
+          .ok()
+          .cacheControl(CacheControl.maxAge(60, TimeUnit.SECONDS))
+          .body(new UserDto(name));
     }
 
-    @GetMapping(value = "/timestamp")
+    @GetMapping("/timestamp")
     public ResponseEntity<TimestampDto> getServerTimestamp() {
-        return ResponseEntity.ok()
-                .cacheControl(CacheControl.noStore())
-                .body(new TimestampDto(LocalDateTime.now().toInstant(ZoneOffset.UTC).toEpochMilli()));
+        return ResponseEntity
+          .ok()
+          .cacheControl(CacheControl.noStore())
+          .body(new TimestampDto(LocalDateTime
+            .now()
+            .toInstant(ZoneOffset.UTC)
+            .toEpochMilli()));
     }
 
-    @GetMapping(value = "/private/users/{name}")
+    @GetMapping("/private/users/{name}")
     public ResponseEntity<UserDto> getUserNotCached(@PathVariable String name) {
-        return ResponseEntity.ok()
-                .body(new UserDto(name));
+        return ResponseEntity
+          .ok()
+          .body(new UserDto(name));
     }
 }

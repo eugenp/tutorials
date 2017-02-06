@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.testng.Assert.*;
 
-public class ConcurrentNavigableMapTests {
+public class ConcurrentNavigableMapManualTests {
 
     @Test
     public void givenSkipListMap_whenAccessInMultiThreads_thenOrderingStable() throws InterruptedException {

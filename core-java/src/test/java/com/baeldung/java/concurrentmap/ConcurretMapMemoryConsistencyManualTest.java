@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 
-public class ConcurretMapMemoryConsistencyTest {
+public class ConcurretMapMemoryConsistencyManualTest {
 
     @Test
     public void givenConcurrentMap_whenSumParallel_thenCorrect() throws Exception {

@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import static org.junit.Assert.assertNull;
 
-public class ConcurrentMapNullKeyValueTest {
+public class ConcurrentMapNullKeyValueManualTest {
 
     ConcurrentMap<String, Object> concurrentMap;
 
