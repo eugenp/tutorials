@@ -13,21 +13,13 @@ public class PropertyLoader {
     public Properties getProperties(String file) {
         Properties prop = new Properties();
         InputStream input = null;
-        try {
-            input = getClass().getResourceAsStream(file);
-            prop.load(input);
+        input = getClass().getResourceAsStream(file);
+        prop.load(input);
 
-        } catch (IOException e) {
-            log.error("Error: " + e);
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException i) {
-                    log.error("Error: " + i);
-                }
-            }
+        if (input != null) {
+            input.close();
         }
+
         return prop;
     }
 }
