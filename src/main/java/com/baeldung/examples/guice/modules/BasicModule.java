@@ -16,10 +16,7 @@ import com.google.inject.name.Names;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Tayo
- */
+
 public class BasicModule extends AbstractModule {
 
     @Override
