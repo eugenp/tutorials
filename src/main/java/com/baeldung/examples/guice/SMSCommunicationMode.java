@@ -10,10 +10,6 @@ import com.baeldung.examples.guice.constant.CommunicationModel;
 import com.google.inject.Inject;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Tayo
- */
 public class SMSCommunicationMode implements CommunicationMode {
     
     @Inject
