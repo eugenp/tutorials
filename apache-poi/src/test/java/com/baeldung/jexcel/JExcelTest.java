@@ -51,12 +51,6 @@ public class JExcelTest {
             .get(0));
         assertEquals("20", data.get(2)
             .get(1));
-
-        assertEquals("Ana Johnson", data.get(3)
-            .get(0));
-        assertEquals("30", data.get(3)
-            .get(1));
-
     }
 
 }
