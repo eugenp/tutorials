@@ -27,7 +27,13 @@ public class ItemController {
     }
 
     @RequestMapping("/date")
-    public Date getCurrentDate() {
+    public Date getCurrentDate() throws Exception {
         return new Date();
+    }
+
+    @RequestMapping("/delay/{seconds}")
+    public void getCurrentTime(@PathVariable final int seconds) throws Exception {
+
+        Thread.sleep(seconds * 1000);
     }
 }

@@ -29,14 +29,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
-import com.mysema.query.types.Predicate;
-import com.mysema.query.types.expr.BooleanExpression;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 import cz.jirutka.rsql.parser.RSQLParser;
 import cz.jirutka.rsql.parser.ast.Node;
 
 //@EnableSpringDataWebSupport
 @Controller
+@RequestMapping(value = "/auth/")
 public class UserController {
 
     @Autowired

@@ -14,8 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 @Qualifier("PersonRepositoryService")
 public class PersonRepositoryService implements PersonService {
-    
+
     private PersonRepository repo;
+
     @Autowired
     public void setPersonRepository(PersonRepository repo) {
         this.repo = repo;
@@ -28,7 +29,7 @@ public class PersonRepositoryService implements PersonService {
     public List<Person> findAll() {
         List<Person> people = new ArrayList<Person>();
         Iterator<Person> it = repo.findAll().iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             people.add(it.next());
         }
         return people;

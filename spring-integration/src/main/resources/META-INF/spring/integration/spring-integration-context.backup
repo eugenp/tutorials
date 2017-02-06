@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:file="http://www.springframework.org/schema/integration/file"
+	xmlns:ftp="http://www.springframework.org/schema/integration/ftp"
+	xmlns:mail="http://www.springframework.org/schema/integration/mail"
+	xmlns:twitter="http://www.springframework.org/schema/integration/twitter"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration
+		http://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file
+        http://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+        http://www.springframework.org/schema/integration/ftp
+        http://www.springframework.org/schema/integration/ftp/spring-integration-ftp.xsd
+        http://www.springframework.org/schema/integration/mail 
+        http://www.springframework.org/schema/integration/mail/spring-integration-mail.xsd
+        http://www.springframework.org/schema/integration/twitter 
+        http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd">
+
+	<int:publish-subscribe-channel id="videoChannel" />
+
+	<int:bridge input-channel="videoChannel" output-channel="ftpOutbound" />
+	<int:channel id="ftpOutbound" />
+	<int:bridge input-channel="videoChannel" output-channel="emailOutbound" />
+	<int:channel id="emailOutbound" />
+
+
+	<int:bridge output-channel="twitterOutbound" input-channel="videoChannel" />
+
+	<int:channel id="twitterOutbound" />
+
+	<twitter:outbound-channel-adapter
+		twitter-template="twitterTemplate" channel="twitterOutbound" />
+
+	<bean name="twitterTemplate"
+		class="org.springframework.social.twitter.api.impl.TwitterTemplate">
+		<constructor-arg index="0" value="${consumer-key}" />
+		<constructor-arg index="1" value="${consumer-secret}" />
+		<constructor-arg index="2" value="${access-token}" />
+		<constructor-arg index="3" value="${access-token-secret}" />
+	</bean>
+
+	<file:inbound-channel-adapter id="videoFolder"
+		directory="/studio/edits/video" channel="videoChannel"
+		prevent-duplicates="true">
+		<int:poller fixed-rate="1000" />
+	</file:inbound-channel-adapter>
+
+	<mail:outbound-channel-adapter channel="emailOutbound"
+		mail-sender="mailSender" />
+
+	<bean name="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="yourUsername" />
+		<property name="password" value="yourPassword" />
+	</bean>
+
+	<ftp:outbound-channel-adapter channel="ftpOutbound"
+		remote-directory="/news/archive/video/" session-factory="sessionFactory" />
+
+
+
+	<bean name="sessionFactory"
+		class="org.springframework.integration.ftp.session.DefaultFtpSessionFactory">
+		<property name="host" value="localhost" />
+		<property name="port" value="587" />
+		<property name="username" value="yourUsername" />
+		<property name="password" value="yourPassword" />
+	</bean>	
+	
+	<int:bridge input-channel="videoChannel" output-channel="activatorChannel"/>
+	<int:channel id="activatorChannel"/>
+	
+	<int:service-activator input-channel="activatorChannel" method="handleMessage" ref="customActivator"/>
+	
+	<bean name="customActivator" class="com.baeldung.samples.endpoints.ActivatorImpl"/>
+
+</beans>

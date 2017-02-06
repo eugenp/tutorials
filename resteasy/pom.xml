@@ -9,7 +9,11 @@
 	<packaging>war</packaging>
 
 	<properties>
-		<resteasy.version>3.0.14.Final</resteasy.version>
+		<resteasy.version>3.0.19.Final</resteasy.version>
+		<junit.version>4.12</junit.version>
+		<commons-io.version>2.5</commons-io.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>        		
 	</properties>
 
 	<build>
@@ -23,6 +27,35 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>                
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo-maven2-plugin.version}</version>
+                <configuration>
+                    <wait>true</wait>
+                    <container>
+                        <containerId>jetty8x</containerId>
+                        <type>embedded</type>
+                    </container>
+                    <configuration>
+                        <properties>
+                            <cargo.servlet.port>8082</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>			
 		</plugins>
 	</build>
 
@@ -62,16 +95,77 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.4</version>
+			<version>${junit.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 
 	</dependencies>
 
+    <profiles>
+        <profile>
+            <id>live</id>
+            <build>
 
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*IntegrationTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*LiveTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
+                        <version>${cargo-maven2-plugin.version}</version>                        
+                        <configuration>
+                            <wait>false</wait>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>start-server</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>start</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop-server</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>
+    </profiles>
+    
 </project>

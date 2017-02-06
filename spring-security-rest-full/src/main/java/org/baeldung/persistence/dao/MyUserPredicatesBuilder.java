@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.baeldung.web.util.SearchCriteria;
 
-import com.mysema.query.types.expr.BooleanExpression;
+import com.querydsl.core.types.dsl.BooleanExpression;
 
 public final class MyUserPredicatesBuilder {
     private final List<SearchCriteria> params;

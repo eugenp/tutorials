@@ -1,6 +1,8 @@
 =========
-
 ## HttpClient 4.x Cookbooks and Examples
+
+###The Course
+The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 
 ### Relevant Articles: 

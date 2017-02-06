@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
-	public ClientWebConfig() {
-		super();
-	}
+    public ClientWebConfig() {
+        super();
+    }
 
-	// API
+    // API
 
 }

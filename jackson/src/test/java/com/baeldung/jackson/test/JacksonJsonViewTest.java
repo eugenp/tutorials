@@ -7,12 +7,12 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
-import com.baeldung.jackson.jsonview.Item;
-import com.baeldung.jackson.jsonview.User;
-import com.baeldung.jackson.jsonview.MyBeanSerializerModifier;
-import com.baeldung.jackson.jsonview.Views;
 import org.junit.Test;
 
+import com.baeldung.jackson.jsonview.Item;
+import com.baeldung.jackson.jsonview.MyBeanSerializerModifier;
+import com.baeldung.jackson.jsonview.User;
+import com.baeldung.jackson.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -66,7 +66,7 @@ public class JacksonJsonViewTest {
 
         final ObjectMapper mapper = new ObjectMapper();
 
-        final User user = mapper.readerWithView(Views.Public.class).withType(User.class).readValue(json);
+        final User user = mapper.readerWithView(Views.Public.class).forType(User.class).readValue(json);
         assertEquals(1, user.getId());
         assertEquals("John", user.getName());
     }

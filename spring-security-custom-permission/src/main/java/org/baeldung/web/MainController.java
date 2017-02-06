@@ -21,7 +21,8 @@ public class MainController {
     @Autowired
     private OrganizationRepository organizationRepository;
 
-    @PreAuthorize("hasPermission('Foo', 'read')")
+    // @PostAuthorize("hasPermission(returnObject, 'read')")
+    @PreAuthorize("hasPermission(#id, 'Foo', 'read')")
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id) {

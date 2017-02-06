@@ -33,7 +33,7 @@ public class ClientLiveTest {
 
     @Test
     public final void whenSecuredRestApiIsConsumed_then200OK() {
-        final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8080/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
+        final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8082/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
         assertThat(responseEntity.getStatusCode().value(), is(200));
     }
 

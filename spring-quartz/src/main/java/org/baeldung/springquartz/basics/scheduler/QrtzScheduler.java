@@ -45,8 +45,7 @@ public class QrtzScheduler {
     }
 
     @Bean
-    public Scheduler scheduler(Trigger trigger, JobDetail job)
-            throws SchedulerException, IOException {
+    public Scheduler scheduler(Trigger trigger, JobDetail job) throws SchedulerException, IOException {
 
         StdSchedulerFactory factory = new StdSchedulerFactory();
         factory.initialize(new ClassPathResource("quartz.properties").getInputStream());
@@ -64,9 +63,7 @@ public class QrtzScheduler {
     @Bean
     public JobDetail jobDetail() {
 
-        return newJob().ofType(SampleJob.class).storeDurably()
-                .withIdentity(JobKey.jobKey("Qrtz_Job_Detail"))
-                .withDescription("Invoke Sample Job service...").build();
+        return newJob().ofType(SampleJob.class).storeDurably().withIdentity(JobKey.jobKey("Qrtz_Job_Detail")).withDescription("Invoke Sample Job service...").build();
     }
 
     @Bean
@@ -75,10 +72,6 @@ public class QrtzScheduler {
         int frequencyInSec = 10;
         logger.info("Configuring trigger to fire every {} seconds", frequencyInSec);
 
-        return newTrigger().forJob(job).withIdentity(TriggerKey.triggerKey("Qrtz_Trigger"))
-                .withDescription("Sample trigger")
-                .withSchedule(
-                        simpleSchedule().withIntervalInSeconds(frequencyInSec).repeatForever())
-                .build();
+        return newTrigger().forJob(job).withIdentity(TriggerKey.triggerKey("Qrtz_Trigger")).withDescription("Sample trigger").withSchedule(simpleSchedule().withIntervalInSeconds(frequencyInSec).repeatForever()).build();
     }
 }

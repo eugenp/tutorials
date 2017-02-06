@@ -11,9 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 
 import org.hibernate.envers.Audited;
 
+@NamedNativeQueries({ @NamedNativeQuery(name = "callGetAllFoos", query = "CALL GetAllFoos()", resultClass = Foo.class), @NamedNativeQuery(name = "callGetFoosByName", query = "CALL GetFoosByName(:fooName)", resultClass = Foo.class) })
 @Entity
 @Audited
 // @Proxy(lazy = false)
@@ -99,5 +102,4 @@ public class Foo implements Serializable {
         builder.append("Foo [name=").append(name).append("]");
         return builder.toString();
     }
-
 }
