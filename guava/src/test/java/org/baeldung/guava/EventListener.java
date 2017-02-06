@@ -1,25 +1,23 @@
 package org.baeldung.guava;
+
 import com.google.common.eventbus.Subscribe;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EventListener {
 
     private static int eventsHandled;
+    private static final Logger LOG = LoggerFactory.getLogger(EventListener.class);
 
-    /**
-     * Handles events of type String     *
-     */
     @Subscribe
-    public void stringEvent(String event){
-        System.out.println("do event ["+event+"]");
+    public void stringEvent(String event) {
+        LOG.info("do event [" + event + "]");
         eventsHandled++;
     }
 
-    /**
-     * Handles events of type CustomEvent
-     */
     @Subscribe
-    public void someEvent(CustomEvent customEvent){
-        System.out.println("do event ["+ customEvent.getAction()+"]");
+    public void someCustomEvent(CustomEvent customEvent) {
+        LOG.info("do event [" + customEvent.getAction() + "]");
         eventsHandled++;
     }
 
@@ -27,7 +25,7 @@ public class EventListener {
         return eventsHandled;
     }
 
-    public void resetEventsHandled(){
+    public void resetEventsHandled() {
         eventsHandled = 0;
     }
 }

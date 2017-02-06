@@ -11,7 +11,7 @@ import static com.jayway.restassured.RestAssured.given;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AppRunner.class)
-public class ResourceEndpointLiveTest {
+public class ResourceEndpointTest {
 
     @LocalServerPort
     private int serverPort;
@@ -66,7 +66,7 @@ public class ResourceEndpointLiveTest {
     }
 
     private String getBaseUrl() {
-        return "http://localhost:" + serverPort;
+        return String.format("http://localhost:%d", serverPort);
     }
 
 }

@@ -26,9 +26,15 @@
             <artifactId>rxjava</artifactId>
             <version>${rx.java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
+        <junit.version>4.12</junit.version>
         <rx.java.version>1.2.5</rx.java.version>
     </properties>
 
