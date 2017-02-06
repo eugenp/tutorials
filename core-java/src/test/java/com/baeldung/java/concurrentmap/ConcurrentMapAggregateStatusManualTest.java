@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class ConcurrentMapAggregateStatusTest {
+public class ConcurrentMapAggregateStatusManualTest {
 
     private ExecutorService executorService;
     private Map<String, Integer> concurrentMap;

@@ -11,7 +11,7 @@ import java.util.concurrent.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ConcurrentMapPerformanceTest {
+public class ConcurrentMapPerformanceManualTest {
 
     @Test
     public void givenMaps_whenGetPut500KTimes_thenConcurrentMapFaster() throws Exception {
