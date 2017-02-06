@@ -8,10 +8,7 @@ package com.baeldung.examples.guice;
 import com.baeldung.examples.guice.aop.MessageSentLoggable;
 import com.baeldung.examples.guice.constant.CommunicationModel;
 
-/**
- *
- * @author Tayo
- */
+
 public class EmailCommunicationMode implements CommunicationMode {
 
     @Override
