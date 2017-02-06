@@ -1,12 +1,9 @@
 package org.baeldung.guava;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 import java.util.Arrays;
-
 import org.junit.Test;
-
-import com.google.common.base.Preconditions;
+import com.google.common.base.*;
 
 public class GuavaPreConditionsTest {
 
@@ -61,7 +58,7 @@ public class GuavaPreConditionsTest {
         final String nullObject = null;
         final String message = "Please check the Object supplied, its %s!";
 
-        assertThatThrownBy(() -> Preconditions.checkNotNull(nullObject, message, nullObject)).isInstanceOf(NullPointerException.class).hasMessage(message, nullObject).hasNoCause();
+        assertThatThrownBy(() -> Preconditions.checkNotNull(nullObject, message, new Object[] { null })).isInstanceOf(NullPointerException.class).hasMessage(message, nullObject).hasNoCause();
     }
 
     @Test
