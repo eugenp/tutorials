@@ -5,6 +5,10 @@ import java.util.function.UnaryOperator;
 
 public interface Discounter extends UnaryOperator<BigDecimal> {
 
+    default Discounter combine(Discounter after) {
+        return value -> after.apply(this.apply(value));
+    }
+
     static Discounter christmas() {
         return (amount) -> amount.multiply(BigDecimal.valueOf(0.9));
     }

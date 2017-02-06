@@ -57,7 +57,7 @@ public class StrategyDesignPatternUnitTest {
 
         final Discounter combinedDiscounter = discounters
           .stream()
-          .reduce(v -> v, (d1, d2) -> (Discounter) d1.andThen(d2));
+          .reduce(v -> v, Discounter::combine);
 
         combinedDiscounter.apply(amount);
     }
