@@ -1,11 +1,10 @@
 package com.baeldung.persistence.service;
 
-import java.util.List;
-
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertEquals;
 
-import org.hibernate.Query;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.SQLGrammarException;

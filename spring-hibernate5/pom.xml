@@ -199,10 +199,10 @@
 	    <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
         
         <!-- persistence -->
-        <hibernate.version>5.2.6.Final</hibernate.version>
+        <hibernate.version>5.2.8.Final</hibernate.version>
         <hibernate-envers.version>${hibernate.version}</hibernate-envers.version>
         <mysql-connector-java.version>6.0.5</mysql-connector-java.version>
-        <tomcat-dbcp.version>8.5.9</tomcat-dbcp.version>
+        <tomcat-dbcp.version>8.5.11</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
 
@@ -211,7 +211,7 @@
         <logback.version>1.1.7</logback.version>
         
         <!-- various -->
-        <hibernate-validator.version>5.4.0.Beta1</hibernate-validator.version>
+        <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
 
         <!-- util -->
@@ -233,7 +233,6 @@
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
 
     </properties>
 

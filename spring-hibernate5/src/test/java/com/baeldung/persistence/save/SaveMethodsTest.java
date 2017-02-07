@@ -1,16 +1,29 @@
 package com.baeldung.persistence.save;
 
-import com.baeldung.persistence.model.Person;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+
+import javax.persistence.PersistenceException;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.TransactionException;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.HSQLDialect;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import static org.junit.Assert.*;
+import com.baeldung.persistence.model.Person;
 
 /**
  * Testing specific implementation details for different methods: persist, save,
@@ -73,7 +86,7 @@ public class SaveMethodsTest {
         assertEquals(id1, id2);
     }
 
-    @Test(expected = HibernateException.class)
+    @Test(expected = PersistenceException.class)
     public void whenPersistDetached_thenThrowsException() {
 
         Person person = new Person();
@@ -139,6 +152,7 @@ public class SaveMethodsTest {
         Person person = new Person();
         person.setName("John");
         session.save(person);
+        session.flush();
         session.evict(person);
 
         person.setName("Mary");
@@ -255,8 +269,12 @@ public class SaveMethodsTest {
 
     @After
     public void tearDown() {
+        try{
         session.getTransaction().commit();
         session.close();
+        }catch(TransactionException ex){
+            ex.printStackTrace();
+        }
     }
 
     @AfterClass
