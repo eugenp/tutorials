@@ -1,16 +1,34 @@
 package com.baeldung.java8;
 
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.averagingInt;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.groupingByConcurrent;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.summarizingInt;
+import static java.util.stream.Collectors.summingInt;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.concurrent.ConcurrentMap;
+
 import org.junit.Test;
 
 import com.baeldung.java_8_features.groupingby.BlogPost;
 import com.baeldung.java_8_features.groupingby.BlogPostType;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentMap;
-
-import static java.util.Comparator.comparingInt;
-import static java.util.stream.Collectors.*;
-import static org.junit.Assert.*;
 
 public class Java8GroupingByCollectorUnitTest {
 
@@ -119,9 +137,9 @@ public class Java8GroupingByCollectorUnitTest {
     @Test
     public void givenAListOfPosts_whenGroupedByTypeAndSummarizingLikes_thenGetAMapBetweenTypeAndSummary() {
         Map<BlogPostType, IntSummaryStatistics> likeStatisticsPerType = POSTS.stream().collect(groupingBy(BlogPost::getType, summarizingInt(BlogPost::getLikes)));
-        
+
         IntSummaryStatistics newsLikeStatistics = likeStatisticsPerType.get(BlogPostType.NEWS);
-        
+
         assertEquals(2, newsLikeStatistics.getCount());
         assertEquals(50, newsLikeStatistics.getSum());
         assertEquals(25.0, newsLikeStatistics.getAverage(), 0.001);
