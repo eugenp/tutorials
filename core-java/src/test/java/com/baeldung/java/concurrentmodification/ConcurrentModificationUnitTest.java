@@ -1,6 +1,5 @@
-package com.baeldung.java.concurrentmodificationexception;
+package com.baeldung.java.concurrentmodification;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class ConcurrentModificationUnitTest {
     }
 
     @Test
-    public void givenIterating_whenUsingIteratorRemove_thenDontError() throws InterruptedException {
+    public void givenIterating_whenUsingIteratorRemove_thenNoError() throws InterruptedException {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
 
@@ -37,7 +36,7 @@ public class ConcurrentModificationUnitTest {
     }
 
     @Test
-    public void givenIterating_whenUsingRemovalList_thenDontError() throws InterruptedException {
+    public void givenIterating_whenUsingRemovalList_thenNoError() throws InterruptedException {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
         ArrayList<Integer> toRemove = newArrayList();
@@ -57,7 +56,7 @@ public class ConcurrentModificationUnitTest {
 
         ArrayList<Integer> integers = newArrayList(1, 2, 3);
 
-        integers.removeIf((i) -> i == 2);
+        integers.removeIf(i -> i == 2);
 
         assertThat(integers).containsExactly(1, 3);
     }
