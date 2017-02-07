@@ -5,7 +5,7 @@ import org.baeldung.properties.basic.PropertiesWithMultipleXmlsIntegrationTest;
 import org.baeldung.properties.basic.PropertiesWithXmlIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithJavaIntegrationTest;
 import org.baeldung.properties.external.ExternalPropertiesWithMultipleXmlsIntegrationTest;
-import org.baeldung.properties.external.ExternalPropertiesWithXmlIntegrationTest;
+import org.baeldung.properties.external.ExternalPropertiesWithXmlManualTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -15,7 +15,7 @@ import org.junit.runners.Suite.SuiteClasses;
     PropertiesWithXmlIntegrationTest.class,
     ExternalPropertiesWithJavaIntegrationTest.class,
     ExternalPropertiesWithMultipleXmlsIntegrationTest.class,
-    ExternalPropertiesWithXmlIntegrationTest.class,
+    ExternalPropertiesWithXmlManualTest.class,
     ExtendedPropertiesWithJavaIntegrationTest.class,
     PropertiesWithMultipleXmlsIntegrationTest.class,
 })// @formatter:on

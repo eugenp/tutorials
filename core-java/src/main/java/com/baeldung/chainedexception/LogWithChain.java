@@ -23,8 +23,7 @@ public class LogWithChain {
         try {
             howIsManager();
         } catch (ManagerUpsetException e) {
-            throw new TeamLeadUpsetException(
-                    "Team lead is not in good mood", e);
+            throw new TeamLeadUpsetException("Team lead is not in good mood", e);
         }
     }
 
@@ -36,9 +35,7 @@ public class LogWithChain {
         }
     }
 
-    private static void howIsGirlFriendOfManager()
-            throws GirlFriendOfManagerUpsetException {
-        throw new GirlFriendOfManagerUpsetException(
-                "Girl friend of manager is in bad mood");
+    private static void howIsGirlFriendOfManager() throws GirlFriendOfManagerUpsetException {
+        throw new GirlFriendOfManagerUpsetException("Girl friend of manager is in bad mood");
     }
 }

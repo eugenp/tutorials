@@ -7,7 +7,7 @@ public class TryWithResourcesTest {
 
     static int closeCount = 0;
 
-    static class MyAutoCloseable implements AutoCloseable{
+    static class MyAutoCloseable implements AutoCloseable {
         final FinalWrapper finalWrapper = new FinalWrapper();
 
         public void close() {
@@ -57,7 +57,6 @@ public class TryWithResourcesTest {
         assertEquals("Expected and Actual does not match", 5, closeCount);
     }
 
-
     static class CloseableException extends Exception implements AutoCloseable {
         @Override
         public void close() {
@@ -66,5 +65,3 @@ public class TryWithResourcesTest {
     }
 
 }
-
-
