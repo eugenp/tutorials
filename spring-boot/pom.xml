@@ -199,9 +199,9 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <!--<systemPropertyVariables>-->
-                            <!--<test.mime>json</test.mime>-->
-                            <!--</systemPropertyVariables>-->
+                            <systemPropertyVariables>
+                            <test.mime>json</test.mime>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
