@@ -1,22 +1,24 @@
 package com.baeldung.excel;
 
-import jxl.*;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.format.Colour;
 import jxl.read.biff.BiffException;
-import java.io.File;
-import java.io.IOException;
-import org.springframework.stereotype.Service;
 import jxl.write.*;
 import jxl.write.Number;
-import jxl.format.Colour;
+import org.springframework.stereotype.Service;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class JExcelHelper {
 
     public Map<Integer, ArrayList<String>> readJExcel(String fileLocation) throws IOException, BiffException {
-        Map<Integer, ArrayList<String>> data = new HashMap<Integer, ArrayList<String>>();
+        Map<Integer, ArrayList<String>> data = new HashMap<>();
 
         Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
         Sheet sheet = workbook.getSheet(0);
@@ -24,7 +26,7 @@ public class JExcelHelper {
         int columns = sheet.getColumns();
 
         for (int i = 0; i < rows; i++) {
-            data.put(i, new ArrayList<String>());
+            data.put(i, new ArrayList<>());
             for (int j = 0; j < columns; j++) {
                 data.get(i).add(sheet.getCell(j, i).getContents());
             }

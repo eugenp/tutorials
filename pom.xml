@@ -94,6 +94,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
         <module>solr-fulltext-search</module>
@@ -146,6 +147,7 @@
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
+        <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
         <module>spring-security-client/spring-security-jsp-config</module>
