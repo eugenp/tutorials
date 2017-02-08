@@ -3,6 +3,7 @@ package org.baeldung;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @EnableAutoConfiguration
 @ComponentScan("org.baeldung")
+@ImportResource({"classpath*:applicationContext.xml"})
 public class SampleLDAPApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
