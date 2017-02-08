@@ -19,11 +19,6 @@ public class Cart {
     @Column(name = "cart_id")
     private long id;
 
-    @Column(name = "total")
-    private double total;
-
-    @Column(name = "name")
-    private String name;
 
     @OneToMany(mappedBy = "cart")
     private Set<Items> items;
@@ -36,21 +31,6 @@ public class Cart {
         this.id = id;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public Set<Items> getItems() {
         return items;
