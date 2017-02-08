@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.webjar;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
