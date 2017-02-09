@@ -128,6 +128,12 @@
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring-security-taglibs.version}</version>
         </dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security-core.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
@@ -280,11 +286,15 @@
         <start-class>org.baeldung.Application</start-class>
         <!--If you want to run the example with the voters comment the tag above and uncomment the one below-->
         <!--<start-class>org.baeldung.voter.VoterApplication</start-class>-->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--If you want to run the example with the multiple logins, comment the tag above and uncomment the one below-->
+        <!--<start-class>org.baeldung.multiplelogin.MultipleLoginApplication</start-class>-->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <derby.version>10.13.1.1</derby.version>
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <spring-security-taglibs.version>4.2.0.RELEASE</spring-security-taglibs.version>
+		  <spring-security-core.version>4.2.0.RELEASE</spring-security-core.version>
+      
         <jstl.version>1.2</jstl.version>
         <rest-assured.version>2.4.0</rest-assured.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
