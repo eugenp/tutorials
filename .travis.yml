@@ -4,3 +4,9 @@ install: mvn clean install
 
 jdk:
   - oraclejdk8
+
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
