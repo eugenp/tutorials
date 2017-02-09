@@ -1,0 +1,6 @@
+language: java
+
+install: mvn clean install
+
+jdk:
+  - oraclejdk8
