@@ -11,6 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+        <gib.enabled>false</gib.enabled>
     </properties>
 
     <modules>
@@ -190,6 +192,15 @@
 
         <module>struts2</module>
 
-  </modules>
+    </modules>
 
+    <build>
+        <extensions>
+            <extension>
+                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+                <artifactId>gitflow-incremental-builder</artifactId>
+                <version>3.1</version>
+            </extension>
+        </extensions>
+    </build>
 </project>
