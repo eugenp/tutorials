@@ -3,7 +3,6 @@ package com.baeldung.springmvcforms.configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
@@ -25,9 +24,7 @@ public class WebInitializer implements WebApplicationInitializer {
 
 		servlet.setLoadOnStartup(1);
 		servlet.addMapping("/");
-		
-		container.addFilter("springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"))
-        .addMappingForUrlPatterns(null, false, "/*");
+
 	}
 //	@Override
 //	public void onStartup(ServletContext container) {
