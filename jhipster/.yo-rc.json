@@ -1,0 +1,26 @@
+{
+    "generator-jhipster": {
+        "jhipsterVersion": "3.9.1",
+        "baseName": "baeldung",
+        "packageName": "com.baeldung",
+        "packageFolder": "com/baeldung",
+        "serverPort": "8080",
+        "authenticationType": "session",
+        "hibernateCache": "ehcache",
+        "clusteredHttpSession": false,
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "h2Disk",
+        "prodDatabaseType": "postgresql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "buildTool": "maven",
+        "enableSocialSignIn": false,
+        "rememberMeKey": "b4234801093e7f550b2d6a608c12e9c5e9ccf8ab",
+        "useSass": false,
+        "applicationType": "monolith",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "enableTranslation": false
+    }
+}

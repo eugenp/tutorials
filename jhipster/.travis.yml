@@ -1,0 +1,37 @@
+os:
+  - linux
+services:
+  - docker
+language: java
+node_js:
+  - "4.5.0"
+jdk:
+  - oraclejdk8
+sudo: false
+cache:
+  directories:
+    - node
+    - node_modules
+    - $HOME/.m2
+env:
+  - NODE_VERSION=4.5.0
+before_install:
+  - nvm install $NODE_VERSION
+  - npm install -g npm
+  - npm install -g bower gulp-cli
+  - node -v
+  - npm -v
+  - bower -v
+  - gulp -v
+  - java -version
+install: npm install
+script:
+  - ./mvnw clean
+  - ./mvnw test
+  - gulp test
+  - ./mvnw package -Pprod -DskipTests
+notifications:
+  webhooks:
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: false     # default: false

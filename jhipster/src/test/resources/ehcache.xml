@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+         name="CM1"
+         updateCheck="false"
+         maxBytesLocalHeap="16M">
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <defaultCache
+            eternal="false"
+            overflowToDisk="false"
+            />
+
+    <cache name="com.baeldung.domain.User"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.baeldung.domain.Authority"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.baeldung.domain.User.authorities"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.baeldung.domain.PersistentToken"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.baeldung.domain.User.persistentTokens"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.baeldung.domain.PersistentAuditEvent"
+           timeToLiveSeconds="3600">
+    </cache>
+</ehcache>
