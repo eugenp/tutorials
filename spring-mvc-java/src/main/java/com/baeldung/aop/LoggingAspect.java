@@ -37,13 +37,19 @@ public class LoggingAspect {
 
     @Before("repositoryMethods()")
     public void logMethodCall(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
-        logger.info(sdf.get().format(new Date()) + methodName);
+        String methodName = jp
+          .getSignature()
+          .getName();
+        logger.info(sdf
+          .get()
+          .format(new Date()) + methodName);
     }
 
     @Before("loggableMethods()")
     public void logMethod(JoinPoint jp) {
-        String methodName = jp.getSignature().getName();
+        String methodName = jp
+          .getSignature()
+          .getName();
         logger.info("Executing method: " + methodName);
     }
 
