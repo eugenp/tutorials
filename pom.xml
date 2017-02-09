@@ -195,14 +195,17 @@
     </modules>
 
     <build>
-        <extensions>
-            <extension>
-                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
-                <artifactId>gitflow-incremental-builder</artifactId>
-                <version>3.1</version>
-            </extension>
-        </extensions>
+
     </build>
+
+    <profiles>
+        <profile>
+            <id>incremental</id>
+            <properties>
+                <gib.enabled>true</gib.enabled>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

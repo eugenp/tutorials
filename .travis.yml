@@ -1,6 +1,6 @@
 language: java
 
-install: travis_wait 40 mvn -q clean install -Dgib.enabled=true
+install: travis_wait 40 mvn -q clean install --activate-profiles incremental
 
 jdk:
   - oraclejdk8
