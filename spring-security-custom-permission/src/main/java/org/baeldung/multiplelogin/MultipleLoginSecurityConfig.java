@@ -1,4 +1,4 @@
-package com.baeldung.springmvcforms.configuration;
+package org.baeldung.multiplelogin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class MultipleLoginSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
