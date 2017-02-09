@@ -12,24 +12,25 @@ import com.baeldung.beaninjection.IExampleDAO;
 import com.baeldung.beaninjection.IExampleService;
 
 @Configuration
-@ComponentScan(basePackages={"com.baeldung.beaninjection"})
+@ComponentScan(basePackages = { "com.baeldung.beaninjection" })
 public class ApplicationContextTestBeanInjectionTypes {
 
-	@Bean
-	public IExampleDAO exampleDAO(){
-		return new ExampleDAOBean("Mandatory DAO Property X");
-	}
-	
-	@Bean
-	public IAnotherSampleDAO anotherSampleDAO(){
-		return new AnotherSampleDAOBean("Mandatory DAO Property Y");
-	}
-	
-	@Bean
-	public IExampleService exampleServiceBean(){
-		ExampleServiceBean serviceBean= new ExampleServiceBean(exampleDAO());
-		serviceBean.setAnotherSampleDAO(anotherSampleDAO());
-		serviceBean.setPropertyX("Some Service Property X");
-		return serviceBean;
-	}
+    @Bean
+    public IExampleDAO exampleDAO() {
+        return new ExampleDAOBean("Mandatory DAO Property X");
+    }
+
+    @Bean
+    public IExampleService exampleServiceBean() {
+        ExampleServiceBean serviceBean = new ExampleServiceBean(exampleDAO());
+        serviceBean.setAnotherSampleDAO(anotherSampleDAO());
+        serviceBean.setPropertyX("Some Service Property X");
+        return serviceBean;
+    }
+
+    @Bean
+    public IAnotherSampleDAO anotherSampleDAO() {
+        return new AnotherSampleDAOBean("Mandatory DAO Property Y");
+    }
+
 }
