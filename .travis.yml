@@ -1,6 +1,6 @@
 language: java
 
-install: travis_wait 40 mvn -q clean install --activate-profiles incremental
+install: travis_wait 40 mvn -q clean install --activate-profiles incremental-enabled
 
 jdk:
   - oraclejdk8
