@@ -12,6 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+        <gib.enabled>false</gib.enabled>
     </properties>
 
     <modules>
@@ -202,25 +203,4 @@
             </extension>
         </extensions>
     </build>
-
-
-    <profiles>
-        <profile>
-            <id>incremental-enabled</id>
-            <properties>
-                <gib.enabled>true</gib.enabled>
-            </properties>
-        </profile>
-        <profile>
-            <id>incremental-disabled</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <gib.enabled>false</gib.enabled>
-            </properties>
-        </profile>
-    </profiles>
-
-
 </project>
