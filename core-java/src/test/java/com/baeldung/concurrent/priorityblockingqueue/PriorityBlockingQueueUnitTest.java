@@ -32,13 +32,14 @@ public class PriorityBlockingQueueUnitTest {
         PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
 
         final Thread thread = new Thread(() -> {
-          System.out.println("Polling...");
-          while (true) {
-            try {
-              Integer poll = queue.take();
-              System.out.println("Polled: " + poll);
-            } catch (InterruptedException e) {}
-          }
+            System.out.println("Polling...");
+            while (true) {
+                try {
+                    Integer poll = queue.take();
+                    System.out.println("Polled: " + poll);
+                } catch (InterruptedException e) {
+                }
+            }
         });
         thread.start();
 
