@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,11 +32,11 @@ public class InfiniteStreamTest {
     @Test
     public void givenInfiniteStreamOfRandomInts_whenUseLimit_shouldTerminateInFiniteTime() {
         //given
-        Supplier<Integer> randomNumberSupplier = () -> new Random().nextInt();
-        Stream<Integer> infiniteStreamOfRandomInts = Stream.generate(randomNumberSupplier);
+        Supplier<UUID> randomUUIDSupplier = UUID::randomUUID;
+        Stream<UUID> infiniteStreamOfRandomUUID = Stream.generate(randomUUIDSupplier);
 
         //when
-        List<Integer> randomInts = infiniteStreamOfRandomInts
+        List<UUID> randomInts = infiniteStreamOfRandomUUID
                 .skip(10)
                 .limit(10)
                 .collect(Collectors.toList());
