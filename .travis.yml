@@ -1,6 +1,6 @@
 language: java
 
-install: travis_wait 30 mvn -q clean install
+install: travis_wait 40 mvn -q clean install
 
 jdk:
   - oraclejdk8
