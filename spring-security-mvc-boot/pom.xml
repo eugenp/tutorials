@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-security-custom-permission</artifactId>
+    <artifactId>spring-security-mvc-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>spring-security-custom-permission</name>
-    <description>Spring Security custom permission</description>
+    <name>spring-security-mvc-boot</name>
+    <description>Spring Security MVC Boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

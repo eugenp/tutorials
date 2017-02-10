@@ -158,7 +158,7 @@
         <module>spring-security-client/spring-security-thymeleaf-authorize</module>
         <module>spring-security-client/spring-security-thymeleaf-config</module>
         <module>spring-security-core</module>
-        <module>spring-security-custom-permission</module>
+        <module>spring-security-mvc-boot</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-ldap</module>
