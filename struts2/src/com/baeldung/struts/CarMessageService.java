@@ -4,12 +4,15 @@ public class CarMessageService {
 
     public String getMessage(String carName) {
         System.out.println("inside getMessage()" + carName);
-        if (carName.equalsIgnoreCase("ferrari"))
+        if (carName.equalsIgnoreCase("ferrari")){
             return "Ferrari Fan!";
-        else if (carName.equalsIgnoreCase("bmw"))
+        }
+        else if (carName.equalsIgnoreCase("bmw")){
             return "BMW Fan!";
-        else
+        }
+        else{
             return "please choose ferrari Or bmw";
+        }
     }
 
 }
