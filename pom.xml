@@ -189,7 +189,7 @@
         <module>xstream</module>
 
         <module>struts2</module>
-
+        <module>hibernate5</module>
   </modules>
 
 </project>

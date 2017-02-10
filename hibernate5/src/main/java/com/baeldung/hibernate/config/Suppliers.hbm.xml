@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 9, 2017 11:31:36 AM by Hibernate Tools 5.1.0.Final -->
+<hibernate-mapping>
+    <class name="com.baeldung.hibernate.pojo.Suppliers" table="suppliers" catalog="db1" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="65535" not-null="true" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="65535" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
