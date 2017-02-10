@@ -201,8 +201,6 @@ public class MapTest {
         assertEquals("val1", rtnVal);
     }
 
-
-
     @Test
     public void whenCallsEqualsOnCollision_thenCorrect() {
         HashMap<MyKey, String> map = new HashMap<>();
@@ -311,13 +309,7 @@ public class MapTest {
 
     @Test
     public void givenTreeMap_whenOrdersEntriesByComparator_thenCorrect() {
-        TreeMap<Integer, String> map = new TreeMap<>(new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2 - o1;
-            }
-        });
+        TreeMap<Integer, String> map = new TreeMap<>(Comparator.reverseOrder());
         map.put(3, "val");
         map.put(2, "val");
         map.put(1, "val");
@@ -335,7 +327,7 @@ public class MapTest {
         map.put(1, "val");
         map.put(5, "val");
         map.put(4, "val");
-        
+
         Integer highestKey = map.lastKey();
         Integer lowestKey = map.firstKey();
         Set<Integer> keysLessThan3 = map.headMap(3).keySet();

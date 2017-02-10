@@ -16,15 +16,15 @@ import com.couchbase.client.java.document.JsonDocument;
 
 @Service
 public class PersonCrudService implements CrudService<Person> {
-    
+
     @Autowired
     private TutorialBucketService bucketService;
-    
+
     @Autowired
     private PersonDocumentConverter converter;
-    
+
     private Bucket bucket;
-    
+
     @PostConstruct
     private void init() {
         bucket = bucketService.getBucket();
@@ -32,7 +32,7 @@ public class PersonCrudService implements CrudService<Person> {
 
     @Override
     public void create(Person person) {
-        if(person.getId() == null) {
+        if (person.getId() == null) {
             person.setId(UUID.randomUUID().toString());
         }
         JsonDocument document = converter.toDocument(person);

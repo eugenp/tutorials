@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -12,13 +11,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
     </properties>
 
     <modules>
+        <module>aws</module>
+        <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
-        <module>apache-fop</module> 
-        <module>apache-poi</module> 
+        <module>apache-fop</module>
+        <module>apache-poi</module>
+        <module>apache-thrift</module>
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
@@ -43,6 +46,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
@@ -53,8 +57,8 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>jackson-annotations</module>
         <module>java-cassandra</module>
+        <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
@@ -67,12 +71,15 @@
         <module>jsoup</module>
         <module>junit5</module>
 
+        <module>kotlin</module>
+
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
 
         <module>mapstruct</module>
+        <module>metrics</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -88,9 +95,13 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
+        <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
+        <module>solr-fulltext-search</module>
+        <module>spark-java</module>
         <module>spring-akka</module>
+        <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
         <module>spring-autowire</module>
@@ -115,6 +126,7 @@
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
         <module>spring-integration</module>
+        <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -129,13 +141,14 @@
         <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
-        <module>spring-openid</module>
+        <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
+        <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
         <module>spring-security-client/spring-security-jsp-config</module>
@@ -158,19 +171,35 @@
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
+        <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
+        <module>spring-reactor</module>
 
         <module>testing</module>
+
+        <module>video-tutorials</module>
 
         <module>wicket</module>
 
         <module>xml</module>
         <module>xmlunit2</module>
         <module>xstream</module>
+
+        <module>struts2</module>
+
     </modules>
 
+    <build>
+        <extensions>
+            <extension>
+                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+                <artifactId>gitflow-incremental-builder</artifactId>
+                <version>3.1</version>
+            </extension>
+        </extensions>
+    </build>
 </project>

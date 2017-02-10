@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,29 +22,27 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class})
+@ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class })
 public class AsyncControllerTest {
 
-	@Autowired
-	WebApplicationContext wac;
-	@Autowired
-	MockHttpSession session;
-	
-	@Mock
-	AsyncController controller;
+    @Autowired
+    WebApplicationContext wac;
+    @Autowired
+    MockHttpSession session;
 
-	private MockMvc mockMvc;
+    @Mock
+    AsyncController controller;
 
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-	}
+    private MockMvc mockMvc;
 
-	@Test
-	public void testProcessUpload() throws Exception {
-		MockMultipartFile jsonFile = new MockMultipartFile("json", "", "application/json",
-				"{\"json\": \"someValue\"}".getBytes());
-		mockMvc.perform(MockMvcRequestBuilders.fileUpload("/upload").file(jsonFile)).andExpect(status().isOk());
-	}
+    @Before
+    public void setup() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+    }
+
+    @Test
+    public void testAsync() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/async")).andExpect(status().is5xxServerError());
+    }
 
 }
