@@ -1,0 +1,25 @@
+/**
+ * "Unpublished Work © 2017 Deere & Company. All Worldwide Rights Reserved. THIS MATERIAL IS THE PROPERTY OF DEERE &
+ * COMPANY. ALL USE, ALTERATIONS, DISCLOSURE, DISSEMINATION AND/OR REPRODUCTION NOT SPECIFICALLY AUTHORIZED BY DEERE &
+ * COMPANY IS PROHIBITED."
+ */
+package com.baeldung.lambda.dynamodb.bean;
+
+import com.google.gson.Gson;
+
+public class PersonResponse {
+    private String message;
+
+    public String toString() {
+        final Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}
