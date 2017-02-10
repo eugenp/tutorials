@@ -7,7 +7,6 @@ import org.apache.struts2.convention.annotation.ResultPath;
 
 @Namespace("/tutorial")
 @Action("/car")
-@ResultPath("/")
 @Result(name = "success", location = "/result.jsp")
 public class CarAction { 
     private String carName;
