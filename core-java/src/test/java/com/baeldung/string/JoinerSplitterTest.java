@@ -23,7 +23,7 @@ public class JoinerSplitterTest {
 	}
 	
 	@Test
-	public void provided_array_convert_to_stream_and_convert_to_prefixPostfixString() {
+	public void provided_array_convert_to_stream_and_convert_to_prefixPostfix() {
 		String[] programming_languages = {"java", "python", 
 				"nodejs", "ruby"};
 		String expectation = "[java,python,nodejs,ruby]";
