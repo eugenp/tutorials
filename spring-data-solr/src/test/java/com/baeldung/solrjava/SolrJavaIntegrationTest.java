@@ -1,4 +1,4 @@
-package org.baeldung.solrjava;
+package com.baeldung.solrjava;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,8 +22,7 @@ public class SolrJavaIntegrationTest {
     @Before
     public void setUp() throws Exception {
 
-        String urlString = "http://localhost:8983/solr/bigboxstore";
-        solr = new HttpSolrClient.Builder(urlString).build();
+        solr = new HttpSolrClient("http://localhost:8983/solr/bigboxstore");
         solr.setParser(new XMLResponseParser());
     }
 

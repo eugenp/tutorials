@@ -15,6 +15,6 @@ public class SquareCalculator {
         return executor.submit(() -> {
             Thread.sleep(1000);
             return input * input;
-        });        
+        });
     }
 }
