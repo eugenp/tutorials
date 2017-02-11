@@ -21,7 +21,7 @@ public class HessianClient {
     }
 
     public static void main(String[] args) throws BookingException {
-        CabBookingService service = SpringApplication.run(BurlapClient.class, args).getBean(CabBookingService.class);
+        CabBookingService service = SpringApplication.run(HessianClient.class, args).getBean(CabBookingService.class);
         out.println(service.bookRide("13 Seagate Blvd, Key Largo, FL 33037"));
     }
 

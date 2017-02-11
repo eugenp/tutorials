@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
+import org.springframework.remoting.support.RemoteExporter;
 
 @Configuration
 @ComponentScan
@@ -18,19 +19,19 @@ public class Server {
         return new CabBookingServiceImpl();
     }
 
-    @Bean(name = "/h_booking") HessianServiceExporter hessianService(CabBookingService service) {
-        HessianServiceExporter exporter = new HessianServiceExporter();
-        exporter.setService(bookingService());
-        exporter.setServiceInterface( CabBookingService.class );
-        return exporter;
-    }
+@Bean(name = "/booking") RemoteExporter hessianService(CabBookingService service) {
+    HessianServiceExporter exporter = new HessianServiceExporter();
+    exporter.setService(bookingService());
+    exporter.setServiceInterface( CabBookingService.class );
+    return exporter;
+}
 
-    @Bean(name = "/b_booking") BurlapServiceExporter burlapService(CabBookingService service) {
-        BurlapServiceExporter exporter = new BurlapServiceExporter();
-        exporter.setService(bookingService());
-        exporter.setServiceInterface( CabBookingService.class );
-        return exporter;
-    }
+@Bean(name = "/b_booking") RemoteExporter burlapService(CabBookingService service) {
+    BurlapServiceExporter exporter = new BurlapServiceExporter();
+    exporter.setService(bookingService());
+    exporter.setServiceInterface( CabBookingService.class );
+    return exporter;
+}
 
     public static void main(String[] args) {
         SpringApplication.run(Server.class, args);
