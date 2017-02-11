@@ -22,14 +22,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.caucho/burlap -->
-        <dependency>
-            <groupId>burlap</groupId>
+<!--        <dependency>
+            <groupId>com.caucho</groupId>
             <artifactId>burlap</artifactId>
-            <version>2.1.7</version>
-<!--            <groupId>com.caucho</groupId>
-            <artifactId>burlap</artifactId>
-            <version>2.1.12</version>-->
-        </dependency>
+            <version>2.1.12</version>
+        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.caucho/com.springsource.com.caucho -->
         <!-- https://mvnrepository.com/artifact/com.caucho/hessian -->
         <dependency>
@@ -37,6 +34,13 @@
             <artifactId>hessian</artifactId>
             <version>4.0.38</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.caucho/resin -->
+<!--        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>resin</artifactId>
+            <version>3.0.9</version>
+        </dependency>-->
+
 
 
 

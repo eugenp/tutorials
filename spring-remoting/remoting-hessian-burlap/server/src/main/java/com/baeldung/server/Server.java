@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 
 @Configuration
@@ -24,12 +25,12 @@ public class Server {
         return exporter;
     }
 
-//    @Bean(name = "/b_booking") BurlapServiceExporter burlapService(CabBookingService service) {
-//        BurlapServiceExporter exporter = new BurlapServiceExporter();
-//        exporter.setService(bookingService());
-//        exporter.setServiceInterface( CabBookingService.class );
-//        return exporter;
-//    }
+    @Bean(name = "/b_booking") BurlapServiceExporter burlapService(CabBookingService service) {
+        BurlapServiceExporter exporter = new BurlapServiceExporter();
+        exporter.setService(bookingService());
+        exporter.setServiceInterface( CabBookingService.class );
+        return exporter;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Server.class, args);

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>server</module>
+        <module>client</module>
     </modules>
     <modelVersion>4.0.0</modelVersion>
 
