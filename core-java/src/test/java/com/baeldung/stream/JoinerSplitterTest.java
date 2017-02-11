@@ -13,7 +13,8 @@ public class JoinerSplitterTest {
 
 	@Test
 	public void provided_array_convert_to_stream_and_convert_to_string() {
-		String[] programming_languages = {"java", "python", "nodejs", "ruby"};
+		String[] programming_languages = {"java", "python", 
+				"nodejs", "ruby"};
 		String expectation = "java,python,nodejs,ruby";
 		
 		String result  = JoinerSplitter.join(programming_languages);
@@ -21,8 +22,19 @@ public class JoinerSplitterTest {
 	}
 	
 	@Test
-	public void provided_list_convert_to_stream_and_convert_to_list() {
-		String programming_languages = "java,python,nodejs,ruby";
+	public void provided_array_convert_to_stream_and_convert_to_prefixPostfixString() {
+		String[] programming_languages = {"java", "python", 
+				"nodejs", "ruby"};
+		String expectation = "[java,python,nodejs,ruby]";
+		
+		String result  = JoinerSplitter.joinWithPrefixPostFix(programming_languages);
+		assertEquals(result, expectation);
+	}
+	
+	@Test
+	public void provided_string_convert_to_stream_and_convert_to_listOfString() {
+		String programming_languages = "java,python,"
+				+ "nodejs,ruby";
 		
 		List<String> expectation = new ArrayList<String>();
 		expectation.add("java");
@@ -33,6 +45,22 @@ public class JoinerSplitterTest {
 		List<String> result  = JoinerSplitter.split(programming_languages);
 		
 		assertEquals(result, expectation);
+	}
+
+	@Test
+	public void provided_string_convert_to_stream_and_convert_to_listOfChar() {
+		String programming_languages = "java,python,"
+				+ "nodejs,ruby";
+		
+		List<Character> expectation = new ArrayList<Character>();
+		char[] charArray = programming_languages.toCharArray();
+		for (char c : charArray) {
+			expectation.add(c);
+		}
+		
+		List<Character> result  = JoinerSplitter.splitToListOfChar(programming_languages);
+		assertEquals(result, expectation);
+		
 	}
 	
 }
