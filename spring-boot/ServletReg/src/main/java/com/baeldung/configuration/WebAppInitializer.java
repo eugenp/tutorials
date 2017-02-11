@@ -11,7 +11,6 @@ import javax.servlet.ServletRegistration;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
-    //Dispatcher Servlet on Startup
     public void onStartup(ServletContext container) throws ServletException {
 
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
@@ -30,5 +29,4 @@ public class WebAppInitializer implements WebApplicationInitializer {
         servletTwo.setLoadOnStartup(1);
         servletTwo.addMapping("/");
     }
-
 }

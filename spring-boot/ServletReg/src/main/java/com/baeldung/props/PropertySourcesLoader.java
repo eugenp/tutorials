@@ -8,11 +8,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.ConfigurableEnvironment;
 
-@Configuration @ComponentScan(basePackages = { "com.baeldung.*" }) @PropertySource("classpath:custom.properties") public class PropertySourcesLoader {
+@Configuration
+@ComponentScan(basePackages = { "com.baeldung.*" })
+@PropertySource("classpath:custom.properties") public class PropertySourcesLoader {
 
     private static final Logger log = LoggerFactory.getLogger(PropertySourcesLoader.class);
 
-    @Autowired ConfigurableEnvironment env;
+    @Autowired
+    ConfigurableEnvironment env;
 
     public String getProperty(String key) {
         return env.getProperty(key);
