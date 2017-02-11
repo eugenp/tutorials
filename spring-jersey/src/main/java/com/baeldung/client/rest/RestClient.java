@@ -18,7 +18,7 @@ public class RestClient {
     }
 
     public Employee getJsonEmployee(int id) {
-        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_JSON).get(Employee.class);
+        return client.target(REST_URI).path(String.valueOf(id)).request(MediaType.APPLICATION_JSON).get(Employee.class);
     }
 
     public Response createXmlEmployee(Employee emp) {
@@ -26,6 +26,6 @@ public class RestClient {
     }
 
     public Employee getXmlEmployee(int id) {
-        return client.target(REST_URI).path(new Integer(id).toString()).request(MediaType.APPLICATION_XML).get(Employee.class);
+        return client.target(REST_URI).path(String.valueOf(id)).request(MediaType.APPLICATION_XML).get(Employee.class);
     }
 }

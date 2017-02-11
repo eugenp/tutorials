@@ -14,12 +14,12 @@ public class GatewayApplicationLiveTest {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         String testUrl = "http://localhost:8080";
 
-        ResponseEntity<String> response = testRestTemplate.getForEntity(testUrl + "/resource/hello/cloud", String.class);
+        ResponseEntity<String> response = testRestTemplate.getForEntity(testUrl + "/book-service/books", String.class);
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertEquals("hello cloud", response.getBody());
+        Assert.assertNotNull(response.getBody());
 
         //try the protected resource and confirm the redirect to login
-        response = testRestTemplate.getForEntity(testUrl + "/resource/hello/user", String.class);
+        response = testRestTemplate.getForEntity(testUrl + "/book-service/books/1", String.class);
         Assert.assertEquals(HttpStatus.FOUND, response.getStatusCode());
         Assert.assertEquals("http://localhost:8080/login", response.getHeaders().get("Location").get(0));
 
@@ -36,12 +36,12 @@ public class GatewayApplicationLiveTest {
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
 
         //request the protected resource
-        response = testRestTemplate.exchange(testUrl + "/resource/hello/user", HttpMethod.GET, httpEntity, String.class);
+        response = testRestTemplate.exchange(testUrl + "/book-service/books/1", HttpMethod.GET, httpEntity, String.class);
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertEquals("hello cloud user", response.getBody());
+        Assert.assertNotNull(response.getBody());
 
         //request the admin protected resource to determine it is still protected
-        response = testRestTemplate.exchange(testUrl + "/resource/hello/admin", HttpMethod.GET, httpEntity, String.class);
+        response = testRestTemplate.exchange(testUrl + "/rating-service/ratings/all", HttpMethod.GET, httpEntity, String.class);
         Assert.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
 
         //login as the admin
@@ -57,9 +57,9 @@ public class GatewayApplicationLiveTest {
         httpEntity = new HttpEntity<>(headers);
 
         //request the protected resource
-        response = testRestTemplate.exchange(testUrl + "/resource/hello/admin", HttpMethod.GET, httpEntity, String.class);
+        response = testRestTemplate.exchange(testUrl + "/rating-service/ratings/all", HttpMethod.GET, httpEntity, String.class);
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertEquals("hello cloud admin", response.getBody());
+        Assert.assertNotNull(response.getBody());
 
         //request the discovery resources as the admin
         response = testRestTemplate.exchange(testUrl + "/discovery", HttpMethod.GET, httpEntity, String.class);
