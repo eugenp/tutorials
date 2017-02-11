@@ -7,11 +7,15 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.AuthCache;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
+import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
@@ -103,19 +107,31 @@ public class HttpClientAdvancedConfiguration {
     @Test
     public void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
         //given
-        proxyMock.stubFor(get(urlMatching(".*"))
+        proxyMock.stubFor(get(urlMatching("/private"))
                 .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
-
-        serviceMock.stubFor(get(urlEqualTo("/private/username_admin/secret_password"))
+        serviceMock.stubFor(get(urlEqualTo("/private"))
                 .willReturn(aResponse().withStatus(200)));
 
 
         HttpHost proxy = new HttpHost("localhost", 8090);
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
 
+        // Client credentials
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(new AuthScope(proxy),
                 new UsernamePasswordCredentials("username_admin", "secret_password"));
+
+
+        // Create AuthCache instance
+        AuthCache authCache = new BasicAuthCache();
+
+        // Generate BASIC scheme object and add it to the local auth cache
+        BasicScheme basicAuth = new BasicScheme();
+        authCache.put(proxy, basicAuth);
+        HttpClientContext context = HttpClientContext.create();
+        context.setCredentialsProvider(credentialsProvider);
+        context.setAuthCache(authCache);
+
 
         HttpClient httpclient = HttpClients.custom()
                 .setRoutePlanner(routePlanner)
@@ -124,13 +140,13 @@ public class HttpClientAdvancedConfiguration {
 
 
         //when
-        final HttpGet httpGet = new HttpGet("http://localhost:8089/private/username_admin/secret_password");
-        HttpResponse response = httpclient.execute(httpGet);
+        final HttpGet httpGet = new HttpGet("http://localhost:8089/private");
+        HttpResponse response = httpclient.execute(httpGet, context);
 
         //then
         assertEquals(response.getStatusLine().getStatusCode(), 200);
-        proxyMock.verify(getRequestedFor(urlEqualTo("/private/username_admin/secret_password")));
-        serviceMock.verify(getRequestedFor(urlEqualTo("/private/username_admin/secret_password")));
+        proxyMock.verify(getRequestedFor(urlEqualTo("/private")).withHeader("Authorization", containing("Basic")));
+        serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }
 
 
