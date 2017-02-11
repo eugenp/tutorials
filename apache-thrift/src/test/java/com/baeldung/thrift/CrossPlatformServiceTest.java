@@ -1,5 +1,6 @@
 package com.baeldung.thrift;
 
+import org.apache.thrift.transport.TTransportException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,7 +12,13 @@ public class CrossPlatformServiceTest {
 
     @Before
     public void setUp() {
-        new Thread(() -> server.start()).start();
+        new Thread(() -> {
+            try {
+                server.start();
+            } catch (TTransportException e) {
+                e.printStackTrace();
+            }
+        }).start();
         try {
             // wait for the server start up
             Thread.sleep(1000);

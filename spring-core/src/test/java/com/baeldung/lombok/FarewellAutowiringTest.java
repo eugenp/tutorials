@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class FarewellAutowiringTest {
 
     @Autowired
-    private Fareweller fareweller;
+    private FarewellService farewellService;
 
     @Autowired
     private Translator translator;
@@ -26,6 +26,6 @@ public class FarewellAutowiringTest {
     public void sayByeWithTranslatedMessage() {
         String translated = "translated";
         when(translator.translate("bye")).thenReturn(translated);
-        assertEquals(translated, fareweller.farewell());
+        assertEquals(translated, farewellService.farewell());
     }
 }
