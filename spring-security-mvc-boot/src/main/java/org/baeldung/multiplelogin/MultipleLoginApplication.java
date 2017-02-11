@@ -14,9 +14,9 @@ public class MultipleLoginApplication extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(MultipleLoginApplication.class, args);
     }
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(MultipleLoginApplication.class);
-	}
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(MultipleLoginApplication.class);
+    }
 }

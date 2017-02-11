@@ -21,14 +21,8 @@ public class MultipleLoginSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user")
-            .password("userPass")
-            .roles("USER")
-            .build());
-        manager.createUser(User.withUsername("admin")
-            .password("adminPass")
-            .roles("ADMIN")
-            .build());
+        manager.createUser(User.withUsername("user").password("userPass").roles("USER").build());
+        manager.createUser(User.withUsername("admin").password("adminPass").roles("ADMIN").build());
         return manager;
     }
 
@@ -42,37 +36,16 @@ public class MultipleLoginSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password("admin")
-                .roles("ADMIN");
+            auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
         }
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/admin*")
-                .authorizeRequests()
-                .anyRequest()
-                .hasRole("ADMIN")
-                // log in
-                .and()
-                .formLogin()
-                .loginPage("/loginAdmin")
-                .loginProcessingUrl("/admin_login")
-                .failureUrl("/loginAdmin?error=loginError")
-                .defaultSuccessUrl("/adminPage")
-                // logout
-                .and()
-                .logout()
-                .logoutUrl("/admin_logout")
-                .logoutSuccessUrl("/protectedLinks")
-                .deleteCookies("JSESSIONID")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403")
-                .and()
-                .csrf()
-                .disable();
+            http.antMatcher("/admin*").authorizeRequests().anyRequest().hasRole("ADMIN")
+                    // log in
+                    .and().formLogin().loginPage("/loginAdmin").loginProcessingUrl("/admin_login").failureUrl("/loginAdmin?error=loginError").defaultSuccessUrl("/adminPage")
+                    // logout
+                    .and().logout().logoutUrl("/admin_logout").logoutSuccessUrl("/protectedLinks").deleteCookies("JSESSIONID").and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
         }
     }
 
@@ -86,36 +59,15 @@ public class MultipleLoginSecurityConfig {
 
         @Override
         protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("user")
-                .roles("USER");
+            auth.inMemoryAuthentication().withUser("user").password("user").roles("USER");
         }
 
         protected void configure(HttpSecurity http) throws Exception {
-            http.antMatcher("/user*")
-                .authorizeRequests()
-                .anyRequest()
-                .hasRole("USER")
-                // log in
-                .and()
-                .formLogin()
-                .loginPage("/loginUser")
-                .loginProcessingUrl("/user_login")
-                .failureUrl("/loginUser?error=loginError")
-                .defaultSuccessUrl("/userPage")
-                // logout
-                .and()
-                .logout()
-                .logoutUrl("/user_logout")
-                .logoutSuccessUrl("/protectedLinks")
-                .deleteCookies("JSESSIONID")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403")
-                .and()
-                .csrf()
-                .disable();
+            http.antMatcher("/user*").authorizeRequests().anyRequest().hasRole("USER")
+                    // log in
+                    .and().formLogin().loginPage("/loginUser").loginProcessingUrl("/user_login").failureUrl("/loginUser?error=loginError").defaultSuccessUrl("/userPage")
+                    // logout
+                    .and().logout().logoutUrl("/user_logout").logoutSuccessUrl("/protectedLinks").deleteCookies("JSESSIONID").and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();
         }
     }
 
