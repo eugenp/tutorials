@@ -1,18 +1,20 @@
-package com.baeldung.test.comparison;
+package temp;
 
-import java.security.Security;
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
+import junit.framework.Assert;
+
 public class SummationServiceTest {
+
     private static List<Integer> numbers;
 
     @BeforeClass
@@ -39,21 +41,9 @@ public class SummationServiceTest {
 
     @Test
     public void givenNumbers_sumEquals_thenCorrect() {
-        int sum = numbers.stream()
-            .reduce(0, Integer::sum);
-        Assert.assertEquals(6, sum);
-    }
-
-    @Ignore
-    @Test
-    public void givenEmptyList_sumEqualsZero_thenCorrect() {
-        int sum = numbers.stream()
-            .reduce(0, Integer::sum);
-        Assert.assertEquals(6, sum);
-    }
-
-    @Test(expected = ArithmeticException.class)
-    public void givenNumber_whenThrowsException_thenCorrect() {
-        int i = 1 / 0;
+        int sum = 0;
+        for (int num : numbers)
+            sum += num;
+        assertEquals(6, sum);
     }
 }

@@ -4,10 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-  MyTest1.class,
-  MyTest2.class
-})
-public class MyTest5 {
+@Suite.SuiteClasses({ StringCaseTest.class, DivisibilityTest.class })
+public class SuiteTest {
 
 }
