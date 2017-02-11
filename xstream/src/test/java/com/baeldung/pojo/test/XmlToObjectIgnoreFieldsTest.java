@@ -19,6 +19,7 @@ public class XmlToObjectIgnoreFieldsTest {
         SimpleXstreamInitializer simpleXstreamInitializer = new SimpleXstreamInitializer();
         xstream = simpleXstreamInitializer.getXstreamInstance();
         xstream.alias("customer", Customer.class);
+        xstream.ignoreUnknownElements();
     }
 
     @Test

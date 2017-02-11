@@ -5,17 +5,11 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-<<<<<<< HEAD
-@Configuration public class EmbeddedTomcatExample {
-
-    @Bean public EmbeddedServletContainerFactory servletContainer() {
-=======
 @Configuration
 public class EmbeddedTomcatExample {
 
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
->>>>>>> origin
         TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory();
         return tomcat;
     }
