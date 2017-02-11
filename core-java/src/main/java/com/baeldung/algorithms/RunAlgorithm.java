@@ -24,7 +24,8 @@ public class RunAlgorithm {
 			SlopeOne.slopeOne(3);
 			break;
 		case 3:
-			SimpleGeneticAlgorithm.runAlgorithm(50, "1011000100000100010000100000100111001000000100000100000000001111");
+			SimpleGeneticAlgorithm ga = new SimpleGeneticAlgorithm();
+			ga.runAlgorithm(50, "1011000100000100010000100000100111001000000100000100000000001111");
 			break;
 		default:
 			System.out.println("Unknown option");
