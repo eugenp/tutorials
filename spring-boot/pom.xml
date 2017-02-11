@@ -9,9 +9,12 @@
     <name>PARENT - ${project.artifactId}</name>
     <packaging>pom</packaging>
 
-     <modules>
-        <module>ServletReg</module>
-        <module>spring-boot</module>
-    </modules>
-
+    <profiles>
+        <profile>
+            <modules>
+                <module>ServletReg</module>
+                <module>spring-boot</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>
