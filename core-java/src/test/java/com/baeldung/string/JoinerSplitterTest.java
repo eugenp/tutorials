@@ -1,4 +1,4 @@
-package com.baeldung.stream;
+package com.baeldung.string;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.baeldung.streamApi.JoinerSplitter;
+import com.baeldung.string.JoinerSplitter;
 
 public class JoinerSplitterTest {
 
