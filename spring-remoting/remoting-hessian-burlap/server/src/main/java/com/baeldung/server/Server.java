@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
+import org.springframework.remoting.support.RemoteExporter;
 
 @Configuration
 @ComponentScan
@@ -17,7 +19,7 @@ public class Server {
         return new CabBookingServiceImpl();
     }
 
-    @Bean(name = "/h_booking") HessianServiceExporter hessianService(CabBookingService service) {
+    @Bean(name = "/booking") RemoteExporter hessianService(CabBookingService service) {
         HessianServiceExporter exporter = new HessianServiceExporter();
         exporter.setService(bookingService());
         exporter.setServiceInterface(CabBookingService.class);
