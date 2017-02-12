@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 public class SpringBootRequestLoggingTest {
     @Autowired
@@ -31,7 +31,7 @@ public class SpringBootRequestLoggingTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).addFilter(webApplicationContext.getBean(CommonsRequestLoggingFilter.class)).build();
 
     }
-    
+
     @Test
     public void givenRequestHasBeenMade_whenGetMeetsAllOfGivenConditions_thenCorrect() throws Exception {
         MediaType contentType = new MediaType(MediaType.APPLICATION_FORM_URLENCODED.getType(), MediaType.APPLICATION_FORM_URLENCODED.getSubtype(), Charset.forName("utf8"));
