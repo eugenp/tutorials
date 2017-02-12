@@ -43,6 +43,16 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <context-param>
+	    <param-name>spring.profiles.active</param-name>
+	    <param-value>http</param-value>
+    </context-param>
+    
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/view/accessDenied.jsp</location>
+    </error-page>
+    
     <!-- <welcome-file-list> -->
     <!-- <welcome-file>index.html</welcome-file> -->
     <!-- </welcome-file-list> -->
