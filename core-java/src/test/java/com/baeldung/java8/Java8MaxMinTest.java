@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,8 +19,8 @@ public class Java8MaxMinTest {
         final Integer expectedResult = 89;
 
         //when
-        Optional<Integer> result = listOfIntegers.stream().max(Integer::compare);
-        Integer resultMax = result.isPresent() ? result.get() : null;
+        OptionalInt result = listOfIntegers.stream().mapToInt(val -> val).max();
+        Integer resultMax = result.isPresent() ? result.getAsInt() : null;
 
         //then
         assertEquals(expectedResult, resultMax);
@@ -35,7 +36,7 @@ public class Java8MaxMinTest {
 
         //when
         Optional<Person> minAge =
-            people.stream().min((o1, o2) -> o1.getAge().compareTo(o2.getAge()));
+          people.stream().min((o1, o2) -> o1.getAge().compareTo(o2.getAge()));
         Person resultMin = minAge.isPresent() ? minAge.get() : null;
 
         //then
