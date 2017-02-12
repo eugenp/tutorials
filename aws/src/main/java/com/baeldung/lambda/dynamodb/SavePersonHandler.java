@@ -1,8 +1,3 @@
-/**
- * "Unpublished Work © 2017 Deere & Company. All Worldwide Rights Reserved. THIS MATERIAL IS THE PROPERTY OF DEERE &
- * COMPANY. ALL USE, ALTERATIONS, DISCLOSURE, DISSEMINATION AND/OR REPRODUCTION NOT SPECIFICALLY AUTHORIZED BY DEERE &
- * COMPANY IS PROHIBITED."
- */
 package com.baeldung.lambda.dynamodb;
 
 import com.amazonaws.regions.Region;

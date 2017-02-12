@@ -53,14 +53,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>artifactory-isg-release</id>
-			<url>https://repository.deere.com/artifactory/isg-release</url>
-		</repository>
-		<repository>
-			<id>axiom-nexus</id>
-			<url>http://isgnexus.deere.com/nexus/content/groups/public</url>
-		</repository>
-	</repositories>
 </project>
