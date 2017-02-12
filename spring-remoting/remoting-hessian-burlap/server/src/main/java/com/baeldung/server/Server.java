@@ -10,10 +10,7 @@ import org.springframework.remoting.caucho.BurlapServiceExporter;
 import org.springframework.remoting.caucho.HessianServiceExporter;
 import org.springframework.remoting.support.RemoteExporter;
 
-@Configuration
-@ComponentScan
-@EnableAutoConfiguration
-public class Server {
+@Configuration @ComponentScan @EnableAutoConfiguration public class Server {
 
     @Bean CabBookingService bookingService() {
         return new CabBookingServiceImpl();
