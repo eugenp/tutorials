@@ -1,7 +1,6 @@
-package com.baeldung.annotation.servletcomponentscan.javaee;
+package com.baeldung.annotation.servletcomponentscan.components;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
