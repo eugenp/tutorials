@@ -63,9 +63,6 @@ public class HibernateOneToManyAnnotationMainTest {
 		cartItems = cart.getItems();
 		Assert.assertNull(cartItems);
 		Items item1 = new Items();
-		item1.setItemId("I10");
-		item1.setItemTotal(10);
-		item1.setQuantity(1);
 		item1.setCart(cart);
 		assertNotNull(item1);
 		Set<Items> itemsSet = new HashSet<Items>();

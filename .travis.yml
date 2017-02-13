@@ -1,0 +1,17 @@
+language: java
+
+install: travis_wait 40 mvn -q clean install -Dgib.enabled=true
+
+jdk:
+  - oraclejdk8
+
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
