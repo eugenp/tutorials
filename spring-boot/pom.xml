@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot</artifactId>
@@ -12,8 +12,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.2.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <version>1.5.1.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -24,6 +24,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-osgi-locator</artifactId>
+            <version>1.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.geronimo.components</groupId>
+            <artifactId>geronimo-jaspi</artifactId>
+            <version>2.0.0</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -86,6 +106,20 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
             <version>${jquery.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>arquillian-tomee-embedded</artifactId>
+            <version>${arquillian-tomee-embedded.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${tomee-javaee-api.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -166,7 +200,7 @@
                         </executions>
                         <configuration>
                             <systemPropertyVariables>
-                                <test.mime>json</test.mime>
+                            <test.mime>json</test.mime>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -186,6 +220,8 @@
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
+        <arquillian-tomee-embedded.version>7.0.2</arquillian-tomee-embedded.version>
+        <tomee-javaee-api.version>7.0-1</tomee-javaee-api.version>
     </properties>
 
 </project>
