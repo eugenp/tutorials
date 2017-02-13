@@ -1,7 +1,14 @@
 package com.baeldung.struts;
 
-public class CarAction {
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.ResultPath;
 
+@Namespace("/tutorial")
+@Action("/car")
+@Result(name = "success", location = "/result.jsp")
+public class CarAction { 
     private String carName;
     private String carMessage;
     private CarMessageService carMessageService = new CarMessageService();
