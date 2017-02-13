@@ -20,7 +20,9 @@
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
-					<excludes>**/*TestCarAction.java</excludes>
+					<excludes>
+					<exclude>**/*TestCarAction.java</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<plugin>
