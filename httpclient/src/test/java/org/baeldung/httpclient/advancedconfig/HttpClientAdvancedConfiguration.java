@@ -45,7 +45,7 @@ public class HttpClientAdvancedConfiguration {
                         .withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
-        final HttpGet httpGet = new HttpGet("http://localhost:8089/detail");
+        HttpGet httpGet = new HttpGet("http://localhost:8089/detail");
         httpGet.setHeader(HttpHeaders.USER_AGENT, userAgent);
 
         //when
