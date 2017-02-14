@@ -38,12 +38,12 @@ public class HttpClientAdvancedConfiguration {
     @Test
     public void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {
         //given
+        String userAgent = "BaeldungAgent/1.0";
         serviceMock.stubFor(get(urlEqualTo("/detail"))
-                .withHeader("User-Agent", equalTo("BaeldungAgent/1.0"))
+                .withHeader("User-Agent", equalTo(userAgent))
                 .willReturn(aResponse()
                         .withStatus(200)));
 
-        String userAgent = "BaeldungAgent/1.0";
         HttpClient httpClient = HttpClients.createDefault();
         final HttpGet httpGet = new HttpGet("http://localhost:8089/detail");
         httpGet.setHeader(HttpHeaders.USER_AGENT, userAgent);
