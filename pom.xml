@@ -191,6 +191,7 @@
         <module>xstream</module>
 
         <module>struts2</module>
+        <module>cglib</module>
 
     </modules>
 
