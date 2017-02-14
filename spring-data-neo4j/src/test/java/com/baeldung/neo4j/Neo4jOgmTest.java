@@ -1,18 +1,19 @@
-package com.baeldung.graph;
+package com.baeldung.neo4j;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.junit.Assert;
 import org.junit.Test;
 import org.neo4j.ogm.config.Configuration;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
-import org.testng.Assert;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.baeldung.spring.data.neo4j.domain.Car;
+import com.baeldung.spring.data.neo4j.domain.Company;
+import org.neo4j.ogm.transaction.Transaction;
 
-/**
- * @author Danil Kornishev (danil.kornishev@mastercard.com)
- */
 public class Neo4jOgmTest {
 
     @Test
@@ -20,7 +21,7 @@ public class Neo4jOgmTest {
         Configuration conf = new Configuration();
         conf.driverConfiguration().setDriverClassName("org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver");
 
-        SessionFactory factory = new SessionFactory(conf, "com.baeldung.graph");
+        SessionFactory factory = new SessionFactory(conf, "com.baeldung.spring.data.neo4j.domain");
         Session session = factory.openSession();
 
         Car tesla = new Car("tesla", "modelS");
@@ -29,6 +30,8 @@ public class Neo4jOgmTest {
         baeldung.setCar(tesla);
 
         session.save(baeldung);
+
+        Assert.assertEquals(1, session.countEntitiesOfType(Company.class));
 
         Map<String, String> params = new HashMap<>();
         params.put("make", "tesla");
