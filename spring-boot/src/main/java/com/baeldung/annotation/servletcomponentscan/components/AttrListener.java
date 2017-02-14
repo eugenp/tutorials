@@ -1,4 +1,4 @@
-package com.baeldung.annotation.servletcomponentscan.javaee;
+package com.baeldung.annotation.servletcomponentscan.components;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

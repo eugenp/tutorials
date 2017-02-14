@@ -9,13 +9,13 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * <ul><li>
  * <code>@ServletComponentScan</code>
  * </li><li>
- * <code>@ServletComponentScan(basePackages = "com.baeldung.annotation.servletcomponentscan.javaee")</code>
+ * <code>@ServletComponentScan(basePackages = "com.baeldung.annotation.servletcomponentscan.components")</code>
  * </li><li>
  * <code>@ServletComponentScan(basePackageClasses = {AttrListener.class, HelloFilter.class, HelloServlet.class, EchoServlet.class})</code>
  * </li></ul>
  */
 @SpringBootApplication
-@ServletComponentScan("com.baeldung.annotation.servletcomponentscan.javaee")
+@ServletComponentScan("com.baeldung.annotation.servletcomponentscan.components")
 public class SpringBootAnnotatedApp {
 
     public static void main(String[] args) {
