@@ -58,16 +58,17 @@ public class HttpClientAdvancedConfiguration {
     @Test
     public void givenClientThatSendDataInBody_whenSendXmlInBody_shouldReturn200() throws IOException {
         //given
+        String xmlBody = "<xml><id>1</id></xml>";
         serviceMock.stubFor(post(urlEqualTo("/person"))
                 .withHeader("Content-Type", equalTo("application/xml"))
-                .withRequestBody(equalTo("<xml><id>1</id></xml>"))
+                .withRequestBody(equalTo(xmlBody))
                 .willReturn(aResponse()
                         .withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost("http://localhost:8089/person");
         httpPost.setHeader("Content-Type", "application/xml");
-        StringEntity xmlEntity = new StringEntity("<xml><id>1</id></xml>");
+        StringEntity xmlEntity = new StringEntity(xmlBody);
         httpPost.setEntity(xmlEntity);
 
         //when
