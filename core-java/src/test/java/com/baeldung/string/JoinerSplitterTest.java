@@ -12,7 +12,7 @@ import com.baeldung.string.JoinerSplitter;
 public class JoinerSplitterTest {
 
 	@Test
-	public void provided_array_convert_to_stream_and_convert_to_string() {
+	public void givenArray_transformedToStream_convertToString() {
 
 		String[] programming_languages = {"java", "python", "nodejs", "ruby"};
 
@@ -23,7 +23,7 @@ public class JoinerSplitterTest {
 	}
 	
 	@Test
-	public void provided_array_convert_to_stream_and_convert_to_prefixPostfix() {
+	public void givenArray_transformedToStream_convertToPrefixPostfixString() {
 		String[] programming_languages = {"java", "python", 
 				"nodejs", "ruby"};
 		String expectation = "[java,python,nodejs,ruby]";
@@ -33,7 +33,7 @@ public class JoinerSplitterTest {
 	}
 	
 	@Test
-	public void provided_string_convert_to_stream_and_convert_to_listOfString() {
+	public void givenString_transformedToStream_convertToList() {
 		String programming_languages = "java,python,nodejs,ruby";
 		
 		List<String> expectation = new ArrayList<String>();
@@ -48,7 +48,7 @@ public class JoinerSplitterTest {
 	}
   
 	@Test
-	public void provided_string_convert_to_stream_and_convert_to_listOfChar() {
+	public void givenString_transformedToStream_convertToListOfChar() {
 		String programming_languages = "java,python,nodejs,ruby";
 		
 		List<Character> expectation = new ArrayList<Character>();
