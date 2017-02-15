@@ -8,25 +8,33 @@
 		<servlet-name>ProductServlet</servlet-name>
 		<servlet-class>com.baeldung.apache.velocity.servlet.ProductServlet</servlet-class>
 	</servlet>
+
 	<servlet>
-		<servlet-name>velocity</servlet-name>
-		<servlet-class>org.apache.velocity.tools.view.VelocityViewServlet</servlet-class>
+		<servlet-name>LayoutServlet</servlet-name>
+		<servlet-class>com.baeldung.apache.velocity.servlet.LayoutServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>velocityLayout</servlet-name>
+		<servlet-class>org.apache.velocity.tools.view.VelocityLayoutServlet</servlet-class>
 
 		<init-param>
 			<param-name>org.apache.velocity.properties</param-name>
 			<param-value>/WEB-INF/velocity.properties</param-value>
 		</init-param>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>ProductServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LayoutServlet</servlet-name>
+        <url-pattern>/layout</url-pattern>
+    </servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>velocity</servlet-name>
+		<servlet-name>velocityLayout</servlet-name>
 		<url-pattern>*.vm</url-pattern>
 	</servlet-mapping>
-
 	<!-- session timeout -->
 	<session-config>
 		<session-timeout>
