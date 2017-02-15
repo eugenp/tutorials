@@ -48,7 +48,6 @@ public class GuavaEventBusTest {
         listener.resetEventsHandled();
 
         eventBus.post(12345);
-        Thread.sleep(1000);
 
         assertEquals(1, listener.getEventsHandled());
     }
