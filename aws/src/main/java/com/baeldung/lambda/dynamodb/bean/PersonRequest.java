@@ -1,6 +1,7 @@
 package com.baeldung.lambda.dynamodb.bean;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class PersonRequest {
     private int id;
@@ -20,7 +21,7 @@ public class PersonRequest {
     }
 
     public String toString() {
-        final Gson gson = new Gson();
+        final Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(this);
     }
 
