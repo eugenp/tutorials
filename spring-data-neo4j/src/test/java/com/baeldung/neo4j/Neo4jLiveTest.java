@@ -18,7 +18,7 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Result;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
-public class Neo4jTest {
+public class Neo4jLiveTest {
 
     private static GraphDatabaseService graphDb;
 

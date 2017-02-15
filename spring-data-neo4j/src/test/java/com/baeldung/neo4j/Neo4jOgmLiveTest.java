@@ -14,7 +14,7 @@ import com.baeldung.spring.data.neo4j.domain.Car;
 import com.baeldung.spring.data.neo4j.domain.Company;
 import org.neo4j.ogm.transaction.Transaction;
 
-public class Neo4jOgmTest {
+public class Neo4jOgmLiveTest {
 
     @Test
     public void testOgm() {
