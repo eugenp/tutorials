@@ -192,6 +192,8 @@
         <module>xstream</module>
 
         <module>struts2</module>
+        <module>apache-velocity</module>
+
 
     </modules>
 
