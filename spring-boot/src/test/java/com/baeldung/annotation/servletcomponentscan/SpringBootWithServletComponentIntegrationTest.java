@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootAnnotatedApp.class)
 @AutoConfigureMockMvc
-@TestPropertySource(properties = { "security.basic.enabled=false", "server.tomcat.additional-tld-skip-patterns=tomee-*.jar,tomcat-*.jar,openejb-*.jar,cxf-*.jar,activemq-*.jar" })
+@TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithServletComponentIntegrationTest {
 
     @Autowired private ServletContext servletContext;
