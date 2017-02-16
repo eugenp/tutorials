@@ -57,3 +57,4 @@
 - [Guide to java.util.concurrent.Future](http://www.baeldung.com/java-future)
 - [Guide to java.util.concurrent.BlockingQueue](http://www.baeldung.com/java-blocking-queue)
 - [Guide to CountDownLatch in Java](http://www.baeldung.com/java-countdown-latch)
+- [How to Design a Genetic Algorithm in Java](http://www.baeldung.com/java-genetic-algorithm)
