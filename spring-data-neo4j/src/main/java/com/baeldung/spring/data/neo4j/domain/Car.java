@@ -1,12 +1,9 @@
-package com.baeldung.graph;
+package com.baeldung.spring.data.neo4j.domain;
 
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-/**
- * @author Danil Kornishev (danil.kornishev@mastercard.com)
- */
 @NodeEntity
 public class Car {
     @GraphId

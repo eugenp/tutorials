@@ -1,4 +1,4 @@
-package com.baeldung.graph;
+package com.baeldung.neo4j;
 
 
 import java.io.File;
@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -16,7 +17,6 @@ import org.neo4j.graphdb.NotFoundException;
 import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Result;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
-import org.testng.Assert;
 
 public class Neo4jTest {
 
