@@ -122,6 +122,7 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
