@@ -189,7 +189,6 @@
         <module>xstream</module>
 
         <module>struts2</module>
-        <module>jax-ws-introduction</module>
 
   </modules>
 
