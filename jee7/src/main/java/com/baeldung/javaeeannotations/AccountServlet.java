@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "BankAccountServlet", 
-        description = "Represents a Bank Account and it's transactions", 
-        urlPatterns = {"/account", "/bankAccount" }, 
-        initParams = { @WebInitParam(name = "type", value = "savings") }
-        )
+  name = "BankAccountServlet", 
+  description = "Represents a Bank Account and it's transactions", 
+  urlPatterns = {"/account", "/bankAccount" }, 
+  initParams = { @WebInitParam(name = "type", value = "savings") }
+  )
 @ServletSecurity(
-        value = @HttpConstraint(rolesAllowed = {"admin"}),
-        httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"admin"})}
-        )
+  value = @HttpConstraint(rolesAllowed = {"admin"}),
+  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"admin"})}
+  )
 public class AccountServlet extends javax.servlet.http.HttpServlet {
 
     String accountType = null;
@@ -33,7 +33,6 @@ public class AccountServlet extends javax.servlet.http.HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         PrintWriter writer = response.getWriter();
         writer.println("<html>Hello, I am an AccountServlet!</html>");
         writer.flush();
