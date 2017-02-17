@@ -12,11 +12,11 @@ import javax.servlet.http.Part;
 
 @WebServlet(urlPatterns = { "/uploadCustDocs" })
 @MultipartConfig(
-        fileSizeThreshold = 1024 * 1024 * 20,
-        maxFileSize = 1024 * 1024 * 20,
-        maxRequestSize = 1024 * 1024 * 25,
-        location = "D:/custDocs"
-        )
+  fileSizeThreshold = 1024 * 1024 * 20,
+  maxFileSize = 1024 * 1024 * 20,
+  maxRequestSize = 1024 * 1024 * 25,
+  location = "D:/custDocs"
+  )
 public class UploadCustomerDocumentsServlet extends HttpServlet {
 
     protected void doPost(
