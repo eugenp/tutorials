@@ -18,11 +18,13 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
     }
     @Override
     protected ConnectionProvider getAnyConnectionProvider() {
+        System.out.println("Any");
         return connectionProviderMap.values().iterator().next();
     }
 
     @Override
     protected ConnectionProvider selectConnectionProvider(String tenantIdentifier) {
+        System.out.println("Specific");
         return connectionProviderMap.get( tenantIdentifier );
     }
     

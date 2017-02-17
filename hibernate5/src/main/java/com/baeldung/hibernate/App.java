@@ -18,7 +18,7 @@ public class App {
             Session currentSession = sessionFactory.withOptions().tenantIdentifier("db1").openSession();
             System.out.println("Count:"+currentSession.createCriteria(Suppliers.class).list().size());
             currentSession.createCriteria(Suppliers.class).list().stream().forEach(System.out::println);
-            System.out.println("Done");
+            System.out.println("Done1");
         } catch (Exception e) {
             e.printStackTrace();
         }
