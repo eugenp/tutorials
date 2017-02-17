@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="passwordBean" class="com.sql.security.MySecureBean">
+		<property name="str" value="abc123" />
+	</bean>
+
+	<bean id="databaseBean" class="com.sql.database.DatabaseBean">
+		<constructor-arg index="1" type="int" value="3600" />
+		<constructor-arg index="0" type="java.lang.String"
+			value="sqlfarm.server.int" />
+		<constructor-arg index="2" value="admin" />
+		<constructor-arg index="3" ref="passwordBean"/>
+	</bean>
+</beans>
