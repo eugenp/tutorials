@@ -25,14 +25,14 @@ public class PersonServiceProxyTest {
         //given
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
-        enhancer.setCallback((FixedValue) () -> "Hello cglib!");
+        enhancer.setCallback((FixedValue) () -> "Hello Tom!");
         PersonService proxy = (PersonService) enhancer.create();
 
         //when
         String res = proxy.sayHello(null);
 
         //then
-        assertEquals("Hello cglib!", res);
+        assertEquals("Hello Tom!", res);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class PersonServiceProxyTest {
         enhancer.setSuperclass(PersonService.class);
         enhancer.setCallback((MethodInterceptor) (obj, method, args, proxy) -> {
             if (method.getDeclaringClass() != Object.class && method.getReturnType() == String.class) {
-                return "Hello cglib!";
+                return "Hello Tom!";
             } else {
                 return proxy.invokeSuper(obj, args);
             }
@@ -52,8 +52,7 @@ public class PersonServiceProxyTest {
         PersonService proxy = (PersonService) enhancer.create();
 
         //then
-        assertEquals("Hello cglib!", proxy.sayHello(null));
-
+        assertEquals("Hello Tom!", proxy.sayHello(null));
         int lengthOfName = proxy.lengthOfName("Mary");
         assertEquals(4, lengthOfName);
     }

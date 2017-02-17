@@ -16,13 +16,13 @@ public class BeanGeneratorTest {
         BeanGenerator beanGenerator = new BeanGenerator();
 
         //when
-        beanGenerator.addProperty("value", String.class);
+        beanGenerator.addProperty("name", String.class);
         Object myBean = beanGenerator.create();
-        Method setter = myBean.getClass().getMethod("setValue", String.class);
+        Method setter = myBean.getClass().getMethod("setName", String.class);
         setter.invoke(myBean, "some string value set by a cglib");
 
         //then
-        Method getter = myBean.getClass().getMethod("getValue");
+        Method getter = myBean.getClass().getMethod("getName");
         assertEquals("some string value set by a cglib", getter.invoke(myBean));
     }
 }

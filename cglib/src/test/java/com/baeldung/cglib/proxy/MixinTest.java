@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 public class MixinTest {
 
     @Test
-    public void testMixin() throws Exception {
+    public void testMixinBehaviour() throws Exception {
         //when
         Mixin mixin = Mixin.create(
                 new Class[]{Interface1.class, Interface2.class, MixinInterface.class},
@@ -18,7 +18,7 @@ public class MixinTest {
         MixinInterface mixinDelegate = (MixinInterface) mixin;
 
         //then
-        assertEquals("first", mixinDelegate.first());
-        assertEquals("second", mixinDelegate.second());
+        assertEquals("first behaviour", mixinDelegate.first());
+        assertEquals("second behaviour", mixinDelegate.second());
     }
 }
