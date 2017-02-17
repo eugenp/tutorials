@@ -8,9 +8,40 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-core</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-embedded-driver</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.neo4j.driver</groupId>
+            <artifactId>neo4j-java-driver</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-neo4j</artifactId>
+            <version>4.2.0.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-neo4j</artifactId>
             <version>${spring-data-neo4j.version}</version>
+            <type>test-jar</type>
         </dependency>
 
         <dependency>
@@ -25,13 +56,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-neo4j</artifactId>
-            <version>${spring-data-neo4j.version}</version>
-            <type>test-jar</type>
         </dependency>
 
         <dependency>
@@ -72,8 +96,8 @@
             <artifactId>spring-test</artifactId>
             <version>${spring-test.version}</version>
         </dependency>
-
     </dependencies>
+
 
     <build>
         <plugins>
@@ -130,16 +154,18 @@
     </profiles>
 
     <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <neo4j.version>3.0.7</neo4j.version>
+        <neo4j.version>3.1.0</neo4j.version>
         <spring-data-neo4j.version>4.1.6.RELEASE</spring-data-neo4j.version>
         <jackson-jsog.version>1.1</jackson-jsog.version>
         <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
         <spring-test.version>4.3.5.RELEASE</spring-test.version>
-        <neo4j-ogm-test.version>2.0.6</neo4j-ogm-test.version>
+        <neo4j-ogm-test.version>2.1.1</neo4j-ogm-test.version>
 
         <junit.version>4.12</junit.version>
 

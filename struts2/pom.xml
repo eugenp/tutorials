@@ -5,12 +5,12 @@
 	<artifactId>MyStrutsApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>MyStrutsApp</name>
+	<name>struts</name>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>src</directory>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 		<plugins>
@@ -32,28 +32,35 @@
 		</plugins>
 	</build>
 	<dependencies>
-		<!-- http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22struts2-core%22 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-core</artifactId>
 			<version>2.5.5</version>
 		</dependency>
-		<!-- http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22struts2-core%22 -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-junit-plugin</artifactId>
 			<version>2.5.5</version>
 		</dependency>
-		<!-- http://search.maven.org/#search%7Cga%7C1%7Cstruts2-convention-plugin -->
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-convention-plugin</artifactId>
 			<version>2.5.8</version>
 		</dependency>
 		<dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-             <version>3.0.1</version>
-        </dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.6.RELEASE</version>
+		</dependency>
 	</dependencies>
 </project>
