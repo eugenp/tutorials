@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(
-        urlPatterns = "/bankAccount/*",
-        filterName = "LoggingFilter",
-        description = "Filter all account transaction URLs"
-        )
+  urlPatterns = "/bankAccount/*",
+  filterName = "LoggingFilter",
+  description = "Filter all account transaction URLs"
+  )
 public class LoggingFilter implements javax.servlet.Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
