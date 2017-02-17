@@ -18,24 +18,24 @@ import org.junit.Test;
 public class SolrJavaIntegrationTest {
 
     private HttpSolrClient solr;
+    private SolrInputDocument document;
 
     @Before
     public void setUp() throws Exception {
 
         solr = new HttpSolrClient("http://localhost:8983/solr/bigboxstore");
         solr.setParser(new XMLResponseParser());
-    }
-
-    @Test
-    public void givenAdd_thenVerifyAdded() throws SolrServerException, IOException {
-
-        SolrInputDocument document = new SolrInputDocument();
+        
+        document = new SolrInputDocument();
         document.addField("id", "123456");
         document.addField("name", "Kenmore Dishwasher");
         document.addField("price", "599.99");
-
         solr.add(document);
         solr.commit();
+    }
+
+    @Test
+    public void whenAdd_thenVerifyAdded() throws SolrServerException, IOException {
 
         SolrQuery query = new SolrQuery();
         query.set("q", "id:123456");
@@ -53,7 +53,7 @@ public class SolrJavaIntegrationTest {
     }
 
     @Test
-    public void givenDelete_thenVerifyDeleted() throws SolrServerException, IOException {
+    public void whenDelete_thenVerifyDeleted() throws SolrServerException, IOException {
 
         solr.deleteById("123456");
         solr.commit();
