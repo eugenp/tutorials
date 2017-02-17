@@ -6,12 +6,12 @@ import javax.validation.ConstraintValidatorContext;
 public class PasswordValidator implements ConstraintValidator<Password, String> {
 
     private int length;
-    private int nonAlfa;
+    private int nonAlpha;
 
     @Override
     public void initialize(Password password) {
         this.length = password.length();
-        this.nonAlfa = password.nonAlfa();
+        this.nonAlpha = password.nonAlpha();
 
     }
 
@@ -20,13 +20,13 @@ public class PasswordValidator implements ConstraintValidator<Password, String> 
         if (value.length() < length) {
             return false;
         }
-        int nonAlfaNr = 0;
+        int nonAlphaNr = 0;
         for (int i = 0; i < value.length(); i++) {
             if (!Character.isLetterOrDigit(value.charAt(i))) {
-                nonAlfaNr++;
+                nonAlphaNr++;
             }
         }
-        if (nonAlfaNr < nonAlfa) {
+        if (nonAlphaNr < nonAlpha) {
             return false;
         }
         return true;

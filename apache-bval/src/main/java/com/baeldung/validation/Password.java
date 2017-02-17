@@ -21,5 +21,5 @@ public @interface Password {
 
     int length() default 6;
 
-    int nonAlfa() default 1;
+    int nonAlpha() default 1;
 }

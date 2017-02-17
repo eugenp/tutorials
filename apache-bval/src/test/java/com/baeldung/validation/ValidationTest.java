@@ -21,8 +21,6 @@ public class ValidationTest {
     private static ValidatorFactory validatorFactory;
     private static Validator validator;
 
-    private static final int INVALID_AGE = 12;
-
     @BeforeClass
     public static void setup() {
         validatorFactory = Validation.byProvider(ApacheValidationProvider.class)
@@ -32,12 +30,25 @@ public class ValidationTest {
     }
 
     @Test
-    public void whenValidateAge_thenCorrect() {
-        User user = new User("ana@yahoo.com", "pass", "Ana", INVALID_AGE);
+    public void givenUser_whenValidate_thenValidationViolations() {
+        User user = new User("ana@yahoo.com", "pass", "nameTooLong_______________", 15);
+
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
+        assertTrue("no violations", violations.size() > 0);
+    }
+	
+    @Test
+    public void givenInvalidAge_whenValidateProperty_thenConstraintViolation() {
+        User user = new User("ana@yahoo.com", "pass", "Ana", 12);
 
         Set<ConstraintViolation<User>> propertyViolations = validator.validateProperty(user, "age");
         assertEquals("size is not 1", 1, propertyViolations.size());
-
+    }
+	
+    @Test
+    public void givenValidAge_whenValidateValue_thenNoConstraintViolation() {
+        User user = new User("ana@yahoo.com", "pass", "Ana", 18);
+    
         Set<ConstraintViolation<User>> valueViolations = validator.validateValue(User.class, "age", 20);
         assertEquals("size is not 0", 0, valueViolations.size());
     }
@@ -49,6 +60,7 @@ public class ValidationTest {
         user.setIban("1234");
         user.setWebsite("10.0.2.50");
         user.setMainDirectory(new File("."));
+		
         Set<ConstraintViolation<User>> violations = validator.validateProperty(user, "iban");
         assertEquals("size is not 1", 1, violations.size());
 
@@ -60,7 +72,7 @@ public class ValidationTest {
     }
 
     @Test
-    public void whenValidatePassword_thenCorrect() {
+    public void givenInvalidPassword_whenValidatePassword_thenConstraintViolation() {
         User user = new User("ana@yahoo.com", "password", "Ana", 20);
         Set<ConstraintViolation<User>> violations = validator.validateProperty(user, "password");
         assertEquals("message incorrect", "Invalid password", violations.iterator()
@@ -69,6 +81,14 @@ public class ValidationTest {
 
         user.setPassword("password#");
         violations = validator.validateProperty(user, "password");
+        assertEquals("size is not 0", 0, violations.size());
+    }
+	
+    @Test
+    public void givenValidPassword_whenValidatePassword_thenNoConstraintViolation() {
+        User user = new User("ana@yahoo.com", "password#", "Ana", 20);
+		
+        Set<ConstraintViolation<User>>  violations = validator.validateProperty(user, "password");
         assertEquals("size is not 0", 0, violations.size());
     }
 
