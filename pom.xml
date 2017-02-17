@@ -193,6 +193,7 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>jooq</module>
 
 
     </modules>
