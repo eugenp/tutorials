@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
 	<artifactId>spring-mybatis</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-mybatis Maven Webapp</name>
 	<url>http://maven.apache.org</url>

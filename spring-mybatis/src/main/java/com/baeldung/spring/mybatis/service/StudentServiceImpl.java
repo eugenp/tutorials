@@ -14,28 +14,27 @@ public class StudentServiceImpl implements StudentService {
 	private StudentMapper studentMapper;
 
 	@Transactional
-	public void insertStudent(Student student) {
-		studentMapper.insertStudent(student);
+	public boolean insertStudent(Student student) {
+		boolean result=false;
+		try{
+			studentMapper.insertStudent(student);
+			result = true;
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+			result = false;
+		}
+		return result;
 	}
 
-	public boolean getStudentByLogin(String userName, String password) {
+	public Student getStudentByLogin(String userName, String password) {
 		Student student = studentMapper.getStudentByUserName(userName);
-
-		if (student != null && student.getPassword().equals(password)) {
-			return true;
-		}
-
-		return false;
+		return student;
 	}
 
-	public boolean getStudentByUserName(String userName) {
+	public Student getStudentByUserName(String userName) {
 		Student student = studentMapper.getStudentByUserName(userName);
-
-		if (student != null) {
-			return true;
-		}
-
-		return false;
+		return student;
 	}
 
 }
