@@ -1,140 +1,188 @@
 package com.baeldung.excel;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.DateUtil;
-import org.apache.poi.ss.usermodel.FillPatternType;
+
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
 public class ExcelPOIHelper {
 
-    public Map<Integer, ArrayList<String>> readExcel(String fileLocation) throws IOException {
+    public Map<Integer, List<MyCell>> readExcel(String fileLocation) throws IOException {
 
-        Map<Integer, ArrayList<String>> data = new HashMap<Integer, ArrayList<String>>();
-        FileInputStream file = new FileInputStream(new File(fileLocation));
-        Workbook workbook = new XSSFWorkbook(file);
-        Sheet sheet = workbook.getSheetAt(0);
-        int i = 0;
-        for (Row row : sheet) {
-            data.put(i, new ArrayList<String>());
-            for (Cell cell : row) {
-                switch (cell.getCellTypeEnum()) {
-                case STRING:
-                    data.get(i)
-                        .add(cell.getRichStringCellValue()
-                            .getString());
-                    break;
-                case NUMERIC:
-                    if (DateUtil.isCellDateFormatted(cell)) {
-                        data.get(i)
-                            .add(cell.getDateCellValue() + "");
-                    } else {
-                        data.get(i)
-                            .add(cell.getNumericCellValue() + "");
-                    }
-                    break;
-                case BOOLEAN:
-                    data.get(i)
-                        .add(cell.getBooleanCellValue() + "");
-                    break;
-                case FORMULA:
-                    data.get(i)
-                        .add(cell.getCellFormula() + "");
-                    break;
-                default:
-                    data.get(i)
-                        .add(" ");
+        Map<Integer, List<MyCell>> data = new HashMap<>();
+        FileInputStream fis = new FileInputStream(new File(fileLocation));
+
+        if (fileLocation.endsWith(".xls")) {
+            data = readHSSFWorkbook(fis);
+        } else if (fileLocation.endsWith(".xlsx")) {
+            data = readXSSFWorkbook(fis);
+        }
+
+        int maxNrCols = 0;
+
+        for (List<MyCell> ls : data.values()) {
+            if (ls.size() > maxNrCols) {
+                maxNrCols = ls.size();
+            }
+        }
+
+        for (List<MyCell> ls : data.values()) {
+            if (ls.size() < maxNrCols) {
+                for (int i = ls.size(); i < maxNrCols; i++) {
+                    ls.add(new MyCell(""));
                 }
             }
-            i++;
         }
-        if (workbook != null){
-            workbook.close();
+
+        return data;
+    }
+
+    private String readCellContent(Cell cell) {
+        String content = "";
+        switch (cell.getCellTypeEnum()) {
+        case STRING:
+            content = cell.getStringCellValue();
+            break;
+        case NUMERIC:
+            if (DateUtil.isCellDateFormatted(cell)) {
+                content = cell.getDateCellValue() + "";
+            } else {
+                content = cell.getNumericCellValue() + "";
+            }
+            break;
+        case BOOLEAN:
+            content = cell.getBooleanCellValue() + "";
+            break;
+        case FORMULA:
+            content = cell.getCellFormula() + "";
+            break;
+        default:
+            content = "";
+        }
+        return content;
+    }
+
+    private Map<Integer, List<MyCell>> readHSSFWorkbook(FileInputStream fis) throws IOException {
+        Map<Integer, List<MyCell>> data = new HashMap<>();
+        HSSFWorkbook workbook = null;
+        try {
+            workbook = new HSSFWorkbook(fis);
+
+            HSSFSheet sheet = workbook.getSheetAt(0);
+            for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+                HSSFRow row = sheet.getRow(i);
+                data.put(i, new ArrayList<MyCell>());
+                if (row != null) {
+                    for (int j = 0; j < row.getLastCellNum(); j++) {
+                        HSSFCell cell = row.getCell(j);
+                        if (cell != null) {
+                            HSSFCellStyle cellStyle = cell.getCellStyle();
+
+                            MyCell myCell = new MyCell();
+
+                            HSSFColor bgColor = cellStyle.getFillForegroundColorColor();
+                            if (bgColor != null) {
+                                short[] rgbColor = bgColor.getTriplet();
+                                myCell.setBgColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
+                            }
+                            HSSFFont font = cell.getCellStyle()
+                                .getFont(workbook);
+                            myCell.setTextSize(font.getFontHeightInPoints() + "");
+                            if (font.getBold()) {
+                                myCell.setTextWeight("bold");
+                            }
+                            HSSFColor textColor = font.getHSSFColor(workbook);
+                            if (textColor != null) {
+                                short[] rgbColor = textColor.getTriplet();
+                                myCell.setTextColor("rgb(" + rgbColor[0] + "," + rgbColor[1] + "," + rgbColor[2] + ")");
+                            }
+                            myCell.setContent(readCellContent(cell));
+                            data.get(i)
+                                .add(myCell);
+                        } else {
+                            data.get(i)
+                                .add(new MyCell(""));
+                        }
+                    }
+                }
+            }
+        } finally {
+            if (workbook != null) {
+                workbook.close();
+            }
         }
         return data;
     }
 
-    public void writeExcel() throws IOException {
-        Workbook workbook = new XSSFWorkbook();
-
+    private Map<Integer, List<MyCell>> readXSSFWorkbook(FileInputStream fis) throws IOException {
+        XSSFWorkbook workbook = null;
+        Map<Integer, List<MyCell>> data = new HashMap<>();
         try {
-            Sheet sheet = workbook.createSheet("Persons");
-            sheet.setColumnWidth(0, 6000);
-            sheet.setColumnWidth(1, 4000);
 
-            Row header = sheet.createRow(0);
+            workbook = new XSSFWorkbook(fis);
+            XSSFSheet sheet = workbook.getSheetAt(0);
 
-            CellStyle headerStyle = workbook.createCellStyle();
+            for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+                XSSFRow row = sheet.getRow(i);
+                data.put(i, new ArrayList<MyCell>());
+                if (row != null) {
+                    for (int j = 0; j < row.getLastCellNum(); j++) {
+                        XSSFCell cell = row.getCell(j);
+                        if (cell != null) {
+                            XSSFCellStyle cellStyle = cell.getCellStyle();
 
-            headerStyle.setFillForegroundColor(IndexedColors.LIGHT_BLUE.getIndex());
-            headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-
-            XSSFFont font = ((XSSFWorkbook) workbook).createFont();
-            font.setFontName("Arial");
-            font.setFontHeightInPoints((short) 16);
-            font.setBold(true);
-            headerStyle.setFont(font);
-
-            Cell headerCell = header.createCell(0);
-            headerCell.setCellValue("Name");
-            headerCell.setCellStyle(headerStyle);
-
-            headerCell = header.createCell(1);
-            headerCell.setCellValue("Age");
-            headerCell.setCellStyle(headerStyle);
-
-            CellStyle style = workbook.createCellStyle();
-            style.setWrapText(true);
-
-            Row row = sheet.createRow(2);
-            Cell cell = row.createCell(0);
-            cell.setCellValue("John Smith");
-            cell.setCellStyle(style);
-
-            cell = row.createCell(1);
-            cell.setCellValue(20);
-            cell.setCellStyle(style);
-
-            row = sheet.createRow(3);
-            cell = row.createCell(0);
-            cell.setCellValue("Ana Johnson");
-            cell.setCellStyle(style);
-
-            cell = row.createCell(1);
-            cell.setCellValue(30);
-            cell.setCellStyle(style);
-
-            File currDir = new File(".");
-            String path = currDir.getAbsolutePath();
-            String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
-
-            FileOutputStream outputStream = new FileOutputStream(fileLocation);
-            workbook.write(outputStream);
-        } finally {
-            if (workbook != null) {
-                try {
-                    workbook.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                            MyCell myCell = new MyCell();
+                            XSSFColor bgColor = cellStyle.getFillForegroundColorColor();
+                            if (bgColor != null) {
+                                byte[] rgbColor = bgColor.getRGB();
+                                myCell.setBgColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                            }
+                            XSSFFont font = cellStyle.getFont();
+                            myCell.setTextSize(font.getFontHeightInPoints() + "");
+                            if (font.getBold()) {
+                                myCell.setTextWeight("bold");
+                            }
+                            XSSFColor textColor = font.getXSSFColor();
+                            if (textColor != null) {
+                                byte[] rgbColor = textColor.getRGB();
+                                myCell.setTextColor("rgb(" + (rgbColor[0] < 0 ? (rgbColor[0] + 0xff) : rgbColor[0]) + "," + (rgbColor[1] < 0 ? (rgbColor[1] + 0xff) : rgbColor[1]) + "," + (rgbColor[2] < 0 ? (rgbColor[2] + 0xff) : rgbColor[2]) + ")");
+                            }
+                            myCell.setContent(readCellContent(cell));
+                            data.get(i)
+                                .add(myCell);
+                        } else {
+                            data.get(i)
+                                .add(new MyCell(""));
+                        }
+                    }
                 }
             }
+        } finally {
+            if (workbook != null) {
+                workbook.close();
+            }
         }
+        return data;
     }
 
 }
