@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package com.baeldung.junit4vstestng;
 
 import static org.junit.Assert.assertEquals;
 

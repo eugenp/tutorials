@@ -1,19 +1,16 @@
-package com.baeldung.test.comparison;
+package baeldung.com;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Assert;
+import org.testng.TestNG;
+import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.testng.Assert;
-import org.testng.TestNG;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterGroups;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeGroups;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-public class SummationServiceTestTestNg extends TestNG {
+public class SummationServiceTest extends TestNG {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DependentTests.class);
 
     private List<Integer> numbers;
 
@@ -29,14 +26,16 @@ public class SummationServiceTestTestNg extends TestNG {
         numbers = null;
     }
 
-    @BeforeMethod
-    public void runBeforeEachTest() {
-        testCount++;
+    @BeforeSuite(groups = "regression")
+    public void runBeforeRegressionSuite() {
+        numbers = new ArrayList<>();
+        numbers.add(-11);
+        numbers.add(2);
     }
 
-    @AfterMethod
-    public void runAfterEachTest() {
-
+    @AfterSuite(groups = "regression")
+    public void runAfterRegressionSuite() {
+        numbers = null;
     }
 
     @BeforeGroups("negative_tests")
@@ -62,6 +61,17 @@ public class SummationServiceTestTestNg extends TestNG {
         numbers.clear();
     }
 
+    @BeforeMethod
+    public void runBeforeEachTest() {
+        testCount++;
+    }
+
+    @AfterMethod
+    public void runAfterEachTest() {
+
+    }
+
+
     @Test(groups = "positive_tests", enabled = false)
     public void givenNumbers_sumEquals_thenCorrect() {
         int sum = numbers.stream().reduce(0, Integer::sum);
@@ -78,12 +88,6 @@ public class SummationServiceTestTestNg extends TestNG {
     public void givenNegativeNumber_sumLessthanZero_thenCorrect() {
         int sum = numbers.stream().reduce(0, Integer::sum);
         Assert.assertTrue(sum < 0);
-        ;
-    }
-
-    @Test(groups = "sanity")
-    public void givenNumbers_doSum() {
-
     }
 
     @Test(expectedExceptions = ArithmeticException.class)
