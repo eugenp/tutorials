@@ -182,6 +182,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -193,8 +194,6 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
-
-        <module>testng</module>
 
     </modules>
 

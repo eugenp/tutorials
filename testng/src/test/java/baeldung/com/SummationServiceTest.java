@@ -1,5 +1,7 @@
 package baeldung.com;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.TestNG;
 import org.testng.annotations.*;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SummationServiceTest extends TestNG {
+    private static final Logger LOGGER = LoggerFactory.getLogger(DependentTests.class);
 
     private List<Integer> numbers;
 

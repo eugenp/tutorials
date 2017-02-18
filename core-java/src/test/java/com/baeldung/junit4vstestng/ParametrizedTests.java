@@ -11,23 +11,24 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(value = Parameterized.class)
-public class MyParameterisedUnitTest {
+public class ParametrizedTests {
 
-    private String name;
+    private int value;
+    private boolean isEven;
 
-    public MyParameterisedUnitTest(String myName) {
-        this.name = myName;
+    public ParametrizedTests(int value, boolean isEven) {
+        this.value = value;
+        this.isEven = isEven;
     }
 
     @Parameters
     public static Collection<Object[]> data() {
-        Object[][] data = new Object[][]{{"Peter"}, {"Sam"}, {"Tim"}, {"Lucy"}};
+        Object[][] data = new Object[][]{{1, false}, {2, true}, {4, true}};
         return Arrays.asList(data);
     }
 
     @Test
-    public void givenName_whenValidLength_thenTrue() {
-        boolean valid = name.length() > 0;
-        Assert.assertEquals(valid, true);
+    public void givenParametrizedNumber_ifEvenCheckOK_thenCorrect() {
+        Assert.assertEquals(isEven, value % 2 == 0);
     }
 }

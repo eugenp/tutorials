@@ -1,46 +1,25 @@
 package baeldung.com;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class DependentTests {
 
-    private String validEmail = "abc@qwe.com";
-    private EmailValidator emailValidator;
-    private LoginValidator loginValidator;
+    private static final Logger LOGGER = LoggerFactory.getLogger(DependentTests.class);
 
-    @BeforeClass
-    public void setup() {
-        emailValidator = new EmailValidator();
-        loginValidator = new LoginValidator();
-    }
+    private String email = "abc@qwe.com";
 
     @Test
     public void givenEmail_ifValid_thenTrue() {
-        boolean valid = emailValidator.validate(validEmail);
+        boolean valid = email.contains("@");
         Assert.assertEquals(valid, true);
     }
 
-    @Test(dependsOnMethods = { "givenEmail_ifValid_thenTrue" })
+    @Test(dependsOnMethods = {"givenEmail_ifValid_thenTrue"})
     public void givenValidEmail_whenLoggedIn_thenTrue() {
-        boolean valid = loginValidator.validate();
-        Assert.assertEquals(valid, true);
+        LOGGER.info("Email {} valid >> logging in", email);
     }
 }
 
-class EmailValidator {
-
-    boolean validate(String validEmail) {
-        return true;
-    }
-
-}
-
-class LoginValidator {
-
-    boolean validate() {
-        return true;
-    }
-
-}
