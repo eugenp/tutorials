@@ -2,12 +2,14 @@ package com.baeldung;
 
 
 import org.jooq.lambda.Seq;
+import org.jooq.lambda.Unchecked;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -148,4 +150,44 @@ public class JOOLTest {
                 Arrays.asList(tuple("a", 0L), tuple("b", 1L), tuple("c", 2L))
         );
     }
+
+
+    public Integer methodThatThrowsChecked(String arg) throws Exception {
+        return arg.length();
+    }
+
+    @Test
+    public void givenOperationThatThrowsCheckedException_whenExecuteAndNeedToWrapCheckedIntoUnchecked_shouldPass() {
+        //when
+        List<Integer> collect = Arrays.asList("a", "b", "c").stream().map(elem -> {
+            try {
+                return methodThatThrowsChecked(elem);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
+        }).collect(Collectors.toList());
+
+        //then
+        assertEquals(
+                collect,
+                Arrays.asList(1, 1, 1)
+        );
+    }
+
+
+    @Test
+    public void givenOperationThatThrowsCheckedException_whenExecuteUsingUncheckedFuction_shouldPass() {
+        //when
+        List<Integer> collect = Arrays.asList("a", "b", "c").stream()
+                .map(Unchecked.function(elem -> methodThatThrowsChecked(elem)))
+                .collect(Collectors.toList());
+
+        //then
+        assertEquals(
+                collect,
+                Arrays.asList(1, 1, 1)
+        );
+    }
+
 }
