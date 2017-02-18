@@ -78,10 +78,6 @@ public class ValidationTest {
         assertEquals("message incorrect", "Invalid password", violations.iterator()
             .next()
             .getMessage());
-
-        user.setPassword("password#");
-        violations = validator.validateProperty(user, "password");
-        assertEquals("size is not 0", 0, violations.size());
     }
 	
     @Test
