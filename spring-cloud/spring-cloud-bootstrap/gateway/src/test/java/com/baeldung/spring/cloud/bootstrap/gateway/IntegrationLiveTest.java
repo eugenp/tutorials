@@ -9,7 +9,7 @@ import org.springframework.http.*;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-public class IntegrationTest {
+public class IntegrationLiveTest {
 
     private TestRestTemplate testRestTemplate = new TestRestTemplate();
     private String testUrl = "http://localhost:8080";
