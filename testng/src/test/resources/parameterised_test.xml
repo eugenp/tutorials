@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="My test suite">
+    <test name="test1">
+        <parameter name="name" value="Peter"/>
+        <parameter name="expectedResult" value="true"/>
+        <classes>
+            <class name="baeldung.com.ParametrizedTestNGTest"/>
+        </classes>
+    </test>
+    <test name="test2">
+        <parameter name="name" value="Sam"/>
+        <parameter name="expectedResult" value="true"/>
+        <classes>
+            <class name="baeldung.com.ParametrizedTestNGTest"/>
+        </classes>
+    </test>
+</suite>

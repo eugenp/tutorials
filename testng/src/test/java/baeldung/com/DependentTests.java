@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package baeldung.com;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -6,9 +6,9 @@ import org.testng.annotations.Test;
 
 public class DependentTests {
 
+    private String validEmail = "abc@qwe.com";
     private EmailValidator emailValidator;
     private LoginValidator loginValidator;
-    private String validEmail = "abc@qwe.com";
 
     @BeforeClass
     public void setup() {
@@ -23,7 +23,7 @@ public class DependentTests {
     }
 
     @Test(dependsOnMethods = { "givenEmail_ifValid_thenTrue" })
-    public void givenValidEmail_whenLoggedin_thenTrue() {
+    public void givenValidEmail_whenLoggedIn_thenTrue() {
         boolean valid = loginValidator.validate();
         Assert.assertEquals(valid, true);
     }
@@ -31,7 +31,7 @@ public class DependentTests {
 
 class EmailValidator {
 
-    public boolean validate(String validEmail) {
+    boolean validate(String validEmail) {
         return true;
     }
 
@@ -39,7 +39,7 @@ class EmailValidator {
 
 class LoginValidator {
 
-    public boolean validate() {
+    boolean validate() {
         return true;
     }
 

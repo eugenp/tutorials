@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package baeldung.com;
 
 import org.testng.annotations.Test;
 

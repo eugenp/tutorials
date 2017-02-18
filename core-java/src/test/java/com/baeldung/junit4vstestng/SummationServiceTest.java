@@ -1,8 +1,4 @@
-package com.baeldung.test.comparison;
-
-import java.security.Security;
-import java.util.ArrayList;
-import java.util.List;
+package com.baeldung.junit4vstestng;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,6 +7,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SummationServiceTest {
     private static List<Integer> numbers;

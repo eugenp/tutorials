@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package baeldung.com;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -6,29 +6,22 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class MyParameterisedUnitTestNg {
+public class ParametrizedTestNGTest {
 
-    private PrimeNumberCheck primeNumberChecker;
-
-    @BeforeClass
-    public void intialSetup() {
-        primeNumberChecker = new PrimeNumberCheck();
-    }
-
-    @Test(enabled = false)
-    @Parameters({ "num", "expectedResult" })
-    public void givenNumber_ifPrime_thenCorrect(int number, boolean expectedResult) {
-        Assert.assertEquals(expectedResult, primeNumberChecker.validate(number));
+    @Test
+    @Parameters({ "name", "expectedResult" })
+    public void givenNumber_ifPrime_thenCorrect(String name, boolean expectedResult) {
+        Assert.assertEquals(expectedResult, name.length() > 0);
     }
 
     @DataProvider(name = "test1")
     public static Object[][] primeNumbers() {
-        return new Object[][] { { 2, true }, { 6, false }, { 19, true }, { 22, false }, { 23, true } };
+        return new Object[][] { { "Peter", true }, { "Sam", true }, { "Tim", true }, { "Lucy", true } };
     }
 
     @Test(dataProvider = "test1")
-    public void givenNumber_whenPrime_thenCorrect(Integer inputNumber, Boolean expectedResult) {
-        Assert.assertEquals(expectedResult, primeNumberChecker.validate(inputNumber));
+    public void givenNumber_whenPrime_thenCorrect(String name, boolean expectedResult) {
+        Assert.assertEquals(expectedResult, name.length() > 0);
     }
 
     @Test(dataProvider = "myDataProvider")
@@ -47,17 +40,6 @@ public class MyParameterisedUnitTestNg {
 
 }
 
-class PrimeNumberCheck {
-
-    public Object validate(int number) {
-        for (int i = 2; i < number; i++) {
-            if (number % i == 0)
-                return false;
-        }
-        return true;
-    }
-
-}
 
 class User {
     private String name;

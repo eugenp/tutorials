@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package com.baeldung.junit4vstestng;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

@@ -1,4 +1,4 @@
-package com.baeldung.test.comparison;
+package com.baeldung.junit4vstestng;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +15,7 @@ public class DivisibilityTest {
     }
 
     @Test
-    public void givenNumber_whenDivisiblebyTwo_thenCorrect() {
+    public void givenNumber_whenDivisibleByTwo_thenCorrect() {
         assertEquals(number % 2, 0);
     }
 }
