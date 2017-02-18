@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -33,13 +34,21 @@ public class JOOLTest {
     }
 
     @Test
+    public void givenStreams_whenJoin_shouldHaveElementsFromTwoStreams() {
+        //given
+        Stream<Integer> left = Arrays.asList(1, 2, 4).stream();
+        Stream<Integer> right = Arrays.asList(1, 2, 3).stream();
+
+        //when
+        List<Integer> rightCollected = right.collect(Collectors.toList());
+        List<Integer> collect = left.filter(rightCollected::contains).collect(Collectors.toList());
+
+        //then
+        assertEquals(collect, Arrays.asList(1, 2));
+    }
+
+    @Test
     public void givenSeq_whenJoin_shouldHaveElementsFromBothSeq() {
-        assertEquals(
-                Seq.of(1, 2).crossJoin(Seq.of("A", "B")).toList(),
-                Arrays.asList(tuple(1, "A"), tuple(1, "B"), tuple(2, "A"), tuple(2, "B"))
-        );
-
-
         assertEquals(
                 Seq.of(1, 2, 4).innerJoin(Seq.of(1, 2, 3), (a, b) -> a == b).toList(),
                 Arrays.asList(tuple(1, 1), tuple(2, 2))
@@ -54,6 +63,11 @@ public class JOOLTest {
         assertEquals(
                 Seq.of(1, 2, 4).rightOuterJoin(Seq.of(1, 2, 3), (a, b) -> a == b).toList(),
                 Arrays.asList(tuple(1, 1), tuple(2, 2), tuple(null, 3))
+        );
+
+        assertEquals(
+                Seq.of(1, 2).crossJoin(Seq.of("A", "B")).toList(),
+                Arrays.asList(tuple(1, "A"), tuple(1, "B"), tuple(2, "A"), tuple(2, "B"))
         );
     }
 
