@@ -1,6 +1,18 @@
-package com.baeldung.spring.cloud.bootstrap.svcrating;
+package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Rating {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long bookId;
     private int stars;
