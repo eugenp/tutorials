@@ -7,10 +7,12 @@
         http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
 >
 
+	<http pattern="/securityNone" security="none"/>
+    
     <http create-session="stateless" use-expressions="true">
-
-        <http-basic/>
-
+    	<intercept-url pattern="/**" access="isAuthenticated()"/>
+    	<http-basic entry-point-ref="myBasicAuthenticationEntryPoint"/>
+        <custom-filter after="BASIC_AUTH_FILTER" ref="myFilter" />
     </http>
 
     <authentication-manager>
@@ -21,6 +23,8 @@
         </authentication-provider>
     </authentication-manager>
 
+	<beans:bean id="myFilter" class="org.baeldung.security.filter.CustomFilter"/>
+	
     <global-method-security pre-post-annotations="enabled"/>
 
 </beans:beans>
