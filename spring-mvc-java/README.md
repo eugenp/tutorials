@@ -18,3 +18,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring MVC Content Negotiation](http://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - [Circular Dependencies in Spring](http://www.baeldung.com/circular-dependencies-in-spring)
 - [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)
+- [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
+- [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
