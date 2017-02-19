@@ -59,3 +59,4 @@
 - [Guide to CountDownLatch in Java](http://www.baeldung.com/java-countdown-latch)
 - [How to Design a Genetic Algorithm in Java](http://www.baeldung.com/java-genetic-algorithm)
 - [A Guide to ConcurrentMap](http://www.baeldung.com/java-concurrent-map)
+- [Guide to PriorityBlockingQueue in Java](http://www.baeldung.com/java-priority-blocking-queue)
