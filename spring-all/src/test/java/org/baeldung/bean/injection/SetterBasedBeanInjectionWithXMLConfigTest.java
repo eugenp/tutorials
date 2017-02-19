@@ -5,15 +5,16 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SetterBasedBeanInjectionTest {
-	
-	private static final String HELM_NAME = "HelmBrand";	    
-	 
+public class SetterBasedBeanInjectionWithXMLConfigTest {
+
+    private static final String HELM_NAME = "HelmBrand";
+
     @Test
-    public void testConstructorScope() {
+    public void givenXMLConfigFile_whenUsingSetterBasedBeanInjection_thenCorrectHelmName() {
         final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanInjection-setter.xml");
- 
+
         final Ship shipSetterBean = (Ship) applicationContext.getBean("ship");
-        Assert.assertEquals(HELM_NAME, shipSetterBean.getHelm().getBrandOfHelm());
+        Assert.assertEquals(HELM_NAME, shipSetterBean.getHelm()
+            .getBrandOfHelm());
     }
 }
