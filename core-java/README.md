@@ -60,3 +60,4 @@
 - [How to Design a Genetic Algorithm in Java](http://www.baeldung.com/java-genetic-algorithm)
 - [A Guide to ConcurrentMap](http://www.baeldung.com/java-concurrent-map)
 - [Guide to PriorityBlockingQueue in Java](http://www.baeldung.com/java-priority-blocking-queue)
+- [Guide to Java 8 groupingBy Collector](http://www.baeldung.com/java-groupingby-collector)
