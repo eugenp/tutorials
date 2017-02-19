@@ -22,3 +22,4 @@ mvn install
 mvn cargo:run
 ```
 - **note**: starts on port `8082`
+- [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
