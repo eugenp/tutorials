@@ -20,3 +20,4 @@
 - [Guide to Guava’s PreConditions](http://www.baeldung.com/guava-preconditions)
 - [Introduction to Guava CacheLoader](http://www.baeldung.com/guava-cacheloader)
 - [Guide to Guava’s EventBus](http://www.baeldung.com/guava-eventbus)
+- [Guide to Guava Multimap](http://www.baeldung.com/guava-multimap)
