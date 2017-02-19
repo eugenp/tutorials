@@ -21,3 +21,4 @@
 - [Introduction to Guava CacheLoader](http://www.baeldung.com/guava-cacheloader)
 - [Guide to Guava’s EventBus](http://www.baeldung.com/guava-eventbus)
 - [Guide to Guava Multimap](http://www.baeldung.com/guava-multimap)
+- [Guide to Guava RangeSet](http://www.baeldung.com/guava-rangeset)
