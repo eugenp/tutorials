@@ -76,3 +76,6 @@
 - [Iterable to Stream in Java](http://www.baeldung.com/java-iterable-to-stream)
 - [Java 8 Stream findFirst() vs. findAny()](http://www.baeldung.com/java-stream-findfirst-vs-findany)
 - [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
+- [The Java HashMap Under the Hood](http://www.baeldung.com/java-hashmap)
+- [A Guide to LinkedHashMap in Java](http://www.baeldung.com/java-linked-hashmap)
+- [A Guide to TreeMap in Java](http://www.baeldung.com/java-treemap)
