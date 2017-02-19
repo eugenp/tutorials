@@ -72,3 +72,4 @@
 - [AWS Lambda With Java](http://www.baeldung.com/java-aws-lambda)
 - [Introduction to Nashorn](http://www.baeldung.com/java-nashorn)
 - [Exceptions in Java 8 Lambda Expressions](http://www.baeldung.com/java-lambda-exceptions)
+- [Guide to the Guava BiMap](http://www.baeldung.com/guava-bimap)
