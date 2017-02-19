@@ -9,3 +9,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Create a Fat Jar App with Spring Boot](http://www.baeldung.com/deployable-fat-jar-spring-boot)
 - [The @ServletComponentScan Annotation in Spring Boot](http://www.baeldung.com/spring-servletcomponentscan)
 - [A Custom Data Binder in Spring MVC](http://www.baeldung.com/spring-mvc-custom-data-binder)
+- [Intro to Building an Application with Spring Boot](http://www.baeldung.com/intro-to-spring-boot)
