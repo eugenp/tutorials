@@ -50,7 +50,7 @@
 - [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](http://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
 - [Pattern Search with Grep in Java](http://www.baeldung.com/grep-in-java)
 - [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
-- [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)
+- [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)http://www.baeldung.com/java-chained-exceptions
 - [The Basics of Java Generics](http://www.baeldung.com/java-generics)
 - [The Traveling Salesman Problem in Java](http://www.baeldung.com/java-simulated-annealing-for-traveling-salesman)
 - [How to Create an Executable JAR with Maven](http://www.baeldung.com/executable-jar-with-maven)
@@ -75,3 +75,4 @@
 - [Guide to the Guava BiMap](http://www.baeldung.com/guava-bimap)
 - [Iterable to Stream in Java](http://www.baeldung.com/java-iterable-to-stream)
 - [Java 8 Stream findFirst() vs. findAny()](http://www.baeldung.com/java-stream-findfirst-vs-findany)
+- [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
