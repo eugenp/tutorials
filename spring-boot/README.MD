@@ -7,3 +7,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to Spring in Eclipse STS](http://www.baeldung.com/eclipse-sts-spring)
 - [Introduction to WebJars](http://www.baeldung.com/maven-webjars)
 - [Create a Fat Jar App with Spring Boot](http://www.baeldung.com/deployable-fat-jar-spring-boot)
+- [The @ServletComponentScan Annotation in Spring Boot](http://www.baeldung.com/spring-servletcomponentscan)
