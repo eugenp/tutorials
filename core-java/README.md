@@ -63,3 +63,4 @@
 - [Guide to Java 8 groupingBy Collector](http://www.baeldung.com/java-groupingby-collector)
 - [Avoiding the ConcurrentModificationException in Java](http://www.baeldung.com/java-concurrentmodificationexception)
 - [Guide to WeakHashMap in Java](http://www.baeldung.com/java-weakhashmap)
+- [Strategy Design Pattern in Java 8](http://www.baeldung.com/java-strategy-pattern)
