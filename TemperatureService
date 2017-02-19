@@ -1,0 +1,45 @@
+
+import static spark.Spark.get;
+
+public class TemperatureService {
+
+	public static void main(String[] arg) {
+
+		get("/convertToCelsius:temperature", (req, res) -> {
+			res.type("application/json");
+			double d = Double.parseDouble(req.params(":temperature"));
+			return convertToCelsius(d);
+		});
+
+		get("/convertToFahrenheit:temperature", (req, res) -> {
+			res.type("application/json");
+			double d = Double.parseDouble(req.params(":temperature"));
+			return convertToFahrenheit(d);
+		});
+	}
+
+	/**
+	 * method that will convert temperature from Fahrenheit to Celsius
+	 * @param temperatue
+	 * @return
+	 */
+	private static String convertToCelsius(double temperatue) {
+		StringBuilder sb = new StringBuilder();
+		double t = ((temperatue - 32) * 5) / 9;
+		sb.append("{\"temperature\":").append(t).append("}");
+		return sb.toString();
+	}
+
+	/**
+	 * method that will convert temperature from Celsius to Fahrenheit 
+	 * @param temperatue
+	 * @return
+	 */
+	private static String convertToFahrenheit(double temperatue) {
+		StringBuilder sb = new StringBuilder();
+		double t = (9 * temperatue) / 5;
+		sb.append("{\"temperature\":").append(t).append("}");
+		return sb.toString();
+	}
+
+}
