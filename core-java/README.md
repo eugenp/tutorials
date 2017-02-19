@@ -68,3 +68,4 @@
 - [Custom Thread Pools In Java 8 Parallel Streams](http://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
 - [String Operations with Java Streams](http://www.baeldung.com/java-stream-operations-on-strings)
 - [Spring Security – Cache Control Headers](http://www.baeldung.com/spring-security-cache-control-headers)
+- [Basic Introduction to JMX](http://www.baeldung.com/java-management-extensions)
