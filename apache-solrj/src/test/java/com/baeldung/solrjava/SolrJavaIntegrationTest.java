@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -23,7 +25,8 @@ public class SolrJavaIntegrationTest {
     @Before
     public void setUp() throws Exception {
 
-        solr = new HttpSolrClient("http://localhost:8983/solr/bigboxstore");
+    	String urlString = "http://localhost:8983/solr/bigboxstore";
+    	solr = new HttpSolrClient.Builder(urlString).build();
         solr.setParser(new XMLResponseParser());
         
         document = new SolrInputDocument();
