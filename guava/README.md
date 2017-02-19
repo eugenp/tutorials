@@ -22,3 +22,4 @@
 - [Guide to Guava’s EventBus](http://www.baeldung.com/guava-eventbus)
 - [Guide to Guava Multimap](http://www.baeldung.com/guava-multimap)
 - [Guide to Guava RangeSet](http://www.baeldung.com/guava-rangeset)
+- [Guide to Guava RangeMap](http://www.baeldung.com/guava-rangemap)
