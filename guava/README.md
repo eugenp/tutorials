@@ -19,3 +19,4 @@
 - [Guide to Guava’s Ordering](http://www.baeldung.com/guava-ordering)
 - [Guide to Guava’s PreConditions](http://www.baeldung.com/guava-preconditions)
 - [Introduction to Guava CacheLoader](http://www.baeldung.com/guava-cacheloader)
+- [Guide to Guava’s EventBus](http://www.baeldung.com/guava-eventbus)
