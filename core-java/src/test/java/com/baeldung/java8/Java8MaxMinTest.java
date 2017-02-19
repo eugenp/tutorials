@@ -4,7 +4,9 @@ import com.baeldung.java_8_features.Person;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,8 +19,12 @@ public class Java8MaxMinTest {
         final Integer expectedResult = 89;
 
         //then
-        assertEquals(expectedResult,
-          (Integer) listOfIntegers.stream().mapToInt(val -> val).max().getAsInt());
+        final Integer max = listOfIntegers
+          .stream()
+          .mapToInt(v -> v)
+          .max().orElseThrow(NoSuchElementException::new);
+
+        assertEquals("Should be 89", expectedResult, max);
     }
 
     @Test
@@ -30,8 +36,12 @@ public class Java8MaxMinTest {
         final List<Person> people = Arrays.asList(alex, john, peter);
 
         //then
-        assertEquals("Alex must be having min age", alex,
-          people.stream().min((o1, o2) -> o1.getAge().compareTo(o2.getAge())).get());
+        final Person minByAge = people
+          .stream()
+          .min(Comparator.comparing(Person::getAge))
+          .orElseThrow(NoSuchElementException::new);
+
+        assertEquals("Should be Alex", alex, minByAge);
     }
 
 }

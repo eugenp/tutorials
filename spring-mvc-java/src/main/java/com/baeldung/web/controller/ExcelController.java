@@ -10,19 +10,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import com.baeldung.excel.*;
-import jxl.read.biff.BiffException;
 import java.util.Map;
-import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Resource;
-import jxl.write.WriteException;
 
 @Controller
 public class ExcelController {
 
     private String fileLocation;
-
-    @Resource(name = "jExcelHelper")
-    private JExcelHelper jExcelHelper;
 
     @Resource(name = "excelPOIHelper")
     private ExcelPOIHelper excelPOIHelper;
@@ -45,24 +40,7 @@ public class ExcelController {
         }
         f.flush();
         f.close();
-        System.out.println(fileLocation);
         model.addAttribute("message", "File: " + file.getOriginalFilename() + " has been uploaded successfully!");
-        return "excel";
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/readJExcel")
-    public String readJExcel(Model model) throws IOException, BiffException {
-
-        if (fileLocation != null) {
-            if (fileLocation.endsWith(".xls")) {
-                Map<Integer, ArrayList<String>> data = jExcelHelper.readJExcel(fileLocation);
-                model.addAttribute("data", data);
-            } else {
-                model.addAttribute("message", "Not a valid .xls file!");
-            }
-        } else {
-            model.addAttribute("message", "File missing! Please upload an excel file.");
-        }
         return "excel";
     }
 
@@ -70,35 +48,15 @@ public class ExcelController {
     public String readPOI(Model model) throws IOException {
 
         if (fileLocation != null) {
-            if (fileLocation.endsWith(".xlsx")) {
-                Map<Integer, ArrayList<String>> data = excelPOIHelper.readExcel(fileLocation);
+            if (fileLocation.endsWith(".xlsx") || fileLocation.endsWith(".xls")) {
+                Map<Integer, List<MyCell>> data = excelPOIHelper.readExcel(fileLocation);
                 model.addAttribute("data", data);
             } else {
-                model.addAttribute("message", "Not a valid .xlsx file!");
+                model.addAttribute("message", "Not a valid excel file!");
             }
         } else {
             model.addAttribute("message", "File missing! Please upload an excel file.");
         }
-        return "excel";
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/writeJExcel")
-    public String writeJExcel(Model model) throws IOException, BiffException, WriteException {
-
-        jExcelHelper.writeJExcel();
-
-        model.addAttribute("message", "Write successful!");
-
-        return "excel";
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "/writePOI")
-    public String writePOI(Model model) throws IOException {
-
-        excelPOIHelper.writeExcel();
-
-        model.addAttribute("message", "Write successful!");
-
         return "excel";
     }
 
