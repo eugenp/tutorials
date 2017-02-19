@@ -65,3 +65,4 @@
 - [Guide to WeakHashMap in Java](http://www.baeldung.com/java-weakhashmap)
 - [Strategy Design Pattern in Java 8](http://www.baeldung.com/java-strategy-pattern)
 - [Java 8 and Infinite Streams](http://www.baeldung.com/java-inifinite-streams)
+- [Custom Thread Pools In Java 8 Parallel Streams](http://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
