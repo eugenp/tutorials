@@ -11,6 +11,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+        <gib.enabled>false</gib.enabled>
     </properties>
 
     <modules>
@@ -79,6 +81,7 @@
 
         <module>mapstruct</module>
         <module>metrics</module>
+        <module>mesos-marathon</module>
         <module>mockito</module>
         <module>mocks</module>
 
@@ -147,6 +150,7 @@
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
         <module>spring-security-basic-auth</module>
+        <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
         <module>spring-security-client/spring-security-jsp-config</module>
@@ -155,7 +159,7 @@
         <module>spring-security-client/spring-security-thymeleaf-authorize</module>
         <module>spring-security-client/spring-security-thymeleaf-config</module>
         <module>spring-security-core</module>
-        <module>spring-security-custom-permission</module>
+        <module>spring-security-mvc-boot</module>
         <module>spring-security-mvc-custom</module>
         <module>spring-security-mvc-digest-auth</module>
         <module>spring-security-mvc-ldap</module>
@@ -178,6 +182,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -188,7 +193,17 @@
         <module>xstream</module>
 
         <module>struts2</module>
+        <module>apache-velocity</module>
 
-  </modules>
+    </modules>
 
+    <build>
+        <extensions>
+            <extension>
+                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+                <artifactId>gitflow-incremental-builder</artifactId>
+                <version>3.1</version>
+            </extension>
+        </extensions>
+    </build>
 </project>

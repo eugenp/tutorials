@@ -51,6 +51,12 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- This is included in spring-data-solr above, no need to include twice 
+        <dependency>
+  			<groupId>org.apache.solr</groupId>
+  			<artifactId>solr-solrj</artifactId>
+  			<version>5.5.0</version>
+		</dependency-->
     </dependencies>
 
     <build>

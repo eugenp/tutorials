@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class ActorJackson {
@@ -53,7 +54,7 @@ public class ActorJackson {
     }
 
     private String formatDateOfBirth() {
-        final DateFormat formatter = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
+        final DateFormat formatter = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy", Locale.US);
         formatter.setTimeZone(TimeZone.getTimeZone("GMT"));
         return formatter.format(dateOfBirth);
     }
