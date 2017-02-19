@@ -17,3 +17,4 @@
 - [Guava – Maps](http://www.baeldung.com/guava-maps)
 - [Guava Set + Function = Map](http://www.baeldung.com/guava-set-function-map-tutorial)
 - [Guide to Guava’s Ordering](http://www.baeldung.com/guava-ordering)
+- [Guide to Guava’s PreConditions](http://www.baeldung.com/guava-preconditions)
