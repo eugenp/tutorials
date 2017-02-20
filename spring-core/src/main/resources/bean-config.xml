@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="com.baeldung.bean.Car">
+		<constructor-arg name="engine" ref="carEngine" />
+		<property name="driver" ref="driver" />
+	</bean>
+
+	<bean id="driver" class="com.baeldung.bean.Driver">
+		<constructor-arg name="name" value="John Doe" />
+	</bean>
+
+	<bean id="carEngine" class="com.baeldung.bean.CarEngine">
+		<constructor-arg name="volume" value="800" />
+	</bean>
+
+</beans>
