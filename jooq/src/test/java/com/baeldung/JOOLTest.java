@@ -94,8 +94,8 @@ public class JOOLTest {
         );
 
         assertEquals(
-                Seq.of(1, 2, 3, 4).partition(i -> i % 2 != 0).map((first, second) -> tuple(first.toList(), second.toList())),
-                tuple(Arrays.asList(1, 3), Arrays.asList(2, 4))
+                Seq.of(1, 2, 3, 4).partition(i -> i > 2).map((first, second) -> tuple(first.toList(), second.toList())),
+                tuple(Arrays.asList(3, 4), Arrays.asList(1, 2))
 
         );
 
@@ -152,7 +152,6 @@ public class JOOLTest {
                 Arrays.asList(tuple(1, "a"), tuple(2, "b"), tuple(3, "c"))
         );
 
-        // ("1:a", "2:b", "3:c")
         assertEquals(
                 Seq.of(1, 2, 3).zip(Seq.of("a", "b", "c"), (x, y) -> x + ":" + y).toList(),
                 Arrays.asList("1:a", "2:b", "3:c")
