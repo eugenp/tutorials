@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
@@ -25,7 +26,7 @@ public class CustomLoggingTest {
     public static void setup() throws Exception {
         Connection connection = ConnectionFactory.getConnection();
         connection.createStatement()
-            .execute("CREATE TABLE logs(" + "when TIMESTAMP," + "logger VARCHAR(255)," + "level VARCHAR(255)," + "message VARCHAR(4096)," + "throwable TEXT)");
+          .execute("CREATE TABLE logs(" + "when TIMESTAMP," + "logger VARCHAR(255)," + "level VARCHAR(255)," + "message VARCHAR(4096)," + "throwable TEXT)");
         connection.commit();
     }
 
@@ -76,7 +77,7 @@ public class CustomLoggingTest {
             logger.info("This is async JSON message #{} at INFO level.", count);
         }
         long logEventsCount = Files.lines(Paths.get("target/logfile.json"))
-            .count();
+                .count();
         assertTrue(logEventsCount > 0 && logEventsCount <= count);
     }
 
@@ -101,7 +102,7 @@ public class CustomLoggingTest {
         }
         Connection connection = ConnectionFactory.getConnection();
         ResultSet resultSet = connection.createStatement()
-            .executeQuery("SELECT COUNT(*) AS ROW_COUNT FROM logs");
+                .executeQuery("SELECT COUNT(*) AS ROW_COUNT FROM logs");
         int logCount = 0;
         if (resultSet.next()) {
             logCount = resultSet.getInt("ROW_COUNT");
