@@ -20,3 +20,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction to HtmlUnit](http://www.baeldung.com/htmlunit)
 - [Spring @RequestMapping New Shortcut Annotations](http://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
+- [Uploading and Displaying Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
