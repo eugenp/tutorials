@@ -4,37 +4,23 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
-import org.apache.solr.client.solrj.impl.XMLResponseParser;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.SolrInputDocument;
 import org.junit.Before;
 import org.junit.Test;
 
 public class SolrJavaIntegrationTest {
 
-    private HttpSolrClient solr;
-    private SolrInputDocument document;
+    private SolrJavaIntegration solrJavaIntegration;
 
     @Before
     public void setUp() throws Exception {
 
-    	String urlString = "http://localhost:8983/solr/bigboxstore";
-    	solr = new HttpSolrClient.Builder(urlString).build();
-        solr.setParser(new XMLResponseParser());
-        
-        document = new SolrInputDocument();
-        document.addField("id", "123456");
-        document.addField("name", "Kenmore Dishwasher");
-        document.addField("price", "599.99");
-        solr.add(document);
-        solr.commit();
+        solrJavaIntegration = new SolrJavaIntegration("http://localhost:8983/solr/bigboxstore");
+        solrJavaIntegration.addSolrDocument("123456", "Kenmore Dishwasher", "599.99");
     }
 
     @Test
@@ -44,7 +30,7 @@ public class SolrJavaIntegrationTest {
         query.set("q", "id:123456");
         QueryResponse response = null;
 
-        response = solr.query(query);
+        response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
         assertEquals(docList.getNumFound(), 1);
@@ -58,14 +44,13 @@ public class SolrJavaIntegrationTest {
     @Test
     public void whenDelete_thenVerifyDeleted() throws SolrServerException, IOException {
 
-        solr.deleteById("123456");
-        solr.commit();
+        solrJavaIntegration.deleteSolrDocument("123456");
 
         SolrQuery query = new SolrQuery();
         query.set("q", "id:123456");
         QueryResponse response = null;
 
-        response = solr.query(query);
+        response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
         assertEquals(docList.getNumFound(), 0);

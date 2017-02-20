@@ -194,6 +194,7 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
 
     </modules>
 
