@@ -14,14 +14,14 @@ public class PropertyLoader {
         Properties prop = new Properties();
         InputStream input = null;
         try {
-          input = getClass().getResourceAsStream(file);
-          prop.load(input);
+            input = getClass().getResourceAsStream(file);
+            prop.load(input);
+            if (input != null) {
+                input.close();
+            }
         } catch (IOException ex) {
-          if (input != null) {
-            input.close();
-          }
-        } finally {
-          return prop;
+            log.error("IOException: " + ex);
         }
+        return prop;
     }
 }
