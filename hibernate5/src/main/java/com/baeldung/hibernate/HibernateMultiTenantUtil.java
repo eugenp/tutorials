@@ -16,7 +16,7 @@ import org.hibernate.service.ServiceRegistry;
 public class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
     private static Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
-    private static final String[] tenantDBNames = { "db1"};
+    private static final String[] tenantDBNames = { "db1", "db2"};
 
     public static SessionFactory getSessionFactory() throws UnsupportedTenancyException {
         if (sessionFactory == null) {
