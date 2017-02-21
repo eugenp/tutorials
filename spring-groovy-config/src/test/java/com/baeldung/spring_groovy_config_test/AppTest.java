@@ -1,6 +1,5 @@
-package com.baeldung.spring_groovy_config;
+package com.baeldung.spring_groovy_config_test;
 
-import com.baeldung.spring_groovy_config.*;
 import groovy.lang.Binding;
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
@@ -11,6 +10,11 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericGroovyApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+
+import com.baeldung.spring_groovy_config.ClassWithRef;
+import com.baeldung.spring_groovy_config.TestClass;
+import com.baeldung.spring_groovy_config.TestClassB;
+import com.baeldung.spring_groovy_config_test.*;
 /**
  * Spring Framework Tests for Groovy.
  */

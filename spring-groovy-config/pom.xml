@@ -9,13 +9,23 @@
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
+        <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
+        <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
+        <junit.version>4.12</junit.version>
+        <spring-context.version>4.3.6.RELEASE</spring-context.version>
+        <spring-core.version>4.3.6.RELEASE</spring-core.version>
+        <spring-test.version>4.3.6.RELEASE</spring-test.version>
+        <project.build.testSourceDirectory>${basedir}/src/test/java</project.build.testSourceDirectory>
     </properties>
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <!-- 2.8.0-01 and later require maven-compiler-plugin 3.1 or higher -->
-                <version>3.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <compilerId>groovy-eclipse-compiler</compilerId>
                 </configuration>
@@ -23,15 +33,23 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.9.1-01</version>
+                        <version>${groovy-eclipse-compiler.version}</version>
                     </dependency>
                     <!-- for 2.8.0-01 and later you must have an explicit dependency on groovy-eclipse-batch -->
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>2.3.7-01</version>
+                        <version>${groovy-eclipse-batch.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
+                </configuration>           
             </plugin>
         </plugins>
     </build>
@@ -39,28 +57,29 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.8</version>
+            <version>${org.codehouse.groovy.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.3.6.RELEASE</version>
+            <version>${spring-context.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.3.6.RELEASE</version>
+            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.6.RELEASE</version>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
