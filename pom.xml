@@ -28,6 +28,7 @@
         <module>autovalue</module>
 
         <module>cdi</module>
+        <module>cglib</module>
         <!-- <module>core-java-9</module> -->
         <module>core-java</module>
         <module>couchbase-sdk</module>
@@ -192,7 +193,6 @@
         <module>xstream</module>
 
         <module>struts2</module>
-        <module>cglib</module>
         <module>apache-velocity</module>
 
 

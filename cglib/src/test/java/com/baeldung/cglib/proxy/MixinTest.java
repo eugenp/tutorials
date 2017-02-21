@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 public class MixinTest {
 
     @Test
-    public void testMixinBehaviour() throws Exception {
+    public void givenTwoClasses_whenMixtThemIntoOne_mixinShouldHaveMethodsFromBothClasses() throws Exception {
         //when
         Mixin mixin = Mixin.create(
                 new Class[]{Interface1.class, Interface2.class, MixinInterface.class},

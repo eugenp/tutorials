@@ -11,18 +11,22 @@ import static junit.framework.TestCase.assertEquals;
 public class BeanGeneratorTest {
 
     @Test
-    public void testBeanGenerator() throws Exception {
+    public void givenBeanCreator_whenAddPropery_classShouldHaveFieldValue() throws Exception {
         //given
         BeanGenerator beanGenerator = new BeanGenerator();
 
         //when
         beanGenerator.addProperty("name", String.class);
         Object myBean = beanGenerator.create();
-        Method setter = myBean.getClass().getMethod("setName", String.class);
+        Method setter = myBean
+                .getClass()
+                .getMethod("setName", String.class);
         setter.invoke(myBean, "some string value set by a cglib");
 
         //then
-        Method getter = myBean.getClass().getMethod("getName");
+        Method getter = myBean
+                .getClass()
+                .getMethod("getName");
         assertEquals("some string value set by a cglib", getter.invoke(myBean));
     }
 }
