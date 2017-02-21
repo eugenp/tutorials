@@ -21,11 +21,13 @@ public class BeanInjectionWithJavaConfigTest {
 
     @Test
     public void testConstructorBeanInjectionByJavaConfig() {
+
         assertThat(taskLogger.log(), equalTo("I am a task logger"));
     }
 
     @Test
     public void testSetterBeanInjectionByJavaConfig() {
+
         assertThat(dutyLogger.log(), equalTo("I am a duty logger"));
     }
 }

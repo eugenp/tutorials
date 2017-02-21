@@ -21,11 +21,13 @@ public class BeanInjectionWithXmlConfigTest {
 
     @Test
     public void testConstructorBeanInjectionByXmlConfig() {
+
         assertThat(taskLogger.log(), equalTo("I am a task logger"));
     }
 
     @Test
     public void testSetterBeanInjectionByXmlConfig() {
+
         assertThat(dutyLogger.log(), equalTo("I am a duty logger"));
     }
 }
