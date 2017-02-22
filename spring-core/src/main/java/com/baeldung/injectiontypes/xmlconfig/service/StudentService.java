@@ -1,4 +1,4 @@
-package com.baeldung.injectiontypes.service;
+package com.baeldung.injectiontypes.xmlconfig.service;
 
 import com.baeldung.injectiontypes.dao.StudentDAO;
 import com.baeldung.injectiontypes.domain.Student;

@@ -5,19 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
 import com.baeldung.injectiontypes.domain.Student;
-import com.baeldung.injectiontypes.service.StudentService;
+import com.baeldung.injectiontypes.xmlconfig.service.StudentService;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:beans.xml")
-public class SpringInjectionTypesTest {
+public class SpringInjectionTypesXMLConfigTest {
 
-    private final static String TRANSLATED = "TRANSLATED";
 
     @Autowired
     private StudentService serviceInjectDependencyByConstrucot;
