@@ -110,6 +110,7 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -183,6 +184,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -194,7 +196,7 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
-
+        <module>apache-solrj</module>
 
     </modules>
 

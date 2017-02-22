@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="suite">
+    <test name="test suite">
+        <classes>
+            <class name="baeldung.com.RegistrationTest" />
+            <class name="baeldung.com.SignInTest" />
+        </classes>
+    </test>
+</suite>

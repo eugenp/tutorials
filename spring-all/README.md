@@ -16,3 +16,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Quick Guide to Spring Controllers](http://www.baeldung.com/spring-controllers)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
 - [Introduction To Ehcache](http://www.baeldung.com/ehcache)
+- [A Guide to the Spring Task Scheduler](http://www.baeldung.com/spring-task-scheduler)
+- [Guide to Spring Retry](http://www.baeldung.com/spring-retry)
