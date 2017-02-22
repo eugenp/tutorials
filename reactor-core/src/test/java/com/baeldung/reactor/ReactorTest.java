@@ -92,7 +92,7 @@ public class ReactorTest {
     }
 
     @Test
-    public void givenFlux_whenInParalle_shouldSubscribeInDifferentThreads() {
+    public void givenFlux_whenInParalle_shouldSubscribeInDifferentThreads() throws InterruptedException {
         List<Integer> elements = new ArrayList<>();
 
         Flux.just(1, 2, 3, 4)
@@ -100,6 +100,8 @@ public class ReactorTest {
                 .map(i -> i * 2)
                 .subscribeOn(Schedulers.parallel())
                 .subscribe(elements::add);
+
+        Thread.sleep(1000);
 
         assertThat(elements).containsExactly(2, 4, 6, 8);
     }
