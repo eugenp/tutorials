@@ -7,9 +7,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class PersonServiceProxyTest {
+public class ProxyTest {
     @Test
-    public void givenPersonService_whenSayHello_shouldReturnResult() {
+    public void givenPersonService_whenSayHello_thenReturnResult() {
         //given
         PersonService personService = new PersonService();
 
@@ -21,7 +21,7 @@ public class PersonServiceProxyTest {
     }
 
     @Test
-    public void givenEnhancerProxy_whenExtendPersonService_shouldInterceptMethod() throws Exception {
+    public void givenEnhancerProxy_whenExtendPersonService_thenInterceptMethod() throws Exception {
         //given
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
@@ -36,7 +36,7 @@ public class PersonServiceProxyTest {
     }
 
     @Test
-    public void givenEnhancer_whenExecuteMethodOnProxy_shouldInterceptOnlyStringReturnTypeMethod() throws Exception {
+    public void givenEnhancer_whenExecuteMethodOnProxy_thenInterceptOnlyStringReturnTypeMethod() throws Exception {
         //given
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
