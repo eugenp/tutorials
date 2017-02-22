@@ -11,7 +11,7 @@ import static junit.framework.TestCase.assertEquals;
 public class BeanGeneratorTest {
 
     @Test
-    public void givenBeanCreator_whenAddPropery_classShouldHaveFieldValue() throws Exception {
+    public void givenBeanCreator_whenAddProperty_thenClassShouldHaveFieldValue() throws Exception {
         //given
         BeanGenerator beanGenerator = new BeanGenerator();
 
