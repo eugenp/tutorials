@@ -6,15 +6,19 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <bean id="notification" class="org.baeldung.beaninjection.EmailNotification" />
+    <bean id="notification"
+      class="org.baeldung.beaninjection.EmailNotification" />
     
-    <bean id="deployService" class="org.baeldung.beaninjection.DeployService">
+    <bean id="deployService"
+      class="org.baeldung.beaninjection.DeployService">
         <constructor-arg ref="notification" />
     </bean>
     
-    <bean id="stockDao" class="org.baeldung.beaninjection.StockDaoImpl" />
+    <bean id="stockDao"
+      class="org.baeldung.beaninjection.StockDaoImpl" />
     
-    <bean id="stockService" class="org.baeldung.beaninjection.StockService">
+    <bean id="stockService"
+      class="org.baeldung.beaninjection.StockService">
         <property name="stockDao" ref="stockDao" />
     </bean>
     
