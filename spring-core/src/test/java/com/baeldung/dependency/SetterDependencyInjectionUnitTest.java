@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dependency-injection.xml" })
-public class SetterDependencyInjectionTest {
+public class SetterDependencyInjectionUnitTest {
 
     @Autowired
     private SetterDependencyInjection setterDependencyInjectionXML;

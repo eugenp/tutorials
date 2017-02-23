@@ -13,7 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dependency-injection.xml" })
-public class ConstructorDependencyInjectionTest {
+public class ConstructorDependencyInjectionUnitTest {
 
     @Autowired
     private ConstructorDependencyInjection constructorDependencyInjectionXML;
