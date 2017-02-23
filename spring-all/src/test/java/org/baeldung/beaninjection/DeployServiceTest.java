@@ -16,7 +16,7 @@ public class DeployServiceTest {
     private DeployService deployService;
 
     @Test
-    public void givenDeployService_whenSendingNotification_thenMessageIsDelivered() {
+    public void whenSendingNotification_thenMessageIsDelivered() {
         deployService.deploy();
     }
     
