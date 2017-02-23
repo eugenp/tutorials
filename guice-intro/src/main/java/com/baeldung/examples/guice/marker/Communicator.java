@@ -6,4 +6,6 @@ package com.baeldung.examples.guice.marker;
  */
 public interface Communicator {
     
+     public boolean sendMessage(String message);
+    
 }
