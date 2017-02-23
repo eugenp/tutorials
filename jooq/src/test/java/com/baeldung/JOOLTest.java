@@ -36,8 +36,8 @@ public class JOOLTest {
     @Test
     public void givenStreams_whenJoin_shouldHaveElementsFromTwoStreams() {
         //given
-        Stream<Integer> left = Arrays.asList(1, 2, 4).stream();
-        Stream<Integer> right = Arrays.asList(1, 2, 3).stream();
+        Stream<Integer> left = Stream.of(1, 2, 4);
+        Stream<Integer> right = Stream.of(1, 2, 3);
 
         //when
         List<Integer> rightCollected = right.collect(Collectors.toList());
@@ -172,7 +172,7 @@ public class JOOLTest {
     @Test
     public void givenOperationThatThrowsCheckedException_whenExecuteAndNeedToWrapCheckedIntoUnchecked_shouldPass() {
         //when
-        List<Integer> collect = Arrays.asList("a", "b", "c").stream().map(elem -> {
+        List<Integer> collect = Stream.of("a", "b", "c").map(elem -> {
             try {
                 return methodThatThrowsChecked(elem);
             } catch (Exception e) {
@@ -192,7 +192,7 @@ public class JOOLTest {
     @Test
     public void givenOperationThatThrowsCheckedException_whenExecuteUsingUncheckedFuction_shouldPass() {
         //when
-        List<Integer> collect = Arrays.asList("a", "b", "c").stream()
+        List<Integer> collect = Stream.of("a", "b", "c")
                 .map(Unchecked.function(elem -> methodThatThrowsChecked(elem)))
                 .collect(Collectors.toList());
 

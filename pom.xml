@@ -65,6 +65,7 @@
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -193,7 +194,6 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
-        <module>jooq</module>
 
 
     </modules>
