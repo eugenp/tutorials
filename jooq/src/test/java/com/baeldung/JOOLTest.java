@@ -1,8 +1,11 @@
 package com.baeldung;
 
 
+import junit.framework.Assert;
 import org.jooq.lambda.Seq;
 import org.jooq.lambda.Unchecked;
+import org.jooq.lambda.function.Function1;
+import org.jooq.lambda.function.Function2;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -201,6 +204,20 @@ public class JOOLTest {
                 collect,
                 Arrays.asList(1, 1, 1)
         );
+    }
+
+    @Test
+    public void givenFunction_whenAppliedPartially_shouldAddNumberToPartialArgument() {
+        //given
+        Function2<Integer, Integer, Integer> addTwoNumbers = (v1, v2) -> v1 + v2;
+        addTwoNumbers.toBiFunction();
+        Function1<Integer, Integer> addToTwo = addTwoNumbers.applyPartially(2);
+
+        //when
+        Integer result = addToTwo.apply(5);
+
+        //then
+        assertEquals(result, (Integer) 7);
     }
 
 }
