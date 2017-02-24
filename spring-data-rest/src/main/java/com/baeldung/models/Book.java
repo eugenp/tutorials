@@ -22,12 +22,13 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "library_id")
-    private Library bookLibrary;
-    
-    @ManyToMany(mappedBy = "authorBooks")
-    private List<Author> bookAuthors;
-   
-    public Book(){}
+    private Library library;
+
+    @ManyToMany(mappedBy = "books")
+    private List<Author> authors;
+
+    public Book() {
+    }
 
     public Book(String title) {
         super();
@@ -50,19 +51,20 @@ public class Book {
         this.id = id;
     }
 
-    public Library getBookLibrary() {
-        return bookLibrary;
+    public Library getLibrary() {
+        return library;
     }
 
-    public void setBookLibrary(Library bookLibrary) {
-        this.bookLibrary = bookLibrary;
+    public void setLibrary(Library library) {
+        this.library = library;
     }
 
-    public List<Author> getBookAuthors() {
-        return bookAuthors;
+    public List<Author> getAuthors() {
+        return authors;
     }
 
-    public void setBookAuthors(List<Author> bookAuthors) {
-        this.bookAuthors = bookAuthors;
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
     }
+
 }

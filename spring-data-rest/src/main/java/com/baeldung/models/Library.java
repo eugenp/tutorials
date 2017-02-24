@@ -27,11 +27,8 @@ public class Library {
     @RestResource(path = "libraryAddress")
     private Address address;
 
-    @OneToMany(mappedBy = "bookLibrary")
+    @OneToMany(mappedBy = "library")
     private List<Book> books;
-
-    @OneToMany(mappedBy = "authorLibrary")
-    private List<Author> authors;
 
     public Library() {
     }
@@ -71,14 +68,6 @@ public class Library {
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
     }
 
 }
