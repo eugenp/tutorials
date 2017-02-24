@@ -52,6 +52,7 @@
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <module>hbase</module>
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -197,7 +198,6 @@
         <module>struts2</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
-        <module>hbase</module>
 
     </modules>
 
