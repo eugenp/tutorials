@@ -55,136 +55,136 @@ app.service('StudentService',['$http', function ($http) {
 	
 }]);
 
-app.controller('StudentCRUDCtrl', ['$scope','StudentCRUDService', function ($scope,StudentCRUDService) {
-  
-    $scope.updateStudent = function () {
-        StudentCRUDService.updateStudent($scope.student.id,$scope.student.name,$scope.student.age,$scope.student.gender)
+app.controller('EmployeeCRUDCtrl', ['$scope','EmployeeCRUDService', function ($scope,EmployeeCRUDService) {
+	  
+    $scope.updateEmployee = function () {
+        EmployeeCRUDService.updateEmployee($scope.employee.id,$scope.employee.name,$scope.employee.age)
           .then(function success(response){
-              $scope.message = 'Student data updated!';
+              $scope.message = 'Employee data updated!';
               $scope.errorMessage = '';
           },
           function error(response){
-              $scope.errorMessage = 'Error updating student!';
+              $scope.errorMessage = 'Error updating Employee!';
               $scope.message = '';
           });
     }
     
-    $scope.getStudent = function () {
-        var id = $scope.student.id;
-        StudentCRUDService.getStudent($scope.student.id)
+    $scope.getEmployee = function () {
+        var id = $scope.employee.id;
+        EmployeeCRUDService.getEmployee($scope.employee.id)
           .then(function success(response){
-              $scope.student = response.data;
-              $scope.student.id = id;
+              $scope.employee = response.data;
+              $scope.employee.id = id;
               $scope.message='';
               $scope.errorMessage = '';
           },
           function error (response ){
               $scope.message = '';
               if (response.status === 404){
-                  $scope.errorMessage = 'Student not found!';
+                  $scope.errorMessage = 'Employee not found!';
               }
               else {
-                  $scope.errorMessage = "Error getting student!";
+                  $scope.errorMessage = "Error getting Employee!";
               }
           });
     }
     
-    $scope.addStudent = function () {
-        StudentCRUDService.addStudent($scope.student.id, $scope.student.name, $scope.student.age, $scope.student.gender)
+    $scope.addEmployee = function () {
+        EmployeeCRUDService.addEmployee($scope.employee.id, $scope.employee.name, $scope.employee.age)
           .then (function success(response){
-              $scope.message = 'Student added!';
+              $scope.message = 'Employee added!';
               $scope.errorMessage = '';
           },
         function error(response){
-            $scope.errorMessage = 'Error adding student!';
+            $scope.errorMessage = 'Error adding Employee!';
             $scope.message = '';
         })
     }
     
-    $scope.deleteStudent = function () {
-        StudentCRUDService.deleteStudent($scope.student.id)
+    $scope.deleteEmployee = function () {
+        EmployeeCRUDService.deleteEmployee($scope.employee.id)
           .then (function success(response){
-              $scope.message = 'Student deleted!';
-              $scope.student = null;
+              $scope.message = 'Employee deleted!';
+              $scope.employee = null;
               $scope.errorMessage='';
           },
           function error(response){
-              $scope.errorMessage = 'Error deleting student!';
+              $scope.errorMessage = 'Error deleting Employee!';
               $scope.message='';
           })
     }
     
-    $scope.getAllStudents = function () {
-        StudentCRUDService.getAllStudents()
+    $scope.getAllEmployees = function () {
+        EmployeeCRUDService.getAllEmployees()
           .then(function success(response){
-              $scope.students = response.data;
+              $scope.employees = response.data;
               $scope.message='';
               $scope.errorMessage = '';
           },
           function error (response ){
               $scope.message='';
-              $scope.errorMessage = 'Error getting students!';
+              $scope.errorMessage = 'Error getting Employees!';
           });
     }
     
-    $scope.getStudentsByName = function () {
-        StudentCRUDService.getStudentsByName($scope.name)
+    $scope.getEmployeesByName = function () {
+        EmployeeCRUDService.getEmployeesByName($scope.name)
           .then(function success(response){
-              $scope.students = response.data;
+              $scope.employees = response.data;
               $scope.message='';
               $scope.errorMessage = '';
           },
           function error (response ){
               $scope.message='';
-              $scope.errorMessage = 'Error getting students!';
+              $scope.errorMessage = 'Error getting Employees!';
           });
     }
 	  
 }]);
 
-app.service('StudentCRUDService',['$http', function ($http) {
+app.service('EmployeeCRUDService',['$http', function ($http) {
 	
-    this.getStudent = function getStudent(studentId){
+    this.getEmployee = function getEmployee(employeeId){
         return $http({
           method: 'GET',
-          url:'student/'+studentId
+          url:'employees/'+employeeId
         });
 	}
 	
-    this.addStudent = function addStudent(id, name, age, gender){
+    this.addEmployee = function addEmployee(id, name, age, gender){
         return $http({
           method: 'POST',
-          url:'student',
-          data: {id:id, name:name, age:age, gender:gender}
+          url:'employees',
+          data: {id:id, name:name, age:age}
         });
     }
 	
-    this.deleteStudent = function deleteStudent(id){
+    this.deleteEmployee = function deleteEmployee(id){
         return $http({
           method: 'DELETE',
-          url: 'student/'+id
+          url: 'employees/'+id
         })
     }
 	
-    this.updateStudent = function updateStudent(id,name,age,gender){
+    this.updateEmployee = function updateEmployee(id,name,age){
         return $http({
           method: 'PATCH',
-          url: 'student/'+id,
-          data: {name:name, age:age, gender:gender}
+          url: 'employees/'+id,
+          data: {name:name, age:age}
         })
     }
 	
-    this.getAllStudents = function getAllStudents(){
+    this.getAllEmployees = function getAllEmployees(){
         return $http({
           method: 'GET',
-          url:'student'
+          url:'employees'
         });
     }
 	
-    this.getStudentsByName = function getStudentsByName(name){
+    this.getEmployeesByName = function getEmployeesByName(name){
         return $http({
           method: 'GET',
-          url:'student/search/findByName',
+          url:'employees/search/findByName',
           params:{name:name}
         });
     }
