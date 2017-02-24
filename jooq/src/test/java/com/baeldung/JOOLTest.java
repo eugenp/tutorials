@@ -1,8 +1,15 @@
 package com.baeldung;
 
 
+import junit.framework.Assert;
 import org.jooq.lambda.Seq;
 import org.jooq.lambda.Unchecked;
+import org.jooq.lambda.function.Function1;
+import org.jooq.lambda.function.Function2;
+import org.jooq.lambda.tuple.Tuple;
+import org.jooq.lambda.tuple.Tuple2;
+import org.jooq.lambda.tuple.Tuple3;
+import org.jooq.lambda.tuple.Tuple4;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -200,6 +207,36 @@ public class JOOLTest {
         assertEquals(
                 collect,
                 Arrays.asList(1, 1, 1)
+        );
+    }
+
+    @Test
+    public void givenFunction_whenAppliedPartially_shouldAddNumberToPartialArgument() {
+        //given
+        Function2<Integer, Integer, Integer> addTwoNumbers = (v1, v2) -> v1 + v2;
+        addTwoNumbers.toBiFunction();
+        Function1<Integer, Integer> addToTwo = addTwoNumbers.applyPartially(2);
+
+        //when
+        Integer result = addToTwo.apply(5);
+
+        //then
+        assertEquals(result, (Integer) 7);
+    }
+
+    @Test
+    public void givenSeqOfTuples_whenTransformToLowerNumberOfTuples_shouldHaveProperResult() {
+        //given
+        Seq<Tuple3<String, String, Integer>> personDetails = Seq.of(tuple("michael", "similar", 49), tuple("jodie", "variable", 43));
+        Tuple2<String, String> tuple = tuple("winter", "summer");
+
+        //when
+        List<Tuple4<String, String, String, String>> result = personDetails.map(t -> t.limit2().concat(tuple)).toList();
+
+        //then
+        assertEquals(
+          result,
+          Arrays.asList(tuple("michael", "similar", "winter", "summer"), tuple("jodie", "variable", "winter", "summer"))
         );
     }
 
