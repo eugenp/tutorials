@@ -10,6 +10,7 @@ import org.apache.hadoop.hbase.client.HBaseAdmin;
 
 import java.io.IOException;
 
+//install hbase locally & hbase master start
 public class HbaseClientExample {
 
     public static void main(String[] args) throws IOException, ServiceException {
@@ -22,7 +23,6 @@ public class HbaseClientExample {
         String path = this.getClass().getClassLoader().getResource("hbase-site.xml").getPath();
 
         config.addResource(new Path(path));
-
 
         try {
             HBaseAdmin.checkHBaseAvailable(config);
