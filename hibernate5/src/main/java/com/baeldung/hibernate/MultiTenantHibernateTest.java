@@ -10,7 +10,7 @@ import com.baeldung.hibernate.pojo.Suppliers;
 
 public class MultiTenantHibernateTest  {
     @Test
-    public void givenDBMode_whenFetchingSuppliers_thenFetchingFirstElement () {
+    public void givenDBMode_whenFetchingSuppliers_thenComparingFromDbs () {
         SessionFactory sessionFactory;
         try {
             sessionFactory = HibernateMultiTenantUtil.getSessionFactory();
@@ -20,14 +20,14 @@ public class MultiTenantHibernateTest  {
             
             Transaction transaction = db1Session.getTransaction();
             transaction.begin();
-            String supplierFromDB1 = (String) db1Session.createCriteria(Suppliers.class).list().get(0);
+            Suppliers supplierFromDB1 = (Suppliers)db1Session.createCriteria(Suppliers.class).list().get(0);
             transaction.commit();
             
             Session db2Session = sessionFactory
                 .withOptions().tenantIdentifier("db2").openSession();
             
             db2Session.getTransaction().begin();
-            String supplierFromDB2 = (String) db2Session.createCriteria(Suppliers.class).list().get(0);
+            Suppliers supplierFromDB2 = (Suppliers) db2Session.createCriteria(Suppliers.class).list().get(0);
             db2Session.getTransaction().commit();
             
             assertNotEquals(supplierFromDB1, supplierFromDB2);

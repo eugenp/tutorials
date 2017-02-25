@@ -1,5 +1,7 @@
 package com.baeldung.hibernate;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +28,14 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
     protected ConnectionProvider selectConnectionProvider(String tenantIdentifier) {
         System.out.println("Specific");
         return connectionProviderMap.get( tenantIdentifier );
+    }
+    
+    @Override
+    public Connection getConnection(String tenantIdentifier) throws SQLException {
+        Connection connection = super.getConnection(tenantIdentifier);
+        // uncomment to see option 2 for SCHEMA strategy.
+        connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
+        return connection;
     }
     
 }

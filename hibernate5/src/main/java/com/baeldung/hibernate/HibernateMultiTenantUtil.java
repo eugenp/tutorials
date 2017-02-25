@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
@@ -12,6 +14,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.service.ServiceRegistry;
+
+import com.baeldung.hibernate.pojo.Suppliers;
 
 public class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
@@ -22,9 +26,29 @@ public class HibernateMultiTenantUtil {
         if (sessionFactory == null) {
             Configuration configuration = new Configuration().configure();
             ServiceRegistry serviceRegistry = configureServiceRegistry(configuration);
-            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            sessionFactory = makeSessionFactory (serviceRegistry);
+//            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+            
+            
         }
         return sessionFactory;
+    }
+
+    private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
+        MetadataSources metadataSources = new MetadataSources( serviceRegistry );
+        for(Class annotatedClasses : getAnnotatedClasses()) {
+            metadataSources.addAnnotatedClass( annotatedClasses );
+        }
+
+        Metadata metadata = metadataSources.buildMetadata();
+        return metadata.getSessionFactoryBuilder().build();
+        
+    }
+
+    private static Class<?>[] getAnnotatedClasses() {
+        return new Class<?>[] {
+            Suppliers.class
+        };
     }
 
     private static ServiceRegistry configureServiceRegistry(Configuration configuration) throws UnsupportedTenancyException {
