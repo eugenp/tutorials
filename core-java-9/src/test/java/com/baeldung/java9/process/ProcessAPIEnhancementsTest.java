@@ -21,102 +21,104 @@ public class ProcessAPIEnhancementsTest {
     Logger log = LoggerFactory.getLogger(ProcessAPIEnhancementsTest.class);
 
     @Test
-    public void testCurrentProcessInfo() throws IOException {
+    public void givenCurrentProcess_whenInvokeGetInfo_thenSuccess() throws IOException {
         ProcessHandle processHandle = ProcessHandle.current();
         ProcessHandle.Info processInfo = processHandle.info();
         assertNotNull(processHandle.getPid());
         assertEquals(false, processInfo.arguments()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.command()
-            .isPresent());
+          .isPresent());
         assertTrue(processInfo.command()
-            .get()
-            .contains("java"));
+          .get()
+          .contains("java"));
+
         assertEquals(true, processInfo.startInstant()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.totalCpuDuration()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.user()
-            .isPresent());
+          .isPresent());
     }
 
     @Test
-    public void testSpawnedProcessInfo() throws IOException {
+    public void givenSpawnProcess_whenInvokeGetInfo_thenSuccess() throws IOException {
 
         String javaCmd = ProcessUtils.getJavaCmd()
-            .getAbsolutePath();
+          .getAbsolutePath();
         ProcessBuilder processBuilder = new ProcessBuilder(javaCmd, "-version");
         Process process = processBuilder.inheritIO()
-            .start();
+          .start();
         ProcessHandle processHandle = process.toHandle();
         ProcessHandle.Info processInfo = processHandle.info();
         assertNotNull(processHandle.getPid());
         assertEquals(false, processInfo.arguments()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.command()
-            .isPresent());
+          .isPresent());
         assertTrue(processInfo.command()
-            .get()
-            .contains("java"));
+          .get()
+          .contains("java"));
         assertEquals(true, processInfo.startInstant()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.totalCpuDuration()
-            .isPresent());
+          .isPresent());
         assertEquals(true, processInfo.user()
-            .isPresent());
+          .isPresent());
     }
 
     @Test
-    public void testEnumerateLiveProcessesInSystem() {
+    public void givenLiveProcesses_whenInvokeGetInfo_thenSuccess() {
         Stream<ProcessHandle> liveProcesses = ProcessHandle.allProcesses();
         liveProcesses.filter(ProcessHandle::isAlive)
             .forEach(ph -> {
                 assertNotNull(ph.getPid());
                 assertEquals(true, ph.info()
-                    .command()
-                    .isPresent());
+                  .command()
+                  .isPresent());
                 assertEquals(true, ph.info()
-                    .startInstant()
-                    .isPresent());
+                  .startInstant()
+                  .isPresent());
                 assertEquals(true, ph.info()
-                    .totalCpuDuration()
-                    .isPresent());
+                  .totalCpuDuration()
+                  .isPresent());
                 assertEquals(true, ph.info()
-                    .user()
-                    .isPresent());
+                  .user()
+                  .isPresent());
             });
     }
 
     @Test
-    public void testGetChildrenAndDescendants() throws IOException {
+    public void givenProcess_whenGetChildProcess_thenSuccess() throws IOException {
         int childProcessCount = 5;
         for (int i = 0; i < childProcessCount; i++) {
             String javaCmd = ProcessUtils.getJavaCmd()
-                .getAbsolutePath();
-            ProcessBuilder processBuilder = new ProcessBuilder(javaCmd, "-version");
-            processBuilder.inheritIO()
-                .start();
+              .getAbsolutePath();
+            ProcessBuilder processBuilder
+              = new ProcessBuilder(javaCmd, "-version");
+            processBuilder.inheritIO().start();
         }
 
         Stream<ProcessHandle> children = ProcessHandle.current()
-            .children();
+          .children();
         children.filter(ProcessHandle::isAlive)
-            .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
-                .command()));
+          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
+            .command()));
         Stream<ProcessHandle> descendants = ProcessHandle.current()
-            .descendants();
+          .descendants();
         descendants.filter(ProcessHandle::isAlive)
-            .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
-                .command()));
+          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
+            .command()));
     }
 
     @Test
-    public void testOnExitCallback() throws Exception {
+    public void givenProcess_whenAddExitCallback_thenSuccess() throws Exception {
         String javaCmd = ProcessUtils.getJavaCmd()
-            .getAbsolutePath();
-        ProcessBuilder processBuilder = new ProcessBuilder(javaCmd, "-version");
+          .getAbsolutePath();
+        ProcessBuilder processBuilder
+          = new ProcessBuilder(javaCmd, "-version");
         Process process = processBuilder.inheritIO()
-            .start();
+          .start();
         ProcessHandle processHandle = process.toHandle();
 
         log.info("PID: {} has started", processHandle.getPid());
