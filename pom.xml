@@ -28,7 +28,6 @@
         <module>autovalue</module>
 
         <module>cdi</module>
-        <module>cglib</module>
         <!-- <module>core-java-9</module> -->
         <module>core-java</module>
         <module>couchbase-sdk</module>
@@ -76,6 +75,7 @@
 
         <module>kotlin</module>
 
+        <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>

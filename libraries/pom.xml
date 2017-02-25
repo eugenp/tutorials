@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cglib</artifactId>
+    <artifactId>libraries</artifactId>
+    <name>libraries</name>
     <build>
         <plugins>
             <plugin>
