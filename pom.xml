@@ -206,11 +206,11 @@
 
     <build>
         <extensions>
-            <extension>
+            <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>3.1</version>
-            </extension>
+            </extension>-->
         </extensions>
     </build>
 </project>
