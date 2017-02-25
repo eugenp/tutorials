@@ -199,6 +199,9 @@
         <module>apache-velocity</module>
         <module>apache-solrj</module>
 
+        <module>rabbitmq</module>
+
+
     </modules>
 
     <build>
