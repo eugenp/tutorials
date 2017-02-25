@@ -28,6 +28,7 @@
         <module>autovalue</module>
 
         <module>cdi</module>
+        <module>cglib</module>
         <!-- <module>core-java-9</module> -->
         <module>core-java</module>
         <module>couchbase-sdk</module>
@@ -65,6 +66,7 @@
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -109,6 +111,7 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -182,6 +185,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -193,6 +197,7 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
 
         <module>rabbitmq</module>
 
