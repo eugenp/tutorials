@@ -197,12 +197,9 @@
         <module>struts2</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
-<<<<<<< HEAD
-=======
 
         <module>rabbitmq</module>
 
->>>>>>> upstream/master
 
     </modules>
 
