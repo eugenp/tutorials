@@ -34,7 +34,12 @@
                 <version>1.0-SNAPSHOT</version>
                 <type>ejb</type>
             </dependency>
-
+			 <dependency>
+                <groupId>com.baeldung.ejb</groupId>
+                <artifactId>ejb-session-beans</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <type>ejb</type>
+            </dependency>
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
@@ -78,5 +83,7 @@
     <modules>
         <module>ejb-remote</module>
         <module>ejb-client</module>
+        <module>ejb-session-beans</module>
+        <module>ejb-session-beans-client</module>
     </modules>
 </project>
