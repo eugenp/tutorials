@@ -12,6 +12,6 @@ public class BeanInjectionConfig {
 
     @Bean
     public Transaction transaction() {
-        return new Transaction("sliding");
+        return new Transaction("deposit");
     }
 }
