@@ -47,8 +47,8 @@ a {
 		Name: <input type="text" id="name" ng-model="name" /> 
 		<a ng-click="getEmployeesByName()">Get employees by name</a>
 		<br /> <br />
-		<div ng-repeat="emp in employees._embedded.employee">
-			{{emp.name}} {{emp.age}}
+		<div ng-repeat="emp in employees">
+			{{emp.id}} {{emp.name}} {{emp.age}}
 		</div>
 	</div>
 </body>
