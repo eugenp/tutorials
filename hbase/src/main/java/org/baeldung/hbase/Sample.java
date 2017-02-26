@@ -1,39 +1,26 @@
 package org.baeldung.hbase;
 
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HColumnDescriptor;
+import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.filter.*;
+import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
+import org.apache.hadoop.hbase.filter.FilterList.Operator;
+import org.apache.hadoop.hbase.util.Bytes;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.client.Delete;
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
-import org.apache.hadoop.hbase.client.HTableFactory;
-import org.apache.hadoop.hbase.client.HTableInterface;
-import org.apache.hadoop.hbase.client.Put;
-import org.apache.hadoop.hbase.client.Result;
-import org.apache.hadoop.hbase.client.ResultScanner;
-import org.apache.hadoop.hbase.client.Scan;
-import org.apache.hadoop.hbase.filter.BinaryComparator;
-import org.apache.hadoop.hbase.filter.CompareFilter.CompareOp;
-import org.apache.hadoop.hbase.filter.Filter;
-import org.apache.hadoop.hbase.filter.FilterList;
-import org.apache.hadoop.hbase.filter.FilterList.Operator;
-import org.apache.hadoop.hbase.filter.PrefixFilter;
-import org.apache.hadoop.hbase.filter.QualifierFilter;
-import org.apache.hadoop.hbase.util.Bytes;
-
 public class Sample {
     private final static byte[] cellData = Bytes.toBytes("cell_data");
 
-    /** Drop tables if this value is set true. */
-    static boolean INITIALIZE_AT_FIRST = false;
-
-    private static void p(String msg) {
-        System.out.println(msg);
-    }
+    /**
+     * Drop tables if this value is set true.
+     */
+    static boolean INITIALIZE_AT_FIRST = true;
 
     /**
      * <table>
@@ -48,15 +35,16 @@ public class Sample {
      * </tr>
      * </table>
      */
-    private final byte[] table1 = Bytes.toBytes("Table1"), //
-            row1 = Bytes.toBytes("Row1"), //
-            row2 = Bytes.toBytes("Row2"), //
-            row3 = Bytes.toBytes("Row3"), //
-            family1 = Bytes.toBytes("Family1"), //
-            family2 = Bytes.toBytes("Family2"), //
-            qualifier1 = Bytes.toBytes("Qualifier1"), //
-            qualifier2 = Bytes.toBytes("Qualifier2"), //
-            qualifier3 = Bytes.toBytes("Qualifier3");
+    private final TableName table1 = TableName.valueOf("Table1");
+    private final String family1 = "Family1";
+    private final String family2 = "Family2";
+
+    private final byte[] row1 = Bytes.toBytes("Row1");
+    private final byte[] row2 = Bytes.toBytes("Row2");
+    private final byte[] row3 = Bytes.toBytes("Row3");
+    private final byte[] qualifier1 = Bytes.toBytes("Qualifier1");
+    private final byte[] qualifier2 = Bytes.toBytes("Qualifier2");
+    private final byte[] qualifier3 = Bytes.toBytes("Qualifier3");
 
     private void createTable(HBaseAdmin admin) throws IOException {
         HTableDescriptor desc = new HTableDescriptor(table1);
@@ -66,44 +54,41 @@ public class Sample {
     }
 
     private void delete(HBaseAdmin admin, HTableInterface table) throws IOException {
-        p("\n*** DELETE ~Insert data and then delete it~ ***");
+        System.out.println("\n*** DELETE ~Insert data and then delete it~ ***");
 
-        p("Inserting a data to be deleted later.");
+        System.out.println("Inserting a data to be deleted later.");
         Put put = new Put(row1);
-        put.add(family1, qualifier1, cellData);
+        put.addColumn(family1.getBytes(), qualifier1, cellData);
         table.put(put);
 
         Get get = new Get(row1);
         Result result = table.get(get);
-        byte[] value = result.getValue(family1, qualifier1);
-        p("Fetch the data: " + Bytes.toString(value));
+        byte[] value = result.getValue(family1.getBytes(), qualifier1);
+        System.out.println("Fetch the data: " + Bytes.toString(value));
         assert Arrays.equals(cellData, value);
 
-        p("Deleting");
+        System.out.println("Deleting");
         Delete delete = new Delete(row1);
-        delete.deleteColumn(family1, qualifier1);
+        delete.addColumn(family1.getBytes(), qualifier1);
         table.delete(delete);
 
         result = table.get(get);
-        value = result.getValue(family1, qualifier1);
-        p("Fetch the data: " + Bytes.toString(value));
+        value = result.getValue(family1.getBytes(), qualifier1);
+        System.out.println("Fetch the data: " + Bytes.toString(value));
         assert Arrays.equals(cellData, value);
 
-        p("Done. ");
+        System.out.println("Done. ");
     }
 
     private void deleteTable(HBaseAdmin admin) throws IOException {
         if (admin.tableExists(table1)) {
             admin.disableTable(table1);
-            try {
-                admin.deleteTable(table1);
-            } finally {
-            }
+            admin.deleteTable(table1);
         }
     }
 
     private void filters(HBaseAdmin admin, HTableInterface table) throws IOException {
-        p("\n*** FILTERS ~ scanning with filters to fetch a row of which key is larget than \"Row1\"~ ***");
+        System.out.println("\n*** FILTERS ~ scanning with filters to fetch a row of which key is larget than \"Row1\"~ ***");
         Filter filter1 = new PrefixFilter(row2);
         Filter filter2 = new QualifierFilter(CompareOp.GREATER_OR_EQUAL, new BinaryComparator(
                 qualifier1));
@@ -118,60 +103,61 @@ public class Sample {
         try {
             int i = 0;
             for (Result result : scanner) {
-                p("Filter " + scan.getFilter() + " matched row: " + result);
+                System.out.println("Filter " + scan.getFilter() + " matched row: " + result);
                 i++;
             }
             assert i == 1 : "This filtering sample should return 1 row but was " + i + ".";
         } finally {
             scanner.close();
         }
-        p("Done. ");
+        System.out.println("Done. ");
     }
 
     private void get(HBaseAdmin admin, HTableInterface table) throws IOException {
-        p("\n*** GET example ~fetching the data in Family1:Qualifier1~ ***");
+        System.out.println("\n*** GET example ~fetching the data in Family1:Qualifier1~ ***");
 
         Get g = new Get(row1);
         Result r = table.get(g);
-        byte[] value = r.getValue(family1, qualifier1);
+        byte[] value = r.getValue(family1.getBytes(), qualifier1);
 
-        p("Fetched value: " + Bytes.toString(value));
+        System.out.println("Fetched value: " + Bytes.toString(value));
         assert Arrays.equals(cellData, value);
-        p("Done. ");
+        System.out.println("Done. ");
     }
 
     private void put(HBaseAdmin admin, HTableInterface table) throws IOException {
-        p("\n*** PUT example ~inserting \"cell-data\" into Family1:Qualifier1 of Table1 ~ ***");
+        System.out.println("\n*** PUT example ~inserting \"cell-data\" into Family1:Qualifier1 of Table1 ~ ***");
 
         // Row1 => Family1:Qualifier1, Family1:Qualifier2
         Put p = new Put(row1);
-        p.add(family1, qualifier1, cellData);
-        p.add(family1, qualifier2, cellData);
+        p.addImmutable(family1.getBytes(), qualifier1, cellData);
+        p.addImmutable(family1.getBytes(), qualifier2, cellData);
         table.put(p);
 
         // Row2 => Family1:Qualifier1, Family2:Qualifier3
         p = new Put(row2);
-        p.add(family1, qualifier1, cellData);
-        p.add(family2, qualifier3, cellData);
+        p.addImmutable(family1.getBytes(), qualifier1, cellData);
+        p.addImmutable(family2.getBytes(), qualifier3, cellData);
         table.put(p);
 
         // Row3 => Family1:Qualifier1, Family2:Qualifier3
         p = new Put(row3);
-        p.add(family1, qualifier1, cellData);
-        p.add(family2, qualifier3, cellData);
+        p.addImmutable(family1.getBytes(), qualifier1, cellData);
+        p.addImmutable(family2.getBytes(), qualifier3, cellData);
         table.put(p);
 
         admin.disableTable(table1);
         try {
             HColumnDescriptor desc = new HColumnDescriptor(row1);
             admin.addColumn(table1, desc);
-            p("Success.");
+            System.out.println("Success.");
         } catch (Exception e) {
-            p("Failed.");
+            System.out.println("Failed.");
+            System.out.println(e.getMessage());
         } finally {
             admin.enableTable(table1);
         }
-        p("Done. ");
+        System.out.println("Done. ");
     }
 
     public void run(Configuration config) throws IOException {
@@ -186,7 +172,7 @@ public class Sample {
             createTable(admin);
         }
 
-        HTableInterface table = factory.createHTableInterface(config, table1);
+        HTableInterface table = factory.createHTableInterface(config, table1.getName());
         put(admin, table);
         get(admin, table);
         scan(admin, table);
@@ -196,18 +182,18 @@ public class Sample {
     }
 
     private void scan(HBaseAdmin admin, HTableInterface table) throws IOException {
-        p("\n*** SCAN example ~fetching data in Family1:Qualifier1 ~ ***");
+        System.out.println("\n*** SCAN example ~fetching data in Family1:Qualifier1 ~ ***");
 
         Scan scan = new Scan();
-        scan.addColumn(family1, qualifier1);
+        scan.addColumn(family1.getBytes(), qualifier1);
 
         ResultScanner scanner = table.getScanner(scan);
         try {
             for (Result result : scanner)
-                p("Found row: " + result);
+                System.out.println("Found row: " + result);
         } finally {
             scanner.close();
         }
-        p("Done.");
+        System.out.println("Done.");
     }
 }
