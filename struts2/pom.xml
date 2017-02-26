@@ -4,7 +4,7 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>MyStrutsApp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<name>struts</name>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
