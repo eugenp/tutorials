@@ -1,12 +1,10 @@
 package com.baeldung.concurrent.priorityblockingqueue;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Lists.newArrayList;
@@ -24,11 +22,7 @@ public class PriorityBlockingQueueUnitTest {
         queue.add(3);
         queue.add(4);
 
-        polledElements.add(queue.poll());
-        polledElements.add(queue.poll());
-        polledElements.add(queue.poll());
-        polledElements.add(queue.poll());
-        polledElements.add(queue.poll());
+        queue.drainTo(polledElements);
 
         assertThat(polledElements).containsExactly(1, 2, 3, 4, 5);
     }
@@ -38,13 +32,14 @@ public class PriorityBlockingQueueUnitTest {
         PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
 
         final Thread thread = new Thread(() -> {
-          System.out.println("Polling...");
-          while (true) {
-            try {
-              Integer poll = queue.take();
-              System.out.println("Polled: " + poll);
-            } catch (InterruptedException e) {}
-          }
+            System.out.println("Polling...");
+            while (true) {
+                try {
+                    Integer poll = queue.take();
+                    System.out.println("Polled: " + poll);
+                } catch (InterruptedException e) {
+                }
+            }
         });
         thread.start();
 
