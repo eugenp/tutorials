@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.base.Preconditions;
 
+// copied to --> spring-security-rest-basic-auth
 @Component
 class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListener<SingleResourceRetrieved> {
 

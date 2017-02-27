@@ -2,6 +2,7 @@ package org.baeldung.web.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+// copied from - spring-security-mvc-basic-auth
 /**
  * Provides some constants and utility methods to build a Link Header to be stored in the {@link HttpServletResponse} object
  */

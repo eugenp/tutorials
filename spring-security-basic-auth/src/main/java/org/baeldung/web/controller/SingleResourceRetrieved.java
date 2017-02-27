@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationEvent;
 
+// copied to --> spring-security-rest-basic-auth
 public class SingleResourceRetrieved extends ApplicationEvent {
     private final HttpServletResponse response;
     private final HttpServletRequest request;

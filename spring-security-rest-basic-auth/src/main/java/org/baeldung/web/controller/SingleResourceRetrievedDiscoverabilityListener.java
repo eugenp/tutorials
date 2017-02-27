@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.base.Preconditions;
 
+//copied from - spring-security-mvc-basic-auth
 @Component
 class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListener<SingleResourceRetrieved> {
 
