@@ -27,12 +27,12 @@ public class HbaseClientExample {
         try {
             HBaseAdmin.checkHBaseAvailable(config);
         } catch (MasterNotRunningException e) {
-            System.out.println("HBase is not running.");
-            System.exit(1);
+            System.out.println("HBase is not running." + e.getMessage());
+            return;
         }
 
-        Sample sample = new Sample();
-        sample.run(config);
+        HBaseClientOperations HBaseClientOperations = new HBaseClientOperations();
+        HBaseClientOperations.run(config);
     }
 
 }

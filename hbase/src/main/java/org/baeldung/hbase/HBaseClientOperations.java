@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class Sample {
+public class HBaseClientOperations {
     private final static byte[] cellData = Bytes.toBytes("cell_data");
 
     /**
@@ -46,14 +46,14 @@ public class Sample {
     private final byte[] qualifier2 = Bytes.toBytes("Qualifier2");
     private final byte[] qualifier3 = Bytes.toBytes("Qualifier3");
 
-    private void createTable(HBaseAdmin admin) throws IOException {
+    private void createTable(Admin admin) throws IOException {
         HTableDescriptor desc = new HTableDescriptor(table1);
         desc.addFamily(new HColumnDescriptor(family1));
         desc.addFamily(new HColumnDescriptor(family2));
         admin.createTable(desc);
     }
 
-    private void delete(HBaseAdmin admin, HTableInterface table) throws IOException {
+    private void delete(Table table) throws IOException {
         System.out.println("\n*** DELETE ~Insert data and then delete it~ ***");
 
         System.out.println("Inserting a data to be deleted later.");
@@ -80,14 +80,14 @@ public class Sample {
         System.out.println("Done. ");
     }
 
-    private void deleteTable(HBaseAdmin admin) throws IOException {
+    private void deleteTable(Admin admin) throws IOException {
         if (admin.tableExists(table1)) {
             admin.disableTable(table1);
             admin.deleteTable(table1);
         }
     }
 
-    private void filters(HBaseAdmin admin, HTableInterface table) throws IOException {
+    private void filters(Table table) throws IOException {
         System.out.println("\n*** FILTERS ~ scanning with filters to fetch a row of which key is larget than \"Row1\"~ ***");
         Filter filter1 = new PrefixFilter(row2);
         Filter filter2 = new QualifierFilter(CompareOp.GREATER_OR_EQUAL, new BinaryComparator(
@@ -99,21 +99,18 @@ public class Sample {
         Scan scan = new Scan();
         scan.setFilter(filter3);
 
-        ResultScanner scanner = table.getScanner(scan);
-        try {
+        try (ResultScanner scanner = table.getScanner(scan)) {
             int i = 0;
             for (Result result : scanner) {
                 System.out.println("Filter " + scan.getFilter() + " matched row: " + result);
                 i++;
             }
             assert i == 1 : "This filtering sample should return 1 row but was " + i + ".";
-        } finally {
-            scanner.close();
         }
         System.out.println("Done. ");
     }
 
-    private void get(HBaseAdmin admin, HTableInterface table) throws IOException {
+    private void get(Table table) throws IOException {
         System.out.println("\n*** GET example ~fetching the data in Family1:Qualifier1~ ***");
 
         Get g = new Get(row1);
@@ -125,7 +122,7 @@ public class Sample {
         System.out.println("Done. ");
     }
 
-    private void put(HBaseAdmin admin, HTableInterface table) throws IOException {
+    private void put(Admin admin, Table table) throws IOException {
         System.out.println("\n*** PUT example ~inserting \"cell-data\" into Family1:Qualifier1 of Table1 ~ ***");
 
         // Row1 => Family1:Qualifier1, Family1:Qualifier2
@@ -161,38 +158,35 @@ public class Sample {
     }
 
     public void run(Configuration config) throws IOException {
-        HBaseAdmin admin = new HBaseAdmin(config);
-        HTableFactory factory = new HTableFactory();
+        try (Connection connection = ConnectionFactory.createConnection(config)) {
 
-        if (INITIALIZE_AT_FIRST) {
-            deleteTable(admin);
+            Admin admin = connection.getAdmin();
+            if (INITIALIZE_AT_FIRST) {
+                deleteTable(admin);
+            }
+
+            if (!admin.tableExists(table1)) {
+                createTable(admin);
+            }
+
+            Table table = connection.getTable(table1);
+            put(admin, table);
+            get(table);
+            scan(table);
+            filters(table);
+            delete(table);
         }
-
-        if (!admin.tableExists(table1)) {
-            createTable(admin);
-        }
-
-        HTableInterface table = factory.createHTableInterface(config, table1.getName());
-        put(admin, table);
-        get(admin, table);
-        scan(admin, table);
-        filters(admin, table);
-        delete(admin, table);
-        factory.releaseHTableInterface(table); // Disconnect
     }
 
-    private void scan(HBaseAdmin admin, HTableInterface table) throws IOException {
+    private void scan(Table table) throws IOException {
         System.out.println("\n*** SCAN example ~fetching data in Family1:Qualifier1 ~ ***");
 
         Scan scan = new Scan();
         scan.addColumn(family1.getBytes(), qualifier1);
 
-        ResultScanner scanner = table.getScanner(scan);
-        try {
+        try (ResultScanner scanner = table.getScanner(scan)) {
             for (Result result : scanner)
                 System.out.println("Found row: " + result);
-        } finally {
-            scanner.close();
         }
         System.out.println("Done.");
     }
