@@ -104,7 +104,7 @@ public class ReactorTest {
     }
 
     @Test
-    public void givenConnectableFlux_thenShouldStream_onConnect() {
+    public void givenConnectableFlux_whenConnected_thenShouldStream() {
 
         List<Integer> elements = new ArrayList<>();
 
