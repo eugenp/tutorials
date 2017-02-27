@@ -11,17 +11,17 @@ public class SimpleGeneticAlgorithm {
     private static final boolean elitism = true;
     private static byte[] solution = new byte[64];
 
-    public static boolean runAlgorithm(int populationSize, String solution) {
+    public boolean runAlgorithm(int populationSize, String solution) {
         if (solution.length() != SimpleGeneticAlgorithm.solution.length) {
             throw new RuntimeException("The solution needs to have " + SimpleGeneticAlgorithm.solution.length + " bytes");
         }
-        SimpleGeneticAlgorithm.setSolution(solution);
+        setSolution(solution);
         Population myPop = new Population(populationSize, true);
 
         int generationCount = 1;
-        while (myPop.getFittest().getFitness() < SimpleGeneticAlgorithm.getMaxFitness()) {
+        while (myPop.getFittest().getFitness() < getMaxFitness()) {
             System.out.println("Generation: " + generationCount + " Correct genes found: " + myPop.getFittest().getFitness());
-            myPop = SimpleGeneticAlgorithm.evolvePopulation(myPop);
+            myPop = evolvePopulation(myPop);
             generationCount++;
         }
         System.out.println("Solution found!");
@@ -31,7 +31,7 @@ public class SimpleGeneticAlgorithm {
         return true;
     }
 
-    public static Population evolvePopulation(Population pop) {
+    public Population evolvePopulation(Population pop) {
         int elitismOffset;
         Population newPopulation = new Population(pop.getIndividuals().size(), false);
 
@@ -56,7 +56,7 @@ public class SimpleGeneticAlgorithm {
         return newPopulation;
     }
 
-    private static Individual crossover(Individual indiv1, Individual indiv2) {
+    private Individual crossover(Individual indiv1, Individual indiv2) {
         Individual newSol = new Individual();
         for (int i = 0; i < newSol.getDefaultGeneLength(); i++) {
             if (Math.random() <= uniformRate) {
@@ -68,7 +68,7 @@ public class SimpleGeneticAlgorithm {
         return newSol;
     }
 
-    private static void mutate(Individual indiv) {
+    private void mutate(Individual indiv) {
         for (int i = 0; i < indiv.getDefaultGeneLength(); i++) {
             if (Math.random() <= mutationRate) {
                 byte gene = (byte) Math.round(Math.random());
@@ -77,7 +77,7 @@ public class SimpleGeneticAlgorithm {
         }
     }
 
-    private static Individual tournamentSelection(Population pop) {
+    private Individual tournamentSelection(Population pop) {
         Population tournament = new Population(tournamentSize, false);
         for (int i = 0; i < tournamentSize; i++) {
             int randomId = (int) (Math.random() * pop.getIndividuals().size());
@@ -97,12 +97,12 @@ public class SimpleGeneticAlgorithm {
         return fitness;
     }
 
-    protected static int getMaxFitness() {
+    protected int getMaxFitness() {
         int maxFitness = solution.length;
         return maxFitness;
     }
 
-    protected static void setSolution(String newSolution) {
+    protected void setSolution(String newSolution) {
         solution = new byte[newSolution.length()];
         for (int i = 0; i < newSolution.length(); i++) {
             String character = newSolution.substring(i, i + 1);

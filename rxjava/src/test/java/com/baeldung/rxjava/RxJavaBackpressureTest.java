@@ -18,154 +18,113 @@ public class RxJavaBackpressureTest {
 
     @Test
     public void givenColdObservable_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
 
-        //when
-        Observable
-          .range(1, 1_000_000)
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        // when
+        Observable.range(1, 1_000_000).observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        //then
+        // then
         testSubscriber.awaitTerminalEvent();
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 
     @Test
     public void givenHotObservable_whenBackpressureNotDefined_shouldTrowException() {
-        //given
+        // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
         PublishSubject<Integer> source = PublishSubject.<Integer> create();
 
-        source
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        source.observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        //when
-        IntStream
-          .range(0, 1_000_000)
-          .forEach(source::onNext);
+        // when
+        IntStream.range(0, 1_000_000).forEach(source::onNext);
 
-        //then
+        // then
         testSubscriber.awaitTerminalEvent();
         testSubscriber.assertError(MissingBackpressureException.class);
     }
 
     @Test
     public void givenHotObservable_whenWindowIsDefined_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<Observable<Integer>> testSubscriber = new TestSubscriber<>();
         PublishSubject<Integer> source = PublishSubject.<Integer> create();
 
-        //when
-        source
-          .window(500)
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        // when
+        source.window(500).observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        IntStream
-          .range(0, 1_000)
-          .forEach(source::onNext);
+        IntStream.range(0, 1_000).forEach(source::onNext);
 
-        //then
+        // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 
     @Test
     public void givenHotObservable_whenBufferIsDefined_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<List<Integer>> testSubscriber = new TestSubscriber<>();
         PublishSubject<Integer> source = PublishSubject.<Integer> create();
 
-        //when
-        source
-          .buffer(1024)
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        // when
+        source.buffer(1024).observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        IntStream
-          .range(0, 1_000)
-          .forEach(source::onNext);
+        IntStream.range(0, 1_000).forEach(source::onNext);
 
-
-        //then
+        // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 
     @Test
     public void givenHotObservable_whenSkippingOperationIsDefined_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
         PublishSubject<Integer> source = PublishSubject.<Integer> create();
 
-        //when
+        // when
         source.sample(100, TimeUnit.MILLISECONDS)
-          //                .throttleFirst(100, TimeUnit.MILLISECONDS)
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+                // .throttleFirst(100, TimeUnit.MILLISECONDS)
+                .observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        IntStream
-          .range(0, 1_000)
-          .forEach(source::onNext);
+        IntStream.range(0, 1_000).forEach(source::onNext);
 
-
-        //then
+        // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 
     @Test
     public void givenHotObservable_whenOnBackpressureBufferDefined_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
 
-        //when
-        Observable
-          .range(1, 1_000_000)
-          .onBackpressureBuffer(16, () -> {}, BackpressureOverflow.ON_OVERFLOW_DROP_OLDEST)
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        // when
+        Observable.range(1, 1_000_000).onBackpressureBuffer(16, () -> {
+        }, BackpressureOverflow.ON_OVERFLOW_DROP_OLDEST).observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        //then
+        // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 
     @Test
     public void givenHotObservable_whenOnBackpressureDropDefined_shouldNotThrowException() {
-        //given
+        // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
 
-        //when
-        Observable
-          .range(1, 1_000_000)
-          .onBackpressureDrop()
-          .observeOn(Schedulers.computation())
-          .subscribe(testSubscriber);
+        // when
+        Observable.range(1, 1_000_000).onBackpressureDrop().observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
-        //then
+        // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
-        assertTrue(testSubscriber
-          .getOnErrorEvents()
-          .size() == 0);
+        assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
 
     }
 }

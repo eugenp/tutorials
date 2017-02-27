@@ -62,12 +62,7 @@ public class JExcelHelper {
             sheet.addCell(cellLabel);
             Number cellNumber = new Number(1, 2, 20, cellFormat);
             sheet.addCell(cellNumber);
-
-            cellLabel = new Label(0, 3, "Ana Johnson", cellFormat);
-            sheet.addCell(cellLabel);
-            cellNumber = new Number(1, 3, 30, cellFormat);
-            sheet.addCell(cellNumber);
-
+			
             workbook.write();
         } finally {
             if (workbook != null) {

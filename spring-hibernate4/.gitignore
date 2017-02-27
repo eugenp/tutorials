@@ -12,3 +12,4 @@
 *.war
 *.ear
 /target/
+/target/

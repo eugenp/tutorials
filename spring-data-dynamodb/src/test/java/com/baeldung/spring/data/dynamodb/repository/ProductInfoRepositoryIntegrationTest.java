@@ -44,8 +44,8 @@ public class ProductInfoRepositoryIntegrationTest {
     private static final String EXPECTED_PRICE = "50";
 
     @Before
-    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
-    public  void setup() throws Exception {
+    @Ignore // TODO Remove Ignore annotations when running locally with Local DynamoDB instance
+    public void setup() throws Exception {
 
         try {
             dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
@@ -64,7 +64,7 @@ public class ProductInfoRepositoryIntegrationTest {
     }
 
     @Test
-    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
+    @Ignore // TODO Remove Ignore annotations when running locally with Local DynamoDB instance
     public void givenItemWithExpectedCost_whenRunFindAll_thenItemIsFound() {
 
         ProductInfo productInfo = new ProductInfo(EXPECTED_COST, EXPECTED_PRICE);

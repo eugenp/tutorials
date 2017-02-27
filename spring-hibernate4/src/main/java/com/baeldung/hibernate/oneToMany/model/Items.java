@@ -18,14 +18,6 @@ public class Items {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "item_id")
-    private String itemId;
-
-    @Column(name = "item_total")
-    private double itemTotal;
-
-    @Column(name = "quantity")
-    private int quantity;
 
     @ManyToOne
     @JoinColumn(name = "cart_id", nullable = false)
@@ -35,35 +27,8 @@ public class Items {
     public Items() {
     }
 
-    public Items(String itemId, double total, int qty, Cart c) {
-        this.itemId = itemId;
-        this.itemTotal = total;
-        this.quantity = qty;
+    public Items(Cart c) {
         this.cart = c;
-    }
-
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
-
-    public double getItemTotal() {
-        return itemTotal;
-    }
-
-    public void setItemTotal(double itemTotal) {
-        this.itemTotal = itemTotal;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public Cart getCart() {
