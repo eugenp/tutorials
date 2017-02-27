@@ -13,7 +13,6 @@ public class BeanInjectionSpringRunner {
 
     private static AutomatedTellerMachine getAtmFromJavaConfig() {
         ApplicationContext context = new AnnotationConfigApplicationContext(BeanInjectionConfig.class);
-
         return context.getBean(AutomatedTellerMachine.class);
     }
 }

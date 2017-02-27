@@ -7,14 +7,20 @@ import org.springframework.stereotype.Component;
 public class AutomatedTellerMachine {
 
     private Transaction transaction;
+    private Advertisement ad;
 
     @Autowired
     public AutomatedTellerMachine(Transaction transaction) {
         this.transaction = transaction;
     }
 
+    @Autowired
+    public void setAdvertisement(Advertisement ad) {
+        this.ad = ad;
+    }
+
     @Override
     public String toString() {
-        return String.format("Transaction: %s", transaction);
+        return String.format("Transaction: %s Advertisement: %s ", transaction, ad);
     }
 }
