@@ -90,15 +90,21 @@ app.controller('EmployeeCRUDCtrl', ['$scope','EmployeeCRUDService', function ($s
     }
     
     $scope.addEmployee = function () {
-        EmployeeCRUDService.addEmployee($scope.employee.id, $scope.employee.name, $scope.employee.age)
-          .then (function success(response){
-              $scope.message = 'Employee added!';
-              $scope.errorMessage = '';
-          },
-        function error(response){
-            $scope.errorMessage = 'Error adding Employee!';
+        if ($scope.employee != null && $scope.employee.id) {
+            EmployeeCRUDService.addEmployee($scope.employee.id, $scope.employee.name, $scope.employee.age)
+              .then (function success(response){
+                  $scope.message = 'Employee added!';
+                  $scope.errorMessage = '';
+              },
+              function error(response){
+                  $scope.errorMessage = 'Error adding Employee!';
+                  $scope.message = '';
+            });
+        }
+        else {
+            $scope.errorMessage = 'Please enter an id!';
             $scope.message = '';
-        })
+        }
     }
     
     $scope.deleteEmployee = function () {
@@ -113,21 +119,11 @@ app.controller('EmployeeCRUDCtrl', ['$scope','EmployeeCRUDService', function ($s
               $scope.message='';
           })
     }
-	
-    function extractIds(data){
-        angular.forEach(data, function(value, key){
-            var self_link = value._links.self.href;
-            var id_position = self_link.lastIndexOf("/")+1;
-            var id = self_link.substring(id_position, self_link.length);
-            value.id = id;
-        });
-        return data;
-    }
     
     $scope.getAllEmployees = function () {
         EmployeeCRUDService.getAllEmployees()
           .then(function success(response){
-              $scope.employees = extractIds(response.data._embedded.employee);
+              $scope.employees = response.data._embedded.employee;
               $scope.message='';
               $scope.errorMessage = '';
           },
@@ -140,7 +136,7 @@ app.controller('EmployeeCRUDCtrl', ['$scope','EmployeeCRUDService', function ($s
     $scope.getEmployeesByName = function () {
         EmployeeCRUDService.getEmployeesByName($scope.name)
           .then(function success(response){
-              $scope.employees = extractIds(response.data._embedded.employee);
+              $scope.employees = response.data._embedded.employee;
               $scope.message='';
               $scope.errorMessage = '';
           },
