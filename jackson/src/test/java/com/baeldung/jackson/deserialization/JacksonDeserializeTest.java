@@ -3,12 +3,10 @@ package com.baeldung.jackson.deserialization;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
 import com.baeldung.jackson.entities.Movie;
-import org.junit.Assert;
 import org.junit.Test;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.Assert.assertEquals;
 
 public class JacksonDeserializeTest {
 
@@ -20,7 +18,7 @@ public class JacksonDeserializeTest {
         final Movie movie = mapper.readValue(jsonInput, Movie.class);
 
         final String expectedOutput = "Movie [imdbId=tt0472043, director=null, actors=[ActorJackson [imdbId=nm2199632, dateOfBirth=Tue Sep 21 11:00:00 GMT 1982, filmography=[Apocalypto, Beatdown, Wind Walkers]]]]";
-        Assert.assertEquals(movie.toString(), expectedOutput);
+        assertEquals(expectedOutput, movie.toString());
     }
 
     @Test
@@ -35,7 +33,7 @@ public class JacksonDeserializeTest {
         final Movie movie = mapper.readValue(jsonInput, Movie.class);
 
         final String expectedOutput = "Movie [imdbId=tt0472043, director=Mel Gibson, actors=[ActorJackson [imdbId=nm2199632, dateOfBirth=Tue Sep 21 11:00:00 GMT 1982, filmography=[Apocalypto, Beatdown, Wind Walkers]]]]";
-        Assert.assertEquals(movie.toString(), expectedOutput);
+        assertEquals(expectedOutput, movie.toString());
     }
 
 }
