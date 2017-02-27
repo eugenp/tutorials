@@ -89,15 +89,14 @@ public class HBaseClientOperations {
 
     private void filters(Table table) throws IOException {
         System.out.println("\n*** FILTERS ~ scanning with filters to fetch a row of which key is larget than \"Row1\"~ ***");
-        Filter filter1 = new PrefixFilter(row2);
+        Filter filter1 = new PrefixFilter(row1);
         Filter filter2 = new QualifierFilter(CompareOp.GREATER_OR_EQUAL, new BinaryComparator(
                 qualifier1));
 
         List<Filter> filters = Arrays.asList(filter1, filter2);
-        Filter filter3 = new FilterList(Operator.MUST_PASS_ALL, filters);
 
         Scan scan = new Scan();
-        scan.setFilter(filter3);
+        scan.setFilter(new FilterList(Operator.MUST_PASS_ALL, filters));
 
         try (ResultScanner scanner = table.getScanner(scan)) {
             int i = 0;
@@ -105,7 +104,7 @@ public class HBaseClientOperations {
                 System.out.println("Filter " + scan.getFilter() + " matched row: " + result);
                 i++;
             }
-            assert i == 1 : "This filtering sample should return 1 row but was " + i + ".";
+            assert i == 2 : "This filtering sample should return 1 row but was " + i + ".";
         }
         System.out.println("Done. ");
     }
