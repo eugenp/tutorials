@@ -19,7 +19,7 @@
         <Async name="AsyncAppender" bufferSize="80">
             <AppenderRef ref="JSONLogfileAppender" />
         </Async>
-        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" />
+        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" mdcId="mdc" includeMDC="true" />
         <Failover name="FailoverAppender" primary="Syslog">
             <Failovers>
                 <AppenderRef ref="ConsoleAppender" />
