@@ -30,7 +30,7 @@ public class JasyptTest {
 
 
     @Test
-    @Ignore
+    @Ignore("should have installed local_policy.jar")
     public void givenTextPassword_whenDecrypt_shouldCompareToEncryptedWithCustomAlgorithm() {
         //given
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
@@ -48,7 +48,7 @@ public class JasyptTest {
     }
 
     @Test
-    @Ignore
+    @Ignore("should have installed local_policy.jar")
     public void givenTextPassword_whenDecryptOnHighPerformance_shouldDecrypt(){
         //given
         String password = "secret-pass";
