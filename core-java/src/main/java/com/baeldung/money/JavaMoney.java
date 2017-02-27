@@ -81,7 +81,11 @@ public class JavaMoney {
 
         LOGGER.info("Money & FastMoney operations : " + calcMoneyFastMoney);
 
-        monetaryAmounts = new MonetaryAmount[] { Money.of(100, "CHF"), Money.of(10.20, "CHF"), Money.of(1.15, "CHF"), };
+        monetaryAmounts = 
+                new MonetaryAmount[] { 
+                        Money.of(100, "CHF"), 
+                        Money.of(10.20, "CHF"), 
+                        Money.of(1.15, "CHF"), };
         sumAmtCHF = Money.of(0, "CHF");
         for (MonetaryAmount monetaryAmount : monetaryAmounts) {
             sumAmtCHF = sumAmtCHF.add(monetaryAmount);
@@ -134,7 +138,7 @@ public class JavaMoney {
         usFormatted = formatUSD.format(oneDolar);
         LOGGER.info("One dolar standard formatted : " + usFormatted);
 
-        customFormat = MonetaryFormats.getAmountFormat(AmountFormatQueryBuilder.of(Locale.US).set(CurrencyStyle.NAME).set("pattern", "00000.00 ¤").build());
+        customFormat = MonetaryFormats.getAmountFormat(AmountFormatQueryBuilder.of(Locale.US).set(CurrencyStyle.NAME).set("pattern", "00000.00 Â¤").build());
         customFormatted = customFormat.format(oneDolar);
         LOGGER.info("One dolar custom formatted : " + customFormatted);
     }

@@ -1,24 +1,24 @@
 package com.baeldung.money;
 
+import static org.junit.Assert.*;
+
 import javax.money.convert.ConversionQueryBuilder;
 import javax.money.convert.MonetaryConversions;
+
+import org.junit.Test;
 
 import com.baeldung.money.JavaMoney;
 
 import junit.framework.TestCase;
 
 public class JavaMoneyTest 
-    extends TestCase
 {
-    JavaMoney j9m;
-    public JavaMoneyTest( String testName )
-    {
-        super( testName );
-        j9m = new JavaMoney();
-    }
 
-    public void testAmounts()
+    @Test
+    public void givenAmountsAreCorrect()
     {
+        JavaMoney j9m;
+        j9m = new JavaMoney();
         assertEquals("USD", j9m.USD.toString());
         assertEquals("USD 1", j9m.oneDolar.toString());
         assertEquals("EUR 1", j9m.oneEuro.toString());
@@ -29,7 +29,10 @@ public class JavaMoneyTest
         
     }
     
-    public void testArithmetic(){
+    @Test
+    public void givenArithmeticIsCorrect(){
+        JavaMoney j9m;
+        j9m = new JavaMoney();
         assertEquals("USD -199.5", j9m.calcAmtUSD.toString());
         assertEquals("CHF 111.35", j9m.sumAmtCHF.toString());
         assertEquals("USD 10", j9m.calcMoneyFastMoney.toString());
@@ -37,17 +40,25 @@ public class JavaMoneyTest
         assertEquals("USD 4", j9m.divideAmount.toString());
     }
     
-    public void testRounding(){
+    @Test
+    public void givenRoundingIsCorrect(){
+        JavaMoney j9m;
+        j9m = new JavaMoney();
         assertEquals("EUR 1.3", j9m.roundEUR.toString());
     }
     
-    public void testFormatting(){
+    @Test
+    public void givenFormatIsCorrect(){
+        JavaMoney j9m;
+        j9m = new JavaMoney();
         assertEquals("USD1.00", j9m.usFormatted);
         assertEquals("00001.00 US Dollar", j9m.customFormatted);
     }
     
-    public void testConversion(){
-        
+    @Test
+    public void givenConversionIsNotNull(){
+        JavaMoney j9m;
+        j9m = new JavaMoney();
         assertNotNull(MonetaryConversions.getConversion(ConversionQueryBuilder.of().setTermCurrency("EUR").build()));  
         assertNotNull(MonetaryConversions.getConversion(ConversionQueryBuilder.of().setTermCurrency("USD").build()));  
         assertNotNull(j9m.convertedAmountEURtoUSD);
