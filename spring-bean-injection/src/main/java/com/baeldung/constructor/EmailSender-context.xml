@@ -6,7 +6,7 @@
 
     <bean id="message"
           class="com.baeldung.constructor.EmailSender">
-        <constructor-arg value="Setter example." />
+        <constructor-arg value="Constructor example." />
     </bean>
 
 </beans>
