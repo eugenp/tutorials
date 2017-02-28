@@ -35,7 +35,7 @@ public class ThreadPoolInParallelStreamTest {
     public void givenList_whenCallingParallelStream_shouldBeParallelStream(){
         List<Long> aList = new ArrayList<>();
         Stream<Long> parallelStream = aList.parallelStream();
-        
+
         assertTrue(parallelStream.isParallel());
     }
 }

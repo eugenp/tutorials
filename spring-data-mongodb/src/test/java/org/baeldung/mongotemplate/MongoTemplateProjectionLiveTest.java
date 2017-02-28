@@ -1,8 +1,10 @@
 package org.baeldung.mongotemplate;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import org.baeldung.config.MongoConfig;
+import org.baeldung.config.SimpleMongoConfig;
 import org.baeldung.model.User;
 import org.junit.After;
 import org.junit.Before;
@@ -15,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = MongoConfig.class)
+@ContextConfiguration(classes = SimpleMongoConfig.class)
 public class MongoTemplateProjectionLiveTest {
 
     @Autowired
@@ -38,7 +40,7 @@ public class MongoTemplateProjectionLiveTest {
         mongoTemplate.insert(new User("John", 30));
         mongoTemplate.insert(new User("Ringo", 35));
 
-        Query query = new Query();
+        final Query query = new Query();
         query.fields()
             .include("name");
 
@@ -55,7 +57,7 @@ public class MongoTemplateProjectionLiveTest {
         mongoTemplate.insert(new User("John", 30));
         mongoTemplate.insert(new User("Ringo", 35));
 
-        Query query = new Query();
+        final Query query = new Query();
         query.fields()
             .exclude("_id");
 
@@ -64,7 +66,7 @@ public class MongoTemplateProjectionLiveTest {
                 assertNull(user.getId());
                 assertNotNull(user.getAge());
             });
-        
+
     }
 
 }

@@ -6,25 +6,22 @@ import org.apache.thrift.server.TServer;
 import org.apache.thrift.server.TSimpleServer;
 import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
+import org.apache.thrift.transport.TTransportException;
 
 public class CrossPlatformServiceServer {
 
     private TServer server;
 
-    public void start() {
-        try {
-            TServerTransport serverTransport = new TServerSocket(9090);
-            server = new TSimpleServer(new TServer.Args(serverTransport)
-                .processor(new CrossPlatformService.Processor<>(new CrossPlatformServiceImpl())));
+    public void start() throws TTransportException {
+        TServerTransport serverTransport = new TServerSocket(9090);
+        server = new TSimpleServer(new TServer.Args(serverTransport)
+            .processor(new CrossPlatformService.Processor<>(new CrossPlatformServiceImpl())));
 
-            System.out.print("Starting the server... ");
+        System.out.print("Starting the server... ");
 
-            server.serve();
+        server.serve();
 
-            System.out.println("done.");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("done.");
     }
 
     public void stop() {
