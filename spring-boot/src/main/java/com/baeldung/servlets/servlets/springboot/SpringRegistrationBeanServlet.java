@@ -1,6 +1,6 @@
-package com.baeldung.servlets.springboot;
+package com.baeldung.servlets.servlets.springboot;
 
-import com.baeldung.servlets.GenericCustomServlet;
+import com.baeldung.servlets.servlets.GenericCustomServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,5 +15,3 @@ public class SpringRegistrationBeanServlet {
         return bean;
     }
 }
-
-

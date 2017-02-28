@@ -1,4 +1,4 @@
-package com.baeldung.configuration;
+package com.baeldung.servlets.configuration;
 
 import org.springframework.boot.web.support.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
@@ -37,4 +37,3 @@ public class WebMvcConfigure extends WebMvcConfigurerAdapter {
         return new ErrorPageFilter();
     }
 }
-
