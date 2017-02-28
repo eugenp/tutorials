@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ExcelPOIHelper {
 
@@ -38,27 +39,23 @@ public class ExcelPOIHelper {
             data = readXSSFWorkbook(fis);
         }
 
-        int maxNrCols = 0;
+        int maxNrCols = data.values().stream()
+          .mapToInt(List::size)
+          .max()
+          .orElse(0);
 
-        for (List<MyCell> ls : data.values()) {
-            if (ls.size() > maxNrCols) {
-                maxNrCols = ls.size();
-            }
-        }
-
-        for (List<MyCell> ls : data.values()) {
-            if (ls.size() < maxNrCols) {
-                for (int i = ls.size(); i < maxNrCols; i++) {
-                    ls.add(new MyCell(""));
-                }
-            }
-        }
+        data.values().stream()
+          .filter(ls -> ls.size() < maxNrCols)
+          .forEach(ls -> {
+              IntStream.range(ls.size(), maxNrCols)
+                .forEach(i -> ls.add(new MyCell("")));
+          });
 
         return data;
     }
 
     private String readCellContent(Cell cell) {
-        String content = "";
+        String content;
         switch (cell.getCellTypeEnum()) {
         case STRING:
             content = cell.getStringCellValue();
@@ -91,7 +88,7 @@ public class ExcelPOIHelper {
             HSSFSheet sheet = workbook.getSheetAt(0);
             for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
                 HSSFRow row = sheet.getRow(i);
-                data.put(i, new ArrayList<MyCell>());
+                data.put(i, new ArrayList<>());
                 if (row != null) {
                     for (int j = 0; j < row.getLastCellNum(); j++) {
                         HSSFCell cell = row.getCell(j);
@@ -144,7 +141,7 @@ public class ExcelPOIHelper {
 
             for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
                 XSSFRow row = sheet.getRow(i);
-                data.put(i, new ArrayList<MyCell>());
+                data.put(i, new ArrayList<>());
                 if (row != null) {
                     for (int j = 0; j < row.getLastCellNum(); j++) {
                         XSSFCell cell = row.getCell(j);

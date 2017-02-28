@@ -41,4 +41,23 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<instrumentation>
+						<ignores>
+							<ignore>com/baeldung/algorithms/dijkstra/*</ignore>
+						</ignores>
+						<excludes>
+							<exclude>com/baeldung/algorithms/dijkstra/*</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

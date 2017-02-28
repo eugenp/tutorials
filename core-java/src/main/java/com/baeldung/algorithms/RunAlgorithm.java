@@ -2,7 +2,8 @@ package com.baeldung.algorithms;
 
 import java.util.Scanner;
 
-import com.baeldung.algorithms.annealing.SimulatedAnnealing;
+import com.baeldung.algorithms.ga.annealing.SimulatedAnnealing;
+import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 import com.baeldung.algorithms.ga.binary.SimpleGeneticAlgorithm;
 import com.baeldung.algorithms.slope_one.SlopeOne;
 
@@ -14,6 +15,7 @@ public class RunAlgorithm {
 		System.out.println("1 - Simulated Annealing");
 		System.out.println("2 - Slope One");
 		System.out.println("3 - Simple Genetic Algorithm");
+		System.out.println("4 - Ant Colony");
 		int decision = in.nextInt();
 		switch (decision) {
 		case 1:
@@ -26,6 +28,10 @@ public class RunAlgorithm {
 		case 3:
 			SimpleGeneticAlgorithm ga = new SimpleGeneticAlgorithm();
 			ga.runAlgorithm(50, "1011000100000100010000100000100111001000000100000100000000001111");
+			break;
+		case 4:
+			AntColonyOptimization antColony = new AntColonyOptimization(21);
+			antColony.startAntOptimization();
 			break;
 		default:
 			System.out.println("Unknown option");
