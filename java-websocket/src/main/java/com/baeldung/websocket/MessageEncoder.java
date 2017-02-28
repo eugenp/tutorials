@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 public class MessageEncoder implements Encoder.Text<Message> {
     @Override
     public String encode(Message message) throws EncodeException {
-        System.out.println("converting message obj to json format");
         Gson gson = new Gson();
         String json = gson.toJson(message);
         return json;
@@ -18,11 +17,11 @@ public class MessageEncoder implements Encoder.Text<Message> {
 
     @Override
     public void init(EndpointConfig endpointConfig) {
-        // do nothing
+        // Custom initialization logic
     }
 
     @Override
     public void destroy() {
-        // do nothing
+        // Close resources
     }
 }

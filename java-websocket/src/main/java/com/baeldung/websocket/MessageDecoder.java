@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 public class MessageDecoder implements Decoder.Text<Message> {
     @Override
     public Message decode(String s) throws DecodeException {
-        System.out.println("incoming message : " + s);
         Gson gson = new Gson();
         Message message = gson.fromJson(s, Message.class);
         return message;
@@ -23,11 +22,11 @@ public class MessageDecoder implements Decoder.Text<Message> {
 
     @Override
     public void init(EndpointConfig endpointConfig) {
-        // do nothing
+        // Custom initialization logic
     }
 
     @Override
     public void destroy() {
-        // do nothing
+        // Close resources
     }
 }
