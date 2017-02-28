@@ -8,7 +8,6 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
@@ -65,6 +64,7 @@
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -74,6 +74,7 @@
 
         <module>kotlin</module>
 
+        <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -93,6 +94,7 @@
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -109,6 +111,7 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
+        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -182,6 +185,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -193,17 +197,20 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
+
+        <module>rabbitmq</module>
 
 
     </modules>
 
     <build>
         <extensions>
-            <extension>
+            <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>3.1</version>
-            </extension>
+            </extension>-->
         </extensions>
     </build>
 </project>
