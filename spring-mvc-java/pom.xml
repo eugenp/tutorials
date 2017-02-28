@@ -160,6 +160,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+		
     </dependencies>
 
     <build>
@@ -370,6 +377,9 @@
 
         <!-- AspectJ -->
         <aspectj.version>1.8.9</aspectj.version>
+		
+        <!-- excel -->
+        <poi.version>3.16-beta1</poi.version>
     </properties>
 
 </project>

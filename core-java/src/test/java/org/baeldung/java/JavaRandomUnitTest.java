@@ -1,11 +1,11 @@
 package org.baeldung.java;
 
-import java.nio.charset.Charset;
-import java.util.Random;
-
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
+
+import java.nio.charset.Charset;
+import java.util.Random;
 
 public class JavaRandomUnitTest {
 
@@ -164,7 +164,7 @@ public class JavaRandomUnitTest {
         final int targetStringLength = 10;
         final StringBuilder buffer = new StringBuilder(targetStringLength);
         for (int i = 0; i < targetStringLength; i++) {
-            final int randomLimitedInt = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit));
+            final int randomLimitedInt = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit + 1));
             buffer.append((char) randomLimitedInt);
         }
         final String generatedString = buffer.toString();
