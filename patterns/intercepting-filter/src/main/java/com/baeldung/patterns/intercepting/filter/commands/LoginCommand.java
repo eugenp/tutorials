@@ -3,6 +3,7 @@ package com.baeldung.patterns.intercepting.filter.commands;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Optional;
 
 public class LoginCommand extends FrontCommand {
     @Override
@@ -12,10 +13,8 @@ public class LoginCommand extends FrontCommand {
             session.setAttribute("username", request.getParameter("username"));
             response.sendRedirect(request.getParameter("redirect"));
         } else {
-            String queryString = request.getQueryString();
-            if (queryString == null) {
-                queryString = "command=Home";
-            }
+            String queryString = Optional.ofNullable(request.getQueryString())
+              .orElse("command=Home");
             request.setAttribute("redirect", request.getRequestURL()
               .append("?").append(queryString).toString());
             forward("login");

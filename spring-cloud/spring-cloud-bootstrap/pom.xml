@@ -14,11 +14,12 @@
         <module>config</module>
         <module>discovery</module>
         <module>gateway</module>
-        <module>resource</module>
+        <module>svc-book</module>
+        <module>svc-rating</module>
     </modules>
 
 
-    <artifactId>spring-cloud-integration</artifactId>
+    <artifactId>spring-cloud-bootstrap</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 

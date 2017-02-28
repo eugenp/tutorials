@@ -46,9 +46,7 @@ public class GuavaThreadPoolIntegrationTest {
         ListenableFuture<String> future1 = listeningExecutorService.submit(() -> "Hello");
         ListenableFuture<String> future2 = listeningExecutorService.submit(() -> "World");
 
-        String greeting = Futures.allAsList(future1, future2).get()
-                .stream()
-                .collect(Collectors.joining(" "));
+        String greeting = Futures.allAsList(future1, future2).get().stream().collect(Collectors.joining(" "));
         assertEquals("Hello World", greeting);
 
     }

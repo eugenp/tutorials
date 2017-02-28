@@ -1,6 +1,5 @@
 package com.baeldung.enums;
 
-
 import org.junit.Test;
 
 import java.util.ArrayList;

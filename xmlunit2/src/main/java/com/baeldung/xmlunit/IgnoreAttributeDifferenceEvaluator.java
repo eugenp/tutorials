@@ -8,24 +8,23 @@ import org.xmlunit.diff.DifferenceEvaluator;
 
 public class IgnoreAttributeDifferenceEvaluator implements DifferenceEvaluator {
 
-	private String attributeName;
+    private String attributeName;
 
-	public IgnoreAttributeDifferenceEvaluator(String attributeName) {
-		this.attributeName = attributeName;
-	}
+    public IgnoreAttributeDifferenceEvaluator(String attributeName) {
+        this.attributeName = attributeName;
+    }
 
-	@Override
-	public ComparisonResult evaluate(Comparison comparison,
-			ComparisonResult outcome) {
-		if (outcome == ComparisonResult.EQUAL)
-			return outcome;
-		final Node controlNode = comparison.getControlDetails().getTarget();
-		if (controlNode instanceof Attr) {
-			Attr attr = (Attr) controlNode;
-			if (attr.getName().equals(attributeName)) {
-				return ComparisonResult.SIMILAR;
-			}
-		}
-		return outcome;
-	}
+    @Override
+    public ComparisonResult evaluate(Comparison comparison, ComparisonResult outcome) {
+        if (outcome == ComparisonResult.EQUAL)
+            return outcome;
+        final Node controlNode = comparison.getControlDetails().getTarget();
+        if (controlNode instanceof Attr) {
+            Attr attr = (Attr) controlNode;
+            if (attr.getName().equals(attributeName)) {
+                return ComparisonResult.SIMILAR;
+            }
+        }
+        return outcome;
+    }
 }

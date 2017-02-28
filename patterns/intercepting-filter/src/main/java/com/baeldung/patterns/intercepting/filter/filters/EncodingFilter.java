@@ -4,6 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebFilter(
   servletNames = {"intercepting-filter"},
@@ -24,10 +25,9 @@ public class EncodingFilter extends BaseFilter {
       ServletResponse response,
       FilterChain chain
     ) throws IOException, ServletException {
-        String encoding = request.getParameter("encoding");
-        if (encoding == null) {
-            encoding = this.encoding;
-        }
+        String encoding = Optional
+          .ofNullable(request.getParameter("encoding"))
+          .orElse(this.encoding);
         response.setCharacterEncoding(encoding);
         chain.doFilter(request, response);
     }

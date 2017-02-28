@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class VisitorCounterFilter implements Filter {
@@ -21,8 +22,9 @@ public class VisitorCounterFilter implements Filter {
       FilterChain chain
     ) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) request).getSession(false);
-        String username = (String) session.getAttribute("username");
-        users.add(username);
+        Optional.ofNullable(session.getAttribute("username"))
+          .map(Object::toString)
+          .ifPresent(users::add);
         request.setAttribute("counter", users.size());
         chain.doFilter(request, response);
     }

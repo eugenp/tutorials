@@ -28,3 +28,5 @@ target/
 spring-openid/src/main/resources/application.properties
 .recommenders/
 /bin/
+/spring-hibernate4/nbproject/
+spring-security-openid/src/main/resources/application.properties

@@ -149,7 +149,7 @@ public class Java8CollectorsUnitTest {
 
     @Test
     public void whenSumming_shouldSum() throws Exception {
-        final Double result = givenList.stream().collect(summingDouble(String::length));
+        final Double result = givenList.stream().filter(i -> true).collect(summingDouble(String::length));
 
         assertThat(result).isEqualTo(8);
     }
