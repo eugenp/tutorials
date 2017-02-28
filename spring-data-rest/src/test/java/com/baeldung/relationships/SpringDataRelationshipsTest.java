@@ -1,5 +1,13 @@
 package com.baeldung.relationships;
 
+import com.baeldung.SpringDataRestApplication;
+import com.baeldung.models.Address;
+import com.baeldung.models.Author;
+import com.baeldung.models.Book;
+import com.baeldung.models.Library;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,17 +19,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.SpringDataRestApplication;
-import com.baeldung.models.Address;
-import com.baeldung.models.Author;
-import com.baeldung.models.Book;
-import com.baeldung.models.Library;
-
-import org.junit.Test;
-import static org.junit.Assert.*;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringDataRestApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
@@ -48,7 +46,7 @@ public class SpringDataRelationshipsTest {
 
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("Content-type", "text/uri-list");
-        HttpEntity<String> httpEntity = new HttpEntity<String>(ADDRESS_ENDPOINT + "/1", requestHeaders);
+        HttpEntity<String> httpEntity = new HttpEntity<>(ADDRESS_ENDPOINT + "/1", requestHeaders);
         template.exchange(LIBRARY_ENDPOINT + "/1/libraryAddress", HttpMethod.PUT, httpEntity, String.class);
 
         ResponseEntity<Library> libraryGetResponse = template.getForEntity(ADDRESS_ENDPOINT + "/1/library", Library.class);
@@ -69,7 +67,7 @@ public class SpringDataRelationshipsTest {
 
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("Content-type", "text/uri-list");
-        HttpEntity<String> bookHttpEntity = new HttpEntity<String>(LIBRARY_ENDPOINT + "/1", requestHeaders);
+        HttpEntity<String> bookHttpEntity = new HttpEntity<>(LIBRARY_ENDPOINT + "/1", requestHeaders);
         template.exchange(BOOK_ENDPOINT + "/1/library", HttpMethod.PUT, bookHttpEntity, String.class);
         template.exchange(BOOK_ENDPOINT + "/2/library", HttpMethod.PUT, bookHttpEntity, String.class);
 
@@ -91,7 +89,7 @@ public class SpringDataRelationshipsTest {
 
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("Content-type", "text/uri-list");
-        HttpEntity<String> httpEntity = new HttpEntity<String>(BOOK_ENDPOINT + "/1\n" + BOOK_ENDPOINT + "/2", requestHeaders);
+        HttpEntity<String> httpEntity = new HttpEntity<>(BOOK_ENDPOINT + "/1\n" + BOOK_ENDPOINT + "/2", requestHeaders);
         template.exchange(AUTHOR_ENDPOINT + "/1/books", HttpMethod.PUT, httpEntity, String.class);
 
         String jsonResponse = template.getForObject(BOOK_ENDPOINT + "/1/authors", String.class);
