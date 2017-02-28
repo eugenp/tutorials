@@ -36,8 +36,8 @@ public class SolrJavaIntegrationTest {
         assertEquals(docList.getNumFound(), 1);
 
         for (SolrDocument doc : docList) {
-            assertEquals((String) doc.getFieldValue("name"), "Kenmore Dishwasher");
-            assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+            assertEquals("Kenmore Dishwasher", (String) doc.getFieldValue("name"));
+            assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
         }
     }
 
@@ -51,11 +51,11 @@ public class SolrJavaIntegrationTest {
         response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 1);
+        assertEquals(1, docList.getNumFound());
 
         for (SolrDocument doc : docList) {
-            assertEquals((String) doc.getFieldValue("id"), "123456");
-            assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+            assertEquals("123456", (String) doc.getFieldValue("id"));
+            assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
         }
     }
 
@@ -63,8 +63,8 @@ public class SolrJavaIntegrationTest {
     public void whenAdd_thenVerifyAddedByQuery() throws SolrServerException, IOException {
 
         SolrDocument doc = solrJavaIntegration.getSolrClient().getById("123456");
-        assertEquals((String) doc.getFieldValue("name"), "Kenmore Dishwasher");
-        assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+        assertEquals("Kenmore Dishwasher", (String) doc.getFieldValue("name"));
+        assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
     }
 
     @Test
@@ -74,8 +74,8 @@ public class SolrJavaIntegrationTest {
         solrJavaIntegration.addProductBean(pBean);
 
         SolrDocument doc = solrJavaIntegration.getSolrClient().getById("888");
-        assertEquals((String) doc.getFieldValue("name"), "Apple iPhone 6s");
-        assertEquals((Double) doc.getFieldValue("price"), (Double) 299.99);
+        assertEquals("Apple iPhone 6s", (String) doc.getFieldValue("name"));
+        assertEquals((Double) 299.99, (Double) doc.getFieldValue("price"));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class SolrJavaIntegrationTest {
         QueryResponse response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 0);
+        assertEquals(0, docList.getNumFound());
     }
 
     @Test
@@ -103,6 +103,6 @@ public class SolrJavaIntegrationTest {
         response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 0);
+        assertEquals(0, docList.getNumFound());
     }
 }
