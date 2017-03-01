@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee CRUD</title>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script
+	src="//cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+<script src="view/app.js"></script>
+<style>
+a {
+	cursor: pointer;
+	background-color: lightblue;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="EmployeeCRUDCtrl">
+			<table>
+				<tr>
+					<td width="100">ID:</td>
+					<td><input type="text" id="id" ng-model="employee.id" /></td>
+				</tr>
+				<tr>
+					<td width="100">Name:</td>
+					<td><input type="text" id="name" ng-model="employee.name" /></td>
+				</tr>
+				<tr>
+					<td width="100">Age:</td>
+					<td><input type="text" id="age" ng-model="employee.age" /></td>
+				</tr>
+			</table>
+			<br /> <br /> 
+			<a ng-click="getEmployee(employee.id)">Get employee</a> 
+			<a ng-click="updateEmployee(employee.id,employee.name,employee.age)">Update employee</a> 
+			<a ng-click="addEmployee(employee.id,employee.name,employee.age)">Add employee</a> 
+			<a ng-click="deleteEmployee(employee.id)">Delete employee</a>
+
+		<br /> <br />
+		<p style="color: green">{{message}}</p>
+		<p style="color: red">{{errorMessage}}</p>
+
+		<br />
+		<br /> 
+		<a ng-click="getAllEmployees()">Get all Employees</a><br /> <br />
+		Name: <input type="text" id="name" ng-model="name" /> 
+		<a ng-click="getEmployeesByName()">Get employees by name</a>
+		<br /> <br />
+		<div ng-repeat="emp in employees">
+			{{emp.name}} {{emp.age}}
+		</div>
+	</div>
+</body>
+</html>

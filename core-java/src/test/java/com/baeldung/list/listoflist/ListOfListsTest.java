@@ -39,6 +39,7 @@ public class ListOfListsTest {
     @SuppressWarnings("unchecked")
     @Test
     public void givenListOfLists_whenRemovingElements_thenCheckNames() {
+
         ((ArrayList<Pencil>) listOfLists.get(1)).remove(0);
         listOfLists.remove(1);
         assertEquals("Rubber 1", ((Rubber) listOfLists.get(1)
