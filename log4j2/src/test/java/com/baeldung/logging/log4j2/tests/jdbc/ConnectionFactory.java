@@ -2,6 +2,7 @@ package com.baeldung.logging.log4j2.tests.jdbc;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.h2.Driver;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
