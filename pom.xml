@@ -95,6 +95,7 @@
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
