@@ -94,7 +94,6 @@
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
-        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -111,7 +110,6 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
