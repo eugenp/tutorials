@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.servlets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
