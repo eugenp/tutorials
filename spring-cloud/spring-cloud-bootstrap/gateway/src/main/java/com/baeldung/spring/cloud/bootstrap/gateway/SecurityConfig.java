@@ -22,14 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/resource/hello/cloud").permitAll()
+            .antMatchers("/book-service/books").permitAll()
+            .antMatchers("/zipkin/**").permitAll()
             .antMatchers("/eureka/**").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
         .formLogin()
             .and()
         .logout().permitAll()
-            .logoutSuccessUrl("/resource/hello/cloud").permitAll()
+            .logoutSuccessUrl("/book-service/books").permitAll()
             .and()
         .csrf()
             .disable();
