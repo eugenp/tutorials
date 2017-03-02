@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/book-service/books").permitAll()
+            .antMatchers("/zipkin/**").permitAll()
             .antMatchers("/eureka/**").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
