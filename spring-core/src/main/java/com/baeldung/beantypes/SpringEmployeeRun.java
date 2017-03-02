@@ -5,11 +5,8 @@
  */
 package com.baeldung.beantypes;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -20,18 +17,16 @@ public class SpringEmployeeRun {
 	public static void main(String[] args) {
 
 		// Loading bean property file
-		ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("springbeantypes.xml");
+		ApplicationContext context = new AnnotationConfigApplicationContext(EmployeeConfig.class);
 
 		// Constructor based DI Injection
 
-		Employee worker = (Employee) ctx.getBean("Worker");
-
-		worker.show();
+		Employee Manager = (Employee) context.getBean("Manager");
+		Manager.show();
 
 		// Setter based DI Injection
-		Employee Consultant = (Employee) ctx.getBean("object");
-
-		Consultant.show();
+		Employee consultant = (Employee) context.getBean("Object");
+		consultant.show();
 
 	}
 

@@ -11,32 +11,26 @@ package com.baeldung.beantypes;
  */
 public class Employee {
 
-	private long salary;
-	private String type;
-	private String title;
+    private long salary;
+    private String title;
 
-	public Employee() {
-	}
+    public Employee() {
+    }
 
-	public Employee(long salary, String type) {
-		this.salary = salary;
-		this.type = type;
-	}
+    public Employee(long salary, String title) {
+        this.salary = salary;
+        this.title = title;
+    }
 
-	public void setsalary(long salary) {
-		this.salary = salary;
-	}
+    public void setsalary(long salary) {
+        this.salary = salary;
+    }
 
-	public void settype(String type) {
-		this.type = type;
-	}
+    public void settitle(String title) {
+        this.title = title;
+    }
 
-	public void settitle(String title) {
-		this.title = title;
-	}
-
-	public void show() {
-		System.out.println(
-				"------------------" + "\n" + "Title:" + title + "\n" + "Salary:" + salary + "\n" + "Type:" + type);
-	}
+    public void show() {
+        System.out.println("------------------" + "\n" + "Title:" + title + "\n" + "Salary:" + salary + "\n");
+    }
 }
