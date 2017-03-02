@@ -42,6 +42,7 @@ public class GuavaReflectionUtilsTest {
         //then
         assertFalse(stringListToken.isSubtypeOf(integerListToken));
         assertFalse(numberTypeToken.isSubtypeOf(integerListToken));
+        assertTrue(integerListToken.isSubtypeOf(numberTypeToken));
     }
 
     @Test
