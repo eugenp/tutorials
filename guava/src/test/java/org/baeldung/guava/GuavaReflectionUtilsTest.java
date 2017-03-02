@@ -35,12 +35,9 @@ public class GuavaReflectionUtilsTest {
     @Test
     public void givenTypeToken_whenResolveType_thenShouldResolveProperType() {
         //given
-        TypeToken<List<String>> stringListToken = new TypeToken<List<String>>() {
-        };
-        TypeToken<List<Integer>> integerListToken = new TypeToken<List<Integer>>() {
-        };
-        TypeToken<List<? extends Number>> numberTypeToken = new TypeToken<List<? extends Number>>() {
-        };
+        TypeToken<List<String>> stringListToken = new TypeToken<List<String>>() {};
+        TypeToken<List<Integer>> integerListToken = new TypeToken<List<Integer>>() {};
+        TypeToken<List<? extends Number>> numberTypeToken = new TypeToken<List<? extends Number>>() {};
 
         //then
         assertFalse(stringListToken.isSubtypeOf(integerListToken));
@@ -50,8 +47,7 @@ public class GuavaReflectionUtilsTest {
     @Test
     public void givenCustomClass_whenCaptureGeneric_thenReturnTypeAtRuntime() {
         //given
-        IKnowMyType<String> iKnowMyType = new IKnowMyType<String>() {
-        };
+        IKnowMyType<String> iKnowMyType = new IKnowMyType<String>() {};
 
         //then
         assertEquals(iKnowMyType.type, TypeToken.of(String.class));
@@ -60,8 +56,7 @@ public class GuavaReflectionUtilsTest {
     @Test
     public void givenComplexType_whenGetTypeArgument_thenShouldReturnTypeAtRuntime() {
         //given
-        TypeToken<Function<Integer, String>> funToken = new TypeToken<Function<Integer, String>>() {
-        };
+        TypeToken<Function<Integer, String>> funToken = new TypeToken<Function<Integer, String>>() {};
 
         //when
         TypeToken<?> funResultToken = funToken.resolveType(Function.class.getTypeParameters()[1]);
@@ -74,15 +69,13 @@ public class GuavaReflectionUtilsTest {
     @Test
     public void givenMapType_whenGetTypeArgumentOfEntry_thenShouldReturnTypeAtRuntime() throws NoSuchMethodException {
         //given
-        TypeToken<Map<String, Integer>> mapToken = new TypeToken<Map<String, Integer>>() {
-        };
+        TypeToken<Map<String, Integer>> mapToken = new TypeToken<Map<String, Integer>>() {};
 
         //when
         TypeToken<?> entrySetToken = mapToken.resolveType(Map.class.getMethod("entrySet").getGenericReturnType());
 
         //then
-        assertEquals(entrySetToken, new TypeToken<Set<Map.Entry<String, Integer>>>() {
-        });
+        assertEquals(entrySetToken, new TypeToken<Set<Map.Entry<String, Integer>>>() {});
     }
 
     @Test
