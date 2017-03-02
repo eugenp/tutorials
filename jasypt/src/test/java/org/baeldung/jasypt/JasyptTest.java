@@ -3,21 +3,24 @@ package org.baeldung.jasypt;
 
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertNotSame;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 public class JasyptTest {
 
     @Test
-    public void givenTextPassword_whenDecrypt_shouldCompareToEncrypted() {
+    public void givenTextPassword_whenDecrypt_thenCompareToEncrypted() {
         //given
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
         String password = "secret-pass";
-        textEncryptor.setPasswordCharArray(password.toCharArray());
+        textEncryptor.setPasswordCharArray("some-random-password".toCharArray());
 
         //when
         String myEncryptedText = textEncryptor.encrypt(password);
@@ -28,10 +31,37 @@ public class JasyptTest {
         assertEquals(plainText, password);
     }
 
+    @Test
+    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldBeSame(){
+        String password = "secret-pass";
+        BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+        String encryptedPassword = passwordEncryptor.encryptPassword(password);
+
+        //when
+        boolean result = passwordEncryptor.checkPassword("secret-pass", encryptedPassword);
+
+        //then
+        assertTrue(result);
+    }
+
+    @Test
+    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldNotBeSame(){
+        String password = "secret-pass";
+        BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
+        String encryptedPassword = passwordEncryptor.encryptPassword(password);
+
+        //when
+        boolean result = passwordEncryptor.checkPassword("secret-pass-not-same", encryptedPassword);
+
+        //then
+        assertFalse(result);
+    }
+
+
 
     @Test
     @Ignore("should have installed local_policy.jar")
-    public void givenTextPassword_whenDecrypt_shouldCompareToEncryptedWithCustomAlgorithm() {
+    public void givenTextPassword_whenDecrypt_thenCompareToEncryptedWithCustomAlgorithm() {
         //given
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         String password = "secret-pass";
@@ -49,7 +79,7 @@ public class JasyptTest {
 
     @Test
     @Ignore("should have installed local_policy.jar")
-    public void givenTextPassword_whenDecryptOnHighPerformance_shouldDecrypt(){
+    public void givenTextPassword_whenDecryptOnHighPerformance_thenDecrypt(){
         //given
         String password = "secret-pass";
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
