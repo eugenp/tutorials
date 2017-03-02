@@ -54,28 +54,29 @@ public class HBaseClientOperations {
     }
 
     private void delete(Table table) throws IOException {
+        final byte[] rowToBeDeleted =  Bytes.toBytes("RowToBeDeleted");
         System.out.println("\n*** DELETE ~Insert data and then delete it~ ***");
 
         System.out.println("Inserting a data to be deleted later.");
-        Put put = new Put(row1);
+        Put put = new Put(rowToBeDeleted);
         put.addColumn(family1.getBytes(), qualifier1, cellData);
         table.put(put);
 
-        Get get = new Get(row1);
+        Get get = new Get(rowToBeDeleted);
         Result result = table.get(get);
         byte[] value = result.getValue(family1.getBytes(), qualifier1);
         System.out.println("Fetch the data: " + Bytes.toString(value));
         assert Arrays.equals(cellData, value);
 
         System.out.println("Deleting");
-        Delete delete = new Delete(row1);
+        Delete delete = new Delete(rowToBeDeleted);
         delete.addColumn(family1.getBytes(), qualifier1);
         table.delete(delete);
 
         result = table.get(get);
         value = result.getValue(family1.getBytes(), qualifier1);
         System.out.println("Fetch the data: " + Bytes.toString(value));
-        assert Arrays.equals(cellData, value);
+        assert Arrays.equals(null, value);
 
         System.out.println("Done. ");
     }
