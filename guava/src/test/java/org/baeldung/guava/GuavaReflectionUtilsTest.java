@@ -113,8 +113,7 @@ public class GuavaReflectionUtilsTest {
 
 
     abstract class ParametrizedClass<T> {
-        TypeToken<T> type = new TypeToken<T>(getClass()) {
-        };
+        TypeToken<T> type = new TypeToken<T>(getClass()) {};
     }
 
     class CustomClass {
