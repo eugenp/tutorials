@@ -39,7 +39,7 @@ public class CustomAnswerWithLambdaUnitTest {
         MockitoAnnotations.initMocks(this);
 
         when(jobService.listJobs(any(Person.class))).then((i) -> {
-            return ((Person) i.getArgument(0)).getName().equals("Peter") ? Stream.<JobPosition> builder().add(new JobPosition("Teacher")).build() : Stream.empty();
+            return ((Person) i.getArgument(0)).getName().equals("Peter") ? Stream.of(new JobPosition("Teacher")) : Stream.empty();
         });
     }
 }
