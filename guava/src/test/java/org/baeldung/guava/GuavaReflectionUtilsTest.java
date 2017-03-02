@@ -48,10 +48,10 @@ public class GuavaReflectionUtilsTest {
     @Test
     public void givenCustomClass_whenCaptureGeneric_thenReturnTypeAtRuntime() {
         //given
-        IKnowMyType<String> iKnowMyType = new IKnowMyType<String>() {};
+        ParametrizedClass<String> parametrizedClass = new ParametrizedClass<String>() {};
 
         //then
-        assertEquals(iKnowMyType.type, TypeToken.of(String.class));
+        assertEquals(parametrizedClass.type, TypeToken.of(String.class));
     }
 
     @Test
@@ -112,7 +112,7 @@ public class GuavaReflectionUtilsTest {
     }
 
 
-    abstract class IKnowMyType<T> {
+    abstract class ParametrizedClass<T> {
         TypeToken<T> type = new TypeToken<T>(getClass()) {
         };
     }
