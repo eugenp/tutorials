@@ -109,7 +109,7 @@ class WhenBlockUnitTest {
     }
 
     @Test
-    fun testRangeCaseExpression() {
+    fun testRangeCaseExpressions() {
         val fileType = UnixFileType.HYPHEN_MINUS
 
         val isCorrectType = when (fileType) {
