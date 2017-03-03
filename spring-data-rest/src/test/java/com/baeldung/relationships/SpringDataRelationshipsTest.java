@@ -18,6 +18,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.json.JSONException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -37,7 +38,7 @@ public class SpringDataRelationshipsTest {
     private static final String AUTHOR_NAME = "George Orwell";
 
     @Test
-    public void whenSaveOneToOneRelationship_thenCorrect() {
+    public void whenSaveOneToOneRelationship_thenCorrect() throws JSONException {
         Library library = new Library(LIBRARY_NAME);
         template.postForEntity(LIBRARY_ENDPOINT, library, Library.class);
 
@@ -55,7 +56,7 @@ public class SpringDataRelationshipsTest {
     }
 
     @Test
-    public void whenSaveOneToManyRelationship_thenCorrect() {
+    public void whenSaveOneToManyRelationship_thenCorrect() throws JSONException{
         Library library = new Library(LIBRARY_NAME);
         template.postForEntity(LIBRARY_ENDPOINT, library, Library.class);
 
@@ -77,7 +78,7 @@ public class SpringDataRelationshipsTest {
     }
 
     @Test
-    public void whenSaveManyToManyRelationship_thenCorrect() {
+    public void whenSaveManyToManyRelationship_thenCorrect() throws JSONException{
         Author author1 = new Author(AUTHOR_NAME);
         template.postForEntity(AUTHOR_ENDPOINT, author1, Author.class);
 
