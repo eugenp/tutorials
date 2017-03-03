@@ -46,6 +46,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guice-intro</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
@@ -61,6 +62,7 @@
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
+        <module>jasypt</module>
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
@@ -84,6 +86,7 @@
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
+        <module>mockito2</module>
         <module>mocks</module>
 
         <module>orika</module>
@@ -111,7 +114,6 @@
         <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>

@@ -24,7 +24,7 @@ public class SolrJavaIntegrationTest {
     }
 
     @Test
-    public void whenAdd_thenVerifyAdded() throws SolrServerException, IOException {
+    public void whenAdd_thenVerifyAddedByQueryOnId() throws SolrServerException, IOException {
 
         SolrQuery query = new SolrQuery();
         query.set("q", "id:123456");
@@ -33,18 +33,68 @@ public class SolrJavaIntegrationTest {
         response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 1);
+        assertEquals(1, docList.getNumFound());
 
         for (SolrDocument doc : docList) {
-            assertEquals((String) doc.getFieldValue("id"), "123456");
-            assertEquals((Double) doc.getFieldValue("price"), (Double) 599.99);
+            assertEquals("Kenmore Dishwasher", (String) doc.getFieldValue("name"));
+            assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
         }
     }
 
     @Test
-    public void whenDelete_thenVerifyDeleted() throws SolrServerException, IOException {
+    public void whenAdd_thenVerifyAddedByQueryOnPrice() throws SolrServerException, IOException {
 
-        solrJavaIntegration.deleteSolrDocument("123456");
+        SolrQuery query = new SolrQuery();
+        query.set("q", "price:599.99");
+        QueryResponse response = null;
+
+        response = solrJavaIntegration.getSolrClient().query(query);
+
+        SolrDocumentList docList = response.getResults();
+        assertEquals(1, docList.getNumFound());
+
+        for (SolrDocument doc : docList) {
+            assertEquals("123456", (String) doc.getFieldValue("id"));
+            assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
+        }
+    }
+
+    @Test
+    public void whenAdd_thenVerifyAddedByQuery() throws SolrServerException, IOException {
+
+        SolrDocument doc = solrJavaIntegration.getSolrClient().getById("123456");
+        assertEquals("Kenmore Dishwasher", (String) doc.getFieldValue("name"));
+        assertEquals((Double) 599.99, (Double) doc.getFieldValue("price"));
+    }
+
+    @Test
+    public void whenAddBean_thenVerifyAddedByQuery() throws SolrServerException, IOException {
+
+        ProductBean pBean = new ProductBean("888", "Apple iPhone 6s", "299.99");
+        solrJavaIntegration.addProductBean(pBean);
+
+        SolrDocument doc = solrJavaIntegration.getSolrClient().getById("888");
+        assertEquals("Apple iPhone 6s", (String) doc.getFieldValue("name"));
+        assertEquals((Double) 299.99, (Double) doc.getFieldValue("price"));
+    }
+
+    @Test
+    public void whenDeleteById_thenVerifyDeleted() throws SolrServerException, IOException {
+
+        solrJavaIntegration.deleteSolrDocumentById("123456");
+
+        SolrQuery query = new SolrQuery();
+        query.set("q", "id:123456");
+        QueryResponse response = solrJavaIntegration.getSolrClient().query(query);
+
+        SolrDocumentList docList = response.getResults();
+        assertEquals(0, docList.getNumFound());
+    }
+
+    @Test
+    public void whenDeleteByQuery_thenVerifyDeleted() throws SolrServerException, IOException {
+
+        solrJavaIntegration.deleteSolrDocumentByQuery("name:Kenmore Dishwasher");
 
         SolrQuery query = new SolrQuery();
         query.set("q", "id:123456");
@@ -53,6 +103,6 @@ public class SolrJavaIntegrationTest {
         response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 0);
+        assertEquals(0, docList.getNumFound());
     }
 }
