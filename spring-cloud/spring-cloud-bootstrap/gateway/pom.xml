@@ -51,6 +51,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+            <version>3.0.2</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
