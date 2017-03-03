@@ -8,12 +8,12 @@ class WhenBlockUnitTest {
 
     @Test
     fun testWhenExpression() {
-        val directoryType = UnixFileType.DIRECTORY
+        val directoryType = UnixFileType.D
 
         val objectType = when (directoryType) {
-            UnixFileType.DIRECTORY -> "d"
-            UnixFileType.REGULAR_FILE -> "-"
-            UnixFileType.SYMBOLIC_LINK -> "l"
+            UnixFileType.D -> "d"
+            UnixFileType.HYPHEN_MINUS -> "-"
+            UnixFileType.L -> "l"
         }
 
         assertEquals("d", objectType)
@@ -21,10 +21,10 @@ class WhenBlockUnitTest {
 
     @Test
     fun testWhenExpressionWithDefaultCase() {
-        val fileType = UnixFileType.SYMBOLIC_LINK
+        val fileType = UnixFileType.L
 
         val result = when (fileType) {
-            UnixFileType.SYMBOLIC_LINK -> "linking to another file"
+            UnixFileType.L -> "linking to another file"
             else -> "not a link"
         }
 
@@ -33,30 +33,30 @@ class WhenBlockUnitTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun testWhenExpressionWithThrowException() {
-        val fileType = UnixFileType.SYMBOLIC_LINK
+        val fileType = UnixFileType.L
 
-        val result: Boolean = when(fileType) {
-            UnixFileType.REGULAR_FILE -> true
+        val result: Boolean = when (fileType) {
+            UnixFileType.HYPHEN_MINUS -> true
             else -> throw IllegalArgumentException("Wrong type of file")
         }
     }
 
     @Test
     fun testWhenStatement() {
-        val fileType = UnixFileType.REGULAR_FILE
+        val fileType = UnixFileType.HYPHEN_MINUS
 
         when (fileType) {
-            UnixFileType.REGULAR_FILE -> println("Regular file type")
-            UnixFileType.DIRECTORY -> println("Directory file type")
+            UnixFileType.HYPHEN_MINUS -> println("Regular file type")
+            UnixFileType.D -> println("Directory file type")
         }
     }
 
     @Test
     fun testCaseCombination() {
-        val fileType = UnixFileType.DIRECTORY
+        val fileType = UnixFileType.D
 
         val frequentFileType: Boolean = when (fileType) {
-            UnixFileType.REGULAR_FILE, UnixFileType.DIRECTORY -> true
+            UnixFileType.HYPHEN_MINUS, UnixFileType.D -> true
             else -> false
         }
 
@@ -65,12 +65,12 @@ class WhenBlockUnitTest {
 
     @Test
     fun testWhenWithoutArgument() {
-        val fileType = UnixFileType.SYMBOLIC_LINK
+        val fileType = UnixFileType.L
 
         val objectType = when {
-            fileType === UnixFileType.SYMBOLIC_LINK -> "l"
-            fileType === UnixFileType.REGULAR_FILE -> "-"
-            fileType === UnixFileType.DIRECTORY -> "d"
+            fileType === UnixFileType.L -> "l"
+            fileType === UnixFileType.HYPHEN_MINUS -> "-"
+            fileType === UnixFileType.D -> "d"
             else -> "unknown file type"
         }
 
@@ -79,40 +79,55 @@ class WhenBlockUnitTest {
 
     @Test
     fun testDynamicCaseExpression() {
-        val unixFile = Directory(listOf())
+        val unixFile = UnixFile.SymbolicLink(UnixFile.RegularFile("Content"))
 
-        val unixFileType: UnixFileType = when (unixFile.getObjectType()) {
-            "d" -> UnixFileType.DIRECTORY
-            "-" -> UnixFileType.REGULAR_FILE
-            "l" -> UnixFileType.SYMBOLIC_LINK
-            else -> throw IllegalStateException()
+        when {
+            unixFile.getFileType() == UnixFileType.D -> println("It's a directory!")
+            unixFile.getFileType() == UnixFileType.HYPHEN_MINUS -> println("It's a regular file!")
+            unixFile.getFileType() == UnixFileType.L -> println("It's a soft link!")
         }
-
-        assertEquals(UnixFileType.DIRECTORY, unixFileType)
     }
 
     @Test
-    fun testRangeCollectionCaseExpressions() {
-        val listOfFiles = listOf<UnixFile>(
-                RegularFile("Test Content"),
-                Directory(listOf()),
-                SymbolicLink(RegularFile("Test Content"))
-        )
+    fun testCollectionCaseExpressions() {
+        val regularFile = UnixFile.RegularFile("Test Content")
+        val symbolicLink = UnixFile.SymbolicLink(regularFile)
+        val directory = UnixFile.Directory(listOf(regularFile, symbolicLink))
 
-        val regularFile = RegularFile("Test Content")
+        val isRegularFileInDirectory = when (regularFile) {
+            in directory.children -> true
+            else -> false
+        }
 
+        val isSymbolicLinkInDirectory = when {
+            symbolicLink in directory.children -> true
+            else -> false
+        }
 
+        assertTrue(isRegularFileInDirectory)
+        assertTrue(isSymbolicLinkInDirectory)
+    }
 
+    @Test
+    fun testRangeCaseExpression() {
+        val fileType = UnixFileType.HYPHEN_MINUS
+
+        val isCorrectType = when (fileType) {
+            in UnixFileType.D..UnixFileType.L -> true
+            else -> false
+        }
+
+        assertTrue(isCorrectType)
     }
 
     @Test
     fun testWhenWithIsOperatorWithSmartCase() {
-        val unixFile: UnixFile = RegularFile("Test Content")
+        val unixFile: UnixFile = UnixFile.RegularFile("Test Content")
 
         val result = when (unixFile) {
-            is RegularFile -> unixFile.content
-            is Directory -> unixFile.children.map { it.getObjectType() }.joinToString()
-            is SymbolicLink -> unixFile.originalFile.getObjectType()
+            is UnixFile.RegularFile -> unixFile.content
+            is UnixFile.Directory -> unixFile.children.map { it.getFileType() }.joinToString(", ")
+            is UnixFile.SymbolicLink -> unixFile.originalFile.getFileType()
         }
 
         assertEquals("Test Content", result)
