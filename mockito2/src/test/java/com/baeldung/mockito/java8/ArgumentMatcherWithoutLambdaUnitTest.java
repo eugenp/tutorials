@@ -1,21 +1,18 @@
 package com.baeldung.mockito.java8;
 
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.*;
+
+import java.util.Optional;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
-import java.util.Optional;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.ArgumentMatcher;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
 
 public class ArgumentMatcherWithoutLambdaUnitTest {
+
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
     
@@ -38,13 +35,12 @@ public class ArgumentMatcherWithoutLambdaUnitTest {
     }
 
     private class PeterArgumentMatcher implements ArgumentMatcher<Person> {
+
         @Override
         public boolean matches(Person p) {
-
-            if (p.getName().equals("Peter")) {
-                return true;
-            }
-            return false;
+            return p
+              .getName()
+              .equals("Peter");
         }
     }
 

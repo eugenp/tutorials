@@ -1,12 +1,5 @@
 package com.baeldung.mockito.java8;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
-import java.util.stream.Stream;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -15,8 +8,16 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import java.util.stream.Stream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 
 public class CustomAnswerWithoutLambdaUnitTest {
+
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
     
@@ -38,15 +39,13 @@ public class CustomAnswerWithoutLambdaUnitTest {
     }
     
     private class PersonAnswer implements Answer<Stream<JobPosition>> {
+
         @Override
         public Stream<JobPosition> answer(InvocationOnMock invocation) throws Throwable {
             Person person = invocation.getArgument(0);
             
-            if(person.getName().equals("Peter")) {
-                return Stream.<JobPosition>builder().add(new JobPosition("Teacher")).build();
-            } 
-            
-            return Stream.empty();
+            return Stream.of(new JobPosition("Teacher"))
+               .filter(p -> person.getName().equals("Peter"));
         }
     }
 
