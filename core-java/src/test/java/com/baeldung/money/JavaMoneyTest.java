@@ -1,13 +1,9 @@
 package com.baeldung.money;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.math.BigDecimal;
-import java.util.Locale;
+import org.javamoney.moneta.FastMoney;
+import org.javamoney.moneta.Money;
+import org.javamoney.moneta.format.CurrencyStyle;
+import org.junit.Test;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
@@ -19,43 +15,36 @@ import javax.money.convert.MonetaryConversions;
 import javax.money.format.AmountFormatQueryBuilder;
 import javax.money.format.MonetaryAmountFormat;
 import javax.money.format.MonetaryFormats;
+import java.util.Locale;
 
-import org.javamoney.moneta.FastMoney;
-import org.javamoney.moneta.Money;
-import org.javamoney.moneta.format.CurrencyStyle;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import static org.junit.Assert.*;
 
 public class JavaMoneyTest {
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void givenCurrencyCode_whenString_thanExist() {
-        CurrencyUnit USD = Monetary.getCurrency("USD");
-        assertNotNull(USD);
-        assertEquals(USD.getCurrencyCode(), "USD");
-        assertEquals(USD.getNumericCode(), 840);
-        assertEquals(USD.getDefaultFractionDigits(), 2);
+        CurrencyUnit usd = Monetary.getCurrency("USD");
+
+        assertNotNull(usd);
+        assertEquals(usd.getCurrencyCode(), "USD");
+        assertEquals(usd.getNumericCode(), 840);
+        assertEquals(usd.getDefaultFractionDigits(), 2);
         assertFalse(Monetary.isCurrencyAvailable("AAA"));
-
     }
 
-    @Test
+    @Test(expected = UnknownCurrencyException.class)
     public void givenCurrencyCode_whenNoExist_thanThrowsError() {
-        thrown.expect(UnknownCurrencyException.class);
-        CurrencyUnit AAA = Monetary.getCurrency("AAA");
-        assertNull(AAA);
-        throw new UnknownCurrencyException("AAA");
+        CurrencyUnit aaa = Monetary.getCurrency("AAA");
+        fail(); // if no exception
     }
 
     @Test
-    public void givenAmounts_whenStrinfied_thanEquals() {
+    public void givenAmounts_whenStringified_thanEquals() {
         CurrencyUnit USD = Monetary.getCurrency("USD");
         MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
         MonetaryAmount fstAmtEUR = Monetary.getDefaultAmountFactory().setCurrency("EUR").setNumber(1.30473908).create();
         MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
+
         Money moneyof = Money.of(12, USD);
         FastMoney fastmoneyof = FastMoney.of(2, USD);
         Money oneEuro = Money.of(1, "EUR");
@@ -67,30 +56,26 @@ public class JavaMoneyTest {
         assertEquals("EUR 1.30473908", fstAmtEUR.toString());
         assertEquals("USD 12", moneyof.toString());
         assertEquals("USD 2.00000", fastmoneyof.toString());
-
     }
 
     @Test
     public void givenCurrencies_whenCompared_thanNotequal() {
         MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
         Money oneEuro = Money.of(1, "EUR");
+
         assertFalse(oneEuro.equals(FastMoney.of(1, "EUR")));
         assertTrue(oneDolar.equals(Money.of(1, "USD")));
-
     }
 
-    @Test
+    @Test(expected = ArithmeticException.class)
     public void givenAmount_whenDivided_thanThrowsException() {
         MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
-        thrown.expect(ArithmeticException.class);
-        MonetaryAmount oneDivThree = oneDolar.divide(3);
-        assertNull(oneDivThree);
-        throw new ArithmeticException();
-
+        oneDolar.divide(3);
+        fail(); // if no exception
     }
 
     @Test
-    public void givenArithmetic_whenStrinfied_thanEqualsAmount() {
+    public void givenArithmetic_whenStringified_thanEqualsAmount() {
         CurrencyUnit USD = Monetary.getCurrency("USD");
         Money moneyof = Money.of(12, USD);
         MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
@@ -100,11 +85,11 @@ public class JavaMoneyTest {
         MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
         MonetaryAmount multiplyAmount = oneDolar.multiply(0.25);
         MonetaryAmount divideAmount = oneDolar.divide(0.25);
-        
-        MonetaryAmount[] monetaryAmounts = new MonetaryAmount[] {
+
+        MonetaryAmount[] monetaryAmounts = new MonetaryAmount[]{
                 Money.of(100, "CHF"),
                 Money.of(10.20, "CHF"),
-                Money.of(1.15, "CHF"), };
+                Money.of(1.15, "CHF"),};
 
         Money sumAmtCHF = Money.of(0, "CHF");
 
@@ -158,12 +143,12 @@ public class JavaMoneyTest {
 
         CurrencyConversion conversionUSD = MonetaryConversions.getConversion("USD");
         CurrencyConversion conversionEUR = MonetaryConversions.getConversion("EUR");
-        
+
         MonetaryAmount convertedAmountEURtoUSD = fstAmtEUR.with(conversionUSD);
         MonetaryAmount convertedAmountEURtoUSD2 = fstAmtEUR.with(convUSD);
         MonetaryAmount convertedAmountUSDtoEUR = oneDolar.with(conversionEUR);
         MonetaryAmount convertedAmountUSDtoEUR2 = oneDolar.with(convEUR);
-        
+
         assertEquals("USD", USD.toString());
         assertEquals("USD 1", oneDolar.toString());
         assertEquals("EUR 1.30473908", fstAmtEUR.toString());
