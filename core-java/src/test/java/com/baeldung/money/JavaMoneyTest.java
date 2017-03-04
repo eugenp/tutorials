@@ -29,31 +29,23 @@ public class JavaMoneyTest {
         assertEquals(usd.getCurrencyCode(), "USD");
         assertEquals(usd.getNumericCode(), 840);
         assertEquals(usd.getDefaultFractionDigits(), 2);
-        assertFalse(Monetary.isCurrencyAvailable("AAA"));
     }
 
     @Test(expected = UnknownCurrencyException.class)
     public void givenCurrencyCode_whenNoExist_thanThrowsError() {
-        CurrencyUnit aaa = Monetary.getCurrency("AAA");
+        Monetary.getCurrency("AAA");
         fail(); // if no exception
     }
 
     @Test
     public void givenAmounts_whenStringified_thanEquals() {
-        CurrencyUnit USD = Monetary.getCurrency("USD");
-        MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
-        MonetaryAmount fstAmtEUR = Monetary.getDefaultAmountFactory().setCurrency("EUR").setNumber(1.30473908).create();
-        MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
+        CurrencyUnit usd = Monetary.getCurrency("USD");
+        MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(usd).setNumber(200).create();
+        Money moneyof = Money.of(12, usd);
+        FastMoney fastmoneyof = FastMoney.of(2, usd);
 
-        Money moneyof = Money.of(12, USD);
-        FastMoney fastmoneyof = FastMoney.of(2, USD);
-        Money oneEuro = Money.of(1, "EUR");
-
-        assertEquals("USD", USD.toString());
-        assertEquals("USD 1", oneDolar.toString());
-        assertEquals("EUR 1", oneEuro.toString());
-        assertEquals("USD 200.5", fstAmtUSD.toString());
-        assertEquals("EUR 1.30473908", fstAmtEUR.toString());
+        assertEquals("USD", usd.toString());
+        assertEquals("USD 200", fstAmtUSD.toString());
         assertEquals("USD 12", moneyof.toString());
         assertEquals("USD 2.00000", fastmoneyof.toString());
     }
@@ -75,35 +67,34 @@ public class JavaMoneyTest {
     }
 
     @Test
-    public void givenArithmetic_whenStringified_thanEqualsAmount() {
-        CurrencyUnit USD = Monetary.getCurrency("USD");
-        Money moneyof = Money.of(12, USD);
-        MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
-        Money calcAmtUSD = Money.of(1, "USD").subtract(fstAmtUSD);
-        FastMoney fastmoneyof = FastMoney.of(2, USD);
-        MonetaryAmount calcMoneyFastMoney = moneyof.subtract(fastmoneyof);
-        MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
-        MonetaryAmount multiplyAmount = oneDolar.multiply(0.25);
-        MonetaryAmount divideAmount = oneDolar.divide(0.25);
-
+    public void givenAmounts_whenSummed_thanCorrect() {
         MonetaryAmount[] monetaryAmounts = new MonetaryAmount[]{
-                Money.of(100, "CHF"),
-                Money.of(10.20, "CHF"),
-                Money.of(1.15, "CHF"),};
+                Money.of(100, "CHF"), Money.of(10.20, "CHF"), Money.of(1.15, "CHF")};
 
         Money sumAmtCHF = Money.of(0, "CHF");
-
         for (MonetaryAmount monetaryAmount : monetaryAmounts) {
             sumAmtCHF = sumAmtCHF.add(monetaryAmount);
         }
-        assertEquals("USD", USD.toString());
+
+        assertEquals("CHF 111.35", sumAmtCHF.toString());
+    }
+
+    @Test
+    public void givenArithmetic_whenStringified_thanEqualsAmount() {
+        CurrencyUnit usd = Monetary.getCurrency("USD");
+
+        Money moneyof = Money.of(12, usd);
+        MonetaryAmount fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(usd).setNumber(200.50).create();
+        MonetaryAmount oneDolar = Monetary.getDefaultAmountFactory().setCurrency("USD").setNumber(1).create();
+        Money subtractedAmount = Money.of(1, "USD").subtract(fstAmtUSD);
+        MonetaryAmount multiplyAmount = oneDolar.multiply(0.25);
+        MonetaryAmount divideAmount = oneDolar.divide(0.25);
+
+        assertEquals("USD", usd.toString());
         assertEquals("USD 1", oneDolar.toString());
         assertEquals("USD 200.5", fstAmtUSD.toString());
         assertEquals("USD 12", moneyof.toString());
-        assertEquals("USD 2.00000", fastmoneyof.toString());
-        assertEquals("USD -199.5", calcAmtUSD.toString());
-        assertEquals("CHF 111.35", sumAmtCHF.toString());
-        assertEquals("USD 10", calcMoneyFastMoney.toString());
+        assertEquals("USD -199.5", subtractedAmount.toString());
         assertEquals("USD 0.25", multiplyAmount.toString());
         assertEquals("USD 4", divideAmount.toString());
     }
