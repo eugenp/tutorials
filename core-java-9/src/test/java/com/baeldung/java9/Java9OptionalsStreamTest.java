@@ -1,4 +1,4 @@
-package com.baeldung.java8;
+package com.baeldung.java9;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class Java9OptionalsStreamTest {
