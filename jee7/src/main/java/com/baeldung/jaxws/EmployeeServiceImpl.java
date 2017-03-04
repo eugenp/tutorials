@@ -12,7 +12,6 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Inject private EmployeeRepository employeeRepositoryImpl;
-//    @Inject private EmployeeRepository employeeRepository;
 
     @WebMethod
     public Employee getEmployee(int id) {
