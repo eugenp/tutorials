@@ -1,10 +1,9 @@
 package com.baeldung.jaxws;
 
 import com.baeldung.jaxws.model.Employee;
-import com.baeldung.jaxws.model.Result;
 import com.baeldung.jaxws.repository.EmployeeRepository;
-import com.baeldung.jaxws.repository.EmployeeRepositoryImpl;
 
+import javax.inject.Inject;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.List;
@@ -12,65 +11,36 @@ import java.util.List;
 @WebService(endpointInterface = "com.baeldung.jaxws.EmployeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
-    private EmployeeRepository employeeRepository;
+    @Inject private EmployeeRepository employeeRepositoryImpl;
+//    @Inject private EmployeeRepository employeeRepository;
 
-    private EmployeeRepository getRepository() {
-        if (null == employeeRepository) {
-            employeeRepository = new EmployeeRepositoryImpl();
-        }
-        return employeeRepository;
+    @WebMethod
+    public Employee getEmployee(int id) {
+        return employeeRepositoryImpl.getEmployee(id);
     }
 
     @WebMethod
-    public Result getEmployee( int id) {
-        try {
-            return new Result(true, getRepository().getEmployee(id), null);
-        } catch (Exception ex) {
-            return new Result(false, null, ex.getMessage());
-        }
-    }
-
-
-    @WebMethod
-    public Result updateEmployee(Employee employee, int id) throws RuntimeException {
-        try {
-            return new Result(true, getRepository().updateEmployee(employee, id), null);
-        } catch (Exception ex) {
-            return new Result(false, null, ex.getMessage());
-        }
-    }
-
-
-    @WebMethod
-    public Result deleteEmployee(int id) {
-        try {
-            return new Result(true, getRepository().deleteEmployee(id), null);
-        } catch (Exception ex) {
-            return new Result(false, null, ex.getMessage());
-        }
+    public Employee updateEmployee(int id, String name) {
+        return employeeRepositoryImpl.updateEmployee(id, name);
     }
 
     @WebMethod
-    public Result addEmployee(Employee employee) {
-
-        try {
-            return new Result(true, getRepository().addEmployee(new Employee(employee.getId(),
-                    employee.getFirstName())), null);
-        } catch (Exception ex) {
-            return new Result(false, null, ex.getMessage());
-        }
-
-
+    public boolean deleteEmployee(int id) {
+        return employeeRepositoryImpl.deleteEmployee(id);
     }
 
     @WebMethod
-    public Result countEmployees() {
-        return new Result(true, getRepository().count(), null);
+    public Employee addEmployee(int id, String name) {
+        return employeeRepositoryImpl.addEmployee(id, name);
+    }
+
+    @WebMethod
+    public int countEmployees() {
+        return employeeRepositoryImpl.count();
     }
 
     @WebMethod
     public List<Employee> getAllEmployees() {
-        return getRepository().getAllEmployees();
-
+        return employeeRepositoryImpl.getAllEmployees();
     }
 }

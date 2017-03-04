@@ -7,7 +7,6 @@ import com.baeldung.jaxws.model.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private List<Employee> employeeList;
 
@@ -31,11 +30,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         throw new EmployeeNotFound();
     }
 
-    public Employee updateEmployee(Employee update, int id) {
+    public Employee updateEmployee(int id, String name) {
         for (Employee employee1 : employeeList) {
             if (employee1.getId() == id) {
-                employee1.setId(update.getId());
-                employee1.setFirstName(update.getFirstName());
+                employee1.setId(id);
+                employee1.setFirstName(name);
                 return employee1;
             }
         }
@@ -52,12 +51,13 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         throw new EmployeeNotFound();
     }
 
-    public Employee addEmployee(Employee employee) {
+    public Employee addEmployee(int id, String name) {
         for (Employee emp : employeeList) {
-            if (emp.getId() == employee.getId()) {
+            if (emp.getId() == id) {
                 throw new EmployeeAlreadyExists();
             }
         }
+        Employee employee = new Employee(id, name);
         employeeList.add(employee);
         return employee;
     }

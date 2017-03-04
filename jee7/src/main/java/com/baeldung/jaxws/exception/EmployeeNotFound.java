@@ -6,5 +6,4 @@ public class EmployeeNotFound extends RuntimeException {
         super("The specified employee does not exist");
     }
 
-
 }
