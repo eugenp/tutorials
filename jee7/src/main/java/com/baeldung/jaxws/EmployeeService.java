@@ -1,8 +1,6 @@
 package com.baeldung.jaxws;
 
-
 import com.baeldung.jaxws.model.Employee;
-import com.baeldung.jaxws.model.Result;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -11,21 +9,20 @@ import java.util.List;
 @WebService
 public interface EmployeeService {
 
+    @WebMethod
+    Employee getEmployee(int id);
 
     @WebMethod
-    Result getEmployee(int id);
+    Employee updateEmployee(int id, String name);
 
     @WebMethod
-    Result updateEmployee(Employee employee, int id) throws RuntimeException;
+    boolean deleteEmployee(int id);
 
     @WebMethod
-    Result deleteEmployee(int id);
+    Employee addEmployee(int id, String name);
 
     @WebMethod
-    Result addEmployee(Employee employee);
-
-    @WebMethod
-    public Result countEmployees();
+    int countEmployees();
 
     @WebMethod
     List<Employee> getAllEmployees();

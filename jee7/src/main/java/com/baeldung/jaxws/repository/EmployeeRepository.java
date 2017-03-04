@@ -10,11 +10,11 @@ public interface EmployeeRepository {
 
     Employee getEmployee(int id);
 
-    Employee updateEmployee(Employee update, int id);
+    Employee updateEmployee(int id, String name);
 
     boolean deleteEmployee(int id);
 
-    Employee addEmployee(Employee employee);
+    Employee addEmployee(int id, String name);
 
     int count();
 }
