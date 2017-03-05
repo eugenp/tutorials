@@ -102,6 +102,12 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -145,11 +151,7 @@
             <artifactId>jstl-api</artifactId>
             <version>${jstl.version}</version>
         </dependency>
-
-        <dependency>
-        	<groupId>org.springframework.integration</groupId>
-        	<artifactId>spring-integration-http</artifactId>
-        </dependency>
+		
     </dependencies>
 
     <build>
@@ -330,13 +332,13 @@
 
 
     <properties>
-        <start-class>org.baeldung.Application</start-class>
+        <!--<start-class>org.baeldung.Application</start-class>-->
         <!--If you want to run the example with the voters comment the tag above and uncomment the one below-->
         <!--<start-class>org.baeldung.voter.VoterApplication</start-class>-->
         <!--If you want to run the example with the multiple logins, comment the tag above and uncomment the one below-->
         <!--<start-class>org.baeldung.multiplelogin.MultipleLoginApplication</start-class>-->
         <!--If you want to run the example with the multiple http elements, comment the tag above and uncomment the one below-->
-        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class>-->
+        <start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class>
         
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
