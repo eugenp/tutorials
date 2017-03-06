@@ -137,6 +137,7 @@
         <module>spring-jooq</module>
         <module>spring-jpa</module>
         <module>spring-katharsis</module>
+        <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
