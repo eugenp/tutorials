@@ -13,25 +13,25 @@ public class CustomisedListener implements ITestListener {
     public void onFinish(ITestContext arg0) {
         LOGGER.info("PASSED TEST CASES");
         arg0.getPassedTests()
-            .getAllResults()
-            .stream()
-            .forEach(result -> {
-                LOGGER.info(result.getName());
-            });
+                .getAllResults()
+                .stream()
+                .forEach(result -> {
+                    LOGGER.info(result.getName());
+                });
         LOGGER.info("FAILED TEST CASES");
         arg0.getFailedTests()
-            .getAllResults()
-            .stream()
-            .forEach(result -> {
-                LOGGER.info(result.getName());
-            });
-        LOGGER.info("Test completed on: "+arg0.getEndDate().toString());
+                .getAllResults()
+                .stream()
+                .forEach(result -> {
+                    LOGGER.info(result.getName());
+                });
+        LOGGER.info("Test completed on: " + arg0.getEndDate().toString());
     }
 
     @Override
     public void onStart(ITestContext arg0) {
         LOGGER.info("Started testing on: " + arg0.getStartDate()
-            .toString());
+                .toString());
     }
 
     @Override

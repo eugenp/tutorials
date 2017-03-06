@@ -8,7 +8,6 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
@@ -47,10 +46,12 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guice-intro</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <!--<module>hbase</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -62,9 +63,11 @@
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
+        <module>jasypt</module>
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -74,6 +77,7 @@
 
         <module>kotlin</module>
 
+        <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -83,6 +87,7 @@
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
+        <module>mockito2</module>
         <module>mocks</module>
 
         <module>orika</module>
@@ -93,6 +98,7 @@
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -194,16 +200,20 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
+
+        <module>rabbitmq</module>
+
 
     </modules>
 
     <build>
         <extensions>
-            <extension>
+            <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>3.1</version>
-            </extension>
+            </extension>-->
         </extensions>
     </build>
 </project>
