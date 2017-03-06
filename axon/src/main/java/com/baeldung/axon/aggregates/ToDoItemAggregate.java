@@ -9,16 +9,16 @@ import org.axonframework.eventhandling.annotation.EventHandler;
 import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
 import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
 
-public class ToDoItem extends AbstractAnnotatedAggregateRoot {
+public class ToDoItemAggregate extends AbstractAnnotatedAggregateRoot {
 
     @AggregateIdentifier
     private String id;
 
-    public ToDoItem() {
+    public ToDoItemAggregate() {
     }
 
     @CommandHandler
-    public ToDoItem(CreateToDoItemCommand command) {
+    public ToDoItemAggregate(CreateToDoItemCommand command) {
         apply(new ToDoItemCreatedEvent(command.getTodoId(), command.getDescription()));
     }
 

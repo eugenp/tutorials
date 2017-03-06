@@ -1,6 +1,6 @@
 package com.baeldung.axon;
 
-import com.baeldung.axon.aggregates.ToDoItem;
+import com.baeldung.axon.aggregates.ToDoItemAggregate;
 import com.baeldung.axon.commands.CreateToDoItemCommand;
 import com.baeldung.axon.commands.MarkCompletedCommand;
 import com.baeldung.axon.events.ToDoItemCompletedEvent;
@@ -12,13 +12,13 @@ import org.junit.Test;
 
 import java.util.UUID;
 
-public class ToDoItemTest {
+public class ToDoItemAggregateTest {
 
     private FixtureConfiguration fixture;
 
     @Before
     public void setUp() throws Exception {
-        fixture = Fixtures.newGivenWhenThenFixture(ToDoItem.class);
+        fixture = Fixtures.newGivenWhenThenFixture(ToDoItemAggregate.class);
     }
 
     @Test

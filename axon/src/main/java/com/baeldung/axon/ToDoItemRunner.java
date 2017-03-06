@@ -1,6 +1,6 @@
 package com.baeldung.axon;
 
-import com.baeldung.axon.aggregates.ToDoItem;
+import com.baeldung.axon.aggregates.ToDoItemAggregate;
 import com.baeldung.axon.commands.CreateToDoItemCommand;
 import com.baeldung.axon.commands.MarkCompletedCommand;
 import com.baeldung.axon.eventhandlers.ToDoEventHandler;
@@ -36,11 +36,11 @@ public class ToDoItemRunner {
         EventBus eventBus = new SimpleEventBus();
 
         // we need to configure the repository
-        EventSourcingRepository<ToDoItem> repository = new EventSourcingRepository<ToDoItem>(ToDoItem.class, eventStore);
+        EventSourcingRepository<ToDoItemAggregate> repository = new EventSourcingRepository<ToDoItemAggregate>(ToDoItemAggregate.class, eventStore);
         repository.setEventBus(eventBus);
 
         // Axon needs to know that our ToDoItem Aggregate can handle commands
-        AggregateAnnotationCommandHandler.subscribe(ToDoItem.class, repository, commandBus);
+        AggregateAnnotationCommandHandler.subscribe(ToDoItemAggregate.class, repository, commandBus);
 
         AnnotationEventListenerAdapter.subscribe(new ToDoEventHandler(), eventBus);
 
