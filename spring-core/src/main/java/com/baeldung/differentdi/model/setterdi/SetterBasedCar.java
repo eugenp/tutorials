@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 /**
  * Car class using setter-based dependency injection
  */
-
 @Component
 public class SetterBasedCar {
     private IEngine engine;
