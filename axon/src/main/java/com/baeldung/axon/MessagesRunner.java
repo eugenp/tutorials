@@ -1,9 +1,9 @@
 package com.baeldung.axon;
 
-import com.baeldung.axon.aggregates.ToDoItemAggregate;
-import com.baeldung.axon.commands.CreateToDoItemCommand;
-import com.baeldung.axon.commands.MarkCompletedCommand;
-import com.baeldung.axon.eventhandlers.ToDoEventHandler;
+import com.baeldung.axon.aggregates.MessagesAggregate;
+import com.baeldung.axon.commands.CreateMessageCommand;
+import com.baeldung.axon.commands.MarkReadMessageCommand;
+import com.baeldung.axon.eventhandlers.MessagesEventHandler;
 import org.axonframework.commandhandling.CommandBus;
 import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.annotation.AggregateAnnotationCommandHandler;
@@ -20,7 +20,7 @@ import org.axonframework.eventstore.fs.SimpleEventFileResolver;
 import java.io.File;
 import java.util.UUID;
 
-public class ToDoItemRunner {
+public class MessagesRunner {
 
     public static void main(String[] args) {
         // let's start with the Command Bus
@@ -36,17 +36,17 @@ public class ToDoItemRunner {
         EventBus eventBus = new SimpleEventBus();
 
         // we need to configure the repository
-        EventSourcingRepository<ToDoItemAggregate> repository = new EventSourcingRepository<ToDoItemAggregate>(ToDoItemAggregate.class, eventStore);
+        EventSourcingRepository<MessagesAggregate> repository = new EventSourcingRepository<MessagesAggregate>(MessagesAggregate.class, eventStore);
         repository.setEventBus(eventBus);
 
-        // Axon needs to know that our ToDoItem Aggregate can handle commands
-        AggregateAnnotationCommandHandler.subscribe(ToDoItemAggregate.class, repository, commandBus);
+        // Axon needs to know that our Messages Aggregate can handle commands
+        AggregateAnnotationCommandHandler.subscribe(MessagesAggregate.class, repository, commandBus);
 
-        AnnotationEventListenerAdapter.subscribe(new ToDoEventHandler(), eventBus);
+        AnnotationEventListenerAdapter.subscribe(new MessagesEventHandler(), eventBus);
 
         // and let's send some Commands on the CommandBus.
         final String itemId = UUID.randomUUID().toString();
-        commandGateway.send(new CreateToDoItemCommand(itemId, "Need to do this"));
-        commandGateway.send(new MarkCompletedCommand(itemId));
+        commandGateway.send(new CreateMessageCommand(itemId, "Need to do this"));
+        commandGateway.send(new MarkReadMessageCommand(itemId));
     }
 }
