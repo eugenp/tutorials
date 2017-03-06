@@ -32,6 +32,11 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -41,6 +46,7 @@
 
     <properties>
         <cglib.version>3.2.4</cglib.version>
+        <commons-lang.version>3.5</commons-lang.version>
         <junit.version>4.12</junit.version>
     </properties>
 
