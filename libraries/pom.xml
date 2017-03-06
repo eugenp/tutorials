@@ -32,6 +32,11 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -42,6 +47,7 @@
     <properties>
         <cglib.version>3.2.4</cglib.version>
         <junit.version>4.12</junit.version>
+        <jasypt.version>1.9.2</jasypt.version>
     </properties>
 
 
