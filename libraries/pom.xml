@@ -32,9 +32,9 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -42,13 +42,19 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
         <cglib.version>3.2.4</cglib.version>
+        <commons-lang.version>3.5</commons-lang.version>
         <junit.version>4.12</junit.version>
         <jasypt.version>1.9.2</jasypt.version>
     </properties>
-
 
 </project>
