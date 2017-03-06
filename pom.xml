@@ -111,7 +111,6 @@
         <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
-        <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
