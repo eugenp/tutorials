@@ -51,6 +51,7 @@
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <!--<module>hbase</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
