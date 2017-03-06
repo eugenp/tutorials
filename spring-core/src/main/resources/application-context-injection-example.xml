@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userRepository" class="com.baeldung.repo.UserRepository"/>
+
+    <!-- constructor injection beans -->
+    <bean id="userService1" class="com.baeldung.bean.UserService">
+        <constructor-arg value="goodname"/>
+    </bean>
+
+    <bean id="userService2" class="com.baeldung.bean.UserService">
+        <constructor-arg value="100" type="int"/>
+    </bean>
+
+    <bean id="userService3" class="com.baeldung.bean.UserService">
+        <constructor-arg value="name1"/>
+        <constructor-arg value="name2"/>
+    </bean>
+
+    <bean id="userService4" class="com.baeldung.bean.UserService">
+        <constructor-arg value="name1" index="1"/>
+        <constructor-arg value="name2" index="0"/>
+    </bean>
+
+    <bean id="userService5" class="com.baeldung.bean.UserService">
+        <constructor-arg ref="userRepository"/>
+    </bean>
+
+    <bean id="userService6" class="com.baeldung.bean.UserService">
+        <constructor-arg>
+            <bean class="com.baeldung.repo.UserRepository"/>
+        </constructor-arg>
+    </bean>
+
+    <!-- setter injection beans -->
+    <bean id="userService7" class="com.baeldung.bean.UserService">
+        <property name="name" value="myname"/>
+    </bean>
+
+    <bean id="userService8" class="com.baeldung.bean.UserService">
+        <property name="userRepository" ref="userRepository"/>
+    </bean>
+</beans>
