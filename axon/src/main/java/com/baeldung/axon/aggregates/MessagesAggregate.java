@@ -28,7 +28,7 @@ public class MessagesAggregate extends AbstractAnnotatedAggregateRoot {
     }
 
     @CommandHandler
-    public void markCompleted(MarkReadMessageCommand command) {
+    public void markRead(MarkReadMessageCommand command) {
         apply(new MessageReadEvent(id));
     }
 }
