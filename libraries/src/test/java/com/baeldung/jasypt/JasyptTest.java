@@ -1,4 +1,4 @@
-package org.baeldung.jasypt;
+package com.baeldung.jasypt;
 
 
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
@@ -8,27 +8,25 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotSame;
-import static junit.framework.Assert.assertTrue;
+import static junit.framework.Assert.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class JasyptTest {
 
     @Test
-    public void givenTextPassword_whenDecrypt_thenCompareToEncrypted() {
+    public void givenTextPrivateData_whenDecrypt_thenCompareToEncrypted() {
         //given
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
-        String password = "secret-pass";
-        textEncryptor.setPasswordCharArray("some-random-password".toCharArray());
+        String privateData = "secret-data";
+        textEncryptor.setPasswordCharArray("some-random-data".toCharArray());
 
         //when
-        String myEncryptedText = textEncryptor.encrypt(password);
-        assertNotSame(password, myEncryptedText); //myEncryptedText can be save in db
+        String myEncryptedText = textEncryptor.encrypt(privateData);
+        assertNotSame(privateData, myEncryptedText); //myEncryptedText can be save in db
 
         //then
         String plainText = textEncryptor.decrypt(myEncryptedText);
-        assertEquals(plainText, password);
+        assertEquals(plainText, privateData);
     }
 
     @Test
@@ -61,38 +59,38 @@ public class JasyptTest {
 
     @Test
     @Ignore("should have installed local_policy.jar")
-    public void givenTextPassword_whenDecrypt_thenCompareToEncryptedWithCustomAlgorithm() {
+    public void givenTextPrivateData_whenDecrypt_thenCompareToEncryptedWithCustomAlgorithm() {
         //given
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
-        String password = "secret-pass";
-        encryptor.setPassword("secret-pass");
+        String privateData = "secret-data";
+        encryptor.setPassword("some-random-data");
         encryptor.setAlgorithm("PBEWithMD5AndTripleDES");
 
         //when
         String encryptedText = encryptor.encrypt("secret-pass");
-        assertNotSame(password, encryptedText);
+        assertNotSame(privateData, encryptedText);
 
         //then
         String plainText = encryptor.decrypt(encryptedText);
-        assertEquals(plainText, password);
+        assertEquals(plainText, privateData);
     }
 
     @Test
     @Ignore("should have installed local_policy.jar")
-    public void givenTextPassword_whenDecryptOnHighPerformance_thenDecrypt(){
+    public void givenTextPrivateData_whenDecryptOnHighPerformance_thenDecrypt(){
         //given
-        String password = "secret-pass";
+        String privateData = "secret-data";
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
         encryptor.setPoolSize(4);
-        encryptor.setPassword(password);
+        encryptor.setPassword("some-random-data");
         encryptor.setAlgorithm("PBEWithMD5AndTripleDES");
 
         //when
-        String encryptedText = encryptor.encrypt(password);
-        assertNotSame(password, encryptedText);
+        String encryptedText = encryptor.encrypt(privateData);
+        assertNotSame(privateData, encryptedText);
 
         //then
         String plainText = encryptor.decrypt(encryptedText);
-        assertEquals(plainText, password);
+        assertEquals(plainText, privateData);
     }
 }
