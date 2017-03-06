@@ -21,19 +21,19 @@ import org.springframework.ldap.support.LdapNameBuilder;
 public class LdapClient {
 
     @Autowired
-    Environment env;
+    private Environment env;
 
     @Autowired
-    ContextSource contextSource;
+    private ContextSource contextSource;
 
     @Autowired
-    LdapTemplate ldapTemplate;
+    private LdapTemplate ldapTemplate;
 
-    public void authenticate(String username, String password) {
+    public void authenticate(final String username, final String password) {
         contextSource.getContext("cn=" + username + ",ou=users," + env.getRequiredProperty("ldap.partitionSuffix"), password);
     }
 
-    public List<String> search(String username) {
+    public List<String> search(final String username) {
         List<String> users = ldapTemplate.search("ou=users", "cn=" + username, new AttributesMapper<String>() {
             public String mapFromAttributes(Attributes attrs) throws NamingException {
                 return (String) attrs.get("cn").get();
@@ -42,7 +42,7 @@ public class LdapClient {
         return users;
     }
 
-    public void create(String username, String password) {
+    public void create(final String username, final String password) {
         Name dn = LdapNameBuilder.newInstance().add("ou", "users").add("cn", username).build();
         DirContextAdapter context = new DirContextAdapter(dn);
 
@@ -54,7 +54,7 @@ public class LdapClient {
         ldapTemplate.bind(context);
     }
 
-    public void modify(String username, String password) {
+    public void modify(final String username, final String password) {
         Name dn = LdapNameBuilder.newInstance().add("ou", "users").add("cn", username).build();
         DirContextOperations context = ldapTemplate.lookupContext(dn);
 

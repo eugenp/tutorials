@@ -50,13 +50,13 @@ public class LdapClientLiveTest {
     }
 
     @Test
-    public void givenLdapClient_whenDataProvided_thenNewUser() {
+    public void givenLdapClientNotExists_whenDataProvided_thenNewUserCreated() {
         ldapClient.create(USER4, USER4_PWD);
         ldapClient.authenticate(USER4, USER4_PWD);
     }
 
     @Test
-    public void givenLdapClient_whenDataProvided_thenModifiedUser() {
+    public void givenLdapClientExists_whenDataProvided_thenExistingUserModified() {
         ldapClient.modify(USER2, USER3_PWD);
         ldapClient.authenticate(USER2, USER3_PWD);
     }
