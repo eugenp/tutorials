@@ -63,7 +63,6 @@
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
-        <module>jasypt</module>
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
