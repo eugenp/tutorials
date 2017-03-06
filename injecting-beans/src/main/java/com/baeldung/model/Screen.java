@@ -4,8 +4,10 @@ package com.baeldung.model;
  * Model for Screen.
  */
 public class Screen {
-
     private String size;
+
+    public Screen() {
+    }
 
     public String getSize() {
         return size;

@@ -6,6 +6,9 @@ package com.baeldung.model;
 public class Processor {
     private String name;
 
+    public Processor() {
+    }
+
     public String getName() {
         return name;
     }

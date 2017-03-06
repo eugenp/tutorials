@@ -6,6 +6,9 @@ package com.baeldung.model;
 public class OperatingSystem {
     private String name;
 
+    public OperatingSystem(){
+    }
+
     public String getName() {
         return name;
     }

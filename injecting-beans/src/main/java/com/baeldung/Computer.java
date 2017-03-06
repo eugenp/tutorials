@@ -15,14 +15,11 @@ public class Computer {
     private Screen screen;
     private OperatingSystem operatingSystem;
 
-    public Computer(Processor processor) {
-        this.processor = processor;
-    }
-
     @Autowired
-    public Computer(OperatingSystem operatingSystem, Processor processor) {
+    public Computer(Processor processor, OperatingSystem operatingSystem, HardDisk hardDisk) {
         this.operatingSystem = operatingSystem;
         this.processor = processor;
+        this.hardDisk = hardDisk;
     }
 
     public void setHardDisk(HardDisk hardDisk) {
@@ -35,11 +32,11 @@ public class Computer {
     }
 
     public void print() {
-        System.out.println("Injected processor by constructor injection: " + processor.getName());
-        System.out.println("Injected hard disk by setter injection: " + hardDisk.getName());
-        System.out.println("Injected graphics card with field annotation: " + graphicsCard.getName());
-        System.out.println("Injected screen with setter annotation: " + screen.getSize());
-        System.out.println("Injected operating system name with constructor annotation: " + operatingSystem.getName());
+        System.out.println("Injected processor: " + processor.getName());
+        System.out.println("Injected hard disk: " + hardDisk.getName());
+        System.out.println("Injected graphics card: " + graphicsCard.getName());
+        System.out.println("Injected screen size: " + screen.getSize());
+        System.out.println("Injected operating system name: " + operatingSystem.getName());
     }
 
     @Override
