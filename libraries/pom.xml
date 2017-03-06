@@ -54,6 +54,7 @@
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.5</commons-lang.version>
         <junit.version>4.12</junit.version>
+        <jasypt.version>1.9.2</jasypt.version>
     </properties>
 
 </project>
