@@ -9,8 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>libraries</artifactId>
-    <name>libraries</name>
+    <artifactId>hbase</artifactId>
     <build>
         <plugins>
             <plugin>
@@ -25,16 +24,15 @@
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>${cglib.version}</version>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase</artifactId>
+            <version>${hbase.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -42,19 +40,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-
     </dependencies>
 
     <properties>
-        <cglib.version>3.2.4</cglib.version>
-        <commons-lang.version>3.5</commons-lang.version>
+        <hbase.version>1.3.0</hbase.version>
         <junit.version>4.12</junit.version>
-        <jasypt.version>1.9.2</jasypt.version>
     </properties>
+
 
 </project>
