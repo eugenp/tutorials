@@ -15,3 +15,4 @@ To view the running application, visit [http://localhost:8080](http://localhost:
 
 ###Relevant Articles:
 - [Guide to Spring Data REST Validators](http://www.baeldung.com/spring-data-rest-validators)
+- [Working with Relationships in Spring Data REST](http://www.baeldung.com/spring-data-rest-relationships)

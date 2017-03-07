@@ -1,11 +1,14 @@
 *.class
 
+0.*
+
 #folders#
 /target
 /neoDb*
 /data
 /src/main/webapp/WEB-INF/classes
 */META-INF/*
+.resourceCache
 
 # Packaged files #
 *.jar
