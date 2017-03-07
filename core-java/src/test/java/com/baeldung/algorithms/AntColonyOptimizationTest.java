@@ -16,7 +16,7 @@ public class AntColonyOptimizationTest {
 	@Test
 	public void testStartAntOptimization() {
 		AntColonyOptimization antTSP = new AntColonyOptimization(5);
-		Assert.assertNotNull(antTSP.startAntOptimization());
+		Assert.assertNotNull(antTSP.solve());
 	}
 
 }

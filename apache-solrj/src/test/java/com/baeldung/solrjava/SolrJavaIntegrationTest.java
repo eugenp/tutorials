@@ -33,7 +33,7 @@ public class SolrJavaIntegrationTest {
         response = solrJavaIntegration.getSolrClient().query(query);
 
         SolrDocumentList docList = response.getResults();
-        assertEquals(docList.getNumFound(), 1);
+        assertEquals(1, docList.getNumFound());
 
         for (SolrDocument doc : docList) {
             assertEquals("Kenmore Dishwasher", (String) doc.getFieldValue("name"));
