@@ -3,10 +3,10 @@ package com.baeldung.axon;
 import com.baeldung.axon.aggregates.MessagesAggregate;
 import com.baeldung.axon.commands.CreateMessageCommand;
 import com.baeldung.axon.commands.MarkReadMessageCommand;
-import com.baeldung.axon.events.MessageReadEvent;
 import com.baeldung.axon.events.MessageCreatedEvent;
-import org.axonframework.test.FixtureConfiguration;
-import org.axonframework.test.Fixtures;
+import com.baeldung.axon.events.MessageReadEvent;
+import org.axonframework.test.aggregate.AggregateTestFixture;
+import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,11 +14,12 @@ import java.util.UUID;
 
 public class MessagesAggregateTest {
 
-    private FixtureConfiguration fixture;
+    private FixtureConfiguration<MessagesAggregate> fixture;
 
     @Before
     public void setUp() throws Exception {
-        fixture = Fixtures.newGivenWhenThenFixture(MessagesAggregate.class);
+        fixture = new AggregateTestFixture<MessagesAggregate>(MessagesAggregate.class);
+
     }
 
     @Test

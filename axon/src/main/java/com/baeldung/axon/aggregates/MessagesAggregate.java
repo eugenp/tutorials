@@ -2,14 +2,16 @@ package com.baeldung.axon.aggregates;
 
 import com.baeldung.axon.commands.CreateMessageCommand;
 import com.baeldung.axon.commands.MarkReadMessageCommand;
-import com.baeldung.axon.events.MessageReadEvent;
 import com.baeldung.axon.events.MessageCreatedEvent;
-import org.axonframework.commandhandling.annotation.CommandHandler;
-import org.axonframework.eventhandling.annotation.EventHandler;
-import org.axonframework.eventsourcing.annotation.AbstractAnnotatedAggregateRoot;
-import org.axonframework.eventsourcing.annotation.AggregateIdentifier;
+import com.baeldung.axon.events.MessageReadEvent;
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.commandhandling.model.AggregateIdentifier;
+import org.axonframework.eventhandling.EventHandler;
 
-public class MessagesAggregate extends AbstractAnnotatedAggregateRoot {
+import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
+
+
+public class MessagesAggregate {
 
     @AggregateIdentifier
     private String id;

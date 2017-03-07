@@ -2,7 +2,8 @@ package com.baeldung.axon.eventhandlers;
 
 import com.baeldung.axon.events.MessageReadEvent;
 import com.baeldung.axon.events.MessageCreatedEvent;
-import org.axonframework.eventhandling.annotation.EventHandler;
+import org.axonframework.eventhandling.EventHandler;
+
 
 public class MessagesEventHandler {
 

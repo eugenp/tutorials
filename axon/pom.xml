@@ -37,7 +37,7 @@
     </dependencies>
 
     <properties>
-        <axon.version>2.4.6</axon.version>
+        <axon.version>3.0.2</axon.version>
         <junit.version>4.12</junit.version>
     </properties>
 
