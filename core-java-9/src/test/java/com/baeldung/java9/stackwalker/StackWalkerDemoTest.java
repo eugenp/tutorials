@@ -8,4 +8,9 @@ public class StackWalkerDemoTest {
     public void walkTheStack() {
         new StackWalkerDemo().methodOne();
     }
+    
+    @Test
+    public void findCallerTest() {
+        new StackWalkerDemo().findCaller();
+    }
 }
