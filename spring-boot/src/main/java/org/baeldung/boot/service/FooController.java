@@ -1,6 +1,6 @@
 package org.baeldung.boot.service;
 
-import org.baeldung.boot.components.FooComponent;
+import org.baeldung.boot.components.FooService;
 import org.baeldung.boot.model.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class FooService {
+public class FooController {
 
     @Autowired
-    private FooComponent fooComponent;
+    private FooService fooService;
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getFooWithId(@PathVariable Integer id) throws Exception {
 
-        Foo foo = fooComponent.getFooWithId(id);
+        Foo foo = fooService.getFooWithId(id);
 
         return new ResponseEntity<>(foo, HttpStatus.OK);
     }
@@ -27,7 +27,7 @@ public class FooService {
     @GetMapping("/")
     public ResponseEntity<?> getFooWithName(@RequestParam String name) throws Exception {
 
-        Foo foo = fooComponent.getFooWithName(name);
+        Foo foo = fooService.getFooWithName(name);
 
         return new ResponseEntity<>(foo, HttpStatus.OK);
     }
