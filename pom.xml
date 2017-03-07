@@ -93,6 +93,7 @@
 
         <module>patterns</module>
         <module>pdf</module>
+        <module>protobuffer</module>
 
         <module>querydsl</module>
 
@@ -202,7 +203,6 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
-
 
     </modules>
 
