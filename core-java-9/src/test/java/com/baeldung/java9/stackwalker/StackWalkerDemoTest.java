@@ -5,12 +5,12 @@ import org.junit.Test;
 public class StackWalkerDemoTest {
 
     @Test
-    public void walkTheStack() {
+    public void shouldWalkTheStack() {
         new StackWalkerDemo().methodOne();
     }
     
     @Test
-    public void findCallerTest() {
+    public void shoultFindCaller() {
         new StackWalkerDemo().findCaller();
     }
 }
