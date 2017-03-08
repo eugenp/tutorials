@@ -10,7 +10,7 @@ public class StackWalkerDemoTest {
     }
     
     @Test
-    public void shoultFindCaller() {
+    public void shouldFindCaller() {
         new StackWalkerDemo().findCaller();
     }
 }
