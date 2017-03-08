@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>spring-5</name>
-    <!--<description></description>-->
+    <description>spring 5 sample project about new features</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
