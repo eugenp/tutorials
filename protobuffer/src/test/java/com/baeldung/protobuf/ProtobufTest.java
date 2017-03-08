@@ -1,4 +1,4 @@
-package org.baeldung.protobuf;
+package com.baeldung.protobuf;
 
 
 import org.junit.After;
@@ -72,10 +72,13 @@ public class ProtobufTest {
         AddressBookProtos.AddressBook addressBook = AddressBookProtos.AddressBook.newBuilder().addPeople(person).build();
         FileOutputStream fos = new FileOutputStream(filePath);
         addressBook.writeTo(fos);
+        fos.close();
 
         //then
+        FileInputStream fis = new FileInputStream(filePath);
         AddressBookProtos.AddressBook deserialized =
-                AddressBookProtos.AddressBook.newBuilder().mergeFrom(new FileInputStream(filePath)).build();
+                AddressBookProtos.AddressBook.newBuilder().mergeFrom(fis).build();
+        fis.close();
         assertEquals(deserialized.getPeople(0).getEmail(), email);
         assertEquals(deserialized.getPeople(0).getId(), id);
         assertEquals(deserialized.getPeople(0).getName(), name);

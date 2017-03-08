@@ -1,6 +1,6 @@
 package protobuf;
 
-option java_package = "org.baeldung.protobuf";
+option java_package = "com.baeldung.protobuf";
 option java_outer_classname = "AddressBookProtos";
 
 message Person {
