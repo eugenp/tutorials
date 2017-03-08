@@ -1,6 +1,6 @@
 package org.baeldung.boot;
 
-import org.baeldung.boot.components.FooComponent;
+import org.baeldung.boot.components.FooService;
 import org.baeldung.boot.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class FooComponentTests {
     private TestRestTemplate testRestTemplate;
 
     @SpyBean
-    private FooComponent fooComponent;
+    private FooService fooService;
 
     @Before
     public void init() throws Exception {
@@ -40,7 +40,7 @@ public class FooComponentTests {
         foo.setId(5);
         foo.setName("MOCKED_FOO");
 
-        doReturn(foo).when(fooComponent).getFooWithId(anyInt());
+        doReturn(foo).when(fooService).getFooWithId(anyInt());
 
         // doCallRealMethod().when(fooComponent).getFooWithName(anyString());
     }
