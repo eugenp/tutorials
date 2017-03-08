@@ -1,14 +1,6 @@
 package org.baeldung.boot;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Mockito.doReturn;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.baeldung.boot.components.FooComponent;
+import org.baeldung.boot.components.FooService;
 import org.baeldung.boot.model.Foo;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,30 +14,40 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.doReturn;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+  classes = DemoApplication.class,
+  webEnvironment = WebEnvironment.RANDOM_PORT)
 public class FooComponentTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
 
     @SpyBean
-    private FooComponent fooComponent;
+    private FooService fooService;
 
     @Before
-    public void init() {
+    public void init() throws Exception {
         Foo foo = new Foo();
         foo.setId(5);
         foo.setName("MOCKED_FOO");
 
-        doReturn(foo).when(fooComponent).getFooWithId(anyInt());
+        doReturn(foo).when(fooService).getFooWithId(anyInt());
 
         // doCallRealMethod().when(fooComponent).getFooWithName(anyString());
     }
 
     @Test
     public void givenInquiryingFooWithId_whenFooComponentIsMocked_thenAssertMockedResult() {
-        Map<String, String> pathVariables = new HashMap<String, String>();
+        Map<String, String> pathVariables = new HashMap<>();
         pathVariables.put("id", "1");
         ResponseEntity<Foo> fooResponse = testRestTemplate.getForEntity("/{id}", Foo.class, pathVariables);
 
@@ -57,7 +59,7 @@ public class FooComponentTests {
 
     @Test
     public void givenInquiryingFooWithName_whenFooComponentIsMocked_thenAssertMockedResult() {
-        Map<String, String> pathVariables = new HashMap<String, String>();
+        Map<String, String> pathVariables = new HashMap<>();
         pathVariables.put("name", "Foo_Name");
         ResponseEntity<Foo> fooResponse = testRestTemplate.getForEntity("/?name={name}", Foo.class, pathVariables);
 

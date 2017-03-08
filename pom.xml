@@ -25,6 +25,7 @@
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
+        <module>axon</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
