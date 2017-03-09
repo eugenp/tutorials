@@ -34,7 +34,7 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
     public Connection getConnection(String tenantIdentifier) throws SQLException {
         Connection connection = super.getConnection(tenantIdentifier);
         // uncomment to see option 2 for SCHEMA strategy.
-        connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
+        //connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
         return connection;
     }
     

@@ -13,6 +13,7 @@ import com.baeldung.hibernate.pojo.Suppliers;
 public class App {
     public static void main(String[] args) {
         try {
+            System.out.println("Checking the system.");
             SessionFactory sessionFactory = HibernateMultiTenantUtil.getSessionFactory();
             Session currentSession = sessionFactory.withOptions().tenantIdentifier("db1").openSession();
             Transaction transaction = currentSession.getTransaction();

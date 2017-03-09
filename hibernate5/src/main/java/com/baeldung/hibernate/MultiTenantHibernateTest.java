@@ -30,13 +30,9 @@ public class MultiTenantHibernateTest  {
             Suppliers supplierFromDB2 = (Suppliers) db2Session.createCriteria(Suppliers.class).list().get(0);
             db2Session.getTransaction().commit();
             
-            assertNotEquals(supplierFromDB1, supplierFromDB2);
-            
-            
+            assertNotEquals(supplierFromDB1, supplierFromDB2);   
         } catch (UnsupportedTenancyException e) {
             e.printStackTrace();
         }
-        
-        
     }
 }
