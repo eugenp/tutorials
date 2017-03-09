@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 public class HibernateImmutableIntegrationTest {
+
     private Session session;
+
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
