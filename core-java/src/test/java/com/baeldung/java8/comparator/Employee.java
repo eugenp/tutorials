@@ -1,4 +1,4 @@
-package com.baeldung.java8comparator;
+package com.baeldung.java8.comparator;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

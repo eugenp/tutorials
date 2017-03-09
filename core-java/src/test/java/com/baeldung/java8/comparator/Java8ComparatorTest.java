@@ -1,4 +1,4 @@
-package com.baeldung.java8comparator;
+package com.baeldung.java8.comparator;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,35 +27,35 @@ public class Java8ComparatorTest {
     @Before
     public void initData() {
         employees = new Employee[] { new Employee("John", 25, 3000, 9922001), new Employee("Ace", 22, 2000, 5924001),
-            new Employee("Ben", 20, 5000, 6422001), new Employee("Keith", 35, 4000, 3924401) };
+             new Employee("Keith", 35, 4000, 3924401) };
         employeesArrayWithNulls = new Employee[] { new Employee("John", 25, 3000, 9922001), null, new Employee("Ace", 22, 2000, 5924001),
-            new Employee("Ben", 20, 5000, 6422001), null, new Employee("Keith", 35, 4000, 3924401) };
+             null, new Employee("Keith", 35, 4000, 3924401) };
 
-        sortedEmployeesByName = new Employee[] { new Employee("Ace", 22, 2000, 5924001), new Employee("Ben", 20, 5000, 6422001),
+        sortedEmployeesByName = new Employee[] { new Employee("Ace", 22, 2000, 5924001), 
             new Employee("John", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
         sortedEmployeesByNameDesc = new Employee[] { new Employee("Keith", 35, 4000, 3924401), new Employee("John", 25, 3000, 9922001),
-            new Employee("Ben", 20, 5000, 6422001), new Employee("Ace", 22, 2000, 5924001) };
+             new Employee("Ace", 22, 2000, 5924001) };
 
-        sortedEmployeesByAge = new Employee[] { new Employee("Ben", 20, 5000, 6422001), new Employee("Ace", 22, 2000, 5924001),
+        sortedEmployeesByAge = new Employee[] {  new Employee("Ace", 22, 2000, 5924001),
             new Employee("John", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
 
         sortedEmployeesByMobile = new Employee[] { new Employee("Keith", 35, 4000, 3924401), new Employee("Ace", 22, 2000, 5924001),
-            new Employee("Ben", 20, 5000, 6422001), new Employee("John", 25, 3000, 9922001), };
+             new Employee("John", 25, 3000, 9922001), };
 
         sortedEmployeesBySalary = new Employee[] { new Employee("Ace", 22, 2000, 5924001), new Employee("John", 25, 3000, 9922001),
-            new Employee("Keith", 35, 4000, 3924401), new Employee("Ben", 20, 5000, 6422001) };
+            new Employee("Keith", 35, 4000, 3924401),  };
 
         sortedEmployeesArray_WithNullsFirst = new Employee[] { null, null, new Employee("Ace", 22, 2000, 5924001),
-            new Employee("Ben", 20, 5000, 6422001), new Employee("John", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
-        sortedEmployeesArray_WithNullsLast = new Employee[] { new Employee("Ace", 22, 2000, 5924001), new Employee("Ben", 20, 5000, 6422001),
+             new Employee("John", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
+        sortedEmployeesArray_WithNullsLast = new Employee[] { new Employee("Ace", 22, 2000, 5924001), 
             new Employee("John", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401), null, null };
 
         someMoreEmployees = new Employee[] { new Employee("Jake", 25, 3000, 9922001), new Employee("Jake", 22, 2000, 5924001),
-            new Employee("Ace", 22, 3000, 6423001), new Employee("Ben", 20, 5000, 6422001), new Employee("Keith", 35, 4000, 3924401) };
+            new Employee("Ace", 22, 3000, 6423001),  new Employee("Keith", 35, 4000, 3924401) };
 
-        sortedEmployeesByAgeName = new Employee[] { new Employee("Ben", 20, 5000, 6422001), new Employee("Ace", 22, 3000, 6423001),
+        sortedEmployeesByAgeName = new Employee[] {  new Employee("Ace", 22, 3000, 6423001),
             new Employee("Jake", 22, 2000, 5924001), new Employee("Jake", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
-        sortedEmployeesByNameAge = new Employee[] { new Employee("Ace", 22, 3000, 6423001), new Employee("Ben", 20, 5000, 6422001),
+        sortedEmployeesByNameAge = new Employee[] { new Employee("Ace", 22, 3000, 6423001), 
             new Employee("Jake", 22, 2000, 5924001), new Employee("Jake", 25, 3000, 9922001), new Employee("Keith", 35, 4000, 3924401) };
     }
 
@@ -64,7 +64,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Arrays.sort(employees, employeeNameComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Name", Arrays.equals(employees, sortedEmployeesByName));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByName));
     }
 
     @Test
@@ -74,7 +74,7 @@ public class Java8ComparatorTest {
         });
         Arrays.sort(employees, employeeNameComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Name in Descending", Arrays.equals(employees, sortedEmployeesByNameDesc));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeAgeComparator = Comparator.comparingInt(Employee::getAge);
         Arrays.sort(employees, employeeAgeComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Age", Arrays.equals(employees, sortedEmployeesByAge));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByAge));
     }
 
     @Test
@@ -90,7 +90,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeMobileComparator = Comparator.comparingLong(Employee::getMobile);
         Arrays.sort(employees, employeeMobileComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Mobile", Arrays.equals(employees, sortedEmployeesByMobile));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByMobile));
     }
 
     @Test
@@ -98,7 +98,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeSalaryComparator = Comparator.comparingDouble(Employee::getSalary);
         Arrays.sort(employees, employeeSalaryComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Salary ", Arrays.equals(employees, sortedEmployeesBySalary));
+        assertTrue(Arrays.equals(employees, sortedEmployeesBySalary));
     }
 
     @Test
@@ -106,7 +106,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> naturalOrder();
         Arrays.sort(employees, employeeNameComparator);
 //         System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Name in natural order", Arrays.equals(employees, sortedEmployeesByName));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByName));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> reverseOrder();
         Arrays.sort(employees, employeeNameComparator);
 //        System.out.println(Arrays.toString(employees));
-        assertTrue("Sorted Employee array by Name in reverse natural order", Arrays.equals(employees, sortedEmployeesByNameDesc));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
 
     @Test
@@ -123,7 +123,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeNameComparator_nullFirst = Comparator.nullsFirst(employeeNameComparator);
         Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullFirst);
 //         System.out.println(Arrays.toString(employeesArrayWithNulls));
-        assertTrue("Sorted Employee array by Name with Null Firsts", Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsFirst));
+        assertTrue(Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsFirst));
     }
 
     @Test
@@ -132,7 +132,7 @@ public class Java8ComparatorTest {
         Comparator<Employee> employeeNameComparator_nullLast = Comparator.nullsLast(employeeNameComparator);
         Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullLast);
 //         System.out.println(Arrays.toString(employeesArrayWithNulls));
-        assertTrue("Sorted Employee array by Name with Null Lasts", Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsLast));
+        assertTrue(Arrays.equals(employeesArrayWithNulls, sortedEmployeesArray_WithNullsLast));
     }
 
     @Test
@@ -141,7 +141,7 @@ public class Java8ComparatorTest {
 
         Arrays.sort(someMoreEmployees, employee_Age_Name_Comparator);
 //         System.out.println(Arrays.toString(someMoreEmployees));
-        assertTrue("Sorted Employee array by Age followed by Name", Arrays.equals(someMoreEmployees, sortedEmployeesByAgeName));
+        assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByAgeName));
     }
 
     @Test
@@ -150,7 +150,7 @@ public class Java8ComparatorTest {
 
         Arrays.sort(someMoreEmployees, employee_Name_Age_Comparator);
 //        System.out.println(Arrays.toString(someMoreEmployees));
-        assertTrue("Sorted Employee array by Name followed by Age", Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
+        assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
     }
 
      @Before
