@@ -32,7 +32,6 @@ public class Application {
 //		  .setOAuthConsumerSecret("//TODO")
 //		  .setOAuthAccessToken("//TODO")
 //		  .setOAuthAccessTokenSecret("//TODO");
-//
 //		TwitterFactory tf = new TwitterFactory(cb.build());
 //		Twitter twitter = tf.getSingleton();
 		
