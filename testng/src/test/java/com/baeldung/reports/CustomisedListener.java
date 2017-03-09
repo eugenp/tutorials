@@ -10,22 +10,22 @@ public class CustomisedListener implements ITestListener {
     private static final Logger LOGGER = LoggerFactory.getLogger("TEST_REPORT");
 
     @Override
-    public void onFinish(ITestContext arg0) {
+    public void onFinish(ITestContext context) {
         LOGGER.info("PASSED TEST CASES");
-        arg0.getPassedTests()
+        context.getPassedTests()
                 .getAllResults()
                 .stream()
                 .forEach(result -> {
                     LOGGER.info(result.getName());
                 });
         LOGGER.info("FAILED TEST CASES");
-        arg0.getFailedTests()
+        context.getFailedTests()
                 .getAllResults()
                 .stream()
                 .forEach(result -> {
                     LOGGER.info(result.getName());
                 });
-        LOGGER.info("Test completed on: " + arg0.getEndDate().toString());
+        LOGGER.info("Test completed on: " + context.getEndDate().toString());
     }
 
     @Override
