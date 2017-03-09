@@ -194,10 +194,10 @@ public class RedissonTest {
 
         ledger = service.persist(ledger);
 
-        LedgerLiveObject returnledger
+        LedgerLiveObject returnLedger
           = service.get(LedgerLiveObject.class, "ledger1");
 
-        assert(ledger.getName().equals(returnledger.getName()));
+        assert(ledger.getName().equals(returnLedger.getName()));
     }
 
     @Test
