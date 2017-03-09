@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.examples.guice</groupId>
-    <artifactId>guice-intro</artifactId>
+    <artifactId>guice</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <dependencies>
@@ -30,5 +30,5 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <guice.version>4.1.0</guice.version>
     </properties>
-    <name>guice-intro</name>
+    <name>guice</name>
 </project>
