@@ -11,6 +11,7 @@ import java.util.logging.Logger;
  */
 public class Communication {
 
+
     @Inject
     private Logger logger;
 
@@ -24,10 +25,10 @@ public class Communication {
     }
 
     public boolean sendMessage(String message) {
-        return communicator.sendMessage(message);
+       return communicator.sendMessage(message);
     }
 
-    public DefaultCommunicator getCommunicator() {
+     public DefaultCommunicator getCommunicator() {
         return this.communicator;
     }
 

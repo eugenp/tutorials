@@ -16,6 +16,7 @@
         <module>gateway</module>
         <module>svc-book</module>
         <module>svc-rating</module>
+        <module>zipkin</module>
     </modules>
 
 
