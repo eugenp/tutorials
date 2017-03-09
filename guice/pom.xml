@@ -30,5 +30,5 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <guice.version>4.1.0</guice.version>
     </properties>
-    <name>guice-intro</name>
+    <name>guice</name>
 </project>
