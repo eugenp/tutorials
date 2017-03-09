@@ -9,13 +9,14 @@ import com.baeldung.algorithms.slope_one.SlopeOne;
 
 public class RunAlgorithm {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 		Scanner in = new Scanner(System.in);
 		System.out.println("Run algorithm:");
 		System.out.println("1 - Simulated Annealing");
 		System.out.println("2 - Slope One");
 		System.out.println("3 - Simple Genetic Algorithm");
 		System.out.println("4 - Ant Colony");
+		System.out.println("5 - Dijkstra");
 		int decision = in.nextInt();
 		switch (decision) {
 		case 1:
@@ -32,6 +33,9 @@ public class RunAlgorithm {
 		case 4:
 			AntColonyOptimization antColony = new AntColonyOptimization(21);
 			antColony.startAntOptimization();
+			break;
+		case 5:
+			System.out.println("Please run the DijkstraAlgorithmTest.");
 			break;
 		default:
 			System.out.println("Unknown option");
