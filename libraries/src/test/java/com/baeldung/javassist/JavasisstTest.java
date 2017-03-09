@@ -95,7 +95,6 @@ public class JavasisstTest {
         code.addAload(0);
         code.addInvokespecial("java/lang/Object", MethodInfo.nameInit, "()V");
         code.addReturn(null);
-        code.setMaxLocals(1);
 
         //when
         MethodInfo minfo = new MethodInfo(cf.getConstPool(), MethodInfo.nameInit, "()V");
@@ -111,7 +110,8 @@ public class JavasisstTest {
             operations.add(Mnemonic.OPCODE[op]);
         }
 
-        operations.contains("invokespecial");
+        assertEquals(operations,
+                Arrays.asList("aload_0", "invokespecial", "return"));
 
 
     }
