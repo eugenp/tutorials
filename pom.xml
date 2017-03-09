@@ -47,7 +47,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
-        <module>guice-intro</module>
+        <module>guice</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
