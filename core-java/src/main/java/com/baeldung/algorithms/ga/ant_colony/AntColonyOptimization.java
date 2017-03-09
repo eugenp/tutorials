@@ -18,8 +18,8 @@ public class AntColonyOptimization {
 
 	private int maxIterations = 1000;
 
-	public int numberOfCities;
-	public int numberOfAnts;
+	private int numberOfCities;
+	private int numberOfAnts;
 	private double graph[][];
 	private double trails[][];
 	private List<Ant> ants = new ArrayList<>();
@@ -28,8 +28,8 @@ public class AntColonyOptimization {
 
 	private int currentIndex;
 
-	public int[] bestTourOrder;
-	public double bestTourLength;
+	private int[] bestTourOrder;
+	private double bestTourLength;
 
 	public AntColonyOptimization(int noOfCities) {
 		graph = generateRandomMatrix(noOfCities);
@@ -43,26 +43,17 @@ public class AntColonyOptimization {
 
 	/**
 	 * Generate initial solution
-	 * 
-	 * @param n
-	 * @return
 	 */
 	public double[][] generateRandomMatrix(int n) {
 		double[][] randomMatrix = new double[n][n];
-		random.setSeed(System.currentTimeMillis());
-		IntStream.range(0, n).forEach(i -> {
-			IntStream.range(0, n).forEach(j -> {
-				Integer r = random.nextInt(100) + 1;
-				randomMatrix[i][j] = Math.abs(r);
-			});
-		});
+		IntStream.range(0, n)
+                  .forEach(i -> IntStream.range(0, n)
+                    .forEach(j -> randomMatrix[i][j] = Math.abs(random.nextInt(100) + 1)));
 		return randomMatrix;
 	}
 
 	/**
 	 * Perform ant optimization
-	 * 
-	 * @return
 	 */
 	public void startAntOptimization() {
 		IntStream.rangeClosed(1, 3).forEach(i -> {
@@ -73,8 +64,6 @@ public class AntColonyOptimization {
 
 	/**
 	 * Use this method to run the main logic
-	 * 
-	 * @return
 	 */
 	public int[] solve() {
 		setupAnts();
@@ -94,7 +83,7 @@ public class AntColonyOptimization {
 	 */
 	private void setupAnts() {
 		IntStream.range(0, numberOfAnts).forEach(i -> {
-			ants.stream().forEach(ant -> {
+			ants.forEach(ant -> {
 				ant.clear();
 				ant.visitCity(-1, random.nextInt(numberOfCities));
 			});
@@ -107,23 +96,18 @@ public class AntColonyOptimization {
 	 */
 	private void moveAnts() {
 		IntStream.range(currentIndex, numberOfCities - 1).forEach(i -> {
-			ants.stream().forEach(ant -> {
-				ant.visitCity(currentIndex, selectNextCity(ant));
-			});
+			ants.forEach(ant -> ant.visitCity(currentIndex, selectNextCity(ant)));
 			currentIndex++;
 		});
 	}
 
 	/**
 	 * Select next city for each ant
-	 * 
-	 * @param ant
-	 * @return
 	 */
 	private int selectNextCity(Ant ant) {
 		int t = random.nextInt(numberOfCities - currentIndex);
 		if (random.nextDouble() < randomFactor) {
-			IntStream.range(0, numberOfCities).filter(i -> i == t && !ant.visited(i)).findFirst();
+			IntStream.range(0, numberOfCities).filter(i -> i == t && !ant.visited(i)).findFirst(); //TODO unused
 		}
 		calculateProbabilities(ant);
 		double r = random.nextDouble();
@@ -140,8 +124,6 @@ public class AntColonyOptimization {
 
 	/**
 	 * Calculate the next city picks probabilites
-	 * 
-	 * @param ant
 	 */
 	public void calculateProbabilities(Ant ant) {
 		int i = ant.trail[currentIndex];
