@@ -48,7 +48,7 @@
             <version>${jasypt.version}</version>
         </dependency>
         <dependency>
-            <groupId>javassist</groupId>
+            <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>${javaassist.version}</version>
         </dependency>
@@ -61,7 +61,7 @@
         <commons-lang.version>3.5</commons-lang.version>
         <junit.version>4.12</junit.version>
         <jasypt.version>1.9.2</jasypt.version>
-        <javaassist.version>3.3</javaassist.version>
+        <javaassist.version>3.21.0-GA</javaassist.version>
     </properties>
 
 </project>
