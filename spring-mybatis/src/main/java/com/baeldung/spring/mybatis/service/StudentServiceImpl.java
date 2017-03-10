@@ -10,32 +10,30 @@ import com.baeldung.spring.mybatis.model.Student;
 @Service("studentService")
 public class StudentServiceImpl implements StudentService {
 
-	@Autowired
-	private StudentMapper studentMapper;
+    @Autowired
+    private StudentMapper studentMapper;
 
-	@Transactional
-	public void insertStudent(Student student) {
-		studentMapper.insertStudent(student);
-	}
+    @Transactional
+    public boolean insertStudent(Student student) {
+        boolean result = false;
+        try {
+            studentMapper.insertStudent(student);
+            result = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            result = false;
+        }
+        return result;
+    }
 
-	public boolean getStudentByLogin(String userName, String password) {
-		Student student = studentMapper.getStudentByUserName(userName);
+    public Student getStudentByLogin(String userName, String password) {
+        Student student = studentMapper.getStudentByUserName(userName);
+        return student;
+    }
 
-		if (student != null && student.getPassword().equals(password)) {
-			return true;
-		}
-
-		return false;
-	}
-
-	public boolean getStudentByUserName(String userName) {
-		Student student = studentMapper.getStudentByUserName(userName);
-
-		if (student != null) {
-			return true;
-		}
-
-		return false;
-	}
+    public Student getStudentByUserName(String userName) {
+        Student student = studentMapper.getStudentByUserName(userName);
+        return student;
+    }
 
 }
