@@ -9,9 +9,12 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FlattenNestedListTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FlattenNestedListTest.class);
     private FlattenNestedList flol;
     
     @Before
@@ -31,8 +34,8 @@ public class FlattenNestedListTest {
         lol.addAll(Arrays.asList(ls1, ls2, ls3));
         
         // show nested list
-        System.out.println("Nested list: ");
-        lol.forEach((nl) -> System.out.println(nl));
+        LOGGER.debug("\nNested list: ");
+        lol.forEach((nl) -> LOGGER.debug(nl + ""));
 
         // flatten it
         List<String> ls = flol.flattenListOfLists(lol);
@@ -41,8 +44,8 @@ public class FlattenNestedListTest {
         assertTrue(ls.size() == 9);
         
         // show flattened list
-        System.out.println("\nFlattened list:");
-        ls.forEach((l) -> System.out.println(l));
+        LOGGER.debug("\nFlattened list:");
+        ls.forEach((l) -> LOGGER.debug(l));
 
     }
 
