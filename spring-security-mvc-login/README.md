@@ -10,6 +10,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Spring Security Logout](http://www.baeldung.com/spring-security-logout)
 - [Spring Security Expressions – hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
 - [Spring HTTP/HTTPS Channel Security](http://www.baeldung.com/spring-channel-security-https)
+- [Spring Security - Customize the 403 Forbidden/Access Denied Page](http://www.baeldung.com/spring-security-custom-access-denied-page)
 
 ### Build the Project
 ```

@@ -19,9 +19,15 @@
             always-use-default-target="true"/>
 
         <logout logout-url="/perform_logout" delete-cookies="JSESSIONID" success-handler-ref="customLogoutSuccessHandler"/>
+
+        <!-- <access-denied-handler error-page="/accessDenied"/> -->
+        <access-denied-handler ref="customAccessDeniedHandler"/>
+    	
     </http>
 
     <beans:bean name="customLogoutSuccessHandler" class="org.baeldung.security.CustomLogoutSuccessHandler"/>
+
+    <beans:bean name="customAccessDeniedHandler" class="org.baeldung.security.CustomAccessDeniedHandler" />
 
     <authentication-manager>
         <authentication-provider>
