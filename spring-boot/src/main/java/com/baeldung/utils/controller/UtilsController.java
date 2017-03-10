@@ -35,7 +35,7 @@ public class UtilsController {
 //		}
 		
 		WebUtils.setSessionAttribute(request, "parameter", param);
-        model.addAttribute("parameter", "You set: "+(String) WebUtils.getSessionAttribute(request, "parameter"));
+                model.addAttribute("parameter", "You set: "+(String) WebUtils.getSessionAttribute(request, "parameter"));
 		return "utils";
 	}
 	

@@ -1,9 +1,0 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Evaluation_Suite">
-    <test name="Sanity">
-        <classes>
-            <class name="com.baeldung.test.comparison.RegistrationTest" />
-            <class name="com.baeldung.test.comparison.SignInTest" />
-        </classes>
-    </test>
-</suite>
