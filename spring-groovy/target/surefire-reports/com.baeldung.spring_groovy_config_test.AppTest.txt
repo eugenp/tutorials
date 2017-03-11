@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.baeldung.spring_groovy_config_test.AppTest
--------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.819 sec - in com.baeldung.spring_groovy_config_test.AppTest
