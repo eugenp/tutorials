@@ -2,30 +2,36 @@ package com.baeldung.hibernate.immutable;
 
 import com.baeldung.hibernate.immutable.entities.Event;
 import com.baeldung.hibernate.immutable.util.HibernateUtil;
-import org.hibernate.HibernateException;
+import com.google.common.collect.Sets;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
+
+import javax.persistence.PersistenceException;
 
 public class HibernateImmutableIntegrationTest {
 
-    private Session session;
+    private static Session session;
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void setup() {
+    public void before() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         createEvent();
+        session.setCacheMode(CacheMode.REFRESH);
     }
 
-    @After
-    public void teardown() {
+    @BeforeClass
+    public static void setup() {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+    }
+
+    @AfterClass
+    public static void teardown() {
         HibernateUtil.getSessionFactory().close();
     }
 
@@ -40,7 +46,7 @@ public class HibernateImmutableIntegrationTest {
     @Test
     public void updateEvent() {
         Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='My Event'").list().get(0);
+                "FROM Event WHERE title='New Event'").list().get(0);
         event.setTitle("Private Event");
         session.saveOrUpdate(event);
         session.getTransaction().commit();
@@ -49,7 +55,7 @@ public class HibernateImmutableIntegrationTest {
     @Test
     public void deleteEvent() {
         Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='My Event'").list().get(0);
+                "FROM Event WHERE title='New Event'").list().get(0);
         session.delete(event);
         session.getTransaction().commit();
     }
@@ -61,7 +67,7 @@ public class HibernateImmutableIntegrationTest {
         String newGuest = "Sara";
         event.getGuestList().add(newGuest);
 
-        exception.expect(HibernateException.class);
+        exception.expect(PersistenceException.class);
         session.save(event);
         session.getTransaction().commit();
     }
@@ -73,14 +79,15 @@ public class HibernateImmutableIntegrationTest {
         String guest = event.getGuestList().iterator().next();
         event.getGuestList().remove(guest);
 
-        exception.expect(HibernateException.class);
+        exception.expect(PersistenceException.class);
         session.saveOrUpdate(event);
         session.getTransaction().commit();
     }
 
-    public void createEvent() {
+    public static void createEvent() {
         Event event = new Event();
         event.setTitle("New Event");
+        event.setGuestList(Sets.newHashSet("guest"));
         session.save(event);
     }
 }
