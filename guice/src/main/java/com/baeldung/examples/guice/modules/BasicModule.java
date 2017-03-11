@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.baeldung.examples.guice.modules;
 
 import com.baeldung.examples.guice.Communication;
@@ -18,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Tayo
+ * @author baeldung
  */
 public class BasicModule extends AbstractModule {
 
