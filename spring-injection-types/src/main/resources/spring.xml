@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.baeldung" />
+
+    <bean id="employeeService" class="com.baeldung.service.EmployeeService" />
+
+    <bean id="employeeController" class="com.baeldung.controller.EmployeeController">
+        <constructor-arg value="employeeService" type="com.baeldung.service.EmployeeService"></constructor-arg>
+    </bean>
+
+    <bean id="userService" class="com.baeldung.service.UserService" />
+
+    <bean id="userController" class="com.baeldung.controller.UserController">
+        <property name="userService" ref="com.baeldung.service.UserService" />
+    </bean>
+
+</beans>
