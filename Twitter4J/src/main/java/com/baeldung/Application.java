@@ -28,11 +28,10 @@ public class Application {
 		 */
 //		ConfigurationBuilder cb = new ConfigurationBuilder();
 //		cb.setDebugEnabled(true)
-//		  .setOAuthConsumerKey("DPHTBsWWO42d8rzshxlK0OwSY")
-//		  .setOAuthConsumerSecret("ACLXkeRY98NiaVCG1ai8fdYt0GoEGJbFeTuxjulSCO7sLKqls1")
-//		  .setOAuthAccessToken("838080188214759428-9MSK1ddPTN5ZZHbddjFI7s75mYgmCFQ")
-//		  .setOAuthAccessTokenSecret("1eXAADpHShAzQh5hGWLBUQHLysOuAKIOapmQQ8U0OVk2c");
-//
+//		  .setOAuthConsumerKey("//TODO")
+//		  .setOAuthConsumerSecret("//TODO")
+//		  .setOAuthAccessToken("//TODO")
+//		  .setOAuthAccessTokenSecret("//TODO");
 //		TwitterFactory tf = new TwitterFactory(cb.build());
 //		Twitter twitter = tf.getSingleton();
 		
