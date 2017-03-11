@@ -11,8 +11,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.Criteria;
-import org.hibernate.NullPrecedence;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -151,7 +149,7 @@ public class FooSortingPersistenceIntegrationTest {
             System.out.println("Id: " + foo.getId() + ", FirstName: " + foo.getName());
         }
     }
-
+    
     @Test
     public final void whenCriteriaSortingStringNullsFirstDesc_thenNullsFirst() {
         final Criteria criteria = session.createCriteria(Foo.class, "FOO");
