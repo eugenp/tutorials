@@ -22,7 +22,7 @@ import java.util.stream.StreamSupport;
 
 import static org.junit.Assert.assertEquals;
 
-public class RedissonTest {
+public class RedissonIntegrationTest {
 
     private static RedisServer redisServer;
     private static RedissonClient client;
