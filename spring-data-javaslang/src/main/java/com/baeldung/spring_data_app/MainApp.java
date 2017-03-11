@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("com.baeldung.spring_data_javaslang.repository")
+@EnableJpaRepositories("com.baeldung.spring_data.repository")
 @EnableTransactionManagement
-@EntityScan("com.baeldung.spring_data_javaslang.model")
+@EntityScan("com.baeldung.spring_data.model")
 @SpringBootApplication
 public class MainApp {
     public static void main(String[] args){

@@ -1,13 +1,13 @@
-package com.baeldung.spring_data_javaslang_test;
+package com.baeldung.spring_data_tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.baeldung.spring_data_app.MainApp;
-import com.baeldung.spring_data_javaslang.model.Book;
-import com.baeldung.spring_data_javaslang.model.JavaBook;
-import com.baeldung.spring_data_javaslang.repository.BookRepository;
-import com.baeldung.spring_data_javaslang.repository.JavaBookRepository;
+import com.baeldung.spring_data.model.Book;
+import com.baeldung.spring_data.model.JavaBook;
+import com.baeldung.spring_data.repository.BookRepository;
+import com.baeldung.spring_data.repository.JavaBookRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,21 +31,19 @@ public class SpringTests {
     BookRepository repository;
     
     @Test
-    public void testJavaslangRepositoryInsertWithSeqReturn(){
+    public void should_return_seq(){
         Seq authors = List.of("author1","author2");
         Book testBook = new Book();
-        testBook.setTitle("Javaslang in Spring Data Seq Return");
+        testBook.setTitle("Javaslang in Spring Data Seq Test Return");
         testBook.setAuthors(authors);
         Book book = repository.save(testBook);
-        Option<Seq<Book>> books = repository.findByTitleContaining("Seq");
+        Option<Seq<Book>> books = repository.findByTitleContaining("Seq Test");
         assert(!books.isEmpty());
-        //assert(books.size() == 1);
-        //assert(books.get(0).getTitle().equals("Javaslang in Spring Data Seq Return"));
     }
     
     
     @Test
-    public void testJavaslangRepositoryInsertWithBookIdReturn(){
+    public void should_return_option_with_book(){
         Seq authors = List.of("author1","author2");
         Book testBook = new Book();
         testBook.setTitle("Javaslang in Spring Data");
@@ -57,7 +55,7 @@ public class SpringTests {
     }
     
     @Test
-    public void testJavaRepositoryInsertWithListReturn(){
+    public void should_return_list(){
         ArrayList<String> authors = new ArrayList<String>();
         authors.add("author1");
         authors.add("author2");
@@ -72,7 +70,7 @@ public class SpringTests {
     }
  
     @Test
-    public void testJavaRepositoryInsertWithBookIdReturn(){
+    public void should_return_book(){
         ArrayList<String> authors = new ArrayList<String>();
         authors.add("author1");
         authors.add("author2");

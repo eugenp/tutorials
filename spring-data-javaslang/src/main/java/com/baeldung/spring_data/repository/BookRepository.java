@@ -1,13 +1,12 @@
-package com.baeldung.spring_data_javaslang.repository;
+package com.baeldung.spring_data.repository;
 
-import com.baeldung.spring_data_javaslang.model.Book;
-
-
-import javaslang.collection.Seq;
-import javaslang.control.Option;
+import com.baeldung.spring_data.model.Book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import javaslang.collection.Seq;
+import javaslang.control.Option;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book,Long>{

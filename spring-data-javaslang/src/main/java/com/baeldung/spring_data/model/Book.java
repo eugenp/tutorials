@@ -1,4 +1,4 @@
-package com.baeldung.spring_data_javaslang.model;
+package com.baeldung.spring_data.model;
 
 import javaslang.collection.Seq;
 

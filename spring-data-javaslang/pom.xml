@@ -1,21 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>spring-data-javaslang</groupId>
-    <artifactId>spring-data-javaslang</artifactId>
+    <groupId>spring-data-javaslangb</groupId>
+    <artifactId>spring-data-javaslangb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <properties>
+     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
+        <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
+        <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
         <javaslang.version>2.0.5</javaslang.version>
         <junit.version>4.12</junit.version>
-        <spring-data.version>1.10.7.RELEASE</spring-data.version>
+        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <spring-context.version>4.3.6.RELEASE</spring-context.version>
         <spring-core.version>4.3.6.RELEASE</spring-core.version>
         <spring-test.version>4.3.6.RELEASE</spring-test.version>
-        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
-        <project.build.testSourceDirectory>${basedir}/src/main/test/</project.build.testSourceDirectory>
+        <project.build.testSourceDirectory>${basedir}/src/test/java</project.build.testSourceDirectory>
     </properties>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -62,7 +64,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
-                </configuration>         
+                </configuration>           
             </plugin>
         </plugins>
     </build>
@@ -89,7 +91,7 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>1.11.0.RELEASE</version>
-        </dependency>   
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -113,13 +115,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring-context.version}</version>
-        </dependency>        
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring-core.version}</version>
-        </dependency>    
+        </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>

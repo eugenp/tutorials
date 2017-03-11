@@ -1,4 +1,5 @@
 /target/
+/project/
+.idea
 .classpath
-.editor
-.project
+.eclipse

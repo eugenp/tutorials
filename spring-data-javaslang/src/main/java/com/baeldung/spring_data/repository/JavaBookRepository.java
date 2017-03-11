@@ -1,9 +1,9 @@
-package com.baeldung.spring_data_javaslang.repository;
+package com.baeldung.spring_data.repository;
+
+import com.baeldung.spring_data.model.JavaBook;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.baeldung.spring_data_javaslang.model.JavaBook;
 
 import java.util.List;
 

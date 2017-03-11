@@ -1,4 +1,4 @@
-package com.baeldung.spring_data_javaslang.model;
+package com.baeldung.spring_data.model;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -38,3 +38,4 @@ public class JavaBook {
         return this.id;
     }
 }
+
