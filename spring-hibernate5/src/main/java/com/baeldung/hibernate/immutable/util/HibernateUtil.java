@@ -1,5 +1,6 @@
 package com.baeldung.hibernate.immutable.util;
 
+import com.baeldung.hibernate.immutable.entities.Event;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -12,10 +13,11 @@ public class HibernateUtil {
         try {
             // Create a session factory from immutable.cfg.xml
             Configuration configuration = new Configuration();
+            configuration.addAnnotatedClass(Event.class);
             configuration.configure("immutable.cfg.xml");
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .applySettings(configuration.getProperties())
-                    .build();
+              .applySettings(configuration.getProperties())
+              .build();
             return configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             System.out.println("Initial SessionFactory creation failed." + ex);
