@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customer>
+	<person>
+		<customer-id>12345</customer-id>
+		<first-name>Stefan</first-name>
+		<last-name>Jaeger</last-name>
+	</person>
+	<home-phone>
+		<country-code>1</country-code>
+		<network-prefix>234</network-prefix>
+		<number>234678</number>
+	</home-phone>
+
+	<office-phone>
+		<country-code>1</country-code>
+		<network-prefix>234</network-prefix>
+		<number>234678</number>
+	</office-phone>
+	<city>Davos Dorf</city>
+
+</customer>
