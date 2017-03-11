@@ -22,7 +22,7 @@ import org.junit.Test;
 
 import com.baeldung.solr.fulltext.search.model.Item;
 
-public class ItemSearchServiceIntegrationTest {
+public class ItemSearchServiceLiveTest {
 
     private static SolrClient solrClient;
     private static ItemSearchService itemSearchService;
