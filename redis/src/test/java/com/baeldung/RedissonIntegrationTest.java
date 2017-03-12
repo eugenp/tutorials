@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.redisson.Redisson;
 import org.redisson.RedissonMultiLock;
 import org.redisson.api.*;
-import org.redisson.api.listener.MessageListener;
 import org.redisson.client.RedisClient;
 import org.redisson.client.RedisConnection;
 import org.redisson.client.codec.StringCodec;
@@ -21,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RedissonIntegrationTest {
 
@@ -48,7 +48,7 @@ public class RedissonIntegrationTest {
 
         RKeys keys = client.getKeys();
 
-        assert(keys.count() >= 3);
+        assertTrue(keys.count() >= 3);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class RedissonIntegrationTest {
             keysWithPattern.spliterator(),
               false).collect(Collectors.toList());
 
-        assert(keyWithPatternList.size() == 3);
+        assertTrue(keyWithPatternList.size() == 3);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class RedissonIntegrationTest {
 
         Ledger returnedLedger = bucket.get();
 
-        assert(
+        assertTrue(
           returnedLedger != null
             && returnedLedger.getName().equals("ledger1"));
     }
@@ -94,7 +94,7 @@ public class RedissonIntegrationTest {
         atomicLong.set(value);
         Long returnValue = atomicLong.incrementAndGet();
 
-        assert(returnValue == 6L);
+        assertTrue(returnValue == 6L);
     }
 
     @Test
@@ -102,16 +102,11 @@ public class RedissonIntegrationTest {
         CompletableFuture<String> future = new CompletableFuture<>();
 
         RTopic<CustomMessage> subscribeTopic = client.getTopic("baeldung");
-        subscribeTopic.addListener(new MessageListener<CustomMessage>() {
-            @Override
-            public void onMessage(String channel, CustomMessage customMessage) {
-                future.complete(customMessage.getMessage());
-            }
-        });
+        subscribeTopic.addListener((channel, customMessage) -> future.complete(customMessage.getMessage()));
 
-        RTopic<CustomMessage> recieveTopic = client.getTopic("baeldung");
+        RTopic<CustomMessage> receiveTopic = client.getTopic("baeldung");
         long clientsReceivedMessage
-          = recieveTopic.publish(new CustomMessage("This is a message"));
+          = receiveTopic.publish(new CustomMessage("This is a message"));
 
         assertEquals("This is a message", future.get());
 
@@ -122,7 +117,7 @@ public class RedissonIntegrationTest {
         RMap<String, Ledger> map = client.getMap("ledger");
         map.put("123", new Ledger("ledger"));
 
-        assert(map.get("123").getName().equals("ledger"));
+        assertTrue(map.get("123").getName().equals("ledger"));
     }
 
     @Test
@@ -130,7 +125,7 @@ public class RedissonIntegrationTest {
         RSet<Ledger> ledgerSet = client.getSet("ledgerSet");
         ledgerSet.add(new Ledger("ledger"));
 
-        assert(ledgerSet.contains(new Ledger("ledger")));
+        assertTrue(ledgerSet.contains(new Ledger("ledger")));
     }
 
     @Test
@@ -138,17 +133,17 @@ public class RedissonIntegrationTest {
         RList<Ledger> ledgerList = client.getList("ledgerList");
         ledgerList.add(new Ledger("ledger"));
 
-        assert(ledgerList.contains(new Ledger("ledger")));
+        assertTrue(ledgerList.contains(new Ledger("ledger")));
     }
 
     @Test
     public void givenLockSet_thenEnsureCanUnlock(){
         RLock lock = client.getLock("lock");
         lock.lock();
-        assert(lock.isLocked());
+        assertTrue(lock.isLocked());
 
         lock.unlock();
-        assert(!lock.isLocked());
+        assertTrue(!lock.isLocked());
     }
 
     @Test
@@ -163,10 +158,10 @@ public class RedissonIntegrationTest {
 
         RedissonMultiLock lock = new RedissonMultiLock(lock1, lock2, lock3);
         lock.lock();
-        assert(lock1.isLocked() && lock2.isLocked() && lock3.isLocked());
+        assertTrue(lock1.isLocked() && lock2.isLocked() && lock3.isLocked());
 
         lock.unlock();
-        assert(!(lock1.isLocked() || lock2.isLocked() || lock3.isLocked()));
+        assertTrue(!(lock1.isLocked() || lock2.isLocked() || lock3.isLocked()));
     }
 
     @Test
@@ -182,7 +177,7 @@ public class RedissonIntegrationTest {
 
         List<String> entries = ledgerService.getEntries(10);
 
-        assert(entries.size() == 3 && entries.contains("entry1"));
+        assertTrue(entries.size() == 3 && entries.contains("entry1"));
     }
 
     @Test
@@ -197,7 +192,7 @@ public class RedissonIntegrationTest {
         LedgerLiveObject returnLedger
           = service.get(LedgerLiveObject.class, "ledger1");
 
-        assert(ledger.getName().equals(returnLedger.getName()));
+        assertTrue(ledger.getName().equals(returnLedger.getName()));
     }
 
     @Test
@@ -209,7 +204,7 @@ public class RedissonIntegrationTest {
         List<?> result = batch.execute();
 
         RMap<String, String> map = client.getMap("ledgerMap");
-        assert(result.size() > 0 && map.get("1").equals("2"));
+        assertTrue(result.size() > 0 && map.get("1").equals("2"));
     }
 
     @Test
@@ -218,7 +213,7 @@ public class RedissonIntegrationTest {
         String result = client.getScript().eval(RScript.Mode.READ_ONLY,
                 "return redis.call('get', 'foo')", RScript.ReturnType.VALUE);
 
-        assert(result.equals("bar"));
+        assertTrue(result.equals("bar"));
     }
 
     @Test
@@ -232,6 +227,6 @@ public class RedissonIntegrationTest {
         conn.closeAsync();
         client.shutdown();
 
-        assert(testValue.equals("0"));
+        assertTrue(testValue.equals("0"));
     }
 }
