@@ -10,12 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class JedisTest {
+public class JedisIntegrationTest {
 
     private Jedis jedis;
     private static RedisServer redisServer;
 
-    public JedisTest() {
+    public JedisIntegrationTest() {
         jedis = new Jedis();
     }
 
