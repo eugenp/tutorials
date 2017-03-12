@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * Created by johnson on 3/9/17.
  */
-public class RedissonConfigurationTest {
+public class RedissonConfigurationIntegrationTest {
     private static RedisServer redisServer;
     private static RedissonClient client;
 
