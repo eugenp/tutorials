@@ -45,9 +45,11 @@ public class Launcher {
         final int subListSize = 3;
         int idx;
         for(idx = 0; idx < runners.size() - subListSize; idx += subListSize) {
-            slicedList.add(runners.subList(idx, idx + subListSize));
+            slicedList.add(new ArrayList<>(runners.subList(idx, idx + subListSize)));
         }
-        slicedList.add(runners.subList(idx, runners.size()));
+        if(runners.size() - idx > 0) {
+            slicedList.add(new ArrayList<>(runners.subList(idx, runners.size())));
+        }
 
         for(List<Runner> subList : slicedList) {
             System.out.println(subList.size());
