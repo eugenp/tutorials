@@ -66,7 +66,7 @@ public class StackWalkerDemo {
             && frame.getClassName()
             .endsWith("Test"))
             .findFirst()
-            .map(frame -> frame.getClassName() + "#" + frame.getMethodName() + ", Line " + frame.getLineNumber())
+            .map(f -> f.getClassName() + "#" + f.getMethodName() + ", Line " + f.getLineNumber())
             .orElse("Unknown caller");
     }
     
