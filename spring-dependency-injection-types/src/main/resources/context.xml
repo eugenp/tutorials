@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="modelLoader" class="com.baeldung.ModelLoader">
+        <constructor-arg name="xmlModelParser" ref="xmlModelParser"/>
+        <property name="metricsSender" ref="metricsSender"/>
+    </bean>
+
+    <bean name="xmlModelParser" class="com.baeldung.XmlModelParser"/>
+    <bean name="metricsSender" class="com.baeldung.MetricsSender"/>
+</beans>
