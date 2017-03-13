@@ -104,9 +104,9 @@ public class RedissonIntegrationTest {
         RTopic<CustomMessage> subscribeTopic = client.getTopic("baeldung");
         subscribeTopic.addListener((channel, customMessage) -> future.complete(customMessage.getMessage()));
 
-        RTopic<CustomMessage> receiveTopic = client.getTopic("baeldung");
+        RTopic<CustomMessage> publishTopic = client.getTopic("baeldung");
         long clientsReceivedMessage
-          = receiveTopic.publish(new CustomMessage("This is a message"));
+          = publishTopic.publish(new CustomMessage("This is a message"));
 
         assertEquals("This is a message", future.get());
 
