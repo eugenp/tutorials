@@ -3,14 +3,18 @@ package com.baeldung.examples.guice;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.logging.Logger;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class Communication {
 
+    final Date start = new Date();
 
     @Inject
     private Logger logger;
@@ -20,15 +24,16 @@ public class Communication {
 
     public Communication(Boolean keepRecords) {
         if (keepRecords) {
-            System.out.println("message logging enabled");
+            System.out.println("keeping records");
         }
     }
 
     public boolean sendMessage(String message) {
-       return communicator.sendMessage(message);
+      
+        return communicator.sendMessage(message);
     }
-
-     public DefaultCommunicator getCommunicator() {
+ 
+    public DefaultCommunicator getCommunicator() {
         return this.communicator;
     }
 
