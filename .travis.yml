@@ -16,6 +16,8 @@ cache:
   - .autoconf
   - $HOME/.m2
   
+  sudo: required
+  
   env:
     global:
       JAVA_OPTS="-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
