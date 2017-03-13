@@ -8,8 +8,7 @@ import com.baeldung.persistence.dao.common.IOperations;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(value = "hibernateTransactionManager")
-public abstract class AbstractHibernateAuditableService<T extends Serializable> extends AbstractHibernateService<T>
-        implements IOperations<T>, IAuditOperations<T> {
+public abstract class AbstractHibernateAuditableService<T extends Serializable> extends AbstractHibernateService<T> implements IOperations<T>, IAuditOperations<T> {
 
     @Override
     public List<T> getEntitiesAtRevision(final Number revision) {

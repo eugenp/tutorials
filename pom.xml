@@ -60,7 +60,7 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>java-cassandra</module>
+<!--         <module>java-cassandra</module> -->
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
@@ -94,6 +94,7 @@
 
         <module>patterns</module>
         <module>pdf</module>
+        <module>protobuffer</module>
 
         <module>querydsl</module>
 
@@ -108,6 +109,7 @@
         <module>selenium-junit-testng</module>
         <module>solr-fulltext-search</module>
         <module>spark-java</module>
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
@@ -132,6 +134,7 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
+        <module>spring-hibernate5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
         <module>spring-jms</module>
@@ -203,7 +206,6 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
-
 
     </modules>
 
