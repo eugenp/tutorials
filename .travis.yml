@@ -18,5 +18,5 @@ cache:
   
   env:
     global:
-      JAVA_OPTS=-Xmx2g
-      MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m"
+      JAVA_OPTS="-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
+      MAVEN_OPTS="-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
