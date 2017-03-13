@@ -1,3 +1,4 @@
+
 package com.baeldung.examples.guice;
 
 import com.baeldung.examples.guice.aop.MessageSentLoggable;
@@ -7,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class SMSCommunicationMode implements CommunicationMode {
     

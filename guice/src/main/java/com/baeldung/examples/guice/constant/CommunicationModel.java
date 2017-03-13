@@ -1,8 +1,9 @@
+
 package com.baeldung.examples.guice.constant;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public enum CommunicationModel {
 

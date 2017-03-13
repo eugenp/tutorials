@@ -1,3 +1,4 @@
+
 package com.baeldung.examples.guice;
 
 import com.baeldung.examples.guice.aop.MessageSentLoggable;
@@ -5,7 +6,7 @@ import com.baeldung.examples.guice.constant.CommunicationModel;
 
 /**
  *
- * @author Baekdung
+ * @author baeldung
  */
 public class EmailCommunicationMode implements CommunicationMode {
 

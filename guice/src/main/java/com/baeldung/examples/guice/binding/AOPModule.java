@@ -1,3 +1,4 @@
+
 package com.baeldung.examples.guice.binding;
 
 import com.baeldung.examples.guice.aop.MessageLogger;
@@ -7,7 +8,7 @@ import com.google.inject.matcher.Matchers;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class AOPModule extends AbstractModule {
 

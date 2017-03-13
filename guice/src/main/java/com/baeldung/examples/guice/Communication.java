@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class Communication {
 
@@ -19,37 +19,20 @@ public class Communication {
     @Inject
     private Logger logger;
 
-    private Queue<String> messageLog;
-
-    @Named("CommsUUID")
-    private String commsID;
-
     @Inject
     private DefaultCommunicator communicator;
 
     public Communication(Boolean keepRecords) {
         if (keepRecords) {
-            messageLog = new LinkedList();
+            System.out.println("keeping records");
         }
     }
 
     public boolean sendMessage(String message) {
-        if (!message.isEmpty() && messageLog != null) {
-            messageLog.add(message);
-        }
+      
         return communicator.sendMessage(message);
     }
-
-    public void print() {
-        if (messageLog != null) {
-            for (String message : messageLog) {
-                logger.info(message);
-            }
-        } else {
-            logger.info("Message logging wasn't enabled");
-        }
-    }
-
+ 
     public DefaultCommunicator getCommunicator() {
         return this.communicator;
     }

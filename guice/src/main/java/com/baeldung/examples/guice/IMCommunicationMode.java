@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class IMCommunicationMode implements CommunicationMode {
 
