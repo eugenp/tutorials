@@ -83,6 +83,25 @@ public class UserController {
         final Specification<User> spec = builder.build();
         return dao.findAll(spec);
     }
+    
+    protected Specification<User> resolveSpecification(String searchParameters){
+		
+		final UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+		final String operationSetExper = Joiner.on("|").join(SearchOperation.SIMPLE_OPERATION_SET);
+		final Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
+		final Matcher matcher = pattern.matcher(searchParameters + ",");
+		while (matcher.find()) {
+			builder.with(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(5), matcher.group(4),matcher.group(6));
+		}
+		return builder.build();
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/users/espec")
+	@ResponseBody
+	public List<User> findAllByOptionalSpecification(@RequestParam(value = "search") final String search) {
+		final Specification<User> spec = resolveSpecification(search);
+		return dao.findAll(spec);
+	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/myusers")
     @ResponseBody

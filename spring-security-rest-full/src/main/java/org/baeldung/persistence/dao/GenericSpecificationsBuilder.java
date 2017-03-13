@@ -2,30 +2,28 @@ package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import org.baeldung.persistence.IEnhancedSpecification;
-import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 
-public final class UserSpecificationsBuilder {
+public class GenericSpecificationsBuilder {
 
 	private final List<SpecSearchCriteria> params;
 
-	public UserSpecificationsBuilder() {
-		params = new ArrayList<SpecSearchCriteria>();
+	public GenericSpecificationsBuilder() {
+		this.params = new ArrayList<>();
 	}
 
-	// API
-
-	public final UserSpecificationsBuilder with(final String key, final String operation, final Object value,
+	public final GenericSpecificationsBuilder with(final String key, final String operation, final Object value,
 			final String prefix, final String suffix) {
 		return with(null, key, operation, value, prefix, suffix);
 	}
 
-	public final UserSpecificationsBuilder with(final String precedenceIndicator, final String key,
+	public final GenericSpecificationsBuilder with(final String precedenceIndicator, final String key,
 			final String operation, final Object value, final String prefix, final String suffix) {
 		SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
 		if (op != null) {
@@ -48,24 +46,24 @@ public final class UserSpecificationsBuilder {
 		return this;
 	}
 
-	public Specification<User> build() {
+	public <U> Specification<U> build(Function<SpecSearchCriteria, IEnhancedSpecification<U>> converter) {
 
 		if (params.size() == 0) {
 			return null;
 		}
 
-		final List<IEnhancedSpecification<User>> specs = new ArrayList<>();
+		final List<IEnhancedSpecification<U>> specs = new ArrayList<>();
 		for (final SpecSearchCriteria param : params) {
-			specs.add(new UserSpecification(param));
+			specs.add(converter.apply(param));
 		}
 
 		specs.sort((spec0, spec1) -> {
 			return Boolean.compare(spec0.isOfLowPrecedence(), spec1.isOfLowPrecedence());
 		});
 
-		Specification<User> result = specs.get(0);
+		Specification<U> result = specs.get(0);
 		for (int i = 1; i < specs.size(); i++) {
-			IEnhancedSpecification<User> optionalSpec = specs.get(i);
+			IEnhancedSpecification<U> optionalSpec = specs.get(i);
 
 			if (optionalSpec.isOfLowPrecedence())
 				result = Specifications.where(result).or(specs.get(i));
@@ -73,10 +71,5 @@ public final class UserSpecificationsBuilder {
 				result = Specifications.where(result).and(specs.get(i));
 		}
 		return result;
-	}
-	
-	public final UserSpecificationsBuilder with(UserSpecification spec) {
-		params.add(spec.getCriteria());
-		return this;
 	}
 }
