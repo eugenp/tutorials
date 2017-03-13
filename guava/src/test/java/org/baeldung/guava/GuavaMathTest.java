@@ -1,10 +1,12 @@
 package org.baeldung.guava;
 
+import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.math.BigInteger;
 import java.math.RoundingMode;
 
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -160,5 +162,25 @@ public class GuavaMathTest {
 
         int result6 = IntMath.binomial(7, 3);
         assertThat(result6, equalTo(35));
+    }
+
+    @Test
+    public void testDoubleMath() {
+        boolean result1 = DoubleMath.isMathematicalInteger(2.0);
+        assertThat(result1, equalTo(true));
+        boolean result2 = DoubleMath.isMathematicalInteger(2.1);
+        assertThat(result2, equalTo(false));
+
+        int result3 = DoubleMath.roundToInt(2.5, RoundingMode.DOWN);
+        assertThat(result3, equalTo(2));
+
+        long result4 = DoubleMath.roundToLong(2.5, RoundingMode.HALF_UP);
+        assertThat(result4, equalTo(3L));
+
+        BigInteger result5 = DoubleMath.roundToBigInteger(2.5, RoundingMode.UP);
+        assertThat(result5, equalTo(new BigInteger("3")));
+
+        int result6 = DoubleMath.log2(10, RoundingMode.UP);
+        assertThat(result6, equalTo(4));
     }
 }
