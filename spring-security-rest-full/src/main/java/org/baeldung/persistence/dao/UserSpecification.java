@@ -5,30 +5,17 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.baeldung.persistence.IEnhancedSpecification;
 import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SpecSearchCriteria;
+import org.springframework.data.jpa.domain.Specification;
 
-public class UserSpecification implements IEnhancedSpecification<User> {
+public class UserSpecification implements Specification<User> {
 
 	private SpecSearchCriteria criteria;
-	private boolean lowPrecedenceCriteria;
-
-	@Override
-	public boolean isOfLowPrecedence() {
-		return lowPrecedenceCriteria;
-	}
 
 	public UserSpecification(final SpecSearchCriteria criteria) {
 		super();
 		this.criteria = criteria;
-		this.lowPrecedenceCriteria = criteria.isLowPrecedence();
-	}
-
-	public UserSpecification(final SpecSearchCriteria criteria, final boolean lowerPrecedence) {
-		super();
-		this.criteria = criteria;
-		this.lowPrecedenceCriteria = lowerPrecedence;
 	}
 
 	public SpecSearchCriteria getCriteria() {

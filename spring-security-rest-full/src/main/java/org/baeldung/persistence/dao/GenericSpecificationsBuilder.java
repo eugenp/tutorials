@@ -3,8 +3,8 @@ package org.baeldung.persistence.dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
-import org.baeldung.persistence.IEnhancedSpecification;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
@@ -27,11 +27,10 @@ public class GenericSpecificationsBuilder {
 			final String operation, final Object value, final String prefix, final String suffix) {
 		SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
 		if (op != null) {
-			if (op == SearchOperation.EQUALITY) // the operation may be complex
-												// operation
+			if (op == SearchOperation.EQUALITY) // the operation may be complex operation
 			{
-				final boolean startWithAsterisk = prefix != null && prefix.contains("*");
-				final boolean endWithAsterisk = suffix != null && suffix.contains("*");
+				final boolean startWithAsterisk = prefix != null && prefix.contains(SearchOperation.ZERO_OR_MORE_REGEX);
+				final boolean endWithAsterisk = suffix != null && suffix.contains(SearchOperation.ZERO_OR_MORE_REGEX);
 
 				if (startWithAsterisk && endWithAsterisk) {
 					op = SearchOperation.CONTAINS;
@@ -46,29 +45,19 @@ public class GenericSpecificationsBuilder {
 		return this;
 	}
 
-	public <U> Specification<U> build(Function<SpecSearchCriteria, IEnhancedSpecification<U>> converter) {
+	public <U> Specification<U> build(Function<SpecSearchCriteria, Specification<U>> converter) {
 
-		if (params.size() == 0) {
+		if (params.size() == 0)
 			return null;
-		}
-
-		final List<IEnhancedSpecification<U>> specs = new ArrayList<>();
-		for (final SpecSearchCriteria param : params) {
-			specs.add(converter.apply(param));
-		}
-
-		specs.sort((spec0, spec1) -> {
-			return Boolean.compare(spec0.isOfLowPrecedence(), spec1.isOfLowPrecedence());
-		});
-
+		
+		params.sort((spec0, spec1) -> Boolean.compare(spec0.isLowPrecedence(), spec1.isLowPrecedence()));
+		
+		final List<Specification<U>> specs  = params.stream().map(converter).collect(Collectors.toCollection(ArrayList::new));
+		
 		Specification<U> result = specs.get(0);
-		for (int i = 1; i < specs.size(); i++) {
-			IEnhancedSpecification<U> optionalSpec = specs.get(i);
-
-			if (optionalSpec.isOfLowPrecedence())
-				result = Specifications.where(result).or(specs.get(i));
-			else
-				result = Specifications.where(result).and(specs.get(i));
+		
+		for (int idx = 1; idx < specs.size(); idx++) {
+			result=params.get(idx).isLowPrecedence()? Specifications.where(result).or(specs.get(idx)): Specifications.where(result).and(specs.get(idx));
 		}
 		return result;
 	}

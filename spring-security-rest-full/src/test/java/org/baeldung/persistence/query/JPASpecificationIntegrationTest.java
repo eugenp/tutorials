@@ -8,7 +8,6 @@ import static org.hamcrest.core.IsNot.not;
 import java.util.List;
 import java.util.function.Function;
 
-import org.baeldung.persistence.IEnhancedSpecification;
 import org.baeldung.persistence.dao.GenericSpecificationsBuilder;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.UserSpecification;
@@ -21,6 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -81,27 +81,24 @@ public class JPASpecificationIntegrationTest {
 	@Test
 	public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
 		UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
-		
-		
-		final UserSpecification spec = new UserSpecification(
-				new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john"));
-		final UserSpecification spec1 = new UserSpecification(
-				new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe"));
-		
-		
+
+		final SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
+		final SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
+
 		final List<User> results = repository.findAll(builder.with(spec1).with(spec).build());
+		
 		assertThat(results, hasSize(2));
 		assertThat(userJohn, isIn(results));
 		assertThat(userTom, isIn(results));
 	}
-	
+
 	@Test
 	public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
-		GenericSpecificationsBuilder builder=new GenericSpecificationsBuilder();
-		Function<SpecSearchCriteria, IEnhancedSpecification<User>> converter = UserSpecification::new;
-		builder.with("'", "firstName", ":", "john",null,null);
-		builder.with(null, "lastName", ":", "doe",null,null);
-		
+		GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
+		Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
+		builder.with("'", "firstName", ":", "john", null, null);
+		builder.with(null, "lastName", ":", "doe", null, null);
+
 		final List<User> results = repository.findAll(builder.build(converter));
 		assertThat(results, hasSize(2));
 		assertThat(userJohn, isIn(results));
