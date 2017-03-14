@@ -21,6 +21,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${ch.qos.logback.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -76,9 +81,9 @@
     
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
-
+        <ch.qos.logback.version>1.2.1</ch.qos.logback.version>
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
         <!-- testing -->

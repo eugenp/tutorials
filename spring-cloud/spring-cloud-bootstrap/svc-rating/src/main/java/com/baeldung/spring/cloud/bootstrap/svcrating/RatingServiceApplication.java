@@ -1,41 +1,51 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating;
 
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.cloud.sleuth.metric.SpanMetricReporter;
+import org.springframework.cloud.sleuth.zipkin.HttpZipkinSpanReporter;
+import org.springframework.cloud.sleuth.zipkin.ZipkinProperties;
+import org.springframework.cloud.sleuth.zipkin.ZipkinSpanReporter;
+import org.springframework.context.annotation.Bean;
+import zipkin.Span;
 
 @SpringBootApplication
 @EnableEurekaClient
-@RestController
-@RequestMapping("/ratings")
 public class RatingServiceApplication {
+    @Autowired
+    private EurekaClient eurekaClient;
+    @Autowired
+    private SpanMetricReporter spanMetricReporter;
+    @Autowired
+    private ZipkinProperties zipkinProperties;
+    @Value("${spring.sleuth.web.skipPattern}")
+    private String skipPattern;
+
     public static void main(String[] args) {
         SpringApplication.run(RatingServiceApplication.class, args);
     }
 
-    private List<Rating> ratingList = Arrays.asList(
-        new Rating(1L, 1L, 2),
-        new Rating(2L, 1L, 3),
-        new Rating(3L, 2L, 4),
-        new Rating(4L, 2L, 5)
-    );
+    @Bean
+    public ZipkinSpanReporter makeZipkinSpanReporter() {
+        return new ZipkinSpanReporter() {
+            private HttpZipkinSpanReporter delegate;
+            private String baseUrl;
 
-    @GetMapping("")
-    public List<Rating> findRatingsByBookId(@RequestParam Long bookId) {
-        return bookId == null || bookId.equals(0L) ? Collections.EMPTY_LIST : ratingList.stream().filter(r -> r.getBookId().equals(bookId)).collect(Collectors.toList());
-    }
-
-    @GetMapping("/all")
-    public List<Rating> findAllRatings() {
-        return ratingList;
+            @Override
+            public void report(Span span) {
+                InstanceInfo instance = eurekaClient.getNextServerFromEureka("zipkin", false);
+                if (!(baseUrl != null && instance.getHomePageUrl().equals(baseUrl))) {
+                    baseUrl = instance.getHomePageUrl();
+                    delegate = new HttpZipkinSpanReporter(baseUrl, zipkinProperties.getFlushInterval(), zipkinProperties.getCompression().isEnabled(), spanMetricReporter);
+                    if (!span.name.matches(skipPattern)) delegate.report(span);
+                }
+                if (!span.name.matches(skipPattern)) delegate.report(span);
+            }
+        };
     }
 }

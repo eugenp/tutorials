@@ -8,7 +8,6 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
@@ -26,6 +25,7 @@
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
+        <module>axon</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
@@ -47,10 +47,12 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guice-intro</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <!--<module>hbase</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -65,6 +67,7 @@
         <module>jaxb</module>
         <module>jee7</module>
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -74,6 +77,7 @@
 
         <module>kotlin</module>
 
+        <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -83,16 +87,19 @@
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
+        <module>mockito2</module>
         <module>mocks</module>
 
         <module>orika</module>
 
         <module>patterns</module>
         <module>pdf</module>
+        <module>protobuffer</module>
 
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -102,11 +109,11 @@
         <module>selenium-junit-testng</module>
         <module>solr-fulltext-search</module>
         <module>spark-java</module>
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
-        <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
@@ -127,12 +134,14 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
+        <module>spring-hibernate5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
         <module>spring-katharsis</module>
+        <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
@@ -182,6 +191,7 @@
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -193,17 +203,19 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
 
+        <module>rabbitmq</module>
 
     </modules>
 
     <build>
         <extensions>
-            <extension>
+            <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>3.1</version>
-            </extension>
+            </extension>-->
         </extensions>
     </build>
 </project>
