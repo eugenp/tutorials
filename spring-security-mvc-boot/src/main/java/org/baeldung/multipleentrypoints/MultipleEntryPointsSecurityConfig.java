@@ -26,10 +26,6 @@ public class MultipleEntryPointsSecurityConfig {
     @Order(1)
     public static class App1ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
-        public App1ConfigurationAdapter() {
-            super();
-        }
-
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             //@formatter:off
@@ -44,10 +40,6 @@ public class MultipleEntryPointsSecurityConfig {
     @Configuration
     @Order(2)
     public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
-
-        public App2ConfigurationAdapter() {
-            super();
-        }
 
         protected void configure(HttpSecurity http) throws Exception {
             //@formatter:off
@@ -66,10 +58,6 @@ public class MultipleEntryPointsSecurityConfig {
     @Configuration
     @Order(3)
     public static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
-
-        public App3ConfigurationAdapter() {
-            super();
-        }
 
         protected void configure(HttpSecurity http) throws Exception {
             http.antMatcher("/guest/**").authorizeRequests().anyRequest().permitAll();
