@@ -1,16 +1,15 @@
 package com.baeldung.javassist;
 
 
-import javassist.CannotCompileException;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.NotFoundException;
+import javassist.*;
 import javassist.bytecode.*;
 import org.junit.Test;
 
 import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -22,9 +21,10 @@ import static org.junit.Assert.assertTrue;
 
 public class JavasisstTest {
     @Test
-    public void givenJavasisstAPI_whenConstructClass_thenGenerateAClassFile() throws CannotCompileException, IOException {
+    public void givenJavasisstAPI_whenConstructClass_thenGenerateAClassFile() throws CannotCompileException, IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         //given
-        ClassFile cf = new ClassFile(false, "com.baeldung.JavassistGeneratedClass", null);
+        String classNameWithPackage = "com.baeldung.JavassistGeneratedClass";
+        ClassFile cf = new ClassFile(false, classNameWithPackage, null);
         cf.setInterfaces(new String[]{"java.lang.Cloneable"});
 
         FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
@@ -36,6 +36,10 @@ public class JavasisstTest {
         cf.write(new DataOutputStream(new FileOutputStream(className)));
 
         //then
+        ClassPool classPool = ClassPool.getDefault();
+        Field[] fields = classPool.makeClass(cf).toClass().getFields();
+        assertEquals(fields[0].getName(), "id");
+
         String classContent = new String(Files.readAllBytes(Paths.get(className)));
         assertTrue(classContent.contains("java/lang/Cloneable"));
     }
@@ -64,7 +68,7 @@ public class JavasisstTest {
     }
 
     @Test
-    public void givenTableOfInstructions_whenAddNewInstruction_thenShouldConstructProperSequence() throws NotFoundException, BadBytecode {
+    public void givenTableOfInstructions_whenAddNewInstruction_thenShouldConstructProperSequence() throws NotFoundException, BadBytecode, CannotCompileException, IllegalAccessException, InstantiationException {
         //given
         ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.Point").getClassFile();
         ConstPool cp = cf.getConstPool();
