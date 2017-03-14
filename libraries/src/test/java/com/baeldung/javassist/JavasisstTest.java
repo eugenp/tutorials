@@ -71,24 +71,19 @@ public class JavasisstTest {
     public void givenTableOfInstructions_whenAddNewInstruction_thenShouldConstructProperSequence() throws NotFoundException, BadBytecode, CannotCompileException, IllegalAccessException, InstantiationException {
         //given
         ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.Point").getClassFile();
-        ConstPool cp = cf.getConstPool();
-        Bytecode b = new Bytecode(cp, 1, 0);
-        b.addIconst(3);
-        b.addReturn(CtClass.intType);
-        CodeAttribute ca = b.toCodeAttribute();
-        CodeIterator ci = ca.iterator();
 
         //when
-        List<String> operations = new LinkedList<>();
-        while (ci.hasNext()) {
-            int index = ci.next();
-            int op = ci.byteAt(index);
-            operations.add(Mnemonic.OPCODE[op]);
-        }
+        FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
+        f.setAccessFlags(AccessFlag.PUBLIC);
+        cf.addField(f);
 
-        //then
-        assertEquals(operations,
-                Arrays.asList("iconst_3", "ireturn"));
+
+        ClassPool classPool = ClassPool.getDefault();
+        Field[] fields = classPool.makeClass(cf).toClass().getFields();
+        assertEquals(fields[0].getName(), "x");
+        assertEquals(fields[1].getName(), "y");
+        assertEquals(fields[2].getName(), "id");
+
     }
 
     @Test
