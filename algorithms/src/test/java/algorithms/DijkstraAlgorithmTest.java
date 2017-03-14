@@ -1,9 +1,10 @@
 package algorithms;
 
-import com.baeldung.algorithms.dijkstra.Dijkstra;
-import com.baeldung.algorithms.dijkstra.Graph;
-import com.baeldung.algorithms.dijkstra.Node;
 import org.junit.Test;
+
+import com.baeldung.algorithms.ga.dijkstra.Dijkstra;
+import com.baeldung.algorithms.ga.dijkstra.Graph;
+import com.baeldung.algorithms.ga.dijkstra.Node;
 
 import java.util.Arrays;
 import java.util.List;

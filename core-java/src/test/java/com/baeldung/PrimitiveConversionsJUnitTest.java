@@ -1,4 +1,4 @@
-package com.baeldung.primitiveconversions;
+package com.baeldung;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
