@@ -1,0 +1,8 @@
+server:
+  port: 8081
+endpoints:
+  restart:
+    enabled: true
+logging:
+  level:
+    org.apache.zookeeper.ClientCnxn: WARN
