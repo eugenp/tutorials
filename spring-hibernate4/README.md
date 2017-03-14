@@ -12,6 +12,7 @@
 - [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate/)
 - [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
 - [Hibernate Criteria Queries](http://www.baeldung.com/hibernate-criteria-queries)
+- [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
 
 ### Quick Start
 
@@ -22,3 +23,4 @@ mvn install
 mvn cargo:run
 ```
 - **note**: starts on port `8082`
+

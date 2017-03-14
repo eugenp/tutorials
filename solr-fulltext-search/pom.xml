@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
-            <version>6.1.0</version>
+            <version>6.4.1</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>

@@ -48,12 +48,6 @@ public class ExcelTest {
             .get(0));
         assertEquals("20", data.get(1)
             .get(1));
-
-        assertEquals("Ana Johnson", data.get(2)
-            .get(0));
-        assertEquals("30", data.get(2)
-            .get(1));
-
     }
 
 }

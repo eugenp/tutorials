@@ -138,15 +138,15 @@ public class MetricsTest {
 
         long elapsed1 = context1.stop();
 
-        assertEquals(5000000000L, elapsed1, 10000000);
+        assertEquals(5000000000L, elapsed1, 1000000000);
         assertThat(timer.getCount(), equalTo(1L));
-        assertEquals(0.2, timer.getMeanRate(), 0.1);
+        assertEquals(0.2, timer.getMeanRate(), 0.2);
 
         Timer.Context context2 = timer.time();
         TimeUnit.SECONDS.sleep(2);
         context2.close();
 
         assertThat(timer.getCount(), equalTo(2L));
-        assertEquals(0.3, timer.getMeanRate(), 0.1);
+        assertEquals(0.3, timer.getMeanRate(), 0.2);
     }
 }

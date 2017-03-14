@@ -110,15 +110,6 @@ public class ExcelPOIHelper {
             cell.setCellValue(20);
             cell.setCellStyle(style);
 
-            row = sheet.createRow(3);
-            cell = row.createCell(0);
-            cell.setCellValue("Ana Johnson");
-            cell.setCellStyle(style);
-
-            cell = row.createCell(1);
-            cell.setCellValue(30);
-            cell.setCellStyle(style);
-
             File currDir = new File(".");
             String path = currDir.getAbsolutePath();
             String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
