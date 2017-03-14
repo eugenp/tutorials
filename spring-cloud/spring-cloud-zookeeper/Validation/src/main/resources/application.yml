@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: Validation
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+server:
+  port: 8081
+endpoints:
+  restart:
+    enabled: true
+logging:
+  level:
+    org.apache.zookeeper.ClientCnxn: WARN
