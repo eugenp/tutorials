@@ -45,7 +45,6 @@ public class BookServiceApplication {
                     delegate = new HttpZipkinSpanReporter(baseUrl, zipkinProperties.getFlushInterval(), zipkinProperties.getCompression().isEnabled(), spanMetricReporter);
                     if (!span.name.matches(skipPattern)) delegate.report(span);
                 }
-                if (!span.name.matches(skipPattern)) delegate.report(span);
             }
         };
     }

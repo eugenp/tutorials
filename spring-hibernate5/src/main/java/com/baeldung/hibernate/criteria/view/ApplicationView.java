@@ -27,11 +27,7 @@ import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 
 public class ApplicationView {
-
-    public ApplicationView() {
-
-    }
-
+    
     @SuppressWarnings("unchecked")
     public boolean checkIfCriteriaTimeLower() {
         final Session session = HibernateUtil.getHibernateSession();
@@ -181,8 +177,7 @@ public class ApplicationView {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Item> criteriaItem = builder.createQuery(Item.class);
         Root<Item> rootItem = criteriaItem.from(Item.class);
-        criteriaItem.select(rootItem).where(builder.isNull(rootItem.get("itemDescription")))
-                .where(builder.like(rootItem.get("itemName"), "chair%"));
+        criteriaItem.select(rootItem).where(builder.isNull(rootItem.get("itemDescription"))).where(builder.like(rootItem.get("itemName"), "chair%"));
         final List<Item> notNullItemsList = session.createQuery(criteriaItem).getResultList();
         final String notNullDescItems[] = new String[notNullItemsList.size()];
         for (int i = 0; i < notNullItemsList.size(); i++) {
