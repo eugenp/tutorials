@@ -8,7 +8,7 @@ message Person {
   required int32 id = 2;
   optional string email = 3;
 
-  repeated int32 numbers = 4;
+  repeated string numbers = 4;
 }
 
 message AddressBook {
