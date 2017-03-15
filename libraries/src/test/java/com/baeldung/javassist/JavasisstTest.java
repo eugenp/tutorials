@@ -1,7 +1,9 @@
 package com.baeldung.javassist;
 
 
-import javassist.*;
+import javassist.CannotCompileException;
+import javassist.ClassPool;
+import javassist.NotFoundException;
 import javassist.bytecode.*;
 import org.junit.Test;
 
@@ -9,12 +11,13 @@ import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -70,7 +73,7 @@ public class JavasisstTest {
     @Test
     public void givenTableOfInstructions_whenAddNewInstruction_thenShouldConstructProperSequence() throws NotFoundException, BadBytecode, CannotCompileException, IllegalAccessException, InstantiationException {
         //given
-        ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.Point").getClassFile();
+        ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.ThreeDimensionalPoint").getClassFile();
 
         //when
         FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
@@ -80,9 +83,8 @@ public class JavasisstTest {
 
         ClassPool classPool = ClassPool.getDefault();
         Field[] fields = classPool.makeClass(cf).toClass().getFields();
-        assertEquals(fields[0].getName(), "x");
-        assertEquals(fields[1].getName(), "y");
-        assertEquals(fields[2].getName(), "id");
+        List<String> fieldsList = Stream.of(fields).map(Field::getName).collect(Collectors.toList());
+        assertTrue(fieldsList.contains("id"));
 
     }
 
