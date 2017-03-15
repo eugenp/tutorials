@@ -9,23 +9,14 @@ package com.baeldung.xml.jibx;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
 public class Person extends Identity {
-	private String firstName;
-	private String lastName;
+	private String name;
 
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String toString() {
