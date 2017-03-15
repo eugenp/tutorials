@@ -15,22 +15,41 @@
   </properties>
 
   <dependencies>
-	<dependency>
-	    <groupId>io.ratpack</groupId>
-	    <artifactId>ratpack-core</artifactId>
-	    <version>1.4.5</version>
-	</dependency>
-	<dependency>
-	    <groupId>io.ratpack</groupId>
-	    <artifactId>ratpack-test</artifactId>
-	    <version>1.4.5</version>
-	</dependency>
-	<dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>4.12</version>
-	    <scope>test</scope>
-	</dependency>
+    <dependency>
+        <groupId>io.ratpack</groupId>
+        <artifactId>ratpack-core</artifactId>
+        <version>1.4.5</version>
+    </dependency>
+    <dependency>
+        <groupId>io.ratpack</groupId>
+        <artifactId>ratpack-hikari</artifactId>
+        <version>1.4.5</version>
+    </dependency>
+    <dependency>
+        <groupId>io.ratpack</groupId>
+        <artifactId>ratpack-test</artifactId>
+        <version>1.4.5</version>
+    </dependency>
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.193</version>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
   </dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
 
 </project>
