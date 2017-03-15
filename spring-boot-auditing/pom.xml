@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -187,7 +187,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.version>4.3.7.RELEASE</spring.version>
         <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>

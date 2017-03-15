@@ -24,8 +24,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testLikeCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedLikeList = session.createQuery("From Item where itemName like '%chair%'")
-                .getResultList();
+        final List<Item> expectedLikeList = session.createQuery("From Item where itemName like '%chair%'").getResultList();
         final String expectedLikeItems[] = new String[expectedLikeList.size()];
         for (int i = 0; i < expectedLikeList.size(); i++) {
             expectedLikeItems[i] = expectedLikeList.get(i).getItemName();
@@ -37,8 +36,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testILikeCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedChairCaseList = session.createQuery("From Item where itemName like '%Chair%'")
-                .getResultList();
+        final List<Item> expectedChairCaseList = session.createQuery("From Item where itemName like '%Chair%'").getResultList();
         final String expectedChairCaseItems[] = new String[expectedChairCaseList.size()];
         for (int i = 0; i < expectedChairCaseList.size(); i++) {
             expectedChairCaseItems[i] = expectedChairCaseList.get(i).getItemName();
@@ -51,8 +49,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testNullCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedIsNullDescItemsList = session.createQuery("From Item where itemDescription is null")
-                .getResultList();
+        final List<Item> expectedIsNullDescItemsList = session.createQuery("From Item where itemDescription is null").getResultList();
         final String expectedIsNullDescItems[] = new String[expectedIsNullDescItemsList.size()];
         for (int i = 0; i < expectedIsNullDescItemsList.size(); i++) {
             expectedIsNullDescItems[i] = expectedIsNullDescItemsList.get(i).getItemName();
@@ -64,8 +61,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testIsNotNullCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedIsNotNullDescItemsList = session.createQuery(
-                "From Item where itemDescription is not null").getResultList();
+        final List<Item> expectedIsNotNullDescItemsList = session.createQuery("From Item where itemDescription is not null").getResultList();
         final String expectedIsNotNullDescItems[] = new String[expectedIsNotNullDescItemsList.size()];
         for (int i = 0; i < expectedIsNotNullDescItemsList.size(); i++) {
             expectedIsNotNullDescItems[i] = expectedIsNotNullDescItemsList.get(i).getItemName();
@@ -78,8 +74,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testAverageProjection() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Double> expectedAvgProjItemsList = session.createQuery("Select avg(itemPrice) from Item item")
-                .getResultList();
+        final List<Double> expectedAvgProjItemsList = session.createQuery("Select avg(itemPrice) from Item item").getResultList();
 
         final Double expectedAvgProjItems[] = new Double[expectedAvgProjItemsList.size()];
         for (int i = 0; i < expectedAvgProjItemsList.size(); i++) {
@@ -105,8 +100,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testOrCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedOrCritItemsList = session.createQuery(
-                "From Item where itemPrice>1000 or itemName like 'Chair%'").getResultList();
+        final List<Item> expectedOrCritItemsList = session.createQuery("From Item where itemPrice>1000 or itemName like 'Chair%'").getResultList();
         final String expectedOrCritItems[] = new String[expectedOrCritItemsList.size()];
         for (int i = 0; i < expectedOrCritItemsList.size(); i++) {
             expectedOrCritItems[i] = expectedOrCritItemsList.get(i).getItemName();
@@ -118,8 +112,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testAndCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedAndCritItemsList = session.createQuery(
-                "From Item where itemPrice>1000 and itemName like 'Chair%'").getResultList();
+        final List<Item> expectedAndCritItemsList = session.createQuery("From Item where itemPrice>1000 and itemName like 'Chair%'").getResultList();
         final String expectedAndCritItems[] = new String[expectedAndCritItemsList.size()];
         for (int i = 0; i < expectedAndCritItemsList.size(); i++) {
             expectedAndCritItems[i] = expectedAndCritItemsList.get(i).getItemName();
@@ -131,8 +124,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testMultiCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedMultiCritItemsList = session.createQuery(
-                "From Item where itemDescription is null and itemName like'chair%'").getResultList();
+        final List<Item> expectedMultiCritItemsList = session.createQuery("From Item where itemDescription is null and itemName like'chair%'").getResultList();
         final String expectedMultiCritItems[] = new String[expectedMultiCritItemsList.size()];
         for (int i = 0; i < expectedMultiCritItemsList.size(); i++) {
             expectedMultiCritItems[i] = expectedMultiCritItemsList.get(i).getItemName();
@@ -144,8 +136,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testSortCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedSortCritItemsList = session.createQuery(
-                "From Item order by itemName asc, itemPrice desc").getResultList();
+        final List<Item> expectedSortCritItemsList = session.createQuery("From Item order by itemName asc, itemPrice desc").getResultList();
         final String expectedSortCritItems[] = new String[expectedSortCritItemsList.size()];
         for (int i = 0; i < expectedSortCritItemsList.size(); i++) {
             expectedSortCritItems[i] = expectedSortCritItemsList.get(i).getItemName();
@@ -157,8 +148,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void testGreaterThanCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedGreaterThanList = session.createQuery("From Item where itemPrice>1000")
-                .getResultList();
+        final List<Item> expectedGreaterThanList = session.createQuery("From Item where itemPrice>1000").getResultList();
         final String expectedGreaterThanItems[] = new String[expectedGreaterThanList.size()];
         for (int i = 0; i < expectedGreaterThanList.size(); i++) {
             expectedGreaterThanItems[i] = expectedGreaterThanList.get(i).getItemName();
@@ -182,8 +172,7 @@ public class HibernateCriteriaIntegrationTest {
     @Test
     public void betweenCriteriaQuery() {
         final Session session = HibernateUtil.getHibernateSession();
-        final List<Item> expectedBetweenList = session.createQuery("From Item where itemPrice between 100 and 200")
-                .getResultList();
+        final List<Item> expectedBetweenList = session.createQuery("From Item where itemPrice between 100 and 200").getResultList();
         final String expectedPriceBetweenItems[] = new String[expectedBetweenList.size()];
         for (int i = 0; i < expectedBetweenList.size(); i++) {
             expectedPriceBetweenItems[i] = expectedBetweenList.get(i).getItemName();
