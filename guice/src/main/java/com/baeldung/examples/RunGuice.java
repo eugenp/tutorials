@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class RunGuice {
 
@@ -18,14 +18,10 @@ public class RunGuice {
         Injector injector = Guice.createInjector(new BasicModule(), new AOPModule());
         Communication comms = injector.getInstance(Communication.class);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your message to be sent; press Q to quit and P to print the message log");
         while (true) {
             String input = scanner.nextLine();
             if (input.equalsIgnoreCase("q")) {
                 System.exit(0);
-            }
-            if (input.equalsIgnoreCase("p")) {
-                comms.print();
             } else {
                 comms.sendMessage(input);
             }

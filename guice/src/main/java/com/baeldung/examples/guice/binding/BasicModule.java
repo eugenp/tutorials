@@ -1,4 +1,5 @@
-package com.baeldung.examples.guice.modules;
+
+package com.baeldung.examples.guice.binding;
 
 import com.baeldung.examples.guice.Communication;
 import com.baeldung.examples.guice.CommunicationMode;
@@ -13,19 +14,18 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Baeldung
+ * @author baeldung
  */
 public class BasicModule extends AbstractModule {
 
     @Override
     protected void configure() {
         try {
-            bind(Communication.class).toConstructor(Communication.class.getConstructor(Boolean.class));
-            bind(Boolean.class).toInstance(true);
+            bind(Communication.class).toConstructor(Communication.class.getConstructor(Boolean.TYPE));
         } catch (NoSuchMethodException ex) {
-            Logger.getLogger(com.baeldung.examples.guice.binding.BasicModule.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BasicModule.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SecurityException ex) {
-            Logger.getLogger(com.baeldung.examples.guice.binding.BasicModule.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BasicModule.class.getName()).log(Level.SEVERE, null, ex);
         }
         bind(DefaultCommunicator.class).annotatedWith(Names.named("AnotherCommunicator")).to(DefaultCommunicator.class).asEagerSingleton();
 
