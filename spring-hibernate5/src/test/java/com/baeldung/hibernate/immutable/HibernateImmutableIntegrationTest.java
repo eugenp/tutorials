@@ -45,8 +45,7 @@ public class HibernateImmutableIntegrationTest {
 
     @Test
     public void updateEvent() {
-        Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='New Event'").list().get(0);
+        Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         event.setTitle("Private Event");
         session.saveOrUpdate(event);
         session.getTransaction().commit();
@@ -54,16 +53,14 @@ public class HibernateImmutableIntegrationTest {
 
     @Test
     public void deleteEvent() {
-        Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='New Event'").list().get(0);
+        Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         session.delete(event);
         session.getTransaction().commit();
     }
 
     @Test
     public void addGuest() {
-        Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='New Event'").list().get(0);
+        Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         String newGuest = "Sara";
         event.getGuestList().add(newGuest);
 
@@ -74,8 +71,7 @@ public class HibernateImmutableIntegrationTest {
 
     @Test
     public void deleteCascade() {
-        Event event = (Event) session.createQuery(
-                "FROM Event WHERE title='New Event'").list().get(0);
+        Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         String guest = event.getGuestList().iterator().next();
         event.getGuestList().remove(guest);
 

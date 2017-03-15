@@ -33,4 +33,3 @@ test {
 }
 
 mainClassName = "com.baeldung.Application"
-

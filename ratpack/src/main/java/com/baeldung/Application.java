@@ -10,6 +10,7 @@ import ratpack.guice.Guice;
 import ratpack.hikari.HikariModule;
 import ratpack.http.MutableHeaders;
 import ratpack.jackson.Jackson;
+import ratpack.http.MutableHeaders;
 import ratpack.server.RatpackServer;
 
 public class Application {
@@ -31,8 +32,7 @@ public class Application {
 								// ctx -> {
 								// MutableHeaders headers =
 								// ctx.getResponse().getHeaders();
-								// headers.set("Access-Control-Allow-Origin",
-								// "*");
+								// headers.set("Access-Control-Allow-Origin","*");
 								// headers.set("Accept-Language", "en-us");
 								// headers.set("Accept-Charset", "UTF-8");
 								// ctx.next();

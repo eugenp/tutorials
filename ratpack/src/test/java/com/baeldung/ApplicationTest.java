@@ -4,12 +4,10 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
 import com.baeldung.model.Employee;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ratpack.jackson.Jackson;
 import ratpack.test.MainClassApplicationUnderTest;
 
 import static org.junit.Assert.assertEquals;
