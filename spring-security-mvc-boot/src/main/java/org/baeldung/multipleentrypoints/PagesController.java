@@ -16,9 +16,14 @@ public class PagesController {
         return "multipleHttpElems/myAdminPage";
     }
 
-    @RequestMapping("/user/myUserPage")
+    @RequestMapping("/user/general/myUserPage")
     public String getUserPage() {
         return "multipleHttpElems/myUserPage";
+    }
+    
+    @RequestMapping("/user/private/myPrivateUserPage")
+    public String getPrivateUserPage() {
+        return "multipleHttpElems/myPrivateUserPage";
     }
 
     @RequestMapping("/guest/myGuestPage")
@@ -29,6 +34,11 @@ public class PagesController {
     @RequestMapping("/userLogin")
     public String getUserLoginPage() {
         return "multipleHttpElems/login";
+    }
+    
+    @RequestMapping("/userLoginWithWarning")
+    public String getUserLoginPageWithWarning() {
+        return "multipleHttpElems/loginWithWarning";
     }
 
     @RequestMapping("/403")
