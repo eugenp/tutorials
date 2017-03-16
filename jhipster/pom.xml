@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>baeldung</artifactId>
+    <artifactId>jhipster-monolithic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Baeldung</name>
+    <name>JHipster Monolithic Application</name>
 
     <prerequisites>
         <maven>${maven.version}</maven>
