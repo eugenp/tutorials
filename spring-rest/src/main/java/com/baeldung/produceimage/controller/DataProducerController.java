@@ -12,9 +12,15 @@ import java.io.InputStream;
 @Controller
 public class DataProducerController {
 
+    @GetMapping(value = "/get-image-without-mediatype")
+    @ResponseBody public byte[] getImageWithoutMediaType() throws IOException {
+        final InputStream in = getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg");
+        return IOUtils.toByteArray(in);
+    }
+
     @GetMapping(value = "/get-image", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody public byte[] getImage() throws IOException {
-        final InputStream in = getClass().getResourceAsStream("/com/baeldung/produceimage/image.png");
+        final InputStream in = getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg");
         return IOUtils.toByteArray(in);
     }
 
