@@ -27,21 +27,47 @@ public class BeanInjection_SayGreetingUnitTest {
 	public void testHumanGreeting() {
 		SayGreeting humanSayGreeting = new SayGreeting(new GreetImpl());
 		humanSayGreeting.doHelloWorld();
-		assertEquals("Hello World!\r\n", outContent.toString());
+		
+		String expected = "Hello World!\r\n";
+		System.err.println("System.Out is : " + outContent.toString() + " and expected is " + expected );
+		
+		if (!expected.equals(outContent.toString())){
+			System.err.println("FAIL!\r\n\r\n");
+			fail();
+		}
+		//assertEquals(expected, outContent.toString());
 	}
 	
 	@Test
 	public void testCatGreeting() {
 		SayGreeting catSayGreeting = new SayGreeting(new CatGreetImpl());
 		catSayGreeting.doHelloWorld();
-		assertEquals("Meow World!\r\n", outContent.toString());
+		
+		String expected = "Meow World!\r\n";
+		System.err.println("System.Out is : " + outContent.toString() + " and expected is " + expected );
+		
+		if (!expected.equals(outContent.toString())){
+			System.err.println("FAIL!\r\n\r\n");
+			fail();
+		}
+		
+		//assertEquals(expected, outContent.toString());
 	}
 	
 	@Test
 	public void testBombGreeting() {
-		SayGreeting bombSayGreeting = new SayGreeting(new BombGreetImpl());
+		SayGreeting bombSayGreeting = new SayGreeting(new GreetImpl());
 		bombSayGreeting.doHelloWorld();
-		assertEquals("Kaboom World!\r\n", outContent.toString());
+		
+		String expected = "Kaboom World!\r\n";
+		System.err.println("System.Out is : " + outContent.toString() + " and expected is " + expected );
+		
+		if (!expected.equals(outContent.toString())){
+			System.err.println("FAIL!\r\n\r\n");
+			fail();
+		}
+		
+		//assertEquals(expected, outContent.toString());
 	}
 
 }
