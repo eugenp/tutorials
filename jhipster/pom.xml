@@ -425,10 +425,10 @@
                     <simulationsFolder>src/test/gatling/simulations</simulationsFolder>
                     <!-- This will run multiple simulations one by one. Useful when doing gatling tests in CI
                          You must remove the simulationClass property in order to run multiple simulations -->
-                    <!--<runMultipleSimulations>true</runMultipleSimulations>-->
+                    <runMultipleSimulations>true</runMultipleSimulations>
                     <!-- This will force Gatling to ask which simulation to run
                       This is useful when you have multiple simulations -->
-                    <simulationClass>*</simulationClass>
+                    <!-- <simulationClass>*</simulationClass> -->
                 </configuration>
             </plugin>
             <plugin>
