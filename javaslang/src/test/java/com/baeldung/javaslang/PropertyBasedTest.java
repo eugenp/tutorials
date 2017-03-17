@@ -34,7 +34,7 @@ public class PropertyBasedTest {
                 .filter(i -> i % 2 == 0 && i % 5 != 0);
 
         //when
-        CheckedFunction1<Integer, Boolean> mustStartWith =
+        CheckedFunction1<Integer, Boolean> mustEquals =
                 i -> stringsSupplier().get(i).equals("DividedByTwoWithoutReminder");
 
 
@@ -42,7 +42,7 @@ public class PropertyBasedTest {
         CheckResult result = Property
                 .def("Every second element must equal to DividedByTwoWithoutReminder")
                 .forAll(multiplesOf2)
-                .suchThat(mustStartWith)
+                .suchThat(mustEquals)
                 .check(10_000, 100);
 
         result.assertIsSatisfied();
@@ -50,16 +50,19 @@ public class PropertyBasedTest {
 
     @Test
     public void givenArbitrarySeq_whenCheckThatEveryFifthElementIsEqualToString_thenTestPass() {
+        //given
         Arbitrary<Integer> multiplesOf5 = Arbitrary.integer()
                 .filter(i -> i > 0)
                 .filter(i -> i % 5 == 0 && i % 2 == 0);
 
-        CheckedFunction1<Integer, Boolean> mustStartWith = i ->
+        //when
+        CheckedFunction1<Integer, Boolean> mustEquals = i ->
                 stringsSupplier().get(i).endsWith("DividedByTwoAndFiveWithoutReminder");
 
+        //then
         Property.def("Every fifth element must equal to DividedByTwoAndFiveWithoutReminder")
                 .forAll(multiplesOf5)
-                .suchThat(mustStartWith)
+                .suchThat(mustEquals)
                 .check(10_000, 1_000)
                 .assertIsSatisfied();
     }
