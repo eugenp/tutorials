@@ -20,6 +20,7 @@ public class SpringMyBatisApplication {
         student.setPassword("Test123");
         student.setDateOfBirth(new Date());
         student.setUserName("santoshbs");
+        
 
         boolean result = studentService.insertStudent(student);
         if (result) {

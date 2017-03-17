@@ -34,7 +34,6 @@
 	</bean> -->
 	<jdbc:embedded-database id="dataSource" type="H2" >
         <jdbc:script location="classpath:schema.sql"/>
-        <jdbc:script location="classpath:test-data.sql"/>
     </jdbc:embedded-database>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="transactionManager"

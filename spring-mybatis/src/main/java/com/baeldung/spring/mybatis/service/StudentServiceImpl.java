@@ -27,7 +27,10 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public Student getStudentByLogin(String userName, String password) {
-        Student student = studentMapper.getStudentByUserName(userName);
+        Student inputStudent = new Student();
+        inputStudent.setUserName(userName);
+        inputStudent.setPassword(password);
+        Student student = studentMapper.getStudentByLogin(inputStudent);
         return student;
     }
 
