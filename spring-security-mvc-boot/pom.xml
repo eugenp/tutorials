@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.4.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
     </parent>
 
     <dependencies>
@@ -26,11 +26,6 @@
        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -344,10 +339,9 @@
         <java.version>1.8</java.version>
         <derby.version>10.13.1.1</derby.version>
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
-        <spring-security-taglibs.version>4.2.0.RELEASE</spring-security-taglibs.version>
-		<spring-security-core.version>4.2.0.RELEASE</spring-security-core.version>
-		<spring-security-test.version>4.2.0.RELEASE</spring-security-test.version>
-		<tomcat.version>8.5.11</tomcat.version>
+        <spring-security-taglibs.version>4.2.2.RELEASE</spring-security-taglibs.version>
+		<spring-security-core.version>4.2.2.RELEASE</spring-security-core.version>
+		<spring-security-test.version>4.2.2.RELEASE</spring-security-test.version>
       
         <jstl.version>1.2</jstl.version>
         <rest-assured.version>2.4.0</rest-assured.version>

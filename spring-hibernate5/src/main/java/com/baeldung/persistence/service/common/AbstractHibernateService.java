@@ -7,8 +7,7 @@ import com.baeldung.persistence.dao.common.IOperations;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(value = "hibernateTransactionManager")
-public abstract class AbstractHibernateService<T extends Serializable> extends AbstractService<T> implements
-        IOperations<T> {
+public abstract class AbstractHibernateService<T extends Serializable> extends AbstractService<T> implements IOperations<T> {
 
     @Override
     public T findOne(final long id) {
