@@ -6,7 +6,6 @@ import org.jibx.runtime.IUnmarshallingContext;
 import org.jibx.runtime.JiBXException;
 import org.junit.Test;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -22,8 +21,7 @@ public class CustomerTest {
 		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
 		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
 
-		assertEquals("Stefan", customer.getPerson().getFirstName());
-		assertEquals("Jaeger", customer.getPerson().getLastName());
+		assertEquals("Stefan Jaegar", customer.getPerson().getName());
 		assertEquals("Davos Dorf", customer.getCity());
 
 	}
@@ -47,9 +45,7 @@ public class CustomerTest {
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 		InputStream inputStream = classLoader.getResourceAsStream("Customer1.xml");
 		Customer customer = (Customer) uctx.unmarshalDocument(inputStream, null);
-
-		assertEquals("1", customer.getHomePhone().getCountryCode());
-		assertEquals("234", customer.getHomePhone().getNetworkPrefix());
+		
 		assertEquals("234678", customer.getHomePhone().getNumber());
 
 	}
