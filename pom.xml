@@ -206,6 +206,7 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
+        <module>spring-state-machine</module>
 
     </modules>
 
