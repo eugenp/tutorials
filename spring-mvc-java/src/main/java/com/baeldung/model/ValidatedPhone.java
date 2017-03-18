@@ -3,7 +3,7 @@ package com.baeldung.model;
 import com.baeldung.customvalidator.ContactNumberConstraint;
 
 public class ValidatedPhone {
-    
+
     @ContactNumberConstraint
     private String phone;
 
@@ -15,4 +15,8 @@ public class ValidatedPhone {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return phone;
+    }
 }

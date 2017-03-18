@@ -6,14 +6,15 @@ import javax.validation.ConstraintValidatorContext;
 public class ContactNumberValidator implements ConstraintValidator<ContactNumberConstraint, String> {
 
     @Override
-    public void initialize(ContactNumberConstraint contactNumber) {}
+    public void initialize(ContactNumberConstraint contactNumber) {
+    }
 
     @Override
     public boolean isValid(String contactField, ConstraintValidatorContext cxt) {
-        if(contactField == null) {
+        if (contactField == null) {
             return false;
         }
-        return contactField.matches("[0-9]+") && (contactField.length() > 8) && (contactField.length() < 14);        
+        return contactField.matches("[0-9]+") && (contactField.length() > 8) && (contactField.length() < 14);
     }
 
 }

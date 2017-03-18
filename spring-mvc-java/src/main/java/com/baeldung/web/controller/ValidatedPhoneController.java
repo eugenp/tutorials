@@ -15,21 +15,21 @@ import com.baeldung.model.ValidatedPhone;
 @EnableWebMvc
 public class ValidatedPhoneController {
 
-    @RequestMapping(value="/validatePhone", method=RequestMethod.GET)
+    @RequestMapping(value = "/validatePhone", method = RequestMethod.GET)
     public String loadFormPage(Model m) {
-            m.addAttribute("validatedPhone", new ValidatedPhone());
-            return "phoneHome";
+        m.addAttribute("validatedPhone", new ValidatedPhone());
+        return "phoneHome";
     }
-    
-    @RequestMapping(value="/addValidatePhone", method=RequestMethod.POST)
+
+    @RequestMapping(value = "/addValidatePhone", method = RequestMethod.POST)
     public String submitForm(@Valid ValidatedPhone validatedPhone, BindingResult result, Model m) {
-            if(result.hasErrors()) {
-                    return "phoneHome";
-            }
-            
-            m.addAttribute("message", "Successfully saved phone: " + validatedPhone.toString());
+        if (result.hasErrors()) {
             return "phoneHome";
+        }
+
+        m.addAttribute("message", "Successfully saved phone: " + validatedPhone.toString());
+        return "phoneHome";
     }
-    
-    
+
+
 }
