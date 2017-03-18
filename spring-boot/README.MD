@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Custom Data Binder in Spring MVC](http://www.baeldung.com/spring-mvc-custom-data-binder)
 - [Intro to Building an Application with Spring Boot](http://www.baeldung.com/intro-to-spring-boot)
 - [How to Register a Servlet in a Java Web Application](http://www.baeldung.com/register-servlet)
+- [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
