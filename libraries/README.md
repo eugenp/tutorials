@@ -4,6 +4,8 @@
 - [Array Processing with Apache Commons Lang 3](http://www.baeldung.com/array-processing-commons-lang)
 - [String Processing with Apache Commons Lang 3](http://www.baeldung.com/string-processing-commons-lang)
 - [Introduction to Javatuples](http://www.baeldung.com/java-tuples)
+- [Introduction to Javassist](http://www.baeldung.com/javassist)
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
