@@ -2,26 +2,29 @@ package com.baeldung.student.service.dbimpl;
 
 import com.baeldung.student.service.StudentService;
 import com.baeldung.student.model.Student;
+import java.util.logging.*;
 
-public class StudentDbService implements StudentService{
+public class StudentDbService implements StudentService {
 
-	public String create(Student student){
-		System.out.println("Creating student in DB...");
-		return student.registrationId;
-	}
+    private static Logger logger = Logger.getLogger("StudentDbService");
 
-	public Student read(String registrationId){
-		System.out.println("Reading student from DB...");
-		return new Student();
-	}
+    public String create(Student student) {
+        logger.log(Level.INFO, "Creating student in DB...");
+        return student.getRegistrationId();
+    }
 
-	public Student update(Student student){
-		System.out.println("Updating sutdent in DB...");
-		return student;
-	}
+    public Student read(String registrationId) {
+        logger.log(Level.INFO, "Reading student from DB...");
+        return new Student();
+    }
 
-	public String delete(String registrationId){
-		System.out.println("Deleteing sutdent in DB...");
-		return registrationId;
-	}
+    public Student update(Student student) {
+        logger.log(Level.INFO, "Updating sutdent in DB...");
+        return student;
+    }
+
+    public String delete(String registrationId) {
+        logger.log(Level.INFO, "Deleteing sutdent in DB...");
+        return registrationId;
+    }
 }
