@@ -1,15 +1,10 @@
-package com.baeldung;
+package com.baeldung.injection;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-public class SpringDependencyInjectionTypesApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringDependencyInjectionTypesApplication.class, args);
-    }
+@Configuration
+public class ApplicationConfig {
 
     @Bean
     public SpeedLimiter speedLimiter() {
