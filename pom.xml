@@ -25,6 +25,7 @@
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
+        <module>axon</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
@@ -46,10 +47,12 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guice</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <!--<module>hbase</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -57,7 +60,7 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>java-cassandra</module>
+<!--         <module>java-cassandra</module> -->
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
@@ -84,12 +87,14 @@
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
+        <module>mockito2</module>
         <module>mocks</module>
 
         <module>orika</module>
 
         <module>patterns</module>
         <module>pdf</module>
+        <module>protobuffer</module>
 
         <module>querydsl</module>
 
@@ -104,14 +109,13 @@
         <module>selenium-junit-testng</module>
         <module>solr-fulltext-search</module>
         <module>spark-java</module>
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-apache-camel</module>
-        <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-boot-servlet</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -130,12 +134,14 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
+        <module>spring-hibernate5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
         <module>spring-katharsis</module>
+        <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
@@ -200,7 +206,6 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
-
 
     </modules>
 

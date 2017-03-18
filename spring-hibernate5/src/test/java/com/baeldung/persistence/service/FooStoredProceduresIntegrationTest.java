@@ -96,16 +96,14 @@ public class FooStoredProceduresIntegrationTest {
         fooService.create(new Foo("NewFooName"));
 
         // Stored procedure getFoosByName using createSQLQuery()
-        List<Foo> allFoosByName = session.createQuery("CALL GetFoosByName(:fooName)", Foo.class)
-                .setParameter("fooName", "NewFooName").getResultList();
+        List<Foo> allFoosByName = session.createQuery("CALL GetFoosByName(:fooName)", Foo.class).setParameter("fooName", "NewFooName").getResultList();
         for (Foo foo : allFoosByName) {
             LOGGER.info("getFoosByName() using SQL Query : found => {}", foo.toString());
         }
 
         // Stored procedure getFoosByName using getNamedQuery()
         @SuppressWarnings("unchecked")
-        List<Foo> allFoosByName2 = session.getNamedQuery("callGetFoosByName").setParameter("fooName", "NewFooName")
-                .getResultList();
+        List<Foo> allFoosByName2 = session.getNamedQuery("callGetFoosByName").setParameter("fooName", "NewFooName").getResultList();
         for (Foo foo : allFoosByName2) {
             LOGGER.info("getFoosByName() using Native Query : found => {}", foo.toString());
         }
