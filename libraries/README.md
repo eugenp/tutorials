@@ -1,7 +1,7 @@
 ### Relevant articles
 
 - [Intro to Jasypt](http://www.baeldung.com/jasypt)
-
+- [Array Processing with Apache Commons Lang 3](http://www.baeldung.com/array-processing-commons-lang)
 
 
 
