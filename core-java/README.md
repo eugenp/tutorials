@@ -81,3 +81,4 @@
 - [A Guide to TreeMap in Java](http://www.baeldung.com/java-treemap)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
+- [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
