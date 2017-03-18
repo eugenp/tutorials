@@ -9,3 +9,4 @@
 - [Java 9 Convenience Factory Methods for Collections](http://www.baeldung.com/java-9-collections-factory-methods) 
 - [New Stream Collectors in Java 9](http://www.baeldung.com/java9-stream-collectors)
 - [Java 9 CompletableFuture API Improvements](http://www.baeldung.com/java9-completablefuture-api-improvements/)
+- [Spring Security – Redirect to the Previous URL After Login](http://www.baeldung.com/spring-security-redirect-login)
