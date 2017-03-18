@@ -82,3 +82,4 @@
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
+- [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
