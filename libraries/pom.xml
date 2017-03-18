@@ -23,7 +23,7 @@
 		</plugins>
 	</build>
 
-	<dependencies>
+  <dependencies>
 		<!-- https://mvnrepository.com/artifact/cglib/cglib -->
 		<dependency>
 			<groupId>cglib</groupId>
@@ -51,6 +51,11 @@
 			<artifactId>javatuples</artifactId>
 			<version>${javatuples.version}</version>
 		</dependency>
+    <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>${javaassist.version}</version>
+    </dependency>
 		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 		<dependency>
 			<groupId>org.assertj</groupId>
@@ -65,6 +70,7 @@
 		<junit.version>4.12</junit.version>
 		<jasypt.version>1.9.2</jasypt.version>
 		<javatuples.version>1.2</javatuples.version>
+    <javaassist.version>3.21.0-GA</javaassist.version>
 		<assertj.version>3.6.2</assertj.version>
 	</properties>
 
