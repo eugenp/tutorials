@@ -1,3 +1,10 @@
+### Relevant articles
+
+- [Intro to Jasypt](http://www.baeldung.com/jasypt)
+
+
+
+
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
 The code examples related to different libraries should go in a new package.
