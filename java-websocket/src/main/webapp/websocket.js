@@ -2,8 +2,11 @@ var ws;
 
 function connect() {
     var username = document.getElementById("username").value;
-    ws = new WebSocket("ws://" + document.location.host + "/java-websocket/chat/" + username);
-
+    
+    var host = document.location.host;
+    var pathname = document.location.pathname;
+    
+    ws = new WebSocket("ws://" +host  + pathname + "chat/" + username);
 
     ws.onmessage = function(event) {
     var log = document.getElementById("log");
