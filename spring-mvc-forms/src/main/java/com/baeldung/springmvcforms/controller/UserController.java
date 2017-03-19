@@ -1,22 +1,22 @@
 package com.baeldung.springmvcforms.controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.validation.Valid;
+import com.baeldung.springmvcforms.domain.User;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.baeldung.springmvcforms.domain.User;
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -39,10 +39,10 @@ public class UserController {
     @ResponseBody
     public ResponseEntity<Object> saveUser(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            List<String> errors = new ArrayList<>();
-            result.getAllErrors().forEach(item->{
-                errors.add(item.getDefaultMessage());
-            });
+            final List<String> errors = result.getAllErrors().stream()
+              .map(DefaultMessageSourceResolvable::getDefaultMessage)
+              .collect(Collectors.toList());
+
             return new ResponseEntity<>(errors, HttpStatus.OK);
         } else {
             if (users.stream().anyMatch(it -> user.getEmail().equals(it.getEmail()))) {
