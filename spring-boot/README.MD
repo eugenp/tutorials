@@ -14,4 +14,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [How to Register a Servlet in a Java Web Application](http://www.baeldung.com/register-servlet)
 - [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
+- [Guide to Internationalization in Spring Boot](http://www.baeldung.com/spring-boot-internationalization)
 
