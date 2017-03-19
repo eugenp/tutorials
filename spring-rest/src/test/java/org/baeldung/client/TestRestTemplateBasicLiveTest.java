@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-
 import static org.baeldung.client.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,21 +31,21 @@ public class TestRestTemplateBasicLiveTest {
 
     // GET
     @Test
-    public void givenTestRestTemplate_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenTestRestTemplate_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
-    public void givenRestTemplateWrapper_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenRestTemplateWrapper_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate);
         ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
-    public void givenRestTemplateBuilderWrapper_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenRestTemplateBuilderWrapper_whenSendGetForEntity_thenStatusOk() {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.build();
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
@@ -56,7 +54,7 @@ public class TestRestTemplateBasicLiveTest {
     }
 
     @Test
-    public void givenRestTemplateWrapperWithCredentials_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenRestTemplateWrapperWithCredentials_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate, "test", "test");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
                 String.class);
@@ -64,7 +62,7 @@ public class TestRestTemplateBasicLiveTest {
     }
 
     @Test
-    public void givenTestRestTemplateWithCredentials_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenTestRestTemplateWithCredentials_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
                 String.class);
@@ -72,7 +70,7 @@ public class TestRestTemplateBasicLiveTest {
     }
 
     @Test
-    public void givenTestRestTemplateWithBasicAuth_whenSendGetForEntity_thenStatusOk() throws IOException {
+    public void givenTestRestTemplateWithBasicAuth_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
         ResponseEntity<String> response = testRestTemplate.withBasicAuth("test", "test").
                 getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1", String.class);
@@ -80,8 +78,7 @@ public class TestRestTemplateBasicLiveTest {
     }
 
     @Test
-    public void givenTestRestTemplateWithCredentialsAndEnabledCookies_whenSendGetForEntity_thenStatusOk()
-            throws IOException {
+    public void givenTestRestTemplateWithCredentialsAndEnabledCookies_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test", TestRestTemplate.
                 HttpClientOption.ENABLE_COOKIES);
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
