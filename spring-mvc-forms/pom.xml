@@ -46,6 +46,12 @@
         	<artifactId>commons-fileupload</artifactId>
         	<version>${fileupload.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>${jackson.version}</version>
+</dependency>
         
     </dependencies>
     <profiles>
@@ -89,16 +95,17 @@
     </profiles>
 
     <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <springframework.version>4.3.7.RELEASE</springframework.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-compiler-plugin.source>1.8</maven-compiler-plugin.source>
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
 		<fileupload.version>1.3.2</fileupload.version>
+		<jackson.version>2.8.7</jackson.version>
     </properties>
 
 </project>
