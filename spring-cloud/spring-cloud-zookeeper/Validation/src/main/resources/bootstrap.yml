@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: Validation
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
