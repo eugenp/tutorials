@@ -5,6 +5,8 @@ install: travis_wait 60 mvn -q clean install
 before_script:
   - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:-UseGCOverheadLimit'" > ~/.mavenrc
 
+sudo: required
+
 jdk:
   - oraclejdk8
 
