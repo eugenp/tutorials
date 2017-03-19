@@ -4,6 +4,8 @@ install: travis_wait 40 mvn -q clean install -Dgib.enabled=true
 
 jdk:
   - oraclejdk8
+  
+sudo: required
 
 addons:
   apt:
@@ -15,9 +17,9 @@ cache:
   - .autoconf
   - $HOME/.m2
   
-  sudo: required
+
   
-  env:
-    global:
-      JAVA_OPTS="-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
-      MAVEN_OPTS="-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC"
+env:
+  global:
+    JAVA_OPTS="-XX:-UseGCOverheadLimit"
+
