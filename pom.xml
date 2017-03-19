@@ -74,6 +74,7 @@
         <module>json</module>
         <module>jsoup</module>
         <module>junit5</module>
+        <module>jws</module>
 
         <module>kotlin</module>
 
