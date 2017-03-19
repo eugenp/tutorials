@@ -4,10 +4,7 @@ package com.baeldung.model;
  * Model for graphics card.
  */
 public class GraphicsCard {
-    private String name;
-
-    public GraphicsCard() {
-    }
+    String name;
 
     public String getName() {
         return name;
