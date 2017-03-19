@@ -33,10 +33,10 @@ public final class RtState implements State {
         return this.isFinal;
     }
 
-	@Override
-	public State with(Transition tr) {
-		this.transitions.add(tr);
-		return this;
-	}
+    @Override
+    public State with(Transition tr) {
+        this.transitions.add(tr);
+        return this;
+    }
 
 }
