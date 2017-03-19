@@ -1,8 +1,6 @@
 language: java
 
-install: travis_wait 40 mvn -q clean install
-
-sudo: required
+install: travis_wait 60 mvn -q clean install
 
 before_script:
   - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC'" > ~/.mavenrc
