@@ -5,12 +5,12 @@ package com.baeldung.automata;
  */
 public interface State {
 
-	/**
-	 * Add a Transition to this state.
-	 * @param tr Given transition.
-	 * @return Modified State.
-	 */
-	State with(final Transition tr);
+    /**
+     * Add a Transition to this state.
+     * @param tr Given transition.
+     * @return Modified State.
+     */
+    State with(final Transition tr);
 
     /**
      * Follow one of the transitions, to get 
