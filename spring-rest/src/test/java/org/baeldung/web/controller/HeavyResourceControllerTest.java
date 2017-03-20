@@ -47,7 +47,7 @@ public class HeavyResourceControllerTest {
     }
 
     @Test
-    public void givenNewAddressOfResouce_whenExecutePutRequest_thenUpdateResourcePartially() throws Exception {
+    public void givenNewAddressOfResource_whenExecutePutRequest_thenUpdateResourcePartially() throws Exception {
         mockMvc.perform(patch("/heavy")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(objectMapper.writeValueAsString(new HeavyResourceAddressPartialUpdate(1, "5th avenue")))
