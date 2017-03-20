@@ -21,7 +21,7 @@ public class JacksonStreamingAPITest {
         //given
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         JsonFactory jfactory = new JsonFactory();
-        JsonGenerator jGenerator = jfactory.createJsonGenerator(stream, JsonEncoding.UTF8);
+        JsonGenerator jGenerator = jfactory.createGenerator(stream, JsonEncoding.UTF8);
 
         //when
         jGenerator.writeStartObject();
