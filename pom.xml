@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
-        <gib.enabled>false</gib.enabled>
+       <!-- <gib.enabled>false</gib.enabled>-->
     </properties>
 
     <modules>
@@ -210,6 +210,18 @@
         <module>vertx</module>
   </modules>
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>maven</executable>
+
+
+                </configuration>
+            </plugin>
+        </plugins>
         <extensions>
             <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
