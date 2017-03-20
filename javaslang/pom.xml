@@ -22,7 +22,16 @@
             <artifactId>javaslang</artifactId>
             <version>2.1.0-alpha</version>
         </dependency>
+        <dependency>
+            <groupId>io.javaslang</groupId>
+            <artifactId>javaslang-test</artifactId>
+            <version>${javaslang.test.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <javaslang.test.version>2.0.5</javaslang.test.version>
+    </properties>
 
     <build>
         <plugins>
