@@ -32,7 +32,6 @@ public class WebMvcConfigure extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
     }
 
-    //Remove ErrorPageFilter
     @Bean
     public ErrorPageFilter errorPageFilter() {
         return new ErrorPageFilter();
