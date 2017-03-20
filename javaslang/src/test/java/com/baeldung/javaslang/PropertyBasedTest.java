@@ -16,11 +16,11 @@ public class PropertyBasedTest {
             boolean divByFive = i % 5 == 0;
 
             if(divByFive && divByTwo){
-                return "DividedByTwoAndFiveWithoutReminder";
+                return "DividedByTwoAndFiveWithoutRemainder";
             }else if(divByFive){
-                return "DividedByFiveWithoutReminder";
+                return "DividedByFiveWithoutRemainder";
             }else if(divByTwo){
-                return "DividedByTwoWithoutReminder";
+                return "DividedByTwoWithoutRemainder";
             }
             return "";
         });
@@ -35,12 +35,12 @@ public class PropertyBasedTest {
 
         //when
         CheckedFunction1<Integer, Boolean> mustEquals =
-                i -> stringsSupplier().get(i).equals("DividedByTwoWithoutReminder");
+                i -> stringsSupplier().get(i).equals("DividedByTwoWithoutRemainder");
 
 
         //then
         CheckResult result = Property
-                .def("Every second element must equal to DividedByTwoWithoutReminder")
+                .def("Every second element must equal to DividedByTwoWithoutRemainder")
                 .forAll(multiplesOf2)
                 .suchThat(mustEquals)
                 .check(10_000, 100);
@@ -57,10 +57,10 @@ public class PropertyBasedTest {
 
         //when
         CheckedFunction1<Integer, Boolean> mustEquals = i ->
-                stringsSupplier().get(i).endsWith("DividedByTwoAndFiveWithoutReminder");
+                stringsSupplier().get(i).endsWith("DividedByTwoAndFiveWithoutRemainder");
 
         //then
-        Property.def("Every fifth element must equal to DividedByTwoAndFiveWithoutReminder")
+        Property.def("Every fifth element must equal to DividedByTwoAndFiveWithoutRemainder")
                 .forAll(multiplesOf5)
                 .suchThat(mustEquals)
                 .check(10_000, 1_000)
