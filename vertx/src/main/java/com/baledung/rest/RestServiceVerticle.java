@@ -14,28 +14,28 @@ public class RestServiceVerticle extends AbstractVerticle {
 
         Router router = Router.router(vertx);
         router.get("/api/baeldung/articles/article/:id")
-            .handler(this::getArticles);
+                .handler(this::getArticles);
 
         vertx.createHttpServer()
-            .requestHandler(router::accept)
-            .listen(config().getInteger("http.port", 8080), result -> {
-                if (result.succeeded()) {
-                    future.complete();
-                } else {
-                    future.fail(result.cause());
-                }
-            });
+                .requestHandler(router::accept)
+                .listen(config().getInteger("http.port", 8080), result -> {
+                    if (result.succeeded()) {
+                        future.complete();
+                    } else {
+                        future.fail(result.cause());
+                    }
+                });
     }
 
     private void getArticles(RoutingContext routingContext) {
         String articleId = routingContext.request()
-            .getParam("id");
+                .getParam("id");
         Article article = new Article(articleId, "This is an intro to vertx", "baeldung", "01-02-2017", 1578);
 
         routingContext.response()
-            .putHeader("content-type", "application/json")
-            .setStatusCode(200)
-            .end(Json.encodePrettily(article));
+                .putHeader("content-type", "application/json")
+                .setStatusCode(200)
+                .end(Json.encodePrettily(article));
     }
 
 }

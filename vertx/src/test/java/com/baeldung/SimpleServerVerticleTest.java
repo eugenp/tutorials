@@ -20,8 +20,8 @@ public class SimpleServerVerticleTest {
     public void setup(TestContext testContext) {
         vertx = Vertx.vertx();
 
-        vertx.deployVerticle(SimpleServerVerticle.class.getName(), 
-          testContext.asyncAssertSuccess());
+        vertx.deployVerticle(SimpleServerVerticle.class.getName(),
+                testContext.asyncAssertSuccess());
     }
 
     @After
@@ -34,13 +34,13 @@ public class SimpleServerVerticleTest {
         final Async async = testContext.async();
 
         vertx.createHttpClient()
-            .getNow(8080, "localhost", "/", response -> {
-                response.handler(responseBody -> {
-                    testContext.assertTrue(responseBody.toString()
-                        .contains("Welcome"));
-                    async.complete();
+                .getNow(8080, "localhost", "/", response -> {
+                    response.handler(responseBody -> {
+                        testContext.assertTrue(responseBody.toString()
+                                .contains("Welcome"));
+                        async.complete();
+                    });
                 });
-            });
     }
 
 }
