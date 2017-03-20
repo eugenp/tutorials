@@ -2,11 +2,11 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
          xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.dispatcherexample</groupId>
-    <artifactId>dispatcherexample</artifactId>
+    <groupId>com.baeldung.spring-dispatcher-servlet</groupId>
+    <artifactId>spring-dispatcher-servlet</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>dispatcherexample</name>
+    <name>spring-dispatcher-servlet</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,7 +17,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
     </parent>
 
     <dependencies>
