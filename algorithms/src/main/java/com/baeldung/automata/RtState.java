@@ -21,12 +21,12 @@ public final class RtState implements State {
     }
 
     public State transit(final CharSequence c) {
-        for(final Transition t : this.transitions) {
-            if(t.isPossible(c)) {
-                return t.state();
-            }
-        }
-        throw new IllegalArgumentException("Input not accepted: " + c);
+        return transitions
+          .stream()
+          .filter(t -> t.isPossible(c))
+          .map(Transition::state)
+          .findAny()
+          .orElseThrow(() -> new IllegalArgumentException("Input not accepted: " + c));
     }
 
     public boolean isFinal() {
