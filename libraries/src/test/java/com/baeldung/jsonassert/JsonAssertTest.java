@@ -1,5 +1,6 @@
 package com.baeldung.jsonassert;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.json.JSONException;
