@@ -104,7 +104,7 @@ public class JacksonStreamingAPITest {
             if ("age".equals(fieldname)) {
                 jParser.nextToken();
                 parsedAge = jParser.getIntValue();
-
+                return;
             }
 
         }
