@@ -5,6 +5,7 @@ public class SpecSearchCriteria {
     private String key;
     private SearchOperation operation;
     private Object value;
+    private boolean lowPrecedence;
 
     public SpecSearchCriteria() {
 
@@ -12,6 +13,14 @@ public class SpecSearchCriteria {
 
     public SpecSearchCriteria(final String key, final SearchOperation operation, final Object value) {
         super();
+        this.key = key;
+        this.operation = operation;
+        this.value = value;
+    }
+
+    public SpecSearchCriteria(final String lowPrecedenceIndicator, final String key, final SearchOperation operation, final Object value) {
+        super();
+        this.lowPrecedence = lowPrecedenceIndicator != null && lowPrecedenceIndicator.equals(SearchOperation.LOW_PRECEDENCE_INDICATOR);
         this.key = key;
         this.operation = operation;
         this.value = value;
@@ -39,6 +48,14 @@ public class SpecSearchCriteria {
 
     public void setValue(final Object value) {
         this.value = value;
+    }
+
+    public boolean isLowPrecedence() {
+        return lowPrecedence;
+    }
+
+    public void setLowPrecedence(boolean lowPrecedence) {
+        this.lowPrecedence = lowPrecedence;
     }
 
 }

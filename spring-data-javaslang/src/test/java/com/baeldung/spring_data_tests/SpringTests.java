@@ -10,6 +10,7 @@ import com.baeldung.spring_data.repository.BookRepository;
 import com.baeldung.spring_data.repository.JavaBookRepository;
 import com.baeldung.spring_data.repository.Java8BookRepository;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -18,12 +19,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javaslang.collection.Seq;
 import javaslang.collection.List;
 import javaslang.control.Option;
-
 import javax.transaction.Transactional;
 import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApp.class,webEnvironment = WebEnvironment.NONE)
@@ -103,7 +104,7 @@ public class SpringTests {
         assert(retBook.getId() == 1L);
         assert(retBook.getTitle().contains("Data"));
     }
-    
+
     @Transactional
     @Test
     public void should_return_java8_stream(){

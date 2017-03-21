@@ -1,5 +1,6 @@
-/.classpath
-/.project
-/.settings
-/.eclipse
-/target
+/target/
+/project/
+.idea
+.classpath
+.eclipse
+

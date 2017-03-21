@@ -14,9 +14,7 @@ public class Book {
     @GeneratedValue
     @Id
     private Long id;
-    
     private String title;
-
     private Seq<String> authors; 
     
     public void setTitle(String title){
