@@ -20,7 +20,7 @@ import com.baeldung.hibernate.pojo.Suppliers;
 public class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
     private static Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
-    private static final String[] tenantDBNames = { "h2db1","h2db2"};
+    private static final String[] tenantDBNames = { "mydb1","mydb2"};
 
     public static SessionFactory getSessionFactory() throws UnsupportedTenancyException {
         if (sessionFactory == null) {
@@ -90,6 +90,6 @@ public class HibernateMultiTenantUtil {
     }
 
     public static final String SCHEMA_TOKEN = ";INIT=CREATE SCHEMA IF NOT EXISTS %1$s\\;SET SCHEMA %1$s";
-    public static final String DEFAULT_DB_NAME = "db1";
+    public static final String DEFAULT_DB_NAME = "mydb1";
 
 }
