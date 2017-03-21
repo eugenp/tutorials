@@ -1,5 +1,7 @@
 package com.baeldung.jaxws;
 
+import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
+import com.baeldung.jaxws.exception.EmployeeNotFound;
 import com.baeldung.jaxws.model.Employee;
 import com.baeldung.jaxws.repository.EmployeeRepository;
 
@@ -8,28 +10,28 @@ import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.List;
 
-@WebService(endpointInterface = "com.baeldung.jaxws.EmployeeService")
+@WebService(serviceName = "EmployeeService", endpointInterface = "com.baeldung.jaxws.EmployeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Inject private EmployeeRepository employeeRepositoryImpl;
 
     @WebMethod
-    public Employee getEmployee(int id) {
+    public Employee getEmployee(int id) throws EmployeeNotFound {
         return employeeRepositoryImpl.getEmployee(id);
     }
 
     @WebMethod
-    public Employee updateEmployee(int id, String name) {
+    public Employee updateEmployee(int id, String name) throws EmployeeNotFound {
         return employeeRepositoryImpl.updateEmployee(id, name);
     }
 
     @WebMethod
-    public boolean deleteEmployee(int id) {
+    public boolean deleteEmployee(int id) throws EmployeeNotFound {
         return employeeRepositoryImpl.deleteEmployee(id);
     }
 
     @WebMethod
-    public Employee addEmployee(int id, String name) {
+    public Employee addEmployee(int id, String name) throws EmployeeAlreadyExists {
         return employeeRepositoryImpl.addEmployee(id, name);
     }
 

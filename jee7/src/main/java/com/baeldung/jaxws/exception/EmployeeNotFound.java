@@ -1,9 +1,16 @@
 package com.baeldung.jaxws.exception;
 
-public class EmployeeNotFound extends RuntimeException {
+import javax.xml.ws.WebFault;
+import java.io.Serializable;
 
-    public EmployeeNotFound() {
-        super("The specified employee does not exist");
-    }
+@WebFault public class EmployeeNotFound extends Exception implements Serializable {
+
+        public EmployeeNotFound() {
+                super("The specified employee does not exist");
+        }
+
+        public EmployeeNotFound(String str) {
+                super(str);
+        }
 
 }
