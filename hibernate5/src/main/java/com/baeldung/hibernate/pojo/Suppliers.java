@@ -18,7 +18,7 @@ import org.junit.runners.Suite.SuiteClasses;
 public class Suppliers implements java.io.Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String country;

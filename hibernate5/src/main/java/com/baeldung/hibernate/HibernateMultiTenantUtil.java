@@ -20,7 +20,7 @@ import com.baeldung.hibernate.pojo.Suppliers;
 public class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
     private static Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
-    private static final String[] tenantDBNames = { "db1", "db2"};
+    private static final String[] tenantDBNames = { "h2db1","h2db2"};
 
     public static SessionFactory getSessionFactory() throws UnsupportedTenancyException {
         if (sessionFactory == null) {
