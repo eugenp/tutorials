@@ -8,7 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.IOException;
 
-// copied to --> spring-security-rest-basic-auth
+// copied to - spring-security-mvc-basic-auth
 public class CustomFilter extends GenericFilterBean {
 
     @Override

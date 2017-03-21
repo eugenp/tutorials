@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-// copied to --> spring-security-rest-basic-auth
+//copied from - spring-security-mvc-basic-auth
 @Controller
 public class TestController {
 

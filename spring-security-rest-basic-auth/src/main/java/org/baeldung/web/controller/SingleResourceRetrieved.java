@@ -5,18 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationEvent;
 
-// copied to --> spring-security-rest-basic-auth
-public class ResourceCreated extends ApplicationEvent {
+//copied from - spring-security-mvc-basic-auth
+public class SingleResourceRetrieved extends ApplicationEvent {
     private final HttpServletResponse response;
     private final HttpServletRequest request;
-    private final long idOfNewResource;
 
-    public ResourceCreated(final Object source, final HttpServletRequest request, final HttpServletResponse response, final long idOfNewResource) {
+    public SingleResourceRetrieved(final Object source, final HttpServletRequest request, final HttpServletResponse response) {
         super(source);
 
         this.request = request;
         this.response = response;
-        this.idOfNewResource = idOfNewResource;
     }
 
     // API
@@ -27,10 +25,6 @@ public class ResourceCreated extends ApplicationEvent {
 
     public HttpServletRequest getRequest() {
         return request;
-    }
-
-    public long getIdOfNewResource() {
-        return idOfNewResource;
     }
 
 }

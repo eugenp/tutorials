@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationEvent;
 
-// copied to --> spring-security-rest-basic-auth
+// copied to - spring-security-mvc-basic-auth
 public class ResourceCreated extends ApplicationEvent {
     private final HttpServletResponse response;
     private final HttpServletRequest request;

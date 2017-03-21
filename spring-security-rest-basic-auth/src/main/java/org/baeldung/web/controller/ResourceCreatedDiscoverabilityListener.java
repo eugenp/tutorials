@@ -12,7 +12,7 @@ import org.springframework.web.util.UriTemplate;
 import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
 
-// copied to --> spring-security-rest-basic-auth
+// copied from - spring-security-mvc-basic-auth
 @Component
 class ResourceCreatedDiscoverabilityListener implements ApplicationListener<ResourceCreated> {
 
