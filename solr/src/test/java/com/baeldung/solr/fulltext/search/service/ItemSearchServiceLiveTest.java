@@ -26,7 +26,7 @@ public class ItemSearchServiceLiveTest {
 
     private static SolrClient solrClient;
     private static ItemSearchService itemSearchService;
-    private static final String solrUrl = "http://localhost:8987/solr/item";
+    private static final String solrUrl = "http://localhost:8983/solr/item";
 
     @BeforeClass
     public static void initBeans() throws Exception {
