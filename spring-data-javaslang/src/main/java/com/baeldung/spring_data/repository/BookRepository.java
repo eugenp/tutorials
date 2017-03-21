@@ -4,6 +4,8 @@ import com.baeldung.spring_data.model.Book;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import javaslang.concurrent.Future;
 import javaslang.collection.Stream;
 import javaslang.collection.Seq;
 import javaslang.control.Option;
@@ -15,5 +17,6 @@ public interface BookRepository extends JpaRepository<Book,Long>{
     Option<Book> findById(Long id);
         
     Option<Seq<Book>> findByTitleContaining(String title);
+    
     Option<Stream<Book>> findAllByTitleIsNotNull();
 }
