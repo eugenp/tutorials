@@ -21,7 +21,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return employeeList;
     }
 
-    public Employee getEmployee(int id) {
+    public Employee getEmployee(int id) throws EmployeeNotFound {
         for (Employee emp : employeeList) {
             if (emp.getId() == id) {
                 return emp;
@@ -30,7 +30,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         throw new EmployeeNotFound();
     }
 
-    public Employee updateEmployee(int id, String name) {
+    public Employee updateEmployee(int id, String name) throws EmployeeNotFound {
         for (Employee employee1 : employeeList) {
             if (employee1.getId() == id) {
                 employee1.setId(id);
@@ -41,7 +41,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         throw new EmployeeNotFound();
     }
 
-    public boolean deleteEmployee(int id) {
+    public boolean deleteEmployee(int id) throws EmployeeNotFound {
         for (Employee emp : employeeList) {
             if (emp.getId() == id) {
                 employeeList.remove(emp);
@@ -51,7 +51,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         throw new EmployeeNotFound();
     }
 
-    public Employee addEmployee(int id, String name) {
+    public Employee addEmployee(int id, String name) throws EmployeeAlreadyExists {
         for (Employee emp : employeeList) {
             if (emp.getId() == id) {
                 throw new EmployeeAlreadyExists();
