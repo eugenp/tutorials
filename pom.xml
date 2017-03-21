@@ -66,6 +66,7 @@
         <module>javaxval</module>
         <module>jaxb</module>
         <module>jee7</module>
+        <module>jhipster</module>
         <module>jjwt</module>
         <module>jooq</module>
         <module>jpa-storedprocedure</module>
