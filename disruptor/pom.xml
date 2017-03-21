@@ -145,6 +145,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
                             <archive>
                                 <manifest>
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
