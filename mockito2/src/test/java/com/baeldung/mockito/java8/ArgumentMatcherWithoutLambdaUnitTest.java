@@ -13,6 +13,16 @@ import static org.mockito.Mockito.when;
 
 public class ArgumentMatcherWithoutLambdaUnitTest {
 
+    private class PeterArgumentMatcher implements ArgumentMatcher<Person> {
+
+        @Override
+        public boolean matches(Person p) {
+            return p
+              .getName()
+              .equals("Peter");
+        }
+    }
+
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
     
@@ -32,16 +42,6 @@ public class ArgumentMatcherWithoutLambdaUnitTest {
         
         assertTrue(unemploymentService.personIsEntitledToUnemploymentSupport(linda));
         assertFalse(unemploymentService.personIsEntitledToUnemploymentSupport(peter));
-    }
-
-    private class PeterArgumentMatcher implements ArgumentMatcher<Person> {
-
-        @Override
-        public boolean matches(Person p) {
-            return p
-              .getName()
-              .equals("Peter");
-        }
     }
 
     @Before

@@ -1,5 +1,8 @@
 package com.baeldung.jsonassert;
 
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -63,6 +66,17 @@ public class JsonAssertTest {
             + "state:\"LA\", zip:91601}}";
         JSONAssert.assertEquals("{id:1,name:\"Juergen\", address:{city:\"Hollywood\", "
             + "state:\"LA\", zip:91601}}", result, false);
+    }
+    
+    @Test
+    public void whenMessageUsedInAssertion_thenDisplayMessageOnFailure() throws JSONException {
+        String actual = "{id:123,name:\"John\"}";
+        String failureMessage = "Only one field is expected: name";
+        try {
+            JSONAssert.assertEquals(failureMessage, "{name:\"John\"}", actual, JSONCompareMode.STRICT);
+        } catch (AssertionError ae) {
+            assertThat(ae.getMessage()).containsIgnoringCase(failureMessage);
+        }
     }
 
     @Test
