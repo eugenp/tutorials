@@ -52,7 +52,7 @@
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
-        <!--<module>hbase</module>-->
+        <!--<module>hbase</module> TODO: CI problems-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -110,7 +110,7 @@
         <module>selenium-junit-testng</module>
         <module>solr-fulltext-search</module>
         <module>spark-java</module>
-        <module>spring-5</module>
+       <!-- <module>spring-5</module> TODO: CI problems-->
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
