@@ -1,13 +1,9 @@
 package org.baeldung.persistence.query;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.collection.IsIn.isIn;
-import static org.hamcrest.core.IsNot.not;
-
-import java.util.List;
-
+import org.baeldung.persistence.dao.GenericSpecificationsBuilder;
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.dao.UserSpecification;
+import org.baeldung.persistence.dao.UserSpecificationsBuilder;
 import org.baeldung.persistence.model.User;
 import org.baeldung.spring.PersistenceConfig;
 import org.baeldung.web.util.SearchOperation;
@@ -16,11 +12,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.function.Function;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
+import static org.hamcrest.collection.IsIn.isIn;
+import static org.hamcrest.core.IsNot.not;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class })
@@ -34,6 +39,8 @@ public class JPASpecificationIntegrationTest {
     private User userJohn;
 
     private User userTom;
+
+    private User userPercy;
 
     @Before
     public void init() {
@@ -50,6 +57,13 @@ public class JPASpecificationIntegrationTest {
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
         repository.save(userTom);
+
+        userPercy = new User();
+        userPercy.setFirstName("percy");
+        userPercy.setLastName("blackney");
+        userPercy.setEmail("percy@blackney.com");
+        userPercy.setAge(30);
+        repository.save(userPercy);
     }
 
     @Test
@@ -60,6 +74,33 @@ public class JPASpecificationIntegrationTest {
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
+    }
+
+    @Test
+    public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
+        UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+
+        final SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
+        final SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
+
+        final List<User> results = repository.findAll(builder.with(spec1).with(spec).build());
+
+        assertThat(results, hasSize(2));
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, isIn(results));
+    }
+
+    @Test
+    public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
+        GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
+        Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
+        builder.with("'", "firstName", ":", "john", null, null);
+        builder.with(null, "lastName", ":", "doe", null, null);
+
+        final List<User> results = repository.findAll(builder.build(converter));
+        assertThat(results, hasSize(2));
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, isIn(results));
     }
 
     @Test

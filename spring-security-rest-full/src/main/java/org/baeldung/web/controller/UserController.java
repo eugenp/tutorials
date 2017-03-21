@@ -1,15 +1,12 @@
 package org.baeldung.web.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.baeldung.persistence.dao.IUserDAO;
-import org.baeldung.persistence.dao.MyUserPredicatesBuilder;
-import org.baeldung.persistence.dao.MyUserRepository;
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.dao.UserSpecificationsBuilder;
+import com.google.common.base.Joiner;
+import com.google.common.base.Preconditions;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import cz.jirutka.rsql.parser.RSQLParser;
+import cz.jirutka.rsql.parser.ast.Node;
+import org.baeldung.persistence.dao.*;
 import org.baeldung.persistence.dao.rsql.CustomRsqlVisitor;
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
@@ -20,20 +17,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
-import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.dsl.BooleanExpression;
-
-import cz.jirutka.rsql.parser.RSQLParser;
-import cz.jirutka.rsql.parser.ast.Node;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //@EnableSpringDataWebSupport
 @Controller
@@ -82,6 +71,25 @@ public class UserController {
 
         final Specification<User> spec = builder.build();
         return dao.findAll(spec);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users/espec")
+    @ResponseBody
+    public List<User> findAllByOptionalSpecification(@RequestParam(value = "search") final String search) {
+        final Specification<User> spec = resolveSpecification(search);
+        return dao.findAll(spec);
+    }
+
+    protected Specification<User> resolveSpecification(String searchParameters) {
+
+        final UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
+        final String operationSetExper = Joiner.on("|").join(SearchOperation.SIMPLE_OPERATION_SET);
+        final Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
+        final Matcher matcher = pattern.matcher(searchParameters + ",");
+        while (matcher.find()) {
+            builder.with(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(5), matcher.group(4), matcher.group(6));
+        }
+        return builder.build();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/myusers")
