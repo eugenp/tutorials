@@ -153,40 +153,4 @@ public class Java8ComparatorTest {
         assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
     }
 
-     @Before
-     public void printData() {
-//     System.out.println("employees");
-//     System.out.println(Arrays.toString(employees));
-    //
-//     System.out.println("employeesArrayWithNulls");
-//     System.out.println(Arrays.toString(employeesArrayWithNulls));
-    //
-    // System.out.println("sortedEmployeesByName");
-    // System.out.println(Arrays.toString(sortedEmployeesByName));
-    //
-    // System.out.println("sortedEmployeesByNameDesc");
-    // System.out.println(Arrays.toString(sortedEmployeesByNameDesc));
-    //
-    // System.out.println("sortedEmployeesByAge");
-    // System.out.println(Arrays.toString(sortedEmployeesByAge));
-    //
-    // System.out.println("sortedEmployeesByMobile");
-    // System.out.println(Arrays.toString(sortedEmployeesByMobile));
-    //
-    // System.out.println("sortedEmployeesBySalary");
-    // System.out.println(Arrays.toString(sortedEmployeesBySalary));
-    //
-    // System.out.println("sortedEmployeesArray_WithNullsFirst");
-    // System.out.println(Arrays.toString(sortedEmployeesArray_WithNullsFirst));
-    //
-    // System.out.println("sortedEmployeesArray_WithNullsLast");
-    // System.out.println(Arrays.toString(sortedEmployeesArray_WithNullsLast));
-    //
-    // System.out.println("sortedEmployeesByNameAge");
-    // System.out.println(Arrays.toString(sortedEmployeesByNameAge));
-    //
-//     System.out.println("someMoreEmployees");
-//     System.out.println(Arrays.toString(someMoreEmployees));
-    //
-     }
 }
