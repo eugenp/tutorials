@@ -73,8 +73,7 @@ public class FooPaginationPersistenceIntegrationTest {
     public final void whenRetrievingPaginatedEntities_thenCorrectSize() {
         final int pageNumber = 1;
         final int pageSize = 10;
-        final List<Foo> fooList = session.createQuery("From Foo").setFirstResult((pageNumber - 1) * pageSize)
-                .setMaxResults(pageSize).getResultList();
+        final List<Foo> fooList = session.createQuery("From Foo").setFirstResult((pageNumber - 1) * pageSize).setMaxResults(pageSize).getResultList();
         assertThat(fooList, hasSize(pageSize));
     }
 
@@ -90,8 +89,7 @@ public class FooPaginationPersistenceIntegrationTest {
         final List<Foo> fooList = Lists.newArrayList();
         int totalEntities = 0;
         while (totalEntities < countResult) {
-            fooList.addAll(session.createQuery("From Foo").setFirstResult((pageNumber - 1) * pageSize)
-                    .setMaxResults(pageSize).getResultList());
+            fooList.addAll(session.createQuery("From Foo").setFirstResult((pageNumber - 1) * pageSize).setMaxResults(pageSize).getResultList());
             totalEntities = fooList.size();
             pageNumber++;
         }
@@ -106,8 +104,7 @@ public class FooPaginationPersistenceIntegrationTest {
         final Long countResults = (Long) session.createQuery(countQ).uniqueResult();
         final int lastPageNumber = (int) ((countResults / pageSize) + 1);
 
-        final List<Foo> lastPage = session.createQuery("From Foo").setFirstResult((lastPageNumber - 1) * pageSize)
-                .setMaxResults(pageSize).getResultList();
+        final List<Foo> lastPage = session.createQuery("From Foo").setFirstResult((lastPageNumber - 1) * pageSize).setMaxResults(pageSize).getResultList();
 
         assertThat(lastPage, hasSize(lessThan(pageSize + 1)));
     }
@@ -147,8 +144,7 @@ public class FooPaginationPersistenceIntegrationTest {
         CriteriaQuery<Foo> criteriaItem = builder.createQuery(Foo.class);
         Root<Foo> rootItem = criteriaItem.from(Foo.class);
         criteriaItem.select(rootItem);
-        final List<Foo> firstPage = session.createQuery(criteriaItem).setFirstResult(0).setMaxResults(pageSize)
-                .getResultList();
+        final List<Foo> firstPage = session.createQuery(criteriaItem).setFirstResult(0).setMaxResults(pageSize).getResultList();
 
         assertThat(firstPage, hasSize(pageSize));
     }
@@ -175,8 +171,7 @@ public class FooPaginationPersistenceIntegrationTest {
 
         int totalEntities = 0;
         while (totalEntities < count.intValue()) {
-            fooList.addAll(session.createQuery(criteriaFoo).setFirstResult((pageNumber - 1) * pageSize)
-                    .setMaxResults(pageSize).getResultList());
+            fooList.addAll(session.createQuery(criteriaFoo).setFirstResult((pageNumber - 1) * pageSize).setMaxResults(pageSize).getResultList());
             totalEntities = fooList.size();
             pageNumber++;
         }
