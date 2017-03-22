@@ -196,7 +196,7 @@
     
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.7.RELEASE</org.springframework.version>
         <javassist.version>3.21.0-GA</javassist.version>
 
         <!-- persistence -->
