@@ -30,6 +30,7 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
+                    <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
                     <!--archive> <manifest> <mainClass>fully.qualified.MainClass</mainClass> </manifest> </archive -->
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>

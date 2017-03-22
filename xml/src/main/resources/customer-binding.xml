@@ -14,14 +14,11 @@
 	<mapping name="person" class="com.baeldung.xml.jibx.Person"
 		extends="com.baeldung.xml.jibx.Identity">
 		<structure map-as="com.baeldung.xml.jibx.Identity" />
-		<value name="first-name" field="firstName" />
-		<value name="last-name" field="lastName" />
+		<value name="name" field="name" />
 
 	</mapping>
 
 	<mapping class="com.baeldung.xml.jibx.Phone" abstract="true">
-		<value name="country-code" field="countryCode" />
-		<value name="network-prefix" field="networkPrefix" />
 		<value name="number" field="number" />
 	</mapping>
 
