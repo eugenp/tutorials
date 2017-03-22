@@ -3,10 +3,10 @@ package com.baeldung.java9.reactive;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
-public class TestSubscriber<T> implements Subscriber<String> {
+public class BaeldungSubscriberImpl<T> implements Subscriber<String> {
     private Subscription subscription;
     private boolean completed = false;
-    private int counter; 
+    private int counter;
 
     public boolean isCompleted() {
         return completed;
@@ -38,7 +38,7 @@ public class TestSubscriber<T> implements Subscriber<String> {
             e.printStackTrace();
         }
         counter++;
-        System.out.println("Processed: " + item+" length = "+item.length());
+        System.out.println("Processed item : " + item);
         subscription.request(1);
     }
 
@@ -49,6 +49,7 @@ public class TestSubscriber<T> implements Subscriber<String> {
 
     @Override
     public void onComplete() {
+        System.out.println("onComplete");
         completed = true;
         subscription.cancel();
     }
