@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.springframework.statemachine</groupId>
             <artifactId>spring-statemachine-core</artifactId>
-            <version>1.2.2.RELEASE</version>
+            <version>1.2.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

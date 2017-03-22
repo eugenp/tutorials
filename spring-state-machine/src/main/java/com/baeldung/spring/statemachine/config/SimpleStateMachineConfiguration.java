@@ -12,10 +12,13 @@ import org.springframework.statemachine.guard.Guard;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.logging.Logger;
 
 @Configuration
 @EnableStateMachine
 public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapter<String, String> {
+
+    public static final Logger LOGGER = Logger.getLogger(SimpleStateMachineConfiguration.class.getName());
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<String, String> config)
@@ -65,14 +68,14 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     @Bean
     public Action<String, String> entryAction() {
         return (ctx) -> {
-            System.out.println("Entry " + ctx.getTarget().getId());
+            LOGGER.info("Entry " + ctx.getTarget().getId());
         };
     }
 
     @Bean
     public Action<String, String> executeAction() {
         return (ctx) -> {
-            System.out.println("Do " + ctx.getTarget().getId());
+            LOGGER.info("Do " + ctx.getTarget().getId());
             int approvals = (int) ctx.getExtendedState().getVariables().getOrDefault("approvalCount", 0);
             approvals++;
             ctx.getExtendedState().getVariables().put("approvalCount", approvals);
@@ -82,21 +85,21 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     @Bean
     public Action<String, String> exitAction() {
         return (ctx) -> {
-            System.out.println("Exit " + ctx.getSource().getId() + " -> " + ctx.getTarget().getId());
+            LOGGER.info("Exit " + ctx.getSource().getId() + " -> " + ctx.getTarget().getId());
         };
     }
 
     @Bean
     public Action<String, String> errorAction() {
         return (ctx) -> {
-            System.out.println("Error " + ctx.getSource().getId() + ctx.getException());
+            LOGGER.info("Error " + ctx.getSource().getId() + ctx.getException());
         };
     }
 
     @Bean
     public Action<String, String> initAction() {
         return (ctx) -> {
-            System.out.println(ctx.getTarget().getId());
+            LOGGER.info(ctx.getTarget().getId());
         };
     }
 }
