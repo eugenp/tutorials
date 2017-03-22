@@ -208,9 +208,8 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
-
-    </modules>
-
+        <module>vertx</module>
+  </modules>
     <build>
         <plugins>
             <plugin>
