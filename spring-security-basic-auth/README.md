@@ -7,7 +7,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Article: 
 - [Spring Security Basic Authentication](http://www.baeldung.com/spring-security-basic-authentication)
-- [Writing a Custom Filter in Spring Security](http://www.baeldung.com/spring-security-custom-filter)
 
 
 ### Notes
