@@ -1,11 +1,13 @@
 package com.baeldung.spring.stateMachine;
 
-import com.baeldung.spring.stateMachine.config.SimpleStateMachineConfiguration;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
+
+import com.baeldung.spring.stateMachine.config.SimpleStateMachineConfiguration;
 
 public class StateMachineTest {
 
@@ -19,27 +21,27 @@ public class StateMachineTest {
     }
 
     @Test
-    public void testSimpleStringMachine() {
-        Assert.assertEquals("SI", stateMachine.getState().getId());
+    public void whenSimpleStringStateMachineEvents_thenEndState() {
+        assertEquals("SI", stateMachine.getState().getId());
 
         stateMachine.sendEvent("E1");
-        Assert.assertEquals("S1", stateMachine.getState().getId());
+        assertEquals("S1", stateMachine.getState().getId());
 
         stateMachine.sendEvent("E2");
-        Assert.assertEquals("S2", stateMachine.getState().getId());
+        assertEquals("S2", stateMachine.getState().getId());
 
         stateMachine.sendEvent("end");
-        Assert.assertEquals("SF", stateMachine.getState().getId());
+        assertEquals("SF", stateMachine.getState().getId());
 
     }
 
     @Test
-    public void testSimpleStringMachineAction() {
+    public void whenSimpleStringMachineActionState_thenActionExecuted() {
         stateMachine.sendEvent("E3");
-        Assert.assertEquals("S3", stateMachine.getState().getId());
+        assertEquals("S3", stateMachine.getState().getId());
 
         stateMachine.sendEvent("E4");
-        Assert.assertEquals("S4", stateMachine.getState().getId());
-
+        assertEquals("S4", stateMachine.getState().getId());
+        assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
     }
 }

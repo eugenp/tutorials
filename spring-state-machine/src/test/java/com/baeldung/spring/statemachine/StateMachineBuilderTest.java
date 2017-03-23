@@ -1,6 +1,7 @@
 package com.baeldung.spring.stateMachine;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineBuilder;
@@ -8,7 +9,7 @@ import org.springframework.statemachine.config.StateMachineBuilder;
 public class StateMachineBuilderTest {
 
     @Test
-    public void testStateMachineBuilder() throws Exception {
+    public void whenUseStateMachineBuilder_thenBuildSuccessAndMachineWorks() throws Exception {
         StateMachineBuilder.Builder<String, String> builder = StateMachineBuilder.builder();
         builder.configureStates().withStates()
                 .initial("SI")
@@ -26,9 +27,9 @@ public class StateMachineBuilderTest {
         machine.start();
 
         machine.sendEvent("E1");
-        Assert.assertEquals("S1", machine.getState().getId());
+        assertEquals("S1", machine.getState().getId());
 
         machine.sendEvent("E2");
-        Assert.assertEquals("SF", machine.getState().getId());
+        assertEquals("SF", machine.getState().getId());
     }
 }

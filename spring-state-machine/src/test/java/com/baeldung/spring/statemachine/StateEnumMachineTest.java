@@ -1,14 +1,16 @@
 package com.baeldung.spring.stateMachine;
 
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewEvents;
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewStates;
-import com.baeldung.spring.stateMachine.config.SimpleEnumStateMachineConfiguration;
-import com.baeldung.spring.stateMachine.config.SimpleStateMachineConfiguration;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
+
+import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewEvents;
+import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewStates;
+import com.baeldung.spring.stateMachine.config.SimpleEnumStateMachineConfiguration;
 
 public class StateEnumMachineTest {
 
@@ -22,10 +24,10 @@ public class StateEnumMachineTest {
     }
 
     @Test
-    public  void testStateMachine() {
-        Assert.assertTrue(stateMachine.sendEvent(ApplicationReviewEvents.APPROVE));
-        Assert.assertEquals(ApplicationReviewStates.PRINCIPAL_REVIEW, stateMachine.getState().getId());
-        Assert.assertTrue(stateMachine.sendEvent(ApplicationReviewEvents.REJECT));
-        Assert.assertEquals(ApplicationReviewStates.REJECTED, stateMachine.getState().getId());
+    public void whenStateMachineConfiguredWithEnums_thenStateMachineAcceptsEnumEvents() {
+        assertTrue(stateMachine.sendEvent(ApplicationReviewEvents.APPROVE));
+        assertEquals(ApplicationReviewStates.PRINCIPAL_REVIEW, stateMachine.getState().getId());
+        assertTrue(stateMachine.sendEvent(ApplicationReviewEvents.REJECT));
+        assertEquals(ApplicationReviewStates.REJECTED, stateMachine.getState().getId());
     }
 }
