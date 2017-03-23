@@ -18,9 +18,9 @@ import com.baeldung.spring.mybatis.service.StudentService;
 public class StudentServiceTests {
     @Autowired
     StudentService studentService;
-    
+
     @Test
-    public void testInsertStudent(){
+    public void testInsertStudent() {
         Student student = new Student();
         student.setFirstName("Santosh");
         student.setLastName("B S");
@@ -28,24 +28,24 @@ public class StudentServiceTests {
         student.setPassword("Test123");
         student.setDateOfBirth(new Date());
         student.setUserName("santoshbs");
-        
+
         boolean result = studentService.insertStudent(student);
         assertEquals("Studet details stored in database successfully", true, result);
     }
-    
+
     @Test
-    public void testRetrieveStudentByUserName(){
+    public void testRetrieveStudentByUserName() {
         Student student = studentService.getStudentByUserName("santoshbs");
         assertEquals("Retrieved student details are same as expected", "santoshbs", student.getUserName());
     }
-    
+
     @Test
-    public void testRetrieveStudentByLogin(){
-        //Arrange
+    public void testRetrieveStudentByLogin() {
+        // Arrange
         Student student = studentService.getStudentByLogin("santoshbs", "Test123");
-        //Act
+        // Act
         String studentName = student.getUserName();
-        //Assert
+        // Assert
         assertEquals("Retrieved student details are same as expected", "santoshbs", studentName);
     }
 }

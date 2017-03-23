@@ -10,8 +10,7 @@
    http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-
-	<mvc:annotation-driven />
+    <mvc:annotation-driven />
 	<context:component-scan base-package="com.baeldung.spring.mybatis" />
 	<bean
 	  class="org.springframework.web.servlet.view.InternalResourceViewResolver">

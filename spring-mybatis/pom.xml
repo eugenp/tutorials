@@ -53,8 +53,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+			<version>4.8.2</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.h2database</groupId>
@@ -65,5 +64,6 @@
 	</dependencies>
 	<build>
 		<finalName>spring-mybatis</finalName>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
 	</build>
 </project>
