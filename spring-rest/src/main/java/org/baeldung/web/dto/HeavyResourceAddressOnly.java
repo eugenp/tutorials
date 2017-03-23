@@ -1,14 +1,14 @@
 package org.baeldung.web.dto;
 
 
-public class HeavyResourceAddressPartialUpdate {
+public class HeavyResourceAddressOnly {
     private Integer id;
     private String address;
 
-    public HeavyResourceAddressPartialUpdate() {
+    public HeavyResourceAddressOnly() {
     }
 
-    public HeavyResourceAddressPartialUpdate(Integer id, String address) {
+    public HeavyResourceAddressOnly(Integer id, String address) {
         this.id = id;
         this.address = address;
     }
