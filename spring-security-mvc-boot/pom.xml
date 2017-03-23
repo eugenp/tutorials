@@ -14,19 +14,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.4.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
     </parent>
 
     <dependencies>
+     
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <dependency>
+       <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -54,13 +54,13 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
+ 
         <dependency>
 		  <groupId>org.springframework.boot</groupId>
 		  <artifactId>spring-boot-starter-test</artifactId>
 		  <scope>test</scope>
 		</dependency>
-		
+	
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -95,6 +95,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+		
+		 <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -140,7 +146,7 @@
             <artifactId>jstl-api</artifactId>
             <version>${jstl.version}</version>
         </dependency>
-
+		
     </dependencies>
 
     <build>
@@ -158,6 +164,7 @@
                     <excludes>
                          <exclude>**/*IntegrationTest.java</exclude> 
                          <exclude>**/*LiveTest.java</exclude> 
+                         <exclude>**/*EntryPointsTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -279,6 +286,43 @@
                 </plugins>
             </build>
         </profile>
+        
+           <profile>
+            <id>entryPoints</id>
+            <build>
+
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                        <exclude>**/*IntegrationTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*EntryPointsTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>
     </profiles>
 
 
@@ -288,12 +332,16 @@
         <!--<start-class>org.baeldung.voter.VoterApplication</start-class>-->
         <!--If you want to run the example with the multiple logins, comment the tag above and uncomment the one below-->
         <!--<start-class>org.baeldung.multiplelogin.MultipleLoginApplication</start-class>-->
+        <!--If you want to run the example with the multiple http elements, comment the tag above and uncomment the one below-->
+        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class>-->
+        
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <derby.version>10.13.1.1</derby.version>
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
-        <spring-security-taglibs.version>4.2.0.RELEASE</spring-security-taglibs.version>
-		  <spring-security-core.version>4.2.0.RELEASE</spring-security-core.version>
+        <spring-security-taglibs.version>4.2.2.RELEASE</spring-security-taglibs.version>
+		<spring-security-core.version>4.2.2.RELEASE</spring-security-core.version>
+		<spring-security-test.version>4.2.2.RELEASE</spring-security-test.version>
       
         <jstl.version>1.2</jstl.version>
         <rest-assured.version>2.4.0</rest-assured.version>

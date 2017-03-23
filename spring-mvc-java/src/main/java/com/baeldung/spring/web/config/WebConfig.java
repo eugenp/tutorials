@@ -109,11 +109,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public JExcelHelper jExcelHelper() {
-        return new JExcelHelper();
-    }
-
-    @Bean
     public ExcelPOIHelper excelPOIHelper() {
         return new ExcelPOIHelper();
     }
