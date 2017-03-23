@@ -17,7 +17,21 @@ import static org.mockito.Mockito.when;
 
 
 public class CustomAnswerWithoutLambdaUnitTest {
+    
+    private class PersonAnswer implements Answer<Stream<JobPosition>> {
 
+        @Override
+        public Stream<JobPosition> answer(InvocationOnMock invocation) throws Throwable {
+            Person person = invocation.getArgument(0);
+            
+            if(person.getName().equals("Peter")) {
+                return Stream.<JobPosition>builder().add(new JobPosition("Teacher")).build();
+            } 
+            
+            return Stream.empty();
+        }
+    }
+    
     @InjectMocks
     private UnemploymentServiceImpl unemploymentService;
     
@@ -36,17 +50,6 @@ public class CustomAnswerWithoutLambdaUnitTest {
         Person linda = new Person("Linda");
 
         assertFalse(unemploymentService.searchJob(linda, "").isPresent());
-    }
-    
-    private class PersonAnswer implements Answer<Stream<JobPosition>> {
-
-        @Override
-        public Stream<JobPosition> answer(InvocationOnMock invocation) throws Throwable {
-            Person person = invocation.getArgument(0);
-            
-            return Stream.of(new JobPosition("Teacher"))
-               .filter(p -> person.getName().equals("Peter"));
-        }
     }
 
     @Before

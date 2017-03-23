@@ -47,7 +47,7 @@ public class Event {
         this.title = title;
     }
 
-    @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
+    @Cascade({ CascadeType.SAVE_UPDATE, CascadeType.DELETE })
     public Set<String> getGuestList() {
         return guestList;
     }
