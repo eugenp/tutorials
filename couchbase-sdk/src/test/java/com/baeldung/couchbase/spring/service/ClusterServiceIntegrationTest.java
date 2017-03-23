@@ -21,9 +21,9 @@ public class ClusterServiceIntegrationTest extends IntegrationTest {
 
     @Autowired
     private ClusterService couchbaseService;
-    
+
     private Bucket defaultBucket;
-    
+
     @Test
     public void whenOpenBucket_thenBucketIsNotNull() throws Exception {
         defaultBucket = couchbaseService.openBucket("default", "");

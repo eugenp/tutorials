@@ -1,9 +1,10 @@
 package algorithms;
 
-import com.baeldung.algorithms.dijkstra.Dijkstra;
-import com.baeldung.algorithms.dijkstra.Graph;
-import com.baeldung.algorithms.dijkstra.Node;
 import org.junit.Test;
+
+import com.baeldung.algorithms.ga.dijkstra.Dijkstra;
+import com.baeldung.algorithms.ga.dijkstra.Graph;
+import com.baeldung.algorithms.ga.dijkstra.Node;
 
 import java.util.Arrays;
 import java.util.List;
@@ -55,29 +56,19 @@ public class DijkstraAlgorithmTest {
         for (Node node : graph.getNodes()) {
             switch (node.getName()) {
             case "B":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeB));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeB));
                 break;
             case "C":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeC));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeC));
                 break;
             case "D":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeD));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeD));
                 break;
             case "E":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeE));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeE));
                 break;
             case "F":
-                assertTrue(node
-                  .getShortestPath()
-                  .equals(shortestPathForNodeF));
+                assertTrue(node.getShortestPath().equals(shortestPathForNodeF));
                 break;
             }
         }

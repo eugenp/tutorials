@@ -40,7 +40,7 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
 
     @Override
     public void create(T t) {
-        if(t.getId() == null) {
+        if (t.getId() == null) {
             t.setId(UUID.randomUUID().toString());
         }
         JsonDocument doc = converter.toDocument(t);
@@ -73,18 +73,15 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
     @Override
     public List<T> readBulk(Iterable<String> ids) {
         final AsyncBucket asyncBucket = bucket.async();
-        Observable<JsonDocument> asyncOperation = Observable
-                .from(ids)
-                .flatMap(new Func1<String, Observable<JsonDocument>>() {
-                    public Observable<JsonDocument> call(String key) {
-                        return asyncBucket.get(key);
-                    }
-                });
+        Observable<JsonDocument> asyncOperation = Observable.from(ids).flatMap(new Func1<String, Observable<JsonDocument>>() {
+            public Observable<JsonDocument> call(String key) {
+                return asyncBucket.get(key);
+            }
+        });
 
         final List<T> items = new ArrayList<T>();
         try {
-            asyncOperation.toBlocking()
-            .forEach(new Action1<JsonDocument>() {
+            asyncOperation.toBlocking().forEach(new Action1<JsonDocument>() {
                 public void call(JsonDocument doc) {
                     T item = converter.fromDocument(doc);
                     items.add(item);
@@ -100,72 +97,42 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
     @Override
     public void createBulk(Iterable<T> items) {
         final AsyncBucket asyncBucket = bucket.async();
-        Observable
-        .from(items)
-        .flatMap(new Func1<T, Observable<JsonDocument>>() {
+        Observable.from(items).flatMap(new Func1<T, Observable<JsonDocument>>() {
             @SuppressWarnings("unchecked")
             @Override
             public Observable<JsonDocument> call(final T t) {
-                if(t.getId() == null) {
+                if (t.getId() == null) {
                     t.setId(UUID.randomUUID().toString());
                 }
                 JsonDocument doc = converter.toDocument(t);
-                return asyncBucket.insert(doc)
-                        .retryWhen(RetryBuilder
-                                .anyOf(BackpressureException.class)
-                                .delay(Delay.exponential(TimeUnit.MILLISECONDS, 100))
-                                .max(10)
-                                .build());
+                return asyncBucket.insert(doc).retryWhen(RetryBuilder.anyOf(BackpressureException.class).delay(Delay.exponential(TimeUnit.MILLISECONDS, 100)).max(10).build());
             }
-        })
-        .last()
-        .toBlocking()
-        .single();
+        }).last().toBlocking().single();
     }
 
     @Override
     public void updateBulk(Iterable<T> items) {
         final AsyncBucket asyncBucket = bucket.async();
-        Observable
-        .from(items)
-        .flatMap(new Func1<T, Observable<JsonDocument>>() {
+        Observable.from(items).flatMap(new Func1<T, Observable<JsonDocument>>() {
             @SuppressWarnings("unchecked")
             @Override
             public Observable<JsonDocument> call(final T t) {
                 JsonDocument doc = converter.toDocument(t);
-                return asyncBucket.upsert(doc)
-                        .retryWhen(RetryBuilder
-                                .anyOf(BackpressureException.class)
-                                .delay(Delay.exponential(TimeUnit.MILLISECONDS, 100))
-                                .max(10)
-                                .build());
+                return asyncBucket.upsert(doc).retryWhen(RetryBuilder.anyOf(BackpressureException.class).delay(Delay.exponential(TimeUnit.MILLISECONDS, 100)).max(10).build());
             }
-        })
-        .last()
-        .toBlocking()
-        .single();
+        }).last().toBlocking().single();
     }
 
     @Override
     public void deleteBulk(Iterable<String> ids) {
         final AsyncBucket asyncBucket = bucket.async();
-        Observable
-        .from(ids)
-        .flatMap(new Func1<String, Observable<JsonDocument>>() {
+        Observable.from(ids).flatMap(new Func1<String, Observable<JsonDocument>>() {
             @SuppressWarnings("unchecked")
             @Override
             public Observable<JsonDocument> call(String key) {
-                return asyncBucket.remove(key)
-                        .retryWhen(RetryBuilder
-                                .anyOf(BackpressureException.class)
-                                .delay(Delay.exponential(TimeUnit.MILLISECONDS, 100))
-                                .max(10)
-                                .build());
+                return asyncBucket.remove(key).retryWhen(RetryBuilder.anyOf(BackpressureException.class).delay(Delay.exponential(TimeUnit.MILLISECONDS, 100)).max(10).build());
             }
-        })
-        .last()
-        .toBlocking()
-        .single();
+        }).last().toBlocking().single();
     }
 
     @Override

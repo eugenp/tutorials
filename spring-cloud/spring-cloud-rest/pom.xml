@@ -7,8 +7,10 @@
     <artifactId>spring-cloud-rest</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>spring-cloud-rest-server</module>
-        <module>spring-cloud-rest-client</module>
+        <module>spring-cloud-rest-config-server</module>
+        <module>spring-cloud-rest-discovery-server</module>
+        <module>spring-cloud-rest-books-api</module>
+        <module>spring-cloud-rest-reviews-api</module>
     </modules>
     <packaging>pom</packaging>
 

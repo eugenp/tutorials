@@ -25,8 +25,7 @@ public class LogWithoutChain {
             howIsManager();
         } catch (ManagerUpsetException e) {
             e.printStackTrace();
-            throw new TeamLeadUpsetException(
-                    "Team lead is not in good mood");
+            throw new TeamLeadUpsetException("Team lead is not in good mood");
         }
     }
 
@@ -39,9 +38,7 @@ public class LogWithoutChain {
         }
     }
 
-    private static void howIsGirlFriendOfManager()
-            throws GirlFriendOfManagerUpsetException {
-        throw new GirlFriendOfManagerUpsetException(
-                "Girl friend of manager is in bad mood");
+    private static void howIsGirlFriendOfManager() throws GirlFriendOfManagerUpsetException {
+        throw new GirlFriendOfManagerUpsetException("Girl friend of manager is in bad mood");
     }
 }

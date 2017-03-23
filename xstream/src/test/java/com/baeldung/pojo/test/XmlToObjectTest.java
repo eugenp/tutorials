@@ -42,5 +42,4 @@ public class XmlToObjectTest {
         Assert.assertNotNull(convertedCustomer);
     }
 
-
 }
