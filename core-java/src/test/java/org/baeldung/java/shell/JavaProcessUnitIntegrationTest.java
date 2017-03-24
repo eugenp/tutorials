@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 
-public class JavaProcessUnitTest {
+public class JavaProcessUnitIntegrationTest {
     private static final boolean IS_WINDOWS = System.getProperty("os.name").toLowerCase().startsWith("windows");
 
     private static class StreamGobbler implements Runnable {

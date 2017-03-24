@@ -24,7 +24,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringDataRestApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
-public class SpringDataRelationshipsTest {
+public class SpringDataRelationshipsIntegrationTest {
 
     @Autowired
     private TestRestTemplate template;

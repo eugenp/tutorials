@@ -1,18 +1,18 @@
 package com.baeldung.applicationcontext;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
-
-import java.util.List;
-import java.util.Locale;
-
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ClasspathXmlApplicationContextTest {
+import java.util.List;
+import java.util.Locale;
+
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
+
+public class ClasspathXmlApplicationContextIntegrationTest {
     @Test
     public void testBasicUsage() {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpathxmlapplicationcontext-example.xml");
