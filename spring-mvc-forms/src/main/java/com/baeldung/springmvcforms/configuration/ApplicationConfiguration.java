@@ -27,6 +27,16 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         bean.setSuffix(".jsp");
         return bean;
     }
+    
+
+    @Bean
+    public InternalResourceViewResolver htmlViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("/WEB-INF/html/");
+        bean.setSuffix(".html");
+        bean.setOrder(2);
+        return bean;
+    }
 
     @Bean
     public MultipartResolver multipartResolver() {

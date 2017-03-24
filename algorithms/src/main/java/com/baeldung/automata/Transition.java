@@ -5,16 +5,16 @@ package com.baeldung.automata;
  */
 public interface Transition {
 
-	/**
-	 * Is the transition possible with the given character?
-	 * @param c char.
-	 * @return true or false.
-	 */
-	boolean isPossible(final CharSequence c);
+    /**
+     * Is the transition possible with the given character?
+     * @param c char.
+     * @return true or false.
+     */
+    boolean isPossible(final CharSequence c);
 
-	/**
-	 * The state to which this transition leads.
-	 * @return State.
-	 */
+    /**
+     * The state to which this transition leads.
+     * @return State.
+     */
     State state();
 }
