@@ -161,7 +161,6 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
-        <module>spring-security-basic-auth</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
