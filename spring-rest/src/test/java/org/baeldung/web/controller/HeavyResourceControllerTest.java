@@ -3,7 +3,7 @@ package org.baeldung.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.baeldung.config.WebConfig;
 import org.baeldung.web.dto.HeavyResource;
-import org.baeldung.web.dto.HeavyResourceAddressPartialUpdate;
+import org.baeldung.web.dto.HeavyResourceAddressOnly;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +15,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.HashMap;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -47,10 +49,21 @@ public class HeavyResourceControllerTest {
     }
 
     @Test
-    public void givenNewAddressOfResource_whenExecutePutRequest_thenUpdateResourcePartially() throws Exception {
+    public void givenNewAddressOfResource_whenExecutePatchRequest_thenUpdateResourcePartially() throws Exception {
         mockMvc.perform(patch("/heavy")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .content(objectMapper.writeValueAsString(new HeavyResourceAddressPartialUpdate(1, "5th avenue")))
+                .content(objectMapper.writeValueAsString(new HeavyResourceAddressOnly(1, "5th avenue")))
+        ).andExpect(status().isOk());
+    }
+
+    @Test
+    public void givenNewAddressOfResource_whenExecutePatchGeneric_thenUpdateResourcePartially() throws Exception {
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("address", "5th avenue");
+
+        mockMvc.perform(patch("/heavy/1")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(objectMapper.writeValueAsString(updates))
         ).andExpect(status().isOk());
     }
 
