@@ -188,6 +188,7 @@
         <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
+        <module>spring-state-machine</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
@@ -210,7 +211,9 @@
 
         <module>rabbitmq</module>
         <module>vertx</module>
-  </modules>
+
+    </modules>
+
     <build>
         <plugins>
             <plugin>
