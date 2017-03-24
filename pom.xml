@@ -123,6 +123,7 @@
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
+        <module>spring-aop</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
