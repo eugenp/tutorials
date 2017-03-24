@@ -13,10 +13,12 @@ objectclass: top
 objectclass: person
 objectclass: organizationalPerson
 objectclass: inetOrgPerson
+description: Jim Beam is a baeldung user
 cn: Jim Beam
 sn: Beam
 uid: baeldung
 userPassword: password
+mobile: +201034454545
 
 dn: cn=admin,ou=groups,dc=baeldung,dc=com
 objectclass: top
@@ -29,3 +31,27 @@ objectclass: top
 objectclass: groupOfNames
 cn: user
 member: uid=baeldung,ou=people,dc=baeldung,dc=com
+
+dn: uid=john,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+description: John Smith was an English soldier, explorer, and author.
+cn: John Smith
+sn: Smith
+uid: john
+userPassword: johnpassword
+mobile: +201114455445
+
+dn: uid=salah,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+description: Mohamed Salah is a professional footballer, who plays for Italian club Roma and the Egypt national team.
+cn: mahamed salah
+sn: salah
+uid: salah
+userPassword: salah
+mobile: +201222455445

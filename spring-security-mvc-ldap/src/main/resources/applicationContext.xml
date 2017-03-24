@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ldap="http://www.springframework.org/schema/ldap"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/ldap http://www.springframework.org/schema/ldap/spring-ldap.xsd">
+
+    <context:property-placeholder location="classpath:/ldap.properties" />
+
+    <ldap:context-source id="contextSource"
+                         password="${ldap.password}"
+                         url="${ldap.url}"
+                         username="${ldap.userDn}"
+                         base="${ldap.base}" />
+
+    <ldap:ldap-template id="ldapTemplate" context-source-ref="contextSource"/>
+
+	<bean id="userDao"
+		class="org.baeldung.dao.UserDaoImpl">
+		<property name="ldapTemplate" ref="ldapTemplate" />
+	</bean>
+
+       <beans profile="default">
+        <bean class="org.springframework.ldap.test.LdifPopulator" depends-on="embeddedLdapServer">
+            <property name="contextSource" ref="contextSource" />
+            <property name="resource" value="classpath:/users.ldif" />
+            <property name="base" value="${ldap.base}" />
+            <property name="clean" value="${ldap.clean}" />
+            <property name="defaultBase" value="dc=baeldung,dc=org" />
+        </bean>
+
+        <bean id="embeddedLdapServer" class="org.springframework.ldap.test.EmbeddedLdapServerFactoryBean">
+            <property name="partitionName" value="example"/>
+            <property name="partitionSuffix" value="${ldap.base}" />
+            <property name="port" value="49792" />
+        </bean>
+    </beans>
+
+</beans>
