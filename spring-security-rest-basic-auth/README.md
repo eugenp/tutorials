@@ -10,3 +10,4 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [HttpClient Timeout](http://www.baeldung.com/httpclient-timeout)
 - [HttpClient with SSL](http://www.baeldung.com/httpclient-ssl)
 - [Writing a Custom Filter in Spring Security](http://www.baeldung.com/spring-security-custom-filter)
+- [Spring Security Basic Authentication](http://www.baeldung.com/spring-security-basic-authentication)
