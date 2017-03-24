@@ -1,4 +1,4 @@
-package org.baeldung.security.basic;
+package org.baeldung.basic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
