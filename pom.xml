@@ -144,6 +144,7 @@
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
+        <module>spring-kafka</module>
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
         <module>spring-mockito</module>
