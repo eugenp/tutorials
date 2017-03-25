@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class MetricsTest {
+public class MetricsIntegrationTest {
     @Test
     public void whenMarkMeter_thenCorrectRates() throws InterruptedException {
         Meter meter = new Meter();
