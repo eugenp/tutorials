@@ -13,71 +13,83 @@ import java.util.stream.Collectors;
 @Path("/movies")
 public class MovieCrudService {
 
-    private Map<String, Movie> inventory = new HashMap<String, Movie>();
+	private Map<String, Movie> inventory = new HashMap<String, Movie>();
 
-    @GET
-    @Path("/getinfo")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Movie movieByImdbId(@QueryParam("imdbId") String imdbId) {
+	@GET
+	@Path("/")
+	@Produces({ MediaType.TEXT_PLAIN })
+	public Response index() {
+		return Response.status(200).header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD").entity("").build();
+	}
 
-        System.out.println("*** Calling  getinfo for a given ImdbID***");
+	@GET
+	@Path("/getinfo")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Movie movieByImdbId(@QueryParam("imdbId") String imdbId) {
 
-        if (inventory.containsKey(imdbId)) {
-            return inventory.get(imdbId);
-        } else
-            return null;
-    }
+		System.out.println("*** Calling  getinfo for a given ImdbID***");
 
-    @POST
-    @Path("/addmovie")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response addMovie(Movie movie) {
+		if (inventory.containsKey(imdbId)) {
+			return inventory.get(imdbId);
+		} else
+			return null;
+	}
 
-        System.out.println("*** Calling  addMovie ***");
+	@POST
+	@Path("/addmovie")
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Response addMovie(Movie movie) {
 
-        if (null != inventory.get(movie.getImdbId())) {
-            return Response.status(Response.Status.NOT_MODIFIED).entity("Movie is Already in the database.").build();
-        }
+		System.out.println("*** Calling  addMovie ***");
 
-        inventory.put(movie.getImdbId(), movie);
-        return Response.status(Response.Status.CREATED).build();
-    }
+		if (null != inventory.get(movie.getImdbId())) {
+			return Response.status(Response.Status.NOT_MODIFIED).entity("Movie is Already in the database.").build();
+		}
 
-    @PUT
-    @Path("/updatemovie")
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public Response updateMovie(Movie movie) {
+		inventory.put(movie.getImdbId(), movie);
+		return Response.status(Response.Status.CREATED).build();
+	}
 
-        System.out.println("*** Calling  updateMovie ***");
+	@PUT
+	@Path("/updatemovie")
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public Response updateMovie(Movie movie) {
 
-        if (null == inventory.get(movie.getImdbId())) {
-            return Response.status(Response.Status.NOT_MODIFIED).entity("Movie is not in the database.\nUnable to Update").build();
-        }
+		System.out.println("*** Calling  updateMovie ***");
 
-        inventory.put(movie.getImdbId(), movie);
-        return Response.status(Response.Status.OK).build();
-    }
+		if (null == inventory.get(movie.getImdbId())) {
+			return Response.status(Response.Status.NOT_MODIFIED)
+					.entity("Movie is not in the database.\nUnable to Update").build();
+		}
 
-    @DELETE
-    @Path("/deletemovie")
-    public Response deleteMovie(@QueryParam("imdbId") String imdbId) {
+		inventory.put(movie.getImdbId(), movie);
+		return Response.status(Response.Status.OK).build();
+	}
 
-        System.out.println("*** Calling  deleteMovie ***");
+	@DELETE
+	@Path("/deletemovie")
+	public Response deleteMovie(@QueryParam("imdbId") String imdbId) {
 
-        if (null == inventory.get(imdbId)) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Movie is not in the database.\nUnable to Delete").build();
-        }
+		System.out.println("*** Calling  deleteMovie ***");
 
-        inventory.remove(imdbId);
-        return Response.status(Response.Status.OK).build();
-    }
+		if (null == inventory.get(imdbId)) {
+			return Response.status(Response.Status.NOT_FOUND).entity("Movie is not in the database.\nUnable to Delete")
+					.build();
+		}
 
-    @GET
-    @Path("/listmovies")
-    @Produces({ "application/json" })
-    public List<Movie> listMovies() {
+		inventory.remove(imdbId);
+		return Response.status(Response.Status.OK).build();
+	}
 
-        return inventory.values().stream().collect(Collectors.toCollection(ArrayList::new));
-    }
+	@GET
+	@Path("/listmovies")
+	@Produces({ "application/json" })
+	public List<Movie> listMovies() {
+
+		return inventory.values().stream().collect(Collectors.toCollection(ArrayList::new));
+	}
 
 }
