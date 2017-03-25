@@ -79,5 +79,19 @@
         </plugins>
 
     </build>
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>http://repo.spring.io/libs-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>gemstone</id>
+            <url>http://dist.gemstone.com.s3.amazonaws.com/maven/release/</url>
+        </repository>
+    </repositories>
 
 </project>
