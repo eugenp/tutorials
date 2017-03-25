@@ -1,6 +1,9 @@
 package com.baeldung.spring.stateMachine;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.statemachine.StateMachine;
 
 import com.baeldung.spring.stateMachine.config.SimpleStateMachineConfiguration;
+import com.jayway.awaitility.Awaitility;
 
 public class StateMachineTest {
 
@@ -40,8 +44,10 @@ public class StateMachineTest {
         stateMachine.sendEvent("E3");
         assertEquals("S3", stateMachine.getState().getId());
 
-        stateMachine.sendEvent("E4");
-        assertEquals("S4", stateMachine.getState().getId());
+        boolean acceptedE4 = stateMachine.sendEvent("E4");
+
+        assertTrue(acceptedE4);
+        Awaitility.await().atMost(5, TimeUnit.SECONDS).until(() -> assertEquals("S4", stateMachine.getState().getId()));
         assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
     }
 }
