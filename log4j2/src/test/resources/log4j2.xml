@@ -19,12 +19,14 @@
         <Async name="AsyncAppender" bufferSize="80">
             <AppenderRef ref="JSONLogfileAppender" />
         </Async>
-        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" />
+<!--
+        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" mdcId="mdc" includeMDC="true" />
         <Failover name="FailoverAppender" primary="Syslog">
             <Failovers>
                 <AppenderRef ref="ConsoleAppender" />
             </Failovers>
         </Failover>
+-->
         <JDBC name="JDBCAppender" tableName="logs">
             <ConnectionFactory class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory" method="getConnection" />
             <Column name="when" isEventTimestamp="true" />
@@ -53,9 +55,11 @@
         <Logger name="ASYNC_JSON_FILE_APPENDER" level="INFO" additivity="false">
             <AppenderRef ref="AsyncAppender" />
         </Logger>
+<!--
         <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false">
             <AppenderRef ref="FailoverAppender" />
         </Logger>
+-->
         <Logger name="JDBC_APPENDER" level="INFO" additivity="false">
             <AppenderRef ref="JDBCAppender" />
         </Logger>
