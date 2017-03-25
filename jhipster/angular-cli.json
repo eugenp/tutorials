@@ -1,0 +1,55 @@
+{
+  "project": {
+    "version": "1.0.0-beta.24",
+    "name": "baeldung"
+  },
+  "apps": [
+    {
+      "root": "src/main/webapp/",
+      "outDir": "target/www/app",
+      "assets": [
+        "content",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "app/app.main.ts",
+      "test": "",
+      "tsconfig": "../../../tsconfig.json",
+      "prefix": "jhi",
+      "mobile": false,
+      "styles": [
+        "content/css/main.css"
+      ],
+      "scripts": [],
+      "environments": {}
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "e2e": {
+    "protractor": {
+      "config": "src/test/javascript/protractor.conf.js"
+    }
+  },
+  "test": {
+    "karma": {
+      "config": "src/test/javascript/karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": true,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": false,
+      "directive": false,
+      "module": false,
+      "pipe": false,
+      "service": false
+    }
+  }
+}
