@@ -22,7 +22,7 @@
 	  	"org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 	<bean id="viewResolver"
 	  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-	  <property name="prefix" value="/WEB-INF/" />
+	  <property name="prefix" value="/WEB-INF/views/" />
 	  <property name="suffix" value=".jsp" />
 	</bean>
 </beans>  
