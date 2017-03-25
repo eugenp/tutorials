@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 
 import static javaslang.API.*;
 
-public class PropertyBasedTest {
+public class PropertyBasedLongRunningUnitTest {
 
     private static Predicate<Integer> divisibleByTwo = i -> i % 2 == 0;
     private static Predicate<Integer> divisibleByFive = i -> i % 5 == 0;
