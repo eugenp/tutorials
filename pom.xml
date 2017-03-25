@@ -211,7 +211,8 @@
 
         <module>rabbitmq</module>
         <module>vertx</module>
-  </modules>
+        <module>spring-data-gemfire</module>
+    </modules>
     <build>
         <plugins>
             <plugin>
