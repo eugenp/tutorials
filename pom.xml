@@ -109,7 +109,7 @@
         <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
-        <module>solr-fulltext-search</module>
+        <module>solr</module>
         <module>spark-java</module>
        <!-- <module>spring-5</module> TODO: CI problems-->
         <module>spring-akka</module>
