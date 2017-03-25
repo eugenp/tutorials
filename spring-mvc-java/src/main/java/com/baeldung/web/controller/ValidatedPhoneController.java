@@ -1,27 +1,26 @@
 package com.baeldung.web.controller;
 
-import javax.validation.Valid;
-
+import com.baeldung.model.ValidatedPhone;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.baeldung.model.ValidatedPhone;
+import javax.validation.Valid;
 
 @Controller
 @EnableWebMvc
 public class ValidatedPhoneController {
 
-    @RequestMapping(value = "/validatePhone", method = RequestMethod.GET)
+    @GetMapping("/validatePhone")
     public String loadFormPage(Model m) {
         m.addAttribute("validatedPhone", new ValidatedPhone());
         return "phoneHome";
     }
 
-    @RequestMapping(value = "/addValidatePhone", method = RequestMethod.POST)
+    @PostMapping("/addValidatePhone")
     public String submitForm(@Valid ValidatedPhone validatedPhone, BindingResult result, Model m) {
         if (result.hasErrors()) {
             return "phoneHome";
