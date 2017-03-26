@@ -3,8 +3,6 @@ package com.baeldung.spring.stateMachine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +40,11 @@ public class StateMachineTest {
 
     @Test
     public void whenSimpleStringMachineActionState_thenActionExecuted() {
+
+        ctx = new AnnotationConfigApplicationContext(SimpleStateMachineConfiguration.class);
+        stateMachine = ctx.getBean(StateMachine.class);
+        stateMachine.start();
+
         stateMachine.sendEvent("E3");
         assertEquals("S3", stateMachine.getState().getId());
 
