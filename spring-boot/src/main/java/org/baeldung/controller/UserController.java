@@ -1,5 +1,6 @@
 package org.baeldung.controller;
 
+import org.baeldung.domain.UserVO;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
