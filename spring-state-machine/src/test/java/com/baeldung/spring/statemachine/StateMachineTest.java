@@ -5,21 +5,22 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
 import com.baeldung.spring.stateMachine.config.SimpleStateMachineConfiguration;
-import com.jayway.awaitility.Awaitility;
 
 public class StateMachineTest {
 
+    private AnnotationConfigApplicationContext ctx;
     private StateMachine stateMachine;
 
     @Before
     public void setUp() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SimpleStateMachineConfiguration.class);
+        ctx = new AnnotationConfigApplicationContext(SimpleStateMachineConfiguration.class);
         stateMachine = ctx.getBean(StateMachine.class);
         stateMachine.start();
     }
@@ -47,7 +48,12 @@ public class StateMachineTest {
         boolean acceptedE4 = stateMachine.sendEvent("E4");
 
         assertTrue(acceptedE4);
-        Awaitility.await().atMost(5, TimeUnit.SECONDS).until(() -> assertEquals("S4", stateMachine.getState().getId()));
+        assertEquals("S4", stateMachine.getState().getId());
         assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
+    }
+
+    @After
+    public void tearDown() {
+        ctx.close();
     }
 }
