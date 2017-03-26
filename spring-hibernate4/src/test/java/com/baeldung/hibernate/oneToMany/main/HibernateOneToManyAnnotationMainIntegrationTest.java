@@ -1,33 +1,28 @@
 package com.baeldung.hibernate.oneToMany.main;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import java.util.HashSet;
-import java.util.Set;
-
+import com.baeldung.hibernate.oneToMany.model.Cart;
+import com.baeldung.hibernate.oneToMany.model.Items;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.HSQLDialect;
 import org.hibernate.service.ServiceRegistry;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import com.baeldung.hibernate.oneToMany.model.Cart;
-import com.baeldung.hibernate.oneToMany.model.Items;
+import org.junit.*;
 
-public class HibernateOneToManyAnnotationMainTest {
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+public class HibernateOneToManyAnnotationMainIntegrationTest {
 
 	private static SessionFactory sessionFactory;
 
 	private Session session;
 
-	public HibernateOneToManyAnnotationMainTest() {
+	public HibernateOneToManyAnnotationMainIntegrationTest() {
 	}
 
 	@BeforeClass
