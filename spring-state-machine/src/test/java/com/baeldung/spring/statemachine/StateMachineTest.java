@@ -3,7 +3,6 @@ package com.baeldung.spring.stateMachine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -32,18 +31,10 @@ public class StateMachineTest {
 
         stateMachine.sendEvent("E2");
         assertEquals("S2", stateMachine.getState().getId());
-
-        stateMachine.sendEvent("end");
-        assertEquals("SF", stateMachine.getState().getId());
-
     }
 
     @Test
     public void whenSimpleStringMachineActionState_thenActionExecuted() {
-
-        ctx = new AnnotationConfigApplicationContext(SimpleStateMachineConfiguration.class);
-        stateMachine = ctx.getBean(StateMachine.class);
-        stateMachine.start();
 
         stateMachine.sendEvent("E3");
         assertEquals("S3", stateMachine.getState().getId());
@@ -53,10 +44,8 @@ public class StateMachineTest {
         assertTrue(acceptedE4);
         assertEquals("S4", stateMachine.getState().getId());
         assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
-    }
 
-    @After
-    public void tearDown() {
-        ctx.close();
+        stateMachine.sendEvent("end");
+        assertEquals("SF", stateMachine.getState().getId());
     }
 }

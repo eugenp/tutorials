@@ -1,5 +1,9 @@
 package com.baeldung.spring.stateMachine.config;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.logging.Logger;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.action.Action;
@@ -9,10 +13,6 @@ import org.springframework.statemachine.config.builders.StateMachineConfiguratio
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 import org.springframework.statemachine.guard.Guard;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.logging.Logger;
 
 @Configuration
 @EnableStateMachine
@@ -52,7 +52,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
                 .and().withExternal()
                 .source("SI").target("S3").event("E3")
                 .and().withExternal()
-                .source("S3").target("S4").event("E4").guard(simpleGuard())
+                .source("S3").target("S4").event("E4").and().withExternal().source("S4").target("SF").event("end").guard(simpleGuard())
                 .and().withExternal()
                 .source("S2").target("SF").event("end");
     }
