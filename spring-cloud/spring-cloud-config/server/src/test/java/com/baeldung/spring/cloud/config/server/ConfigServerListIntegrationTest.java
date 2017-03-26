@@ -11,7 +11,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringApplicationConfiguration(classes = ConfigServer.class)
 @WebAppConfiguration
 @Ignore
-public class ConfigServerListTest {
+public class ConfigServerListIntegrationTest {
+
     @Test
     public void contextLoads() {
     }
