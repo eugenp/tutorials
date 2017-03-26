@@ -1,5 +1,6 @@
 package org.baeldung.controller;
 
+import org.baeldung.domain.ResponseVO;
 import org.baeldung.domain.UserVO;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 public class UserController {
@@ -26,15 +26,12 @@ public class UserController {
     @ResponseBody
     public ResponseVO aJsonPostMethod(@RequestBody UserVO userVo) {
         ResponseVO respVo = new ResponseVO();
-        if(userVo.getName().equals("tousif"))
-        {
-                respVo.setSuccess(true);
-                respVo.setMessage("User is Authenticated");
-        }
-        else 
-        {
-                respVo.setSuccess(false);
-                respVo.setMessage("User is Unauthenticated");
+        if (userVo.getName().equals("tousif")) {
+            respVo.setSuccess(true);
+            respVo.setMessage("User is Authenticated");
+        } else {
+            respVo.setSuccess(false);
+            respVo.setMessage("User is Unauthenticated");
         }
         return respVo;
     }
