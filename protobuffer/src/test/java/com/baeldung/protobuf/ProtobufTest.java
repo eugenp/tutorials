@@ -28,24 +28,18 @@ public class ProtobufTest {
         int id = new Random().nextInt();
         String name = "Michael Program";
         String number = "01234567890";
-        AddressBookProtos.Person.PhoneType type = AddressBookProtos.Person.PhoneType.HOME;
         AddressBookProtos.Person person =
                 AddressBookProtos.Person.newBuilder()
                         .setId(id)
                         .setName(name)
                         .setEmail(email)
-                        .addPhones(
-                                AddressBookProtos.Person.PhoneNumber.newBuilder()
-                                        .setNumber(number)
-                                        .setType(type))
+                        .addNumbers(number)
                         .build();
         //then
         assertEquals(person.getEmail(), email);
         assertEquals(person.getId(), id);
         assertEquals(person.getName(), name);
-        assertEquals(person.getPhones(0).getNumber(), number);
-        assertEquals(person.getPhones(0).getType(), type);
-        assertEquals(person.getPhonesList().size(), 1);
+        assertEquals(person.getNumbers(0), number);
     }
 
 
@@ -56,16 +50,12 @@ public class ProtobufTest {
         int id = new Random().nextInt();
         String name = "Michael Program";
         String number = "01234567890";
-        AddressBookProtos.Person.PhoneType type = AddressBookProtos.Person.PhoneType.HOME;
         AddressBookProtos.Person person =
                 AddressBookProtos.Person.newBuilder()
                         .setId(id)
                         .setName(name)
                         .setEmail(email)
-                        .addPhones(
-                                AddressBookProtos.Person.PhoneNumber.newBuilder()
-                                        .setNumber(number)
-                                        .setType(type))
+                        .addNumbers(number)
                         .build();
 
         //when
@@ -82,9 +72,8 @@ public class ProtobufTest {
         assertEquals(deserialized.getPeople(0).getEmail(), email);
         assertEquals(deserialized.getPeople(0).getId(), id);
         assertEquals(deserialized.getPeople(0).getName(), name);
-        assertEquals(deserialized.getPeople(0).getPhones(0).getNumber(), number);
-        assertEquals(deserialized.getPeople(0).getPhones(0).getType(), type);
-        assertEquals(deserialized.getPeople(0).getPhonesList().size(), 1);
+        assertEquals(deserialized.getPeople(0).getNumbers(0), number);
+
 
     }
 }
