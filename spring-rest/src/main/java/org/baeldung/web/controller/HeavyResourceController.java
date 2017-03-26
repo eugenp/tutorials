@@ -3,13 +3,12 @@ package org.baeldung.web.controller;
 
 import org.baeldung.repository.HeavyResourceRepository;
 import org.baeldung.web.dto.HeavyResource;
-import org.baeldung.web.dto.HeavyResourceAddressPartialUpdate;
+import org.baeldung.web.dto.HeavyResourceAddressOnly;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 public class HeavyResourceController {
@@ -23,9 +22,16 @@ public class HeavyResourceController {
     }
 
     @RequestMapping(value = "/heavy", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> partialUpdateName(@RequestBody HeavyResourceAddressPartialUpdate partialUpdate) {
+    public ResponseEntity<?> partialUpdateName(@RequestBody HeavyResourceAddressOnly partialUpdate) {
         heavyResourceRepository.save(partialUpdate);
         return ResponseEntity.ok("resource address updated");
+    }
+
+    @RequestMapping(value = "/heavy/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> partialUpdateGeneric(@RequestBody Map<String, Object> updates,
+                                                  @PathVariable("id") String id) {
+        heavyResourceRepository.save(updates, id);
+        return ResponseEntity.ok("resource updated");
     }
 
 }
