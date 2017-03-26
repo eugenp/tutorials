@@ -27,7 +27,7 @@ public class HeavyResourceController {
         return ResponseEntity.ok("resource address updated");
     }
 
-    @RequestMapping(value = "/heavyresource/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/heavyresource2/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> partialUpdateGeneric(@RequestBody Map<String, Object> updates,
                                                   @PathVariable("id") String id) {
         heavyResourceRepository.save(updates, id);
