@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,8 +28,8 @@ public class JacksonMapDeserializeTest {
 		};
 
 		final Map<String, String> map = mapper.readValue(jsonInput, typeRef);
-		final String expectedOutput = "{key=value}";
-		Assert.assertEquals(expectedOutput, map.toString());
+
+		Assert.assertEquals("value", map.get("key"));
 	}
 
 	@Test
@@ -44,8 +43,7 @@ public class JacksonMapDeserializeTest {
 		};
 		map = mapper.readValue(jsonInput, typeRef);
 
-		Assert.assertEquals("Abbott and Costello",
-				StringUtils.join(map.keySet(), ", "));
+		Assert.assertEquals("Comedy", map.get(new MyPair("Abbott", "Costello")));
 	}
 
 	@Test
@@ -59,9 +57,7 @@ public class JacksonMapDeserializeTest {
 
 		cmap = mapper.readValue(jsonInput, typeRef);
 
-		Assert.assertEquals("Abbott and Costello",
-				StringUtils.join(cmap.keySet(), ", "));
-		Assert.assertEquals("Comedy and 1940s",
-				StringUtils.join(cmap.values(), ", "));
+		Assert.assertEquals(new MyPair("Comedy", "1940s"),
+				cmap.get(new MyPair("Abbott", "Costello")));
 	}
 }
