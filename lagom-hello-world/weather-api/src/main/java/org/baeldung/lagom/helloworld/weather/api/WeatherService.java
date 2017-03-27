@@ -1,11 +1,12 @@
 package org.baeldung.lagom.helloworld.weather.api;
 
 import static com.lightbend.lagom.javadsl.api.Service.named;
-import static com.lightbend.lagom.javadsl.api.Service.pathCall;
+import static com.lightbend.lagom.javadsl.api.Service.*;
 
 import com.lightbend.lagom.javadsl.api.Descriptor;
 import com.lightbend.lagom.javadsl.api.Service;
 import com.lightbend.lagom.javadsl.api.ServiceCall;
+import com.lightbend.lagom.javadsl.api.transport.Method;
 
 import akka.NotUsed;
 
@@ -20,7 +21,7 @@ public interface WeatherService extends Service {
     @Override
     default Descriptor descriptor() {
       return named("weatherservice").withCalls(
-          pathCall("/api/weather",  this::weatherStatsForToday)
+          restCall(Method.GET, "/api/weather", this::weatherStatsForToday)
         ).withAutoAcl(true);
     }
 

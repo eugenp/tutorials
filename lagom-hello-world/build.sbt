@@ -18,9 +18,7 @@ lazy val greetingImpl = project("greeting-impl")
   .settings(
     version := "1.0-SNAPSHOT",
     libraryDependencies ++= Seq(
-      lagomJavadslPersistence,
-      lagomJavadslPersistenceCassandra,
-      lagomJavadslImmutables
+      lagomJavadslPersistenceCassandra
     )
   )
   .dependsOn(greetingApi, weatherApi)
