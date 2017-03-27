@@ -1,4 +1,4 @@
-package com.baeldung.spring.stateMachine.config;
+package com.baeldung.spring.statemachine.config;
 
 import java.util.Arrays;
 import java.util.HashSet;
