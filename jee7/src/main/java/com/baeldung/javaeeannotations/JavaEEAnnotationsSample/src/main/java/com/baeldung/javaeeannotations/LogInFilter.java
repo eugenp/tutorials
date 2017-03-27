@@ -11,13 +11,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(
+/*@WebFilter(
   urlPatterns = "/bankAccount/*",
   filterName = "LogInFilter",
   description = "Filter all account transaction URLs"
-  )
+  )*/
 public class LogInFilter implements javax.servlet.Filter {
-    @Override
+    
     public void init(FilterConfig filterConfig) throws ServletException {
     }
 
@@ -29,8 +29,8 @@ public class LogInFilter implements javax.servlet.Filter {
         chain.doFilter(request, response);
     }
 
-    @Override
     public void destroy() {
+        
     }
 
 }
