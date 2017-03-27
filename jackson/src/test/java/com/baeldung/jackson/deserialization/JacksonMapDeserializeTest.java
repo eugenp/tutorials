@@ -16,7 +16,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JacksonMapDeserializeTest {
 
+<<<<<<< HEAD
 	private Map<MyPair, String> map;
+=======
+	// @JsonDeserialize(keyUsing = MyPairDeserializer.class)
+	private Map<MyPair, String> map;
+
+>>>>>>> 946a7e663d8fa38836bf33bb04a975aad72d7454
 	private Map<MyPair, MyPair> cmap;
 
 	@Test
