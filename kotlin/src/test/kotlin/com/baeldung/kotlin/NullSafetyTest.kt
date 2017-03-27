@@ -121,7 +121,7 @@ class NullSafetyTest {
     }
 
     @Test
-    fun givenNulableList_whenUseFilterNotNullMethod_thenRemoveALlNullValues() {
+    fun givenNullableList_whenUseFilterNotNullMethod_thenRemoveALlNullValues() {
         //given
         val list: List<String?> = listOf("a", null, "b")
 
