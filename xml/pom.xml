@@ -279,6 +279,7 @@
 							is org.apache.maven.plugins ...which is assumed by default. -->
 						<artifactId>maven-assembly-plugin</artifactId>
 						<configuration>
+							<archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
 							<descriptorRefs>
 								<descriptorRef>
 									jar-with-dependencies

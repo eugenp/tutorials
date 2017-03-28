@@ -7,6 +7,7 @@ public class SpecSearchCriteria {
     private Object value;
     private boolean orPredicate;
 
+
     public SpecSearchCriteria() {
 
     }
@@ -57,7 +58,5 @@ public class SpecSearchCriteria {
     public void setOrPredicate(boolean orPredicate) {
         this.orPredicate = orPredicate;
     }
-
-   
 
 }
