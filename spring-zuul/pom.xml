@@ -45,7 +45,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <testFailureIgnore>true</testFailureIgnore>
                         <excludes>

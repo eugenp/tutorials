@@ -43,10 +43,10 @@ public class JavaMoneyTest {
     public void givenAmounts_whenStringified_thanEquals() {
         CurrencyUnit usd = Monetary.getCurrency("USD");
         MonetaryAmount fstAmtUSD = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency(usd)
-          .setNumber(200)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency(usd)
+                .setNumber(200)
+                .create();
         Money moneyof = Money.of(12, usd);
         FastMoney fastmoneyof = FastMoney.of(2, usd);
 
@@ -59,10 +59,10 @@ public class JavaMoneyTest {
     @Test
     public void givenCurrencies_whenCompared_thanNotequal() {
         MonetaryAmount oneDolar = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("USD")
-          .setNumber(1)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
         Money oneEuro = Money.of(1, "EUR");
 
         assertFalse(oneEuro.equals(FastMoney.of(1, "EUR")));
@@ -72,10 +72,10 @@ public class JavaMoneyTest {
     @Test(expected = ArithmeticException.class)
     public void givenAmount_whenDivided_thanThrowsException() {
         MonetaryAmount oneDolar = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("USD")
-          .setNumber(1)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
         oneDolar.divide(3);
         fail(); // if no exception
     }
@@ -85,8 +85,8 @@ public class JavaMoneyTest {
         List<MonetaryAmount> monetaryAmounts = Arrays.asList(Money.of(100, "CHF"), Money.of(10.20, "CHF"), Money.of(1.15, "CHF"));
 
         Money sumAmtCHF = (Money) monetaryAmounts
-          .stream()
-          .reduce(Money.of(0, "CHF"), MonetaryAmount::add);
+                .stream()
+                .reduce(Money.of(0, "CHF"), MonetaryAmount::add);
 
         assertEquals("CHF 111.35", sumAmtCHF.toString());
     }
@@ -97,18 +97,18 @@ public class JavaMoneyTest {
 
         Money moneyof = Money.of(12, usd);
         MonetaryAmount fstAmtUSD = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency(usd)
-          .setNumber(200.50)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency(usd)
+                .setNumber(200.50)
+                .create();
         MonetaryAmount oneDolar = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("USD")
-          .setNumber(1)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
         Money subtractedAmount = Money
-          .of(1, "USD")
-          .subtract(fstAmtUSD);
+                .of(1, "USD")
+                .subtract(fstAmtUSD);
         MonetaryAmount multiplyAmount = oneDolar.multiply(0.25);
         MonetaryAmount divideAmount = oneDolar.divide(0.25);
 
@@ -124,78 +124,63 @@ public class JavaMoneyTest {
     @Test
     public void givenAmount_whenRounded_thanEquals() {
         MonetaryAmount fstAmtEUR = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("EUR")
-          .setNumber(1.30473908)
-          .create();
+                .getDefaultAmountFactory()
+                .setCurrency("EUR")
+                .setNumber(1.30473908)
+                .create();
         MonetaryAmount roundEUR = fstAmtEUR.with(Monetary.getDefaultRounding());
         assertEquals("EUR 1.30473908", fstAmtEUR.toString());
         assertEquals("EUR 1.3", roundEUR.toString());
     }
 
     @Test
-    public void givenAmount_whenCustomFormat_thanEquals() {
-        MonetaryAmount oneDolar = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("USD")
-          .setNumber(1)
-          .create();
-        MonetaryAmountFormat formatUSD = MonetaryFormats.getAmountFormat(Locale.US);
-        String usFormatted = formatUSD.format(oneDolar);
+    public void givenAmount_whenConversion_thenNotNull() {
+        MonetaryAmount oneDollar = Monetary
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
 
-        MonetaryAmountFormat customFormat = MonetaryFormats.getAmountFormat(AmountFormatQueryBuilder
-          .of(Locale.US)
-          .set(CurrencyStyle.NAME)
-          .set("pattern", "00000.00 ¤")
-          .build());
-        String customFormatted = customFormat.format(oneDolar);
+        CurrencyConversion conversionEUR = MonetaryConversions.getConversion("EUR");
 
-        assertEquals("USD 1", oneDolar.toString());
-        assertNotNull(formatUSD);
-        assertNotNull(customFormat);
-        assertEquals("USD1.00", usFormatted);
-        assertEquals("00001.00 US Dollar", customFormatted);
+        MonetaryAmount convertedAmountUSDtoEUR = oneDollar.with(conversionEUR);
+
+        assertEquals("USD 1", oneDollar.toString());
+        assertNotNull(convertedAmountUSDtoEUR);
     }
 
     @Test
-    public void givenAmount_whenConversion_thenNotNull() {
-        CurrencyUnit USD = Monetary.getCurrency("USD");
-        MonetaryAmount oneDolar = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("USD")
-          .setNumber(1)
-          .create();
-        MonetaryAmount fstAmtEUR = Monetary
-          .getDefaultAmountFactory()
-          .setCurrency("EUR")
-          .setNumber(1.30473908)
-          .create();
+    public void givenLocale_whenFormatted_thanEquals() {
+        MonetaryAmount oneDollar = Monetary
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
+        MonetaryAmountFormat formatUSD = MonetaryFormats.getAmountFormat(Locale.US);
+        String usFormatted = formatUSD.format(oneDollar);
 
-        CurrencyConversion convEUR = MonetaryConversions.getConversion(ConversionQueryBuilder
-          .of()
-          .setTermCurrency("EUR")
-          .build());
-        CurrencyConversion convUSD = MonetaryConversions.getConversion(ConversionQueryBuilder
-          .of()
-          .setTermCurrency(USD)
-          .build());
+        assertEquals("USD 1", oneDollar.toString());
+        assertNotNull(formatUSD);
+        assertEquals("USD1.00", usFormatted);
+    }
 
-        CurrencyConversion conversionUSD = MonetaryConversions.getConversion("USD");
-        CurrencyConversion conversionEUR = MonetaryConversions.getConversion("EUR");
+    @Test
+    public void givenAmount_whenCustomFormat_thanEquals() {
+        MonetaryAmount oneDollar = Monetary
+                .getDefaultAmountFactory()
+                .setCurrency("USD")
+                .setNumber(1)
+                .create();
 
-        MonetaryAmount convertedAmountEURtoUSD = fstAmtEUR.with(conversionUSD);
-        MonetaryAmount convertedAmountEURtoUSD2 = fstAmtEUR.with(convUSD);
-        MonetaryAmount convertedAmountUSDtoEUR = oneDolar.with(conversionEUR);
-        MonetaryAmount convertedAmountUSDtoEUR2 = oneDolar.with(convEUR);
+        MonetaryAmountFormat customFormat = MonetaryFormats.getAmountFormat(AmountFormatQueryBuilder
+                .of(Locale.US)
+                .set(CurrencyStyle.NAME)
+                .set("pattern", "00000.00 ¤")
+                .build());
+        String customFormatted = customFormat.format(oneDollar);
 
-        assertEquals("USD", USD.toString());
-        assertEquals("USD 1", oneDolar.toString());
-        assertEquals("EUR 1.30473908", fstAmtEUR.toString());
-        assertNotNull(convEUR);
-        assertNotNull(convUSD);
-        assertNotNull(convertedAmountEURtoUSD);
-        assertNotNull(convertedAmountEURtoUSD2);
-        assertNotNull(convertedAmountUSDtoEUR);
-        assertNotNull(convertedAmountUSDtoEUR2);
+        assertNotNull(customFormat);
+        assertEquals("USD 1", oneDollar.toString());
+        assertEquals("00001.00 US Dollar", customFormatted);
     }
 }
