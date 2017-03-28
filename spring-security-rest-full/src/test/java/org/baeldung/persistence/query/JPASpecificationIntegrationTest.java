@@ -70,7 +70,9 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe"));
-        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
@@ -80,10 +82,13 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
 
-        final SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
-        final SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
+        SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
+        SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
 
-        final List<User> results = repository.findAll(builder.with(spec1).with(spec).build());
+        List<User> results = repository.findAll(builder
+          .with(spec1)
+          .with(spec)
+          .build());
 
         assertThat(results, hasSize(2));
         assertThat(userJohn, isIn(results));
@@ -97,7 +102,8 @@ public class JPASpecificationIntegrationTest {
         builder.with("'", "firstName", ":", "john", null, null);
         builder.with(null, "lastName", ":", "doe", null, null);
 
-        final List<User> results = repository.findAll(builder.build(converter));
+        List<User> results = repository.findAll(builder.build(converter));
+
         assertThat(results, hasSize(2));
         assertThat(userJohn, isIn(results));
         assertThat(userTom, isIn(results));
@@ -116,7 +122,6 @@ public class JPASpecificationIntegrationTest {
     public void givenMinAge_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.GREATER_THAN, "25"));
         final List<User> results = repository.findAll(Specifications.where(spec));
-
         assertThat(userTom, isIn(results));
         assertThat(userJohn, not(isIn(results)));
     }
@@ -125,7 +130,6 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstNamePrefix_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.STARTS_WITH, "jo"));
         final List<User> results = repository.findAll(spec);
-
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
     }
@@ -134,7 +138,6 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstNameSuffix_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.ENDS_WITH, "n"));
         final List<User> results = repository.findAll(spec);
-
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
     }
@@ -152,7 +155,9 @@ public class JPASpecificationIntegrationTest {
     public void givenAgeRange_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.GREATER_THAN, "20"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.LESS_THAN, "25"));
-        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));

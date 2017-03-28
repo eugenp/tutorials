@@ -1,4 +1,4 @@
-package com.baeldung.spring.stateMachine.applicationReview;
+package com.baeldung.spring.statemachine.applicationreview;
 
 public enum ApplicationReviewEvents {
     APPROVE, REJECT

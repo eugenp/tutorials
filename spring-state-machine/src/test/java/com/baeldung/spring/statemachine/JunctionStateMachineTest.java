@@ -1,17 +1,16 @@
-package com.baeldung.spring.stateMachine;
+package com.baeldung.spring.statemachine;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
-import com.baeldung.spring.stateMachine.config.JunctionStateMachineConfiguration;
 
 public class JunctionStateMachineTest {
 
     @Test
     public void whenTransitioningToJunction_thenArriveAtSubJunctionNode() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(JunctionStateMachineConfiguration.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(com.baeldung.spring.statemachine.config.JunctionStateMachineConfiguration.class);
         StateMachine stateMachine = ctx.getBean(StateMachine.class);
         stateMachine.start();
 

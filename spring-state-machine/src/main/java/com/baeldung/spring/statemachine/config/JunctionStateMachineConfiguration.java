@@ -1,4 +1,4 @@
-package com.baeldung.spring.stateMachine.config;
+package com.baeldung.spring.statemachine.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
