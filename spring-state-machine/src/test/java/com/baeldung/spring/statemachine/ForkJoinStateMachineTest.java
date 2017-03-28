@@ -1,6 +1,6 @@
 package com.baeldung.spring.statemachine;
 
-import com.baeldung.spring.stateMachine.config.ForkJoinStateMachineConfiguration;
+import com.baeldung.spring.statemachine.config.ForkJoinStateMachineConfiguration;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;

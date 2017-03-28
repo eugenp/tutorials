@@ -1,8 +1,8 @@
 package com.baeldung.spring.statemachine;
 
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewEvents;
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewStates;
-import com.baeldung.spring.stateMachine.config.SimpleEnumStateMachineConfiguration;
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewEvents;
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewStates;
+import com.baeldung.spring.statemachine.config.SimpleEnumStateMachineConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
