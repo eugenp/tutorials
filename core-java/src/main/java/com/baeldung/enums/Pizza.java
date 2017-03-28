@@ -52,6 +52,19 @@ public class Pizza {
         PizzaStatusEnum(int timeToDelivery) {
             this.timeToDelivery = timeToDelivery;
         }
+
+        public static PizzaStatusEnum fromString(String value) throws IllegalArgumentException {
+            switch (value) {
+            case "READY":
+                return PizzaStatusEnum.READY;
+            case "ORDERED":
+                return PizzaStatusEnum.ORDERED;
+            case "DELIVERED":
+                return PizzaStatusEnum.DELIVERED;
+            default:
+                throw new IllegalArgumentException("Invalid value for enum " + value);
+            }
+        }
     }
 
     public PizzaStatusEnum getStatus() {

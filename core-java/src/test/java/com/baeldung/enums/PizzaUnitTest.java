@@ -2,6 +2,8 @@ package com.baeldung.enums;
 
 import org.junit.Test;
 
+import com.baeldung.enums.Pizza.PizzaStatusEnum;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -74,6 +76,19 @@ public class PizzaUnitTest {
         pz.setStatus(Pizza.PizzaStatusEnum.READY);
         pz.deliver();
         assertTrue(pz.getStatus() == Pizza.PizzaStatusEnum.DELIVERED);
+    }
+
+    @Test
+    public void givenValidPizzaStatusEnumValueAsString_whenConvertedIntoPizzaStatusEnum_thenConvertsCorrectly() {
+        String pizzaEnumValue = "READY";
+        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.fromString(pizzaEnumValue);
+        assertTrue(pizzaStatusEnum == Pizza.PizzaStatusEnum.READY);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenInValidPizzaStatusEnumValueAsString_whenConvertedIntoPizzaStatusEnum_thenthrowsException() {
+        String pizzaEnumValue = "invalid";
+        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.fromString(pizzaEnumValue);
     }
 
 }
