@@ -1,15 +1,14 @@
-package com.baeldung.spring.stateMachine;
+package com.baeldung.spring.statemachine;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-
+import com.baeldung.spring.statemachine.config.ForkJoinStateMachineConfiguration;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
-import com.baeldung.spring.stateMachine.config.ForkJoinStateMachineConfiguration;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ForkJoinStateMachineTest {
 

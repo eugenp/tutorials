@@ -1,14 +1,14 @@
-package com.baeldung.spring.stateMachine;
+package com.baeldung.spring.statemachine;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-
+import com.baeldung.spring.statemachine.config.HierarchicalStateMachineConfiguration;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
-import com.baeldung.spring.stateMachine.config.HierarchicalStateMachineConfiguration;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertEquals;
+
 
 public class HierarchicalStateMachineTest {
 

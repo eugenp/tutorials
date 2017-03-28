@@ -1,16 +1,15 @@
-package com.baeldung.spring.stateMachine;
+package com.baeldung.spring.statemachine;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewEvents;
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewStates;
+import com.baeldung.spring.statemachine.config.SimpleEnumStateMachineConfiguration;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewEvents;
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewStates;
-import com.baeldung.spring.stateMachine.config.SimpleEnumStateMachineConfiguration;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class StateEnumMachineTest {
 
