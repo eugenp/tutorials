@@ -24,6 +24,10 @@ public class UploadCustomerDocumentsServlet extends HttpServlet {
         for (Part part : request.getParts()) {
             part.write("myFile");
         }
+      
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>File uploaded successfully!</html>");
+        writer.flush();
     }
 
 }
