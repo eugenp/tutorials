@@ -70,8 +70,9 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe"));
-        final List<User> results = repository.findAll(Specifications.where(spec)
-            .and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
@@ -84,9 +85,10 @@ public class JPASpecificationIntegrationTest {
         SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
         SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
 
-        List<User> results = repository.findAll(builder.with(spec1)
-            .with(spec)
-            .build());
+        List<User> results = repository.findAll(builder
+          .with(spec1)
+          .with(spec)
+          .build());
 
         assertThat(results, hasSize(2));
         assertThat(userJohn, isIn(results));
@@ -153,8 +155,9 @@ public class JPASpecificationIntegrationTest {
     public void givenAgeRange_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.GREATER_THAN, "20"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.LESS_THAN, "25"));
-        final List<User> results = repository.findAll(Specifications.where(spec)
-            .and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));

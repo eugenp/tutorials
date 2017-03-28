@@ -46,26 +46,30 @@ public class GenericSpecificationsBuilder {
 
     public <U> Specification<U> build(Function<SpecSearchCriteria, Specification<U>> converter) {
 
-        if (params.size() == 0)
+        if (params.size() == 0) {
             return null;
+        }
 
         params.sort(Comparator.comparing(SpecSearchCriteria::isOrPredicate));
 
-        final List<Specification<U>> specs = params.stream()
-            .map(converter)
-            .collect(Collectors.toCollection(ArrayList::new));
+        final List<Specification<U>> specs = params
+          .stream()
+          .map(converter)
+          .collect(Collectors.toCollection(ArrayList::new));
 
         Specification<U> result = specs.get(0);
 
         for (int idx = 1; idx < specs.size(); idx++) {
-            result = params.get(idx)
-                .isOrPredicate()
-                    ? Specifications.where(result)
-                        .or(specs.get(idx))
-                    : Specifications.where(result)
-                        .and(specs.get(idx));
+            result = params
+              .get(idx)
+              .isOrPredicate()
+              ? Specifications
+              .where(result)
+              .or(specs.get(idx))
+              : Specifications
+                .where(result)
+                .and(specs.get(idx));
         }
         return result;
     }
-
 }
