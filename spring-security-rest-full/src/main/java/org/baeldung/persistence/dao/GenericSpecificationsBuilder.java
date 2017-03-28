@@ -72,4 +72,6 @@ public class GenericSpecificationsBuilder {
         }
         return result;
     }
+
+
 }
