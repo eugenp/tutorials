@@ -33,7 +33,7 @@ public class RootServlet extends ServletHttpHandlerAdapter {
           .build());
     }
 
-    private RootServlet(HttpHandler httpHandler) {
+    RootServlet(HttpHandler httpHandler) {
         super(httpHandler);
     }
 
