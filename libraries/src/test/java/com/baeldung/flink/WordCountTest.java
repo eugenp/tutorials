@@ -72,12 +72,13 @@ public class WordCountTest {
     @Test
     public void giveTwoDataSets_whenJoinUsingId_thenProduceJoinedData() throws Exception {
         //given
-        Tuple2<Integer, String> firstTransaction = new Tuple2<>(1, "Transaction_1");
         Tuple3<Integer, String, String> address = new Tuple3<>(1, "5th Avenue", "London");
+        DataSource<Tuple3<Integer, String, String>> addresses = env.fromElements(address);
 
+        Tuple2<Integer, String> firstTransaction = new Tuple2<>(1, "Transaction_1");
         DataSource<Tuple2<Integer, String>> transactions =
                 env.fromElements(firstTransaction, new Tuple2<>(12, "Transaction_2"));
-        DataSource<Tuple3<Integer, String, String>> addresses = env.fromElements(address);
+
 
         //when
         List<Tuple2<Tuple2<Integer, String>, Tuple3<Integer, String, String>>> joined =
