@@ -144,7 +144,31 @@ public class ArrayCopyUtilTest {
         //change in employees' element didn't change in the copied array
         Assert.assertFalse(copiedArray[0].getName().equals(employees[0].getName()));
     }
-
+    
+    @Test
+    public void givenArraysOfNonPrimitiveType_whenCopiedViaStream_thenDoShallowCopy(){
+        Employee[] copiedArray = Arrays.stream(employees).toArray(Employee[]::new);
+        
+        Assert.assertNotNull(copiedArray);
+        Assert.assertTrue(copiedArray.length == employees.length);
+        employees[0].setName(employees[0].getName()+"_Changed");
+        //change in employees' element didn't change in the copied array
+        Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+    }
+    
+    @Test
+    public void givenArraysOfPrimitiveType_whenCopiedViaStream_thenSuccessful(){
+        String[] strArray = {"orange", "red", "green'"};
+        
+        String[] copiedArray = Arrays.stream(strArray).toArray(String[]::new);
+        
+        Assert.assertNotNull(copiedArray);
+        Assert.assertTrue(copiedArray.length == strArray.length);
+        Assert.assertTrue(copiedArray[0] == strArray[0]);
+        Assert.assertTrue(copiedArray[1] == strArray[1]);
+        Assert.assertTrue(copiedArray[2] == strArray[2]);
+    }
+    
     private Address[] createAddressArray(){
         Address[] addresses = new Address[1];
         addresses[0] = createAddress();
