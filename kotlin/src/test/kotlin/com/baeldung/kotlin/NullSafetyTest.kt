@@ -66,7 +66,27 @@ class NullSafetyTest {
         //when
         var res = listOf<String?>()
         for (item in names) {
-            item?.let { res = res.plus(it) }
+            item?.let { res = res.plus(it); it }
+                    ?.also{it -> println("non nullable value: $it")}
+        }
+
+        //then
+        assertEquals(2, res.size)
+        assertTrue { res.contains(firstName) }
+        assertTrue { res.contains(secondName) }
+    }
+
+    @Test
+    fun fivenCollectionOfObject_whenUseRunOperator_thenExecuteActionOnNonNullValue(){
+        //given
+        val firstName = "Tom"
+        val secondName = "Michael"
+        val names: List<String?> = listOf(firstName, null, secondName)
+
+        //when
+        var res = listOf<String?>()
+        for (item in names) {
+            item?.run{res = res.plus(this)}
         }
 
         //then
