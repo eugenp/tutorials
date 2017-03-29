@@ -5,7 +5,7 @@ public class SpecSearchCriteria {
     private String key;
     private SearchOperation operation;
     private Object value;
-    private boolean lowPrecedence;
+    private boolean orPredicate;
 
     public SpecSearchCriteria() {
 
@@ -18,9 +18,9 @@ public class SpecSearchCriteria {
         this.value = value;
     }
 
-    public SpecSearchCriteria(final String lowPrecedenceIndicator, final String key, final SearchOperation operation, final Object value) {
+    public SpecSearchCriteria(final String orPredicate, final String key, final SearchOperation operation, final Object value) {
         super();
-        this.lowPrecedence = lowPrecedenceIndicator != null && lowPrecedenceIndicator.equals(SearchOperation.LOW_PRECEDENCE_INDICATOR);
+        this.orPredicate = orPredicate != null && orPredicate.equals(SearchOperation.OR_PREDICATE_FLAG);
         this.key = key;
         this.operation = operation;
         this.value = value;
@@ -50,12 +50,12 @@ public class SpecSearchCriteria {
         this.value = value;
     }
 
-    public boolean isLowPrecedence() {
-        return lowPrecedence;
+    public boolean isOrPredicate() {
+        return orPredicate;
     }
 
-    public void setLowPrecedence(boolean lowPrecedence) {
-        this.lowPrecedence = lowPrecedence;
+    public void setOrPredicate(boolean orPredicate) {
+        this.orPredicate = orPredicate;
     }
 
 }

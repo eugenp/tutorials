@@ -1,13 +1,14 @@
 package org.baeldung.persistence.dao;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public final class UserSpecificationsBuilder {
 
@@ -48,14 +49,17 @@ public final class UserSpecificationsBuilder {
         if (params.size() == 0)
             return null;
 
-        params.sort((spec0, spec1) -> {
-            return Boolean.compare(spec0.isLowPrecedence(), spec1.isLowPrecedence());
-        });
+        params.sort(Comparator.comparing(SpecSearchCriteria::isOrPredicate));
 
         Specification<User> result = new UserSpecification(params.get(0));
 
         for (int i = 1; i < params.size(); i++) {
-            result = params.get(i).isLowPrecedence() ? Specifications.where(result).or(new UserSpecification(params.get(i))) : Specifications.where(result).and(new UserSpecification(params.get(i)));
+            result = params.get(i)
+                .isOrPredicate()
+                    ? Specifications.where(result)
+                        .or(new UserSpecification(params.get(i)))
+                    : Specifications.where(result)
+                        .and(new UserSpecification(params.get(i)));
 
         }
 
