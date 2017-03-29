@@ -165,12 +165,15 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void testDoubleMath() {
+    public void should_detect_integer() {
         boolean result1 = DoubleMath.isMathematicalInteger(2.0);
         assertThat(result1, equalTo(true));
         boolean result2 = DoubleMath.isMathematicalInteger(2.1);
         assertThat(result2, equalTo(false));
+    }
 
+    @Test
+    public void should_round_to_integer_types() {
         int result3 = DoubleMath.roundToInt(2.5, RoundingMode.DOWN);
         assertThat(result3, equalTo(2));
 
@@ -179,7 +182,10 @@ public class GuavaMathTest {
 
         BigInteger result5 = DoubleMath.roundToBigInteger(2.5, RoundingMode.UP);
         assertThat(result5, equalTo(new BigInteger("3")));
+    }
 
+    @Test
+    public void should_calculate_log_2() {
         int result6 = DoubleMath.log2(10, RoundingMode.UP);
         assertThat(result6, equalTo(4));
     }
