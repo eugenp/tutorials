@@ -71,7 +71,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>${main-class}</mainClass>
+                    <mainClass>com.baeldung.Spring5Application</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
