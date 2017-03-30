@@ -47,7 +47,7 @@ public class JPASpecificationLiveTest {
 
     @Test
     public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
-        final Response response = givenAuth().get(EURL_PREFIX + "'firstName:john,lastName:doe");
+        final Response response = givenAuth().get(EURL_PREFIX + "firstName:john,'lastName:doe");
         final String result = response.body().asString();
         assertTrue(result.contains(userJohn.getEmail()));
         assertTrue(result.contains(userTom.getEmail()));
