@@ -21,7 +21,7 @@ public class Demo {
         TransactionFactory transactionFactory = new TransactionFactory();
         for (int i = 0; i < 10; i++) {
             Transfer tx = transactionFactory.newInstance();
-            Runnable task = new Log4J2Runnable(tx);            
+            Runnable task = new Log4J2Runnable(tx);
             executor.submit(task);
         }
         executor.shutdown();

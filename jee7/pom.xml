@@ -10,7 +10,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <java.min.version>1.7</java.min.version>
+        <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
 
         <junit.version>4.12</junit.version>
@@ -28,6 +28,7 @@
 
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <mockito.version>1.10.19</mockito.version>
     </properties>
 
     <prerequisites>
