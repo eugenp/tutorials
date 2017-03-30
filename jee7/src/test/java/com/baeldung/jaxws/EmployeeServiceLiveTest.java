@@ -1,9 +1,14 @@
 package com.baeldung.jaxws;
 
-import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
-import com.baeldung.jaxws.exception.EmployeeNotFound;
-import com.baeldung.jaxws.model.Employee;
-import com.baeldung.jaxws.repository.EmployeeRepository;
+import static org.junit.Assert.assertEquals;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -14,13 +19,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
+import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
+import com.baeldung.jaxws.exception.EmployeeNotFound;
+import com.baeldung.jaxws.model.Employee;
+import com.baeldung.jaxws.repository.EmployeeRepository;
 
 @RunWith(Arquillian.class)
 public class EmployeeServiceLiveTest {
