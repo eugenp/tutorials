@@ -1,52 +1,78 @@
 package com.baeldung.list.flattennestedlist;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class FlattenNestedListTest {
+    private List<List<String>> lol = new ArrayList<>();
+    List<String> ls1 = Arrays.asList("one:one", "one:two", "one:three");
+    List<String> ls2 = Arrays.asList("two:one", "two:two", "two:three");
+    List<String> ls3 = Arrays.asList("three:one", "three:two", "three:three");
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FlattenNestedListTest.class);
-    private FlattenNestedList flol;
-    
     @Before
     public void setup() {
-        flol = new FlattenNestedList();
-    }
-    
-    @Test
-    public void givenListOfListOfString_flattenNestedList() {
-
-        // create the list to flatten
-        List<String> ls1 = Arrays.asList("one:one", "one:two", "one:three");
-        List<String> ls2 = Arrays.asList("two:one", "two:two", "two:three");
-        List<String> ls3 = Arrays.asList("three:one", "three:two", "three:three");
-
-        List<List<String>> lol = new ArrayList<>();
         lol.addAll(Arrays.asList(ls1, ls2, ls3));
-        
-        // show nested list
-        LOGGER.debug("\nNested list: ");
-        lol.forEach((nl) -> LOGGER.debug(nl + ""));
+    }
 
-        // flatten it
-        List<String> ls = flol.flattenListOfLists(lol);
+    @After
+    public void tearDown() {
+        lol = null;
+    }
+
+    @Test
+    public void givenString_flattenNestedList1() {
+        List<String> ls = flattenListOfListsImperatively(lol);
 
         assertNotNull(ls);
         assertTrue(ls.size() == 9);
-        
-        // show flattened list
-        LOGGER.debug("\nFlattened list:");
-        ls.forEach((l) -> LOGGER.debug(l));
-
+        // assert content
+        assertEquals(ls.get(0), "one:one");
+        assertEquals(ls.get(1), "one:two");
+        assertEquals(ls.get(2), "one:three");
+        assertEquals(ls.get(3), "two:one");
+        assertEquals(ls.get(4), "two:two");
+        assertEquals(ls.get(5), "two:three");
+        assertEquals(ls.get(6), "three:one");
+        assertEquals(ls.get(7), "three:two");
+        assertEquals(ls.get(8), "three:three");
     }
 
+    @Test
+    public void givenString_flattenNestedList2() {
+        List<String> ls = flattenListOfListsStream(lol);
+
+        assertNotNull(ls);
+        assertTrue(ls.size() == 9);
+        // assert content
+        assertEquals(ls.get(0), "one:one");
+        assertEquals(ls.get(1), "one:two");
+        assertEquals(ls.get(2), "one:three");
+        assertEquals(ls.get(3), "two:one");
+        assertEquals(ls.get(4), "two:two");
+        assertEquals(ls.get(5), "two:three");
+        assertEquals(ls.get(6), "three:one");
+        assertEquals(ls.get(7), "three:two");
+        assertEquals(ls.get(8), "three:three");
+    }
+
+    public <T> List<T> flattenListOfListsImperatively(List<List<T>> list) {
+        List<T> ls = new ArrayList<>();
+        list.forEach(ls::addAll);
+        return ls;
+    }
+
+    public <T> List<T> flattenListOfListsStream(List<List<T>> list) {
+        return list.stream().flatMap(Collection::stream).collect(Collectors.toList());
+    }
 }

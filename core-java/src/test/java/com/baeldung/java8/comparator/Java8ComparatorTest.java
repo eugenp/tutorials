@@ -60,7 +60,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingComparing_thenCheckingSort() {
+    public void whenComparing_thenSortedByName() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Arrays.sort(employees, employeeNameComparator);
 //         System.out.println(Arrays.toString(employees));
@@ -68,7 +68,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingComparingWithComparator_thenCheckingSort() {
+    public void whenComparingWithComparator_thenSortedByNameDesc() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName, (s1, s2) -> {
             return s2.compareTo(s1);
         });
@@ -76,9 +76,18 @@ public class Java8ComparatorTest {
 //         System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
+    
+    @Test
+    public void whenReversed_thenSortedByNameDesc() {
+    	Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
+    	Comparator<Employee> employeeNameComparatorReversed = employeeNameComparator.reversed();
+        Arrays.sort(employees, employeeNameComparatorReversed);
+//         System.out.println(Arrays.toString(employees));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
+    }
 
     @Test
-    public void givenEmployeeArray_whenUsingComparingInt_thenCheckingSort() {
+    public void whenComparingInt_thenSortedByAge() {
         Comparator<Employee> employeeAgeComparator = Comparator.comparingInt(Employee::getAge);
         Arrays.sort(employees, employeeAgeComparator);
 //         System.out.println(Arrays.toString(employees));
@@ -86,7 +95,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingComparingLong_thenCheckingSort() {
+    public void whenComparingLong_thenSortedByMobile() {
         Comparator<Employee> employeeMobileComparator = Comparator.comparingLong(Employee::getMobile);
         Arrays.sort(employees, employeeMobileComparator);
 //         System.out.println(Arrays.toString(employees));
@@ -94,7 +103,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingComparingDouble_thenCheckingSort() {
+    public void whenComparingDouble_thenSortedBySalary() {
         Comparator<Employee> employeeSalaryComparator = Comparator.comparingDouble(Employee::getSalary);
         Arrays.sort(employees, employeeSalaryComparator);
 //         System.out.println(Arrays.toString(employees));
@@ -102,7 +111,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingNaturalOrder_thenCheckingSort() {
+    public void whenNaturalOrder_thenSortedByName() {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> naturalOrder();
         Arrays.sort(employees, employeeNameComparator);
 //         System.out.println(Arrays.toString(employees));
@@ -110,7 +119,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingReverseOrder_thenCheckingSort() {
+    public void whenReverseOrder_thenSortedByNameDesc() {
         Comparator<Employee> employeeNameComparator = Comparator.<Employee> reverseOrder();
         Arrays.sort(employees, employeeNameComparator);
 //        System.out.println(Arrays.toString(employees));
@@ -118,7 +127,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingNullFirst_thenCheckingSort() {
+    public void whenNullsFirst_thenSortedByNameWithNullsFirst() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Comparator<Employee> employeeNameComparator_nullFirst = Comparator.nullsFirst(employeeNameComparator);
         Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullFirst);
@@ -127,7 +136,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingNullLast_thenCheckingSort() {
+    public void whenNullsLast_thenSortedByNameWithNullsLast() {
         Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
         Comparator<Employee> employeeNameComparator_nullLast = Comparator.nullsLast(employeeNameComparator);
         Arrays.sort(employeesArrayWithNulls, employeeNameComparator_nullLast);
@@ -136,7 +145,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingThenComparing_thenCheckingSort() {
+    public void whenThenComparing_thenSortedByAgeName() {
         Comparator<Employee> employee_Age_Name_Comparator = Comparator.comparing(Employee::getAge).thenComparing(Employee::getName);
 
         Arrays.sort(someMoreEmployees, employee_Age_Name_Comparator);
@@ -145,7 +154,7 @@ public class Java8ComparatorTest {
     }
 
     @Test
-    public void givenEmployeeArray_whenUsingThenComparingInt_thenCheckingSort() {
+    public void whenThenComparing_thenSortedByNameAge() {
         Comparator<Employee> employee_Name_Age_Comparator = Comparator.comparing(Employee::getName).thenComparingInt(Employee::getAge);
 
         Arrays.sort(someMoreEmployees, employee_Name_Age_Comparator);
@@ -153,40 +162,6 @@ public class Java8ComparatorTest {
         assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
     }
 
-     @Before
-     public void printData() {
-//     System.out.println("employees");
-//     System.out.println(Arrays.toString(employees));
-    //
-//     System.out.println("employeesArrayWithNulls");
-//     System.out.println(Arrays.toString(employeesArrayWithNulls));
-    //
-    // System.out.println("sortedEmployeesByName");
-    // System.out.println(Arrays.toString(sortedEmployeesByName));
-    //
-    // System.out.println("sortedEmployeesByNameDesc");
-    // System.out.println(Arrays.toString(sortedEmployeesByNameDesc));
-    //
-    // System.out.println("sortedEmployeesByAge");
-    // System.out.println(Arrays.toString(sortedEmployeesByAge));
-    //
-    // System.out.println("sortedEmployeesByMobile");
-    // System.out.println(Arrays.toString(sortedEmployeesByMobile));
-    //
-    // System.out.println("sortedEmployeesBySalary");
-    // System.out.println(Arrays.toString(sortedEmployeesBySalary));
-    //
-    // System.out.println("sortedEmployeesArray_WithNullsFirst");
-    // System.out.println(Arrays.toString(sortedEmployeesArray_WithNullsFirst));
-    //
-    // System.out.println("sortedEmployeesArray_WithNullsLast");
-    // System.out.println(Arrays.toString(sortedEmployeesArray_WithNullsLast));
-    //
-    // System.out.println("sortedEmployeesByNameAge");
-    // System.out.println(Arrays.toString(sortedEmployeesByNameAge));
-    //
-//     System.out.println("someMoreEmployees");
-//     System.out.println(Arrays.toString(someMoreEmployees));
-    //
-     }
+
 }
+

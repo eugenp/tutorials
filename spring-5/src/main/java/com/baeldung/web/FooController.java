@@ -1,6 +1,7 @@
 package com.baeldung.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -33,7 +34,7 @@ public class FooController {
     @ResponseBody
     @Validated
     public Foo findById(@PathVariable @Min(0) final long id) {
-        return repo.findOne(id);
+        return repo.findOne(id).orElse(null);
     }
 
     @RequestMapping(method = RequestMethod.GET)
