@@ -3,7 +3,6 @@ package com.baeldung.jaxws.exception;
 import javax.xml.ws.WebFault;
 import java.io.Serializable;
 
-
 @WebFault
 public class EmployeeAlreadyExists extends Exception implements Serializable {
 
