@@ -5,11 +5,14 @@ import org.javers.common.collections.Lists;
 import org.javers.core.Javers;
 import org.javers.core.JaversBuilder;
 import org.javers.core.diff.Diff;
+import org.javers.core.diff.changetype.NewObject;
 import org.javers.core.diff.changetype.ObjectRemoved;
 import org.javers.core.diff.changetype.ValueChange;
 import org.javers.core.diff.changetype.container.ListChange;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,9 +52,10 @@ public class JaversTest {
         Diff diff = javers.compareCollections(oldList, newList, Person.class);
 
         //then
-        ValueChange valueChange = diff.getChangesByType(ValueChange.class).get(0);
-
         assertThat(diff.getChanges()).hasSize(3);
+
+
+        ValueChange valueChange = diff.getChangesByType(ValueChange.class).get(0);
         assertThat(valueChange.getPropertyName()).isEqualTo("name");
         assertThat(valueChange.getLeft()).isEqualTo("Michael Program");
         assertThat(valueChange.getRight()).isEqualTo("Michael Not Program");
@@ -62,6 +66,48 @@ public class JaversTest {
         ListChange listChange = diff.getChangesByType(ListChange.class).get(0);
         assertThat(listChange.getValueRemovedChanges().size()).isEqualTo(1);
 
+    }
 
+    @Test
+    public void givenListOfPerson_whenPersonHasNewAddress_thenDetectThatChange() {
+        //given
+        Javers javers = JaversBuilder.javers().build();
+
+        PersonWithAddress person =
+                new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
+
+        PersonWithAddress personWithNewAddress =
+                new PersonWithAddress(1, "Tom",
+                        Arrays.asList(new Address("England"), new Address("USA")));
+
+
+        //when
+        Diff diff = javers.compare(person, personWithNewAddress);
+        List objectsByChangeType = diff.getObjectsByChangeType(NewObject.class);
+
+        //then
+        assertThat(objectsByChangeType).hasSize(1);
+        assertThat(objectsByChangeType.get(0).equals(new Address("USA")));
+    }
+
+    @Test
+    public void givenListOfPerson_whenPersonRemovedAddress_thenDetectThatChange() {
+        //given
+        Javers javers = JaversBuilder.javers().build();
+
+        PersonWithAddress person =
+                new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
+
+        PersonWithAddress personWithNewAddress =
+                new PersonWithAddress(1, "Tom", Collections.emptyList());
+
+
+        //when
+        Diff diff = javers.compare(person, personWithNewAddress);
+        List objectsByChangeType = diff.getObjectsByChangeType(ObjectRemoved.class);
+
+        //then
+        assertThat(objectsByChangeType).hasSize(1);
+        assertThat(objectsByChangeType.get(0).equals(new Address("England")));
     }
 }
