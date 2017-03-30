@@ -56,54 +56,54 @@ public class EmployeeServiceLiveTest {
     }
 
     @Test
-    public void givenGetAllEmployees_thenCorrectNumberOfEmployeesReturned() {
+    public void givenEmployees_whenGetCount_thenCorrectNumberOfEmployeesReturned() {
         int employeeCount = employeeServiceProxy.countEmployees();
         List<Employee> employeeList = employeeServiceProxy.getAllEmployees();
         assertEquals(employeeList.size(), employeeCount);
     }
 
     @Test
-    public void givenEmployeeId_whenEmployeeExists_thenCorrectEmployeeReturned() throws EmployeeNotFound {
+    public void givenEmployees_whenGetAvailableEmployee_thenCorrectEmployeeReturned() throws EmployeeNotFound {
         Employee employee = employeeServiceProxy.getEmployee(2);
         assertEquals(employee.getFirstName(), "Jack");
     }
 
     @Test(expected = EmployeeNotFound.class)
-    public void givenEmployeeId_whenEmployeeNotExists_thenEmployeeNotFoundExceptionReturned() throws EmployeeNotFound {
+    public void givenEmployees_whenGetNonAvailableEmployee_thenEmployeeNotFoundException() throws EmployeeNotFound {
         employeeServiceProxy.getEmployee(20);
     }
 
     @Test
-    public void givenAddEmployee_whenEmployeeDoesntAlreadyExist_thenEmployeeCountIncreased() throws EmployeeAlreadyExists {
+    public void givenEmployees_whenAddNewEmployee_thenEmployeeCountIncreased() throws EmployeeAlreadyExists {
         int employeeCount = employeeServiceProxy.countEmployees();
         employeeServiceProxy.addEmployee(4, "Anna");
         assertEquals(employeeServiceProxy.countEmployees(), employeeCount + 1);
     }
 
     @Test(expected = EmployeeAlreadyExists.class)
-    public void givenAddEmployee_whenEmployeeAlreadyExist_thenEmployeeAlreadyExistsExceptionReturned() throws EmployeeAlreadyExists {
+    public void givenEmployees_whenAddAlreadyExistingEmployee_thenEmployeeAlreadyExistsException() throws EmployeeAlreadyExists {
         employeeServiceProxy.addEmployee(1, "Anna");
     }
 
     @Test
-    public void givenUpdateEmployee_whenEmployeeExists_thenUpdatedEmployeeReturned() throws EmployeeNotFound {
+    public void givenEmployees_whenUpdateExistingEmployee_thenUpdatedEmployeeReturned() throws EmployeeNotFound {
         Employee updated = employeeServiceProxy.updateEmployee(1, "Joan");
         assertEquals(updated.getFirstName(), "Joan");
     }
 
     @Test(expected = EmployeeNotFound.class)
-    public void givenUpdateEmployee_whenEmployeeNotExists_thenUpdatedEmployeeReturned() throws EmployeeNotFound {
+    public void givenEmployees_whenUpdateNonExistingEmployee_thenEmployeeNotFoundException() throws EmployeeNotFound {
         employeeServiceProxy.updateEmployee(20, "Joan");
     }
 
     @Test
-    public void givenDeleteEmployee_whenEmployeeExists_thenCorrectStatusReturned() throws EmployeeNotFound {
+    public void givenEmployees_whenDeleteExistingEmployee_thenSuccessReturned() throws EmployeeNotFound {
         boolean deleteEmployee = employeeServiceProxy.deleteEmployee(3);
         assertEquals(deleteEmployee, true);
     }
 
     @Test(expected = EmployeeNotFound.class)
-    public void givenDeleteEmployee_whenEmployeeNotExists_thenEmployeeNotFoundExceptionReturned() throws EmployeeNotFound {
+    public void givenEmployee_whenDeleteNonExistingEmployee_thenEmployeeNotFoundException() throws EmployeeNotFound {
         employeeServiceProxy.deleteEmployee(20);
     }
 
