@@ -1,23 +1,43 @@
 package com.baeldung.spring.statemachine;
 
+import com.baeldung.spring.statemachine.config.JunctionStateMachineConfiguration;
+import com.baeldung.spring.statemachine.config.SimpleEnumStateMachineConfiguration;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = JunctionStateMachineConfiguration.class)
 public class JunctionStateMachineTest {
+
+    @Resource
+    private StateMachine stateMachine;
+
+    @Before
+    public void setUp() {
+        stateMachine.start();
+    }
 
     @Test
     public void whenTransitioningToJunction_thenArriveAtSubJunctionNode() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(com.baeldung.spring.statemachine.config.JunctionStateMachineConfiguration.class);
-        StateMachine stateMachine = ctx.getBean(StateMachine.class);
-        stateMachine.start();
 
         stateMachine.sendEvent("E1");
         Assert.assertEquals("low", stateMachine.getState().getId());
 
         stateMachine.sendEvent("end");
         Assert.assertEquals("SF", stateMachine.getState().getId());
+    }
+
+    @After
+    public void tearDown() {
+        stateMachine.stop();
     }
 }
