@@ -1,7 +1,6 @@
 package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.baeldung.persistence.model.User;
@@ -48,8 +47,6 @@ public final class UserSpecificationsBuilder {
 
         if (params.size() == 0)
             return null;
-
-        params.sort(Comparator.comparing(SpecSearchCriteria::isOrPredicate));
 
         Specification<User> result = new UserSpecification(params.get(0));
 

@@ -99,8 +99,9 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
         GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
         Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
-        builder.with("'", "firstName", ":", "john", null, null);
-        builder.with(null, "lastName", ":", "doe", null, null);
+        
+        builder.with(null, "firstName", ":", "john", null, null);
+        builder.with("'", "lastName", ":", "doe", null, null);
 
         List<User> results = repository.findAll(builder.build(converter));
 
