@@ -30,7 +30,7 @@ public class JacksonMapSerializeTest {
 	public void whenSimpleMapSerialize_thenCorrect()
 			throws JsonProcessingException {
 
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("key", "value");
 
 		final ObjectMapper mapper = new ObjectMapper();
@@ -43,7 +43,7 @@ public class JacksonMapSerializeTest {
 	public void whenCustomObjectStringMapSerialize_thenCorrect()
 			throws JsonProcessingException {
 
-		map = new HashMap<MyPair, String>();
+		map = new HashMap<>();
 		MyPair key = new MyPair("Abbott", "Costello");
 		map.put(key, "Comedy");
 
@@ -57,7 +57,7 @@ public class JacksonMapSerializeTest {
 	public void whenCustomObjectObjectMapSerialize_thenCorrect()
 			throws JsonProcessingException {
 
-		cmap = new HashMap<MyPair, MyPair>();
+		cmap = new HashMap<>();
 		mapKey = new MyPair("Abbott", "Costello");
 		mapValue = new MyPair("Comedy", "1940's");
 		cmap.put(mapKey, mapValue);
