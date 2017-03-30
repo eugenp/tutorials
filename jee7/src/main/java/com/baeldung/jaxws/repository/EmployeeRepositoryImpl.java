@@ -1,11 +1,11 @@
 package com.baeldung.jaxws.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
 import com.baeldung.jaxws.exception.EmployeeNotFound;
 import com.baeldung.jaxws.model.Employee;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private List<Employee> employeeList;

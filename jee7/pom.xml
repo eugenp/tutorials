@@ -28,7 +28,6 @@
 
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <mockito.version>1.10.19</mockito.version>
     </properties>
 
     <prerequisites>
