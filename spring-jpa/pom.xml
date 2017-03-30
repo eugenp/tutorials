@@ -196,14 +196,14 @@
     
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.7.RELEASE</org.springframework.version>
         <javassist.version>3.21.0-GA</javassist.version>
 
         <!-- persistence -->
-        <hibernate.version>5.2.5.Final</hibernate.version>
+        <hibernate.version>5.2.9.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <spring-data-jpa.version>1.10.5.RELEASE</spring-data-jpa.version>
-        <h2.version>1.4.193</h2.version>
+        <spring-data-jpa.version>1.11.1.RELEASE</spring-data-jpa.version>
+        <h2.version>1.4.194</h2.version>
         
         <!-- web -->
         <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>

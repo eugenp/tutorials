@@ -195,7 +195,7 @@
 
     <properties>
         <!-- marshalling -->
-        <jackson.version>2.8.6</jackson.version>
+        <jackson.version>2.8.7</jackson.version>
 
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
