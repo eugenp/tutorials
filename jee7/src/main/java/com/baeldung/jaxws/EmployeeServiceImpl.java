@@ -13,7 +13,8 @@ import java.util.List;
 @WebService(serviceName = "EmployeeService", endpointInterface = "com.baeldung.jaxws.EmployeeService")
 public class EmployeeServiceImpl implements EmployeeService {
 
-    @Inject private EmployeeRepository employeeRepositoryImpl;
+    @Inject
+    private EmployeeRepository employeeRepositoryImpl;
 
     @WebMethod
     public Employee getEmployee(int id) throws EmployeeNotFound {
