@@ -3,22 +3,29 @@ package com.baeldung.spring.statemachine;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
 import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = SimpleStateMachineConfiguration.class)
 public class StateMachineIntegrationTest {
 
-    private AnnotationConfigApplicationContext ctx;
+    @Resource
     private StateMachine stateMachine;
 
     @Before
     public void setUp() {
-        ctx = new AnnotationConfigApplicationContext(SimpleStateMachineConfiguration.class);
-        stateMachine = ctx.getBean(StateMachine.class);
         stateMachine.start();
     }
 
@@ -51,5 +58,10 @@ public class StateMachineIntegrationTest {
         assertEquals("SF", stateMachine.getState().getId());
 
         assertEquals(2, stateMachine.getExtendedState().getVariables().get("approvalCount"));
+    }
+
+    @After
+    public void tearDown() {
+        stateMachine.stop();
     }
 }
