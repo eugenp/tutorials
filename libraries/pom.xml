@@ -82,6 +82,11 @@
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -95,6 +100,7 @@
         <jsonassert.version>1.5.0</jsonassert.version>
         <jetty.version>9.4.2.v20170220</jetty.version>
         <httpclient.version>4.5.3</httpclient.version>
+        <commons.io.version>2.5</commons.io.version>
     </properties>
 
 </project>

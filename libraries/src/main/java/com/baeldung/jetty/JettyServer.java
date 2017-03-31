@@ -5,12 +5,6 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 public class JettyServer {
 
     private Server server;
@@ -25,7 +19,8 @@ public class JettyServer {
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
 
-        servletHandler.addServletWithMapping(ResourceServlet.class, "/status");
+        servletHandler.addServletWithMapping(BlockingServlet.class, "/status");
+        servletHandler.addServletWithMapping(AsyncServlet.class, "/heavy/async");
 
         server.start();
 
@@ -33,13 +28,5 @@ public class JettyServer {
 
     public void stop() throws Exception {
         server.stop();
-    }
-
-    public static class ResourceServlet extends HttpServlet {
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.setContentType("application/json");
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("{ \"status\": \"ok\"}");
-        }
     }
 }
