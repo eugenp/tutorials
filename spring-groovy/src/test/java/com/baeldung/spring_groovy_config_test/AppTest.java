@@ -47,7 +47,7 @@ public class AppTest{
         ApplicationContext context = new GenericGroovyApplicationContext("file:config/groovyPropConfigWithClosure.groovy");
         TestClassB test = (TestClassB) context.getBean("testClassB");
         assertNotNull(test.getTestStringB());
-        assertEquals(test.getTestStringB(),"Test String");
+        assertEquals(test.getTestStringB(),"Default Test String");
         assertTrue(test.getTestIntB() == 10);
     }
     

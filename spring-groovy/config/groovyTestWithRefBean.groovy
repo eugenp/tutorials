@@ -6,5 +6,4 @@ beans{
     classWithRef(ClassWithRef){
         myClass = groovyClass
     }
-    
 }

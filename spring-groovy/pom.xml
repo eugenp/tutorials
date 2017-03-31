@@ -11,9 +11,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
-        <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
-        <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
+        <groovy-eclipse-compiler.version>2.9.2-01</groovy-eclipse-compiler.version>
+        <groovy-eclipse-batch.version>2.4.3-01</groovy-eclipse-batch.version>
+        <org.codehouse.groovy.version>2.4.10</org.codehouse.groovy.version>
         <junit.version>4.12</junit.version>
         <spring-context.version>4.3.6.RELEASE</spring-context.version>
         <spring-core.version>4.3.6.RELEASE</spring-core.version>
@@ -84,3 +84,4 @@
         </dependency>
     </dependencies>
 </project>
+
