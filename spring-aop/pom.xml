@@ -20,8 +20,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <git
-
     </dependencies>
 
     <build>
