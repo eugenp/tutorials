@@ -127,6 +127,7 @@
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
+        <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
         <module>spring-openid</module>
