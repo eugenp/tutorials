@@ -21,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 public class HierarchicalStateMachineTest {
 
     @Resource
-    private StateMachine stateMachine;
+    private StateMachine<String, String> stateMachine;
 
     @Before
     public void setUp() {

@@ -23,7 +23,7 @@ import static org.junit.Assert.assertTrue;
 public class StateEnumMachineTest {
 
     @Resource
-    private StateMachine stateMachine;
+    private StateMachine<ApplicationReviewStates, ApplicationReviewEvents> stateMachine;
 
     @Before
     public void setUp() {
