@@ -1,23 +1,36 @@
 package com.baeldung.spring.statemachine;
 
 import com.baeldung.spring.statemachine.config.ForkJoinStateMachineConfiguration;
+import com.baeldung.spring.statemachine.config.JunctionStateMachineConfiguration;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = ForkJoinStateMachineConfiguration.class)
 public class ForkJoinStateMachineTest {
+
+    @Resource
+    private StateMachine stateMachine;
+
+    @Before
+    public void setUp() {
+        stateMachine.start();
+    }
 
     @Test
     public void whenForkStateEntered_thenMultipleSubStatesEntered() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ForkJoinStateMachineConfiguration.class);
-        StateMachine stateMachine = ctx.getBean(StateMachine.class);
-        stateMachine.start();
-
         boolean success = stateMachine.sendEvent("E1");
 
         assertTrue(success);
@@ -27,9 +40,6 @@ public class ForkJoinStateMachineTest {
 
     @Test
     public void whenAllConfiguredJoinEntryStatesAreEntered_thenTransitionToJoinState() {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ForkJoinStateMachineConfiguration.class);
-        StateMachine stateMachine = ctx.getBean(StateMachine.class);
-        stateMachine.start();
 
         boolean success = stateMachine.sendEvent("E1");
 
@@ -40,5 +50,10 @@ public class ForkJoinStateMachineTest {
         assertTrue(stateMachine.sendEvent("sub1"));
         assertTrue(stateMachine.sendEvent("sub2"));
         assertEquals("SJoin", stateMachine.getState().getId());
+    }
+
+    @After
+    public void tearDown() {
+        stateMachine.stop();
     }
 }

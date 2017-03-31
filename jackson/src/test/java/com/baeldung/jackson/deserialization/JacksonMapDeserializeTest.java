@@ -7,6 +7,7 @@ import java.util.Map;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.jackson.entities.ClassWithAMap;
 import com.baeldung.jackson.entities.MyPair;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -36,14 +37,21 @@ public class JacksonMapDeserializeTest {
 	public void whenObjectStringMapDeserialize_thenCorrect()
 			throws JsonParseException, JsonMappingException, IOException {
 
-		final String jsonInput = "{\"Abbott and Costello\" : \"Comedy\"}";
+		final String jsonInput = "{\"Abbott and Costello\":\"Comedy\"}";
 		final ObjectMapper mapper = new ObjectMapper();
 
 		TypeReference<HashMap<MyPair, String>> typeRef = new TypeReference<HashMap<MyPair, String>>() {
 		};
+
 		map = mapper.readValue(jsonInput, typeRef);
 
 		Assert.assertEquals("Comedy", map.get(new MyPair("Abbott", "Costello")));
+
+		ClassWithAMap classWithMap = mapper.readValue(jsonInput,
+				ClassWithAMap.class);
+
+		Assert.assertEquals("Comedy",
+				classWithMap.getMap().get(new MyPair("Abbott", "Costello")));
 	}
 
 	@Test
