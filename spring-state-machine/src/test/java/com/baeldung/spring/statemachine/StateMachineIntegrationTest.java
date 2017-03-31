@@ -22,7 +22,7 @@ import javax.annotation.Resource;
 public class StateMachineIntegrationTest {
 
     @Resource
-    private StateMachine stateMachine;
+    private StateMachine<String, String> stateMachine;
 
     @Before
     public void setUp() {
