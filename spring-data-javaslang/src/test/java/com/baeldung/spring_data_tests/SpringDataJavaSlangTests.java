@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApp.class,webEnvironment = WebEnvironment.NONE)
-public class SpringTests {
+public class SpringDataJavaSlangTests {
     
     @Autowired
     JavaBookRepository javaRepository;
