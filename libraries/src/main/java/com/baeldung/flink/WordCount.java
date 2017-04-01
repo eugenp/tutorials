@@ -5,7 +5,6 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.aggregation.Aggregations;
 import org.apache.flink.api.java.tuple.Tuple2;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class WordCount {
