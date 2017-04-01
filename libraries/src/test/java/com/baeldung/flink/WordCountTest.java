@@ -4,7 +4,6 @@ import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.junit.Test;
@@ -41,7 +40,7 @@ public class WordCountTest {
     @Test
     public void givenListOfAmounts_whenUseMapReduce_thenSumAmountsThatAreOnlyAboveThreshold() throws Exception {
         //given
-        DataSource<Integer> amounts = env.fromElements(1, 29, 40, 50);
+        DataSet<Integer> amounts = env.fromElements(1, 29, 40, 50);
         int threshold = 30;
 
         //when
@@ -57,7 +56,7 @@ public class WordCountTest {
     @Test
     public void givenDataSetOfComplexObjects_whenMapToGetOneField_thenReturnedListHaveProperElements() throws Exception {
         //given
-        DataSource<Person> personDataSource = env.fromCollection(Arrays.asList(new Person(23, "Tom"), new Person(75, "Michael")));
+        DataSet<Person> personDataSource = env.fromCollection(Arrays.asList(new Person(23, "Tom"), new Person(75, "Michael")));
 
         //when
         List<Integer> ages = personDataSource.map(p -> p.age).collect();
@@ -73,10 +72,10 @@ public class WordCountTest {
     public void giveTwoDataSets_whenJoinUsingId_thenProduceJoinedData() throws Exception {
         //given
         Tuple3<Integer, String, String> address = new Tuple3<>(1, "5th Avenue", "London");
-        DataSource<Tuple3<Integer, String, String>> addresses = env.fromElements(address);
+        DataSet<Tuple3<Integer, String, String>> addresses = env.fromElements(address);
 
         Tuple2<Integer, String> firstTransaction = new Tuple2<>(1, "Transaction_1");
-        DataSource<Tuple2<Integer, String>> transactions =
+        DataSet<Tuple2<Integer, String>> transactions =
                 env.fromElements(firstTransaction, new Tuple2<>(12, "Transaction_2"));
 
 
