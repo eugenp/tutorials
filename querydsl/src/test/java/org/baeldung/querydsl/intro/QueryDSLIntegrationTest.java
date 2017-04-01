@@ -3,25 +3,25 @@
  */
 package org.baeldung.querydsl.intro;
 
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
-import org.baeldung.querydsl.intro.entities.BlogPost;
-import org.baeldung.querydsl.intro.entities.QBlogPost;
-import org.baeldung.querydsl.intro.entities.QUser;
-import org.baeldung.querydsl.intro.entities.User;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.baeldung.querydsl.intro.entities.BlogPost;
+import org.baeldung.querydsl.intro.entities.QBlogPost;
+import org.baeldung.querydsl.intro.entities.QUser;
+import org.baeldung.querydsl.intro.entities.User;
 import org.junit.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class QueryDSLTest {
+public class QueryDSLIntegrationTest {
 
     private static EntityManagerFactory emf;
 
