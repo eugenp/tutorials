@@ -10,6 +10,8 @@
     <artifactId>remoting-amqp</artifactId>
     <packaging>pom</packaging>
 
+
+
     <name>remoting-amqp</name>
     <modules>
         <module>remoting-amqp-server</module>
