@@ -1,9 +1,11 @@
 package com.baeldung.flink;
 
 import org.apache.flink.api.common.functions.ReduceFunction;
+import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.functions.KeySelector;
+import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.junit.Test;
@@ -64,6 +66,31 @@ public class WordCountTest {
         //then
         assertThat(ages.size()).isEqualTo(2);
         assertThat(ages.containsAll(Arrays.asList(23, 75))).isTrue();
+
+    }
+
+    @Test
+    public void givenDataSet_whenSortItByOneField_thenShouldReturnSortedDataSet() throws Exception {
+        //given
+        Tuple2<Integer, String> secondPerson = new Tuple2<>(4, "Tom");
+        Tuple2<Integer, String> thirdPerson = new Tuple2<>(5, "Scott");
+        Tuple2<Integer, String> fourthPerson = new Tuple2<>(200, "Michael");
+        Tuple2<Integer, String> firstPerson = new Tuple2<>(1, "Jack");
+        DataSource<Tuple2<Integer, String>> transactions = env.fromElements(fourthPerson, secondPerson,
+                thirdPerson, firstPerson);
+
+
+        //when
+        List<Tuple2<Integer, String>> sorted = transactions
+                .sortPartition(new IdKeySelectorTransaction(), Order.ASCENDING)
+                .collect();
+
+        //then
+        assertThat(sorted.size()).isEqualTo(4);
+        assertThat(sorted.get(0)).isEqualTo(firstPerson);
+        assertThat(sorted.get(1)).isEqualTo(secondPerson);
+        assertThat(sorted.get(2)).isEqualTo(thirdPerson);
+        assertThat(sorted.get(3)).isEqualTo(fourthPerson);
 
     }
 
