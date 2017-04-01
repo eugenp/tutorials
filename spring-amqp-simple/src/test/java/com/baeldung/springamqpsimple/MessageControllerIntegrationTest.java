@@ -15,11 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
-@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MessageControllerTest {
+@SpringBootTest(webEnvironment = RANDOM_PORT)
+public class MessageControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;

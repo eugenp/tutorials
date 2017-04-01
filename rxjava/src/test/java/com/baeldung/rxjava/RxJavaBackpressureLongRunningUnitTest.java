@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertTrue;
 
-public class RxJavaBackpressureTest {
+public class RxJavaBackpressureLongRunningUnitTest {
 
     @Test
     public void givenColdObservable_shouldNotThrowException() {
