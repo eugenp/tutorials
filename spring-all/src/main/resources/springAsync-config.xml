@@ -9,6 +9,6 @@
     <task:annotation-driven executor="myExecutor"/>
     <task:executor id="myExecutor" pool-size="5"/>
 
-    <bean id="asyncAnnotationExample" class="org.baeldung.async.AsyncAnnotationExample"/>
+    <bean id="asyncAnnotationExample" class="org.baeldung.async.AsyncComponent"/>
 
 </beans>

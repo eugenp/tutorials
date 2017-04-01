@@ -30,6 +30,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/*
+ * NOTE : Need module spring-security-rest-basic-auth to be running
+ */
+
 public class HttpClientAuthLiveTest {
 
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://localhost:8081/spring-security-rest-basic-auth/api/foos/1";

@@ -1,6 +1,8 @@
 =========
-
 ## HttpClient 4.x Cookbooks and Examples
+
+###The Course
+The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 
 ### Relevant Articles: 
@@ -17,3 +19,4 @@
 - [Multipart Upload with HttpClient 4](http://www.baeldung.com/httpclient-multipart-upload)
 - [HttpAsyncClient Tutorial](http://www.baeldung.com/httpasyncclient-tutorial)
 - [HttpClient 4 Tutorial](http://www.baeldung.com/httpclient-guide)
+- [Advanced HttpClient Configuration](http://www.baeldung.com/httpclient-advanced-config)

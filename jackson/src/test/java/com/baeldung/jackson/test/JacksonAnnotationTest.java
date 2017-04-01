@@ -12,11 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import com.baeldung.jackson.bidirection.ItemWithIdentity;
-import com.baeldung.jackson.bidirection.ItemWithRef;
-import com.baeldung.jackson.bidirection.UserWithRef;
-import com.baeldung.jackson.dtos.User;
-import com.baeldung.jackson.dtos.withEnum.TypeEnumWithValue;
+import org.junit.Test;
+
 import com.baeldung.jackson.annotation.BeanWithCreator;
 import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
 import com.baeldung.jackson.annotation.BeanWithFilter;
@@ -30,17 +27,17 @@ import com.baeldung.jackson.annotation.RawBean;
 import com.baeldung.jackson.annotation.UnwrappedUser;
 import com.baeldung.jackson.annotation.UserWithIgnoreType;
 import com.baeldung.jackson.annotation.Zoo;
+import com.baeldung.jackson.bidirection.ItemWithIdentity;
+import com.baeldung.jackson.bidirection.ItemWithRef;
 import com.baeldung.jackson.bidirection.UserWithIdentity;
+import com.baeldung.jackson.bidirection.UserWithRef;
 import com.baeldung.jackson.date.EventWithFormat;
 import com.baeldung.jackson.date.EventWithSerializer;
-import com.baeldung.jackson.dtos.MyMixInForString;
+import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
+import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -103,10 +100,10 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonValue_thenCorrect() throws JsonParseException, IOException {
-        final String enumAsString = new ObjectMapper().writeValueAsString(TypeEnumWithValue.TYPE1);
+    public void whenSerializingUsingJsonValue_thenCorrect() throws IOException {
+        final String enumAsString = new ObjectMapper().writeValueAsString(DistanceEnumWithValue.MILE);
 
-        assertThat(enumAsString, is("\"Type A\""));
+        assertThat(enumAsString, is("1609.34"));
     }
 
     @Test
@@ -124,54 +121,54 @@ public class JacksonAnnotationTest {
     // ========================= Deserializing annotations ============================
 
     @Test
-    public void whenDeserializingUsingJsonCreator_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonCreator_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"theName\":\"My bean\"}";
 
-        final BeanWithCreator bean = new ObjectMapper().reader(BeanWithCreator.class).readValue(json);
+        final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class).readValue(json);
         assertEquals("My bean", bean.name);
     }
 
     @Test
-    public void whenDeserializingUsingJsonInject_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonInject_thenCorrect() throws IOException {
         final String json = "{\"name\":\"My bean\"}";
         final InjectableValues inject = new InjectableValues.Std().addValue(int.class, 1);
 
-        final BeanWithInject bean = new ObjectMapper().reader(inject).withType(BeanWithInject.class).readValue(json);
+        final BeanWithInject bean = new ObjectMapper().reader(inject).forType(BeanWithInject.class).readValue(json);
         assertEquals("My bean", bean.name);
         assertEquals(1, bean.id);
     }
 
     @Test
-    public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws IOException {
         final String json = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
 
-        final ExtendableBean bean = new ObjectMapper().reader(ExtendableBean.class).readValue(json);
+        final ExtendableBean bean = new ObjectMapper().readerFor(ExtendableBean.class).readValue(json);
         assertEquals("My bean", bean.name);
         assertEquals("val2", bean.getProperties().get("attr2"));
     }
 
     @Test
-    public void whenDeserializingUsingJsonSetter_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonSetter_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"name\":\"My bean\"}";
 
-        final BeanWithGetter bean = new ObjectMapper().reader(BeanWithGetter.class).readValue(json);
+        final BeanWithGetter bean = new ObjectMapper().readerFor(BeanWithGetter.class).readValue(json);
         assertEquals("My bean", bean.getTheName());
     }
 
     @Test
-    public void whenDeserializingUsingJsonDeserialize_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingUsingJsonDeserialize_thenCorrect() throws IOException {
         final String json = "{\"name\":\"party\",\"eventDate\":\"20-12-2014 02:30:00\"}";
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
-        final EventWithSerializer event = new ObjectMapper().reader(EventWithSerializer.class).readValue(json);
+        final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class).readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
     // ========================= Inclusion annotations ============================
 
     @Test
-    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonIgnoreProperties_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -180,7 +177,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonIgnore_thenCorrect() throws JsonProcessingException {
         final BeanWithIgnore bean = new BeanWithIgnore(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -201,7 +198,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonInclude_thenCorrect() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -210,7 +207,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingUsingJsonAutoDetect_thenCorrect() throws JsonProcessingException {
         final PrivateBean bean = new PrivateBean(1, "My bean");
 
         final String result = new ObjectMapper().writeValueAsString(bean);
@@ -221,7 +218,7 @@ public class JacksonAnnotationTest {
     // ========================= Polymorphic annotations ============================
 
     @Test
-    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenSerializingPolymorphic_thenCorrect() throws JsonProcessingException {
         final Zoo.Dog dog = new Zoo.Dog("lacy");
         final Zoo zoo = new Zoo(dog);
 
@@ -232,10 +229,10 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenDeserializingPolymorphic_thenCorrect() throws JsonProcessingException, IOException {
+    public void whenDeserializingPolymorphic_thenCorrect() throws IOException {
         final String json = "{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\"}}";
 
-        final Zoo zoo = new ObjectMapper().reader().withType(Zoo.class).readValue(json);
+        final Zoo zoo = new ObjectMapper().readerFor(Zoo.class).readValue(json);
 
         assertEquals("lacy", zoo.animal.name);
         assertEquals(Zoo.Cat.class, zoo.animal.getClass());
@@ -250,7 +247,7 @@ public class JacksonAnnotationTest {
         assertThat(result, containsString("My bean"));
         assertThat(result, containsString("1"));
 
-        final BeanWithGetter resultBean = new ObjectMapper().reader(BeanWithGetter.class).readValue(result);
+        final BeanWithGetter resultBean = new ObjectMapper().readerFor(BeanWithGetter.class).readValue(result);
         assertEquals("My bean", resultBean.getTheName());
     }
 
@@ -278,7 +275,7 @@ public class JacksonAnnotationTest {
     }
 
     @Test
-    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException {
+    public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException, JsonProcessingException {
         final Item item = new Item(2, "book", "John");
 
         final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
@@ -338,23 +335,23 @@ public class JacksonAnnotationTest {
         assertThat(result, not(containsString("dateCreated")));
     }
 
-    @Ignore("Jackson 2.7.1-1 seems to have changed the API regarding mixins")
+    // @Ignore("Jackson 2.7.1-1 seems to have changed the API regarding mixins")
     @Test
     public void whenSerializingUsingMixInAnnotation_thenCorrect() throws JsonProcessingException {
-        final User user = new User(1, "John");
+        final com.baeldung.jackson.dtos.Item item = new com.baeldung.jackson.dtos.Item(1, "book", null);
 
-        String result = new ObjectMapper().writeValueAsString(user);
-        assertThat(result, containsString("John"));
+        String result = new ObjectMapper().writeValueAsString(item);
+        assertThat(result, containsString("owner"));
 
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.addMixIn(String.class, MyMixInForString.class);
+        mapper.addMixIn(com.baeldung.jackson.dtos.User.class, MyMixInForIgnoreType.class);
 
-        result = mapper.writeValueAsString(user);
-        assertThat(result, not(containsString("John")));
+        result = mapper.writeValueAsString(item);
+        assertThat(result, not(containsString("owner")));
     }
 
     @Test
-    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException, IOException {
+    public void whenDisablingAllAnnotations_thenAllDisabled() throws JsonProcessingException {
         final MyBean bean = new MyBean(1, null);
 
         final ObjectMapper mapper = new ObjectMapper();

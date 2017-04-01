@@ -6,6 +6,7 @@
 <body>
 
 	<h2>Submitted Employee Information</h2>
+	<h3>${msg}</h3>
 	<table>
 		<tr>
 			<td>Name :</td>
@@ -18,6 +19,10 @@
 		<tr>
 			<td>Contact Number :</td>
 			<td>${contactNumber}</td>
+		</tr>
+		<tr>
+			<td>Working Area :</td>
+			<td>${workingArea}</td>
 		</tr>
 	</table>
 </body>

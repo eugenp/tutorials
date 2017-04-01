@@ -1,54 +1,56 @@
 package org.baeldung.persistence.query;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.User;
-import org.baeldung.spring.ConfigTest;
-import org.baeldung.spring.PersistenceConfig;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
 import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Response;
 import com.jayway.restassured.specification.RequestSpecification;
+import org.baeldung.persistence.model.User;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.test.context.ActiveProfiles;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { ConfigTest.class, PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(classes = { ConfigTest.class,
+//		PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 @ActiveProfiles("test")
 public class JPASpecificationLiveTest {
 
-    @Autowired
-    private UserRepository repository;
+    // @Autowired
+    // private UserRepository repository;
 
     private User userJohn;
 
     private User userTom;
 
-    private final String URL_PREFIX = "http://localhost:8080/users/spec?search=";
+    private final String URL_PREFIX = "http://localhost:8082/spring-security-rest-full/auth/users/spec?search=";
 
     @Before
     public void init() {
         userJohn = new User();
-        userJohn.setFirstName("John");
-        userJohn.setLastName("Doe");
+        userJohn.setFirstName("john");
+        userJohn.setLastName("doe");
         userJohn.setEmail("john@doe.com");
         userJohn.setAge(22);
-        repository.save(userJohn);
+        // repository.save(userJohn);
 
         userTom = new User();
-        userTom.setFirstName("Tom");
-        userTom.setLastName("Doe");
+        userTom.setFirstName("tom");
+        userTom.setLastName("doe");
         userTom.setEmail("tom@doe.com");
         userTom.setAge(26);
-        repository.save(userTom);
+        // repository.save(userTom);
+    }
+
+    private final String EURL_PREFIX = "http://localhost:8082/spring-security-rest-full/auth/users/espec?search=";
+
+    @Test
+    public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
+        final Response response = givenAuth().get(EURL_PREFIX + "'firstName:john,lastName:doe");
+        final String result = response.body().asString();
+        assertTrue(result.contains(userJohn.getEmail()));
+        assertTrue(result.contains(userTom.getEmail()));
     }
 
     @Test

@@ -3,13 +3,22 @@ package com.baeldung.jackson.serialization;
 import java.io.IOException;
 
 import com.baeldung.jackson.dtos.Item;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class ItemSerializer extends JsonSerializer<Item> {
+public class ItemSerializer extends StdSerializer<Item> {
+
+    private static final long serialVersionUID = 6739170890621978901L;
+
+    public ItemSerializer() {
+        this(null);
+    }
+
+    public ItemSerializer(final Class<Item> t) {
+        super(t);
+    }
 
     @Override
     public final void serialize(final Item value, final JsonGenerator jgen, final SerializerProvider provider) throws IOException, JsonProcessingException {

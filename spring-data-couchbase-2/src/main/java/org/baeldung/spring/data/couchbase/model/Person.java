@@ -24,7 +24,7 @@ public class Person {
     private DateTime created;
     @Field
     private DateTime updated;
-    
+
     public Person(String id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
@@ -34,44 +34,53 @@ public class Person {
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public DateTime getCreated() {
         return created;
     }
+
     public void setCreated(DateTime created) {
         this.created = created;
     }
+
     public DateTime getUpdated() {
         return updated;
     }
+
     public void setUpdated(DateTime updated) {
         this.updated = updated;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 1;
-        if(id != null) {
+        if (id != null) {
             hash = hash * 31 + id.hashCode();
         }
-        if(firstName != null) {
+        if (firstName != null) {
             hash = hash * 31 + firstName.hashCode();
         }
-        if(lastName != null) {
+        if (lastName != null) {
             hash = hash * 31 + lastName.hashCode();
         }
         return hash;
@@ -79,8 +88,10 @@ public class Person {
 
     @Override
     public boolean equals(Object obj) {
-        if((obj == null) || (obj.getClass() != this.getClass())) return false;
-        if(obj == this) return true;
+        if ((obj == null) || (obj.getClass() != this.getClass()))
+            return false;
+        if (obj == this)
+            return true;
         Person other = (Person) obj;
         return this.hashCode() == other.hashCode();
     }

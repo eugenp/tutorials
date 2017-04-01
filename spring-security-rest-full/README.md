@@ -2,6 +2,10 @@
 
 ## REST Example Project with Spring Security
 
+### Courses
+The "REST With Spring" Classes: http://bit.ly/restwithspring
+
+The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [Spring Security Expressions - hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
@@ -21,6 +25,10 @@
 - [REST Query Language with RSQL](http://www.baeldung.com/rest-api-search-language-rsql-fiql)
 - [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
 - [A Guide to CSRF Protection in Spring Security](http://www.baeldung.com/spring-security-csrf)
+- [Intro to Spring Security Expressions](http://www.baeldung.com/spring-security-expressions)
+- [Changing Spring Model Parameters with Handler Interceptor](http://www.baeldung.com/spring-model-parameters-with-handler-interceptor)
+- [Introduction to Spring MVC HandlerInterceptor](http://www.baeldung.com/spring-mvc-handlerinterceptor)
+- [Using a Custom Spring MVC’s Handler Interceptor to Manage Sessions](http://www.baeldung.com/spring-mvc-custom-handler-interceptor)
 
 ### Build the Project
 ```

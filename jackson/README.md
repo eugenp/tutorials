@@ -2,6 +2,9 @@
 
 ## Jackson Cookbooks and Examples
 
+###The Course
+The "REST With Spring" Classes: http://bit.ly/restwithspring
+
 ### Relevant Articles: 
 - [Jackson Ignore Properties on Marshalling](http://www.baeldung.com/jackson-ignore-properties-on-serialization)
 - [Jackson – Unmarshall to Collection/Array](http://www.baeldung.com/jackson-collection-array)
@@ -16,3 +19,10 @@
 - [Jackson – Decide What Fields Get Serialized/Deserializaed](http://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
 - [A Guide to Jackson Annotations](http://www.baeldung.com/jackson-annotations)
 - [Working with Tree Model Nodes in Jackson](http://www.baeldung.com/jackson-json-node-tree-model)
+- [Jackson vs Gson](http://www.baeldung.com/jackson-vs-gson)
+- [Intro to the Jackson ObjectMapper](http://www.baeldung.com/jackson-object-mapper-tutorial)
+- [XML Serialization and Deserialization with Jackson](http://www.baeldung.com/jackson-xml-serialization-and-deserialization)
+- [More Jackson Annotations](http://www.baeldung.com/jackson-advanced-annotations)
+- [Inheritance with Jackson](http://www.baeldung.com/jackson-inheritance)
+- [Guide to @JsonFormat in Jackson](http://www.baeldung.com/jackson-jsonformat)
+- [A Guide to Optional with Jackson](http://www.baeldung.com/jackson-optional)
