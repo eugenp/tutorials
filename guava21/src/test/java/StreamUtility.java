@@ -8,12 +8,12 @@ import java.util.stream.Stream;
 
 public class StreamUtility {
 
-    public static <T> boolean assertStreamEquals(Stream<T> stream1, Stream<T> stream2){
+    public static <T> boolean assertStreamEquals(Stream<T> stream1, Stream<T> stream2) {
 
         Iterator<T> iterator1 = stream1.iterator();
         Iterator<T> iterator2 = stream2.iterator();
 
-        while (iterator1.hasNext()){
+        while (iterator1.hasNext()) {
             Assert.assertEquals(iterator1.next(), iterator2.next());
         }
 
@@ -27,7 +27,7 @@ public class StreamUtility {
         Iterator iterator1 = stream1.iterator();
         Iterator iterator2 = stream2.iterator();
 
-        while (iterator1.hasNext()){
+        while (iterator1.hasNext()) {
             Assert.assertEquals(iterator1.next(), iterator2.next());
         }
 
@@ -41,7 +41,7 @@ public class StreamUtility {
         Iterator iterator1 = stream1.iterator();
         Iterator iterator2 = stream2.iterator();
 
-        while (iterator1.hasNext()){
+        while (iterator1.hasNext()) {
             Assert.assertEquals(iterator1.next(), iterator2.next());
         }
 
@@ -55,7 +55,7 @@ public class StreamUtility {
         Iterator iterator1 = stream1.iterator();
         Iterator iterator2 = stream2.iterator();
 
-        while (iterator1.hasNext()){
+        while (iterator1.hasNext()) {
             Assert.assertEquals(iterator1.next(), iterator2.next());
         }
 
