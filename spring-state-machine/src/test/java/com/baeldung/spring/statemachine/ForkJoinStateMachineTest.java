@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class ForkJoinStateMachineTest {
 
     @Resource
-    private StateMachine stateMachine;
+    private StateMachine<String, String> stateMachine;
 
     @Before
     public void setUp() {
