@@ -15,11 +15,11 @@ public class LoginAttemptsLogger {
     @EventListener
     public void auditEventHappened(AuditApplicationEvent auditApplicationEvent) {
         AuditEvent auditEvent = auditApplicationEvent.getAuditEvent();
-        LOGGER.debug("Principal " + auditEvent.getPrincipal() + " - " + auditEvent.getType());
+        LOGGER.info("Principal " + auditEvent.getPrincipal() + " - " + auditEvent.getType());
 
         WebAuthenticationDetails details = (WebAuthenticationDetails) auditEvent.getData().get("details");
-        LOGGER.debug("  Remote IP address: " + details.getRemoteAddress());
-        LOGGER.debug("  Session Id: " + details.getSessionId());
-        LOGGER.debug("  Request URL: " + auditEvent.getData().get("requestUrl"));
+        LOGGER.info("  Remote IP address: " + details.getRemoteAddress());
+        LOGGER.info("  Session Id: " + details.getSessionId());
+        LOGGER.info("  Request URL: " + auditEvent.getData().get("requestUrl"));
     }
 }
