@@ -1,12 +1,15 @@
-package com.baeldung.primechecker;
+package com.baeldung.algorithms.primechecker;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class BigIntegerPrimeCheckerTest {
+import com.baeldung.algorithms.primechecker.OptimisedPrimeChecker;
+import com.baeldung.algorithms.primechecker.PrimeChecker;
 
-    PrimeChecker primeChecker = new BigIntegerPrimeChecker();
+public class OptimisedPrimeCheckerTest {
+
+    PrimeChecker primeChecker = new OptimisedPrimeChecker();
     
     @Test
     public void givenPrimeNumber_whenCheckIsPrime_thenTrue(){

@@ -1,6 +1,9 @@
-package com.baeldung.primechecker;
+package com.baeldung.algorithms.primechecker;
 
 import org.junit.Test;
+
+import com.baeldung.algorithms.primechecker.BruteForcePrimeChecker;
+
 import static org.junit.Assert.*;
 
 public class BruteForcePrimeCheckerTest {
