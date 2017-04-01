@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 
@@ -21,7 +22,7 @@ import javax.annotation.Resource;
 @ContextConfiguration(classes = SimpleStateMachineConfiguration.class)
 public class StateMachineIntegrationTest {
 
-    @Resource
+    @Autowired
     private StateMachine<String, String> stateMachine;
 
     @Before
