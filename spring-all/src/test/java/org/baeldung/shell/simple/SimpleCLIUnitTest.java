@@ -40,12 +40,12 @@ public class SimpleCLIUnitTest {
     public void givenCommandConfig_whenExecutingWebSaveCommand_thenCorrectResult() {
 
         shell.executeCommand("admin-enable");
-        CommandResult result = shell.executeCommand("web-save --url https://www.google.com --out contents");
+        CommandResult result = shell.executeCommand("web-save --url https://www.google.com --out contents.txt");
 
         Assert.assertArrayEquals(
                 new boolean[]{
                     result.isSuccess(),
-                    new File("contents").exists()},
+                    new File("contents.txt").exists()},
                 new boolean[]{true, true});
     }
 
