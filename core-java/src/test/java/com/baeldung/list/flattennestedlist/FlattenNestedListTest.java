@@ -1,51 +1,29 @@
 package com.baeldung.list.flattennestedlist;
 
-import static org.junit.Assert.assertEquals;
+import static java.util.Arrays.asList;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.junit.After;
-import org.junit.Before;
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
 public class FlattenNestedListTest {
-    private List<List<String>> lol = new ArrayList<>();
-    List<String> ls1 = Arrays.asList("one:one", "one:two", "one:three");
-    List<String> ls2 = Arrays.asList("two:one", "two:two", "two:three");
-    List<String> ls3 = Arrays.asList("three:one", "three:two", "three:three");
-
-    @Before
-    public void setup() {
-        lol.addAll(Arrays.asList(ls1, ls2, ls3));
-    }
-
-    @After
-    public void tearDown() {
-        lol = null;
-    }
+    List<List<String>> lol = asList(asList("one:one"), asList("two:one", "two:two", "two:three"), asList("three:one", "three:two", "three:three", "three:four"));
 
     @Test
     public void givenString_flattenNestedList1() {
         List<String> ls = flattenListOfListsImperatively(lol);
 
         assertNotNull(ls);
-        assertTrue(ls.size() == 9);
+        assertTrue(ls.size() == 8);
         // assert content
-        assertEquals(ls.get(0), "one:one");
-        assertEquals(ls.get(1), "one:two");
-        assertEquals(ls.get(2), "one:three");
-        assertEquals(ls.get(3), "two:one");
-        assertEquals(ls.get(4), "two:two");
-        assertEquals(ls.get(5), "two:three");
-        assertEquals(ls.get(6), "three:one");
-        assertEquals(ls.get(7), "three:two");
-        assertEquals(ls.get(8), "three:three");
+        assertThat(ls, IsIterableContainingInOrder.contains("one:one", "two:one", "two:two", "two:three", "three:one", "three:two", "three:three", "three:four"));
     }
 
     @Test
@@ -53,17 +31,9 @@ public class FlattenNestedListTest {
         List<String> ls = flattenListOfListsStream(lol);
 
         assertNotNull(ls);
-        assertTrue(ls.size() == 9);
+        assertTrue(ls.size() == 8);
         // assert content
-        assertEquals(ls.get(0), "one:one");
-        assertEquals(ls.get(1), "one:two");
-        assertEquals(ls.get(2), "one:three");
-        assertEquals(ls.get(3), "two:one");
-        assertEquals(ls.get(4), "two:two");
-        assertEquals(ls.get(5), "two:three");
-        assertEquals(ls.get(6), "three:one");
-        assertEquals(ls.get(7), "three:two");
-        assertEquals(ls.get(8), "three:three");
+        assertThat(ls, IsIterableContainingInOrder.contains("one:one", "two:one", "two:two", "two:three", "three:one", "three:two", "three:three", "three:four"));
     }
 
     public <T> List<T> flattenListOfListsImperatively(List<List<T>> list) {

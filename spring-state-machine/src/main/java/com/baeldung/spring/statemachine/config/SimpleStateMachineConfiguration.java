@@ -36,10 +36,10 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
                 .initial("SI")
                 .end("SF")
                 .states(new HashSet<>(Arrays.asList("S1", "S2")))
-                .state("S4", executeAction(), errorAction())
                 .stateEntry("S3", entryAction())
-                .stateDo("S3", executeAction())
-                .stateExit("S3", exitAction());
+                .stateExit("S3", exitAction())
+                .state("S4", executeAction(), errorAction())
+                .stateDo("S5", executeAction());
 
     }
 
@@ -52,9 +52,11 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
                 .and().withExternal()
                 .source("SI").target("S3").event("E3")
                 .and().withExternal()
-                .source("S3").target("S4").event("E4").and().withExternal().source("S4").target("SF").event("end").guard(simpleGuard())
+                .source("S3").target("S4").event("E4")
                 .and().withExternal()
-                .source("S2").target("SF").event("end");
+                .source("S4").target("S5").event("E5")
+                .and().withExternal()
+                .source("S5").target("SF").event("end").guard(simpleGuard());
     }
 
     @Bean
@@ -73,9 +75,16 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Action<String, String> executeAction() {
+    public Action<String, String> doAction() {
         return (ctx) -> {
             LOGGER.info("Do " + ctx.getTarget().getId());
+        };
+    }
+
+    @Bean
+    public Action<String, String> executeAction() {
+        return (ctx) -> {
+            LOGGER.info("Execute " + ctx.getTarget().getId());
             int approvals = (int) ctx.getExtendedState().getVariables().getOrDefault("approvalCount", 0);
             approvals++;
             ctx.getExtendedState().getVariables().put("approvalCount", approvals);
