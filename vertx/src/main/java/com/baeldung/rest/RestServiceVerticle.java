@@ -1,4 +1,4 @@
-package com.baledung.rest;
+package com.baeldung.rest;
 
 import com.baeldung.model.Article;
 
