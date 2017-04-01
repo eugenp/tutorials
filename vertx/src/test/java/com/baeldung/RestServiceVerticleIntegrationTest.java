@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.baledung.rest.RestServiceVerticle;
+import com.baeldung.rest.RestServiceVerticle;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.unit.Async;
