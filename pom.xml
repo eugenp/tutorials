@@ -66,7 +66,7 @@
         <module>javaxval</module>
         <module>jaxb</module>
         <module>jee7</module>
-        <module>jhipster</module>
+        <!-- <module>jhipster</module> -->
         <module>jjwt</module>
         <module>jooq</module>
         <module>jpa-storedprocedure</module>
@@ -109,7 +109,7 @@
         <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
-        <module>solr-fulltext-search</module>
+        <module>solr</module>
         <module>spark-java</module>
        <!-- <module>spring-5</module> TODO: CI problems-->
         <module>spring-akka</module>
@@ -123,6 +123,7 @@
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
+        <module>spring-aop</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
@@ -143,6 +144,7 @@
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
+        <module>spring-kafka</module>
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
         <module>spring-mockito</module>
@@ -187,6 +189,7 @@
         <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
+        <module>spring-state-machine</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
@@ -209,7 +212,8 @@
 
         <module>rabbitmq</module>
         <module>vertx</module>
-  </modules>
+        <module>spring-data-gemfire</module>
+    </modules>
     <build>
         <plugins>
             <plugin>
