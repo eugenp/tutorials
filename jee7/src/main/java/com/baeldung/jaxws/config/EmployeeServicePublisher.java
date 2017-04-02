@@ -1,8 +1,8 @@
 package com.baeldung.jaxws.config;
 
-import com.baeldung.jaxws.EmployeeServiceImpl;
-
 import javax.xml.ws.Endpoint;
+
+import com.baeldung.jaxws.EmployeeServiceImpl;
 
 public class EmployeeServicePublisher {
 

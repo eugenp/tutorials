@@ -1,10 +1,10 @@
 package com.baeldung.jaxws.repository;
 
+import java.util.List;
+
 import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
 import com.baeldung.jaxws.exception.EmployeeNotFound;
 import com.baeldung.jaxws.model.Employee;
-
-import java.util.List;
 
 public interface EmployeeRepository {
 
