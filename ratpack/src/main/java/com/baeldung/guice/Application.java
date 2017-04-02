@@ -2,6 +2,7 @@ package com.baeldung.guice;
 
 import com.baeldung.guice.config.DependencyModule;
 import com.baeldung.guice.service.DataPumpService;
+import com.baeldung.guice.service.ServiceFactory;
 import com.baeldung.guice.service.impl.DataPumpServiceImpl;
 
 import ratpack.guice.Guice;
@@ -15,8 +16,8 @@ public class Application {
 				.start(server -> server.registry(Guice.registry(bindings -> bindings.module(DependencyModule.class)))
 						.handlers(chain -> chain.get("randomString", ctx -> {
 							DataPumpService dataPumpService = ctx.get(DataPumpService.class);
-							ctx.render(dataPumpService.generate().length());
-						})));
+							ctx.render(dataPumpService.generate());
+						}).get("factory", ctx -> ctx.render(ServiceFactory.getInstance().generate()))));
 
 //		RatpackServer.start(server -> server
 //				.registry(Guice
@@ -24,7 +25,7 @@ public class Application {
 //				.handlers(chain -> chain.get("randomString", ctx -> {
 //					DataPumpService dataPumpService = ctx.get(DataPumpService.class);
 //					ctx.render(dataPumpService.generate());
-//				})));
+//				}).get("factory", ctx -> ctx.render(ServiceFactory.getInstance().generate()))));
 
 	}
 
