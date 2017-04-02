@@ -77,7 +77,7 @@
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
         <assertj.version>3.6.2</assertj.version>
-        <jsonassert.version>1.4.0</jsonassert.version>
+        <jsonassert.version>1.5.0</jsonassert.version>
     </properties>
 
 </project>
