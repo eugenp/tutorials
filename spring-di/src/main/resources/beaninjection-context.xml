@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd ">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.baeldung.spring.di" />
+
+	<bean id="employeeDao" class="com.baeldung.spring.di.dao.EmployeeDao">
+		<constructor-arg index="0" type="java.lang.String"
+			value="Oracle" />
+	</bean>
+
+	<bean id="employeeService" class="com.baeldung.spring.di.service.EmployeeService">
+		<constructor-arg index="0" ref="employeeDao" />
+	</bean>
+
+	<bean id="companyService" class="com.baeldung.spring.di.service.CompanyService"
+		c:dao-ref="employeeDao" />
+
+	<bean id="order" class="com.baeldung.spring.di.constructor.model.Order">
+		<property name="trade" ref="trade"></property>
+		<property name="transactionType" value="SELL"></property>
+	</bean>
+
+	<bean id="orderBrkr" class="com.baeldung.spring.di.constructor.model.Order"
+		p:trade-ref="trade" p:transactionType="SELL" p:broker="Citi" />
+
+</beans>
