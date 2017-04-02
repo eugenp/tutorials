@@ -6,12 +6,11 @@ import org.junit.Test;
 public class InternBuilderUnitTests {
 
     @Test
-    public void interBuilderTest(){
+    public void interBuilderTest() {
 
-        Interner<Integer> interners = Interners.<Integer>newBuilder()
-                .concurrencyLevel(2)
-                .strong()
-                .<Integer>build();
+        Interner<Integer> interners = Interners.<Integer> newBuilder()
+          .concurrencyLevel(2)
+          .strong().<Integer> build();
 
         Assert.assertNotNull(interners);
     }

@@ -10,8 +10,9 @@ public class MoreCollectorsExample {
 
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1);
-        Optional<Integer> number = numbers.stream()
-                .map(e -> e * 2)
-                .collect(MoreCollectors.toOptional());
+        Optional<Integer> number = numbers
+          .stream()
+          .map(e -> e * 2)
+          .collect(MoreCollectors.toOptional());
     }
 }

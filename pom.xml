@@ -52,7 +52,7 @@
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
-        <!--<module>hbase</module> TODO: CI problems-->
+        <module>hbase</module>
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -66,7 +66,7 @@
         <module>javaxval</module>
         <module>jaxb</module>
         <module>jee7</module>
-        <module>jhipster</module>
+        <!-- <module>jhipster</module> -->
         <module>jjwt</module>
         <module>jooq</module>
         <module>jpa-storedprocedure</module>
@@ -189,6 +189,7 @@
         <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
+        <module>spring-state-machine</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
@@ -211,7 +212,9 @@
 
         <module>rabbitmq</module>
         <module>vertx</module>
-  </modules>
+        <module>spring-data-gemfire</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>
@@ -222,6 +225,18 @@
                     <executable>maven</executable>
 
 
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                    </excludes>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
