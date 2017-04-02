@@ -4,14 +4,12 @@ import com.google.common.util.concurrent.Monitor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 
 public class MonitorExample {
     private List<String> students = new ArrayList<String>();
     private static final int MAX_SIZE = 100;
 
     private Monitor monitor = new Monitor();
-
 
     public void addToCourse(String item) throws InterruptedException {
         Monitor.Guard studentsBelowCapacity = monitor.newGuard(this::isStudentsCapacityUptoLimit);
@@ -23,7 +21,7 @@ public class MonitorExample {
         }
     }
 
-    public Boolean isStudentsCapacityUptoLimit(){
+    public Boolean isStudentsCapacityUptoLimit() {
         return students.size() > MAX_SIZE;
     }
 }
