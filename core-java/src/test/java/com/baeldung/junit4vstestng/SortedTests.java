@@ -6,20 +6,17 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SortedTests {
-    
+
     @Test
-    public void a_givenString_whenChangedtoInt_thenTrue(){
-        assertTrue(
-          Integer.valueOf("10") instanceof Integer);
+    public void a_givenString_whenChangedtoInt_thenTrue() {
+        assertTrue(Integer.valueOf("10") instanceof Integer);
     }
-    
+
     @Test
-    public void b_givenInt_whenChangedtoString_thenTrue(){
-        assertTrue(
-          String.valueOf(10) instanceof String);
+    public void b_givenInt_whenChangedtoString_thenTrue() {
+        assertTrue(String.valueOf(10) instanceof String);
     }
 
 }

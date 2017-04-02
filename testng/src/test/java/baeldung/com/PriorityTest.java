@@ -10,14 +10,12 @@ public class PriorityTest {
 
     @Test(priority = 1)
     public void givenString_whenChangedToInt_thenCorrect() {
-        Assert.assertTrue(
-          Integer.valueOf(testString) instanceof Integer);
+        Assert.assertTrue(Integer.valueOf(testString) instanceof Integer);
     }
 
     @Test(priority = 2)
     public void givenInt_whenChangedToString_thenCorrect() {
-        Assert.assertTrue(
-          String.valueOf(testInt) instanceof String);
+        Assert.assertTrue(String.valueOf(testInt) instanceof String);
     }
 
 }
