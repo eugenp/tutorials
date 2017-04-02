@@ -18,13 +18,13 @@ public class JacksonMapDeserializeTest {
 
 	private Map<MyPair, String> map;
 	private Map<MyPair, MyPair> cmap;
+	final ObjectMapper mapper = new ObjectMapper();
 
 	@Test
 	public void whenSimpleMapDeserialize_thenCorrect()
 			throws JsonParseException, JsonMappingException, IOException {
 
 		final String jsonInput = "{\"key\": \"value\"}";
-		final ObjectMapper mapper = new ObjectMapper();
 		TypeReference<HashMap<String, String>> typeRef = new TypeReference<HashMap<String, String>>() {
 		};
 
@@ -38,7 +38,6 @@ public class JacksonMapDeserializeTest {
 			throws JsonParseException, JsonMappingException, IOException {
 
 		final String jsonInput = "{\"Abbott and Costello\":\"Comedy\"}";
-		final ObjectMapper mapper = new ObjectMapper();
 
 		TypeReference<HashMap<MyPair, String>> typeRef = new TypeReference<HashMap<MyPair, String>>() {
 		};
@@ -59,7 +58,6 @@ public class JacksonMapDeserializeTest {
 			throws JsonParseException, JsonMappingException, IOException {
 
 		final String jsonInput = "{\"Abbott and Costello\" : \"Comedy and 1940s\"}";
-		final ObjectMapper mapper = new ObjectMapper();
 		TypeReference<HashMap<MyPair, MyPair>> typeRef = new TypeReference<HashMap<MyPair, MyPair>>() {
 		};
 
