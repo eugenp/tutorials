@@ -1,8 +1,9 @@
 package org.baeldung.lagom.helloworld.weather.impl;
 
+import org.baeldung.lagom.helloworld.weather.api.WeatherService;
+
 import com.google.inject.AbstractModule;
 import com.lightbend.lagom.javadsl.server.ServiceGuiceSupport;
-import org.baeldung.lagom.helloworld.weather.api.WeatherService;
 
 /**
  * The module that binds the GreetingService so that it can be served.
