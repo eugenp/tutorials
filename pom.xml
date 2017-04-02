@@ -206,6 +206,7 @@
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
+		<module>cucumber</module>
 
     </modules>
 
