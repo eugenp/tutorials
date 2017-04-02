@@ -25,4 +25,14 @@ public class LaptopSetterInject {
         return "LaptopSetterInject [[" + keyboard + "], [" + mouse + "]]";
     }
 
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public Mouse getMouse() {
+        return mouse;
+    }
+    
+    
+
 }

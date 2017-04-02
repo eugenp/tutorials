@@ -19,4 +19,12 @@ public class LaptopContructorInject {
         return "LaptopContructorInject [keyboard=[" + keyboard + "], mouse=[" + mouse + "]]";
     }
 
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public Mouse getMouse() {
+        return mouse;
+    }
+    
 }
