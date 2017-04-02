@@ -24,22 +24,27 @@ public class ApplicationTest {
 	public void givenDefaultUrl_getStaticText() {
 		assertEquals("Welcome to baeldung ratpack!!!", appUnderTest.getHttpClient().getText("/"));
 	}
-	
+
 	@Test
 	public void givenDynamicUrl_getDynamicText() {
 		assertEquals("Hello dummybot!!!", appUnderTest.getHttpClient().getText("/dummybot"));
 	}
-	
+
 	@Test
 	public void givenUrl_getListOfEmployee() throws JsonProcessingException {
 		List<Employee> employees = new ArrayList<Employee>();
 		ObjectMapper mapper = new ObjectMapper();
 		employees.add(new Employee(1L, "Mr", "John Doe"));
 		employees.add(new Employee(2L, "Mr", "White Snow"));
-		
+
 		assertEquals(mapper.writeValueAsString(employees), appUnderTest.getHttpClient().getText("/data/employees"));
 	}
-	
+
+	@Test
+	public void givenStaticUrl_getDynamicText() {
+		assertEquals(21, appUnderTest.getHttpClient().getText("/randomString").length());
+	}
+
 	@After
 	public void shutdown() {
 		appUnderTest.close();
