@@ -17,7 +17,7 @@ public class FlattenNestedListTest {
     List<List<String>> lol = asList(asList("one:one"), asList("two:one", "two:two", "two:three"), asList("three:one", "three:two", "three:three", "three:four"));
 
     @Test
-    public void givenString_flattenNestedList1() {
+    public void givenNestedList_thenFlattenNestedListImperative() {
         List<String> ls = flattenListOfListsImperatively(lol);
 
         assertNotNull(ls);
@@ -27,7 +27,7 @@ public class FlattenNestedListTest {
     }
 
     @Test
-    public void givenString_flattenNestedList2() {
+    public void givenNestedList_thenFlattenNestedListStream() {
         List<String> ls = flattenListOfListsStream(lol);
 
         assertNotNull(ls);
