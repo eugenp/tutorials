@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.test.context.ContextConfiguration;
@@ -22,8 +23,8 @@ import static org.junit.Assert.assertTrue;
 @ContextConfiguration(classes = SimpleEnumStateMachineConfiguration.class)
 public class StateEnumMachineTest {
 
-    @Resource
-    private StateMachine stateMachine;
+    @Autowired
+    private StateMachine<ApplicationReviewStates, ApplicationReviewEvents> stateMachine;
 
     @Before
     public void setUp() {
