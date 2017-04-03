@@ -1,34 +1,33 @@
 package com.baeldung.spring_data_tests;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
-import com.baeldung.spring_data_app.MainApp;
 import com.baeldung.spring_data.model.Book;
 import com.baeldung.spring_data.model.JavaBook;
 import com.baeldung.spring_data.repository.BookRepository;
 import com.baeldung.spring_data.repository.JavaBookRepository;
-
+import com.baeldung.spring_data_app.MainApp;
+import javaslang.collection.List;
+import javaslang.collection.Seq;
+import javaslang.control.Option;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javaslang.collection.Seq;
-import javaslang.collection.List;
-import javaslang.control.Option;
-
 import java.util.ArrayList;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApp.class,webEnvironment = WebEnvironment.NONE)
-public class SpringTests {
+public class SpringIntegrationTest {
     
     @Autowired
-    JavaBookRepository javaRepository;
+    private JavaBookRepository javaRepository;
     
     @Autowired
-    BookRepository repository;
+    private BookRepository repository;
     
     @Test
     public void should_return_seq(){
@@ -38,7 +37,8 @@ public class SpringTests {
         testBook.setAuthors(authors);
         Book book = repository.save(testBook);
         Option<Seq<Book>> books = repository.findByTitleContaining("Seq Test");
-        assert(!books.isEmpty());
+
+        assertThat(books).isNotEmpty();
     }
     
     
@@ -50,8 +50,9 @@ public class SpringTests {
         testBook.setAuthors(authors);
         Book book = repository.save(testBook);
         Option<Book> retBook = repository.findById(1L);
-        assert(retBook.isDefined() && !retBook.isEmpty());
-        assert(retBook.get() != null);
+
+        assertThat(retBook.isDefined()).isTrue();
+        assertThat(retBook).isNotEmpty();
     }
     
     @Test
@@ -64,9 +65,11 @@ public class SpringTests {
         testBook.setAuthors(authors);
         JavaBook book = javaRepository.save(testBook);
         java.util.List<JavaBook> books = javaRepository.findByTitleContaining("Seq");
-        assert(!books.isEmpty());
-        assert(books.size() == 1);
-        assert(books.get(0).getTitle().equals("Javaslang in Spring Data Seq Return"));
+        assertThat(books)
+          .isNotEmpty()
+          .hasSize(1)
+          .extracting("title")
+          .contains("Javaslang in Spring Data Seq Return");
     }
  
     @Test
@@ -79,8 +82,8 @@ public class SpringTests {
         testBook.setAuthors(authors);
         JavaBook book = javaRepository.save(testBook);
         JavaBook retBook = javaRepository.findById(1L);
-        assert(retBook != null);
-        assert(retBook.getId() == 1L);
-        assert(retBook.getTitle().contains("Data"));
+
+        assertThat(retBook.getId()).isEqualTo(1L);
+        assertThat(retBook.getTitle()).isEqualTo("Javaslang in Spring Data");
     }
 }
