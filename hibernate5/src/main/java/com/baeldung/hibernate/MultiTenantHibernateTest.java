@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.hibernate.pojo.Suppliers;
+import com.baeldung.hibernate.pojo.Supplier;
 
 
 public class MultiTenantHibernateTest  {
@@ -29,7 +29,7 @@ public class MultiTenantHibernateTest  {
             
             Transaction transaction = db1Session.getTransaction();
             transaction.begin();
-            Suppliers supplierFromDB1 = (Suppliers)db1Session.createCriteria(Suppliers.class).list().get(0);
+            Supplier supplierFromDB1 = (Supplier)db1Session.createCriteria(Supplier.class).list().get(0);
             transaction.commit();
             
             Session db2Session = sessionFactory
@@ -37,7 +37,7 @@ public class MultiTenantHibernateTest  {
             
             initDb2(db2Session);
             db2Session.getTransaction().begin();
-            Suppliers supplierFromDB2 = (Suppliers) db2Session.createCriteria(Suppliers.class).list().get(0);
+            Supplier supplierFromDB2 = (Supplier) db2Session.createCriteria(Supplier.class).list().get(0);
             db2Session.getTransaction().commit();
             
             System.out.println(supplierFromDB1);
