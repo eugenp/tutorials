@@ -36,19 +36,15 @@ public class AccountServlet extends javax.servlet.http.HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
         double accountBalance = 1000d;
-        double interestRate = Double.parseDouble(request.getAttribute("interest").toString());
-
         String paramDepositAmt = request.getParameter("dep");
         double depositAmt = Double.parseDouble(paramDepositAmt);
 
         accountBalance = accountBalance + depositAmt;
-
+        
         PrintWriter writer = response.getWriter();
-        writer.println("<html> Balance of " + accountType + " account is: " + 
-            accountBalance + "<br> This account bares an interest rate of " + interestRate + 
-            " % </html>");
+        writer.println("<html> Balance of " + accountType + " account is: " + accountBalance + "</html>");
         writer.flush();
-
     }
 }
