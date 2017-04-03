@@ -11,6 +11,8 @@ import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
+import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -138,6 +140,25 @@ public class WordCountTest {
         //when
         env.execute();
     }
+
+
+    @Test
+    public void givenStreamOfEvents_whenProcessEvents_thenShouldApplyWindowingOnTranformation() throws Exception {
+        //given
+        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        DataStream<String> text
+                = env.fromElements("This is a first sentence", "This is a second sentence with a one word");
+
+        SingleOutputStreamOperator<String> upperCase = text.windowAll(TumblingEventTimeWindows.of(Time.seconds(5));
+
+        upperCase.print();
+
+        //when
+        env.execute();
+    }
+
+
 
     private static class IdKeySelectorTransaction implements KeySelector<Tuple2<Integer, String>, Integer> {
         @Override
