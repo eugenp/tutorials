@@ -5,16 +5,17 @@ import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.operators.DataSource;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.junit.Test;
 
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -143,21 +144,29 @@ public class WordCountTest {
 
 
     @Test
-    public void givenStreamOfEvents_whenProcessEvents_thenShouldApplyWindowingOnTranformation() throws Exception {
+    public void givenStreamOfEvents_whenProcessEvents_thenShouldApplyWindowingOnTransformation() throws Exception {
         //given
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        DataStream<String> text
-                = env.fromElements("This is a first sentence", "This is a second sentence with a one word");
+        SingleOutputStreamOperator<Tuple2<Integer, Long>> windowed = env.fromElements(
+                new Tuple2<>(16, ZonedDateTime.now().plusMinutes(25).toInstant().getEpochSecond()),
+                new Tuple2<>(15, ZonedDateTime.now().plusMinutes(2).toInstant().getEpochSecond())
+        ).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Tuple2<Integer, Long>>(Time.seconds(20)) {
+            @Override
+            public long extractTimestamp(Tuple2<Integer, Long> element) {
+                return element.f1 * 1000;
+            }
+        });
 
-        SingleOutputStreamOperator<String> upperCase = text.windowAll(TumblingEventTimeWindows.of(Time.seconds(5));
+        SingleOutputStreamOperator<Tuple2<Integer, Long>> reduced = windowed
+                .windowAll(TumblingEventTimeWindows.of(Time.seconds(5)))
+                .maxBy(0, true);
 
-        upperCase.print();
+        reduced.print();
 
         //when
         env.execute();
     }
-
 
 
     private static class IdKeySelectorTransaction implements KeySelector<Tuple2<Integer, String>, Integer> {
