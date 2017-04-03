@@ -14,7 +14,8 @@ public class MyBeanNotOfRequiredTypeFailureAnalyzer
 
     private String getDescription(BeanNotOfRequiredTypeException ex) {
         return String.format("The bean %s could not be injected as %s because it is of type %s",
-          ex.getBeanName(), ex.getRequiredType().getName(),
+          ex.getBeanName(),
+          ex.getRequiredType().getName(),
           ex.getActualType().getName());
     }
 
