@@ -134,6 +134,15 @@ public class JPASpecificationLiveTest {
         assertTrue(result.contains(userJohn.getEmail()));
         assertTrue(result.contains(userTom.getEmail()));
     }
+    
+    @Test
+    public void givenFirstName_whenGettingAdvListOfUsers_thenCorrect() {
+        final Response response = givenAuth().get(ADV_URL_PREFIX + "firstName:tom");
+        final String result = response.body()
+            .asString();
+        assertFalse(result.contains(userJohn.getEmail()));
+        assertTrue(result.contains(userTom.getEmail()));
+    }
 
     @Test
     public void givenFirstOrFirstNameAndAge_whenGettingAdvListOfUsers_thenCorrect() {

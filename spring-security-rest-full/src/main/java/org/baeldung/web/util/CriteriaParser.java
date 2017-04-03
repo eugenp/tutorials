@@ -47,10 +47,13 @@ public class CriteriaParser {
 
         for (String token : searchParam.split("\\s+")) {
             if (ops.containsKey(token)) {
-                while (!stack.isEmpty() && isHigerPrecedenceOperator(token, stack.peek()))
+                while (!stack.isEmpty() && isHigerPrecedenceOperator(token, stack.peek())){
                     output.push(stack.pop()
-                        .equalsIgnoreCase(SearchOperation.OR_OPERATOR) ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
-                stack.push(token.equalsIgnoreCase(SearchOperation.OR_OPERATOR) ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
+                        .equalsIgnoreCase(SearchOperation.OR_OPERATOR) 
+                        ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
+                }
+                stack.push(token.equalsIgnoreCase(SearchOperation.OR_OPERATOR) 
+                    ? SearchOperation.OR_OPERATOR : SearchOperation.AND_OPERATOR);
             } else if (token.equals(SearchOperation.LEFT_PARANTHESIS)) {
                 stack.push(SearchOperation.LEFT_PARANTHESIS);
             } else if (token.equals(SearchOperation.RIGHT_PARANTHESIS)) {
@@ -62,7 +65,8 @@ public class CriteriaParser {
 
                 Matcher matcher = SpecCriteraRegex.matcher(token);
                 while (matcher.find()) {
-                    output.push(new SpecSearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5)));
+                    output.push(new SpecSearchCriteria(matcher.group(1), matcher.group(2), 
+                        matcher.group(3), matcher.group(4), matcher.group(5)));
                 }
             }
         }
