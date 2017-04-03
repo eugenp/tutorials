@@ -1,7 +1,6 @@
 package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import org.baeldung.persistence.model.User;
@@ -24,7 +23,7 @@ public final class UserSpecificationsBuilder {
         return with(null, key, operation, value, prefix, suffix);
     }
 
-    public final UserSpecificationsBuilder with(final String precedenceIndicator, final String key, final String operation, final Object value, final String prefix, final String suffix) {
+    public final UserSpecificationsBuilder with(final String orPredicate, final String key, final String operation, final Object value, final String prefix, final String suffix) {
         SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
         if (op != null) {
             if (op == SearchOperation.EQUALITY) { // the operation may be complex operation
@@ -39,7 +38,7 @@ public final class UserSpecificationsBuilder {
                     op = SearchOperation.STARTS_WITH;
                 }
             }
-            params.add(new SpecSearchCriteria(precedenceIndicator, key, op, value));
+            params.add(new SpecSearchCriteria(orPredicate, key, op, value));
         }
         return this;
     }
@@ -48,8 +47,6 @@ public final class UserSpecificationsBuilder {
 
         if (params.size() == 0)
             return null;
-
-        params.sort(Comparator.comparing(SpecSearchCriteria::isOrPredicate));
 
         Specification<User> result = new UserSpecification(params.get(0));
 
