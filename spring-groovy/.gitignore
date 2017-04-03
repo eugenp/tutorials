@@ -1,7 +1,5 @@
-/target/
-/project/
-.classpath
-.settings
+*/target/**
 .eclipse
-.idea
+.classpath
 .project
+.settings
