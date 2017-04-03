@@ -84,4 +84,5 @@
 - [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
+- [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
 
