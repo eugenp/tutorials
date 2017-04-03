@@ -79,7 +79,7 @@ public class WordCountTest {
         Tuple2<Integer, String> thirdPerson = new Tuple2<>(5, "Scott");
         Tuple2<Integer, String> fourthPerson = new Tuple2<>(200, "Michael");
         Tuple2<Integer, String> firstPerson = new Tuple2<>(1, "Jack");
-        DataSource<Tuple2<Integer, String>> transactions = env.fromElements(fourthPerson, secondPerson,
+        DataSet<Tuple2<Integer, String>> transactions = env.fromElements(fourthPerson, secondPerson,
                 thirdPerson, firstPerson);
 
 
