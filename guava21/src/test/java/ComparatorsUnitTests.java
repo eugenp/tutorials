@@ -2,7 +2,9 @@ import com.google.common.collect.Comparators;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
 import java.util.function.ToIntFunction;
@@ -11,9 +13,9 @@ import java.util.function.ToLongFunction;
 public class ComparatorsUnitTests {
 
     @Test
-    public void isInOrderTest(){
+    public void isInOrderTest() {
 
-        List<Integer> numbers = Arrays.asList(1,2,3,4,4,6,7,8,9,10);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 4, 6, 7, 8, 9, 10);
 
         boolean isInAscendingOrder = Comparators.isInOrder(numbers, new AscendingOrderComparator<Number>());
 
@@ -21,17 +23,16 @@ public class ComparatorsUnitTests {
     }
 
     @Test
-    public void isInStrictOrderTest(){
+    public void isInStrictOrderTest() {
 
-        List<Integer> numbers = Arrays.asList(1,2,3,4,3,6,7,8,9,10);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 3, 6, 7, 8, 9, 10);
 
         boolean isInAscendingOrder = Comparators.isInOrder(numbers, new AscendingOrderComparator<Number>());
 
         Assert.assertFalse(isInAscendingOrder);
     }
 
-
-    private class AscendingOrderComparator<I extends Number> implements Comparator<Integer>{
+    private class AscendingOrderComparator<I extends Number> implements Comparator<Integer> {
 
         @Override
         public int compare(Integer o1, Integer o2) {

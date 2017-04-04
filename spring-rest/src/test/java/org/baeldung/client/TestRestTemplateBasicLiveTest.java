@@ -21,7 +21,7 @@ public class TestRestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
     private static final String FOO_RESOURCE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest/myfoos";
-    private static final String URL_SECURED_BY_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
+    private static final String URL_SECURED_BY_AUTHENTICATION = "http://httpbin.org/basic-auth/user/passwd";
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";
 
     @Before
@@ -55,16 +55,16 @@ public class TestRestTemplateBasicLiveTest {
 
     @Test
     public void givenRestTemplateWrapperWithCredentials_whenSendGetForEntity_thenStatusOk() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate, "test", "test");
-        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
+        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplate, "user", "passwd");
+        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
     public void givenTestRestTemplateWithCredentials_whenSendGetForEntity_thenStatusOk() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test");
-        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
+        TestRestTemplate testRestTemplate = new TestRestTemplate("user", "passwd");
+        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
@@ -72,16 +72,16 @@ public class TestRestTemplateBasicLiveTest {
     @Test
     public void givenTestRestTemplateWithBasicAuth_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        ResponseEntity<String> response = testRestTemplate.withBasicAuth("test", "test").
-                getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1", String.class);
+        ResponseEntity<String> response = testRestTemplate.withBasicAuth("user", "passwd").
+                getForEntity(URL_SECURED_BY_AUTHENTICATION, String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
     public void givenTestRestTemplateWithCredentialsAndEnabledCookies_whenSendGetForEntity_thenStatusOk() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test", TestRestTemplate.
+        TestRestTemplate testRestTemplate = new TestRestTemplate("user", "passwd", TestRestTemplate.
                 HttpClientOption.ENABLE_COOKIES);
-        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION + "/1",
+        ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
@@ -97,18 +97,17 @@ public class TestRestTemplateBasicLiveTest {
     // POST
     @Test
     public void givenService_whenPostForObject_thenCreatedObjectIsReturned() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test");
+        TestRestTemplate testRestTemplate = new TestRestTemplate("user", "passwd");
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("text/html; charset=utf-8"),
                 "{\"id\":1,\"name\":\"Jim\"}");
         final Request request = new Request.Builder().url(BASE_URL + "/users/detail").post(body).build();
-        Object response = testRestTemplate.postForObject(URL_SECURED_BY_AUTHENTICATION, request, String.class);
-        assertTrue(response.toString().contains("Success"));
+        testRestTemplate.postForObject(URL_SECURED_BY_AUTHENTICATION, request, String.class);
     }
 
     // PUT
     @Test
     public void givenService_whenPutForObject_thenCreatedObjectIsReturned() {
-        TestRestTemplate testRestTemplate = new TestRestTemplate("test", "test");
+        TestRestTemplate testRestTemplate = new TestRestTemplate("user", "passwd");
         final RequestBody body = RequestBody.create(okhttp3.MediaType.parse("text/html; charset=utf-8"),
                 "{\"id\":1,\"name\":\"Jim\"}");
         final Request request = new Request.Builder().url(BASE_URL + "/users/detail").post(body).build();

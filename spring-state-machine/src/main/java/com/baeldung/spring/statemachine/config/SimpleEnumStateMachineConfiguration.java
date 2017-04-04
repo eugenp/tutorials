@@ -1,19 +1,13 @@
-package com.baeldung.spring.stateMachine.config;
+package com.baeldung.spring.statemachine.config;
 
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewEvents;
-import com.baeldung.spring.stateMachine.applicationReview.ApplicationReviewStates;
-import org.springframework.context.annotation.Bean;
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewEvents;
+import com.baeldung.spring.statemachine.applicationreview.ApplicationReviewStates;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.EnableStateMachine;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
-import org.springframework.statemachine.guard.Guard;
-
-import java.util.Arrays;
-import java.util.HashSet;
 
 @Configuration
 @EnableStateMachine
