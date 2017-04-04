@@ -17,6 +17,8 @@
     </beans:bean>
 
     <http use-expressions="true" create-session="stateless" entry-point-ref="digestEntryPoint">
+        <!--  copied from spring-security-mvc-digest-auth -->
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
         <custom-filter ref="digestFilter" after="BASIC_AUTH_FILTER"/>
     </http>
 

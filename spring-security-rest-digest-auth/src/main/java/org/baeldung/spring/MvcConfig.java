@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-//copied to - spring-security-rest-digest-auth
+//copied from - spring-security-mvc-digest-auth
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {

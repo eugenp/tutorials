@@ -16,6 +16,7 @@
 
     <!-- the security namespace configuration -->
     <http use-expressions="true" entry-point-ref="digestEntryPoint">
+        <!--  copied to spring-security-rest-digest-auth -->
         <intercept-url pattern="/**" access="isAuthenticated()"/>
 
         <custom-filter ref="digestFilter" position="BASIC_AUTH_FILTER"/>
