@@ -13,9 +13,10 @@ public class Application {
 //		StringTokenizer tokenizer = new StringTokenizer( str , "," , true );
 		while (tokenizer.hasMoreElements()) {
 			tokens.add( tokenizer.nextToken() );
-//			tokens.add( tokenizer.nextToken( "," ) );
+//			tokens.add( tokenizer.nextToken("e") );
 		}
+		int tokenLength = tokens.size();
 		return tokens;
 	}
-
+	
 }
