@@ -46,9 +46,9 @@ public class MultipleEntryPointsTest {
 
     @Test
     public void whenTestUserCredentials_thenOk() throws Exception {
-        mockMvc.perform(get("/user/myUserPage")).andExpect(status().isFound());
+        mockMvc.perform(get("/user/general/myUserPage")).andExpect(status().isFound());
 
-        mockMvc.perform(get("/user/myUserPage").with(user("user").password("userPass").roles("USER"))).andExpect(status().isOk());
+        mockMvc.perform(get("/user/general/myUserPage").with(user("user").password("userPass").roles("USER"))).andExpect(status().isOk());
 
         mockMvc.perform(get("/admin/myAdminPage").with(user("user").password("userPass").roles("USER"))).andExpect(status().isForbidden());
     }

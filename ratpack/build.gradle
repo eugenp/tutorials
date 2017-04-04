@@ -4,6 +4,7 @@ buildscript {
   }
   dependencies {
     classpath "io.ratpack:ratpack-gradle:1.4.5"
+    classpath "com.h2database:h2:1.4.193"
   }
 }
 
@@ -19,6 +20,8 @@ repositories {
 }
 
 dependencies {
+  compile ratpack.dependency('hikari')
+  compile 'com.h2database:h2:1.4.193'
   testCompile 'junit:junit:4.11'
   runtime "org.slf4j:slf4j-simple:1.7.21"
 }

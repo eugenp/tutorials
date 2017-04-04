@@ -79,3 +79,10 @@
 - [The Java HashMap Under the Hood](http://www.baeldung.com/java-hashmap)
 - [A Guide to LinkedHashMap in Java](http://www.baeldung.com/java-linked-hashmap)
 - [A Guide to TreeMap in Java](http://www.baeldung.com/java-treemap)
+- [A Quick JUnit vs TestNG Comparison](http://www.baeldung.com/junit-vs-testng)
+- [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
+- [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
+- [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
+- [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
+- [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
+
