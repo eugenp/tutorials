@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="dateTimeFormatter" class="java.time.format.DateTimeFormatter" factory-method="ofPattern">
+    <constructor-arg value="MMMM d, yyyy" />
+  </bean>
+
+  <bean id="dateFieldWithConstructorInjection" class="com.baeldung.blog.DateFieldWithConstructorInjection">
+    <constructor-arg ref="dateTimeFormatter" />
+  </bean>
+
+  <bean id="dateFieldWithSetterInjection" class="com.baeldung.blog.DateFieldWithSetterInjection">
+    <property name="formatter" ref="dateTimeFormatter" />
+  </bean>
+
+</beans>
