@@ -43,11 +43,9 @@ public class BaeldungBatchSubscriberImpl<T> implements Subscriber<String> {
         // if buffer is full, process the items.
         if (buffer.size() >= BUFFER_SIZE) {
             processBuffer();
-            subscription.request(BUFFER_SIZE);
-        } else if(buffer.size() == 0) {
-            // If buffer empty, request more items.
-            subscription.request(BUFFER_SIZE);
         }
+        //request more items.
+        subscription.request(1);
     }
 
     private void processBuffer() {
