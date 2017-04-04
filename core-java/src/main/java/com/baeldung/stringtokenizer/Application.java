@@ -8,15 +8,15 @@ public class Application {
 
 	public List<String> getTokens(String str) {
 		List<String> tokens = new ArrayList<String>();
-//		StringTokenizer tokenizer = new StringTokenizer( str );
+//  StringTokenizer tokenizer = new StringTokenizer( str );
 		StringTokenizer tokenizer = new StringTokenizer( str , "," );
-//		StringTokenizer tokenizer = new StringTokenizer( str , "," , true );
+//	StringTokenizer tokenizer = new StringTokenizer( str , "," , true );
 		while (tokenizer.hasMoreElements()) {
 			tokens.add( tokenizer.nextToken() );
-//			tokens.add( tokenizer.nextToken("e") );
+//		tokens.add( tokenizer.nextToken("e") );
 		}
 		int tokenLength = tokens.size();
 		return tokens;
 	}
-	
+  
 }
