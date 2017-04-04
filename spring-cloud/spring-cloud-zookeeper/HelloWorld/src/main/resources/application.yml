@@ -1,8 +1,9 @@
 spring:
   application:
-    name: Validation
+    name: HelloWorld
   cloud:
     zookeeper:
+      connect-string: localhost:2181
       discovery:
         enabled: true
 server:

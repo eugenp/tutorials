@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.employee;
+package com.baeldung.spring.cloud.greeting;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -23,27 +23,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Configuration
 @EnableFeignClients
 @EnableDiscoveryClient
-public class ValidationClient {
+public class HelloWorldClient {
 
 	@Autowired
 	private TheClient theClient;
 
-	@FeignClient(name = "Validation")
+	@FeignClient(name = "HelloWorld")
 	interface TheClient {
 
-		@RequestMapping(path = "/validation/isvalid", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
+		@RequestMapping(path = "/helloworld", method = RequestMethod.GET)
 		@ResponseBody
-		Boolean isValid(@RequestBody String email);
+		String HelloWorld();
 	}
 
 	/**
 	 * Initiate call to Validation.
 	 *
-	 * @param email
+	 * @param name
 	 * @return the response
 	 */
-	public Boolean isValid(String email) {
-		return theClient.isValid(email);
+	public String HelloWorld() {
+		return theClient.HelloWorld();
 	}
 
 }

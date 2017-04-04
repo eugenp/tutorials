@@ -9,7 +9,7 @@
     <artifactId>spring-cloud-zookeeper</artifactId>
     <packaging>pom</packaging>
   <modules>
-    <module>Employee</module>
-    <module>Validation</module>
+    <module>Greeting</module>
+    <module>HelloWorld</module>
   </modules>
 </project>

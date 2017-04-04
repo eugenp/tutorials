@@ -7,7 +7,7 @@
 		<artifactId>spring-cloud-zookeeper</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>Employee</artifactId>
+	<artifactId>HelloWorld</artifactId>
 	<packaging>jar</packaging>
 	<dependencies>
 		<dependency>
@@ -24,16 +24,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
 			<version>1.0.3.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>1.5.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-feign</artifactId>
-			<version>1.2.5.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -57,4 +47,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<name>HelloWorld</name>
 </project>

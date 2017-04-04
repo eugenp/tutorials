@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.baeldung.spring.cloud.validation;
+package com.baeldung.spring.cloud.helloworld;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ValidationController {
+public class HelloWorldController {
 
-	@RequestMapping(path = "/validation/isvalid", method = RequestMethod.POST, consumes = MediaType.TEXT_PLAIN_VALUE)
-	public Boolean isValid(@RequestBody(required = false) String email) {
-		return email.contains("@");
+	@RequestMapping(path = "/helloworld", method = RequestMethod.GET)
+	public String HelloWorld() {
+		return "Hello World!";
 	}
 
 }
