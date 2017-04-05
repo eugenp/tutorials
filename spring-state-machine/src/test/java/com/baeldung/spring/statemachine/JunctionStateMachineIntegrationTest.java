@@ -1,8 +1,9 @@
 package com.baeldung.spring.statemachine;
 
-import com.baeldung.spring.statemachine.config.HierarchicalStateMachineConfiguration;
 import com.baeldung.spring.statemachine.config.JunctionStateMachineConfiguration;
+import com.baeldung.spring.statemachine.config.SimpleEnumStateMachineConfiguration;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,13 +14,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = HierarchicalStateMachineConfiguration.class)
-public class HierarchicalStateMachineTest {
+@ContextConfiguration(classes = JunctionStateMachineConfiguration.class)
+public class JunctionStateMachineIntegrationTest {
 
     @Autowired
     private StateMachine<String, String> stateMachine;
@@ -30,22 +28,13 @@ public class HierarchicalStateMachineTest {
     }
 
     @Test
-    public void whenTransitionToSubMachine_thenSubStateIsEntered() {
+    public void whenTransitioningToJunction_thenArriveAtSubJunctionNode() {
 
-        assertEquals(Arrays.asList("SI", "SUB1"), stateMachine.getState().getIds());
-
-        stateMachine.sendEvent("se1");
-
-        assertEquals(Arrays.asList("SI", "SUB2"), stateMachine.getState().getIds());
-
-        stateMachine.sendEvent("s-end");
-
-        assertEquals(Arrays.asList("SI", "SUBEND"), stateMachine.getState().getIds());
+        stateMachine.sendEvent("E1");
+        Assert.assertEquals("low", stateMachine.getState().getId());
 
         stateMachine.sendEvent("end");
-
-        assertEquals(1, stateMachine.getState().getIds().size());
-        assertEquals("SF", stateMachine.getState().getId());
+        Assert.assertEquals("SF", stateMachine.getState().getId());
     }
 
     @After

@@ -15,7 +15,7 @@ import com.baeldung.spring.web.config.WebConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = WebConfig.class)
-public class EmployeeTestWithoutMockMvc {
+public class EmployeeIntegrationTest {
 
     @Autowired
     private EmployeeController employeeController;
