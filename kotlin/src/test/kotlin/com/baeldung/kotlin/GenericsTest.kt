@@ -1,6 +1,7 @@
 package com.baeldung.kotlin
 
 import org.junit.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class GenericsTest {
@@ -51,6 +52,72 @@ class GenericsTest {
 
         //then
         assertTrue(ref is ParametrizedConsumer<Double>)
+    }
+
+    @Test
+    fun givenTypeProjections_whenOperateOnTwoList_thenCanAcceptListOfSubtypes() {
+        //given
+        val ints: Array<Int> = arrayOf(1, 2, 3)
+        val any: Array<Any?> = arrayOfNulls(3)
+
+        //when
+        copy(ints, any)
+
+        //then
+        assertEquals(any[0], 1)
+        assertEquals(any[1], 2)
+        assertEquals(any[2], 3)
+
+    }
+
+    fun copy(from: Array<out Any>, to: Array<Any?>) {
+        assert(from.size == to.size)
+        for (i in from.indices)
+            to[i] = from[i]
+    }
+
+    @Test
+    fun givenTypeProjection_whenHaveArrayOfIn_thenShouldAddElementsOfSubtypesToIt() {
+        //given
+        val objects: Array<Any?> = arrayOfNulls(1)
+
+        //when
+        fill(objects, 1)
+
+        //then
+        assertEquals(objects[0], 1)
+    }
+
+    fun fill(dest: Array<in Int>, value: Int) {
+        dest[0] = value
+    }
+
+    @Test
+    fun givenStartProjection_whenPassAnyType_thenCompile() {
+        //given
+        val array = arrayOf(1,2,3)
+
+        //then
+        printArray(array)
+
+    }
+
+    fun printArray(array: Array<*>) {
+        array.forEach { println(it) }
+    }
+
+    @Test
+    fun givenFunctionWithDefinedGenericConstraints_whenCallWithProperType_thenCompile(){
+        //given
+        val arrayOfInts = listOf(1,2,3,4,5)
+
+        //then
+        sort(arrayOfInts)
+
+    }
+
+    fun <T: Comparable<T>> sort(list: List<T>){
+        //
     }
 
     class ParametrizedClass<A>(private val value: A) {
