@@ -1,4 +1,4 @@
-<!--copied to spring-mvc-java  as web_init.xml -->
+<!--copied from spring-mvc-web-vs-initializer  as web_init.xml -->
 <web-app
         xmlns="http://java.sun.com/xml/ns/javaee"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
