@@ -35,7 +35,7 @@
         <module>deltaspike</module>
         <module>dozer</module>
 
-        <module>ejb</module>
+        <!--<module>ejb</module>-->
 
         <module>feign</module>
         <module>flyway</module>
@@ -66,7 +66,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <module>jee7</module>
+        <!--<module>jee7</module>-->
         <!-- <module>jhipster</module> -->
         <module>jjwt</module>
         <module>jooq</module>

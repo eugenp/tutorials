@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SimpleEnumStateMachineConfiguration.class)
-public class StateEnumMachineTest {
+public class StateEnumMachineIntegrationTest {
 
     @Autowired
     private StateMachine<ApplicationReviewStates, ApplicationReviewEvents> stateMachine;

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 @JsonTest
 @RunWith(SpringRunner.class)
-public class UserJsonSerializerTest {
+public class UserJsonSerializerIntegrationTest {
 
     @Autowired
     private ObjectMapper objectMapper;
