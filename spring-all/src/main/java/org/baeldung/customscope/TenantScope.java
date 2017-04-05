@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
-public class CustomScope implements Scope {
+public class TenantScope implements Scope {
     
     private Map<String, Object> scopedObjects = Collections.synchronizedMap(new HashMap<String, Object>());
     private Map<String, Runnable> destructionCallbacks = Collections.synchronizedMap(new HashMap<String, Runnable>());
@@ -38,6 +38,6 @@ public class CustomScope implements Scope {
 
     @Override
     public String getConversationId() {
-        return "customConversation";
+        return "tenant";
     }
 }
