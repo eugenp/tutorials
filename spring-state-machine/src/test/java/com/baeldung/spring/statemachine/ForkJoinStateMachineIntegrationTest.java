@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ForkJoinStateMachineConfiguration.class)
-public class ForkJoinStateMachineTest {
+public class ForkJoinStateMachineIntegrationTest {
 
     @Autowired
     private StateMachine<String, String> stateMachine;

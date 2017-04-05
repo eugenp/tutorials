@@ -21,7 +21,7 @@ import com.baeldung.spring.web.config.WebConfig;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = WebConfig.class)
-public class RequestMapingShortcutsUnitTest {
+public class RequestMapingShortcutsIntegrationTest {
 	
 	@Autowired
     private WebApplicationContext ctx;

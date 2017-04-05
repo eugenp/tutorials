@@ -1,7 +1,5 @@
 package org.baeldung.web;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.baeldung.spring.ClientWebConfig;
 import org.baeldung.spring.SecurityJavaConfig;
 import org.baeldung.spring.WebConfig;
@@ -20,10 +18,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = { ClientWebConfig.class, SecurityJavaConfig.class, WebConfig.class })
-public class AsyncControllerTest {
+public class AsyncControllerIntegrationTest {
 
     @Autowired
     WebApplicationContext wac;

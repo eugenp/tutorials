@@ -18,13 +18,13 @@ import static junit.framework.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=GemfireConfiguration.class, loader=AnnotationConfigContextLoader.class)
-public class EmployeeRepositoryTest {
+public class EmployeeRepositoryIntegrationTest {
 
-    @Autowired
+    @Autowired private
     EmployeeRepository employeeRepository;
 
     @Autowired
-    FunctionExecution execution;
+    private FunctionExecution execution;
 
     @Test
     public void whenEmployeeIsSaved_ThenAbleToRead(){
