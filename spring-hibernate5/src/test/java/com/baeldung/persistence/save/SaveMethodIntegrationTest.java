@@ -4,19 +4,22 @@ import com.baeldung.persistence.model.Person;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.TransactionException;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.HSQLDialect;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.*;
 
+import javax.persistence.PersistenceException;
+
 import static org.junit.Assert.*;
 
 /**
- * Testing specific implementation details for different methods:
- * persist, save, merge, update, saveOrUpdate.
+ * Testing specific implementation details for different methods: persist, save,
+ * merge, update, saveOrUpdate.
  */
-public class SaveMethodsTest {
+public class SaveMethodIntegrationTest {
 
     private static SessionFactory sessionFactory;
 
@@ -68,7 +71,7 @@ public class SaveMethodsTest {
         assertEquals(id1, id2);
     }
 
-    @Test(expected = HibernateException.class)
+    @Test(expected = PersistenceException.class)
     public void whenPersistDetached_thenThrowsException() {
 
         Person person = new Person();
@@ -134,6 +137,7 @@ public class SaveMethodsTest {
         Person person = new Person();
         person.setName("John");
         session.save(person);
+        session.flush();
         session.evict(person);
 
         person.setName("Mary");
@@ -250,8 +254,12 @@ public class SaveMethodsTest {
 
     @After
     public void tearDown() {
-        session.getTransaction().commit();
-        session.close();
+        try {
+            session.getTransaction().commit();
+            session.close();
+        } catch (TransactionException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @AfterClass
