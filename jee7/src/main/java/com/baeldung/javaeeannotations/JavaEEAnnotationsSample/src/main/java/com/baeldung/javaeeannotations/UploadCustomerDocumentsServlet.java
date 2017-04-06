@@ -1,6 +1,7 @@
 package com.baeldung.javaeeannotations;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -24,6 +25,10 @@ public class UploadCustomerDocumentsServlet extends HttpServlet {
         for (Part part : request.getParts()) {
             part.write("myFile");
         }
+      
+        PrintWriter writer = response.getWriter();
+        writer.println("<html>File uploaded successfully!</html>");
+        writer.flush();
     }
 
 }

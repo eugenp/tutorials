@@ -15,4 +15,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
 - [Guide to Internationalization in Spring Boot](http://www.baeldung.com/spring-boot-internationalization)
+- [Create a Custom FailureAnalyzer with Spring Boot](http://www.baeldung.com/spring-boot-failure-analyzer)
 

@@ -1,12 +1,9 @@
 package com.baeldung;
 
-
-import junit.framework.Assert;
 import org.jooq.lambda.Seq;
 import org.jooq.lambda.Unchecked;
 import org.jooq.lambda.function.Function1;
 import org.jooq.lambda.function.Function2;
-import org.jooq.lambda.tuple.Tuple;
 import org.jooq.lambda.tuple.Tuple2;
 import org.jooq.lambda.tuple.Tuple3;
 import org.jooq.lambda.tuple.Tuple4;
