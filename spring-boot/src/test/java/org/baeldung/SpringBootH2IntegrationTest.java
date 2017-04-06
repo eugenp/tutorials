@@ -1,6 +1,6 @@
 package org.baeldung;
 
-import org.baeldung.config.HsqldbJpaConfig;
+import org.baeldung.config.H2JpaConfig;
 import org.baeldung.domain.GenericEntity;
 import org.baeldung.repository.GenericEntityRepository;
 import org.junit.Test;
@@ -13,16 +13,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { Application.class, HsqldbJpaConfig.class })
-public class SpringBootHsqldbIntegrationTest {
+@SpringBootTest(classes = { Application.class, H2JpaConfig.class })
+public class SpringBootH2IntegrationTest {
     @Autowired
     private GenericEntityRepository genericEntityRepository;
 
     @Test
     public void givenGenericEntityRepository_whenSaveAndRetreiveEntity_thenOK() {
         GenericEntity genericEntity = genericEntityRepository.save(new GenericEntity("test"));
-        GenericEntity foundedEntity = genericEntityRepository.findOne(genericEntity.getId());
-        assertNotNull(foundedEntity);
-        assertEquals(genericEntity.getValue(), foundedEntity.getValue());
+        GenericEntity foundEntity = genericEntityRepository.findOne(genericEntity.getId());
+        assertNotNull(foundEntity);
+        assertEquals(genericEntity.getValue(), foundEntity.getValue());
     }
 }

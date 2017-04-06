@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = { "org.baeldung.repository", "org.baeldung.boot.repository" })
 @PropertySource("classpath:persistence-generic-entity.properties")
 @EnableTransactionManagement
-public class HsqldbJpaConfig {
+public class H2JpaConfig {
 
     @Autowired
     private Environment env;
