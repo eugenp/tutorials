@@ -215,6 +215,7 @@
         <module>rabbitmq</module>
         <module>vertx</module>
         <module>spring-data-gemfire</module>
+        <module>cucumber</module>
     </modules>
 
     <build>
