@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -21,7 +22,14 @@ public class Application {
 		int tokenLength = tokens.size();
 		return tokens;
 	}
-
+	
+	public List<String> getTokensWithCollection( String str ) {
+		StringTokenizer tokenizer = new StringTokenizer(str, ",");
+		List<String> tokens = new ArrayList<String>();
+		Collections.list(tokenizer).forEach(token -> tokens.add((String) token));
+		return tokens;
+	}
+	
 	public List<String> getTokensFromFile(String path, String delim) {
 		List<String> tokens = new ArrayList<String>();
 		String currLine = "";
