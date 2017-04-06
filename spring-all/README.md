@@ -19,3 +19,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction To Ehcache](http://www.baeldung.com/ehcache)
 - [A Guide to the Spring Task Scheduler](http://www.baeldung.com/spring-task-scheduler)
 - [Guide to Spring Retry](http://www.baeldung.com/spring-retry)
+- [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)

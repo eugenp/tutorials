@@ -34,7 +34,6 @@ public class UserCombinedSerializer {
         }
     }
 
-    @JsonComponent
     public static class UserJsonDeserializer extends JsonDeserializer<User> {
         @Override
         public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
