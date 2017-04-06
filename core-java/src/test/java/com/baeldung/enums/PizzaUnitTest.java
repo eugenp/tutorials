@@ -1,14 +1,13 @@
 package com.baeldung.enums;
 
-import static junit.framework.TestCase.assertTrue;
+import com.baeldung.enums.Pizza.PizzaStatusEnum;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-import org.junit.Test;
-
-import com.baeldung.enums.Pizza.PizzaStatusEnum;
+import static junit.framework.TestCase.assertTrue;
 
 public class PizzaUnitTest {
 
@@ -71,7 +70,7 @@ public class PizzaUnitTest {
     }
 
     @Test
-    public void givenPizaOrder_whenDelivered_thenPizzaGetsDeliveredAndStatusChanges() {
+    public void whenDelivered_thenPizzaGetsDeliveredAndStatusChanges() {
         Pizza pz = new Pizza();
         pz.setStatus(Pizza.PizzaStatusEnum.READY);
         pz.deliver();
@@ -79,14 +78,14 @@ public class PizzaUnitTest {
     }
     
     @Test
-    public void givenValidEnumValueAsString_whenConvertedIntoEnum_thenGetsConvertedCorrectly() {
+    public void whenConvertedIntoEnum_thenGetsConvertedCorrectly() {
         String pizzaEnumValue = "READY";
         PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
         assertTrue(pizzaStatusEnum == PizzaStatusEnum.READY);
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void givenInvalidEnumValueCaseWiseAsString_whenConvertedIntoEnum_thenThrowsException() {
+    public void whenConvertedIntoEnum_thenThrowsException() {
         String pizzaEnumValue = "rEAdY";
         PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
     }

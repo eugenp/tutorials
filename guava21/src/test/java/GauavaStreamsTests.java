@@ -14,13 +14,12 @@ public class GauavaStreamsTests {
     List<Integer> numbers;
 
     @Before
-    public void setUp(){
-        numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,11,12,13,14,15,16,17,18,19,20);
+    public void setUp() {
+        numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
     }
 
-
     @Test
-    public void createStreamsWithCollection(){
+    public void createStreamsWithCollection() {
         //Deprecated API to create stream from collection
         Stream streamFromCollection = Streams.stream(numbers);
 
@@ -29,7 +28,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithIterable(){
+    public void createStreamsWithIterable() {
         Iterable<Integer> numbersIterable = (Iterable<Integer>) numbers;
 
         Stream streamFromIterable = Streams.stream(numbersIterable);
@@ -39,7 +38,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithIterator(){
+    public void createStreamsWithIterator() {
         Iterator<Integer> numbersIterator = numbers.iterator();
 
         Stream streamFromIterator = Streams.stream(numbersIterator);
@@ -49,7 +48,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithOptional(){
+    public void createStreamsWithOptional() {
 
         Stream streamFromOptional = Streams.stream(Optional.of(1));
 
@@ -58,7 +57,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithOptionalLong(){
+    public void createStreamsWithOptionalLong() {
 
         LongStream streamFromOptionalLong = Streams.stream(OptionalLong.of(1));
 
@@ -67,7 +66,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithOptionalInt(){
+    public void createStreamsWithOptionalInt() {
 
         IntStream streamFromOptionalInt = Streams.stream(OptionalInt.of(1));
 
@@ -76,7 +75,7 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void createStreamsWithOptionalDouble(){
+    public void createStreamsWithOptionalDouble() {
 
         DoubleStream streamFromOptionalDouble = Streams.stream(OptionalDouble.of(1.0));
 
@@ -86,41 +85,44 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void concatStreamsOfSameType(){
-        Stream oddNumbers = Arrays.asList(1,3,5,7,9,11,13,15,17,19).stream();
-        Stream evenNumbers = Arrays.asList(2,4,6,8,10,12,14,16,18,20).stream();
+    public void concatStreamsOfSameType() {
+        Stream oddNumbers = Arrays
+          .asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19)
+          .stream();
+        Stream evenNumbers = Arrays
+          .asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+          .stream();
 
-        Stream combinedStreams = Streams.concat(oddNumbers,evenNumbers);
+        Stream combinedStreams = Streams.concat(oddNumbers, evenNumbers);
 
         //Assert.assertNotNull(combinedStreams);
         StreamUtility.assertStreamEquals(combinedStreams, Stream.concat(oddNumbers, evenNumbers));
     }
 
     @Test
-    public void concatStreamsOfTypeLongStream(){
-        LongStream firstTwenty = LongStream.range(1,20);
-        LongStream nextTwenty = LongStream.range(21,40);
+    public void concatStreamsOfTypeLongStream() {
+        LongStream firstTwenty = LongStream.range(1, 20);
+        LongStream nextTwenty = LongStream.range(21, 40);
 
-        LongStream combinedStreams = Streams.concat(firstTwenty,nextTwenty);
+        LongStream combinedStreams = Streams.concat(firstTwenty, nextTwenty);
 
         Assert.assertNotNull(combinedStreams);
         StreamUtility.assertStreamEquals(combinedStreams, LongStream.concat(firstTwenty, nextTwenty));
     }
 
     @Test
-    public void concatStreamsOfTypeIntStream(){
-        IntStream firstTwenty = IntStream.range(1,20);
-        IntStream nextTwenty = IntStream.range(21,40);
+    public void concatStreamsOfTypeIntStream() {
+        IntStream firstTwenty = IntStream.range(1, 20);
+        IntStream nextTwenty = IntStream.range(21, 40);
 
-        IntStream combinedStreams = Streams.concat(firstTwenty,nextTwenty);
+        IntStream combinedStreams = Streams.concat(firstTwenty, nextTwenty);
 
         Assert.assertNotNull(combinedStreams);
         StreamUtility.assertStreamEquals(combinedStreams, IntStream.concat(firstTwenty, nextTwenty));
     }
 
-
     @Test
-    public void findLastOfStream(){
+    public void findLastOfStream() {
         Optional<Integer> lastElement = Streams.findLast(numbers.stream());
 
         Assert.assertNotNull(lastElement.get());
@@ -128,28 +130,29 @@ public class GauavaStreamsTests {
     }
 
     @Test
-    public void mapWithIndexTest(){
-        Stream stringSream = Stream.of("a","b","c");
+    public void mapWithIndexTest() {
+        Stream stringSream = Stream.of("a", "b", "c");
 
-        Stream<String> mappedStream = Streams.mapWithIndex(stringSream,(str,index) -> str +":"+ index);
+        Stream<String> mappedStream = Streams.mapWithIndex(stringSream, (str, index) -> str + ":" + index);
 
         //Assert.assertNotNull(mappedStream);
-        Assert.assertEquals(mappedStream.findFirst().get(), "a:0");
+        Assert.assertEquals(mappedStream
+          .findFirst()
+          .get(), "a:0");
 
     }
 
     @Test
-    public void streamsZipTest(){
-        Stream stringSream = Stream.of("a","b","c");
-        Stream intStream = Stream.of(1,2,3);
-        Stream<String> mappedStream = Streams.zip(stringSream,intStream, (str,index) -> str +":"+ index);
+    public void streamsZipTest() {
+        Stream stringSream = Stream.of("a", "b", "c");
+        Stream intStream = Stream.of(1, 2, 3);
+        Stream<String> mappedStream = Streams.zip(stringSream, intStream, (str, index) -> str + ":" + index);
 
         //Assert.assertNotNull(mappedStream);
-        Assert.assertEquals(mappedStream.findFirst().get(), "a:1");
+        Assert.assertEquals(mappedStream
+          .findFirst()
+          .get(), "a:1");
 
     }
-
-
-
 
 }

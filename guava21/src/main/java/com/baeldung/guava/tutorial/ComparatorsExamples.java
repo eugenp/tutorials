@@ -8,12 +8,10 @@ import java.util.List;
 
 public class ComparatorsExamples {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        List<Integer> integers = Arrays.asList(1,2,3,4,4,6,7,8,9,10);
-        //This will return true
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4, 4, 6, 7, 8, 9, 10);
         boolean isInAscendingOrder = Comparators.isInOrder(integers, new AscedingOrderComparator());
-
         System.out.println(isInAscendingOrder);
 
     }
