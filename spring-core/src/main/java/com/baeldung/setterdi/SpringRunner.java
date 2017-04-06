@@ -1,10 +1,11 @@
-package com.baeldung.constructordi;
+package com.baeldung.setterdi;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.constructordi.domain.Car;
+import com.baeldung.setterdi.Config;
+import com.baeldung.setterdi.domain.Car;
 
 public class SpringRunner {
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ public class SpringRunner {
         toyota = getCarFromJavaConfig();
 
         System.out.println(toyota);
+
     }
 
     private static Car getCarFromJavaConfig() {
@@ -24,7 +26,7 @@ public class SpringRunner {
     }
 
     private static Car getCarFromXml() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("constructordi.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("setterdi.xml");
 
         return context.getBean(Car.class);
     }
