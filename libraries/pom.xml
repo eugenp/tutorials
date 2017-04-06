@@ -107,7 +107,11 @@
             <artifactId>flink-test-utils_2.10</artifactId>
             <version>${flink.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.directory.jdbm</groupId>
+            <artifactId>apacheds-jdbm1</artifactId>
+            <version>${apache.jdbm.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -125,6 +129,7 @@
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
         <flink.version>1.2.0</flink.version>
+        <apache.jdbm.version>2.0.0-M2</apache.jdbm.version>
     </properties>
 
 </project>
