@@ -152,23 +152,36 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void testIntMathAdditionalFunctions() {
-        int result1 = IntMath.gcd(15, 20);
-        assertThat(result1, equalTo(5));
+    public void should_calculate_gcd() {
+        int result = IntMath.gcd(15, 20);
+        assertThat(result, equalTo(5));
+    }
 
-        int result2 = IntMath.mod(8, 3);
-        assertThat(result2, equalTo(2));
+    @Test
+    public void should_calculate_mod() {
+        int result = IntMath.mod(8, 3);
+        assertThat(result, equalTo(2));
+    }
 
-        boolean result3 = IntMath.isPowerOfTwo(8);
-        assertTrue(result3);
-        boolean result4 = IntMath.isPowerOfTwo(9);
-        assertFalse(result4);
+    @Test
+    public void should_test_if_is_power_of_two() {
+        boolean result1 = IntMath.isPowerOfTwo(8);
+        assertTrue(result1);
 
-        int result5 = IntMath.factorial(4);
-        assertThat(result5, equalTo(24));
+        boolean result2 = IntMath.isPowerOfTwo(9);
+        assertFalse(result2);
+    }
 
-        int result6 = IntMath.binomial(7, 3);
-        assertThat(result6, equalTo(35));
+    @Test
+    public void should_calculate_factorial() {
+        int result = IntMath.factorial(4);
+        assertThat(result, equalTo(24));
+    }
+
+    @Test
+    public void should_calculate_binomial() {
+        int result = IntMath.binomial(7, 3);
+        assertThat(result, equalTo(35));
     }
 
     @Test
