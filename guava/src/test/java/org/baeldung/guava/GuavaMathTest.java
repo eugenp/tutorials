@@ -15,112 +15,120 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class GuavaMathTest {
-    @Test
-    public void testIntMathAdd() {
-        try {
-            IntMath.checkedAdd(Integer.MAX_VALUE, 1);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+    @Test(expected = ArithmeticException.class)
+    public void when_sum_overflow_then_throw_exception() {
+        IntMath.checkedAdd(Integer.MAX_VALUE, 1);
+    }
 
-        try {
-            IntMath.checkedAdd(Integer.MIN_VALUE, -1);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
-
-        int result1 = IntMath.checkedAdd(2, 1);
-        assertThat(result1, equalTo(3));
-
-        int result2 = IntMath.saturatedAdd(Integer.MAX_VALUE, 100);
-        assertThat(result2, equalTo(Integer.MAX_VALUE));
-
-        int result3 = IntMath.saturatedAdd(Integer.MIN_VALUE, -100);
-        assertThat(result3, equalTo(Integer.MIN_VALUE));
+    @Test(expected = ArithmeticException.class)
+    public void when_sum_underflow_then_throw_exception() {
+        IntMath.checkedAdd(Integer.MIN_VALUE, -1);
     }
 
     @Test
-    public void testIntMathSubtract() {
-        try {
-            IntMath.checkedSubtract(Integer.MIN_VALUE, 1);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
-
-        try {
-            IntMath.checkedSubtract(Integer.MAX_VALUE, -1);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        };
-
-        int result1 = IntMath.checkedSubtract(200, 100);
-        assertThat(result1, equalTo(100));
-
-        int result2 = IntMath.saturatedSubtract(Integer.MIN_VALUE, 1);
-        assertThat(result2, equalTo(Integer.MIN_VALUE));
-
-        int result3 = IntMath.saturatedSubtract(Integer.MAX_VALUE, -1);
-        assertThat(result3, equalTo(Integer.MAX_VALUE));
+    public void should_calculate_sum() {
+        int result = IntMath.checkedAdd(2, 1);
+        assertThat(result, equalTo(3));
     }
 
     @Test
-    public void testIntMathMultiply() {
-        try {
-            IntMath.checkedMultiply(Integer.MAX_VALUE, 2);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
-
-        try {
-            IntMath.checkedMultiply(Integer.MIN_VALUE, 2);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
-
-        int result1 = IntMath.checkedMultiply(21, 3);
-        assertThat(result1, equalTo(63));
-
-        int result2 = IntMath.saturatedMultiply(Integer.MAX_VALUE, 2);
-        assertThat(result2, equalTo(Integer.MAX_VALUE));
-
-        int result3 = IntMath.saturatedMultiply(Integer.MIN_VALUE, 2);
-        assertThat(result3, equalTo(Integer.MIN_VALUE));
+    public void when_sum_overflow_then_return_max_integer() {
+        int result = IntMath.saturatedAdd(Integer.MAX_VALUE, 100);
+        assertThat(result, equalTo(Integer.MAX_VALUE));
     }
 
     @Test
-    public void testIntMathPow() {
-        try {
-            IntMath.checkedPow(Integer.MAX_VALUE, 2);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+    public void when_sum_underflow_then_return_min_integer() {
+        int result = IntMath.saturatedAdd(Integer.MIN_VALUE, -100);
+        assertThat(result, equalTo(Integer.MIN_VALUE));
+    }
 
-        try {
-            IntMath.checkedPow(Integer.MIN_VALUE, 3);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+    @Test(expected = ArithmeticException.class)
+    public void when_difference_overflow_then_throw_exception() {
+        IntMath.checkedSubtract(Integer.MAX_VALUE, -1);
+    }
 
-        int result1 = IntMath.saturatedPow(3, 3);
-        assertThat(result1, equalTo(27));
-
-        int result2 = IntMath.saturatedPow(Integer.MAX_VALUE, 2);
-        assertThat(result2, equalTo(Integer.MAX_VALUE));
-
-        int result3 = IntMath.saturatedPow(Integer.MIN_VALUE, 3);
-        assertThat(result3, equalTo(Integer.MIN_VALUE));
+    @Test(expected = ArithmeticException.class)
+    public void when_difference_underflow_then_throw_exception() {
+        IntMath.checkedSubtract(Integer.MIN_VALUE, 1);
     }
 
     @Test
-    public void testIntMathRound() {
+    public void should_calculate_difference() {
+        int result = IntMath.checkedSubtract(200, 100);
+        assertThat(result, equalTo(100));
+    }
+
+    @Test
+    public void when_difference_overflow_then_return_max_integer() {
+        int result = IntMath.saturatedSubtract(Integer.MAX_VALUE, -1);
+        assertThat(result, equalTo(Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void when_difference_underflow_then_return_min_integer() {
+        int result = IntMath.saturatedSubtract(Integer.MIN_VALUE, 1);
+        assertThat(result, equalTo(Integer.MIN_VALUE));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void when_product_overflow_then_throw_exception() {
+        IntMath.checkedMultiply(Integer.MAX_VALUE, 2);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void when_product_underflow_then_throw_exception() {
+        IntMath.checkedMultiply(Integer.MIN_VALUE, 2);
+    }
+
+    @Test
+    public void should_calculate_product() {
+        int result = IntMath.checkedMultiply(21, 3);
+        assertThat(result, equalTo(63));
+    }
+
+    @Test
+    public void when_product_overflow_then_return_max_integer() {
+        int result = IntMath.saturatedMultiply(Integer.MAX_VALUE, 2);
+        assertThat(result, equalTo(Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void when_product_underflow_then_return_min_integer() {
+        int result = IntMath.saturatedMultiply(Integer.MIN_VALUE, 2);
+        assertThat(result, equalTo(Integer.MIN_VALUE));
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void when_power_overflow_then_throw_exception() {
+        IntMath.checkedPow(Integer.MAX_VALUE, 2);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void when_power_underflow_then_throw_exception() {
+        IntMath.checkedPow(Integer.MIN_VALUE, 3);
+    }
+
+    @Test
+    public void should_calculate_power() {
+        int result = IntMath.saturatedPow(3, 3);
+        assertThat(result, equalTo(27));
+    }
+
+    @Test
+    public void when_power_overflow_then_return_max_integer() {
+        int result = IntMath.saturatedPow(Integer.MAX_VALUE, 2);
+        assertThat(result, equalTo(Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void when_power_underflow_then_return_min_integer() {
+        int result = IntMath.saturatedPow(Integer.MIN_VALUE, 3);
+        assertThat(result, equalTo(Integer.MIN_VALUE));
+    }
+
+    @Test
+    public void should_round_to_integer() {
         int result1 = IntMath.divide(3, 2, RoundingMode.DOWN);
         assertThat(result1, equalTo(1));
         int result2 = IntMath.divide(3, 2, RoundingMode.UP);
@@ -136,12 +144,11 @@ public class GuavaMathTest {
 
         int result6 = IntMath.sqrt(4, RoundingMode.UNNECESSARY);
         assertThat(result6, equalTo(2));
-        try {
-            IntMath.sqrt(5, RoundingMode.UNNECESSARY);
-            assertTrue(false);
-        } catch (ArithmeticException e) {
-            assertTrue(true);
-        }
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void when_need_rounding_then_throw_exception() {
+        IntMath.sqrt(5, RoundingMode.UNNECESSARY);
     }
 
     @Test
