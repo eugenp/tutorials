@@ -128,22 +128,33 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void should_round_to_integer() {
+    public void should_round_divide_result() {
         int result1 = IntMath.divide(3, 2, RoundingMode.DOWN);
         assertThat(result1, equalTo(1));
+
         int result2 = IntMath.divide(3, 2, RoundingMode.UP);
         assertThat(result2, equalTo(2));
+    }
 
-        int result3 = IntMath.log2(5, RoundingMode.FLOOR);
-        assertThat(result3, equalTo(2));
-        int result4 = IntMath.log2(5, RoundingMode.CEILING);
-        assertThat(result4, equalTo(3));
+    @Test
+    public void should_round_log2_result() {
+        int result1 = IntMath.log2(5, RoundingMode.FLOOR);
+        assertThat(result1, equalTo(2));
 
-        int result5 = IntMath.log10(11, RoundingMode.HALF_UP);
-        assertThat(result5, equalTo(1));
+        int result2 = IntMath.log2(5, RoundingMode.CEILING);
+        assertThat(result2, equalTo(3));
+    }
 
-        int result6 = IntMath.sqrt(4, RoundingMode.UNNECESSARY);
-        assertThat(result6, equalTo(2));
+    @Test
+    public void should_round_log10_result() {
+        int result = IntMath.log10(11, RoundingMode.HALF_UP);
+        assertThat(result, equalTo(1));
+    }
+
+    @Test
+    public void should_round_sqrt_result() {
+        int result = IntMath.sqrt(4, RoundingMode.UNNECESSARY);
+        assertThat(result, equalTo(2));
     }
 
     @Test(expected = ArithmeticException.class)
