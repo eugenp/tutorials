@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import org.baeldung.config.H2JpaConfig;
 import org.baeldung.domain.GenericEntity;
 import org.baeldung.repository.GenericEntityRepository;
 import org.junit.Test;
@@ -12,8 +13,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = Application.class)
-public class SpringBootJPAIntegrationTest {
+@SpringBootTest(classes = { Application.class, H2JpaConfig.class })
+public class SpringBootH2IntegrationTest {
     @Autowired
     private GenericEntityRepository genericEntityRepository;
 
