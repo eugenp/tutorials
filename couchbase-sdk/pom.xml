@@ -102,10 +102,10 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <couchbase.client.version>2.3.6</couchbase.client.version>
-        <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
-        <logback.version>1.1.7</logback.version>
-        <org.slf4j.version>1.7.21</org.slf4j.version>
+        <couchbase.client.version>2.4.0</couchbase.client.version>
+        <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
+        <logback.version>1.1.8</logback.version>
+        <org.slf4j.version>1.7.22</org.slf4j.version>
         <junit.version>4.12</junit.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
