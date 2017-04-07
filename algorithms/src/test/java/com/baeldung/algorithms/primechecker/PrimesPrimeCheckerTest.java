@@ -8,7 +8,7 @@ import com.baeldung.algorithms.primechecker.PrimeChecker;
 import com.baeldung.algorithms.primechecker.PrimesPrimeChecker;
 
 public class PrimesPrimeCheckerTest {
-    PrimeChecker primeChecker = new PrimesPrimeChecker();
+    PrimesPrimeChecker primeChecker = new PrimesPrimeChecker();
 
     @Test
     public void givenPrimeNumber_whenCheckIsPrime_thenTrue() {
