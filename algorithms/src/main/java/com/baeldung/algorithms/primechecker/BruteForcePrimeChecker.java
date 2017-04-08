@@ -1,12 +1,15 @@
 package com.baeldung.algorithms.primechecker;
 
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
-public class BruteForcePrimeChecker implements PrimeChecker{
+public class BruteForcePrimeChecker implements PrimeChecker<Integer>{
 
     @Override
-    public boolean isPrime(int number) {
-        return IntStream.range(2, number).noneMatch(n -> (number % n == 0));
+    public boolean isPrime(Integer number) {
+        
+        return number > 2 ? IntStream.range(2, number)
+            .noneMatch(n -> (number % n == 0)) : false;
     }
 
     
