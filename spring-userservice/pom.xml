@@ -239,6 +239,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
+
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
