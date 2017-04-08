@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
-public class Application {
+public class MyTokenizer {
 
     public List<String> getTokens(String str) {
         List<String> tokens = new ArrayList<>();
@@ -36,7 +36,7 @@ public class Application {
         List<String> tokens = new ArrayList<>();
         String currLine;
         StringTokenizer tokenizer;
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Application.class.getResourceAsStream("/" + path)))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(MyTokenizer.class.getResourceAsStream("/" + path)))) {
             while ((currLine = br.readLine()) != null) {
                 tokenizer = new StringTokenizer(currLine, delim);
                 while (tokenizer.hasMoreElements()) {
