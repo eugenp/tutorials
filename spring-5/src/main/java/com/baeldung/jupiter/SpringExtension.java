@@ -1,6 +1,5 @@
 package com.baeldung.jupiter;
 
-
 import org.junit.jupiter.api.extension.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
