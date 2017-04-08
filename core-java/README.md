@@ -11,6 +11,7 @@
 - [Converting between a List and a Set in Java](http://www.baeldung.com/convert-list-to-set-and-set-to-list)
 - [Convert a Map to an Array, List or Set in Java](http://www.baeldung.com/convert-map-values-to-array-list-set)
 - [Java – Write to File](http://www.baeldung.com/java-write-to-file)
+- [Java - Convert File to InputStream] (http://www.baeldung.com/convert-file-to-input-stream)
 - [Java Scanner](http://www.baeldung.com/java-scanner)
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
 - [Java – Byte Array to Writer](http://www.baeldung.com/java-convert-byte-array-to-writer)
@@ -84,4 +85,5 @@
 - [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
+- [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
 

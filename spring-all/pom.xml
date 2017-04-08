@@ -43,6 +43,12 @@
                        <artifactId>spring-retry</artifactId>
                        <version>${springretry.version}</version>
                 </dependency>
+                <dependency>
+                        <groupId>org.springframework.shell</groupId>
+                        <artifactId>spring-shell</artifactId>
+                        <version>${org.springframework.shell.version}</version>
+                </dependency>
+
 
 		<!-- aspectj -->
 
@@ -280,6 +286,7 @@
 		<org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 		<org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
                <springretry.version>1.1.5.RELEASE</springretry.version>
+               <org.springframework.shell.version>1.2.0.RELEASE</org.springframework.shell.version>
 
 		<!-- persistence -->
 		<hibernate.version>5.2.5.Final</hibernate.version>

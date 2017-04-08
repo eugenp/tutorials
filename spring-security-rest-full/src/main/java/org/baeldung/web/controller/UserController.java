@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.baeldung.persistence.dao.GenericSpecificationsBuilder;
 import org.baeldung.persistence.dao.IUserDAO;
 import org.baeldung.persistence.dao.MyUserPredicatesBuilder;
 import org.baeldung.persistence.dao.MyUserRepository;
 import org.baeldung.persistence.dao.UserRepository;
+import org.baeldung.persistence.dao.UserSpecification;
 import org.baeldung.persistence.dao.UserSpecificationsBuilder;
 import org.baeldung.persistence.dao.rsql.CustomRsqlVisitor;
 import org.baeldung.persistence.model.MyUser;
 import org.baeldung.persistence.model.User;
+import org.baeldung.web.util.CriteriaParser;
 import org.baeldung.web.util.SearchCriteria;
 import org.baeldung.web.util.SearchOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,9 +77,8 @@ public class UserController {
     @ResponseBody
     public List<User> findAllBySpecification(@RequestParam(value = "search") String search) {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
-        String operationSetExper = Joiner
-          .on("|")
-          .join(SearchOperation.SIMPLE_OPERATION_SET);
+        String operationSetExper = Joiner.on("|")
+            .join(SearchOperation.SIMPLE_OPERATION_SET);
         Pattern pattern = Pattern.compile("(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         Matcher matcher = pattern.matcher(search + ",");
         while (matcher.find()) {
@@ -94,12 +96,24 @@ public class UserController {
         return dao.findAll(spec);
     }
 
+    @GetMapping(value = "/users/spec/adv")
+    @ResponseBody
+    public List<User> findAllByAdvPredicate(@RequestParam(value = "search") String search) {
+        Specification<User> spec = resolveSpecificationFromInfixExpr(search);
+        return dao.findAll(spec);
+    }
+
+    protected Specification<User> resolveSpecificationFromInfixExpr(String searchParameters) {
+        CriteriaParser parser = new CriteriaParser();
+        GenericSpecificationsBuilder<User> specBuilder = new GenericSpecificationsBuilder<>();
+        return specBuilder.build(parser.parse(searchParameters), UserSpecification::new);
+    }
+
     protected Specification<User> resolveSpecification(String searchParameters) {
 
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
-        String operationSetExper = Joiner
-          .on("|")
-          .join(SearchOperation.SIMPLE_OPERATION_SET);
+        String operationSetExper = Joiner.on("|")
+            .join(SearchOperation.SIMPLE_OPERATION_SET);
         Pattern pattern = Pattern.compile("(\\p{Punct}?)(\\w+?)(" + operationSetExper + ")(\\p{Punct}?)(\\w+?)(\\p{Punct}?),");
         Matcher matcher = pattern.matcher(searchParameters + ",");
         while (matcher.find()) {
