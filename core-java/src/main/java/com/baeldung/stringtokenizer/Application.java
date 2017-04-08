@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class Application {
 
     public List<String> getTokens(String str) {
-        List<String> tokens = new ArrayList<String>();
+        List<String> tokens = new ArrayList<>();
         // StringTokenizer tokenizer = new StringTokenizer( str );
         StringTokenizer tokenizer = new StringTokenizer(str, ",");
         // StringTokenizer tokenizer = new StringTokenizer( str , "," , true );
@@ -25,16 +25,16 @@ public class Application {
     }
 
     public List<String> getTokensWithCollection(String str) {
-        StringTokenizer tokenizer = new StringTokenizer(str, ",");
-
-        return Collections.list(tokenizer).stream()
+        return Collections
+          .list(new StringTokenizer(str, ","))
+          .stream()
           .map(token -> (String) token)
           .collect(Collectors.toList());
     }
 
     public List<String> getTokensFromFile(String path, String delim) {
         List<String> tokens = new ArrayList<>();
-        String currLine = "";
+        String currLine;
         StringTokenizer tokenizer;
         try (BufferedReader br = new BufferedReader(new InputStreamReader(Application.class.getResourceAsStream("/" + path)))) {
             while ((currLine = br.readLine()) != null) {
