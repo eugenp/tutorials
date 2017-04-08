@@ -121,6 +121,13 @@
 			<artifactId>cucumber-junit</artifactId>
 			<version>${cucumber.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -151,7 +158,6 @@
 				<configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
 			</plugin>
@@ -177,10 +183,10 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*UnitTest.java</exclude>
+										<exclude>**/*LiveTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
-                                        <exclude>**/*LiveTest.java</exclude>                                        
                                     </includes>
                                 </configuration>
                             </execution>
@@ -220,6 +226,7 @@
 		<httpcore.version>4.4.5</httpcore.version>
 		<httpclient.version>4.5.2</httpclient.version>
 
+		<jbehave.version>4.1</jbehave.version>
 
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
