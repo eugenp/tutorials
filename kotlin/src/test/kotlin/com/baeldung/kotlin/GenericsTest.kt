@@ -109,15 +109,22 @@ class GenericsTest {
     @Test
     fun givenFunctionWithDefinedGenericConstraints_whenCallWithProperType_thenCompile(){
         //given
-        val arrayOfInts = listOf(1,2,3,4,5)
+        val arrayOfInts = listOf(5,2,3,4,1)
+
+        //when
+        val sorted = sort(arrayOfInts)
 
         //then
-        sort(arrayOfInts)
+        assertEquals(sorted[0], 1)
+        assertEquals(sorted[1], 2)
+        assertEquals(sorted[2], 3)
+        assertEquals(sorted[3], 4)
+        assertEquals(sorted[4], 5)
 
     }
 
-    fun <T: Comparable<T>> sort(list: List<T>){
-        //
+    fun <T: Comparable<T>> sort(list: List<T>): List<T>{
+        return list.sorted()
     }
 
     class ParametrizedClass<A>(private val value: A) {
