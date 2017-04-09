@@ -2,8 +2,6 @@ package com.baeldung.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +20,8 @@ public class StudentServiceTests {
     @Test
     public void testInsertStudent() {
         Student student = new Student();
-        student.setFirstName("Santosh");
-        student.setLastName("B S");
-        student.setEmailAddress("bs.santosha@gmail.com");
+        student.setName("Santosh B S");
         student.setPassword("Test123");
-        student.setDateOfBirth(new Date());
         student.setUserName("santoshbs");
 
         boolean result = studentService.insertStudent(student);

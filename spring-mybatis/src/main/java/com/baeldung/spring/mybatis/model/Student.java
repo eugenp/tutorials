@@ -1,15 +1,18 @@
 package com.baeldung.spring.mybatis.model;
 
-import java.util.Date;
-
 public class Student {
     private Long id;
     private String userName;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String password;
-    private String emailAddress;
-    private Date dateOfBirth;
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -27,22 +30,6 @@ public class Student {
         this.userName = userName;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -51,19 +38,4 @@ public class Student {
         this.password = password;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 }
