@@ -109,10 +109,10 @@ class GenericsTest {
     @Test
     fun givenFunctionWithDefinedGenericConstraints_whenCallWithProperType_thenCompile(){
         //given
-        val arrayOfInts = listOf(5,2,3,4,1)
+        val listOfInts = listOf(5,2,3,4,1)
 
         //when
-        val sorted = sort(arrayOfInts)
+        val sorted = sort(listOfInts)
 
         //then
         assertEquals(sorted[0], 1)
