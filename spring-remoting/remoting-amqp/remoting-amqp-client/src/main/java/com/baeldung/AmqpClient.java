@@ -3,7 +3,7 @@ package com.baeldung;
 import com.baeldung.api.BookingException;
 import com.baeldung.api.CabBookingService;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.remoting.client.AmqpProxyFactoryBean;
 import org.springframework.boot.SpringApplication;
@@ -12,8 +12,7 @@ import org.springframework.context.annotation.Bean;
 
 import static java.lang.System.out;
 
-@SpringBootApplication
-public class AmqpClient {
+@SpringBootApplication public class AmqpClient {
 
     @Bean Queue queue() {
         return new Queue("remotingQueue");
@@ -32,8 +31,8 @@ public class AmqpClient {
         return exchange;
     }
 
-    @Bean RabbitTemplate amqpTemplatexx(CachingConnectionFactory ccf) {
-        RabbitTemplate template = new RabbitTemplate(ccf);
+    @Bean RabbitTemplate amqpTemplate(ConnectionFactory factory) {
+        RabbitTemplate template = new RabbitTemplate(factory);
         template.setRoutingKey("remoting.binding");
         template.setExchange("remoting.exchange");
         return template;
