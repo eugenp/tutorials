@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -24,26 +24,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.geronimo.specs</groupId>
-            <artifactId>geronimo-osgi-locator</artifactId>
-            <version>1.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.geronimo.components</groupId>
-            <artifactId>geronimo-jaspi</artifactId>
-            <version>2.0.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -62,6 +42,24 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>${tomcat.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
         </dependency>
@@ -69,6 +67,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
         </dependency>
 
         <dependency>
@@ -108,19 +107,19 @@
             <version>${jquery.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>arquillian-tomee-embedded</artifactId>
-            <version>${arquillian-tomee-embedded.version}</version>
-            <scope>test</scope>
+		<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>18.0</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.tomee</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>${tomee-javaee-api.version}</version>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>${tomee-servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -220,8 +219,8 @@
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
-        <arquillian-tomee-embedded.version>7.0.2</arquillian-tomee-embedded.version>
-        <tomee-javaee-api.version>7.0-1</tomee-javaee-api.version>
+        <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
+        <h2.version>1.4.194</h2.version>
     </properties>
 
 </project>

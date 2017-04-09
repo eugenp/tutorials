@@ -1,0 +1,4 @@
+spring:
+  rabbitmq:
+    username: baeldung
+    password: baeldung
