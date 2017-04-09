@@ -42,19 +42,12 @@ public class SpringBootRequestLoggingTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/helloGet?home=Houston").contentType(contentType)).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @Test
-    public void givenRequestHasBeenMade_whenPostMeetsAllOfGivenConditions_thenCorrect() throws Exception {
-        MediaType contentType = new MediaType(MediaType.APPLICATION_FORM_URLENCODED.getType(), MediaType.APPLICATION_FORM_URLENCODED.getSubtype(), Charset.forName("utf8"));
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/helloPost").param("name", "suse").contentType(contentType)).andExpect(MockMvcResultMatchers.status().isOk());
-    }
-
+  
     @Test
     public void givenRequestHasBeenMade_whenJsonPostMeetsAllOfGivenConditions_thenCorrect() throws Exception {
         MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
         UserVO user = new UserVO();
         user.setName("testUser");
-        user.setPwd("testPwd");
         Gson gson = new Gson();
         String json = gson.toJson(user);
 
