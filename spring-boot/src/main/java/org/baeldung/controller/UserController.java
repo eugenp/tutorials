@@ -13,25 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
     @RequestMapping("/helloGet")
-    public String hello(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+    public String hello(Model model, @RequestParam(value = "home", required = false, defaultValue = "World") String name) {
         return "hello";
-    }
-
-    @RequestMapping(value = "/helloPost", method = RequestMethod.POST)
-    public String helloPost(Model model, @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-        return "helloPost";
     }
 
     @RequestMapping(value = "/aJsonPostMethod", method = RequestMethod.POST)
     @ResponseBody
     public ResponseVO aJsonPostMethod(@RequestBody UserVO userVo) {
         ResponseVO respVo = new ResponseVO();
-        if (userVo.getName().equals("tousif")) {
+        if (userVo.getName().equals("seema")) {
             respVo.setSuccess(true);
-            respVo.setMessage("User is Authenticated");
         } else {
             respVo.setSuccess(false);
-            respVo.setMessage("User is Unauthenticated");
         }
         return respVo;
     }
