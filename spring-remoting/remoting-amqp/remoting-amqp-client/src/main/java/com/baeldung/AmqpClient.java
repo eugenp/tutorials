@@ -16,8 +16,7 @@ import static java.lang.System.out;
 public class AmqpClient {
 
     @Bean Queue queue() {
-        Queue name = new Queue("remotingQueue");
-        return name;
+        return new Queue("remotingQueue");
     }
 
     @Bean AmqpProxyFactoryBean amqpFactoryBean(AmqpTemplate amqpTemplate) {
@@ -29,7 +28,7 @@ public class AmqpClient {
 
     @Bean Exchange directExchange(Queue someQueue) {
         DirectExchange exchange = new DirectExchange("remoting.exchange");
-        Binding binding = BindingBuilder.bind(someQueue).to(exchange).with("remoting.binding");
+        BindingBuilder.bind(someQueue).to(exchange).with("remoting.binding");
         return exchange;
     }
 
