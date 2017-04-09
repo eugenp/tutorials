@@ -4,9 +4,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-import java.nio.charset.Charset;
-
-import org.baeldung.config.H2JpaConfig;
 import org.baeldung.domain.Modes;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +19,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.nio.charset.Charset;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { Application.class, H2JpaConfig.class })
+@SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 public class SpringBootApplicationIntegrationTest {
     @Autowired
@@ -32,56 +31,36 @@ public class SpringBootApplicationIntegrationTest {
 
     @Before
     public void setupMockMvc() {
-        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-            .build();
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
     @Test
     public void givenRequestHasBeenMade_whenMeetsAllOfGivenConditions_thenCorrect() throws Exception {
-        final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all"))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk())
-            .andExpect(MockMvcResultMatchers.content()
-                .contentType(contentType))
-            .andExpect(jsonPath("$", hasSize(4)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/all")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(contentType)).andExpect(jsonPath("$", hasSize(4)));
     }
 
     @Test
     public void givenRequestHasBeenMade_whenMeetsFindByDateOfGivenConditions_thenCorrect() throws Exception {
-        final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbydate/{date}", "2011-12-03T10:15:30"))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk())
-            .andExpect(MockMvcResultMatchers.content()
-                .contentType(contentType))
-            .andExpect(jsonPath("$.id", equalTo(1)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbydate/{date}", "2011-12-03T10:15:30")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(contentType))
+                .andExpect(jsonPath("$.id", equalTo(1)));
     }
 
     @Test
     public void givenRequestHasBeenMade_whenMeetsFindByModeOfGivenConditions_thenCorrect() throws Exception {
-        final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbymode/{mode}", Modes.ALPHA.name()))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk())
-            .andExpect(MockMvcResultMatchers.content()
-                .contentType(contentType))
-            .andExpect(jsonPath("$.id", equalTo(1)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbymode/{mode}", Modes.ALPHA.name())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(contentType)).andExpect(jsonPath("$.id", equalTo(1)));
     }
 
     @Test
     public void givenRequestHasBeenMade_whenMeetsFindByVersionOfGivenConditions_thenCorrect() throws Exception {
-        final MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbyversion")
-            .header("Version", "1.0.0"))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk())
-            .andExpect(MockMvcResultMatchers.content()
-                .contentType(contentType))
-            .andExpect(jsonPath("$.id", equalTo(1)));
+        mockMvc.perform(MockMvcRequestBuilders.get("/entity/findbyversion").header("Version", "1.0.0")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(contentType))
+                .andExpect(jsonPath("$.id", equalTo(1)));
     }
 }
