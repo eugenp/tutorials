@@ -3,9 +3,8 @@ package com.baeldung;
 import com.baeldung.api.BookingException;
 import com.baeldung.api.CabBookingService;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.remoting.client.AmqpProxyFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,34 +15,29 @@ import static java.lang.System.out;
 @SpringBootApplication
 public class AmqpClient {
 
-    @Bean AmqpProxyFactoryBean xxx(AmqpTemplate amqpTemplate) {
-        AmqpProxyFactoryBean proxy = new AmqpProxyFactoryBean();
-        proxy.setAmqpTemplate(amqpTemplate);
-        proxy.setServiceInterface(CabBookingService.class);
-        return proxy;
+    @Bean Queue queue() {
+        Queue name = new Queue("remotingQueue");
+        return name;
     }
 
-    @Bean
-    Queue queue() {
-        return new Queue("cicci", false);
+    @Bean AmqpProxyFactoryBean amqpFactoryBean(AmqpTemplate amqpTemplate) {
+        AmqpProxyFactoryBean factoryBean = new AmqpProxyFactoryBean();
+        factoryBean.setServiceInterface(CabBookingService.class);
+        factoryBean.setAmqpTemplate(amqpTemplate);
+        return factoryBean;
     }
 
-    @Bean TopicExchange exchange() {
-        return new TopicExchange("spring-boot-exchange");
+    @Bean Exchange directExchange(Queue someQueue) {
+        DirectExchange exchange = new DirectExchange("remoting.exchange");
+        Binding binding = BindingBuilder.bind(someQueue).to(exchange).with("remoting.binding");
+        return exchange;
     }
 
-    @Bean Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("cicci");
-    }
-
-
-    @Bean SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-            MessageListenerAdapter listenerAdapter) {
-        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        container.setQueueNames("cicci");
-        container.setMessageListener(listenerAdapter);
-        return container;
+    @Bean RabbitTemplate amqpTemplatexx(CachingConnectionFactory ccf) {
+        RabbitTemplate template = new RabbitTemplate(ccf);
+        template.setRoutingKey("remoting.binding");
+        template.setExchange("remoting.exchange");
+        return template;
     }
 
     public static void main(String[] args) throws BookingException {
