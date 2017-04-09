@@ -8,11 +8,10 @@
     <name>parent-modules</name>
     <packaging>pom</packaging>
 
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
-        <gib.enabled>false</gib.enabled>
+       <!-- <gib.enabled>false</gib.enabled>-->
     </properties>
 
     <modules>
@@ -26,6 +25,7 @@
         <module>aspectj</module>
         <module>assertj</module>
         <module>autovalue</module>
+        <module>axon</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
@@ -35,7 +35,7 @@
         <module>deltaspike</module>
         <module>dozer</module>
 
-        <module>ejb</module>
+        <!--<module>ejb</module>-->
 
         <module>feign</module>
         <module>flyway</module>
@@ -43,14 +43,17 @@
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
 
+        <module>groovy-spock</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guice</module>
         <module>disruptor</module>
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <module>hbase</module>
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -58,22 +61,26 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>java-cassandra</module>
+<!--         <module>java-cassandra</module> -->
         <module>javaslang</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <module>jee7</module>
+        <!--<module>jee7</module>-->
+        <!-- <module>jhipster</module> -->
         <module>jjwt</module>
+        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
         <module>json</module>
         <module>jsoup</module>
         <module>junit5</module>
+        <module>jws</module>
 
         <module>kotlin</module>
 
+        <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -83,16 +90,19 @@
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
+        <module>mockito2</module>
         <module>mocks</module>
 
         <module>orika</module>
 
         <module>patterns</module>
         <module>pdf</module>
+        <module>protobuffer</module>
 
         <module>querydsl</module>
 
         <!-- <module>raml</module> -->
+        <module>reactor-core</module>
         <module>redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
@@ -100,23 +110,26 @@
         <module>rxjava</module>
 
         <module>selenium-junit-testng</module>
-        <module>solr-fulltext-search</module>
+        <module>solr</module>
         <module>spark-java</module>
+       <!-- <module>spring-5</module> TODO: CI problems-->
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
+        <module>spring-amqp-simple</module>
         <module>spring-apache-camel</module>
-        <module>spring-autowire</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
+        <module>spring-aop</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
+        <module>spring-data-javaslang</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
@@ -127,12 +140,15 @@
         <module>spring-freemarker</module>
         <module>spring-hibernate3</module>
         <module>spring-hibernate4</module>
+        <module>spring-hibernate5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
+        <module>spring-kafka</module>
         <module>spring-katharsis</module>
+        <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
@@ -149,7 +165,6 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
-        <module>spring-security-basic-auth</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
@@ -176,12 +191,14 @@
         <module>spring-sleuth</module>
         <module>spring-social-login</module>
         <module>spring-spel</module>
+        <module>spring-state-machine</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
         <module>spring-reactor</module>
 
         <module>testing</module>
+        <module>testng</module>
 
         <module>video-tutorials</module>
 
@@ -193,17 +210,47 @@
 
         <module>struts2</module>
         <module>apache-velocity</module>
+        <module>apache-solrj</module>
 
-
+        <module>rabbitmq</module>
+        <module>vertx</module>
+        <module>spring-data-gemfire</module>
+        <module>cucumber</module>
     </modules>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>maven</executable>
+
+
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                    </excludes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+        </plugins>
         <extensions>
-            <extension>
+            <!--<extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>3.1</version>
-            </extension>
+            </extension>-->
         </extensions>
     </build>
 </project>

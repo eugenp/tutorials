@@ -51,12 +51,6 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- This is included in spring-data-solr above, no need to include twice 
-        <dependency>
-  			<groupId>org.apache.solr</groupId>
-  			<artifactId>solr-solrj</artifactId>
-  			<version>5.5.0</version>
-		</dependency-->
     </dependencies>
 
     <build>
@@ -78,38 +72,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
