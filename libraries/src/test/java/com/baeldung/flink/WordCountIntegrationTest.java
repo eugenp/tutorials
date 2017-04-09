@@ -22,7 +22,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class WordCountTest {
+public class WordCountIntegrationTest {
     final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
     @Test
