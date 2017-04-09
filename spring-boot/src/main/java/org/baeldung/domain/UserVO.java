@@ -2,7 +2,7 @@ package org.baeldung.domain;
 
 public class UserVO {
 
-    private String name, pwd;
+    private String name;
 
     public UserVO() {
     }
@@ -15,16 +15,8 @@ public class UserVO {
         this.name = name;
     }
 
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
     @Override
     public String toString() {
-        return String.format("User [%s, %s]", name, pwd);
+        return String.format("User [%s,]", name);
     }
 }
