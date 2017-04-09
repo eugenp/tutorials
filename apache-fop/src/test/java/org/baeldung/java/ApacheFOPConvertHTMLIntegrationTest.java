@@ -19,21 +19,21 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.xmlgraphics.util.MimeConstants;
-import org.dbdoclet.trafo.html.docbook.DocBookTransformer;
+import org.dbdoclet.trafo.html.docbook.HtmlDocBookTrafo;
 import org.dbdoclet.trafo.script.Script;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.tidy.Tidy;
 
 public class ApacheFOPConvertHTMLIntegrationTest {
-    private String inputFile = "src/test/resources/input.html";
-    private String style = "src/test/resources/xhtml2fo.xsl";
-    private String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
-    private String output_jtidy = "src/test/resources/output_jtidy.pdf";
-    private String output_html2fo = "src/test/resources/output_html2fo.pdf";
-    private String output_herold = "src/test/resources/output_herold.pdf";
-    private String foFile = "src/test/resources/input.fo";
-    private String xmlFile = "src/test/resources/input.xml";
+    private final String inputFile = "src/test/resources/input.html";
+    private final String style = "src/test/resources/xhtml2fo.xsl";
+    private final String style1 = "src/test/resources/docbook-xsl/fo/docbook.xsl";
+    private final String output_jtidy = "src/test/resources/output_jtidy.pdf";
+    private final String output_html2fo = "src/test/resources/output_html2fo.pdf";
+    private final String output_herold = "src/test/resources/output_herold.pdf";
+    private final String foFile = "src/test/resources/input.fo";
+    private final String xmlFile = "src/test/resources/input.xml";
 
     @Test
     public void whenTransformHTMLToPDFUsingJTidy_thenCorrect() throws Exception {
@@ -114,8 +114,9 @@ public class ApacheFOPConvertHTMLIntegrationTest {
 
     private void fromHTMLTOXMLUsingHerold() throws Exception {
         final Script script = new Script();
-        final DocBookTransformer transformer = new DocBookTransformer();
-        transformer.setScript(script);
-        transformer.convert(new FileInputStream(inputFile), new FileOutputStream(xmlFile));
+        final HtmlDocBookTrafo transformer = new HtmlDocBookTrafo();
+        transformer.setInputStream(new FileInputStream(inputFile));
+        transformer.setOutputStream(new FileOutputStream(xmlFile));
+        transformer.transform(script);
     }
 }
