@@ -1,13 +1,14 @@
 package com.baeldung.algorithms.primechecker;
 
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
-public class OptimisedPrimeChecker implements PrimeChecker{
+public class OptimisedPrimeChecker implements PrimeChecker<Integer>{
 
     @Override
-    public boolean isPrime(int number) {
-        return IntStream.range(2, (int)Math.sqrt(number) + 1)
-            .noneMatch(n -> (number % n == 0));
+    public boolean isPrime(Integer number) {
+        return number > 2 ? IntStream.rangeClosed(2, (int) Math.sqrt(number))
+            .noneMatch(n -> (number % n == 0)) : false;
     }
 
     
