@@ -1,7 +1,7 @@
 package com.baeldung.dependencyinjection;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import com.baeldung.dependencyinjection.domain.Building;
 
 public class DependencyInjectionRunner {
@@ -14,7 +14,8 @@ public class DependencyInjectionRunner {
     }
 
     private static Building getBuilding() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("dependencyinjection.xml");
+     
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
         return context.getBean(Building.class);
     }

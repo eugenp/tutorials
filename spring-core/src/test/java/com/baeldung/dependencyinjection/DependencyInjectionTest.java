@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.dependencyinjection.domain.Building;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:dependencyinjection.xml")
+@ContextConfiguration(classes = Config.class)
 public class DependencyInjectionTest implements ApplicationContextAware {
 
     private ApplicationContext beanInjectedContext;
@@ -23,7 +23,7 @@ public class DependencyInjectionTest implements ApplicationContextAware {
 
         Building buildingBean = beanInjectedContext.getBean(Building.class);
 
-        assertEquals("Escalator is available and Air-Conditioner is available", buildingBean.toString());
+        assertEquals("Escalator is available and Air-Conditioner is available and Waterpump is available", buildingBean.toString());
     }
 
     @Override
