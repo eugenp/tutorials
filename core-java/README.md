@@ -88,5 +88,7 @@
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
 - [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
+- [Avoiding ConcurrentModificationException when iterating and removing](http://www.baeldung.com/avoiding-concurrentmodificationexception-when-iterating-and-removing)
 - [Removing all nulls from a List in Java](http://www.baeldung.com/java-remove-nulls-from-list)
 - [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
+
