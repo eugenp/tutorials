@@ -16,12 +16,12 @@ import static org.junit.Assert.assertTrue;
 
 public class GuavaMathTest {
     @Test(expected = ArithmeticException.class)
-    public void when_sum_overflow_then_throw_exception() {
+    public void whenSumOverflow_thenThrowException() {
         IntMath.checkedAdd(Integer.MAX_VALUE, 1);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_sum_underflow_then_throw_exception() {
+    public void whenSumUnderflow_thenThrowException() {
         IntMath.checkedAdd(Integer.MIN_VALUE, -1);
     }
 
@@ -32,24 +32,24 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void when_sum_overflow_then_return_max_integer() {
+    public void whenSumOverflow_thenReturnMaxInteger() {
         int result = IntMath.saturatedAdd(Integer.MAX_VALUE, 100);
         assertThat(result, equalTo(Integer.MAX_VALUE));
     }
 
     @Test
-    public void when_sum_underflow_then_return_min_integer() {
+    public void whenSumUnderflow_thenReturnMinInteger() {
         int result = IntMath.saturatedAdd(Integer.MIN_VALUE, -100);
         assertThat(result, equalTo(Integer.MIN_VALUE));
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_difference_overflow_then_throw_exception() {
+    public void whenDifferenceOverflow_thenThrowException() {
         IntMath.checkedSubtract(Integer.MAX_VALUE, -1);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_difference_underflow_then_throw_exception() {
+    public void whenDifferenceUnderflow_thenThrowException() {
         IntMath.checkedSubtract(Integer.MIN_VALUE, 1);
     }
 
@@ -60,24 +60,24 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void when_difference_overflow_then_return_max_integer() {
+    public void whenDifferenceOverflow_thenReturnMaxInteger() {
         int result = IntMath.saturatedSubtract(Integer.MAX_VALUE, -1);
         assertThat(result, equalTo(Integer.MAX_VALUE));
     }
 
     @Test
-    public void when_difference_underflow_then_return_min_integer() {
+    public void whenDifferenceUnderflow_thenReturnMinInteger() {
         int result = IntMath.saturatedSubtract(Integer.MIN_VALUE, 1);
         assertThat(result, equalTo(Integer.MIN_VALUE));
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_product_overflow_then_throw_exception() {
+    public void whenProductOverflow_thenThrowException() {
         IntMath.checkedMultiply(Integer.MAX_VALUE, 2);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_product_underflow_then_throw_exception() {
+    public void whenProductUnderflow_thenThrowException() {
         IntMath.checkedMultiply(Integer.MIN_VALUE, 2);
     }
 
@@ -88,24 +88,24 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void when_product_overflow_then_return_max_integer() {
+    public void whenProductOverflow_thenReturnMaxInteger() {
         int result = IntMath.saturatedMultiply(Integer.MAX_VALUE, 2);
         assertThat(result, equalTo(Integer.MAX_VALUE));
     }
 
     @Test
-    public void when_product_underflow_then_return_min_integer() {
+    public void whenProductUnderflow_thenReturnMinInteger() {
         int result = IntMath.saturatedMultiply(Integer.MIN_VALUE, 2);
         assertThat(result, equalTo(Integer.MIN_VALUE));
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_power_overflow_then_throw_exception() {
+    public void whenPowerOverflow_thenThrowException() {
         IntMath.checkedPow(Integer.MAX_VALUE, 2);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_power_underflow_then_throw_exception() {
+    public void whenPowerUnderflow_thenThrowException() {
         IntMath.checkedPow(Integer.MIN_VALUE, 3);
     }
 
@@ -116,13 +116,13 @@ public class GuavaMathTest {
     }
 
     @Test
-    public void when_power_overflow_then_return_max_integer() {
+    public void whenPowerOverflow_thenReturnMaxInteger() {
         int result = IntMath.saturatedPow(Integer.MAX_VALUE, 2);
         assertThat(result, equalTo(Integer.MAX_VALUE));
     }
 
     @Test
-    public void when_power_underflow_then_return_min_integer() {
+    public void whenPowerUnderflow_thenReturnMinInteger() {
         int result = IntMath.saturatedPow(Integer.MIN_VALUE, 3);
         assertThat(result, equalTo(Integer.MIN_VALUE));
     }
@@ -158,7 +158,7 @@ public class GuavaMathTest {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void when_need_rounding_then_throw_exception() {
+    public void whenNeedRounding_thenThrowException() {
         IntMath.sqrt(5, RoundingMode.UNNECESSARY);
     }
 
