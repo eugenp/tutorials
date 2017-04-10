@@ -1,18 +1,15 @@
 package org.baeldung.guava;
 
-import com.google.common.math.DoubleMath;
-import com.google.common.math.IntMath;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.*;
 
 import java.math.BigInteger;
 import java.math.RoundingMode;
 
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+
+import com.google.common.math.DoubleMath;
+import com.google.common.math.IntMath;
 
 public class GuavaMathTest {
     @Test(expected = ArithmeticException.class)
