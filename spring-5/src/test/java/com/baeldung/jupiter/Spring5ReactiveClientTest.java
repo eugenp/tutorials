@@ -11,10 +11,8 @@ import org.springframework.web.reactive.function.client.ExchangeFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
 import java.net.URI;
 import java.time.Duration;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Spring5ReactiveClientTest {
