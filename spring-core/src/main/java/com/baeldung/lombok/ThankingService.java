@@ -1,10 +1,10 @@
 package com.baeldung.lombok;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ThankingService {
 
     private final Translator translator;
