@@ -9,20 +9,19 @@ import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.Test;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = TestConfig.class)
 class Spring5JUnit5Tests {
 
-	@Autowired
+    @Autowired
     Task task;
 
-	@Test
-	void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMetho(
-	  ApplicationContext applicationContext) {
-		assertNotNull(applicationContext
-		  , "ApplicationContext should have been injected by Spring");
-		assertEquals(this.task, applicationContext.getBean("taskName", Task.class));
-	}
+    @Test
+    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMetho(ApplicationContext applicationContext) {
+        assertNotNull(applicationContext, "ApplicationContext should have been injected by Spring");
+        assertEquals(this.task, applicationContext.getBean("taskName", Task.class));
+    }
 }

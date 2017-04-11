@@ -22,33 +22,25 @@ abstract class ParameterAutowireUtils {
     }
 
     public static boolean isAutowirable(Parameter parameter) {
-        return ApplicationContext.class.isAssignableFrom(parameter.getType())
-          || hasAnnotation(parameter, Autowired.class)
-          || hasAnnotation(parameter, Qualifier.class)
-          || hasAnnotation(parameter, Value.class);
+        return ApplicationContext.class.isAssignableFrom(parameter.getType()) || hasAnnotation(parameter, Autowired.class) || hasAnnotation(parameter, Qualifier.class) || hasAnnotation(parameter, Value.class);
     }
 
-    public static Object resolveDependency(Parameter parameter
-      , Class<?> containingClass, ApplicationContext applicationContext) {
+    public static Object resolveDependency(Parameter parameter, Class<?> containingClass, ApplicationContext applicationContext) {
 
         boolean required = findMergedAnnotation(parameter, Autowired.class)
-          .map(Autowired::required).orElse(true);
-        MethodParameter methodParameter = (parameter.getDeclaringExecutable()
-          instanceof Method
-          ? MethodParameterFactory.createSynthesizingMethodParameter(parameter)
-          : MethodParameterFactory.createMethodParameter(parameter));
-        DependencyDescriptor descriptor = new DependencyDescriptor(methodParameter
-          , required);
+          .map(Autowired::required)
+          .orElse(true);
+        MethodParameter methodParameter = (parameter.getDeclaringExecutable() instanceof Method ? MethodParameterFactory.createSynthesizingMethodParameter(parameter) : MethodParameterFactory.createMethodParameter(parameter));
+        DependencyDescriptor descriptor = new DependencyDescriptor(methodParameter, required);
         descriptor.setContainingClass(containingClass);
 
-        return applicationContext.getAutowireCapableBeanFactory()
+        return applicationContext
+          .getAutowireCapableBeanFactory()
           .resolveDependency(descriptor, null);
     }
 
-    private static <A extends Annotation> Optional<A> findMergedAnnotation(
-      AnnotatedElement element, Class<A> annotationType) {
+    private static <A extends Annotation> Optional<A> findMergedAnnotation(AnnotatedElement element, Class<A> annotationType) {
 
-        return Optional.ofNullable(AnnotatedElementUtils
-          .findMergedAnnotation(element, annotationType));
+        return Optional.ofNullable(AnnotatedElementUtils.findMergedAnnotation(element, annotationType));
     }
 }

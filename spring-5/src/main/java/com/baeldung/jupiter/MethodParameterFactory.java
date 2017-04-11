@@ -23,17 +23,13 @@ abstract class MethodParameterFactory {
         return new MethodParameter((Constructor<?>) executable, getIndex(parameter));
     }
 
-    public static SynthesizingMethodParameter createSynthesizingMethodParameter(
-      Parameter parameter) {
+    public static SynthesizingMethodParameter createSynthesizingMethodParameter(Parameter parameter) {
         Assert.notNull(parameter, "Parameter must not be null");
         Executable executable = parameter.getDeclaringExecutable();
         if (executable instanceof Method) {
-            return new SynthesizingMethodParameter((Method) executable
-              , getIndex(parameter));
+            return new SynthesizingMethodParameter((Method) executable, getIndex(parameter));
         }
-        throw new UnsupportedOperationException(
-          "Cannot create a SynthesizingMethodParameter for a constructor parameter: "
-          + parameter);
+        throw new UnsupportedOperationException("Cannot create a SynthesizingMethodParameter for a constructor parameter: " + parameter);
     }
 
     private static int getIndex(Parameter parameter) {
@@ -45,8 +41,6 @@ abstract class MethodParameterFactory {
                 return i;
             }
         }
-        throw new IllegalStateException(String.format(
-          "Failed to resolve index of parameter [%s] in executable [%s]",
-          parameter, executable.toGenericString()));
+        throw new IllegalStateException(String.format("Failed to resolve index of parameter [%s] in executable [%s]", parameter, executable.toGenericString()));
     }
 }

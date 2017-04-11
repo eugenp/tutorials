@@ -23,12 +23,9 @@ class Spring5JUnit5ComposedAnnotationTests {
 
     @Test
     @DisplayName("ApplicationContext injected into method")
-    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMethod(
-      ApplicationContext applicationContext) {
-        assertNotNull(applicationContext
-          , "ApplicationContext should have been injected into method by Spring");
-        assertEquals(this.task, applicationContext.getBean("taskName"
-          , Task.class));
+    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMethod(ApplicationContext applicationContext) {
+        assertNotNull(applicationContext, "ApplicationContext should have been injected into method by Spring");
+        assertEquals(this.task, applicationContext.getBean("taskName", Task.class));
     }
 
     @Test
