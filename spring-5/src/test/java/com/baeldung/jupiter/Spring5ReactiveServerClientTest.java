@@ -44,7 +44,7 @@ public class Spring5ReactiveServerClientTest {
         HttpHandler httpHandler = RouterFunctions.toHttpHandler(route);
         ReactorHttpHandlerAdapter adapter =
           new ReactorHttpHandlerAdapter(httpHandler);
-        nettyContext=server.newHandler(adapter).block();
+        nettyContext = server.newHandler(adapter).block();
     }
 
     @AfterAll
