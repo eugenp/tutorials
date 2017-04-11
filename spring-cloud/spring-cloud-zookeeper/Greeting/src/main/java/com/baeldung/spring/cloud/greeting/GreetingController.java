@@ -6,16 +6,11 @@
 package com.baeldung.spring.cloud.greeting;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
-import org.springframework.stereotype.Controller;
-
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class GreetingController {
 
 	@Autowired
@@ -23,10 +18,9 @@ public class GreetingController {
 
 	@RequestMapping(value = "/get-greeting", method = RequestMethod.GET)
 
-	public String greeting(Model model) {
+	public String greeting() {
 
-		model.addAttribute("greeting", helloWorldClient.HelloWorld());
-		return "greeting-view";
+		return helloWorldClient.HelloWorld();
 
 	}
 
