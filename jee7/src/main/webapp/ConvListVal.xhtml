@@ -8,7 +8,7 @@
 </h:head>
 <h:body>
     <h1>Testing converters</h1>
-    <h:form id="myform">
+    <h:form id="myForm">
         <h:outputLabel value="Age:"/>
         <h:inputText id="age" value="#{convListVal.age}">
             <f:converter converterId="javax.faces.Integer" />
@@ -19,13 +19,13 @@
         <h:inputText id="average" value="#{convListVal.average}">
             <f:converter converterId="javax.faces.Double" />
         </h:inputText>
-        <h:message for="average" />
+        <h:message id = "averageError" for="average" />
         <br/>
 		<h:outputLabel value="Date:"/>
-        <h:inputText id="MyDate" value="#{convListVal.myDate}">
+        <h:inputText id="myDate" value="#{convListVal.myDate}">
         	<f:convertDateTime pattern="dd/MM/yyyy" />
         </h:inputText>
-        <h:message for="MyDate" />
+        <h:message id="myDateError" for="myDate" />
         <br/>
         <h:outputText value="#{convListVal.myDate}">
 	        <f:convertDateTime dateStyle="full" locale="en"/>
@@ -41,7 +41,7 @@
 		    <h:inputText id="surname" value="#{convListVal.surname}">
 		        <f:validateLength minimum="5" maximum="10"/>
 		    </h:inputText>
-		    <h:message for="surname" errorStyle="color:red"  />
+		    <h:message id="surnameError" for="surname" errorStyle="color:red"  />
 		</h:panelGroup>
         <br/>
         <h:commandButton id="send" value="submit" type="submit" />
