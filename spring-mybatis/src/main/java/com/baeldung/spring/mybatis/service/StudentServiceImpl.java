@@ -38,5 +38,4 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentMapper.getStudentByUserName(userName);
         return student;
     }
-
 }

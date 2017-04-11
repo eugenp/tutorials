@@ -5,9 +5,7 @@
 	<artifactId>jackson-annotations</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 
-	<packaging>war</packaging>
 	<name>jacksonannotation</name>
-    <url>http://www.baeldung.com</url>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
