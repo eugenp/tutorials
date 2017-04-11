@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.xml.transform.Result;
@@ -25,19 +26,15 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.xmlgraphics.util.MimeConstants;
 import org.dbdoclet.trafo.TrafoScriptManager;
-import org.dbdoclet.trafo.html.docbook.DocBookTransformer;
+import org.dbdoclet.trafo.html.docbook.HtmlDocBookTrafo;
 import org.dbdoclet.trafo.script.Script;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
 public class ApacheFOPHeroldLiveTest {
-    private String[] inputUrls = {// @formatter:off
-            "http://www.baeldung.com/2011/10/20/bootstraping-a-web-application-with-spring-3-1-and-java-based-configuration-part-1/",
-            "http://www.baeldung.com/2011/10/25/building-a-restful-web-service-with-spring-3-1-and-java-based-configuration-part-2/",
-            "http://www.baeldung.com/2011/10/31/securing-a-restful-web-service-with-spring-security-3-1-part-3/",
-            "http://www.baeldung.com/spring-security-basic-authentication",
-            "http://www.baeldung.com/spring-security-digest-authentication",
-            "http://www.baeldung.com/2011/11/20/basic-and-digest-authentication-for-a-restful-service-with-spring-security-3-1/",
+    private final String[] inputUrls = {// @formatter:off
+           // "http://www.baeldung.com/spring-security-basic-authentication",
+            "http://www.baeldung.com/spring-security-digest-authentication"
             //"http://www.baeldung.com/spring-httpmessageconverter-rest",
             //"http://www.baeldung.com/2011/11/06/restful-web-service-discoverability-part-4/",
             //"http://www.baeldung.com/2011/11/13/rest-service-discoverability-with-spring-part-5/",
@@ -49,10 +46,10 @@ public class ApacheFOPHeroldLiveTest {
             //"http://www.baeldung.com/2013/01/18/testing-rest-with-multiple-mime-types/"
     }; // @formatter:on
 
-    private String style_file = "src/test/resources/docbook-xsl/fo/docbook.xsl";
-    private String output_file = "src/test/resources/final_output.pdf";
-    private String xmlInput = "src/test/resources/input.xml";
-    private String xmlOutput = "src/test/resources/output.xml";
+    private final String style_file = "src/test/resources/docbook-xsl/fo/docbook.xsl";
+    private final String output_file = "src/test/resources/final_output.pdf";
+    private final String xmlInput = "src/test/resources/input.xml";
+    private final String xmlOutput = "src/test/resources/output.xml";
 
     // tests
 
@@ -75,10 +72,11 @@ public class ApacheFOPHeroldLiveTest {
         final TrafoScriptManager mgr = new TrafoScriptManager();
         final File profileFile = new File("src/test/resources/default.her");
         script = mgr.parseScript(profileFile);
-        final DocBookTransformer transformer = new DocBookTransformer();
-        transformer.setScript(script);
+        final HtmlDocBookTrafo transformer = new HtmlDocBookTrafo();
+        transformer.setInputStream(getInputStream(input));
+        transformer.setOutputStream(new FileOutputStream(xmlInput, append));
 
-        transformer.convert(getInputStream(input), new FileOutputStream(xmlInput, append));
+        transformer.transform(script);
     }
 
     private Document fromXMLFileToFO() throws Exception {
@@ -112,7 +110,9 @@ public class ApacheFOPHeroldLiveTest {
 
     private InputStream getInputStream(final String input) throws IOException {
         final URL url = new URL(input);
-        return url.openStream();
+        final HttpURLConnection httpcon = (HttpURLConnection) url.openConnection();
+        httpcon.addRequestProperty("User-Agent", "Mozilla/4.0");
+        return httpcon.getInputStream();
     }
 
     private void fixXML(final String input, final String output) throws IOException {
@@ -127,7 +127,7 @@ public class ApacheFOPHeroldLiveTest {
 
             if (line.contains("info>")) {
                 writer.write(line.replace("info>", "section>"));
-            } else if (!((line.startsWith("<?xml") || line.startsWith("<article") || line.startsWith("</article")) && count > 4)) {
+            } else if (!((line.startsWith("<?xml") || line.startsWith("<article") || line.startsWith("</article")) && (count > 4))) {
                 writer.write(line.replaceAll("xml:id=\"", "xml:id=\"" + count));
             }
             writer.write("\n");

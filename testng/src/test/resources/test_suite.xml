@@ -7,6 +7,7 @@
 	    <classes>
 	        <class name="baeldung.com.RegistrationTest" />
             <class name="baeldung.com.SignInTest" />
+            <class name="baeldung.com.SimpleTest" />
         </classes>
     </test>
 </suite>
