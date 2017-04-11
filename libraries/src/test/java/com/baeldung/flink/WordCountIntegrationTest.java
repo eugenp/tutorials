@@ -1,6 +1,5 @@
 package com.baeldung.flink;
 
-import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -35,14 +34,10 @@ public class WordCountIntegrationTest {
 
         //then
         List<Tuple2<String, Integer>> collect = result.collect();
-        assertThat(collect.size()).isEqualTo(9);
-        assertThat(collect.contains(new Tuple2<>("a", 3))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("sentence", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("word", 1))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("is", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("this", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("second", 1))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("first", 1))).isTrue();
+        assertThat(collect).containsExactlyInAnyOrder(
+                new Tuple2<>("a", 3), new Tuple2<>("sentence", 2), new Tuple2<>("word", 1),
+                new Tuple2<>("is", 2), new Tuple2<>("this", 2), new Tuple2<>("second", 1),
+                new Tuple2<>("first", 1), new Tuple2<>("with", 1), new Tuple2<>("one", 1));
     }
 
     @Test
@@ -54,7 +49,7 @@ public class WordCountIntegrationTest {
         //when
         List<Integer> collect = amounts
                 .filter(a -> a > threshold)
-                .reduce((ReduceFunction<Integer>) (integer, t1) -> integer + t1)
+                .reduce((integer, t1) -> integer + t1)
                 .collect();
 
         //then
@@ -92,12 +87,7 @@ public class WordCountIntegrationTest {
                 .collect();
 
         //then
-        assertThat(sorted.size()).isEqualTo(4);
-        assertThat(sorted.get(0)).isEqualTo(firstPerson);
-        assertThat(sorted.get(1)).isEqualTo(secondPerson);
-        assertThat(sorted.get(2)).isEqualTo(thirdPerson);
-        assertThat(sorted.get(3)).isEqualTo(fourthPerson);
-
+        assertThat(sorted).containsExactly(firstPerson, secondPerson, thirdPerson, fourthPerson);
     }
 
 
