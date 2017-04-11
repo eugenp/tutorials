@@ -4,8 +4,8 @@
         <title>Result</title>
     </head>
     <body>
-        <div th:if='${message}' th:text='${message}' style='color: red;'></div>
-        <div th:unless='${message}' style='color: green;'>Success!</div>
+        <div th:if='${error}' th:text='${error}' style='color: red;'></div>
+        <div th:unless='${error}' style='color: green;'>Success!</div>
         
         <a href='/checkout.html'>Checkout</a>
     </body>

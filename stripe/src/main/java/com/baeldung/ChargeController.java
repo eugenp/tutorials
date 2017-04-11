@@ -2,11 +2,11 @@ package com.baeldung;
 
 import com.baeldung.ChargeRequest.Currency;
 import com.stripe.exception.StripeException;
-import java.util.logging.Level;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -18,16 +18,16 @@ public class ChargeController {
     StripeService paymentsService;
 
     @RequestMapping(value = "/charge", method = POST)
-    public String charge(ChargeRequest chargeRequest, Model model) {
-        try {
-            chargeRequest.setDescription("Example charge");
-            chargeRequest.setCurrency(Currency.EUR);
-            log.log(Level.INFO, "Executing {0}", chargeRequest);
-            paymentsService.charge(chargeRequest);
-        } catch (StripeException ex) {
-            log.severe(ex.getMessage());
-            model.addAttribute("message", ex.getMessage());
-        }
+    public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+        chargeRequest.setDescription("Example charge");
+        chargeRequest.setCurrency(Currency.EUR);
+        paymentsService.charge(chargeRequest);
+        return "result";
+    }
+
+    @ExceptionHandler(StripeException.class)
+    public String handleError(Model model, StripeException ex) {
+        model.addAttribute("error", ex.getMessage());
         return "result";
     }
 }
