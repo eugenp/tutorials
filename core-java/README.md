@@ -11,6 +11,9 @@
 - [Converting between a List and a Set in Java](http://www.baeldung.com/convert-list-to-set-and-set-to-list)
 - [Convert a Map to an Array, List or Set in Java](http://www.baeldung.com/convert-map-values-to-array-list-set)
 - [Java – Write to File](http://www.baeldung.com/java-write-to-file)
+- [Java - Convert File to InputStream](http://www.baeldung.com/convert-file-to-input-stream)
+- [Java – Random Long, Float, Integer and Double](http://www.baeldung.com/java-generate-random-long-float-integer-double)
+- [Java – Generate Random String](http://www.baeldung.com/java-random-string)
 - [Java Scanner](http://www.baeldung.com/java-scanner)
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
 - [Java – Byte Array to Writer](http://www.baeldung.com/java-convert-byte-array-to-writer)
@@ -85,4 +88,7 @@
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
 - [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
+- [Avoiding ConcurrentModificationException when iterating and removing](http://www.baeldung.com/avoiding-concurrentmodificationexception-when-iterating-and-removing)
+- [Removing all nulls from a List in Java](http://www.baeldung.com/java-remove-nulls-from-list)
+- [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
 

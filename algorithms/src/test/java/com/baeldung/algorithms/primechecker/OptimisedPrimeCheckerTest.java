@@ -9,7 +9,7 @@ import com.baeldung.algorithms.primechecker.PrimeChecker;
 
 public class OptimisedPrimeCheckerTest {
 
-    PrimeChecker primeChecker = new OptimisedPrimeChecker();
+    OptimisedPrimeChecker primeChecker = new OptimisedPrimeChecker();
     
     @Test
     public void givenPrimeNumber_whenCheckIsPrime_thenTrue(){
