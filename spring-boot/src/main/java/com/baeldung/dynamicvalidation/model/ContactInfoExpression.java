@@ -17,7 +17,6 @@ public class ContactInfoExpression {
     }
 
     public ContactInfoExpression(final String type, final String pattern) {
-        super();
         this.type = type;
         this.pattern = pattern;
     }

@@ -21,7 +21,6 @@ public class Customer {
     }
 
     public Customer(final long id, final String contactInfo) {
-        super();
         this.id = id;
         this.contactInfo = contactInfo;
     }

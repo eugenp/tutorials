@@ -23,7 +23,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
     public boolean isValid(final String value, final ConstraintValidatorContext context) {
         String expressionType = System.getProperty("contactInfoType");
         System.out.println(expressionType);
-        final ContactInfoExpression expression = expressionRepository.getOne(expressionType);
+        final ContactInfoExpression expression = expressionRepository.findOne(expressionType);
         if (expression != null) {
             final String pattern = expression.getPattern();
             if (Pattern.matches(pattern, value))
