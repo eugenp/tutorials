@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
   initParams = { @WebInitParam(name = "type", value = "savings") }
   )
 /*@ServletSecurity(
-  value = @HttpConstraint(rolesAllowed = {"admin"}),
-  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"admin"})}
+  value = @HttpConstraint(rolesAllowed = {"Member"}),
+  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"Admin"})}
   )*/
 public class AccountServlet extends javax.servlet.http.HttpServlet {
 
