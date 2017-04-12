@@ -98,7 +98,16 @@
             <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
             <scope>test</scope>
         </dependency>
-
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient</artifactId>
+		        <version>4.5</version>
+		    </dependency>		
+		    <dependency>
+		        <groupId>commons-io</groupId>
+		        <artifactId>commons-io</artifactId>
+		        <version>2.4</version>
+		    </dependency>        
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
@@ -378,5 +387,21 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>webdriver-chrome</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <browser>chrome</browser>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>webdriver-firefox</id>
+            <properties>
+                <browser>firefox</browser>
+            </properties>
+		</profile>
     </profiles>
 </project>
