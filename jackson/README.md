@@ -25,3 +25,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [More Jackson Annotations](http://www.baeldung.com/jackson-advanced-annotations)
 - [Inheritance with Jackson](http://www.baeldung.com/jackson-inheritance)
 - [Guide to @JsonFormat in Jackson](http://www.baeldung.com/jackson-jsonformat)
+- [A Guide to Optional with Jackson](http://www.baeldung.com/jackson-optional)
