@@ -7,51 +7,51 @@ import kotlin.test.assertTrue
 class GenericsTest {
 
     @Test
-    fun givenParametrizeClass_whenInitializeItWithSpecificType_thenShouldBeParametrized() {
+    fun givenParametrizeClass_whenInitializeItWithSpecificType_thenShouldBeParameterized() {
         //given
-        val parametrizedClass = ParametrizedClass<String>("string-value")
+        val parameterizedClass = ParameterizedClass<String>("string-value")
 
         //when
-        val res = parametrizedClass.getValue()
+        val res = parameterizedClass.getValue()
 
         //then
         assertTrue(res is String)
     }
 
     @Test
-    fun givenParametrizeClass_whenInitializeIt_thenShouldBeParametrizedByInferredType() {
+    fun givenParametrizeClass_whenInitializeIt_thenShouldBeParameterizedByInferredType() {
         //given
-        val parametrizedClass = ParametrizedClass("string-value")
+        val parameterizedClass = ParameterizedClass("string-value")
 
         //when
-        val res = parametrizedClass.getValue()
+        val res = parameterizedClass.getValue()
 
         //then
         assertTrue(res is String)
     }
 
     @Test
-    fun givenParametrizedProducerByOutKeyword_whenGetValue_thenCanAssignItToSuperType() {
+    fun givenParameterizedProducerByOutKeyword_whenGetValue_thenCanAssignItToSuperType() {
         //given
-        val parametrizedProducer = ParametrizedProducer("string")
+        val parameterizedProducer = ParameterizedProducer("string")
 
         //when
-        val ref: ParametrizedProducer<Any> = parametrizedProducer
+        val ref: ParameterizedProducer<Any> = parameterizedProducer
 
         //then
-        assertTrue(ref is ParametrizedProducer<Any>)
+        assertTrue(ref is ParameterizedProducer<Any>)
     }
 
     @Test
-    fun givenParametrizedConsumerByInKeyword_whenGetValue_thenCanAssignItToSubType() {
+    fun givenParameterizedConsumerByInKeyword_whenGetValue_thenCanAssignItToSubType() {
         //given
-        val parametrizedConsumer = ParametrizedConsumer<Number>()
+        val parameterizedConsumer = ParameterizedConsumer<Number>()
 
         //when
-        val ref: ParametrizedConsumer<Double> = parametrizedConsumer
+        val ref: ParameterizedConsumer<Double> = parameterizedConsumer
 
         //then
-        assertTrue(ref is ParametrizedConsumer<Double>)
+        assertTrue(ref is ParameterizedConsumer<Double>)
     }
 
     @Test
@@ -127,20 +127,20 @@ class GenericsTest {
         return list.sorted()
     }
 
-    class ParametrizedClass<A>(private val value: A) {
+    class ParameterizedClass<A>(private val value: A) {
 
         fun getValue(): A {
             return value
         }
     }
 
-    class ParametrizedProducer<out T>(private val value: T) {
+    class ParameterizedProducer<out T>(private val value: T) {
         fun get(): T {
             return value
         }
     }
 
-    class ParametrizedConsumer<in T> {
+    class ParameterizedConsumer<in T> {
         fun toString(value: T): String {
             return value.toString()
         }
