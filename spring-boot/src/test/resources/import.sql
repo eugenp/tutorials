@@ -1,1 +1,1 @@
-Insert into Foo values(1,'Foo_Name');
+--insert into Foo values(1,'Foo_Name');

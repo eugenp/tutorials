@@ -13,6 +13,7 @@
         <module>spring-cloud-bootstrap</module>
         <module>spring-cloud-ribbon-client</module>
         <module>spring-cloud-rest</module>
+        <module>spring-cloud-zookeeper</module>
     </modules>
     <packaging>pom</packaging>
 

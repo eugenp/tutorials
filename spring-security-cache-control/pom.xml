@@ -81,6 +81,9 @@
     </dependencies>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+            
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <rest-assured.version>2.9.0</rest-assured.version>
     </properties>

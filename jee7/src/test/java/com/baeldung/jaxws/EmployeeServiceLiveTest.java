@@ -1,4 +1,4 @@
-package com.baeldung.jaxws;
+/*package com.baeldung.jaxws;
 
 import static org.junit.Assert.assertEquals;
 
@@ -108,3 +108,4 @@ public class EmployeeServiceLiveTest {
     }
 
 }
+*/
