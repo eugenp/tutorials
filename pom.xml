@@ -153,7 +153,6 @@
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
