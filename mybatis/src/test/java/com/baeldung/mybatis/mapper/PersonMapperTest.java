@@ -45,13 +45,6 @@ public class PersonMapperTest {
         String alterTable="ALTER TABLE " +
                 "    address ADD CONSTRAINT fk_person FOREIGN KEY (personId) REFERENCES person (personId)";
 
-        String storedProc = "CREATE PROCEDURE getPersonByProc(IN personId NUMBER, OUT name VARCHAR(255))  "
-                +" LANGUAGE JAVA "
-                +" EXTERNAL "
-                +" 'PersonMapperTest.getPersonById' ";
-
-
-
 
         session.getConnection().createStatement().execute(createPersonTable);
         session.getConnection().createStatement().execute(createAddressTable);
@@ -153,22 +146,4 @@ public class PersonMapperTest {
 
     }
 
-    private void getPersonById(Integer id , String name) throws SQLException {
-        Connection conn=session.getConnection();
-        PreparedStatement stmt=null;
-        ResultSet res=null;
-        try {
-            String sql = "Select * from Person where personId= ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            res = stmt.executeQuery();
-            name = res.next()? res.getString(2):null;
-        }finally {
-            res.close();
-            stmt.close();
-            conn.close();
-
-        }
-
-    }
 }
