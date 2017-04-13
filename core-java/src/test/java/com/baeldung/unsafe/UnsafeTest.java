@@ -50,7 +50,7 @@ public class UnsafeTest {
     }
 
     @Test(expected = IOException.class)
-    public void givenUnsafeThrowException_whenThrowChecked_thenNotNeedToCatchIt() {
+    public void givenUnsafeThrowException_whenThrowCheckedException_thenNotNeedToCatchIt() {
         unsafe.throwException(new IOException());
     }
 
