@@ -20,7 +20,6 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
     @Value("${contactInfoType}")
     String expressionType;
 
-    @Override
     public void initialize(final ContactInfo contactInfo) {
     }
 
@@ -36,5 +35,4 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
         }
         return false;
     }
-
 }
