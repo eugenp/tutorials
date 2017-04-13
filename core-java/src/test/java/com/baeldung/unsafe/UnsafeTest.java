@@ -39,14 +39,14 @@ public class UnsafeTest {
     @Test
     public void givenPrivateMethod_whenUsingUnsafe_thenCanModifyPrivateField() throws NoSuchFieldException {
         //given
-        Guard guard = new Guard();
+        SecretHolder secretHolder = new SecretHolder();
 
         //when
-        Field f = guard.getClass().getDeclaredField("HAS_ACCESS");
-        unsafe.putInt(guard, unsafe.objectFieldOffset(f), 1);
+        Field f = secretHolder.getClass().getDeclaredField("SECRET_VALUE");
+        unsafe.putInt(secretHolder, unsafe.objectFieldOffset(f), 1);
 
         //then
-        assertTrue(guard.hasAccess());
+        assertTrue(secretHolder.secretIsRevail());
     }
 
     @Test(expected = IOException.class)
@@ -109,11 +109,11 @@ public class UnsafeTest {
         }
     }
 
-    class Guard {
-        private int HAS_ACCESS = 0;
+    class SecretHolder {
+        private int SECRET_VALUE = 0;
 
-        public boolean hasAccess() {
-            return HAS_ACCESS == 1;
+        public boolean secretIsRevail() {
+            return SECRET_VALUE == 1;
         }
     }
 
