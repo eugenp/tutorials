@@ -46,7 +46,7 @@ public class UnsafeTest {
         unsafe.putInt(secretHolder, unsafe.objectFieldOffset(f), 1);
 
         //then
-        assertTrue(secretHolder.secretIsRevail());
+        assertTrue(secretHolder.secretIsDisclosed());
     }
 
     @Test(expected = IOException.class)
@@ -112,7 +112,7 @@ public class UnsafeTest {
     class SecretHolder {
         private int SECRET_VALUE = 0;
 
-        public boolean secretIsRevail() {
+        public boolean secretIsDisclosed() {
             return SECRET_VALUE == 1;
         }
     }
