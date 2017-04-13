@@ -20,20 +20,18 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
     @Value("${contactInfoType}")
     String expressionType;
 
-	@Override
+    @Override
     public void initialize(final ContactInfo contactInfo) {
     }
 
     @Override
     public boolean isValid(final String value, final ConstraintValidatorContext context) {
         if (!StringUtils.isEmptyOrWhitespace(expressionType)) {
-            final ContactInfoExpression expression = expressionRepository.findOne(expressionType);
-            if (expression != null) {
-                final String pattern = expression.getPattern();
-                if (Pattern.matches(pattern, value))
-                    return true;
-            }
+            final String pattern = expressionRepository.findOne(expressionType).map(ContactInfoExpression::getPattern).orElse("");
+            if (Pattern.matches(pattern, value))
+                return true;
         }
         return false;
     }
+
 }

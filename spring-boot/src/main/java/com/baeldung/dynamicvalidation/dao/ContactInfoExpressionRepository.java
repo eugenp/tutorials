@@ -1,9 +1,11 @@
 package com.baeldung.dynamicvalidation.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+import org.springframework.data.repository.Repository;
 
 import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
 
-public interface ContactInfoExpressionRepository extends JpaRepository<ContactInfoExpression, String> {
-
+public interface ContactInfoExpressionRepository extends Repository<ContactInfoExpression, String> {
+    Optional<ContactInfoExpression> findOne(String id);
 }
