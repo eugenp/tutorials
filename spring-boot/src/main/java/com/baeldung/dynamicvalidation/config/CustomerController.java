@@ -17,7 +17,6 @@ public class CustomerController {
 
     @GetMapping("/customer")
     public String getCustomerPage(Model model) {
-        model.addAttribute("contactInfoType", System.getProperty("contactInfoType"));
         return "customer";
     }
 
