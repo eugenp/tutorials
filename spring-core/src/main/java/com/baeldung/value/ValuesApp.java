@@ -16,28 +16,28 @@ import org.springframework.context.annotation.PropertySource;
 public class ValuesApp {
 
     @Value("string value")
-    private String value1;
+    private String stringValue;
 
     @Value("${value.from.file}")
-    private String value2;
+    private String valueFromFile;
 
     @Value("${systemValue}")
-    private String value3;
+    private String systemValue;
 
     @Value("${unknown_param:some default}")
-    private String value4;
+    private String someDefault;
 
     @Value("${priority}")
-    private String value5;
+    private String prioritySystemProperty;
 
     @Value("#{systemProperties['priority']}")
-    private String value6;
+    private String spelValue;
 
-    @Value("#{systemEnvironment['priority'] ?: 'default env'}")
-    private String value7;
+    @Value("#{systemProperties['unknown'] ?: 'some default'}")
+    private String spelSomeDefault;
 
     @Value("#{someBean.someValue}")
-    private Integer value8;
+    private Integer someBeanValue;
 
     @Value("#{'${listOfValues}'.split(',')}")
     private List<String> valuesList;
@@ -50,19 +50,19 @@ public class ValuesApp {
 
     @Bean
     public SomeBean someBean() {
-        return new SomeBean(42);
+        return new SomeBean(10);
     }
 
     @PostConstruct
     public void afterInitialize() {
-        System.out.println(value1);
-        System.out.println(value2);
-        System.out.println(value3);
-        System.out.println(value4);
-        System.out.println(value5);
-        System.out.println(value6);
-        System.out.println(value7);
-        System.out.println(value8);
+        System.out.println(stringValue);
+        System.out.println(valueFromFile);
+        System.out.println(systemValue);
+        System.out.println(someDefault);
+        System.out.println(prioritySystemProperty);
+        System.out.println(spelValue);
+        System.out.println(spelSomeDefault);
+        System.out.println(someBeanValue);
         System.out.println(valuesList);
     }
 }
