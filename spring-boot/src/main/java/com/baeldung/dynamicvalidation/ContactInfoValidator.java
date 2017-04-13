@@ -27,7 +27,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
     @Override
     public boolean isValid(final String value, final ConstraintValidatorContext context) {
         if (!StringUtils.isEmptyOrWhitespace(expressionType)) {
-            final ContactInfoExpression expression = expressionRepository.getOne(expressionType);
+            final ContactInfoExpression expression = expressionRepository.findOne(expressionType);
             if (expression != null) {
                 final String pattern = expression.getPattern();
                 if (Pattern.matches(pattern, value))
