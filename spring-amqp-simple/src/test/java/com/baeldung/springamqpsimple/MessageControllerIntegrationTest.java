@@ -41,6 +41,9 @@ public class MessageControllerIntegrationTest {
         final String message = "Hello World!";
         restTemplate.postForEntity("/messages", message, Void.class);
 
-        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.queueName, message);
+        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.directQueueName, message);
+        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.fanoutExchangeName, "", message);
+        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.topicExchangeName, "user.not-important.info", message);
+        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.topicExchangeName, "user.important.error", message);
     }
 }

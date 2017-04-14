@@ -21,6 +21,6 @@ public class MessageController {
     @RequestMapping(value="/messages", method= RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.CREATED)
     public void sendMessage(@RequestBody String message) {
-        messageProducer.sendMessage(message);
+        messageProducer.sendMessages(message);
     }
 }
