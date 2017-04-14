@@ -12,9 +12,11 @@ import java.util.regex.Pattern;
 
 public class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
 
-    @Autowired private ContactInfoExpressionRepository expressionRepository;
+    @Autowired
+    private ContactInfoExpressionRepository expressionRepository;
 
-    @Value("${contactInfoType}") String expressionType;
+    @Value("${contactInfoType}")
+    String expressionType;
 
     @Override
     public void initialize(final ContactInfo contactInfo) {
