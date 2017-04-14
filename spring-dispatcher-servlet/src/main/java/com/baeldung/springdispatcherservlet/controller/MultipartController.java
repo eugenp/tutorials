@@ -6,25 +6,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 @Controller
-@RequestMapping(value = "/upload", method = RequestMethod.POST)
 public class MultipartController {
 
     @Autowired
     ServletContext context;
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void FileuploadController(@RequestParam("file") MultipartFile file) {
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public ModelAndView FileuploadController(@RequestParam("file") MultipartFile file) {
+        ModelAndView modelAndView = new ModelAndView("index");
         try {
-            String path = context.getRealPath("/WEB-INF/uploaded") + File.separator + file.getOriginalFilename();
-            File destinationFile = new File(path);
-            file.transferTo(destinationFile);
+            InputStream in = file.getInputStream();
+            String path = new File(".").getAbsolutePath();
+            FileOutputStream f = new FileOutputStream(path.substring(0, path.length()-1)+ "/uploads/" + file.getOriginalFilename());
+            int ch;
+            while ((ch = in.read()) != -1) {
+                f.write(ch);
+            }
+            f.flush();
+            f.close();
+            modelAndView.getModel().put("message", "File uploaded successfully!");
         } catch (Exception e) {
             System.out.println("Exception uploading multipart: " + e);
         }
+        return modelAndView;
     }
 }

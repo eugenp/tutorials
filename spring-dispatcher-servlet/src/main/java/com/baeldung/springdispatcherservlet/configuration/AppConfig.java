@@ -44,7 +44,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     /** Static resource locations including themes*/
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
+        registry.addResourceHandler("/resources/**/*")
                 .addResourceLocations("/", "/resources/")
                 .setCachePeriod(3600)
                 .resourceChain(true)
@@ -63,7 +63,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean
     public CookieThemeResolver themeResolver(){
         CookieThemeResolver resolver = new CookieThemeResolver();
-        resolver.setDefaultThemeName("example");
+        resolver.setDefaultThemeName("default");
         resolver.setCookieName("example-theme-cookie");
         return resolver;
     }
