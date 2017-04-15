@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
 
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
@@ -81,13 +82,10 @@ public class UnsafeTest {
         CASCounter casCounter = new CASCounter();
 
         //when
-        for (int i = 0; i < NUM_OF_THREADS; i++) {
-            service.submit((Runnable) () -> {
-                for (int i1 = 0; i1 < NUM_OF_INCREMENTS; i1++) {
-                    casCounter.increment();
-                }
-            });
-        }
+        IntStream.rangeClosed(0, NUM_OF_THREADS - 1)
+                .forEach(i -> service.submit(() -> IntStream
+                        .rangeClosed(0, NUM_OF_INCREMENTS - 1)
+                        .forEach(j -> casCounter.increment())));
 
         service.shutdown();
         service.awaitTermination(1, TimeUnit.MINUTES);
