@@ -15,19 +15,19 @@ public class HeavyResourceController {
 
     private HeavyResourceRepository heavyResourceRepository = new HeavyResourceRepository();
 
-    @RequestMapping(value = "/heavy", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveResource(@RequestBody HeavyResource heavyResource) {
-        heavyResourceRepository.save(heavyResource);
+    @RequestMapping(value = "/heavyresource/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> saveResource(@RequestBody HeavyResource heavyResource, @PathVariable("id") String id) {
+        heavyResourceRepository.save(heavyResource, id);
         return ResponseEntity.ok("resource saved");
     }
 
-    @RequestMapping(value = "/heavy", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> partialUpdateName(@RequestBody HeavyResourceAddressOnly partialUpdate) {
-        heavyResourceRepository.save(partialUpdate);
+    @RequestMapping(value = "/heavyresource/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> partialUpdateName(@RequestBody HeavyResourceAddressOnly partialUpdate, @PathVariable("id") String id) {
+        heavyResourceRepository.save(partialUpdate, id);
         return ResponseEntity.ok("resource address updated");
     }
 
-    @RequestMapping(value = "/heavy/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/heavyresource2/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> partialUpdateGeneric(@RequestBody Map<String, Object> updates,
                                                   @PathVariable("id") String id) {
         heavyResourceRepository.save(updates, id);

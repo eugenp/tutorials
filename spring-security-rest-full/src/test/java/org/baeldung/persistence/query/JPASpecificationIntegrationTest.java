@@ -6,6 +6,7 @@ import org.baeldung.persistence.dao.UserSpecification;
 import org.baeldung.persistence.dao.UserSpecificationsBuilder;
 import org.baeldung.persistence.model.User;
 import org.baeldung.spring.PersistenceConfig;
+import org.baeldung.web.util.CriteriaParser;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.junit.Before;
@@ -70,7 +71,9 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe"));
-        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
@@ -80,10 +83,13 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
 
-        final SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
-        final SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
+        SpecSearchCriteria spec = new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john");
+        SpecSearchCriteria spec1 = new SpecSearchCriteria("'","lastName", SearchOperation.EQUALITY, "doe");
 
-        final List<User> results = repository.findAll(builder.with(spec1).with(spec).build());
+        List<User> results = repository.findAll(builder
+          .with(spec)
+          .with(spec1)
+          .build());
 
         assertThat(results, hasSize(2));
         assertThat(userJohn, isIn(results));
@@ -91,13 +97,28 @@ public class JPASpecificationIntegrationTest {
     }
 
     @Test
-    public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
-        GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
+    public void givenFirstOrLastNameAndAgeGenericBuilder_whenGettingListOfUsers_thenCorrect() {
+        GenericSpecificationsBuilder<User> builder = new GenericSpecificationsBuilder<>();
         Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
-        builder.with("'", "firstName", ":", "john", null, null);
-        builder.with(null, "lastName", ":", "doe", null, null);
+        
+        CriteriaParser parser=new CriteriaParser();
+        List<User> results = repository.findAll(builder.build(parser.parse("( lastName:doe OR firstName:john ) AND age:22"), converter));
 
-        final List<User> results = repository.findAll(builder.build(converter));
+        assertThat(results, hasSize(1));
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
+    }
+
+    @Test
+    public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
+        GenericSpecificationsBuilder<User> builder = new GenericSpecificationsBuilder<>();
+        Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
+        
+        builder.with("firstName", ":", "john", null, null);
+        builder.with("'", "lastName", ":", "doe", null, null);
+
+        List<User> results = repository.findAll(builder.build(converter));
+
         assertThat(results, hasSize(2));
         assertThat(userJohn, isIn(results));
         assertThat(userTom, isIn(results));
@@ -116,7 +137,6 @@ public class JPASpecificationIntegrationTest {
     public void givenMinAge_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.GREATER_THAN, "25"));
         final List<User> results = repository.findAll(Specifications.where(spec));
-
         assertThat(userTom, isIn(results));
         assertThat(userJohn, not(isIn(results)));
     }
@@ -125,7 +145,6 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstNamePrefix_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.STARTS_WITH, "jo"));
         final List<User> results = repository.findAll(spec);
-
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
     }
@@ -134,7 +153,6 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstNameSuffix_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("firstName", SearchOperation.ENDS_WITH, "n"));
         final List<User> results = repository.findAll(spec);
-
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));
     }
@@ -152,7 +170,9 @@ public class JPASpecificationIntegrationTest {
     public void givenAgeRange_whenGettingListOfUsers_thenCorrect() {
         final UserSpecification spec = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.GREATER_THAN, "20"));
         final UserSpecification spec1 = new UserSpecification(new SpecSearchCriteria("age", SearchOperation.LESS_THAN, "25"));
-        final List<User> results = repository.findAll(Specifications.where(spec).and(spec1));
+        final List<User> results = repository.findAll(Specifications
+          .where(spec)
+          .and(spec1));
 
         assertThat(userJohn, isIn(results));
         assertThat(userTom, not(isIn(results)));

@@ -90,10 +90,9 @@
 
     <properties>
         <junit.version>4.12</junit.version>
-        <kotlin-maven-plugin.version>1.0.6</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.0.6</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.0.6</kotlin-stdlib.version>
-        <kotlin-maven-plugin.version>1.0.6</kotlin-maven-plugin.version>
+        <kotlin-maven-plugin.version>1.1.1</kotlin-maven-plugin.version>
+        <kotlin-test-junit.version>1.1.1</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.1.1</kotlin-stdlib.version>
     </properties>
 
 </project>
