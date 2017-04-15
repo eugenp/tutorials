@@ -1,4 +1,4 @@
-package org.baeldung.boottest;
+package org.baeldung.boot.boottest;
 
 import java.io.IOException;
 

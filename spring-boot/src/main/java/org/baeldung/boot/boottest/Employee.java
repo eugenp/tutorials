@@ -1,4 +1,4 @@
-package org.baeldung.boottest;
+package org.baeldung.boot.boottest;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

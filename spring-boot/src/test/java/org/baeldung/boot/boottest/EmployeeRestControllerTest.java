@@ -1,4 +1,4 @@
-package org.baeldung.boottest;
+package org.baeldung.boot.boottest;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
@@ -13,6 +13,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Arrays;
 import java.util.List;
 
+import org.baeldung.boot.boottest.Employee;
+import org.baeldung.boot.boottest.EmployeeRestController;
+import org.baeldung.boot.boottest.EmployeeService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
