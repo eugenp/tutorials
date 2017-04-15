@@ -32,4 +32,8 @@ class OffHeapArray {
         return size;
     }
 
+    public void freeMemory() throws NoSuchFieldException, IllegalAccessException {
+        getUnsafe().freeMemory(address);
+    }
+
 }
