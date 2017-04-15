@@ -68,9 +68,14 @@ public class UnsafeTest {
             sum += array.get((long) Integer.MAX_VALUE + i);
         }
 
+        long arraySize = array.size();
+
+        array.freeMemory();
+
         //then
-        assertEquals(array.size(), SUPER_SIZE);
+        assertEquals(arraySize, SUPER_SIZE);
         assertEquals(sum, 300);
+
     }
 
     @Test
