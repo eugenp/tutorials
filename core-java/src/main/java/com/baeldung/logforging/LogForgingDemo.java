@@ -14,9 +14,9 @@ public class LogForgingDemo {
 
 	public static void main(String[] args) {
 		LogForgingDemo demo = new LogForgingDemo();
-		demo.addLog(String.valueOf(300));
-		demo.addLog(String.valueOf(300 + "\n\nweb - 2017-04-12 17:47:08,957 [main] INFO Amount reversed successfully"));
-		demo.addLog(String.valueOf(encode(300 + "\n\nweb - 2017-04-12 17:47:08,957 [main] INFO Amount reversed successfully")));
+		demo.addLog("300");
+		demo.addLog("300 \n\nweb - 2017-04-12 17:47:08,957 [main] INFO Amount reversed successfully");
+		demo.addLog(encode("300 \n\nweb - 2017-04-12 17:47:08,957 [main] INFO Amount reversed successfully"));
 	}
 
 	public static String encode(String message) {
