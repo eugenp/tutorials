@@ -2,8 +2,6 @@ package org.baeldung.mockito;
 
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
@@ -69,7 +67,7 @@ public class MockitoConfigExamplesTest {
     }
 
     @Test
-    public final void whenMockMethodCallIsConfiguredToCallTheRealMethod_thenRealMetehodIsCalled() {
+    public final void whenMockMethodCallIsConfiguredToCallTheRealMethod_thenRealMethodIsCalled() {
         final MyList listMock = Mockito.mock(MyList.class);
         when(listMock.size()).thenCallRealMethod();
 
@@ -77,14 +75,9 @@ public class MockitoConfigExamplesTest {
     }
 
     @Test
-    public final void whenMockMethodCallIsConfiguredWithCustomAnswer_thenRealMetehodIsCalled() {
+    public final void whenMockMethodCallIsConfiguredWithCustomAnswer_thenRealMethodIsCalled() {
         final MyList listMock = Mockito.mock(MyList.class);
-        doAnswer(new Answer<String>() {
-            @Override
-            public final String answer(final InvocationOnMock invocation) {
-                return "Always the same";
-            }
-        }).when(listMock).get(anyInt());
+        doAnswer(invocation -> "Always the same").when(listMock).get(anyInt());
 
         final String element = listMock.get(1);
         assertThat(element, is(equalTo("Always the same")));

@@ -24,7 +24,7 @@ public class SpringRunner {
     }
 
     private static Car getCarFromXml() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("baeldung.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("constructordi.xml");
 
         return context.getBean(Car.class);
     }
