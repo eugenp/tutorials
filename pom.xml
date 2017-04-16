@@ -35,7 +35,7 @@
         <module>deltaspike</module>
         <module>dozer</module>
 
-        <module>ejb</module>
+        <!--<module>ejb</module>-->
 
         <module>feign</module>
         <module>flyway</module>
@@ -66,7 +66,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <module>jee7</module>
+        <!--<module>jee7</module>-->
         <!-- <module>jhipster</module> -->
         <module>jjwt</module>
         <module>jooq</module>
@@ -153,7 +153,6 @@
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
@@ -215,6 +214,8 @@
         <module>rabbitmq</module>
         <module>vertx</module>
         <module>spring-data-gemfire</module>
+        <module>cucumber</module>
+        <module>mybatis</module>
     </modules>
 
     <build>
@@ -233,6 +234,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
