@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.stripe;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.stripe;
 
 import lombok.Getter;
 import lombok.Setter;

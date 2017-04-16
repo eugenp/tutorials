@@ -5,8 +5,12 @@
     </head>
     <body>
         <div th:if='${error}' th:text='${error}' style='color: red;'></div>
-        <div th:unless='${error}' style='color: green;'>Success!</div>
-        
-        <a href='/checkout.html'>Checkout</a>
+        <div th:unless='${error}' style='color: green; font-weight: bold;'>Success!
+            <div>Id.: <span th:text='${id}' /></div>
+            <div>Status: <span th:text='${status}' /></div>
+            <div>Charge id.: <span th:text='${chargeId}' /></div>
+            <div>Balance transaction: <span th:text='${balance_transaction}' /></div>
+        </div>
+        <a href='/checkout.html'>Checkout again</a>
     </body>
 </html>

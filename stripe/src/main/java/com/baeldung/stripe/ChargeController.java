@@ -1,7 +1,8 @@
-package com.baeldung;
+package com.baeldung.stripe;
 
-import com.baeldung.ChargeRequest.Currency;
+import com.baeldung.stripe.ChargeRequest.Currency;
 import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,11 @@ public class ChargeController {
     public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(Currency.EUR);
-        paymentsService.charge(chargeRequest);
+        Charge charge = paymentsService.charge(chargeRequest);
+        model.addAttribute("id", charge.getId());
+        model.addAttribute("status", charge.getStatus());
+        model.addAttribute("chargeId", charge.getId());
+        model.addAttribute("balance_transaction", charge.getBalanceTransaction());
         return "result";
     }
 
