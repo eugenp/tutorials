@@ -12,9 +12,9 @@ public class ChargeRequest {
     public enum Currency {
         EUR, USD;
     }
-    String description;
-    int amount; // cents
-    Currency currency;
-    String stripeEmail;
-    String stripeToken;
+    private String description;
+    private int amount; // cents
+    private Currency currency;
+    private String stripeEmail;
+    private String stripeToken;
 }
