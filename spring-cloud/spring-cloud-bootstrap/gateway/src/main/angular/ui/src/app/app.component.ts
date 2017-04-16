@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {NgForm} from "@angular/forms";
 import {RequestOptions, Http, Response, Headers} from "@angular/http";
 import "rxjs/Rx";
+import {Principal} from "./principal";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit{
     username: '',
     password: ''
   };
+
+  principal: Principal = new Principal(false, []);
 
   constructor(private http: Http){}
 
@@ -26,8 +29,10 @@ export class AppComponent implements OnInit{
     let options = new RequestOptions({headers: headers});
     this.http.get("/me", options)
       .map((response: Response) => response.json())
-      .subscribe((data: any) => {
-        console.log(data);
+      .map((data: any) => new Principal(data.authenticated, data.authorities))
+      .subscribe((principal: Principal) => {
+        console.log(principal);
+        this.principal = principal;
       });
   }
 }
