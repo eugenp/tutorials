@@ -22,16 +22,6 @@ public class MyBatisUtil {
     public static final String PASSWORD = "pass123";
     private static SqlSessionFactory sqlSessionFactory;
 
-    static {
-        String resource = "mybatis-config.xml";
-        InputStream inputStream;
-        try {
-            inputStream = Resources.getResourceAsStream(resource);
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public static SqlSessionFactory buildqlSessionFactory(){
         DataSource dataSource=new PooledDataSource(DRIVER, URL, USERNAME, PASSWORD);
         Environment environment=new Environment("Development",new JdbcTransactionFactory(),dataSource);
