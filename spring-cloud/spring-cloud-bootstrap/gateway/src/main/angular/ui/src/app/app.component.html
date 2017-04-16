@@ -6,10 +6,10 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
     </ul>
-    <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Username">
-      <input class="form-control mr-sm-2" type="password" placeholder="Password">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    <form (ngSubmit)="onLogin(f)" class="form-inline mt-2 mt-md-0" #f="ngForm">
+      <input name="username" [(ngModel)]="credentials.username" required class="form-control mr-sm-2" type="text" placeholder="Username">
+      <input name="password" [(ngModel)]="credentials.password" required class="form-control mr-sm-2" type="password" placeholder="Password">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!f.valid">Login</button>
     </form>
   </div>
 </nav>
