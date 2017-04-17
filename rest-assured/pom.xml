@@ -60,17 +60,6 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>${commons-logging.version}</version>
@@ -276,7 +265,6 @@
         <javax.mail.version>1.4.7</javax.mail.version>        
         <jetty.version>9.4.0.v20161208</jetty.version>
         
-        <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.21</slf4j.version>
         
         <commons-lang3.version>3.5</commons-lang3.version>        
