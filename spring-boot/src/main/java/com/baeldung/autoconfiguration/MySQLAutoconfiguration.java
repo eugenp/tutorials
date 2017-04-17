@@ -16,6 +16,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ConditionContext;
@@ -36,31 +37,34 @@ import org.springframework.util.ClassUtils;
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @PropertySource("classpath:mysql.properties")
 public class MySQLAutoconfiguration {
-
     @Autowired
     private Environment env;
 
     @Bean
-    @ConditionalOnProperty("usemysql")
+    @ConditionalOnProperty(name = "usemysql", havingValue = "local")
     @ConditionalOnMissingBean
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        if (env.getProperty("mysql.url") != null) {
-            dataSource.setUrl(env.getProperty("mysql.url"));
-        } else {
-            dataSource.setUrl("jdbc:mysql://localhost:3306/myDb?createDatabaseIfNotExist=true");
-        }
-        if (env.getProperty("mysql.user") != null) {
-            dataSource.setUsername(env.getProperty("mysql.user"));
-        } else {
-            dataSource.setUsername("mysqluser");
-        }
-        if (env.getProperty("mysql.pass") != null) {
-            dataSource.setPassword(env.getProperty("mysql.pass"));
-        } else {
-            dataSource.setPassword("mysqlpass");
-        }
+        dataSource.setUrl("jdbc:mysql://localhost:3306/myDb?createDatabaseIfNotExist=true");
+        dataSource.setUsername("mysqluser");
+        dataSource.setPassword("mysqlpass");
+
+        return dataSource;
+    }
+
+    @Bean(name = "dataSource")
+    @ConditionalOnProperty(name = "usemysql", havingValue = "custom")
+    @ConditionalOnMissingBean
+    public DataSource dataSource2() {
+        final DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl(env.getProperty("mysql.url"));
+        dataSource.setUsername(env.getProperty("mysql.user") != null ? env.getProperty("mysql.user") : "");
+        dataSource.setPassword(env.getProperty("mysql.pass") != null ? env.getProperty("mysql.pass") : "");
+
         return dataSource;
     }
 
@@ -90,17 +94,11 @@ public class MySQLAutoconfiguration {
     @Conditional(HibernateCondition.class)
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
-        
-        if (env.getProperty("mysql-hibernate.hbm2ddl.auto") != null) {
-            hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("mysql-hibernate.hbm2ddl.auto"));
-        }
-        if (env.getProperty("mysql-hibernate.dialect") != null) {
-            hibernateProperties.setProperty("hibernate.dialect", env.getProperty("mysql-hibernate.dialect"));
-            
-        }
-        if (env.getProperty("mysql-hibernate.show_sql") != null) {
-            hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("mysql-hibernate.show_sql"));
-        }
+
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("mysql-hibernate.hbm2ddl.auto"));
+        hibernateProperties.setProperty("hibernate.dialect", env.getProperty("mysql-hibernate.dialect"));
+        hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("mysql-hibernate.show_sql") != null ? env.getProperty("mysql-hibernate.show_sql") : "false");
+
         return hibernateProperties;
     }
 
@@ -113,12 +111,10 @@ public class MySQLAutoconfiguration {
             ConditionMessage.Builder message = ConditionMessage.forCondition("Hibernate");
             for (String className : CLASS_NAMES) {
                 if (ClassUtils.isPresent(className, context.getClassLoader())) {
-                    return ConditionOutcome.match(message.found("class")
-                        .items(Style.NORMAL, className));
+                    return ConditionOutcome.match(message.found("class").items(Style.NORMAL, className));
                 }
             }
-            return ConditionOutcome.noMatch(message.didNotFind("class", "classes")
-                .items(Style.NORMAL, Arrays.asList(CLASS_NAMES)));
+            return ConditionOutcome.noMatch(message.didNotFind("class", "classes").items(Style.NORMAL, Arrays.asList(CLASS_NAMES)));
         }
 
     }
