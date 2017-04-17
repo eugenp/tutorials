@@ -23,7 +23,7 @@ public class PersonMapperTest {
     @Before
     public void setup() throws SQLException {
 
-        session = MyBatisUtil.getSqlSessionFactory().openSession();
+        session = MyBatisUtil.buildqlSessionFactory().openSession();
         createTables(session);
 
     }
