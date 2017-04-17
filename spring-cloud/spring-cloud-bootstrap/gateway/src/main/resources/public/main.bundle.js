@@ -1,6 +1,6 @@
 webpackJsonp([1,4],{
 
-/***/ 196:
+/***/ 197:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,19 +9,19 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 196;
+webpackEmptyContext.id = 197;
 
 
 /***/ }),
 
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(211);
 
 
@@ -35,15 +35,17 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 207:
+/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(161);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__principal__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58,6 +60,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = (function () {
     function AppComponent(http) {
         this.http = http;
@@ -66,16 +69,26 @@ var AppComponent = (function () {
             password: ''
         };
         this.principal = new __WEBPACK_IMPORTED_MODULE_3__principal__["a" /* Principal */](false, []);
+        this.loginFailed = false;
     }
     AppComponent.prototype.ngOnInit = function () {
     };
     AppComponent.prototype.onLogin = function (form) {
         var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
+        this.loginFailed = false;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
         headers.append('Authorization', 'Basic ' + btoa(form.value.username + ':' + form.value.password));
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestOptions */]({ headers: headers });
+        headers.append('X-Requested-With', 'XMLHttpRequest');
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
         this.http.get("/me", options)
             .map(function (response) { return response.json(); })
+            .catch(function (error) {
+            if (error.status === 401) {
+                _this.loginFailed = true;
+            }
+            console.log(error);
+            return __WEBPACK_IMPORTED_MODULE_4_rxjs__["Observable"].throw(error);
+        })
             .map(function (data) { return new __WEBPACK_IMPORTED_MODULE_3__principal__["a" /* Principal */](data.authenticated, data.authorities); })
             .subscribe(function (principal) {
             console.log(principal);
@@ -85,12 +98,12 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Component */])({
         selector: 'app-root',
         template: __webpack_require__(268),
         styles: [__webpack_require__(266)]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
 ], AppComponent);
 
 var _a;
@@ -98,17 +111,16 @@ var _a;
 
 /***/ }),
 
-/***/ 208:
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__(205);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__default_request_options__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__(206);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -116,7 +128,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -139,59 +150,12 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot()
         ],
-        providers: [{ provide: __WEBPACK_IMPORTED_MODULE_3__angular_http__["b" /* RequestOptions */], useClass: __WEBPACK_IMPORTED_MODULE_6__default_request_options__["a" /* DefaultRequestOptions */] }],
+        providers: [],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
-
-/***/ }),
-
-/***/ 209:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(63);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DefaultRequestOptions; });
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-/**
- * Created by tschi on 4/16/2017.
- */
-var DefaultRequestOptions = (function (_super) {
-    __extends(DefaultRequestOptions, _super);
-    function DefaultRequestOptions() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({
-            'X-Requested-With': 'XMLHttpRequest',
-        });
-        return _this;
-    }
-    return DefaultRequestOptions;
-}(__WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* BaseRequestOptions */]));
-DefaultRequestOptions = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])()
-], DefaultRequestOptions);
-
-//# sourceMappingURL=default-request-options.js.map
 
 /***/ }),
 
@@ -266,17 +230,17 @@ module.exports = module.exports.toString();
 /***/ 268:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" href=\"#\">Book Rater</a>\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n    <ul class=\"navbar-nav mr-auto\">\n    </ul>\n    <div *ngIf=\"!principal.authenticated; then loginForm else loginMessage\"></div>\n    <ng-template #loginForm>\n      <form (ngSubmit)=\"onLogin(f)\" class=\"form-inline mt-2 mt-md-0\" #f=\"ngForm\">\n        <input name=\"username\" [(ngModel)]=\"credentials.username\" required class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Username\">\n        <input name=\"password\" [(ngModel)]=\"credentials.password\" required class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f.valid\">Login</button>\n      </form>\n    </ng-template>\n    <ng-template #loginMessage>\n      <button type=\"button\" class=\"btn btn-link\">Logout</button>\n    </ng-template>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <div class=\"jumbotron\">\n    <h1>Book Rater App</h1>\n    <p class=\"lead\">Keep track of all the latest books and their ratings.</p>\n  </div>\n\n</div>\n"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" href=\"#\">Book Rater</a>\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n    <ul class=\"navbar-nav mr-auto\">\n    </ul>\n    <div *ngIf=\"!principal.authenticated; then loginForm else loginMessage\"></div>\n    <ng-template #loginForm>\n      <form (ngSubmit)=\"onLogin(f)\" class=\"form-inline mt-2 mt-md-0\" #f=\"ngForm\">\n        <input name=\"username\" [(ngModel)]=\"credentials.username\" required class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Username\">\n        <input name=\"password\" [(ngModel)]=\"credentials.password\" required class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f.valid\">Login</button>\n      </form>\n    </ng-template>\n    <ng-template #loginMessage>\n      <button type=\"button\" class=\"btn btn-link\">Logout</button>\n    </ng-template>\n    <div *ngIf=\"loginFailed\">\n      <div class=\"alert alert-warning\">Login Failed</div>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"container\">\n  <div class=\"jumbotron\">\n    <h1>Book Rater App</h1>\n    <p class=\"lead\">Keep track of all the latest books and their ratings.</p>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
-/***/ 538:
+/***/ 537:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(197);
+module.exports = __webpack_require__(198);
 
 
 /***/ })
 
-},[538]);
+},[537]);
 //# sourceMappingURL=main.bundle.js.map

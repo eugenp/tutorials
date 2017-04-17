@@ -17,6 +17,9 @@
     <ng-template #loginMessage>
       <button type="button" class="btn btn-link">Logout</button>
     </ng-template>
+    <div *ngIf="loginFailed">
+      <div class="alert alert-warning">Login Failed</div>
+    </div>
 
   </div>
 </nav>
