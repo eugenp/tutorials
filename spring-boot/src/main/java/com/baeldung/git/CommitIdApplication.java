@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
-@SpringBootApplication(scanBasePackages = { "com.baeldung.git" })
+import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
+
+@SpringBootApplication(scanBasePackages = { "com.baeldung.git" }, exclude=MySQLAutoconfiguration.class)
 public class CommitIdApplication {
     public static void main(String[] args) {
         SpringApplication.run(CommitIdApplication.class, args);
