@@ -35,11 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/eureka/**").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
-        .logout().permitAll()
-            .logoutSuccessUrl("/").permitAll()
+        .logout()
             .and()
         .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-        .csrf().csrfTokenRepository(csrfTokenRepository());
+        .csrf().csrfTokenRepository(csrfTokenRepository()).ignoringAntMatchers("/logout");
     }
 
     private CsrfTokenRepository csrfTokenRepository() {

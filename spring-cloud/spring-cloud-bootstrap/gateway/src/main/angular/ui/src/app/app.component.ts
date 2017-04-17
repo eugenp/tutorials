@@ -1,20 +1,22 @@
-import {Component, OnInit} from "@angular/core";
-import {NgForm} from "@angular/forms";
-import {RequestOptions, Http, Response, Headers} from "@angular/http";
-import "rxjs/Rx";
+import {Component} from "@angular/core";
 import {Principal} from "./principal";
+import {Response, RequestOptions, Headers, Http} from "@angular/http";
 import {Observable} from "rxjs";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   credentials = {
     username: '',
     password: ''
   };
+
+  private username: String = '';
+  private password: String = '';
 
   principal: Principal = new Principal(false, []);
 
@@ -29,6 +31,9 @@ export class AppComponent implements OnInit{
   onLogin(form: NgForm) {
     this.loginFailed = false;
     let headers = new Headers({'Content-Type': 'application/json'});
+    this.username = form.value.username;
+    this.password = form.value.password;
+
     headers.append('Authorization','Basic ' + btoa(form.value.username + ':' + form.value.password));
     headers.append('X-Requested-With','XMLHttpRequest');
     let options = new RequestOptions({headers: headers});
@@ -45,6 +50,26 @@ export class AppComponent implements OnInit{
       .subscribe((principal: Principal) => {
         console.log(principal);
         this.principal = principal;
+      });
+  }
+
+  onLogout() {
+    let headers = new Headers({'Content-Type': 'application/json'});
+    headers.append('Authorization','Basic ' + btoa(this.username + ':' + this.password));
+    headers.append('X-Requested-With','XMLHttpRequest');
+    let options = new RequestOptions({headers: headers});
+    this.http.post("/logout", '', options)
+      .catch((error: Response) => {
+        console.log(error);
+        return Observable.throw(error);
+      })
+      .subscribe((response: Response) => {
+        if (response.status === 204) {
+          this.loginFailed = false;
+          this.credentials.username = '';
+          this.credentials.password = '';
+          this.principal = new Principal(false, []);
+        }
       });
   }
 }

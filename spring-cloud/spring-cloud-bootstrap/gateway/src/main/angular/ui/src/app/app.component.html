@@ -15,7 +15,7 @@
       </form>
     </ng-template>
     <ng-template #loginMessage>
-      <button type="button" class="btn btn-link">Logout</button>
+      <button type="button" class="btn btn-link" (click)="onLogout()">Logout</button>
     </ng-template>
     <div *ngIf="loginFailed">
       <div class="alert alert-warning">Login Failed</div>
@@ -29,5 +29,4 @@
     <h1>Book Rater App</h1>
     <p class="lead">Keep track of all the latest books and their ratings.</p>
   </div>
-
 </div>
