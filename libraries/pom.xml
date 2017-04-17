@@ -151,6 +151,7 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-test-utils_2.10</artifactId>
             <version>${flink.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
