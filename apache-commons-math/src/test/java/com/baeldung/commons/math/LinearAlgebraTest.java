@@ -1,10 +1,12 @@
 package com.baeldung.commons.math;
 
 import org.apache.commons.math3.linear.*;
+import org.junit.Test;
 
-public class LinearAlgebraExample {
+public class LinearAlgebraTest {
 
-    public void run() {
+    @Test
+    public void testSolve() {
         RealMatrix a =
                 new Array2DRowRealMatrix(new double[][] { { 2, 3, -2 }, { -1, 7, 6 }, { 4, -3, -5 } },
                         false);

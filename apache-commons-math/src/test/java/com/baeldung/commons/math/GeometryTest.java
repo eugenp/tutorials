@@ -2,10 +2,12 @@ package com.baeldung.commons.math;
 
 import org.apache.commons.math3.geometry.euclidean.twod.Line;
 import org.apache.commons.math3.geometry.euclidean.twod.Vector2D;
+import org.junit.Test;
 
-public class GeometryExample {
+public class GeometryTest {
 
-    public void run() {
+    @Test
+    public void testGeometry() {
         Line l1 = new Line(new Vector2D(0, 0), new Vector2D(1, 1), 0);
         Line l2 = new Line(new Vector2D(0, 1), new Vector2D(1, 1.5), 0);
 
