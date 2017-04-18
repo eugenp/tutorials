@@ -93,3 +93,4 @@
 - [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
 - [An Introduction to ThreadLocal in Java](http://www.baeldung.com/java-threadlocal)
 - [Using Math.pow in Java](http://www.baeldung.com/java-math-pow)
+- [Converting Strings to Enums in Java](http://www.baeldung.com/java-string-to-enum)
