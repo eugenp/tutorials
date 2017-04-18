@@ -22,3 +22,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
 - [New in Guava 21 common.util.concurrent](http://www.baeldung.com/guava-21-util-concurrent)
 - [A CLI with Spring Shell](http://www.baeldung.com/spring-shell-cli)
+- [JasperReports with Spring](http://www.baeldung.com/spring-jasper)
