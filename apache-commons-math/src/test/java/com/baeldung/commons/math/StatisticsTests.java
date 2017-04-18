@@ -1,10 +1,11 @@
 package com.baeldung.commons.math;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class StatisticsTest {
+public class StatisticsTests {
 
     private double[] values;
     private DescriptiveStatistics descriptiveStatistics;
@@ -20,18 +21,18 @@ public class StatisticsTest {
     }
 
     @Test
-    public void testMean() {
-        System.out.println("Mean: " + descriptiveStatistics.getMean());
+    public void whenDescriptiveStatisticsGetMean_thenCorrect() {
+        Assert.assertEquals(2439.8181818181815, descriptiveStatistics.getMean(), 1e-7);
     }
 
     @Test
-    public void testMedian() {
-        System.out.println("Median: " + descriptiveStatistics.getPercentile(50));
+    public void whenDescriptiveStatisticsGetMedian_thenCorrect() {
+        Assert.assertEquals(51, descriptiveStatistics.getPercentile(50), 1e-7);
     }
 
     @Test
-    public void testStandardDeviation() {
-        System.out.println("Standard deviation: " + descriptiveStatistics.getStandardDeviation());
+    public void whenDescriptiveStatisticsGetStandardDeviation_thenCorrect() {
+        Assert.assertEquals(6093.054649651221, descriptiveStatistics.getStandardDeviation(), 1e-7);
     }
 
 }

@@ -1,12 +1,13 @@
 package com.baeldung.commons.math;
 
 import org.apache.commons.math3.linear.*;
+import org.junit.Assert;
 import org.junit.Test;
 
-public class LinearAlgebraTest {
+public class LinearAlgebraTests {
 
     @Test
-    public void testSolve() {
+    public void whenDecompositionSolverSolve_thenCorrect() {
         RealMatrix a =
                 new Array2DRowRealMatrix(new double[][] { { 2, 3, -2 }, { -1, 7, 6 }, { 4, -3, -5 } },
                         false);
@@ -16,7 +17,9 @@ public class LinearAlgebraTest {
 
         RealVector solution = solver.solve(b);
 
-        System.out.println(solution);
+        Assert.assertEquals(-0.3698630137, solution.getEntry(0), 1e-7);
+        Assert.assertEquals(0.1780821918, solution.getEntry(1), 1e-7);
+        Assert.assertEquals(-0.602739726, solution.getEntry(2), 1e-7);
     }
 
 }
