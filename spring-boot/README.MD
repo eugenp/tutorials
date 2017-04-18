@@ -15,4 +15,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
 - [Guide to Internationalization in Spring Boot](http://www.baeldung.com/spring-boot-internationalization)
-
+- [Create a Custom FailureAnalyzer with Spring Boot](http://www.baeldung.com/spring-boot-failure-analyzer)
+- [Configuring Separate Spring DataSource for Tests](http://www.baeldung.com/spring-testing-separate-data-source)
+- [Dynamic DTO Validation Config Retrieved from DB](http://www.baeldung.com/spring-dynamic-dto-validation)

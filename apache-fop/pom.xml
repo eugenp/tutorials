@@ -101,9 +101,7 @@
         <dependency>
             <groupId>org.dbdoclet</groupId>
             <artifactId>herold</artifactId>
-            <version>6.1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/test/resources/jars/herold.jar</systemPath>
+            <version>8.0.4</version>
         </dependency>
 
         <dependency>
@@ -140,6 +138,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
