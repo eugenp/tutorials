@@ -5,14 +5,13 @@
  */
 package com.baeldung.spring.cloud.helloworld;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloWorldController {
 
-	@RequestMapping(path = "/helloworld", method = RequestMethod.GET)
+	@GetMapping("/helloworld")
 	public String HelloWorld() {
 		return "Hello World!";
 	}
