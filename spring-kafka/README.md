@@ -1,3 +1,9 @@
+### Relevant articles
+
+- [Intro to Apache Kafka with Spring](http://www.baeldung.com/spring-kafka)
+
+
+
 # Spring Kakfa
 
 This is a simple Spring Boot app to demonstrate sending and receiving of messages in Kafka using spring-kafka.
