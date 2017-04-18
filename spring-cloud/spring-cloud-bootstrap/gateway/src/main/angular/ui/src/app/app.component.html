@@ -24,9 +24,45 @@
   </div>
 </nav>
 
-<div class="container">
-  <div class="jumbotron">
+<div class="jumbotron">
+  <div class="container">
     <h1>Book Rater App</h1>
     <p class="lead">Keep track of all the latest books and their ratings.</p>
   </div>
 </div>
+
+<section class="books">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <div class="row">
+          <div class="col-md-12" *ngFor="let book of books" (click)="selectBook(book)">
+            <div class="card">
+              <div class="card-block">
+                <h4 class="card-title">Title: {{book.title}}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Author: {{book.author}}</h6>
+                <p class="card-text">A quick summary of the book</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectedBook != null" class="col-md-3">
+        <div class="card">
+          <div class="card-block">
+            <button type="button" class="close" aria-label="Close" (click)="closeBookDetail()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="card-title">Title: {{selectedBook.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Author: {{selectedBook.author}}</h6>
+            <p class="card-text">A quick summary of the book</p>
+            Rating: <div *ngIf="principal.authenticated" class="progress">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 20%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,6 +3,7 @@ import {Principal} from "./principal";
 import {Response, RequestOptions, Headers, Http} from "@angular/http";
 import {Observable} from "rxjs";
 import {NgForm} from "@angular/forms";
+import {Book} from "./book";
 
 @Component({
   selector: 'app-root',
@@ -15,17 +16,21 @@ export class AppComponent {
     password: ''
   };
 
+  books: Book[] = [];
+
+  selectedBook: Book = null;
+
   private username: String = '';
   private password: String = '';
 
-  principal: Principal = new Principal(false, []);
+  principal: Principal = new Principal(true, []);
 
   loginFailed: boolean = false;
 
   constructor(private http: Http){}
 
   ngOnInit(): void {
-
+    this.loadBooks();
   }
 
   onLogin(form: NgForm) {
@@ -72,4 +77,20 @@ export class AppComponent {
         }
       });
   }
+
+  loadBooks() {
+    let book: Book = new Book(1, 'Tom Sawyer', 'Huckleberry Finn');
+    let book1: Book = new Book(2, 'Michael Crichton', 'Jurassic Park');
+    let book2: Book = new Book(3, 'McLaughlin, Pollice, and West', 'Object Oriented Analysis And Design');
+    this.books.push(book, book1, book2);
+  }
+
+  selectBook(book: Book) {
+    this.selectedBook = book;
+  }
+
+  closeBookDetail() {
+    this.selectedBook = null;
+  }
+
 }
