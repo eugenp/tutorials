@@ -1,16 +1,14 @@
 package com.baeldung.dynamicvalidation;
 
-import java.util.regex.Pattern;
-
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
+import com.baeldung.dynamicvalidation.dao.ContactInfoExpressionRepository;
+import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.thymeleaf.util.StringUtils;
 
-import com.baeldung.dynamicvalidation.dao.ContactInfoExpressionRepository;
-import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import java.util.regex.Pattern;
 
 public class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
 
@@ -26,12 +24,15 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
 
     @Override
     public boolean isValid(final String value, final ConstraintValidatorContext context) {
-        if (!StringUtils.isEmptyOrWhitespace(expressionType)) {
-            final String pattern = expressionRepository.findOne(expressionType).map(ContactInfoExpression::getPattern).orElse("");
-            if (Pattern.matches(pattern, value))
-                return true;
+        if (StringUtils.isEmptyOrWhitespace(expressionType)) {
+            return false;
         }
-        return false;
+
+        return expressionRepository
+          .findOne(expressionType)
+          .map(ContactInfoExpression::getPattern)
+          .map(p -> Pattern.matches(p, value))
+          .orElse(false);
     }
 
 }
