@@ -34,10 +34,10 @@ public class EmployeeServiceImplTest {
     }
 
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     @MockBean
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Before
     public void setUp() {

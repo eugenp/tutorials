@@ -20,10 +20,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class EmployeeRepositoryTest {
 
     @Autowired
-    TestEntityManager entityManager;
+    private TestEntityManager entityManager;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Test
     public void whenFindByName_thenReturnEmployee() {

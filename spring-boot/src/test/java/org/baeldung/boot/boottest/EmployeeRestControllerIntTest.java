@@ -34,10 +34,10 @@ import org.springframework.test.web.servlet.MockMvc;
 public class EmployeeRestControllerIntTest {
 
     @Autowired
-    MockMvc mvc;
+    private MockMvc mvc;
 
     @Autowired
-    EmployeeRepository repository;
+    private EmployeeRepository repository;
 
     @After
     public void resetDb() {

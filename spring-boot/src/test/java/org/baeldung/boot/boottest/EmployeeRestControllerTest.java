@@ -33,10 +33,10 @@ import org.springframework.test.web.servlet.MockMvc;
 public class EmployeeRestControllerTest {
 
     @Autowired
-    MockMvc mvc;
+    private MockMvc mvc;
 
     @MockBean
-    EmployeeService service;
+    private EmployeeService service;
 
     @Before
     public void setUp() throws Exception {
