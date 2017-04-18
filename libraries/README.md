@@ -7,7 +7,7 @@
 - [Introduction to Javassist](http://www.baeldung.com/javassist)
 - [Embedded Jetty Server in Java](http://www.baeldung.com/jetty-embedded)
 - [Introduction to Apache Flink with Java](http://www.baeldung.com/apache-flink)
-
+- [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
