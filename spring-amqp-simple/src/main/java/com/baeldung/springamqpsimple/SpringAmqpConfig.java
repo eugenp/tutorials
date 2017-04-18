@@ -1,85 +1,51 @@
 package com.baeldung.springamqpsimple;
 
+import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.Declarable;
 import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.core.TopicExchange;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-
-import java.util.Arrays;
-import java.util.List;
 
 @Configuration
 @Profile("!test")
 public class SpringAmqpConfig {
 
-    public final static String directQueueName = "com.baeldung.spring-amqp-simple.queue";
-    public final static String directExchangeName = "com.baeldung.spring-amqp-simple.exchange";
-
-    public final static String fanoutQueue1Name = "com.baeldung.spring-amqp-simple.fanout.queue1";
-    public final static String fanoutQueue2Name = "com.baeldung.spring-amqp-simple.fanout.queue2";
-    public final static String fanoutExchangeName = "com.baeldung.spring-amqp-simple.fanout.exchange";
-
-    public final static String topicQueue1Name = "com.baeldung.spring-amqp-simple.topic.queue1";
-    public final static String topicQueue2Name = "com.baeldung.spring-amqp-simple.topic.queue2";
-    public final static String topicExchangeName = "com.baeldung.spring-amql-simple.topic.exchange";
+    public final static String queueName = "com.baeldung.spring-amqp-simple.queue";
+    public final static String exchangeName = "com.baeldung.spring-amqp-simple.exchange";
 
     @Bean
-    public List<Declarable> directBindings() {
-        Queue directQueue = new Queue(directQueueName, false);
-        DirectExchange directExchange = new DirectExchange(directExchangeName);
-
-        return Arrays.asList(
-                directQueue,
-                directExchange,
-                BindingBuilder.bind(directQueue).to(directExchange).with(directQueueName)
-        );
+    Queue queue() {
+        return new Queue(queueName, false);
     }
 
     @Bean
-    public List<Declarable> topicBindings() {
-        Queue topicQueue1 = new Queue(topicQueue1Name, false);
-        Queue topicQueue2 = new Queue(topicQueue2Name, false);
-
-        TopicExchange topicExchange = new TopicExchange(topicExchangeName);
-
-        return Arrays.asList(
-                topicQueue1,
-                topicQueue2,
-                topicExchange,
-                BindingBuilder.bind(topicQueue1).to(topicExchange).with("*.important.*"),
-                BindingBuilder.bind(topicQueue2).to(topicExchange).with("user.#")
-        );
+    Exchange exchange() {
+        return new DirectExchange(exchangeName);
     }
 
     @Bean
-    public List<Declarable> fanoutBindings() {
-        Queue fanoutQueue1 = new Queue(fanoutQueue1Name, false);
-        Queue fanoutQueue2 = new Queue(fanoutQueue2Name, false);
-
-        FanoutExchange fanoutExchange = new FanoutExchange(fanoutExchangeName);
-
-        return Arrays.asList(
-                fanoutQueue1,
-                fanoutQueue2,
-                fanoutExchange,
-                BindingBuilder.bind(fanoutQueue1).to(fanoutExchange),
-                BindingBuilder.bind(fanoutQueue2).to(fanoutExchange)
-        );
+    Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(queueName);
     }
 
     @Bean
-    public SimpleRabbitListenerContainerFactory container(ConnectionFactory connectionFactory, SimpleRabbitListenerContainerFactoryConfigurer configurer) {
-        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        configurer.configure(factory, connectionFactory);
-        return factory;
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+            MessageListenerAdapter listenerAdapter) {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+        container.setQueueNames(queueName);
+        container.setMessageListener(listenerAdapter);
+        return container;
     }
 
+    @Bean
+    MessageListenerAdapter listenerAdapter(MessageConsumer messageReceiver) {
+        return new MessageListenerAdapter(messageReceiver, "receiveMessage");
+    }
 }

@@ -1,4 +1,4 @@
-package com.baeldung.springamqpsimple;
+package com.baeldung.springamqpsimple.broadcast;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-public class MessageController {
+public class BroadcastMessageController {
 
-    private final MessageProducer messageProducer;
+    private final BroadcastMessageProducer messageProducer;
 
     @Autowired
-    public MessageController(MessageProducer messageProducer) {
+    public BroadcastMessageController(BroadcastMessageProducer messageProducer) {
         this.messageProducer = messageProducer;
     }
 
-    @RequestMapping(value="/messages", method= RequestMethod.POST)
+    @RequestMapping(value="/broadcast", method= RequestMethod.POST)
     @ResponseStatus(value= HttpStatus.CREATED)
     public void sendMessage(@RequestBody String message) {
-        messageProducer.sendMessage(message);
+        messageProducer.sendMessages(message);
     }
 }

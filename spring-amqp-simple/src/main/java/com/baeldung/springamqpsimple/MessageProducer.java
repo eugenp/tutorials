@@ -14,10 +14,7 @@ public class MessageProducer {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendMessages(String message) {
-        rabbitTemplate.convertAndSend(SpringAmqpConfig.directQueueName, message);
-        rabbitTemplate.convertAndSend(SpringAmqpConfig.fanoutExchangeName, "", message);
-        rabbitTemplate.convertAndSend(SpringAmqpConfig.topicExchangeName, "user.not-important.info", message);
-        rabbitTemplate.convertAndSend(SpringAmqpConfig.topicExchangeName, "user.important.error", message);
+    public void sendMessage(String message) {
+        rabbitTemplate.convertAndSend(SpringAmqpConfig.queueName, message);
     }
 }

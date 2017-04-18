@@ -1,6 +1,6 @@
-package com.baeldung.springamqpsimple;
+package broadcast;
 
-
+import com.baeldung.springamqpsimple.broadcast.BroadcastConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -13,14 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-public class MessageControllerIntegrationTest {
+public class BroadcastMessageControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -31,7 +31,7 @@ public class MessageControllerIntegrationTest {
     @Test
     public void whenPostingMessage_thenMessageIsCreated() {
         final String message = "Hello World!";
-        ResponseEntity<Void> responseEntity = restTemplate.postForEntity("/messages", message, Void.class);
+        ResponseEntity<Void> responseEntity = restTemplate.postForEntity("/broadcast", message, Void.class);
 
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
     }
@@ -39,8 +39,10 @@ public class MessageControllerIntegrationTest {
     @Test
     public void whenPostingMessage_thenMessageIsSentToBroker() {
         final String message = "Hello World!";
-        restTemplate.postForEntity("/messages", message, Void.class);
+        restTemplate.postForEntity("/broadcast", message, Void.class);
 
-        verify(rabbitTemplate).convertAndSend(SpringAmqpConfig.queueName, message);
+        verify(rabbitTemplate).convertAndSend(BroadcastConfig.fanoutExchangeName, "", message);
+        verify(rabbitTemplate).convertAndSend(BroadcastConfig.topicExchangeName, "user.not-important.info", message);
+        verify(rabbitTemplate).convertAndSend(BroadcastConfig.topicExchangeName, "user.important.error", message);
     }
 }
