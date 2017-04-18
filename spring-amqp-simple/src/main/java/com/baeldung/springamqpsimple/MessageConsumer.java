@@ -1,13 +1,14 @@
 package com.baeldung.springamqpsimple;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Component;
 
 @Component
 public class MessageConsumer {
 
-    private static final Logger logger = LogManager.getLogger(MessageConsumer.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageConsumer.class);
 
     public void receiveMessage(String message) {
         logger.info("Received Message: " + message);
