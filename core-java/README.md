@@ -92,3 +92,4 @@
 - [Removing all nulls from a List in Java](http://www.baeldung.com/java-remove-nulls-from-list)
 - [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
 - [An Introduction to ThreadLocal in Java](http://www.baeldung.com/java-threadlocal)
+- [Using Math.pow in Java](http://www.baeldung.com/java-math-pow)
