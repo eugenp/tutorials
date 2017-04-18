@@ -14,7 +14,6 @@
         <spring.version>4.3.4.RELEASE</spring.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <spring-data-solr.version>2.0.5.RELEASE</spring-data-solr.version>
-        <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -33,11 +32,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
