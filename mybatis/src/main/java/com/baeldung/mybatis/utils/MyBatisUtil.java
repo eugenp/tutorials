@@ -16,33 +16,35 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class MyBatisUtil {
-    public static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-    public static final String URL = "jdbc:derby:testdb1;create=true";
-    public static final String USERNAME = "sa";
-    public static final String PASSWORD = "pass123";
-    private static SqlSessionFactory sqlSessionFactory;
+	public static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+	public static final String URL = "jdbc:derby:testdb1;create=true";
+	public static final String USERNAME = "sa";
+	public static final String PASSWORD = "pass123";
+	private static SqlSessionFactory sqlSessionFactory;
 
-    public static SqlSessionFactory buildqlSessionFactory(){
-        DataSource dataSource=new PooledDataSource(DRIVER, URL, USERNAME, PASSWORD);
-        Environment environment=new Environment("Development",new JdbcTransactionFactory(),dataSource);
-        Configuration configuration = new Configuration(environment);
-        configuration.addMapper(PersonMapper.class);
-        configuration.addMapper(AddressMapper.class);
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(configuration);
-        return factory;
+	public static SqlSessionFactory buildqlSessionFactory() {
+		DataSource dataSource = new PooledDataSource(DRIVER, URL, USERNAME, PASSWORD);
+		Environment environment = new Environment("Development", new JdbcTransactionFactory(), dataSource);
+		Configuration configuration = new Configuration(environment);
+		configuration.addMapper(PersonMapper.class);
+		configuration.addMapper(AddressMapper.class);
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+		SqlSessionFactory factory = builder.build(configuration);
+		return factory;
 
-    }
+	}
 
-    public static SqlSessionFactory getSqlSessionFactory(){
-        return sqlSessionFactory;
-    }
+	public static SqlSessionFactory getSqlSessionFactory() {
+		return sqlSessionFactory;
+	}
 
-    public String getPersonByName(String name){
-        return new SQL(){{
-            SELECT("*");
-            FROM("person");
-            WHERE("name like #{name} || '%'");
-        }}.toString();
-    }
+	public String getPersonByName(String name) {
+		return new SQL() {
+			{
+				SELECT("*");
+				FROM("person");
+				WHERE("name like #{name} || '%'");
+			}
+		}.toString();
+	}
 }
