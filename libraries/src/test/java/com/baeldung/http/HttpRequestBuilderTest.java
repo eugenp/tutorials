@@ -8,13 +8,13 @@ import java.util.Map;
 
 import org.junit.Before;
 
-public class HttpRequestPerformerTest {
+public class HttpRequestBuilderTest {
 
-    private HttpRequestPerformer requestPerformer;
+    private HttpRequestBuilder requestPerformer;
 
     @Before
     public void setup() {
-        requestPerformer = new HttpRequestPerformer();
+        requestPerformer = new HttpRequestBuilder();
     }
 
     @Test
