@@ -95,3 +95,4 @@
 - [Using Math.pow in Java](http://www.baeldung.com/java-math-pow)
 - [Converting Strings to Enums in Java](http://www.baeldung.com/java-string-to-enum)
 - [Flattening Nested Collections in Java](http://www.baeldung.com/java-flatten-nested-collections)
+- [Quick Guide to the Java StringTokenizer](http://www.baeldung.com/java-stringtokenizer)
