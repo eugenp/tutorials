@@ -24,7 +24,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.7.RELEASE</version>        
+            <version>4.3.7.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>junit</groupId>

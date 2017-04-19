@@ -136,7 +136,13 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>            
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>               
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
