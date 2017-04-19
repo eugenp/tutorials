@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.concurrent.*;
 
 public class TransferQueueTest {
+
     @Test
     public void givenTransferQueue_whenUseMultipleConsumersAndMultipleProducers_thenShouldProcessAllMessages() throws InterruptedException {
         //given
@@ -44,7 +45,7 @@ public class TransferQueueTest {
     }
 
     @Test
-    public void givenTransferQueue_whenUseOneProducerAndNoConsumers_thenShouldFailWithTimeoutException() throws InterruptedException {
+    public void givenTransferQueue_whenUseOneProducerAndNoConsumers_thenShouldFailWithTimeout() throws InterruptedException {
         //given
         TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
         ExecutorService exService = Executors.newFixedThreadPool(2);
@@ -56,7 +57,6 @@ public class TransferQueueTest {
         //then
         exService.awaitTermination(5000, TimeUnit.MILLISECONDS);
         exService.shutdown();
-
     }
 
 }
