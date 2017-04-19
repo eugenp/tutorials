@@ -38,13 +38,7 @@
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-tools</artifactId>
-            <version>${velocity-tools-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>            
+            <version>${velocity-tools-version}</version>        
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
