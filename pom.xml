@@ -153,7 +153,6 @@
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
@@ -216,6 +215,7 @@
         <module>vertx</module>
         <module>spring-data-gemfire</module>
         <module>cucumber</module>
+        <module>mybatis</module>
     </modules>
 
     <build>
