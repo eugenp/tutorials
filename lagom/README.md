@@ -1,3 +1,10 @@
+### Relevant articles
+
+- [Guide to Reactive Microservices Using Lagom Framework](http://www.baeldung.com/lagom-reactive-microservices)
+
+
+
+
 Steps to setup from scratch
 
 1) Create sbt build file "build.sbt" 
