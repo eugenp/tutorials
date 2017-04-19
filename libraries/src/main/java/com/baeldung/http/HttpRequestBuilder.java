@@ -19,10 +19,9 @@ public class HttpRequestBuilder {
         HttpResponseWrapper responseWrapper = new HttpResponseWrapper();
 
         try {
-
             URL url = new URL(urlString);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod(method);
             if (properties != null) {
                 properties.forEach((key, value) -> con.setRequestProperty(key, value));
             }

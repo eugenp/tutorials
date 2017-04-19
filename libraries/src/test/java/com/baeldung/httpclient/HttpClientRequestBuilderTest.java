@@ -21,7 +21,9 @@ public class HttpClientRequestBuilderTest {
 
     @Test
     public void whenGetRequest_thenOk() {
-        HttpResponseWrapper response = requestBuilder.sendGetRequest("http://www.example.com",null);
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("param1", "val");
+        HttpResponseWrapper response = requestBuilder.sendGetRequest("http://www.example.com",parameters);
         assertEquals("status code incorrect", response.getStatus(), 200);
         assertTrue("content incorrect", response.getContent()
             .contains("Example Domain"));
