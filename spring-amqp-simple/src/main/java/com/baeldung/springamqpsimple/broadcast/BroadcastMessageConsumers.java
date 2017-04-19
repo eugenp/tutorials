@@ -1,14 +1,14 @@
 package com.baeldung.springamqpsimple.broadcast;
 
 import com.baeldung.springamqpsimple.MessageConsumer;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BroadcastMessageConsumers {
-    private static final Logger logger = LogManager.getLogger(MessageConsumer.class);
+    private static final Logger logger = LoggerFactory.getLogger(MessageConsumer.class);
 
     @RabbitListener(queues = {BroadcastConfig.fanoutQueue1Name})
     public void receiveMessageFromFanout1(String message) {
