@@ -1,4 +1,4 @@
-package com.camel.test;
+package com.baeldung.camel;
 
 public class MyBean {
     private Integer id;

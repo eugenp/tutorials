@@ -1,13 +1,14 @@
 server:
   port: 8080
 
+baeldung:
+  api:
+    path: '/test-services' 
+
 camel:
   springboot:
     # The Camel context name
     name: ServicesRest
-  remote:
-    soapBackendServiceEndpointAddress: 'ProtocoloImpl'
-    soapBackendServiceOperationName: 'createBean'
 
 # Binding health checks to a different port
 management:

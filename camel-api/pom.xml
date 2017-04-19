@@ -40,11 +40,6 @@
 
 	<dependencies>
 
-		<!-- Camel CXF -->
-		<!-- dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-cxf-starter</artifactId>
-		</dependency-->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jaxb-starter</artifactId>
@@ -62,21 +57,7 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-swagger-java-starter</artifactId>
 		</dependency>
-		<!-- needed for org.apache.cxf.xjcplugins -->
-		<!-- dependency>
-			<groupId>org.apache.cxf.xjc-utils</groupId>
-			<artifactId>cxf-xjc-runtime</artifactId>
-			<version>3.1.0</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-			<scope>compile</scope>
-		</dependency-->
 
-		<!-- Enabling health checks -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -85,43 +66,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jacksonxml</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring-boot-starter</artifactId>
 		</dependency>
 
-		<!-- testing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-container</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.fabric8</groupId>
-			<artifactId>fabric8-arquillian</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
