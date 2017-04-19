@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
-public interface UserRepository extends MongoRepository<User, String>, QueryDslPredicateExecutor<User> {
+public interface UserRepository extends MongoRepository<User, String>, QueryDslPredicateExecutor<User>, UserRepositoryCustom {
     @Query("{ 'name' : ?0 }")
     List<User> findUsersByName(String name);
 
@@ -26,10 +26,10 @@ public interface UserRepository extends MongoRepository<User, String>, QueryDslP
     List<User> findByNameStartingWith(String regexp);
 
     List<User> findByNameEndingWith(String regexp);
-    
-    @Query(value="{}", fields="{name : 1}")
+
+    @Query(value = "{}", fields = "{name : 1}")
     List<User> findNameAndId();
-    
-    @Query(value="{}", fields="{_id : 0}")
+
+    @Query(value = "{}", fields = "{_id : 0}")
     List<User> findNameAndAgeExcludeId();
 }

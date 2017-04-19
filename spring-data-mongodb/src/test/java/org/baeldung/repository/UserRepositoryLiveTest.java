@@ -50,7 +50,9 @@ public class UserRepositoryLiveTest {
         user.setName("Jon");
         userRepository.insert(user);
 
-        assertThat(mongoOps.findOne(Query.query(Criteria.where("name").is("Jon")), User.class).getName(), is("Jon"));
+        assertThat(mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Jon")), User.class)
+            .getName(), is("Jon"));
     }
 
     @Test
@@ -59,7 +61,9 @@ public class UserRepositoryLiveTest {
         user.setName("Albert");
         userRepository.save(user);
 
-        assertThat(mongoOps.findOne(Query.query(Criteria.where("name").is("Albert")), User.class).getName(), is("Albert"));
+        assertThat(mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Albert")), User.class)
+            .getName(), is("Albert"));
     }
 
     @Test
@@ -68,12 +72,14 @@ public class UserRepositoryLiveTest {
         user.setName("Jack");
         mongoOps.insert(user);
 
-        user = mongoOps.findOne(Query.query(Criteria.where("name").is("Jack")), User.class);
+        user = mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Jack")), User.class);
 
         user.setName("Jim");
         userRepository.save(user);
 
-        assertThat(mongoOps.findAll(User.class).size(), is(2));
+        assertThat(mongoOps.findAll(User.class)
+            .size(), is(2));
     }
 
     @Test
@@ -84,7 +90,9 @@ public class UserRepositoryLiveTest {
 
         userRepository.delete(user);
 
-        assertThat(mongoOps.find(Query.query(Criteria.where("name").is("Benn")), User.class).size(), is(0));
+        assertThat(mongoOps.find(Query.query(Criteria.where("name")
+            .is("Benn")), User.class)
+            .size(), is(0));
     }
 
     @Test
@@ -93,7 +101,21 @@ public class UserRepositoryLiveTest {
         user.setName("Chris");
         mongoOps.insert(user);
 
-        user = mongoOps.findOne(Query.query(Criteria.where("name").is("Chris")), User.class);
+        user = mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Chris")), User.class);
+        final User foundUser = userRepository.findOne(user.getId());
+
+        assertThat(user.getName(), is(foundUser.getName()));
+    }
+
+    @Test
+    public void givenUserExists_whenCustomFindingUser_thenUserIsFound() {
+        User user = new User();
+        user.setName("Chris");
+        mongoOps.insert(user);
+
+        user = mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Chris")), User.class);
         final User foundUser = userRepository.findOne(user.getId());
 
         assertThat(user.getName(), is(foundUser.getName()));
@@ -105,7 +127,8 @@ public class UserRepositoryLiveTest {
         user.setName("Harris");
         mongoOps.insert(user);
 
-        user = mongoOps.findOne(Query.query(Criteria.where("name").is("Harris")), User.class);
+        user = mongoOps.findOne(Query.query(Criteria.where("name")
+            .is("Harris")), User.class);
         final boolean isExists = userRepository.exists(user.getId());
 
         assertThat(isExists, is(true));
@@ -124,8 +147,10 @@ public class UserRepositoryLiveTest {
         final List<User> users = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
         assertThat(users.size(), is(2));
-        assertThat(users.get(0).getName(), is("Adam"));
-        assertThat(users.get(1).getName(), is("Brendan"));
+        assertThat(users.get(0)
+            .getName(), is("Adam"));
+        assertThat(users.get(1)
+            .getName(), is("Brendan"));
     }
 
     @Test
@@ -146,5 +171,4 @@ public class UserRepositoryLiveTest {
         assertThat(users.size(), is(1));
         assertThat(page.getTotalPages(), is(2));
     }
-
 }
