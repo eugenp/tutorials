@@ -30,7 +30,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
         } else {
             pattern = expressionRepository.findOne(expressionType)
                 .map(ContactInfoExpression::getPattern)
-                .get();
+                .orElse("");
         }
     }
 
