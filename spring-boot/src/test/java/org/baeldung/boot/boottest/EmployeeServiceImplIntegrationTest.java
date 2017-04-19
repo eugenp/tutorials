@@ -1,16 +1,5 @@
 package org.baeldung.boot.boottest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
-import org.baeldung.boot.boottest.Employee;
-import org.baeldung.boot.boottest.EmployeeRepository;
-import org.baeldung.boot.boottest.EmployeeService;
-import org.baeldung.boot.boottest.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,8 +11,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
-public class EmployeeServiceImplTest {
+public class EmployeeServiceImplIntegrationTest {
 
     @TestConfiguration
     static class EmployeeServiceImplTestContextConfiguration {
@@ -34,10 +30,10 @@ public class EmployeeServiceImplTest {
     }
 
     @Autowired
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
 
     @MockBean
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Before
     public void setUp() {
