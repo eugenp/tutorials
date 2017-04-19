@@ -171,6 +171,12 @@
 	    <groupId>org.owasp.esapi</groupId>
 	    <artifactId>esapi</artifactId>
 	    <version>2.1.0.1</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>        
 	</dependency>    
 
     </dependencies>

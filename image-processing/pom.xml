@@ -17,6 +17,12 @@
             <groupId>net.imagej</groupId>
             <artifactId>ij</artifactId>
             <version>${ij.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>org.openimaj</groupId>
