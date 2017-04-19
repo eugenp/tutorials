@@ -5,11 +5,13 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {RatingComponent} from "./rating/rating.component";
+import {ClickStopPropagationDirective} from "./click-stop-propagation.directive";
 
 @NgModule({
   declarations: [
     AppComponent,
-    RatingComponent
+    RatingComponent,
+    ClickStopPropagationDirective
   ],
   imports: [
     BrowserModule,
