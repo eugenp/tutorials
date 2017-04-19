@@ -16,7 +16,7 @@ public class Customer {
     private long id;
 
     @ContactInfo
-	@NotNull
+    @NotNull
     private String contactInfo;
 
     public Customer() {
