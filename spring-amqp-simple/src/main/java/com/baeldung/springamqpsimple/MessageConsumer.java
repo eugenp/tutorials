@@ -3,7 +3,11 @@ package com.baeldung.springamqpsimple;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+>>>>>>> eugenp/master
 =======
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 >>>>>>> eugenp/master
