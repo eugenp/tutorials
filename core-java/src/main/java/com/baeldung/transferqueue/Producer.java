@@ -2,7 +2,7 @@ package com.baeldung.transferqueue;
 
 import java.util.concurrent.TransferQueue;
 
-class Producer implements Runnable {
+public class Producer implements Runnable {
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final Integer numberOfMessagesToProduce;

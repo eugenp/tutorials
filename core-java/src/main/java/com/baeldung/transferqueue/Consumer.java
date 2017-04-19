@@ -2,7 +2,7 @@ package com.baeldung.transferqueue;
 
 import java.util.concurrent.TransferQueue;
 
-class Consumer implements Runnable {
+public class Consumer implements Runnable {
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final int numberOfMessagesToConsume;
