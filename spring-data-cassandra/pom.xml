@@ -37,6 +37,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 			<version>${org.springframework.version}</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -72,6 +78,12 @@
 			<groupId>org.hectorclient</groupId>
 			<artifactId>hector-core</artifactId>
 			<version>${hector-core.version}</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 		<dependency>
 			<groupId>com.datastax.cassandra</groupId>

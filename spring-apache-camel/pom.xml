@@ -35,6 +35,12 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-spring</artifactId>
 			<version>${env.camel.version}</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 
 		<dependency>

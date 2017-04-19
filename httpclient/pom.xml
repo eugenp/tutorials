@@ -65,6 +65,12 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpasyncclient</artifactId>
             <version>${httpasyncclient.version}</version> <!-- 4.0.2 --> <!-- 4.1-beta1 -->
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- logging -->

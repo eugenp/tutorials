@@ -84,6 +84,12 @@
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
             <version>${net.sourceforge.htmlunit}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <!-- Thymeleaf -->

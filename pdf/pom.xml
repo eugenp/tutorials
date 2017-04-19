@@ -48,6 +48,12 @@
 			<groupId>net.sf.cssbox</groupId>
 			<artifactId>pdf2dom</artifactId>
 			<version>${pdf2dom.version}</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 		<dependency>
 			<groupId>com.itextpdf</groupId>
