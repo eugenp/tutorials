@@ -7,13 +7,15 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {RatingComponent} from "./rating/rating.component";
 import {ClickStopPropagationDirective} from "./click-stop-propagation.directive";
 import {BookDetailComponent} from "./book/book-detail/book-detail.component";
+import {BookListComponent} from "./book/book-list/book-list.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     RatingComponent,
     ClickStopPropagationDirective,
-    BookDetailComponent
+    BookDetailComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,

@@ -16,8 +16,6 @@ export class AppComponent {
     password: ''
   };
 
-  books: Book[] = [];
-
   selectedBook: Book = null;
 
   private username: String = '';
@@ -29,16 +27,10 @@ export class AppComponent {
 
   loginFailed: boolean = false;
 
-  booksToEdit: number[] = [];
-
-  newBooks: Book[] = [];
-  isAddNewBook: boolean = false;
-  newBook: Book = new Book(null, '', '');
-
   constructor(private http: Http){}
 
   ngOnInit(): void {
-    this.loadBooks();
+
   }
 
   onLogin(form: NgForm) {
@@ -86,70 +78,12 @@ export class AppComponent {
       });
   }
 
-  loadBooks() {
-    let book: Book = new Book(1, 'Tom Sawyer', 'Huckleberry Finn');
-    let book1: Book = new Book(2, 'Michael Crichton', 'Jurassic Park');
-    let book2: Book = new Book(3, 'McLaughlin, Pollice, and West', 'Object Oriented Analysis And Design');
-    this.books.push(book, book1, book2);
-    this.books.forEach(book => this.newBooks.push(new Book(book.id, book.author, book.title)))
-  }
-
-  selectBook(book: Book) {
-    this.selectedBook = book;
-  }
-
   closeBookDetail() {
     this.selectedBook = null;
   }
 
-  editBook(bookIndex: number) {
-    this.booksToEdit.push(bookIndex);
-  }
-
-  cancelEditBook(bookIndex: number) {
-    if (this.booksToEdit.indexOf(bookIndex) !== -1) {
-      this.booksToEdit.splice(this.booksToEdit.indexOf(bookIndex), 1); //remove the index of the book to edit
-      //get the original book
-      let bookCopy: Book = new Book(this.books[bookIndex].id, this.books[bookIndex].author, this.books[bookIndex].title);
-      this.newBooks.splice(bookIndex,1,bookCopy); //replace the edited book with the old book
-    }
-  }
-
-  saveBook(bookIndex: number, newBook: Book) {
-    console.log(newBook);
-
-    //save the book to the database
-
-    //update the current array of books
-    let book: Book = this.books.find(b => b.id === newBook.id);
-    book.title = newBook.title;
-    book.author = newBook.author;
-    this.booksToEdit.splice(this.booksToEdit.indexOf(bookIndex), 1); //remove the index of the book to edit
-  }
-
-  delete(bookIndex: number) {
-    if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {this.selectedBook = null;}
-
-    this.books.splice(bookIndex, 1); //remove the book at this index;
-    this.newBooks.splice(bookIndex, 1); //remove the editing book at this index
-  }
-
-  activateAddNewBook() {
-    this.isAddNewBook = true;
-    this.newBook = new Book(null, '', '');
-  }
-
-  cancelAddBook() {
-    this.isAddNewBook = false;
-  }
-
-  addNewBook(newBook: Book, element: any) {
-    //write new book to db
-    //on success:
-    this.books.push(newBook);
-    this.newBooks.push(newBook);
-    this.newBook = new Book(null, '', '');
-    element.focus();
+  selectBook(book: Book) {
+    this.selectedBook = book;
   }
 
 }
