@@ -30,10 +30,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class EmployeeControllerIntegrationTest {
 
     @Autowired
-    MockMvc mvc;
+    private MockMvc mvc;
 
     @MockBean
-    EmployeeService service;
+    private EmployeeService service;
 
     @Before
     public void setUp() throws Exception {

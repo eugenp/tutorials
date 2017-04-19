@@ -19,12 +19,24 @@
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-core</artifactId>
 			<version>${aws-lambda-java-core.version}</version>
+			<exclusions>
+				<exclusion>
+				    <artifactId>commons-logging</artifactId>
+				    <groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-events</artifactId>
 			<version>${aws-lambda-java-events.version}</version>
+			<exclusions>
+				<exclusion>
+				    <artifactId>commons-logging</artifactId>
+				    <groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>			
 		</dependency>
 
 		<dependency>

@@ -60,20 +60,15 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
         </dependency>
 
         <dependency>
@@ -150,6 +145,12 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <dependency>
@@ -183,6 +184,12 @@
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-core</artifactId>
             <version>${json-schema-core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -276,11 +283,11 @@
         <javax.mail.version>1.4.7</javax.mail.version>        
         <jetty.version>9.4.0.v20161208</jetty.version>
         
-        <log4j.version>1.2.17</log4j.version>
         <slf4j.version>1.7.21</slf4j.version>
+        <logback.version>1.1.7</logback.version>
+
         
         <commons-lang3.version>3.5</commons-lang3.version>        
-        <commons-logging.version>1.2</commons-logging.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         
         <httpcore.version>4.4.5</httpcore.version>

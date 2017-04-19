@@ -49,6 +49,12 @@
             <artifactId>httpclient</artifactId>
             <version>${org.apache.httpcomponents.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
     </dependencies>

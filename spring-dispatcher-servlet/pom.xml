@@ -25,6 +25,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -36,16 +42,7 @@
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -87,7 +84,6 @@
         
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
-        <log4j.version>2.7</log4j.version>
         
         <!-- various -->
         <javax.servlet.version>3.1.0</javax.servlet.version>
