@@ -1,11 +1,13 @@
 package com.baeldung.camel;
 
+import javax.ws.rs.core.MediaType;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +16,10 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @ComponentScan(basePackages="com.baeldung.camel")
-//@ImportResource({ "classpath:spring/camel-context.xml" })
 public class Application extends SpringBootServletInitializer {
 
     @Value("${server.port}")
@@ -27,7 +27,7 @@ public class Application extends SpringBootServletInitializer {
     
     @Value("${baeldung.api.path}")
     String contextPath;
-
+    
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -39,6 +39,7 @@ public class Application extends SpringBootServletInitializer {
         return servlet;
     }
 
+
     @Component
     class RestApi extends RouteBuilder {
 
@@ -46,26 +47,6 @@ public class Application extends SpringBootServletInitializer {
         public void configure() {
 
             CamelContext context = new DefaultCamelContext();
-
-            // Backend remote SOAP Service being proxied by this REST service
-            // CxfEndpoint cxfEndpoint = new CxfEndpoint();
-            // cxfEndpoint.setCamelContext(context);
-            // cxfEndpoint.setAddress(soapBackendServiceEndpointAddress); // remote SOPA endpoint
-            // cxfEndpoint.setDefaultOperationName(soapBackendServiceOperationName);
-            // cxfEndpoint.setServiceClass(ServicoProtocolo.class);
-            // cxfEndpoint.setLoggingFeatureEnabled(true);
-            // cxfEndpoint.setDefaultBus(true);
-            // cxfEndpoint.setDataFormat(DataFormat.CXF_MESSAGE);
-
-            // log.info("***** using " + soapBackendServiceEndpointAddress + " as the remote endpoint addr");
-            // log.info("***** using " + soapBackendServiceOperationName + " as the remote endpoint op name!");
-
-            // add the SOAP Service endpoint into Camel Context to be invoked/consumed by the REST route
-            // try {
-            // context.addEndpoint("TesteSoapBackendService", cxfEndpoint);
-            // } catch (Exception e) {
-            // e.printStackTrace();
-            // }
 
             
             // http://localhost:8080/test-services/api-doc
@@ -87,11 +68,11 @@ public class Application extends SpringBootServletInitializer {
             
             rest("/api/").description("Teste REST Service")
                 .id("api-route")
-//                .produces("application/json")
-                .consumes("application/json")
                 .post("/bean")
+                .produces(MediaType.APPLICATION_JSON)
+                .consumes(MediaType.APPLICATION_JSON)
 //                .get("/hello/{place}")
-                .bindingMode(RestBindingMode.json_xml)
+                .bindingMode(RestBindingMode.auto)
                 .type(MyBean.class)
                 .enableCORS(true)
 //                .outType(OutBean.class)
@@ -104,26 +85,17 @@ public class Application extends SpringBootServletInitializer {
                 .tracing()
                 .log(">>> ${body.id}")
                 .log(">>> ${body.name}")
-//                .transform().simple("Hello ${in.body.name}")
-//                .process(new Processor() {
-//                    @Override
-//                    public void process(Exchange exchange) throws Exception {
-//                        MyBean bodyIn 
-//                        = (MyBean) exchange.getIn().getBody();
-//                        
-//                        String msg = "Hello " + bodyIn.getName();
-//                        
-//                        OutBean out = new OutBean();
-//                        out.setMessage(msg);
-//                        
-//                        List<Object> toBodyParams = new ArrayList<Object>();
-//                        toBodyParams.add(msg);                        
-//                        exchange.getIn().setBody(toBodyParams);
-//                    }
-//                })
-                 
-                .marshal()
-                .json(JsonLibrary.Jackson)
+                .transform().simple("blue ${in.body.name}")                
+                .process(new Processor() {
+                    @Override
+                    public void process(Exchange exchange) throws Exception {
+                        MyBean bodyIn = (MyBean) exchange.getIn().getBody();
+                        
+                        ExampleServices.example(bodyIn);
+
+                        exchange.getIn().setBody(bodyIn);
+                    }
+                })
                 .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(201));
         }
     }
