@@ -1,11 +1,13 @@
 package com.baeldung.transferqueue;
 
 import java.util.concurrent.TransferQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Consumer implements Runnable {
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final int numberOfMessagesToConsume;
+    public final AtomicInteger numberOfConsumedMessages = new AtomicInteger();
 
     public Consumer(TransferQueue<String> transferQueue, String name, int numberOfMessagesToConsume) {
         this.transferQueue = transferQueue;
@@ -28,6 +30,7 @@ public class Consumer implements Runnable {
     }
 
     private void longProcessing(String element) throws InterruptedException {
-        Thread.sleep(1_000);
+        numberOfConsumedMessages.incrementAndGet();
+        Thread.sleep(500);
     }
 }
