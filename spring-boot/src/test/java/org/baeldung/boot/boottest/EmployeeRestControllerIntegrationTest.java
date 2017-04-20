@@ -31,7 +31,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = DemoApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
-public class EmployeeRestControllerIntTest {
+public class EmployeeRestControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
