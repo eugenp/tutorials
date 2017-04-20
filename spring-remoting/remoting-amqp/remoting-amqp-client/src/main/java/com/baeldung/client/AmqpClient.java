@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.client;
 
 import com.baeldung.api.BookingException;
 import com.baeldung.api.CabBookingService;
