@@ -1,17 +1,15 @@
-package com.baeldung.failureanalyzer;
+package com.baeldung.autoconfiguration.example;
 
 import javax.annotation.security.RolesAllowed;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
-
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
-public class FailureAnalyzerApplication {
+@SpringBootApplication
+public class AutoconfigurationApplication {
     @RolesAllowed("*")
     public static void main(String[] args) {
         System.setProperty("security.basic.enabled", "false");
-        SpringApplication.run(FailureAnalyzerApplication.class, args);
+        SpringApplication.run(AutoconfigurationApplication.class, args);
     }
 }
