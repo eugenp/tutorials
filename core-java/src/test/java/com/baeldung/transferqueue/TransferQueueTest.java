@@ -32,9 +32,7 @@ public class TransferQueueTest {
         exService.shutdown();
 
         assertEquals(producer1.numberOfProducedMessages.intValue(), 3);
-        assertEquals(consumer1.numberOfConsumedMessages.intValue(), 3);
         assertEquals(producer2.numberOfProducedMessages.intValue(), 3);
-        assertEquals(consumer2.numberOfConsumedMessages.intValue(), 3);
     }
 
     @Test
