@@ -1,4 +1,4 @@
-package com.baeldung.jaxws.model;
+package com.baeldung.jaxws.server.bottomup.model;
 
 public class Employee {
     private int id;
