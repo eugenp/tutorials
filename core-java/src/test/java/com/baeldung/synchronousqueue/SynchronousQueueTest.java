@@ -4,7 +4,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,7 +20,7 @@ public class SynchronousQueueTest {
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
         Runnable producer = () -> {
-            Integer producedElement = new Random().nextInt();
+            Integer producedElement = ThreadLocalRandom.current().nextInt();
             System.out.println("Saving an element: " + producedElement + " to the exchange point");
             sharedState.set(producedElement);
             countDownLatch.countDown();
@@ -54,7 +53,7 @@ public class SynchronousQueueTest {
         final SynchronousQueue<Integer> queue = new SynchronousQueue<>();
 
         Runnable producer = () -> {
-            Integer producedElement = new Random().nextInt();
+            Integer producedElement = ThreadLocalRandom.current().nextInt();
             try {
                 System.out.println("Saving an element: " + producedElement + " to the exchange point");
                 queue.put(producedElement);
