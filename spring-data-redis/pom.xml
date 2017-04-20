@@ -13,7 +13,6 @@
         <spring-data-redis>1.7.5.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>       
         <jedis.version>2.9.0</jedis.version> 
-        <log4j.version>1.2.17</log4j.version>
         <junit.version>4.12</junit.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
@@ -33,12 +32,6 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>${jedis.version}</version>
@@ -49,6 +42,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <dependency>

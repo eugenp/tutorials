@@ -5,3 +5,4 @@
 - [Ant Colony Optimization](http://www.baeldung.com/java-ant-colony-optimization)
 - [Validating Input With Finite Automata in Java](http://www.baeldung.com/finite-automata-java)
 - [Introduction to Jenetics Library](http://www.baeldung.com/jenetics)
+- [Check If a Number Is Prime in Java](http://www.baeldung.com/java-prime-numbers)

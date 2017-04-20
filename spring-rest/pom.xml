@@ -122,10 +122,6 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-        </dependency>
 
         <!-- okhttp -->
 
@@ -188,6 +184,12 @@
             <artifactId>kryo</artifactId>
             <version>${kryo.version}</version>
         </dependency>
+        
+		<dependency>
+		    <groupId>com.jayway.jsonpath</groupId>
+		    <artifactId>json-path</artifactId>
+		</dependency>
+		        
     </dependencies>
 
     <build>
@@ -358,7 +360,8 @@
 
         <!-- okhttp -->
         <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
-
+	
+		<json.path.version>2.2.0</json.path.version>
     </properties>
 
 </project>
