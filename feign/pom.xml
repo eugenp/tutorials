@@ -18,7 +18,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <feign.version>9.4.0</feign.version>
         <slf4j.version>1.7.21</slf4j.version>
-        <log4j.version>2.7</log4j.version>
         <lombok.version>1.16.12</lombok.version>
         <junit.version>4.12</junit.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
@@ -51,16 +50,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
