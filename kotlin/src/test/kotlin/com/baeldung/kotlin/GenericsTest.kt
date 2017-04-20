@@ -115,12 +115,7 @@ class GenericsTest {
         val sorted = sort(listOfInts)
 
         //then
-        assertEquals(sorted[0], 1)
-        assertEquals(sorted[1], 2)
-        assertEquals(sorted[2], 3)
-        assertEquals(sorted[3], 4)
-        assertEquals(sorted[4], 5)
-
+        assertEquals(sorted, listOf(1,2,3,4,5))
     }
 
     fun <T: Comparable<T>> sort(list: List<T>): List<T>{
