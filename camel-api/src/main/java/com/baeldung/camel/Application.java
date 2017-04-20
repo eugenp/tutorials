@@ -85,7 +85,7 @@ public class Application extends SpringBootServletInitializer {
                 .tracing()
                 .log(">>> ${body.id}")
                 .log(">>> ${body.name}")
-                .transform().simple("blue ${in.body.name}")                
+//                .transform().simple("blue ${in.body.name}")                
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
