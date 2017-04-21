@@ -1,7 +1,6 @@
 package com.baeldung.commons.math;
 
 import org.apache.commons.math3.fraction.Fraction;
-import org.apache.commons.math3.fraction.FractionFormat;
 import org.junit.Assert;
 import org.junit.Test;
 
