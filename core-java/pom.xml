@@ -92,11 +92,6 @@
             <version>${org.slf4j.version}</version>
             <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -170,7 +165,19 @@
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
             <version>1.1</version>
-        </dependency>        
+        </dependency>    
+
+	<dependency>
+	    <groupId>org.owasp.esapi</groupId>
+	    <artifactId>esapi</artifactId>
+	    <version>2.1.0.1</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>        
+	</dependency>    
 
     </dependencies>
 

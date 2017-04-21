@@ -15,14 +15,18 @@ public class ArrayCopyUtilTest {
 
     @BeforeClass
     public static void setup(){
-      employees = new Employee[MAX];
-      Employee employee;
-      for(int i = 0; i < MAX; i++) {
-          employee = new Employee();
-          employee.setName("Emp"+i);
-          employee.setId(i);
-          employees[i] = employee;
-      }
+      createEmployeesArray();
+    }
+
+    private static void createEmployeesArray() {
+        employees = new Employee[MAX];
+          Employee employee;
+          for(int i = 0; i < MAX; i++) {
+              employee = new Employee();
+              employee.setName("Emp"+i);
+              employee.setId(i);
+              employees[i] = employee;
+          }
     }
 
     @Test
@@ -32,10 +36,7 @@ public class ArrayCopyUtilTest {
         
         System.arraycopy(array, 0, copiedArray, 0, 3);
         
-        Assert.assertTrue(array.length == copiedArray.length);
-        Assert.assertTrue(copiedArray[0] == array[0]);
-        Assert.assertTrue(copiedArray[1] == array[1]);
-        Assert.assertTrue(copiedArray[2] == array[2]);
+        Assert.assertArrayEquals(copiedArray, array);
     }
 
     @Test
@@ -70,12 +71,7 @@ public class ArrayCopyUtilTest {
         
         int[] copiedArray = Arrays.copyOf(array, newLength);
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == array.length);
-        Assert.assertTrue(copiedArray[0] == array[0]);
-        Assert.assertTrue(copiedArray[1] == array[1]);
-        Assert.assertTrue(copiedArray[2] == array[2]);
-        Assert.assertTrue(copiedArray[3] == array[3]);
+        Assert.assertArrayEquals(copiedArray, array);
         array[0] = 9;
         Assert.assertTrue(copiedArray[0] != array[0]);
         copiedArray[1] = 12;
@@ -86,8 +82,7 @@ public class ArrayCopyUtilTest {
     public void givenArrayOfNonPrimitiveType_whenCopiedViaArraysCopyOf_thenDoShallowCopy(){
         Employee[] copiedArray = Arrays.copyOf(employees, employees.length);
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == employees.length);
+        Assert.assertArrayEquals(copiedArray, employees);
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element caused change in the copied array
         Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
@@ -99,12 +94,7 @@ public class ArrayCopyUtilTest {
         
         int[] copiedArray = array.clone();
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == array.length);
-        Assert.assertTrue(copiedArray[0] == array[0]);
-        Assert.assertTrue(copiedArray[1] == array[1]);
-        Assert.assertTrue(copiedArray[2] == array[2]);
-        Assert.assertTrue(copiedArray[3] == array[3]);
+        Assert.assertArrayEquals(copiedArray, array);
         array[0] = 9;
         Assert.assertTrue(copiedArray[0] != array[0]);
         copiedArray[1] = 12;
@@ -115,8 +105,7 @@ public class ArrayCopyUtilTest {
     public void givenArraysOfNonPrimitiveType_whenCopiedViaArrayClone_thenDoShallowCopy(){
         Employee[] copiedArray = employees.clone();
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == employees.length);
+        Assert.assertArrayEquals(copiedArray, employees);;
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element changed the copied array
         Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
@@ -128,29 +117,25 @@ public class ArrayCopyUtilTest {
         
         Address[] copiedArray = addresses.clone();
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == addresses.length);
         addresses[0].setCity(addresses[0].getCity()+"_Changed");
-        Assert.assertTrue(copiedArray[0].getCity().equals(addresses[0].getCity()));
+        Assert.assertArrayEquals(copiedArray, addresses);
     }
 
     @Test
     public void givenArraysOfSerializableNonPrimitiveType_whenCopiedViaSerializationUtils_thenDoDeepCopy(){
         Employee[] copiedArray = SerializationUtils.clone(employees);
-        
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == employees.length);
+       
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element didn't change in the copied array
-        Assert.assertFalse(copiedArray[0].getName().equals(employees[0].getName()));
+        Assert.assertFalse(
+            copiedArray[0].getName().equals(employees[0].getName()));
     }
     
     @Test
     public void givenArraysOfNonPrimitiveType_whenCopiedViaStream_thenDoShallowCopy(){
         Employee[] copiedArray = Arrays.stream(employees).toArray(Employee[]::new);
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == employees.length);
+        Assert.assertArrayEquals(copiedArray, employees);
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element didn't change in the copied array
         Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
@@ -162,11 +147,7 @@ public class ArrayCopyUtilTest {
         
         String[] copiedArray = Arrays.stream(strArray).toArray(String[]::new);
         
-        Assert.assertNotNull(copiedArray);
-        Assert.assertTrue(copiedArray.length == strArray.length);
-        Assert.assertTrue(copiedArray[0] == strArray[0]);
-        Assert.assertTrue(copiedArray[1] == strArray[1]);
-        Assert.assertTrue(copiedArray[2] == strArray[2]);
+        Assert.assertArrayEquals(copiedArray, strArray);
     }
     
     private Address[] createAddressArray(){

@@ -26,6 +26,8 @@ public class JacksonMapSerializeTest {
 	@JsonSerialize(keyUsing = MyPairSerializer.class)
 	private MyPair mapValue;
 
+	final ObjectMapper mapper = new ObjectMapper();
+
 	@Test
 	public void whenSimpleMapSerialize_thenCorrect()
 			throws JsonProcessingException {
@@ -33,7 +35,6 @@ public class JacksonMapSerializeTest {
 		Map<String, String> map = new HashMap<>();
 		map.put("key", "value");
 
-		final ObjectMapper mapper = new ObjectMapper();
 		final String jsonResult = mapper.writeValueAsString(map);
 
 		Assert.assertEquals("{\"key\":\"value\"}", jsonResult);
@@ -47,7 +48,6 @@ public class JacksonMapSerializeTest {
 		MyPair key = new MyPair("Abbott", "Costello");
 		map.put(key, "Comedy");
 
-		final ObjectMapper mapper = new ObjectMapper();
 		final String jsonResult = mapper.writeValueAsString(map);
 
 		Assert.assertEquals("{\"Abbott and Costello\":\"Comedy\"}", jsonResult);
@@ -62,7 +62,6 @@ public class JacksonMapSerializeTest {
 		mapValue = new MyPair("Comedy", "1940's");
 		cmap.put(mapKey, mapValue);
 
-		final ObjectMapper mapper = new ObjectMapper();
 		final String jsonResult = mapper.writeValueAsString(cmap);
 
 		Assert.assertEquals("{\"Abbott and Costello\":\"Comedy and 1940's\"}",
