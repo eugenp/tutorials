@@ -19,4 +19,5 @@ public class WaitSleepExample {
             System.out.println("Object '" + LOCK + "' is woken after waiting for 1 second");
         }
     }
+    
 }
