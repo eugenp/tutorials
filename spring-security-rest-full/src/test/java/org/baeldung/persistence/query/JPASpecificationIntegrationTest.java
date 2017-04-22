@@ -6,6 +6,7 @@ import org.baeldung.persistence.dao.UserSpecification;
 import org.baeldung.persistence.dao.UserSpecificationsBuilder;
 import org.baeldung.persistence.model.User;
 import org.baeldung.spring.PersistenceConfig;
+import org.baeldung.web.util.CriteriaParser;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.junit.Before;
@@ -82,12 +83,12 @@ public class JPASpecificationIntegrationTest {
     public void givenFirstOrLastName_whenGettingListOfUsers_thenCorrect() {
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
 
-        SpecSearchCriteria spec = new SpecSearchCriteria("'", "firstName", SearchOperation.EQUALITY, "john");
-        SpecSearchCriteria spec1 = new SpecSearchCriteria("lastName", SearchOperation.EQUALITY, "doe");
+        SpecSearchCriteria spec = new SpecSearchCriteria("firstName", SearchOperation.EQUALITY, "john");
+        SpecSearchCriteria spec1 = new SpecSearchCriteria("'","lastName", SearchOperation.EQUALITY, "doe");
 
         List<User> results = repository.findAll(builder
-          .with(spec1)
           .with(spec)
+          .with(spec1)
           .build());
 
         assertThat(results, hasSize(2));
@@ -96,11 +97,25 @@ public class JPASpecificationIntegrationTest {
     }
 
     @Test
-    public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
-        GenericSpecificationsBuilder builder = new GenericSpecificationsBuilder();
+    public void givenFirstOrLastNameAndAgeGenericBuilder_whenGettingListOfUsers_thenCorrect() {
+        GenericSpecificationsBuilder<User> builder = new GenericSpecificationsBuilder<>();
         Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
-        builder.with("'", "firstName", ":", "john", null, null);
-        builder.with(null, "lastName", ":", "doe", null, null);
+        
+        CriteriaParser parser=new CriteriaParser();
+        List<User> results = repository.findAll(builder.build(parser.parse("( lastName:doe OR firstName:john ) AND age:22"), converter));
+
+        assertThat(results, hasSize(1));
+        assertThat(userJohn, isIn(results));
+        assertThat(userTom, not(isIn(results)));
+    }
+
+    @Test
+    public void givenFirstOrLastNameGenericBuilder_whenGettingListOfUsers_thenCorrect() {
+        GenericSpecificationsBuilder<User> builder = new GenericSpecificationsBuilder<>();
+        Function<SpecSearchCriteria, Specification<User>> converter = UserSpecification::new;
+        
+        builder.with("firstName", ":", "john", null, null);
+        builder.with("'", "lastName", ":", "doe", null, null);
 
         List<User> results = repository.findAll(builder.build(converter));
 

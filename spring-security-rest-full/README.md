@@ -29,6 +29,11 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Changing Spring Model Parameters with Handler Interceptor](http://www.baeldung.com/spring-model-parameters-with-handler-interceptor)
 - [Introduction to Spring MVC HandlerInterceptor](http://www.baeldung.com/spring-mvc-handlerinterceptor)
 - [Using a Custom Spring MVC’s Handler Interceptor to Manage Sessions](http://www.baeldung.com/spring-mvc-custom-handler-interceptor)
+- [Bootstrap a Web Application with Spring 4](http://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
+- [REST Query Language – Implementing OR Operation](http://www.baeldung.com/rest-api-query-search-or-operation)
+
+
+
 
 ### Build the Project
 ```
