@@ -19,6 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.After;
 
 public class JExcelTest {
 
@@ -53,4 +54,11 @@ public class JExcelTest {
             .get(1));
     }
 
+    @After
+    public void cleanup(){
+        File testFile = new File(fileLocation);
+        if (testFile.exists()) {
+           testFile.delete();     
+        }
+    }
 }
