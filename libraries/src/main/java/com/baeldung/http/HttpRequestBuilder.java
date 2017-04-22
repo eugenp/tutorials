@@ -17,7 +17,7 @@ public class HttpRequestBuilder {
     public HttpResponseWrapper sendRequest(String urlString, String method, Map<String, String> parameters, Map<String, String> properties) throws IOException{
         URL url = new URL(urlString);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
+        con.setRequestMethod(method);
         if (properties != null) {
             properties.forEach((key, value) -> con.setRequestProperty(key, value));
         }

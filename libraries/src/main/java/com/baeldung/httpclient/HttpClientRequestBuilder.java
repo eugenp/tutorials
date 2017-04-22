@@ -27,7 +27,7 @@ public class HttpClientRequestBuilder {
         HttpClient client = HttpClientBuilder.create()
             .build();
         if (parameters != null) {
-            url += ParameterStringBuilder.getParamsString(parameters);
+            url += "?" + ParameterStringBuilder.getParamsString(parameters);
         }
         HttpGet request = new HttpGet(url);
         try {
