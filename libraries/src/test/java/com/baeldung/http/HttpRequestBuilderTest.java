@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.junit.Before;
 
+import java.io.IOException;
+
 public class HttpRequestBuilderTest {
 
     private HttpRequestBuilder requestPerformer;
@@ -18,7 +20,7 @@ public class HttpRequestBuilderTest {
     }
 
     @Test
-    public void whenGetRequest_thenOk() {
+    public void whenGetRequest_thenOk() throws IOException {
         HttpResponseWrapper response = requestPerformer.sendRequest("http://www.example.com", "GET", null, null);
         assertEquals("status code incorrect", response.getStatus(), 200);
         assertTrue("content incorrect", response.getContent()
@@ -26,7 +28,7 @@ public class HttpRequestBuilderTest {
     }
 
     @Test
-    public void whenPostRequest_thenOk() {
+    public void whenPostRequest_thenOk() throws IOException {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("param1", "val");
         Map<String, String> properties = new HashMap<>();
