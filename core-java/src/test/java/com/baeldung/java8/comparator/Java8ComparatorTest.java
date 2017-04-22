@@ -76,6 +76,15 @@ public class Java8ComparatorTest {
 //         System.out.println(Arrays.toString(employees));
         assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
     }
+    
+    @Test
+    public void whenReversed_thenSortedByNameDesc() {
+    	Comparator<Employee> employeeNameComparator = Comparator.comparing(Employee::getName);
+    	Comparator<Employee> employeeNameComparatorReversed = employeeNameComparator.reversed();
+        Arrays.sort(employees, employeeNameComparatorReversed);
+//         System.out.println(Arrays.toString(employees));
+        assertTrue(Arrays.equals(employees, sortedEmployeesByNameDesc));
+    }
 
     @Test
     public void whenComparingInt_thenSortedByAge() {
@@ -153,4 +162,6 @@ public class Java8ComparatorTest {
         assertTrue(Arrays.equals(someMoreEmployees, sortedEmployeesByNameAge));
     }
 
+
 }
+
