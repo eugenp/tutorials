@@ -1,7 +1,9 @@
 package com.baeldung.teng.invoicing.domain;
 
+import java.math.BigDecimal;
 import java.util.*;
 
+import static java.math.RoundingMode.HALF_UP;
 import static java.util.Collections.unmodifiableList;
 import static java.util.Objects.requireNonNull;
 import static java.util.stream.Collectors.toList;
@@ -15,6 +17,8 @@ public class Invoice {
     private final Customer customer;
 
     private final List<Item> items = new ArrayList<>();
+
+    public Invoice() { this("N/A", new Date(), null); }
 
     public Invoice(String id, Date date, Customer customer) {
         this.id = requireNonNull(id);
@@ -36,6 +40,16 @@ public class Invoice {
             this.items.addAll(items.stream().filter(Objects::nonNull).collect(toList()));
         }
         return this;
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal totalPrice = BigDecimal.ZERO;
+
+        for (Item item : items) {
+            totalPrice = totalPrice.add(item.getTotalPrice());
+        }
+
+        return totalPrice.setScale(2, HALF_UP);
     }
 
     @Override

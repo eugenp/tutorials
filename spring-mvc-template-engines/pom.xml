@@ -25,9 +25,9 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
-      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-      <version>1.2.1</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
     </dependency>
     <dependency>
       <groupId>javax.el</groupId>
@@ -56,10 +56,10 @@
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
       <exclusions>
-         <exclusion>
+        <exclusion>
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging</artifactId>
-         </exclusion>
+        </exclusion>
       </exclusions>
     </dependency>
     <dependency>
