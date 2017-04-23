@@ -9,8 +9,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.4.RELEASE</spring.version>
-        <spring-data-redis>1.7.5.RELEASE</spring-data-redis>
+        <spring.version>4.3.7.RELEASE</spring.version>
+        <spring-data-redis>1.8.1.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>       
         <jedis.version>2.9.0</jedis.version> 
         <junit.version>4.12</junit.version>

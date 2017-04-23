@@ -1,9 +1,14 @@
 package com.baeldung.transferqueue;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.concurrent.*;
 
+import static junit.framework.TestCase.assertEquals;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TransferQueueTest {
 
     @Test
@@ -25,6 +30,9 @@ public class TransferQueueTest {
         //then
         exService.awaitTermination(10_000, TimeUnit.MILLISECONDS);
         exService.shutdown();
+
+        assertEquals(producer1.numberOfProducedMessages.intValue(), 3);
+        assertEquals(producer2.numberOfProducedMessages.intValue(), 3);
     }
 
     @Test
@@ -42,6 +50,9 @@ public class TransferQueueTest {
         //then
         exService.awaitTermination(5000, TimeUnit.MILLISECONDS);
         exService.shutdown();
+
+        assertEquals(producer.numberOfProducedMessages.intValue(), 3);
+        assertEquals(consumer.numberOfConsumedMessages.intValue(), 3);
     }
 
     @Test
@@ -57,6 +68,7 @@ public class TransferQueueTest {
         //then
         exService.awaitTermination(5000, TimeUnit.MILLISECONDS);
         exService.shutdown();
-    }
 
+        assertEquals(producer.numberOfProducedMessages.intValue(), 0);
+    }
 }
