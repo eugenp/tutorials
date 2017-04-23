@@ -226,7 +226,7 @@
                 <version>1.6.0</version>
                 <configuration>
                     <executable>maven</executable>
-
+        <module>hibernate5</module>
 
                 </configuration>
             </plugin>
