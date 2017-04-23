@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ConfigPropertiesDemoApplication.class)
 @TestPropertySource("classpath:configprops-test.properties")
-public class ConfigPropertiesTest {
+public class ConfigPropertiesIntegrationTest {
 
     @Autowired
     private ConfigProperties properties;
