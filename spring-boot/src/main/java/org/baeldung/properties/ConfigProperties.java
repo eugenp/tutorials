@@ -16,41 +16,46 @@ import java.util.Map;
 
 @Configuration
 @PropertySource("classpath:configprops.properties")
-@ConfigurationProperties(prefix="mail")
+@ConfigurationProperties(prefix = "mail")
 @Validated
 public class ConfigProperties {
-    
+
     @Validated
     public static class Credentials {
-        
-        @Length(max=4, min = 1)
+
+        @Length(max = 4, min = 1)
         private String authMethod;
         private String username;
         private String password;
-        
+
         public String getAuthMethod() {
             return authMethod;
         }
+
         public void setAuthMethod(String authMethod) {
             this.authMethod = authMethod;
         }
+
         public String getUsername() {
             return username;
         }
+
         public void setUsername(String username) {
             this.username = username;
         }
+
         public String getPassword() {
             return password;
         }
+
         public void setPassword(String password) {
             this.password = password;
         }
     }
-    
+
     @NotBlank
     private String host;
-    
+
     @Min(1025)
     @Max(65536)
     private int port;
@@ -65,24 +70,31 @@ public class ConfigProperties {
     public String getHost() {
         return host;
     }
+
     public void setHost(String host) {
         this.host = host;
     }
+
     public int getPort() {
         return port;
     }
+
     public void setPort(int port) {
         this.port = port;
     }
+
     public String getFrom() {
         return from;
     }
+
     public void setFrom(String from) {
         this.from = from;
     }
+
     public Credentials getCredentials() {
         return credentials;
     }
+
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
     }
