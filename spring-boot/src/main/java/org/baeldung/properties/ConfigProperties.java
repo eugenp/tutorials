@@ -23,7 +23,7 @@ public class ConfigProperties {
     @Validated
     public static class Credentials {
         
-        @Length(max=4)
+        @Length(max=4, min = 1)
         private String authMethod;
         private String username;
         private String password;
