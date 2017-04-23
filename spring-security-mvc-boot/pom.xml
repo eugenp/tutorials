@@ -342,7 +342,6 @@
         <spring-security-taglibs.version>4.2.2.RELEASE</spring-security-taglibs.version>
 		<spring-security-core.version>4.2.2.RELEASE</spring-security-core.version>
 		<spring-security-test.version>4.2.2.RELEASE</spring-security-test.version>
-      
         <jstl.version>1.2</jstl.version>
         <rest-assured.version>2.4.0</rest-assured.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
