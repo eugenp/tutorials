@@ -46,7 +46,7 @@ public class ConfigPropertiesTest {
             .getUsername()
             .equals("john"));
         Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials()
-            .getUsername()
+            .getPassword()
             .equals("password"));
     }
 }

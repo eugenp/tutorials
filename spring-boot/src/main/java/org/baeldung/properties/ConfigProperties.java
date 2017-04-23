@@ -1,5 +1,8 @@
 package org.baeldung.properties;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
@@ -10,9 +13,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.validation.annotation.Validated;
-
-import java.util.List;
-import java.util.Map;
 
 @Configuration
 @PropertySource("classpath:configprops.properties")
@@ -60,7 +60,7 @@ public class ConfigProperties {
     @Max(65536)
     private int port;
 
-    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$")
+    @Pattern(regexp = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$")
     private String from;
 
     private Credentials credentials;
