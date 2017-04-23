@@ -3,8 +3,10 @@ package com.baeldung.cxf.aegis;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import org.junit.After;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.lang.reflect.Type;
@@ -89,5 +91,13 @@ public class BaeldungTest {
         CourseRepo courseRepo = (CourseRepo) reader.read(xmlReader, context.getTypeMapping().getType(CourseRepo.class));
         xmlReader.close();
         return courseRepo;
+    }
+
+    @After
+    public void cleanup(){
+        File testFile = new File(fileName);
+        if (testFile.exists()) {
+           testFile.delete();     
+        }
     }
 }

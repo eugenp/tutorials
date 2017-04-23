@@ -28,11 +28,6 @@
             <version>${org.slf4j.version}</version>
             <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
 
         <!-- test scoped -->
 
@@ -78,6 +73,10 @@
                     <groupId>org.apache.avalon.framework</groupId>
                     <artifactId>avalon-framework-impl</artifactId>
                 </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>                
             </exclusions>
         </dependency>
 
@@ -90,6 +89,12 @@
             <groupId>avalon-framework</groupId>
             <artifactId>avalon-framework-impl</artifactId>
             <version>${avalon-framework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <dependency>
@@ -101,9 +106,7 @@
         <dependency>
             <groupId>org.dbdoclet</groupId>
             <artifactId>herold</artifactId>
-            <version>6.1.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/test/resources/jars/herold.jar</systemPath>
+            <version>8.0.4</version>
         </dependency>
 
         <dependency>
@@ -140,6 +143,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>

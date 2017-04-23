@@ -94,6 +94,12 @@
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk-dynamodb</artifactId>
     		<version>${aws-java-sdk-dynamodb.version}</version>
+	            <exclusions>
+	                <exclusion>
+	                    <artifactId>commons-logging</artifactId>
+	                    <groupId>commons-logging</groupId>
+	                </exclusion>
+	            </exclusions>    		
 		</dependency>
 		<dependency>
   			<groupId>com.github.derjust</groupId>
