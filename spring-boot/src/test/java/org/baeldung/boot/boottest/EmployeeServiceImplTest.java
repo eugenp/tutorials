@@ -49,6 +49,8 @@ public class EmployeeServiceImplTest {
 
         Mockito.when(employeeRepository.findByName(john.getName()))
             .thenReturn(john);
+        Mockito.when(employeeRepository.findByName(alex.getName()))
+        .thenReturn(alex);
         Mockito.when(employeeRepository.findByName("wrong_name"))
             .thenReturn(null);
         Mockito.when(employeeRepository.findById(john.getId()))
