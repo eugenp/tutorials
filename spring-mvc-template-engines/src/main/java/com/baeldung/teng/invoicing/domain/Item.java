@@ -3,6 +3,7 @@ package com.baeldung.teng.invoicing.domain;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.valueOf;
 import static java.math.RoundingMode.HALF_UP;
 import static java.util.Objects.requireNonNull;
@@ -33,7 +34,8 @@ public class Item {
     public BigDecimal getVat() { return vat; }
 
     public BigDecimal getTotalPrice() {
-        return unitPrice.multiply(quantity).multiply(vat.divide(valueOf(100), HALF_UP)).setScale(2, HALF_UP);
+        return unitPrice.multiply(quantity).multiply(ONE.add(vat.divide(valueOf(100), 2, HALF_UP)))
+                        .setScale(2, HALF_UP);
     }
 
     @Override

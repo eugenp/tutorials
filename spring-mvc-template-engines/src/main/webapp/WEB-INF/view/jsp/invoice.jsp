@@ -33,15 +33,12 @@
 <c:if test="${not empty invoice.customer}">
   <section>
     <dl>
-      <dt>BILL TO:</dt>
-      <dd>${invoice.customer.firstName} ${invoice.customer.lastName}<br />
-        <c:if test="${not empty invoice.customer.vatNumber}">
-          <dl>
-            <dt>VAT #</dt>
-            <dd>${invoice.customer.vatNumber}</dd>
-          </dl>
-        </c:if>
-      </dd>
+      <dt>BILL TO</dt>
+      <dd>${invoice.customer.firstName} ${invoice.customer.lastName}</dd>
+      <c:if test="${not empty invoice.customer.vatNumber}">
+        <dt>VAT</dt>
+        <dd>${invoice.customer.vatNumber}</dd>
+      </c:if>
     </dl>
   </section>
 </c:if>
@@ -72,7 +69,7 @@
   <tfoot>
   <tr>
     <td colspan="3">&nbsp;</td>
-    <td>Total:</td>
+    <td><strong>Total</strong></td>
     <td>€${invoice.totalPrice}</td>
   </tr>
   </tfoot>
@@ -80,12 +77,10 @@
 
 <footer>
   <p>
-    Baeldung – The Spring Resource |
-    Java, Spring and Web Development tutorials
+    <em>Baeldung – The Spring Resource | Java, Spring and Web Development tutorials</em>
   </p>
   <p>
-    <a href="http://baeldung.com">baeldung.com</a> |
-    <a href="mailto:email@baeldung.com">email@baeldung.com</a>
+    <a href="http://baeldung.com">baeldung.com</a> | <a href="mailto:email@baeldung.com">email@baeldung.com</a>
   </p>
 </footer>
 

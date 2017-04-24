@@ -17,11 +17,12 @@ public class AppConf extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
 
+        // Configure handling of static resources:
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
     @Bean
-    public ViewResolver jspViewResolver() {
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();
 
         bean.setViewClass(JstlView.class);
