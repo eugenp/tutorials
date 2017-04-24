@@ -1,7 +1,6 @@
 package org.baeldung.boot.boottest;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -12,9 +11,9 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    public Optional<Employee> findByName(String name);
+    public Employee findByName(String name);
 
-    public Optional<Employee> findById(Long id);
+    public Employee findById(Long id);
 
     public List<Employee> findAll();
 
