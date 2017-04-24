@@ -67,6 +67,12 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-servlet-initializer</artifactId>
 			<version>${resteasy.version}</version>
+                                        <exclusions>
+                                            <exclusion>
+                                                <artifactId>commons-logging</artifactId>
+                                                <groupId>commons-logging</groupId>
+                                            </exclusion>
+                                        </exclusions>            
 		</dependency>
 
 

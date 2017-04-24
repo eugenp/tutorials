@@ -72,12 +72,6 @@
         </dependency>
 
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>${httpcore.version}</version>
@@ -151,6 +145,12 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <dependency>
@@ -184,6 +184,12 @@
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-core</artifactId>
             <version>${json-schema-core.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -282,7 +288,6 @@
 
         
         <commons-lang3.version>3.5</commons-lang3.version>        
-        <commons-logging.version>1.2</commons-logging.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         
         <httpcore.version>4.4.5</httpcore.version>
