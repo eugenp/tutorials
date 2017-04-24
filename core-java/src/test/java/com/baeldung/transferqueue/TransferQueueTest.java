@@ -12,7 +12,7 @@ import static junit.framework.TestCase.assertEquals;
 public class TransferQueueTest {
 
     @Test
-    public void givenTransferQueue_whenUseMultipleConsumersAndMultipleProducers_thenShouldProcessAllMessages() throws InterruptedException {
+    public void whenMultipleConsumersAndProducers_thenProcessAllMessages() throws InterruptedException {
         //given
         TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
         ExecutorService exService = Executors.newFixedThreadPool(3);
@@ -28,7 +28,7 @@ public class TransferQueueTest {
         exService.execute(consumer2);
 
         //then
-        exService.awaitTermination(10_000, TimeUnit.MILLISECONDS);
+        exService.awaitTermination(5000, TimeUnit.MILLISECONDS);
         exService.shutdown();
 
         assertEquals(producer1.numberOfProducedMessages.intValue(), 3);
@@ -36,7 +36,7 @@ public class TransferQueueTest {
     }
 
     @Test
-    public void givenTransferQueue_whenUseOneConsumerAndOneProducer_thenShouldProcessAllMessages() throws InterruptedException {
+    public void whenUseOneConsumerAndOneProducer_thenShouldProcessAllMessages() throws InterruptedException {
         //given
         TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
         ExecutorService exService = Executors.newFixedThreadPool(2);
@@ -56,7 +56,7 @@ public class TransferQueueTest {
     }
 
     @Test
-    public void givenTransferQueue_whenUseOneProducerAndNoConsumers_thenShouldFailWithTimeout() throws InterruptedException {
+    public void whenUseOneProducerAndNoConsumers_thenShouldFailWithTimeout() throws InterruptedException {
         //given
         TransferQueue<String> transferQueue = new LinkedTransferQueue<>();
         ExecutorService exService = Executors.newFixedThreadPool(2);
