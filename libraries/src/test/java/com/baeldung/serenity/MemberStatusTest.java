@@ -48,7 +48,12 @@ public class MemberStatusTest {
         memberSteps.memberShouldHavePointsLeft();
     }
 
+    /**
+     * This test should fail, comment out <code>@Ignore</code> to see how failed test can be reflected in Serenity report. <br/>
+     * Remember to add <code>&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;</code> under maven-surefire-plugin configuration.
+     */
     @Test
+    @Ignore
     @Title("Members with 500 points should have a Gold status when added 4,000 points ($40,000)")
     public void memberWith500PointsEarnsGoldAfterSpends$40000(){
         memberSteps.aMemberHasPointsOf(500);

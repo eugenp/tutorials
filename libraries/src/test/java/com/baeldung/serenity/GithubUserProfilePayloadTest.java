@@ -5,6 +5,6 @@ import net.serenitybdd.jbehave.SerenityStory;
 /**
  * @author aiet
  */
-public class GithubUserProfilePayload extends SerenityStory {
+public class GithubUserProfilePayloadTest extends SerenityStory {
 
 }
