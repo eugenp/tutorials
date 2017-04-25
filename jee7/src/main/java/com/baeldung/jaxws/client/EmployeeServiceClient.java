@@ -1,25 +1,18 @@
 package com.baeldung.jaxws.client;
 
-
-import com.baeldung.jaxws.server.bottomup.EmployeeService;
-
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.net.URL;
+import java.util.List;
 
 public class EmployeeServiceClient {
 
     public static void main(String[] args) throws Exception {
 
-        URL url = new URL("http://localhost:8081/employeeservice?wsdl");
-        QName qname = new QName("http://bottomup.server.jaxws.baeldung.com/", "EmployeeServiceImplService");
+        URL url = new URL("http://localhost:8080/employeeservice?wsdl");
 
-        Service service = Service.create(url, qname);
+        EmployeeService_Service employeeService_Service = new EmployeeService_Service(url);
+        EmployeeService employeeServiceProxy = employeeService_Service.getEmployeeServiceImplPort();
 
-        EmployeeService employeeService = service.getPort(EmployeeService.class);
-        employeeService.countEmployees();
-
-        System.out.println(employeeService.countEmployees());
+        List<Employee> allEmployees = employeeServiceProxy.getAllEmployees();
 
     }
 }
