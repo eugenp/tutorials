@@ -14,7 +14,8 @@ public class EventWindowSort {
                 public long applyAsLong(ZonedDateTime value) {
                     return value.toInstant().toEpochMilli();
                 }
-            }));
+            })
+    );
 
 
     public void acceptEvent(Event event) {
