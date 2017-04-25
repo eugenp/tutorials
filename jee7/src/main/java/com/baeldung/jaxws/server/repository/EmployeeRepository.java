@@ -1,10 +1,10 @@
-package com.baeldung.jaxws.repository;
+package com.baeldung.jaxws.server.repository;
 
 import java.util.List;
 
-import com.baeldung.jaxws.exception.EmployeeAlreadyExists;
-import com.baeldung.jaxws.exception.EmployeeNotFound;
-import com.baeldung.jaxws.model.Employee;
+import com.baeldung.jaxws.server.bottomup.exception.EmployeeAlreadyExists;
+import com.baeldung.jaxws.server.bottomup.exception.EmployeeNotFound;
+import com.baeldung.jaxws.server.bottomup.model.Employee;
 
 public interface EmployeeRepository {
 
