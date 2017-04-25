@@ -3,8 +3,9 @@ package com.baeldung.http;
 public class HttpResponseWrapper {
     private int status;
     private String content;
-    
-    public HttpResponseWrapper(){ }
+
+    public HttpResponseWrapper() {
+    }
 
     public HttpResponseWrapper(int status, String content) {
         super();
