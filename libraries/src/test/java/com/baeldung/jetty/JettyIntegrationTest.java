@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class JettyTest {
+public class JettyIntegrationTest {
     private JettyServer jettyServer;
 
     @Before
