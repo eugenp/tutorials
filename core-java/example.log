@@ -1,0 +1,119 @@
+DEBUG main DataNucleus.MetaData - MetaData of type "jdo" for class "org.baeldung.equalshashcode.entities.Rectangle" NOT found at /org/baeldung/equalshashcode.jdo
+DEBUG main DataNucleus.MetaData - MetaData of type "jdo" for class "org.baeldung.equalshashcode.entities.Rectangle" NOT found at /org/baeldung/equalshashcode/entities/package.jdo
+DEBUG main DataNucleus.MetaData - MetaData of type "jdo" for class "org.baeldung.equalshashcode.entities.Rectangle" NOT found at /org/baeldung/equalshashcode/entities.jdo
+DEBUG main DataNucleus.MetaData - MetaData of type "jdo" for class "org.baeldung.equalshashcode.entities.Rectangle" NOT found at /org/baeldung/equalshashcode/entities/Rectangle.jdo
+DEBUG main DataNucleus.MetaData - MetaData of type "jdo" for class "org.baeldung.equalshashcode.entities.Rectangle" not found
+DEBUG main DataNucleus.MetaData - Registering class "org.baeldung.equalshashcode.entities.Rectangle" as not having MetaData.
+DEBUG main DataNucleus.MetaData - Class "org.baeldung.equalshashcode.entities.Rectangle" has no MetaData or annotations.
+DEBUG main DataNucleus.MetaData - Populating all MetaData ...
+DEBUG main DataNucleus.MetaData - Class "com.baeldung.jdo.Product" : Populating Meta-Data
+DEBUG main DataNucleus.MetaData - Class "com.baeldung.jdo.Product" field "name" : Adding Meta-Data for member since it didnt appear in the Meta-Data definition.
+DEBUG main DataNucleus.MetaData - Initialising all MetaData ...
+DEBUG main DataNucleus.MetaData - Class "com.baeldung.jdo.Product" : Initialising Meta-Data
+DEBUG main DataNucleus.MetaData - MetaData Management : Load of Metadata complete
+DEBUG main DataNucleus.Enhancer - Enhance of class "com.baeldung.jdo.Product" starting ...
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt implement the interface "org.datanucleus.enhancement.Persistable" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnStateManager" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnInheritedFieldCount" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnFlags" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnFieldTypes" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnFieldNames" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnFieldFlags" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have field "dnPersistableSuperclass" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnReplaceField" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetStateManager" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsTransactional" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnNewInstance" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnNewInstance" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnSuperClone" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnProvideFields" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "___dn$loadClass" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetManagedFieldCount" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsDirty" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnReplaceStateManager" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnReplaceFlags" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsDetached" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnMakeDirty" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "__dnPersistableSuperclassInit" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsDeleted" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "__dnFieldFlagsInit" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "__dnFieldTypesInit" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnProvideField" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnPreSerialize" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetVersion" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetTransactionalObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsNew" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyKeyFieldsToObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyField" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyKeyFieldsFromObjectId" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnGetExecutionContext" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnCopyFields" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "__dnGetInheritedFieldCount" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnNewObjectIdInstance" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnNewObjectIdInstance" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnIsPersistent" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "dnReplaceFields" but is required
+DEBUG main DataNucleus.Enhancer - Class "com.baeldung.jdo.Product" doesnt have method "__dnFieldNamesInit" but is required
+DEBUG main DataNucleus.Enhancer - Adding interface: org.datanucleus.enhancement.Persistable
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.<init> : omitting enhance of set of field "com.baeldung.jdo.Product.name"
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.<init> : omitting enhance of set of field "com.baeldung.jdo.Product.name"
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.<init> : omitting enhance of set of field "com.baeldung.jdo.Product.name"
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.<init> : omitting enhance of set of field "com.baeldung.jdo.Product.name"
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.getName changing field "com.baeldung.jdo.Product.name" for call to "dnGetname()"
+DEBUG main DataNucleus.Enhancer - Enhancing original method com.baeldung.jdo.Product.setName changing field "com.baeldung.jdo.Product.name" for call to "dnSetname()"
+DEBUG main DataNucleus.Enhancer - Adding field "org.datanucleus.enhancement.StateManager dnStateManager"
+DEBUG main DataNucleus.Enhancer - Adding field "byte dnFlags"
+DEBUG main DataNucleus.Enhancer - Adding field "[B dnFieldFlags"
+DEBUG main DataNucleus.Enhancer - Adding field "java.lang.Class dnPersistableSuperclass"
+DEBUG main DataNucleus.Enhancer - Adding field "[Ljava.lang.Class; dnFieldTypes"
+DEBUG main DataNucleus.Enhancer - Adding field "[Ljava.lang.String; dnFieldNames"
+DEBUG main DataNucleus.Enhancer - Adding field "int dnInheritedFieldCount"
+DEBUG main DataNucleus.Enhancer - Adding method "void <clinit>()"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyKeyFieldsFromObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldConsumer fc, java.lang.Object oid)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyKeyFieldsFromObjectId(java.lang.Object oid)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyKeyFieldsToObjectId(java.lang.Object oid)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyKeyFieldsToObjectId(org.datanucleus.enhancement.Persistable$ObjectIdFieldSupplier fs, java.lang.Object oid)"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnGetObjectId()"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnGetVersion()"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnPreSerialize()"
+DEBUG main DataNucleus.Enhancer - Adding method "org.datanucleus.enhancement.ExecutionContextReference dnGetExecutionContext()"
+DEBUG main DataNucleus.Enhancer - Adding method "org.datanucleus.enhancement.StateManager dnGetStateManager()"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnGetTransactionalObjectId()"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsDeleted()"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsDirty()"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsNew()"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsPersistent()"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsTransactional()"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnMakeDirty(java.lang.String fieldName)"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnNewObjectIdInstance()"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnNewObjectIdInstance(java.lang.Object key)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnProvideFields([I indices)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnReplaceFields([I indices)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnReplaceFlags()"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnReplaceStateManager(org.datanucleus.enhancement.StateManager sm)"
+DEBUG main DataNucleus.Enhancer - Adding method "boolean dnIsDetached()"
+DEBUG main DataNucleus.Enhancer - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm)"
+DEBUG main DataNucleus.Enhancer - Adding method "org.datanucleus.enhancement.Persistable dnNewInstance(org.datanucleus.enhancement.StateManager sm, java.lang.Object obj)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnReplaceField(int index)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnProvideField(int index)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyField(com.baeldung.jdo.Product obj, int index)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnCopyFields(java.lang.Object obj, [I indices)"
+DEBUG main DataNucleus.Enhancer - Adding method "[Ljava.lang.String; __dnFieldNamesInit()"
+DEBUG main DataNucleus.Enhancer - Adding method "[Ljava.lang.Class; __dnFieldTypesInit()"
+DEBUG main DataNucleus.Enhancer - Adding method "[B __dnFieldFlagsInit()"
+DEBUG main DataNucleus.Enhancer - Adding method "int __dnGetInheritedFieldCount()"
+DEBUG main DataNucleus.Enhancer - Adding method "int dnGetManagedFieldCount()"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Class __dnPersistableSuperclassInit()"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Class ___dn$loadClass(java.lang.String className)"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.Object dnSuperClone()"
+DEBUG main DataNucleus.Enhancer - Adding method "long dnGetid(com.baeldung.jdo.Product objPC)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnSetid(com.baeldung.jdo.Product objPC, long val)"
+DEBUG main DataNucleus.Enhancer - Adding method "java.lang.String dnGetname(com.baeldung.jdo.Product objPC)"
+DEBUG main DataNucleus.Enhancer - Adding method "void dnSetname(com.baeldung.jdo.Product objPC, java.lang.String val)"
+INFO main DataNucleus.Enhancer - Writing class file "/home/jboadas/devel/java/tutorials/core-java/target/classes/com/baeldung/jdo/Product.class" with enhanced definition
+INFO main DataNucleus.Enhancer - ENHANCED (Persistable) : com.baeldung.jdo.Product
+DEBUG main DataNucleus.Enhancer - Enhance of class "com.baeldung.jdo.Product" completed
+INFO main DataNucleus.Enhancer - DataNucleus Enhancer completed with success for 1 classes. Timings : input=1049 ms, enhance=64 ms, total=1113 ms. Consult the log for full details
