@@ -14,7 +14,7 @@ export class BookListComponent implements OnInit {
 
   books: Book[] = [];
   newBooks: Book[] = [];
-  newBook: Book = new Book(null, '', '');
+  newBook: Book = new Book(Math.floor(Math.random() * 1000), '', '');
   booksToEdit: number[] = [];
   isAddNewBook: boolean = false;
   selectedBook: Book = null;

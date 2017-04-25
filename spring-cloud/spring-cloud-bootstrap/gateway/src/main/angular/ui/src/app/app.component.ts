@@ -23,7 +23,7 @@ export class AppComponent {
 
 
   principal: Principal = new Principal(false, []);
-  // principal: Principal = new Principal(true, [new Authority("ROLE_ADMIN")]);
+  // principal: Principal = new Principal(true, [new Authority("ROLE_USER")]);
 
   loginFailed: boolean = false;
 
