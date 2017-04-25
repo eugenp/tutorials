@@ -1,6 +1,8 @@
 import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {Rating} from "../rating";
 import {Principal} from "../principal";
+import {HttpService} from "../http.service";
+import {Response} from "@angular/http";
 
 @Component({
   selector: 'app-rating',
@@ -15,7 +17,7 @@ export class RatingComponent implements OnInit, OnChanges {
   stars: number[] = [1,2,3,4,5];
   newRating: Rating = null;
 
-  constructor() { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {}
 
@@ -31,15 +33,25 @@ export class RatingComponent implements OnInit, OnChanges {
   }
 
   private loadRatings() {
-    let rating: Rating = new Rating(1, this.bookId, 1);
-    let rating1: Rating = new Rating(1, this.bookId, 1);
-    this.ratings.push(rating, rating1);
+    this.httpService.getRatings(this.bookId, this.principal.credentials)
+      .map((response: Response) => response.json())
+      .map((data: any) => new Rating(data.id, data.bookId, data.stars))
+      .subscribe((rating: Rating) => {
+        console.log(rating);
+        this.ratings.push(rating);
+      });
   }
 
-  onSubmit() {
+  onSaveRating() {
     console.log(this.newRating);
-    let ratingCopy: Rating = Object.assign({}, this.newRating, {id: Math.floor(Math.random() * 1000)});
-    this.ratings.push(ratingCopy);
+    let ratingCopy: Rating = Object.assign({}, this.newRating);
+    this.httpService.createRating(ratingCopy, this.principal.credentials)
+      .map((response: Response) => response.json())
+      .map((data: any) => new Rating(data.id, data.bookId, data.stars))
+      .subscribe((rating: Rating) => {
+        console.log(rating);
+        this.ratings.push(rating);
+      });
   }
 
   selectRating(rating: Rating) {
@@ -53,10 +65,15 @@ export class RatingComponent implements OnInit, OnChanges {
   }
 
   deleteRating(index: number) {
-    if (this.ratings[index] === this.newRating) {
-      this.newRating = new Rating(null, this.bookId, 1);
-    }
-    this.ratings.splice(index, 1);
+    let rating = this.ratings[index];
+    this.httpService.deleteRating(rating.id, this.principal.credentials)
+      .subscribe(() => {
+        if (this.ratings[index] === this.newRating) {
+          this.newRating = new Rating(null, this.bookId, 1);
+        }
+        this.ratings.splice(index, 1);
+      });
+
   }
 
 }
