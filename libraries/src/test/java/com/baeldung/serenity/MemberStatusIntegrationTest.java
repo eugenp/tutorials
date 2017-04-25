@@ -14,7 +14,7 @@ import static com.baeldung.serenity.membership.MemberGrade.Gold;
 import static com.baeldung.serenity.membership.MemberGrade.Silver;
 
 @RunWith(SerenityRunner.class)
-public class MemberStatusTest {
+public class MemberStatusIntegrationTest {
 
     @Steps MemberStatusSteps memberSteps;
 

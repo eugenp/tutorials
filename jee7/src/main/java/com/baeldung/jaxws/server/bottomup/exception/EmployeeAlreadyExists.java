@@ -1,4 +1,4 @@
-package com.baeldung.jaxws.exception;
+package com.baeldung.jaxws.server.bottomup.exception;
 
 import javax.xml.ws.WebFault;
 
