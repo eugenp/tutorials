@@ -19,6 +19,7 @@ Ratings:
     </label>
   </div>
   <button *ngIf="newRating.id === null" type="submit" class="btn btn-secondary" [disabled]="!f.valid">Add Rating</button>
+  <button *ngIf="principal.isAdmin() && newRating.id !== null" type="button" class="btn btn-secondary" (click)="updateRating()">Save</button>
   <button *ngIf="principal.isAdmin() && newRating.id !== null" type="button" class="btn btn-secondary" (click)="cancelSelection()">Cancel</button>
 </form>
 

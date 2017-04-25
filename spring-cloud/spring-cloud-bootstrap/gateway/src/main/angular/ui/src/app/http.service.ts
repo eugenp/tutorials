@@ -55,6 +55,11 @@ export class HttpService {
     return this.http.delete("/rating-service/ratings/" + ratingId, options)
   }
 
+  updateRating(rating: Rating, user: any) {
+    let options = this.makeAuthOptions(user);
+    return this.http.put("/rating-service/ratings/" + rating.id, rating, options)
+  }
+
   private makeAuthOptions(user: any): RequestOptions {
     let headers = new Headers({'Content-Type': 'application/json'});
     headers.append('Authorization','Basic ' + btoa(user.username + ':' + user.password));

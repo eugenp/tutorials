@@ -3,6 +3,7 @@ import {Principal} from "../../principal";
 import {Book} from "../../book";
 import {Response} from "@angular/http";
 import {HttpService} from "../../http.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-book-list',
@@ -30,7 +31,13 @@ export class BookListComponent implements OnInit {
   loadBooks() {
     this.httpService.getBooks()
       .map((response: Response) => response.json())
-      .map((data: any) => new Book(data.id, data.author, data.title))
+      .map(books => {
+        return Observable.from(books)
+      })
+      .flatMap(x => x)
+      .map((data: any) => {
+        return new Book(data.id, data.author, data.title)
+      })
       .subscribe((book: Book) => {
         console.log(book);
         this.books.push(book);

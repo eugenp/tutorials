@@ -3,6 +3,7 @@ import {Rating} from "../rating";
 import {Principal} from "../principal";
 import {HttpService} from "../http.service";
 import {Response} from "@angular/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-rating',
@@ -35,6 +36,10 @@ export class RatingComponent implements OnInit, OnChanges {
   private loadRatings() {
     this.httpService.getRatings(this.bookId, this.principal.credentials)
       .map((response: Response) => response.json())
+      .map(ratings => {
+        return Observable.from(ratings)
+      })
+      .flatMap(x => x)
       .map((data: any) => new Rating(data.id, data.bookId, data.stars))
       .subscribe((rating: Rating) => {
         console.log(rating);
@@ -52,6 +57,13 @@ export class RatingComponent implements OnInit, OnChanges {
         console.log(rating);
         this.ratings.push(rating);
       });
+  }
+
+  updateRating() {
+    this.httpService.updateRating(this.newRating, this.principal.credentials)
+      .subscribe(() => {
+        this.newRating = new Rating(null, this.bookId, 1);
+      })
   }
 
   selectRating(rating: Rating) {
