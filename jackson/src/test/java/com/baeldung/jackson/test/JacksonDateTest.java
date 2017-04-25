@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
@@ -53,9 +54,10 @@ public class JacksonDateTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.setDateFormat(new ISO8601DateFormat());
 
         final String result = mapper.writeValueAsString(event);
-        assertThat(result, containsString("1970-01-01T02:30:00.000+0000"));
+        assertThat(result, containsString("1970-01-01T02:30:00Z"));
     }
 
     @Test
