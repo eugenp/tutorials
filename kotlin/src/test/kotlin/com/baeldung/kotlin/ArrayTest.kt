@@ -3,9 +3,6 @@ package com.baeldung.kotlin
 import com.baeldung.java.ArrayExample
 import com.baeldung.java.Customer
 import org.junit.Test
-import java.io.File
-import java.io.FileReader
-import java.lang.reflect.Constructor
 import kotlin.test.assertEquals
 
 class ArrayTest {
