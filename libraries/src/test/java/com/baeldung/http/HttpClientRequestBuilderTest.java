@@ -1,15 +1,14 @@
-package com.baeldung.httpclient;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.baeldung.http;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.http.HttpResponseWrapper;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HttpClientRequestBuilderTest {
     private HttpClientRequestBuilder requestBuilder;
@@ -20,7 +19,7 @@ public class HttpClientRequestBuilderTest {
     }
 
     @Test
-    public void whenGetRequest_thenOk() {
+    public void whenGetRequest_thenOk() throws UnsupportedEncodingException {
         Map<String, String> parameters = new HashMap<>();
         parameters.put("param1", "val");
         HttpResponseWrapper response = requestBuilder.sendGetRequest("http://www.example.com",parameters);
