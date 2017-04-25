@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {Principal} from "../../principal";
 import {Book} from "../../book";
+import {Http} from "@angular/http";
 
 @Component({
   selector: 'app-book-list',
@@ -19,7 +20,7 @@ export class BookListComponent implements OnInit {
   isAddNewBook: boolean = false;
   selectedBook: Book = null;
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   ngOnInit() {
     this.loadBooks();

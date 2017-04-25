@@ -1,9 +1,10 @@
 import {Component} from "@angular/core";
 import {Principal} from "./principal";
-import {Response, RequestOptions, Headers, Http} from "@angular/http";
+import {Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {NgForm} from "@angular/forms";
 import {Book} from "./book";
+import {HttpService} from "./http.service";
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,12 @@ export class AppComponent {
   private password: String = '';
 
 
-  principal: Principal = new Principal(false, []);
-  // principal: Principal = new Principal(true, [new Authority("ROLE_USER")]);
+  principal: Principal = new Principal(false, [], null);
+  // principal: Principal = new Principal(true, [new Authority("ROLE_USER")], {username: 'user', password: 'password'});
 
   loginFailed: boolean = false;
 
-  constructor(private http: Http){}
+  constructor(private httpService: HttpService){}
 
   ngOnInit(): void {
 
@@ -35,14 +36,8 @@ export class AppComponent {
 
   onLogin(form: NgForm) {
     this.loginFailed = false;
-    let headers = new Headers({'Content-Type': 'application/json'});
-    this.username = form.value.username;
-    this.password = form.value.password;
-
-    headers.append('Authorization','Basic ' + btoa(form.value.username + ':' + form.value.password));
-    headers.append('X-Requested-With','XMLHttpRequest');
-    let options = new RequestOptions({headers: headers});
-    this.http.get("/me", options)
+    this.credentials = {username: form.value.username, password: form.value.password};
+    this.httpService.login(this.credentials)
       .map((response: Response) => response.json())
       .catch((error: Response) => {
         if (error.status === 401) {
@@ -51,7 +46,7 @@ export class AppComponent {
         console.log(error);
         return Observable.throw(error);
       })
-      .map((data: any) => new Principal(data.authenticated, data.authorities))
+      .map((data: any) => new Principal(data.authenticated, data.authorities, this.credentials))
       .subscribe((principal: Principal) => {
         console.log(principal);
         this.principal = principal;
@@ -59,11 +54,7 @@ export class AppComponent {
   }
 
   onLogout() {
-    let headers = new Headers({'Content-Type': 'application/json'});
-    headers.append('Authorization','Basic ' + btoa(this.username + ':' + this.password));
-    headers.append('X-Requested-With','XMLHttpRequest');
-    let options = new RequestOptions({headers: headers});
-    this.http.post("/logout", '', options)
+    this.httpService.logout(this.principal.credentials)
       .catch((error: Response) => {
         console.log(error);
         return Observable.throw(error);
@@ -73,7 +64,7 @@ export class AppComponent {
           this.loginFailed = false;
           this.credentials.username = '';
           this.credentials.password = '';
-          this.principal = new Principal(false, []);
+          this.principal = new Principal(false, [], null);
         }
       });
   }
