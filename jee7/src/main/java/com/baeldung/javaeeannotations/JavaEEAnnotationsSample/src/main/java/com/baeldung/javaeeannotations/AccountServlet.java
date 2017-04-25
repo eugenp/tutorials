@@ -1,4 +1,4 @@
-package com.baeldung.javaeeannotations;
+package com.baeldung.javaeeannotations.JavaEEAnnotationsSample.src.main.java.com.baeldung.javaeeannotations;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
   initParams = { @WebInitParam(name = "type", value = "savings") }
   )
 /*@ServletSecurity(
-  value = @HttpConstraint(rolesAllowed = {"admin"}),
-  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"admin"})}
+  value = @HttpConstraint(rolesAllowed = {"Member"}),
+  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"Admin"})}
   )*/
 public class AccountServlet extends javax.servlet.http.HttpServlet {
 
@@ -36,19 +36,15 @@ public class AccountServlet extends javax.servlet.http.HttpServlet {
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        
         double accountBalance = 1000d;
-        double interestRate = Double.parseDouble(request.getAttribute("interest").toString());
-
         String paramDepositAmt = request.getParameter("dep");
         double depositAmt = Double.parseDouble(paramDepositAmt);
 
         accountBalance = accountBalance + depositAmt;
-
+        
         PrintWriter writer = response.getWriter();
-        writer.println("<html> Balance of " + accountType + " account is: " + 
-            accountBalance + "<br> This account bares an interest rate of " + interestRate + 
-            " % </html>");
+        writer.println("<html> Balance of " + accountType + " account is: " + accountBalance + "</html>");
         writer.flush();
-
     }
 }

@@ -2,6 +2,7 @@ package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,11 +24,9 @@ public class RatingController {
     private RatingService ratingService;
 
     @GetMapping
-    public List<Rating> findRatingsByBookId(@RequestParam(required = false, defaultValue = "0") Long bookId) {
-        if (bookId.equals(0L)) {
-            return ratingService.findAllRatings();
-        }
-        return ratingService.findRatingsByBookId(bookId);
+    public List<Rating> findRatingsByBookId(@RequestParam(required = false) Optional<Long> bookId) {
+        return bookId.map(ratingService::findRatingsByBookId)
+            .orElseGet(ratingService::findAllRatings);
     }
 
     @PostMapping
