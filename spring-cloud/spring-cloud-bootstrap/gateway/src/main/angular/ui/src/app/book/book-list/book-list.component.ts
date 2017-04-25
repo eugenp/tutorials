@@ -1,7 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {Principal} from "../../principal";
 import {Book} from "../../book";
-import {Http} from "@angular/http";
+import {Response} from "@angular/http";
+import {HttpService} from "../../http.service";
 
 @Component({
   selector: 'app-book-list',
@@ -20,18 +21,21 @@ export class BookListComponent implements OnInit {
   isAddNewBook: boolean = false;
   selectedBook: Book = null;
 
-  constructor(private http: Http) { }
+  constructor(private httpService: HttpService) { }
 
   ngOnInit() {
     this.loadBooks();
   }
 
   loadBooks() {
-    let book: Book = new Book(1, 'Tom Sawyer', 'Huckleberry Finn');
-    let book1: Book = new Book(2, 'Michael Crichton', 'Jurassic Park');
-    let book2: Book = new Book(3, 'McLaughlin, Pollice, and West', 'Object Oriented Analysis And Design');
-    this.books.push(book, book1, book2);
-    this.books.forEach(book => this.newBooks.push(new Book(book.id, book.author, book.title)))
+    this.httpService.getBooks()
+      .map((response: Response) => response.json())
+      .map((data: any) => new Book(data.id, data.author, data.title))
+      .subscribe((book: Book) => {
+        console.log(book);
+        this.books.push(book);
+        this.newBooks.push(new Book(book.id, book.author, book.title))
+      });
   }
 
   cancelEditBook(bookIndex: number) {
@@ -49,21 +53,31 @@ export class BookListComponent implements OnInit {
 
   saveBook(bookIndex: number, newBook: Book) {
     console.log(newBook);
-
     //save the book to the database
+    this.httpService.updateBook(newBook, this.principal.credentials)
+      .map((response: Response) => response.json())
+      .map((data: any) => new Book(data.id, data.author, data.title))
+      .subscribe((book: Book) => {
+        console.log(book);
+        //update the current array of books
+        let bookArr: Book = this.books.find(b => b.id === book.id);
+        bookArr.title = book.title;
+        bookArr.author = book.author;
+        this.booksToEdit.splice(this.booksToEdit.indexOf(bookIndex), 1); //remove the index of the book to edit
+      });
 
-    //update the current array of books
-    let book: Book = this.books.find(b => b.id === newBook.id);
-    book.title = newBook.title;
-    book.author = newBook.author;
-    this.booksToEdit.splice(this.booksToEdit.indexOf(bookIndex), 1); //remove the index of the book to edit
+
   }
 
   delete(bookIndex: number) {
-    if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {this.selectedBook = null;}
+    let book: Book = this.books[bookIndex];
+    this.httpService.deleteBook(book, this.principal.credentials)
+      .subscribe(() => {
+        if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {this.selectedBook = null;}
 
-    this.books.splice(bookIndex, 1); //remove the book at this index;
-    this.newBooks.splice(bookIndex, 1); //remove the editing book at this index
+        this.books.splice(bookIndex, 1); //remove the book at this index;
+        this.newBooks.splice(bookIndex, 1); //remove the editing book at this index
+      });
   }
 
   activateAddNewBook() {
@@ -73,11 +87,16 @@ export class BookListComponent implements OnInit {
 
   addNewBook(newBook: Book, element: any) {
     //write new book to db
-    //on success:
-    this.books.push(newBook);
-    this.newBooks.push(newBook);
-    this.newBook = new Book(null, '', '');
-    element.focus();
+    this.httpService.createBook(newBook, this.principal.credentials)
+      .map((response: Response) => response.json())
+      .map((data: any) => new Book(data.id, data.author, data.title))
+      .subscribe((book: Book) => {
+        console.log(book);
+        this.books.push(book);
+        this.newBooks.push(book);
+        this.newBook = new Book(Math.floor(Math.random() * 1000), '', '');
+        element.focus();
+      });
   }
 
   cancelAddBook() {
