@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringJUnit5Config(TestConfig.class)
-@DisplayName("@SpringJUnit5Config Tests")
+@DisplayName("@Spring5JUnit5ComposedAnnotationTests")
 class Spring5JUnit5ComposedAnnotationTests {
 
     @Autowired
@@ -23,8 +23,10 @@ class Spring5JUnit5ComposedAnnotationTests {
 
     @Test
     @DisplayName("ApplicationContext injected into method")
-    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMethod(ApplicationContext applicationContext) {
-        assertNotNull(applicationContext, "ApplicationContext should have been injected into method by Spring");
+    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMethod(
+      ApplicationContext applicationContext) {
+        assertNotNull(applicationContext,
+          "ApplicationContext should have been injected into method by Spring");
         assertEquals(this.task, applicationContext.getBean("taskName", Task.class));
     }
 
