@@ -1,5 +1,5 @@
 package com.baeldung.java8.comparator;
-
+/*
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -165,3 +165,4 @@ public class Java8ComparatorTest {
 
 }
 
+*/
