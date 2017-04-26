@@ -1,7 +1,4 @@
-package com.baeldung.performancemonitor;
-
-import java.time.LocalDate;
-import java.time.Month;
+package org.baeldung.performancemonitor;
 
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.aop.Advisor;
@@ -11,6 +8,9 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import java.time.LocalDate;
+import java.time.Month;
 
 @Configuration
 @EnableAspectJAutoProxy

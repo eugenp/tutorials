@@ -1,10 +1,10 @@
-package com.baeldung.performancemonitor;
-
-import java.util.Date;
+package org.baeldung.performancemonitor;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.logging.Log;
 import org.springframework.aop.interceptor.AbstractMonitoringInterceptor;
+
+import java.util.Date;
 
 public class MyPerformanceMonitorInterceptor extends AbstractMonitoringInterceptor {
     

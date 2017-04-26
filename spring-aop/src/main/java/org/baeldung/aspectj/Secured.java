@@ -1,4 +1,4 @@
-package com.baeldung.aspectj;
+package org.baeldung.aspectj;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

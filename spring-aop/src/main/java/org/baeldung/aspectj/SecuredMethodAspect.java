@@ -1,4 +1,4 @@
-package com.baeldung.aspectj;
+package org.baeldung.aspectj;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
