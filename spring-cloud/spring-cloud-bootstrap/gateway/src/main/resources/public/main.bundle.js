@@ -1,6 +1,230 @@
 webpackJsonp([1,4],{
 
-/***/ 121:
+/***/ 144:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".custom-close {\r\n  float:right;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 145:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 146:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, ".custom-close {\r\n  float:right;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 147:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)();
+// imports
+
+
+// module
+exports.push([module.i, "div.progress {\r\n  margin-top: 5px;\r\n}\r\n\r\n.rating:hover {\r\n  border: solid blue;\r\n}\r\n\r\n.selected {\r\n  border: solid blue;\r\n}\r\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 149:
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" href=\"#\">Book Rater <span *ngIf=\"principal.isAdmin()\">Admin</span></a>\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n    <ul class=\"navbar-nav mr-auto\">\n    </ul>\n    <div *ngIf=\"!principal.authenticated; then loginForm else loginMessage\"></div>\n    <ng-template #loginForm>\n      <form (ngSubmit)=\"onLogin(f)\" class=\"form-inline mt-2 mt-md-0\" #f=\"ngForm\">\n      <input name=\"username\" [(ngModel)]=\"credentials.username\" required class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Username\">\n      <input name=\"password\" [(ngModel)]=\"credentials.password\" required class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f.valid\">Login</button>\n    </form>\n    </ng-template>\n    <ng-template #loginMessage>\n      <button type=\"button\" class=\"btn btn-link\" (click)=\"onLogout()\">Logout</button>\n    </ng-template>\n    <div *ngIf=\"loginFailed\">\n      <div class=\"alert alert-warning\">Login Failed</div>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"jumbotron\">\n  <div class=\"container\">\n    <h1>Book Rater App</h1>\n    <p class=\"lead\">Keep track of all the latest books and their ratings.</p>\n  </div>\n</div>\n\n<section class=\"books\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md\">\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <app-book-list [principal]=\"principal\" (onBookSelected)=\"selectBook($event)\"></app-book-list>\n          </div>\n        </div>\n      </div>\n      <div *ngIf=\"selectedBook != null\" class=\"col-md-3\">\n        <app-book-detail [selectedBook]=\"selectedBook\" [principal]=\"principal\" (closeBook)=\"closeBookDetail()\"></app-book-detail>\n      </div>\n    </div>\n  </div>\n</section>\n"
+
+/***/ }),
+
+/***/ 150:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <div class=\"card-block\">\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeBookDetail()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n    <h4 class=\"card-title\">Title: {{selectedBook.title}}</h4>\n    <h6 class=\"card-subtitle mb-2 text-muted\">Author: {{selectedBook.author}}</h6>\n    <p class=\"card-text\">A quick summary of the book</p>\n    <app-rating *ngIf=\"principal.authenticated\" [bookId]=\"selectedBook.id\" [principal]=\"principal\"></app-rating>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ 151:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"col-md-12\" *ngFor=\"let book of books; let i = index;\" (click)=\"selectBook(book)\">\n  <div class=\"card\">\n    <div class=\"card-block\">\n      <div *ngIf=\"booksToEdit.indexOf(i) === -1 ; then bookView else bookEdit\"></div>\n      <ng-template #bookView>\n        <button appClickStopPropagation *ngIf=\"principal.isAdmin()\" type=\"button\" class=\"btn btn-danger custom-close\" (click)=\"delete(i)\">Delete</button>\n        <button appClickStopPropagation *ngIf=\"principal.isAdmin()\" type=\"button\" class=\"btn btn-warning custom-close\" (click)=\"editBook(i)\">Edit</button>\n        <h4 class=\"card-title\">Title: {{book.title}}</h4>\n        <h6 class=\"card-subtitle mb-2 text-muted\">Author: {{book.author}}</h6>\n      </ng-template>\n      <ng-template #bookEdit>\n        <button appClickStopPropagation type=\"button\" class=\"btn btn-secondary custom-close\" (click)=\"cancelEditBook(i)\">Cancel</button>\n        <form appClickStopPropagation (ngSubmit)=\"saveBook(i, newBooks[i])\" class=\"mt-2 mt-md-0\" #f1=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"title\">Title:</label>\n            <input id=\"title\" name=\"title\" [(ngModel)]=\"newBooks[i].title\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"author\">Author:</label>\n            <input id=\"author\" name=\"author\" [(ngModel)]=\"newBooks[i].author\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f1.valid\">Save</button>\n        </form>\n      </ng-template>\n\n    </div>\n  </div>\n</div>\n<div *ngIf=\"principal.isAdmin()\" class=\"col-md-12\">\n  <div class=\"card\">\n    <div class=\"card-block\">\n      <div *ngIf=\"!isAddNewBook; then bookPlaceHolder else bookAdd\"></div>\n      <ng-template #bookPlaceHolder>\n        <h4 (click)=\"activateAddNewBook()\" class=\"card-title center-block\">Add New Book</h4>\n      </ng-template>\n      <ng-template #bookAdd>\n        <button appClickStopPropagation type=\"button\" class=\"btn btn-secondary custom-close\" (click)=\"cancelAddBook()\">Cancel</button>\n        <form appClickStopPropagation (ngSubmit)=\"addNewBook(newBook, titleNewBook)\" class=\"mt-2 mt-md-0\" #f2=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"titleNewBook\">Title:</label>\n            <input id=\"titleNewBook\" name=\"title\" [(ngModel)]=\"newBook.title\" required class=\"form-control mr-sm-2\" type=\"text\" #titleNewBook>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"authorNewBook\">Author:</label>\n            <input id=\"authorNewBook\" name=\"author\" [(ngModel)]=\"newBook.author\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f2.valid\">Save</button>\n        </form>\n      </ng-template>\n\n    </div>\n  </div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ 152:
+/***/ (function(module, exports) {
+
+module.exports = "Ratings:\n<div *ngFor=\"let rating of ratings; let i = index;\" class=\"row\">\n  <div class=\"col-md-10\">\n    <div class=\"progress\"  [ngClass]=\"{'selected': principal.isAdmin() && rating === newRating, 'rating': principal.isAdmin()}\" (click)=\"selectRating(rating)\">\n      <div class=\"progress-bar bg-success\" role=\"progressbar\" [style.width]=\"findWidth(rating)\" [attr.aria-valuenow]=\"rating.stars\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>\n    </div>\n  </div>\n  <div class=\"col-md-1\">\n    <button *ngIf=\"principal?.isAdmin()\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"deleteRating(i)\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n</div>\n\n<form (ngSubmit)=\"onSaveRating(f)\" #f=\"ngForm\">\n  <div class=\"form-check form-check-inline\" *ngFor=\"let star of stars; let i = index;\">\n    <label  class=\"form-check-label\">\n      <input class=\"form-check-input\" type=\"radio\" name=\"star\" [(ngModel)]=\"newRating.stars\" [value]=\"star\">{{star}}\n    </label>\n  </div>\n  <button *ngIf=\"newRating.id === null\" type=\"submit\" class=\"btn btn-secondary\" [disabled]=\"!f.valid\">Add Rating</button>\n  <button *ngIf=\"principal.isAdmin() && newRating.id !== null\" type=\"button\" class=\"btn btn-secondary\" (click)=\"updateRating()\">Save</button>\n  <button *ngIf=\"principal.isAdmin() && newRating.id !== null\" type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelSelection()\">Cancel</button>\n</form>\n\n"
+
+/***/ }),
+
+/***/ 176:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(75);
+
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(50);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var HttpService = (function () {
+    function HttpService(http) {
+        this.http = http;
+    }
+    HttpService.prototype.login = function (user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.get("/me", options);
+    };
+    HttpService.prototype.logout = function (user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.post("/logout", '', options);
+    };
+    HttpService.prototype.getBooks = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+        return this.http.get("/book-service/books", options);
+    };
+    HttpService.prototype.updateBook = function (newBook, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.put("/book-service/books/" + newBook.id, newBook, options);
+    };
+    HttpService.prototype.deleteBook = function (book, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.delete("/book-service/books/" + book.id, options);
+    };
+    HttpService.prototype.createBook = function (newBook, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.post("/book-service/books", newBook, options);
+    };
+    HttpService.prototype.getRatings = function (bookId, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.get("/rating-service/ratings?bookId=" + bookId, options);
+    };
+    HttpService.prototype.createRating = function (rating, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.post("/rating-service/ratings", rating, options);
+    };
+    HttpService.prototype.deleteRating = function (ratingId, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.delete("/rating-service/ratings/" + ratingId, options);
+    };
+    HttpService.prototype.updateRating = function (rating, user) {
+        var options = this.makeAuthOptions(user);
+        return this.http.put("/rating-service/ratings/" + rating.id, rating, options);
+    };
+    HttpService.prototype.makeAuthOptions = function (user) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+        headers.append('Authorization', 'Basic ' + btoa(user.username + ':' + user.password));
+        headers.append('X-Requested-With', 'XMLHttpRequest');
+        return new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+        ;
+    };
+    return HttpService;
+}());
+HttpService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
+], HttpService);
+
+var _a;
+//# sourceMappingURL=http.service.js.map
+
+/***/ }),
+
+/***/ 23:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Principal; });
+/* unused harmony export Authority */
+/**
+ * Created by tschi on 4/16/2017.
+ */
+var Principal = (function () {
+    function Principal(authenticated, authorities, credentials) {
+        var _this = this;
+        this.authorities = [];
+        this.authenticated = authenticated;
+        authorities.map(function (auth) { return _this.authorities.push(new Authority(auth.authority)); });
+        this.credentials = credentials;
+    }
+    Principal.prototype.isAdmin = function () {
+        return this.authorities.some(function (auth) { return auth.authority.indexOf('ADMIN') > -1; });
+    };
+    return Principal;
+}());
+
+var Authority = (function () {
+    function Authority(authority) {
+        this.authority = authority;
+    }
+    return Authority;
+}());
+
+//# sourceMappingURL=principal.js.map
+
+/***/ }),
+
+/***/ 51:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21,7 +245,7 @@ var Book = (function () {
 
 /***/ }),
 
-/***/ 143:
+/***/ 74:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -30,20 +254,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 143;
+webpackEmptyContext.id = 74;
 
 
 /***/ }),
 
-/***/ 144:
+/***/ 75:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(149);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(89);
 
 
 
@@ -56,13 +280,13 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 154:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__principal__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__principal__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__http_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -127,10 +351,10 @@ var AppComponent = (function () {
     return AppComponent;
 }());
 AppComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(221),
-        styles: [__webpack_require__(216)]
+        template: __webpack_require__(149),
+        styles: [__webpack_require__(144)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__http_service__["a" /* HttpService */]) === "function" && _a || Object])
 ], AppComponent);
@@ -140,21 +364,20 @@ var _a;
 
 /***/ }),
 
-/***/ 155:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__rating_rating_component__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__click_stop_propagation_directive__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__book_book_detail_book_detail_component__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__book_book_list_book_list_component__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__rating_rating_component__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__click_stop_propagation_directive__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__book_book_detail_book_detail_component__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__book_book_list_book_list_component__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__http_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -162,7 +385,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -182,18 +404,17 @@ AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_6__rating_rating_component__["a" /* RatingComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__click_stop_propagation_directive__["a" /* ClickStopPropagationDirective */],
-            __WEBPACK_IMPORTED_MODULE_8__book_book_detail_book_detail_component__["a" /* BookDetailComponent */],
-            __WEBPACK_IMPORTED_MODULE_9__book_book_list_book_list_component__["a" /* BookListComponent */]
+            __WEBPACK_IMPORTED_MODULE_5__rating_rating_component__["a" /* RatingComponent */],
+            __WEBPACK_IMPORTED_MODULE_6__click_stop_propagation_directive__["a" /* ClickStopPropagationDirective */],
+            __WEBPACK_IMPORTED_MODULE_7__book_book_detail_book_detail_component__["a" /* BookDetailComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__book_book_list_book_list_component__["a" /* BookListComponent */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_5__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot()
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_10__http_service__["a" /* HttpService */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_9__http_service__["a" /* HttpService */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -202,13 +423,13 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 156:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__book__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__principal__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__book__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__principal__ = __webpack_require__(23);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookDetailComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -244,14 +465,14 @@ __decorate([
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__principal__["a" /* Principal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__principal__["a" /* Principal */]) === "function" && _b || Object)
 ], BookDetailComponent.prototype, "principal", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Output */])(),
     __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* EventEmitter */]) === "function" && _c || Object)
 ], BookDetailComponent.prototype, "closeBook", void 0);
 BookDetailComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-book-detail',
-        template: __webpack_require__(222),
-        styles: [__webpack_require__(217)]
+        template: __webpack_require__(150),
+        styles: [__webpack_require__(145)]
     }),
     __metadata("design:paramtypes", [])
 ], BookDetailComponent);
@@ -261,14 +482,14 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 157:
+/***/ 85:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__principal__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__book__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__principal__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__book__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__http_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -387,14 +608,14 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */]) === "function" && _a || Object)
 ], BookListComponent.prototype, "principal", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* Output */])(),
     __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* EventEmitter */]) === "function" && _b || Object)
 ], BookListComponent.prototype, "onBookSelected", void 0);
 BookListComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-book-list',
-        template: __webpack_require__(223),
-        styles: [__webpack_require__(218)]
+        template: __webpack_require__(151),
+        styles: [__webpack_require__(146)]
     }),
     __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__http_service__["a" /* HttpService */]) === "function" && _c || Object])
 ], BookListComponent);
@@ -404,11 +625,11 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 158:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClickStopPropagationDirective; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -429,7 +650,7 @@ var ClickStopPropagationDirective = (function () {
     return ClickStopPropagationDirective;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* HostListener */])("click", ["$event"]),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* HostListener */])("click", ["$event"]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
@@ -444,7 +665,7 @@ ClickStopPropagationDirective = __decorate([
 
 /***/ }),
 
-/***/ 159:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -465,14 +686,14 @@ var Rating = (function () {
 
 /***/ }),
 
-/***/ 160:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rating__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__principal__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__http_service__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rating__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__principal__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__http_service__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RatingComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -568,10 +789,10 @@ __decorate([
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__principal__["a" /* Principal */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__principal__["a" /* Principal */]) === "function" && _a || Object)
 ], RatingComponent.prototype, "principal", void 0);
 RatingComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-rating',
-        template: __webpack_require__(224),
-        styles: [__webpack_require__(219)]
+        template: __webpack_require__(152),
+        styles: [__webpack_require__(147)]
     }),
     __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__http_service__["a" /* HttpService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__http_service__["a" /* HttpService */]) === "function" && _b || Object])
 ], RatingComponent);
@@ -581,7 +802,7 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 161:
+/***/ 89:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -596,231 +817,7 @@ var environment = {
 };
 //# sourceMappingURL=environment.js.map
 
-/***/ }),
-
-/***/ 216:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(18)();
-// imports
-
-
-// module
-exports.push([module.i, ".custom-close {\r\n  float:right;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 217:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(18)();
-// imports
-
-
-// module
-exports.push([module.i, "", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 218:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(18)();
-// imports
-
-
-// module
-exports.push([module.i, ".custom-close {\r\n  float:right;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 219:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(18)();
-// imports
-
-
-// module
-exports.push([module.i, "div.progress {\r\n  margin-top: 5px;\r\n}\r\n\r\n.rating:hover {\r\n  border: solid blue;\r\n}\r\n\r\n.selected {\r\n  border: solid blue;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ 221:
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <a class=\"navbar-brand\" href=\"#\">Book Rater <span *ngIf=\"principal.isAdmin()\">Admin</span></a>\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\n    <ul class=\"navbar-nav mr-auto\">\n    </ul>\n    <div *ngIf=\"!principal.authenticated; then loginForm else loginMessage\"></div>\n    <ng-template #loginForm>\n      <form (ngSubmit)=\"onLogin(f)\" class=\"form-inline mt-2 mt-md-0\" #f=\"ngForm\">\n      <input name=\"username\" [(ngModel)]=\"credentials.username\" required class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Username\">\n      <input name=\"password\" [(ngModel)]=\"credentials.password\" required class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\">\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f.valid\">Login</button>\n    </form>\n    </ng-template>\n    <ng-template #loginMessage>\n      <button type=\"button\" class=\"btn btn-link\" (click)=\"onLogout()\">Logout</button>\n    </ng-template>\n    <div *ngIf=\"loginFailed\">\n      <div class=\"alert alert-warning\">Login Failed</div>\n    </div>\n\n  </div>\n</nav>\n\n<div class=\"jumbotron\">\n  <div class=\"container\">\n    <h1>Book Rater App</h1>\n    <p class=\"lead\">Keep track of all the latest books and their ratings.</p>\n  </div>\n</div>\n\n<section class=\"books\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-md\">\n        <div class=\"row\">\n          <div class=\"col-md-12\">\n            <app-book-list [principal]=\"principal\" (onBookSelected)=\"selectBook($event)\"></app-book-list>\n          </div>\n        </div>\n      </div>\n      <div *ngIf=\"selectedBook != null\" class=\"col-md-3\">\n        <app-book-detail [selectedBook]=\"selectedBook\" [principal]=\"principal\" (closeBook)=\"closeBookDetail()\"></app-book-detail>\n      </div>\n    </div>\n  </div>\n</section>\n"
-
-/***/ }),
-
-/***/ 222:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"card\">\n  <div class=\"card-block\">\n    <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"closeBookDetail()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n    <h4 class=\"card-title\">Title: {{selectedBook.title}}</h4>\n    <h6 class=\"card-subtitle mb-2 text-muted\">Author: {{selectedBook.author}}</h6>\n    <p class=\"card-text\">A quick summary of the book</p>\n    <app-rating *ngIf=\"principal.authenticated\" [bookId]=\"selectedBook.id\" [principal]=\"principal\"></app-rating>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ 223:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"col-md-12\" *ngFor=\"let book of books; let i = index;\" (click)=\"selectBook(book)\">\n  <div class=\"card\">\n    <div class=\"card-block\">\n      <div *ngIf=\"booksToEdit.indexOf(i) === -1 ; then bookView else bookEdit\"></div>\n      <ng-template #bookView>\n        <button appClickStopPropagation *ngIf=\"principal.isAdmin()\" type=\"button\" class=\"btn btn-danger custom-close\" (click)=\"delete(i)\">Delete</button>\n        <button appClickStopPropagation *ngIf=\"principal.isAdmin()\" type=\"button\" class=\"btn btn-warning custom-close\" (click)=\"editBook(i)\">Edit</button>\n        <h4 class=\"card-title\">Title: {{book.title}}</h4>\n        <h6 class=\"card-subtitle mb-2 text-muted\">Author: {{book.author}}</h6>\n      </ng-template>\n      <ng-template #bookEdit>\n        <button appClickStopPropagation type=\"button\" class=\"btn btn-secondary custom-close\" (click)=\"cancelEditBook(i)\">Cancel</button>\n        <form appClickStopPropagation (ngSubmit)=\"saveBook(i, newBooks[i])\" class=\"mt-2 mt-md-0\" #f1=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"title\">Title:</label>\n            <input id=\"title\" name=\"title\" [(ngModel)]=\"newBooks[i].title\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <div class=\"form-group\">\n            <label for=\"author\">Author:</label>\n            <input id=\"author\" name=\"author\" [(ngModel)]=\"newBooks[i].author\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f1.valid\">Save</button>\n        </form>\n      </ng-template>\n\n    </div>\n  </div>\n</div>\n<div *ngIf=\"principal.isAdmin()\" class=\"col-md-12\">\n  <div class=\"card\">\n    <div class=\"card-block\">\n      <div *ngIf=\"!isAddNewBook; then bookPlaceHolder else bookAdd\"></div>\n      <ng-template #bookPlaceHolder>\n        <h4 (click)=\"activateAddNewBook()\" class=\"card-title center-block\">Add New Book</h4>\n      </ng-template>\n      <ng-template #bookAdd>\n        <button appClickStopPropagation type=\"button\" class=\"btn btn-secondary custom-close\" (click)=\"cancelAddBook()\">Cancel</button>\n        <form appClickStopPropagation (ngSubmit)=\"addNewBook(newBook, titleNewBook)\" class=\"mt-2 mt-md-0\" #f2=\"ngForm\">\n          <div class=\"form-group\">\n            <label for=\"titleNewBook\">Title:</label>\n            <input id=\"titleNewBook\" name=\"title\" [(ngModel)]=\"newBook.title\" required class=\"form-control mr-sm-2\" type=\"text\" #titleNewBook>\n          </div>\n          <div class=\"form-group\">\n            <label for=\"authorNewBook\">Author:</label>\n            <input id=\"authorNewBook\" name=\"author\" [(ngModel)]=\"newBook.author\" required class=\"form-control mr-sm-2\" type=\"text\">\n          </div>\n          <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f2.valid\">Save</button>\n        </form>\n      </ng-template>\n\n    </div>\n  </div>\n\n</div>\n"
-
-/***/ }),
-
-/***/ 224:
-/***/ (function(module, exports) {
-
-module.exports = "Ratings:\n<div *ngFor=\"let rating of ratings; let i = index;\" class=\"row\">\n  <div class=\"col-md-10\">\n    <div class=\"progress\"  [ngClass]=\"{'selected': principal.isAdmin() && rating === newRating, 'rating': principal.isAdmin()}\" (click)=\"selectRating(rating)\">\n      <div class=\"progress-bar bg-success\" role=\"progressbar\" [style.width]=\"findWidth(rating)\" [attr.aria-valuenow]=\"rating.stars\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>\n    </div>\n  </div>\n  <div class=\"col-md-1\">\n    <button *ngIf=\"principal?.isAdmin()\" type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"deleteRating(i)\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n</div>\n\n<form (ngSubmit)=\"onSaveRating(f)\" #f=\"ngForm\">\n  <div class=\"form-check form-check-inline\" *ngFor=\"let star of stars; let i = index;\">\n    <label  class=\"form-check-label\">\n      <input class=\"form-check-input\" type=\"radio\" name=\"star\" [(ngModel)]=\"newRating.stars\" [value]=\"star\">{{star}}\n    </label>\n  </div>\n  <button *ngIf=\"newRating.id === null\" type=\"submit\" class=\"btn btn-secondary\" [disabled]=\"!f.valid\">Add Rating</button>\n  <button *ngIf=\"principal.isAdmin() && newRating.id !== null\" type=\"button\" class=\"btn btn-secondary\" (click)=\"updateRating()\">Save</button>\n  <button *ngIf=\"principal.isAdmin() && newRating.id !== null\" type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelSelection()\">Cancel</button>\n</form>\n\n"
-
-/***/ }),
-
-/***/ 251:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(144);
-
-
-/***/ }),
-
-/***/ 31:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(75);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var HttpService = (function () {
-    function HttpService(http) {
-        this.http = http;
-    }
-    HttpService.prototype.login = function (user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.get("/me", options);
-    };
-    HttpService.prototype.logout = function (user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/logout", '', options);
-    };
-    HttpService.prototype.getBooks = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.get("/book-service/books", options);
-    };
-    HttpService.prototype.updateBook = function (newBook, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.put("/book-service/books/" + newBook.id, newBook, options);
-    };
-    HttpService.prototype.deleteBook = function (book, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.delete("/book-service/books/" + book.id, options);
-    };
-    HttpService.prototype.createBook = function (newBook, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/book-service/books", newBook, options);
-    };
-    HttpService.prototype.getRatings = function (bookId, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.get("/rating-service/ratings?bookId=" + bookId, options);
-    };
-    HttpService.prototype.createRating = function (rating, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/rating-service/ratings", rating, options);
-    };
-    HttpService.prototype.deleteRating = function (ratingId, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.delete("/rating-service/ratings/" + ratingId, options);
-    };
-    HttpService.prototype.updateRating = function (rating, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.put("/rating-service/ratings/" + rating.id, rating, options);
-    };
-    HttpService.prototype.makeAuthOptions = function (user) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
-        headers.append('Authorization', 'Basic ' + btoa(user.username + ':' + user.password));
-        headers.append('X-Requested-With', 'XMLHttpRequest');
-        return new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        ;
-    };
-    return HttpService;
-}());
-HttpService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
-], HttpService);
-
-var _a;
-//# sourceMappingURL=http.service.js.map
-
-/***/ }),
-
-/***/ 32:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Principal; });
-/* unused harmony export Authority */
-/**
- * Created by tschi on 4/16/2017.
- */
-var Principal = (function () {
-    function Principal(authenticated, authorities, credentials) {
-        var _this = this;
-        this.authorities = [];
-        this.authenticated = authenticated;
-        authorities.map(function (auth) { return _this.authorities.push(new Authority(auth.authority)); });
-        this.credentials = credentials;
-    }
-    Principal.prototype.isAdmin = function () {
-        return this.authorities.some(function (auth) { return auth.authority.indexOf('ADMIN') > -1; });
-    };
-    return Principal;
-}());
-
-var Authority = (function () {
-    function Authority(authority) {
-        this.authority = authority;
-    }
-    return Authority;
-}());
-
-//# sourceMappingURL=principal.js.map
-
 /***/ })
 
-},[251]);
+},[176]);
 //# sourceMappingURL=main.bundle.js.map

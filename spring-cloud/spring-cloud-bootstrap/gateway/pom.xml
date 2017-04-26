@@ -96,6 +96,30 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <configuration>
+                            <tasks>
+                                <exec executable="cmd" osfamily="windows" dir="${project.basedir}/src/main/angular/ui">
+                                    <arg value="/c"/>
+                                    <arg value="ng"/>
+                                    <arg value="build"/>
+                                </exec>
+                                <exec executable="/bin/sh" osfamily="mac" dir="${project.basedir}/src/main/angular/ui">
+                                    <arg value="-c"/>
+                                    <arg value="ng build"/>
+                                </exec>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

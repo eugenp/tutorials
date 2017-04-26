@@ -3,7 +3,6 @@ import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {RatingComponent} from "./rating/rating.component";
 import {ClickStopPropagationDirective} from "./click-stop-propagation.directive";
 import {BookDetailComponent} from "./book/book-detail/book-detail.component";
@@ -21,8 +20,7 @@ import {HttpService} from "./http.service";
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    NgbModule.forRoot()
+    HttpModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
