@@ -165,19 +165,61 @@
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
             <version>1.1</version>
-        </dependency>    
+        </dependency>
+		<dependency>
+			<groupId>org.owasp.esapi</groupId>
+			<artifactId>esapi</artifactId>
+			<version>2.1.0.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>        
+		</dependency>               
+		<!-- JDO -->
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>javax.jdo</artifactId>
+		    <version>3.2.0-m6</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-core</artifactId>
+		    <version>5.1.0-m1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-api-jdo</artifactId>
+		    <version>5.1.0-m1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-rdbms</artifactId>
+		    <version>5.1.0-m1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-maven-plugin</artifactId>
+		    <version>5.0.2</version>
+		</dependency>		
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <version>1.4.194</version>
+		</dependency>
 
-	<dependency>
-	    <groupId>org.owasp.esapi</groupId>
-	    <artifactId>esapi</artifactId>
-	    <version>2.1.0.1</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>commons-logging</artifactId>
-                        <groupId>commons-logging</groupId>
-                    </exclusion>
-                </exclusions>        
-	</dependency>    
+		<dependency>
+		    <groupId>org.owasp.esapi</groupId>
+		    <artifactId>esapi</artifactId>
+		    <version>2.1.0.1</version>
+	                <exclusions>
+	                    <exclusion>
+	                        <artifactId>commons-logging</artifactId>
+	                        <groupId>commons-logging</groupId>
+	                    </exclusion>
+	                </exclusions>        
+		</dependency>    
 
     </dependencies>
 
@@ -191,7 +233,6 @@
         </resources>
 
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -201,7 +242,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -214,7 +254,6 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -245,7 +284,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -269,7 +307,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -290,7 +327,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>com.jolira</groupId>
                 <artifactId>onejar-maven-plugin</artifactId>
@@ -307,7 +343,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -320,6 +355,28 @@
                             <classifier>spring-boot</classifier>
                             <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- JDO Plugin -->
+
+			<plugin>
+                <groupId>org.datanucleus</groupId>
+    			<artifactId>datanucleus-maven-plugin</artifactId>
+    			<version>5.0.2</version>
+                <configuration>
+                    <api>JDO</api>
+                    <props>${basedir}/datanucleus.properties</props>
+                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+                    <verbose>true</verbose>
+                </configuration>
+				<executions>
+                	<execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

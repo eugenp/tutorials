@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Log
 @Controller
@@ -18,7 +17,7 @@ public class ChargeController {
     @Autowired
     StripeService paymentsService;
 
-    @RequestMapping(value = "/charge", method = POST)
+    @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
         chargeRequest.setDescription("Example charge");
         chargeRequest.setCurrency(Currency.EUR);
