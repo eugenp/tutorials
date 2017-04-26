@@ -1,5 +1,4 @@
-*/target/**
-.eclipse
-.classpath
-.project
-.settings
+/target/
+*.classpath
+*.eclipse
+*.project
