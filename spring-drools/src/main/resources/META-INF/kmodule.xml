@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <kbase name="ApplicantKbase" packages="com.baeldung.spring.drools.rules">
+        <ksession name="ApplicantSession" />
+    </kbase>
+    <kbase name="ProductKbase" packages="com.baeldung.spring.drools.excel">
+        <ksession name="ProductSession" />
+    </kbase>
+
+</kmodule>
