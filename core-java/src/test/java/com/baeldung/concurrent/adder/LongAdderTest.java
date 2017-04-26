@@ -16,12 +16,15 @@ public class LongAdderTest {
         //given
         LongAdder counter = new LongAdder();
         ExecutorService executorService = Executors.newFixedThreadPool(8);
+
         int numberOfThreads = 4;
         int numberOfIncrements = 100;
 
         //when
-        Runnable incrementAction =
-                () -> IntStream.range(0, numberOfIncrements).forEach((i) -> counter.increment());
+        Runnable incrementAction = () -> IntStream
+          .range(0, numberOfIncrements)
+          .forEach((i) -> counter.increment());
+
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(incrementAction);
         }
@@ -29,6 +32,7 @@ public class LongAdderTest {
         //then
         executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
         executorService.shutdown();
+
         assertEquals(counter.sum(), numberOfIncrements * numberOfThreads);
         assertEquals(counter.sum(), numberOfIncrements * numberOfThreads);
     }
@@ -38,12 +42,15 @@ public class LongAdderTest {
         //given
         LongAdder counter = new LongAdder();
         ExecutorService executorService = Executors.newFixedThreadPool(8);
+
         int numberOfThreads = 4;
         int numberOfIncrements = 100;
 
         //when
-        Runnable incrementAction =
-                () -> IntStream.range(0, numberOfIncrements).forEach((i) -> counter.increment());
+        Runnable incrementAction = () -> IntStream
+          .range(0, numberOfIncrements)
+          .forEach((i) -> counter.increment());
+
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(incrementAction);
         }
@@ -51,6 +58,7 @@ public class LongAdderTest {
         //then
         executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
         executorService.shutdown();
+
         assertEquals(counter.sumThenReset(), numberOfIncrements * numberOfThreads);
         assertEquals(counter.sum(), 0);
     }

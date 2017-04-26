@@ -17,25 +17,25 @@ public class LongAccumulatorTest {
     public void givenLongAccumulator_whenApplyActionOnItFromMultipleThrads_thenShouldProduceProperResult() throws InterruptedException {
         //given
         ExecutorService executorService = Executors.newFixedThreadPool(8);
-        LongBinaryOperator higherValueFinder =
-                (currentValue, previousValue) -> currentValue > previousValue ? currentValue : previousValue;
+        LongBinaryOperator higherValueFinder = (currentValue, previousValue) -> currentValue > previousValue ? currentValue : previousValue;
         LongAccumulator accumulator = new LongAccumulator(higherValueFinder, 0L);
+
         int numberOfThreads = 4;
         int numberOfIncrements = 100;
 
         //when
-        Runnable accumulateAction =
-                () -> IntStream.rangeClosed(0, numberOfIncrements).forEach(accumulator::accumulate);
+        Runnable accumulateAction = () -> IntStream
+          .rangeClosed(0, numberOfIncrements)
+          .forEach(accumulator::accumulate);
+
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(accumulateAction);
         }
 
-
         //then
         executorService.awaitTermination(500, TimeUnit.MILLISECONDS);
         executorService.shutdown();
+
         assertEquals(accumulator.get(), 100);
-
-
     }
 }
