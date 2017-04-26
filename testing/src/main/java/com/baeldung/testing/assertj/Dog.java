@@ -1,4 +1,4 @@
-package com.baeldung.assertj.introduction.domain;
+package com.baeldung.testing.assertj;
 
 public class Dog {
     private String name;
