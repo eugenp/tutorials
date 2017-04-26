@@ -1,12 +1,8 @@
 package com.baeldung.stripe;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
-@Getter
-@Setter
-@ToString(includeFieldNames = false)
+@Data
 public class ChargeRequest {
 
     public enum Currency {
