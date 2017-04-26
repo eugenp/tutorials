@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {Principal} from "./principal";
 import {Response} from "@angular/http";
-import {Observable} from "rxjs";
 import {NgForm} from "@angular/forms";
 import {Book} from "./book";
 import {HttpService} from "./http.service";
@@ -38,27 +37,16 @@ export class AppComponent {
     this.loginFailed = false;
     this.credentials = {username: form.value.username, password: form.value.password};
     this.httpService.login(this.credentials)
-      .map((response: Response) => response.json())
-      .catch((error: Response) => {
-        if (error.status === 401) {
-          this.loginFailed = true;
-        }
+      .subscribe((response: Response) => {
+        let principalJson = response.json();
+        this.principal = new Principal(principalJson.authenticated, principalJson.authorities, this.credentials);
+      }, (error) => {
         console.log(error);
-        return Observable.throw(error);
-      })
-      .map((data: any) => new Principal(data.authenticated, data.authorities, this.credentials))
-      .subscribe((principal: Principal) => {
-        console.log(principal);
-        this.principal = principal;
       });
   }
 
   onLogout() {
     this.httpService.logout(this.principal.credentials)
-      .catch((error: Response) => {
-        console.log(error);
-        return Observable.throw(error);
-      })
       .subscribe((response: Response) => {
         if (response.status === 204) {
           this.loginFailed = false;
@@ -66,6 +54,8 @@ export class AppComponent {
           this.credentials.password = '';
           this.principal = new Principal(false, [], null);
         }
+      }, (error) => {
+        console.log(error);
       });
   }
 

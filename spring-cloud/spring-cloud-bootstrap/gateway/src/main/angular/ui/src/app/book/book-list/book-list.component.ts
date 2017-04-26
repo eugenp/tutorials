@@ -3,7 +3,6 @@ import {Principal} from "../../principal";
 import {Book} from "../../book";
 import {Response} from "@angular/http";
 import {HttpService} from "../../http.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-book-list',
@@ -30,18 +29,14 @@ export class BookListComponent implements OnInit {
 
   loadBooks() {
     this.httpService.getBooks()
-      .map((response: Response) => response.json())
-      .map(books => {
-        return Observable.from(books)
-      })
-      .flatMap(x => x)
-      .map((data: any) => {
-        return new Book(data.id, data.author, data.title)
-      })
-      .subscribe((book: Book) => {
-        console.log(book);
-        this.books.push(book);
-        this.newBooks.push(new Book(book.id, book.author, book.title))
+      .subscribe((response: Response) => {
+        let booksJson: any[] = response.json()
+        booksJson.forEach(book => {
+          this.books.push(new Book(book.id, book.author, book.title));
+          this.newBooks.push(new Book(book.id, book.author, book.title));
+        })
+      }, (error) => {
+        console.log(error);
       });
   }
 
@@ -62,15 +57,16 @@ export class BookListComponent implements OnInit {
     console.log(newBook);
     //save the book to the database
     this.httpService.updateBook(newBook, this.principal.credentials)
-      .map((response: Response) => response.json())
-      .map((data: any) => new Book(data.id, data.author, data.title))
-      .subscribe((book: Book) => {
-        console.log(book);
+      .subscribe((response: Response) => {
+        let bookJson = response.json();
+        let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);
         //update the current array of books
         let bookArr: Book = this.books.find(b => b.id === book.id);
         bookArr.title = book.title;
         bookArr.author = book.author;
         this.booksToEdit.splice(this.booksToEdit.indexOf(bookIndex), 1); //remove the index of the book to edit
+      }, (error) => {
+        console.log(error);
       });
 
 
@@ -84,6 +80,8 @@ export class BookListComponent implements OnInit {
 
         this.books.splice(bookIndex, 1); //remove the book at this index;
         this.newBooks.splice(bookIndex, 1); //remove the editing book at this index
+      }, (error) => {
+        console.log(error);
       });
   }
 
@@ -95,14 +93,16 @@ export class BookListComponent implements OnInit {
   addNewBook(newBook: Book, element: any) {
     //write new book to db
     this.httpService.createBook(newBook, this.principal.credentials)
-      .map((response: Response) => response.json())
-      .map((data: any) => new Book(data.id, data.author, data.title))
-      .subscribe((book: Book) => {
+      .subscribe((response: Response) => {
+        let bookJson = response.json();
+        let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);
         console.log(book);
         this.books.push(book);
         this.newBooks.push(book);
         this.newBook = new Book(Math.floor(Math.random() * 1000), '', '');
         element.focus();
+      }, (error) => {
+        console.log(error);
       });
   }
 

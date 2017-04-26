@@ -3,7 +3,6 @@ import {Rating} from "../rating";
 import {Principal} from "../principal";
 import {HttpService} from "../http.service";
 import {Response} from "@angular/http";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-rating',
@@ -35,15 +34,11 @@ export class RatingComponent implements OnInit, OnChanges {
 
   private loadRatings() {
     this.httpService.getRatings(this.bookId, this.principal.credentials)
-      .map((response: Response) => response.json())
-      .map(ratings => {
-        return Observable.from(ratings)
-      })
-      .flatMap(x => x)
-      .map((data: any) => new Rating(data.id, data.bookId, data.stars))
-      .subscribe((rating: Rating) => {
-        console.log(rating);
-        this.ratings.push(rating);
+      .subscribe((response: Response) => {
+        let responseJson: any[] = response.json();
+        responseJson.forEach(rating => this.ratings.push(new Rating(rating.id, rating.bookId, rating.stars)))
+      }, (error) => {
+        console.log(error);
       });
   }
 
@@ -51,11 +46,11 @@ export class RatingComponent implements OnInit, OnChanges {
     console.log(this.newRating);
     let ratingCopy: Rating = Object.assign({}, this.newRating);
     this.httpService.createRating(ratingCopy, this.principal.credentials)
-      .map((response: Response) => response.json())
-      .map((data: any) => new Rating(data.id, data.bookId, data.stars))
-      .subscribe((rating: Rating) => {
-        console.log(rating);
-        this.ratings.push(rating);
+      .subscribe((response: Response) => {
+        let ratingJson = response.json()
+        this.ratings.push(new Rating(ratingJson.id, ratingJson.bookId, ratingJson.stars))
+      }, (error) => {
+        console.log(error);
       });
   }
 
@@ -63,7 +58,9 @@ export class RatingComponent implements OnInit, OnChanges {
     this.httpService.updateRating(this.newRating, this.principal.credentials)
       .subscribe(() => {
         this.newRating = new Rating(null, this.bookId, 1);
-      })
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   selectRating(rating: Rating) {
@@ -84,6 +81,8 @@ export class RatingComponent implements OnInit, OnChanges {
           this.newRating = new Rating(null, this.bookId, 1);
         }
         this.ratings.splice(index, 1);
+      }, (error) => {
+        console.log(error);
       });
 
   }
