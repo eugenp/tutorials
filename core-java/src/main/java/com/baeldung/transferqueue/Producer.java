@@ -2,11 +2,13 @@ package com.baeldung.transferqueue;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Producer implements Runnable {
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final Integer numberOfMessagesToProduce;
+    public final AtomicInteger numberOfProducedMessages = new AtomicInteger();
 
     public Producer(TransferQueue<String> transferQueue, String name, Integer numberOfMessagesToProduce) {
         this.transferQueue = transferQueue;
@@ -20,10 +22,11 @@ public class Producer implements Runnable {
             try {
                 System.out.println("Producer: " + name + " is waiting to transfer...");
                 boolean added = transferQueue.tryTransfer("A" + i, 4000, TimeUnit.MILLISECONDS);
-                if (!added) {
-                    System.out.println("can not add an element due to the timeout");
-                } else {
+                if (added) {
+                    numberOfProducedMessages.incrementAndGet();
                     System.out.println("Producer: " + name + " transferred element: A" + i);
+                } else {
+                    System.out.println("can not add an element due to the timeout");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

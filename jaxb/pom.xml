@@ -135,6 +135,9 @@
 					</sources>
 					<outputDirectory>${basedir}/src/main/java</outputDirectory>
 					<clearOutputDir>false</clearOutputDir>
+                				<noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+                				<extension>true</extension>
+					<generateEpisode>false</generateEpisode>
 				</configuration>
 			</plugin>
 

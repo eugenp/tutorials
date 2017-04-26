@@ -1,28 +1,10 @@
 package com.baeldung.autoconfiguration;
 
-import java.util.Arrays;
-import java.util.Properties;
-
-import javax.persistence.EntityManagerFactory;
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
-import org.springframework.boot.autoconfigure.condition.ConditionMessage;
+import org.springframework.boot.autoconfigure.condition.*;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage.Style;
-import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnResource;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
-import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ConditionContext;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
@@ -32,11 +14,17 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.util.ClassUtils;
 
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+import java.util.Arrays;
+import java.util.Properties;
+
 @Configuration
 @ConditionalOnClass(DataSource.class)
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @PropertySource("classpath:mysql.properties")
 public class MySQLAutoconfiguration {
+
     @Autowired
     private Environment env;
 
@@ -74,7 +62,7 @@ public class MySQLAutoconfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.autoconfiguration.example" });
+        em.setPackagesToScan("com.baeldung.autoconfiguration.example");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         if (additionalProperties() != null) {
             em.setJpaProperties(additionalProperties());
@@ -104,17 +92,21 @@ public class MySQLAutoconfiguration {
 
     static class HibernateCondition extends SpringBootCondition {
 
-        private static String[] CLASS_NAMES = { "org.hibernate.ejb.HibernateEntityManager", "org.hibernate.jpa.HibernateEntityManager" };
+        private static final String[] CLASS_NAMES = {
+          "org.hibernate.ejb.HibernateEntityManager",
+          "org.hibernate.jpa.HibernateEntityManager" };
 
         @Override
         public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
             ConditionMessage.Builder message = ConditionMessage.forCondition("Hibernate");
-            for (String className : CLASS_NAMES) {
-                if (ClassUtils.isPresent(className, context.getClassLoader())) {
-                    return ConditionOutcome.match(message.found("class").items(Style.NORMAL, className));
-                }
-            }
-            return ConditionOutcome.noMatch(message.didNotFind("class", "classes").items(Style.NORMAL, Arrays.asList(CLASS_NAMES)));
+
+            return Arrays.stream(CLASS_NAMES)
+              .filter(className -> ClassUtils.isPresent(className, context.getClassLoader()))
+              .map(className -> ConditionOutcome
+                .match(message.found("class").items(Style.NORMAL, className)))
+              .findAny()
+              .orElseGet(() -> ConditionOutcome
+                .noMatch(message.didNotFind("class", "classes").items(Style.NORMAL, Arrays.asList(CLASS_NAMES))));
         }
 
     }
