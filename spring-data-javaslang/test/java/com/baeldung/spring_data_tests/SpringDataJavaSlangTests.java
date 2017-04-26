@@ -1,56 +1,42 @@
 package com.baeldung.spring_data_tests;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.baeldung.spring_data_app.MainApp;
 import com.baeldung.spring_data.model.Book;
 import com.baeldung.spring_data.model.JavaBook;
 import com.baeldung.spring_data.repository.BookRepository;
 import com.baeldung.spring_data.repository.JavaBookRepository;
-<<<<<<< HEAD:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringTests.java
 import com.baeldung.spring_data.repository.Java8BookRepository;
 
-=======
-import com.baeldung.spring_data_app.MainApp;
-import javaslang.collection.List;
-import javaslang.collection.Seq;
-import javaslang.control.Option;
-import org.junit.Test;
-import org.junit.runner.RunWith;
->>>>>>> upstream/master:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringIntegrationTest.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-<<<<<<< HEAD:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringTests.java
 import javaslang.collection.Seq;
 import javaslang.collection.List;
 import javaslang.control.Option;
 
 import javax.transaction.Transactional;
 import java.util.stream.Stream;
-=======
->>>>>>> upstream/master:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringIntegrationTest.java
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApp.class,webEnvironment = WebEnvironment.NONE)
-public class SpringIntegrationTest {
+public class SpringDataJavaSlangTests {
     
     @Autowired
-    private JavaBookRepository javaRepository;
+    JavaBookRepository javaRepository;
     
     @Autowired
-<<<<<<< HEAD:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringTests.java
     Java8BookRepository java8Repository;
     
     @Autowired
     BookRepository repository;
-=======
-    private BookRepository repository;
->>>>>>> upstream/master:spring-data-javaslang/src/test/java/com/baeldung/spring_data_tests/SpringIntegrationTest.java
     
     
     @Test
@@ -72,8 +58,7 @@ public class SpringIntegrationTest {
         testBook.setAuthors(authors);
         Book book = repository.save(testBook);
         Option<Seq<Book>> books = repository.findByTitleContaining("Seq Test");
-
-        assertThat(books).isNotEmpty();
+        assert(!books.isEmpty());
     }
     
     
@@ -85,9 +70,8 @@ public class SpringIntegrationTest {
         testBook.setAuthors(authors);
         Book book = repository.save(testBook);
         Option<Book> retBook = repository.findById(1L);
-
-        assertThat(retBook.isDefined()).isTrue();
-        assertThat(retBook).isNotEmpty();
+        assert(retBook.isDefined() && !retBook.isEmpty());
+        assert(retBook.get() != null);
     }
     
     @Test
@@ -100,11 +84,9 @@ public class SpringIntegrationTest {
         testBook.setAuthors(authors);
         JavaBook book = javaRepository.save(testBook);
         java.util.List<JavaBook> books = javaRepository.findByTitleContaining("Seq");
-        assertThat(books)
-          .isNotEmpty()
-          .hasSize(1)
-          .extracting("title")
-          .contains("Javaslang in Spring Data Seq Return");
+        assert(!books.isEmpty());
+        assert(books.size() == 1);
+        assert(books.get(0).getTitle().equals("Javaslang in Spring Data Seq Return"));
     }
  
     @Test
@@ -117,9 +99,9 @@ public class SpringIntegrationTest {
         testBook.setAuthors(authors);
         JavaBook book = javaRepository.save(testBook);
         JavaBook retBook = javaRepository.findById(1L);
-
-        assertThat(retBook.getId()).isEqualTo(1L);
-        assertThat(retBook.getTitle()).isEqualTo("Javaslang in Spring Data");
+        assert(retBook != null);
+        assert(retBook.getId() == 1L);
+        assert(retBook.getTitle().contains("Data"));
     }
     
     @Transactional

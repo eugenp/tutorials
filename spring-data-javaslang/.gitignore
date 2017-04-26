@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 /target/
-/project/
-.idea
-.classpath
-.eclipse
-=======
-*/target/
-*.eclipse
 *.classpath
+*.eclipse
 *.project
-*.settings
->>>>>>> master
