@@ -20,14 +20,15 @@
     <div *ngIf="loginFailed">
       <div class="alert alert-warning">Login Failed</div>
     </div>
-
   </div>
 </nav>
 
 <div class="jumbotron">
   <div class="container">
     <h1>Book Rater App</h1>
-    <p class="lead">Keep track of all the latest books and their ratings.</p>
+    <p *ngIf="!principal.authenticated" class="lead">Anyone can view the books.</p>
+    <p *ngIf="principal.authenticated && !principal.isAdmin()" class="lead">Users can view and create ratings</p>
+    <p *ngIf="principal.isAdmin()"  class="lead">Admins can do anything!</p>
   </div>
 </div>
 

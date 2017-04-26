@@ -15,23 +15,13 @@ export class AppComponent {
     username: '',
     password: ''
   };
-
   selectedBook: Book = null;
-
-  private username: String = '';
-  private password: String = '';
-
-
   principal: Principal = new Principal(false, [], null);
-  // principal: Principal = new Principal(true, [new Authority("ROLE_USER")], {username: 'user', password: 'password'});
-
   loginFailed: boolean = false;
 
   constructor(private httpService: HttpService){}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onLogin(form: NgForm) {
     this.loginFailed = false;

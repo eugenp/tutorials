@@ -100,7 +100,7 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>compile</phase>
+                        <phase>generate-resources</phase>
                         <configuration>
                             <tasks>
                                 <exec executable="cmd" osfamily="windows" dir="${project.basedir}/src/main/angular/ui">
