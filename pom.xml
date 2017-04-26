@@ -23,7 +23,6 @@
         <module>apache-poi</module>
         <module>apache-thrift</module>
         <module>aspectj</module>
-        <module>assertj</module>
         <module>autovalue</module>
         <module>axon</module>
 
