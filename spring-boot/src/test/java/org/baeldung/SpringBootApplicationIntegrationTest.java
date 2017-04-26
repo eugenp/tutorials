@@ -1,9 +1,5 @@
 package org.baeldung;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
 import org.baeldung.domain.Modes;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,12 +17,18 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.nio.charset.Charset;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
 public class SpringBootApplicationIntegrationTest {
+
     @Autowired
     private WebApplicationContext webApplicationContext;
+
     private MockMvc mockMvc;
 
     @Before

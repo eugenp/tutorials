@@ -1,11 +1,10 @@
-package com.baeldung.aspectj.test;
-
-import static org.junit.Assert.*;
+package org.baeldung.aspectj;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.aspectj.Account;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AccountTest {
     private Account account;

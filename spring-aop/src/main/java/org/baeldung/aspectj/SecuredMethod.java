@@ -1,4 +1,4 @@
-package com.baeldung.aspectj;
+package org.baeldung.aspectj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
