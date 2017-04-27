@@ -84,13 +84,12 @@ public class Spring5ReactiveServerClientTest {
     }
 
     @Test
-    public void givenCheckTask_whenServerHandle_thenOragicServerResponseALiveString()
+    public void givenCheckTask_whenServerHandle_thenOrganicServerResponseALiveString()
       throws Exception {
         URI uri = URI.create("http://localhost:8080/task");
         ExchangeFunction exchange = ExchangeFunctions
           .create(new ReactorClientHttpConnector());
-        ClientRequest request = ClientRequest.method(HttpMethod.GET, uri)
-          .body(BodyInserters.fromPublisher(getLatLngs(), Task.class)).build();
+        ClientRequest request = ClientRequest.method(HttpMethod.GET, uri).build();
 
         Flux<String> taskResponse = exchange.exchange(request)
           .flatMap(response -> response.bodyToFlux(String.class));
