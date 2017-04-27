@@ -12,8 +12,6 @@ import org.togglz.core.user.UserProvider;
 import org.togglz.spring.security.SpringSecurityUserProvider;
 
 @Configuration
-@EnableAspectJAutoProxy
-@ComponentScan("com.baeldung.toggle")
 @EnableJpaRepositories("com.baeldung.toggle")
 @EntityScan("com.baeldung.toggle")
 public class ToggleConfiguration {

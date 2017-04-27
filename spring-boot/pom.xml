@@ -278,7 +278,7 @@
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <h2.version>1.4.194</h2.version>
-		<togglz.version>2.4.1.Final</togglz.version>
+        <togglz.version>2.4.1.Final</togglz.version>
     </properties>
 
 </project>

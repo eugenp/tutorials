@@ -13,24 +13,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        //@formatter:off
         auth.inMemoryAuthentication()
-            .withUser("user")
-            .password("pass")
-            .roles("USER")
-            .and()
-            .withUser("admin")
-            .password("pass")
-            .roles("ADMIN");
+          .withUser("user").password("pass").roles("USER")
+          .and()
+          .withUser("admin").password("pass").roles("ADMIN");
+        //@formatter:on
     }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/increaseSalary")
-            .permitAll()
-            .and()
-            .csrf()
-            .disable()
-            .httpBasic();
+        //@formatter:off
+        http.authorizeRequests().antMatchers("/increaseSalary").permitAll()
+          .and()
+          .csrf().disable()
+          .httpBasic();
+        //@formatter:on
     }
 }
