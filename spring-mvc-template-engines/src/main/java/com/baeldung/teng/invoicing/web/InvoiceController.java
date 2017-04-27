@@ -17,18 +17,12 @@ public class InvoiceController {
     @Autowired
     public InvoiceController(InvoiceRepository invoices) { this.invoices = requireNonNull(invoices); }
 
-    @RequestMapping({"/{engine}/invoice/{id}"})
-    public ModelAndView invoice(@PathVariable String engine, @PathVariable String id) {
-        if (engine == null || (engine = engine.trim()).length() == 0) {
-            engine = "jsp";
-        }
-        if (id == null || (id = id.trim()).length() == 0) {
-            id = "0000";
-        }
-
-        return new ModelAndView(engine + "/invoice", "invoice", invoices.getInvoice(id));
+    @RequestMapping({"/invoice/{id}"})
+    public ModelAndView invoice(@PathVariable String id) {
+        return new ModelAndView("invoice", "invoice",
+                                invoices.getInvoice(id == null || (id = id.trim()).length() == 0 ? "0000" : id));
     }
 
     @RequestMapping({"/invoice"})
-    public ModelAndView invoice() { return invoice(null, null); }
+    public ModelAndView invoice() { return invoice(null); }
 }
