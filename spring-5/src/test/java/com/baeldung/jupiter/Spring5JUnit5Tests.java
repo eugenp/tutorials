@@ -20,8 +20,10 @@ class Spring5JUnit5Tests {
     Task task;
 
     @Test
-    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMetho(ApplicationContext applicationContext) {
-        assertNotNull(applicationContext, "ApplicationContext should have been injected by Spring");
+    void givenAMethodName_whenInjecting_thenApplicationContextInjectedIntoMetho(
+      ApplicationContext applicationContext) {
+        assertNotNull(applicationContext,
+          "ApplicationContext should have been injected by Spring");
         assertEquals(this.task, applicationContext.getBean("taskName", Task.class));
     }
 }
