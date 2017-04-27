@@ -3,11 +3,7 @@ package org.baeldung.boot.boottest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
-import org.baeldung.boot.boottest.Employee;
-import org.baeldung.boot.boottest.EmployeeRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,18 +23,17 @@ public class EmployeeRepositoryIntegrationTest {
 
     @Test
     public void whenFindByName_thenReturnEmployee() {
-        Employee emp = new Employee("test");
-        entityManager.persistAndFlush(emp);
+        Employee alex = new Employee("alex");
+        entityManager.persistAndFlush(alex);
 
-        Optional<Employee> fromDb = employeeRepository.findByName(emp.getName());
-        assertThat(fromDb.get()
-            .getName()).isEqualTo(emp.getName());
+        Employee found = employeeRepository.findByName(alex.getName());
+        assertThat(found.getName()).isEqualTo(alex.getName());
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void whenInvalidName_thenNoSuchElementException() {
-        Optional<Employee> fromDb = employeeRepository.findByName("doesNotExist");
-        fromDb.get();
+    @Test
+    public void whenInvalidName_thenReturnNull() {
+        Employee fromDb = employeeRepository.findByName("doesNotExist");
+        assertThat(fromDb).isNull();
     }
 
     @Test
@@ -46,15 +41,14 @@ public class EmployeeRepositoryIntegrationTest {
         Employee emp = new Employee("test");
         entityManager.persistAndFlush(emp);
 
-        Optional<Employee> fromDb = employeeRepository.findById(emp.getId());
-        assertThat(fromDb.get()
-            .getName()).isEqualTo(emp.getName());
+        Employee fromDb = employeeRepository.findById(emp.getId());
+        assertThat(fromDb.getName()).isEqualTo(emp.getName());
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void whenInvalidId_thenNoSuchElementException() {
-        Optional<Employee> fromDb = employeeRepository.findById(-11L);
-        fromDb.get();
+    @Test
+    public void whenInvalidId_thenReturnNull() {
+        Employee fromDb = employeeRepository.findById(-11L);
+        assertThat(fromDb).isNull();
     }
 
     @Test
@@ -74,5 +68,4 @@ public class EmployeeRepositoryIntegrationTest {
             .extracting(Employee::getName)
             .containsOnly(alex.getName(), ron.getName(), bob.getName());
     }
-
 }
