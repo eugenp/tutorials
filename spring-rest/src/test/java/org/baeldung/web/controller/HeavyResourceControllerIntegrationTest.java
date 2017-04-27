@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebConfig.class)
 @WebAppConfiguration
-public class HeavyResourceControllerTest {
+public class HeavyResourceControllerIntegrationTest {
 
     private MockMvc mockMvc;
 

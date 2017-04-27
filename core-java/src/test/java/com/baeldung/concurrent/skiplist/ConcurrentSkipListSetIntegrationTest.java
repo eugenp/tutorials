@@ -13,7 +13,7 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ConcurrentSkipListSetTest {
+public class ConcurrentSkipListSetIntegrationTest {
 
     @Test
     public void givenThreadsProducingEvents_whenGetForEventsFromLastMinute_thenReturnThoseEventsInTheLockFreeWay() throws InterruptedException {

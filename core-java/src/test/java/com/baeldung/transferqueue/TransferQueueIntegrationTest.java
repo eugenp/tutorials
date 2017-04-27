@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 import static junit.framework.TestCase.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TransferQueueTest {
+public class TransferQueueIntegrationTest {
 
     @Test
     public void whenMultipleConsumersAndProducers_thenProcessAllMessages() throws InterruptedException {

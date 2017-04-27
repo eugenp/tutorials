@@ -1,7 +1,8 @@
 package org.baeldung.persistence.repository;
 
-import javax.annotation.Resource;
-
+import org.baeldung.config.StudentJpaConfig;
+import org.baeldung.persistence.dao.StudentRepository;
+import org.baeldung.persistence.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,16 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import org.baeldung.config.StudentJpaConfig;
-import org.baeldung.persistence.model.Student;
-import org.baeldung.persistence.dao.StudentRepository;
+import javax.annotation.Resource;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { StudentJpaConfig.class }, loader = AnnotationConfigContextLoader.class)
 @Transactional
-public class InMemoryDBTest {
+public class InMemoryDBIntegrationTest {
     
     @Resource
     private StudentRepository studentRepository;

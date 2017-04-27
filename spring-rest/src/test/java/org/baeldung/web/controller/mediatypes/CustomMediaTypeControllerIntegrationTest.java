@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebConfig.class)
 @WebAppConfiguration
-public class CustomMediaTypeControllerTest {
+public class CustomMediaTypeControllerIntegrationTest {
 
     private MockMvc mockMvc;
 
