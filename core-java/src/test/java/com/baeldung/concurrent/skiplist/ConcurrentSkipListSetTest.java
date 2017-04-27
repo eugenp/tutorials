@@ -22,31 +22,46 @@ public class ConcurrentSkipListSetTest {
         EventWindowSort eventWindowSort = new EventWindowSort();
         int numberOfThreads = 2;
         //when
-        Runnable producer = () -> IntStream.rangeClosed(0, 100)
-                .forEach(index -> eventWindowSort.acceptEvent(
-                        new Event(ZonedDateTime.now().minusSeconds(index), UUID.randomUUID().toString()))
-                );
+        Runnable producer = () -> IntStream
+          .rangeClosed(0, 100)
+          .forEach(index -> eventWindowSort.acceptEvent(new Event(ZonedDateTime
+            .now()
+            .minusSeconds(index), UUID
+            .randomUUID()
+            .toString())));
 
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(producer);
         }
+
         Thread.sleep(500);
+
         ConcurrentNavigableMap<ZonedDateTime, String> eventsFromLastMinute = eventWindowSort.getEventsFromLastMinute();
+
         long eventsOlderThanOneMinute = eventsFromLastMinute
-                .entrySet()
-                .stream()
-                .filter(e -> e.getKey().isBefore(ZonedDateTime.now().minusMinutes(1)))
-                .count();
+          .entrySet()
+          .stream()
+          .filter(e -> e
+            .getKey()
+            .isBefore(ZonedDateTime
+              .now()
+              .minusMinutes(1)))
+          .count();
         assertEquals(eventsOlderThanOneMinute, 0);
 
         long eventYoungerThanOneMinute = eventsFromLastMinute
-                .entrySet()
-                .stream()
-                .filter(e -> e.getKey().isAfter(ZonedDateTime.now().minusMinutes(1)))
-                .count();
-        assertTrue(eventYoungerThanOneMinute > 0);
+          .entrySet()
+          .stream()
+          .filter(e -> e
+            .getKey()
+            .isAfter(ZonedDateTime
+              .now()
+              .minusMinutes(1)))
+          .count();
 
         //then
+        assertTrue(eventYoungerThanOneMinute > 0);
+
         executorService.awaitTermination(1, TimeUnit.SECONDS);
         executorService.shutdown();
     }
@@ -58,31 +73,46 @@ public class ConcurrentSkipListSetTest {
         EventWindowSort eventWindowSort = new EventWindowSort();
         int numberOfThreads = 2;
         //when
-        Runnable producer = () -> IntStream.rangeClosed(0, 100)
-                .forEach(index -> eventWindowSort.acceptEvent(
-                        new Event(ZonedDateTime.now().minusSeconds(index), UUID.randomUUID().toString()))
-                );
+        Runnable producer = () -> IntStream
+          .rangeClosed(0, 100)
+          .forEach(index -> eventWindowSort.acceptEvent(new Event(ZonedDateTime
+            .now()
+            .minusSeconds(index), UUID
+            .randomUUID()
+            .toString())));
 
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(producer);
         }
+
         Thread.sleep(500);
+
         ConcurrentNavigableMap<ZonedDateTime, String> eventsFromLastMinute = eventWindowSort.getEventsOlderThatOneMinute();
+
         long eventsOlderThanOneMinute = eventsFromLastMinute
-                .entrySet()
-                .stream()
-                .filter(e -> e.getKey().isBefore(ZonedDateTime.now().minusMinutes(1)))
-                .count();
+          .entrySet()
+          .stream()
+          .filter(e -> e
+            .getKey()
+            .isBefore(ZonedDateTime
+              .now()
+              .minusMinutes(1)))
+          .count();
         assertTrue(eventsOlderThanOneMinute > 0);
 
         long eventYoungerThanOneMinute = eventsFromLastMinute
-                .entrySet()
-                .stream()
-                .filter(e -> e.getKey().isAfter(ZonedDateTime.now().minusMinutes(1)))
-                .count();
-        assertEquals(eventYoungerThanOneMinute, 0);
+          .entrySet()
+          .stream()
+          .filter(e -> e
+            .getKey()
+            .isAfter(ZonedDateTime
+              .now()
+              .minusMinutes(1)))
+          .count();
 
         //then
+        assertEquals(eventYoungerThanOneMinute, 0);
+
         executorService.awaitTermination(1, TimeUnit.SECONDS);
         executorService.shutdown();
     }

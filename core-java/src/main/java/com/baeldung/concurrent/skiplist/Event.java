@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.skiplist;
 
-
 import java.time.ZonedDateTime;
 
 public class Event {
