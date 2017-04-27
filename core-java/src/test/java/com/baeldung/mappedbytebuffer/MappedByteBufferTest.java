@@ -52,7 +52,6 @@ public class MappedByteBufferTest {
 
             if (mappedByteBuffer != null) {
                 mappedByteBuffer.put(Charset.forName("utf-8").encode(charBuffer));
-
             }
         }
 
