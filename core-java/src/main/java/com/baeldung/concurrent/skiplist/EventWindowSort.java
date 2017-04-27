@@ -7,14 +7,9 @@ import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.function.ToLongFunction;
 
 public class EventWindowSort {
-    private final ConcurrentSkipListMap<ZonedDateTime, String> events = new ConcurrentSkipListMap<>(Comparator.comparingLong(new ToLongFunction<ZonedDateTime>() {
-        @Override
-        public long applyAsLong(ZonedDateTime value) {
-            return value
-              .toInstant()
-              .toEpochMilli();
-        }
-    }));
+    private final ConcurrentSkipListMap<ZonedDateTime, String> events = new ConcurrentSkipListMap<>(Comparator.comparingLong((ToLongFunction<ZonedDateTime>) value -> value
+      .toInstant()
+      .toEpochMilli()));
 
     public void acceptEvent(Event event) {
         events.put(event.getEventTime(), event.getContent());
