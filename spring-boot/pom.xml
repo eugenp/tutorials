@@ -136,6 +136,7 @@
             <artifactId>togglz-spring-boot-starter</artifactId>
             <version>${togglz.version}</version>
         </dependency>
+		
         <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-security</artifactId>
