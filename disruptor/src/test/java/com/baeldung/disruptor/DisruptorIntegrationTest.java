@@ -1,16 +1,17 @@
 package com.baeldung.disruptor;
 
-import java.util.concurrent.ThreadFactory;
-import org.junit.Before;
-import org.junit.Test;
 import com.lmax.disruptor.BusySpinWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.WaitStrategy;
 import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
+import org.junit.Before;
+import org.junit.Test;
 
-public class DisruptorTest {
+import java.util.concurrent.ThreadFactory;
+
+public class DisruptorIntegrationTest {
     private Disruptor<ValueEvent> disruptor;
     private WaitStrategy waitStrategy;
 
@@ -21,7 +22,7 @@ public class DisruptorTest {
 
     private void createDisruptor(final ProducerType producerType, final EventConsumer eventConsumer) {
         final ThreadFactory threadFactory = DaemonThreadFactory.INSTANCE;
-        disruptor = new Disruptor<ValueEvent>(ValueEvent.EVENT_FACTORY, 16, threadFactory, producerType, waitStrategy);
+        disruptor = new Disruptor<>(ValueEvent.EVENT_FACTORY, 16, threadFactory, producerType, waitStrategy);
         disruptor.handleEventsWith(eventConsumer.getEventHandler());
     }
 

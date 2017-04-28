@@ -11,7 +11,7 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SessionControllerTest {
+public class SessionControllerIntegrationTest {
 
     private Jedis jedis;
     private TestRestTemplate testRestTemplate;
