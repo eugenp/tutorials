@@ -6,18 +6,28 @@ import static org.junit.Assert.fail;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.metadata.PersistenceUnitMetaData;
 import org.junit.Test;
 
 public class GuideToJDOTest {
     @Test
     public void givenProduct_WhenNewThenPerformTransaction() {
-        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("Tutorial");
+        PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
+        pumd.addClassName("com.baeldung.jdo.Product");
+        pumd.setExcludeUnlistedClasses();
+        pumd.addProperty("javax.jdo.option.ConnectionDriverName", "org.h2.Driver");
+        pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
+        pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
+        pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
+        pumd.addProperty("datanucleus.autoCreateSchema", "true");        
+
+        PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -43,7 +53,16 @@ public class GuideToJDOTest {
 
     @Test
     public void givenProduct_WhenQueryThenExist() {
-        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("Tutorial");
+        PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
+        pumd.addClassName("com.baeldung.jdo.Product");
+        pumd.setExcludeUnlistedClasses();
+        pumd.addProperty("javax.jdo.option.ConnectionDriverName", "org.h2.Driver");
+        pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
+        pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
+        pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
+        pumd.addProperty("datanucleus.autoCreateSchema", "true");        
+
+        PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -66,7 +85,7 @@ public class GuideToJDOTest {
 
         pmf.close();
 
-        PersistenceManagerFactory pmf2 = JDOHelper.getPersistenceManagerFactory("Tutorial");
+        PersistenceManagerFactory pmf2 = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm2 = pmf2.getPersistenceManager();
         Transaction tx2 = pm2.currentTransaction();
         try {
