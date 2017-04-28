@@ -1,15 +1,11 @@
 package com.baeldung.java.set;
 
+import org.junit.Test;
+
+import java.util.*;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.ConcurrentModificationException;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
-
-import org.junit.Test;
 
 public class SetTest {
 
@@ -44,22 +40,22 @@ public class SetTest {
 
     @Test
     public void givenHashSetAndTreeSet_whenAddObjects_thenHashSetIsFaster() {
-        Set<String> set = new HashSet<>();
-        long startTime = System.nanoTime();
-        set.add("Baeldung");
-        set.add("is");
-        set.add("Awesome");
-        long endTime = System.nanoTime();
-        long duration1 = (endTime - startTime);
 
-        Set<String> set2 = new TreeSet<>();
-        startTime = System.nanoTime();
-        set2.add("Baeldung");
-        set2.add("is");
-        set2.add("Awesome");
-        endTime = System.nanoTime();
-        long duration2 = (endTime - startTime);
-        assertTrue(duration1 < duration2);
+        long hashSetInsertionTime = measureExecution(() -> {
+            Set<String> set = new HashSet<>();
+            set.add("Baeldung");
+            set.add("is");
+            set.add("Awesome");
+        });
+
+        long TreeSetInsertionTime = measureExecution(() -> {
+            Set<String> set = new TreeSet<>();
+            set.add("Baeldung");
+            set.add("is");
+            set.add("Awesome");
+        });
+
+        assertTrue(hashSetInsertionTime < TreeSetInsertionTime);
     }
 
     @Test
@@ -85,5 +81,14 @@ public class SetTest {
             set.add("Awesome");
             it.next();
         }
+    }
+
+    private static long measureExecution(Runnable task) {
+        long startTime = System.nanoTime();
+        task.run();
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+        System.out.println(executionTime);
+        return executionTime;
     }
 }
