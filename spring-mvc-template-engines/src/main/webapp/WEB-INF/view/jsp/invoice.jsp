@@ -23,8 +23,8 @@
 
 <section>
   <dl>
-    <dt>Invoice JSP#</dt>
-    <dd>${invoice.id}</dd>
+    <dt>Invoice</dt>
+    <dd>JSP#${invoice.id}</dd>
     <dt>Date</dt>
     <dd>${invoice.date}</dd>
   </dl>

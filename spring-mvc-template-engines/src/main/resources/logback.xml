@@ -34,5 +34,6 @@
   </root>
 
   <logger name="org.springframework" level="info" />
+  <logger name="org.apache.velocity" level="info" />
 
 </configuration>

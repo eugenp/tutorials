@@ -21,8 +21,8 @@
 
 <section>
   <dl>
-    <dt>Invoice VM#</dt>
-    <dd>${invoice.id}</dd>
+    <dt>Invoice</dt>
+    <dd>VM#${invoice.id}</dd>
     <dt>Date</dt>
     <dd>${invoice.date}</dd>
   </dl>
