@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 
-public class ThreadLocalTest {
+public class ThreadLocalIntegrationTest {
     @Test
     public void givenThreadThatStoresContextInAMap_whenStartThread_thenShouldSetContextForBothUsers() throws ExecutionException, InterruptedException {
         //when

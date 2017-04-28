@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Lists.newArrayList;
 
-public class PriorityBlockingQueueUnitTest {
+public class PriorityBlockingQueueIntegrationTest {
 
     @Test
     public void givenUnorderedValues_whenPolling_thenShouldOrderQueue() throws InterruptedException {
