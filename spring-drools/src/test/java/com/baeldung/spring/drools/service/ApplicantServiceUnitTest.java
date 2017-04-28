@@ -1,6 +1,7 @@
 package com.baeldung.spring.drools.service;
 
 import com.baeldung.spring.drools.Application;
+import com.baeldung.spring.drools.DroolConfiguration;
 import com.baeldung.spring.drools.model.Applicant;
 import com.baeldung.spring.drools.model.SuggestedRole;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import static junit.framework.Assert.assertNull;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Application.class})
+@ContextConfiguration(classes = {DroolConfiguration.class})
 public class ApplicantServiceUnitTest {
 
     @Autowired

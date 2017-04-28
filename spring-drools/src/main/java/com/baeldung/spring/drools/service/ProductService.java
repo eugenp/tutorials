@@ -9,15 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
-    private final KieContainer kieContainer;
-
     @Autowired
-    public ProductService(KieContainer kieContainer){
-        this.kieContainer = kieContainer;
-    }
+    private  KieContainer kieContainer;
 
     public Product applyLabelToProduct(Product product){
-        KieSession kieSession = kieContainer.newKieSession("ProductSession");
+        KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(product);
         kieSession.fireAllRules();
         System.out.println(product.getLabel());

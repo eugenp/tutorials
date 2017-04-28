@@ -10,16 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApplicantService {
 
-    private final KieContainer kieContainer;
-
     @Autowired
-    public ApplicantService(KieContainer kieContainer){
-        this.kieContainer = kieContainer;
-    }
-
+    private KieContainer kieContainer;
 
     public SuggestedRole suggestARoleForApplicant(Applicant applicant,SuggestedRole suggestedRole){
-        KieSession kieSession = kieContainer.newKieSession("ApplicantSession");
+        KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(applicant);
         kieSession.setGlobal("suggestedRole",suggestedRole);
         kieSession.fireAllRules();
@@ -27,6 +22,4 @@ public class ApplicantService {
         return  suggestedRole;
 
     }
-
-
 }

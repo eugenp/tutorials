@@ -12,8 +12,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@Import(DroolConfiguration.class)
 public class Application {
 
     public static void main(String[] args) {
@@ -23,22 +25,6 @@ public class Application {
 
         ProductService productService=(ProductService)ctx.getBean("productService");
         Product returnedProduct=productService.applyLabelToProduct(new Product("Microwave","Book"));
-
-    }
-
-    @Bean
-    public ApplicantService getApplicantService(KieContainer kieContainer){
-        return new ApplicantService(kieContainer);
-    }
-
-    @Bean
-    public ProductService getProductService(KieContainer kieContainer){
-        return new ProductService(kieContainer);
-    }
-
-    @Bean
-    public KieContainer kieContainer() {
-        return KieServices.Factory.get().getKieClasspathContainer();
     }
 
 }

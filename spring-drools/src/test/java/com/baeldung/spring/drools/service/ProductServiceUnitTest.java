@@ -1,6 +1,7 @@
 package com.baeldung.spring.drools.service;
 
 import com.baeldung.spring.drools.Application;
+import com.baeldung.spring.drools.DroolConfiguration;
 import com.baeldung.spring.drools.model.Product;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Application.class})
+@ContextConfiguration(classes = {DroolConfiguration.class})
 public class ProductServiceUnitTest {
 
     @Autowired
