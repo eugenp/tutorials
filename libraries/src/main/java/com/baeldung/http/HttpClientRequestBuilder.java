@@ -1,15 +1,7 @@
-package com.baeldung.httpclient;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+package com.baeldung.http;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -18,12 +10,17 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.baeldung.http.HttpResponseWrapper;
-import com.baeldung.http.ParameterStringBuilder;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class HttpClientRequestBuilder {
 
-    public HttpResponseWrapper sendGetRequest(String url, Map<String, String> parameters) {
+    public HttpResponseWrapper sendGetRequest(String url, Map<String, String> parameters) throws UnsupportedEncodingException {
         HttpClient client = HttpClientBuilder.create()
             .build();
         if (parameters != null) {
@@ -39,19 +36,16 @@ public class HttpClientRequestBuilder {
             BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity()
                 .getContent()));
 
-            String line = "", content = "";
+            String line, content = "";
             while ((line = in.readLine()) != null) {
                 content += line;
             }
             responseWrapper.setContent(content);
             return responseWrapper;
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public HttpResponseWrapper sendPostRequestWithParameters(String url, Map<String, String> parameters) {
@@ -61,8 +55,9 @@ public class HttpClientRequestBuilder {
 
         try {
             if (parameters != null) {
-                List<NameValuePair> nameValuePairs = new ArrayList<>();
-                parameters.forEach((key, value) -> nameValuePairs.add(new BasicNameValuePair(key, value)));
+                List<NameValuePair> nameValuePairs = parameters.entrySet().stream()
+                  .map(e -> new BasicNameValuePair(e.getKey(), e.getValue()))
+                  .collect(Collectors.toList());
                 request.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             }
 
@@ -74,19 +69,17 @@ public class HttpClientRequestBuilder {
             BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity()
                 .getContent()));
 
-            String line = "", content = "";
+            String line, content = "";
             while ((line = in.readLine()) != null) {
                 content += line;
             }
             responseWrapper.setContent(content);
             return responseWrapper;
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+
+        return null;
     }
 
     public HttpResponseWrapper sendPostRequestWithJson(String url, String json) {
@@ -106,19 +99,16 @@ public class HttpClientRequestBuilder {
             BufferedReader in = new BufferedReader(new InputStreamReader(response.getEntity()
                 .getContent()));
 
-            String line = "", content = "";
+            String line, content = "";
             while ((line = in.readLine()) != null) {
                 content += line;
             }
             responseWrapper.setContent(content);
             return responseWrapper;
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
-            return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
 }
