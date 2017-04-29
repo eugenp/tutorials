@@ -13,7 +13,7 @@ import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DroolConfiguration.class})
-public class ProductServiceUnitTest {
+public class ProductServiceIntegrationTest {
 
     @Autowired
     ProductService productService;

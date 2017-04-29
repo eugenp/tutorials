@@ -15,14 +15,14 @@ import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {DroolConfiguration.class})
-public class ApplicantServiceUnitTest {
+public class ApplicantServiceIntegrationTest {
 
     @Autowired
     ApplicantService applicantService;
 
     @Test
     public void whenCriteriaMatching_ThenSuggestManagerRole(){
-        Applicant applicant=new Applicant("Baljeet",37,1600000.0,11);
+        Applicant applicant=new Applicant("Davis",37,1600000.0,11);
         SuggestedRole suggestedRole=new SuggestedRole();
         applicantService.suggestARoleForApplicant(applicant,suggestedRole);
         assertEquals("Manager",suggestedRole.getRole());
@@ -30,21 +30,21 @@ public class ApplicantServiceUnitTest {
 
     @Test
     public void whenCriteriaMatching_ThenSuggestSeniorDeveloperRole(){
-        Applicant applicant=new Applicant("Ajay",37,1200000.0,8);
+        Applicant applicant=new Applicant("John",37,1200000.0,8);
         SuggestedRole suggestedRole=new SuggestedRole();
         applicantService.suggestARoleForApplicant(applicant,suggestedRole);
         assertEquals("Senior developer",suggestedRole.getRole());
     }
     @Test
     public void whenCriteriaMatching_ThenSuggestDeveloperRole(){
-        Applicant applicant=new Applicant("Akshay",37,800000.0,3);
+        Applicant applicant=new Applicant("Davis",37,800000.0,3);
         SuggestedRole suggestedRole=new SuggestedRole();
         applicantService.suggestARoleForApplicant(applicant,suggestedRole);
         assertEquals("Developer",suggestedRole.getRole());
     }
     @Test
     public void whenCriteriaNotMatching_ThenNoRole(){
-        Applicant applicant=new Applicant("Akshay",37,1200000.0,5);
+        Applicant applicant=new Applicant("John",37,1200000.0,5);
         SuggestedRole suggestedRole=new SuggestedRole();
         applicantService.suggestARoleForApplicant(applicant,suggestedRole);
         assertNull(suggestedRole.getRole());
