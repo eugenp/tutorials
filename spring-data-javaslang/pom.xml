@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>spring-data-javaslang</groupId>
-    <artifactId>spring-data-javaslang</artifactId>
+    <groupId>spring-data-javaslangb</groupId>
+    <artifactId>spring-data-javaslangb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
      <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
-        <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
-        <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
         <javaslang.version>2.0.5</javaslang.version>
         <junit.version>4.12</junit.version>
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
@@ -65,18 +62,7 @@
                 <configuration>
                     <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
                 </configuration>           
-            </plugin> <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <configuration>
-                <excludes>
-                    <exclude>**/*IntegrationTest.java</exclude>
-                    <exclude>**/*LiveTest.java</exclude>
-                </excludes>
-            </configuration>
-        </plugin>
-
+            </plugin>
         </plugins>
     </build>
     <dependencies>
