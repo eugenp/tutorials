@@ -33,8 +33,7 @@ public class GuideToJDOIntegrationTest {
             tx.begin();
             for (int i = 0; i < 100; i++){
                 String nam = "Product-" + i;
-                double price = i;
-                Product productx = new Product(nam, price);
+                Product productx = new Product(nam, (double) i);
                 pm.makePersistent(productx);
             }
             tx.commit();
