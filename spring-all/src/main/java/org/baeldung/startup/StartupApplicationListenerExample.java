@@ -1,6 +1,8 @@
 package org.baeldung.startup;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class StartupApplicationListenerExample implements ApplicationListener<ContextRefreshedEvent> {
 
-    private static final Logger LOG = Logger.getLogger(StartupApplicationListenerExample.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StartupApplicationListenerExample.class);
 
     public static int counter;
 

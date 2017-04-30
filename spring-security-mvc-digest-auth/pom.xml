@@ -120,11 +120,6 @@
             <version>${org.slf4j.version}</version>
             <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
 
         <!-- test scoped -->
 

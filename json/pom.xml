@@ -11,6 +11,12 @@
             <groupId>org.everit.json</groupId>
             <artifactId>org.everit.json.schema</artifactId>
             <version>${everit.json.schema.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <dependency>
