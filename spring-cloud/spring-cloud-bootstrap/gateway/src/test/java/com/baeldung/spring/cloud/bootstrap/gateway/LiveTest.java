@@ -35,8 +35,9 @@ public class LiveTest {
 
     @Test
     public void whenAccessProtectedResourceWithoutLogin_thenRedirectToLogin() {
-        final Response response = RestAssured.get(ROOT_URI + "/book-service/books/1");
-        Assert.assertEquals(HttpStatus.UNAUTHORIZED.value(), response.getStatusCode());
+        final Response response = RestAssured.get(ROOT_URI + "/rating-service/ratings?bookId=1");
+        Assert.assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatusCode());
+        Assert.assertNotNull(response.getBody());
     }
 
     @Test
@@ -46,7 +47,7 @@ public class LiveTest {
             .auth().preemptive().basic("user", "password")
             .header("X-XSRF-TOKEN", sessionData.getCsrf())
             .filter(sessionFilter)
-            .get(ROOT_URI + "/book-service/books/1");
+            .get(ROOT_URI + "/rating-service/ratings?bookId=1");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
     }
