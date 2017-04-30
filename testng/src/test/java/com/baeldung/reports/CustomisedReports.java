@@ -19,6 +19,7 @@ import java.util.Set;
 
 public class CustomisedReports implements IReporter {
     private PrintWriter reportWriter;
+    private String resultRow = "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>";
 
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         new File(outputDirectory).mkdirs();
@@ -27,7 +28,6 @@ public class CustomisedReports implements IReporter {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String resultRow = "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>";
         initReportTemplate();
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> suiteResults = suite.getResults();
@@ -35,24 +35,11 @@ public class CustomisedReports implements IReporter {
                 ISuiteResult suiteResult = suiteResults.get(testName);
                 ITestContext testContext = suiteResult.getTestContext();
 
-                IResultMap failedResult = testContext.getFailedTests();
-                Set<ITestResult> testsFailed = failedResult.getAllResults();
-                for (ITestResult testResult : testsFailed) {
-                    reportWriter.println(String.format(resultRow, "danger", suite.getName(), testName, testResult.getName(), "FAILED", "NA"));
-                }
+                processFailedResults(testContext.getFailedTests(), suite, testName);
 
-                IResultMap passResult = testContext.getPassedTests();
-                Set<ITestResult> testsPassed = passResult.getAllResults();
-                for (ITestResult testResult : testsPassed) {
-                    reportWriter.println(String.format(resultRow, "success", suite.getName(), testName, testResult.getName(), "PASSED", String.valueOf(testResult.getEndMillis() - testResult.getStartMillis())));
-                }
+                processPassedResult(testContext.getPassedTests(), suite, testName);
 
-                IResultMap skippedResult = testContext.getSkippedTests();
-                Set<ITestResult> testsSkipped = skippedResult.getAllResults();
-                for (ITestResult testResult : testsSkipped) {
-                    reportWriter.println(String.format(resultRow, "warning", suite.getName(), testName, testResult.getName(), "SKIPPED", "NA"));
-                }
-
+                processSkippedResults(testContext.getSkippedTests(), suite, testName);
             }
         }
         finishReportTemplate();
@@ -69,5 +56,27 @@ public class CustomisedReports implements IReporter {
 
     private void finishReportTemplate() {
         reportWriter.println(" </tbody></div></body></html>");
+    }
+
+    private void processPassedResult(IResultMap passResult, ISuite suite, String testName) {
+        Set<ITestResult> testsPassed = passResult.getAllResults();
+        for (ITestResult testResult : testsPassed) {
+            reportWriter.println(String.format(resultRow, "success", suite.getName(), testName, testResult.getName(), "PASSED", String.valueOf(testResult.getEndMillis() - testResult.getStartMillis())));
+        }
+
+    }
+
+    private void processFailedResults(IResultMap failResult, ISuite suite, String testName) {
+        Set<ITestResult> testsFailed = failResult.getAllResults();
+        for (ITestResult testResult : testsFailed) {
+            reportWriter.println(String.format(resultRow, "danger", suite.getName(), testName, testResult.getName(), "FAILED", "NA"));
+        }
+    }
+
+    private void processSkippedResults(IResultMap skipResult, ISuite suite, String testName) {
+        Set<ITestResult> testsSkipped = skipResult.getAllResults();
+        for (ITestResult testResult : testsSkipped) {
+            reportWriter.println(String.format(resultRow, "warning", suite.getName(), testName, testResult.getName(), "SKIPPED", "NA"));
+        }
     }
 }
