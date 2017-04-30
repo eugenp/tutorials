@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .httpBasic()
             .and()
         .authorizeRequests()
-            .antMatchers("/*").permitAll()
+            .antMatchers("/*.js","/*.html","/*.ico", "/*").permitAll()
             .antMatchers("/book-service/books").permitAll()
             .antMatchers("/zipkin/**").permitAll()
             .antMatchers("/eureka/**").hasRole("ADMIN")

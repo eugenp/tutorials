@@ -76,7 +76,10 @@ export class BookListComponent implements OnInit {
     let book: Book = this.books[bookIndex];
     this.httpService.deleteBook(book, this.principal.credentials)
       .subscribe(() => {
-        if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {this.selectedBook = null;}
+        if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {
+          this.selectedBook = null;
+          this.onBookSelected.emit(this.selectedBook);
+        }
 
         this.books.splice(bookIndex, 1); //remove the book at this index;
         this.newBooks.splice(bookIndex, 1); //remove the editing book at this index
