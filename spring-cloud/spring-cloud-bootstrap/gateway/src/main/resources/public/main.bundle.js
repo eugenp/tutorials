@@ -196,9 +196,6 @@ var _a;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Principal; });
 /* unused harmony export Authority */
-/**
- * Created by tschi on 4/16/2017.
- */
 var Principal = (function () {
     function Principal(authenticated, authorities, credentials) {
         var _this = this;
@@ -229,9 +226,6 @@ var Authority = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Book; });
-/**
- * Created by tschi on 4/17/2017.
- */
 var Book = (function () {
     function Book(id, author, title) {
         this.id = id;
@@ -667,9 +661,6 @@ ClickStopPropagationDirective = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Rating; });
-/**
- * Created by tschi on 4/17/2017.
- */
 var Rating = (function () {
     function Rating(id, bookId, stars) {
         this.id = id;

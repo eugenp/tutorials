@@ -1,6 +1,3 @@
-/**
- * Created by tschi on 4/16/2017.
- */
 export class Principal {
   public authenticated: boolean;
   public authorities: Authority[] = [];

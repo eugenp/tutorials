@@ -212,13 +212,13 @@ public class LiveTest {
 
     private SessionData login() {
         sessionFilter = new SessionFilter();
-        Response getLoginResponse =
-            RestAssured.given().
-                filter(sessionFilter).
-            when().
-                get("/").
-            then().
-                extract().response();
+        Response getLoginResponse = RestAssured.given()
+            .filter(sessionFilter)
+            .when()
+            .get("/")
+            .then()
+            .extract()
+            .response();
         return new SessionData(getLoginResponse.cookie("XSRF-TOKEN"), sessionFilter.getSessionId());
     }
 
