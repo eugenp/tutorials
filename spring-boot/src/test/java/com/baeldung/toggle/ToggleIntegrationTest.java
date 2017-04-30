@@ -22,7 +22,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = ToggleApplication.class)
 @AutoConfigureMockMvc
-public class ToggleTest {
+public class ToggleIntegrationTest {
 
     @Autowired
     SalaryService salaryService;
