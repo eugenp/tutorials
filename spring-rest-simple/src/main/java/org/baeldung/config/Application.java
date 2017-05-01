@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @EnableAutoConfiguration
 @ComponentScan("org.baeldung")
-@Profile("!test")
 public class Application extends WebMvcConfigurerAdapter {
 
     public static void main(final String[] args) {
