@@ -23,7 +23,7 @@ public class DistanceSerializer extends StdSerializer<Distance> {
     public void serialize(Distance distance, JsonGenerator generator, SerializerProvider provider) throws IOException, JsonProcessingException {
         generator.writeStartObject();
         generator.writeFieldName("name");
-        generator.writeNumber(distance.name());
+        generator.writeString(distance.name());
         generator.writeFieldName("unit");
         generator.writeString(distance.getUnit());
         generator.writeFieldName("meters");
