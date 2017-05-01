@@ -22,11 +22,11 @@ public class Producer implements Runnable {
             try {
                 System.out.println("Producer: " + name + " is waiting to transfer...");
                 boolean added = transferQueue.tryTransfer("A" + i, 4000, TimeUnit.MILLISECONDS);
-                if (!added) {
-                    System.out.println("can not add an element due to the timeout");
-                } else {
+                if (added) {
                     numberOfProducedMessages.incrementAndGet();
                     System.out.println("Producer: " + name + " transferred element: A" + i);
+                } else {
+                    System.out.println("can not add an element due to the timeout");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
