@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class OperationsTest {
+public class OperationsUnitTest {
 
-    public OperationsTest() {
+    public OperationsUnitTest() {
     }
 
     @Test(expectedExceptions = IllegalAccessException.class)
