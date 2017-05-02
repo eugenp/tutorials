@@ -11,13 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = ToggleApplication.class)
@@ -31,54 +28,39 @@ public class ToggleIntegrationTest {
     EmployeeRepository employeeRepository;
 
     @Autowired
-    private MockMvc mvc;
+    private MockMvc mockMvc;
 
     @Autowired
     private WebApplicationContext wac;
 
-    @Autowired
-    private FilterChainProxy springSecurityFilterChain;
-
     @Before
     public void setup() {
-        this.mvc = MockMvcBuilders.webAppContextSetup(this.wac)
-            .addFilter(springSecurityFilterChain)
-            .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
     @Test
-    public void givenNoAuthentication_whenIncreaseSalary_thenNoIncrease() throws Exception {
+    public void givenFeaturePropertyFalse_whenIncreaseSalary_thenNoIncrease() throws Exception {
         Employee emp = new Employee(1, 2000);
         employeeRepository.save(emp);
-        mvc.perform(post("/increaseSalary").param("id", emp.getId() + ""))
-            .andExpect(status().is(200));
+
+        System.setProperty("employee.feature", "false");
+
+        mockMvc.perform(post("/increaseSalary").param("id", emp.getId() + "")).andExpect(status().is(200));
 
         emp = employeeRepository.findOne(1L);
         assertEquals("salary incorrect", 2000, emp.getSalary(), 0.5);
     }
 
     @Test
-    public void givenAdminAuthentication_whenIncreaseSalary_thenIncrease() throws Exception {
+    public void givenFeaturePropertyTrue_whenIncreaseSalary_thenIncrease() throws Exception {
         Employee emp = new Employee(1, 2000);
         employeeRepository.save(emp);
-        mvc.perform(post("/increaseSalary").param("id", emp.getId() + "")
-            .with(httpBasic("admin", "pass")))
-            .andExpect(status().is(200));
+
+        System.setProperty("employee.feature", "true");
+
+        mockMvc.perform(post("/increaseSalary").param("id", emp.getId() + "")).andExpect(status().is(200));
 
         emp = employeeRepository.findOne(1L);
         assertEquals("salary incorrect", 2200, emp.getSalary(), 0.5);
     }
-
-    @Test
-    public void givenUserAuthentication_whenIncreaseSalary_thenNoIncrease() throws Exception {
-        Employee emp = new Employee(1, 2000);
-        employeeRepository.save(emp);
-        mvc.perform(post("/increaseSalary").param("id", emp.getId() + "")
-            .with(httpBasic("user", "pass")))
-            .andExpect(status().is(200));
-
-        emp = employeeRepository.findOne(1L);
-        assertEquals("salary incorrect", 2000, emp.getSalary(), 0.5);
-    }
-
 }
