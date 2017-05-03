@@ -1,21 +1,20 @@
 package com.baeldung.jdo;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.Iterator;
-import java.util.List;
+import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.metadata.PersistenceUnitMetaData;
+import org.junit.Test;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
+import java.util.Iterator;
+import java.util.List;
 
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
-import org.datanucleus.metadata.PersistenceUnitMetaData;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
-public class GuideToJDOTest {
+public class GuideToJDOIntegrationTest {
     @Test
     public void givenProduct_WhenNewThenPerformTransaction() {
         PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
@@ -34,8 +33,7 @@ public class GuideToJDOTest {
             tx.begin();
             for (int i = 0; i < 100; i++){
                 String nam = "Product-" + i;
-                double price = i;
-                Product productx = new Product(nam, price);
+                Product productx = new Product(nam, (double) i);
                 pm.makePersistent(productx);
             }
             tx.commit();
