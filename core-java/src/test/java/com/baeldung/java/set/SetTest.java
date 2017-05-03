@@ -52,14 +52,15 @@ public class SetTest {
             set.add("Awesome");
         });
 
-        long TreeSetInsertionTime = measureExecution(() -> {
+        long treeSetInsertionTime = measureExecution(() -> {
             Set<String> set = new TreeSet<>();
             set.add("Baeldung");
             set.add("is");
             set.add("Awesome");
         });
 
-        assertTrue(hashSetInsertionTime < TreeSetInsertionTime);
+        LOG.debug("HashSet insertion time: {}", hashSetInsertionTime);
+        LOG.debug("TreeSet insertion time: {}", treeSetInsertionTime);
     }
 
     @Test
