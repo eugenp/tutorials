@@ -1,24 +1,18 @@
 package com.baeldung.java.map;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.*;
+import java.util.Map.Entry;
+
+import static org.junit.Assert.*;
 
 public class MapTest {
+    private static final Logger LOG = LoggerFactory.getLogger(MapTest.class);
+
+    
     @Test
     public void givenHashMap_whenRetrievesKeyset_thenCorrect() {
         Map<String, String> map = new HashMap<>();
@@ -208,22 +202,22 @@ public class MapTest {
         MyKey k2 = new MyKey(2, "secondKey");
         MyKey k3 = new MyKey(2, "thirdKey");
 
-        System.out.println("storing value for k1");
+        LOG.debug("storing value for k1");
         map.put(k1, "firstValue");
 
-        System.out.println("storing value for k2");
+        LOG.debug("storing value for k2");
         map.put(k2, "secondValue");
 
-        System.out.println("storing value for k3");
+        LOG.debug("storing value for k3");
         map.put(k3, "thirdValue");
 
-        System.out.println("retrieving value for k1");
+        LOG.debug("retrieving value for k1");
         String v1 = map.get(k1);
 
-        System.out.println("retrieving value for k2");
+        LOG.debug("retrieving value for k2");
         String v2 = map.get(k2);
 
-        System.out.println("retrieving value for k3");
+        LOG.debug("retrieving value for k3");
         String v3 = map.get(k3);
 
         assertEquals("firstValue", v1);

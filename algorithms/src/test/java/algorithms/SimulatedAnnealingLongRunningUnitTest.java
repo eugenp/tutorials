@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import com.baeldung.algorithms.ga.annealing.SimulatedAnnealing;
 
-public class SimulatedAnnealingTest {
+public class SimulatedAnnealingLongRunningUnitTest {
 
     @Test
     public void testSimulateAnnealing() {

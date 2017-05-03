@@ -1,9 +1,15 @@
 package com.baeldung.stream;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.stream.Stream;
 
 public class InfiniteStreams {
+
+    private static final Logger LOG = LoggerFactory.getLogger(InfiniteStreams.class);
+
     public static void main(String[] args) {
         doWhileOldWay();
 
@@ -15,7 +21,7 @@ public class InfiniteStreams {
 
         int i = 0;
         while (i < 10) {
-            System.out.println(i);
+            LOG.debug("{}", i);
             i++;
         }
     }

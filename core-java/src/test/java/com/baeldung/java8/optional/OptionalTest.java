@@ -3,6 +3,8 @@ package com.baeldung.java8.optional;
 import com.baeldung.optional.Modem;
 import com.baeldung.optional.Person;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +14,10 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class OptionalTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(OptionalTest.class);
+
+    
     // creating Optional
     @Test
     public void whenCreatesEmptyOptional_thenCorrect() {
@@ -66,7 +72,7 @@ public class OptionalTest {
     @Test
     public void givenOptional_whenIfPresentWorks_thenCorrect() {
         Optional<String> opt = Optional.of("baeldung");
-        opt.ifPresent(name -> System.out.println(name.length()));
+        opt.ifPresent(name -> LOG.debug("{}", name.length()));
     }
 
     // returning Value With get()
@@ -200,11 +206,11 @@ public class OptionalTest {
     @Test
     public void whenOrElseGetAndOrElseOverlap_thenCorrect() {
         String text = null;
-        System.out.println("Using orElseGet:");
+        LOG.debug("Using orElseGet:");
         String defaultText = Optional.ofNullable(text).orElseGet(this::getMyDefault);
         assertEquals("Default Value", defaultText);
 
-        System.out.println("Using orElse:");
+        LOG.debug("Using orElse:");
         defaultText = Optional.ofNullable(text).orElse(getMyDefault());
         assertEquals("Default Value", defaultText);
     }
@@ -212,11 +218,11 @@ public class OptionalTest {
     @Test
     public void whenOrElseGetAndOrElseDiffer_thenCorrect() {
         String text = "Text present";
-        System.out.println("Using orElseGet:");
+        LOG.debug("Using orElseGet:");
         String defaultText = Optional.ofNullable(text).orElseGet(this::getMyDefault);
         assertEquals("Text present", defaultText);
 
-        System.out.println("Using orElse:");
+        LOG.debug("Using orElse:");
         defaultText = Optional.ofNullable(text).orElse(getMyDefault());
         assertEquals("Text present", defaultText);
     }
@@ -229,7 +235,7 @@ public class OptionalTest {
     }
 
     public String getMyDefault() {
-        System.out.println("Getting default value...");
+        LOG.debug("Getting default value...");
         return "Default Value";
     }
 }

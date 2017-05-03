@@ -1,9 +1,15 @@
 package com.baeldung.concurrent.sleepwait;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /***
  * Example of waking up a waiting thread
  */
 public class ThreadA {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ThreadA.class);
+
     private static final ThreadB b = new ThreadB();
 
     public static void main(String... args) throws InterruptedException {
@@ -11,11 +17,11 @@ public class ThreadA {
 
         synchronized (b) {
             while (b.sum == 0) {
-                System.out.println("Waiting for ThreadB to complete...");
+                LOG.debug("Waiting for ThreadB to complete...");
                 b.wait();
             }
 
-            System.out.println("ThreadB has completed. Sum from that thread is: " + b.sum);
+            LOG.debug("ThreadB has completed. Sum from that thread is: " + b.sum);
         }
     }
 }

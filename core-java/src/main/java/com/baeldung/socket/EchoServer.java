@@ -1,9 +1,15 @@
 package com.baeldung.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.*;
 import java.io.*;
 
 public class EchoServer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EchoServer.class);
+
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
@@ -24,7 +30,7 @@ public class EchoServer {
                 out.println(inputLine);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
 
     }
@@ -36,7 +42,7 @@ public class EchoServer {
             clientSocket.close();
             serverSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
 
     }

@@ -52,6 +52,7 @@
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
+        <module>hibernate5</module>
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -200,7 +201,7 @@
 
         <module>video-tutorials</module>
 
-        <module>wicket</module>
+        <!--<module>wicket</module>-->
 
         <module>xml</module>
         <module>xmlunit2</module>
@@ -225,8 +226,6 @@
                 <version>1.6.0</version>
                 <configuration>
                     <executable>maven</executable>
-        <module>hibernate5</module>
-
                 </configuration>
             </plugin>
             <plugin>
