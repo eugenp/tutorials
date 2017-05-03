@@ -2,6 +2,8 @@ package com.baeldung.java.nio2.attributes;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +17,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BasicAttribsTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(BasicAttribsTest.class);
+
+
     private static final String HOME = System.getProperty("user.home");
     private static BasicFileAttributes basicAttribs;
 
@@ -31,9 +37,9 @@ public class BasicAttribsTest {
         FileTime modified = basicAttribs.lastModifiedTime();
         FileTime accessed = basicAttribs.lastAccessTime();
 
-        System.out.println("Created: " + created);
-        System.out.println("Modified: " + modified);
-        System.out.println("Accessed: " + accessed);
+        LOG.debug("Created: " + created);
+        LOG.debug("Modified: " + modified);
+        LOG.debug("Accessed: " + accessed);
 
     }
 
