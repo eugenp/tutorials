@@ -1,6 +1,4 @@
 package com.baeldung.java8.comparator;
-/*    
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,4 +20,3 @@ public class Employee implements Comparable<Employee>{
     }
     
 }
-*/
