@@ -52,7 +52,7 @@
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
-        <module>hibernate5</module>
+        <!--<module>hibernate5</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -201,12 +201,8 @@
 
         <module>video-tutorials</module>
 
-        <!--<module>wicket</module>-->
-
         <module>xml</module>
         <module>xmlunit2</module>
-        <module>xstream</module>
-
         <module>struts2</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
