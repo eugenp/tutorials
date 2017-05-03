@@ -11,5 +11,5 @@ import cucumber.api.junit.Cucumber;
     , plugin = { "pretty", "json:target/reports/json/calculator.json" }
     , glue = {"com.baeldung.cucumber.calculator"}
 )
-public class CalculatorTest {
+public class CalculatorIntegrationTest {
 }
