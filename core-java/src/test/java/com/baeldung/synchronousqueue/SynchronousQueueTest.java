@@ -3,6 +3,8 @@ package com.baeldung.synchronousqueue;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -11,6 +13,9 @@ import static junit.framework.TestCase.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SynchronousQueueTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SynchronousQueueTest.class);
+
 
     @Test
     public void givenTwoThreads_whenWantToExchangeUsingLockGuardedVariable_thenItSucceed() throws InterruptedException {
@@ -21,7 +26,7 @@ public class SynchronousQueueTest {
 
         Runnable producer = () -> {
             Integer producedElement = ThreadLocalRandom.current().nextInt();
-            System.out.println("Saving an element: " + producedElement + " to the exchange point");
+            LOG.debug("Saving an element: " + producedElement + " to the exchange point");
             sharedState.set(producedElement);
             countDownLatch.countDown();
         };
@@ -30,7 +35,7 @@ public class SynchronousQueueTest {
             try {
                 countDownLatch.await();
                 Integer consumedElement = sharedState.get();
-                System.out.println("consumed an element: " + consumedElement + " from the exchange point");
+                LOG.debug("consumed an element: " + consumedElement + " from the exchange point");
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
@@ -55,7 +60,7 @@ public class SynchronousQueueTest {
         Runnable producer = () -> {
             Integer producedElement = ThreadLocalRandom.current().nextInt();
             try {
-                System.out.println("Saving an element: " + producedElement + " to the exchange point");
+                LOG.debug("Saving an element: " + producedElement + " to the exchange point");
                 queue.put(producedElement);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
@@ -65,7 +70,7 @@ public class SynchronousQueueTest {
         Runnable consumer = () -> {
             try {
                 Integer consumedElement = queue.take();
-                System.out.println("consumed an element: " + consumedElement + " from the exchange point");
+                LOG.debug("consumed an element: " + consumedElement + " from the exchange point");
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
