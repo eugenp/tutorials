@@ -1,21 +1,14 @@
 package com.baeldung.hibernate;
-import static org.junit.Assert.assertNotEquals;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import com.baeldung.hibernate.pojo.Supplier;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.hibernate.pojo.Supplier;
+import static org.junit.Assert.assertNotEquals;
 
 
-public class MultiTenantHibernateTest  {
+public class MultiTenantHibernateIntegrationTest {
     @Test
     public void givenDBMode_whenFetchingSuppliers_thenComparingFromDbs () {
         SessionFactory sessionFactory;
