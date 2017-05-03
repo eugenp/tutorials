@@ -98,6 +98,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+		<!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
 
         <!-- test scoped -->
 
@@ -212,6 +219,7 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/JdbcTest.java</exclude>
                     </excludes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
@@ -366,6 +374,9 @@
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
+        
+        <!-- mysql -->
+        <mysql.version>6.0.6</mysql.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
