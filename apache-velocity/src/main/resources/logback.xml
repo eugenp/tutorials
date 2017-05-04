@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<layout class="ch.qos.logback.classic.PatternLayout">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>web - %date [%thread] %-5level %logger{36} - %message%n
+            </pattern>
+        </encoder>
+    </appender>
 
-			<Pattern>
-				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
-			</Pattern>
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.transaction" level="WARN" />
 
-		</layout>
-	</appender>
+    <!-- in order to debug some marshalling issues, this needs to be TRACE -->
+    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
 
-	<logger name="com.baeldung.apache.velocity.service" level="debug"
-		additivity="false">
-		<appender-ref ref="STDOUT" />
-	</logger>
-
-	<root level="error">
-		<appender-ref ref="STDOUT" />
-	</root>
-
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
 </configuration>

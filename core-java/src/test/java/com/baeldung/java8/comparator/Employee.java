@@ -1,5 +1,4 @@
 package com.baeldung.java8.comparator;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,9 +14,9 @@ public class Employee implements Comparable<Employee>{
     double salary;
     long mobile;
     
-    
     @Override
     public int compareTo(Employee argEmployee) {
         return name.compareTo(argEmployee.getName());
     }
+    
 }

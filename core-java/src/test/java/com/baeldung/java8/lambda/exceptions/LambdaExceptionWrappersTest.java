@@ -2,6 +2,8 @@ package com.baeldung.java8.lambda.exceptions;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -10,6 +12,9 @@ import java.util.List;
 import static com.baeldung.java8.lambda.exceptions.LambdaExceptionWrappers.*;
 
 public class LambdaExceptionWrappersTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(LambdaExceptionWrappersTest.class);
+
 
     private List<Integer> integers;
 
@@ -20,12 +25,12 @@ public class LambdaExceptionWrappersTest {
 
     @Test
     public void whenNoExceptionFromLambdaWrapper_thenSuccess() {
-        integers.forEach(lambdaWrapper(i -> System.out.println(50 / i)));
+        integers.forEach(lambdaWrapper(i -> LOG.debug("{}", 50 / i)));
     }
 
     @Test
     public void whenNoExceptionFromConsumerWrapper_thenSuccess() {
-        integers.forEach(consumerWrapper(i -> System.out.println(50 / i), ArithmeticException.class));
+        integers.forEach(consumerWrapper(i -> LOG.debug("{}", 50 / i), ArithmeticException.class));
     }
 
     @Test(expected = RuntimeException.class)

@@ -39,7 +39,6 @@
 	</dependencies>
 
 	<build>
-		<defaultGoal>install</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -55,6 +54,17 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>**/*LongRunningUnitTest.java</exclude>
+							<exclude>**/*IntegrationTest.java</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

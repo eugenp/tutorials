@@ -20,6 +20,12 @@
 		    <groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
 			<version>1.6.6.RELEASE</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 	</dependencies>
 
