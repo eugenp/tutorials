@@ -1,8 +1,9 @@
 package com.baeldung.functionalinterface;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import com.google.common.util.concurrent.Uninterruptibles;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,11 +15,12 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
-
-import com.google.common.util.concurrent.Uninterruptibles;
+import static org.junit.Assert.*;
 
 public class FunctionalInterfaceUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FunctionalInterfaceUnitTest.class);
+
 
     @Test
     public void whenPassingLambdaToComputeIfAbsent_thenTheValueGetsComputedAndPutIntoMap() {
@@ -65,7 +67,7 @@ public class FunctionalInterfaceUnitTest {
 
     @Test
     public void whenPassingLambdaToThreadConstructor_thenLambdaInferredToRunnable() {
-        Thread thread = new Thread(() -> System.out.println("Hello From Another Thread"));
+        Thread thread = new Thread(() -> LOG.debug("Hello From Another Thread"));
         thread.start();
     }
 
@@ -93,7 +95,7 @@ public class FunctionalInterfaceUnitTest {
     @Test
     public void whenUsingConsumerInForEach_thenConsumerExecutesForEachListElement() {
         List<String> names = Arrays.asList("John", "Freddy", "Samuel");
-        names.forEach(name -> System.out.println("Hello, " + name));
+        names.forEach(name -> LOG.debug("Hello, " + name));
     }
 
     @Test
@@ -103,7 +105,7 @@ public class FunctionalInterfaceUnitTest {
         ages.put("Freddy", 24);
         ages.put("Samuel", 30);
 
-        ages.forEach((name, age) -> System.out.println(name + " is " + age + " years old"));
+        ages.forEach((name, age) -> LOG.debug(name + " is " + age + " years old"));
     }
 
     @Test

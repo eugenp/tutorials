@@ -98,6 +98,13 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+		<!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
 
         <!-- test scoped -->
 
@@ -136,13 +143,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
@@ -177,37 +177,6 @@
 				</exclusion>
 			</exclusions>        
 		</dependency>               
-		<!-- JDO -->
-		<dependency>
-		    <groupId>org.datanucleus</groupId>
-		    <artifactId>javax.jdo</artifactId>
-		    <version>3.2.0-m6</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.datanucleus</groupId>
-		    <artifactId>datanucleus-core</artifactId>
-		    <version>5.1.0-m1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.datanucleus</groupId>
-		    <artifactId>datanucleus-api-jdo</artifactId>
-		    <version>5.1.0-m1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.datanucleus</groupId>
-		    <artifactId>datanucleus-rdbms</artifactId>
-		    <version>5.1.0-m1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.datanucleus</groupId>
-		    <artifactId>datanucleus-maven-plugin</artifactId>
-		    <version>5.0.2</version>
-		</dependency>		
-		<dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <version>1.4.194</version>
-		</dependency>
 
 		<dependency>
 		    <groupId>org.owasp.esapi</groupId>
@@ -250,6 +219,7 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/JdbcTest.java</exclude>
                     </excludes>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
@@ -358,29 +328,6 @@
                     </execution>
                 </executions>
             </plugin>
-            
-            <!-- JDO Plugin -->
-
-			<plugin>
-                <groupId>org.datanucleus</groupId>
-    			<artifactId>datanucleus-maven-plugin</artifactId>
-    			<version>5.0.2</version>
-                <configuration>
-                    <api>JDO</api>
-                    <props>${basedir}/datanucleus.properties</props>
-                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
-                </configuration>
-				<executions>
-                	<execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
 
     </build>
@@ -427,6 +374,9 @@
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
+        
+        <!-- mysql -->
+        <mysql.version>6.0.6</mysql.version>
 
         <!-- util -->
         <guava.version>21.0</guava.version>
