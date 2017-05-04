@@ -20,12 +20,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/*UnitTest.java</include>
                     </includes>
-                    <systemPropertyVariables></systemPropertyVariables>
-                    <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
             </plugin>
         </plugins>
@@ -43,7 +40,6 @@
                             <includes>
                                 <include>**/*LiveTest.java</include>
                             </includes>
-                            <testFailureIgnore>false</testFailureIgnore>
                         </configuration>
                     </plugin>
                 </plugins>

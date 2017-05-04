@@ -221,7 +221,6 @@
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>
                     </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>

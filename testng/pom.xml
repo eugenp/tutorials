@@ -77,8 +77,6 @@
                         <suiteXmlFile>src\test\resources\test_setup.xml</suiteXmlFile>
                         <suiteXmlFile>src\test\resources\test_suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
-
-                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
 
