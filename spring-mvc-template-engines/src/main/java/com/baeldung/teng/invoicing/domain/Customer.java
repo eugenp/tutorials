@@ -12,8 +12,10 @@ public class Customer {
 
     private final String lastName;
 
+    public Customer(String firstName, String lastName) { this(null, firstName, lastName); }
+
     public Customer(String vatNumber, String firstName, String lastName) {
-        this.vatNumber = requireNonNull(vatNumber);
+        this.vatNumber = vatNumber;
         this.firstName = requireNonNull(firstName);
         this.lastName = requireNonNull(lastName);
     }
@@ -25,7 +27,10 @@ public class Customer {
     public String getLastName() { return lastName; }
 
     @Override
-    public String toString() { return "#" + vatNumber + " " + lastName + " " + firstName; }
+    public String toString() {
+        final String fullName = lastName + " " + firstName;
+        return vatNumber == null ? fullName : vatNumber + " " + fullName;
+    }
 
     @Override
     public boolean equals(Object o) {

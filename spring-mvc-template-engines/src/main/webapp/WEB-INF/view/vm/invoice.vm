@@ -82,7 +82,7 @@
   </p>
 </footer>
 
-<script src="../../../resources/invoice.js"></script>
+#*<script src="../../../resources/invoice.js"></script>*#
 </body>
 
 </html>

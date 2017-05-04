@@ -76,6 +76,7 @@ public class App extends WebMvcConfigurerAdapter implements WebApplicationInitia
     public ViewResolver velocityViewResolver() {
         VelocityViewResolver bean = new VelocityViewResolver();
 
+        bean.setContentType("text/html; charset=UTF-8");
         bean.setCache(true);
         bean.setOrder(1);
 
