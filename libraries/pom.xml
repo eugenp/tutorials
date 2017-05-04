@@ -251,6 +251,11 @@
 		    <artifactId>h2</artifactId>
 		    <version>1.4.194</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.datanucleus</groupId>
+		    <artifactId>datanucleus-xml</artifactId>
+		    <version>5.0.0-release</version>
+		</dependency>		
     </dependencies>
 
     <properties>
