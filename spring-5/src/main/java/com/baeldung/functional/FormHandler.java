@@ -21,7 +21,7 @@ public class FormHandler {
           .filter(formData -> "baeldung".equals(formData.get("user")))
           .filter(formData -> "you_know_what_to_do".equals(formData.get("token")))
           .flatMap(formData -> ok().body(Mono.just("welcome back!"), String.class))
-          .or(ServerResponse.badRequest().build());
+          .switchIfEmpty(ServerResponse.badRequest().build());
     }
 
     Mono<ServerResponse> handleUpload(ServerRequest request) {
@@ -34,8 +34,7 @@ public class FormHandler {
                 .asByteBuffer()
                 .array().length));
 
-              return ok()
-                .body(fromObject(atomicLong.toString()));
+              return ok().body(fromObject(atomicLong.toString()));
           });
     }
 }
