@@ -4,7 +4,17 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.boot.web.server.WebServer;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.reactive.function.BodyInserters;
+import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromResource;
+
 
 public class FunctionalWebApplicationIntegrationTest {
 
@@ -49,7 +59,7 @@ public class FunctionalWebApplicationIntegrationTest {
           .isEqualTo("helloworld");
     }
 
-   /* @Test
+    @Test
     public void givenLoginForm_whenPostValidToken_thenSuccess() throws Exception {
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>(1);
         formData.add("user", "baeldung");
@@ -59,15 +69,17 @@ public class FunctionalWebApplicationIntegrationTest {
           .post()
           .uri("/login")
           .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-          .exchange(BodyInserters.fromFormData(formData))
+          .body(BodyInserters.fromFormData(formData))
+          .exchange()
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
-          .isEqualTo("welcome back!");
-    }*/
+          .returnResult()
+          .getResponseBody()
+          .equals("welcome back!");
+    }
 
-   /* @Test
+    @Test
     public void givenLoginForm_whenRequestWithInvalidToken_thenFail() throws Exception {
         MultiValueMap<String, String> formData = new LinkedMultiValueMap<>(2);
         formData.add("user", "baeldung");
@@ -77,27 +89,30 @@ public class FunctionalWebApplicationIntegrationTest {
           .post()
           .uri("/login")
           .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-          .exchange(BodyInserters.fromFormData(formData))
+          .body(BodyInserters.fromFormData(formData))
+          .exchange()
           .expectStatus()
           .isBadRequest();
     }
-*/
-   /* @Test
+
+   @Test
     public void givenUploadForm_whenRequestWithMultipartData_thenSuccess() throws Exception {
         Resource resource = new ClassPathResource("/baeldung-weekly.png");
         client
           .post()
           .uri("/upload")
           .contentType(MediaType.MULTIPART_FORM_DATA)
-          .exchange(fromResource(resource))
+          .body(fromResource(resource))
+          .exchange()
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
-          .isEqualTo(String.valueOf(resource.contentLength()));
+          .returnResult()
+          .getResponseBody()
+          .equals(String.valueOf(resource.contentLength()));
     }
-*/
-   /* @Test
+   
+   @Test
     public void givenActors_whenAddActor_thenAdded() throws Exception {
         client
           .get()
@@ -105,14 +120,14 @@ public class FunctionalWebApplicationIntegrationTest {
           .exchange()
           .expectStatus()
           .isOk()
-          .expectBody(Actor.class)
-          .list()
+          .expectBodyList(Actor.class)
           .hasSize(2);
 
         client
           .post()
           .uri("/actor")
-          .exchange(fromObject(new Actor("Clint", "Eastwood")))
+          .body(fromObject(new Actor("Clint", "Eastwood")))
+          .exchange()
           .expectStatus()
           .isOk();
 
@@ -122,10 +137,9 @@ public class FunctionalWebApplicationIntegrationTest {
           .exchange()
           .expectStatus()
           .isOk()
-          .expectBody(Actor.class)
-          .list()
+          .expectBodyList(Actor.class)
           .hasSize(3);
-    }*/
+    }
 
     @Test
     public void givenResources_whenAccess_thenGot() throws Exception {
