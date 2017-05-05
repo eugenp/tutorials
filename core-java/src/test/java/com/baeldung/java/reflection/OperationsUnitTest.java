@@ -1,23 +1,27 @@
 package com.baeldung.java.reflection;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 public class OperationsUnitTest {
 
     public OperationsUnitTest() {
     }
 
-    @Test(expectedExceptions = IllegalAccessException.class)
+    @Test(expected=IllegalAccessException.class)
     public void givenObject_whenInvokePrivatedMethod_thenFail() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
         Method andInstanceMethod = Operations.class.getDeclaredMethod("and", boolean.class, boolean.class);
 
         Operations operationsInstance = new Operations();
         Boolean result = (Boolean)andInstanceMethod.invoke(operationsInstance, true, false);
 
-        Assert.assertFalse(result);
+        assertFalse(result);
     }
 
     @Test
@@ -28,7 +32,7 @@ public class OperationsUnitTest {
         Operations operationsInstance = new Operations();
         Boolean result = (Boolean)andInstanceMethod.invoke(operationsInstance, true, false);
 
-        Assert.assertFalse(result);
+        assertFalse(result);
     }
 
     @Test
@@ -38,7 +42,7 @@ public class OperationsUnitTest {
         Operations operationsInstance = new Operations();
         Double result = (Double)sumInstanceMethod.invoke(operationsInstance, 1, 3);
         
-        Assert.assertTrue(4 == result);
+        assertThat(result, equalTo(4.0));
     }
     
     @Test
@@ -47,7 +51,7 @@ public class OperationsUnitTest {
 
         Double result = (Double)multiplyStaticMethod.invoke(null, 3.5f, 2);
         
-        Assert.assertTrue(7 == result);
+        assertThat(result, equalTo(7.0));
     }
 
 }
