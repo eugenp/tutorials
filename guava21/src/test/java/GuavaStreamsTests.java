@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-public class GauavaStreamsTests {
+public class GuavaStreamsTests {
 
     List<Integer> numbers;
 

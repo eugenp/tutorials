@@ -1,6 +1,8 @@
 package com.baeldung.concurrent.priorityblockingqueue;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -10,6 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Lists.newArrayList;
 
 public class PriorityBlockingQueueIntegrationTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PriorityBlockingQueueIntegrationTest.class);
+
 
     @Test
     public void givenUnorderedValues_whenPolling_thenShouldOrderQueue() throws InterruptedException {
@@ -32,11 +37,11 @@ public class PriorityBlockingQueueIntegrationTest {
         PriorityBlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
 
         final Thread thread = new Thread(() -> {
-            System.out.println("Polling...");
+            LOG.debug("Polling...");
             while (true) {
                 try {
                     Integer poll = queue.take();
-                    System.out.println("Polled: " + poll);
+                    LOG.debug("Polled: " + poll);
                 } catch (InterruptedException e) {
                 }
             }
@@ -44,7 +49,7 @@ public class PriorityBlockingQueueIntegrationTest {
         thread.start();
 
         Thread.sleep(TimeUnit.SECONDS.toMillis(5));
-        System.out.println("Adding to queue");
+        LOG.debug("Adding to queue");
 
         queue.addAll(newArrayList(1, 5, 6, 1, 2, 6, 7));
         Thread.sleep(TimeUnit.SECONDS.toMillis(1));

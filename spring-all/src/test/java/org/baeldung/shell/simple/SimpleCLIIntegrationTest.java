@@ -1,7 +1,5 @@
 package org.baeldung.shell.simple;
 
-import java.io.File;
-
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -10,7 +8,9 @@ import org.springframework.shell.Bootstrap;
 import org.springframework.shell.core.CommandResult;
 import org.springframework.shell.core.JLineShellComponent;
 
-public class SimpleCLIUnitTest {
+import java.io.File;
+
+public class SimpleCLIIntegrationTest {
 
     static JLineShellComponent shell;
 

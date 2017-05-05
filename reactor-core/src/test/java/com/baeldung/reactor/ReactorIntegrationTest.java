@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReactorTest {
+public class ReactorIntegrationTest {
 
     @Test
     public void givenFlux_whenSubscribing_thenStream() throws InterruptedException {

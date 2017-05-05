@@ -7,8 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class ComplexXmlToObjectCollectionTest {
 
@@ -22,18 +22,14 @@ public class ComplexXmlToObjectCollectionTest {
     }
 
     @Test
-    public void convertXmlToObjectFromFile() {
-        try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            FileReader reader = new FileReader(classLoader.getResource("data-file-alias-implicit-collection.xml").getFile());
-            Customer customer = (Customer) xstream.fromXML(reader);
-            Assert.assertNotNull(customer);
-            Assert.assertNotNull(customer.getContactDetailsList());
-            // System.out.println(customer);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void convertXmlToObjectFromFile() throws FileNotFoundException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        FileReader reader = new FileReader(classLoader
+          .getResource("data-file-alias-implicit-collection.xml")
+          .getFile());
+        Customer customer = (Customer) xstream.fromXML(reader);
+        Assert.assertNotNull(customer);
+        Assert.assertNotNull(customer.getContactDetailsList());
     }
 
 }
