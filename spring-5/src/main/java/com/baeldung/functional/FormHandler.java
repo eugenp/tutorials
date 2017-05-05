@@ -1,10 +1,12 @@
 package com.baeldung.functional;
 
+import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static org.springframework.web.reactive.function.BodyExtractors.toDataBuffers;
@@ -28,13 +30,15 @@ public class FormHandler {
         return request
           .body(toDataBuffers())
           .collectList()
-          .flatMap(dataBuffers -> {
-              AtomicLong atomicLong = new AtomicLong(0);
-              dataBuffers.forEach(d -> atomicLong.addAndGet(d
-                .asByteBuffer()
-                .array().length));
+          .flatMap(dataBuffers -> ok()
+            .body(fromObject(extractData(dataBuffers).toString())));
+    }
 
-              return ok().body(fromObject(atomicLong.toString()));
-          });
+    private AtomicLong extractData(List<DataBuffer> dataBuffers) {
+        AtomicLong atomicLong = new AtomicLong(0);
+        dataBuffers.forEach(d -> atomicLong.addAndGet(d
+          .asByteBuffer()
+          .array().length));
+        return atomicLong;
     }
 }
