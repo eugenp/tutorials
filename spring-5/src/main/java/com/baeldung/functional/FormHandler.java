@@ -18,33 +18,24 @@ public class FormHandler {
         return request
           .body(toFormData())
           .map(MultiValueMap::toSingleValueMap)
-          .map(formData -> {
-              System.out.println("form data: " + formData.toString());
-              if ("baeldung".equals(formData.get("user")) && "you_know_what_to_do".equals(formData.get("token"))) {
-                  return ok()
-                    .body(Mono.just("welcome back!"), String.class)
-                    .block();
-              }
-              return ServerResponse
-                .badRequest()
-                .build()
-                .block();
-          });
+          .filter(formData -> "baeldung".equals(formData.get("user")))
+          .filter(formData -> "you_know_what_to_do".equals(formData.get("token")))
+          .flatMap(formData -> ok().body(Mono.just("welcome back!"), String.class))
+          .or(ServerResponse.badRequest().build());
     }
 
     Mono<ServerResponse> handleUpload(ServerRequest request) {
         return request
           .body(toDataBuffers())
           .collectList()
-          .map(dataBuffers -> {
+          .flatMap(dataBuffers -> {
               AtomicLong atomicLong = new AtomicLong(0);
               dataBuffers.forEach(d -> atomicLong.addAndGet(d
                 .asByteBuffer()
                 .array().length));
-              System.out.println("data length:" + atomicLong.get());
+
               return ok()
-                .body(fromObject(atomicLong.toString()))
-                .block();
+                .body(fromObject(atomicLong.toString()));
           });
     }
 }
