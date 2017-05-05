@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class IntegrationTestExample1 {
+public class Example2IntegrationTest {
 
     @Test
     public void test1a() {
@@ -23,7 +23,7 @@ public class IntegrationTestExample1 {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {
-            System.out.println("Thread interrupted");
+            System.out.println("Thread Interrupted");
         }
     }
 }
