@@ -1,18 +1,10 @@
 package org.baeldung.java.io;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
-import java.io.SequenceInputStream;
-import java.io.StreamTokenizer;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
@@ -21,9 +13,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class JavaReadFromFileUnitTest {
+
+
+    private static final Logger LOG = LoggerFactory.getLogger(JavaReadFromFileUnitTest.class);
 
     @Test
     public void whenReadWithBufferedReader_thenCorrect() throws IOException {
@@ -115,7 +111,7 @@ public class JavaReadFromFileUnitTest {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
         final String currentLine = reader.readLine();
         reader.close();
-        System.out.println(currentLine);
+        LOG.debug(currentLine);
         assertEquals(expected_value, currentLine);
     }
 

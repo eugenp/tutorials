@@ -1,23 +1,18 @@
 package com.baeldung.threadpool;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class CoreThreadPoolIntegrationTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CoreThreadPoolIntegrationTest.class);
+
 
     @Test(timeout = 1000)
     public void whenCallingExecuteWithRunnable_thenRunnableIsExecuted() throws InterruptedException {
@@ -26,7 +21,7 @@ public class CoreThreadPoolIntegrationTest {
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
-            System.out.println("Hello World");
+            LOG.debug("Hello World");
             lock.countDown();
         });
 
@@ -115,7 +110,7 @@ public class CoreThreadPoolIntegrationTest {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
         executor.schedule(() -> {
-            System.out.println("Hello World");
+            LOG.debug("Hello World");
             lock.countDown();
         }, 500, TimeUnit.MILLISECONDS);
 
@@ -130,7 +125,7 @@ public class CoreThreadPoolIntegrationTest {
 
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
         ScheduledFuture<?> future = executor.scheduleAtFixedRate(() -> {
-            System.out.println("Hello World");
+            LOG.debug("Hello World");
             lock.countDown();
         }, 500, 100, TimeUnit.MILLISECONDS);
 
