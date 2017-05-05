@@ -12,9 +12,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
+
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.BodyInserters.fromResource;
-
 
 public class FunctionalWebApplicationIntegrationTest {
 
@@ -74,9 +74,7 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .returnResult()
-          .getResponseBody()
-          .equals("welcome back!");
+          .isEqualTo("welcome back!");
     }
 
     @Test
@@ -95,7 +93,7 @@ public class FunctionalWebApplicationIntegrationTest {
           .isBadRequest();
     }
 
-   @Test
+    @Test
     public void givenUploadForm_whenRequestWithMultipartData_thenSuccess() throws Exception {
         Resource resource = new ClassPathResource("/baeldung-weekly.png");
         client
@@ -107,12 +105,10 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .returnResult()
-          .getResponseBody()
-          .equals(String.valueOf(resource.contentLength()));
+          .isEqualTo(String.valueOf(resource.contentLength()));
     }
-   
-   @Test
+
+    @Test
     public void givenActors_whenAddActor_thenAdded() throws Exception {
         client
           .get()
