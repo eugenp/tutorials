@@ -13,9 +13,8 @@ public class DelayObject implements Delayed {
     }
 
     @Override
-    public long getDelay(TimeUnit unit) { //It needs to get delay in nanoseconds, so need to convert
+    public long getDelay(TimeUnit unit) {
         long diff = startTime - System.currentTimeMillis();
-        System.out.println(diff);
         return unit.convert(diff, TimeUnit.MILLISECONDS);
     }
 
