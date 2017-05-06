@@ -1,11 +1,14 @@
 package com.baeldung.concurrent.delayqueue;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import java.util.concurrent.*;
 
 import static junit.framework.TestCase.assertEquals;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DelayQueueTest {
     @Test
     public void givenDelayQueue_whenProduceElement_thenShouldConsumeAfterGivenDelay() throws InterruptedException {
