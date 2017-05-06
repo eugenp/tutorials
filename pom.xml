@@ -111,7 +111,7 @@
         <module>selenium-junit-testng</module>
         <module>solr</module>
         <module>spark-java</module>
-       <!-- <module>spring-5</module> TODO: CI problems-->
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
