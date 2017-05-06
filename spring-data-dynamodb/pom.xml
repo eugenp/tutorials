@@ -11,7 +11,7 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>1.4.4.RELEASE</version>
+        <version>1.5.3.RELEASE</version>
         <relativePath/>
     </parent>
             
@@ -32,7 +32,7 @@
 			<dependency>
 				<groupId>org.springframework.data</groupId>
 				<artifactId>spring-data-releasetrain</artifactId>
-				<version>Gosling-SR1</version>
+				<version>Hopper-SR10</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -94,6 +94,12 @@
     		<groupId>com.amazonaws</groupId>
     		<artifactId>aws-java-sdk-dynamodb</artifactId>
     		<version>${aws-java-sdk-dynamodb.version}</version>
+	            <exclusions>
+	                <exclusion>
+	                    <artifactId>commons-logging</artifactId>
+	                    <groupId>commons-logging</groupId>
+	                </exclusion>
+	            </exclusions>    		
 		</dependency>
 		<dependency>
   			<groupId>com.github.derjust</groupId>

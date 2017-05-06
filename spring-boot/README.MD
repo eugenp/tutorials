@@ -18,3 +18,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Create a Custom FailureAnalyzer with Spring Boot](http://www.baeldung.com/spring-boot-failure-analyzer)
 - [Configuring Separate Spring DataSource for Tests](http://www.baeldung.com/spring-testing-separate-data-source)
 - [Dynamic DTO Validation Config Retrieved from DB](http://www.baeldung.com/spring-dynamic-dto-validation)
+- [Custom Information in Spring Boot Info Endpoint](http://www.baeldung.com/spring-boot-info-actuator-custom)
+- [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
+- [Create a Custom Auto-Configuration with Spring Boot](http://www.baeldung.com/spring-boot-custom-auto-configuration)

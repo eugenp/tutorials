@@ -1,4 +1,5 @@
 spring:
   rabbitmq:
-    username: baeldung
-    password: baeldung
+    username: guest
+    password: guest
+    host: 10.10.10.105
