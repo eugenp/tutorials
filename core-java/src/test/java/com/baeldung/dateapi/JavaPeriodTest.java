@@ -1,11 +1,13 @@
 package com.baeldung.dateapi;
 
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
 import java.time.LocalDate;
 import java.time.Period;
 
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class JavaPeriodTest {
 
@@ -19,7 +21,7 @@ public class JavaPeriodTest {
 
         Period period = Period.between(startDate, endDate);
 
-        LOG.info("Years:" + period.getYears() + " months:" + period.getMonths() + " days:" + period.getDays());
+        LOG.info(String.format("Years:%d months:%d days:%d", period.getYears(), period.getMonths(), period.getDays()));
 
         assertFalse(period.isNegative());
         assertEquals(56, period.plusDays(50).getDays());
