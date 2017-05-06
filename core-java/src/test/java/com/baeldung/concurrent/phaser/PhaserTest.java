@@ -36,6 +36,6 @@ public class PhaserTest {
         assertEquals(2, ph.getPhase());
 
 
-        ph.arriveAndDeregister();// deregistering the main thread
+        ph.arriveAndDeregister();
     }
 }
