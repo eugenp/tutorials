@@ -125,19 +125,31 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.6</version>
         </dependency>
-        
+
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+      
+         <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-boot-starter</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-        
-        <dependency>
+      
+         <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-security</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-
+      
         <dependency>
         	<groupId>org.apache.activemq</groupId>
         	<artifactId>artemis-server</artifactId>
