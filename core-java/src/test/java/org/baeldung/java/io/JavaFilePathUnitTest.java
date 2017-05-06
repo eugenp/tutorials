@@ -3,6 +3,7 @@ package org.baeldung.java.io;
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
+import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -69,7 +70,8 @@ public class JavaFilePathUnitTest {
     }
 
     @Test(expected = IOException.class)
-    public void whenIOException_thenSuccess() throws IOException {
+    public void givenWindowsOs_whenIOException_thenSuccess() throws IOException {
+        Assume.assumeTrue(isWindows());
         new File("*").getCanonicalPath();
     }
 
