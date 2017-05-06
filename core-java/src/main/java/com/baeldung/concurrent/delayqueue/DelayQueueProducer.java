@@ -20,7 +20,8 @@ public class DelayQueueProducer implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < numberOfElementsToProduce; i++) {
-            DelayObject object = new DelayObject(UUID.randomUUID().toString(), delayOfEachProducedMessageMilliseconds);
+            DelayObject object
+                    = new DelayObject(UUID.randomUUID().toString(), delayOfEachProducedMessageMilliseconds);
             System.out.println("Put object = " + object);
             try {
                 queue.put(object);
