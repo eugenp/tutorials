@@ -111,7 +111,7 @@
         <module>selenium-junit-testng</module>
         <module>solr</module>
         <module>spark-java</module>
-       <!-- <module>spring-5</module> TODO: CI problems-->
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
@@ -229,8 +229,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
+                   
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
