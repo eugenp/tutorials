@@ -15,7 +15,7 @@ public class OperationsUnitTest {
     }
 
     @Test(expected = IllegalAccessException.class)
-    public void givenObject_whenInvokePrivatedMethod_thenFail() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    public void givenObject_whenInvokePrivateMethod_thenFail() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Method andPrivateMethod = Operations.class.getDeclaredMethod("and", boolean.class, boolean.class);
 
         Operations operationsInstance = new Operations();
