@@ -7,17 +7,14 @@ import com.thoughtworks.xstream.io.json.JsonHierarchicalStreamDriver;
 public class SimpleXstreamInitializer {
 
     public XStream getXstreamInstance() {
-        XStream xtreamInstance = new XStream();
-        return xtreamInstance;
+        return new XStream();
     }
 
     public XStream getXstreamJettisonMappedInstance() {
-        XStream xstreamInstance = new XStream(new JettisonMappedXmlDriver());
-        return xstreamInstance;
+        return new XStream(new JettisonMappedXmlDriver());
     }
 
     public XStream getXstreamJsonHierarchicalInstance() {
-        XStream xstreamInstance = new XStream(new JsonHierarchicalStreamDriver());
-        return xstreamInstance;
+        return new XStream(new JsonHierarchicalStreamDriver());
     }
 }

@@ -26,3 +26,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Inheritance with Jackson](http://www.baeldung.com/jackson-inheritance)
 - [Guide to @JsonFormat in Jackson](http://www.baeldung.com/jackson-jsonformat)
 - [A Guide to Optional with Jackson](http://www.baeldung.com/jackson-optional)
+- [Map Serialization and Deserialization with Jackson](http://www.baeldung.com/jackson-map)
+- [Jackson Streaming API](http://www.baeldung.com/jackson-streaming-api)

@@ -24,3 +24,4 @@
 - [Guide to Guava RangeSet](http://www.baeldung.com/guava-rangeset)
 - [Guide to Guava RangeMap](http://www.baeldung.com/guava-rangemap)
 - [Guide to Guava Table](http://www.baeldung.com/guava-table)
+- [Guide to Guava’s Reflection Utilities](http://www.baeldung.com/guava-reflection)

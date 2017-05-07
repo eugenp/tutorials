@@ -10,9 +10,15 @@
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
 		<lombok.version>1.16.12</lombok.version>
+		<commons-math3.version>3.6.1</commons-math3.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -25,10 +31,14 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+   	 		<groupId>io.jenetics</groupId>
+    		<artifactId>jenetics</artifactId>
+    		<version>3.7.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<defaultGoal>install</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -44,6 +54,17 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>**/*LongRunningUnitTest.java</exclude>
+							<exclude>**/*IntegrationTest.java</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
