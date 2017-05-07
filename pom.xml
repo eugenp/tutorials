@@ -210,7 +210,6 @@
         <module>rabbitmq</module>
         <module>vertx</module>
         <module>spring-data-gemfire</module>
-        <module>cucumber</module>
         <module>mybatis</module>
         <module>spring-drools</module>
     </modules>
