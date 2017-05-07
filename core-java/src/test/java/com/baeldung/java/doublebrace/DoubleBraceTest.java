@@ -11,17 +11,17 @@ import org.junit.Test;
 public class DoubleBraceTest {
 
     @Test
-    public void givenSet_whenWithoutDoubleBraces_getWorksSuccessfully() {
-        final Set<String> countriesList = new HashSet<String>();
-        countriesList.add("India");
-        countriesList.add("USSR");
-        countriesList.add("USA");
-        assertTrue(countriesList.contains("India"));
+    public void whenInitializeSetWithoutDoubleBraces_containsElements() {
+        final Set<String> countries = new HashSet<String>();
+        countries.add("India");
+        countries.add("USSR");
+        countries.add("USA");
+        assertTrue(countries.contains("India"));
     }
 
     @Test
-    public void givenSet_whenDoubleBraces_getWorksSuccessfully() {
-        final Set<String> countriesList = new HashSet<String>() {
+    public void whenInitializeSetWithDoubleBraces_containsElements() {
+        final Set<String> countries = new HashSet<String>() {
 
             {
                 add("India");
@@ -29,13 +29,13 @@ public class DoubleBraceTest {
                 add("USA");
             }
         };
-        assertTrue(countriesList.contains("India"));
+        assertTrue(countries.contains("India"));
     }
 
     @Test
-    public void givenUnmodifiableSet_whenWithoutDoubleBraces_getsSuccessfully() {
-        final Set<String> countriesList = Collections.unmodifiableSet(Stream.of("India", "USSR", "USA").collect(toSet()));
-        assertTrue(countriesList.contains("India"));
+    public void whenInitializeUnmodifiableSetWithDoubleBrace_containsElements() {
+        final Set<String> countries = Collections.unmodifiableSet(Stream.of("India", "USSR", "USA").collect(toSet()));
+        assertTrue(countries.contains("India"));
     }
 
 }
