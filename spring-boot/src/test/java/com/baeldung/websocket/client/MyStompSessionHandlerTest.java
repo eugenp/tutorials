@@ -14,7 +14,7 @@ import org.springframework.messaging.simp.stomp.StompSession;
 public class MyStompSessionHandlerTest {
 
     @Test
-    public void testAfterConnectedWhenSessionIsSuccessful() {
+    public void givenValidSession_whenConnected_SendsMessage() {
         StompSession mockSession = Mockito.mock(StompSession.class);
         StompHeaders mockHeader = Mockito.mock(StompHeaders.class);
         MyStompSessionHandler sessionHandler = new MyStompSessionHandler();
