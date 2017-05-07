@@ -22,8 +22,6 @@
         <module>apache-fop</module>
         <module>apache-poi</module>
         <module>apache-thrift</module>
-        <module>aspectj</module>
-        <module>assertj</module>
         <module>autovalue</module>
         <module>axon</module>
 
@@ -35,7 +33,7 @@
         <module>deltaspike</module>
         <module>dozer</module>
 
-        <module>ejb</module>
+        <!--<module>ejb</module>-->
 
         <module>feign</module>
         <module>flyway</module>
@@ -43,6 +41,7 @@
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
 
+        <module>groovy-spock</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava18</module>
@@ -53,6 +52,7 @@
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
+        <!--<module>hibernate5</module>-->
         <module>httpclient</module>
         <module>hystrix</module>
 
@@ -65,7 +65,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <module>jee7</module>
+        <!--<module>jee7</module>-->
         <!-- <module>jhipster</module> -->
         <module>jjwt</module>
         <module>jooq</module>
@@ -111,7 +111,7 @@
         <module>selenium-junit-testng</module>
         <module>solr</module>
         <module>spark-java</module>
-       <!-- <module>spring-5</module> TODO: CI problems-->
+        <module>spring-5</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
@@ -128,6 +128,7 @@
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
+        <module>spring-data-javaslang</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
@@ -151,10 +152,10 @@
         <module>spring-mvc-email</module>
         <module>spring-mvc-forms</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-no-xml</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-web-vs-initializer</module>
+        <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
         <module>spring-security-openid</module>
@@ -200,12 +201,8 @@
 
         <module>video-tutorials</module>
 
-        <module>wicket</module>
-
         <module>xml</module>
         <module>xmlunit2</module>
-        <module>xstream</module>
-
         <module>struts2</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
@@ -213,6 +210,8 @@
         <module>rabbitmq</module>
         <module>vertx</module>
         <module>spring-data-gemfire</module>
+        <module>mybatis</module>
+        <module>spring-drools</module>
     </modules>
 
     <build>
@@ -223,14 +222,13 @@
                 <version>1.6.0</version>
                 <configuration>
                     <executable>maven</executable>
-
-
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                   
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>

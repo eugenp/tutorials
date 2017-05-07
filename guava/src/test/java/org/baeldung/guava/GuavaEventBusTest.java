@@ -44,11 +44,10 @@ public class GuavaEventBusTest {
     }
 
     @Test
-    public void givenUnSubscribedEvent_whenEventHandledByDeadEvent_thenSuccess() throws InterruptedException {
+    public void givenUnSubscribedEvent_whenEventHandledByDeadEvent_thenSuccess() {
         listener.resetEventsHandled();
 
         eventBus.post(12345);
-
         assertEquals(1, listener.getEventsHandled());
     }
 

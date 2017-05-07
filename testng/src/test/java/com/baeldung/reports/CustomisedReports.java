@@ -31,8 +31,7 @@ public class CustomisedReports implements IReporter {
         initReportTemplate();
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> suiteResults = suite.getResults();
-            for (String testName : suiteResults.keySet()) {
-                ISuiteResult suiteResult = suiteResults.get(testName);
+            suiteResults.forEach((testName, suiteResult) -> {
                 ITestContext testContext = suiteResult.getTestContext();
 
                 processFailedResults(testContext.getFailedTests(), suite, testName);
@@ -40,7 +39,7 @@ public class CustomisedReports implements IReporter {
                 processPassedResult(testContext.getPassedTests(), suite, testName);
 
                 processSkippedResults(testContext.getSkippedTests(), suite, testName);
-            }
+            });
         }
         finishReportTemplate();
         reportWriter.flush();

@@ -25,6 +25,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -106,6 +112,18 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
+                
+                <dependency>
+                        <groupId>net.sf.jasperreports</groupId>
+                        <artifactId>jasperreports</artifactId>
+                        <version>${jasperreports.version}</version>
+	            <exclusions>
+	                <exclusion>
+	                    <artifactId>commons-logging</artifactId>
+	                    <groupId>commons-logging</groupId>
+	                </exclusion>
+	            </exclusions>                        
+                </dependency>
 
 		<!-- logging -->
 
@@ -122,10 +140,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-		</dependency>
-		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
 		</dependency>
 
 		<!-- test scoped -->
@@ -296,6 +310,7 @@
 		<ehcache.version>3.1.3</ehcache.version>
 		<easymock.version>3.4</easymock.version>
 		<assertj.version>3.6.1</assertj.version>
+        <jasperreports.version>6.4.0</jasperreports.version>
 
 	</properties>
 
