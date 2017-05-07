@@ -1,7 +1,6 @@
 package com.baeldung;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.expectThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ public class AssertionTest {
 	@Test
 	public void testConvertToDoubleThrowException() {
 		String age = "eighteen";
-		expectThrows(NumberFormatException.class, () -> {
+		assertThrows(NumberFormatException.class, () -> {
 			convertToInt(age);
 		});
 
