@@ -17,4 +17,13 @@ public class ConstructorBasedBeanInjectionWithXMLConfigTest {
         Assert.assertEquals(HELM_NAME, shipConstructorBean.getHelm()
             .getBrandOfHelm());
     }
+
+    @Test
+    public void givenXMLConfigFile_whenUsingConstructorBasedFinalBeanInjection_thenCorrectHelmName() {
+        final ApplicationContext applicationContext = new ClassPathXmlApplicationContext("finalbeanInjection-constructor.xml");
+
+        final ShipWithFinalDependency shipConstructorBean = (ShipWithFinalDependency) applicationContext.getBean("shipWithFinalDependency");
+        Assert.assertEquals(HELM_NAME, shipConstructorBean.getHelm()
+            .getBrandOfHelm());
+    }
 }
