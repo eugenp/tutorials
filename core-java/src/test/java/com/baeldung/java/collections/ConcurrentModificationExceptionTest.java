@@ -6,9 +6,10 @@ import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import static java.util.Arrays.asList;
-import static org.testng.Assert.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ConcurrentModificationExceptionTest {
+
     @Test
     public void changingContentWithSetDoesNotThrowConcurrentModificationException() throws Exception {
         ArrayList<Object> array = new ArrayList<>(asList(0, "one", 2, "three"));
