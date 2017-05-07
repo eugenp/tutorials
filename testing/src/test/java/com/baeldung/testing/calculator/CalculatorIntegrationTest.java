@@ -1,4 +1,4 @@
-package com.baeldung.cucumber.calculator;
+package com.baeldung.testing.calculator;
 
 import org.junit.runner.RunWith;
 

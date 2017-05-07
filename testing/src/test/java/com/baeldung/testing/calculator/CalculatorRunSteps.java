@@ -1,12 +1,12 @@
-package com.baeldung.cucumber.calculator;
+package com.baeldung.testing.calculator;
 
-import org.hamcrest.Matchers;
-import org.junit.Assert;
-
+import com.baeldung.cucumber.Calculator;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 
 public class CalculatorRunSteps {
 
