@@ -1,0 +1,10 @@
+<label data-sw-translate for="{{contentTypeId}}">Response Content Type</label>
+<select name="contentType" id="{{contentTypeId}}">
+{{#if produces}}
+  {{#each produces}}
+	<option value="{{this}}">{{this}}</option>
+	{{/each}}
+{{else}}
+  <option value="application/json">application/json</option>
+{{/if}}
+</select>

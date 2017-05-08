@@ -66,7 +66,7 @@
         <module>javaxval</module>
         <module>jaxb</module>
         <!--<module>jee7</module>-->
-        <!-- <module>jhipster</module> -->
+        <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
         <module>jooq</module>
         <module>jpa-storedprocedure</module>
@@ -228,7 +228,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                   
+
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
