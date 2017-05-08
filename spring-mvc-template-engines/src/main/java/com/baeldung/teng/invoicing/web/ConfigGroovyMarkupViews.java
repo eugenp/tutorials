@@ -12,10 +12,20 @@ public class ConfigGroovyMarkupViews {
 
     @Bean
     public GroovyMarkupConfig groovyMarkupConfig() {
-        GroovyMarkupConfigurer groovyMarkupConfig = new GroovyMarkupConfigurer();
+        GroovyMarkupConfigurer groovyMarkupConfig = new GroovyMarkupConfigurer() {
+
+            @Override
+            public void afterPropertiesSet() throws Exception {
+                super.afterPropertiesSet();
+
+                // We write our templates using UTF-8
+                getTemplateEngine().getCompilerConfiguration().setSourceEncoding("UTF-8");
+            }
+        };
 
         groovyMarkupConfig.setAutoIndent(true);
         groovyMarkupConfig.setAutoNewLine(true);
+        groovyMarkupConfig.setAutoIndentString("  ");
         groovyMarkupConfig.setResourceLoaderPath("/WEB-INF/view/tpl");
 
         return groovyMarkupConfig;
