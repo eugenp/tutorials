@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.stackify.config;
 
 import javax.sql.DataSource;
 

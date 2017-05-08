@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.stackify.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

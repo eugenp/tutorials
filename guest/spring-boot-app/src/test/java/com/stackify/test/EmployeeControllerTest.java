@@ -1,4 +1,4 @@
-package com.baeldung.test;
+package com.stackify.test;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.baeldung.Application;
+import com.stackify.Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
