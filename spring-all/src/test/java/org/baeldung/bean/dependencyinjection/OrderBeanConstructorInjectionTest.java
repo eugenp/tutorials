@@ -8,10 +8,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class OrderBeanConstructorInjectionTest {
 
     @Test
-    public void givenBeanConfig_whenUsingSetterDI_thenExpectedProductIdAndDesc() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dependencyInjectionForSetter.xml");
+    public void givenBeanConfig_whenUsingConstructorDI_thenExpectedProductIdAndDesc() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dependencyInjectionForConstructor.xml");
 
-        OrderBeanSetterInjection orderBean = (OrderBeanSetterInjection) applicationContext.getBean("order");
+        OrderBeanConstructorInjection orderBean = (OrderBeanConstructorInjection) applicationContext.getBean("order");
 
         Assert.assertEquals(100, orderBean.getProduct().getProductId());
         Assert.assertEquals("OCP Study Guide", orderBean.getProduct().getProductDesc());
