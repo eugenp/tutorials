@@ -16,7 +16,7 @@ public class OperationsUnitTest {
 
     @Test(expected = IllegalAccessException.class)
     public void givenObject_whenInvokePrivateMethod_thenFail() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Method andPrivateMethod = Operations.class.getDeclaredMethod("and", boolean.class, boolean.class);
+        Method andPrivateMethod = Operations.class.getDeclaredMethod("privateAnd", boolean.class, boolean.class);
 
         Operations operationsInstance = new Operations();
         Boolean result = (Boolean) andPrivateMethod.invoke(operationsInstance, true, false);
@@ -26,7 +26,7 @@ public class OperationsUnitTest {
 
     @Test
     public void givenObject_whenInvokePrivateMethod_thenCorrect() throws Exception {
-        Method andPrivatedMethod = Operations.class.getDeclaredMethod("and", boolean.class, boolean.class);
+        Method andPrivatedMethod = Operations.class.getDeclaredMethod("privateAnd", boolean.class, boolean.class);
         andPrivatedMethod.setAccessible(true);
 
         Operations operationsInstance = new Operations();
@@ -37,7 +37,7 @@ public class OperationsUnitTest {
 
     @Test
     public void givenObject_whenInvokePublicMethod_thenCorrect() throws Exception {
-        Method sumInstanceMethod = Operations.class.getMethod("sum", int.class, double.class);
+        Method sumInstanceMethod = Operations.class.getMethod("publicSum", int.class, double.class);
 
         Operations operationsInstance = new Operations();
         Double result = (Double) sumInstanceMethod.invoke(operationsInstance, 1, 3);
@@ -47,7 +47,7 @@ public class OperationsUnitTest {
 
     @Test
     public void givenObject_whenInvokeStaticMethod_thenCorrect() throws Exception {
-        Method multiplyStaticMethod = Operations.class.getDeclaredMethod("multiply", float.class, long.class);
+        Method multiplyStaticMethod = Operations.class.getDeclaredMethod("publicStaticMultiply", float.class, long.class);
 
         Double result = (Double) multiplyStaticMethod.invoke(null, 3.5f, 2);
 
