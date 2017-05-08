@@ -107,6 +107,12 @@
             <artifactId>spring-ldap-test</artifactId>
             <version>${spring-ldap.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <!-- apacheds for test -->

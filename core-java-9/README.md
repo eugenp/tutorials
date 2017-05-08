@@ -12,3 +12,4 @@
 - [Spring Security – Redirect to the Previous URL After Login](http://www.baeldung.com/spring-security-redirect-login)
 - [Java 9 Process API Improvements](http://www.baeldung.com/java-9-process-api)
 - [Introduction to Java 9 StackWalking API](http://www.baeldung.com/java-9-stackwalking-api)
+- [Introduction to Project Jigsaw](http://www.baeldung.com/project-jigsaw-java-modularity)
