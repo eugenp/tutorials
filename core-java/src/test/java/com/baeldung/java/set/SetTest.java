@@ -1,6 +1,8 @@
 package com.baeldung.java.set;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -8,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SetTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SetTest.class);
 
     @Test
     public void givenTreeSet_whenRetrievesObjects_thenNaturalOrder() {
@@ -48,14 +52,15 @@ public class SetTest {
             set.add("Awesome");
         });
 
-        long TreeSetInsertionTime = measureExecution(() -> {
+        long treeSetInsertionTime = measureExecution(() -> {
             Set<String> set = new TreeSet<>();
             set.add("Baeldung");
             set.add("is");
             set.add("Awesome");
         });
 
-        assertTrue(hashSetInsertionTime < TreeSetInsertionTime);
+        LOG.debug("HashSet insertion time: {}", hashSetInsertionTime);
+        LOG.debug("TreeSet insertion time: {}", treeSetInsertionTime);
     }
 
     @Test
@@ -88,7 +93,7 @@ public class SetTest {
         task.run();
         long endTime = System.nanoTime();
         long executionTime = endTime - startTime;
-        System.out.println(executionTime);
+        LOG.debug(String.valueOf(executionTime));
         return executionTime;
     }
 }
