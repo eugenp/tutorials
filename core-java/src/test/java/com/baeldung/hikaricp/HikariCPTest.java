@@ -1,14 +1,19 @@
 package com.baeldung.hikaricp;
 
+import java.util.List;
+
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class HikariCPTest {
 
 	@Test
-	@Ignore
+//	@Ignore
     public void givenConnection_thenFetchDbData() {
-		HikariCPDemo.fetchData();
+		List<Employee> employees = HikariCPDemo.fetchData();
+		assertEquals(4, employees.size());
 	}
 	
 }
