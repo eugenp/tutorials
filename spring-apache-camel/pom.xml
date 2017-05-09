@@ -8,6 +8,12 @@
 	<name>spring-apache-camel</name>
 	<url>http://maven.apache.org</url>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<env.camel.version>2.18.1</env.camel.version>
 		<env.spring.version>4.3.4.RELEASE</env.spring.version>

@@ -7,6 +7,12 @@
     <groupId>com.baeldung</groupId>
     <artifactId>javax-servlets</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>    
     
     <build>
         <plugins>

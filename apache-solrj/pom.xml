@@ -7,6 +7,12 @@
     <packaging>jar</packaging>
     <name>apache-solrj</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
 	<properties>
 		<junit.version>4.12</junit.version>
 		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>

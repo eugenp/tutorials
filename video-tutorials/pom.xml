@@ -7,6 +7,13 @@
 
 	<packaging>pom</packaging>
 	<name>video-tutorials</name>
+	
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+
 	<modules>
 		<module>jackson-annotations</module>
 	</modules>

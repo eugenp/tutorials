@@ -8,6 +8,12 @@
 	<name>spring-security-rest</name>
 	<packaging>war</packaging>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<dependencies>
 
 		<!-- Spring Security -->
