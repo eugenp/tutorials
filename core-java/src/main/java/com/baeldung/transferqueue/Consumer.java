@@ -1,9 +1,15 @@
 package com.baeldung.transferqueue;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Consumer implements Runnable {
+    private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
+
+    
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final int numberOfMessagesToConsume;
@@ -19,10 +25,10 @@ public class Consumer implements Runnable {
     public void run() {
         for (int i = 0; i < numberOfMessagesToConsume; i++) {
             try {
-                System.out.println("Consumer: " + name + " is waiting to take element...");
+                LOG.debug("Consumer: " + name + " is waiting to take element...");
                 String element = transferQueue.take();
                 longProcessing(element);
-                System.out.println("Consumer: " + name + " received element: " + element);
+                LOG.debug("Consumer: " + name + " received element: " + element);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
