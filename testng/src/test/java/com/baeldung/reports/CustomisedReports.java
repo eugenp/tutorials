@@ -25,13 +25,12 @@ public class CustomisedReports implements IReporter {
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
         String reportTemplate = initReportTemplate();
 
-        final List<String> rows = suites
+        final String body = suites
           .stream()
           .flatMap(suiteToResults())
-          .collect(Collectors.toList());
+          .collect(Collectors.joining());
 
-        reportTemplate = reportTemplate.replaceFirst("</tbody>", rows.toString() + "</tbody>");
-        saveReportTemplate(outputDirectory, reportTemplate);
+        saveReportTemplate(outputDirectory, reportTemplate.replaceFirst("</tbody>", String.format("%s</tbody>", body)));
     }
 
     private Function<ISuite, Stream<? extends String>> suiteToResults() {
