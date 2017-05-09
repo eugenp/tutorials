@@ -31,8 +31,7 @@ public class CustomisedReports implements IReporter {
         initReportTemplate();
         for (ISuite suite : suites) {
             Map<String, ISuiteResult> suiteResults = suite.getResults();
-            for (String testName : suiteResults.keySet()) {
-                ISuiteResult suiteResult = suiteResults.get(testName);
+            suiteResults.forEach((testName, suiteResult) -> {
                 ITestContext testContext = suiteResult.getTestContext();
 
                 IResultMap failedResult = testContext.getFailedTests();
@@ -52,8 +51,7 @@ public class CustomisedReports implements IReporter {
                 for (ITestResult testResult : testsSkipped) {
                     reportWriter.println(String.format(resultRow, "warning", suite.getName(), testName, testResult.getName(), "SKIPPED", "NA"));
                 }
-
-            }
+            });
         }
         finishReportTemplate();
         reportWriter.flush();
@@ -62,8 +60,8 @@ public class CustomisedReports implements IReporter {
 
     private void initReportTemplate() {
         reportWriter.println(
-            "<html>" + "<head>" + "<title>My Custom Report</title>" + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">"
-                + "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js\"></script>" + "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script></head>" + "<body><div class=\"container\">");
+          "<html>" + "<head>" + "<title>My Custom Report</title>" + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">"
+            + "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js\"></script>" + "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script></head>" + "<body><div class=\"container\">");
         reportWriter.println("<table class=\"table\"><thead><tr>" + "<th>Suite</th>" + "<th>Test</th>" + "<th>Method</th>" + "<th>Status</th>" + "<th>Execution Time(ms)</th>" + "</tr></thead> <tbody>");
     }
 
