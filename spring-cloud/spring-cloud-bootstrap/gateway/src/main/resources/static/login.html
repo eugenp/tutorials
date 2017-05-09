@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form id="loginForm">
+    <label>Username:</label>
+    <input id="username" type="text" name="username"/>
+    <label>Password:</label>
+    <input id="password" type="password" name="password"/>
+    <button>Submit</button>
+</form>
+<script type="text/javascript">
+    // from stackoverflow: http://stackoverflow.com/questions/5639346/shortest-function-for-reading-a-cookie-in-javascript
+    (function(){
+        var cookies;
+
+        function readCookie(name,c,C,i){
+            if(cookies){ return cookies[name]; }
+
+            c = document.cookie.split('; ');
+            cookies = {};
+
+            for(i=c.length-1; i>=0; i--){
+                C = c[i].split('=');
+                cookies[C[0]] = C[1];
+            }
+
+            return cookies[name];
+        }
+
+        window.readCookie = readCookie; // or expose it however you want
+    })();
+
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+        e.preventDefault(); //to prevent form submission
+        var csrf = window.readCookie("XSRF-TOKEN");
+        console.log(csrf);
+        var username = document.getElementById("username").value;
+        console.log(username);
+        var password = document.getElementById("password").value;
+        console.log(password);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/login?' + 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+        xhr.setRequestHeader("X-XSRF-TOKEN", csrf);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            var DONE = 4;
+            var OK = 200;
+            if (xhr.readyState === DONE) {
+                if (xhr.status === OK) {
+                    window.location.replace(xhr.responseURL)
+                } else {
+                    console.log(xhr);
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

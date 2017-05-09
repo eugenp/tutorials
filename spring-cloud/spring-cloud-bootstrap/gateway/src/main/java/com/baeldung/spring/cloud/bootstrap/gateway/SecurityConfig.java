@@ -26,16 +26,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .httpBasic()
+            .formLogin()
+            .loginPage("/login.html")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/home/index.html")
             .and()
         .authorizeRequests()
+            .antMatchers("/book-service/**", "/rating-service/**", "/login*").permitAll()
             .antMatchers("/eureka/**").hasRole("ADMIN")
-            .anyRequest().permitAll()
+            .antMatchers("/home/*").authenticated()
+            .anyRequest().authenticated()
             .and()
         .logout()
             .and()
         .addFilterAfter(new CsrfHeaderFilter(), CsrfFilter.class)
-        .csrf().csrfTokenRepository(csrfTokenRepository()).ignoringAntMatchers("/logout");
+        .csrf().csrfTokenRepository(csrfTokenRepository());
     }
 
     private CsrfTokenRepository csrfTokenRepository() {
