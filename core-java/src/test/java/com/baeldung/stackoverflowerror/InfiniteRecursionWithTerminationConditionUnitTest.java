@@ -2,6 +2,7 @@ package com.baeldung.stackoverflowerror;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
+
 import org.junit.Test;
 
 public class InfiniteRecursionWithTerminationConditionUnitTest {
