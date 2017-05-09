@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.FileReader;
-import java.io.IOException;
 
 public class XmlToObjectTest {
 
@@ -22,16 +21,13 @@ public class XmlToObjectTest {
     }
 
     @Test
-    public void convertXmlToObjectFromFile() {
-        try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            FileReader reader = new FileReader(classLoader.getResource("data-file.xml").getFile());
-            Customer customer = (Customer) xstream.fromXML(reader);
-            Assert.assertNotNull(customer);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void convertXmlToObjectFromFile() throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        FileReader reader = new FileReader(classLoader
+          .getResource("data-file.xml")
+          .getFile());
+        Customer customer = (Customer) xstream.fromXML(reader);
+        Assert.assertNotNull(customer);
     }
 
     @Test
