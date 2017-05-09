@@ -8,4 +8,9 @@ public class ClassOne {
         oneValue = 0;
         clsTwoInstance = new ClassTwo();
     }
+    
+    public ClassOne(int oneValue, ClassTwo clsTwoInstance) {
+        this.oneValue = oneValue;
+        this.clsTwoInstance = clsTwoInstance;
+    }
 }
