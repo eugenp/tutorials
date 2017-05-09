@@ -1,18 +1,21 @@
 package com.baeldung.java.doublebrace;
 
+import org.junit.Test;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertTrue;
-import org.junit.Test;
 
 public class DoubleBraceTest {
 
     @Test
     public void whenInitializeSetWithoutDoubleBraces_containsElements() {
-        final Set<String> countries = new HashSet<String>();
+        final Set<String> countries = new HashSet<>();
         countries.add("India");
         countries.add("USSR");
         countries.add("USA");
@@ -34,7 +37,9 @@ public class DoubleBraceTest {
 
     @Test
     public void whenInitializeUnmodifiableSetWithDoubleBrace_containsElements() {
-        final Set<String> countries = Collections.unmodifiableSet(Stream.of("India", "USSR", "USA").collect(toSet()));
+         Set<String> countries = Stream.of("India", "USSR", "USA")
+           .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
+
         assertTrue(countries.contains("India"));
     }
 
