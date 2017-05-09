@@ -1,7 +1,6 @@
 package org.baeldung.boot.boottest;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -16,12 +15,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Override
-    public Optional<Employee> getEmployeeById(Long id) {
+    public Employee getEmployeeById(Long id) {
         return employeeRepository.findById(id);
     }
 
     @Override
-    public Optional<Employee> getEmployeeByName(String name) {
+    public Employee getEmployeeByName(String name) {
         return employeeRepository.findByName(name);
     }
 

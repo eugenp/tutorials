@@ -4,13 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
-import org.baeldung.boot.boottest.Employee;
-import org.baeldung.boot.boottest.EmployeeRepository;
-import org.baeldung.boot.boottest.EmployeeService;
-import org.baeldung.boot.boottest.EmployeeServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,38 +38,38 @@ public class EmployeeServiceImplIntegrationTest {
         Employee john = new Employee("john");
         john.setId(11L);
 
-        Optional<Employee> emp = Optional.of(john);
-
         Employee bob = new Employee("bob");
         Employee alex = new Employee("alex");
 
         List<Employee> allEmployees = Arrays.asList(john, bob, alex);
 
         Mockito.when(employeeRepository.findByName(john.getName()))
-            .thenReturn(emp);
+            .thenReturn(john);
+        Mockito.when(employeeRepository.findByName(alex.getName()))
+        .thenReturn(alex);
         Mockito.when(employeeRepository.findByName("wrong_name"))
-            .thenReturn(Optional.empty());
+            .thenReturn(null);
         Mockito.when(employeeRepository.findById(john.getId()))
-            .thenReturn(emp);
+            .thenReturn(john);
         Mockito.when(employeeRepository.findAll())
             .thenReturn(allEmployees);
         Mockito.when(employeeRepository.findById(-99L))
-            .thenReturn(Optional.empty());
+            .thenReturn(null);
     }
 
     @Test
     public void whenValidName_thenEmployeeShouldBeFound() {
-        Optional<Employee> fromDb = employeeService.getEmployeeByName("john");
-        assertThat(fromDb.get()
-            .getName()).isEqualTo("john");
+        String name = "alex";
+        Employee found = employeeService.getEmployeeByName(name);
+      
+         assertThat(found.getName())
+          .isEqualTo(name);
+     }
 
-        verifyFindByNameIsCalledOnce("john");
-    }
-
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void whenInValidName_thenEmployeeShouldNotBeFound() {
-        Optional<Employee> fromDb = employeeService.getEmployeeByName("wrong_name");
-        fromDb.get();
+        Employee fromDb = employeeService.getEmployeeByName("wrong_name");
+        assertThat(fromDb).isNull();
 
         verifyFindByNameIsCalledOnce("wrong_name");
     }
@@ -97,19 +91,18 @@ public class EmployeeServiceImplIntegrationTest {
     }
 
     @Test
-    public void whenValidI_thendEmployeeShouldBeFound() {
-        Optional<Employee> fromDb = employeeService.getEmployeeById(11L);
-        assertThat(fromDb.get()
-            .getName()).isEqualTo("john");
+    public void whenValidId_thenEmployeeShouldBeFound() {
+        Employee fromDb = employeeService.getEmployeeById(11L);
+        assertThat(fromDb.getName()).isEqualTo("john");
 
         verifyFindByIdIsCalledOnce();
     }
 
-    @Test(expected = NoSuchElementException.class)
+    @Test
     public void whenInValidId_thenEmployeeShouldNotBeFound() {
-        Optional<Employee> fromDb = employeeService.getEmployeeById(-99L);
+        Employee fromDb = employeeService.getEmployeeById(-99L);
         verifyFindByIdIsCalledOnce();
-        fromDb.get();
+        assertThat(fromDb).isNull();
     }
 
     @Test

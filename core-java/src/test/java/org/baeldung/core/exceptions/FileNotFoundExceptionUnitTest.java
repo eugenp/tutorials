@@ -1,15 +1,10 @@
 package org.baeldung.core.exceptions;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.junit.Test;
+import java.io.*;
 
 public class FileNotFoundExceptionUnitTest {
 
@@ -22,7 +17,7 @@ public class FileNotFoundExceptionUnitTest {
         try {
             readFailingFile();
         } catch (FileNotFoundException ex) {
-            throw new BusinessException("BusinessException: necessary file was not present.", ex);
+            throw new BusinessException("BusinessException: necessary file was not present.");
         }
     }
 
@@ -35,7 +30,7 @@ public class FileNotFoundExceptionUnitTest {
                 new File(fileName).createNewFile();
                 readFailingFile();
             } catch (IOException ioe) {
-                throw new RuntimeException("BusinessException: even creation is not possible.", ioe);
+                throw new RuntimeException("BusinessException: even creation is not possible.");
             }
         }
     }
@@ -45,7 +40,7 @@ public class FileNotFoundExceptionUnitTest {
         try {
             readFailingFile();
         } catch (FileNotFoundException ex) {
-            LOG.error("Optional file " + fileName + " was not found.", ex);
+            LOG.error("Optional file " + fileName + " was not found.");
         }
     }
 
@@ -56,8 +51,8 @@ public class FileNotFoundExceptionUnitTest {
     }
 
     private class BusinessException extends RuntimeException {
-        BusinessException(String string, FileNotFoundException ex) {
-            super(string, ex);
+        BusinessException(String string) {
+            super(string);
         }
     }
 }
