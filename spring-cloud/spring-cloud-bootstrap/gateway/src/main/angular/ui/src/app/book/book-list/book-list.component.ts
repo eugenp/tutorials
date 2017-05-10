@@ -56,7 +56,7 @@ export class BookListComponent implements OnInit {
   saveBook(bookIndex: number, newBook: Book) {
     console.log(newBook);
     //save the book to the database
-    this.httpService.updateBook(newBook, this.principal.credentials)
+    this.httpService.updateBook(newBook)
       .subscribe((response: Response) => {
         let bookJson = response.json();
         let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);
@@ -74,7 +74,7 @@ export class BookListComponent implements OnInit {
 
   delete(bookIndex: number) {
     let book: Book = this.books[bookIndex];
-    this.httpService.deleteBook(book, this.principal.credentials)
+    this.httpService.deleteBook(book)
       .subscribe(() => {
         if (this.selectedBook !== null && this.books[bookIndex].id === this.selectedBook.id) {
           this.selectedBook = null;
@@ -95,7 +95,7 @@ export class BookListComponent implements OnInit {
 
   addNewBook(newBook: Book, element: any) {
     //write new book to db
-    this.httpService.createBook(newBook, this.principal.credentials)
+    this.httpService.createBook(newBook)
       .subscribe((response: Response) => {
         let bookJson = response.json();
         let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);

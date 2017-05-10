@@ -33,7 +33,7 @@ export class RatingComponent implements OnInit, OnChanges {
   }
 
   private loadRatings() {
-    this.httpService.getRatings(this.bookId, this.principal.credentials)
+    this.httpService.getRatings(this.bookId)
       .subscribe((response: Response) => {
         let responseJson: any[] = response.json();
         responseJson.forEach(rating => this.ratings.push(new Rating(rating.id, rating.bookId, rating.stars)))
@@ -45,7 +45,7 @@ export class RatingComponent implements OnInit, OnChanges {
   onSaveRating() {
     console.log(this.newRating);
     let ratingCopy: Rating = Object.assign({}, this.newRating);
-    this.httpService.createRating(ratingCopy, this.principal.credentials)
+    this.httpService.createRating(ratingCopy)
       .subscribe((response: Response) => {
         let ratingJson = response.json()
         this.ratings.push(new Rating(ratingJson.id, ratingJson.bookId, ratingJson.stars))
@@ -55,7 +55,7 @@ export class RatingComponent implements OnInit, OnChanges {
   }
 
   updateRating() {
-    this.httpService.updateRating(this.newRating, this.principal.credentials)
+    this.httpService.updateRating(this.newRating)
       .subscribe(() => {
         this.newRating = new Rating(null, this.bookId, 1);
       }, (error) => {
@@ -75,7 +75,7 @@ export class RatingComponent implements OnInit, OnChanges {
 
   deleteRating(index: number) {
     let rating = this.ratings[index];
-    this.httpService.deleteRating(rating.id, this.principal.credentials)
+    this.httpService.deleteRating(rating.id)
       .subscribe(() => {
         if (this.ratings[index] === this.newRating) {
           this.newRating = new Rating(null, this.bookId, 1);

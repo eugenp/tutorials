@@ -1,12 +1,10 @@
 export class Principal {
   public authenticated: boolean;
   public authorities: Authority[] = [];
-  public credentials: any;
 
-  constructor(authenticated: boolean, authorities: any[], credentials: any) {
+  constructor(authenticated: boolean, authorities: any[]) {
     this.authenticated = authenticated;
     authorities.map(auth => this.authorities.push(new Authority(auth.authority)))
-    this.credentials = credentials;
   }
 
   isAdmin() {

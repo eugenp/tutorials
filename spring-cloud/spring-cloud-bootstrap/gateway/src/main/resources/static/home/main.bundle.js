@@ -75,7 +75,7 @@ module.exports = module.exports.toString();
 /***/ 149:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\r\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\" href=\"#\">Book Rater <span *ngIf=\"principal.isAdmin()\">Admin</span></a>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n    </ul>\r\n    <div *ngIf=\"!principal.authenticated; then loginForm else loginMessage\"></div>\r\n    <ng-template #loginForm>\r\n      <form (ngSubmit)=\"onLogin(f)\" class=\"form-inline mt-2 mt-md-0\" #f=\"ngForm\">\r\n      <input name=\"username\" [(ngModel)]=\"credentials.username\" required class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"Username\">\r\n      <input name=\"password\" [(ngModel)]=\"credentials.password\" required class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\">\r\n      <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!f.valid\">Login</button>\r\n    </form>\r\n    </ng-template>\r\n    <ng-template #loginMessage>\r\n      <button type=\"button\" class=\"btn btn-link\" (click)=\"onLogout()\">Logout</button>\r\n    </ng-template>\r\n    <div *ngIf=\"loginFailed\">\r\n      <div class=\"alert alert-warning\">Login Failed</div>\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1>Book Rater App</h1>\r\n    <p *ngIf=\"!principal.authenticated\" class=\"lead\">Anyone can view the books.</p>\r\n    <p *ngIf=\"principal.authenticated && !principal.isAdmin()\" class=\"lead\">Users can view and create ratings</p>\r\n    <p *ngIf=\"principal.isAdmin()\"  class=\"lead\">Admins can do anything!</p>\r\n  </div>\r\n</div>\r\n\r\n<section class=\"books\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-12\">\r\n            <app-book-list [principal]=\"principal\" (onBookSelected)=\"selectBook($event)\"></app-book-list>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"selectedBook != null\" class=\"col-md-3\">\r\n        <app-book-detail [selectedBook]=\"selectedBook\" [principal]=\"principal\" (closeBook)=\"closeBookDetail()\"></app-book-detail>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse\">\r\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarCollapse\" aria-controls=\"navbarCollapse\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n  <a class=\"navbar-brand\" href=\"#\">Book Rater <span *ngIf=\"principal.isAdmin()\">Admin</span></a>\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarCollapse\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n    </ul>\r\n    <button *ngIf=\"principal.authenticated\" type=\"button\" class=\"btn btn-link\" (click)=\"onLogout()\">Logout</button>\r\n  </div>\r\n</nav>\r\n\r\n<div class=\"jumbotron\">\r\n  <div class=\"container\">\r\n    <h1>Book Rater App</h1>\r\n    <p *ngIf=\"!principal.authenticated\" class=\"lead\">Anyone can view the books.</p>\r\n    <p *ngIf=\"principal.authenticated && !principal.isAdmin()\" class=\"lead\">Users can view and create ratings</p>\r\n    <p *ngIf=\"principal.isAdmin()\"  class=\"lead\">Admins can do anything!</p>\r\n  </div>\r\n</div>\r\n\r\n<section class=\"books\">\r\n  <div class=\"container\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md\">\r\n        <div class=\"row\">\r\n          <div class=\"col-md-12\">\r\n            <app-book-list [principal]=\"principal\" (onBookSelected)=\"selectBook($event)\"></app-book-list>\r\n          </div>\r\n        </div>\r\n      </div>\r\n      <div *ngIf=\"selectedBook != null\" class=\"col-md-3\">\r\n        <app-book-detail [selectedBook]=\"selectedBook\" [principal]=\"principal\" (closeBook)=\"closeBookDetail()\"></app-book-detail>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -130,53 +130,39 @@ var HttpService = (function () {
     function HttpService(http) {
         this.http = http;
     }
-    HttpService.prototype.login = function (user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.get("/me", options);
+    HttpService.prototype.me = function () {
+        return this.http.get("/me", this.makeOptions());
     };
-    HttpService.prototype.logout = function (user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/logout", '', options);
+    HttpService.prototype.logout = function () {
+        return this.http.post("/logout", '', this.makeOptions());
     };
     HttpService.prototype.getBooks = function () {
+        return this.http.get("/book-service/books", this.makeOptions());
+    };
+    HttpService.prototype.updateBook = function (newBook) {
+        return this.http.put("/book-service/books/" + newBook.id, newBook, this.makeOptions());
+    };
+    HttpService.prototype.deleteBook = function (book) {
+        return this.http.delete("/book-service/books/" + book.id, this.makeOptions());
+    };
+    HttpService.prototype.createBook = function (newBook) {
+        return this.http.post("/book-service/books", newBook, this.makeOptions());
+    };
+    HttpService.prototype.getRatings = function (bookId) {
+        return this.http.get("/rating-service/ratings?bookId=" + bookId, this.makeOptions());
+    };
+    HttpService.prototype.createRating = function (rating) {
+        return this.http.post("/rating-service/ratings", rating, this.makeOptions());
+    };
+    HttpService.prototype.deleteRating = function (ratingId) {
+        return this.http.delete("/rating-service/ratings/" + ratingId, this.makeOptions());
+    };
+    HttpService.prototype.updateRating = function (rating) {
+        return this.http.put("/rating-service/ratings/" + rating.id, rating, this.makeOptions());
+    };
+    HttpService.prototype.makeOptions = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.get("/book-service/books", options);
-    };
-    HttpService.prototype.updateBook = function (newBook, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.put("/book-service/books/" + newBook.id, newBook, options);
-    };
-    HttpService.prototype.deleteBook = function (book, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.delete("/book-service/books/" + book.id, options);
-    };
-    HttpService.prototype.createBook = function (newBook, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/book-service/books", newBook, options);
-    };
-    HttpService.prototype.getRatings = function (bookId, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.get("/rating-service/ratings?bookId=" + bookId, options);
-    };
-    HttpService.prototype.createRating = function (rating, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.post("/rating-service/ratings", rating, options);
-    };
-    HttpService.prototype.deleteRating = function (ratingId, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.delete("/rating-service/ratings/" + ratingId, options);
-    };
-    HttpService.prototype.updateRating = function (rating, user) {
-        var options = this.makeAuthOptions(user);
-        return this.http.put("/rating-service/ratings/" + rating.id, rating, options);
-    };
-    HttpService.prototype.makeAuthOptions = function (user) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
-        headers.append('Authorization', 'Basic ' + btoa(user.username + ':' + user.password));
-        headers.append('X-Requested-With', 'XMLHttpRequest');
         return new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        ;
     };
     return HttpService;
 }());
@@ -197,12 +183,11 @@ var _a;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Principal; });
 /* unused harmony export Authority */
 var Principal = (function () {
-    function Principal(authenticated, authorities, credentials) {
+    function Principal(authenticated, authorities) {
         var _this = this;
         this.authorities = [];
         this.authenticated = authenticated;
         authorities.map(function (auth) { return _this.authorities.push(new Authority(auth.authority)); });
-        this.credentials = credentials;
     }
     Principal.prototype.isAdmin = function () {
         return this.authorities.some(function (auth) { return auth.authority.indexOf('ADMIN') > -1; });
@@ -297,36 +282,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var AppComponent = (function () {
     function AppComponent(httpService) {
         this.httpService = httpService;
-        this.credentials = {
-            username: '',
-            password: ''
-        };
         this.selectedBook = null;
-        this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](false, [], null);
+        this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](false, []);
         this.loginFailed = false;
     }
-    AppComponent.prototype.ngOnInit = function () { };
-    AppComponent.prototype.onLogin = function (form) {
+    AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.loginFailed = false;
-        this.credentials = { username: form.value.username, password: form.value.password };
-        this.httpService.login(this.credentials)
+        this.httpService.me()
             .subscribe(function (response) {
             var principalJson = response.json();
-            _this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](principalJson.authenticated, principalJson.authorities, _this.credentials);
+            _this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](principalJson.authenticated, principalJson.authorities);
         }, function (error) {
             console.log(error);
         });
     };
     AppComponent.prototype.onLogout = function () {
         var _this = this;
-        this.httpService.logout(this.principal.credentials)
+        this.httpService.logout()
             .subscribe(function (response) {
-            if (response.status === 204) {
+            if (response.status === 200) {
                 _this.loginFailed = false;
-                _this.credentials.username = '';
-                _this.credentials.password = '';
-                _this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](false, [], null);
+                _this.principal = new __WEBPACK_IMPORTED_MODULE_1__principal__["a" /* Principal */](false, []);
+                window.location.replace(response.url);
             }
         }, function (error) {
             console.log(error);
@@ -537,7 +514,7 @@ var BookListComponent = (function () {
         var _this = this;
         console.log(newBook);
         //save the book to the database
-        this.httpService.updateBook(newBook, this.principal.credentials)
+        this.httpService.updateBook(newBook)
             .subscribe(function (response) {
             var bookJson = response.json();
             var book = new __WEBPACK_IMPORTED_MODULE_2__book__["a" /* Book */](bookJson.id, bookJson.author, bookJson.title);
@@ -553,7 +530,7 @@ var BookListComponent = (function () {
     BookListComponent.prototype.delete = function (bookIndex) {
         var _this = this;
         var book = this.books[bookIndex];
-        this.httpService.deleteBook(book, this.principal.credentials)
+        this.httpService.deleteBook(book)
             .subscribe(function () {
             if (_this.selectedBook !== null && _this.books[bookIndex].id === _this.selectedBook.id) {
                 _this.selectedBook = null;
@@ -572,7 +549,7 @@ var BookListComponent = (function () {
     BookListComponent.prototype.addNewBook = function (newBook, element) {
         var _this = this;
         //write new book to db
-        this.httpService.createBook(newBook, this.principal.credentials)
+        this.httpService.createBook(newBook)
             .subscribe(function (response) {
             var bookJson = response.json();
             var book = new __WEBPACK_IMPORTED_MODULE_2__book__["a" /* Book */](bookJson.id, bookJson.author, bookJson.title);
@@ -716,7 +693,7 @@ var RatingComponent = (function () {
     };
     RatingComponent.prototype.loadRatings = function () {
         var _this = this;
-        this.httpService.getRatings(this.bookId, this.principal.credentials)
+        this.httpService.getRatings(this.bookId)
             .subscribe(function (response) {
             var responseJson = response.json();
             responseJson.forEach(function (rating) { return _this.ratings.push(new __WEBPACK_IMPORTED_MODULE_1__rating__["a" /* Rating */](rating.id, rating.bookId, rating.stars)); });
@@ -728,7 +705,7 @@ var RatingComponent = (function () {
         var _this = this;
         console.log(this.newRating);
         var ratingCopy = Object.assign({}, this.newRating);
-        this.httpService.createRating(ratingCopy, this.principal.credentials)
+        this.httpService.createRating(ratingCopy)
             .subscribe(function (response) {
             var ratingJson = response.json();
             _this.ratings.push(new __WEBPACK_IMPORTED_MODULE_1__rating__["a" /* Rating */](ratingJson.id, ratingJson.bookId, ratingJson.stars));
@@ -738,7 +715,7 @@ var RatingComponent = (function () {
     };
     RatingComponent.prototype.updateRating = function () {
         var _this = this;
-        this.httpService.updateRating(this.newRating, this.principal.credentials)
+        this.httpService.updateRating(this.newRating)
             .subscribe(function () {
             _this.newRating = new __WEBPACK_IMPORTED_MODULE_1__rating__["a" /* Rating */](null, _this.bookId, 1);
         }, function (error) {
@@ -756,7 +733,7 @@ var RatingComponent = (function () {
     RatingComponent.prototype.deleteRating = function (index) {
         var _this = this;
         var rating = this.ratings[index];
-        this.httpService.deleteRating(rating.id, this.principal.credentials)
+        this.httpService.deleteRating(rating.id)
             .subscribe(function () {
             if (_this.ratings[index] === _this.newRating) {
                 _this.newRating = new __WEBPACK_IMPORTED_MODULE_1__rating__["a" /* Rating */](null, _this.bookId, 1);
