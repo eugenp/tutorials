@@ -1,17 +1,13 @@
 package com.baeldung.teng.invoicing.web;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
@@ -38,16 +34,5 @@ public class App extends WebMvcConfigurerAdapter implements WebApplicationInitia
 
         // Configure handling of static resources:
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-
-    @Bean
-    public ViewResolver jstlViewResolver() {
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/view/jsp/");
-        bean.setCache(true);
-
-        return bean;
     }
 }

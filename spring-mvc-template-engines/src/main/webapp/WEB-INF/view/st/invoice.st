@@ -40,13 +40,13 @@ $endif$
 
 <table>
   <thead>
-    <tr>
-      <th>Item</th>
-      <th>Quantity</th>
-      <th>Unit Price (€)</th>
-      <th>VAT (%)</th>
-      <th>Line Total</th>
-    </tr>
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Unit Price (€)</th>
+    <th>VAT (%)</th>
+    <th>Line Total</th>
+  </tr>
   </thead>
 
   <tbody>$invoice.items: {item |
@@ -60,11 +60,11 @@ $endif$
   </tbody>
 
   <tfoot>
-    <tr>
-      <td colspan="3">&nbsp;</td>
-      <td><strong>Total</strong></td>
-      <td>€$invoice.totalPrice$</td>
-    </tr>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+    <td><strong>Total</strong></td>
+    <td>€$invoice.totalPrice$</td>
+  </tr>
   </tfoot>
 </table>
 

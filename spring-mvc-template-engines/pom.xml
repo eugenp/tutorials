@@ -96,6 +96,11 @@
       <artifactId>jmustache</artifactId>
       <version>1.13</version>
     </dependency>
+    <dependency>
+      <groupId>com.github.sps.mustache</groupId>
+      <artifactId>mustache-spring-view</artifactId>
+      <version>1.4</version>
+    </dependency>
 
     <dependency>
       <groupId>org.antlr</groupId>
