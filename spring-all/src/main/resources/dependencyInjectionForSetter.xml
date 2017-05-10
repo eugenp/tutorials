@@ -5,7 +5,7 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="order"
-		class="org.baeldung.bean.dependencyinjection.OrderBeanSetterInjection">
+		class="org.baeldung.bean.dependencyinjection.OrderBeanXMLSetterDI">
 		<property name="product">
 			<ref bean="product" />
 		</property>

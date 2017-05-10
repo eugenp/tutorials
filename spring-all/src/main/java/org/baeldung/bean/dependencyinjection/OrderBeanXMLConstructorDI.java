@@ -1,10 +1,10 @@
 package org.baeldung.bean.dependencyinjection;
 
-public class OrderBeanConstructorInjection {
+public class OrderBeanXMLConstructorDI {
 
     private Product product;
 
-    public OrderBeanConstructorInjection(Product product) {
+    public OrderBeanXMLConstructorDI(Product product) {
         this.product = product;
     }
 

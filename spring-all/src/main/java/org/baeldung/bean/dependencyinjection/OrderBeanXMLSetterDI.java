@@ -1,6 +1,6 @@
 package org.baeldung.bean.dependencyinjection;
 
-public class OrderBeanSetterInjection {
+public class OrderBeanXMLSetterDI {
 
     private Product product;
 

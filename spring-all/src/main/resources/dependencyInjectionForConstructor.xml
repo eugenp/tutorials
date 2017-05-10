@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="order" class="org.baeldung.bean.dependencyinjection.OrderBeanConstructorInjection">
+    <bean id="order" class="org.baeldung.bean.dependencyinjection.OrderBeanXMLConstructorDI">
 		<constructor-arg>
 			<ref bean="product" />
 		</constructor-arg>
