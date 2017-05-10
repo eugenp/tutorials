@@ -2,7 +2,6 @@ package com.stackify.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +15,11 @@ import com.stackify.repository.EmployeeRepository;
 @RestController
 public class EmployeeController {
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+	
+    public EmployeeController(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
 
     @PostMapping("/employees")
     @ResponseStatus(HttpStatus.CREATED)
