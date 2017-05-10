@@ -9,6 +9,12 @@
 
 	<name>spring-data-cassandra</name>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

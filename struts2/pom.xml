@@ -6,7 +6,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>struts</name>
-    
+
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+         
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>

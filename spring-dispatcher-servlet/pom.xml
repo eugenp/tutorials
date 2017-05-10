@@ -6,6 +6,13 @@
     <packaging>war</packaging>
     <version>1.0.0</version>
     <name>spring-dispatcher-servlet</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+         
     <properties>
         <springframework.version>4.3.7.RELEASE</springframework.version>
     </properties>

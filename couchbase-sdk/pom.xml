@@ -9,6 +9,12 @@
     <name>couchbase-sdk</name>
     <description>Couchbase SDK Tutorials</description>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <dependencies>
         <!-- Couchbase SDK -->
         <dependency>

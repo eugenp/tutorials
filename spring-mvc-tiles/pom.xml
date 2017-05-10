@@ -8,6 +8,12 @@
 	<name>spring-mvc-tiles</name>
 	<description>Integrating Spring MVC with Apache Tiles</description>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<springframework.version>4.3.4.RELEASE</springframework.version>
 		<apache-tiles.version>3.0.7</apache-tiles.version>
