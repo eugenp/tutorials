@@ -14,6 +14,7 @@ public class ConfigStringTemplateViews {
 
         bean.setViewClass(StringTemplateView.class);
         bean.setPrefix("/WEB-INF/view/st/");
+        bean.setViewNames("*.st", "*.stg"); // we may have multiple InternalResourceViewResolvers...
         bean.setCache(true);
         bean.setOrder(5);
 
