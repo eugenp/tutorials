@@ -8,4 +8,12 @@ public class RemoveLastChar {
             return (s.substring(0, s.length() - 1));
         }
     }
+    
+    public static String chop(String s) {
+        if (s == null) {
+            return s;
+        } else {
+            return s.replaceAll(".$", "");
+        }
+    }
 }
