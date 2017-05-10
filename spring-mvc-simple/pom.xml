@@ -8,6 +8,12 @@
 	<name>Spring MVC simple Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<springframework.version>4.3.4.RELEASE</springframework.version>
 		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>

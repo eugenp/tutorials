@@ -1,71 +1,83 @@
 package com.baeldung.reports;
 
-import org.testng.IReporter;
-import org.testng.IResultMap;
-import org.testng.ISuite;
-import org.testng.ISuiteResult;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.*;
 import org.testng.xml.XmlSuite;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.stream.Stream;
 
 public class CustomisedReports implements IReporter {
-    private PrintWriter reportWriter;
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomisedReports.class);
 
     public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-        new File(outputDirectory).mkdirs();
-        try {
-            reportWriter = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputDirectory, "my-report.html"))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String reportTemplate = initReportTemplate();
         String resultRow = "<tr class=\"%s\"><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>";
-        initReportTemplate();
-        for (ISuite suite : suites) {
+        StringBuilder rows = new StringBuilder();
+        suites.forEach(suite -> {
             Map<String, ISuiteResult> suiteResults = suite.getResults();
             suiteResults.forEach((testName, suiteResult) -> {
+
                 ITestContext testContext = suiteResult.getTestContext();
 
-                IResultMap failedResult = testContext.getFailedTests();
-                Set<ITestResult> testsFailed = failedResult.getAllResults();
-                for (ITestResult testResult : testsFailed) {
-                    reportWriter.println(String.format(resultRow, "danger", suite.getName(), testName, testResult.getName(), "FAILED", "NA"));
-                }
+                Stream<ITestResult> failedTests = testContext.getFailedTests().getAllResults().stream();
+                Stream<ITestResult> passedTests = testContext.getPassedTests().getAllResults().stream();
+                Stream<ITestResult> skippedTests = testContext.getSkippedTests().getAllResults().stream();
 
-                IResultMap passResult = testContext.getPassedTests();
-                Set<ITestResult> testsPassed = passResult.getAllResults();
-                for (ITestResult testResult : testsPassed) {
-                    reportWriter.println(String.format(resultRow, "success", suite.getName(), testName, testResult.getName(), "PASSED", String.valueOf(testResult.getEndMillis() - testResult.getStartMillis())));
-                }
+                String suiteName = suite.getName();
 
-                IResultMap skippedResult = testContext.getSkippedTests();
-                Set<ITestResult> testsSkipped = skippedResult.getAllResults();
-                for (ITestResult testResult : testsSkipped) {
-                    reportWriter.println(String.format(resultRow, "warning", suite.getName(), testName, testResult.getName(), "SKIPPED", "NA"));
-                }
+                Stream<ITestResult> allTestResults = Stream.concat(Stream.concat(failedTests, passedTests), skippedTests);
+                generateReportRows(resultRow, rows, testName, suiteName, allTestResults);
             });
+        });
+        reportTemplate = reportTemplate.replaceFirst("</tbody>", rows.toString() + "</tbody>");
+        saveReportTemplate(outputDirectory, reportTemplate);
+    }
+
+    private void generateReportRows(String resultRow, StringBuilder rows, String testName, String suiteName, Stream<ITestResult> allTestResults) {
+        allTestResults
+            .forEach(testResult -> {
+                String testReportRow = "";
+                if (testResult.getStatus() == ITestResult.FAILURE) {
+                    testReportRow = String.format(resultRow, "danger", suiteName, testName, testResult.getName(), "FAILED", "NA");
+                }
+                if (testResult.getStatus() == ITestResult.SUCCESS) {
+                    testReportRow = String.format(resultRow, "success", suiteName, testName, testResult.getName(), "PASSED", String.valueOf(testResult.getEndMillis() - testResult.getStartMillis()));
+
+                }
+                if (testResult.getStatus() == ITestResult.SKIP) {
+                    testReportRow = String.format(resultRow, "warning", suiteName, testName, testResult.getName(), "SKIPPED", "NA");
+                }
+                rows.append(testReportRow);
+            });
+    }
+
+    private String initReportTemplate() {
+        String template = null;
+        byte[] reportTemplate = null;
+        try {
+            reportTemplate = Files.readAllBytes(Paths.get("src/test/resources/reportTemplate.html"));
+            template = new String(reportTemplate, "UTF-8");
+        } catch (IOException e) {
+            LOGGER.error("Problem initializing template", e);
         }
-        finishReportTemplate();
-        reportWriter.flush();
-        reportWriter.close();
+        return template;
     }
 
-    private void initReportTemplate() {
-        reportWriter.println(
-          "<html>" + "<head>" + "<title>My Custom Report</title>" + "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" + "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">"
-            + "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js\"></script>" + "<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script></head>" + "<body><div class=\"container\">");
-        reportWriter.println("<table class=\"table\"><thead><tr>" + "<th>Suite</th>" + "<th>Test</th>" + "<th>Method</th>" + "<th>Status</th>" + "<th>Execution Time(ms)</th>" + "</tr></thead> <tbody>");
-    }
-
-    private void finishReportTemplate() {
-        reportWriter.println(" </tbody></div></body></html>");
+    private void saveReportTemplate(String outputDirectory, String reportTemplate) {
+        new File(outputDirectory).mkdirs();
+        try {
+            PrintWriter reportWriter = new PrintWriter(new BufferedWriter(new FileWriter(new File(outputDirectory, "my-report.html"))));
+            reportWriter.println(reportTemplate);
+            reportWriter.flush();
+            reportWriter.close();
+        } catch (IOException e) {
+            LOGGER.error("Problem saving template", e);
+        }
     }
 }

@@ -9,6 +9,12 @@
 
     <name>jws-example</name>
     
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+
     <properties>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
 		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>

@@ -8,6 +8,12 @@
     <version>1.0-SNAPSHOT</version>
     <description>JavaEE 7 Arquillian Archetype Sample</description>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+
     <properties>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>

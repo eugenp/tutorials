@@ -7,6 +7,12 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+
     <properties>
         <jee.version>7.0</jee.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
