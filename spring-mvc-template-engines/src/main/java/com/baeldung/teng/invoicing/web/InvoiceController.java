@@ -6,9 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ViewResolver;
-
-import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
@@ -18,7 +15,7 @@ public class InvoiceController {
     private final InvoiceRepository invoices;
 
     @Autowired
-    public InvoiceController(InvoiceRepository invoices, List<ViewResolver> viewResolvers) {
+    public InvoiceController(InvoiceRepository invoices) {
         this.invoices = requireNonNull(invoices);
     }
 
