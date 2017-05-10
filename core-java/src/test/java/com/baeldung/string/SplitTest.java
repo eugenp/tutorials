@@ -4,9 +4,9 @@ import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -38,12 +38,8 @@ public class SplitTest {
     public void givenString_whenSplit_thenReturnsIterable_Splitter() {
         //given
         Iterable<String> result = Splitter.on(',').trimResults().omitEmptyStrings().split("car,jeep,,   scooter");
+        List<String> resultList = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
 
-        Iterator<String> iterator = result.iterator();
-        ArrayList<String> resultList = new ArrayList<>();
-        while (iterator.hasNext()){
-            resultList.add(iterator.next());
-        }
         assertEquals(Arrays.asList("car", "jeep", "scooter") , resultList);
     }
 }
