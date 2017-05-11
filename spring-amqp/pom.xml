@@ -18,7 +18,6 @@
      
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -37,17 +36,5 @@
 
 	<build>
 		<finalName>springamqp</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
-		</plugins>
 	</build>
 </project>

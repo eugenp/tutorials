@@ -19,9 +19,7 @@
         <spring-data-redis>1.8.1.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>       
         <jedis.version>2.9.0</jedis.version> 
-        <junit.version>4.12</junit.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
     </properties>
 
     <dependencies>
@@ -63,13 +61,6 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
@@ -83,22 +74,4 @@
         </dependency>
     </dependencies>
    
-   <build> 
-      <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                    <systemPropertyVariables>
-                        <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
 </project>
