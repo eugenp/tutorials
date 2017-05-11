@@ -1,9 +1,7 @@
 package com.baeldung.spring;
 
-import com.baeldung.persistence.dao.IBarDao;
 import com.baeldung.persistence.dao.IFooDao;
-import com.baeldung.persistence.dao.impl.BarDao;
-import com.baeldung.persistence.dao.impl.FooDao;
+import com.baeldung.persistence.dao.impl.FooHibernateDao;
 import com.google.common.base.Preconditions;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
 
@@ -64,13 +62,8 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public IBarDao barHibernateDao() {
-        return new BarDao();
-    }
-
-    @Bean
     public IFooDao fooHibernateDao() {
-        return new FooDao();
+        return new FooHibernateDao();
     }
 
     private final Properties hibernateProperties() {
