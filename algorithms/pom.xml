@@ -13,6 +13,12 @@
 		<commons-math3.version>3.6.1</commons-math3.version>
 	</properties>
 
+            <parent>
+                <groupId>com.baeldung</groupId>
+                <artifactId>parent-modules</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+             </parent>	
+
 	<dependencies>
 		<dependency>
             <groupId>org.apache.commons</groupId>
