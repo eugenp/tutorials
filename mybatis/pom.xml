@@ -15,7 +15,6 @@
      </parent>
          
     <properties>
-        <junit.version>4.12</junit.version>
         <derby.version>10.13.1.1</derby.version>
         <mybatis.version>3.2.2</mybatis.version>
     </properties>
@@ -29,12 +28,6 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

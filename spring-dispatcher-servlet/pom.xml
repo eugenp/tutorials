@@ -72,14 +72,6 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.1</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat8-maven-plugin</artifactId>
                     <version>3.0-r1655215</version>
