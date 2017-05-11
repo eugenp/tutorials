@@ -22,6 +22,12 @@ public class ConfigMustacheViews {
         templateFactory.setPrefix("/WEB-INF/view/mustache/");
         templateFactory.setTemplateLoader(templateLoader);
 
+        // At the time of this writing, the JMustacheTemplateLoader uses the encoding returned by
+        // Character.defaultEncoding(); hence, the only easy way I see to control it consistently
+        // across platforms is to ensure the -Dfile.encoding=UTF-8 is specified at JVM startup!
+        // (the current JMustacheTemplateLoader implementation does not seem to be created with
+        // extension in mind or to be customizable to a larger extent!)
+
         return templateFactory;
     }
 
