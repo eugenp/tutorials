@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class CountCharsExample {
 
     @Test
-    public void useLoopToCountChars() {
+    public void givenString_whenUsingLoop_thenCountChars() {
         String someString = "elephant";
         char someChar = 'e';
         int count = 0;
@@ -29,21 +29,21 @@ public class CountCharsExample {
     }
 
     @Test
-    public void useReplaceToCountChars() {
+    public void givenString_whenUsingReplace_thenCountChars() {
         String someString = "elephant";
         int count = someString.length() - someString.replace("e", "").length();
         assertEquals(2, count);
     }
 
     @Test
-    public void useSplitToCountChars() {
+    public void givenString_whenUsingSplit_thenCountChars() {
         String someString = "elephant";
         int count = someString.split("e", -1).length - 1;
         assertEquals(2, count);
     }
 
     @Test
-    public void useReqExpToCountChars() {
+    public void givenString_whenUsingReqExp_thenCountChars() {
         Pattern pattern = Pattern.compile("[^e]*e");
         Matcher matcher = pattern.matcher("elephant");
         int count = 0;
@@ -54,7 +54,7 @@ public class CountCharsExample {
     }
 
     @Test
-    public void useRecursionToCountChars() {
+    public void givenString_whenUsingRecursion_thenCountChars() {
         int count = useRecursion("elephant", 'e', 0);
         assertEquals(2, count);
     }
@@ -69,13 +69,13 @@ public class CountCharsExample {
     }
 
     @Test
-    public void useStringUtilsToCountChars() throws InterruptedException {
+    public void givenString_whenUsingStringUtils_thenCountChars() throws InterruptedException {
         int count = StringUtils.countMatches("elephant", "e");
         assertEquals(2, count);
     }
 
     @Test
-    public void useJava8FeaturesToCountChars() {
+    public void givenString_whenUsingJava8Features_thenCountChars() {
         String someString = "elephant";
         long count = someString.chars().filter(ch -> ch == 'e').count();
         assertEquals(2, count);
@@ -85,7 +85,7 @@ public class CountCharsExample {
     }
 
     @Test
-    public void useGuavaCharMatcherToCountChars() {
+    public void givenString_whenUsingGuavaCharMatcher_thenCountChars() {
         int count = CharMatcher.is('e').countIn("elephant");
         assertEquals(2, count);
     }
