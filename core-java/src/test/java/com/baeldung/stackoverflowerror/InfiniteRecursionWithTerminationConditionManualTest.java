@@ -2,10 +2,9 @@ package com.baeldung.stackoverflowerror;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-public class InfiniteRecursionWithTerminationConditionUnitTest {
+public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
     public void givenPositiveIntNoOne_whenCalcFact_thenThrowsException() {
         int numToCalcFactorial = 1;
