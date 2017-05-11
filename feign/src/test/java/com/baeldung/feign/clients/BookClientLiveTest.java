@@ -18,9 +18,12 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Consumes https://github.com/Baeldung/spring-hypermedia-api
+ */
 @Slf4j
 @RunWith(JUnit4.class)
-public class BookClientTest {
+public class BookClientLiveTest {
     private BookClient bookClient;
 
     @Before
