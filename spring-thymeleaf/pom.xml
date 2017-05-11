@@ -5,6 +5,13 @@
 	<artifactId>spring-thymeleaf</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     	
 	<properties>
 		<java-version>1.8</java-version>
 		<!-- spring -->
@@ -101,11 +108,6 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-		</dependency>
-		<dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-			<groupId>org.slf4j</groupId>
-			<artifactId>log4j-over-slf4j</artifactId>
-			<version>${org.slf4j.version}</version>
 		</dependency>
 		<!-- Servlet -->
 		<dependency>

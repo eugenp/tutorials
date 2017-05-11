@@ -7,11 +7,17 @@
 
     <name>spring-akka</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <dependencies>
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-context</artifactId>           
         </dependency>
 
         <dependency>

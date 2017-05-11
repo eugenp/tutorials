@@ -37,13 +37,13 @@ public class NestedTest {
         @Test
         @DisplayName("throws EmptyStackException when popped")
         void throwsExceptionWhenPopped() {
-            Assertions.expectThrows(EmptyStackException.class, () -> stack.pop());
+            Assertions.assertThrows(EmptyStackException.class, () -> stack.pop());
         }
 
         @Test
         @DisplayName("throws EmptyStackException when peeked")
         void throwsExceptionWhenPeeked() {
-            Assertions.expectThrows(EmptyStackException.class, () -> stack.peek());
+            Assertions.assertThrows(EmptyStackException.class, () -> stack.peek());
         }
 
         @Nested

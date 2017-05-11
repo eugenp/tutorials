@@ -5,6 +5,12 @@
     <artifactId>apache-poi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <properties>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <junit.version>4.12</junit.version>
@@ -42,6 +48,12 @@
             <groupId>org.jxls</groupId>
             <artifactId>jxls-jexcel</artifactId>
             <version>${jexcel.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>	
     </dependencies>
 </project>

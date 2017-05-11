@@ -8,6 +8,13 @@
     <artifactId>spring-data-gemfire</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+         
     <properties>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <spring-data-gemfire-version>1.7.4.RELEASE</spring-data-gemfire-version>
@@ -60,6 +67,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring-context-version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>

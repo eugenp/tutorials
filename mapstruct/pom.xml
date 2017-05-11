@@ -8,6 +8,12 @@
 	<groupId>com.baeldung</groupId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
+	
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
 
 	<properties>
 		<org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
@@ -31,7 +37,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${springframework.version}</version>
+			<version>${springframework.version}</version>		
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

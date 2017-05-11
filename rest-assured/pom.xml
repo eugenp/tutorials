@@ -6,6 +6,12 @@
     <version>1.0</version>
     <name>rest-assured</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -69,12 +75,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>${commons-logging.version}</version>
         </dependency>
 
         <dependency>
@@ -150,7 +150,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
+            <version>${httpclient.version}</version>       
         </dependency>
 
         <dependency>
@@ -183,7 +183,7 @@
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-core</artifactId>
-            <version>${json-schema-core.version}</version>
+            <version>${json-schema-core.version}</version>       
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -282,7 +282,6 @@
 
         
         <commons-lang3.version>3.5</commons-lang3.version>        
-        <commons-logging.version>1.2</commons-logging.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         
         <httpcore.version>4.4.5</httpcore.version>

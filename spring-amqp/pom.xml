@@ -10,6 +10,12 @@
 	<name>springamqp</name>
 	<description>Introduction to Spring-AMQP</description>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
@@ -20,6 +26,12 @@
 		    <groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
 			<version>1.6.6.RELEASE</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 	</dependencies>
 

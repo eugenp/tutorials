@@ -119,7 +119,41 @@
             <version>${tomee-servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.6</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+      
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>${spring.version}</version>
+         </dependency>
+      
+         <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-boot-starter</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+      
+         <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-security</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+      
+        <dependency>
+        	<groupId>org.apache.activemq</groupId>
+        	<artifactId>artemis-server</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -165,6 +199,7 @@
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
+                        <exclude>**/AutoconfigurationTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -190,9 +225,43 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
+                                        <exclude>**/AutoconfigurationTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                            <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>autoconfiguration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                        <exclude>**/*IntegrationTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/AutoconfigurationTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -221,6 +290,7 @@
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <h2.version>1.4.194</h2.version>
+        <togglz.version>2.4.1.Final</togglz.version>
     </properties>
 
 </project>

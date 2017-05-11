@@ -8,6 +8,12 @@
 	<version>1.0</version>
 	<packaging>war</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
 	<properties>
 		<resteasy.version>3.0.19.Final</resteasy.version>
 		<junit.version>4.12</junit.version>
@@ -67,6 +73,12 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-servlet-initializer</artifactId>
 			<version>${resteasy.version}</version>
+                                        <exclusions>
+                                            <exclusion>
+                                                <artifactId>commons-logging</artifactId>
+                                                <groupId>commons-logging</groupId>
+                                            </exclusion>
+                                        </exclusions>            
 		</dependency>
 
 

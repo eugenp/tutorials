@@ -5,6 +5,13 @@
     <artifactId>javaslang</artifactId>
     <version>1.0</version>
     <name>javaslang</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+         
     <dependencies>
         <dependency>
             <groupId>junit</groupId>

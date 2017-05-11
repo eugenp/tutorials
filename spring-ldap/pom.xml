@@ -8,6 +8,12 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <properties>
         <junit.version>4.12</junit.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -107,6 +113,12 @@
             <artifactId>spring-ldap-test</artifactId>
             <version>${spring-ldap.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>            
         </dependency>
 
         <!-- apacheds for test -->

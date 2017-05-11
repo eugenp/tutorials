@@ -8,6 +8,12 @@
     <artifactId>log4j</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
 	<dependencies>
 		<!--log4j dependencies -->
 		<dependency>

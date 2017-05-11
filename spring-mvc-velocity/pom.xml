@@ -8,6 +8,12 @@
 	<name>spring-mvc-velocity</name>
 	<packaging>war</packaging>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<dependencies>
 
 		<!-- Spring -->
@@ -25,7 +31,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>${org.springframework.version}</version>
+			<version>${org.springframework.version}</version>	
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -52,6 +58,12 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 			<version>${velocity-tools.version}</version>
+		            <exclusions>
+		                <exclusion>
+		                    <artifactId>commons-logging</artifactId>
+		                    <groupId>commons-logging</groupId>
+		                </exclusion>
+		            </exclusions>			
 		</dependency>
 		
 		<!-- test scoped -->

@@ -13,6 +13,12 @@
 		<commons-math3.version>3.6.1</commons-math3.version>
 	</properties>
 
+            <parent>
+                <groupId>com.baeldung</groupId>
+                <artifactId>parent-modules</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+             </parent>	
+
 	<dependencies>
 		<dependency>
             <groupId>org.apache.commons</groupId>
@@ -39,7 +45,6 @@
 	</dependencies>
 
 	<build>
-		<defaultGoal>install</defaultGoal>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -55,6 +60,17 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>${exec-maven-plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<excludes>
+							<exclude>**/*LongRunningUnitTest.java</exclude>
+							<exclude>**/*IntegrationTest.java</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

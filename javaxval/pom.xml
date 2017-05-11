@@ -12,6 +12,13 @@
         <javax.el.version>2.2.6</javax.el.version>
     </properties>
     
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+         
     <dependencies>
 
         <dependency>

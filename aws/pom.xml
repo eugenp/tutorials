@@ -7,6 +7,12 @@
 	<packaging>jar</packaging>
 	<name>aws</name>
 
+	<parent>
+	    <groupId>com.baeldung</groupId>
+	    <artifactId>parent-modules</artifactId>
+	    <version>1.0.0-SNAPSHOT</version>
+	 </parent>
+     
 	<properties>
 		<commons-io.version>2.5</commons-io.version>
 		<aws-lambda-java-events.version>1.3.0</aws-lambda-java-events.version>
@@ -19,12 +25,24 @@
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-core</artifactId>
 			<version>${aws-lambda-java-core.version}</version>
+			<exclusions>
+				<exclusion>
+				    <artifactId>commons-logging</artifactId>
+				    <groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-lambda-java-events</artifactId>
 			<version>${aws-lambda-java-events.version}</version>
+			<exclusions>
+				<exclusion>
+				    <artifactId>commons-logging</artifactId>
+				    <groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>			
 		</dependency>
 
 		<dependency>
