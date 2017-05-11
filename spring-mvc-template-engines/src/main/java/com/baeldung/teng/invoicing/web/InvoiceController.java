@@ -19,10 +19,7 @@ public class InvoiceController {
         this.invoices = requireNonNull(invoices);
     }
 
-    @RequestMapping(value = {"/invoice/{id}"})
-    public ModelAndView invoice(@PathVariable(required = false) String id) { return invoice("jsp", id); }
-
-    @RequestMapping(value = {"/{engine}/invoice/{id}"})
+    @RequestMapping(value = {"/", "/invoice/{id}", "/{engine}/invoice/{id}"})
     public ModelAndView invoice(@PathVariable(required = false) String engine,
                                 @PathVariable(required = false) String id) {
 

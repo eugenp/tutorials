@@ -35,7 +35,7 @@ public class ConfigVelocityViews {
 
         bean.setContentType("text/html; charset=UTF-8");
         bean.setCache(true);
-        bean.setOrder(1);
+        bean.setOrder(10);
 
         return bean;
     }
