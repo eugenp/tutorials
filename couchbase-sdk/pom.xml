@@ -13,8 +13,8 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
+    </parent>
+
     <dependencies>
         <!-- Couchbase SDK -->
         <dependency>
@@ -33,7 +33,7 @@
                     <artifactId>commons-logging</artifactId>
                     <groupId>commons-logging</groupId>
                 </exclusion>
-            </exclusions>            
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -45,13 +45,6 @@
                     <groupId>commons-logging</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
         </dependency>
 
         <!-- Test-Scoped Dependencies -->

@@ -12,14 +12,13 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
+    </parent>
+
     <properties>
         <spring-ldap.version>2.3.1.RELEASE</spring-ldap.version>
         <spring-context.version>4.3.6.RELEASE</spring-context.version>
         <apacheds.version>1.5.5</apacheds.version>
         <shared-ldap.version>0.9.15</shared-ldap.version>
-        <org.hamcrest.version>1.3</org.hamcrest.version>
     </properties>
 
     <build>
@@ -41,30 +40,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring-context.version}</version>
-        </dependency>
-
-
-        <!-- test -->
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- spring ldap test -->
@@ -78,7 +56,7 @@
                     <artifactId>commons-logging</artifactId>
                     <groupId>commons-logging</groupId>
                 </exclusion>
-            </exclusions>            
+            </exclusions>
         </dependency>
 
         <!-- apacheds for test -->

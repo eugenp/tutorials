@@ -10,8 +10,8 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -132,7 +132,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>       
+            <version>${httpclient.version}</version>
         </dependency>
 
         <dependency>
@@ -165,13 +165,7 @@
         <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-core</artifactId>
-            <version>${json-schema-core.version}</version>       
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest.version}</version>
+            <version>${json-schema-core.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-collections</groupId>
@@ -217,24 +211,24 @@
             </build>
         </profile>
     </profiles>
-    
+
     <properties>
         <jackson.version>2.8.5</jackson.version>
         <jackson-coreutils.version>1.8</jackson-coreutils.version>
         <guava.version>19.0</guava.version>
-        
+
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <servlet-api.version>2.5</servlet-api.version>
-        <javax.mail.version>1.4.7</javax.mail.version>        
+        <javax.mail.version>1.4.7</javax.mail.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
 
-        
-        <commons-lang3.version>3.5</commons-lang3.version>        
+
+        <commons-lang3.version>3.5</commons-lang3.version>
         <commons-collections.version>3.2.2</commons-collections.version>
-        
+
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        
+
         <uri-template.version>0.9</uri-template.version>
         <libphonenumber.version>8.0.0</libphonenumber.version>
         <joda-time.version>2.9.6</joda-time.version>
@@ -245,10 +239,9 @@
 
         <github-json-schema-validator.version>2.2.6</github-json-schema-validator.version>
         <json-schema-core.version>1.2.5</json-schema-core.version>
-        
-        <hamcrest.version>1.3</hamcrest.version>
+
         <rest-assured.version>3.0.1</rest-assured.version>
-        <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>        
+        <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>
     </properties>
 
 </project>
