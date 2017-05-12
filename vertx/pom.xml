@@ -14,12 +14,6 @@
 	<name>vertx</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>io.vertx</groupId>
@@ -39,31 +33,10 @@
 			<version>3.0.0</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- logging -->
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -95,16 +68,8 @@
 	
 	 <properties>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-
         <!-- testing -->
         <testng.version>6.10</testng.version>
-
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
     </properties>
 	
