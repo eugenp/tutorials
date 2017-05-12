@@ -1,7 +1,6 @@
 package org.baeldung.boot.boottest;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -13,15 +12,15 @@ import org.springframework.stereotype.Service;
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     @Override
-    public Optional<Employee> getEmployeeById(Long id) {
+    public Employee getEmployeeById(Long id) {
         return employeeRepository.findById(id);
     }
 
     @Override
-    public Optional<Employee> getEmployeeByName(String name) {
+    public Employee getEmployeeByName(String name) {
         return employeeRepository.findByName(name);
     }
 

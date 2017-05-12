@@ -163,6 +163,30 @@ public class RestTemplateBasicLiveTest {
         assertThat(foo.getName(), is(updatedInstance.getName()));
     }
 
+    // PATCH
+
+    @Test
+    public void givenFooService_whenPatchExistingEntity_thenItIsUpdated() {
+        final RestTemplate template = new RestTemplate();
+        final HttpHeaders headers = prepareBasicAuthHeaders();
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
+
+        // Create Resource
+        final ResponseEntity<Foo> createResponse = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+
+        // Update Resource
+        final Foo updatedResource = new Foo("newName");
+        updatedResource.setId(createResponse.getBody().getId());
+        final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody().getId();
+        final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
+        template.patchForObject(resourceUrl, requestUpdate, Void.class);
+
+        // Check that Resource was updated
+        final ResponseEntity<Foo> updateResponse = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        final Foo foo = updateResponse.getBody();
+        assertThat(foo.getName(), is(updatedResource.getName()));
+    }
+
     // DELETE
 
     @Test
