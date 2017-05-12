@@ -7,6 +7,12 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+
     <properties>
         <jee.version>7.0</jee.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -20,14 +26,6 @@
         <finalName>JpaStoredProcedure</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
@@ -35,16 +33,6 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>            
         </plugins>
@@ -73,14 +61,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
-        </dependency>
-
-        <!-- Junit Library -->
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
         </dependency>
 
         <dependency>

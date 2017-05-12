@@ -8,25 +8,25 @@ import static org.junit.Assert.*;
 
 public class ClassToInstanceMapTests {
     @Test
-    public void createEmptyImmutableMap() {
+    public void whenOfCalled_thenCreateEmptyImmutableMap() {
         ClassToInstanceMap<Action> map = ImmutableClassToInstanceMap.of();
         assertTrue(map.isEmpty());
     }
 
     @Test
-    public void createEmptyMutableMap() {
+    public void whenCreateCalled_thenCreateEmptyMutableMap() {
         ClassToInstanceMap<Action> map = MutableClassToInstanceMap.create();
         assertTrue(map.isEmpty());
     }
 
     @Test
-    public void createSingleEntryMap() {
+    public void whenOfWithParameterCalled_thenCreateSingleEntryMap() {
         ClassToInstanceMap<Action> map = ImmutableClassToInstanceMap.of(Save.class, new Save());
         assertEquals(1, map.size());
     }
 
     @Test
-    public void createMapWithBuilder() {
+    public void whenBuilderUser_thenCreateMap() {
         ClassToInstanceMap<Action> map = ImmutableClassToInstanceMap.<Action>builder()
                 .put(Save.class, new Save())
                 .put(Open.class, new Open())
@@ -35,7 +35,7 @@ public class ClassToInstanceMapTests {
     }
 
     @Test
-    public void shouldReturnElement() {
+    public void givenClassToInstanceMap_whenGetCalled_returnUpperBoundElement() {
         ClassToInstanceMap<Action> map = ImmutableClassToInstanceMap.of(Save.class, new Save());
         Action action = map.get(Save.class);
         assertTrue(action instanceof Save);
@@ -45,7 +45,7 @@ public class ClassToInstanceMapTests {
     }
 
     @Test
-    public void shouldPutElement() {
+    public void givenClassToInstanceMap_whenPutCalled_returnPreviousElementUpperBound() {
         ClassToInstanceMap<Action> map = MutableClassToInstanceMap.create();
         map.put(Save.class, new Save());
         // Put again to get previous value returned

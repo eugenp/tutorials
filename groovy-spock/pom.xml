@@ -13,6 +13,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <build>
         <plugins>
             <plugin>

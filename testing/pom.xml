@@ -6,6 +6,12 @@
     <version>0.1-SNAPSHOT</version>
     <name>testing</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
+     
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -19,9 +25,9 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>${hamcrest.library.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -31,17 +37,26 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <dependency>
             <groupId>org.pitest</groupId>
             <artifactId>pitest-parent</artifactId>
             <version>${pitest.version}</version>
             <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -89,7 +104,7 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.50</minimum>
+                                            <minimum>0</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
@@ -98,26 +113,16 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <properties>
+        <hamcrest.library.version>1.3</hamcrest.library.version>
+        <cucumber.version>1.2.5</cucumber.version>
         <pitest.version>1.1.10</pitest.version>
-        <junit.version>4.12</junit.version>
         <jacoco.version>0.7.7.201606060606</jacoco.version>
         <guava.version>19.0</guava.version>
         <assertj-guava.version>3.1.0</assertj-guava.version>
-        <junit.version>4.12</junit.version>
         <assertj-core.version>3.6.1</assertj-core.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 </project>

@@ -14,25 +14,16 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit.version>4.12</junit.version>
 		<pdfbox-tools.version>2.0.3</pdfbox-tools.version>
 		<pdf2dom.version>1.6</pdf2dom.version>
 		<itextpdf.version>5.5.10</itextpdf.version>
 		<xmlworker.version>5.5.10</xmlworker.version>
 		<poi-scratchpad.version>3.15</poi-scratchpad.version>
 		<batik-transcoder.version>1.8</batik-transcoder.version>
-		<poi-ooxml.version>3.15</poi-ooxml.version>
-		
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+		<poi-ooxml.version>3.15</poi-ooxml.version>		
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox-tools</artifactId>
@@ -90,19 +81,5 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
-		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-		</plugins>
 	</build>
 </project>
