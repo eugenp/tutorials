@@ -136,17 +136,6 @@
 		<!-- logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 			<!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
@@ -179,13 +168,6 @@
 					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -243,32 +225,8 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/*LiveTest.java</exclude>
-						<exclude>**/*IntegrationTest.java</exclude>
-					</excludes>
-					<systemPropertyVariables>
-						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-					</systemPropertyVariables>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -361,10 +319,6 @@
 		<hibernate.version>5.2.5.Final</hibernate.version>
 		<mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 
-		<!-- logging -->
-		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<logback.version>1.1.7</logback.version>
-
 		<!-- various -->
 		<hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
@@ -379,7 +333,6 @@
 
 		<!-- testing -->
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<junit.version>4.12</junit.version>
 		<mockito.version>1.10.19</mockito.version>
 		<rest-assured.version>2.9.0</rest-assured.version>
 
@@ -392,9 +345,7 @@
 		<rest-assured.version>2.9.0</rest-assured.version>
 
 		<!-- Maven plugins -->
-		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 
 	</properties>

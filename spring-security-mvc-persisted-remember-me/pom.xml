@@ -143,18 +143,6 @@
 		<!-- </dependency> -->
 
 		<!-- logging -->
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
@@ -163,13 +151,6 @@
 		</dependency>
 		
 		<!-- test scoped -->
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -206,32 +187,8 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<excludes>
-						<!-- <exclude>**/*ProductionTest.java</exclude> -->
-					</excludes>
-					<systemPropertyVariables>
-						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-					</systemPropertyVariables>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -269,11 +226,6 @@
 		<mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 		<h2.version>1.4.193</h2.version>
 		<postgresql.version>9.4.1212</postgresql.version>
-		
-
-		<!-- logging -->
-		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<logback.version>1.1.7</logback.version>
 
 		<!-- various -->
 		<hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
@@ -286,7 +238,6 @@
 
 		<!-- testing -->
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<junit.version>4.11</junit.version>
 		<mockito.version>1.10.19</mockito.version>
 
 		<httpclient.version>4.5.2</httpclient.version>
@@ -295,9 +246,7 @@
 		<rest-assured.version>2.9.0</rest-assured.version>
 
 		<!-- Maven plugins -->
-		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
 		<cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
 

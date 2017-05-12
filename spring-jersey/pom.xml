@@ -16,13 +16,8 @@
      
     <properties>
         <jersey.version>2.25.1</jersey.version>
-        <jcl.slf4j.version>1.7.22</jcl.slf4j.version>
-        <logback.version>1.1.8</logback.version>
-        <junit.version>4.12</junit.version>
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <junit.version>4.12</junit.version>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
         <servlet-api-version>3.1.0</servlet-api-version>
@@ -32,31 +27,10 @@
         <finalName>spring-jersey</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
@@ -124,14 +98,9 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${jcl.slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
 
         <!-- http client -->
 
@@ -155,14 +124,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- junit -->
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <profiles>

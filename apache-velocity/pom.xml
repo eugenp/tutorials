@@ -18,24 +18,13 @@
     <properties>
         <jdk.version>1.8</jdk.version>
         <jstl.version>1.2</jstl.version>
-        <junit.version>4.11</junit.version>
-        <logback.version>1.0.13</logback.version>
-        <jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
         <velocity-version>1.7</velocity-version>
         <velocity-tools-version>2.0</velocity-tools-version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity</artifactId>
@@ -49,12 +38,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${jcl-over-slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -80,32 +64,10 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                    <systemPropertyVariables>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
