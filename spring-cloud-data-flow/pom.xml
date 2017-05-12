@@ -10,8 +10,8 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
+    </parent>
+
     <modules>
         <module>data-flow-server</module>
         <!-- <module>data-flow-shell</module> -->

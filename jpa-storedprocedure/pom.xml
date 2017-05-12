@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
@@ -11,15 +12,14 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
+    </parent>
 
     <properties>
         <jee.version>7.0</jee.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql.version>6.0.5</mysql.version>
-        <junit.version>4.12</junit.version>
         <commons-io.version>2.5</commons-io.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>        
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
     <build>
@@ -29,12 +29,13 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
-                    <!--archive> <manifest> <mainClass>fully.qualified.MainClass</mainClass> </manifest> </archive -->
+                    <!--archive> <manifest> <mainClass>fully.qualified.MainClass</mainClass> 
+                        </manifest> </archive -->
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
-            </plugin>            
+            </plugin>
         </plugins>
     </build>
 
