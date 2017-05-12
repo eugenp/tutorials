@@ -112,6 +112,7 @@
                                     <goal>test</goal>
                                 </goals>
                                 <configuration>
+                                    <reuseForks>false</reuseForks>
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                     </excludes>

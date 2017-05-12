@@ -75,6 +75,7 @@
                             </execution>
                         </executions>
                         <configuration>
+                            <reuseForks>false</reuseForks>
                             <systemPropertyVariables>
                                 <test.mime>json</test.mime>
                             </systemPropertyVariables>

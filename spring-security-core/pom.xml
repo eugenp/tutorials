@@ -85,6 +85,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
+                        <reuseForks>false</reuseForks>
                         <exclude>**/*LiveTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                     </excludes>
