@@ -58,9 +58,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <reuseForks>false</reuseForks>
-                        </configuration>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -78,6 +75,7 @@
                             </execution>
                         </executions>
                         <configuration>
+                            <reuseForks>false</reuseForks>
                             <systemPropertyVariables>
                                 <test.mime>json</test.mime>
                             </systemPropertyVariables>
