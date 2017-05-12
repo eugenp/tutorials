@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.IntStream;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static junit.framework.TestCase.assertEquals;
 
 public class LongAdderTest {
@@ -60,6 +61,7 @@ public class LongAdderTest {
         executorService.shutdown();
 
         assertEquals(counter.sumThenReset(), numberOfIncrements * numberOfThreads);
-        assertEquals(counter.sum(), 0);
+
+        await().until(() -> assertEquals(counter.sum(), 0));
     }
 }

@@ -65,7 +65,7 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
                 </configuration>
-            </plugin>            
+            </plugin>
         </plugins>
     </build>
 
@@ -124,5 +124,5 @@
 
             </build>
         </profile>
-    </profiles>            
+    </profiles>
 </project>
