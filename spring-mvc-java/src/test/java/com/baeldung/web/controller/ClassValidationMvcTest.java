@@ -23,29 +23,29 @@ public class ClassValidationMvcTest {
     
     @Test
     public void givenMatchingEmailPassword_whenPostNewUserForm_thenOk() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/user").
-                accept(MediaType.TEXT_HTML).
-                param("email", "john@yahoo.com")
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                .accept(MediaType.TEXT_HTML)
+                .param("email", "john@yahoo.com")
                 .param("verifyEmail", "john@yahoo.com")
                 .param("password", "pass")
-                .param("verifyPassword", "pass")).
-             //   andExpect(model().attribute("message", "Valid form")).
-                andExpect(view().name("userHome")).
-                andExpect(status().isOk()).
-                andDo(print());
+                .param("verifyPassword", "pass"))
+                .andExpect(model().attribute("message", "Valid form"))
+                .andExpect(view().name("userHome"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
     
     @Test
     public void givenNotMatchingEmailPassword_whenPostNewUserForm_thenOk() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/user").
-                accept(MediaType.TEXT_HTML).
-                param("email", "john@yahoo.com")
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/user")
+                .accept(MediaType.TEXT_HTML)
+                .param("email", "john@yahoo.com")
                 .param("verifyEmail", "john@yahoo.commmm")
                 .param("password", "pass")
-                .param("verifyPassword", "passsss")).
-                andExpect(model().errorCount(2)).
-                andExpect(view().name("userHome")).
-                andExpect(status().isOk()).
-                andDo(print());
+                .param("verifyPassword", "passsss"))
+                .andExpect(model().errorCount(2))
+                .andExpect(view().name("userHome"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 }
