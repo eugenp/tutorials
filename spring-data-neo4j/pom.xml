@@ -103,12 +103,6 @@
             <version>${neo4j.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -121,26 +115,6 @@
             </exclusions>            
         </dependency>
     </dependencies>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <profiles>
         <profile>
@@ -191,10 +165,6 @@
         <spring-boot.version>1.4.3.RELEASE</spring-boot.version>
         <spring-test.version>4.3.5.RELEASE</spring-test.version>
         <neo4j-ogm.version>2.1.1</neo4j-ogm.version>
-
-        <junit.version>4.12</junit.version>
-
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
 </project>

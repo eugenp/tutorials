@@ -113,13 +113,6 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -173,34 +166,6 @@
             </resource>
         </resources>
 
-        <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                         <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                    <systemPropertyVariables>
-                        <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-
-        </plugins>
-
     </build>
 
     <properties>
@@ -216,10 +181,6 @@
         <tomcat-dbcp.version>8.5.11</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
         
         <!-- various -->
         <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
@@ -231,7 +192,6 @@
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.12</junit.version>
         <mockito.version>2.6.8</mockito.version>
 
         <httpcore.version>4.4.1</httpcore.version>

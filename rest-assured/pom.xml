@@ -60,24 +60,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
             <version>${httpcore.version}</version>
@@ -185,12 +167,6 @@
             <artifactId>json-schema-core</artifactId>
             <version>${json-schema-core.version}</version>       
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -204,31 +180,6 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>            
-        </plugins>
-    </build>
 
 
     <profiles>
@@ -276,9 +227,6 @@
         <servlet-api.version>2.5</servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>        
         <jetty.version>9.4.0.v20161208</jetty.version>
-        
-        <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
 
         
         <commons-lang3.version>3.5</commons-lang3.version>        
@@ -301,10 +249,6 @@
         <hamcrest.version>1.3</hamcrest.version>
         <rest-assured.version>3.0.1</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.1</rest-assured-json-schema-validator.version>        
-        <junit.version>4.12</junit.version>
-        
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
 </project>

@@ -82,13 +82,6 @@
             <artifactId>jboss-logging</artifactId>
             <version>${jbosslogging.version}</version>
         </dependency>
-		
-		<dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>${junit.version}</version>
-		    <scope>test</scope>
-		</dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -103,25 +96,14 @@
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.7</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
-        <logback.version>1.1.7</logback.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jackson.library>2.8.5</jackson.library>
-        <junit.version>4.12</junit.version>
     </properties>
 
     <build>
         <pluginManagement>
             <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.2</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>

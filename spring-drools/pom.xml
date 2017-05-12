@@ -19,7 +19,6 @@
         <http-component-version>4.0-alpha6</http-component-version>
         <drools-version>7.0.0.CR1</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
-        <surefire-plugin-version>2.19.1</surefire-plugin-version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -121,16 +120,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire-plugin-version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>

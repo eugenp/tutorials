@@ -27,10 +27,8 @@
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following message: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent! -->
-        <project.build.sourceEncoding>
-            UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <slf4j.version>1.7.21</slf4j.version>
         <querydsl.version>3.7.4</querydsl.version>
         <deltaspike.version>1.7.2</deltaspike.version>
 
@@ -41,14 +39,8 @@
         <jboss.bom.version>8.2.2.Final</jboss.bom.version>
 
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.6.0</version.compiler.plugin>
-        <surefire.plugin.version>2.19.1</surefire.plugin.version>
         <war.plugin.version>2.6</war.plugin.version>
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
-
-        <!-- maven-compiler-plugin -->
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
     </properties>
 
 
@@ -153,13 +145,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Needed for running tests (you may also use TestNG) -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
         <!-- Optional, but highly recommended -->
         <!-- Arquillian allows you to test enterprise code such as EJBs and Transactional(JTA) JPA from JUnit/TestNG -->
         <dependency>
@@ -259,7 +244,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${surefire.plugin.version}</version>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>

@@ -40,30 +40,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.5</version>
@@ -110,15 +86,6 @@
 		</pluginManagement>
 
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
 
 			<!-- xjc -->
 			<plugin>
@@ -164,14 +131,8 @@
 		<!-- jaxb -->
 		<jaxb.version>2.2.11</jaxb.version>
 
-		<!-- logging -->
-		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<logback.version>1.1.7</logback.version>
-
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
 		<jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
-		<junit.version>4.12</junit.version>
 	</properties>
 
 </project>

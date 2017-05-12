@@ -57,24 +57,7 @@
             <artifactId>spring-boot-starter-jooq</artifactId>
         </dependency>
 
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
         <!-- Testing -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -166,27 +149,6 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-
         </plugins>
         <pluginManagement>
             <plugins>
@@ -262,12 +224,7 @@
         <org.jooq.version>3.8.6</org.jooq.version>
         <com.h2database.version>1.4.193</com.h2database.version>
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <ch.qos.logback.version>1.1.7</ch.qos.logback.version>
-        <junit.version>4.12</junit.version>
 
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>

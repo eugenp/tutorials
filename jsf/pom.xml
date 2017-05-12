@@ -80,18 +80,6 @@
         </dependency>
 
         <!-- logging -->
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -101,16 +89,6 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -130,17 +108,12 @@
         <com.sun.faces.version>2.2.14</com.sun.faces.version>
         <javax.el.version>3.0.0</javax.el.version>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-
         <!--Tomcat-->
         <javax.servlet.version>3.1.0</javax.servlet.version>
         
         <jstl.version>1.2</jstl.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
 
     </properties>
