@@ -1,0 +1,41 @@
+dn: ou=groups,dc=baeldung,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: groups
+
+dn: ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: uid=ldapuser,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jim Beam
+sn: Beam
+uid: ldapuser
+userPassword: pass
+
+dn: uid=ldapguest,ou=people,dc=baeldung,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: Jim Guest
+sn: Guest
+uid: ldapguest
+userPassword: pass
+
+dn: cn=guest,ou=groups,dc=baeldung,dc=com
+objectclass: top
+objectclass: groupOfNames
+cn: guest
+member: uid=ldapguest,ou=people,dc=baeldung,dc=com
+
+dn: cn=user,ou=groups,dc=baeldung,dc=com
+objectclass: top
+objectclass: groupOfNames
+cn: user
+member: uid=ldapuser,ou=people,dc=baeldung,dc=com

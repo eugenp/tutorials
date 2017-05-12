@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+  xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service
+              data-source-ref="dataSource" />
+        </security:authentication-provider>
+        <security:ldap-authentication-provider
+          server-ref="ldapServer" 
+          user-search-base="ou=people"
+          user-search-filter="(uid={0})" 
+          group-search-base="ou=groups"
+          group-search-filter="(member={0})">
+        </security:ldap-authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="dataSource"
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.h2.Driver" />
+        <property name="url"
+          value="jdbc:h2:mem:security_permission;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
+        <property name="username" value="sa" />
+        <property name="password" value="" />
+    </bean>
+
+    <security:ldap-server id="ldapServer" root="dc=baeldung,dc=com"
+      ldif="classpath:users.ldif" />
+
+    <security:http>
+        <security:intercept-url pattern="/api/**"
+          access="hasRole('ROLE_USER')" />
+        <security:http-basic />
+    </security:http>
+</beans>
