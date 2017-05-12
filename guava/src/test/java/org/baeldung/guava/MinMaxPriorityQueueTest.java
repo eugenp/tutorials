@@ -14,7 +14,7 @@ public class MinMaxPriorityQueueTest {
     public void givenMinMaxPriorityQueue_whenAddElementToFull_thenShouldEvictOldestItem() {
         //given
         MinMaxPriorityQueue<CustomClass> queue = MinMaxPriorityQueue
-                .orderedBy(Comparator.comparing(CustomClass::getValue).reversed())
+                .orderedBy(Comparator.comparing(CustomClass::getValue))
                 .maximumSize(10)
                 .create();
 
@@ -25,21 +25,23 @@ public class MinMaxPriorityQueueTest {
                 .forEach(i -> queue.add(new CustomClass(i)));
 
         //then
-        assertThat(queue.peekFirst().getValue()).isEqualTo(10);
-        assertThat(queue.peekLast().getValue()).isEqualTo(1);
+        assertThat(queue.peekFirst().getValue()).isEqualTo(1);
+        assertThat(queue.peekLast().getValue()).isEqualTo(10);
 
-
-        //and
-        queue.add(new CustomClass(100));
-
-        //then
-        assertThat(queue.peekFirst().getValue()).isEqualTo(100);
-        assertThat(queue.peekLast().getValue()).isEqualTo(2);
 
         //and
         queue.add(new CustomClass(-1));
-        assertThat(queue.peekFirst().getValue()).isEqualTo(100);
-        assertThat(queue.peekLast().getValue()).isEqualTo(2);
+
+
+        //then
+        assertThat(queue.peekFirst().getValue()).isEqualTo(-1);
+        assertThat(queue.peekLast().getValue()).isEqualTo(9);
+
+        //and
+        queue.add(new CustomClass(100));
+        assertThat(queue.peekFirst().getValue()).isEqualTo(-1);
+        assertThat(queue.peekLast().getValue()).isEqualTo(9);
+
     }
 
 
