@@ -26,8 +26,8 @@ public class PersonTest {
 
 		FileInputStream fileInputStream = new FileInputStream("yofile.txt");
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-		objectInputStream.close();
 		Person p2 = (Person) objectInputStream.readObject();
+		objectInputStream.close();
 		assertTrue(p2.getAge() == p.getAge());
 		assertTrue(p2.getName().equals(p.getName()));
 	}
