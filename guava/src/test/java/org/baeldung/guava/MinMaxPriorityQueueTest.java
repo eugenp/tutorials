@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MinMaxPriorityQueueTest {
     @Test
-    public void givenMinMaxPriorityQueue_whenAddElementToFull_thenShouldEvictOldestItem() {
+    public void givenMinMaxPriorityQueue_whenAddElementToFull_thenShouldEvictGreatestItem() {
         //given
         MinMaxPriorityQueue<CustomClass> queue = MinMaxPriorityQueue
                 .orderedBy(Comparator.comparing(CustomClass::getValue))
