@@ -5,8 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 import com.baeldung.spring.dependency.injection.beans.Language;
 import com.baeldung.spring.dependency.injection.beans.Writer;
+import org.springframework.context.annotation.ImportResource;
 
 @Configuration
+@ImportResource("classpath:spring-beans.xml")
 public class SongAppJavaConfig {
 
 	@Bean
