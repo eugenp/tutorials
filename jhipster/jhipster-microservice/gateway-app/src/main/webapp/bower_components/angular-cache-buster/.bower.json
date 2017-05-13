@@ -1,0 +1,40 @@
+{
+  "name": "angular-cache-buster",
+  "version": "0.4.3",
+  "homepage": "https://github.com/saintmac/angular-cache-buster",
+  "authors": [
+    "saintmac <martin.saintmac@gmail.com>"
+  ],
+  "description": "Cache Buster for AngularJS $http (and $resource). Especially useful with Internet Explorer (IE8, IE9)",
+  "main": "angular-cache-buster.js",
+  "keywords": [
+    "angularjs",
+    "cache",
+    "buster",
+    "ie8",
+    "ie9",
+    "$http",
+    "$resource"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.2.13",
+    "angular-mocks": "~1.2.13"
+  },
+  "_release": "0.4.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.3",
+    "commit": "c6c378db5cfc2431773e05743e72e1e97fa1ef16"
+  },
+  "_source": "https://github.com/saintmac/angular-cache-buster.git",
+  "_target": "0.4.3",
+  "_originalSource": "angular-cache-buster"
+}
