@@ -27,12 +27,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
             <version>${kotlin-reflect.version}</version>
@@ -101,7 +95,6 @@
     </build>
 
     <properties>
-        <junit.version>4.12</junit.version>
         <kotlin-maven-plugin.version>1.1.1</kotlin-maven-plugin.version>
         <kotlin-test-junit.version>1.1.1</kotlin-test-junit.version>
         <kotlin-stdlib.version>1.1.1</kotlin-stdlib.version>

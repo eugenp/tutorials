@@ -33,3 +33,5 @@ spring-openid/src/main/resources/application.properties
 spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
+core-java/src/main/java/com/baeldung/string/RemoveLastChar.java
+core-java/src/test/java/com/baeldung/string/RemoveLastCharTest.java

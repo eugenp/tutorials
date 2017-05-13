@@ -17,19 +17,10 @@
 	<properties>
 		<env.camel.version>2.18.1</env.camel.version>
 		<env.spring.version>4.3.4.RELEASE</env.spring.version>
-		<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<java.version>1.8</java.version>
-		<junit.version>4.12</junit.version>
 	</properties>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -67,35 +58,6 @@
 		</dependency>
 
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<compilerVersion>${java.version}</compilerVersion>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
-					</excludes>
-					<systemPropertyVariables>
-						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 
 </project>
