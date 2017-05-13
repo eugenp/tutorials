@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springframework.samples</groupId>
-  <artifactId>spring-katharsis</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.springframework.samples</groupId>
+    <artifactId>spring-katharsis</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.4.RELEASE</version>
@@ -16,34 +17,34 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        
+
         <dependency>
-	      <groupId>org.springframework.boot</groupId>
-	      <artifactId>spring-boot-starter-data-jpa</artifactId>
-	    </dependency>
-        
-     	<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-        
-		<!-- json api  -->
-		
-		<dependency>
-	      <groupId>io.katharsis</groupId>
-	      <artifactId>katharsis-servlet</artifactId>
-	      <version>${katharsis.version}</version>
-	    </dependency>   
-	    
-	    <!-- test -->
-	    
-	    <dependency>
-	      <groupId>org.springframework.boot</groupId>
-	      <artifactId>spring-boot-starter-test</artifactId>
-	      <scope>test</scope>
-	    </dependency>
-	    
-	    <dependency>
+
+        <!-- json api -->
+
+        <dependency>
+            <groupId>io.katharsis</groupId>
+            <artifactId>katharsis-servlet</artifactId>
+            <version>${katharsis.version}</version>
+        </dependency>
+
+        <!-- test -->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${restassured.version}</version>
@@ -55,10 +56,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
+
     </dependencies>
-    
-    
+
+
     <properties>
         <java.version>1.8</java.version>
         <katharsis.version>1.0.1</katharsis.version>
@@ -73,14 +74,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            
-            
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
-                         <exclude>**/*LiveTest.java</exclude> 
+                        <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                     <systemPropertyVariables>
                         <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
@@ -167,6 +168,6 @@
             </build>
         </profile>
     </profiles>
-       
-    
+
+
 </project>
