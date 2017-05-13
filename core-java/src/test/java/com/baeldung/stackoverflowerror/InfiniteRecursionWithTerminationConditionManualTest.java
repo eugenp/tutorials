@@ -21,16 +21,11 @@ public class InfiniteRecursionWithTerminationConditionManualTest {
         assertEquals(120, irtc.calculateFactorial(numToCalcFactorial));
     }
 
-    @Test
+    @Test(expected = StackOverflowError.class)
     public void givenNegativeInt_whenCalcFact_thenThrowsException() {
-        try {
             int numToCalcFactorial = -1;
             InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
             irtc.calculateFactorial(numToCalcFactorial);
-            fail();
-        } catch (StackOverflowError soe) {
-            soe.printStackTrace();
-        }
     }
 }
