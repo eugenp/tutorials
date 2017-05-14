@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="car" class="com.baeldung.injection.Car">
+        <constructor-arg name="engine" ref="engine"/>
+        <property name="speedLimiter" ref="speedLimiter"/>
+    </bean>
+
+    <bean name="engine" class="com.baeldung.injection.Engine"/>
+    <bean name="speedLimiter" class="com.baeldung.injection.SpeedLimiter"/>
+</beans>
