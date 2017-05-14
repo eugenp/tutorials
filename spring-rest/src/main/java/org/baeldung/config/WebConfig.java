@@ -1,6 +1,5 @@
 package org.baeldung.config;
 
-import org.baeldung.config.converter.KryoHttpMessageConverter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -40,7 +39,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         // messageConverters.add(new MappingJackson2HttpMessageConverter());
 
         messageConverters.add(new ProtobufHttpMessageConverter());
-        messageConverters.add(new KryoHttpMessageConverter());
         super.configureMessageConverters(messageConverters);
     }
 
