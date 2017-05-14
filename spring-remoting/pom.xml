@@ -37,6 +37,7 @@
         <module>remoting-http</module>
         <module>remoting-hessian-burlap</module>
         <module>remoting-amqp</module>
+        <module>remoting-jms</module>
     </modules>
 
 </project>
