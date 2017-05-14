@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class SquareCalculatorTest {
+public class SquareCalculatorUnitTest {
     private SquaredCalculator squaredCalculator = new SquaredCalculator();
     private CacheHelper cacheHelper = new CacheHelper();
 

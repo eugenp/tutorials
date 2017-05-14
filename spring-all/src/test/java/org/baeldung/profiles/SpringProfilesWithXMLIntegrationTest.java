@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
-public class SpringProfilesWithXMLTest {
+public class SpringProfilesWithXMLIntegrationTest {
 
     private ClassPathXmlApplicationContext classPathXmlApplicationContext;
 

@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class TenantScopeTest {
+public class TenantScopeIntegrationTest {
 
     @Test
     public final void whenRegisterScopeAndBeans_thenContextContainsFooAndBar() {
