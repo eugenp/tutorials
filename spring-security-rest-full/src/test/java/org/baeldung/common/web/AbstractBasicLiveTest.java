@@ -18,7 +18,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.net.HttpHeaders;
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 
 public abstract class AbstractBasicLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
