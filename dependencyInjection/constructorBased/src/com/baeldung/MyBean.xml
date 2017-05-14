@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <!-- Definition for Airplane bean -->
+   <bean id="Airplane" class="com.baeldung.Airplane">
+      <constructor-arg ref="Aileron"/>
+   </bean>
+
+   <!-- Definition for Aileron bean -->
+   <bean id="Aileron" class="com.baeldung.Aileron">
+   </bean>
+
+</beans>
