@@ -13,7 +13,7 @@ import org.junit.Test;
 public class PersonTest {
 
 	@Test
-	public void testPeron() throws IOException, ClassNotFoundException {
+	public void serializingAndDeserlizalingTest() throws IOException, ClassNotFoundException {
 		Person p = new Person();
 		p.setAge(20);
 		p.setName("Joe");
@@ -34,7 +34,7 @@ public class PersonTest {
 	}
 
 	@Test
-	public void testCustomSerialization() throws IOException, ClassNotFoundException {
+	public void serilizingUsingCustomSerialzationTest() throws IOException, ClassNotFoundException {
 		Person p = new Person();
 		p.setAge(20);
 		p.setName("Joe");
