@@ -1,5 +1,7 @@
 package com.baeldung.concurrent.delayqueue;
 
+import com.google.common.primitives.Ints;
+
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
@@ -20,13 +22,7 @@ public class DelayObject implements Delayed {
 
     @Override
     public int compareTo(Delayed o) {
-        if (this.startTime < ((DelayObject) o).startTime) {
-            return -1;
-        }
-        if (this.startTime > ((DelayObject) o).startTime) {
-            return 1;
-        }
-        return 0;
+        return Ints.saturatedCast(this.startTime - ((DelayObject) o).startTime);
     }
 
     @Override
