@@ -19,13 +19,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleReportExporter {
-    
+
     private JasperPrint jasperPrint;
 
     public SimpleReportExporter() {
     }
-    
-    public SimpleReportExporter (JasperPrint jasperPrint){
+
+    public SimpleReportExporter(JasperPrint jasperPrint) {
         this.jasperPrint = jasperPrint;
     }
 
@@ -36,9 +36,7 @@ public class SimpleReportExporter {
     public void setJasperPrint(JasperPrint jasperPrint) {
         this.jasperPrint = jasperPrint;
     }
-    
-    
-    
+
     public void exportToPdf(String fileName, String author) {
 
         // print report to file
@@ -61,27 +59,25 @@ public class SimpleReportExporter {
         try {
             exporter.exportReport();
         } catch (JRException ex) {
-            Logger.getLogger(SimpleReportFiller.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleReportFiller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public void exportToXlsx(String fileName,String sheetName) {
+    public void exportToXlsx(String fileName, String sheetName) {
         JRXlsxExporter exporter = new JRXlsxExporter();
 
         exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
         exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(fileName));
 
         SimpleXlsxReportConfiguration reportConfig = new SimpleXlsxReportConfiguration();
-        reportConfig.setSheetNames(new String[]{sheetName});
+        reportConfig.setSheetNames(new String[] { sheetName });
 
         exporter.setConfiguration(reportConfig);
 
         try {
             exporter.exportReport();
         } catch (JRException ex) {
-            Logger.getLogger(SimpleReportFiller.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleReportFiller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -94,8 +90,7 @@ public class SimpleReportExporter {
         try {
             exporter.exportReport();
         } catch (JRException ex) {
-            Logger.getLogger(SimpleReportFiller.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleReportFiller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -108,8 +103,7 @@ public class SimpleReportExporter {
         try {
             exporter.exportReport();
         } catch (JRException ex) {
-            Logger.getLogger(SimpleReportFiller.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            Logger.getLogger(SimpleReportFiller.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
