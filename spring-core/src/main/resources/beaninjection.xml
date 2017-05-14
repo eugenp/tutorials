@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="logHelper" class="com.baeldung.beaninjection.domain.LoggingHelper">
+        <constructor-arg index="0" ref="logger"/>
+        <constructor-arg index="1" type="int" value="20"/>
+    </bean>
+
+    <bean id="logger" class="com.baeldung.beaninjection.domain.ConsoleLogger">
+        <property name="messagePrefix" value="XMLConfig: "></property>
+    </bean>
+
+</beans>
