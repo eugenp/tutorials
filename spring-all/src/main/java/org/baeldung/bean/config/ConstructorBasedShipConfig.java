@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 public class ConstructorBasedShipConfig {
 
     @Bean
-    public Ship ship() {
-        return new Ship(helm());
+    public Ship ship(Helm helm) {
+        return new Ship(helm);
     }
 
     @Bean
