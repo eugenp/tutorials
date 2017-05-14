@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.baeldung" />
+
+    <bean id="officeAddress"  class="com.baeldung.model.Address">
+        <constructor-arg index="0" value="USA"></constructor-arg>
+        <constructor-arg index="1" value="NY"></constructor-arg>
+        <constructor-arg index="2" value="XYZ"></constructor-arg>
+        <constructor-arg index="3" value="Street 2"></constructor-arg>
+        <constructor-arg index="4" value="00999"></constructor-arg>
+    </bean>
+
+    <bean id="defaultEmployee" class="com.baeldung.model.Employee">
+        <property name="firstName" value="Kelly" />
+        <property name="lastName" value="Tineo" />
+        <property name="department" value="HUMAN_RESOURCE"/>
+        <property name="address" ref="officeAddress" />
+    </bean>
+</beans>
