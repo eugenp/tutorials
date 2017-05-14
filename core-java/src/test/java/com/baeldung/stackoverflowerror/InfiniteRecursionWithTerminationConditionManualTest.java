@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
-    public void givenPositiveIntNoOne_whenCalcFact_thenThrowsException() {
+    public void givenPositiveIntNoOne_whenCalcFact_thenCorrectlyCalc() {
         int numToCalcFactorial = 1;
         InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
@@ -14,23 +14,18 @@ public class InfiniteRecursionWithTerminationConditionManualTest {
     }
 
     @Test
-    public void givenPositiveIntGtOne_whenCalcFact_thenThrowsException() {
+    public void givenPositiveIntGtOne_whenCalcFact_thenCorrectlyCalc() {
         int numToCalcFactorial = 5;
         InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
         assertEquals(120, irtc.calculateFactorial(numToCalcFactorial));
     }
 
-    @Test
+    @Test(expected = StackOverflowError.class)
     public void givenNegativeInt_whenCalcFact_thenThrowsException() {
-        try {
             int numToCalcFactorial = -1;
             InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
             irtc.calculateFactorial(numToCalcFactorial);
-            fail();
-        } catch (StackOverflowError soe) {
-            soe.printStackTrace();
-        }
     }
 }
