@@ -1,7 +1,6 @@
 package com.baeldung.server;
 
 import com.baeldung.api.CabBookingService;
-import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -12,8 +11,6 @@ import org.springframework.jms.remoting.JmsInvokerServiceExporter;
 
 import javax.jms.ConnectionFactory;
 
-import static java.util.Arrays.asList;
-
 @SpringBootApplication public class JmsServer {
 
     /*
@@ -23,13 +20,13 @@ import static java.util.Arrays.asList;
     docker run -p 61616:61616 -p 8161:8161 rmohr/activemq:5.14.3
      */
 
-    @Bean ConnectionFactory connectionFactory() {
-        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
-        factory.setBrokerURL("tcp://192.168.99.100:61616");
-        factory.setTrustedPackages(asList("org.springframework.remoting.support", "java.lang", "com.baeldung.api"));
-        //factory.setTrustAllPackages(true);
-        return factory;
-    }
+//    @Bean ConnectionFactory connectionFactory() {
+//        ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
+//        factory.setBrokerURL("tcp://192.168.99.100:61616");
+//        factory.setTrustedPackages(asList("org.springframework.remoting.support", "java.lang", "com.baeldung.api"));
+//        //factory.setTrustAllPackages(true);
+//        return factory;
+//    }
 
     @Bean @Qualifier("queueName") String queueName() {
         return "remotingQueue";
