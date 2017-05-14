@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
-    public void givenPositiveIntNoOne_whenCalcFact_thenThrowsException() {
+    public void givenPositiveIntNoOne_whenCalcFact_thenCorrectlyCalc() {
         int numToCalcFactorial = 1;
         InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
@@ -14,7 +14,7 @@ public class InfiniteRecursionWithTerminationConditionManualTest {
     }
 
     @Test
-    public void givenPositiveIntGtOne_whenCalcFact_thenThrowsException() {
+    public void givenPositiveIntGtOne_whenCalcFact_thenCorrectlyCalc() {
         int numToCalcFactorial = 5;
         InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
