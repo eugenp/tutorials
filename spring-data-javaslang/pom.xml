@@ -9,9 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
-        <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
-        <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
         <javaslang.version>2.0.5</javaslang.version>
         <junit.version>4.12</junit.version>
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
