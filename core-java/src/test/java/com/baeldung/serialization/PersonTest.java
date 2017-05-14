@@ -1,5 +1,5 @@
 package com.baeuldung.serialization;
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
@@ -13,7 +13,7 @@ import org.junit.Test;
 public class PersonTest {
 
 	@Test
-	public void testPeron() throws IOException, ClassNotFoundException   {
+	public void whenSerializingAndDeserializing_ThenObjectIsTheSame() throws IOException, ClassNotFoundException {
 		Person p = new Person();
 		p.setAge(20);
 		p.setName("Joe");
@@ -28,8 +28,37 @@ public class PersonTest {
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		Person p2 = (Person) objectInputStream.readObject();
 		objectInputStream.close();
+
 		assertTrue(p2.getAge() == p.getAge());
 		assertTrue(p2.getName().equals(p.getName()));
+	}
+
+	@Test
+	public void whenCustomSerializingAndDeserializing_ThenObjectIsTheSame() throws IOException, ClassNotFoundException {
+		Person p = new Person();
+		p.setAge(20);
+		p.setName("Joe");
+
+		Address a = new Address();
+		a.setHouseNumber(1);
+
+		Employee e = new Employee();
+		e.setPerson(p);
+		e.setAddress(a);
+
+		FileOutputStream fileOutputStream = new FileOutputStream("yofile2.txt");
+		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+		objectOutputStream.writeObject(e);
+		objectOutputStream.flush();
+		objectOutputStream.close();
+
+		FileInputStream fileInputStream = new FileInputStream("yofile2.txt");
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+		Employee e2 = (Employee) objectInputStream.readObject();
+		objectInputStream.close();
+
+		assertTrue(e2.getPerson().getAge() == e.getPerson().getAge());
+		assertTrue(e2.getAddress().getHouseNumber() == (e.getAddress().getHouseNumber()));
 	}
 
 }
