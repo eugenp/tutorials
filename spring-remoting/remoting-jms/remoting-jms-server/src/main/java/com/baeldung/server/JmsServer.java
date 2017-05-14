@@ -23,7 +23,9 @@ import javax.jms.ConnectionFactory;
 
     @Bean ConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
-        factory.setBrokerURL("tcp://ep-t43:61616");
+        factory.setBrokerURL("tcp://192.168.99.100:61616");
+        //factory.setTrustedPackages(asList("org.springframework.remoting.support"));
+        factory.setTrustAllPackages(true);
         return factory;
     }
 
