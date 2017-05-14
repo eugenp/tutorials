@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot</artifactId>
@@ -13,7 +13,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -107,7 +107,7 @@
             <version>${jquery.version}</version>
         </dependency>
 
-		<dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
@@ -119,7 +119,7 @@
             <version>${tomee-servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -131,28 +131,28 @@
             <artifactId>spring-websocket</artifactId>
             <version>${spring.version}</version>
         </dependency>
-      
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
             <version>${spring.version}</version>
-         </dependency>
-      
-         <dependency>
+        </dependency>
+
+        <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-boot-starter</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-      
-         <dependency>
+
+        <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-security</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-      
+
         <dependency>
-        	<groupId>org.apache.activemq</groupId>
-        	<artifactId>artemis-server</artifactId>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-server</artifactId>
         </dependency>
     </dependencies>
 
@@ -235,7 +235,7 @@
                         </executions>
                         <configuration>
                             <systemPropertyVariables>
-                            <test.mime>json</test.mime>
+                                <test.mime>json</test.mime>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -268,7 +268,7 @@
                         </executions>
                         <configuration>
                             <systemPropertyVariables>
-                            <test.mime>json</test.mime>
+                                <test.mime>json</test.mime>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
