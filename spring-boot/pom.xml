@@ -95,6 +95,10 @@
             <version>${subethasmtp.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.webjars</groupId>
@@ -170,6 +174,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludeDevtools>false</excludeDevtools>
+                </configuration>
             </plugin>
 
             <plugin>
