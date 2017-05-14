@@ -7,6 +7,8 @@ before_script:
 
 jdk:
   - oraclejdk8
+  
+sudo: required
 
 addons:
   apt:
