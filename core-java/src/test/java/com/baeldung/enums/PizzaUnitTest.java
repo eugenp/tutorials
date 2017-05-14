@@ -3,6 +3,8 @@ package com.baeldung.enums;
 import com.baeldung.enums.Pizza.PizzaStatusEnum;
 import org.junit.Test;
 
+import com.baeldung.enums.Pizza.PizzaStatusEnum;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -96,5 +98,18 @@ public class PizzaUnitTest {
         PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
     }
     
+
+    @Test
+    public void givenValidPizzaStatusEnumValueAsString_whenConvertedIntoPizzaStatusEnum_thenConvertsCorrectly() {
+        String pizzaEnumValue = "READY";
+        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.fromString(pizzaEnumValue);
+        assertTrue(pizzaStatusEnum == Pizza.PizzaStatusEnum.READY);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenInValidPizzaStatusEnumValueAsString_whenConvertedIntoPizzaStatusEnum_thenthrowsException() {
+        String pizzaEnumValue = "invalid";
+        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.fromString(pizzaEnumValue);
+    }
 
 }
