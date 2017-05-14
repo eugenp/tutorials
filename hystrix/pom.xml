@@ -1,6 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
@@ -61,18 +60,15 @@
                     <artifactId>commons-logging</artifactId>
                     <groupId>commons-logging</groupId>
                 </exclusion>
-            </exclusions>            
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-metrics-event-stream</artifactId>
             <version>${hystrix-metrics-event-stream.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>com.netflix.hystrix</groupId>
-            <artifactId>hystrix-dashboard</artifactId>
-            <version>${hystrix-dashboard.version}</version>
-        </dependency>-->
+        <!--<dependency> <groupId>com.netflix.hystrix</groupId> <artifactId>hystrix-dashboard</artifactId> 
+            <version>${hystrix-dashboard.version}</version> </dependency> -->
         <dependency>
             <groupId>com.netflix.rxjava</groupId>
             <artifactId>rxjava-core</artifactId>
@@ -130,8 +126,8 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>  
-    
+    </build>
+
     <profiles>
         <profile>
             <id>integration</id>

@@ -1,5 +1,4 @@
 package com.baeuldung.serialization;
-
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileInputStream;
@@ -13,7 +12,8 @@ import org.junit.Test;
 public class PersonTest {
 
 	@Test
-	public void testPeron() throws IOException, ClassNotFoundException {
+
+	public void testPeron() throws IOException, ClassNotFoundException   {
 		Person p = new Person();
 		p.setAge(20);
 		p.setName("Joe");
@@ -28,7 +28,6 @@ public class PersonTest {
 		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		Person p2 = (Person) objectInputStream.readObject();
 		objectInputStream.close();
-
 		assertTrue(p2.getAge() == p.getAge());
 		assertTrue(p2.getName().equals(p.getName()));
 	}
@@ -60,5 +59,4 @@ public class PersonTest {
 		assertTrue(e2.getPerson().getAge() == e.getPerson().getAge());
 		assertTrue(e2.getAddress().getHouseNumber() == (e.getAddress().getHouseNumber()));
 	}
-
 }

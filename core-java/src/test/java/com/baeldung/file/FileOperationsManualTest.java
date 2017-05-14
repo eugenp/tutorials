@@ -14,8 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
-public class FileOperationsUnitTest {
+public class FileOperationsManualTest {
 
     @Test
     public void givenFileName_whenUsingClassloader_thenFileData() throws IOException {
@@ -33,7 +32,7 @@ public class FileOperationsUnitTest {
     public void givenFileNameAsAbsolutePath_whenUsingClasspath_thenFileData() throws IOException {
         String expectedData = "Hello World from fileTest.txt!!!";
 
-        Class clazz = FileOperationsUnitTest.class;
+        Class clazz = FileOperationsManualTest.class;
         InputStream inputStream = clazz.getResourceAsStream("/fileTest.txt");
         String data = readFromInputStream(inputStream);
 

@@ -2,10 +2,9 @@ package com.baeldung.stackoverflowerror;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-public class InfiniteRecursionWithTerminationConditionUnitTest {
+public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
     public void givenPositiveIntNoOne_whenCalcFact_thenThrowsException() {
         int numToCalcFactorial = 1;
@@ -22,16 +21,11 @@ public class InfiniteRecursionWithTerminationConditionUnitTest {
         assertEquals(120, irtc.calculateFactorial(numToCalcFactorial));
     }
 
-    @Test
+    @Test(expected = StackOverflowError.class)
     public void givenNegativeInt_whenCalcFact_thenThrowsException() {
-        try {
             int numToCalcFactorial = -1;
             InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
             irtc.calculateFactorial(numToCalcFactorial);
-            fail();
-        } catch (StackOverflowError soe) {
-            soe.printStackTrace();
-        }
     }
 }

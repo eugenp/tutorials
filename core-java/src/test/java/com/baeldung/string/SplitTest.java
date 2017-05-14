@@ -1,11 +1,15 @@
 package com.baeldung.string;
 
+import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class SplitTest {
 
@@ -28,5 +32,14 @@ public class SplitTest {
                           StringUtils.split("car    jeep   scooter"));
         assertArrayEquals("split by colon", Arrays.asList("car", "jeep", "scooter").toArray(), StringUtils.split("car:jeep:scooter", ":"));
         assertArrayEquals("split by dot", Arrays.asList("car", "jeep", "scooter").toArray(), StringUtils.split("car.jeep.scooter", "."));
+    }
+
+    @Test
+    public void givenString_whenSplit_thenReturnsIterable_Splitter() {
+        //given
+        Iterable<String> result = Splitter.on(',').trimResults().omitEmptyStrings().split("car,jeep,,   scooter");
+        List<String> resultList = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
+
+        assertEquals(Arrays.asList("car", "jeep", "scooter") , resultList);
     }
 }
