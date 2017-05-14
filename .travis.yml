@@ -1,4 +1,5 @@
 language: java
+sudo: required
 
 install: travis_wait 60 mvn -q test -fae
 
