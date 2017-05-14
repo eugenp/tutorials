@@ -8,14 +8,10 @@ before_script:
 jdk:
   - oraclejdk8
 
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-
 cache:
   directories:
   - .autoconf
   - $HOME/.m2
+  
   
 
