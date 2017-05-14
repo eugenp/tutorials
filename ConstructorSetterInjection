@@ -1,0 +1,27 @@
+package za.co.timbaron;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+/**
+ *
+ * @author F4829689
+ */
+@Controller
+public class MyController {
+
+    private MyDao myDao;
+
+    // constructor dependecy injection
+    @Autowired
+    public MyController(MyDao myDao) {
+        this.myDao = myDao;
+    }
+
+     // setter dependecy injection
+    @Autowired
+    public void setMyDao(MyDao myDao) {
+        this.myDao = myDao;
+    }
+
+}
