@@ -12,6 +12,8 @@ import org.springframework.jms.remoting.JmsInvokerServiceExporter;
 
 import javax.jms.ConnectionFactory;
 
+import static java.util.Arrays.asList;
+
 @SpringBootApplication public class JmsServer {
 
     /*
@@ -24,8 +26,8 @@ import javax.jms.ConnectionFactory;
     @Bean ConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
         factory.setBrokerURL("tcp://192.168.99.100:61616");
-        //factory.setTrustedPackages(asList("org.springframework.remoting.support"));
-        factory.setTrustAllPackages(true);
+        factory.setTrustedPackages(asList("org.springframework.remoting.support", "java.lang", "com.baeldung.api"));
+        //factory.setTrustAllPackages(true);
         return factory;
     }
 

@@ -15,6 +15,8 @@ import org.springframework.jms.remoting.JmsInvokerProxyFactoryBean;
 
 import javax.jms.ConnectionFactory;
 
+import static java.util.Arrays.asList;
+
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { JmsAutoConfiguration.class, ActiveMQAutoConfiguration.class })
 public class JmsClient {
@@ -22,8 +24,8 @@ public class JmsClient {
     @Bean ConnectionFactory connectionFactory() {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
         factory.setBrokerURL("tcp://192.168.99.100:61616");
-        //factory.setTrustedPackages(asList("org.springframework.remoting.support"));
-        factory.setTrustAllPackages(true);
+        factory.setTrustedPackages(asList("org.springframework.remoting.support", "java.lang", "com.baeldung.api"));
+        //factory.setTrustAllPackages(true);
         return factory;
     }
 
