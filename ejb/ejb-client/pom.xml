@@ -1,20 +1,17 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.baeldung.ejb</groupId>
-		<artifactId>ejb</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-	<artifactId>ejb-client</artifactId>
-	<name>EJB3 Client Maven</name>
-	<description>EJB3 Client Maven</description>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-    <properties>
-        <junit.version>4.12</junit.version>
-        <maven-surefire-plugin.version>2.19</maven-surefire-plugin.version>
-    </properties>
+    <parent>
+        <groupId>com.baeldung.ejb</groupId>
+        <artifactId>ejb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>ejb-client</artifactId>
+    <name>EJB3 Client Maven</name>
+    <description>EJB3 Client Maven</description>
 
     <dependencies>
         <dependency>
@@ -29,13 +26,8 @@
             <type>ejb</type>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -50,4 +42,5 @@
             </plugin>
         </plugins>
     </build>
+    
 </project>

@@ -8,75 +8,68 @@
   <name>spring-security-stormpath</name>
   <url>http://maven.apache.org</url>
 
-	<developers>
-		<developer>
-			<email>abhinabkanrar@gmail.com</email>
-			<name>Abhinab Kanrar</name>
-			<url>https://github.com/AbhinabKanrar</url>
-			<id>abhinabkanrar</id>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <email>abhinabkanrar@gmail.com</email>
+            <name>Abhinab Kanrar</name>
+            <url>https://github.com/AbhinabKanrar</url>
+            <id>abhinabkanrar</id>
+        </developer>
+    </developers>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+              <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+              <java.version>1.8</java.version>
+    </properties>
 
-	<parent>
+    <parent>
+        <artifactId>parent-boot-4</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-4</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-parent</artifactId>
-            <version>1.5.1.RELEASE</version>
-    	</parent>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.stormpath.spring</groupId>
+            <artifactId>stormpath-default-spring-boot-starter</artifactId>
+            <version>1.5.4</version>
+        </dependency>
+    </dependencies>
 
-	<dependencies>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-		    <groupId>com.stormpath.spring</groupId>
-		    <artifactId>stormpath-default-spring-boot-starter</artifactId>
-		    <version>1.5.4</version>
-		</dependency>
-	</dependencies>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-        <pluginRepositories>
-	    <pluginRepository>
-	        <id>spring-releases</id>
-	        <name>Spring Releases</name>
-	        <url>https://repo.spring.io/libs-release</url>
-	    </pluginRepository>
-	</pluginRepositories>
-
-	<build>
-	    <finalName>spring-security-stormpath</finalName>
-	    <resources>
-      		<resource>
-		  <directory>src/main/resources</directory>
-      		</resource>
-	    </resources>
-	    <plugins>
-	        <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                      <source>${java.version}</source>
-                      <target>${java.version}</target>
-                    </configuration>
-	        </plugin>
+    <build>
+        <finalName>spring-security-stormpath</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-		    <configuration>
-		      <addResources>true</addResources>
-		    </configuration>
-		    <executions>
-                      <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                      </execution>
+                    <configuration>
+                      <addResources>true</addResources>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
                     </executions>
                 </plugin>
            </plugins>
