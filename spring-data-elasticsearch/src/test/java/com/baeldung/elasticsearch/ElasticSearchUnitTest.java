@@ -25,7 +25,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ElasticSearchUnitTest {
-    private List<Person> listOfPersons = new ArrayList<Person>();
+    private List<Person> listOfPersons = new ArrayList<>();
     private Client client = null;
 
     @Before
