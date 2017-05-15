@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class HikariCPTest {
 
 	@Test
-//	@Ignore
+	@Ignore
     public void givenConnection_thenFetchDbData() {
 		List<Employee> employees = HikariCPDemo.fetchData();
 		assertEquals(4, employees.size());

@@ -231,6 +231,17 @@
             <artifactId>datanucleus-xml</artifactId>
             <version>5.0.0-release</version>
         </dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>2.6.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.0.0</version>
+		</dependency>
     </dependencies>
 
     <properties>
