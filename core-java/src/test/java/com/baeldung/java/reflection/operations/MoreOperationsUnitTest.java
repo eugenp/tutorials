@@ -16,17 +16,17 @@ public class MoreOperationsUnitTest {
 
     @Test(expected = IllegalAccessException.class)
     public void givenObject_whenInvokeProtectedMethod_thenFail() throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Method maxProtectedMethod = Operations.class.getDeclaredMethod("max", int.class, int.class);
+        Method maxProtectedMethod = Operations.class.getDeclaredMethod("protectedMax", int.class, int.class);
 
         Operations operationsInstance = new Operations();
         Integer result = (Integer) maxProtectedMethod.invoke(operationsInstance, 2, 4);
-        System.out.println("result = " + result);
+        
         assertThat(result, equalTo(4));
     }
 
     @Test
     public void givenObject_whenInvokeProtectedMethod_thenCorrect() throws Exception {
-        Method maxProtectedMethod = Operations.class.getDeclaredMethod("max", int.class, int.class);
+        Method maxProtectedMethod = Operations.class.getDeclaredMethod("protectedMax", int.class, int.class);
         maxProtectedMethod.setAccessible(true);
 
         Operations operationsInstance = new Operations();
