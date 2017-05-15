@@ -34,17 +34,17 @@ public class Account {
         });
     }
 
-    @Override
-    public String toString() {
-        return StmUtils.atomic((TxnCallable<String>)
-                txn -> "Balance: " + balance.get(txn) + " lastUpdateDate: " + lastUpdate.get(txn));
-    }
-
     public void transferTo(final Account other, final int amount) {
         StmUtils.atomic(() -> {
             final long date = System.currentTimeMillis();
             adjustBy(-amount, date);
             other.adjustBy(amount, date);
         });
+    }
+
+    @Override
+    public String toString() {
+        return StmUtils.atomic((TxnCallable<String>)
+                txn -> "Balance: " + balance.get(txn) + " lastUpdateDate: " + lastUpdate.get(txn));
     }
 }

@@ -231,6 +231,11 @@
             <artifactId>datanucleus-xml</artifactId>
             <version>5.0.0-release</version>
         </dependency>
+        <dependency>
+            <groupId>org.multiverse</groupId>
+            <artifactId>multiverse-core</artifactId>
+            <version>0.7.0</version>
+        </dependency>
     </dependencies>
 
     <properties>
