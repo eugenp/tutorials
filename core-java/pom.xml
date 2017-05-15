@@ -178,19 +178,6 @@
 			<version>2.1.0.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-			<version>2.6.1</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>42.0.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
