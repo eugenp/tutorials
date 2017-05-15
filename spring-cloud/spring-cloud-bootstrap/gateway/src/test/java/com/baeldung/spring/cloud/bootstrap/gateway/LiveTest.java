@@ -2,9 +2,8 @@ package com.baeldung.spring.cloud.bootstrap.gateway;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.restassured.RestAssured;
+import io.restassured.authentication.FormAuthConfig;
 import io.restassured.config.RedirectConfig;
-import io.restassured.config.SessionConfig;
-import io.restassured.filter.session.SessionFilter;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -17,13 +16,12 @@ import static io.restassured.RestAssured.config;
 public class LiveTest {
 
     private final String ROOT_URI = "http://localhost:8080";
-    SessionFilter sessionFilter;
+    private final FormAuthConfig formConfig = new FormAuthConfig("/login", "username", "password");
 
     @Before
     public void setup() {
-        RestAssured.config = config()
-            .redirect(RedirectConfig.redirectConfig().followRedirects(false))
-            .sessionConfig(new SessionConfig().sessionIdName("SESSION"));
+        RestAssured.config = config().redirect(RedirectConfig.redirectConfig()
+            .followRedirects(false));
     }
 
     @Test
@@ -35,28 +33,26 @@ public class LiveTest {
 
     @Test
     public void whenAccessProtectedResourceWithoutLogin_thenRedirectToLogin() {
-        final Response response = RestAssured.get(ROOT_URI + "/rating-service/ratings?bookId=1");
-        Assert.assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatusCode());
-        Assert.assertNotNull(response.getBody());
+        final Response response = RestAssured.get(ROOT_URI + "/home/index.html");
+        Assert.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
+        Assert.assertEquals("http://localhost:8080/login", response.getHeader("Location"));
     }
 
     @Test
     public void whenAccessProtectedResourceAfterLogin_thenSuccess() {
-        SessionData sessionData = login("user", "password");
         final Response response = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
-            .get(ROOT_URI + "/rating-service/ratings?bookId=1");
+            .auth()
+            .form("user", "password", formConfig)
+            .get(ROOT_URI + "/book-service/books/1");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
     }
 
     @Test
     public void whenAccessAdminProtectedResource_thenForbidden() {
-        SessionData sessionData = login("user", "password");
         final Response response = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
+            .auth()
+            .form("user", "password", formConfig)
             .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatusCode());
 
@@ -64,10 +60,9 @@ public class LiveTest {
 
     @Test
     public void whenAdminAccessProtectedResource_thenSuccess() {
-        SessionData sessionData = login("admin", "admin");
         final Response response = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
+            .auth()
+            .form("admin", "admin", formConfig)
             .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
@@ -75,10 +70,9 @@ public class LiveTest {
 
     @Test
     public void whenAdminAccessDiscoveryResource_thenSuccess() {
-        SessionData sessionData = login("admin", "admin");
         final Response response = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
+            .auth()
+            .form("admin", "admin", formConfig)
             .get(ROOT_URI + "/discovery");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
     }
@@ -88,12 +82,10 @@ public class LiveTest {
 
         final Rating rating = new Rating(1L, 4);
 
-        SessionData sessionData = login("admin", "admin");
-
         // request the protected resource
         final Response ratingResponse = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
+            .auth()
+            .form("admin", "admin", formConfig)
             .and()
             .contentType(ContentType.JSON)
             .body(rating)
@@ -108,12 +100,10 @@ public class LiveTest {
     public void whenAddnewBook_thenSuccess() {
         final Book book = new Book("Baeldung", "How to spring cloud");
 
-        SessionData sessionData = login("admin", "admin");
-
         // request the protected resource
         final Response bookResponse = RestAssured.given()
-            .header("X-XSRF-TOKEN", sessionData.getCsrf())
-            .filter(sessionFilter)
+            .auth()
+            .form("admin", "admin", formConfig)
             .and()
             .contentType(ContentType.JSON)
             .body(book)
@@ -204,60 +194,4 @@ public class LiveTest {
         }
     }
 
-    private SessionData login(String username, String password) {
-        sessionFilter = new SessionFilter();
-        Response getLoginResponse = RestAssured.given()
-            .filter(sessionFilter)
-            .when()
-            .get("/login.html")
-            .then()
-            .extract()
-            .response();
-
-        String csrfToken = getLoginResponse.cookie("XSRF-TOKEN");
-
-        RestAssured.given().log().all().
-            filter(sessionFilter)
-            .header("X-XSRF-TOKEN", csrfToken)
-            .param("username", username)
-            .param("password", password)
-            .when()
-            .post("/login");
-
-        Response afterLoginResponse = RestAssured.given()
-            .filter(sessionFilter)
-            .when()
-            .get("/")
-            .then()
-            .extract()
-            .response();
-
-        return new SessionData(afterLoginResponse.cookie("XSRF-TOKEN"), sessionFilter.getSessionId());
-    }
-
-    private class SessionData {
-        private String csrf;
-        private String session;
-
-        public SessionData(String csrf, String session) {
-            this.csrf = csrf;
-            this.session = session;
-        }
-
-        public String getCsrf() {
-            return csrf;
-        }
-
-        public void setCsrf(String csrf) {
-            this.csrf = csrf;
-        }
-
-        public String getSession() {
-            return session;
-        }
-
-        public void setSession(String session) {
-            this.session = session;
-        }
-    }
 }
