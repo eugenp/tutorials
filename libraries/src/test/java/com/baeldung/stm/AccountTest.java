@@ -1,7 +1,9 @@
 package com.baeldung.stm;
 
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -26,14 +28,20 @@ public class AccountTest {
         assertThat(a.getBalance()).isEqualTo(5);
     }
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void givenAccount_whenIncrementTooMuch_thenShouldThrow() {
         //given
         Account a = new Account(10);
+        thrown.expect(IllegalArgumentException.class);
 
         //when
         a.adjustBy(-11);
+
+        //then
+        assertThat(a.getBalance()).isEqualTo(10);
     }
 
     @Test
