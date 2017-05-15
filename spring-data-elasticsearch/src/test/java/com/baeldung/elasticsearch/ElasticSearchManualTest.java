@@ -24,7 +24,7 @@ import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class ElasticSearchUnitTest {
+public class ElasticSearchManualTest {
     private List<Person> listOfPersons = new ArrayList<>();
     private Client client = null;
 
