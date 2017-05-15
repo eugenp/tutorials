@@ -6,9 +6,9 @@ import com.baeldung.persistence.model.Foo;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class FooDao extends AbstractHibernateDao<Foo> implements IFooDao {
+public class FooHibernateDao extends AbstractHibernateDao<Foo> implements IFooDao {
 
-    public FooDao() {
+    public FooHibernateDao() {
         super();
 
         setClazz(Foo.class);

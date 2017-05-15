@@ -1,9 +1,8 @@
-package com.baeldung.persistence.service;
-
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+package com.baeldung.persistence.dao.common;
 
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.spring.PersistenceConfig;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -17,17 +16,12 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooServiceBasicPersistenceIntegrationTest {
+public class HibernateDaoIntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Autowired
-    private IFooService fooService;
-
     private Session session;
-
-    // tests
 
     @Before
     public final void before() {
@@ -39,16 +33,14 @@ public class FooServiceBasicPersistenceIntegrationTest {
         session.close();
     }
 
-    // tests
-
     @Test
     public final void whenContextIsBootstrapped_thenNoExceptions() {
         //
     }
 
     @Test
-    public final void whenEntityIsCreated_thenNoExceptions() {
-        fooService.create(new Foo(randomAlphabetic(6)));
+    public final void whenPersistEntity_thenSuccess() {
+        session.persist(new Foo(RandomStringUtils.randomAlphabetic(5).toUpperCase()));
     }
 
 }
