@@ -10,6 +10,7 @@ import org.junit.runners.Suite;
     JPASpecificationLiveTest.class
     ,FooDiscoverabilityLiveTest.class
     ,FooLiveTest.class
+    ,FooPageableLiveTest.class
     ,MyUserLiveTest.class
 }) //
 public class LiveTestSuite {

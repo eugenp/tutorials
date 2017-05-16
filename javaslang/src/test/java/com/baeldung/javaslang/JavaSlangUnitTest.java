@@ -1,12 +1,16 @@
 package com.baeldung.javaslang;
 
-import static javaslang.API.$;
-import static javaslang.API.Case;
-import static javaslang.API.Match;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import javaslang.Function0;
+import javaslang.Function1;
+import javaslang.Function2;
+import javaslang.Function5;
+import javaslang.Lazy;
+import javaslang.*;
+import javaslang.collection.List;
+import javaslang.control.Option;
+import javaslang.control.Try;
+import javaslang.control.Validation;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,20 +18,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-import org.junit.Test;
-
-import javaslang.Function0;
-import javaslang.Function1;
-import javaslang.Function2;
-import javaslang.Function5;
-import javaslang.Lazy;
-import javaslang.Tuple;
-import javaslang.Tuple2;
-import javaslang.Tuple3;
-import javaslang.collection.List;
-import javaslang.control.Option;
-import javaslang.control.Try;
-import javaslang.control.Validation;
+import static javaslang.API.*;
+import static org.junit.Assert.*;
 
 public class JavaSlangUnitTest {
     @Test
@@ -127,7 +119,7 @@ public class JavaSlangUnitTest {
     public void whenCreatesFunction_thenCorrect0() {
         Function0<String> getClazzName = () -> this.getClass().getName();
         String clazzName = getClazzName.apply();
-        assertEquals("com.baeldung.javaslang.JavaSlangTest", clazzName);
+        assertEquals("com.baeldung.javaslang.JavaSlangUnitTest", clazzName);
     }
 
     @Test
