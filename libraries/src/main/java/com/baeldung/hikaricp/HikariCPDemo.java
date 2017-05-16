@@ -35,4 +35,8 @@ public class HikariCPDemo {
 		return employees;
 	}
 
+	public static void main(String[] args) {
+		fetchData();
+	}
+	
 }
