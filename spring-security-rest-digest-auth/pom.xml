@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-rest-digest-auth</artifactId>
@@ -11,8 +12,8 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
+    </parent>
+
     <dependencies>
 
         <!-- Spring Security -->
@@ -94,7 +95,7 @@
             <artifactId>spring-web</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-		
+
         <!-- marshalling -->
 
         <dependency>
@@ -153,41 +154,12 @@
             <version>${guava.version}</version>
         </dependency>
 
-        <!-- logging -->
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-        </dependency>
-
         <!-- test scoped -->
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -289,7 +261,7 @@
             </build>
         </profile>
     </profiles>
-    
+
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
@@ -316,9 +288,6 @@
         <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <mockito.version>1.10.19</mockito.version>
-
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- Maven plugins -->
