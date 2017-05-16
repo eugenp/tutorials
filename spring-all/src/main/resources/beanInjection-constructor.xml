@@ -9,15 +9,7 @@
 			<ref bean="helm" />
 		</constructor-arg>
 	</bean>
-	
-	<bean id="MyEntertainmentCenter" class="org.baeldung.bean.injection.tv.MyEntertainmentCenter">
-		<constructor-arg>
-			<ref bean="VerizonFiosTvProvider" />
-		</constructor-arg>
-	</bean>
 
 	<bean id="helm" class="org.baeldung.bean.injection.Helm" />
-	<bean id="TimeWarnerCableTvProvider" class="org.baeldung.bean.injection.tv.TimeWarnerCableTvImpl" />
-	<bean id="VerizonFiosTvProvider" class="org.baeldung.bean.injection.tv.VerizonFiosTvImpl" />
 
 </beans>
