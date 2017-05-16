@@ -21,10 +21,6 @@ public class StringHelper {
     public static String removeLastCharRegexOptional(String s) {
         return Optional.ofNullable(s)
             .map(str -> str.replaceAll(".$", ""))
-<<<<<<< HEAD
             .orElse(s);
-=======
-            .orElse(null);
->>>>>>> refs/remotes/eugenp/master
     }
 }
