@@ -4,34 +4,47 @@ import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SplitUnitTest {
 
     @Test
-    public void givenString_whenSplit_thenRetrunsArray_through_JavaLangString() {
-        assertArrayEquals("split by comma", Arrays.asList("peter", "james", "thomas").toArray(), "peter,james,thomas".split(","));
-        assertArrayEquals("split by whitespace", Arrays.asList("car", "jeep", "scooter").toArray(), "car jeep scooter".split(" "));
-        assertArrayEquals("split by hyphen", Arrays.asList("1", "120", "232323").toArray(), "1-120-232323".split("-"));
-        assertArrayEquals("split by dot", Arrays.asList("192", "168", "1", "178").toArray(), "192.168.1.178".split("\\."));
-        assertArrayEquals("split by a regex", Arrays.asList("b", "a", "e", "l", "d", "u", "n", "g").toArray(),
-                          "b a, e, l.d u, n g".split("\\s+|,\\s*|\\.\\s*"));
+    public void givenString_whenSplit_thenReturnsArray_through_JavaLangString() {
+        assertThat("peter,james,thomas".split(","))
+          .containsExactly("peter", "james", "thomas");
+
+        assertThat("car jeep scooter".split(" "))
+          .containsExactly("car", "jeep", "scooter");
+
+        assertThat("1-120-232323".split("-"))
+          .containsExactly("1", "120", "232323");
+
+        assertThat("192.168.1.178".split("\\."))
+          .containsExactly("192", "168", "1", "178");
+
+        assertThat("b a, e, l.d u, n g".split("\\s+|,\\s*|\\.\\s*"))
+          .containsExactly("b", "a", "e", "l", "d", "u", "n", "g");
     }
 
     @Test
-    public void givenString_whenSplit_thenRetrunsArray_through_StringUtils() {
+    public void givenString_whenSplit_thenReturnsArray_through_StringUtils() {
         StringUtils.split("car jeep scooter");
 
-        assertArrayEquals("split by whitespace", Arrays.asList("car", "jeep", "scooter").toArray(), StringUtils.split("car jeep scooter"));
-        assertArrayEquals("split by space, extra spaces ignored", Arrays.asList("car", "jeep", "scooter").toArray(),
-                          StringUtils.split("car    jeep   scooter"));
-        assertArrayEquals("split by colon", Arrays.asList("car", "jeep", "scooter").toArray(), StringUtils.split("car:jeep:scooter", ":"));
-        assertArrayEquals("split by dot", Arrays.asList("car", "jeep", "scooter").toArray(), StringUtils.split("car.jeep.scooter", "."));
+        assertThat(StringUtils.split("car jeep scooter"))
+          .containsExactly("car", "jeep", "scooter");
+
+        assertThat(StringUtils.split("car    jeep   scooter"))
+          .containsExactly("car", "jeep", "scooter");
+
+        assertThat(StringUtils.split("car:jeep:scooter", ":"))
+          .containsExactly("car", "jeep", "scooter");
+
+        assertThat(StringUtils.split("car.jeep.scooter", "."))
+          .containsExactly("car", "jeep", "scooter");
     }
 
     @Test
@@ -40,6 +53,7 @@ public class SplitUnitTest {
         Iterable<String> result = Splitter.on(',').trimResults().omitEmptyStrings().split("car,jeep,,   scooter");
         List<String> resultList = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
 
-        assertEquals(Arrays.asList("car", "jeep", "scooter") , resultList);
+        assertThat(resultList)
+          .containsExactly("car", "jeep", "scooter");
     }
 }
