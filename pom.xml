@@ -221,6 +221,7 @@
         <module>spring-data-gemfire</module>
         <module>mybatis</module>
         <module>spring-drools</module>
+        <module>drools</module>
     </modules>
 
     <dependencies>
