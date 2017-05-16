@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -231,25 +231,25 @@
             <artifactId>datanucleus-xml</artifactId>
             <version>5.0.0-release</version>
         </dependency>
-
         <dependency>
             <groupId>org.multiverse</groupId>
             <artifactId>multiverse-core</artifactId>
-            <version>0.7.0</version>
+            <version>${multiverse.version}</version>
         </dependency>
-    		<dependency>
-			      <groupId>com.zaxxer</groupId>
-			      <artifactId>HikariCP</artifactId>
-			      <version>2.6.1</version>
-			      <scope>compile</scope>
-		    </dependency>
-		    <dependency>
-			      <groupId>org.postgresql</groupId>
-			      <artifactId>postgresql</artifactId>
-			      <version>42.0.0</version>
-		        </dependency>
-        </dependencies>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>2.6.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.0.0</version>
+        </dependency>
+    </dependencies>
     <properties>
+        <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.5</commons-lang.version>
         <jasypt.version>1.9.2</jasypt.version>
