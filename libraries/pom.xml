@@ -265,9 +265,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.0.0</version>
+	    <groupId>com.h2database</groupId> 
+	    <artifactId>h2</artifactId> 
+	    <version>1.4.195</version> 
         </dependency>
     </dependencies>
     <properties>
