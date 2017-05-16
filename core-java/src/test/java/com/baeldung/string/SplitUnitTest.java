@@ -2,11 +2,10 @@ package com.baeldung.string;
 
 import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
+import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -51,7 +50,7 @@ public class SplitUnitTest {
     public void givenString_whenSplit_thenReturnsIterable_Splitter() {
         //given
         Iterable<String> result = Splitter.on(',').trimResults().omitEmptyStrings().split("car,jeep,,   scooter");
-        List<String> resultList = StreamSupport.stream(result.spliterator(), false).collect(Collectors.toList());
+        List<String> resultList = Lists.newArrayList(result);
 
         assertThat(resultList)
           .containsExactly("car", "jeep", "scooter");
