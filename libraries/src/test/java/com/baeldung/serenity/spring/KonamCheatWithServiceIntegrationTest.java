@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
  * @author aiet
  */
 @RunWith(SerenityRunner.class)
-public class KonamCheatWithServiceTest {
+public class KonamCheatWithServiceIntegrationTest {
 
     @Steps private KonamiCodeServiceInjectionSteps cheatSteps;
 

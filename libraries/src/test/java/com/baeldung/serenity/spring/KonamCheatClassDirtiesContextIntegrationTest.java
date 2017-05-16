@@ -22,7 +22,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER
 @Suite.SuiteClasses({
                       KonamCheatClassDirtiesContextTest.DirtiesContextTest.class, KonamCheatClassDirtiesContextTest.AnotherDirtiesContextTest.class
                     })
-public class KonamCheatClassDirtiesContextTest {
+public class KonamCheatClassDirtiesContextIntegrationTest {
 
     @RunWith(SerenityRunner.class)
     @ContextConfiguration(classes = KonamiCodeService.class)

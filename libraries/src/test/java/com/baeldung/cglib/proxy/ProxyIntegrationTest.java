@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ProxyTest {
+public class ProxyIntegrationTest {
     @Test
     public void givenPersonService_whenSayHello_thenReturnResult() {
         //given

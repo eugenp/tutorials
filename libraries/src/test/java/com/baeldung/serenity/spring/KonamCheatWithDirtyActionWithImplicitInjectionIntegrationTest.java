@@ -19,7 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 @RunWith(SerenityRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @ContextConfiguration(classes = KonamiCodeService.class)
-public class KonamCheatWithDirtyActionWithImplicitInjectionTest {
+public class KonamCheatWithDirtyActionWithImplicitInjectionIntegrationTest {
 
     @Steps private KonamiCodeServiceInjectionSteps cheatSteps;
 

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.codahale.metrics.*;
 
-public class ReporterTest {
+public class ReporterIntegrationTest {
     @Test
     public void whenConsoleReporter_thenOutputReport() {
         MetricRegistry metricRegistry = new MetricRegistry();

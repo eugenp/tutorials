@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
  * @author aiet
  */
 @RunWith(SerenityRunner.class)
-public class KonamiCodeMockMvcTest {
+public class KonamiCodeMockMvcIntegrationTest {
 
     @Before
     public void init() {

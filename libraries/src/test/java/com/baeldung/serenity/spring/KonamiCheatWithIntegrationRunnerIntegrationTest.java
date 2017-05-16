@@ -1,8 +1,7 @@
 package com.baeldung.serenity.spring;
 
 import com.baeldung.serenity.spring.steps.KonamiCheatSteps;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.serenitybdd.junit.spring.integration.SpringIntegrationMethodRule;
+import net.serenitybdd.junit.spring.integration.SpringIntegrationSerenityRunner;
 import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.annotations.Title;
 import org.junit.*;
@@ -15,11 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 /**
  * Unit test for simple App.
  */
-@RunWith(SerenityRunner.class)
+@RunWith(SpringIntegrationSerenityRunner.class)
 @ContextConfiguration(locations = "classpath:konami-cheat-beans.xml")
-public class KonamiCheatWithIntegrationMethodRulesTest {
+public class KonamiCheatWithIntegrationRunnerIntegrationTest {
 
-    private static Logger LOG = LoggerFactory.getLogger(KonamiCheatWithIntegrationMethodRulesTest.class);
+    private static Logger LOG = LoggerFactory.getLogger(KonamiCheatWithIntegrationRunnerIntegrationTest.class);
 
     @BeforeClass
     public static void initClass() {
@@ -42,8 +41,6 @@ public class KonamiCheatWithIntegrationMethodRulesTest {
         LOG.info("cheatcode after test: {}", cheatCode);
     }
 
-    @Rule public SpringIntegrationMethodRule springMethodIntegration = new SpringIntegrationMethodRule();
-
     @Steps private KonamiCheatSteps konamiCheatSteps;
 
     @Value("#{konami_props['code']}") private String cheatCode;
@@ -51,7 +48,7 @@ public class KonamiCheatWithIntegrationMethodRulesTest {
     private static String staticCheatCode;
 
     @Test
-    @Title("hidden stage should be unlocked after cheating (rule integration)")
+    @Title("hidden stage should be unlocked after cheating (with integration runner)")
     public void givenGameStageCleared_whenCheat_thenHiddenStageUnlocked() {
         konamiCheatSteps.gameStageCleared();
         konamiCheatSteps.cheatWith(cheatCode);

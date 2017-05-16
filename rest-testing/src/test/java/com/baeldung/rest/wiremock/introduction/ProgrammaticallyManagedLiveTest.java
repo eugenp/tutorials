@@ -20,7 +20,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.junit.Assert.assertEquals;
 
-public class ProgrammaticallyManaged {
+public class ProgrammaticallyManagedLiveTest {
 
     private static final String BAELDUNG_PATH = "/baeldung";
 

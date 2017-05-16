@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ScopesTest {
+public class ScopesIntegrationTest {
 
     private static final String NAME = "John Smith";
     private static final String NAME_OTHER = "Anna Jones";
