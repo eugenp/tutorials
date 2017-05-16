@@ -164,6 +164,18 @@
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -263,6 +275,8 @@
         <easymock.version>3.4</easymock.version>
         <assertj.version>3.6.1</assertj.version>
         <jasperreports.version>6.4.0</jasperreports.version>
+
+        <log4j.version>2.8.2</log4j.version>
 
     </properties>
 
