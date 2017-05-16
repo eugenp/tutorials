@@ -70,7 +70,7 @@ public class JavaFilePathUnitTest {
     }
 
     @Test(expected = IOException.class)
-    public void givenWindowsOs_whenIOException_thenSuccess() throws IOException {
+    public void givenWindowsOs_whenCanonicalPathWithWildcard_thenIOException() throws IOException {
         Assume.assumeTrue(isWindows());
         new File("*").getCanonicalPath();
     }
