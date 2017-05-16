@@ -66,9 +66,7 @@ public class SharedObjectWithLockManualTest {
 
 	private void executeThreads(SharedObjectWithLock object, int threadCount, ExecutorService service) {
 		for (int i = 0; i < threadCount; i++) {
-			service.execute(() -> {
-				object.perform();
-			});
+			service.execute(object::perform);
 		}
 	}
 
