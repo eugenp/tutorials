@@ -1,6 +1,11 @@
 package com.baeldung.java.map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class MyKey {
+    private static final Logger LOG = LoggerFactory.getLogger(MyKey.class);
+    
     private String name;
     private int id;
 
@@ -27,7 +32,7 @@ public class MyKey {
 
     @Override
     public int hashCode() {
-        System.out.println("Calling hashCode()");
+        LOG.debug("Calling hashCode()");
         return id;
     }
 
@@ -38,7 +43,7 @@ public class MyKey {
 
     @Override
     public boolean equals(Object obj) {
-        System.out.println("Calling equals() for key: " + obj);
+        LOG.debug("Calling equals() for key: " + obj);
         if (this == obj)
             return true;
         if (obj == null)

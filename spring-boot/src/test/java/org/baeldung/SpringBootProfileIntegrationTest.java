@@ -1,8 +1,5 @@
 package org.baeldung;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.baeldung.config.H2TestProfileJPAConfig;
 import org.baeldung.domain.GenericEntity;
 import org.baeldung.repository.GenericEntityRepository;
@@ -11,9 +8,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = { Application.class, H2TestProfileJPAConfig.class })
 @ActiveProfiles("test")
 public class SpringBootProfileIntegrationTest {
