@@ -32,7 +32,7 @@ public class AccountTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void givenAccount_whenIncrementTooMuch_thenShouldThrow() {
+    public void givenAccount_whenDecrementTooMuch_thenShouldThrow() {
         //given
         Account a = new Account(10);
         thrown.expect(IllegalArgumentException.class);
