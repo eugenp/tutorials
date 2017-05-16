@@ -21,6 +21,6 @@ public class StringHelper {
     public static String removeLastCharRegexOptional(String s) {
         return Optional.ofNullable(s)
             .map(str -> str.replaceAll(".$", ""))
-            .orElse(null);
+            .orElse(s);
     }
 }
