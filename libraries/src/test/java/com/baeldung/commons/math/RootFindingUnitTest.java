@@ -6,7 +6,7 @@ import org.apache.commons.math3.analysis.solvers.UnivariateSolver;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class RootFindingTests {
+public class RootFindingUnitTest {
 
     @Test
     public void whenUnivariateSolverSolver_thenCorrect() {

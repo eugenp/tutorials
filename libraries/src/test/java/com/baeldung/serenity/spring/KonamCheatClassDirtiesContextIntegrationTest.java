@@ -20,9 +20,9 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-                      KonamCheatClassDirtiesContextTest.DirtiesContextTest.class, KonamCheatClassDirtiesContextTest.AnotherDirtiesContextTest.class
+                      KonamCheatClassDirtiesContextIntegrationTest.DirtiesContextTest.class, KonamCheatClassDirtiesContextIntegrationTest.AnotherDirtiesContextTest.class
                     })
-public class KonamCheatClassDirtiesContextTest {
+public class KonamCheatClassDirtiesContextIntegrationTest {
 
     @RunWith(SerenityRunner.class)
     @ContextConfiguration(classes = KonamiCodeService.class)

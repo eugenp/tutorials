@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class RxJavaTesting {
+public class RxJavaUnitTest {
     @Test
     public void givenObservable_whenZip_shouldAssertBlockingInASameThread() {
         // given

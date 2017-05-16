@@ -1,7 +1,7 @@
-package com.baeldung.web.rest;
+package com.gateway.web.rest;
 
 import io.github.jhipster.config.JHipsterProperties;
-import com.baeldung.BaeldungApp;
+import com.gateway.GatewayApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ProfileInfoResource
  **/
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = BaeldungApp.class)
-public class ProfileInfoResourceIntTest {
+@SpringBootTest(classes = GatewayApp.class)
+public class ProfileInfoResourceIntegrationTest {
 
     @Mock
     private Environment environment;

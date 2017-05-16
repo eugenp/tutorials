@@ -13,7 +13,7 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
-public class ProtobufTest {
+public class ProtobufUnitTest {
     private final String filePath = "address_book";
 
     @After
