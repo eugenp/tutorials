@@ -4,18 +4,18 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-introduction</artifactId>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>apache-cxf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <properties>
         <cxf.version>3.1.8</cxf.version>
-        <surefire.version>2.19.1</surefire.version>        
+        <surefire.version>2.19.1</surefire.version>
     </properties>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -36,7 +36,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>

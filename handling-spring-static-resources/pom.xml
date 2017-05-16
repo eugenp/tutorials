@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
@@ -8,6 +9,12 @@
     <packaging>war</packaging>
 
     <name>spring-static-resources</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <!-- Spring Security -->
@@ -115,7 +122,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
@@ -134,31 +141,6 @@
             <groupId>com.github.jknack</groupId>
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
-        </dependency>
-
-        <!-- logging -->
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-        </dependency>
-        <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
         </dependency>
 
     </dependencies>
@@ -219,11 +201,7 @@
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-
-        <!-- various 1.3.2-->
+        <!-- various 1.3.2 -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <handlebars.version>4.0.6</handlebars.version>
         <joda-time.version>2.9.6</joda-time.version>

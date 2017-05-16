@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -43,7 +44,6 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
           .isEqualTo("helloworld");
     }
 
@@ -56,7 +56,6 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
           .isEqualTo("helloworld");
     }
 
@@ -70,11 +69,11 @@ public class FunctionalWebApplicationIntegrationTest {
           .post()
           .uri("/login")
           .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-          .exchange(BodyInserters.fromFormData(formData))
+          .body(BodyInserters.fromFormData(formData))
+          .exchange()
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
           .isEqualTo("welcome back!");
     }
 
@@ -88,7 +87,8 @@ public class FunctionalWebApplicationIntegrationTest {
           .post()
           .uri("/login")
           .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-          .exchange(BodyInserters.fromFormData(formData))
+          .body(BodyInserters.fromFormData(formData))
+          .exchange()
           .expectStatus()
           .isBadRequest();
     }
@@ -100,11 +100,11 @@ public class FunctionalWebApplicationIntegrationTest {
           .post()
           .uri("/upload")
           .contentType(MediaType.MULTIPART_FORM_DATA)
-          .exchange(fromResource(resource))
+          .body(fromResource(resource))
+          .exchange()
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
           .isEqualTo(String.valueOf(resource.contentLength()));
     }
 
@@ -116,14 +116,14 @@ public class FunctionalWebApplicationIntegrationTest {
           .exchange()
           .expectStatus()
           .isOk()
-          .expectBody(Actor.class)
-          .list()
+          .expectBodyList(Actor.class)
           .hasSize(2);
 
         client
           .post()
           .uri("/actor")
-          .exchange(fromObject(new Actor("Clint", "Eastwood")))
+          .body(fromObject(new Actor("Clint", "Eastwood")))
+          .exchange()
           .expectStatus()
           .isOk();
 
@@ -133,8 +133,7 @@ public class FunctionalWebApplicationIntegrationTest {
           .exchange()
           .expectStatus()
           .isOk()
-          .expectBody(Actor.class)
-          .list()
+          .expectBodyList(Actor.class)
           .hasSize(3);
     }
 
@@ -147,7 +146,6 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectStatus()
           .isOk()
           .expectBody(String.class)
-          .value()
           .isEqualTo("hello");
     }
 
