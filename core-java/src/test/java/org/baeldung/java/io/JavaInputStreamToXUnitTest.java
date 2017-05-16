@@ -210,5 +210,24 @@ public class JavaInputStreamToXUnitTest {
 
         FileUtils.copyInputStreamToFile(initialStream, targetFile);
     }
+    
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInputStreamToString_thenCorrect() throws IOException {
+        String originalString = randomAlphabetic(8);
+        InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[1024];
+        while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+
+        buffer.flush();
+        byte[] byteArray = buffer.toByteArray();
+        
+        String text = new String(byteArray, StandardCharsets.UTF_8);
+        assertThat(text, equalTo(originalString));
+    }
 
 }
