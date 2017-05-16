@@ -28,20 +28,13 @@ public class AccountTest {
         assertThat(a.getBalance()).isEqualTo(5);
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void givenAccount_whenDecrementTooMuch_thenShouldThrow() {
         //given
         Account a = new Account(10);
-        thrown.expect(IllegalArgumentException.class);
 
         //when
         a.adjustBy(-11);
-
-        //then
-        assertThat(a.getBalance()).isEqualTo(10);
     }
 
     @Test
