@@ -138,8 +138,8 @@ public class VavrUnitTest {
     @Test
     public void whenCreatesFunction_thenCorrect5() {
         Function5<String, String, String, String, String, String> concat = (a, b, c, d, e) -> a + b + c + d + e;
-        String finalString = concat.apply("Hello ", "world", "! ", "Learn ", "vavr");
-        assertEquals("Hello world! Learn vavr", finalString);
+        String finalString = concat.apply("Hello ", "world", "! ", "Learn ", "Vavr");
+        assertEquals("Hello world! Learn Vavr", finalString);
     }
 
     @Test
