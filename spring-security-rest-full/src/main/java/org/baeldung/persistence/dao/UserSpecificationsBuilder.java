@@ -1,20 +1,20 @@
 package org.baeldung.persistence.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.baeldung.persistence.model.User;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public final class UserSpecificationsBuilder {
 
     private final List<SpecSearchCriteria> params;
 
     public UserSpecificationsBuilder() {
-        params = new ArrayList<SpecSearchCriteria>();
+        params = new ArrayList<>();
     }
 
     // API
