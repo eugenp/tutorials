@@ -26,6 +26,11 @@ public class Rating {
         this.stars = stars;
     }
 
+    public Rating(Long bookId, int stars) {
+        this.bookId = bookId;
+        this.stars = stars;
+    }
+
     public Long getId() {
         return id;
     }
