@@ -1,4 +1,4 @@
-package com.baeldung.javaslang;
+package com.baeldung.vavr;
 
 public class Person {
     private String name;
