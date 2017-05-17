@@ -13,12 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = ReaderApplicationConfig.class)
 public class FileReaderTest {
 
-	@Autowired
+    @Autowired
     private ApplicationContext context;
-	
-	@Test
-	public void testGetFtpReader() {
-		FileReader service = context.getBean(FileReader.class);
+
+    @Test
+    public void testAutowiredAnnotation_WhenField_ThenInjected() {
+        FileReader service = context.getBean(FileReader.class);
         assertNotNull(service.getLocation());
-	}
+    }
 }

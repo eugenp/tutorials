@@ -13,12 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = "classpath:injectiontypes.xml")
 public class ReaderServiceTest {
 
-	@Autowired
+    @Autowired
     private ApplicationContext context;
-	
-	@Test
-	public void testGetFtpReader() {
-		ReaderService service = context.getBean(ReaderService.class);
+
+    @Test
+    public void testXMLBeanConfig_WhenSetter_ThenInjected() {
+        ReaderService service = context.getBean(ReaderService.class);
         assertNotNull(service.getFtpReader());
-	}
+    }
 }

@@ -5,10 +5,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.baeldung.beaninjection"})
+@ComponentScan(basePackages = { "com.baeldung.beaninjection" })
 public class ReaderApplicationConfig {
 
-	@Bean
+    @Bean
     public FtpReader exampleDAO() {
         return new FtpReader("localhost", 21);
     }

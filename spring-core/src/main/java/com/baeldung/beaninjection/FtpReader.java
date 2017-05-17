@@ -1,31 +1,28 @@
 package com.baeldung.beaninjection;
 
 public class FtpReader {
-	private String ftpHost = null;
-	private Integer ftpPort = null;
+    private String ftpHost = null;
+    private Integer ftpPort = null;
 
-	// Constructor with arguments
-	public FtpReader(String host, Integer port) {
-		this.ftpHost = host;
-		this.ftpPort = port;
-	}
+    // Constructor with arguments
+    public FtpReader(String host, Integer port) {
+        this.ftpHost = host;
+        this.ftpPort = port;
+    }
 
-	public String getFtpHost() {
-		return ftpHost;
-	}
-	
+    public String getFtpHost() {
+        return ftpHost;
+    }
 
-	public void setFtpHost(String ftpHost) {
-		this.ftpHost = ftpHost;
-	}
-	
+    public void setFtpHost(String ftpHost) {
+        this.ftpHost = ftpHost;
+    }
 
-	public Integer getFtpPort() {
-		return ftpPort;
-	}
-	
+    public Integer getFtpPort() {
+        return ftpPort;
+    }
 
-	public void setFtpPort(Integer ftpPort) {
-		this.ftpPort = ftpPort;
-	}
+    public void setFtpPort(Integer ftpPort) {
+        this.ftpPort = ftpPort;
+    }
 }

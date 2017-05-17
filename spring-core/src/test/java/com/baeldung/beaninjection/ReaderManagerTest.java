@@ -13,13 +13,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = ReaderApplicationConfig.class)
 public class ReaderManagerTest {
 
-	@Autowired
+    @Autowired
     private ApplicationContext context;
-	
-	@Test
-	public void testInjectedBeansGetters() {
-		ReaderManager service = context.getBean(ReaderManager.class);
+
+    @Test
+    public void testAutowiredAnnotation_WhenConstructorAndSetter_ThenInjected() {
+        ReaderManager service = context.getBean(ReaderManager.class);
         assertNotNull(service.getFtpReader());
         assertNotNull(service.getFileReader());
-	}
+    }
 }
