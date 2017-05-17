@@ -1,8 +1,10 @@
-package com.example;
+package com.demo.example;
 
 public class Person {
     private String name;
+
     private Integer age;
+
     private Address address;
 
     public Person(String name, Integer age, Address address) {
@@ -10,6 +12,10 @@ public class Person {
         this.name = name;
         this.age = age;
         this.address = address;
+    }
+
+    public Person() {
+        super();
     }
 
     public String getName() {

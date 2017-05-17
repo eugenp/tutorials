@@ -1,4 +1,4 @@
-package com.example;
+package com.demo.example;
 
 public class Address {
     private String country;
@@ -6,6 +6,10 @@ public class Address {
     public Address(String country) {
         super();
         this.country = country;
+    }
+
+    public Address() {
+        super();
     }
 
     public String getCountry() {
