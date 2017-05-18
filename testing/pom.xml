@@ -64,6 +64,19 @@
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>${truth.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.truth.extensions</groupId>
+            <artifactId>truth-java8-extension</artifactId>
+            <version>${truth.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
     <build>
         <plugins>
@@ -137,10 +150,11 @@
         <pitest.version>1.1.10</pitest.version>
         <junit.version>4.12</junit.version>
         <jacoco.version>0.7.7.201606060606</jacoco.version>
-        <guava.version>19.0</guava.version>
+        <guava.version>21.0</guava.version>
         <assertj-guava.version>3.1.0</assertj-guava.version>
         <junit.version>4.12</junit.version>
         <assertj-core.version>3.6.1</assertj-core.version>
+        <truth.version>0.32</truth.version>
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 </project>
