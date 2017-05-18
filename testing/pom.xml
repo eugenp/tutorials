@@ -62,7 +62,7 @@
             <groupId>com.google.truth.extensions</groupId>
             <artifactId>truth-java8-extension</artifactId>
             <version>${truth.version}</version>
-            <!--scope>test</scope-->
+            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
