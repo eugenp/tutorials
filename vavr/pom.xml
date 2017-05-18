@@ -2,11 +2,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>javaslang</artifactId>
+    <artifactId>vavr</artifactId>
     <version>1.0</version>
-    <name>javaslang</name>
-
-    <parent>
+    <name>vavr</name>
+	
+	<parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -14,19 +14,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.javaslang</groupId>
-            <artifactId>javaslang</artifactId>
-            <version>2.1.0-alpha</version>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr-test</artifactId>
+            <version>${vavr.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>io.javaslang</groupId>
-            <artifactId>javaslang-test</artifactId>
-            <version>${javaslang.test.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <javaslang.test.version>2.0.5</javaslang.test.version>
+        <vavr.version>0.9.0</vavr.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 </project>

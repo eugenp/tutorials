@@ -1,4 +1,4 @@
-package com.baeldung.javaslang.exception.handling.client;
+package com.baeldung.vavr.exception.handling.client;
 
 
 public interface HttpClient {

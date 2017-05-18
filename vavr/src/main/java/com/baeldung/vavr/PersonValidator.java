@@ -1,13 +1,13 @@
-package com.baeldung.javaslang;
+package com.baeldung.vavr;
 
-import javaslang.collection.List;
-import javaslang.control.Validation;
+import io.vavr.collection.Seq;
+import io.vavr.control.Validation;
 
 class PersonValidator {
     String NAME_ERR = "Invalid characters in name: ";
     String AGE_ERR = "Age must be at least 0";
 
-    public Validation<List<String>, Person> validatePerson(String name, int age) {
+    public Validation<Seq<String>, Person> validatePerson(String name, int age) {
         return Validation.combine(validateName(name), validateAge(age)).ap(Person::new);
     }
 
