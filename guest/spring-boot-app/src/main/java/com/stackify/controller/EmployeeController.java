@@ -16,8 +16,8 @@ import com.stackify.repository.EmployeeRepository;
 public class EmployeeController {
 
     private EmployeeRepository employeeRepository;
-	
-    public EmployeeController(EmployeeRepository employeeRepository){
+
+    public EmployeeController(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
 
