@@ -1,4 +1,7 @@
-=========
+### Relevant articles
+
+- [Spring Security and OpenID Connect](http://www.baeldung.com/spring-security-openid-connect)
+
 
 ## OpenID Connect with Spring Security
 
@@ -13,3 +16,4 @@ mvn spring-boot:run
 - Make sure you set redirect URI to http://localhost:8081/google-login
 
 - Once you have your client id and secret, make sure you add them to the `application.properties` of the project
+

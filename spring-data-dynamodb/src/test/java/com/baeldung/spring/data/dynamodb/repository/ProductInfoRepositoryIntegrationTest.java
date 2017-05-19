@@ -13,8 +13,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,9 +24,8 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringBootTest(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest
 @ActiveProfiles("local")
 @TestPropertySource(properties = { "amazon.dynamodb.endpoint=http://localhost:8000/", "amazon.aws.accesskey=test1", "amazon.aws.secretkey=test231" })
 public class ProductInfoRepositoryIntegrationTest {
@@ -44,8 +42,8 @@ public class ProductInfoRepositoryIntegrationTest {
     private static final String EXPECTED_PRICE = "50";
 
     @Before
-    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
-    public  void setup() throws Exception {
+    @Ignore // TODO Remove Ignore annotations when running locally with Local DynamoDB instance
+    public void setup() throws Exception {
 
         try {
             dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
@@ -64,7 +62,7 @@ public class ProductInfoRepositoryIntegrationTest {
     }
 
     @Test
-    @Ignore //TODO Remove Ignore annotations when running locally with Local DynamoDB instance
+    @Ignore // TODO Remove Ignore annotations when running locally with Local DynamoDB instance
     public void givenItemWithExpectedCost_whenRunFindAll_thenItemIsFound() {
 
         ProductInfo productInfo = new ProductInfo(EXPECTED_COST, EXPECTED_PRICE);

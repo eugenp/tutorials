@@ -2,6 +2,7 @@ package com.baeldung.hibernate;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ import com.baeldung.hibernate.pojo.Suppliers;
 
 public class MultiTenantHibernateTest {
 	@Test
-	public void givenDBMode_whenFetchingSuppliers_thenComparingFromDbs() throws UnsupportedTenancyException {
+	public void givenDBMode_whenFetchingSuppliers_thenComparingFromDbs() throws UnsupportedTenancyException, IOException {
 		SessionFactory sessionFactory = HibernateMultiTenantUtil.getSessionFactory();
 
 		Session db1Session = sessionFactory.withOptions().tenantIdentifier("mydb1").openSession();

@@ -1,0 +1,86 @@
+<div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 jhiTranslate="settings.title" translateValues="{username: '{{settingsAccount.login}}'}" *ngIf="settingsAccount">User settings for [<b>{{settingsAccount.login}}</b>]</h2>
+
+            <div class="alert alert-success" *ngIf="success" jhiTranslate="settings.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" (ngSubmit)="save()" #settingsForm="ngForm" *ngIf="settingsAccount" novalidate>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="firstName" jhiTranslate="settings.form.firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
+                           [(ngModel)]="settingsAccount.firstName" minlength=1 maxlength=50 #firstNameInput="ngModel" required>
+                    <div *ngIf="firstNameInput.dirty && firstNameInput.invalid">
+                        <small class="form-text text-danger"
+                           *ngIf="firstNameInput.errors.required" jhiTranslate="settings.messages.validate.firstname.required">
+                            Your first name is required.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="firstNameInput.errors.minlength" jhiTranslate="settings.messages.validate.firstname.minlength">
+                            Your first name is required to be at least 1 character.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="firstNameInput.errors.maxlength" jhiTranslate="settings.messages.validate.firstname.maxlength">
+                            Your first name cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="lastName" jhiTranslate="settings.form.lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"
+                           [(ngModel)]="settingsAccount.lastName" minlength=1 maxlength=50 #lastNameInput="ngModel" required>
+                    <div *ngIf="lastNameInput.dirty && lastNameInput.invalid">
+                        <small class="form-text text-danger"
+                           *ngIf="lastNameInput.errors.required" jhiTranslate="settings.messages.validate.lastname.required">
+                            Your last name is required.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="lastNameInput.errors.minlength" jhiTranslate="settings.messages.validate.lastname.minlength">
+                            Your last name is required to be at least 1 character.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="lastNameInput.errors.maxlength" jhiTranslate="settings.messages.validate.lastname.maxlength">
+                            Your last name cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="email" jhiTranslate="global.form.email">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                           [(ngModel)]="settingsAccount.email" minlength=5 maxlength=100 #emailInput="ngModel" required>
+                    <div *ngIf="emailInput.dirty && emailInput.invalid">
+                        <small class="form-text text-danger"
+                           *ngIf="emailInput.errors.required" jhiTranslate="global.messages.validate.email.required">
+                            Your e-mail is required.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="emailInput.errors.email" jhiTranslate="global.messages.validate.email.invalid">
+                            Your e-mail is invalid.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="emailInput.errors.minlength" jhiTranslate="global.messages.validate.email.minlength">
+                            Your e-mail is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                           *ngIf="emailInput.errors.maxlength" jhiTranslate="global.messages.validate.email.maxlength">
+                            Your e-mail cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="languages && languages.length > 0">
+                    <label for="langKey" jhiTranslate="settings.form.language">Language</label>
+                    <select class="form-control" id="langKey" name="langKey" [(ngModel)]="settingsAccount.langKey">
+                        <option *ngFor="let language of languages" [value]="language">{{language | findLanguageFromKey}}</option>
+                    </select>
+                </div>
+                <button type="submit" [disabled]="settingsForm.form.invalid" class="btn btn-primary" jhiTranslate="settings.form.button">Save</button>
+            </form>
+        </div>
+    </div>
+
+</div>

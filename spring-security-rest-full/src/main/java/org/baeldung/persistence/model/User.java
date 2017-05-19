@@ -81,9 +81,7 @@ public class User {
         if (getClass() != obj.getClass())
             return false;
         final User user = (User) obj;
-        if (!email.equals(user.email))
-            return false;
-        return true;
+        return email.equals(user.email);
     }
 
     @Override
