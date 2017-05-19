@@ -19,7 +19,7 @@ import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionPro
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.pojo.Suppliers;
+import com.baeldung.hibernate.pojo.Supplier;
 
 public class HibernateMultiTenantUtil {
 	private static SessionFactory sessionFactory;
@@ -48,7 +48,7 @@ public class HibernateMultiTenantUtil {
 	}
 
 	private static Class<?>[] getAnnotatedClasses() {
-		return new Class<?>[] { Suppliers.class };
+		return new Class<?>[] { Supplier.class };
 	}
 
 	private static ServiceRegistry configureServiceRegistry()
