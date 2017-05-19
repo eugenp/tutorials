@@ -1,7 +1,7 @@
 package com.baeldung;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,6 +17,8 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.ThrowingConsumer;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 
 public class DynamicTestsExample {
 
@@ -100,9 +102,9 @@ public class DynamicTestsExample {
         DomainNameResolver resolver = new DomainNameResolver();
         
         List<String> inputList =
-            new ArrayList<>(Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com"));
+           Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
         List<String> outputList =
-            new ArrayList<>(Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156"));
+            Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
         
         return inputList.stream().map(dom -> DynamicTest.dynamicTest("Resolving: " + dom, () -> {
             int id = inputList.indexOf(dom);
