@@ -1,22 +1,20 @@
-package com.baeldung.javaslang.exception.handling;
+package com.baeldung.vavr.exception.handling;
 
-import com.baeldung.javaslang.exception.handling.client.ClientException;
-import com.baeldung.javaslang.exception.handling.client.HttpClient;
-import com.baeldung.javaslang.exception.handling.client.Response;
-import javaslang.collection.Stream;
-import javaslang.control.Option;
-import javaslang.control.Try;
+import com.baeldung.vavr.exception.handling.client.ClientException;
+import com.baeldung.vavr.exception.handling.client.HttpClient;
+import com.baeldung.vavr.exception.handling.client.Response;
+import com.baeldung.vavr.exception.handling.VavrTry;
+
+import io.vavr.collection.Stream;
+import io.vavr.control.Option;
+import io.vavr.control.Try;
 import org.junit.Test;
 
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
-import static javaslang.API.Case;
-import static javaslang.API.Match;
-import static javaslang.Predicates.instanceOf;
+import static io.vavr.API.*;
+import static io.vavr.Predicates.instanceOf;
 import static org.junit.Assert.*;
 
-public class JavaslangTryUnitTest {
+public class VavrTryUnitTest {
 
     @Test
     public void givenHttpClient_whenMakeACall_shouldReturnSuccess() {
@@ -26,7 +24,7 @@ public class JavaslangTryUnitTest {
         HttpClient httpClient = () -> new Response(id);
 
         //when
-        Try<Response> response = new JavaslangTry(httpClient).getResponse();
+        Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
                 .map(this::actionThatTakesResponse)
                 .getOrElse(defaultChainedResult);
@@ -49,7 +47,7 @@ public class JavaslangTryUnitTest {
         };
 
         //when
-        Try<Response> response = new JavaslangTry(httpClient).getResponse();
+        Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
                 .map(this::actionThatTakesResponse)
                 .getOrElse(defaultChainedResult);
@@ -71,9 +69,9 @@ public class JavaslangTryUnitTest {
         };
 
         //when
-        Try<Response> recovered = new JavaslangTry(httpClient).getResponse()
+        Try<Response> recovered = new VavrTry(httpClient).getResponse()
                 .recover(r -> Match(r).of(
-                        Case(instanceOf(ClientException.class), defaultResponse)
+                        Case($(instanceOf(ClientException.class)), defaultResponse)
                 ));
 
         //then
@@ -93,10 +91,10 @@ public class JavaslangTryUnitTest {
         };
 
         //when
-        Try<Response> recovered = new JavaslangTry(httpClient).getResponse()
+        Try<Response> recovered = new VavrTry(httpClient).getResponse()
                 .recover(r -> Match(r).of(
-                        Case(instanceOf(ClientException.class), defaultResponse),
-                        Case(instanceOf(IllegalArgumentException.class), defaultResponse)
+                        Case($(instanceOf(ClientException.class)), defaultResponse),
+                        Case($(instanceOf(IllegalArgumentException.class)), defaultResponse)
                 ));
 
         //then

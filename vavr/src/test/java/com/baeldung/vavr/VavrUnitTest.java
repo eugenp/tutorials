@@ -1,16 +1,20 @@
-package com.baeldung.javaslang;
+package com.baeldung.vavr;
 
-import javaslang.Function0;
-import javaslang.Function1;
-import javaslang.Function2;
-import javaslang.Function5;
-import javaslang.Lazy;
-import javaslang.*;
-import javaslang.collection.List;
-import javaslang.control.Option;
-import javaslang.control.Try;
-import javaslang.control.Validation;
+import io.vavr.Function0;
+import io.vavr.Function1;
+import io.vavr.Function2;
+import io.vavr.Function5;
+import io.vavr.Lazy;
+import io.vavr.*;
+import io.vavr.collection.List;
+import io.vavr.collection.Seq;
+import io.vavr.control.Option;
+import io.vavr.control.Try;
+import io.vavr.control.Validation;
 import org.junit.Test;
+
+import com.baeldung.vavr.Person;
+import com.baeldung.vavr.PersonValidator;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,13 +22,14 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-import static javaslang.API.*;
+import static io.vavr.API.*;
 import static org.junit.Assert.*;
 
-public class JavaSlangUnitTest {
+public class VavrUnitTest {
     @Test
     public void givenList_whenSorts_thenCorrect() {
-        List<Integer> sortedList = List.of(3, 2, 1).sorted();
+        List<Integer> sortedList = List.of(3, 2, 1)
+            .sorted();
     }
 
     /*
@@ -57,9 +62,9 @@ public class JavaSlangUnitTest {
     @Test
     public void givenTuple_whenMapsComponentWise_thenCorrect() {
         Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
-        Tuple2<String, Integer> mapOfJava8 = java8.map(s -> s + "slang", i -> i / 2);
+        Tuple2<String, Integer> mapOfJava8 = java8.map(s -> s + "Vavr", i -> i / 2);
         int num = mapOfJava8._2();
-        assertEquals("Javaslang", mapOfJava8._1);
+        assertEquals("JavaVavr", mapOfJava8._1);
 
         assertEquals(4, num);
 
@@ -69,9 +74,9 @@ public class JavaSlangUnitTest {
     @Test
     public void givenTuple_whenMapsWithOneMapper_thenCorrect() {
         Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
-        Tuple2<String, Integer> mapOfJava8 = java8.map((s, i) -> Tuple.of(s + "slang", i / 2));
+        Tuple2<String, Integer> mapOfJava8 = java8.map((s, i) -> Tuple.of(s + "Vavr", i / 2));
         int num = mapOfJava8._2();
-        assertEquals("Javaslang", mapOfJava8._1);
+        assertEquals("JavaVavr", mapOfJava8._1);
 
         assertEquals(4, num);
     }
@@ -80,8 +85,8 @@ public class JavaSlangUnitTest {
     @Test
     public void givenTuple_whenTransforms_thenCorrect() {
         Tuple2<String, Integer> java8 = Tuple.of("Java", 8);
-        String transformed = java8.apply((s, i) -> s + "slang " + i / 2);
-        assertEquals("Javaslang 4", transformed);
+        String transformed = java8.apply((s, i) -> s + "Vavr " + i / 2);
+        assertEquals("JavaVavr 4", transformed);
     }
 
     /*
@@ -102,14 +107,14 @@ public class JavaSlangUnitTest {
     }
 
     @Test
-    public void givenJavaslangFunction_whenWorks_thenCorrect() {
+    public void givenVavrFunction_whenWorks_thenCorrect() {
         Function1<Integer, Integer> square = (num) -> num * num;
         Integer result = square.apply(2);
         assertEquals(Integer.valueOf(4), result);
     }
 
     @Test
-    public void givenJavaslangBiFunction_whenWorks_thenCorrect() {
+    public void givenVavrBiFunction_whenWorks_thenCorrect() {
         Function2<Integer, Integer, Integer> sum = (num1, num2) -> num1 + num2;
         Integer result = sum.apply(5, 7);
         assertEquals(Integer.valueOf(12), result);
@@ -117,9 +122,10 @@ public class JavaSlangUnitTest {
 
     @Test
     public void whenCreatesFunction_thenCorrect0() {
-        Function0<String> getClazzName = () -> this.getClass().getName();
+        Function0<String> getClazzName = () -> this.getClass()
+            .getName();
         String clazzName = getClazzName.apply();
-        assertEquals("com.baeldung.javaslang.JavaSlangUnitTest", clazzName);
+        assertEquals("com.baeldung.vavr.VavrUnitTest", clazzName);
     }
 
     @Test
@@ -132,8 +138,8 @@ public class JavaSlangUnitTest {
     @Test
     public void whenCreatesFunction_thenCorrect5() {
         Function5<String, String, String, String, String, String> concat = (a, b, c, d, e) -> a + b + c + d + e;
-        String finalString = concat.apply("Hello ", "world", "! ", "Learn ", "Javaslang");
-        assertEquals("Hello world! Learn Javaslang", finalString);
+        String finalString = concat.apply("Hello ", "world", "! ", "Learn ", "Vavr");
+        assertEquals("Hello world! Learn Vavr", finalString);
     }
 
     @Test
@@ -146,7 +152,6 @@ public class JavaSlangUnitTest {
     public int sum(int a, int b) {
         return a + b;
     }
-
 
     /*
      * Values
@@ -207,11 +212,11 @@ public class JavaSlangUnitTest {
         assertEquals(-1, errorSentinel);
     }
 
-//    @Test(expected = ArithmeticException.class)
-//    public void givenBadCode_whenTryHandles_thenCorrect3() {
-//        Try<Integer> result = Try.of(() -> 1 / 0);
-//        result.getOrElseThrow(ArithmeticException::new);
-//    }
+    // @Test(expected = ArithmeticException.class)
+    // public void givenBadCode_whenTryHandles_thenCorrect3() {
+    // Try<Integer> result = Try.of(() -> 1 / 0);
+    // result.getOrElseThrow(ArithmeticException::new);
+    // }
 
     // lazy
     @Test
@@ -230,8 +235,8 @@ public class JavaSlangUnitTest {
     @Test
     public void whenValidationWorks_thenCorrect() {
         PersonValidator personValidator = new PersonValidator();
-        Validation<List<String>, Person> valid = personValidator.validatePerson("John Doe", 30);
-        Validation<List<String>, Person> invalid = personValidator.validatePerson("John? Doe!4", -1);
+        Validation<Seq<String>, Person> valid = personValidator.validatePerson("John Doe", 30);
+        Validation<Seq<String>, Person> invalid = personValidator.validatePerson("John? Doe!4", -1);
 
         assertEquals("Valid(Person [name=John Doe, age=30])", valid.toString());
         assertEquals("Invalid(List(Invalid characters in name: ?!4, Age must be at least 0))", invalid.toString());
@@ -251,12 +256,13 @@ public class JavaSlangUnitTest {
     @Test
     public void whenSumsJava8List_thenCorrect() {
         // Arrays.asList(1, 2, 3).stream().reduce((i, j) -> i + j);
-        int sum = IntStream.of(1, 2, 3).sum();
+        int sum = IntStream.of(1, 2, 3)
+            .sum();
         assertEquals(6, sum);
     }
 
     @Test
-    public void whenCreatesJavaslangList_thenCorrect() {
+    public void whenCreatesVavrList_thenCorrect() {
         List<Integer> intList = List.of(1, 2, 3);
         assertEquals(3, intList.length());
         assertEquals(new Integer(1), intList.get(0));
@@ -265,8 +271,10 @@ public class JavaSlangUnitTest {
     }
 
     @Test
-    public void whenSumsJavaslangList_thenCorrect() {
-        int sum = List.of(1, 2, 3).sum().intValue();
+    public void whenSumsVavrList_thenCorrect() {
+        int sum = List.of(1, 2, 3)
+            .sum()
+            .intValue();
         assertEquals(6, sum);
     }
 
@@ -324,7 +332,5 @@ public class JavaSlangUnitTest {
         String output = Match(input).of(Case($(1), "one"), Case($(2), "two"), Case($(3), "three"), Case($(), "?"));
         assertEquals("two", output);
     }
-
-
 
 }

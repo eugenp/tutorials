@@ -1,8 +1,8 @@
-package com.baeldung.javaslang.exception.handling;
+package com.baeldung.vavr.exception.handling;
 
-import com.baeldung.javaslang.exception.handling.client.ClientException;
-import com.baeldung.javaslang.exception.handling.client.HttpClient;
-import com.baeldung.javaslang.exception.handling.client.Response;
+import com.baeldung.vavr.exception.handling.client.ClientException;
+import com.baeldung.vavr.exception.handling.client.HttpClient;
+import com.baeldung.vavr.exception.handling.client.Response;
 
 public class JavaTryCatch {
     private HttpClient httpClient;

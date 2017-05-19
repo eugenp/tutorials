@@ -1,15 +1,15 @@
-package com.baeldung.javaslang;
+package com.baeldung.vavr;
 
-import javaslang.CheckedFunction1;
-import javaslang.collection.Stream;
-import javaslang.test.Arbitrary;
-import javaslang.test.CheckResult;
-import javaslang.test.Property;
+import io.vavr.CheckedFunction1;
+import io.vavr.collection.Stream;
+import io.vavr.test.Arbitrary;
+import io.vavr.test.CheckResult;
+import io.vavr.test.Property;
 import org.junit.Test;
 
 import java.util.function.Predicate;
 
-import static javaslang.API.*;
+import static io.vavr.API.*;
 
 public class PropertyBasedLongRunningUnitTest {
 
