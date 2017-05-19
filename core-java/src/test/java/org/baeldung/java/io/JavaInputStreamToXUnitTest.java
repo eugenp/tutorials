@@ -36,7 +36,7 @@ public class JavaInputStreamToXUnitTest {
 
         final StringBuilder textBuilder = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
-            int c = 0;
+            int c;
             while ((c = reader.read()) != -1) {
                 textBuilder.append((char) c);
             }
@@ -50,7 +50,7 @@ public class JavaInputStreamToXUnitTest {
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes()); // exampleString.getBytes(StandardCharsets.UTF_8);
 
         // When
-        String text = null;
+        String text;
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
             text = scanner.useDelimiter("\\A").next();
         }
@@ -81,7 +81,7 @@ public class JavaInputStreamToXUnitTest {
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
         // When
-        String text = null;
+        String text;
         try (final Reader reader = new InputStreamReader(inputStream)) {
             text = CharStreams.toString(reader);
         }
@@ -209,6 +209,25 @@ public class JavaInputStreamToXUnitTest {
         final File targetFile = new File("src/main/resources/targetFile.tmp");
 
         FileUtils.copyInputStreamToFile(initialStream, targetFile);
+    }
+    
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInputStreamToString_thenCorrect() throws IOException {
+        String originalString = randomAlphabetic(8);
+        InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[1024];
+        while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+
+        buffer.flush();
+        byte[] byteArray = buffer.toByteArray();
+        
+        String text = new String(byteArray, StandardCharsets.UTF_8);
+        assertThat(text, equalTo(originalString));
     }
 
 }
