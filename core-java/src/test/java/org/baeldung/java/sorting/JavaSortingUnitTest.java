@@ -1,34 +1,20 @@
 package org.baeldung.java.sorting;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
+import com.google.common.primitives.Ints;
 import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.primitives.Ints;
+import java.util.*;
+import java.util.Map.Entry;
+
+import static org.junit.Assert.assertTrue;
 
 public class JavaSortingUnitTest {
 
     private int[] toSort;
     private int[] sortedInts;
     private int[] sortedRangeInts;
-    // private Integer [] integers;
-    // private Integer [] sortedIntegers;
-    // private List<Integer> integersList;
-    // private List<Integer> sortedIntegersList;
     private Employee[] employees;
     private Employee[] employeesSorted;
     private Employee[] employeesSortedByAge;
@@ -41,19 +27,11 @@ public class JavaSortingUnitTest {
         sortedInts = new int[] { 1, 5, 7, 66, 88, 89, 123, 200, 255 };
         sortedRangeInts = new int[] { 5, 1, 89, 7, 88, 200, 255, 123, 66 };
 
-        // integers = new Integer[]
-        // { 5, 1, 89, 255, 7, 88, 200, 123, 66 };
-        // sortedIntegers = new Integer[]
-        // {1, 5, 7, 66, 88, 89, 123, 200, 255};
-        //
-        // integersList = Arrays.asList(new Integer[] { 5, 1, 89, 255, 7, 88, 200, 123, 66 });
-        // sortedIntegersList = Arrays.asList(new Integer[] {1, 5, 7, 66, 88, 89, 123, 200, 255});
-
         employees = new Employee[] { new Employee("John", 23, 5000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000), new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), new Employee("Pearl", 33, 6000) };
         employeesSorted = new Employee[] { new Employee("Earl", 43, 10000), new Employee("Frank", 33, 70000), new Employee("Jessica", 23, 4000), new Employee("John", 23, 5000), new Employee("Pearl", 33, 4000), new Employee("Steve", 26, 6000) };
         employeesSortedByAge = new Employee[] { new Employee("John", 23, 5000), new Employee("Jessica", 23, 4000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 70000), new Employee("Pearl", 33, 4000), new Employee("Earl", 43, 10000) };
 
-        HashMap<Integer, String> map = new HashMap<>();
+        map = new HashMap<>();
         map.put(55, "John");
         map.put(22, "Apple");
         map.put(66, "Earl");
@@ -73,12 +51,7 @@ public class JavaSortingUnitTest {
     @Test
     public void givenIntegerArray_whenUsingSort_thenSortedArray() {
         Integer[] integers = ArrayUtils.toObject(toSort);
-        Arrays.sort(integers, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer a, Integer b) {
-                return a - b;
-            }
-        });
+        Arrays.sort(integers, Comparator.comparingInt(a -> a));
 
         assertTrue(Arrays.equals(integers, ArrayUtils.toObject(sortedInts)));
     }
@@ -86,9 +59,7 @@ public class JavaSortingUnitTest {
     @Test
     public void givenArray_whenUsingSortWithLambdas_thenSortedArray() {
         Integer[] integersToSort = ArrayUtils.toObject(toSort);
-        Arrays.sort(integersToSort, (a, b) -> {
-            return a - b;
-        });
+        Arrays.sort(integersToSort, Comparator.comparingInt(a -> a));
 
         assertTrue(Arrays.equals(integersToSort, ArrayUtils.toObject(sortedInts)));
     }
@@ -136,12 +107,7 @@ public class JavaSortingUnitTest {
         Integer[] sortedKeys = new Integer[] { 6, 12, 22, 55, 66, 77 };
 
         List<Map.Entry<Integer, String>> entries = new ArrayList<>(map.entrySet());
-        Collections.sort(entries, new Comparator<Entry<Integer, String>>() {
-            @Override
-            public int compare(Entry<Integer, String> o1, Entry<Integer, String> o2) {
-                return o1.getKey().compareTo(o2.getKey());
-            }
-        });
+        entries.sort(Comparator.comparing(Entry::getKey));
         HashMap<Integer, String> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<Integer, String> entry : entries) {
             sortedMap.put(entry.getKey(), entry.getValue());
@@ -155,12 +121,7 @@ public class JavaSortingUnitTest {
         String[] sortedValues = new String[] { "Apple", "Earl", "George", "John", "Pearl", "Rocky" };
 
         List<Map.Entry<Integer, String>> entries = new ArrayList<>(map.entrySet());
-        Collections.sort(entries, new Comparator<Entry<Integer, String>>() {
-            @Override
-            public int compare(Entry<Integer, String> o1, Entry<Integer, String> o2) {
-                return o1.getValue().compareTo(o2.getValue());
-            }
-        });
+        entries.sort(Comparator.comparing(Entry::getValue));
         HashMap<Integer, String> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<Integer, String> entry : entries) {
             sortedMap.put(entry.getKey(), entry.getValue());
@@ -172,12 +133,10 @@ public class JavaSortingUnitTest {
     @Test
     public void givenSet_whenUsingSort_thenSortedSet() {
         HashSet<Integer> integersSet = new LinkedHashSet<>(Ints.asList(toSort));
-        HashSet<Integer> descSortedIntegersSet = new LinkedHashSet<>(Arrays.asList(new Integer[] { 255, 200, 123, 89, 88, 66, 7, 5, 1 }));
+        HashSet<Integer> descSortedIntegersSet = new LinkedHashSet<>(Arrays.asList(255, 200, 123, 89, 88, 66, 7, 5, 1));
 
-        ArrayList<Integer> list = new ArrayList<Integer>(integersSet);
-        Collections.sort(list, (i1, i2) -> {
-            return i2 - i1;
-        });
+        ArrayList<Integer> list = new ArrayList<>(integersSet);
+        list.sort((i1, i2) -> i2 - i1);
         integersSet = new LinkedHashSet<>(list);
 
         assertTrue(Arrays.equals(integersSet.toArray(), descSortedIntegersSet.toArray()));

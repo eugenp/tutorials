@@ -9,11 +9,13 @@ import java.util.List;
 
 public class HikariCPDemo {
 
-    public static List<Employee> fetchData() throws SQLException {
+    public static List<Employee> fetchData() {
         final String SQL_QUERY = "select * from emp";
-        List<Employee> employees;
-        try (Connection con = DataSource.getConnection(); PreparedStatement pst = con.prepareStatement(SQL_QUERY); ResultSet rs = pst.executeQuery()) {
-            employees = new ArrayList<>();
+        List<Employee> employees = null;
+        try (Connection con = DataSource.getConnection();
+                PreparedStatement pst = con.prepareStatement(SQL_QUERY);
+                ResultSet rs = pst.executeQuery();) {
+            employees = new ArrayList<Employee>();
             Employee employee;
             while (rs.next()) {
                 employee = new Employee();
@@ -27,8 +29,14 @@ public class HikariCPDemo {
                 employee.setDeptno(rs.getInt("deptno"));
                 employees.add(employee);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return employees;
     }
 
+    public static void main(String[] args) {
+        fetchData();
+    }
+    
 }
