@@ -1,16 +1,16 @@
 package org.baeldung.bean.config;
 
 import org.baeldung.bean.injection.Helm;
-import org.baeldung.bean.injection.Ship;
+import org.baeldung.bean.injection.ShipWithFinalDependency;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ConstructorBasedShipConfig {
-
+public class ConstructorBasedFinalDependencyShipConfig {
+    
     @Bean
-    public Ship ship(Helm helm) {
-        return new Ship(helm);
+    public ShipWithFinalDependency ShipWithFinalDependency(Helm helm) {
+        return new ShipWithFinalDependency(helm);
     }
 
     @Bean

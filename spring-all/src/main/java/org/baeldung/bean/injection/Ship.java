@@ -8,9 +8,10 @@ public class Ship {
     private Helm helm;
 
     public Ship() {
-        helm = new Helm();
+        
     }
-
+    
+    @Autowired
     public Ship(Helm helm) {
         this.helm = helm;
     }
