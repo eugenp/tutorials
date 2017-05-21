@@ -102,3 +102,4 @@
 - [How to Perform a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
 - [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
+- [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
