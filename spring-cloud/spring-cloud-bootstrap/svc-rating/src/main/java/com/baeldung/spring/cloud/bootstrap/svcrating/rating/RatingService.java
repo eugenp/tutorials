@@ -1,5 +1,6 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,7 +32,7 @@ public class RatingService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public Rating createRating(Rating rating) {
-        Rating newRating = new Rating();
+        final Rating newRating = new Rating();
         newRating.setBookId(rating.getBookId());
         newRating.setStars(rating.getStars());
         return ratingRepository.save(newRating);
@@ -44,14 +45,23 @@ public class RatingService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public Rating updateRating(Map<String, String> updates, Long ratingId) {
-        Rating rating = findRatingById(ratingId);
-        updates.keySet().forEach(key -> {
-            switch (key) {
+        final Rating rating = findRatingById(ratingId);
+        updates.keySet()
+            .forEach(key -> {
+                switch (key) {
                 case "stars":
                     rating.setStars(Integer.parseInt(updates.get(key)));
                     break;
-            }
-        });
+                }
+            });
+        return ratingRepository.save(rating);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Rating updateRating(Rating rating, Long ratingId) {
+        Preconditions.checkNotNull(rating);
+        Preconditions.checkState(rating.getId() == ratingId);
+        Preconditions.checkNotNull(ratingRepository.findOne(ratingId));
         return ratingRepository.save(rating);
     }
 }

@@ -4,16 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>jee7schedule</artifactId>
+    <artifactId>jee7</artifactId>
     <version>1.0-SNAPSHOT</version>
     <description>JavaEE 7 Arquillian Archetype Sample</description>
-    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+     </parent>
 
     <properties>
         <java.min.version>1.8</java.min.version>
         <maven.min.version>3.0.0</maven.min.version>
 
-        <junit.version>4.12</junit.version>
         <javaee_api.version>7.0</javaee_api.version>
         <arquillian_core.version>1.1.11.Final</arquillian_core.version>
         <wildfly.version>8.2.1.Final</wildfly.version>
@@ -26,7 +30,6 @@
         <jersey.version>2.25</jersey.version>
         <arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
 
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
 
@@ -43,6 +46,13 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+	        <dependency>
+	            <groupId>org.jboss.arquillian.extension</groupId>
+	            <artifactId>arquillian-drone-bom</artifactId>
+	            <version>2.0.1.Final</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>            
         </dependencies>
     </dependencyManagement>
 
@@ -55,16 +65,17 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
+		<dependency>
+		    <groupId>org.jboss.arquillian.graphene</groupId>
+		    <artifactId>graphene-webdriver</artifactId>
+		    <version>2.1.0.Final</version>
+		    <type>pom</type>
+		    <scope>test</scope>
+		</dependency>        
         <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
@@ -84,40 +95,57 @@
             <artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
             <scope>test</scope>
         </dependency>
-
+		    <dependency>
+		        <groupId>org.apache.httpcomponents</groupId>
+		        <artifactId>httpclient</artifactId>
+		        <version>4.5</version>
+		    </dependency>		
+		    <dependency>
+		        <groupId>commons-io</groupId>
+		        <artifactId>commons-io</artifactId>
+		        <version>2.4</version>
+		    </dependency>        
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.14</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+		<dependency>
+		  <groupId>javax.servlet.jsp</groupId>
+		  <artifactId>jsp-api</artifactId>
+		  <version>2.2</version>
+		  <scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>taglibs</groupId>
+		  <artifactId>standard</artifactId>
+		  <version>1.1.2</version>
+		</dependency>		
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.min.version}</source>
-                    <target>${java.min.version}</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
@@ -167,6 +195,7 @@
                 </dependency>
             </dependencies>
             <build>
+	            <pluginManagement>
                 <plugins>
                     <plugin>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -206,6 +235,7 @@
                         </configuration>
                     </plugin>
                 </plugins>
+                </pluginManagement>
             </build>
         </profile>
         <profile>
@@ -331,5 +361,21 @@
                 </dependency>
             </dependencies>
         </profile>
+        <profile>
+            <id>webdriver-chrome</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <browser>chrome</browser>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>webdriver-firefox</id>
+            <properties>
+                <browser>firefox</browser>
+            </properties>
+		</profile>
     </profiles>
 </project>

@@ -8,9 +8,11 @@ import com.baeldung.model.Message;
 import com.google.gson.Gson;
 
 public class MessageDecoder implements Decoder.Text<Message> {
+
+    private static Gson gson = new Gson();
+
     @Override
     public Message decode(String s) throws DecodeException {
-        Gson gson = new Gson();
         Message message = gson.fromJson(s, Message.class);
         return message;
     }
