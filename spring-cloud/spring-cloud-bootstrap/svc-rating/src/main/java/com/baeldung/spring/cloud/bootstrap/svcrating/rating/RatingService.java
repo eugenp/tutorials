@@ -1,15 +1,14 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.base.Preconditions;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -58,6 +57,7 @@ public class RatingService {
         return ratingRepository.save(rating);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Rating updateRating(Rating rating, Long ratingId) {
         Preconditions.checkNotNull(rating);
         Preconditions.checkState(rating.getId() == ratingId);

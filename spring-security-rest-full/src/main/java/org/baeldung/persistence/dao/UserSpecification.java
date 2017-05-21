@@ -1,13 +1,13 @@
 package org.baeldung.persistence.dao;
 
+import org.baeldung.persistence.model.User;
+import org.baeldung.web.util.SpecSearchCriteria;
+import org.springframework.data.jpa.domain.Specification;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.baeldung.persistence.model.User;
-import org.baeldung.web.util.SpecSearchCriteria;
-import org.springframework.data.jpa.domain.Specification;
 
 public class UserSpecification implements Specification<User> {
 
@@ -30,17 +30,17 @@ public class UserSpecification implements Specification<User> {
 		case NEGATION:
 			return builder.notEqual(root.get(criteria.getKey()), criteria.getValue());
 		case GREATER_THAN:
-			return builder.greaterThan(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+			return builder.greaterThan(root.get(criteria.getKey()), criteria.getValue().toString());
 		case LESS_THAN:
-			return builder.lessThan(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+			return builder.lessThan(root.get(criteria.getKey()), criteria.getValue().toString());
 		case LIKE:
-			return builder.like(root.<String> get(criteria.getKey()), criteria.getValue().toString());
+			return builder.like(root.get(criteria.getKey()), criteria.getValue().toString());
 		case STARTS_WITH:
-			return builder.like(root.<String> get(criteria.getKey()), criteria.getValue() + "%");
+			return builder.like(root.get(criteria.getKey()), criteria.getValue() + "%");
 		case ENDS_WITH:
-			return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue());
+			return builder.like(root.get(criteria.getKey()), "%" + criteria.getValue());
 		case CONTAINS:
-			return builder.like(root.<String> get(criteria.getKey()), "%" + criteria.getValue() + "%");
+			return builder.like(root.get(criteria.getKey()), "%" + criteria.getValue() + "%");
 		default:
 			return null;
 		}

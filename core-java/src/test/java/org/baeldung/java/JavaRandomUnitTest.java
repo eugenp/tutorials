@@ -3,11 +3,16 @@ package org.baeldung.java;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.nio.charset.Charset;
 import java.util.Random;
 
 public class JavaRandomUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JavaRandomUnitTest.class);
+
 
     // tests - random long
 
@@ -15,14 +20,14 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomLongUnbounded_thenCorrect() {
         final long generatedLong = new Random().nextLong();
 
-        System.out.println(generatedLong);
+        LOG.debug("{}", generatedLong);
     }
 
     @Test
     public void givenUsingApacheCommons_whenGeneratingRandomLongUnbounded_thenCorrect() {
         final long generatedLong = new RandomDataGenerator().getRandomGenerator().nextLong();
 
-        System.out.println(generatedLong);
+        LOG.debug("{}", generatedLong);
     }
 
     @Test
@@ -31,7 +36,7 @@ public class JavaRandomUnitTest {
         final long rightLimit = 10L;
         final long generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
 
-        System.out.println(generatedLong);
+        LOG.debug("{}", generatedLong);
     }
 
     @Test
@@ -40,7 +45,7 @@ public class JavaRandomUnitTest {
         final long rightLimit = 100L;
         final long generatedLong = new RandomDataGenerator().nextLong(leftLimit, rightLimit);
 
-        System.out.println(generatedLong);
+        LOG.debug("{}", generatedLong);
     }
 
     // tests - random int
@@ -49,7 +54,7 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomIntegerUnbounded_thenCorrect() {
         final int generatedInteger = new Random().nextInt();
 
-        System.out.println(generatedInteger);
+        LOG.debug("{}", generatedInteger);
     }
 
     @Test
@@ -58,14 +63,14 @@ public class JavaRandomUnitTest {
         final int rightLimit = 10;
         final int generatedInteger = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit));
 
-        System.out.println(generatedInteger);
+        LOG.debug("{}", generatedInteger);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomIntegerUnbounded_thenCorrect() {
         final Integer generatedInteger = new RandomDataGenerator().getRandomGenerator().nextInt();
 
-        System.out.println(generatedInteger);
+        LOG.debug("{}", generatedInteger);
     }
 
     @Test
@@ -74,7 +79,7 @@ public class JavaRandomUnitTest {
         final int rightLimit = 10;
         final int generatedInteger = new RandomDataGenerator().nextInt(leftLimit, rightLimit);
 
-        System.out.println(generatedInteger);
+        LOG.debug("{}", generatedInteger);
     }
 
     // tests - random float
@@ -83,14 +88,14 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomFloatUnbouned_thenCorrect() {
         final float generatedFloat = new Random().nextFloat();
 
-        System.out.println(generatedFloat);
+        LOG.debug("{}", generatedFloat);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomFloatUnbounded_thenCorrect() {
         final float generatedFloat = new RandomDataGenerator().getRandomGenerator().nextFloat();
 
-        System.out.println(generatedFloat);
+        LOG.debug("{}", generatedFloat);
     }
 
     @Test
@@ -99,7 +104,7 @@ public class JavaRandomUnitTest {
         final float rightLimit = 10F;
         final float generatedFloat = leftLimit + new Random().nextFloat() * (rightLimit - leftLimit);
 
-        System.out.println(generatedFloat);
+        LOG.debug("{}", generatedFloat);
     }
 
     @Test
@@ -109,7 +114,7 @@ public class JavaRandomUnitTest {
         final float randomFloat = new RandomDataGenerator().getRandomGenerator().nextFloat();
         final float generatedFloat = leftLimit + randomFloat * (rightLimit - leftLimit);
 
-        System.out.println(generatedFloat);
+        LOG.debug("{}", generatedFloat);
     }
 
     // tests - random double
@@ -118,14 +123,14 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomDoubleUnbounded_thenCorrect() {
         final double generatedDouble = Math.random();
 
-        System.out.println(generatedDouble);
+        LOG.debug("{}", generatedDouble);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomDoubleUnbounded_thenCorrect() {
         final double generatedDouble = new RandomDataGenerator().getRandomGenerator().nextDouble();
 
-        System.out.println(generatedDouble);
+        LOG.debug("{}", generatedDouble);
     }
 
     @Test
@@ -134,7 +139,7 @@ public class JavaRandomUnitTest {
         final double rightLimit = 10D;
         final double generatedDouble = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
 
-        System.out.println(generatedDouble);
+        LOG.debug("{}", generatedDouble);
     }
 
     @Test
@@ -143,7 +148,7 @@ public class JavaRandomUnitTest {
         final double rightLimit = 100D;
         final double generatedDouble = new RandomDataGenerator().nextUniform(leftLimit, rightLimit);
 
-        System.out.println(generatedDouble);
+        LOG.debug("{}", generatedDouble);
     }
 
     // tests - random String
@@ -154,7 +159,7 @@ public class JavaRandomUnitTest {
         new Random().nextBytes(array);
         final String generatedString = new String(array, Charset.forName("UTF-8"));
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
     @Test
@@ -169,28 +174,28 @@ public class JavaRandomUnitTest {
         }
         final String generatedString = buffer.toString();
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomString_thenCorrect() {
         final String generatedString = RandomStringUtils.random(10);
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomAlphabeticString_thenCorrect() {
         final String generatedString = RandomStringUtils.randomAlphabetic(10);
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
     @Test
     public void givenUsingApache_whenGeneratingRandomAlphanumericString_thenCorrect() {
         final String generatedString = RandomStringUtils.randomAlphanumeric(10);
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
     @Test
@@ -200,7 +205,7 @@ public class JavaRandomUnitTest {
         final boolean useNumbers = false;
         final String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
 
-        System.out.println(generatedString);
+        LOG.debug(generatedString);
     }
 
 }
