@@ -1,14 +1,13 @@
 package org.baeldung.persistence.dao.rsql;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.data.jpa.domain.Specifications;
-
 import cz.jirutka.rsql.parser.ast.ComparisonNode;
 import cz.jirutka.rsql.parser.ast.LogicalNode;
 import cz.jirutka.rsql.parser.ast.LogicalOperator;
 import cz.jirutka.rsql.parser.ast.Node;
+import org.springframework.data.jpa.domain.Specifications;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericRsqlSpecBuilder<T> {
 
@@ -50,8 +49,7 @@ public class GenericRsqlSpecBuilder<T> {
     }
 
     public Specifications<T> createSpecification(final ComparisonNode comparisonNode) {
-        final Specifications<T> result = Specifications.where(new GenericRsqlSpecification<T>(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
-        return result;
+        return Specifications.where(new GenericRsqlSpecification<T>(comparisonNode.getSelector(), comparisonNode.getOperator(), comparisonNode.getArguments()));
     }
 
 }
