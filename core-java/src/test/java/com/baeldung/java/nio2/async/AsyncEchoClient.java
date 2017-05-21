@@ -1,5 +1,8 @@
 package com.baeldung.java.nio2.async;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +13,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class AsyncEchoClient {
+    private static final Logger LOG = LoggerFactory.getLogger(AsyncEchoClient.class);
+
     private AsynchronousSocketChannel client;
     private Future<Void> future;
     private static AsyncEchoClient instance;
@@ -75,11 +80,11 @@ public class AsyncEchoClient {
         client.start();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line;
-        System.out.println("Message to server:");
+        LOG.debug("Message to server:");
         while ((line = br.readLine()) != null) {
             String response = client.sendMessage(line);
-            System.out.println("response from server: " + response);
-            System.out.println("Message to server:");
+            LOG.debug("response from server: " + response);
+            LOG.debug("Message to server:");
         }
     }
 
