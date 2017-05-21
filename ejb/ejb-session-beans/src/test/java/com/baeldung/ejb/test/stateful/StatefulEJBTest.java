@@ -1,4 +1,4 @@
-package com.readlearncode.stateful;
+package com.baeldung.ejb.test.stateful;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -9,14 +9,13 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.baeldung.ejb.stateful.EJBClient1;
+import com.baeldung.ejb.stateful.EJBClient2;
+import com.baeldung.ejb.stateful.StatefulEJB;
+
 import javax.inject.Inject;
 
-/**
- * Source code github.com/readlearncode
- *
- * @author Alex Theedom www.readlearncode.com
- * @version 1.0
- */
+
 @RunWith(Arquillian.class)
 public class StatefulEJBTest {
 
