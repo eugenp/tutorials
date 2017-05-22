@@ -4,28 +4,27 @@ import com.baeldung.api.Booking;
 import com.baeldung.api.BookingException;
 import com.baeldung.api.CabBookingService;
 import org.apache.activemq.command.ActiveMQQueue;
+import org.springframework.beans.factory.FactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jms.remoting.JmsInvokerProxyFactoryBean;
 
 import javax.jms.ConnectionFactory;
+import javax.jms.Queue;
 
 @SpringBootApplication
 public class JmsClient {
 
-    @Bean
-    ActiveMQQueue queue() {
-        ActiveMQQueue queue = new ActiveMQQueue("remotingQueue");
-        return queue;
-    }
+    @Bean Queue queue() {
+    return new ActiveMQQueue("remotingQueue");
+}
 
-    @Bean JmsInvokerProxyFactoryBean invoker(ActiveMQQueue queue, ConnectionFactory factory) {
+    @Bean FactoryBean invoker(ConnectionFactory factory, Queue queue) {
         JmsInvokerProxyFactoryBean factoryBean = new JmsInvokerProxyFactoryBean();
-        //factoryBean.setQueue(queue);
         factoryBean.setConnectionFactory(factory);
         factoryBean.setServiceInterface(CabBookingService.class);
-        factoryBean.setQueueName("remotingQueue");
+        factoryBean.setQueue(queue);
         return factoryBean;
     }
 
