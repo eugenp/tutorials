@@ -9,14 +9,14 @@ import org.springframework.test.context.ContextConfiguration;
 /**
  * @author aiet
  */
-@ContextConfiguration(classes = { KonamiCodeServiceInjectionController.class, KonamiCodeService.class })
-public class KonamiCodeTest extends SerenityStory {
+@ContextConfiguration(classes = { AdderController.class, AdderService.class })
+public class AdderTest extends SerenityStory {
 
-    @Autowired private KonamiCodeService konamiCodeService;
+    @Autowired private AdderService adderService;
 
     @BeforeStory
     public void init() {
-        RestAssuredMockMvc.standaloneSetup(new KonamiCodeServiceInjectionController(konamiCodeService));
+        RestAssuredMockMvc.standaloneSetup(new AdderController(adderService));
     }
 
 }
