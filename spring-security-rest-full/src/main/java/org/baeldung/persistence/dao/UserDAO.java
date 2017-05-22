@@ -1,6 +1,8 @@
 package org.baeldung.persistence.dao;
 
-import java.util.List;
+import org.baeldung.persistence.model.User;
+import org.baeldung.web.util.SearchCriteria;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,10 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.baeldung.persistence.model.User;
-import org.baeldung.web.util.SearchCriteria;
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
 @Repository
 public class UserDAO implements IUserDAO {
@@ -42,8 +41,7 @@ public class UserDAO implements IUserDAO {
         }
         query.where(predicate);
 
-        final List<User> result = entityManager.createQuery(query).getResultList();
-        return result;
+        return entityManager.createQuery(query).getResultList();
     }
 
     @Override
