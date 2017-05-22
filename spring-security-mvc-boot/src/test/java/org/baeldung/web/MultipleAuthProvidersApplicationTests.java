@@ -21,35 +21,19 @@ public class MultipleAuthProvidersApplicationTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void givenDbWithUsers_whenGetPingWithValidUser_thenOk() {
-        ResponseEntity<String> result = makeRestCallToGetPing("dbuser", "pass");
+    public void givenMemUsers_whenGetPingWithValidUser_thenOk() {
+        ResponseEntity<String> result = makeRestCallToGetPing("memuser", "pass");
 
         assertThat(result.getStatusCodeValue()).isEqualTo(200);
         assertThat(result.getBody()).isEqualTo("OK");
     }
 
     @Test
-    public void givenDbWithUsers_whenGetPingWithInsufficientRole_then403() {
-        ResponseEntity<String> result = makeRestCallToGetPing("dbguest", "guest");
-
-        assertThat(result.getStatusCodeValue()).isEqualTo(403);
-        assertThat(result.getBody()).contains("Access is denied");
-    }
-
-    @Test
-    public void givenLDAPWithUsers_whenGetPingWithValidUser_thenOK() {
-        ResponseEntity<String> result = makeRestCallToGetPing("ldapuser", "pass");
+    public void givenExternalUsers_whenGetPingWithValidUser_thenOK() {
+        ResponseEntity<String> result = makeRestCallToGetPing("externaluser", "pass");
 
         assertThat(result.getStatusCodeValue()).isEqualTo(200);
         assertThat(result.getBody()).isEqualTo("OK");
-    }
-
-    @Test
-    public void givenLDAPWithUsers_whenGetPingWithInsufficientRole_then403() {
-        ResponseEntity<String> result = makeRestCallToGetPing("ldapguest", "pass");
-
-        assertThat(result.getStatusCodeValue()).isEqualTo(403);
-        assertThat(result.getBody()).contains("Access is denied");
     }
 
     @Test
@@ -57,14 +41,13 @@ public class MultipleAuthProvidersApplicationTests {
         ResponseEntity<String> result = makeRestCallToGetPing();
 
         assertThat(result.getStatusCodeValue()).isEqualTo(401);
-        assertThat(result.getBody()).contains("Full authentication is required to access this resource");
     }
 
     @Test
     public void givenAuthProviders_whenGetPingWithBadCred_then401() {
         ResponseEntity<String> result = makeRestCallToGetPing("user", "bad_password");
+
         assertThat(result.getStatusCodeValue()).isEqualTo(401);
-        assertThat(result.getBody()).contains("Bad credentials");
     }
 
     private ResponseEntity<String> makeRestCallToGetPing(String username, String password) {
