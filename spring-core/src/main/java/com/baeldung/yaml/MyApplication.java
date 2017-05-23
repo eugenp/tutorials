@@ -18,12 +18,14 @@ public class MyApplication implements CommandLineRunner {
 	private YAMLConfig myConfig;
 
 	public static void main(String[] args) {
-		SpringApplication app = new SpringApplication(MyApplication.class);
-		app.setDefaultProperties(Collections.singletonMap("spring.profiles.active", "prod"));
+		SpringApplication app = new SpringApplication
+                  (MyApplication.class);
+		app.setDefaultProperties
+                  (Collections.singletonMap("spring.profiles.active", "prod"));
 		app.run();
 	}
 
-	public void run(String... arg0) throws Exception {
+	public void run(String... args) throws Exception {
 		System.out.println("using environment:" + myConfig.getEnvironment());
 		System.out.println("name:" + myConfig.getName());
 		System.out.println("servers:" + myConfig.getServers());
