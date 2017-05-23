@@ -14,18 +14,18 @@ public class Java8MapAndFlatMap {
 
     @Test
     public void givenStream_whenCalledMap_thenProduceOneResultValue() {
-        Object a = Stream.of("a", "b")
+        List<String> myList  = Stream.of("a", "b")
                 .map(String::toUpperCase)
                 .collect(Collectors.toList());
-        assertEquals(asList("A", "B"), a);
+        assertEquals(asList("A", "B"), myList );
     }
 
     @Test
     public void givenStream_whenCalledFlatMap_thenProduceResultValues() throws Exception {
-        List<String> a = Stream.of(asList("a"), asList("b", "c"))
+        List<String> myList  = Stream.of(asList("a"), asList("b", "c"))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-        assertEquals(asList("a", "b", "c"), a);
+        assertEquals(asList("a", "b", "c"), myList);
     }
 
     @Test
