@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot</artifactId>
@@ -8,12 +8,11 @@
     <name>spring-boot</name>
     <description>This is simple boot application for Spring boot actuator test</description>
 
-    <!-- Inherit defaults from Spring Boot -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <artifactId>parent-boot-5</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-5</relativePath>
     </parent>
 
     <dependencies>
@@ -72,12 +71,6 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
@@ -107,7 +100,7 @@
             <version>${jquery.version}</version>
         </dependency>
 
-		<dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>18.0</version>
@@ -119,7 +112,7 @@
             <version>${tomee-servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -131,28 +124,28 @@
             <artifactId>spring-websocket</artifactId>
             <version>${spring.version}</version>
         </dependency>
-      
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
             <version>${spring.version}</version>
-         </dependency>
-      
-         <dependency>
+        </dependency>
+
+        <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-boot-starter</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-      
-         <dependency>
+
+        <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-security</artifactId>
             <version>${togglz.version}</version>
         </dependency>
-      
+
         <dependency>
-        	<groupId>org.apache.activemq</groupId>
-        	<artifactId>artemis-server</artifactId>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-server</artifactId>
         </dependency>
     </dependencies>
 
@@ -168,20 +161,6 @@
         <plugins>
 
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
@@ -190,18 +169,6 @@
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>${git-commit-id-plugin.version}</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                        <exclude>**/AutoconfigurationTest.java</exclude>
-                    </excludes>
-                </configuration>
             </plugin>
 
         </plugins>
@@ -235,7 +202,7 @@
                         </executions>
                         <configuration>
                             <systemPropertyVariables>
-                            <test.mime>json</test.mime>
+                                <test.mime>json</test.mime>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -268,7 +235,7 @@
                         </executions>
                         <configuration>
                             <systemPropertyVariables>
-                            <test.mime>json</test.mime>
+                                <test.mime>json</test.mime>
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
@@ -281,8 +248,6 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>org.baeldung.boot.DemoApplication</start-class>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
         <jquery.version>3.1.1</jquery.version>

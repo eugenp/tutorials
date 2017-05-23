@@ -1,16 +1,14 @@
 package org.baeldung.persistence.dao.rsql;
 
-import java.util.ArrayList;
-import java.util.List;
+import cz.jirutka.rsql.parser.ast.ComparisonOperator;
+import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.springframework.data.jpa.domain.Specification;
-
-import cz.jirutka.rsql.parser.ast.ComparisonOperator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericRsqlSpecification<T> implements Specification<T> {
 
@@ -33,7 +31,7 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
 
         case EQUAL: {
             if (argument instanceof String) {
-                return builder.like(root.<String> get(property), argument.toString().replace('*', '%'));
+                return builder.like(root.get(property), argument.toString().replace('*', '%'));
             } else if (argument == null) {
                 return builder.isNull(root.get(property));
             } else {
