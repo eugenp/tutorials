@@ -11,10 +11,12 @@ public class DriverProgram {
 		ApplicationContext context;
 		Bike bike;
 		
+		//getting context from spring configuration class
 		context = new AnnotationConfigApplicationContext(SpringConfig.class);
 		bike = (Bike) context.getBean("Bike");
 		System.out.println(bike);
 		
+		//getting context from XML file
 		context = new ClassPathXmlApplicationContext("diconst.xml");
 		bike = (Bike) context.getBean("Bike");
 		System.out.println(bike);
