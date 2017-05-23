@@ -103,3 +103,4 @@
 - [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
+- [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
