@@ -22,3 +22,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
 - [Create a Custom Auto-Configuration with Spring Boot](http://www.baeldung.com/spring-boot-custom-auto-configuration)
 - [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
+- [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
