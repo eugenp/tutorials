@@ -104,3 +104,4 @@
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
+- [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
