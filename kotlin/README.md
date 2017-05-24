@@ -5,3 +5,4 @@
 - [Comprehensive Guide to Null Safety in Kotlin](http://www.baeldung.com/kotlin-null-safety)
 - [Kotlin Java Interoperability](http://www.baeldung.com/kotlin-java-interoperability)
 - [Difference Between “==” and “===” in Kotlin]()
+- [Generics in Kotlin](http://www.baeldung.com/kotlin-generics)
