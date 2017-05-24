@@ -1,7 +1,7 @@
 package com.baeldung.structurizr.spring;
 
-/**
- * @author Danil Kornishev (danil.kornishev@mastercard.com)
- */
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class PaymentRepository {
 }
