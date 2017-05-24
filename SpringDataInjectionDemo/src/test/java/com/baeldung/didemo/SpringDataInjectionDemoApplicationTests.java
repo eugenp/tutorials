@@ -28,28 +28,28 @@ public class SpringDataInjectionDemoApplicationTests {
     CustomerServiceSetterDI setterDI;
     
 	@Test
-	public void testConstructorDI() {
+	public void givenConstructorDI_whenNumberOfOrdersIsTwo_thenCorrect() {
 	    List<Order> orders = constructorDI.getCustomerOrders(1l);
 	    Assert.assertNotNull(orders);
 	    Assert.assertTrue(orders.size() == 2);
 	}
 	
 	@Test
-    public void testFieldDI() {
+    public void givenFieldDI_whenNumberOfOrdersIsTwo_thenCorrect() {
         List<Order> orders = fieldDI.getCustomerOrders(1l);
         Assert.assertNotNull(orders);
         Assert.assertTrue(orders.size() == 2);
     }
 	
 	@Test
-    public void testSetterDI() {
+    public void givenSetterDI_whenNumberOfOrdersIsTwo_thenCorrect() {
         List<Order> orders = setterDI.getCustomerOrders(1l);
         Assert.assertNotNull(orders);
         Assert.assertTrue(orders.size() == 2);
     }
 	
 	@Test
-    public void testCombined() {
+    public void givenAllThreeTypesOfDI_whenNumberOfOrdersIsEqualInAll_thenCorrect() {
         List<Order> ordersSetter = setterDI.getCustomerOrders(1l);
         List<Order> ordersConstructor = constructorDI.getCustomerOrders(1l);
         List<Order> ordersField = fieldDI.getCustomerOrders(1l);
