@@ -10,6 +10,7 @@
 - [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
 - [Intro to JaVer](http://www.baeldung.com/javers)
 - [Introduction to Apache Commons Math](http://www.baeldung.com/apache-commons-math)
+- [Intro to JaVer](http://www.baeldung.com/serenity-bdd)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
