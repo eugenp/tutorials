@@ -104,6 +104,7 @@
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
+- [A Guide to Java SynchronousQueue](http://www.baeldung.com/java-synchronous-queue)
 - [Guide to the Java TransferQueue](http://www.baeldung.com/java-transfer-queue)
 - [Kotlin Java Interoperability](http://www.baeldung.com/kotlin-java-interoperability)
 - [Guide to the ConcurrentSkipListMap](http://www.baeldung.com/java-concurrent-skip-list-map)
