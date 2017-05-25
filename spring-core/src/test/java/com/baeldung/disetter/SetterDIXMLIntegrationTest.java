@@ -26,7 +26,7 @@ public class SetterDIXMLIntegrationTest implements ApplicationContextAware {
     }
         
     @Test
-    public void whenC_ThenDependencyResolved() {
+    public void whenUsingApplicationContext_thenDependencyResolved() {
         Engine engine = (Engine) applicationContext.getBean("engine");
         Tyre tyre = (Tyre) applicationContext.getBean("tyre");
         Bike bike = (Bike) applicationContext.getBean("Bike");
