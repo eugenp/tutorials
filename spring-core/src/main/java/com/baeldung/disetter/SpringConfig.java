@@ -13,17 +13,17 @@ public class SpringConfig {
 
     @Bean
     public Engine getEngineBean() {
-    	Engine engine = new Engine();
-    	engine.setType("Internal Combustion Engine");
-    	engine.setDisplacement(150);
-    	return engine;
+        Engine engine = new Engine();
+        engine.setType("Internal Combustion Engine");
+        engine.setDisplacement(150);
+        return engine;
     }
     
     @Bean
     public Tyre getTyreBean() {
-    	Tyre tyre = new Tyre();
-    	tyre.setBrand("Bridgestone");
-    	tyre.setSize("165/81");
-    	return tyre;
+        Tyre tyre = new Tyre();
+        tyre.setBrand("Bridgestone");
+        tyre.setSize("165/81");
+        return tyre;
     }
 }

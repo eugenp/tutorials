@@ -10,16 +10,15 @@ import com.baeldung.diconst.model.Tyre;
 @Configuration
 @ComponentScan("com.baeldung.diconst")
 public class SpringConfig {
-
     @Bean
     public Engine getEngineBean() {
-    	Engine engine = new Engine("Internal Combustion Engine", 150);
-    	return engine;
+        Engine engine = new Engine("Internal Combustion Engine", 150);
+        return engine;
     }
     
     @Bean
     public Tyre getTyreBean() {
-    	Tyre tyre = new Tyre("Bridgestone", "165/80");
-    	return tyre;
+        Tyre tyre = new Tyre("Bridgestone", "165/80");
+        return tyre;
     }
 }
