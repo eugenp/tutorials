@@ -23,7 +23,6 @@ import org.junit.runner.RunWith;
 import com.baeldung.helpers.Employee;
 import com.baeldung.helpers.EmployeeDao;
 
-@RunWith(JUnitPlatform.class)
 public class DynamicTestsExample {
 
     @TestFactory
