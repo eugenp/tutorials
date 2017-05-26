@@ -64,6 +64,12 @@
             <version>${truth.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${jUnitParams.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -130,5 +136,6 @@
         <assertj-guava.version>3.1.0</assertj-guava.version>
         <assertj-core.version>3.6.1</assertj-core.version>
         <truth.version>0.32</truth.version>
+        <jUnitParams.version>1.1.0</jUnitParams.version>
     </properties>
 </project>

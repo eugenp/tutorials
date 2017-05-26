@@ -275,6 +275,7 @@
             <artifactId>quartz</artifactId>
             <version>2.3.0</version>
         </dependency>
+
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
