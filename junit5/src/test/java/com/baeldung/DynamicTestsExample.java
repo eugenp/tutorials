@@ -17,8 +17,6 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.TestFactory;
 import org.junit.jupiter.api.function.ThrowingConsumer;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 
 import com.baeldung.helpers.Employee;
 import com.baeldung.helpers.EmployeeDao;
