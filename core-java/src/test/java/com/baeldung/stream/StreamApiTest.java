@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -17,11 +16,16 @@ public class StreamApiTest {
         valueList.add("Joe");
         valueList.add("John");
         valueList.add("Sean");
-        Stream<String> stream = valueList.stream();
 
-        String last = streamApi.getLastElementUsingReduce(stream);
+        String last = streamApi.getLastElementUsingReduce(valueList);
 
         assertEquals("Sean", last);
+    }
+    
+    @Test
+    public void givenInfiniteStream_whenGetInfiniteStreamLastElementUsingReduce_thenReturnLastElement() {
+        Integer last = streamApi.getInfiniteStreamLastElementUsingReduce();
+        assertEquals(new Integer(19), last);
     }
     
     @Test
@@ -30,9 +34,8 @@ public class StreamApiTest {
         valueList.add("Joe");
         valueList.add("John");
         valueList.add("Sean");
-        Stream<String> stream = valueList.stream();
 
-        String last = streamApi.getLastElementUsingSkip(stream, valueList.size());
+        String last = streamApi.getLastElementUsingSkip(valueList);
 
         assertEquals("Sean", last);
     }
