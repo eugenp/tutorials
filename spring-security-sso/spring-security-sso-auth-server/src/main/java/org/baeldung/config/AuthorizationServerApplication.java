@@ -1,14 +1,67 @@
 package org.baeldung.config;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
+@EnableResourceServer
+@RestController
 public class AuthorizationServerApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(AuthorizationServerApplication.class, args);
+    }
+
+    @RequestMapping("/user/me")
+    public Principal user(Principal principal) {
+        System.out.println("here in user me");
+        System.out.println(principal);
+        return principal;
+    }
+
+    @Configuration
+    @EnableAuthorizationServer
+    public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
+
+        @Autowired
+        private AuthenticationManager authenticationManager;
+
+        @Override
+        public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+            oauthServer.tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
+        }
+
+        @Override
+        public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
+            clients.inMemory()
+                .withClient("SampleClientId")
+                .secret("secret")
+                .authorizedGrantTypes("password", "authorization_code")
+                .scopes("read")
+                .autoApprove(true)
+                .accessTokenValiditySeconds(3600); // 1 hour
+        }
+
+        @Override
+        public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+            endpoints.authenticationManager(authenticationManager);
+        }
+
     }
 
 }
