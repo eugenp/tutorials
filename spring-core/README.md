@@ -5,3 +5,4 @@
 - [Constructor Dependency Injection in Spring](http://www.baeldung.com/constructor-injection-in-spring)
 - [Constructor Injection in Spring with Lombok](http://www.baeldung.com/spring-injection-lombok)
 - [A Quick Guide to Spring @Value](http://www.baeldung.com/spring-value-annotation)
+- [Different Types of Bean Injection in Spring](http://inprogress.baeldung.com/?p=42999&preview=true)
