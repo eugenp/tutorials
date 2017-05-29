@@ -2,7 +2,7 @@ spring:
     profiles: test
 name: test-YAML
 environment: test
-servers: 
+servers:
     - www.abc.test.com
     - www.xyz.test.com
 
@@ -12,6 +12,6 @@ spring:
     profiles: prod
 name: prod-YAML
 environment: production
-servers: 
+servers:
     - www.abc.com
     - www.xyz.com
