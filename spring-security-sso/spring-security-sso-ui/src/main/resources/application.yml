@@ -17,8 +17,4 @@ security:
       userInfoUri: http://localhost:8081/auth/user/me
 spring:
   thymeleaf:
-    cache: false      
-logging:
-  level:
-    org:
-      springframework: DEBUG    
+    cache: false        
