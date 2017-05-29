@@ -3,6 +3,8 @@ package com.baeldung.regexp;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
