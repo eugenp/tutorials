@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-5</artifactId>
+    <artifactId>spring-5-mvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-5</name>
-    <description>spring 5 sample project about new features</description>
+    <name>spring-5-mvc</name>
+    <description>spring 5 MVC sample project about new features</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
