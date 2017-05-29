@@ -20,8 +20,6 @@ public class MyApplication implements CommandLineRunner {
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication
                   (MyApplication.class);
-		app.setDefaultProperties
-                  (Collections.singletonMap("spring.profiles.active", "prod"));
 		app.run();
 	}
 
