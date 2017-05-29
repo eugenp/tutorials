@@ -22,7 +22,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.baeldung.model.Foo;
 import com.baeldung.persistence.FooRepository;
 
-@RestController
+@RestController("/foos")
 public class FooController {
 
     @Autowired
@@ -36,12 +36,12 @@ public class FooController {
         return repo.findById(id).orElse(null);
     }
 
-    @GetMapping("/foos")   
+    @GetMapping    
     public List<Foo> findAll() {               
         return repo.findAll();
     }
 
-    @GetMapping( value="/foos",  params = { "page", "size" })    
+    @GetMapping(params = { "page", "size" })    
     @Validated
     public List<Foo> findPaginated(@RequestParam("page") @Min(0) final int page, @Max(100) @RequestParam("size") final int size) {
         return repo.findAll(PageRequest.of(page, size)).getContent();
@@ -55,7 +55,7 @@ public class FooController {
         return foo;
     }
 
-    @PostMapping("/foos")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)    
     public void create( @RequestBody final Foo foo) {
         if (null == foo ||  null == foo.getName()) {
