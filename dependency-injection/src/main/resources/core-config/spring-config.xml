@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- setter based injection -->
+	<bean id="employee" class="com.example.model.Employee">
+		<property name="fname" value="Aatika" />
+		<property name="lname" value="Fatima" />
+		<property name="address" ref="address" />
+	</bean>
+
+	<bean id="address" class="com.example.model.Address">
+		<property name="city" value="Bangalore" />
+		<property name="state" value="Karnataka" />
+	</bean>
+	<!-- ############################################################################################# -->
+	<!-- Constructor based injection -->
+	<bean id="employee_constructor" class="com.example.model.Employee">
+		<constructor-arg name="fname" value="Aatika" />
+		<constructor-arg name="lname" value="Fatima" />
+		<constructor-arg name="address" ref="address_constructor"></constructor-arg>
+	</bean>
+
+	<bean id="address_constructor" class="com.example.model.Address">
+		<constructor-arg name="city" value="Bangalore" />
+		<constructor-arg name="state" value="Karnataka" />
+	</bean>
+
+
+	<!-- ##################Different type of constructor based injection############################## -->
+
+	<!-- constructor injection using field name -->
+	<bean id="address_name" class="com.example.model.Address">
+		<constructor-arg name="city" value="Bangalore" />
+		<constructor-arg name="state" value="Karnataka" />
+	</bean>
+
+	<!-- constructor injection using field type -->
+	<bean id="address_type" class="com.example.model.Address">
+		<constructor-arg type="java.lang.String" value="Bangalore" />
+		<constructor-arg type="java.lang.String" value="Karnataka" />
+	</bean>
+
+	<!-- constructor injection using index -->
+	<bean id="address_index" class="com.example.model.Address">
+		<constructor-arg index="0" value="Bangalore" />
+		<constructor-arg index="1" value="Karnataka" />
+	</bean>
+
+	<!-- constructor injection using ref -->
+	<bean id="employee_ref" class="com.example.model.Employee">
+		<constructor-arg name="fname" value="Aatika" />
+		<constructor-arg name="lname" value="Fatima" />
+		<constructor-arg name="address" ref="address_constructor" />
+	</bean>
+</beans>
