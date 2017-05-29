@@ -122,6 +122,7 @@
         <module>solr</module>
         <module>spark-java</module>
         <module>spring-5</module> 
+		<module>spring-5-mvc</module> 
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
