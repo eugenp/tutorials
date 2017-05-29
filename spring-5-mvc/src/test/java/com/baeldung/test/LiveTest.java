@@ -16,7 +16,7 @@ public class LiveTest {
 
     
     @Test
-    public void givenUser_whenResourceCreateWithNullName_then400BadRequest() {
+    public void givenUser_whenResourceCreatedWithNullName_then400BadRequest() {
         final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString()).body(resourceWithNullName()).post(APP_ROOT + "/foos");
         assertEquals(400, response.getStatusCode());
     }
