@@ -105,6 +105,7 @@
 - [Guide to UUID in JAVA] (http://www.baeldung.com/guide-to-uuid-in-java)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
+- [Iterating Over Enum Values in Java](http://www.baeldung.com/java-enum-iteration)
 - [A Guide to Java SynchronousQueue](http://www.baeldung.com/java-synchronous-queue)
 - [Guide to the Java TransferQueue](http://www.baeldung.com/java-transfer-queue)
 - [Kotlin Java Interoperability](http://www.baeldung.com/kotlin-java-interoperability)
@@ -112,3 +113,4 @@
 - [Difference Between Wait and Sleep in Java](http://www.baeldung.com/java-wait-and-sleep)
 - [LongAdder and LongAccumulator in Java](http://www.baeldung.com/java-longadder-and-longaccumulator)
 - [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
+
