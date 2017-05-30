@@ -3,9 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="baeldungService"  name="baeldungService" class="com.baeldung.SpringBeanInjectionExample.service.BaeldungService" />
+    <bean id="baeldungService"  class="com.baeldung.SpringBeanInjectionExample.service.BaeldungService" />
 
-    <bean id="baeldungController" name="baeldungController" class="com.baeldung.SpringBeanInjectionExample.controller.BaeldungController">
+    <bean id="baeldungController" class="com.baeldung.SpringBeanInjectionExample.controller.BaeldungController">
         <constructor-arg ref="baeldungService">
         </constructor-arg>
     </bean>
