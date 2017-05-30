@@ -45,6 +45,12 @@
 			<artifactId>commons-math3</artifactId>
 			<version>${commons-math3.version}</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>org.decimal4j</groupId>
+    		<artifactId>decimal4j</artifactId>
+    		<version>${decimal4j.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.bouncycastle</groupId>
@@ -369,6 +375,7 @@
 		<bouncycastle.version>1.55</bouncycastle.version>
 		<commons-codec.version>1.10</commons-codec.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
+		<decimal4j.version>1.0.3</decimal4j.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-collections4.version>4.1</commons-collections4.version>
 		<collections-generic.version>4.01</collections-generic.version>
