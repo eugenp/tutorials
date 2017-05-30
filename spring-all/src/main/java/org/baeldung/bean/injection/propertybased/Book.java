@@ -13,5 +13,10 @@ public class Book {
     @Autowired
     private Publisher publisher;
     
-    // Some logic using author and publisher
-}
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }}

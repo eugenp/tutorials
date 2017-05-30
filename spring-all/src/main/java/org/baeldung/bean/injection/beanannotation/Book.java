@@ -12,4 +12,12 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
     }
+    
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
 }

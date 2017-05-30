@@ -17,7 +17,15 @@ public class Book {
     }
 
     @Autowired
-    public void setPublisher(Publisher publisher){
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
     }
 }

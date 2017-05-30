@@ -5,7 +5,6 @@ import org.baeldung.bean.injection.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Book {
     private Author author;
 
@@ -17,5 +16,11 @@ public class Book {
         this.publisher = publisher;
     }
     
-    // Some logic using author and publisher
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
 }
