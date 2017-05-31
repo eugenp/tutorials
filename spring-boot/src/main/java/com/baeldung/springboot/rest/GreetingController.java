@@ -15,7 +15,6 @@ public class GreetingController {
 
     @RequestMapping(value = "/greetings", method = RequestMethod.GET)
     public Greeting greeting() {
-        
         return new Greeting(new Integer((int) counter.incrementAndGet()));
     }
 }
