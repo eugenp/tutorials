@@ -12,7 +12,7 @@ public class RoundTest {
     private double expected = 2.03d;
 
     @Test
-    public void givenDecimalNumber_roundToNDecimalPlaces_getExpectedResult() {   
+    public void givenDecimalNumber_whenRoundToNDecimalPlaces_thenGetExpectedResult() {   
         Assert.assertEquals(expected, Round.round(value, places), delta);
         Assert.assertEquals(expected, Round.roundOptional(value, places), delta);
         Assert.assertEquals(expected, Precision.round(value, places), delta);
