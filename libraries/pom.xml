@@ -276,6 +276,16 @@
             <version>2.3.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>0.6.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jool</artifactId>
+            <version>0.9.12</version>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>

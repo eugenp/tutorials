@@ -3,7 +3,6 @@ package com.baeldung;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -56,32 +55,12 @@ public class DynamicTestsExample {
 
         // sample input and output
         List<String> inputList =
-            new ArrayList<>(Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com"));
+            Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
         List<String> outputList =
-            new ArrayList<>(Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156"));
+            Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
 
         // input generator that generates inputs using inputList
-        Iterator<String> inputGenerator = new Iterator<String>() {
-
-            String current;
-            int size = inputList.size();
-            int index = 0;
-            
-            @Override
-            public boolean hasNext() {
-                if(index == size) {
-                    return false;
-                }
-                current = inputList.get(index);
-                index++;
-                return true;
-            }
-
-            @Override
-            public String next() {
-                return current;
-            }
-        };
+        Iterator<String> inputGenerator = inputList.iterator();
 
         // a display name generator that creates a different name based on the input
         Function<String, String> displayNameGenerator = (input) -> "Resolving: " + input;

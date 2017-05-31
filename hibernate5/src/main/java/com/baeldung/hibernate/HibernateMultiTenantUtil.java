@@ -1,5 +1,9 @@
 package com.baeldung.hibernate;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -20,44 +24,56 @@ import com.baeldung.hibernate.pojo.Supplier;
 public class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
     private static Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
-    private static final String[] tenantDBNames = { "mydb1","mydb2"};
+    private static final String[] tenantDBNames = { "mydb1", "mydb2" };
 
-    public static SessionFactory getSessionFactory() throws UnsupportedTenancyException {
+    public static SessionFactory getSessionFactory() throws UnsupportedTenancyException, IOException {
         if (sessionFactory == null) {
-            Configuration configuration = new Configuration().configure();
-            ServiceRegistry serviceRegistry = configureServiceRegistry(configuration);
-            sessionFactory = makeSessionFactory (serviceRegistry);
-//            sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-            
-            
+            // Configuration configuration = new Configuration().configure();
+            ServiceRegistry serviceRegistry = configureServiceRegistry();
+            sessionFactory = makeSessionFactory(serviceRegistry);
+
         }
         return sessionFactory;
     }
 
     private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
-        MetadataSources metadataSources = new MetadataSources( serviceRegistry );
-        for(Class annotatedClasses : getAnnotatedClasses()) {
-            metadataSources.addAnnotatedClass( annotatedClasses );
+        MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+        for (Class annotatedClasses : getAnnotatedClasses()) {
+            metadataSources.addAnnotatedClass(annotatedClasses);
         }
 
         Metadata metadata = metadataSources.buildMetadata();
-        return metadata.getSessionFactoryBuilder().build();
-        
+        return metadata.getSessionFactoryBuilder()
+            .build();
+
     }
 
     private static Class<?>[] getAnnotatedClasses() {
-        return new Class<?>[] {
-            Supplier.class
-        };
+        return new Class<?>[] { Supplier.class };
     }
 
-    private static ServiceRegistry configureServiceRegistry(Configuration configuration) throws UnsupportedTenancyException {
-        Properties properties = configuration.getProperties();
+    private static ServiceRegistry configureServiceRegistry() throws UnsupportedTenancyException, IOException {
+
+        // Properties properties = configuration.getProperties();
+        Properties properties = getProperties();
 
         connectionProviderMap = setUpConnectionProviders(properties, tenantDBNames);
         properties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, new ConfigurableMultiTenantConnectionProvider(connectionProviderMap));
 
-        return new StandardServiceRegistryBuilder().applySettings(properties).build();
+        return new StandardServiceRegistryBuilder().applySettings(properties)
+            .build();
+    }
+
+    private static Properties getProperties() throws IOException {
+        Properties properties = new Properties();
+        URL propertiesURL = Thread.currentThread()
+            .getContextClassLoader()
+            .getResource("hibernate.properties");
+        FileInputStream inputStream = new FileInputStream(propertiesURL.getFile());
+        properties.load(inputStream);
+        System.out.println("LOADED PROPERTIES FROM hibernate.properties");
+
+        return properties;
     }
 
     private static Map<String, ConnectionProvider> setUpConnectionProviders(Properties properties, String[] tenantNames) throws UnsupportedTenancyException {
@@ -66,23 +82,27 @@ public class HibernateMultiTenantUtil {
             DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
 
             String tenantStrategy = properties.getProperty("hibernate.multiTenancy");
-            System.out.println("Strategy:"+tenantStrategy);      
+            System.out.println("Strategy:" + tenantStrategy);
             properties.put(Environment.URL, tenantUrl(properties.getProperty(Environment.URL), tenant, tenantStrategy));
-            System.out.println("URL:"+properties.getProperty(Environment.URL));
+            System.out.println("URL:" + properties.getProperty(Environment.URL));
             connectionProvider.configure(properties);
-            System.out.println("Tenant:"+tenant);
+            System.out.println("Tenant:" + tenant);
             providerMap.put(tenant, connectionProvider);
-            
+
         }
         System.out.println("Added connections for:");
-        providerMap.keySet().stream().forEach(System.out::println);
+        providerMap.keySet()
+            .stream()
+            .forEach(System.out::println);
         return providerMap;
     }
 
     private static Object tenantUrl(String originalUrl, String tenant, String tenantStrategy) throws UnsupportedTenancyException {
-        if (tenantStrategy.toUpperCase().equals("DATABASE")) {
+        if (tenantStrategy.toUpperCase()
+            .equals("DATABASE")) {
             return originalUrl.replace(DEFAULT_DB_NAME, tenant);
-        } else if (tenantStrategy.toUpperCase().equals("SCHEMA")) {
+        } else if (tenantStrategy.toUpperCase()
+            .equals("SCHEMA")) {
             return originalUrl + String.format(SCHEMA_TOKEN, tenant);
         } else {
             throw new UnsupportedTenancyException("Not yet supported");
