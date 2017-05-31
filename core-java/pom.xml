@@ -63,6 +63,13 @@
 			<artifactId>grep4j</artifactId>
 			<version>${grep4j.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.messaging.mq</groupId>
+			<artifactId>fscontext</artifactId>
+			<version>${fscontext.version}</version>
+		</dependency>
+		
 		<!-- web -->
 
 		<!-- marshalling -->
@@ -202,6 +209,7 @@
 						<exclude>**/*IntegrationTest.java</exclude>
 						<exclude>**/*LongRunningUnitTest.java</exclude>
 						<exclude>**/*ManualTest.java</exclude>
+						<exclude>**/*LookupFSJNDITest.java</exclude>
 					</excludes>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
