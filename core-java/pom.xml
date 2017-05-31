@@ -209,7 +209,6 @@
 						<exclude>**/*IntegrationTest.java</exclude>
 						<exclude>**/*LongRunningUnitTest.java</exclude>
 						<exclude>**/*ManualTest.java</exclude>
-						<exclude>**/*LookupFSJNDITest.java</exclude>
 					</excludes>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
