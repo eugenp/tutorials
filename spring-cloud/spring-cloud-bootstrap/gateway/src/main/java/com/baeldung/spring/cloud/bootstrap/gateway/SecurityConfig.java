@@ -21,18 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/book-service/books").permitAll()
-            .antMatchers("/zipkin/**").permitAll()
+        http
+            .formLogin()
+            .defaultSuccessUrl("/home/index.html", true)
+            .and()
+        .authorizeRequests()
+            .antMatchers("/book-service/**", "/rating-service/**", "/login*", "/").permitAll()
             .antMatchers("/eureka/**").hasRole("ADMIN")
             .anyRequest().authenticated()
             .and()
-        .formLogin()
+        .logout()
             .and()
-        .logout().permitAll()
-            .logoutSuccessUrl("/book-service/books").permitAll()
-            .and()
-        .csrf()
-            .disable();
+        .csrf().disable();
     }
 }

@@ -1,9 +1,11 @@
 language: java
 
+before_install: 
+  - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:+CMSClassUnloadingEnabled -XX:+UseG1GC -XX:-UseGCOverheadLimit'" > ~/.mavenrc
+
 install: travis_wait 60 mvn -q test -fae
 
-before_script:
-  - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:MaxPermSize=2048M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:-UseGCOverheadLimit'" > ~/.mavenrc
+sudo: required
 
 jdk:
   - oraclejdk8
