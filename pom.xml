@@ -225,6 +225,7 @@
         <module>mybatis</module>
         <module>spring-drools</module>
         <module>drools</module>
+        <module>evaluation-app</module>
     </modules>
 
     <dependencies>
