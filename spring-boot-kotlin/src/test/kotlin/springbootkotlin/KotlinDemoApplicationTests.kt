@@ -41,7 +41,7 @@ class KotlinDemoApplicationTests {
 	}
 
 	@Test
-	fun testHelloPoko() {
+	fun testHelloDto() {
 		var result = testRestTemplate?.getForEntity("/hello-dto", HelloDto::class.java)
 
 		Assert.assertNotNull(result)
