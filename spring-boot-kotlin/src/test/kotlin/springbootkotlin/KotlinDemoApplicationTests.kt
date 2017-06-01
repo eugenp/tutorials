@@ -1,4 +1,4 @@
-package com.example.kotlindemo
+package springbootkotlin
 
 import com.baeldung.springbootkotlin.HelloDto
 import com.baeldung.springbootkotlin.KotlinDemoApplication
@@ -24,7 +24,7 @@ class KotlinDemoApplicationTests {
 
 	@Test
 	fun testHelloController() {
-		var result = testRestTemplate?.getForEntity("/hello", String::class.java)
+		val result = testRestTemplate?.getForEntity("/hello", String::class.java)
 
 		Assert.assertNotNull(result)
 		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
@@ -33,7 +33,7 @@ class KotlinDemoApplicationTests {
 
 	@Test
 	fun testHelloService() {
-		var result = testRestTemplate?.getForEntity("/hello-service", String::class.java)
+		val result = testRestTemplate?.getForEntity("/hello-service", String::class.java)
 
 		Assert.assertNotNull(result)
 		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
@@ -42,7 +42,7 @@ class KotlinDemoApplicationTests {
 
 	@Test
 	fun testHelloDto() {
-		var result = testRestTemplate?.getForEntity("/hello-dto", HelloDto::class.java)
+		val result = testRestTemplate?.getForEntity("/hello-dto", HelloDto::class.java)
 
 		Assert.assertNotNull(result)
 		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
