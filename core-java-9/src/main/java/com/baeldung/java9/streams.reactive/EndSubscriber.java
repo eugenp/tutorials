@@ -7,12 +7,12 @@ import java.util.concurrent.Flow.Subscription;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class EndSubscriber<T> implements Subscriber<T> {
-    private final AtomicInteger howMuchMessagesConsume;
+    private final AtomicInteger howMuchMessagesToConsume;
     private Subscription subscription;
     public List<T> consumedElements = new LinkedList<>();
 
-    public EndSubscriber(Integer howMuchMessagesConsume) {
-        this.howMuchMessagesConsume = new AtomicInteger(howMuchMessagesConsume);
+    public EndSubscriber(Integer howMuchMessagesToConsume) {
+        this.howMuchMessagesToConsume = new AtomicInteger(howMuchMessagesToConsume);
     }
 
     @Override
@@ -23,10 +23,10 @@ public class EndSubscriber<T> implements Subscriber<T> {
 
     @Override
     public void onNext(T item) {
-        howMuchMessagesConsume.decrementAndGet();
+        howMuchMessagesToConsume.decrementAndGet();
         System.out.println("Got : " + item);
         consumedElements.add(item);
-        if (howMuchMessagesConsume.get() > 0) {
+        if (howMuchMessagesToConsume.get() > 0) {
             subscription.request(1);
         }
     }
