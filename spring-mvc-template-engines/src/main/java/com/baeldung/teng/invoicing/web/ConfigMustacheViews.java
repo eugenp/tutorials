@@ -1,7 +1,6 @@
 package com.baeldung.teng.invoicing.web;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.mustache.MustacheTemplateFactory;
@@ -9,7 +8,6 @@ import org.springframework.web.servlet.view.mustache.MustacheViewResolver;
 import org.springframework.web.servlet.view.mustache.jmustache.JMustacheTemplateFactory;
 import org.springframework.web.servlet.view.mustache.jmustache.JMustacheTemplateLoader;
 
-@Configuration
 public class ConfigMustacheViews {
 
     @Bean
@@ -39,7 +37,6 @@ public class ConfigMustacheViews {
         bean.setContentType("text/html; charset=UTF-8");
         bean.setViewNames("*.mustache");
         bean.setCache(true);
-        bean.setOrder(4);
 
         return bean;
     }

@@ -28,6 +28,8 @@ public class App extends WebMvcConfigurerAdapter implements WebApplicationInitia
         dispatcher.addMapping("/");
     }
 
+
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);

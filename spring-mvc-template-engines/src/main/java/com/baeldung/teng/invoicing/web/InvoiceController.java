@@ -19,21 +19,10 @@ public class InvoiceController {
         this.invoices = requireNonNull(invoices);
     }
 
-    @RequestMapping(value = {"/", "/invoice/{id}", "/{engine}/invoice/{id}"})
-    public ModelAndView invoice(@PathVariable(required = false) String engine,
-                                @PathVariable(required = false) String id) {
+    @RequestMapping(value = {"/", "/invoice/{id}"})
+    public ModelAndView invoice(@PathVariable(required = false) String id) {
 
-        return new ModelAndView("invoice." + engine(engine), "invoice",
+        return new ModelAndView("invoice", "invoice",
                                 invoices.getInvoice(id == null || (id = id.trim()).length() == 0 ? "0000" : id));
-    }
-
-    private String engine(String engine) {
-        if (engine == null || (engine = engine.trim().toLowerCase()).length() == 0) {
-            return "jsp";
-        }
-        if (engine.equals("groovy")) {
-            return "tpl"; // allow groovy as well as tpl as engine identifier for Groovy Markup
-        }
-        return engine;
     }
 }
