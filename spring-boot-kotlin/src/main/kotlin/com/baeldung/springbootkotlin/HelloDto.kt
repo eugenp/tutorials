@@ -1,3 +1,3 @@
 package com.baeldung.springbootkotlin
 
-data class HelloDto constructor(val greeting: String)
+data class HelloDto(val greeting: String)
