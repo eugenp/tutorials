@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="baeldungService"  class="com.baeldung.SpringBeanInjectionExample.service.BaeldungService" />
+
+    <bean id="baeldungController" class="com.baeldung.SpringBeanInjectionExample.controller.BaeldungController">
+        <constructor-arg ref="baeldungService">
+        </constructor-arg>
+    </bean>
+
+    <bean id="baeldungDao" name="baeldungDao" class="com.baeldung.SpringBeanInjectionExample.dao.BaeldungDao">
+        <property name="wordpress"  value="www.baeldung.com"/>
+    </bean>
+
+</beans>
