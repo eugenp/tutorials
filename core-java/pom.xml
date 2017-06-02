@@ -175,8 +175,12 @@
 	                        <groupId>commons-logging</groupId>
 	                    </exclusion>
 	                </exclusions>        
-		</dependency>    
-
+		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -357,6 +361,7 @@
         <mockito.version>1.10.19</mockito.version>
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
+        <junit.version>4.12</junit.version>
 
     </properties>
 
