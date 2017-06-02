@@ -28,8 +28,9 @@ public class SupplierDao implements GenericDao<Supplier>{
     }
 
     @Override
-    public void delete(Supplier Entity) {
-        // code for delete
+    public void delete(Supplier supplier) {
+        Session session = sessionFactory.withOptions().tenantIdentifier(tenant).openSession();
+        session.delete(supplier);
     }
 
     @Override
@@ -45,8 +46,8 @@ public class SupplierDao implements GenericDao<Supplier>{
 
     @Override
     public List<Supplier> findAll() {
-        // code to fetch all suppliers
-        return new ArrayList<Supplier>();
+        Session session = sessionFactory.withOptions().tenantIdentifier(tenant).openSession();
+        return session.createCriteria(Supplier.class).list();
     }
 
     @Override
