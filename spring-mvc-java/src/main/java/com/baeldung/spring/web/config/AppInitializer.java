@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.spring.web.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-// copied to - spring-mvc-java 
+// copied from - spring-mvc-web-vs-initializer 
 public class AppInitializer implements WebApplicationInitializer {
 
     @Override
