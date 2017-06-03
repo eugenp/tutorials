@@ -6,7 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class ApplicationClient {
     //private static final Logger log = LoggerFactory.getLogger(ApplicationClient.class);
-    final static String URI_STRING = "http://localhost:8989/DifferenceURIURLREST/greetings";
+    final static String URI_STRING = "http://localhost:8989/difference-uri-url-rest/greetings";
 
 
     public ApplicationClient() {

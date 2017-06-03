@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import com.baeldung.springboot.rest.client.Greeting;
 
 public class DifferenceURIURLRESTTest {
-    final static String URI_STRING = "http://localhost:8080/spring-boot/greetings";
+    final static String URI_STRING = "http://localhost:8080/difference-uri-url-rest/greetings";
     static RestTemplate restTemplate;
     Greeting greeting;
 

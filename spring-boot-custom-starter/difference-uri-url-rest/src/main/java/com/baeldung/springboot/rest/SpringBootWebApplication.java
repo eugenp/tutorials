@@ -21,6 +21,7 @@ public class SpringBootWebApplication extends SpringBootServletInitializer {
         SpringApplication.run(SpringBootWebApplication.class, args);
     }
 
+    //Samples
     // http://localhost:8080/greetings
-    // http://localhost:8989/DifferenceURIURLREST/greetings
+    // http://localhost:8989/difference-uri-url-rest/greetings
 }
