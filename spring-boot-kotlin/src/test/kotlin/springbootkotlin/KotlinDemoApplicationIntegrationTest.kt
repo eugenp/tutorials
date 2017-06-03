@@ -2,7 +2,8 @@ package springbootkotlin
 
 import com.baeldung.springbootkotlin.HelloDto
 import com.baeldung.springbootkotlin.KotlinDemoApplication
-import org.junit.Assert
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotNull
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(classes = arrayOf(KotlinDemoApplication::class), webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class KotlinDemoApplicationTests {
+class KotlinDemoApplicationIntegrationTest {
 
 	@Autowired
 	val testRestTemplate: TestRestTemplate? = null
@@ -26,27 +27,27 @@ class KotlinDemoApplicationTests {
 	fun testHelloController() {
 		val result = testRestTemplate?.getForEntity("/hello", String::class.java)
 
-		Assert.assertNotNull(result)
-		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
-		Assert.assertEquals(result?.body, "hello world")
+		assertNotNull(result)
+		assertEquals(result?.statusCode, HttpStatus.OK)
+		assertEquals(result?.body, "hello world")
 	}
 
 	@Test
 	fun testHelloService() {
 		val result = testRestTemplate?.getForEntity("/hello-service", String::class.java)
 
-		Assert.assertNotNull(result)
-		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
-		Assert.assertEquals(result?.body, "hello service")
+		assertNotNull(result)
+		assertEquals(result?.statusCode, HttpStatus.OK)
+		assertEquals(result?.body, "hello service")
 	}
 
 	@Test
 	fun testHelloDto() {
 		val result = testRestTemplate?.getForEntity("/hello-dto", HelloDto::class.java)
 
-		Assert.assertNotNull(result)
-		Assert.assertEquals(result?.statusCode, HttpStatus.OK)
-		Assert.assertEquals(result?.body, HelloDto("Hello from the dto"))
+		assertNotNull(result)
+		assertEquals(result?.statusCode, HttpStatus.OK)
+		assertEquals(result?.body, HelloDto("Hello from the dto"))
 	}
 
 }
