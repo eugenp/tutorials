@@ -1,7 +1,5 @@
 package org.baeldung.client;
 
-import java.net.URI;
-
 import org.apache.http.HttpHost;
 import org.apache.http.client.AuthCache;
 import org.apache.http.client.HttpClient;
@@ -12,6 +10,8 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+
+import java.net.URI;
 
 public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpComponentsClientHttpRequestFactory {
     HttpHost host;
