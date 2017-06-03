@@ -130,7 +130,6 @@
         <module>spring-apache-camel</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-boot-kotlin</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
