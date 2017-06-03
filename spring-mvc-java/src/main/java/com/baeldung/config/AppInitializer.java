@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
