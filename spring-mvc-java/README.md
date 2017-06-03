@@ -22,3 +22,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to Spring Handler Mappings](http://www.baeldung.com/spring-handler-mappings)
 - [Uploading and Displaying Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
+- [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
