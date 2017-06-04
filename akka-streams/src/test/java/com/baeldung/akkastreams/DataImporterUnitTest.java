@@ -9,7 +9,7 @@ import akka.stream.testkit.javadsl.TestSink;
 import org.junit.Test;
 
 
-public class DataImporterTest {
+public class DataImporterUnitTest {
     private final ActorSystem actorSystem = ActorSystem.create();
 
     @Test
