@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>structurizr</artifactId>
 
     <parent>
@@ -28,11 +27,6 @@
             <groupId>com.structurizr</groupId>
             <artifactId>structurizr-spring</artifactId>
             <version>1.0.0-RC3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.structurizr</groupId>
-            <artifactId>structurizr-client</artifactId>
-            <version>0.6.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
