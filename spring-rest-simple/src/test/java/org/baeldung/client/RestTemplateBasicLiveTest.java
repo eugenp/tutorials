@@ -1,7 +1,6 @@
 package org.baeldung.client;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
-import static org.baeldung.client.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -36,7 +35,8 @@ import com.google.common.base.Charsets;
 public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
-    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/myfoos";
+
+    private static final String fooResourceUrl = String.format("http://localhost:%d/spring-rest/myfoos", 8082);
 
     @Before
     public void beforeTest() {

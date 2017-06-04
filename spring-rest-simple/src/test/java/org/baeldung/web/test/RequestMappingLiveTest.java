@@ -3,9 +3,9 @@ package org.baeldung.web.test;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
+import com.jayway.restassured.RestAssured;
 import org.junit.Test;
 
-import io.restassured.RestAssured;
 
 public class RequestMappingLiveTest {
     private static String BASE_URI = "http://localhost:8082/spring-rest/ex/";

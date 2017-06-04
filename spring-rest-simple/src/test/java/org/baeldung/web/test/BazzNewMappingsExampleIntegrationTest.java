@@ -26,7 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = WebConfig.class)
 @WebAppConfiguration
-public class BazzNewMappingsExampleControllerTest {
+public class BazzNewMappingsExampleIntegrationTest {
     
     private MockMvc mockMvc;
     
