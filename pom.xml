@@ -25,6 +25,7 @@
 
     <modules>
         <module>aws</module>
+        <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
