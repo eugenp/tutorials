@@ -19,17 +19,17 @@ public class InjectionTypesTest {
 
         System.out.println(civic);
 
-        assert(civic.getBrand().equals("Honda"));
-        assert(civic.getModel().equals("Civic"));
-        assert(civic.getEngine()!=null);
-        
+        assert (civic.getBrand().equals("Honda"));
+        assert (civic.getModel().equals("Civic"));
+        assert (civic.getEngine() != null);
+
         Car mustang = getCarFromSpring("mustang");
 
         System.out.println(mustang);
-        
-        assert(mustang.getBrand().equals("Ford"));
-        assert(mustang.getModel().equals("Mustang"));
-        assert(mustang.getEngine().getType().equals("v8"));
+
+        assert (mustang.getBrand().equals("Ford"));
+        assert (mustang.getModel().equals("Mustang"));
+        assert (mustang.getEngine().getType().equals("v8"));
     }
 
     @SuppressWarnings("resource")
