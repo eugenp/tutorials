@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>baeldung</groupId>
-	<artifactId>spring-check-null</artifactId>
+	<artifactId>call-all-getters</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-check-if-a-property-is-null</name>
-	<description>Calling getters using Introspector</description>
+	<name>call-all-getters</name>
+	<description>Calling all getters using Introspector</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

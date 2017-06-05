@@ -5,16 +5,11 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.reflection.model.Customer;
 import com.baeldung.reflection.util.Utils;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringCheckIfAPropertyIsNullApplicationTests {
+public class CallAllGettersApplicationTests {
 
 	@Test
 	public void givenCustomer_whenAFieldIsNull_thenFieldNameInResult() throws Exception {

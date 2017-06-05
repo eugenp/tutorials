@@ -2,13 +2,10 @@ package com.baeldung;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import com.baeldung.reflection.model.Customer;
 import com.baeldung.reflection.util.Utils;
 
-@SpringBootApplication
-public class SpringCheckIfAPropertyIsNullApplication {
+public class CallAllGettersApplication {
 
 	public static void main(String[] args) throws Exception {
 	    
