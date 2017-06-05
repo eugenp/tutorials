@@ -33,3 +33,7 @@ spring-openid/src/main/resources/application.properties
 spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
+
+*.jar
+
+SpringDataInjectionDemo/.mvn/wrapper/maven-wrapper.properties
