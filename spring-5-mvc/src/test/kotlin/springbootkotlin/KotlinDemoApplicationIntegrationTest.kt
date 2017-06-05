@@ -13,40 +13,41 @@ import org.springframework.http.HttpStatus
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
-@SpringBootTest(classes = arrayOf(KotlinDemoApplication::class), webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(
+		classes = arrayOf(KotlinDemoApplication::class),
+		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class KotlinDemoApplicationIntegrationTest {
 
 	@Autowired
-	val testRestTemplate: TestRestTemplate? = null
+	lateinit var testRestTemplate: TestRestTemplate
 
 	@Test
-	fun contextLoads() {
+	fun whenCalled_thenShouldReturnHello() {
+		val result = testRestTemplate.withBasicAuth("user", "pass")
+                .getForEntity("/hello", String::class.java)
+
+		assertNotNull(result)
+		assertEquals(HttpStatus.OK, result?.statusCode)
+		assertEquals("hello world", result?.body)
 	}
 
 	@Test
-	fun testHelloController() {
-		val result = testRestTemplate?.getForEntity("/hello", String::class.java)
+	fun whenCalled_thenShouldReturnHelloService() {
+		val result = testRestTemplate.withBasicAuth("user", "pass")
+                .getForEntity("/hello-service", String::class.java)
 
 		assertNotNull(result)
-		assertEquals(result?.statusCode, HttpStatus.OK)
-		assertEquals(result?.body, "hello world")
-	}
-
-	@Test
-	fun testHelloService() {
-		val result = testRestTemplate?.getForEntity("/hello-service", String::class.java)
-
-		assertNotNull(result)
-		assertEquals(result?.statusCode, HttpStatus.OK)
+		assertEquals(HttpStatus.OK, result?.statusCode)
 		assertEquals(result?.body, "hello service")
 	}
 
 	@Test
-	fun testHelloDto() {
-		val result = testRestTemplate?.getForEntity("/hello-dto", HelloDto::class.java)
+	fun whenCalled_thenShouldReturnJson() {
+		val result = testRestTemplate.withBasicAuth("user", "pass")
+                .getForEntity("/hello-dto", HelloDto::class.java)
 
 		assertNotNull(result)
-		assertEquals(result?.statusCode, HttpStatus.OK)
+		assertEquals(HttpStatus.OK, result?.statusCode)
 		assertEquals(result?.body, HelloDto("Hello from the dto"))
 	}
 
