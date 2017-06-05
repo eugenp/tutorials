@@ -50,6 +50,7 @@
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
                     <verbose>true</verbose>
+		    <fork>false</fork>   <!-- Solve windows line too long error -->
                 </configuration>
                 <executions>
                     <execution>
