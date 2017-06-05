@@ -1,6 +1,5 @@
 package com.baeldung.injectiontypes.test;
 
-import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.injectiontypes.model.Car;
@@ -8,13 +7,6 @@ import com.baeldung.injectiontypes.model.Car;
 public class InjectionTypesTest {
 
     public static void main(String[] args) {
-        InjectionTypesTest test = new InjectionTypesTest();
-
-        test.TestInjectionTypes();
-    }
-
-    @Test
-    public void TestInjectionTypes() {
         Car civic = getCarFromSpring("civic");
 
         System.out.println(civic);
