@@ -11,7 +11,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class SeleniumPageObjectTest {
+public class SeleniumPageObjectLiveTest {
 
     private SeleniumConfig config;
     private BaeldungHomePage homePage;
