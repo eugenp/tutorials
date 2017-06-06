@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="personXmlConstructor" class="com.baeldung.spring_dependency_injection.Person">
+		<constructor-arg index="0" value="Robert" />
+		<constructor-arg index="1" value="26" />
+	</bean>
+
+	<bean id="personXmlSetter" class="com.baeldung.spring_dependency_injection.Person">
+		<property name="name" value="Michael" />
+		<property name="age" value="27" />
+	</bean>
+
+</beans>
