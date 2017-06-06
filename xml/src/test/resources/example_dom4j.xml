@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<tutorials xmlns="http://www.baeldung.com/full_archive">
-    <tutorial tutId="01" type="java">
+<tutorials>
+	<tutorial tutId="01" type="java">
 		<title>Guava</title>
 		<description>Introduction to Guava</description>
 		<date>04/04/2016</date>
