@@ -35,7 +35,7 @@ public class ConfigMustacheViews {
 
         bean.setTemplateFactory(mustacheTemplateFactory);
         bean.setContentType("text/html; charset=UTF-8");
-        bean.setViewNames("*.mustache");
+        bean.setSuffix(".mustache");
         bean.setCache(true);
 
         return bean;

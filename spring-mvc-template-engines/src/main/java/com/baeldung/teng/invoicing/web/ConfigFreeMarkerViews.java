@@ -23,6 +23,7 @@ public class ConfigFreeMarkerViews {
         FreeMarkerViewResolver bean = new FreeMarkerViewResolver();
 
         bean.setContentType("text/html; charset=UTF-8");
+        bean.setSuffix(".ftl");
         bean.setCache(true);
 
         return bean;

@@ -34,6 +34,7 @@ public class ConfigGroovyMarkupViews {
         GroovyMarkupViewResolver bean = new GroovyMarkupViewResolver();
 
         bean.setContentType("text/html; charset=UTF-8");
+        bean.setSuffix(".tpl");
         bean.setCache(true);
 
         return bean;
