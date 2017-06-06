@@ -25,42 +25,42 @@ public class MapIterationTest {
     }
 
     @Test
-    public void iterateUsingEntrySet_test() {
+    public void givenMap_whenIterateUsingEntrySetReturnsAllEntries_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         List<String> list = mapIteration.iterateUsingEntrySet(testMap);
         assertTrue((list.contains(testString1)) && (list.contains(testString2)) && (list.contains(testString3)));
     }
 
     @Test
-    public void iterateUsingLambda_test() {
+    public void givenMap_whenIterateUsingLambdaReturnsAllEntries_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         List<String> list = mapIteration.iterateUsingLambda(testMap);
         assertTrue((list.contains(testString1)) && (list.contains(testString2)) && (list.contains(testString3)));
     }
 
     @Test
-    public void iterateUsingIteratorAndEntry_test() {
+    public void givenMap_whenIterateUsingIteratorAndEntryReturnsAllEntries_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         List<String> list = mapIteration.iterateUsingIteratorAndEntry(testMap);
         assertTrue((list.contains(testString1)) && (list.contains(testString2)) && (list.contains(testString3)));
     }
 
     @Test
-    public void iterateUsingKeySetAndForeach_test() {
+    public void givenMap_whenIterateUsingKeySetAndForeachReturnsAllEntries_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         List<String> list = mapIteration.iterateUsingKeySetAndForeach(testMap);
         assertTrue((list.contains(testString1)) && (list.contains(testString2)) && (list.contains(testString3)));
     }
 
     @Test
-    public void iterateUsingStreamAPI_test() {
+    public void givenMap_whenIterateUsingStreamAPIReturnsAllEntries_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         List<String> list = mapIteration.iterateUsingStreamAPI(testMap);
         assertTrue((list.contains(testString1)) && (list.contains(testString2)) && (list.contains(testString3)));
     }
 
     @Test
-    public void iterateKeys_test() {
+    public void givenMap_whenIterateUsingKeysReturnsAllKeys_thenCorrect() {
         MapIteration mapIteration = new MapIteration();
         ArrayList<String> list = mapIteration.iterateKeys(testMap);
         assertTrue((list.contains("One")) && (list.contains("Two")) && (list.contains("Three")));
