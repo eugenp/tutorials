@@ -16,14 +16,13 @@ public class SimpleURLConverter implements Converter<URL> {
         try {
             return new URL(value);
         } catch (MalformedURLException ex) {
-            //Ignore
+            // Ignore
         }
         return null;
     }
 
     @Override
-    public boolean getAllPossibleValues(List<Completion> completions, Class<?> requiredType,
-            String existingData, String optionContext, MethodTarget target) {
+    public boolean getAllPossibleValues(List<Completion> completions, Class<?> requiredType, String existingData, String optionContext, MethodTarget target) {
         return false;
     }
 

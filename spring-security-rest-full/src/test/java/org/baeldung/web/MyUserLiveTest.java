@@ -6,9 +6,9 @@ import org.baeldung.persistence.model.MyUser;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.specification.RequestSpecification;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 @ActiveProfiles("test")
 public class MyUserLiveTest {
