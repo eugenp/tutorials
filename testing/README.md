@@ -9,4 +9,4 @@
 - [AssertJ for Guava](http://www.baeldung.com/assertJ-for-guava)
 - [Introduction to AssertJ](http://www.baeldung.com/introduction-to-assertj)
 - [Cucumber and Scenario Outline](http://www.baeldung.com/cucumber-scenario-outline)
-
+- [Testing with Google Truth](http://www.baeldung.com/google-truth)
