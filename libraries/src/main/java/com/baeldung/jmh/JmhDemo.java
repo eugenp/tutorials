@@ -7,8 +7,8 @@ import org.openjdk.jmh.runner.RunnerException;
 
 public class JmhDemo {
 
-	public static void main(String[] args) throws RunnerException, IOException {
-		Main.main(args);
-	}
+    public static void main(String[] args) throws RunnerException, IOException {
+	  Main.main(args);
+    }
 
 }
