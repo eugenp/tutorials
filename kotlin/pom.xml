@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
@@ -12,6 +12,15 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
+
 
     <dependencies>
         <dependency>
@@ -30,6 +39,11 @@
             <artifactId>kotlin-reflect</artifactId>
             <version>${kotlin-reflect.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core</artifactId>
+            <version>${kotlinx.version}</version>
         </dependency>
     </dependencies>
 
@@ -104,10 +118,11 @@
     </build>
 
     <properties>
-        <kotlin-maven-plugin.version>1.1.1</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.1.1</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.1.1</kotlin-stdlib.version>
-        <kotlin-reflect.version>1.1.1</kotlin-reflect.version>
+        <kotlin-maven-plugin.version>1.1.2</kotlin-maven-plugin.version>
+        <kotlin-test-junit.version>1.1.2</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.1.2</kotlin-stdlib.version>
+        <kotlin-reflect.version>1.1.2</kotlin-reflect.version>
+        <kotlinx.version>0.15</kotlinx.version>
     </properties>
 
 </project>
