@@ -14,17 +14,17 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class HillClimbingAlgorithmTest {
-    Stack<String> initStack;
-    Stack<String> goalStack;
+    private Stack<String> initStack;
+    private Stack<String> goalStack;
 
     @Before
     public void initStacks() {
         String blockArr[] = { "B", "C", "D", "A" };
         String goalBlockArr[] = { "A", "B", "C", "D" };
-        initStack = new Stack<String>();
+        initStack = new Stack<>();
         for (String block : blockArr)
             initStack.push(block);
-        goalStack = new Stack<String>();
+        goalStack = new Stack<>();
         for (String block : goalBlockArr)
             goalStack.push(block);
     }
