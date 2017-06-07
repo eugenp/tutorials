@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>spring-data-javaslang</groupId>
     <artifactId>spring-data-javaslang</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+
+    <properties>
         <groovy-eclipse-compiler.version>2.9.1-01</groovy-eclipse-compiler.version>
         <groovy-eclipse-batch.version>2.3.7-01</groovy-eclipse-batch.version>
         <org.codehouse.groovy.version>2.4.8</org.codehouse.groovy.version>
         <javaslang.version>2.0.5</javaslang.version>
-        <junit.version>4.12</junit.version>
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <spring-context.version>4.3.6.RELEASE</spring-context.version>
         <spring-core.version>4.3.6.RELEASE</spring-core.version>
         <spring-test.version>4.3.6.RELEASE</spring-test.version>
         <project.build.testSourceDirectory>${basedir}/src/test/java</project.build.testSourceDirectory>
     </properties>
+
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <artifactId>parent-boot-5</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-5</relativePath>
     </parent>
+
     <profiles>
         <profile>
             <id>test-app</id>
@@ -48,37 +49,7 @@
             </build>
         </profile>
     </profiles>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory>
-                </configuration>           
-            </plugin> <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <configuration>
-                <excludes>
-                    <exclude>**/*IntegrationTest.java</exclude>
-                    <exclude>**/*LiveTest.java</exclude>
-                </excludes>
-            </configuration>
-        </plugin>
 
-        </plugins>
-    </build>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -134,11 +105,5 @@
             <version>${spring-core.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 </project>

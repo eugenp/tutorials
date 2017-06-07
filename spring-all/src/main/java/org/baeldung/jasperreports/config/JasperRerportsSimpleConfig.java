@@ -13,10 +13,7 @@ public class JasperRerportsSimpleConfig {
 
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.HSQL)
-                .addScript("classpath:employee-schema.sql")
-                .build();
+        return new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.HSQL).addScript("classpath:employee-schema.sql").build();
     }
 
     @Bean

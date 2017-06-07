@@ -1,34 +1,45 @@
 package com.baeldung.dynamicvalidation;
 
-import java.util.regex.Pattern;
+import com.baeldung.dynamicvalidation.dao.ContactInfoExpressionRepository;
+import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.thymeleaf.util.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.baeldung.dynamicvalidation.dao.ContactInfoExpressionRepository;
-import com.baeldung.dynamicvalidation.model.ContactInfoExpression;
+import java.util.regex.Pattern;
 
 public class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
+
+    private static final Logger LOG = Logger.getLogger(ContactInfoValidator.class);
 
     @Autowired
     private ContactInfoExpressionRepository expressionRepository;
 
+    @Value("${contactInfoType}")
+    String expressionType;
+
+    private String pattern;
+
     @Override
     public void initialize(final ContactInfo contactInfo) {
+        if (StringUtils.isEmptyOrWhitespace(expressionType)) {
+            LOG.error("Contact info type missing!");
+        } else {
+            pattern = expressionRepository.findOne(expressionType)
+                .map(ContactInfoExpression::getPattern)
+                .orElse("");
+        }
     }
 
     @Override
     public boolean isValid(final String value, final ConstraintValidatorContext context) {
-        String expressionType = System.getProperty("contactInfoType");
-        System.out.println(expressionType);
-        final ContactInfoExpression expression = expressionRepository.findOne(expressionType);
-        if (expression != null) {
-            final String pattern = expression.getPattern();
-            if (Pattern.matches(pattern, value))
-                return true;
+        if (!StringUtils.isEmptyOrWhitespace(pattern)) {
+            return Pattern.matches(pattern, value);
         }
+        LOG.error("Contact info pattern missing!");
         return false;
     }
 

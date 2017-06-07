@@ -1,6 +1,5 @@
-*.class
-
 #folders#
+.idea
 /target
 /neoDb*
 /data

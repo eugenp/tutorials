@@ -7,31 +7,32 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 public class CustomisedListener implements ITestListener {
-    private static final Logger LOGGER = LoggerFactory.getLogger("TEST_REPORT");
+    private static final Logger LOGGER = LoggerFactory.getLogger("CUSTOM_LOGS");
 
     @Override
     public void onFinish(ITestContext context) {
         LOGGER.info("PASSED TEST CASES");
         context.getPassedTests()
-                .getAllResults()
-                .stream()
-                .forEach(result -> {
-                    LOGGER.info(result.getName());
-                });
+            .getAllResults()
+            .stream()
+            .forEach(result -> {
+                LOGGER.info(result.getName());
+            });
         LOGGER.info("FAILED TEST CASES");
         context.getFailedTests()
-                .getAllResults()
-                .stream()
-                .forEach(result -> {
-                    LOGGER.info(result.getName());
-                });
-        LOGGER.info("Test completed on: " + context.getEndDate().toString());
+            .getAllResults()
+            .stream()
+            .forEach(result -> {
+                LOGGER.info(result.getName());
+            });
+        LOGGER.info("Test completed on: " + context.getEndDate()
+            .toString());
     }
 
     @Override
     public void onStart(ITestContext arg0) {
         LOGGER.info("Started testing on: " + arg0.getStartDate()
-                .toString());
+            .toString());
     }
 
     @Override
@@ -54,13 +55,14 @@ public class CustomisedListener implements ITestListener {
 
     @Override
     public void onTestStart(ITestResult arg0) {
-        LOGGER.info("Testing: " + arg0.getName() + " " + arg0.getStartMillis());
+        LOGGER.info("Testing: " + arg0.getName());
 
     }
 
     @Override
     public void onTestSuccess(ITestResult arg0) {
-        LOGGER.info("Tested: " + arg0.getName() + " " + arg0.getEndMillis());
+        long timeTaken = ((arg0.getEndMillis() - arg0.getStartMillis()));
+        LOGGER.info("Tested: " + arg0.getName() + " Time taken:" + timeTaken + " ms");
 
     }
 

@@ -2,14 +2,16 @@ package org.baeldung.scopes;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ScopesController {
-    public static final Logger LOG = Logger.getLogger(ScopesController.class);
+    public static final Logger LOG = LoggerFactory.getLogger(ScopesController.class);
 
     @Resource(name = "requestMessage")
     HelloMessageGenerator requestMessage;

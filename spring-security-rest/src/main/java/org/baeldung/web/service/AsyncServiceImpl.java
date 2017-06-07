@@ -2,7 +2,9 @@ package org.baeldung.web.service;
 
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncServiceImpl implements AsyncService {
 
-    private static final Logger log = Logger.getLogger(AsyncService.class);
+    private static final Logger log = LoggerFactory.getLogger(AsyncService.class);
 
     @Async
     @Override

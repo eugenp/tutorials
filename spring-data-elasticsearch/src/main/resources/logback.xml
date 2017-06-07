@@ -1,20 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>elasticsearch - %date [%thread] %-5level %logger{36} - %message%n
+            <pattern>web - %date [%thread] %-5level %logger{36} - %message%n
             </pattern>
         </encoder>
     </appender>
 
     <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.transaction" level="WARN" />
 
-    <!-- in order to debug some elastic issues, this needs to be DEBUG or INFO -->
-    <logger name="org.elasticsearch" level="INFO" />
-    <logger name="com.baeldung.spring" level="DEBUG" />
+    <!-- in order to debug some marshalling issues, this needs to be TRACE -->
+    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
-
 </configuration>

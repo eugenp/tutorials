@@ -1,13 +1,14 @@
 package com.baeldung;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-/**
- *
- * @author paulo.motta
- */
+import static org.junit.Assert.assertEquals;
+
 public class PrimitiveConversionsJUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PrimitiveConversionsJUnitTest.class);
     
     @Test
     public void givenDataWithLessBits_whenAttributingToLargerSizeVariable_thenNoSpecialNotation() {
@@ -60,36 +61,36 @@ public class PrimitiveConversionsJUnitTest {
     @Test
     public void givenByteValue_whenConvertingToChar_thenWidenAndNarrowTakesPlace(){
         byte myLargeValueByte = (byte) 130;   //0b10000010
-        System.out.println(myLargeValueByte); //0b10000010 -126
+        LOG.debug("{}", myLargeValueByte); //0b10000010 -126
         assertEquals( -126, myLargeValueByte);
         
         int myLargeValueInt = myLargeValueByte;
-        System.out.println(myLargeValueInt); //0b11111111 11111111 11111111 10000010 -126
+        LOG.debug("{}", myLargeValueInt); //0b11111111 11111111 11111111 10000010 -126
         assertEquals( -126, myLargeValueInt);
         
         char myLargeValueChar = (char) myLargeValueByte;
-        System.out.println(myLargeValueChar);//0b11111111 10000010 unsigned 0xFF82
+        LOG.debug("{}", myLargeValueChar);//0b11111111 10000010 unsigned 0xFF82
         assertEquals(0xFF82, myLargeValueChar);
         
         myLargeValueInt = myLargeValueChar;
-        System.out.println(myLargeValueInt); //0b11111111 10000010  65410
+        LOG.debug("{}", myLargeValueInt); //0b11111111 10000010  65410
         assertEquals(65410, myLargeValueInt);
         
         byte myOtherByte = (byte) myLargeValueInt;
-        System.out.println(myOtherByte); //0b10000010 -126
+        LOG.debug("{}", myOtherByte); //0b10000010 -126
         assertEquals( -126, myOtherByte);
         
         
         char myLargeValueChar2 = 130; //This is an int not a byte!
-        System.out.println(myLargeValueChar2);//0b00000000 10000010 unsigned 0x0082
+        LOG.debug("{}", myLargeValueChar2);//0b00000000 10000010 unsigned 0x0082
         assertEquals(0x0082, myLargeValueChar2);
         
         int myLargeValueInt2 = myLargeValueChar2;
-        System.out.println(myLargeValueInt2); //0b00000000 10000010  130
+        LOG.debug("{}", myLargeValueInt2); //0b00000000 10000010  130
         assertEquals(130, myLargeValueInt2);
         
         byte myOtherByte2 = (byte) myLargeValueInt2;
-        System.out.println(myOtherByte2); //0b10000010 -126
+        LOG.debug("{}", myOtherByte2); //0b10000010 -126
         assertEquals( -126, myOtherByte2);
     }
     

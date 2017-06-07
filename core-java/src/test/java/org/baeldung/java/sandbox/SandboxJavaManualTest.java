@@ -1,25 +1,30 @@
 package org.baeldung.java.sandbox;
 
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.junit.Test;
-
 public class SandboxJavaManualTest {
+
+
+    private static final Logger LOG = LoggerFactory.getLogger(SandboxJavaManualTest.class);
 
     @Test
     public void givenUsingTimer_whenSchedulingTimerTaskOnce_thenCorrect() throws InterruptedException {
         final TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Time when was task performed" + new Date());
-                System.out.println("Thread's name: " + Thread.currentThread().getName());
+                LOG.debug("Time when was task performed" + new Date());
+                LOG.debug("Thread's name: " + Thread.currentThread().getName());
             }
         };
         final Timer timer = new Timer("Thread's name");
-        System.out.println("Current time:" + new Date());
-        System.out.println("Thread's name: " + Thread.currentThread().getName());
+        LOG.debug("Current time:" + new Date());
+        LOG.debug("Thread's name: " + Thread.currentThread().getName());
         final long delay = 2L * 1000L;
         timer.schedule(timerTask, delay);
         Thread.sleep(delay);
@@ -33,16 +38,16 @@ public class SandboxJavaManualTest {
             @Override
             public void run() {
                 count++;
-                System.out.println("Time when task was performed: " + new Date());
-                System.out.println("Thread's name: " + Thread.currentThread().getName());
+                LOG.debug("Time when task was performed: " + new Date());
+                LOG.debug("Thread's name: " + Thread.currentThread().getName());
                 if (count >= 5) {
                     cancel();
                 }
             }
         };
         final Timer timer = new Timer("Timer thread");
-        System.out.println("Current time: " + new Date());
-        System.out.println("Thread's name: " + Thread.currentThread().getName());
+        LOG.debug("Current time: " + new Date());
+        LOG.debug("Thread's name: " + Thread.currentThread().getName());
         final long delay = 2L * 1000L;
         final long period = 1L * 1000L;
         timer.scheduleAtFixedRate(repeatedTask, delay, period);
@@ -62,8 +67,8 @@ public class SandboxJavaManualTest {
             @Override
             public void run() {
                 timesRunned++;
-                System.out.println("Task performed on: " + new Date());
-                System.out.println("Thread's name: " + Thread.currentThread().getName());
+                LOG.debug("Task performed on: " + new Date());
+                LOG.debug("Thread's name: " + Thread.currentThread().getName());
                 if (timesRunned >= timesToRun) {
                     cancel();
                 }
@@ -72,10 +77,10 @@ public class SandboxJavaManualTest {
         final MyTask repeatedTask = new MyTask();
         repeatedTask.setTimesToRun(5);
         final long delay = 2L * 1000L;
-        final long period = 1L * 1000L;
+        final long period = 1000L;
         final Timer timer = new Timer("Timer");
-        System.out.println("Current time: " + new Date());
-        System.out.println("Thread's name: " + Thread.currentThread().getName());
+        LOG.debug("Current time: " + new Date());
+        LOG.debug("Thread's name: " + Thread.currentThread().getName());
         timer.scheduleAtFixedRate(repeatedTask, delay, period);
         Thread.sleep(delay + period * repeatedTask.timesToRun);
     }

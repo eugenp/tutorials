@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class WordCountIntegrationTest {
-    final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+    private final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
     @Test
     public void givenDataSet_whenExecuteWordCount_thenReturnWordCount() throws Exception {
@@ -65,8 +65,8 @@ public class WordCountIntegrationTest {
         List<Integer> ages = personDataSource.map(p -> p.age).collect();
 
         //then
-        assertThat(ages.size()).isEqualTo(2);
-        assertThat(ages.containsAll(Arrays.asList(23, 75))).isTrue();
+        assertThat(ages).hasSize(2);
+        assertThat(ages).contains(23, 75);
 
     }
 
@@ -110,8 +110,8 @@ public class WordCountIntegrationTest {
                         .collect();
 
         //then
-        assertThat(joined.size()).isEqualTo(1);
-        assertThat(joined.contains(new Tuple2<>(firstTransaction, address)));
+        assertThat(joined).hasSize(1);
+        assertThat(joined).contains(new Tuple2<>(firstTransaction, address));
 
     }
 

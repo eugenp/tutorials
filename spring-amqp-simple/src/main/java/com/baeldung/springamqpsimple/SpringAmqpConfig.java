@@ -1,6 +1,10 @@
 package com.baeldung.springamqpsimple;
 
-import org.springframework.amqp.core.*;
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.DirectExchange;
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -32,7 +36,7 @@ public class SpringAmqpConfig {
 
     @Bean
     SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
-                                             MessageListenerAdapter listenerAdapter) {
+            MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(queueName);
@@ -44,5 +48,4 @@ public class SpringAmqpConfig {
     MessageListenerAdapter listenerAdapter(MessageConsumer messageReceiver) {
         return new MessageListenerAdapter(messageReceiver, "receiveMessage");
     }
-
 }
