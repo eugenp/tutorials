@@ -44,6 +44,17 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>${javax.inject.version}</version>
@@ -120,6 +131,7 @@
         <mockito.version>1.10.19</mockito.version>
         <mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
         <spring.version>4.3.4.RELEASE</spring.version>
+        <javax.mail.version>1.4.7</javax.mail.version>
         <javax.inject.version>1</javax.inject.version>
         <guava.version>20.0</guava.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
