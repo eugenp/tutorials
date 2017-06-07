@@ -48,7 +48,7 @@ public class HillClimbingAlgorithmTest {
     @Test
     public void givenCurrentState_whenFindNextState_thenBetterHeuristics() {
         HillClimbing hillClimbing = new HillClimbing();
-        List<Stack<String>> initList = new ArrayList<Stack<String>>();
+        List<Stack<String>> initList = new ArrayList<>();
         initList.add(initStack);
         State currentState = new State(initList);
         currentState.setHeuristics(hillClimbing.getHeuristicsValue(initList, goalStack));
