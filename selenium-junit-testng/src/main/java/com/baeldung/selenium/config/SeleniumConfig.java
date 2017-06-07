@@ -7,8 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+<<<<<<< HEAD
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+=======
+>>>>>>> 0053a80758de714cc461ca30bf827bc6808397ec
 
 public class SeleniumConfig {
 
@@ -65,5 +68,8 @@ public class SeleniumConfig {
     public WebDriver getDriver() {
         return driver;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0053a80758de714cc461ca30bf827bc6808397ec
 }
