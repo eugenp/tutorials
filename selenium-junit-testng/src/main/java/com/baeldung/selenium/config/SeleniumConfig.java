@@ -65,8 +65,4 @@ public class SeleniumConfig {
     public WebDriver getDriver() {
         return driver;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 0053a80758de714cc461ca30bf827bc6808397ec
 }
