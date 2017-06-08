@@ -323,6 +323,13 @@
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
         </dependency>
+	<!-- OpenNLP -->
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
