@@ -1,4 +1,4 @@
-package com.baeldung.beaninjection.constructorbased;
+package com.baeldung.beaninjection.setterbased;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +16,8 @@ public class AppConfig {
 
     @Bean
     public MessageSender messageSender() {
-        return new MessageSender(chatMessage());
+        MessageSender messageSender = new MessageSender();
+        messageSender.setMessage(chatMessage());
+        return messageSender;
     }
 }

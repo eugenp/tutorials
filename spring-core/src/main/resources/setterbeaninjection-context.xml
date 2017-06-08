@@ -5,9 +5,9 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="textMessage" class="com.baeldung.beaninjection.TextMessage" />
-	<bean id="messageSender"
-		class="com.baeldung.beaninjection.constructorbased.MessageSender">
-		<property name="message" ref="textMessage" />
+	<bean id="messageSender" class="com.baeldung.beaninjection.setterbased.MessageSender">
+		<constructor-arg index="0"
+			type="com.baeldung.beaninjection.ChatMessage" name="message" ref="textMessage" />
 	</bean>
 
 </beans>

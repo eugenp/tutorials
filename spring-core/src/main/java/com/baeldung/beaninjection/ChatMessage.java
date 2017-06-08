@@ -1,4 +1,4 @@
-package com.baeldung.beaninjection.constructorbased;
+package com.baeldung.beaninjection;
 
 public interface ChatMessage {
     public void send();
