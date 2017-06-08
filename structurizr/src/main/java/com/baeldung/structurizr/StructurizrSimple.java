@@ -29,12 +29,12 @@ import com.structurizr.view.ViewSet;
 
 public class StructurizrSimple {
 
-    public static final String PAYMENT_TERMINAL = "Payment Terminal";
-    public static final String FRAUD_DETECTOR = "Fraud Detector";
-    public static final String SOFTWARE_SYSTEM_VIEW = "SoftwareSystemView";
-    public static final String CONTAINER_VIEW = "ContainerView";
-    public static final String COMPONENT_VIEW = "ComponentView";
-    public static final String JVM2_COMPONENT_VIEW = "JVM2ComponentView";
+    private static final String PAYMENT_TERMINAL = "Payment Terminal";
+    private static final String FRAUD_DETECTOR = "Fraud Detector";
+    private static final String SOFTWARE_SYSTEM_VIEW = "SoftwareSystemView";
+    private static final String CONTAINER_VIEW = "ContainerView";
+    private static final String COMPONENT_VIEW = "ComponentView";
+    private static final String JVM2_COMPONENT_VIEW = "JVM2ComponentView";
 
     public static void main(String[] args) throws Exception {
         Workspace workspace = getSoftwareSystem();
@@ -63,12 +63,12 @@ public class StructurizrSimple {
 
     private static void findComponents(Container jvm) throws Exception {
         ComponentFinder componentFinder = new ComponentFinder(
-                jvm,
-                "com.baeldung.structurizr",
-                new SpringComponentFinderStrategy(
-                        new ReferencedTypesSupportingTypesStrategy()
-                ),
-                new SourceCodeComponentFinderStrategy(new File("."), 150));
+          jvm,
+          "com.baeldung.structurizr",
+          new SpringComponentFinderStrategy(
+            new ReferencedTypesSupportingTypesStrategy()
+          ),
+          new SourceCodeComponentFinderStrategy(new File("."), 150));
 
         componentFinder.findComponents();
     }

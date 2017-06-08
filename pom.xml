@@ -215,6 +215,7 @@
         <module>xml</module>
         <module>xmlunit2</module>
         <module>struts2</module>
+        <module>structurizr</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
 
