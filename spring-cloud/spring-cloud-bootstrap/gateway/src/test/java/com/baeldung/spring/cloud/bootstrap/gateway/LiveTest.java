@@ -1,18 +1,17 @@
 package com.baeldung.spring.cloud.bootstrap.gateway;
 
-import static io.restassured.RestAssured.config;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.config.RedirectConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import static io.restassured.RestAssured.config;
 
 public class LiveTest {
 
@@ -34,7 +33,7 @@ public class LiveTest {
 
     @Test
     public void whenAccessProtectedResourceWithoutLogin_thenRedirectToLogin() {
-        final Response response = RestAssured.get(ROOT_URI + "/book-service/books/1");
+        final Response response = RestAssured.get(ROOT_URI + "/home/index.html");
         Assert.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
         Assert.assertEquals("http://localhost:8080/login", response.getHeader("Location"));
     }

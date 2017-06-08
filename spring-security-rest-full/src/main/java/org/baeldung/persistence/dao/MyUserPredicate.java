@@ -12,27 +12,23 @@ public class MyUserPredicate {
 
     private SearchCriteria criteria;
 
-    public MyUserPredicate() {
-
-    }
-
     public MyUserPredicate(final SearchCriteria criteria) {
         this.criteria = criteria;
     }
 
     public BooleanExpression getPredicate() {
-        final PathBuilder<MyUser> entityPath = new PathBuilder<MyUser>(MyUser.class, "myUser");
+        final PathBuilder<MyUser> entityPath = new PathBuilder<>(MyUser.class, "myUser");
 
         if (isNumeric(criteria.getValue().toString())) {
-            System.out.println("Nuumber");
             final NumberPath<Integer> path = entityPath.getNumber(criteria.getKey(), Integer.class);
             final int value = Integer.parseInt(criteria.getValue().toString());
-            if (criteria.getOperation().equalsIgnoreCase(":")) {
-                return path.eq(value);
-            } else if (criteria.getOperation().equalsIgnoreCase(">")) {
-                return path.goe(value);
-            } else if (criteria.getOperation().equalsIgnoreCase("<")) {
-                return path.loe(value);
+            switch (criteria.getOperation()) {
+                case ":":
+                    return path.eq(value);
+                case ">":
+                    return path.goe(value);
+                case "<":
+                    return path.loe(value);
             }
         } else {
             final StringPath path = entityPath.getString(criteria.getKey());

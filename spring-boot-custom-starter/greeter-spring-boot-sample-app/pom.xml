@@ -7,15 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
-        <relativePath></relativePath>
+        <artifactId>parent-boot-5</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-5</relativePath>
     </parent>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
         <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
     </properties>
 
@@ -25,12 +23,6 @@
             <groupId>com.baeldung</groupId>
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>

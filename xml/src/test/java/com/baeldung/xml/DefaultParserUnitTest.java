@@ -1,6 +1,8 @@
 package com.baeldung.xml;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
@@ -10,9 +12,9 @@ import org.w3c.dom.NodeList;
 
 public class DefaultParserUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_default_parser.xml";
 
-    final String fileNameSpace = "src/test/resources/example_namespace.xml";
+    final String fileNameSpace = "src/test/resources/example_default_parser_namespace.xml";
 
     DefaultParser parser;
 
