@@ -177,41 +177,5 @@ class CoroutinesTest {
         delay(delayInMilliseconds)
     }
 
-    @Test
-    fun givenChannel_whenSend_thenShouldBehaveAsAQueue() {
-        runBlocking<Unit> {
-            //given
-            val res = mutableListOf<Int>()
-            val channel = Channel<Int>()
-            launch(CommonPool) {
-                //when
-                for (x in 1..5) channel.send(x * x)
-            }
-            repeat(5) { val element = channel.receive(); println(element); res.add(element) }
-            println("Done!")
 
-            //then
-            assertEquals(res, listOf(1, 4, 9, 16, 25))
-        }
-    }
-
-    @Test
-    fun givenChannel_whenSendInfiniteStream_thenShouldTakeOnlyNElements() {
-        runBlocking<Unit> {
-            //given
-            val res = mutableListOf<Int>()
-            val producer = infiniteNumbersProducer(0)
-
-            for (i in 1..5) { val element = producer.receive(); println(element); res.add(element) }
-            println("Done!")
-
-            //then
-            assertEquals(res, listOf(0, 1, 2, 3, 4))
-        }
-    }
-
-    fun infiniteNumbersProducer(start: Int) = produce<Int>(CommonPool) {
-        var x = start
-        while (true) send(x++)
-    }
 }
