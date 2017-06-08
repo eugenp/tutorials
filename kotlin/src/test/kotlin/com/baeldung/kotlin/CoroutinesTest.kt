@@ -5,7 +5,6 @@ import kotlinx.coroutines.experimental.channels.Channel
 import kotlinx.coroutines.experimental.channels.produce
 import org.junit.Test
 import java.util.concurrent.atomic.AtomicInteger
-import kotlin.coroutines.experimental.CoroutineContext
 import kotlin.coroutines.experimental.buildSequence
 import kotlin.system.measureTimeMillis
 import kotlin.test.assertEquals
@@ -201,20 +200,17 @@ class CoroutinesTest {
         runBlocking<Unit> {
             //given
             val res = mutableListOf<Int>()
-            val channel = Channel<Int>()
-            launch(CommonPool) {
-                //when
-                infitieNumbersProducer(context, 0)
-            }
-            repeat(5) { val element = channel.receive(); println(element); res.add(element) }
+            val producer = infiniteNumbersProducer(0)
+
+            for (i in 1..5) { val element = producer.receive(); println(element); res.add(element) }
             println("Done!")
 
             //then
-            assertEquals(res, listOf(1, 2, 3, 4, 5))
+            assertEquals(res, listOf(0, 1, 2, 3, 4))
         }
     }
 
-    fun infitieNumbersProducer(context: CoroutineContext, start: Int) = produce<Int>(context) {
+    fun infiniteNumbersProducer(start: Int) = produce<Int>(CommonPool) {
         var x = start
         while (true) send(x++)
     }
