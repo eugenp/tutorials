@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 public class TimeApi {
 
@@ -29,12 +29,11 @@ public class TimeApi {
     }
 
     public static List<LocalDate> getDatesBetweenUsingJava8(LocalDate startDate, LocalDate endDate) {
-        List<LocalDate> datesInRange = new ArrayList<LocalDate>();
         long numOfDaysBetween = ChronoUnit.DAYS.between(startDate, endDate);
-        Stream.iterate(0, i -> i + 1).limit(numOfDaysBetween).forEach(i -> {
-            datesInRange.add(startDate.plusDays(i));
-        });
-        return datesInRange;
+        return IntStream.iterate(0, i -> i + 1)
+                .limit(numOfDaysBetween)
+                .mapToObj(i -> startDate.plusDays(i))
+                .collect(Collectors.toList());
     }
 
     public static List<LocalDate> getDatesBetweenUsingJava9(LocalDate startDate, LocalDate endDate) {
