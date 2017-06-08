@@ -1,8 +1,11 @@
 package com.baeldung.kotlin
 
 import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.experimental.channels.Channel
+import kotlinx.coroutines.experimental.channels.produce
 import org.junit.Test
 import java.util.concurrent.atomic.AtomicInteger
+import kotlin.coroutines.experimental.CoroutineContext
 import kotlin.coroutines.experimental.buildSequence
 import kotlin.system.measureTimeMillis
 import kotlin.test.assertEquals
@@ -175,5 +178,44 @@ class CoroutinesTest {
         delay(delayInMilliseconds)
     }
 
+    @Test
+    fun givenChannel_whenSend_thenShouldBehaveAsAQueue() {
+        runBlocking<Unit> {
+            //given
+            val res = mutableListOf<Int>()
+            val channel = Channel<Int>()
+            launch(CommonPool) {
+                //when
+                for (x in 1..5) channel.send(x * x)
+            }
+            repeat(5) { val element = channel.receive(); println(element); res.add(element) }
+            println("Done!")
 
+            //then
+            assertEquals(res, listOf(1, 4, 9, 16, 25))
+        }
+    }
+
+    @Test
+    fun givenChannel_whenSendInfiniteStream_thenShouldTakeOnlyNElements() {
+        runBlocking<Unit> {
+            //given
+            val res = mutableListOf<Int>()
+            val channel = Channel<Int>()
+            launch(CommonPool) {
+                //when
+                infitieNumbersProducer(context, 0)
+            }
+            repeat(5) { val element = channel.receive(); println(element); res.add(element) }
+            println("Done!")
+
+            //then
+            assertEquals(res, listOf(1, 2, 3, 4, 5))
+        }
+    }
+
+    fun infitieNumbersProducer(context: CoroutineContext, start: Int) = produce<Int>(context) {
+        var x = start
+        while (true) send(x++)
+    }
 }
