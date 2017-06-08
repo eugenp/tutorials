@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Bike" class="com.baeldung.disetter.model.Bike">
+        <property name="engine" ref="engine" />
+        <property name="tyre" ref="tyre" />
+    </bean>
+
+    <bean id="engine" class="com.baeldung.disetter.model.Engine">
+        <property name="type" value="Internal Combustion Engine" />
+        <property name="displacement" value="150" />
+    </bean>
+
+    <bean id="tyre" class="com.baeldung.disetter.model.Tyre">
+        <property name="brand" value="Bridgestone" />
+        <property name="size" value="167/82" />
+    </bean>
+    
+</beans>

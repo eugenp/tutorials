@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Bike" class="com.baeldung.diconst.model.Bike">
+        <constructor-arg index="0" ref="engine" />
+        <constructor-arg index="1" ref="tyre" />
+    </bean>
+
+    <bean id="engine" class="com.baeldung.diconst.model.Engine">
+        <constructor-arg value="Internal Combustion Engine" />
+        <constructor-arg value="150" />
+    </bean>
+
+    <bean id="tyre" class="com.baeldung.diconst.model.Tyre">
+        <constructor-arg index="0" value="Bridgestone" />
+        <constructor-arg index="1" value="167/80" />
+    </bean>
+
+</beans>
