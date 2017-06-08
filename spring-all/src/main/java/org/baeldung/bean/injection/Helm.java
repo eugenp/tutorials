@@ -1,7 +1,7 @@
 package org.baeldung.bean.injection;
 
 public class Helm {
-    
+
     private String brandOfHelm = "HelmBrand";
 
     public String getBrandOfHelm() {

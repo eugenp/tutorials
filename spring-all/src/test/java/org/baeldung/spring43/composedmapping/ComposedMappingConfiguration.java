@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.beans.factory.InjectionPoint;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Scope;
 
 import static org.easymock.EasyMock.*;
 
@@ -31,6 +35,12 @@ public class ComposedMappingConfiguration {
         EasyMock.expect(book.getAppointmentsForToday()).andReturn(Collections.emptyMap());
         replay(book);
         return book;
+    }
+
+    @Bean
+    @Scope("prototype")
+    public Logger logger(InjectionPoint injectionPoint) {
+        return LogManager.getLogger(injectionPoint.getField().getDeclaringClass());
     }
 
 }

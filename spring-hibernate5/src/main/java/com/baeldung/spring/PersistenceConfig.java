@@ -1,9 +1,8 @@
 package com.baeldung.spring;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.baeldung.persistence.dao.IFooDao;
+import com.baeldung.persistence.dao.impl.FooHibernateDao;
+import com.google.common.base.Preconditions;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,42 +11,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.JpaVendorAdapter;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.baeldung.persistence.dao.IBarAuditableDao;
-import com.baeldung.persistence.dao.IBarDao;
-import com.baeldung.persistence.dao.IFooAuditableDao;
-import com.baeldung.persistence.dao.IFooDao;
-import com.baeldung.persistence.dao.impl.BarAuditableDao;
-import com.baeldung.persistence.dao.impl.BarDao;
-import com.baeldung.persistence.dao.impl.BarJpaDao;
-import com.baeldung.persistence.dao.impl.FooAuditableDao;
-import com.baeldung.persistence.dao.impl.FooDao;
-import com.baeldung.persistence.service.IBarAuditableService;
-import com.baeldung.persistence.service.IBarService;
-import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.persistence.service.IFooService;
-import com.baeldung.persistence.service.impl.BarAuditableService;
-import com.baeldung.persistence.service.impl.BarJpaService;
-import com.baeldung.persistence.service.impl.BarSpringDataJpaService;
-import com.baeldung.persistence.service.impl.FooAuditableService;
-import com.baeldung.persistence.service.impl.FooService;
-import com.google.common.base.Preconditions;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "com.baeldung.persistence" }, transactionManagerRef = "jpaTransactionManager")
-@EnableJpaAuditing
-@PropertySource({ "classpath:persistence-mysql.properties" })
+@PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
 
@@ -57,7 +31,7 @@ public class PersistenceConfig {
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(restDataSource());
+        sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
         sessionFactory.setHibernateProperties(hibernateProperties());
 
@@ -65,20 +39,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(restDataSource());
-        emf.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
-
-        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        emf.setJpaVendorAdapter(vendorAdapter);
-        emf.setJpaProperties(hibernateProperties());
-
-        return emf;
-    }
-
-    @Bean
-    public DataSource restDataSource() {
+    public DataSource dataSource() {
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
@@ -96,65 +57,13 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public PlatformTransactionManager jpaTransactionManager() {
-        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-        return transactionManager;
-    }
-
-    @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
     @Bean
-    public IBarService barJpaService() {
-        return new BarJpaService();
-    }
-
-    @Bean
-    public IBarService barSpringDataJpaService() {
-        return new BarSpringDataJpaService();
-    }
-
-    @Bean
-    public IFooService fooHibernateService() {
-        return new FooService();
-    }
-
-    @Bean
-    public IBarAuditableService barHibernateAuditableService() {
-        return new BarAuditableService();
-    }
-
-    @Bean
-    public IFooAuditableService fooHibernateAuditableService() {
-        return new FooAuditableService();
-    }
-
-    @Bean
-    public IBarDao barJpaDao() {
-        return new BarJpaDao();
-    }
-
-    @Bean
-    public IBarDao barHibernateDao() {
-        return new BarDao();
-    }
-
-    @Bean
-    public IBarAuditableDao barHibernateAuditableDao() {
-        return new BarAuditableDao();
-    }
-
-    @Bean
     public IFooDao fooHibernateDao() {
-        return new FooDao();
-    }
-
-    @Bean
-    public IFooAuditableDao fooHibernateAuditableDao() {
-        return new FooAuditableDao();
+        return new FooHibernateDao();
     }
 
     private final Properties hibernateProperties() {

@@ -401,5 +401,4 @@
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
     </properties>
-
 </project>

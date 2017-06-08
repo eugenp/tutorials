@@ -8,18 +8,18 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>jws-example</name>
-    
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
+    </parent>
 
     <properties>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-		<jardiff.version>7.0</jardiff.version>
-		<jnlp-servlet.version>7.0</jnlp-servlet.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <jardiff.version>7.0</jardiff.version>
+        <jnlp-servlet.version>7.0</jnlp-servlet.version>
     </properties>
 
     <dependencies>
@@ -63,7 +63,7 @@
                     </execution>
                 </executions>
             </plugin>
-			
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -88,5 +88,5 @@
         </plugins>
         <finalName>${project.artifactId}</finalName>
     </build>
-	
+
 </project>

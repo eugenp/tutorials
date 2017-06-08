@@ -7,7 +7,7 @@ import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
 
 public interface MyService {
-    
+
     @Retryable
     void retryService();
 

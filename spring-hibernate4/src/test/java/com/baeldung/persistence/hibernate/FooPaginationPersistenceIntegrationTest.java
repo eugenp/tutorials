@@ -110,7 +110,7 @@ public class FooPaginationPersistenceIntegrationTest {
         final String countQ = "Select count (f.id) from Foo f";
         final Query countQuery = session.createQuery(countQ);
         final Long countResults = (Long) countQuery.uniqueResult();
-        final int lastPageNumber = (int) ((countResults / pageSize) + 1);
+        final int lastPageNumber = (int) (Math.ceil(countResults / pageSize));
 
         final Query selectQuery = session.createQuery("From Foo");
         selectQuery.setFirstResult((lastPageNumber - 1) * pageSize);

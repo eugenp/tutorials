@@ -8,7 +8,7 @@
         <artifactId>apache-cxf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -42,7 +42,7 @@
             <version>${javax.servlet-api.version}</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -63,7 +63,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <profiles>
         <profile>
             <id>live</id>
@@ -102,7 +102,7 @@
                             </execution>
                         </executions>
                     </plugin>
-                    
+
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${surefire.version}</version>
@@ -123,17 +123,17 @@
                 </plugins>
             </build>
         </profile>
-        
+
     </profiles>
-    
+
     <properties>
         <cxf.version>3.1.8</cxf.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>        
+
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <surefire.version>2.19.1</surefire.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>        
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
-    
+
 </project>
