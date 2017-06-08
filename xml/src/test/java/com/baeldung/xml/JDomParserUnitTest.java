@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public class JDomParserUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_jdom.xml";
 
     JDomParser parser;
 

@@ -25,6 +25,7 @@
 
     <modules>
         <module>aws</module>
+        <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
@@ -130,7 +131,6 @@
         <module>spring-apache-camel</module>
         <module>spring-batch</module>
         <module>spring-boot</module>
-        <module>spring-boot-kotlin</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -166,7 +166,6 @@
         <module>spring-mvc-java</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
-        <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
@@ -176,6 +175,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
+	    <module>spring-rest-simple</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
@@ -194,7 +194,6 @@
         <module>spring-security-mvc-session</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
-        <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
