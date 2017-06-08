@@ -1,4 +1,4 @@
-package com.baeldung.beaninjection;
+package com.baeldung.beaninjection.constructorbased;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

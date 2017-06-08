@@ -1,4 +1,4 @@
-package com.baeldung.beaninjection;
+package com.baeldung.beaninjection.constructorbased;
 
 public class TextMessage implements ChatMessage {
 

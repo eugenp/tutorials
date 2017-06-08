@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="textMessage" class="com.baeldung.beaninjection.TextMessage" />
-	<bean id="messageSender" class="com.baeldung.beaninjection.MessageSender">
+	<bean id="textMessage" class="com.baeldung.beaninjection.constructorbased.TextMessage" />
+	<bean id="messageSender" class="com.baeldung.beaninjection.constructorbased.MessageSender">
 		<constructor-arg index="0"
-			type="com.baeldung.beaninjection.ChatMessage" name="message" ref="textMessage" />
+			type="com.baeldung.beaninjection.constructorbased.ChatMessage" name="message" ref="textMessage" />
 	</bean>
 
 </beans>
