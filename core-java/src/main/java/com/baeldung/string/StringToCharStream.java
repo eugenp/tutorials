@@ -12,26 +12,11 @@ public class StringToCharStream {
 
     public StringToCharStream() {
 
-            String testString = "test";
-
-            //this will return instance of IntStream
-            IntStream intStream = testString.chars();
-
-            //this one as well
-            IntStream intStream1 = testString.codePoints();
-
-            //mapping to Stream<Character>
-            Stream<Character> characterStream
-                    = testString.chars().mapToObj(c -> (char) c);
-
-            Stream<Character> characterStream2
-                    = testString.codePoints().mapToObj(c -> (char) c);
-
-            //let's use the Stream API to manipulate a string
+             //let's use the Stream API to manipulate a string
             //this will count the occurrence of each character in the test string
 
             System.out.println("Counting Occurrence of Letter");
-            testString = "Noww";
+            String testString = "Noww";
 
             //we don't want to use foreach, so . . .
 
