@@ -22,7 +22,7 @@ public class HillClimbing {
         }
     }
 
-    public static void printEachStep(State state) {
+    private static void printEachStep(State state) {
         List<Stack<String>> stackList = state.getState();
         System.out.println("----------------");
         stackList.forEach(stack -> {
@@ -33,8 +33,8 @@ public class HillClimbing {
         });
     }
 
-    public Stack<String> getStackWithValues(String[] blocks) {
-        Stack<String> stack = new Stack<String>();
+    private Stack<String> getStackWithValues(String[] blocks) {
+        Stack<String> stack = new Stack<>();
         for (String block : blocks)
             stack.push(block);
         return stack;
@@ -42,14 +42,9 @@ public class HillClimbing {
 
     /**
      * This method prepares path from init state to goal state
-     *
-     * @param initStateStack
-     * @param goalStateStack
-     * @return
-     * @throws Exception
      */
     public List<State> getRouteWithHillClimbing(Stack<String> initStateStack, Stack<String> goalStateStack) throws Exception {
-        List<Stack<String>> initStateStackList = new ArrayList<Stack<String>>();
+        List<Stack<String>> initStateStackList = new ArrayList<>();
         initStateStackList.add(initStateStack);
         int initStateHeuristics = getHeuristicsValue(initStateStackList, goalStateStack);
         State initState = new State(initStateStackList, initStateHeuristics);
@@ -71,27 +66,21 @@ public class HillClimbing {
             }
         }
 
-        if (noStateFound)
-            throw new Exception("No path found");
         return resultPath;
     }
 
     /**
      * This method finds new state from current state based on goal and
      * heuristics
-     *
-     * @param currentState
-     * @param goalStateStack
-     * @return a next state
      */
     public State findNextState(State currentState, Stack<String> goalStateStack) {
         List<Stack<String>> listOfStacks = currentState.getState();
         int currentStateHeuristics = currentState.getHeuristics();
 
-        Optional<State> newState = listOfStacks.stream()
+        return listOfStacks.stream()
             .map(stack -> {
-                State tempState = null;
-                List<Stack<String>> tempStackList = new ArrayList<Stack<String>>(listOfStacks);
+                State tempState;
+                List<Stack<String>> tempStackList = new ArrayList<>(listOfStacks);
                 String block = stack.pop();
                 if (stack.size() == 0)
                     tempStackList.remove(stack);
@@ -104,24 +93,17 @@ public class HillClimbing {
                 return tempState;
             })
             .filter(Objects::nonNull)
-            .findFirst();
-
-        return newState.orElse(null);
+            .findFirst()
+          .orElse(null);
     }
 
     /**
      * Operation to be applied on a state in order to find new states. This
      * operation pushes an element into a new stack
-     *
-     * @param currentStackList
-     * @param block
-     * @param currentStateHeuristics
-     * @param goalStateStack
-     * @return a new state
      */
     private State pushElementToNewStack(List<Stack<String>> currentStackList, String block, int currentStateHeuristics, Stack<String> goalStateStack) {
         State newState = null;
-        Stack<String> newStack = new Stack<String>();
+        Stack<String> newStack = new Stack<>();
         newStack.push(block);
 
         currentStackList.add(newStack);
@@ -138,13 +120,6 @@ public class HillClimbing {
      * Operation to be applied on a state in order to find new states. This
      * operation pushes an element into one of the other stacks to explore new
      * states
-     *
-     * @param stack
-     * @param currentStackList
-     * @param block
-     * @param currentStateHeuristics
-     * @param goalStateStack
-     * @return a new state
      */
     private State pushElementToExistingStacks(Stack currentStack, List<Stack<String>> currentStackList, String block, int currentStateHeuristics, Stack<String> goalStateStack) {
 
@@ -168,14 +143,10 @@ public class HillClimbing {
     /**
      * This method returns heuristics value for given state with respect to goal
      * state
-     *
-     * @param currentState
-     * @param goalStateStack
-     * @return
      */
     public int getHeuristicsValue(List<Stack<String>> currentState, Stack<String> goalStateStack) {
 
-        Integer heuristicValue = 0;
+        Integer heuristicValue;
         heuristicValue = currentState.stream()
             .mapToInt(stack -> {
                 int stackHeuristics = 0;
