@@ -10,9 +10,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan("org.baeldung")
 @EnableJpaRepositories("org.baeldung.persistence.repo")
 @EntityScan("org.baeldung.persistence.model")
-public class SpringBootBootstrapApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootBootstrapApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
+
 }

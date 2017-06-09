@@ -37,9 +37,10 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book findOne(@PathVariable Long id) {
-        Book book = bookRepository.findOne(id);
-        if (book == null)
+        final Book book = bookRepository.findOne(id);
+        if (book == null) {
             throw new BookNotFoundException();
+        }
         return book;
     }
 
@@ -51,9 +52,10 @@ public class BookController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        Book book = bookRepository.findOne(id);
-        if (book == null)
+        final Book book = bookRepository.findOne(id);
+        if (book == null) {
             throw new BookNotFoundException();
+        }
         bookRepository.delete(id);
     }
 
@@ -62,7 +64,7 @@ public class BookController {
         if (book.getId() != id) {
             throw new BookIdMismatchException();
         }
-        Book old = bookRepository.findOne(id);
+        final Book old = bookRepository.findOne(id);
         if (old == null) {
             throw new BookNotFoundException();
         }
