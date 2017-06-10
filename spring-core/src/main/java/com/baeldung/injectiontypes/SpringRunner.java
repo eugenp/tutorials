@@ -14,8 +14,16 @@ public class SpringRunner {
         this.notificationService = notificationService;
     }
 
-    @Autowired
     public void setNotificationService(NotificationService notificationService) {
         this.notificationService = notificationService;
     }
+
+    public NotificationService getNotificationService() {
+        return notificationService;
+    }
+
+    public SpringRunner() {
+        super();
+    }
+
 }
