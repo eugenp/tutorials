@@ -16,33 +16,32 @@ import io.vertx.core.json.Json;
 public class ServiceVerticle extends AbstractVerticle {
 
     public static final String GET_ALL_ARTICLES = "get.artilces.all";
-
+    private final ObjectMapper mapper = Json.mapper;
     @Autowired
     private ArticleService articleService;
-    private final ObjectMapper mapper = Json.mapper;
 
     @Override
     public void start() throws Exception {
         super.start();
         vertx.eventBus()
-            .<String> consumer(GET_ALL_ARTICLES)
-            .handler(getAllArticleService(articleService));
+                .<String>consumer(GET_ALL_ARTICLES)
+                .handler(getAllArticleService(articleService));
     }
 
     private Handler<Message<String>> getAllArticleService(ArticleService service) {
-        return msg -> vertx.<String> executeBlocking(future -> {
+        return msg -> vertx.<String>executeBlocking(future -> {
             try {
                 future.complete(mapper.writeValueAsString(service.getAllArticle()));
             } catch (JsonProcessingException e) {
                 System.out.println("Failed to serialize result");
                 future.fail(e);
             }
-        } , result -> {
+        }, result -> {
             if (result.succeeded()) {
                 msg.reply(result.result());
             } else {
                 msg.reply(result.cause()
-                    .toString());
+                        .toString());
             }
         });
     }
