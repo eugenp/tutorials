@@ -1,7 +1,5 @@
-package springbootkotlin
+package com.baeldung.springbootkotlin
 
-import com.baeldung.springbootkotlin.HelloDto
-import com.baeldung.springbootkotlin.KotlinDemoApplication
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test

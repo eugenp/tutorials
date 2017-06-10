@@ -1,4 +1,4 @@
-package com.baeldung.test;
+package com.baeldung;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertEquals;
@@ -37,14 +37,12 @@ public class LiveTest {
 
     //
 
-    private final String resourceWithNullName() {       
-        final String roleData = "{\"name\":null}";
-        return roleData;
+    private final String resourceWithNullName() {
+        return "{\"name\":null}";
     }
     
     private final String resourceString() {
-         final String roleData = "{\"name\":\"" + randomAlphabetic(8) + "\"}";       
-         return roleData;
+        return "{\"name\":\"" + randomAlphabetic(8) + "\"}";
      }
 
     private final RequestSpecification givenAuth(String username, String password) {
