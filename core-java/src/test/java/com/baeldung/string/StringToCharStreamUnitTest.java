@@ -1,11 +1,14 @@
 package com.baeldung.string;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -17,12 +20,12 @@ public class StringToCharStreamUnitTest {
 
     @Test
     public void givenTestString_whenChars_thenReturnIntStream() {
-         assertTrue(testString.chars() instanceof IntStream);
+        assertThat(testString.chars(), instanceOf(IntStream.class));
     }
 
     @Test
     public void givenTestString_whenCodePoints_thenReturnIntStream() {
-        assertTrue(testString.codePoints() instanceof IntStream);
+        assertThat(testString.codePoints(), instanceOf(IntStream.class));
     }
 
     @Test
@@ -31,6 +34,13 @@ public class StringToCharStreamUnitTest {
         Stream<Character> characterStream1 = testString.codePoints().mapToObj(c -> (char) c);
         assertNotNull("IntStream returned by chars() did not map to Stream<Character>", characterStream);
         assertNotNull("IntStream returned by codePoints() did not map to Stream<Character>", characterStream1);
+    }
+
+    @Test
+    public void givenIntStream_whenMapToObj_thenReturnStringStream(){
+        Stream<String> stringStream
+          = testString.codePoints().mapToObj(c -> String.valueOf((char) c));
+        assertNotNull(stringStream);
     }
 
 }

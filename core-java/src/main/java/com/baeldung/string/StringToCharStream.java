@@ -12,29 +12,39 @@ public class StringToCharStream {
 
     public StringToCharStream() {
 
-             //let's use the Stream API to manipulate a string
-            //this will count the occurrence of each character in the test string
+         //let's use the Stream API to manipulate a string
+        //this will count the occurrence of each character in the test string
 
-            System.out.println("Counting Occurrence of Letter");
-            String testString = "Noww";
+        String testString = "tests";
 
-            //we don't want to use foreach, so . . .
+        //first get an IntStream
+        IntStream intStream = testString.chars();
+        IntStream intStream1 = testString.codePoints();
 
-            Map<Character, Integer> map = new HashMap<>();
+        //now let's map them
+        Stream<Character> characterStream = intStream.mapToObj(c -> (char) c);
+        Stream<Character> characterStream1 = intStream1.mapToObj(c -> (char) c);
 
-            testString.codePoints()
-              .mapToObj(c -> (char) c)
-              .filter(c -> Character.isLetter(c))
-              .forEach(c -> {
-                if(map.containsKey(c)) {
-                  map.put(c, map.get(c) + 1);
-                } else {
-                  map.put(c, 1);
-                }
-              });
+        System.out.println("Counting Occurrence of Letter");
+        testString = "Noww";
 
-            //printing out the result here
-            System.out.println(map.toString());
+        //we don't want to use foreach, so . . .
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        testString.codePoints()
+          .mapToObj(c -> (char) c)
+          .filter(c -> Character.isLetter(c))
+          .forEach(c -> {
+            if(map.containsKey(c)) {
+              map.put(c, map.get(c) + 1);
+            } else {
+              map.put(c, 1);
+            }
+          });
+
+        //printing out the result here
+        System.out.println(map.toString());
     }
 
 
