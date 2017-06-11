@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import static io.restassured.RestAssured.preemptive;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 import static org.junit.Assert.assertEquals;
@@ -10,6 +11,7 @@ import io.restassured.response.Response;
 import java.util.List;
 
 import org.baeldung.persistence.model.Book;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { Application.class }, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class LiveTest {
+
+    @Before
+    public void setUp() {
+        RestAssured.authentication = preemptive().basic("john", "123");
+    }
 
     private static final String API_ROOT = "http://localhost:8081/api/books";
 
