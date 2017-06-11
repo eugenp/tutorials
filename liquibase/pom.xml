@@ -40,14 +40,6 @@
                     <propertyFile>liquibase/liquibase.properties</propertyFile>
                     <changeLogFile>liquibase/db-changelog.xml</changeLogFile>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
