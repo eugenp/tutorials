@@ -1,6 +1,5 @@
 package com.baeldung.string;
 
-import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import java.util.stream.IntStream;
@@ -9,7 +8,6 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by smatt on 09/06/2017.
@@ -20,6 +18,7 @@ public class StringToCharStreamUnitTest {
 
     @Test
     public void givenTestString_whenChars_thenReturnIntStream() {
+
         assertThat(testString.chars(), instanceOf(IntStream.class));
     }
 
