@@ -23,10 +23,10 @@ import io.vertx.core.Vertx;
 public class VertxSpringApplication {
 
     @Autowired
-    ServerVerticle serverVerticle;
+    private ServerVerticle serverVerticle;
 
     @Autowired
-    ServiceVerticle serviceVerticle;
+    private ServiceVerticle serviceVerticle;
 
     public static void main(String[] args) {
         SpringApplication.run(VertxSpringApplication.class, args);

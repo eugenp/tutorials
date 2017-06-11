@@ -15,8 +15,10 @@ import io.vertx.core.json.Json;
 @Component
 public class ServiceVerticle extends AbstractVerticle {
 
-    public static final String GET_ALL_ARTICLES = "get.artilces.all";
+    public static final String GET_ALL_ARTICLES = "get.articles.all";
+
     private final ObjectMapper mapper = Json.mapper;
+
     @Autowired
     private ArticleService articleService;
 
