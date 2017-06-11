@@ -1,7 +1,5 @@
-package springbootkotlin
+package com.baeldung.springbootkotlin
 
-import com.baeldung.springbootkotlin.HelloDto
-import com.baeldung.springbootkotlin.KotlinDemoApplication
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Test
@@ -14,8 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(
-		classes = arrayOf(KotlinDemoApplication::class),
-		webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+  classes = arrayOf(KotlinDemoApplication::class),
+  webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class KotlinDemoApplicationIntegrationTest {
 
 	@Autowired

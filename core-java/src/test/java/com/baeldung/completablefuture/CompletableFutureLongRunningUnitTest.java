@@ -11,9 +11,9 @@ import java.util.stream.Stream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class CompletableFutureUnitTest {
+public class CompletableFutureLongRunningUnitTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CompletableFutureUnitTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CompletableFutureLongRunningUnitTest.class);
 
 
     @Test
