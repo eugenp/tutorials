@@ -1,21 +1,20 @@
 package org.baeldung.dependency.injection;
 
+import org.baeldung.dependency.injection.config.AppConfig;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class DependencyInjectionUnitTest {
-	private static ClassPathXmlApplicationContext context = null;
+	private static AnnotationConfigApplicationContext context = null;
     private static final String CITY = "Chennai";
     private static final String COUNTRY = "India";
-    private static final String NAME = "Martin";
-    private static final int AGE = 32;
     
     @BeforeClass
     public static void setUp(){
-    	context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    	context = new AnnotationConfigApplicationContext(AppConfig.class);
     }
     
     @AfterClass
@@ -30,26 +29,6 @@ public class DependencyInjectionUnitTest {
 
         Assert.assertEquals(CITY, employee.getAddress().getCity());
         Assert.assertEquals(COUNTRY, employee.getAddress().getCountry());
-    }
-    
-    @Test
-    public void givenXmlConfigFile_whenUsingConstructorResolution_thenCorrectNameAndAge() {
-    	    
-		Employee employee = (Employee)context.getBean("employeeConstructorResolution");
-
-        Assert.assertEquals(NAME, employee.getName());
-        Assert.assertEquals(AGE, employee.getAge());
-        Assert.assertNull(employee.getDesignation());
-    }
-    
-    @Test
-    public void givenXmlConfigFile_whenUsingConstructorResolution_thenInCorrectAge() {
-    	    
-		Employee employee = (Employee)context.getBean("employeeConstructorMismatch");
-
-        Assert.assertEquals(NAME, employee.getName());
-        Assert.assertEquals(0, employee.getAge());
-        Assert.assertEquals(String.valueOf(AGE), employee.getDesignation());
     }
     
     @Test
