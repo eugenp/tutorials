@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class VertxSpringApplicationTests {
+public class VertxSpringApplicationIntegrationTest {
 
     private TestRestTemplate restTemplate = new TestRestTemplate();
 
