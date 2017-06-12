@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SeleniumConfig {
 
@@ -18,14 +20,20 @@ public class SeleniumConfig {
     }
 
     static {
-        if (getOsName("os.name").toLowerCase().contains("mac")) {
-            System.setProperty("webdriver.chrome.driver", findFile("chromedriver.mac"));
-        } else if (getOsName("os.name").toLowerCase().contains("nix") ||
-                getOsName("os.name").toLowerCase().contains("nux") ||
-                getOsName("os.name").toLowerCase().contains("aix")) {
-            System.setProperty("webdriver.chrome.driver", findFile("chromedriver.linux"));
-        } else if (getOsName("os.name").toLowerCase().contains("win")) {
-            System.setProperty("webdriver.chrome.driver", findFile("chromedriver.exe"));
+        String osName = getOsName("os.name").toLowerCase();
+        final Matcher matcher = Pattern.compile("(mac|nux|win)").matcher(osName);
+        if (matcher.find()) {
+            switch (matcher.group()) {
+                case "mac":
+                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.mac"));
+                    break;
+                case "nux":
+                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.linux"));
+                    break;
+                case "win":
+                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.exe"));
+                    break;
+            }
         }
     }
 

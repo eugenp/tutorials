@@ -119,7 +119,6 @@ public class OpenNLP {
         for (String location : locations) {
             LOGGER.info(location);
         }
-        
     }
 
     public void trainDocumentCategorizer() {

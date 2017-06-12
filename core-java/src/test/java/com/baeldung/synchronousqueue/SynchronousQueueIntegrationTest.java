@@ -12,9 +12,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static junit.framework.TestCase.assertEquals;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SynchronousQueueUnitTest {
+public class SynchronousQueueIntegrationTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SynchronousQueueUnitTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SynchronousQueueIntegrationTest.class);
 
 
     @Test
