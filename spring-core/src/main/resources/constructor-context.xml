@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="student" class="com.baeldung.model.Student">
+		<constructor-arg value="1" />
+		<constructor-arg value="John" />
+		<constructor-arg ref="college" />
+	</bean>
+	
+	<bean id="college" class="com.baeldung.model.College">
+		<constructor-arg value="1" />
+		<constructor-arg value="New York" />
+	</bean>
+
+</beans>
