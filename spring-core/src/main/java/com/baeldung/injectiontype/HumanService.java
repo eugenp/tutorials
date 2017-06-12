@@ -14,9 +14,13 @@ public class HumanService {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     // business logic
-    public void performAction(){
+    public void performAction() {
         action.doAction();
-        System.out.println("Action completed by "+name);
+        System.out.println("Action completed by " + name);
     }
 }
