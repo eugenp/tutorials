@@ -44,9 +44,8 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessServerUrl_thenHttpStatusOK() throws Exception {
-        @SuppressWarnings("rawtypes")
-        ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-          "http://localhost:" + this.port + "/getPerson", Map.class);
+        ResponseEntity<String> entity = this.testRestTemplate.getForEntity(
+          "http://localhost:" + this.port + "/displayallbeans", String.class);
         
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -69,8 +68,8 @@ public class DisplayBeanIntegrationTest {
         List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody().get(0)).get("beans");
         List<String> beanNamesList = allBeans.stream().map(x -> (String) x.get("bean")).collect(Collectors.toList());
 
-        assertThat( beanNamesList, hasItem("personController"));
-        assertThat( beanNamesList, hasItem("person"));
+        assertThat( beanNamesList, hasItem("fooController"));
+        assertThat( beanNamesList, hasItem("fooService"));
     }
     
     @Test
@@ -78,7 +77,7 @@ public class DisplayBeanIntegrationTest {
         String[] beanNames = context.getBeanDefinitionNames();
         
         List<String> beanNamesList = Arrays.asList(beanNames);
-        assertTrue(beanNamesList.contains("personController"));
-        assertTrue(beanNamesList.contains("person"));
+        assertTrue(beanNamesList.contains("fooController"));
+        assertTrue(beanNamesList.contains("fooService"));
     }
 }
