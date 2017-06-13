@@ -8,27 +8,26 @@ import java.util.stream.Stream;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class StringToCharStreamUnitTest {
 
-    private String testString = "Tests";
 
     @Test
     public void givenTestString_whenChars_thenReturnIntStream() {
-
-        assertThat(testString.chars(), instanceOf(IntStream.class));
+        assertThat(StringToCharStream.getIntStreamFromChars("test"), instanceOf(IntStream.class));
     }
 
     @Test
     public void givenTestString_whenCodePoints_thenReturnIntStream() {
-        assertThat(testString.codePoints(), instanceOf(IntStream.class));
+        assertThat(StringToCharStream.getIntStreamFromCodePoints("test"), instanceOf(IntStream.class));
     }
 
     @Test
     public void givenIntStream_whenMapToObj_thenReturnCharacterStream() {
-        Stream<Character> characterStream = testString.chars().mapToObj(c -> (char) c);
-        Stream<Character> characterStream1 = testString.codePoints().mapToObj(c -> (char) c);
+        Stream<Character> characterStream
+          = StringToCharStream.mapIntStreamToCharStream(StringToCharStream.getIntStreamFromChars("test"));
+        Stream<Character> characterStream1
+          = StringToCharStream.mapIntStreamToCharStream(StringToCharStream.getIntStreamFromCodePoints("test"));
         assertNotNull("IntStream returned by chars() did not map to Stream<Character>", characterStream);
         assertNotNull("IntStream returned by codePoints() did not map to Stream<Character>", characterStream1);
     }
@@ -36,7 +35,7 @@ public class StringToCharStreamUnitTest {
     @Test
     public void givenIntStream_whenMapToObj_thenReturnStringStream() {
         Stream<String> stringStream
-          = testString.codePoints().mapToObj(c -> String.valueOf((char) c));
+          = StringToCharStream.mapIntStreamToStringStream(StringToCharStream.getIntStreamFromCodePoints("test"));
         assertNotNull(stringStream);
     }
 
