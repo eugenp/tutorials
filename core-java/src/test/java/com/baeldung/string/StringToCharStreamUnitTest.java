@@ -10,12 +10,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created by smatt on 09/06/2017.
- */
 public class StringToCharStreamUnitTest {
 
-    String testString = "Tests";
+    private String testString = "Tests";
 
     @Test
     public void givenTestString_whenChars_thenReturnIntStream() {
@@ -37,9 +34,9 @@ public class StringToCharStreamUnitTest {
     }
 
     @Test
-    public void givenIntStream_whenMapToObj_thenReturnStringStream(){
+    public void givenIntStream_whenMapToObj_thenReturnStringStream() {
         Stream<String> stringStream
-                = testString.codePoints().mapToObj(c -> String.valueOf((char) c));
+          = testString.codePoints().mapToObj(c -> String.valueOf((char) c));
         assertNotNull(stringStream);
     }
 
