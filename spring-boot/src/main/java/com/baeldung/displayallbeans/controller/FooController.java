@@ -10,13 +10,13 @@ import com.baeldung.displayallbeans.service.FooService;
 
 @Controller
 public class FooController {
-	@Autowired
-	private FooService fooService;
-	
-	@RequestMapping(value="/displayallbeans") 
-	public String getHeaderAndBody (Map<String, Object> model){
-		model.put("header", fooService.getHeader());
-		model.put("message", fooService.getBody());
-		return "displayallbeans";
-	}
+    @Autowired
+    private FooService fooService;
+    
+    @RequestMapping(value="/displayallbeans") 
+    public String getHeaderAndBody (Map<String, Object> model){
+        model.put("header", fooService.getHeader());
+        model.put("message", fooService.getBody());
+        return "displayallbeans";
+    }
 }
