@@ -28,7 +28,26 @@ public class StringToCharStream {
 
     }
 
+    public static IntStream getIntStreamFromCodePoints(String test) {
+        return test.codePoints();
+    }
+
+    public static IntStream getIntStreamFromChars(String test) {
+        return test.chars();
+    }
+
+    public static Stream<Character> mapIntStreamToCharStream(IntStream intStream) {
+        return intStream.mapToObj(c -> (char) c);
+    }
+
+    public static Stream<String> mapIntStreamToStringStream(IntStream intStream) {
+        return intStream.mapToObj(c -> String.valueOf((char) c));
+    }
+
+
     public static void main(String[] args) {
+
         new StringToCharStream();
+
     }
 }
