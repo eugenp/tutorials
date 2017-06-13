@@ -25,7 +25,6 @@
     </properties>
 
     <modules>
-        <module>spring-vertx</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
