@@ -17,8 +17,6 @@ public class VertxSpringApplicationIntegrationTest {
 
     @Test
     public void givenUrl_whenReceivedArticles_thenSuccess() throws InterruptedException {
-        Thread.sleep(1000);
-
         ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://localhost:8080/api/baeldung/articles", String.class);
 
         assertEquals(200, responseEntity.getStatusCodeValue());
