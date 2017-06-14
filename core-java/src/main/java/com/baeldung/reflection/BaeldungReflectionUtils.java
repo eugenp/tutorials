@@ -11,33 +11,29 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class BaeldungReflectionUtils {
+class BaeldungReflectionUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(BaeldungReflectionUtils.class);
 
-
-    public static List<String> getNullPropertiesList(Customer customer) throws Exception {
+    static List<String> getNullPropertiesList(Customer customer) throws Exception {
         PropertyDescriptor[] propDescArr = Introspector.getBeanInfo(Customer.class, Object.class).getPropertyDescriptors();
-        List<PropertyDescriptor> propDescList = Arrays.asList(propDescArr);
 
-        List<String> nullProps = propDescList.stream()
-                .filter(nulls(customer))
-                .map(PropertyDescriptor::getName)
-                .collect(Collectors.toList());
-        return nullProps;
+        return Arrays.stream(propDescArr)
+          .filter(nulls(customer))
+          .map(PropertyDescriptor::getName)
+          .collect(Collectors.toList());
     }
 
     private static Predicate<PropertyDescriptor> nulls(Customer customer) {
-        Predicate<PropertyDescriptor> isNull = pd -> {
-            Method getterMethod = pd.getReadMethod();
+        return pd -> {
             boolean result = false;
             try {
+                Method getterMethod = pd.getReadMethod();
                 result = (getterMethod != null && getterMethod.invoke(customer) == null);
             } catch (Exception e) {
                 LOG.error("error invoking getter method");
             }
             return result;
         };
-        return isNull;
     }
 }
