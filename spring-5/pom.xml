@@ -15,6 +15,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.0.M1</version>
+        
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
@@ -177,6 +178,7 @@
         <junit.platform.version>1.0.0-M4</junit.platform.version>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <spring.version>5.0.0.RC2</spring.version>
     </properties>
 
 </project>

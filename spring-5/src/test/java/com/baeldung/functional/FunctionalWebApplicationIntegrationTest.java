@@ -149,32 +149,4 @@ public class FunctionalWebApplicationIntegrationTest {
           .isEqualTo("hello");
     }
     
-    
-    @Test
-    public void givenRouter_whenGetTestWithMultipleURIVariablePattern_thenGotURIVariableValue() throws Exception {
-        //this calls the "/test/{*id}", and stored the value in pathVariable called "id"
-        //this works as expected, as it is mentioned using the RouteFunctions
-        client
-          .get()
-          .uri("/test/ab/cd/ef")
-          .exchange()
-          .expectStatus()
-          .isOk()
-          .expectBody(String.class)
-          .isEqualTo("/ab/cd/ef");
-    }
-    
-    @Test
-    public void givenRouter_whenGetPathWithWildcard_thenGotResponse() throws Exception {
-        //this calls the "/wi?dcard"
-        //this works as expected, as it is mentioned using the RouteFunctions
-        client
-          .get()
-          .uri("/wildcard")
-          .exchange()
-          .expectStatus()
-          .isOk()
-          .expectBody(String.class)
-          .isEqualTo("path with ? accessed");
-    }
 }

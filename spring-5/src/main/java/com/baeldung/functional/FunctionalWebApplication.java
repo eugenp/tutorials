@@ -39,10 +39,6 @@ public class FunctionalWebApplication {
           .then(ok().build()));
 
         return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld")))
-          //added thesse two paths here for testing
-          .andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))           
-          .andRoute(GET("/wi?dcard"), serverRequest -> ok().body(fromObject("path with ? accessed")))
-                
           .andRoute(POST("/login"), formHandler::handleLogin)
           .andRoute(POST("/upload"), formHandler::handleUpload)
           .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
