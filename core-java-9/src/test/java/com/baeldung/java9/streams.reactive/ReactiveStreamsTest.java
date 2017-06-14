@@ -24,8 +24,10 @@ public class ReactiveStreamsTest {
         publisher.close();
 
         //then
-        Thread.sleep(1000);
-        assertThat(subscriber.consumedElements).containsExactlyElementsOf(items);
+
+        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+                () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(items)
+        );
     }
 
     @Test
@@ -44,8 +46,9 @@ public class ReactiveStreamsTest {
         publisher.close();
 
         //then
-        Thread.sleep(1000);
-        assertThat(subscriber.consumedElements).containsExactlyElementsOf(expectedResult);
+        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+                () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(expectedResult)
+        );
     }
 
     @Test
@@ -63,7 +66,8 @@ public class ReactiveStreamsTest {
         publisher.close();
 
         //then
-        Thread.sleep(1000);
-        assertThat(subscriber.consumedElements).containsExactlyElementsOf(expected);
+        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+                () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(expected)
+        );
     }
 }

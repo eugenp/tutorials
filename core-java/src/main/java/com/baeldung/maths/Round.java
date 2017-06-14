@@ -17,7 +17,8 @@ public class Round {
         DecimalFormat df = new DecimalFormat("###.###");
         System.out.println(df.format(PI));
         System.out.println(round(PI, 3));
-        System.out.println(roundOptional(PI, 3));
+        System.out.println(roundNotPrecise(PI, 3));
+        System.out.println(roundAvoid(PI, 3));
         System.out.println(Precision.round(PI, 3));
         System.out.println(DoubleRounder.round(PI, 3));
     }
@@ -25,12 +26,20 @@ public class Round {
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
         
+        BigDecimal bd = new BigDecimal(Double.toString(value));
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+    
+    public static double roundNotPrecise(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
     
-    public static double roundOptional(double value, int places) {
+    public static double roundAvoid(double value, int places) {
         double scale = Math.pow(10, places);
         double rounded = Math.round(value * scale) / scale;
         return rounded;
