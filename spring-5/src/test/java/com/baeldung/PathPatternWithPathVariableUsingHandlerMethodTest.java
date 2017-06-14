@@ -84,11 +84,11 @@ public class PathPatternWithPathVariableUsingHandlerMethodTest {
                 .equals("abc");
         
 		client
-				.get()
-				.uri("/123")
-				.exchange()
-				.expectStatus()
-				.is4xxClientError();
+		        .get()
+		        .uri("/123")
+		        .exchange()
+		        .expectStatus()
+		        .is4xxClientError();
     }
     
     @Test
