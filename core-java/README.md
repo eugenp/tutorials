@@ -113,4 +113,4 @@
 - [Difference Between Wait and Sleep in Java](http://www.baeldung.com/java-wait-and-sleep)
 - [LongAdder and LongAccumulator in Java](http://www.baeldung.com/java-longadder-and-longaccumulator)
 - [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
-
+- [Dynamic Proxies in Java](http://www.baeldung.com/java-dynamic-proxies)
