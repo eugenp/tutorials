@@ -50,18 +50,6 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsTest {
     }
 
     @Test
-    public void givenResources_whenAccess_thenGot() throws Exception {
-        client
-          .get()
-          .uri("/files/hello.txt")
-          .exchange()
-          .expectStatus()
-          .isOk()
-          .expectBody(String.class)
-          .isEqualTo("hello");
-    }
-    
-    @Test
     public void givenRouter_whenGetMultipleCharWildcard_thenGotPathPattern() throws Exception {
        
         client
@@ -107,4 +95,25 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsTest {
           .is4xxClientError();
     }
     
+    @Test
+    public void givenResources_whenAccess_thenGot() throws Exception {
+        client
+          .get()
+          .uri("/files/test/test.txt")
+          .exchange()
+          .expectStatus()
+          .isOk()
+          .expectBody(String.class)
+          .isEqualTo("test");
+        
+        client
+          .get()
+          .uri("/files/hello.txt")
+          .exchange()
+          .expectStatus()
+          .isOk()
+          .expectBody(String.class)
+          .isEqualTo("hello");
+    }
+
 }

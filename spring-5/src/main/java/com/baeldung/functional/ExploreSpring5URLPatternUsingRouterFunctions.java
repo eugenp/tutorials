@@ -32,7 +32,7 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
 				.andRoute(GET("/{baeldung:[a-z]+}"),
 						serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung="
 								+ serverRequest.pathVariable("baeldung"))))
-				.and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")));
+				.and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
 	}
 
 	WebServer start() throws Exception {
