@@ -14,19 +14,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MyApplication implements CommandLineRunner {
 
-        @Autowired
-        private YAMLConfig myConfig;
+    @Autowired
+    private YAMLConfig myConfig;
 
-        public static void main(String[] args) {
-                SpringApplication app = new SpringApplication
-                  (MyApplication.class);
-                app.run();
-        }
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MyApplication.class);
+        app.run();
+    }
 
-        public void run(String... args) throws Exception {
-                System.out.println("using environment:" + myConfig.getEnvironment());
-                System.out.println("name:" + myConfig.getName());
-                System.out.println("servers:" + myConfig.getServers());
-        }
+    public void run(String... args) throws Exception {
+        System.out.println("using environment:" + myConfig.getEnvironment());
+        System.out.println("name:" + myConfig.getName());
+        System.out.println("servers:" + myConfig.getServers());
+    }
 
 }
