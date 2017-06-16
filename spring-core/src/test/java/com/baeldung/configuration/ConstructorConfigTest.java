@@ -11,7 +11,7 @@ import com.baeldung.model.Student;
 public class ConstructorConfigTest {
 
     @Test
-    public void testConstructorDependencyInjection() {
+    public void whenContextLoaded_thenDependencyInjected() {
         ApplicationContext context = new AnnotationConfigApplicationContext(ConstructorConfig.class);
         Student student = context.getBean(Student.class);
         assertEquals(1, student.getId());
