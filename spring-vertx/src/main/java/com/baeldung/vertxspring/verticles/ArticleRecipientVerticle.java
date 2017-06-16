@@ -13,7 +13,7 @@ import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.Json;
 
 @Component
-public class ServiceVerticle extends AbstractVerticle {
+public class ArticleRecipientVerticle extends AbstractVerticle {
 
     public static final String GET_ALL_ARTICLES = "get.articles.all";
 
