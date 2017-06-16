@@ -25,7 +25,6 @@
     </properties>
 
     <modules>
-        <module>spring-vertx</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -208,6 +207,7 @@
         <module>spring-userservice</module>
         <module>spring-zuul</module>
         <module>spring-reactor</module>
+        <module>spring-vertx</module>
 
         <module>testing</module>
         <module>testng</module>

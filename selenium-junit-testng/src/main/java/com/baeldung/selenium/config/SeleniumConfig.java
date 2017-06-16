@@ -4,9 +4,11 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,30 +17,13 @@ public class SeleniumConfig {
     private WebDriver driver;
 
     public SeleniumConfig() {
-        Capabilities capabilities = DesiredCapabilities.chrome();
-        driver = new ChromeDriver(capabilities);
+        Capabilities capabilities = DesiredCapabilities.firefox();
+        driver = new FirefoxDriver(capabilities);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     static {
-        String osName = getOsName("os.name").toLowerCase();
-        final Matcher matcher = Pattern.compile("(mac|nux|win)").matcher(osName);
-        if (matcher.find()) {
-            switch (matcher.group()) {
-                case "mac":
-                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.mac"));
-                    break;
-                case "nux":
-                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.linux"));
-                    break;
-                case "win":
-                    System.setProperty("webdriver.chrome.driver", findFile("chromedriver.exe"));
-                    break;
-            }
-        }
-    }
-
-    private static String getOsName(String prop) {
-        return (System.getProperty(prop));
+        System.setProperty("webdriver.gecko.driver", findFile("geckodriver.mac"));
     }
 
     static private String findFile(String filename) {
@@ -51,7 +36,7 @@ public class SeleniumConfig {
     }
 
     public void close() {
-        driver.quit();
+        driver.close();
     }
 
     public void navigateTo(String url) {
