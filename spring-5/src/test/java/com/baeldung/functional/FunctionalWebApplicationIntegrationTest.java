@@ -148,5 +148,5 @@ public class FunctionalWebApplicationIntegrationTest {
           .expectBody(String.class)
           .isEqualTo("hello");
     }
-    
+
 }
