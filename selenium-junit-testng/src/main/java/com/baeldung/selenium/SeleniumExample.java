@@ -1,32 +1,31 @@
 package main.java.com.baeldung.selenium;
 
+import main.java.com.baeldung.selenium.config.SeleniumConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class SeleniumExample {
 
-    private WebDriver webDriver;
+    private SeleniumConfig config;
     private String url = "http://www.baeldung.com/";
 
     public SeleniumExample() {
-        System.setProperty("webdriver.firefox.marionette", "C:\\selenium\\geckodriver.exe");
-        webDriver = new FirefoxDriver();
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.get(url);
+        config = new SeleniumConfig();
+        config.getDriver().get(url);
     }
 
     public void closeWindow() {
-        webDriver.close();
+        this.config.getDriver().close();
     }
 
     public String getTitle() {
-        return webDriver.getTitle();
+        return this.config.getDriver().getTitle();
     }
 
     public void getAboutBaeldungPage() {
@@ -36,7 +35,7 @@ public class SeleniumExample {
     }
 
     private void closeOverlay() {
-        List<WebElement> webElementList = webDriver.findElements(By.tagName("a"));
+        List<WebElement> webElementList = this.config.getDriver().findElements(By.tagName("a"));
         if (webElementList != null) {
             webElementList.stream()
               .filter(webElement -> "Close".equalsIgnoreCase(webElement.getAttribute("title")))
@@ -47,14 +46,18 @@ public class SeleniumExample {
     }
 
     private void clickAboutLink() {
-        webDriver.findElement(By.partialLinkText("About")).click();
+        this.config.getDriver().findElement(By.partialLinkText("About")).click();
     }
 
     private void clickAboutUsLink() {
-        webDriver.findElement(By.partialLinkText("About Baeldung.")).click();
+        Actions builder = new Actions(config.getDriver());
+        WebElement element = this.config.getDriver().findElement(By.partialLinkText("About Baeldung."));
+        builder.moveToElement(element).build().perform();
     }
 
     public boolean isAuthorInformationAvailable() {
-        return webDriver.findElement(By.xpath("//*[contains(text(), 'an engineer with a passion for teaching and building stuff on the web')]")).isDisplayed();
+        return this.config.getDriver()
+                .findElement(By.cssSelector("article > .row > div"))
+                .isDisplayed();
     }
 }
