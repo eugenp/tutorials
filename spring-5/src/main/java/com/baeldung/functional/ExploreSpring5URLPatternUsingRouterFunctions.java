@@ -21,45 +21,41 @@ import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 
 public class ExploreSpring5URLPatternUsingRouterFunctions {
 
-	private RouterFunction<ServerResponse> routingFunction() {
+    private RouterFunction<ServerResponse> routingFunction() {
 
-		return route(GET("/p?ths"), serverRequest -> ok().body(fromObject("/p?ths")))
-				.andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))
-				.andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
-				.andRoute(GET("/{var1}_{var2}"),
-						serverRequest -> ok().body(fromObject(
-								serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
-				.andRoute(GET("/{baeldung:[a-z]+}"),
-						serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung="
-								+ serverRequest.pathVariable("baeldung"))))
-				.and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
-	}
+        return route(GET("/p?ths"), serverRequest -> ok().body(fromObject("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))
+            .andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
+            .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
+            .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
+            .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
+    }
 
-	WebServer start() throws Exception {
-		WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
-		HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler).prependFilter(new IndexRewriteFilter())
-				.build();
+    WebServer start() throws Exception {
+        WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
+        HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
+            .prependFilter(new IndexRewriteFilter())
+            .build();
 
-		Tomcat tomcat = new Tomcat();
-		tomcat.setHostname("localhost");
-		tomcat.setPort(9090);
-		Context rootContext = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
-		ServletHttpHandlerAdapter servlet = new ServletHttpHandlerAdapter(httpHandler);
-		Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
-		rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
+        Tomcat tomcat = new Tomcat();
+        tomcat.setHostname("localhost");
+        tomcat.setPort(9090);
+        Context rootContext = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
+        ServletHttpHandlerAdapter servlet = new ServletHttpHandlerAdapter(httpHandler);
+        Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
+        rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
 
-		TomcatWebServer server = new TomcatWebServer(tomcat);
-		server.start();
-		return server;
+        TomcatWebServer server = new TomcatWebServer(tomcat);
+        server.start();
+        return server;
 
-	}
+    }
 
-	public static void main(String[] args) {
-		try {
-			new FunctionalWebApplication().start();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) {
+        try {
+            new FunctionalWebApplication().start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
