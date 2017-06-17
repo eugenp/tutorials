@@ -1,20 +1,19 @@
 package com.baeldung.ditypes;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.baeldung.ditypes.domain.Book;
 
 public class SpringRunner {
 
     public static void main(String[] args) {
-        Book classicBook = getBookFromXml();
-        System.out.println(classicBook);
-    }
+        ApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
 
-    private static Book getBookFromXml() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("ditypes.xml");
-        Book book = context.getBean(Book.class);
-        return context.getBean(Book.class);
+        Book bookConstructorInjection = (Book) context.getBean("bookJavaConstructor");
+        System.out.println(bookConstructorInjection);
+
+        Book bookSetterInjection = (Book) context.getBean("bookJavaSetter");
+        System.out.println(bookSetterInjection);
     }
 }

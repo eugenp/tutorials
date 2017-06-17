@@ -1,5 +1,8 @@
 package com.baeldung.ditypes.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Book {
 
     private String name;
@@ -33,5 +36,4 @@ public class Book {
     public String toString() {
         return "Book [name=" + name + ", category=" + category + "]";
     }
-    
 }
