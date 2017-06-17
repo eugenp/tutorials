@@ -9,7 +9,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class LocalSensitiveHashingTest {
+public class LocalSensitiveHashingUnitTest {
 
     @Ignore("for simplicity of the example number of input vectors is very low, that's why LSH may yield non deterministic results")
     @Test()
