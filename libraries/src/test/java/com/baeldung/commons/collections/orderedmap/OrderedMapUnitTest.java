@@ -1,8 +1,6 @@
 package com.baeldung.commons.collections.orderedmap;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,31 +14,28 @@ import org.junit.Test;
 
 public class OrderedMapUnitTest {
 
-    static final String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
-    static final Integer[] ages = { 37, 28, 40, 36, 21 };
+    private String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
+    private Integer[] ages = { 37, 28, 40, 36, 21 };
 
-    static final int RUNNERS_COUNT = names.length;
+    private int RUNNERS_COUNT = names.length;
 
-    // First implementation of interface OrderedMap: LinkedMap
     private OrderedMap<String, Integer> runnersLinkedMap;
-
-    // Second implementation of interface OrderedMap: ListOrderedMap
     private OrderedMap<String, Integer> runnersListOrderedMap;
 
     @Before
     public void createRunners() {
-        runnersListOrderedMap = new ListOrderedMap<String, Integer>();
+        // First implementation: ListOrderedMap
+        this.runnersListOrderedMap = new ListOrderedMap<String, Integer>();
+        this.loadOrderedMapOfRunners(this.runnersListOrderedMap);
 
-        this.loadOrderedMapOfRunners(runnersListOrderedMap);
-
-        runnersLinkedMap = new LinkedMap<String, Integer>();
-
-        this.loadOrderedMapOfRunners(runnersLinkedMap);
+        // Second implementation: LinkedMap
+        this.runnersLinkedMap = new LinkedMap<String, Integer>();
+        this.loadOrderedMapOfRunners(this.runnersLinkedMap);
     }
 
     private void loadOrderedMapOfRunners(OrderedMap<String, Integer> runners) {
         for (int i = 0; i < RUNNERS_COUNT; i++) {
-            runners.put(names[i], ages[i]);
+            runners.put(this.names[i], this.ages[i]);
         }
     }
 
@@ -52,8 +47,8 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersLinkedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
-            assertEquals(runnersIterator.getKey(), names[i]);
-            assertEquals(runnersIterator.getValue(), ages[i]);
+            assertEquals(runnersIterator.getKey(), this.names[i]);
+            assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
     }
 
@@ -65,8 +60,8 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersListOrderedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
-            assertEquals(runnersIterator.getKey(), names[i]);
-            assertEquals(runnersIterator.getValue(), ages[i]);
+            assertEquals(runnersIterator.getKey(), this.names[i]);
+            assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
     }
 
@@ -77,7 +72,7 @@ public class OrderedMapUnitTest {
 
         String name = this.runnersLinkedMap.firstKey();
         for (int i = 0; name != null; i++) {
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
             name = this.runnersLinkedMap.nextKey(name);
         }
     }
@@ -89,7 +84,7 @@ public class OrderedMapUnitTest {
 
         String name = this.runnersListOrderedMap.firstKey();
         for (int i = 0; name != null; i++) {
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
             name = this.runnersListOrderedMap.nextKey(name);
         }
     }
@@ -101,7 +96,7 @@ public class OrderedMapUnitTest {
 
         String name = this.runnersLinkedMap.lastKey();
         for (int i = RUNNERS_COUNT - 1; name != null; i--) {
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
             name = this.runnersLinkedMap.previousKey(name);
         }
     }
@@ -113,19 +108,13 @@ public class OrderedMapUnitTest {
 
         String name = this.runnersListOrderedMap.lastKey();
         for (int i = RUNNERS_COUNT - 1; name != null; i--) {
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
             name = this.runnersListOrderedMap.previousKey(name);
         }
     }
 
     @Test
     public void givenALinkedMap_whenObjectIsSearched_thenMatchesConstantArray() {
-        assertTrue(this.runnersLinkedMap.containsKey("Mathew"));
-        assertTrue(this.runnersLinkedMap.containsValue(new Integer(40)));
-
-        assertFalse(this.runnersLinkedMap.containsKey("Nicholas"));
-        assertFalse(this.runnersLinkedMap.containsValue(new Integer(42)));
-
         assertEquals(ages[4], this.runnersLinkedMap.get("Anna"));
     }
 
@@ -147,10 +136,10 @@ public class OrderedMapUnitTest {
         for (int i = 0; i < RUNNERS_COUNT; i++) {
             // accessed by index:
             String name = lmap.get(i);
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
 
             // index of key concides with position in array
-            assertEquals(lmap.indexOf(names[i]), i);
+            assertEquals(lmap.indexOf(this.names[i]), i);
         }
     }
 
@@ -168,12 +157,6 @@ public class OrderedMapUnitTest {
 
     @Test
     public void givenAListOrderedMap_whenObjectIsSearched_thenMatchesConstantArray() {
-        assertTrue(this.runnersListOrderedMap.containsKey("Mathew"));
-        assertTrue(this.runnersListOrderedMap.containsValue(new Integer(40)));
-
-        assertFalse(this.runnersListOrderedMap.containsKey("Nicholas"));
-        assertFalse(this.runnersListOrderedMap.containsValue(new Integer(42)));
-
         assertEquals(ages[4], this.runnersListOrderedMap.get("Anna"));
     }
 
@@ -193,10 +176,10 @@ public class OrderedMapUnitTest {
         for (int i = 0; i < RUNNERS_COUNT; i++) {
             // accessed by index:
             String name = lomap.get(i);
-            assertEquals(name, names[i]);
+            assertEquals(name, this.names[i]);
 
             // index of key concides with position in array
-            assertEquals(lomap.indexOf(names[i]), i);
+            assertEquals(lomap.indexOf(this.names[i]), i);
         }
     }
 
