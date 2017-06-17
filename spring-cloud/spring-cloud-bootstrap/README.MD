@@ -2,6 +2,7 @@
 - [Spring Cloud – Bootstrapping](http://www.baeldung.com/spring-cloud-bootstrapping)
 - [Spring Cloud – Securing Services](http://www.baeldung.com/spring-cloud-securing-services)
 - [Spring Cloud – Tracing Services with Zipkin](http://www.baeldung.com/tracing-services-with-zipkin)
+- [Spring Cloud – Adding Angular 4](http://www.baeldung.com/spring-cloud-angular)
 
 
 - To run the project:
