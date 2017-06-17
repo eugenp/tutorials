@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+<!-- 	<bean id="book" class="com.baeldung.ditypes.Book">
+		<constructor-arg value="Pride and Prejudice"></constructor-arg>
+		<constructor-arg ref="category"></constructor-arg>
+	</bean> -->
+	
+	<bean id="category" class="com.baeldung.ditypes.domain.Category">
+		<constructor-arg value="Classic"></constructor-arg>
+	</bean>
+	<bean id="book" class="com.baeldung.ditypes.domain.Book">
+		<property name="name" value="Pride and Prejudice"></property>
+		<property name="category" ref="category"></property>
+	</bean>
+</beans>
+
