@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class Dom4JParserUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_dom4j.xml";
 
     Dom4JParser parser;
 
@@ -61,7 +61,7 @@ public class Dom4JParserUnitTest {
         parser = new Dom4JParser(new File(fileName));
         parser.generateModifiedDocument();
 
-        File generatedFile = new File("src/test/resources/example_updated.xml");
+        File generatedFile = new File("src/test/resources/example_dom4j_updated.xml");
         assertTrue(generatedFile.exists());
 
         parser.setFile(generatedFile);
@@ -76,13 +76,12 @@ public class Dom4JParserUnitTest {
         parser = new Dom4JParser(new File(fileName));
         parser.generateNewDocument();
 
-        File newFile = new File("src/test/resources/example_new.xml");
+        File newFile = new File("src/test/resources/example_dom4j_new.xml");
         assertTrue(newFile.exists());
 
         parser.setFile(newFile);
         Node element = parser.getNodeById("01");
 
         assertEquals("XML with Dom4J", element.selectSingleNode("title").getText());
-
     }
 }
