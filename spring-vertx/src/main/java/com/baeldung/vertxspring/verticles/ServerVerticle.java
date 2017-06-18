@@ -11,7 +11,7 @@ public class ServerVerticle extends AbstractVerticle {
 
     private void getAllArticlesHandler(RoutingContext routingContext) {
         vertx.eventBus()
-            .<String>send(ServiceVerticle.GET_ALL_ARTICLES, "", result -> {
+            .<String>send(ArticleRecipientVerticle.GET_ALL_ARTICLES, "", result -> {
                 if (result.succeeded()) {
                     routingContext.response()
                         .putHeader("content-type", "application/json")
