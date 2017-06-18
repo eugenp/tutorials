@@ -23,18 +23,18 @@ import com.baeldung.javanetworking.url.URLDemo;
 @FixMethodOrder
 public class URLDemoTest {
     private static Logger log = LoggerFactory.getLogger(URLDemo.class);
-    final static String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
+    static String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
     // parsed locator
-    final static String URLPROTOCOL = "https";
-    final static String URLAUTHORITY = "wordpress.org:443";
-    final static String URLHOST = "wordpress.org";
-    final static String URLPATH = "/support/topic/page-jumps-within-wordpress/";
-    final static String URLFILENAME = "/support/topic/page-jumps-within-wordpress/?replies=3";
-    final static int URLPORT = 443;
-    final static int URLDEFAULTPORT = 443;
-    final static String URLQUERY = "replies=3";
-    final static String URLREFERENCE = "post-2278484";
-    final static String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
+    static String URLPROTOCOL = "https";
+    String URLAUTHORITY = "wordpress.org:443";
+    static String URLHOST = "wordpress.org";
+    static String URLPATH = "/support/topic/page-jumps-within-wordpress/";
+    String URLFILENAME = "/support/topic/page-jumps-within-wordpress/?replies=3";
+    int URLPORT = 443;
+    static int URLDEFAULTPORT = 443;
+    static String URLQUERY = "replies=3";
+    static String URLREFERENCE = "post-2278484";
+    static String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
 
     static URL url;
     URLConnection urlConnection = null;
