@@ -1,6 +1,7 @@
-package com.baeldung;
+package com.baeldung.web;
 
 import com.baeldung.web.PathPatternController;
+import com.baeldung.Spring5Application;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +11,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Spring5Application.class)
-public class PathPatternWithPathVariableUsingHandlerMethodTest {
+public class PathPatternsUsingHandlerMethodTest {
 
     private static WebTestClient client;
 
