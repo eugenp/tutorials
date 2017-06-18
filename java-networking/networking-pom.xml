@@ -5,6 +5,8 @@
 	<artifactId>java-networking</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+<!-- ***Rename networking-pom.xml on the pom.xml to use Maven*** -->
+
 	<properties>
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
