@@ -1,16 +1,13 @@
-package org.baeldung.config;
+package com.baeldung.produceimage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @EnableAutoConfiguration
-@ComponentScan("org.baeldung")
-public class Application extends WebMvcConfigurerAdapter {
-
+@ComponentScan("com.baeldung.produceimage")
+public class ImageApplication {
     public static void main(final String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ImageApplication.class, args);
     }
-
 }

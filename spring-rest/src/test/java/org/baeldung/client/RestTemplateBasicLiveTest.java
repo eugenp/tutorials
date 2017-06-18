@@ -36,7 +36,7 @@ import com.google.common.base.Charsets;
 public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
-    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/myfoos";
+    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/foos";
 
     @Before
     public void beforeTest() {
