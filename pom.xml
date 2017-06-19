@@ -134,7 +134,6 @@
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
-        <module>spring-core-di</module>
         <module>spring-cucumber</module>
         <module>spring-aop</module>
         <module>spring-data-cassandra</module>
