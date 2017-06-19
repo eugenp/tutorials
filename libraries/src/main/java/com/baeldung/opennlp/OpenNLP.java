@@ -36,7 +36,7 @@ import opennlp.tools.util.TrainingParameters;
 public class OpenNLP {
 
     private final static Logger LOGGER = Logger.getLogger(OpenNLP.class.getName());
-    private final static String text = "To get to the south: Go to the store. Buy a compass. Use the compass. Then walk to the south.";
+    private final static String text = buildString();
     private final static String sentence[] = new String[] { "James", "Jordan", "live", "in", "Oklahoma", "city", "." };
 
     private DoccatModel docCatModel;
@@ -45,6 +45,16 @@ public class OpenNLP {
         new OpenNLP();
     }
 
+    public static String buildString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("To get to the south:");
+        sb.append(" Go to the store.");
+        sb.append(" Buy a compass.");
+        sb.append(" Use the compass.");
+        sb.append(" Then walk to the south.");
+        return sb.toString();
+    }
+    
     public OpenNLP() {
         try {
             sentenceDetector();
@@ -68,7 +78,9 @@ public class OpenNLP {
         SentenceModel model = new SentenceModel(is);
         SentenceDetectorME sdetector = new SentenceDetectorME(model);
         String sentences[] = sdetector.sentDetect(text);
-        Arrays.stream(sentences).forEach(LOGGER::info);
+        for (String sentence : sentences) {
+            LOGGER.info(sentence);
+        }
         is.close();
     }
 
@@ -77,7 +89,9 @@ public class OpenNLP {
         TokenizerModel model = new TokenizerModel(is);
         Tokenizer tokenizer = new TokenizerME(model);
         String tokens[] = tokenizer.tokenize(text);
-        Arrays.stream(tokens).forEach(LOGGER::info);
+        for (String token : tokens) {
+            LOGGER.info(token);
+        }
         is.close();
     }
 
@@ -89,6 +103,9 @@ public class OpenNLP {
         Span nameSpans[] = nameFinder.find(sentence);
         String[] names = Span.spansToStrings(nameSpans, sentence);
         Arrays.stream(names).forEach(LOGGER::info);
+        for (String name : names) {
+            LOGGER.info(name);
+        }
     }
 
     public static void locationFinder() throws IOException {
@@ -99,6 +116,9 @@ public class OpenNLP {
         Span locationSpans[] = nameFinder.find(sentence);
         String[] locations = Span.spansToStrings(locationSpans, sentence);
         Arrays.stream(locations).forEach(LOGGER::info);
+        for (String location : locations) {
+            LOGGER.info(location);
+        }
     }
 
     public void trainDocumentCategorizer() {
@@ -160,7 +180,9 @@ public class OpenNLP {
         String[] taggedSentence = new String[] {"Out", "of", "the", "night", "that", "covers", "me"};
         String pos[] = new String[] { "IN", "IN", "DT", "NN", "WDT", "VBZ", "PRP"};
         String chunks[] = chunkerME.chunk(taggedSentence, pos);
-        Arrays.stream(chunks).forEach(LOGGER::info);
+        for (String chunk : chunks) {
+            LOGGER.info(chunk);
+        }
     }
 
 }

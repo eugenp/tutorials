@@ -25,3 +25,6 @@
 - [Guide to Guava RangeMap](http://www.baeldung.com/guava-rangemap)
 - [Guide to Guava Table](http://www.baeldung.com/guava-table)
 - [Guide to Guava’s Reflection Utilities](http://www.baeldung.com/guava-reflection)
+- [Guide to Guava ClassToInstanceMap](http://www.baeldung.com/guava-class-to-instance-map)
+- [Guide to Guava MinMaxPriorityQueue and EvictingQueue](http://www.baeldung.com/guava-minmax-priority-queue-and-evicting-queue)
+- [Guide to Mathematical Utilities in Guava](http://www.baeldung.com/guava-math)
