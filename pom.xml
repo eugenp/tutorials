@@ -225,7 +225,8 @@
         <module>mybatis</module>
         <module>spring-drools</module>
         <module>drools</module>
-    </modules>
+    <module>spring-bom</module>
+  </modules>
 
     <dependencies>
         <!-- logging -->
