@@ -87,14 +87,14 @@ public class GoogleTruthUnitTest {
     }
 
     @Test
-    public void whenChekingBoolean_thenTrue() {
+    public void whenCheckingBoolean_thenTrue() {
         boolean aBoolean = true;
 
         assertThat(aBoolean).isTrue();
     }
 
     @Test
-    public void whenChekingBoolean_thenFalse() {
+    public void whenCheckingBoolean_thenFalse() {
         boolean aBoolean = false;
 
         assertThat(aBoolean).isFalse();
@@ -190,42 +190,42 @@ public class GoogleTruthUnitTest {
     }
 
     @Test
-    public void whenChekingString_thenStartsWithString() {
+    public void whenCheckingString_thenStartsWithString() {
         String aString = "This is a string";
 
         assertThat(aString).startsWith("This");
     }
 
     @Test
-    public void whenChekingString_thenContainsString() {
+    public void whenCheckingString_thenContainsString() {
         String aString = "This is a string";
 
         assertThat(aString).contains("is a");
     }
 
     @Test
-    public void whenChekingString_thenEndsWithString() {
+    public void whenCheckingString_thenEndsWithString() {
         String aString = "This is a string";
 
         assertThat(aString).endsWith("string");
     }
 
     @Test
-    public void whenChekingString_thenExpectedLength() {
+    public void whenCheckingString_thenExpectedLength() {
         String aString = "This is a string";
 
         assertThat(aString).hasLength(16);
     }
 
     @Test
-    public void whenChekingString_thenEmpty() {
+    public void whenCheckingString_thenEmpty() {
         String aString = "";
 
         assertThat(aString).isEmpty();
     }
 
     @Test
-    public void whenChekingString_thenMatches() {
+    public void whenCheckingString_thenMatches() {
         String aString = "The string to match";
 
         assertThat(aString).matches(Pattern.compile("[a-zA-Z\\s]+"));
@@ -404,7 +404,7 @@ public class GoogleTruthUnitTest {
 
     // Java 8 Tests
     @Test
-    public void whenChekingJavaOptional_thenHasValue() {
+    public void whenCheckingJavaOptional_thenHasValue() {
         Optional<Integer> anOptional = Optional.of(1);
 
         assertThat(anOptional).hasValue(1);
@@ -442,7 +442,7 @@ public class GoogleTruthUnitTest {
 
     // Guava Tests
     @Test
-    public void whenChekingGuavaOptional_thenIsAbsent() {
+    public void whenCheckingGuavaOptional_thenIsAbsent() {
         com.google.common.base.Optional anOptional = com.google.common.base.Optional.absent();
 
         assertThat(anOptional).isAbsent();
