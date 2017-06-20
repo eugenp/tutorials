@@ -1,8 +1,5 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
-@ConfigurationProperties(prefix="cache.redis")
 public class CacheProperties {
 public String hostName;
 public int port;
