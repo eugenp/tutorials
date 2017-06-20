@@ -8,32 +8,32 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PathPatternController {
 
-    @GetMapping(value = "/spring5/{*id}")
+    @GetMapping("/spring5/{*id}")
     public String URIVariableHandler(@PathVariable String id) {
         return id;
     }
 
-    @GetMapping(value = "/s?ring5")
+    @GetMapping("/s?ring5")
     public String wildcardTakingExactlyOneChar() {
         return "/s?ring5";
     }
 
-    @GetMapping(value = "/spring5/*id")
+    @GetMapping("/spring5/*id")
     public String wildcardTakingZeroOrMoreChar() {
         return "/spring5/*id";
     }
 
-    @GetMapping(value = "/resources/**")
+    @GetMapping("/resources/**")
     public String wildcardTakingZeroOrMorePathSegments() {
         return "/resources/**";
     }
 
-    @GetMapping(value = "/{baeldung:[a-z]+}")
+    @GetMapping("/{baeldung:[a-z]+}")
     public String regexInPathVariable(@PathVariable String baeldung) {
         return baeldung;
     }
 
-    @GetMapping(value = "/{var1}_{var2}")
+    @GetMapping("/{var1}_{var2}")
     public String multiplePathVariablesInSameSegment(@PathVariable String var1, @PathVariable String var2) {
         return "Two variables are var1=" + var1 + " and var2=" + var2;
     }
