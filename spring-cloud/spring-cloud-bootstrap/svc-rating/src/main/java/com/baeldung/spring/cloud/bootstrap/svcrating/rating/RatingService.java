@@ -1,6 +1,5 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -15,58 +14,48 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Service
 @Transactional(readOnly = true)
-public class RatingService{
+public class RatingService {
 
     @Autowired
     private RatingRepository ratingRepository;
-    
+
     @Autowired
     private RatingCacheRepository cacheRepository;
-    
 
-    @HystrixCommand(commandKey="ratingsByBookIdFromDB",fallbackMethod="findCachedRatingsByBookId")
+    @HystrixCommand(commandKey = "ratingsByBookIdFromDB", fallbackMethod = "findCachedRatingsByBookId")
     public List<Rating> findRatingsByBookId(Long bookId) {
-        if(bookId==2)
-            throw new IllegalArgumentException("BookID 2 redirects to cache");
-
         return ratingRepository.findRatingsByBookId(bookId);
     }
-    
-    @HystrixCommand(commandKey="ratingsByBookIdFromCache",fallbackMethod="defaultRatingsByBookId")
-    public List<Rating> findCachedRatingsByBookId(Long bookId){
+
+    public List<Rating> findCachedRatingsByBookId(Long bookId) {
         return cacheRepository.findCachedRatingsByBookId(bookId);
     }
-    
-    public List<Rating>  defaultRatingsByBookId(Long bookId){
-        return Collections.emptyList();
-    }
 
-
-    @HystrixCommand(commandKey="ratingsFromDB",fallbackMethod="findAllCachedRatings")
+    @HystrixCommand(commandKey = "ratingsFromDB", fallbackMethod = "findAllCachedRatings")
     public List<Rating> findAllRatings() {
         return ratingRepository.findAll();
     }
-    
-    public List<Rating> findAllCachedRatings(){
+
+    public List<Rating> findAllCachedRatings() {
         return cacheRepository.findAllCachedRatings();
     }
- 
+
     @HystrixCommand(commandKey = "ratingsByIdFromDB", fallbackMethod = "findCachedRatingById", ignoreExceptions = { RatingNotFoundException.class })
     public Rating findRatingById(Long ratingId) {
         return Optional.ofNullable(ratingRepository.findOne(ratingId))
             .orElseThrow(() -> new RatingNotFoundException("Rating not found. ID: " + ratingId));
     }
 
-    public Rating findCachedRatingById(Long ratingId){
+    public Rating findCachedRatingById(Long ratingId) {
         return cacheRepository.findCachedRatingById(ratingId);
     }
-    
+
     @Transactional(propagation = Propagation.REQUIRED)
     public Rating createRating(Rating rating) {
         Rating newRating = new Rating();
         newRating.setBookId(rating.getBookId());
         newRating.setStars(rating.getStars());
-        Rating persisted=ratingRepository.save(newRating);
+        Rating persisted = ratingRepository.save(newRating);
         cacheRepository.createRating(persisted);
         return persisted;
     }
@@ -88,7 +77,7 @@ public class RatingService{
                     break;
                 }
             });
-        Rating persisted= ratingRepository.save(rating);
+        Rating persisted = ratingRepository.save(rating);
         cacheRepository.updateRating(persisted);
         return persisted;
     }

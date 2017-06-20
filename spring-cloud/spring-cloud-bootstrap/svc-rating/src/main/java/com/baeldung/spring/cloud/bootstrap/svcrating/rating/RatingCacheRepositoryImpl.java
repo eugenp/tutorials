@@ -1,77 +1,120 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Repository;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Repository
 public class RatingCacheRepositoryImpl implements InitializingBean, RatingCacheRepository {
 
-   
     @Autowired
-    @Qualifier("cacheJedisConnectionFactory")
     private JedisConnectionFactory cacheConnectionFactory;
-    
-    private StringRedisTemplate redisTemplate;
-    private ValueOperations<String,String> valueOps;
-    private SetOperations<String,String> setOps;
-    
 
-    public List<Rating> findCachedRatingsByBookId(Long bookId){
+    private StringRedisTemplate redisTemplate;
+    private ValueOperations<String, String> valueOps;
+    private SetOperations<String, String> setOps;
+
+    private ObjectMapper jsonMapper;
+
+    public List<Rating> findCachedRatingsByBookId(Long bookId) {
         return setOps.members("book-" + bookId)
             .stream()
-            .map(rtId -> Rating.fromString(valueOps.get(rtId)))
-            .map(rt -> {
-                rt.setFromCache(true);
-                return rt;
+            .map(rtId -> {
+                try {
+                    Rating rt = jsonMapper.readValue(valueOps.get(rtId), Rating.class);
+                    rt.setFromCache(true);
+                    return rt;
+                } catch (IOException ex) {
+                    return null;
+                }
             })
             .collect(Collectors.toList());
     }
-    
+
     public Rating findCachedRatingById(Long ratingId) {
-        return Rating.fromString(valueOps.get("rating-" + ratingId));
+
+        try {
+            return jsonMapper.readValue(valueOps.get("rating-" + ratingId), Rating.class);
+        } catch (IOException e) {
+            return null;
+        }
+
     }
-    
-    public List<Rating> findAllCachedRatings(){
-        return redisTemplate.keys("rating*")
+
+    public List<Rating> findAllCachedRatings() {
+        List<Rating> ratings = null;
+
+        ratings = redisTemplate.keys("rating*")
             .stream()
-            .map(rtId -> Rating.fromString(valueOps.get(rtId)))
+            .map(rtId -> {
+                try {
+
+                    return jsonMapper.readValue(valueOps.get(rtId), Rating.class);
+
+                } catch (IOException e) {
+                    return null;
+                }
+            })
             .collect(Collectors.toList());
+
+        return ratings;
     }
-    
-    public boolean createRating(Rating persisted){
-        valueOps.set("rating-"+persisted.getId(), persisted.toString());
-        setOps.add("book-"+persisted.getBookId(), "rating-"+persisted.getId());
-        return true;
+
+    public boolean createRating(Rating persisted) {
+        try {
+            valueOps.set("rating-" + persisted.getId(), jsonMapper.writeValueAsString(persisted));
+            setOps.add("book-" + persisted.getBookId(), "rating-" + persisted.getId());
+            return true;
+        } catch (JsonProcessingException ex) {
+            return false;
+        }
     }
-    
-    public boolean updateRating(Rating persisted){
-        valueOps.set("rating-"+persisted.getId(), persisted.toString());
-        return true;
+
+    public boolean updateRating(Rating persisted) {
+        try {
+            valueOps.set("rating-" + persisted.getId(), jsonMapper.writeValueAsString(persisted));
+            return true;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    
-    public boolean deleteRating(Long ratingId){
-        Rating toDel=Rating.fromString(valueOps.get("rating-"+ratingId));
-        setOps.remove("book-"+toDel.getBookId(), "rating-"+ratingId);
-        redisTemplate.delete("rating-"+ratingId);
-        return true;
+
+    public boolean deleteRating(Long ratingId) {
+        Rating toDel;
+        try {
+
+            toDel = jsonMapper.readValue(valueOps.get("rating-" + ratingId), Rating.class);
+            setOps.remove("book-" + toDel.getBookId(), "rating-" + ratingId);
+            redisTemplate.delete("rating-" + ratingId);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
-    
+
     @Override
     public void afterPropertiesSet() throws Exception {
-        
+
         this.redisTemplate = new StringRedisTemplate(cacheConnectionFactory);
-        
+
         this.valueOps = redisTemplate.opsForValue();
-        this.setOps=redisTemplate.opsForSet();
-        
+        this.setOps = redisTemplate.opsForSet();
+
+        jsonMapper = new ObjectMapper();
+        jsonMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 }

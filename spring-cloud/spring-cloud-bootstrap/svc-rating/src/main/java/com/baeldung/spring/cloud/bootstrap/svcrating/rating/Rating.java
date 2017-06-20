@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Rating  implements Serializable{
+public class Rating implements Serializable {
 
     /**
      * 
@@ -27,8 +27,8 @@ public class Rating  implements Serializable{
     @Transient
     private boolean fromCache;
     @Transient
-    private Long cachedTS=-1L;
-    
+    private Long cachedTS = -1L;
+
     public Rating() {
     }
 
@@ -83,23 +83,4 @@ public class Rating  implements Serializable{
         this.cachedTS = cachedTS;
     }
 
-    @Override
-    public String toString() {
-        return "Rating [" + id + "," + bookId + "," + stars + "," + cachedTS + "]";
-    }
-    
-    public static Rating fromString(String ratingAsStr){
-        
-        if(ratingAsStr == null || ratingAsStr.isEmpty())
-            return null;
-        String[] attributeVals=ratingAsStr.substring(8,ratingAsStr.length()-1).split("[,]");
-        
-        Rating rating=new Rating();
-        rating.setId(Long.valueOf(attributeVals[0]));
-        rating.setBookId(Long.valueOf(attributeVals[1]));
-        rating.setStars(Integer.valueOf(attributeVals[2]));
-        rating.setCachedTS(Long.valueOf(attributeVals[3]));
-        
-        return rating;
-    }
 }
