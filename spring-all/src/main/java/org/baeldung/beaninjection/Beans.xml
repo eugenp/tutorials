@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id = "carA" class = "org.baeldung.beaninjection.Car">
+      <constructor-arg ref = "engineA"/>
+    </bean>
+   
+    
+   <bean id = "engineA" class = "org.baeldung.beaninjection.Engine"></bean>
+
+   <bean id = "carB" class = "org.baeldung.beaninjection.Car">
+      <property name = "engine" ref = "engineB"/>
+    </bean>
+   
+   
+   <bean id = "engineB" class = "org.baeldung.beaninjection.Engine"></bean>
+</beans>
