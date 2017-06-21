@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 import reactor.core.publisher.Flux;
 
@@ -58,7 +59,7 @@ public class FunctionalSpringBootApplication {
     @Bean
     public ServletRegistrationBean servletRegistrationBean() throws Exception {
         HttpHandler httpHandler = WebHttpHandlerBuilder
-          .webHandler(toHttpHandler(routingFunction()))
+          .webHandler((WebHandler) toHttpHandler(routingFunction()))
           .prependFilter(new IndexRewriteFilter())
           .build();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new RootServlet(httpHandler), "/");
