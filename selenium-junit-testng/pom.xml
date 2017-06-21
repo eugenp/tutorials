@@ -66,6 +66,6 @@
 
     <properties>
         <testng.version>6.10</testng.version>
-        <selenium-java.version>3.0.1</selenium-java.version>
+        <selenium-java.version>3.4.0</selenium-java.version>
     </properties>
 </project>
