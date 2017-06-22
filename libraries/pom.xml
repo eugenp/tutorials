@@ -70,6 +70,26 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctor-maven-plugin</artifactId>
+                <version>1.5.5</version>
+                <executions>
+                    <execution>
+                        <id>output-html</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>process-asciidoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
+                    <outputDirectory>target/docs/asciidoc</outputDirectory>
+                    <backend>html</backend>
+                    <doctype>book</doctype>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
