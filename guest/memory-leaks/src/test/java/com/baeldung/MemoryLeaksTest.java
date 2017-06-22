@@ -35,11 +35,12 @@
 //        }
 //    }
 //
-//    @SuppressWarnings({ "resource", "unused" })
+//    @SuppressWarnings({ "resource" })
 //    @Test(expected = OutOfMemoryError.class)
 //    public void givenLengthString_whenIntern_thenOutOfMemory() throws IOException {
 //        String str = new Scanner(new File("src/test/resources/large.txt"), "UTF-8").useDelimiter("\\A")
 //            .next();
+//        str.intern();
 //        System.out.println("Done");
 //    }
 //
