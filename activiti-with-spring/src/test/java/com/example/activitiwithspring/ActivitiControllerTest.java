@@ -2,9 +2,11 @@ package com.example.activitiwithspring;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.runtime.ProcessInstance;
-import org.activiti.engine.task.Task;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +43,7 @@ public class ActivitiControllerTest {
 
         for (ProcessInstance instance : runtimeService.createProcessInstanceQuery()
             .list()) {
-            runtimeService.deleteProcessInstance(instance.getId(), "Reset API");
+            runtimeService.deleteProcessInstance(instance.getId(), "Reset Processes");
         }
     }
 
@@ -68,6 +70,31 @@ public class ActivitiControllerTest {
     }
 
     @Test
+    public void givenProcess_whenProcessInstance_thenReceivedRunningTask() throws Exception {
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
+            .andReturn()
+            .getResponse();
+        ProcessInstance pi = runtimeService.createProcessInstanceQuery()
+            .orderByProcessInstanceId()
+            .desc()
+            .list()
+            .get(0);
+
+        logger.info("process instance = " + pi.getId());
+        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/get-tasks/" + pi.getId()))
+            .andReturn()
+            .getResponse()
+            .getContentAsString();
+
+        ObjectMapper mapper = new ObjectMapper();
+        List<TaskRepresentation> tasks = Arrays.asList(mapper.readValue(responseBody, TaskRepresentation[].class));
+        assertEquals(1, tasks.size());
+        assertEquals("A", tasks.get(0).getName());
+
+    }
+
+    @Test
     public void givenProcess_whenCompleteTaskA_thenReceivedNextTask() throws Exception {
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/start-process"))
@@ -85,7 +112,9 @@ public class ActivitiControllerTest {
             .getResponse()
             .getContentAsString();
 
-        assertEquals("B", responseBody);
+        ObjectMapper mapper = new ObjectMapper();
+        TaskRepresentation task = mapper.readValue(responseBody, TaskRepresentation.class);
+        assertEquals("B", task.getName());
 
     }
 }

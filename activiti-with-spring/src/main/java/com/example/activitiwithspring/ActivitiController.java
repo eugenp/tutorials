@@ -1,5 +1,8 @@
 package com.example.activitiwithspring;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.task.Task;
@@ -26,18 +29,31 @@ public class ActivitiController {
             .count();
     }
 
+    @RequestMapping(value = "/get-tasks/{processInstanceId}")
+    public List<TaskRepresentation> getTasks(@PathVariable String processInstanceId) {
+        List<Task> usertasks = taskService.createTaskQuery()
+            .processInstanceId(processInstanceId)
+            .list();
+
+        List<TaskRepresentation> tasks = new ArrayList<TaskRepresentation>();
+        for (Task task : usertasks) {
+            tasks.add(new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId()));
+        }
+
+        return tasks;
+    }
+
     @RequestMapping(value = "/complete-task-A/{processInstanceId}")
-    public String completeTaskA(@PathVariable String processInstanceId) {
+    public TaskRepresentation completeTaskA(@PathVariable String processInstanceId) {
         Task task = taskService.createTaskQuery()
             .processInstanceId(processInstanceId)
             .singleResult();
         taskService.complete(task.getId());
         logger.info("Task completed");
-        Task tasksAtB = taskService.createTaskQuery()
+        task = taskService.createTaskQuery()
             .processInstanceId(processInstanceId)
             .singleResult();
-        logger.info("Returning the next task of the process: " + tasksAtB.getId());
 
-        return tasksAtB.getName();
+        return new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
     }
 }
