@@ -27,7 +27,7 @@ public class PetService {
     public List<Pet> fetchPets() {
         List<Pet> pets = new ArrayList<>();
         petRepository.findAll().forEach(pets::add);
-        log.debug(pets.toString());
+        log.debug("++++++++++++++++++++++++++++++: " + pets.toString());
         return pets;
     }
 

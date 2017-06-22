@@ -26,16 +26,17 @@ public class CustomDaoAuthenticationProvider extends DaoAuthenticationProvider {
             u = getUserDetailsService().loadUserByUsername(name);
         } catch (UsernameNotFoundException ex) {
             log.error("User '" + name + "' not found");
-            throw ex;
         } catch (Exception e) {
             log.error("Exception in CustomDaoAuthenticationProvider: " + e);
-            throw e;
         }
-        if (u.getPassword().equals(password)) {
-            return new UsernamePasswordAuthenticationToken(u, password, u.getAuthorities());
-        } else {
-            throw new BadCredentialsException(messages.getMessage(
-                    "CustomDaoAuthenticationProvider.badCredentials", "Bad credentials"));
+
+        if (u != null) {
+            if (u.getPassword().equals(password)) {
+                return new UsernamePasswordAuthenticationToken(u, password, u.getAuthorities());
+            }
         }
+
+        throw new BadCredentialsException(messages.getMessage("CustomDaoAuthenticationProvider.badCredentials", "Bad credentials"));
+
     }
 }

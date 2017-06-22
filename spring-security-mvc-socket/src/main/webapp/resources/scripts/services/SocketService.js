@@ -16,7 +16,7 @@ function SocketService() {
         stompClient.connect({}, function (frame) {
             that.setConnected(true);
             console.log('Connected: ' + frame);
-            stompClient.subscribe(context + '/secured/topic/messages', function (messageOutput) {
+            stompClient.subscribe('/secured/topic/messages', function (messageOutput) {
                 that.showMessageOutput(JSON.parse(messageOutput.body));
             });
         });
@@ -29,7 +29,7 @@ function SocketService() {
         stompClient.connect({}, function (frame) {
             that.setConnected(true);
             console.log('Connected: ' + frame);
-            stompClient.subscribe(context + '/secured/topic/messages', function (messageOutput) {
+            stompClient.subscribe('/secured/topic/messages', function (messageOutput) {
                 that.showMessageOutput(JSON.parse(messageOutput.body));
             });
         });
@@ -47,7 +47,7 @@ function SocketService() {
     that.sendMessage = function (stompClient, context) {
         var from = document.getElementById('from').value,
             text = document.getElementById('text').value;
-        stompClient.send(context + '/secured/chat', {},
+        stompClient.send('/secured/chat', {},
             JSON.stringify({'from': from, 'text': text}));
     };
 

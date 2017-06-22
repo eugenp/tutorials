@@ -5,6 +5,7 @@ import com.baeldung.springsecuredsockets.transfer.socket.Message;
 import com.baeldung.springsecuredsockets.transfer.socket.OutputMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SubscribeMapping;
 import org.springframework.stereotype.Controller;
 
 import java.text.SimpleDateFormat;
@@ -24,5 +25,15 @@ public class SocketController {
     @SendTo("/secured/topic/greetings")
     public Greeting greeting(Message message) throws Exception {
         return new Greeting("Hello, " + message.getFrom() + "!");
+    }
+
+    @SubscribeMapping("/secured/topic/messages")
+    public OutputMessage messageSubscribe(OutputMessage message) throws Exception {
+        return message;
+    }
+
+    @SubscribeMapping("/secured/topic/greetings")
+    public Greeting greetingSubscribe(Greeting greeting) throws Exception {
+        return greeting;
     }
 }

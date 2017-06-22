@@ -33,12 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         try {
             User user = userRepository.findByUsername(username);
-            CustomUserDetails u = new CustomUserDetails(user, getAuthorities(user));
-            return u;
+            if (user != null) return new CustomUserDetails(user, getAuthorities(user));
         } catch (Exception ex) {
             log.error("Exception in CustomUserDetailsService: " + ex);
-            throw ex;
         }
+        return null;
     }
 
     private Collection<GrantedAuthority> getAuthorities(User user) {
