@@ -7,9 +7,6 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.Keys;
 
-/**
- * @author baoqiang
- */
 public class SearchForKeyword implements Task {
 
     @Step("{0} searches for '#keyword'")
