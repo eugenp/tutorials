@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
-@RequestMapping(value = "/myfoos")
+@RequestMapping(value = "/foos")
 public class MyFooController {
 
     private final Map<Long, Foo> myfoos;
