@@ -36,7 +36,7 @@ public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
 
-    private static final String fooResourceUrl = String.format("http://localhost:%d/spring-rest/myfoos", 8082);
+    private static final String fooResourceUrl = String.format("http://localhost:%d/spring-rest/foos", 8082);
 
     @Before
     public void beforeTest() {
