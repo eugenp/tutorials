@@ -227,6 +227,7 @@
         <module>spring-drools</module>
         <module>drools</module>
         <module>liquibase</module>
+        <module>spring-boot-property-exp</module>
     </modules>
 
     <dependencies>
