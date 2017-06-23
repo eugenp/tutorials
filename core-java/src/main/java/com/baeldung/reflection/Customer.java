@@ -33,13 +33,11 @@ public class Customer {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Customer [id=").append(id).append(", name=").append(name).append(", emailId=").append(emailId).append(", phoneNumber=")
-                .append(phoneNumber).append("]");
-        return builder.toString();
+        return "Customer [id=" + id + ", name=" + name + ", emailId=" + emailId + ", phoneNumber=" +
+          phoneNumber + "]";
     }
 
-    public Customer(Integer id, String name, String emailId, Long phoneNumber) {
+    Customer(Integer id, String name, String emailId, Long phoneNumber) {
         super();
         this.id = id;
         this.name = name;
