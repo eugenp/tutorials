@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "book-service")
 public interface BooksClient {
     @RequestMapping(method = RequestMethod.GET, value="/books/{bookId}")
-    Book getBookById(@PathVariable("bookId") Long bookId, @RequestHeader("Cookie") String session);
+    Book getBookById(@PathVariable("bookId") Long bookId);
 }
