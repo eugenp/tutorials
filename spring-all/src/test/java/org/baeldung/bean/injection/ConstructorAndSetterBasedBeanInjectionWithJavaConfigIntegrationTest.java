@@ -21,6 +21,4 @@ public class ConstructorAndSetterBasedBeanInjectionWithJavaConfigIntegrationTest
         Assert.assertEquals(version, car.getBrake().getVersion());
         Assert.assertEquals(version, motorCycle.getBrake().getVersion());
     }
-
-
 }
