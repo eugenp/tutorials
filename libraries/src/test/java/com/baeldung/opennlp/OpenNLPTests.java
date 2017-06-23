@@ -1,15 +1,5 @@
 package com.baeldung.opennlp;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.junit.Test;
-
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
 import opennlp.tools.cmdline.postag.POSModelLoader;
@@ -31,14 +21,23 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
 import opennlp.tools.util.TrainingParameters;
+import org.junit.Test;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.Assert.assertEquals;
 
 public class OpenNLPTests {
 
     private final static String text = "To get to the south: Go to the store. Buy a compass. Use the compass. Then walk to the south.";
-    private final static String sentence[] = new String[] { "James", "Jordan", "live", "in", "Oklahoma", "city", "." };
-    
+    private final static String sentence[] = new String[]{"James", "Jordan", "live", "in", "Oklahoma", "city", "."};
+
     @Test
-    public void givenText_WhenDetectSentences_ThenCountSentences(){
+    public void givenText_WhenDetectSentences_ThenCountSentences() {
         InputStream is;
         SentenceModel model;
         try {
@@ -48,15 +47,13 @@ public class OpenNLPTests {
             String sentences[] = sdetector.sentDetect(text);
             assertEquals(4, sentences.length);
             is.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void givenText_WhenDetectTokens_ThenVerifyNames(){
+    public void givenText_WhenDetectTokens_ThenVerifyNames() {
         InputStream is;
         TokenNameFinderModel model;
         try {
@@ -68,15 +65,13 @@ public class OpenNLPTests {
             String[] names = Span.spansToStrings(nameSpans, sentence);
             assertEquals(1, names.length);
             assertEquals("James Jordan", names[0]);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Test
-    public void givenText_WhenDetectTokens_ThenVerifyLocations(){
+    public void givenText_WhenDetectTokens_ThenVerifyLocations() {
         InputStream is;
         TokenNameFinderModel model;
         try {
@@ -88,15 +83,13 @@ public class OpenNLPTests {
             String[] locations = Span.spansToStrings(locationSpans, sentence);
             assertEquals(1, locations.length);
             assertEquals("Oklahoma", locations[0]);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
     @Test
-    public void givenText_WhenCategorizeDocument_ThenVerifyDocumentContent(){
+    public void givenText_WhenCategorizeDocument_ThenVerifyDocumentContent() {
         DoccatModel docCatModel;
         try {
             InputStreamFactory isf = new InputStreamFactory() {
@@ -118,7 +111,7 @@ public class OpenNLPTests {
     }
 
     @Test
-    public void givenText_WhenTagDocument_ThenVerifyTaggedString(){
+    public void givenText_WhenTagDocument_ThenVerifyTaggedString() {
         try {
             POSModel posModel = new POSModelLoader().load(new File("OpenNLP/en-pos-maxent.bin"));
             POSTaggerME posTaggerME = new POSTaggerME(posModel);
@@ -140,19 +133,19 @@ public class OpenNLPTests {
             e.printStackTrace();
         }
     }
-    
+
     @Test
-    public void givenText_WhenChunked_ThenCountChunks(){
+    public void givenText_WhenChunked_ThenCountChunks() {
         try {
             InputStream is = new FileInputStream("OpenNLP/en-chunker.bin");
             ChunkerModel cModel = new ChunkerModel(is);
             ChunkerME chunkerME = new ChunkerME(cModel);
-            String pos[] = new String[] { "NNP", "NNP", "NNP", "POS", "NNP", "NN", "VBD"};
+            String pos[] = new String[]{"NNP", "NNP", "NNP", "POS", "NNP", "NN", "VBD"};
             String chunks[] = chunkerME.chunk(sentence, pos);
             assertEquals(7, chunks.length);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
+
 }

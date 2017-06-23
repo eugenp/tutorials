@@ -1,4 +1,4 @@
-package com.baeldung.automata;
+package com.baeldung.algorithms.automata;
 
 
 /**
