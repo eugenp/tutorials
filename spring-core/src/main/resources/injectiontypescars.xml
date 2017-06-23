@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="mustang" class="com.baeldung.injectiontypes.model.Car">
+        <property name="engine" ref="fordEngine" />
+        <property name="brand" value="Ford" />
+        <property name="model" value="Mustang" />
+    </bean>
+
+    <bean id="fordEngine" class="com.baeldung.injectiontypes.model.Engine">
+        <property name="type" value="v8" />
+        <property name="volume" value="2" />
+    </bean>
+
+    <bean id="civic" class="com.baeldung.injectiontypes.model.Car">
+        <constructor-arg index="0" value="Honda" />
+        <constructor-arg index="1" value="Civic" />
+        <constructor-arg index="2" ref="hondaEngine" />
+    </bean>
+
+    <bean id="hondaEngine" class="com.baeldung.injectiontypes.model.Engine">
+        <constructor-arg index="0" value="v4" />
+        <constructor-arg index="1" value="2" />
+    </bean>
+</beans>
