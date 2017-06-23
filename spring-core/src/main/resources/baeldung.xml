@@ -16,5 +16,22 @@
     <bean id="transmission" class="com.baeldung.constructordi.domain.Transmission">
         <constructor-arg value="sliding"/>
     </bean>
+    
+    <bean id="storeManager1" 
+      class="com.baeldung.springdependencies.StoreManager1">
+	<constructor-arg>
+	    <bean class="com.baeldung.springdependencies.ShippingManager" />
+	</constructor-arg>
+    </bean>
+
+    <bean id="storeManager2" class="com.baeldung.springdependencies">
+	<property name="shippingManager">
+		<ref bean="com.baeldung.springdependencies.ShippingManager" />
+	</property>
+    </bean>
+
+    <bean id="shippingManager" class="com.baeldung.springdependencies.ShippingManager" />
+    
+    
 
 </beans>
