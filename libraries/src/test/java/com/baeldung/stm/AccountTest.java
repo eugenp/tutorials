@@ -1,9 +1,7 @@
 package com.baeldung.stm;
 
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
