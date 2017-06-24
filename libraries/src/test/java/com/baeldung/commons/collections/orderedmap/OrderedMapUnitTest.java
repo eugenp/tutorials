@@ -1,10 +1,5 @@
 package com.baeldung.commons.collections.orderedmap;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.OrderedMapIterator;
 import org.apache.commons.collections4.map.LinkedMap;
@@ -12,10 +7,15 @@ import org.apache.commons.collections4.map.ListOrderedMap;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 public class OrderedMapUnitTest {
 
-    private String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
-    private Integer[] ages = { 37, 28, 40, 36, 21 };
+    private String[] names = {"Emily", "Mathew", "Rose", "John", "Anna"};
+    private Integer[] ages = {37, 28, 40, 36, 21};
 
     private int RUNNERS_COUNT = names.length;
 
@@ -165,7 +165,7 @@ public class OrderedMapUnitTest {
     @Test
     public void givenAListOrderedMap_whenConvertedToList_thenMatchesKeySet() {
         ListOrderedMap<String, Integer> lomap = (ListOrderedMap<String, Integer>) this.runnersListOrderedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersListOrderedMap.keySet());
         List<String> lomapList = lomap.asList();
         assertEquals(listKeys, lomapList);
