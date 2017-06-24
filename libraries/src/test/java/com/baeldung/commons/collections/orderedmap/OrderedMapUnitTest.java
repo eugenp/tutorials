@@ -25,11 +25,11 @@ public class OrderedMapUnitTest {
     @Before
     public void createRunners() {
         // First implementation: ListOrderedMap
-        this.runnersListOrderedMap = new ListOrderedMap<String, Integer>();
+        this.runnersListOrderedMap = new ListOrderedMap<>();
         this.loadOrderedMapOfRunners(this.runnersListOrderedMap);
 
         // Second implementation: LinkedMap
-        this.runnersLinkedMap = new LinkedMap<String, Integer>();
+        this.runnersLinkedMap = new LinkedMap<>();
         this.loadOrderedMapOfRunners(this.runnersLinkedMap);
     }
 
@@ -47,6 +47,7 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersLinkedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
+
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
@@ -60,6 +61,7 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersListOrderedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
+
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
