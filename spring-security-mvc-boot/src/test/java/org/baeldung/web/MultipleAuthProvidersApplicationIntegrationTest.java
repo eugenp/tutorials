@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = MultipleAuthProvidersApplication.class)
-public class MultipleAuthProvidersApplicationTests {
+public class MultipleAuthProvidersApplicationIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 

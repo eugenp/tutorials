@@ -6,9 +6,6 @@ import net.serenitybdd.screenplay.questions.Text;
 
 import java.util.List;
 
-/**
- * @author baoqiang
- */
 public class GoogleSearchResults implements Question<List<String>> {
 
     public static Question<List<String>> displayed() {

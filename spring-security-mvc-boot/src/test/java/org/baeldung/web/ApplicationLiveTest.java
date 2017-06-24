@@ -12,7 +12,7 @@ import io.restassured.authentication.FormAuthConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class LiveTest {
+public class ApplicationLiveTest {
 
     private final FormAuthConfig formAuthConfig = new FormAuthConfig("http://localhost:8082/spring-security-mvc-boot/login", "username", "password");
 
