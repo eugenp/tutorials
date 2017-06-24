@@ -1,10 +1,5 @@
 package com.baeldung.commons.collections.orderedmap;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.OrderedMapIterator;
 import org.apache.commons.collections4.map.LinkedMap;
@@ -12,10 +7,15 @@ import org.apache.commons.collections4.map.ListOrderedMap;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 public class OrderedMapUnitTest {
 
-    private String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
-    private Integer[] ages = { 37, 28, 40, 36, 21 };
+    private String[] names = {"Emily", "Mathew", "Rose", "John", "Anna"};
+    private Integer[] ages = {37, 28, 40, 36, 21};
 
     private int RUNNERS_COUNT = names.length;
 
@@ -25,11 +25,11 @@ public class OrderedMapUnitTest {
     @Before
     public void createRunners() {
         // First implementation: ListOrderedMap
-        this.runnersListOrderedMap = new ListOrderedMap<String, Integer>();
+        this.runnersListOrderedMap = new ListOrderedMap<>();
         this.loadOrderedMapOfRunners(this.runnersListOrderedMap);
 
         // Second implementation: LinkedMap
-        this.runnersLinkedMap = new LinkedMap<String, Integer>();
+        this.runnersLinkedMap = new LinkedMap<>();
         this.loadOrderedMapOfRunners(this.runnersLinkedMap);
     }
 
@@ -47,6 +47,7 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersLinkedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
+
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
@@ -60,6 +61,7 @@ public class OrderedMapUnitTest {
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersListOrderedMap.mapIterator();
         for (int i = 0; runnersIterator.hasNext(); i++) {
             runnersIterator.next();
+
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
         }
@@ -123,7 +125,7 @@ public class OrderedMapUnitTest {
         // Casting the OrderedMap to a LinkedMap we can use asList() method
 
         LinkedMap<String, Integer> lmap = (LinkedMap<String, Integer>) this.runnersLinkedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersLinkedMap.keySet());
         List<String> linkedMap = lmap.asList();
         assertEquals(listKeys, linkedMap);
@@ -163,7 +165,7 @@ public class OrderedMapUnitTest {
     @Test
     public void givenAListOrderedMap_whenConvertedToList_thenMatchesKeySet() {
         ListOrderedMap<String, Integer> lomap = (ListOrderedMap<String, Integer>) this.runnersListOrderedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersListOrderedMap.keySet());
         List<String> lomapList = lomap.asList();
         assertEquals(listKeys, lomapList);
