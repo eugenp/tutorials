@@ -125,7 +125,7 @@ public class OrderedMapUnitTest {
         // Casting the OrderedMap to a LinkedMap we can use asList() method
 
         LinkedMap<String, Integer> lmap = (LinkedMap<String, Integer>) this.runnersLinkedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersLinkedMap.keySet());
         List<String> linkedMap = lmap.asList();
         assertEquals(listKeys, linkedMap);
