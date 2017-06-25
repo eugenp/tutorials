@@ -1,0 +1,10 @@
+<authorgroup xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <author>
+    <personname>
+      <surname>Walsh</surname><firstname>Norman</firstname>
+    </personname>
+  </author>
+  <author>
+    <orgname>The DocBook Project</orgname>
+  </author>
+</authorgroup>

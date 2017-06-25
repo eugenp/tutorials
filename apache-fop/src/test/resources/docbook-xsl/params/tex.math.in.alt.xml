@@ -1,0 +1,76 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="tex.math.in.alt">
+<refmeta>
+<refentrytitle>tex.math.in.alt</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">plain</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">latex</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>tex.math.in.alt</refname>
+<refpurpose>TeX notation used for equations</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="tex.math.in.alt.frag">
+<xsl:param name="tex.math.in.alt"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If you want type math directly in TeX notation in equations,
+this parameter specifies notation used. Currently are supported two
+values -- <literal>plain</literal> and <literal>latex</literal>. Empty
+value means that you are not using TeX math at all.</para>
+
+<para>Preferred way for including TeX alternative of math is inside of
+<tag>textobject</tag> element. Eg.:</para>
+
+<programlisting>&lt;inlineequation&gt;
+&lt;inlinemediaobject&gt;
+&lt;imageobject&gt;
+&lt;imagedata fileref="eq1.gif"/&gt;
+&lt;/imageobject&gt;
+&lt;textobject&gt;&lt;phrase&gt;E=mc squared&lt;/phrase&gt;&lt;/textobject&gt;
+&lt;textobject role="tex"&gt;&lt;phrase&gt;E=mc^2&lt;/phrase&gt;&lt;/textobject&gt;
+&lt;/inlinemediaobject&gt;
+&lt;/inlineequation&gt;</programlisting>
+
+<para>If you are using <tag>graphic</tag> element, you can
+store TeX inside <tag>alt</tag> element:</para>
+
+<programlisting>&lt;inlineequation&gt;
+&lt;alt role="tex"&gt;a^2+b^2=c^2&lt;/alt&gt;
+&lt;graphic fileref="a2b2c2.gif"/&gt;  
+&lt;/inlineequation&gt;</programlisting>
+
+<para>If you want use this feature, you should process your FO with
+PassiveTeX, which only supports TeX math notation. When calling
+stylsheet, don't forget to specify also
+passivetex.extensions=1.</para>
+
+<para>If you want equations in HTML, just process generated file
+<filename>tex-math-equations.tex</filename> by TeX or LaTeX. Then run
+dvi2bitmap program on result DVI file. You will get images for
+equations in your document.</para>
+
+<warning>
+  <para>This feature is useful for print/PDF output only if you
+    use the obsolete and now unsupported PassiveTeX XSL-FO
+    engine.</para>
+</warning>
+
+</refsection>
+
+<refsection><info><title>Related Parameters</title></info>
+  <para><parameter>tex.math.delims</parameter>,
+    <parameter>passivetex.extensions</parameter>,
+    <parameter>tex.math.file</parameter></para>
+</refsection>
+
+</refentry>

@@ -1,5 +1,7 @@
 *.class
 
+derby.log
+
 #folders#
 /target
 /neoDb*

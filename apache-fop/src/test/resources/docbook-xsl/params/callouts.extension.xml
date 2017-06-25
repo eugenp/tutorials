@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callouts.extension">
+<refmeta>
+<refentrytitle>callouts.extension</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callouts.extension</refname>
+<refpurpose>Enable the callout extension</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callouts.extension.frag">
+<xsl:param name="callouts.extension" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<!-- DP. Note this is not used in the same manner as callout.graphics.extension -->
+<para>The callouts extension processes <tag>areaset</tag>
+elements in <tag>programlistingco</tag> and other text-based
+callout elements.
+</para>
+
+</refsection>
+</refentry>

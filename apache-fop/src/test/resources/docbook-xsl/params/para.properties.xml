@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="para.properties">
+<refmeta>
+<refentrytitle>para.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>para.properties</refname>
+<refpurpose>Properties to apply to para elements</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="para.properties.frag"><xsl:attribute-set name="para.properties" use-attribute-sets="normal.para.spacing">
+</xsl:attribute-set></src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>Specify properties to apply to the fo:block of a para element,
+such as <literal>text-indent</literal>.
+Although the default attribute-set is empty, it uses the attribute-set
+named <literal>normal.para.spacing</literal> to add vertical space before
+each para. The <literal>para.properties</literal> attribute-set can override those 
+spacing properties for para only.</para>
+<para>See also
+<link linkend="normal.para.spacing">normal.para.spacing</link>.
+</para>
+</refsection>
+</refentry>

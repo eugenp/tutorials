@@ -1,0 +1,2 @@
+I had to learn what makes a good API is the hard way, and I couldn’t find anything out there to help me speed things up.
+It took me 3 years, more than 10 production grade APIs built from scratch and a decent number of mistakes to get to a mature understanding of how an API should really be done well.

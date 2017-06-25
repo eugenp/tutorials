@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:group name="db.keyboard.inlines">
+    <xs:choice>
+      <xs:element ref="db:keycombo"/>
+      <xs:element ref="db:keycap"/>
+      <xs:element ref="db:keycode"/>
+      <xs:element ref="db:keysym"/>
+      <xs:element ref="db:shortcut"/>
+      <xs:element ref="db:accel"/>
+    </xs:choice>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.keycap.function.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="alt">
+        <xs:annotation>
+          <xs:documentation>The "Alt" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="backspace">
+        <xs:annotation>
+          <xs:documentation>The "Backspace" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="command">
+        <xs:annotation>
+          <xs:documentation>The "Command" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="control">
+        <xs:annotation>
+          <xs:documentation>The "Control" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="delete">
+        <xs:annotation>
+          <xs:documentation>The "Delete" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="down">
+        <xs:annotation>
+          <xs:documentation>The down arrow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="end">
+        <xs:annotation>
+          <xs:documentation>The "End" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="enter">
+        <xs:annotation>
+          <xs:documentation>The "Enter" or "Return" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="escape">
+        <xs:annotation>
+          <xs:documentation>The "Escape" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="home">
+        <xs:annotation>
+          <xs:documentation>The "Home" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="insert">
+        <xs:annotation>
+          <xs:documentation>The "Insert" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="left">
+        <xs:annotation>
+          <xs:documentation>The left arrow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="meta">
+        <xs:annotation>
+          <xs:documentation>The "Meta" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="option">
+        <xs:annotation>
+          <xs:documentation>The "Option" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pagedown">
+        <xs:annotation>
+          <xs:documentation>The page down key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pageup">
+        <xs:annotation>
+          <xs:documentation>The page up key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="right">
+        <xs:annotation>
+          <xs:documentation>The right arrow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="shift">
+        <xs:annotation>
+          <xs:documentation>The "Shift" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="space">
+        <xs:annotation>
+          <xs:documentation>The spacebar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tab">
+        <xs:annotation>
+          <xs:documentation>The "Tab" key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="up">
+        <xs:annotation>
+          <xs:documentation>The up arrow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.keycap.function-enum.attribute">
+    <xs:attribute name="function" type="db:db.keycap.function.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycap.function-other.attributes">
+    <xs:attribute name="function">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="other">
+            <xs:annotation>
+              <xs:documentation>Indicates a non-standard function key</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otherfunction" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycap.function.attrib">
+    <xs:attribute name="function">
+      <xs:simpleType>
+        <xs:union memberTypes="db:db.keycap.function.enumeration">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="other">
+                <xs:annotation>
+                  <xs:documentation>Indicates a non-standard function key</xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otherfunction"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycap.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycap.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attributeGroup ref="db:db.keycap.function.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="keycap">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.keycap.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.keycode.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycode.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="keycode">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.keycode.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.keycombo.action.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="click">
+        <xs:annotation>
+          <xs:documentation>A (single) mouse click.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="double-click">
+        <xs:annotation>
+          <xs:documentation>A double mouse click.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="press">
+        <xs:annotation>
+          <xs:documentation>A mouse or key press.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="seq">
+        <xs:annotation>
+          <xs:documentation>Sequential clicks or presses.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="simul">
+        <xs:annotation>
+          <xs:documentation>Simultaneous clicks or presses.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.keycombo.action-enum.attribute">
+    <xs:attribute name="action" type="db:db.keycombo.action.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycombo.action-other.attributes">
+    <xs:attribute name="action">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="other">
+            <xs:annotation>
+              <xs:documentation>Indicates a non-standard action</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otheraction" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycombo.action.attrib">
+    <xs:attribute name="action">
+      <xs:simpleType>
+        <xs:union memberTypes="db:db.keycombo.action.enumeration">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="other">
+                <xs:annotation>
+                  <xs:documentation>Indicates a non-standard action</xs:documentation>
+                </xs:annotation>
+              </xs:enumeration>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="otheraction"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycombo.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keycombo.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attributeGroup ref="db:db.keycombo.action.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="keycombo">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.keycombination.contentmodel"/>
+      <xs:attributeGroup ref="db:db.keycombo.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.keysym.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.keysym.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="keysym">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.keysym.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.accel.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.accel.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="accel">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.accel.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.shortcut.action.attrib">
+    <xs:attributeGroup ref="db:db.keycombo.action.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.shortcut.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.shortcut.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attributeGroup ref="db:db.shortcut.action.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="shortcut">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.keycombination.contentmodel"/>
+      <xs:attributeGroup ref="db:db.shortcut.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

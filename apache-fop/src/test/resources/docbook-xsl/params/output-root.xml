@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="output-root">
+<refmeta>
+<refentrytitle>output-root</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>output-root</refname>
+<refpurpose>Specifies the root directory of the website</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="output-root.frag">
+<xsl:param name="output-root">.</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>When using the XSLT processor to manage dependencies and construct
+the website, this parameter can be used to indicate the root directory
+where the resulting pages are placed.</para>
+<para>Only applies when XSLT-based chunking is being used.</para>
+</refsection>
+</refentry>

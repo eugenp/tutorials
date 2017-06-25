@@ -1,0 +1,3 @@
+Sure, there were tutorials and random code samples out there, but nothing coherent.
+Nothing start to finish to act as a guide through the challenges of building a mature API with Spring.
+The educational gap between beginner and the API professional remains vast.

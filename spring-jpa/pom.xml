@@ -2,12 +2,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.baeldung</groupId>
+	<groupId>com.baeldung</groupId>
 	<artifactId>spring-jpa</artifactId>
 	<version>0.1-SNAPSHOT</version>
-
 	<packaging>war</packaging>
+
 	<name>spring-jpa</name>
+
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-modules</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 
@@ -15,17 +21,23 @@
 
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${org.springframework.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
 
@@ -37,15 +49,35 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>${xml-apis.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.18.1-GA</version>
+			<version>${javassist.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
 		</dependency>
 
 		<!-- validation -->
@@ -54,6 +86,23 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>${javax.el-api.version}</version>
+		</dependency>
+
+		<!-- web -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${javax.servlet.jstl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.servlet-api.version}</version>
 		</dependency>
 
 		<!-- utils -->
@@ -80,33 +129,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit-dep</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>${org.hamcrest.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-			<version>${org.hamcrest.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -122,52 +144,11 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
 				<configuration>
-					<excludes>
-						<!-- <exclude>**/*ProductionTest.java</exclude> -->
-					</excludes>
-					<systemPropertyVariables>
-						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-					</systemPropertyVariables>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>${cargo-maven2-plugin.version}</version>
-				<configuration>
-					<wait>true</wait>
-					<container>
-						<containerId>jetty8x</containerId>
-						<type>embedded</type>
-						<systemProperties>
-							<!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
-						</systemProperties>
-					</container>
-					<configuration>
-						<properties>
-							<cargo.servlet.port>8082</cargo.servlet.port>
-						</properties>
-					</configuration>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 
@@ -177,41 +158,37 @@
 
 	<properties>
 		<!-- Spring -->
-		<org.springframework.version>4.0.4.RELEASE</org.springframework.version>
-		<org.springframework.security.version>3.2.3.RELEASE</org.springframework.security.version>
+		<org.springframework.version>4.3.8.RELEASE</org.springframework.version>
+		<javassist.version>3.21.0-GA</javassist.version>
 
 		<!-- persistence -->
-		<hibernate.version>4.3.5.Final</hibernate.version>
-		<mysql-connector-java.version>5.1.30</mysql-connector-java.version>
+		<hibernate.version>5.2.10.Final</hibernate.version>
+		<mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+		<spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
+		<h2.version>1.4.195</h2.version>
 
-		<!-- logging -->
-		<org.slf4j.version>1.7.6</org.slf4j.version>
-		<logback.version>1.1.1</logback.version>
+		<!-- web -->
+		<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+		<javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
 
 		<!-- various -->
-		<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
+		<hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+		<xml-apis.version>1.4.01</xml-apis.version>
+		<javax.el-api.version>2.2.5</javax.el-api.version>
 
 		<!-- util -->
-		<guava.version>17.0</guava.version>
-		<commons-lang3.version>3.3.1</commons-lang3.version>
+		<guava.version>21.0</guava.version>
+		<commons-lang3.version>3.5</commons-lang3.version>
 
-		<!-- testing -->
-		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<junit.version>4.11</junit.version>
-		<mockito.version>1.9.5</mockito.version>
+		<httpcore.version>4.4.5</httpcore.version>
+		<httpclient.version>4.5.2</httpclient.version>
 
-		<httpcore.version>4.3.2</httpcore.version>
-		<httpclient.version>4.3.3</httpclient.version>
+		<rest-assured.version>2.9.0</rest-assured.version>
 
-		<rest-assured.version>2.3.1</rest-assured.version>
-
-		
 		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>2.4</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-		<cargo-maven2-plugin.version>1.4.8</cargo-maven2-plugin.version>
+		<maven-resources-plugin.version>2.7</maven-resources-plugin.version>
+		<cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 
 	</properties>
 

@@ -21,7 +21,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-    protected MySimpleUrlAuthenticationSuccessHandler() {
+    public MySimpleUrlAuthenticationSuccessHandler() {
         super();
     }
 

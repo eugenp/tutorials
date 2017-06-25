@@ -1,0 +1,55 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="page.margin.outer">
+<refmeta>
+<refentrytitle>page.margin.outer</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>page.margin.outer</refname>
+<refpurpose>The outer page margin</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="page.margin.outer.frag"><xsl:param name="page.margin.outer">
+  <xsl:choose>
+    <xsl:when test="$double.sided != 0">0.75in</xsl:when>
+    <xsl:otherwise>1in</xsl:otherwise>
+  </xsl:choose>
+</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The outer page margin is the distance from non-bound edge of the
+page to the outer edge of the last column of text.</para>
+
+<para>In left-to-right text direction,
+this is the right margin of recto (front side) pages.
+For single-sided output, it is the right margin
+of all pages.</para>
+
+<para>In right-to-left text direction,
+this is the left margin of recto pages.
+For single-sided output, this is the
+left margin of all pages.</para>
+
+<note>
+<para>Current versions (at least as of version 4.13)
+of the XEP XSL-FO processor do not
+correctly handle these margin settings for documents
+with right-to-left text direction.
+The workaround in that situation is to reverse
+the values for <parameter>page.margin.inner</parameter>
+and <parameter>page.margin.outer</parameter>, until
+this bug is fixed by RenderX.  It does not affect documents
+with left-to-right text direction.</para>
+</note>
+
+<para>See also <parameter>writing.mode</parameter>.</para>
+
+</refsection>
+</refentry>

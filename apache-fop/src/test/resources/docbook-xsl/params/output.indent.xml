@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="output.indent">
+<refmeta>
+<refentrytitle>output.indent</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">no</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">yes</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>output.indent</refname>
+<refpurpose>Indent output?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="output.indent.frag">
+<xsl:param name="output.indent" >no</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the setting of the <parameter>indent</parameter>
+parameter on the HTML slides. For more information, see the discussion
+of the <tag>xsl:output</tag> element in the XSLT specification.</para>
+<para>Select from <literal>yes</literal> or <literal>no</literal>.</para>
+
+</refsection>
+</refentry>

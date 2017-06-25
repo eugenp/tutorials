@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="annotation.graphic.open">
+<refmeta>
+<refentrytitle>annotation.graphic.open</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>annotation.graphic.open</refname>
+<refpurpose>Image for identifying a link that opens an annotation popup</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="annotation.graphic.open.frag">
+<xsl:param name="annotation.graphic.open">http://docbook.sourceforge.net/release/images/annot-open.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This image is used inline to identify the location of
+annotations. It may be replaced by a user provided graphic. The size should be approximately 10x10 pixels.</para>
+
+</refsection>
+</refentry>

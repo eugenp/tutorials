@@ -1,0 +1,49 @@
+<!-- targetdatabase.dtd -->
+<!-- A DTD for managing cross reference target information -->
+
+<!ELEMENT targetset (targetsetinfo?, sitemap*, document*) >
+
+<!ELEMENT targetsetinfo ANY >
+
+<!ELEMENT sitemap (dir) >
+
+<!ELEMENT dir ((dir|document)*) >
+<!ATTLIST dir
+        name      CDATA   #REQUIRED
+>
+
+<!ELEMENT document (div*) >
+<!ATTLIST document
+        targetdoc CDATA   #REQUIRED
+        uri       CDATA   #IMPLIED
+        baseuri   CDATA   #IMPLIED
+        href      CDATA   #IMPLIED
+        dir       CDATA   #IMPLIED
+>
+
+<!ELEMENT div (ttl?, objttl?, xreftext?, (div|obj)*)>
+<!ATTLIST div
+        targetptr  CDATA   #IMPLIED
+        element   CDATA   #IMPLIED
+        name      CDATA   #IMPLIED
+        number    CDATA   #IMPLIED
+        href      CDATA   #IMPLIED
+        lang      CDATA   #IMPLIED
+        page      CDATA   #IMPLIED
+>
+        
+        
+<!ELEMENT ttl ANY >
+<!ELEMENT objttl ANY >
+<!ELEMENT xreftext ANY >
+
+<!ELEMENT obj (ttl?, objttl?, xreftext?)>
+<!ATTLIST obj
+        targetptr  CDATA   #IMPLIED
+        element   CDATA   #IMPLIED
+        name      CDATA   #IMPLIED
+        number    CDATA   #IMPLIED
+        href      CDATA   #IMPLIED
+        lang      CDATA   #IMPLIED
+        page      CDATA   #IMPLIED
+>
