@@ -15,9 +15,7 @@
 
 These values are expanded in banner.txt
 ==========================================================
-project.version value is ${project.version}
 expanded.project.version value is ${expanded.project.version}
 
-custom.property value is ${custom.property}
 expanded.project.property value is ${expanded.project.property}
 ==========================================================

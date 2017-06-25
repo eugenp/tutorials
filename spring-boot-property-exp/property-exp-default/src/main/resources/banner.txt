@@ -15,9 +15,7 @@
 
 These values are expanded in banner.txt
 ==========================================================
-@project.version@ value is @project.version@ is not resolved here
-Use {expanded.project.version} and its value is ${expanded.project.version}
+{expanded.project.version} is ${expanded.project.version}
 
-@custom.property@ value is @custom.property@ is not resolved here
-Use {expanded.project.property} and its value is ${expanded.project.property}
+{expanded.project.property} is ${expanded.project.property}
 ==========================================================

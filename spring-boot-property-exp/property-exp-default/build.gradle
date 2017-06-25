@@ -27,12 +27,22 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    customGradleProperty = "Custom Gradle Property"
-}
-
+import org.apache.tools.ant.filters.ReplaceTokens
 processResources {
-    expand( project.properties )
+    with copySpec {
+        from 'src/main/resources'
+        include '**/application*.yml'
+        include '**/application*.yaml'
+        include '**/application*.properties'
+        project.properties.findAll().each { prop ->
+
+            if (prop.value != null) {
+                filter(ReplaceTokens, tokens: [ (prop.key): prop.value])
+                filter(ReplaceTokens, tokens: [ ('project.' + prop.key): prop.value])
+            }
+
+        }
+    }
 }
 
 dependencies {

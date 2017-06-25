@@ -32,8 +32,13 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>${basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
+                <includes>
+                    <include>**/application*.yml</include>
+                    <include>**/application*.yaml</include>
+                    <include>**/application*.properties</include>
+                </includes>
             </resource>
         </resources>
         <plugins>

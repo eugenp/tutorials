@@ -23,7 +23,7 @@ public class PropertyLoggerBean {
     public void printProperties() {
 
         log.info("");
-        log.info("Properties logged in bean:");
+        log.info("Properties logged in a bean:");
         log.info("===========================================");
         log.info("Project version : {}", projectVersion);
         log.info("Project property : {}", projectProperty);
