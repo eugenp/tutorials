@@ -107,6 +107,11 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
+			      <groupId>commons-beanutils</groupId>
+			      <artifactId>commons-beanutils</artifactId>
+			      <version>${commons-beanutils.version}</version>
+		    </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang.version}</version>
@@ -383,6 +388,7 @@
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.5</commons-lang.version>
+		    <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <jasypt.version>1.9.2</jasypt.version>
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
