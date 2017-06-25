@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="bookmarks.collapse">
+<refmeta>
+<refentrytitle>bookmarks.collapse</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo> 
+</refmeta>
+<refnamediv>
+<refname>bookmarks.collapse</refname>
+<refpurpose>Specifies the initial state of bookmarks</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="bookmarks.collapse.frag">
+<xsl:param name="bookmarks.collapse" select="1"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, the bookmark tree is collapsed so that only the 
+top-level bookmarks are displayed initially. Otherwise, the whole tree 
+of bookmarks is displayed.</para>
+
+<para>This parameter currently works with FOP 0.93 or later.</para>
+
+</refsection>
+</refentry>

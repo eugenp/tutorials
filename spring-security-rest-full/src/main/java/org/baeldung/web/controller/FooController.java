@@ -14,8 +14,11 @@ import org.baeldung.web.util.RestPreconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +31,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.google.common.base.Preconditions;
 
 @Controller
-@RequestMapping(value = "/foos")
+@RequestMapping(value = "/auth/foos")
 public class FooController {
 
     @Autowired
@@ -42,6 +45,13 @@ public class FooController {
     }
 
     // API
+
+    @RequestMapping(method = RequestMethod.GET, value = "/count")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public long count() {
+        return 2l;
+    }
 
     // read - one
 
@@ -73,16 +83,53 @@ public class FooController {
 
         return resultPage.getContent();
     }
+    
+    @GetMapping("/pageable")
+    @ResponseBody
+    public List<Foo> findPaginatedWithPageable(Pageable pageable, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
+        final Page<Foo> resultPage = service.findPaginated(pageable);
+        if (pageable.getPageNumber() > resultPage.getTotalPages()) {
+            throw new MyResourceNotFoundException();
+        }
+        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
+
+        return resultPage.getContent();
+    }
 
     // write
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody final Foo resource, final HttpServletResponse response) {
+    @ResponseBody
+    public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
-        final Long idOfCreatedResource = service.create(resource).getId();
+        final Foo foo = service.create(resource);
+        final Long idOfCreatedResource = foo.getId();
 
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
+
+        return foo;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
+        Preconditions.checkNotNull(resource);
+        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        service.update(resource);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") final Long id) {
+        service.deleteById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.HEAD)
+    @ResponseStatus(HttpStatus.OK)
+    public void head(final HttpServletResponse resp) {
+        resp.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        resp.setHeader("bar", "baz");
     }
 
 }

@@ -1,0 +1,34 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="slides.titlepage.subtitle.properties">
+<refmeta>
+<refentrytitle>slides.titlepage.subtitle.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slides.titlepage.subtitle.properties</refname>
+<refpurpose>Specifies properties for slides titlepage title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="slides.titlepage.subtitle.properties.frag">
+    <xsl:attribute-set name="slides.titlepage.subtitle.properties">
+      <xsl:attribute name="text-align">center</xsl:attribute>
+      <xsl:attribute name="space-after">1em</xsl:attribute>
+      <xsl:attribute name="font-family">
+	<xsl:value-of select="$slide.title.font.family"/>
+      </xsl:attribute>
+    </xsl:attribute-set>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the subtitle on the default
+  titlepage.</para>
+
+</refsection>
+</refentry>

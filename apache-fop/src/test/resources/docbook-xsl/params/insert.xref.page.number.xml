@@ -1,0 +1,60 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="insert.xref.page.number">
+<refmeta>
+<refentrytitle>insert.xref.page.number</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">no</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">yes</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">maybe</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>insert.xref.page.number</refname>
+<refpurpose>Turns page numbers in xrefs on and off</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="insert.xref.page.number.frag">
+<xsl:param name="insert.xref.page.number">no</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The value of this parameter determines if
+cross references (<tag>xref</tag>s) in
+printed output will
+include page number citations.
+It has three possible values.
+</para>
+<variablelist>
+<varlistentry>
+<term>no</term>
+<listitem><para>No page number references will be generated.
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>yes</term>
+<listitem><para>Page number references will be generated
+for all <tag>xref</tag> elements.
+The style of page reference may be changed
+if an <tag class="attribute">xrefstyle</tag>
+attribute is used.
+</para></listitem>
+</varlistentry>
+<varlistentry>
+<term>maybe</term>
+<listitem><para>Page number references will not be generated
+for an <tag>xref</tag> element unless 
+it has an
+<tag class="attribute">xrefstyle</tag>
+attribute whose value specifies a page reference.
+</para></listitem>
+</varlistentry>
+</variablelist>
+
+</refsection>
+</refentry>

@@ -1,0 +1,26 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="navbodywidth">
+<refmeta>
+<refentrytitle>navbodywidth</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>navbodywidth</refname>
+<refpurpose>Specifies the width of the navigation table body</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="navbodywidth.frag">
+<xsl:param name="navbodywidth"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The width of the body column.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>

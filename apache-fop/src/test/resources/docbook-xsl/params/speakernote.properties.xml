@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="speakernote.properties">
+<refmeta>
+<refentrytitle>speakernote.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>speakernote.properties</refname>
+<refpurpose>Specifies properties for all speakernotes</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="speakernote.properties.frag">
+    <xsl:attribute-set name="speakernote.properties">
+      <xsl:attribute name="font-family">Times Roman</xsl:attribute>
+      <xsl:attribute name="font-style">italic</xsl:attribute>
+      <xsl:attribute name="font-size">12pt</xsl:attribute>
+      <xsl:attribute name="font-weight">normal</xsl:attribute>
+    </xsl:attribute-set>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties that are applied to all speakernotes.</para>
+
+</refsection>
+</refentry>

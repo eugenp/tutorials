@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="use.id.function">
+<refmeta>
+<refentrytitle>use.id.function</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>use.id.function</refname>
+<refpurpose>Use the XPath id() function to find link targets?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="use.id.function.frag">
+<xsl:param name="use.id.function" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If 1, the stylesheets use the <function>id()</function> function
+to find the targets of cross reference elements. This is more
+efficient, but only works if your XSLT processor implements the
+<function>id()</function> function, naturally.</para>
+<para>THIS PARAMETER IS NOT SUPPORTED. IT IS ALWAYS ASSUMED TO BE 1.
+SEE xref.xsl IF YOU NEED TO TURN IT OFF.</para>
+
+</refsection>
+</refentry>

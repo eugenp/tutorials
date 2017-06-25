@@ -1,0 +1,40 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="variablelist.term.separator">
+<refmeta>
+<refentrytitle>variablelist.term.separator</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>variablelist.term.separator</refname>
+<refpurpose>Text to separate <tag>term</tag>s within a multi-term
+<tag>varlistentry</tag></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="variablelist.term.separator.frag">
+<xsl:param name="variablelist.term.separator">, </xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>When a <tag>varlistentry</tag> contains multiple <tag>term</tag>
+elements, the string specified in the value of the
+<parameter>variablelist.term.separator</parameter> parameter is placed
+after each <tag>term</tag> except the last.</para>
+
+<note>
+  <para>To generate a line break between multiple <tag>term</tag>s in
+  a <tag>varlistentry</tag>, set a non-zero value for the
+  <parameter>variablelist.term.break.after</parameter> parameter. If
+  you do so, you may also want to set the value of the
+  <parameter>variablelist.term.separator</parameter> parameter to an
+  empty string (to suppress rendering of the default comma and space
+  after each <tag>term</tag>).</para>
+</note>
+
+</refsection>
+</refentry>

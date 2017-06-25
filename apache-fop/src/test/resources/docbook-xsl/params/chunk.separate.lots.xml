@@ -1,0 +1,36 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="chunk.separate.lots">
+<refmeta>
+<refentrytitle>chunk.separate.lots</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>chunk.separate.lots</refname>
+<refpurpose>Should each LoT be in its own separate chunk?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="chunk.separate.lots.frag">
+<xsl:param name="chunk.separate.lots" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, each of the ToC and LoTs
+(List of Examples, List of Figures, etc.)
+will be put in its own separate chunk.
+The title page includes generated links to each of the separate files.
+</para>
+<para>
+This feature depends on the
+<parameter>chunk.tocs.and.lots</parameter>
+parameter also being non-zero. 
+</para>
+
+</refsection>
+</refentry>

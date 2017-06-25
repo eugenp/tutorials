@@ -1,0 +1,43 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="nominal.image.width">
+<refmeta>
+<refentrytitle>nominal.image.width</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>nominal.image.width</refname>
+<refpurpose>The nominal image width</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="nominal.image.width.frag">
+<xsl:param name="nominal.image.width" select="6 * $pixels.per.inch"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Graphic widths expressed as a percentage are problematic. In the
+following discussion, we speak of width and contentwidth, but
+the same issues apply to depth and contentdepth.</para>
+
+<para>A width of 50% means "half of the available space for the image."
+That's fine. But note that in HTML, this is a dynamic property and
+the image size will vary if the browser window is resized.</para>
+
+<para>A contentwidth of 50% means "half of the actual image width".
+But what does that mean if the stylesheets cannot assess the image's
+actual size? Treating this as a width of 50% is one possibility, but
+it produces behavior (dynamic scaling) that seems entirely out of
+character with the meaning.</para>
+
+<para>Instead, the stylesheets define a
+<parameter>nominal.image.width</parameter> and convert percentages to
+actual values based on that nominal size.</para>
+
+</refsection>
+</refentry>

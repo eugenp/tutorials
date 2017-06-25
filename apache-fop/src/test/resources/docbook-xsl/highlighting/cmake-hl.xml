@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Syntax highlighting definition for CMake
+Copyright (c) 2010 Mathieu Malaterre
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+claim that you wrote the original software. If you use this software
+in a product, an acknowledgment in the product documentation would be
+appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+-->
+<highlighters>
+	<highlighter type="oneline-comment">#</highlighter>
+	<highlighter type="string">
+		<string>"</string>
+		<endString>"</endString>
+		<spanNewLines />
+	</highlighter>
+	<highlighter type="hexnumber">
+		<prefix>0x</prefix>
+		<suffix>l</suffix>
+		<ignoreCase />
+		<style>string</style>
+	</highlighter>
+	<highlighter type="number">
+		<point>.</point>
+		<ignoreCase />
+		<style>string</style>
+	</highlighter>
+	<highlighter type="keywords">
+		<!-- system variable -->
+		<keyword>WIN32</keyword>
+		<keyword>UNIX</keyword>
+		<keyword>APPLE</keyword>
+		<keyword>CYGWIN</keyword>
+		<keyword>BORLAND</keyword>
+		<keyword>MINGW</keyword>
+		<keyword>MSVC</keyword>
+		<keyword>MSVC_IDE</keyword>
+		<keyword>MSVC60</keyword>
+		<keyword>MSVC70</keyword>
+		<keyword>MSVC71</keyword>
+		<keyword>MSVC80</keyword>
+		<style>attribute</style>
+	</highlighter>
+	<highlighter type="keywords">
+		<!-- operators -->
+		<keyword>AND</keyword>
+		<keyword>BOOL</keyword>
+		<keyword>CACHE</keyword>
+		<keyword>COMMAND</keyword>
+		<keyword>DEFINED</keyword>
+		<keyword>DOC</keyword>
+		<keyword>EQUAL</keyword>
+		<keyword>EXISTS</keyword>
+		<keyword>FALSE</keyword>
+		<keyword>GREATER</keyword>
+		<keyword>INTERNAL</keyword>
+		<keyword>LESS</keyword>
+		<keyword>MATCHES</keyword>
+		<keyword>NAME</keyword>
+		<keyword>NAMES</keyword>
+		<keyword>NAME_WE</keyword>
+		<keyword>NOT</keyword>
+		<keyword>OFF</keyword>
+		<keyword>ON</keyword>
+		<keyword>OR</keyword>
+		<keyword>PATH</keyword>
+		<keyword>PATHS</keyword>
+		<keyword>PROGRAM</keyword>
+		<keyword>STREQUAL</keyword>
+		<keyword>STRGREATER</keyword>
+		<keyword>STRING</keyword>
+		<keyword>STRLESS</keyword>
+		<keyword>TRUE</keyword>
+		<!-- color in blue -->
+		<!--style>doccomment</style> -->
+		<style>keyword</style>
+	</highlighter>
+	<highlighter type="keywords">
+		<!-- statement -->
+		<keyword>ADD_CUSTOM_COMMAND</keyword>
+		<keyword>ADD_CUSTOM_TARGET</keyword>
+		<keyword>ADD_DEFINITIONS</keyword>
+		<keyword>ADD_DEPENDENCIES</keyword>
+		<keyword>ADD_EXECUTABLE</keyword>
+		<keyword>ADD_LIBRARY</keyword>
+		<keyword>ADD_SUBDIRECTORY</keyword>
+		<keyword>ADD_TEST</keyword>
+		<keyword>AUX_SOURCE_DIRECTORY</keyword>
+		<keyword>BUILD_COMMAND</keyword>
+		<keyword>BUILD_NAME</keyword>
+		<keyword>CMAKE_MINIMUM_REQUIRED</keyword>
+		<keyword>CONFIGURE_FILE</keyword>
+		<keyword>CREATE_TEST_SOURCELIST</keyword>
+		<keyword>ELSE</keyword>
+		<keyword>ELSEIF</keyword>
+		<keyword>ENABLE_LANGUAGE</keyword>
+		<keyword>ENABLE_TESTING</keyword>
+		<keyword>ENDFOREACH</keyword>
+		<keyword>ENDIF</keyword>
+		<keyword>ENDWHILE</keyword>
+		<keyword>EXEC_PROGRAM</keyword>
+		<keyword>EXECUTE_PROCESS</keyword>
+		<keyword>EXPORT_LIBRARY_DEPENDENCIES</keyword>
+		<keyword>FILE</keyword>
+		<keyword>FIND_FILE</keyword>
+		<keyword>FIND_LIBRARY</keyword>
+		<keyword>FIND_PACKAGE</keyword>
+		<keyword>FIND_PATH</keyword>
+		<keyword>FIND_PROGRAM</keyword>
+		<keyword>FLTK_WRAP_UI</keyword>
+		<keyword>FOREACH</keyword>
+		<keyword>GET_CMAKE_PROPERTY</keyword>
+		<keyword>GET_DIRECTORY_PROPERTY</keyword>
+		<keyword>GET_FILENAME_COMPONENT</keyword>
+		<keyword>GET_SOURCE_FILE_PROPERTY</keyword>
+		<keyword>GET_TARGET_PROPERTY</keyword>
+		<keyword>GET_TEST_PROPERTY</keyword>
+		<keyword>IF</keyword>
+		<keyword>INCLUDE</keyword>
+		<keyword>INCLUDE_DIRECTORIES</keyword>
+		<keyword>INCLUDE_EXTERNAL_MSPROJECT</keyword>
+		<keyword>INCLUDE_REGULAR_EXPRESSION</keyword>
+		<keyword>INSTALL</keyword>
+		<keyword>INSTALL_FILES</keyword>
+		<keyword>INSTALL_PROGRAMS</keyword>
+		<keyword>INSTALL_TARGETS</keyword>
+		<keyword>LINK_DIRECTORIES</keyword>
+		<keyword>LINK_LIBRARIES</keyword>
+		<keyword>LIST</keyword>
+		<keyword>LOAD_CACHE</keyword>
+		<keyword>LOAD_COMMAND</keyword>
+		<keyword>MACRO</keyword>
+		<keyword>MAKE_DIRECTORY</keyword>
+		<keyword>MARK_AS_ADVANCED</keyword>
+		<keyword>MATH</keyword>
+		<keyword>MESSAGE</keyword>
+		<keyword>OPTION</keyword>
+		<keyword>OUTPUT_REQUIRED_FILES</keyword>
+		<keyword>PROJECT</keyword>
+		<keyword>QT_WRAP_CPP</keyword>
+		<keyword>QT_WRAP_UI</keyword>
+		<keyword>REMOVE</keyword>
+		<keyword>REMOVE_DEFINITIONS</keyword>
+		<keyword>SEPARATE_ARGUMENTS</keyword>
+		<keyword>SET</keyword>
+		<keyword>SET_DIRECTORY_PROPERTIES</keyword>
+		<keyword>SET_SOURCE_FILES_PROPERTIES</keyword>
+		<keyword>SET_TARGET_PROPERTIES</keyword>
+		<keyword>SET_TESTS_PROPERTIES</keyword>
+		<keyword>SITE_NAME</keyword>
+		<keyword>SOURCE_GROUP</keyword>
+		<keyword>STRING</keyword>
+		<keyword>SUBDIR_DEPENDS</keyword>
+		<keyword>SUBDIRS</keyword>
+		<keyword>TARGET_LINK_LIBRARIES</keyword>
+		<keyword>TRY_COMPILE</keyword>
+		<keyword>TRY_RUN</keyword>
+		<keyword>USE_MANGLED_MESA</keyword>
+		<keyword>UTILITY_SOURCE</keyword>
+		<keyword>VARIABLE_REQUIRES</keyword>
+		<keyword>VTK_MAKE_INSTANTIATOR</keyword>
+		<keyword>VTK_WRAP_JAVA</keyword>
+		<keyword>VTK_WRAP_PYTHON</keyword>
+		<keyword>VTK_WRAP_TCL</keyword>
+		<keyword>WHILE</keyword>
+		<keyword>WRITE_FILE</keyword>
+		<keyword>ENDMACRO</keyword>
+		<ignoreCase />
+		<beginChars>()</beginChars>
+		<partChars>()</partChars>
+		<style>directive</style>
+	</highlighter>
+</highlighters>

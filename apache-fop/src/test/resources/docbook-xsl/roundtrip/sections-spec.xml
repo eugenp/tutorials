@@ -1,0 +1,38 @@
+<group:root xmlns:group='http://www.explain.com.au/grouping'>
+  <book styles='book book-title'>
+    <group:level>
+      <group:element name='part' styles='part part-title'/>
+      <group:element name='article' styles='article article-title'/>
+      <group:element name='bibliography' styles='bibliography bibliography-title'/>
+      <group:element name='appendix' styles='appendix appendix-title'/>
+      <group:element name='chapter' styles='chapter chapter-title'/>
+      <group:element name='preface' styles='preface preface-title'/>
+
+      <sect1 styles='sect1 sect1-title'>
+	<sect2 styles='sect2 sect2-title'>
+	  <sect3 styles='sect3 sect3-title'>
+            <sect4 styles='sect4 sect4-title'>
+	      <sect5 styles='sect5 sect5-title'/>
+	    </sect4>
+	  </sect3>
+	</sect2>
+      </sect1>
+    </group:level>
+  </book>
+  <group:level>
+    <group:element name='article' styles='article article-title'/>
+    <group:element name='appendix' styles='appendix appendix-title'/>
+    <group:element name='chapter' styles='chapter chapter-title'/>
+    <group:element name='preface' styles='preface preface-title'/>
+
+    <sect1 styles='sect1 sect1-title'>
+      <sect2 styles='sect2 sect2-title'>
+	<sect3 styles='sect3 sect3-title'>
+          <sect4 styles='sect4 sect4-title'>
+	    <sect5 styles='sect5 sect5-title'/>
+	  </sect4>
+	</sect3>
+      </sect2>
+    </sect1>
+  </group:level>
+</group:root>

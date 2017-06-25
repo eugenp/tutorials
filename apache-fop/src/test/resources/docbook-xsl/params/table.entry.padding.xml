@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="table.entry.padding">
+<refmeta>
+<refentrytitle>table.entry.padding</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>table.entry.padding</refname>
+<refpurpose/>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="table.entry.padding.frag">
+<xsl:param name="table.entry.padding">2pt</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>FIXME:</para>
+
+</refsection>
+</refentry>
