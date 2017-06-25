@@ -4,39 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 @SpringBootApplication
 public class TypesOfBeanInjectionSpring {
+    private final UserService userService;
+
+    @Autowired // the @Autowired can even be omitted, in case there's only one explicit constructor
+    public TypesOfBeanInjectionSpring(UserService userService) {
+        this.userService = userService;
+    }
+    
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(TypesOfBeanInjectionSpring.class, args);
-
-        // Get bean from the Spring Application Context:
-        UserControllerConstructorInjection userControllerConstructorInjection = context.getBean(UserControllerConstructorInjection.class);
-
-        userControllerConstructorInjection.listUsers()
-            .stream()
-            .forEach(System.out::println);
-
-        // Get bean from the Spring Application Context:
-        UserControllerFieldInjection userControllerFieldInjection = context.getBean(UserControllerFieldInjection.class);
-
-        userControllerFieldInjection.listUsers()
-            .stream()
-            .forEach(System.out::println);
-
-        // Get bean from the Spring Application Context:
-        UserControllerSetterInjection controllerSetterInjection = context.getBean(UserControllerSetterInjection.class);
-
-        controllerSetterInjection.listUsers()
-            .stream()
-            .forEach(System.out::println);
+        SpringApplication.run(TypesOfBeanInjectionSpring.class, args);
     }
 
+    @Bean
+    CommandLineRunner runIt() {
+        return args -> {
+            userService.listUsers()
+                .stream()
+                .forEach(System.out::println);
+        };
+    }
 }
 
 class User {
@@ -73,42 +67,4 @@ class UserServiceImpl implements UserService {
         return users;
     }
 
-}
-
-@Controller
-class UserControllerConstructorInjection {
-    private final UserService userService; // the keyword 'final' assuring immutability of the object.
-
-    @Autowired // the @Autowired can even be omitted, in case there's only one explicit constructor
-    public UserControllerConstructorInjection(UserService userService) {
-        this.userService = userService;
-    }
-
-    public List<User> listUsers() {
-        return this.userService.listUsers();
-    }
-}
-
-@Controller
-class UserControllerFieldInjection {
-    @Autowired
-    private UserService userService;
-
-    public List<User> listUsers() {
-        return this.userService.listUsers();
-    }
-}
-
-@Controller
-class UserControllerSetterInjection {
-    private UserService userService;
-
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
-    public List<User> listUsers() {
-        return this.userService.listUsers();
-    }
 }

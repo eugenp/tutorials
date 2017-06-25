@@ -11,38 +11,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class TypesOfBeanInjectionSpringIntegrationTest {
     @Autowired
-    UserControllerConstructorInjection userControllerConstructorInjectionTest;
-
-    @Autowired
-    UserControllerSetterInjection userControllerSetterInjectionTest;
-
-    @Autowired
-    UserControllerFieldInjection userControllerFieldInjectionTest;
+    UserService userService;
 
     private static final String[] expected = new String[] { "Snoopy", "Woodstock", "Charlie Brown" };
 
     @Test
-    public void givenConstructorInjection_whenInjectObject_thenUserNamesAreListed() {
-        Assert.assertArrayEquals(expected, userControllerConstructorInjectionTest.listUsers()
+    public void givenDI_whenInjectObject_thenUserNamesAreListed() {
+        Assert.assertArrayEquals(expected, userService.listUsers()
             .stream()
             .map(User::getName)
             .toArray());
     }
-
-    @Test
-    public void givenSetterInjection_whenInjectObject_thenUserNamesAreListed() {
-        Assert.assertArrayEquals(expected, userControllerSetterInjectionTest.listUsers()
-            .stream()
-            .map(User::getName)
-            .toArray());
-    }
-
-    @Test
-    public void givenFieldInjection_whenInjectObject_thenUserNamesAreListed() {
-        Assert.assertArrayEquals(expected, userControllerFieldInjectionTest.listUsers()
-            .stream()
-            .map(User::getName)
-            .toArray());
-    }
-
 }
