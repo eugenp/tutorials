@@ -13,21 +13,21 @@ public class AsciidoctorDemo {
 
     private final Asciidoctor asciidoctor;
 
-    public AsciidoctorDemo() {
+    AsciidoctorDemo() {
         asciidoctor = create();
     }
 
     public void generatePDFFromString(final String input) {
 
         final Map<String, Object> options = options().inPlace(true)
-                .backend("pdf")
-                .asMap();
+          .backend("pdf")
+          .asMap();
+
 
         final String outfile = asciidoctor.convertFile(new File("sample.adoc"), options);
     }
 
-    public String generateHTMLFromString(final String input) {
-        final String output = asciidoctor.convert("Hello _Baeldung_!", new HashMap<String, Object>());
-        return output;
+    String generateHTMLFromString(final String input) {
+        return asciidoctor.convert("Hello _Baeldung_!", new HashMap<String, Object>());
     }
 }
