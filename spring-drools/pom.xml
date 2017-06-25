@@ -16,7 +16,7 @@
     <properties>
         <spring-boot-version>1.1.1.RELEASE</spring-boot-version>
         <http-component-version>4.0-alpha6</http-component-version>
-        <drools-version>7.0.0.CR1</drools-version>
+        <drools-version>7.0.0.Final</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
     </properties>
     <dependencyManagement>
@@ -86,7 +86,7 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-spring</artifactId>
-            <version>6.4.0.Final</version>
+            <version>7.0.0.Final</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
