@@ -19,7 +19,7 @@ class IndexRewriteFilter implements WebFilter {
               .mutate()
               .request(builder -> builder
                 .method(request.getMethod())
-                .contextPath(request.getContextPath())
+                .contextPath(request.getPath().toString())
                 .path("/test"))
               .build());
         }

@@ -1,8 +1,6 @@
 package com.baeldung.jsonassert;
 
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -12,6 +10,8 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.RegularExpressionValueMatcher;
 import org.skyscreamer.jsonassert.comparator.ArraySizeComparator;
 import org.skyscreamer.jsonassert.comparator.CustomComparator;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonAssertUnitTest {
 
@@ -44,7 +44,7 @@ public class JsonAssertUnitTest {
     @Test
     public void givenDifferentOrderForJsonObject_whenAssertEquals_thenPass() throws JSONException {
         String result = "{id:1,name:\"John\"}";
-        
+
         JSONAssert.assertEquals("{name:\"John\",id:1}", result, JSONCompareMode.STRICT);
         JSONAssert.assertEquals("{name:\"John\",id:1}", result, JSONCompareMode.LENIENT);
     }
@@ -55,7 +55,7 @@ public class JsonAssertUnitTest {
         JSONObject actual = new JSONObject();
         expected.put("id", Integer.valueOf(12345));
         actual.put("id", Double.valueOf(12345));
-        
+
         JSONAssert.assertEquals(expected, actual, false);
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.LENIENT);
     }
@@ -63,11 +63,11 @@ public class JsonAssertUnitTest {
     @Test
     public void givenNestedObjects_whenAssertEquals_thenPass() throws JSONException {
         String result = "{id:1,name:\"Juergen\", address:{city:\"Hollywood\", "
-            + "state:\"LA\", zip:91601}}";
+          + "state:\"LA\", zip:91601}}";
         JSONAssert.assertEquals("{id:1,name:\"Juergen\", address:{city:\"Hollywood\", "
-            + "state:\"LA\", zip:91601}}", result, false);
+          + "state:\"LA\", zip:91601}}", result, false);
     }
-    
+
     @Test
     public void whenMessageUsedInAssertion_thenDisplayMessageOnFailure() throws JSONException {
         String actual = "{id:123,name:\"John\"}";
@@ -94,36 +94,36 @@ public class JsonAssertUnitTest {
         JSONAssert.assertNotEquals("[1,2,3]", result, JSONCompareMode.LENIENT);
         JSONAssert.assertNotEquals("[1,2,3,4,5,6]", result, JSONCompareMode.LENIENT);
     }
-    
+
     @Test
     public void whenComparingSizeOfArray_thenPass() throws JSONException {
         String names = "{names:[Alex, Barbera, Charlie, Xavier]}";
         JSONAssert.assertEquals(
-            "{names:[4]}", 
-            names, 
-            new ArraySizeComparator(JSONCompareMode.LENIENT));
+          "{names:[4]}",
+          names,
+          new ArraySizeComparator(JSONCompareMode.LENIENT));
     }
-    
+
     @Test
     public void whenComparingContentsOfArray_thenPass() throws JSONException {
         String ratings = "{ratings:[3.2,3.5,4.1,5,1]}";
         JSONAssert.assertEquals(
-            "{ratings:[1,5]}", 
-            ratings, 
-            new ArraySizeComparator(JSONCompareMode.LENIENT));
+          "{ratings:[1,5]}",
+          ratings,
+          new ArraySizeComparator(JSONCompareMode.LENIENT));
     }
-    
+
     @Test
     public void givenValueMatcher_whenComparingUsingRegex_thenPass() throws IllegalArgumentException, JSONException {
-        JSONAssert.assertEquals("{entry:{id:x}}", "{entry:{id:1, id:2}}", 
-            new CustomComparator(
-            JSONCompareMode.STRICT, 
-            new Customization("entry.id", 
-            new RegularExpressionValueMatcher<Object>("\\d"))));
-        
-        JSONAssert.assertNotEquals("{entry:{id:x}}", "{entry:{id:1, id:as}}", 
-            new CustomComparator(JSONCompareMode.STRICT, 
-            new Customization("entry.id", 
-            new RegularExpressionValueMatcher<Object>("\\d"))));
+        JSONAssert.assertEquals("{entry:{id:x}}", "{entry:{id:1, id:2}}",
+          new CustomComparator(
+            JSONCompareMode.STRICT,
+            new Customization("entry.id",
+              new RegularExpressionValueMatcher<Object>("\\d"))));
+
+        JSONAssert.assertNotEquals("{entry:{id:x}}", "{entry:{id:1, id:as}}",
+          new CustomComparator(JSONCompareMode.STRICT,
+            new Customization("entry.id",
+              new RegularExpressionValueMatcher<Object>("\\d"))));
     }
 }
