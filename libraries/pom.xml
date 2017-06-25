@@ -381,8 +381,18 @@
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility-proxy</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -410,6 +420,7 @@
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <netty.version>4.1.10.Final</netty.version>
         <java-lsh.version>0.10</java-lsh.version>
+        <awaitility.version>3.0.0</awaitility.version>
     </properties>
 
 </project>
