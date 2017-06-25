@@ -86,6 +86,11 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons.collections.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt</artifactId>
             <version>${jasypt.version}</version>
@@ -345,7 +350,12 @@
             <artifactId>opennlp-tools</artifactId>
             <version>1.8.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -371,6 +381,8 @@
         <serenity.plugin.version>1.4.0</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <netty.version>4.1.10.Final</netty.version>
+        <commons.collections.version>4.1</commons.collections.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 </project>
