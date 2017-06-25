@@ -14,6 +14,7 @@
 //import java.nio.file.StandardOpenOption;
 //import java.util.ArrayList;
 //import java.util.Map;
+//import java.util.Random;
 //import java.util.Scanner;
 //
 //import org.junit.FixMethodOrder;
@@ -25,14 +26,21 @@
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 //@RunWith(JUnit4.class)
 //public class MemoryLeaksTest {
-//
-//    public static final ArrayList<Double> list = new ArrayList<Double>(1000);
+
+//    private Random random = new Random();
+//    public static final ArrayList<Double> list = new ArrayList<Double>(1000000);
 //
 //    @Test(expected = OutOfMemoryError.class)
-//    public void givenStaticField_whenLotsOfOperations_thenMemoryLeak() {
+//    public void givenStaticField_whenLotsOfOperations_thenMemoryLeak() throws InterruptedException {
 //        while (true) {
-//            list.add(10.0);
+//            int k = random.nextInt(100000);
+//            System.out.println(k);
+//            Thread.sleep(10000); //to allow GC do its job
+//            for (int i = 0; i < k; i++) {
+//                list.add(random.nextDouble());
+//            }
 //        }
+//
 //    }
 //
 //    @SuppressWarnings({ "resource" })
@@ -43,7 +51,7 @@
 //        str.intern();
 //        System.out.println("Done");
 //    }
-//
+
 //    @Test(expected = OutOfMemoryError.class)
 //    public void givenURL_whenUnclosedStream_thenOutOfMemory() throws IOException, URISyntaxException {
 //        String str = "";
@@ -63,7 +71,8 @@
 //        InputStream is = urlc.getInputStream();
 //        String str = "";
 //        while (true) {
-//            str += is.toString().intern();
+//            str += is.toString()
+//                .intern();
 //        }
 //    }
 //
