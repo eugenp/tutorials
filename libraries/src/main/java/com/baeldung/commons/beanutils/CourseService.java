@@ -33,7 +33,8 @@ public class CourseService {
                  course, "enrolledStudent(" + enrollId + ")." + nestedPropertyName);
     }
     
-    public static void copyProperties(Course course, CourseEntity courseEntity) throws IllegalAccessException, InvocationTargetException {
+    public static void copyProperties(Course course, CourseEntity courseEntity) 
+      throws IllegalAccessException, InvocationTargetException {
         BeanUtils.copyProperties(course, courseEntity);
     }
 }
