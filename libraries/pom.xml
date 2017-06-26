@@ -70,26 +70,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.5</version>
-                <executions>
-                    <execution>
-                        <id>output-html</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sourceDirectory>src/docs/asciidoc</sourceDirectory>
-                    <outputDirectory>target/docs/asciidoc</outputDirectory>
-                    <backend>html</backend>
-                    <doctype>book</doctype>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -348,6 +328,7 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
+<<<<<<< 9dbfa603d110e801496886e4f832c85275af4a5d
         </dependency>
         <dependency>
             <groupId>org.asciidoctor</groupId>
@@ -359,6 +340,22 @@
             <artifactId>asciidoctorj-pdf</artifactId>
             <version>1.5.0-alpha.11</version>
         </dependency>        
+=======
+        </dependency>   
+	<!-- OpenNLP -->
+        <dependency>
+            <groupId>org.apache.opennlp</groupId>
+            <artifactId>opennlp-tools</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>info.debatty</groupId>
+            <artifactId>java-lsh</artifactId>
+            <version>${java-lsh.version}</version>
+        </dependency>
+
+
+>>>>>>> - asciidoctor code is in new module
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
