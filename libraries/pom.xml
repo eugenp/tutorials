@@ -328,22 +328,6 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
-<<<<<<< HEAD
-<<<<<<< 9dbfa603d110e801496886e4f832c85275af4a5d
-        </dependency>
-        <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctorj</artifactId>
-            <version>1.5.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.asciidoctor</groupId>
-            <artifactId>asciidoctorj-pdf</artifactId>
-            <version>1.5.0-alpha.11</version>
-        </dependency>        
-=======
-=======
->>>>>>> 4c1beb10bf9d5ab5c9106a1b2cc1b8e3d1e2a84f
         </dependency>   
 	<!-- OpenNLP -->
         <dependency>
@@ -357,8 +341,6 @@
             <version>${java-lsh.version}</version>
         </dependency>
 
-
->>>>>>> - asciidoctor code is in new module
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -384,6 +366,7 @@
         <serenity.plugin.version>1.4.0</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <netty.version>4.1.10.Final</netty.version>
+        <java-lsh.version>0.10</java-lsh.version>
     </properties>
 
 </project>
