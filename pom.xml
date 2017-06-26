@@ -131,6 +131,7 @@
         <module>spring-amqp-simple</module>
         <module>spring-apache-camel</module>
         <module>spring-batch</module>
+        <module>spring-bom</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
