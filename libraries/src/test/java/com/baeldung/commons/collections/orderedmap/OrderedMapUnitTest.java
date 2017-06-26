@@ -14,8 +14,8 @@ import org.junit.Test;
 
 public class OrderedMapUnitTest {
 
-    private String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
-    private Integer[] ages = { 37, 28, 40, 36, 21 };
+    private String[] names = {"Emily", "Mathew", "Rose", "John", "Anna"};
+    private Integer[] ages = {37, 28, 40, 36, 21};
 
     private int RUNNERS_COUNT = names.length;
 
@@ -25,11 +25,11 @@ public class OrderedMapUnitTest {
     @Before
     public void createRunners() {
         // First implementation: ListOrderedMap
-        this.runnersListOrderedMap = new ListOrderedMap<String, Integer>();
+        this.runnersListOrderedMap = new ListOrderedMap<>();
         this.loadOrderedMapOfRunners(this.runnersListOrderedMap);
 
         // Second implementation: LinkedMap
-        this.runnersLinkedMap = new LinkedMap<String, Integer>();
+        this.runnersLinkedMap = new LinkedMap<>();
         this.loadOrderedMapOfRunners(this.runnersLinkedMap);
     }
 
@@ -135,7 +135,7 @@ public class OrderedMapUnitTest {
         // Casting the OrderedMap to a LinkedMap we can use asList() method
 
         LinkedMap<String, Integer> lmap = (LinkedMap<String, Integer>) this.runnersLinkedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersLinkedMap.keySet());
         List<String> linkedMap = lmap.asList();
         assertEquals(listKeys, linkedMap);
