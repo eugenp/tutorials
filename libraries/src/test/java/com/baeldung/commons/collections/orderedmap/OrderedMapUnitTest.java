@@ -1,16 +1,16 @@
 package com.baeldung.commons.collections.orderedmap;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.OrderedMapIterator;
 import org.apache.commons.collections4.map.LinkedMap;
 import org.apache.commons.collections4.map.ListOrderedMap;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class OrderedMapUnitTest {
 
@@ -45,11 +45,12 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages:
 
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersLinkedMap.mapIterator();
-        for (int i = 0; runnersIterator.hasNext(); i++) {
+        int i = 0;
+        while (runnersIterator.hasNext()) {
             runnersIterator.next();
-
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
+            i++;
         }
     }
 
@@ -59,11 +60,12 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages:
 
         OrderedMapIterator<String, Integer> runnersIterator = this.runnersListOrderedMap.mapIterator();
-        for (int i = 0; runnersIterator.hasNext(); i++) {
+        int i = 0;
+        while (runnersIterator.hasNext()) {
             runnersIterator.next();
-
             assertEquals(runnersIterator.getKey(), this.names[i]);
             assertEquals(runnersIterator.getValue(), this.ages[i]);
+            i++;
         }
     }
 
@@ -73,9 +75,11 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages
 
         String name = this.runnersLinkedMap.firstKey();
-        for (int i = 0; name != null; i++) {
+        int i = 0;
+        while (name != null) {
             assertEquals(name, this.names[i]);
             name = this.runnersLinkedMap.nextKey(name);
+            i++;
         }
     }
 
@@ -85,9 +89,11 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages
 
         String name = this.runnersListOrderedMap.firstKey();
-        for (int i = 0; name != null; i++) {
+        int i = 0;
+        while (name != null) {
             assertEquals(name, this.names[i]);
             name = this.runnersListOrderedMap.nextKey(name);
+            i++;
         }
     }
 
@@ -97,9 +103,11 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages
 
         String name = this.runnersLinkedMap.lastKey();
-        for (int i = RUNNERS_COUNT - 1; name != null; i--) {
+        int i = RUNNERS_COUNT - 1;
+        while (name != null) {
             assertEquals(name, this.names[i]);
             name = this.runnersLinkedMap.previousKey(name);
+            i--;
         }
     }
 
@@ -109,9 +117,11 @@ public class OrderedMapUnitTest {
         // as defined in the constant arrays of names and ages
 
         String name = this.runnersListOrderedMap.lastKey();
-        for (int i = RUNNERS_COUNT - 1; name != null; i--) {
+        int i = RUNNERS_COUNT - 1;
+        while (name != null) {
             assertEquals(name, this.names[i]);
             name = this.runnersListOrderedMap.previousKey(name);
+            i--;
         }
     }
 
