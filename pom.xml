@@ -33,6 +33,8 @@
         <module>apache-fop</module>
         <module>apache-poi</module>
         <module>apache-thrift</module>
+        <module>asciidoctor</module>
+
         <module>autovalue</module>
         <module>axon</module>
 
