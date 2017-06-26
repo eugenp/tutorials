@@ -328,6 +328,7 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
+<<<<<<< HEAD
 <<<<<<< 9dbfa603d110e801496886e4f832c85275af4a5d
         </dependency>
         <dependency>
@@ -341,6 +342,8 @@
             <version>1.5.0-alpha.11</version>
         </dependency>        
 =======
+=======
+>>>>>>> 4c1beb10bf9d5ab5c9106a1b2cc1b8e3d1e2a84f
         </dependency>   
 	<!-- OpenNLP -->
         <dependency>
