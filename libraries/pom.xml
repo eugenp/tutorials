@@ -381,6 +381,17 @@
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>au.com.dius</groupId>
+            <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
+            <version>${pact.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.10</version>
+        </dependency>
 
 
     </dependencies>
@@ -410,6 +421,7 @@
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <netty.version>4.1.10.Final</netty.version>
         <java-lsh.version>0.10</java-lsh.version>
+        <pact.version>3.5.0</pact.version>
     </properties>
 
 </project>
