@@ -175,7 +175,7 @@ public class OrderedMapUnitTest {
     @Test
     public void givenAListOrderedMap_whenConvertedToList_thenMatchesKeySet() {
         ListOrderedMap<String, Integer> lomap = (ListOrderedMap<String, Integer>) this.runnersListOrderedMap;
-        List<String> listKeys = new ArrayList<String>();
+        List<String> listKeys = new ArrayList<>();
         listKeys.addAll(this.runnersListOrderedMap.keySet());
         List<String> lomapList = lomap.asList();
         assertEquals(listKeys, lomapList);
