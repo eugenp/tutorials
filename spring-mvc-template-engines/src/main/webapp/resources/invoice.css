@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+table, th, td {
+  border: 1px solid;
+  padding: 0.5em;
+}
+
+table {
+  border-collapse: collapse;
+  clear: left;
+}
+
+dl {
+  padding: 0.5em;
+}
+
+dt {
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 110px;
+  padding-bottom: 0.5em;
+}

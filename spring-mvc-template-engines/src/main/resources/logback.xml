@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!--contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener-->
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="LOGOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <encoder>
+      <pattern>%date %-5level [%thread] %logger{1} [%file:%line] %msg%n</pattern>
+    </encoder>
+
+    <file>teng.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <!-- rollover daily -->
+      <fileNamePattern>teng-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <!-- each file should be at most 100MB, keep 60 days worth of history, but at most 20GB -->
+      <maxFileSize>100MB</maxFileSize>
+      <maxHistory>60</maxHistory>
+      <totalSizeCap>20GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+
+  <root level="debug">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="LOGOUT" />
+  </root>
+
+  <logger name="org.springframework" level="info" />
+  <logger name="org.apache.velocity" level="info" />
+
+</configuration>
