@@ -20,7 +20,7 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
+            <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
@@ -30,8 +30,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.nhaarman</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>${mockito-kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
 
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
@@ -106,9 +111,10 @@
     </build>
 
     <properties>
-        <mockito.version>1.9.5</mockito.version>
+        <mockito.version>2.8.9</mockito.version>
         <junit.version>4.12</junit.version>
         <kotlin.version>1.1.2-4</kotlin.version>
+        <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <maven-compiler.version>3.5.1</maven-compiler.version>
     </properties>
 

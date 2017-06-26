@@ -1,9 +1,6 @@
 package com.baeldung.kotlin;
 
-import org.junit.Assert
 import org.junit.Test
-import java.lang.IllegalStateException
-import org.mockito.InjectMocks
 import org.mockito.Mockito
 
 class LibraryManagementTest {
@@ -28,6 +25,6 @@ class LibraryManagementTest {
 
         manager.checkout(100, 1)
 
-        Mockito.`verify`(mockBookService).lend(100, 1)
+        Mockito.verify(mockBookService).lend(100, 1)
     }
 }
