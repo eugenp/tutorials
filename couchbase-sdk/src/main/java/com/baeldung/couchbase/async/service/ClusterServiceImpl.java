@@ -18,7 +18,7 @@ public class ClusterServiceImpl implements ClusterService {
 
     private Cluster cluster;
     private Map<String, Bucket> buckets = new ConcurrentHashMap<>();
-    
+
     @PostConstruct
     private void init() {
         CouchbaseEnvironment env = DefaultCouchbaseEnvironment.create();
@@ -27,7 +27,7 @@ public class ClusterServiceImpl implements ClusterService {
 
     @Override
     synchronized public Bucket openBucket(String name, String password) {
-        if(!buckets.containsKey(name)) {
+        if (!buckets.containsKey(name)) {
             Bucket bucket = cluster.openBucket(name, password);
             buckets.put(name, bucket);
         }

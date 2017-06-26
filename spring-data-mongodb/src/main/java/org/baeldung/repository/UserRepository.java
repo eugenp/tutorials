@@ -26,4 +26,10 @@ public interface UserRepository extends MongoRepository<User, String>, QueryDslP
     List<User> findByNameStartingWith(String regexp);
 
     List<User> findByNameEndingWith(String regexp);
+    
+    @Query(value="{}", fields="{name : 1}")
+    List<User> findNameAndId();
+    
+    @Query(value="{}", fields="{_id : 0}")
+    List<User> findNameAndAgeExcludeId();
 }

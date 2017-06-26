@@ -33,8 +33,8 @@ public class MyUserService {
         final MyUser user = myUserDAO.findByUsername(username);
         return user;
     }
-    
-    public void removeUserByUsername(String username){
+
+    public void removeUserByUsername(String username) {
         myUserDAO.removeUserByUsername(username);
     }
 

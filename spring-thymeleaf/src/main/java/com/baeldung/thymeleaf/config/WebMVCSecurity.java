@@ -37,13 +37,7 @@ public class WebMVCSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http
-        .authorizeRequests()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .httpBasic()
-        ;
+        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
     }
 
 }

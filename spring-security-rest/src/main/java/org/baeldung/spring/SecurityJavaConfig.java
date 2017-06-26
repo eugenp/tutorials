@@ -16,11 +16,11 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 @ComponentScan("org.baeldung.security")
 public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    // @Autowired
+    // private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-//    @Autowired
-//    private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
+    // @Autowired
+    // private MySavedRequestAwareAuthenticationSuccessHandler authenticationSuccessHandler;
 
     public SecurityJavaConfig() {
         super();

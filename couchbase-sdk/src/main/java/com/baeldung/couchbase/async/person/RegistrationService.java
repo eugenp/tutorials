@@ -10,19 +10,18 @@ public class RegistrationService {
 
     @Autowired
     private PersonCrudService crud;
-    
+
     public void registerNewPerson(String name, String homeTown) {
         Person person = new Person();
         person.setName(name);
         person.setHomeTown(homeTown);
         crud.create(person);
     }
-    
+
     public Person findRegistrant(String id) {
-        try{
+        try {
             return crud.read(id);
-        }
-        catch(CouchbaseException e) {
+        } catch (CouchbaseException e) {
             return crud.readFromReplica(id);
         }
     }

@@ -6,15 +6,16 @@ import org.baeldung.persistence.model.MyUser;
 import org.junit.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.specification.RequestSpecification;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 @ActiveProfiles("test")
 public class MyUserLiveTest {
 
     private final MyUser userJohn = new MyUser("john", "doe", "john@doe.com", 11);
     private String URL_PREFIX = "http://localhost:8082/spring-security-rest-full/auth/api/myusers";
+
     @Test
     public void whenGettingListOfUsers_thenCorrect() {
         final Response response = givenAuth().get(URL_PREFIX);

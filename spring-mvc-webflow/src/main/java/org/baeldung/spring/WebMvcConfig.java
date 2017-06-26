@@ -13,9 +13,8 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
 import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 
-@EnableWebMvc // <mvc:annotation-driven />
+@EnableWebMvc
 @Configuration
-// @ImportResource("classpath:/flow-definition.xml")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Autowired

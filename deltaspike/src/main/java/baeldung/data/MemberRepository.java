@@ -35,9 +35,6 @@ public abstract class MemberRepository extends AbstractEntityRepository<Member, 
 
     public List<Member> findAllOrderedByNameWithQueryDSL() {
         final QMember member = QMember.member;
-        return jpaQuery()
-                .from(member)
-                .orderBy(member.email.asc())
-                .list(member);
+        return jpaQuery().from(member).orderBy(member.email.asc()).list(member);
     }
 }

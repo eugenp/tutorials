@@ -1,15 +1,10 @@
 package org.baeldung.client;
 
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.HttpHost;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,16 +35,10 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
 
     @Override
     public void afterPropertiesSet() {
-        final int timeout = 5;
-
-        final RequestConfig config = RequestConfig.custom().setConnectTimeout(timeout * 1000).setConnectionRequestTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
-
-        final BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope("localhost", 8082, AuthScope.ANY_REALM), new UsernamePasswordCredentials("user1", "user1Pass"));
-        final CloseableHttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).setDefaultCredentialsProvider(credentialsProvider).build();
-
-        final ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(client);
+        HttpHost host = new HttpHost("localhost", 8082, "http");
+        final ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactoryBasicAuth(host);
         restTemplate = new RestTemplate(requestFactory);
+        restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("user1", "user1Pass"));
     }
 
 }

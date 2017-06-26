@@ -11,7 +11,7 @@ public class RestfulServer {
         factoryBean.setResourceProvider(new SingletonResourceProvider(new CourseRepository()));
         factoryBean.setAddress("http://localhost:8080/");
         Server server = factoryBean.create();
-        
+
         System.out.println("Server ready...");
         Thread.sleep(60 * 1000);
         System.out.println("Server exiting");

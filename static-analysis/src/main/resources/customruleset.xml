@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ruleset name="Custom ruleset" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>
+    This ruleset checks my code for bad stuff
+  </description>
+
+    <!-- We'll use the entire 'strings' ruleset -->
+    <rule ref="rulesets/java/strings.xml" />
+
+    <!-- Here's some rules we'll specify one at a time -->
+    <rule ref="rulesets/java/unusedcode.xml/UnusedLocalVariable" />
+    <rule ref="rulesets/java/unusedcode.xml/UnusedPrivateField" />
+    <rule ref="rulesets/java/imports.xml/DuplicateImports" />
+    <rule ref="rulesets/java/basic.xml/UnnecessaryConversionTemporary" />
+
+    <!-- We want to customize this rule a bit, change the message and raise 
+        the priority -->
+    <rule ref="rulesets/java/basic.xml/EmptyCatchBlock" message="Must handle exceptions">
+        <priority>2</priority>
+    </rule>
+
+    <!-- Now we'll customize a rule's property value -->
+    <rule ref="rulesets/java/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="reportLevel" value="5" />
+        </properties>
+    </rule>
+
+    <!-- We want everything from braces.xml except WhileLoopsMustUseBraces -->
+    <rule ref="rulesets/java/braces.xml">
+        <exclude name="WhileLoopsMustUseBraces" />
+    </rule>
+
+</ruleset>

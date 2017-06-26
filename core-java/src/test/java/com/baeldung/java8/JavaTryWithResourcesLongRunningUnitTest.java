@@ -2,6 +2,8 @@ package com.baeldung.java8;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -9,6 +11,9 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class JavaTryWithResourcesLongRunningUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JavaTryWithResourcesLongRunningUnitTest.class);
+
 
     private static final String TEST_STRING_HELLO_WORLD = "Hello World";
     private Date resource1Date, resource2Date;
@@ -52,32 +57,32 @@ public class JavaTryWithResourcesLongRunningUnitTest {
 
     class AutoCloseableResourcesFirst implements AutoCloseable {
         public AutoCloseableResourcesFirst() {
-            System.out.println("Constructor -> AutoCloseableResources_First");
+            LOG.debug("Constructor -> AutoCloseableResources_First");
         }
 
         public void doSomething() {
-            System.out.println("Something -> AutoCloseableResources_First");
+            LOG.debug("Something -> AutoCloseableResources_First");
         }
 
         @Override
         public void close() throws Exception {
-            System.out.println("Closed AutoCloseableResources_First");
+            LOG.debug("Closed AutoCloseableResources_First");
             resource1Date = new Date();
         }
     }
 
     class AutoCloseableResourcesSecond implements AutoCloseable {
         public AutoCloseableResourcesSecond() {
-            System.out.println("Constructor -> AutoCloseableResources_Second");
+            LOG.debug("Constructor -> AutoCloseableResources_Second");
         }
 
         public void doSomething() {
-            System.out.println("Something -> AutoCloseableResources_Second");
+            LOG.debug("Something -> AutoCloseableResources_Second");
         }
 
         @Override
         public void close() throws Exception {
-            System.out.println("Closed AutoCloseableResources_Second");
+            LOG.debug("Closed AutoCloseableResources_Second");
             resource2Date = new Date();
             Thread.sleep(10000);
         }

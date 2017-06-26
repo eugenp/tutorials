@@ -6,14 +6,14 @@ import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 
-import com.baeldung.jackson.dtos.withEnum.MyDtoWithEnum;
-import com.baeldung.jackson.dtos.withEnum.TypeEnum;
-import com.baeldung.jackson.dtos.withEnum.TypeEnumSimple;
-import com.baeldung.jackson.dtos.withEnum.TypeEnumWithValue;
-import com.baeldung.jackson.dtos.withEnum.MyDtoWithEnumCustom;
-import com.baeldung.jackson.dtos.withEnum.TypeEnumWithCustomSerializer;
 import org.junit.Test;
 
+import com.baeldung.jackson.dtos.withEnum.DistanceEnumSimple;
+import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithJsonFormat;
+import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
+import com.baeldung.jackson.dtos.withEnum.MyDtoWithEnumCustom;
+import com.baeldung.jackson.dtos.withEnum.MyDtoWithEnumJsonFormat;
+import com.baeldung.jackson.enums.Distance;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -24,10 +24,9 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingASimpleEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String enumAsString = mapper.writeValueAsString(TypeEnumSimple.TYPE1);
-        System.out.println(enumAsString);
+        final String enumAsString = mapper.writeValueAsString(DistanceEnumSimple.MILE);
 
-        assertThat(enumAsString, containsString("TYPE1"));
+        assertThat(enumAsString, containsString("MILE"));
     }
 
     // tests - enum with main value
@@ -35,10 +34,9 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingAEnumWithValue_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String enumAsString = mapper.writeValueAsString(TypeEnumWithValue.TYPE1);
-        System.out.println(enumAsString);
+        final String enumAsString = mapper.writeValueAsString(DistanceEnumWithValue.MILE);
 
-        assertThat(enumAsString, is("\"Type A\""));
+        assertThat(enumAsString, is("1609.34"));
     }
 
     // tests - enum
@@ -46,28 +44,25 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void whenSerializingAnEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String enumAsString = mapper.writeValueAsString(TypeEnum.TYPE1);
+        final String enumAsString = mapper.writeValueAsString(DistanceEnumWithJsonFormat.MILE);
 
-        System.out.println(enumAsString);
-        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
+        assertThat(enumAsString, containsString("\"meters\":1609.34"));
     }
 
     @Test
     public final void whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnum("a", 1, true, TypeEnum.TYPE1));
+        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnumJsonFormat("a", 1, true, DistanceEnumWithJsonFormat.MILE));
 
-        System.out.println(enumAsString);
-        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
+        assertThat(enumAsString, containsString("\"meters\":1609.34"));
     }
 
     @Test
     public final void whenSerializingArrayOfEnums_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String json = mapper.writeValueAsString(new TypeEnum[] { TypeEnum.TYPE1, TypeEnum.TYPE2 });
+        final String json = mapper.writeValueAsString(new DistanceEnumWithJsonFormat[] { DistanceEnumWithJsonFormat.MILE, DistanceEnumWithJsonFormat.KILOMETER });
 
-        System.out.println(json);
-        assertThat(json, containsString("\"name\":\"Type A\""));
+        assertThat(json, containsString("\"meters\":1609.34"));
     }
 
     // tests - enum with custom serializer
@@ -75,10 +70,9 @@ public class JacksonSerializationEnumsUnitTest {
     @Test
     public final void givenCustomSerializer_whenSerializingEntityWithEnum_thenCorrect() throws JsonParseException, IOException {
         final ObjectMapper mapper = new ObjectMapper();
-        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, TypeEnumWithCustomSerializer.TYPE1));
+        final String enumAsString = mapper.writeValueAsString(new MyDtoWithEnumCustom("a", 1, true, Distance.MILE));
 
-        System.out.println(enumAsString);
-        assertThat(enumAsString, containsString("\"name\":\"Type A\""));
+        assertThat(enumAsString, containsString("\"meters\":1609.34"));
     }
 
 }

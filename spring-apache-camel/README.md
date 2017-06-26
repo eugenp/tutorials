@@ -9,6 +9,7 @@ This article will demonstrate how to configure and use Apache Camel with Spring 
   <li><a href="http://camel.apache.org/">Apache Camel</a></li>
   <li><a href="http://www.enterpriseintegrationpatterns.com/patterns/messaging/toc.html">Enterprise Integration Patterns</a></li>
   <li><a href="http://www.baeldung.com/apache-camel-intro">Introduction To Apache Camel</a></li>
+  <li><a href="http://www.baeldung.com/camel-integration-patterns">Integration Patterns With Apache Camel</a></li>
 </ul>
 
 <b><h2>Framework Versions:</h2></b>

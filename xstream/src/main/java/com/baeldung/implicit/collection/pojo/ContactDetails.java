@@ -39,8 +39,7 @@ public class ContactDetails {
 
     @Override
     public String toString() {
-        return "ContactDetails [mobile=" + mobile + ", landline=" + landline
-                + ", contactType=" + contactType + "]";
+        return "ContactDetails [mobile=" + mobile + ", landline=" + landline + ", contactType=" + contactType + "]";
     }
 
 }

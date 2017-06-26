@@ -18,7 +18,6 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHome(Model model) {
-
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault());
         model.addAttribute("serverTime", dateFormat.format(new Date()));
         return "home.html";

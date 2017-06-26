@@ -19,25 +19,27 @@ import static com.jayway.awaitility.Awaitility.to;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-
 @RunWith(Arquillian.class)
 public class ScheduleTimerBeanIntegrationTest {
 
-    final static long TIMEOUT = 5000l;
-    final static long TOLERANCE = 1000l;
+    private final static long TIMEOUT = 5000l;
+    private final static long TOLERANCE = 1000l;
 
-    @Inject
-    TimerEventListener timerEventListener;
+    @Inject TimerEventListener timerEventListener;
 
     @Deployment
     public static WebArchive deploy() {
-        File[] jars = Maven.resolver().loadPomFromFile("pom.xml")
-                .resolve("com.jayway.awaitility:awaitility")
-                .withTransitivity().asFile();
+        File[] jars = Maven
+          .resolver()
+          .loadPomFromFile("pom.xml")
+          .resolve("com.jayway.awaitility:awaitility")
+          .withTransitivity()
+          .asFile();
 
-        return ShrinkWrap.create(WebArchive.class)
-                .addAsLibraries(jars)
-                .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, ScheduleTimerBean.class);
+        return ShrinkWrap
+          .create(WebArchive.class)
+          .addAsLibraries(jars)
+          .addClasses(WithinWindowMatcher.class, TimerEvent.class, TimerEventListener.class, ScheduleTimerBean.class);
     }
 
     @Test
@@ -46,9 +48,15 @@ public class ScheduleTimerBeanIntegrationTest {
         Awaitility.setDefaultTimeout(30, TimeUnit.SECONDS);
         await().untilCall(to(timerEventListener.getEvents()).size(), equalTo(3));
 
-        TimerEvent firstEvent = timerEventListener.getEvents().get(0);
-        TimerEvent secondEvent = timerEventListener.getEvents().get(1);
-        TimerEvent thirdEvent = timerEventListener.getEvents().get(2);
+        TimerEvent firstEvent = timerEventListener
+          .getEvents()
+          .get(0);
+        TimerEvent secondEvent = timerEventListener
+          .getEvents()
+          .get(1);
+        TimerEvent thirdEvent = timerEventListener
+          .getEvents()
+          .get(2);
 
         long delay = secondEvent.getTime() - firstEvent.getTime();
         assertThat(delay, Matchers.is(WithinWindowMatcher.withinWindow(TIMEOUT, TOLERANCE)));

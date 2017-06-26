@@ -59,17 +59,17 @@ public class CsrfEnabledIntegrationTest {
     public void addStudentWithCSRF() throws Exception {
         mockMvc.perform(post("/saveStudent").contentType(MediaType.APPLICATION_JSON).param("id", "1234567").param("name", "Joe").param("gender", "M").with(testUser()).with(csrf())).andExpect(status().isOk());
     }
-    
+
     @Test
     public void htmlInliningTest() throws Exception {
         mockMvc.perform(get("/html").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("inliningExample.html"));
     }
-    
+
     @Test
     public void jsInliningTest() throws Exception {
         mockMvc.perform(get("/js").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("studentCheck.js"));
     }
-    
+
     @Test
     public void plainInliningTest() throws Exception {
         mockMvc.perform(get("/plain").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("studentsList.txt"));

@@ -17,13 +17,13 @@ import org.xml.sax.SAXException;
 
 public class JaxenDemo {
 
-	private File file;
+    private File file;
 
-	public JaxenDemo(File file) {
-		this.file = file;
-	}
-	
-	public List getAllTutorial(){
+    public JaxenDemo(File file) {
+        this.file = file;
+    }
+
+    public List getAllTutorial() {
         try {
             FileInputStream fileIS = new FileInputStream(this.getFile());
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
@@ -33,25 +33,24 @@ public class JaxenDemo {
             Document xmlDocument = builder.parse(fileIS);
 
             String expression = "/tutorials/tutorial";
-            
+
             XPath path = new DOMXPath(expression);
             List result = path.selectNodes(xmlDocument);
             return result;
-        
+
         } catch (SAXException | IOException | ParserConfigurationException | JaxenException e) {
             e.printStackTrace();
             return null;
         }
-        
-	}
 
-	public File getFile() {
-		return file;
-	}
+    }
 
-	public void setFile(File file) {
-		this.file = file;
-	}
-	
-	
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
 }

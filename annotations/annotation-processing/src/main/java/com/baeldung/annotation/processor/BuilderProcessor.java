@@ -27,17 +27,12 @@ public class BuilderProcessor extends AbstractProcessor {
 
             Set<? extends Element> annotatedElements = roundEnv.getElementsAnnotatedWith(annotation);
 
-            Map<Boolean, List<Element>> annotatedMethods = annotatedElements.stream()
-                    .collect(Collectors.partitioningBy(element ->
-                            ((ExecutableType) element.asType()).getParameterTypes().size() == 1
-                                    && element.getSimpleName().toString().startsWith("set")));
+            Map<Boolean, List<Element>> annotatedMethods = annotatedElements.stream().collect(Collectors.partitioningBy(element -> ((ExecutableType) element.asType()).getParameterTypes().size() == 1 && element.getSimpleName().toString().startsWith("set")));
 
             List<Element> setters = annotatedMethods.get(true);
             List<Element> otherMethods = annotatedMethods.get(false);
 
-            otherMethods.forEach(element ->
-                    processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR,
-                            "@BuilderProperty must be applied to a setXxx method with a single argument", element));
+            otherMethods.forEach(element -> processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "@BuilderProperty must be applied to a setXxx method with a single argument", element));
 
             if (setters.isEmpty()) {
                 continue;
@@ -45,11 +40,7 @@ public class BuilderProcessor extends AbstractProcessor {
 
             String className = ((TypeElement) setters.get(0).getEnclosingElement()).getQualifiedName().toString();
 
-            Map<String, String> setterMap = setters.stream().collect(Collectors.toMap(
-                    setter -> setter.getSimpleName().toString(),
-                    setter -> ((ExecutableType) setter.asType())
-                            .getParameterTypes().get(0).toString()
-            ));
+            Map<String, String> setterMap = setters.stream().collect(Collectors.toMap(setter -> setter.getSimpleName().toString(), setter -> ((ExecutableType) setter.asType()).getParameterTypes().get(0).toString()));
 
             try {
                 writeBuilderFile(className, setterMap);

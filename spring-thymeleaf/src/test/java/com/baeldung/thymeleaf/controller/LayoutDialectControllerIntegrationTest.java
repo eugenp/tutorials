@@ -31,7 +31,7 @@ import com.baeldung.thymeleaf.config.WebMVCSecurity;
 @ContextConfiguration(classes = { WebApp.class, WebMVCConfig.class, WebMVCSecurity.class, InitSecurity.class })
 public class LayoutDialectControllerIntegrationTest {
 
-	@Autowired
+    @Autowired
     WebApplicationContext wac;
     @Autowired
     MockHttpSession session;
@@ -50,9 +50,9 @@ public class LayoutDialectControllerIntegrationTest {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).addFilters(springSecurityFilterChain).build();
     }
 
-	@Test
-	public void testGetDates() throws Exception{
-		mockMvc.perform(get("/layout").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("content.html"));
-	}
+    @Test
+    public void testGetDates() throws Exception {
+        mockMvc.perform(get("/layout").with(testUser()).with(csrf())).andExpect(status().isOk()).andExpect(view().name("content.html"));
+    }
 
 }

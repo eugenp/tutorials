@@ -1,17 +1,19 @@
 package com.baeldung.jackson.dtos.withEnum;
 
+import com.baeldung.jackson.enums.Distance;
+
 public class MyDtoWithEnumCustom {
 
     private String stringValue;
     private int intValue;
     private boolean booleanValue;
-    private TypeEnumWithCustomSerializer type;
+    private Distance type;
 
     public MyDtoWithEnumCustom() {
         super();
     }
 
-    public MyDtoWithEnumCustom(final String stringValue, final int intValue, final boolean booleanValue, final TypeEnumWithCustomSerializer type) {
+    public MyDtoWithEnumCustom(final String stringValue, final int intValue, final boolean booleanValue, final Distance type) {
         super();
 
         this.stringValue = stringValue;
@@ -46,11 +48,11 @@ public class MyDtoWithEnumCustom {
         this.booleanValue = booleanValue;
     }
 
-    public TypeEnumWithCustomSerializer getType() {
+    public Distance getType() {
         return type;
     }
 
-    public void setType(final TypeEnumWithCustomSerializer type) {
+    public void setType(final Distance type) {
         this.type = type;
     }
 

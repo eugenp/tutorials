@@ -1,38 +1,26 @@
 package org.baeldung.java.io;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.StandardCopyOption;
-import java.util.Scanner;
-
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteSource;
+import com.google.common.io.ByteStreams;
+import com.google.common.io.CharStreams;
+import com.google.common.io.Files;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.ByteSource;
-import com.google.common.io.ByteStreams;
-import com.google.common.io.CharStreams;
-import com.google.common.io.Files;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.StandardCopyOption;
+import java.util.Scanner;
+
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @SuppressWarnings("unused")
 public class JavaInputStreamToXUnitTest {
@@ -48,7 +36,7 @@ public class JavaInputStreamToXUnitTest {
 
         final StringBuilder textBuilder = new StringBuilder();
         try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
-            int c = 0;
+            int c;
             while ((c = reader.read()) != -1) {
                 textBuilder.append((char) c);
             }
@@ -62,7 +50,7 @@ public class JavaInputStreamToXUnitTest {
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes()); // exampleString.getBytes(StandardCharsets.UTF_8);
 
         // When
-        String text = null;
+        String text;
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8.name())) {
             text = scanner.useDelimiter("\\A").next();
         }
@@ -93,7 +81,7 @@ public class JavaInputStreamToXUnitTest {
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
         // When
-        String text = null;
+        String text;
         try (final Reader reader = new InputStreamReader(inputStream)) {
             text = CharStreams.toString(reader);
         }
@@ -163,7 +151,7 @@ public class JavaInputStreamToXUnitTest {
     // tests - InputStream to File
 
     @Test
-    public final void givenUsingPlainJava_whenConvertingAnFullInputStreamToAFile_thenCorrect() throws IOException {
+    public final void whenConvertingToFile_thenCorrect() throws IOException {
         final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
         final byte[] buffer = new byte[initialStream.available()];
         initialStream.read(buffer);
@@ -177,7 +165,7 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
-    public final void givenUsingPlainJava_whenConvertingAnInProgressInputStreamToAFile_thenCorrect() throws IOException {
+    public final void whenConvertingInProgressToFile_thenCorrect() throws IOException {
         final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
         final File targetFile = new File("src/main/resources/targetFile.tmp");
         final OutputStream outStream = new FileOutputStream(targetFile);
@@ -193,7 +181,7 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
-    public final void givenUsingPlainJava8_whenConvertingAnInProgressInputStreamToAFile_thenCorrect() throws IOException {
+    public final void whenConvertingAnInProgressInputStreamToFile_thenCorrect2() throws IOException {
         final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
         final File targetFile = new File("src/main/resources/targetFile.tmp");
 
@@ -203,7 +191,7 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
-    public final void givenUsingGuava_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+    public final void whenConvertingInputStreamToFile_thenCorrect3() throws IOException {
         final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
         final byte[] buffer = new byte[initialStream.available()];
         initialStream.read(buffer);
@@ -215,12 +203,31 @@ public class JavaInputStreamToXUnitTest {
     }
 
     @Test
-    public final void givenUsingCommonsIO_whenConvertingAnInputStreamToAFile_thenCorrect() throws IOException {
+    public final void whenConvertingInputStreamToFile_thenCorrect4() throws IOException {
         final InputStream initialStream = FileUtils.openInputStream(new File("src/main/resources/sample.txt"));
 
         final File targetFile = new File("src/main/resources/targetFile.tmp");
 
         FileUtils.copyInputStreamToFile(initialStream, targetFile);
+    }
+    
+    @Test
+    public final void givenUsingPlainJava_whenConvertingAnInputStreamToString_thenCorrect() throws IOException {
+        String originalString = randomAlphabetic(8);
+        InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[1024];
+        while ((nRead = inputStream.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+
+        buffer.flush();
+        byte[] byteArray = buffer.toByteArray();
+        
+        String text = new String(byteArray, StandardCharsets.UTF_8);
+        assertThat(text, equalTo(originalString));
     }
 
 }

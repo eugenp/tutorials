@@ -29,7 +29,7 @@ public class ClusterServiceImpl implements ClusterService {
 
     private Cluster cluster;
     private Map<String, Bucket> buckets = new ConcurrentHashMap<>();
-    
+
     @PostConstruct
     private void init() {
         CouchbaseEnvironment env = DefaultCouchbaseEnvironment.create();
@@ -38,7 +38,7 @@ public class ClusterServiceImpl implements ClusterService {
 
     @Override
     synchronized public Bucket openBucket(String name, String password) {
-        if(!buckets.containsKey(name)) {
+        if (!buckets.containsKey(name)) {
             Bucket bucket = cluster.openBucket(name, password);
             buckets.put(name, bucket);
         }
@@ -48,9 +48,9 @@ public class ClusterServiceImpl implements ClusterService {
     @Override
     public List<JsonDocument> getDocuments(Bucket bucket, Iterable<String> keys) {
         List<JsonDocument> docs = new ArrayList<>();
-        for(String key : keys) {
+        for (String key : keys) {
             JsonDocument doc = bucket.get(key);
-            if(doc != null) {
+            if (doc != null) {
                 docs.add(doc);
             }
         }
@@ -59,18 +59,15 @@ public class ClusterServiceImpl implements ClusterService {
 
     @Override
     public List<JsonDocument> getDocumentsAsync(final AsyncBucket asyncBucket, Iterable<String> keys) {
-        Observable<JsonDocument> asyncBulkGet = Observable
-                .from(keys)
-                .flatMap(new Func1<String, Observable<JsonDocument>>() {
-                    public Observable<JsonDocument> call(String key) {
-                        return asyncBucket.get(key);
-                    }
-                });
+        Observable<JsonDocument> asyncBulkGet = Observable.from(keys).flatMap(new Func1<String, Observable<JsonDocument>>() {
+            public Observable<JsonDocument> call(String key) {
+                return asyncBucket.get(key);
+            }
+        });
 
         final List<JsonDocument> docs = new ArrayList<>();
         try {
-            asyncBulkGet.toBlocking()
-            .forEach(new Action1<JsonDocument>() {
+            asyncBulkGet.toBlocking().forEach(new Action1<JsonDocument>() {
                 public void call(JsonDocument doc) {
                     docs.add(doc);
                 }
