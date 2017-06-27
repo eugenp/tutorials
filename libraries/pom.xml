@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -59,7 +59,7 @@
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
                     <verbose>true</verbose>
-		    <fork>false</fork>   <!-- Solve windows line too long error -->
+                    <fork>false</fork>   <!-- Solve windows line too long error -->
                 </configuration>
                 <executions>
                     <execution>
@@ -81,10 +81,10 @@
             <version>${cglib.version}</version>
         </dependency>
         <dependency>
-			      <groupId>commons-beanutils</groupId>
-			      <artifactId>commons-beanutils</artifactId>
-			      <version>${commons-beanutils.version}</version>
-		    </dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -245,7 +245,7 @@
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-maven-plugin</artifactId>
             <version>5.0.2</version>
-	    </dependency>
+        </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-xml</artifactId>
@@ -297,11 +297,11 @@
             <version>1.4.195</version>
         </dependency>
         <dependency>
-    		    <groupId>pl.pragmatists</groupId>
-		        <artifactId>JUnitParams</artifactId>
-			      <version>${jUnitParams.version}</version>
-			      <scope>test</scope>
-		    </dependency>
+            <groupId>pl.pragmatists</groupId>
+            <artifactId>JUnitParams</artifactId>
+            <version>${jUnitParams.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
@@ -332,8 +332,8 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
-        </dependency>      
-	<!-- OpenNLP -->
+        </dependency>
+        <!-- OpenNLP -->
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
@@ -355,7 +355,7 @@
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.5</commons-lang.version>
-		    <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <jasypt.version>1.9.2</jasypt.version>
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
