@@ -6,9 +6,9 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.toMap;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -130,7 +130,7 @@ public class MetricTypeTest {
             .getConfig()
             .getTags()
             .containsKey("servo.bucket"))
-          .collect(Collectors.toMap(monior -> getMonitorTagValue(monior, "servo.bucket"), monitor -> (Long) monitor.getValue()));
+          .collect(toMap(monior -> getMonitorTagValue(monior, "servo.bucket"), monitor -> (Long) monitor.getValue()));
 
         assertThat(metricMap, allOf(hasEntry("bucket=2s", 0L), hasEntry("bucket=5s", 1L), hasEntry("bucket=overflow", 1L)));
     }
@@ -179,7 +179,7 @@ public class MetricTypeTest {
         final Map<String, Number> metricMap = timer
           .getMonitors()
           .stream()
-          .collect(Collectors.toMap(monitor -> getMonitorTagValue(monitor, "statistic"), monitor -> (Number) monitor.getValue()));
+          .collect(toMap(monitor -> getMonitorTagValue(monitor, "statistic"), monitor -> (Number) monitor.getValue()));
 
         assertThat(metricMap.keySet(), containsInAnyOrder("count", "totalTime", "max", "min", "variance", "stdDev", "avg", "percentile_99", "percentile_95", "percentile_90"));
     }
