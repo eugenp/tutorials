@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -14,17 +15,11 @@ import com.baeldung.spring.drools.model.TaxiRide;
 import com.baeldung.spring.drools.model.Fare;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = TaxiFareConfiguration.class)
 public class TaxiFareCalculatorServiceTest {
 
-    ApplicationContext context = null;
-    TaxiFareCalculatorService taxiFareCalculatorService = null;
-
-    @Before
-    public void init() {
-        context = new AnnotationConfigApplicationContext(TaxiFareConfiguration.class);
-        taxiFareCalculatorService = (TaxiFareCalculatorService) context.getBean(TaxiFareCalculatorService.class);
-    }
+    @Autowired
+    TaxiFareCalculatorService taxiFareCalculatorService;
 
     @Test
     public void testCalculateFareScenario1() {
