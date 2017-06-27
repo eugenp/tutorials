@@ -4,7 +4,7 @@ to start up, run:
 	mvn spring-boot:run
 	
 them, do a POST http request to:
-	http://localhost:8080/test-services/api/bean 
+	http://localhost:8080/camel/api/bean 
 
 with the HEADER: Content-Type: application/json, 
 
