@@ -2,22 +2,20 @@ package com.baeldung.typeerasure;
 
 import org.junit.Test;
 
-public class TypeErasureExamplesUnitTest {
-
-    @Test(expected = ArrayStoreException.class)
-    public void objectArrayRuntimeExceptionUnitTest() {
-        TypeErasureExamples.objectArrayErasure();
-    }
-
+public class TypeErasureUnitTest {
+    
     @Test
-    public void listArrayTypeErasureUnitTest() {
-        TypeErasureExamples.listArrayErasure();
+    public void givenIntegerStack_whenStringPushedAndAssignPoppedValueToInteger_shouldFail() {
+        IntegerStack integerStack = new IntegerStack(5);
+        Stack stack = integerStack;
+        stack.push("Hello");
+        Integer data = integerStack.pop();
     }
-
+   
     @Test
-    public void printArrayMethodTypeErasureUnitTest() {
+    public void givenAnyArray_whenInvokedPrintArray_shouldSucceed() {
         Integer[] scores = new Integer[] { 100, 200, 10, 99, 20 };
-        TypeErasureExamples.printArray(scores);
+        ArrayContentPrintUtil.printArray(scores);
     }
 
 }
