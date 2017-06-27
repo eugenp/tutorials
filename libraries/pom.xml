@@ -190,12 +190,6 @@
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
-            <exclusions>
-    	        <exclusion>
-                    <groupId>org.asciidoctor</groupId>
-                    <artifactId>asciidoctor-java-integration</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
