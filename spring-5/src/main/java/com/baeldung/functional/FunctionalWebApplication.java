@@ -50,7 +50,7 @@ public class FunctionalWebApplication {
     }
 
     WebServer start() throws Exception {
-        WebHandler webHandler = toHttpHandler(routingFunction());
+        WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder
           .webHandler(webHandler)
           .prependFilter(new IndexRewriteFilter())

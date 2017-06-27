@@ -177,6 +177,7 @@
         <junit.platform.version>1.0.0-M4</junit.platform.version>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <spring.version>5.0.0.RC2</spring.version>
     </properties>
 
 </project>

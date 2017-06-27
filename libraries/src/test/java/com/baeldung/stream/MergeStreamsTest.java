@@ -17,10 +17,10 @@ public class MergeStreamsTest {
         Stream<Integer> stream2 = Stream.of(2, 4, 6);
 
         Stream<Integer> resultingStream = Stream.concat(stream1,
-                                                        stream2);
+          stream2);
 
         assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6),
-                     resultingStream.collect(Collectors.toList()));
+          resultingStream.collect(Collectors.toList()));
     }
 
     @Test
@@ -30,11 +30,11 @@ public class MergeStreamsTest {
         Stream<Integer> stream3 = Stream.of(18, 15, 36);
 
         Stream<Integer> resultingStream = Stream.concat(Stream.concat(stream1,
-                                                                      stream2),
-                                                        stream3);
+          stream2),
+          stream3);
 
         assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6, 18, 15, 36),
-                     resultingStream.collect(Collectors.toList()));
+          resultingStream.collect(Collectors.toList()));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class MergeStreamsTest {
         Stream<Integer> resultingStream = Stream.of(stream1, stream2, stream3, stream4).flatMap(Function.identity());
 
         assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6, 18, 15, 36, 99),
-                     resultingStream.collect(Collectors.toList()));
+          resultingStream.collect(Collectors.toList()));
 
     }
 }
