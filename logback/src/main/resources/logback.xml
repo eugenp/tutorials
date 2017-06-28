@@ -41,15 +41,10 @@
     </appender>
 
     <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
-        <!-- Redis IP/hostname -->
         <host>${host_name}</host>
-        <!-- Redis port -->
         <port>${port}</port>
-        <!-- key to enable Logstash to fetch logs from Redis -->
-        <key>your_key</key>
-        <!-- Redis password-->
+        <key>logstash_key</key>
         <password>PASSWORD</password>
-        <!-- additional fields to be added to Logstash logs -->
         <additionalField>
             <key>${logstash_key_name}</key>
             <value>${logstash_key_value}</value>
