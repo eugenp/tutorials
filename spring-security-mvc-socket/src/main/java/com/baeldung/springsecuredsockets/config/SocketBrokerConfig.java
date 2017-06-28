@@ -7,6 +7,7 @@ import org.springframework.web.socket.config.annotation.AbstractWebSocketMessage
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
+
 @Configuration
 @EnableWebSocketMessageBroker
 @ComponentScan("com.baeldung.springsecuredsockets.controllers")
@@ -14,8 +15,8 @@ public class SocketBrokerConfig extends AbstractWebSocketMessageBrokerConfigurer
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/secured/topic/", "/secured/topic/messages", "/secured/topic/greetings");
-        config.setApplicationDestinationPrefixes("/springsecuredsockets");
+        config.enableSimpleBroker("/secured/history");
+        config.setApplicationDestinationPrefixes("/spring-security-mvc-socket");
     }
 
     @Override

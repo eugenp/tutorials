@@ -13,8 +13,6 @@
 
     <script src="<c:url value="/resources/scripts/app.js" />"></script>
     <script src="<c:url value="/resources/scripts/services/SocketService.js" />"></script>
-    <script src="<c:url value="/resources/scripts/factories/Form.js" />"></script>
-    <script src="<c:url value="/resources/scripts/factories/PetFactory.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/indexController.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/loginController.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/socketController.js" />"></script>

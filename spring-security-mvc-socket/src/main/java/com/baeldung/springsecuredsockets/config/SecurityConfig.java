@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/authenticate")
                 .permitAll()
-                .antMatchers("/secured/**/**", "/secured/pet",
+                .antMatchers("/secured/**/**",
                         "/secured/success", "/secured/socket", "/secured/success")
                 .authenticated()
                 .anyRequest().authenticated()

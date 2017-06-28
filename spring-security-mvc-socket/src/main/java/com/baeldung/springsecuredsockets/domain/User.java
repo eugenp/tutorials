@@ -31,17 +31,6 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    /**
-     * One To Many Example - see Pet.
-     * <p>
-     * One User many have many Pets.
-     * <p>
-     * Each Pet can belong to only one User.
-     */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_pet", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "pet_id") })
-    private Set<Pet> pets;
-
     public long getUser_id() {
         return user_id;
     }
@@ -73,13 +62,4 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
-
 }

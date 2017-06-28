@@ -13,8 +13,6 @@
 
     <script src="<c:url value="/resources/scripts/app.js" />"></script>
     <script src="<c:url value="/resources/scripts/services/SocketService.js" />"></script>
-    <script src="<c:url value="/resources/scripts/factories/Form.js" />"></script>
-    <script src="<c:url value="/resources/scripts/factories/PetFactory.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/indexController.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/loginController.js" />"></script>
     <script src="<c:url value="/resources/scripts/controllers/socketController.js" />"></script>
@@ -23,15 +21,6 @@
 </head>
 <body ng-controller="successController">
     <h1>Congrats! You've logged in.</h1>
-
-    <h2>Your pets:</h2>
-    ${Pets}
-
-    <div ng-repeat="pet in Pets">
-        <h1>All Pets</h1>
-        <td>{{ pet.name }}</td>
-        <td>{{ pet.type }}</td>
-    </div>
 
     <a href="${pageContext.request.contextPath}/secured/socket">Click to chat!</a>
     <a href="${pageContext.request.contextPath}/">Click to start over (you will still be authenticated)!</a>

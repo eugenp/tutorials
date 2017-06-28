@@ -1,27 +1,17 @@
 package com.baeldung.springsecuredsockets.transfer.socket;
 
-public class OutputMessage {
+public class OutputMessage extends Message {
 
-    private String from;
-    private String text;
     private String time;
 
     public OutputMessage(final String from, final String text, final String time) {
-
-        this.from = from;
-        this.text = text;
+        setFrom(from);
+        setText(text);
         this.time = time;
-    }
-
-    public String getText() {
-        return text;
     }
 
     public String getTime() {
         return time;
     }
-
-    public String getFrom() {
-        return from;
-    }
+    public void setTime(String time) { this.time = time; }
 }

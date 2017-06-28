@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan("com.baeldung.springsecuredsockets")
@@ -45,11 +46,18 @@ public class DataStoreConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         final LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setJpaVendorAdapter(jpaVendorAdapter);
+        bean.setJpaVendorAdapter(jpaVendorAdapter());
         bean.setPackagesToScan("com.baeldung.springsecuredsockets");
+
+        //Set properties on Hibernate
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        bean.setJpaProperties(properties);
+
         return bean;
     }
 
