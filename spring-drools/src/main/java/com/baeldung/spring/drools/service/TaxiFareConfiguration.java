@@ -16,7 +16,7 @@ public class TaxiFareConfiguration {
     public static final String drlFile = "TAXI_FARE_RULE.drl";
 
     @Bean
-    public KieContainer kieSession() {
+    public KieContainer kieContainer() {
         KieServices kieServices = KieServices.Factory.get();
 
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
