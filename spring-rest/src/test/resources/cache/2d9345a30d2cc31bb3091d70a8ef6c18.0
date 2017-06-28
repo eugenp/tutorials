@@ -3,14 +3,14 @@ GET
 0
 HTTP/1.1 200 OK
 10
-Server: nginx/1.10.0 (Ubuntu)
-Date: Thu, 09 Mar 2017 10:17:25 GMT
 Content-Type: text/plain
 Content-Length: 1759
-Last-Modified: Tue, 27 May 2014 02:35:47 GMT
 Connection: keep-alive
-ETag: "5383fa03-6df"
 Accept-Ranges: bytes
+Server: nginx/1.10.0 (Ubuntu)
+Date: Fri, 23 Jun 2017 15:44:52 GMT
+Last-Modified: Tue, 27 May 2014 02:35:47 GMT
+ETag: "5383fa03-6df"
 OkHttp-Sent-Millis: 1489054646765
 OkHttp-Received-Millis: 1489054646966
 
