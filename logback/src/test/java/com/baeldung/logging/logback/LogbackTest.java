@@ -8,6 +8,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.ArgumentMatcher;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 import static org.mockito.Matchers.argThat;
 import static org.mockito.Mockito.*;
@@ -50,4 +52,25 @@ public class LogbackTest {
             }
         }));
     }
+
+    @Test
+    public void givenLoggerWithMarkerAndFilterConfig_whenLogLevelInfo_thenDrop() throws Exception {
+        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        final Appender mockAppender = mock(Appender.class);
+        final String logMessage = "Some important log message.";
+
+        root.addAppender(mockAppender);
+        Marker marker = MarkerFactory.getMarker("TRIGGER_FILTER");
+
+        ForecastLogger.markedLogWeatherEvent(logMessage, marker);
+
+        verify(mockAppender, times(1)).doAppend(argThat(new ArgumentMatcher() {
+            @Override
+            public boolean matches(final Object argument) {
+                return ((LoggingEvent)argument).getFormattedMessage().contains(logMessage);
+            }
+        }));
+    }
+
+
 }

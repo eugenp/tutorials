@@ -7,6 +7,32 @@
 
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.baeldung.logging.logback.filter.CustomFilter"/>
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="CUSTOM" class="com.baeldung.logging.logback.appender.CustomAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="FILTERED_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+            <marker>FIRE_FILTER</marker>
+            <!-- you can specify more than one marker -->
+            <marker>TRIGGER_FILTER</marker>
+        </evaluator>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
         <withJansi>true</withJansi>
         <encoder>
             <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
@@ -68,9 +94,9 @@
     <logger name="com.baeldung.logging" level="INFO"/>
 
     <root level="ERROR">
-        <appender-ref ref="FILE"/>
-        <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="MAIL"/>-->
+        <!--<appender-ref ref="FILE"/>-->
+        <!--<appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="FILTERED_STDOUT"/>
     </root>
 
 </configuration>

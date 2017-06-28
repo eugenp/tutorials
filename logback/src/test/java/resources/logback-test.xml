@@ -3,6 +3,7 @@
     <property name="FILE_NAME" value="application-log"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.baeldung.logging.logback.filter.CustomFilter"/>
         <withJansi>true</withJansi>
         <encoder>
             <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
