@@ -1,0 +1,40 @@
+import com.baeldung.spring.drools.model.Order;
+import com.baeldung.spring.drools.model.Result;
+import java.util.*;
+
+global com.baeldung.spring.drools.model.Result result;
+
+dialect  "mvel"
+
+rule "Apply Night FLAT Charge"
+    when
+        o:Order(nightFlag == true && timeInMinutes < 10);
+    then
+       	System.out.println("!!APPLY Flat Charge!!"); 
+    	result.setTotalCharge(100);
+end
+
+rule "Apply Night VAR [<100] Charge"
+    when
+        o:Order(nightFlag == true && timeInMinutes > 10 && timeInMinutes < 100);
+    then
+       	System.out.println("!!APPLY Flat Charge!!"); 
+    	result.setTotalCharge(100+(o.timeInMinutes*2));
+end
+
+rule "Apply Night VAR [>100] Charge"
+    when
+        o:Order(nightFlag == true && timeInMinutes > 100);
+    then
+       	System.out.println("!!APPLY Flat Charge!!"); 
+    	result.setTotalCharge(100+(o.timeInMinutes*5));
+end
+
+
+rule "Apply Day Charge"
+    when
+        o:Order(nightFlag == false);
+    then
+       	System.out.println(o.getNightFlag()); 
+    	result.setTotalCharge(o.timeInMinutes*2);
+end
