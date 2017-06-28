@@ -5,10 +5,10 @@ import com.netflix.servo.stats.StatsConfig;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.toMap;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -123,15 +123,14 @@ public class MetricTypeTest {
           .getTotalTime()
           .intValue());
 
-        final Map<String, Long> metricMap = new HashMap<>(3);
-        timer
+        final Map<String, Long> metricMap = timer
           .getMonitors()
           .stream()
           .filter(monitor -> monitor
             .getConfig()
             .getTags()
             .containsKey("servo.bucket"))
-          .forEach(monitor -> metricMap.put(getMonitorTagValue(monitor, "servo.bucket"), (Long) monitor.getValue()));
+          .collect(toMap(monior -> getMonitorTagValue(monior, "servo.bucket"), monitor -> (Long) monitor.getValue()));
 
         assertThat(metricMap, allOf(hasEntry("bucket=2s", 0L), hasEntry("bucket=5s", 1L), hasEntry("bucket=overflow", 1L)));
     }
@@ -177,10 +176,10 @@ public class MetricTypeTest {
           .getValue()
           .intValue());
 
-        final Map<String, Number> metricMap = new HashMap<>(10);
-        timer
+        final Map<String, Number> metricMap = timer
           .getMonitors()
-          .forEach(monitor -> metricMap.put(getMonitorTagValue(monitor, "statistic"), (Number) monitor.getValue()));
+          .stream()
+          .collect(toMap(monitor -> getMonitorTagValue(monitor, "statistic"), monitor -> (Number) monitor.getValue()));
 
         assertThat(metricMap.keySet(), containsInAnyOrder("count", "totalTime", "max", "min", "variance", "stdDev", "avg", "percentile_99", "percentile_95", "percentile_90"));
     }
