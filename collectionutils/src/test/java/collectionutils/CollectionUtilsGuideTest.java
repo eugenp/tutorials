@@ -35,9 +35,8 @@ public class CollectionUtilsGuideTest {
     
     @Test
     public void givenList_WhenAddIgnoreNull_thenNoNullAdded() {
-        List<String> list = Arrays.asList("x", "y", "z");
-        CollectionUtils.addIgnoreNull(list, null);
-        assertFalse(list.contains(null));
+        CollectionUtils.addIgnoreNull(list1, null);
+        assertFalse(list1.contains(null));
     }
     
     @Test
@@ -98,14 +97,15 @@ public class CollectionUtilsGuideTest {
     }
     
     @Test
-    public void givenEmptyList_WhenCheckedIsEmpty_thenTrue() {
+    public void givenNonEmptyList_WhenCheckedIsNotEmpty_thenTrue() {
         List<Customer> emptyList = new ArrayList<Customer>();
         List<Customer> nullList = null;
         
         //Very handy at times where we want to check if a collection is not null and not empty too.
         //isNotEmpty does the opposite. Handy because using ! operator on isEmpty makes it missable while reading
-        assertTrue(CollectionUtils.isEmpty(emptyList));
+        assertTrue(CollectionUtils.isNotEmpty(list1));
         assertTrue(CollectionUtils.isEmpty(nullList));
+        assertTrue(CollectionUtils.isEmpty(emptyList));
     }
     
     @Test
