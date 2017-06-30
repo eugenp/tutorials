@@ -28,30 +28,30 @@ public class AWSS3ServiceIntegrationTest {
     } 
  
     @Test 
-    public void createService() { 
+    public void whenInitializingAWSS3Service_thenNotNull() { 
         assertThat(new AWSS3Service()).isNotNull(); 
     } 
     
     @Test 
-    public void doesBucketExist() { 
+    public void whenVerifyingIfS3BucketExist_thenCorrect() { 
         service.doesBucketExist(BUCKET_NAME); 
         verify(s3).doesBucketExist(BUCKET_NAME); 
     } 
  
     @Test 
-    public void createBucket() { 
+    public void whenVerifyingCreationOfS3Bucket_thenCorrect() { 
         service.createBucket(BUCKET_NAME); 
         verify(s3).createBucket(BUCKET_NAME); 
     } 
  
     @Test 
-    public void listBuckets() { 
+    public void whenVerifyingListBuckets_thenCorrect() { 
         service.listBuckets(); 
         verify(s3).listBuckets(); 
     } 
     
     @Test 
-    public void putObject() { 
+    public void whenVerifyingPutObject_thenCorrect() { 
         File file = mock(File.class); 
         PutObjectResult result = mock(PutObjectResult.class); 
         when(s3.putObject(anyString(), anyString(), (File) any())).thenReturn(result); 
@@ -61,13 +61,13 @@ public class AWSS3ServiceIntegrationTest {
     }
     
     @Test 
-    public void listObjects() { 
+    public void whenVerifyingListObjects_thenCorrect() { 
         service.listObjects(BUCKET_NAME); 
         verify(s3).listObjects(BUCKET_NAME); 
     } 
     
     @Test 
-    public void deleteBucket() { 
+    public void whenVerifyingDeleteObjects_thenCorrect() { 
         service.deleteBucket(BUCKET_NAME); 
         verify(s3).deleteBucket(BUCKET_NAME); 
     } 
