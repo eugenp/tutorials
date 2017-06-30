@@ -23,12 +23,13 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
+import org.springframework.web.server.WebHandler;
 
 public class RootServlet extends ServletHttpHandlerAdapter {
 
     public RootServlet() {
         this(WebHttpHandlerBuilder
-          .webHandler(toHttpHandler(routingFunction()))
+          .webHandler((WebHandler) toHttpHandler(routingFunction()))
           .prependFilter(new IndexRewriteFilter())
           .build());
     }

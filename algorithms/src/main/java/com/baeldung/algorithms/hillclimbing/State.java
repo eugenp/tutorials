@@ -5,26 +5,23 @@ import java.util.List;
 import java.util.Stack;
 
 public class State {
-    List<Stack<String>> state;
-    int heuristics;
-
-    public State() {
-    }
+    private List<Stack<String>> state;
+    private int heuristics;
 
     public State(List<Stack<String>> state) {
         this.state = state;
     }
 
-    public State(List<Stack<String>> state, int heuristics) {
+    State(List<Stack<String>> state, int heuristics) {
         this.state = state;
         this.heuristics = heuristics;
     }
 
-    public State(State state) {
+    State(State state) {
         if (state != null) {
-            this.state = new ArrayList<Stack<String>>();
+            this.state = new ArrayList<>();
             for (Stack s : state.getState()) {
-                Stack s1 = new Stack();
+                Stack s1;
                 s1 = (Stack) s.clone();
                 this.state.add(s1);
             }
@@ -34,10 +31,6 @@ public class State {
 
     public List<Stack<String>> getState() {
         return state;
-    }
-
-    public void setState(List<Stack<String>> state) {
-        this.state = state;
     }
 
     public int getHeuristics() {
