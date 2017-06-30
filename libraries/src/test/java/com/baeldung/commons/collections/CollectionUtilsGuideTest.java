@@ -51,13 +51,11 @@ public class CollectionUtilsGuideTest {
     
     @Test
     public void givenListOfCustomers_whenTransformed_thenListOfAddress() {
-        Collection<Address> addressCol = CollectionUtils.collect(list1, new Transformer<Customer, Address>() {
-            public Address transform(Customer customer) {
-                return new Address(customer.getLocality(), customer.getCity(), customer.getZip());
-            }
+        Collection<Address> addressCol = CollectionUtils.collect(list1, customer -> {
+            return new Address(customer.getLocality(), customer.getCity(), customer.getZip());
         });
         
-        List<Address> addressList = new ArrayList<Address>(addressCol);
+        List<Address> addressList = new ArrayList<>(addressCol);
         assertTrue(addressList.size() == 3);
         assertTrue(addressList.get(0).getLocality().equals("locality1"));
     }
@@ -91,7 +89,7 @@ public class CollectionUtilsGuideTest {
     
     @Test
     public void givenNonEmptyList_whenCheckedIsNotEmpty_thenTrue() {
-        List<Customer> emptyList = new ArrayList<Customer>();
+        List<Customer> emptyList = new ArrayList<>();
         List<Customer> nullList = null;
         
         //Very handy at times where we want to check if a collection is not null and not empty too.
