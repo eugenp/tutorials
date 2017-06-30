@@ -2,6 +2,7 @@ package com.example.activitiwithspring;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
@@ -36,11 +37,10 @@ public class ActivitiController {
             .processInstanceId(processInstanceId)
             .list();
 
-        List<TaskRepresentation> tasks = new ArrayList<TaskRepresentation>();
-        for (Task task : usertasks) {
-            tasks.add(new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId()));
-        }
-
+        List<TaskRepresentation> tasks =  usertasks.stream().map(task -> {
+            TaskRepresentation taskRepresentation = new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
+            return taskRepresentation;
+        }).collect(Collectors.toList());
         return tasks;
     }
 
