@@ -52,7 +52,7 @@ public class S3Application {
         //uploading objects
         awsService.putObject(
           bucketName, 
-          "picture/pic.png",
+          "Document/hello.txt",
           new File("/Users/user/Desktop/picture.png")
         );
 
