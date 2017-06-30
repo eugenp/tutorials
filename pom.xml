@@ -88,8 +88,6 @@
         <module>junit5</module>
         <module>jws</module>
 
-        <module>kotlin</module>
-
         <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
