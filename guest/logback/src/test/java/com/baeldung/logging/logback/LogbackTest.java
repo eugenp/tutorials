@@ -19,7 +19,8 @@ public class LogbackTest {
 
     @Test
     public void givenLoggerWithConfig_whenLogToConsole_thenOK() throws Exception {
-        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory
+                .getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
 
         final Appender mockAppender = mock(Appender.class);
         final String logMessage = "This is only some info log message.";
@@ -37,7 +38,8 @@ public class LogbackTest {
 
     @Test
     public void givenLoggerWithConfig_whenLogLevelError_thenOK() throws Exception {
-        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory
+                .getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
 
         final Appender mockAppender = mock(Appender.class);
         final String errorMessage = "Some error log message.";
@@ -55,7 +57,8 @@ public class LogbackTest {
 
     @Test
     public void givenLoggerWithMarkerAndFilterConfig_whenLogLevelInfo_thenDrop() throws Exception {
-        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory
+                .getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
         final Appender mockAppender = mock(Appender.class);
         final String logMessage = "Some important log message.";
 
