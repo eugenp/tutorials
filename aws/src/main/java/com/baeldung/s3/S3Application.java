@@ -57,7 +57,7 @@ public class S3Application {
         );
 
         //list all the objects
-        ObjectListing objectListing = s3client.listObjects(bucketName);
+        ObjectListing objectListing = awsService.listObjects(bucketName);
         for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
             System.out.println(os.getKey());
         }
