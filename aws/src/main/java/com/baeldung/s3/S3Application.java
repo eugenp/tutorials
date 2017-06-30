@@ -53,7 +53,7 @@ public class S3Application {
         awsService.putObject(
           bucketName, 
           "picture/pic.png",
-          new File("/Users/ramansahasi/Desktop/picture.png")
+          new File("/Users/user/Desktop/picture.png")
         );
 
         //list all the objects
