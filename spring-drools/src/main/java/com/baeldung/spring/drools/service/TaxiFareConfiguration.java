@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TaxiFareConfiguration {
 
-    public static final String drlFile = "TAXI_FARE_RULE.drl";
+    private static final String drlFile = "TAXI_FARE_RULE.drl";
 
     @Bean
     public KieContainer kieContainer() {
@@ -25,14 +25,11 @@ public class TaxiFareConfiguration {
         kieBuilder.buildAll();
         KieModule kieModule = kieBuilder.getKieModule();
 
-        KieContainer kContainer = kieServices.newKieContainer(kieModule.getReleaseId());
-
-        return kContainer;
+        return kieServices.newKieContainer(kieModule.getReleaseId());
     }
 
     @Bean
     public TaxiFareCalculatorService taxiFareCalculatorService() {
-        TaxiFareCalculatorService taxiFareCalculatorService = new TaxiFareCalculatorService();
-        return taxiFareCalculatorService;
+        return new TaxiFareCalculatorService();
     }
 }
