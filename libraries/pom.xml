@@ -366,6 +366,11 @@
             <artifactId>groovy-all</artifactId>
             <version>2.4.10</version>
         </dependency>
+        <dependency>
+            <groupId>net.agkn</groupId>
+            <artifactId>hll</artifactId>
+            <version>${hll.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -397,6 +402,7 @@
         <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
+        <hll.version>1.6.0</hll.version>
     </properties>
 
 </project>
