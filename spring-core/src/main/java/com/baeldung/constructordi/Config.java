@@ -5,6 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.baeldung.constructordi.domain.Engine;
+import com.baeldung.constructordi.domain.Genre;
+import com.baeldung.constructordi.domain.Language;
 import com.baeldung.constructordi.domain.Transmission;
 
 @Configuration
@@ -19,5 +21,15 @@ public class Config {
     @Bean
     public Transmission transmission() {
         return new Transmission("sliding");
+    }
+    
+    @Bean
+    public Genre genre() {
+        return new Genre("comedy", "U");
+    }
+    
+    @Bean
+    public Language getLanguage() {
+        return new Language("English");
     }
 }

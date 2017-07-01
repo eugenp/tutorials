@@ -5,6 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import com.baeldung.setterdi.domain.Engine;
+import com.baeldung.setterdi.domain.Genre;
+import com.baeldung.setterdi.domain.Language;
 import com.baeldung.setterdi.domain.Trailer;
 import com.baeldung.setterdi.domain.Transmission;
 
@@ -31,5 +33,20 @@ public class Config {
     public Trailer trailer() {
         Trailer trailer = new Trailer();
         return trailer;
+    }
+    
+    @Bean
+    public Genre getGenre() {
+        Genre genre = new Genre();
+        genre.setCategory("comedy");
+        genre.setRating("U");
+        return genre;
+    }
+    
+    @Bean
+    public Language getLanguage() {
+        Language language = new Language();
+        language.setValue("English");
+        return language;
     }
 }

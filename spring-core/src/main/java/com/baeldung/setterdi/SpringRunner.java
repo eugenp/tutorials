@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.setterdi.Config;
 import com.baeldung.setterdi.domain.Car;
+import com.baeldung.setterdi.domain.Movie;
 
 public class SpringRunner {
     public static void main(String[] args) {
@@ -17,6 +18,9 @@ public class SpringRunner {
 
         System.out.println(toyota);
 
+        Movie minions = getMovieFromJavaConfig();
+        
+        System.out.println(minions);
     }
 
     private static Car getCarFromJavaConfig() {
@@ -29,5 +33,11 @@ public class SpringRunner {
         ApplicationContext context = new ClassPathXmlApplicationContext("setterdi.xml");
 
         return context.getBean(Car.class);
+    }
+    
+    private static Movie getMovieFromJavaConfig() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        return context.getBean(Movie.class);
     }
 }
