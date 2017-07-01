@@ -15,7 +15,8 @@ import static org.junit.Assert.assertNotNull;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
-  classes = Config.class)
+  classes = Config.class
+)
 public class SetterDIIntegrationTest {
 
     @Autowired
