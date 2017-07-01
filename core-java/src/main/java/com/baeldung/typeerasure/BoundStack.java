@@ -2,12 +2,12 @@ package com.baeldung.typeerasure;
 
 import java.util.Arrays;
 
-public class BoundedStack<E extends Comparable<E>> {
+public class BoundStack<E extends Comparable<E>> {
 
     private E[] stackContent;
     private int total;
 
-    public BoundedStack(int capacity) {
+    public BoundStack(int capacity) {
         this.stackContent = (E[]) new Object[capacity];
     }
 
