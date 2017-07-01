@@ -2,20 +2,18 @@ package org.baeldung.web;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.baeldung.persistence.model.Foo;
-import org.junit.Test;
-import org.springframework.http.MediaType;
-
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import org.baeldung.persistence.model.Foo;
+import org.junit.Test;
+import org.springframework.http.MediaType;
+
+
 public class ApplicationLiveTest {
-
-    private final FormAuthConfig formAuthConfig = new FormAuthConfig("http://localhost:8082/spring-security-mvc-boot/login", "username", "password");
-
+    
     @Test
     public void givenUserWithReadPrivilegeAndHasPermission_whenGetFooById_thenOK() {
         final Response response = givenAuth("john", "123").get("http://localhost:8082/spring-security-mvc-boot/foos/1");
@@ -31,7 +29,7 @@ public class ApplicationLiveTest {
 
     @Test
     public void givenUserWithWritePrivilegeAndHasPermission_whenPostFoo_thenOk() {
-        final Response response = givenAuth("tom", "111").contentType(MediaType.APPLICATION_JSON_VALUE).body(new Foo("sample")).post("http://localhost:8082/spring-security-mvc-boot/foos");
+        final Response response = givenAuth("tom", "111").and().body(new Foo("sample")).and().contentType(MediaType.APPLICATION_JSON_VALUE).post("http://localhost:8082/spring-security-mvc-boot/foos");
         assertEquals(201, response.getStatusCode());
         assertTrue(response.asString().contains("id"));
     }
@@ -62,6 +60,6 @@ public class ApplicationLiveTest {
 
     //
     private RequestSpecification givenAuth(String username, String password) {
-        return RestAssured.given().auth().form(username, password, formAuthConfig);
+        return RestAssured.given().log().uri().auth().form(username, password, new FormAuthConfig("/spring-security-mvc-boot/login","username","password"));
     }
 }
