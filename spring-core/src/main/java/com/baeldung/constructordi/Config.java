@@ -29,7 +29,7 @@ public class Config {
     }
     
     @Bean
-    public Language getLanguage() {
+    public Language language() {
         return new Language("English");
     }
 }

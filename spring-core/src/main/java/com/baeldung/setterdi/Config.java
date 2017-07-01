@@ -36,7 +36,7 @@ public class Config {
     }
     
     @Bean
-    public Genre getGenre() {
+    public Genre genre() {
         Genre genre = new Genre();
         genre.setCategory("comedy");
         genre.setRating("U");
@@ -44,7 +44,7 @@ public class Config {
     }
     
     @Bean
-    public Language getLanguage() {
+    public Language language() {
         Language language = new Language();
         language.setValue("English");
         return language;
