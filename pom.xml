@@ -88,8 +88,6 @@
         <module>junit5</module>
         <module>jws</module>
 
-        <module>kotlin</module>
-
         <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
@@ -228,6 +226,7 @@
         <module>spring-drools</module>
         <module>drools</module>
         <module>liquibase</module>
+        <module>spring-boot-property-exp</module>
     </modules>
 
     <dependencies>
