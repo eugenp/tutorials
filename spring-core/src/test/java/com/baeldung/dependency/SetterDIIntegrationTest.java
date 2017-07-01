@@ -13,10 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-  loader = AnnotationConfigContextLoader.class,
-  classes = Config.class
-)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = Config.class)
 public class SetterDIIntegrationTest {
 
     @Autowired
