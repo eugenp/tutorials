@@ -27,7 +27,7 @@ public class EitherDemo {
 		return results;
 	}
 
-	private static Either<String, Integer> computeWithEither(int marks) {
+	public static Either<String, Integer> computeWithEither(int marks) {
 		if (marks < 85) {
 			return Either.left("Marks not acceptable");
 		} else {
@@ -35,20 +35,56 @@ public class EitherDemo {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static String getError(Either<String, Integer> result) {
+		return result.getLeft();
+	}
 
-		Map<String, Object> results = computeWithoutEitherUsingMap(8);
+	public static int getMarks(Either<String, Integer> result) {
+		return result.get();
+	}
 
-		String error = (String) results.get("FAILURE");
-		int marks = (int) results.get("SUCCESS");
+	public static int getModifiedMarks(Either<String, Integer> result) {
+		result = result.right().map(i -> i * 2).toEither();
+		return result.get();
+	}
 
-		Either<String, Integer> result = computeWithEither(80);
-		
-		computeWithEither(80).right().map(i -> i * 2).toEither();
+	public void utilities() {
 
-		error = result.getLeft();
-		marks = result.get();
+		String error;
+		int marks;
 
+		Either<String, Integer> result = computeWithEither(100);
+
+		result.toArray();
+		result.toCharSeq();
+		result.toLinkedSet();
+		result.toList();
+		result.toOption();
+		result.toPriorityQueue();
+		result.iterator();
+		result.toVector();
+		result.toTree();
+		result.toStream();
+
+		result.toJavaArray();
+		result.toJavaList();
+		result.toJavaOptional();
+		result.toJavaParallelStream();
+		result.toJavaSet();
+		result.toJavaStream();
+		result.toJavaList();
+
+		Either.RightProjection<String, Integer> projection = computeWithEither(9).right();
+
+		result.contains(800);
+		result.isLeft();
+		result.isRight();
+
+		if (result.isLeft()) {
+			error = result.getLeft();
+		} else {
+			marks = result.get();
+		}
 	}
 
 }
