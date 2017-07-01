@@ -11,7 +11,7 @@ import com.baeldung.contexts.Greeting;
 public class RootApplicationConfig {
 
     @Bean
-    public Greeting Grettings() {
+    public Greeting greeting() {
         Greeting greeting = new Greeting();
         greeting.setMessage("Hello World !!");
         return greeting;
