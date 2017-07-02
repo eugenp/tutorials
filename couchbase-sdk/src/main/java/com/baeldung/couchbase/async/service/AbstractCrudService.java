@@ -79,7 +79,7 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
             }
         });
 
-        final List<T> items = new ArrayList<T>();
+        final List<T> items = new ArrayList<>();
         try {
             asyncOperation.toBlocking().forEach(new Action1<JsonDocument>() {
                 public void call(JsonDocument doc) {

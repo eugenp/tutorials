@@ -8,7 +8,7 @@ class MyDictionary {
     private Map<String, String> wordMap;
 
     public MyDictionary() {
-        wordMap = new HashMap<String, String>();
+        wordMap = new HashMap<>();
     }
 
     public void add(final String word, final String meaning) {

@@ -56,7 +56,7 @@ class CompanyController {
     @RequestMapping(value = "/companyData/{company}/employeeData/{employee}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Map<String, String>> getCompanyName(@MatrixVariable(value = "name", pathVar = "company") final String name) {
-        final Map<String, String> result = new HashMap<String, String>();
+        final Map<String, String> result = new HashMap<>();
         result.put("name", name);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
@@ -71,6 +71,6 @@ class CompanyController {
     @RequestMapping(value = "/companyResponseEntity", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Company> getCompanyResponseEntity() {
         final Company company = new Company(3, "123");
-        return new ResponseEntity<Company>(company, HttpStatus.OK);
+        return new ResponseEntity<>(company, HttpStatus.OK);
     }
 }

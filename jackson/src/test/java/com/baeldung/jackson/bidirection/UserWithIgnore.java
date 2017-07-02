@@ -19,7 +19,7 @@ public class UserWithIgnore {
     public UserWithIgnore(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithIgnore>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithIgnore item) {

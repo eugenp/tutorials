@@ -36,7 +36,7 @@ class MyUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        final List<GrantedAuthority> authorities = new ArrayList<>();
         for (final Privilege privilege : user.getPrivileges()) {
             authorities.add(new SimpleGrantedAuthority(privilege.getName()));
         }

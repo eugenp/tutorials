@@ -47,7 +47,7 @@ public class SpringHttpMessageConvertersLiveTest {
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_XML));
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, Foo.class, "1");
         final Foo resource = response.getBody();
@@ -63,7 +63,7 @@ public class SpringHttpMessageConvertersLiveTest {
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, Foo.class, "1");
         final Foo resource = response.getBody();
@@ -80,7 +80,7 @@ public class SpringHttpMessageConvertersLiveTest {
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
         headers.setContentType((MediaType.APPLICATION_XML));
-        final HttpEntity<Foo> entity = new HttpEntity<Foo>(resource, headers);
+        final HttpEntity<Foo> entity = new HttpEntity<>(resource, headers);
 
         final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.PUT, entity, Foo.class, resource.getId());
         final Foo fooResponse = response.getBody();
@@ -96,7 +96,7 @@ public class SpringHttpMessageConvertersLiveTest {
         restTemplate.setMessageConverters(Arrays.asList(new ProtobufHttpMessageConverter()));
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(ProtobufHttpMessageConverter.PROTOBUF));
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         final ResponseEntity<FooProtos.Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, FooProtos.Foo.class, "1");
         final FooProtos.Foo resource = response.getBody();
@@ -112,7 +112,7 @@ public class SpringHttpMessageConvertersLiveTest {
         restTemplate.setMessageConverters(Arrays.asList(new KryoHttpMessageConverter()));
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(KryoHttpMessageConverter.KRYO));
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, Foo.class, "1");
         final Foo resource = response.getBody();

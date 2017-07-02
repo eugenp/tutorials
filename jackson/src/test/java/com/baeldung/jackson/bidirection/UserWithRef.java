@@ -19,7 +19,7 @@ public class UserWithRef {
     public UserWithRef(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithRef>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithRef item) {

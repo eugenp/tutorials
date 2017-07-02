@@ -18,7 +18,7 @@ public class MockitoAnnotationIntegrationTest {
 
     @Spy
     private
-    List<String> spiedList = new ArrayList<String>();
+    List<String> spiedList = new ArrayList<>();
 
     @Before
     public void init() {

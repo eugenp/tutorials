@@ -19,7 +19,7 @@ class InputData {
         HashMap<Item, Double> newUser;
         Set<Item> newRecommendationSet;
         for (int i = 0; i < numberOfUsers; i++) {
-            newUser = new HashMap<Item, Double>();
+            newUser = new HashMap<>();
             newRecommendationSet = new HashSet<>();
             for (int j = 0; j < 3; j++) {
                 newRecommendationSet.add(items.get((int) (Math.random() * 5)));

@@ -9,7 +9,7 @@ import java.util.Set;
 @ApplicationPath("/rest")
 class RestEasyServices extends Application {
 
-    private Set<Object> singletons = new HashSet<Object>();
+    private Set<Object> singletons = new HashSet<>();
 
     public RestEasyServices() {
         singletons.add(new MovieCrudService());

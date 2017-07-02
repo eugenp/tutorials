@@ -19,7 +19,7 @@ public class UserWithIdentity {
     public UserWithIdentity(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithIdentity>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithIdentity item) {

@@ -7,7 +7,7 @@ import java.util.Map;
 class Course {
     private String name;
     private List<String> codes;
-    private Map<String, Student> enrolledStudent = new HashMap<String, Student>();
+    private Map<String, Student> enrolledStudent = new HashMap<>();
 
     public String getName() {
         return name;

@@ -13,16 +13,16 @@ public class ComplexClassUnitTest {
 
     @Test
     public void testEqualsAndHashcodes() {
-        List<String> strArrayList = new ArrayList<String>();
+        List<String> strArrayList = new ArrayList<>();
         strArrayList.add("abc");
         strArrayList.add("def");
-        ComplexClass aObject = new ComplexClass(strArrayList, new HashSet<Integer>(45, 67));
-        ComplexClass bObject = new ComplexClass(strArrayList, new HashSet<Integer>(45, 67));
+        ComplexClass aObject = new ComplexClass(strArrayList, new HashSet<>(45, 67));
+        ComplexClass bObject = new ComplexClass(strArrayList, new HashSet<>(45, 67));
 
-        List<String> strArrayListD = new ArrayList<String>();
+        List<String> strArrayListD = new ArrayList<>();
         strArrayListD.add("lmn");
         strArrayListD.add("pqr");
-        ComplexClass dObject = new ComplexClass(strArrayListD, new HashSet<Integer>(45, 67));
+        ComplexClass dObject = new ComplexClass(strArrayListD, new HashSet<>(45, 67));
 
         Assert.assertTrue(aObject.equals(bObject) && bObject.equals(aObject));
 

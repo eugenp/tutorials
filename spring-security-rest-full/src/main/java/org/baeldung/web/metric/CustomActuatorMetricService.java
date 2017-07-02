@@ -28,8 +28,8 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
     public CustomActuatorMetricService() {
         super();
         repo = new InMemoryMetricRepository();
-        statusMetricsByMinute = new ArrayList<ArrayList<Integer>>();
-        statusList = new ArrayList<String>();
+        statusMetricsByMinute = new ArrayList<>();
+        statusList = new ArrayList<>();
     }
 
     // API
@@ -79,7 +79,7 @@ public class CustomActuatorMetricService implements ICustomActuatorMetricService
     @Scheduled(fixedDelay = 60000)
     private void exportMetrics() {
         Metric<?> metric;
-        final ArrayList<Integer> statusCount = new ArrayList<Integer>();
+        final ArrayList<Integer> statusCount = new ArrayList<>();
         for (final String status : statusList) {
             metric = repo.findOne(status);
             if (metric != null) {

@@ -26,7 +26,7 @@ class MyFooController {
 
     public MyFooController() {
         super();
-        myfoos = new HashMap<Long, Foo>();
+        myfoos = new HashMap<>();
         myfoos.put(1L, new Foo(1L, "sample foo"));
     }
 

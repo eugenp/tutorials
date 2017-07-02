@@ -11,12 +11,12 @@ public class ExtendableBean {
     private Map<String, String> properties;
 
     public ExtendableBean() {
-        properties = new HashMap<String, String>();
+        properties = new HashMap<>();
     }
 
     public ExtendableBean(final String name) {
         this.name = name;
-        properties = new HashMap<String, String>();
+        properties = new HashMap<>();
     }
 
     @JsonAnySetter

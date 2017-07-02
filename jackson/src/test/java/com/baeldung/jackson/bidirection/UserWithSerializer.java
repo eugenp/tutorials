@@ -21,7 +21,7 @@ public class UserWithSerializer {
     public UserWithSerializer(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithSerializer>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithSerializer item) {

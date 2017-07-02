@@ -27,7 +27,7 @@ class CustomEndpoint implements Endpoint<List<String>> {
 
     public List<String> invoke() {
         // Your logic to display the output
-        List<String> messages = new ArrayList<String>();
+        List<String> messages = new ArrayList<>();
         messages.add("This is message 1");
         messages.add("This is message 2");
         return messages;

@@ -56,7 +56,7 @@ class MyController {
             return Arrays.asList("none");
         } else {
 
-            Set<String> roles = new HashSet<String>();
+            Set<String> roles = new HashSet<>();
 
             final UserDetails currentUser = (UserDetails) ((Authentication) principal).getPrincipal();
             Collection<? extends GrantedAuthority> authorities = currentUser.getAuthorities();

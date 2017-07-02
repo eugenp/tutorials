@@ -29,7 +29,7 @@ class UserToRoleRelationshipRepository implements RelationshipRepository<User, L
 
     @Override
     public void setRelations(User user, Iterable<Long> roleIds, String fieldName) {
-        final Set<Role> roles = new HashSet<Role>();
+        final Set<Role> roles = new HashSet<>();
         roles.addAll(roleRepository.findAll(roleIds));
         user.setRoles(roles);
         userRepository.save(user);

@@ -18,7 +18,7 @@ class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
     }
 
     public Map<Integer, Student> unmarshal(StudentMap valueMap) throws Exception {
-        Map<Integer, Student> boundMap = new LinkedHashMap<Integer, Student>();
+        Map<Integer, Student> boundMap = new LinkedHashMap<>();
         for (StudentMap.StudentEntry studentEntry : valueMap.getEntries()) {
             boundMap.put(studentEntry.getId(), studentEntry.getStudent());
         }

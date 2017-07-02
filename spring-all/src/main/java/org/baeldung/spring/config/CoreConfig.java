@@ -24,7 +24,7 @@ public class CoreConfig extends WebMvcConfigurerAdapter {
     public ExecutorService setupExecutor() {
         final int coreThreads = 4;
         final int maxThreads = 8;
-        final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(coreThreads, maxThreads, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+        final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(coreThreads, maxThreads, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<>());
         threadPoolExecutor.allowCoreThreadTimeOut(true);
         return threadPoolExecutor;
     }

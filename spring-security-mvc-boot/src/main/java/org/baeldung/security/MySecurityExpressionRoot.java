@@ -136,7 +136,7 @@ class MySecurityExpressionRoot implements MethodSecurityExpressionOperations {
 
     private Set<String> getAuthoritySet() {
         if (roles == null) {
-            roles = new HashSet<String>();
+            roles = new HashSet<>();
             Collection<? extends GrantedAuthority> userAuthorities = authentication.getAuthorities();
 
             if (roleHierarchy != null) {

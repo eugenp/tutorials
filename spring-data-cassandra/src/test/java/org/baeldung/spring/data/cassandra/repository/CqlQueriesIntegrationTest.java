@@ -69,7 +69,7 @@ public class CqlQueriesIntegrationTest {
 
     @Before
     public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
+        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
 
     @Test

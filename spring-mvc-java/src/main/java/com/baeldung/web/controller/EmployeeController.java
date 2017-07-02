@@ -59,7 +59,7 @@ class EmployeeController {
     @RequestMapping(value = "/employees/{name}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Employee>> getEmployeeByNameAndBeginContactNumber(@PathVariable final String name, @MatrixVariable final String beginContactNumber) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
+        final List<Employee> employeesList = new ArrayList<>();
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
             if (employee.getName().equalsIgnoreCase(name) && employee.getContactNumber().startsWith(beginContactNumber)) {
@@ -72,7 +72,7 @@ class EmployeeController {
     @RequestMapping(value = "/employeesContacts/{contactNumber}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Employee>> getEmployeeBycontactNumber(@MatrixVariable(required = true) final String contactNumber) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
+        final List<Employee> employeesList = new ArrayList<>();
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
             if (employee.getContactNumber().equalsIgnoreCase(contactNumber)) {
@@ -91,7 +91,7 @@ class EmployeeController {
     @RequestMapping(value = "employeeArea/{workingArea}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Employee>> getEmployeeByWorkingArea(@MatrixVariable final Map<String, LinkedList<String>> matrixVars) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
+        final List<Employee> employeesList = new ArrayList<>();
         final LinkedList<String> workingArea = matrixVars.get("workingArea");
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();

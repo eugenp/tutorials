@@ -27,7 +27,7 @@ public class ActorGsonDeserializer implements JsonDeserializer<ActorGson> {
         final JsonElement jsonDateOfBirth = jsonObject.get("dateOfBirth");
         final JsonArray jsonFilmography = jsonObject.getAsJsonArray("filmography");
 
-        final ArrayList<String> filmList = new ArrayList<String>();
+        final ArrayList<String> filmList = new ArrayList<>();
         if (jsonFilmography != null) {
             for (int i = 0; i < jsonFilmography.size(); i++) {
                 filmList.add(jsonFilmography.get(i).getAsString());

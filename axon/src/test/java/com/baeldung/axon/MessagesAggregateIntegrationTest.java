@@ -18,7 +18,7 @@ public class MessagesAggregateIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        fixture = new AggregateTestFixture<MessagesAggregate>(MessagesAggregate.class);
+        fixture = new AggregateTestFixture<>(MessagesAggregate.class);
 
     }
 

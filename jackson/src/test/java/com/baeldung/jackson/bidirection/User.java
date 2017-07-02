@@ -15,7 +15,7 @@ public class User {
     public User(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<Item>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final Item item) {

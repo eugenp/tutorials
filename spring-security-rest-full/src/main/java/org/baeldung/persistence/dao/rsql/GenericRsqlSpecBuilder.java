@@ -22,7 +22,7 @@ class GenericRsqlSpecBuilder<T> {
     }
 
     public Specifications<T> createSpecification(final LogicalNode logicalNode) {
-        final List<Specifications<T>> specs = new ArrayList<Specifications<T>>();
+        final List<Specifications<T>> specs = new ArrayList<>();
         Specifications<T> temp;
         for (final Node node : logicalNode.getChildren()) {
             temp = createSpecification(node);

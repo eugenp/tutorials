@@ -16,7 +16,7 @@ import com.baeldung.freemarker.model.Car;
 @Controller
 class SpringController {
 
-    private static List<Car> carList = new ArrayList<Car>();
+    private static List<Car> carList = new ArrayList<>();
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {

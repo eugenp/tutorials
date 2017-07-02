@@ -38,7 +38,7 @@ public class JoinerSplitterUnitTest {
 
 		String programming_languages = "java,python,nodejs,ruby";
 		
-		List<String> expectation = new ArrayList<String>();
+		List<String> expectation = new ArrayList<>();
 		expectation.add("java");
 		expectation.add("python");
 		expectation.add("nodejs");
@@ -54,7 +54,7 @@ public class JoinerSplitterUnitTest {
 
 		String programming_languages = "java,python,nodejs,ruby";
 		
-		List<Character> expectation = new ArrayList<Character>();
+		List<Character> expectation = new ArrayList<>();
 		char[] charArray = programming_languages.toCharArray();
 		for (char c : charArray) {
 			expectation.add(c);

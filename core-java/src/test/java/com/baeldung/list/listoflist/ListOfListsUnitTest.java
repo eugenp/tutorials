@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class ListOfListsUnitTest {
 
-    private List<ArrayList<? extends Stationery>> listOfLists = new ArrayList<ArrayList<? extends Stationery>>();
+    private List<ArrayList<? extends Stationery>> listOfLists = new ArrayList<>();
     private ArrayList<Pen> penList = new ArrayList<>();
     private ArrayList<Pencil> pencilList = new ArrayList<>();
     private ArrayList<Rubber> rubberList = new ArrayList<>();
@@ -61,7 +61,7 @@ public class ListOfListsUnitTest {
         rubbers.add(new Rubber("Rubber 1"));
         rubbers.add(new Rubber("Rubber 2"));
         
-        List<ArrayList<? extends Stationery>> list = new ArrayList<ArrayList<? extends Stationery>>();
+        List<ArrayList<? extends Stationery>> list = new ArrayList<>();
         list.add(pens);
         list.add(pencils);
         list.add(rubbers);

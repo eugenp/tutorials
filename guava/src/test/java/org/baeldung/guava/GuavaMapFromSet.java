@@ -89,7 +89,7 @@ class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
 
     public GuavaMapFromSet(Set<K> keys, Function<? super K, ? extends V> function) {
         this.function = function;
-        this.cache = new WeakHashMap<K, V>();
+        this.cache = new WeakHashMap<>();
         this.entries = new MyEntrySet(keys);
     }
 

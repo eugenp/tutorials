@@ -32,7 +32,7 @@ class StaxParser {
         boolean bDescription = false;
         boolean bDate = false;
         boolean bAuthor = false;
-        List<Tutorial> tutorials = new ArrayList<Tutorial>();
+        List<Tutorial> tutorials = new ArrayList<>();
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(this.getFile()));

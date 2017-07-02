@@ -24,7 +24,7 @@ public class PactConsumerDrivenContractUnitTest {
 
     @Pact(consumer = "test_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
-        Map<String, String> headers = new HashMap<String, String>();
+        Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
 
         return builder

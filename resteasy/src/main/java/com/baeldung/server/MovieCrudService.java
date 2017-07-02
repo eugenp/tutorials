@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Path("/movies")
 class MovieCrudService {
 
-	private Map<String, Movie> inventory = new HashMap<String, Movie>();
+	private Map<String, Movie> inventory = new HashMap<>();
 
 	@GET
 	@Path("/")

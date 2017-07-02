@@ -51,7 +51,7 @@ public class GemfireConfiguration {
     @Bean(name="employee")
     @Autowired
     LocalRegionFactoryBean<String, Employee> getEmployee(final GemFireCache cache) {
-        LocalRegionFactoryBean<String, Employee> employeeRegion = new LocalRegionFactoryBean<String, Employee>();
+        LocalRegionFactoryBean<String, Employee> employeeRegion = new LocalRegionFactoryBean<>();
         employeeRegion.setCache(cache);
         employeeRegion.setClose(false);
         employeeRegion.setName("employee");

@@ -33,7 +33,7 @@ class JaxbParser {
 
     public void createNewDocument() {
         Tutorials tutorials = new Tutorials();
-        tutorials.setTutorial(new ArrayList<Tutorial>());
+        tutorials.setTutorial(new ArrayList<>());
         Tutorial tut = new Tutorial();
         tut.setTutId("01");
         tut.setType("XML");

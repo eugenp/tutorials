@@ -19,7 +19,7 @@ class MyUserDetailsService implements UserDetailsService {
 
     private final Log logger = LogFactory.getLog(this.getClass());
 
-    private final Map<String, User> availableUsers = new HashMap<String, User>();
+    private final Map<String, User> availableUsers = new HashMap<>();
 
     public MyUserDetailsService() {
         populateDemoUsers();

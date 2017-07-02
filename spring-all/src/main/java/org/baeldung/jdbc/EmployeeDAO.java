@@ -52,7 +52,7 @@ class EmployeeDAO {
     }
 
     public int addEmplyeeUsingSimpelJdbcInsert(final Employee emp) {
-        final Map<String, Object> parameters = new HashMap<String, Object>();
+        final Map<String, Object> parameters = new HashMap<>();
         parameters.put("ID", emp.getId());
         parameters.put("FIRST_NAME", emp.getFirstName());
         parameters.put("LAST_NAME", emp.getLastName());

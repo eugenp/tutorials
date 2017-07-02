@@ -33,7 +33,7 @@ class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderRequest<IE
             final JsonNode rawEntityNode = node.get("entity");
             // How to deserialize rawEntityNode to T based on className ?
 
-            final RestLoaderRequest<IEntity> request = new RestLoaderRequest<IEntity>();
+            final RestLoaderRequest<IEntity> request = new RestLoaderRequest<>();
             request.setClassName(className);
             request.setFieldName(fieldName);
         } catch (final ClassNotFoundException e) {

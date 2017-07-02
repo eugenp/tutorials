@@ -29,11 +29,11 @@ class Setup {
         roleAdmin = roleRepository.save(roleAdmin);
 
         final User userJohn = new User("john", "john@test.com");
-        userJohn.setRoles(new HashSet<Role>(Arrays.asList(roleUser, roleAdmin)));
+        userJohn.setRoles(new HashSet<>(Arrays.asList(roleUser, roleAdmin)));
         userRepository.save(userJohn);
 
         final User userTom = new User("tom", "tom@test.com");
-        userTom.setRoles(new HashSet<Role>(Arrays.asList(roleUser)));
+        userTom.setRoles(new HashSet<>(Arrays.asList(roleUser)));
         userRepository.save(userTom);
     }
 

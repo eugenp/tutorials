@@ -48,7 +48,7 @@ public class MetricsIntegrationTest {
     @Test
     public void whenUseCacheGauge_thenCorrectGauge() {
         Gauge<List<Long>> activeUsersGauge = new ActiveUsersGauge(15, TimeUnit.MINUTES);
-        List<Long> expected = new ArrayList<Long>();
+        List<Long> expected = new ArrayList<>();
         expected.add(12L);
 
         assertThat(activeUsersGauge.getValue(), equalTo(expected));

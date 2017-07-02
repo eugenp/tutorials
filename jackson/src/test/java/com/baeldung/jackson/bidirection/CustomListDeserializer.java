@@ -23,7 +23,7 @@ class CustomListDeserializer extends StdDeserializer<List<ItemWithSerializer>> {
 
     @Override
     public List<ItemWithSerializer> deserialize(final JsonParser jsonparser, final DeserializationContext context) throws IOException, JsonProcessingException {
-        return new ArrayList<ItemWithSerializer>();
+        return new ArrayList<>();
     }
 
 }

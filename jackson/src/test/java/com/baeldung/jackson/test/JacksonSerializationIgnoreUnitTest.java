@@ -198,7 +198,7 @@ public class JacksonSerializationIgnoreUnitTest {
 
         final MyDto dtoObject1 = new MyDto();
 
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
+        final Map<String, MyDto> dtoMap = new HashMap<>();
         dtoMap.put("dtoObject1", dtoObject1);
         dtoMap.put("dtoObject2", null);
 
@@ -216,7 +216,7 @@ public class JacksonSerializationIgnoreUnitTest {
 
         final MyDto dtoObject = new MyDto();
 
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
+        final Map<String, MyDto> dtoMap = new HashMap<>();
         dtoMap.put("dtoObject", dtoObject);
 
         final String dtoMapAsString = mapper.writeValueAsString(dtoMap);
@@ -236,7 +236,7 @@ public class JacksonSerializationIgnoreUnitTest {
         final MyDto dtoObject2 = new MyDto();
         dtoObject2.setStringValue("dtoObjectString2");
 
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
+        final Map<String, MyDto> dtoMap = new HashMap<>();
         dtoMap.put(null, dtoObject1);
         dtoMap.put("obj2", dtoObject2);
 
@@ -259,7 +259,7 @@ public class JacksonSerializationIgnoreUnitTest {
         final MyDto dtoObject2 = new MyDto();
         dtoObject2.setStringValue("dtoObject2String");
 
-        final Map<String, MyDto> dtoMap = new HashMap<String, MyDto>();
+        final Map<String, MyDto> dtoMap = new HashMap<>();
         dtoMap.put(null, dtoObject1);
         dtoMap.put(null, dtoObject2);
 

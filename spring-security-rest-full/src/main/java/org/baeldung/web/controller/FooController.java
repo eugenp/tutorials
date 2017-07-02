@@ -79,7 +79,7 @@ public class FooController {
         if (page > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
-        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
+        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
 
         return resultPage.getContent();
     }
@@ -91,7 +91,7 @@ public class FooController {
         if (pageable.getPageNumber() > resultPage.getTotalPages()) {
             throw new MyResourceNotFoundException();
         }
-        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
+        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<>(Foo.class, uriBuilder, response, pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
 
         return resultPage.getContent();
     }

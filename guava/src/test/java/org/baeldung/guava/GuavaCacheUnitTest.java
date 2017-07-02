@@ -167,7 +167,7 @@ public class GuavaCacheUnitTest {
             }
         };
         final LoadingCache<String, String> cache = CacheBuilder.newBuilder().build(loader);
-        final Map<String, String> map = new HashMap<String, String>();
+        final Map<String, String> map = new HashMap<>();
         map.put("first", "FIRST");
         map.put("second", "SECOND");
         cache.putAll(map);

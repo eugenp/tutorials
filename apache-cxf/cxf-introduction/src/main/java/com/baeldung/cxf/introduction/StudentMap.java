@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlType(name = "StudentMap")
 public class StudentMap {
-    private List<StudentEntry> entries = new ArrayList<StudentEntry>();
+    private List<StudentEntry> entries = new ArrayList<>();
 
     @XmlElement(nillable = false, name = "entry")
     public List<StudentEntry> getEntries() {

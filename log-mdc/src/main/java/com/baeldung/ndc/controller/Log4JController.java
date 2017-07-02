@@ -36,6 +36,6 @@ class Log4JController {
 
             NDC.remove();
         }
-        return new ResponseEntity<Investment>(investment, HttpStatus.OK);
+        return new ResponseEntity<>(investment, HttpStatus.OK);
     }
 }

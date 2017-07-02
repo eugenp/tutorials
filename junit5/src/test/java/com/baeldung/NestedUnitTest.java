@@ -16,7 +16,7 @@ public class NestedUnitTest {
     @Test
     @DisplayName("is instantiated with new Stack()")
     void isInstantiatedWithNew() {
-        new Stack<Object>();
+        new Stack<>();
     }
 
     @Nested
@@ -25,7 +25,7 @@ public class NestedUnitTest {
 
         @BeforeEach
         void init() {
-            stack = new Stack<Object>();
+            stack = new Stack<>();
         }
 
         @Test

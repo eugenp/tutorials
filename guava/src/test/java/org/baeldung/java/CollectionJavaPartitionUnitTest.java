@@ -22,7 +22,7 @@ public class CollectionJavaPartitionUnitTest {
         final List<Integer> intList = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8);
 
         final Map<Integer, List<Integer>> groups = intList.stream().collect(Collectors.groupingBy(s -> (s - 1) / 3));
-        final List<List<Integer>> subSets = new ArrayList<List<Integer>>(groups.values());
+        final List<List<Integer>> subSets = new ArrayList<>(groups.values());
 
         // When
         final List<Integer> lastPartition = subSets.get(2);
@@ -40,7 +40,7 @@ public class CollectionJavaPartitionUnitTest {
         final List<Integer> intList = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8);
 
         final Map<Boolean, List<Integer>> groups = intList.stream().collect(Collectors.partitioningBy(s -> s > 6));
-        final List<List<Integer>> subSets = new ArrayList<List<Integer>>(groups.values());
+        final List<List<Integer>> subSets = new ArrayList<>(groups.values());
 
         // When
         final List<Integer> lastPartition = subSets.get(1);

@@ -24,7 +24,7 @@ public class UserWithView {
     public UserWithView(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithView>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithView item) {

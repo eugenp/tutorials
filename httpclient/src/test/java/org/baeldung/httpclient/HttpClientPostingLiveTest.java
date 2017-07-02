@@ -43,7 +43,7 @@ public class HttpClientPostingLiveTest {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL);
 
-        final List<NameValuePair> params = new ArrayList<NameValuePair>();
+        final List<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("username", DEFAULT_USER));
         params.add(new BasicNameValuePair("password", DEFAULT_PASS));
         httpPost.setEntity(new UrlEncodedFormEntity(params));

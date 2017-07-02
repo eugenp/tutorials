@@ -39,7 +39,7 @@ public class ProductConfig {
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        final HashMap<String, Object> properties = new HashMap<String, Object>();
+        final HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         em.setJpaPropertyMap(properties);

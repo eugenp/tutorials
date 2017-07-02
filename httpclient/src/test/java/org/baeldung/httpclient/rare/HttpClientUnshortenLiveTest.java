@@ -95,15 +95,15 @@ public class HttpClientUnshortenLiveTest {
 
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode != 301 && statusCode != 302) {
-                return new ImmutablePair<Integer, String>(statusCode, url);
+                return new ImmutablePair<>(statusCode, url);
             }
             final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
             Preconditions.checkState(headers.length == 1);
             final String newUrl = headers[0].getValue();
 
-            return new ImmutablePair<Integer, String>(statusCode, newUrl);
+            return new ImmutablePair<>(statusCode, newUrl);
         } catch (final IllegalArgumentException uriEx) {
-            return new ImmutablePair<Integer, String>(500, url);
+            return new ImmutablePair<>(500, url);
         } finally {
             if (request != null) {
                 request.releaseConnection();

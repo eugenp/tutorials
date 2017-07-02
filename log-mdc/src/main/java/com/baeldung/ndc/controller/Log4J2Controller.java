@@ -36,6 +36,6 @@ class Log4J2Controller {
 
             ThreadContext.clearAll();
         }
-        return new ResponseEntity<Investment>(investment, HttpStatus.OK);
+        return new ResponseEntity<>(investment, HttpStatus.OK);
     }
 }

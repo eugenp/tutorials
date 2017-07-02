@@ -31,7 +31,7 @@ class MessagesRunner {
 
 
         AggregateAnnotationCommandHandler<MessagesAggregate> messagesAggregateAggregateAnnotationCommandHandler =
-                new AggregateAnnotationCommandHandler<MessagesAggregate>(MessagesAggregate.class, repository);
+          new AggregateAnnotationCommandHandler<>(MessagesAggregate.class, repository);
         messagesAggregateAggregateAnnotationCommandHandler.subscribe(commandBus);
 
         final AnnotationEventListenerAdapter annotationEventListenerAdapter =

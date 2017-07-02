@@ -62,7 +62,7 @@ class UserController {
     @RequestMapping(method = RequestMethod.GET, value = "/users")
     @ResponseBody
     public List<User> findAll(@RequestParam(value = "search", required = false) String search) {
-        List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        List<SearchCriteria> params = new ArrayList<>();
         if (search != null) {
             Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             Matcher matcher = pattern.matcher(search + ",");

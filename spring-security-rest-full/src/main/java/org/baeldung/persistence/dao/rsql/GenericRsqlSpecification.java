@@ -71,7 +71,7 @@ class GenericRsqlSpecification<T> implements Specification<T> {
     // === private
 
     private List<Object> castArguments(final Root<T> root) {
-        final List<Object> args = new ArrayList<Object>();
+        final List<Object> args = new ArrayList<>();
         final Class<? extends Object> type = root.get(property).getJavaType();
 
         for (final String argument : arguments) {

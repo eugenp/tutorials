@@ -34,7 +34,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
         logger.info(ex.getClass().getName());
         //
-        final List<String> errors = new ArrayList<String>();
+        final List<String> errors = new ArrayList<>();
         for (final FieldError error : ex.getBindingResult().getFieldErrors()) {
             errors.add(error.getField() + ": " + error.getDefaultMessage());
         }
@@ -49,7 +49,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleBindException(final BindException ex, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
         logger.info(ex.getClass().getName());
         //
-        final List<String> errors = new ArrayList<String>();
+        final List<String> errors = new ArrayList<>();
         for (final FieldError error : ex.getBindingResult().getFieldErrors()) {
             errors.add(error.getField() + ": " + error.getDefaultMessage());
         }
@@ -67,7 +67,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         final String error = ex.getValue() + " value for " + ex.getPropertyName() + " should be of type " + ex.getRequiredType();
 
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     @Override
@@ -76,7 +76,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         //
         final String error = ex.getRequestPartName() + " part is missing";
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     @Override
@@ -85,7 +85,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         //
         final String error = ex.getParameterName() + " parameter is missing";
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     //
@@ -97,20 +97,20 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         final String error = ex.getName() + " should be of type " + ex.getRequiredType().getName();
 
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     @ExceptionHandler({ ConstraintViolationException.class })
     public ResponseEntity<Object> handleConstraintViolation(final ConstraintViolationException ex, final WebRequest request) {
         logger.info(ex.getClass().getName());
         //
-        final List<String> errors = new ArrayList<String>();
+        final List<String> errors = new ArrayList<>();
         for (final ConstraintViolation<?> violation : ex.getConstraintViolations()) {
             errors.add(violation.getRootBeanClass().getName() + " " + violation.getPropertyPath() + ": " + violation.getMessage());
         }
 
         final ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage(), errors);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     // 404
@@ -122,7 +122,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         final String error = "No handler found for " + ex.getHttpMethod() + " " + ex.getRequestURL();
 
         final ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getLocalizedMessage(), error);
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     // 405
@@ -137,7 +137,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         ex.getSupportedHttpMethods().forEach(t -> builder.append(t + " "));
 
         final ApiError apiError = new ApiError(HttpStatus.METHOD_NOT_ALLOWED, ex.getLocalizedMessage(), builder.toString());
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     // 415
@@ -152,7 +152,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         ex.getSupportedMediaTypes().forEach(t -> builder.append(t + " "));
 
         final ApiError apiError = new ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE, ex.getLocalizedMessage(), builder.substring(0, builder.length() - 2));
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
     // 500
@@ -163,7 +163,7 @@ class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
         logger.error("error", ex);
         //
         final ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), "error occurred");
-        return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 
 }

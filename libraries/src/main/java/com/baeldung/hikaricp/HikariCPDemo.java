@@ -15,7 +15,7 @@ class HikariCPDemo {
         try (Connection con = DataSource.getConnection();
                 PreparedStatement pst = con.prepareStatement(SQL_QUERY);
                 ResultSet rs = pst.executeQuery();) {
-            employees = new ArrayList<Employee>();
+            employees = new ArrayList<>();
             Employee employee;
             while (rs.next()) {
                 employee = new Employee();

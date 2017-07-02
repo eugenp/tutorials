@@ -7,7 +7,7 @@ import com.baeldung.thymeleaf.model.Student;
 
 public class StudentUtils {
 
-    private static List<Student> students = new ArrayList<Student>();
+    private static List<Student> students = new ArrayList<>();
 
     public static List<Student> buildStudents() {
         if (students.isEmpty()) {

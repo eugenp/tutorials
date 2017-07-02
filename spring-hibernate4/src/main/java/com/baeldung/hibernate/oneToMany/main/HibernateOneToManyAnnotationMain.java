@@ -19,7 +19,7 @@ class HibernateOneToManyAnnotationMain {
 
         Items item1 = new Items(cart);
         Items item2 = new Items(cart);
-        Set<Items> itemsSet = new HashSet<Items>();
+        Set<Items> itemsSet = new HashSet<>();
         itemsSet.add(item1);
         itemsSet.add(item2);
 

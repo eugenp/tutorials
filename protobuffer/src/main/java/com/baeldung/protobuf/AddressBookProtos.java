@@ -1174,7 +1174,7 @@ public final class AddressBookProtos {
                         }
                         case 10: {
                             if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                                people_ = new java.util.ArrayList<com.baeldung.protobuf.AddressBookProtos.Person>();
+                                people_ = new java.util.ArrayList<>();
                                 mutable_bitField0_ |= 0x00000001;
                             }
                             people_.add(
@@ -1604,7 +1604,7 @@ public final class AddressBookProtos {
 
             private void ensurePeopleIsMutable() {
                 if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-                    people_ = new java.util.ArrayList<com.baeldung.protobuf.AddressBookProtos.Person>(people_);
+                    people_ = new java.util.ArrayList<>(people_);
                     bitField0_ |= 0x00000001;
                 }
             }
@@ -1848,12 +1848,11 @@ public final class AddressBookProtos {
                     com.baeldung.protobuf.AddressBookProtos.Person, com.baeldung.protobuf.AddressBookProtos.Person.Builder, com.baeldung.protobuf.AddressBookProtos.PersonOrBuilder>
             getPeopleFieldBuilder() {
                 if (peopleBuilder_ == null) {
-                    peopleBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                            com.baeldung.protobuf.AddressBookProtos.Person, com.baeldung.protobuf.AddressBookProtos.Person.Builder, com.baeldung.protobuf.AddressBookProtos.PersonOrBuilder>(
-                            people_,
-                            ((bitField0_ & 0x00000001) == 0x00000001),
-                            getParentForChildren(),
-                            isClean());
+                    peopleBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<>(
+                      people_,
+                      ((bitField0_ & 0x00000001) == 0x00000001),
+                      getParentForChildren(),
+                      isClean());
                     people_ = null;
                 }
                 return peopleBuilder_;
