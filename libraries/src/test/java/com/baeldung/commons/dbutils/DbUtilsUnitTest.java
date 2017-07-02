@@ -91,6 +91,18 @@ public class DbUtilsUnitTest {
     }
 
     @Test
+    public void givenResultHandler_whenExecutingQuery_thenAllPropertiesSetted() throws SQLException {
+        EmployeeHandler employeeHandler = new EmployeeHandler(connection);
+
+        QueryRunner runner = new QueryRunner();
+        String query = "SELECT * FROM employee_legacy";
+        List<Employee> employees = runner.query(connection, query, employeeHandler);
+
+        assertEquals((int) employees.get(0).getId(), 1);
+        assertEquals(employees.get(0).getFirstName(), "John");
+    }
+
+    @Test
     public void whenInserting_thenInserted() throws SQLException {
         QueryRunner runner = new QueryRunner();
         String insertSQL = "INSERT INTO employee (firstname,lastname,salary, hireddate) VALUES (?, ?, ?, ?)";
