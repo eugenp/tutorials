@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.constructordi.domain.Car;
+import com.baeldung.constructordi.domain.Movie;
 
 public class SpringRunner {
     public static void main(String[] args) {
@@ -15,6 +16,10 @@ public class SpringRunner {
         toyota = getCarFromJavaConfig();
 
         System.out.println(toyota);
+        
+        Movie minions = getMovieFromJavaConfig();
+        
+        System.out.println(minions);
     }
 
     private static Car getCarFromJavaConfig() {
@@ -27,5 +32,11 @@ public class SpringRunner {
         ApplicationContext context = new ClassPathXmlApplicationContext("constructordi.xml");
 
         return context.getBean(Car.class);
+    }
+    
+    private static Movie getMovieFromJavaConfig() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        return context.getBean(Movie.class);
     }
 }
