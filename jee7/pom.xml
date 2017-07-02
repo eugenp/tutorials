@@ -31,7 +31,7 @@
 		<arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
 
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<org.springframework.security.version>4.2.2.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
 	</properties>
 
 	<prerequisites>
