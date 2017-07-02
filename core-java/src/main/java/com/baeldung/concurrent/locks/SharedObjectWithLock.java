@@ -12,81 +12,77 @@ import static java.lang.Thread.sleep;
 
 public class SharedObjectWithLock {
 
-	Logger logger = LoggerFactory.getLogger(SharedObjectWithLock.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SharedObjectWithLock.class);
 
-	ReentrantLock lock = new ReentrantLock(true);
+    private ReentrantLock lock = new ReentrantLock(true);
 
-	int counter = 0;
+    private int counter = 0;
 
-	public void perform() {
+    void perform() {
 
-		lock.lock();
-		logger.info("Thread - " + Thread.currentThread().getName() + " acquired the lock");
-		try {
-			logger.info("Thread - " + Thread.currentThread().getName() + " processing");
-			counter++;
-		} catch (Exception exception) {
-			logger.error(" Interrupted Exception ", exception);
-		} finally {
-			lock.unlock();
-			logger.info("Thread - " + Thread.currentThread().getName() + " released the lock");
-		}
-	}
+        lock.lock();
+        LOG.info("Thread - " + Thread.currentThread().getName() + " acquired the lock");
+        try {
+            LOG.info("Thread - " + Thread.currentThread().getName() + " processing");
+            counter++;
+        } catch (Exception exception) {
+            LOG.error(" Interrupted Exception ", exception);
+        } finally {
+            lock.unlock();
+            LOG.info("Thread - " + Thread.currentThread().getName() + " released the lock");
+        }
+    }
 
-	public void performTryLock() {
+    private void performTryLock() {
 
-		logger.info("Thread - " + Thread.currentThread().getName() + " attempting to acquire the lock");
-		try {
-			boolean isLockAcquired = lock.tryLock(2, TimeUnit.SECONDS);
-			if (isLockAcquired) {
-				try {
-					logger.info("Thread - " + Thread.currentThread().getName() + " acquired the lock");
+        LOG.info("Thread - " + Thread.currentThread().getName() + " attempting to acquire the lock");
+        try {
+            boolean isLockAcquired = lock.tryLock(2, TimeUnit.SECONDS);
+            if (isLockAcquired) {
+                try {
+                    LOG.info("Thread - " + Thread.currentThread().getName() + " acquired the lock");
 
-					logger.info("Thread - " + Thread.currentThread().getName() + " processing");
-					sleep(1000);
-				} finally {
-					lock.unlock();
-					logger.info("Thread - " + Thread.currentThread().getName() + " released the lock");
+                    LOG.info("Thread - " + Thread.currentThread().getName() + " processing");
+                    sleep(1000);
+                } finally {
+                    lock.unlock();
+                    LOG.info("Thread - " + Thread.currentThread().getName() + " released the lock");
 
-				}
-			}
-		} catch (InterruptedException exception) {
-			logger.error(" Interrupted Exception ", exception);
-		}
-		logger.info("Thread - " + Thread.currentThread().getName() + " could not acquire the lock");
-	}
+                }
+            }
+        } catch (InterruptedException exception) {
+            LOG.error(" Interrupted Exception ", exception);
+        }
+        LOG.info("Thread - " + Thread.currentThread().getName() + " could not acquire the lock");
+    }
 
-	public ReentrantLock getLock() {
-		return lock;
-	}
+    public ReentrantLock getLock() {
+        return lock;
+    }
 
-	boolean isLocked() {
-		return lock.isLocked();
-	}
+    boolean isLocked() {
+        return lock.isLocked();
+    }
 
-	boolean hasQueuedThreads() {
-		return lock.hasQueuedThreads();
-	}
+    boolean hasQueuedThreads() {
+        return lock.hasQueuedThreads();
+    }
 
-	int getCounter() {
-		return counter;
-	}
+    int getCounter() {
+        return counter;
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		final int threadCount = 2;
-		final ExecutorService service = Executors.newFixedThreadPool(threadCount);
-		final SharedObjectWithLock object = new SharedObjectWithLock();
+        final int threadCount = 2;
+        final ExecutorService service = Executors.newFixedThreadPool(threadCount);
+        final SharedObjectWithLock object = new SharedObjectWithLock();
 
-		service.execute(() -> {
-			object.perform();
-		});
-		service.execute(() -> {
-			object.performTryLock();
-		});
+        service.execute(object::perform);
+        service.execute(object::performTryLock);
 
-		service.shutdown();
+        service.shutdown();
 
-	}
+    }
 
 }
