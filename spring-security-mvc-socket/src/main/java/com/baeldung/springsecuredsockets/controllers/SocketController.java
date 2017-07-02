@@ -18,18 +18,11 @@ public class SocketController {
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
     private static final Logger log = LoggerFactory.getLogger(SocketController.class);
-    private static final String SUBSCRIBE = "/secured/history";
-
-    private OutputMessage sendWrapper(Message msg) {
-        OutputMessage out = new OutputMessage(msg.getFrom(), msg.getText(), new SimpleDateFormat("HH:mm").format(new Date()));
-        // Alternatively, you can use this instead of SendTo and returning an Output Message
-        //this.simpMessagingTemplate.convertAndSend(SUBSCRIBE, out);
-        return out;
-    }
 
     @MessageMapping("/secured/chat")
-    @SendTo(SUBSCRIBE)
+    @SendTo("/secured/history")
     public OutputMessage send(Message msg) throws Exception {
-        return sendWrapper(msg);
+        OutputMessage out = new OutputMessage(msg.getFrom(), msg.getText(), new SimpleDateFormat("HH:mm").format(new Date()));
+        return out;
     }
 }
