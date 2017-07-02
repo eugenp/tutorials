@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import rx.RxReactiveStreams;
-import rx.Single;
+import reactor.core.publisher.Mono;
 
 import java.net.URI;
 import java.nio.charset.Charset;
@@ -38,7 +37,7 @@ public class WebClientController {
         WebClient.RequestBodySpec uri2 = createWebClientWithServerURLAndDefaultValues().post().uri(URI.create("/resource"));
 
         // request header specification
-        WebClient.RequestHeadersSpec requestSpec1 = uri1.body(RxReactiveStreams.toPublisher(Single.just("data")), String.class);
+        WebClient.RequestHeadersSpec<?> requestSpec1 = uri1.body(BodyInserters.fromPublisher(Mono.just("data"), String.class));
         WebClient.RequestHeadersSpec<?> requestSpec2 = uri2.body(BodyInserters.fromObject("data"));
 
         // inserters
