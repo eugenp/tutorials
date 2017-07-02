@@ -20,7 +20,7 @@ import io.vertx.core.Vertx;
 @EnableJpaRepositories("com.baeldung.vertxspring.repository")
 @EntityScan("com.baeldung.vertxspring.entity")
 @ComponentScan(basePackages = { "com.baeldung" })
-public class VertxSpringApplication {
+class VertxSpringApplication {
 
     @Autowired
     private ServerVerticle serverVerticle;

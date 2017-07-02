@@ -21,7 +21,7 @@ import org.springframework.web.util.UriTemplate;
 
 @Controller
 @RequestMapping(value = "/auth/")
-public class RootController {
+class RootController {
 
     @Autowired
     private IMetricService metricService;

@@ -6,7 +6,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 
 import com.baeldung.solr.fulltext.search.model.Item;
 
-public interface ItemSearchService {
+interface ItemSearchService {
 
     public void index(String id, String description, String category, float price) throws SolrServerException, IOException;
 

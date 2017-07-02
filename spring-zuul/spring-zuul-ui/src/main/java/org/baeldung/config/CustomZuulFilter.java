@@ -6,7 +6,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 @Component
-public class CustomZuulFilter extends ZuulFilter {
+class CustomZuulFilter extends ZuulFilter {
 
     @Override
     public Object run() {

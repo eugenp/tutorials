@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ActorGsonSerializer implements JsonSerializer<ActorGson> {
+class ActorGsonSerializer implements JsonSerializer<ActorGson> {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 

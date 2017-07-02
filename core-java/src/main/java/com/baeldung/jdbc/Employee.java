@@ -1,6 +1,6 @@
 package com.baeldung.jdbc;
 
-public class Employee {
+class Employee {
     private int id;
     private String name;
     private String position;

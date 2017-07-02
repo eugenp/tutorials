@@ -19,7 +19,7 @@ import io.restassured.response.Response;
 
 public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
-    public AbstractDiscoverabilityLiveTest(final Class<T> clazzToSet) {
+    protected AbstractDiscoverabilityLiveTest(final Class<T> clazzToSet) {
         super(clazzToSet);
     }
 

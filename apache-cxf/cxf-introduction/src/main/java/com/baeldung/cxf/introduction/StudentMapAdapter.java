@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
+class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
     public StudentMap marshal(Map<Integer, Student> boundMap) throws Exception {
         StudentMap valueMap = new StudentMap();
         for (Map.Entry<Integer, Student> boundEntry : boundMap.entrySet()) {

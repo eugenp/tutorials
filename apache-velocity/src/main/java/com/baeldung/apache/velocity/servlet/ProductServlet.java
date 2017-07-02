@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProductServlet extends VelocityViewServlet {
 
-	ProductService service = new ProductService();
+	private ProductService service = new ProductService();
 
 	@Override
 	public Template handleRequest(HttpServletRequest request, HttpServletResponse response, Context context) {

@@ -13,7 +13,7 @@ import com.google.common.base.Preconditions;
 public abstract class AbstractHibernateDao<T extends Serializable> extends AbstractDao<T> implements IOperations<T> {
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     // API
 
@@ -52,7 +52,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> extends Abstr
         delete(entity);
     }
 
-    protected Session getCurrentSession() {
+    Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 

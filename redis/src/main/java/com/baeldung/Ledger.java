@@ -1,6 +1,6 @@
 package com.baeldung;
 
-public class Ledger {
+class Ledger {
 
     public Ledger() {
     }

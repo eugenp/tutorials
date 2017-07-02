@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HystrixController {
+class HystrixController {
 
     @Autowired
     private SpringExistingClient client;

@@ -234,7 +234,7 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
 
     // template method
 
-    protected Foo createNewEntity() {
+    private Foo createNewEntity() {
         return new Foo(randomAlphabetic(6));
     }
 
@@ -248,7 +248,7 @@ public abstract class AbstractServicePersistenceIntegrationTest<T extends Serial
         entity.setName(randomAlphabetic(6));
     }
 
-    protected Foo persistNewEntity() {
+    private Foo persistNewEntity() {
         return getApi().create(createNewEntity());
     }
 

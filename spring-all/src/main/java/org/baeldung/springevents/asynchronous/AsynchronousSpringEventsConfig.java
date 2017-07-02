@@ -9,7 +9,7 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 
 @Configuration
 @ComponentScan("org.baeldung.springevents.synchronous")
-public class AsynchronousSpringEventsConfig {
+class AsynchronousSpringEventsConfig {
 
     @Bean(name = "applicationEventMulticaster")
     public ApplicationEventMulticaster simpleApplicationEventMulticaster() {

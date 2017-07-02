@@ -13,7 +13,7 @@ public class ZooConfigured {
 abstract class AnimalConfigured {
     public String name;
 
-    public AnimalConfigured() {
+    AnimalConfigured() {
     }
 }
 

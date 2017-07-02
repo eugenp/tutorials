@@ -11,7 +11,7 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-public class WebMvcConfigure extends WebMvcConfigurerAdapter {
+class WebMvcConfigure extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver getViewResolver() {

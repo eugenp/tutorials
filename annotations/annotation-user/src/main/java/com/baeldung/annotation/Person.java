@@ -2,7 +2,7 @@ package com.baeldung.annotation;
 
 import com.baeldung.annotation.processor.BuilderProperty;
 
-public class Person {
+class Person {
 
     private int age;
 

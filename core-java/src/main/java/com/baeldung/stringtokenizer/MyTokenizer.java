@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
-public class MyTokenizer {
+class MyTokenizer {
 
     public List<String> getTokens(String str) {
         List<String> tokens = new ArrayList<>();

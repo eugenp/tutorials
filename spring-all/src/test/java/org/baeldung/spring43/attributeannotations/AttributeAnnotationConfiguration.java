@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan
 @EnableWebMvc
-public class AttributeAnnotationConfiguration extends WebMvcConfigurerAdapter {
+class AttributeAnnotationConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver viewResolver() {

@@ -2560,7 +2560,7 @@ public final class BaeldungTraining {
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_baeldung_Student_PhoneNumber_descriptor;
     private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_baeldung_Student_PhoneNumber_fieldAccessorTable;
 
-    public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+    private static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
 

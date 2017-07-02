@@ -1,6 +1,6 @@
 package org.baeldung.mocks.jmockit;
 
-public class AdvancedCollaborator {
+class AdvancedCollaborator {
     int i;
     private int privateField = 5;
     public AdvancedCollaborator(){}

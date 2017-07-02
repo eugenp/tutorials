@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController3 {
+class SecurityController3 {
 
     public SecurityController3() {
         super();

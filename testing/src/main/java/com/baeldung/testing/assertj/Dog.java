@@ -1,6 +1,6 @@
 package com.baeldung.testing.assertj;
 
-public class Dog {
+class Dog {
     private String name;
     private Float weight;
 

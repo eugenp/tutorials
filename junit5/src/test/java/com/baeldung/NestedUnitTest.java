@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class NestedUnitTest {
-    Stack<Object> stack;
+    private Stack<Object> stack;
     boolean isRun = false;
 
     @Test

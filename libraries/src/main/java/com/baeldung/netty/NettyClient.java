@@ -9,7 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-public class NettyClient {
+class NettyClient {
     public static void main(String[] args) throws Exception {
         String host = "localhost";
         int port = 8080;

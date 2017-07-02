@@ -8,7 +8,7 @@ public abstract class AbstractBucketService implements BucketService {
 
     private Bucket bucket;
 
-    protected void openBucket() {
+    void openBucket() {
         bucket = clusterService.openBucket(getBucketName(), getBucketPassword());
     }
 
@@ -16,7 +16,7 @@ public abstract class AbstractBucketService implements BucketService {
 
     protected abstract String getBucketPassword();
 
-    public AbstractBucketService(ClusterService clusterService) {
+    AbstractBucketService(ClusterService clusterService) {
         this.clusterService = clusterService;
     }
 

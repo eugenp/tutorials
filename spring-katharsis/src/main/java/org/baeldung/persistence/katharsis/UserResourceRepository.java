@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserResourceRepository implements ResourceRepository<User, Long> {
+class UserResourceRepository implements ResourceRepository<User, Long> {
 
     @Autowired
     private UserRepository userRepository;

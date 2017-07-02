@@ -1,8 +1,8 @@
 package org.baeldung.hamcrest;
 
-public class Person {
-	String name;
-	String address;
+class Person {
+	private String name;
+	private String address;
 
 	public Person(String personName, String personAddress) {
 		name = personName;

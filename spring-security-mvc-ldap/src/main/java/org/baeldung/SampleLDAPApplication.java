@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @EnableAutoConfiguration
 @ComponentScan("org.baeldung")
-public class SampleLDAPApplication extends WebMvcConfigurerAdapter {
+class SampleLDAPApplication extends WebMvcConfigurerAdapter {
 
     public static void main(String[] args) {
         SpringApplication.run(SampleLDAPApplication.class, args);

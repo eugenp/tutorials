@@ -5,7 +5,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Setup implements ApplicationListener<ContextRefreshedEvent> {
+class Setup implements ApplicationListener<ContextRefreshedEvent> {
 
     private boolean setupDone;
 

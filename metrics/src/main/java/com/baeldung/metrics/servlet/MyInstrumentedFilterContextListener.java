@@ -3,8 +3,8 @@ package com.baeldung.metrics.servlet;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.servlet.InstrumentedFilterContextListener;
 
-public class MyInstrumentedFilterContextListener extends InstrumentedFilterContextListener {
-    public static final MetricRegistry REGISTRY = new MetricRegistry();
+class MyInstrumentedFilterContextListener extends InstrumentedFilterContextListener {
+    private static final MetricRegistry REGISTRY = new MetricRegistry();
 
     @Override
     protected MetricRegistry getMetricRegistry() {

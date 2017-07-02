@@ -3,9 +3,9 @@ package org.baeldung.mockito;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyDictionary {
+class MyDictionary {
 
-    Map<String, String> wordMap;
+    private Map<String, String> wordMap;
 
     public MyDictionary() {
         wordMap = new HashMap<String, String>();

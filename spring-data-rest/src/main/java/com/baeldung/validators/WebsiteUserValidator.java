@@ -7,7 +7,7 @@ import org.springframework.validation.Validator;
 import com.baeldung.models.WebsiteUser;
 
 @Component("beforeCreateWebsiteUserValidator")
-public class WebsiteUserValidator implements Validator {
+class WebsiteUserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {

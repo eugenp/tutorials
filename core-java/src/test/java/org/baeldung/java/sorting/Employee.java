@@ -1,6 +1,6 @@
 package org.baeldung.java.sorting;
 
-public class Employee implements Comparable {
+class Employee implements Comparable {
 
     private String name;
     private int age;
@@ -12,7 +12,7 @@ public class Employee implements Comparable {
         this.salary = salary;
     }
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -28,7 +28,7 @@ public class Employee implements Comparable {
         this.age = age;
     }
 
-    public double getSalary() {
+    private double getSalary() {
         return salary;
     }
 

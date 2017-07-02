@@ -136,7 +136,7 @@ public class AntColonyOptimization {
     /**
      * Calculate the next city picks probabilites
      */
-    public void calculateProbabilities(Ant ant) {
+    private void calculateProbabilities(Ant ant) {
         int i = ant.trail[currentIndex];
         double pheromone = 0.0;
         for (int l = 0; l < numberOfCities; l++) {

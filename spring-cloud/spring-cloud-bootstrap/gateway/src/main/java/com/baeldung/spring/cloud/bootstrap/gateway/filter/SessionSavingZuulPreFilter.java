@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpSession;
 
 @Component
-public class SessionSavingZuulPreFilter extends ZuulFilter {
+class SessionSavingZuulPreFilter extends ZuulFilter {
 
         private Logger log = LoggerFactory.getLogger(this.getClass());
 

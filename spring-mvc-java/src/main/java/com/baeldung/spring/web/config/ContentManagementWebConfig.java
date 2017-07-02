@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @EnableWebMvc
 @Configuration
-public class ContentManagementWebConfig extends WebMvcConfigurerAdapter {
+class ContentManagementWebConfig extends WebMvcConfigurerAdapter {
 
     public ContentManagementWebConfig() {
         super();

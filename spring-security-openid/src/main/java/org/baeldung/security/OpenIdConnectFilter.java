@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OpenIdConnectFilter extends AbstractAuthenticationProcessingFilter {
-    public OAuth2RestOperations restTemplate;
+    private OAuth2RestOperations restTemplate;
 
     public OpenIdConnectFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);

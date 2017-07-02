@@ -28,10 +28,10 @@ import com.baeldung.model.Movie;
 
 public class RestEasyClientLiveTest {
 
-    public static final UriBuilder FULL_PATH = UriBuilder.fromPath("http://127.0.0.1:8082/RestEasyTutorial/rest");
-    Movie transformerMovie = null;
-    Movie batmanMovie = null;
-    ObjectMapper jsonMapper = null;
+    private static final UriBuilder FULL_PATH = UriBuilder.fromPath("http://127.0.0.1:8082/RestEasyTutorial/rest");
+    private Movie transformerMovie = null;
+    private Movie batmanMovie = null;
+    private ObjectMapper jsonMapper = null;
 
     @Before
     public void setup() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NamingException {

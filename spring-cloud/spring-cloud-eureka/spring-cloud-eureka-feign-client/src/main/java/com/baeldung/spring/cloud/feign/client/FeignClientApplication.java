@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @EnableEurekaClient
 @EnableFeignClients
 @Controller
-public class FeignClientApplication {
+class FeignClientApplication {
     @Autowired
     private GreetingClient greetingClient;
 

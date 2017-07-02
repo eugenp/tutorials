@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableWebMvc
 @Configuration
 @ComponentScan("org.baeldung.controller")
-public class MultipleLoginMvcConfig extends WebMvcConfigurerAdapter {
+class MultipleLoginMvcConfig extends WebMvcConfigurerAdapter {
 
     public MultipleLoginMvcConfig() {
         super();

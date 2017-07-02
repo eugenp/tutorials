@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 //import org.springframework.security.access.AccessDeniedException;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     public RestResponseEntityExceptionHandler() {
         super();

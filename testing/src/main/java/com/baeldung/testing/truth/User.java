@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Comparable<User> {
+class User implements Comparable<User> {
     private String name = "John Doe";
     private List<String> emails = Arrays.asList("contact@baeldung.com", "staff@baeldung.com");
 

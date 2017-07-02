@@ -22,11 +22,11 @@ import org.springframework.messaging.MessageHandler;
 
 @Configuration
 @EnableIntegration
-public class FileCopyConfig {
+class FileCopyConfig {
 
-    public final String INPUT_DIR = "source";
-    public final String OUTPUT_DIR = "target";
-    public final String FILE_PATTERN = "*.jpg";
+    private final String INPUT_DIR = "source";
+    private final String OUTPUT_DIR = "target";
+    private final String FILE_PATTERN = "*.jpg";
 
     @Bean
     public MessageChannel fileChannel() {

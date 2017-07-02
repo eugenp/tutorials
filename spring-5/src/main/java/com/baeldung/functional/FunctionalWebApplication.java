@@ -24,7 +24,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
-public class FunctionalWebApplication {
+class FunctionalWebApplication {
 
     private static final Actor BRAD_PITT = new Actor("Brad", "Pitt");
     private static final Actor TOM_HANKS = new Actor("Tom", "Hanks");

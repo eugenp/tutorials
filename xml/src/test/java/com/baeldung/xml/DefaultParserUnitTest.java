@@ -12,11 +12,11 @@ import org.w3c.dom.NodeList;
 
 public class DefaultParserUnitTest {
 
-    final String fileName = "src/test/resources/example_default_parser.xml";
+    private final String fileName = "src/test/resources/example_default_parser.xml";
 
-    final String fileNameSpace = "src/test/resources/example_default_parser_namespace.xml";
+    private final String fileNameSpace = "src/test/resources/example_default_parser_namespace.xml";
 
-    DefaultParser parser;
+    private DefaultParser parser;
 
     @Test
     public void getFirstLevelNodeListTest() {

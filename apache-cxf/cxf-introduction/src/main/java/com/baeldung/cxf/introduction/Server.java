@@ -2,7 +2,7 @@ package com.baeldung.cxf.introduction;
 
 import javax.xml.ws.Endpoint;
 
-public class Server {
+class Server {
     public static void main(String args[]) throws InterruptedException {
         BaeldungImpl implementor = new BaeldungImpl();
         String address = "http://localhost:8080/baeldung";

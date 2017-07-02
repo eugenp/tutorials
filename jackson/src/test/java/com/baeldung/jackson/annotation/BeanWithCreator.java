@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BeanWithCreator {
-    public int id;
+    private int id;
     public String name;
 
     @JsonCreator

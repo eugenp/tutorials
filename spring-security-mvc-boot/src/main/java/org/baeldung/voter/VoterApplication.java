@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages = { "org.baeldung.voter" })
-public class VoterApplication {
+class VoterApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(VoterApplication.class, args);

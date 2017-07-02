@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName(value = "user")
 public class UserWithRoot {
-    public int id;
+    private int id;
     public String name;
 
     public UserWithRoot() {

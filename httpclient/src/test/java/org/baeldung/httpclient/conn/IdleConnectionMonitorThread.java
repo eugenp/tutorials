@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
-public class IdleConnectionMonitorThread extends Thread {
+class IdleConnectionMonitorThread extends Thread {
     private final HttpClientConnectionManager connMgr;
     private volatile boolean shutdown;
 
@@ -31,7 +31,7 @@ public class IdleConnectionMonitorThread extends Thread {
         }
     }
 
-    public final void shutdown() {
+    private void shutdown() {
         shutdown = true;
         synchronized (this) {
             notifyAll();

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource(name = "myProperties", value = "values.properties")
-public class ValuesApp {
+class ValuesApp {
 
     @Value("string value")
     private String stringValue;

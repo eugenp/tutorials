@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class CustomListSerializer extends StdSerializer<List<ItemWithSerializer>> {
+class CustomListSerializer extends StdSerializer<List<ItemWithSerializer>> {
 
     private static final long serialVersionUID = 3698763098000900856L;
 

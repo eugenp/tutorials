@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-public class MainController {
+class MainController {
 
     @Autowired
     private OrganizationRepository organizationRepository;

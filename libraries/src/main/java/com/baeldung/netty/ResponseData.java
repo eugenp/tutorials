@@ -1,6 +1,6 @@
 package com.baeldung.netty;
 
-public class ResponseData {
+class ResponseData {
     private int intValue;
 
     public int getIntValue() {

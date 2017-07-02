@@ -23,9 +23,9 @@ import org.springframework.scheduling.quartz.SpringBeanJobFactory;
 
 @Configuration
 @ConditionalOnExpression("'${using.spring.schedulerFactory}'=='false'")
-public class QrtzScheduler {
+class QrtzScheduler {
 
-    Logger logger = LoggerFactory.getLogger(getClass());
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -36,7 +36,7 @@ public class QrtzScheduler {
     }
 
     @Bean
-    public SpringBeanJobFactory springBeanJobFactory() {
+    private SpringBeanJobFactory springBeanJobFactory() {
         AutoWiringSpringBeanJobFactory jobFactory = new AutoWiringSpringBeanJobFactory();
         logger.debug("Configuring Job factory");
 

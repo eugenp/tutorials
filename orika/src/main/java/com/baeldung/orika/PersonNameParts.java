@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class PersonNameParts {
+class PersonNameParts {
 	private String firstName;
 	private String lastName;
 

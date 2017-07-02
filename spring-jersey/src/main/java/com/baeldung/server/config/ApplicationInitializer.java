@@ -10,7 +10,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class ApplicationInitializer implements WebApplicationInitializer {
+class ApplicationInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

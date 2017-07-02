@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Spring Controller Definitions.
  */
 @Controller
-public class MyController {
+class MyController {
 
     @RequestMapping("/")
     public String init(Map<String, Object> model, Principal principal) {

@@ -8,13 +8,13 @@ import java.util.UUID;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-public class Person {
+class Person {
 
     private UUID id;
     private String firstName;
     private String lastName;
 
-    public Person(String firstName, String lastName) {
+    Person(String firstName, String lastName) {
         this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;

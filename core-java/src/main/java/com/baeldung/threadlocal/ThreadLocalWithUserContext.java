@@ -3,7 +3,7 @@ package com.baeldung.threadlocal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ThreadLocalWithUserContext implements Runnable {
+class ThreadLocalWithUserContext implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(ThreadLocalWithUserContext.class);
     
     private static final ThreadLocal<Context> userContext = new ThreadLocal<>();

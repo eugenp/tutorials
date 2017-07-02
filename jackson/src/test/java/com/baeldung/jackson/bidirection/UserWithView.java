@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class UserWithView {
     @JsonView(Views.Public.class)
-    public int id;
+    private int id;
 
     @JsonView(Views.Public.class)
-    public String name;
+    private String name;
 
     @JsonView(Views.Internal.class)
-    public List<ItemWithView> userItems;
+    private List<ItemWithView> userItems;
 
     public UserWithView() {
         super();

@@ -14,7 +14,7 @@ import java.time.Month;
 
 @Configuration
 @EnableAspectJAutoProxy
-public class AopConfiguration {
+class AopConfiguration {
     
     @Pointcut("execution(public String com.baeldung.performancemonitor.PersonService.getFullName(..))")
     public void monitor() { }
@@ -23,7 +23,7 @@ public class AopConfiguration {
     public void myMonitor() { }
     
     @Bean
-    public PerformanceMonitorInterceptor performanceMonitorInterceptor() {
+    private PerformanceMonitorInterceptor performanceMonitorInterceptor() {
         return new PerformanceMonitorInterceptor(true);
     }
 
@@ -45,7 +45,7 @@ public class AopConfiguration {
     }
     
     @Bean
-    public MyPerformanceMonitorInterceptor myPerformanceMonitorInterceptor() {
+    private MyPerformanceMonitorInterceptor myPerformanceMonitorInterceptor() {
         return new MyPerformanceMonitorInterceptor(true);
     }
     

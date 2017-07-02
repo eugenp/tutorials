@@ -12,7 +12,7 @@ import org.springframework.util.StringUtils;
 
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "com.baeldung.spring.data.dynamodb.repositories")
-public class DynamoDBConfig {
+class DynamoDBConfig {
 
     @Value("${amazon.dynamodb.endpoint}")
     private String amazonDynamoDBEndpoint;
@@ -33,7 +33,7 @@ public class DynamoDBConfig {
     }
 
     @Bean
-    public AWSCredentials amazonAWSCredentials() {
+    private AWSCredentials amazonAWSCredentials() {
         return new BasicAWSCredentials(amazonAWSAccessKey, amazonAWSSecretKey);
     }
 

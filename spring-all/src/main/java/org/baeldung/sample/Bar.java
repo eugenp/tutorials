@@ -1,5 +1,5 @@
 package org.baeldung.sample;
 
-public class Bar {
+class Bar {
 
 }

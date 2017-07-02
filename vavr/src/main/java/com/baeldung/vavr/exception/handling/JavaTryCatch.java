@@ -4,7 +4,7 @@ import com.baeldung.vavr.exception.handling.client.ClientException;
 import com.baeldung.vavr.exception.handling.client.HttpClient;
 import com.baeldung.vavr.exception.handling.client.Response;
 
-public class JavaTryCatch {
+class JavaTryCatch {
     private HttpClient httpClient;
 
     public JavaTryCatch(HttpClient httpClient) {

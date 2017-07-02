@@ -24,20 +24,20 @@ import com.couchbase.client.java.document.json.JsonObject;
 
 public abstract class StudentServiceIntegrationTest extends IntegrationTest {
 
-    static final String typeField = "_class";
-    static final String joe = "Joe";
-    static final String college = "College";
-    static final String joeCollegeId = "student:" + joe + ":" + college;
-    static final DateTime joeCollegeDob = DateTime.now().minusYears(21);
-    static final Student joeCollege = new Student(joeCollegeId, joe, college, joeCollegeDob);
-    static final JsonObject jsonJoeCollege = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", joe).put("lastName", college).put("created", DateTime.now().getMillis()).put("version", 1);
+    private static final String typeField = "_class";
+    private static final String joe = "Joe";
+    private static final String college = "College";
+    private static final String joeCollegeId = "student:" + joe + ":" + college;
+    private static final DateTime joeCollegeDob = DateTime.now().minusYears(21);
+    private static final Student joeCollege = new Student(joeCollegeId, joe, college, joeCollegeDob);
+    private static final JsonObject jsonJoeCollege = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", joe).put("lastName", college).put("created", DateTime.now().getMillis()).put("version", 1);
 
-    static final String judy = "Judy";
-    static final String jetson = "Jetson";
-    static final String judyJetsonId = "student:" + judy + ":" + jetson;
-    static final DateTime judyJetsonDob = DateTime.now().minusYears(19).minusMonths(5).minusDays(3);
-    static final Student judyJetson = new Student(judyJetsonId, judy, jetson, judyJetsonDob);
-    static final JsonObject jsonJudyJetson = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", judy).put("lastName", jetson).put("created", DateTime.now().getMillis()).put("version", 1);
+    private static final String judy = "Judy";
+    private static final String jetson = "Jetson";
+    private static final String judyJetsonId = "student:" + judy + ":" + jetson;
+    private static final DateTime judyJetsonDob = DateTime.now().minusYears(19).minusMonths(5).minusDays(3);
+    private static final Student judyJetson = new Student(judyJetsonId, judy, jetson, judyJetsonDob);
+    private static final JsonObject jsonJudyJetson = JsonObject.empty().put(typeField, Student.class.getName()).put("firstName", judy).put("lastName", jetson).put("created", DateTime.now().getMillis()).put("version", 1);
 
     StudentService studentService;
 

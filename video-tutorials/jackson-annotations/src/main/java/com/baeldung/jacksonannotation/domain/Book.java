@@ -9,7 +9,7 @@ import java.util.Date;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class Book extends Item {
+class Book extends Item {
 
     private String ISBN;
     private Date published;

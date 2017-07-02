@@ -3,7 +3,7 @@ package com.baeldung.logback;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LogbackExample {
+class LogbackExample {
 
     private static final Logger logger = LoggerFactory.getLogger(LogbackExample.class);
 

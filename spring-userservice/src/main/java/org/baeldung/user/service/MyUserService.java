@@ -16,6 +16,7 @@ public class MyUserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
+    private
     MyUserDAO myUserDAO;
 
     public MyUser registerNewUserAccount(final MyUserDto accountDto) throws Exception {

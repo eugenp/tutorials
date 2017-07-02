@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties
-public class YAMLConfig {
+class YAMLConfig {
     private String name;
     private String environment;
     private List<String> servers = new ArrayList<String>();

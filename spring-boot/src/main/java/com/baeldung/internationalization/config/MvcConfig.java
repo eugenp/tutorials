@@ -15,7 +15,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.baeldung.internationalization.config")
-public class MvcConfig extends WebMvcConfigurerAdapter {
+class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public LocaleResolver localeResolver() {
@@ -25,7 +25,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
+    private LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
         return lci;

@@ -19,8 +19,8 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Option;
 
 public class ServiceTest {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_service.json");
-    String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+    private InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_service.json");
+    private String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
 
     @Test
     public void givenId_whenRequestingRecordData_thenSucceed() {

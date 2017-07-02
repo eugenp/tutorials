@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/", produces = "application/vnd.baeldung.api.v1+json")
-public class CustomMediaTypeController {
+class CustomMediaTypeController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/public/api/items/{id}", produces = "application/vnd.baeldung.api.v1+json")
     public @ResponseBody BaeldungItem getItem(@PathVariable("id") String id) {

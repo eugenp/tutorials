@@ -3,7 +3,7 @@ package com.baeldung.log4j2;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-public class Log4j2Example {
+class Log4j2Example {
 
     private static final Logger logger = LogManager.getLogger(Log4j2Example.class);
 

@@ -9,12 +9,12 @@ import java.nio.channels.AsynchronousSocketChannel;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-public class AsyncEchoServer {
+class AsyncEchoServer {
     private AsynchronousServerSocketChannel serverChannel;
     private Future<AsynchronousSocketChannel> acceptResult;
     private AsynchronousSocketChannel clientChannel;
 
-    public AsyncEchoServer() {
+    private AsyncEchoServer() {
         try {
             serverChannel = AsynchronousServerSocketChannel.open();
             InetSocketAddress hostAddress = new InetSocketAddress("localhost", 4999);
@@ -25,7 +25,7 @@ public class AsyncEchoServer {
         }
     }
 
-    public void runServer() {
+    private void runServer() {
         try {
             clientChannel = acceptResult.get();
             if ((clientChannel != null) && (clientChannel.isOpen())) {

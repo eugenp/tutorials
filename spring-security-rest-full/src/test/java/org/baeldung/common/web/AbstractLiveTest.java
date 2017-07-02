@@ -15,12 +15,12 @@ import io.restassured.specification.RequestSpecification;
 
 public abstract class AbstractLiveTest<T extends Serializable> {
 
-    protected final Class<T> clazz;
+    private final Class<T> clazz;
 
     @Autowired
-    protected IMarshaller marshaller;
+    private IMarshaller marshaller;
 
-    public AbstractLiveTest(final Class<T> clazzToSet) {
+    AbstractLiveTest(final Class<T> clazzToSet) {
         super();
 
         Preconditions.checkNotNull(clazzToSet);
@@ -29,9 +29,9 @@ public abstract class AbstractLiveTest<T extends Serializable> {
 
     // template method
 
-    public abstract void create();
+    protected abstract void create();
 
-    public abstract String createAsUri();
+    protected abstract String createAsUri();
 
     protected final void create(final T resource) {
         createAsUri(resource);
@@ -46,7 +46,7 @@ public abstract class AbstractLiveTest<T extends Serializable> {
         return locationOfCreatedResource;
     }
 
-    final Response createAsResponse(final T resource) {
+    private Response createAsResponse(final T resource) {
         Preconditions.checkNotNull(resource);
         final RequestSpecification givenAuthenticated = givenAuth();
 
@@ -56,7 +56,7 @@ public abstract class AbstractLiveTest<T extends Serializable> {
 
     //
 
-    protected String getURL() {
+    String getURL() {
         return "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/auth/foos";
     }
 

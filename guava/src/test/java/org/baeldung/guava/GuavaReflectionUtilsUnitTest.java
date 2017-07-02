@@ -139,7 +139,7 @@ public class GuavaReflectionUtilsUnitTest {
         };
     }
 
-    class CustomClass {
+    private class CustomClass {
         public void somePublicMethod() {
         }
 

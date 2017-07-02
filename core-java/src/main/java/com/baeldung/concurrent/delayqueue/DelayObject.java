@@ -5,7 +5,7 @@ import com.google.common.primitives.Ints;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
-public class DelayObject implements Delayed {
+class DelayObject implements Delayed {
     private String data;
     private long startTime;
 

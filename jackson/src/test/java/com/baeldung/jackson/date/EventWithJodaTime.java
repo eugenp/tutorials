@@ -5,10 +5,10 @@ import org.joda.time.DateTime;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class EventWithJodaTime {
-    public String name;
+    private String name;
 
     @JsonSerialize(using = CustomDateTimeSerializer.class)
-    public DateTime eventDate;
+    private DateTime eventDate;
 
     public EventWithJodaTime() {
         super();

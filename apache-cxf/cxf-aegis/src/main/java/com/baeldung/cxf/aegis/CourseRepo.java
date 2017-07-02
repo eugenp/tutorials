@@ -2,7 +2,7 @@ package com.baeldung.cxf.aegis;
 
 import java.util.Map;
 
-public interface CourseRepo {
+interface CourseRepo {
     String getGreeting();
     void setGreeting(String greeting);
     Map<Integer, Course> getCourses();

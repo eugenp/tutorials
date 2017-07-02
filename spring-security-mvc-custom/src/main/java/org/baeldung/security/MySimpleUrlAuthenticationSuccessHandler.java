@@ -16,8 +16,8 @@ import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-    protected final Log logger = LogFactory.getLog(this.getClass());
+class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+    private final Log logger = LogFactory.getLog(this.getClass());
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
@@ -35,7 +35,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
     // IMPL
 
-    protected void handle(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
+    private void handle(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
         final String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
@@ -46,7 +46,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
-    protected String determineTargetUrl(final Authentication authentication) {
+    private String determineTargetUrl(final Authentication authentication) {
         boolean isUser = false;
         boolean isAdmin = false;
         final Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
@@ -73,7 +73,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
      * Removes temporary authentication-related data which may have been stored in the session
      * during the authentication process.
      */
-    protected final void clearAuthenticationAttributes(final HttpServletRequest request) {
+    private void clearAuthenticationAttributes(final HttpServletRequest request) {
         final HttpSession session = request.getSession(false);
 
         if (session == null) {

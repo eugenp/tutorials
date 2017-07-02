@@ -10,7 +10,7 @@ public class Zoo {
 abstract class Animal {
     public String name;
 
-    public Animal() {
+    Animal() {
     }
 }
 

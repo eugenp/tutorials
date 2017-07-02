@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class MainController {
+class MainController {
 
     @Autowired
     private ITutorialsService tutService;

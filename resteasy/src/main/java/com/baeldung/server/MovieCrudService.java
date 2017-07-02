@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Path("/movies")
-public class MovieCrudService {
+class MovieCrudService {
 
 	private Map<String, Movie> inventory = new HashMap<String, Movie>();
 

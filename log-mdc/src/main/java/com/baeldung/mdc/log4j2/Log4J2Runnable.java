@@ -4,7 +4,7 @@ import org.apache.logging.log4j.ThreadContext;
 
 import com.baeldung.mdc.Transfer;
 
-public class Log4J2Runnable implements Runnable {
+class Log4J2Runnable implements Runnable {
     private final Transfer tx;
     private Log4J2TransferService log4j2BusinessService = new Log4J2TransferService();
 

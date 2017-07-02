@@ -6,7 +6,7 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @WebService
-public interface Baeldung {
+interface Baeldung {
     public String hello(String name);
 
     public String helloStudent(Student student);

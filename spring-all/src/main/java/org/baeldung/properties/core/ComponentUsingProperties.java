@@ -7,7 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ComponentUsingProperties implements InitializingBean {
+class ComponentUsingProperties implements InitializingBean {
 
     @Autowired
     private Environment env;

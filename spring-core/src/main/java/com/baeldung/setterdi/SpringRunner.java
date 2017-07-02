@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.baeldung.setterdi.Config;
 import com.baeldung.setterdi.domain.Car;
 
-public class SpringRunner {
+class SpringRunner {
     public static void main(String[] args) {
         Car toyota = getCarFromXml();
 

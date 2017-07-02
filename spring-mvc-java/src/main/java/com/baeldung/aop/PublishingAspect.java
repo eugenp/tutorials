@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class PublishingAspect {
+class PublishingAspect {
 
     private ApplicationEventPublisher eventPublisher;
 

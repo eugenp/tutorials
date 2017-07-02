@@ -28,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class UserInterceptorIntegrationTest {
 
     @Autowired
+    private
     WebApplicationContext wac;
 
     @Autowired

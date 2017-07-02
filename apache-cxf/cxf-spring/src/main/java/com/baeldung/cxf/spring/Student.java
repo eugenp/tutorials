@@ -1,6 +1,6 @@
 package com.baeldung.cxf.spring;
 
-public class Student {
+class Student {
     private String name;
 
     Student() {

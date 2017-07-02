@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 @Aspect
 @Component
-public class PerformanceAspect {
+class PerformanceAspect {
 
     private static Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
 

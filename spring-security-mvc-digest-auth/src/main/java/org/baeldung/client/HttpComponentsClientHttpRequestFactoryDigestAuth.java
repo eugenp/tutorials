@@ -14,7 +14,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import java.net.URI;
 
 public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpComponentsClientHttpRequestFactory {
-    HttpHost host;
+    private HttpHost host;
 
     public HttpComponentsClientHttpRequestFactoryDigestAuth(final HttpHost host, final HttpClient httpClient) {
         super(httpClient);

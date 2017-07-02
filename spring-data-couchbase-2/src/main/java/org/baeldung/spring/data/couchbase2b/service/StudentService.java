@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.baeldung.spring.data.couchbase.model.Student;
 
-public interface StudentService {
+interface StudentService {
 
     Student findOne(String id);
 

@@ -8,9 +8,9 @@ import org.kie.api.runtime.KieSession;
 
 import java.io.IOException;
 
-public class ApplicantService {
+class ApplicantService {
 
-    KieSession kieSession=new DroolsBeanFactory().getKieSession();
+    private KieSession kieSession=new DroolsBeanFactory().getKieSession();
 
     public SuggestedRole suggestARoleForApplicant(Applicant applicant,SuggestedRole suggestedRole) throws IOException {
         kieSession.insert(applicant);

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class RestController {
+class RestController {
 
     @GetMapping(value = "/student/{studentId}")
     public @ResponseBody Student getTestData(@PathVariable Integer studentId) {

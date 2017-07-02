@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 @Component
-public class MetricFilter implements Filter {
+class MetricFilter implements Filter {
 
     @Autowired
     private IMetricService metricService;

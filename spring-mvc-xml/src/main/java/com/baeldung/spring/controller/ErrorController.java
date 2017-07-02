@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class ErrorController {
+class ErrorController {
     
     @RequestMapping(value = "500Error", method = RequestMethod.GET)
     public void throwRuntimeException() {

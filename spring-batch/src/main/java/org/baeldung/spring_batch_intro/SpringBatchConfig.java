@@ -26,7 +26,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
-public class SpringBatchConfig {
+class SpringBatchConfig {
     @Autowired
     private JobBuilderFactory jobs;
 

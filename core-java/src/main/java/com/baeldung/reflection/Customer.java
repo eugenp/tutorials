@@ -1,6 +1,6 @@
 package com.baeldung.reflection;
 
-public class Customer {
+class Customer {
 
     private Integer id;
     private String name;

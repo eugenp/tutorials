@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @ComponentScan("org.baeldung.scheduling")
 @PropertySource("classpath:springScheduled.properties")
-public class SpringSchedulingConfig {
+class SpringSchedulingConfig {
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {

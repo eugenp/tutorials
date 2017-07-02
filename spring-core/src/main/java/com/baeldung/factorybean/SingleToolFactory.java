@@ -3,7 +3,7 @@ package com.baeldung.factorybean;
 import org.springframework.beans.factory.config.AbstractFactoryBean;
 
 //no need to set singleton property because default value is true
-public class SingleToolFactory extends AbstractFactoryBean<Tool> {
+class SingleToolFactory extends AbstractFactoryBean<Tool> {
     
     private int factoryId;
     private int toolId;

@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import com.baeldung.xml.binding.Tutorial;
 import com.baeldung.xml.binding.Tutorials;
 
-public class JaxbParser {
+class JaxbParser {
 
     private File file;
 
@@ -57,7 +57,7 @@ public class JaxbParser {
 
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

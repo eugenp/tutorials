@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-public class SpringDemoApplication extends SpringBootServletInitializer {
+class SpringDemoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDemoApplication.class, args);

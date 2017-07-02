@@ -3,7 +3,7 @@ package org.baeldung.spring43.defaultmethods;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public interface IDateHolder {
+interface IDateHolder {
 
     LocalDate getLocalDate();
 

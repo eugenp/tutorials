@@ -8,7 +8,7 @@ import com.hazelcast.config.GroupConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 
-public class NativeClient {
+class NativeClient {
 
     public static void main(String[] args) throws InterruptedException {
         ClientConfig config = new ClientConfig();

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
-public class BroadcastMessageController {
+class BroadcastMessageController {
 
     private final BroadcastMessageProducer messageProducer;
 

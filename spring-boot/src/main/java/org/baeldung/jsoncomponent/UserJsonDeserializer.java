@@ -12,7 +12,7 @@ import org.springframework.boot.jackson.JsonComponent;
 import java.io.IOException;
 
 @JsonComponent
-public class UserJsonDeserializer extends JsonDeserializer<User> {
+class UserJsonDeserializer extends JsonDeserializer<User> {
     @Override
     public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         TreeNode treeNode = jsonParser.getCodec().readTree(jsonParser);

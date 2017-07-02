@@ -88,7 +88,7 @@ public class HillClimbing {
     /**
      * This method applies operations on the current state to get a new state
      */
-    public State applyOperationsOnState(List<Stack<String>> listOfStacks, Stack<String> stack, int currentStateHeuristics, Stack<String> goalStateStack) {
+    private State applyOperationsOnState(List<Stack<String>> listOfStacks, Stack<String> stack, int currentStateHeuristics, Stack<String> goalStateStack) {
         State tempState;
         List<Stack<String>> tempStackList = new ArrayList<>(listOfStacks);
         String block = stack.pop();
@@ -170,7 +170,7 @@ public class HillClimbing {
     /**
      * This method returns heuristics value for a particular stack
      */
-    public int getHeuristicsValueForStack(Stack<String> stack, List<Stack<String>> currentState, Stack<String> goalStateStack) {
+    private int getHeuristicsValueForStack(Stack<String> stack, List<Stack<String>> currentState, Stack<String> goalStateStack) {
         int stackHeuristics = 0;
         boolean isPositioneCorrect = true;
         int goalStartIndex = 0;

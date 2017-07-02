@@ -104,7 +104,7 @@ public class AsyncFileIntegrationTest {
         });
     }
 
-    public static String readContent(Path file) throws ExecutionException, InterruptedException {
+    private static String readContent(Path file) throws ExecutionException, InterruptedException {
         AsynchronousFileChannel fileChannel = null;
         try {
             fileChannel = AsynchronousFileChannel.open(file, StandardOpenOption.READ);

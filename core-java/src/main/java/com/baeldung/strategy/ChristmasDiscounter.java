@@ -2,7 +2,7 @@ package com.baeldung.strategy;
 
 import java.math.BigDecimal;
 
-public class ChristmasDiscounter implements Discounter {
+class ChristmasDiscounter implements Discounter {
 
     @Override
     public BigDecimal apply(BigDecimal amount) {

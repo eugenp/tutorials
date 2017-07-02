@@ -13,7 +13,7 @@ import com.mongodb.MongoClient;
 public class SimpleMongoConfig {
 
     @Bean
-    public Mongo mongo() throws Exception {
+    private Mongo mongo() throws Exception {
         return new MongoClient("localhost");
     }
 

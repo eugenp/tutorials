@@ -14,7 +14,7 @@ import java.util.Map;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-public class Inventory {
+class Inventory {
 
     private String location;
 

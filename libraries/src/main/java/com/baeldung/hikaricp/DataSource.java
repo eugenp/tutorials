@@ -8,7 +8,7 @@ import java.util.Properties;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class DataSource {
+class DataSource {
 
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;

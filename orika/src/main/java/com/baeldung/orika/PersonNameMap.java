@@ -2,7 +2,7 @@ package com.baeldung.orika;
 
 import java.util.Map;
 
-public class PersonNameMap {
+class PersonNameMap {
 	private Map<String, String> nameMap;
 
 	public PersonNameMap(Map<String, String> nameMap) {

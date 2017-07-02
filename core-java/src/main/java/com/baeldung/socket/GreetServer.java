@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.net.*;
 import java.io.*;
 
-public class GreetServer {
+class GreetServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(GreetServer.class);
 

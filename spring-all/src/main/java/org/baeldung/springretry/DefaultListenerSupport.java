@@ -6,7 +6,7 @@ import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
 import org.springframework.retry.listener.RetryListenerSupport;
 
-public class DefaultListenerSupport extends RetryListenerSupport {
+class DefaultListenerSupport extends RetryListenerSupport {
 
     private static final Logger logger = LoggerFactory.getLogger(DefaultListenerSupport.class);
 

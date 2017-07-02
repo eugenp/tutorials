@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 
 @Configuration
-public class CSRFConfig {
+class CSRFConfig {
 
     @Autowired
+    private
     SecretService secretService;
 
     @Bean

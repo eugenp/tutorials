@@ -20,7 +20,7 @@ public class SpringAndHystrixIntegrationTest {
     private HystrixController hystrixController;
 
     @Rule
-    public final ExpectedException exception = ExpectedException.none();
+    private final ExpectedException exception = ExpectedException.none();
 
     @Test
     public void givenTimeOutOf15000_whenClientCalledWithHystrix_thenExpectHystrixRuntimeException() throws InterruptedException {

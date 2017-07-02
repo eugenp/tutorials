@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 // @ImportResource({ "classpath:channelWebSecurityConfig.xml" })
 @EnableWebSecurity
 @Profile("https")
-public class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
+class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public ChannelSecSecurityConfig() {
         super();
@@ -62,7 +62,7 @@ public class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public LogoutSuccessHandler logoutSuccessHandler() {
+    private LogoutSuccessHandler logoutSuccessHandler() {
         return new CustomLogoutSuccessHandler();
     }
 

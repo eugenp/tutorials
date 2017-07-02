@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
-public class TypeInfoAnnotatedStructure {
+class TypeInfoAnnotatedStructure {
     public static class Fleet {
         private List<Vehicle> vehicles;
 
@@ -25,10 +25,10 @@ public class TypeInfoAnnotatedStructure {
         private String make;
         private String model;
 
-        protected Vehicle() {
+        Vehicle() {
         }
 
-        protected Vehicle(String make, String model) {
+        Vehicle(String make, String model) {
             this.make = make;
             this.model = model;
         }

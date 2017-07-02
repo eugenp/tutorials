@@ -21,7 +21,7 @@ public enum RsqlSearchOperation {
           .findAny().orElse(null);
     }
 
-    public ComparisonOperator getOperator() {
+    private ComparisonOperator getOperator() {
         return operator;
     }
 }

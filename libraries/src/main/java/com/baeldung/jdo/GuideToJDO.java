@@ -15,7 +15,7 @@ import javax.jdo.Transaction;
 import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
 import org.datanucleus.metadata.PersistenceUnitMetaData;
 
-public class GuideToJDO {
+class GuideToJDO {
 
     private static final Logger LOGGER = Logger.getLogger(GuideToJDO.class.getName());
     private Random rnd = new Random();
@@ -26,7 +26,7 @@ public class GuideToJDO {
         new GuideToJDO();
     }
 
-    public GuideToJDO() {
+    private GuideToJDO() {
         CreateH2Properties();
         CreateXMLProperties();
         CreateProducts();
@@ -42,7 +42,7 @@ public class GuideToJDO {
         listXMLProducts();
     }
 
-    public void CreateH2Properties(){
+    private void CreateH2Properties(){
         
         pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumd.addClassName("com.baeldung.jdo.Product");
@@ -55,7 +55,7 @@ public class GuideToJDO {
         
     }
     
-    public void CreateXMLProperties(){
+    private void CreateXMLProperties(){
         pumdXML = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumdXML.addClassName("com.baeldung.jdo.ProductXML");
         pumdXML.setExcludeUnlistedClasses();
@@ -63,7 +63,7 @@ public class GuideToJDO {
         pumdXML.addProperty("datanucleus.autoCreateSchema", "true");        
     }
     
-    public void CreateProducts() {
+    private void CreateProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -91,7 +91,7 @@ public class GuideToJDO {
     }
 
     @SuppressWarnings("rawtypes")
-    public void UpdateProducts(){
+    private void UpdateProducts(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -111,7 +111,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings("rawtypes")
-    public void DeleteProducts(){
+    private void DeleteProducts(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -131,7 +131,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void ListProducts() {
+    private void ListProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -157,7 +157,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QueryJDOQL (){
+    private void QueryJDOQL(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -189,7 +189,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QuerySQL (){
+    private void QuerySQL(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -220,7 +220,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QueryJPQL (){
+    private void QueryJPQL(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -249,7 +249,7 @@ public class GuideToJDO {
         }
     }
     
-    public void persistXML(){
+    private void persistXML(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumdXML, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -271,7 +271,7 @@ public class GuideToJDO {
     }
     
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void listXMLProducts(){
+    private void listXMLProducts(){
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumdXML, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();

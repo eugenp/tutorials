@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 @Aspect
-public class HystrixAspect {
+class HystrixAspect {
 
     private HystrixCommand.Setter config;
     private HystrixCommandProperties.Setter commandProperties;

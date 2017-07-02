@@ -3,7 +3,7 @@ package com.baeldung.jackson.date;
 import java.util.Date;
 
 public class Event {
-    public String name;
+    private String name;
     public Date eventDate;
 
     public Event() {

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HikariCPDemo {
+class HikariCPDemo {
 
     public static List<Employee> fetchData() {
         final String SQL_QUERY = "select * from emp";

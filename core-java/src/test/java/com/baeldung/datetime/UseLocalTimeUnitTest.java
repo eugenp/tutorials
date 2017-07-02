@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class UseLocalTimeUnitTest {
 
-    UseLocalTime useLocalTime = new UseLocalTime();
+    private UseLocalTime useLocalTime = new UseLocalTime();
 
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalTime() {

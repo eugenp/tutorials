@@ -16,7 +16,7 @@ import java.util.Map;
  * @version 1.0
  * @see JsonAnyGetter
  */
-public class Inventory {
+class Inventory {
 
     private Map<Author, Item> stock = new HashMap<>();
 

@@ -5,7 +5,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ContextRefreshedListener implements ApplicationListener<ContextRefreshedEvent> {
+class ContextRefreshedListener implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent cse) {

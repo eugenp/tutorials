@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleResourceRepository implements ResourceRepository<Role, Long> {
+class RoleResourceRepository implements ResourceRepository<Role, Long> {
 
     @Autowired
     private RoleRepository roleRepository;

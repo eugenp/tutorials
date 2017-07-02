@@ -2,7 +2,7 @@ package com.baeldung;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class LibraryUtils {
+class LibraryUtils {
     @Autowired
     private EbookRepository eBookRepository;
  

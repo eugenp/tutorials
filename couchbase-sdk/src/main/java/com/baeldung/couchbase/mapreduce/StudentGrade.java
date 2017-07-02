@@ -1,6 +1,6 @@
 package com.baeldung.couchbase.mapreduce;
 
-public class StudentGrade {
+class StudentGrade {
 
     private String name;
     private String course;

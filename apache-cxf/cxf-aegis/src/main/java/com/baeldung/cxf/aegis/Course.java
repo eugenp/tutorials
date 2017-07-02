@@ -2,7 +2,7 @@ package com.baeldung.cxf.aegis;
 
 import java.util.Date;
 
-public class Course {
+class Course {
     private int id;
     private String name;
     private String instructor;

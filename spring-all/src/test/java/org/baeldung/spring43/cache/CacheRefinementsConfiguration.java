@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan
 @EnableCaching
-public class CacheRefinementsConfiguration {
+class CacheRefinementsConfiguration {
 
     @Bean
     public CacheManager cacheManager() {

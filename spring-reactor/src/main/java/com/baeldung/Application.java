@@ -18,7 +18,7 @@ import static reactor.bus.selector.Selectors.$;
 @EnableAutoConfiguration
 @ComponentScan
 @Import(Config.class)
-public class Application implements CommandLineRunner {
+class Application implements CommandLineRunner {
 
     @Autowired
     private EventBus eventBus;

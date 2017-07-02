@@ -16,7 +16,7 @@ import static com.google.common.collect.Maps.newHashMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GuavaCacheLoaderUnitTest {
-    int callCount = 0;
+    private int callCount = 0;
 
     @Test
     public void givenAMap_whenAddingValues_thenCanTreatThemAsCache() {

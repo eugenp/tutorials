@@ -2,7 +2,7 @@ package com.baeldung.dozer;
 
 import org.dozer.Mapping;
 
-public class Personne2 {
+class Personne2 {
     private String nom;
     private String surnom;
     private int age;

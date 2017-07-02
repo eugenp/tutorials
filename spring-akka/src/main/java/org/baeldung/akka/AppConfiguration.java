@@ -11,7 +11,7 @@ import static org.baeldung.akka.SpringExtension.SPRING_EXTENSION_PROVIDER;
 
 @Configuration
 @ComponentScan
-public class AppConfiguration {
+class AppConfiguration {
 
     @Autowired
     private ApplicationContext applicationContext;

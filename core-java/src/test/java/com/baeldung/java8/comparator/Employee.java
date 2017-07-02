@@ -8,8 +8,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Employee implements Comparable<Employee>{
-    String name;
+class Employee implements Comparable<Employee>{
+    private String name;
     int age;
     double salary;
     long mobile;

@@ -1,6 +1,6 @@
 package com.baeldung.dozer;
 
-public class Dest2 {
+class Dest2 {
     private int id;
     private int points;
 

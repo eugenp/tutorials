@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
-public class UUIDGenerator {
+class UUIDGenerator {
     
     /**
      * These are predefined UUID for name spaces
@@ -31,7 +31,7 @@ public class UUIDGenerator {
     /**
      * Type 4 UUID Generation
      */
-    public static UUID generateType4UUID() {
+    private static UUID generateType4UUID() {
         UUID uuid = UUID.randomUUID();
         return uuid;
     }
@@ -41,7 +41,7 @@ public class UUIDGenerator {
      * 
      * @throws UnsupportedEncodingException 
      */
-    public static UUID generateType3UUID(String namespace, String name) throws UnsupportedEncodingException {
+    private static UUID generateType3UUID(String namespace, String name) throws UnsupportedEncodingException {
         String source = namespace + name;
         byte[] bytes = source.getBytes("UTF-8");
         UUID uuid = UUID.nameUUIDFromBytes(bytes);
@@ -53,7 +53,7 @@ public class UUIDGenerator {
      * 
      * @throws UnsupportedEncodingException 
      */
-    public static UUID generateType5UUID(String namespace, String name) throws UnsupportedEncodingException {
+    private static UUID generateType5UUID(String namespace, String name) throws UnsupportedEncodingException {
         String source = namespace + name;
         byte[] bytes = source.getBytes("UTF-8");
         UUID uuid = type5UUIDFromBytes(bytes);
@@ -61,7 +61,7 @@ public class UUIDGenerator {
     }
     
     
-    public static UUID type5UUIDFromBytes(byte[] name) {
+    private static UUID type5UUIDFromBytes(byte[] name) {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance("SHA-1");
@@ -96,7 +96,7 @@ public class UUIDGenerator {
      * @throws NoSuchAlgorithmException 
      * @throws UnsupportedEncodingException 
      */
-    public static String generateUniqueKeysWithUUIDAndMessageDigest() throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    private static String generateUniqueKeysWithUUIDAndMessageDigest() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         MessageDigest salt = MessageDigest.getInstance("SHA-256");
         salt.update(UUID.randomUUID()
             .toString()
@@ -105,7 +105,7 @@ public class UUIDGenerator {
         return digest;
     }
 
-    public static String bytesToHex(byte[] bytes) {
+    private static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
         for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;

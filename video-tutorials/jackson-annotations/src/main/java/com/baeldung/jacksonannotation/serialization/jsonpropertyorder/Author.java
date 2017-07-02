@@ -14,13 +14,13 @@ import java.util.List;
  * @version 1.0
  */
 @JsonPropertyOrder(value = {"items", "firstName", "lastName", "id"}, alphabetic = true)
-public class Author extends Person {
+class Author extends Person {
 
     private String zIndex;
 
     private String alphaIndex;
 
-    List<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public Author(String firstName, String lastName) {
         super(firstName, lastName);

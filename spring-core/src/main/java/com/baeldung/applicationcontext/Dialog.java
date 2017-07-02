@@ -2,7 +2,7 @@ package com.baeldung.applicationcontext;
 
 import java.util.Locale;
 
-public class Dialog {
+class Dialog {
 
     private Locale locale;
     private String hello;

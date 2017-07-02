@@ -14,7 +14,7 @@ public class OkHttpHeaderLiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
-    OkHttpClient client;
+    private OkHttpClient client;
 
     @Before
     public void init() {

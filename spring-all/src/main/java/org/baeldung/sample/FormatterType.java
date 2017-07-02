@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 @Qualifier
 @Target({ ElementType.FIELD, ElementType.METHOD, ElementType.TYPE, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface FormatterType {
+@interface FormatterType {
 
     String value();
 

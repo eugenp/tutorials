@@ -3,7 +3,7 @@ package org.baeldung.customannotation;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BeanWithGenericDAO {
+class BeanWithGenericDAO {
 
     @DataAccess(entity = Person.class)
     private GenericDAO<Person> personGenericDAO;

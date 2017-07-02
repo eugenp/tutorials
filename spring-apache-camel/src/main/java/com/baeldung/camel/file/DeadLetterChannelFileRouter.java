@@ -3,7 +3,7 @@ package com.baeldung.camel.file;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 
-public class DeadLetterChannelFileRouter extends RouteBuilder {
+class DeadLetterChannelFileRouter extends RouteBuilder {
     private static final String SOURCE_FOLDER = "src/test/source-folder";
 
     @Override

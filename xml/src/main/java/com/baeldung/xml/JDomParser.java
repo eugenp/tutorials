@@ -12,7 +12,7 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.xpath.XPathExpression;
 import org.jdom2.xpath.XPathFactory;
 
-public class JDomParser {
+class JDomParser {
 
     private File file;
 
@@ -50,7 +50,7 @@ public class JDomParser {
         }
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

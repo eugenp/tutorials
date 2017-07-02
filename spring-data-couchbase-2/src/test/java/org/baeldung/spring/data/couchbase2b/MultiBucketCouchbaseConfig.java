@@ -40,12 +40,12 @@ public class MultiBucketCouchbaseConfig extends AbstractCouchbaseConfiguration {
     }
 
     @Bean
-    public Bucket campusBucket() throws Exception {
+    private Bucket campusBucket() throws Exception {
         return couchbaseCluster().openBucket("baeldung2", "");
     }
 
     @Bean(name = "campusTemplate")
-    public CouchbaseTemplate campusTemplate() throws Exception {
+    private CouchbaseTemplate campusTemplate() throws Exception {
         CouchbaseTemplate template = new CouchbaseTemplate(couchbaseClusterInfo(), campusBucket(), mappingCouchbaseConverter(), translationService());
         template.setDefaultConsistency(getDefaultConsistency());
         return template;
@@ -66,7 +66,7 @@ public class MultiBucketCouchbaseConfig extends AbstractCouchbaseConfiguration {
     }
 
     @Bean
-    public LocalValidatorFactoryBean localValidatorFactoryBean() {
+    private LocalValidatorFactoryBean localValidatorFactoryBean() {
         return new LocalValidatorFactoryBean();
     }
 

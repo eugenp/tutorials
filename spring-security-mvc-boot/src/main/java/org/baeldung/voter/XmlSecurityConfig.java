@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ImportResource;
  */
 // @Configuration
 // @ImportResource({ "classpath:spring-security-custom-voter.xml" })
-public class XmlSecurityConfig {
+class XmlSecurityConfig {
     public XmlSecurityConfig() {
         super();
     }

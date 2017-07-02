@@ -26,6 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
 public class LoggerInterceptorIntegrationTest {
 
     @Autowired
+    private
     WebApplicationContext wac;
     @Autowired
     MockHttpSession session;

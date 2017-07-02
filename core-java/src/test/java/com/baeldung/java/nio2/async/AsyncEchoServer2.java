@@ -10,11 +10,11 @@ import java.nio.channels.CompletionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AsyncEchoServer2 {
+class AsyncEchoServer2 {
     private AsynchronousServerSocketChannel serverChannel;
     private AsynchronousSocketChannel clientChannel;
 
-    public AsyncEchoServer2() {
+    private AsyncEchoServer2() {
         try {
             serverChannel = AsynchronousServerSocketChannel.open();
             InetSocketAddress hostAddress = new InetSocketAddress("localhost", 4999);

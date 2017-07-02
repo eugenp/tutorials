@@ -19,7 +19,7 @@ import javax.xml.stream.events.XMLEvent;
 
 import com.baeldung.xml.binding.Tutorial;
 
-public class StaxParser {
+class StaxParser {
 
     private File file;
 
@@ -109,7 +109,7 @@ public class StaxParser {
         return tutorials;
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

@@ -1,6 +1,6 @@
 package com.baeldung.jmh.warmup;
 
-public class MainApplication {
+class MainApplication {
 
     static {
         long start = System.nanoTime();

@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrixDashboard
-public class RestConsumerApplication {
+class RestConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestConsumerApplication.class, args);
     }

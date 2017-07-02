@@ -6,11 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class UserWithIgnore {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     @JsonIgnore
-    public List<ItemWithIgnore> userItems;
+    private List<ItemWithIgnore> userItems;
 
     public UserWithIgnore() {
         super();

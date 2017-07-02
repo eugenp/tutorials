@@ -19,7 +19,7 @@ public class SearchForKeyword implements Task {
 
     private String keyword;
 
-    public SearchForKeyword(String keyword) {
+    private SearchForKeyword(String keyword) {
         this.keyword = keyword;
     }
 

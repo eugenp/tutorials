@@ -5,11 +5,11 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class EchoServer extends Thread {
+class EchoServer extends Thread {
 
-    protected DatagramSocket socket = null;
-    protected boolean running;
-    protected byte[] buf = new byte[256];
+    private DatagramSocket socket = null;
+    private boolean running;
+    private byte[] buf = new byte[256];
 
     public EchoServer() throws IOException {
         socket = new DatagramSocket(4445);

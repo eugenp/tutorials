@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomSpringEventListener implements ApplicationListener<CustomSpringEvent> {
+class CustomSpringEventListener implements ApplicationListener<CustomSpringEvent> {
 
     @Override
     public void onApplicationEvent(final CustomSpringEvent event) {

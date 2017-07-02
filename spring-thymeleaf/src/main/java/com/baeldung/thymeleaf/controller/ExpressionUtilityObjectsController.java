@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 
  */
 @Controller
-public class ExpressionUtilityObjectsController {
+class ExpressionUtilityObjectsController {
 
     @RequestMapping(value = "/objects", method = RequestMethod.GET)
     public String getDates(Model model) {

@@ -7,7 +7,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BroadcastMessageConsumers {
+class BroadcastMessageConsumers {
     private static final Logger logger = LoggerFactory.getLogger(MessageConsumer.class);
 
     @RabbitListener(queues = {BroadcastConfig.fanoutQueue1Name})

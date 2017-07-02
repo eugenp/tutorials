@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource({ "classpath:persistence-jndi.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
 @EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
-public class PersistenceJNDIConfig {
+class PersistenceJNDIConfig {
 
     @Autowired
     private Environment env;
@@ -46,7 +46,7 @@ public class PersistenceJNDIConfig {
     }
 
     @Bean
-    public DataSource dataSource() throws NamingException {
+    private DataSource dataSource() throws NamingException {
         return (DataSource) new JndiTemplate().lookup(env.getProperty("jdbc.url"));
     }
 
@@ -62,7 +62,7 @@ public class PersistenceJNDIConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

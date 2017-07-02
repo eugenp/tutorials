@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.baeldung.dynamicvalidation.model.Customer;
 
 @Controller
-public class CustomerController {
+class CustomerController {
 
     @GetMapping("/customer")
     public String getCustomerPage(Model model) {

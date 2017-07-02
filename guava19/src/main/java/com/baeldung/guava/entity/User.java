@@ -2,12 +2,12 @@ package com.baeldung.guava.entity;
 
 import com.google.common.base.MoreObjects;
 
-public class User{
+class User{
     private long id;
     private String name;
     private int age;
 
-    public User(long id, String name, int age) {
+    private User(long id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;

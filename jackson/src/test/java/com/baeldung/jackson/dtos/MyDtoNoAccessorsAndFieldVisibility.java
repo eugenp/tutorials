@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 @JsonAutoDetect(fieldVisibility = Visibility.ANY)
 public class MyDtoNoAccessorsAndFieldVisibility {
 
-    String stringValue;
-    int intValue;
-    boolean booleanValue;
+    private String stringValue;
+    private int intValue;
+    private boolean booleanValue;
 
     public MyDtoNoAccessorsAndFieldVisibility() {
         super();

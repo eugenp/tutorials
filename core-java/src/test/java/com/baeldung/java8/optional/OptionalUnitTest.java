@@ -119,7 +119,7 @@ public class OptionalUnitTest {
         assertFalse(priceIsInRange1(null));
     }
 
-    public boolean priceIsInRange1(Modem modem) {
+    private boolean priceIsInRange1(Modem modem) {
         boolean isInRange = false;
         if (modem != null && modem.getPrice() != null && (modem.getPrice() >= 10 && modem.getPrice() <= 15)) {
             isInRange = true;
@@ -127,7 +127,7 @@ public class OptionalUnitTest {
         return isInRange;
     }
 
-    public boolean priceIsInRange2(Modem modem2) {
+    private boolean priceIsInRange2(Modem modem2) {
         return Optional.ofNullable(modem2).map(Modem::getPrice).filter(p -> p >= 10).filter(p -> p <= 15).isPresent();
     }
 
@@ -234,7 +234,7 @@ public class OptionalUnitTest {
         String name = Optional.ofNullable(nullName).orElseThrow(IllegalArgumentException::new);
     }
 
-    public String getMyDefault() {
+    private String getMyDefault() {
         LOG.debug("Getting default value...");
         return "Default Value";
     }

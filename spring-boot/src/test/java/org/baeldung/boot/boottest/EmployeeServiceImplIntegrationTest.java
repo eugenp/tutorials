@@ -20,7 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class EmployeeServiceImplIntegrationTest {
 
     @TestConfiguration
-    static class EmployeeServiceImplTestContextConfiguration {
+    private static class EmployeeServiceImplTestContextConfiguration {
         @Bean
         public EmployeeService employeeService() {
             return new EmployeeServiceImpl();

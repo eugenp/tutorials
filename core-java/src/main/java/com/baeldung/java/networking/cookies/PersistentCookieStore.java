@@ -3,8 +3,8 @@ package com.baeldung.java.networking.cookies;
 import java.net.*;
 import java.util.List;
 
-public class PersistentCookieStore implements CookieStore, Runnable {
-    CookieStore store;
+class PersistentCookieStore implements CookieStore, Runnable {
+    private CookieStore store;
 
     public PersistentCookieStore() {
         store = new CookieManager().getCookieStore();

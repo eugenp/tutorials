@@ -5,7 +5,7 @@ import java.util.Map;
 import org.baeldung.jasperreports.config.JasperRerportsSimpleConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Main {
+class Main {
     public static void main(String[] args) {
 
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();

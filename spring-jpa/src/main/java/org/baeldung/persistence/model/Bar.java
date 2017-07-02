@@ -26,6 +26,7 @@ public class Bar implements Serializable {
 
     @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy("name ASC")
+    private
     List<Foo> fooList;
 
     public Bar() {

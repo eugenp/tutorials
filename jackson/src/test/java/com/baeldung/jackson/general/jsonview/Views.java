@@ -6,7 +6,7 @@ package com.baeldung.jackson.general.jsonview;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-public class Views {
+class Views {
     public static class Public {
     }
 

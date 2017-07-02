@@ -11,7 +11,7 @@ import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
 import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.Items;
 
-public class HibernateOneToManyAnnotationMain {
+class HibernateOneToManyAnnotationMain {
 
     public static void main(String[] args) {
 

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
-public class DynamicInvocationHandler implements InvocationHandler {
+class DynamicInvocationHandler implements InvocationHandler {
 
     private static Logger LOGGER = LoggerFactory.getLogger(DynamicInvocationHandler.class);
 

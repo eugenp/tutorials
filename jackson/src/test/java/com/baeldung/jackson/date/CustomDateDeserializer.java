@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class CustomDateDeserializer extends StdDeserializer<Date> {
+class CustomDateDeserializer extends StdDeserializer<Date> {
 
     private static final long serialVersionUID = -5451717385630622729L;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");

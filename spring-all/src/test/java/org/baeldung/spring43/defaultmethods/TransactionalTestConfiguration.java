@@ -9,10 +9,10 @@ import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-public class TransactionalTestConfiguration {
+class TransactionalTestConfiguration {
 
     @Bean
-    public DataSource getDataSource() {
+    private DataSource getDataSource() {
         SimpleDriverDataSource simpleDriverDataSource = new SimpleDriverDataSource();
         simpleDriverDataSource.setDriverClass(org.hsqldb.jdbcDriver.class);
         simpleDriverDataSource.setUrl("jdbc:hsqldb:mem:app-db");

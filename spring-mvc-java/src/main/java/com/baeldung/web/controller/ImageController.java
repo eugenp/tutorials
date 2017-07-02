@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ImageController {
+class ImageController {
 
     @Autowired
+    private
     ServletContext servletContext;
 
     @RequestMapping(value = "/image-byte-array", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)

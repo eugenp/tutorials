@@ -17,7 +17,7 @@ import com.google.common.io.Files;
 
 @Ignore("need large file for testing")
 public class JavaIoUnitTest {
-    protected final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     // tests - iterate lines in a file
 

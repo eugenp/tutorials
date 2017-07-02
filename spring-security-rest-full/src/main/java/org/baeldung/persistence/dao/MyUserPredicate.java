@@ -8,7 +8,7 @@ import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.PathBuilder;
 import com.querydsl.core.types.dsl.StringPath;
 
-public class MyUserPredicate {
+class MyUserPredicate {
 
     private SearchCriteria criteria;
 
@@ -47,7 +47,7 @@ public class MyUserPredicate {
         this.criteria = criteria;
     }
 
-    public static boolean isNumeric(final String str) {
+    private static boolean isNumeric(final String str) {
         try {
             Integer.parseInt(str);
         } catch (final NumberFormatException e) {

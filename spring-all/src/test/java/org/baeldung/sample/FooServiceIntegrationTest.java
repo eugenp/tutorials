@@ -13,6 +13,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class FooServiceIntegrationTest {
 
     @Autowired
+    private
     FooService fooService;
 
     @Test

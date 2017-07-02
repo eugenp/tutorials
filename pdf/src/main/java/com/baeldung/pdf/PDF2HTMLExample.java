@@ -17,7 +17,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.tool.xml.XMLWorkerHelper;
 
-public class PDF2HTMLExample {
+class PDF2HTMLExample {
 
 	private static final String PDF = "src/main/resources/pdf.pdf";
 	private static final String HTML = "src/main/resources/html.html";

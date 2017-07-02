@@ -12,7 +12,7 @@ import jxl.write.*;
 import jxl.write.Number;
 import jxl.format.Colour;
 
-public class JExcelHelper {
+class JExcelHelper {
 
     public Map<Integer, List<String>> readJExcel(String fileLocation) throws IOException, BiffException {
         Map<Integer, List<String>> data = new HashMap<>();

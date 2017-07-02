@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertyLoader {
+class PropertyLoader {
     private static final Logger log = LoggerFactory.getLogger(PropertyLoader.class);
 
     public Properties getProperties(String file) {

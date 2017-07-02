@@ -31,6 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 public class SessionTimerInterceptorIntegrationTest {
 
     @Autowired
+    private
     WebApplicationContext wac;
 
     private MockMvc mockMvc;

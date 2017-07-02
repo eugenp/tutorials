@@ -23,7 +23,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @EnableWebMvc
 @Configuration
-public class ClientWebConfig extends WebMvcConfigurerAdapter {
+class ClientWebConfig extends WebMvcConfigurerAdapter {
 
     public ClientWebConfig() {
         super();
@@ -58,7 +58,7 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     @Description("Thymeleaf template resolver serving HTML 5")
-    public ServletContextTemplateResolver templateResolver() {
+    private ServletContextTemplateResolver templateResolver() {
         final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
@@ -68,7 +68,7 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     @Description("Thymeleaf template engine with Spring integration")
-    public SpringTemplateEngine templateEngine() {
+    private SpringTemplateEngine templateEngine() {
         final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         final Set<IDialect> dialects = new HashSet<>();

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController4 {
+class SecurityController4 {
 
     public SecurityController4() {
         super();

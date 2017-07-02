@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController5 {
+class SecurityController5 {
 
     @Autowired
     private IAuthenticationFacade authenticationFacade;

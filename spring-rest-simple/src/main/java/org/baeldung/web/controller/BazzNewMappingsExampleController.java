@@ -19,7 +19,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 @RequestMapping("/bazz")
-public class BazzNewMappingsExampleController {
+class BazzNewMappingsExampleController {
 
     @GetMapping
     public ResponseEntity<?> getBazzs() throws JsonProcessingException{

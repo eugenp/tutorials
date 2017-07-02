@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.time.Period;
 
-public class UseDuration {
+class UseDuration {
 
     public LocalTime modifyDates(LocalTime localTime, Duration duration) {
         return localTime.plus(duration);

@@ -23,7 +23,7 @@ public class State {
         this.winScore = state.getWinScore();
     }
 
-    public State(Board board) {
+    private State(Board board) {
         this.board = new Board(board);
     }
 

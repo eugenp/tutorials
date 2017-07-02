@@ -3,7 +3,7 @@ package com.baeldung.datetime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
-public class UseLocalTime {
+class UseLocalTime {
 
     LocalTime getLocalTimeUsingFactoryOfMethod(int hour, int min, int seconds) {
         return LocalTime.of(hour, min, seconds);

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class DatesController {
+class DatesController {
 
     @RequestMapping(value = "/dates", method = RequestMethod.GET)
     public String getInfo(Model model) {

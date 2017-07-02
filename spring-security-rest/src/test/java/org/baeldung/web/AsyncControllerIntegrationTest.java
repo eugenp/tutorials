@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class AsyncControllerIntegrationTest {
 
     @Autowired
+    private
     WebApplicationContext wac;
     @Autowired
     MockHttpSession session;

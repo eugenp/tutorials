@@ -18,7 +18,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
 
     // API
 
-    protected final void setClazz(final Class<T> clazzToSet) {
+    final void setClazz(final Class<T> clazzToSet) {
         clazz = clazzToSet;
     }
 
@@ -57,7 +57,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
         delete(entity);
     }
 
-    protected final Session getCurrentSession() {
+    private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 

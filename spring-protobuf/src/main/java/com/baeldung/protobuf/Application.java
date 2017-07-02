@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @SpringBootApplication
-public class Application {
+class Application {
 
     @Bean
     RestTemplate restTemplate(ProtobufHttpMessageConverter hmc) {

@@ -51,9 +51,11 @@ public class MemberRegistrationIntegrationTest {
     }
 
     @Inject
+    private
     MemberRegistration memberRegistration;
 
     @Inject
+    private
     Logger log;
 
     @Test

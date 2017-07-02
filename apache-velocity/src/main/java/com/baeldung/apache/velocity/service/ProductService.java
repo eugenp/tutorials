@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProductService {
 
-	Logger logger = LoggerFactory.getLogger(ProductService.class);
+	private Logger logger = LoggerFactory.getLogger(ProductService.class);
 
 	public List<Product> getProducts() {
         logger.debug("Product service returning list of products");

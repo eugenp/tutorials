@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("itemIdAddedToUser")
 @JsonIgnoreProperties("id")
-public class ItemIdAddedToUser extends Event {
+class ItemIdAddedToUser extends Event {
     private final String itemId;
     private final Long quantity;
 

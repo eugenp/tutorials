@@ -19,8 +19,8 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Predicate;
 
 public class OperationIntegrationTest {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_api.json");
-    String jsonDataSourceString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+    private InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_api.json");
+    private String jsonDataSourceString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
 
     @Test
     public void givenJsonPathWithoutPredicates_whenReading_thenCorrect() {

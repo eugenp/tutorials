@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 @Slf4j
 @Getter
-public class ApiClientConfiguration {
+class ApiClientConfiguration {
 
     private String host;
     private int port;

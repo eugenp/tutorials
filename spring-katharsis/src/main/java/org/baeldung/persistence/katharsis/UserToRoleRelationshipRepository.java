@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserToRoleRelationshipRepository implements RelationshipRepository<User, Long, Role, Long> {
+class UserToRoleRelationshipRepository implements RelationshipRepository<User, Long, Role, Long> {
 
     @Autowired
     private UserRepository userRepository;

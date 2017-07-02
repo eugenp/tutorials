@@ -35,7 +35,7 @@ public class SimpleUrlHandlerMappingConfig {
     }
 
     @Bean
-    public WelcomeController welcome() {
+    private WelcomeController welcome() {
         return new WelcomeController();
     }
 

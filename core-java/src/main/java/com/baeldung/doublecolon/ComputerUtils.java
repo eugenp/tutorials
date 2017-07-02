@@ -5,7 +5,7 @@ import com.baeldung.doublecolon.function.ComputerPredicate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComputerUtils {
+class ComputerUtils {
 
     static final ComputerPredicate after2010Predicate = (c) -> (c.getAge() > 2010);
     static final ComputerPredicate blackPredicate = (c) -> "black".equals(c.getColor());

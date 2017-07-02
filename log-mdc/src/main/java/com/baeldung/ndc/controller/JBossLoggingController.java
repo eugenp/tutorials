@@ -14,7 +14,7 @@ import com.baeldung.ndc.Investment;
 import com.baeldung.ndc.service.InvestmentService;
 
 @RestController
-public class JBossLoggingController {
+class JBossLoggingController {
     @Autowired
     @Qualifier("JBossLoggingInvestmentService")
     private InvestmentService jbossLoggingBusinessService;

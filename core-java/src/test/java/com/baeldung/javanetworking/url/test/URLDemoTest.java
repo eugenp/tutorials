@@ -23,24 +23,24 @@ import com.baeldung.javanetworking.url.URLDemo;
 @FixMethodOrder
 public class URLDemoTest {
     private final Logger log = LoggerFactory.getLogger(URLDemo.class);
-    static String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
+    private static String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
     // parsed locator
-    static String URLPROTOCOL = "https";
-    String URLAUTHORITY = "wordpress.org:443";
-    static String URLHOST = "wordpress.org";
-    static String URLPATH = "/support/topic/page-jumps-within-wordpress/";
-    String URLFILENAME = "/support/topic/page-jumps-within-wordpress/?replies=3";
-    int URLPORT = 443;
-    static int URLDEFAULTPORT = 443;
-    static String URLQUERY = "replies=3";
-    static String URLREFERENCE = "post-2278484";
-    static String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
+    private static String URLPROTOCOL = "https";
+    private String URLAUTHORITY = "wordpress.org:443";
+    private static String URLHOST = "wordpress.org";
+    private static String URLPATH = "/support/topic/page-jumps-within-wordpress/";
+    private String URLFILENAME = "/support/topic/page-jumps-within-wordpress/?replies=3";
+    private int URLPORT = 443;
+    private static int URLDEFAULTPORT = 443;
+    private static String URLQUERY = "replies=3";
+    private static String URLREFERENCE = "post-2278484";
+    private static String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
 
-    static URL url;
-    URLConnection urlConnection = null;
-    HttpURLConnection connection = null;
-    BufferedReader in = null;
-    String urlContent = "";
+    private static URL url;
+    private URLConnection urlConnection = null;
+    private HttpURLConnection connection = null;
+    private BufferedReader in = null;
+    private String urlContent = "";
 
     @BeforeClass
     public static void givenEmplyURL_whenInitializeURL_thenSuccess() throws MalformedURLException {

@@ -9,7 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 @ComponentScan("org.baeldung.multiplelogin")
-public class MultipleLoginApplication {
+class MultipleLoginApplication {
     public static void main(String[] args) {
         SpringApplication.run(MultipleLoginApplication.class, args);
     }

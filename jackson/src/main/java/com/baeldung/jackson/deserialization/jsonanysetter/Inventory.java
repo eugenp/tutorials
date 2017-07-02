@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Inventory {
+class Inventory {
 
     private Map<Author, Item> stock = new HashMap<>();
 

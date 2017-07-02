@@ -4,7 +4,7 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 import java.util.stream.Collectors;
 
-public class CountingTask extends RecursiveTask<Integer> {
+class CountingTask extends RecursiveTask<Integer> {
 
     private final TreeNode node;
 

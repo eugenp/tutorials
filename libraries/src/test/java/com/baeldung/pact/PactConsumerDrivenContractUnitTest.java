@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PactConsumerDrivenContractUnitTest {
 
     @Rule
-    public PactProviderRuleMk2 mockProvider
+    private PactProviderRuleMk2 mockProvider
             = new PactProviderRuleMk2("test_provider", "localhost", 8080, this);
 
     @Pact(consumer = "test_consumer")

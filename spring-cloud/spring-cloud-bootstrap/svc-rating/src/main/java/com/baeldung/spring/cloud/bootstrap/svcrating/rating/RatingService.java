@@ -17,7 +17,7 @@ public class RatingService {
     @Autowired
     private RatingRepository ratingRepository;
 
-    public Rating findRatingById(Long ratingId) {
+    private Rating findRatingById(Long ratingId) {
         return Optional.ofNullable(ratingRepository.findOne(ratingId))
             .orElseThrow(() -> new RatingNotFoundException("Rating not found. ID: " + ratingId));
     }

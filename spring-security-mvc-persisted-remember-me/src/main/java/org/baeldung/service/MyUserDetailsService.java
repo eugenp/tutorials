@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class MyUserDetailsService implements UserDetailsService {
+class MyUserDetailsService implements UserDetailsService {
 
     private final Log logger = LogFactory.getLog(this.getClass());
 

@@ -15,7 +15,7 @@ import java.util.*;
 @SessionAttributes("employees")
 @Controller
 @ControllerAdvice
-public class EmployeeController {
+class EmployeeController {
 
     Map<Long, Employee> employeeMap = new HashMap<>();
 

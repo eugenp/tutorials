@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 // to test csrf
 @Controller
 @RequestMapping(value = "/auth/")
-public class BankController {
+class BankController {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @RequestMapping(value = "/transfer", method = RequestMethod.GET)

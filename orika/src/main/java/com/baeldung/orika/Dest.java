@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class Dest {
+class Dest {
 	@Override
 	public String toString() {
 		return "Dest [name=" + name + ", age=" + age + "]";

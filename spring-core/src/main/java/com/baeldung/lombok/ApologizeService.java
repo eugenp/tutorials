@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ApologizeService {
+class ApologizeService {
 
     private final Translator translator;
     private final String message;

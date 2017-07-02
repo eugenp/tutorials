@@ -16,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @ComponentScan("org.baeldung.web")
 // @ImportResource({ "classpath:prop.xml" })
 // @PropertySource("classpath:foo.properties")
-public class WebConfig extends WebMvcConfigurerAdapter {
+class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
         super();

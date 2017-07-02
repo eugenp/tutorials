@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/bars")
-public class BarController {
+class BarController {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;

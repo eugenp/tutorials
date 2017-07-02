@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Properties;
 
-public final class Constants {
+final class Constants {
 
     @Autowired
+    private
     PropertySourcesLoader psl;
 
     public static final String breakLine = System.getProperty("line.separator");

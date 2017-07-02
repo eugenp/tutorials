@@ -12,7 +12,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
 
-public final class DataAccessFieldCallback implements FieldCallback {
+final class DataAccessFieldCallback implements FieldCallback {
 
     private static Logger logger = LoggerFactory.getLogger(DataAccessFieldCallback.class);
     private static int AUTOWIRE_MODE = AutowireCapableBeanFactory.AUTOWIRE_BY_NAME;

@@ -14,7 +14,7 @@ import static org.springframework.web.reactive.function.BodyExtractors.toFormDat
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
-public class FormHandler {
+class FormHandler {
 
     Mono<ServerResponse> handleLogin(ServerRequest request) {
         return request

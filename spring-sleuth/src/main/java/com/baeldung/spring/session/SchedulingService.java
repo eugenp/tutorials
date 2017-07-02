@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SchedulingService {
+class SchedulingService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private final SleuthService sleuthService;

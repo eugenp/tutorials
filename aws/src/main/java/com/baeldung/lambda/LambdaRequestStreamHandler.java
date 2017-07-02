@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class LambdaRequestStreamHandler implements RequestStreamHandler {
+class LambdaRequestStreamHandler implements RequestStreamHandler {
 
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
         String input = IOUtils.toString(inputStream, "UTF-8");

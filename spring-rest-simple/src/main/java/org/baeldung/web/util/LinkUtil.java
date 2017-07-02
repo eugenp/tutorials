@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Provides some constants and utility methods to build a Link Header to be stored in the {@link HttpServletResponse} object
  */
-public final class LinkUtil {
+final class LinkUtil {
 
     public static final String REL_COLLECTION = "collection";
     public static final String REL_NEXT = "next";

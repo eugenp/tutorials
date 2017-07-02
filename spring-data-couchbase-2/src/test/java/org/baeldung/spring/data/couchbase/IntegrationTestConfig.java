@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = "org.baeldung.spring.data.couchbase")
-public class IntegrationTestConfig {
+class IntegrationTestConfig {
 }

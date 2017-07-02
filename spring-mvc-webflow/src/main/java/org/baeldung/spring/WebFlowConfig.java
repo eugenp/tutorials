@@ -28,12 +28,12 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     }
 
     @Bean
-    public FlowBuilderServices flowBuilderServices() {
+    private FlowBuilderServices flowBuilderServices() {
         return getFlowBuilderServicesBuilder().setViewFactoryCreator(mvcViewFactoryCreator()).setDevelopmentMode(true).build();
     }
 
     @Bean
-    public MvcViewFactoryCreator mvcViewFactoryCreator() {
+    private MvcViewFactoryCreator mvcViewFactoryCreator() {
         MvcViewFactoryCreator factoryCreator = new MvcViewFactoryCreator();
         factoryCreator.setViewResolvers(Collections.singletonList(this.webMvcConfig.viewResolver()));
         factoryCreator.setUseSpringBeanBinding(true);

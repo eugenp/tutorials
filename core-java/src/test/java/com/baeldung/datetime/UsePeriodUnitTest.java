@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class UsePeriodUnitTest {
-    UsePeriod usingPeriod = new UsePeriod();
+    private UsePeriod usingPeriod = new UsePeriod();
 
     @Test
     public void givenPeriodAndLocalDate_thenCalculateModifiedDate() {

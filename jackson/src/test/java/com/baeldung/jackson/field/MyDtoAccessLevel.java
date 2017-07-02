@@ -3,9 +3,9 @@ package com.baeldung.jackson.field;
 public class MyDtoAccessLevel {
 
     private String stringValue;
-    int intValue;
-    protected float floatValue;
-    public boolean booleanValue;
+    private int intValue;
+    private float floatValue;
+    private boolean booleanValue;
 
     public MyDtoAccessLevel() {
         super();

@@ -16,7 +16,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
-public class MultipleLoginSecurityConfig {
+class MultipleLoginSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
@@ -28,7 +28,7 @@ public class MultipleLoginSecurityConfig {
 
     @Configuration
     @Order(1)
-    public static class App1ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    private static class App1ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         public App1ConfigurationAdapter() {
             super();
@@ -51,7 +51,7 @@ public class MultipleLoginSecurityConfig {
 
     @Configuration
     @Order(2)
-    public static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    private static class App2ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         public App2ConfigurationAdapter() {
             super();

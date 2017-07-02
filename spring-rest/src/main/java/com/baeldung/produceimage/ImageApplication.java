@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @EnableAutoConfiguration
 @ComponentScan("com.baeldung.produceimage")
-public class ImageApplication {
+class ImageApplication {
     public static void main(final String[] args) {
         SpringApplication.run(ImageApplication.class, args);
     }

@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan(basePackages = { "org.baeldung.spring.data.couchbase2b" })
-public class MultiBucketIntegrationTestConfig {
+class MultiBucketIntegrationTestConfig {
 
 }

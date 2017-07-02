@@ -2,7 +2,7 @@ package com.baeldung.jackson.annotation.extra;
 
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 
-public class AppendBeans {
+class AppendBeans {
     public static class BeanWithoutAppend {
         private int id;
         private String name;

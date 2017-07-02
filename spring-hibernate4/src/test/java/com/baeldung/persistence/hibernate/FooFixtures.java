@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 
 import com.google.common.collect.Lists;
 
-public class FooFixtures {
+class FooFixtures {
     private SessionFactory sessionFactory;
 
     public FooFixtures(final SessionFactory sessionFactory) {

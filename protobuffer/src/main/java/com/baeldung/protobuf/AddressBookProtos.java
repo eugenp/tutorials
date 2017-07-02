@@ -7,8 +7,8 @@ public final class AddressBookProtos {
     private AddressBookProtos() {
     }
 
-    public static void registerAllExtensions(
-            com.google.protobuf.ExtensionRegistryLite registry) {
+    private static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
     }
 
     public static void registerAllExtensions(
@@ -1921,7 +1921,7 @@ public final class AddressBookProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internal_static_protobuf_AddressBook_fieldAccessorTable;
 
-    public static com.google.protobuf.Descriptors.FileDescriptor
+    private static com.google.protobuf.Descriptors.FileDescriptor
     getDescriptor() {
         return descriptor;
     }

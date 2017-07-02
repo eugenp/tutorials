@@ -6,7 +6,7 @@ import java.util.Collections;
 import lombok.Data;
 
 @Data
-public class Travel {
+class Travel {
 
     private ArrayList<City> travel = new ArrayList<>();
     private ArrayList<City> previousTravel = new ArrayList<>();
@@ -41,7 +41,7 @@ public class Travel {
         return (int) (Math.random() * travel.size());
     }
 
-    public City getCity(int index) {
+    private City getCity(int index) {
         return travel.get(index);
     }
 

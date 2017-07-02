@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @EnableJpaRepositories("com.baeldung.dynamicvalidation.dao")
 @EntityScan("com.baeldung.dynamicvalidation.model")
 @Configuration
-public class PersistenceConfig {
+class PersistenceConfig {
 
     @Bean
     public DataSource dataSource() {

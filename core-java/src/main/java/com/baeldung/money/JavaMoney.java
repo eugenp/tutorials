@@ -18,37 +18,37 @@ import org.javamoney.moneta.FastMoney;
 import org.javamoney.moneta.Money;
 import org.javamoney.moneta.format.CurrencyStyle;
 
-public class JavaMoney {
-    final static Logger LOGGER = Logger.getLogger(JavaMoney.class.getName());
-    CurrencyUnit USD;
-    MonetaryAmount fstAmtUSD;
-    MonetaryAmount fstAmtEUR;
-    MonetaryAmount oneDolar;
-    MonetaryAmount moneyof;
-    MonetaryAmount fastmoneyof;
-    MonetaryAmount roundEUR;
-    MonetaryAmount calcAmtUSD;
-    MonetaryAmount[] monetaryAmounts;
-    MonetaryAmount sumAmtCHF;
-    MonetaryAmount calcMoneyFastMoney;
-    MonetaryAmount convertedAmountEURtoUSD;
-    MonetaryAmount convertedAmountEURtoUSD2;
-    MonetaryAmount convertedAmountUSDtoEUR;
-    MonetaryAmount convertedAmountUSDtoEUR2;
-    MonetaryAmount multiplyAmount;
-    MonetaryAmount divideAmount;
-    MonetaryAmount oneDivThree;
-    CurrencyConversion convEUR;
-    CurrencyConversion convUSD;
-    CurrencyConversion conversionUSD;
-    CurrencyConversion conversionEUR;
-    MonetaryAmount oneEuro;
-    MonetaryAmountFormat formatUSD;
-    MonetaryAmountFormat customFormat;
-    String usFormatted;
-    String customFormatted;
+class JavaMoney {
+    private final static Logger LOGGER = Logger.getLogger(JavaMoney.class.getName());
+    private CurrencyUnit USD;
+    private MonetaryAmount fstAmtUSD;
+    private MonetaryAmount fstAmtEUR;
+    private MonetaryAmount oneDolar;
+    private MonetaryAmount moneyof;
+    private MonetaryAmount fastmoneyof;
+    private MonetaryAmount roundEUR;
+    private MonetaryAmount calcAmtUSD;
+    private MonetaryAmount[] monetaryAmounts;
+    private MonetaryAmount sumAmtCHF;
+    private MonetaryAmount calcMoneyFastMoney;
+    private MonetaryAmount convertedAmountEURtoUSD;
+    private MonetaryAmount convertedAmountEURtoUSD2;
+    private MonetaryAmount convertedAmountUSDtoEUR;
+    private MonetaryAmount convertedAmountUSDtoEUR2;
+    private MonetaryAmount multiplyAmount;
+    private MonetaryAmount divideAmount;
+    private MonetaryAmount oneDivThree;
+    private CurrencyConversion convEUR;
+    private CurrencyConversion convUSD;
+    private CurrencyConversion conversionUSD;
+    private CurrencyConversion conversionEUR;
+    private MonetaryAmount oneEuro;
+    private MonetaryAmountFormat formatUSD;
+    private MonetaryAmountFormat customFormat;
+    private String usFormatted;
+    private String customFormatted;
     
-    public JavaMoney() {
+    private JavaMoney() {
         USD = Monetary.getCurrency("USD");
         fstAmtUSD = Monetary.getDefaultAmountFactory().setCurrency(USD).setNumber(200.50).create();
         fstAmtEUR = Monetary.getDefaultAmountFactory().setCurrency("EUR").setNumber(1.30473908).create();

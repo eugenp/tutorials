@@ -147,7 +147,7 @@ public class FooPaginationPersistenceIntegrationTest {
         return (int) (countResult / pageSize) + 1;
     }
 
-    final void configurePagination(final Query query, final int pageNumber, final int pageSize) {
+    private void configurePagination(final Query query, final int pageNumber, final int pageSize) {
         query.setFirstResult((pageNumber - 1) * pageSize);
         query.setMaxResults(pageSize);
     }

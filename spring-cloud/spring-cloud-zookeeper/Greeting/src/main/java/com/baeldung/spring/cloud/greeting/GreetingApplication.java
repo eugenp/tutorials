@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class GreetingApplication {
+class GreetingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GreetingApplication.class, args);

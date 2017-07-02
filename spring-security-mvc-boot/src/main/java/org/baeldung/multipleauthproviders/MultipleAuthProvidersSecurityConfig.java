@@ -7,9 +7,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class MultipleAuthProvidersSecurityConfig extends WebSecurityConfigurerAdapter {
+class MultipleAuthProvidersSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private
     CustomAuthenticationProvider customAuthProvider;
 
     @Override

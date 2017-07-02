@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/test")
-public class AttributeAnnotationsTestController {
+class AttributeAnnotationsTestController {
 
     @GetMapping
     public String get(@SessionAttribute String login, @RequestAttribute String query) {

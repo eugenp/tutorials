@@ -31,7 +31,7 @@ import java.util.List;
 @EnableZuulProxy
 @EnableEurekaClient
 @EnableFeignClients
-public class GatewayApplication {
+class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }

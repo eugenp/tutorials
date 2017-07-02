@@ -12,9 +12,9 @@ import org.junit.Test;
 import com.baeldung.filesystem.jndi.LookupFSJNDI;
 
 public class LookupFSJNDIIntegrationTest {
-    LookupFSJNDI fsjndi;
-    InitialContext ctx = null;
-    final String FILENAME = "test.find";
+    private LookupFSJNDI fsjndi;
+    private InitialContext ctx = null;
+    private final String FILENAME = "test.find";
 
     public LookupFSJNDIIntegrationTest() {
         try {

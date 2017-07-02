@@ -5,6 +5,6 @@ import org.springframework.web.context.annotation.ApplicationScope;
 
 @Component
 @ApplicationScope
-public class AppPreferences extends InstanceCountingService {
+class AppPreferences extends InstanceCountingService {
 
 }

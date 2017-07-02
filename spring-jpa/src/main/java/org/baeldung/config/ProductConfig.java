@@ -32,7 +32,7 @@ public class ProductConfig {
     //
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean productEntityManager() {
+    private LocalContainerEntityManagerFactoryBean productEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(productDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.product" });
@@ -48,7 +48,7 @@ public class ProductConfig {
     }
 
     @Bean
-    public DataSource productDataSource() {
+    private DataSource productDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("product.jdbc.url")));

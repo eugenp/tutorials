@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-public class IndexController {
+class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResourceSupport index() {

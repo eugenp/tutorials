@@ -8,7 +8,7 @@ import cucumber.api.java.en.When;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 
-public class CalculatorRunSteps {
+class CalculatorRunSteps {
 
     private int total;
 

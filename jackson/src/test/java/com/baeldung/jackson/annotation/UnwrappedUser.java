@@ -3,10 +3,10 @@ package com.baeldung.jackson.annotation;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 public class UnwrappedUser {
-    public int id;
+    private int id;
 
     @JsonUnwrapped
-    public Name name;
+    private Name name;
 
     public UnwrappedUser() {
 

@@ -11,7 +11,7 @@ import org.springframework.scheduling.support.PeriodicTrigger;
 
 @Configuration
 @ComponentScan(basePackages = "org.baeldung.taskscheduler", basePackageClasses = { ThreadPoolTaskSchedulerExamples.class })
-public class ThreadPoolTaskSchedulerConfig {
+class ThreadPoolTaskSchedulerConfig {
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {

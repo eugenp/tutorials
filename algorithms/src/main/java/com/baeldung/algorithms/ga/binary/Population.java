@@ -17,11 +17,11 @@ public class Population {
         }
     }
 
-    protected Individual getIndividual(int index) {
+    Individual getIndividual(int index) {
         return individuals.get(index);
     }
 
-    protected Individual getFittest() {
+    Individual getFittest() {
         Individual fittest = individuals.get(0);
         for (int i = 0; i < individuals.size(); i++) {
             if (fittest.getFitness() <= getIndividual(i).getFitness()) {

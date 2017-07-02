@@ -16,7 +16,7 @@ import java.io.IOException;
 import static com.baeldung.rest.jbehave.GithubUserNotFoundSteps.getGithubUserProfile;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GithubUserResponsePayloadSteps {
+class GithubUserResponsePayloadSteps {
 
     private String api;
     private GitHubUser resource;

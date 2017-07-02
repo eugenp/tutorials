@@ -7,7 +7,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;
 
-public class RequestDecoder extends ReplayingDecoder<RequestData> {
+class RequestDecoder extends ReplayingDecoder<RequestData> {
 
     private final Charset charset = Charset.forName("UTF-8");
 

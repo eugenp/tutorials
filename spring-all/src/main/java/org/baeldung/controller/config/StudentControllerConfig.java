@@ -10,7 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class StudentControllerConfig implements WebApplicationInitializer {
+class StudentControllerConfig implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext sc) throws ServletException {

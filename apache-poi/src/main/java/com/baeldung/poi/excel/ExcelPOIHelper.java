@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExcelPOIHelper {
+class ExcelPOIHelper {
 
     public Map<Integer, List<String>> readExcel(String fileLocation) throws IOException {
 

@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class Person {
+class Person {
 	@Override
 	public String toString() {
 		return "Person [name=" + name + ", nickname=" + nickname + ", age="

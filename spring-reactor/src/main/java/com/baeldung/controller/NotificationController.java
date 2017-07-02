@@ -9,7 +9,7 @@ import reactor.bus.Event;
 import reactor.bus.EventBus;
 
 @Controller
-public class NotificationController {
+class NotificationController {
 
     @Autowired
     private EventBus eventBus;

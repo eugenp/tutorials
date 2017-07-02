@@ -34,7 +34,7 @@ public class UserConfig {
 
     @Primary
     @Bean
-    public LocalContainerEntityManagerFactoryBean userEntityManager() {
+    private LocalContainerEntityManagerFactoryBean userEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.user" });
@@ -51,7 +51,7 @@ public class UserConfig {
 
     @Primary
     @Bean
-    public DataSource userDataSource() {
+    private DataSource userDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("user.jdbc.url")));

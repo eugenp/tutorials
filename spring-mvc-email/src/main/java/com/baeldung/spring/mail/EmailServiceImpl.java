@@ -19,7 +19,7 @@ import java.io.File;
 public class EmailServiceImpl implements EmailService {
 
     @Autowired
-    public JavaMailSender emailSender;
+    private JavaMailSender emailSender;
 
     public void sendSimpleMessage(String to, String subject, String text) {
         try {

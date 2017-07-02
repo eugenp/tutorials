@@ -1,8 +1,8 @@
 package com.baeldung.jackson.exception;
 
 public class User {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public User(final int id, final String name) {
         this.id = id;

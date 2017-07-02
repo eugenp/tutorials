@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.baeldung.model.FormDataWithFile;
 
 @Controller
-public class FileUploadController {
+class FileUploadController {
 
     @RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
     public String displayForm() {

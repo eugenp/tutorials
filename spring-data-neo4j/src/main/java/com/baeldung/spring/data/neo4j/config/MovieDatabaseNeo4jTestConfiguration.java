@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class MovieDatabaseNeo4jTestConfiguration extends Neo4jConfiguration {
 
     @Bean
-    public org.neo4j.ogm.config.Configuration getConfiguration() {
+    private org.neo4j.ogm.config.Configuration getConfiguration() {
         final org.neo4j.ogm.config.Configuration config = new org.neo4j.ogm.config.Configuration();
         config.driverConfiguration()
             .setDriverClassName("org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver");

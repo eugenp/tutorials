@@ -21,7 +21,7 @@ public class Product {
         this.name = name;
     }
 
-    public Product(int price) {
+    private Product(int price) {
         this.price = price;
     }
 

@@ -4,7 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.lmax.disruptor.EventFactory;
 
-public final class ValueEvent {
+final class ValueEvent {
 
     private int value;
 

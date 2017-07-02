@@ -2,7 +2,7 @@ package com.baeldung.sparkjava;
 
 import com.google.gson.JsonElement;
 
-public class StandardResponse {
+class StandardResponse {
     private StatusResponse status;
     private String message;
     private JsonElement data;

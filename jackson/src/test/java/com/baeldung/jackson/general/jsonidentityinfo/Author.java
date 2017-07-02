@@ -15,7 +15,7 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Author extends Person {
+class Author extends Person {
 
     private List<Item> items = new ArrayList<>();
 

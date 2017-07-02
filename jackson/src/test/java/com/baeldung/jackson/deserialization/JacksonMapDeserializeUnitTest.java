@@ -18,7 +18,7 @@ public class JacksonMapDeserializeUnitTest {
 
 	private Map<MyPair, String> map;
 	private Map<MyPair, MyPair> cmap;
-	final ObjectMapper mapper = new ObjectMapper();
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Test
 	public void whenSimpleMapDeserialize_thenCorrect()

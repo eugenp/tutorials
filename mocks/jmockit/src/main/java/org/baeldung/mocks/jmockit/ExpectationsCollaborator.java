@@ -2,7 +2,7 @@ package org.baeldung.mocks.jmockit;
 
 import java.util.List;
 
-public interface ExpectationsCollaborator {
+interface ExpectationsCollaborator {
     String methodForAny1(String s, int i, Boolean b);
     void methodForAny2(Long l,  List<String> lst);
     String methodForWith1(String s, int i);

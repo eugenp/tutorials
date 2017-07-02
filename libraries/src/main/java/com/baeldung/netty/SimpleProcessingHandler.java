@@ -6,7 +6,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class SimpleProcessingHandler extends ChannelInboundHandlerAdapter {
+class SimpleProcessingHandler extends ChannelInboundHandlerAdapter {
     private ByteBuf tmp;
 
     @Override

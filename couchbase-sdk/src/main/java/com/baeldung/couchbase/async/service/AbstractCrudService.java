@@ -29,7 +29,7 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
     private Bucket bucket;
     private JsonDocumentConverter<T> converter;
 
-    public AbstractCrudService(BucketService bucketService, JsonDocumentConverter<T> converter) {
+    protected AbstractCrudService(BucketService bucketService, JsonDocumentConverter<T> converter) {
         this.bucketService = bucketService;
         this.converter = converter;
     }

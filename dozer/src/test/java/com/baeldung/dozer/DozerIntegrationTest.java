@@ -14,14 +14,14 @@ import org.junit.Test;
 public class DozerIntegrationTest {
     private final long GMT_DIFFERENCE = 46800000;
 
-    DozerBeanMapper mapper;
+    private DozerBeanMapper mapper;
 
     @Before
     public void before() throws Exception {
         mapper = new DozerBeanMapper();
     }
 
-    BeanMappingBuilder builder = new BeanMappingBuilder() {
+    private BeanMappingBuilder builder = new BeanMappingBuilder() {
 
         @Override
         protected void configure() {
@@ -29,7 +29,7 @@ public class DozerIntegrationTest {
 
         }
     };
-    BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
+    private BeanMappingBuilder builderMinusAge = new BeanMappingBuilder() {
 
         @Override
         protected void configure() {
@@ -192,7 +192,7 @@ public class DozerIntegrationTest {
         assertTrue(timestampTest.charAt(10) == 'T' && timestampTest.charAt(19) == 'Z');
     }
 
-    public void configureMapper(String... mappingFileUrls) {
+    private void configureMapper(String... mappingFileUrls) {
         mapper.setMappingFiles(Arrays.asList(mappingFileUrls));
     }
 

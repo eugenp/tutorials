@@ -8,7 +8,7 @@ import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-public class MinuteBasedVoter implements AccessDecisionVoter {
+class MinuteBasedVoter implements AccessDecisionVoter {
     @Override
     public boolean supports(ConfigAttribute attribute) {
         return true;

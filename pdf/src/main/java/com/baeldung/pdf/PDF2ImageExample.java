@@ -17,7 +17,7 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDF2ImageExample {
+class PDF2ImageExample {
 
 	private static final String PDF = "src/main/resources/pdf.pdf";
 	private static final String JPG = "http://cdn2.baeldung.netdna-cdn.com/wp-content/uploads/2016/05/baeldung-rest-widget-main-1.2.0";

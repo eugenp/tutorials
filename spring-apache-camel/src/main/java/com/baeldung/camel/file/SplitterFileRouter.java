@@ -3,7 +3,7 @@ package com.baeldung.camel.file;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 
-public class SplitterFileRouter extends RouteBuilder {
+class SplitterFileRouter extends RouteBuilder {
     private static final String SOURCE_FOLDER = "src/test/source-folder";
     private static final String DESTINATION_FOLDER = "src/test/destination-folder";
 

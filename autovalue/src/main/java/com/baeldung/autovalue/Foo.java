@@ -2,7 +2,7 @@ package com.baeldung.autovalue;
 
 import java.util.Objects;
 
-public final class Foo {
+final class Foo {
     private final String text;
     private final int number;
 

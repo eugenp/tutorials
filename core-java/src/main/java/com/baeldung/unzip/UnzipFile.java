@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class UnzipFile {
+class UnzipFile {
     public static void main(final String[] args) throws IOException {
         final String fileZip = "src/main/resources/compressed.zip";
         final byte[] buffer = new byte[1024];

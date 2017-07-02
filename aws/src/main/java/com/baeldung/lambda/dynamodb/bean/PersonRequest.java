@@ -29,7 +29,7 @@ public class PersonRequest {
         return id;
     }
 
-    public void setId(int id) {
+    private void setId(int id) {
         this.id = id;
     }
 
@@ -37,7 +37,7 @@ public class PersonRequest {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -45,7 +45,7 @@ public class PersonRequest {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -53,7 +53,7 @@ public class PersonRequest {
         return age;
     }
 
-    public void setAge(int age) {
+    private void setAge(int age) {
         this.age = age;
     }
 
@@ -61,7 +61,7 @@ public class PersonRequest {
         return address;
     }
 
-    public void setAddress(String address) {
+    private void setAddress(String address) {
         this.address = address;
     }
 }

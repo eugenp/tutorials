@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
-public class ItemController {
+class ItemController {
 
     @JsonView(Views.Public.class)
     @RequestMapping("/items/{id}")

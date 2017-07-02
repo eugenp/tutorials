@@ -19,7 +19,7 @@ import com.google.auto.service.AutoService;
 @SupportedAnnotationTypes("com.baeldung.annotation.processor.BuilderProperty")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @AutoService(Processor.class)
-public class BuilderProcessor extends AbstractProcessor {
+class BuilderProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

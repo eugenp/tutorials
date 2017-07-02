@@ -21,7 +21,7 @@ public class OkHttpGetLiveTest {
 
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";
 
-    OkHttpClient client;
+    private OkHttpClient client;
 
     @Before
     public void init() {

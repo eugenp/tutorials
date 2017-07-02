@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-public class CommitInfoController {
+class CommitInfoController {
 
     @Value("${git.commit.message.short}")
     private String commitMessage;

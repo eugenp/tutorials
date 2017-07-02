@@ -19,7 +19,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 
-public class ExploreSpring5URLPatternUsingRouterFunctions {
+class ExploreSpring5URLPatternUsingRouterFunctions {
 
     private RouterFunction<ServerResponse> routingFunction() {
 

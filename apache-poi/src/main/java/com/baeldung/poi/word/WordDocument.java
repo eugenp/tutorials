@@ -12,8 +12,8 @@ import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class WordDocument {
-    public static String logo = "logo-leaf.png";
+class WordDocument {
+    private static String logo = "logo-leaf.png";
     public static String paragraph1 = "poi-word-para1.txt";
     public static String paragraph2 = "poi-word-para2.txt";
     public static String paragraph3 = "poi-word-para3.txt";

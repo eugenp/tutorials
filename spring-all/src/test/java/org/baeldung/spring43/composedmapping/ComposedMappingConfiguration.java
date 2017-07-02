@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.*;
 @Configuration
 @ComponentScan
 @EnableWebMvc
-public class ComposedMappingConfiguration {
+class ComposedMappingConfiguration {
 
     @Bean
     public ViewResolver viewResolver() {

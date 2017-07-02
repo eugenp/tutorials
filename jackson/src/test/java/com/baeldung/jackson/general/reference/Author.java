@@ -11,7 +11,7 @@ import java.util.List;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-public class Author extends Person {
+class Author extends Person {
 
     private List<Item> items = new ArrayList<>();
 

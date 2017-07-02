@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ArrayExample {
+class ArrayExample {
 
     public int sumValues(int[] nums) {
         int res = 0;

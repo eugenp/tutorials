@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CourseEntity {
+class CourseEntity {
     private String name;
     private List<String> codes;
     private Map<String, Student> students = new HashMap<String, Student>();

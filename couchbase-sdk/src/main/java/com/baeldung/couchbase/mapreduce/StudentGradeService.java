@@ -16,13 +16,13 @@ import com.couchbase.client.java.view.ViewQuery;
 import com.couchbase.client.java.view.ViewResult;
 import com.couchbase.client.java.view.ViewRow;
 
-public class StudentGradeService {
+class StudentGradeService {
 
-    final CouchbaseKeyGenerator<StudentGrade> keyGenerator;
-    final CouchbaseCluster cluster;
-    final Bucket bucket;
+    private final CouchbaseKeyGenerator<StudentGrade> keyGenerator;
+    private final CouchbaseCluster cluster;
+    private final Bucket bucket;
     final ObjectMapper om = new ObjectMapper();
-    final StudentGradeQueryBuilder queryBuilder;
+    private final StudentGradeQueryBuilder queryBuilder;
     
     public StudentGradeService(CouchbaseKeyGenerator<StudentGrade> keyGenerator) {
         this.keyGenerator = keyGenerator;

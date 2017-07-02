@@ -26,7 +26,7 @@ public class JacksonMapSerializeUnitTest {
 	@JsonSerialize(keyUsing = MyPairSerializer.class)
 	private MyPair mapValue;
 
-	final ObjectMapper mapper = new ObjectMapper();
+	private final ObjectMapper mapper = new ObjectMapper();
 
 	@Test
 	public void whenSimpleMapSerialize_thenCorrect()

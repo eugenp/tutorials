@@ -14,10 +14,10 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("!test")
-public class SpringAmqpConfig {
+class SpringAmqpConfig {
 
     public final static String queueName = "com.baeldung.spring-amqp-simple.queue";
-    public final static String exchangeName = "com.baeldung.spring-amqp-simple.exchange";
+    private final static String exchangeName = "com.baeldung.spring-amqp-simple.exchange";
 
     @Bean
     Queue queue() {

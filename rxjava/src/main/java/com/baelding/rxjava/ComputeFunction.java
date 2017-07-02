@@ -4,7 +4,7 @@ import rx.Observable;
 
 import java.util.List;
 
-public class ComputeFunction {
+class ComputeFunction {
     public static void compute(Integer v) {
         try {
             System.out.println("compute integer v: " + v);

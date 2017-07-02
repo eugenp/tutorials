@@ -12,7 +12,7 @@ public class Person implements CouchbaseEntity {
     Person() {
     }
 
-    public Person(Builder b) {
+    private Person(Builder b) {
         this.id = b.id;
         this.type = b.type;
         this.name = b.name;

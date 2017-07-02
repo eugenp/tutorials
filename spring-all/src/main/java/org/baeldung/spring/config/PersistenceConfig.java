@@ -21,7 +21,7 @@ import com.google.common.base.Preconditions;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
-public class PersistenceConfig {
+class PersistenceConfig {
 
     @Autowired
     private Environment env;
@@ -31,7 +31,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    private LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
         sessionFactory.setPackagesToScan(new String[] { "org.baeldung.spring.persistence.model" });
@@ -41,7 +41,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource restDataSource() {
+    private DataSource restDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
@@ -64,7 +64,7 @@ public class PersistenceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    final Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

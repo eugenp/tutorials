@@ -6,11 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class UserWithRef {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     @JsonBackReference
-    public List<ItemWithRef> userItems;
+    private List<ItemWithRef> userItems;
 
     public UserWithRef() {
         super();

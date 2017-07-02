@@ -69,7 +69,7 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
         assertFalse(response.body().as(List.class).isEmpty());
     }
 
-    protected String getPageableURL() {
+    private String getPageableURL() {
         return "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/auth/foos/pageable";
     }
     

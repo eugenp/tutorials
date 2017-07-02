@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(value = "prototype")
-public class InitializingBeanExampleBean implements InitializingBean {
+class InitializingBeanExampleBean implements InitializingBean {
 
     private static final Logger LOG = LoggerFactory.getLogger(InitializingBeanExampleBean.class);
 

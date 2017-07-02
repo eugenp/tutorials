@@ -118,7 +118,7 @@ public class HystrixTimeoutIntegrationTest {
                 equalTo("Success"));
     }
 
-    public String invokeRemoteService(HystrixCommand.Setter config, int timeout)
+    private String invokeRemoteService(HystrixCommand.Setter config, int timeout)
             throws InterruptedException {
         String response = null;
         try {

@@ -4,7 +4,7 @@ import java.util.Set;
 
 import com.google.common.collect.Sets;
 
-public class TreeNode {
+class TreeNode {
 
     int value;
 

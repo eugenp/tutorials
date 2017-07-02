@@ -21,7 +21,7 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class PDF2TextExample {
+class PDF2TextExample {
 
 	private static final String PDF = "src/main/resources/pdf.pdf";
 	private static final String TXT = "src/main/resources/txt.txt";

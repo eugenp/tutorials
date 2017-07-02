@@ -2,7 +2,7 @@ package org.baeldung.spring43.scopeannotations;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class InstanceCountingService {
+class InstanceCountingService {
 
     private static final AtomicInteger instanceCount = new AtomicInteger(0);
 

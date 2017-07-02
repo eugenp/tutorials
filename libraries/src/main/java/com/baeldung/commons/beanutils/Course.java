@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Course {
+class Course {
     private String name;
     private List<String> codes;
     private Map<String, Student> enrolledStudent = new HashMap<String, Student>();

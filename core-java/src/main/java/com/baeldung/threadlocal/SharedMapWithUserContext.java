@@ -4,7 +4,7 @@ package com.baeldung.threadlocal;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class SharedMapWithUserContext implements Runnable {
+class SharedMapWithUserContext implements Runnable {
     public final static Map<Integer, Context> userContextPerUserId = new ConcurrentHashMap<>();
     private final Integer userId;
     private UserRepository userRepository = new UserRepository();

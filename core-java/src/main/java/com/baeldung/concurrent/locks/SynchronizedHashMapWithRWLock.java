@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import static java.lang.Thread.sleep;
 
-public class SynchronizedHashMapWithRWLock {
+class SynchronizedHashMapWithRWLock {
 
     private static Map<String, String> syncHashMap = new HashMap<>();
     private Logger logger = LoggerFactory.getLogger(SynchronizedHashMapWithRWLock.class);

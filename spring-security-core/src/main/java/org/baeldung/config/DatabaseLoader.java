@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatabaseLoader implements CommandLineRunner {
+class DatabaseLoader implements CommandLineRunner {
 
     @Autowired
     private TaskRepository taskRepository;

@@ -10,7 +10,7 @@ import org.springframework.cloud.stream.messaging.Sink;
 
 @EnableBinding(Sink.class)
 @SpringBootApplication
-public class LogSinkApplication {
+class LogSinkApplication {
 
     private static Logger logger = LoggerFactory.getLogger(LogSinkApplication.class);
 

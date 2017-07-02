@@ -1,6 +1,6 @@
 package com.baeldung.jackson.node;
 
-public class NodeBean {
+class NodeBean {
     private int id;
     private String name;
 

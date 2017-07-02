@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericRsqlSpecification<T> implements Specification<T> {
+class GenericRsqlSpecification<T> implements Specification<T> {
 
     private String property;
     private ComparisonOperator operator;

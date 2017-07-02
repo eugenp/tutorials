@@ -3,7 +3,7 @@ package com.baeldung.concurrent.countdownlatch;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-public class WaitingWorker implements Runnable {
+class WaitingWorker implements Runnable {
 
     private final List<String> outputScraper;
     private final CountDownLatch readyThreadCounter;

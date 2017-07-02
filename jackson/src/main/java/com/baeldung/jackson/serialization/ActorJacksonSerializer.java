@@ -10,7 +10,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class ActorJacksonSerializer extends StdSerializer<ActorJackson> {
+class ActorJacksonSerializer extends StdSerializer<ActorJackson> {
 
     private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 

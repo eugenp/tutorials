@@ -14,7 +14,7 @@ import java.lang.annotation.*;
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface SpringJUnit5Config {
+@interface SpringJUnit5Config {
 
     @AliasFor(annotation = ContextConfiguration.class, attribute = "classes")
     Class<?>[] value() default {};

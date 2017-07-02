@@ -30,7 +30,7 @@ public class GemfireConfiguration {
 
 
     @Bean
-    Properties gemfireProperties() {
+    private Properties gemfireProperties() {
         Properties gemfireProperties = new Properties();
         gemfireProperties.setProperty("name", "SpringDataGemFireApplication");
         gemfireProperties.setProperty("mcast-port", "0");

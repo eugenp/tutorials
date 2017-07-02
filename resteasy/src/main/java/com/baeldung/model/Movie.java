@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "movie", propOrder = { "imdbId", "title" })
 public class Movie {
 
-    protected String imdbId;
-    protected String title;
+    private String imdbId;
+    private String title;
 
     public Movie(String imdbId, String title) {
         this.imdbId = imdbId;

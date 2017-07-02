@@ -10,7 +10,7 @@ import java.io.IOException;
 import static com.baeldung.rest.jbehave.GithubUserNotFoundSteps.getGithubUserProfile;
 import static org.junit.Assert.assertEquals;
 
-public class GithubUserResponseMediaTypeSteps {
+class GithubUserResponseMediaTypeSteps {
 
     private String api;
     private String validUser;

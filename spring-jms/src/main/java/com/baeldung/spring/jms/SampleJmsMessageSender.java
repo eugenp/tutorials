@@ -6,7 +6,7 @@ import javax.jms.Queue;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SampleJmsMessageSender {
+class SampleJmsMessageSender {
 
     private JmsTemplate jmsTemplate;
     private Queue queue;

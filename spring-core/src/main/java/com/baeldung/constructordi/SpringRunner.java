@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.constructordi.domain.Car;
 
-public class SpringRunner {
+class SpringRunner {
     public static void main(String[] args) {
         Car toyota = getCarFromXml();
 

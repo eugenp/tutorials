@@ -17,7 +17,7 @@ import lombok.experimental.Delegate;
 @Entity
 @Getter @Setter @NoArgsConstructor // <--- THIS is it
 @ToString(exclude = {"events"})
-public class User implements Serializable, HasContactInformation {
+class User implements Serializable, HasContactInformation {
 
     private @Id @Setter(AccessLevel.PROTECTED) Long id; // will be set when persisting
 

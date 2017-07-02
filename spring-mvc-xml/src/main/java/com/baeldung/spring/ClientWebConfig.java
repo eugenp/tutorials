@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @ImportResource("classpath:webMvcConfig.xml")
 @Configuration
-public class ClientWebConfig extends WebMvcConfigurerAdapter {
+class ClientWebConfig extends WebMvcConfigurerAdapter {
 
     public ClientWebConfig() {
         super();

@@ -13,16 +13,16 @@ import java.util.UUID;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class Item {
+class Item {
 
     private UUID id;
     private String title;
     private List<Person> authors = new ArrayList<>();
     private float price;
 
-    public Item(){}
+    Item(){}
 
-    public Item(String title, Author author) {
+    Item(String title, Author author) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.authors.add(author);

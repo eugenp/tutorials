@@ -25,7 +25,7 @@ public class OkHttpMiscLiveTest {
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";
     private static Logger logger = LoggerFactory.getLogger(OkHttpMiscLiveTest.class);
 
-    OkHttpClient client;
+    private OkHttpClient client;
 
     @Before
     public void init() {

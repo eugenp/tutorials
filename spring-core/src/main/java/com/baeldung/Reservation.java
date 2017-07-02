@@ -2,7 +2,7 @@ package com.baeldung;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Reservation {
+class Reservation {
     private Member member;
     private Ebook eBook;
     

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class HomeController {
+class HomeController {
 
     @RequestMapping("/")
     public String home(HttpServletRequest req) {

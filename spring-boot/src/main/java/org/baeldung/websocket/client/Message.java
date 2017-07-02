@@ -1,6 +1,6 @@
 package org.baeldung.websocket.client;
 
-public class Message {
+class Message {
 
     private String from;
     private String text;

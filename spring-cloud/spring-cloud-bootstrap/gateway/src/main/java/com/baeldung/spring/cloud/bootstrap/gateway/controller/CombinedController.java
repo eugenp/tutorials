@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/combined")
-public class CombinedController {
+class CombinedController {
 
     private final BooksClient booksClient;
     private final RatingsClient ratingsClient;

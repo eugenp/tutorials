@@ -11,7 +11,7 @@ import org.springframework.scheduling.support.PeriodicTrigger;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ThreadPoolTaskSchedulerExamples {
+class ThreadPoolTaskSchedulerExamples {
     @Autowired
     private ThreadPoolTaskScheduler taskScheduler;
 

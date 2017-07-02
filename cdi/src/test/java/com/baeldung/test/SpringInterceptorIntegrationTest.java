@@ -18,6 +18,7 @@ import com.baeldung.spring.service.SpringSuperService;
 @ContextConfiguration(classes = { AppConfig.class })
 public class SpringInterceptorIntegrationTest {
     @Autowired
+    private
     SpringSuperService springSuperService;
 
     @Autowired

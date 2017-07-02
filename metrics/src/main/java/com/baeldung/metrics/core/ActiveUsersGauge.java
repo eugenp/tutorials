@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.codahale.metrics.CachedGauge;
 
-public class ActiveUsersGauge extends CachedGauge<List<Long>> {
+class ActiveUsersGauge extends CachedGauge<List<Long>> {
     public ActiveUsersGauge(long timeout, TimeUnit timeoutUnit) {
         super(timeout, timeoutUnit);
     }

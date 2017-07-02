@@ -16,7 +16,7 @@ import org.jenetics.engine.Engine;
 import org.jenetics.engine.EvolutionStatistics;
 
 //The main class.
-public class Knapsack {
+class Knapsack {
 
     public static void main(String[] args) {
         int nItems = 15;

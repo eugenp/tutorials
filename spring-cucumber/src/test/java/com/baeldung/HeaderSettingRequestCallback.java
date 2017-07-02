@@ -7,8 +7,8 @@ import org.springframework.web.client.RequestCallback;
 import java.io.IOException;
 import java.util.Map;
 
-public class HeaderSettingRequestCallback implements RequestCallback {
-    final Map<String, String> requestHeaders;
+class HeaderSettingRequestCallback implements RequestCallback {
+    private final Map<String, String> requestHeaders;
 
     private String body;
 

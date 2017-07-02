@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class UserController {
+class UserController {
     @PreAuthorize("hasAuthority('ROLE_USER')")
     @RequestMapping(value = "/user")
     public String user(Model model, Principal principal) {

@@ -17,7 +17,7 @@ import org.axonframework.eventsourcing.eventstore.inmemory.InMemoryEventStorageE
 
 import java.util.UUID;
 
-public class MessagesRunner {
+class MessagesRunner {
 
     public static void main(String[] args) {
         CommandBus commandBus = new SimpleCommandBus();

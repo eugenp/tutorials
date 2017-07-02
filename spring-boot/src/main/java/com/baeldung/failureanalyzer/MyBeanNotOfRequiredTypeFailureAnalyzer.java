@@ -4,7 +4,7 @@ import org.springframework.beans.factory.BeanNotOfRequiredTypeException;
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
 
-public class MyBeanNotOfRequiredTypeFailureAnalyzer
+class MyBeanNotOfRequiredTypeFailureAnalyzer
   extends AbstractFailureAnalyzer<BeanNotOfRequiredTypeException> {
 
     @Override

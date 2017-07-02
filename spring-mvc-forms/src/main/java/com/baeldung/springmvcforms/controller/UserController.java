@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class UserController {
+class UserController {
 
     private List<User> users = Arrays.asList(
       new User("ana@yahoo.com", "pass", "Ana", 20),

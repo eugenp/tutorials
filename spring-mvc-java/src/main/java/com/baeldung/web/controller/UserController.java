@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class UserController {
+class UserController {
 
     @GetMapping("/")
     public String showForm(final Model model) {

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @SpringBootApplication(exclude=MySQLAutoconfiguration.class)
-public class WebjarsdemoApplication {
+class WebjarsdemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebjarsdemoApplication.class, args);

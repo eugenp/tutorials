@@ -4,7 +4,7 @@ import com.baeldung.spring.data.redis.model.Student;
 
 import java.util.Map;
 
-public interface StudentRepository {
+interface StudentRepository {
 
     void saveStudent(Student person);
 

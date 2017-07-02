@@ -7,7 +7,7 @@ import org.springframework.boot.actuate.endpoint.Endpoint;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomEndpoint implements Endpoint<List<String>> {
+class CustomEndpoint implements Endpoint<List<String>> {
 
     public CustomEndpoint() {
 

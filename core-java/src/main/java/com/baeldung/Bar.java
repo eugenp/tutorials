@@ -1,7 +1,7 @@
 package com.baeldung;
 
 @FunctionalInterface
-public interface Bar {
+interface Bar {
 
     String method(String string);
 

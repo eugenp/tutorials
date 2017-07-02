@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class PathPatternController {
+class PathPatternController {
 
     @GetMapping("/spring5/{*id}")
     public String URIVariableHandler(@PathVariable String id) {

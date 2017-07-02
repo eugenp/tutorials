@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BaeldungController {
+class BaeldungController {
 
     @RequestMapping(method = { RequestMethod.GET }, value = { "/hello" })
     public String sayHello(HttpServletResponse response) {

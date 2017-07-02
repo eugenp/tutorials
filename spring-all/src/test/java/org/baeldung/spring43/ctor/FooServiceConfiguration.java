@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class FooServiceConfiguration {
+class FooServiceConfiguration {
 
     private final FooRepository repository;
 

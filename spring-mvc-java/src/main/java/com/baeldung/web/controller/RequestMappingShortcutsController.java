@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RequestMappingShortcutsController {
+class RequestMappingShortcutsController {
 
 	@GetMapping("/get")
 	public @ResponseBody ResponseEntity<String> get() {

@@ -1,6 +1,6 @@
 package com.baeldung.java;
 
-public class Customer {
+class Customer {
 
     private String firstName;
     private String lastName;

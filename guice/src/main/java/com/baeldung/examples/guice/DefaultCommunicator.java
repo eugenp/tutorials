@@ -14,6 +14,7 @@ public class DefaultCommunicator implements Communicator {
     private CommunicationMode defaultCommsMode;
     @Inject
     @Named("SMSComms")
+    private
     CommunicationMode smsCommsMode;
     @Inject
     @Named("EmailComms")

@@ -31,7 +31,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
     }
 
     // - note: at this point, the URI is transformed into plural (added `s`) in a hardcoded way - this will change in the future
-    final void addLinkHeaderOnPagedResourceRetrieval(final UriComponentsBuilder uriBuilder, final HttpServletResponse response, final Class clazz, final int page, final int totalPages, final int pageSize) {
+    private void addLinkHeaderOnPagedResourceRetrieval(final UriComponentsBuilder uriBuilder, final HttpServletResponse response, final Class clazz, final int page, final int totalPages, final int pageSize) {
         plural(uriBuilder, clazz);
 
         final StringBuilder linkHeader = new StringBuilder();
@@ -60,39 +60,39 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
         }
     }
 
-    final String constructNextPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
+    private String constructNextPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, page + 1).replaceQueryParam("size", size).build().encode().toUriString();
     }
 
-    final String constructPrevPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
+    private String constructPrevPageUri(final UriComponentsBuilder uriBuilder, final int page, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, page - 1).replaceQueryParam("size", size).build().encode().toUriString();
     }
 
-    final String constructFirstPageUri(final UriComponentsBuilder uriBuilder, final int size) {
+    private String constructFirstPageUri(final UriComponentsBuilder uriBuilder, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, 0).replaceQueryParam("size", size).build().encode().toUriString();
     }
 
-    final String constructLastPageUri(final UriComponentsBuilder uriBuilder, final int totalPages, final int size) {
+    private String constructLastPageUri(final UriComponentsBuilder uriBuilder, final int totalPages, final int size) {
         return uriBuilder.replaceQueryParam(PAGE, totalPages).replaceQueryParam("size", size).build().encode().toUriString();
     }
 
-    final boolean hasNextPage(final int page, final int totalPages) {
+    private boolean hasNextPage(final int page, final int totalPages) {
         return page < (totalPages - 1);
     }
 
-    final boolean hasPreviousPage(final int page) {
+    private boolean hasPreviousPage(final int page) {
         return page > 0;
     }
 
-    final boolean hasFirstPage(final int page) {
+    private boolean hasFirstPage(final int page) {
         return hasPreviousPage(page);
     }
 
-    final boolean hasLastPage(final int page, final int totalPages) {
+    private boolean hasLastPage(final int page, final int totalPages) {
         return (totalPages > 1) && hasNextPage(page, totalPages);
     }
 
-    final void appendCommaIfNecessary(final StringBuilder linkHeader) {
+    private void appendCommaIfNecessary(final StringBuilder linkHeader) {
         if (linkHeader.length() > 0) {
             linkHeader.append(", ");
         }
@@ -100,7 +100,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
 
     // template
 
-    protected void plural(final UriComponentsBuilder uriBuilder, final Class clazz) {
+    private void plural(final UriComponentsBuilder uriBuilder, final Class clazz) {
         final String resourceName = clazz.getSimpleName().toLowerCase() + "s";
         uriBuilder.path("/auth/" + resourceName);
     }

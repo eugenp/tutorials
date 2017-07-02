@@ -15,7 +15,7 @@ import java.util.Date;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class CustomDateSerializer extends StdSerializer<Date> {
+class CustomDateSerializer extends StdSerializer<Date> {
 
     private static SimpleDateFormat formatter =
             new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

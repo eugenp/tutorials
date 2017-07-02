@@ -6,7 +6,7 @@ import org.baeldung.spring.WebFlowConfig;
 import org.baeldung.spring.WebMvcConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     public WebInitializer() {
         super();

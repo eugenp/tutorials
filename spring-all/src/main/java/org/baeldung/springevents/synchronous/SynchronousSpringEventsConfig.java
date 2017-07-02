@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("org.baeldung.springevents.synchronous")
-public class SynchronousSpringEventsConfig {
+class SynchronousSpringEventsConfig {
 
 }

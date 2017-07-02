@@ -1,6 +1,6 @@
 package com.baeldung.stackoverflowerror;
 
-public class AccountHolder {
+class AccountHolder {
     private String firstName;
     private String lastName;
 

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("itemIdRemovedFromUser")
-public class ItemIdRemovedFromUser extends Event {
+class ItemIdRemovedFromUser extends Event {
     private final String itemId;
     private final Long quantity;
 

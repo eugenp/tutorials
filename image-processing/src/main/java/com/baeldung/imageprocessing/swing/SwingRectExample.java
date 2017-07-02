@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class SwingRectExample {
+class SwingRectExample {
     public static void main(String[] args) throws IOException {
         BufferedImage image  = loadImage();
         drawRectangle(image);

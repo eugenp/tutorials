@@ -36,6 +36,7 @@ public class ProductInfoRepositoryIntegrationTest {
     private AmazonDynamoDB amazonDynamoDB;
 
     @Autowired
+    private
     ProductInfoRepository repository;
 
     private static final String EXPECTED_COST = "20";

@@ -1,6 +1,6 @@
 package org.baeldung.mocks.jmockit;
 
-public class Performer {
+class Performer {
 	private Collaborator collaborator;
 	
 	public void perform(Model model){

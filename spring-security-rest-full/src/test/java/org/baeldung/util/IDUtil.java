@@ -24,7 +24,7 @@ public final class IDUtil {
         return id;
     }
 
-    public final static long randomNegativeLong() {
+    private static long randomNegativeLong() {
         long id = new Random().nextLong() * 10000;
         id = (id > 0) ? (-1 * id) : id;
         return id;

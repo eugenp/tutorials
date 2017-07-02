@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.couchbase.client.core.CouchbaseException;
 
 @Service
-public class RegistrationService {
+class RegistrationService {
 
     @Autowired
     private PersonCrudService crud;

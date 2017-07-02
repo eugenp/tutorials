@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class FrontCommand {
-    protected ServletContext context;
-    protected HttpServletRequest request;
-    protected HttpServletResponse response;
+    private ServletContext context;
+    HttpServletRequest request;
+    private HttpServletResponse response;
 
     public void init(
       ServletContext servletContext,
@@ -24,7 +24,7 @@ public abstract class FrontCommand {
 
     public abstract void process() throws ServletException, IOException;
 
-    protected void forward(String target) throws ServletException, IOException {
+    void forward(String target) throws ServletException, IOException {
         target = String.format("/WEB-INF/jsp/%s.jsp", target);
         RequestDispatcher dispatcher = context.getRequestDispatcher(target);
         dispatcher.forward(request, response);

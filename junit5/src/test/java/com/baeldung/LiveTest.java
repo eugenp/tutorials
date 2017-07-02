@@ -16,7 +16,7 @@ public class LiveTest {
 	private List<String> out = new ArrayList<>(Arrays.asList("Cześć", "Tak", "Nie"));
 
 	@TestFactory
-	public Stream<DynamicTest> translateDynamicTestsFromStream() {
+    Stream<DynamicTest> translateDynamicTestsFromStream() {
 
 		return in.stream().map(word -> DynamicTest.dynamicTest("Test translate " + word, () -> {
 			int id = in.indexOf(word);

@@ -19,13 +19,13 @@ import org.springframework.web.client.RestTemplate;
 @ContextConfiguration(classes = SpringDemoApplication.class, loader = SpringApplicationContextLoader.class)
 @WebAppConfiguration
 @IntegrationTest
-public class SpringIntegrationTest {
-    protected static ResponseResults latestResponse = null;
+class SpringIntegrationTest {
+    static ResponseResults latestResponse = null;
 
     @Autowired
-    protected RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-    protected void executeGet(String url) throws IOException {
+    void executeGet(String url) throws IOException {
         final Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         final HeaderSettingRequestCallback requestCallback = new HeaderSettingRequestCallback(headers);
@@ -45,7 +45,7 @@ public class SpringIntegrationTest {
 
     }
 
-    protected void executePost(String url) throws IOException {
+    void executePost(String url) throws IOException {
         final Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
         final HeaderSettingRequestCallback requestCallback = new HeaderSettingRequestCallback(headers);

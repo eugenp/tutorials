@@ -51,7 +51,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    private DaoAuthenticationProvider authenticationProvider() {
         final DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(myUserDetailsService());
         authProvider.setPasswordEncoder(encoder());
@@ -59,12 +59,12 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder encoder() {
+    private PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
     }
 
     @Bean
-    public MyUserDetailsService myUserDetailsService() {
+    private MyUserDetailsService myUserDetailsService() {
         return new MyUserDetailsService();
     }
 

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class SpringsteenRecord {
+class SpringsteenRecord {
 
     String name;
     double price;

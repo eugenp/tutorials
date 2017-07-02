@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Configuration
 @EnableAutoConfiguration
 @RestController
-public class TestConfig {
+class TestConfig {
 
     @RequestMapping(value = "/locaus")
     public String locationAUSDetails() {

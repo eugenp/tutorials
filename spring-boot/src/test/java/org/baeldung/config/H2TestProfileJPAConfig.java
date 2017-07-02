@@ -27,7 +27,7 @@ public class H2TestProfileJPAConfig {
 
     @Bean
     @Profile("test")
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
         dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
@@ -54,7 +54,7 @@ public class H2TestProfileJPAConfig {
         return transactionManager;
     }
 
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
 
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));

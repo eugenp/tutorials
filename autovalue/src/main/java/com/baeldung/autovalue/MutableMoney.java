@@ -1,6 +1,6 @@
 package com.baeldung.autovalue;
 
-public class MutableMoney {
+class MutableMoney {
     @Override
     public String toString() {
         return "MutableMoney [amount=" + amount + ", currency=" + currency + "]";

@@ -19,7 +19,7 @@ public class ItemDeserializer extends StdDeserializer<Item> {
         this(null);
     }
 
-    public ItemDeserializer(final Class<?> vc) {
+    private ItemDeserializer(final Class<?> vc) {
         super(vc);
     }
 

@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @Configuration
 @EnableOAuth2Client
-public class GoogleOpenIdConnectConfig {
+class GoogleOpenIdConnectConfig {
     @Value("${google.clientId}")
     private String clientId;
 
@@ -30,7 +30,7 @@ public class GoogleOpenIdConnectConfig {
     private String redirectUri;
 
     @Bean
-    public OAuth2ProtectedResourceDetails googleOpenId() {
+    private OAuth2ProtectedResourceDetails googleOpenId() {
         final AuthorizationCodeResourceDetails details = new AuthorizationCodeResourceDetails();
         details.setClientId(clientId);
         details.setClientSecret(clientSecret);

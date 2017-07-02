@@ -2,7 +2,7 @@ package com.baeldung.hikaricp;
 
 import java.sql.Date;
 
-public class Employee {
+class Employee {
 
     private int empNo;
     private String ename;

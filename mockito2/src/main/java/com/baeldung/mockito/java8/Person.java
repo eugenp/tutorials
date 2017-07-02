@@ -1,6 +1,6 @@
 package com.baeldung.mockito.java8;
 
-public class Person {
+class Person {
     private String name;
     private JobPosition currentJobPosition;
     

@@ -11,9 +11,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
-public class ExposeAttemptedPathAuthorizationAuditListener extends AbstractAuthorizationAuditListener {
+class ExposeAttemptedPathAuthorizationAuditListener extends AbstractAuthorizationAuditListener {
 
-    public static final String AUTHORIZATION_FAILURE = "AUTHORIZATION_FAILURE";
+    private static final String AUTHORIZATION_FAILURE = "AUTHORIZATION_FAILURE";
 
     @Override
     public void onApplicationEvent(AbstractAuthorizationEvent event) {

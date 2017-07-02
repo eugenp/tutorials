@@ -14,13 +14,13 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class HBaseClientOperations {
+class HBaseClientOperations {
     private final static byte[] cellData = Bytes.toBytes("cell_data");
 
     /**
      * Drop tables if this value is set true.
      */
-    static boolean INITIALIZE_AT_FIRST = true;
+    private static boolean INITIALIZE_AT_FIRST = true;
 
     /**
      * <table>

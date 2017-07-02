@@ -22,16 +22,16 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/mail")
-public class MailController {
+class MailController {
 
     @Autowired
-    public EmailServiceImpl emailService;
+    private EmailServiceImpl emailService;
 
     @Value("${attachment.invoice}")
     private String attachmentPath;
 
     @Autowired
-    public SimpleMailMessage template;
+    private SimpleMailMessage template;
 
     private static final Map<String, Map<String, String>> labels;
 

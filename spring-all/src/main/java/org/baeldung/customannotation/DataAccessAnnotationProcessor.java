@@ -9,7 +9,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
 
 @Component
-public class DataAccessAnnotationProcessor implements BeanPostProcessor {
+class DataAccessAnnotationProcessor implements BeanPostProcessor {
 
     private ConfigurableListableBeanFactory configurableListableBeanFactory;
 
@@ -29,7 +29,7 @@ public class DataAccessAnnotationProcessor implements BeanPostProcessor {
         return bean;
     }
 
-    protected void scanDataAccessAnnotation(Object bean, String beanName) {
+    private void scanDataAccessAnnotation(Object bean, String beanName) {
         Class<?> managedBeanClass = bean.getClass();
         FieldCallback fcb = new DataAccessFieldCallback(configurableListableBeanFactory, bean);
         ReflectionUtils.doWithFields(managedBeanClass, fcb);

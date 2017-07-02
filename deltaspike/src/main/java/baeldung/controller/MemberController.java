@@ -32,7 +32,7 @@ import baeldung.service.MemberRegistration;
 // Read more about the @Model stereotype in this FAQ:
 // http://www.cdi-spec.org/faq/#accordion6
 @Model
-public class MemberController {
+class MemberController {
 
     @Inject
     private FacesContext facesContext;
@@ -45,7 +45,7 @@ public class MemberController {
     private Member newMember;
 
     @PostConstruct
-    public void initNewMember() {
+    private void initNewMember() {
         newMember = new Member();
     }
 

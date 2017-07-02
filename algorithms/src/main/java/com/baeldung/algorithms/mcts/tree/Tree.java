@@ -1,7 +1,7 @@
 package com.baeldung.algorithms.mcts.tree;
 
 public class Tree {
-    Node root;
+    private Node root;
 
     public Tree() {
         root = new Node();

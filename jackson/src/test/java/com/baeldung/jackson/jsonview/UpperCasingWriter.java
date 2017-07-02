@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.BeanPropertyWriter;
 
-public class UpperCasingWriter extends BeanPropertyWriter {
-    final BeanPropertyWriter _writer;
+class UpperCasingWriter extends BeanPropertyWriter {
+    private final BeanPropertyWriter _writer;
 
     public UpperCasingWriter(final BeanPropertyWriter w) {
         super(w);

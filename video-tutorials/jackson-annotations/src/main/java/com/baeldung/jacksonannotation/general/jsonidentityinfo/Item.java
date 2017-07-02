@@ -16,16 +16,16 @@ import java.util.UUID;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Item {
+class Item {
 
     private UUID id;
     private String title;
     private List<Person> authors = new ArrayList<>();
     private float price;
 
-    public Item(){}
+    Item(){}
 
-    public Item(String title, Author author) {
+    Item(String title, Author author) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.authors.add(author);

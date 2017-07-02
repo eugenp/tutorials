@@ -149,7 +149,7 @@ public class VavrUnitTest {
         assertEquals(11, summed);
     }
 
-    public int sum(int a, int b) {
+    private int sum(int a, int b) {
         return a + b;
     }
 

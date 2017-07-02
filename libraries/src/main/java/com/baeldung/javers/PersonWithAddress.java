@@ -3,7 +3,7 @@ package com.baeldung.javers;
 
 import java.util.List;
 
-public class PersonWithAddress {
+class PersonWithAddress {
     private Integer id;
     private String name;
     private List<Address> address;

@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import org.apache.commons.math3.util.Precision;
 import org.decimal4j.util.DoubleRounder;
 
-public class Round {
+class Round {
     private static final double PI = 3.1415d;
     
     public static void main (String args[]) {

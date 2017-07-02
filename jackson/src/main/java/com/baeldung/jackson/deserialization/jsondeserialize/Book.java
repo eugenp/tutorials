@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Book extends Item {
+class Book extends Item {
 
     private String ISBN;
 

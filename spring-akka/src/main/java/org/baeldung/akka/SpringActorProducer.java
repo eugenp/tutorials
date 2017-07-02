@@ -4,7 +4,7 @@ import akka.actor.Actor;
 import akka.actor.IndirectActorProducer;
 import org.springframework.context.ApplicationContext;
 
-public class SpringActorProducer implements IndirectActorProducer {
+class SpringActorProducer implements IndirectActorProducer {
 
     private ApplicationContext applicationContext;
 

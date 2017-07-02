@@ -42,7 +42,7 @@ import cz.jirutka.rsql.parser.ast.Node;
 //@EnableSpringDataWebSupport
 @Controller
 @RequestMapping(value = "/auth/")
-public class UserController {
+class UserController {
 
     @Autowired
     private IUserDAO service;
@@ -103,13 +103,13 @@ public class UserController {
         return dao.findAll(spec);
     }
 
-    protected Specification<User> resolveSpecificationFromInfixExpr(String searchParameters) {
+    private Specification<User> resolveSpecificationFromInfixExpr(String searchParameters) {
         CriteriaParser parser = new CriteriaParser();
         GenericSpecificationsBuilder<User> specBuilder = new GenericSpecificationsBuilder<>();
         return specBuilder.build(parser.parse(searchParameters), UserSpecification::new);
     }
 
-    protected Specification<User> resolveSpecification(String searchParameters) {
+    private Specification<User> resolveSpecification(String searchParameters) {
 
         UserSpecificationsBuilder builder = new UserSpecificationsBuilder();
         String operationSetExper = Joiner.on("|")

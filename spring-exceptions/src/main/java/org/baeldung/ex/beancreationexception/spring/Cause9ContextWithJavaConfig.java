@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:beancreationexception_cause9.xml")
 public class Cause9ContextWithJavaConfig {
     @Autowired
+    private
     BeanFactory beanFactory;
 
     public Cause9ContextWithJavaConfig() {

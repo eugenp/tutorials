@@ -11,7 +11,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class CustomDateTimeSerializer extends StdSerializer<DateTime> {
+class CustomDateTimeSerializer extends StdSerializer<DateTime> {
 
     private static final long serialVersionUID = -3927232057990121460L;
 

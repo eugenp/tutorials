@@ -9,7 +9,7 @@ public class MacbookPro extends Computer {
 
     private static final Logger LOG = LoggerFactory.getLogger(MacbookPro.class);
 
-    public MacbookPro(int age, String color) {
+    private MacbookPro(int age, String color) {
         super(age, color);
     }
 

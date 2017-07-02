@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderRequest<IEntity>> {
+class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderRequest<IEntity>> {
     private static final long serialVersionUID = -4245207329377196889L;
 
     public RestLoaderRequestDeserializer() {

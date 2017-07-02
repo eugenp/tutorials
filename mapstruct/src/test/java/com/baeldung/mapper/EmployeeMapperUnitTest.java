@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 
 public class EmployeeMapperUnitTest {
 
-    EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
+    private EmployeeMapper mapper = Mappers.getMapper(EmployeeMapper.class);
 
     private static final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
 

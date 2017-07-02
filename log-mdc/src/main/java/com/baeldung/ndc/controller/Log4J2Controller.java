@@ -14,7 +14,7 @@ import com.baeldung.ndc.Investment;
 import com.baeldung.ndc.service.InvestmentService;
 
 @RestController
-public class Log4J2Controller {
+class Log4J2Controller {
     @Autowired
     @Qualifier("log4j2InvestmentService")
     private InvestmentService log4j2BusinessService;

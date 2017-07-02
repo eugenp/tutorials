@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ServiceConfiguration {
+class ServiceConfiguration {
     @Bean(name = Bus.DEFAULT_BUS_ID)
-    public SpringBus springBus() {
+    private SpringBus springBus() {
         return new SpringBus();
     }
 

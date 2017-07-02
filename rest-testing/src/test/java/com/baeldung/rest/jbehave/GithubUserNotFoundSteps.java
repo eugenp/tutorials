@@ -14,7 +14,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.junit.Assert.assertTrue;
 
-public class GithubUserNotFoundSteps {
+class GithubUserNotFoundSteps {
 
     private String api;
     private String nonExistentUser;

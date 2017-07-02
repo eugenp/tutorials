@@ -6,7 +6,7 @@ import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IdGenerator;
 
-public class ServerNode {
+class ServerNode {
 
     public static void main(String[] args) {
         HazelcastInstance hazelcastInstance = Hazelcast.newHazelcastInstance();

@@ -13,7 +13,7 @@ import com.itextpdf.text.pdf.parser.PdfReaderContentParser;
 import com.itextpdf.text.pdf.parser.SimpleTextExtractionStrategy;
 import com.itextpdf.text.pdf.parser.TextExtractionStrategy;
 
-public class PDF2WordExample {
+class PDF2WordExample {
 
 	private static final String FILENAME = "src/main/resources/pdf.pdf";
 

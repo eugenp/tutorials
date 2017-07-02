@@ -9,9 +9,9 @@ import org.springframework.data.jpa.domain.Specifications;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericRsqlSpecBuilder<T> {
+class GenericRsqlSpecBuilder<T> {
 
-    public Specifications<T> createSpecification(final Node node) {
+    private Specifications<T> createSpecification(final Node node) {
         if (node instanceof LogicalNode) {
             return createSpecification((LogicalNode) node);
         }

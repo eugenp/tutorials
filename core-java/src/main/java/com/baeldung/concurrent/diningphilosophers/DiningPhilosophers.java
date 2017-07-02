@@ -1,6 +1,6 @@
 package com.baeldung.concurrent.diningphilosophers;
 
-public class DiningPhilosophers {
+class DiningPhilosophers {
 
     public static void main(String[] args) throws Exception {
 

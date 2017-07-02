@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 public class ConfigurationConstructorInjectionIntegrationTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
-    public FooService fooService;
+    private FooService fooService;
 
     @Test
     public void whenSingleCtorInConfiguration_thenContextLoadsNormally() {

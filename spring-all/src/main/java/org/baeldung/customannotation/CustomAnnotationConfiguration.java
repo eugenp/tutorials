@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("org.baeldung.customannotation")
-public class CustomAnnotationConfiguration {
+class CustomAnnotationConfiguration {
 }

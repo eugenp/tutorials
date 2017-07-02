@@ -10,7 +10,7 @@ import org.springframework.boot.jackson.JsonComponent;
 import java.io.IOException;
 
 @JsonComponent
-public class UserJsonSerializer extends JsonSerializer<User> {
+class UserJsonSerializer extends JsonSerializer<User> {
 
     @Override
     public void serialize(User user, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {

@@ -14,7 +14,7 @@ import java.util.List;
  * @version 1.0
  */
 @JsonFilter("authorFilter")
-public class Author extends Person {
+class Author extends Person {
 
     private List<Item> items = new ArrayList<>();
 

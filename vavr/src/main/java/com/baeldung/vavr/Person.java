@@ -1,6 +1,6 @@
 package com.baeldung.vavr;
 
-public class Person {
+class Person {
     private String name;
     private int age;
 

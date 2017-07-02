@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/message")
-public class MessageController {
+class MessageController {
 
     @RequestMapping(value = "/showForm", method = RequestMethod.GET)
     public String showForm() {

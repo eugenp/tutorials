@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase;
 
-public class TypeIdResolverStructure {
+class TypeIdResolverStructure {
     public static class BeanContainer {
         private List<AbstractBean> beans;
 
@@ -27,10 +27,10 @@ public class TypeIdResolverStructure {
     public static class AbstractBean {
         private int id;
 
-        protected AbstractBean() {
+        AbstractBean() {
         }
 
-        protected AbstractBean(int id) {
+        AbstractBean(int id) {
             this.id = id;
         }
 

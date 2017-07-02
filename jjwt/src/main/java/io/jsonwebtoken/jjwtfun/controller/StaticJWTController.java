@@ -18,9 +18,10 @@ import java.util.Date;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
-public class StaticJWTController extends BaseController {
+class StaticJWTController extends BaseController {
 
     @Autowired
+    private
     SecretService secretService;
 
     @RequestMapping(value = "/static-builder", method = GET)

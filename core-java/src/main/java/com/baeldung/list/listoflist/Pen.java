@@ -1,8 +1,8 @@
 package com.baeldung.list.listoflist;
 
-public class Pen implements Stationery {
+class Pen implements Stationery {
 
-    public String name;
+    private String name;
 
     public Pen(String name) {
         this.name = name;

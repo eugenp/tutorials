@@ -25,6 +25,7 @@ public class ToggleIntegrationTest {
     SalaryService salaryService;
 
     @Autowired
+    private
     EmployeeRepository employeeRepository;
 
     @Autowired

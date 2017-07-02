@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class UseZonedDateTimeUnitTest {
 
-    UseZonedDateTime zonedDateTime = new UseZonedDateTime();
+    private UseZonedDateTime zonedDateTime = new UseZonedDateTime();
 
     @Test
     public void givenZoneId_thenZonedDateTime() {

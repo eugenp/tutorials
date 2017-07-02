@@ -20,9 +20,9 @@ import ma.glasnost.orika.impl.DefaultMapperFactory;
 
 public class OrikaUnitTest {
 
-    MapperFactory mapperFactory;
+    private MapperFactory mapperFactory;
 
-    CustomMapper<Personne3, Person3> customMapper;
+    private CustomMapper<Personne3, Person3> customMapper;
 
     // constant to help us cover time zone differences
     private final long GMT_DIFFERENCE = 46800000;

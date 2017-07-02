@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class FeaturesAspect {
+class FeaturesAspect {
 
     private static final Logger LOG = Logger.getLogger(FeaturesAspect.class);
 

@@ -12,9 +12,9 @@ import org.apache.http.protocol.HttpContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
-public class HttpComponentsClientHttpRequestFactoryBasicAuth extends HttpComponentsClientHttpRequestFactory {
+class HttpComponentsClientHttpRequestFactoryBasicAuth extends HttpComponentsClientHttpRequestFactory {
 
-    HttpHost host;
+    private HttpHost host;
 
     public HttpComponentsClientHttpRequestFactoryBasicAuth(HttpHost host) {
         super();

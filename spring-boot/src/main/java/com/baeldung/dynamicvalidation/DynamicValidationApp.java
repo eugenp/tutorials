@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @SpringBootApplication(exclude = MySQLAutoconfiguration.class)
-public class DynamicValidationApp {
+class DynamicValidationApp {
     @RolesAllowed("*")
     public static void main(String[] args) {
         System.setProperty("security.basic.enabled", "false");

@@ -11,7 +11,7 @@ import org.springframework.integration.annotation.Transformer;
 
 @EnableBinding(Processor.class)
 @SpringBootApplication
-public class TimeProcessorApplication {
+class TimeProcessorApplication {
 
     @Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
     public Object transform(Long timestamp) {

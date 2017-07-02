@@ -28,7 +28,7 @@ public class RedirectControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    protected WebApplicationContext wac;
+    private WebApplicationContext wac;
 
     @Before
     public void setup() {

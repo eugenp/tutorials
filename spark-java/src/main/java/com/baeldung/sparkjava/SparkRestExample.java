@@ -8,7 +8,7 @@ import static spark.Spark.put;
 
 import com.google.gson.Gson;
 
-public class SparkRestExample {
+class SparkRestExample {
     public static void main(String[] args) {
         final UserService userService = new UserServiceMapImpl();
 

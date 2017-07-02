@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class PersonController {
+class PersonController {
 
     @Autowired
+    private
     PersonValidator validator;
 
     @RequestMapping(value = "/person", method = RequestMethod.GET)

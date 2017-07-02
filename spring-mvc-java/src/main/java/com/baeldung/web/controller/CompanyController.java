@@ -20,9 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.baeldung.model.Company;
 
 @Controller
-public class CompanyController {
+class CompanyController {
 
-    Map<Long, Company> companyMap = new HashMap<>();
+    private Map<Long, Company> companyMap = new HashMap<>();
 
     @RequestMapping(value = "/company", method = RequestMethod.GET)
     public ModelAndView showForm() {

@@ -9,8 +9,8 @@ import org.springframework.data.gemfire.mapping.Region;
 public class Employee {
 
     @Id
-    public String name;
-    public double salary;
+    private String name;
+    private double salary;
 
     @PersistenceConstructor
     public Employee(String name, double salary) {

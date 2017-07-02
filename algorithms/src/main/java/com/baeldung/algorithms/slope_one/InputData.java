@@ -10,9 +10,9 @@ import java.util.Set;
 import lombok.Data;
 
 @Data
-public class InputData {
+class InputData {
 
-    protected static List<Item> items = Arrays.asList(new Item("Candy"), new Item("Drink"), new Item("Soda"), new Item("Popcorn"), new Item("Snacks"));
+    static List<Item> items = Arrays.asList(new Item("Candy"), new Item("Drink"), new Item("Soda"), new Item("Popcorn"), new Item("Snacks"));
 
     public static Map<User, HashMap<Item, Double>> initializeData(int numberOfUsers) {
         Map<User, HashMap<Item, Double>> data = new HashMap<>();

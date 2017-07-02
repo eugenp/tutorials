@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 // used to test HttpClientPostingTest
 @RestController
-public class SimplePostController {
+class SimplePostController {
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String postUser(@RequestParam final String username, @RequestParam final String password) {

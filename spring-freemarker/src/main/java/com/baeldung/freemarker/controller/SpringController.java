@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.baeldung.freemarker.model.Car;
 
 @Controller
-public class SpringController {
+class SpringController {
 
     private static List<Car> carList = new ArrayList<Car>();
 

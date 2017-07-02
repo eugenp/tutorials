@@ -13,7 +13,7 @@ import com.couchbase.client.java.document.json.JsonObject;
 import com.couchbase.client.java.env.CouchbaseEnvironment;
 import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
 
-public class CodeSnippets {
+class CodeSnippets {
 
     static Cluster loadClusterWithDefaultEnvironment() {
         return CouchbaseCluster.create("localhost");

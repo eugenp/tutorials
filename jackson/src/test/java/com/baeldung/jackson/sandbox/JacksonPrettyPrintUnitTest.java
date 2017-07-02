@@ -28,7 +28,7 @@ public class JacksonPrettyPrintUnitTest {
 
     //
 
-    public static void printJsonFromFile(final String fileName) {
+    private static void printJsonFromFile(final String fileName) {
         System.out.println("-----------------");
         final ObjectMapper mapper = new ObjectMapper();
         try {
@@ -40,7 +40,7 @@ public class JacksonPrettyPrintUnitTest {
         System.out.println("-----------------");
     }
 
-    static String readFile(final String path, final Charset encoding) throws IOException {
+    private static String readFile(final String path, final Charset encoding) throws IOException {
         final byte[] encoded = Files.readAllBytes(Paths.get(path));
         return encoding.decode(ByteBuffer.wrap(encoded)).toString();
     }

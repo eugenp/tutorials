@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class GenericEntityController {
+class GenericEntityController {
     private List<GenericEntity> entityList = new ArrayList<>();
 
     {

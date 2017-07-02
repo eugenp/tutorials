@@ -9,7 +9,7 @@ import org.springframework.shell.core.MethodTarget;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimpleURLConverter implements Converter<URL> {
+class SimpleURLConverter implements Converter<URL> {
 
     @Override
     public URL convertFromText(String value, Class<?> requiredType, String optionContext) {

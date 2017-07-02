@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
-public class TenantScope implements Scope {
+class TenantScope implements Scope {
 
     private Map<String, Object> scopedObjects = Collections.synchronizedMap(new HashMap<String, Object>());
     private Map<String, Runnable> destructionCallbacks = Collections.synchronizedMap(new HashMap<String, Runnable>());

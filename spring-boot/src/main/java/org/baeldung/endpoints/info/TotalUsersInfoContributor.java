@@ -10,9 +10,10 @@ import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TotalUsersInfoContributor implements InfoContributor {
+class TotalUsersInfoContributor implements InfoContributor {
 
     @Autowired
+    private
     UserRepository userRepository;
 
     @Override

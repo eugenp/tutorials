@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Individual {
 
-    protected int defaultGeneLength = 64;
+    private int defaultGeneLength = 64;
     private byte[] genes = new byte[defaultGeneLength];
     private int fitness = 0;
 
@@ -16,11 +16,11 @@ public class Individual {
         }
     }
 
-    protected byte getSingleGene(int index) {
+    byte getSingleGene(int index) {
         return genes[index];
     }
 
-    protected void setSingleGene(int index, byte value) {
+    void setSingleGene(int index, byte value) {
         genes[index] = value;
         fitness = 0;
     }

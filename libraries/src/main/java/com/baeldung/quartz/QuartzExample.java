@@ -10,7 +10,7 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
-public class QuartzExample {
+class QuartzExample {
 
     public static void main(String args[]) {
 

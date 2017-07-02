@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CrudInput {
+class CrudInput {
 
     // @NotBlank
     private final String title;

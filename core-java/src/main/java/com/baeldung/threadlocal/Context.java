@@ -1,7 +1,7 @@
 package com.baeldung.threadlocal;
 
 
-public class Context {
+class Context {
     private final String userName;
 
     public Context(String userName) {

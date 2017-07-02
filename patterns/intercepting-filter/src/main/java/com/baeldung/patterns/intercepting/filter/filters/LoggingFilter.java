@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 @WebFilter(servletNames = "intercepting-filter")
-public class LoggingFilter extends BaseFilter {
+class LoggingFilter extends BaseFilter {
     private static final Logger log = LoggerFactory.getLogger(LoggingFilter.class);
 
     @Override

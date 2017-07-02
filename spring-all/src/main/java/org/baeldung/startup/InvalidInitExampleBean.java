@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("prototype")
-public class InvalidInitExampleBean {
+class InvalidInitExampleBean {
 
     @Autowired
     private Environment environment;

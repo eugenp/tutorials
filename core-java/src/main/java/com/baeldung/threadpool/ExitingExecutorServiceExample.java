@@ -12,7 +12,7 @@ import com.google.common.util.concurrent.MoreExecutors;
  * Without the exiting executor service, the task would hang indefinitely.
  * This behaviour cannot be demonstrated in JUnit tests, as JUnit kills the VM after the tests.
  */
-public class ExitingExecutorServiceExample {
+class ExitingExecutorServiceExample {
 
     public static void main(String... args) {
 

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class CustomLocalDateTimeSerializer extends StdSerializer<LocalDateTime> {
+class CustomLocalDateTimeSerializer extends StdSerializer<LocalDateTime> {
 
 
     private static final long serialVersionUID = -7449444168934819290L;

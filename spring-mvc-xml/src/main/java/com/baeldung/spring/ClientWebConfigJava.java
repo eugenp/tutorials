@@ -15,14 +15,14 @@ import org.springframework.web.servlet.view.JstlView;
 
 //@EnableWebMvc
 //@Configuration
-public class ClientWebConfigJava extends WebMvcConfigurerAdapter {
+class ClientWebConfigJava extends WebMvcConfigurerAdapter {
 
     public ClientWebConfigJava() {
         super();
     }
 
     @Bean
-    public MessageSource messageSource() {
+    private MessageSource messageSource() {
 
         final ResourceBundleMessageSource ms = new ResourceBundleMessageSource();
         ms.setBasenames("messages");

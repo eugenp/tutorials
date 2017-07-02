@@ -7,7 +7,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @SpringBootApplication(exclude=MySQLAutoconfiguration.class)
 @ComponentScan(basePackages = "com.baeldung.annotation.servletcomponentscan.components")
-public class SpringBootPlainApp {
+class SpringBootPlainApp {
 
     public static void main(String[] args) {
     }

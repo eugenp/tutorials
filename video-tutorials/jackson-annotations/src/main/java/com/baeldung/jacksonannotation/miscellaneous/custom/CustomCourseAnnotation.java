@@ -16,5 +16,5 @@ import java.lang.annotation.RetentionPolicy;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"title", "price", "id", "duration", "authors", "level"})
 @JsonIgnoreProperties({"prerequisite"})
-public @interface CustomCourseAnnotation {
+@interface CustomCourseAnnotation {
 }

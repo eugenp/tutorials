@@ -30,10 +30,10 @@ import static org.junit.Assert.assertEquals;
 public class HttpClientAdvancedConfigurationIntegrationTest {
 
     @Rule
-    public WireMockRule serviceMock = new WireMockRule(8089);
+    private WireMockRule serviceMock = new WireMockRule(8089);
 
     @Rule
-    public WireMockRule proxyMock = new WireMockRule(8090);
+    private WireMockRule proxyMock = new WireMockRule(8090);
 
     @Test
     public void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {

@@ -1,6 +1,6 @@
 package org.baeldung.equalshashcode.entities;
 
-public class PrimitiveClass {
+class PrimitiveClass {
 
     private boolean primitiveBoolean;
     private int primitiveInt;

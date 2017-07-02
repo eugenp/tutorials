@@ -3,7 +3,7 @@ package com.baeldung;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
-public class OtherDefsIntegrationTest extends SpringIntegrationTest {
+class OtherDefsIntegrationTest extends SpringIntegrationTest {
     @When("^the client calls /baeldung$")
     public void the_client_issues_POST_hello() throws Throwable {
         executePost("http://localhost:8080/baeldung");

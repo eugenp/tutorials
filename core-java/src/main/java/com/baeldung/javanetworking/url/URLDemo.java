@@ -15,24 +15,24 @@ public class URLDemo {
 
     String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
     // parsed locator
-    String URLPROTOCOL = "https";
+    private String URLPROTOCOL = "https";
     // final static String URLAUTHORITY = "wordpress.org:443";
-    String URLHOST = "wordpress.org";
-    String URLPATH = "/support/topic/page-jumps-within-wordpress/";
+    private String URLHOST = "wordpress.org";
+    private String URLPATH = "/support/topic/page-jumps-within-wordpress/";
     // final static String URLFILENAME = "/support/topic/page-jumps-within-wordpress/?replies=3";
     // final static int URLPORT = 443;
-    int URLDEFAULTPORT = 443;
-    String URLQUERY = "replies=3";
-    String URLREFERENCE = "post-2278484";
-    String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
+    private int URLDEFAULTPORT = 443;
+    private String URLQUERY = "replies=3";
+    private String URLREFERENCE = "post-2278484";
+    private String URLCOMPOUND = URLPROTOCOL + "://" + URLHOST + ":" + URLDEFAULTPORT + URLPATH + "?" + URLQUERY + "#" + URLREFERENCE;
 
-    URL url;
-    URLConnection urlConnection = null;
-    HttpURLConnection connection = null;
-    BufferedReader in = null;
+    private URL url;
+    private URLConnection urlConnection = null;
+    private HttpURLConnection connection = null;
+    private BufferedReader in = null;
     String urlContent = "";
 
-    public String testURL(String urlString) throws IOException, IllegalArgumentException {
+    private String testURL(String urlString) throws IOException, IllegalArgumentException {
         String urlStringCont = "";
         // comment the if clause if experiment with URL
         /*if (!URLSTRING.equals(urlString)) {

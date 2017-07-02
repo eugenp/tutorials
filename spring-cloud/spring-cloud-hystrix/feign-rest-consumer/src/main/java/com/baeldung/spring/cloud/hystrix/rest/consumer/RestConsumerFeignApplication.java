@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 @EnableCircuitBreaker
 @EnableHystrixDashboard
 @EnableFeignClients
-public class RestConsumerFeignApplication {
+class RestConsumerFeignApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestConsumerFeignApplication.class, args);
     }

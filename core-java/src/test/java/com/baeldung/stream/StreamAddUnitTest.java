@@ -38,7 +38,7 @@ public class StreamAddUnitTest {
         assertEquals(resultList.get(3), (Double) 9.9);
     }
 
-    public <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
+    private <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
         List<T> result = stream.collect(Collectors.toList());
         result.add(index, elem);
         return result.stream();

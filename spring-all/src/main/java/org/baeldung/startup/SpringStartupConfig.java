@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("org.baeldung.startup")
-public class SpringStartupConfig {
+class SpringStartupConfig {
 }

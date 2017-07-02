@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SubTypeConstructorStructure {
+class SubTypeConstructorStructure {
     public static class Fleet {
         private List<Vehicle> vehicles;
 
@@ -22,7 +22,7 @@ public class SubTypeConstructorStructure {
         private String make;
         private String model;
 
-        protected Vehicle(String make, String model) {
+        Vehicle(String make, String model) {
             this.make = make;
             this.model = model;
         }

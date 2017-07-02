@@ -6,7 +6,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class CustomisedListener implements ITestListener {
+class CustomisedListener implements ITestListener {
     private static final Logger LOGGER = LoggerFactory.getLogger("CUSTOM_LOGS");
 
     @Override

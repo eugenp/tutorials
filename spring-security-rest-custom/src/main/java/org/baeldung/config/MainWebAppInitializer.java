@@ -13,7 +13,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class MainWebAppInitializer implements WebApplicationInitializer {
+class MainWebAppInitializer implements WebApplicationInitializer {
 
     public MainWebAppInitializer() {
         super();

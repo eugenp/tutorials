@@ -2,7 +2,7 @@ package com.baeldung.orika;
 
 import java.util.List;
 
-public class PersonListContainer {
+class PersonListContainer {
 	private List<Name> names;
 
 	public PersonListContainer(List<Name> names) {

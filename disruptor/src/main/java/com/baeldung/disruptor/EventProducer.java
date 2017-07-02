@@ -5,7 +5,7 @@ import com.lmax.disruptor.RingBuffer;
 /**
  * Producer that produces event for ring buffer.
  */
-public interface EventProducer {
+interface EventProducer {
     /**
      * Start the producer that would start producing the values.
      * @param ringBuffer

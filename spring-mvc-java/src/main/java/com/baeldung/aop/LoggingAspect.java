@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 @Component
 @Aspect
-public class LoggingAspect {
+class LoggingAspect {
 
     private static Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 

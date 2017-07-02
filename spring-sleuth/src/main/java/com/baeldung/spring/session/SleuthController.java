@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.Executor;
 
 @RestController
-public class SleuthController {
+class SleuthController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     private final SleuthService sleuthService;

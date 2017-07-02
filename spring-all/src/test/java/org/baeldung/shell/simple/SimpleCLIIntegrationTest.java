@@ -12,7 +12,7 @@ import java.io.File;
 
 public class SimpleCLIIntegrationTest {
 
-    static JLineShellComponent shell;
+    private static JLineShellComponent shell;
 
     @BeforeClass
     public static void startUp() throws InterruptedException {

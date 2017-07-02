@@ -3,7 +3,7 @@ package com.baeldung.stream;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class StreamApi {
+class StreamApi {
 
     public static String getLastElementUsingReduce(List<String> valueList) {
         Stream<String> stream = valueList.stream();

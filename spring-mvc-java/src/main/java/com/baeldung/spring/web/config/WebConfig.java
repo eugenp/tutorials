@@ -84,7 +84,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ByteArrayHttpMessageConverter byteArrayHttpMessageConverter() {
+    private ByteArrayHttpMessageConverter byteArrayHttpMessageConverter() {
         final ByteArrayHttpMessageConverter arrayHttpMessageConverter = new ByteArrayHttpMessageConverter();
         arrayHttpMessageConverter.setSupportedMediaTypes(getSupportedMediaTypes());
 

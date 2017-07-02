@@ -28,7 +28,7 @@ import java.util.List;
 import baeldung.model.Member;
 
 @RequestScoped
-public class MemberListProducer {
+class MemberListProducer {
 
     @Inject
     private MemberRepository memberRepository;
@@ -48,7 +48,7 @@ public class MemberListProducer {
     }
 
     @PostConstruct
-    public void retrieveAllMembersOrderedByName() {
+    private void retrieveAllMembersOrderedByName() {
         members = memberRepository.findAllOrderedByNameWithQueryDSL();
     }
 }

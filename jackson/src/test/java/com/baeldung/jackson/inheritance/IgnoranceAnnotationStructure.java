@@ -3,15 +3,15 @@ package com.baeldung.jackson.inheritance;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class IgnoranceAnnotationStructure {
+class IgnoranceAnnotationStructure {
     public static abstract class Vehicle {
         private String make;
         private String model;
 
-        protected Vehicle() {
+        Vehicle() {
         }
 
-        protected Vehicle(String make, String model) {
+        Vehicle(String make, String model) {
             this.make = make;
             this.model = model;
         }
@@ -39,10 +39,10 @@ public class IgnoranceAnnotationStructure {
         @JsonIgnore
         private double topSpeed;
 
-        protected Car() {
+        Car() {
         }
 
-        protected Car(String make, String model, int seatingCapacity, double topSpeed) {
+        Car(String make, String model, int seatingCapacity, double topSpeed) {
             super(make, model);
             this.seatingCapacity = seatingCapacity;
             this.topSpeed = topSpeed;

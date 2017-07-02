@@ -2,11 +2,11 @@ package com.baeldung.solrjava;
 
 import org.apache.solr.client.solrj.beans.Field;
 
-public class ProductBean {
+class ProductBean {
 
-    String id;
-    String name;
-    String price;
+    private String id;
+    private String name;
+    private String price;
 
     public ProductBean(String id, String name, String price) {
         super();

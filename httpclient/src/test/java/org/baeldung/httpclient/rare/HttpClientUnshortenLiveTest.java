@@ -52,7 +52,7 @@ public class HttpClientUnshortenLiveTest {
 
     // API
 
-    final String expand(final String urlArg) throws IOException {
+    private String expand(final String urlArg) throws IOException {
         String originalUrl = urlArg;
         String newUrl = expandSingleLevel(originalUrl);
         while (!originalUrl.equals(newUrl)) {
@@ -81,7 +81,7 @@ public class HttpClientUnshortenLiveTest {
         return newUrl;
     }
 
-    final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
+    private Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
         HttpHead request = null;
         HttpEntity httpEntity = null;
         InputStream entityContentStream = null;
@@ -117,7 +117,7 @@ public class HttpClientUnshortenLiveTest {
         }
     }
 
-    final String expandSingleLevel(final String url) throws IOException {
+    private String expandSingleLevel(final String url) throws IOException {
         HttpHead request = null;
 
         try {

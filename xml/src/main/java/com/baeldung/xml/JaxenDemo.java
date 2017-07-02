@@ -15,7 +15,7 @@ import org.jaxen.dom.DOMXPath;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-public class JaxenDemo {
+class JaxenDemo {
 
     private File file;
 
@@ -45,7 +45,7 @@ public class JaxenDemo {
 
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

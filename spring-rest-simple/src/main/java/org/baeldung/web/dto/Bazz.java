@@ -3,8 +3,8 @@ package org.baeldung.web.dto;
 public class Bazz {
 
     
-    public String id;
-    public String name;
+    private String id;
+    private String name;
 
     public Bazz(String id){
         this.id = id;

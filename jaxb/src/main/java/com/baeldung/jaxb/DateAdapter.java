@@ -6,7 +6,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class DateAdapter extends XmlAdapter<String, Date> {
+class DateAdapter extends XmlAdapter<String, Date> {
 
     private static final ThreadLocal<DateFormat> dateFormat = new ThreadLocal<DateFormat>() {
 

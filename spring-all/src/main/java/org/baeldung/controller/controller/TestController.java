@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "/test")
-public class TestController {
+class TestController {
 
     @GetMapping
     public ModelAndView getTestData() {
