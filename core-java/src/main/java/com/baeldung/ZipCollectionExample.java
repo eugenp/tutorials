@@ -1,4 +1,4 @@
-package com.baeldung.guava.tutorial;
+package com.baeldung;
 
 import com.google.common.collect.Streams;
 import org.jooq.lambda.Seq;
@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class ZipCollectionExample {
-    static List<String> names = new ArrayList<>(Arrays.asList("John", "Jane", "Jack", "Dennis"));
+    static List<String> names = Arrays.asList("John", "Jane", "Jack", "Dennis");
 
-    static List<Integer> ages = new ArrayList<>(Arrays.asList(24, 25, 27));
+    static List<Integer> ages = Arrays.asList(24, 25, 27);
 
     public static void main(String[] args) {
         //      Using Streams API from Guava 21
