@@ -5,13 +5,13 @@ public class BaeldungSynchronizedBlocks {
     private int count = 0;
     private static int staticCount = 0;
 
-    public void performSynchronisedTask() {
+    void performSynchronisedTask() {
         synchronized (this) {
             setCount(getCount() + 1);
         }
     }
 
-    public static void performStaticSyncTask() {
+    static void performStaticSyncTask() {
         synchronized (BaeldungSynchronizedBlocks.class) {
             setStaticCount(getStaticCount() + 1);
         }
@@ -25,11 +25,11 @@ public class BaeldungSynchronizedBlocks {
         this.count = count;
     }
 
-    public static int getStaticCount() {
+    static int getStaticCount() {
         return staticCount;
     }
 
-    public static void setStaticCount(int staticCount) {
+    private static void setStaticCount(int staticCount) {
         BaeldungSynchronizedBlocks.staticCount = staticCount;
     }
 }
