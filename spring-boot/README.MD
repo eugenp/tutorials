@@ -21,3 +21,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Custom Information in Spring Boot Info Endpoint](http://www.baeldung.com/spring-boot-info-actuator-custom)
 - [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
 - [Create a Custom Auto-Configuration with Spring Boot](http://www.baeldung.com/spring-boot-custom-auto-configuration)
+- [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
+- [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
+- [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
