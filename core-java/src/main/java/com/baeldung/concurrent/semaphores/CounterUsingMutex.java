@@ -2,17 +2,17 @@ package com.baeldung.concurrent.semaphores;
 
 import java.util.concurrent.Semaphore;
 
-public class CounterUsingMutex {
+class CounterUsingMutex {
 
     private final Semaphore mutex;
     private int count;
 
-    public CounterUsingMutex() {
+    CounterUsingMutex() {
         mutex = new Semaphore(1);
         count = 0;
     }
 
-    public void increase() throws InterruptedException {
+    void increase() throws InterruptedException {
         mutex.acquire();
         this.count = this.count + 1;
         Thread.sleep(1000);
@@ -20,11 +20,11 @@ public class CounterUsingMutex {
 
     }
 
-    public int getCount() {
+    int getCount() {
         return this.count;
     }
 
-    public boolean hasQueuedThreads() {
+    boolean hasQueuedThreads() {
         return mutex.hasQueuedThreads();
     }
 
