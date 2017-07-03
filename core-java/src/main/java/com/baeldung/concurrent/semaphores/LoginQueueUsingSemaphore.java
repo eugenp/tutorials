@@ -2,23 +2,23 @@ package com.baeldung.concurrent.semaphores;
 
 import java.util.concurrent.Semaphore;
 
-public class LoginQueueUsingSemaphore {
+class LoginQueueUsingSemaphore {
 
     private final Semaphore semaphore;
 
-    public LoginQueueUsingSemaphore(int slotLimit) {
+    LoginQueueUsingSemaphore(int slotLimit) {
         semaphore = new Semaphore(slotLimit);
     }
 
-    public boolean tryLogin() {
+    boolean tryLogin() {
         return semaphore.tryAcquire();
     }
 
-    public void logout() {
+    void logout() {
         semaphore.release();
     }
 
-    public int availableSlots() {
+    int availableSlots() {
         return semaphore.availablePermits();
     }
 
