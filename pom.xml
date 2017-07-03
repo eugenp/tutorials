@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -11,20 +12,21 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
-       <!-- <gib.enabled>false</gib.enabled>-->
+        <!-- <gib.enabled>false</gib.enabled>-->
         <junit.version>4.12</junit.version>
-        <org.hamcrest.version>1.3</org.hamcrest.version>       
+        <org.hamcrest.version>1.3</org.hamcrest.version>
         <mockito.version>1.10.19</mockito.version>
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
         <!-- plugins -->
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>      
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>         
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     </properties>
 
     <modules>
         <module>aws</module>
+        <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
         <module>apache-cxf</module>
@@ -69,8 +71,8 @@
         <module>immutables</module>
 
         <module>jackson</module>
-<!--         <module>java-cassandra</module> -->
-        <module>javaslang</module>
+        <!--         <module>java-cassandra</module> -->
+        <module>vavr</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
@@ -86,20 +88,19 @@
         <module>junit5</module>
         <module>jws</module>
 
-        <module>kotlin</module>
-
         <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
-
+       <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
         <module>metrics</module>
         <module>mesos-marathon</module>
         <module>mockito</module>
         <module>mockito2</module>
         <module>mocks</module>
+        <module>mustache</module>
 
         <module>orika</module>
 
@@ -120,13 +121,15 @@
         <module>selenium-junit-testng</module>
         <module>solr</module>
         <module>spark-java</module>
-        <module>spring-5</module>
+      <!--  <module>spring-5</module>-->
+        <module>spring-5-mvc</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
         <module>spring-amqp-simple</module>
         <module>spring-apache-camel</module>
         <module>spring-batch</module>
+        <module>spring-bom</module>
         <module>spring-boot</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -137,7 +140,6 @@
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-javaslang</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
@@ -163,7 +165,6 @@
         <module>spring-mvc-java</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
-        <module>spring-mvc-web-vs-initializer</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
@@ -173,6 +174,7 @@
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
         <module>spring-rest</module>
+        <module>spring-rest-simple</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
@@ -191,7 +193,6 @@
         <module>spring-security-mvc-session</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
-        <module>spring-security-rest-digest-auth</module>
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>
         <module>spring-security-x509</module>
@@ -204,6 +205,7 @@
         <module>spring-userservice</module>
         <module>spring-zuul</module>
         <module>spring-reactor</module>
+        <module>spring-vertx</module>
 
         <module>testing</module>
         <module>testng</module>
@@ -222,6 +224,8 @@
         <module>mybatis</module>
         <module>spring-drools</module>
         <module>drools</module>
+        <module>liquibase</module>
+        <module>spring-boot-property-exp</module>
     </modules>
 
     <dependencies>
@@ -240,12 +244,12 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
-        </dependency>  
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
             <version>${org.slf4j.version}</version>
-        </dependency>        
+        </dependency>
 
         <!--  test -->
         <dependency>
@@ -265,8 +269,8 @@
             <artifactId>hamcrest-library</artifactId>
             <version>${org.hamcrest.version}</version>
             <scope>test</scope>
-        </dependency>    
-                    <dependency>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <version>${org.hamcrest.version}</version>
@@ -278,7 +282,7 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>        
+    </dependencies>
 
     <build>
         <plugins>
@@ -293,7 +297,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>                
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>3</forkCount>
                     <reuseForks>true</reuseForks>
@@ -310,12 +314,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>                
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>            
+            </plugin>
         </plugins>
         <extensions>
             <!--<extension>

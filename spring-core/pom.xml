@@ -58,6 +58,17 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>1.5.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>${mockito.spring.boot.version}</version>
+            <scope>test</scope>
+         </dependency>
     </dependencies>
 
     <build>
@@ -112,6 +123,7 @@
 
     <properties>
         <mockito.version>1.10.19</mockito.version>
+        <mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
         <spring.version>4.3.4.RELEASE</spring.version>
         <javax.inject.version>1</javax.inject.version>
         <guava.version>20.0</guava.version>

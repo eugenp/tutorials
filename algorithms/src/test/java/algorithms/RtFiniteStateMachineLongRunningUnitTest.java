@@ -1,6 +1,6 @@
 package algorithms;
 
-import com.baeldung.automata.*;
+import com.baeldung.algorithms.automata.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -47,10 +47,9 @@ public class SplitUnitTest {
     }
 
     @Test
-    public void givenString_whenSplit_thenReturnsIterable_Splitter() {
+    public void givenString_whenSplit_thenReturnsList_Splitter() {
         //given
-        Iterable<String> result = Splitter.on(',').trimResults().omitEmptyStrings().split("car,jeep,,   scooter");
-        List<String> resultList = Lists.newArrayList(result);
+        List<String> resultList = Splitter.on(',').trimResults().omitEmptyStrings().splitToList("car,jeep,,   scooter");
 
         assertThat(resultList)
           .containsExactly("car", "jeep", "scooter");

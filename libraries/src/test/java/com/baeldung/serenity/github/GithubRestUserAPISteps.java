@@ -14,9 +14,6 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * @author aiet
- */
 public class GithubRestUserAPISteps {
 
     private String api;

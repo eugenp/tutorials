@@ -9,6 +9,15 @@
 - [Introduction to Apache Flink with Java](http://www.baeldung.com/apache-flink)
 - [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
 - [Intro to JaVer](http://www.baeldung.com/javers)
+- [Introduction to Apache Commons Math](http://www.baeldung.com/apache-commons-math)
+- [Intro to JaVer](http://www.baeldung.com/serenity-bdd)
+- [Introduction to Netty](http://www.baeldung.com/netty)
+- [Guide to Java Data Objects](http://www.baeldung.com/jdo)
+- [Software Transactional Memory in Java Using Multiverse](http://www.baeldung.com/java-multiverse-stm)
+- [Introduction to HikariCP](http://www.baeldung.com/hikaricp)
+- [Serenity BDD with Spring and JBehave](http://www.baeldung.com/serenity-spring-jbehave)
+- [Locality-Sensitive Hashing in Java Using Java-LSH](http://www.baeldung.com/locality-sensitive-hashing)
+- [Apache Commons Collections OrderedMap](http://www.baeldung.com/apache-commons-ordered-map)
 
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
