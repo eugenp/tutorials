@@ -61,12 +61,6 @@ public class CollectionUtilsGuideTest {
     }
     
     @Test
-    public void givenCustomerList_whenCountMatches_thenCorrect() {
-        int result = CollectionUtils.countMatches(list1, customer -> Arrays.asList("Daniel","Kyle").contains(customer.getName()));
-        assertTrue(result == 2);
-    }
-    
-    @Test
     public void givenCustomerList_WhenFiltered_thenCorrectSize() {
         
         boolean isModified = CollectionUtils.filter(linkedList1, customer -> Arrays.asList("Daniel","Kyle").contains(customer.getName()));
@@ -75,16 +69,6 @@ public class CollectionUtilsGuideTest {
         //select and selectRejected work the same way except that they do not remove elements from the given collection and return a new collection 
         
         assertTrue(isModified && linkedList1.size() == 2);
-    }
-    
-    @Test
-    public void givenCustomerList_whenForAllDoSetNameNull_thenNameNull() {
-        CollectionUtils.forAllDo(list1, customer -> {
-            customer.setName(null);
-        });
-        
-        // forAllButLast does the same except for the last element in the collection
-        assertTrue(list1.get(0).getName() == null);
     }
     
     @Test
