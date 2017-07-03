@@ -9,8 +9,8 @@ import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
  */
 public class AdderSteps {
 
-    int currentNumber;
-    int sum;
+    private int currentNumber;
+    private int sum;
 
     @Step("given current number")
     public void givenNumber() {

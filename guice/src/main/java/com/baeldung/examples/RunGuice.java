@@ -12,7 +12,7 @@ import java.util.Scanner;
  *
  * @author baeldung
  */
-public class RunGuice {
+class RunGuice {
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new BasicModule(), new AOPModule());

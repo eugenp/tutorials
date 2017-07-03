@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ExampleController {
+class ExampleController {
 
     @RequestMapping(value = "/controller", method = RequestMethod.GET)
     @ResponseBody

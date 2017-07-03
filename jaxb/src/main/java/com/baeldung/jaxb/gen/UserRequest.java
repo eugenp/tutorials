@@ -40,9 +40,9 @@ public class UserRequest
 {
 
     private final static long serialVersionUID = -1L;
-    protected int id;
+    private int id;
     @XmlElement(required = true)
-    protected String name;
+    private String name;
 
     /**
      * Gets the value of the id property.

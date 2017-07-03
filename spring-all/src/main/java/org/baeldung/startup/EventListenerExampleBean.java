@@ -8,10 +8,10 @@ import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EventListenerExampleBean {
+class EventListenerExampleBean {
     private static final Logger LOG = LoggerFactory.getLogger(EventListenerExampleBean.class);
 
-    public static int counter;
+    private static int counter;
 
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event) {

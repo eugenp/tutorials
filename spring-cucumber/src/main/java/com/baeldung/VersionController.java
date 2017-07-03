@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VersionController {
+class VersionController {
 
     @RequestMapping(method = { RequestMethod.GET }, value = { "/version" })
     public String getVersion() {

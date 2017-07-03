@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CompanyController {
+class CompanyController {
 
     @RequestMapping(value = "/companyRest", produces = MediaType.APPLICATION_JSON_VALUE)
     public Company getCompanyRest() {

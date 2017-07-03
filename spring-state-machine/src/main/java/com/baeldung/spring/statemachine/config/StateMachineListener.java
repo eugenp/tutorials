@@ -5,9 +5,9 @@ import org.springframework.statemachine.state.State;
 
 import java.util.logging.Logger;
 
-public class StateMachineListener extends StateMachineListenerAdapter {
+class StateMachineListener extends StateMachineListenerAdapter {
 
-    public static final Logger LOGGER = Logger.getLogger(StateMachineListener.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(StateMachineListener.class.getName());
 
     @Override
     public void stateChanged(State from, State to) {

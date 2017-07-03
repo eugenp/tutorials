@@ -4,13 +4,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 public class Item {
     @JsonView(Views.Public.class)
-    public int id;
+    private int id;
 
     @JsonView(Views.Public.class)
-    public String itemName;
+    private String itemName;
 
     @JsonView(Views.Internal.class)
-    public String ownerName;
+    private String ownerName;
 
     public Item() {
         super();

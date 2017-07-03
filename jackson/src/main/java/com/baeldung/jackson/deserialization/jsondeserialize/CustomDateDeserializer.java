@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CustomDateDeserializer extends StdDeserializer<Date> {
+class CustomDateDeserializer extends StdDeserializer<Date> {
 
     private static SimpleDateFormat formatter =
             new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

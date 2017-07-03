@@ -3,7 +3,7 @@ package org.baeldung.equalshashcode.entities;
 import java.util.List;
 import java.util.Set;
 
-public class ComplexClass {
+class ComplexClass {
 
     private List<?> genericList;
     private Set<Integer> integerSet;

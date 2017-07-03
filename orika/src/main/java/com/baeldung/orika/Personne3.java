@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class Personne3 {
+class Personne3 {
 	private String name;
 	private long dtob;
 

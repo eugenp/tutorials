@@ -8,7 +8,7 @@ import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
 
 @Configuration
-public class MonitoringConfig {
+class MonitoringConfig {
     @Autowired
     private MetricRegistry registry;
 

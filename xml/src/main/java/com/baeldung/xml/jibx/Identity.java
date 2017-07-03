@@ -1,8 +1,8 @@
 package com.baeldung.xml.jibx;
 
-public class Identity {
+class Identity {
 
-	long customerId;
+	private long customerId;
 
 	public long getCustomerId() {
 		return customerId;

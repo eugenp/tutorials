@@ -9,11 +9,11 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class NettyServer {
+class NettyServer {
 
     private int port;
 
-    public NettyServer(int port) {
+    private NettyServer(int port) {
         this.port = port;
     }
 
@@ -27,7 +27,7 @@ public class NettyServer {
         new NettyServer(port).run();
     }
 
-    public void run() throws Exception {
+    private void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TwelveMonkeysExample {
+class TwelveMonkeysExample {
     public static void main(String[] args) throws IOException {
         BufferedImage image  = loadImage();
         drawRectangle(image);

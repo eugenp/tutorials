@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.baeldung.displayallbeans.service.FooService;
 
 @Controller
-public class FooController {
+class FooController {
     @Autowired
     private FooService fooService;
     

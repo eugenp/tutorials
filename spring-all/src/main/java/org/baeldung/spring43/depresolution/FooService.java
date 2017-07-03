@@ -4,7 +4,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FooService {
+class FooService {
 
     private final FooRepository repository;
 

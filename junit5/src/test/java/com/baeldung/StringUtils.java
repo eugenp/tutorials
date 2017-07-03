@@ -1,6 +1,6 @@
 package com.baeldung;
 
-public final class StringUtils {
+final class StringUtils {
 
 	public static Double convertToDouble(String str) {
 		if (str == null) {

@@ -1,6 +1,6 @@
 package com.baeldung.javers;
 
-public class Person {
+class Person {
     private Integer id;
     private String name;
 

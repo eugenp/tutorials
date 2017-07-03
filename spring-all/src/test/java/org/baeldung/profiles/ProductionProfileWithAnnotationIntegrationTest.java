@@ -16,9 +16,11 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 public class ProductionProfileWithAnnotationIntegrationTest {
 
     @Autowired
+    private
     DatasourceConfig datasourceConfig;
 
     @Autowired
+    private
     Environment environment;
 
     @Test

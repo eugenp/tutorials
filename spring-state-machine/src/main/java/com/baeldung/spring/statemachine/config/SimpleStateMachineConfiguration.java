@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 @EnableStateMachine
 public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapter<String, String> {
 
-    public static final Logger LOGGER = Logger.getLogger(SimpleStateMachineConfiguration.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SimpleStateMachineConfiguration.class.getName());
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<String, String> config) throws Exception {
@@ -79,7 +79,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Guard<String, String> simpleGuard() {
+    private Guard<String, String> simpleGuard() {
         return (ctx) -> {
             int approvalCount = (int) ctx
               .getExtendedState()
@@ -90,7 +90,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Action<String, String> entryAction() {
+    private Action<String, String> entryAction() {
         return ctx -> LOGGER.info("Entry " + ctx
           .getTarget()
           .getId());
@@ -104,7 +104,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Action<String, String> executeAction() {
+    private Action<String, String> executeAction() {
         return ctx -> {
             LOGGER.info("Execute " + ctx
               .getTarget()
@@ -122,7 +122,7 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Action<String, String> exitAction() {
+    private Action<String, String> exitAction() {
         return ctx -> LOGGER.info("Exit " + ctx
           .getSource()
           .getId() + " -> " + ctx
@@ -131,14 +131,14 @@ public class SimpleStateMachineConfiguration extends StateMachineConfigurerAdapt
     }
 
     @Bean
-    public Action<String, String> errorAction() {
+    private Action<String, String> errorAction() {
         return ctx -> LOGGER.info("Error " + ctx
           .getSource()
           .getId() + ctx.getException());
     }
 
     @Bean
-    public Action<String, String> initAction() {
+    private Action<String, String> initAction() {
         return ctx -> LOGGER.info(ctx
           .getTarget()
           .getId());

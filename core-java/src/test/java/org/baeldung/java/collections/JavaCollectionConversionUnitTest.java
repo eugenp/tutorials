@@ -59,13 +59,13 @@ public class JavaCollectionConversionUnitTest {
     @Test
     public final void givenUsingCoreJavaV1_whenArrayConvertedToSet_thenCorrect() {
         final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
-        final Set<Integer> targetSet = new HashSet<Integer>(Arrays.asList(sourceArray));
+        final Set<Integer> targetSet = new HashSet<>(Arrays.asList(sourceArray));
     }
 
     @Test
     public final void givenUsingCoreJavaV2_whenArrayConvertedToSet_thenCorrect() {
         final Integer[] sourceArray = { 0, 1, 2, 3, 4, 5 };
-        final Set<Integer> targetSet = new HashSet<Integer>();
+        final Set<Integer> targetSet = new HashSet<>();
         Collections.addAll(targetSet, sourceArray);
     }
 

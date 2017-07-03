@@ -8,7 +8,7 @@ package com.baeldung.xml.jibx;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-public class Customer {
+class Customer {
 	private Person person;
 	private String city;
 

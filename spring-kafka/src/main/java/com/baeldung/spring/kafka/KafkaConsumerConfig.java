@@ -16,12 +16,12 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @EnableKafka
 @Configuration
-public class KafkaConsumerConfig {
+class KafkaConsumerConfig {
 
     @Value(value = "${kafka.bootstrapAddress}")
     private String bootstrapAddress;
 
-    public ConsumerFactory<String, String> consumerFactory(String groupId) {
+    private ConsumerFactory<String, String> consumerFactory(String groupId) {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
@@ -67,7 +67,7 @@ public class KafkaConsumerConfig {
         return factory;
     }
 
-    public ConsumerFactory<String, Greeting> greetingConsumerFactory() {
+    private ConsumerFactory<String, Greeting> greetingConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "greeting");

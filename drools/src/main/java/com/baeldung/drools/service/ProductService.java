@@ -5,7 +5,7 @@ import com.baeldung.drools.model.Product;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-public class ProductService {
+class ProductService {
 
     private KieSession kieSession=new DroolsBeanFactory().getKieSession();
 

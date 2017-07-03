@@ -2,9 +2,9 @@ package com.baeldung.jackson.dtos;
 
 public class MyDtoNoAccessors {
 
-    String stringValue;
-    int intValue;
-    boolean booleanValue;
+    private String stringValue;
+    private int intValue;
+    private boolean booleanValue;
 
     public MyDtoNoAccessors() {
         super();

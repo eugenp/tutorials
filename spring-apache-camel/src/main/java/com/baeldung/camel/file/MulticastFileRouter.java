@@ -2,7 +2,7 @@ package com.baeldung.camel.file;
 
 import org.apache.camel.builder.RouteBuilder;
 
-public class MulticastFileRouter extends RouteBuilder {
+class MulticastFileRouter extends RouteBuilder {
     private static final String SOURCE_FOLDER = "src/test/source-folder";
     private static final String DESTINATION_FOLDER_WORLD = "src/test/destination-folder-world";
     private static final String DESTINATION_FOLDER_HELLO = "src/test/destination-folder-hello";

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /***
  * Example of wait() and sleep() methods
  */
-public class WaitSleepExample {
+class WaitSleepExample {
 
     private static final Logger LOG = LoggerFactory.getLogger(WaitSleepExample.class);
 

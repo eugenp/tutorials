@@ -2,7 +2,7 @@ package com.baeldung.maths;
 
 import java.math.BigDecimal;
 
-public class FloatingPointArithmetic {
+class FloatingPointArithmetic {
     public static void main(String[] args) {
         
         double a = 13.22;

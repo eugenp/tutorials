@@ -1,6 +1,6 @@
 package com.baeldung.lombok.intro;
 
-public interface HasContactInformation {
+interface HasContactInformation {
 
     String getFirstName();
     void setFirstName(String firstName);

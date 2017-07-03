@@ -33,7 +33,7 @@ import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
 import opennlp.tools.util.TrainingParameters;
 
-public class OpenNLP {
+class OpenNLP {
 
     private final static Logger LOGGER = Logger.getLogger(OpenNLP.class.getName());
     private final static String text = buildString();
@@ -45,7 +45,7 @@ public class OpenNLP {
         new OpenNLP();
     }
 
-    public static String buildString(){
+    private static String buildString(){
         StringBuilder sb = new StringBuilder();
         sb.append("To get to the south:");
         sb.append(" Go to the store.");
@@ -55,7 +55,7 @@ public class OpenNLP {
         return sb.toString();
     }
     
-    public OpenNLP() {
+    private OpenNLP() {
         try {
             sentenceDetector();
             tokenizer();
@@ -72,7 +72,7 @@ public class OpenNLP {
         }
     }
 
-    public void sentenceDetector() throws InvalidFormatException, IOException {
+    private void sentenceDetector() throws InvalidFormatException, IOException {
 
         InputStream is = new FileInputStream("OpenNLP/en-sent.bin");
         SentenceModel model = new SentenceModel(is);
@@ -84,7 +84,7 @@ public class OpenNLP {
         is.close();
     }
 
-    public void tokenizer() throws InvalidFormatException, IOException {
+    private void tokenizer() throws InvalidFormatException, IOException {
         InputStream is = new FileInputStream("OpenNLP/en-token.bin");
         TokenizerModel model = new TokenizerModel(is);
         Tokenizer tokenizer = new TokenizerME(model);
@@ -95,7 +95,7 @@ public class OpenNLP {
         is.close();
     }
 
-    public static void nameFinder() throws IOException {
+    private static void nameFinder() throws IOException {
         InputStream is = new FileInputStream("OpenNLP/en-ner-person.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         is.close();
@@ -108,7 +108,7 @@ public class OpenNLP {
         }
     }
 
-    public static void locationFinder() throws IOException {
+    private static void locationFinder() throws IOException {
         InputStream is = new FileInputStream("OpenNLP/en-ner-location.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(is);
         is.close();
@@ -121,7 +121,7 @@ public class OpenNLP {
         }
     }
 
-    public void trainDocumentCategorizer() {
+    private void trainDocumentCategorizer() {
 
         try {
             InputStreamFactory isf = new InputStreamFactory() {
@@ -138,7 +138,7 @@ public class OpenNLP {
         }
     }
 
-    public void documentCategorizer() {
+    private void documentCategorizer() {
         DocumentCategorizerME myCategorizer = new DocumentCategorizerME(docCatModel);
         double[] outcomes = myCategorizer.categorize(sentence);
         String category = myCategorizer.getBestCategory(outcomes);
@@ -150,7 +150,7 @@ public class OpenNLP {
         }
     }
 
-    public static void partOfSpeechTagger() throws IOException {
+    private static void partOfSpeechTagger() throws IOException {
         try {
             POSModel posModel = new POSModelLoader().load(new File("OpenNLP/en-pos-maxent.bin"));
             POSTaggerME posTaggerME = new POSTaggerME(posModel);
@@ -173,7 +173,7 @@ public class OpenNLP {
         }
     }
 
-    public static void chunker() throws IOException {
+    private static void chunker() throws IOException {
         InputStream is = new FileInputStream("OpenNLP/en-chunker.bin");
         ChunkerModel cModel = new ChunkerModel(is);
         ChunkerME chunkerME = new ChunkerME(cModel);

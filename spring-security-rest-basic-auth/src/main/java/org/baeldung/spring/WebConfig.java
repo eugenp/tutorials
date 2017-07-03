@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 @EnableWebMvc
 @ComponentScan("org.baeldung.web")
-public class WebConfig extends WebMvcConfigurerAdapter {
+class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
         super();

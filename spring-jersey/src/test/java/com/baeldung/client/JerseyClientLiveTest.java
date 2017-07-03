@@ -11,7 +11,7 @@ import com.baeldung.server.model.Employee;
 
 public class JerseyClientLiveTest {
 
-    public static final int HTTP_CREATED = 201;
+    private static final int HTTP_CREATED = 201;
 
     private RestClient client = new RestClient();
 

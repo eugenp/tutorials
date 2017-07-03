@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.util.ReflectionUtils;
 
-public class CascadeCallback implements ReflectionUtils.FieldCallback {
+class CascadeCallback implements ReflectionUtils.FieldCallback {
 
     private Object source;
     private MongoOperations mongoOperations;
@@ -35,7 +35,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
 
     }
 
-    public Object getSource() {
+    private Object getSource() {
         return source;
     }
 
@@ -43,11 +43,11 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
         this.source = source;
     }
 
-    public MongoOperations getMongoOperations() {
+    private MongoOperations getMongoOperations() {
         return mongoOperations;
     }
 
-    public void setMongoOperations(final MongoOperations mongoOperations) {
+    private void setMongoOperations(final MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
 }

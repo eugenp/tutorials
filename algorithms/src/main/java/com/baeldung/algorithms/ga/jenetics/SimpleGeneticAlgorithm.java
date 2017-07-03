@@ -7,7 +7,7 @@ import org.jenetics.engine.Engine;
 import org.jenetics.engine.EvolutionResult;
 import org.jenetics.util.Factory;
 
-public class SimpleGeneticAlgorithm {
+class SimpleGeneticAlgorithm {
 
     private static Integer eval(Genotype<BitGene> gt) {
         return gt.getChromosome()

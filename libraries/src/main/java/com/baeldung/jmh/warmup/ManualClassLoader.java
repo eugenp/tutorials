@@ -2,7 +2,7 @@ package com.baeldung.jmh.warmup;
 
 import com.baeldung.jmh.warmup.dummy.Dummy;
 
-public class ManualClassLoader {
+class ManualClassLoader {
 
     public static void load() {
 

@@ -5,7 +5,7 @@ import com.baeldung.chainedexception.exceptions.ManagerUpsetException;
 import com.baeldung.chainedexception.exceptions.NoLeaveGrantedException;
 import com.baeldung.chainedexception.exceptions.TeamLeadUpsetException;
 
-public class LogWithoutChain {
+class LogWithoutChain {
 
     public static void main(String[] args) throws Exception {
         getLeave();

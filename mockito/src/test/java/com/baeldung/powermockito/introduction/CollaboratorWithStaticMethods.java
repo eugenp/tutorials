@@ -1,6 +1,6 @@
 package com.baeldung.powermockito.introduction;
 
-public class CollaboratorWithStaticMethods {
+class CollaboratorWithStaticMethods {
 
     public static String firstMethod(String name) {
         return "Hello " + name + " !";

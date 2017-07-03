@@ -1,6 +1,6 @@
 package org.baeldung.scheduling;
 
-public class SchedulingWithXmlConfig {
+class SchedulingWithXmlConfig {
 
     public void scheduleFixedDelayTask() {
         System.out.println("Fixed delay task - " + System.currentTimeMillis() / 1000);

@@ -60,7 +60,7 @@ public class CollectionsConcatenateUnitTest {
         Assert.assertEquals(Arrays.asList("S", "T", "U", "V"), collectionCombined);
     }
 
-    public static <E> Iterable<E> concat(Iterable<? extends E> i1, Iterable<? extends E> i2) {
+    private static <E> Iterable<E> concat(Iterable<? extends E> i1, Iterable<? extends E> i2) {
         return new Iterable<E>() {
             public Iterator<E> iterator() {
                 return new Iterator<E>() {
@@ -103,7 +103,7 @@ public class CollectionsConcatenateUnitTest {
         };
     }
 
-    public static <E> List<E> makeListFromIterable(Iterable<E> iter) {
+    private static <E> List<E> makeListFromIterable(Iterable<E> iter) {
         List<E> list = new ArrayList<>();
         for (E item : iter) {
             list.add(item);

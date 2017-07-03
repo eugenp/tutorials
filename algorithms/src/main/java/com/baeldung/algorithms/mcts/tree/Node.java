@@ -8,9 +8,9 @@ import java.util.List;
 import com.baeldung.algorithms.mcts.montecarlo.State;
 
 public class Node {
-    State state;
-    Node parent;
-    List<Node> childArray;
+    private State state;
+    private Node parent;
+    private List<Node> childArray;
 
     public Node() {
         this.state = new State();

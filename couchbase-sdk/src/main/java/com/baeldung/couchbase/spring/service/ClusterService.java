@@ -6,7 +6,7 @@ import com.couchbase.client.java.AsyncBucket;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.document.JsonDocument;
 
-public interface ClusterService {
+interface ClusterService {
 
     Bucket openBucket(String name, String password);
 

@@ -7,7 +7,7 @@ import org.jbehave.core.annotations.When;
 
 import java.io.IOException;
 
-public class GithubUserProfilePayloadStepDefinitions {
+class GithubUserProfilePayloadStepDefinitions {
 
     @Steps
     private GithubRestAssuredUserAPISteps userAPISteps;

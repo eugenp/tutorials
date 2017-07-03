@@ -12,7 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MyApplication implements CommandLineRunner {
+class MyApplication implements CommandLineRunner {
 
     @Autowired
     private YAMLConfig myConfig;

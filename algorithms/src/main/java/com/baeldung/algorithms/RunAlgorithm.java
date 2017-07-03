@@ -7,7 +7,7 @@ import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 import com.baeldung.algorithms.ga.binary.SimpleGeneticAlgorithm;
 import com.baeldung.algorithms.slope_one.SlopeOne;
 
-public class RunAlgorithm {
+class RunAlgorithm {
 
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException {
 		Scanner in = new Scanner(System.in);

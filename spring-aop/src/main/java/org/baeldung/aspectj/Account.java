@@ -1,7 +1,7 @@
 package org.baeldung.aspectj;
 
-public class Account {
-    int balance = 20;
+class Account {
+    private int balance = 20;
 
     public boolean withdraw(int amount) {
         if (balance < amount) {

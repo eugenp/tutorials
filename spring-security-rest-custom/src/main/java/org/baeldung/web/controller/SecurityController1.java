@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController1 {
+class SecurityController1 {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;

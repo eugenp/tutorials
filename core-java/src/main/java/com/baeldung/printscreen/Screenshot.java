@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class Screenshot {
+class Screenshot {
 
     private final String path;
 

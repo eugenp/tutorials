@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EmployeeDAO {
+class EmployeeDAO {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -52,7 +52,7 @@ public class EmployeeDAO {
     }
 
     public int addEmplyeeUsingSimpelJdbcInsert(final Employee emp) {
-        final Map<String, Object> parameters = new HashMap<String, Object>();
+        final Map<String, Object> parameters = new HashMap<>();
         parameters.put("ID", emp.getId());
         parameters.put("FIRST_NAME", emp.getFirstName());
         parameters.put("LAST_NAME", emp.getLastName());

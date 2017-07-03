@@ -2,7 +2,7 @@ package com.baeldung.jackson.inheritance;
 
 import java.util.List;
 
-public class TypeInfoStructure {
+class TypeInfoStructure {
     public static class Fleet {
         private List<Vehicle> vehicles;
 
@@ -19,10 +19,10 @@ public class TypeInfoStructure {
         private String make;
         private String model;
 
-        protected Vehicle() {
+        Vehicle() {
         }
 
-        protected Vehicle(String make, String model) {
+        Vehicle(String make, String model) {
             this.make = make;
             this.model = model;
         }

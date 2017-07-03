@@ -7,12 +7,12 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class UserWithSerializer {
-    public int id;
+    private int id;
     public String name;
 
     @JsonSerialize(using = CustomListSerializer.class)
     @JsonDeserialize(using = CustomListDeserializer.class)
-    public List<ItemWithSerializer> userItems;
+    private List<ItemWithSerializer> userItems;
 
     public UserWithSerializer() {
         super();
@@ -21,7 +21,7 @@ public class UserWithSerializer {
     public UserWithSerializer(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithSerializer>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithSerializer item) {

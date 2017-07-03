@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/crud")
-public class CRUDController {
+class CRUDController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public List<CrudInput> read(@RequestBody CrudInput crudInput) {
-        List<CrudInput> returnList = new ArrayList<CrudInput>();
+        List<CrudInput> returnList = new ArrayList<>();
         returnList.add(crudInput);
         return returnList;
     }

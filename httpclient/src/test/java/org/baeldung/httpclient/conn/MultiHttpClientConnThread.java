@@ -11,14 +11,14 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MultiHttpClientConnThread extends Thread {
+class MultiHttpClientConnThread extends Thread {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final CloseableHttpClient client;
     private final HttpGet get;
 
     private PoolingHttpClientConnectionManager connManager;
-    public int leasedConn;
+    private int leasedConn;
 
     public MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;

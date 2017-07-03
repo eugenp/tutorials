@@ -15,7 +15,7 @@ public class Person {
 	public Person(Integer personId, String name) {
 		this.personId = personId;
 		this.name = name;
-		addresses = new ArrayList<Address>();
+		addresses = new ArrayList<>();
 	}
 
 	public Person(String name) {

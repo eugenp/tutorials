@@ -5,7 +5,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.xml.bind.annotation.XmlAttribute;
 
 @PersistenceCapable()
-public class ProductXML {
+class ProductXML {
 
     @XmlAttribute
     private long productNumber = 0;

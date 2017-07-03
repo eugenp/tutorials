@@ -14,7 +14,7 @@ public class ConstructorBasedShipConfig {
     }
 
     @Bean
-    public Helm helm() {
+    private Helm helm() {
         return new Helm();
     }
 }

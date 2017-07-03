@@ -3,7 +3,7 @@ package com.baeldung.java.map;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class MyLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
+class MyLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 
     /**
      * 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 
-public class ApiError {
+class ApiError {
 
     private HttpStatus status;
     private String message;

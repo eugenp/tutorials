@@ -7,7 +7,7 @@ import org.redisson.api.annotation.RId;
  * Created by johnson on 3/9/17.
  */
 @REntity
-public class LedgerLiveObject {
+class LedgerLiveObject {
     @RId
     private String name;
 

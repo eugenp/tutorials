@@ -1,6 +1,6 @@
 package com.baeldung.spring.kafka;
 
-public class Greeting {
+class Greeting {
 
     private String msg;
     private String name;

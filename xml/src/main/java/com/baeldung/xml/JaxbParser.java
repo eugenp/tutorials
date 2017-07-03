@@ -11,7 +11,7 @@ import javax.xml.bind.Unmarshaller;
 import com.baeldung.xml.binding.Tutorial;
 import com.baeldung.xml.binding.Tutorials;
 
-public class JaxbParser {
+class JaxbParser {
 
     private File file;
 
@@ -33,7 +33,7 @@ public class JaxbParser {
 
     public void createNewDocument() {
         Tutorials tutorials = new Tutorials();
-        tutorials.setTutorial(new ArrayList<Tutorial>());
+        tutorials.setTutorial(new ArrayList<>());
         Tutorial tut = new Tutorial();
         tut.setTutId("01");
         tut.setType("XML");
@@ -57,7 +57,7 @@ public class JaxbParser {
 
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

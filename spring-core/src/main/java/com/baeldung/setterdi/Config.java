@@ -10,7 +10,7 @@ import com.baeldung.setterdi.domain.Transmission;
 
 @Configuration
 @ComponentScan("com.baeldung.setterdi")
-public class Config {
+class Config {
 
     @Bean
     public Engine engine() {

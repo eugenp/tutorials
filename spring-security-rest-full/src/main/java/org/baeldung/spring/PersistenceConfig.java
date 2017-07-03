@@ -37,7 +37,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    private LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
@@ -51,7 +51,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
@@ -74,7 +74,7 @@ public class PersistenceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @ComponentScan
 @EnableScheduling
-public class SpringQuartzApp {
+class SpringQuartzApp {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(SpringQuartzApp.class).bannerMode(Mode.OFF).run(args);

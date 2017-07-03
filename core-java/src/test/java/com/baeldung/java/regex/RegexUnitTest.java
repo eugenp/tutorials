@@ -481,7 +481,7 @@ public class RegexUnitTest {
 
     }
 
-    public synchronized static int runTest(String regex, String text) {
+    private synchronized static int runTest(String regex, String text) {
         pattern = Pattern.compile(regex);
         matcher = pattern.matcher(text);
         int matches = 0;
@@ -490,7 +490,7 @@ public class RegexUnitTest {
         return matches;
     }
 
-    public synchronized static int runTest(String regex, String text, int flags) {
+    private synchronized static int runTest(String regex, String text, int flags) {
         pattern = Pattern.compile(regex, flags);
         matcher = pattern.matcher(text);
         int matches = 0;

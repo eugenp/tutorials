@@ -17,8 +17,8 @@ public class InvalidOperationException extends org.apache.thrift.TException impl
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new InvalidOperationExceptionStandardSchemeFactory();
   private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new InvalidOperationExceptionTupleSchemeFactory();
 
-  public int code; // required
-  public java.lang.String description; // required
+  private int code; // required
+  private java.lang.String description; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -84,7 +84,7 @@ public class InvalidOperationException extends org.apache.thrift.TException impl
   // isset id assignments
   private static final int __CODE_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
-  public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+  private static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.CODE, new org.apache.thrift.meta_data.FieldMetaData("code", org.apache.thrift.TFieldRequirementType.DEFAULT, 
@@ -130,48 +130,48 @@ public class InvalidOperationException extends org.apache.thrift.TException impl
     this.description = null;
   }
 
-  public int getCode() {
+  private int getCode() {
     return this.code;
   }
 
-  public InvalidOperationException setCode(int code) {
+  private InvalidOperationException setCode(int code) {
     this.code = code;
     setCodeIsSet(true);
     return this;
   }
 
-  public void unsetCode() {
+  private void unsetCode() {
     __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __CODE_ISSET_ID);
   }
 
   /** Returns true if field code is set (has been assigned a value) and false otherwise */
-  public boolean isSetCode() {
+  private boolean isSetCode() {
     return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __CODE_ISSET_ID);
   }
 
-  public void setCodeIsSet(boolean value) {
+  private void setCodeIsSet(boolean value) {
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __CODE_ISSET_ID, value);
   }
 
-  public java.lang.String getDescription() {
+  private java.lang.String getDescription() {
     return this.description;
   }
 
-  public InvalidOperationException setDescription(java.lang.String description) {
+  private InvalidOperationException setDescription(java.lang.String description) {
     this.description = description;
     return this;
   }
 
-  public void unsetDescription() {
+  private void unsetDescription() {
     this.description = null;
   }
 
   /** Returns true if field description is set (has been assigned a value) and false otherwise */
-  public boolean isSetDescription() {
+  private boolean isSetDescription() {
     return this.description != null;
   }
 
-  public void setDescriptionIsSet(boolean value) {
+  private void setDescriptionIsSet(boolean value) {
     if (!value) {
       this.description = null;
     }
@@ -337,7 +337,7 @@ public class InvalidOperationException extends org.apache.thrift.TException impl
     return sb.toString();
   }
 
-  public void validate() throws org.apache.thrift.TException {
+  private void validate() throws org.apache.thrift.TException {
     // check for required fields
     // check for sub-struct validity
   }

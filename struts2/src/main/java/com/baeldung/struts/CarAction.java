@@ -7,7 +7,7 @@ import org.apache.struts2.convention.annotation.Result;
 @Namespace("/tutorial")
 @Action("/car")
 @Result(name = "success", location = "/result.jsp")
-public class CarAction { 
+class CarAction {
     private String carName;
     private String carMessage;
     private CarMessageService carMessageService = new CarMessageService();
@@ -30,7 +30,7 @@ public class CarAction {
         return carMessage;
     }
 
-    public void setCarMessage(String carMessage) {
+    private void setCarMessage(String carMessage) {
         this.carMessage = carMessage;
     }
 

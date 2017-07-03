@@ -7,5 +7,5 @@ import org.springframework.session.web.context.AbstractHttpSessionApplicationIni
 
 @Configuration
 @EnableRedisHttpSession(redisFlushMode = RedisFlushMode.IMMEDIATE)
-public class SessionConfig extends AbstractHttpSessionApplicationInitializer {
+class SessionConfig extends AbstractHttpSessionApplicationInitializer {
 }

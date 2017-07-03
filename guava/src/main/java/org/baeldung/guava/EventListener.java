@@ -5,7 +5,7 @@ import com.google.common.eventbus.Subscribe;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class EventListener {
+class EventListener {
 
     private static int eventsHandled;
     private static final Logger LOG = LoggerFactory.getLogger(EventListener.class);

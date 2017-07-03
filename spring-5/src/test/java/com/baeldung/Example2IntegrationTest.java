@@ -19,7 +19,7 @@ public class Example2IntegrationTest {
         block(3000);
     }
 
-    public static void block(long ms) {
+    private static void block(long ms) {
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {

@@ -6,7 +6,7 @@ import ij.process.ImageProcessor;
 
 import java.awt.*;
 
-public class ImageJRectExample {
+class ImageJRectExample {
     public static void main(String[] args) {
         ImagePlus imp = IJ.openImage(ImageJRectExample.class.getClassLoader().getResource("lena.jpg").getPath());
         drawRect(imp);

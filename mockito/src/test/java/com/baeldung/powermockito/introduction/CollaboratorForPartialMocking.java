@@ -1,6 +1,6 @@
 package com.baeldung.powermockito.introduction;
 
-public class CollaboratorForPartialMocking {
+class CollaboratorForPartialMocking {
 
     public static String staticMethod() {
         return "Hello Baeldung!";

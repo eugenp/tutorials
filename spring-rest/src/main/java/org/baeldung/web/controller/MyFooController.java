@@ -20,13 +20,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
 @RequestMapping(value = "/foos")
-public class MyFooController {
+class MyFooController {
 
     private final Map<Long, Foo> myfoos;
 
     public MyFooController() {
         super();
-        myfoos = new HashMap<Long, Foo>();
+        myfoos = new HashMap<>();
         myfoos.put(1L, new Foo(1L, "sample foo"));
     }
 

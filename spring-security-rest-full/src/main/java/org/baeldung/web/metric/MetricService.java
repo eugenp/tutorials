@@ -20,9 +20,9 @@ public class MetricService implements IMetricService {
 
     public MetricService() {
         super();
-        metricMap = new ConcurrentHashMap<String, ConcurrentHashMap<Integer, Integer>>();
-        statusMetric = new ConcurrentHashMap<Integer, Integer>();
-        timeMap = new ConcurrentHashMap<String, ConcurrentHashMap<Integer, Integer>>();
+        metricMap = new ConcurrentHashMap<>();
+        statusMetric = new ConcurrentHashMap<>();
+        timeMap = new ConcurrentHashMap<>();
     }
 
     // API
@@ -80,7 +80,7 @@ public class MetricService implements IMetricService {
     private void increaseMainMetric(final String request, final int status) {
         ConcurrentHashMap<Integer, Integer> statusMap = metricMap.get(request);
         if (statusMap == null) {
-            statusMap = new ConcurrentHashMap<Integer, Integer>();
+            statusMap = new ConcurrentHashMap<>();
         }
 
         Integer count = statusMap.get(status);
@@ -106,7 +106,7 @@ public class MetricService implements IMetricService {
         final String time = dateFormat.format(new Date());
         ConcurrentHashMap<Integer, Integer> statusMap = timeMap.get(time);
         if (statusMap == null) {
-            statusMap = new ConcurrentHashMap<Integer, Integer>();
+            statusMap = new ConcurrentHashMap<>();
         }
 
         Integer count = statusMap.get(status);

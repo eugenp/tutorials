@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-public class HeavyResourceController {
+class HeavyResourceController {
 
     private HeavyResourceRepository heavyResourceRepository = new HeavyResourceRepository();
 

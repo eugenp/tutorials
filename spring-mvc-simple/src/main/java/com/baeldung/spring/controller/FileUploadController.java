@@ -15,7 +15,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class FileUploadController implements HandlerExceptionResolver {
+class FileUploadController implements HandlerExceptionResolver {
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
     public String getImageView() {

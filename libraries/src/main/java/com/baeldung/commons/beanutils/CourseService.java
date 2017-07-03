@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 
-public class CourseService {
+class CourseService {
 
     public static void setValues(Course course, String name, List<String> codes) 
         throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {

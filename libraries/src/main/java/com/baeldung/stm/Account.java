@@ -5,7 +5,7 @@ import org.multiverse.api.callables.TxnCallable;
 import org.multiverse.api.references.TxnInteger;
 import org.multiverse.api.references.TxnLong;
 
-public class Account {
+class Account {
 
     private final TxnLong lastUpdate;
     private final TxnInteger balance;
@@ -23,7 +23,7 @@ public class Account {
         adjustBy(amount, System.currentTimeMillis());
     }
 
-    public void adjustBy(final int amount, final long date) {
+    private void adjustBy(final int amount, final long date) {
         StmUtils.atomic(() -> {
             balance.increment(amount);
             lastUpdate.set(date);

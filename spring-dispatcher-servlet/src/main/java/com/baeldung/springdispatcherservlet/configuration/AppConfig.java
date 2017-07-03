@@ -17,7 +17,7 @@ import java.io.IOException;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.baeldung.springdispatcherservlet")
-public class AppConfig extends WebMvcConfigurerAdapter {
+class AppConfig extends WebMvcConfigurerAdapter {
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
@@ -69,7 +69,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ThemeChangeInterceptor themeChangeInterceptor(){
+    private ThemeChangeInterceptor themeChangeInterceptor(){
         ThemeChangeInterceptor interceptor = new ThemeChangeInterceptor();
         interceptor.setParamName("theme");
         return interceptor;

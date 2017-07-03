@@ -13,7 +13,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.baeldung.lambda.dynamodb.bean.PersonRequest;
 import com.baeldung.lambda.dynamodb.bean.PersonResponse;
 
-public class SavePersonHandler implements RequestHandler<PersonRequest, PersonResponse> {
+class SavePersonHandler implements RequestHandler<PersonRequest, PersonResponse> {
 
     private DynamoDB dynamoDb;
 

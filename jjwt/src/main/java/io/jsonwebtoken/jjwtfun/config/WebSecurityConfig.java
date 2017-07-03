@@ -21,12 +21,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private
     CsrfTokenRepository jwtCsrfTokenRepository;
 
     @Autowired
+    private
     SecretService secretService;
 
     // ordered so we can use binary search below

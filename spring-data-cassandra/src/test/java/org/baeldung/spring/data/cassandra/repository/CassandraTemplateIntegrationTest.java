@@ -42,11 +42,11 @@ import com.google.common.collect.ImmutableSet;
 public class CassandraTemplateIntegrationTest {
     private static final Log LOGGER = LogFactory.getLog(CassandraTemplateIntegrationTest.class);
 
-    public static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
+    private static final String KEYSPACE_CREATION_QUERY = "CREATE KEYSPACE IF NOT EXISTS testKeySpace " + "WITH replication = { 'class': 'SimpleStrategy', 'replication_factor': '3' };";
 
-    public static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
+    private static final String KEYSPACE_ACTIVATE_QUERY = "USE testKeySpace;";
 
-    public static final String DATA_TABLE_NAME = "book";
+    private static final String DATA_TABLE_NAME = "book";
 
     @Autowired
     private CassandraAdminOperations adminTemplate;
@@ -70,7 +70,7 @@ public class CassandraTemplateIntegrationTest {
 
     @Before
     public void createTable() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<String, Object>());
+        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
 
     @Test

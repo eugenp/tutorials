@@ -3,8 +3,8 @@ package com.baeldung.jackson.objectmapper.dto;
 import java.util.Date;
 
 public class Request {
-    Car car;
-    Date datePurchased;
+    private Car car;
+    private Date datePurchased;
 
     public Car getCar() {
         return car;

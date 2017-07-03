@@ -7,13 +7,13 @@ import org.junit.Test;
 
 public class StringHelperUnitTest {
 
-    public static final String TEST_STRING = "abcdef";
-    public static final String NULL_STRING = null;
-    public static final String EMPTY_STRING = "";
-    public static final String ONE_CHAR_STRING = "a";
-    public static final String WHITE_SPACE_AT_THE_END_STRING = "abc ";
-    public static final String NEW_LINE_AT_THE_END_STRING = "abc\n";
-    public static final String MULTIPLE_LINES_STRING = "abc\ndef";
+    private static final String TEST_STRING = "abcdef";
+    private static final String NULL_STRING = null;
+    private static final String EMPTY_STRING = "";
+    private static final String ONE_CHAR_STRING = "a";
+    private static final String WHITE_SPACE_AT_THE_END_STRING = "abc ";
+    private static final String NEW_LINE_AT_THE_END_STRING = "abc\n";
+    private static final String MULTIPLE_LINES_STRING = "abc\ndef";
 
     @Test
     public void givenTestString_whenSubstring_thenGetStingWithoutLastChar() {

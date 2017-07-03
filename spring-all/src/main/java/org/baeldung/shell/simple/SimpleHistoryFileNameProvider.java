@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class SimpleHistoryFileNameProvider extends DefaultHistoryFileNameProvider {
+class SimpleHistoryFileNameProvider extends DefaultHistoryFileNameProvider {
 
     @Override
     public String getHistoryFileName() {

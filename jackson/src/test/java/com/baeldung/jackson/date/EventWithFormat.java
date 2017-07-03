@@ -5,10 +5,10 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class EventWithFormat {
-    public String name;
+    private String name;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    public Date eventDate;
+    private Date eventDate;
 
     public EventWithFormat() {
         super();

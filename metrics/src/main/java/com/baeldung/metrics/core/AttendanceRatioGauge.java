@@ -2,7 +2,7 @@ package com.baeldung.metrics.core;
 
 import com.codahale.metrics.RatioGauge;
 
-public class AttendanceRatioGauge extends RatioGauge {
+class AttendanceRatioGauge extends RatioGauge {
     private int attendanceCount;
     private int courseCount;
 

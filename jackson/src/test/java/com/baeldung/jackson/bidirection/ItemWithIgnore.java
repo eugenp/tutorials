@@ -1,9 +1,9 @@
 package com.baeldung.jackson.bidirection;
 
 public class ItemWithIgnore {
-    public int id;
-    public String itemName;
-    public UserWithIgnore owner;
+    private int id;
+    private String itemName;
+    private UserWithIgnore owner;
 
     public ItemWithIgnore() {
         super();

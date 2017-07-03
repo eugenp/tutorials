@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class Personne {
+class Personne {
 	private String nom;
 	private String surnom;
 	private int age;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.baeldung.model.NewUserForm;
 
 @Controller
-public class NewUserController {
+class NewUserController {
 
     @GetMapping("/user")
     public String loadFormPage(Model model) {

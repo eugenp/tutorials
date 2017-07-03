@@ -17,7 +17,7 @@ import org.jenetics.engine.Engine;
 import org.jenetics.engine.EvolutionStatistics;
 import org.jenetics.engine.codecs;
 
-public class TravelingSalesman {
+class TravelingSalesman {
 
     private static final int STOPS = 50;
     private static final double[][] ADJACENCE = matrix(STOPS);

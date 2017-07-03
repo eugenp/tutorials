@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class UserWithIdentity {
-    public int id;
+    private int id;
     public String name;
-    public List<ItemWithIdentity> userItems;
+    private List<ItemWithIdentity> userItems;
 
     public UserWithIdentity() {
         super();
@@ -19,7 +19,7 @@ public class UserWithIdentity {
     public UserWithIdentity(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<ItemWithIdentity>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final ItemWithIdentity item) {

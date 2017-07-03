@@ -1,14 +1,14 @@
 package com.baeldung.jackson.inheritance;
 
-public class IgnoranceMixinOrIntrospection {
+class IgnoranceMixinOrIntrospection {
     public static abstract class Vehicle {
         private String make;
         private String model;
 
-        protected Vehicle() {
+        Vehicle() {
         }
 
-        protected Vehicle(String make, String model) {
+        Vehicle(String make, String model) {
             this.make = make;
             this.model = model;
         }
@@ -34,10 +34,10 @@ public class IgnoranceMixinOrIntrospection {
         private int seatingCapacity;
         private double topSpeed;
 
-        protected Car() {
+        Car() {
         }
 
-        protected Car(String make, String model, int seatingCapacity, double topSpeed) {
+        Car(String make, String model, int seatingCapacity, double topSpeed) {
             super(make, model);
             this.seatingCapacity = seatingCapacity;
             this.topSpeed = topSpeed;

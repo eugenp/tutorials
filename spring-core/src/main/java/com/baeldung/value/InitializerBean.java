@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InitializerBean {
+class InitializerBean {
 
     private String someInitialValue;
     private String anotherManagedValue;

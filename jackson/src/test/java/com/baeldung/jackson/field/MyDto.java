@@ -1,6 +1,6 @@
 package com.baeldung.jackson.field;
 
-public class MyDto {
+class MyDto {
 
     private String stringValue;
     private int intValue;

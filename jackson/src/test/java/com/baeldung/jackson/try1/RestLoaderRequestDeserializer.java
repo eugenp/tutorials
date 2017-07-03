@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderRequest<IEntity>> {
+class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderRequest<IEntity>> {
     private static final long serialVersionUID = -4245207329377196889L;
 
     public RestLoaderRequestDeserializer() {
@@ -33,7 +33,7 @@ public class RestLoaderRequestDeserializer extends StdDeserializer<RestLoaderReq
             final JsonNode rawEntityNode = node.get("entity");
             // How to deserialize rawEntityNode to T based on className ?
 
-            final RestLoaderRequest<IEntity> request = new RestLoaderRequest<IEntity>();
+            final RestLoaderRequest<IEntity> request = new RestLoaderRequest<>();
             request.setClassName(className);
             request.setFieldName(fieldName);
         } catch (final ClassNotFoundException e) {

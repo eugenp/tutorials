@@ -2,7 +2,7 @@ package com.baeldung.java8.lambda.exceptions;
 
 import java.util.function.Consumer;
 
-public class LambdaExceptionWrappers {
+class LambdaExceptionWrappers {
 
     public static Consumer<Integer> lambdaWrapper(Consumer<Integer> consumer) {
         return i -> {

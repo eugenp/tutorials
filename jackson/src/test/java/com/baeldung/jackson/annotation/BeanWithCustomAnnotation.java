@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @CustomAnnotation
 public class BeanWithCustomAnnotation {
-    public int id;
-    public String name;
-    public Date dateCreated;
+    private int id;
+    private String name;
+    private Date dateCreated;
 
     public BeanWithCustomAnnotation() {
 
@@ -31,7 +31,7 @@ public class BeanWithCustomAnnotation {
     @JacksonAnnotationsInside
     @JsonInclude(Include.NON_NULL)
     @JsonPropertyOrder({ "name", "id", "dateCreated" })
-    public @interface CustomAnnotation {
+    private @interface CustomAnnotation {
 
     }
 }

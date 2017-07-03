@@ -14,7 +14,7 @@ import org.springframework.integration.support.MessageBuilder;
 
 @EnableBinding(Source.class)
 @SpringBootApplication
-public class TimeSourceApplication {
+class TimeSourceApplication {
 
     @Bean
     @InboundChannelAdapter(value = Source.OUTPUT, poller = @Poller(fixedDelay = "10000", maxMessagesPerPoll = "1"))

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Consumer implements Runnable {
+class Consumer implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
 
     

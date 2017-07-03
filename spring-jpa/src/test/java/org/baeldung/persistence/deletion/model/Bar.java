@@ -16,6 +16,7 @@ public class Bar {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private
     List<Baz> bazList = new ArrayList<>();
 
     public Bar() {

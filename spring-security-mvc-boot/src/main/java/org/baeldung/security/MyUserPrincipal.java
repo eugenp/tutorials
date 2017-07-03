@@ -10,7 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class MyUserPrincipal implements UserDetails {
+class MyUserPrincipal implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,7 +36,7 @@ public class MyUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        final List<GrantedAuthority> authorities = new ArrayList<>();
         for (final Privilege privilege : user.getPrivileges()) {
             authorities.add(new SimpleGrantedAuthority(privilege.getName()));
         }

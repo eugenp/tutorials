@@ -16,7 +16,7 @@ import zipkin.Span;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class BookServiceApplication {
+class BookServiceApplication {
 
     @Autowired
     private EurekaClient eurekaClient;

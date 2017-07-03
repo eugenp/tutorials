@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanA implements IBeanA {
+class BeanA implements IBeanA {
     private IBeanB beanB;
 
     @Autowired

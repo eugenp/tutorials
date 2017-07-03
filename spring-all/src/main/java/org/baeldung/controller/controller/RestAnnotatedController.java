@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RestAnnotatedController {
+class RestAnnotatedController {
 
     @GetMapping(value = "/annotated/student/{studentId}")
     public Student getData(@PathVariable Integer studentId) {

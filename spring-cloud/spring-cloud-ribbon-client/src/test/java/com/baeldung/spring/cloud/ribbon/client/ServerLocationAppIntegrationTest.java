@@ -21,8 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ServerLocationApp.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ServerLocationAppIntegrationTest {
-    ConfigurableApplicationContext application2;
-    ConfigurableApplicationContext application3;
+    private ConfigurableApplicationContext application2;
+    private ConfigurableApplicationContext application3;
 
     @Before
     public void startApps() {

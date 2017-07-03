@@ -16,7 +16,7 @@ public class ItemSerializer extends StdSerializer<Item> {
         this(null);
     }
 
-    public ItemSerializer(final Class<Item> t) {
+    private ItemSerializer(final Class<Item> t) {
         super(t);
     }
 

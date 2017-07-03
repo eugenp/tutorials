@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class GreetClient {
+class GreetClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(EchoMultiServer.class);
 

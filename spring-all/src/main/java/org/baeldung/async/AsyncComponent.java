@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.Future;
 
 @Component
-public class AsyncComponent {
+class AsyncComponent {
 
     @Async
     public void asyncMethodWithVoidReturnType() {

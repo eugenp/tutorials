@@ -8,7 +8,7 @@ import com.baeldung.spring.drools.model.Fare;
 import com.baeldung.spring.drools.service.TaxiFareCalculatorService;
 import com.baeldung.spring.drools.service.TaxiFareConfiguration;
 
-public class ApplicationRunner {
+class ApplicationRunner {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(TaxiFareConfiguration.class);

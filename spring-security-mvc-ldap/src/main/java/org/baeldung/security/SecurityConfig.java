@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 // @ImportResource({ "classpath:webSecurityConfig.xml" }) //=> uncomment to use equivalent xml config
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

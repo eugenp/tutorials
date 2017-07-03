@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping(value = "/adder", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 @RestController
-public class AdderController {
+class AdderController {
 
     private AdderService adderService;
 

@@ -3,11 +3,11 @@ package com.baeldung.jackson.bidirection;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 public class ItemWithRef {
-    public int id;
-    public String itemName;
+    private int id;
+    private String itemName;
 
     @JsonManagedReference
-    public UserWithRef owner;
+    private UserWithRef owner;
 
     public ItemWithRef() {
         super();

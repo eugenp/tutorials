@@ -2,7 +2,7 @@ package com.baeldung.jackson.annotation.extra;
 
 import com.fasterxml.jackson.annotation.JsonTypeId;
 
-public class TypeIdBean {
+class TypeIdBean {
     private int id;
     @JsonTypeId
     private String name;

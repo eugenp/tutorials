@@ -25,7 +25,7 @@ class ResourceCreatedDiscoverabilityListener implements ApplicationListener<Reso
         addLinkHeaderOnResourceCreation(response, idOfNewResource);
     }
 
-    void addLinkHeaderOnResourceCreation(final HttpServletResponse response, final long idOfNewResource) {
+    private void addLinkHeaderOnResourceCreation(final HttpServletResponse response, final long idOfNewResource) {
         // final String requestUrl = request.getRequestURL().toString();
         // final URI uri = new UriTemplate("{requestUrl}/{idOfNewResource}").expand(requestUrl, idOfNewResource);
 

@@ -6,7 +6,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 
 import java.nio.charset.Charset;
 
-public class RequestDataEncoder extends MessageToByteEncoder<RequestData> {
+class RequestDataEncoder extends MessageToByteEncoder<RequestData> {
 
     private final Charset charset = Charset.forName("UTF-8");
 

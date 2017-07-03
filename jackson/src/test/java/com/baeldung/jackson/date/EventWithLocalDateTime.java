@@ -5,10 +5,10 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class EventWithLocalDateTime {
-    public String name;
+    private String name;
 
     @JsonSerialize(using = CustomLocalDateTimeSerializer.class)
-    public LocalDateTime eventDate;
+    private LocalDateTime eventDate;
 
     public EventWithLocalDateTime() {
         super();

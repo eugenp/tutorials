@@ -15,7 +15,7 @@ public class MyDtoNullKeySerializer extends StdSerializer<Object> {
         this(null);
     }
 
-    public MyDtoNullKeySerializer(final Class<Object> t) {
+    private MyDtoNullKeySerializer(final Class<Object> t) {
         super(t);
     }
 

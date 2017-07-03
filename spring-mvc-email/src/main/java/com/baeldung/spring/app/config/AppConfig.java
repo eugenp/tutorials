@@ -18,7 +18,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("com.baeldung.spring")
 @EnableWebMvc //tha same as <mvc:annotation-driven/>
-public class AppConfig extends WebMvcConfigurerAdapter {
+class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");

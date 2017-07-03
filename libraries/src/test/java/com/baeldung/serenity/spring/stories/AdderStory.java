@@ -9,9 +9,10 @@ import org.jbehave.core.annotations.When;
 /**
  * @author aiet
  */
-public class AdderStory {
+class AdderStory {
 
-    @Steps AdderRestSteps restSteps;
+    @Steps
+    private AdderRestSteps restSteps;
 
     @Given("a number")
     public void givenANumber() throws Exception {

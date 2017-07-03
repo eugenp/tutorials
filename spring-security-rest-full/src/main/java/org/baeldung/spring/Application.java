@@ -23,7 +23,7 @@ import org.springframework.web.filter.ShallowEtagHeaderFilter;
 @EnableAutoConfiguration
 @ComponentScan("org.baeldung")
 @SpringBootApplication
-public class Application extends SpringBootServletInitializer {
+class Application extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

@@ -5,7 +5,7 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
-public class UseToInstant {
+class UseToInstant {
 
     public LocalDateTime convertDateToLocalDate(Date date) {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
+class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
     public StudentMap marshal(Map<Integer, Student> boundMap) throws Exception {
         StudentMap valueMap = new StudentMap();
         for (Map.Entry<Integer, Student> boundEntry : boundMap.entrySet()) {
@@ -18,7 +18,7 @@ public class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Stude
     }
 
     public Map<Integer, Student> unmarshal(StudentMap valueMap) throws Exception {
-        Map<Integer, Student> boundMap = new LinkedHashMap<Integer, Student>();
+        Map<Integer, Student> boundMap = new LinkedHashMap<>();
         for (StudentMap.StudentEntry studentEntry : valueMap.getEntries()) {
             boundMap.put(studentEntry.getId(), studentEntry.getStudent());
         }

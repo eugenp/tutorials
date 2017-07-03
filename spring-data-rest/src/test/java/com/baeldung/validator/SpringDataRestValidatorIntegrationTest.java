@@ -29,7 +29,7 @@ public class SpringDataRestValidatorIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    protected WebApplicationContext wac;
+    private WebApplicationContext wac;
 
     @Before
     public void setup() {

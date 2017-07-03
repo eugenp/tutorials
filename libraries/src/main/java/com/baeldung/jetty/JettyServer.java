@@ -6,7 +6,7 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
-public class JettyServer {
+class JettyServer {
 
     private Server server;
 

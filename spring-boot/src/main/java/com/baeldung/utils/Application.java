@@ -10,7 +10,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @SpringBootApplication(exclude=MySQLAutoconfiguration.class)
 @ComponentScan(basePackages="com.baeldung.utils")
-public class Application {
+class Application {
 
 	@RolesAllowed("*")
 	public static void main(String[] args) {

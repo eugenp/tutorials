@@ -2,7 +2,7 @@ package org.baeldung.spring.data.couchbase;
 
 import org.springframework.data.couchbase.core.convert.MappingCouchbaseConverter;
 
-public class CustomTypeKeyCouchbaseConfig extends MyCouchbaseConfig {
+class CustomTypeKeyCouchbaseConfig extends MyCouchbaseConfig {
 
     @Override
     public String typeKey() {

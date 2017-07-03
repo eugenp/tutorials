@@ -1,6 +1,6 @@
 package com.baeldung.netty;
 
-public class RequestData {
+class RequestData {
     private int intValue;
     private String stringValue;
 

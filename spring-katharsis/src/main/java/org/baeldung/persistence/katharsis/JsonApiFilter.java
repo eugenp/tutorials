@@ -10,7 +10,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class JsonApiFilter extends AbstractKatharsisFilter implements BeanFactoryAware {
+class JsonApiFilter extends AbstractKatharsisFilter implements BeanFactoryAware {
 
     private static final String DEFAULT_RESOURCE_SEARCH_PACKAGE = "org.baeldung.persistence";
 

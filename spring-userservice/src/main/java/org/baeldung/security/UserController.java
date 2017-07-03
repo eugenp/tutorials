@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class UserController {
+class UserController {
 
     @Resource
+    private
     MyUserService myUserService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)

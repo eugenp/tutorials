@@ -1,6 +1,6 @@
 package com.baeldung.dozer;
 
-public class Dest {
+class Dest {
     private String name;
     private int age;
 

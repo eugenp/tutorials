@@ -12,9 +12,9 @@ import com.baeldung.xml.binding.Tutorial;
 
 public class StaxParserUnitTest {
 
-    final String fileName = "src/test/resources/example_stax.xml";
+    private final String fileName = "src/test/resources/example_stax.xml";
 
-    StaxParser parser;
+    private StaxParser parser;
 
     @Test
     public void getAllTutorialsTest() {

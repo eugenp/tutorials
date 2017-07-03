@@ -9,7 +9,7 @@ import org.baeldung.monitoring.MetricRegistrySingleton;
 
 import com.codahale.metrics.Counter;
 
-public class SessionListenerWithMetrics implements HttpSessionListener {
+class SessionListenerWithMetrics implements HttpSessionListener {
 
     private final AtomicInteger activeSessions;
 

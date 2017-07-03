@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.ReflectionUtils;
 
-public class FieldCallback implements ReflectionUtils.FieldCallback {
+class FieldCallback implements ReflectionUtils.FieldCallback {
     private boolean idFound;
 
     @Override

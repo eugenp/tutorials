@@ -7,7 +7,7 @@ import org.apache.flink.util.Collector;
 import java.util.stream.Stream;
 
 @SuppressWarnings("serial")
-public class LineSplitter implements FlatMapFunction<String, Tuple2<String, Integer>> {
+class LineSplitter implements FlatMapFunction<String, Tuple2<String, Integer>> {
 
     @Override
     public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {

@@ -12,9 +12,10 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-public class SecretsController extends BaseController {
+class SecretsController extends BaseController {
 
     @Autowired
+    private
     SecretService secretService;
 
     @RequestMapping(value = "/get-secrets", method = GET)

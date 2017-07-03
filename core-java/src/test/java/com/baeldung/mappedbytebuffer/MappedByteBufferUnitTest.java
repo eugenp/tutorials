@@ -61,7 +61,7 @@ public class MappedByteBufferUnitTest {
 
     }
 
-    public Path getFileURIFromResources(String fileName) throws Exception {
+    private Path getFileURIFromResources(String fileName) throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         return Paths.get(classLoader.getResource(fileName).getPath());
     }

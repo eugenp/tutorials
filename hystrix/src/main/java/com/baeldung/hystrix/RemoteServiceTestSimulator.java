@@ -1,7 +1,7 @@
 package com.baeldung.hystrix;
 
 
-public class RemoteServiceTestSimulator {
+class RemoteServiceTestSimulator {
 
     private long wait;
 

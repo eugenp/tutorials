@@ -10,7 +10,7 @@ import org.openimaj.math.geometry.shape.Polygon;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class OpenIMAJRectExample {
+class OpenIMAJRectExample {
     public static void main(String[] args) throws IOException {
         MBFImage image = ImageUtilities.readMBF(OpenIMAJRectExample.class.getClassLoader().getResource("lena.jpg"));
         drawRectangle(image);

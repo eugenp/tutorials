@@ -1,6 +1,6 @@
 package org.baeldung.boot.exceptions;
 
-public class CommonException extends RuntimeException{
+class CommonException extends RuntimeException{
 
     /**
      * 

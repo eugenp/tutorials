@@ -8,7 +8,7 @@ import java.util.Date;
 import org.dozer.CustomConverter;
 import org.dozer.MappingException;
 
-public class MyCustomConvertor implements CustomConverter {
+class MyCustomConvertor implements CustomConverter {
 
     @Override
     public Object convert(Object dest, Object source, Class<?> arg2, Class<?> arg3) {

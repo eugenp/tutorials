@@ -18,7 +18,7 @@ import java.util.concurrent.Executors;
 @Configuration
 @EnableAsync
 @EnableScheduling
-public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingConfigurer {
+class ThreadConfig extends AsyncConfigurerSupport implements SchedulingConfigurer {
 
     @Autowired
     private BeanFactory beanFactory;
@@ -49,7 +49,7 @@ public class ThreadConfig extends AsyncConfigurerSupport implements SchedulingCo
     }
 
     @Bean(destroyMethod = "shutdown")
-    public Executor schedulingExecutor() {
+    private Executor schedulingExecutor() {
         return Executors.newScheduledThreadPool(1);
     }
 }

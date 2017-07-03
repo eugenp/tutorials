@@ -7,11 +7,11 @@ import java.nio.file.attribute.BasicFileAttributes;
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.FileVisitResult.TERMINATE;
 
-public class FileSearchExample implements FileVisitor<Path> {
+class FileSearchExample implements FileVisitor<Path> {
     private final String fileName;
     private final Path startDir;
 
-    public FileSearchExample(String fileName, Path startingDir) {
+    private FileSearchExample(String fileName, Path startingDir) {
         this.fileName = fileName;
         startDir = startingDir;
     }

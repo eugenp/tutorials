@@ -19,7 +19,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class DefaultParser {
+class DefaultParser {
 
     private File file;
 
@@ -182,7 +182,7 @@ public class DefaultParser {
         }
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

@@ -2,7 +2,7 @@ package com.baeldung.concurrent.blockingqueue;
 
 import java.util.concurrent.BlockingQueue;
 
-public class NumbersConsumer implements Runnable {
+class NumbersConsumer implements Runnable {
     private final BlockingQueue<Integer> queue;
     private final int poisonPill;
 

@@ -14,8 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
-public class MySecurityExpressionRoot implements MethodSecurityExpressionOperations {
-    protected final Authentication authentication;
+class MySecurityExpressionRoot implements MethodSecurityExpressionOperations {
+    private final Authentication authentication;
     private AuthenticationTrustResolver trustResolver;
     private RoleHierarchy roleHierarchy;
     private Set<String> roles;
@@ -118,7 +118,7 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
         return !trustResolver.isAnonymous(authentication) && !trustResolver.isRememberMe(authentication);
     }
 
-    public Object getPrincipal() {
+    private Object getPrincipal() {
         return authentication.getPrincipal();
     }
 
@@ -136,7 +136,7 @@ public class MySecurityExpressionRoot implements MethodSecurityExpressionOperati
 
     private Set<String> getAuthoritySet() {
         if (roles == null) {
-            roles = new HashSet<String>();
+            roles = new HashSet<>();
             Collection<? extends GrantedAuthority> userAuthorities = authentication.getAuthorities();
 
             if (roleHierarchy != null) {

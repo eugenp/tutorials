@@ -2,7 +2,7 @@ package com.baeldung.tiles.springmvc;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {

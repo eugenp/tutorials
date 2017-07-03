@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 
-public class MyPairSerializer extends JsonSerializer<MyPair> {
+class MyPairSerializer extends JsonSerializer<MyPair> {
 
 	private final ObjectMapper mapper = new ObjectMapper();
 

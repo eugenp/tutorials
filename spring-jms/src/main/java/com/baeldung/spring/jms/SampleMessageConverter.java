@@ -8,7 +8,7 @@ import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.Session;
 
-public class SampleMessageConverter implements MessageConverter {
+class SampleMessageConverter implements MessageConverter {
 
     public Message toMessage(Object object, Session session) throws JMSException, MessageConversionException {
         Employee employee = (Employee) object;

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class CustomListDeserializer extends StdDeserializer<List<ItemWithSerializer>> {
+class CustomListDeserializer extends StdDeserializer<List<ItemWithSerializer>> {
 
     private static final long serialVersionUID = 1095767961632979804L;
 
@@ -23,7 +23,7 @@ public class CustomListDeserializer extends StdDeserializer<List<ItemWithSeriali
 
     @Override
     public List<ItemWithSerializer> deserialize(final JsonParser jsonparser, final DeserializationContext context) throws IOException, JsonProcessingException {
-        return new ArrayList<ItemWithSerializer>();
+        return new ArrayList<>();
     }
 
 }

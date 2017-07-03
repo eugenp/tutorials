@@ -1,9 +1,9 @@
 package org.baeldung.hamcrest;
 
-public class Animal {
-	String name;
-	boolean wild;
-	String sound;
+class Animal {
+	private String name;
+	private boolean wild;
+	private String sound;
 	
 	public Animal(String name, boolean wild, String sound) {
 		super();
@@ -23,7 +23,7 @@ public class Animal {
 	public void setWild(boolean wild) {
 		this.wild = wild;
 	}
-	public String getSound() {
+	String getSound() {
 		return sound;
 	}
 	public void setSound(String sound) {

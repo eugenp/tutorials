@@ -5,7 +5,7 @@ import com.rabbitmq.client.*;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Publisher {
+class Publisher {
 
     private final static String QUEUE_NAME = "products_queue";
 

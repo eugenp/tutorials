@@ -16,7 +16,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 @ComponentScan(basePackages = { "org.baeldung.web" })
 @EntityScan("org.baeldung.web.entity")
 @Configuration
-public class PersistenceConfig {
+class PersistenceConfig {
 
     @Bean
     public JdbcTemplate getJdbcTemplate() {
@@ -24,7 +24,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).addScript("db/sql/data.sql").build();
         return db;

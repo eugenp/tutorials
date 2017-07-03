@@ -9,7 +9,7 @@ import javax.jms.Queue;
 import javax.jms.TextMessage;
 import java.util.Map;
 
-public class SampleListener implements MessageListener {
+class SampleListener implements MessageListener {
 
     private JmsTemplate jmsTemplate;
     private Queue queue;

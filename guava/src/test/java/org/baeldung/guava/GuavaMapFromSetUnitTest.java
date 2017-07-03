@@ -22,7 +22,7 @@ public class GuavaMapFromSetUnitTest {
             }
         };
         Set<Integer> set = new TreeSet<>(Arrays.asList(32, 64, 128));
-        Map<Integer, String> map = new GuavaMapFromSet<Integer, String>(set, function);
+        Map<Integer, String> map = new GuavaMapFromSet<>(set, function);
         assertTrue(map.get(32).equals("100000")
                 && map.get(64).equals("1000000")
                 && map.get(128).equals("10000000"));
@@ -39,8 +39,8 @@ public class GuavaMapFromSetUnitTest {
         };
         Set<String> set = new TreeSet<>(Arrays.asList(
                 "four", "three", "twelve"));
-        Map<String, Integer> map = new GuavaMapFromSet<String, Integer>(set,
-                function);
+        Map<String, Integer> map = new GuavaMapFromSet<>(set,
+          function);
         assertTrue(map.get("four") == 4 && map.get("three") == 5
                 && map.get("twelve") == 6);
     }
@@ -56,8 +56,8 @@ public class GuavaMapFromSetUnitTest {
         };
         Set<String> set = new TreeSet<>(Arrays.asList(
                 "four", "three", "twelve"));
-        Map<String, Integer> map = new GuavaMapFromSet<String, Integer>(set,
-                function);
+        Map<String, Integer> map = new GuavaMapFromSet<>(set,
+          function);
         set.add("one");
         assertTrue(map.get("one") == 3 && map.size() == 4);
     }

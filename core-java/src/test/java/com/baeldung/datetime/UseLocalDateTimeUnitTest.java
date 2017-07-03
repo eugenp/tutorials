@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class UseLocalDateTimeUnitTest {
 
-    UseLocalDateTime useLocalDateTime = new UseLocalDateTime();
+    private UseLocalDateTime useLocalDateTime = new UseLocalDateTime();
 
     @Test
     public void givenString_whenUsingParse_thenLocalDateTime() {

@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.protobuf.BaeldungTraining.Course;
 
 @RestController
-public class CourseController {
+class CourseController {
 
     @Autowired
+    private
     CourseRepository courseRepo;
 
     @RequestMapping("/courses/{id}")

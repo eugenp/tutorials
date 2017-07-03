@@ -2,7 +2,7 @@ package com.baeldung.jackson.miscellaneous.mixin;
 
 import java.util.Optional;
 
-public class Book {
+class Book {
 
     private String title;
     private Optional<String> subTitle;

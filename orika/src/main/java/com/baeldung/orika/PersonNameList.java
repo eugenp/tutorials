@@ -2,7 +2,7 @@ package com.baeldung.orika;
 
 import java.util.List;
 
-public class PersonNameList {
+class PersonNameList {
 	private List<String> nameList;
 
 	public PersonNameList(List<String> nameList) {

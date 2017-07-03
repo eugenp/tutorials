@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.util.List;
 
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
+class WebConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {

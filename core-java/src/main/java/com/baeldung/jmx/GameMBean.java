@@ -1,6 +1,6 @@
 package com.baeldung.jmx;
 
-public interface GameMBean {
+interface GameMBean {
 
     public void playFootball(String clubName);
 

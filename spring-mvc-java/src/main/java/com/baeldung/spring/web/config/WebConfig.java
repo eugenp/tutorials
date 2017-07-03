@@ -84,7 +84,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ByteArrayHttpMessageConverter byteArrayHttpMessageConverter() {
+    private ByteArrayHttpMessageConverter byteArrayHttpMessageConverter() {
         final ByteArrayHttpMessageConverter arrayHttpMessageConverter = new ByteArrayHttpMessageConverter();
         arrayHttpMessageConverter.setSupportedMediaTypes(getSupportedMediaTypes());
 
@@ -92,7 +92,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 
     private List<MediaType> getSupportedMediaTypes() {
-        final List<MediaType> list = new ArrayList<MediaType>();
+        final List<MediaType> list = new ArrayList<>();
         list.add(MediaType.IMAGE_JPEG);
         list.add(MediaType.IMAGE_PNG);
         list.add(MediaType.APPLICATION_OCTET_STREAM);

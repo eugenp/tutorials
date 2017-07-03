@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Component
-public class StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
+class StringToLocalDateTimeConverter implements Converter<String, LocalDateTime> {
 
     @Override
     public LocalDateTime convert(final String source) {

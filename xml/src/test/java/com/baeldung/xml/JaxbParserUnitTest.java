@@ -11,9 +11,9 @@ import com.baeldung.xml.binding.Tutorials;
 
 public class JaxbParserUnitTest {
 
-    final String fileName = "src/test/resources/example_jaxb.xml";
+    private final String fileName = "src/test/resources/example_jaxb.xml";
 
-    JaxbParser parser;
+    private JaxbParser parser;
 
     @Test
     public void getFullDocumentTest() {

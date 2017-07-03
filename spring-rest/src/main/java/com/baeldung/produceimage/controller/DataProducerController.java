@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Controller
-public class DataProducerController {
+class DataProducerController {
 
     @GetMapping("/get-text")
     public @ResponseBody String getText() {

@@ -18,9 +18,9 @@ public class CrossPlatformResource implements org.apache.thrift.TBase<CrossPlatf
   private static final org.apache.thrift.scheme.SchemeFactory STANDARD_SCHEME_FACTORY = new CrossPlatformResourceStandardSchemeFactory();
   private static final org.apache.thrift.scheme.SchemeFactory TUPLE_SCHEME_FACTORY = new CrossPlatformResourceTupleSchemeFactory();
 
-  public int id; // required
-  public java.lang.String name; // required
-  public java.lang.String salutation; // optional
+  private int id; // required
+  private java.lang.String name; // required
+  private java.lang.String salutation; // optional
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -90,7 +90,7 @@ public class CrossPlatformResource implements org.apache.thrift.TBase<CrossPlatf
   private static final int __ID_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
   private static final _Fields optionals[] = {_Fields.SALUTATION};
-  public static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
+  private static final java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     java.util.Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new java.util.EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.ID, new org.apache.thrift.meta_data.FieldMetaData("id", org.apache.thrift.TFieldRequirementType.DEFAULT, 
@@ -142,72 +142,72 @@ public class CrossPlatformResource implements org.apache.thrift.TBase<CrossPlatf
     this.salutation = null;
   }
 
-  public int getId() {
+  private int getId() {
     return this.id;
   }
 
-  public CrossPlatformResource setId(int id) {
+  private CrossPlatformResource setId(int id) {
     this.id = id;
     setIdIsSet(true);
     return this;
   }
 
-  public void unsetId() {
+  private void unsetId() {
     __isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __ID_ISSET_ID);
   }
 
   /** Returns true if field id is set (has been assigned a value) and false otherwise */
-  public boolean isSetId() {
+  private boolean isSetId() {
     return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __ID_ISSET_ID);
   }
 
-  public void setIdIsSet(boolean value) {
+  private void setIdIsSet(boolean value) {
     __isset_bitfield = org.apache.thrift.EncodingUtils.setBit(__isset_bitfield, __ID_ISSET_ID, value);
   }
 
-  public java.lang.String getName() {
+  private java.lang.String getName() {
     return this.name;
   }
 
-  public CrossPlatformResource setName(java.lang.String name) {
+  private CrossPlatformResource setName(java.lang.String name) {
     this.name = name;
     return this;
   }
 
-  public void unsetName() {
+  private void unsetName() {
     this.name = null;
   }
 
   /** Returns true if field name is set (has been assigned a value) and false otherwise */
-  public boolean isSetName() {
+  private boolean isSetName() {
     return this.name != null;
   }
 
-  public void setNameIsSet(boolean value) {
+  private void setNameIsSet(boolean value) {
     if (!value) {
       this.name = null;
     }
   }
 
-  public java.lang.String getSalutation() {
+  private java.lang.String getSalutation() {
     return this.salutation;
   }
 
-  public CrossPlatformResource setSalutation(java.lang.String salutation) {
+  private CrossPlatformResource setSalutation(java.lang.String salutation) {
     this.salutation = salutation;
     return this;
   }
 
-  public void unsetSalutation() {
+  private void unsetSalutation() {
     this.salutation = null;
   }
 
   /** Returns true if field salutation is set (has been assigned a value) and false otherwise */
-  public boolean isSetSalutation() {
+  private boolean isSetSalutation() {
     return this.salutation != null;
   }
 
-  public void setSalutationIsSet(boolean value) {
+  private void setSalutationIsSet(boolean value) {
     if (!value) {
       this.salutation = null;
     }

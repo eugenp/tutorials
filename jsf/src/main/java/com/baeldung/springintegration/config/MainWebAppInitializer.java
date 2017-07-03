@@ -11,7 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.util.Set;
 
-public class MainWebAppInitializer extends FacesInitializer implements WebApplicationInitializer {
+class MainWebAppInitializer extends FacesInitializer implements WebApplicationInitializer {
     private static final Logger LOGGER = LoggerFactory.getLogger(MainWebAppInitializer.class);
 
     @Override

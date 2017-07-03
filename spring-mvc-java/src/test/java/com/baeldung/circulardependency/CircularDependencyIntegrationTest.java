@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class CircularDependencyIntegrationTest {
 
     @Autowired
+    private
     ApplicationContext context;
 
     @Bean

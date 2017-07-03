@@ -11,7 +11,7 @@ import org.apache.hadoop.hbase.client.HBaseAdmin;
 import java.io.IOException;
 
 //install hbase locally & hbase master start
-public class HbaseClientExample {
+class HbaseClientExample {
 
     public static void main(String[] args) throws IOException, ServiceException {
         new HbaseClientExample().connect();

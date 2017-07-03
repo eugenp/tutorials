@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.stream.IntStream;
 
-public class LogbackRollingExample {
+class LogbackRollingExample {
 
     private static final Logger logger = LoggerFactory.getLogger(LogbackRollingExample.class);
 

@@ -13,10 +13,10 @@ import okio.Sink;
 
 public class ProgressRequestWrapper extends RequestBody {
 
-    protected RequestBody delegate;
-    protected ProgressListener listener;
+    private RequestBody delegate;
+    private ProgressListener listener;
 
-    protected CountingSink countingSink;
+    private CountingSink countingSink;
 
     public ProgressRequestWrapper(RequestBody delegate, ProgressListener listener) {
         this.delegate = delegate;

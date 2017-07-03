@@ -2,7 +2,7 @@ package com.baeldung.maths;
 
 import java.math.BigInteger;
 
-public class BigIntegerImpl {
+class BigIntegerImpl {
 
     public static void main(String[] args) {
 

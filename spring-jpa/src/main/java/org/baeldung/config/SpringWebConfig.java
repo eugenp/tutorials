@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 @EnableWebMvc
 @Configuration
 @ComponentScan({ "org.baeldung.web" })
-public class SpringWebConfig extends WebMvcConfigurerAdapter {
+class SpringWebConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public InternalResourceViewResolver viewResolver() {

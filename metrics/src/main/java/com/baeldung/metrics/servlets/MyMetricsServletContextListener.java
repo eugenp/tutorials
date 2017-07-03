@@ -5,7 +5,7 @@ import com.codahale.metrics.Histogram;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.servlets.MetricsServlet;
 
-public class MyMetricsServletContextListener extends MetricsServlet.ContextListener {
+class MyMetricsServletContextListener extends MetricsServlet.ContextListener {
     private static final MetricRegistry METRIC_REGISTRY = new MetricRegistry();
 
     static {

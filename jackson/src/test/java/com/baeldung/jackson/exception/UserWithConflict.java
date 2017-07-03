@@ -1,9 +1,9 @@
 package com.baeldung.jackson.exception;
 
-public class UserWithConflict {
-    public int id;
-    public String name;
-    boolean checked;
+class UserWithConflict {
+    private int id;
+    private String name;
+    private boolean checked;
 
     public UserWithConflict() {
         super();

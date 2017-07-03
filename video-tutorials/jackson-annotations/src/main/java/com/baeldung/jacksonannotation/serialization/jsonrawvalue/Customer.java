@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonRawValue;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class Customer extends Person {
+class Customer extends Person {
 
     @JsonRawValue
     private String configuration;

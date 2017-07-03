@@ -115,7 +115,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 
     @Bean
     @Description("Spring Message Resolver")
-    public ResourceBundleMessageSource messageSource() {
+    private ResourceBundleMessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
         return messageSource;
@@ -129,7 +129,7 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
     }
 
     @Bean
-    public LocaleChangeInterceptor localeChangeInterceptor() {
+    private LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         return localeChangeInterceptor;

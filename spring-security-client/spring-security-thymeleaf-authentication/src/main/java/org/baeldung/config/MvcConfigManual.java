@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @Profile("manual")
-public class MvcConfigManual extends WebMvcConfigurerAdapter {
+class MvcConfigManual extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

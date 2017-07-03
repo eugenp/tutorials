@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @RequestMapping({"/","/home"})
-public class HomeController {
+class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showHomePage() {

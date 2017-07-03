@@ -14,7 +14,7 @@ import java.io.IOException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class GithubRestUserAPISteps {
+class GithubRestUserAPISteps {
 
     private String api;
     private GitHubUser resource;

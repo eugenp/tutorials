@@ -4,7 +4,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.Date;
 
-public class Person {
+class Person {
 
     @JSONField(name = "AGE", serialize = false, deserialize = false)
     private int age;

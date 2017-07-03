@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
 
-public class GreetingAnnotation {
+class GreetingAnnotation {
    
     private static final String ANNOTATION_METHOD = "annotationData";
     private static final String ANNOTATION_FIELDS = "declaredAnnotations";
@@ -42,7 +42,7 @@ public class GreetingAnnotation {
     }
     
     @SuppressWarnings("unchecked")
-    public static void alterAnnotationValueJDK7(Class<?> targetClass, Class<? extends Annotation> targetAnnotation, Annotation targetValue) {
+    private static void alterAnnotationValueJDK7(Class<?> targetClass, Class<? extends Annotation> targetAnnotation, Annotation targetValue) {
         try {            
             Field annotations = Class.class.getDeclaredField(ANNOTATIONS);
             annotations.setAccessible(true);

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class BeanWithGetter {
-    public int id;
+    private int id;
     private String name;
 
     public BeanWithGetter() {

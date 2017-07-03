@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @ManagedBean(name = "registration")
 @ViewScoped
-public class RegistrationBean implements Serializable {
+class RegistrationBean implements Serializable {
     private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationBean.class);
 
     @ManagedProperty(value = "#{userManagementDAO}")

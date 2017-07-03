@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.Map;
 
 @RestController
-public class HttpMediaTypeNotAcceptableExceptionExampleController {
+class HttpMediaTypeNotAcceptableExceptionExampleController {
 
     @PostMapping(value = "/test", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, String> test() {

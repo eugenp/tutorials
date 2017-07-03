@@ -18,7 +18,7 @@ public class JavaTuplesUnitTest {
     @SuppressWarnings("unused")
     @Test
     public void whenCreatingTuples_thenCreateTuples() {
-        Pair<String, Integer> pair = new Pair<String, Integer>("This is a pair", 55);
+        Pair<String, Integer> pair = new Pair<>("This is a pair", 55);
         Triplet<String, Integer, Double> triplet = Triplet.with("hello", 23, 33.2);
 
         List<String> collectionOfNames = Arrays.asList("john", "doe", "anne", "alex");

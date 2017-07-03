@@ -2,7 +2,7 @@ package com.baeldung.concurrent.future;
 
 import java.util.concurrent.RecursiveTask;
 
-public class FactorialSquareCalculator extends RecursiveTask<Integer> {
+class FactorialSquareCalculator extends RecursiveTask<Integer> {
     private static final long serialVersionUID = 1L;
 
     final private Integer n;

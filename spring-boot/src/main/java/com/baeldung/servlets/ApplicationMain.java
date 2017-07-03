@@ -8,7 +8,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @SpringBootApplication(exclude=MySQLAutoconfiguration.class)
-public class ApplicationMain extends SpringBootServletInitializer {
+class ApplicationMain extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(ApplicationMain.class, args);

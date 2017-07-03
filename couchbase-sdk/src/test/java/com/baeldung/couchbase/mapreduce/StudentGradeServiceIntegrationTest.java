@@ -17,8 +17,8 @@ import com.couchbase.client.java.view.ViewRow;
 public class StudentGradeServiceIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(StudentGradeServiceIntegrationTest.class);
             
-    static StudentGradeService studentGradeService;
-    static Set<String> gradeIds = new HashSet<>();
+    private static StudentGradeService studentGradeService;
+    private static Set<String> gradeIds = new HashSet<>();
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {

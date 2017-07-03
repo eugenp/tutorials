@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class LayoutServlet extends VelocityLayoutServlet {
-	ProductService service = new ProductService();
+	private ProductService service = new ProductService();
 
 	@Override
 	public Template handleRequest(HttpServletRequest request, HttpServletResponse response, Context context) {

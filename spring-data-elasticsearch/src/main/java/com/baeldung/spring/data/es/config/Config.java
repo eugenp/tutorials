@@ -29,7 +29,7 @@ public class Config {
     private static Logger logger = LoggerFactory.getLogger(Config.class);
 
     @Bean
-    public Client client() {
+    private Client client() {
         try {
             final Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
             logger.debug(tmpDir.toAbsolutePath().toString());

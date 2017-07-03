@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class ZipFile {
+class ZipFile {
     public static void main(final String[] args) throws IOException {
         final String sourceFile = "src/main/resources/zipTest/test1.txt";
         final FileOutputStream fos = new FileOutputStream("src/main/resources/compressed.zip");

@@ -3,7 +3,7 @@ package com.baeldung.jackson.jsonview;
 import com.fasterxml.jackson.annotation.JsonView;
 
 public class User {
-    public int id;
+    private int id;
 
     @JsonView(Views.Public.class)
     public String name;

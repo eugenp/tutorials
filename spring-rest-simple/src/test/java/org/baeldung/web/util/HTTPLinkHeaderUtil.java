@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 
-public final class HTTPLinkHeaderUtil {
+final class HTTPLinkHeaderUtil {
 
     private HTTPLinkHeaderUtil() {
         throw new AssertionError();
@@ -50,7 +50,7 @@ public final class HTTPLinkHeaderUtil {
         return uriWithSpecifiedRel;
     }
 
-    static Object extractTypeOfRelation(final String linkRelation) {
+    private static Object extractTypeOfRelation(final String linkRelation) {
         final int positionOfEquals = linkRelation.indexOf('=');
         return linkRelation.substring(positionOfEquals + 2, linkRelation.length() - 1).trim();
     }

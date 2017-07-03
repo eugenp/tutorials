@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({ "id" })
 public class BeanWithIgnore {
     @JsonIgnore
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public BeanWithIgnore() {
 

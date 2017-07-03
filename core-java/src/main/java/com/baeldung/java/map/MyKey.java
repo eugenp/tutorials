@@ -3,7 +3,7 @@ package com.baeldung.java.map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MyKey {
+class MyKey {
     private static final Logger LOG = LoggerFactory.getLogger(MyKey.class);
     
     private String name;

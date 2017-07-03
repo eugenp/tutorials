@@ -2,7 +2,7 @@ package org.baeldung.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[] { PersistenceJNDIConfig.class };

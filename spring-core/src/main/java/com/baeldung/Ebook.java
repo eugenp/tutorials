@@ -1,6 +1,6 @@
 package com.baeldung;
 
-public class Ebook {
+class Ebook {
 
     private int bookId;
     private String bookTitle;

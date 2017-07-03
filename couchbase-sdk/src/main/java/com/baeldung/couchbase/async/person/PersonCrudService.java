@@ -10,7 +10,7 @@ import com.baeldung.couchbase.async.service.AbstractCrudService;
 import com.baeldung.couchbase.async.service.BucketService;
 
 @Service
-public class PersonCrudService extends AbstractCrudService<Person> {
+class PersonCrudService extends AbstractCrudService<Person> {
 
     @Autowired
     public PersonCrudService(@Qualifier("TutorialBucketService") BucketService bucketService, PersonDocumentConverter converter) {

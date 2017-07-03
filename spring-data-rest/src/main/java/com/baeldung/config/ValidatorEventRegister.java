@@ -11,9 +11,10 @@ import org.springframework.data.rest.core.event.ValidatingRepositoryEventListene
 import org.springframework.validation.Validator;
 
 @Configuration
-public class ValidatorEventRegister implements InitializingBean {
+class ValidatorEventRegister implements InitializingBean {
 
     @Autowired
+    private
     ValidatingRepositoryEventListener validatingRepositoryEventListener;
 
     @Autowired

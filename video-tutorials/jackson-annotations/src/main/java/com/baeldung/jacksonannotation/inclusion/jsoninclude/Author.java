@@ -16,7 +16,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
  * @version 1.0
  */
 @JsonInclude(NON_NULL)
-public class Author extends Person {
+class Author extends Person {
 
     private List<Item> items = new ArrayList<>();
 

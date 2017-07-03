@@ -19,7 +19,7 @@ import javax.xml.stream.events.XMLEvent;
 
 import com.baeldung.xml.binding.Tutorial;
 
-public class StaxParser {
+class StaxParser {
 
     private File file;
 
@@ -32,7 +32,7 @@ public class StaxParser {
         boolean bDescription = false;
         boolean bDate = false;
         boolean bAuthor = false;
-        List<Tutorial> tutorials = new ArrayList<Tutorial>();
+        List<Tutorial> tutorials = new ArrayList<>();
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();
             XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(this.getFile()));
@@ -109,7 +109,7 @@ public class StaxParser {
         return tutorials;
     }
 
-    public File getFile() {
+    private File getFile() {
         return file;
     }
 

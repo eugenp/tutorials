@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
-public class VisitorCounterFilter implements Filter {
+class VisitorCounterFilter implements Filter {
     private static Set<String> users = new HashSet<>();
 
     @Override

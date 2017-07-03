@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component("springClient")
-public class SpringExistingClient {
+class SpringExistingClient {
 
     @Value("${remoteservice.timeout}")
     private int remoteServiceDelay;

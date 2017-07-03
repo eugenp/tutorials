@@ -37,7 +37,7 @@ public class ReusingIntegrationTest {
         verifyTrueCalls(1);
     }
     
-    protected void verifyTrueCalls(int calls){
+    private void verifyTrueCalls(int calls){
         new Verifications(){{
            collaborator.receive(true); times = calls; 
         }};

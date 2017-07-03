@@ -5,7 +5,7 @@ import javax.servlet.ServletException;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {

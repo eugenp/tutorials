@@ -21,7 +21,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @EnableBatchProcessing
-public class SpringConfig {
+class SpringConfig {
 
     @Value("org/springframework/batch/core/schema-drop-sqlite.sql")
     private Resource dropReopsitoryTables;
@@ -30,7 +30,7 @@ public class SpringConfig {
     private Resource dataReopsitorySchema;
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.sqlite.JDBC");
         dataSource.setUrl("jdbc:sqlite:repository.sqlite");

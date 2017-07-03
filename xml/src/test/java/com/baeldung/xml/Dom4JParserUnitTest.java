@@ -13,9 +13,9 @@ import org.junit.Test;
 
 public class Dom4JParserUnitTest {
 
-    final String fileName = "src/test/resources/example_dom4j.xml";
+    private final String fileName = "src/test/resources/example_dom4j.xml";
 
-    Dom4JParser parser;
+    private Dom4JParser parser;
 
     @Test
     public void getRootElementTest() {

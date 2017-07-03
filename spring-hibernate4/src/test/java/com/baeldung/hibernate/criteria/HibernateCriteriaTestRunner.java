@@ -4,7 +4,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class HibernateCriteriaTestRunner {
+class HibernateCriteriaTestRunner {
 
     public static void main(final String[] args) {
         Result result = JUnitCore.runClasses(HibernateCriteriaTestSuite.class);

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
-public class Application {
+class Application {
     private static ApplicationContext applicationContext;
 
     public static void main(String[] args) {
@@ -14,7 +14,7 @@ public class Application {
         displayAllBeans();
     }
     
-    public static void displayAllBeans() {
+    private static void displayAllBeans() {
         String[] allBeanNames = applicationContext.getBeanDefinitionNames();
         for(String beanName : allBeanNames) {
             System.out.println(beanName);

@@ -5,7 +5,7 @@ import org.hamcrest.Factory;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-public class IsPositiveInteger extends TypeSafeMatcher<Integer> {
+class IsPositiveInteger extends TypeSafeMatcher<Integer> {
 
 	public void describeTo(Description description) {
 		description.appendText("a positive integer");

@@ -6,18 +6,18 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public abstract class AbstractJpaDAO<T extends Serializable> {
+abstract class AbstractJpaDAO<T extends Serializable> {
 
     private Class<T> clazz;
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public final void setClazz(final Class<T> clazzToSet) {
+    final void setClazz(final Class<T> clazzToSet) {
         this.clazz = clazzToSet;
     }
 
-    public T findOne(final long id) {
+    private T findOne(final long id) {
         return entityManager.find(clazz, id);
     }
 
@@ -34,7 +34,7 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
         return entityManager.merge(entity);
     }
 
-    public void delete(final T entity) {
+    private void delete(final T entity) {
         entityManager.remove(entity);
     }
 

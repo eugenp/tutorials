@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 
 @JsonFilter("myFilter")
 public class BeanWithFilter {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public BeanWithFilter() {
 

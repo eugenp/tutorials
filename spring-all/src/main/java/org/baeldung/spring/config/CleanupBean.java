@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public final class CleanupBean implements DisposableBean {
+final class CleanupBean implements DisposableBean {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired

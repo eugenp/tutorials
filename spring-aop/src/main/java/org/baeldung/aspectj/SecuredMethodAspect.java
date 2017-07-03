@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Aspect
-public class SecuredMethodAspect {
+class SecuredMethodAspect {
     private static final Logger logger = LoggerFactory.getLogger(SecuredMethodAspect.class);
 
     @Pointcut("@annotation(secured)")

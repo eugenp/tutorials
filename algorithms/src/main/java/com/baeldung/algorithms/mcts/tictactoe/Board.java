@@ -5,15 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Board {
-    int[][] boardValues;
-    int totalMoves;
+    private int[][] boardValues;
+    private int totalMoves;
 
     public static final int DEFAULT_BOARD_SIZE = 3;
 
     public static final int IN_PROGRESS = -1;
     public static final int DRAW = 0;
     public static final int P1 = 1;
-    public static final int P2 = 2;
+    private static final int P2 = 2;
 
     public Board() {
         boardValues = new int[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
@@ -50,7 +50,7 @@ public class Board {
         boardValues[p.getX()][p.getY()] = player;
     }
 
-    public int[][] getBoardValues() {
+    private int[][] getBoardValues() {
         return boardValues;
     }
 

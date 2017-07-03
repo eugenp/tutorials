@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(Include.NON_NULL)
 @JsonPropertyOrder({ "name", "id" })
 public class MyBean {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public MyBean() {
 

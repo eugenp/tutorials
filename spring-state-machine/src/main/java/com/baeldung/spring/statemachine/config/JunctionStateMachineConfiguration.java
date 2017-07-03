@@ -49,12 +49,12 @@ public class JunctionStateMachineConfiguration extends StateMachineConfigurerAda
     }
 
     @Bean
-    public Guard<String, String> mediumGuard() {
+    private Guard<String, String> mediumGuard() {
         return (ctx) -> false;
     }
 
     @Bean
-    public Guard<String, String> highGuard() {
+    private Guard<String, String> highGuard() {
         return (ctx) -> false;
     }
 }

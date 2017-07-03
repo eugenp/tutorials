@@ -1,7 +1,7 @@
 package org.baeldung.web.dto;
 
 
-public class HeavyResourceAddressPartialUpdate {
+class HeavyResourceAddressPartialUpdate {
     private Integer id;
     private String address;
 

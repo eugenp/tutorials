@@ -3,7 +3,7 @@ package com.baeldung.jackson.field;
 public class MyDtoWithSetter {
 
     private int intValue;
-    public boolean booleanValue;
+    private boolean booleanValue;
 
     public MyDtoWithSetter() {
         super();

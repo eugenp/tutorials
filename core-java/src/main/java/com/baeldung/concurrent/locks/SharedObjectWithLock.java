@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.Thread.sleep;
 
-public class SharedObjectWithLock {
+class SharedObjectWithLock {
 
     private static final Logger LOG = LoggerFactory.getLogger(SharedObjectWithLock.class);
 

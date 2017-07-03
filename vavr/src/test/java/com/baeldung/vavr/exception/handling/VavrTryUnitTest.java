@@ -102,7 +102,7 @@ public class VavrTryUnitTest {
     }
 
 
-    public int actionThatTakesResponse(Response response) {
+    private int actionThatTakesResponse(Response response) {
         return response.id.hashCode();
     }
 

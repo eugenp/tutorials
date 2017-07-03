@@ -16,13 +16,13 @@ import com.baeldung.ldap.client.LdapClient;
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = { "com.baeldung.ldap.*" })
 @Profile("default")
-public class AppConfig {
+class AppConfig {
 
     @Autowired
     private Environment env;
 
     @Bean
-    public LdapContextSource contextSource() {
+    private LdapContextSource contextSource() {
         LdapContextSource contextSource = new LdapContextSource();
         contextSource.setUrl(env.getRequiredProperty("ldap.url"));
         contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));

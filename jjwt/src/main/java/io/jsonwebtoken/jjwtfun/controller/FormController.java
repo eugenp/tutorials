@@ -9,7 +9,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
-public class FormController {
+class FormController {
 
     @RequestMapping(value = "/jwt-csrf-form", method = GET)
     public String csrfFormGet() {

@@ -169,7 +169,7 @@ public class JOOLUnitTest {
     }
 
 
-    public Integer methodThatThrowsChecked(String arg) throws Exception {
+    private Integer methodThatThrowsChecked(String arg) throws Exception {
         return arg.length();
     }
 

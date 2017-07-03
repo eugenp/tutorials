@@ -13,7 +13,7 @@ import lombok.Setter;
 
 @Entity
 @NoArgsConstructor @Getter @Setter
-public class UserEvent implements Serializable {
+class UserEvent implements Serializable {
 
     // This class is just for sample purposes.
 

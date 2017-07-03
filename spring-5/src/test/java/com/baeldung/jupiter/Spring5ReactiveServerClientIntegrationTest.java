@@ -18,7 +18,7 @@ import java.time.Duration;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 
-public class Spring5ReactiveServerClientIntegrationTest {
+class Spring5ReactiveServerClientIntegrationTest {
 
     private static NettyContext nettyContext;
 

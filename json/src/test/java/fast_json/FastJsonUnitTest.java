@@ -22,7 +22,7 @@ public class FastJsonUnitTest {
 
     @Before
     public void setUp() {
-        listOfPersons = new ArrayList<Person>();
+        listOfPersons = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016, 6, 24);
         listOfPersons.add(new Person(15, "John", "Doe", calendar.getTime()));

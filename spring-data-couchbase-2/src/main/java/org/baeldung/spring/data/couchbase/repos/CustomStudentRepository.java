@@ -4,6 +4,6 @@ import java.util.List;
 
 import org.baeldung.spring.data.couchbase.model.Student;
 
-public interface CustomStudentRepository {
+interface CustomStudentRepository {
     List<Student> findByFirstNameStartsWith(String s);
 }

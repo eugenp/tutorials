@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Profile("test")
-public class TestMarshallerFactory implements FactoryBean<IMarshaller> {
+class TestMarshallerFactory implements FactoryBean<IMarshaller> {
 
     @Autowired
     private Environment env;

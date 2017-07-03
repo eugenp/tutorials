@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 //import org.springframework.security.access.AccessDeniedException;
 
 @ControllerAdvice
-public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     public RestResponseEntityExceptionHandler() {
         super();
@@ -59,7 +59,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @ExceptionHandler({ AccessDeniedException.class })
     public ResponseEntity<Object> handleAccessDeniedException(final Exception ex, final WebRequest request) {
         System.out.println("request" + request.getUserPrincipal());
-        return new ResponseEntity<Object>("Access denied message here", new HttpHeaders(), HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>("Access denied message here", new HttpHeaders(), HttpStatus.FORBIDDEN);
     }
 
     // 404

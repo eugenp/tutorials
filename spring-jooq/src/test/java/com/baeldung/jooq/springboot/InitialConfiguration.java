@@ -13,13 +13,13 @@ import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 import javax.sql.DataSource;
 
 @Configuration
-public class InitialConfiguration {
+class InitialConfiguration {
 
     @Autowired
     private DataSource dataSource;
 
     @Bean
-    public DataSourceConnectionProvider connectionProvider() {
+    private DataSourceConnectionProvider connectionProvider() {
         return new DataSourceConnectionProvider(new TransactionAwareDataSourceProxy(dataSource));
     }
 
@@ -28,7 +28,7 @@ public class InitialConfiguration {
         return new DefaultDSLContext(configuration());
     }
 
-    public DefaultConfiguration configuration() {
+    private DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
 
         jooqConfiguration.set(connectionProvider());

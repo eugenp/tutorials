@@ -23,8 +23,8 @@ public class ActuatorMetricService implements IActuatorMetricService {
 
     public ActuatorMetricService() {
         super();
-        statusMetricsByMinute = new ArrayList<ArrayList<Integer>>();
-        statusList = new ArrayList<String>();
+        statusMetricsByMinute = new ArrayList<>();
+        statusList = new ArrayList<>();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
         }
 
         List<Integer> minuteOfStatuses;
-        List<Integer> last = new ArrayList<Integer>();
+        List<Integer> last = new ArrayList<>();
 
         for (int i = 1; i < rowCount; i++) {
             minuteOfStatuses = statusMetricsByMinute.get(i - 1);
@@ -76,7 +76,7 @@ public class ActuatorMetricService implements IActuatorMetricService {
     }
 
     private ArrayList<Integer> initializeStatuses(final int size) {
-        final ArrayList<Integer> counterList = new ArrayList<Integer>();
+        final ArrayList<Integer> counterList = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             counterList.add(0);
         }

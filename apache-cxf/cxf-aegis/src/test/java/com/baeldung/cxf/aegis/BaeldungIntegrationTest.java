@@ -49,7 +49,7 @@ public class BaeldungIntegrationTest {
     
     private void initializeContext() {
         context = new AegisContext();
-        Set<Type> rootClasses = new HashSet<Type>();
+        Set<Type> rootClasses = new HashSet<>();
         rootClasses.add(CourseRepo.class);
         context.setRootClasses(rootClasses);
         Map<Class<?>, String> beanImplementationMap = new HashMap<>();

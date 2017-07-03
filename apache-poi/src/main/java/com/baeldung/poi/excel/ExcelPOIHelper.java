@@ -21,7 +21,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExcelPOIHelper {
+class ExcelPOIHelper {
 
     public Map<Integer, List<String>> readExcel(String fileLocation) throws IOException {
 
@@ -31,7 +31,7 @@ public class ExcelPOIHelper {
         Sheet sheet = workbook.getSheetAt(0);
         int i = 0;
         for (Row row : sheet) {
-            data.put(i, new ArrayList<String>());
+            data.put(i, new ArrayList<>());
             for (Cell cell : row) {
                 switch (cell.getCellTypeEnum()) {
                 case STRING:

@@ -31,7 +31,7 @@ public class SimpleGeneticAlgorithm {
         return true;
     }
 
-    public Population evolvePopulation(Population pop) {
+    private Population evolvePopulation(Population pop) {
         int elitismOffset;
         Population newPopulation = new Population(pop.getIndividuals().size(), false);
 
@@ -87,7 +87,7 @@ public class SimpleGeneticAlgorithm {
         return fittest;
     }
 
-    protected static int getFitness(Individual individual) {
+    static int getFitness(Individual individual) {
         int fitness = 0;
         for (int i = 0; i < individual.getDefaultGeneLength() && i < solution.length; i++) {
             if (individual.getSingleGene(i) == solution[i]) {
@@ -97,12 +97,12 @@ public class SimpleGeneticAlgorithm {
         return fitness;
     }
 
-    protected int getMaxFitness() {
+    private int getMaxFitness() {
         int maxFitness = solution.length;
         return maxFitness;
     }
 
-    protected void setSolution(String newSolution) {
+    private void setSolution(String newSolution) {
         solution = new byte[newSolution.length()];
         for (int i = 0; i < newSolution.length(); i++) {
             String character = newSolution.substring(i, i + 1);

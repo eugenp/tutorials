@@ -14,9 +14,9 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    public Person(){}
+    protected Person(){}
 
-    public Person(String firstName, String lastName) {
+    protected Person(String firstName, String lastName) {
         this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;

@@ -4,7 +4,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class DelayQueueConsumer implements Runnable {
+class DelayQueueConsumer implements Runnable {
     private BlockingQueue<DelayObject> queue;
     private final Integer numberOfElementsToTake;
     final AtomicInteger numberOfConsumedElements = new AtomicInteger();

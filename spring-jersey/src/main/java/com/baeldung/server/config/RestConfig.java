@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @ApplicationPath("/resources")
-public class RestConfig extends Application {
+class RestConfig extends Application {
     public Set<Class<?>> getClasses() {
-        return new HashSet<Class<?>>(Arrays.asList(EmployeeResource.class, NotFoundExceptionHandler.class, AlreadyExistsExceptionHandler.class));
+        return new HashSet<>(Arrays.asList(EmployeeResource.class, NotFoundExceptionHandler.class, AlreadyExistsExceptionHandler.class));
     }
 }

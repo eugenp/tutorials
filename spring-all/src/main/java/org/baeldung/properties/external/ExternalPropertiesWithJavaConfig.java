@@ -9,7 +9,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Configuration
 @ComponentScan("org.baeldung.properties.core")
 @PropertySource("classpath:foo.properties")
-public class ExternalPropertiesWithJavaConfig {
+class ExternalPropertiesWithJavaConfig {
 
     public ExternalPropertiesWithJavaConfig() {
         super();

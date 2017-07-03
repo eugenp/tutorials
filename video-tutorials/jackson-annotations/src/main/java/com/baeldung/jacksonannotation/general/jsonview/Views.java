@@ -6,7 +6,7 @@ package com.baeldung.jacksonannotation.general.jsonview;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class Views {
+class Views {
     public static class Public {
     }
 

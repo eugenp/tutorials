@@ -13,12 +13,12 @@ import org.jenetics.engine.Problem;
 import org.jenetics.engine.codecs;
 import org.jenetics.util.ISeq;
 
-public class SpringsteenProblem implements Problem<ISeq<SpringsteenRecord>, BitGene, Double> {
+class SpringsteenProblem implements Problem<ISeq<SpringsteenRecord>, BitGene, Double> {
 
     private ISeq<SpringsteenRecord> records;
     private double maxPricePerUniqueSong;
 
-    public SpringsteenProblem(ISeq<SpringsteenRecord> records, double maxPricePerUniqueSong) {
+    private SpringsteenProblem(ISeq<SpringsteenRecord> records, double maxPricePerUniqueSong) {
         this.records = requireNonNull(records);
         this.maxPricePerUniqueSong = maxPricePerUniqueSong;
     }

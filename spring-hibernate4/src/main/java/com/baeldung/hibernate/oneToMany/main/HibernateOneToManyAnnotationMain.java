@@ -11,7 +11,7 @@ import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
 import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.Items;
 
-public class HibernateOneToManyAnnotationMain {
+class HibernateOneToManyAnnotationMain {
 
     public static void main(String[] args) {
 
@@ -19,7 +19,7 @@ public class HibernateOneToManyAnnotationMain {
 
         Items item1 = new Items(cart);
         Items item2 = new Items(cart);
-        Set<Items> itemsSet = new HashSet<Items>();
+        Set<Items> itemsSet = new HashSet<>();
         itemsSet.add(item1);
         itemsSet.add(item2);
 

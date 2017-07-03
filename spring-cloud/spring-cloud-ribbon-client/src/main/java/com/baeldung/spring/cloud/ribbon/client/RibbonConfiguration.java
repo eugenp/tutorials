@@ -10,7 +10,7 @@ import com.netflix.loadbalancer.PingUrl;
 import com.netflix.loadbalancer.WeightedResponseTimeRule;
 import com.netflix.loadbalancer.AvailabilityFilteringRule;
 
-public class RibbonConfiguration {
+class RibbonConfiguration {
 
     @Autowired
     IClientConfig ribbonClientConfig;

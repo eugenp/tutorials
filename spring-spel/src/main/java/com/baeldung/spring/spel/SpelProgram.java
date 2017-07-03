@@ -4,7 +4,7 @@ import com.baeldung.spring.spel.examples.SpelConditional;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class SpelProgram {
+class SpelProgram {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         SpelConditional spelCollections = (SpelConditional) context.getBean("spelConditional");

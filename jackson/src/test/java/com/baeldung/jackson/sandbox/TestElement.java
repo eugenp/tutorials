@@ -1,8 +1,8 @@
 package com.baeldung.jackson.sandbox;
 
-public class TestElement {
+class TestElement {
 
-    int x;
+    private int x;
 
     private transient String y;
 

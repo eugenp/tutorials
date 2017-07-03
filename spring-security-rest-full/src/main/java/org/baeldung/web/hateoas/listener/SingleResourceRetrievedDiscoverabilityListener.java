@@ -22,7 +22,7 @@ class SingleResourceRetrievedDiscoverabilityListener implements ApplicationListe
         addLinkHeaderOnSingleResourceRetrieval(response);
     }
 
-    void addLinkHeaderOnSingleResourceRetrieval(final HttpServletResponse response) {
+    private void addLinkHeaderOnSingleResourceRetrieval(final HttpServletResponse response) {
         final String requestURL = ServletUriComponentsBuilder.fromCurrentRequestUri().build().toUri().toASCIIString();
         final int positionOfLastSlash = requestURL.lastIndexOf("/");
         final String uriForResourceCreation = requestURL.substring(0, positionOfLastSlash);

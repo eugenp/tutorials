@@ -11,8 +11,8 @@ import com.baeldung.interceptor.AuditedInterceptor;
 import com.baeldung.service.SuperService;
 
 public class InterceptorIntegrationTest {
-    Weld weld;
-    WeldContainer container;
+    private Weld weld;
+    private WeldContainer container;
 
     @Before
     public void init() {

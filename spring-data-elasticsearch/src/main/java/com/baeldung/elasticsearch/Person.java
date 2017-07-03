@@ -2,7 +2,7 @@ package com.baeldung.elasticsearch;
 
 import java.util.Date;
 
-public class Person {
+class Person {
 
     private int age;
 

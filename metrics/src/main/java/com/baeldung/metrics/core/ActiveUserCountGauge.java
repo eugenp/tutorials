@@ -5,7 +5,7 @@ import java.util.List;
 import com.codahale.metrics.DerivativeGauge;
 import com.codahale.metrics.Gauge;
 
-public class ActiveUserCountGauge extends DerivativeGauge<List<Long>, Integer> {
+class ActiveUserCountGauge extends DerivativeGauge<List<Long>, Integer> {
     public ActiveUserCountGauge(Gauge<List<Long>> base) {
         super(base);
     }

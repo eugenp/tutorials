@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.base.Preconditions;
 
-public class TesterVersion_MultiHttpClientConnThread extends Thread {
+class TesterVersion_MultiHttpClientConnThread extends Thread {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final CloseableHttpClient client;

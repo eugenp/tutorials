@@ -9,7 +9,7 @@ import java.util.WeakHashMap;
 
 import com.google.common.base.Function;
 
-public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
+class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
 
     private class SingleEntry implements Entry<K, V> {
         private K key;
@@ -89,7 +89,7 @@ public class GuavaMapFromSet<K, V> extends AbstractMap<K, V> {
 
     public GuavaMapFromSet(Set<K> keys, Function<? super K, ? extends V> function) {
         this.function = function;
-        this.cache = new WeakHashMap<K, V>();
+        this.cache = new WeakHashMap<>();
         this.entries = new MyEntrySet(keys);
     }
 

@@ -16,7 +16,7 @@ import java.util.Date;
  * @author Alex Theedom www.baeldung.com
  * @version 1.0
  */
-public class CustomDateDeserializer extends StdDeserializer<Date> {
+class CustomDateDeserializer extends StdDeserializer<Date> {
 
     private static SimpleDateFormat formatter =
             new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

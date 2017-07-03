@@ -13,7 +13,7 @@ import java.time.ZoneOffset;
 import java.util.concurrent.TimeUnit;
 
 @Controller
-public class ResourceEndpoint {
+class ResourceEndpoint {
 
     @GetMapping(value = "/default/users/{name}")
     public ResponseEntity<UserDto> getUserWithDefaultCaching(@PathVariable String name) {

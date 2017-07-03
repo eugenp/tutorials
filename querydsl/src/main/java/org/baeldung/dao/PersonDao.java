@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.baeldung.entity.Person;
 
-public interface PersonDao {
+interface PersonDao {
 
     public Person save(Person person);
 

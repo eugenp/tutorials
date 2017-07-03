@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class PersonContainer {
+class PersonContainer {
 	private Name name;
 
 	public PersonContainer(Name name) {

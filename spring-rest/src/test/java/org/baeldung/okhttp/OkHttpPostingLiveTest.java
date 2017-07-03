@@ -25,7 +25,7 @@ public class OkHttpPostingLiveTest {
     private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-rest";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
 
-    OkHttpClient client;
+    private OkHttpClient client;
 
     @Before
     public void init() {

@@ -8,7 +8,7 @@ import org.apache.thrift.transport.TServerSocket;
 import org.apache.thrift.transport.TServerTransport;
 import org.apache.thrift.transport.TTransportException;
 
-public class CrossPlatformServiceServer {
+class CrossPlatformServiceServer {
 
     private TServer server;
 

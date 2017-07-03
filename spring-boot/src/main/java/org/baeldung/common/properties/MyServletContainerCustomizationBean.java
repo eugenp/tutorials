@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyServletContainerCustomizationBean implements EmbeddedServletContainerCustomizer {
+class MyServletContainerCustomizationBean implements EmbeddedServletContainerCustomizer {
 
     public MyServletContainerCustomizationBean() {
 

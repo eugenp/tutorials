@@ -10,8 +10,8 @@ import static org.junit.Assert.assertEquals;
 
 public class AsyncEchoIntegrationTest {
 
-    Process server;
-    AsyncEchoClient client;
+    private Process server;
+    private AsyncEchoClient client;
 
     @Before
     public void setup() throws IOException, InterruptedException {

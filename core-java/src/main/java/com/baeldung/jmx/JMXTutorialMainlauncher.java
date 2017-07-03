@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import javax.management.*;
 import java.lang.management.ManagementFactory;
 
-public class JMXTutorialMainlauncher {
+class JMXTutorialMainlauncher {
 
     private static final Logger LOG = LoggerFactory.getLogger(JMXTutorialMainlauncher.class);
 

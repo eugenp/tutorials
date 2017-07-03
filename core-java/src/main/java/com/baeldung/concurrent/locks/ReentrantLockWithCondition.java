@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.Thread.sleep;
 
-public class ReentrantLockWithCondition {
+class ReentrantLockWithCondition {
 
     private static Logger LOG = LoggerFactory.getLogger(ReentrantLockWithCondition.class);
 

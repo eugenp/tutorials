@@ -1,6 +1,6 @@
 package com.baeldung.struts;
 
-public class CarMessageService {
+class CarMessageService {
 
     public String getMessage(String carName) {
         System.out.println("inside getMessage()" + carName);

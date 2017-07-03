@@ -18,20 +18,20 @@ import org.springframework.data.redis.serializer.GenericToStringSerializer;
 public class RedisConfig {
 
     @Bean
-    JedisConnectionFactory jedisConnectionFactory() {
+    private JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate() {
-        final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+    private RedisTemplate<String, Object> redisTemplate() {
+        final RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
-        template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+        template.setValueSerializer(new GenericToStringSerializer<>(Object.class));
         return template;
     }
 
     @Bean
-    MessageListenerAdapter messageListener() {
+    private MessageListenerAdapter messageListener() {
         return new MessageListenerAdapter(new RedisMessageSubscriber());
     }
 
@@ -49,7 +49,7 @@ public class RedisConfig {
     }
 
     @Bean
-    ChannelTopic topic() {
+    private ChannelTopic topic() {
         return new ChannelTopic("pubsub:queue");
     }
 }

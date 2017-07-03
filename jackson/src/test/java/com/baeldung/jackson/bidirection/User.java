@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    public int id;
-    public String name;
-    public List<Item> userItems;
+    private int id;
+    private String name;
+    private List<Item> userItems;
 
     public User() {
         super();
@@ -15,7 +15,7 @@ public class User {
     public User(final int id, final String name) {
         this.id = id;
         this.name = name;
-        userItems = new ArrayList<Item>();
+        userItems = new ArrayList<>();
     }
 
     public void addItem(final Item item) {

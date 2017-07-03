@@ -41,7 +41,7 @@ import static org.springframework.util.StringUtils.collectionToDelimitedString;
 public class ApiDocumentationIntegrationTest {
 
     @Rule
-    public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
+    private final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
 
     @Autowired
     private WebApplicationContext context;

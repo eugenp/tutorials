@@ -107,7 +107,7 @@ public final class BaeldungTraining {
                     }
                     case 26: {
                         if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                            student_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student>();
+                            student_ = new java.util.ArrayList<>();
                             mutable_bitField0_ |= 0x00000004;
                         }
                         student_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.parser(), extensionRegistry));
@@ -574,7 +574,7 @@ public final class BaeldungTraining {
 
             private void ensureStudentIsMutable() {
                 if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-                    student_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student>(student_);
+                    student_ = new java.util.ArrayList<>(student_);
                     bitField0_ |= 0x00000004;
                 }
             }
@@ -801,8 +801,8 @@ public final class BaeldungTraining {
 
             private com.google.protobuf.RepeatedFieldBuilder<com.baeldung.protobuf.BaeldungTraining.Student, com.baeldung.protobuf.BaeldungTraining.Student.Builder, com.baeldung.protobuf.BaeldungTraining.StudentOrBuilder> getStudentFieldBuilder() {
                 if (studentBuilder_ == null) {
-                    studentBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<com.baeldung.protobuf.BaeldungTraining.Student, com.baeldung.protobuf.BaeldungTraining.Student.Builder, com.baeldung.protobuf.BaeldungTraining.StudentOrBuilder>(student_,
-                            ((bitField0_ & 0x00000004) == 0x00000004), getParentForChildren(), isClean());
+                    studentBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<>(student_,
+                      ((bitField0_ & 0x00000004) == 0x00000004), getParentForChildren(), isClean());
                     student_ = null;
                 }
                 return studentBuilder_;
@@ -981,7 +981,7 @@ public final class BaeldungTraining {
                     }
                     case 42: {
                         if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                            phone_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber>();
+                            phone_ = new java.util.ArrayList<>();
                             mutable_bitField0_ |= 0x00000010;
                         }
                         phone_.add(input.readMessage(com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber.parser(), extensionRegistry));
@@ -2277,7 +2277,7 @@ public final class BaeldungTraining {
 
             private void ensurePhoneIsMutable() {
                 if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-                    phone_ = new java.util.ArrayList<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber>(phone_);
+                    phone_ = new java.util.ArrayList<>(phone_);
                     bitField0_ |= 0x00000010;
                 }
             }
@@ -2504,8 +2504,8 @@ public final class BaeldungTraining {
 
             private com.google.protobuf.RepeatedFieldBuilder<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber, com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber.Builder, com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumberOrBuilder> getPhoneFieldBuilder() {
                 if (phoneBuilder_ == null) {
-                    phoneBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber, com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumber.Builder, com.baeldung.protobuf.BaeldungTraining.Student.PhoneNumberOrBuilder>(
-                            phone_, ((bitField0_ & 0x00000010) == 0x00000010), getParentForChildren(), isClean());
+                    phoneBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<>(
+                      phone_, ((bitField0_ & 0x00000010) == 0x00000010), getParentForChildren(), isClean());
                     phone_ = null;
                 }
                 return phoneBuilder_;
@@ -2560,7 +2560,7 @@ public final class BaeldungTraining {
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_baeldung_Student_PhoneNumber_descriptor;
     private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_baeldung_Student_PhoneNumber_fieldAccessorTable;
 
-    public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+    private static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
 

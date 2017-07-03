@@ -9,7 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-public class CustomDateSerializer extends StdSerializer<Date> {
+class CustomDateSerializer extends StdSerializer<Date> {
 
     private static final long serialVersionUID = -2894356342227378312L;
     private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");

@@ -2,7 +2,7 @@ package org.baeldung.customannotation;
 
 import java.io.Serializable;
 
-public class Account implements Serializable {
+class Account implements Serializable {
 
     private static final long serialVersionUID = 7857541629844398625L;
 

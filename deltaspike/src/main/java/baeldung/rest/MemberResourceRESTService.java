@@ -51,7 +51,7 @@ import baeldung.service.MemberRegistration;
  */
 @Path("/members")
 @RequestScoped
-public class MemberResourceRESTService {
+class MemberResourceRESTService {
 
     @Inject
     private Logger log;
@@ -63,6 +63,7 @@ public class MemberResourceRESTService {
     private MemberRepository repository;
 
     @Inject
+    private
     MemberRegistration registration;
 
     @GET
@@ -173,7 +174,7 @@ public class MemberResourceRESTService {
      * @param email The email to check
      * @return True if the email already exists, and false otherwise
      */
-    public boolean emailAlreadyExists(String email) {
+    private boolean emailAlreadyExists(String email) {
         Member member = null;
         try {
             member = repository.findByEmail(email);

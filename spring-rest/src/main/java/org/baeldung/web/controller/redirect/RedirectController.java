@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/")
-public class RedirectController {
+class RedirectController {
 
     @RequestMapping(value = "/redirectWithXMLConfig", method = RequestMethod.GET)
     public ModelAndView redirectWithUsingXMLConfig(final ModelMap model) {

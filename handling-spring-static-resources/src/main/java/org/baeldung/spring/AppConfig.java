@@ -11,7 +11,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @ComponentScan(basePackages = { "org.baeldung.persistence.service", "org.baeldung.persistence.dao" })
 @Import({ MvcConfig.class, SecSecurityConfig.class })
 @PropertySource("classpath:application.properties")
-public class AppConfig {
+class AppConfig {
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyPlaceHolderConfigurer() {

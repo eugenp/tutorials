@@ -19,7 +19,7 @@ import com.baeldung.thymeleaf.utils.StudentUtils;
  * 
  */
 @Controller
-public class StudentController {
+class StudentController {
 
     @RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
     public String saveStudent(@Valid @ModelAttribute Student student, BindingResult errors, Model model) {

@@ -2,7 +2,7 @@ package com.example;
 
 import javax.swing.*;
 
-public class Hello {
+class Hello {
     public static void main(String[] args) {
         JFrame f = new JFrame("main");
         f.setSize(200, 100);

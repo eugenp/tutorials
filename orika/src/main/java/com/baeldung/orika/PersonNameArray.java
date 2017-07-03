@@ -1,6 +1,6 @@
 package com.baeldung.orika;
 
-public class PersonNameArray {
+class PersonNameArray {
 	private String[] nameArray;
 
 	public PersonNameArray(String[] nameArray) {

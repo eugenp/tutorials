@@ -8,7 +8,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TimingDynamicInvocationHandler implements InvocationHandler {
+class TimingDynamicInvocationHandler implements InvocationHandler {
 
     private static Logger LOGGER = LoggerFactory.getLogger(TimingDynamicInvocationHandler.class);
     private final Map<String, Method> methods = new HashMap<>();

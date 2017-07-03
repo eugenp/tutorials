@@ -9,5 +9,5 @@ import com.fasterxml.jackson.annotation.JsonIgnoreType;
  * @version 1.0
  */
 @JsonIgnoreType
-public class IgnoreListMixIn {
+class IgnoreListMixIn {
 }

@@ -14,7 +14,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private List<Employee> employeeList;
 
     public EmployeeRepositoryImpl() {
-        employeeList = new ArrayList<Employee>();
+        employeeList = new ArrayList<>();
         employeeList.add(new Employee(1, "Jane"));
         employeeList.add(new Employee(2, "Jack"));
         employeeList.add(new Employee(3, "George"));

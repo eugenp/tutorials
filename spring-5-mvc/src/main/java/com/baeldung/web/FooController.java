@@ -23,7 +23,7 @@ import com.baeldung.model.Foo;
 import com.baeldung.persistence.FooRepository;
 
 @RestController
-public class FooController {
+class FooController {
 
     @Autowired
     private FooRepository repo;

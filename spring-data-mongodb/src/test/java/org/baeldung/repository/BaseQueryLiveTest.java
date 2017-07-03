@@ -10,10 +10,10 @@ import org.springframework.data.mongodb.core.MongoOperations;
 public class BaseQueryLiveTest {
 
     @Autowired
-    protected UserRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
-    protected MongoOperations mongoOps;
+    MongoOperations mongoOps;
 
     @Before
     public void testSetup() {

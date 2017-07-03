@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Spring Controller Definitions.
  */
 @Controller
-public class MyController {
+class MyController {
 
     @RequestMapping("/")
     public String init(Map<String, Object> model, Principal principal) {
@@ -56,7 +56,7 @@ public class MyController {
             return Arrays.asList("none");
         } else {
 
-            Set<String> roles = new HashSet<String>();
+            Set<String> roles = new HashSet<>();
 
             final UserDetails currentUser = (UserDetails) ((Authentication) principal).getPrincipal();
             Collection<? extends GrantedAuthority> authorities = currentUser.getAuthorities();

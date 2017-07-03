@@ -34,14 +34,14 @@ public class UserConfig {
 
     @Primary
     @Bean
-    public LocalContainerEntityManagerFactoryBean userEntityManager() {
+    private LocalContainerEntityManagerFactoryBean userEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(userDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.user" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        final HashMap<String, Object> properties = new HashMap<String, Object>();
+        final HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         em.setJpaPropertyMap(properties);
@@ -51,7 +51,7 @@ public class UserConfig {
 
     @Primary
     @Bean
-    public DataSource userDataSource() {
+    private DataSource userDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("user.jdbc.url")));

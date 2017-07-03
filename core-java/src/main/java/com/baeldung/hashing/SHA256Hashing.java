@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class SHA256Hashing {
+class SHA256Hashing {
 
     public static String HashWithJavaMessageDigest(final String originalString) throws NoSuchAlgorithmException {
         final MessageDigest digest = MessageDigest.getInstance("SHA-256");

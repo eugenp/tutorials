@@ -15,12 +15,12 @@ import java.util.Random;
 
 @ManagedBean(name = "ELBean")
 @ViewScoped
-public class ELSampleBean {
+class ELSampleBean {
 
     private String firstName;
     private String lastName;
     private String pageDescription = "This page demos JSF EL Basics";
-    public static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
+    private static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
     private int pageCounter;
     private Random randomIntGen = new Random();
 

@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 public class Spring5JUnit4ConcurrentIntegrationTest implements ApplicationContextAware, InitializingBean {
 
     @Configuration
-    public static class SimpleConfiguration {
+    private static class SimpleConfiguration {
     }
 
     private ApplicationContext applicationContext;

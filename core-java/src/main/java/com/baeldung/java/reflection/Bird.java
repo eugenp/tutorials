@@ -30,7 +30,7 @@ public class Bird extends Animal {
         return walks;
     }
 
-    public void setWalks(boolean walks) {
+    private void setWalks(boolean walks) {
         this.walks = walks;
     }
 }

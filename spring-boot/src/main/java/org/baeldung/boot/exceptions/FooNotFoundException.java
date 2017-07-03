@@ -1,6 +1,6 @@
 package org.baeldung.boot.exceptions;
 
-public class FooNotFoundException extends RuntimeException{
+class FooNotFoundException extends RuntimeException{
 
     /**
      * 

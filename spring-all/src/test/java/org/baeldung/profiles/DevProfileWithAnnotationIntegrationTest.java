@@ -14,6 +14,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 @ContextConfiguration(classes = { SpringProfilesConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class DevProfileWithAnnotationIntegrationTest {
     @Autowired
+    private
     DatasourceConfig datasourceConfig;
 
     @Test

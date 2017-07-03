@@ -1,6 +1,6 @@
 package com.baeldung.dozer;
 
-public class Source {
+class Source {
     private String name;
     private int age;
 

@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 @SpringBootApplication
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class X509AuthenticationServer extends WebSecurityConfigurerAdapter {
+class X509AuthenticationServer extends WebSecurityConfigurerAdapter {
     public static void main(String[] args) {
         SpringApplication.run(X509AuthenticationServer.class, args);
     }

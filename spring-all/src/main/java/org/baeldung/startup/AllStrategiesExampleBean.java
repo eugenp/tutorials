@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 @Scope(value = "prototype")
-public class AllStrategiesExampleBean implements InitializingBean {
+class AllStrategiesExampleBean implements InitializingBean {
 
     private static final Logger LOG = LoggerFactory.getLogger(AllStrategiesExampleBean.class);
 

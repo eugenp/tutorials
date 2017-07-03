@@ -14,7 +14,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 @Controller
-public class MultipartController {
+class MultipartController {
 
     @Autowired
     ServletContext context;

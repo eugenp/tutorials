@@ -7,7 +7,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
 
-public class HelloVerticle extends AbstractVerticle {
+class HelloVerticle extends AbstractVerticle {
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloVerticle.class);
 
     public static void main(String[] args) {

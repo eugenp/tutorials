@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Controller
-public class ImageController {
+class ImageController {
 
     @Autowired
     private ServletContext servletContext;

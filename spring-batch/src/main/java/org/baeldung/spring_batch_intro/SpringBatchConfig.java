@@ -26,7 +26,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
-public class SpringBatchConfig {
+class SpringBatchConfig {
     @Autowired
     private JobBuilderFactory jobs;
 
@@ -41,12 +41,12 @@ public class SpringBatchConfig {
 
     @Bean
     public ItemReader<Transaction> itemReader() throws UnexpectedInputException, ParseException {
-        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<Transaction>();
+        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] tokens = { "username", "userid", "transactiondate", "amount" };
         tokenizer.setNames(tokens);
         reader.setResource(inputCsv);
-        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<Transaction>();
+        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
         lineMapper.setLineTokenizer(tokenizer);
         lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
         reader.setLinesToSkip(1);
@@ -61,7 +61,7 @@ public class SpringBatchConfig {
 
     @Bean
     public ItemWriter<Transaction> itemWriter(Marshaller marshaller) throws MalformedURLException {
-        StaxEventItemWriter<Transaction> itemWriter = new StaxEventItemWriter<Transaction>();
+        StaxEventItemWriter<Transaction> itemWriter = new StaxEventItemWriter<>();
         itemWriter.setMarshaller(marshaller);
         itemWriter.setRootTagName("transactionRecord");
         itemWriter.setResource(outputXml);

@@ -19,7 +19,7 @@ public class SquareCalculatorIntegrationTest {
 
 
     @Rule
-    public TestName name = new TestName();
+    private TestName name = new TestName();
 
     private long start;
 

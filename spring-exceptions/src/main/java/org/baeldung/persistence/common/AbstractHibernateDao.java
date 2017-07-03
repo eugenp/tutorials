@@ -58,7 +58,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> implements IO
         delete(entity);
     }
 
-    protected final Session getCurrentSession() {
+    private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
 

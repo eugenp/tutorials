@@ -14,7 +14,7 @@ import com.baeldung.camel.file.ContentBasedFileRouter;
 public class ContentBasedFileRouterConfig extends CamelConfiguration {
 
 	@Bean
-	ContentBasedFileRouter getContentBasedFileRouter() {
+    private ContentBasedFileRouter getContentBasedFileRouter() {
 		return new ContentBasedFileRouter();
 	}
 

@@ -65,7 +65,7 @@ public class HibernateOneToManyAnnotationMainIntegrationTest {
 		Items item1 = new Items();
 		item1.setCart(cart);
 		assertNotNull(item1);
-		Set<Items> itemsSet = new HashSet<Items>();
+		Set<Items> itemsSet = new HashSet<>();
 		itemsSet.add(item1);
 		assertNotNull(itemsSet);
 		cart.setItems(itemsSet);

@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class EchoClient {
+class EchoClient {
     private DatagramSocket socket;
     private InetAddress address;
 

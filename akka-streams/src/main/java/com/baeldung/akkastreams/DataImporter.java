@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 
-public class DataImporter {
+class DataImporter {
     private final ActorSystem actorSystem;
     private final AverageRepository averageRepository = new AverageRepository();
 

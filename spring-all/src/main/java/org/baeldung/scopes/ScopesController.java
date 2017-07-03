@@ -10,13 +10,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ScopesController {
-    public static final Logger LOG = LoggerFactory.getLogger(ScopesController.class);
+class ScopesController {
+    private static final Logger LOG = LoggerFactory.getLogger(ScopesController.class);
 
     @Resource(name = "requestMessage")
+    private
     HelloMessageGenerator requestMessage;
 
     @Resource(name = "sessionMessage")
+    private
     HelloMessageGenerator sessionMessage;
 
     @RequestMapping("/scopes")

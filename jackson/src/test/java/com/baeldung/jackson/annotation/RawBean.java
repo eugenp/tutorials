@@ -3,10 +3,10 @@ package com.baeldung.jackson.annotation;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 
 public class RawBean {
-    public String name;
+    private String name;
 
     @JsonRawValue
-    public String json;
+    private String json;
 
     public RawBean() {
 

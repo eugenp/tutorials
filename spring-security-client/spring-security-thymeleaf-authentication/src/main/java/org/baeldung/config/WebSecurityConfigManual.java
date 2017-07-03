@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 @Profile("manual")
-public class WebSecurityConfigManual extends WebSecurityConfigurerAdapter {
+class WebSecurityConfigManual extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

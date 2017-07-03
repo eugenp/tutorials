@@ -10,7 +10,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @ComponentScan("org.baeldung.service")
 // @ImportResource({ "classpath:prop.xml" })
 @PropertySource("classpath:foo.properties")
-public class ServiceConfig {
+class ServiceConfig {
 
     public ServiceConfig() {
         super();

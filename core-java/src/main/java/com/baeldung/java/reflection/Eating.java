@@ -1,5 +1,5 @@
 package com.baeldung.java.reflection;
 
-public interface Eating {
+interface Eating {
     String eats();
 }

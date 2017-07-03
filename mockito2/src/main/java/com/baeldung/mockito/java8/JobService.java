@@ -3,7 +3,7 @@ package com.baeldung.mockito.java8;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public interface JobService {
+interface JobService {
     Optional<JobPosition> findCurrentJobPosition(Person person);
 
     default boolean assignJobPosition(Person person, JobPosition jobPosition) {

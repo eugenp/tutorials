@@ -1,6 +1,6 @@
 package com.baeldung.cglib.proxy;
 
-public class PersonService {
+class PersonService {
     public String sayHello(String name) {
         return "Hello " + name;
     }

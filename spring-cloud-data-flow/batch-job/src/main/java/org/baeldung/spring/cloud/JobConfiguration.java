@@ -15,15 +15,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class JobConfiguration {
+class JobConfiguration {
 
     private static final Log logger = LogFactory.getLog(JobConfiguration.class);
 
     @Autowired
-    public JobBuilderFactory jobBuilderFactory;
+    private JobBuilderFactory jobBuilderFactory;
 
     @Autowired
-    public StepBuilderFactory stepBuilderFactory;
+    private StepBuilderFactory stepBuilderFactory;
 
     @Bean
     public Job job() {

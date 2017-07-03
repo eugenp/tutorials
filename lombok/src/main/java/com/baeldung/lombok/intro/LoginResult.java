@@ -13,7 +13,7 @@ import lombok.experimental.Accessors;
 @RequiredArgsConstructor
 @Accessors(fluent = true) @Getter
 @EqualsAndHashCode(of = {"authToken"})
-public class LoginResult {
+class LoginResult {
 
     private final @NonNull Instant loginTs;
 

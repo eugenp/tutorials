@@ -16,9 +16,10 @@ import com.baeldung.spring.domain.Customer;
 import com.baeldung.spring.validator.CustomerValidator;
 
 @Controller
-public class CustomerController {
+class CustomerController {
 
     @Autowired
+    private
     CustomerValidator validator;
 
     @RequestMapping(value = "/customer", method = RequestMethod.GET)

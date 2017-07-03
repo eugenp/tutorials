@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertiesLoader {
+class PropertiesLoader {
 
     public static Properties loadProperties(String resourceFileName) throws IOException {
         Properties configuration = new Properties();

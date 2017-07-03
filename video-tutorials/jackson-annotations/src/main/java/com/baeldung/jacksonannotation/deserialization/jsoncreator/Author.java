@@ -17,9 +17,9 @@ import java.util.List;
  * @version 1.0
  * @see JsonGetter
  */
-public class Author extends Person {
+class Author extends Person {
 
-    List<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     @JsonCreator
     public Author(

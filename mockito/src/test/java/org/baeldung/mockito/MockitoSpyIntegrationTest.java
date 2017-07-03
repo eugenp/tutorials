@@ -15,11 +15,11 @@ import static org.junit.Assert.assertEquals;
 public class MockitoSpyIntegrationTest {
 
     @Spy
-    private List<String> aSpyList = new ArrayList<String>();
+    private List<String> aSpyList = new ArrayList<>();
 
     @Test
     public void whenSpyingOnList_thenCorrect() {
-        final List<String> list = new ArrayList<String>();
+        final List<String> list = new ArrayList<>();
         final List<String> spyList = Mockito.spy(list);
 
         spyList.add("one");
@@ -44,7 +44,7 @@ public class MockitoSpyIntegrationTest {
 
     @Test
     public void whenStubASpy_thenStubbed() {
-        final List<String> list = new ArrayList<String>();
+        final List<String> list = new ArrayList<>();
         final List<String> spyList = Mockito.spy(list);
 
         assertEquals(0, spyList.size());

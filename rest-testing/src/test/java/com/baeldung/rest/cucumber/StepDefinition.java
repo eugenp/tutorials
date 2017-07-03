@@ -29,7 +29,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class StepDefinition {
+class StepDefinition {
 
     private static final String CREATE_PATH = "/create";
     private static final String APPLICATION_JSON = "application/json";

@@ -192,7 +192,7 @@ public class HttpClientMultipartLiveTest {
 
     // UTIL
 
-    final String getContent() throws IOException {
+    private String getContent() throws IOException {
         rd = new BufferedReader(new InputStreamReader(response.getEntity()
             .getContent()));
         String body = "";
@@ -203,7 +203,7 @@ public class HttpClientMultipartLiveTest {
         return content.trim();
     }
 
-    final String getContentTypeHeader() throws IOException {
+    private String getContentTypeHeader() throws IOException {
         return post.getEntity()
             .getContentType()
             .toString();

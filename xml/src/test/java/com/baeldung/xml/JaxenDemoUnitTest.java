@@ -10,9 +10,9 @@ import org.junit.Test;
 
 public class JaxenDemoUnitTest {
 
-    final String fileName = "src/test/resources/example_jaxen.xml";
+    private final String fileName = "src/test/resources/example_jaxen.xml";
 
-    JaxenDemo jaxenDemo;
+    private JaxenDemo jaxenDemo;
 
     @Test
     public void getFirstLevelNodeListTest() {

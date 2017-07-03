@@ -16,7 +16,7 @@ public class CustomDialect extends AbstractDialect {
 
     @Override
     public Set<IProcessor> getProcessors() {
-        final Set<IProcessor> processors = new HashSet<IProcessor>();
+        final Set<IProcessor> processors = new HashSet<>();
         processors.add(new NameProcessor());
         return processors;
     }

@@ -31,7 +31,7 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 
 @SpringBootApplication
 @ComponentScan(basePackages = { "com.baeldung.functional" })
-public class FunctionalSpringBootApplication {
+class FunctionalSpringBootApplication {
 
     private static final Actor BRAD_PITT = new Actor("Brad", "Pitt");
     private static final Actor TOM_HANKS = new Actor("Tom", "Hanks");
@@ -71,7 +71,7 @@ public class FunctionalSpringBootApplication {
     @Configuration
     @EnableWebSecurity
     @Profile("!https")
-    static class SecurityConfig extends WebSecurityConfigurerAdapter {
+    private static class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(final HttpSecurity http) throws Exception {
             http

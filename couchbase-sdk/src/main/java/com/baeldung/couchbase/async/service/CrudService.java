@@ -2,7 +2,7 @@ package com.baeldung.couchbase.async.service;
 
 import java.util.List;
 
-public interface CrudService<T> {
+interface CrudService<T> {
 
     void create(T t);
 

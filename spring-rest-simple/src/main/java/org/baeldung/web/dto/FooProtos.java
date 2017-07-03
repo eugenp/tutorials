@@ -575,7 +575,7 @@ public final class FooProtos {
     private static final com.google.protobuf.Descriptors.Descriptor internal_static_baeldung_Foo_descriptor;
     private static com.google.protobuf.GeneratedMessage.FieldAccessorTable internal_static_baeldung_Foo_fieldAccessorTable;
 
-    public static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
+    private static com.google.protobuf.Descriptors.FileDescriptor getDescriptor() {
         return descriptor;
     }
 

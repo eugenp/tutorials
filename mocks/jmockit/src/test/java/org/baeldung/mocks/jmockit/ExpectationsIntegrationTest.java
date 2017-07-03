@@ -57,7 +57,7 @@ public class ExpectationsIntegrationTest {
             result = "null";
         }};
 
-        assertEquals("null", mock.methodForNulls1("blablabla", new ArrayList<String>()));
+        assertEquals("null", mock.methodForNulls1("blablabla", new ArrayList<>()));
         mock.methodForNulls2("blablabla", null);
 
         new Verifications() {{

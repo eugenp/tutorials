@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 @Controller
-public class ExcelController {
+class ExcelController {
 
     private String fileLocation;
 

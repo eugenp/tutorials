@@ -10,8 +10,8 @@ import org.junit.Test;
 
 public class NioEchoIntegrationTest {
 
-    Process server;
-    EchoClient client;
+    private Process server;
+    private EchoClient client;
 
     @Before
     public void setup() throws IOException, InterruptedException {

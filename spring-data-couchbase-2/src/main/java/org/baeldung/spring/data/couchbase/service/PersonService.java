@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.baeldung.spring.data.couchbase.model.Person;
 
-public interface PersonService {
+interface PersonService {
 
     Person findOne(String id);
 

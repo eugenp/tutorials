@@ -1,6 +1,6 @@
 package org.baeldung.sample;
 
-public interface Formatter {
+interface Formatter {
 
     String format();
 

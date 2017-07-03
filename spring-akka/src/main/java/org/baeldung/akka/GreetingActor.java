@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class GreetingActor extends UntypedActor {
+class GreetingActor extends UntypedActor {
 
     private GreetingService greetingService;
 

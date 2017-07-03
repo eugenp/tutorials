@@ -119,11 +119,11 @@ public class JsonAssertUnitTest {
           new CustomComparator(
             JSONCompareMode.STRICT,
             new Customization("entry.id",
-              new RegularExpressionValueMatcher<Object>("\\d"))));
+              new RegularExpressionValueMatcher<>("\\d"))));
 
         JSONAssert.assertNotEquals("{entry:{id:x}}", "{entry:{id:1, id:as}}",
           new CustomComparator(JSONCompareMode.STRICT,
             new Customization("entry.id",
-              new RegularExpressionValueMatcher<Object>("\\d"))));
+              new RegularExpressionValueMatcher<>("\\d"))));
     }
 }

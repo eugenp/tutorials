@@ -16,7 +16,7 @@ import org.springframework.shell.core.annotation.CliOption;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimpleCLI implements CommandMarker {
+class SimpleCLI implements CommandMarker {
 
     private String getContentsOfUrlAsString(URL url) {
         StringBuilder sb = new StringBuilder();

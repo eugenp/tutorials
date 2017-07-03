@@ -48,7 +48,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
         dataSource.setUrl(env.getProperty("jdbc.url"));
@@ -70,7 +70,7 @@ public class PersistenceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

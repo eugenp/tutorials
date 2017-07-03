@@ -18,7 +18,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(value = "/customers")
-public class CustomerController {
+class CustomerController {
     @Autowired
     private CustomerService customerService;
 
@@ -31,12 +31,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/{customerId}/{orderId}", method = RequestMethod.GET)
-    public Order getOrderById(@PathVariable final String customerId, @PathVariable final String orderId) {
+    private Order getOrderById(@PathVariable final String customerId, @PathVariable final String orderId) {
         return orderService.getOrderByIdForCustomer(customerId, orderId);
     }
 
     @RequestMapping(value = "/{customerId}/orders", method = RequestMethod.GET)
-    public List<Order> getOrdersForCustomer(@PathVariable final String customerId) {
+    private List<Order> getOrdersForCustomer(@PathVariable final String customerId) {
         final List<Order> orders = orderService.getAllOrdersForCustomer(customerId);
         for (final Order order : orders) {
             final Link selfLink = linkTo(methodOn(CustomerController.class).getOrderById(customerId, order.getOrderId())).withSelfRel();

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HikariCPDemo {
+class HikariCPDemo {
 
     public static List<Employee> fetchData() {
         final String SQL_QUERY = "select * from emp";
@@ -15,7 +15,7 @@ public class HikariCPDemo {
         try (Connection con = DataSource.getConnection();
                 PreparedStatement pst = con.prepareStatement(SQL_QUERY);
                 ResultSet rs = pst.executeQuery();) {
-            employees = new ArrayList<Employee>();
+            employees = new ArrayList<>();
             Employee employee;
             while (rs.next()) {
                 employee = new Employee();

@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 @Controller
 @RequestMapping("/appointments")
-public class AppointmentsController {
+class AppointmentsController {
 
     private AppointmentService appointmentService;
 

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class AssertionUnitTest {
 
 	@Test
-	public void testConvertToDoubleThrowException() {
+    void testConvertToDoubleThrowException() {
 		String age = "eighteen";
 		assertThrows(NumberFormatException.class, () -> {
 			convertToInt(age);

@@ -3,7 +3,7 @@ package org.baeldung.aspectj;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public aspect AccountAspect {
+aspect AccountAspect {
     private static final Logger logger = LoggerFactory.getLogger(AccountAspect.class);
     final int MIN_BALANCE = 10;
 

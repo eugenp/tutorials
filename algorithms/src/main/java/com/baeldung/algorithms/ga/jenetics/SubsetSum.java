@@ -23,7 +23,7 @@ public class SubsetSum implements Problem<ISeq<Integer>, EnumGene<Integer>, Inte
     private ISeq<Integer> basicSet;
     private int size;
 
-    public SubsetSum(ISeq<Integer> basicSet, int size) {
+    private SubsetSum(ISeq<Integer> basicSet, int size) {
         this.basicSet = requireNonNull(basicSet);
         this.size = size;
     }
@@ -40,7 +40,7 @@ public class SubsetSum implements Problem<ISeq<Integer>, EnumGene<Integer>, Inte
         return codecs.ofSubSet(basicSet, size);
     }
 
-    public static SubsetSum of(int n, int k, Random random) {
+    private static SubsetSum of(int n, int k, Random random) {
         return new SubsetSum(random.doubles()
             .limit(n)
             .mapToObj(d -> (int) ((d - 0.5) * n))

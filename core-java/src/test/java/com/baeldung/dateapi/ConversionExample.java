@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
-public class ConversionExample {
+class ConversionExample {
     public static void main(String[] args) {
         Instant instantFromCalendar = GregorianCalendar.getInstance().toInstant();
         ZonedDateTime zonedDateTimeFromCalendar = new GregorianCalendar().toZonedDateTime();

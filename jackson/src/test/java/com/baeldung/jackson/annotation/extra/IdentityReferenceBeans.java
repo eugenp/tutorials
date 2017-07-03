@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
-public class IdentityReferenceBeans {
+class IdentityReferenceBeans {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     public static class BeanWithoutIdentityReference {
         private int id;

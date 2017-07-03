@@ -2,7 +2,7 @@ package com.baeldung.pow;
 
 import java.text.DecimalFormat;
 
-public class PowerExample {
+class PowerExample {
 
     public static void main(String[] args) {
 

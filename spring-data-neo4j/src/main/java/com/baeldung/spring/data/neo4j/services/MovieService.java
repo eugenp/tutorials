@@ -9,7 +9,7 @@ import java.util.*;
 
 @Service
 @Transactional
-public class MovieService {
+class MovieService {
 
     @Autowired
     private MovieRepository movieRepository;

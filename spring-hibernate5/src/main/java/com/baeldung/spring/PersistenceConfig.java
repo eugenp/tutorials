@@ -29,7 +29,7 @@ public class PersistenceConfig {
     private Environment env;
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    private LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(new String[] { "com.baeldung.persistence.model" });
@@ -39,7 +39,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));

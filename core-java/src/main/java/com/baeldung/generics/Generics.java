@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Generics {
+class Generics {
 
     // definition of a generic method
     public static <T> List<T> fromArrayToList(T[] a) {

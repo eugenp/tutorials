@@ -3,9 +3,9 @@ package com.baeldung.jackson.annotation;
 import com.fasterxml.jackson.annotation.JsonIgnoreType;
 
 public class UserWithIgnoreType {
-    public int id;
+    private int id;
 
-    public Name name;
+    private Name name;
 
     public UserWithIgnoreType() {
 

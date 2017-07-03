@@ -1,8 +1,8 @@
 package com.baeldung.jackson.exception;
 
 public class UserWithPrivateFields {
-    int id;
-    String name;
+    private int id;
+    private String name;
 
     public UserWithPrivateFields() {
         super();

@@ -7,9 +7,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SalaryController {
+class SalaryController {
 
     @Autowired
+    private
     SalaryService salaryService;
 
     @PostMapping(value = "/increaseSalary")

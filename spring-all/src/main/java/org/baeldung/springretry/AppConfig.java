@@ -14,7 +14,7 @@ import org.springframework.retry.support.RetryTemplate;
 // Uncomment this two lines if we need XML configuration
 // @EnableAspectJAutoProxy
 // @ImportResource("classpath:/retryadvice.xml")
-public class AppConfig {
+class AppConfig {
 
     @Bean
     public RetryTemplate retryTemplate() {

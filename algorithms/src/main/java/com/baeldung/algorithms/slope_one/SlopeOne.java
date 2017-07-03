@@ -35,8 +35,8 @@ public class SlopeOne {
         for (HashMap<Item, Double> user : data.values()) {
             for (Entry<Item, Double> e : user.entrySet()) {
                 if (!diff.containsKey(e.getKey())) {
-                    diff.put(e.getKey(), new HashMap<Item, Double>());
-                    freq.put(e.getKey(), new HashMap<Item, Integer>());
+                    diff.put(e.getKey(), new HashMap<>());
+                    freq.put(e.getKey(), new HashMap<>());
                 }
                 for (Entry<Item, Double> e2 : user.entrySet()) {
                     int oldCount = 0;
@@ -71,8 +71,8 @@ public class SlopeOne {
      *            existing user data and their items' ratings
      */
     private static void predict(Map<User, HashMap<Item, Double>> data) {
-        HashMap<Item, Double> uPred = new HashMap<Item, Double>();
-        HashMap<Item, Integer> uFreq = new HashMap<Item, Integer>();
+        HashMap<Item, Double> uPred = new HashMap<>();
+        HashMap<Item, Integer> uFreq = new HashMap<>();
         for (Item j : diff.keySet()) {
             uFreq.put(j, 0);
             uPred.put(j, 0.0);
@@ -89,7 +89,7 @@ public class SlopeOne {
                     }
                 }
             }
-            HashMap<Item, Double> clean = new HashMap<Item, Double>();
+            HashMap<Item, Double> clean = new HashMap<>();
             for (Item j : uPred.keySet()) {
                 if (uFreq.get(j) > 0) {
                     clean.put(j, uPred.get(j).doubleValue() / uFreq.get(j).intValue());

@@ -9,7 +9,7 @@ import java.util.Map;
 
 @Path("baeldung")
 @Produces("text/xml")
-public class CourseRepository {
+class CourseRepository {
     private Map<Integer, Course> courses = new HashMap<>();
 
     {

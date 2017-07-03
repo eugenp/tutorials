@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(value = "prototype")
-public class InitMethodExampleBean {
+class InitMethodExampleBean {
 
     private static final Logger LOG = LoggerFactory.getLogger(InitMethodExampleBean.class);
 

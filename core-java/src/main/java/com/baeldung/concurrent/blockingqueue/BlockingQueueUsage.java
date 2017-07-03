@@ -3,7 +3,7 @@ package com.baeldung.concurrent.blockingqueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class BlockingQueueUsage {
+class BlockingQueueUsage {
     public static void main(String[] args) {
         int BOUND = 10;
         int N_PRODUCERS = 4;

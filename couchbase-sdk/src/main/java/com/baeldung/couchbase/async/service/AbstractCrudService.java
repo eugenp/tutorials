@@ -29,7 +29,7 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
     private Bucket bucket;
     private JsonDocumentConverter<T> converter;
 
-    public AbstractCrudService(BucketService bucketService, JsonDocumentConverter<T> converter) {
+    protected AbstractCrudService(BucketService bucketService, JsonDocumentConverter<T> converter) {
         this.bucketService = bucketService;
         this.converter = converter;
     }
@@ -79,7 +79,7 @@ public abstract class AbstractCrudService<T extends CouchbaseEntity> implements 
             }
         });
 
-        final List<T> items = new ArrayList<T>();
+        final List<T> items = new ArrayList<>();
         try {
             asyncOperation.toBlocking().forEach(new Action1<JsonDocument>() {
                 public void call(JsonDocument doc) {

@@ -1,8 +1,8 @@
 package com.baeldung.list.listoflist;
 
-public class Rubber implements Stationery {
+class Rubber implements Stationery {
 
-    public String name;
+    private String name;
 
     public Rubber(String name) {
         this.name = name;

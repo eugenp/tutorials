@@ -3,7 +3,7 @@ package org.baeldung.aspectj;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SecuredMethod {
+class SecuredMethod {
     private static final Logger logger = LoggerFactory.getLogger(SecuredMethod.class);
 
     @Secured(isLocked = true)

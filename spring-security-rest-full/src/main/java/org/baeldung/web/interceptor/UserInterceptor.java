@@ -63,7 +63,7 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
 
     }
 
-    public static boolean isRedirectView(ModelAndView mv) {
+    private static boolean isRedirectView(ModelAndView mv) {
 
         String viewName = mv.getViewName();
         if (viewName.startsWith("redirect:/")) {

@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class PersonController {
+class PersonController {
 
     @Autowired
+    private
     PersonValidator validator;
 
     @RequestMapping(value = "/person", method = RequestMethod.GET)
@@ -50,31 +51,31 @@ public class PersonController {
 
     private void initData(final Model model) {
 
-        final List<String> favouriteLanguageItem = new ArrayList<String>();
+        final List<String> favouriteLanguageItem = new ArrayList<>();
         favouriteLanguageItem.add("Java");
         favouriteLanguageItem.add("C++");
         favouriteLanguageItem.add("Perl");
         model.addAttribute("favouriteLanguageItem", favouriteLanguageItem);
 
-        final List<String> jobItem = new ArrayList<String>();
+        final List<String> jobItem = new ArrayList<>();
         jobItem.add("Full time");
         jobItem.add("Part time");
         model.addAttribute("jobItem", jobItem);
 
-        final Map<String, String> countryItems = new LinkedHashMap<String, String>();
+        final Map<String, String> countryItems = new LinkedHashMap<>();
         countryItems.put("US", "United Stated");
         countryItems.put("IT", "Italy");
         countryItems.put("UK", "United Kingdom");
         countryItems.put("FR", "Grance");
         model.addAttribute("countryItems", countryItems);
 
-        final List<String> fruit = new ArrayList<String>();
+        final List<String> fruit = new ArrayList<>();
         fruit.add("Banana");
         fruit.add("Mango");
         fruit.add("Apple");
         model.addAttribute("fruit", fruit);
 
-        final List<String> books = new ArrayList<String>();
+        final List<String> books = new ArrayList<>();
         books.add("The Great Gatsby");
         books.add("Nineteen Eighty-Four");
         books.add("The Lord of the Rings");

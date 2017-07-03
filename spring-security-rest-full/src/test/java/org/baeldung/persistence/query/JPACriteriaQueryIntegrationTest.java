@@ -52,7 +52,7 @@ public class JPACriteriaQueryIntegrationTest {
 
     @Test
     public void givenFirstAndLastName_whenGettingListOfUsers_thenCorrect() {
-        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        final List<SearchCriteria> params = new ArrayList<>();
         params.add(new SearchCriteria("firstName", ":", "john"));
         params.add(new SearchCriteria("lastName", ":", "doe"));
 
@@ -64,7 +64,7 @@ public class JPACriteriaQueryIntegrationTest {
 
     @Test
     public void givenLast_whenGettingListOfUsers_thenCorrect() {
-        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        final List<SearchCriteria> params = new ArrayList<>();
         params.add(new SearchCriteria("lastName", ":", "doe"));
 
         final List<User> results = userApi.searchUser(params);
@@ -74,7 +74,7 @@ public class JPACriteriaQueryIntegrationTest {
 
     @Test
     public void givenLastAndAge_whenGettingListOfUsers_thenCorrect() {
-        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        final List<SearchCriteria> params = new ArrayList<>();
         params.add(new SearchCriteria("lastName", ":", "doe"));
         params.add(new SearchCriteria("age", ">", "25"));
 
@@ -86,7 +86,7 @@ public class JPACriteriaQueryIntegrationTest {
 
     @Test
     public void givenWrongFirstAndLast_whenGettingListOfUsers_thenCorrect() {
-        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        final List<SearchCriteria> params = new ArrayList<>();
         params.add(new SearchCriteria("firstName", ":", "adam"));
         params.add(new SearchCriteria("lastName", ":", "fox"));
 
@@ -97,7 +97,7 @@ public class JPACriteriaQueryIntegrationTest {
 
     @Test
     public void givenPartialFirst_whenGettingListOfUsers_thenCorrect() {
-        final List<SearchCriteria> params = new ArrayList<SearchCriteria>();
+        final List<SearchCriteria> params = new ArrayList<>();
         params.add(new SearchCriteria("firstName", ":", "jo"));
 
         final List<User> results = userApi.searchUser(params);

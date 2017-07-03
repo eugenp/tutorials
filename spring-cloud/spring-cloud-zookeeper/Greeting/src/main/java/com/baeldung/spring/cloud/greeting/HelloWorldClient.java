@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Configuration
 @EnableFeignClients
 @EnableDiscoveryClient
-public class HelloWorldClient {
+class HelloWorldClient {
 
 	@Autowired
 	private TheClient theClient;

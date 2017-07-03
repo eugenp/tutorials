@@ -2,7 +2,7 @@ package com.baeldung.jackson.annotation.extra;
 
 import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 
-public class PropertyDescriptionBean {
+class PropertyDescriptionBean {
     private int id;
     @JsonPropertyDescription("This is a description of the name property")
     private String name;

@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 @ComponentScan("org.baeldung.scopes")
 @EnableWebMvc
-public class ScopesConfig {
+class ScopesConfig {
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
         final UrlBasedViewResolver resolver = new UrlBasedViewResolver();

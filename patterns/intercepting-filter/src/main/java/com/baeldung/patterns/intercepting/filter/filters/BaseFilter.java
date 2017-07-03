@@ -7,10 +7,10 @@ import javax.servlet.Filter;
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 
-public abstract class BaseFilter implements Filter {
+abstract class BaseFilter implements Filter {
     private static final Logger log = LoggerFactory.getLogger(BaseFilter.class);
 
-    protected FilterConfig filterConfig;
+    private FilterConfig filterConfig;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

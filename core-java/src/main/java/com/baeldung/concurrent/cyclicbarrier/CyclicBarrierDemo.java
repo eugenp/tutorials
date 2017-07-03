@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicBarrierDemo {
+class CyclicBarrierDemo {
 
     private CyclicBarrier cyclicBarrier;
     private List<List<Integer>> partialResults = Collections.synchronizedList(new ArrayList<>());

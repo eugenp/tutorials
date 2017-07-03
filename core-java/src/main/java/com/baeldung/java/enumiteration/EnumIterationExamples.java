@@ -2,7 +2,7 @@ package com.baeldung.java.enumiteration;
 
 import java.util.EnumSet;
 
-public class EnumIterationExamples {
+class EnumIterationExamples {
 	public static void main(String[] args) {
 		System.out.println("Enum iteration using forEach:");
 		EnumSet.allOf(DaysOfWeekEnum.class).forEach(day -> System.out.println(day));

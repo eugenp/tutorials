@@ -22,13 +22,13 @@ import javax.sql.DataSource;
 @ComponentScan({ "com.baeldung.jooq.introduction.db.public_.tables" })
 @EnableTransactionManagement
 @PropertySource("classpath:intro_config.properties")
-public class PersistenceContextIntegrationTest {
+class PersistenceContextIntegrationTest {
 
     @Autowired
     private Environment environment;
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         JdbcDataSource dataSource = new JdbcDataSource();
 
         dataSource.setUrl(environment.getRequiredProperty("db.url"));
@@ -39,7 +39,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Bean
-    public TransactionAwareDataSourceProxy transactionAwareDataSource() {
+    private TransactionAwareDataSourceProxy transactionAwareDataSource() {
         return new TransactionAwareDataSourceProxy(dataSource());
     }
 
@@ -49,12 +49,12 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Bean
-    public DataSourceConnectionProvider connectionProvider() {
+    private DataSourceConnectionProvider connectionProvider() {
         return new DataSourceConnectionProvider(transactionAwareDataSource());
     }
 
     @Bean
-    public ExceptionTranslator exceptionTransformer() {
+    private ExceptionTranslator exceptionTransformer() {
         return new ExceptionTranslator();
     }
     
@@ -64,7 +64,7 @@ public class PersistenceContextIntegrationTest {
     }
 
     @Bean
-    public DefaultConfiguration configuration() {
+    private DefaultConfiguration configuration() {
         DefaultConfiguration jooqConfiguration = new DefaultConfiguration();
         jooqConfiguration.set(connectionProvider());
         jooqConfiguration.set(new DefaultExecuteListenerProvider(exceptionTransformer()));

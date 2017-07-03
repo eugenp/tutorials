@@ -1,6 +1,6 @@
 package com.baeldung.dozer;
 
-public class Person {
+class Person {
     private String name;
     private String nickname;
     private int age;

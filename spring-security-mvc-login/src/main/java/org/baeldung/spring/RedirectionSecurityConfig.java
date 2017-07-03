@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 //@ImportResource({ "classpath:RedirectionWebSecurityConfig.xml" })
 @EnableWebSecurity
 @Profile("!https")
-public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
+class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public RedirectionSecurityConfig() {
         super();

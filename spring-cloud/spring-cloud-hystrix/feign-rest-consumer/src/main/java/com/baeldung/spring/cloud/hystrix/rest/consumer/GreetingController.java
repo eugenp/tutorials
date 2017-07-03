@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class GreetingController {
+class GreetingController {
     @Autowired
     private GreetingClient greetingClient;
 

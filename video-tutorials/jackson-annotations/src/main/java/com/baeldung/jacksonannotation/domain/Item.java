@@ -17,9 +17,9 @@ public class Item {
     private List<Person> authors = new ArrayList<>();
     private float price;
 
-    public Item(){}
+    protected Item(){}
 
-    public Item(String title, Author author) {
+    protected Item(String title, Author author) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.authors.add(author);

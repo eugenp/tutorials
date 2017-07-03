@@ -7,7 +7,7 @@ import java.io.OutputStream;
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.HttpEntityWrapper;
 
-public class ProgressEntityWrapper extends HttpEntityWrapper {
+class ProgressEntityWrapper extends HttpEntityWrapper {
     private final ProgressListener listener;
 
     public ProgressEntityWrapper(final HttpEntity entity, final ProgressListener listener) {

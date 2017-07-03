@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserToRoleRelationshipRepository implements RelationshipRepository<User, Long, Role, Long> {
+class UserToRoleRelationshipRepository implements RelationshipRepository<User, Long, Role, Long> {
 
     @Autowired
     private UserRepository userRepository;
@@ -29,7 +29,7 @@ public class UserToRoleRelationshipRepository implements RelationshipRepository<
 
     @Override
     public void setRelations(User user, Iterable<Long> roleIds, String fieldName) {
-        final Set<Role> roles = new HashSet<Role>();
+        final Set<Role> roles = new HashSet<>();
         roles.addAll(roleRepository.findAll(roleIds));
         user.setRoles(roles);
         userRepository.save(user);

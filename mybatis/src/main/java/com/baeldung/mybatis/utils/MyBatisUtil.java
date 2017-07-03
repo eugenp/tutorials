@@ -13,10 +13,10 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import javax.sql.DataSource;
 
 public class MyBatisUtil {
-	public static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
-	public static final String URL = "jdbc:derby:testdb1;create=true";
-	public static final String USERNAME = "sa";
-	public static final String PASSWORD = "pass123";
+	private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+	private static final String URL = "jdbc:derby:testdb1;create=true";
+	private static final String USERNAME = "sa";
+	private static final String PASSWORD = "pass123";
 	private static SqlSessionFactory sqlSessionFactory;
 
 	public static SqlSessionFactory buildqlSessionFactory() {

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
  * @author Jay Sridhar
  * @version 1.0
  */
-public class User extends Person {
+class User extends Person {
     private String firstName;
     private String lastName;
 

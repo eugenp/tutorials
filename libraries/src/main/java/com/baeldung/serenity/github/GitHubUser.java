@@ -1,6 +1,6 @@
 package com.baeldung.serenity.github;
 
-public class GitHubUser {
+class GitHubUser {
 
     private String login;
 

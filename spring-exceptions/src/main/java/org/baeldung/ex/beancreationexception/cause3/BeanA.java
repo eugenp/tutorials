@@ -3,7 +3,7 @@ package org.baeldung.ex.beancreationexception.cause3;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanA {
+class BeanA {
 
     public BeanA() {
         super();

@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class MultipleEntryPointsSecurityConfig {
+class MultipleEntryPointsSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() throws Exception {
@@ -82,7 +82,7 @@ public class MultipleEntryPointsSecurityConfig {
 
     @Configuration
     @Order(3)
-    public static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
+    private static class App3ConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         protected void configure(HttpSecurity http) throws Exception {
             http.antMatcher("/guest/**").authorizeRequests().anyRequest().permitAll();

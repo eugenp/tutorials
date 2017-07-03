@@ -26,7 +26,7 @@ public class Order {
         public String name;
     }
 
-    public Order() {
+    private Order() {
         this.id = UUID.randomUUID();
     }
 

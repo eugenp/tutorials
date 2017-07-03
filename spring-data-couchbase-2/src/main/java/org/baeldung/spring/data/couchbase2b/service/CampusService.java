@@ -6,7 +6,7 @@ import org.baeldung.spring.data.couchbase.model.Campus;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
 
-public interface CampusService {
+interface CampusService {
 
     Campus find(String id);
 

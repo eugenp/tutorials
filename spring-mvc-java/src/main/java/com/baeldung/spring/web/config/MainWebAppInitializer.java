@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 import java.util.Set;
 
-public class MainWebAppInitializer implements WebApplicationInitializer {
+class MainWebAppInitializer implements WebApplicationInitializer {
 
     private static final String TMP_FOLDER = "/tmp";
     private static final int MAX_UPLOAD_SIZE = 5 * 1024 * 1024; // 5 MB

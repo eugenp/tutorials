@@ -9,7 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 
-public class OpenIdConnectUserDetails implements UserDetails {
+class OpenIdConnectUserDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
 

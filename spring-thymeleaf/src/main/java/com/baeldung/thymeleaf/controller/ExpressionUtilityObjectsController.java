@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * 
  */
 @Controller
-public class ExpressionUtilityObjectsController {
+class ExpressionUtilityObjectsController {
 
     @RequestMapping(value = "/objects", method = RequestMethod.GET)
     public String getDates(Model model) {
@@ -26,7 +26,7 @@ public class ExpressionUtilityObjectsController {
         model.addAttribute("emptyString", "");
         model.addAttribute("nullString", null);
         model.addAttribute("array", new int[] { 1, 3, 4, 5 });
-        model.addAttribute("set", new HashSet<Integer>(Arrays.asList(1, 3, 8)));
+        model.addAttribute("set", new HashSet<>(Arrays.asList(1, 3, 8)));
         return "objects.html";
     }
 

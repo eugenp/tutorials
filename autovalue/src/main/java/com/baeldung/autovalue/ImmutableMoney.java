@@ -1,6 +1,6 @@
 package com.baeldung.autovalue;
 
-public final class ImmutableMoney {
+final class ImmutableMoney {
     private final long amount;
     private final String currency;
 

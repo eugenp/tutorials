@@ -1,6 +1,6 @@
 package org.baeldung.guava;
 
-public class CustomEvent {
+class CustomEvent {
     private String action;
 
     public CustomEvent(String action) {

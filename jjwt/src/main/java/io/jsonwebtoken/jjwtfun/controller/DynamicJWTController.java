@@ -20,9 +20,10 @@ import java.util.Map;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-public class DynamicJWTController extends BaseController {
+class DynamicJWTController extends BaseController {
 
     @Autowired
+    private
     SecretService secretService;
 
     @RequestMapping(value = "/dynamic-builder-general", method = POST)

@@ -1,6 +1,6 @@
 package com.baeldung.stackoverflowerror;
 
-public class ClassOne {
+class ClassOne {
     private int oneValue;
     private ClassTwo clsTwoInstance = null;
 

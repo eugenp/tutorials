@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 @ComponentScan("org.baeldung.security")
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomAuthenticationProvider authProvider;

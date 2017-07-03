@@ -17,7 +17,7 @@ public class Computer {
         this.healty = healty;
     }
 
-    public Computer() {
+    Computer() {
     }
 
     public Integer getAge() {
@@ -52,7 +52,7 @@ public class Computer {
         System.out.println("Computer turned off");
     }
 
-    public Double calculateValue(Double initialValue) {
+    Double calculateValue(Double initialValue) {
         return initialValue / 1.50;
     }
 

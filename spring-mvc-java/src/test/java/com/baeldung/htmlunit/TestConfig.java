@@ -13,7 +13,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.baeldung.web.controller" })
-public class TestConfig extends WebMvcConfigurerAdapter {
+class TestConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public ViewResolver thymeleafViewResolver() {
@@ -24,7 +24,7 @@ public class TestConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public ServletContextTemplateResolver templateResolver() {
+    private ServletContextTemplateResolver templateResolver() {
         final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver();
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
@@ -33,7 +33,7 @@ public class TestConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine() {
+    private SpringTemplateEngine templateEngine() {
         final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         return templateEngine;

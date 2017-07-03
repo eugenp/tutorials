@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.baeldung.thymeleaf.utils.StudentUtils;
 
 @Controller
-public class InliningController {
+class InliningController {
 
     @RequestMapping(value = "/html", method = RequestMethod.GET)
     public String getExampleHTML(Model model) {

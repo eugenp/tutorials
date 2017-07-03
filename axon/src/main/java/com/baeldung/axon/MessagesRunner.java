@@ -17,7 +17,7 @@ import org.axonframework.eventsourcing.eventstore.inmemory.InMemoryEventStorageE
 
 import java.util.UUID;
 
-public class MessagesRunner {
+class MessagesRunner {
 
     public static void main(String[] args) {
         CommandBus commandBus = new SimpleCommandBus();
@@ -31,7 +31,7 @@ public class MessagesRunner {
 
 
         AggregateAnnotationCommandHandler<MessagesAggregate> messagesAggregateAggregateAnnotationCommandHandler =
-                new AggregateAnnotationCommandHandler<MessagesAggregate>(MessagesAggregate.class, repository);
+          new AggregateAnnotationCommandHandler<>(MessagesAggregate.class, repository);
         messagesAggregateAggregateAnnotationCommandHandler.subscribe(commandBus);
 
         final AnnotationEventListenerAdapter annotationEventListenerAdapter =

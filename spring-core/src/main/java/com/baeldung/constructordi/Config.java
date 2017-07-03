@@ -9,7 +9,7 @@ import com.baeldung.constructordi.domain.Transmission;
 
 @Configuration
 @ComponentScan("com.baeldung.constructordi")
-public class Config {
+class Config {
 
     @Bean
     public Engine engine() {

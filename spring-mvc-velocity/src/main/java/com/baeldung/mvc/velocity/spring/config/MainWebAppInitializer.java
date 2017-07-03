@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 import java.util.Set;
 
-public class MainWebAppInitializer implements WebApplicationInitializer {
+class MainWebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(final ServletContext sc) throws ServletException {

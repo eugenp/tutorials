@@ -25,6 +25,6 @@ public class AppConfig {
 
     @Bean
     public List<String> getAccumulator() {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 }

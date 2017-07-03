@@ -8,7 +8,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @EnableAutoConfiguration(exclude = MySQLAutoconfiguration.class)
 @ComponentScan(basePackageClasses = ConfigProperties.class)
-public class ConfigPropertiesDemoApplication {
+class ConfigPropertiesDemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(ConfigPropertiesDemoApplication.class);
     }

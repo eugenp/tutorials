@@ -4,7 +4,7 @@ import com.couchbase.client.deps.com.fasterxml.jackson.databind.ObjectMapper;
 import com.couchbase.client.java.document.json.JsonArray;
 import com.couchbase.client.java.view.ViewQuery;
 
-public class StudentGradeQueryBuilder {
+class StudentGradeQueryBuilder {
 
     final ObjectMapper om = new ObjectMapper();
     

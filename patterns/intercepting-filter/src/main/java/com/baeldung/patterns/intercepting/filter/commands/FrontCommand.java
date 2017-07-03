@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class FrontCommand implements OnIntercept {
-    protected HttpServletRequest request;
-    protected HttpServletResponse response;
+    HttpServletRequest request;
+    HttpServletResponse response;
     private boolean intercept;
 
     public FrontCommand() {
@@ -26,7 +26,7 @@ public abstract class FrontCommand implements OnIntercept {
         FilterManager.process(request, response, this);
     }
 
-    public void forward(String target) throws ServletException, IOException {
+    void forward(String target) throws ServletException, IOException {
         if (intercept) {
             return;
         }

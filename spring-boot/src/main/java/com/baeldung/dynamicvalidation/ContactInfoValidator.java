@@ -11,7 +11,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.regex.Pattern;
 
-public class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
+class ContactInfoValidator implements ConstraintValidator<ContactInfo, String> {
 
     private static final Logger LOG = Logger.getLogger(ContactInfoValidator.class);
 
@@ -19,6 +19,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
     private ContactInfoExpressionRepository expressionRepository;
 
     @Value("${contactInfoType}")
+    private
     String expressionType;
 
     private String pattern;

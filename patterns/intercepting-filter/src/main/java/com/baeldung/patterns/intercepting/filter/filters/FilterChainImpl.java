@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class FilterChainImpl implements FilterChain {
+class FilterChainImpl implements FilterChain {
     private Iterator<Filter> filters;
 
     public FilterChainImpl(Filter... filters) {

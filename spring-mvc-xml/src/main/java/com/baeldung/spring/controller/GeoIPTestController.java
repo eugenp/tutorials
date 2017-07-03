@@ -12,7 +12,7 @@ import com.baeldung.spring.form.GeoIP;
 import com.baeldung.spring.service.RawDBDemoGeoIPLocationService;
 
 @Controller
-public class GeoIPTestController {
+class GeoIPTestController {
     private RawDBDemoGeoIPLocationService locationService;
     public GeoIPTestController() throws IOException {
         locationService 

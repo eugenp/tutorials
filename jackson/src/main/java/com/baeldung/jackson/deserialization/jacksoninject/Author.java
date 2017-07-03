@@ -5,9 +5,9 @@ import com.baeldung.jackson.domain.Item;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Author extends Person {
+class Author extends Person {
 
-    List<Item> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public Author(){}
 

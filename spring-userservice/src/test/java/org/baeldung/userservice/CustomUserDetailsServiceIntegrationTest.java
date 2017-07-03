@@ -29,14 +29,16 @@ public class CustomUserDetailsServiceIntegrationTest {
 
     private static final Logger LOG = Logger.getLogger("CustomUserDetailsServiceTest");
 
-    public static final String USERNAME = "user";
-    public static final String PASSWORD = "pass";
-    public static final String USERNAME2 = "user2";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "pass";
+    private static final String USERNAME2 = "user2";
 
     @Autowired
+    private
     MyUserService myUserService;
 
     @Autowired
+    private
     AuthenticationProvider authenticationProvider;
 
     @Test

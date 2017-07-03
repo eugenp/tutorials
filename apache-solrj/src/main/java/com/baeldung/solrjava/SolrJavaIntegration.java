@@ -7,7 +7,7 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.impl.XMLResponseParser;
 import org.apache.solr.common.SolrInputDocument;
 
-public class SolrJavaIntegration {
+class SolrJavaIntegration {
 
     private HttpSolrClient solrClient;
 
@@ -45,7 +45,7 @@ public class SolrJavaIntegration {
         solrClient.commit();
     }
 
-    protected HttpSolrClient getSolrClient() {
+    HttpSolrClient getSolrClient() {
         return solrClient;
     }
 

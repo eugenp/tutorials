@@ -22,7 +22,7 @@ import io.restassured.response.Response;
 
 public abstract class AbstractBasicLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
-    public AbstractBasicLiveTest(final Class<T> clazzToSet) {
+    protected AbstractBasicLiveTest(final Class<T> clazzToSet) {
         super(clazzToSet);
     }
 

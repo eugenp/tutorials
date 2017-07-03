@@ -5,7 +5,7 @@ import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyHealthCheck implements HealthIndicator {
+class MyHealthCheck implements HealthIndicator {
 
     public Health health() {
         int errorCode = check(); // perform some specific health check
@@ -15,7 +15,7 @@ public class MyHealthCheck implements HealthIndicator {
         return Health.up().build();
     }
 
-    public int check() {
+    private int check() {
         // Your logic to check health
         return 1;
     }

@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class JGoTestingUnitTest {
     @Rule
-    public final JGoTestRule test = new JGoTestRule();
+    private final JGoTestRule test = new JGoTestRule();
 
     @Test
     public void whenComparingIntegers_thenEqual() {

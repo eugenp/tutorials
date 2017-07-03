@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/rest/user")
-public class UserRestController {
+class UserRestController {
 
     @Autowired
     private UserService userService;

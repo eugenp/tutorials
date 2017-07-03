@@ -32,7 +32,7 @@ public class Cause2PersistenceConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
+    private LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(restDataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
@@ -44,7 +44,7 @@ public class Cause2PersistenceConfig {
     }
 
     @Bean
-    public DataSource restDataSource() {
+    private DataSource restDataSource() {
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("jdbc.url")));
@@ -67,7 +67,7 @@ public class Cause2PersistenceConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    final Properties hibernateProperties() {
+    private Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));

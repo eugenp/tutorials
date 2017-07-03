@@ -136,7 +136,7 @@ public class Bar implements Serializable {
         return OPERATION.parse(operation);
     }
 
-    public void setOperation(final OPERATION operation) {
+    private void setOperation(final OPERATION operation) {
         this.operation = operation.getValue();
     }
 
@@ -144,7 +144,7 @@ public class Bar implements Serializable {
         return timestamp;
     }
 
-    public void setTimestamp(final long timestamp) {
+    private void setTimestamp(final long timestamp) {
         this.timestamp = timestamp;
     }
 

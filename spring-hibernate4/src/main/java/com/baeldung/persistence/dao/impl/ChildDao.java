@@ -6,7 +6,7 @@ import com.baeldung.persistence.dao.IChildDao;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ChildDao extends AbstractHibernateDao<Child> implements IChildDao {
+class ChildDao extends AbstractHibernateDao<Child> implements IChildDao {
 
     public ChildDao() {
         super();

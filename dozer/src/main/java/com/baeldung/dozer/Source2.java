@@ -1,6 +1,6 @@
 package com.baeldung.dozer;
 
-public class Source2 {
+class Source2 {
     private String id;
     private double points;
 

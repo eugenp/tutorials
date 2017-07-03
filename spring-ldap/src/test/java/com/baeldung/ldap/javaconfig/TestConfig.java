@@ -38,7 +38,7 @@ public class TestConfig {
     }
 
     @Bean
-    public LdapContextSource contextSource() {
+    private LdapContextSource contextSource() {
         LdapContextSource contextSource = new LdapContextSource();
         contextSource.setUrl(env.getRequiredProperty("ldap.url"));
         contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));

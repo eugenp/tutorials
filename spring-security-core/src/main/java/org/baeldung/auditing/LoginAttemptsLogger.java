@@ -9,7 +9,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginAttemptsLogger {
+class LoginAttemptsLogger {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginAttemptsLogger.class);
 
     @EventListener

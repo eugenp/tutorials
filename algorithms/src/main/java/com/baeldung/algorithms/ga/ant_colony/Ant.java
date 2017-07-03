@@ -1,10 +1,10 @@
 package com.baeldung.algorithms.ga.ant_colony;
 
-public class Ant {
+class Ant {
 
-	protected int trailSize;
-	protected int trail[];
-	protected boolean visited[];
+	private int trailSize;
+	int[] trail;
+	private boolean[] visited;
 
 	public Ant(int tourSize) {
 		this.trailSize = tourSize;
@@ -12,16 +12,16 @@ public class Ant {
 		this.visited = new boolean[tourSize];
 	}
 
-	protected void visitCity(int currentIndex, int city) {
+	void visitCity(int currentIndex, int city) {
 		trail[currentIndex + 1] = city;
 		visited[city] = true;
 	}
 
-	protected boolean visited(int i) {
+	boolean visited(int i) {
 		return visited[i];
 	}
 
-	protected double trailLength(double graph[][]) {
+	double trailLength(double graph[][]) {
 		double length = graph[trail[trailSize - 1]][trail[0]];
 		for (int i = 0; i < trailSize - 1; i++) {
 			length += graph[trail[i]][trail[i + 1]];
@@ -29,7 +29,7 @@ public class Ant {
 		return length;
 	}
 
-	protected void clear() {
+	void clear() {
 		for (int i = 0; i < trailSize; i++)
 			visited[i] = false;
 	}

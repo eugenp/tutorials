@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /***
  * Example of waking up a waiting thread
  */
-public class ThreadA {
+class ThreadA {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThreadA.class);
 

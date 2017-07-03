@@ -3,7 +3,7 @@ package com.baeldung.jackson.dtos.ignore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MyDtoIgnoreType {
+class MyDtoIgnoreType {
 
     private String stringValue;
     private int intValue;

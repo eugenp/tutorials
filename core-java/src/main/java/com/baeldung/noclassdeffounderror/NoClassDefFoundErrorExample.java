@@ -1,6 +1,6 @@
 package com.baeldung.noclassdeffounderror;
 
-public class NoClassDefFoundErrorExample {
+class NoClassDefFoundErrorExample {
     public ClassWithInitErrors getClassWithInitErrors() {
         ClassWithInitErrors test;
         try {

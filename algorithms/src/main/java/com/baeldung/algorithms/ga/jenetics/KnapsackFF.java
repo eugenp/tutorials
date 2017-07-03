@@ -6,7 +6,7 @@ import org.jenetics.BitChromosome;
 import org.jenetics.BitGene;
 import org.jenetics.Genotype;
 
-public class KnapsackFF implements Function<Genotype<BitGene>, Double> {
+class KnapsackFF implements Function<Genotype<BitGene>, Double> {
     private KnapsackItem[] items;
     private double size;
 

@@ -48,15 +48,15 @@ public class UserResponse
 {
 
     private final static long serialVersionUID = -1L;
-    protected int id;
+    private int id;
     @XmlElement(required = true)
-    protected String name;
+    private String name;
     @XmlElement(required = true)
-    protected String gender;
+    private String gender;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
-    protected Calendar created;
+    private Calendar created;
 
     /**
      * Gets the value of the id property.

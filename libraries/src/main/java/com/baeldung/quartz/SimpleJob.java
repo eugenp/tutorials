@@ -5,7 +5,7 @@ import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
-public class SimpleJob implements Job {
+class SimpleJob implements Job {
 
     public void execute(JobExecutionContext context) throws JobExecutionException {
         JobDataMap dataMap = context.getJobDetail()

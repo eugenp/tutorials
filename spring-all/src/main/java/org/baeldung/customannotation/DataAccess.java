@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD })
 @Documented
-public @interface DataAccess {
+@interface DataAccess {
     Class<?> entity();
 }

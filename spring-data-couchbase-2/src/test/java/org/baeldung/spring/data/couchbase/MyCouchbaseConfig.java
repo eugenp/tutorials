@@ -40,7 +40,7 @@ public class MyCouchbaseConfig extends AbstractCouchbaseConfiguration {
     }
 
     @Bean
-    public LocalValidatorFactoryBean localValidatorFactoryBean() {
+    private LocalValidatorFactoryBean localValidatorFactoryBean() {
         return new LocalValidatorFactoryBean();
     }
 

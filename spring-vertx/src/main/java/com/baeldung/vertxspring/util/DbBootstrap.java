@@ -12,7 +12,7 @@ import com.baeldung.vertxspring.entity.Article;
 import com.baeldung.vertxspring.repository.ArticleRepository;
 
 @Component
-public class DbBootstrap implements CommandLineRunner {
+class DbBootstrap implements CommandLineRunner {
 
     @Autowired
     private ArticleRepository articleRepository;

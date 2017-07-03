@@ -8,7 +8,7 @@ import org.springframework.cloud.task.configuration.EnableTask;
 @EnableTask
 @EnableBatchProcessing
 @SpringBootApplication
-public class BatchJobApplication {
+class BatchJobApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BatchJobApplication.class, args);

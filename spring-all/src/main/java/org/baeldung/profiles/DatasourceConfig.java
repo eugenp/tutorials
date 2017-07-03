@@ -1,5 +1,5 @@
 package org.baeldung.profiles;
 
-public interface DatasourceConfig {
+interface DatasourceConfig {
     void setup();
 }

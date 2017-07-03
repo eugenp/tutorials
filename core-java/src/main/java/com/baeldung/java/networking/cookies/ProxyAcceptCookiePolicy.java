@@ -2,8 +2,8 @@ package com.baeldung.java.networking.cookies;
 
 import java.net.*;
 
-public class ProxyAcceptCookiePolicy implements CookiePolicy {
-    String acceptedProxy;
+class ProxyAcceptCookiePolicy implements CookiePolicy {
+    private String acceptedProxy;
 
     public ProxyAcceptCookiePolicy(String acceptedProxy) {
         this.acceptedProxy = acceptedProxy;

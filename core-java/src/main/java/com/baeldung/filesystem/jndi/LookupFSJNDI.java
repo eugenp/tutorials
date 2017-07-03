@@ -16,7 +16,7 @@ public class LookupFSJNDI {
     }
     
     private void init() throws NamingException {
-        Hashtable<String, String> env = new Hashtable<String, String>();
+        Hashtable<String, String> env = new Hashtable<>();
         
         env.put (Context.INITIAL_CONTEXT_FACTORY,
           "com.sun.jndi.fscontext.RefFSContextFactory");

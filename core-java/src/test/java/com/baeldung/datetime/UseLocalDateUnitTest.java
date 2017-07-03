@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class UseLocalDateUnitTest {
 
-    UseLocalDate useLocalDate = new UseLocalDate();
+    private UseLocalDate useLocalDate = new UseLocalDate();
 
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalDate() {

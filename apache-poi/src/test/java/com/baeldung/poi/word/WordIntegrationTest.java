@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class WordIntegrationTest {
-    static WordDocument wordDocument;
+    private static WordDocument wordDocument;
 
     @BeforeClass
     public static void generateMSWordFile() throws Exception {

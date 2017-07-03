@@ -26,6 +26,7 @@ public class User {
     private int age;
 
     @OneToMany
+    private
     List<Possession> possessionList;
 
     public User() {

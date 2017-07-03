@@ -8,7 +8,7 @@ import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
-public class IncreaseSteps {
+class IncreaseSteps {
     private int counter;
     private int previousValue;
 

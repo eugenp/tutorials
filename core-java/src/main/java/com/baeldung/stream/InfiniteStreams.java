@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.stream.Stream;
 
-public class InfiniteStreams {
+class InfiniteStreams {
 
     private static final Logger LOG = LoggerFactory.getLogger(InfiniteStreams.class);
 

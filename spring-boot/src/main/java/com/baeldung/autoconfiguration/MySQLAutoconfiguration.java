@@ -31,7 +31,7 @@ public class MySQLAutoconfiguration {
     @Bean
     @ConditionalOnProperty(name = "usemysql", havingValue = "local")
     @ConditionalOnMissingBean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -80,7 +80,7 @@ public class MySQLAutoconfiguration {
 
     @ConditionalOnResource(resources = "classpath:mysql.properties")
     @Conditional(HibernateCondition.class)
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
 
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("mysql-hibernate.hbm2ddl.auto"));

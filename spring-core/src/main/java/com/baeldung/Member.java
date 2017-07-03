@@ -1,6 +1,6 @@
 package com.baeldung;
 
-public class Member {
+class Member {
 
     private int memberId;
     private String memberName;

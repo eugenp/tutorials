@@ -4,7 +4,7 @@ import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 
 
-public class DelayQueueProducer implements Runnable {
+class DelayQueueProducer implements Runnable {
     private BlockingQueue<DelayObject> queue;
     private final Integer numberOfElementsToProduce;
     private final Integer delayOfEachProducedMessageMilliseconds;

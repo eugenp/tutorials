@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 @Profile("manual")
-public class RegistrationController {
+class RegistrationController {
     private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired

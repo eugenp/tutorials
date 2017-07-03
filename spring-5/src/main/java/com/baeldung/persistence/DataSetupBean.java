@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.baeldung.web.Foo;
 
 @Component
-public class DataSetupBean implements InitializingBean {
+class DataSetupBean implements InitializingBean {
 
     @Autowired
     private FooRepository repo;

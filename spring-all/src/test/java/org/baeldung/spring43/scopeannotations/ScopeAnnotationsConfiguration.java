@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan
 @EnableWebMvc
-public class ScopeAnnotationsConfiguration {
+class ScopeAnnotationsConfiguration {
 
     @Bean
     public ViewResolver viewResolver() {

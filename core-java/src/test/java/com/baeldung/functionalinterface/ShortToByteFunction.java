@@ -1,7 +1,7 @@
 package com.baeldung.functionalinterface;
 
 @FunctionalInterface
-public interface ShortToByteFunction {
+interface ShortToByteFunction {
 
     byte applyAsByte(short s);
 

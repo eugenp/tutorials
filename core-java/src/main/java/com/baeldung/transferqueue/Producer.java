@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TransferQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Producer implements Runnable {
+class Producer implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Producer.class);
 
     private final TransferQueue<String> transferQueue;

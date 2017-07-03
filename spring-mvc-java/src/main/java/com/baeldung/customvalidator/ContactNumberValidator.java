@@ -3,7 +3,7 @@ package com.baeldung.customvalidator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class ContactNumberValidator implements ConstraintValidator<ContactNumberConstraint, String> {
+class ContactNumberValidator implements ConstraintValidator<ContactNumberConstraint, String> {
 
     @Override
     public void initialize(ContactNumberConstraint contactNumber) {

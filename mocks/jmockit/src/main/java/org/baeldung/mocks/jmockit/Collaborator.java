@@ -1,6 +1,6 @@
 package org.baeldung.mocks.jmockit;
 
-public class Collaborator {
+class Collaborator {
 
 	public boolean collaborate(String string){
 		return false;

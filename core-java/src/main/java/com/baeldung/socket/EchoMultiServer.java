@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.net.*;
 import java.io.*;
 
-public class EchoMultiServer {
+class EchoMultiServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(EchoMultiServer.class);
 
@@ -26,7 +26,7 @@ public class EchoMultiServer {
 
     }
 
-    public void stop() {
+    private void stop() {
         try {
 
             serverSocket.close();

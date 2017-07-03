@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/ex")
-public class BarMappingExamplesController {
+class BarMappingExamplesController {
 
     public BarMappingExamplesController() {
         super();

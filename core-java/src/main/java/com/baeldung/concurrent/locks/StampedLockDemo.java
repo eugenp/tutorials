@@ -11,13 +11,13 @@ import java.util.concurrent.locks.StampedLock;
 
 import static java.lang.Thread.sleep;
 
-public class StampedLockDemo {
+class StampedLockDemo {
     private Map<String, String> map = new HashMap<>();
     private Logger logger = LoggerFactory.getLogger(StampedLockDemo.class);
 
     private final StampedLock lock = new StampedLock();
 
-    public void put(String key, String value) throws InterruptedException {
+    private void put(String key, String value) throws InterruptedException {
         long stamp = lock.writeLock();
 
         try {
@@ -29,7 +29,7 @@ public class StampedLockDemo {
         }
     }
 
-    public String get(String key) throws InterruptedException {
+    private String get(String key) throws InterruptedException {
         long stamp = lock.readLock();
         logger.info(Thread.currentThread().getName() + " acquired the read lock with stamp " + stamp);
         try {

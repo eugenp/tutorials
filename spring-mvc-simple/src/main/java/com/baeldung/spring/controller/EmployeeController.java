@@ -18,9 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.baeldung.spring.domain.Employee;
 
 @Controller
-public class EmployeeController {
+class EmployeeController {
 
-    Map<Long, Employee> employeeMap = new HashMap<>();
+    private Map<Long, Employee> employeeMap = new HashMap<>();
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)
     public ModelAndView showForm() {

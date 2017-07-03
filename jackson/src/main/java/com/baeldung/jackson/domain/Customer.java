@@ -6,7 +6,7 @@ package com.baeldung.jackson.domain;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-public class Customer extends Person {
+class Customer extends Person {
 
     private String configuration;
 

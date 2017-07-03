@@ -169,11 +169,11 @@ public class FunctionalInterfaceUnitTest {
 
     //
 
-    public double squareLazy(Supplier<Double> lazyValue) {
+    private double squareLazy(Supplier<Double> lazyValue) {
         return Math.pow(lazyValue.get(), 2);
     }
 
-    public byte[] transformArray(short[] array, ShortToByteFunction function) {
+    private byte[] transformArray(short[] array, ShortToByteFunction function) {
         byte[] transformedArray = new byte[array.length];
         for (int i = 0; i < array.length; i++) {
             transformedArray[i] = function.applyAsByte(array[i]);

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class SimplePromptProvider extends DefaultPromptProvider {
+class SimplePromptProvider extends DefaultPromptProvider {
 
     @Override
     public String getPrompt() {

@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-public class Employee implements Serializable {
+class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

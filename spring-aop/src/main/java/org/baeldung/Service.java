@@ -3,7 +3,7 @@ package org.baeldung;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Service {
+class Service {
 
     @LogExecutionTime
     public void serve() throws InterruptedException {

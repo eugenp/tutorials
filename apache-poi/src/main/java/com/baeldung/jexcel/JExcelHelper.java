@@ -12,9 +12,9 @@ import jxl.write.*;
 import jxl.write.Number;
 import jxl.format.Colour;
 
-public class JExcelHelper {
+class JExcelHelper {
 
-    public Map<Integer, List<String>> readJExcel(String fileLocation) throws IOException, BiffException {
+    Map<Integer, List<String>> readJExcel(String fileLocation) throws IOException, BiffException {
         Map<Integer, List<String>> data = new HashMap<>();
 
         Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
@@ -23,7 +23,7 @@ public class JExcelHelper {
         int columns = sheet.getColumns();
 
         for (int i = 0; i < rows; i++) {
-            data.put(i, new ArrayList<String>());
+            data.put(i, new ArrayList<>());
             for (int j = 0; j < columns; j++) {
                 data.get(i).add(sheet.getCell(j, i).getContents());
             }
@@ -31,7 +31,7 @@ public class JExcelHelper {
         return data;
     }
 
-    public void writeJExcel() throws IOException, WriteException {
+    void writeJExcel() throws IOException, WriteException {
         WritableWorkbook workbook = null;
         try {
             File currDir = new File(".");

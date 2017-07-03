@@ -71,7 +71,7 @@ public class MemberRegistration {
         memberEventSrc.fire(member);
     }
 
-    public boolean emailAlreadyExists(String email) {
+    private boolean emailAlreadyExists(String email) {
         Member member = null;
         try {
             member = repository.findByEmail(email);

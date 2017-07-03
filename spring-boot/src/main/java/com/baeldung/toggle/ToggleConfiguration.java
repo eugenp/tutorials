@@ -10,7 +10,7 @@ import org.togglz.core.spi.FeatureProvider;
 @Configuration
 @EnableJpaRepositories("com.baeldung.toggle")
 @EntityScan("com.baeldung.toggle")
-public class ToggleConfiguration {
+class ToggleConfiguration {
 
     @Bean
     public FeatureProvider featureProvider() {

@@ -6,7 +6,7 @@ import java.io.InputStream;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class ExampleStructure {
+class ExampleStructure {
     private static ObjectMapper mapper = new ObjectMapper();
 
     static JsonNode getExampleRoot() throws IOException {

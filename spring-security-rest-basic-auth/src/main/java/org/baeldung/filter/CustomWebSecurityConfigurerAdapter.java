@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 @Configuration
 @EnableWebSecurity
-public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
 
     @Autowired private RestAuthenticationEntryPoint authenticationEntryPoint;
 

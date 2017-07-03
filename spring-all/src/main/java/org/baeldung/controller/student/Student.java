@@ -5,7 +5,7 @@ public class Student {
 
     private int id;
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 

@@ -1,6 +1,6 @@
 package com.baeldung.applicationcontext;
 
-public class Course {
+class Course {
 
     private String name;
 

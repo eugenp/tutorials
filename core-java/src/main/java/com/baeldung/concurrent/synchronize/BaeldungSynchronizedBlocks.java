@@ -1,6 +1,6 @@
 package com.baeldung.concurrent.synchronize;
 
-public class BaeldungSynchronizedBlocks {
+class BaeldungSynchronizedBlocks {
 
     private int count = 0;
     private static int staticCount = 0;
@@ -21,7 +21,7 @@ public class BaeldungSynchronizedBlocks {
         return count;
     }
 
-    public void setCount(int count) {
+    private void setCount(int count) {
         this.count = count;
     }
 

@@ -52,7 +52,7 @@ public class HttpClientUnshortenLiveTest {
 
     // API
 
-    final String expand(final String urlArg) throws IOException {
+    private String expand(final String urlArg) throws IOException {
         String originalUrl = urlArg;
         String newUrl = expandSingleLevel(originalUrl);
         while (!originalUrl.equals(newUrl)) {
@@ -81,7 +81,7 @@ public class HttpClientUnshortenLiveTest {
         return newUrl;
     }
 
-    final Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
+    private Pair<Integer, String> expandSingleLevelSafe(final String url) throws IOException {
         HttpHead request = null;
         HttpEntity httpEntity = null;
         InputStream entityContentStream = null;
@@ -95,15 +95,15 @@ public class HttpClientUnshortenLiveTest {
 
             final int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode != 301 && statusCode != 302) {
-                return new ImmutablePair<Integer, String>(statusCode, url);
+                return new ImmutablePair<>(statusCode, url);
             }
             final Header[] headers = httpResponse.getHeaders(HttpHeaders.LOCATION);
             Preconditions.checkState(headers.length == 1);
             final String newUrl = headers[0].getValue();
 
-            return new ImmutablePair<Integer, String>(statusCode, newUrl);
+            return new ImmutablePair<>(statusCode, newUrl);
         } catch (final IllegalArgumentException uriEx) {
-            return new ImmutablePair<Integer, String>(500, url);
+            return new ImmutablePair<>(500, url);
         } finally {
             if (request != null) {
                 request.releaseConnection();
@@ -117,7 +117,7 @@ public class HttpClientUnshortenLiveTest {
         }
     }
 
-    final String expandSingleLevel(final String url) throws IOException {
+    private String expandSingleLevel(final String url) throws IOException {
         HttpHead request = null;
 
         try {

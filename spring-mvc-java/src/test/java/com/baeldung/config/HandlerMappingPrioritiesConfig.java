@@ -33,7 +33,7 @@ public class HandlerMappingPrioritiesConfig {
     }
 
     @Bean
-    public SimpleUrlMappingController simpleUrlMapping() {
+    private SimpleUrlMappingController simpleUrlMapping() {
         return new SimpleUrlMappingController();
     }
 

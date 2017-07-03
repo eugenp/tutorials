@@ -13,7 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 @Configuration
 @EnableWebSecurity
 @Order(1)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Configuration
     // no order tag means this is the last security filter to be evaluated
-    public static class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
+    private static class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Autowired
         public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

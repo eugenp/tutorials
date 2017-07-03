@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class GreetingService {
+class GreetingService {
     @HystrixCommand(fallbackMethod = "defaultGreeting")
     public String getGreeting(String username) {
         return new RestTemplate().getForObject("http://localhost:9090/greeting/{username}", String.class, username);

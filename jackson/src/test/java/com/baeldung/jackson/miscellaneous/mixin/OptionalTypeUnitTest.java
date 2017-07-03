@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class OptionalTypeUnitTest {
 
-    ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module());
+    private ObjectMapper mapper = new ObjectMapper().registerModule(new Jdk8Module());
 
     @Test
     public void givenPresentOptional_whenSerializing_thenValueInJson() throws JsonProcessingException {

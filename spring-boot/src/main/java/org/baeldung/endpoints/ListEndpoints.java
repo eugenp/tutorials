@@ -8,7 +8,7 @@ import org.springframework.boot.actuate.endpoint.Endpoint;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ListEndpoints extends AbstractEndpoint<List<Endpoint>> {
+class ListEndpoints extends AbstractEndpoint<List<Endpoint>> {
     private List<Endpoint> endpoints;
 
     @Autowired

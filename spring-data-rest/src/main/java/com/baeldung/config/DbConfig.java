@@ -19,13 +19,13 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 // @PropertySource("persistence-h2.properties")
 // @PropertySource("persistence-hsqldb.properties")
 // @PropertySource("persistence-derby.properties")
-public class DbConfig {
+class DbConfig {
 
     @Autowired
     private Environment env;
 
     @Bean
-    public DataSource dataSource() {
+    private DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("driverClassName"));
         dataSource.setUrl(env.getProperty("url"));
@@ -44,7 +44,7 @@ public class DbConfig {
         return em;
     }
 
-    final Properties additionalProperties() {
+    private Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         if (env.getProperty("hibernate.hbm2ddl.auto") != null) {
             hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));

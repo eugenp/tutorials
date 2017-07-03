@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @RestController
 @RibbonClient(name = "ping-a-server", configuration = RibbonConfiguration.class)
-public class ServerLocationApp {
+class ServerLocationApp {
 
     @LoadBalanced
     @Bean
@@ -22,6 +22,7 @@ public class ServerLocationApp {
     }
 
     @Autowired
+    private
     RestTemplate restTemplate;
 
     @RequestMapping("/server-location")

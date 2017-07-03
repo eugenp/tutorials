@@ -32,14 +32,14 @@ public class ProductConfig {
     //
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean productEntityManager() {
+    private LocalContainerEntityManagerFactoryBean productEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(productDataSource());
         em.setPackagesToScan(new String[] { "org.baeldung.persistence.multiple.model.product" });
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        final HashMap<String, Object> properties = new HashMap<String, Object>();
+        final HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
         em.setJpaPropertyMap(properties);
@@ -48,7 +48,7 @@ public class ProductConfig {
     }
 
     @Bean
-    public DataSource productDataSource() {
+    private DataSource productDataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(Preconditions.checkNotNull(env.getProperty("jdbc.driverClassName")));
         dataSource.setUrl(Preconditions.checkNotNull(env.getProperty("product.jdbc.url")));

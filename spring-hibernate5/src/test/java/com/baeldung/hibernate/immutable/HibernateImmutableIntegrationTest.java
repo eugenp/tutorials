@@ -15,7 +15,7 @@ public class HibernateImmutableIntegrationTest {
     private static Session session;
 
     @Rule
-    public final ExpectedException exception = ExpectedException.none();
+    private final ExpectedException exception = ExpectedException.none();
 
     @Before
     public void before() {
@@ -80,7 +80,7 @@ public class HibernateImmutableIntegrationTest {
         session.getTransaction().commit();
     }
 
-    public static void createEvent() {
+    private static void createEvent() {
         Event event = new Event();
         event.setTitle("New Event");
         event.setGuestList(Sets.newHashSet("guest"));

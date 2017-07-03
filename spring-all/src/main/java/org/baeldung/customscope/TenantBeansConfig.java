@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-public class TenantBeansConfig {
+class TenantBeansConfig {
 
     @Scope(scopeName = "tenant")
     @Bean

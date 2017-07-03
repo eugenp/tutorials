@@ -21,7 +21,7 @@ import com.mongodb.MongoClient;
 @EnableMongoRepositories(basePackages = "org.baeldung.repository")
 public class MongoConfig extends AbstractMongoConfiguration {
 
-    private final List<Converter<?, ?>> converters = new ArrayList<Converter<?, ?>>();
+    private final List<Converter<?, ?>> converters = new ArrayList<>();
 
     @Override
     protected String getDatabaseName() {
