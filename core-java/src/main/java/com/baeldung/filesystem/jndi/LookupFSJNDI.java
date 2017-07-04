@@ -8,7 +8,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class LookupFSJNDI {
-    InitialContext ctx = null;
+    private InitialContext ctx = null;
 
     public LookupFSJNDI() throws NamingException {
         super();

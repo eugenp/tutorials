@@ -11,6 +11,7 @@ import java.util.List;
 
 @FeignClient(value = "rating-service")
 public interface RatingsClient {
-    @GetMapping("/ratings")
+
+    @RequestMapping(value = "/ratings", method = {RequestMethod.GET})
     List<Rating> getRatingsByBookId(@RequestParam("bookId") Long bookId, @RequestHeader("Cookie") String session);
 }
