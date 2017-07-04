@@ -13,7 +13,6 @@ public class ApplicationRunner {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(TaxiFareConfiguration.class);
         TaxiFareCalculatorService taxiFareCalculatorService = (TaxiFareCalculatorService) context.getBean(TaxiFareCalculatorService.class);
-
         TaxiRide taxiRide = new TaxiRide();
         taxiRide.setIsNightSurcharge(true);
         taxiRide.setDistanceInMile(190L);

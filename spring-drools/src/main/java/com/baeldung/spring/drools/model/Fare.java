@@ -4,7 +4,7 @@ public class Fare {
 
     private Long nightSurcharge;
     private Long rideFare;
-        
+
     public Fare() {
         nightSurcharge = 0L;
         rideFare = 0L;
