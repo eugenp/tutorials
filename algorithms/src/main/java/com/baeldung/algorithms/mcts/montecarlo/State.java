@@ -7,10 +7,10 @@ import com.baeldung.algorithms.mcts.tictactoe.Board;
 import com.baeldung.algorithms.mcts.tictactoe.Position;
 
 public class State {
-    Board board;
-    int playerNo;
-    int visitCount;
-    double winScore;
+    private Board board;
+    private int playerNo;
+    private int visitCount;
+    private double winScore;
 
     public State() {
         board = new Board();
@@ -27,23 +27,23 @@ public class State {
         this.board = new Board(board);
     }
 
-    public Board getBoard() {
+    Board getBoard() {
         return board;
     }
 
-    public void setBoard(Board board) {
+    void setBoard(Board board) {
         this.board = board;
     }
 
-    public int getPlayerNo() {
+    int getPlayerNo() {
         return playerNo;
     }
 
-    public void setPlayerNo(int playerNo) {
+    void setPlayerNo(int playerNo) {
         this.playerNo = playerNo;
     }
 
-    public int getOpponent() {
+    int getOpponent() {
         return 3 - playerNo;
     }
 
@@ -55,11 +55,11 @@ public class State {
         this.visitCount = visitCount;
     }
 
-    public double getWinScore() {
+    double getWinScore() {
         return winScore;
     }
 
-    public void setWinScore(double winScore) {
+    void setWinScore(double winScore) {
         this.winScore = winScore;
     }
 
@@ -75,23 +75,23 @@ public class State {
         return possibleStates;
     }
 
-    public void incrementVisit() {
+    void incrementVisit() {
         this.visitCount++;
     }
 
-    public void addScore(double score) {
+    void addScore(double score) {
         if (this.winScore != Integer.MIN_VALUE)
             this.winScore += score;
     }
 
-    public void randomPlay() {
+    void randomPlay() {
         List<Position> availablePositions = this.board.getEmptyPositions();
         int totalPossibilities = availablePositions.size();
         int selectRandom = (int) (Math.random() * ((totalPossibilities - 1) + 1));
         this.board.performMove(this.playerNo, availablePositions.get(selectRandom));
     }
 
-    public void togglePlayer() {
+    void togglePlayer() {
         this.playerNo = 3 - this.playerNo;
     }
 }

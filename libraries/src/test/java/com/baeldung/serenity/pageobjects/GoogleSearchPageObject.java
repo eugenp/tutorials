@@ -10,15 +10,14 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * @author aiet
- */
 @DefaultUrl("https://www.google.com/ncr")
 public class GoogleSearchPageObject extends PageObject {
 
-    @FindBy(name = "q") private WebElement search;
+    @FindBy(name = "q")
+    private WebElement search;
 
-    @FindBy(css = "._ksh") private WebElement result;
+    @FindBy(css = "._ksh")
+    private WebElement result;
 
     public void searchFor(String keyword) {
         search.sendKeys(keyword, Keys.ENTER);

@@ -8,9 +8,9 @@ import com.baeldung.algorithms.mcts.tree.Tree;
 
 public class MonteCarloTreeSearch {
 
-    static final int WIN_SCORE = 10;
-    int level;
-    int oponent;
+    private static final int WIN_SCORE = 10;
+    private int level;
+    private int oponent;
 
     public MonteCarloTreeSearch() {
         this.level = 3;
