@@ -20,12 +20,12 @@ import com.baeldung.collectionutilsguide.model.Customer;
 
 public class CollectionUtilsGuideTest {
     
-    Customer customer1 = new Customer(1, "Daniel", 123456l, "locality1", "city1", "1234");
-    Customer customer2 = new Customer(2, "Fredrik", 234567l, "locality2", "city2", "2345");
-    Customer customer3 = new Customer(3, "Kyle", 345678l, "locality3", "city3", "3456");
-    Customer customer4 = new Customer(4, "Bob", 456789l, "locality4", "city4", "4567");
-    Customer customer5 = new Customer(5, "Cat", 567890l, "locality5", "city5", "5678");
-    Customer customer6 = new Customer(6, "John", 678901l, "locality6", "city6", "6789");
+    Customer customer1 = new Customer(1, "Daniel", "locality1", "city1");
+    Customer customer2 = new Customer(2, "Fredrik", "locality2", "city2");
+    Customer customer3 = new Customer(3, "Kyle", "locality3", "city3");
+    Customer customer4 = new Customer(4, "Bob", "locality4", "city4");
+    Customer customer5 = new Customer(5, "Cat", "locality5", "city5");
+    Customer customer6 = new Customer(6, "John", "locality6", "city6");
     
     List<Customer> list1 = Arrays.asList(customer1, customer2, customer3);
     List<Customer> list2 = Arrays.asList(customer4, customer5, customer6);
@@ -50,7 +50,7 @@ public class CollectionUtilsGuideTest {
     public void givenListOfCustomers_whenTransformed_thenListOfAddress() {
         Collection<Address> addressCol = CollectionUtils.collect(list1, new Transformer<Customer, Address>() {
             public Address transform(Customer customer) {
-                return new Address(customer.getLocality(), customer.getCity(), customer.getZip());
+                return customer.getAddress();
             }
         });
         

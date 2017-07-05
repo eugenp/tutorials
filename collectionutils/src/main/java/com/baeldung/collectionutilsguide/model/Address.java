@@ -4,7 +4,6 @@ public class Address {
 
     String locality;
     String city;
-    String zip;
 
     public String getLocality() {
         return locality;
@@ -22,26 +21,17 @@ public class Address {
         this.city = city;
     }
 
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Address [locality=").append(locality).append(", city=").append(city).append(", zip=").append(zip).append("]");
+        builder.append("Address [locality=").append(locality).append(", city=").append(city).append("]");
         return builder.toString();
     }
 
-    public Address(String locality, String city, String zip) {
+    public Address(String locality, String city) {
         super();
         this.locality = locality;
         this.city = city;
-        this.zip = zip;
     }
 
 }

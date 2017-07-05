@@ -4,10 +4,7 @@ public class Customer implements Comparable<Customer> {
 
     Integer id;
     String name;
-    Long phone;
-    String locality;
-    String city;
-    String zip;
+    Address address;
 
     public Integer getId() {
         return id;
@@ -25,53 +22,19 @@ public class Customer implements Comparable<Customer> {
         this.name = name;
     }
 
-    public Long getPhone() {
-        return phone;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setPhone(Long phone) {
-        this.phone = phone;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public String getLocality() {
-        return locality;
-    }
-
-    public void setLocality(String locality) {
-        this.locality = locality;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
-    }
-
-    public Customer(Integer id, String name, Long phone, String locality, String city, String zip) {
+    public Customer(Integer id, String name, String locality, String city) {
         super();
         this.id = id;
         this.name = name;
-        this.phone = phone;
-        this.locality = locality;
-        this.city = city;
-        this.zip = zip;
-    }
-
-    public Customer(Integer id, String name, Long phone) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
+        this.address = new Address(locality, city);
     }
     
     public Customer(String name) {
@@ -111,7 +74,7 @@ public class Customer implements Comparable<Customer> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Customer [id=").append(id).append(", name=").append(name).append(", phone=").append(phone).append("]");
+        builder.append("Customer [id=").append(id).append(", name=").append(name).append("]");
         return builder.toString();
     }
 
