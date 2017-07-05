@@ -1,21 +1,33 @@
 package com.baeldung.spring.cloud.bootstrap.svcrating.rating;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Rating {
+public class Rating implements Serializable {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 3308900941650386473L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long bookId;
     private int stars;
+
+    @Transient
+    private boolean fromCache;
+    @Transient
+    private Long cachedTS = -1L;
 
     public Rating() {
     }
@@ -54,4 +66,21 @@ public class Rating {
     public void setStars(int stars) {
         this.stars = stars;
     }
+
+    public boolean isFromCache() {
+        return fromCache;
+    }
+
+    public void setFromCache(boolean fromCache) {
+        this.fromCache = fromCache;
+    }
+
+    public Long getCachedTS() {
+        return cachedTS;
+    }
+
+    public void setCachedTS(Long cachedTS) {
+        this.cachedTS = cachedTS;
+    }
+
 }

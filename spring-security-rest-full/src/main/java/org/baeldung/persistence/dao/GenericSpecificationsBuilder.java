@@ -1,7 +1,6 @@
 package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -69,14 +68,13 @@ public class GenericSpecificationsBuilder<U> {
         return result;
     }
 
-    public Specification<U> build(Deque<?> postFixedExprStack, Function<SpecSearchCriteria, Specification<U>> converter) {
+    public Specification<U> build(Deque<?> postFixedExprStack, 
+        Function<SpecSearchCriteria, Specification<U>> converter) {
 
         Deque<Specification<U>> specStack = new LinkedList<>();
 
-        Collections.reverse((List<?>) postFixedExprStack);
-
         while (!postFixedExprStack.isEmpty()) {
-            Object mayBeOperand = postFixedExprStack.pop();
+            Object mayBeOperand = postFixedExprStack.pollLast();
 
             if (!(mayBeOperand instanceof String)) {
                 specStack.push(converter.apply((SpecSearchCriteria) mayBeOperand));
