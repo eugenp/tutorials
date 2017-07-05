@@ -6,4 +6,4 @@
  - [Constructor Injection in Spring with Lombok](http://www.baeldung.com/spring-injection-lombok)
  - [A Quick Guide to Spring @Value](http://www.baeldung.com/spring-value-annotation)
  - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
- - [Different Types of Bean Injection in Spring: @Configuration, @ComponentScan, @Autowired and beans.xml](http://www.baeldung.com/spring-annotations-resource-inject-autowire)
+ - [Different Types of Bean Injection in Spring: @Configuration, @ComponentScan, @Autowired and beans.xml](https://github.com/alejandrogervasio/tutorials/tree/master/spring-core/Spring%20Bean%20Injection)
