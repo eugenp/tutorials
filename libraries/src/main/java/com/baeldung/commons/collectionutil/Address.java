@@ -2,9 +2,9 @@ package com.baeldung.commons.collectionutil;
 
 public class Address {
 
-    String locality;
-    String city;
-    String zip;
+    private String locality;
+    private String city;
+    private String zip;
 
     public String getLocality() {
         return locality;

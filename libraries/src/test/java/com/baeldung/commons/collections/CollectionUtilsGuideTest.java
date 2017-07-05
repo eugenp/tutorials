@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -45,6 +46,8 @@ public class CollectionUtilsGuideTest {
     @Test
     public void givenTwoSortedLists_whenCollated_thenSorted() {
         List<Customer> sortedList = CollectionUtils.collate(list1, list2);
+
+        assertEquals(6, sortedList.size());
         assertTrue(sortedList.get(0).getName().equals("Bob"));
         assertTrue(sortedList.get(2).getName().equals("Daniel"));
     }
@@ -61,7 +64,7 @@ public class CollectionUtilsGuideTest {
     }
     
     @Test
-    public void givenCustomerList_WhenFiltered_thenCorrectSize() {
+    public void givenCustomerList_whenFiltered_thenCorrectSize() {
         
         boolean isModified = CollectionUtils.filter(linkedList1, customer -> Arrays.asList("Daniel","Kyle").contains(customer.getName()));
         
