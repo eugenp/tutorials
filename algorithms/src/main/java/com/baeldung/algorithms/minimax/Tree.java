@@ -3,18 +3,14 @@ package com.baeldung.algorithms.minimax;
 public class Tree {
     private Node root;
 
-    public Tree() {
+    Tree() {
     }
 
-    public Tree(Node root) {
-        this.root = root;
-    }
-
-    public Node getRoot() {
+    Node getRoot() {
         return root;
     }
 
-    public void setRoot(Node root) {
+    void setRoot(Node root) {
         this.root = root;
     }
 }

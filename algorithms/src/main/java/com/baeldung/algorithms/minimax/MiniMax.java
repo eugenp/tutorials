@@ -1,18 +1,14 @@
 package com.baeldung.algorithms.minimax;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class MiniMax {
     private Tree tree;
 
     public Tree getTree() {
         return tree;
-    }
-
-    public void setTree(Tree tree) {
-        this.tree = tree;
     }
 
     public void constructTree(int noOfBones) {
@@ -37,7 +33,7 @@ public class MiniMax {
     public boolean checkWin() {
         Node root = tree.getRoot();
         checkWin(root);
-        return root.getScore() == 1 ? true : false;
+        return root.getScore() == 1;
     }
 
     private void checkWin(Node node) {
@@ -45,11 +41,7 @@ public class MiniMax {
         boolean isMaxPlayer = node.isMaxPlayer();
         children.forEach(child -> {
             if (child.getNoOfBones() == 0) {
-                if (isMaxPlayer) {
-                    child.setScore(1);
-                } else {
-                    child.setScore(-1);
-                }
+                child.setScore(isMaxPlayer ? 1 : -1);
             } else {
                 checkWin(child);
             }
@@ -59,10 +51,10 @@ public class MiniMax {
     }
 
     private Node findBestChild(boolean isMaxPlayer, List<Node> children) {
-        if (isMaxPlayer) {
-            return Collections.max(children, Comparator.comparing(c -> c.getScore()));
-        } else {
-            return Collections.min(children, Comparator.comparing(c -> c.getScore()));
-        }
+        Comparator<Node> byScoreComparator = Comparator.comparing(Node::getScore);
+
+        return children.stream()
+          .max(isMaxPlayer ? byScoreComparator : byScoreComparator.reversed())
+          .orElseThrow(NoSuchElementException::new);
     }
 }
