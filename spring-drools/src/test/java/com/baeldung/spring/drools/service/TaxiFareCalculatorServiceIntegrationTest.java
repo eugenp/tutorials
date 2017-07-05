@@ -18,7 +18,7 @@ import com.baeldung.spring.drools.model.TaxiRide;
 public class TaxiFareCalculatorServiceIntegrationTest {
 
     @Autowired
-    TaxiFareCalculatorService taxiFareCalculatorService;
+    private TaxiFareCalculatorService taxiFareCalculatorService;
 
     @Test
     public void whenNightSurchargeFalseAndDistanceLessThan10_thenFixFareWithoutNightSurcharge() {
@@ -27,6 +27,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(9L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(70), totalCharge);
     }
@@ -38,6 +39,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(5L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(100), totalCharge);
     }
@@ -49,6 +51,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(50L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(170), totalCharge);
     }
@@ -60,6 +63,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(50L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(250), totalCharge);
     }
@@ -71,6 +75,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(100L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(220), totalCharge);
     }
@@ -82,6 +87,7 @@ public class TaxiFareCalculatorServiceIntegrationTest {
         taxiRide.setDistanceInMile(100L);
         Fare rideFare = new Fare();
         Long totalCharge = taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
+
         assertNotNull(totalCharge);
         assertEquals(Long.valueOf(350), totalCharge);
     }
