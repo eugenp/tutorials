@@ -5,7 +5,6 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -22,8 +21,8 @@ public class InfiniteStreamUnitTest {
 
         //when
         List<Integer> collect = infiniteStream
-                .limit(10)
-                .collect(Collectors.toList());
+          .limit(10)
+          .collect(Collectors.toList());
 
         //then
         assertEquals(collect, Arrays.asList(0, 2, 4, 6, 8, 10, 12, 14, 16, 18));
@@ -37,9 +36,9 @@ public class InfiniteStreamUnitTest {
 
         //when
         List<UUID> randomInts = infiniteStreamOfRandomUUID
-                .skip(10)
-                .limit(10)
-                .collect(Collectors.toList());
+          .skip(10)
+          .limit(10)
+          .collect(Collectors.toList());
 
         //then
         assertEquals(randomInts.size(), 10);
