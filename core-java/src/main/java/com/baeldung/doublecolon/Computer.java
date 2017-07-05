@@ -6,12 +6,12 @@ public class Computer {
     private String color;
     private Integer healty;
 
-    public Computer(final int age, final String color) {
+    Computer(final int age, final String color) {
         this.age = age;
         this.color = color;
     }
 
-    public Computer(final Integer age, final String color, final Integer healty) {
+    Computer(final Integer age, final String color, final Integer healty) {
         this.age = age;
         this.color = color;
         this.healty = healty;
@@ -28,7 +28,7 @@ public class Computer {
         this.age = age;
     }
 
-    public String getColor() {
+    String getColor() {
         return color;
     }
 
@@ -36,11 +36,11 @@ public class Computer {
         this.color = color;
     }
 
-    public Integer getHealty() {
+    Integer getHealty() {
         return healty;
     }
 
-    public void setHealty(final Integer healty) {
+    void setHealty(final Integer healty) {
         this.healty = healty;
     }
 
@@ -72,10 +72,7 @@ public class Computer {
 
         final Computer computer = (Computer) o;
 
-        if (age != null ? !age.equals(computer.age) : computer.age != null) {
-            return false;
-        }
-        return color != null ? color.equals(computer.color) : computer.color == null;
+        return (age != null ? age.equals(computer.age) : computer.age == null) && (color != null ? color.equals(computer.color) : computer.color == null);
 
     }
 

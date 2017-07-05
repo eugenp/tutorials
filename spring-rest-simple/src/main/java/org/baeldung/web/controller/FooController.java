@@ -3,6 +3,7 @@ package org.baeldung.web.controller;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import org.baeldung.web.dto.Foo;
+import org.baeldung.web.dto.FooProtos;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,25 +16,33 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 public class FooController {
 
-	public FooController() {
-		super();
-	}
+    public FooController() {
+        super();
+    }
 
-	// API - read
+    // API - read
 
-	@RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
-	@ResponseBody
-	public Foo findById(@PathVariable final long id) {
-		return new Foo(id, randomAlphabetic(4));
-	}
+    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
+    @ResponseBody
+    public Foo findById(@PathVariable final long id) {
+        return new Foo(id, randomAlphabetic(4));
+    }
 
-	// API - write
+    // API - write
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/foos/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public Foo updateFoo(@PathVariable("id") final String id,
-			@RequestBody final Foo foo) {
-		return foo;
-	}
+    @RequestMapping(method = RequestMethod.PUT, value = "/foos/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Foo updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
+        return foo;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}", produces = { "application/x-protobuf" })
+    @ResponseBody
+    public FooProtos.Foo findProtoById(@PathVariable final long id) {
+        return FooProtos.Foo.newBuilder()
+            .setId(1)
+            .setName("Foo Name")
+            .build();
+    }
 }
