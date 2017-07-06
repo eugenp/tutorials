@@ -1,4 +1,4 @@
-package com.baeldung.javanetworking.url.test;
+package com.baeldung.javanetworking.uriurl.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -18,11 +18,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baeldung.javanetworking.url.URLDemo;
+import com.baeldung.javanetworking.uriurl.URLDemo;
 
 @FixMethodOrder
 public class URLDemoTest {
-    private final Logger log = LoggerFactory.getLogger(URLDemo.class);
+    private final Logger log = LoggerFactory.getLogger(URLDemoTest.class);
     static String URLSTRING = "https://wordpress.org:443/support/topic/page-jumps-within-wordpress/?replies=3#post-2278484";
     // parsed locator
     static String URLPROTOCOL = "https";
