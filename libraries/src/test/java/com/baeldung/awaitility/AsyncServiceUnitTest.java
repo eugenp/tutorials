@@ -14,7 +14,7 @@ import org.awaitility.Duration;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AsyncServiceTest {
+public class AsyncServiceUnitTest {
     private AsyncService asyncService;
 
     @Before
