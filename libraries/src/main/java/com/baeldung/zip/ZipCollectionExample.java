@@ -1,9 +1,8 @@
-package com.baeldung;
+package com.baeldung.zip;
 
 import com.google.common.collect.Streams;
 import org.jooq.lambda.Seq;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;

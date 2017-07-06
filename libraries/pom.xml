@@ -350,6 +350,13 @@
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>

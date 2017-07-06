@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.zip;
 
 import com.google.common.collect.Streams;
 import org.jooq.lambda.Seq;
