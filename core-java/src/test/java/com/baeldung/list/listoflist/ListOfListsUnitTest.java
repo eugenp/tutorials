@@ -1,18 +1,19 @@
 package com.baeldung.list.listoflist;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;
-import org.junit.Test;
 
 public class ListOfListsUnitTest {
 
-    private List<ArrayList<? extends Stationery>> listOfLists = new ArrayList<ArrayList<? extends Stationery>>();
-    private ArrayList<Pen> penList = new ArrayList<>();
-    private ArrayList<Pencil> pencilList = new ArrayList<>();
-    private ArrayList<Rubber> rubberList = new ArrayList<>();
+    private List<List<? extends Stationery>> listOfLists = new ArrayList<>();
+    private List<Pen> penList = new ArrayList<>();
+    private List<Pencil> pencilList = new ArrayList<>();
+    private List<Rubber> rubberList = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
     @Before
@@ -29,11 +30,11 @@ public class ListOfListsUnitTest {
     @Test
     public void givenListOfLists_thenCheckNames() {
         assertEquals("Pen 1", ((Pen) listOfLists.get(0)
-            .get(0)).getName());
+          .get(0)).getName());
         assertEquals("Pencil 1", ((Pencil) listOfLists.get(1)
-            .get(0)).getName());
+          .get(0)).getName());
         assertEquals("Rubber 1", ((Rubber) listOfLists.get(2)
-            .get(0)).getName());
+          .get(0)).getName());
     }
 
     @SuppressWarnings("unchecked")
@@ -43,10 +44,10 @@ public class ListOfListsUnitTest {
         ((ArrayList<Pencil>) listOfLists.get(1)).remove(0);
         listOfLists.remove(1);
         assertEquals("Rubber 1", ((Rubber) listOfLists.get(1)
-            .get(0)).getName());
+          .get(0)).getName());
         listOfLists.remove(0);
         assertEquals("Rubber 1", ((Rubber) listOfLists.get(0)
-            .get(0)).getName());
+          .get(0)).getName());
     }
 
     @Test
@@ -60,17 +61,17 @@ public class ListOfListsUnitTest {
         ArrayList<Rubber> rubbers = new ArrayList<>();
         rubbers.add(new Rubber("Rubber 1"));
         rubbers.add(new Rubber("Rubber 2"));
-        
+
         List<ArrayList<? extends Stationery>> list = new ArrayList<ArrayList<? extends Stationery>>();
         list.add(pens);
         list.add(pencils);
         list.add(rubbers);
-        
+
         assertEquals("Pen 1", ((Pen) list.get(0)
-            .get(0)).getName());
+          .get(0)).getName());
         assertEquals("Pencil 1", ((Pencil) list.get(1)
-            .get(0)).getName());
+          .get(0)).getName());
         assertEquals("Rubber 1", ((Rubber) list.get(2)
-            .get(0)).getName());
+          .get(0)).getName());
     }
 }
