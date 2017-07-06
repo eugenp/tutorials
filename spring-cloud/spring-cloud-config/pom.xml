@@ -34,7 +34,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>Dalston.SR1</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
     </properties>
     
 </project>
