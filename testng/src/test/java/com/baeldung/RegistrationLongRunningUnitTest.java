@@ -4,8 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
-public class RegistrationUnitTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationUnitTest.class);
+public class RegistrationLongRunningUnitTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationLongRunningUnitTest.class);
 
     @Test
     public void whenCalledFromSuite_thanOK() {

@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class DependentUnitTest {
+public class DependentLongRunningUnitTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(DependentUnitTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DependentLongRunningUnitTest.class);
 
     private String email = "abc@qwe.com";
 

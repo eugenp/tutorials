@@ -6,7 +6,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SimpleUnitTest extends TestNG {
+public class SimpleLongRunningUnitTest extends TestNG {
     private int number;
 
     @BeforeClass

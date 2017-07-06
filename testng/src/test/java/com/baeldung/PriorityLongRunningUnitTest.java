@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class PriorityUnitTest {
+public class PriorityLongRunningUnitTest {
 
     @Test(priority = 1)
     public void givenString_whenChangedToInt_thenCorrect() {
