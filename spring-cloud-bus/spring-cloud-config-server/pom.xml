@@ -15,7 +15,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -29,27 +28,32 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
+			<version>1.3.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+			<version>1.5.4.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.4.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-monitor</artifactId>
+			<version>1.3.1.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+			<version>1.2.1.RELEASE</version>
 		</dependency>
 	</dependencies>
 
@@ -73,6 +77,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
