@@ -32,13 +32,13 @@ public class RateLimiterUnitTest {
     @Test
     public void givenLimitedResource_whenRequestTwice_thenShouldPermitWithoutBlocking() {
         //given
-        RateLimiter rateLimiter = RateLimiter.create(100);
+        RateLimiter rateLimiter = RateLimiter.create(2);
 
         //when
         long startTime = ZonedDateTime.now().getSecond();
-        rateLimiter.acquire(50);
+        rateLimiter.acquire(1);
         doSomeLimitedOperation();
-        rateLimiter.acquire(50);
+        rateLimiter.acquire(1);
         doSomeLimitedOperation();
         long elapsedTimeSeconds = ZonedDateTime.now().getSecond() - startTime;
 
