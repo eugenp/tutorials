@@ -12,18 +12,18 @@ public class AsyncService {
     private Executor executor = Executors.newFixedThreadPool(4);
     private volatile boolean initialized = false;
 
-    public void initialize() {
+    void initialize() {
         executor.execute(() -> {
             sleep(INIT_DELAY);
             initialized = true;
         });
     }
 
-    public boolean isInitialized() {
+    boolean isInitialized() {
         return initialized;
     }
 
-    public void addValue(long val) {
+    void addValue(long val) {
         if (!isInitialized()) {
             throw new IllegalStateException("Service is not initialized");
         }
