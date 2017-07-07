@@ -9,9 +9,9 @@ public class DelayQueueProducer implements Runnable {
     private final Integer numberOfElementsToProduce;
     private final Integer delayOfEachProducedMessageMilliseconds;
 
-    public DelayQueueProducer(BlockingQueue<DelayObject> queue,
-                              Integer numberOfElementsToProduce,
-                              Integer delayOfEachProducedMessageMilliseconds) {
+    DelayQueueProducer(BlockingQueue<DelayObject> queue,
+                       Integer numberOfElementsToProduce,
+                       Integer delayOfEachProducedMessageMilliseconds) {
         this.queue = queue;
         this.numberOfElementsToProduce = numberOfElementsToProduce;
         this.delayOfEachProducedMessageMilliseconds = delayOfEachProducedMessageMilliseconds;

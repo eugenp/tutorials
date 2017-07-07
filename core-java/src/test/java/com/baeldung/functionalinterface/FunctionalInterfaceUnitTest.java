@@ -25,7 +25,7 @@ public class FunctionalInterfaceUnitTest {
     @Test
     public void whenPassingLambdaToComputeIfAbsent_thenTheValueGetsComputedAndPutIntoMap() {
         Map<String, Integer> nameMap = new HashMap<>();
-        Integer value = nameMap.computeIfAbsent("John", s -> s.length());
+        Integer value = nameMap.computeIfAbsent("John", String::length);
 
         assertEquals(new Integer(4), nameMap.get("John"));
         assertEquals(new Integer(4), value);
