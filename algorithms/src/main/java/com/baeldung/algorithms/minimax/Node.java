@@ -15,39 +15,27 @@ public class Node {
         children = new ArrayList<>();
     }
 
-    public int getNoOfBones() {
+    int getNoOfBones() {
         return noOfBones;
     }
 
-    public void setNoOfBones(int noOfBones) {
-        this.noOfBones = noOfBones;
-    }
-
-    public boolean isMaxPlayer() {
+    boolean isMaxPlayer() {
         return isMaxPlayer;
     }
 
-    public void setMaxPlayer(boolean maxPlayer) {
-        isMaxPlayer = maxPlayer;
-    }
-
-    public int getScore() {
+    int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    void setScore(int score) {
         this.score = score;
     }
 
-    public List<Node> getChildren() {
+    List<Node> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Node> children) {
-        this.children = children;
-    }
-
-    public void addChild(Node newNode) {
+    void addChild(Node newNode) {
         children.add(newNode);
     }
 

@@ -42,7 +42,7 @@ public class PriorityBlockingQueueIntegrationTest {
                 try {
                     Integer poll = queue.take();
                     LOG.debug("Polled: " + poll);
-                } catch (InterruptedException e) {
+                } catch (InterruptedException ignored) {
                 }
             }
         });
