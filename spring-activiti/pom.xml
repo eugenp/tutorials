@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>activiti-with-spring</artifactId>
+    <artifactId>spring-activiti</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>activiti-with-spring</name>
+    <name>spring-activiti</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>

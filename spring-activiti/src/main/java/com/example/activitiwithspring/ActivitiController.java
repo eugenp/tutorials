@@ -28,14 +28,14 @@ public class ActivitiController {
     public String startProcess() {
         runtimeService.startProcessInstanceByKey("my-process");
         return "Process started. Number of currently running process instances = " + runtimeService.createProcessInstanceQuery()
-            .count();
+                .count();
     }
 
     @GetMapping("/get-tasks/{processInstanceId}")
     public List<TaskRepresentation> getTasks(@PathVariable String processInstanceId) {
         List<Task> usertasks = taskService.createTaskQuery()
-            .processInstanceId(processInstanceId)
-            .list();
+                .processInstanceId(processInstanceId)
+                .list();
 
         List<TaskRepresentation> tasks =  usertasks.stream().map(task -> {
             TaskRepresentation taskRepresentation = new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
@@ -47,13 +47,13 @@ public class ActivitiController {
     @GetMapping("/complete-task-A/{processInstanceId}")
     public TaskRepresentation completeTaskA(@PathVariable String processInstanceId) {
         Task task = taskService.createTaskQuery()
-            .processInstanceId(processInstanceId)
-            .singleResult();
+                .processInstanceId(processInstanceId)
+                .singleResult();
         taskService.complete(task.getId());
         logger.info("Task completed");
         task = taskService.createTaskQuery()
-            .processInstanceId(processInstanceId)
-            .singleResult();
+                .processInstanceId(processInstanceId)
+                .singleResult();
 
         return new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
     }
