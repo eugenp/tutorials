@@ -1,10 +1,9 @@
 package com.baeldung.maths;
 
-import java.math.BigInteger;
-
 import org.junit.Assert;
-
 import org.junit.Test;
+
+import java.math.BigInteger;
 
 public class BigIntegerImplTest {
 
