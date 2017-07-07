@@ -1,32 +1,30 @@
 package com.baeldung.deserialization;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Base64;
 
 public class SerializationUtility {
 
-    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
 
         AppleProduct macBook = new AppleProduct();
         macBook.headphonePort = "headphonePort2020";
         macBook.thunderboltPort = "thunderboltPort2020";
 
-        // serialize object
-        serializeObjectToFile(macBook);
-
+        String serializedObj = serializeObjectToString(macBook);
+        System.out.println("Serialized AppleProduct object to string:");
+        System.out.println(serializedObj);
     }
 
-    public static void serializeObjectToFile(Object appleProduct) {
-
-        String fileName = "./specs.txt";
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            out.writeObject(appleProduct);
-            System.out.println("Serialized data is saved to " + fileName);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public static String serializeObjectToString(Serializable o) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(baos);
+        oos.writeObject(o);
+        oos.close();
+        return Base64.getEncoder().encodeToString(baos.toByteArray());
     }
 
 }

@@ -2,8 +2,8 @@ package com.baeldung.deserialization;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InvalidClassException;
 
@@ -12,28 +12,33 @@ import org.junit.Test;
 
 public class DeserializationUnitTest {
 
-    private static final String FILE_PATH = "./specs.txt";
+    private static final String serializedObj = "rO0ABXNyACljb20uYmFlbGR1bmcuZGVzZXJpYWxpemF0aW9uLkFwcGxlUHJvZHVjdAAAAAAAEtaHAgADTAANaGVhZHBob25lUG9ydHQAEkxqYXZhL2xhbmcvU3RyaW5nO0wADmxpZ2h0ZW5pbmdQb3J0cQB+AAFMAA90aHVuZGVyYm9sdFBvcnRxAH4AAXhwdAARaGVhZHBob25lUG9ydDIwMjBwdAATdGh1bmRlcmJvbHRQb3J0MjAyMA==";
+
     private static long userDefinedSerialVersionUID = 1234567L;
 
     /**
      * Tests the deserialization of the original "AppleProduct" (no exceptions are thrown)
-     * 
-     * @throws FileNotFoundException
      * @throws ClassNotFoundException
      * @throws IOException
      */
     @Test
-    public void testDeserializeObj_compatible() throws FileNotFoundException, ClassNotFoundException, IOException {
+    public void testDeserializeObj_compatible() throws IOException, ClassNotFoundException {
 
         assertEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
         
-        AppleProduct appleProduct = new AppleProduct();
+        AppleProduct macBook = new AppleProduct();
+        macBook.headphonePort = "headphonePort2020";
+        macBook.thunderboltPort = "thunderboltPort2020";
         
         // serializes the "AppleProduct" object
-        SerializationUtility.serializeObjectToFile(appleProduct);
+        String serializedProduct = SerializationUtility.serializeObjectToString(macBook);
 
         // deserializes the "AppleProduct" object
-        DeserializationUtility.deSerializeObjectFromFile(FILE_PATH);
+        AppleProduct deserializedProduct = (AppleProduct) DeserializationUtility.deSerializeObjectFromString(serializedProduct);
+     
+        assertTrue(deserializedProduct.headphonePort.equalsIgnoreCase(macBook.headphonePort));
+        assertTrue(deserializedProduct.thunderboltPort.equalsIgnoreCase(macBook.thunderboltPort));
+    
     }
 
     /**
@@ -46,18 +51,17 @@ public class DeserializationUnitTest {
      *          3. Run the test individually (do not run the entire set of tests)
      *          4. Revert the changes made in 1 & 2 (so that you're able to re-run the tests successfully)
      *          
-     * @throws FileNotFoundException
      * @throws ClassNotFoundException
      * @throws IOException
      */
     @Ignore
     @Test(expected = InvalidClassException.class)
-    public void testDeserializeObj_incompatible() throws FileNotFoundException, ClassNotFoundException, IOException {
+    public void testDeserializeObj_incompatible() throws ClassNotFoundException, IOException {
 
         assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
         
         // attempts to deserialize the "AppleProduct" object
-        DeserializationUtility.deSerializeObjectFromFile(FILE_PATH);
+        DeserializationUtility.deSerializeObjectFromString(serializedObj);
     }
 
 }

@@ -1,29 +1,27 @@
 package com.baeldung.deserialization;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.Base64;
 
 public class DeserializationUtility {
 
-    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
+    public static void main(String[] args) throws ClassNotFoundException, IOException {
 
-        final String fileName = "./specs.txt";
-
-        // deserialize object
-        deSerializeObjectFromFile(fileName);
-
+        String serializedObj = "rO0ABXNyACljb20uYmFlbGR1bmcuZGVzZXJpYWxpemF0aW9uLkFwcGxlUHJvZHVjdAAAAAAAEtaHAgADTAANaGVhZHBob25lUG9ydHQAEkxqYXZhL2xhbmcvU3RyaW5nO0wADmxpZ2h0ZW5pbmdQb3J0cQB+AAFMAA90aHVuZGVyYm9sdFBvcnRxAH4AAXhwdAARaGVhZHBob25lUG9ydDIwMjBwdAATdGh1bmRlcmJvbHRQb3J0MjAyMA==";
+        System.out.println("Deserializing AppleProduct...");
+        AppleProduct deserializedObj = (AppleProduct) deSerializeObjectFromString(serializedObj);
+        System.out.println("Headphone port of AppleProduct:" + deserializedObj.getHeadphonePort());
+        System.out.println("Thunderbolt port of AppleProduct:" + deserializedObj.getThunderboltPort());
     }
 
-    protected static void deSerializeObjectFromFile(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
-        AppleProduct macbook = null;
-        try (ObjectInputStream fileInputStream = new ObjectInputStream(new FileInputStream(fileName))) {
-            macbook = (AppleProduct) fileInputStream.readObject();
-        }
-        System.out.println("Deserializing AppleProduct...");
-        System.out.println("Headphone port of AppleProduct: " + macbook.getHeadphonePort());
-        System.out.println("Thunderbolt port of AppleProduct: " + macbook.getThunderboltPort());
+    public static Object deSerializeObjectFromString(String s) throws IOException, ClassNotFoundException {
+        byte[] data = Base64.getDecoder().decode(s);
+        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+        Object o = ois.readObject();
+        ois.close();
+        return o;
     }
 
 }
