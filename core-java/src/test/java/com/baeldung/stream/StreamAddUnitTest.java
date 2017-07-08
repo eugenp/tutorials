@@ -1,10 +1,12 @@
 package com.baeldung.stream;
 
+import org.junit.Test;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
 
 public class StreamAddUnitTest {
 
@@ -25,7 +27,7 @@ public class StreamAddUnitTest {
         Stream<Integer> newStream = Stream.concat(Stream.of(99), anStream);
 
         assertEquals(newStream.findFirst()
-            .get(), (Integer) 99);
+          .get(), (Integer) 99);
     }
 
     @Test
@@ -38,7 +40,7 @@ public class StreamAddUnitTest {
         assertEquals(resultList.get(3), (Double) 9.9);
     }
 
-    public <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
+    private <T> Stream<T> insertInStream(Stream<T> stream, T elem, int index) {
         List<T> result = stream.collect(Collectors.toList());
         result.add(index, elem);
         return result.stream();
