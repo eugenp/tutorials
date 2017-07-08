@@ -11,7 +11,7 @@ public class TemporalAdjustersTest {
 
     @Test
     public void whenAdjust_thenNextSunday() {
-        LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.of(2017, 07, 8);
         LocalDate nextSunday = localDate.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
 
         String expected = "2017-07-09";
