@@ -1,12 +1,10 @@
 package com.baeldung.temporaladjusters;
 
-import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,7 +22,7 @@ public class CustomTemporalAdjusterTest {
 
         Assert.assertEquals(TemporalAdjusterUtil.getNextWorkingDay(), nextWorkingDay.toString());
     }
-    
+
     @Test
     public void whenAdjust_thenNextWorkingDay() {
         LocalDate localDate = LocalDate.now();
@@ -40,11 +38,7 @@ public class CustomTemporalAdjusterTest {
         TemporalAdjuster temporalAdjuster = (t) -> t.plus(Period.ofDays(14));
         LocalDate result = localDate.with(temporalAdjuster);
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        format.setCalendar(calendar);
-        calendar.add(Calendar.DATE, 14);
-        String fourteenDaysFromToday = format.format(calendar.getTime());
+        String fourteenDaysFromToday = "2017-07-22";
 
         Assert.assertEquals(fourteenDaysFromToday, result.toString());
     }
