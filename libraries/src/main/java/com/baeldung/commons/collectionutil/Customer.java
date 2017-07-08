@@ -2,12 +2,12 @@ package com.baeldung.commons.collectionutil;
 
 public class Customer implements Comparable<Customer> {
 
-    Integer id;
-    String name;
-    Long phone;
-    String locality;
-    String city;
-    String zip;
+    private Integer id;
+    private String name;
+    private Long phone;
+    private String locality;
+    private String city;
+    private String zip;
 
     public Integer getId() {
         return id;

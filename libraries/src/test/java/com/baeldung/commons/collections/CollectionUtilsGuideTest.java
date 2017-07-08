@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import java.util.*;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -45,14 +46,18 @@ public class CollectionUtilsGuideTest {
     @Test
     public void givenTwoSortedLists_whenCollated_thenSorted() {
         List<Customer> sortedList = CollectionUtils.collate(list1, list2);
+
+        assertEquals(6, sortedList.size());
         assertTrue(sortedList.get(0).getName().equals("Bob"));
         assertTrue(sortedList.get(2).getName().equals("Daniel"));
     }
     
     @Test
     public void givenListOfCustomers_whenTransformed_thenListOfAddress() {
-        Collection<Address> addressCol = CollectionUtils.collect(list1, customer -> {
-            return new Address(customer.getLocality(), customer.getCity(), customer.getZip());
+        Collection<Address> addressCol = CollectionUtils.collect(list1, new Transformer<Customer, Address>() {
+            public Address transform(Customer customer) {
+                return new Address(customer.getLocality(), customer.getCity(), customer.getZip());
+            }
         });
         
         List<Address> addressList = new ArrayList<>(addressCol);
@@ -61,10 +66,14 @@ public class CollectionUtilsGuideTest {
     }
     
     @Test
-    public void givenCustomerList_WhenFiltered_thenCorrectSize() {
-        
-        boolean isModified = CollectionUtils.filter(linkedList1, customer -> Arrays.asList("Daniel","Kyle").contains(customer.getName()));
-        
+    public void givenCustomerList_whenFiltered_thenCorrectSize() {
+
+        boolean isModified = CollectionUtils.filter(linkedList1, new Predicate<Customer>() {
+            public boolean evaluate(Customer customer) {
+                return Arrays.asList("Daniel","Kyle").contains(customer.getName());
+            }
+        });
+
         //filterInverse does the opposite. It removes the element from the list if the Predicate returns true
         //select and selectRejected work the same way except that they do not remove elements from the given collection and return a new collection 
         
