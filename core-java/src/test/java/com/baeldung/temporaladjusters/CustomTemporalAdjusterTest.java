@@ -1,14 +1,10 @@
 package com.baeldung.temporaladjusters;
 
-import java.text.SimpleDateFormat;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
-
-import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
