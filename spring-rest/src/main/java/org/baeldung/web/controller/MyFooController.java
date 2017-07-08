@@ -32,7 +32,7 @@ public class MyFooController {
 
     // API - read
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
     @ResponseBody
     public Collection<Foo> findAll() {
         return myfoos.values();

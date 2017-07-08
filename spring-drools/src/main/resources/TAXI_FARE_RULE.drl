@@ -7,7 +7,7 @@ dialect  "mvel"
 
 rule "Calculate Taxi Fare - Scenario 1"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == false && distanceInMile < 10);
+        taxiRideInstance:TaxiRide(isNightSurcharge == false && distanceInMile < 10);
     then
        	rideFare.setNightSurcharge(0);
        	rideFare.setRideFare(70);
@@ -15,7 +15,7 @@ end
 
 rule "Calculate Taxi Fare - Scenario 2"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == true && distanceInMile < 10);
+        taxiRideInstance:TaxiRide(isNightSurcharge == true && distanceInMile < 10);
     then
        	rideFare.setNightSurcharge(30);
        	rideFare.setRideFare(70);
@@ -24,7 +24,7 @@ end
 
 rule "Calculate Taxi Fare - Scenario 3"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == false && distanceInMile >= 10 && distanceInMile < 100);
+        taxiRideInstance:TaxiRide(isNightSurcharge == false && distanceInMile >= 10 && distanceInMile < 100);
     then
        	rideFare.setNightSurcharge(0);
        	rideFare.setRideFare(70+(2*taxiRideInstance.getDistanceInMile()));
@@ -33,7 +33,7 @@ end
 
 rule "Calculate Taxi Fare - Scenario 4"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == true && distanceInMile >= 10 && distanceInMile < 100);
+        taxiRideInstance:TaxiRide(isNightSurcharge == true && distanceInMile >= 10 && distanceInMile < 100);
     then
        	rideFare.setNightSurcharge(30+taxiRideInstance.getDistanceInMile());
        	rideFare.setRideFare(70+(2*taxiRideInstance.getDistanceInMile()));
@@ -42,7 +42,7 @@ end
 
 rule "Calculate Taxi Fare - Scenario 5"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == false && distanceInMile >= 100);
+        taxiRideInstance:TaxiRide(isNightSurcharge == false && distanceInMile >= 100);
     then
        	rideFare.setNightSurcharge(0);
        	rideFare.setRideFare(70+(1.5*taxiRideInstance.getDistanceInMile()));
@@ -50,7 +50,7 @@ end
 
 rule "Calculate Taxi Fare - Scenario 6"
     when
-        taxiRideInstance:TaxiRide(bNightSurcharge == true && distanceInMile >= 100);
+        taxiRideInstance:TaxiRide(isNightSurcharge == true && distanceInMile >= 100);
     then
        	rideFare.setNightSurcharge(30+taxiRideInstance.getDistanceInMile());
        	rideFare.setRideFare(70+(1.5*taxiRideInstance.getDistanceInMile()));

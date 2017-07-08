@@ -7,9 +7,6 @@ import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-/**
- * Created by cv on 24/6/17.
- */
 public class CyclicBarrierDemo {
 
     private CyclicBarrier cyclicBarrier;
@@ -19,7 +16,7 @@ public class CyclicBarrierDemo {
     private int NUM_WORKERS;
 
 
-    public void runSimulation(int numWorkers, int numberOfPartialResults) {
+    private void runSimulation(int numWorkers, int numberOfPartialResults) {
         NUM_PARTIAL_RESULTS = numberOfPartialResults;
         NUM_WORKERS = numWorkers;
 
@@ -49,9 +46,7 @@ public class CyclicBarrierDemo {
             try {
                 System.out.println(thisThreadName + " waiting for others to reach barrier.");
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
         }

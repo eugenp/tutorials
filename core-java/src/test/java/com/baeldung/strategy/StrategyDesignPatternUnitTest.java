@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.baeldung.strategy.Discounter.*;
+import static com.baeldung.strategy.Discounter.christmas;
+import static com.baeldung.strategy.Discounter.easter;
+import static com.baeldung.strategy.Discounter.newYear;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StrategyDesignPatternUnitTest {
@@ -26,7 +28,7 @@ public class StrategyDesignPatternUnitTest {
     public void shouldDivideByTwo_WhenApplyingStaffDiscounterWithAnonyousTypes() {
         Discounter staffDiscounter = new Discounter() {
             @Override
-            public BigDecimal apply( BigDecimal amount) {
+            public BigDecimal apply(BigDecimal amount) {
                 return amount.multiply(BigDecimal.valueOf(0.5));
             }
         };
