@@ -10,7 +10,7 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RateLimiterUnitTest {
+public class RateLimiterLongRunningUnitTest {
 
     @Test
     public void givenLimitedResource_whenUseRateLimiter_thenShouldLimitPermits() {
