@@ -1,87 +1,150 @@
 package org.baeldung.java;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.hamcrest.collection.IsMapWithSize.aMapWithSize;
+import static org.hamcrest.collection.IsMapWithSize.anEmptyMap;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.collections4.PredicateUtils;
 import org.apache.commons.collections4.TransformerUtils;
+import org.junit.Before;
 import org.junit.Test;
 
 public class MapUtilsTest {
 
+    private String[][] color2DArray = new String[][] {
+        {"RED", "#FF0000"},
+        {"GREEN", "#00FF00"},
+        {"BLUE", "#0000FF"}
+    };
+    private String[] color1DArray = new String[] {
+        "RED", "#FF0000",
+        "GREEN", "#00FF00",
+        "BLUE", "#0000FF"
+    };
+    private Map<String, String> colorMap;
+    
+    @Before
+    public void createMap() {
+        this.colorMap = MapUtils.putAll(new HashMap<String, String>(), this.color2DArray);
+    }
+    
     @Test
-    public void whenCreateMapFrom2DArray_THEN_MUST_CREATE_Map() {
-        Map colorMap = MapUtils.putAll(new HashMap(), new String[][] {
-            {"RED", "#FF0000"},
-            {"GREEN", "#00FF00"},
-            {"BLUE", "#0000FF"}
-        });
+    public void whenCreateMapFrom2DArray_theMapIsCreated() {
+        this.colorMap = MapUtils.putAll(new HashMap<String, String>(), this.color2DArray);
 
-        assertNotNull(colorMap);
+        assertThat(this.colorMap, is(aMapWithSize(this.color2DArray.length)));
+        
+        assertThat(this.colorMap, hasEntry("RED", "#FF0000"));
+        assertThat(this.colorMap, hasEntry("GREEN", "#00FF00"));
+        assertThat(this.colorMap, hasEntry("BLUE", "#0000FF"));
     }
 
     @Test
-    public void whenCreateMapFrom1DArray_THEN_MUST_CREATE_AND_USE_Map() {
-        Map colorMap = MapUtils.putAll(new HashMap(), new String[] {
-            "RED", "#FF0000",
-            "GREEN", "#00FF00",
-            "BLUE", "#0000FF"
-        });
+    public void whenCreateMapFrom1DArray_theMapIsCreated() {
+        this.colorMap = MapUtils.putAll(new HashMap<String, String>(), this.color1DArray);
         
-        assertNotNull(colorMap);
+        assertThat(this.colorMap, is(aMapWithSize(this.color1DArray.length / 2)));
+
+        assertThat(this.colorMap, hasEntry("RED", "#FF0000"));
+        assertThat(this.colorMap, hasEntry("GREEN", "#00FF00"));
+        assertThat(this.colorMap, hasEntry("BLUE", "#0000FF"));
+    }
+    
+    @Test
+    public void whenVerbosePrintMap_thenMustPrintFormattedMap() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream outPrint = new PrintStream(out);
         
-        MapUtils.verbosePrint(System.out, "Optional Label", colorMap);
+        outPrint.println("Optional Label = ");
+        outPrint.println("{");
+        outPrint.println("    RED = #FF0000");
+        outPrint.println("    BLUE = #0000FF");
+        outPrint.println("    GREEN = #00FF00");
+        outPrint.println("}");
         
+        String expectedOut = out.toString();
+        
+        out.reset(); 
+
+        MapUtils.verbosePrint(outPrint, "Optional Label", this.colorMap);
+        assertEquals(expectedOut, out.toString());
+    }
+
+    @Test
+    public void whenGetKeyNotPresent_thenMustReturnDefaultValue() {
         String defaultColorStr = "COLOR_NOT_FOUND";
+        String color = MapUtils.getString(this.colorMap, "BLACK", defaultColorStr);
         
-        String color1 = MapUtils.getString(colorMap, "BLACK", defaultColorStr);
+        assertEquals(color, defaultColorStr);
+    }
+    
+    @Test
+    public void whenGetOnNullMap_thenMustReturnDefaultValue() {
+        String defaultColorStr = "COLOR_NOT_FOUND";
+        String color = MapUtils.getString(null, "RED", defaultColorStr);
         
-        String color2 = MapUtils.getString(null, "RED", defaultColorStr);
+        assertEquals(color, defaultColorStr);
+    }
+
+    @Test
+    public void whenInvertMap_thenMustReturnInvertedMap() {
+        Map<String, String> invColorMap = MapUtils.invertMap(this.colorMap);
+        assertEquals(this.colorMap.size(), invColorMap.size());
         
-        assertEquals(color1, defaultColorStr);
-        assertEquals(color2, defaultColorStr);
+        MapIterator<String, String> itColorMap 
+          = MapUtils.iterableMap(this.colorMap).mapIterator();
         
-        Map<String, String> invColorMap = MapUtils.invertMap(colorMap);
-        
-        assertNotNull(invColorMap);
-        
+        while (itColorMap.hasNext()) {
+            String colorMapKey = itColorMap.next();
+            String colorMapValue = itColorMap.getValue();
+
+            String invColorMapValue = MapUtils.getString(invColorMap, colorMapValue);
+            
+            assertTrue(invColorMapValue.equals(colorMapKey));
+        }
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void whenCreateFixedSizedMapAndAdd_THEN_MUST_THROW_Exception() {
-        Map rgbMap = MapUtils.fixedSizeMap(MapUtils.putAll(
-            new HashMap(),
-            new String[] {
-              "RED", "#FF0000",
-              "GREEN", "#00FF00",
-              "BLUE", "#0000FF"
-          }));
+    public void whenCreateFixedSizedMapAndAdd_thenMustThrowException() {
+        Map<String, String> rgbMap = MapUtils.fixedSizeMap(MapUtils.putAll(
+            new HashMap<String, String>(),
+            this.color1DArray));
         
         rgbMap.put("ORANGE", "#FFA500");
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void whenCreatePredicatedMapOfUniqueValuesAndAddDuplicate_THEN_MUST_THROW_Exception() {
-        Map colorMap = MapUtils.putAll(new HashMap(), new String[] {
-                "RED", "#FF0000",
-                "GREEN", "#00FF00",
-                "BLUE", "#0000FF"
-            });
-        
+    public void whenAddDuplicateToUniqueValuesPredicateMap_thenMustThrowException() {
         Map<String, String> uniqValuesMap 
-        = MapUtils.predicatedMap(colorMap, null, PredicateUtils.uniquePredicate());
+          = MapUtils.predicatedMap(this.colorMap, null, PredicateUtils.uniquePredicate());
         
         uniqValuesMap.put("NEW_RED", "#FF0000");
     }
 
     @Test
-    public void whenCreateLazyMap_THEN_MUST_CREATE_Map() {
+    public void whenCreateLazyMap_theMapIsCreated() {
         Map<Integer, String> intStrMap = MapUtils.lazyMap(
             new HashMap<Integer, String>(),
             TransformerUtils.stringValueTransformer());
+        
+        assertThat(intStrMap, is(anEmptyMap()));
+        
+        intStrMap.get(1);
+        intStrMap.get(2);
+        intStrMap.get(3);
+        
+        assertThat(intStrMap, is(aMapWithSize(3)));
     }
 }
