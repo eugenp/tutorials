@@ -19,9 +19,7 @@ import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
     public static void main(String[] args) throws BookingException {
         CabBookingService service = SpringApplication.run(RmiClient.class, args).getBean(CabBookingService.class);
-        System.out.println("here");
         Booking bookingOutcome = service.bookRide("13 Seagate Blvd, Key Largo, FL 33037");
-        System.out.println("there");
         System.out.println(bookingOutcome);
     }
 
