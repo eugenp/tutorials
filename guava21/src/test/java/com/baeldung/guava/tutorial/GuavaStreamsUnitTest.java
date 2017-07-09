@@ -41,7 +41,7 @@ public class GuavaStreamsUnitTest {
 
     @Test
     public void createStreamsWithIterable() {
-        Iterable<Integer> numbersIterable = (Iterable<Integer>) numbers;
+        Iterable<Integer> numbersIterable = numbers;
 
         Stream streamFromIterable = Streams.stream(numbersIterable);
 
