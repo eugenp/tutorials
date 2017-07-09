@@ -1,23 +1,33 @@
 package com.baeldung.guava.tutorial;
 
 import com.google.common.collect.Streams;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
+import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+import static com.baeldung.guava.tutorial.StreamUtility.assertStreamEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 public class GuavaStreamsUnitTest {
 
-    List<Integer> numbers;
+    private List<Integer> numbers;
 
     @Before
     public void setUp() {
-        numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+        numbers = IntStream.rangeClosed(1, 20).boxed().collect(Collectors.toList());
     }
 
     @Test
@@ -26,7 +36,7 @@ public class GuavaStreamsUnitTest {
         Stream streamFromCollection = Streams.stream(numbers);
 
         //Assert.assertNotNull(streamFromCollection);
-        StreamUtility.assertStreamEquals(streamFromCollection, numbers.stream());
+        assertStreamEquals(streamFromCollection, numbers.stream());
     }
 
     @Test
@@ -35,8 +45,8 @@ public class GuavaStreamsUnitTest {
 
         Stream streamFromIterable = Streams.stream(numbersIterable);
 
-        Assert.assertNotNull(streamFromIterable);
-        StreamUtility.assertStreamEquals(streamFromIterable, numbers.stream());
+        assertNotNull(streamFromIterable);
+        assertStreamEquals(streamFromIterable, numbers.stream());
     }
 
     @Test
@@ -45,8 +55,8 @@ public class GuavaStreamsUnitTest {
 
         Stream streamFromIterator = Streams.stream(numbersIterator);
 
-        Assert.assertNotNull(streamFromIterator);
-        StreamUtility.assertStreamEquals(streamFromIterator, numbers.stream());
+        assertNotNull(streamFromIterator);
+        assertStreamEquals(streamFromIterator, numbers.stream());
     }
 
     @Test
@@ -54,8 +64,8 @@ public class GuavaStreamsUnitTest {
 
         Stream streamFromOptional = Streams.stream(Optional.of(1));
 
-        Assert.assertNotNull(streamFromOptional);
-        Assert.assertEquals(streamFromOptional.count(), 1);
+        assertNotNull(streamFromOptional);
+        assertEquals(streamFromOptional.count(), 1);
     }
 
     @Test
@@ -63,8 +73,8 @@ public class GuavaStreamsUnitTest {
 
         LongStream streamFromOptionalLong = Streams.stream(OptionalLong.of(1));
 
-        Assert.assertNotNull(streamFromOptionalLong);
-        Assert.assertEquals(streamFromOptionalLong.count(), 1);
+        assertNotNull(streamFromOptionalLong);
+        assertEquals(streamFromOptionalLong.count(), 1);
     }
 
     @Test
@@ -73,7 +83,7 @@ public class GuavaStreamsUnitTest {
         IntStream streamFromOptionalInt = Streams.stream(OptionalInt.of(1));
 
         //Assert.assertNotNull(streamFromOptionalInt);
-        Assert.assertEquals(streamFromOptionalInt.count(), 1);
+        assertEquals(streamFromOptionalInt.count(), 1);
     }
 
     @Test
@@ -82,63 +92,54 @@ public class GuavaStreamsUnitTest {
         DoubleStream streamFromOptionalDouble = Streams.stream(OptionalDouble.of(1.0));
 
         //Assert.assertNotNull(streamFromOptionalDouble);
-        Assert.assertEquals(streamFromOptionalDouble.count(), 1);
+        assertEquals(streamFromOptionalDouble.count(), 1);
 
     }
 
     @Test
     public void concatStreamsOfSameType() {
-        Stream oddNumbers = Arrays
-          .asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19)
-          .stream();
-        Stream evenNumbers = Arrays
-          .asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
-          .stream();
+        List<Integer> oddNumbers = Arrays
+          .asList(1, 3, 5, 7, 9, 11, 13, 15, 17, 19);
+        List<Integer> evenNumbers = Arrays
+          .asList(2, 4, 6, 8, 10, 12, 14, 16, 18, 20);
 
-        Stream combinedStreams = Streams.concat(oddNumbers, evenNumbers);
+        Stream<Integer> combinedStreams = Streams.concat(oddNumbers.stream(), evenNumbers.stream());
 
         //Assert.assertNotNull(combinedStreams);
-        StreamUtility.assertStreamEquals(combinedStreams, Stream.concat(oddNumbers, evenNumbers));
+        assertStreamEquals(combinedStreams, Stream.concat(oddNumbers.stream(), evenNumbers.stream()));
     }
 
     @Test
     public void concatStreamsOfTypeLongStream() {
-        LongStream firstTwenty = LongStream.range(1, 20);
-        LongStream nextTwenty = LongStream.range(21, 40);
+        LongStream combinedStreams = Streams.concat(LongStream.range(1, 21), LongStream.range(21, 40));
 
-        LongStream combinedStreams = Streams.concat(firstTwenty, nextTwenty);
-
-        Assert.assertNotNull(combinedStreams);
-        StreamUtility.assertStreamEquals(combinedStreams, LongStream.concat(firstTwenty, nextTwenty));
+        assertNotNull(combinedStreams);
+        assertStreamEquals(combinedStreams, LongStream.range(1, 40));
     }
 
     @Test
     public void concatStreamsOfTypeIntStream() {
-        IntStream firstTwenty = IntStream.range(1, 20);
-        IntStream nextTwenty = IntStream.range(21, 40);
+        IntStream combinedStreams = Streams.concat(IntStream.range(1, 20), IntStream.range(21, 40));
 
-        IntStream combinedStreams = Streams.concat(firstTwenty, nextTwenty);
-
-        Assert.assertNotNull(combinedStreams);
-        StreamUtility.assertStreamEquals(combinedStreams, IntStream.concat(firstTwenty, nextTwenty));
+        assertNotNull(combinedStreams);
+        assertStreamEquals(combinedStreams, IntStream.concat(IntStream.range(1, 20), IntStream.range(21, 40)));
     }
 
     @Test
     public void findLastOfStream() {
         Optional<Integer> lastElement = Streams.findLast(numbers.stream());
 
-        Assert.assertNotNull(lastElement.get());
-        Assert.assertEquals(lastElement.get(), numbers.get(20));
+        assertEquals(lastElement.get(), numbers.get(19));
     }
 
     @Test
     public void mapWithIndexTest() {
-        Stream stringSream = Stream.of("a", "b", "c");
+        Stream<String> stringStream = Stream.of("a", "b", "c");
 
-        Stream<String> mappedStream = Streams.mapWithIndex(stringSream, (str, index) -> str + ":" + index);
+        Stream<String> mappedStream = Streams.mapWithIndex(stringStream, (str, index) -> str + ":" + index);
 
         //Assert.assertNotNull(mappedStream);
-        Assert.assertEquals(mappedStream
+        assertEquals(mappedStream
           .findFirst()
           .get(), "a:0");
 
@@ -146,12 +147,12 @@ public class GuavaStreamsUnitTest {
 
     @Test
     public void streamsZipTest() {
-        Stream stringSream = Stream.of("a", "b", "c");
-        Stream intStream = Stream.of(1, 2, 3);
+        Stream<String> stringSream = Stream.of("a", "b", "c");
+        Stream<Integer> intStream = Stream.of(1, 2, 3);
         Stream<String> mappedStream = Streams.zip(stringSream, intStream, (str, index) -> str + ":" + index);
 
         //Assert.assertNotNull(mappedStream);
-        Assert.assertEquals(mappedStream
+        assertEquals(mappedStream
           .findFirst()
           .get(), "a:1");
 
