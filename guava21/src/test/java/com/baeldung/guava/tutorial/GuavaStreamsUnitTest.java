@@ -1,3 +1,5 @@
+package com.baeldung.guava.tutorial;
+
 import com.google.common.collect.Streams;
 import org.junit.Assert;
 import org.junit.Before;

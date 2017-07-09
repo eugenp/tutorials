@@ -1,3 +1,5 @@
+package com.baeldung.guava.tutorial;
+
 import com.google.common.collect.Interner;
 import com.google.common.collect.Interners;
 import org.junit.Assert;
