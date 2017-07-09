@@ -1,6 +1,7 @@
 package com.baeldung.extensions;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Savepoint;
 
 import org.junit.jupiter.api.extension.AfterAllCallback;
@@ -19,25 +20,25 @@ public class EmployeeDatabaseSetupExtension implements BeforeAllCallback, AfterA
     private Savepoint savepoint;
 
     @Override
-    public void afterAll(ExtensionContext context) throws Exception {
+    public void afterAll(ExtensionContext context) throws SQLException {
         if (con != null) {
             con.close();
         }
     }
 
     @Override
-    public void beforeAll(ExtensionContext context) throws Exception {
+    public void beforeAll(ExtensionContext context) throws SQLException {
         employeeDao.createTable();
 
     }
 
     @Override
-    public void afterEach(ExtensionContext context) throws Exception {
+    public void afterEach(ExtensionContext context) throws SQLException {
         con.rollback(savepoint);
     }
 
     @Override
-    public void beforeEach(ExtensionContext context) throws Exception {
+    public void beforeEach(ExtensionContext context) throws SQLException {
         con.setAutoCommit(false);
         savepoint = con.setSavepoint("before");
     }

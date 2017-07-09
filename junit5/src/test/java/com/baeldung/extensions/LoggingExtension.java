@@ -10,11 +10,7 @@ public class LoggingExtension implements TestInstancePostProcessor {
     @Override
     public void postProcessTestInstance(Object testInstance, ExtensionContext context) throws Exception {
         Logger logger = LogManager.getLogger(testInstance.getClass());
-        try {
-            testInstance.getClass().getMethod("setLogger", Logger.class).invoke(testInstance, logger);
-        } catch (NoSuchMethodException exc) {
-            exc.printStackTrace();
-        }
+        testInstance.getClass().getMethod("setLogger", Logger.class).invoke(testInstance, logger);
     }
 
 }
