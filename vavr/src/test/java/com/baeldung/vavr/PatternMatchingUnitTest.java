@@ -100,13 +100,11 @@ public class PatternMatchingUnitTest {
         })));
     }
 
-
-
-    public void displayEven() {
+    private void displayEven() {
         System.out.println("Input is even");
     }
 
-    public void displayOdd() {
+    private void displayOdd() {
         System.out.println("Input is odd");
     }
 }
