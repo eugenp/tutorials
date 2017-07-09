@@ -8,7 +8,7 @@ CREATE TABLE employee(
 
 CREATE TABLE email(
     id int NOT NULL PRIMARY KEY auto_increment,
-    employeeid varchar(255),
+    employeeid int,
     address varchar(255)
 );
 

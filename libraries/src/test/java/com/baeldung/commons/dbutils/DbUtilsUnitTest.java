@@ -88,6 +88,7 @@ public class DbUtilsUnitTest {
         assertEquals(employees.get(2)
             .getEmails()
             .size(), 3);
+        assertNotNull(employees.get(0).getEmails().get(0).getEmployeeId());
     }
 
     @Test

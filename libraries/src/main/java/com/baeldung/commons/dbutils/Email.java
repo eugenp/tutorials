@@ -2,6 +2,7 @@ package com.baeldung.commons.dbutils;
 
 public class Email {
     private Integer id;
+    private Integer employeeId;
     private String address;
 
     public Integer getId() {
@@ -11,6 +12,15 @@ public class Email {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
+    }
+    
 
     public String getAddress() {
         return address;
