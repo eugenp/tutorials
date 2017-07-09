@@ -8,8 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.remoting.rmi.RmiProxyFactoryBean;
 
-@SpringBootApplication
-public class RmiClient {
+@SpringBootApplication public class RmiClient {
 
     @Bean RmiProxyFactoryBean service() {
         RmiProxyFactoryBean rmiProxyFactory = new RmiProxyFactoryBean();

@@ -13,13 +13,17 @@ import org.springframework.remoting.rmi.RmiServiceExporter;
     }
 
     @Bean RmiServiceExporter exporter(CabBookingService implementation) {
+
+        // Expose a service via RMI. Remote obect URL is:
+        // rmi://<HOST>:<PORT>/<SERVICE_NAME>
+        // 1099 is the default port
+
         Class<CabBookingService> serviceInterface = CabBookingService.class;
         RmiServiceExporter exporter = new RmiServiceExporter();
         exporter.setServiceInterface(serviceInterface);
         exporter.setService(implementation);
         exporter.setServiceName(serviceInterface.getSimpleName());
-        exporter.setRegistryPort(1099); // 1099 default port
-        // rmi://HOST:1199/AccountService
+        exporter.setRegistryPort(1099);
         return exporter;
     }
 
