@@ -57,6 +57,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guava21</module>
         <module>guice</module>
         <module>disruptor</module>
 

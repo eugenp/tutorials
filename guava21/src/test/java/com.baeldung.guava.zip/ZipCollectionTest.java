@@ -1,4 +1,4 @@
-package com.baeldung.zip;
+package com.baeldung.guava.zip;
 
 import com.google.common.collect.Streams;
 import org.jooq.lambda.Seq;
@@ -15,9 +15,9 @@ import static org.junit.Assert.assertEquals;
 
 public class ZipCollectionTest {
 
-    List<String> names;
-    List<Integer> ages;
-    List<String> expectedOutput;
+    private List<String> names;
+    private List<Integer> ages;
+    private List<String> expectedOutput;
 
     @Before
     public void setUp() throws Exception {
