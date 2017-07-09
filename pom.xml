@@ -25,6 +25,7 @@
     </properties>
 
     <modules>
+	<module>spring-activiti</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
