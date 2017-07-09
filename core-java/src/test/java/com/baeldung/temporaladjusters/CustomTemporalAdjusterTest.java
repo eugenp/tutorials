@@ -1,56 +1,49 @@
 package com.baeldung.temporaladjusters;
 
-import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Calendar;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import com.baeldung.temporaladjuster.CustomTemporalAdjuster;
-import com.baeldung.temporaladjuster.TemporalAdjusterUtil;
 
 public class CustomTemporalAdjusterTest {
 
     @Test
     public void whenAdjustAndImplementInterface_thenNextWorkingDay() {
-        LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.of(2017, 07, 8);
         CustomTemporalAdjuster temporalAdjuster = new CustomTemporalAdjuster();
         LocalDate nextWorkingDay = localDate.with(temporalAdjuster);
 
-        Assert.assertEquals(TemporalAdjusterUtil.getNextWorkingDay(), nextWorkingDay.toString());
+        Assert.assertEquals("2017-07-10", nextWorkingDay.toString());
     }
-    
+
     @Test
     public void whenAdjust_thenNextWorkingDay() {
-        LocalDate localDate = LocalDate.now();
+        LocalDate localDate = LocalDate.of(2017, 07, 8);
         TemporalAdjuster temporalAdjuster = NEXT_WORKING_DAY;
         LocalDate date = localDate.with(temporalAdjuster);
 
-        Assert.assertEquals(TemporalAdjusterUtil.getNextWorkingDay(), date.toString());
+        Assert.assertEquals("2017-07-10", date.toString());
     }
 
     @Test
-    public void whenAdjust_thenFourteenDaysFromToday() {
-        LocalDate localDate = LocalDate.now();
+    public void whenAdjust_thenFourteenDaysAfterDate() {
+        LocalDate localDate = LocalDate.of(2017, 07, 8);
         TemporalAdjuster temporalAdjuster = (t) -> t.plus(Period.ofDays(14));
         LocalDate result = localDate.with(temporalAdjuster);
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        format.setCalendar(calendar);
-        calendar.add(Calendar.DATE, 14);
-        String fourteenDaysFromToday = format.format(calendar.getTime());
+        String fourteenDaysAfterDate = "2017-07-22";
 
-        Assert.assertEquals(fourteenDaysFromToday, result.toString());
+        Assert.assertEquals(fourteenDaysAfterDate, result.toString());
     }
 
-    static TemporalAdjuster NEXT_WORKING_DAY = TemporalAdjusters.ofDateAdjuster(today -> {
-        DayOfWeek dayOfWeek = today.getDayOfWeek();
+    static TemporalAdjuster NEXT_WORKING_DAY = TemporalAdjusters.ofDateAdjuster(date -> {
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
         int daysToAdd;
         if (dayOfWeek == DayOfWeek.FRIDAY)
             daysToAdd = 3;
@@ -58,6 +51,6 @@ public class CustomTemporalAdjusterTest {
             daysToAdd = 2;
         else
             daysToAdd = 1;
-        return today.plusDays(daysToAdd);
+        return date.plusDays(daysToAdd);
     });
 }
