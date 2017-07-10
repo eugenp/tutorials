@@ -1,15 +1,17 @@
 package com.baeldung.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class TextPrinter {
 
-    private TextService textService;
+    private TextService lowercaseTextService;
 
-    public TextPrinter(TextService textService) {
-        this.textService = textService;
+    @Autowired
+    public TextPrinter(TextService lowercaseTextService) {
+        this.lowercaseTextService = lowercaseTextService;
     }
 
     public void printText(String text) {
-        System.out.println(textService.processText(text));
+        System.out.print(lowercaseTextService.processText(text));
     }
 }
-
