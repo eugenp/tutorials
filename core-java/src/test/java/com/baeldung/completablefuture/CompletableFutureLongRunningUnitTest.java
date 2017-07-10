@@ -24,7 +24,7 @@ public class CompletableFutureLongRunningUnitTest {
         assertEquals("Hello", result);
     }
 
-    public Future<String> calculateAsync() throws InterruptedException {
+    private Future<String> calculateAsync() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool().submit(() -> {
@@ -44,7 +44,7 @@ public class CompletableFutureLongRunningUnitTest {
         assertEquals("Hello", result);
     }
 
-    public Future<String> calculateAsyncWithCancellation() throws InterruptedException {
+    private Future<String> calculateAsyncWithCancellation() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
         Executors.newCachedThreadPool().submit(() -> {

@@ -12,7 +12,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
     private Object source;
     private MongoOperations mongoOperations;
 
-    public CascadeCallback(final Object source, final MongoOperations mongoOperations) {
+    CascadeCallback(final Object source, final MongoOperations mongoOperations) {
         this.source = source;
         this.setMongoOperations(mongoOperations);
     }
@@ -35,7 +35,7 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
 
     }
 
-    public Object getSource() {
+    private Object getSource() {
         return source;
     }
 
@@ -43,11 +43,11 @@ public class CascadeCallback implements ReflectionUtils.FieldCallback {
         this.source = source;
     }
 
-    public MongoOperations getMongoOperations() {
+    private MongoOperations getMongoOperations() {
         return mongoOperations;
     }
 
-    public void setMongoOperations(final MongoOperations mongoOperations) {
+    private void setMongoOperations(final MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
 }
