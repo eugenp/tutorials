@@ -59,7 +59,8 @@
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
                     <verbose>true</verbose>
-                    <fork>false</fork>   <!-- Solve windows line too long error -->
+                    <fork>false</fork>
+                    <!-- Solve windows line too long error -->
                 </configuration>
                 <executions>
                     <execution>
@@ -441,6 +442,12 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>java-hamcrest</artifactId>
+            <version>${org.hamcrest.java-hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- Vaadin -->
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -539,6 +546,7 @@
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
+        <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
         <!-- Vaadin -->
         <vaadin.version>7.7.10</vaadin.version>
         <vaadin.plugin.version>8.0.6</vaadin.plugin.version>

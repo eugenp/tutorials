@@ -1,3 +1,5 @@
+package com.baeldung.guava.tutorial;
+
 import com.google.common.collect.MoreCollectors;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,3 +1,5 @@
+package com.baeldung.guava.tutorial;
+
 import org.junit.Assert;
 
 import java.util.Iterator;
