@@ -38,7 +38,7 @@ public class ApplicationTest {
     }
 
     @Test
-    public void uppercaseTextService_NoInoutState_TextServiceInstance() {
+    public void uppercaseTextService_NoInputState_TextServiceInstance() {
         assertThat(application.uppercaseTextService(), instanceOf(TextService.class));
     }
 
