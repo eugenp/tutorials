@@ -13,7 +13,7 @@ public class TextPrinterTest {
 
     @Before
     public void setUpPrintStream() {
-        outContent =  new ByteArrayOutputStream();
+        outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
     }
