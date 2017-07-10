@@ -7,7 +7,7 @@ public class FactorialSquareCalculator extends RecursiveTask<Integer> {
 
     final private Integer n;
 
-    public FactorialSquareCalculator(Integer n) {
+    FactorialSquareCalculator(Integer n) {
         this.n = n;
     }
 

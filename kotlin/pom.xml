@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>kotlin</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -13,14 +12,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-
     <repositories>
         <repository>
             <id>central</id>
             <url>http://jcenter.bintray.com</url>
         </repository>
     </repositories>
-
 
     <dependencies>
         <dependency>
@@ -45,8 +42,13 @@
             <artifactId>kotlinx-coroutines-core</artifactId>
             <version>${kotlinx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.nhaarman</groupId>
+            <artifactId>mockito-kotlin</artifactId>
+            <version>${mockito-kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>        
     </dependencies>
-
 
     <build>
         <plugins>
@@ -123,6 +125,7 @@
         <kotlin-stdlib.version>1.1.2</kotlin-stdlib.version>
         <kotlin-reflect.version>1.1.2</kotlin-reflect.version>
         <kotlinx.version>0.15</kotlinx.version>
+        <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
     </properties>
 
 </project>

@@ -7,9 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class DelayQueueConsumer implements Runnable {
     private BlockingQueue<DelayObject> queue;
     private final Integer numberOfElementsToTake;
-    public final AtomicInteger numberOfConsumedElements = new AtomicInteger();
+    final AtomicInteger numberOfConsumedElements = new AtomicInteger();
 
-    public DelayQueueConsumer(BlockingQueue<DelayObject> queue, Integer numberOfElementsToTake) {
+    DelayQueueConsumer(BlockingQueue<DelayObject> queue, Integer numberOfElementsToTake) {
         this.queue = queue;
         this.numberOfElementsToTake = numberOfElementsToTake;
     }

@@ -34,6 +34,7 @@
 //        for (int i = 0; i < 1000000; i++) {
 //            list.add(random.nextDouble());
 //        }
+//        System.gc();
 //        Thread.sleep(10000); //to allow GC do its job
 //    }
 //
@@ -54,11 +55,13 @@
 //
 //    @SuppressWarnings({ "resource" })
 //    @Test(expected = OutOfMemoryError.class)
-//    public void givenLengthString_whenIntern_thenOutOfMemory() throws IOException {
+//    public void givenLengthString_whenIntern_thenOutOfMemory() throws IOException, InterruptedException {
+//        Thread.sleep(15000);
 //        String str = new Scanner(new File("src/test/resources/large.txt"), "UTF-8").useDelimiter("\\A")
 //            .next();
+//        System.gc();
 //        str.intern();
-//        System.out.println("Done");
+//        Thread.sleep(10000);
 //    }
 //
 //    @Test(expected = OutOfMemoryError.class)
