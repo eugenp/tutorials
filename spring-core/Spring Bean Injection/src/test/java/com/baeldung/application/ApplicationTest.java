@@ -16,14 +16,14 @@ public class ApplicationTest {
 
     @Before
     public void setUpPrintStream() {
-        this.outContent =  new ByteArrayOutputStream();
+        outContent =  new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
     }
 
     @Before
     public void setUpApplicationInstance() {
-        this.application = new Application();
+        application = new Application();
     }
 
     @Test

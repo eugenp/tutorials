@@ -13,14 +13,14 @@ public class TextPrinterTest {
 
     @Before
     public void setUpPrintStream() {
-        this.outContent =  new ByteArrayOutputStream();
+        outContent =  new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
     }
 
     @Before
     public void setUpTextPrinterInstance() {
-        this.textPrinter = new TextPrinter(new LowercaseTextService());
+        textPrinter = new TextPrinter(new LowercaseTextService());
     }
 
     @Test
