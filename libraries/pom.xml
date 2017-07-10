@@ -376,7 +376,7 @@
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
-            <version>${org.hamcrest.version}</version>
+            <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -411,7 +411,7 @@
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
-        <org.hamcrest.version>2.0.0.0</org.hamcrest.version>
+        <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
     </properties>
 
 </project>
