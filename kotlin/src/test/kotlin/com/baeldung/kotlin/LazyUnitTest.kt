@@ -64,7 +64,5 @@ class LazyUnitTest {
     fun givenLateInitProperty_whenAccessItWithoutInit_thenThrow() {
         //when
         println(a)
-
-        //then not throw
     }
 }
