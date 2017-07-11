@@ -28,3 +28,4 @@
 - [Guide to Guava ClassToInstanceMap](http://www.baeldung.com/guava-class-to-instance-map)
 - [Guide to Guava MinMaxPriorityQueue and EvictingQueue](http://www.baeldung.com/guava-minmax-priority-queue-and-evicting-queue)
 - [Guide to Mathematical Utilities in Guava](http://www.baeldung.com/guava-math)
+- [Bloom Filter in Java using Guava](http://www.baeldung.com/guava-bloom-filter)
