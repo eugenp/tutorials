@@ -24,7 +24,7 @@ public class TextPrinterTest {
     }
 
     @Test
-    public void printText_NoInputState_TextPrintedToConsole() {
+    public void printText_InputText_TextPrintedToConsole() {
         textPrinter.printText("hello from spring");
         assertEquals("hello from spring", outContent.toString());
     }
