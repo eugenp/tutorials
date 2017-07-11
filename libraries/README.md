@@ -18,6 +18,7 @@
 - [Serenity BDD with Spring and JBehave](http://www.baeldung.com/serenity-spring-jbehave)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](http://www.baeldung.com/locality-sensitive-hashing)
 - [Apache Commons Collections OrderedMap](http://www.baeldung.com/apache-commons-ordered-map)
+- [A Guide to Apache Commons DbUtils](http://www.baeldung.com/apache-commons-dbutils)
 
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
