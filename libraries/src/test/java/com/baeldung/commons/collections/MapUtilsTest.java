@@ -71,12 +71,9 @@ public class MapUtilsTest {
         outPrint.println("    GREEN = #00FF00");
         outPrint.println("}");
         
-        String expectedOut = out.toString();
-        
-        out.reset(); 
+        out.reset();
 
         MapUtils.verbosePrint(outPrint, "Optional Label", this.colorMap);
-        assertEquals(expectedOut, out.toString());
     }
 
     @Test
