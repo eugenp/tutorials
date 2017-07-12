@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class HikariCPUnitTest {
+public class HikariCPIntegrationTest {
 
     @Test
     public void givenConnection_thenFetchDbData() {

@@ -13,11 +13,11 @@ public class WordUtilsTest {
 
         Assert.assertEquals("To Be Capitalized!", result);
     }
-    
+
     @Test
     public void whenContainsWords_thenCorrect() {
         boolean containsWords = WordUtils.containsAllWords("String to search", "to", "search");
-        
+
         Assert.assertTrue(containsWords);
     }
 }

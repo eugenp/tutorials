@@ -1,6 +1,8 @@
 package com.baeldung.vaadin;
-import static org.junit.Assert.assertEquals;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.vaadin.server.DefaultUIProvider;
+import com.vaadin.server.VaadinServlet;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -15,9 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.vaadin.server.DefaultUIProvider;
-import com.vaadin.server.VaadinServlet;
+import static org.junit.Assert.assertEquals;
 
 
 public class VaadinUITests {
@@ -26,56 +26,56 @@ public class VaadinUITests {
     private Server server;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         startJettyServer();
-        driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_45,true);
+        driver = new HtmlUnitDriver(BrowserVersion.FIREFOX_45, true);
         driver.get("http://localhost:8080");
         Thread.sleep(10000);
     }
-    
-    @Test 
-    public void whenPageLoadedThenShouldSeeURL(){
+
+    @Test
+    public void whenPageLoadedThenShouldSeeURL() {
         String url = driver.getCurrentUrl();
         assertEquals("http://localhost:8080/", url);
     }
-    
+
     @Test
     public void givenLabel_WhenGetValue_ThenValueMatch() {
         WebElement label = driver.findElement(By.id("Label"));
         assertEquals("Label Value", label.getText());
     }
-    
+
     @Test
     public void givenTextField_WhenGetValue_ThenValueMatch() {
         WebElement textField = driver.findElement(By.id("TextField"));
         assertEquals("TextField Value", textField.getAttribute("Value"));
     }
-    
+
     @Test
     public void givenTextArea_WhenGetValue_ThenValueMatch() {
         WebElement textArea = driver.findElement(By.id("TextArea"));
         assertEquals("TextArea Value", textArea.getAttribute("Value"));
     }
-    
+
     @Test
     public void givenDateField_WhenGetValue_ThenValueMatch() {
         WebElement dateField = driver.findElement(By.id("DateField"));
         assertEquals("12/31/69", dateField.getText());
     }
-    
+
     @Test
     public void givenPasswordField_WhenGetValue_ThenValueMatch() {
         WebElement passwordField = driver.findElement(By.id("PasswordField"));
         assertEquals("password", passwordField.getAttribute("Value"));
     }
-    
+
     @After
-    public void cleanUp() throws Exception{
+    public void cleanUp() throws Exception {
         driver.close();
         server.stop();
     }
 
-    public void startJettyServer() throws Exception{
+    public void startJettyServer() throws Exception {
 
         int maxThreads = 100;
         int minThreads = 10;
