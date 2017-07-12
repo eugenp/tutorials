@@ -22,9 +22,9 @@ public class HLLUnitTest {
 
         //when
         LongStream.range(0, numberOfElements).forEach(element -> {
-                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-                    hll.addRaw(hashedValue);
-                }
+              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+              hll.addRaw(hashedValue);
+          }
         );
 
         //then
@@ -43,15 +43,15 @@ public class HLLUnitTest {
 
         //when
         LongStream.range(0, numberOfElements).forEach(element -> {
-                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-                    firstHll.addRaw(hashedValue);
-                }
+              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+              firstHll.addRaw(hashedValue);
+          }
         );
 
         LongStream.range(numberOfElements, numberOfElements * 2).forEach(element -> {
-                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-                    secondHLL.addRaw(hashedValue);
-                }
+              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+              secondHLL.addRaw(hashedValue);
+          }
         );
 
         //then

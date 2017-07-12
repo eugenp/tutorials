@@ -2,16 +2,12 @@ package com.baeldung.commons.collections;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import org.apache.commons.collections4.bidimap.DualLinkedHashBidiMap;
-import org.apache.commons.collections4.bidimap.DualTreeBidiMap;
-import org.apache.commons.collections4.bidimap.TreeBidiMap;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-/**
- * Created by smatt on 03/07/2017.
- */
 public class BidiMapUnitTest {
 
     @Test
