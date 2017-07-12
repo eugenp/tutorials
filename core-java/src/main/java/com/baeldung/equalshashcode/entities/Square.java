@@ -1,10 +1,10 @@
 package com.baeldung.equalshashcode.entities;
 
-import java.awt.Color;
+import java.awt.*;
 
 public class Square extends Rectangle {
 
-    Color color;
+    private Color color;
 
     public Square(double width, Color color) {
         super(width, width);

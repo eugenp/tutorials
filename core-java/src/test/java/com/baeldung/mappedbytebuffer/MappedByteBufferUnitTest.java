@@ -47,7 +47,7 @@ public class MappedByteBufferUnitTest {
 
         //when
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(pathToWrite,
-                EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING))) {
+          EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING))) {
             MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, charBuffer.length());
 
             if (mappedByteBuffer != null) {
@@ -61,7 +61,7 @@ public class MappedByteBufferUnitTest {
 
     }
 
-    public Path getFileURIFromResources(String fileName) throws Exception {
+    private Path getFileURIFromResources(String fileName) throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
         return Paths.get(classLoader.getResource(fileName).getPath());
     }

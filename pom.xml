@@ -25,6 +25,7 @@
     </properties>
 
     <modules>
+	<module>spring-activiti</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -57,6 +58,7 @@
         <module>guava</module>
         <module>guava18</module>
         <module>guava19</module>
+        <module>guava21</module>
         <module>guice</module>
         <module>disruptor</module>
 
@@ -88,14 +90,12 @@
         <module>junit5</module>
         <module>jws</module>
 
-        <module>kotlin</module>
-
         <module>libraries</module>
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
-
+       <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
         <module>metrics</module>
         <module>mesos-marathon</module>
@@ -123,7 +123,7 @@
         <module>selenium-junit-testng</module>
         <module>solr</module>
         <module>spark-java</module>
-        <module>spring-5</module>
+      <!--  <module>spring-5</module>-->
         <module>spring-5-mvc</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
@@ -142,7 +142,6 @@
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
-        <module>spring-data-javaslang</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
@@ -194,10 +193,12 @@
         <module>spring-security-mvc-login</module>
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-session</module>
+        <module>spring-security-mvc-socket</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>
+        <module>spring-security-sso</module>
         <module>spring-security-x509</module>
         <module>spring-session</module>
         <module>spring-sleuth</module>

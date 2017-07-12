@@ -5,7 +5,7 @@ public class Philosopher implements Runnable {
     private final Object leftFork;
     private final Object rightFork;
 
-    public Philosopher(Object left, Object right) {
+    Philosopher(Object left, Object right) {
         this.leftFork = left;
         this.rightFork = right;
     }
@@ -30,7 +30,6 @@ public class Philosopher implements Runnable {
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return;
         }
     }
 }

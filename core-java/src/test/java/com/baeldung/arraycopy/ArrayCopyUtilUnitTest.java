@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
+import static org.junit.Assert.assertTrue;
+
 public class ArrayCopyUtilUnitTest {
     private static Employee[] employees;
     private static final int MAX = 2;
@@ -46,10 +48,10 @@ public class ArrayCopyUtilUnitTest {
         
         System.arraycopy(array, 2, copiedArray, 0, 3);
         
-        Assert.assertTrue(3 == copiedArray.length);
-        Assert.assertTrue(copiedArray[0] == array[2]);
-        Assert.assertTrue(copiedArray[1] == array[3]);
-        Assert.assertTrue(copiedArray[2] == array[4]);
+        assertTrue(3 == copiedArray.length);
+        assertTrue(copiedArray[0] == array[2]);
+        assertTrue(copiedArray[1] == array[3]);
+        assertTrue(copiedArray[2] == array[4]);
     }
 
     @Test
@@ -58,10 +60,10 @@ public class ArrayCopyUtilUnitTest {
         
         int[] copiedArray = Arrays.copyOfRange(array, 1, 4);
         
-        Assert.assertTrue(3 == copiedArray.length);
-        Assert.assertTrue(copiedArray[0] == array[1]);
-        Assert.assertTrue(copiedArray[1] == array[2]);
-        Assert.assertTrue(copiedArray[2] == array[3]);
+        assertTrue(3 == copiedArray.length);
+        assertTrue(copiedArray[0] == array[1]);
+        assertTrue(copiedArray[1] == array[2]);
+        assertTrue(copiedArray[2] == array[3]);
     }
 
     @Test
@@ -73,9 +75,9 @@ public class ArrayCopyUtilUnitTest {
         
         Assert.assertArrayEquals(copiedArray, array);
         array[0] = 9;
-        Assert.assertTrue(copiedArray[0] != array[0]);
+        assertTrue(copiedArray[0] != array[0]);
         copiedArray[1] = 12;
-        Assert.assertTrue(copiedArray[1] != array[1]);
+        assertTrue(copiedArray[1] != array[1]);
     }
 
     @Test
@@ -85,7 +87,7 @@ public class ArrayCopyUtilUnitTest {
         Assert.assertArrayEquals(copiedArray, employees);
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element caused change in the copied array
-        Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+        assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
     }
 
     @Test
@@ -96,9 +98,9 @@ public class ArrayCopyUtilUnitTest {
         
         Assert.assertArrayEquals(copiedArray, array);
         array[0] = 9;
-        Assert.assertTrue(copiedArray[0] != array[0]);
+        assertTrue(copiedArray[0] != array[0]);
         copiedArray[1] = 12;
-        Assert.assertTrue(copiedArray[1] != array[1]);
+        assertTrue(copiedArray[1] != array[1]);
     }
 
     @Test
@@ -108,7 +110,7 @@ public class ArrayCopyUtilUnitTest {
         Assert.assertArrayEquals(copiedArray, employees);;
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element changed the copied array
-        Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+        assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
     }
 
     @Test
@@ -138,7 +140,7 @@ public class ArrayCopyUtilUnitTest {
         Assert.assertArrayEquals(copiedArray, employees);
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element didn't change in the copied array
-        Assert.assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+        assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
     }
     
     @Test

@@ -4,7 +4,11 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import java.util.concurrent.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.DelayQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -19,7 +23,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = 500;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);
@@ -41,7 +45,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = 10_000;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);
@@ -63,7 +67,7 @@ public class DelayQueueIntegrationTest {
         int delayOfEachProducedMessageMilliseconds = -10_000;
         DelayQueueConsumer consumer = new DelayQueueConsumer(queue, numberOfElementsToProduce);
         DelayQueueProducer producer
-                = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
+          = new DelayQueueProducer(queue, numberOfElementsToProduce, delayOfEachProducedMessageMilliseconds);
 
         //when
         executor.submit(producer);
