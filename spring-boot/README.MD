@@ -25,3 +25,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
 - [How to Get All Spring-Managed Beans?](http://www.baeldung.com/spring-show-all-beans)
 - [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
+- [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
+

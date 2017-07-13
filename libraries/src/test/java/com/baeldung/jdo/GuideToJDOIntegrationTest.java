@@ -8,7 +8,6 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -24,14 +23,14 @@ public class GuideToJDOIntegrationTest {
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
         pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
-        pumd.addProperty("datanucleus.autoCreateSchema", "true");        
+        pumd.addProperty("datanucleus.autoCreateSchema", "true");
 
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
-            for (int i = 0; i < 100; i++){
+            for (int i = 0; i < 100; i++) {
                 String nam = "Product-" + i;
                 Product productx = new Product(nam, (double) i);
                 pm.makePersistent(productx);
@@ -58,7 +57,7 @@ public class GuideToJDOIntegrationTest {
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
         pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
-        pumd.addProperty("datanucleus.autoCreateSchema", "true");        
+        pumd.addProperty("datanucleus.autoCreateSchema", "true");
 
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -93,9 +92,7 @@ public class GuideToJDOIntegrationTest {
             Query q = pm2.newQuery("SELECT FROM " + Product.class.getName() + " WHERE price == 200");
             @SuppressWarnings("unchecked")
             List<Product> products = (List<Product>) q.execute();
-            Iterator<Product> iter = products.iterator();
-            while (iter.hasNext()) {
-                Product p = iter.next();
+            for (Product p : products) {
                 assertEquals("Laptop", p.name);
             }
 

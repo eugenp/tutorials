@@ -1,17 +1,10 @@
 package org.baeldung.aggregation;
 
-import static org.junit.Assert.*;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.util.JSON;
 import org.baeldung.aggregation.model.StatePopulation;
 import org.baeldung.config.MongoConfig;
 import org.junit.AfterClass;
@@ -33,18 +26,30 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.util.JSON;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.limit;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class ZipsAggregationLiveTest {
 
     private static MongoClient client;
-    
+
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -58,7 +63,7 @@ public class ZipsAggregationLiveTest {
         InputStream zipsJsonStream = ZipsAggregationLiveTest.class.getResourceAsStream("/zips.json");
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipsJsonStream));
         reader.lines()
-            .forEach(line -> zipsCollection.insert((DBObject) JSON.parse(line)));
+          .forEach(line -> zipsCollection.insert((DBObject) JSON.parse(line)));
         reader.close();
 
     }
@@ -95,7 +100,7 @@ public class ZipsAggregationLiveTest {
          * decreasing population
          */
         List<StatePopulation> actualList = StreamSupport.stream(result.spliterator(), false)
-            .collect(Collectors.toList());
+          .collect(Collectors.toList());
 
         List<StatePopulation> expectedList = new ArrayList<>(actualList);
         Collections.sort(expectedList, (sp1, sp2) -> sp2.getStatePop() - sp1.getStatePop());
@@ -111,7 +116,7 @@ public class ZipsAggregationLiveTest {
         GroupOperation averageStatePop = group("_id.state").avg("cityPop").as("avgCityPop");
         SortOperation sortByAvgPopAsc = sort(new Sort(Direction.ASC, "avgCityPop"));
         ProjectionOperation projectToMatchModel = project().andExpression("_id").as("state")
-            .andExpression("avgCityPop").as("statePop");
+          .andExpression("avgCityPop").as("statePop");
         LimitOperation limitToOnlyFirstDoc = limit(1);
 
         Aggregation aggregation = newAggregation(sumTotalCityPop, averageStatePop, sortByAvgPopAsc, limitToOnlyFirstDoc, projectToMatchModel);
@@ -121,7 +126,7 @@ public class ZipsAggregationLiveTest {
 
         assertEquals("ND", smallestState.getState());
         assertTrue(smallestState.getStatePop()
-            .equals(1645));
+          .equals(1645));
     }
 
     @Test
@@ -130,8 +135,8 @@ public class ZipsAggregationLiveTest {
         GroupOperation sumZips = group("state").count().as("zipCount");
         SortOperation sortByCount = sort(Direction.ASC, "zipCount");
         GroupOperation groupFirstAndLast = group().first("_id").as("minZipState")
-            .first("zipCount").as("minZipCount").last("_id").as("maxZipState")
-            .last("zipCount").as("maxZipCount");
+          .first("zipCount").as("minZipCount").last("_id").as("maxZipState")
+          .last("zipCount").as("maxZipCount");
 
         Aggregation aggregation = newAggregation(sumZips, sortByCount, groupFirstAndLast);
 

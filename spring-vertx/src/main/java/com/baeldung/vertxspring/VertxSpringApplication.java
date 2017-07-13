@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.baeldung.vertxspring.verticles.ServerVerticle;
-import com.baeldung.vertxspring.verticles.ServiceVerticle;
+import com.baeldung.vertxspring.verticles.ArticleRecipientVerticle;
 
 import io.vertx.core.Vertx;
 
@@ -26,7 +26,7 @@ public class VertxSpringApplication {
     private ServerVerticle serverVerticle;
 
     @Autowired
-    private ServiceVerticle serviceVerticle;
+    private ArticleRecipientVerticle serviceVerticle;
 
     public static void main(String[] args) {
         SpringApplication.run(VertxSpringApplication.class, args);

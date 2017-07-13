@@ -4,10 +4,10 @@ import io.vavr.collection.Seq;
 import io.vavr.control.Validation;
 
 class PersonValidator {
-    String NAME_ERR = "Invalid characters in name: ";
-    String AGE_ERR = "Age must be at least 0";
+    private static final String NAME_ERR = "Invalid characters in name: ";
+    private static final String AGE_ERR = "Age must be at least 0";
 
-    public Validation<Seq<String>, Person> validatePerson(String name, int age) {
+    Validation<Seq<String>, Person> validatePerson(String name, int age) {
         return Validation.combine(validateName(name), validateAge(age)).ap(Person::new);
     }
 
