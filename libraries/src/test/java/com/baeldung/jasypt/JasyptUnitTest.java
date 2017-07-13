@@ -8,7 +8,9 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotSame;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 
 public class JasyptUnitTest {
@@ -30,7 +32,7 @@ public class JasyptUnitTest {
     }
 
     @Test
-    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldBeSame(){
+    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldBeSame() {
         String password = "secret-pass";
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
         String encryptedPassword = passwordEncryptor.encryptPassword(password);
@@ -43,7 +45,7 @@ public class JasyptUnitTest {
     }
 
     @Test
-    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldNotBeSame(){
+    public void givenTextPassword_whenOneWayEncryption_thenCompareEncryptedPasswordsShouldNotBeSame() {
         String password = "secret-pass";
         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
         String encryptedPassword = passwordEncryptor.encryptPassword(password);
@@ -54,7 +56,6 @@ public class JasyptUnitTest {
         //then
         assertFalse(result);
     }
-
 
 
     @Test
@@ -77,7 +78,7 @@ public class JasyptUnitTest {
 
     @Test
     @Ignore("should have installed local_policy.jar")
-    public void givenTextPrivateData_whenDecryptOnHighPerformance_thenDecrypt(){
+    public void givenTextPrivateData_whenDecryptOnHighPerformance_thenDecrypt() {
         //given
         String privateData = "secret-data";
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();

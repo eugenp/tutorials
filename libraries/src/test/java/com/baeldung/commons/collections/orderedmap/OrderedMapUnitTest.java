@@ -1,16 +1,16 @@
 package com.baeldung.commons.collections.orderedmap;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.commons.collections4.OrderedMap;
 import org.apache.commons.collections4.OrderedMapIterator;
 import org.apache.commons.collections4.map.LinkedMap;
 import org.apache.commons.collections4.map.ListOrderedMap;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class OrderedMapUnitTest {
 
