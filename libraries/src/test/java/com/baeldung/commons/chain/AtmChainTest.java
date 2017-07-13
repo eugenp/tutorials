@@ -10,28 +10,28 @@ import static com.baeldung.commons.chain.AtmConstants.*;
 
 public class AtmChainTest {
 
-    public static final int EXPECTED_TOTAL_IN_ATM = 4040;
-    public static final int EXPECTED_REMAINING = 0;
-    public static final int EXPECTED_HUNDRED = 4;
-    public static final int EXPECTED_FIFTY = 1;
-    public static final int EXPECTED_TEN = 1;
+    public static final int EXPECTED_TOTAL_AMOUNT_TO_BE_WITHDRAWN = 460;
+    public static final int EXPECTED_AMOUNT_LEFT_TO_BE_WITHDRAWN = 0;
+    public static final int EXPECTED_NO_OF_HUNDREDS_DISPENSED = 4;
+    public static final int EXPECTED_NO_OF_FIFTIES_DISPENSED = 1;
+    public static final int EXPECTED_NO_OF_TENS_DISPENSED = 1;
 
     @Test
     public void givenInputsToContext_whenAppliedChain_thenExpectedContext() {
         Context context = new AtmRequestContext();
-        context.put(TOTAL_IN_ATM, 4500);
-        context.put(REMAINING, 460);
+        context.put(TOTAL_AMOUNT_TO_BE_WITHDRAWN, 460);
+        context.put(AMOUNT_LEFT_TO_BE_WITHDRAWN, 460);
         Catalog catalog = new AtmCatalog();
-        Command currencyDenominationChain = catalog.getCommand(CURRENCY_DENOMINATION_CHAIN);
+        Command atmWithdrawalChain = catalog.getCommand(ATM_WITHDRAWAL_CHAIN);
         try {
-            currencyDenominationChain.execute(context);
+            atmWithdrawalChain.execute(context);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertEquals(EXPECTED_TOTAL_IN_ATM, (int) context.get(TOTAL_IN_ATM));
-        Assert.assertEquals(EXPECTED_REMAINING, (int) context.get(REMAINING));
-        Assert.assertEquals(EXPECTED_HUNDRED, (int) context.get(HUNDRED));
-        Assert.assertEquals(EXPECTED_FIFTY, (int) context.get(FIFTY));
-        Assert.assertEquals(EXPECTED_TEN, (int) context.get(TEN));
+        Assert.assertEquals(EXPECTED_TOTAL_AMOUNT_TO_BE_WITHDRAWN, (int) context.get(TOTAL_AMOUNT_TO_BE_WITHDRAWN));
+        Assert.assertEquals(EXPECTED_AMOUNT_LEFT_TO_BE_WITHDRAWN, (int) context.get(AMOUNT_LEFT_TO_BE_WITHDRAWN));
+        Assert.assertEquals(EXPECTED_NO_OF_HUNDREDS_DISPENSED, (int) context.get(NO_OF_HUNDREDS_DISPENSED));
+        Assert.assertEquals(EXPECTED_NO_OF_FIFTIES_DISPENSED, (int) context.get(NO_OF_FIFTIES_DISPENSED));
+        Assert.assertEquals(EXPECTED_NO_OF_TENS_DISPENSED, (int) context.get(NO_OF_TENS_DISPENSED));
     }
 }

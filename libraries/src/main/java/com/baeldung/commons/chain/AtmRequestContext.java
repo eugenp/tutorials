@@ -3,49 +3,50 @@ package com.baeldung.commons.chain;
 import org.apache.commons.chain.impl.ContextBase;
 
 public class AtmRequestContext extends ContextBase {
-    private int totalInAtm;
-    private int remaining;
-    private int hundred;
-    private int fifty;
-    private int ten;
 
-    public int getTotalInAtm() {
-        return totalInAtm;
+    int totalAmountToBeWithdrawn;
+    int noOfHundredsDispensed;
+    int noOfFiftiesDispensed;
+    int noOfTensDispensed;
+    int amountLeftToBeWithdrawn;
+
+    public int getTotalAmountToBeWithdrawn() {
+        return totalAmountToBeWithdrawn;
     }
 
-    public void setTotalInAtm(int totalInAtm) {
-        this.totalInAtm = totalInAtm;
+    public void setTotalAmountToBeWithdrawn(int totalAmountToBeWithdrawn) {
+        this.totalAmountToBeWithdrawn = totalAmountToBeWithdrawn;
     }
 
-    public int getRemaining() {
-        return remaining;
+    public int getNoOfHundredsDispensed() {
+        return noOfHundredsDispensed;
     }
 
-    public void setRemaining(int remaining) {
-        this.remaining = remaining;
+    public void setNoOfHundredsDispensed(int noOfHundredsDispensed) {
+        this.noOfHundredsDispensed = noOfHundredsDispensed;
     }
 
-    public int getHundred() {
-        return hundred;
+    public int getNoOfFiftiesDispensed() {
+        return noOfFiftiesDispensed;
     }
 
-    public void setHundred(int hundred) {
-        this.hundred = hundred;
+    public void setNoOfFiftiesDispensed(int noOfFiftiesDispensed) {
+        this.noOfFiftiesDispensed = noOfFiftiesDispensed;
     }
 
-    public int getFifty() {
-        return fifty;
+    public int getNoOfTensDispensed() {
+        return noOfTensDispensed;
     }
 
-    public void setFifty(int fifty) {
-        this.fifty = fifty;
+    public void setNoOfTensDispensed(int noOfTensDispensed) {
+        this.noOfTensDispensed = noOfTensDispensed;
     }
 
-    public int getTen() {
-        return ten;
+    public int getAmountLeftToBeWithdrawn() {
+        return amountLeftToBeWithdrawn;
     }
 
-    public void setTen(int ten) {
-        this.ten = ten;
+    public void setAmountLeftToBeWithdrawn(int amountLeftToBeWithdrawn) {
+        this.amountLeftToBeWithdrawn = amountLeftToBeWithdrawn;
     }
 }
