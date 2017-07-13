@@ -1,0 +1,122 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="bibliography.collection">
+<refmeta>
+<refentrytitle>bibliography.collection</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>bibliography.collection</refname>
+<refpurpose>Name of the bibliography collection file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="bibliography.collection.frag">
+<xsl:param name="bibliography.collection">http://docbook.sourceforge.net/release/bibliography/bibliography.xml</xsl:param>
+
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Maintaining bibliography entries across a set of documents is tedious, time
+consuming, and error prone. It makes much more sense, usually, to store all of
+the bibliography entries in a single place and simply <quote>extract</quote>
+the ones you need in each document.</para>
+
+<para>That's the purpose of the
+<parameter>bibliography.collection</parameter> parameter. To setup a global
+bibliography <quote>database</quote>, follow these steps:</para>
+
+<para>First, create a stand-alone bibliography document that contains all of
+the documents that you wish to reference. Make sure that each bibliography
+entry (whether you use <tag>biblioentry</tag> or <tag>bibliomixed</tag>)
+has an ID.</para>
+
+<para>My global bibliography, <filename>~/bibliography.xml</filename> begins
+like this:</para>
+
+<informalexample>
+<programlisting>&lt;!DOCTYPE bibliography
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;bibliography&gt;&lt;title&gt;References&lt;/title&gt;
+
+&lt;bibliomixed id="xml-rec"&gt;&lt;abbrev&gt;XML 1.0&lt;/abbrev&gt;Tim Bray,
+Jean Paoli, C. M. Sperberg-McQueen, and Eve Maler, editors.
+&lt;citetitle&gt;&lt;ulink url="http://www.w3.org/TR/REC-xml"&gt;Extensible Markup
+Language (XML) 1.0 Second Edition&lt;/ulink&gt;&lt;/citetitle&gt;.
+World Wide Web Consortium, 2000.
+&lt;/bibliomixed&gt;
+
+&lt;bibliomixed id="xml-names"&gt;&lt;abbrev&gt;Namespaces&lt;/abbrev&gt;Tim Bray,
+Dave Hollander,
+and Andrew Layman, editors.
+&lt;citetitle&gt;&lt;ulink url="http://www.w3.org/TR/REC-xml-names/"&gt;Namespaces in
+XML&lt;/ulink&gt;&lt;/citetitle&gt;.
+World Wide Web Consortium, 1999.
+&lt;/bibliomixed&gt;
+
+&lt;!-- ... --&gt;
+&lt;/bibliography&gt;
+</programlisting>
+</informalexample>
+
+<para>When you create a bibliography in your document, simply
+provide <emphasis>empty</emphasis> <tag>bibliomixed</tag>
+entries for each document that you wish to cite. Make sure that these
+elements have the same ID as the corresponding <quote>real</quote>
+entry in your global bibliography.</para>
+
+<para>For example:</para>
+
+<informalexample>
+<programlisting>&lt;bibliography&gt;&lt;title&gt;Bibliography&lt;/title&gt;
+
+&lt;bibliomixed id="xml-rec"/&gt;
+&lt;bibliomixed id="xml-names"/&gt;
+&lt;bibliomixed id="DKnuth86"&gt;Donald E. Knuth. &lt;citetitle&gt;Computers and
+Typesetting: Volume B, TeX: The Program&lt;/citetitle&gt;. Addison-Wesley,
+1986.  ISBN 0-201-13437-3.
+&lt;/bibliomixed&gt;
+&lt;bibliomixed id="relaxng"/&gt;
+
+&lt;/bibliography&gt;</programlisting>
+</informalexample>
+
+<para>Note that it's perfectly acceptable to mix entries from your
+global bibliography with <quote>normal</quote> entries. You can use
+<tag>xref</tag> or other elements to cross-reference your
+bibliography entries in exactly the same way you do now.</para>
+
+<para>Finally, when you are ready to format your document, simply set the
+<parameter>bibliography.collection</parameter> parameter (in either a
+customization layer or directly through your processor's interface) to
+point to your global bibliography.</para>
+
+<para>A relative path in the parameter is interpreted in one
+of two ways:</para>
+<orderedlist numeration="loweralpha">
+  <listitem>
+    <para>If your document contains no links to empty bibliographic elements,
+    then the path is relative to the file containing
+    the first <tag>bibliomixed</tag> element in the document.</para>
+  </listitem>
+  <listitem>
+    <para>If your document does contain links to empty bibliographic elements,
+    then the path is relative to the file containing
+    the first such link element in the document.</para>
+  </listitem>
+</orderedlist>
+<para>Once the collection file is opened by the first instance described
+above, it stays open for the current document
+and the relative path is not reinterpreted again.</para>
+
+<para>The stylesheets will format the bibliography in your document as if
+all of the entries referenced appeared there literally.</para>
+
+</refsection>
+</refentry>

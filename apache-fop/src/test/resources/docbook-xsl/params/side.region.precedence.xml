@@ -1,0 +1,56 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="side.region.precedence"> 
+<refmeta> 
+<refentrytitle>side.region.precedence</refentrytitle> 
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo> 
+</refmeta> 
+<refnamediv> 
+<refname>side.region.precedence</refname> 
+<refpurpose>Determines side region page layout precedence</refpurpose> 
+</refnamediv> 
+<refsynopsisdiv> <src:fragment xml:id="side.region.precedence.frag">
+<xsl:param name="side.region.precedence">false</xsl:param>
+</src:fragment> 
+</refsynopsisdiv> 
+<refsection><info><title>Description</title></info> 
+ 
+<para>If optional side regions on a page
+are established using parameters such as
+<parameter>body.margin.inner</parameter>, 
+<parameter>region.inner.extent</parameter>, etc., then this
+parameter determines what happens at the corners where the
+side regions meet the header and footer regions.</para>
+
+<para>If the value of this parameter is <literal>true</literal>,
+then the side regions have precedence and extend higher
+and lower, while the header and footer regions are narrower
+and fit inside the side regions.</para>
+
+<para>If the value of this parameter is <literal>false</literal>
+(the default value), then the header and footer regions 
+have precedence and extend over and below the side regions.
+Any value other than <literal>true</literal> or
+<literal>false</literal> is taken to be <literal>false</literal>.</para>
+
+<para>If you need to set precedence separately for
+individual regions, then you can set four
+parameters that are normally internal to the stylesheet.
+These four parameters are normally set based
+on the value from <parameter>side.region.precedence</parameter>:</para>
+
+<programlisting>region.before.precedence
+region.after.precedence
+region.start.precedence
+region.end.precedence</programlisting>
+
+<para>See also
+<parameter>region.inner.extent</parameter>,
+<parameter>region.outer.extent</parameter>,
+<parameter>body.margin.inner</parameter>,
+<parameter>body.margin.outer</parameter>.
+</para>
+</refsection> </refentry>

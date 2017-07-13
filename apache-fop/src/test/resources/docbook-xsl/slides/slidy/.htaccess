@@ -1,0 +1,28 @@
+Options +MultiViews
+LanguagePriority en
+AddLanguage pt-br .pt-br
+
+<Files ~ "*.html">
+
+ForceType 'text/html; charset=utf-8'
+
+</Files>
+
+<Files ~ "*.xhtml">
+
+ForceType 'application/xhtml+xml; charset=utf-8'
+
+</Files>
+
+<Files ~ *.css">
+
+ForceType 'text/css; charset=utf-8'
+
+</Files>
+
+<Files ~ "*.js">
+
+ForceType 'text/javascript; charset=utf-8'
+
+</Files>
+mkdir 

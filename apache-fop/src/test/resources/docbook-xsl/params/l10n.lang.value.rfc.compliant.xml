@@ -1,0 +1,57 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="l10n.lang.value.rfc.compliant">
+<refmeta>
+<refentrytitle>l10n.lang.value.rfc.compliant</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>l10n.lang.value.rfc.compliant</refname>
+<refpurpose>Make value of lang attribute RFC compliant?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="l10n.lang.value.rfc.compliant.frag">
+<xsl:param name="l10n.lang.value.rfc.compliant" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, ensure that the values for all <tag class="attribute">lang</tag> attributes in HTML output are RFC
+compliant<footnote><para>Section 8.1.1, <link xlink:href="http://www.w3.org/TR/REC-html40/struct/dirlang.html#h-8.1.1">Language Codes</link>, in the HTML 4.0 Recommendation states that:
+
+<blockquote><para>[RFC1766] defines and explains the language codes
+that must be used in HTML documents.</para>
+<para>Briefly, language codes consist of a primary code and a possibly
+empty series of subcodes:
+
+<literallayout class="monospaced">language-code = primary-code ( "-" subcode )*</literallayout>
+</para>
+<para>And in RFC 1766, <link xlink:href="http://www.ietf.org/rfc/rfc1766.txt">Tags for the Identification
+of Languages</link>, the EBNF for "language tag" is given as:
+
+<literallayout class="monospaced">Language-Tag = Primary-tag *( "-" Subtag )
+Primary-tag = 1*8ALPHA
+Subtag = 1*8ALPHA</literallayout>
+</para>
+</blockquote>
+</para></footnote>.
+
+by taking any underscore characters in any <tag class="attribute">lang</tag> values found in source documents, and
+replacing them with hyphen characters in output HTML files. For
+example, <literal>zh_CN</literal> in a source document becomes
+<literal>zh-CN</literal> in the HTML output form that source.
+
+<note>
+<para>This parameter does not cause any case change in <tag class="attribute">lang</tag> values, because RFC 1766
+explicitly states that all "language tags" (as it calls them) "are
+to be treated as case insensitive".</para>
+</note>
+</para>
+
+</refsection>
+</refentry>

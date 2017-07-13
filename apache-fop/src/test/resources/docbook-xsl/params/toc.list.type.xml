@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="toc.list.type">
+<refmeta>
+<refentrytitle>toc.list.type</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">dl</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">ul</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">ol</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.list.type</refname>
+<refpurpose>Type of HTML list element to use for Tables of Contents</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="toc.list.type.frag"><xsl:param name="toc.list.type">dl</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>When an automatically generated Table of Contents (or List of Titles)
+is produced, this HTML element will be used to make the list.
+</para>
+
+</refsection>
+</refentry>

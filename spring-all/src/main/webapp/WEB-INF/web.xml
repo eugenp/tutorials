@@ -1,0 +1,68 @@
+<web-app
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+        version="3.0">
+	
+	 <!-- load root application context -->
+  	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>/WEB-INF/rootApplicationContext.xml</param-value>
+	</context-param>
+	<listener>
+   		<listener-class>
+        	org.springframework.web.context.ContextLoaderListener
+   		</listener-class>
+	</listener> 
+	
+	<!-- secure web app context -->
+    <servlet>
+        <servlet-name>secure-webapp</servlet-name>
+        	<servlet-class>
+            	org.springframework.web.servlet.DispatcherServlet
+        	</servlet-class>
+		    <load-on-startup>1</load-on-startup>
+			<init-param>
+				<param-name>contextConfigLocation</param-name>
+				<param-value>/WEB-INF/secure-webapp-servlet.xml</param-value>
+			</init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>secure-webapp</servlet-name>
+        <url-pattern>/s/api/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- normal web app context -->
+    <servlet>
+        <servlet-name>normal-webapp</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>normal-webapp</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+	
+    <servlet>
+        <servlet-name>test-mvc</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/test-mvc.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>test-mvc</servlet-name>
+        <url-pattern>/test/*</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

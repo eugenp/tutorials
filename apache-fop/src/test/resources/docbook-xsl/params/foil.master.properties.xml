@@ -1,0 +1,46 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="foil.master.properties">
+<refmeta>
+<refentrytitle>foil.master.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.master.properties</refname>
+<refpurpose>Specifies properties for foil master</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="foil.master.properties.frag">
+    <xsl:attribute-set name="foil.master.properties">
+      <xsl:attribute name="page-width">
+        <xsl:value-of select="$page.width"/>
+      </xsl:attribute>
+      <xsl:attribute name="page-height">
+        <xsl:value-of select="$page.height"/>
+      </xsl:attribute>
+      <xsl:attribute name="margin-top">
+        <xsl:value-of select="$page.margin.top"/>
+      </xsl:attribute>
+      <xsl:attribute name="margin-bottom">
+        <xsl:value-of select="$page.margin.bottom"/>
+      </xsl:attribute>
+      <xsl:attribute name="margin-left">
+        <xsl:value-of select="$page.margin.inner"/>
+      </xsl:attribute>
+      <xsl:attribute name="margin-right">
+        <xsl:value-of select="$page.margin.outer"/>
+      </xsl:attribute>
+    </xsl:attribute-set>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties for the foil master.</para>
+
+</refsection>
+</refentry>

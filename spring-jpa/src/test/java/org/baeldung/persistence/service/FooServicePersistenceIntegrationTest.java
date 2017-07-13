@@ -36,7 +36,7 @@ public class FooServicePersistenceIntegrationTest {
 
     @Test(expected = DataIntegrityViolationException.class)
     public final void whenInvalidEntityIsCreated_thenDataException() {
-        service.create(new Foo());
+        service.create(new Foo(randomAlphabetic(2048)));
     }
 
     @Test(expected = DataIntegrityViolationException.class)
@@ -53,7 +53,7 @@ public class FooServicePersistenceIntegrationTest {
 
     @Test(expected = DataAccessException.class)
     public final void temp_whenInvalidEntityIsCreated_thenDataException() {
-        service.create(new Foo());
+        service.create(new Foo(randomAlphabetic(2048)));
     }
 
     @Test

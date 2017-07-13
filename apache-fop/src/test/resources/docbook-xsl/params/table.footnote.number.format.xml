@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="table.footnote.number.format">
+<refmeta>
+<refentrytitle>table.footnote.number.format</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo> 
+<refmiscinfo class="other" otherclass="value">1<alt>1,2,3...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">A<alt>A,B,C...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">a<alt>a,b,c...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">i<alt>i,ii,iii...</alt></refmiscinfo>
+<refmiscinfo class="other" otherclass="value">I<alt>I,II,III...</alt></refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>table.footnote.number.format</refname>
+<refpurpose>Identifies the format used for footnote numbers in tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="table.footnote.number.format.frag">
+<xsl:param name="table.footnote.number.format">a</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The <parameter>table.footnote.number.format</parameter> specifies the format
+to use for footnote numeration (1, i, I, a, or A) in tables.</para>
+
+</refsection>
+</refentry>

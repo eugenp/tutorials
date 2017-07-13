@@ -1,0 +1,51 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="region.outer.properties">
+<refmeta>
+<refentrytitle>region.outer.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>region.outer.properties</refname>
+<refpurpose>Properties of running outer side region</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="region.outer.properties.frag">
+<xsl:attribute-set name="region.outer.properties">
+  <xsl:attribute name="border-width">0</xsl:attribute>
+  <xsl:attribute name="padding">0</xsl:attribute>
+  <xsl:attribute name="reference-orientation">90</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The FO stylesheet supports optional side regions
+similar to the header and footer regions.
+Any attributes declared in this attribute-set 
+are applied to the region element in the page master
+on the outer side (opposite the binding side) of the page.
+This corresponds to <literal>&lt;fo:regin-start&gt;</literal>
+on odd-numbered pages and <literal>&lt;fo:region-end&gt;</literal>
+on even-numbered pages.
+For single-sided output, it always corresponds to
+<literal>&lt;fo:regin-start&gt;</literal>.</para>
+
+<para>You can customize the template named 
+<literal>outer.region.content</literal> to specify
+the content of the outer side region.</para>
+
+<para>See also
+<parameter>outer.region.content.properties</parameter>,
+<parameter>page.margin.outer</parameter>, 
+<parameter>body.margin.outer</parameter>,
+and the corresponding <literal>inner</literal>
+parameters.</para>
+
+</refsection>
+</refentry>

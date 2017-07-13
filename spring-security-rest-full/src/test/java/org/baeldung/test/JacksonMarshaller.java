@@ -7,7 +7,6 @@ import org.baeldung.persistence.model.Foo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,7 +14,6 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Preconditions;
 
-@Component
 public final class JacksonMarshaller implements IMarshaller {
     private final Logger logger = LoggerFactory.getLogger(JacksonMarshaller.class);
 

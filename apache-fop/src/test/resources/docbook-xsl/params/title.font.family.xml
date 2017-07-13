@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="title.font.family">
+<refmeta>
+<refentrytitle>title.font.family</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="list-type">open</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">sans-serif</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">monospace</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>title.font.family</refname>
+<refpurpose>The default font family for titles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="title.font.family.frag">
+<xsl:param name="title.font.family">sans-serif</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The title font family is used for titles (chapter, section, figure,
+etc.)
+</para>
+<para>If more than one font is required, enter the font names,
+separated by a comma, e.g.</para>
+<literallayout>
+  &lt;xsl:param name="body.font.family">Arial, SimSun, serif&lt;/xsl:param>
+
+</literallayout>
+</refsection>
+</refentry>

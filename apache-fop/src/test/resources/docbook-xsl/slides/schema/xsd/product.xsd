@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: pool.rnc 7466 2007-09-27 14:03:55Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.productname.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="db.productname.class.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="copyright">
+        <xs:annotation>
+          <xs:documentation>A name with a copyright</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="registered">
+        <xs:annotation>
+          <xs:documentation>A name with a registered copyright</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="service">
+        <xs:annotation>
+          <xs:documentation>A name of a service</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trade">
+        <xs:annotation>
+          <xs:documentation>A name which is trademarked</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.productname.class.attribute">
+    <xs:attribute name="class" use="required" type="db:db.productname.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.productname.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="class" type="db:db.productname.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:element name="productname" substitutionGroup="db:db.product.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.productname.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.productnumber.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.productnumber.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="productnumber" substitutionGroup="db:db.product.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.productnumber.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.database.class.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="altkey">
+        <xs:annotation>
+          <xs:documentation>An alternate or secondary key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="constraint">
+        <xs:annotation>
+          <xs:documentation>A constraint</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="datatype">
+        <xs:annotation>
+          <xs:documentation>A data type</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="field">
+        <xs:annotation>
+          <xs:documentation>A field</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="foreignkey">
+        <xs:annotation>
+          <xs:documentation>A foreign key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="group">
+        <xs:annotation>
+          <xs:documentation>A group</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="index">
+        <xs:annotation>
+          <xs:documentation>An index</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="key1">
+        <xs:annotation>
+          <xs:documentation>The first or primary key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="key2">
+        <xs:annotation>
+          <xs:documentation>An alternate or secondary key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="name">
+        <xs:annotation>
+          <xs:documentation>A name</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="primarykey">
+        <xs:annotation>
+          <xs:documentation>The primary key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="procedure">
+        <xs:annotation>
+          <xs:documentation>A (stored) procedure</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="record">
+        <xs:annotation>
+          <xs:documentation>A record</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rule">
+        <xs:annotation>
+          <xs:documentation>A rule</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="secondarykey">
+        <xs:annotation>
+          <xs:documentation>The secondary key</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="table">
+        <xs:annotation>
+          <xs:documentation>A table</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="user">
+        <xs:annotation>
+          <xs:documentation>A user</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="view">
+        <xs:annotation>
+          <xs:documentation>A view</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.database.class.attribute">
+    <xs:attribute name="class" use="required" type="db:db.database.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.database.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.database.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="class" type="db:db.database.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:element name="database" substitutionGroup="db:db.product.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.database.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:simpleType name="db.application.class.enumeration">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="hardware">
+        <xs:annotation>
+          <xs:documentation>A hardware application</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="software">
+        <xs:annotation>
+          <xs:documentation>A software application</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="db.application.class.attribute">
+    <xs:attribute name="class" use="required" type="db:db.application.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.application.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.application.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="class" type="db:db.application.class.enumeration"/>
+  </xs:attributeGroup>
+  <xs:element name="application" substitutionGroup="db:db.product.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.application.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.hardware.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.hardware.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="hardware" substitutionGroup="db:db.product.inlines">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.hardware.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
