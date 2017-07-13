@@ -12,6 +12,11 @@
 - [Introduction to Apache Commons Math](http://www.baeldung.com/apache-commons-math)
 - [Intro to JaVer](http://www.baeldung.com/serenity-bdd)
 - [Introduction to Netty](http://www.baeldung.com/netty)
+- [Merging Streams in Java](http://www.baeldung.com/java-merge-streams)
+- [Serenity BDD and Screenplay](http://www.baeldung.com/serenity-screenplay)
+- [Introduction to Quartz](http://www.baeldung.com/quartz)
+- [How to Warm Up the JVM](http://www.baeldung.com/java-jvm-warmup)
+- [Apache Commons Collections SetUtils](http://www.baeldung.com/apache-commons-setutils)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
