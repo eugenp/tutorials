@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <property name="FILE_NAME" value="baeldung-logback.log"/>
+    <property name="smtpHost" value="Smtp.aol.com"/>
+    <property name="to" value="adam.zawada@gmail.com"/>
+    <property name="from" value="adam@baeldung.com" />
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="com.baeldung.logging.logback.filter.CustomFilter"/>
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="CUSTOM" class="com.baeldung.logging.logback.appender.CustomAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="FILTERED_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+            <marker>FIRE_FILTER</marker>
+            <!-- you can specify more than one marker -->
+            <marker>TRIGGER_FILTER</marker>
+        </evaluator>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+        <withJansi>true</withJansi>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %highlight(%-5level) %cyan(%logger{15}) - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
+        <host>${host_name}</host>
+        <port>${port}</port>
+        <key>logstash_key</key>
+        <password>PASSWORD</password>
+        <additionalField>
+            <key>${logstash_key_name}</key>
+            <value>${logstash_key_value}</value>
+        </additionalField>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd} %-5level %logger{15} - %msg %n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+        <file>${FILE_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%i</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>32MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!-- Async appender for best logging performance -->
+    <appender name="ASYNC_LOG" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <appender-ref ref="LOGSTASH"/>
+    </appender>
+
+    <appender name="MAIL" class="ch.qos.logback.classic.net.SMTPAppender">
+    <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+        <marker>NOTIFY_BY_EMAIL</marker>
+        <!-- you can specify more than one marker -->
+        <marker>TRIGGER_EMAIL</marker>
+    </evaluator>
+    <smtpHost>${smtpHost}</smtpHost>
+    <to>${to}</to>
+    <from>${from}</from>
+    <layout class="ch.qos.logback.classic.html.HTMLLayout"/>
+    <cyclicBufferTracker class="ch.qos.logback.core.spi.CyclicBufferTracker">
+        <bufferSize>25</bufferSize>
+    </cyclicBufferTracker>
+</appender>
+
+    <logger name="com.baeldung.logging" level="INFO"/>
+
+    <root level="ERROR">
+        <!--<appender-ref ref="FILE"/>-->
+        <!--<appender-ref ref="STDOUT"/>-->
+        <appender-ref ref="FILTERED_STDOUT"/>
+    </root>
+
+</configuration>
