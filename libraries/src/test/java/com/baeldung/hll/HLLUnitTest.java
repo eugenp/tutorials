@@ -22,9 +22,9 @@ public class HLLUnitTest {
 
         //when
         LongStream.range(0, numberOfElements).forEach(element -> {
-              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-              hll.addRaw(hashedValue);
-          }
+                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+                    hll.addRaw(hashedValue);
+                }
         );
 
         //then
@@ -43,21 +43,22 @@ public class HLLUnitTest {
 
         //when
         LongStream.range(0, numberOfElements).forEach(element -> {
-              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-              firstHll.addRaw(hashedValue);
-          }
+                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+                    firstHll.addRaw(hashedValue);
+                }
         );
 
         LongStream.range(numberOfElements, numberOfElements * 2).forEach(element -> {
-              long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
-              secondHLL.addRaw(hashedValue);
-          }
+                    long hashedValue = hashFunction.newHasher().putLong(element).hash().asLong();
+                    secondHLL.addRaw(hashedValue);
+                }
         );
 
         //then
         firstHll.union(secondHLL);
         long cardinality = firstHll.cardinality();
-        assertThat(isSimilarTo(cardinality, numberOfElements * 2, toleratedDifference)).isTrue();
+        assertThat(isSimilarTo(cardinality, numberOfElements * 2,
+                toleratedDifference * 2)).isTrue();
     }
 
     private boolean isSimilarTo(long cardinality, int numberOfElements, int maxToleratedDifference) {
