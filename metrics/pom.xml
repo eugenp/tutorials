@@ -15,6 +15,7 @@
     <properties>
         <dep.ver.metrics>3.1.2</dep.ver.metrics>
         <dep.ver.servlet>3.1.0</dep.ver.servlet>
+        <netflix.servo.ver>0.12.16</netflix.servo.ver>
     </properties>
 
     <dependencies>
@@ -42,6 +43,11 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${dep.ver.servlet}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.servo</groupId>
+            <artifactId>servo-core</artifactId>
+            <version>${netflix.servo.ver}</version>
         </dependency>
     </dependencies>
 

@@ -3,3 +3,4 @@
 - [Guide to Try in Vavr](http://www.baeldung.com/javaslang-try)
 - [Guide to Pattern Matching in Vavr](http://www.baeldung.com/javaslang-pattern-matching)
 - [Property Testing Example With Vavr](http://www.baeldung.com/javaslang-property-testing)
+- [Exceptions in Lambda Expression Using Vavr](http://www.baeldung.com/exceptions-using-vavr)
