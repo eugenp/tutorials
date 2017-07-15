@@ -63,19 +63,7 @@ public class MapUtilsTest {
 
     @Test
     public void whenVerbosePrintMap_thenMustPrintFormattedMap() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream outPrint = new PrintStream(out);
-
-        outPrint.println("Optional Label = ");
-        outPrint.println("{");
-        outPrint.println("    RED = #FF0000");
-        outPrint.println("    BLUE = #0000FF");
-        outPrint.println("    GREEN = #00FF00");
-        outPrint.println("}");
-
-        out.reset();
-
-        MapUtils.verbosePrint(outPrint, "Optional Label", this.colorMap);
+        MapUtils.verbosePrint(System.out, "Optional Label", this.colorMap);
     }
 
     @Test
