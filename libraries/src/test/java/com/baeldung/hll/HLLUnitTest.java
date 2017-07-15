@@ -57,7 +57,8 @@ public class HLLUnitTest {
         //then
         firstHll.union(secondHLL);
         long cardinality = firstHll.cardinality();
-        assertThat(isSimilarTo(cardinality, numberOfElements * 2, toleratedDifference)).isTrue();
+        assertThat(isSimilarTo(cardinality, numberOfElements * 2,
+                toleratedDifference * 2)).isTrue();
     }
 
     private boolean isSimilarTo(long cardinality, int numberOfElements, int maxToleratedDifference) {

@@ -3,7 +3,6 @@ package com.baeldung.awaitility;
 import org.awaitility.Awaitility;
 import org.awaitility.Duration;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
