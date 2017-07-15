@@ -2,7 +2,7 @@ package com.baeldung.concurrent.cyclicbarrier;
 
 import java.util.concurrent.CyclicBarrier;
 
-public class CyclicBarrierDemo {
+public class CyclicBarrierExample {
 
 	public void start() {
 		CyclicBarrier cyclicBarrier = new CyclicBarrier(3, new Runnable() {
