@@ -10,9 +10,12 @@ public class SafeCounterWithoutLock {
     }
     
     public void increment() {
-        while(!counter.compareAndSet(getValue(), getValue()+1)) {
-            continue;
+        while(true) {
+            int existingValue = getValue();
+            int newValue = existingValue + 1;
+            if(counter.compareAndSet(existingValue, newValue)) {
+                return;
+            }
         }
-        return;
     }
 }
