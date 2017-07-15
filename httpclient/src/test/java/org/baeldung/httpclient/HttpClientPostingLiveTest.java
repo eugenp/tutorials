@@ -33,7 +33,7 @@ import org.junit.Test;
  * NOTE : Need module spring-rest to be running
  */
 public class HttpClientPostingLiveTest {
-    private static final String SAMPLE_URL = "http://localhost:8080/spring-rest/users";
+    private static final String SAMPLE_URL = "http://localhost:8082/spring-rest/users";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
     private static final String DEFAULT_USER = "test";
     private static final String DEFAULT_PASS = "test";
