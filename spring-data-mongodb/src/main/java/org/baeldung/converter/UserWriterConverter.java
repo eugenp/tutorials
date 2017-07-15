@@ -1,11 +1,10 @@
 package org.baeldung.converter;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import org.baeldung.model.User;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
 
 @Component
 public class UserWriterConverter implements Converter<User, DBObject> {

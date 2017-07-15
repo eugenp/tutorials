@@ -14,7 +14,7 @@ import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.junit.Test;
 
 public class FlattenNestedListUnitTest {
-    List<List<String>> lol = asList(asList("one:one"), asList("two:one", "two:two", "two:three"), asList("three:one", "three:two", "three:three", "three:four"));
+    private List<List<String>> lol = asList(asList("one:one"), asList("two:one", "two:two", "two:three"), asList("three:one", "three:two", "three:three", "three:four"));
 
     @Test
     public void givenNestedList_thenFlattenImperatively() {
@@ -36,13 +36,13 @@ public class FlattenNestedListUnitTest {
         assertThat(ls, IsIterableContainingInOrder.contains("one:one", "two:one", "two:two", "two:three", "three:one", "three:two", "three:three", "three:four"));
     }
 
-    public <T> List<T> flattenListOfListsImperatively(List<List<T>> list) {
+    private <T> List<T> flattenListOfListsImperatively(List<List<T>> list) {
         List<T> ls = new ArrayList<>();
         list.forEach(ls::addAll);
         return ls;
     }
 
-    public <T> List<T> flattenListOfListsStream(List<List<T>> list) {
+    private <T> List<T> flattenListOfListsStream(List<List<T>> list) {
         return list.stream().flatMap(Collection::stream).collect(Collectors.toList());
     }
 }

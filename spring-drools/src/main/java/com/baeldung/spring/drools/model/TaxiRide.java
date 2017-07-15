@@ -1,16 +1,16 @@
 package com.baeldung.spring.drools.model;
 
 public class TaxiRide {
-    
-    private Boolean bNightSurcharge;
+
+    private Boolean isNightSurcharge;
     private Long distanceInMile;
 
-    public Boolean getbNightSurcharge() {
-        return bNightSurcharge;
+    public Boolean getIsNightSurcharge() {
+        return isNightSurcharge;
     }
 
-    public void setbNightSurcharge(Boolean bNightSurcharge) {
-        this.bNightSurcharge = bNightSurcharge;
+    public void setIsNightSurcharge(Boolean isNightSurcharge) {
+        this.isNightSurcharge = isNightSurcharge;
     }
 
     public Long getDistanceInMile() {
