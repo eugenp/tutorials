@@ -525,6 +525,16 @@
             <artifactId>hll</artifactId>
             <version>${hll.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -566,6 +576,7 @@
         <vaadin.theme>mytheme</vaadin.theme>
         <!-- /Vaadin -->
         <hll.version>1.6.0</hll.version>
+        <bytebuddy.version>1.7.1</bytebuddy.version>
     </properties>
     <profiles>
         <!-- Vaadin -->
