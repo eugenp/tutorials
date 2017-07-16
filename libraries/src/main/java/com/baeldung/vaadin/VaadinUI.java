@@ -1,9 +1,4 @@
 package com.baeldung.vaadin;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -34,7 +29,11 @@ import com.vaadin.ui.TwinColSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-@SuppressWarnings("serial")
+import javax.servlet.annotation.WebServlet;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 @Theme("mytheme")
 public class VaadinUI extends UI {
 
@@ -43,7 +42,7 @@ public class VaadinUI extends UI {
         final VerticalLayout verticalLayout = new VerticalLayout();
         verticalLayout.setSpacing(true);
         verticalLayout.setMargin(true);
-        final GridLayout gridLayout = new GridLayout(3,2);
+        final GridLayout gridLayout = new GridLayout(3, 2);
         gridLayout.setSpacing(true);
         gridLayout.setMargin(true);
         final HorizontalLayout horizontalLayout = new HorizontalLayout();
@@ -61,9 +60,9 @@ public class VaadinUI extends UI {
         label.setValue("Label Value");
         label.setCaption("Label");
         gridLayout.addComponent(label);
-        
+
         final Link link = new Link("Baeldung",
-                new ExternalResource("http://www.baeldung.com/"));
+          new ExternalResource("http://www.baeldung.com/"));
         link.setId("Link");
         link.setTargetName("_blank");
         gridLayout.addComponent(link);
@@ -80,41 +79,41 @@ public class VaadinUI extends UI {
         textArea.setId("TextArea");
         textArea.setValue("TextArea Value");
         gridLayout.addComponent(textArea);
-        
+
         final DateField dateField = new DateField("DateField", new Date(0));
         dateField.setId("DateField");
         gridLayout.addComponent(dateField);
-        
+
         final PasswordField passwordField = new PasswordField();
         passwordField.setId("PasswordField");
         passwordField.setCaption("PasswordField:");
         passwordField.setValue("password");
         gridLayout.addComponent(passwordField);
-        
+
         final RichTextArea richTextArea = new RichTextArea();
         richTextArea.setCaption("Rich Text Area");
         richTextArea.setValue("<h1>RichTextArea</h1>");
         richTextArea.setSizeFull();
-        
+
         Panel richTextPanel = new Panel();
         richTextPanel.setContent(richTextArea);
-        
+
         final InlineDateField inlineDateField = new InlineDateField();
         inlineDateField.setValue(new Date(0));
         inlineDateField.setCaption("Inline Date Field");
         horizontalLayout.addComponent(inlineDateField);
-        
+
         Button normalButton = new Button("Normal Button");
         normalButton.setId("NormalButton");
         normalButton.addClickListener(e -> {
             label.setValue("CLICK");
         });
         buttonLayout.addComponent(normalButton);
-        
+
         Button tinyButton = new Button("Tiny Button");
         tinyButton.addStyleName("tiny");
         buttonLayout.addComponent(tinyButton);
-        
+
         Button smallButton = new Button("Small Button");
         smallButton.addStyleName("small");
         buttonLayout.addComponent(smallButton);
@@ -148,14 +147,14 @@ public class VaadinUI extends UI {
         Button primaryButton = new Button("Primary Button");
         primaryButton.addStyleName("primary");
         buttonLayout.addComponent(primaryButton);
-        
+
         NativeButton nativeButton = new NativeButton("Native Button");
         buttonLayout.addComponent(nativeButton);
 
         Button iconButton = new Button("Icon Button");
         iconButton.setIcon(FontAwesome.ALIGN_LEFT);
         buttonLayout.addComponent(iconButton);
-        
+
         Button borderlessButton = new Button("BorderLess Button");
         borderlessButton.addStyleName("borderless");
         buttonLayout.addComponent(borderlessButton);
@@ -170,12 +169,12 @@ public class VaadinUI extends UI {
 
         horizontalLayout.addComponent(buttonLayout);
 
-        final CheckBox checkbox = new CheckBox("CheckBox");        
+        final CheckBox checkbox = new CheckBox("CheckBox");
         checkbox.setValue(true);
         checkbox.addValueChangeListener(e ->
-            checkbox.setValue(!checkbox.getValue()));
+          checkbox.setValue(!checkbox.getValue()));
         formLayout.addComponent(checkbox);
-        
+
         List<String> numbers = new ArrayList<String>();
         numbers.add("One");
         numbers.add("Ten");
@@ -183,28 +182,28 @@ public class VaadinUI extends UI {
         ComboBox comboBox = new ComboBox("ComboBox");
         comboBox.addItems(numbers);
         formLayout.addComponent(comboBox);
-        
+
         ListSelect listSelect = new ListSelect("ListSelect");
         listSelect.addItems(numbers);
         listSelect.setRows(2);
         formLayout.addComponent(listSelect);
-        
+
         NativeSelect nativeSelect = new NativeSelect("NativeSelect");
         nativeSelect.addItems(numbers);
         formLayout.addComponent(nativeSelect);
 
         TwinColSelect twinColSelect = new TwinColSelect("TwinColSelect");
         twinColSelect.addItems(numbers);
-        
+
         Grid grid = new Grid("Grid");
-        grid.setColumns(new Object[] {"Column1", "Column2", "Column3"});
-        grid.addRow(new Object[] {"Item1", "Item2", "Item3"});
-        grid.addRow(new Object[] {"Item4", "Item5", "Item6"});
-        
+        grid.setColumns("Column1", "Column2", "Column3");
+        grid.addRow("Item1", "Item2", "Item3");
+        grid.addRow("Item4", "Item5", "Item6");
+
         Panel panel = new Panel("Panel");
         panel.setContent(grid);
         panel.setSizeUndefined();
-        
+
         verticalLayout.addComponent(gridLayout);
         verticalLayout.addComponent(richTextPanel);
         verticalLayout.addComponent(horizontalLayout);
