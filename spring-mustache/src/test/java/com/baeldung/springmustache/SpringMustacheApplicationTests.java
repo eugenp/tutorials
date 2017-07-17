@@ -22,11 +22,9 @@ public class SpringMustacheApplicationTests {
     public void givenIndexPageWhenContainsArticleThenTrue() {
 
         ResponseEntity<String> entity = this.restTemplate.getForEntity("/article", String.class);
-        Assert.assertTrue(entity.getStatusCode()
-            .equals(HttpStatus.OK));
-        Assert.assertTrue(entity.getBody()
-            .contains("Article Title 0"));
 
+        Assert.assertTrue(entity.getStatusCode().equals(HttpStatus.OK));
+        Assert.assertTrue(entity.getBody().contains("Article Title 0"));
     }
 
 }

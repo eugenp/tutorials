@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 import com.samskivert.mustache.Mustache;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "com.baeldung" })
+@ComponentScan(basePackages = {"com.baeldung"})
 public class SpringMustacheApplication {
 
     public static void main(String[] args) {
@@ -24,9 +24,9 @@ public class SpringMustacheApplication {
         collector.setEnvironment(environment);
 
         Mustache.Compiler compiler = Mustache.compiler()
-            .defaultValue("Some Default Value")
-            .withLoader(templateLoader)
-            .withCollector(collector);
+          .defaultValue("Some Default Value")
+          .withLoader(templateLoader)
+          .withCollector(collector);
         return compiler;
 
     }
