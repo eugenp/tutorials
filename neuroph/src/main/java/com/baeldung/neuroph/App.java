@@ -66,13 +66,13 @@ public class App {
         int outputSize = 1;
         DataSet ds = new DataSet(inputSize, outputSize);
 
-        DataSetRow rOne = new DataSetRow(new double[] {0, 1}, new double[] {0});
+        DataSetRow rOne = new DataSetRow(new double[] {0, 1}, new double[] {1});
         ds.addRow(rOne);
-        DataSetRow rTwo = new DataSetRow(new double[] {1, 1}, new double[] {1});
+        DataSetRow rTwo = new DataSetRow(new double[] {1, 1}, new double[] {0});
         ds.addRow(rTwo);
         DataSetRow rThree = new DataSetRow(new double[] {0, 0}, new double[] {0});
         ds.addRow(rThree);
-        DataSetRow rFour = new DataSetRow(new double[] {1, 0}, new double[] {0});
+        DataSetRow rFour = new DataSetRow(new double[] {1, 0}, new double[] {1});
         ds.addRow(rFour);
         System.out.println("Data Set Assembled!");
 
@@ -91,14 +91,14 @@ public class App {
         ann.calculate();
         double[] networkOutputOne = ann.getOutput();
         System.out.println("Result: " + networkOutputOne[0]);
-        System.out.println("Actual value: 0.0");
+        System.out.println("Actual value: 1.0");
 
         ann.setInput(1, 1);
         System.out.println("Testing value : {1, 1}");
         ann.calculate();
         double[] networkOutputTwo = ann.getOutput();
         System.out.println("Result: " + networkOutputTwo[0]);
-        System.out.println("Actual value: 1.0");
+        System.out.println("Actual value: 0.0");
 
         ann.setInput(0, 0);
         System.out.println("Testing value : {0, 0}");
@@ -112,7 +112,7 @@ public class App {
         ann.calculate();
         double[] networkOutputFour = ann.getOutput();
         System.out.println("Result: " + networkOutputFour[0]);
-        System.out.println("Actual value: 0.0");
+        System.out.println("Actual value: 1.0");
     }
 
     public static void main(String[] args){
