@@ -4,6 +4,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -216,7 +219,11 @@ public class VaadinUI extends UI {
         timeLayout.addComponent(currentTime);
         serverPushPanel.setContent(timeLayout);
         serverPushPanel.setSizeUndefined();
-        new ServerPushThread().start();
+        ScheduledExecutorService scheduleExecutor = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+            currentTime.setValue("Current Time : " + Instant.now());
+        };
+        scheduleExecutor.scheduleWithFixedDelay(task, 0, 1, TimeUnit.SECONDS);
 
         FormLayout dataBindingLayout = new FormLayout();
         dataBindingLayout.setSpacing(true);
@@ -270,25 +277,5 @@ public class VaadinUI extends UI {
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = VaadinUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
-    }
-
-    class ServerPushThread extends Thread {
-        @Override
-        public void run() {
-            try {
-                while (true) {
-                    Thread.sleep(1000);
-                    access(new Runnable() {
-                        @Override
-                        public void run() {
-                            currentTime.setValue("Current Time : " + Instant.now());
-                        }
-                    });
-                }
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
