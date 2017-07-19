@@ -15,6 +15,4 @@ public class BindData {
     public void setBindName(String bindName) {
             this.bindName = bindName;
     }
-
-    
 }
