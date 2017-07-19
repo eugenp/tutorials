@@ -1,9 +1,9 @@
 package com.baeldung.jsonpath.introduction;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.hamcrest.CoreMatchers.containsString;
-
+import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -13,14 +13,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Option;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class ServiceTest {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_service.json");
-    String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+    private InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_service.json");
+    private String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
 
     @Test
     public void givenId_whenRequestingRecordData_thenSucceed() {

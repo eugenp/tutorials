@@ -1,9 +1,10 @@
 package com.baeldung.maths;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class BigDecimalImplTest {
 

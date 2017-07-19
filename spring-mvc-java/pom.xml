@@ -5,7 +5,6 @@
     <artifactId>spring-mvc-java</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java</name>
-    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

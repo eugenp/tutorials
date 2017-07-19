@@ -6,7 +6,12 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -14,6 +19,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
 public class FileOperationsManualTest {
 
     @Test
@@ -25,7 +34,7 @@ public class FileOperationsManualTest {
         InputStream inputStream = new FileInputStream(file);
         String data = readFromInputStream(inputStream);
 
-        Assert.assertEquals(expectedData, data.trim());
+        assertEquals(expectedData, data.trim());
     }
 
     @Test
@@ -36,7 +45,7 @@ public class FileOperationsManualTest {
         InputStream inputStream = clazz.getResourceAsStream("/fileTest.txt");
         String data = readFromInputStream(inputStream);
 
-        Assert.assertEquals(expectedData, data.trim());
+        assertEquals(expectedData, data.trim());
     }
 
     @Test
@@ -47,7 +56,7 @@ public class FileOperationsManualTest {
         InputStream inputStream = clazz.getResourceAsStream("/LICENSE.txt");
         String data = readFromInputStream(inputStream);
 
-        Assert.assertThat(data.trim(), CoreMatchers.containsString(expectedData));
+        assertThat(data.trim(), CoreMatchers.containsString(expectedData));
     }
 
     @Test
@@ -61,7 +70,7 @@ public class FileOperationsManualTest {
         InputStream inputStream = urlConnection.getInputStream();
         String data = readFromInputStream(inputStream);
 
-        Assert.assertThat(data.trim(), CoreMatchers.containsString(expectedData));
+        assertThat(data.trim(), CoreMatchers.containsString(expectedData));
     }
 
     @Test
@@ -72,7 +81,7 @@ public class FileOperationsManualTest {
         File file = new File(classLoader.getResource("fileTest.txt").getFile());
         String data = FileUtils.readFileToString(file);
 
-        Assert.assertEquals(expectedData, data.trim());
+        assertEquals(expectedData, data.trim());
     }
 
     @Test
@@ -84,7 +93,7 @@ public class FileOperationsManualTest {
         byte[] fileBytes = Files.readAllBytes(path);
         String data = new String(fileBytes);
 
-        Assert.assertEquals(expectedData, data.trim());
+        assertEquals(expectedData, data.trim());
     }
 
     @Test
@@ -98,7 +107,7 @@ public class FileOperationsManualTest {
         lines.forEach(line -> data.append(line).append("\n"));
         lines.close();
 
-        Assert.assertEquals(expectedData, data.toString().trim());
+        assertEquals(expectedData, data.toString().trim());
     }
 
     private String readFromInputStream(InputStream inputStream) throws IOException {
