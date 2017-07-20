@@ -29,7 +29,7 @@ public class S3Application {
           "<AWS accesskey>", 
           "<AWS secretkey>"
         );
-    } 
+    }
     
     public static void main(String[] args) throws IOException {
         //set-up the client
