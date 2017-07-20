@@ -1,8 +1,9 @@
 package com.baeldung.s3;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -28,7 +29,7 @@ public class S3Application {
           "<AWS accesskey>", 
           "<AWS secretkey>"
         );
-    }  
+    } 
     
     public static void main(String[] args) throws IOException {
         //set-up the client
@@ -72,17 +73,9 @@ public class S3Application {
         }
 
         //downloading an object
-        S3Object s3object = awsService.getObject(bucketName, "Document/hello.txt");
+        S3Object s3object = awsService.getObject(bucketName, "hello.txt");
         S3ObjectInputStream inputStream = s3object.getObjectContent();
-        FileOutputStream fos = new FileOutputStream(new File("/Users/user/Desktop/hello.txt"));
-
-        int read = 0;
-        byte[] bytes = new byte[1024];
-        while ((read = inputStream.read(bytes)) != -1) {
-            fos.write(bytes, 0, read);
-        }
-        inputStream.close();
-        fos.close();
+        FileUtils.copyInputStreamToFile(inputStream, new File("/Users/user/Desktop/hello.txt"));
         
         //copying an object
         awsService.copyObject(
