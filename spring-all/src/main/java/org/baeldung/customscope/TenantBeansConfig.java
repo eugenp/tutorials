@@ -12,7 +12,7 @@ public class TenantBeansConfig {
     public TenantBean foo() {
         return new TenantBean("foo");
     }
-    
+
     @Scope(scopeName = "tenant")
     @Bean
     public TenantBean bar() {

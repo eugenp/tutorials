@@ -25,12 +25,7 @@ public class JavaProcessUnitIntegrationTest {
         }
     }
 
-    private Consumer<String> consumer = new Consumer<String>() {
-        @Override
-        public void accept(String s) {
-            Assert.assertNotNull(s);
-        }
-    };
+    private Consumer<String> consumer = Assert::assertNotNull;
 
     private String homeDirectory = System.getProperty("user.home");
 

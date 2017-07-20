@@ -12,8 +12,17 @@ NOTES: @WebServlet annotation designates the AccountServlet class as a Servlet c
        An initialization parameter 'type' is being set to denote the type of the bank account.
        
        @ServletSecurity annotation imposes security constraints on the AccountServlet based on
-       the tomcat-users.xml (this code assumes there is a role 'admin' in your tomcat-users.xml)
-   
+       the tomcat-users.xml.
+       
+       This code assumes that your tomcat-users.xml looks as follows:
+
+       <role rolename="Admin"/>
+       <role rolename="Member"/>
+       <role rolename="Guest"/>
+       <user username="Annie" password="admin" roles="Admin, Member, Guest" />
+       <user username="Diane" password="coder" roles="Member, Guest" />
+       <user username="Ted" password="newbie" roles="Guest" />
+   
 N.B : To see  @ServletSecurity annotation in action, please uncomment the annotation code 
       for @ServletSecurity.
       

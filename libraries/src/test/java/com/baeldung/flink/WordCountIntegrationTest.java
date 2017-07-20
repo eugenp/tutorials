@@ -1,6 +1,5 @@
 package com.baeldung.flink;
 
-import org.apache.flink.api.common.functions.ReduceFunction;
 import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
@@ -23,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class WordCountIntegrationTest {
-    final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+    private final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
     @Test
     public void givenDataSet_whenExecuteWordCount_thenReturnWordCount() throws Exception {
@@ -35,14 +34,10 @@ public class WordCountIntegrationTest {
 
         //then
         List<Tuple2<String, Integer>> collect = result.collect();
-        assertThat(collect.size()).isEqualTo(9);
-        assertThat(collect.contains(new Tuple2<>("a", 3))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("sentence", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("word", 1))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("is", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("this", 2))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("second", 1))).isTrue();
-        assertThat(collect.contains(new Tuple2<>("first", 1))).isTrue();
+        assertThat(collect).containsExactlyInAnyOrder(
+          new Tuple2<>("a", 3), new Tuple2<>("sentence", 2), new Tuple2<>("word", 1),
+          new Tuple2<>("is", 2), new Tuple2<>("this", 2), new Tuple2<>("second", 1),
+          new Tuple2<>("first", 1), new Tuple2<>("with", 1), new Tuple2<>("one", 1));
     }
 
     @Test
@@ -53,9 +48,9 @@ public class WordCountIntegrationTest {
 
         //when
         List<Integer> collect = amounts
-                .filter(a -> a > threshold)
-                .reduce((ReduceFunction<Integer>) (integer, t1) -> integer + t1)
-                .collect();
+          .filter(a -> a > threshold)
+          .reduce((integer, t1) -> integer + t1)
+          .collect();
 
         //then
         assertThat(collect.get(0)).isEqualTo(90);
@@ -70,8 +65,8 @@ public class WordCountIntegrationTest {
         List<Integer> ages = personDataSource.map(p -> p.age).collect();
 
         //then
-        assertThat(ages.size()).isEqualTo(2);
-        assertThat(ages.containsAll(Arrays.asList(23, 75))).isTrue();
+        assertThat(ages).hasSize(2);
+        assertThat(ages).contains(23, 75);
 
     }
 
@@ -83,21 +78,16 @@ public class WordCountIntegrationTest {
         Tuple2<Integer, String> fourthPerson = new Tuple2<>(200, "Michael");
         Tuple2<Integer, String> firstPerson = new Tuple2<>(1, "Jack");
         DataSet<Tuple2<Integer, String>> transactions = env.fromElements(fourthPerson, secondPerson,
-                thirdPerson, firstPerson);
+          thirdPerson, firstPerson);
 
 
         //when
         List<Tuple2<Integer, String>> sorted = transactions
-                .sortPartition(new IdKeySelectorTransaction(), Order.ASCENDING)
-                .collect();
+          .sortPartition(new IdKeySelectorTransaction(), Order.ASCENDING)
+          .collect();
 
         //then
-        assertThat(sorted.size()).isEqualTo(4);
-        assertThat(sorted.get(0)).isEqualTo(firstPerson);
-        assertThat(sorted.get(1)).isEqualTo(secondPerson);
-        assertThat(sorted.get(2)).isEqualTo(thirdPerson);
-        assertThat(sorted.get(3)).isEqualTo(fourthPerson);
-
+        assertThat(sorted).containsExactly(firstPerson, secondPerson, thirdPerson, fourthPerson);
     }
 
 
@@ -109,19 +99,19 @@ public class WordCountIntegrationTest {
 
         Tuple2<Integer, String> firstTransaction = new Tuple2<>(1, "Transaction_1");
         DataSet<Tuple2<Integer, String>> transactions =
-                env.fromElements(firstTransaction, new Tuple2<>(12, "Transaction_2"));
+          env.fromElements(firstTransaction, new Tuple2<>(12, "Transaction_2"));
 
 
         //when
         List<Tuple2<Tuple2<Integer, String>, Tuple3<Integer, String, String>>> joined =
-                transactions.join(addresses)
-                        .where(new IdKeySelectorTransaction())
-                        .equalTo(new IdKeySelectorAddress())
-                        .collect();
+          transactions.join(addresses)
+            .where(new IdKeySelectorTransaction())
+            .equalTo(new IdKeySelectorAddress())
+            .collect();
 
         //then
-        assertThat(joined.size()).isEqualTo(1);
-        assertThat(joined.contains(new Tuple2<>(firstTransaction, address)));
+        assertThat(joined).hasSize(1);
+        assertThat(joined).contains(new Tuple2<>(firstTransaction, address));
 
     }
 
@@ -131,7 +121,7 @@ public class WordCountIntegrationTest {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         DataStream<String> text
-                = env.fromElements("This is a first sentence", "This is a second sentence with a one word");
+          = env.fromElements("This is a first sentence", "This is a second sentence with a one word");
 
 
         SingleOutputStreamOperator<String> upperCase = text.map(String::toUpperCase);
@@ -149,8 +139,8 @@ public class WordCountIntegrationTest {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         SingleOutputStreamOperator<Tuple2<Integer, Long>> windowed = env.fromElements(
-                new Tuple2<>(16, ZonedDateTime.now().plusMinutes(25).toInstant().getEpochSecond()),
-                new Tuple2<>(15, ZonedDateTime.now().plusMinutes(2).toInstant().getEpochSecond())
+          new Tuple2<>(16, ZonedDateTime.now().plusMinutes(25).toInstant().getEpochSecond()),
+          new Tuple2<>(15, ZonedDateTime.now().plusMinutes(2).toInstant().getEpochSecond())
         ).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor<Tuple2<Integer, Long>>(Time.seconds(20)) {
             @Override
             public long extractTimestamp(Tuple2<Integer, Long> element) {
@@ -159,8 +149,8 @@ public class WordCountIntegrationTest {
         });
 
         SingleOutputStreamOperator<Tuple2<Integer, Long>> reduced = windowed
-                .windowAll(TumblingEventTimeWindows.of(Time.seconds(5)))
-                .maxBy(0, true);
+          .windowAll(TumblingEventTimeWindows.of(Time.seconds(5)))
+          .maxBy(0, true);
 
         reduced.print();
 

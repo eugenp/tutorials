@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 
 import com.google.common.net.HttpHeaders;
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 
 public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 

@@ -8,46 +8,11 @@
     <packaging>jar</packaging>
     <name>mockito-2-with-java8</name>
 
-    <dependencies>
-			<!-- test scoped -->
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-core</artifactId>
-				<version>${mockito.version}</version>
-				<scope>test</scope>
-			</dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-								<version>${maven-compiler-plugin.version}</version>
-								<configuration>
-									<source>1.8</source>
-									<target>1.8</target>
-								</configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <profiles>
         <profile>
@@ -84,15 +49,10 @@
         </profile>
     </profiles>
 
-		<properties>
-			<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-			<!-- testing -->
-			<junit.version>4.12</junit.version>
-	    <mockito.version>2.7.5</mockito.version>
-
-			<!-- maven plugins -->
-			<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-			<maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-		</properties>
+        <!-- testing -->
+        <mockito.version>2.7.5</mockito.version>
+    </properties>
 </project>

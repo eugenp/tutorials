@@ -1,4 +1,4 @@
-package com.baeldung.javaeeannotations;
+package com.baeldung.javaeeannotations.JavaEEAnnotationsSample.src.main.java.com.baeldung.javaeeannotations;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
   initParams = { @WebInitParam(name = "type", value = "savings") }
   )
 /*@ServletSecurity(
-  value = @HttpConstraint(rolesAllowed = {"admin"}),
-  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"admin"})}
+  value = @HttpConstraint(rolesAllowed = {"Member"}),
+  httpMethodConstraints = {@HttpMethodConstraint(value = "POST", rolesAllowed = {"Admin"})}
   )*/
 public class AccountServlet extends javax.servlet.http.HttpServlet {
 

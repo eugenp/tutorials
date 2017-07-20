@@ -18,3 +18,4 @@
 
 ### Relevant Articles:
 - [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
+ [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)

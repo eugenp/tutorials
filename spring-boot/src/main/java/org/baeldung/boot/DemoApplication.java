@@ -3,7 +3,9 @@ package org.baeldung.boot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
+
+@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
 public class DemoApplication {
 
     public static void main(String[] args) {
