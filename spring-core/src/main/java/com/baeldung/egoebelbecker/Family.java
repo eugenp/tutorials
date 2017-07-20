@@ -4,17 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Family {
 
+    @Autowired
     private Pet familyPet;
-
-    @Autowired
-    public Family(Pet pet) {
-        familyPet = pet;
-    }
-
-    @Autowired
-    public void setFamilyPet(Pet pet) {
-        familyPet = pet;
-    }
 
     public String getPetId() {
         return familyPet.speciesByName();
