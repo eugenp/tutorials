@@ -476,6 +476,10 @@
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-themes</artifactId>
         </dependency>
+		<dependency>
+		    <groupId>com.vaadin</groupId>
+		    <artifactId>vaadin-push</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
