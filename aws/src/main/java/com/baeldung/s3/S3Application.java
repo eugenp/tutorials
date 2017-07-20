@@ -73,7 +73,7 @@ public class S3Application {
         }
 
         //downloading an object
-        S3Object s3object = awsService.getObject(bucketName, "hello.txt");
+        S3Object s3object = awsService.getObject(bucketName, "Document/hello.txt");
         S3ObjectInputStream inputStream = s3object.getObjectContent();
         FileUtils.copyInputStreamToFile(inputStream, new File("/Users/user/Desktop/hello.txt"));
         
