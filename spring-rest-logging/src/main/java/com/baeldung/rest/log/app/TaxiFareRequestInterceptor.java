@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.ContentCachingRequestWrapper;
+
+import com.baeldung.rest.log.util.RequestLoggingUtil;
 
 @Component
 public class TaxiFareRequestInterceptor extends HandlerInterceptorAdapter {
@@ -15,7 +18,21 @@ public class TaxiFareRequestInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        LOGGER.info("REQUEST URI: " + request.getRequestURI());
+        String postData = null;
+        HttpServletRequest requestCacheWrapperObject = null;
+        try {
+            // Uncomment to produce the stream closed issue
+            // postData = RequestLoggingUtil.getStringFromInputStream(request.getInputStream());
+
+            // To overcome request stream closed issue
+            requestCacheWrapperObject = new ContentCachingRequestWrapper(request);
+            requestCacheWrapperObject.getParameterMap();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        } finally {
+            postData = RequestLoggingUtil.readPayload(requestCacheWrapperObject);
+            LOGGER.info("REQUEST DATA: " + postData);
+        }
         return true;
     }
 

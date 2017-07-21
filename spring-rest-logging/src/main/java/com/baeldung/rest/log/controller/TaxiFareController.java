@@ -34,7 +34,10 @@ public class TaxiFareController {
     @ResponseBody
     public String calculateTaxiFare(@RequestBody @Valid TaxiRide taxiRide) {
         LOGGER.debug("calculateTaxiFare() - START");
-        return taxiFareCalculatorService.calculateFare(taxiRide);
+        String totalFare = taxiFareCalculatorService.calculateFare(taxiRide);
+        LOGGER.debug("calculateTaxiFare() - Total Fare : {}",totalFare);
+        LOGGER.debug("calculateTaxiFare() - END");
+        return totalFare;
     }
 
 }

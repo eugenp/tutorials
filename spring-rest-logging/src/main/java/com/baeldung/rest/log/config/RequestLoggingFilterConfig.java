@@ -1,13 +1,10 @@
 package com.baeldung.rest.log.config;
 
-import javax.servlet.annotation.WebFilter;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
 @Configuration
-@WebFilter
 public class RequestLoggingFilterConfig {
 
     @Bean
