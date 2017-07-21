@@ -27,6 +27,7 @@ public class LoggerInterceptorIntegrationTest {
 
     @Autowired
     WebApplicationContext wac;
+
     @Autowired
     MockHttpSession session;
 

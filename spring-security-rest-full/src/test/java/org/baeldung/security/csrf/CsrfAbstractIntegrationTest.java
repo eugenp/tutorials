@@ -31,7 +31,7 @@ public abstract class CsrfAbstractIntegrationTest {
     @Autowired
     private Filter springSecurityFilterChain;
 
-    protected MockMvc mvc;
+    MockMvc mvc;
 
     //
 
@@ -40,15 +40,15 @@ public abstract class CsrfAbstractIntegrationTest {
         mvc = MockMvcBuilders.webAppContextSetup(context).addFilters(springSecurityFilterChain).build();
     }
 
-    protected RequestPostProcessor testUser() {
+    RequestPostProcessor testUser() {
         return user("user1").password("user1Pass").roles("USER");
     }
 
-    protected RequestPostProcessor testAdmin() {
+    RequestPostProcessor testAdmin() {
         return user("admin").password("adminPass").roles("USER", "ADMIN");
     }
 
-    protected String createFoo() throws JsonProcessingException {
+    String createFoo() throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(new Foo(randomAlphabetic(6)));
     }
 }

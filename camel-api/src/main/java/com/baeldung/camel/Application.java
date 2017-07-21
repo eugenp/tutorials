@@ -13,14 +13,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @SpringBootApplication
 @ComponentScan(basePackages="com.baeldung.camel")
-public class Application extends SpringBootServletInitializer {
+public class Application{
 
     @Value("${server.port}")
     String serverPort;
@@ -62,10 +61,12 @@ public class Application extends SpringBootServletInitializer {
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true");
 /** 
-The Rest DSL supports automatic binding json/xml contents to/from POJOs using Camels Data Format.
-By default the binding mode is off, meaning there is no automatic binding happening for incoming and outgoing messages.
-You may want to use binding if you develop POJOs that maps to your REST services request and response types. 
-This allows you, as a developer, to work with the POJOs in Java code.
+The Rest DSL supports automatic binding json/xml contents to/from 
+POJOs using Camels Data Format.
+By default the binding mode is off, meaning there is no automatic 
+binding happening for incoming and outgoing messages.
+You may want to use binding if you develop POJOs that maps to 
+your REST services request and response types. 
 */         
             
             rest("/api/").description("Teste REST Service")

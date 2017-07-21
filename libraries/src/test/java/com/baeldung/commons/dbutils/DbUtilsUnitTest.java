@@ -1,5 +1,15 @@
 package com.baeldung.commons.dbutils;
 
+import org.apache.commons.dbutils.AsyncQueryRunner;
+import org.apache.commons.dbutils.DbUtils;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,16 +19,9 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import org.apache.commons.dbutils.AsyncQueryRunner;
-import org.apache.commons.dbutils.DbUtils;
-import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
-import org.apache.commons.dbutils.handlers.MapListHandler;
-import org.apache.commons.dbutils.handlers.ScalarHandler;
-import org.junit.After;
-import static org.junit.Assert.*;
-import org.junit.Before;
-import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class DbUtilsUnitTest {
 
@@ -45,9 +48,9 @@ public class DbUtilsUnitTest {
 
         assertEquals(list.size(), 5);
         assertEquals(list.get(0)
-            .get("firstname"), "John");
+          .get("firstname"), "John");
         assertEquals(list.get(4)
-            .get("firstname"), "Christian");
+          .get("firstname"), "Christian");
     }
 
     @Test
@@ -59,9 +62,9 @@ public class DbUtilsUnitTest {
 
         assertEquals(employeeList.size(), 5);
         assertEquals(employeeList.get(0)
-            .getFirstName(), "John");
+          .getFirstName(), "John");
         assertEquals(employeeList.get(4)
-            .getFirstName(), "Christian");
+          .getFirstName(), "Christian");
     }
 
     @Test
@@ -83,11 +86,11 @@ public class DbUtilsUnitTest {
         List<Employee> employees = runner.query(connection, "SELECT * FROM employee", employeeHandler);
 
         assertEquals(employees.get(0)
-            .getEmails()
-            .size(), 2);
+          .getEmails()
+          .size(), 2);
         assertEquals(employees.get(2)
-            .getEmails()
-            .size(), 3);
+          .getEmails()
+          .size(), 3);
         assertNotNull(employees.get(0).getEmails().get(0).getEmployeeId());
     }
 
