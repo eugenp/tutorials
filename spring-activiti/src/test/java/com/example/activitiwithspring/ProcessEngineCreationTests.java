@@ -13,7 +13,7 @@ public class ProcessEngineCreationTests {
     public void givenXMLConfig_whenGetDefault_thenGotProcessEngine() {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         assertNotNull(processEngine);
-        assertEquals("root", processEngine.getProcessEngineConfiguration().getJdbcUsername());
+        assertEquals("sa", processEngine.getProcessEngineConfiguration().getJdbcUsername());
     }
 
     @Test
