@@ -118,4 +118,29 @@ class CollectionsTest {
         assertTrue(resultMap[2]!!.contains(5))      
     } 
 
+    @Test
+    fun whenApplyFunctionToAllItems_thenSuccess () {
+        val theList = listOf(1, 2, 3, 4, 5, 6)
+        val resultList = theList.map{ it * it }
+        print(resultList)
+        assertEquals(4, resultList[1])
+        assertEquals(9, resultList[2])
+    } 
+
+    @Test
+    fun whenApplyMultiOutputFunctionToAllItems_thenSuccess () {
+        val theList = listOf("John", "Tom")
+        val resultList = theList.flatMap{ it.toLowerCase().toList()}
+        print(resultList)
+        assertEquals(7, resultList.size)
+        assertTrue(resultList.contains('j'))
+    }  
+
+    @Test
+    fun whenApplyFunctionToAllItemsWithStartingValue_thenSuccess () {
+        val theList = listOf(1, 2, 3, 4, 5, 6)
+        val  finalResult = theList.fold( 1000, { oldResult, currentItem -> oldResult + (currentItem *currentItem)})
+        print(finalResult)
+        assertEquals(1091, finalResult)
+    }        
 }

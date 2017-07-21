@@ -230,6 +230,7 @@
         <module>drools</module>
         <module>liquibase</module>
         <module>spring-boot-property-exp</module>
+        <module>mockserver</module>
     </modules>
 
     <dependencies>
