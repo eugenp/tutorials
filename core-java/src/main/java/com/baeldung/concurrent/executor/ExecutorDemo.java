@@ -6,11 +6,8 @@ public class ExecutorDemo {
 
 	public void execute() {
 		Executor executor = new Invoker();
-		executor.execute(new Runnable() {
-			@Override
-			public void run() {
-				// task to be performed
-			}
+		executor.execute(()->{
+			// task to be performed
 		});
 	}
 

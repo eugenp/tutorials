@@ -5,11 +5,9 @@ import java.util.concurrent.CyclicBarrier;
 public class CyclicBarrierExample {
 
 	public void start() {
-		CyclicBarrier cyclicBarrier = new CyclicBarrier(3, new Runnable() {
-			@Override
-			public void run() {
-				System.out.println("All previous tasks are completed");
-			}
+		CyclicBarrier cyclicBarrier = new CyclicBarrier(3, () -> {
+			// Task
+			System.out.println("All previous tasks are completed");
 		});
 
 		Thread t1 = new Thread(new Task(cyclicBarrier), "T1");
