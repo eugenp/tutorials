@@ -1,7 +1,21 @@
 package com.baeldung.vaadin;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.servlet.annotation.WebServlet;
+
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.data.Validator.InvalidValueException;
+import com.vaadin.data.fieldgroup.BeanFieldGroup;
+import com.vaadin.data.validator.StringLengthValidator;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
@@ -29,14 +43,14 @@ import com.vaadin.ui.TwinColSelect;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import javax.servlet.annotation.WebServlet;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+@SuppressWarnings("serial")
+@Push
 @Theme("mytheme")
 public class VaadinUI extends UI {
 
+    private Label currentTime;
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout verticalLayout = new VerticalLayout();
@@ -61,8 +75,7 @@ public class VaadinUI extends UI {
         label.setCaption("Label");
         gridLayout.addComponent(label);
 
-        final Link link = new Link("Baeldung",
-          new ExternalResource("http://www.baeldung.com/"));
+        final Link link = new Link("Baeldung", new ExternalResource("http://www.baeldung.com/"));
         link.setId("Link");
         link.setTargetName("_blank");
         gridLayout.addComponent(link);
@@ -118,27 +131,22 @@ public class VaadinUI extends UI {
         smallButton.addStyleName("small");
         buttonLayout.addComponent(smallButton);
 
-
         Button largeButton = new Button("Large Button");
         largeButton.addStyleName("large");
         buttonLayout.addComponent(largeButton);
 
-
         Button hugeButton = new Button("Huge Button");
         hugeButton.addStyleName("huge");
         buttonLayout.addComponent(hugeButton);
-
 
         Button disabledButton = new Button("Disabled Button");
         disabledButton.setDescription("This button cannot be clicked");
         disabledButton.setEnabled(false);
         buttonLayout.addComponent(disabledButton);
 
-
         Button dangerButton = new Button("Danger Button");
         dangerButton.addStyleName("danger");
         buttonLayout.addComponent(dangerButton);
-
 
         Button friendlyButton = new Button("Friendly Button");
         friendlyButton.addStyleName("friendly");
@@ -171,8 +179,7 @@ public class VaadinUI extends UI {
 
         final CheckBox checkbox = new CheckBox("CheckBox");
         checkbox.setValue(true);
-        checkbox.addValueChangeListener(e ->
-          checkbox.setValue(!checkbox.getValue()));
+        checkbox.addValueChangeListener(e -> checkbox.setValue(!checkbox.getValue()));
         formLayout.addComponent(checkbox);
 
         List<String> numbers = new ArrayList<String>();
@@ -204,12 +211,66 @@ public class VaadinUI extends UI {
         panel.setContent(grid);
         panel.setSizeUndefined();
 
+        Panel serverPushPanel = new Panel("Server Push");
+        FormLayout timeLayout = new FormLayout();
+        timeLayout.setSpacing(true);
+        timeLayout.setMargin(true);
+        currentTime = new Label("No TIME...");
+        timeLayout.addComponent(currentTime);
+        serverPushPanel.setContent(timeLayout);
+        serverPushPanel.setSizeUndefined();
+        ScheduledExecutorService scheduleExecutor = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+            currentTime.setValue("Current Time : " + Instant.now());
+        };
+        scheduleExecutor.scheduleWithFixedDelay(task, 0, 1, TimeUnit.SECONDS);
+
+        FormLayout dataBindingLayout = new FormLayout();
+        dataBindingLayout.setSpacing(true);
+        dataBindingLayout.setMargin(true);
+
+        BindData bindData = new BindData("BindData");
+        BeanFieldGroup beanFieldGroup = new BeanFieldGroup(BindData.class);
+        beanFieldGroup.setItemDataSource(bindData);
+        TextField bindedTextField = (TextField) beanFieldGroup.buildAndBind("BindName", "bindName");
+        bindedTextField.setWidth("250px");
+        dataBindingLayout.addComponent(bindedTextField);
+
+        FormLayout validatorLayout = new FormLayout();
+        validatorLayout.setSpacing(true);
+        validatorLayout.setMargin(true);
+
+        HorizontalLayout textValidatorLayout = new HorizontalLayout();
+        textValidatorLayout.setSpacing(true);
+        textValidatorLayout.setMargin(true);
+
+        TextField stringValidator = new TextField();
+        stringValidator.setNullSettingAllowed(true);
+        stringValidator.setNullRepresentation("");
+        stringValidator.addValidator(new StringLengthValidator("String must have 2-5 characters lenght", 2, 5, true));
+        stringValidator.setValidationVisible(false);
+        textValidatorLayout.addComponent(stringValidator);
+        Button buttonStringValidator = new Button("Validate String");
+        buttonStringValidator.addClickListener(e -> {
+            try {
+                stringValidator.setValidationVisible(false);
+                stringValidator.validate();
+            } catch (InvalidValueException err) {
+                stringValidator.setValidationVisible(true);
+            }
+        });
+        textValidatorLayout.addComponent(buttonStringValidator);
+
+        validatorLayout.addComponent(textValidatorLayout);
         verticalLayout.addComponent(gridLayout);
         verticalLayout.addComponent(richTextPanel);
         verticalLayout.addComponent(horizontalLayout);
         verticalLayout.addComponent(formLayout);
         verticalLayout.addComponent(twinColSelect);
         verticalLayout.addComponent(panel);
+        verticalLayout.addComponent(serverPushPanel);
+        verticalLayout.addComponent(dataBindingLayout);
+        verticalLayout.addComponent(validatorLayout);
         setContent(verticalLayout);
     }
 

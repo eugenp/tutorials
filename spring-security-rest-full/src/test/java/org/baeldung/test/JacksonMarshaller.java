@@ -33,10 +33,6 @@ public final class JacksonMarshaller implements IMarshaller {
         String entityAsJSON = null;
         try {
             entityAsJSON = objectMapper.writeValueAsString(resource);
-        } catch (final JsonParseException parseEx) {
-            logger.error("", parseEx);
-        } catch (final JsonMappingException mappingEx) {
-            logger.error("", mappingEx);
         } catch (final IOException ioEx) {
             logger.error("", ioEx);
         }
@@ -51,10 +47,6 @@ public final class JacksonMarshaller implements IMarshaller {
         T entity = null;
         try {
             entity = objectMapper.readValue(resourceAsString, clazz);
-        } catch (final JsonParseException parseEx) {
-            logger.error("", parseEx);
-        } catch (final JsonMappingException mappingEx) {
-            logger.error("", mappingEx);
         } catch (final IOException ioEx) {
             logger.error("", ioEx);
         }
@@ -76,10 +68,6 @@ public final class JacksonMarshaller implements IMarshaller {
             } else {
                 entities = objectMapper.readValue(resourcesAsString, List.class);
             }
-        } catch (final JsonParseException parseEx) {
-            logger.error("", parseEx);
-        } catch (final JsonMappingException mappingEx) {
-            logger.error("", mappingEx);
         } catch (final IOException ioEx) {
             logger.error("", ioEx);
         }
