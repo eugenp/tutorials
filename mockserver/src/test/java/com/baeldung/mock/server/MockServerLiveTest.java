@@ -5,9 +5,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.integration.ClientAndProxy;
 import org.mockserver.integration.ClientAndServer;
@@ -28,13 +26,13 @@ import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 import static org.mockserver.model.StringBody.exact;
 
-public class TestMockServer {
+public class MockServerLiveTest {
 
-    private ClientAndProxy proxy;
-    private ClientAndServer mockServer;
+    private static ClientAndProxy proxy;
+    private static ClientAndServer mockServer;
 
-    @Before
-    public void startProxy() {
+    @BeforeClass
+    public static void startProxy() {
         mockServer = startClientAndServer(1080);
         proxy = startClientAndProxy(1090);
     }
@@ -170,8 +168,8 @@ public class TestMockServer {
                 );
     }
 
-    @After
-    public void stopProxy() {
+    @AfterClass
+    public static void stopProxy() {
         proxy.stop();
         mockServer.stop();
     }
