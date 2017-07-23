@@ -1,7 +1,7 @@
 package com.baeldung.concurrent.atomic;
 
 public class SafeCounterWithLock {
-    int counter;
+    private volatile int counter;
     
     public int getValue() {
         return counter;
