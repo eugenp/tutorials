@@ -3,7 +3,7 @@ package com.baeldung.concurrent.atomic;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SafeCounterWithoutLock {
-    private volatile AtomicInteger counter = new AtomicInteger(0);
+    private final AtomicInteger counter = new AtomicInteger(0);
     
     public int getValue() {
         return counter.get();
