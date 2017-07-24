@@ -1,7 +1,8 @@
 package com.baeldung.application;
 
 import com.baeldung.entities.User;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Application {
 
