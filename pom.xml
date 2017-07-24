@@ -208,7 +208,7 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
-        <module>spring-rest-logging</module>
+        
 
         <module>testing</module>
         <module>testng</module>
