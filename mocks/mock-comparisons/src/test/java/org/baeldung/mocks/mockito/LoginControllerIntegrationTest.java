@@ -7,6 +7,7 @@ import org.baeldung.mocks.testCase.UserForm;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.*;
 
 public class LoginControllerIntegrationTest {
@@ -100,10 +101,10 @@ public class LoginControllerIntegrationTest {
         Mockito.verify(loginService).login(userForm);
         // complex matcher
         Mockito.verify(loginService).setCurrentUser(Mockito.argThat(new ArgumentMatcher<String>() {
-            @Override
-            public boolean matches(Object argument) {
-                return argument instanceof String && ((String) argument).startsWith("foo");
-            }
+			@Override
+			public boolean matches(String argument) {
+				return argument.startsWith("foo");
+			}
         }));
     }
 
