@@ -122,6 +122,42 @@
                 </configuration>
             </plugin>
             <!-- /Vaadin -->
+            <!-- Neuroph -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/log4j.properties</exclude>
+                    </excludes>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.neuroph.NeurophXOR</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>test/java/com/baeldung/neuroph/XORTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- /Neuroph -->
         </plugins>
     </build>
     <!-- Vaadin -->
@@ -144,6 +180,12 @@
     </dependencyManagement>
     <!-- /Vaadin -->
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
+        <dependency>
+            <groupId>org.beykery</groupId>
+            <artifactId>neuroph</artifactId>
+            <version>${neuroph.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
             <groupId>cglib</groupId>
@@ -565,6 +607,7 @@
         <h2.version>1.4.196</h2.version>
         <jetty.version>9.4.2.v20170220</jetty.version>
         <httpclient.version>4.5.3</httpclient.version>
+        <neuroph.version>2.92</neuroph.version>
         <commons.io.version>2.5</commons.io.version>
         <flink.version>1.2.0</flink.version>
         <jackson.version>2.8.5</jackson.version>

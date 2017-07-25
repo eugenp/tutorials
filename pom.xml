@@ -104,8 +104,6 @@
         <module>mocks</module>
         <module>mustache</module>
 
-        <module>neuroph</module>
-
         <module>orika</module>
 
         <module>patterns</module>
