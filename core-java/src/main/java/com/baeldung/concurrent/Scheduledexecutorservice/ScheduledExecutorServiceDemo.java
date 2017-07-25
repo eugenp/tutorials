@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.Scheduledexecutorservice;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
@@ -12,32 +11,21 @@ public class ScheduledExecutorServiceDemo {
 	public void execute() {
 		ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
-		ScheduledFuture<?> scheduledFuture = executorService.schedule(new Runnable() {
-			@Override
-			public void run() {
-				// task details
-			}
+		ScheduledFuture<?> scheduledFuture = executorService.schedule(() -> {
+			// Task
 		}, 1, TimeUnit.SECONDS);
 
-		executorService.scheduleAtFixedRate(new Runnable() {
-			@Override
-			public void run() {
-				// task details
-			}
+		executorService.scheduleAtFixedRate(() -> {
+			// Task
 		}, 1, 10, TimeUnit.SECONDS);
 
-		executorService.scheduleWithFixedDelay(new Runnable() {
-			@Override
-			public void run() {
-				// task details
-			}
+		executorService.scheduleWithFixedDelay(() -> {
+			// Task
 		}, 1, 10, TimeUnit.SECONDS);
 
-		Future<String> future = executorService.schedule(new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				return "Hello World";
-			}
+		Future<String> future = executorService.schedule(() -> {
+			// Task
+			return "Hellow world";
 		}, 1, TimeUnit.SECONDS);
 
 		executorService.shutdown();

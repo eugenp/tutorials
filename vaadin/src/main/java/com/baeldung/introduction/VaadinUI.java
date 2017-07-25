@@ -1,4 +1,4 @@
-package com.baeldung.vaadin;
+package com.baeldung.introduction;
 
 import java.time.Instant;
 import java.util.ArrayList;
