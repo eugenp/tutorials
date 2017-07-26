@@ -1,14 +1,15 @@
 package com.baeldung.circularfifoqueue.example;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CircularFifoQueueTest {
 
-	private CircularFifoQueueExample testQueue = new CircularFifoQueueExample();
-	
 	private static final int DEFAULT_SIZE = 32;
 	
 	private static final int FIXED_SIZE = 5;
@@ -21,90 +22,139 @@ public class CircularFifoQueueTest {
 
 	@Test
 	public void whenUsingDefualtConstructor_correctSizeQueue() {
-		CircularFifoQueue bits = testQueue.createDefaultQueue();
+		CircularFifoQueue bits = new CircularFifoQueue();
 
-		Assert.assertEquals(DEFAULT_SIZE, testQueue.checkMaxSize(bits));
+		Assert.assertEquals(DEFAULT_SIZE, bits.maxSize());
 	}
 
 	@Test
 	public void givenAddElements_whenUsingIntConstructor_correctSizeQueue() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 
-		Assert.assertEquals(FIXED_SIZE, testQueue.checkMaxSize(colors));
+		Assert.assertEquals(FIXED_SIZE, colors.maxSize());
 	}
 	
 	@Test
 	public void whenUsingCollectionConstructor_correctSizeQueue() {
-		CircularFifoQueue daysOfWeek = testQueue.createQueueFromCollection();
+		List<String> days = new ArrayList<String>();
+		days.add("Monday");
+		days.add("Tuesday");
+		days.add("Wednesday");
+		days.add("Thursday");
+		days.add("Friday");
+		days.add("Saturday");
+		days.add("Sunday");
 
-		Assert.assertEquals(COLLECTION_SIZE, testQueue.checkMaxSize(daysOfWeek));
+		CircularFifoQueue<String> daysOfWeek = new CircularFifoQueue<String>(days);
+
+		Assert.assertEquals(COLLECTION_SIZE, daysOfWeek.maxSize());
 	}
 	
 	@Test
 	public void givenAddElements_whenGetElement_correctElement() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(TEST_COLOR_BY_INDEX, testQueue.getElement(colors));
+		Assert.assertEquals(TEST_COLOR_BY_INDEX, colors.get(1));
 	}
 	
 	@Test
 	public void givenAddElements_whenPollElement_correctElement() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(TEST_COLOR, testQueue.pollElement(colors));
+		Assert.assertEquals(TEST_COLOR, colors.poll());
 	}
 	
 	@Test
 	public void givenAddElements_whenPeekQueue_correctElement() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(TEST_COLOR, testQueue.peekQueue(colors));
+		Assert.assertEquals(TEST_COLOR, colors.peek());
 	}
 	
 	@Test
 	public void givenAddElements_whenElementQueue_correctElement() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(TEST_COLOR, testQueue.elementQueue(colors));
+		Assert.assertEquals(TEST_COLOR, colors.element());
 	}
 	
 	@Test
 	public void givenAddElements_whenRemoveElement_correctElement() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(TEST_COLOR, testQueue.removeElement(colors));
+		Assert.assertEquals(TEST_COLOR, colors.remove());
 	}
 	
 	@Test
 	public void givenFullQueue_whenClearQueue_getIsEmpty() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
-		testQueue.clearQueue(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(true, testQueue.checkIsEmpty(colors));
+		colors.clear();
+		
+		Assert.assertEquals(true, colors.isEmpty());
 	}
 	
 	@Test
 	public void givenFullQueue_whenCheckFull_getIsFull() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(false, testQueue.checkIsFull(colors));
+		Assert.assertEquals(false, colors.isFull());
 	}
 	
 	@Test
 	public void givenFullQueue_whenAddMoreElements_getIsAtFullCapacity() {
-		CircularFifoQueue colors = testQueue.createFixedSizeQueue();
-		testQueue.addElements(colors);
-		testQueue.addMoreElements(colors);
+		CircularFifoQueue colors = new CircularFifoQueue(5);
+		colors.add("Red");
+		colors.add("Blue");
+		colors.add("Green");
+		colors.offer("White");
+		colors.offer("Black");
 		
-		Assert.assertEquals(true, testQueue.checkisAtFullCapacity(colors));
+		colors.add("Orange");
+		colors.add("Violet");
+		colors.add("Pink");
+		
+		Assert.assertEquals(true, colors.isAtFullCapacity());
 	}
 
 
