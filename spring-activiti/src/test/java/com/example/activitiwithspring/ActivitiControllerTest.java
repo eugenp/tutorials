@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebAppConfiguration
 @SpringBootTest
 public class ActivitiControllerTest {
+
     private static final Logger logger = LoggerFactory.getLogger(ActivitiControllerTest.class);
     private MockMvc mockMvc;
 
@@ -107,14 +108,12 @@ public class ActivitiControllerTest {
                 .get(0);
 
         logger.info("process instance = " + pi.getId());
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/complete-task-A/" + pi.getId()))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/complete-task-A/" + pi.getId()))
                 .andReturn()
                 .getResponse()
                 .getContentAsString();
 
-        ObjectMapper mapper = new ObjectMapper();
-        TaskRepresentation task = mapper.readValue(responseBody, TaskRepresentation.class);
-        assertEquals("B", task.getName());
-
+        List<ProcessInstance> list = runtimeService.createProcessInstanceQuery().list();
+        assertEquals(0, list.size());
     }
 }

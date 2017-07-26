@@ -1,6 +1,5 @@
 package com.example.activitiwithspring;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -45,16 +43,11 @@ public class ActivitiController {
     }
 
     @GetMapping("/complete-task-A/{processInstanceId}")
-    public TaskRepresentation completeTaskA(@PathVariable String processInstanceId) {
+    public void completeTaskA(@PathVariable String processInstanceId) {
         Task task = taskService.createTaskQuery()
                 .processInstanceId(processInstanceId)
                 .singleResult();
         taskService.complete(task.getId());
         logger.info("Task completed");
-        task = taskService.createTaskQuery()
-                .processInstanceId(processInstanceId)
-                .singleResult();
-
-        return new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
     }
 }
