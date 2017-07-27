@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{template.html}">
+<head>
+<title>Layout Dialect Example</title>
+</head>
+<body>
+	<section layout:fragment="custom-content">
+		<p>This is a custom content that you can provide</p>
+	</section>
+	<footer>
+		<p layout:fragment="custom-footer">This is some footer content
+			that you can change</p>
+	</footer>
+</body>
+</html>

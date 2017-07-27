@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+# This program converts DocBook documents into .epub files.
+# 
+# Usage: dbtoepub [OPTIONS] [DocBook Files]
+#
+# .epub is defined by the IDPF at www.idpf.org and is made up of 3 standards:
+# - Open Publication Structure (OPS)
+# - Open Packaging Format (OPF) 
+# - Open Container Format (OCF)
+#
+# Specific options:
+#     -c, --css [FILE]                 Use FILE for CSS on generated XHTML.
+#     -d, --debug                      Show debugging output.
+#     -f, --font [OTF FILE]            Embed OTF FILE in .epub.
+#     -h, --help                       Display usage info.
+#     -s, --stylesheet [XSL FILE]      Use XSL FILE as a customization
+#                                        layer (imports epub/docbook.xsl).
+#     -v, --verbose                    Make output verbose.
+
+lib = File.expand_path(File.join(File.dirname(__FILE__), 'lib'))
+$LOAD_PATH.unshift(lib) if File.exist?(lib)
+
+require 'fileutils'
+require 'optparse'
+require 'tmpdir'
+
+require 'docbook'
+
+verbose = false
+debug = false
+css_file = nil
+otf_files = []
+customization_layer = nil
+output_file = nil
+
+#$DEBUG=true
+
+# Set up the OptionParser
+opts = OptionParser.new
+opts.banner = "Usage: #{File.basename($0)} [OPTIONS] [DocBook Files]
+
+#{File.basename($0)} converts DocBook <book> and <article>s into to .epub files.
+
+.epub is defined by the IDPF at www.idpf.org and is made up of 3 standards:
+- Open Publication Structure (OPS)
+- Open Packaging Format (OPF) 
+- Open Container Format (OCF)
+
+Specific options:"
+opts.on("-c", "--css [FILE]", "Use FILE for CSS on generated XHTML.") {|f| css_file = f}
+opts.on("-d", "--debug", "Show debugging output.") {debug = true; verbose = true}
+opts.on("-f", "--font [OTF FILE]", "Embed OTF FILE in .epub.") {|f| otf_files << f}
+opts.on("-h", "--help", "Display usage info.") {puts opts.to_s; exit 0}
+opts.on("-o", "--output [OUTPUT FILE]", "Output ePub file as OUTPUT FILE.") {|f| output_file = f}
+opts.on("-s", "--stylesheet [XSL FILE]", "Use XSL FILE as a customization layer (imports epub/docbook.xsl).") {|f| customization_layer = f}
+opts.on("-v", "--verbose", "Make output verbose.") {verbose = true}
+
+db_files = opts.parse(ARGV)
+if db_files.size == 0
+  puts opts.to_s
+  exit 0
+end
+
+db_files.each {|docbook_file|
+  dir = File.expand_path(File.join(Dir.tmpdir, ".epubtmp#{Time.now.to_f.to_s}"))
+  FileUtils.mkdir_p(dir)
+  e = DocBook::Epub.new(docbook_file, dir, css_file, customization_layer, otf_files)
+
+  if output_file
+    epub_file = output_file
+  else  
+    epub_file = File.basename(docbook_file, ".xml") + ".epub"
+  end  
+  puts "Rendering DocBook file #{docbook_file} to #{epub_file}" if verbose
+  e.render_to_file(epub_file)
+}  

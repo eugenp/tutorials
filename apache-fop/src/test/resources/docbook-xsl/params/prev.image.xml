@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="prev.image">
+<refmeta>
+<refentrytitle>prev.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>prev.image</refname>
+<refpurpose>Left-arrow image</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="prev.image.frag">
+<xsl:param name="prev.image">active/nav-prev.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the left-pointing navigation arrow.</para>
+
+</refsection>
+</refentry>

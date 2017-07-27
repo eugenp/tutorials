@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Baeldung | Expression Language 3.0</title>
+    </h:head>
+    <h:body>
+        <h:outputLabel id="valueLabel" for="valueOutput" value="Composite Lambda Evaluation:"/>
+        <h:outputText id="valueOutput" value="#{(cube=(x->x*x*x);cube(4))}"/>
+        <br/>
+        <h:outputLabel id="staticLabel" for="staticFieldOutput" value="Static Field Output:"/>
+        <h:outputText id="staticFieldOutput" value="#{ElBean.constantField}"/>
+        <br/>
+        <h:outputLabel id="avgLabel" for="avg" value="Average of Integer List Value:"/>
+        <h:outputText id="avg" value="#{['1','2','3'].stream().average().get()}"/>
+        <br/>
+        <h:outputLabel id="lambdaLabel" for="lambdaPass" value="Passing Lambda Expressions:"/>
+        <h:outputText id="lambdaPass" value="#{ELBean.multiplyValue(x->x*x*x)}"/>
+        <br/>
+        <c:set var='pageLevelNumberList' value="#{[1,2,3]}"/>
+        <h:outputLabel id="avgPageVarLabel" for="avgPageVar" value="Average of Page-Level Integer List Value:"/>
+        <h:outputText id="avgPageVar" value="#{pageLevelNumberList.stream().average().get()}"/>
+        <br/>
+        <h:panelGrid title="Data Structures" border="3" >
+            <h:dataTable var="streamResult" value="#{pageLevelNumberList.stream().filter(x-> x>1).toList()}">
+                <h:column id="nameCol">
+                    <h:outputText id="name" value="#{streamResult}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGrid>
+    </h:body>
+</html>
+

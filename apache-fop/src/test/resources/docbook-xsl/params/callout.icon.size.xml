@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.icon.size">
+<refmeta>
+<refentrytitle>callout.icon.size</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.icon.size</refname>
+<refpurpose>Specifies the size of callout marker icons</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.icon.size.frag">
+<xsl:param name="callout.icon.size">7pt</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the size of the callout marker icons.
+The default size is 7 points.</para>
+
+</refsection>
+</refentry>

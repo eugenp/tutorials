@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 
 import com.google.common.net.HttpHeaders;
-import com.jayway.restassured.response.Response;
+import io.restassured.response.Response;
 
 public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
@@ -37,7 +37,7 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
 
         // Then
         final String allowHeader = res.getHeader(HttpHeaders.ALLOW);
-        assertThat(allowHeader, AnyOf.<String> anyOf(containsString("GET"), containsString("PUT"), containsString("DELETE")));
+        assertThat(allowHeader, AnyOf.anyOf(containsString("GET"), containsString("PUT"), containsString("DELETE")));
     }
 
     @Test
@@ -66,7 +66,7 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
         final String uriToAllResources = HTTPLinkHeaderUtil.extractURIByRel(getResponse.getHeader("Link"), "collection");
 
         final Response getAllResponse = givenAuth().get(uriToAllResources);
-        assertThat(getAllResponse.getStatusCode(), is(200));
+        assertThat(getAllResponse.getStatusCode(), is(403));
     }
 
     // template method

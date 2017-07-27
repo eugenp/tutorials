@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <!--/*/ <th:block th:include="fragments/head :: head"/> /*/-->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="box col-md-6 col-md-offset-3">
+                    <p/>
+                    <form method="post" th:action="@{/jwt-csrf-form}">
+                        <input type="submit" class="btn btn-primary" value="Click Me!"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

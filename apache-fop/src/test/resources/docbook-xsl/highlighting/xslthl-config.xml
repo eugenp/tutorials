@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+xslthl - XSLT Syntax Highlighting
+http://sourceforge.net/projects/xslthl/
+Copyright (C) 2005-2012 Michal Molhanec, Jirka Kosek, Michiel Hendriks
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+Michal Molhanec <mol1111 at users.sourceforge.net>
+Jirka Kosek <kosek at users.sourceforge.net>
+Michiel Hendriks <elmuerte at users.sourceforge.net>
+
+-->
+<xslthl-config>
+	<highlighter id="java" file="java-hl.xml" />
+	<highlighter id="delphi" file="delphi-hl.xml" />
+	<highlighter id="pascal" file="delphi-hl.xml" />
+	<highlighter id="ini" file="ini-hl.xml" />
+	<highlighter id="php" file="php-hl.xml" />
+	<highlighter id="myxml" file="myxml-hl.xml" />
+	<highlighter id="m2" file="m2-hl.xml" />
+	<highlighter id="tcl" file="tcl-hl.xml" />
+	<highlighter id="c" file="c-hl.xml" />
+	<highlighter id="cpp" file="cpp-hl.xml" />
+	<highlighter id="csharp" file="csharp-hl.xml" />
+	<highlighter id="python" file="python-hl.xml" />
+	<highlighter id="ruby" file="ruby-hl.xml" />
+	<highlighter id="perl" file="perl-hl.xml" />	
+	<highlighter id="javascript" file="javascript-hl.xml" />
+	<highlighter id="bourne" file="bourne-hl.xml" />
+	<highlighter id="css" file="css21-hl.xml" />
+	<highlighter id="css21" file="css21-hl.xml" />
+	<highlighter id="cmake" file="cmake-hl.xml" />
+	<highlighter id="upc" file="upc-hl.xml" />
+	<highlighter id="lua" file="lua-hl.xml" />
+	<highlighter id="sql92" file="sql92-hl.xml" />
+	<highlighter id="sql1999" file="sql1999-hl.xml" />
+	<highlighter id="sql2003" file="sql2003-hl.xml" />
+	<highlighter id="sql" file="sql2003-hl.xml" />
+	<namespace prefix="xslthl" uri="http://xslthl.sf.net" />
+</xslthl-config>

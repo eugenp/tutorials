@@ -1,0 +1,64 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="body.start.indent">
+<refmeta>
+<refentrytitle>body.start.indent</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>body.start.indent</refname>
+<refpurpose>The start-indent for the body text</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="body.start.indent.frag">
+<xsl:param name="body.start.indent">
+  <xsl:choose>
+    <xsl:when test="$fop.extensions != 0">0pt</xsl:when>
+    <xsl:when test="$passivetex.extensions != 0">0pt</xsl:when>
+    <xsl:otherwise>4pc</xsl:otherwise>
+  </xsl:choose>
+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter provides
+the means of indenting the body text relative to
+section titles.
+For left-to-right text direction, it indents the left side.
+For right-to-left text direction, it indents the right side.
+It is used in place of the 
+<parameter>title.margin.left</parameter> for
+all XSL-FO processors except FOP 0.25.
+It enables support for side floats to appear
+in the indented margin area.
+</para>
+<para>This start-indent property is added to the fo:flow
+for certain page sequences.  Which page-sequences it is 
+applied to is determined by the template named
+<literal>set.flow.properties</literal>.
+By default, that template adds it to the flow
+for page-sequences using the <quote>body</quote>
+master-reference, as well as appendixes and prefaces.
+</para>
+<para>If this parameter is used, section titles should have
+a start-indent value of 0pt if they are to be
+outdented relative to the body text.
+</para>
+
+<para>If you are using FOP, then set this parameter to a zero
+width value and set the <parameter>title.margin.left</parameter>
+parameter to the negative value of the desired indent.
+</para>
+
+<para>See also <parameter>body.end.indent</parameter> and
+<parameter>title.margin.left</parameter>.
+</para>
+
+</refsection>
+</refentry>

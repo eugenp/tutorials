@@ -1,0 +1,19 @@
+[
+  {
+    "id" : 1,
+    "name" : "First Bar",
+    "city" : "Austin",
+    "fooId" : 2
+  },
+  {
+	  "id" : 2,
+	  "name" : "Second Bar",
+	  "city" : "Dallas",
+	  "fooId" : 1
+  },
+  {
+    "id" : 3,
+    "name" : "Third Bar",
+    "fooId" : 2
+  }
+]
