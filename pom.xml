@@ -210,6 +210,7 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
+        
 
         <module>testing</module>
         <module>testng</module>
@@ -230,6 +231,7 @@
         <module>drools</module>
         <module>liquibase</module>
         <module>spring-boot-property-exp</module>
+        <module>mockserver</module>
     </modules>
 
     <dependencies>
