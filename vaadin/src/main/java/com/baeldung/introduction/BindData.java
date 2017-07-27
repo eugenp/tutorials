@@ -1,4 +1,4 @@
-package com.baeldung.vaadin;
+package com.baeldung.introduction;
 
 public class BindData {
 
