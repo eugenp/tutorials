@@ -118,7 +118,7 @@ public class CommonsIOUnitTest {
     public void whenPathFileComparator_thenSortDir() throws IOException {
 
         PathFileComparator pathFileComparator = new PathFileComparator(
-            IOCase.SENSITIVE);
+            IOCase.INSENSITIVE);
         String path = FilenameUtils.getFullPath(getClass().getClassLoader()
             .getResource(FILE_TEST_TXT)
             .getPath());
@@ -127,7 +127,7 @@ public class CommonsIOUnitTest {
 
         pathFileComparator.sort(files);
 
-        Assert.assertEquals("AAA.txt", files[0].getName());
+        Assert.assertEquals("aaa.txt", files[0].getName());
     }
 
     @Test
