@@ -5,31 +5,27 @@ import java.time.temporal.ChronoUnit;
 
 public class UseLocalTime {
 
-    public LocalTime getLocalTimeUsingFactoryOfMethod(int hour, int min, int seconds) {
-        LocalTime localTime = LocalTime.of(hour, min, seconds);
-        return localTime;
+    LocalTime getLocalTimeUsingFactoryOfMethod(int hour, int min, int seconds) {
+        return LocalTime.of(hour, min, seconds);
     }
 
-    public LocalTime getLocalTimeUsingParseMethod(String timeRepresentation) {
-        LocalTime localTime = LocalTime.parse(timeRepresentation);
-        return localTime;
+    LocalTime getLocalTimeUsingParseMethod(String timeRepresentation) {
+        return LocalTime.parse(timeRepresentation);
     }
 
-    public LocalTime getLocalTimeFromClock() {
-        LocalTime localTime = LocalTime.now();
-        return localTime;
+    private LocalTime getLocalTimeFromClock() {
+        return LocalTime.now();
     }
 
-    public LocalTime addAnHour(LocalTime localTime) {
-        LocalTime newTime = localTime.plus(1, ChronoUnit.HOURS);
-        return newTime;
+    LocalTime addAnHour(LocalTime localTime) {
+        return localTime.plus(1, ChronoUnit.HOURS);
     }
 
-    public int getHourFromLocalTime(LocalTime localTime) {
+    int getHourFromLocalTime(LocalTime localTime) {
         return localTime.getHour();
     }
 
-    public LocalTime getLocalTimeWithMinuteSetToValue(LocalTime localTime, int minute) {
+    LocalTime getLocalTimeWithMinuteSetToValue(LocalTime localTime, int minute) {
         return localTime.withMinute(minute);
     }
 }

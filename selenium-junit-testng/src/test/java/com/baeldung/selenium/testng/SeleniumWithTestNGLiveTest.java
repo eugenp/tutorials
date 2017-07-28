@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 public class SeleniumWithTestNGLiveTest {
 
     private SeleniumExample seleniumExample;
-    private String expectedTitle = "About Baeldung | Baeldung";
+    private String expectedTitle = "Baeldung | Java, Spring and Web Development tutorials";
 
     @BeforeSuite
     public void setUp() {

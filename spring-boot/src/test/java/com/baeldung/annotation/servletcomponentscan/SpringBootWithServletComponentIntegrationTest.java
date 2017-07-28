@@ -14,15 +14,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootAnnotatedApp.class)
 @AutoConfigureMockMvc
-@TestPropertySource(properties = { "security.basic.enabled=false" })
+@TestPropertySource(properties = {"security.basic.enabled=false"})
 public class SpringBootWithServletComponentIntegrationTest {
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
 
     @Test
     public void givenServletContext_whenAccessAttrs_thenFoundAttrsPutInServletListner() {
@@ -42,7 +45,8 @@ public class SpringBootWithServletComponentIntegrationTest {
           .contains("echo servlet"));
     }
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void givenServletFilter_whenGetHello_thenRequestFiltered() {
@@ -57,7 +61,6 @@ public class SpringBootWithServletComponentIntegrationTest {
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals("filtering echo", responseEntity.getBody());
     }
-
 
 
 }

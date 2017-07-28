@@ -45,6 +45,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.pitest</groupId>
@@ -68,6 +74,12 @@
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
             <version>${jUnitParams.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jgotesting</groupId>
+            <artifactId>jgotesting</artifactId>
+            <version>${jgotesting.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -137,5 +149,6 @@
         <assertj-core.version>3.6.1</assertj-core.version>
         <truth.version>0.32</truth.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
+        <jgotesting.version>0.12</jgotesting.version>
     </properties>
 </project>

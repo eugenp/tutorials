@@ -9,7 +9,7 @@ public class DelayObject implements Delayed {
     private String data;
     private long startTime;
 
-    public DelayObject(String data, long delayInMilliseconds) {
+    DelayObject(String data, long delayInMilliseconds) {
         this.data = data;
         this.startTime = System.currentTimeMillis() + delayInMilliseconds;
     }

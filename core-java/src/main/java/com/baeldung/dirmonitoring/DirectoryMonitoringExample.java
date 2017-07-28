@@ -13,8 +13,7 @@ public class DirectoryMonitoringExample {
 
     private static final Logger LOG = LoggerFactory.getLogger(DirectoryMonitoringExample.class);
 
-
-    public static final int POLL_INTERVAL = 500;
+    private static final int POLL_INTERVAL = 500;
 
     public static void main(String[] args) throws Exception {
         FileAlterationObserver observer = new FileAlterationObserver(System.getProperty("user.home"));
