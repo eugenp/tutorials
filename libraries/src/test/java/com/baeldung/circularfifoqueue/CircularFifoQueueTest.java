@@ -21,14 +21,14 @@ public class CircularFifoQueueTest {
 
     @Test
     public void whenUsingDefualtConstructor_correctSizeQueue() {
-        CircularFifoQueue bits = new CircularFifoQueue<>();
+        CircularFifoQueue<String> bits = new CircularFifoQueue<>();
 
         Assert.assertEquals(DEFAULT_SIZE, bits.maxSize());
     }
 
     @Test
     public void givenAddElements_whenUsingIntConstructor_correctSizeQueue() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -40,7 +40,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void whenUsingCollectionConstructor_correctSizeQueue() {
-        List days = new ArrayList<>();
+        List<String> days = new ArrayList<>();
         days.add("Monday");
         days.add("Tuesday");
         days.add("Wednesday");
@@ -49,14 +49,14 @@ public class CircularFifoQueueTest {
         days.add("Saturday");
         days.add("Sunday");
 
-        CircularFifoQueue daysOfWeek = new CircularFifoQueue<>(days);
+        CircularFifoQueue<String> daysOfWeek = new CircularFifoQueue<>(days);
 
         Assert.assertEquals(COLLECTION_SIZE, daysOfWeek.maxSize());
     }
 
     @Test
     public void givenAddElements_whenGetElement_correctElement() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -68,7 +68,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenAddElements_whenPollElement_correctElement() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -80,7 +80,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenAddElements_whenPeekQueue_correctElement() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -92,7 +92,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenAddElements_whenElementQueue_correctElement() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -104,7 +104,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenAddElements_whenRemoveElement_correctElement() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -116,7 +116,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenFullQueue_whenClearQueue_getIsEmpty() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -130,7 +130,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenFullQueue_whenCheckFull_getIsFull() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
@@ -142,7 +142,7 @@ public class CircularFifoQueueTest {
 
     @Test
     public void givenFullQueue_whenAddMoreElements_getIsAtFullCapacity() {
-        CircularFifoQueue colors = new CircularFifoQueue<>(5);
+        CircularFifoQueue<String> colors = new CircularFifoQueue<>(5);
         colors.add("Red");
         colors.add("Blue");
         colors.add("Green");
