@@ -28,13 +28,11 @@ import static org.mockserver.model.StringBody.exact;
 
 public class MockServerLiveTest {
 
-    private static ClientAndProxy proxy;
     private static ClientAndServer mockServer;
 
     @BeforeClass
-    public static void startProxy() {
+    public static void startServer() {
         mockServer = startClientAndServer(1080);
-        proxy = startClientAndProxy(1090);
     }
 
 
@@ -169,8 +167,7 @@ public class MockServerLiveTest {
     }
 
     @AfterClass
-    public static void stopProxy() {
-        proxy.stop();
+    public static void stopServer() {
         mockServer.stop();
     }
 }
