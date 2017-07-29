@@ -44,10 +44,9 @@ public class PCollectionsUnitTest {
         Map map = new HashMap();
         map.put("key2", "val2");
         map.put("key3", "val3");
+
         HashPMap<String, String> pmap1 = pmap0.plusAll(map);
-
         HashPMap<String, String> pmap2 = pmap1.minus("key1");
-
         HashPMap<String, String> pmap3 = pmap2.minusAll(map.keySet());
 
         assertEquals(pmap0.size(), 1);
@@ -79,6 +78,7 @@ public class PCollectionsUnitTest {
 
     @Test
     public void whenMapPSetMethods_thenPerformOperations() {
+
         MapPSet pSet = HashTreePSet.empty()
                 .plusAll(Arrays.asList("e1","e2","e3","e4"));
         assertEquals(pSet.size(), 4);
