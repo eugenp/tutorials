@@ -544,6 +544,11 @@
             <artifactId>byte-buddy-agent</artifactId>
             <version>${bytebuddy.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>${kryo.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -587,6 +592,7 @@
         <!-- /Vaadin -->
         <hll.version>1.6.0</hll.version>
         <bytebuddy.version>1.7.1</bytebuddy.version>
+        <kryo.version>4.0.1</kryo.version>
     </properties>
     <profiles>
         <!-- Vaadin -->
