@@ -31,7 +31,7 @@ public class MockServerLiveTest {
     private static ClientAndServer mockServer;
 
     @BeforeClass
-    public static void startProxy() {
+    public static void startServer() {
         mockServer = startClientAndServer(1080);
     }
 
@@ -167,7 +167,7 @@ public class MockServerLiveTest {
     }
 
     @AfterClass
-    public static void stopProxy() {
+    public static void stopServer() {
         mockServer.stop();
     }
 }
