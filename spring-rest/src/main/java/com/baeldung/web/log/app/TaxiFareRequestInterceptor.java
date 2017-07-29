@@ -14,11 +14,11 @@ import com.baeldung.web.log.util.RequestLoggingUtil;
 @Component
 public class TaxiFareRequestInterceptor extends HandlerInterceptorAdapter {
 
-    Logger LOGGER = LoggerFactory.getLogger(TaxiFareRequestInterceptor.class);
+    private final static Logger LOGGER = LoggerFactory.getLogger(TaxiFareRequestInterceptor.class);
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String postData = null;
+        String postData;
         HttpServletRequest requestCacheWrapperObject = null;
         try {
             // Uncomment to produce the stream closed issue
