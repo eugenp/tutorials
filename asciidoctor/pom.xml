@@ -35,7 +35,12 @@
                 <configuration>
                     <sourceDirectory>src/docs/asciidoc</sourceDirectory>
                     <outputDirectory>target/docs/asciidoc</outputDirectory>
+                    <attributes>
+                        <pdf-stylesdir>${project.basedir}/src/themes</pdf-stylesdir>
+                        <pdf-style>custom</pdf-style>
+                    </attributes>
                     <backend>pdf</backend>
+                    <doctype>book</doctype>
                 </configuration>
             </plugin>
         </plugins>

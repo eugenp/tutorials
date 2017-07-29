@@ -1,0 +1,29 @@
+title_page:
+  align: left
+
+page:
+  layout: portrait
+  margin: [0.75in, 1in, 0.75in, 1in]
+  size: A4
+base:
+  font_color: #333333
+  line_height_length: 17
+  line_height: $base_line_height_length / $base_font_size
+link:
+  font_color: #009900
+
+header:
+  height: 0.5in
+  line_height: 1
+  recto_content:
+    center: '{document-title}'
+  verso_content:
+    center: '{document-title}'
+
+footer:
+  height: 0.5in
+  line_height: 1
+  recto_content:
+    right: '{chapter-title} | *{page-number}*'
+  verso_content:
+    left: '*{page-number}* | {chapter-title}'
