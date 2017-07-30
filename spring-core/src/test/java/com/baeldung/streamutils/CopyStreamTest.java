@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.util.StreamUtils;
 
@@ -31,7 +31,7 @@ public class CopyStreamTest {
         assertTrue(outputFile.exists());
         String inputFileContent = getStringFromInputStream(new FileInputStream(inputFileName));
         String outputFileContent = getStringFromInputStream(new FileInputStream(outputFileName));
-        Assert.assertEquals(inputFileContent, outputFileContent);
+        assertEquals(inputFileContent, outputFileContent);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CopyStreamTest {
         assertTrue(outputFile.exists());
         String inputFileContent = getStringFromInputStream(new FileInputStream(inputFileName));
         String outputFileContent = getStringFromInputStream(new FileInputStream(outputFileName));
-        Assert.assertEquals(inputFileContent.substring(1, 11), outputFileContent);
+        assertEquals(inputFileContent.substring(1, 11), outputFileContent);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class CopyStreamTest {
 
         assertTrue(outputFile.exists());
         String outputFileContent = getStringFromInputStream(new FileInputStream(outputFileName));
-        Assert.assertEquals(outputFileContent, string);
+        assertEquals(outputFileContent, string);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class CopyStreamTest {
         String content = StreamUtils.copyToString(is, StandardCharsets.UTF_8);
 
         String inputFileContent = getStringFromInputStream(new FileInputStream(inputFileName));
-        Assert.assertEquals(inputFileContent, content);
+        assertEquals(inputFileContent, content);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class CopyStreamTest {
 
         StreamUtils.copy(byteArray, out);
         String outputFileContent = getStringFromInputStream(new FileInputStream(outputFileName));
-        Assert.assertEquals(outputFileContent, string);
+        assertEquals(outputFileContent, string);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class CopyStreamTest {
 
         String content = new String(out);
         String inputFileContent = getStringFromInputStream(new FileInputStream(inputFileName));
-        Assert.assertEquals(inputFileContent, content);
+        assertEquals(inputFileContent, content);
     }
 
 }
