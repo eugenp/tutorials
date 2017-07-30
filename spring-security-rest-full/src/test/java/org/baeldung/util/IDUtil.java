@@ -10,21 +10,21 @@ public final class IDUtil {
 
     // API
 
-    public final static String randomPositiveLongAsString() {
+    public static String randomPositiveLongAsString() {
         return Long.toString(randomPositiveLong());
     }
 
-    public final static String randomNegativeLongAsString() {
+    public static String randomNegativeLongAsString() {
         return Long.toString(randomNegativeLong());
     }
 
-    public final static long randomPositiveLong() {
+    public static long randomPositiveLong() {
         long id = new Random().nextLong() * 10000;
         id = (id < 0) ? (-1 * id) : id;
         return id;
     }
 
-    public final static long randomNegativeLong() {
+    private static long randomNegativeLong() {
         long id = new Random().nextLong() * 10000;
         id = (id > 0) ? (-1 * id) : id;
         return id;

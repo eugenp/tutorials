@@ -13,3 +13,6 @@
 - [Java 9 Process API Improvements](http://www.baeldung.com/java-9-process-api)
 - [Introduction to Java 9 StackWalking API](http://www.baeldung.com/java-9-stackwalking-api)
 - [Introduction to Project Jigsaw](http://www.baeldung.com/project-jigsaw-java-modularity)
+- [Java 9 Optional API Additions](http://www.baeldung.com/java-9-optional)
+- [Java 9 Reactive Streams](http://www.baeldung.com/java-9-reactive-streams)
+- [How to Get All Dates Between Two Dates?](http://www.baeldung.com/java-between-dates)

@@ -7,7 +7,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>libraries</artifactId>
     <name>libraries</name>
     <build>
@@ -59,7 +58,8 @@
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
                     <verbose>true</verbose>
-                    <fork>false</fork>   <!-- Solve windows line too long error -->
+                    <fork>false</fork>
+                    <!-- Solve windows line too long error -->
                 </configuration>
                 <executions>
                     <execution>
@@ -70,10 +70,51 @@
                     </execution>
                 </executions>
             </plugin>
+             <!-- Neuroph -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/log4j.properties</exclude>
+                    </excludes>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.neuroph.NeurophXOR</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <includes>
+                                <include>test/java/com/baeldung/neuroph/XORTest.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- /Neuroph -->
         </plugins>
     </build>
-
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
+        <dependency>
+            <groupId>org.beykery</groupId>
+            <artifactId>neuroph</artifactId>
+            <version>${neuroph.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
             <groupId>cglib</groupId>
@@ -156,6 +197,16 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-chain</groupId>
+            <artifactId>commons-chain</artifactId>
+            <version>${commons-chain.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>${commons.dbutils.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -257,6 +308,11 @@
             <version>5.0.0-release</version>
         </dependency>
         <dependency>
+            <groupId>net.openhft</groupId>
+            <artifactId>chronicle</artifactId>
+            <version>3.6.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>4.3.8.RELEASE</version>
@@ -299,7 +355,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.195</version>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>pl.pragmatists</groupId>
@@ -312,7 +368,6 @@
             <artifactId>quartz</artifactId>
             <version>2.3.0</version>
         </dependency>
-
         <dependency>
             <groupId>one.util</groupId>
             <artifactId>streamex</artifactId>
@@ -349,12 +404,6 @@
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>21.0</version>
-        </dependency>
         <dependency>
             <groupId>au.com.dius</groupId>
             <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
@@ -378,6 +427,32 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>java-hamcrest</artifactId>
+            <version>${org.hamcrest.java-hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.agkn</groupId>
+            <artifactId>hll</artifactId>
+            <version>${hll.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>${bytebuddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pcollections</groupId>
+            <artifactId>pcollections</artifactId>
+            <version>${pcollections.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
@@ -385,6 +460,7 @@
         <commons-lang.version>3.5</commons-lang.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <commons-chain.version>1.2</commons-chain.version>
         <jasypt.version>1.9.2</jasypt.version>
         <javatuples.version>1.2</javatuples.version>
         <javaassist.version>3.21.0-GA</javaassist.version>
@@ -394,11 +470,14 @@
         <jetty.version>9.4.3.v20170317</jetty.version>
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
+        <commons.dbutils.version>1.6</commons.dbutils.version>
+        <h2.version>1.4.196</h2.version>
         <jetty.version>9.4.2.v20170220</jetty.version>
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
         <flink.version>1.2.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
+        <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.4.0</serenity.version>
         <serenity.jbehave.version>1.24.0</serenity.jbehave.version>
         <serenity.jira.version>1.1.3-rc.5</serenity.jira.version>
@@ -410,6 +489,9 @@
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
+        <org.hamcrest.java-hamcrest.version>2.0.0.0</org.hamcrest.java-hamcrest.version>
+        <hll.version>1.6.0</hll.version>
+        <bytebuddy.version>1.7.1</bytebuddy.version>
+        <pcollections.version>2.1.2</pcollections.version>
     </properties>
-
 </project>

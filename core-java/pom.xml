@@ -382,7 +382,7 @@
         </profile>
     </profiles>
 
-    <properties>
+    <properties>    	
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
@@ -408,7 +408,7 @@
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.8.9</mockito.version>
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
 
