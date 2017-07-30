@@ -8,13 +8,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.util.StreamUtils;
+
+import static com.baeldung.streamutils.CopyStream.getStringFromInputStream;
 
 public class CopyStreamTest {
 
@@ -97,14 +97,4 @@ public class CopyStreamTest {
 		Assert.assertEquals(inputFileContent, content);
 	}
 
-	public static String getStringFromInputStream(InputStream input) throws IOException {
-		StringWriter writer = new StringWriter();
-		IOUtils.copy(input, writer, "UTF-8");
-		return writer.toString();
-	}
-	
-	public InputStream getNonClosingInputStream() throws IOException {
-	    InputStream in = new FileInputStream("src/test/resources/input.txt");
-	    return StreamUtils.nonClosing(in);
-	}
 }
