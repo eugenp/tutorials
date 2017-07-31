@@ -5,31 +5,35 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class JoolMergeStreamsTest {
     @Test
     public void givenTwoStreams_whenMergingStreams_thenResultingStreamContainsElementsFromBothStreams() {
-        Seq<Integer> seq1 = Seq.of(1, 3, 5);
-        Seq<Integer> seq2 = Seq.of(2, 4, 6);
+        Stream<Integer> seq1 = Stream.of(1, 3, 5);
+        Stream<Integer> seq2 = Stream.of(2, 4, 6);
 
-        Seq<Integer> resultingSeq = seq1.append(seq2);
+        Stream<Integer> resultingSeq = Seq.ofType(seq1, Integer.class)
+          .append(seq2);
 
         assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6),
-                     resultingSeq.toList());
+          resultingSeq.collect(Collectors.toList()));
     }
 
     @Test
     public void givenThreeStreams_whenAppendingAndPrependingStreams_thenResultingStreamContainsElementsFromAllStreams() {
-        Seq<String> seq = Seq.of("foo", "bar");
-        Seq<String> openingBracketSeq = Seq.of("[");
-        Seq<String> closingBracketSeq = Seq.of("]");
+        Stream<String> seq = Stream.of("foo", "bar");
+        Stream<String> openingBracketSeq = Stream.of("[");
+        Stream<String> closingBracketSeq = Stream.of("]");
 
-        Seq<String> resultingStream = seq.append(closingBracketSeq)
-                                         .prepend(openingBracketSeq);
+        Stream<String> resultingStream = Seq.ofType(seq, String.class)
+          .append(closingBracketSeq)
+          .prepend(openingBracketSeq);
 
         Assert.assertEquals(Arrays.asList("[", "foo", "bar", "]"),
-                            resultingStream.toList());
+          resultingStream.collect(Collectors.toList()));
     }
 }

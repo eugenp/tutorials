@@ -2,20 +2,20 @@ package com.baeldung.concurrent.skiplist;
 
 import java.time.ZonedDateTime;
 
-public class Event {
+class Event {
     private final ZonedDateTime eventTime;
     private final String content;
 
-    public Event(ZonedDateTime eventTime, String content) {
+    Event(ZonedDateTime eventTime, String content) {
         this.eventTime = eventTime;
         this.content = content;
     }
 
-    public ZonedDateTime getEventTime() {
+    ZonedDateTime getEventTime() {
         return eventTime;
     }
 
-    public String getContent() {
+    String getContent() {
         return content;
     }
 }

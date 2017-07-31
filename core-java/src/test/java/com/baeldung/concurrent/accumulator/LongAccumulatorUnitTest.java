@@ -24,8 +24,8 @@ public class LongAccumulatorUnitTest {
 
         //when
         Runnable accumulateAction = () -> IntStream
-                .rangeClosed(0, numberOfIncrements)
-                .forEach(accumulator::accumulate);
+          .rangeClosed(0, numberOfIncrements)
+          .forEach(accumulator::accumulate);
 
         for (int i = 0; i < numberOfThreads; i++) {
             executorService.execute(accumulateAction);
