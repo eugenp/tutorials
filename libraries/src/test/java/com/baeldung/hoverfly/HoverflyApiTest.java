@@ -48,10 +48,9 @@ public class HoverflyApiTest {
       service(matches("www.*dung.com"))
         .get(startsWith("/api/student"))     
         .queryParam("page", any()) 
-        .queryParam("name", equalsTo("Joe"))
         .willReturn(success())
     
-        .post("/api/student")
+        .post(equalsTo("/api/student"))
         .body(equalsToJson(jsonWithSingleQuotes("{'id':'1','name':'Joe'}")))
         .willReturn(success())
     
