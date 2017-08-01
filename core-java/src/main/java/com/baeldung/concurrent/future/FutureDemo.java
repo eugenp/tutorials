@@ -1,6 +1,5 @@
 package com.baeldung.concurrent.future;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,12 +15,10 @@ public class FutureDemo {
 
 		ExecutorService executorService = Executors.newFixedThreadPool(10);
 
-		Future<String> future = executorService.submit(new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				Thread.sleep(10000l);
-				return "Hello World";
-			}
+		Future<String> future = executorService.submit(() -> {
+			// Task
+			Thread.sleep(10000l);
+			return "Hellow world";
 		});
 
 		future.cancel(false);

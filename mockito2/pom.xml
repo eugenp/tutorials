@@ -53,6 +53,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- testing -->
-        <mockito.version>2.7.5</mockito.version>
+        <mockito.version>2.8.9</mockito.version>
     </properties>
 </project>
