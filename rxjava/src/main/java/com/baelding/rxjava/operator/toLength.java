@@ -11,12 +11,6 @@ public class toLength implements Transformer<String, Integer> {
 
     @Override
     public Observable<Integer> call(Observable<String> source) {
-
-        return source.map(new Func1<String, Integer>() {
-            @Override
-            public Integer call(String str) {
-                return str.length();
-            }
-        });
+        return source.map(String::length);
     }
 }

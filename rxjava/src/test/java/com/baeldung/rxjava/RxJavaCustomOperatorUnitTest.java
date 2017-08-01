@@ -96,14 +96,7 @@ public class RxJavaCustomOperatorUnitTest {
 
     @Test
     public void whenUseFunctionTransformer_thenSuccess() {
-        final Transformer<String, Integer> toLengthFn = source -> {
-            return source.map(new Func1<String, Integer>() {
-                @Override
-                public Integer call(String str) {
-                    return str.length();
-                }
-            });
-        };
+        final Transformer<String, Integer> toLengthFn = source -> source.map(String::length);
 
         final List<Integer> results = new ArrayList<Integer>();
         Observable.from(Arrays.asList("apple", "orange"))
