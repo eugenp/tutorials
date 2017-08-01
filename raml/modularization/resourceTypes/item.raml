@@ -1,0 +1,14 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent any single item
+description: A single <<typeName>>
+get:
+  description: Get a <<typeName>> by <<resourcePathName>>
+  is: [ hasResponseItem, hasNotFound ]
+put:
+  description: Update a <<typeName>> by <<resourcePathName>>
+  is: [ hasRequestItem, hasResponseItem, hasNotFound ]
+delete:
+  description: Delete a <<typeName>> by <<resourcePathName>>
+  is: [ hasNotFound ]
+  responses:
+    204:

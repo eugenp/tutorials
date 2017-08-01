@@ -1,0 +1,46 @@
+[
+	{
+		"username": "oracle",
+		"password": 
+		{
+			"current": 
+			{
+				"value": "Java_SE_8",
+				"created": 1397754000000
+			},
+
+			"old": 
+			[
+				{
+					"value": "Java_SE_7",
+					"created": 1312650000000
+				}
+			]
+		}
+	},
+
+	{
+		"username": "sun",
+		"password": 
+		{
+			"current": 
+			{
+				"value": "Java_SE_6",
+				"created": 1168448400000
+			},
+
+			"old": 
+			[
+				{
+					"value": "J2SE_5.0",
+					"created": 1099069200000
+				},
+
+				{
+					"value": "J2SE_1.4",
+					"created": 1025542800000
+				}
+			]
+		}
+	}
+]

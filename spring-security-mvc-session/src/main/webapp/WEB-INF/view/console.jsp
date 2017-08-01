@@ -16,7 +16,7 @@
 		<br/>
 	</security:authorize>
 
-	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
+	<a href="<c:url value="/logout" />">Logout</a>
 	
 </body>
 </html>

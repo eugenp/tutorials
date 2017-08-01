@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="header.table.height">
+<refmeta>
+<refentrytitle>header.table.height</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>header.table.height</refname>
+<refpurpose>Specify the minimum height of the table containing the running page headers</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv><src:fragment xml:id="header.table.height.frag">
+<xsl:param name="header.table.height">14pt</xsl:param>
+</src:fragment></refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Page headers in print output use a three column table
+to position text at the left, center, and right side of
+the header on the page.
+This parameter lets you specify the minimum height 
+of the single row in the table.  
+Since this specifies only the minimum height,
+the table should automatically grow to fit taller content.
+The default value is "14pt".</para>
+
+</refsection>
+</refentry>

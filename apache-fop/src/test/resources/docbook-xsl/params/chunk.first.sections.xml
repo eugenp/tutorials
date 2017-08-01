@@ -1,0 +1,31 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="chunk.first.sections">
+<refmeta>
+<refentrytitle>chunk.first.sections</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>chunk.first.sections</refname>
+<refpurpose>Chunk the first top-level section?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="chunk.first.sections.frag">
+<xsl:param name="chunk.first.sections" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, a chunk will be created for the first top-level
+<tag>sect1</tag> or <tag>section</tag> elements in
+each component. Otherwise, that section will be part of the chunk for
+its parent.
+</para>
+
+</refsection>
+</refentry>

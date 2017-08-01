@@ -1,0 +1,108 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="generate.toc">
+<refmeta>
+<refentrytitle>generate.toc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">table</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.toc</refname>
+<refpurpose>Control generation of ToCs and LoTs</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="generate.toc.frag">
+<xsl:param condition="html" name="generate.toc">
+appendix  toc,title
+article/appendix  nop
+article   toc,title
+book      toc,title,figure,table,example,equation
+chapter   toc,title
+part      toc,title
+preface   toc,title
+qandadiv  toc
+qandaset  toc
+reference toc,title
+sect1     toc
+sect2     toc
+sect3     toc
+sect4     toc
+sect5     toc
+section   toc
+set       toc,title
+</xsl:param>
+<xsl:param condition="fo" name="generate.toc">
+/appendix toc,title
+article/appendix  nop
+/article  toc,title
+book      toc,title,figure,table,example,equation
+/chapter  toc,title
+part      toc,title
+/preface  toc,title
+reference toc,title
+/sect1    toc
+/sect2    toc
+/sect3    toc
+/sect4    toc
+/sect5    toc
+/section  toc
+set       toc,title
+</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter has a structured value. It is a table of space-delimited
+path/value pairs. Each path identifies some element in the source document
+using a restricted subset of XPath (only the implicit child axis, no wildcards,
+no predicates). Paths can be either relative or absolute.</para>
+
+<para>When processing a particular element, the stylesheets consult this table to
+determine if a ToC (or LoT(s)) should be generated.</para>
+
+<para>For example, consider the entry:</para>
+
+<screen>book toc,figure</screen>
+
+<para>This indicates that whenever a <tag>book</tag> is formatted, a
+Table Of Contents and a List of Figures should be generated. Similarly,</para>
+
+<screen>/chapter toc</screen>
+
+<para>indicates that whenever a document <emphasis>that has a root
+of</emphasis> <tag>chapter</tag> is formatted, a Table of
+Contents should be generated. The entry <literal>chapter</literal> would match
+all chapters, but <literal>/chapter</literal> matches only <tag>chapter</tag>
+document elements.</para>
+
+<para>Generally, the longest match wins. So, for example, if you want to distinguish
+articles in books from articles in parts, you could use these two entries:</para>
+
+<screen>book/article toc,figure
+part/article toc</screen>
+
+<para>Note that an article in a part can never match a <literal>book/article</literal>,
+so if you want nothing to be generated for articles in parts, you can simply leave
+that rule out.</para>
+
+<para>If you want to leave the rule in, to make it explicit that you're turning
+something off, use the value <quote>nop</quote>. For example, the following
+entry disables ToCs and LoTs for articles:</para>
+
+<screen>article nop</screen>
+
+<para>Do not simply leave the word <quote>article</quote> in the file
+without a matching value. That'd be just begging the silly little
+path/value parser to get confused.</para>
+
+<para>Section ToCs are further controlled by the
+<parameter>generate.section.toc.level</parameter> parameter.
+For a given section level to have a ToC, it must have both an entry in 
+<parameter>generate.toc</parameter> and be within the range enabled by
+<parameter>generate.section.toc.level</parameter>.</para>
+</refsection>
+</refentry>

@@ -1,0 +1,44 @@
+{
+  "name": "messageformat",
+  "description": "PluralFormat and SelectFormat Message and i18n Tool - A JavaScript Implemenation of the ICU standards.",
+  "main": "messageformat.js",
+  "license": "To use or fork, MIT License. To contribute back, Dojo CLA",
+  "ignore": [
+    ".*",
+    "lib/",
+    "test/",
+    "component.json",
+    "jsdoc-*",
+    "Makefile",
+    "package.json"
+  ],
+  "keywords": [
+    "i18n",
+    "icu",
+    "internationalization",
+    "gettext",
+    "messageformat",
+    "pluralformat",
+    "selectformat",
+    "choiceformat"
+  ],
+  "authors": [
+    "Alex Sexton <alexsexton@gmail.com>",
+    "Eemeli Aro <eemeli@gmail.com>"
+  ],
+  "homepage": "https://messageformat.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SlexAxton/messageformat.js.git"
+  },
+  "version": "0.3.1",
+  "_release": "0.3.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.1",
+    "commit": "4fc06c707a0cbde72de103e60cddab23f7885508"
+  },
+  "_source": "https://github.com/SlexAxton/messageformat.js.git",
+  "_target": "0.3.1",
+  "_originalSource": "messageformat"
+}

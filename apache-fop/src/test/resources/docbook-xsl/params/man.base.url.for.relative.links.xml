@@ -1,0 +1,76 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.base.url.for.relative.links">
+  <refmeta>
+    <refentrytitle>man.base.url.for.relative.links</refentrytitle>
+    <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>man.base.url.for.relative.links</refname>
+    <refpurpose>Specifies a base URL for relative links</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <src:fragment xml:id="man.base.url.for.relative.links.frag"><xsl:param name="man.base.url.for.relative.links">[set $man.base.url.for.relative.links]/</xsl:param></src:fragment>
+  </refsynopsisdiv>
+
+  <refsection><info><title>Description</title></info>
+
+    <para>For any “notesource” listed in the auto-generated
+      “NOTES” section of output man pages (which is generated when
+      the value of the
+      <parameter>man.endnotes.list.enabled</parameter> parameter
+      is non-zero), if the notesource is a link source with a
+      relative URI, the URI is displayed in output with the value
+      of the
+      <parameter>man.base.url.for.relative.links</parameter>
+      parameter prepended to the value of the link URI.</para>
+
+    <note>
+      <para>A link source is an notesource that references an
+        external resource:
+        <itemizedlist>
+          <listitem>
+            <para>a <tag>ulink</tag> element with a <tag
+                class="attribute">url</tag> attribute</para>
+          </listitem>
+          <listitem>
+            <para>any element with an <tag
+                class="attribute">xlink:href</tag> attribute</para>
+          </listitem>
+          <listitem>
+            <para>an <tag>imagedata</tag>, <tag>audiodata</tag>, or
+              <tag>videodata</tag> element</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </note>
+
+    <para>If you use relative URIs in link sources in your DocBook
+      <tag>refentry</tag> source, and you leave
+      <parameter>man.base.url.for.relative.links</parameter>
+      unset, the relative links will appear “as is” in the “Notes”
+      section of any man-page output generated from your source.
+      That’s probably not what you want, because such relative
+      links are only usable in the context of HTML output. So, to
+      make the links meaningful and usable in the context of
+      man-page output, set a value for
+      <parameter>man.base.url.for.relative.links</parameter> that
+      points to the online version of HTML output generated from
+      your DocBook <tag>refentry</tag> source. For
+      example:
+      <programlisting
+        >&lt;xsl:param name="man.base.url.for.relative.links"
+        >http://www.kernel.org/pub/software/scm/git/docs/&lt;/xsl:param></programlisting>
+    </para>
+
+  </refsection>
+
+  <refsection><info><title>Related Parameters</title></info>
+    <para><parameter>man.endnotes.list.enabled</parameter></para>
+  </refsection>
+
+</refentry>

@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="qanda.title.level4.properties">
+<refmeta>
+<refentrytitle>qanda.title.level4.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>qanda.title.level4.properties</refname>
+<refpurpose>Properties for level-4 qanda set titles</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="qanda.title.level4.properties.frag">
+<xsl:attribute-set name="qanda.title.level4.properties">
+  <xsl:attribute name="font-size">
+    <xsl:value-of select="$body.font.master * 1.2"/>
+    <xsl:text>pt</xsl:text>
+  </xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The properties of level-4 qanda set titles.</para>
+
+</refsection>
+</refentry>

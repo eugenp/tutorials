@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+# This is the file /libraries/resourceTypes.raml
+usage: This library defines the resource types for the API
+uses:
+  myTraits: !include traits.raml
+resourceTypes:
+  collection:
+    usage: Use this resourceType to represent a collection of items
+    description: A collection of <<resourcePathName|!uppercamelcase>>
+    get:
+      description: |
+        Get all <<resourcePathName|!uppercamelcase>>,
+        optionally filtered
+      is: [ myTraits.hasResponseCollection ]
+    post:
+      description: |
+        Create a new <<resourcePathName|!uppercamelcase|!singularize>>
+      is: [ myTraits.hasRequestItem ]
+  item:
+    usage: Use this resourceType to represent any single item
+    description: A single <<typeName>>
+    get:
+      description: Get a <<typeName>> by <<resourcePathName>>
+      is: [ myTraits.hasResponseItem, myTraits.hasNotFound ]
+    put:
+      description: Update a <<typeName>> by <<resourcePathName>>
+      is: [ myTraits.hasRequestItem, myTraits.hasResponseItem, myTraits.hasNotFound ]
+    delete:
+      description: Delete a <<typeName>> by <<resourcePathName>>
+      is: [ myTraits.hasNotFound ]
+      responses:
+        204:

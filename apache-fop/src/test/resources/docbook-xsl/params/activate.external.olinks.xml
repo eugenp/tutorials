@@ -1,0 +1,69 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="activate.external.olinks">
+<refmeta>
+<refentrytitle>activate.external.olinks</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>activate.external.olinks</refname>
+<refpurpose>Make external olinks into active links</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="activate.external.olinks.frag">
+<xsl:param name="activate.external.olinks" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If <parameter>activate.external.olinks</parameter> is nonzero
+(the default), then any olinks that reference another document
+become active links that can be clicked on to follow the link.
+If the parameter is set to zero, then external olinks
+will have the appropriate link text generated, but the link is
+not made active.  Olinks to destinations in
+the current document remain active.</para>
+
+<para>To make an external olink active for HTML
+outputs, the link text is wrapped in an <tag>a</tag>
+element with an <tag>href</tag> attribute. To
+make an external olink active for FO outputs, the link text is
+wrapped in an <tag>fo:basic-link</tag> element with an
+<tag>external-destination</tag> attribute.</para>
+
+<para>This parameter is useful when you need external olinks
+to resolve but not be clickable. For example, if documents
+in a collection are available independently of each other,
+then having active links between them could lead to
+unresolved links when a given target document is missing.</para>
+
+<para>The epub stylesheets set this parameter to zero by default
+because there is no standard linking mechanism between Epub documents.</para>
+
+<para>If external links are made inactive, you should
+consider setting the
+stylesheet parameter <parameter>olink.doctitle</parameter>
+to <literal>yes</literal>. That will append the external document's
+title to the link text, making it easier for the user to
+locate the other document.</para>
+
+<para>An olink is considered external when the
+<parameter>current.docid</parameter> stylesheet parameter
+is set to some value, and the olink's <tag>targetdoc</tag>
+attribute has a different value. If the two values
+match, then the link is considered internal.  If the
+<parameter>current.docid</parameter> parameter is blank, or
+the <tag>olink</tag> element does not have a <tag>targetdoc</tag> attribute,
+then the link is considered to be internal and will become
+an active link.</para>
+
+<para>See also <parameter>olink.doctitle</parameter>,
+<parameter>prefer.internal.olink</parameter>.</para>
+
+</refsection>
+</refentry>

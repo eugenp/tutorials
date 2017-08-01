@@ -1,0 +1,41 @@
+@import 'src/main/less/highlight_default.less';
+@import 'src/main/less/specs.less';
+@import 'src/main/less/auth.less';
+
+#header {
+    display: none;
+}
+
+.swagger-section {
+
+.swagger-ui-wrap {
+
+    .model-signature pre {
+        max-height: none;
+    }
+
+    .body-textarea {
+        width: 100px;
+    }
+
+    input.parameter {
+        width: 100px;
+    }
+    
+    ul#resources {
+        li.resource {
+            div.heading ul.options {
+                display: none;
+            }
+            ul.endpoints {
+                display: block !important;
+                li.endpoint ul.operations li.operation div.content {
+                    display: block !important;
+                }
+            }
+        }
+    }
+
+}
+
+}

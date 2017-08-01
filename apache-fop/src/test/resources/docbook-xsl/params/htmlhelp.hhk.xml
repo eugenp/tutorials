@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="htmlhelp.hhk">
+<refmeta>
+<refentrytitle>htmlhelp.hhk</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>htmlhelp.hhk</refname>
+<refpurpose>Filename of index file.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="htmlhelp.hhk.frag">
+<xsl:param name="htmlhelp.hhk">index.hhk</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>set the name of the index file. The default is <filename>index.hhk</filename>.</para>
+
+</refsection>
+</refentry>

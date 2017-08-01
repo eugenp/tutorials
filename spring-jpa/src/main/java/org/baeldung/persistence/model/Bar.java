@@ -3,14 +3,19 @@ package org.baeldung.persistence.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Bar implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +24,9 @@ public class Bar implements Serializable {
     @Column(nullable = false)
     private String name;
 
-    private List<Foo> foos;
+    @OneToMany(mappedBy = "bar", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OrderBy("name ASC")
+    List<Foo> fooList;
 
     public Bar() {
         super();
@@ -38,6 +45,7 @@ public class Bar implements Serializable {
     }
 
     public void setId(final long id) {
+
         this.id = id;
     }
 
@@ -50,7 +58,11 @@ public class Bar implements Serializable {
     }
 
     public List<Foo> getFooList() {
-        return foos;
+        return fooList;
+    }
+
+    public void setFooList(final List<Foo> fooList) {
+        this.fooList = fooList;
     }
 
     //
@@ -83,7 +95,7 @@ public class Bar implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
+        builder.append("Bar [name=").append(name).append("]");
         return builder.toString();
     }
 

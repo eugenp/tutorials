@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modal</title>
+  </head>
+  <body>
+    <!--
+    Only the inner content of the following div is included within the
+    template, in the section modal
+    -->
+    <div data-th-fragment="modal(id, title, body, footer)" class="modal fade" role="dialog" id="Modal" data-th-id="${id}" tabindex="-1" aria-labelledby="ModalLabel" data-th-attr="aria-labelledby=${id} + 'Label'">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="ModalHeader" data-th-id="${id} + 'Header'">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h2 class="modal-title" id="ModalLabel" data-th-id="${id} + 'Label'" data-th-text="${title}">Title</h2>
+          </div>
+          <div class="modal-body" data-th-insert="${body}" id="ModalBody" data-th-id="${id} + 'Body'"></div>
+          <div class="modal-footer" data-th-insert="${footer}" id="ModalFooter" data-th-id="${id} + 'Footer'"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

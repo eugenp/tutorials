@@ -1,0 +1,195 @@
+DocBook Assembly Stylesheets
+==============================
+bobs@sagehill.net
+
+This directory provides XSL stylesheets for working with
+DocBook assemblies.  It is intended to enable working with
+<topic> and <assembly> elements, as defined in DocBook 5.1
+and later.
+
+This kit currently supports most features of an assembly.
+See the "Unsupported Features" section below for details
+of what is not currently supported.  These more advanced
+features will be supported as it is further developed.
+
+
+Content of this directory:
+--------------------------
+topic-maker-chunk.xsl        - stylesheet to modularize an existing DB5 document.
+topic-maker.xsl              - imported by topic-maker-chunk.xsl.
+assemble.xsl                 - stylesheet to process an <assembly> into a document.
+
+
+The toolkit consists of an assemble.xsl XSL stylesheet
+to process a DocBook <assembly> element to convert it
+to an assembled DocBook 5 document ready to be formatted.
+This stylesheet will enable users to structure a book from
+modular files.
+
+To make it easy to initially create a modular book, this
+kit also includes a topic-maker-chunk.xsl XSL stylesheet
+to break apart an existing DocBook 5 book into modular
+files, and also create the associated <assembly> document.
+Then you can run the assemble.xsl stylesheet to put it
+back together as a single DocBook document.
+
+
+To create an assembly and topic files from a book or article document
+=======================================================================
+
+If you have an existing DocBook 5 book or article document,
+you can convert it to an assembly and a collection of
+modular topic files.  If you want to convert a DocBook 4
+document, you must first convert it to version 5.
+
+For example, to disassemble a DocBook 5 book document named book.xml:
+
+xsltproc --xinclude \
+         --stringparam assembly.filename myassembly.xml \
+         --stringparam base.dir topics/  \
+         topic-maker-chunk.xsl  \
+         mybook.xml
+
+This command will result in a master assembly file named
+'myassembly.xml' with a root element of <assembly>, containing
+a single <structure> element. It will also break up the
+content of the book into modular chunks that are output
+to the 'topics/' subdirectory as specified in the 'base.dir'
+parameter.
+
+Options
+----------
+The name of the assembly file is set by the stylesheet param
+named 'assembly.filename', which should include the filename suffix.
+
+Modular files are output to the directory location specified
+by the 'base.dir' parameter.  If you want them in the current
+directory, then don't set that  param.
+
+By default the assembly element is output to the current
+directory, *not* into base.dir with the modular files.
+The <resources> element in the assembly has its xml:base
+attribute set to the value of 'base.dir', so that it is
+added to the paths to the modular files when processed.
+If you set the stylesheet param 'manifest.in.base.dir'
+to 1, then the assembly file is created in the base.dir
+directory and the xml:base attribute is omitted (since
+they are together in the same directory).
+
+If you want the assembly file in 'base.dir' instead of
+the current directory, then set the stylesheet param
+'manifest.in.base.dir' to 1.
+
+The stylesheet chunks a document into modules at the
+same boundaries as the chunking XHTML stylesheet, because
+it reuses many of the chunking stylesheet templates.
+You can alter the chunking behavior with the same options
+as for XHTML chunking.
+
+For example, the stylesheet will chunk sections into topics
+down to section level 3 by default.  To change that level,
+change the stylesheet param 'chunk.section.depth' to
+another value.
+
+Finer control of chunking can be achieved by using
+the <?dbhtml stop-chunking?> processing instruction in
+the source file.
+
+Many modular elements retain their original element name,
+such as glossary, bibliography, index, and such.  By default, the
+stylesheet converts chapter, article, preface and section elements
+into <topic> modules.  To change that list of
+converted element names, alter the stylesheet param named
+'topic.elements'.  If that param is empty, then no elements
+will be converted to <topic>, so they will all retain their
+original element names.
+
+Modular filenames use the same naming scheme as the chunking
+XHTML stylesheet, and supports the same file naming options such as
+the param 'use.id.as.filename', which is set to 1 by default.
+Note that the stylesheet param 'html.ext' is set to '.xml'
+because it is producing modular XML files, not HTML files.
+
+Root element conversion
+------------------------
+By default, the root element of the original document is 
+also converted to a module, and <structure> gets a resourceref
+attribute to reference it.  If you set the stylesheet
+param 'root.as.resourceref' to zero, then the root element
+is handled differently, as described as follows.
+
+If the structure element does not have a resourcref
+attribute, the root element is constructed rather
+than copied from a resource. The structure element must
+have a renderas attribute (or its child output element must
+have such) to select the output root element name.  
+
+Any content between the root element start tag and the
+first module is put into a resource with the original
+root element.  To pull this content in, the first
+module in the structure points to this resource but
+uses a contentonly="yes" attribute. The effect of
+that attribute is to pull in all content *except*
+the root element of that resource.
+
+In general, if you have content that does not logically
+have its own container element, you can put the content
+into a suitable container element and then deselect the
+container element upon assembly with the contentonly="yes"
+attribute.  That attribute can also be used to avoid
+pulling in a resource's xml:id when you want to change it.
+
+
+To process an <assembly> into an assembled DocBook document
+==============================================================
+
+To convert an <assembly> and its associated modular
+files into a single DocBook document, process
+your assembly document with the assemble.xsl stylesheet.
+You should then be able to process the resulting
+document with a DocBook XSL formatting stylesheet.
+
+
+
+
+Useful params in assemble.xsl
+-----------------------------
+The $root.default.renderas param sets the name of the
+root element of the assembled document, if it is not
+otherwise specified with @renderas.  Its default value
+is 'book'.
+
+The $topic.default.renderas param sets the name of the
+output element for any topic element included in the
+assembly, if it is not otherwise specified with
+@renderas.  It's default value is 'section'.
+
+The $structure.id param lets you specify at runtime
+the id value of the structure you want to reassemble.
+This is only necessary if you have more than one
+structure element in your assembly.
+
+The $output.type param also lets you specify at runtime
+which structure element to process.  In this case,
+the value should match on an @type attribute on
+the structure element.
+
+The $output.format param lets you specify at runtime
+which of several possible output formats are being generated.
+The param value is compared to the @format
+attribute on <output> elements to select specific properties
+for a module.
+
+
+
+Unsupported Features
+-----------------------
+
+The transforms and transform elements are currently ignored
+by the assembly stylesheet.
+
+The relationships and relationship elements are currently
+ignored by the assembly stylesheet.
+
+The filterin and filterout elements are not currently
+supported.
