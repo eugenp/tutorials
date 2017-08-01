@@ -4,8 +4,8 @@ import rx.Observable;
 import rx.Observable.Transformer;
 import rx.functions.Func1;
 
-public class toLength implements Transformer<String, Integer> {
-    public toLength() {
+public class ToLength implements Transformer<String, Integer> {
+    public ToLength() {
         super();
     }
 

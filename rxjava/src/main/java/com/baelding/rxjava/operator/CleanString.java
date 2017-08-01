@@ -3,9 +3,9 @@ package com.baelding.rxjava.operator;
 import rx.Observable.Operator;
 import rx.Subscriber;
 
-public class cleanString implements Operator<String, String> {
+public class CleanString implements Operator<String, String> {
 
-    public cleanString() {
+    public CleanString() {
         super();
     }
 
