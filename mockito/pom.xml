@@ -41,7 +41,7 @@
         </dependency>
         <dependency>
             <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito</artifactId>
+            <artifactId>powermock-api-mockito2</artifactId>
             <version>${powermock.version}</version>
             <scope>test</scope>
         </dependency>
@@ -65,7 +65,7 @@
         <commons-lang3.version>3.5</commons-lang3.version>
 
         <!-- testing -->
-        <powermock.version>1.6.6</powermock.version>
+        <powermock.version>1.7.0</powermock.version>
 
     </properties>
 

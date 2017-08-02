@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.baeldung.web.log.data.RateCard;
 import com.baeldung.web.log.data.TaxiRide;
 import com.baeldung.web.log.service.TaxiFareCalculatorService;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class TaxiFareController {
 
     @Autowired
@@ -23,15 +24,13 @@ public class TaxiFareController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(TaxiFareController.class);
     
-    @GetMapping(value = "/taxifare/get/")
-    @ResponseBody
+    @GetMapping("/taxifare/get/")
     public RateCard getTaxiFare() {
         LOGGER.debug("getTaxiFare() - START");
         return new RateCard();
     }
     
-    @PostMapping(value = "/taxifare/calculate/")
-    @ResponseBody
+    @PostMapping("/taxifare/calculate/")
     public String calculateTaxiFare(@RequestBody @Valid TaxiRide taxiRide) {
         LOGGER.debug("calculateTaxiFare() - START");
         String totalFare = taxiFareCalculatorService.calculateFare(taxiRide);
