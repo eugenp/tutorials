@@ -4,15 +4,29 @@ public class Sandbox {
 
     public static void main(String[] args) {
         
-        OurSingleton object1 = OurSingleton.getInstance();
-        //OurSingleton object1 = new OurSingleton(); //Unresolved compilation problem: The constructor OurSingleton() is not visible
+        //Class singleton
         
-        System.out.println(object1.getInfo()); //Initial info
+        ClassSingleton classSingleton1 = ClassSingleton.getInstance();
+        //OurSingleton object1 = new OurSingleton(); // The constructor OurSingleton() is not visible
         
-        OurSingleton object2 = OurSingleton.getInstance();
-        object2.setInfo("New info");
+        System.out.println(classSingleton1.getInfo()); //Initial class info
         
-        System.out.println(object1.getInfo()); //New info
-        System.out.println(object2.getInfo()); //New info
+        ClassSingleton classSingleton2 = ClassSingleton.getInstance();
+        classSingleton2.setInfo("New class info");
+        
+        System.out.println(classSingleton1.getInfo()); //New class info
+        System.out.println(classSingleton2.getInfo()); //New class info
+        
+        //Enum singleton
+        
+        EnumSingleton enumSingleton1 = EnumSingleton.INSTANCE;
+        
+        System.out.println(enumSingleton1.getInfo()); //Initial enum info
+        
+        EnumSingleton enumSingleton2 = EnumSingleton.INSTANCE;
+        enumSingleton2.setInfo("New enum info");
+        
+        System.out.println(enumSingleton1.getInfo()); //New enum info
+        System.out.println(enumSingleton2.getInfo()); //New enum info
     }
 }
