@@ -1,17 +1,5 @@
 package com.baeldung.vavr.collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Comparator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
-import org.junit.Test;
-
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
 import io.vavr.collection.Array;
@@ -28,6 +16,17 @@ import io.vavr.collection.Stream;
 import io.vavr.collection.TreeMap;
 import io.vavr.collection.TreeSet;
 import io.vavr.collection.Vector;
+import org.junit.Test;
+
+import java.util.Comparator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 public class CollectionAPIUnitTest {
 
@@ -234,7 +233,7 @@ public class CollectionAPIUnitTest {
           .toJavaMap(i -> Tuple.of(i, Integer.valueOf(i)));
         assertEquals(new Integer(2), map.get("2"));
     }
-    
+
     @Test
     public void givenVavrList_whenCollected_thenCorrect() {
         java.util.Set<Integer> javaSet = List.of(1, 2, 3)
