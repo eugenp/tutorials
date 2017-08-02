@@ -13,7 +13,7 @@ public class MacbookPro extends Computer {
         super(age, color);
     }
 
-    public MacbookPro(Integer age, String color, Integer healty) {
+    MacbookPro(Integer age, String color, Integer healty) {
         super(age, color, healty);
     }
 

@@ -115,7 +115,7 @@
 
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 
-        <org.springframework.data.version>1.9.6.RELEASE</org.springframework.data.version>
+        <org.springframework.data.version>1.10.4.RELEASE</org.springframework.data.version>
 
         <rest-assured.version>2.9.0</rest-assured.version>
         <querydsl.version>4.1.4</querydsl.version>

@@ -20,13 +20,13 @@ public class StreamApiTest {
 
         assertEquals("Sean", last);
     }
-    
+
     @Test
     public void givenInfiniteStream_whenGetInfiniteStreamLastElementUsingReduce_thenReturnLastElement() {
         int last = StreamApi.getInfiniteStreamLastElementUsingReduce();
         assertEquals(19, last);
     }
-    
+
     @Test
     public void givenListAndCount_whenGetLastElementUsingSkip_thenReturnLastElement() {
         List<String> valueList = new ArrayList<>();

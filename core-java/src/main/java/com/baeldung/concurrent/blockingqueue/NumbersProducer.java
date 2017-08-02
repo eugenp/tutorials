@@ -9,7 +9,7 @@ public class NumbersProducer implements Runnable {
     private final int poisonPill;
     private final int poisonPillPerProducer;
 
-    public NumbersProducer(BlockingQueue<Integer> numbersQueue, int poisonPill, int poisonPillPerProducer) {
+    NumbersProducer(BlockingQueue<Integer> numbersQueue, int poisonPill, int poisonPillPerProducer) {
         this.numbersQueue = numbersQueue;
         this.poisonPill = poisonPill;
         this.poisonPillPerProducer = poisonPillPerProducer;
