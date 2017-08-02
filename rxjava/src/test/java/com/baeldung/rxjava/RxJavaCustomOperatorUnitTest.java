@@ -15,10 +15,9 @@ import rx.Observable;
 import rx.Observable.Operator;
 import rx.Observable.Transformer;
 import rx.Subscriber;
-import rx.functions.Func1;
 
-import com.baelding.rxjava.operator.cleanString;
-import com.baelding.rxjava.operator.toLength;
+import com.baelding.rxjava.operator.CleanString;
+import com.baelding.rxjava.operator.ToLength;
 
 public class RxJavaCustomOperatorUnitTest {
 
@@ -28,7 +27,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<String> results = new ArrayList<String>();
 
         final Observable<String> observable = Observable.from(list)
-            .lift(new cleanString());
+            .lift(new CleanString());
 
         // when
         observable.subscribe(results::add);
@@ -45,7 +44,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<Integer> results = new ArrayList<Integer>();
 
         final Observable<Integer> observable = Observable.from(list)
-            .compose(new toLength());
+            .compose(new ToLength());
 
         // when
         observable.subscribe(results::add);
@@ -96,14 +95,7 @@ public class RxJavaCustomOperatorUnitTest {
 
     @Test
     public void whenUseFunctionTransformer_thenSuccess() {
-        final Transformer<String, Integer> toLengthFn = source -> {
-            return source.map(new Func1<String, Integer>() {
-                @Override
-                public Integer call(String str) {
-                    return str.length();
-                }
-            });
-        };
+        final Transformer<String, Integer> toLengthFn = source -> source.map(String::length);
 
         final List<Integer> results = new ArrayList<Integer>();
         Observable.from(Arrays.asList("apple", "orange"))
