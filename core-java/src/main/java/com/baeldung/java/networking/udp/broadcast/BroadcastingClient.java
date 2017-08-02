@@ -13,12 +13,12 @@ public class BroadcastingClient {
     private byte[]         buf;
 
     public BroadcastingClient(int expectedServerCount) throws Exception {
-        initializeSocketForBroadcasting();
         this.expectedServerCount = expectedServerCount;
         this.address             = InetAddress.getByName("255.255.255.255");
     }
 
     public int discoverServers(String msg) throws IOException {
+        initializeSocketForBroadcasting();
         copyMessageOnBuffer(msg);
         broadcastPacket();
         

@@ -12,9 +12,9 @@ public class MulticastingClient {
     private byte[]         buf;
 
     public MulticastingClient(int expectedServerCount) throws Exception {
-        this.socket = new DatagramSocket();
         this.expectedServerCount = expectedServerCount;
-        this.group               = InetAddress.getByName("224.0.0.0");
+        this.socket              = new DatagramSocket();
+        this.group               = InetAddress.getByName("230.0.0.0");
     }
 
     public int discoverServers(String msg) throws IOException {
