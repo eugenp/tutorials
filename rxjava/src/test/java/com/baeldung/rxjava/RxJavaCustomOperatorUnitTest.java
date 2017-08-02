@@ -1,5 +1,7 @@
 package com.baeldung.rxjava;
 
+import static com.baelding.rxjava.operator.ToCleanString.toCleanString;
+import static com.baelding.rxjava.operator.ToLength.toLength;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;
@@ -16,7 +18,7 @@ import rx.Observable.Operator;
 import rx.Observable.Transformer;
 import rx.Subscriber;
 
-import com.baelding.rxjava.operator.CleanString;
+import com.baelding.rxjava.operator.ToCleanString;
 import com.baelding.rxjava.operator.ToLength;
 
 public class RxJavaCustomOperatorUnitTest {
@@ -24,10 +26,10 @@ public class RxJavaCustomOperatorUnitTest {
     @Test
     public void whenUseCleanStringOperator_thenSuccess() {
         final List<String> list = Arrays.asList("john_1", "tom-3");
-        final List<String> results = new ArrayList<String>();
+        final List<String> results = new ArrayList<>();
 
         final Observable<String> observable = Observable.from(list)
-            .lift(new CleanString());
+            .lift(toCleanString());
 
         // when
         observable.subscribe(results::add);
@@ -41,10 +43,10 @@ public class RxJavaCustomOperatorUnitTest {
     @Test
     public void whenUseToLengthOperator_thenSuccess() {
         final List<String> list = Arrays.asList("john", "tom");
-        final List<Integer> results = new ArrayList<Integer>();
+        final List<Integer> results = new ArrayList<>();
 
         final Observable<Integer> observable = Observable.from(list)
-            .compose(new ToLength());
+            .compose(toLength());
 
         // when
         observable.subscribe(results::add);
@@ -57,33 +59,31 @@ public class RxJavaCustomOperatorUnitTest {
 
     @Test
     public void whenUseFunctionOperator_thenSuccess() {
-        final Operator<String, String> cleanStringFn = subscriber -> {
-            return new Subscriber<String>(subscriber) {
-                @Override
-                public void onCompleted() {
-                    if (!subscriber.isUnsubscribed()) {
-                        subscriber.onCompleted();
-                    }
+        final Operator<String, String> cleanStringFn = subscriber -> new Subscriber<String>(subscriber) {
+            @Override
+            public void onCompleted() {
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onCompleted();
                 }
+            }
 
-                @Override
-                public void onError(Throwable t) {
-                    if (!subscriber.isUnsubscribed()) {
-                        subscriber.onError(t);
-                    }
+            @Override
+            public void onError(Throwable t) {
+                if (!subscriber.isUnsubscribed()) {
+                    subscriber.onError(t);
                 }
+            }
 
-                @Override
-                public void onNext(String str) {
-                    if (!subscriber.isUnsubscribed()) {
-                        final String result = str.replaceAll("[^A-Za-z0-9]", "");
-                        subscriber.onNext(result);
-                    }
+            @Override
+            public void onNext(String str) {
+                if (!subscriber.isUnsubscribed()) {
+                    final String result = str.replaceAll("[^A-Za-z0-9]", "");
+                    subscriber.onNext(result);
                 }
-            };
+            }
         };
 
-        final List<String> results = new ArrayList<String>();
+        final List<String> results = new ArrayList<>();
         Observable.from(Arrays.asList("ap_p-l@e", "or-an?ge"))
             .lift(cleanStringFn)
             .subscribe(results::add);
@@ -97,7 +97,7 @@ public class RxJavaCustomOperatorUnitTest {
     public void whenUseFunctionTransformer_thenSuccess() {
         final Transformer<String, Integer> toLengthFn = source -> source.map(String::length);
 
-        final List<Integer> results = new ArrayList<Integer>();
+        final List<Integer> results = new ArrayList<>();
         Observable.from(Arrays.asList("apple", "orange"))
             .compose(toLengthFn)
             .subscribe(results::add);

@@ -2,10 +2,14 @@ package com.baelding.rxjava.operator;
 
 import rx.Observable;
 import rx.Observable.Transformer;
-import rx.functions.Func1;
 
 public class ToLength implements Transformer<String, Integer> {
-    public ToLength() {
+
+    public static ToLength toLength() {
+        return new ToLength();
+    }
+
+    private ToLength() {
         super();
     }
 
