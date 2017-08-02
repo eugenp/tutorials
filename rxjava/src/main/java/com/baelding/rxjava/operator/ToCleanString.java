@@ -3,9 +3,13 @@ package com.baelding.rxjava.operator;
 import rx.Observable.Operator;
 import rx.Subscriber;
 
-public class CleanString implements Operator<String, String> {
+public class ToCleanString implements Operator<String, String> {
 
-    public CleanString() {
+    public static ToCleanString toCleanString() {
+        return new ToCleanString();
+    }
+
+    public ToCleanString() {
         super();
     }
 

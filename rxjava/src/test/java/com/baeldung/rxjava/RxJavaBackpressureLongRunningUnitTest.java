@@ -34,7 +34,7 @@ public class RxJavaBackpressureLongRunningUnitTest {
     public void givenHotObservable_whenBackpressureNotDefined_shouldTrowException() {
         // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
-        PublishSubject<Integer> source = PublishSubject.<Integer> create();
+        PublishSubject<Integer> source = PublishSubject.create();
 
         source.observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
@@ -50,7 +50,7 @@ public class RxJavaBackpressureLongRunningUnitTest {
     public void givenHotObservable_whenWindowIsDefined_shouldNotThrowException() {
         // given
         TestSubscriber<Observable<Integer>> testSubscriber = new TestSubscriber<>();
-        PublishSubject<Integer> source = PublishSubject.<Integer> create();
+        PublishSubject<Integer> source = PublishSubject.create();
 
         // when
         source.window(500).observeOn(Schedulers.computation()).subscribe(testSubscriber);
@@ -67,7 +67,7 @@ public class RxJavaBackpressureLongRunningUnitTest {
     public void givenHotObservable_whenBufferIsDefined_shouldNotThrowException() {
         // given
         TestSubscriber<List<Integer>> testSubscriber = new TestSubscriber<>();
-        PublishSubject<Integer> source = PublishSubject.<Integer> create();
+        PublishSubject<Integer> source = PublishSubject.create();
 
         // when
         source.buffer(1024).observeOn(Schedulers.computation()).subscribe(testSubscriber);
@@ -84,7 +84,7 @@ public class RxJavaBackpressureLongRunningUnitTest {
     public void givenHotObservable_whenSkippingOperationIsDefined_shouldNotThrowException() {
         // given
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
-        PublishSubject<Integer> source = PublishSubject.<Integer> create();
+        PublishSubject<Integer> source = PublishSubject.create();
 
         // when
         source.sample(100, TimeUnit.MILLISECONDS)
