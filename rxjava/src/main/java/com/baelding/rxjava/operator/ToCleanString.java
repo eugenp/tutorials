@@ -9,7 +9,7 @@ public class ToCleanString implements Operator<String, String> {
         return new ToCleanString();
     }
 
-    public ToCleanString() {
+    private ToCleanString() {
         super();
     }
 

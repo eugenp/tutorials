@@ -9,7 +9,7 @@ public class ToLength implements Transformer<String, Integer> {
         return new ToLength();
     }
 
-    public ToLength() {
+    private ToLength() {
         super();
     }
 
