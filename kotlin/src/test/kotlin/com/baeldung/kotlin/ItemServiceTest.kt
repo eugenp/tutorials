@@ -14,7 +14,7 @@ class ItemServiceTest {
         val result = itemService.findItemNameForId(id)
 
         //then
-        assertNotNull(result?.let { it -> it.id })
+        assertNotNull(result?.id)
         assertNotNull(result!!.id)
     }
 }

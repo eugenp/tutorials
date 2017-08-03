@@ -9,7 +9,7 @@ class GenericsTest {
     @Test
     fun givenParametrizeClass_whenInitializeItWithSpecificType_thenShouldBeParameterized() {
         //given
-        val parameterizedClass = ParameterizedClass<String>("string-value")
+        val parameterizedClass = ParameterizedClass("string-value")
 
         //when
         val res = parameterizedClass.getValue()

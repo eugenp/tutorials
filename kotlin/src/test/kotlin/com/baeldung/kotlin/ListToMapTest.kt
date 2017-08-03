@@ -15,7 +15,7 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3)
         val myMap = myList.map { it.name to it.age }.toMap()
 
-        assertTrue(myMap.get("John") == 18)
+        assertTrue(myMap["John"] == 18)
     }
 
     @Test
@@ -23,7 +23,7 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3)
         val myMap = myList.associateBy({ it.name }, { it.hobbies })
 
-        assertTrue(myMap.get("John")!!.contains("Hiking, Swimming"))
+        assertTrue(myMap["John"]!!.contains("Hiking, Swimming"))
     }
 
     @Test
@@ -31,15 +31,15 @@ class ListToMapTest {
         val myList = listOf("a", "b", "c")
         val myMap = myList.map { it to it }.toMap()
 
-        assertTrue(myMap.get("a") == "a")
+        assertTrue(myMap["a"] == "a")
     }
 
     @Test
     fun givenStringList_whenAssociate_thenResult() {
         val myList = listOf("a", "b", "c", "c", "b")
-        val myMap = myList.associate{ it to it }
+        val myMap = myList.associate { it to it }
 
-        assertTrue(myMap.get("a") == "a")
+        assertTrue(myMap["a"] == "a")
     }
 
     @Test
@@ -47,9 +47,9 @@ class ListToMapTest {
         val myList = listOf("a", "b", "c", "c", "b")
         val myMap = mutableMapOf<String, String>()
 
-        myList.associateTo(myMap) {it to it}
+        myList.associateTo(myMap) { it to it }
 
-        assertTrue(myMap.get("a") == "a")
+        assertTrue(myMap["a"] == "a")
     }
 
     @Test
@@ -57,9 +57,9 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3, user4)
         val myMap = mutableMapOf<String, Int>()
 
-        myList.associateByTo(myMap, {it.name}, {it.age})
+        myList.associateByTo(myMap, { it.name }, { it.age })
 
-        assertTrue(myMap.get("Dave") == 34)
+        assertTrue(myMap["Dave"] == 34)
     }
 
     @Test
@@ -67,8 +67,8 @@ class ListToMapTest {
         val myList = listOf(user1, user2, user3, user4)
         val myMap = mutableMapOf<String, User>()
 
-        myList.associateByTo(myMap) {it.name}
+        myList.associateByTo(myMap) { it.name }
 
-        assertTrue(myMap.get("Dave")!!.age == 34)
+        assertTrue(myMap["Dave"]!!.age == 34)
     }
 }

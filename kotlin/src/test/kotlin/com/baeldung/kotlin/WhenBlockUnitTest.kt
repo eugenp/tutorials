@@ -35,7 +35,7 @@ class WhenBlockUnitTest {
     fun testWhenExpressionWithThrowException() {
         val fileType = UnixFileType.L
 
-        val result: Boolean = when (fileType) {
+        when (fileType) {
             UnixFileType.HYPHEN_MINUS -> true
             else -> throw IllegalArgumentException("Wrong type of file")
         }
@@ -48,6 +48,7 @@ class WhenBlockUnitTest {
         when (fileType) {
             UnixFileType.HYPHEN_MINUS -> println("Regular file type")
             UnixFileType.D -> println("Directory file type")
+            UnixFileType.L -> TODO()
         }
     }
 
