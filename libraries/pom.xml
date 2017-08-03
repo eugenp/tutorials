@@ -20,7 +20,6 @@
 						<artifactId>maven-bundle-plugin</artifactId>
 						<version>3.3.0</version>
 						<type>maven-plugin</type>
-
 					</dependency>
 				</dependencies>
 				<extensions>true</extensions>
@@ -182,6 +181,11 @@
 			<artifactId>jetty-servlet</artifactId>
 			<version>${jetty.version}</version>
 		</dependency>
+	    <dependency>
+	      <groupId>io.specto</groupId>
+	      <artifactId>hoverfly-java</artifactId>
+	      <version>0.8.0</version>
+	    </dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>

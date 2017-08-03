@@ -28,7 +28,6 @@
     </properties>
 
     <modules>
-	<module>spring-activiti</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -129,6 +128,7 @@
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
         <module>spring-5-mvc</module>
+        <module>spring-activiti</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
