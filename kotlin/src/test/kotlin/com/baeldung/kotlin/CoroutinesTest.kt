@@ -60,7 +60,7 @@ class CoroutinesTest {
         val res = mutableListOf<String>()
 
         //when
-        runBlocking<Unit> {
+        runBlocking {
             val promise = launch(CommonPool) { expensiveComputation(res) }
             res.add("Hello,")
             promise.join()
@@ -78,7 +78,7 @@ class CoroutinesTest {
 
     @Test
     fun givenHugeAmountOfCoroutines_whenStartIt_thenShouldExecuteItWithoutOutOfMemory() {
-        runBlocking<Unit> {
+        runBlocking {
             //given
             val counter = AtomicInteger(0)
             val numberOfCoroutines = 100_000
@@ -119,7 +119,7 @@ class CoroutinesTest {
 
     @Test(expected = CancellationException::class)
     fun givenAsyncAction_whenDeclareTimeout_thenShouldFinishWhenTimedOut() {
-        runBlocking<Unit> {
+        runBlocking {
             withTimeout(1300L) {
                 repeat(1000) { i ->
                     println("Some expensive computation $i ...")
@@ -131,7 +131,7 @@ class CoroutinesTest {
 
     @Test
     fun givenHaveTwoExpensiveAction_whenExecuteThemAsync_thenTheyShouldRunConcurrently() {
-        runBlocking<Unit> {
+        runBlocking {
             val delay = 1000L
             val time = measureTimeMillis {
                 //given
@@ -152,7 +152,7 @@ class CoroutinesTest {
 
     @Test
     fun givenTwoExpensiveAction_whenExecuteThemLazy_thenTheyShouldNotConcurrently() {
-        runBlocking<Unit> {
+        runBlocking {
             val delay = 1000L
             val time = measureTimeMillis {
                 //given
