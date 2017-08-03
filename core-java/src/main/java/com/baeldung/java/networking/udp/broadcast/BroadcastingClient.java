@@ -4,7 +4,12 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 public class BroadcastingClient {
     private DatagramSocket socket;
@@ -20,11 +25,32 @@ public class BroadcastingClient {
     public int discoverServers(String msg) throws IOException {
         initializeSocketForBroadcasting();
         copyMessageOnBuffer(msg);
-        broadcastPacket();
+        
+        //When we want to broadcast not just to local network, call listAllBroadcastAddresses() and execute broadcastPacket for each value.
+        broadcastPacket(address);
         
         return receivePackets();
     }
 
+    List<InetAddress> listAllBroadcastAddresses() throws SocketException {
+        List<InetAddress> broadcastList = new ArrayList<>();
+        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+        while(interfaces.hasMoreElements()) {
+            NetworkInterface networkInterface = interfaces.nextElement();
+            
+            if(networkInterface.isLoopback() || !networkInterface.isUp()) {
+                continue;
+            }
+            
+            for(InterfaceAddress address: networkInterface.getInterfaceAddresses()) {
+                if(address.getBroadcast() != null) {
+                    broadcastList.add(address.getBroadcast());
+                }
+            }
+        }
+        return broadcastList;
+    }
+    
     private void initializeSocketForBroadcasting() throws SocketException {
         socket = new DatagramSocket();
         socket.setBroadcast(true);
@@ -34,7 +60,7 @@ public class BroadcastingClient {
         buf = msg.getBytes();
     }
     
-    private void broadcastPacket() throws IOException {
+    private void broadcastPacket(InetAddress address) throws IOException {
         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 4445);
         socket.send(packet);
     }
