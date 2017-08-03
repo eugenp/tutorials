@@ -116,7 +116,7 @@
             <version>${groovy.version}</version>
         </dependency>
 		
-        <!-- jade extensions -->
+        <!-- jade dependency -->
         <dependency>
             <groupId>de.neuland-bfi</groupId>
             <artifactId>spring-jade4j</artifactId>
