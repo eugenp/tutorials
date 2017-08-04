@@ -23,4 +23,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Create a Custom Auto-Configuration with Spring Boot](http://www.baeldung.com/spring-boot-custom-auto-configuration)
 - [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
 - [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
+- [How to Get All Spring-Managed Beans?](http://www.baeldung.com/spring-show-all-beans)
+- [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
+
