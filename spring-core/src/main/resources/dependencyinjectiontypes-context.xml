@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="dataSource" class="com.baeldung.dependency.DataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1/" />
+		<property name="username" value="username" />
+		<property name="password" value="password" />
+	</bean>
+
+	<bean id="dataBaseService"
+		class="com.baeldung.dependency.DatabaseServiceWithoutAnnotations">
+		<constructor-arg ref="dataSource" />
+	</bean>
+</beans>
+          
