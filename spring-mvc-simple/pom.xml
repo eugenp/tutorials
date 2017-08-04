@@ -27,6 +27,7 @@
         <org.thymeleaf-version>3.0.7.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.23</freemarker.version>
+        <jade.version>1.2.5</jade.version>
     </properties>
 
     <dependencies>
@@ -113,6 +114,13 @@
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-templates</artifactId>
             <version>${groovy.version}</version>
+        </dependency>
+		
+        <!-- jade dependency -->
+        <dependency>
+            <groupId>de.neuland-bfi</groupId>
+            <artifactId>spring-jade4j</artifactId>
+            <version>${jade.version}</version>
         </dependency>
 
     </dependencies>

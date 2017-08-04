@@ -35,6 +35,12 @@ public class UserController {
         return "registration-groovy";
     }
     
+    @GetMapping("/registration-jade")
+    public String getRegistrationJade(Model model) {
+        model.addAttribute("user", new User());
+        return "registration-jade";
+    }
+    
     @PostMapping("/register")
     @ResponseBody
     public void register(User user){
