@@ -10,14 +10,9 @@ public class ExecutorServiceDemo {
 
 	public void execute() {
 
-		executor.execute(new Runnable() {
-			@Override
-			public void run() {
-				// task details
-			}
+		executor.submit(() -> {
+			new Task();
 		});
-
-		executor.submit(new Task());
 
 		executor.shutdown();
 		executor.shutdownNow();

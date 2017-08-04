@@ -1,5 +1,6 @@
 package com.baeldung.vavr.collections;
 
+import io.vavr.Tuple;
 import io.vavr.Tuple2;
 import io.vavr.collection.Array;
 import io.vavr.collection.CharSeq;
@@ -19,6 +20,7 @@ import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -66,28 +68,16 @@ public class CollectionAPIUnitTest {
         assertEquals(3, queue.size());
         assertEquals(5, secondQueue.size());
 
-        secondQueue.dequeue()
-          .map((k, v) -> {
-              assertEquals(new Integer(1), k);
-              return v.dequeue();
-          })
-          .map((k, v) -> {
-              assertEquals(new Integer(2), k);
-              return v.dequeue();
-          })
-          .map((k, v) -> {
-              assertEquals(new Integer(3), k);
-              return v.dequeue();
-          })
-          .map((k, v) -> {
-              assertEquals(new Integer(4), k);
-              return v.dequeue();
-          })
-          .map((k, v) -> {
-              assertEquals(new Integer(5), k);
-              assertTrue(v.isEmpty());
-              return null;
-          });
+        Tuple2<Integer, Queue<Integer>> result = secondQueue.dequeue();
+        Integer headValue = result.apply((head, tail) -> head);
+        assertEquals(new Integer(1), headValue);
+
+        Iterator<Integer> iterator = result.apply((head, tail) -> tail.iterator());
+
+        assertEquals(new Integer(2), iterator.next());
+        assertEquals(new Integer(3), iterator.next());
+        assertEquals(new Integer(4), iterator.next());
+        assertEquals(new Integer(5), iterator.next());
     }
 
     @Test
@@ -101,7 +91,7 @@ public class CollectionAPIUnitTest {
           .sum()
           .longValue();
 
-        assertEquals(20L, evenSum);
+        assertEquals(20, evenSum);
         assertEquals(new Integer(5), intStream.get(5));
     }
 
@@ -169,8 +159,7 @@ public class CollectionAPIUnitTest {
 
     @Test
     public void givenSortedSet_whenReversed_thenCorrect() {
-        Comparator<String> reverseCompare = Comparator.reverseOrder();
-        SortedSet<String> set = TreeSet.of(reverseCompare, "Green", "Red", "Blue");
+        SortedSet<String> set = TreeSet.of(Comparator.reverseOrder(), "Green", "Red", "Blue");
 
         Iterator<String> iterator = set.iterator();
         assertEquals("Red", iterator.next());
@@ -212,18 +201,47 @@ public class CollectionAPIUnitTest {
         java.util.List<Integer> javaList = java.util.Arrays.asList(1, 2, 3, 4);
         List<Integer> vavrList = List.ofAll(javaList);
 
-        assertTrue(vavrList instanceof io.vavr.collection.List);
+        assertEquals(4, vavrList.size());
+        assertEquals(new Integer(1), vavrList.head());
 
         java.util.stream.Stream<Integer> javaStream = javaList.stream();
         Set<Integer> vavrSet = HashSet.ofAll(javaStream);
 
-        assertTrue(vavrSet instanceof io.vavr.collection.Set);
+        assertEquals(4, vavrSet.size());
+        assertEquals(new Integer(2), vavrSet.tail()
+          .head());
+    }
+
+    @Test
+    public void givenJavaStream_whenCollected_thenCorrect() {
+        List<Integer> vavrList = IntStream.range(1, 10)
+          .boxed()
+          .filter(i -> i % 2 == 0)
+          .collect(List.collector());
+
+        assertEquals(4, vavrList.size());
+        assertEquals(new Integer(2), vavrList.head());
     }
 
     @Test
     public void givenVavrList_whenConverted_thenCorrect() {
-        java.util.Set<Integer> collect = List.of(1, 2, 3)
+        Integer[] array = List.of(1, 2, 3)
+          .toJavaArray(Integer.class);
+        assertEquals(3, array.length);
+
+        java.util.Map<String, Integer> map = List.of("1", "2", "3")
+          .toJavaMap(i -> Tuple.of(i, Integer.valueOf(i)));
+        assertEquals(new Integer(2), map.get("2"));
+    }
+
+    @Test
+    public void givenVavrList_whenCollected_thenCorrect() {
+        java.util.Set<Integer> javaSet = List.of(1, 2, 3)
           .collect(Collectors.toSet());
+
+        assertEquals(3, javaSet.size());
+        assertEquals(new Integer(1), javaSet.iterator()
+          .next());
     }
 
     @Test
