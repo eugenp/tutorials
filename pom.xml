@@ -38,6 +38,7 @@
         <module>apache-thrift</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>bootique</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->

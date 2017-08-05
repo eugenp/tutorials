@@ -1,15 +1,11 @@
 package com.baeldung.hashcode.application;
 
 import com.baeldung.hashcode.entities.User;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ApplicationTest {
