@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,18 +55,18 @@ public class JOOLTest {
     @Test
     public void givenSeq_whenJoin_shouldHaveElementsFromBothSeq() {
         assertEquals(
-          Seq.of(1, 2, 4).innerJoin(Seq.of(1, 2, 3), (a, b) -> a == b).toList(),
+          Seq.of(1, 2, 4).innerJoin(Seq.of(1, 2, 3), Objects::equals).toList(),
           Arrays.asList(tuple(1, 1), tuple(2, 2))
         );
 
 
         assertEquals(
-          Seq.of(1, 2, 4).leftOuterJoin(Seq.of(1, 2, 3), (a, b) -> a == b).toList(),
+          Seq.of(1, 2, 4).leftOuterJoin(Seq.of(1, 2, 3), Objects::equals).toList(),
           Arrays.asList(tuple(1, 1), tuple(2, 2), tuple(4, null))
         );
 
         assertEquals(
-          Seq.of(1, 2, 4).rightOuterJoin(Seq.of(1, 2, 3), (a, b) -> a == b).toList(),
+          Seq.of(1, 2, 4).rightOuterJoin(Seq.of(1, 2, 3), Objects::equals).toList(),
           Arrays.asList(tuple(1, 1), tuple(2, 2), tuple(null, 3))
         );
 
@@ -197,7 +198,7 @@ public class JOOLTest {
     public void givenOperationThatThrowsCheckedException_whenExecuteUsingUncheckedFuction_shouldPass() {
         //when
         List<Integer> collect = Stream.of("a", "b", "c")
-          .map(Unchecked.function(elem -> methodThatThrowsChecked(elem)))
+          .map(Unchecked.function(this::methodThatThrowsChecked))
           .collect(Collectors.toList());
 
         //then
@@ -236,5 +237,4 @@ public class JOOLTest {
           Arrays.asList(tuple("michael", "similar", "winter", "summer"), tuple("jodie", "variable", "winter", "summer"))
         );
     }
-
 }
