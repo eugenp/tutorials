@@ -32,6 +32,33 @@
   <!-- If you go to http://host/project/ (with no file name), it will
        try index.jsf first, welcome.jsf next, and so forth.
    -->
+
+
+  <!-- UNCOMMENT THE FOLLOWING SECTION FOR SPRING SECURITY XML CONFIGURATION-->
+
+  <!--<context-param>-->
+    <!--<param-name>contextConfigLocation</param-name>-->
+    <!--<param-value>-->
+      <!--/WEB-INF/spring/*.xml-->
+    <!--</param-value>-->
+  <!--</context-param>-->
+
+  <!--<filter>-->
+    <!--<filter-name>springSecurityFilterChain</filter-name>-->
+    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+  <!--</filter>-->
+
+  <!--<filter-mapping>-->
+    <!--<filter-name>springSecurityFilterChain</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+  <!--</filter-mapping>-->
+
+  <!--<listener>-->
+    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+  <!--</listener>-->
+
+  <!-- END SPRING SECURITY XML CONFIGURATION-->
+
   <welcome-file-list>
     <welcome-file>index.jsf</welcome-file>
     <welcome-file>welcome.jsf</welcome-file>

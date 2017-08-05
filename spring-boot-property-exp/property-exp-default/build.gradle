@@ -27,6 +27,10 @@ repositories {
     mavenCentral()
 }
 
+springBoot {
+    executable = true
+}
+
 import org.apache.tools.ant.filters.ReplaceTokens
 processResources {
     with copySpec {
