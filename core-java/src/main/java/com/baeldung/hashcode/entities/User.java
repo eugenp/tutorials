@@ -1,4 +1,4 @@
-package com.baeldung.entities;
+package com.baeldung.hashcode.entities;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
