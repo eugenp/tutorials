@@ -83,7 +83,6 @@
         <!--<module>jee7</module>-->
         <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
-        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
