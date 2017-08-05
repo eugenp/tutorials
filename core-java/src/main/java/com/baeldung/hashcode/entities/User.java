@@ -18,13 +18,16 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        if (this.getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null)
+            return false;
+        if (this.getClass() != o.getClass())
+            return false;
         User user = (User) o;
         return id != user.id && (!name.equals(user.name) && !email.equals(user.email));
     }
-    	
+
     @Override
     public int hashCode() {
         int hash = 7;

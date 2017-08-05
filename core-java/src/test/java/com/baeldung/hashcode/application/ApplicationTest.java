@@ -24,7 +24,7 @@ public class ApplicationTest {
 
     @Test
     public void main_NoInputState_TextPrintedToConsole() throws Exception {
-        Application.main(new String[]{});
+        Application.main(new String[] {});
         assertEquals("User found in the collection", outContent.toString());
     }
 }
