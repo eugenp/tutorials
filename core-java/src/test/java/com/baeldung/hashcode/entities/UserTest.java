@@ -23,12 +23,12 @@ public class UserTest {
     }
 
     @Test
-    public void equals_EqualUserInstance_TrueAssertion(){
+    public void givenComparisonUserInstance_whenComparedToUserInstance_thenSuccessful() {
         Assert.assertTrue(user.equals(comparisonUser));
     }
 
     @Test
-    public void hashCode_UserHash_TrueAssertion() {
+    public void givenUserHashCode_whenComparedToUserHashCode_thenSuccessful() {
         Assert.assertEquals(1792276941, user.hashCode());
     }
 }

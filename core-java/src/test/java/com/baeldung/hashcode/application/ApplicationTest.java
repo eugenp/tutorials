@@ -12,18 +12,18 @@ public class ApplicationTest {
     private ByteArrayOutputStream outContent;
 
     @Before
-    public void setUpPrintStreamInstance() throws Exception {
+    public void setUpPrintStreamInstance() {
         this.outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
     }
 
     @After
-    public void tearDownByteArrayOutputStream() throws Exception {
+    public void tearDownByteArrayOutputStream() {
         outContent = null;
     }
 
     @Test
-    public void main_NoInputState_TextPrintedToConsole() throws Exception {
+    public void givenString_whenComparedToStringPrintedToConsole_thenSuccessful() {
         Application.main(new String[]{});
         assertEquals("User found in the collection", outContent.toString());
     }
