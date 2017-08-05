@@ -1,4 +1,4 @@
-package com.baeldung.entities;
+package com.baeldung.hashcode.entities;
 
 import org.junit.After;
 import org.junit.Assert;

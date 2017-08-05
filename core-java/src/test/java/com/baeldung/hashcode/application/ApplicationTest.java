@@ -1,4 +1,4 @@
-package com.baeldung.application;
+package com.baeldung.hashcode.application;
 
 import org.junit.After;
 import org.junit.Before;

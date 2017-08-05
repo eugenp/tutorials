@@ -1,4 +1,4 @@
-package com.baeldung.application;
+package com.baeldung.hashcode.application;
 
 import com.baeldung.entities.User;
 import java.util.HashMap;
