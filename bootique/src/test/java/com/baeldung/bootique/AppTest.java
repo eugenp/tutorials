@@ -1,38 +1,29 @@
 package com.baeldung.bootique;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertEquals;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+import org.junit.Rule;
+import org.junit.Test;
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+import com.baeldung.bootique.service.HelloService;
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+import io.bootique.BQRuntime;
+import io.bootique.test.junit.BQDaemonTestFactory;
+import io.bootique.test.junit.BQTestFactory;
+
+public class AppTest {
+
+	@Rule
+	public BQTestFactory bqTestFactory = new BQTestFactory();
+
+	@Rule
+	public BQDaemonTestFactory bqDaemonTestFactory = new BQDaemonTestFactory();
+
+	@Test
+	public void givenService_expectBoolen() {
+		BQRuntime runtime = bqTestFactory.app("--server").autoLoadModules().createRuntime();
+		HelloService service = runtime.getInstance(HelloService.class);
+		assertEquals(true, service.save());
+	}
+
 }

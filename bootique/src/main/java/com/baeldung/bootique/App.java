@@ -36,7 +36,7 @@ public class App {
 			public void stderr(String arg0) {
 				// ...
 			}
-		}).autoLoadModules().exec().exit();
+		}).autoLoadModules().exec();
 	}
 
 }
