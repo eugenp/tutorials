@@ -1,30 +1,30 @@
 package com.baeldung.hashcode.application;
 
+import com.baeldung.hashcode.entities.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ApplicationTest {
 
-    private ByteArrayOutputStream outContent;
-
-    @Before
-    public void setUpPrintStreamInstance() throws Exception {
-        this.outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-    }
-
-    @After
-    public void tearDownByteArrayOutputStream() throws Exception {
-        outContent = null;
-    }
-
     @Test
     public void main_NoInputState_TextPrintedToConsole() throws Exception {
-        Application.main(new String[] {});
-        assertEquals("User found in the collection", outContent.toString());
+        Map<User, User> users = new HashMap<>();
+        User user1 = new User(1L, "John", "john@domain.com");
+        User user2 = new User(2L, "Jennifer", "jennifer@domain.com");
+        User user3 = new User(3L, "Mary", "mary@domain.com");
+
+        users.put(user1, user1);
+        users.put(user2, user2);
+        users.put(user3, user3);
+
+        assertTrue(users.containsKey(user1));
     }
 }
