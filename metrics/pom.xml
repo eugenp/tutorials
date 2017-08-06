@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -15,7 +15,7 @@
     <properties>
         <dep.ver.metrics>3.1.2</dep.ver.metrics>
         <dep.ver.servlet>3.1.0</dep.ver.servlet>
-        <netflix.servo.ver>0.12.16</netflix.servo.ver>
+        <netflix.servo.ver>0.12.17</netflix.servo.ver>
     </properties>
 
     <dependencies>
@@ -44,10 +44,24 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${dep.ver.servlet}</version>
         </dependency>
+
         <dependency>
             <groupId>com.netflix.servo</groupId>
             <artifactId>servo-core</artifactId>
             <version>${netflix.servo.ver}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.netflix.servo</groupId>
+            <artifactId>servo-atlas</artifactId>
+            <version>${netflix.servo.ver}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-smile</artifactId>
+            <version>2.8.9</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -1,14 +1,14 @@
 package com.baeldung.concurrent.synchronize;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class BaeldungSynchronizeMethodsTest {
 
@@ -19,7 +19,7 @@ public class BaeldungSynchronizeMethodsTest {
         BaeldungSynchronizedMethods method = new BaeldungSynchronizedMethods();
 
         IntStream.range(0, 1000)
-            .forEach(count -> service.submit(method::calculate));
+          .forEach(count -> service.submit(method::calculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, method.getSum());
@@ -31,7 +31,7 @@ public class BaeldungSynchronizeMethodsTest {
         BaeldungSynchronizedMethods method = new BaeldungSynchronizedMethods();
 
         IntStream.range(0, 1000)
-            .forEach(count -> service.submit(method::synchronisedCalculate));
+          .forEach(count -> service.submit(method::synchronisedCalculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, method.getSyncSum());
@@ -42,7 +42,7 @@ public class BaeldungSynchronizeMethodsTest {
         ExecutorService service = Executors.newCachedThreadPool();
 
         IntStream.range(0, 1000)
-            .forEach(count -> service.submit(BaeldungSynchronizedMethods::syncStaticCalculate));
+          .forEach(count -> service.submit(BaeldungSynchronizedMethods::syncStaticCalculate));
         service.awaitTermination(100, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, BaeldungSynchronizedMethods.staticSum);

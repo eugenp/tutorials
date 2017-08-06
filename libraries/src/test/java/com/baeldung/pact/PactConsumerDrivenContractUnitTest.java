@@ -8,7 +8,11 @@ import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
 import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -20,7 +24,7 @@ public class PactConsumerDrivenContractUnitTest {
 
     @Rule
     public PactProviderRuleMk2 mockProvider
-            = new PactProviderRuleMk2("test_provider", "localhost", 8080, this);
+      = new PactProviderRuleMk2("test_provider", "localhost", 8080, this);
 
     @Pact(consumer = "test_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
@@ -28,25 +32,25 @@ public class PactConsumerDrivenContractUnitTest {
         headers.put("Content-Type", "application/json");
 
         return builder
-                .given("test GET ")
-                .uponReceiving("GET REQUEST")
-                    .path("/")
-                    .method("GET")
-                .willRespondWith()
-                    .status(200)
-                    .headers(headers)
-                    .body("{\"condition\": true, \"name\": \"tom\"}")
-                .given("test POST")
-                .uponReceiving("POST REQUEST")
-                    .method("POST")
-                    .headers(headers)
-                    .body("{\"name\": \"Michael\"}")
-                    .path("/create")
-                .willRespondWith()
-                    .status(201)
-                    .headers(headers)
-                    .body("")
-                .toPact();
+          .given("test GET ")
+          .uponReceiving("GET REQUEST")
+          .path("/")
+          .method("GET")
+          .willRespondWith()
+          .status(200)
+          .headers(headers)
+          .body("{\"condition\": true, \"name\": \"tom\"}")
+          .given("test POST")
+          .uponReceiving("POST REQUEST")
+          .method("POST")
+          .headers(headers)
+          .body("{\"name\": \"Michael\"}")
+          .path("/create")
+          .willRespondWith()
+          .status(201)
+          .headers(headers)
+          .body("")
+          .toPact();
     }
 
 
@@ -55,7 +59,7 @@ public class PactConsumerDrivenContractUnitTest {
     public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody() {
         //when
         ResponseEntity<String> response
-                = new RestTemplate().getForEntity(mockProvider.getUrl(), String.class);
+          = new RestTemplate().getForEntity(mockProvider.getUrl(), String.class);
 
         //then
         assertThat(response.getStatusCode().value()).isEqualTo(200);
@@ -69,10 +73,10 @@ public class PactConsumerDrivenContractUnitTest {
 
         //when
         ResponseEntity<String> postResponse = new RestTemplate().exchange(
-                mockProvider.getUrl() + "/create",
-                HttpMethod.POST,
-                new HttpEntity<>(jsonBody, httpHeaders),
-                String.class
+          mockProvider.getUrl() + "/create",
+          HttpMethod.POST,
+          new HttpEntity<>(jsonBody, httpHeaders),
+          String.class
         );
 
         //then
