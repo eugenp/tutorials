@@ -69,7 +69,7 @@ public class RSSRomeExample {
     }
 
     private static SyndFeed readFeed() throws IOException, FeedException {
-        URL feedSource = new URL("http://rssblog.whatisrss.com/feed/");
+        URL feedSource = new URL("http://rssblog.whatisrss.com/feed/"); 
         SyndFeedInput input = new SyndFeedInput();
         return input.build(new XmlReader(feedSource));
     }
