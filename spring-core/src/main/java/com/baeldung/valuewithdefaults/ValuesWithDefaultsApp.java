@@ -1,5 +1,10 @@
 package com.baeldung.valuewithdefaults;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -9,10 +14,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
 
+import com.google.common.collect.Lists;
+import com.google.common.primitives.Ints;
+
 /**
  * Demonstrates setting defaults for @Value annotation.  Note that there are no properties 
  * defined in the specified property source.  We also assume that the user here
- * does not have a system property named some.system.key.
+ * does not have a system property named some.key.
  *
  */
 @Configuration
@@ -20,10 +28,26 @@ import org.springframework.util.Assert;
 public class ValuesWithDefaultsApp {
 
     @Value("${some.key:my default value}")
-    private String withDefaultValue;
+    private String stringWithDefaultValue;
 
-    @Value("#{systemProperties['some.system.key'] ?: 'my default system property value'}")
+    @Value("${some.key:}")
+    private String stringWithBlankDefaultValue;
+
+    @Value("${some.key:true}")
+    private boolean booleanWithDefaultValue;
+    
+    @Value("${some.key:42}")
+    private int intWithDefaultValue;  
+
+    @Value("${some.key:one,two,three}")
+    private String[] stringArrayWithDefaults;
+
+    @Value("${some.key:1,2,3}")
+    private int[] intArrayWithDefaults;
+
+    @Value("#{systemProperties['some.key'] ?: 'my default system property value'}")
     private String spelWithDefaultValue;
+    
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(ValuesWithDefaultsApp.class);
@@ -31,7 +55,23 @@ public class ValuesWithDefaultsApp {
 
     @PostConstruct
     public void afterInitialize() {
-    	Assert.isTrue(withDefaultValue.equals("my default value"));
+    	// strings
+    	Assert.isTrue(stringWithDefaultValue.equals("my default value"));
+    	Assert.isTrue(stringWithBlankDefaultValue.equals(""));
+    	
+    	// other primitives
+    	Assert.isTrue(booleanWithDefaultValue);
+    	Assert.isTrue(intWithDefaultValue == 42);
+    	
+    	// arrays
+    	List<String> stringListValues = Lists.newArrayList("one", "two", "three");
+    	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues));
+
+    	List<Integer> intListValues = Lists.newArrayList(1, 2, 3);
+    	Assert.isTrue(Ints.asList(intArrayWithDefaults).containsAll(intListValues));
+
+    	// SpEL
     	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"));
+    	
     }
 }
