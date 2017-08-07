@@ -19,11 +19,11 @@ public class Sandbox {
         
         //Enum singleton
         
-        EnumSingleton enumSingleton1 = EnumSingleton.INSTANCE;
+        EnumSingleton enumSingleton1 = EnumSingleton.INSTANCE.getInstance();
         
         System.out.println(enumSingleton1.getInfo()); //Initial enum info
         
-        EnumSingleton enumSingleton2 = EnumSingleton.INSTANCE;
+        EnumSingleton enumSingleton2 = EnumSingleton.INSTANCE.getInstance();
         enumSingleton2.setInfo("New enum info");
         
         System.out.println(enumSingleton1.getInfo()); //New enum info

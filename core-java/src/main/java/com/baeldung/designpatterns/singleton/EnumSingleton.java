@@ -2,11 +2,16 @@ package com.baeldung.designpatterns.singleton;
 
 public enum EnumSingleton {
     
-    INSTANCE; //Name of the single instance
+    INSTANCE("Initial enum info"); //Name of the single instance
     
-    private String info = "Initial enum info";
+    private String info;
     
-    private EnumSingleton() {
+    private EnumSingleton(String info) {
+        this.info = info;
+    }
+    
+    public EnumSingleton getInstance(){
+        return INSTANCE;
     }
     
     //getters and setters

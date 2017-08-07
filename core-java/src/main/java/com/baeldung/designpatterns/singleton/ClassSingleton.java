@@ -2,13 +2,17 @@ package com.baeldung.designpatterns.singleton;
 
 public class ClassSingleton {
 
-    private static final ClassSingleton INSTANCE = new ClassSingleton();
+    private static ClassSingleton INSTANCE;
     private String info = "Initial class info";
     
     private ClassSingleton(){        
     }
     
     public static ClassSingleton getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new ClassSingleton();
+        }
+        
         return INSTANCE;
     }
     
