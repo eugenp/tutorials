@@ -42,16 +42,11 @@ public class ActivitiController {
     }
 
     @GetMapping("/complete-task-A/{processInstanceId}")
-    public TaskRepresentation completeTaskA(@PathVariable String processInstanceId) {
+    public void completeTaskA(@PathVariable String processInstanceId) {
         Task task = taskService.createTaskQuery()
           .processInstanceId(processInstanceId)
           .singleResult();
         taskService.complete(task.getId());
         logger.info("Task completed");
-        task = taskService.createTaskQuery()
-          .processInstanceId(processInstanceId)
-          .singleResult();
-
-        return new TaskRepresentation(task.getId(), task.getName(), task.getProcessInstanceId());
     }
 }
