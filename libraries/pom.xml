@@ -230,7 +230,12 @@
 		    <groupId>org.datanucleus</groupId>
 		    <artifactId>datanucleus-xml</artifactId>
 		    <version>5.0.0-release</version>
-		</dependency>		
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
+		</dependency>
     </dependencies>
 
     <properties>
