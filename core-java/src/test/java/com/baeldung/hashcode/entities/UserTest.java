@@ -1,4 +1,4 @@
-package com.baeldung.entities;
+package com.baeldung.hashcode.entities;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -23,7 +23,7 @@ public class UserTest {
     }
 
     @Test
-    public void equals_EqualUserInstance_TrueAssertion(){
+    public void equals_EqualUserInstance_TrueAssertion() {
         Assert.assertTrue(user.equals(comparisonUser));
     }
 

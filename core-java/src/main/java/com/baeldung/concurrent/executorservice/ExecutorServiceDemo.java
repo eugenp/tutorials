@@ -6,22 +6,22 @@ import java.util.concurrent.TimeUnit;
 
 public class ExecutorServiceDemo {
 
-	ExecutorService executor = Executors.newFixedThreadPool(10);
+    ExecutorService executor = Executors.newFixedThreadPool(10);
 
-	public void execute() {
+    public void execute() {
 
-		executor.submit(() -> {
-			new Task();
-		});
+        executor.submit(() -> {
+            new Task();
+        });
 
-		executor.shutdown();
-		executor.shutdownNow();
-		try {
-			executor.awaitTermination(20l, TimeUnit.NANOSECONDS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+        executor.shutdown();
+        executor.shutdownNow();
+        try {
+            executor.awaitTermination(20l, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 
 }
