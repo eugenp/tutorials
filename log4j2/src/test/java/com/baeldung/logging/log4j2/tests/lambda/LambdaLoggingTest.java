@@ -11,10 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-/**
- *
- * @author tehreem.nisa
- */
 @RunWith(JUnit4.class)
 public class LambdaLoggingTest {
     
@@ -23,7 +19,7 @@ public class LambdaLoggingTest {
 
         Logger logger = LogManager.getLogger(getClass());
 
-        logger.debug("I am logging that {} happened.", () -> expensiveOperation());
+        logger.debug("I am logging the number {} from expensive operation.", () -> expensiveOperation());
 
     }
 
