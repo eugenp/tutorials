@@ -12,11 +12,12 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
 
     private final Map<String, ConnectionProvider> connectionProviderMap = 
             new HashMap<>();
-
+    private String strategy;
     
     public ConfigurableMultiTenantConnectionProvider(
-            Map<String, ConnectionProvider> connectionProviderMap) {
+            Map<String, ConnectionProvider> connectionProviderMap, String strategy) {
         this.connectionProviderMap.putAll( connectionProviderMap );
+        this.strategy = strategy;
     }
     @Override
     protected ConnectionProvider getAnyConnectionProvider() {
@@ -34,7 +35,12 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
     public Connection getConnection(String tenantIdentifier) throws SQLException {
         Connection connection = super.getConnection(tenantIdentifier);
         // uncomment to see option 2 for SCHEMA strategy.
-        //connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
+        if (strategy == "SCHEMA"){
+            connection.createStatement().execute("CREATE SCHEMA IF NOT EXISTS '" + tenantIdentifier + "'");
+            connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
+            
+        }
+        
         return connection;
     }
     
