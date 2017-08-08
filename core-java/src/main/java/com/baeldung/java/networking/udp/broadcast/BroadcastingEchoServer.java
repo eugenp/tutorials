@@ -23,7 +23,6 @@ public class BroadcastingEchoServer extends Thread {
 
         while (running) {
             try {
-
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
                 InetAddress address = packet.getAddress();
