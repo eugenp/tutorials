@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class ZooConfig {
     @Bean
     public Animal animal() {
-        return new Helm();
+        return new Animal();
     }
 }
