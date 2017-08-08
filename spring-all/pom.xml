@@ -26,6 +26,12 @@
             <artifactId>spring-context</artifactId>
             <version>4.2.0</version>
         </dependency>
+        <!-- dependencies for testing -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.2.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
