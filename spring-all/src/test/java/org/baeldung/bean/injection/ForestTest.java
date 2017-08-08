@@ -12,7 +12,7 @@ public class ForestTest {
     	cont.register(ForestConfig.class);
     	cont.refresh();
 
-    	Forest zoo = cont.getBean(Forest.class);
+    	Forest forest = cont.getBean(Forest.class);
 
         assert forest.getAnimal() != null;
     }

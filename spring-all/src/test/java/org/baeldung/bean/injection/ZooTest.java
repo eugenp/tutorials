@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class ForestTest {
+public class ZooTest {
     @Test
     public void checkAnimalInjection() {
     	AnnotationConfigApplicationContext cont = new AnnotationConfigApplicationContext();
