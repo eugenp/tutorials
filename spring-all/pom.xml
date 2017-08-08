@@ -26,11 +26,11 @@
             <artifactId>spring-context</artifactId>
             <version>4.2.0</version>
         </dependency>
-        <!-- dependencies for testing -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.2.0</version>
+            <version>2.5</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
