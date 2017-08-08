@@ -14,4 +14,7 @@ public class Zoo {
         this.animal = animal;
     }
 
+    public Animal getAnimalOfZoo() {
+        return animal;
+    }
 }
