@@ -28,7 +28,6 @@
     </properties>
 
     <modules>
-	<module>spring-activiti</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -39,6 +38,7 @@
         <module>apache-thrift</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>bootique</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
@@ -81,10 +81,9 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <!--<module>jee7</module>-->
+        <module>jee7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
-        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -94,6 +93,7 @@
         <module>jws</module>
 
         <module>libraries</module>
+        <module>libraries-data</module>        
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -128,6 +128,7 @@
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
         <module>spring-5-mvc</module>
+        <module>spring-activiti</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
