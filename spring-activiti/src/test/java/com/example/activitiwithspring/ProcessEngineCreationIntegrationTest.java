@@ -3,11 +3,12 @@ package com.example.activitiwithspring;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.ProcessEngines;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
-public class ProcessEngineCreationTests {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+public class ProcessEngineCreationIntegrationTest {
 
     @Test
     public void givenXMLConfig_whenGetDefault_thenGotProcessEngine() {
@@ -35,7 +36,7 @@ public class ProcessEngineCreationTests {
     @Test
     public void givenDifferentBeanNameInXMLConfig_whenGetProcessEngineConfig_thenGotResult() {
         ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration
-                .createProcessEngineConfigurationFromResource("my.activiti.cfg.xml", "myProcessEngineConfiguration");
+          .createProcessEngineConfigurationFromResource("my.activiti.cfg.xml", "myProcessEngineConfiguration");
         ProcessEngine processEngine = processEngineConfiguration.buildProcessEngine();
         assertNotNull(processEngine);
         assertEquals("baeldung", processEngine.getProcessEngineConfiguration().getJdbcUsername());
@@ -45,8 +46,8 @@ public class ProcessEngineCreationTests {
     public void givenNoXMLConfig_whenCreateInMemProcessEngineConfig_thenCreated() {
         ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration.createStandaloneInMemProcessEngineConfiguration();
         ProcessEngine processEngine = processEngineConfiguration
-                .setJdbcUrl("jdbc:h2:mem:my-own-in-mem-db;DB_CLOSE_DELAY=1000")
-                .buildProcessEngine();
+          .setJdbcUrl("jdbc:h2:mem:my-own-in-mem-db;DB_CLOSE_DELAY=1000")
+          .buildProcessEngine();
         assertNotNull(processEngine);
         assertEquals("sa", processEngine.getProcessEngineConfiguration().getJdbcUsername());
     }
@@ -55,9 +56,9 @@ public class ProcessEngineCreationTests {
     public void givenNoXMLConfig_whenCreateProcessEngineConfig_thenCreated() {
         ProcessEngineConfiguration processEngineConfiguration = ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
         ProcessEngine processEngine = processEngineConfiguration
-                .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE)
-                .setJdbcUrl("jdbc:h2:mem:my-own-db;DB_CLOSE_DELAY=1000")
-                .buildProcessEngine();
+          .setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE)
+          .setJdbcUrl("jdbc:h2:mem:my-own-db;DB_CLOSE_DELAY=1000")
+          .buildProcessEngine();
         assertNotNull(processEngine);
         assertEquals("sa", processEngine.getProcessEngineConfiguration().getJdbcUsername());
     }
