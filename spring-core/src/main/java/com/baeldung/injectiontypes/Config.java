@@ -1,4 +1,4 @@
-package com.baeldung.injection;
+package com.baeldung.injectiontypes;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
