@@ -107,7 +107,7 @@
         <module>mocks</module>
         <module>mustache</module>
         <module>noexception</module>
-        
+
         <module>orika</module>
 
         <module>patterns</module>
