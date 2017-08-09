@@ -12,6 +12,7 @@ public class ConvertContainerToAnotherTest {
     @Test
     public void whenConvertContainerToAnother_thenCorrect() {
         MutableList<String> cars = (MutableList) ConvertContainerToAnother.convertToList();
+        
         assertTrue(cars.anySatisfy(Predicates.equal("Toyota")));
         assertTrue(cars.anySatisfy(Predicates.equal("Mercedes")));
         assertTrue(cars.anySatisfy(Predicates.equal("Volkswagen")));
