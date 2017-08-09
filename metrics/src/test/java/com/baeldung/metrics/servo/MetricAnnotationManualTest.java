@@ -22,10 +22,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-/**
- * @author aiet
- */
-public class MetricAnnotationTest extends MetricTestBase {
+public class MetricAnnotationManualTest extends MetricTestBase {
 
     @Monitor(name = "integerCounter", type = DataSourceType.COUNTER, description = "Total number of update operations.")
     private final AtomicInteger updateCount = new AtomicInteger(0);
