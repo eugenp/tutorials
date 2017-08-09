@@ -29,12 +29,9 @@ public class ListOfListsUnitTest {
 
     @Test
     public void givenListOfLists_thenCheckNames() {
-        assertEquals("Pen 1", ((Pen) listOfLists.get(0)
-          .get(0)).getName());
-        assertEquals("Pencil 1", ((Pencil) listOfLists.get(1)
-          .get(0)).getName());
-        assertEquals("Rubber 1", ((Rubber) listOfLists.get(2)
-          .get(0)).getName());
+        assertEquals("Pen 1", ((Pen) listOfLists.get(0).get(0)).getName());
+        assertEquals("Pencil 1", ((Pencil) listOfLists.get(1).get(0)).getName());
+        assertEquals("Rubber 1", ((Rubber) listOfLists.get(2).get(0)).getName());
     }
 
     @SuppressWarnings("unchecked")
@@ -43,11 +40,9 @@ public class ListOfListsUnitTest {
 
         ((ArrayList<Pencil>) listOfLists.get(1)).remove(0);
         listOfLists.remove(1);
-        assertEquals("Rubber 1", ((Rubber) listOfLists.get(1)
-          .get(0)).getName());
+        assertEquals("Rubber 1", ((Rubber) listOfLists.get(1).get(0)).getName());
         listOfLists.remove(0);
-        assertEquals("Rubber 1", ((Rubber) listOfLists.get(0)
-          .get(0)).getName());
+        assertEquals("Rubber 1", ((Rubber) listOfLists.get(0).get(0)).getName());
     }
 
     @Test
@@ -67,11 +62,8 @@ public class ListOfListsUnitTest {
         list.add(pencils);
         list.add(rubbers);
 
-        assertEquals("Pen 1", ((Pen) list.get(0)
-          .get(0)).getName());
-        assertEquals("Pencil 1", ((Pencil) list.get(1)
-          .get(0)).getName());
-        assertEquals("Rubber 1", ((Rubber) list.get(2)
-          .get(0)).getName());
+        assertEquals("Pen 1", ((Pen) list.get(0).get(0)).getName());
+        assertEquals("Pencil 1", ((Pencil) list.get(1).get(0)).getName());
+        assertEquals("Rubber 1", ((Rubber) list.get(2).get(0)).getName());
     }
 }
