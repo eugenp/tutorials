@@ -12,7 +12,7 @@ class KotlinJavaInteroperabilityTest {
         //given
         val name = "tom"
 
-        //whene
+        //when
         val res = StringUtils.toUpperCase(name)
 
         //then
