@@ -12,13 +12,9 @@ import org.geotools.data.DefaultTransaction;
 import org.geotools.data.Transaction;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.shapefile.ShapefileDataStoreFactory;
-import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureSource;
 import org.geotools.data.simple.SimpleFeatureStore;
 import org.geotools.feature.DefaultFeatureCollection;
-import org.geotools.feature.DefaultFeatureCollections;
-import org.geotools.feature.FeatureCollection;
-import org.geotools.feature.FeatureCollections;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
 import org.geotools.geometry.jts.JTSFactoryFinder;
@@ -26,10 +22,6 @@ import org.geotools.referencing.crs.DefaultGeographicCRS;
 import org.geotools.swing.data.JFileDataStoreChooser;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
-
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Point;
 
 import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.GeometryFactory;
@@ -66,7 +58,7 @@ public class ShapeFile {
 
         ShapefileDataStore newDataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
         newDataStore.createSchema(CITY);
-        
+
         // If you decide to use the TYPE type and create a Data Store with it,
         // You will need to uncomment this line to set the Coordinate Reference System
         // newDataStore.forceSchemaCRS(DefaultGeographicCRS.WGS84);
@@ -98,8 +90,8 @@ public class ShapeFile {
         }
 
     }
-    
-    private static SimpleFeatureType createFeatureType() {
+
+    public static SimpleFeatureType createFeatureType() {
 
         SimpleFeatureTypeBuilder builder = new SimpleFeatureTypeBuilder();
         builder.setName("Location");
@@ -114,18 +106,7 @@ public class ShapeFile {
         return CITY;
     }
 
-    private static void addToLocationMap(String name, 
-                                         double lat, 
-                                         double lng, 
-                                         Map<String, List<Double>> locations) {
-        List<Double> coordinates = new ArrayList<>();
-
-        coordinates.add(lat);
-        coordinates.add(lng);
-        locations.put(name, coordinates);
-    }
-
-    private static void addLocations(SimpleFeatureBuilder featureBuilder, DefaultFeatureCollection collection) {
+    public static void addLocations(SimpleFeatureBuilder featureBuilder, DefaultFeatureCollection collection) {
 
         Map<String, List<Double>> locations = new HashMap<>();
 
@@ -172,6 +153,14 @@ public class ShapeFile {
             collection.add(feature);
         }
 
+    }
+    
+    private static void addToLocationMap(String name, double lat, double lng, Map<String, List<Double>> locations) {
+        List<Double> coordinates = new ArrayList<>();
+
+        coordinates.add(lat);
+        coordinates.add(lng);
+        locations.put(name, coordinates);
     }
 
     private static File getNewShapeFile() {
