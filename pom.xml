@@ -106,7 +106,6 @@
         <module>mockito2</module>
         <module>mocks</module>
         <module>mustache</module>
-        <module>noexception</module>
 
         <module>orika</module>
 
