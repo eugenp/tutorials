@@ -31,7 +31,7 @@ import org.springframework.web.client.RestTemplate;
 import io.specto.hoverfly.junit.core.SimulationSource;
 import io.specto.hoverfly.junit.rule.HoverflyRule;
 
-public class HoverflyApiTest {
+public class HoverflyApiIntegrationTest {
 
     private static final SimulationSource source = dsl(
       service("http://www.baeldung.com")
