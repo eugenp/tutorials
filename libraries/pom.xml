@@ -462,10 +462,15 @@
 			<artifactId>pcollections</artifactId>
 			<version>${pcollections.version}</version>
 		</dependency>
-    <dependency>
+    	<dependency>
 			<groupId>org.eclipse.collections</groupId>
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse-collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.codepoetics</groupId>
+			<artifactId>protonpack</artifactId>
+			<version>${protonpack.version}</version>
 		</dependency>
 	</dependencies>
 	<properties>
@@ -508,6 +513,7 @@
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
 		<rome.version>1.0</rome.version>
+		<protonpack.version>1.14</protonpack.version>
     <eclipse-collections.version>8.2.0</eclipse-collections.version>
 	</properties>
 </project>
