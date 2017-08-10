@@ -365,11 +365,7 @@
 			<name>OpenGeo Maven Repository</name>
 			<url>http://repo.opengeo.org</url>
 		</repository>
-		<repository>
-			<id>boundless</id>
-			<name>Boundless Maven Repository</name>
-			<url>http://repo.boundlessgeo.com/main</url>
-		</repository>
+
 	</repositories>
 	<properties>
 		<multiverse.version>0.7.0</multiverse.version>
