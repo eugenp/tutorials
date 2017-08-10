@@ -20,23 +20,22 @@ public class NoExceptionUnitTest {
 
     @Test
     public void whenDefaultNoException_thenCatchAndLog() {
-
         Exceptions.log().run(() -> System.out.println("Result is " + Integer.parseInt("foobar")));
     }
 
     @Test
     public void givenLogger_whenDefaultNoException_thenCatchAndLogWithClassName() {
-        System.out.println("Result is " + Exceptions.log(logger).run(() -> +Integer.parseInt("foobar")));
+        Exceptions.log(logger).run(() -> System.out.println("Result is " + Integer.parseInt("foobar")));
     }
 
     @Test
-    public void givenLoggerAndMessage_whenDefaultNoException_thenCatchAndLogWithClassNameAndMessage() {
-        System.out.println("Result is " + Exceptions.log(logger, "Something went wrong:").run(() -> +Integer.parseInt("foobar")));
+    public void givenLoggerAndMessage_whenDefaultNoException_thenCatchAndLogWithMessage() {
+        Exceptions.log(logger, "Something went wrong:").run(() -> System.out.println("Result is " + Integer.parseInt("foobar")));
     }
 
     @Test
     public void givenDefaultValue_whenDefaultNoException_thenCatchAndLogPrintDefault() {
-        System.out.println("Result is " + Exceptions.log(logger, "Something went wrong:").get(() -> +Integer.parseInt("foobar")).orElse(-1));
+        System.out.println("Result is " + Exceptions.log(logger, "Something went wrong:").get(() -> Integer.parseInt("foobar")).orElse(-1));
     }
 
     @Test(expected = Error.class)
