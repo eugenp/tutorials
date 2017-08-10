@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.param;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,18 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import com.baeldung.extensions.InvalidPersonParameterResolver;
-import com.baeldung.extensions.ValidPersonParameterResolver;
-import com.baeldung.helpers.Person;
-import com.baeldung.helpers.PersonValidator;
-
 @RunWith(JUnitPlatform.class)
 @DisplayName("Testing PersonValidator")
 public class PersonValidatorTest {
 
   /**
    * Nested class, uses ExtendWith
-   * {@link com.baeldung.extensions.ValidPersonParameterResolver ValidPersonParameterResolver}
+   * {@link com.baeldung.param.ValidPersonParameterResolver ValidPersonParameterResolver}
    * to feed Test methods with "good" data.
    */
   @Nested
@@ -68,7 +63,7 @@ public class PersonValidatorTest {
 
   /**
    * Nested class, uses ExtendWith
-   * {@link com.baeldung.extensions.InvalidPersonParameterResolver InvalidPersonParameterResolver}
+   * {@link com.baeldung.param.InvalidPersonParameterResolver InvalidPersonParameterResolver}
    * to feed Test methods with "bad" data.
    */
   @Nested

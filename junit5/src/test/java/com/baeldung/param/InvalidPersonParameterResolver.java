@@ -1,4 +1,4 @@
-package com.baeldung.extensions;
+package com.baeldung.param;
 
 import java.util.Random;
 
@@ -7,20 +7,18 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
-import com.baeldung.helpers.Person;
-
-public class ValidPersonParameterResolver implements ParameterResolver {
+public class InvalidPersonParameterResolver implements ParameterResolver {
 
   /**
-   * The "good" (valid) data for testing purposes has to go somewhere, right?
+   * The "bad" (invalid) data for testing purposes has to go somewhere, right?
    */
-  public static Person[] VALID_PERSONS = {
-      new Person().setId(1L).setLastName("Adams").setFirstName("Jill"),
-      new Person().setId(2L).setLastName("Baker").setFirstName("James"),
-      new Person().setId(3L).setLastName("Carter").setFirstName("Samanta"),
-      new Person().setId(4L).setLastName("Daniels").setFirstName("Joseph"),
-      new Person().setId(5L).setLastName("English").setFirstName("Jane"),
-      new Person().setId(6L).setLastName("Fontana").setFirstName("Enrique"),
+  public static Person[] INVALID_PERSONS = {
+      new Person().setId(1L).setLastName("Ad_ams").setFirstName("Jill,"),
+      new Person().setId(2L).setLastName(",Baker").setFirstName(""),
+      new Person().setId(3L).setLastName(null).setFirstName(null),
+      new Person().setId(4L).setLastName("Daniel&").setFirstName("{Joseph}"),
+      new Person().setId(5L).setLastName("").setFirstName("English, Jane"),
+      new Person()/* .setId(6L).setLastName("Fontana").setFirstName("Enrique") */,
       // TODO: ADD MORE DATA HERE
   };
 
@@ -32,7 +30,7 @@ public class ValidPersonParameterResolver implements ParameterResolver {
     // Return a random, valid Person object if Person.class is the type of Parameter
     /// to be resolved. Otherwise return null.
     if (parameterContext.getParameter().getType() == Person.class) {
-      ret = VALID_PERSONS[new Random().nextInt(VALID_PERSONS.length)];
+      ret = INVALID_PERSONS[new Random().nextInt(INVALID_PERSONS.length)];
     }
     return ret;
   }

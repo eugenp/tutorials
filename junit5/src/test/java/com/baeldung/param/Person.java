@@ -1,4 +1,4 @@
-package com.baeldung.helpers;
+package com.baeldung.param;
 
 /**
  * Very simple Person entity.
