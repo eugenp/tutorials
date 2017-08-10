@@ -26,12 +26,12 @@ public class NoExceptionUnitTest {
 
     @Test
     public void givenLogger_whenDefaultNoException_thenCatchAndLogWithClassName() {
-        System.out.println("Result is " + Exceptions.log(logger).get(() -> +Integer.parseInt("foobar")).orElse(-1));
+        System.out.println("Result is " + Exceptions.log(logger).run(() -> +Integer.parseInt("foobar")));
     }
 
     @Test
     public void givenLoggerAndMessage_whenDefaultNoException_thenCatchAndLogWithClassNameAndMessage() {
-        System.out.println("Result is " + Exceptions.log(logger, "Something went wrong:").get(() -> +Integer.parseInt("foobar")).orElse(-1));
+        System.out.println("Result is " + Exceptions.log(logger, "Something went wrong:").run(() -> +Integer.parseInt("foobar")));
     }
 
     @Test
