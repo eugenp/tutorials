@@ -4,9 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections4.Bag;
+<<<<<<< HEAD
 import org.apache.commons.collections4.bag.CollectionBag;
 import org.apache.commons.collections4.bag.HashBag;
 import org.apache.commons.collections4.bag.TreeBag;
+=======
+<<<<<<< HEAD
+import org.apache.commons.collections4.TransformerUtils;
+import org.apache.commons.collections4.bag.CollectionBag;
+import org.apache.commons.collections4.bag.CollectionSortedBag;
+import org.apache.commons.collections4.bag.HashBag;
+import org.apache.commons.collections4.bag.TreeBag;
+=======
+import org.apache.commons.collections4.bag.CollectionBag;
+import org.apache.commons.collections4.bag.HashBag;
+>>>>>>> 4660dd6a3e8c648adc0ff67abdf1a69ff948f340
+>>>>>>> 58e6a39983991aa70448432ddcacadf3ea27c0df
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +27,28 @@ import org.junit.Test;
 public class BagTests {
 
 	Bag<String> baseBag;
+<<<<<<< HEAD
 	TreeBag<String> treeBag;
 
+=======
+<<<<<<< HEAD
+	TreeBag<String> treeBag;
+	
+=======
+>>>>>>> 4660dd6a3e8c648adc0ff67abdf1a69ff948f340
+>>>>>>> 58e6a39983991aa70448432ddcacadf3ea27c0df
 
 	@Before
 	public void before() {
 		baseBag = new HashBag<String>();
+<<<<<<< HEAD
 		treeBag = new TreeBag<String>();
+=======
+<<<<<<< HEAD
+		treeBag = new TreeBag<String>();
+=======
+>>>>>>> 4660dd6a3e8c648adc0ff67abdf1a69ff948f340
+>>>>>>> 58e6a39983991aa70448432ddcacadf3ea27c0df
 	}
 
 	@Test
@@ -67,6 +95,11 @@ public class BagTests {
 		containList.add("lime");
 		Assert.assertTrue(baseBag.containsAll(containList));
 	}
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+>>>>>>> 58e6a39983991aa70448432ddcacadf3ea27c0df
 	
 	@Test
 	public void whenAddtoTreeBag_thenRemove_thenContainsCorrect() {
@@ -82,4 +115,10 @@ public class BagTests {
 		Assert.assertEquals(9, treeBag.size());
 		Assert.assertEquals("banana", treeBag.first());
 	}
+<<<<<<< HEAD
+=======
+	
+=======
+>>>>>>> 4660dd6a3e8c648adc0ff67abdf1a69ff948f340
+>>>>>>> 58e6a39983991aa70448432ddcacadf3ea27c0df
 }
