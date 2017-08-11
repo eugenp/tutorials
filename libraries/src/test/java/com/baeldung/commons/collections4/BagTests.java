@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.collections4.Bag;
-import org.apache.commons.collections4.TransformerUtils;
 import org.apache.commons.collections4.bag.CollectionBag;
-import org.apache.commons.collections4.bag.CollectionSortedBag;
 import org.apache.commons.collections4.bag.HashBag;
 import org.apache.commons.collections4.bag.TreeBag;
 import org.junit.Assert;
@@ -17,7 +15,7 @@ public class BagTests {
 
 	Bag<String> baseBag;
 	TreeBag<String> treeBag;
-	
+
 
 	@Before
 	public void before() {
@@ -69,7 +67,6 @@ public class BagTests {
 		containList.add("lime");
 		Assert.assertTrue(baseBag.containsAll(containList));
 	}
-
 	
 	@Test
 	public void whenAddtoTreeBag_thenRemove_thenContainsCorrect() {
@@ -85,5 +82,4 @@ public class BagTests {
 		Assert.assertEquals(9, treeBag.size());
 		Assert.assertEquals("banana", treeBag.first());
 	}
-	
 }
