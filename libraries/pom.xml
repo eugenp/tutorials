@@ -181,6 +181,11 @@
 			<artifactId>jetty-servlet</artifactId>
 			<version>${jetty.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rome.version}</version>
+		</dependency>
 	    <dependency>
 	      <groupId>io.specto</groupId>
 	      <artifactId>hoverfly-java</artifactId>
@@ -457,6 +462,16 @@
 			<artifactId>pcollections</artifactId>
 			<version>${pcollections.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.machinezoo.noexception</groupId>
+			<artifactId>noexception</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+    <dependency>
+			<groupId>org.eclipse.collections</groupId>
+			<artifactId>eclipse-collections</artifactId>
+			<version>${eclipse-collections.version}</version>
+		</dependency>
 	</dependencies>
 	<properties>
 		<multiverse.version>0.7.0</multiverse.version>
@@ -497,5 +512,7 @@
 		<hll.version>1.6.0</hll.version>
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
+		<rome.version>1.0</rome.version>
+    <eclipse-collections.version>8.2.0</eclipse-collections.version>
 	</properties>
 </project>

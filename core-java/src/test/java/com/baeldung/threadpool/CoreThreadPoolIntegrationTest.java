@@ -13,7 +13,6 @@ public class CoreThreadPoolIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CoreThreadPoolIntegrationTest.class);
 
-
     @Test(timeout = 1000)
     public void whenCallingExecuteWithRunnable_thenRunnableIsExecuted() throws InterruptedException {
 
