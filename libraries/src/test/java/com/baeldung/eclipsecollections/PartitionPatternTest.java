@@ -28,7 +28,6 @@ public class PartitionPatternTest {
         list.add(38);
     }
 
-    @SuppressWarnings({ "unused" })
     @Test
     public void whenAnySatisfiesCondition_thenCorrect() {
         MutableList<Integer> numbers = list;
