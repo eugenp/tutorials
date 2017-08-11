@@ -1,20 +1,23 @@
 package com.baeldung.metrics.servo;
 
 import com.netflix.servo.Metric;
-import com.netflix.servo.publish.*;
+import com.netflix.servo.publish.BasicMetricFilter;
+import com.netflix.servo.publish.JvmMetricPoller;
+import com.netflix.servo.publish.MemoryMetricObserver;
+import com.netflix.servo.publish.PollRunnable;
+import com.netflix.servo.publish.PollScheduler;
 import org.junit.Test;
 
 import java.util.List;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toList;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author aiet
- */
-public class MetricPollerTest {
+public class MetricPollerManualTest {
 
     @Test
     public void givenJvmPoller_whenMonitor_thenDataCollected() throws Exception {

@@ -1,10 +1,6 @@
 package com.example.activitiwithspring;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.activiti.engine.ActivitiException;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
@@ -13,19 +9,24 @@ import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
-public class ProcessExecutionTests {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+public class ProcessExecutionIntegrationTest {
 
     @Test
     public void givenBPMN_whenDeployProcess_thenDeployed() {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-                .deploy();
+          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+          .deploy();
         Long count = repositoryService.createProcessDefinitionQuery().count();
         assertTrue(count >= 1);
     }
@@ -35,8 +36,8 @@ public class ProcessExecutionTests {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-                .deploy();
+          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+          .deploy();
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
@@ -45,7 +46,7 @@ public class ProcessExecutionTests {
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         ProcessInstance processInstance = runtimeService
-                .startProcessInstanceByKey("vacationRequest", variables);
+          .startProcessInstanceByKey("vacationRequest", variables);
 
         Long count = runtimeService.createProcessInstanceQuery().count();
         assertTrue(count >= 1);
@@ -56,8 +57,8 @@ public class ProcessExecutionTests {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-                .deploy();
+          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+          .deploy();
 
         Map<String, Object> variables = new HashMap<String, Object>();
         variables.put("employeeName", "Kermit");
@@ -66,7 +67,7 @@ public class ProcessExecutionTests {
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         ProcessInstance processInstance = runtimeService
-                .startProcessInstanceByKey("vacationRequest", variables);
+          .startProcessInstanceByKey("vacationRequest", variables);
 
         TaskService taskService = processEngine.getTaskService();
         List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("management").list();
@@ -87,8 +88,8 @@ public class ProcessExecutionTests {
         ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         repositoryService.createDeployment()
-                .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-                .deploy();
+          .addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
+          .deploy();
 
         RuntimeService runtimeService = processEngine.getRuntimeService();
         repositoryService.suspendProcessDefinitionByKey("vacationRequest");
