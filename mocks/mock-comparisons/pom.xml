@@ -13,7 +13,7 @@
     <name>mock-comparisons</name>
 
     <properties>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.8.9</mockito.version>
         <easymock.version>3.4</easymock.version>
         <jmockit.version>1.29</jmockit.version>
 
