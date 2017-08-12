@@ -13,4 +13,12 @@ public class StreamIndices {
             .collect(Collectors.toList());
         return evenIndexedNames;
     }
+
+    public static List<String> getOddIndexedStrings(String[] names) {
+        List<String> oddIndexedNames = IntStream.range(0, names.length)
+            .filter(i -> i % 2 == 1)
+            .mapToObj(i -> names[i])
+            .collect(Collectors.toList());
+        return oddIndexedNames;
+    }
 }
