@@ -3,6 +3,8 @@ package com.baeldung.eclipsecollections;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.list.mutable.FastList;
 import static org.junit.Assert.assertEquals;
+
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class CollectPatternTest {
@@ -16,7 +18,7 @@ public class CollectPatternTest {
 
         MutableList<String> lastNames = students.collect(Student::getLastName);
 
-        assertEquals("Hopkins", lastNames.get(0));
-        assertEquals("Adams", lastNames.get(1));
+        Assertions.assertThat(lastNames)
+            .containsExactly("Hopkins", "Adams");
     }
 }
