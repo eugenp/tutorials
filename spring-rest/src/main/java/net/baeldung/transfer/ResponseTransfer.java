@@ -1,4 +1,4 @@
-package net.baeldung.ngrestboot.transfer;
+package net.baeldung.transfer;
 
 public class ResponseTransfer {
 

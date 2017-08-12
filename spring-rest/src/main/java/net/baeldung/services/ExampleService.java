@@ -1,6 +1,6 @@
-package net.baeldung.ngrestboot.services;
+package net.baeldung.services;
 
-import net.baeldung.ngrestboot.transfer.LoginForm;
+import net.baeldung.transfer.LoginForm;
 import org.springframework.stereotype.Service;
 
 @Service

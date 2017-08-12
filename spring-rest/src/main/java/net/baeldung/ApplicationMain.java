@@ -1,4 +1,4 @@
-package net.baeldung.ngrestboot;
+package net.baeldung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +14,7 @@ public class ApplicationMain extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        setRegisterErrorPageFilter(false);
         return application.sources(ApplicationMain.class);
     }
 }
