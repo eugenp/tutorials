@@ -24,6 +24,13 @@ public class StreamIndices {
         return list;
     }
 
+    public static List<Indexed<String>> getOddIndexedStrings(List<String> names) {
+        List<Indexed<String>> list = StreamUtils.zipWithIndex(names.stream())
+            .filter(i -> i.getIndex() % 2 == 1)
+            .collect(Collectors.toList());
+        return list;
+    }
+
     public static List<String> getOddIndexedStrings(String[] names) {
         List<String> oddIndexedNames = IntStream.range(0, names.length)
             .filter(i -> i % 2 == 1)
