@@ -12,7 +12,7 @@ import com.codepoetics.protonpack.Indexed;
 public class StreamIndicesTest {
 
     @Test
-    public void givenList_whenGetArrayIndexedStrings_thenReturnListOfEvenIndexedStrings() {
+    public void givenArray_whenGetIndexedStrings_thenReturnListOfEvenIndexedStrings() {
         String[] names = { "Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim" };
         List<String> expectedResult = Arrays.asList("Afrim", "Besim", "Durim");
         List<String> actualResult = StreamIndices.getEvenIndexedStrings(names);
