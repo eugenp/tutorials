@@ -1,15 +1,14 @@
 package com.baeldung.bootique;
 
-import java.util.function.Supplier;
-
 import com.baeldung.bootique.module.ModuleBinder;
 import com.baeldung.bootique.router.IndexController;
 import com.baeldung.bootique.router.SaveController;
 import com.google.inject.Module;
-
 import io.bootique.Bootique;
 import io.bootique.jersey.JerseyModule;
 import io.bootique.log.BootLogger;
+
+import java.util.function.Supplier;
 
 public class App {
 
