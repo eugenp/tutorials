@@ -3,7 +3,6 @@ package com.baeldung.eclipsecollections;
 import org.assertj.core.api.Assertions;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.list.mutable.FastList;
-import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
