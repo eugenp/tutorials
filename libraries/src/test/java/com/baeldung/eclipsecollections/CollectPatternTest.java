@@ -16,7 +16,7 @@ public class CollectPatternTest {
 
         MutableList<String> lastNames = students.collect(Student::getLastName);
 
-        assertEquals(lastNames.get(0), "Hopkins");
-        assertEquals(lastNames.get(1), "Adams");
+        assertEquals("Hopkins", lastNames.get(0));
+        assertEquals("Adams", lastNames.get(1));
     }
 }
