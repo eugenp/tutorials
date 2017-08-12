@@ -11,17 +11,17 @@ import static org.junit.Assert.assertEquals;
 
 public class AppTest {
 
-	@Rule
-	public BQTestFactory bqTestFactory = new BQTestFactory();
+    @Rule
+    public BQTestFactory bqTestFactory = new BQTestFactory();
 
-	@Rule
-	public BQDaemonTestFactory bqDaemonTestFactory = new BQDaemonTestFactory();
+    @Rule
+    public BQDaemonTestFactory bqDaemonTestFactory = new BQDaemonTestFactory();
 
-	@Test
-	public void givenService_expectBoolen() {
-		BQRuntime runtime = bqTestFactory.app("--server").autoLoadModules().createRuntime();
-		HelloService service = runtime.getInstance(HelloService.class);
-		assertEquals(true, service.save());
-	}
+    @Test
+    public void givenService_expectBoolen() {
+        BQRuntime runtime = bqTestFactory.app("--server").autoLoadModules().createRuntime();
+        HelloService service = runtime.getInstance(HelloService.class);
+        assertEquals(true, service.save());
+    }
 
 }

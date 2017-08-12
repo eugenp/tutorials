@@ -5,9 +5,9 @@ import io.bootique.BQModuleProvider;
 
 public class ModuleProvider implements BQModuleProvider {
 
-	@Override
-	public Module module() {
-		return new ModuleBinder();
-	}
+    @Override
+    public Module module() {
+        return new ModuleBinder();
+    }
 
 }

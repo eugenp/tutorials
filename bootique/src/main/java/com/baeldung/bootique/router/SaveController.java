@@ -9,12 +9,12 @@ import javax.ws.rs.Path;
 @Path("/save")
 public class SaveController {
 
-	@Inject
-	HelloService helloService;
+    @Inject
+    HelloService helloService;
 
-	@POST
-	public String save() {
-		return "Data Saved!";
-	}
+    @POST
+    public String save() {
+        return "Data Saved!";
+    }
 
 }

@@ -52,7 +52,7 @@
             <scope>test</scope>		
         </dependency>
         
-        <dependency>
+<!--         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
@@ -62,7 +62,7 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>${tomcat.version}</version>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
