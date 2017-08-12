@@ -12,7 +12,7 @@ public class SimpleServer {
 			@Override
 			public void handleRequest(final HttpServerExchange exchange) throws Exception {
 				exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
-				exchange.getResponseSender().send("Hello World");
+				exchange.getResponseSender().send("Hello Baeldung");
 			}
 		}).build();
 		server.start();

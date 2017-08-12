@@ -47,7 +47,7 @@ public class SecureServer {
 		handler = new AuthenticationCallHandler(handler);
 		handler = new AuthenticationConstraintHandler(handler);
 		final List<AuthenticationMechanism> mechanisms = Collections
-				.<AuthenticationMechanism> singletonList(new BasicAuthenticationMechanism("My Realm"));
+				.<AuthenticationMechanism> singletonList(new BasicAuthenticationMechanism("Baeldung_Realm"));
 		handler = new AuthenticationMechanismsHandler(handler, mechanisms);
 		handler = new SecurityInitialHandler(AuthenticationMode.PRO_ACTIVE, identityManager, handler);
 		return handler;
