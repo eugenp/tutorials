@@ -13,14 +13,16 @@ import java.util.List;
 
 import static com.netflix.servo.annotations.DataSourceType.GAUGE;
 import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author aiet
- */
-public class MetricObserverTest extends MetricTestBase {
+public class MetricObserverManualTest extends MetricTestBase {
 
     @Test
     public void givenMetrics_whenRegister_thenMonitored() throws InterruptedException {
