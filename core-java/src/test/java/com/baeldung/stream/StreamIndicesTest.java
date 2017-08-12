@@ -15,4 +15,12 @@ public class StreamIndicesTest {
         List<String> actualResult = StreamIndices.getEvenIndexedStrings(names);
         assertEquals(expectedResult, actualResult);
     }
+
+    @Test
+    public void givenList_whenGetOddIndexedStrings_thenReturnListOfStrings() {
+        String[] names = { "Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim" };
+        List<String> expectedResult = Arrays.asList("Bashkim", "Lulzim", "Shpetim");
+        List<String> actualResult = StreamIndices.getOddIndexedStrings(names);
+        assertEquals(expectedResult, actualResult);
+    }
 }
