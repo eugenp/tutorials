@@ -1,12 +1,9 @@
 package com.baeldung.eclipsecollections;
 
+import org.assertj.core.api.Assertions;
 import org.eclipse.collections.api.LazyIterable;
 import org.eclipse.collections.api.list.MutableList;
-import org.eclipse.collections.impl.block.factory.Predicates;
 import org.eclipse.collections.impl.factory.Lists;
-import static org.junit.Assert.assertTrue;
-
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class LazyIterationTest {
