@@ -72,8 +72,8 @@
 
 		<dependency>
 			<groupId>com.codepoetics</groupId>
-			<artifactId>${protonpack.version}</artifactId>
-			<version>1.13</version>
+			<artifactId>protonpack</artifactId>
+			<version>${protonpack.version}</version>
 		</dependency>
 		<!-- web -->
 
