@@ -4,7 +4,6 @@ import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.collections.impl.tuple.Tuples;
-import static org.junit.Assert.assertEquals;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Before;

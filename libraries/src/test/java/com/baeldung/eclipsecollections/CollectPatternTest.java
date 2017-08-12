@@ -2,7 +2,6 @@ package com.baeldung.eclipsecollections;
 
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.list.mutable.FastList;
-import static org.junit.Assert.assertEquals;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
