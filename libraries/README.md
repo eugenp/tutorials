@@ -27,6 +27,10 @@
 - [Introduction to Awaitility](http://www.baeldung.com/awaitlity-testing)
 - [Guide to the HyperLogLog Algorithm](http://www.baeldung.com/java-hyperloglog)
 - [Introduction to Neuroph](http://www.baeldung.com/intro-to-neuroph)
+- [Guide to Apache Commons CircularFifoQueue](http://www.baeldung.com/commons-circular-fifo-queue)
+- [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
+- [Introduction to NoException](http://www.baeldung.com/intrduction-to-noexception)
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

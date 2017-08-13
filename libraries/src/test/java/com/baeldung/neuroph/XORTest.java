@@ -10,6 +10,10 @@ import static org.junit.Assert.*;
 public class XORTest {
     private NeuralNetwork ann = null;
 
+     private void print(String input, double output, double actual) {
+        System.out.println("Testing: " + input + " Expected: " + actual + " Result: " + output);
+    }
+
     @Before
     public void annInit() {
         ann = NeurophXOR.trainNeuralNetwork(NeurophXOR.assembleNeuralNetwork());
@@ -19,28 +23,32 @@ public class XORTest {
     public void leftDisjunctTest() {
         ann.setInput(0, 1);
         ann.calculate();
-        assertEquals(ann.getOutput()[0], 1.0,0.0);
+        print("0, 1", ann.getOutput()[0], 1.0);
+        assertEquals(ann.getOutput()[0], 1.0, 0.0);
     }
 
     @Test
     public void rightDisjunctTest() {
         ann.setInput(1, 0);
         ann.calculate();
-        assertEquals(ann.getOutput()[0], 1.0,0.0);
+        print("1, 0", ann.getOutput()[0], 1.0);
+        assertEquals(ann.getOutput()[0], 1.0, 0.0);
     }
 
     @Test
     public void bothFalseConjunctTest() {
         ann.setInput(0, 0);
         ann.calculate();
-        assertEquals(ann.getOutput()[0], 0.0,0.0);
+        print("0, 0", ann.getOutput()[0], 0.0);
+        assertEquals(ann.getOutput()[0], 0.0, 0.0);
     }
 
     @Test
     public void bothTrueConjunctTest() {
         ann.setInput(1, 1);
         ann.calculate();
-        assertEquals(ann.getOutput()[0], 0.0,0.0);
+        print("1, 1", ann.getOutput()[0], 0.0);
+        assertEquals(ann.getOutput()[0], 0.0, 0.0);
     }
 
     @After

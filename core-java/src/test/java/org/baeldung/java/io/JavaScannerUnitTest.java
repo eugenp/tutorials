@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -105,6 +106,7 @@ public class JavaScannerUnitTest {
     public void whenScanString_thenCorrect() throws IOException {
         final String input = "Hello 1 F 3.5";
         final Scanner scanner = new Scanner(input);
+        scanner.useLocale(Locale.US);
 
         assertEquals("Hello", scanner.next());
         assertEquals(1, scanner.nextInt());
