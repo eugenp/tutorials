@@ -34,8 +34,7 @@ public class BroadcastingClient {
 
     List<InetAddress> listAllBroadcastAddresses() throws SocketException {
         List<InetAddress> broadcastList = new ArrayList<>();
-        Enumeration<NetworkInterface> interfaces 
-          = NetworkInterface.getNetworkInterfaces();
+        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
         while (interfaces.hasMoreElements()) {
             NetworkInterface networkInterface = interfaces.nextElement();
 
@@ -44,10 +43,10 @@ public class BroadcastingClient {
             }
 
             broadcastList.addAll(networkInterface.getInterfaceAddresses()
-              .stream()
-              .filter(address -> address.getBroadcast() != null)
-              .map(address -> address.getBroadcast())
-              .collect(Collectors.toList()));
+                .stream()
+                .filter(address -> address.getBroadcast() != null)
+                .map(address -> address.getBroadcast())
+                .collect(Collectors.toList()));
         }
         return broadcastList;
     }
