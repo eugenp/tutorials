@@ -40,8 +40,8 @@ public class Java9ObjectsAPIUnitTest {
 
     @Test
     public void givenObject_whenRequireNonNullElseGet_thenObject(){
-        assertThat(Objects.<List>requireNonNullElseGet(null, List::of),
-                is(List.of()));
+        List<String> aList = Objects.<List>requireNonNullElseGet(null, List::of);
+        assertThat(aList, is(List.of()));
     }
 
     @Test
