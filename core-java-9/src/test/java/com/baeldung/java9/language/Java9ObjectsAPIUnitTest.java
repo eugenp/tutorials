@@ -10,17 +10,27 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class Java9ObjectsAPIUnitTest {
-    
+
+    private List<String> aMethodReturningNullList(){
+        return null;
+    }
+
     @Test
     public void givenNullObject_whenRequireNonNullElse_thenElse(){
-        assertThat(Objects.<List>requireNonNullElse(null, Collections.EMPTY_LIST),
-                is(Collections.EMPTY_LIST));
+        List<String> aList = Objects.<List>requireNonNullElse(
+                aMethodReturningNullList(), Collections.EMPTY_LIST);
+        assertThat(aList, is(Collections.EMPTY_LIST));
+    }
+
+    private List<String> aMethodReturningNonNullList(){
+        return List.of("item1", "item2");
     }
 
     @Test
     public void givenObject_whenRequireNonNullElse_thenObject(){
-        assertThat(Objects.<List>requireNonNullElse(List.of("item1", "item2"),
-                Collections.EMPTY_LIST), is(List.of("item1", "item2")));
+        List<String> aList = Objects.<List>requireNonNullElse(
+                aMethodReturningNonNullList(), Collections.EMPTY_LIST);
+        assertThat(aList, is(List.of("item1", "item2")));
     }
 
     @Test(expected = NullPointerException.class)
