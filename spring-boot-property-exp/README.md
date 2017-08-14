@@ -1,5 +1,5 @@
 ## The Module Holds Sources for the Following Articles
- - [Automatic Property Expansion with Spring Boot] (http://www.baeldung.com/property-expansion-spring-boot)
+ - [Automatic Property Expansion with Spring Boot](http://www.baeldung.com/property-expansion-spring-boot)
  
 ### Module property-exp-default-config
  This project contains both a standard Maven Spring Boot build and the Gradle build which is Maven compatible.
