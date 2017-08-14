@@ -9,10 +9,15 @@ import org.springframework.stereotype.Repository;
 public class InMemCustomerRepository implements CustomerRepository {
 
     @Override
-    public List<Customer> findAll() {
-        return Arrays.asList(
-            new Customer(1L, "customer1"),
-            new Customer(2L, "customer2"),
-            new Customer(3L, "customer3"));
+    public Customer findById(Long customerId) {
+        List<Customer> customers = Arrays.asList(
+          new Customer(1L, "customer1"),
+          new Customer(2L, "customer2"),
+          new Customer(3L, "customer3"));
+        
+        return customers.stream()
+          .filter(customer -> customer.getId().equals(customerId))
+          .findFirst()
+          .orElseThrow(CustomerNotFoundException::new);
     }
 }
