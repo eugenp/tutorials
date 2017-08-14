@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "com.baeldung.hibernate.manytomany" })
-public class PersistanceConfig {
+public class PersistenceConfig {
 
     @Autowired
     private Environment env;
