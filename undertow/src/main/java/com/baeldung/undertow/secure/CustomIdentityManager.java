@@ -10,11 +10,11 @@ import io.undertow.security.idm.Account;
 import io.undertow.security.idm.Credential;
 import io.undertow.security.idm.PasswordCredential;
 
-public class IdentityManager implements io.undertow.security.idm.IdentityManager {
+public class CustomIdentityManager implements io.undertow.security.idm.IdentityManager {
 
 	private final Map<String, char[]> users;
 
-	IdentityManager(final Map<String, char[]> users) {
+	CustomIdentityManager(final Map<String, char[]> users) {
 		this.users = users;
 	}
 

@@ -14,6 +14,7 @@ import io.undertow.security.handlers.AuthenticationCallHandler;
 import io.undertow.security.handlers.AuthenticationConstraintHandler;
 import io.undertow.security.handlers.AuthenticationMechanismsHandler;
 import io.undertow.security.handlers.SecurityInitialHandler;
+import io.undertow.security.idm.IdentityManager;
 import io.undertow.security.impl.BasicAuthenticationMechanism;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
@@ -25,24 +26,19 @@ public class SecureServer {
 		users.put("root", "password".toCharArray());
 		users.put("admin", "password".toCharArray());
 
-		final io.undertow.security.idm.IdentityManager idm = new IdentityManager(users);
+		final IdentityManager idm = new CustomIdentityManager(users);
 
-		Undertow server = Undertow.builder().addHttpListener(8080, "localhost")
-				.setHandler(addSecurity(new HttpHandler() {
-					@Override
-					public void handleRequest(final HttpServerExchange exchange) throws Exception {
-						final SecurityContext context = exchange.getSecurityContext();
-						exchange.getResponseSender().send(
-								"Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),
-								IoCallback.END_EXCHANGE);
-					}
-				}, idm)).build();
+		Undertow server = Undertow.builder().addHttpListener(8080, "localhost").setHandler(addSecurity((exchange) -> {
+			final SecurityContext context = exchange.getSecurityContext();
+			exchange.getResponseSender().send("Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),
+					IoCallback.END_EXCHANGE);
+		}, idm)).build();
+
 		server.start();
 
 	}
 
-	private static HttpHandler addSecurity(final HttpHandler toWrap,
-			final io.undertow.security.idm.IdentityManager identityManager) {
+	private static HttpHandler addSecurity(final HttpHandler toWrap, final IdentityManager identityManager) {
 		HttpHandler handler = toWrap;
 		handler = new AuthenticationCallHandler(handler);
 		handler = new AuthenticationConstraintHandler(handler);

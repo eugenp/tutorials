@@ -237,6 +237,7 @@
         <module>liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>mockserver</module>
+        <module>undertow</module>
     </modules>
 
     <dependencies>
