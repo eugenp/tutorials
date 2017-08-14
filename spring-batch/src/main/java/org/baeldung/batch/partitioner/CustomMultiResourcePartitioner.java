@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.baeldung.spring_batch_intro.partitioner;
+package org.baeldung.batch.partitioner;
 
 import java.util.HashMap;
 import java.util.Map;

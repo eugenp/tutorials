@@ -1,9 +1,9 @@
-package org.baeldung.spring_batch_intro.service;
+package org.baeldung.batch.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.baeldung.spring_batch_intro.model.Transaction;
+import org.baeldung.batch.model.Transaction;
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;
 import org.springframework.validation.BindException;
