@@ -2,7 +2,11 @@ package com.baeldung.ldap.data.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.ldap.core.*;
+import org.springframework.ldap.core.AttributesMapper;
+import org.springframework.ldap.core.ContextSource;
+import org.springframework.ldap.core.DirContextAdapter;
+import org.springframework.ldap.core.DirContextOperations;
+import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.support.LdapNameBuilder;
 
 import javax.naming.Name;
@@ -31,8 +35,8 @@ public class LdapClient {
           "ou=users",
           "cn=" + username,
           (AttributesMapper<String>) attrs -> (String) attrs
-          .get("cn")
-          .get());
+            .get("cn")
+            .get());
     }
 
     public void create(final String username, final String password) {
@@ -43,7 +47,7 @@ public class LdapClient {
           .build();
         DirContextAdapter context = new DirContextAdapter(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
@@ -59,7 +63,7 @@ public class LdapClient {
           .build();
         DirContextOperations context = ldapTemplate.lookupContext(dn);
 
-        context.setAttributeValues("objectclass", new String[] { "top", "person", "organizationalPerson", "inetOrgPerson" });
+        context.setAttributeValues("objectclass", new String[]{"top", "person", "organizationalPerson", "inetOrgPerson"});
         context.setAttributeValue("cn", username);
         context.setAttributeValue("sn", username);
         context.setAttributeValue("userPassword", digestSHA(password));
