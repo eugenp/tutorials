@@ -93,12 +93,12 @@ public class SpringbatchPartitionConfig {
     @Bean
     @StepScope
     public FlatFileItemReader<Transaction> itemReader(@Value("#{stepExecutionContext[fileName]}") String filename) throws UnexpectedInputException, ParseException {
-        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<Transaction>();
+        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
         String[] tokens = {"username", "userid", "transactiondate", "amount"};
         tokenizer.setNames(tokens);
         reader.setResource(new ClassPathResource("input/partitioner/" + filename));
-        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<Transaction>();
+        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
         lineMapper.setLineTokenizer(tokenizer);
         lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
         reader.setLinesToSkip(1);
@@ -140,7 +140,7 @@ public class SpringbatchPartitionConfig {
         // JobRepositoryFactoryBean's methods Throws Generic Exception,
         // it would have been better to have a specific one
         factory.afterPropertiesSet();
-        return (JobRepository) factory.getObject();
+        return factory.getObject();
     }
 
     private DataSource dataSource() {
