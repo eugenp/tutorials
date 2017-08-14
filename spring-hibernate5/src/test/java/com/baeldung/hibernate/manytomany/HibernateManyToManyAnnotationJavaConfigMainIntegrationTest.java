@@ -17,12 +17,12 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
-import com.baeldung.manytomany.spring.PersistanceConfig;
+import com.baeldung.manytomany.spring.PersistenceConfig;
 
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {PersistanceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class HibernateManyToManyAnnotationJavaConfigMainIntegrationTest {
 
     @Autowired
