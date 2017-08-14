@@ -1,10 +1,7 @@
 package com.baeldung.ldap.client;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-
-import java.util.List;
-
+import com.baeldung.ldap.data.service.UserService;
+import com.baeldung.ldap.javaconfig.TestConfig;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,12 +11,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.ldap.data.service.UserService;
-import com.baeldung.ldap.javaconfig.TestConfig;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("testlive")
-@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class LdapDataRepositoryTest {
 
     private static final String USER2 = "TEST02";
