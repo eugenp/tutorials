@@ -1,11 +1,8 @@
-package org.baeldung.spring_batch_intro;
+package org.baeldung.batch;
 
-import java.net.MalformedURLException;
-import java.text.ParseException;
-
-import org.baeldung.spring_batch_intro.model.Transaction;
-import org.baeldung.spring_batch_intro.service.CustomItemProcessor;
-import org.baeldung.spring_batch_intro.service.RecordFieldSetMapper;
+import org.baeldung.batch.model.Transaction;
+import org.baeldung.batch.service.CustomItemProcessor;
+import org.baeldung.batch.service.RecordFieldSetMapper;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -26,6 +23,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
+import java.net.MalformedURLException;
+import java.text.ParseException;
+
 public class SpringBatchConfig {
     @Autowired
     private JobBuilderFactory jobs;
@@ -43,7 +43,7 @@ public class SpringBatchConfig {
     public ItemReader<Transaction> itemReader() throws UnexpectedInputException, ParseException {
         FlatFileItemReader<Transaction> reader = new FlatFileItemReader<Transaction>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-        String[] tokens = { "username", "userid", "transactiondate", "amount" };
+        String[] tokens = {"username", "userid", "transactiondate", "amount"};
         tokenizer.setNames(tokens);
         reader.setResource(inputCsv);
         DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<Transaction>();
@@ -71,13 +71,13 @@ public class SpringBatchConfig {
     @Bean
     public Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(new Class[] { Transaction.class });
+        marshaller.setClassesToBeBound(Transaction.class);
         return marshaller;
     }
 
     @Bean
     protected Step step1(ItemReader<Transaction> reader, ItemProcessor<Transaction, Transaction> processor, ItemWriter<Transaction> writer) {
-        return steps.get("step1").<Transaction, Transaction> chunk(10).reader(reader).processor(processor).writer(writer).build();
+        return steps.get("step1").<Transaction, Transaction>chunk(10).reader(reader).processor(processor).writer(writer).build();
     }
 
     @Bean(name = "firstBatchJob")

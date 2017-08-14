@@ -1,4 +1,4 @@
-package org.baeldung.spring_batch_intro;
+package org.baeldung.batch;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;

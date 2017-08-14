@@ -1,6 +1,6 @@
-package org.baeldung.spring_batch_intro.service;
+package org.baeldung.batch.service;
 
-import org.baeldung.spring_batch_intro.model.Transaction;
+import org.baeldung.batch.model.Transaction;
 import org.springframework.batch.item.ItemProcessor;
 
 public class CustomItemProcessor implements ItemProcessor<Transaction, Transaction> {

@@ -1,9 +1,9 @@
 package com.baeldung.eclipsecollections;
 
+import org.assertj.core.api.Assertions;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.block.factory.Predicates;
 import org.eclipse.collections.impl.list.mutable.FastList;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,15 +13,7 @@ public class SelectPatternTest {
 
     @Before
     public void getList() {
-        this.list = new FastList<>();
-        list.add(1);
-        list.add(8);
-        list.add(5);
-        list.add(41);
-        list.add(31);
-        list.add(17);
-        list.add(23);
-        list.add(38);
+        this.list = FastList.newListWith(1, 8, 5, 41, 31, 17, 23, 38);
     }
 
     @Test
@@ -29,9 +21,8 @@ public class SelectPatternTest {
         MutableList<Integer> greaterThanThirty = list.select(Predicates.greaterThan(30))
             .sortThis();
 
-        assertEquals(31, (int) greaterThanThirty.getFirst());
-        assertEquals(38, (int) greaterThanThirty.get(1));
-        assertEquals(41, (int) greaterThanThirty.getLast());
+        Assertions.assertThat(greaterThanThirty)
+            .containsExactly(31, 38, 41);
     }
 
     @SuppressWarnings("rawtypes")
@@ -45,8 +36,7 @@ public class SelectPatternTest {
     public void givenListwhenSelectUsingLambda_thenCorrect() {
         MutableList<Integer> greaterThanThirty = selectUsingLambda();
 
-        assertEquals(31, (int) greaterThanThirty.getFirst());
-        assertEquals(38, (int) greaterThanThirty.get(1));
-        assertEquals(41, (int) greaterThanThirty.getLast());
+        Assertions.assertThat(greaterThanThirty)
+            .containsExactly(31, 38, 41);
     }
 }
