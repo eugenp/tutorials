@@ -1,13 +1,7 @@
-package org.baeldung.spring_batch_intro.partitioner;
+package org.baeldung.batch.partitioner;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.text.ParseException;
-
-import javax.sql.DataSource;
-
-import org.baeldung.spring_batch_intro.model.Transaction;
-import org.baeldung.spring_batch_intro.service.RecordFieldSetMapper;
+import org.baeldung.batch.model.Transaction;
+import org.baeldung.batch.service.RecordFieldSetMapper;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -33,13 +27,17 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.task.TaskExecutor;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.sql.DataSource;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.text.ParseException;
 
 @Configuration
 @EnableBatchProcessing
@@ -57,26 +55,26 @@ public class SpringbatchPartitionConfig {
     @Bean(name = "partitionerJob")
     public Job partitionerJob() throws UnexpectedInputException, MalformedURLException, ParseException {
         return jobs.get("partitionerJob")
-            .start(partitionStep())
-            .build();
+          .start(partitionStep())
+          .build();
     }
 
     @Bean
     public Step partitionStep() throws UnexpectedInputException, MalformedURLException, ParseException {
         return steps.get("partitionStep")
-            .partitioner("slaveStep", partitioner())
-            .step(slaveStep())
-            .taskExecutor(taskExecutor())
-            .build();
+          .partitioner("slaveStep", partitioner())
+          .step(slaveStep())
+          .taskExecutor(taskExecutor())
+          .build();
     }
 
     @Bean
     public Step slaveStep() throws UnexpectedInputException, MalformedURLException, ParseException {
         return steps.get("slaveStep")
-            .<Transaction, Transaction> chunk(1)
-            .reader(itemReader(null))
-            .writer(itemWriter(marshaller(), null))
-            .build();
+          .<Transaction, Transaction>chunk(1)
+          .reader(itemReader(null))
+          .writer(itemWriter(marshaller(), null))
+          .build();
     }
 
     @Bean
@@ -95,12 +93,12 @@ public class SpringbatchPartitionConfig {
     @Bean
     @StepScope
     public FlatFileItemReader<Transaction> itemReader(@Value("#{stepExecutionContext[fileName]}") String filename) throws UnexpectedInputException, ParseException {
-        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<Transaction>();
+        FlatFileItemReader<Transaction> reader = new FlatFileItemReader<>();
         DelimitedLineTokenizer tokenizer = new DelimitedLineTokenizer();
-        String[] tokens = { "username", "userid", "transactiondate", "amount" };
+        String[] tokens = {"username", "userid", "transactiondate", "amount"};
         tokenizer.setNames(tokens);
         reader.setResource(new ClassPathResource("input/partitioner/" + filename));
-        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<Transaction>();
+        DefaultLineMapper<Transaction> lineMapper = new DefaultLineMapper<>();
         lineMapper.setLineTokenizer(tokenizer);
         lineMapper.setFieldSetMapper(new RecordFieldSetMapper());
         reader.setLinesToSkip(1);
@@ -121,7 +119,7 @@ public class SpringbatchPartitionConfig {
     @Bean
     public Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(new Class[] { Transaction.class });
+        marshaller.setClassesToBeBound(Transaction.class);
         return marshaller;
     }
 
@@ -142,16 +140,15 @@ public class SpringbatchPartitionConfig {
         // JobRepositoryFactoryBean's methods Throws Generic Exception,
         // it would have been better to have a specific one
         factory.afterPropertiesSet();
-        return (JobRepository) factory.getObject();
+        return factory.getObject();
     }
 
     private DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL)
-            .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
-            .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
-            .build();
-        return db;
+        return builder.setType(EmbeddedDatabaseType.HSQL)
+          .addScript("classpath:org/springframework/batch/core/schema-drop-h2.sql")
+          .addScript("classpath:org/springframework/batch/core/schema-h2.sql")
+          .build();
     }
 
     private PlatformTransactionManager getTransactionManager() {
