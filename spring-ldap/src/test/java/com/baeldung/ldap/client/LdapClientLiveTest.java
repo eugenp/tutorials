@@ -1,7 +1,6 @@
 package com.baeldung.ldap.client;
 
-import java.util.List;
-
+import com.baeldung.ldap.javaconfig.TestConfig;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,11 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.ldap.javaconfig.TestConfig;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("testlive")
-@ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {TestConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class LdapClientLiveTest {
 
     private static final String USER2 = "TEST02";
