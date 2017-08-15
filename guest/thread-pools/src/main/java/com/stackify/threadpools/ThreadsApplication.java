@@ -14,16 +14,21 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.stackify.models.Employee;
 import com.stackify.services.EmployeeService;
 
 public class ThreadsApplication {
 
+    private static final Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+
     public static void main(String[] args) {
-        testExecutor();
-        testExecutorService();
-        testScheduledExecutorService();
-        testThreadPoolExecutor();
+         testExecutor();
+         testExecutorService();
+         testScheduledExecutorService();
+         testThreadPoolExecutor();
         testForkJoinPool();
     }
 
@@ -90,7 +95,8 @@ public class ThreadsApplication {
 
     public static void testForkJoinPool() {
         ForkJoinPool pool = ForkJoinPool.commonPool();
-        BigInteger result = pool.invoke(new FactorialTask(20));
+        logger.info("Thread Pool Created");
+        BigInteger result = pool.invoke(new FactorialTask(100));
         System.out.println(result.toString());
     }
 }
