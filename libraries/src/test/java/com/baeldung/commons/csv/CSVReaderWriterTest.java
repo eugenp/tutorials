@@ -41,7 +41,7 @@ public class CSVReaderWriterTest {
     }
 
     @Test
-    public void givenAuthorBookMap_whenProcessed_thenFileCreatedAsExpected() throws IOException {
+    public void givenAuthorBookMap_whenWrittenToStream_thenOutputStreamAsExpected() throws IOException {
         StringWriter sw = new StringWriter();
         try (final CSVPrinter printer = new CSVPrinter(sw, CSVFormat.DEFAULT.withHeader(HEADERS))) {
             AUTHOR_BOOK_MAP.forEach((author, title) -> {
