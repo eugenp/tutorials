@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">
-		    com.mysql.jdbc.Driver
+	    com.mysql.jdbc.Driver
         </property>
         <property name="hibernate.connection.password">
             buddhinisam123
@@ -14,13 +14,13 @@
             jdbc:mysql://localhost:3306/spring_hibernate_many_to_many
         </property>
         <property name="hibernate.connection.username">
-		    root
+            root
         </property>
         <property name="hibernate.dialect">
-		    org.hibernate.dialect.MySQLDialect
+            org.hibernate.dialect.MySQLDialect
         </property>
         <property name="hibernate.current_session_context_class">
-		    thread
+            thread
         </property>
         <property name="hibernate.show_sql">true</property>
     </session-factory>
