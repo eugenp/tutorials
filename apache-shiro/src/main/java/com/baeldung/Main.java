@@ -28,7 +28,7 @@ public class Main {
             = new UsernamePasswordToken("user", "password");
           token.setRememberMe(true);
           try {
-            currentUser.login(token);
+              currentUser.login(token);
           } catch (UnknownAccountException uae) {
               log.error("Username Not Found!", uae);
           } catch (IncorrectCredentialsException ice) {
