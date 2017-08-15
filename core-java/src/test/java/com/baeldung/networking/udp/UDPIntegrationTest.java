@@ -4,9 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.networking.udp.EchoClient;
-import com.baeldung.networking.udp.EchoServer;
-
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;

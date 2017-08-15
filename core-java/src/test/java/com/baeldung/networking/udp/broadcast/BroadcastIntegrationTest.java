@@ -3,9 +3,6 @@ package com.baeldung.networking.udp.broadcast;
 import org.junit.After;
 import org.junit.Test;
 
-import com.baeldung.networking.udp.broadcast.BroadcastingClient;
-import com.baeldung.networking.udp.broadcast.BroadcastingEchoServer;
-
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;

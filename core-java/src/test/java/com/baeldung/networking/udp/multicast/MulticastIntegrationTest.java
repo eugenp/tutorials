@@ -3,9 +3,6 @@ package com.baeldung.networking.udp.multicast;
 import org.junit.After;
 import org.junit.Test;
 
-import com.baeldung.networking.udp.multicast.MulticastEchoServer;
-import com.baeldung.networking.udp.multicast.MulticastingClient;
-
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
