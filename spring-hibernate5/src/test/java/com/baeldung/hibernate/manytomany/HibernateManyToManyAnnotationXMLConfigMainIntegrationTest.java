@@ -6,11 +6,6 @@ import static junit.framework.TestCase.assertEquals;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-
-
-
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -18,11 +13,9 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import com.baeldung.hibernate.manytomany.util.HibernateUtil;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
-
 
 
 public class HibernateManyToManyAnnotationXMLConfigMainIntegrationTest {
