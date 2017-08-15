@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main {
-
     private static final transient Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
@@ -43,7 +42,7 @@ public class Main {
         log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
 
         if (currentUser.hasRole("admin")) {
-          log.info("Welcome Admin");
+            log.info("Welcome Admin");
         } else if(currentUser.hasRole("editor")) {
             log.info("Welcome, Editor!");
         } else if(currentUser.hasRole("author")) {
@@ -53,19 +52,19 @@ public class Main {
         }
 
         if(currentUser.isPermitted("articles:compose")) {
-          log.info("You can compose an article");
+            log.info("You can compose an article");
         } else {
             log.info("You are not permitted to compose an article!");
         }
 
         if(currentUser.isPermitted("articles:save")) {
-          log.info("You can save articles");
+            log.info("You can save articles");
         } else {
             log.info("You can not save articles");
         }
 
         if(currentUser.isPermitted("articles:publish")) {
-          log.info("You can publish articles");
+            log.info("You can publish articles");
         } else {
             log.info("You can not publish articles");
         }
@@ -74,7 +73,7 @@ public class Main {
         session.setAttribute("key", "value");
         String value = (String) session.getAttribute("key");
         if (value.equals("value")) {
-          log.info("Retrieved the correct value! [" + value + "]");
+            log.info("Retrieved the correct value! [" + value + "]");
         }
 
         currentUser.logout();
