@@ -1,14 +1,17 @@
-package com.baeldung.java.networking.udp.broadcast;
+package com.baeldung.networking.udp.multicast;
 
 import org.junit.After;
 import org.junit.Test;
+
+import com.baeldung.networking.udp.multicast.MulticastEchoServer;
+import com.baeldung.networking.udp.multicast.MulticastingClient;
 
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class BroadcastIntegrationTest {
-    private BroadcastingClient client;
+public class MulticastIntegrationTest {
+    private MulticastingClient client;
 
     @Test
     public void whenBroadcasting_thenDiscoverExpectedServers() throws Exception {
@@ -21,10 +24,10 @@ public class BroadcastIntegrationTest {
 
     private void initializeForExpectedServers(int expectedServers) throws Exception {
         for (int i = 0; i < expectedServers; i++) {
-            new BroadcastingEchoServer().start();
+            new MulticastEchoServer().start();
         }
 
-        client = new BroadcastingClient(expectedServers);
+        client = new MulticastingClient(expectedServers);
     }
 
     @After

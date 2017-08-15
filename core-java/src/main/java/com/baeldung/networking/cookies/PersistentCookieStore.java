@@ -1,4 +1,4 @@
-package com.baeldung.java.networking.cookies;
+package com.baeldung.networking.cookies;
 
 import java.net.*;
 import java.util.List;

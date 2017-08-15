@@ -1,28 +1,26 @@
-package com.baeldung.java.networking.udp.broadcast;
+package com.baeldung.networking.udp.multicast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
-import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
+import java.net.MulticastSocket;
 
-public class BroadcastingEchoServer extends Thread {
+public class MulticastEchoServer extends Thread {
 
-    protected DatagramSocket socket = null;
-    protected boolean running;
+    protected MulticastSocket socket = null;
     protected byte[] buf = new byte[256];
+    protected InetAddress group = null;
 
-    public BroadcastingEchoServer() throws IOException {
-        socket = new DatagramSocket(null);
+    public MulticastEchoServer() throws IOException {
+        socket = new MulticastSocket(4446);
         socket.setReuseAddress(true);
-        socket.bind(new InetSocketAddress(4445));
+        group = InetAddress.getByName("230.0.0.0");
+        socket.joinGroup(group);
     }
 
     public void run() {
-        running = true;
-
-        while (running) {
-            try {
+        try {
+            while (true) {
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
                 InetAddress address = packet.getAddress();
@@ -30,15 +28,14 @@ public class BroadcastingEchoServer extends Thread {
                 packet = new DatagramPacket(buf, buf.length, address, port);
                 String received = new String(packet.getData(), 0, packet.getLength());
                 if (received.equals("end")) {
-                    running = false;
-                    continue;
+                    break;
                 }
                 socket.send(packet);
-            } catch (IOException e) {
-                e.printStackTrace();
-                running = false;
             }
+            socket.leaveGroup(group);
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        socket.close();
     }
 }
