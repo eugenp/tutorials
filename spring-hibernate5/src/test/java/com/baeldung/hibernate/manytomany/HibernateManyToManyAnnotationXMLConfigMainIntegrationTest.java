@@ -2,7 +2,6 @@ package com.baeldung.hibernate.manytomany;
 
 import static org.junit.Assert.assertNotNull;
 import static junit.framework.TestCase.assertEquals;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
