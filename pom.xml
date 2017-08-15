@@ -38,6 +38,7 @@
         <module>apache-thrift</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>bootique</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
@@ -80,10 +81,9 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <!--<module>jee7</module>-->
+        <module>jee7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
-        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
@@ -106,6 +106,7 @@
         <module>mockito2</module>
         <module>mocks</module>
         <module>mustache</module>
+        <module>noexception</module>
 
         <module>orika</module>
 
