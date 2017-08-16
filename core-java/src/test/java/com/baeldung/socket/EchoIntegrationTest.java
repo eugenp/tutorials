@@ -1,13 +1,13 @@
 package com.baeldung.socket;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.concurrent.Executors;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.concurrent.Executors;
+
+import static org.junit.Assert.assertEquals;
 
 public class EchoIntegrationTest {
     private static final Integer PORT = 4444;

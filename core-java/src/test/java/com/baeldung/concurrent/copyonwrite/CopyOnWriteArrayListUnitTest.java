@@ -17,7 +17,7 @@ public class CopyOnWriteArrayListUnitTest {
     public void givenCopyOnWriteList_whenIterateAndAddElementToUnderneathList_thenShouldNotChangeIterator() {
         //given
         final CopyOnWriteArrayList<Integer> numbers =
-                new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
+          new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
 
         //when
         Iterator<Integer> iterator = numbers.iterator();
@@ -42,7 +42,7 @@ public class CopyOnWriteArrayListUnitTest {
     public void givenCopyOnWriteList_whenIterateOverItAndTryToRemoveElement_thenShouldThrowException() {
         //given
         final CopyOnWriteArrayList<Integer> numbers =
-                new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
+          new CopyOnWriteArrayList<>(new Integer[]{1, 3, 5, 8});
 
         //when
         Iterator<Integer> iterator = numbers.iterator();

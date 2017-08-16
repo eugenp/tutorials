@@ -8,7 +8,7 @@ public class ComplexUnitTest {
 
     @Test
     public void whenComplexPow_thenCorrect() {
-        Complex first  = new Complex(1.0, 3.0);
+        Complex first = new Complex(1.0, 3.0);
         Complex second = new Complex(2.0, 5.0);
 
         Complex power = first.pow(second);
