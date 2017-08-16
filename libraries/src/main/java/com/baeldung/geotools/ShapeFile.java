@@ -29,8 +29,6 @@ import com.vividsolutions.jts.geom.Point;
 
 public class ShapeFile {
 
-    private static final String FILE_PATH = "C:\\";
-
     private static final String FILE_NAME = "shapefile.shp";
 
     public static void main(String[] args) throws Exception {
@@ -47,17 +45,17 @@ public class ShapeFile {
 
         addLocations(featureBuilder, collection);
 
-        File newFile = getNewShapeFile();
+        File shapeFile = getNewShapeFile();
 
         ShapefileDataStoreFactory dataStoreFactory = new ShapefileDataStoreFactory();
 
         Map<String, Serializable> params = new HashMap<String, Serializable>();
-        params.put("url", newFile.toURI()
+        params.put("url", shapeFile.toURI()
             .toURL());
         params.put("create spatial index", Boolean.TRUE);
 
-        ShapefileDataStore newDataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
-        newDataStore.createSchema(CITY);
+        ShapefileDataStore dataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
+        dataStore.createSchema(CITY);
 
         // If you decide to use the TYPE type and create a Data Store with it,
         // You will need to uncomment this line to set the Coordinate Reference System
@@ -65,8 +63,8 @@ public class ShapeFile {
 
         Transaction transaction = new DefaultTransaction("create");
 
-        String typeName = newDataStore.getTypeNames()[0];
-        SimpleFeatureSource featureSource = newDataStore.getFeatureSource(typeName);
+        String typeName = dataStore.getTypeNames()[0];
+        SimpleFeatureSource featureSource = dataStore.getFeatureSource(typeName);
 
         if (featureSource instanceof SimpleFeatureStore) {
             SimpleFeatureStore featureStore = (SimpleFeatureStore) featureSource;
@@ -164,7 +162,8 @@ public class ShapeFile {
     }
 
     private static File getNewShapeFile() {
-        String filePath = FILE_PATH + FILE_NAME;
+        String filePath = new File(".").getAbsolutePath() + FILE_NAME;
+        
 
         JFileDataStoreChooser chooser = new JFileDataStoreChooser("shp");
         chooser.setDialogTitle("Save shapefile");
@@ -176,13 +175,13 @@ public class ShapeFile {
             System.exit(0);
         }
 
-        File newFile = chooser.getSelectedFile();
-        if (newFile.equals(filePath)) {
+        File shapeFile = chooser.getSelectedFile();
+        if (shapeFile.equals(filePath)) {
             System.out.println("Error: cannot replace " + filePath);
             System.exit(0);
         }
 
-        return newFile;
+        return shapeFile;
     }
 
 }
