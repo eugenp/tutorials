@@ -21,32 +21,32 @@ import io.undertow.server.HttpServerExchange;
 
 public class SecureServer {
 
-	public static void main(String[] args) {
-		final Map<String, char[]> users = new HashMap<>(2);
-		users.put("root", "password".toCharArray());
-		users.put("admin", "password".toCharArray());
+    public static void main(String[] args) {
+        final Map<String, char[]> users = new HashMap<>(2);
+        users.put("root", "password".toCharArray());
+        users.put("admin", "password".toCharArray());
 
-		final IdentityManager idm = new CustomIdentityManager(users);
+        final IdentityManager idm = new CustomIdentityManager(users);
 
-		Undertow server = Undertow.builder().addHttpListener(8080, "localhost").setHandler(addSecurity((exchange) -> {
-			final SecurityContext context = exchange.getSecurityContext();
-			exchange.getResponseSender().send("Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),
-					IoCallback.END_EXCHANGE);
-		}, idm)).build();
+        Undertow server = Undertow.builder().addHttpListener(8080, "localhost").setHandler(addSecurity((exchange) -> {
+            final SecurityContext context = exchange.getSecurityContext();
+            exchange.getResponseSender().send("Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),
+                    IoCallback.END_EXCHANGE);
+        }, idm)).build();
 
-		server.start();
+        server.start();
 
-	}
+    }
 
-	private static HttpHandler addSecurity(final HttpHandler toWrap, final IdentityManager identityManager) {
-		HttpHandler handler = toWrap;
-		handler = new AuthenticationCallHandler(handler);
-		handler = new AuthenticationConstraintHandler(handler);
-		final List<AuthenticationMechanism> mechanisms = Collections
-				.<AuthenticationMechanism> singletonList(new BasicAuthenticationMechanism("Baeldung_Realm"));
-		handler = new AuthenticationMechanismsHandler(handler, mechanisms);
-		handler = new SecurityInitialHandler(AuthenticationMode.PRO_ACTIVE, identityManager, handler);
-		return handler;
-	}
+    private static HttpHandler addSecurity(final HttpHandler toWrap, final IdentityManager identityManager) {
+        HttpHandler handler = toWrap;
+        handler = new AuthenticationCallHandler(handler);
+        handler = new AuthenticationConstraintHandler(handler);
+        final List<AuthenticationMechanism> mechanisms = Collections
+                .<AuthenticationMechanism> singletonList(new BasicAuthenticationMechanism("Baeldung_Realm"));
+        handler = new AuthenticationMechanismsHandler(handler, mechanisms);
+        handler = new SecurityInitialHandler(AuthenticationMode.PRO_ACTIVE, identityManager, handler);
+        return handler;
+    }
 
 }

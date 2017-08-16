@@ -13,24 +13,24 @@ import static io.undertow.Handlers.websocket;
 
 public class SocketServer {
 
-	public static void main(String[] args) {
-		Undertow server = Undertow.builder().addHttpListener(8080, "localhost")
-				.setHandler(path().addPrefixPath("/baeldungApp", websocket((exchange, channel) -> {
-					channel.getReceiveSetter().set(new AbstractReceiveListener() {
-						@Override
-						protected void onFullTextMessage(WebSocketChannel channel, BufferedTextMessage message) {
-							final String messageData = message.getData();
-							for (WebSocketChannel session : channel.getPeerConnections()) {
-								WebSockets.sendText(messageData, session, null);
-							}
-						}
-					});
-					channel.resumeReceives();
-				})).addPrefixPath("/", resource(new ClassPathResourceManager(SocketServer.class.getClassLoader(),
-						SocketServer.class.getPackage())).addWelcomeFiles("index.html")))
-				.build();
+    public static void main(String[] args) {
+        Undertow server = Undertow.builder().addHttpListener(8080, "localhost")
+                .setHandler(path().addPrefixPath("/baeldungApp", websocket((exchange, channel) -> {
+                    channel.getReceiveSetter().set(new AbstractReceiveListener() {
+                        @Override
+                        protected void onFullTextMessage(WebSocketChannel channel, BufferedTextMessage message) {
+                            final String messageData = message.getData();
+                            for (WebSocketChannel session : channel.getPeerConnections()) {
+                                WebSockets.sendText(messageData, session, null);
+                            }
+                        }
+                    });
+                    channel.resumeReceives();
+                })).addPrefixPath("/", resource(new ClassPathResourceManager(SocketServer.class.getClassLoader(),
+                        SocketServer.class.getPackage())).addWelcomeFiles("index.html")))
+                .build();
 
-		server.start();
-	}
+        server.start();
+    }
 
 }
