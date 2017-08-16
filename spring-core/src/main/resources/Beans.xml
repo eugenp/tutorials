@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="equipmentCategoryService" class="com.baeldung.spring.service.EquipmentCategoryService" />
+	<bean id="equipmentController" class="com.baeldung.spring.controller.EquipmentController">
+		<constructor-arg ref="equipmentCategoryService" />
+	</bean>
+
+	<bean id="equipmentBean" class="com.baeldung.spring.Equipment">
+		<property name="name" value="Samsung S6" />
+		<property name="manufacturer" value="Samsung" />
+		<property name="model" value="S6" />
+	</bean>
+
+</beans>
