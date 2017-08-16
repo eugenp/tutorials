@@ -2,22 +2,23 @@ package com.baeldung;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.realm.text.IniRealm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.Factory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main {
+
     private static final transient Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
-        Factory<SecurityManager> factory
-          = new IniSecurityManagerFactory("classpath:shiro.ini");
-        SecurityManager securityManager = factory.getInstance();
+        Realm realm = new MyCustomRealm();
+        SecurityManager securityManager = new DefaultSecurityManager(realm);
 
         SecurityUtils.setSecurityManager(securityManager);
         Subject currentUser = SecurityUtils.getSubject();
