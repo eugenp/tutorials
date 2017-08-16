@@ -186,11 +186,11 @@
 			<artifactId>rome</artifactId>
 			<version>${rome.version}</version>
 		</dependency>
-	    <dependency>
-	      <groupId>io.specto</groupId>
-	      <artifactId>hoverfly-java</artifactId>
-	      <version>0.8.0</version>
-	    </dependency>
+		<dependency>
+			<groupId>io.specto</groupId>
+			<artifactId>hoverfly-java</artifactId>
+			<version>0.8.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -380,7 +380,7 @@
 		<dependency>
 			<groupId>one.util</groupId>
 			<artifactId>streamex</artifactId>
-			<version>0.6.5</version>
+			<version>${streamex.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jooq</groupId>
@@ -467,10 +467,15 @@
 			<artifactId>noexception</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>org.eclipse.collections</groupId>
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse-collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.vavr</groupId>
+			<artifactId>vavr</artifactId>
+			<version>${vavr.version}</version>
 		</dependency>
 	</dependencies>
 	<properties>
@@ -513,6 +518,8 @@
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
 		<rome.version>1.0</rome.version>
-    <eclipse-collections.version>8.2.0</eclipse-collections.version>
+		<eclipse-collections.version>8.2.0</eclipse-collections.version>
+		<streamex.version>0.6.5</streamex.version>
+		<vavr.version>0.9.0</vavr.version>
 	</properties>
 </project>
