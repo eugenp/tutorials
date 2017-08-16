@@ -1,4 +1,4 @@
-package com.baeldung.java.networking.udp.multicast;
+package com.baeldung.networking.udp.multicast;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
