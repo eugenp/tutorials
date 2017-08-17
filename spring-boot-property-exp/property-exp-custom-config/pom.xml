@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>property-exp-custom</artifactId>
+    <artifactId>property-exp-custom-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 

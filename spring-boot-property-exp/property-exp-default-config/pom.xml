@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>property-exp-default</artifactId>
+    <artifactId>property-exp-default-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
