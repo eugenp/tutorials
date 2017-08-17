@@ -4,14 +4,19 @@ import org.apache.commons.collections4.MapIterator;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.collections4.PredicateUtils;
 import org.apache.commons.collections4.TransformerUtils;
+import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static org.hamcrest.collection.IsMapWithSize.aMapWithSize;
@@ -63,19 +68,7 @@ public class MapUtilsTest {
 
     @Test
     public void whenVerbosePrintMap_thenMustPrintFormattedMap() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream outPrint = new PrintStream(out);
-
-        outPrint.println("Optional Label = ");
-        outPrint.println("{");
-        outPrint.println("    RED = #FF0000");
-        outPrint.println("    BLUE = #0000FF");
-        outPrint.println("    GREEN = #00FF00");
-        outPrint.println("}");
-
-        out.reset();
-
-        MapUtils.verbosePrint(outPrint, "Optional Label", this.colorMap);
+        MapUtils.verbosePrint(System.out, "Optional Label", this.colorMap);
     }
 
     @Test
@@ -97,19 +90,12 @@ public class MapUtilsTest {
     @Test
     public void whenInvertMap_thenMustReturnInvertedMap() {
         Map<String, String> invColorMap = MapUtils.invertMap(this.colorMap);
-        assertEquals(this.colorMap.size(), invColorMap.size());
 
-        MapIterator<String, String> itColorMap
-          = MapUtils.iterableMap(this.colorMap).mapIterator();
-
-        while (itColorMap.hasNext()) {
-            String colorMapKey = itColorMap.next();
-            String colorMapValue = itColorMap.getValue();
-
-            String invColorMapValue = MapUtils.getString(invColorMap, colorMapValue);
-
-            assertTrue(invColorMapValue.equals(colorMapKey));
-        }
+        int size = invColorMap.size();
+        Assertions.assertThat(invColorMap)
+                .hasSameSizeAs(colorMap)
+                .containsKeys(this.colorMap.values().toArray(new String[size]))
+                .containsValues(this.colorMap.keySet().toArray(new String[size]));
     }
 
     @Test(expected = IllegalArgumentException.class)

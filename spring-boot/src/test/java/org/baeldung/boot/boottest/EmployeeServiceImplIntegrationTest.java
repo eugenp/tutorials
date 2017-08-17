@@ -1,10 +1,5 @@
 package org.baeldung.boot.boottest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +10,11 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 public class EmployeeServiceImplIntegrationTest {
@@ -44,27 +44,27 @@ public class EmployeeServiceImplIntegrationTest {
         List<Employee> allEmployees = Arrays.asList(john, bob, alex);
 
         Mockito.when(employeeRepository.findByName(john.getName()))
-            .thenReturn(john);
+          .thenReturn(john);
         Mockito.when(employeeRepository.findByName(alex.getName()))
-        .thenReturn(alex);
+          .thenReturn(alex);
         Mockito.when(employeeRepository.findByName("wrong_name"))
-            .thenReturn(null);
+          .thenReturn(null);
         Mockito.when(employeeRepository.findById(john.getId()))
-            .thenReturn(john);
+          .thenReturn(john);
         Mockito.when(employeeRepository.findAll())
-            .thenReturn(allEmployees);
+          .thenReturn(allEmployees);
         Mockito.when(employeeRepository.findById(-99L))
-            .thenReturn(null);
+          .thenReturn(null);
     }
 
     @Test
     public void whenValidName_thenEmployeeShouldBeFound() {
         String name = "alex";
         Employee found = employeeService.getEmployeeByName(name);
-      
-         assertThat(found.getName())
+
+        assertThat(found.getName())
           .isEqualTo(name);
-     }
+    }
 
     @Test
     public void whenInValidName_thenEmployeeShouldNotBeFound() {
@@ -114,25 +114,25 @@ public class EmployeeServiceImplIntegrationTest {
         List<Employee> allEmployees = employeeService.getAllEmployees();
         verifyFindAllEmployeesIsCalledOnce();
         assertThat(allEmployees).hasSize(3)
-            .extracting(Employee::getName)
-            .contains(alex.getName(), john.getName(), bob.getName());
+          .extracting(Employee::getName)
+          .contains(alex.getName(), john.getName(), bob.getName());
     }
 
     private void verifyFindByNameIsCalledOnce(String name) {
         Mockito.verify(employeeRepository, VerificationModeFactory.times(1))
-            .findByName(name);
+          .findByName(name);
         Mockito.reset(employeeRepository);
     }
 
     private void verifyFindByIdIsCalledOnce() {
         Mockito.verify(employeeRepository, VerificationModeFactory.times(1))
-            .findById(Mockito.anyLong());
+          .findById(Mockito.anyLong());
         Mockito.reset(employeeRepository);
     }
 
     private void verifyFindAllEmployeesIsCalledOnce() {
         Mockito.verify(employeeRepository, VerificationModeFactory.times(1))
-            .findAll();
+          .findAll();
         Mockito.reset(employeeRepository);
     }
 }
