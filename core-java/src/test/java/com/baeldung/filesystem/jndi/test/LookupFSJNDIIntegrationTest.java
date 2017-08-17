@@ -1,15 +1,13 @@
 package com.baeldung.filesystem.jndi.test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
+import com.baeldung.filesystem.jndi.LookupFSJNDI;
+import org.junit.Test;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import java.io.File;
 
-import org.junit.Test;
-
-import com.baeldung.filesystem.jndi.LookupFSJNDI;
+import static org.junit.Assert.assertNotNull;
 
 public class LookupFSJNDIIntegrationTest {
     LookupFSJNDI fsjndi;

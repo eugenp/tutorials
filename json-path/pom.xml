@@ -23,6 +23,6 @@
 
     <properties>
         <!-- json-path -->
-        <json-path.version>2.2.0</json-path.version>
+        <json-path.version>2.4.0</json-path.version>
     </properties>
 </project>

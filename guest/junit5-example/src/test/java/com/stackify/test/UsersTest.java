@@ -23,6 +23,8 @@ import java.util.List;
 import com.stackify.daos.UserDAO;
 import com.stackify.models.User;
 
+import com.stackify.test.conditions.DisabledOnEnvironment;
+
 public class UsersTest implements DatabaseConnectionTest {
 
     private static UserDAO userDAO;
@@ -110,7 +112,7 @@ public class UsersTest implements DatabaseConnectionTest {
     }
 
     @Test
-    @Disabled
+    @DisabledOnEnvironment({ "dev", "prod")
     void testFail() {
         fail("this test fails");
     }

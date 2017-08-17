@@ -1,15 +1,5 @@
 package com.baeldung.displayallbeans;
 
-import static org.assertj.core.api.BDDAssertions.then;
-import static org.hamcrest.CoreMatchers.hasItem;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +13,15 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.displayallbeans.Application;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -44,13 +42,12 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessServerUrl_thenHttpStatusOK() throws Exception {
-        @SuppressWarnings("rawtypes")
-        ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-          "http://localhost:" + this.port + "/getPerson", Map.class);
-        
+        ResponseEntity<String> entity = this.testRestTemplate.getForEntity(
+          "http://localhost:" + this.port + "/displayallbeans", String.class);
+
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
-    
+
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenHttpStatusOK() throws Exception {
         @SuppressWarnings("rawtypes")
@@ -69,16 +66,16 @@ public class DisplayBeanIntegrationTest {
         List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody().get(0)).get("beans");
         List<String> beanNamesList = allBeans.stream().map(x -> (String) x.get("bean")).collect(Collectors.toList());
 
-        assertThat( beanNamesList, hasItem("personController"));
-        assertThat( beanNamesList, hasItem("person"));
+        assertThat(beanNamesList, hasItem("fooController"));
+        assertThat(beanNamesList, hasItem("fooService"));
     }
-    
+
     @Test
     public void givenWebApplicationContext_whenAccessGetBeanDefinitionNames_thenReturnsBeanNames() throws Exception {
         String[] beanNames = context.getBeanDefinitionNames();
-        
+
         List<String> beanNamesList = Arrays.asList(beanNames);
-        assertTrue(beanNamesList.contains("personController"));
-        assertTrue(beanNamesList.contains("person"));
+        assertTrue(beanNamesList.contains("fooController"));
+        assertTrue(beanNamesList.contains("fooService"));
     }
 }

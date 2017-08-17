@@ -392,5 +392,4 @@
         <netty.version>4.1.10.Final</netty.version>
         <geotools.version>15.2</geotools.version>
     </properties>
-
 </project>
