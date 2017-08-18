@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.baeldung.setterdi.domain.Car;
 import com.baeldung.setterdi.domain.Engine;
 import com.baeldung.setterdi.domain.Trailer;
 import com.baeldung.setterdi.domain.Transmission;
@@ -11,6 +12,15 @@ import com.baeldung.setterdi.domain.Transmission;
 @Configuration
 @ComponentScan("com.baeldung.setterdi")
 public class Config {
+
+	@Bean
+    public Car car() {
+        Car car = new Car();
+        car.setEngine(engine());
+        car.setTransmission(transmission());
+        return car;
+    } 
+
 
     @Bean
     public Engine engine() {
