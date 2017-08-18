@@ -17,7 +17,7 @@ public class MockitoAnnotationIntegrationTest {
     private List<String> mockedList;
 
     @Spy
-    List<String> spiedList = new ArrayList<String>();
+    private List<String> spiedList = new ArrayList<>();
 
     @Before
     public void init() {
@@ -87,6 +87,7 @@ public class MockitoAnnotationIntegrationTest {
     }
 
     @Captor
+    private
     ArgumentCaptor<String> argCaptor;
 
     @Test
@@ -98,10 +99,10 @@ public class MockitoAnnotationIntegrationTest {
     }
 
     @Mock
-    Map<String, String> wordMap;
+    private Map<String, String> wordMap;
 
     @InjectMocks
-    MyDictionary dic = new MyDictionary();
+    private MyDictionary dic = new MyDictionary();
 
     @Test
     public void whenUseInjectMocksAnnotation_thenCorrect() {

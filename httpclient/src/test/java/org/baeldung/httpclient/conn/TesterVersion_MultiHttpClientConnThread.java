@@ -18,7 +18,7 @@ public class TesterVersion_MultiHttpClientConnThread extends Thread {
     private final HttpGet get;
     private PoolingHttpClientConnectionManager connManager;
 
-    public TesterVersion_MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
+    TesterVersion_MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;
         this.get = get;
         this.connManager = Preconditions.checkNotNull(connManager);
@@ -38,8 +38,6 @@ public class TesterVersion_MultiHttpClientConnThread extends Thread {
 
             logger.info("After - Leased Connections = " + connManager.getTotalStats().getLeased());
             logger.info("After - Available Connections = " + connManager.getTotalStats().getAvailable());
-        } catch (final ClientProtocolException ex) {
-            logger.error("", ex);
         } catch (final IOException ex) {
             logger.error("", ex);
         }

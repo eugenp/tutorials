@@ -7,7 +7,7 @@ public class Worker implements Runnable {
     private final List<String> outputScraper;
     private final CountDownLatch countDownLatch;
 
-    public Worker(final List<String> outputScraper, final CountDownLatch countDownLatch) {
+    Worker(final List<String> outputScraper, final CountDownLatch countDownLatch) {
         this.outputScraper = outputScraper;
         this.countDownLatch = countDownLatch;
     }

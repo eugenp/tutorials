@@ -5,7 +5,7 @@ public class Philosopher implements Runnable {
     private final Object leftFork;
     private final Object rightFork;
 
-    public Philosopher(Object left, Object right) {
+    Philosopher(Object left, Object right) {
         this.leftFork = left;
         this.rightFork = right;
     }
@@ -15,7 +15,8 @@ public class Philosopher implements Runnable {
         Thread.sleep(((int) (Math.random() * 100)));
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         try {
             while (true) {
                 doAction(System.nanoTime() + ": Thinking"); // thinking
@@ -30,7 +31,6 @@ public class Philosopher implements Runnable {
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            return;
         }
     }
 }
