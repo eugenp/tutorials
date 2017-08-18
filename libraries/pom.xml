@@ -564,8 +564,5 @@
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
     </properties>
-<<<<<<< HEAD
 </project>
-=======
-</project>
->>>>>>> 5a80758f4871f8b30226285d49b91eea38f13bfa
+
