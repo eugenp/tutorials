@@ -27,6 +27,14 @@ public class Car {
         this.trailer = trailer;
     }
 
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
+
     @Override
     public String toString() {
         return String.format("Engine: %s Transmission: %s Trailer: %s", engine, transmission, trailer);

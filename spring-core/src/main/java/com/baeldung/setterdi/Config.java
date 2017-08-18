@@ -13,14 +13,13 @@ import com.baeldung.setterdi.domain.Transmission;
 @ComponentScan("com.baeldung.setterdi")
 public class Config {
 
-	@Bean
+    @Bean
     public Car car() {
         Car car = new Car();
         car.setEngine(engine());
         car.setTransmission(transmission());
         return car;
-    } 
-
+    }
 
     @Bean
     public Engine engine() {
