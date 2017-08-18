@@ -31,4 +31,12 @@ public class Car {
     public String toString() {
         return String.format("Engine: %s Transmission: %s Trailer: %s", engine, transmission, trailer);
     }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public Transmission getTransmission() {
+        return transmission;
+    }
 }
