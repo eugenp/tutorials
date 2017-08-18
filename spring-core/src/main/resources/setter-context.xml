@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 	http://www.springframework.org/schema/beans/spring-beans.xsd">
+ 
+ 	<bean id="school" class="com.baeldung.model.School">
+ 		<property name="id" value="2" />
+ 		<property name="name" value="BUET" />
+ 	</bean>
+ 
+ 	<bean id="student" class="com.baeldung.model.Student">
+ 		<property name="id" value="2" />
+ 		<property name="name" value="Sam" />
+ 		<property name="school">
+ 			<ref bean="school" />
+ 		</property>
+ 	</bean>
+ 
+ </beans> 
