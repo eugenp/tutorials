@@ -26,7 +26,7 @@ public class NumberOfDigits {
         long temp = 1;
         while(temp <= number) {
             length++;
-            temp *= 10;
+            temp = (temp << 3) + (temp << 1);
         }
         return length;
     }
