@@ -2,6 +2,9 @@ package com.baeldung.string;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 public class CharSequenceVsStringUnitTest {
 
   @Test
@@ -9,7 +12,7 @@ public class CharSequenceVsStringUnitTest {
     CharSequence firstString = "bealdung";
     String secondString = "baeldung";
 
-    assert firstString != secondString;
+    assertNotEquals(firstString, secondString);
   }
 
   @Test
@@ -17,6 +20,6 @@ public class CharSequenceVsStringUnitTest {
     CharSequence charSequence1 = "baeldung_1";
     CharSequence charSequence2 = "baeldung_2";
 
-    assert charSequence1.toString().compareTo(charSequence2.toString()) > 0;
+     assertTrue(charSequence1.toString().compareTo(charSequence2.toString()) > 0);
   }
 }
