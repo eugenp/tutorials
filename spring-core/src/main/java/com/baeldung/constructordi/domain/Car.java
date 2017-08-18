@@ -14,15 +14,6 @@ public class Car {
         this.transmission = transmission;
     }
 
-    // Standard Getters
-    public Engine getEngine() {
-        return engine;
-    }
-
-    public Transmission getTransmission() {
-        return transmission;
-    }
-
     @Override
     public String toString() {
         return String.format("Engine: %s Transmission: %s", engine, transmission);
