@@ -170,6 +170,7 @@
         <module>spring-social-login</module>
         <module>spring-spel</module>
         <module>spring-thymeleaf</module>
+        <module>spring-types-bean-injection</module>
         <module>spring-userservice</module>
         <module>spring-zuul</module>
         <module>spring-reactor</module>
