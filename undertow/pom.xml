@@ -16,11 +16,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>io.undertow</groupId>
-			<artifactId>undertow-core</artifactId>
-			<version>1.4.18.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>io.undertow</groupId>
 			<artifactId>undertow-servlet</artifactId>
 			<version>1.4.18.Final</version>
 		</dependency>
