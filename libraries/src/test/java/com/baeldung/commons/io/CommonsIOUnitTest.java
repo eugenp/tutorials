@@ -42,7 +42,7 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenUsingFileNameUtils_showdifferentFileOperations()
+    public void whenUsingFileNameUtils_thenshowdifferentFileOperations()
         throws IOException {
 
         String path = getClass().getClassLoader()
@@ -83,7 +83,7 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenGetFilewithNameFileFilter_then_FindfileTesttxt()
+    public void whenGetFilewithNameFileFilter_thenFindfileTesttxt()
         throws IOException {
 
         final String testFile = "fileTest.txt";
@@ -100,7 +100,7 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenGetFilewith_ANDFileFilter_thenFind_sample_txt()
+    public void whenGetFilewith_ANDFileFilter_thenFindsampletxt()
         throws IOException {
 
         String path = getClass().getClassLoader()
@@ -115,7 +115,7 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenSortDirWithPathFileComparator_thenFirstFile_aaatxt()
+    public void whenSortDirWithPathFileComparator_thenFirstFileaaatxt()
         throws IOException {
 
         PathFileComparator pathFileComparator = new PathFileComparator(
@@ -132,7 +132,7 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenSizeFileComparator_thenLargerFile_large()
+    public void whenSizeFileComparator_thenLargerFile()
         throws IOException {
 
         SizeFileComparator sizeFileComparator = new SizeFileComparator();
