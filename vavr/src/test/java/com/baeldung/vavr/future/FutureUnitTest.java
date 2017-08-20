@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.concurrent.CancellationException;
 import java.util.function.Predicate;
 
 import org.junit.Test;
@@ -102,18 +103,15 @@ public class FutureUnitTest {
     }
 
     @Test
-    public void givenAFuture_WhenCallCancel_ShouldStopTheActionOfFuture() {
+    public void givenAFuture_WhenCallCancel_ShouldReturnCancellationException() {
         long waitTime = 1000;
-        int[] store = new int[1];
         Future<Integer> future = Future.of(() -> {
             Thread.sleep(waitTime);
-            store[0] = 1;
             return 1;
         });
         future.cancel();
         future.await();
-
-        assertNotEquals(1, store[0]);
+        assertEquals(CancellationException.class, future.getCause().get().getClass());
     }
 
     @Test
