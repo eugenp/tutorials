@@ -1,0 +1,19 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+<title th:text="#{label.pages.home.title}">home</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="error" class="alert alert-danger" th:if="${session[SPRING_SECURITY_LAST_EXCEPTION]}" th:text="#{message.logoutError}">error</h1>
+                
+        <h1 id="success" class="alert alert-info" th:if="${param.logSucc}" th:text="#{message.logoutSucc}"> success</h1>
+        <br/><br/><br/>
+        <a class="btn btn-primary" th:href="@{/login}" th:text="#{label.form.loginLink}">login</a>
+    </div>
+</body>
+
+</html>
