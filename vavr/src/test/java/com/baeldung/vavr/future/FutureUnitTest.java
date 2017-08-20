@@ -6,7 +6,6 @@ import static io.vavr.API.Match;
 import static io.vavr.Predicates.exists;
 import static io.vavr.Predicates.forAll;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.CancellationException;
