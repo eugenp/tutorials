@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>libraries</artifactId>
+	<name>libraries</name>
+
 	<parent>
 		<artifactId>parent-modules</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>libraries</artifactId>
-	<name>libraries</name>
+
+
+
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -25,6 +31,7 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.20</version>
 				<configuration>
@@ -105,6 +112,91 @@
 				</executions>
 			</plugin>
 			<!-- /Neuroph -->
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generateMithra</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<property name="plugin_classpath" refid="maven.plugin.classpath" />
+								<taskdef name="gen-reladomo" classpath="plugin_classpath"
+									classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
+								<gen-reladomo
+									xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
+									generateGscListMethod="true"
+									generatedDir="${project.build.directory}/generated-sources/reladomo"
+									nonGeneratedDir="${project.basedir}/src/main/java" />
+
+								<taskdef name="gen-ddl"
+									classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator"
+									loaderRef="reladomoGenerator">
+									<classpath refid="maven.plugin.classpath" />
+								</taskdef>
+								<gen-ddl
+									xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
+									generatedDir="${project.build.directory}/generated-db/sql"
+									databaseType="postgres" />
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.goldmansachs.reladomo</groupId>
+						<artifactId>reladomogen</artifactId>
+						<version>${reladomo.version}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>com.goldmansachs.reladomo</groupId>
+						<artifactId>reladomo-gen-util</artifactId>
+						<version>${reladomo.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>${project.build.directory}/generated-sources/reladomo</source>
+							</sources>
+						</configuration>
+					</execution>
+					<!-- "generated-db" is added to resource because the sample app HelloReladomoApp 
+						loads generated ddl/idx files to initialize h2 db in memory. No need to do 
+						this for typical production apps. -->
+					<execution>
+						<id>add-resource</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>add-resource</goal>
+						</goals>
+						<configuration>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/generated-db/</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 	<dependencies>
@@ -186,11 +278,11 @@
 			<artifactId>rome</artifactId>
 			<version>${rome.version}</version>
 		</dependency>
-	    <dependency>
-	      <groupId>io.specto</groupId>
-	      <artifactId>hoverfly-java</artifactId>
-	      <version>0.8.0</version>
-	    </dependency>
+		<dependency>
+			<groupId>io.specto</groupId>
+			<artifactId>hoverfly-java</artifactId>
+			<version>0.8.0</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -467,10 +559,20 @@
 			<artifactId>noexception</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-    <dependency>
+		<dependency>
 			<groupId>org.eclipse.collections</groupId>
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse-collections.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.goldmansachs.reladomo</groupId>
+			<artifactId>reladomo</artifactId>
+			<version>${reladomo.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.goldmansachs.reladomo</groupId>
+			<artifactId>reladomo-test-util</artifactId>
+			<version>${reladomo.version}</version>
 		</dependency>
 	</dependencies>
 	<properties>
@@ -513,6 +615,7 @@
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
 		<rome.version>1.0</rome.version>
-    <eclipse-collections.version>8.2.0</eclipse-collections.version>
+		<eclipse-collections.version>8.2.0</eclipse-collections.version>
+		<reladomo.version>16.5.1</reladomo.version>
 	</properties>
 </project>
