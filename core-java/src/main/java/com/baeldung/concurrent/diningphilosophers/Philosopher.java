@@ -15,7 +15,8 @@ public class Philosopher implements Runnable {
         Thread.sleep(((int) (Math.random() * 100)));
     }
 
-    @Override public void run() {
+    @Override
+    public void run() {
         try {
             while (true) {
                 doAction(System.nanoTime() + ": Thinking"); // thinking
