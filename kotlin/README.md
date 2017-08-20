@@ -7,3 +7,10 @@
 - [Difference Between “==” and “===” in Kotlin](http://www.baeldung.com/kotlin-equality-operators)
 - [Generics in Kotlin](http://www.baeldung.com/kotlin-generics)
 - [Introduction to Kotlin Coroutines](http://www.baeldung.com/kotlin-coroutines)
+- [Destructuring Declarations in Kotlin](http://www.baeldung.com/kotlin-destructuring-declarations)
+- [Kotlin with Mockito](http://www.baeldung.com/kotlin-mockito)
+- [Lazy Initialization in Kotlin](http://www.baeldung.com/kotlin-lazy-initialization)
+- [Overview of Kotlin Collections API](http://www.baeldung.com/kotlin-collections-api)
+- [Converting a List to Map in Kotlin](http://www.baeldung.com/kotlin-list-to-map)
+- [Data Classes in Kotlin](http://www.baeldung.com/kotlin-data-classes)
+

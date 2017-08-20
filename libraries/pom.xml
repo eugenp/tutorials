@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>libraries</artifactId>
-	<name>libraries</name>
-
 	<parent>
 		<artifactId>parent-modules</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-
-
-
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>libraries</artifactId>
+	<name>libraries</name>
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -31,7 +25,6 @@
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.20</version>
 				<configuration>
@@ -112,7 +105,8 @@
 				</executions>
 			</plugin>
 			<!-- /Neuroph -->
-
+			
+			<!-- Reladomo -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -196,7 +190,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			<!-- /Reladomo-->
 		</plugins>
 	</build>
 	<dependencies>
@@ -278,11 +272,11 @@
 			<artifactId>rome</artifactId>
 			<version>${rome.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>io.specto</groupId>
-			<artifactId>hoverfly-java</artifactId>
-			<version>0.8.0</version>
-		</dependency>
+	    <dependency>
+	      <groupId>io.specto</groupId>
+	      <artifactId>hoverfly-java</artifactId>
+	      <version>0.8.0</version>
+	    </dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
@@ -559,12 +553,13 @@
 			<artifactId>noexception</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-		<dependency>
+    <dependency>
 			<groupId>org.eclipse.collections</groupId>
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse-collections.version}</version>
 		</dependency>
-		<dependency>
+	</dependencies>
+	<dependency>
 			<groupId>com.goldmansachs.reladomo</groupId>
 			<artifactId>reladomo</artifactId>
 			<version>${reladomo.version}</version>
@@ -574,7 +569,6 @@
 			<artifactId>reladomo-test-util</artifactId>
 			<version>${reladomo.version}</version>
 		</dependency>
-	</dependencies>
 	<properties>
 		<multiverse.version>0.7.0</multiverse.version>
 		<cglib.version>3.2.4</cglib.version>
@@ -615,7 +609,7 @@
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
 		<rome.version>1.0</rome.version>
-		<eclipse-collections.version>8.2.0</eclipse-collections.version>
-		<reladomo.version>16.5.1</reladomo.version>
+        <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <reladomo.version>16.5.1</reladomo.version>
 	</properties>
 </project>
