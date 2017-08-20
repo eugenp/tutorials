@@ -33,3 +33,11 @@ spring-openid/src/main/resources/application.properties
 spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
+
+*.jar
+
+SpringDataInjectionDemo/.mvn/wrapper/maven-wrapper.properties
+
+spring-call-getters-using-reflection/.mvn/wrapper/maven-wrapper.properties
+
+spring-check-if-a-property-is-null/.mvn/wrapper/maven-wrapper.properties

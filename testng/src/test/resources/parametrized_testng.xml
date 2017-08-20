@@ -7,7 +7,7 @@
         <parameter name="value" value="1"/>
         <parameter name="isEven" value="false"/>
         <classes>
-            <class name="baeldung.com.ParametrizedUnitTest"/>
+            <class name="com.baeldung.ParametrizedLongRunningUnitTest"/>
         </classes>
     </test>
 </suite>
