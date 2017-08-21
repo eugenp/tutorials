@@ -23,11 +23,6 @@
             <artifactId>kotlin-stdlib-jre8</artifactId>
             <version>1.1.4</version>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
-            <version>1.1.4</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
