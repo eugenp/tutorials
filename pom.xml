@@ -106,6 +106,7 @@
         <module>mockito2</module>
         <module>mocks</module>
         <module>mustache</module>
+        <module>noexception</module>
 
         <module>orika</module>
 
@@ -237,6 +238,7 @@
         <module>liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>mockserver</module>
+        <module>undertow</module>
     </modules>
 
     <dependencies>

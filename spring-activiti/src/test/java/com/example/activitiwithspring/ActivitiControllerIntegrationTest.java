@@ -106,14 +106,12 @@ public class ActivitiControllerIntegrationTest {
           .get(0);
 
         logger.info("process instance = " + pi.getId());
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/complete-task-A/" + pi.getId()))
-          .andReturn()
-          .getResponse()
-          .getContentAsString();
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/complete-task-A/" + pi.getId()))
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
-        ObjectMapper mapper = new ObjectMapper();
-        TaskRepresentation task = mapper.readValue(responseBody, TaskRepresentation.class);
-        assertEquals("B", task.getName());
-
+        List<ProcessInstance> list = runtimeService.createProcessInstanceQuery().list();
+        assertEquals(0, list.size());
     }
 }
