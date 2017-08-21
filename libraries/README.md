@@ -23,6 +23,7 @@
 - [Serenity BDD with Spring and JBehave](http://www.baeldung.com/serenity-spring-jbehave)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](http://www.baeldung.com/locality-sensitive-hashing)
 - [Apache Commons Collections OrderedMap](http://www.baeldung.com/apache-commons-ordered-map)
+- [Introduction to Apache Commons Text](http://www.baeldung.com/java-apache-commons-text)
 - [A Guide to Apache Commons DbUtils](http://www.baeldung.com/apache-commons-dbutils)
 - [Introduction to Awaitility](http://www.baeldung.com/awaitlity-testing)
 - [Guide to the HyperLogLog Algorithm](http://www.baeldung.com/java-hyperloglog)
