@@ -14,15 +14,7 @@ public class AllSatisfyPatternTest {
 
     @Before
     public void getList() {
-        this.list = new FastList<>();
-        list.add(1);
-        list.add(8);
-        list.add(5);
-        list.add(41);
-        list.add(31);
-        list.add(17);
-        list.add(23);
-        list.add(38);
+        this.list = FastList.newListWith(1, 8, 5, 41, 31, 17, 23, 38);
     }
 
     @Test
