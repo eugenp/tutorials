@@ -4,10 +4,23 @@ import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.factory.Lists;
 import org.eclipse.collections.impl.tuple.Tuples;
-import static org.junit.Assert.assertEquals;
+
+import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ZipTest {
+
+    MutableList<Pair<String, String>> expectedPairs;
+
+    @SuppressWarnings("unchecked")
+    @Before
+    public void setup() {
+        Pair<String, String> pair1 = Tuples.pair("1", "Porsche");
+        Pair<String, String> pair2 = Tuples.pair("2", "Volvo");
+        Pair<String, String> pair3 = Tuples.pair("3", "Toyota");
+        expectedPairs = Lists.mutable.of(pair1, pair2, pair3);
+    }
 
     @Test
     public void whenZip_thenCorrect() {
@@ -15,8 +28,7 @@ public class ZipTest {
         MutableList<String> cars = Lists.mutable.with("Porsche", "Volvo", "Toyota");
         MutableList<Pair<String, String>> pairs = numbers.zip(cars);
 
-        assertEquals(Tuples.pair("1", "Porsche"), pairs.get(0));
-        assertEquals(Tuples.pair("2", "Volvo"), pairs.get(1));
-        assertEquals(Tuples.pair("3", "Toyota"), pairs.get(2));
+        Assertions.assertThat(pairs)
+            .containsExactlyElementsOf(this.expectedPairs);
     }
 }
