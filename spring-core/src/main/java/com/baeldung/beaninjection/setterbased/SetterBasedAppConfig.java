@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.baeldung.beaninjection.model.Currency;
 import com.baeldung.beaninjection.model.IndianRupee;
+import com.baeldung.beaninjection.model.Transaction;
 
 @Configuration
 public class SetterBasedAppConfig {
@@ -14,4 +15,10 @@ public class SetterBasedAppConfig {
         return new IndianRupee();
     }
 
+    @Bean
+    public Transaction transaction() {
+        Transaction transaction = new Transaction();
+        transaction.setCurrency(currency());
+        return transaction;
+    }
 }

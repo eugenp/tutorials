@@ -5,11 +5,12 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.beaninjection.model.Transaction;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:setter-based-injector.xml" })
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = SetterBasedAppConfig.class)
 public class SetterBasedInjectorTest {
 
     @Autowired
