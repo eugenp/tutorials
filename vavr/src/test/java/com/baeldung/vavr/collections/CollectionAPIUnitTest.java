@@ -34,7 +34,8 @@ public class CollectionAPIUnitTest {
     @Test
     public void givenParams_whenListAPI_thenCorrect() {
 
-        List<String> list = List.of("Java", "PHP", "Jquery", "JavaScript", "JShell", "JAVA");
+        List<String> list
+          = List.of("Java", "PHP", "Jquery", "JavaScript", "JShell", "JAVA");
 
         List list1 = list.drop(2);
         assertFalse(list1.contains("Java") && list1.contains("PHP"));
@@ -58,7 +59,8 @@ public class CollectionAPIUnitTest {
         assertEquals(list7.size(), 3);
 
         //distinct
-        List list8 = list.distinctBy( (s1, s2) -> s1.startsWith(s2.charAt(0)+"") ? 0 : 1);
+        List list8
+          = list.distinctBy( (s1, s2) -> s1.startsWith(s2.charAt(0)+"") ? 0 : 1);
         assertEquals(list8.size(), 2);
 
         //groupBY
@@ -214,14 +216,12 @@ public class CollectionAPIUnitTest {
 
     @Test
     public void givenSortedSet_whenReversed_thenCorrect() {
-        SortedSet<String> set = TreeSet.of( "Green", "Red", "Blue");
-        assertEquals("Blue", set.head());
-
-        SortedSet<String> reversedSet = set.toSortedSet(Comparator.reverseOrder());
+        SortedSet<String> reversedSet
+          = TreeSet.of(Comparator.reverseOrder(), "Green", "Red", "Blue");
         assertEquals("Red", reversedSet.head());
 
-        String str = set.mkString(" and ");
-        assertEquals("Blue and Green and Red", str);
+        String str = reversedSet.mkString(" and ");
+        assertEquals("Red and Green and Blue", str);
     }
 
     @Test
