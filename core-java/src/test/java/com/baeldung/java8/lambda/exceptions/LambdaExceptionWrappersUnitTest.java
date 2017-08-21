@@ -15,7 +15,6 @@ public class LambdaExceptionWrappersUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(LambdaExceptionWrappersUnitTest.class);
 
-
     private List<Integer> integers;
 
     @Before
