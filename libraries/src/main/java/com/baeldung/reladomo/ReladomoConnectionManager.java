@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.TimeZone;
+import java.util.stream.Stream;
 
 import org.h2.tools.RunScript;
 
@@ -74,15 +75,14 @@ public class ReladomoConnectionManager implements SourcelessConnectionManager {
         return databaseName;
     }
 
-    public void createTables() throws Exception{
+    public void createTables() throws Exception {
         Path ddlPath = Paths.get(ClassLoader.getSystemResource("sql").toURI());
 
-        try (Connection conn = xaConnectionManager.getConnection();) {
-            Files.list(ddlPath).forEach(path -> {
+        try (Connection conn = xaConnectionManager.getConnection(); Stream<Path> list = Files.list(ddlPath);) {
+            list.forEach(path -> {
                 try {
                     RunScript.execute(conn, Files.newBufferedReader(path));
-                } 
-                catch (SQLException | IOException exc){
+                } catch (SQLException | IOException exc) {
                     exc.printStackTrace();
                 }
             });

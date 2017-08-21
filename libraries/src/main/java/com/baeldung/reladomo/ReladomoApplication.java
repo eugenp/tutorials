@@ -23,7 +23,6 @@ public class ReladomoApplication {
 
         try (InputStream is = ReladomoApplication.class.getClassLoader().getResourceAsStream("ReladomoRuntimeConfig.xml")) {
             MithraManagerProvider.getMithraManager().readConfiguration(is);
-            is.close();
 
             Department department = new Department(1, "IT");
             Employee employee = new Employee(1, "John");
@@ -46,9 +45,8 @@ public class ReladomoApplication {
                 dep.cascadeInsert();
                 return null;
             });
-
+            
         } catch (java.io.IOException e) {
-
             e.printStackTrace();
         }
     }
