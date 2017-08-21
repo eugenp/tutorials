@@ -1,0 +1,29 @@
+<configuration>
+
+    <conversionRule conversionWord="stack" converterClass="net.logstash.logback.stacktrace.ShortenedThrowableConverter" />
+    
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			 <pattern>
+			     web - %date [%thread] %-5level %logger{5} - %message%n%stack{5,1}
+			</pattern>
+		</encoder>
+		
+	</appender>
+
+	<logger name="org.baeldung" level="DEBUG" />
+
+	<!-- to view SQL statements, change to DEBUG -->
+	<logger name="org.hibernate.SQL" level="WARN" />
+
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.springframework.transaction" level="WARN" />
+
+	<!-- in order to debug some marshalling issues, this needs to be TRACE -->
+	<logger name="org.springframework.web.servlet.mvc" level="WARN" />
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
