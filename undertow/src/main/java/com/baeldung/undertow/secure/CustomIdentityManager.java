@@ -8,9 +8,10 @@ import java.util.Set;
 
 import io.undertow.security.idm.Account;
 import io.undertow.security.idm.Credential;
+import io.undertow.security.idm.IdentityManager;
 import io.undertow.security.idm.PasswordCredential;
 
-public class CustomIdentityManager implements io.undertow.security.idm.IdentityManager {
+public class CustomIdentityManager implements IdentityManager {
 
     private final Map<String, char[]> users;
 

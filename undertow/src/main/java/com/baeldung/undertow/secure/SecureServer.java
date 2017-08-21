@@ -29,13 +29,15 @@ public class SecureServer {
         final IdentityManager idm = new CustomIdentityManager(users);
 
         Undertow server = Undertow.builder().addHttpListener(8080, "localhost").setHandler(addSecurity((exchange) -> {
-            final SecurityContext context = exchange.getSecurityContext();
-            exchange.getResponseSender().send("Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),
-                    IoCallback.END_EXCHANGE);
+            setExchange(exchange);
         }, idm)).build();
 
         server.start();
+    }
 
+    private static void setExchange(HttpServerExchange exchange) {
+        final SecurityContext context = exchange.getSecurityContext();
+        exchange.getResponseSender().send("Hello " + context.getAuthenticatedAccount().getPrincipal().getName(),IoCallback.END_EXCHANGE);
     }
 
     private static HttpHandler addSecurity(final HttpHandler toWrap, final IdentityManager identityManager) {
