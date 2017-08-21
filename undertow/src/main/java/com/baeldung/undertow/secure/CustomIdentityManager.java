@@ -8,9 +8,10 @@ import java.util.Set;
 
 import io.undertow.security.idm.Account;
 import io.undertow.security.idm.Credential;
+import io.undertow.security.idm.IdentityManager;
 import io.undertow.security.idm.PasswordCredential;
 
-public class CustomIdentityManager implements io.undertow.security.idm.IdentityManager {
+public class CustomIdentityManager implements IdentityManager {
 
     private final Map<String, char[]> users;
 
@@ -53,12 +54,7 @@ public class CustomIdentityManager implements io.undertow.security.idm.IdentityM
 
                 private static final long serialVersionUID = 1L;
 
-                private final Principal principal = new Principal() {
-                    @Override
-                    public String getName() {
-                        return id;
-                    }
-                };
+                private final Principal principal = () -> id;
 
                 @Override
                 public Principal getPrincipal() {
