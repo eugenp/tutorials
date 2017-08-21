@@ -10,7 +10,7 @@ public class Application {
 
     public static void main(String[] args){
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContextForConstructorInjection.xml");
         CustomerService service = context.getBean("customerService", CustomerService.class);
         System.out.println(service.findAll().get(0).getName());
 
