@@ -13,7 +13,7 @@ import net.openhft.chronicle.ChronicleQueueBuilder;
 import net.openhft.chronicle.ExcerptTailer;
 import net.openhft.chronicle.tools.ChronicleTools;
 
-public class ChronicleQueueTest {
+public class ChronicleQueueIntegrationTest {
     
     @Test
     public void givenSetOfValues_whenWriteToQueue_thenWriteSuccesfully() throws IOException {
