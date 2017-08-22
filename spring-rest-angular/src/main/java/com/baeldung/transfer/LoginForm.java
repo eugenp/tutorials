@@ -4,7 +4,8 @@ public class LoginForm {
     private String username;
     private String password;
 
-    public LoginForm() {};
+    public LoginForm() {
+    }
 
     public String getUsername() {
         return username;

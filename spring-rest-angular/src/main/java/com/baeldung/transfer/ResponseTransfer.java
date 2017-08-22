@@ -6,7 +6,7 @@ public class ResponseTransfer {
 
     public ResponseTransfer(String text) {
         this.setText(text);
-    };
+    }
 
     public String getText() {
         return text;

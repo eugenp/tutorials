@@ -14,7 +14,6 @@ import org.baeldung.web.main.Application;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -26,17 +25,17 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ExamplePostControllerResponseUnitTest {
 
     MockMvc mockMvc;
-    @Mock
-    private ExampleService exampleService;
-    @InjectMocks
-    private ExamplePostController exampleController;
+    @Mock private ExampleService exampleService;
+    @InjectMocks private ExamplePostController exampleController;
     private final String jsonBody = "{\"username\": \"username\", \"password\": \"password\"}";
     private LoginForm lf = new LoginForm();
 
     @Before
     public void preTest() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(exampleController).build();
+        mockMvc = MockMvcBuilders
+          .standaloneSetup(exampleController)
+          .build();
         lf.setPassword("password");
         lf.setUsername("username");
     }
@@ -45,12 +44,13 @@ public class ExamplePostControllerResponseUnitTest {
     public void requestBodyTest() {
         try {
             when(exampleService.fakeAuthenticate(lf)).thenReturn(true);
-            mockMvc.perform(post("/post/response")
-                    .content(jsonBody)
-                    .contentType("application/json"))
-                    .andDo(print())
-                    .andExpect(status().isOk())
-                    .andExpect(content().json("{\"text\":\"Thanks For Posting!!!\"}"));
+            mockMvc
+              .perform(post("/post/response")
+                .content(jsonBody)
+                .contentType("application/json"))
+              .andDo(print())
+              .andExpect(status().isOk())
+              .andExpect(content().json("{\"text\":\"Thanks For Posting!!!\"}"));
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
