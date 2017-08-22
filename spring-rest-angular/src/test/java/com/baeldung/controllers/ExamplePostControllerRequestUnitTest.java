@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class ExamplePostControllerServiceUnitTest {
+public class ExamplePostControllerRequestUnitTest {
 
     MockMvc mockMvc;
     @Mock
