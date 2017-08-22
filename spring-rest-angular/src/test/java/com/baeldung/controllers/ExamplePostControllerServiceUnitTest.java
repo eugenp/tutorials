@@ -1,8 +1,7 @@
-package net.baeldung.controllers;
+package com.baeldung.controllers;
 
-import net.baeldung.services.ExampleService;
-import net.baeldung.transfer.LoginForm;
-import org.junit.After;
+import com.baeldung.services.ExampleService;
+import com.baeldung.transfer.LoginForm;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.baeldung.web.main.Application;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 public class ExamplePostControllerServiceUnitTest {
 
     MockMvc mockMvc;
@@ -51,10 +51,5 @@ public class ExamplePostControllerServiceUnitTest {
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
-    }
-
-    @After
-    public void postTest() {
-        mockMvc = null;
     }
 }
