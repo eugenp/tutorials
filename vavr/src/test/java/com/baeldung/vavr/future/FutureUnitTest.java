@@ -83,10 +83,9 @@ public class FutureUnitTest {
         int[] store1 = new int[1];
         int[] store2 = new int[1];
         Future<Integer> future = Future.of(() -> 1);
-        future.andThen(i -> store1[0] = i.get() + 1)
+        Future<Integer> andThenFuture = future.andThen(i -> store1[0] = i.get() + 1)
             .andThen(i -> store2[0] = store1[0] + 1);
-        while (store2[0] == 0) {
-        }
+        andThenFuture.await();
 
         assertEquals(2, store1[0]);
         assertEquals(3, store2[0]);
@@ -101,7 +100,7 @@ public class FutureUnitTest {
             .intValue());
     }
 
-    @Test
+    @Test(expected=CancellationException.class)
     public void givenAFuture_WhenCallCancel_ShouldReturnCancellationException() {
         long waitTime = 1000;
         Future<Integer> future = Future.of(() -> {
@@ -110,7 +109,7 @@ public class FutureUnitTest {
         });
         future.cancel();
         future.await();
-        assertEquals(CancellationException.class, future.getCause().get().getClass());
+        future.get();
     }
 
     @Test
