@@ -95,7 +95,7 @@ public class FutureUnitTest {
             .intValue());
     }
 
-    @Test(expected=CancellationException.class)
+    @Test(expected = CancellationException.class)
     public void givenAFuture_WhenCallCancel_ShouldReturnCancellationException() {
         long waitTime = 1000;
         Future<Integer> future = Future.of(() -> {
