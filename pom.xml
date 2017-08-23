@@ -175,6 +175,7 @@
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
+        <module>spring-mvc-kotlin</module>
         <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
@@ -237,6 +238,7 @@
         <module>liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>mockserver</module>
+        <module>undertow</module>
     </modules>
 
     <dependencies>

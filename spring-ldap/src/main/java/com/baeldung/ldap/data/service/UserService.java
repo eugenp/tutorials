@@ -1,17 +1,17 @@
 package com.baeldung.ldap.data.service;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
-
+import com.baeldung.ldap.data.repository.User;
+import com.baeldung.ldap.data.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.support.LdapUtils;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.ldap.data.repository.User;
-import com.baeldung.ldap.data.repository.UserRepository;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -21,20 +21,18 @@ public class UserService {
 
     public Boolean authenticate(final String username, final String password) {
         User user = userRepository.findByUsernameAndPassword(username, password);
-        return user != null ? true : false;
+        return user != null;
     }
 
     public List<String> search(final String username) {
         List<User> userList = userRepository.findByUsernameLikeIgnoreCase(username);
-        List<String> users = null;
-        if (null != userList) {
-            users = new ArrayList<String>();
-            for (User user : userList) {
-                users.add(user.getUsername());
-            }
+        if (userList == null) {
+            return Collections.emptyList();
         }
-        return users;
 
+        return userList.stream()
+          .map(User::getUsername)
+          .collect(Collectors.toList());
     }
 
     public void create(final String username, final String password) {
@@ -48,7 +46,6 @@ public class UserService {
         User user = userRepository.findByUsername(username);
         user.setPassword(password);
         userRepository.save(user);
-
     }
 
     private String digestSHA(final String password) {
