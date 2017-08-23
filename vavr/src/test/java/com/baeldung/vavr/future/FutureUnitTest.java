@@ -5,6 +5,7 @@ import static io.vavr.API.Case;
 import static io.vavr.API.Match;
 import static io.vavr.Predicates.exists;
 import static io.vavr.Predicates.forAll;
+import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -61,10 +62,7 @@ public class FutureUnitTest {
         future.onSuccess(i -> {
             store[0] = i;
         });
-        while (store[0] == 0) {
-        }
-
-        assertEquals(1, store[0]);
+        await().until(() -> store[0] == 1);
     }
 
     @Test
@@ -72,10 +70,7 @@ public class FutureUnitTest {
         final Throwable[] store = new Throwable[] { null };
         Future<String> future = Future.of(() -> getResourceThrowException(""));
         future.onFailure(err -> store[0] = err);
-        while (store[0] == null) {
-        }
-
-        assertEquals(store[0].getClass(), RuntimeException.class);
+        await().until(() -> RuntimeException.class.isInstance(store[0]));
     }
 
     @Test
