@@ -80,5 +80,6 @@ public class BagTests {
 		treeBag.remove("apple");
 		Assert.assertEquals(9, treeBag.size());
 		Assert.assertEquals("banana", treeBag.first());
+		
 	}
 }
