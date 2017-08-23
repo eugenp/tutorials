@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class CharSequenceVsStringUnitTest {
 
     @Test
-    public void differentStringInstantiationsTest() {
+    public void givenUsingString_whenInstantiatingString_thenWrong() {
         CharSequence firstString = "bealdung";
         String secondString = "baeldung";
 
@@ -17,7 +17,7 @@ public class CharSequenceVsStringUnitTest {
     }
 
     @Test
-    public void compareTwoCharSequenceTest() {
+    public void givenIdenticalCharSequences_whenCastToString_thenEqual() {
         CharSequence charSequence1 = "baeldung_1";
         CharSequence charSequence2 = "baeldung_2";
 
@@ -25,13 +25,21 @@ public class CharSequenceVsStringUnitTest {
     }
 
     @Test
-    public void checkStringMutability() {
+    public void givenString_whenAppended_thenUnmodified() {
         String test = "a";
-
         int firstAddressOfTest = System.identityHashCode(test);
-
         test += "b";
+        int secondAddressOfTest = System.identityHashCode(test);
 
+        assertEquals(firstAddressOfTest, secondAddressOfTest);
+    }
+
+    @Test
+    public void givenStringBuilder_whenAppended_thenModified() {
+        StringBuilder test = new StringBuilder();
+        test.append("a");
+        int firstAddressOfTest = System.identityHashCode(test);
+        test.append("b");
         int secondAddressOfTest = System.identityHashCode(test);
 
         assertEquals(firstAddressOfTest, secondAddressOfTest);
