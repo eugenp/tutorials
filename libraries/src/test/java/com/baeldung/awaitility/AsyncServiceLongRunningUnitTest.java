@@ -11,10 +11,13 @@ import java.util.concurrent.TimeUnit;
 import static org.awaitility.Awaitility.await;
 import static org.awaitility.Awaitility.fieldIn;
 import static org.awaitility.Awaitility.given;
+import static org.awaitility.Awaitility.setDefaultPollDelay;
+import static org.awaitility.Awaitility.setDefaultPollInterval;
+import static org.awaitility.Awaitility.setDefaultTimeout;
 import static org.awaitility.proxy.AwaitilityClassProxy.to;
 import static org.hamcrest.Matchers.equalTo;
 
-public class AsyncServiceUnitTest {
+public class AsyncServiceLongRunningUnitTest {
     private AsyncService asyncService;
 
     @Before
@@ -41,9 +44,9 @@ public class AsyncServiceUnitTest {
 
     @Test
     public void givenAsyncService_whenInitialize_thenInitOccurs_withDefualts() {
-        Awaitility.setDefaultPollInterval(10, TimeUnit.MILLISECONDS);
-        Awaitility.setDefaultPollDelay(Duration.ZERO);
-        Awaitility.setDefaultTimeout(Duration.ONE_MINUTE);
+        setDefaultPollInterval(10, TimeUnit.MILLISECONDS);
+        setDefaultPollDelay(Duration.ZERO);
+        setDefaultTimeout(Duration.ONE_MINUTE);
 
         asyncService.initialize();
         await().until(asyncService::isInitialized);
