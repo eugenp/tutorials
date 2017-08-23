@@ -2,6 +2,6 @@
     <head>Welcome</head>
 
     <body>
-        <h1>This is the body of the welcome view 2</h1>
+        <h1>This is the body of the welcome view</h1>
     </body>
 </html>
