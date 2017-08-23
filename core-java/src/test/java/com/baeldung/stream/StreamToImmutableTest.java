@@ -7,28 +7,24 @@ import static java.util.stream.Collectors.toSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.junit.Test;
 
 import com.baeldung.stream.mycollectors.MyImmutableListCollector;
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 
 public class StreamToImmutableTest {
 
     @Test
     public void whenUsingCollectingToImmutableSet_thenSuccess() {
-        Set<String> mutableSet = new HashSet<>(Arrays.asList("a", "b", "c"));
-        mutableSet.add("test");
-        Set<String> immutableSet = mutableSet.stream()
-            .collect(collectingAndThen(toSet(), ImmutableSet::copyOf));
+        List<String> givenList = Arrays.asList("a", "b", "c");
+        List<String> result = givenList.stream()
+            .collect(collectingAndThen(toSet(), ImmutableList::copyOf));
 
-        System.out.println(immutableSet.getClass());
+        System.out.println(result.getClass());
     }
 
     @Test
