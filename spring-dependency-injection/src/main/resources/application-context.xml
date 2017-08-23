@@ -1,0 +1,21 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="readerService" class="com.baeldung.spring.bean.injection.service.ReaderService"/>
+    <bean name="writerService" class="com.baeldung.spring.bean.injection.service.WriterService"/>
+
+    <bean name="constructorXmlBeanInjection" class="com.baeldung.spring.bean.injection.constructor.ConstructorXmlBeanInjection">
+        <constructor-arg ref="readerService"/>
+        <constructor-arg ref="writerService"/>
+    </bean>
+
+    <bean name="setterXmlBeanInjection" class="com.baeldung.spring.bean.injection.setter.SetterXmlBeanInjection">
+        <property name="readerService" ref="readerService"></property>
+        <property name="writerService" ref="writerService"></property>
+    </bean>
+</beans>
