@@ -34,7 +34,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
     }
 
     @Test
-    public void insert() {
+    public void givenData_whenInsert_thenCreatesMtoMrelationship() {
         String[] employeeData = { "Peter Oven", "Allan Norman" };
         String[] projectData = { "IT Project", "Networking Project" };
         Set<Project> projects = new HashSet<Project>();
@@ -53,7 +53,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
     }
 
     @Test
-    public void read() {
+    public void givenSession_whenRead_thenReturnsMtoMdata() {
         @SuppressWarnings("unchecked")
         List<Employee> employeeList = session.createQuery("FROM Employee").list();
         assertNotNull(employeeList);
