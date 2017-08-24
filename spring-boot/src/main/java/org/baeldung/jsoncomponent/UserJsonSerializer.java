@@ -15,8 +15,7 @@ public class UserJsonSerializer extends JsonSerializer<User> {
     @Override
     public void serialize(User user, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeStringField("favoriteColor",
-                                       getColorAsWebColor(user.getFavoriteColor()));
+        jsonGenerator.writeStringField("favoriteColor", getColorAsWebColor(user.getFavoriteColor()));
         jsonGenerator.writeEndObject();
     }
 

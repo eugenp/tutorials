@@ -23,7 +23,7 @@ public class GraphqlConfiguration {
         }
         return new PostDao(posts);
     }
-    
+
     @Bean
     public AuthorDao authorDao() {
         List<Author> authors = new ArrayList<>();
@@ -36,12 +36,12 @@ public class GraphqlConfiguration {
         }
         return new AuthorDao(authors);
     }
-    
+
     @Bean
     public PostResolver postResolver(AuthorDao authorDao) {
         return new PostResolver(authorDao);
     }
-    
+
     @Bean
     public AuthorResolver authorResolver(PostDao postDao) {
         return new AuthorResolver(postDao);

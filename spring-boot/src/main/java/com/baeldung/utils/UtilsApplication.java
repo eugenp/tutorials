@@ -8,13 +8,13 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
-@ComponentScan(basePackages="com.baeldung.utils")
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
+@ComponentScan(basePackages = "com.baeldung.utils")
 public class UtilsApplication {
 
-	@RolesAllowed("*")
-	public static void main(String[] args) {
-            SpringApplication.run(UtilsApplication.class, args);
-	}
+    @RolesAllowed("*")
+    public static void main(String[] args) {
+        SpringApplication.run(UtilsApplication.class, args);
+    }
 
 }
