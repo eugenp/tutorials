@@ -12,16 +12,15 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import com.baeldung.hibernate.manytomany.util.HibernateUtil;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
 
-
-public class HibernateManyToManyAnnotationXMLConfigMainIntegrationTest {
+public class HibernateManyToManyAnnotationMainIntegrationTest {
     private static SessionFactory sessionFactory;
 
     private Session session;
-
 
     @BeforeClass
     public static void beforeTests() {
@@ -34,45 +33,39 @@ public class HibernateManyToManyAnnotationXMLConfigMainIntegrationTest {
         session.beginTransaction();
     }
 
-    
     @Test
-    public void givenSession_checkIfDatabaseIsPopulated() {
-        Employee employee1 = new Employee("Peter", "Oven");
+    public void givenData_whenInsert_thenCreatesMtoMrelationship() {
+        String[] employeeData = { "Peter Oven", "Allan Norman" };
+        String[] projectData = { "IT Project", "Networking Project" };
         Set<Project> projects = new HashSet<Project>();
-        projects = employee1.getProjects();
-        int noProjects = projects.size();
-        assertEquals(0,noProjects);
-        Project project1 = new Project("IT Project");
-        assertNotNull(project1);
-        projects.add(project1);
-        Project project2 = new Project("Networking Project");
-        assertNotNull(project2);
-        projects.add(project2);
-        employee1.setProjects(projects);
-        assertNotNull(employee1);
-        Employee employee2 = new Employee("Allan", "Norman");
-        employee2.setProjects(projects);
-        assertNotNull(employee2);
-       
-        session.persist(employee1);
-        session.persist(employee2);
-        session.getTransaction().commit();
-        session.close();
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        @SuppressWarnings("unchecked")
-        List<Project> projectList = session.createQuery("FROM Project").list();
-        assertNotNull(projectList);
+        for (String proj : projectData) {
+            projects.add(new Project(proj));
+        }
+
+        for (String emp : employeeData) {
+            Employee employee = new Employee(emp.split(" ")[0], emp.split(" ")[1]);
+            assertEquals(0, employee.getProjects().size());
+            employee.setProjects(projects);
+            session.persist(employee);
+            assertNotNull(employee);
+        }
+    }
+
+    @Test
+    public void givenSession_whenRead_thenReturnsMtoMdata() {
         @SuppressWarnings("unchecked")
         List<Employee> employeeList = session.createQuery("FROM Employee").list();
         assertNotNull(employeeList);
+        for(Employee employee : employeeList) {
+            assertNotNull(employee.getProjects());
+        }
     }
-
 
     @After
     public void tearDown() {
-        session.getTransaction().commit();
+        session.getTransaction()
+            .commit();
         session.close();
     }
 

@@ -18,7 +18,7 @@ public class FooController {
     public Foo getFooWithId(@PathVariable Integer id) throws Exception {
         return fooService.getFooWithId(id);
     }
-    
+
     @GetMapping("/")
     public Foo getFooWithName(@RequestParam String name) throws Exception {
         return fooService.getFooWithName(name);

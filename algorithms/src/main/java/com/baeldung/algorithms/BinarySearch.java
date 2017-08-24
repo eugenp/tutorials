@@ -1,11 +1,11 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class BinarySearch {
 
-    public int runBinarySearch() {
-        int[] sortedArray = { 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 9 };
-        int key = 6;
+    public int runBinarySearchIteratively(int[] sortedArray, int key, int low, int high) {
 
-        int low = 0;
-        int high = sortedArray.length - 1;
         int index = Integer.MAX_VALUE;
 
         while (low <= high) {
@@ -23,4 +23,31 @@ public class BinarySearch {
         }
         return index;
     }
+
+    public int runBinarySearchRecursively(int[] sortedArray, int key, int low, int high) {
+
+        int middle = (low + high) / 2;
+        if (high < low) {
+            return -1;
+        }
+
+        if (key == sortedArray[middle]) {
+          return middle;
+        } else if (key < sortedArray[middle]) {
+          return runBinarySearchRecursively(sortedArray, key, low, middle - 1);
+        } else {
+          return runBinarySearchRecursively(sortedArray, key, middle + 1, high);
+        }
+    }
+
+    public int runBinarySearchUsingJavaArrays(int[] sortedArray, Integer key) {
+        int index = Arrays.binarySearch(sortedArray, key);
+        return index;
+    }
+
+    public int runBinarySearchUsingJavaCollections(List<Integer> sortedList, Integer key) {
+        int index = Collections.binarySearch(sortedList, key);
+        return index;
+    }
+
 }
