@@ -13,8 +13,6 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository repository;
 
-    // API
-    @Override
     public User findUserByEmail(final String email) {
         return repository.findByEmail(email);
     }

@@ -50,9 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
     	
-    	// TODO i'd expect both protectedbyrole and protectedbyauthority to be allowed
-    	//  with the way i have this configured
-    	
         // @formatter:off
         http
             .csrf().disable()
