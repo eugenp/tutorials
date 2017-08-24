@@ -58,12 +58,10 @@ public class CollectionAPIUnitTest {
         List list7 = list.takeUntil(s -> s.length() > 6);
         assertEquals(list7.size(), 3);
 
-        //distinct
         List list8
           = list.distinctBy( (s1, s2) -> s1.startsWith(s2.charAt(0)+"") ? 0 : 1);
         assertEquals(list8.size(), 2);
 
-        //groupBY
         Iterator<List<String>> iterator = list.grouped(2);
         assertEquals(iterator.head().size(), 2);
 
@@ -72,7 +70,6 @@ public class CollectionAPIUnitTest {
         assertEquals(map.get(false).get().size(), 1);
         assertEquals(map.get(true).get().size(), 5);
 
-        //interperse
         String words = List.of("Boys", "Girls")
                          .intersperse("and")
                          .reduce((s1, s2) -> s1.concat( " " + s2 ))
