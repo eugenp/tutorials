@@ -16,8 +16,12 @@ public class ConcurretMapMemoryConsistencyManualTest {
     public void givenConcurrentMap_whenSumParallel_thenCorrect() throws Exception {
         Map<String, Integer> map = new ConcurrentHashMap<>();
         List<Integer> sumList = parallelSum100(map, 1000);
-        assertEquals(1, sumList.stream().distinct().count());
-        long wrongResultCount = sumList.stream().filter(num -> num != 100).count();
+        assertEquals(1, sumList.stream()
+            .distinct()
+            .count());
+        long wrongResultCount = sumList.stream()
+            .filter(num -> num != 100)
+            .count();
         assertEquals(0, wrongResultCount);
     }
 
@@ -25,8 +29,12 @@ public class ConcurretMapMemoryConsistencyManualTest {
     public void givenHashtable_whenSumParallel_thenCorrect() throws Exception {
         Map<String, Integer> map = new Hashtable<>();
         List<Integer> sumList = parallelSum100(map, 1000);
-        assertEquals(1, sumList.stream().distinct().count());
-        long wrongResultCount = sumList.stream().filter(num -> num != 100).count();
+        assertEquals(1, sumList.stream()
+            .distinct()
+            .count());
+        long wrongResultCount = sumList.stream()
+            .filter(num -> num != 100)
+            .count();
         assertEquals(0, wrongResultCount);
     }
 
@@ -34,8 +42,12 @@ public class ConcurretMapMemoryConsistencyManualTest {
     public void givenHashMap_whenSumParallel_thenError() throws Exception {
         Map<String, Integer> map = new HashMap<>();
         List<Integer> sumList = parallelSum100(map, 100);
-        assertNotEquals(1, sumList.stream().distinct().count());
-        long wrongResultCount = sumList.stream().filter(num -> num != 100).count();
+        assertNotEquals(1, sumList.stream()
+            .distinct()
+            .count());
+        long wrongResultCount = sumList.stream()
+            .filter(num -> num != 100)
+            .count();
         assertTrue(wrongResultCount > 0);
     }
 
