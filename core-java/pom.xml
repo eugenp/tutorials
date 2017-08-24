@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>core-java</artifactId>
@@ -47,6 +47,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.decimal4j</groupId>
+            <artifactId>decimal4j</artifactId>
+            <version>${decimal4j.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle.version}</version>
@@ -63,7 +69,6 @@
             <artifactId>grep4j</artifactId>
             <version>${grep4j.version}</version>
         </dependency>
-        
         <!-- web -->
 
         <!-- marshalling -->
@@ -75,7 +80,11 @@
         </dependency>
 
         <!-- logging -->
-
+       <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -142,16 +151,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -161,6 +169,23 @@
             <version>${commons-codec.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.javamoney</groupId>
+            <artifactId>moneta</artifactId>
+            <version>1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.owasp.esapi</groupId>
+            <artifactId>esapi</artifactId>
+            <version>2.1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.messaging.mq</groupId>
+            <artifactId>fscontext</artifactId>
+            <version>${fscontext.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -187,7 +212,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
@@ -239,6 +263,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
                             <archive>
                                 <manifest>
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
@@ -263,7 +288,8 @@
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -305,6 +331,22 @@
                 </executions>
             </plugin>
 
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
+                    <arguments>
+                        <argument>-Xmx300m</argument>
+                        <argument>-XX:+UseParallelGC</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
@@ -344,7 +386,7 @@
         </profile>
     </profiles>
 
-    <properties>
+    <properties>    	
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
@@ -353,29 +395,30 @@
         <logback.version>1.1.7</logback.version>
 
         <!-- util -->
-        <guava.version>21.0</guava.version>
+        <guava.version>22.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <bouncycastle.version>1.55</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-math3.version>3.6.1</commons-math3.version>
+        <decimal4j.version>1.0.3</decimal4j.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <lombok.version>1.16.12</lombok.version>
+        <fscontext.version>4.6-b01</fscontext.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-        <testng.version>6.10</testng.version>
+        <mockito.version>2.8.9</mockito.version>
         <assertj.version>3.6.1</assertj.version>
+        <avaitility.version>1.7.0</avaitility.version>
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
     </properties>
-
 </project>

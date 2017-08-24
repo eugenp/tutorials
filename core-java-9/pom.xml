@@ -21,6 +21,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${ch.qos.logback.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -42,6 +47,13 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
@@ -57,7 +69,6 @@
                 <configuration>
                     <source>1.9</source>
                     <target>1.9</target>
-                    <verbose>true</verbose>
                 </configuration>
             </plugin>
 
@@ -72,17 +83,21 @@
     </build>
 
     <properties>
+        <!-- project build encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
-
+        <ch.qos.logback.version>1.2.1</ch.qos.logback.version>
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6-jigsaw-SNAPSHOT</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
+        <awaitility.version>1.7.0</awaitility.version>
     </properties>
 
 </project>

@@ -1,9 +1,15 @@
 package com.baeldung.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.net.*;
 
 public class EchoClient {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EchoClient.class);
+
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
@@ -14,7 +20,7 @@ public class EchoClient {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         } catch (IOException e) {
-            System.out.print(e);
+            LOG.debug("Error when initializing connection", e);
         }
 
     }
@@ -34,7 +40,7 @@ public class EchoClient {
             out.close();
             clientSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.debug("error when closing", e);
         }
 
     }

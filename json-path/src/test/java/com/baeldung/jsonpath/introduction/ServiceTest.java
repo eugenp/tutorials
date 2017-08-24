@@ -1,9 +1,9 @@
 package com.baeldung.jsonpath.introduction;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.hamcrest.CoreMatchers.containsString;
-
+import com.jayway.jsonpath.Configuration;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -13,18 +13,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Option;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class ServiceTest {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_service.json");
-    String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+    private InputStream jsonInputStream = this.getClass()
+        .getClassLoader()
+        .getResourceAsStream("intro_service.json");
+    private String jsonString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z")
+        .next();
 
     @Test
     public void givenId_whenRequestingRecordData_thenSucceed() {
-        Object dataObject = JsonPath.parse(jsonString).read("$[?(@.id == 2)]");
+        Object dataObject = JsonPath.parse(jsonString)
+            .read("$[?(@.id == 2)]");
         String dataString = dataObject.toString();
 
         assertThat(dataString, containsString("2"));
@@ -34,8 +37,10 @@ public class ServiceTest {
 
     @Test
     public void givenStarring_whenRequestingMovieTitle_thenSucceed() {
-        List<Map<String, Object>> dataList = JsonPath.parse(jsonString).read("$[?('Eva Green' in @['starring'])]");
-        String title = (String) dataList.get(0).get("title");
+        List<Map<String, Object>> dataList = JsonPath.parse(jsonString)
+            .read("$[?('Eva Green' in @['starring'])]");
+        String title = (String) dataList.get(0)
+            .get("title");
 
         assertEquals("Casino Royale", title);
     }
@@ -60,8 +65,12 @@ public class ServiceTest {
         Arrays.sort(revenueArray);
 
         int highestRevenue = revenueArray[revenueArray.length - 1];
-        Configuration pathConfiguration = Configuration.builder().options(Option.AS_PATH_LIST).build();
-        List<String> pathList = JsonPath.using(pathConfiguration).parse(jsonString).read("$[?(@['box office'] == " + highestRevenue + ")]");
+        Configuration pathConfiguration = Configuration.builder()
+            .options(Option.AS_PATH_LIST)
+            .build();
+        List<String> pathList = JsonPath.using(pathConfiguration)
+            .parse(jsonString)
+            .read("$[?(@['box office'] == " + highestRevenue + ")]");
 
         Map<String, String> dataRecord = context.read(pathList.get(0));
         String title = dataRecord.get("title");
@@ -84,7 +93,8 @@ public class ServiceTest {
 
         long latestTime = dateArray[dateArray.length - 1];
         List<Map<String, Object>> finalDataList = context.read("$[?(@['director'] == 'Sam Mendes' && @['release date'] == " + latestTime + ")]");
-        String title = (String) finalDataList.get(0).get("title");
+        String title = (String) finalDataList.get(0)
+            .get("title");
 
         assertEquals("Spectre", title);
     }

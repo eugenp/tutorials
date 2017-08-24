@@ -49,6 +49,58 @@
 			</table>
 			
 		</form:form>
+		
+		<br />
+		
+		<h3>Fill the Form and Select a File (<code>@RequestParam</code>)</h3>
+		
+		<form:form method="POST" action="/spring-mvc-java/uploadFileWithAddtionalData" enctype="multipart/form-data">
+		
+			<table>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Select a file to upload</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		
+		</form:form>
+		
+		<br />
+		
+		<h3>Fill the Form and Select a File (<code>@ModelAttribute</code>)</h3>
+		
+		<form:form method="POST" action="/spring-mvc-java/uploadFileModelAttribute" enctype="multipart/form-data">
+		
+			<table>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" name="name" /></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" name="email" /></td>
+				</tr>
+				<tr>
+					<td>Select a file to upload</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Submit" /></td>
+				</tr>
+			</table>
+		
+		</form:form>
 	
 	</body>
 

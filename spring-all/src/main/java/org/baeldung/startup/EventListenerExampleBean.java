@@ -1,13 +1,15 @@
 package org.baeldung.startup;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EventListenerExampleBean {
-    private static final Logger LOG = Logger.getLogger(EventListenerExampleBean.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventListenerExampleBean.class);
 
     public static int counter;
 

@@ -3,51 +3,34 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.baeldung</groupId>
-  <artifactId>spring-mobile</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>spring-mobile</name>
-  <packaging>war</packaging>
-  <url>http://maven.apache.org</url>
+    <groupId>com.baeldung</groupId>
+    <artifactId>spring-mobile</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>spring-mobile</name>
+    <packaging>war</packaging>
+    <url>http://maven.apache.org</url>
   
-  <properties>
-    <java.version>1.8</java.version>
-  </properties>
+    <parent>
+        <artifactId>parent-boot-4</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-4</relativePath>
+    </parent>
   
-   <parent>
-       <groupId>org.springframework.boot</groupId>
-       <artifactId>spring-boot-starter-parent</artifactId>
-       <version>1.4.3.RELEASE</version>
-   </parent>
-  
-  <dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.mobile</groupId>
-        <artifactId>spring-mobile-device</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-freemarker</artifactId>
-    </dependency>
-  </dependencies>
-  
-  <build>
-	  <resources>
-	    <resource>
-	      <directory>src/main/resources</directory>
-	    </resource>
-	  </resources>
-      <plugins>
-           <plugin>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-maven-plugin</artifactId>
-           </plugin>
-      </plugins>
-  </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.mobile</groupId>
+            <artifactId>spring-mobile-device</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+    </dependencies>
   
     <repositories>
         <repository>

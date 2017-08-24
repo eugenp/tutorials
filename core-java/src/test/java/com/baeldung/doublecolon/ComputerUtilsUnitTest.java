@@ -83,7 +83,7 @@ public class ComputerUtilsUnitTest {
 
         final TriFunction<Integer, String, Integer, MacbookPro> integerStringIntegerObjectTriFunction = MacbookPro::new;
         final MacbookPro macbookPro = integerStringIntegerObjectTriFunction.apply(2010, "black", 100);
-        Double initialValue = new Double(999.99);
+        Double initialValue = 999.99;
         final Double actualValue = macbookPro.calculateValue(initialValue);
         Assert.assertEquals(766.659, actualValue, 0.0);
     }

@@ -1,0 +1,27 @@
+#set( $layout = "layout.vm" )
+<CENTER>
+    <h1>Today's Offers</h1>
+    <BR/>
+    <BR/>
+    <h2>$products.size() Products on Sale!</h2>
+    <BR/>
+    We are proud to offer these fine products
+    at these amazing prices.
+    <BR/>
+    <BR/>
+    #set( $count = 1 )
+    <TABLE class="gridtable">
+        <TR>
+            <TH>Serial #</TH><TH>Product Name</TH><TH>Price</TH>
+        </TR>
+        #foreach( $product in $products )
+            <TR>
+                <TD>$count)</TD>
+                <TD>$product.getName()</TD>
+                <TD>$product.getPrice()</TD>
+            </TR>
+            #set( $count = $count + 1 )
+        #end
+    </TABLE>
+    <BR/>
+</CENTER>

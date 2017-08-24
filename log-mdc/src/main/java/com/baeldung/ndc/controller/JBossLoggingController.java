@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.ndc.Investment;
 import com.baeldung.ndc.service.InvestmentService;
 
-
 @RestController
 public class JBossLoggingController {
     @Autowired

@@ -1,10 +1,10 @@
 package com.baeldung.concurrent.future;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import java.util.concurrent.ForkJoinPool;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class FactorialSquareCalculatorUnitTest {
 

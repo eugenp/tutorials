@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Repository
 public interface MovieRepository extends GraphRepository<Movie> {
+
     Movie findByTitle(@Param("title") String title);
 
     @Query("MATCH (m:Movie) WHERE m.title =~ ('(?i).*'+{title}+'.*') RETURN m")

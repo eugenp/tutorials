@@ -1,9 +1,15 @@
 package com.baeldung.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.*;
 import java.io.*;
 
 public class EchoMultiServer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(EchoMultiServer.class);
+
     private ServerSocket serverSocket;
 
     public void start(int port) {
@@ -57,7 +63,7 @@ public class EchoMultiServer {
                 clientSocket.close();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                LOG.debug(e.getMessage());
             }
         }
     }

@@ -25,6 +25,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
@@ -36,25 +37,27 @@ import com.google.common.base.Charsets;
 public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
-    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/myfoos";
+    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/foos";
 
     @Before
     public void beforeTest() {
         restTemplate = new RestTemplate();
+        // restTemplate.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
     }
 
     // GET
 
     @Test
     public void givenResourceUrl_whenSendGetForRequestEntity_thenStatusOk() throws IOException {
-        final ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+        final ResponseEntity<Foo> response = restTemplate.getForEntity(fooResourceUrl + "/1", Foo.class);
 
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
     public void givenResourceUrl_whenSendGetForRequestEntity_thenBodyCorrect() throws IOException {
-        final ResponseEntity<String> response = restTemplate.getForEntity(fooResourceUrl + "/1", String.class);
+        final RestTemplate template = new RestTemplate();
+        final ResponseEntity<String> response = template.getForEntity(fooResourceUrl + "/1", String.class);
 
         final ObjectMapper mapper = new ObjectMapper();
         final JsonNode root = mapper.readTree(response.getBody());
@@ -75,8 +78,8 @@ public class RestTemplateBasicLiveTest {
     @Test
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
-
-        assertTrue(httpHeaders.getContentType().includes(MediaType.APPLICATION_JSON));
+        assertTrue(httpHeaders.getContentType()
+            .includes(MediaType.APPLICATION_JSON));
     }
 
     // POST
@@ -98,15 +101,13 @@ public class RestTemplateBasicLiveTest {
 
     @Test
     public void givenFooService_whenPostResource_thenResourceIsCreated() {
-        final RestTemplate template = new RestTemplate();
+        final Foo foo = new Foo("bar");
+        final ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
 
-        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"));
-
-        final ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
-        final Foo foo = response.getBody();
-        assertThat(foo, notNullValue());
-        assertThat(foo.getName(), is("bar"));
+        final Foo fooResponse = response.getBody();
+        assertThat(fooResponse, notNullValue());
+        assertThat(fooResponse.getName(), is("bar"));
     }
 
     @Test
@@ -121,46 +122,76 @@ public class RestTemplateBasicLiveTest {
 
     @Test
     public void givenFooService_whenPutExistingEntity_thenItIsUpdated() {
-        final RestTemplate template = new RestTemplate();
         final HttpHeaders headers = prepareBasicAuthHeaders();
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
         // Create Resource
-        final ResponseEntity<Foo> createResponse = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+        final ResponseEntity<Foo> createResponse = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
 
         // Update Resource
         final Foo updatedInstance = new Foo("newName");
-        updatedInstance.setId(createResponse.getBody().getId());
-        final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody().getId();
+        updatedInstance.setId(createResponse.getBody()
+            .getId());
+        final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody()
+            .getId();
         final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedInstance, headers);
-        template.exchange(resourceUrl, HttpMethod.PUT, requestUpdate, Void.class);
+        restTemplate.exchange(resourceUrl, HttpMethod.PUT, requestUpdate, Void.class);
 
         // Check that Resource was updated
-        final ResponseEntity<Foo> updateResponse = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        final ResponseEntity<Foo> updateResponse = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         final Foo foo = updateResponse.getBody();
         assertThat(foo.getName(), is(updatedInstance.getName()));
     }
 
     @Test
     public void givenFooService_whenPutExistingEntityWithCallback_thenItIsUpdated() {
-        final RestTemplate template = new RestTemplate();
         final HttpHeaders headers = prepareBasicAuthHeaders();
         final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
 
         // Create entity
-        ResponseEntity<Foo> response = template.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+        ResponseEntity<Foo> response = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
         // Update entity
         final Foo updatedInstance = new Foo("newName");
-        updatedInstance.setId(response.getBody().getId());
-        final String resourceUrl = fooResourceUrl + '/' + response.getBody().getId();
-        template.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
+        updatedInstance.setId(response.getBody()
+            .getId());
+        final String resourceUrl = fooResourceUrl + '/' + response.getBody()
+            .getId();
+        restTemplate.execute(resourceUrl, HttpMethod.PUT, requestCallback(updatedInstance), clientHttpResponse -> null);
 
         // Check that entity was updated
-        response = template.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        response = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
         final Foo foo = response.getBody();
         assertThat(foo.getName(), is(updatedInstance.getName()));
+    }
+
+    // PATCH
+
+    @Test
+    public void givenFooService_whenPatchExistingEntity_thenItIsUpdated() {
+        final HttpHeaders headers = prepareBasicAuthHeaders();
+        final HttpEntity<Foo> request = new HttpEntity<>(new Foo("bar"), headers);
+
+        // Create Resource
+        final ResponseEntity<Foo> createResponse = restTemplate.exchange(fooResourceUrl, HttpMethod.POST, request, Foo.class);
+
+        // Update Resource
+        final Foo updatedResource = new Foo("newName");
+        updatedResource.setId(createResponse.getBody()
+            .getId());
+        final String resourceUrl = fooResourceUrl + '/' + createResponse.getBody()
+            .getId();
+        final HttpEntity<Foo> requestUpdate = new HttpEntity<>(updatedResource, headers);
+        final ClientHttpRequestFactory requestFactory = getSimpleClientHttpRequestFactory();
+        final RestTemplate template = new RestTemplate(requestFactory);
+        template.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
+        template.patchForObject(resourceUrl, requestUpdate, Void.class);
+
+        // Check that Resource was updated
+        final ResponseEntity<Foo> updateResponse = restTemplate.exchange(resourceUrl, HttpMethod.GET, new HttpEntity<>(headers), Foo.class);
+        final Foo foo = updateResponse.getBody();
+        assertThat(foo.getName(), is(updatedResource.getName()));
     }
 
     // DELETE
@@ -171,7 +202,8 @@ public class RestTemplateBasicLiveTest {
         final ResponseEntity<Foo> response = restTemplate.postForEntity(fooResourceUrl, foo, Foo.class);
         assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
 
-        final String entityUrl = fooResourceUrl + "/" + response.getBody().getId();
+        final String entityUrl = fooResourceUrl + "/" + response.getBody()
+            .getId();
         restTemplate.delete(entityUrl);
         try {
             restTemplate.getForEntity(entityUrl, Foo.class);
@@ -200,8 +232,10 @@ public class RestTemplateBasicLiveTest {
         return clientHttpRequest -> {
             final ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(clientHttpRequest.getBody(), updatedInstance);
-            clientHttpRequest.getHeaders().add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
-            clientHttpRequest.getHeaders().add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
+            clientHttpRequest.getHeaders()
+                .add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
+            clientHttpRequest.getHeaders()
+                .add(HttpHeaders.AUTHORIZATION, "Basic " + getBase64EncodedLogPass());
         };
     }
 
@@ -213,4 +247,5 @@ public class RestTemplateBasicLiveTest {
         clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
         return clientHttpRequestFactory;
     }
+
 }

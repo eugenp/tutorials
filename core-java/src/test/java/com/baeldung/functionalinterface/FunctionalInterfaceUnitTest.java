@@ -1,8 +1,9 @@
 package com.baeldung.functionalinterface;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import com.google.common.util.concurrent.Uninterruptibles;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,16 +15,16 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
-
-import com.google.common.util.concurrent.Uninterruptibles;
+import static org.junit.Assert.*;
 
 public class FunctionalInterfaceUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(FunctionalInterfaceUnitTest.class);
 
     @Test
     public void whenPassingLambdaToComputeIfAbsent_thenTheValueGetsComputedAndPutIntoMap() {
         Map<String, Integer> nameMap = new HashMap<>();
-        Integer value = nameMap.computeIfAbsent("John", s -> s.length());
+        Integer value = nameMap.computeIfAbsent("John", String::length);
 
         assertEquals(new Integer(4), nameMap.get("John"));
         assertEquals(new Integer(4), value);
@@ -65,7 +66,7 @@ public class FunctionalInterfaceUnitTest {
 
     @Test
     public void whenPassingLambdaToThreadConstructor_thenLambdaInferredToRunnable() {
-        Thread thread = new Thread(() -> System.out.println("Hello From Another Thread"));
+        Thread thread = new Thread(() -> LOG.debug("Hello From Another Thread"));
         thread.start();
     }
 
@@ -81,7 +82,8 @@ public class FunctionalInterfaceUnitTest {
             return result;
         });
 
-        List<Integer> fibonacci5 = fibonacci.limit(5).collect(Collectors.toList());
+        List<Integer> fibonacci5 = fibonacci.limit(5)
+            .collect(Collectors.toList());
 
         assertEquals(new Integer(1), fibonacci5.get(0));
         assertEquals(new Integer(1), fibonacci5.get(1));
@@ -93,7 +95,7 @@ public class FunctionalInterfaceUnitTest {
     @Test
     public void whenUsingConsumerInForEach_thenConsumerExecutesForEachListElement() {
         List<String> names = Arrays.asList("John", "Freddy", "Samuel");
-        names.forEach(name -> System.out.println("Hello, " + name));
+        names.forEach(name -> LOG.debug("Hello, " + name));
     }
 
     @Test
@@ -103,14 +105,16 @@ public class FunctionalInterfaceUnitTest {
         ages.put("Freddy", 24);
         ages.put("Samuel", 30);
 
-        ages.forEach((name, age) -> System.out.println(name + " is " + age + " years old"));
+        ages.forEach((name, age) -> LOG.debug(name + " is " + age + " years old"));
     }
 
     @Test
     public void whenUsingPredicateInFilter_thenListValuesAreFilteredOut() {
         List<String> names = Arrays.asList("Angela", "Aaron", "Bob", "Claire", "David");
 
-        List<String> namesWithA = names.stream().filter(name -> name.startsWith("A")).collect(Collectors.toList());
+        List<String> namesWithA = names.stream()
+            .filter(name -> name.startsWith("A"))
+            .collect(Collectors.toList());
 
         assertEquals(2, namesWithA.size());
         assertTrue(namesWithA.contains("Angela"));
@@ -133,7 +137,8 @@ public class FunctionalInterfaceUnitTest {
 
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
 
-        int sum = values.stream().reduce(0, (i1, i2) -> i1 + i2);
+        int sum = values.stream()
+            .reduce(0, (i1, i2) -> i1 + i2);
 
         assertEquals(37, sum);
 

@@ -1,5 +1,8 @@
 package com.baeldung.server;
 
+
+import static org.junit.Assert.assertEquals;
+
 import com.baeldung.server.model.Employee;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
@@ -15,7 +18,7 @@ import java.io.IOException;
 
 public class JerseyApiLiveTest {
 
-    private static final String SERVICE_URL = "http://localhost:8082/jersey-api/resources/employees";
+    private static final String SERVICE_URL = "http://localhost:8082/spring-jersey/resources/employees";
 
     @Test
     public void givenGetAllEmployees_whenCorrectRequest_thenResponseCodeSuccess() throws IOException {
@@ -23,7 +26,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
     @Test
@@ -32,7 +35,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
 
     @Test
@@ -41,7 +44,7 @@ public class JerseyApiLiveTest {
 
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_NOT_FOUND);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_NOT_FOUND);
     }
 
     @Test
@@ -53,7 +56,7 @@ public class JerseyApiLiveTest {
         ObjectMapper mapper = new ObjectMapper();
         Employee emp = mapper.readValue(httpResponse.getEntity().getContent(), Employee.class);
 
-        assert(emp.getFirstName().equals("Jane"));
+        assertEquals(emp.getFirstName(), "Jane");
     }
 
     @Test
@@ -68,7 +71,7 @@ public class JerseyApiLiveTest {
         request.setEntity(input);
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CREATED);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_CREATED);
     }
 
     @Test
@@ -83,7 +86,7 @@ public class JerseyApiLiveTest {
         request.setEntity(input);
         final HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
 
-        assert(httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_CONFLICT);
+        assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_CONFLICT);
     }
 
 }

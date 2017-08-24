@@ -1,8 +1,8 @@
 package org.baeldung.common.error;
 
-import javax.servlet.Servlet;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import javax.servlet.Servlet;
 
 public class SpringHelloServletRegistrationBean extends ServletRegistrationBean {
 
