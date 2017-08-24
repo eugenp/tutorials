@@ -48,6 +48,7 @@ public class HibernateManyToManyAnnotationMainIntegrationTest {
             assertEquals(0, employee.getProjects().size());
             employee.setProjects(projects);
             session.persist(employee);
+            assertNotNull(employee);
         }
     }
 
