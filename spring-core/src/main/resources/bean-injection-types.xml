@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    
+    <bean id="teacher" class="com.baeldung.injectiontypes.Teacher">
+        <constructor-arg index="0" value="Mr. Baeldung" />
+    </bean>
+    
+    <bean id="course" class="com.baeldung.injectiontypes.Course" >
+        <constructor-arg index="0" ref="teacher"/>
+        <property name="priority" value="5"/>
+    </bean>
+    
+</beans>
