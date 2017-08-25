@@ -31,7 +31,7 @@ public class CharSequenceVsStringUnitTest {
         test += "b";
         int secondAddressOfTest = System.identityHashCode(test);
 
-        assertEquals(firstAddressOfTest, secondAddressOfTest);
+        assertNotEquals(firstAddressOfTest, secondAddressOfTest);
     }
 
     @Test
