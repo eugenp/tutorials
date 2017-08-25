@@ -76,7 +76,6 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <module>java-difference-date</module>
         <!--         <module>java-cassandra</module> -->
         <module>vavr</module>
         <module>javax-servlets</module>
