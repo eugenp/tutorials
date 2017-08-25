@@ -15,7 +15,6 @@ public class CompletableFutureLongRunningUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(CompletableFutureLongRunningUnitTest.class);
 
-
     @Test
     public void whenRunningCompletableFutureAsynchronously_thenGetMethodWaitsForResult() throws InterruptedException, ExecutionException {
         Future<String> completableFuture = calculateAsync();
@@ -27,11 +26,12 @@ public class CompletableFutureLongRunningUnitTest {
     private Future<String> calculateAsync() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
-        Executors.newCachedThreadPool().submit(() -> {
-            Thread.sleep(500);
-            completableFuture.complete("Hello");
-            return null;
-        });
+        Executors.newCachedThreadPool()
+            .submit(() -> {
+                Thread.sleep(500);
+                completableFuture.complete("Hello");
+                return null;
+            });
 
         return completableFuture;
     }
@@ -47,11 +47,12 @@ public class CompletableFutureLongRunningUnitTest {
     private Future<String> calculateAsyncWithCancellation() throws InterruptedException {
         CompletableFuture<String> completableFuture = new CompletableFuture<>();
 
-        Executors.newCachedThreadPool().submit(() -> {
-            Thread.sleep(500);
-            completableFuture.cancel(false);
-            return null;
-        });
+        Executors.newCachedThreadPool()
+            .submit(() -> {
+                Thread.sleep(500);
+                completableFuture.cancel(false);
+                return null;
+            });
 
         return completableFuture;
     }
@@ -98,21 +99,24 @@ public class CompletableFutureLongRunningUnitTest {
 
     @Test
     public void whenUsingThenCompose_thenFuturesExecuteSequentially() throws ExecutionException, InterruptedException {
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello").thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
+            .thenCompose(s -> CompletableFuture.supplyAsync(() -> s + " World"));
 
         assertEquals("Hello World", completableFuture.get());
     }
 
     @Test
     public void whenUsingThenCombine_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello").thenCombine(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> s1 + s2);
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Hello")
+            .thenCombine(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> s1 + s2);
 
         assertEquals("Hello World", completableFuture.get());
     }
 
     @Test
     public void whenUsingThenAcceptBoth_thenWaitForExecutionOfBothFutures() throws ExecutionException, InterruptedException {
-        CompletableFuture.supplyAsync(() -> "Hello").thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> LOG.debug(s1 + s2));
+        CompletableFuture.supplyAsync(() -> "Hello")
+            .thenAcceptBoth(CompletableFuture.supplyAsync(() -> " World"), (s1, s2) -> LOG.debug(s1 + s2));
     }
 
     @Test
@@ -131,7 +135,9 @@ public class CompletableFutureLongRunningUnitTest {
         assertTrue(future2.isDone());
         assertTrue(future3.isDone());
 
-        String combined = Stream.of(future1, future2, future3).map(CompletableFuture::join).collect(Collectors.joining(" "));
+        String combined = Stream.of(future1, future2, future3)
+            .map(CompletableFuture::join)
+            .collect(Collectors.joining(" "));
 
         assertEquals("Hello Beautiful World", combined);
     }
@@ -147,7 +153,8 @@ public class CompletableFutureLongRunningUnitTest {
                 throw new RuntimeException("Computation error!");
             }
             return "Hello, " + name;
-        }).handle((s, t) -> s != null ? s : "Hello, Stranger!");
+        })
+            .handle((s, t) -> s != null ? s : "Hello, Stranger!");
 
         assertEquals("Hello, Stranger!", completableFuture.get());
     }

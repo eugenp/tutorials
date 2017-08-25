@@ -109,7 +109,8 @@ public class JacksonSerializationIgnoreUnitTest {
         final MyDtoWithFilter dtoObject = new MyDtoWithFilter();
         dtoObject.setIntValue(12);
 
-        final String dtoAsString = mapper.writer(filters).writeValueAsString(dtoObject);
+        final String dtoAsString = mapper.writer(filters)
+            .writeValueAsString(dtoObject);
 
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
@@ -123,7 +124,8 @@ public class JacksonSerializationIgnoreUnitTest {
             @Override
             public final void serializeAsField(final Object pojo, final JsonGenerator jgen, final SerializerProvider provider, final PropertyWriter writer) throws Exception {
                 if (include(writer)) {
-                    if (!writer.getName().equals("intValue")) {
+                    if (!writer.getName()
+                        .equals("intValue")) {
                         writer.serializeAsField(pojo, jgen, provider);
                         return;
                     }
@@ -153,7 +155,8 @@ public class JacksonSerializationIgnoreUnitTest {
         dtoObject.setIntValue(-1);
 
         final ObjectMapper mapper = new ObjectMapper();
-        final String dtoAsString = mapper.writer(filters).writeValueAsString(dtoObject);
+        final String dtoAsString = mapper.writer(filters)
+            .writeValueAsString(dtoObject);
 
         assertThat(dtoAsString, not(containsString("intValue")));
         assertThat(dtoAsString, containsString("booleanValue"));
@@ -229,7 +232,8 @@ public class JacksonSerializationIgnoreUnitTest {
     @Test
     public final void givenAllowingMapObjectWithNullKey_whenWriting_thenCorrect() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.getSerializerProvider().setNullKeySerializer(new MyDtoNullKeySerializer());
+        mapper.getSerializerProvider()
+            .setNullKeySerializer(new MyDtoNullKeySerializer());
 
         final MyDto dtoObject1 = new MyDto();
         dtoObject1.setStringValue("dtoObjectString1");
@@ -251,7 +255,8 @@ public class JacksonSerializationIgnoreUnitTest {
     @Test
     public final void givenAllowingMapObjectOneNullKey_whenWritingMapObjectWithTwoNullKeys_thenOverride() throws JsonProcessingException {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.getSerializerProvider().setNullKeySerializer(new MyDtoNullKeySerializer());
+        mapper.getSerializerProvider()
+            .setNullKeySerializer(new MyDtoNullKeySerializer());
 
         final MyDto dtoObject1 = new MyDto();
         dtoObject1.setStringValue("dtoObject1String");
