@@ -27,9 +27,6 @@ public class DelayObject implements Delayed {
 
     @Override
     public String toString() {
-        return "{" +
-                "data='" + data + '\'' +
-                ", startTime=" + startTime +
-                '}';
+        return "{" + "data='" + data + '\'' + ", startTime=" + startTime + '}';
     }
 }

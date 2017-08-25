@@ -19,13 +19,15 @@ public class NumbersProducer implements Runnable {
         try {
             generateNumbers();
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            Thread.currentThread()
+                .interrupt();
         }
     }
 
     private void generateNumbers() throws InterruptedException {
         for (int i = 0; i < 100; i++) {
-            numbersQueue.put(ThreadLocalRandom.current().nextInt(100));
+            numbersQueue.put(ThreadLocalRandom.current()
+                .nextInt(100));
         }
         for (int j = 0; j < poisonPillPerProducer; j++) {
             numbersQueue.put(poisonPill);

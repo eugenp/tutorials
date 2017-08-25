@@ -65,7 +65,7 @@ public class EmployeeRepositoryIntegrationTest {
         List<Employee> allEmployees = employeeRepository.findAll();
 
         assertThat(allEmployees).hasSize(3)
-          .extracting(Employee::getName)
-          .containsOnly(alex.getName(), ron.getName(), bob.getName());
+            .extracting(Employee::getName)
+            .containsOnly(alex.getName(), ron.getName(), bob.getName());
     }
 }

@@ -24,40 +24,33 @@ public class DynamicTestsExample {
 
     @TestFactory
     Collection<DynamicTest> dynamicTestsWithCollection() {
-        return Arrays.asList(
-          DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))),
-          DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))));
+        return Arrays.asList(DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))), DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))));
     }
-    
+
     @TestFactory
     Iterable<DynamicTest> dynamicTestsWithIterable() {
-        return Arrays.asList(
-          DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))),
-          DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))));
+        return Arrays.asList(DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))), DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))));
     }
-    
+
     @TestFactory
     Iterator<DynamicTest> dynamicTestsWithIterator() {
-        return Arrays.asList(
-          DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))),
-          DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))))
-          .iterator();
+        return Arrays.asList(DynamicTest.dynamicTest("Add test", () -> assertEquals(2, Math.addExact(1, 1))), DynamicTest.dynamicTest("Multiply Test", () -> assertEquals(4, Math.multiplyExact(2, 2))))
+            .iterator();
     }
-    
+
     @TestFactory
     Stream<DynamicTest> dynamicTestsFromIntStream() {
-        return IntStream.iterate(0, n -> n + 2).limit(10).mapToObj(
-          n -> DynamicTest.dynamicTest("test" + n, () -> assertTrue(n % 2 == 0)));
+        return IntStream.iterate(0, n -> n + 2)
+            .limit(10)
+            .mapToObj(n -> DynamicTest.dynamicTest("test" + n, () -> assertTrue(n % 2 == 0)));
     }
-    
+
     @TestFactory
     Stream<DynamicTest> dynamicTestsFromStream() {
 
         // sample input and output
-        List<String> inputList =
-            Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
-        List<String> outputList =
-            Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
+        List<String> inputList = Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
+        List<String> outputList = Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
 
         // input generator that generates inputs using inputList
         Iterator<String> inputGenerator = inputList.iterator();
@@ -75,57 +68,56 @@ public class DynamicTestsExample {
         // combine everything and return a Stream of DynamicTest
         return DynamicTest.stream(inputGenerator, displayNameGenerator, testExecutor);
     }
-    
+
     @TestFactory
     Stream<DynamicTest> dynamicTestsFromStreamInJava8() {
-        
+
         DomainNameResolver resolver = new DomainNameResolver();
-        
-        List<String> inputList =
-           Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
-        List<String> outputList =
-            Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
-        
-        return inputList.stream().map(dom -> DynamicTest.dynamicTest("Resolving: " + dom, () -> {
-            int id = inputList.indexOf(dom);
-            assertEquals(outputList.get(id), resolver.resolveDomain(dom));
-        }));
-        
+
+        List<String> inputList = Arrays.asList("www.somedomain.com", "www.anotherdomain.com", "www.yetanotherdomain.com");
+        List<String> outputList = Arrays.asList("154.174.10.56", "211.152.104.132", "178.144.120.156");
+
+        return inputList.stream()
+            .map(dom -> DynamicTest.dynamicTest("Resolving: " + dom, () -> {
+                int id = inputList.indexOf(dom);
+                assertEquals(outputList.get(id), resolver.resolveDomain(dom));
+            }));
+
     }
 
     @TestFactory
     Stream<DynamicTest> dynamicTestsForEmployeeWorkflows() {
-        List<Employee> inputList =
-            Arrays.asList(new Employee(1, "Fred"), new Employee(2), new Employee(3, "John"));
-        
+        List<Employee> inputList = Arrays.asList(new Employee(1, "Fred"), new Employee(2), new Employee(3, "John"));
+
         EmployeeDao dao = new EmployeeDao();
-        Stream<DynamicTest> saveEmployeeStream = inputList.stream().map(emp -> 
-            DynamicTest.dynamicTest("saveEmployee: " + emp.toString(), () -> {
-            Employee returned = dao.save(emp.getId());
-            assertEquals(returned.getId(), emp.getId());
-        }));
-        
-        Stream<DynamicTest> saveEmployeeWithFirstNameStream 
-            = inputList.stream().filter(emp -> !emp.getFirstName().isEmpty())
+        Stream<DynamicTest> saveEmployeeStream = inputList.stream()
+            .map(emp -> DynamicTest.dynamicTest("saveEmployee: " + emp.toString(), () -> {
+                Employee returned = dao.save(emp.getId());
+                assertEquals(returned.getId(), emp.getId());
+            }));
+
+        Stream<DynamicTest> saveEmployeeWithFirstNameStream = inputList.stream()
+            .filter(emp -> !emp.getFirstName()
+                .isEmpty())
             .map(emp -> DynamicTest.dynamicTest("saveEmployeeWithName" + emp.toString(), () -> {
-            Employee returned = dao.save(emp.getId(), emp.getFirstName());
-            assertEquals(returned.getId(), emp.getId());
-            assertEquals(returned.getFirstName(), emp.getFirstName());
-        }));
-        
+                Employee returned = dao.save(emp.getId(), emp.getFirstName());
+                assertEquals(returned.getId(), emp.getId());
+                assertEquals(returned.getFirstName(), emp.getFirstName());
+            }));
+
         return Stream.concat(saveEmployeeStream, saveEmployeeWithFirstNameStream);
     }
-    
+
     class DomainNameResolver {
-        
+
         private Map<String, String> ipByDomainName = new HashMap<>();
-        
+
         DomainNameResolver() {
             this.ipByDomainName.put("www.somedomain.com", "154.174.10.56");
             this.ipByDomainName.put("www.anotherdomain.com", "211.152.104.132");
             this.ipByDomainName.put("www.yetanotherdomain.com", "178.144.120.156");
         }
-        
+
         public String resolveDomain(String domainName) {
             return ipByDomainName.get(domainName);
         }
