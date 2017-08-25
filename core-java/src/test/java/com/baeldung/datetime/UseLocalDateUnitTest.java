@@ -15,12 +15,14 @@ public class UseLocalDateUnitTest {
 
     @Test
     public void givenValues_whenUsingFactoryOf_thenLocalDate() {
-        assertEquals("2016-05-10", useLocalDate.getLocalDateUsingFactoryOfMethod(2016, 5, 10).toString());
+        assertEquals("2016-05-10", useLocalDate.getLocalDateUsingFactoryOfMethod(2016, 5, 10)
+            .toString());
     }
 
     @Test
     public void givenString_whenUsingParse_thenLocalDate() {
-        assertEquals("2016-05-10", useLocalDate.getLocalDateUsingParseMethod("2016-05-10").toString());
+        assertEquals("2016-05-10", useLocalDate.getLocalDateUsingParseMethod("2016-05-10")
+            .toString());
     }
 
     @Test
@@ -30,12 +32,14 @@ public class UseLocalDateUnitTest {
 
     @Test
     public void givenDate_whenUsingPlus_thenNextDay() {
-        assertEquals(LocalDate.now().plusDays(1), useLocalDate.getNextDay(LocalDate.now()));
+        assertEquals(LocalDate.now()
+            .plusDays(1), useLocalDate.getNextDay(LocalDate.now()));
     }
 
     @Test
     public void givenDate_whenUsingMinus_thenPreviousDay() {
-        assertEquals(LocalDate.now().minusDays(1), useLocalDate.getPreviousDay(LocalDate.now()));
+        assertEquals(LocalDate.now()
+            .minusDays(1), useLocalDate.getPreviousDay(LocalDate.now()));
     }
 
     @Test
@@ -45,7 +49,8 @@ public class UseLocalDateUnitTest {
 
     @Test
     public void givenToday_whenUsingWithTemporalAdjuster_thenFirstDayOfMonth() {
-        assertEquals(1, useLocalDate.getFirstDayOfMonth().getDayOfMonth());
+        assertEquals(1, useLocalDate.getFirstDayOfMonth()
+            .getDayOfMonth());
     }
 
     @Test

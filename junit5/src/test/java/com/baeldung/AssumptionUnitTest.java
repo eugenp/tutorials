@@ -24,9 +24,6 @@ public class AssumptionUnitTest {
     @Test
     void assumptionThat() {
         String someString = "Just a string";
-        assumingThat(
-                someString.equals("Just a string"),
-                () -> assertEquals(2 + 2, 4)
-        );
+        assumingThat(someString.equals("Just a string"), () -> assertEquals(2 + 2, 4));
     }
 }

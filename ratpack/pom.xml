@@ -42,13 +42,35 @@
         </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-hystrix</artifactId>
+            <version>${ratpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-rx</artifactId>
+            <version>${ratpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ratpack</groupId>
             <artifactId>ratpack-test</artifactId>
             <version>${ratpack.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.193</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.6</version>
         </dependency>
     </dependencies>
 

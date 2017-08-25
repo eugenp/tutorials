@@ -9,7 +9,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Consumer implements Runnable {
     private static final Logger LOG = LoggerFactory.getLogger(Consumer.class);
 
-    
     private final TransferQueue<String> transferQueue;
     private final String name;
     private final int numberOfMessagesToConsume;
