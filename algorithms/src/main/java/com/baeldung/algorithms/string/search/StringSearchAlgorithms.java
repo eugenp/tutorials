@@ -4,183 +4,191 @@ import java.math.BigInteger;
 import java.util.Random;
 
 public class StringSearchAlgorithms {
-	public static long getBiggerPrime(int m) {
-		BigInteger prime = BigInteger.probablePrime(31, new Random());
-		return prime.longValue();
-	}
+    public static long getBiggerPrime(int m) {
+        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(m) + 1, new Random());
+        return prime.longValue();
+    }
 
-	public static long getLowerPrime(long number) {
-		BigInteger prime = BigInteger.probablePrime(31, new Random());
-		return prime.longValue();
-	}
+    public static long getLowerPrime(long number) {
+        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(number) - 1, new Random());
+        return prime.longValue();
+    }
 
-	public static int simpleTextSearch(char[] pattern, char[] text) {
-		int patternSize = pattern.length;
-		int textSize = text.length;
+    private static int getNumberOfBits(final int number) {
+        return Integer.SIZE - Integer.numberOfLeadingZeros(number);
+    }
 
-		int i = 0;
+    private static int getNumberOfBits(final long number) {
+        return Long.SIZE - Long.numberOfLeadingZeros(number);
+    }
 
-		while ((i + patternSize) <= textSize) {
-			int j = 0;
-			while (text[i + j] == pattern[j]) {
-				j += 1;
-				if (j >= patternSize)
-					return i;
-			}
-			i += 1;
-		}
+    public static int simpleTextSearch(char[] pattern, char[] text) {
+        int patternSize = pattern.length;
+        int textSize = text.length;
 
-		return -1;
-	}
+        int i = 0;
 
-	public static int RabinKarpMethod(char[] pattern, char[] text) {
-		int patternSize = pattern.length; // m
-		int textSize = text.length; // n
+        while ((i + patternSize) <= textSize) {
+            int j = 0;
+            while (text[i + j] == pattern[j]) {
+                j += 1;
+                if (j >= patternSize)
+                    return i;
+            }
+            i += 1;
+        }
 
-		long prime = getBiggerPrime(patternSize);
+        return -1;
+    }
 
-		long r = 1;
-		for (int i = 0; i < patternSize - 1; i++) {
-			r *= 2;
-			r = r % prime;
-		}
+    public static int RabinKarpMethod(char[] pattern, char[] text) {
+        int patternSize = pattern.length; // m
+        int textSize = text.length; // n
 
-		long[] t = new long[textSize];
-		t[0] = 0;
+        long prime = getBiggerPrime(patternSize);
 
-		long pfinger = 0;
+        long r = 1;
+        for (int i = 0; i < patternSize - 1; i++) {
+            r *= 2;
+            r = r % prime;
+        }
 
-		for (int j = 0; j < patternSize; j++) {
-			t[0] = (2 * t[0] + text[j]) % prime;
-			pfinger = (2 * pfinger + pattern[j]) % prime;
-		}
+        long[] t = new long[textSize];
+        t[0] = 0;
 
-		int i = 0;
-		boolean passed = false;
+        long pfinger = 0;
 
-		int diff = textSize - patternSize;
-		for (i = 0; i <= diff; i++) {
-			if (t[i] == pfinger) {
-				passed = true;
-				for (int k = 0; k < patternSize; k++) {
-					if (text[i + k] != pattern[k]) {
-						passed = false;
-						break;
-					}
-				}
+        for (int j = 0; j < patternSize; j++) {
+            t[0] = (2 * t[0] + text[j]) % prime;
+            pfinger = (2 * pfinger + pattern[j]) % prime;
+        }
 
-				if (passed) {
-					return i;
-				}
-			}
+        int i = 0;
+        boolean passed = false;
 
-			if (i < diff) {
-				long value = 2 * (t[i] - r * text[i]) + text[i + patternSize];
-				t[i + 1] = ((value % prime) + prime) % prime;
-			}
-		}
-		return -1;
+        int diff = textSize - patternSize;
+        for (i = 0; i <= diff; i++) {
+            if (t[i] == pfinger) {
+                passed = true;
+                for (int k = 0; k < patternSize; k++) {
+                    if (text[i + k] != pattern[k]) {
+                        passed = false;
+                        break;
+                    }
+                }
 
-	}
+                if (passed) {
+                    return i;
+                }
+            }
 
-	public static int KnuthMorrisPrattSearch(char[] pattern, char[] text) {
-		int patternSize = pattern.length; // m
-		int textSize = text.length; // n
+            if (i < diff) {
+                long value = 2 * (t[i] - r * text[i]) + text[i + patternSize];
+                t[i + 1] = ((value % prime) + prime) % prime;
+            }
+        }
+        return -1;
 
-		int i = 0, j = 0;
+    }
 
-		int[] shift = KnuthMorrisPrattShift(pattern);
+    public static int KnuthMorrisPrattSearch(char[] pattern, char[] text) {
+        int patternSize = pattern.length; // m
+        int textSize = text.length; // n
 
-		while ((i + patternSize) <= textSize) {
-			while (text[i + j] == pattern[j]) {
-				j += 1;
-				if (j >= patternSize)
-					return i;
-			}
+        int i = 0, j = 0;
 
-			if (j > 0) {
-				i += shift[j - 1];
-				j = Math.max(j - shift[j - 1], 0);
-			} else {
-				i++;
-				j = 0;
-			}
-		}
-		return -1;
-	}
+        int[] shift = KnuthMorrisPrattShift(pattern);
 
-	public static int[] KnuthMorrisPrattShift(char[] pattern) {
-		int patternSize = pattern.length;
+        while ((i + patternSize) <= textSize) {
+            while (text[i + j] == pattern[j]) {
+                j += 1;
+                if (j >= patternSize)
+                    return i;
+            }
 
-		int[] shift = new int[patternSize];
-		shift[0] = 1;
+            if (j > 0) {
+                i += shift[j - 1];
+                j = Math.max(j - shift[j - 1], 0);
+            } else {
+                i++;
+                j = 0;
+            }
+        }
+        return -1;
+    }
 
-		int i = 1, j = 0;
+    public static int[] KnuthMorrisPrattShift(char[] pattern) {
+        int patternSize = pattern.length;
 
-		while ((i + j) < patternSize) {
-			if (pattern[i + j] == pattern[j]) {
-				shift[i + j] = i;
-				j++;
-			} else {
-				if (j == 0)
-					shift[i] = i + 1;
+        int[] shift = new int[patternSize];
+        shift[0] = 1;
 
-				if (j > 0) {
-					i = i + shift[j - 1];
-					j = Math.max(j - shift[j - 1], 0);
-				} else {
-					i = i + 1;
-					j = 0;
-				}
-			}
-		}
-		return shift;
-	}
+        int i = 1, j = 0;
 
-	public static int BoyerMooreHorspoolSimpleSearch(char[] pattern, char[] text) {
-		int patternSize = pattern.length;
-		int textSize = text.length;
+        while ((i + j) < patternSize) {
+            if (pattern[i + j] == pattern[j]) {
+                shift[i + j] = i;
+                j++;
+            } else {
+                if (j == 0)
+                    shift[i] = i + 1;
 
-		int i = 0, j = 0;
+                if (j > 0) {
+                    i = i + shift[j - 1];
+                    j = Math.max(j - shift[j - 1], 0);
+                } else {
+                    i = i + 1;
+                    j = 0;
+                }
+            }
+        }
+        return shift;
+    }
 
-		while ((i + patternSize) <= textSize) {
-			j = patternSize - 1;
-			while (text[i + j] == pattern[j]) {
-				j--;
-				if (j < 0)
-					return i;
-			}
-			i++;
-		}
-		return -1;
-	}
+    public static int BoyerMooreHorspoolSimpleSearch(char[] pattern, char[] text) {
+        int patternSize = pattern.length;
+        int textSize = text.length;
 
-	public static int BoyerMooreHorspoolSearch(char[] pattern, char[] text) {
+        int i = 0, j = 0;
 
-		int shift[] = new int[256];
+        while ((i + patternSize) <= textSize) {
+            j = patternSize - 1;
+            while (text[i + j] == pattern[j]) {
+                j--;
+                if (j < 0)
+                    return i;
+            }
+            i++;
+        }
+        return -1;
+    }
 
-		for (int k = 0; k < 256; k++) {
-			shift[k] = pattern.length;
-		}
+    public static int BoyerMooreHorspoolSearch(char[] pattern, char[] text) {
 
-		for (int k = 0; k < pattern.length - 1; k++) {
-			shift[pattern[k]] = pattern.length - 1 - k;
-		}
+        int shift[] = new int[256];
 
-		int i = 0, j = 0;
+        for (int k = 0; k < 256; k++) {
+            shift[k] = pattern.length;
+        }
 
-		while ((i + pattern.length) <= text.length) {
-			j = pattern.length - 1;
+        for (int k = 0; k < pattern.length - 1; k++) {
+            shift[pattern[k]] = pattern.length - 1 - k;
+        }
 
-			while (text[i + j] == pattern[j]) {
-				j -= 1;
-				if (j < 0)
-					return i;
-			}
+        int i = 0, j = 0;
 
-			i = i + shift[text[i + pattern.length - 1]];
+        while ((i + pattern.length) <= text.length) {
+            j = pattern.length - 1;
 
-		}
-		return -1;
-	}
+            while (text[i + j] == pattern[j]) {
+                j -= 1;
+                if (j < 0)
+                    return i;
+            }
+
+            i = i + shift[text[i + pattern.length - 1]];
+
+        }
+        return -1;
+    }
 }
