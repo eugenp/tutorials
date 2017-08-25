@@ -19,6 +19,12 @@ public interface GitHubRxApi {
     @GET("users/{user}/repos")
     Observable<List<Repository>> listRepos(@Path("user") String user);
     
+    /**
+     * List Contributors of a GitHub Repository
+     * @param user GitHub Account
+     * @param repo GitHub Repository
+     * @return GitHub Repository Contributors
+     */
     @GET("repos/{user}/{repo}/contributors")
     Observable<List<Contributor>> listRepoContributors(
       @Path("user") String user,
