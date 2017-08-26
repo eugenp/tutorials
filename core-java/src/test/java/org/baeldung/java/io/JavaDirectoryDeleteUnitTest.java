@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileVisitOption;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,12 +26,12 @@ public class JavaDirectoryDeleteUnitTest {
     private static final String DIRECTORY_NAME = "toBeDeleted";
 
     @BeforeClass
-    public static void initializeTemplDirectory() throws IOException {
+    public static void initializeTempDirectory() throws IOException {
         Files.createDirectories(TEMP_DIRECTORY);
     }
 
     @AfterClass
-    public static void cleanTemplDirectory() throws IOException {
+    public static void cleanTempDirectory() throws IOException {
         FileUtils.deleteDirectory(TEMP_DIRECTORY.toFile());
     }
 
@@ -69,7 +68,7 @@ public class JavaDirectoryDeleteUnitTest {
     }
 
     @Test
-    public void givenDirectoryExists_whenDeleteingUsingRecursion_thenShouldDelete() throws IOException {
+    public void givenDirectory_whenDeletedWithRecursion_thenIsGone() throws IOException {
         Path pathToBeDeleted = setupDirectory();
 
         boolean result = deleteDirectory(pathToBeDeleted.toFile());
@@ -79,7 +78,7 @@ public class JavaDirectoryDeleteUnitTest {
     }
 
     @Test
-    public void givenDirectoryExists_whenDeleteingUsingCommonsIO_thenShouldDelete() throws IOException {
+    public void givenDirectory_whenDeletedWithCommonsIOFileUtils_thenIsGone() throws IOException {
         Path pathToBeDeleted = setupDirectory();
 
         FileUtils.deleteDirectory(pathToBeDeleted.toFile());
@@ -88,7 +87,7 @@ public class JavaDirectoryDeleteUnitTest {
     }
 
     @Test
-    public void givenDirectoryExists_whenDeleteingUsingSpring_thenShouldDelete() throws IOException {
+    public void givenDirectory_whenDeletedWithSpringFileSystemUtils_thenIsGone() throws IOException {
         Path pathToBeDeleted = setupDirectory();
 
         boolean result = FileSystemUtils.deleteRecursively(pathToBeDeleted.toFile());
@@ -99,7 +98,7 @@ public class JavaDirectoryDeleteUnitTest {
     }
 
     @Test
-    public void givenDirectoryExists_whenDeleteingUsingJava8FilesWalk_thenShouldDelete() throws IOException {
+    public void givenDirectory_whenDeletedWithFilesWalk_thenIsGone() throws IOException {
         Path pathToBeDeleted = setupDirectory();
 
         Files.walk(pathToBeDeleted)
@@ -111,7 +110,7 @@ public class JavaDirectoryDeleteUnitTest {
     }
 
     @Test
-    public void givenDirectoryExists_whenDeleteingUsingNIO2WalkFileTree_thenShouldDelete() throws IOException {
+    public void givenDirectory_whenDeletedWithNIO2WalkFileTree_thenIsGone() throws IOException {
         Path pathToBeDeleted = setupDirectory();
 
         Files.walkFileTree(pathToBeDeleted, new SimpleFileVisitor<Path>() {
