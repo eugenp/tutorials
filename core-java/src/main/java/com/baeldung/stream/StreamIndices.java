@@ -1,11 +1,15 @@
 package com.baeldung.stream;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
+import com.google.common.collect.Streams;
 
 import one.util.streamex.EntryStream;
 
@@ -47,5 +51,13 @@ public class StreamIndices {
             .mapToObj(i -> names[i])
             .collect(Collectors.toList());
         return oddIndexedNames;
+    }
+
+    public static List<String> getOddIndexedStringsVersionTwo(String[] names) {
+        AtomicInteger index = new AtomicInteger();
+        List<String> list = Arrays.stream(names)
+            .filter(name -> index.getAndIncrement() % 2 == 1)
+            .collect(Collectors.toList());
+        return list;
     }
 }
