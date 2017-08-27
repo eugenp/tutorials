@@ -1,5 +1,12 @@
 package com.baeldung.vavr.future;
 
+import io.vavr.collection.List;
+import io.vavr.concurrent.Future;
+import org.junit.Test;
+
+import java.util.concurrent.CancellationException;
+import java.util.function.Predicate;
+
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
 import static io.vavr.API.Match;
@@ -8,14 +15,6 @@ import static io.vavr.Predicates.forAll;
 import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.concurrent.CancellationException;
-import java.util.function.Predicate;
-
-import org.junit.Test;
-
-import io.vavr.collection.List;
-import io.vavr.concurrent.Future;
 
 public class FutureUnitTest {
 
@@ -27,7 +26,7 @@ public class FutureUnitTest {
         Future<Integer> future = Future.of(() -> 1);
 
         assertEquals(1, future.get()
-            .intValue());
+          .intValue());
     }
 
     @Test
@@ -57,20 +56,20 @@ public class FutureUnitTest {
 
     @Test
     public void givenFunction_WhenCallWithFutureAndRegisterConsumerForSuccess_ShouldCallConsumerToStoreValue() {
-        final int[] store = new int[] { 0 };
+        final int[] store = new int[]{0};
         Future<Integer> future = Future.of(() -> 1);
-        future.onSuccess(i -> {
-            store[0] = i;
-        });
-        await().until(() -> store[0] == 1);
+        future.onSuccess(i -> store[0] = i);
+        await()
+          .until(() -> store[0] == 1);
     }
 
     @Test
     public void givenFunctionThrowException_WhenCallWithFutureAndRegisterConsumerForFailer_ShouldCallConsumerToStoreException() {
-        final Throwable[] store = new Throwable[] { null };
+        final Throwable[] store = new Throwable[]{null};
         Future<String> future = Future.of(() -> getResourceThrowException(""));
         future.onFailure(err -> store[0] = err);
-        await().until(() -> RuntimeException.class.isInstance(store[0]));
+        await()
+          .until(() -> RuntimeException.class.isInstance(store[0]));
     }
 
     @Test
@@ -79,7 +78,7 @@ public class FutureUnitTest {
         int[] store2 = new int[1];
         Future<Integer> future = Future.of(() -> 1);
         Future<Integer> andThenFuture = future.andThen(i -> store1[0] = i.get() + 1)
-            .andThen(i -> store2[0] = store1[0] + 1);
+          .andThen(i -> store2[0] = store1[0] + 1);
         andThenFuture.await();
 
         assertEquals(2, store1[0]);
@@ -92,16 +91,12 @@ public class FutureUnitTest {
         Future<Integer> future2 = future.orElse(Future.of(() -> 2));
 
         assertEquals(2, future2.get()
-            .intValue());
+          .intValue());
     }
 
     @Test(expected = CancellationException.class)
     public void givenAFuture_WhenCallCancel_ShouldReturnCancellationException() {
-        long waitTime = 1000;
-        Future<Integer> future = Future.of(() -> {
-            Thread.sleep(waitTime);
-            return 1;
-        });
+        Future<Integer> future = Future.of(() -> 1);
         future.cancel();
         future.await();
         future.get();
@@ -134,7 +129,9 @@ public class FutureUnitTest {
         String url = "http://resource";
         Future<String> future = Future.of(() -> getResource(url));
         future.await();
-        String s = Match(future).of(Case($(future0 -> future0.isSuccess()), SUCCESS), Case($(), FAILURE));
+        String s = Match(future).of(
+          Case($(Future::isSuccess), SUCCESS),
+          Case($(), FAILURE));
 
         assertEquals(SUCCESS, s);
     }
@@ -143,7 +140,9 @@ public class FutureUnitTest {
     public void givenAFailedFuture_WhenWaitAndMatchWithPredicateCheckSuccess_ShouldReturnFailed() {
         Future<Integer> future = Future.failed(new RuntimeException());
         future.await();
-        String s = Match(future).of(Case($(future0 -> future0.isSuccess()), SUCCESS), Case($(), FAILURE));
+        String s = Match(future).of(
+          Case($(Future::isSuccess), SUCCESS),
+          Case($(), FAILURE));
 
         assertEquals(FAILURE, s);
     }
@@ -164,7 +163,9 @@ public class FutureUnitTest {
     public void givenAListOfFutureReturnFist3Integers_WhenMatchWithExistEvenNumberPredicate_ShouldReturnSuccess() {
         List<Future<Integer>> futures = getFutureOfFirst3Number();
         Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i % 2 == 0);
-        String s = Match(futures).of(Case($(exists(predicate0)), "Even"), Case($(), "Odd"));
+        String s = Match(futures).of(
+          Case($(exists(predicate0)), "Even"),
+          Case($(), "Odd"));
 
         assertEquals("Even", s);
     }
@@ -173,7 +174,9 @@ public class FutureUnitTest {
     public void givenAListOfFutureReturnFist3Integers_WhenMatchWithForAllNumberBiggerThanZeroPredicate_ShouldReturnSuccess() {
         List<Future<Integer>> futures = getFutureOfFirst3Number();
         Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i > 0);
-        String s = Match(futures).of(Case($(forAll(predicate0)), "Positive numbers"), Case($(), "None"));
+        String s = Match(futures).of(
+          Case($(forAll(predicate0)), "Positive numbers"),
+          Case($(), "None"));
 
         assertEquals("Positive numbers", s);
     }
@@ -182,7 +185,9 @@ public class FutureUnitTest {
     public void givenAListOfFutureReturnFist3Integers_WhenMatchWithForAllNumberSmallerThanZeroPredicate_ShouldReturnFailed() {
         List<Future<Integer>> futures = getFutureOfFirst3Number();
         Predicate<Future<Integer>> predicate0 = future -> future.exists(i -> i < 0);
-        String s = Match(futures).of(Case($(forAll(predicate0)), "Negative numbers"), Case($(), "None"));
+        String s = Match(futures).of(
+          Case($(forAll(predicate0)), "Negative numbers"),
+          Case($(), "None"));
 
         assertEquals("None", s);
     }
@@ -197,7 +202,6 @@ public class FutureUnitTest {
     }
 
     private List<Future<Integer>> getFutureOfFirst3Number() {
-        List<Future<Integer>> futures = List.of(Future.of(() -> 1), Future.of(() -> 2), Future.of(() -> 3));
-        return futures;
+        return List.of(Future.of(() -> 1), Future.of(() -> 2), Future.of(() -> 3));
     }
 }
