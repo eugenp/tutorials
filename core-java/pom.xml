@@ -75,6 +75,12 @@
             <artifactId>protonpack</artifactId>
             <version>1.13</version>
 		</dependency>
+		
+		<dependency>
+  			<groupId>one.util</groupId>
+  			<artifactId>streamex</artifactId>
+  			<version>0.6.5</version>
+		</dependency>
         
         <!-- web -->
 
