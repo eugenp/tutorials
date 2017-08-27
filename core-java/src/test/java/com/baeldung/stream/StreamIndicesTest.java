@@ -21,6 +21,15 @@ public class StreamIndicesTest {
     }
 
     @Test
+    public void givenArray_whenGetIndexedStrings_thenReturnListOfEvenIndexedStringsVersionTwo() {
+        List<String> names = Arrays.asList("Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim");
+        List<String> expectedResult = Arrays.asList("Afrim", "Besim", "Durim");
+        List<String> actualResult = StreamIndices.getEvenIndexedStringsVersionTwo(names);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
+    @Test
     public void givenArray_whenGetIndexedStrings_thenReturnListOfOddStrings() {
         String[] names = { "Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim" };
         List<String> expectedResult = Arrays.asList("Bashkim", "Lulzim", "Shpetim");
