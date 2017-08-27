@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+    <bean id="projectService" class="com.baeldung.example.setter.ProjectService">
+        <property name="projectDao">
+            <ref bean="projectDao"/>
+        </property>
+    </bean>
+
+    <bean id="projectDao" class="com.baeldung.example.setter.ProjectDao"/>
+
+
+</beans>
