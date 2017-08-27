@@ -3,11 +3,11 @@ package com.baeldung.concurrent.atomic;
 public class SafeCounterWithLock {
     private volatile int counter;
     
-    public int getValue() {
+    int getValue() {
         return counter;
     }
     
-    public synchronized void increment() {
+    synchronized void increment() {
         counter++;
     }
 }

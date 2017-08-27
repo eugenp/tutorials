@@ -11,10 +11,10 @@ public class Consumer implements Runnable {
 
     private final TransferQueue<String> transferQueue;
     private final String name;
-    private final int numberOfMessagesToConsume;
-    public final AtomicInteger numberOfConsumedMessages = new AtomicInteger();
+    final int numberOfMessagesToConsume;
+    final AtomicInteger numberOfConsumedMessages = new AtomicInteger();
 
-    public Consumer(TransferQueue<String> transferQueue, String name, int numberOfMessagesToConsume) {
+    Consumer(TransferQueue<String> transferQueue, String name, int numberOfMessagesToConsume) {
         this.transferQueue = transferQueue;
         this.name = name;
         this.numberOfMessagesToConsume = numberOfMessagesToConsume;

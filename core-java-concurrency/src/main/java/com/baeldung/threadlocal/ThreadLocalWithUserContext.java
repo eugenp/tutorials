@@ -10,7 +10,7 @@ public class ThreadLocalWithUserContext implements Runnable {
     private final Integer userId;
     private UserRepository userRepository = new UserRepository();
 
-    public ThreadLocalWithUserContext(Integer userId) {
+    ThreadLocalWithUserContext(Integer userId) {
         this.userId = userId;
     }
 

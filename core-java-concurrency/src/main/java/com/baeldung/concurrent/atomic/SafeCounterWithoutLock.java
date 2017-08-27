@@ -5,11 +5,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SafeCounterWithoutLock {
     private final AtomicInteger counter = new AtomicInteger(0);
     
-    public int getValue() {
+    int getValue() {
         return counter.get();
     }
     
-    public void increment() {
+    void increment() {
         while(true) {
             int existingValue = getValue();
             int newValue = existingValue + 1;
