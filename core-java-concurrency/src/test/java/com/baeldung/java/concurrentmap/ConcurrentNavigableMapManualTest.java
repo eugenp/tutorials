@@ -18,7 +18,7 @@ public class ConcurrentNavigableMapManualTest {
     public void givenSkipListMap_whenAccessInMultiThreads_thenOrderingStable() throws InterruptedException {
         NavigableMap<Integer, String> skipListMap = new ConcurrentSkipListMap<>();
 
-        updateMapConcurrently(skipListMap, 4);
+        updateMapConcurrently(skipListMap);
 
         Iterator<Integer> skipListIter = skipListMap.keySet().iterator();
         int previous = skipListIter.next();
@@ -28,9 +28,9 @@ public class ConcurrentNavigableMapManualTest {
         }
     }
 
-    private void updateMapConcurrently(NavigableMap<Integer, String> navigableMap, int concurrencyLevel) throws InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(concurrencyLevel);
-        for (int i = 0; i < concurrencyLevel; i++) {
+    private void updateMapConcurrently(NavigableMap<Integer, String> navigableMap) throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        for (int i = 0; i < 4; i++) {
             executorService.execute(() -> {
                 ThreadLocalRandom random = ThreadLocalRandom.current();
                 for (int j = 0; j < 10000; j++) {
@@ -45,26 +45,26 @@ public class ConcurrentNavigableMapManualTest {
     @Test
     public void givenSkipListMap_whenNavConcurrently_thenCountCorrect() throws InterruptedException {
         NavigableMap<Integer, Integer> skipListMap = new ConcurrentSkipListMap<>();
-        int count = countMapElementByPollingFirstEntry(skipListMap, 10000, 4);
+        int count = countMapElementByPollingFirstEntry(skipListMap);
         assertEquals(10000 * 4, count);
     }
 
     @Test
     public void givenTreeMap_whenNavConcurrently_thenCountError() throws InterruptedException {
         NavigableMap<Integer, Integer> treeMap = new TreeMap<>();
-        int count = countMapElementByPollingFirstEntry(treeMap, 10000, 4);
+        int count = countMapElementByPollingFirstEntry(treeMap);
         assertNotEquals(10000 * 4, count);
     }
 
-    private int countMapElementByPollingFirstEntry(NavigableMap<Integer, Integer> navigableMap, int elementCount, int concurrencyLevel) throws InterruptedException {
-        for (int i = 0; i < elementCount * concurrencyLevel; i++) {
+    private int countMapElementByPollingFirstEntry(NavigableMap<Integer, Integer> navigableMap) throws InterruptedException {
+        for (int i = 0; i < 10000 * 4; i++) {
             navigableMap.put(i, i);
         }
         AtomicInteger counter = new AtomicInteger(0);
-        ExecutorService executorService = Executors.newFixedThreadPool(concurrencyLevel);
-        for (int j = 0; j < concurrencyLevel; j++) {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        for (int j = 0; j < 4; j++) {
             executorService.execute(() -> {
-                for (int i = 0; i < elementCount; i++) {
+                for (int i = 0; i < 10000; i++) {
                     if (navigableMap.pollFirstEntry() != null) {
                         counter.incrementAndGet();
                     }

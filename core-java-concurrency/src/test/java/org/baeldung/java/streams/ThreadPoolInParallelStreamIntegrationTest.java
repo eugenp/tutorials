@@ -23,7 +23,10 @@ public class ThreadPoolInParallelStreamIntegrationTest {
         List<Long> aList = LongStream.rangeClosed(firstNum, lastNum).boxed().collect(Collectors.toList());
 
         ForkJoinPool customThreadPool = new ForkJoinPool(4);
-        long actualTotal = customThreadPool.submit(() -> aList.parallelStream().reduce(0L, Long::sum)).get();
+        long actualTotal = customThreadPool
+          .submit(() -> aList.parallelStream()
+            .reduce(0L, Long::sum))
+          .get();
 
         assertEquals((lastNum + firstNum) * lastNum / 2, actualTotal);
     }

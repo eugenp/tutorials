@@ -18,7 +18,9 @@ public class CountdownLatchExampleIntegrationTest {
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
-        List<Thread> workers = Stream.generate(() -> new Thread(new Worker(outputScraper, countDownLatch))).limit(5).collect(toList());
+        List<Thread> workers = Stream.generate(() -> new Thread(new Worker(outputScraper, countDownLatch)))
+          .limit(5)
+          .collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -26,7 +28,6 @@ public class CountdownLatchExampleIntegrationTest {
         outputScraper.add("Latch released");
 
         // Then
-        outputScraper.forEach(Object::toString);
         assertThat(outputScraper).containsExactly("Counted down", "Counted down", "Counted down", "Counted down", "Counted down", "Latch released");
     }
 
@@ -35,7 +36,9 @@ public class CountdownLatchExampleIntegrationTest {
         // Given
         List<String> outputScraper = Collections.synchronizedList(new ArrayList<>());
         CountDownLatch countDownLatch = new CountDownLatch(5);
-        List<Thread> workers = Stream.generate(() -> new Thread(new BrokenWorker(outputScraper, countDownLatch))).limit(5).collect(toList());
+        List<Thread> workers = Stream.generate(() -> new Thread(new BrokenWorker(outputScraper, countDownLatch)))
+          .limit(5)
+          .collect(toList());
 
         // When
         workers.forEach(Thread::start);
@@ -63,7 +66,6 @@ public class CountdownLatchExampleIntegrationTest {
         outputScraper.add("Workers complete");
 
         // Then
-        outputScraper.forEach(Object::toString);
         assertThat(outputScraper).containsExactly("Workers ready", "Counted down", "Counted down", "Counted down", "Counted down", "Counted down", "Workers complete");
     }
 
