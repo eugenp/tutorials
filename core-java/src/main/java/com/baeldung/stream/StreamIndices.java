@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
 
+import one.util.streamex.EntryStream;
+
 public class StreamIndices {
 
     public static List<String> getEvenIndexedStrings(String[] names) {
@@ -14,6 +16,14 @@ public class StreamIndices {
             .filter(i -> i % 2 == 0)
             .mapToObj(i -> names[i])
             .collect(Collectors.toList());
+        return evenIndexedNames;
+    }
+
+    public static List<String> getEvenIndexedStringsVersionTwo(List<String> names) {
+        List<String> evenIndexedNames = EntryStream.of(names)
+            .filterKeyValue((index, name) -> index % 2 == 0)
+            .values()
+            .toList();
         return evenIndexedNames;
     }
 
