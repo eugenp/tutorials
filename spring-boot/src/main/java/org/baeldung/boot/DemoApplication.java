@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 import org.springframework.context.annotation.Import;
 
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 @Import(GraphqlConfiguration.class)
 public class DemoApplication {
 

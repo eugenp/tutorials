@@ -21,7 +21,6 @@ public class FunctionalInterfaceUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(FunctionalInterfaceUnitTest.class);
 
-
     @Test
     public void whenPassingLambdaToComputeIfAbsent_thenTheValueGetsComputedAndPutIntoMap() {
         Map<String, Integer> nameMap = new HashMap<>();
@@ -83,7 +82,8 @@ public class FunctionalInterfaceUnitTest {
             return result;
         });
 
-        List<Integer> fibonacci5 = fibonacci.limit(5).collect(Collectors.toList());
+        List<Integer> fibonacci5 = fibonacci.limit(5)
+            .collect(Collectors.toList());
 
         assertEquals(new Integer(1), fibonacci5.get(0));
         assertEquals(new Integer(1), fibonacci5.get(1));
@@ -112,7 +112,9 @@ public class FunctionalInterfaceUnitTest {
     public void whenUsingPredicateInFilter_thenListValuesAreFilteredOut() {
         List<String> names = Arrays.asList("Angela", "Aaron", "Bob", "Claire", "David");
 
-        List<String> namesWithA = names.stream().filter(name -> name.startsWith("A")).collect(Collectors.toList());
+        List<String> namesWithA = names.stream()
+            .filter(name -> name.startsWith("A"))
+            .collect(Collectors.toList());
 
         assertEquals(2, namesWithA.size());
         assertTrue(namesWithA.contains("Angela"));
@@ -135,7 +137,8 @@ public class FunctionalInterfaceUnitTest {
 
         List<Integer> values = Arrays.asList(3, 5, 8, 9, 12);
 
-        int sum = values.stream().reduce(0, (i1, i2) -> i1 + i2);
+        int sum = values.stream()
+            .reduce(0, (i1, i2) -> i1 + i2);
 
         assertEquals(37, sum);
 
