@@ -1,20 +1,20 @@
-package com.baeldung.designpatterns;
+package com.baeldung.designpatterns.adapter;
 
+import static com.baeldung.designpatterns.util.LogerUtil.LOG;
 
-import static org.junit.Assert.*;
+public class AdapterPatternDriver {
+    
+    public static void main(String args[]) {
+        LuxuryCars bugattiVeyron = new BugattiVeyron();
+        LuxuryCarsAdapter bugattiVeyronAdapter = new LuxuryCarsAdapterImpl(bugattiVeyron);
+        LOG.info("Bugatti Veyron Super Sport's top speed is " + bugattiVeyronAdapter.speedInKMPH() + " Kmph.");
 
-import org.junit.Test;
+        LuxuryCars mcLaren = new McLaren();
+        LuxuryCarsAdapter mcLarenAdapter = new LuxuryCarsAdapterImpl(mcLaren);
+        LOG.info("McLaren F1 top speed is " + mcLarenAdapter.speedInKMPH() + " Kmph.");
 
-import com.baeldung.designpatterns.adapter.LuxuryCarsSpeedAdapter;
-import com.baeldung.designpatterns.adapter.LuxuryCarsSpeedAdapterImpl;
-
-public class AdapterPatternIntegrationTest {
-    @Test
-    public void givenLuxuryCarsAdapter_WhenConvertingMPHToKMPH_thenSuccessfullyConverted() {
-        LuxuryCarsSpeedAdapter luxuryCars = new LuxuryCarsSpeedAdapterImpl();
-        assertEquals(luxuryCars.bugattiVeyronInKMPH(), 431.30312, 0.00001);
-        assertEquals(luxuryCars.mcLarenInKMPH(), 387.85094, 0.00001);
-        assertEquals(luxuryCars.astonMartinInKMPH(), 354.0548, 0.00001);
+        LuxuryCars astonMartin = new AstonMartin();
+        LuxuryCarsAdapter astonMartinAdapter = new LuxuryCarsAdapterImpl(astonMartin);
+        LOG.info("McLaren F1 top speed is " + astonMartinAdapter.speedInKMPH() + " Kmph.");
     }
 }
-
