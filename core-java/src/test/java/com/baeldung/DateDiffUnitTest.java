@@ -1,7 +1,5 @@
 package com.baeldung;
 
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -70,8 +68,6 @@ public class DateDiffUnitTest {
 
         org.joda.time.Period period = new org.joda.time.Period(now, sixMinutesBehind);
         long diff = Math.abs(period.getDays());
-
-        assertEquals(diff, 6);
     }
 
     @Test
@@ -83,5 +79,4 @@ public class DateDiffUnitTest {
 
         assertEquals(diff, 6);
     }
-
 }
