@@ -1,18 +1,25 @@
 package com.baeldung.threadpool;
 
-import java.util.Set;
-
 import com.google.common.collect.Sets;
+
+import java.util.Set;
 
 public class TreeNode {
 
-    int value;
+    private int value;
 
-    Set<TreeNode> children;
+    private Set<TreeNode> children;
 
-    public TreeNode(int value, TreeNode... children) {
+    TreeNode(int value, TreeNode... children) {
         this.value = value;
         this.children = Sets.newHashSet(children);
     }
 
+    public int getValue() {
+        return value;
+    }
+
+    public Set<TreeNode> getChildren() {
+        return children;
+    }
 }
