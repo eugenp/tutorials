@@ -2,7 +2,6 @@ package com.baeldung.java.concurrentmodification;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
@@ -28,9 +27,9 @@ public class ConcurrentModificationUnitTest {
 
         List<Integer> integers = newArrayList(1, 2, 3);
 
-        for (Iterator<Integer> iterator = integers.iterator(); iterator.hasNext();) {
+        for (Iterator<Integer> iterator = integers.iterator(); iterator.hasNext(); ) {
             Integer integer = iterator.next();
-            if(integer == 2) {
+            if (integer == 2) {
                 iterator.remove();
             }
         }
@@ -45,7 +44,7 @@ public class ConcurrentModificationUnitTest {
         List<Integer> toRemove = newArrayList();
 
         for (Integer integer : integers) {
-            if(integer == 2) {
+            if (integer == 2) {
                 toRemove.add(integer);
             }
         }
@@ -69,10 +68,10 @@ public class ConcurrentModificationUnitTest {
         Collection<Integer> integers = newArrayList(1, 2, 3);
 
         List<String> collected = integers
-                .stream()
-                .filter(i -> i != 2)
-                .map(Object::toString)
-                .collect(toList());
+          .stream()
+          .filter(i -> i != 2)
+          .map(Object::toString)
+          .collect(toList());
 
         assertThat(collected).containsExactly("1", "3");
     }

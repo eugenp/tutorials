@@ -12,10 +12,10 @@ public class Producer implements Runnable {
 
     private final TransferQueue<String> transferQueue;
     private final String name;
-    private final Integer numberOfMessagesToProduce;
-    public final AtomicInteger numberOfProducedMessages = new AtomicInteger();
+    final Integer numberOfMessagesToProduce;
+    final AtomicInteger numberOfProducedMessages = new AtomicInteger();
 
-    public Producer(TransferQueue<String> transferQueue, String name, Integer numberOfMessagesToProduce) {
+    Producer(TransferQueue<String> transferQueue, String name, Integer numberOfMessagesToProduce) {
         this.transferQueue = transferQueue;
         this.name = name;
         this.numberOfMessagesToProduce = numberOfMessagesToProduce;

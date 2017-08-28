@@ -22,7 +22,6 @@ public class SquareCalculatorIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(SquareCalculatorIntegrationTest.class);
 
-
     @Rule
     public TestName name = new TestName();
 

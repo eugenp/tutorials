@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNull;
 
 public class ConcurrentMapNullKeyValueManualTest {
 
-    ConcurrentMap<String, Object> concurrentMap;
+    private ConcurrentMap<String, Object> concurrentMap;
 
     @Before
     public void setup() {

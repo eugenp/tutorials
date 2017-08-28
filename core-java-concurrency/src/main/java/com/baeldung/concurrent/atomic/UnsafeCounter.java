@@ -1,13 +1,13 @@
 package com.baeldung.concurrent.atomic;
 
 public class UnsafeCounter {
-    int counter;
+    private int counter;
     
-    public int getValue() {
+    int getValue() {
         return counter;
     }
     
-    public void increment() {
+    void increment() {
         counter++;
     }
 }

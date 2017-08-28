@@ -49,9 +49,7 @@ public class SynchronizedHashMapWithRWLockManualTest {
 
     private void executeReaderThreads(SynchronizedHashMapWithRWLock object, int threadCount, ExecutorService service) {
         for (int i = 0; i < threadCount; i++)
-            service.execute(() -> {
-                object.get("key" + threadCount);
-            });
+            service.execute(() -> object.get("key" + threadCount));
     }
 
 }

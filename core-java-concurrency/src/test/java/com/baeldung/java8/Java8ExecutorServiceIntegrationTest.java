@@ -72,7 +72,7 @@ public class Java8ExecutorServiceIntegrationTest {
 
         assertTrue(threadPoolExecutor.isShutdown());
         assertFalse(notExecutedTasks.isEmpty());
-        assertTrue(notExecutedTasks.size() > 0 && notExecutedTasks.size() < 98);
+        assertTrue(notExecutedTasks.size() < 98);
     }
 
     private List<Runnable> smartShutdown(ExecutorService executorService) {
