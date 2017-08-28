@@ -69,6 +69,19 @@
             <artifactId>grep4j</artifactId>
             <version>${grep4j.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>1.13</version>
+		</dependency>
+		
+		<dependency>
+  			<groupId>one.util</groupId>
+  			<artifactId>streamex</artifactId>
+  			<version>0.6.5</version>
+		</dependency>
+        
         <!-- web -->
 
         <!-- marshalling -->
