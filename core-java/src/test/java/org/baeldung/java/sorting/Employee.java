@@ -38,7 +38,8 @@ public class Employee implements Comparable {
 
     @Override
     public boolean equals(Object obj) {
-        return ((Employee) obj).getName().equals(getName());
+        return ((Employee) obj).getName()
+            .equals(getName());
     }
 
     @Override
@@ -49,7 +50,13 @@ public class Employee implements Comparable {
 
     @Override
     public String toString() {
-        return new StringBuffer().append("(").append(getName()).append(getAge()).append(",").append(getSalary()).append(")").toString();
+        return new StringBuffer().append("(")
+            .append(getName())
+            .append(getAge())
+            .append(",")
+            .append(getSalary())
+            .append(")")
+            .toString();
     }
 
 }
