@@ -8,26 +8,29 @@ import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Arrays;
 import java.util.Comparator;
-import java.util.UUID;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.util.FileSystemUtils;
 
 public class JavaDirectoryDeleteUnitTest {
-    private static final Path TEMP_DIRECTORY = Paths.get("target/temp/");
-    private static final String DIRECTORY_TREE_LOCATION = "src/test/resources";
+    private static Path TEMP_DIRECTORY;
     private static final String DIRECTORY_NAME = "toBeDeleted";
+
+    public static final List<String> ALL_LINES = Arrays.asList(new String[] { "This is line 1", "This is line 2", "This is line 3", "This is line 4", "This is line 5", "This is line 6" });
 
     @BeforeClass
     public static void initializeTempDirectory() throws IOException {
-        Files.createDirectories(TEMP_DIRECTORY);
+        TEMP_DIRECTORY = Files.createTempDirectory("tmpForJUnit");
     }
 
     @AfterClass
@@ -35,21 +38,30 @@ public class JavaDirectoryDeleteUnitTest {
         FileUtils.deleteDirectory(TEMP_DIRECTORY.toFile());
     }
 
-    private Path setupDirectory() throws IOException {
-        Path tempPathForEachTest = Files.createDirectory(TEMP_DIRECTORY.resolve(UUID.randomUUID()
-            .toString()))
-            .resolve(DIRECTORY_NAME);
+    @Before
+    public void setupDirectory() throws IOException {
+        Path tempPathForEachTest = Files.createDirectory(TEMP_DIRECTORY.resolve(DIRECTORY_NAME));
 
-        FileUtils.copyDirectory(Paths.get(DIRECTORY_TREE_LOCATION, DIRECTORY_NAME)
-            .toFile(), tempPathForEachTest.toFile());
+        // Create a directory structure
+        Files.write(tempPathForEachTest.resolve("file1.txt"), ALL_LINES.subList(0, 2));
+        Files.write(tempPathForEachTest.resolve("file2.txt"), ALL_LINES.subList(2, 4));
 
-        return tempPathForEachTest;
+        Files.createDirectories(tempPathForEachTest.resolve("Empty"));
+
+        Path aSubDir = Files.createDirectories(tempPathForEachTest.resolve("notEmpty"));
+        Files.write(aSubDir.resolve("file3.txt"), ALL_LINES.subList(3, 5));
+        Files.write(aSubDir.resolve("file4.txt"), ALL_LINES.subList(0, 3));
+
+        aSubDir = Files.createDirectories(aSubDir.resolve("anotherSubDirectory"));
+        Files.write(aSubDir.resolve("file5.txt"), ALL_LINES.subList(4, 5));
+        Files.write(aSubDir.resolve("file6.txt"), ALL_LINES.subList(0, 2));
     }
 
-    private void checkAndCleanupIfRequired(Path pathToBeDeleted) throws IOException {
+    @After
+    public void checkAndCleanupIfRequired() throws IOException {
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
         if (Files.exists(pathToBeDeleted)) {
             FileUtils.deleteDirectory(pathToBeDeleted.toFile());
-            assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
         }
     }
 
@@ -69,49 +81,48 @@ public class JavaDirectoryDeleteUnitTest {
 
     @Test
     public void givenDirectory_whenDeletedWithRecursion_thenIsGone() throws IOException {
-        Path pathToBeDeleted = setupDirectory();
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
         boolean result = deleteDirectory(pathToBeDeleted.toFile());
 
         assertTrue("Could not delete directory", result);
-        checkAndCleanupIfRequired(pathToBeDeleted);
+        assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
 
     @Test
     public void givenDirectory_whenDeletedWithCommonsIOFileUtils_thenIsGone() throws IOException {
-        Path pathToBeDeleted = setupDirectory();
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
         FileUtils.deleteDirectory(pathToBeDeleted.toFile());
 
-        checkAndCleanupIfRequired(pathToBeDeleted);
+        assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
 
     @Test
     public void givenDirectory_whenDeletedWithSpringFileSystemUtils_thenIsGone() throws IOException {
-        Path pathToBeDeleted = setupDirectory();
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
         boolean result = FileSystemUtils.deleteRecursively(pathToBeDeleted.toFile());
 
         assertTrue("Could not delete directory", result);
-
-        checkAndCleanupIfRequired(pathToBeDeleted);
+        assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
 
     @Test
     public void givenDirectory_whenDeletedWithFilesWalk_thenIsGone() throws IOException {
-        Path pathToBeDeleted = setupDirectory();
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
         Files.walk(pathToBeDeleted)
             .sorted(Comparator.reverseOrder())
             .map(Path::toFile)
             .forEach(File::delete);
 
-        checkAndCleanupIfRequired(pathToBeDeleted);
+        assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
 
     @Test
     public void givenDirectory_whenDeletedWithNIO2WalkFileTree_thenIsGone() throws IOException {
-        Path pathToBeDeleted = setupDirectory();
+        Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
         Files.walkFileTree(pathToBeDeleted, new SimpleFileVisitor<Path>() {
             @Override
@@ -127,6 +138,6 @@ public class JavaDirectoryDeleteUnitTest {
             }
         });
 
-        checkAndCleanupIfRequired(pathToBeDeleted);
+        assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
 }
