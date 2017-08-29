@@ -5,7 +5,7 @@
     <artifactId>retrofit-rxjava</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Retrofit with RxJava</name>
-    <description>Retrofit with RxJava</description>
+    <description>Integrating Retrofit with RxJava</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
