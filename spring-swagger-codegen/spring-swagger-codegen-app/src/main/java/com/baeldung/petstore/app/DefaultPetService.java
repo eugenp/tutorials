@@ -1,4 +1,4 @@
-package com.baeldung.petstore.web;
+package com.baeldung.petstore.app;
 
 import java.util.Arrays;
 import java.util.List;

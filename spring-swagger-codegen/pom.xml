@@ -7,6 +7,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>spring-swagger-codegen-api-client</module>
-		<module>spring-swagger-codegen-spring-app</module>
+		<module>spring-swagger-codegen-app</module>
 	</modules>
 </project>
