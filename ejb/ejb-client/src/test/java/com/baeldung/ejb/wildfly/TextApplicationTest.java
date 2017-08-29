@@ -1,4 +1,4 @@
-package com.baeldung.ejbclient.application;
+package com.baeldung.ejb.wildfly;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
