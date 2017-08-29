@@ -2,18 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--
+
     <parent>
-        <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    -->
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>vertx-and-rxjava</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+
     <build>
         <plugins>
             <plugin>
@@ -29,39 +28,28 @@
 
     <dependencies>
 
-        <!--
-<dependency>
-    <groupId>io.reactivex.rxjava2</groupId>
-    <artifactId>rxjava</artifactId>
-    <version>2.1.2</version>
-</dependency>
--->
-<!--
-<dependency>
-    <groupId>io.vertx</groupId>
-    <artifactId>vertx-core</artifactId>
-    <version>3.4.2</version>
-</dependency>
--->
-<dependency>
-    <groupId>io.vertx</groupId>
-    <artifactId>vertx-rx-java2</artifactId>
-    <version>3.5.0.Beta1</version>
-</dependency>
-<dependency>
-    <groupId>io.vertx</groupId>
-    <artifactId>vertx-unit</artifactId>
-    <version>3.5.0.Beta1</version>
-    <scope>test</scope>
-</dependency>
-
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-rx-java2</artifactId>
+            <version>3.5.0.Beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.5.0.Beta1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-unit</artifactId>
+            <version>3.5.0.Beta1</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
