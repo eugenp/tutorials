@@ -22,4 +22,17 @@ public class Node<T> {
             node = node.next;
         }
     }
+    
+    public static <T> Node<T> getTail(Node<T> root) {
+        if(root == null) {
+            return null;
+        }
+        
+        Node<T> node = root;
+        while(node.next != null) {
+            node = node.next;
+        }
+        return node;
+    }
+    
 }
