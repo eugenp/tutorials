@@ -1,4 +1,4 @@
-package com.baeldung.ejbmodule;
+package com.baeldung.ejb.wildfly;
 
 import javax.ejb.Stateless;
 

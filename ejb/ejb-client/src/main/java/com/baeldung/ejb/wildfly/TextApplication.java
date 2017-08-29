@@ -1,7 +1,5 @@
-package com.baeldung.ejbclient.application;
+package com.baeldung.ejb.wildfly;
 
-import com.baeldung.ejbmodule.TextProcessorBean;
-import com.baeldung.ejbmodule.TextProcessorRemote;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
