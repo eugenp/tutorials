@@ -162,6 +162,12 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>${spring-core.version}</version>
+		    <scope>test</scope>
+		</dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
@@ -439,6 +445,7 @@
         <mockito.version>2.8.9</mockito.version>
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
+        <spring-core.version>4.3.10.RELEASE</spring-core.version>
 
 
         <!-- maven plugins -->
