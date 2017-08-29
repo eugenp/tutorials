@@ -1,6 +1,8 @@
 package com.baeldung.stream;
 
+
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -8,9 +10,11 @@ import java.util.stream.IntStream;
 import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
 
+
 import io.vavr.Tuple2;
 import io.vavr.collection.Stream;
 import one.util.streamex.EntryStream;
+
 
 public class StreamIndices {
 
@@ -27,6 +31,8 @@ public class StreamIndices {
             .filterKeyValue((index, name) -> index % 2 == 0)
             .values()
             .toList();
+          .filter(i -> i % 2 == 0).mapToObj(i -> names[i])
+          .collect(Collectors.toList());
         return evenIndexedNames;
     }
 
@@ -34,6 +40,7 @@ public class StreamIndices {
         List<Indexed<String>> list = StreamUtils.zipWithIndex(names.stream())
             .filter(i -> i.getIndex() % 2 == 0)
             .collect(Collectors.toList());
+          .filter(i -> i.getIndex() % 2 == 0).collect(Collectors.toList());
         return list;
     }
 
@@ -41,6 +48,7 @@ public class StreamIndices {
         List<Indexed<String>> list = StreamUtils.zipWithIndex(names.stream())
             .filter(i -> i.getIndex() % 2 == 1)
             .collect(Collectors.toList());
+          .filter(i -> i.getIndex() % 2 == 1).collect(Collectors.toList());
         return list;
     }
 
