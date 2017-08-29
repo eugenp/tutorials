@@ -5,10 +5,8 @@
         </encoder>
     </appender>
 
-    <root level="all">
+    <root level="warn">
         <appender-ref ref="STDOUT" />
     </root>
-    <logger name="io.netty" level="info" />
-    <!--
-    -->
+
 </configuration>

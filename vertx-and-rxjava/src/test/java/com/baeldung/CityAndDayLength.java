@@ -6,7 +6,6 @@ class CityAndDayLength {
 
     private final String city;
     private final double dayLengthInHours;
-    ;
 
     public CityAndDayLength(String city, long dayLengthInSeconds) {
         this.city = city;

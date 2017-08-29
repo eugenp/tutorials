@@ -1,1 +1,6 @@
-Milan;#Toronto;#Santiago;#Dakar;Paris;London;Santiago;Oslo
+Milan
+Chicago
+Cairo
+Santiago
+Moscow
+Auckland
