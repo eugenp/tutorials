@@ -1,5 +1,6 @@
 package com.baeldung.stream;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -7,6 +8,8 @@ import java.util.stream.IntStream;
 import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
 
+import io.vavr.Tuple2;
+import io.vavr.collection.Stream;
 import one.util.streamex.EntryStream;
 
 public class StreamIndices {
@@ -48,4 +51,17 @@ public class StreamIndices {
             .collect(Collectors.toList());
         return oddIndexedNames;
     }
+
+    public static List<String> getOddIndexedStringsVersionTwo(String[] names) {
+        List<Tuple2<String, Integer>> tuples = Stream.of(names)
+            .zipWithIndex()
+            .filter(tuple -> tuple._2 % 2 == 1)
+            .toJavaList();
+        List<String> oddIndexedNames = new ArrayList<String>();
+        tuples.forEach(tuple -> {
+            oddIndexedNames.add(tuple._1);
+        });
+        return oddIndexedNames;
+    }
+
 }
