@@ -10,7 +10,7 @@ public class CycleDetectionBruteForceTest extends CycleDetectionTestBase {
         Node<Integer> root = createList();
         Assert.assertFalse(CycleDetectionBruteForce.detectCycle(root));
     }
-    
+
     @Test
     public void givenCyclicList_detectLoop() {
         Node<Integer> root = createList();

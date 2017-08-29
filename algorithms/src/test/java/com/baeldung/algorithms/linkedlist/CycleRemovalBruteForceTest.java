@@ -4,13 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CycleRemovalBruteForceTest extends CycleDetectionTestBase {
-    
+
     @Test
     public void givenNormalList_dontDetectLoop() {
         Node<Integer> root = createList();
         Assert.assertFalse(CycleRemovalBruteForce.detectAndRemoveCycle(root));
     }
-    
+
     @Test
     public void givenCyclicList_detectAndRemoveLoop() {
         Node<Integer> root = createList();
