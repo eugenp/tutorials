@@ -6,7 +6,7 @@ import io.vavr.collection.Seq;
 import io.vavr.control.Validation;
 import io.vavr.control.Validation.Invalid;
 
-public class Appplication {
+public class Application {
 
 	public static void main(String[] args) {
     	
