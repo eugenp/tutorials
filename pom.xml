@@ -240,6 +240,7 @@
         <module>spring-boot-property-exp</module>
         <module>mockserver</module>
         <module>undertow</module>
+        <module>vertx-and-rxjava</module>
     </modules>
 
     <dependencies>

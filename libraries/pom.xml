@@ -538,7 +538,7 @@
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
-        <commons-lang.version>3.5</commons-lang.version>
+        <commons-lang.version>3.6</commons-lang.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
