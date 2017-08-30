@@ -1,8 +1,8 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans>
     <bean
-            id="availableSongs"
-            class="com.baeldung.bean.types.constructor.AvailableSongsConstructorDI">
+            id="availableSongsSettersDI"
+            class="com.baeldung.bean.types.setter.AvailableSongsSettersDI">
         <property name="songArtistBean" ref="searchSongArtist"/>
     </bean>
 

@@ -1,7 +1,7 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans>
     <bean
-            id="availableSongs"
+            id="availableSongsConstructorDI"
             class="com.baeldung.bean.types.constructor.AvailableSongsConstructorDI">
         <constructor-arg ref="searchSongArtist"/>
     </bean>
