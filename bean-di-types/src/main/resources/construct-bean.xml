@@ -2,7 +2,7 @@
 <beans>
     <bean
             id="availableSongs"
-            class="com.baeldung.bean.types.constructor.AvailableSongs">
+            class="com.baeldung.bean.types.constructor.AvailableSongsConstructorDI">
         <constructor-arg ref="searchSongArtist"/>
     </bean>
 
