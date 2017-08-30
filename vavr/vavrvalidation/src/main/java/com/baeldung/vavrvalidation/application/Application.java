@@ -14,7 +14,7 @@ public class Application {
     	Validation<Seq<String>, User> validation = userValidator.validateUser(" ", " ");
     	
        /** Comment this out 
-    	* for checking validation results
+    	* when checking validation results
     	* using the Valid / Invalid instances
 		if (validation instanceof Invalid) {
 			validation.getError().forEach(System.out::println);
@@ -25,7 +25,7 @@ public class Application {
 		*/
     	
        /** Comment this out
-    	* for checking validation results
+    	* when checking validation results
     	* using the isValid() / isInvalid() methods
     	if (validation.isInvalid()) {
     		validation.getError().forEach(System.out::println);
@@ -36,12 +36,12 @@ public class Application {
     	*/
     	
        /** Comment this out
-    	* for using the toEither() method
+    	* when using the toEither() method
     	System.out.println(validation.toEither());
     	*/
     	
        /** Comment this out
-    	* for using the fold() method
+    	* when using the fold() method
     	int result = validation.fold(Seq::length, User::hashCode);
     	System.out.println(result);
     	*/
