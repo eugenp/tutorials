@@ -1,5 +1,6 @@
 package com.baeldung;
 
+
 @FunctionalInterface
 public interface Bar {
 
