@@ -202,6 +202,11 @@
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+	    </dependency>
     </dependencies>
 
     <build>
@@ -426,6 +431,7 @@
         <fscontext.version>4.6-b01</fscontext.version>
         <protonpack.version>1.13</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
+        <vavr.version>0.9.0</vavr.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
