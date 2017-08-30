@@ -193,16 +193,6 @@
             <version>${fscontext.version}</version>
         </dependency>
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darwinsys</groupId>
-            <artifactId>hirondelle-date4j</artifactId>
-            <version>${hirondelle-date4j.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.codepoetics</groupId>
             <artifactId>protonpack</artifactId>
             <version>${protonpack.version}</version>
@@ -434,8 +424,6 @@
         <grep4j.version>1.8.7</grep4j.version>
         <lombok.version>1.16.12</lombok.version>
         <fscontext.version>4.6-b01</fscontext.version>
-        <joda-time.version>2.9.9</joda-time.version>
-        <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <protonpack.version>1.13</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
 
