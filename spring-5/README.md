@@ -7,4 +7,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [Concurrent Test Execution in Spring 5](http://www.baeldung.com/spring-5-concurrent-tests)
 - [Introduction to the Functional Web Framework in Spring 5](http://www.baeldung.com/spring-5-functional-web)
-- [Exploring the Spring MVC URL Matching Improvements](http://www.baeldung.com/spring-mvc-url-matching)
+- [Exploring the Spring 5 MVC URL Matching Improvements](http://www.baeldung.com/spring-5-mvc-url-matching)
+- [Spring 5 WebClient](http://www.baeldung.com/spring-5-webclient)

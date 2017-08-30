@@ -13,6 +13,7 @@ public class SerializationUtility {
         AppleProduct macBook = new AppleProduct();
         macBook.headphonePort = "headphonePort2020";
         macBook.thunderboltPort = "thunderboltPort2020";
+        macBook.lightningPort = "lightningPort2020";
 
         String serializedObj = serializeObjectToString(macBook);
         System.out.println("Serialized AppleProduct object to string:");

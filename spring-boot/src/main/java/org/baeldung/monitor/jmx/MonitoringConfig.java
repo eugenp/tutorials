@@ -14,7 +14,8 @@ public class MonitoringConfig {
 
     @Bean
     public JmxReporter jmxReporter() {
-        JmxReporter reporter = JmxReporter.forRegistry(registry).build();
+        JmxReporter reporter = JmxReporter.forRegistry(registry)
+            .build();
         reporter.start();
         return reporter;
     }
