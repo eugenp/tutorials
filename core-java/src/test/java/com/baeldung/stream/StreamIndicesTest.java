@@ -56,4 +56,13 @@ public class StreamIndicesTest {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Test
+    public void givenArray_whenGetIndexedStrings_thenReturnListOfOddStringsVersionTwo() {
+        String[] names = { "Afrim", "Bashkim", "Besim", "Lulzim", "Durim", "Shpetim" };
+        List<String> expectedResult = Arrays.asList("Bashkim", "Lulzim", "Shpetim");
+        List<String> actualResult = StreamIndices.getOddIndexedStringsVersionTwo(names);
+
+        assertEquals(expectedResult, actualResult);
+    }
+
 }
