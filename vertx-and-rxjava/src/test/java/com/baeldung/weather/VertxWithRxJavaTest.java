@@ -11,6 +11,7 @@ import io.vertx.reactivex.core.http.HttpClientResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,24 +53,30 @@ public class VertxWithRxJavaTest {
           .flatMap(city -> searchByCityName(httpClient, city))
           .flatMap(HttpClientResponse::toFlowable)
           .doOnNext(buffer -> log.info("JSON of city detail: '{}'", buffer))
-          .map(cityBuffer -> cityBuffer
-            .toJsonArray()
-            .getJsonObject(0)
-            .getLong("woeid"))
+          .map(extractingWoeid())
           .flatMap(cityId -> getDataByPlaceId(httpClient, cityId))
-          .flatMap(response -> response
-            .toObservable()
-            .reduce(
-              Buffer.buffer(),
-              Buffer::appendBuffer).toFlowable())
+          .flatMap(toBufferFlowable())
           .doOnNext(buffer -> log.info("JSON of place detail: '{}'", buffer))
           .map(Buffer::toJsonObject)
           .map(toCityAndDayLength())
-          .subscribe(
-            System.out::println,
-            Throwable::printStackTrace);
+          .subscribe(System.out::println, Throwable::printStackTrace);
 
         Thread.sleep(20000);  // enough to give time to complete the execution
+    }
+
+    private static Function<HttpClientResponse, Publisher<? extends Buffer>> toBufferFlowable() {
+        return response -> response
+          .toObservable()
+          .reduce(
+            Buffer.buffer(),
+            Buffer::appendBuffer).toFlowable();
+    }
+
+    private static Function<Buffer, Long> extractingWoeid() {
+        return cityBuffer -> cityBuffer
+          .toJsonArray()
+          .getJsonObject(0)
+          .getLong("woeid");
     }
 
     private static Function<JsonObject, CityAndDayLength> toCityAndDayLength() {
