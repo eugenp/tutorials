@@ -1,19 +1,18 @@
 package com.baeldung.java8;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.junit.Assert;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class JavaTryWithResourcesLongRunningUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(JavaTryWithResourcesLongRunningUnitTest.class);
-
 
     private static final String TEST_STRING_HELLO_WORLD = "Hello World";
     private Date resource1Date, resource2Date;
@@ -28,7 +27,8 @@ public class JavaTryWithResourcesLongRunningUnitTest {
             pw.print(TEST_STRING_HELLO_WORLD);
         }
 
-        Assert.assertEquals(sw.getBuffer().toString(), TEST_STRING_HELLO_WORLD);
+        Assert.assertEquals(sw.getBuffer()
+            .toString(), TEST_STRING_HELLO_WORLD);
     }
 
     /* Example for using multiple resources */
@@ -42,7 +42,8 @@ public class JavaTryWithResourcesLongRunningUnitTest {
             }
         }
 
-        Assert.assertEquals(sw.getBuffer().toString(), TEST_STRING_HELLO_WORLD);
+        Assert.assertEquals(sw.getBuffer()
+            .toString(), TEST_STRING_HELLO_WORLD);
     }
 
     /* Example to show order in which the resources are closed */

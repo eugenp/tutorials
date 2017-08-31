@@ -1,4 +1,4 @@
-package org.baeldung.java.io;
+package com.baeldung.java.io;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -68,11 +68,13 @@ public class JavaDirectoryDeleteUnitTest {
     boolean deleteDirectory(File directoryToBeDeleted) {
         File[] allContents = directoryToBeDeleted.listFiles();
 
-        for (File file : allContents) {
-            if (file.isDirectory()) {
-                deleteDirectory(file);
-            } else {
-                file.delete();
+        if (allContents != null) {
+            for (File file : allContents) {
+                if (file.isDirectory()) {
+                    deleteDirectory(file);
+                } else {
+                    file.delete();
+                }
             }
         }
 

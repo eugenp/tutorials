@@ -1,5 +1,6 @@
 package com.baeldung;
 
+
 import java.util.function.Function;
 
 public class UseFoo {

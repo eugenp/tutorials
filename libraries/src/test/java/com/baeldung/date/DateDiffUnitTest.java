@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.date;
 
 import org.junit.Test;
 
