@@ -20,6 +20,6 @@ public class UserValidatorTest {
 	@Test
 	public void givenInvalidUserParams_whenValidated_thenInstanceOfInvalid() {
 		UserValidator userValidator = new UserValidator();
-	    assertThat(userValidator.validateUser(" ", "john@domain.com"), instanceOf(Invalid.class));
+	    assertThat(userValidator.validateUser("John", "no-email"), instanceOf(Invalid.class));
 	}
 }
