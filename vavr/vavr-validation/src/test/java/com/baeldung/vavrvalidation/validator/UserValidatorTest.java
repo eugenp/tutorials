@@ -3,9 +3,7 @@ package com.baeldung.vavrvalidation.validator;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import org.junit.Test;
-
 import com.baeldung.vavrvalidation.validator.UserValidator;
-
 import io.vavr.control.Validation.Invalid;
 import io.vavr.control.Validation.Valid;
 
