@@ -212,7 +212,6 @@
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
         </dependency>
-        
     </dependencies>
 
     <build>
