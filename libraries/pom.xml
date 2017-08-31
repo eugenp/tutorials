@@ -498,6 +498,22 @@
             <artifactId>gt-swing</artifactId>
             <version>${geotools.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.darwinsys</groupId>
+            <artifactId>hirondelle-date4j</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.darwinsys</groupId>
+            <artifactId>hirondelle-date4j</artifactId>
+            <version>${hirondelle-date4j.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -522,7 +538,7 @@
     <properties>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
-        <commons-lang.version>3.5</commons-lang.version>
+        <commons-lang.version>3.6</commons-lang.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-chain.version>1.2</commons-chain.version>
@@ -564,5 +580,7 @@
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
+        <joda-time.version>2.9.9</joda-time.version>
+        <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
     </properties>
 </project>
