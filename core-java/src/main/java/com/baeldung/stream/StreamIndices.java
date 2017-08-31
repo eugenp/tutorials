@@ -15,48 +15,54 @@ import one.util.streamex.EntryStream;
 public class StreamIndices {
 
     public static List<String> getEvenIndexedStrings(String[] names) {
-        List<String> evenIndexedNames = IntStream.range(0, names.length)
-            .filter(i -> i % 2 == 0)
-            .mapToObj(i -> names[i])
-            .collect(Collectors.toList());
+        List<String> evenIndexedNames = IntStream
+          .range(0, names.length)
+          .filter(i -> i % 2 == 0)
+          .mapToObj(i -> names[i])
+          .collect(Collectors.toList());
         return evenIndexedNames;
     }
 
     public List<String> getEvenIndexedStringsVersionTwo(List<String> names) {
-        List<String> evenIndexedNames = EntryStream.of(names)
-            .filterKeyValue((index, name) -> index % 2 == 0)
-            .values()
-            .toList();
+        List<String> evenIndexedNames = EntryStream
+          .of(names)
+          .filterKeyValue((index, name) -> index % 2 == 0)
+          .values()
+          .toList();
         return evenIndexedNames;
     }
 
     public static List<Indexed<String>> getEvenIndexedStrings(List<String> names) {
-        List<Indexed<String>> list = StreamUtils.zipWithIndex(names.stream())
-            .filter(i -> i.getIndex() % 2 == 0)
-            .collect(Collectors.toList());
+        List<Indexed<String>> list = StreamUtils
+          .zipWithIndex(names.stream())
+          .filter(i -> i.getIndex() % 2 == 0)
+          .collect(Collectors.toList());
         return list;
     }
 
     public static List<Indexed<String>> getOddIndexedStrings(List<String> names) {
-        List<Indexed<String>> list = StreamUtils.zipWithIndex(names.stream())
-            .filter(i -> i.getIndex() % 2 == 1)
-            .collect(Collectors.toList());
+        List<Indexed<String>> list = StreamUtils
+          .zipWithIndex(names.stream())
+          .filter(i -> i.getIndex() % 2 == 1)
+          .collect(Collectors.toList());
         return list;
     }
 
     public static List<String> getOddIndexedStrings(String[] names) {
-        List<String> oddIndexedNames = IntStream.range(0, names.length)
-            .filter(i -> i % 2 == 1)
-            .mapToObj(i -> names[i])
-            .collect(Collectors.toList());
+        List<String> oddIndexedNames = IntStream
+          .range(0, names.length)
+          .filter(i -> i % 2 == 1)
+          .mapToObj(i -> names[i])
+          .collect(Collectors.toList());
         return oddIndexedNames;
     }
 
     public static List<String> getOddIndexedStringsVersionTwo(String[] names) {
-        List<Tuple2<String, Integer>> tuples = Stream.of(names)
-            .zipWithIndex()
-            .filter(tuple -> tuple._2 % 2 == 1)
-            .toJavaList();
+        List<Tuple2<String, Integer>> tuples = Stream
+          .of(names)
+          .zipWithIndex()
+          .filter(tuple -> tuple._2 % 2 == 1)
+          .toJavaList();
         List<String> oddIndexedNames = new ArrayList<String>();
         tuples.forEach(tuple -> {
             oddIndexedNames.add(tuple._1);
