@@ -12,7 +12,7 @@ public class UserValidator {
     private static final String EMAIL_PATTERN =
         "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
           + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-	private static final String EMAIL_ERROR = "Email must be a well-formed email address";
+    private static final String EMAIL_ERROR = "Email must be a well-formed email address";
     
 	public Validation<Seq<String>, User> validateUser(String name, String email) {
         return Validation
@@ -21,9 +21,9 @@ public class UserValidator {
                 .ap(User::new);
     }
     
-	private Validation<String, String> validateField(String field, String pattern, String error) {
+    private Validation<String, String> validateField(String field, String pattern, String error) {
         return CharSeq.of(field).replaceAll(pattern, "").transform(seq -> seq.isEmpty()
           ? Validation.valid(field) 
             : Validation.invalid(error));
-	}
+    }
 }
