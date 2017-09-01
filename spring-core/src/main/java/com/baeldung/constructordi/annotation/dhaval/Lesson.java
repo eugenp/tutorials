@@ -3,7 +3,7 @@ package com.baeldung.constructordi.annotation.dhaval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("lesson")
+@Component
 public class Lesson {
 
     @Autowired
