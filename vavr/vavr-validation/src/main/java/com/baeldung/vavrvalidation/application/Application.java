@@ -7,11 +7,11 @@ import io.vavr.control.Validation;
 
 public class Application {
 
-	public static void main(String[] args) {
-    	
-    	UserValidator userValidator = new UserValidator();
-    	Validation<Seq<String>, User> validation = userValidator.validateUser(" ", "");
-    	
-    	// process validation results here
+    public static void main(String[] args) {
+        
+        UserValidator userValidator = new UserValidator();
+        Validation<Seq<String>, User> validation = userValidator.validateUser(" ", "");
+        
+        // process validation results here
 	}	
 }
