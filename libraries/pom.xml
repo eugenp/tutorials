@@ -295,22 +295,22 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>3.2.0-m6</version>
+            <version>3.2.0-m7</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>5.1.0-m1</version>
+            <version>5.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>5.1.0-m1</version>
+            <version>5.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>5.1.0-m1</version>
+            <version>5.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
