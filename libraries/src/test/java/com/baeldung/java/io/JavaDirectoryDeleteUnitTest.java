@@ -70,11 +70,7 @@ public class JavaDirectoryDeleteUnitTest {
 
         if (allContents != null) {
             for (File file : allContents) {
-                if (file.isDirectory()) {
-                    deleteDirectory(file);
-                } else {
-                    file.delete();
-                }
+                deleteDirectory(file);
             }
         }
 
