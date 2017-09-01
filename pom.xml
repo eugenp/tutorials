@@ -108,7 +108,6 @@
         <module>mocks</module>
         <module>mustache</module>
         <module>noexception</module>
-        <module>retrofit-rxjava</module>
 
         <module>orika</module>
 
