@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class Config {
+public class TestConfig {
 
     @Bean
     public Subject subject() {
@@ -13,6 +13,6 @@ public class Config {
 
     @Bean(name = "lesson")
     public Lesson lesson() {
-        return new Lesson("Hello", "World");
+        return new Lesson("BDD", "Testing");
     }
 }

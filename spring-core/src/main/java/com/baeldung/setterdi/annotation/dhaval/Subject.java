@@ -6,14 +6,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class Subject {
 
-	private Lesson lesson;
+    private Lesson lesson;
 
-	@Autowired
-	public void setLesson(Lesson lesson) {
-		this.lesson = lesson;
-	}
+    @Autowired
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
+    }
 
-	public void beginStudy() {
-		lesson.startLearning();
-	}
+    public void beginStudy() {
+        lesson.startLearning();
+    }
 }

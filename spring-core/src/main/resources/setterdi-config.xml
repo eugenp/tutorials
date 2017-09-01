@@ -6,12 +6,10 @@
    xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-   <!-- Definition for textEditor bean -->
    <bean id = "subject" class = "com.baeldung.setterdi.dhaval.Subject"
    		p:lesson-ref="lesson">  
    </bean>
 
-   <!-- Definition for lesson bean -->
    <bean id = "lesson" class = "com.baeldung.setterdi.dhaval.Lesson"
    		p:message1 = "Hello World">
    </bean>

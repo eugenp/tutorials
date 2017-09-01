@@ -4,16 +4,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+   <description>Holds application context for testing of the ConstructorDI module.</description>
 
-	<!-- Definition for textEditor bean -->
 	<bean id="subject" class="com.baeldung.constructordi.dhaval.Subject">
 		<constructor-arg ref="lesson" />
 	</bean>
 
-	<!-- Definition for spellChecker bean -->
 	<bean id="lesson" class="com.baeldung.constructordi.dhaval.Lesson">
-		<constructor-arg index="0" value="Hello" />
-		<constructor-arg index="1" value="World" />
+		<constructor-arg index="0" value="BDD" />
+		<constructor-arg index="1" value="Testing" />
 	</bean>
 
 </beans>
