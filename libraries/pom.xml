@@ -513,6 +513,7 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>adapter-rxjava</artifactId>
             <version>${retrofit.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.darwinsys</groupId>
             <artifactId>hirondelle-date4j</artifactId>
