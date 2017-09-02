@@ -1,7 +1,7 @@
-package com.baeldung.explicitjava;
+package com.baeldung.explicitdi;
 
-import com.baeldung.differenttypesdi.explicitjava.ExplicitJavaConfig;
-import com.baeldung.differenttypesdi.explicitjava.domain.Television;
+import com.baeldung.differenttypesdi.explicit.ExplicitJavaConfig;
+import com.baeldung.differenttypesdi.explicit.domain.Television;
 import com.baeldung.differenttypesdi.shared.Control;
 import com.baeldung.differenttypesdi.shared.Signal;
 import org.junit.Assert;

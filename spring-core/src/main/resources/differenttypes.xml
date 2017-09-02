@@ -1,7 +1,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="control" class="com.baeldung.differenttypesdi.autowire.domain.RemoteControl" />
+    <bean id="television" class="com.baeldung.differenttypesdi.explicit.domain.Television">
+        <constructor-arg ref="processor"/>
+        <constructor-arg ref="controlSignalReceptor"/>
+    </bean>
+    <bean id="control" class="com.baeldung.differenttypesdi.explicit.domain.RemoteControl"/>
+    <bean id="controlSignalReceptor" class="com.baeldung.differenttypesdi.explicit.domain.ControlSignalReceptor">
+        <constructor-arg ref="processor"/>
+    </bean>
+    <bean id="processor" class="com.baeldung.differenttypesdi.shared.Processor"/>
 </beans>

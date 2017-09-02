@@ -1,8 +1,8 @@
-package com.baeldung.differenttypesdi.explicitjava;
+package com.baeldung.differenttypesdi.explicit;
 
-import com.baeldung.differenttypesdi.explicitjava.domain.ControlSignalReceptor;
-import com.baeldung.differenttypesdi.explicitjava.domain.RemoteControl;
-import com.baeldung.differenttypesdi.explicitjava.domain.Television;
+import com.baeldung.differenttypesdi.explicit.domain.ControlSignalReceptor;
+import com.baeldung.differenttypesdi.explicit.domain.RemoteControl;
+import com.baeldung.differenttypesdi.explicit.domain.Television;
 import com.baeldung.differenttypesdi.shared.Control;
 import com.baeldung.differenttypesdi.shared.Processor;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.baeldung.differenttypesdi.explicitjava"})
+@ComponentScan(basePackages = {"com.baeldung.differenttypesdi.explicit"})
 public class ExplicitJavaConfig {
 
     @Bean

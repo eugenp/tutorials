@@ -1,4 +1,4 @@
-package com.baeldung.differenttypesdi.explicitjava.domain;
+package com.baeldung.differenttypesdi.explicit.domain;
 
 import com.baeldung.differenttypesdi.shared.Processor;
 import com.baeldung.differenttypesdi.shared.Signal;

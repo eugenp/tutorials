@@ -1,8 +1,7 @@
-package com.baeldung.differenttypesdi.explicitjava.domain;
+package com.baeldung.differenttypesdi.explicit.domain;
 
 import com.baeldung.differenttypesdi.shared.Control;
 import com.baeldung.differenttypesdi.shared.Signal;
-import org.springframework.stereotype.Component;
 
 public class RemoteControl implements Control {
 
