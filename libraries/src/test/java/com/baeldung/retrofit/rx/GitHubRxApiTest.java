@@ -29,40 +29,23 @@ public class GitHubRxApiTest {
     }
     
     @Test
-<<<<<<< HEAD
     public void whenListRepos_thenExpectReposThatContainTutorials() {
-=======
-    public void whenListRepos_thenExpect12ReposThatContainsTutorials() {
->>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
         gitHub
           .listRepos("eugenp")
           .subscribe( repos -> {
               assertThat(repos)
-<<<<<<< HEAD
                 .isNotEmpty()
-=======
-                .hasSize(12)
->>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
                 .extracting(Repository::getName).contains("tutorials");
           });
     }
     
     @Test
-<<<<<<< HEAD
     public void whenListRepoContributers_thenExpectContributorsThatContainEugenp() {
         gitHub
           .listRepoContributors("eugenp", "tutorials")
           .subscribe(contributors -> {
               assertThat(contributors)
                 .isNotEmpty()
-=======
-    public void whenListRepoContributers_thenExpect30ContributerthatContainsEugenp() {
-        gitHub
-          .listRepoContributors("eugenp", "tutorials")
-          .subscribe(contributers -> {
-              assertThat(contributers)
-                .hasSize(30)
->>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
                 .extracting(Contributor::getName).contains("eugenp");
           });
     }
