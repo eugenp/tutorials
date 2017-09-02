@@ -8,7 +8,7 @@ import com.baeldung.differenttypesdi.shared.Processor;
 
 @Configuration
 @ComponentScan(basePackages={"com.baeldung.differenttypesdi.autowire"})
-public class Config {
+public class AutowireConfig {
 	
 	@Bean
 	public Processor processor() {
