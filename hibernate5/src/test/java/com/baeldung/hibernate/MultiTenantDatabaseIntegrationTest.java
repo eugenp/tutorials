@@ -10,7 +10,7 @@ import com.baeldung.hibernate.pojo.Supplier;
 
 import static org.junit.Assert.assertNull;;
 
-public class MultiTenantDaoHibernateIntegrationTest {
+public class MultiTenantDatabaseIntegrationTest {
     @Test
     public void givenDBMode_whenFetchingSuppliersByName_thenChecking() throws UnsupportedTenancyException, IOException {
         
