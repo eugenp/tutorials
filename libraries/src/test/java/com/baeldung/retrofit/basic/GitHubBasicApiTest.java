@@ -31,7 +31,7 @@ public class GitHubBasicApiTest {
     }
     
     @Test
-    public void whenListRepos_thenExpect12ReposThatContainsTutorials() {
+    public void whenListRepos_thenExpectReposThatContainTutorials() {
         try {
             List<Repository> repos = gitHub
               .listRepos("eugenp")
@@ -39,7 +39,7 @@ public class GitHubBasicApiTest {
               .body();
             
             assertThat(repos)
-              .hasSize(12)
+              .isNotEmpty()
               .extracting(Repository::getName).contains("tutorials");
         } catch (IOException e) {
             fail("Can not communicate with GitHub API");
@@ -47,15 +47,15 @@ public class GitHubBasicApiTest {
     }
     
     @Test
-    public void whenListRepoContributers_thenExpect30ContributerthatContainsEugenp() {
+    public void whenListRepoContributers_thenExpectContributorsThatContainEugenp() {
         try {
-            List<Contributor> contributers = gitHub
+            List<Contributor> contributors = gitHub
               .listRepoContributors("eugenp", "tutorials")
               .execute()
               .body();
             
-            assertThat(contributers)
-              .hasSize(30)
+            assertThat(contributors)
+              .isNotEmpty()
               .extracting(Contributor::getName).contains("eugenp");
         } catch (IOException e) {
             fail("Can not communicate with GitHub API");

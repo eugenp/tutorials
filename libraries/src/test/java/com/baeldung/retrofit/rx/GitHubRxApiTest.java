@@ -29,23 +29,23 @@ public class GitHubRxApiTest {
     }
     
     @Test
-    public void whenListRepos_thenExpect12ReposThatContainsTutorials() {
+    public void whenListRepos_thenExpectReposThatContainTutorials() {
         gitHub
           .listRepos("eugenp")
           .subscribe( repos -> {
               assertThat(repos)
-                .hasSize(12)
+                .isNotEmpty()
                 .extracting(Repository::getName).contains("tutorials");
           });
     }
     
     @Test
-    public void whenListRepoContributers_thenExpect30ContributerthatContainsEugenp() {
+    public void whenListRepoContributers_thenExpectContributorsThatContainEugenp() {
         gitHub
           .listRepoContributors("eugenp", "tutorials")
-          .subscribe(contributers -> {
-              assertThat(contributers)
-                .hasSize(30)
+          .subscribe(contributors -> {
+              assertThat(contributors)
+                .isNotEmpty()
                 .extracting(Contributor::getName).contains("eugenp");
           });
     }
