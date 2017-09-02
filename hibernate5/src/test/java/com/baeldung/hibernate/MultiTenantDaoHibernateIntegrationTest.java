@@ -15,7 +15,6 @@ public class MultiTenantDaoHibernateIntegrationTest {
     public void givenDBMode_whenFetchingSuppliersByName_thenChecking() throws UnsupportedTenancyException, IOException {
         
         SessionFactory sessionFactory = new DatabaseMultitenantUtil().getSessionFactory();
-//        SessionFactory sessionFactory = new SchemaMultitenantUtil().getSessionFactory();
         
         SupplierDao myDb1Dao = new SupplierDao(sessionFactory, "mydb1");
         Supplier db1SupplierName = myDb1Dao.findByName("John");

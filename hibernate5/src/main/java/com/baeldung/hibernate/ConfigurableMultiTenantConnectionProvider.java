@@ -34,8 +34,7 @@ public class ConfigurableMultiTenantConnectionProvider extends AbstractMultiTena
     @Override
     public Connection getConnection(String tenantIdentifier) throws SQLException {
         Connection connection = super.getConnection(tenantIdentifier);
-        // uncomment to see option 2 for SCHEMA strategy.
-        if (strategy == "SCHEMA"){
+        if (strategy.equals( "SCHEMA")){
             connection.createStatement().execute("CREATE SCHEMA IF NOT EXISTS '" + tenantIdentifier + "'");
             connection.createStatement().execute("SET SCHEMA '" + tenantIdentifier + "'");
             

@@ -29,7 +29,6 @@ public abstract  class HibernateMultiTenantUtil {
 
     public  SessionFactory getSessionFactory() throws UnsupportedTenancyException, IOException {
         if (sessionFactory == null) {
-            // Configuration configuration = new Configuration().configure();
             ServiceRegistry serviceRegistry = configureServiceRegistry();
             sessionFactory = makeSessionFactory(serviceRegistry);
         }
@@ -54,7 +53,6 @@ public abstract  class HibernateMultiTenantUtil {
 
     private ServiceRegistry configureServiceRegistry() throws UnsupportedTenancyException, IOException {
 
-        // Properties properties = configuration.getProperties();
         Properties properties = getProperties();
         String tenantStrategy = properties.getProperty("hibernate.multiTenancy");
         connectionProviderMap = setUpConnectionProviders(properties, tenantDBNames);
@@ -83,7 +81,7 @@ public abstract  class HibernateMultiTenantUtil {
 
             String tenantStrategy = properties.getProperty("hibernate.multiTenancy");
             System.out.println("Strategy:" + tenantStrategy);
-            properties.put(Environment.URL, tenantUrl(properties.getProperty(Environment.URL), tenant, tenantStrategy));
+            properties.put(Environment.URL, tenantUrl(properties.getProperty(Environment.URL), tenant));
             System.out.println("URL:" + properties.getProperty(Environment.URL));
             connectionProvider.configure(properties);
             System.out.println("Tenant:" + tenant);
@@ -97,21 +95,10 @@ public abstract  class HibernateMultiTenantUtil {
         return providerMap;
     }
 
-//    private static Object tenantUrl(String originalUrl, String tenant, String tenantStrategy) throws UnsupportedTenancyException {
-//        if (tenantStrategy.toUpperCase()
-//            .equals("DATABASE")) {
-//            return originalUrl.replace(DEFAULT_DB_NAME, tenant);
-//        } else if (tenantStrategy.toUpperCase()
-//            .equals("SCHEMA")) {
-//            return originalUrl + String.format(SCHEMA_TOKEN, tenant);
-//        } else {
-//            throw new UnsupportedTenancyException("Not yet supported");
-//        }
-//    }
-    
-    public abstract Object tenantUrl(String originalUrl, String tenant, String tenantStrategy) throws UnsupportedTenancyException;
 
-//    public static final String SCHEMA_TOKEN = ";INIT=CREATE SCHEMA IF NOT EXISTS %1$s\\;SET SCHEMA %1$s";
-//    public static final String DEFAULT_DB_NAME = "mydb1";
+    
+    public abstract Object tenantUrl(String originalUrl, String tenant) throws UnsupportedTenancyException;
+
+
 
 }
