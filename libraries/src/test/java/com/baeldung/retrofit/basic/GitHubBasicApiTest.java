@@ -31,7 +31,11 @@ public class GitHubBasicApiTest {
     }
     
     @Test
+<<<<<<< HEAD
     public void whenListRepos_thenExpectReposThatContainTutorials() {
+=======
+    public void whenListRepos_thenExpect12ReposThatContainsTutorials() {
+>>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
         try {
             List<Repository> repos = gitHub
               .listRepos("eugenp")
@@ -39,7 +43,11 @@ public class GitHubBasicApiTest {
               .body();
             
             assertThat(repos)
+<<<<<<< HEAD
               .isNotEmpty()
+=======
+              .hasSize(12)
+>>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
               .extracting(Repository::getName).contains("tutorials");
         } catch (IOException e) {
             fail("Can not communicate with GitHub API");
@@ -47,15 +55,26 @@ public class GitHubBasicApiTest {
     }
     
     @Test
+<<<<<<< HEAD
     public void whenListRepoContributers_thenExpectContributorsThatContainEugenp() {
         try {
             List<Contributor> contributors = gitHub
+=======
+    public void whenListRepoContributers_thenExpect30ContributerthatContainsEugenp() {
+        try {
+            List<Contributor> contributers = gitHub
+>>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
               .listRepoContributors("eugenp", "tutorials")
               .execute()
               .body();
             
+<<<<<<< HEAD
             assertThat(contributors)
               .isNotEmpty()
+=======
+            assertThat(contributers)
+              .hasSize(30)
+>>>>>>> 966d84698081ac0d2a086733b554bd900f2327c0
               .extracting(Contributor::getName).contains("eugenp");
         } catch (IOException e) {
             fail("Can not communicate with GitHub API");
