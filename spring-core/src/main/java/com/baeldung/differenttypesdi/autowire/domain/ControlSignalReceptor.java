@@ -1,5 +1,7 @@
 package com.baeldung.differenttypesdi.autowire.domain;
 
+import com.baeldung.differenttypesdi.shared.Processor;
+import com.baeldung.differenttypesdi.shared.Signal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

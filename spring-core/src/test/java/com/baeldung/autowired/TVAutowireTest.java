@@ -11,35 +11,32 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.differenttypesdi.autowire.Config;
-import com.baeldung.differenttypesdi.autowire.domain.Control;
-import com.baeldung.differenttypesdi.autowire.domain.Signal;
+import com.baeldung.differenttypesdi.shared.Control;
+import com.baeldung.differenttypesdi.shared.Signal;
 import com.baeldung.differenttypesdi.autowire.domain.Television;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = Config.class)
 public class TVAutowireTest {
 
-	@Autowired
-	private Television television;
+    @Autowired
+    private Television television;
 
-	private Control control;
+    @Autowired
+    private Control control;
 
-	public void setControl(Control control) {
-		this.control = control;
-	}
+    @Test
+    public void givenTelevision_ThenValidExistence() {
+        assertNotNull(television);
+    }
 
-	@Test
-	public void givenTelevision_ThenValidExistence() {
-		assertNotNull(television);
-	}
-
-	@Test
-	public void givenTelevision_WhenChangeChannel_ThenItsChanged() {
-		Integer previousChannel = television.showCurrentChannel();
-		control.pressButton(Signal.NEXT_CHANNEL);
-		television.receiveSignal(control.emitSignal());
-		Integer currentChannel = television.showCurrentChannel();
-		Assert.assertNotEquals(previousChannel, currentChannel);
-	}
+    @Test
+    public void givenTelevision_WhenChangeChannel_ThenItsChanged() {
+        Integer previousChannel = television.showCurrentChannel();
+        control.pressButton(Signal.NEXT_CHANNEL);
+        television.receiveSignal(control.emitSignal());
+        Integer currentChannel = television.showCurrentChannel();
+        Assert.assertNotEquals(previousChannel, currentChannel);
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.baeldung.differenttypesdi.autowire.domain;
+package com.baeldung.differenttypesdi.shared;
 
 public interface Control {
 	
