@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitPlatform.class)
 @SelectPackages("com.baeldung")
-//@SelectClasses({AssertionTest.class, AssumptionTest.class, ExceptionTest.class})
+// @SelectClasses({AssertionTest.class, AssumptionTest.class, ExceptionTest.class})
 public class AllTests {
 
 }

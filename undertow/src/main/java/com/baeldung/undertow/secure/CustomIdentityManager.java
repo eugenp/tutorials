@@ -54,12 +54,7 @@ public class CustomIdentityManager implements IdentityManager {
 
                 private static final long serialVersionUID = 1L;
 
-                private final Principal principal = new Principal() {
-                    @Override
-                    public String getName() {
-                        return id;
-                    }
-                };
+                private final Principal principal = () -> id;
 
                 @Override
                 public Principal getPrincipal() {
