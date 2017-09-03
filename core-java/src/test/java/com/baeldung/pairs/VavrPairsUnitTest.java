@@ -4,9 +4,6 @@ import io.vavr.Tuple2;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by banks on 003 Sep 03 2017 2:19 PM.
- */
 public class VavrPairsUnitTest {
     @Test
     public void givenTuple_whenSetValue_shouldSucceed() {

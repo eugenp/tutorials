@@ -4,9 +4,6 @@ import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by banks on 003 Sep 03 2017 2:19 PM.
- */
 public class CoreJavaPairUnitTest {
     @Test
     public void givenPair_whenGetValue_shouldSucceed() {
