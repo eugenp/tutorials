@@ -1,9 +1,11 @@
+package algorithms.binarysearch;
+
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-
+import com.baeldung.algorithms.binarysearch.BinarySearch;
 
 public class BinarySearchTest {
 
