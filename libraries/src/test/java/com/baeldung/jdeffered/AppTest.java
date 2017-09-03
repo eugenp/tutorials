@@ -1,8 +1,8 @@
-package com.baeldung.jdiffered;
+package com.baeldung.jdeffered;
 
 import org.junit.Test;
 
-import com.baeldung.jdiffered.PipeDemo.Result;
+import com.baeldung.jdeffered.PipeDemo.Result;
 
 import static org.junit.Assert.assertEquals;
 

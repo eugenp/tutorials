@@ -1,4 +1,4 @@
-package com.baeldung.jdiffered;
+package com.baeldung.jdeffered;
 
 import org.jdeferred.Deferred;
 import org.jdeferred.DeferredManager;
