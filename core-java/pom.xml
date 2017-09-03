@@ -186,6 +186,12 @@
             <artifactId>fscontext</artifactId>
             <version>${fscontext.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -386,7 +392,10 @@
         </profile>
     </profiles>
 
-    <properties>    	
+    <properties>
+        <!--vavr-->
+        <vavr.version>1.0</vavr.version>
+
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
