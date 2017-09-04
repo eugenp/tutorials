@@ -105,7 +105,6 @@
                 </executions>
             </plugin>
             <!-- /Neuroph -->
-
         </plugins>
     </build>
     <dependencies>
@@ -137,6 +136,11 @@
             <version>${commons-text.version}</version>
         </dependency>
         <dependency>
+            <groupId>javax.measure</groupId>
+            <artifactId>jsr-275</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+		<dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons.collections.version}</version>
@@ -545,6 +549,11 @@
             <artifactId>jdeferred-core</artifactId>
             <version>1.2.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>${protonpack.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -622,5 +631,6 @@
         <retrofit.version>2.3.0</retrofit.version>
         <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
+		<protonpack.version>1.14</protonpack.version>
     </properties>
 </project>
