@@ -1,13 +1,10 @@
 package com.baeldung.eclipsecollections;
 
-import org.eclipse.collections.api.block.procedure.Procedure;
+import static org.junit.Assert.assertEquals;
+
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.map.mutable.UnifiedMap;
 import org.eclipse.collections.impl.tuple.Tuples;
-import static org.junit.Assert.assertEquals;
-
-import java.util.Map;
-
 import org.junit.Test;
 
 public class ForEachPatternTest {
