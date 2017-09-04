@@ -136,6 +136,11 @@
 			<artifactId>commons-text</artifactId>
 			<version>${commons-text.version}</version>
 		</dependency>
+     <dependency>
+         <groupId>javax.measure</groupId>
+         <artifactId>jsr-275</artifactId>
+         <version>1.0.0</version>
+    </dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
