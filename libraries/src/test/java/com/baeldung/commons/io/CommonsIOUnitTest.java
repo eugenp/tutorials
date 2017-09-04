@@ -18,6 +18,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -71,16 +72,16 @@ public class CommonsIOUnitTest {
         throws IOException {
 
         final String str = "Hello World.";
-
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
         ByteArrayOutputStream outputStream1 = new ByteArrayOutputStream();
         ByteArrayOutputStream outputStream2 = new ByteArrayOutputStream();
-        new TeeInputStream(new ByteArrayInputStream(str.getBytes()),
-            new TeeOutputStream(outputStream1, outputStream2), true)
-                .read(new byte[str.length()]);
-
+        
+        FilterOutputStream teeOutputStream = new TeeOutputStream(outputStream1,outputStream2);
+        new TeeInputStream(inputStream, teeOutputStream, true).read(new byte[str.length()]);
+        
         Assert.assertEquals(str, String.valueOf(outputStream1));
         Assert.assertEquals(str, String.valueOf(outputStream2));
-    }
+     }
 
     @Test
     public void whenGetFilewithNameFileFilter_thenFindfileTesttxt()
