@@ -9,9 +9,9 @@ public class SubjectTest {
 
     @Test
     public void givenSubjectAndTwoSubscribers_whenSubscribeOnSubjectAfterLetterC_thenSecondSubscriberBeginsToPrint() throws InterruptedException {
-        SubjectImpl.subjectMethod();
+        String result = SubjectImpl.subjectMethod();
+        String subscribers = SubjectImpl.subscriber1[0] + SubjectImpl.subscriber2[0];
 
-        assertTrue(SubjectImpl.subscriber1[0].equals("abcdefg"));
-        assertTrue(SubjectImpl.subscriber2[0].contains("efg"));
+        assertTrue(subscribers.equals(result));
     }
 }

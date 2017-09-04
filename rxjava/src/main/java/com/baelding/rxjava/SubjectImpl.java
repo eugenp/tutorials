@@ -10,7 +10,7 @@ public class SubjectImpl {
     public static final String[] subscriber1 = {""};
     public static final String[] subscriber2 = {""};
 
-    public static void subjectMethod() throws InterruptedException {
+    public static String subjectMethod() throws InterruptedException {
 
 
         String[] letters = {"a", "b", "c", "d", "e", "f", "g"};
@@ -74,14 +74,9 @@ public class SubjectImpl {
 
         synchronized (signal) {
             signal.wait();
-            System.exit(0);
+            return subscriber1[0] + subscriber2[0];
         }
 
     }
 
-    public static void main(String[] args) throws Exception {
-
-       subjectMethod();
-
-    }
 }
