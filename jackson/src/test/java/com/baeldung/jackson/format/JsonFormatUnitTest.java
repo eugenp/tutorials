@@ -22,18 +22,16 @@ public class JsonFormatUnitTest {
     @Test
     public void whenSerializedDateFormat_thenCorrect() throws JsonProcessingException {
 
-	User user = new User("Jay", "Sridhar");
+        User user = new User("Jay", "Sridhar");
 
-	String result = new ObjectMapper().writeValueAsString(user);
+        String result = new ObjectMapper().writeValueAsString(user);
 
-	// Expected to match: "2016-12-19@09:34:42.628+0000"
-	assertThat(from(result).getString("createdDate"))
-	    .matches("\\d{4}\\-\\d{2}\\-\\d{2}@\\d{2}:\\d{2}:\\d{2}\\.\\d{3}\\+\\d{4}");
+        // Expected to match: "2016-12-19@09:34:42.628+0000"
+        assertThat(from(result).getString("createdDate")).matches("\\d{4}\\-\\d{2}\\-\\d{2}@\\d{2}:\\d{2}:\\d{2}\\.\\d{3}\\+\\d{4}");
 
-	// Expected to be close to current time
-	long now = new Date().getTime();
-	assertThat(from(result).getLong("dateNum"))
-	    .isCloseTo(now, withPercentage(10.0));
+        // Expected to be close to current time
+        long now = new Date().getTime();
+        assertThat(from(result).getLong("dateNum")).isCloseTo(now, withPercentage(10.0));
 
     }
 }
