@@ -26,7 +26,7 @@ public class JavaDirectoryDeleteUnitTest {
     private static Path TEMP_DIRECTORY;
     private static final String DIRECTORY_NAME = "toBeDeleted";
 
-    public static final List<String> ALL_LINES = Arrays.asList(new String[] { "This is line 1", "This is line 2", "This is line 3", "This is line 4", "This is line 5", "This is line 6" });
+    private static final List<String> ALL_LINES = Arrays.asList("This is line 1", "This is line 2", "This is line 3", "This is line 4", "This is line 5", "This is line 6");
 
     @BeforeClass
     public static void initializeTempDirectory() throws IOException {
@@ -65,16 +65,12 @@ public class JavaDirectoryDeleteUnitTest {
         }
     }
 
-    boolean deleteDirectory(File directoryToBeDeleted) {
+    private boolean deleteDirectory(File directoryToBeDeleted) {
         File[] allContents = directoryToBeDeleted.listFiles();
 
         if (allContents != null) {
             for (File file : allContents) {
-                if (file.isDirectory()) {
-                    deleteDirectory(file);
-                } else {
-                    file.delete();
-                }
+                deleteDirectory(file);
             }
         }
 

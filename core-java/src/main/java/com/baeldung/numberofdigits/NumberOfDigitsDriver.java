@@ -3,25 +3,31 @@ package com.baeldung.numberofdigits;
 import static com.baeldung.designpatterns.util.LogerUtil.LOG;
 
 public class NumberOfDigitsDriver {
+    private static NumberOfDigits numberOfDigits;
+    
+    static {
+        numberOfDigits = new NumberOfDigits();
+    }
+    
     public static void main(String[] args) {
         LOG.info("Testing all methods...");
         
-        long length = NumberOfDigits.stringBasedSolution(602);
+        long length = numberOfDigits.stringBasedSolution(602);
         LOG.info("String Based Solution : " + length);
         
-        length = NumberOfDigits.logarithmicApproach(602);
+        length = numberOfDigits.logarithmicApproach(602);
         LOG.info("Logarithmic Approach : " + length);
         
-        length = NumberOfDigits.repeatedMultiplication(602);
+        length = numberOfDigits.repeatedMultiplication(602);
         LOG.info("Repeated Multiplication : " + length);
         
-        length = NumberOfDigits.shiftOperators(602);
+        length = numberOfDigits.shiftOperators(602);
         LOG.info("Shift Operators : " + length);
         
-        length = NumberOfDigits.dividingWithPowersOf2(602);
+        length = numberOfDigits.dividingWithPowersOf2(602);
         LOG.info("Dividing with Powers of 2 : " + length);
         
-        length = NumberOfDigits.divideAndConquer(602);
+        length = numberOfDigits.divideAndConquer(602);
         LOG.info("Divide And Conquer : " + length);
     }
 }
