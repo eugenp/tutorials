@@ -2,8 +2,9 @@ package com.baeldung.vavr.collections;
 
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
-import io.vavr.collection.Array;
-import io.vavr.collection.CharSeq;
+import io.vavr.collection.*;
+import io.vavr.collection.BitSet;
+import io.vavr.collection.HashMap;
 import io.vavr.collection.HashSet;
 import io.vavr.collection.Iterator;
 import io.vavr.collection.List;
@@ -12,13 +13,12 @@ import io.vavr.collection.Queue;
 import io.vavr.collection.Set;
 import io.vavr.collection.SortedMap;
 import io.vavr.collection.SortedSet;
-import io.vavr.collection.Stream;
 import io.vavr.collection.TreeMap;
 import io.vavr.collection.TreeSet;
 import io.vavr.collection.Vector;
 import org.junit.Test;
 
-import java.util.Comparator;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -124,6 +124,9 @@ public class CollectionAPIUnitTest {
 
         Queue<Integer> tailQueue = result._2;
         assertFalse(tailQueue.contains(secondQueue.get(0)));
+
+        Queue<Queue<Integer>> queue1 = queue.combinations(2);
+        assertEquals(queue1.get(2).toCharSeq(), CharSeq.of("23"));
     }
 
     @Test
@@ -153,17 +156,23 @@ public class CollectionAPIUnitTest {
 
     @Test
     public void givenArray_whenQueried_thenCorrect() {
+
+        Array<Integer> rArray = Array.range(1, 5);
+        assertFalse(rArray.contains(5));
+
+        Array<Integer> rArray2 = Array.rangeClosed(1, 5);
+        assertTrue(rArray2.contains(5));
+
+        Array<Integer> rArray3 = Array.rangeClosedBy(1,6,2);
+        assertEquals(rArray3.size(), 3);
+
         Array<Integer> intArray = Array.of(1, 2, 3);
         Array<Integer> newArray = intArray.removeAt(1);
-
-        assertEquals(3, intArray.size());
         assertEquals(2, newArray.size());
         assertEquals(3, newArray.get(1).intValue());
 
         Array<Integer> array2 = intArray.replace(1, 5);
         assertEquals(array2.get(0).intValue(), 5);
-
-
     }
 
     @Test
@@ -199,6 +208,15 @@ public class CollectionAPIUnitTest {
         assertEquals(3, set.size());
         assertEquals(4, newSet.size());
         assertTrue(newSet.contains("Yellow"));
+
+        HashSet<Integer> set0 = HashSet.rangeClosed(1,5);
+        HashSet<Integer> set1 = HashSet.rangeClosed(3, 6);
+
+        assertEquals(set0.union(set1), HashSet.rangeClosed(1,6));
+        assertEquals(set0.diff(set1), HashSet.rangeClosed(1,2));
+        assertEquals(set0.intersect(set1), HashSet.rangeClosed(3,5));
+
+
     }
 
     @Test
@@ -222,13 +240,39 @@ public class CollectionAPIUnitTest {
     }
 
     @Test
-    public void givenMap_whenIterated_thenCorrect() {
+    public void giveBitSet_whenApiMethods_thenCorrect() {
+
+        BitSet<Integer> bitSet = BitSet.of(1,2,3,4,5,6,7,8);
+
+        BitSet<Integer> bitSet1 = bitSet.takeUntil(i -> i > 4);
+        assertEquals(bitSet1.size(), 4);
+
+    }
+
+    @Test
+    public void givenMap_whenMapApi_thenCorrect() {
         Map<Integer, List<Integer>> map = List.rangeClosed(0, 10)
           .groupBy(i -> i % 2);
         
         assertEquals(2, map.size());
         assertEquals(6, map.get(0).get().size());
         assertEquals(5, map.get(1).get().size());
+
+        Map<String, String> map1
+          = HashMap.of("key1", "val1", "key2", "val2", "key3", "val3");
+
+        Map<String, String> fMap
+          = map1.filterKeys(k -> k.contains("1") || k.contains("2"));
+        assertFalse(fMap.containsKey("key3"));
+
+        Map<String, String> fMap2
+          = map1.filterValues(v -> v.contains("3"));
+        assertEquals(fMap2.size(), 1);
+        assertTrue(fMap2.containsValue("val3"));
+
+        Map<String, Integer> map2 = map1.map(
+          (k, v) -> Tuple.of(k, Integer.valueOf(v.charAt(v.length() - 1) + "") ));
+        assertEquals(map2.get("key1").get().intValue(), 1);
     }
 
     @Test
@@ -238,6 +282,11 @@ public class CollectionAPIUnitTest {
 
         assertEquals(1, map.keySet().toJavaArray()[0]);
         assertEquals("Four", map.get(4).get());
+
+        TreeMap<Integer, String> treeMap2 =
+          TreeMap.of(Comparator.reverseOrder(), 3,"three", 6, "six", 1, "one");
+        assertEquals(treeMap2.keySet().mkString(), "631");
+
     }
 
     @Test
