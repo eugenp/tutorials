@@ -1,25 +1,46 @@
 package com.baeldung.string;
 
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
+
 public class StringBufferStringBuilder {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RunnerException {
 
-        int iterations = 10000000;
+        Options opt = new OptionsBuilder()
+            .include(StringBufferStringBuilder.class.getSimpleName())
+            .build();
 
-        System.gc();
-        long startTime = System.currentTimeMillis();
-        StringBuffer stringBuffer = new StringBuffer("abc");
-        for (int i = 0; i < iterations; i++) {
-            stringBuffer.append("def");
+        new Runner(opt).run();
+    }
+    
+    @State(Scope.Benchmark)
+    public static class MyState {
+        int iterations = 1000;
+        String initial = "abc";
+        String suffix = "def";
+    }
+     
+    @Benchmark
+    public StringBuffer benchmarkStringBuffer(MyState state) {
+        StringBuffer stringBuffer = new StringBuffer(state.initial);
+        for (int i = 0; i < state.iterations; i++) {
+            stringBuffer.append(state.suffix);
         }
-        System.out.println("Time taken by StringBuffer: " + (System.currentTimeMillis() - startTime) + "ms"); // Time taken by StringBuffer: 394ms
+        return stringBuffer;
+    }
 
-        System.gc();
-        startTime = System.currentTimeMillis();
-        StringBuilder stringBuilder = new StringBuilder("abc");
-        for (int i = 0; i < iterations; i++) {
-            stringBuilder.append("def");
+    @Benchmark
+    public StringBuilder benchmarkStringBuilder(MyState state) {
+        StringBuilder stringBuilder = new StringBuilder(state.initial);
+        for (int i = 0; i < state.iterations; i++) {
+            stringBuilder.append(state.suffix);
         }
-        System.out.println("Time taken by StringBuilder: " + (System.currentTimeMillis() - startTime) + "ms"); // Time taken by StringBuilder: 129ms
+        return stringBuilder;
     }
 }
