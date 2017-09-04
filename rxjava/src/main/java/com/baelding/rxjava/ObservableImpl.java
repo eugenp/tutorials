@@ -15,17 +15,11 @@ public class ObservableImpl {
         Observable<String> observable = Observable.just("Hello");
         observable.subscribe(
                 //onNext
-                (i) -> {
-                    System.out.println(i);
-                },
+                System.out::println,
                 //onError
-                (t) -> {
-                    t.printStackTrace();
-                },
+                Throwable::printStackTrace,
                 //onCompleted
-                () -> {
-                    System.out.println("onCompleted");
-                }
+                () -> System.out.println("onCompleted")
         );
 
         BlockingObservable<String> blockingObservable = observable.toBlocking();
@@ -36,9 +30,9 @@ public class ObservableImpl {
                 .map((letter) -> {
                     return letter.toUpperCase();
                 })
-                .subscribe((letter) -> {
-                    System.out.print(letter);
-                });
+                .subscribe(
+                        System.out::print
+                );
 
         System.out.println();
         System.out.println("-------FlatMap-----------");
@@ -47,9 +41,9 @@ public class ObservableImpl {
                     String[] returnStrings = {letter.toUpperCase(), letter.toLowerCase()};
                     return Observable.from(returnStrings);
                 })
-                .subscribe((letter) -> {
-                    System.out.print(letter);
-                });
+                .subscribe(
+                        System.out::print
+                );
 
         System.out.println();
         System.out.println("--------Scan----------");
@@ -79,17 +73,17 @@ public class ObservableImpl {
                 .filter((i) -> {
                     return (i % 2 == 1);
                 })
-                .subscribe((i) -> {
-                    System.out.println(i);
-                });
+                .subscribe(
+                        System.out::println
+                );
 
 
         System.out.println("------DefaultIfEmpty------------");
         Observable.empty()
                 .defaultIfEmpty("Observable is empty")
-                .subscribe((s) -> {
-                    System.out.println(s);
-                });
+                .subscribe(
+                        System.out::println
+                );
 
 
 
@@ -97,18 +91,14 @@ public class ObservableImpl {
         Observable.from(letters)
                 .defaultIfEmpty("Observable is empty")
                 .first()
-                .subscribe((s) -> {
-                    System.out.println(s);
-                });
+                .subscribe(System.out::println);
 
         System.out.println("-------TakeWhile-----------");
         Observable.from(numbers)
                 .takeWhile((i) -> {
                     return i < 5;
                 })
-                .subscribe((s) -> {
-                    System.out.print(s);
-                });
+                .subscribe(System.out::println);
 
 
     }

@@ -12,6 +12,6 @@ public class SubjectTest {
         SubjectImpl.subjectMethod();
 
         assertTrue(SubjectImpl.subscriber1[0].equals("abcdefg"));
-        assertTrue(SubjectImpl.subscriber2[0].equals("efg"));
+        assertTrue(SubjectImpl.subscriber2[0].contains("efg"));
     }
 }
