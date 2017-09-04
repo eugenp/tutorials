@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.insightfullogic</groupId>
+            <artifactId>lambda-behave</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
@@ -45,6 +50,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java8</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.pitest</groupId>
