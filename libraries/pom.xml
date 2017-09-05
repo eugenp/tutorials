@@ -135,11 +135,11 @@
 			<artifactId>commons-text</artifactId>
 			<version>${commons-text.version}</version>
 		</dependency>
-     <dependency>
-         <groupId>javax.measure</groupId>
-         <artifactId>jsr-275</artifactId>
-         <version>1.0.0</version>
-    </dependency>
+		<dependency>
+			<groupId>tec.units</groupId>
+			<artifactId>unit-ri</artifactId>
+			<version>${unit-ri.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
@@ -615,5 +615,6 @@
 		<joda-time.version>2.9.9</joda-time.version>
 		<hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
 		<protonpack.version>1.14</protonpack.version>
+		<unit-ri.version>1.0.3</unit-ri.version>
 	</properties>
 </project>
