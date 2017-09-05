@@ -29,15 +29,15 @@ public class Computer {
         this.videoCard = videoCard;
     }
 
-    public Processor getProcessor() {
+    Processor getProcessor() {
         return processor;
     }
 
-    public Motherboard getMotherboard() {
+    Motherboard getMotherboard() {
         return motherboard;
     }
 
-    public VideoCard getVideoCard() {
+    VideoCard getVideoCard() {
         return videoCard;
     }
 }
