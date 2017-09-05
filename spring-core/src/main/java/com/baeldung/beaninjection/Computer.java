@@ -28,4 +28,16 @@ public class Computer {
     public void setVideoCard(VideoCard videoCard) {
         this.videoCard = videoCard;
     }
+
+    public Processor getProcessor() {
+        return processor;
+    }
+
+    public Motherboard getMotherboard() {
+        return motherboard;
+    }
+
+    public VideoCard getVideoCard() {
+        return videoCard;
+    }
 }
