@@ -6,11 +6,9 @@ import com.baeldung.differenttypesdi.explicit.domain.Television;
 import com.baeldung.differenttypesdi.shared.Control;
 import com.baeldung.differenttypesdi.shared.Processor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.baeldung.differenttypesdi.explicit"})
 public class ExplicitJavaConfig {
 
     @Bean
