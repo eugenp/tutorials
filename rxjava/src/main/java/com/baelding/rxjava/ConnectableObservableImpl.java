@@ -15,7 +15,7 @@ public class ConnectableObservableImpl {
         System.out.println("Connect");
         connectable.connect();
 
-        Thread.currentThread().sleep(500);
+        Thread.sleep(500);
         System.out.println("Sleep");
     }
 }
