@@ -1,10 +1,5 @@
 package com.baeldung.retrofit.models;
 
-/**
- * GitHub Repository
- * @author hany
- *
- */
 public class Repository {
     
     private String name;

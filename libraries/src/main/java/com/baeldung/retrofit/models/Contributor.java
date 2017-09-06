@@ -2,11 +2,6 @@ package com.baeldung.retrofit.models;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * GitHub Contributer
- * @author hany
- *
- */
 public class Contributor {
     
     @SerializedName("login")
