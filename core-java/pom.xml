@@ -372,6 +372,31 @@
                     </arguments>
                 </configuration>
             </plugin>
+          
+            <plugin>
+				        <groupId>org.codehaus.mojo</groupId>
+				        <artifactId>exec-maven-plugin</artifactId>
+				        
+                <executions>
+					          <execution>
+						            <id>run-benchmarks</id>
+						            <phase>integration-test</phase>
+						            <goals>
+							              <goal>exec</goal>
+						            </goals>
+						            <configuration>
+							              <classpathScope>test</classpathScope>
+							              <executable>java</executable>
+							              <arguments>
+								                <argument>-classpath</argument>
+								                <classpath />
+								                <argument>org.openjdk.jmh.Main</argument>
+								                <argument>.*</argument>
+							              </arguments>
+						            </configuration>
+					          </execution>
+				        </executions>
+            </plugin>
         </plugins>
 
     </build>
