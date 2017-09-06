@@ -1,14 +1,14 @@
-package com.baeldung.javax.measure;
+package com.baeldung.measurement;
 
-import javax.measure.Measure;
+import javax.measure.Quantity;
 import javax.measure.quantity.Volume;
 
 public class WaterTank {
 
-    private Measure<Volume> capacityMeasure;
+    private Quantity<Volume> capacityMeasure;
     private double capacityDouble;
 
-    public void setCapacityMeasure(Measure<Volume> capacityMeasure) {
+    public void setCapacityMeasure(Quantity<Volume> capacityMeasure) {
         this.capacityMeasure = capacityMeasure;
     }
 
@@ -16,7 +16,7 @@ public class WaterTank {
         this.capacityDouble = capacityDouble;
     }
 
-    public Measure<Volume> getCapacityMeasure() {
+    public Quantity<Volume> getCapacityMeasure() {
         return capacityMeasure;
     }
 
