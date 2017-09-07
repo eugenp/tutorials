@@ -1,23 +1,25 @@
 package com.baeldung.beaninjection.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Director {
 
-    private String name;
-    private String surname;
+    private PersonalData personalData;
 
     @Autowired
-    public Director(String name, String surname) {
-        this.name = name;
-        this.surname = surname;
+    public Director(PersonalData personalData) {
+        this.personalData = personalData;
+    }
+
+    public PersonalData getPersonalData() {
+        return personalData;
     }
 
     @Override
     public String toString() {
-        return "Director{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
+        return "Director{" + personalData + "}";
     }
+    
 }

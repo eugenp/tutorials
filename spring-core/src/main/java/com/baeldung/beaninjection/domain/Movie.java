@@ -1,10 +1,12 @@
 package com.baeldung.beaninjection.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Movie {
 
-    private String title;
+    private Data data;
     private Director director;
 
     @Autowired
@@ -13,15 +15,15 @@ public class Movie {
     }
 
     @Autowired
-    public void setTitle(String title) {
-        this.title = title;
+    public void setData(Data data) {
+        this.data = data;
     }
 
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", director=" + director +
-                '}';
+    public Data getData() {
+        return data;
+    }
+
+    public Director getDirector() {
+        return director;
     }
 }
