@@ -1,0 +1,4 @@
+{
+  "query": "{ listUsers{ id name email age}}",
+  "parameters": {}
+}

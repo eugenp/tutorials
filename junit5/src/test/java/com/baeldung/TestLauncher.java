@@ -25,13 +25,15 @@ public class TestLauncher {
         
         //@formatter:on
 
-        TestPlan plan = LauncherFactory.create().discover(request);
+        TestPlan plan = LauncherFactory.create()
+            .discover(request);
         Launcher launcher = LauncherFactory.create();
         SummaryGeneratingListener summaryGeneratingListener = new SummaryGeneratingListener();
         launcher.execute(request, new TestExecutionListener[] { summaryGeneratingListener });
         launcher.execute(request);
 
-        summaryGeneratingListener.getSummary().printTo(new PrintWriter(System.out));
+        summaryGeneratingListener.getSummary()
+            .printTo(new PrintWriter(System.out));
 
     }
 }
