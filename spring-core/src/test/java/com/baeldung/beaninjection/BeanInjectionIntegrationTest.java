@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 @ContextConfiguration(
   loader = AnnotationConfigContextLoader.class,
   classes = Config.class)
-public class BeanInjectIntegrationTest {
+public class BeanInjectionIntegrationTest {
 
     @Autowired
     private Movie movie;
