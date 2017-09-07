@@ -27,7 +27,7 @@
 - [A Guide to Apache Commons DbUtils](http://www.baeldung.com/apache-commons-dbutils)
 - [Introduction to Awaitility](http://www.baeldung.com/awaitlity-testing)
 - [Guide to the HyperLogLog Algorithm](http://www.baeldung.com/java-hyperloglog)
-- [Introduction to Neuroph](http://www.baeldung.com/intro-to-neuroph)
+- [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Guide to Apache Commons CircularFifoQueue](http://www.baeldung.com/commons-circular-fifo-queue)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
