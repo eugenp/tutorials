@@ -1,17 +1,17 @@
 package com.baeldung.numberofdigits;
 
 public class NumberOfDigits {
-    public static int stringBasedSolution(int number) {
+    public int stringBasedSolution(int number) {
         int length = String.valueOf(number).length();
         return length;
     }
     
-    public static int logarithmicApproach(int number) {
+    public int logarithmicApproach(int number) {
         int length = (int) Math.log10(number) + 1;
         return length;
     }
     
-    public static int repeatedMultiplication(int number) {
+    public int repeatedMultiplication(int number) {
         int length = 0;
         long temp = 1;
         while(temp <= number) {
@@ -21,7 +21,7 @@ public class NumberOfDigits {
         return length;
     }
 
-    public static int shiftOperators(int number) {
+    public int shiftOperators(int number) {
         int length = 0;
         long temp = 1;
         while(temp <= number) {
@@ -31,7 +31,7 @@ public class NumberOfDigits {
         return length;
     }
     
-    public static int dividingWithPowersOf2(int number) {
+    public int dividingWithPowersOf2(int number) {
         int length = 1;
         if (number >= 100000000) {
             length += 8;
@@ -51,7 +51,7 @@ public class NumberOfDigits {
         return length;
     }
     
-    public static int divideAndConquer(int number) {
+    public int divideAndConquer(int number) {
         if (number < 100000){
             // 5 digits or less
             if (number < 100){

@@ -29,17 +29,6 @@ public class DateDiffUnitTest {
     }
 
     @Test
-    public void givenTwoDatesInJava8_whenDifferentiating_thenWeGetSix() {
-        LocalDate now = LocalDate.now();
-        LocalDate sixDaysBehind = now.minusDays(6);
-
-        Duration duration = Duration.between(now, sixDaysBehind);
-        long diff = Math.abs(duration.toDays());
-
-        assertEquals(diff, 6);
-    }
-
-    @Test
     public void givenTwoDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime sixMinutesBehind = now.minusMinutes(6);

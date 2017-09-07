@@ -12,13 +12,9 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver
 import org.thymeleaf.spring4.view.ThymeleafViewResolver
 import org.thymeleaf.templatemode.TemplateMode
 
-
-
-
-
 @EnableWebMvc
 @Configuration
-open class ApplicationWebConfig: WebMvcConfigurerAdapter(), ApplicationContextAware {
+open class ApplicationWebConfig : WebMvcConfigurerAdapter(), ApplicationContextAware {
 
     private var applicationContext: ApplicationContext? = null
 
@@ -34,27 +30,23 @@ open class ApplicationWebConfig: WebMvcConfigurerAdapter(), ApplicationContextAw
 
     @Bean
     open fun templateResolver(): SpringResourceTemplateResolver {
-        val templateResolver = SpringResourceTemplateResolver()
-        templateResolver.prefix = "/WEB-INF/view/"
-        templateResolver.suffix = ".html"
-        templateResolver.templateMode = TemplateMode.HTML
-        templateResolver.setApplicationContext(this.applicationContext);
-        return templateResolver
+        return SpringResourceTemplateResolver()
+                .apply { prefix = "/WEB-INF/view/" }
+                .apply { suffix = ".html"}
+                .apply { templateMode = TemplateMode.HTML }
+                .apply { setApplicationContext(applicationContext) }
     }
 
     @Bean
     open fun templateEngine(): SpringTemplateEngine {
-        val templateEngine = SpringTemplateEngine()
-        templateEngine.setTemplateResolver(templateResolver())
-        return templateEngine
+        return SpringTemplateEngine()
+                .apply { setTemplateResolver(templateResolver()) }
     }
 
     @Bean
     open fun viewResolver(): ThymeleafViewResolver {
-        val viewResolver = ThymeleafViewResolver()
-        viewResolver.templateEngine = templateEngine()
-        viewResolver.order = 1
-        return viewResolver
+        return ThymeleafViewResolver()
+                .apply { templateEngine = templateEngine() }
+                .apply { order = 1 }
     }
-
 }
