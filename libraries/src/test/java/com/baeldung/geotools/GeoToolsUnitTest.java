@@ -7,7 +7,7 @@ import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.junit.Test;
 import org.opengis.feature.simple.SimpleFeatureType;
 
-public class GeoToolsUnitTestTest {
+public class GeoToolsUnitTest {
 
     @Test
     public void givenFeatureType_whenAddLocations_returnFeatureCollection() {
