@@ -6,7 +6,7 @@ public class ServiceMain {
 
     public static void main(String[] args) throws InterruptedException {
         ProcessHandle thisProcess = ProcessHandle.current();
-        long pid = thisProcess.getPid();
+        long pid = thisProcess.pid();
 
         Optional<String[]> opArgs = Optional.ofNullable(args);
         String procName = opArgs.map(str -> str.length > 0 ? str[0] : null).orElse(System.getProperty("sun.java.command"));

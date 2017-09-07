@@ -4,10 +4,10 @@ GET
 HTTP/1.1 301 Moved Permanently
 8
 Server: nginx/1.10.0 (Ubuntu)
-Date: Thu, 09 Mar 2017 10:17:25 GMT
+Date: Sat, 24 Jun 2017 01:06:43 GMT
 Content-Type: text/html
 Content-Length: 194
 Connection: keep-alive
 Location: https://publicobject.com/helloworld.txt
-OkHttp-Sent-Millis: 1489054646977
-OkHttp-Received-Millis: 1489054647185
+OkHttp-Sent-Millis: 1498266403462
+OkHttp-Received-Millis: 1498266403727

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
-@RequestMapping(value = "/myfoos")
+@RequestMapping(value = "/foos")
 public class MyFooController {
 
     private final Map<Long, Foo> myfoos;
@@ -32,7 +32,7 @@ public class MyFooController {
 
     // API - read
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
     @ResponseBody
     public Collection<Foo> findAll() {
         return myfoos.values();
@@ -58,12 +58,20 @@ public class MyFooController {
         return foo;
     }
 
+    @RequestMapping(method = RequestMethod.PATCH, value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateFoo2(@PathVariable("id") final long id, @RequestBody final Foo foo) {
+        myfoos.put(id, foo);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Foo createFoo(@RequestBody final Foo foo, HttpServletResponse response) {
         myfoos.put(foo.getId(), foo);
-        response.setHeader("Location", ServletUriComponentsBuilder.fromCurrentRequest().path("/" + foo.getId()).toUriString());
+        response.setHeader("Location", ServletUriComponentsBuilder.fromCurrentRequest()
+            .path("/" + foo.getId())
+            .toUriString());
         return foo;
     }
 
