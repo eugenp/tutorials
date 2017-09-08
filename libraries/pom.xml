@@ -514,6 +514,11 @@
             <artifactId>hirondelle-date4j</artifactId>
             <version>${hirondelle-date4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -582,5 +587,6 @@
         <geotools.version>15.2</geotools.version>
         <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
+        <caffeine.version>2.5.5</caffeine.version>
     </properties>
 </project>
