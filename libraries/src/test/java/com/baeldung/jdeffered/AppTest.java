@@ -1,8 +1,7 @@
 package com.baeldung.jdeffered;
 
-import org.junit.Test;
-
 import com.baeldung.jdeffered.PipeDemo.Result;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,5 +23,4 @@ public class AppTest {
         Result result = PipeDemo.validate(80);
         assertEquals(result, Result.SUCCESS);
     }
-
 }
