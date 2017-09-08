@@ -239,6 +239,7 @@
 									</excludes>
 									<includes>
 										<include>**/*IntegrationTest.java</include>
+                                        <include>**/*UnitTest.java</include>
 									</includes>
 								</configuration>
 							</execution>

@@ -1,7 +1,7 @@
-package com.baeldung.controllers;
+package net.baeldung.controllers;
 
-import com.baeldung.services.ExampleService;
-import com.baeldung.transfer.LoginForm;
+import net.baeldung.services.ExampleService;
+import net.baeldung.transfer.LoginForm;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,18 +10,20 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.baeldung.web.main.Application;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.baeldung.config.MainApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-public class ExamplePostControllerRequestUnitTest {
+@SpringBootTest(classes = MainApplication.class)
+public class ExamplePostControllerResponseUnitTest {
 
     MockMvc mockMvc;
     @Mock private ExampleService exampleService;
@@ -44,11 +46,12 @@ public class ExamplePostControllerRequestUnitTest {
         try {
             when(exampleService.fakeAuthenticate(lf)).thenReturn(true);
             mockMvc
-              .perform(post("/post/request")
+              .perform(post("/post/response")
                 .content(jsonBody)
                 .contentType("application/json"))
               .andDo(print())
-              .andExpect(status().isOk());
+              .andExpect(status().isOk())
+              .andExpect(content().json("{\"text\":\"Thanks For Posting!!!\"}"));
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }

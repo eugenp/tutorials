@@ -1,4 +1,4 @@
-package com.baeldung.transfer;
+package net.baeldung.transfer;
 
 public class ResponseTransfer {
 
