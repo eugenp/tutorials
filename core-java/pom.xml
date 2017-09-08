@@ -80,7 +80,7 @@
         </dependency>
 
         <!-- logging -->
-       <dependency>
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
@@ -162,12 +162,6 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		    <version>${spring-core.version}</version>
-		    <scope>test</scope>
-		</dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
@@ -201,6 +195,21 @@
             <groupId>one.util</groupId>
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>1.19</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>1.19</version>
         </dependency>
     </dependencies>
 
@@ -363,6 +372,31 @@
                     </arguments>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>run-benchmarks</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <classpathScope>test</classpathScope>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>org.openjdk.jmh.Main</argument>
+                                <argument>.*</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
     </build>
@@ -402,7 +436,7 @@
         </profile>
     </profiles>
 
-    <properties>    	
+    <properties>
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
@@ -426,6 +460,7 @@
         <fscontext.version>4.6-b01</fscontext.version>
         <protonpack.version>1.13</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
+        <vavr.version>0.9.0</vavr.version>
 
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
@@ -433,8 +468,6 @@
         <mockito.version>2.8.9</mockito.version>
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <spring-core.version>4.3.10.RELEASE</spring-core.version>
-
 
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
