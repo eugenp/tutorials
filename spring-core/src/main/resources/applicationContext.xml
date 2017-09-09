@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="storageManagerUsingConstructor" class="com.baeldung.beaninjection.ConstructorBasedStorageManager">
+		<constructor-arg>
+			<ref bean="fileStorage" />
+		</constructor-arg>
+	</bean>
+	<bean id="storageManagerUsingSet" class="com.baeldung.beaninjection.SetterBasedStorageManager">
+		<property name="storage" ref="fileStorage" />
+	</bean>
+
+	<bean id="memoryStorage" class="com.baeldung.storage.MemoryStorage" />
+	<bean id="fileStorage" class="com.baeldung.storage.FileStorage" />
+</beans>
