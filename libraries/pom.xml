@@ -661,10 +661,9 @@
         <retrofit.version>2.3.0</retrofit.version>
         <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
-		    <protonpack.version>1.14</protonpack.version>
+		<protonpack.version>1.14</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-    	  <cache-ri.version>1.0.0</cache-ri.version>
-    	  <hazelcast.version>3.8.4</hazelcast.version>
+    	<hazelcast.version>3.8.4</hazelcast.version>
     </properties>
 </project>
