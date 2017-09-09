@@ -23,11 +23,11 @@ public class JsonFilterUnitTest {
 
         // arrange
         Author author = new Author("Alex", "Theedom");
-        FilterProvider filters = new SimpleFilterProvider()
-                .addFilter("authorFilter", SimpleBeanPropertyFilter.filterOutAllExcept("lastName"));
+        FilterProvider filters = new SimpleFilterProvider().addFilter("authorFilter", SimpleBeanPropertyFilter.filterOutAllExcept("lastName"));
 
         // act
-        String result = new ObjectMapper().writer(filters).writeValueAsString(author);
+        String result = new ObjectMapper().writer(filters)
+            .writeValueAsString(author);
 
         // assert
         assertThat(from(result).getList("items")).isNull();
