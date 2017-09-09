@@ -49,11 +49,11 @@ public class EmployeeRestControllerIntegrationTest {
     public void whenValidInput_thenCreateEmployee() throws IOException, Exception {
         Employee bob = new Employee("bob");
         mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON)
-          .content(JsonUtil.toJson(bob)));
+            .content(JsonUtil.toJson(bob)));
 
         List<Employee> found = repository.findAll();
         assertThat(found).extracting(Employee::getName)
-          .containsOnly("bob");
+            .containsOnly("bob");
     }
 
     @Test
@@ -63,12 +63,12 @@ public class EmployeeRestControllerIntegrationTest {
         createTestEmployee("alex");
 
         mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON))
-          .andDo(print())
-          .andExpect(status().isOk())
-          .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-          .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
-          .andExpect(jsonPath("$[0].name", is("bob")))
-          .andExpect(jsonPath("$[1].name", is("alex")));
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("$", hasSize(greaterThanOrEqualTo(2))))
+            .andExpect(jsonPath("$[0].name", is("bob")))
+            .andExpect(jsonPath("$[1].name", is("alex")));
     }
 
     private void createTestEmployee(String name) {

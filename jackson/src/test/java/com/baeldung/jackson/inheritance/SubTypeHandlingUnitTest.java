@@ -21,12 +21,12 @@ public class SubTypeHandlingUnitTest {
         assertEquals("Mercedes-Benz", truck.getMake());
         assertEquals("S500", truck.getModel());
     }
-    
+
     @Test
-    public void givenSubType_whenNotUsingNoArgsConstructors_thenSucceed() throws IOException{
+    public void givenSubType_whenNotUsingNoArgsConstructors_thenSucceed() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.enableDefaultTyping();
-        
+
         SubTypeConstructorStructure.Car car = new SubTypeConstructorStructure.Car("Mercedes-Benz", "S500", 5, 250.0);
         SubTypeConstructorStructure.Truck truck = new SubTypeConstructorStructure.Truck("Isuzu", "NQR", 7500.0);
 

@@ -48,10 +48,13 @@ public class JacksonSerializeUnitTest {
         module.addSerializer(new ActorJacksonSerializer(ActorJackson.class));
         final ObjectMapper mapper = new ObjectMapper();
 
-        final String jsonResult = mapper.registerModule(module).writer(new DefaultPrettyPrinter()).writeValueAsString(movieWithNullValue);
+        final String jsonResult = mapper.registerModule(module)
+            .writer(new DefaultPrettyPrinter())
+            .writeValueAsString(movieWithNullValue);
 
         final Object json = mapper.readValue("{\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"21-09-1982\",\"N° Film: \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}],\"imdbID\":null}", Object.class);
-        final String expectedOutput = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT).writeValueAsString(json);
+        final String expectedOutput = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT)
+            .writeValueAsString(json);
 
         Assert.assertEquals(jsonResult, expectedOutput);
     }

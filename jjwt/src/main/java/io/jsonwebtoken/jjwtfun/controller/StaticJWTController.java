@@ -30,12 +30,9 @@ public class StaticJWTController extends BaseController {
             .setSubject("msilverman")
             .claim("name", "Micah Silverman")
             .claim("scope", "admins")
-            .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L)))   // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
+            .setIssuedAt(Date.from(Instant.ofEpochSecond(1466796822L))) // Fri Jun 24 2016 15:33:42 GMT-0400 (EDT)
             .setExpiration(Date.from(Instant.ofEpochSecond(4622470422L))) // Sat Jun 24 2116 15:33:42 GMT-0400 (EDT)
-            .signWith(
-                SignatureAlgorithm.HS256,
-                secretService.getHS256SecretBytes()
-            )
+            .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
             .compact();
 
         return new JwtResponse(jws);

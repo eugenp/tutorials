@@ -1,6 +1,5 @@
 package org.baeldung.jsoncomponent;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.paint.Color;
