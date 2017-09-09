@@ -226,6 +226,10 @@
 					<artifactId>commons-logging</artifactId>
 					<groupId>commons-logging</groupId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -237,6 +241,10 @@
 					<artifactId>commons-logging</artifactId>
 					<groupId>commons-logging</groupId>
 				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -244,6 +252,12 @@
 			<artifactId>flink-test-utils_2.10</artifactId>
 			<version>${flink.version}</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -467,11 +481,23 @@
 			<artifactId>noexception</artifactId>
 			<version>1.1.0</version>
 		</dependency>
-    <dependency>
+    	<dependency>
 			<groupId>org.eclipse.collections</groupId>
 			<artifactId>eclipse-collections</artifactId>
 			<version>${eclipse-collections.version}</version>
 		</dependency>
+		<dependency>
+   			<groupId>javax.cache</groupId>
+   			<artifactId>cache-api</artifactId>
+   			<version>${cache.version}</version>
+   		</dependency>
+		<dependency>
+		    <groupId>com.hazelcast</groupId>
+		    <artifactId>hazelcast</artifactId>
+		    <version>${hazelcast.version}</version>
+		</dependency>
+		
+		
 	</dependencies>
 	<properties>
 		<multiverse.version>0.7.0</multiverse.version>
@@ -513,6 +539,9 @@
 		<bytebuddy.version>1.7.1</bytebuddy.version>
 		<pcollections.version>2.1.2</pcollections.version>
 		<rome.version>1.0</rome.version>
-    <eclipse-collections.version>8.2.0</eclipse-collections.version>
+    	<eclipse-collections.version>8.2.0</eclipse-collections.version>
+    	<cache.version>1.0.0</cache.version>
+    	<cache-ri.version>1.0.0</cache-ri.version>
+    	<hazelcast.version>3.8.4</hazelcast.version>
 	</properties>
 </project>
