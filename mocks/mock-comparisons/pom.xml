@@ -13,9 +13,9 @@
     <name>mock-comparisons</name>
 
     <properties>
-        <mockito.version>2.8.9</mockito.version>
+        <mockito.version>2.9.0</mockito.version>
         <easymock.version>3.4</easymock.version>
-        <jmockit.version>1.29</jmockit.version>
+        <jmockit.version>1.34</jmockit.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

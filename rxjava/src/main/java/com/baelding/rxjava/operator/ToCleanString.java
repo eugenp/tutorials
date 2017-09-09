@@ -39,5 +39,4 @@ public class ToCleanString implements Operator<String, String> {
             }
         };
     }
-
 }
