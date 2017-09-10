@@ -1,4 +1,4 @@
-package com.baeldung.di;
+package com.baeldung.fj;
 
 import static org.junit.Assert.assertEquals;
 
