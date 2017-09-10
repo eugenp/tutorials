@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
     @SuppressWarnings("unused")
 	private UserDetailsService userDetailsService;
 
@@ -23,11 +23,11 @@ public class CustomAuthenticationProvider extends DaoAuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
-        final User user = userRepository.findByEmail(auth.getName());
+        User user = userRepository.findByEmail(auth.getName());
         if ((user == null)) {
             throw new BadCredentialsException("Invalid username or password");
         }
-        final Authentication result = super.authenticate(auth);
+        Authentication result = super.authenticate(auth);
         return new UsernamePasswordAuthenticationToken(user, result.getCredentials(), result.getAuthorities());
     }
 

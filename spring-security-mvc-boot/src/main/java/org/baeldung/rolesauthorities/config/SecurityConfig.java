@@ -36,19 +36,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authProvider());
     }
 
     @Override
-    public void configure(final WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) throws Exception {
         web.ignoring()
             .antMatchers("/resources/**");
     }
 
     
     @Override
-    protected void configure(final HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) throws Exception {
     	
         // @formatter:off
         http

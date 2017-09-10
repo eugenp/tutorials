@@ -24,12 +24,12 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
     @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
+    public void addViewControllers(ViewControllerRegistry registry) {
         super.addViewControllers(registry);
         registry.addViewController("/").setViewName("forward:/home");
 		registry.addViewController("/protectedbynothing").setViewName("rolesauthorities/protectedbynothing");
@@ -41,7 +41,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 }

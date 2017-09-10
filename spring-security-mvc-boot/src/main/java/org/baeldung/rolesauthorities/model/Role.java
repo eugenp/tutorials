@@ -30,7 +30,7 @@ public class Role {
         super();
     }
 
-    public Role(final String name) {
+    public Role(String name) {
         super();
         this.name = name;
     }
@@ -41,7 +41,7 @@ public class Role {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,7 +49,7 @@ public class Role {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -57,7 +57,7 @@ public class Role {
         return users;
     }
 
-    public void setUsers(final Collection<User> users) {
+    public void setUsers(Collection<User> users) {
         this.users = users;
     }
 
@@ -65,13 +65,13 @@ public class Role {
         return privileges;
     }
 
-    public void setPrivileges(final Collection<Privilege> privileges) {
+    public void setPrivileges(Collection<Privilege> privileges) {
         this.privileges = privileges;
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
+        int prime = 31;
         int result = 1;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
@@ -97,7 +97,7 @@ public class Role {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         builder.append("Role [name=").append(name).append("]").append("[id=").append(id).append("]");
         return builder.toString();
     }

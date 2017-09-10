@@ -41,17 +41,17 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         }
 
         // == create initial privileges
-        final Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
-        final Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE"); 
+        Privilege readPrivilege = createPrivilegeIfNotFound("READ_PRIVILEGE");
+        Privilege writePrivilege = createPrivilegeIfNotFound("WRITE_PRIVILEGE"); 
 
         // == create initial roles
-        final List<Privilege> adminPrivileges = Arrays.asList(readPrivilege, writePrivilege);
+        List<Privilege> adminPrivileges = Arrays.asList(readPrivilege, writePrivilege);
         createRoleIfNotFound("ROLE_ADMIN", adminPrivileges);
         List<Privilege> rolePrivileges = new ArrayList<>();
         createRoleIfNotFound("ROLE_USER", rolePrivileges);
 
-        final Role adminRole = roleRepository.findByName("ROLE_ADMIN");
-        final User user = new User();
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        User user = new User();
         user.setFirstName("Admin");
         user.setLastName("Admin");
         user.setEmail("admin@test.com");
@@ -60,8 +60,8 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         user.setEnabled(true);
         userRepository.save(user);
 
-        final Role basicRole = roleRepository.findByName("ROLE_USER");
-        final User basicUser = new User();
+        Role basicRole = roleRepository.findByName("ROLE_USER");
+        User basicUser = new User();
         basicUser.setFirstName("User");
         basicUser.setLastName("User");
         basicUser.setEmail("user@test.com");
@@ -74,7 +74,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     }
 
     @Transactional
-    private final Privilege createPrivilegeIfNotFound(final String name) {
+    private Privilege createPrivilegeIfNotFound(String name) {
         Privilege privilege = privilegeRepository.findByName(name);
         if (privilege == null) {
             privilege = new Privilege(name);
@@ -84,7 +84,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     }
 
     @Transactional
-    private final Role createRoleIfNotFound(final String name, final Collection<Privilege> privileges) {
+    private Role createRoleIfNotFound(String name, Collection<Privilege> privileges) {
         Role role = roleRepository.findByName(name);
         if (role == null) {
             role = new Role(name);
