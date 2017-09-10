@@ -21,9 +21,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JdbcIntegrationTest {
+public class JdbcLiveTest {
 
-    private static final Logger LOG = Logger.getLogger(JdbcIntegrationTest.class);
+    private static final Logger LOG = Logger.getLogger(JdbcLiveTest.class);
 
     private Connection con;
 
