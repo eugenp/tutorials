@@ -78,7 +78,7 @@ public class Role {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -88,7 +88,7 @@ public class Role {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Role role = (Role) obj;
+        Role role = (Role) obj;
         if (!role.equals(role.name)) {
             return false;
         }
