@@ -2,9 +2,9 @@ package com.baeldung.algorithms.linkedlist;
 
 public class CycleDetectionByFastAndSlowIterators {
 
-    public static <T> boolean detectCycle(Node<T> head) {
+    public static <T> CycleDetectionResult<T> detectCycle(Node<T> head) {
         if (head == null) {
-            return false;
+            return new CycleDetectionResult<>(false, null);
         }
 
         Node<T> slow = head;
@@ -15,11 +15,11 @@ public class CycleDetectionByFastAndSlowIterators {
             fast = fast.next.next;
 
             if (slow == fast) {
-                return true;
+                return new CycleDetectionResult<>(true, fast);
             }
         }
 
-        return false;
+        return new CycleDetectionResult<>(false, null);
     }
 
 }
