@@ -3,26 +3,21 @@ package com.baeldung.algorithms.linkedlist;
 public class CycleRemovalBruteForce {
 
     public static <T> boolean detectAndRemoveCycle(Node<T> head) {
-        if (head == null) {
-            return false;
+        CycleDetectionResult<T> result = CycleDetectionByFastAndSlowIterators.detectCycle(head);
+
+        if (result.cycleExists) {
+            removeCycle(result.node, head);
         }
 
-        Node<T> slow = head;
-        Node<T> fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-
-            if (slow == fast) {
-                removeCycle(slow, head);
-                return true;
-            }
-        }
-
-        return false;
+        return result.cycleExists;
     }
 
+    /**
+     * @param loopNodeParam - reference to the node where Flyods cycle 
+     * finding algorithm ends, i.e. the fast and the slow iterators
+     * meet.
+     * @param head - reference to the head of the list
+     */
     private static <T> void removeCycle(Node<T> loopNodeParam, Node<T> head) {
         Node<T> it = head;
 
@@ -39,12 +34,12 @@ public class CycleRemovalBruteForce {
     private static <T> boolean isNodeReachableFromLoopNode(Node<T> it, Node<T> loopNodeParam) {
         Node<T> loopNode = loopNodeParam;
 
-        while (loopNode.next != loopNodeParam) {
+        do {
             if (it == loopNode) {
                 return true;
             }
             loopNode = loopNode.next;
-        }
+        } while (loopNode.next != loopNodeParam);
 
         return false;
     }

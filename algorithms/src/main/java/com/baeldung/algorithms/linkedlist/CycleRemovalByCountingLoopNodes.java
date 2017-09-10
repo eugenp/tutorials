@@ -3,28 +3,17 @@ package com.baeldung.algorithms.linkedlist;
 public class CycleRemovalByCountingLoopNodes {
 
     public static <T> boolean detectAndRemoveCycle(Node<T> head) {
-        if (head == null) {
-            return false;
+        CycleDetectionResult<T> result = CycleDetectionByFastAndSlowIterators.detectCycle(head);
+
+        if (result.cycleExists) {
+            removeCycle(result.node, head);
         }
 
-        Node<T> slow = head;
-        Node<T> fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-
-            if (slow == fast) {
-                int cycleLength = calculateCycleLength(slow);
-                removeCycle(head, cycleLength);
-                return true;
-            }
-        }
-
-        return false;
+        return result.cycleExists;
     }
 
-    private static <T> void removeCycle(Node<T> head, int cycleLength) {
+    private static <T> void removeCycle(Node<T> loopNodeParam, Node<T> head) {
+        int cycleLength = calculateCycleLength(loopNodeParam);
         Node<T> cycleLengthAdvancedIterator = head;
         Node<T> it = head;
 
