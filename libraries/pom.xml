@@ -559,21 +559,6 @@
 	    <artifactId>functionaljava</artifactId>
 	    <version>4.7</version>
 	</dependency>
-	<dependency>
-	    <groupId>org.functionaljava</groupId>
-	    <artifactId>functionaljava-java8</artifactId>
-	    <version>4.7</version>
-        </dependency>
-        <dependency>
-	    <groupId>org.functionaljava</groupId>
-	    <artifactId>functionaljava-quickcheck</artifactId>
-	    <version>4.7</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.functionaljava</groupId>
-	    <artifactId>functionaljava-java-core</artifactId>
-	    <version>4.7</version>
-        </dependency>
     </dependencies>
     <repositories>
         <repository>
