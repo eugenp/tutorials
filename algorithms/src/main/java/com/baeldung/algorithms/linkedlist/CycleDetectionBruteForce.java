@@ -2,9 +2,9 @@ package com.baeldung.algorithms.linkedlist;
 
 public class CycleDetectionBruteForce {
 
-    public static <T> boolean detectCycle(Node<T> head) {
+    public static <T> CycleDetectionResult<T> detectCycle(Node<T> head) {
         if (head == null) {
-            return false;
+            return new CycleDetectionResult<>(false, null);
         }
 
         Node<T> it1 = head;
@@ -25,14 +25,14 @@ public class CycleDetectionBruteForce {
                 }
 
                 if (noOfTimesCurrentNodeVisited == 2) {
-                    return true;
+                    return new CycleDetectionResult<>(true, it1);
                 }
 
                 x--;
             }
         }
 
-        return false;
+        return new CycleDetectionResult<>(false, null);
     }
 
 }
