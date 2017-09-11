@@ -9,8 +9,8 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public void drawShape() {
+    public void draw() {
         LOG.info("Triangle drawn. ");
-        color.fillColor();
+        color.fill();
     }
 }

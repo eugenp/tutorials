@@ -1,15 +1,15 @@
 package com.baeldung.designpatterns.adapter;
 
 public class LuxuryCarsAdapterImpl implements LuxuryCarsAdapter {
-    private LuxuryCars luxuryCars;
+    private Movable luxuryCars;
     
-    public LuxuryCarsAdapterImpl(LuxuryCars luxuryCars) {
+    public LuxuryCarsAdapterImpl(Movable luxuryCars) {
         this.luxuryCars = luxuryCars;
     }
 
     @Override
-    public double speedInKMPH() {
-        double mph = luxuryCars.speedInMPH();
+    public double getSpeed() {
+        double mph = luxuryCars.getSpeed();
         return convertMPHtoKMPH(mph);
     }
     

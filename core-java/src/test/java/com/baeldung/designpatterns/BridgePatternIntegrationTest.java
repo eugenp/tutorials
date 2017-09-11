@@ -30,11 +30,11 @@ public class BridgePatternIntegrationTest {
     public void whenBridgePatternInvoked_thenConfigSuccess() {
         //a square with red color
         Shape square = new Square(new Red());
-        square.drawShape();
+        square.draw();
         
         //a triangle with blue color
         Shape triangle = new Triangle(new Blue());
-        triangle.drawShape();
+        triangle.draw();
 
         final List<LoggingEvent> log = appender.getLog();
         

@@ -9,8 +9,8 @@ public class Square extends Shape {
     }
 
     @Override
-    public void drawShape() {
+    public void draw() {
         LOG.info("Square drawn. ");
-        color.fillColor();
+        color.fill();
     }
 }

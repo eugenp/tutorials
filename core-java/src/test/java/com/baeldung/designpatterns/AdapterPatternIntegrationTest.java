@@ -12,9 +12,9 @@ import com.baeldung.designpatterns.adapter.McLaren;
 public class AdapterPatternIntegrationTest {
     @Test
     public void givenLuxuryCarsAdapter_WhenConvertingMPHToKMPH_thenSuccessfullyConverted() {
-        assertEquals(new LuxuryCarsAdapterImpl(new BugattiVeyron()).speedInKMPH(), 431.30312, 0.00001);
-        assertEquals(new LuxuryCarsAdapterImpl(new McLaren()).speedInKMPH(), 387.85094, 0.00001);
-        assertEquals(new LuxuryCarsAdapterImpl(new AstonMartin()).speedInKMPH(), 354.0548, 0.00001);
+        assertEquals(new LuxuryCarsAdapterImpl(new BugattiVeyron()).getSpeed(), 431.30312, 0.00001);
+        assertEquals(new LuxuryCarsAdapterImpl(new McLaren()).getSpeed(), 387.85094, 0.00001);
+        assertEquals(new LuxuryCarsAdapterImpl(new AstonMartin()).getSpeed(), 354.0548, 0.00001);
     }
 }
 
