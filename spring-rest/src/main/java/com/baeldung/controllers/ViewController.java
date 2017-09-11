@@ -1,4 +1,4 @@
-package net.baeldung.controllers;
+package com.baeldung.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
-package net.baeldung.controllers;
+package com.baeldung.controllers;
 
-import net.baeldung.services.ExampleService;
-import net.baeldung.transfer.LoginForm;
+import com.baeldung.services.ExampleService;
+import com.baeldung.transfer.LoginForm;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -517,6 +517,11 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>adapter-rxjava</artifactId>
             <version>${retrofit.version}</version>
+        </dependency>        
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>3.9.0</version>
         </dependency>
         <dependency>
             <groupId>com.darwinsys</groupId>
@@ -554,6 +559,21 @@
             <artifactId>protonpack</artifactId>
             <version>${protonpack.version}</version>
         </dependency>
+        <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava</artifactId>
+	          <version>4.7</version>
+	      </dependency>
+        <dependency>
+   			    <groupId>javax.cache</groupId>
+   			    <artifactId>cache-api</artifactId>
+   			    <version>${cache.version}</version>
+   		  </dependency>
+		    <dependency>
+		        <groupId>com.hazelcast</groupId>
+		        <artifactId>hazelcast</artifactId>
+		        <version>${hazelcast.version}</version>
+		    </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -633,5 +653,7 @@
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
 		<protonpack.version>1.14</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
+        <cache.version>1.0.0</cache.version>
+    	<hazelcast.version>3.8.4</hazelcast.version>
     </properties>
 </project>

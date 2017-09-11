@@ -1,6 +1,6 @@
-package net.baeldung.services;
+package com.baeldung.services;
 
-import net.baeldung.transfer.LoginForm;
+import com.baeldung.transfer.LoginForm;
 import org.springframework.stereotype.Service;
 
 @Service
