@@ -9,7 +9,7 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class UDPIntegrationTest {
+public class UDPLiveTest {
     private EchoClient client;
 
     @Before

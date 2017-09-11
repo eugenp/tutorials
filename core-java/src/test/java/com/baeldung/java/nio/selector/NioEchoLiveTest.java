@@ -8,10 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class NioEchoIntegrationTest {
+public class NioEchoLiveTest {
 
-    Process server;
-    EchoClient client;
+    private Process server;
+    private EchoClient client;
 
     @Before
     public void setup() throws IOException, InterruptedException {

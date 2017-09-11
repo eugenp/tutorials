@@ -1,4 +1,4 @@
-package com.baeldung.networking.udp.multicast;
+package com.baeldung.networking.udp.broadcast;
 
 import org.junit.After;
 import org.junit.Test;
@@ -7,8 +7,8 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
-public class MulticastIntegrationTest {
-    private MulticastingClient client;
+public class BroadcastLiveTest {
+    private BroadcastingClient client;
 
     @Test
     public void whenBroadcasting_thenDiscoverExpectedServers() throws Exception {
@@ -21,10 +21,10 @@ public class MulticastIntegrationTest {
 
     private void initializeForExpectedServers(int expectedServers) throws Exception {
         for (int i = 0; i < expectedServers; i++) {
-            new MulticastEchoServer().start();
+            new BroadcastingEchoServer().start();
         }
 
-        client = new MulticastingClient(expectedServers);
+        client = new BroadcastingClient(expectedServers);
     }
 
     @After
