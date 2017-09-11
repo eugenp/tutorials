@@ -16,7 +16,7 @@ import com.baeldung.retrofit.models.Repository;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GitHubBasicApiTest {
+public class GitHubBasicApiLiveTest {
     
     GitHubBasicApi gitHub;
     
