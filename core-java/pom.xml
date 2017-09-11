@@ -239,6 +239,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
+                        <exclude>**/*LiveTest.java</exclude>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
