@@ -2,7 +2,6 @@ package com.baeldung.controllers;
 
 import com.baeldung.services.ExampleService;
 import com.baeldung.transfer.LoginForm;
-import org.baeldung.web.main.Application;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.baeldung.config.MainApplication;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -20,15 +20,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-public class ExamplePostControllerRequestIntegrationTest {
+@SpringBootTest(classes = MainApplication.class)
+public class ExamplePostControllerRequestUnitTest {
 
     MockMvc mockMvc;
-    @Mock
-    private ExampleService exampleService;
-
-    @InjectMocks
-    private ExamplePostController exampleController;
+    @Mock private ExampleService exampleService;
+    @InjectMocks private ExamplePostController exampleController;
     private final String jsonBody = "{\"username\": \"username\", \"password\": \"password\"}";
     private LoginForm lf = new LoginForm();
 

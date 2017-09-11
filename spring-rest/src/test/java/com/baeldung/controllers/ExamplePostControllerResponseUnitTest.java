@@ -2,7 +2,6 @@ package com.baeldung.controllers;
 
 import com.baeldung.services.ExampleService;
 import com.baeldung.transfer.LoginForm;
-import org.baeldung.web.main.Application;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -19,19 +19,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import org.baeldung.config.MainApplication;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-public class ExamplePostControllerResponseIntegrationTest {
+@SpringBootTest(classes = MainApplication.class)
+public class ExamplePostControllerResponseUnitTest {
 
-    private MockMvc mockMvc;
-
-    @Mock
-    private ExampleService exampleService;
-
-    @InjectMocks
-    private ExamplePostController exampleController;
-
+    MockMvc mockMvc;
+    @Mock private ExampleService exampleService;
+    @InjectMocks private ExamplePostController exampleController;
+    private final String jsonBody = "{\"username\": \"username\", \"password\": \"password\"}";
     private LoginForm lf = new LoginForm();
 
     @Before
@@ -48,7 +45,6 @@ public class ExamplePostControllerResponseIntegrationTest {
     public void requestBodyTest() {
         try {
             when(exampleService.fakeAuthenticate(lf)).thenReturn(true);
-            String jsonBody = "{\"username\": \"username\", \"password\": \"password\"}";
             mockMvc
               .perform(post("/post/response")
                 .content(jsonBody)
