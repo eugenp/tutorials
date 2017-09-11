@@ -416,7 +416,8 @@
                         <executions>
                             <execution>
                                 <id>run-benchmarks</id>
-                                <phase>integration-test</phase>
+                            <!--    <phase>integration-test</phase>-->
+                                <phase>none</phase>
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>
