@@ -1,0 +1,8 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway-service
+management:
+  security:
+    enabled: false

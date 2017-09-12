@@ -1,0 +1,9 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: user-service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.cloud: WARN
