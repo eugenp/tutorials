@@ -55,8 +55,8 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <spring-cloud-starter-eureka.version>1.2.3.RELEASE</spring-cloud-starter-eureka.version>
-        <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
+        <spring-cloud-dependencies.version>Camden.SR5</spring-cloud-dependencies.version>
+        <spring-cloud-starter-eureka.version>1.2.5.RELEASE</spring-cloud-starter-eureka.version>
+        <spring-boot-starter-web.version>1.5.2.RELEASE</spring-boot-starter-web.version>
     </properties>
 </project>
