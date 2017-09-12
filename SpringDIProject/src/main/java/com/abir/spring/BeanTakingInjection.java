@@ -18,8 +18,8 @@ public class BeanTakingInjection {
 		this.beantoBeInjected = beantoBeInjected;
 	}
 
-	public void callingInjectedBeanMethod() {
+	public String callingInjectedBeanMethod() {
 		System.out.println("Setter/Property Based Injection invoked...");
-		beantoBeInjected.somemethod();
+		return beantoBeInjected.somemethod();
 	}
 }

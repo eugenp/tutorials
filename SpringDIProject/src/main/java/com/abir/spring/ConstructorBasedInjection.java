@@ -13,9 +13,12 @@ public class ConstructorBasedInjection {
 		this.beanToBeInjected = beanToBeInjected;
 	}
 
-	public void callingInjectedBeanMethod() {
+	public String callingInjectedBeanMethod() {
 		System.out.println("Constructor based Injection invoked...");
-		beanToBeInjected.somemethod();
+		return beanToBeInjected.somemethod();
 	}
 
+	public BeanToBeInjected getBeanToBeInjected() {
+		return beanToBeInjected;
+	}
 }
