@@ -17,7 +17,7 @@ import static org.junit.Assert.assertFalse;
 
 public class MBassadorAsyncInvocationTest {
 
-    private MBassador dispatcher = new MBassador();
+    private MBassador dispatcher = new MBassador<Integer>();
 
     private Integer testInteger;
     private String invocationThreadName;
