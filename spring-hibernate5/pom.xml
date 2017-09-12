@@ -120,6 +120,12 @@
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
         </dependency>
+	    
+	<dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -167,7 +173,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.5.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.10.RELEASE</org.springframework.version>
 
 	     <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
 
@@ -177,7 +183,8 @@
 
         <!-- persistence -->
         <hibernate.version>5.2.10.Final</hibernate.version>
-        <tomcat-dbcp.version>8.5.15</tomcat-dbcp.version>
+	<mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
+        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
         <h2.version>1.4.195</h2.version>

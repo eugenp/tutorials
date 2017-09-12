@@ -14,14 +14,12 @@ public class CustomisedListener implements ITestListener {
         LOGGER.info("PASSED TEST CASES");
         context.getPassedTests()
             .getAllResults()
-            .stream()
             .forEach(result -> {
                 LOGGER.info(result.getName());
             });
         LOGGER.info("FAILED TEST CASES");
         context.getFailedTests()
             .getAllResults()
-            .stream()
             .forEach(result -> {
                 LOGGER.info(result.getName());
             });

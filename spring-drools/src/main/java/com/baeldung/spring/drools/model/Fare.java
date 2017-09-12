@@ -29,4 +29,5 @@ public class Fare {
     public Long getTotalFare() {
         return nightSurcharge + rideFare;
     }
+
 }

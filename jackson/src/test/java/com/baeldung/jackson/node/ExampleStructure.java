@@ -10,7 +10,8 @@ public class ExampleStructure {
     private static ObjectMapper mapper = new ObjectMapper();
 
     static JsonNode getExampleRoot() throws IOException {
-        InputStream exampleInput = ExampleStructure.class.getClassLoader().getResourceAsStream("node_example.json");
+        InputStream exampleInput = ExampleStructure.class.getClassLoader()
+            .getResourceAsStream("node_example.json");
         JsonNode rootNode = mapper.readTree(exampleInput);
         return rootNode;
     }

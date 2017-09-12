@@ -12,13 +12,12 @@ public class ApplicationRunner {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(TaxiFareConfiguration.class);
-        TaxiFareCalculatorService orderService = context.getBean(TaxiFareCalculatorService.class);
-
+        TaxiFareCalculatorService taxiFareCalculatorService = (TaxiFareCalculatorService) context.getBean(TaxiFareCalculatorService.class);
         TaxiRide taxiRide = new TaxiRide();
-        taxiRide.setbNightSurcharge(true);
+        taxiRide.setIsNightSurcharge(true);
         taxiRide.setDistanceInMile(190L);
         Fare rideFare = new Fare();
-        orderService.calculateFare(taxiRide, rideFare);
+        taxiFareCalculatorService.calculateFare(taxiRide, rideFare);
     }
 
 }
