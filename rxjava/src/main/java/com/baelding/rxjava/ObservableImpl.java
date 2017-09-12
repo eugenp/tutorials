@@ -3,12 +3,22 @@ package com.baelding.rxjava;
 import rx.Observable;
 import rx.observables.BlockingObservable;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ObservableImpl {
 
-    public static void main(String[] args) {
+    static Integer[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        Integer[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        String[] letters = {"a", "b", "c", "d", "e", "f", "g"};
+    static String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i"};
+    static String[] titles = {"title"};
+    public static List<String> titleList = Arrays.asList(titles);
+
+    public static Observable<String> getTitle() {
+        return Observable.from(titleList);
+    }
+
+    public static void main(String[] args) {
 
         System.out.println("-------Just-----------");
         Observable<String> observable = Observable.just("Hello");
@@ -28,14 +38,9 @@ public class ObservableImpl {
 
         System.out.println();
         System.out.println("-------FlatMap-----------");
-        Observable.from(letters)
-          .flatMap((letter) -> {
-              String[] returnStrings = {letter.toUpperCase(), letter.toLowerCase()};
-              return Observable.from(returnStrings);
-          })
-          .subscribe(
-            System.out::print
-          );
+        Observable.just("book1", "book2")
+          .flatMap(s -> getTitle())
+          .subscribe(System.out::print);
 
         System.out.println();
         System.out.println("--------Scan----------");
@@ -55,16 +60,12 @@ public class ObservableImpl {
         System.out.println("-------Filter-----------");
         Observable.from(numbers)
           .filter(i -> (i % 2 == 1))
-          .subscribe(
-            System.out::println
-          );
+          .subscribe(System.out::println);
 
         System.out.println("------DefaultIfEmpty------------");
         Observable.empty()
           .defaultIfEmpty("Observable is empty")
-          .subscribe(
-            System.out::println
-          );
+          .subscribe(System.out::println);
 
         System.out.println("------DefaultIfEmpty-2-----------");
         Observable.from(letters)

@@ -13,8 +13,9 @@ public class ResourceManagement {
               return resource;
           },
           r -> Observable.create(o -> {
-              for (Character c : r.toCharArray())
+              for (Character c : r.toCharArray()) {
                   o.onNext(c);
+              }
               o.onCompleted();
           }),
           r -> System.out.println("Disposed: " + r)
