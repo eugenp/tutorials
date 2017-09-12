@@ -22,7 +22,7 @@ import com.baeldung.arquillian.Component;
 import com.baeldung.arquillian.ConvertToLowerCase;
 
 @RunWith(Arquillian.class)
-public class ArquillianTest {
+public class ArquillianLiveTest {
 
     @Deployment
     public static JavaArchive createDeployment() {
