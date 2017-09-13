@@ -57,7 +57,7 @@
 
         <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
 
-
+        <module>geotools</module>
         <module>groovy-spock</module>
         <module>gson</module>
         <module>guava</module>

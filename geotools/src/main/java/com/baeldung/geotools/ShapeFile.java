@@ -50,42 +50,10 @@ public class ShapeFile {
         ShapefileDataStoreFactory dataStoreFactory = new ShapefileDataStoreFactory();
 
         Map<String, Serializable> params = new HashMap<String, Serializable>();
-        params.put("url", shapeFile.toURI()
-            .toURL());
-        params.put("create spatial index", Boolean.TRUE);
 
-        ShapefileDataStore dataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
-        dataStore.createSchema(CITY);
+        ShapefileDataStore dataStore = setDataStoreParams(dataStoreFactory, params, shapeFile, CITY);
 
-        // If you decide to use the TYPE type and create a Data Store with it,
-        // You will need to uncomment this line to set the Coordinate Reference System
-        // newDataStore.forceSchemaCRS(DefaultGeographicCRS.WGS84);
-
-        Transaction transaction = new DefaultTransaction("create");
-
-        String typeName = dataStore.getTypeNames()[0];
-        SimpleFeatureSource featureSource = dataStore.getFeatureSource(typeName);
-
-        if (featureSource instanceof SimpleFeatureStore) {
-            SimpleFeatureStore featureStore = (SimpleFeatureStore) featureSource;
-
-            featureStore.setTransaction(transaction);
-            try {
-                featureStore.addFeatures(collection);
-                transaction.commit();
-
-            } catch (Exception problem) {
-                problem.printStackTrace();
-                transaction.rollback();
-
-            } finally {
-                transaction.close();
-            }
-            System.exit(0); // success!
-        } else {
-            System.out.println(typeName + " does not support read/write access");
-            System.exit(1);
-        }
+        writeToFile(dataStore, collection);
 
     }
 
@@ -152,7 +120,7 @@ public class ShapeFile {
         }
 
     }
-    
+
     private static void addToLocationMap(String name, double lat, double lng, Map<String, List<Double>> locations) {
         List<Double> coordinates = new ArrayList<>();
 
@@ -163,7 +131,6 @@ public class ShapeFile {
 
     private static File getNewShapeFile() {
         String filePath = new File(".").getAbsolutePath() + FILE_NAME;
-        
 
         JFileDataStoreChooser chooser = new JFileDataStoreChooser("shp");
         chooser.setDialogTitle("Save shapefile");
@@ -176,12 +143,52 @@ public class ShapeFile {
         }
 
         File shapeFile = chooser.getSelectedFile();
-        if (shapeFile.equals(filePath)) {
-            System.out.println("Error: cannot replace " + filePath);
-            System.exit(0);
-        }
 
         return shapeFile;
+    }
+
+    private static ShapefileDataStore setDataStoreParams(ShapefileDataStoreFactory dataStoreFactory, Map<String, Serializable> params, File shapeFile, SimpleFeatureType CITY) throws Exception {
+        params.put("url", shapeFile.toURI()
+            .toURL());
+        params.put("create spatial index", Boolean.TRUE);
+
+        ShapefileDataStore dataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
+        dataStore.createSchema(CITY);
+
+        return dataStore;
+    }
+
+    private static void writeToFile(ShapefileDataStore dataStore, DefaultFeatureCollection collection) throws Exception {
+
+        // If you decide to use the TYPE type and create a Data Store with it,
+        // You will need to uncomment this line to set the Coordinate Reference System
+        // newDataStore.forceSchemaCRS(DefaultGeographicCRS.WGS84);
+
+        Transaction transaction = new DefaultTransaction("create");
+
+        String typeName = dataStore.getTypeNames()[0];
+        SimpleFeatureSource featureSource = dataStore.getFeatureSource(typeName);
+
+        if (featureSource instanceof SimpleFeatureStore) {
+            SimpleFeatureStore featureStore = (SimpleFeatureStore) featureSource;
+
+            featureStore.setTransaction(transaction);
+            try {
+                featureStore.addFeatures(collection);
+                transaction.commit();
+
+            } catch (Exception problem) {
+                problem.printStackTrace();
+                transaction.rollback();
+
+            } finally {
+                transaction.close();
+            }
+            System.exit(0); // success!
+        } else {
+            System.out.println(typeName + " does not support read/write access");
+            System.exit(1);
+        }
     }
 
 }
