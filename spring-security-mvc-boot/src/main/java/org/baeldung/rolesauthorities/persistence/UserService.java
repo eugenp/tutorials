@@ -13,7 +13,7 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository repository;
 
-    public User findUserByEmail(final String email) {
+    public User findUserByEmail(String email) {
         return repository.findByEmail(email);
     }
 }
