@@ -10,23 +10,34 @@ import javax.json.JsonReader;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 
-public class GeocodeXyz implements GeocodingService {
+public class MapQuestGeocoder implements GeocodingService {
 
     private final OkHttpClient client;
 
-    public GeocodeXyz() {
+    public MapQuestGeocoder() {
         this.client = new OkHttpClient();
     }
 
-    @Override
-    public Coord geocode(String address) throws GeocodeException {
-        String url = null;
+    // Consumer Key 	Dt1zZlW5HRrRfGI2nMqEyO0wlayqDozp
+    // Consumer Secret 	1RzGSx0cWokI0kxz
+    @Override public Coord geocode(String address) throws GeocodeException {
+        //
+
+        URL url = null;
         try {
-            url = String.format("https://geocode.xyz/?locate=%s&geoit=JSON", URLEncoder.encode(address, "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            // should really never happen
+            url = new URL(
+                    String.format("http://www.mapquestapi.com/geocoding/v1/address?"
+                            + "key=%s"
+                            + "&location=%s"
+                            + "&thumbMaps=false&outFormat=json",
+                            URLEncoder.encode("Dt1zZlW5HRrRfGI2nMqEyO0wlayqDozp", "UTF-8"),
+                            URLEncoder.encode(address, "UTF-8")));
+        } catch (UnsupportedEncodingException | MalformedURLException e) {
+            e.printStackTrace();
         }
         Request request = new Request.Builder()
                 .url(url)
@@ -49,6 +60,7 @@ public class GeocodeXyz implements GeocodingService {
         } catch (IOException e) {
             throw new GeocodeException(e);
         }
-
+        
     }
+
 }
