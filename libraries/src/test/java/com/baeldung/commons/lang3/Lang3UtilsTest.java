@@ -100,14 +100,14 @@ public class Lang3UtilsTest {
     public void testAddEventListenerThrowsException() {
         final ExceptionEventSource src = new ExceptionEventSource();
         try {
-            EventUtils.addEventListener(src, PropertyChangeListener.class, (PropertyChangeEvent e) -> {/* Change event*/}
-            );
+            EventUtils.addEventListener(src, PropertyChangeListener.class, (PropertyChangeEvent e) -> {
+                /* Change event*/});
             fail("Add method should have thrown an exception, so method should fail.");
         } catch (final RuntimeException e) {
 
         }
     }
-    
+
     @Test
     public void ConcurrentExceptionSample() throws ConcurrentException {
         final Error err = new AssertionError("Test");
@@ -118,11 +118,19 @@ public class Lang3UtilsTest {
             assertEquals("Wrong error", err, e);
         }
     }
-    
+
     public static class ExceptionEventSource {
         public void addPropertyChangeListener(final PropertyChangeListener listener) {
             throw new RuntimeException();
         }
+    }
+
+    @Test
+    public void testLazyInitializer() throws Exception {
+        SampleLazyInitializer sampleLazyInitializer = new SampleLazyInitializer();
+        SampleObject sampleObjectOne = sampleLazyInitializer.get();
+        SampleObject sampleObjectTwo = sampleLazyInitializer.get();
+        assertEquals(sampleObjectOne, sampleObjectTwo);
     }
 
 }
