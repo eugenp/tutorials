@@ -24,7 +24,7 @@ public class Privilege {
         super();
     }
 
-    public Privilege(final String name) {
+    public Privilege(String name) {
         super();
         this.name = name;
     }
@@ -35,7 +35,7 @@ public class Privilege {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -43,7 +43,7 @@ public class Privilege {
         return name;
     }
 
-    public void setName(final String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -51,13 +51,13 @@ public class Privilege {
         return roles;
     }
 
-    public void setRoles(final Collection<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
+        int prime = 31;
         int result = 1;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;

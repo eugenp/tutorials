@@ -50,5 +50,3 @@ public class Spring5JUnit4ConcurrentIntegrationTest implements ApplicationContex
     }
 
 }
-
-

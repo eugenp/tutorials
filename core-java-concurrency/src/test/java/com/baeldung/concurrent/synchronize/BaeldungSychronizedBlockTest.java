@@ -18,7 +18,7 @@ public class BaeldungSychronizedBlockTest {
 
         IntStream.range(0, 1000)
           .forEach(count -> service.submit(synchronizedBlocks::performSynchronisedTask));
-        service.awaitTermination(100, TimeUnit.MILLISECONDS);
+        service.awaitTermination(500, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, synchronizedBlocks.getCount());
     }
@@ -29,7 +29,7 @@ public class BaeldungSychronizedBlockTest {
 
         IntStream.range(0, 1000)
           .forEach(count -> service.submit(BaeldungSynchronizedBlocks::performStaticSyncTask));
-        service.awaitTermination(100, TimeUnit.MILLISECONDS);
+        service.awaitTermination(500, TimeUnit.MILLISECONDS);
 
         assertEquals(1000, BaeldungSynchronizedBlocks.getStaticCount());
     }
