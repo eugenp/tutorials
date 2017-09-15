@@ -16,9 +16,7 @@ public class GeoToolsUnitTest {
 
         SimpleFeatureType CITY = ShapeFile.createFeatureType();
 
-        SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(CITY);
-
-        ShapeFile.addLocations(featureBuilder, collection);
+        ShapeFile.addLocations(CITY, collection);
 
         assertNotNull(collection);
 
