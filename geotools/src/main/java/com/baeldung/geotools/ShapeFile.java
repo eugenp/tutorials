@@ -1,12 +1,8 @@
 package com.baeldung.geotools;
 
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Point;
 import org.geotools.data.DataUtilities;
 import org.geotools.data.DefaultTransaction;
 import org.geotools.data.Transaction;
@@ -23,9 +19,13 @@ import org.geotools.swing.data.JFileDataStoreChooser;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 
-import com.vividsolutions.jts.geom.Coordinate;
-import com.vividsolutions.jts.geom.GeometryFactory;
-import com.vividsolutions.jts.geom.Point;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class ShapeFile {
 
@@ -52,10 +52,9 @@ public class ShapeFile {
         ShapefileDataStore dataStore = setDataStoreParams(dataStoreFactory, params, shapeFile, CITY);
 
         writeToFile(dataStore, collection);
-
     }
 
-    public static SimpleFeatureType createFeatureType() {
+    static SimpleFeatureType createFeatureType() {
 
         SimpleFeatureTypeBuilder builder = new SimpleFeatureTypeBuilder();
         builder.setName("Location");
@@ -63,62 +62,57 @@ public class ShapeFile {
 
         builder.add("Location", Point.class);
         builder.length(15)
-            .add("Name", String.class);
+          .add("Name", String.class);
 
-        SimpleFeatureType CITY = builder.buildFeatureType();
-
-        return CITY;
+        return builder.buildFeatureType();
     }
 
-    public static void addLocations(SimpleFeatureType CITY, DefaultFeatureCollection collection) {
+    static void addLocations(SimpleFeatureType CITY, DefaultFeatureCollection collection) {
 
         Map<String, List<Double>> locations = new HashMap<>();
 
         double lat = 13.752222;
         double lng = 100.493889;
-        String name = "Bangkok";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("Bangkok", lat, lng, locations);
 
         lat = 53.083333;
         lng = -0.15;
-        name = "New York";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("New York", lat, lng, locations);
 
         lat = -33.925278;
         lng = 18.423889;
-        name = "Cape Town";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("Cape Town", lat, lng, locations);
 
         lat = -33.859972;
         lng = 151.211111;
-        name = "Sydney";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("Sydney", lat, lng, locations);
 
         lat = 45.420833;
         lng = -75.69;
-        name = "Ottawa";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("Ottawa", lat, lng, locations);
 
         lat = 30.07708;
         lng = 31.285909;
-        name = "Cairo";
-        addToLocationMap(name, lat, lng, locations);
+        addToLocationMap("Cairo", lat, lng, locations);
 
         GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory(null);
 
-        for (Map.Entry<String, List<Double>> location : locations.entrySet()) {
-            Point point = geometryFactory.createPoint(new Coordinate(location.getValue()
-                .get(0),
-                location.getValue()
-                    .get(1)));
+        locations.entrySet().stream()
+          .map(toFeature(CITY, geometryFactory))
+          .forEach(collection::add);
+    }
+
+    private static Function<Map.Entry<String, List<Double>>, SimpleFeature> toFeature(SimpleFeatureType CITY, GeometryFactory geometryFactory) {
+        return location -> {
+            Point point = geometryFactory.createPoint(
+              new Coordinate(location.getValue()
+                .get(0), location.getValue().get(1)));
 
             SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(CITY);
             featureBuilder.add(point);
             featureBuilder.add(location.getKey());
-            SimpleFeature feature = featureBuilder.buildFeature(null);
-            collection.add(feature);
-        }
-
+            return featureBuilder.buildFeature(null);
+        };
     }
 
     private static void addToLocationMap(String name, double lat, double lng, Map<String, List<Double>> locations) {
@@ -142,14 +136,12 @@ public class ShapeFile {
             System.exit(0);
         }
 
-        File shapeFile = chooser.getSelectedFile();
-
-        return shapeFile;
+        return chooser.getSelectedFile();
     }
 
     private static ShapefileDataStore setDataStoreParams(ShapefileDataStoreFactory dataStoreFactory, Map<String, Serializable> params, File shapeFile, SimpleFeatureType CITY) throws Exception {
         params.put("url", shapeFile.toURI()
-            .toURL());
+          .toURL());
         params.put("create spatial index", Boolean.TRUE);
 
         ShapefileDataStore dataStore = (ShapefileDataStore) dataStoreFactory.createNewDataStore(params);
@@ -176,11 +168,9 @@ public class ShapeFile {
             try {
                 featureStore.addFeatures(collection);
                 transaction.commit();
-
             } catch (Exception problem) {
                 problem.printStackTrace();
                 transaction.rollback();
-
             } finally {
                 transaction.close();
             }
@@ -190,5 +180,4 @@ public class ShapeFile {
             System.exit(1);
         }
     }
-
 }
