@@ -23,7 +23,7 @@ import io.vavr.collection.Vector;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 
-public class CollectionFactoryMethodsTest {
+public class CollectionFactoryMethodsUnitTest {
 
     @Test
     public void givenANoneOptionElement_whenCreated_thenCorrect() {
