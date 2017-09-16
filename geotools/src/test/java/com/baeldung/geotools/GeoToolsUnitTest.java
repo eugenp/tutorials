@@ -11,7 +11,6 @@ public class GeoToolsUnitTest {
 
     @Test
     public void givenFeatureType_whenAddLocations_returnFeatureCollection() {
-
         DefaultFeatureCollection collection = new DefaultFeatureCollection();
 
         SimpleFeatureType CITY = ShapeFile.createFeatureType();
@@ -19,7 +18,5 @@ public class GeoToolsUnitTest {
         ShapeFile.addLocations(CITY, collection);
 
         assertNotNull(collection);
-
     }
-
 }
