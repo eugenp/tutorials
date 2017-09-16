@@ -11,17 +11,12 @@ public class GeoToolsUnitTest {
 
     @Test
     public void givenFeatureType_whenAddLocations_returnFeatureCollection() {
-
         DefaultFeatureCollection collection = new DefaultFeatureCollection();
 
         SimpleFeatureType CITY = ShapeFile.createFeatureType();
 
-        SimpleFeatureBuilder featureBuilder = new SimpleFeatureBuilder(CITY);
-
-        ShapeFile.addLocations(featureBuilder, collection);
+        ShapeFile.addLocations(CITY, collection);
 
         assertNotNull(collection);
-
     }
-
 }
