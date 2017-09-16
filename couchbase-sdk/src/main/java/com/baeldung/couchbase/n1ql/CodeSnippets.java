@@ -87,8 +87,9 @@ public class CodeSnippets {
 
     private static void selectStatement1(Bucket bucket) {
 
-        N1qlQueryResult result1 = bucket.query(
-          N1qlQuery.simple("SELECT name FROM `travel-sample` WHERE type = 'airport' LIMIT 100"));
+        String query = "SELECT name FROM `travel-sample` " +
+          "WHERE type = 'airport' LIMIT 100";
+        N1qlQueryResult result1 = bucket.query(N1qlQuery.simple(query));
 
         System.out.println("Result Count " + result1.info().resultCount());
 
@@ -101,23 +102,28 @@ public class CodeSnippets {
     private static void selectStatement2(Bucket bucket) {
 
         JsonObject pVal = JsonObject.create().put("type", "airport");
-        String query = "SELECT * FROM `travel-sample` WHERE type = $type LIMIT 100";
+        String query = "SELECT * FROM `travel-sample` " +
+          "WHERE type = $type LIMIT 100";
         N1qlQueryResult r2 = bucket.query(N1qlQuery.parameterized(query, pVal));
 
         System.out.println(r2.allRows());
 
         List<JsonNode> list = extractJsonResult(r2);
-        System.out.println(list.get(0).get("travel-sample").get("airportname").asText());
+        System.out.println(
+          list.get(0).get("travel-sample").get("airportname").asText());
     }
 
     private static void selectStatement3DSL(Bucket bucket) {
 
-        Statement statement
-          = select("*").from(i("travel-sample")).where(x("type").eq(s("airport"))).limit(100);
+        Statement statement = select("*")
+          .from(i("travel-sample"))
+          .where(x("type").eq(s("airport")))
+          .limit(100);
         N1qlQueryResult r3 = bucket.query(N1qlQuery.simple(statement));
 
         List<JsonNode> list2 = extractJsonResult(r3);
         System.out.println("First Airport Name: " + list2.get(0).get("travel-sample").get("airportname").asText());
+
     }
 
     private static void selectStatement4(Bucket bucket) {
@@ -154,7 +160,9 @@ public class CodeSnippets {
     private static void insertStatement1(Bucket bucket) {
 
         String query = "INSERT INTO `travel-sample` (KEY, VALUE) " +
-                " VALUES(\"cust1293\", {\"id\":\"1293\",\"name\":\"Sample Airline\", \"type\":\"airline\"})" +
+                " VALUES(" +
+                "\"cust1293\", " +
+                "{\"id\":\"1293\",\"name\":\"Sample Airline\", \"type\":\"airline\"})" +
                 " RETURNING META().id as docid, *";
         N1qlQueryResult r1 = bucket.query(N1qlQuery.simple(query));
         r1.forEach(System.out::println);
@@ -226,10 +234,11 @@ public class CodeSnippets {
     }
 
     private static List<JsonNode> extractJsonResult(N1qlQueryResult result) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return result.allRows().stream()
-                .map(row -> Try.of(() -> objectMapper.readTree(row.value().toString())).getOrNull())
-                .collect(Collectors.toList());
+      ObjectMapper objectMapper = new ObjectMapper();
+      return result.allRows().stream()
+        .map(row -> Try.of(() -> objectMapper.readTree(row.value().toString()))
+           .getOrNull())
+        .collect(Collectors.toList());
     }
 
 }
