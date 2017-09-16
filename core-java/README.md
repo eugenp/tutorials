@@ -141,3 +141,11 @@
 - [Guide to UUID in Java](http://www.baeldung.com/java-uuid)
 - [How to Get the Last Element of a Stream in Java?](http://www.baeldung.com/java-stream-last-element)
 - [Guide to Escaping Characters in Java RegExps](http://www.baeldung.com/java-regexp-escape-char)
+- [Guide to hashCode() in Java](http://www.baeldung.com/java-hashcode)
+- [Collect a Java Stream to an Immutable Collection](http://www.baeldung.com/java-stream-immutable-collection)
+- [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)
+- [Broadcasting and Multicasting in Java](http://www.baeldung.com/java-broadcast-multicast)
+- [Converting a List to String in Java](http://www.baeldung.com/java-list-to-string)
+- [CharSequence vs. String in Java](http://www.baeldung.com/java-char-sequence-string)
+
+
