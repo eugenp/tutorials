@@ -1,10 +1,5 @@
 package org.baeldung.boot.boottest;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +10,11 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 public class EmployeeServiceImplIntegrationTest {
@@ -46,7 +46,7 @@ public class EmployeeServiceImplIntegrationTest {
         Mockito.when(employeeRepository.findByName(john.getName()))
             .thenReturn(john);
         Mockito.when(employeeRepository.findByName(alex.getName()))
-        .thenReturn(alex);
+            .thenReturn(alex);
         Mockito.when(employeeRepository.findByName("wrong_name"))
             .thenReturn(null);
         Mockito.when(employeeRepository.findById(john.getId()))
@@ -61,10 +61,9 @@ public class EmployeeServiceImplIntegrationTest {
     public void whenValidName_thenEmployeeShouldBeFound() {
         String name = "alex";
         Employee found = employeeService.getEmployeeByName(name);
-      
-         assertThat(found.getName())
-          .isEqualTo(name);
-     }
+
+        assertThat(found.getName()).isEqualTo(name);
+    }
 
     @Test
     public void whenInValidName_thenEmployeeShouldNotBeFound() {

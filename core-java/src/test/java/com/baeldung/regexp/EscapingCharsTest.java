@@ -1,67 +1,73 @@
 package com.baeldung.regexp;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.*;
-
 import org.junit.Test;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
 
 public class EscapingCharsTest {
     @Test
     public void givenRegexWithDot_whenMatchingStr_thenMatches() {
         String strInput = "foof";
         String strRegex = "foo.";
-        EscapingChars e = new EscapingChars();
 
-        assertEquals(true, e.isMatching(strInput, strRegex));
+        assertEquals(true, strInput.matches(strRegex));
     }
 
     @Test
     public void givenRegexWithDotEsc_whenMatchingStr_thenNotMatching() {
         String strInput = "foof";
         String strRegex = "foo\\.";
-        EscapingChars e = new EscapingChars();
 
-        assertEquals(false, e.isMatching(strInput, strRegex));
+        assertEquals(false, strInput.matches(strRegex));
     }
 
     @Test
     public void givenRegexWithPipeEscaped_whenSplitStr_thenSplits() {
         String strInput = "foo|bar|hello|world";
         String strRegex = "\\Q|\\E";
-        EscapingChars e = new EscapingChars();
 
-        assertEquals(4, e.splitAndCountWords(strInput, strRegex));
+        assertEquals(4, strInput.split(strRegex).length);
     }
 
     @Test
     public void givenRegexWithPipeEscQuoteMeth_whenSplitStr_thenSplits() {
         String strInput = "foo|bar|hello|world";
         String strRegex = "|";
-        EscapingChars e = new EscapingChars();
 
-        assertEquals(4, e.splitAndCountWordsUsingQuoteMethod(strInput, strRegex));
+        assertEquals(4, strInput.split(Pattern.quote(strRegex)).length);
     }
 
     @Test
     public void givenRegexWithDollar_whenReplacing_thenNotReplace() {
-        String strInput = "I gave $50 to my brother.He bought candy for $35. Now he has $15 left.";
+        String strInput = "I gave $50 to my brother."
+          + "He bought candy for $35. Now he has $15 left.";
         String strRegex = "$";
-        String strReplacement = "�";
-        String output = "I gave �50 to my brother.He bought candy for �35. Now he has �15 left.";
-        EscapingChars e = new EscapingChars();
+        String strReplacement = "£";
+        String output = "I gave £50 to my brother."
+          + "He bought candy for £35. Now he has £15 left.";
+        Pattern p = Pattern.compile(strRegex);
+        Matcher m = p.matcher(strInput);
 
-        assertThat(output, not(equalTo(e.changeCurrencySymbol(strInput, strRegex, strReplacement))));
+        assertThat(output, not(equalTo(m.replaceAll(strReplacement))));
     }
 
     @Test
     public void givenRegexWithDollarEsc_whenReplacing_thenReplace() {
-        String strInput = "I gave $50 to my brother. He bought candy for $35. Now he has $15 left.";
+        String strInput = "I gave $50 to my brother."
+          + "He bought candy for $35. Now he has $15 left.";
         String strRegex = "\\$";
-        String strReplacement = "�";
-        String output = "I gave �50 to my brother. He bought candy for �35. Now he has �15 left.";
-        EscapingChars e = new EscapingChars();
+        String strReplacement = "£";
+        String output = "I gave £50 to my brother."
+          + "He bought candy for £35. Now he has £15 left.";
+        Pattern p = Pattern.compile(strRegex);
+        Matcher m = p.matcher(strInput);
 
-        assertEquals(output, e.changeCurrencySymbol(strInput, strRegex, strReplacement));
+        assertEquals(output, m.replaceAll(strReplacement));
     }
 }

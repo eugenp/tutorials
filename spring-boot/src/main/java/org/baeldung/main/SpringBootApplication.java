@@ -20,7 +20,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @RestController
-@EnableAutoConfiguration(exclude=MySQLAutoconfiguration.class)
+@EnableAutoConfiguration(exclude = MySQLAutoconfiguration.class)
 @ComponentScan({ "org.baeldung.common.error", "org.baeldung.common.error.controller", "org.baeldung.common.properties", "org.baeldung.common.resources", "org.baeldung.endpoints", "org.baeldung.service", "org.baeldung.monitor.jmx", "org.baeldung.service" })
 public class SpringBootApplication {
 
