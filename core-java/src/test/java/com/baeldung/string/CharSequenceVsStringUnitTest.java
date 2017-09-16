@@ -21,7 +21,7 @@ public class CharSequenceVsStringUnitTest {
         CharSequence charSequence1 = "baeldung_1";
         CharSequence charSequence2 = "baeldung_2";
 
-        assertTrue(charSequence1.toString().compareTo(charSequence2.toString()) > 0);
+        assertTrue(charSequence1.toString().compareTo(charSequence2.toString()) < 0);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class CharSequenceVsStringUnitTest {
         test += "b";
         int secondAddressOfTest = System.identityHashCode(test);
 
-        assertEquals(firstAddressOfTest, secondAddressOfTest);
+        assertNotEquals(firstAddressOfTest, secondAddressOfTest);
     }
 
     @Test

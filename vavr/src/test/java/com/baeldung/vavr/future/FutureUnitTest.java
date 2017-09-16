@@ -56,6 +56,7 @@ public class FutureUnitTest {
     public void givenAFutureReturnZero_WhenCheckFutureWithExistEvenValue_ShouldReturnRight() {
         Future<Integer> future = Future.of(() -> 2);
         boolean result = future.exists(i -> i % 2 == 0);
+
         assertTrue(result);
     }
 
@@ -112,6 +113,7 @@ public class FutureUnitTest {
         Future<String> future = Future.of(() -> expectedResult);
         Future<String> secondFuture = Future.of(() -> "take that");
         Future<String> futureResult = future.fallbackTo(secondFuture);
+        futureResult.await();
 
         assertEquals(expectedResult, futureResult.get());
     }
@@ -154,7 +156,6 @@ public class FutureUnitTest {
         assertEquals(Tuple.of("hello", "world"), future.get());
     }
 
-
     @Test
     public void givenGetResourceWithFuture_WhenWaitAndMatchWithPredicate_ShouldReturnSuccess() {
         String url = "http://resource";
@@ -185,6 +186,7 @@ public class FutureUnitTest {
             return 1;
         });
         Predicate<Future<Integer>> predicate = f -> f.exists(i -> i % 2 == 1);
+
         String s = Match(future).of(
           Case($(predicate), "Even"),
           Case($(), "Odd"));
