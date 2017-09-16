@@ -24,9 +24,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson-version}</version>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson-version}</version>
         </dependency>
         <dependency>
             <groupId>io.vavr</groupId>
@@ -79,7 +79,7 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <couchbase.client.version>2.4.7</couchbase.client.version>
+        <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <vavr-version>0.9.0</vavr-version>
