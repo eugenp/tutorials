@@ -1,15 +1,18 @@
-package com.baeldung.osgi.geocoding;
+package com.baeldung.osgi.geocoding.mapquest;
 
+import com.baeldung.osgi.geocoding.mapquest.MapQuestGeocoder;
+import com.baeldung.osgi.geocoding.service.Coord;
+import com.baeldung.osgi.geocoding.service.GeocodeException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GeocodeXyzTest {
+public class MapQuestGeocoderTest {
 
     @Test public void shouldExecuteAConversion() throws GeocodeException {
 
         // given
-        GeocodeXyz sut = new GeocodeXyz();
+        MapQuestGeocoder sut = new MapQuestGeocoder();
 
         // when
         Coord coord = sut.geocode("Colico 12, Milan, Italy");

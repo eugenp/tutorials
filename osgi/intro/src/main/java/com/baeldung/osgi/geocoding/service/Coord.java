@@ -1,4 +1,4 @@
-package com.baeldung.osgi.geocoding;
+package com.baeldung.osgi.geocoding.service;
 
 public class Coord {
 

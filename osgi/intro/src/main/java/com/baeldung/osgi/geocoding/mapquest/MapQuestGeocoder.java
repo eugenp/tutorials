@@ -1,5 +1,8 @@
-package com.baeldung.osgi.geocoding;
+package com.baeldung.osgi.geocoding.mapquest;
 
+import com.baeldung.osgi.geocoding.service.Coord;
+import com.baeldung.osgi.geocoding.service.GeocodeException;
+import com.baeldung.osgi.geocoding.service.GeocodingService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -60,7 +63,7 @@ public class MapQuestGeocoder implements GeocodingService {
         } catch (IOException e) {
             throw new GeocodeException(e);
         }
-        
+
     }
 
 }

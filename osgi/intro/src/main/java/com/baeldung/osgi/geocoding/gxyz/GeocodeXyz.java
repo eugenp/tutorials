@@ -1,5 +1,8 @@
-package com.baeldung.osgi.geocoding;
+package com.baeldung.osgi.geocoding.gxyz;
 
+import com.baeldung.osgi.geocoding.service.Coord;
+import com.baeldung.osgi.geocoding.service.GeocodeException;
+import com.baeldung.osgi.geocoding.service.GeocodingService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -34,15 +37,10 @@ public class GeocodeXyz implements GeocodingService {
 
         Response response = null;
         try {
-            System.out.println(url);
             response = client.newCall(request).execute();
             String responseAsStr = response.body().string();
-            System.out.println(responseAsStr);
-
             JsonReader jsonReader = Json.createReader(new StringReader(responseAsStr));
             JsonObject jobj = jsonReader.readObject();
-            System.out.println(jobj);
-
             double latt = Double.parseDouble( jobj.getString("latt") );
             double longt = Double.parseDouble( jobj.getString("longt") );
             return new Coord(latt, longt);
