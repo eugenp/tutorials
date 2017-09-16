@@ -8,7 +8,6 @@ import javax.cache.Caching;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.spi.CachingProvider;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,10 +28,5 @@ public class EntryProcessorTest {
     public void whenModifyValue_thenCorrect() {
         this.cache.invoke("key", new SimpleEntryProcessor());
         assertEquals("value - modified", cache.get("key"));
-    }
-
-    @After
-    public void closeCache() {
-        cache.close();
     }
 }

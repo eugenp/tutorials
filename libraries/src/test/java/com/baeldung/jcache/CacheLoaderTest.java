@@ -9,7 +9,6 @@ import javax.cache.configuration.FactoryBuilder;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.spi.CachingProvider;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,10 +31,5 @@ public class CacheLoaderTest {
             String value = cache.get(i);
             assertEquals("fromCache" + i, value);
         }
-    }
-    
-    @After
-    public void closeCache() {
-        cache.close();
     }
 }
