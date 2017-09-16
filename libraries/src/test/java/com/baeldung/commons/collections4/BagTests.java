@@ -34,9 +34,7 @@ public class BagTests {
 		Assert.assertFalse(baseBag.contains("lemon"));
 
 		Assert.assertTrue(baseBag.uniqueSet().contains("apple"));
-		Assert.assertFalse(baseBag.uniqueSet().contains("lemon"));
-		Assert.assertTrue(baseBag.uniqueSet().contains("lime"));
-
+		
 		List<String> containList = new ArrayList<String>();
 		containList.add("apple");
 		containList.add("lemon");
@@ -56,11 +54,12 @@ public class BagTests {
 		baseCollectionBag.remove("lemon");
 		Assert.assertEquals(8, baseCollectionBag.size());
 		Assert.assertTrue(baseCollectionBag.contains("lemon"));
+		
+		baseCollectionBag.remove("lemon",1);
+		Assert.assertEquals(7, baseCollectionBag.size());
 
 		Assert.assertTrue(baseBag.uniqueSet().contains("apple"));
-		Assert.assertTrue(baseBag.uniqueSet().contains("lemon"));
-		Assert.assertTrue(baseBag.uniqueSet().contains("lime"));
-
+		
 		List<String> containList = new ArrayList<String>();
 		containList.add("apple");
 		containList.add("lemon");
@@ -81,5 +80,6 @@ public class BagTests {
 		treeBag.remove("apple");
 		Assert.assertEquals(9, treeBag.size());
 		Assert.assertEquals("banana", treeBag.first());
+		
 	}
 }
