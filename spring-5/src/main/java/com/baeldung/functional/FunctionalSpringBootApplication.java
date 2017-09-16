@@ -40,28 +40,25 @@ public class FunctionalSpringBootApplication {
     private RouterFunction<ServerResponse> routingFunction() {
         FormHandler formHandler = new FormHandler();
 
-        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest
-          .bodyToMono(Actor.class)
-          .doOnNext(actors::add)
-          .then(ok().build()));
+        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest.bodyToMono(Actor.class)
+            .doOnNext(actors::add)
+            .then(ok().build()));
 
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld")))
-          .andRoute(POST("/login"), formHandler::handleLogin)
-          .andRoute(POST("/upload"), formHandler::handleUpload)
-          .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
-          .andNest(path("/actor"), restfulRouter)
-          .filter((request, next) -> {
-              System.out.println("Before handler invocation: " + request.path());
-              return next.handle(request);
-          });
+        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
+            .andRoute(POST("/upload"), formHandler::handleUpload)
+            .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
+            .andNest(path("/actor"), restfulRouter)
+            .filter((request, next) -> {
+                System.out.println("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
     }
 
     @Bean
     public ServletRegistrationBean servletRegistrationBean() throws Exception {
-        HttpHandler httpHandler = WebHttpHandlerBuilder
-          .webHandler((WebHandler) toHttpHandler(routingFunction()))
-          .prependFilter(new IndexRewriteFilter())
-          .build();
+        HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler((WebHandler) toHttpHandler(routingFunction()))
+            .prependFilter(new IndexRewriteFilter())
+            .build();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean<>(new RootServlet(httpHandler), "/");
         registrationBean.setLoadOnStartup(1);
         registrationBean.setAsyncSupported(true);
@@ -74,10 +71,9 @@ public class FunctionalSpringBootApplication {
     static class SecurityConfig extends WebSecurityConfigurerAdapter {
         @Override
         protected void configure(final HttpSecurity http) throws Exception {
-            http
-              .authorizeRequests()
-              .anyRequest()
-              .permitAll();
+            http.authorizeRequests()
+                .anyRequest()
+                .permitAll();
         }
     }
 

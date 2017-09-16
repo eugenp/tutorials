@@ -27,16 +27,14 @@ abstract class ParameterAutowireUtils {
 
     public static Object resolveDependency(Parameter parameter, Class<?> containingClass, ApplicationContext applicationContext) {
 
-        boolean required = findMergedAnnotation(parameter, Autowired.class)
-          .map(Autowired::required)
-          .orElse(true);
+        boolean required = findMergedAnnotation(parameter, Autowired.class).map(Autowired::required)
+            .orElse(true);
         MethodParameter methodParameter = (parameter.getDeclaringExecutable() instanceof Method ? MethodParameterFactory.createSynthesizingMethodParameter(parameter) : MethodParameterFactory.createMethodParameter(parameter));
         DependencyDescriptor descriptor = new DependencyDescriptor(methodParameter, required);
         descriptor.setContainingClass(containingClass);
 
-        return applicationContext
-          .getAutowireCapableBeanFactory()
-          .resolveDependency(descriptor, null);
+        return applicationContext.getAutowireCapableBeanFactory()
+            .resolveDependency(descriptor, null);
     }
 
     private static <A extends Annotation> Optional<A> findMergedAnnotation(AnnotatedElement element, Class<A> annotationType) {
