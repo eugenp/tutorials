@@ -1,6 +1,8 @@
 package com.baeldung.jcache;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
@@ -10,14 +12,15 @@ import javax.cache.configuration.MutableCacheEntryListenerConfiguration;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.spi.CachingProvider;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class EventListenerTest {
 
+    private static final String CACHE_NAME = "MyCache";
+
     private Cache<String, String> cache;
     private SimpleCacheEntryListener listener;
-    MutableCacheEntryListenerConfiguration<String, String> listenerConfiguration;
+    private MutableCacheEntryListenerConfiguration<String, String> listenerConfiguration;
 
     @Before
     public void setup() {
@@ -28,9 +31,16 @@ public class EventListenerTest {
         this.listener = new SimpleCacheEntryListener();
     }
 
+    @After
+    public void tearDown() {
+        Caching.getCachingProvider()
+          .getCacheManager().destroyCache(CACHE_NAME);
+    }
+
     @Test
     public void whenRunEvent_thenCorrect() throws InterruptedException {
-        this.listenerConfiguration = new MutableCacheEntryListenerConfiguration<String, String>(FactoryBuilder.factoryOf(this.listener), null, false, true);
+        this.listenerConfiguration = new MutableCacheEntryListenerConfiguration<>(FactoryBuilder
+          .factoryOf(this.listener), null, false, true);
         this.cache.registerCacheEntryListener(this.listenerConfiguration);
 
         assertEquals(false, this.listener.getCreated());
