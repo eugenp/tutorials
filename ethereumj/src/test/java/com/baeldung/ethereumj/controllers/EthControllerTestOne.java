@@ -12,6 +12,7 @@ import org.springframework.http.*;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
+
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
@@ -37,39 +38,35 @@ public class EthControllerTestOne {
     }
 
     @Test()
-    public void bestBlockTest() {
-        try {
-            Thread.sleep(20000);
+    public void bestBlockTest() throws Exception {
 
-            EthResponse a = restTemplate.getForObject(url(Constants.ENDPOINT_ONE), EthResponse.class);
-            assertNotNull(a);
+        Thread.sleep(20000);
 
-            ResponseEntity<EthResponse> b = restTemplate.exchange(
-                    url(Constants.ENDPOINT_ONE),
-                    HttpMethod.GET, new HttpEntity<EthResponse>(null, new HttpHeaders()), EthResponse.class);
+        EthResponse a = restTemplate.getForObject(url(Constants.ENDPOINT_ONE), EthResponse.class);
+        assertNotNull(a);
 
-            assertTrue("Status 200?", b.getStatusCode().equals(HttpStatus.OK));
-            assertTrue("Dynamic data returned?", b.hasBody());
+        ResponseEntity<EthResponse> b = restTemplate.exchange(
+                url(Constants.ENDPOINT_ONE),
+                HttpMethod.GET, new HttpEntity<EthResponse>(null, new HttpHeaders()), EthResponse.class);
 
-        } catch (Exception e) {
-            System.out.println("Exception: " + e);
-        }
+        assertTrue("Status 200?", b.getStatusCode().equals(HttpStatus.OK));
+        System.out.println("Status 200?: " + b.getStatusCode().equals(HttpStatus.OK));
+        assertTrue("Dynamic data returned?", b.hasBody());
+        System.out.println("Dynamic data returned?: " + b.hasBody());
     }
 
     @Test()
-    public void difficultyTest() {
-        try {
-            Thread.sleep(20000);
+    public void difficultyTest() throws Exception {
 
-            ResponseEntity<EthResponse> a = restTemplate.exchange(
-                    url(Constants.ENDPOINT_TWO),
-                    HttpMethod.GET, new HttpEntity<EthResponse>(null, new HttpHeaders()), EthResponse.class);
+        Thread.sleep(20000);
 
-            assertTrue("Status 200?", a.getStatusCode().equals(HttpStatus.OK));
-            assertTrue("Dynamic data returned?", a.hasBody());
+        ResponseEntity<EthResponse> a = restTemplate.exchange(
+                url(Constants.ENDPOINT_TWO),
+                HttpMethod.GET, new HttpEntity<EthResponse>(null, new HttpHeaders()), EthResponse.class);
 
-        } catch (Exception e) {
-            System.out.println("Exception: " + e);
-        }
+        assertTrue("Status 200?", a.getStatusCode().equals(HttpStatus.OK));
+        System.out.println("Status 200?: " + a.getStatusCode().equals(HttpStatus.OK));
+        assertTrue("Dynamic data returned?", a.hasBody());
+        System.out.println("Dynamic data returned?: " + a.hasBody());
     }
 }
