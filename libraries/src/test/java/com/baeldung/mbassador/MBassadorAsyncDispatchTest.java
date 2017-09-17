@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 public class MBassadorAsyncDispatchTest {
 
-    private MBassador dispatcher = new MBassador();
+    private MBassador dispatcher = new MBassador<String>();
     private String testString;
     private AtomicBoolean ready = new AtomicBoolean(false);
 
