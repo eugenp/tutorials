@@ -3,8 +3,6 @@ package com.baeldung.couchbase.n1ql;
 import com.couchbase.client.java.query.N1qlQueryResult;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.vavr.control.Try;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
