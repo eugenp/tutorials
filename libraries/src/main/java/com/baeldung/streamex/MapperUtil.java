@@ -7,10 +7,6 @@ import one.util.streamex.StreamEx;
 
 public class MapperUtil {
 
-    public String join(String joiner, String... strings) {
-        return StreamEx.of(strings).joining(joiner);
-    }
-
     public List<String> getUsernames(List<User> users) {
         return StreamEx.of(users).map(User::getUsername).toList();
     }

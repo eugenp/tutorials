@@ -40,4 +40,8 @@ public class StreamUtil {
         return StreamEx.of(list).has(searchParam);
     }
 
+    public String join(String joiner, String... strings) {
+        return StreamEx.of(strings).joining(joiner);
+    }
+    
 }

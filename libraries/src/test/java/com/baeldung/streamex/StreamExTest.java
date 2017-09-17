@@ -18,6 +18,7 @@ import org.junit.Test;
 
 public class StreamExTest {
 
+    StreamUtil streamUtil;
     MapperUtil mapperUtil;
     MapUtil mapUtil;
     MathUtil mathUtil;
@@ -31,6 +32,7 @@ public class StreamExTest {
 
     @Before
     public void test() {
+        streamUtil = new StreamUtil();
         mapperUtil = new MapperUtil();
         mapUtil = new MapUtil();
         mathUtil = new MathUtil();
@@ -69,7 +71,7 @@ public class StreamExTest {
     @Test
     public void givenStringArray_expectJoinedString() {
         String[] str = { "A", "B", "C", "D" };
-        assertEquals("A;B;C;D", mapperUtil.join(";", str));
+        assertEquals("A;B;C;D", streamUtil.join(";", str));
     }
 
     @Test
@@ -97,8 +99,8 @@ public class StreamExTest {
     @Test
     public void givenMapOfListedUsers_expectInvertOfUsers() {
         Map<String, List<User>> map = new HashMap<String, List<User>>();
-        map.put("key1", users);
-        map.put("key2", users);
+        map.put("ADMIN", users);
+        map.put("USER", users);
 
         assertEquals(users.size(), mapUtil.invert(map).size());
     }
