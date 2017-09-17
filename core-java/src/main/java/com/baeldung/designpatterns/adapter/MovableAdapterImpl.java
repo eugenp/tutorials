@@ -1,9 +1,9 @@
 package com.baeldung.designpatterns.adapter;
 
-public class LuxuryCarsAdapterImpl implements LuxuryCarsAdapter {
+public class MovableAdapterImpl implements MovableAdapter {
     private Movable luxuryCars;
     
-    public LuxuryCarsAdapterImpl(Movable luxuryCars) {
+    public MovableAdapterImpl(Movable luxuryCars) {
         this.luxuryCars = luxuryCars;
     }
 

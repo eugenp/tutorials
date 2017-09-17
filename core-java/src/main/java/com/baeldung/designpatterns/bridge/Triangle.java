@@ -1,7 +1,5 @@
 package com.baeldung.designpatterns.bridge;
 
-import static com.baeldung.designpatterns.util.LogerUtil.LOG;
-
 public class Triangle extends Shape {
 
     public Triangle(Color color) {
@@ -9,8 +7,7 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public void draw() {
-        LOG.info("Triangle drawn. ");
-        color.fill();
+    public String draw() {
+        return "Triangle drawn. "+ color.fill();
     }
 }

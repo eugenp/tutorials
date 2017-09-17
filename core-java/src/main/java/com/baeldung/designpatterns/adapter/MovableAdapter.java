@@ -1,6 +1,6 @@
 package com.baeldung.designpatterns.adapter;
 
-public interface LuxuryCarsAdapter {
+public interface MovableAdapter {
     // returns speed in KMPH 
     double getSpeed();
 }
