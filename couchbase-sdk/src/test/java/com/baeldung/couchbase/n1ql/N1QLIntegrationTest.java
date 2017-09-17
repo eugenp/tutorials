@@ -12,6 +12,7 @@ import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.query.N1qlQueryRow;
 import com.couchbase.client.java.query.Statement;
 import com.fasterxml.jackson.databind.JsonNode;
+import io.vavr.collection.Stream;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -29,6 +30,7 @@ import rx.Observable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static com.baeldung.couchbase.n1ql.CodeSnippets.extractJsonResult;
 import static com.couchbase.client.java.query.Select.select;
@@ -190,23 +192,24 @@ public class N1QLIntegrationTest {
     @Test
     public void givenDocuments_whenBatchInsert_thenResult() {
         Bucket bucket = bucketFactory.getTravelSampleBucket();
-        int docsToCreate = 10;
-        List<JsonDocument> documents = new ArrayList<>();
-        for (int i = 5; i < docsToCreate; i++) {
+
+        List<JsonDocument> documents = Stream.rangeClosed(0,10)
+          .map( i -> {
             JsonObject content = JsonObject.create()
-                    .put("id", i)
-                    .put("type", "airline")
-                    .put("name", "Sample Airline "  + i);
-            documents.add(JsonDocument.create("cust_" + i, content));
-        }
+              .put("id", i)
+              .put("type", "airline")
+              .put("name", "Sample Airline "  + i);
+            return JsonDocument.create("cust_" + i, content);
+          })
+          .collect(Collectors.toList());
 
         List<JsonDocument> r5 = Observable
-                .from(documents)
-                .flatMap(doc -> bucket.async().insert(doc))
-                .toList()
-                .last()
-                .toBlocking()
-                .single();
+          .from(documents)
+          .flatMap(doc -> bucket.async().insert(doc))
+          .toList()
+          .last()
+          .toBlocking()
+          .single();
 
         r5.forEach(System.out::println);
     }
