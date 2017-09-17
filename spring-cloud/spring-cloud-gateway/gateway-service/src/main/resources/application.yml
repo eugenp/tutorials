@@ -1,8 +1,13 @@
 server:
   port: 80
 spring:
-  application:
-    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://localhost:8888/services/users
+        predicates:
+        - Path=/users/
 management:
   security:
     enabled: false
