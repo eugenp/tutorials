@@ -6,16 +6,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.setterdi.Config;
 import com.baeldung.setterdi.domain.Car;
+import com.baeldung.setterdi.domain.Telephone;
 
 public class SpringRunner {
+
     public static void main(String[] args) {
-        Car toyota = getCarFromXml();
+//        Car toyota = getCarFromXml();
+//
+//        System.out.println(toyota);
+//
+//        toyota = getCarFromJavaConfig();
+//
+//        System.out.println(toyota);
 
-        System.out.println(toyota);
-
-        toyota = getCarFromJavaConfig();
-
-        System.out.println(toyota);
+        Telephone telephoneBean = getTelephoneFromXml();
+        System.out.println(telephoneBean);
 
     }
 
@@ -29,5 +34,11 @@ public class SpringRunner {
         ApplicationContext context = new ClassPathXmlApplicationContext("setterdi.xml");
 
         return context.getBean(Car.class);
+    }
+
+    private static Telephone getTelephoneFromXml() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("setterdi.xml");
+
+        return context.getBean(Telephone.class);
     }
 }

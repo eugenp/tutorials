@@ -16,5 +16,12 @@
     <bean id="transmission" class="com.baeldung.constructordi.domain.Transmission">
         <constructor-arg value="sliding" />
     </bean>
+    
+    <bean id="telephoneBean" class="com.baeldung.constructordi.domain.Telephone">
+        <constructor-arg index="0" ref="processor" />
+    </bean>
+    <bean id="processor" class="com.baeldung.constructordi.domain.Processor">
+        <constructor-arg value="Quad Core 1.4 Ghz" />
+    </bean>
 
 </beans>
