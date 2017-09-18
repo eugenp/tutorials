@@ -11,15 +11,16 @@ import com.baeldung.setterdi.domain.Telephone;
 public class SpringRunner {
 
     public static void main(String[] args) {
-//        Car toyota = getCarFromXml();
-//
-//        System.out.println(toyota);
-//
-//        toyota = getCarFromJavaConfig();
-//
-//        System.out.println(toyota);
+        Car toyota = getCarFromXml();
+
+        System.out.println(toyota);
+
+        toyota = getCarFromJavaConfig();
+
+        System.out.println(toyota);
 
         Telephone telephoneBean = getTelephoneFromXml();
+        
         System.out.println(telephoneBean);
 
     }
