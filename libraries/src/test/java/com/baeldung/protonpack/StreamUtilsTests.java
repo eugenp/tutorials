@@ -21,15 +21,7 @@ import static org.hamcrest.Matchers.*;
 public class StreamUtilsTests {
 
     @Test
-    public void createInfiniteIndex() {
-        LongStream indices = StreamUtils
-          .indices()
-          .limit(500);
-
-    }
-
-    @Test
-    public void zipAStreamWithIndex() {
+    public void givenStream_whenZipWithIndex_shouldReturnZippedStreamWithIndex() {
         Stream<String> source = Stream.of("Foo", "Bar", "Baz");
 
         List<Indexed<String>> zipped = StreamUtils
@@ -40,7 +32,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void zipAPairOfStreams() {
+    public void givenTwoStreams_whenZip_shouldReturnZippedStream() {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("Apple", "Banana", "Carrot");
 
@@ -52,7 +44,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void zipThreeStreams() {
+    public void givenThreeStreams_whenZip_shouldReturnZippedStream() {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("aggravating", "banausic", "complaisant");
         Stream<String> streamC = Stream.of("Apple", "Banana", "Carrot");
@@ -65,7 +57,8 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void mergeThreeStreams() {
+    //givenThreeStreams_whenMerge_shouldReturnMergedStream
+    public void givenThreeStreams_whenMerge_shouldReturnMergedStream() {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("apple", "banana", "carrot", "date");
         Stream<String> streamC = Stream.of("fritter", "split", "cake", "roll", "pastry");
@@ -76,7 +69,8 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void roundRobinInterleaving() {
+    //givenThreeStreams_whenInterleave_shouldReturnRoundRobinInterleavingStream
+    public void givenThreeStreams_whenInterleave_shouldReturnRoundRobinInterleavingStream() {
         Stream<String> streamA = Stream.of("Peter", "Paul", "Mary");
         Stream<String> streamB = Stream.of("A", "B", "C", "D", "E");
         Stream<String> streamC = Stream.of("foo", "bar", "baz", "xyzzy");
@@ -87,7 +81,8 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void takeWhileConditionIsMet() {
+    //givenInfiniteStream_whenTakeWhile10_shouldReturnStreamOfSize10
+    public void givenInfiniteStream_whenTakeWhile10_shouldReturnStream() {
         Stream<Integer> infiniteInts = Stream.iterate(0, i -> i + 1);
         Stream<Integer> finiteInts = StreamUtils.takeWhile(infiniteInts, i -> i < 10);
 
@@ -95,7 +90,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void takeUntilConditionIsNotMet() {
+    public void givenInfiniteStream_whenTakeUntil10_shouldReturnStreamUpto10() {
         Stream<Integer> infiniteInts = Stream.iterate(0, i -> i + 1);
         Stream<Integer> finiteInts = StreamUtils.takeUntil(infiniteInts, i -> i > 10);
 
@@ -103,7 +98,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void skipWhileConditionMet() {
+    public void givenIntegerStreamOfTen_whenSkipWhileLessThanFour_shouldReturnStreamFromFourToTen() {
         Stream<Integer> ints = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Stream<Integer> skipped = StreamUtils.skipWhile(ints, i -> i < 4);
         List<Integer> collected = skipped.collect(Collectors.toList());
@@ -112,7 +107,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void skipUntilConditionMet() {
+    public void givenIntegerStreamOfTen_whenSkipUntilFour_shouldReturnStreamFromFiveToTen() {
         Stream<Integer> ints = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Stream<Integer> skipped = StreamUtils.skipUntil(ints, i -> i > 4);
         List<Integer> collected = skipped.collect(Collectors.toList());
@@ -121,14 +116,14 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void unfoldUntilEmptyIsReturned() {
+    public void givenSeedValue_withUnfold_shouldReturnStreamAccordingToGeneratorMethod() {
         Stream<Integer> unfolded = StreamUtils.unfold(1, i -> (i < 10) ? Optional.of(i + 1) : Optional.empty());
 
         assertThat(unfolded.collect(Collectors.toList()), contains(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
     }
 
     @Test
-    public void groupRunsStreamTest() {
+    public void giveIntegerStream_whenGroupRuns_shouldReturnListGroupItems() {
         Stream<Integer> integerStream = Stream.of(1, 1, 2, 2, 3, 4, 5);
         List<List<Integer>> runs = StreamUtils
           .groupRuns(integerStream)
@@ -138,14 +133,14 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void aggreagateOnBiElementPredicate() {
+    public void givenAStream_whenAggregate_shouldReturnAggregatedStreamOnTheBasisOfBiFunction() {
         Stream<String> stream = Stream.of("a1", "b1", "b2", "c1");
         Stream<List<String>> aggregated = StreamUtils.aggregate(stream, (e1, e2) -> e1.charAt(0) == e2.charAt(0));
         assertThat(aggregated.collect(toList()), contains(asList("a1"), asList("b1", "b2"), asList("c1")));
     }
 
     @Test
-    public void windowingOnList() {
+    public void givenIntegerStream_whenWindowed_shouldReturnListOfListOfItemsOfWindowSize() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
         List<List<Integer>> windows = StreamUtils
@@ -156,7 +151,8 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void windowingOnListTwoOverlap() {
+    //givenIntegerStream_whenWindowedWithWindowSizeAndSkip_shouldReturnListOfListOfWindowSizeAddingASkip
+    public void givenIntegerStream_whenWindowedWithWindowSizeAndSkip_shouldReturnListOfListOfWindowSizeAddingASkip() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
         List<List<Integer>> windows = StreamUtils
@@ -167,7 +163,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void windowingOnEmptyList() {
+    public void givenEmptyStream_whenWindowed_shouldReturnIterableWithSizeZero() {
         ArrayList<Integer> ints = new ArrayList<>();
 
         ints
@@ -184,7 +180,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void windowingOnListTwoOverlapAllowLesserSize() {
+    public void givenIntegerStream_whenWindowedWithWindowSizeAndSkipAndAllowLesserSize_shouldReturnListOfListOfInteger() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
         List<List<Integer>> windows = StreamUtils
@@ -195,14 +191,12 @@ public class StreamUtilsTests {
     }
 
     @Test
-    public void windowingOnListOneOverlapAllowLesserSizeMultipleLesserWindows() {
-        Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
+    public void givenLimit_withIndices_shouldReturnLongStreamUptoLimit() {
+        LongStream indices = StreamUtils
+          .indices()
+          .limit(500);
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(integerStream, 3, 1, true)
-          .collect(toList());
-
-        assertThat(windows, contains(asList(1, 2, 3), asList(2, 3, 4), asList(3, 4, 5), asList(4, 5), asList(5)));
+        assertThat(indices.count(), equalTo(500));
     }
 
 }
