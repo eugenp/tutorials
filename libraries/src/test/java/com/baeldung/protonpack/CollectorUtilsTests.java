@@ -16,7 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class CollectorUtilsTests {
 
     @Test
-    public void maxByWithProjectionAndDefaultComparer() {
+    public void givenIntegerStream_whenCollectOnMaxByProjection_shouldReturnOptionalMaxValue() {
         Stream<String> integerStream = Stream.of("a", "bb", "ccc", "1");
 
         Optional<String> max = integerStream.collect(maxBy(String::length));
@@ -25,7 +25,7 @@ public class CollectorUtilsTests {
     }
 
     @Test
-    public void minByWithProjectionAndDefaultComparer() {
+    public void givenIntegerStream_whenCollectOnMinByProjection_shouldReturnOptionalMinValue() {
         Stream<String> integerStream = Stream.of("abc", "bb", "ccc", "1");
 
         Optional<String> max = integerStream.collect(minBy(String::length));
@@ -34,14 +34,14 @@ public class CollectorUtilsTests {
     }
 
     @Test
-    public void returnsEmptyForEmptyStream() {
+    public void givenEmptyStream_withCollectorUnique_shouldReturnEmpty() {
         assertThat(Stream
           .empty()
           .collect(CollectorUtils.unique()), equalTo(Optional.empty()));
     }
 
     @Test
-    public void returnsUniqueItem() {
+    public void givenIntegerStream_withCollectorUnique_shouldReturnUniqueValue() {
         assertThat(Stream
           .of(1, 2, 3)
           .filter(i -> i > 2)
@@ -49,7 +49,7 @@ public class CollectorUtilsTests {
     }
 
     @Test
-    public void returnsUniqueNullableItem() {
+    public void givenIntegerStream_withUniqueNullable_shouldReturnUniqueValue() {
         assertThat(Stream
           .of(1, 2, 3)
           .filter(i -> i > 2)
@@ -57,7 +57,7 @@ public class CollectorUtilsTests {
     }
 
     @Test(expected = NonUniqueValueException.class)
-    public void throwsExceptionIfItemIsNotUnique() {
+    public void givenIntegerStream_withCollectorUnique_shouldThrowNonUniqueValueException() {
         Stream
           .of(1, 2, 3)
           .filter(i -> i > 1)
