@@ -1,6 +1,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
     <bean id="toyota" class="com.baeldung.setterdi.domain.Car">
@@ -19,6 +19,14 @@
     </bean>
 
     <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
+    </bean>
+    
+    <bean id="telephoneBean" class="com.baeldung.setterdi.domain.Telephone">
+        <property name="processor" ref="processor" />
+    </bean>
+
+    <bean id="processor" class="com.baeldung.setterdi.domain.Processor">
+        <property name="type" value="Quad Core 1.4Ghz" />
     </bean>
 
 </beans>
