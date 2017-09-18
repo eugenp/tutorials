@@ -16,20 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class PassParametersController {
-    @RequestMapping(value = "/showViewPage", method = RequestMethod.GET)
+    @GetMapping("/showViewPage")
     public String passParametersWithModel(Model model) {
         model.addAttribute("message", "Baeldung");
         return "viewPage";
     }
 
-    @RequestMapping(value = "/printViewPage", method = RequestMethod.GET)
+    @GetMapping("/printViewPage")
     public String passParametersWithModelMap(ModelMap map) {
         map.addAttribute("welcomeMessage", "welcome");
         map.addAttribute("message", "Baeldung");
         return "viewPage";
     }
 
-    @RequestMapping(value = "/goToViewPage", method = RequestMethod.GET)
+    @GetMapping("/goToViewPage")
     public ModelAndView passParametersWithModelAndView() {
         ModelAndView modelAndView = new ModelAndView("viewPage");
         modelAndView.addObject("message", "Baeldung");
