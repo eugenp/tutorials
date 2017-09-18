@@ -28,12 +28,6 @@
           <artifactId>jackson-databind</artifactId>
           <version>${jackson-version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr-version}</version>
-        </dependency>
-
 
         <!-- Spring Context for Dependency Injection -->
         <dependency>
@@ -82,7 +76,6 @@
         <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <vavr-version>0.9.0</vavr-version>
         <jackson-version>2.9.1</jackson-version>
     </properties>
 

@@ -1,9 +1,7 @@
 package com.baeldung.couchbase.n1ql;
 
-import com.baeldung.couchbase.n1ql.IntegrationTestConfig;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
-import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonArray;
 import com.couchbase.client.java.document.json.JsonObject;
@@ -12,30 +10,24 @@ import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.query.N1qlQueryRow;
 import com.couchbase.client.java.query.Statement;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import rx.Observable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static com.baeldung.couchbase.n1ql.CodeSnippets.extractJsonResult;
 import static com.couchbase.client.java.query.Select.select;
-import static com.couchbase.client.java.query.dsl.Expression.i;
-import static com.couchbase.client.java.query.dsl.Expression.s;
-import static com.couchbase.client.java.query.dsl.Expression.x;
-import static org.junit.Assert.*;
+import static com.couchbase.client.java.query.dsl.Expression.*;
+import static org.junit.Assert.assertNotNull;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { IntegrationTestConfig.class })
@@ -190,23 +182,24 @@ public class N1QLIntegrationTest {
     @Test
     public void givenDocuments_whenBatchInsert_thenResult() {
         Bucket bucket = bucketFactory.getTravelSampleBucket();
-        int docsToCreate = 10;
-        List<JsonDocument> documents = new ArrayList<>();
-        for (int i = 5; i < docsToCreate; i++) {
+
+        List<JsonDocument> documents = IntStream.rangeClosed(0,10)
+          .mapToObj( i -> {
             JsonObject content = JsonObject.create()
-                    .put("id", i)
-                    .put("type", "airline")
-                    .put("name", "Sample Airline "  + i);
-            documents.add(JsonDocument.create("cust_" + i, content));
-        }
+              .put("id", i)
+              .put("type", "airline")
+              .put("name", "Sample Airline "  + i);
+            return JsonDocument.create("cust_" + i, content);
+          })
+          .collect(Collectors.toList());
 
         List<JsonDocument> r5 = Observable
-                .from(documents)
-                .flatMap(doc -> bucket.async().insert(doc))
-                .toList()
-                .last()
-                .toBlocking()
-                .single();
+          .from(documents)
+          .flatMap(doc -> bucket.async().insert(doc))
+          .toList()
+          .last()
+          .toBlocking()
+          .single();
 
         r5.forEach(System.out::println);
     }
