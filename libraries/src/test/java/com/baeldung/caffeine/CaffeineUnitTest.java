@@ -27,7 +27,7 @@ public class CaffeineUnitTest {
 
         dataObject = cache.get(key, k -> DataObject.get("Data for A"));
         assertNotNull(dataObject);
-        assertEquals(dataObject.getData(), "Data for A");
+        assertEquals("Data for A", dataObject.getData());
 
         cache.put(key, dataObject);
         dataObject = cache.getIfPresent(key);
