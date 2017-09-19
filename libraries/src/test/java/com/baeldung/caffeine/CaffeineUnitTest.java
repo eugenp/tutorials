@@ -15,7 +15,7 @@ import com.github.benmanes.caffeine.cache.*;
 public class CaffeineUnitTest {
 
     @Test
-    public void given_Cache_whenPopulate_thenValueStored() {
+    public void givenCache_whenPopulate_thenValueStored() {
         Cache<String, DataObject> cache = Caffeine.newBuilder()
           .expireAfterWrite(1, TimeUnit.MINUTES)
           .maximumSize(100)
@@ -39,7 +39,7 @@ public class CaffeineUnitTest {
     }
 
     @Test
-    public void given_LoadingCache_whenGet_thenValuePopulated() {
+    public void givenLoadingCache_whenGet_thenValuePopulated() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
           .maximumSize(100)
           .expireAfterWrite(1, TimeUnit.MINUTES)
@@ -55,7 +55,7 @@ public class CaffeineUnitTest {
     }
 
     @Test
-    public void given_AsyncLoadingCache_whenGet_thenValuePopulated() {
+    public void givenAsyncLoadingCache_whenGet_thenValuePopulated() {
 
         AsyncLoadingCache<String, DataObject> cache = Caffeine.newBuilder()
           .maximumSize(100)
@@ -73,7 +73,7 @@ public class CaffeineUnitTest {
     }
 
     @Test
-    public void given_LoadingCacheWithSmallSize_whenPut_thenSizeIsConstant() {
+    public void givenLoadingCacheWithSmallSize_whenPut_thenSizeIsConstant() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
           .maximumSize(1)
           .refreshAfterWrite(10, TimeUnit.MINUTES)
@@ -90,7 +90,7 @@ public class CaffeineUnitTest {
     }
 
     @Test
-    public void given_LoadingCacheWithWeighter_whenPut_thenSizeIsConstant() {
+    public void givenLoadingCacheWithWeigher_whenPut_thenSizeIsConstant() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
           .maximumWeight(10)
           .weigher((k,v) -> 5)
@@ -110,7 +110,7 @@ public class CaffeineUnitTest {
     }
 
     @Test
-    public void given_TimeEvictionCache_whenTimeLeft_thenValueEvicted() {
+    public void givenTimeEvictionCache_whenTimeLeft_thenValueEvicted() {
         LoadingCache<String, DataObject> cache = Caffeine.newBuilder()
           .expireAfterAccess(5, TimeUnit.MINUTES)
           .build(k -> DataObject.get("Data for " + k));
