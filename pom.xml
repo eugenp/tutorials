@@ -45,7 +45,7 @@
         <module>core-java</module>
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
-        <module>couchbase-sdk</module>
+        <module>couchbase</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
