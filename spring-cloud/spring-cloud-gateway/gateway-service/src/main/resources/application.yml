@@ -4,10 +4,10 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: host_route
-        uri: http://localhost:8888/services/users
+      - id: baeldung_route
+        uri: http://www.baeldung.com
         predicates:
-        - Path=/users/
+        - Path=/baeldung
 management:
   security:
     enabled: false
