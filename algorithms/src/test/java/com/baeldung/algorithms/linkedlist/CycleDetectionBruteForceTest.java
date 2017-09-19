@@ -2,19 +2,22 @@ package com.baeldung.algorithms.linkedlist;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+@RunWith(value = Parameterized.class)
 public class CycleDetectionBruteForceTest extends CycleDetectionTestBase {
+    boolean cycleExists;
+    Node<Integer> head;
 
-    @Test
-    public void givenNormalList_dontDetectLoop() {
-        Node<Integer> root = createList();
-        Assert.assertFalse(CycleDetectionBruteForce.detectCycle(root));
+    public CycleDetectionBruteForceTest(Node<Integer> head, boolean cycleExists) {
+        super();
+        this.cycleExists = cycleExists;
+        this.head = head;
     }
 
     @Test
-    public void givenCyclicList_detectLoop() {
-        Node<Integer> root = createList();
-        createLoop(root);
-        Assert.assertTrue(CycleDetectionBruteForce.detectCycle(root));
+    public void givenList_detectLoop() {
+        Assert.assertEquals(cycleExists, CycleDetectionBruteForce.detectCycle(head).cycleExists);
     }
 }
