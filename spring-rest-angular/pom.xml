@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-angular</artifactId>
     <name>spring-rest-angular</name>
-    <groupId>com.baeldung</groupId>
     <version>1.0</version>
     <packaging>war</packaging>
 
