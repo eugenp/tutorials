@@ -102,7 +102,7 @@
         <module>log4j</module>
         <module>log4j2</module>
         <module>lombok</module>
-       <!-- <module>kotlin</module>-->
+        <module>kotlin</module>
         <module>mapstruct</module>
         <module>metrics</module>
         <module>mesos-marathon</module>
