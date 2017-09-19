@@ -6,7 +6,7 @@
     <artifactId>couchbase-sdk</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>couchbase-sdk</name>
+    <name>couchbase</name>
     <description>Couchbase SDK Tutorials</description>
 
     <parent>
