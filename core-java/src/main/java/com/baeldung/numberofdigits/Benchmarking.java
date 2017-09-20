@@ -1,131 +1,67 @@
 package com.baeldung.numberofdigits;
 
-import static com.baeldung.designpatterns.util.LogerUtil.LOG;;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
-public class Benchmarking {;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.runner.RunnerException;
 
-    private static final int LOWER_BOUND = 1;
-    private static final int UPPER_BOUND = 999999999;
-
-    
-    public static void main(String[] args) {
-        LOG.info("Testing all methods...");
-        
-        long length = test_stringBasedSolution();
-        LOG.info("String Based Solution : " + length);
-        
-        length = test_logarithmicApproach();
-        LOG.info("Logarithmic Approach : " + length);
-        
-        length = test_repeatedMultiplication();
-        LOG.info("Repeated Multiplication : " + length);
-        
-        length = test_shiftOperators();
-        LOG.info("Shift Operators : " + length);
-        
-        length = test_dividingWithPowersOf2();
-        LOG.info("Dividing with Powers of 2 : " + length);
-        
-        length = test_divideAndConquer();
-        LOG.info("Divide And Conquer : " + length);
-
+public class Benchmarking {
+    public static void main(String[] args) throws RunnerException, IOException {
+        org.openjdk.jmh.Main.main(args);
     }
 
-    private static long test_stringBasedSolution() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.stringBasedSolution(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
-    }
-
-    private static long test_logarithmicApproach() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.logarithmicApproach(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
-    }
-
-    private static long test_repeatedMultiplication() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.repeatedMultiplication(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
-    }
-
-    private static long test_shiftOperators() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.shiftOperators(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
-    }
-
-    private static long test_dividingWithPowersOf2() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.dividingWithPowersOf2(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
-    }
-
-    private static long test_divideAndConquer() {
-        
-        long startTime, stopTime, elapsedTime;
-        startTime = System.currentTimeMillis();
-
-        int total = 0;
-        for (int i = LOWER_BOUND; i <= UPPER_BOUND; i++) {
-            total += NumberOfDigits.divideAndConquer(i);
-        }
-
-        stopTime = System.currentTimeMillis();
-        elapsedTime = stopTime - startTime;
-        
-        return elapsedTime;
+    @State(Scope.Thread)
+    public static class ExecutionPlan {
+        public int number = Integer.MAX_VALUE;
+        public int length = 0;
+        public NumberOfDigits numberOfDigits= new NumberOfDigits();
     }
     
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void stringBasedSolution(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.stringBasedSolution(plan.number);
+    }
     
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void logarithmicApproach(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.logarithmicApproach(plan.number);
+    }
+    
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void repeatedMultiplication(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.repeatedMultiplication(plan.number);
+    }
+    
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void shiftOperators(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.shiftOperators(plan.number);
+    }
+    
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void dividingWithPowersOf2(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.dividingWithPowersOf2(plan.number);
+    }
+    
+    @Benchmark 
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    public void divideAndConquer(ExecutionPlan plan) {
+        plan.length = plan.numberOfDigits.divideAndConquer(plan.number);
+    }
 }
