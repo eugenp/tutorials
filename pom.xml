@@ -97,7 +97,8 @@
         <module>jws</module>
 
         <module>libraries</module>
-        <module>libraries-data</module>        
+        <module>libraries-data</module>
+        <module>linkrest</module>        
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
