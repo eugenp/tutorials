@@ -1,8 +1,8 @@
 package com.baeldung.designpatterns.adapter;
 
-public class AstonMartin implements LuxuryCars {
+public class AstonMartin implements Movable {
     @Override
-    public double speedInMPH() {
+    public double getSpeed() {
         return 220;
     }
 }
