@@ -13,4 +13,7 @@
 - [Overview of Kotlin Collections API](http://www.baeldung.com/kotlin-collections-api)
 - [Converting a List to Map in Kotlin](http://www.baeldung.com/kotlin-list-to-map)
 - [Data Classes in Kotlin](http://www.baeldung.com/kotlin-data-classes)
+- [Delegated Properties in Kotlin](http://www.baeldung.com/kotlin-delegated-properties)
+- [Sealed Classes in Kotlin](http://www.baeldung.com/kotlin-sealed-classes)
+
 

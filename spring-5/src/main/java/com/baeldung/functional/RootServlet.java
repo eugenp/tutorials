@@ -28,10 +28,9 @@ import org.springframework.web.server.WebHandler;
 public class RootServlet extends ServletHttpHandlerAdapter {
 
     public RootServlet() {
-        this(WebHttpHandlerBuilder
-          .webHandler((WebHandler) toHttpHandler(routingFunction()))
-          .prependFilter(new IndexRewriteFilter())
-          .build());
+        this(WebHttpHandlerBuilder.webHandler((WebHandler) toHttpHandler(routingFunction()))
+            .prependFilter(new IndexRewriteFilter())
+            .build());
     }
 
     RootServlet(HttpHandler httpHandler) {
@@ -44,44 +43,36 @@ public class RootServlet extends ServletHttpHandlerAdapter {
 
     private static RouterFunction<?> routingFunction() {
 
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld")))
-          .andRoute(POST("/login"), serverRequest -> serverRequest
-            .body(toFormData())
+        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), serverRequest -> serverRequest.body(toFormData())
             .map(MultiValueMap::toSingleValueMap)
             .map(formData -> {
                 System.out.println("form data: " + formData.toString());
                 if ("baeldung".equals(formData.get("user")) && "you_know_what_to_do".equals(formData.get("token"))) {
-                    return ok()
-                      .body(Mono.just("welcome back!"), String.class)
-                      .block();
+                    return ok().body(Mono.just("welcome back!"), String.class)
+                        .block();
                 }
-                return ServerResponse
-                  .badRequest()
-                  .build()
-                  .block();
+                return ServerResponse.badRequest()
+                    .build()
+                    .block();
             }))
-          .andRoute(POST("/upload"), serverRequest -> serverRequest
-            .body(toDataBuffers())
-            .collectList()
-            .map(dataBuffers -> {
-                AtomicLong atomicLong = new AtomicLong(0);
-                dataBuffers.forEach(d -> atomicLong.addAndGet(d
-                  .asByteBuffer()
-                  .array().length));
-                System.out.println("data length:" + atomicLong.get());
-                return ok()
-                  .body(fromObject(atomicLong.toString()))
-                  .block();
-            }))
-          .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
-          .andNest(path("/actor"), route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest
-            .bodyToMono(Actor.class)
-            .doOnNext(actors::add)
-            .then(ok().build())))
-          .filter((request, next) -> {
-              System.out.println("Before handler invocation: " + request.path());
-              return next.handle(request);
-          });
+            .andRoute(POST("/upload"), serverRequest -> serverRequest.body(toDataBuffers())
+                .collectList()
+                .map(dataBuffers -> {
+                    AtomicLong atomicLong = new AtomicLong(0);
+                    dataBuffers.forEach(d -> atomicLong.addAndGet(d.asByteBuffer()
+                        .array().length));
+                    System.out.println("data length:" + atomicLong.get());
+                    return ok().body(fromObject(atomicLong.toString()))
+                        .block();
+                }))
+            .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
+            .andNest(path("/actor"), route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest.bodyToMono(Actor.class)
+                .doOnNext(actors::add)
+                .then(ok().build())))
+            .filter((request, next) -> {
+                System.out.println("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
 
     }
 

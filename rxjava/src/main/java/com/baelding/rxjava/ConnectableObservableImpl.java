@@ -9,7 +9,8 @@ public class ConnectableObservableImpl {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ConnectableObservable<Long> connectable = Observable.interval(200, TimeUnit.MILLISECONDS).publish();
+        ConnectableObservable<Long> connectable
+          = Observable.interval(200, TimeUnit.MILLISECONDS).publish();
         connectable.subscribe(System.out::println);
 
         System.out.println("Connect");
