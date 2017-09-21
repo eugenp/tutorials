@@ -21,23 +21,6 @@
 	</properties>
 
     <dependencies>
-<!--         <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-ci</artifactId>
-            <version>7.3.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-decisiontables</artifactId>
-            <version>7.3.0.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-core</artifactId>
-            <version>7.3.0.Final</version>
-        </dependency>
-       
-        spring integration
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-spring</artifactId>
@@ -49,16 +32,6 @@
         	<version>7.3.0.Final</version>
         </dependency>
         <dependency>
-        	<groupId>javax.xml.stream</groupId>
-        	<artifactId>stax-api</artifactId>
-        	<version>1.0</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.apache.poi</groupId>
-        	<artifactId>poi-ooxml-schemas</artifactId>
-        	<version>3.9</version>
-        </dependency>
- -->        <dependency>
         	<groupId>org.projectlombok</groupId>
         	<artifactId>lombok</artifactId>
         	<version>1.16.16</version>
@@ -71,23 +44,17 @@
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-		<dependency>
-		    <groupId>com.github.jonashackt</groupId>
-		    <artifactId>spring-boot-starter-drools</artifactId>
-		    <version>0c22cee54a</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mvel</groupId>
-			<artifactId>mvel2</artifactId>
-			<version>2.3.1.Final</version>
-		</dependency>
+        <dependency>
+        	<groupId>org.apache.poi</groupId>
+        	<artifactId>poi-ooxml-schemas</artifactId>
+        	<version>3.9</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.mvel</groupId>
+        	<artifactId>mvel2</artifactId>
+        	<version>2.3.1.Final</version>
+        </dependency>
     </dependencies>
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
 	<build>
 		<plugins>
 			<plugin>
