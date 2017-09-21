@@ -28,6 +28,7 @@
     </properties>
 
     <modules>
+        <module>apache-cayenne</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
