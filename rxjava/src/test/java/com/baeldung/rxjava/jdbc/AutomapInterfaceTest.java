@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
