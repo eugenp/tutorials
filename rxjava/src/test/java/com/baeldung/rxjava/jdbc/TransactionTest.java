@@ -2,6 +2,7 @@ package com.baeldung.rxjava.jdbc;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
@@ -12,15 +13,11 @@ import rx.Observable;
 
 public class TransactionTest {
 
-    private String DB_CONNECTION = Connector.DB_CONNECTION;
-    private String DB_USER = Connector.DB_USER;
-    private String DB_PASSWORD = Connector.DB_PASSWORD;
-
     Observable<Boolean> begin, commit = null;
     Observable<Integer> createStatement, insertStatement, updateStatement = null;
 
-    ConnectionProvider cp = new ConnectionProviderFromUrl(DB_CONNECTION, DB_USER, DB_PASSWORD);
-    Database db = Database.from(cp);
+    ConnectionProvider connectionProvider = Connector.connectionProvider;
+    Database db = Database.from(connectionProvider);
 
     @Test
     public void whenCommitTransaction_thenRecordUpdated() {
@@ -42,5 +39,12 @@ public class TransactionTest {
             .single();
 
         assertEquals("Tom", name);
+    }
+
+    @After
+    public void close() {
+        db.update("DROP TABLE EMPLOYEE")
+            .dependsOn(createStatement);
+        connectionProvider.close();
     }
 }

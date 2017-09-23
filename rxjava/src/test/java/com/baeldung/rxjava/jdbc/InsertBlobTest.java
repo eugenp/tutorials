@@ -5,28 +5,21 @@ import static org.junit.Assert.assertEquals;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
 
 public class InsertBlobTest {
 
-    private String DB_CONNECTION = Connector.DB_CONNECTION;
-    private String DB_USER = Connector.DB_USER;
-    private String DB_PASSWORD = Connector.DB_PASSWORD;
-
-    ConnectionProvider cp = new ConnectionProviderFromUrl(DB_CONNECTION, DB_USER, DB_PASSWORD);
-    Database db = Database.from(cp);
+    ConnectionProvider connectionProvider = Connector.connectionProvider;
+    Database db = Database.from(connectionProvider);
 
     String expectedDocument = null;
     String actualDocument = null;
@@ -67,6 +60,6 @@ public class InsertBlobTest {
     public void close() {
         db.update("DROP TABLE SERVERLOG")
             .dependsOn(create);
-        cp.close();
+        connectionProvider.close();
     }
 }

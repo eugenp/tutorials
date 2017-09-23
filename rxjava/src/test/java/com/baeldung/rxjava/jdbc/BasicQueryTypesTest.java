@@ -17,20 +17,10 @@ import rx.Observable;
 
 public class BasicQueryTypesTest {
 
-    private String DB_CONNECTION = Connector.DB_CONNECTION;
-    private String DB_USER = Connector.DB_USER;
-    private String DB_PASSWORD = Connector.DB_PASSWORD;
+    ConnectionProvider connectionProvider = Connector.connectionProvider;
+    Database db = Database.from(connectionProvider);
 
-    ConnectionProvider cp = null;
-    Database db = null;
-
-    Observable<Integer> create, insert1, insert2, insert3, insert4, insert5, update, delete = null;
-
-    @Before
-    public void setup() {
-        cp = new ConnectionProviderFromUrl(DB_CONNECTION, DB_USER, DB_PASSWORD);
-        db = Database.from(cp);
-    }
+    Observable<Integer> create, insert1, insert2, insert3, update, delete = null;
 
     @Test
     public void whenCreateTableAndInsertRecords_thenCorrect() {
@@ -48,36 +38,29 @@ public class BasicQueryTypesTest {
         insert3 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(3, 'Mike')")
             .dependsOn(create)
             .count();
-        insert4 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(4, 'Jennifer')")
+        delete = db.update("DELETE FROM EMPLOYEE WHERE id = 2")
             .dependsOn(create)
             .count();
-        insert5 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(5, 'George')")
-            .dependsOn(create)
-            .count();
-        delete = db.update("DELETE FROM EMPLOYEE WHERE id = 5")
-            .dependsOn(create)
-            .count();
-        List<String> names = db.select("select name from EMPLOYEE where id > ?")
-            .parameter(2)
+        List<String> names = db.select("select name from EMPLOYEE where id < ?")
+            .parameter(3)
             .dependsOn(create)
             .dependsOn(insert1)
             .dependsOn(insert2)
             .dependsOn(insert3)
-            .dependsOn(insert4)
-            .dependsOn(insert5)
             .dependsOn(update)
             .dependsOn(delete)
             .getAs(String.class)
             .toList()
             .toBlocking()
             .single();
-        assertEquals(Arrays.asList("Mike", "Jennifer"), names);
+
+        assertEquals(Arrays.asList("Alan"), names);
     }
 
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
             .dependsOn(create);
-        cp.close();
+        connectionProvider.close();
     }
 }

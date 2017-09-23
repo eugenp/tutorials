@@ -18,12 +18,8 @@ import rx.Observable;
 
 public class InsertClobTest {
 
-    private String DB_CONNECTION = Connector.DB_CONNECTION;
-    private String DB_USER = Connector.DB_USER;
-    private String DB_PASSWORD = Connector.DB_PASSWORD;
-
-    ConnectionProvider cp = new ConnectionProviderFromUrl(DB_CONNECTION, DB_USER, DB_PASSWORD);
-    Database db = Database.from(cp);
+    ConnectionProvider connectionProvider = Connector.connectionProvider;
+    Database db = Database.from(connectionProvider);
 
     String expectedDocument = null;
     String actualDocument = null;
@@ -63,6 +59,6 @@ public class InsertClobTest {
     public void close() {
         db.update("DROP TABLE SERVERLOG")
             .dependsOn(create);
-        cp.close();
+        connectionProvider.close();
     }
 }
