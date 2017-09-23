@@ -20,17 +20,18 @@ public class TransactionTest {
 
     @Test
     public void whenCommitTransaction_thenRecordUpdated() {
-        begin = db.beginTransaction();
-        createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
+        Observable<Boolean> begin = db.beginTransaction();
+        Observable<Integer> createStatement = db
+          .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
-        insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
+        Observable<Integer> insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
           .dependsOn(createStatement)
           .count();
-        updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
+        Observable<Integer> updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
           .dependsOn(insertStatement)
           .count();
-        commit = db.commit(updateStatement);
+        Observable<Boolean> commit = db.commit(updateStatement);
         String name = db.select("select name from EMPLOYEE WHERE id = 1")
           .dependsOn(commit)
           .getAs(String.class)
