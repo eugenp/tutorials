@@ -11,19 +11,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
 
 public class InsertClobTest {
 
-    private String DB_CONNECTION = Connector.DB_CONNECTION;
-    private String DB_USER = Connector.DB_USER;
-    private String DB_PASSWORD = Connector.DB_PASSWORD;
-
-    ConnectionProvider cp = new ConnectionProviderFromUrl(DB_CONNECTION, DB_USER, DB_PASSWORD);
-    Database db = Database.from(cp);
+    ConnectionProvider connectionProvider = Connector.connectionProvider;
+    Database db = Database.from(connectionProvider);
 
     String expectedDocument = null;
     String actualDocument = null;
@@ -33,7 +28,7 @@ public class InsertClobTest {
     @Before
     public void setup() throws IOException {
         create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG (id int primary key, document CLOB)")
-            .count();
+          .count();
 
         InputStream actualInputStream = new FileInputStream("src/test/resources/actual_clob");
         this.actualDocument = Utils.getStringFromInputStream(actualInputStream);
@@ -41,28 +36,28 @@ public class InsertClobTest {
         InputStream expectedInputStream = new FileInputStream("src/test/resources/expected_clob");
         this.expectedDocument = Utils.getStringFromInputStream(expectedInputStream);
         this.insert = db.update("insert into SERVERLOG(id,document) values(?,?)")
-            .parameter(1)
-            .parameter(Database.toSentinelIfNull(actualDocument))
-            .dependsOn(create)
-            .count();
+          .parameter(1)
+          .parameter(Database.toSentinelIfNull(actualDocument))
+          .dependsOn(create)
+          .count();
     }
 
     @Test
     public void whenSelectCLOB_thenCorrect() throws IOException {
         db.select("select document from SERVERLOG where id = 1")
-            .dependsOn(create)
-            .dependsOn(insert)
-            .getAs(String.class)
-            .toList()
-            .toBlocking()
-            .single();
+          .dependsOn(create)
+          .dependsOn(insert)
+          .getAs(String.class)
+          .toList()
+          .toBlocking()
+          .single();
         assertEquals(expectedDocument, actualDocument);
     }
 
     @After
     public void close() {
         db.update("DROP TABLE SERVERLOG")
-            .dependsOn(create);
-        cp.close();
+          .dependsOn(create);
+        connectionProvider.close();
     }
 }
