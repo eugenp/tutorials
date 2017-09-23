@@ -1,7 +1,7 @@
 package com.baeldung.rxjava;
 
-import static com.baelding.rxjava.operator.ToCleanString.toCleanString;
-import static com.baelding.rxjava.operator.ToLength.toLength;
+import static com.baeldung.rxjava.operator.ToCleanString.toCleanString;
+import static com.baeldung.rxjava.operator.ToLength.toLength;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;
@@ -17,9 +17,6 @@ import rx.Observable;
 import rx.Observable.Operator;
 import rx.Observable.Transformer;
 import rx.Subscriber;
-
-import com.baelding.rxjava.operator.ToCleanString;
-import com.baelding.rxjava.operator.ToLength;
 
 public class RxJavaCustomOperatorUnitTest {
 

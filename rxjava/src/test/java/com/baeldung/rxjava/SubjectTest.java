@@ -1,6 +1,5 @@
 package com.baeldung.rxjava;
 
-import com.baelding.rxjava.SubjectImpl;
 import org.junit.Test;
 import rx.subjects.PublishSubject;
 
