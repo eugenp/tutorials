@@ -6,11 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
@@ -25,34 +23,34 @@ public class BasicQueryTypesTest {
     @Test
     public void whenCreateTableAndInsertRecords_thenCorrect() {
         create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
-            .count();
+          .count();
         insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
-            .dependsOn(create)
-            .count();
+          .dependsOn(create)
+          .count();
         update = db.update("UPDATE EMPLOYEE SET name = 'Alan' WHERE id = 1")
-            .dependsOn(create)
-            .count();
+          .dependsOn(create)
+          .count();
         insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
-            .dependsOn(create)
-            .count();
+          .dependsOn(create)
+          .count();
         insert3 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(3, 'Mike')")
-            .dependsOn(create)
-            .count();
+          .dependsOn(create)
+          .count();
         delete = db.update("DELETE FROM EMPLOYEE WHERE id = 2")
-            .dependsOn(create)
-            .count();
+          .dependsOn(create)
+          .count();
         List<String> names = db.select("select name from EMPLOYEE where id < ?")
-            .parameter(3)
-            .dependsOn(create)
-            .dependsOn(insert1)
-            .dependsOn(insert2)
-            .dependsOn(insert3)
-            .dependsOn(update)
-            .dependsOn(delete)
-            .getAs(String.class)
-            .toList()
-            .toBlocking()
-            .single();
+          .parameter(3)
+          .dependsOn(create)
+          .dependsOn(insert1)
+          .dependsOn(insert2)
+          .dependsOn(insert3)
+          .dependsOn(update)
+          .dependsOn(delete)
+          .getAs(String.class)
+          .toList()
+          .toBlocking()
+          .single();
 
         assertEquals(Arrays.asList("Alan"), names);
     }
@@ -60,7 +58,7 @@ public class BasicQueryTypesTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-            .dependsOn(create);
+          .dependsOn(create);
         connectionProvider.close();
     }
 }

@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
@@ -23,20 +22,20 @@ public class TransactionTest {
     public void whenCommitTransaction_thenRecordUpdated() {
         begin = db.beginTransaction();
         createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
-            .dependsOn(begin)
-            .count();
+          .dependsOn(begin)
+          .count();
         insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
-            .dependsOn(createStatement)
-            .count();
+          .dependsOn(createStatement)
+          .count();
         updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
-            .dependsOn(insertStatement)
-            .count();
+          .dependsOn(insertStatement)
+          .count();
         commit = db.commit(updateStatement);
         String name = db.select("select name from EMPLOYEE WHERE id = 1")
-            .dependsOn(commit)
-            .getAs(String.class)
-            .toBlocking()
-            .single();
+          .dependsOn(commit)
+          .getAs(String.class)
+          .toBlocking()
+          .single();
 
         assertEquals("Tom", name);
     }
@@ -44,7 +43,7 @@ public class TransactionTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-            .dependsOn(createStatement);
+          .dependsOn(createStatement);
         connectionProvider.close();
     }
 }

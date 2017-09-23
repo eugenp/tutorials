@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.ConnectionProviderFromUrl;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
@@ -24,26 +23,26 @@ public class ReturnKeysTest {
     public void setup() {
         begin = db.beginTransaction();
         createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
-            .dependsOn(begin)
-            .count();
+          .dependsOn(begin)
+          .count();
     }
 
     @Test
     public void whenInsertAndReturnGeneratedKey_thenCorrect() {
         Integer key = db.update("INSERT INTO EMPLOYEE(name) VALUES('John')")
-            .dependsOn(createStatement)
-            .returnGeneratedKeys()
-            .getAs(Integer.class)
-            .count()
-            .toBlocking()
-            .single();
+          .dependsOn(createStatement)
+          .returnGeneratedKeys()
+          .getAs(Integer.class)
+          .count()
+          .toBlocking()
+          .single();
         assertThat(key).isEqualTo(1);
     }
 
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-            .dependsOn(createStatement);
+          .dependsOn(createStatement);
         connectionProvider.close();
     }
 }
