@@ -1,4 +1,4 @@
-package com.baelding.rxjava.operator;
+package com.baeldung.rxjava.operator;
 
 import rx.Observable.Operator;
 import rx.Subscriber;
