@@ -20,7 +20,7 @@ public class CayenneOperationTests {
     private static ObjectContext context = null;
 
     @BeforeClass
-    public static void setupTheCayenneContext(){
+    public static void setupTheCayenneContext() {
         ServerRuntime cayenneRuntime = ServerRuntime.builder()
                 .addConfig("cayenne-project.xml")
                 .build();
@@ -28,7 +28,7 @@ public class CayenneOperationTests {
     }
 
     @After
-    public void deleteAllRecords(){
+    public void deleteAllRecords() {
         SQLTemplate deleteArticles = new SQLTemplate(Article.class, "delete from article");
         SQLTemplate deleteAuthors = new SQLTemplate(Author.class, "delete from author");
 
@@ -37,7 +37,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenInsert_thenWeGetOneRecordInTheDatabase(){
+    public void givenAuthor_whenInsert_thenWeGetOneRecordInTheDatabase() {
         Author author = context.newObject(Author.class);
         author.setFirstname("Paul");
         author.setLastname("Smith");
@@ -49,7 +49,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenInsert_andQueryByFirstName_thenWeGetTheAuthor(){
+    public void givenAuthor_whenInsert_andQueryByFirstName_thenWeGetTheAuthor() {
         Author author = context.newObject(Author.class);
         author.setFirstname("Paul");
         author.setLastname("Smith");
@@ -65,7 +65,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenTwoAuthor_whenInsert_andQueryAll_thenWeGetTwoAuthors(){
+    public void givenTwoAuthor_whenInsert_andQueryAll_thenWeGetTwoAuthors() {
         Author firstAuthor = context.newObject(Author.class);
         firstAuthor.setFirstname("Paul");
         firstAuthor.setLastname("Smith");
@@ -81,7 +81,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenUpdating_thenWeGetAnUpatedeAuthor(){
+    public void givenAuthor_whenUpdating_thenWeGetAnUpatedeAuthor() {
         Author author = context.newObject(Author.class);
         author.setFirstname("Paul");
         author.setLastname("Smith");
@@ -98,7 +98,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenDeleting_thenWeLostHisDetails(){
+    public void givenAuthor_whenDeleting_thenWeLostHisDetails() {
         Author author = context.newObject(Author.class);
         author.setFirstname("Paul");
         author.setLastname("Smith");
@@ -117,7 +117,7 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenAttachingToArticle_thenTheRelationIsMade(){
+    public void givenAuthor_whenAttachingToArticle_thenTheRelationIsMade() {
         Author author = context.newObject(Author.class);
         author.setFirstname("Paul");
         author.setLastname("Smith");
