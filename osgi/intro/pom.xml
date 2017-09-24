@@ -30,7 +30,40 @@
             <artifactId>javax.json</artifactId>
             <version>1.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
+                        <Bundle-Version>1.0.0</Bundle-Version>
+                        <!--
+                        <Private-Package>org.wso2.mbp.helloworld</Private-Package>
+                        -->
+                        <Bundle-Activator>com.baeldung.osgi.geocoding.Client</Bundle-Activator>
+                        <Import-Package>
+                            org.osgi.framework,
+                            *;resolution:=optional
+                        </Import-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 
 </project>

@@ -4,12 +4,14 @@ import com.baeldung.osgi.geocoding.gxyz.GeocodeXyz;
 import com.baeldung.osgi.geocoding.service.Coord;
 import com.baeldung.osgi.geocoding.service.GeocodeException;
 import com.baeldung.osgi.geocoding.service.GeocodingService;
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Client {
+public class Client implements BundleActivator {
 
     private GeocodingService geocoding;
 
@@ -39,9 +41,18 @@ public class Client {
     }
 
     public static void main(String[] args) {
+        System.out.println("main");
         Client client = new Client(new GeocodeXyz());
         client.run();
     }
 
+    @Override public void start(BundleContext bundleContext) throws Exception {
+        System.out.println("start");
+        Client client = new Client(new GeocodeXyz());
+        client.run();
+    }
 
+    @Override public void stop(BundleContext bundleContext) throws Exception {
+        System.out.println("stop");
+    }
 }
