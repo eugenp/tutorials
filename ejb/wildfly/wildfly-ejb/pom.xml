@@ -11,44 +11,44 @@
 
 	<dependencies>
 		<!-- Dependency for EJB javax -->
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<version>3.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-  			<groupId>javax</groupId>
-  			<artifactId>javaee-api</artifactId>
-  			<version>7.0</version>
-  			<scope>provided</scope>
-  		</dependency>
-		<!-- Dependency for java ee -->
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>7.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- Dependency for JPA -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.3.Final</version>
-		</dependency>
+<dependency>
+	<groupId>javax.ejb</groupId>
+	<artifactId>javax.ejb-api</artifactId>
+	<version>3.2</version>
+	<scope>provided</scope>
+</dependency>
+<dependency>
+	<groupId>javax</groupId>
+	<artifactId>javaee-api</artifactId>
+	<version>7.0</version>
+	<scope>provided</scope>
+</dependency>
+<!-- Dependency for java ee -->
+<dependency>
+	<groupId>javax</groupId>
+	<artifactId>javaee-api</artifactId>
+	<version>7.0</version>
+	<scope>provided</scope>
+</dependency>
+<!-- Dependency for JPA -->
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.2.3.Final</version>
+</dependency>
 		<!-- Dependency for EJB Local and Remote -->
 		<dependency>
 			<groupId>com.baeldung.wildfly</groupId>
 			<artifactId>wildfly-ejb-interfaces</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
