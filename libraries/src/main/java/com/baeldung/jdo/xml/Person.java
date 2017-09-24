@@ -1,35 +1,26 @@
 package com.baeldung.jdo.xml;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.jdo.annotations.Element;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 
-//@PersistenceCapable(schema="/myproduct/people", table="person")
-@PersistenceCapable
-public class Person
-{
-//    @XmlAttribute
+@PersistenceCapable(
+        schema="/myproduct/people",
+        table="person"
+        )
+//@PersistenceCapable
+public class Person {
+    //@XmlAttribute
     private long personNum;
-
-//    @PrimaryKey
+    @PrimaryKey
     private String firstName;
-
     private String lastName;
 
-
-//    @XmlElementWrapper(name="phone-numbers")
-//    @XmlElement(name="phone-number")
-//    @Element(types=String.class)
+    //    @XmlElementWrapper(name="phone-numbers")
+    //    @XmlElement(name="phone-number")
+    //    @Element(types=String.class)
     private List phoneNumbers = new ArrayList();
-    
 
     public Person(long personNum, String firstName, String lastName) {
         super();
@@ -70,7 +61,4 @@ public class Person
         this.phoneNumbers = phoneNumbers;
     }
 
-
-    
-    
 }

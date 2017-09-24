@@ -17,19 +17,17 @@ import org.datanucleus.metadata.PersistenceUnitMetaData;
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
+public class App {
+    public static void main( String[] args ) {
 
-        // using dynamic persistance Unit
+        //        // using dynamic persistance Unit
         //        PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         //        pumd.addProperty("javax.jdo.option.ConnectionURL", "xml:file:myfile2.xml");
         //        pumd.addProperty("datanucleus.schema.autoCreateAll", "true");
         //        pumd.addProperty("datanucleus.xml.indentSize", "4");
         //        PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
-
-        // using Named PMF
+        //
+        //        // using Named PMF
         //        PersistenceManagerFactory pmf = JDOHelper.getPersistenceManagerFactory("XmlDatastore");
 
         //using properties file
@@ -38,12 +36,11 @@ public class App
 
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
-        try
-        {
+        try {
             tx.begin();
             //to persist product object
-            //            Product product = new Product("id1","Sony Discman", "A standard discman from Sony", 49.99);
-            //            pm.makePersistent(product); 
+            Product product = new Product("id1","Sony Discman", "A standard discman from Sony", 49.99);
+            pm.makePersistent(product); 
 
             //to persist person object
             Person person = new Person(654321,"bealdung","author");
@@ -57,10 +54,8 @@ public class App
             System.out.println("name: "+result.get(0).getFirstName());
             tx.commit();
         }
-        finally
-        {
-            if (tx.isActive())
-            {
+        finally {
+            if (tx.isActive()) {
                 tx.rollback();
             }
 

@@ -1,32 +1,28 @@
 package com.baeldung.jdo.xml;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.PersistenceAware;
 import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class Product {
-
     @PrimaryKey
     String id;
     String name;
     String description;
     double price;
-    
+
     public Product(){
-        
+
     }
-    
+
     public Product(String id,String name,String description,double price){
         this.id = id;
         this.name=name;
         this.description = description;
         this.price = price;
     }
-    
- 
+
+
     public String getId() {
         return id;
     }
@@ -53,6 +49,6 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-    
-    
+
+
 }
