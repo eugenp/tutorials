@@ -8,7 +8,7 @@ import java.security.ProtectionDomain;
 
 /**
  *
- * @author SIGINT-X
+ * @author baeldung
  */
 public class Premain {
 
