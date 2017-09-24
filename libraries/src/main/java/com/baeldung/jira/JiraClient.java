@@ -11,13 +11,13 @@ import java.net.URISyntaxException;
 
 public class JiraClient {
 
-    private static final String USERNAME = "yasin.bhojawala";
-    private static final String PASSWORD = "jira@P455";
-    private static final String JIRA_URL = "http://jira.baeldung.com";
+    private static final String USERNAME = "jira.user";
+    private static final String PASSWORD = "secret";
+    private static final String JIRA_URL = "http://jira.company.com";
 
     public static void main(String[] args) {
 
-        final Issue issue = new JiraClient().getIssue("BAEL-1139");
+        final Issue issue = new JiraClient().getIssue("MYKEY-1234");
         System.out.println(issue.getDescription());
     }
 
