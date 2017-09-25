@@ -8,7 +8,7 @@ install: travis_wait 60 mvn -q test -fae
 sudo: required
 
 jdk:
-  - oraclejdk8
+  - oraclejdk9
 
 addons:
   apt:
