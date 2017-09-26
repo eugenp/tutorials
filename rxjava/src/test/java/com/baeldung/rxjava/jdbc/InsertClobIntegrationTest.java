@@ -1,51 +1,45 @@
 package com.baeldung.rxjava.jdbc;
 
-import static org.junit.Assert.assertEquals;
+import com.github.davidmoten.rx.jdbc.Database;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import rx.Observable;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import com.github.davidmoten.rx.jdbc.ConnectionProvider;
-import com.github.davidmoten.rx.jdbc.Database;
+public class InsertClobIntegrationTest {
 
-import rx.Observable;
+    private Database db = Database.from(Connector.connectionProvider);
 
-public class InsertBlobTest {
+    private String expectedDocument = null;
+    private String actualDocument = null;
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
-
-    String expectedDocument = null;
-    String actualDocument = null;
-
-    Observable<Integer> create, insert = null;
+    private Observable<Integer> create, insert = null;
 
     @Before
     public void setup() throws IOException {
-        create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG (id int primary key, document BLOB)")
+        create = db.update("CREATE TABLE IF NOT EXISTS SERVERLOG (id int primary key, document CLOB)")
           .count();
 
         InputStream actualInputStream = new FileInputStream("src/test/resources/actual_clob");
         this.actualDocument = Utils.getStringFromInputStream(actualInputStream);
-        byte[] bytes = this.actualDocument.getBytes(StandardCharsets.UTF_8);
 
         InputStream expectedInputStream = new FileInputStream("src/test/resources/expected_clob");
         this.expectedDocument = Utils.getStringFromInputStream(expectedInputStream);
         this.insert = db.update("insert into SERVERLOG(id,document) values(?,?)")
           .parameter(1)
-          .parameter(Database.toSentinelIfNull(bytes))
+          .parameter(Database.toSentinelIfNull(actualDocument))
           .dependsOn(create)
           .count();
     }
 
     @Test
-    public void whenInsertBLOB_thenCorrect() throws IOException {
+    public void whenSelectCLOB_thenCorrect() throws IOException {
         db.select("select document from SERVERLOG where id = 1")
           .dependsOn(create)
           .dependsOn(insert)
@@ -60,6 +54,6 @@ public class InsertBlobTest {
     public void close() {
         db.update("DROP TABLE SERVERLOG")
           .dependsOn(create);
-        connectionProvider.close();
+        Connector.connectionProvider.close();
     }
 }

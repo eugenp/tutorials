@@ -1,8 +1,6 @@
 package com.baeldung.rxjava;
 
-
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,9 +21,9 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
 
 public class SchedulersTest {
-    String result = "";
-    String result1 = "";
-    String result2 = "";
+    private String result = "";
+    private String result1 = "";
+    private String result2 = "";
 
     @Test
     public void givenScheduledWorker_whenScheduleAnAction_thenResultAction() throws InterruptedException {
@@ -108,7 +106,6 @@ public class SchedulersTest {
         Assert.assertTrue(result.equals("main"));
     }
 
-
     @Test
     public void givenObservable_whenTrampolineScheduled_thenExecuteOnMainThread() throws InterruptedException {
         System.out.println("trampoline_1");
@@ -161,7 +158,8 @@ public class SchedulersTest {
             subscriber.onNext("Alfa");
             subscriber.onNext("Beta");
             subscriber.onCompleted();
-        });;
+        });
+        ;
 
         observable
           .subscribeOn(schedulerA)
@@ -203,10 +201,10 @@ public class SchedulersTest {
 
         Observable<Long> tick = Observable.interval(1, TimeUnit.SECONDS, scheduler);
 
-       Observable.from(letters)
-         .zipWith(tick, (string, index) -> index + "-" + string)
-         .subscribeOn(scheduler)
-         .subscribe(subscriber);
+        Observable.from(letters)
+          .zipWith(tick, (string, index) -> index + "-" + string)
+          .subscribeOn(scheduler)
+          .subscribe(subscriber);
 
         subscriber.assertNoValues();
         subscriber.assertNotCompleted();
@@ -229,10 +227,9 @@ public class SchedulersTest {
         Scheduler schedulerA = Schedulers.from(poolA);
         Observable.just('A', 'B')
           .delay(1, TimeUnit.SECONDS, schedulerA)
-          .subscribe(i -> result+= Thread.currentThread().getName() + i + " ");
+          .subscribe(i -> result += Thread.currentThread().getName() + i + " ");
 
         Thread.sleep(2000);
         Assert.assertTrue(result.equals("Sched1-A Sched1-B "));
     }
-
 }
