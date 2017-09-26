@@ -5,7 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>osgi-intro</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>osgi-intro-client</module>
+        <module>osgi-intro-service</module>
+        <module>osgi-intro-gxyz</module>
+        <module>osgi-intro-mapquest</module>
+    </modules>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -14,7 +21,33 @@
         <relativePath>../..</relativePath>
      </parent>
 
-    <dependencies>
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>osgi-intro-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>osgi-intro-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>osgi-intro-gxyz</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>osgi-intro-mapquest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
@@ -36,34 +69,8 @@
             <version>6.0.0</version>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>1.4.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Bundle-Version>1.0.0</Bundle-Version>
-                        <!--
-                        <Private-Package>org.wso2.mbp.helloworld</Private-Package>
-                        -->
-                        <Bundle-Activator>com.baeldung.osgi.geocoding.Client</Bundle-Activator>
-                        <Import-Package>
-                            org.osgi.framework,
-                            *;resolution:=optional
-                        </Import-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
+        </dependencies>
+    </dependencyManagement>
 
 
 </project>
