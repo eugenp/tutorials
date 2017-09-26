@@ -1,18 +1,19 @@
 package com.baeldung.spring.cloud.bootstrap.gateway;
 
-import static io.restassured.RestAssured.config;
+import com.baeldung.spring.cloud.bootstrap.gateway.client.book.Book;
+import com.baeldung.spring.cloud.bootstrap.gateway.client.rating.Rating;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.restassured.RestAssured;
 import io.restassured.authentication.FormAuthConfig;
 import io.restassured.config.RedirectConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import static io.restassured.RestAssured.config;
 
 public class LiveTest {
 
@@ -34,7 +35,7 @@ public class LiveTest {
 
     @Test
     public void whenAccessProtectedResourceWithoutLogin_thenRedirectToLogin() {
-        final Response response = RestAssured.get(ROOT_URI + "/book-service/books/1");
+        final Response response = RestAssured.get(ROOT_URI + "/home/index.html");
         Assert.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
         Assert.assertEquals("http://localhost:8080/login", response.getHeader("Location"));
     }
@@ -81,7 +82,9 @@ public class LiveTest {
     @Test
     public void whenAddnewRating_thenSuccess() {
 
-        final Rating rating = new Rating(1L, 4);
+        final Rating rating = new Rating();
+        rating.setBookId(1L);
+        rating.setStars(4);
 
         // request the protected resource
         final Response ratingResponse = RestAssured.given()
@@ -99,7 +102,9 @@ public class LiveTest {
 
     @Test
     public void whenAddnewBook_thenSuccess() {
-        final Book book = new Book("Baeldung", "How to spring cloud");
+        final Book book = new Book();
+        book.setTitle("How to spring cloud");
+        book.setAuthor("Baeldung");
 
         // request the protected resource
         final Response bookResponse = RestAssured.given()
@@ -116,83 +121,17 @@ public class LiveTest {
 
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Book {
-
-        private Long id;
-        private String author;
-        private String title;
-
-        public Book() {
-        }
-
-        public Book(String author, String title) {
-            this.author = author;
-            this.title = title;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public void setAuthor(String author) {
-            this.author = author;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
-        }
+    @Test
+    public void accessCombinedEndpoint() {
+        final Response response = RestAssured.given()
+            .auth()
+            .form("user", "password", formConfig)
+            .get(ROOT_URI + "/combined?bookId=1");
+        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
+        Assert.assertNotNull(response.getBody());
+        final Book result = response.as(Book.class);
+        Assert.assertEquals(new Long(1), result.getId());
+        Assert.assertNotNull(result.getRatings());
+        Assert.assertTrue(result.getRatings().size() > 0);
     }
-
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Rating {
-        private Long id;
-        private Long bookId;
-        private int stars;
-
-        public Rating() {
-        }
-
-        public Rating(Long bookId, int stars) {
-            this.bookId = bookId;
-            this.stars = stars;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public void setId(Long id) {
-            this.id = id;
-        }
-
-        public Long getBookId() {
-            return bookId;
-        }
-
-        public void setBookId(Long bookId) {
-            this.bookId = bookId;
-        }
-
-        public int getStars() {
-            return stars;
-        }
-
-        public void setStars(int stars) {
-            this.stars = stars;
-        }
-    }
-
 }

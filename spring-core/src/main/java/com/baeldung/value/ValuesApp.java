@@ -1,5 +1,6 @@
 package com.baeldung.value;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,9 @@ public class ValuesApp {
 
     @Value("${priority}")
     private String prioritySystemProperty;
+
+    @Value("${listOfValues}")
+    private String[] valuesArray;
 
     @Value("#{systemProperties['priority']}")
     private String spelValue;
@@ -60,6 +64,7 @@ public class ValuesApp {
         System.out.println(systemValue);
         System.out.println(someDefault);
         System.out.println(prioritySystemProperty);
+        System.out.println(Arrays.toString(valuesArray));
         System.out.println(spelValue);
         System.out.println(spelSomeDefault);
         System.out.println(someBeanValue);

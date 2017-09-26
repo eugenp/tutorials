@@ -1,25 +1,9 @@
 package com.baeldung.persistence.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQueries;
-import javax.persistence.NamedNativeQuery;
-
-import org.hibernate.envers.Audited;
-
-@NamedNativeQueries({ @NamedNativeQuery(name = "callGetAllFoos", query = "CALL GetAllFoos()", resultClass = Foo.class), @NamedNativeQuery(name = "callGetFoosByName", query = "CALL GetFoosByName(:fooName)", resultClass = Foo.class) })
 @Entity
-@Audited
-// @Proxy(lazy = false)
 public class Foo implements Serializable {
 
     @Id
@@ -30,10 +14,6 @@ public class Foo implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(targetEntity = Bar.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "BAR_ID")
-    private Bar bar = new Bar();
-
     public Foo() {
         super();
     }
@@ -41,16 +21,6 @@ public class Foo implements Serializable {
     public Foo(final String name) {
         super();
         this.name = name;
-    }
-
-    //
-
-    public Bar getBar() {
-        return bar;
-    }
-
-    public void setBar(final Bar bar) {
-        this.bar = bar;
     }
 
     public long getId() {
@@ -68,8 +38,6 @@ public class Foo implements Serializable {
     public void setName(final String name) {
         this.name = name;
     }
-
-    //
 
     @Override
     public int hashCode() {

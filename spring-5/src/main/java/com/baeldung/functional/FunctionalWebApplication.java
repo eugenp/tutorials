@@ -33,28 +33,25 @@ public class FunctionalWebApplication {
     private RouterFunction<ServerResponse> routingFunction() {
         FormHandler formHandler = new FormHandler();
 
-        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest
-          .bodyToMono(Actor.class)
-          .doOnNext(actors::add)
-          .then(ok().build()));
+        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest.bodyToMono(Actor.class)
+            .doOnNext(actors::add)
+            .then(ok().build()));
 
-        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld")))
-          .andRoute(POST("/login"), formHandler::handleLogin)
-          .andRoute(POST("/upload"), formHandler::handleUpload)
-          .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
-          .andNest(path("/actor"), restfulRouter)
-          .filter((request, next) -> {
-              System.out.println("Before handler invocation: " + request.path());
-              return next.handle(request);
-          });
+        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
+            .andRoute(POST("/upload"), formHandler::handleUpload)
+            .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
+            .andNest(path("/actor"), restfulRouter)
+            .filter((request, next) -> {
+                System.out.println("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
     }
 
     WebServer start() throws Exception {
-        WebHandler webHandler = toHttpHandler(routingFunction());
-        HttpHandler httpHandler = WebHttpHandlerBuilder
-          .webHandler(webHandler)
-          .prependFilter(new IndexRewriteFilter())
-          .build();
+        WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
+        HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
+            .prependFilter(new IndexRewriteFilter())
+            .build();
 
         Tomcat tomcat = new Tomcat();
         tomcat.setHostname("localhost");

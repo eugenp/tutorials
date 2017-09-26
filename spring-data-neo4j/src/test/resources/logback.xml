@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d %5p %40.40c:%4L - %m%n</pattern>
+            <pattern>web - %date [%thread] %-5level %logger{36} - %message%n
+            </pattern>
         </encoder>
     </appender>
 
-    <logger name="org.neo4j.ogm" level="info"/>
+    <logger name="org.springframework" level="WARN" />
+    <logger name="org.springframework.transaction" level="WARN" />
 
-    <root level="warn">
-        <appender-ref ref="console"/>
+    <!-- in order to debug some marshalling issues, this needs to be TRACE -->
+    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
     </root>
-
 </configuration>

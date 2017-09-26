@@ -5,9 +5,9 @@
     </listeners>
     <test name="test suite">
 	    <classes>
-	        <class name="baeldung.com.RegistrationTest" />
-            <class name="baeldung.com.SignInTest" />
-            <class name="baeldung.com.SimpleTest" />
+	        <class name="com.baeldung.RegistrationLongRunningUnitTest" />
+            <class name="com.baeldung.SignInLongRunningUnitTest" />
+            <class name="com.baeldung.SimpleLongRunningUnitTest" />
         </classes>
     </test>
 </suite>

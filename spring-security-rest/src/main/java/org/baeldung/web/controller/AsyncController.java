@@ -2,7 +2,9 @@ package org.baeldung.web.controller;
 
 import java.util.concurrent.Callable;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.baeldung.web.service.AsyncService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AsyncController {
 
-    private static final Logger log = Logger.getLogger(AsyncService.class);
+    private static final Logger log = LoggerFactory.getLogger(AsyncService.class);
 
     @Autowired
     private AsyncService asyncService;

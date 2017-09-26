@@ -1,10 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate4</artifactId>
     <version>0.1-SNAPSHOT</version>
 
     <name>spring-hibernate4</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
 
@@ -14,6 +21,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -101,46 +114,11 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <version>${org.springframework.security.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit-dep</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -164,29 +142,6 @@
 
         <plugins>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                         <exclude>**/*IntegrationTest.java</exclude>
-                    </excludes>
-                    <systemPropertyVariables>
-                        <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
 
         </plugins>
 
@@ -195,9 +150,9 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-	    <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-	    <org.springframework.data.version>1.10.5.RELEASE</org.springframework.data.version>
-        
+        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
+        <org.springframework.data.version>1.10.5.RELEASE</org.springframework.data.version>
+
         <!-- persistence -->
         <hibernate.version>4.3.11.Final</hibernate.version>
         <hibernate-envers.version>${hibernate.version}</hibernate-envers.version>
@@ -206,10 +161,6 @@
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
 
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        
         <!-- various -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <javax.el-api.version>2.2.5</javax.el-api.version>
@@ -218,19 +169,12 @@
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
 
-        <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.11</junit.version>
-        <mockito.version>1.10.19</mockito.version>
-
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
 
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->

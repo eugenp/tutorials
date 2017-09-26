@@ -1,17 +1,16 @@
 package org.baeldung.persistence.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.querydsl.core.types.dsl.BooleanExpression;
 import org.baeldung.web.util.SearchCriteria;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class MyUserPredicatesBuilder {
     private final List<SearchCriteria> params;
 
     public MyUserPredicatesBuilder() {
-        params = new ArrayList<SearchCriteria>();
+        params = new ArrayList<>();
     }
 
     public MyUserPredicatesBuilder with(final String key, final String operation, final Object value) {
@@ -24,7 +23,7 @@ public final class MyUserPredicatesBuilder {
             return null;
         }
 
-        final List<BooleanExpression> predicates = new ArrayList<BooleanExpression>();
+        final List<BooleanExpression> predicates = new ArrayList<>();
         MyUserPredicate predicate;
         for (final SearchCriteria param : params) {
             predicate = new MyUserPredicate(param);
