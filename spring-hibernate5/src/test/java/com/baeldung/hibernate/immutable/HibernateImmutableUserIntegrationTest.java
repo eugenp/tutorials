@@ -21,7 +21,7 @@ public class HibernateImmutableUserIntegrationTest {
     public void before() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        createEvent();
+        createUser();
         session.setCacheMode(CacheMode.REFRESH);
     }
 
@@ -36,7 +36,7 @@ public class HibernateImmutableUserIntegrationTest {
     }
 
     @Test
-    public void updateEvent() {
+    public void updateUser() {
         User user = (User) session.createQuery("FROM User WHERE name LIKE '%John%'").list().get(0);
         user.setName("Mike");
         session.update(user);
@@ -46,7 +46,7 @@ public class HibernateImmutableUserIntegrationTest {
         assertThat(user.getName(), equalTo("John"));
     }
 
-    private static void createEvent() {
+    private static void createUser() {
         User user = new User("John", "Doe");
         session.save(user);
     }
