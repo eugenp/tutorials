@@ -44,10 +44,12 @@ public class HibernateImmutableUserIntegrationTest {
         session.refresh(user);
 
         assertThat(user.getName(), equalTo("John"));
+        assertThat(user.getId(), equalTo(1L));
     }
 
     private static void createUser() {
         User user = new User("John", "Doe");
+        user.setId(4L);
         session.save(user);
     }
 }

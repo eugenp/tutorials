@@ -56,6 +56,7 @@ public class HibernateImmutableIntegrationTest {
         session.refresh(event);
 
         assertThat(event.getTitle(), equalTo("New Event"));
+        assertThat(event.getId(), equalTo(5L));
     }
 
     @Test
@@ -88,7 +89,7 @@ public class HibernateImmutableIntegrationTest {
     }
 
     private static void createEvent() {
-        Event event = new Event(1L, "New Event", Sets.newHashSet("guest"));
+        Event event = new Event(5L, "New Event", Sets.newHashSet("guest"));
         session.save(event);
     }
 }
