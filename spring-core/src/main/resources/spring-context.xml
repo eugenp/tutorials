@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="pc" class="com.baeldung.spring.domain.PC">
+        <constructor-arg index="0" ref="cpu"/>
+        <constructor-arg index="1" ref="monitor"/>
+		<constructor-arg index="2" ref="keyboard"/>
+    </bean>
+
+    <bean id="cpu" class="com.baeldung.spring.domain.Cpu">
+        <constructor-arg index="0" value="Intel-i7"/>
+        <constructor-arg index="1" value="8GB"/>
+		<constructor-arg index="2" value="2TB"/>
+    </bean>
+
+    <bean id="keyboard" class="com.baeldung.spring.domain.Keyboard">
+        <constructor-arg index="0" value="Logitech"/>
+		<constructor-arg index="1" value="Wireless"/>
+    </bean>
+	
+	<bean id="monitor" class="com.baeldung.spring.domain.Monitor">
+        <constructor-arg index="0" value="21.5"/>
+		<constructor-arg index="1" value="1920x1080"/>
+    </bean>
+
+</beans>
