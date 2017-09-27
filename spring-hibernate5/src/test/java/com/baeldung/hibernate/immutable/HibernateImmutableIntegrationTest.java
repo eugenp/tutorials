@@ -10,6 +10,9 @@ import org.junit.rules.ExpectedException;
 
 import javax.persistence.PersistenceException;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 public class HibernateImmutableIntegrationTest {
 
     private static Session session;
@@ -38,6 +41,7 @@ public class HibernateImmutableIntegrationTest {
     @Test
     public void addEvent() {
         Event event = new Event();
+        event.setId(2L);
         event.setTitle("Public Event");
         session.save(event);
         session.getTransaction().commit();
@@ -47,8 +51,11 @@ public class HibernateImmutableIntegrationTest {
     public void updateEvent() {
         Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         event.setTitle("Private Event");
-        session.saveOrUpdate(event);
-        session.getTransaction().commit();
+        session.update(event);
+        session.flush();
+        session.refresh(event);
+
+        assertThat(event.getTitle(), equalTo("New Event"));
     }
 
     @Test
@@ -80,10 +87,8 @@ public class HibernateImmutableIntegrationTest {
         session.getTransaction().commit();
     }
 
-    public static void createEvent() {
-        Event event = new Event();
-        event.setTitle("New Event");
-        event.setGuestList(Sets.newHashSet("guest"));
+    private static void createEvent() {
+        Event event = new Event(1L, "New Event", Sets.newHashSet("guest"));
         session.save(event);
     }
 }
