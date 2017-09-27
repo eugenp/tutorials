@@ -9,10 +9,13 @@ import javax.cache.configuration.FactoryBuilder;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.spi.CachingProvider;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 public class CacheLoaderTest {
+
+    private static final String CACHE_NAME = "SimpleCache";
 
     private Cache<Integer, String> cache;
 
@@ -23,6 +26,12 @@ public class CacheLoaderTest {
         MutableConfiguration<Integer, String> config = new MutableConfiguration<Integer, String>().setReadThrough(true)
             .setCacheLoaderFactory(new FactoryBuilder.SingletonFactory<>(new SimpleCacheLoader()));
         this.cache = cacheManager.createCache("SimpleCache", config);
+    }
+
+    @After
+    public void tearDown() {
+        Caching.getCachingProvider()
+          .getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test

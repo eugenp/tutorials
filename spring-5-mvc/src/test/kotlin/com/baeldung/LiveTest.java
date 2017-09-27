@@ -14,16 +14,19 @@ public class LiveTest {
 
     private static String APP_ROOT = "http://localhost:8081";
 
-    
     @Test
     public void givenUser_whenResourceCreatedWithNullName_then400BadRequest() {
-        final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString()).body(resourceWithNullName()).post(APP_ROOT + "/foos");
+        final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString())
+            .body(resourceWithNullName())
+            .post(APP_ROOT + "/foos");
         assertEquals(400, response.getStatusCode());
     }
-    
+
     @Test
     public void givenUser_whenResourceCreated_then201Created() {
-        final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString()).body(resourceString()).post(APP_ROOT + "/foos");
+        final Response response = givenAuth("user", "pass").contentType(MediaType.APPLICATION_JSON.toString())
+            .body(resourceString())
+            .post(APP_ROOT + "/foos");
         assertEquals(201, response.getStatusCode());
     }
 
@@ -32,21 +35,22 @@ public class LiveTest {
         final Response response = givenAuth("user", "pass").get(APP_ROOT + "/foos");
         assertEquals(200, response.getStatusCode());
     }*/
-    
-    
 
     //
 
     private final String resourceWithNullName() {
         return "{\"name\":null}";
     }
-    
+
     private final String resourceString() {
         return "{\"name\":\"" + randomAlphabetic(8) + "\"}";
-     }
+    }
 
     private final RequestSpecification givenAuth(String username, String password) {
-        return RestAssured.given().auth().preemptive().basic(username, password);
+        return RestAssured.given()
+            .auth()
+            .preemptive()
+            .basic(username, password);
     }
 
 }

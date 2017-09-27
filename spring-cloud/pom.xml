@@ -15,6 +15,7 @@
         <module>spring-cloud-ribbon-client</module>
         <module>spring-cloud-rest</module>
         <module>spring-cloud-zookeeper</module>
+		<module>spring-cloud-gateway</module>
     </modules>
     <packaging>pom</packaging>
 

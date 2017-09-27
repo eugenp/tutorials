@@ -1,6 +1,6 @@
 package com.baeldung.jcache;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import javax.cache.Cache;
 import javax.cache.CacheManager;
@@ -8,7 +8,7 @@ import javax.cache.Caching;
 import javax.cache.configuration.MutableConfiguration;
 import javax.cache.spi.CachingProvider;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class JCacheTest {
 

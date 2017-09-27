@@ -3,8 +3,8 @@ package org.baeldung.rolesauthorities;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import org.baeldung.rolesauthorities.model.Privilege;
 import org.baeldung.rolesauthorities.model.Role;
 import org.baeldung.rolesauthorities.model.User;
 import org.baeldung.rolesauthorities.persistence.UserRepository;
@@ -31,10 +31,10 @@ public class MyUserDetailsService implements UserDetailsService {
     // API
 
     @Override
-    public UserDetails loadUserByUsername(final String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         try {
-            final User user = userRepository.findByEmail(email);
+            User user = userRepository.findByEmail(email);
             if (user == null) {
                 throw new UsernameNotFoundException("No user found with username: " + email);
             }
@@ -47,13 +47,14 @@ public class MyUserDetailsService implements UserDetailsService {
 
     // UTIL
 
-    private final Collection<? extends GrantedAuthority> getAuthorities(final Collection<Role> roles) {
-    	final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+    private final Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
+    	List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
     	for (Role role: roles) {
     		authorities.add(new SimpleGrantedAuthority(role.getName()));
-    		for (Privilege privilege: role.getPrivileges()) {
-    			authorities.add(new SimpleGrantedAuthority(privilege.getName()));
-    		}
+    		authorities.addAll(role.getPrivileges()
+    				.stream()
+    				.map(p -> new SimpleGrantedAuthority(p.getName()))
+    				.collect(Collectors.toList()));
     	}
         return authorities;
     }
