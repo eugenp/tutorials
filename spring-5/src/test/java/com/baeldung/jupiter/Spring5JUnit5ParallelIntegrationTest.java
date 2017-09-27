@@ -11,18 +11,14 @@ class Spring5JUnit5ParallelIntegrationTest {
 
     @Test
     void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingParallel() {
-        final Class<?>[] classes = {
-          Example1IntegrationTest.class, Example2IntegrationTest.class
-        };
+        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
 
         JUnitCore.runClasses(new ParallelComputer(true, true), classes);
     }
 
     @Test
     void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingLinear() {
-        final Class<?>[] classes = {
-          Example1IntegrationTest.class, Example2IntegrationTest.class
-        };
+        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
 
         JUnitCore.runClasses(new Computer(), classes);
     }

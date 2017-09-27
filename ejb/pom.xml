@@ -81,6 +81,5 @@
         <module>ejb-remote</module>
         <module>ejb-client</module>
         <module>ejb-session-beans</module>
-        <module>ejb-session-beans-client</module>
     </modules>
 </project>
