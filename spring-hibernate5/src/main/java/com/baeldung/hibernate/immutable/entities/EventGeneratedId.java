@@ -7,26 +7,26 @@ import javax.persistence.*;
 
 @Entity
 @Immutable
-@Table(name = "users")
-public class User {
+@Table(name = "events_generated")
+public class EventGeneratedId {
 
     @Id
-    @Column(name = "user_id")
+    @Column(name = "event_generated_id")
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
     @Column(name = "name")
     private String name;
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "description")
+    private String description;
 
-    public User() {
+    public EventGeneratedId() {
     }
 
-    public User(String name, String lastName) {
+    public EventGeneratedId(String name, String description) {
         this.name = name;
-        this.lastName = lastName;
+        this.description = description;
     }
 
     public Long getId() {
@@ -45,11 +45,11 @@ public class User {
         this.name = name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getDescription() {
+        return description;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
