@@ -1,8 +1,8 @@
 package com.baeldung.osgi.mapquest.mapquest;
 
-import com.baeldung.osgi.service.service.Coord;
-import com.baeldung.osgi.service.service.GeocodeException;
-import com.baeldung.osgi.service.service.GeocodingService;
+import com.baeldung.osgi.service.Coord;
+import com.baeldung.osgi.service.GeocodeException;
+import com.baeldung.osgi.service.GeocodingService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

@@ -1,21 +1,26 @@
 package com.baeldung.osgi.geocoding.client;
 
-import com.baeldung.osgi.service.service.Coord;
-import com.baeldung.osgi.service.service.GeocodeException;
-import com.baeldung.osgi.service.service.GeocodingService;
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
+import com.baeldung.osgi.service.Coord;
+import com.baeldung.osgi.service.GeocodeException;
+import com.baeldung.osgi.service.GeocodingService;
+import org.osgi.framework.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Client implements BundleActivator {
+import static org.osgi.framework.ServiceEvent.*;
 
-    private GeocodingService geocoding;
+public class Client implements BundleActivator, ServiceListener {
 
-    public Client(GeocodingService geocoding) {
-        this.geocoding = geocoding;
+    private GeocodingService geocodingService;
+
+    public Client(GeocodingService geocodingService) {
+        this.geocodingService = geocodingService;
+    }
+
+    public Client() {
+        this.geocodingService = geocodingService;
     }
 
     private void run() {
@@ -30,7 +35,7 @@ public class Client implements BundleActivator {
             }
 
             try {
-                Coord geocode = geocoding.geocode(address);
+                Coord geocode = geocodingService.geocode(address);
                 System.out.println("Coordinates:" + geocode);
             } catch (GeocodeException e) {
                 System.out.println("It was not possible to geocode the address.");
@@ -46,12 +51,40 @@ public class Client implements BundleActivator {
     }
 
     @Override public void start(BundleContext bundleContext) throws Exception {
-        System.out.println("start");
-        Client client = null; //new Client(new GeocodeXyz());
-        client.run();
+        System.out.println("starting client bundle");
+
+        bundleContext.addServiceListener(this);
+        ServiceReference<GeocodingService> serviceReference = bundleContext.getServiceReference(GeocodingService.class);
+        if(serviceReference!=null){
+            geocodingService = bundleContext.getService(serviceReference);
+        }
+
+        run();
     }
 
     @Override public void stop(BundleContext bundleContext) throws Exception {
-        System.out.println("stop");
+        System.out.println("starting client bundle");
+        bundleContext.removeServiceListener(this);
+    }
+
+    @Override
+    public void serviceChanged(ServiceEvent serviceEvent) {
+
+        if(!serviceEvent.getServiceReference().getClass().equals(GeocodingService.class)){
+            System.out.println("Ingoring event on service " + serviceEvent.getServiceReference().getClass());
+        }
+
+        switch (serviceEvent.getType()) {
+            case REGISTERED:
+                break;
+            case MODIFIED:
+                break;
+            case MODIFIED_ENDMATCH:
+                break;
+            case UNREGISTERING:
+                break;
+            default:
+                throw new IllegalStateException("Unsupported type");
+        }
     }
 }
