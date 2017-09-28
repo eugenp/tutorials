@@ -13,9 +13,9 @@
 		</list>
 	</section>
 	<section name="NewWizardAction">
-		<item value="com.springsource.sts.wizard.template" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<item value="org.eclipse.jst.ejb.ui.internal.wizard.AddSessionBeanWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.springframework.ide.eclipse.beans.ui.wizards.category"/>
+			<item value="org.eclipse.jst.ejb.ui"/>
 		</list>
 	</section>
 	<section name="ShowViewDialog">
@@ -29,5 +29,7 @@
 			<item value="org.jboss.tools.seam.ui"/>
 			<item value="org.eclipse.wst.server.ui"/>
 		</list>
+	</section>
+	<section name="ImportExportAction">
 	</section>
 </section>

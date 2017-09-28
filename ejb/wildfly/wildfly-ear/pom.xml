@@ -27,13 +27,11 @@
 		<dependency>
 			<groupId>com.baeldung.wildfly</groupId>
 			<artifactId>wildfly-ejb</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- Dependency for EJB -->
 		<dependency>
 			<groupId>com.baeldung.wildfly</groupId>
 			<artifactId>wildfly-ejb-interfaces</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 

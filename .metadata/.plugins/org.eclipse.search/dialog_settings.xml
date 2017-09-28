@@ -6,16 +6,32 @@
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
 	</section>
+	<section name="">
+		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+	</section>
 	<section name="TextSearchPage">
-		<item value="1" key="HISTORY_SIZE"/>
+		<item value="2" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="false" key="REG_EX_SEARCH"/>
 		<item value="false" key="WHOLE_WORD"/>
 		<item value="false" key="SEARCH_DERIVED"/>
+		<item value="false" key="SEARCH_IN_BINARIES"/>
 		<section name="EXTENSIONS">
 			<item value="*.xml" key="0"/>
 		</section>
 		<section name="HISTORY0">
+			<item value="true" key="ignoreCase"/>
+			<item value="0" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="TestJPAServlet" key="textPattern"/>
+			<item value="false" key="isRegExSearch"/>
+			<list key="fileNamePatterns">
+				<item value="*.xml"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -61,10 +77,10 @@
 		<item value="org.eclipse.search.internal.ui.text.TextSearchPage" key="PREVIOUS_PAGE"/>
 	</section>
 	<section name="DialogBounds_SearchDialog">
-		<item value="1238" key="DIALOG_WIDTH"/>
-		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
-		<item value="442" key="DIALOG_HEIGHT"/>
-		<item value="-107" key="DIALOG_X_ORIGIN"/>
+		<item value="1376" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="653" key="DIALOG_HEIGHT"/>
+		<item value="11" key="DIALOG_X_ORIGIN"/>
 		<item value="109" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>
