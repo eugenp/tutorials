@@ -1,6 +1,7 @@
 package com.baeldung.hibernate.immutable;
 
 import com.baeldung.hibernate.immutable.entities.Event;
+import com.baeldung.hibernate.immutable.entities.EventGeneratedId;
 import com.baeldung.hibernate.immutable.util.HibernateUtil;
 import com.google.common.collect.Sets;
 import org.hibernate.CacheMode;
@@ -25,6 +26,7 @@ public class HibernateImmutableIntegrationTest {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         createEvent();
+        createEventGenerated();
         session.setCacheMode(CacheMode.REFRESH);
     }
 
@@ -37,6 +39,8 @@ public class HibernateImmutableIntegrationTest {
     public static void teardown() {
         HibernateUtil.getSessionFactory().close();
     }
+
+    //
 
     @Test
     public void addEvent() {
@@ -88,8 +92,29 @@ public class HibernateImmutableIntegrationTest {
         session.getTransaction().commit();
     }
 
+    @Test
+    public void updateEventGenerated() {
+        EventGeneratedId eventGeneratedId = (EventGeneratedId) session.createQuery("FROM EventGeneratedId WHERE name LIKE '%John%'").list().get(0);
+        eventGeneratedId.setName("Mike");
+        session.update(eventGeneratedId);
+        session.flush();
+        session.refresh(eventGeneratedId);
+
+        assertThat(eventGeneratedId.getName(), equalTo("John"));
+        assertThat(eventGeneratedId.getId(), equalTo(1L));
+    }
+
+    //
+
     private static void createEvent() {
         Event event = new Event(5L, "New Event", Sets.newHashSet("guest"));
         session.save(event);
     }
+
+    private static void createEventGenerated() {
+        EventGeneratedId eventGeneratedId = new EventGeneratedId("John", "Doe");
+        eventGeneratedId.setId(4L);
+        session.save(eventGeneratedId);
+    }
+
 }
