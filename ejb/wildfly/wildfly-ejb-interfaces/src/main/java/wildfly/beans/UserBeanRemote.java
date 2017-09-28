@@ -9,5 +9,5 @@ import model.User;
 @Remote
 public interface UserBeanRemote {
 
-	List<User> getUsers();
+    List<User> getUsers();
 }

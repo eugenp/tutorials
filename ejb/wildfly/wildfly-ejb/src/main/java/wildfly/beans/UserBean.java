@@ -13,11 +13,12 @@ import model.User;
  */
 @Stateless
 public class UserBean implements UserBeanRemote, UserBeanLocal {
-	@PersistenceContext(unitName="wildfly-jpa")
-	private EntityManager em;
+    @PersistenceContext(unitName = "wildfly-jpa")
+    private EntityManager em;
 
-	@Override
-	public List<User> getUsers() {
-		return em.createNamedQuery("User.findAll").getResultList();
-	}
+    @Override
+    public List<User> getUsers() {
+        return em.createNamedQuery("User.findAll")
+            .getResultList();
+    }
 }

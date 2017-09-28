@@ -70,7 +70,7 @@
 				<artifactId>wildfly-ejb</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
-			<!-- Dependency for EJB interfaces-->
+			<!-- Dependency for EJB interfaces -->
 			<dependency>
 				<groupId>com.baeldung.wildfly</groupId>
 				<artifactId>wildfly-ejb-interfaces</artifactId>

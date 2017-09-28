@@ -188,7 +188,6 @@ INDEX VERSION 1.130+C:\Users\cotnic\workdir\projects\publishing\tutorials\.metad
 879734448.index
 2911002733.index
 3173197910.index
-934887604.index
 2469114805.index
 2472993488.index
 194205294.index

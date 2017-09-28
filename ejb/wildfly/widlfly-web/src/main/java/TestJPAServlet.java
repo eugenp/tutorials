@@ -1,5 +1,4 @@
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -19,13 +18,13 @@ import model.User;
  * Servlet implementation class TestJPAServlet
  */
 public class TestJPAServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	@PersistenceContext(unitName="wildfly-jpa")
-	EntityManager em;
+    private static final long serialVersionUID = 1L;
+    @PersistenceContext(unitName = "wildfly-jpa")
+    EntityManager em;
 
-	@Resource
-	UserTransaction tx;
-       
+    @Resource
+    UserTransaction tx;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,21 +33,22 @@ public class TestJPAServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Query q = em.createNamedQuery("User.findAll");
-		List<User> users = q.getResultList();
-		response.getWriter().append("JPA users returned: " + users.size());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Query q = em.createNamedQuery("User.findAll");
+        List<User> users = q.getResultList();
+        response.getWriter()
+            .append("JPA users returned: " + users.size());
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

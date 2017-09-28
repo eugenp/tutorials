@@ -9,5 +9,5 @@ import model.User;
 @Local
 public interface UserBeanLocal {
 
-	List<User> getUsers();
+    List<User> getUsers();
 }
