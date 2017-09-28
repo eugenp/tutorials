@@ -9,7 +9,7 @@ import static junit.framework.Assert.assertTrue;
 public class SubjectTest {
 
     @Test
-    public void givenSubjectAndTwoSubscribers_whenSubscribeOnSubject_thenSubscriberBeginsToAdd(){
+    public void givenSubjectAndTwoSubscribers_whenSubscribeOnSubject_thenSubscriberBeginsToAdd() {
         PublishSubject<Integer> subject = PublishSubject.create();
 
         subject.subscribe(SubjectImpl.getFirstObserver());
