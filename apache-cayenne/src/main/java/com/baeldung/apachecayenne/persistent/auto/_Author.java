@@ -19,22 +19,14 @@ public abstract class _Author extends CayenneDataObject {
 
     public static final String ID_PK_COLUMN = "id";
 
-    public static final Property<String> FIRSTNAME = Property.create("firstname", String.class);
-    public static final Property<String> LASTNAME = Property.create("lastname", String.class);
+    public static final Property<String> NAME = Property.create("name", String.class);
     public static final Property<List<Article>> ARTICLES = Property.create("articles", List.class);
 
-    public void setFirstname(String firstname) {
-        writeProperty("firstname", firstname);
+    public void setName(String name) {
+        writeProperty("name", name);
     }
-    public String getFirstname() {
-        return (String)readProperty("firstname");
-    }
-
-    public void setLastname(String lastname) {
-        writeProperty("lastname", lastname);
-    }
-    public String getLastname() {
-        return (String)readProperty("lastname");
+    public String getName() {
+        return (String)readProperty("name");
     }
 
     public void addToArticles(Article obj) {
