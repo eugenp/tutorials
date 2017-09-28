@@ -30,9 +30,9 @@ public class MyJiraClient {
 
     public static void main(String[] args) {
 
-        MyJiraClient myJiraClient = new MyJiraClient("yasin.bhojawala", "jira@P455", "http://jira.baeldung.com");
+        MyJiraClient myJiraClient = new MyJiraClient("user.name", "password", "http://jira.company.com");
 
-        final String issueKey = "BAEL-1139";
+        final String issueKey = "MYKEY-123";
         myJiraClient.updateIssueDescription(issueKey, "This is description from my Jira Client");
         Issue issue = myJiraClient.getIssue(issueKey);
         System.out.println(issue.getDescription());
