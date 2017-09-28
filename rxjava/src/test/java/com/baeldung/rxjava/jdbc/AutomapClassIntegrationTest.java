@@ -8,18 +8,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.davidmoten.rx.jdbc.ConnectionProvider;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
 
-public class AutomapClassTest {
+public class AutomapClassIntegrationTest {
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
+    private Database db = Database.from(Connector.connectionProvider);
 
-    Observable<Integer> create = null;
-    Observable<Integer> insert1, insert2 = null;
+    private Observable<Integer> create = null;
+    private Observable<Integer> insert1, insert2 = null;
 
     @Before
     public void setup() {
@@ -58,6 +56,6 @@ public class AutomapClassTest {
     public void close() {
         db.update("DROP TABLE MANAGER")
           .dependsOn(create);
-        connectionProvider.close();
+        Connector.connectionProvider.close();
     }
 }
