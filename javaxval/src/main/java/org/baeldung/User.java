@@ -33,7 +33,7 @@ public class User {
     
     List<@NotBlank String> preferences;
     
-     private LocalDate dateOfBirth;
+    private LocalDate dateOfBirth;
 
     public int getAge() {
         return age;
