@@ -17,13 +17,13 @@ import rx.Observable;
 
 public class InsertClobTest {
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
-    String expectedDocument = null;
-    String actualDocument = null;
+    private String expectedDocument = null;
+    private String actualDocument = null;
 
-    Observable<Integer> create, insert = null;
+    private Observable<Integer> create, insert = null;
 
     @Before
     public void setup() throws IOException {

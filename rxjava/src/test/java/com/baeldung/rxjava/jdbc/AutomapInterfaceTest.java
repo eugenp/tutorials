@@ -15,11 +15,11 @@ import rx.Observable;
 
 public class AutomapInterfaceTest {
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
-    Observable<Integer> create = null;
-    Observable<Integer> insert1, insert2 = null;
+    private Observable<Integer> create = null;
+    private Observable<Integer> insert1, insert2 = null;
 
     @Before
     public void setup() {

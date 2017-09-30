@@ -13,11 +13,11 @@ import rx.Observable;
 
 public class ReturnKeysTest {
 
-    Observable<Boolean> begin, commit = null;
-    Observable<Integer> createStatement, insertStatement, updateStatement = null;
+    private Observable<Boolean> begin = null;
+    private Observable<Integer> createStatement = null;
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     @Before
     public void setup() {

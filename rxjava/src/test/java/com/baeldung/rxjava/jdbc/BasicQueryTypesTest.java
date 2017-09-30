@@ -15,10 +15,10 @@ import rx.Observable;
 
 public class BasicQueryTypesTest {
 
-    ConnectionProvider connectionProvider = Connector.connectionProvider;
-    Database db = Database.from(connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
-    Observable<Integer> create, insert1, insert2, insert3, update, delete = null;
+    private Observable<Integer> create, insert1, insert2, insert3, update, delete = null;
 
     @Test
     public void whenCreateTableAndInsertRecords_thenCorrect() {
