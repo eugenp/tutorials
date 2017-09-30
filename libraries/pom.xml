@@ -550,11 +550,46 @@
 	          <artifactId>functionaljava</artifactId>
 	          <version>4.7</version>
 	      </dependency>
+	      <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-java8</artifactId>
+	          <version>4.7</version>
+        </dependency>
+        <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-quickcheck</artifactId>
+	          <version>4.7</version>
+	      </dependency>
+	      <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-java-core</artifactId>
+	          <version>4.7</version>
+        </dependency>
         <dependency>
    			    <groupId>javax.cache</groupId>
    			    <artifactId>cache-api</artifactId>
    			    <version>${cache.version}</version>
-   		  </dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-core</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>3.0.0-m007</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
 		    <dependency>
 		        <groupId>com.hazelcast</groupId>
 		        <artifactId>hazelcast</artifactId>
@@ -579,6 +614,10 @@
             <id>bintray-cuba-platform-main</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
+        </repository>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
         </repository>
     </repositories>
     <properties>
@@ -625,6 +664,7 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
+        <geotools.version>15.2</geotools.version>
         <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <retrofit.version>2.3.0</retrofit.version>
