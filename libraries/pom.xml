@@ -590,11 +590,11 @@
             <artifactId>jgrapht-core</artifactId>
             <version>1.0.1</version>
         </dependency>
-		    <dependency>
-		        <groupId>com.hazelcast</groupId>
-		        <artifactId>hazelcast</artifactId>
-		        <version>${hazelcast.version}</version>
-		    </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
