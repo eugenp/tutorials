@@ -23,18 +23,22 @@ public class CaffeineUnitTest {
 
         String key = "A";
         DataObject dataObject = cache.getIfPresent(key);
+
         assertNull(dataObject);
 
         dataObject = cache.get(key, k -> DataObject.get("Data for A"));
+
         assertNotNull(dataObject);
         assertEquals("Data for A", dataObject.getData());
 
         cache.put(key, dataObject);
         dataObject = cache.getIfPresent(key);
+
         assertNotNull(dataObject);
 
         cache.invalidate(key);
         dataObject = cache.getIfPresent(key);
+
         assertNull(dataObject);
     }
 
@@ -47,10 +51,12 @@ public class CaffeineUnitTest {
         String key = "A";
 
         DataObject dataObject = cache.get(key);
+
         assertNotNull(dataObject);
         assertEquals("Data for " + key, dataObject.getData());
 
         Map<String, DataObject> dataObjectMap = cache.getAll(Arrays.asList("A", "B", "C"));
+
         assertEquals(3, dataObjectMap.size());
     }
 
@@ -82,10 +88,12 @@ public class CaffeineUnitTest {
         assertEquals(0, cache.estimatedSize());
 
         cache.get("A");
+
         assertEquals(1, cache.estimatedSize());
 
         cache.get("B");
         cache.cleanUp();
+
         assertEquals(1, cache.estimatedSize());
     }
 
@@ -99,13 +107,16 @@ public class CaffeineUnitTest {
         assertEquals(0, cache.estimatedSize());
 
         cache.get("A");
+
         assertEquals(1, cache.estimatedSize());
 
         cache.get("B");
+
         assertEquals(2, cache.estimatedSize());
 
         cache.get("C");
         cache.cleanUp();
+
         assertEquals(2, cache.estimatedSize());
     }
 
@@ -149,9 +160,9 @@ public class CaffeineUnitTest {
           .maximumSize(100)
           .recordStats()
           .build(k -> DataObject.get("Data for " + k));
+        cache.get("A");
+        cache.get("A");
 
-        cache.get("A");
-        cache.get("A");
         assertEquals(1, cache.stats().hitCount());
         assertEquals(1, cache.stats().missCount());
     }
