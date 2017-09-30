@@ -9,9 +9,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * @author aiet
- */
 public class ExceptionHandlingTest {
 
     private Error UNKNOWN_ERROR = new Error("unknown error");
@@ -19,10 +16,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenHandleOnErrorReturn_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .onErrorReturn(Throwable::getMessage)
           .subscribe(testObserver);
 
@@ -34,10 +31,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenHandleOnErrorResume_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .onErrorResumeNext(Observable.just("one", "two"))
           .subscribe(testObserver);
 
@@ -49,10 +46,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenHandleOnErrorResumeItem_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .onErrorReturnItem("singleValue")
           .subscribe(testObserver);
 
@@ -64,10 +61,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenHandleOnErrorResumeFunc_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .onErrorResumeNext(throwable -> {
               return Observable.just(throwable.getMessage(), "nextValue");
           })
@@ -81,11 +78,11 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenChangeStateOnError_thenErrorThrown() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         final AtomicBoolean state = new AtomicBoolean(false);
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .doOnError(throwable -> state.set(true))
           .subscribe(testObserver);
 
@@ -97,10 +94,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenExceptionOccurOnError_thenCompositeExceptionThrown() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .doOnError(throwable -> {
               throw new RuntimeException("unexcepted");
           })
@@ -113,10 +110,10 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndException_whenHandleOnException_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         Observable
-          .error(UNKNOWN_EXCEPTION)
+          .<String>error(UNKNOWN_EXCEPTION)
           .onExceptionResumeNext(Observable.just("exceptionResumed"))
           .subscribe(testObserver);
 
@@ -128,14 +125,14 @@ public class ExceptionHandlingTest {
 
     @Test
     public void givenSubscriberAndError_whenHandleOnException_thenNotResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
+
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .onExceptionResumeNext(Observable.just("exceptionResumed"))
           .subscribe(testObserver);
 
         testObserver.assertError(UNKNOWN_ERROR);
         testObserver.assertNotComplete();
     }
-
 }

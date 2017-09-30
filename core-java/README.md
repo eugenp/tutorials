@@ -106,3 +106,4 @@
 - [Converting a List to String in Java](http://www.baeldung.com/java-list-to-string)
 - [CharSequence vs. String in Java](http://www.baeldung.com/java-char-sequence-string)
 - [Period and Duration in Java](http://www.baeldung.com/java-period-duration)
+- [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
