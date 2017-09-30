@@ -132,6 +132,11 @@ public class CaffeineUnitTest {
           .weakValues()
           .build(k -> DataObject.get("Data for " + k));
 
+        cache = Caffeine.newBuilder()
+          .expireAfterWrite(10, TimeUnit.SECONDS)
+          .softValues()
+          .build(k -> DataObject.get("Data for " + k));
+
         cache = Caffeine.newBuilder().expireAfter(new Expiry<String, DataObject>() {
             @Override
             public long expireAfterCreate(@Nonnull String key, @Nonnull DataObject value, long currentTime) {
