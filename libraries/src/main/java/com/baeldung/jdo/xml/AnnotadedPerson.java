@@ -12,18 +12,25 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-
-@PersistenceCapable
-public class Person {
+@PersistenceCapable(
+        schema="/myproduct/people",
+        table="person"
+        )
+public class AnnotadedPerson {
+    @XmlAttribute
     private long personNum;
 
     @PrimaryKey
     private String firstName;
     private String lastName;
 
+    @XmlElementWrapper(name="phone-numbers")
+    @XmlElement(name="phone-number")
+    @Element(types=String.class)
     private List phoneNumbers = new ArrayList();
 
-    public Person(long personNum, String firstName, String lastName) {
+
+    public AnnotadedPerson(long personNum, String firstName, String lastName) {
         super();
         this.personNum = personNum;
         this.firstName = firstName;
