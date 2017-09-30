@@ -1,17 +1,16 @@
 package org.baeldung;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 
 public class User {
 
@@ -30,16 +29,16 @@ public class User {
 
     @Email(message = "Email should be valid")
     private String email;
-    
-    List<@NotBlank String> preferences;
-    
+
+    private List<@NotBlank String> preferences;
+
     private LocalDate dateOfBirth;
 
     public int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    void setAge(int age) {
         this.age = age;
     }
 
@@ -47,7 +46,7 @@ public class User {
         return working;
     }
 
-    public void setWorking(boolean working) {
+    void setWorking(boolean working) {
         this.working = working;
     }
 
@@ -55,7 +54,7 @@ public class User {
         return aboutMe;
     }
 
-    public void setAboutMe(String aboutMe) {
+    void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
 
@@ -63,7 +62,7 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -71,7 +70,7 @@ public class User {
         return Optional.ofNullable(dateOfBirth);
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -79,7 +78,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    void setEmail(String email) {
         this.email = email;
     }
 
@@ -87,8 +86,7 @@ public class User {
         return preferences;
     }
 
-    public void setPreferences(List<String> preferences) {
+    void setPreferences(List<String> preferences) {
         this.preferences = preferences;
     }
-   
 }
