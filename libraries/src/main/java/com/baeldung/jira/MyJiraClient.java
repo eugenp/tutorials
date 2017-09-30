@@ -48,7 +48,7 @@ public class MyJiraClient {
         List<Comment> comments = myJiraClient.getAllComments(issueKey);
         comments.forEach(c -> System.out.println(c.getBody()));
 
-        myJiraClient.deleteIssue(issueKey);
+        myJiraClient.deleteIssue(issueKey, true);
 
         myJiraClient.close();
     }
@@ -93,8 +93,8 @@ public class MyJiraClient {
         restClient.getIssueClient().updateIssue(issueKey, input).claim();
     }
 
-    public void deleteIssue(String issueKey) {
-        restClient.getIssueClient().deleteIssue(issueKey, true).claim();
+    public void deleteIssue(String issueKey, boolean deleteSubtasks) {
+        restClient.getIssueClient().deleteIssue(issueKey, deleteSubtasks).claim();
     }
 
     private JiraRestClient getJiraRestClient() {
