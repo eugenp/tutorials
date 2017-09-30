@@ -1,7 +1,9 @@
 package com.baeldung.jira;
 
+import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClientFactory;
+import com.atlassian.jira.rest.client.api.domain.BasicIssue;
 import com.atlassian.jira.rest.client.api.domain.Comment;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
@@ -30,9 +32,9 @@ public class MyJiraClient {
 
     public static void main(String[] args) {
 
-        MyJiraClient myJiraClient = new MyJiraClient("user.name", "password", "http://jira.company.com");
+        MyJiraClient myJiraClient = new MyJiraClient("user.name", "pass", "http://jira.company.com");
 
-        final String issueKey = "MYKEY-123";
+        final String issueKey = myJiraClient.createIssue("ABCD", 1L, "Issue created from JRJC");
         myJiraClient.updateIssueDescription(issueKey, "This is description from my Jira Client");
         Issue issue = myJiraClient.getIssue(issueKey);
         System.out.println(issue.getDescription());
@@ -46,7 +48,19 @@ public class MyJiraClient {
         List<Comment> comments = myJiraClient.getAllComments(issueKey);
         comments.forEach(c -> System.out.println(c.getBody()));
 
+        myJiraClient.deleteIssue(issueKey);
+
         myJiraClient.close();
+    }
+
+    public String createIssue(String projectKey, Long issueType, String issueSummary) {
+
+        IssueRestClient issueClient = restClient.getIssueClient();
+
+        IssueInput newIssue = new IssueInputBuilder(projectKey, issueType, issueSummary).build();
+        BasicIssue createdIssue = issueClient.createIssue(newIssue).claim();
+
+        return createdIssue.getKey();
     }
 
     public Issue getIssue(String issueKey) {
@@ -77,6 +91,10 @@ public class MyJiraClient {
     public void updateIssueDescription(String issueKey, String newDescription) {
         IssueInput input = new IssueInputBuilder().setDescription(newDescription).build();
         restClient.getIssueClient().updateIssue(issueKey, input).claim();
+    }
+
+    public void deleteIssue(String issueKey) {
+        restClient.getIssueClient().deleteIssue(issueKey, true).claim();
     }
 
     private JiraRestClient getJiraRestClient() {
