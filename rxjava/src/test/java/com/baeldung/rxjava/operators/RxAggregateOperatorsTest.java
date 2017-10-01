@@ -108,7 +108,7 @@ public class RxAggregateOperatorsTest {
     }
 
     @Test
-    public void givenObservable_whenUsingToSortedList_thenObtainedAList() {
+    public void givenObservable_whenUsingToSortedList_thenObtainedASortedList() {
         // given
         Observable<Integer> sourceObservable = Observable.range(10, 5);
         TestSubscriber<List> subscriber = TestSubscriber.create();
@@ -125,7 +125,7 @@ public class RxAggregateOperatorsTest {
     }
 
     @Test
-    public void testToSortedListComparator() {
+    public void givenObservable_whenUsingToSortedListWithComparator_thenObtainedAnInverseSortedList() {
         // given
         Observable<Integer> sourceObservable = Observable.range(10, 5);
         TestSubscriber<List> subscriber = TestSubscriber.create();
@@ -143,7 +143,7 @@ public class RxAggregateOperatorsTest {
     }
 
     @Test
-    public void testToMap() {
+    public void givenObservable_whenUsingToMap_thenObtainedAMap() {
         // given
         Observable<Book> bookObservable = Observable.just(new Book("The North Water", 2016), new Book("Origin", 2017), new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
@@ -167,7 +167,7 @@ public class RxAggregateOperatorsTest {
     }
 
     @Test
-    public void testToMultiMap() {
+    public void givenObservable_whenUsingToMultiMap_thenObtainedAMultiMap() {
         // given
         Observable<Book> bookObservable = Observable.just(new Book("The North Water", 2016), new Book("Origin", 2017), new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
