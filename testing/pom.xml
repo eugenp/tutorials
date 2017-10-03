@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.insightfullogic</groupId>
+            <artifactId>lambda-behave</artifactId>
+            <version>0.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
@@ -80,6 +85,12 @@
             <groupId>org.jgotesting</groupId>
             <artifactId>jgotesting</artifactId>
             <version>${jgotesting.version}</version>
+            <scope>test</scope>
+        </dependency>        
+        <dependency>
+            <groupId>org.jukito</groupId>
+            <artifactId>jukito</artifactId>
+            <version>1.5</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -21,7 +21,6 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
-    
     public Foo(Integer id, String name) {
         super();
         this.id = id;

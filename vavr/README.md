@@ -5,3 +5,4 @@
 - [Property Testing Example With Vavr](http://www.baeldung.com/javaslang-property-testing)
 - [Exceptions in Lambda Expression Using Vavr](http://www.baeldung.com/exceptions-using-vavr)
 - [Vavr (ex-Javaslang) Support in Spring Data](http://www.baeldung.com/spring-vavr)
+- [Collection Factory Methods for Vavr](http://www.baeldung.com/vavr-collection-factory-methods)

@@ -33,12 +33,14 @@ public class EmployeesTest {
     public void whenAddEmployee_thenGetEmployee() throws SQLException {
         Employee emp = new Employee(1, "john");
         employeeDao.add(emp);
-        assertEquals(1, employeeDao.findAll().size());
+        assertEquals(1, employeeDao.findAll()
+            .size());
     }
 
     @Test
     public void whenGetEmployees_thenEmptyList() throws SQLException {
-        assertEquals(0, employeeDao.findAll().size());
+        assertEquals(0, employeeDao.findAll()
+            .size());
     }
 
     public void setLogger(Logger logger) {
