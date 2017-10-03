@@ -141,13 +141,9 @@ public class Lang3UtilsTest {
         BasicThreadFactory.Builder builder = new BasicThreadFactory.Builder();
         BasicThreadFactory factory = builder.build();
         assertNull("No naming pattern set Yet", factory.getNamingPattern());
-        BasicThreadFactory factory2 = builder.namingPattern("sampleNamingPattern")
-                                             .daemon(true)
-                                             .priority(Thread.MIN_PRIORITY)
-                                             .build();
+        BasicThreadFactory factory2 = builder.namingPattern("sampleNamingPattern").daemon(true).priority(Thread.MIN_PRIORITY).build();
         assertNotNull("Got a naming pattern", factory2.getNamingPattern());
         assertEquals("sampleNamingPattern", factory2.getNamingPattern());
 
     }
-
 }
