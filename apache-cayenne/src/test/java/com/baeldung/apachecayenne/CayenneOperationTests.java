@@ -20,7 +20,7 @@ public class CayenneOperationTests {
     private static ObjectContext context = null;
 
     @BeforeClass
-    public static void setupTheCayenneContext(){
+    public static void setupTheCayenneContext() {
         ServerRuntime cayenneRuntime = ServerRuntime.builder()
                 .addConfig("cayenne-project.xml")
                 .build();
@@ -28,7 +28,7 @@ public class CayenneOperationTests {
     }
 
     @After
-    public void deleteAllRecords(){
+    public void deleteAllRecords() {
         SQLTemplate deleteArticles = new SQLTemplate(Article.class, "delete from article");
         SQLTemplate deleteAuthors = new SQLTemplate(Author.class, "delete from author");
 
@@ -37,10 +37,9 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenInsert_thenWeGetOneRecordInTheDatabase(){
+    public void givenAuthor_whenInsert_thenWeGetOneRecordInTheDatabase() {
         Author author = context.newObject(Author.class);
-        author.setFirstname("Paul");
-        author.setLastname("Smith");
+        author.setName("Paul");
 
         context.commitChanges();
 
@@ -49,30 +48,26 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenInsert_andQueryByFirstName_thenWeGetTheAuthor(){
+    public void givenAuthor_whenInsert_andQueryByFirstName_thenWeGetTheAuthor() {
         Author author = context.newObject(Author.class);
-        author.setFirstname("Paul");
-        author.setLastname("Smith");
+        author.setName("Paul");
 
         context.commitChanges();
 
         Author expectedAuthor = ObjectSelect.query(Author.class)
-                .where(Author.FIRSTNAME.eq("Paul"))
+                .where(Author.NAME.eq("Paul"))
                 .selectOne(context);
 
-        assertEquals("Paul", expectedAuthor.getFirstname());
-        assertEquals("Smith", expectedAuthor.getLastname());
+        assertEquals("Paul", expectedAuthor.getName());
     }
 
     @Test
-    public void givenTwoAuthor_whenInsert_andQueryAll_thenWeGetTwoAuthors(){
+    public void givenTwoAuthor_whenInsert_andQueryAll_thenWeGetTwoAuthors() {
         Author firstAuthor = context.newObject(Author.class);
-        firstAuthor.setFirstname("Paul");
-        firstAuthor.setLastname("Smith");
+        firstAuthor.setName("Paul");
 
         Author secondAuthor = context.newObject(Author.class);
-        secondAuthor.setFirstname("Ludovic");
-        secondAuthor.setLastname("Garcia");
+        secondAuthor.setName("Ludovic");
 
         context.commitChanges();
 
@@ -81,46 +76,42 @@ public class CayenneOperationTests {
     }
 
     @Test
-    public void givenAuthor_whenUpdating_thenWeGetAnUpatedeAuthor(){
+    public void givenAuthor_whenUpdating_thenWeGetAnUpatedeAuthor() {
         Author author = context.newObject(Author.class);
-        author.setFirstname("Paul");
-        author.setLastname("Smith");
+        author.setName("Paul");
         context.commitChanges();
 
         Author expectedAuthor = ObjectSelect.query(Author.class)
-                .where(Author.FIRSTNAME.eq("Paul"))
+                .where(Author.NAME.eq("Paul"))
                 .selectOne(context);
-        expectedAuthor.setLastname("Smith 2");
+        expectedAuthor.setName("Garcia");
         context.commitChanges();
 
-        assertEquals(author.getFirstname(), expectedAuthor.getFirstname());
-        assertEquals(author.getLastname(), expectedAuthor.getLastname());
+        assertEquals(author.getName(), expectedAuthor.getName());
     }
 
     @Test
-    public void givenAuthor_whenDeleting_thenWeLostHisDetails(){
+    public void givenAuthor_whenDeleting_thenWeLostHisDetails() {
         Author author = context.newObject(Author.class);
-        author.setFirstname("Paul");
-        author.setLastname("Smith");
+        author.setName("Paul");
         context.commitChanges();
 
         Author savedAuthor = ObjectSelect.query(Author.class)
-                .where(Author.FIRSTNAME.eq("Paul")).selectOne(context);
+                .where(Author.NAME.eq("Paul")).selectOne(context);
         if(savedAuthor != null) {
             context.deleteObjects(author);
             context.commitChanges();
         }
 
         Author expectedAuthor = ObjectSelect.query(Author.class)
-                .where(Author.FIRSTNAME.eq("Paul")).selectOne(context);
+                .where(Author.NAME.eq("Paul")).selectOne(context);
         assertNull(expectedAuthor);
     }
 
     @Test
-    public void givenAuthor_whenAttachingToArticle_thenTheRelationIsMade(){
+    public void givenAuthor_whenAttachingToArticle_thenTheRelationIsMade() {
         Author author = context.newObject(Author.class);
-        author.setFirstname("Paul");
-        author.setLastname("Smith");
+        author.setName("Paul");
 
         Article article = context.newObject(Article.class);
         article.setTitle("My post title");
@@ -130,7 +121,7 @@ public class CayenneOperationTests {
         context.commitChanges();
 
         Author expectedAuthor = ObjectSelect.query(Author.class)
-                .where(Author.LASTNAME.eq("Smith"))
+                .where(Author.NAME.eq("Paul"))
                 .selectOne(context);
 
         Article expectedArticle = (expectedAuthor.getArticles()).get(0);

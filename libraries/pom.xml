@@ -546,14 +546,29 @@
             <version>${protonpack.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava</artifactId>
-            <version>4.7</version>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava</artifactId>
+	          <version>4.7</version>
+	      </dependency>
+	      <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-java8</artifactId>
+	          <version>4.7</version>
         </dependency>
         <dependency>
-            <groupId>javax.cache</groupId>
-            <artifactId>cache-api</artifactId>
-            <version>${cache.version}</version>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-quickcheck</artifactId>
+	          <version>4.7</version>
+	      </dependency>
+	      <dependency>
+	          <groupId>org.functionaljava</groupId>
+	          <artifactId>functionaljava-java-core</artifactId>
+	          <version>4.7</version>
+        </dependency>
+        <dependency>
+   			    <groupId>javax.cache</groupId>
+   			    <artifactId>cache-api</artifactId>
+   			    <version>${cache.version}</version>
         </dependency>
         <dependency>
             <groupId>com.hazelcast</groupId>
@@ -561,11 +576,19 @@
             <version>${hazelcast.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.netopyr.wurmloch</groupId>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-rest-java-client-core</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>3.0.0-m007</version>
+        </dependency>
+           <groupId>com.netopyr.wurmloch</groupId>
             <artifactId>wurmloch-crdt</artifactId>
             <version>${crdt.version}</version>
         </dependency>
-
     </dependencies>
     <repositories>
         <repository>
@@ -580,6 +603,10 @@
             <id>bintray-cuba-platform-main</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
+        </repository>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
         </repository>
     </repositories>
     <properties>
