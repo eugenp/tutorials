@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>testng</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -43,27 +42,6 @@
         </testResources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                    </excludes>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resources\parametrized_testng.xml</suiteXmlFile>
-                        <suiteXmlFile>src\test\resources\test_group.xml</suiteXmlFile>
-                        <suiteXmlFile>src\test\resources\test_setup.xml</suiteXmlFile>
-                        <suiteXmlFile>src\test\resources\test_suite.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

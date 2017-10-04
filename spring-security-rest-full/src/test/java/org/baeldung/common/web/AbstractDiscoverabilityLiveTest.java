@@ -37,7 +37,7 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
 
         // Then
         final String allowHeader = res.getHeader(HttpHeaders.ALLOW);
-        assertThat(allowHeader, AnyOf.<String> anyOf(containsString("GET"), containsString("PUT"), containsString("DELETE")));
+        assertThat(allowHeader, AnyOf.anyOf(containsString("GET"), containsString("PUT"), containsString("DELETE")));
     }
 
     @Test
