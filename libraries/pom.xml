@@ -583,7 +583,18 @@
         <dependency>
             <groupId>com.atlassian.fugue</groupId>
             <artifactId>fugue</artifactId>
-            <version>3.0.0-m007</version>
+            <version>2.6.1</version>
+        </dependency>
+		<!-- Uncomment this in order to use the jira-rest-java-client-core API -->
+        <!-- <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
     <repositories>
