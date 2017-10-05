@@ -585,11 +585,13 @@
             <artifactId>fugue</artifactId>
             <version>2.6.1</version>
         </dependency>
-        <dependency>
+		<!-- Uncomment this in order to use the jira-rest-java-client-core API -->
+        <!-- <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
-        </dependency>
+        </dependency> -->
+
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
