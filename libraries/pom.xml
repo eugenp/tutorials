@@ -591,11 +591,11 @@
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency> -->
-
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
             <version>1.0.1</version>
+            <version>3.0.0-m007</version>
         </dependency>
     </dependencies>
     <repositories>
