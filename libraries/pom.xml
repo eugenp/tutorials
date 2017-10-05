@@ -585,6 +585,7 @@
             <artifactId>fugue</artifactId>
             <version>3.0.0-m007</version>
         </dependency>
+        <dependency>
            <groupId>com.netopyr.wurmloch</groupId>
             <artifactId>wurmloch-crdt</artifactId>
             <version>${crdt.version}</version>
