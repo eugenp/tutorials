@@ -2,8 +2,7 @@ package com.baeldung.jira;
 
 import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
-import com.atlassian.jira.rest.client.api.JiraRestClientFactory;
-import com.atlassian.jira.rest.client.api.domain.BasicIssue;
+import com.atlassian.jira.rest.client.api.domain.BasicVotes;
 import com.atlassian.jira.rest.client.api.domain.Comment;
 import com.atlassian.jira.rest.client.api.domain.Issue;
 import com.atlassian.jira.rest.client.api.domain.input.IssueInput;
@@ -12,9 +11,9 @@ import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientF
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class MyJiraClient {
 
@@ -23,14 +22,14 @@ public class MyJiraClient {
     private String jiraUrl;
     private JiraRestClient restClient;
 
-    public MyJiraClient(String username, String password, String jiraUrl) {
+    private MyJiraClient(String username, String password, String jiraUrl) {
         this.username = username;
         this.password = password;
         this.jiraUrl = jiraUrl;
         this.restClient = getJiraRestClient();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         MyJiraClient myJiraClient = new MyJiraClient("user.name", "pass", "http://jira.company.com");
 
@@ -51,7 +50,7 @@ public class MyJiraClient {
 
         myJiraClient.deleteIssue(issueKey, true);
 */
-        myJiraClient.close();
+        myJiraClient.restClient.close();
     }
 
     public String createIssue(String projectKey, Long issueType, String issueSummary) {
@@ -59,14 +58,12 @@ public class MyJiraClient {
         IssueRestClient issueClient = restClient.getIssueClient();
 
         IssueInput newIssue = new IssueInputBuilder(projectKey, issueType, issueSummary).build();
-        BasicIssue createdIssue = issueClient.createIssue(newIssue).claim();
 
-        return createdIssue.getKey();
+        return issueClient.createIssue(newIssue).claim().getKey();
     }
 
-    public Issue getIssue(String issueKey) {
-        Issue issue = restClient.getIssueClient().getIssue(issueKey).claim();
-        return issue;
+    private Issue getIssue(String issueKey) {
+        return restClient.getIssueClient().getIssue(issueKey).claim();
     }
 
     public void voteForAnIssue(Issue issue) {
@@ -74,8 +71,8 @@ public class MyJiraClient {
     }
 
     public int getTotalVotesCount(String issueKey) {
-        Issue updatedIssue = getIssue(issueKey);
-        return updatedIssue.getVotes().getVotes();
+        BasicVotes votes = getIssue(issueKey).getVotes();
+        return votes == null ? 0 : votes.getVotes();
     }
 
     public void addComment(Issue issue, String commentBody) {
@@ -83,10 +80,8 @@ public class MyJiraClient {
     }
 
     public List<Comment> getAllComments(String issueKey) {
-        Issue issue = getIssue(issueKey);
-        List<Comment> comments = new ArrayList<>();
-        issue.getComments().forEach(c -> comments.add(c));
-        return comments;
+        return StreamSupport.stream(getIssue(issueKey).getComments().spliterator(), false)
+          .collect(Collectors.toList());
     }
 
     public void updateIssueDescription(String issueKey, String newDescription) {
@@ -99,32 +94,11 @@ public class MyJiraClient {
     }
 
     private JiraRestClient getJiraRestClient() {
-        JiraRestClientFactory factory = new AsynchronousJiraRestClientFactory();
-
-        URI jiraServerUri = getJiraUri();
-        return factory
-          .createWithBasicHttpAuthentication(jiraServerUri, this.username, this.password);
+        return new AsynchronousJiraRestClientFactory()
+          .createWithBasicHttpAuthentication(getJiraUri(), this.username, this.password);
     }
 
     private URI getJiraUri() {
-        URI jiraServerUri = null;
-        try {
-            jiraServerUri = new URI(this.jiraUrl);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-        return jiraServerUri;
-    }
-
-    private void closeRestClient(JiraRestClient restClient) {
-        try {
-            restClient.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void close() {
-        closeRestClient(restClient);
+        return URI.create(this.jiraUrl);
     }
 }
