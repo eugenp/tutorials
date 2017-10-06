@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 public class Client implements BundleActivator {
 
     private GeocodingService geocoding;
+    private BundleContext context;
 
     public Client(GeocodingService geocoding) {
         this.geocoding = geocoding;
@@ -49,9 +50,11 @@ public class Client implements BundleActivator {
         System.out.println("start");
         Client client = null; //new Client(new GeocodeXyz());
         client.run();
+        this.context = bundleContext;
     }
 
     @Override public void stop(BundleContext bundleContext) throws Exception {
         System.out.println("stop");
+        this.context = bundleContext;
     }
 }
