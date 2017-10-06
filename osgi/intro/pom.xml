@@ -12,6 +12,7 @@
         <module>osgi-intro-service</module>
         <module>osgi-intro-gxyz</module>
         <module>osgi-intro-mapquest</module>
+        <module>osgi-intro-sample-activator</module>
     </modules>
 
     <parent>
@@ -72,5 +73,29 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>1.4.0</version>
+                    <extensions>true</extensions>
+                    <!--
+                    <executions>
+                        <execution>
+                            <id>common</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>bundle</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    -->
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

@@ -43,7 +43,7 @@
                         <!--
                         <Private-Package>org.wso2.mbp.helloworld</Private-Package>
                         -->
-                        <Bundle-Activator>com.baeldung.osgi.geocoding.Client</Bundle-Activator>
+                        <Bundle-Activator>com.baeldung.osgi.geocodingService.Client</Bundle-Activator>
                         <Import-Package>
                             org.osgi.framework,
                             *;resolution:=optional

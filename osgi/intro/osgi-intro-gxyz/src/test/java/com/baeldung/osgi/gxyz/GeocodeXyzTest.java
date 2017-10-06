@@ -1,8 +1,7 @@
 package com.baeldung.osgi.gxyz;
 
-import com.baeldung.osgi.gxyz.gxyz.GeocodeXyz;
-import com.baeldung.osgi.service.service.Coord;
-import com.baeldung.osgi.service.service.GeocodeException;
+import com.baeldung.osgi.service.Coord;
+import com.baeldung.osgi.service.GeocodeException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

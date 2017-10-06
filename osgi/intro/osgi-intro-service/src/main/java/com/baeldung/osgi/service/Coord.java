@@ -1,4 +1,4 @@
-package com.baeldung.osgi.service.service;
+package com.baeldung.osgi.service;
 
 public class Coord {
 

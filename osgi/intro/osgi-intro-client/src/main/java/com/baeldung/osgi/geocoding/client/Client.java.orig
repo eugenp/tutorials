@@ -11,8 +11,12 @@ import java.io.InputStreamReader;
 
 import static org.osgi.framework.ServiceEvent.*;
 
-public class Client implements BundleActivator, ServiceListener {
+<<<<<<< HEAD
+    private GeocodingService geocoding;
     private BundleContext context;
+=======
+public class Client implements BundleActivator, ServiceListener {
+>>>>>>> f20b19deb82b0324ab6dee0bbfc6ddef2e30812c
 
     private GeocodingService geocodingService;
 
@@ -52,10 +56,20 @@ public class Client implements BundleActivator, ServiceListener {
     }
 
     @Override public void start(BundleContext bundleContext) throws Exception {
+<<<<<<< HEAD
+        System.out.println("start");
+        Client client = null; //new Client(new GeocodeXyz());
+        client.run();
+        this.context = bundleContext;
+    }
+
+    @Override public void stop(BundleContext bundleContext) throws Exception {
+        System.out.println("stop");
+        this.context = bundleContext;
+=======
         System.out.println("starting client bundle");
 
         bundleContext.addServiceListener(this);
-        this.context = bundleContext;
         ServiceReference<GeocodingService> serviceReference = bundleContext.getServiceReference(GeocodingService.class);
         if(serviceReference!=null){
             geocodingService = bundleContext.getService(serviceReference);
@@ -88,5 +102,6 @@ public class Client implements BundleActivator, ServiceListener {
             default:
                 throw new IllegalStateException("Unsupported type");
         }
+>>>>>>> f20b19deb82b0324ab6dee0bbfc6ddef2e30812c
     }
 }
