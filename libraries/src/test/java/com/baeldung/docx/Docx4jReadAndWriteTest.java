@@ -5,9 +5,6 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import com.baeldung.algorithms.dijkstra.Docx4jExample;
-
-
 public class Docx4jReadAndWriteTest {
 
     String imagePath = "src/main/resources/image.jpg";
