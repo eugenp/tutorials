@@ -52,7 +52,7 @@ public class MyJiraClient {
         myJiraClient.restClient.close();
     }
 
-    public String createIssue(String projectKey, Long issueType, String issueSummary) {
+    private String createIssue(String projectKey, Long issueType, String issueSummary) {
 
         IssueRestClient issueClient = restClient.getIssueClient();
 
@@ -65,30 +65,30 @@ public class MyJiraClient {
         return restClient.getIssueClient().getIssue(issueKey).claim();
     }
 
-    public void voteForAnIssue(Issue issue) {
+    private void voteForAnIssue(Issue issue) {
         restClient.getIssueClient().vote(issue.getVotesUri()).claim();
     }
 
-    public int getTotalVotesCount(String issueKey) {
+    private int getTotalVotesCount(String issueKey) {
         BasicVotes votes = getIssue(issueKey).getVotes();
         return votes == null ? 0 : votes.getVotes();
     }
 
-    public void addComment(Issue issue, String commentBody) {
+    private void addComment(Issue issue, String commentBody) {
         restClient.getIssueClient().addComment(issue.getCommentsUri(), Comment.valueOf(commentBody));
     }
 
-    public List<Comment> getAllComments(String issueKey) {
+    private List<Comment> getAllComments(String issueKey) {
         return StreamSupport.stream(getIssue(issueKey).getComments().spliterator(), false)
           .collect(Collectors.toList());
     }
 
-    public void updateIssueDescription(String issueKey, String newDescription) {
+    private void updateIssueDescription(String issueKey, String newDescription) {
         IssueInput input = new IssueInputBuilder().setDescription(newDescription).build();
         restClient.getIssueClient().updateIssue(issueKey, input).claim();
     }
 
-    public void deleteIssue(String issueKey, boolean deleteSubtasks) {
+    private void deleteIssue(String issueKey, boolean deleteSubtasks) {
         restClient.getIssueClient().deleteIssue(issueKey, deleteSubtasks).claim();
     }
 

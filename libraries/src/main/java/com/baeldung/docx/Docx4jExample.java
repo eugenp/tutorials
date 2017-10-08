@@ -1,12 +1,5 @@
 package com.baeldung.docx;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.util.List;
-
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-
 import org.docx4j.dml.wordprocessingDrawing.Inline;
 import org.docx4j.jaxb.Context;
 import org.docx4j.model.table.TblFactory;
@@ -26,13 +19,20 @@ import org.docx4j.wml.Tc;
 import org.docx4j.wml.Text;
 import org.docx4j.wml.Tr;
 
-public class Docx4jExample {
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.nio.file.Files;
+import java.util.List;
 
-    public void createDocumentPackage(String outputPath, String imagePath) throws Exception {
+class Docx4jExample {
+
+    void createDocumentPackage(String outputPath, String imagePath) throws Exception {
         WordprocessingMLPackage wordPackage = WordprocessingMLPackage.createPackage();
         MainDocumentPart mainDocumentPart = wordPackage.getMainDocumentPart();
         mainDocumentPart.addStyledParagraphOfText("Title", "Hello World!");
         mainDocumentPart.addParagraphOfText("Welcome To Baeldung!");
+
         ObjectFactory factory = Context.getWmlObjectFactory();
         P p = factory.createP();
         R r = factory.createR();
@@ -53,13 +53,16 @@ public class Docx4jExample {
 
         File image = new File(imagePath);
         byte[] fileContent = Files.readAllBytes(image.toPath());
-        BinaryPartAbstractImage imagePart = BinaryPartAbstractImage.createImagePart(wordPackage, fileContent);
-        Inline inline = imagePart.createImageInline("Baeldung Image", "Alt Text", 1, 2, false);
+        BinaryPartAbstractImage imagePart = BinaryPartAbstractImage
+          .createImagePart(wordPackage, fileContent);
+        Inline inline = imagePart.createImageInline(
+          "Baeldung Image", "Alt Text", 1, 2, false);
         P Imageparagraph = addImageToParagraph(inline);
         mainDocumentPart.getContent().add(Imageparagraph);
 
-        int writableWidthTwips = wordPackage.getDocumentModel().getSections().get(0).getPageDimensions()
-                .getWritableWidthTwips();
+        int writableWidthTwips = wordPackage.getDocumentModel()
+          .getSections().get(0).getPageDimensions()
+          .getWritableWidthTwips();
         int columnNumber = 3;
         Tbl tbl = TblFactory.createTable(3, 3, writableWidthTwips / columnNumber);
         List<Object> rows = tbl.getContent();
@@ -77,7 +80,7 @@ public class Docx4jExample {
         wordPackage.save(exportFile);
     }
 
-    public boolean isTextExist(String testText) throws Docx4JException, JAXBException {
+    boolean isTextExist(String testText) throws Docx4JException, JAXBException {
         File doc = new File("helloWorld.docx");
         WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.load(doc);
         MainDocumentPart mainDocumentPart = wordMLPackage.getMainDocumentPart();
