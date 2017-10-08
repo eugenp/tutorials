@@ -37,7 +37,7 @@ public class Docx4jExample {
         P p = factory.createP();
         R r = factory.createR();
         Text t = factory.createText();
-        t.setValue("Welcome To Baledung");
+        t.setValue("Welcome To Baeldung");
         r.getContent().add(t);
         p.getContent().add(r);
         RPr rpr = factory.createRPr();
