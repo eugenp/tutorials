@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -487,7 +487,7 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
-        
+
         <!-- Retrofit -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -503,7 +503,7 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>adapter-rxjava</artifactId>
             <version>${retrofit.version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
@@ -583,7 +583,23 @@
         <dependency>
             <groupId>com.atlassian.fugue</groupId>
             <artifactId>fugue</artifactId>
-            <version>3.0.0-m007</version>
+            <version>2.6.1</version>
+        </dependency>
+		<!-- Uncomment this in order to use the jira-rest-java-client-core API -->
+        <!-- <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency> -->
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+           <groupId>com.netopyr.wurmloch</groupId>
+            <artifactId>wurmloch-crdt</artifactId>
+            <version>${crdt.version}</version>
         </dependency>
     </dependencies>
     <repositories>
@@ -606,6 +622,7 @@
         </repository>
     </repositories>
     <properties>
+        <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.6</commons-lang.version>
@@ -658,6 +675,6 @@
         <protonpack.version>1.14</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-    	<hazelcast.version>3.8.4</hazelcast.version>
+        <hazelcast.version>3.8.4</hazelcast.version>
     </properties>
 </project>
