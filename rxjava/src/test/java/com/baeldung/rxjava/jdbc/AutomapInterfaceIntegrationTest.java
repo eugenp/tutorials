@@ -8,13 +8,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
 import com.github.davidmoten.rx.jdbc.Database;
 
 import rx.Observable;
 
 public class AutomapInterfaceIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     private Observable<Integer> create = null;
     private Observable<Integer> insert1, insert2 = null;
@@ -55,8 +57,7 @@ public class AutomapInterfaceIntegrationTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-            .dependsOn(create);
-        Connector.connectionProvider.close();
+          .dependsOn(create);
+        connectionProvider.close();
     }
-
 }
