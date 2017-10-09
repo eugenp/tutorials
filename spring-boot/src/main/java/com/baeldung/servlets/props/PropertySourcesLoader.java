@@ -10,7 +10,8 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 @Configuration
 @ComponentScan(basePackages = { "com.baeldung.servlets.*" })
-@PropertySource("classpath:custom.properties") public class PropertySourcesLoader {
+@PropertySource("classpath:custom.properties")
+public class PropertySourcesLoader {
 
     private static final Logger log = LoggerFactory.getLogger(PropertySourcesLoader.class);
 

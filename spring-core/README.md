@@ -8,4 +8,3 @@
 - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
 - [Introduction to Spring’s StreamUtils](http://www.baeldung.com/spring-stream-utils)
 - [Using Spring @Value with Defaults](http://www.baeldung.com/spring-value-defaults)
-

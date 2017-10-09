@@ -5,9 +5,16 @@ import static com.baeldung.designpatterns.util.LogerUtil.LOG;
 public class AdapterPatternDriver {
     
     public static void main(String args[]) {
-        LuxuryCarsSpeedAdapter luxuryCars = new LuxuryCarsSpeedAdapterImpl();
-        LOG.info("Bugatti Veyron Super Sport's top speed is " + luxuryCars.bugattiVeyronInKMPH() + " Kmph.");
-        LOG.info("McLaren F1 top speed is " + luxuryCars.mcLarenInKMPH() + " Kmph.");
-        LOG.info("Aston Martin One-77 top speed is " + luxuryCars.astonMartinInKMPH() + " Kmph.");
+    	Movable bugattiVeyron = new BugattiVeyron();
+    	MovableAdapter bugattiVeyronAdapter = new MovableAdapterImpl(bugattiVeyron);
+        LOG.info("Bugatti Veyron Super Sport's top speed is " + bugattiVeyronAdapter.getSpeed() + " Kmph.");
+
+        Movable mcLaren = new McLaren();
+        MovableAdapter mcLarenAdapter = new MovableAdapterImpl(mcLaren);
+        LOG.info("McLaren F1 top speed is " + mcLarenAdapter.getSpeed() + " Kmph.");
+
+        Movable astonMartin = new AstonMartin();
+        MovableAdapter astonMartinAdapter = new MovableAdapterImpl(astonMartin);
+        LOG.info("McLaren F1 top speed is " + astonMartinAdapter.getSpeed() + " Kmph.");
     }
 }

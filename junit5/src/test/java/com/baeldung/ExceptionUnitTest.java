@@ -7,19 +7,19 @@ import org.junit.jupiter.api.Test;
 
 public class ExceptionUnitTest {
 
-	@Test
-	void shouldThrowException() {
-		Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
-			throw new UnsupportedOperationException("Not supported");
-		});
-		assertEquals(exception.getMessage(), "Not supported");
-	}
+    @Test
+    void shouldThrowException() {
+        Throwable exception = assertThrows(UnsupportedOperationException.class, () -> {
+            throw new UnsupportedOperationException("Not supported");
+        });
+        assertEquals(exception.getMessage(), "Not supported");
+    }
 
-	@Test
-	void assertThrowsException() {
-		String str = null;
-		assertThrows(IllegalArgumentException.class, () -> {
-			Integer.valueOf(str);
-		});
-	}
+    @Test
+    void assertThrowsException() {
+        String str = null;
+        assertThrows(IllegalArgumentException.class, () -> {
+            Integer.valueOf(str);
+        });
+    }
 }
