@@ -1,4 +1,4 @@
-package com.baeldung.jira;
+package com.baeldung.saas.jira;
 
 import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
@@ -31,14 +31,15 @@ public class MyJiraClient {
 
     public static void main(String[] args) throws IOException {
 
-        MyJiraClient myJiraClient = new MyJiraClient("user.name", "pass", "http://jira.company.com");
+        MyJiraClient myJiraClient = new MyJiraClient("yasin.bhojawala", "jira@P455", "http://jira.baeldung.com");
 
-        final String issueKey = myJiraClient.createIssue("ABCD", 1L, "Issue created from JRJC");
-        myJiraClient.updateIssueDescription(issueKey, "This is description from my Jira Client");
+//        final String issueKey = myJiraClient.createIssue("ABCD", 1L, "Issue created from JRJC");
+        final String issueKey = "BAEL-1139";
+//        myJiraClient.updateIssueDescription(issueKey, "This is description from my Jira Client");
         Issue issue = myJiraClient.getIssue(issueKey);
         System.out.println(issue.getDescription());
 
-        myJiraClient.voteForAnIssue(issue);
+        /*myJiraClient.voteForAnIssue(issue);
 
         System.out.println(myJiraClient.getTotalVotesCount(issueKey));
 
@@ -47,7 +48,7 @@ public class MyJiraClient {
         List<Comment> comments = myJiraClient.getAllComments(issueKey);
         comments.forEach(c -> System.out.println(c.getBody()));
 
-        myJiraClient.deleteIssue(issueKey, true);
+        myJiraClient.deleteIssue(issueKey, true);*/
 
         myJiraClient.restClient.close();
     }
