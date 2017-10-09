@@ -2,10 +2,8 @@ package com.baeldung.algorithms.editdistance;
 
 public class EditDistanceDynamicProgramming extends EditDistanceBase {
 
-    private static int[][] dp;
-
     public static int calculate(String x, String y) {
-        dp = new int[x.length() + 1][y.length() + 1];
+        int[][] dp = new int[x.length() + 1][y.length() + 1];
 
         for (int i = 0; i <= x.length(); i++) {
             for (int j = 0; j <= y.length(); j++) {
