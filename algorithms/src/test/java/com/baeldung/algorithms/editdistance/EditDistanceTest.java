@@ -6,13 +6,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class EditDistanceTest extends  EditDistanceDataProvider {
+public class EditDistanceTest extends EditDistanceDataProvider {
 
     String x;
     String y;
     int result;
 
-    public EditDistanceTest(String a, String b, int res){
+    public EditDistanceTest(String a, String b, int res) {
         super();
         x = a;
         y = b;
@@ -20,12 +20,12 @@ public class EditDistanceTest extends  EditDistanceDataProvider {
     }
 
     @Test
-    public void testEditDistance_RecursiveImplementation(){
+    public void testEditDistance_RecursiveImplementation() {
         Assert.assertEquals(result, EditDistanceRecursive.calculate(x, y));
     }
 
     @Test
-    public void testEditDistance_givenDynamicProgrammingImplementation(){
+    public void testEditDistance_givenDynamicProgrammingImplementation() {
         Assert.assertEquals(result, EditDistanceDynamicProgramming.calculate(x, y));
     }
 }
