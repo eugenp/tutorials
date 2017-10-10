@@ -5,12 +5,13 @@
     <artifactId>vavr</artifactId>
     <version>1.0</version>
     <name>vavr</name>
-	
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.BUILD-SNAPSHOT</version>
-        <relativePath />
+        <version>1.5.6.RELEASE</version>
+        <relativePath/>
+        <!--  lookup parent from repository  -->
     </parent>
 
     <dependencies>
@@ -35,10 +36,11 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-     
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         
         <dependency>
