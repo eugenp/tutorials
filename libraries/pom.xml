@@ -670,7 +670,7 @@
         <protonpack.version>1.14</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-    	<hazelcast.version>3.8.4</hazelcast.version>
+        <hazelcast.version>3.8.4</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
     </properties>
 </project>
