@@ -41,6 +41,7 @@
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
+- [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

@@ -1,7 +1,6 @@
 package com.baeldung.rxjava;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import rx.Observable;
@@ -16,9 +15,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class SchedulersTest {
     private String result = "";
@@ -31,7 +32,8 @@ public class SchedulersTest {
         Scheduler scheduler = Schedulers.immediate();
         Scheduler.Worker worker = scheduler.createWorker();
         worker.schedule(() -> result += "action");
-        Assert.assertTrue(result.equals("action"));
+
+        assertTrue(result.equals("action"));
     }
 
     @Test
@@ -44,8 +46,9 @@ public class SchedulersTest {
             worker.unsubscribe();
         });
         worker.schedule(() -> result += "Second_Action");
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("First_Action"));
+
+        await()
+          .until(() -> assertTrue(result.equals("First_Action")));
     }
 
     @Ignore //it's not safe, not every time is running correctly
@@ -59,8 +62,9 @@ public class SchedulersTest {
             worker.schedule(() -> result += "_worker_");
             result += "_End";
         });
-        Thread.sleep(2000);
-        Assert.assertTrue(result.equals("RxNewThreadScheduler-1_Start_End_worker_"));
+
+        await()
+          .until(() -> assertTrue(result.equals("RxNewThreadScheduler-1_Start_End_worker_")));
     }
 
     @Test
@@ -75,9 +79,11 @@ public class SchedulersTest {
           .subscribe(s ->
             result1 += Thread.currentThread().getName()
           );
-        Thread.sleep(500);
-        Assert.assertTrue(result1.equals("RxNewThreadScheduler-1"));
-        Assert.assertTrue(result2.equals("RxNewThreadScheduler-2"));
+        await()
+          .until(() -> {
+              assertTrue(result1.equals("RxNewThreadScheduler-1"));
+              assertTrue(result2.equals("RxNewThreadScheduler-2"));
+          });
     }
 
     @Test
@@ -90,8 +96,9 @@ public class SchedulersTest {
             worker.schedule(() -> result += "_worker_");
             result += "_End";
         });
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("main_Start_worker__End"));
+
+        await()
+          .until(() -> assertTrue(result.equals("main_Start_worker__End")));
     }
 
     @Test
@@ -102,8 +109,9 @@ public class SchedulersTest {
           .subscribe(s ->
             result += Thread.currentThread().getName()
           );
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("main"));
+
+        await()
+          .until(() -> assertTrue(result.equals("main")));
     }
 
     @Test
@@ -115,8 +123,9 @@ public class SchedulersTest {
         Observable.just(1, 3, 5, 7, 9)
           .subscribeOn(Schedulers.trampoline())
           .subscribe(i -> result += "" + i);
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("246813579"));
+
+        await()
+          .until(() -> assertTrue(result.equals("246813579")));
     }
 
     @Test
@@ -135,9 +144,9 @@ public class SchedulersTest {
             });
             result += "_mainEnd";
         });
-        Thread.sleep(500);
-        Assert.assertTrue(result
-          .equals("mainStart_mainEnd_middleStart_middleEnd_worker_"));
+
+        await()
+          .until(() -> assertTrue(result.equals("mainStart_mainEnd_middleStart_middleEnd_worker_")));
     }
 
     private ThreadFactory threadFactory(String pattern) {
@@ -159,7 +168,6 @@ public class SchedulersTest {
             subscriber.onNext("Beta");
             subscriber.onCompleted();
         });
-        ;
 
         observable
           .subscribeOn(schedulerA)
@@ -169,8 +177,9 @@ public class SchedulersTest {
             Throwable::printStackTrace,
             () -> result += "_Completed"
           );
-        Thread.sleep(2000);
-        Assert.assertTrue(result.equals("Sched-A-0Alfa_Sched-A-0Beta__Completed"));
+
+        await()
+          .until(() -> assertTrue(result.equals("Sched-A-0Alfa_Sched-A-0Beta__Completed")));
     }
 
     @Test
@@ -179,8 +188,9 @@ public class SchedulersTest {
         Observable.just("io")
           .subscribeOn(Schedulers.io())
           .subscribe(i -> result += Thread.currentThread().getName());
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("RxIoScheduler-2"));
+
+        await()
+          .until(() -> assertTrue(result.equals("RxIoScheduler-2")));
     }
 
     @Test
@@ -189,8 +199,9 @@ public class SchedulersTest {
         Observable.just("computation")
           .subscribeOn(Schedulers.computation())
           .subscribe(i -> result += Thread.currentThread().getName());
-        Thread.sleep(500);
-        Assert.assertTrue(result.equals("RxComputationScheduler-1"));
+
+        await()
+          .until(() -> assertTrue(result.equals("RxComputationScheduler-1")));
     }
 
     @Test
@@ -229,7 +240,7 @@ public class SchedulersTest {
           .delay(1, TimeUnit.SECONDS, schedulerA)
           .subscribe(i -> result += Thread.currentThread().getName() + i + " ");
 
-        Thread.sleep(2000);
-        Assert.assertTrue(result.equals("Sched1-A Sched1-B "));
+        await()
+          .until(() -> assertTrue(result.equals("Sched1-A Sched1-B ")));
     }
 }
