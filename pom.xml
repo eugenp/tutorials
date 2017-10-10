@@ -28,6 +28,7 @@
     </properties>
 
     <modules>
+        <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
         <module>akka-streams</module>
@@ -247,6 +248,7 @@
         <module>mockserver</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
+        <module>deeplearning4j</module>
     </modules>
 
     <dependencies>
