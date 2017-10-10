@@ -1,20 +1,24 @@
 package com.baeldung.rxjava.jdbc;
 
-import com.github.davidmoten.rx.jdbc.Database;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import rx.Observable;
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
+import com.github.davidmoten.rx.jdbc.Database;
+
+import rx.Observable;
 
 public class InsertClobIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     private String expectedDocument = null;
     private String actualDocument = null;
@@ -54,6 +58,6 @@ public class InsertClobIntegrationTest {
     public void close() {
         db.update("DROP TABLE SERVERLOG")
           .dependsOn(create);
-        Connector.connectionProvider.close();
+        connectionProvider.close();
     }
 }

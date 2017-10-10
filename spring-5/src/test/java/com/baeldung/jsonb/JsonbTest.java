@@ -22,15 +22,15 @@ public class JsonbTest {
 
     @Test
     public void givenPersonObject_whenSerializeWithJsonb_thenGetPersonJson() {
-        Person person = new Person("Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000));
+        Person person = new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000));
         String jsonPerson = jsonb.toJson(person);
-        assertTrue("{\"email\":\"jhon@test.com\",\"person-name\":\"Jhon\",\"registeredDate\":\"07-09-2019\",\"salary\":\"1000.0\"}".equals(jsonPerson));
+        assertTrue("{\"email\":\"jhon@test.com\",\"id\":1,\"person-name\":\"Jhon\",\"registeredDate\":\"07-09-2019\",\"salary\":\"1000.0\"}".equals(jsonPerson));
     }
 
     @Test
     public void givenPersonJson_whenDeserializeWithJsonb_thenGetPersonObject() {
-        Person person = new Person("Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));
-        String jsonPerson = "{\"email\":\"jhon@test.com\",\"person-name\":\"Jhon\",\"registeredDate\":\"07-09-2019\",\"salary\":\"1000.0\"}";
+        Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));
+        String jsonPerson = "{\"email\":\"jhon@test.com\",\"id\":1,\"person-name\":\"Jhon\",\"registeredDate\":\"07-09-2019\",\"salary\":\"1000.0\"}";
         assertTrue(jsonb.fromJson(jsonPerson, Person.class)
             .equals(person));
     }
