@@ -1,4 +1,4 @@
-package com.baeldung.jira;
+package com.baeldung.saas.jira;
 
 import com.atlassian.jira.rest.client.api.IssueRestClient;
 import com.atlassian.jira.rest.client.api.JiraRestClient;
