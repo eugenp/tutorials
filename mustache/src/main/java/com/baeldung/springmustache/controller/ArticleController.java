@@ -22,10 +22,9 @@ public class ArticleController {
           .mapToObj(i -> generateArticle("Article Title " + i))
           .collect(Collectors.toList());
 
-        Map<String, Object> modelMap = new HashMap<>();
-        modelMap.put("articles", articles);
+        model.put("articles", articles);
 
-        return new ModelAndView("index", modelMap);
+        return new ModelAndView("index", model);
     }
 
     private Article generateArticle(String title) {
