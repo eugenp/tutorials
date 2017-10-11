@@ -26,13 +26,13 @@ public class MultipleOutputsServiceApplicationTests {
     private MessageCollector messageCollector;
 
     @Test
-    public void shouldReceiveMessageInAnOutput() {
+    public void whenSendMessage_thenResponseIsInAOutput() {
         whenSendMessage(1);
         thenPayloadInChannelIs(pipe.anOutput(), 1);
     }
 
     @Test
-    public void shouldReceiveMessageInAnAnotherOutput() {
+    public void whenSendMessage_thenResponseIsInAnotherOutput() {
         whenSendMessage(11);
         thenPayloadInChannelIs(pipe.anotherOutput(), 11);
     }
