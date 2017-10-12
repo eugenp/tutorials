@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dep1" class="com.baeldung.injectiontypes.Dependency1"/>
+    <bean id="dep2" class="com.baeldung.injectiontypes.Dependency2"/>
+
+    <bean id="myService" class="com.baeldung.injectiontypes.MyService">
+        <constructor-arg ref="dep1"/>
+        <constructor-arg ref="dep2"/>
+    </bean>
+
+    <bean id="myService21" class="com.baeldung.injectiontypes.MyService2">
+        <constructor-arg index="0" ref="dep1"/>
+        <constructor-arg index="1" ref="dep2"/>
+    </bean>
+
+    <bean id="myService22" class="com.baeldung.injectiontypes.MyService2">
+        <constructor-arg name="d1" ref="dep1"/>
+        <constructor-arg name="d2" ref="dep2"/>
+    </bean>
+
+    <bean id="myService3" class="com.baeldung.injectiontypes.MyService3">
+        <property name="dependency" ref="dep1"/>
+    </bean>
+
+</beans>
