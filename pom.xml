@@ -28,6 +28,7 @@
     </properties>
 
     <modules>
+        <module>asm</module>     
         <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
