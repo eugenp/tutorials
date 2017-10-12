@@ -36,6 +36,11 @@
             <artifactId>reladomo-test-util</artifactId>
             <version>${reladomo.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.j256.ormlite</groupId>
+            <artifactId>ormlite-jdbc</artifactId>
+            <version>${ormlite.version}</version>
+        </dependency>
     </dependencies>
 	
     <build>
@@ -144,5 +149,6 @@
         <reladomo.version>16.5.1</reladomo.version>
         <junit.version>4.12</junit.version>
         <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
+        <ormlite.version>5.0</ormlite.version>
     </properties>
 </project>
