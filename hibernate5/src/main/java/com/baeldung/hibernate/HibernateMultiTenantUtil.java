@@ -21,22 +21,21 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.baeldung.hibernate.pojo.Supplier;
 
-public class HibernateMultiTenantUtil {
+public abstract  class HibernateMultiTenantUtil {
     private static SessionFactory sessionFactory;
-    private static Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
+    private  Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
     private static final String[] tenantDBNames = { "mydb1", "mydb2" };
+    
 
-    public static SessionFactory getSessionFactory() throws UnsupportedTenancyException, IOException {
+    public  SessionFactory getSessionFactory() throws UnsupportedTenancyException, IOException {
         if (sessionFactory == null) {
-            // Configuration configuration = new Configuration().configure();
             ServiceRegistry serviceRegistry = configureServiceRegistry();
             sessionFactory = makeSessionFactory(serviceRegistry);
-
         }
         return sessionFactory;
     }
 
-    private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
+    private SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         for (Class annotatedClasses : getAnnotatedClasses()) {
             metadataSources.addAnnotatedClass(annotatedClasses);
@@ -48,23 +47,22 @@ public class HibernateMultiTenantUtil {
 
     }
 
-    private static Class<?>[] getAnnotatedClasses() {
+    private Class<?>[] getAnnotatedClasses() {
         return new Class<?>[] { Supplier.class };
     }
 
-    private static ServiceRegistry configureServiceRegistry() throws UnsupportedTenancyException, IOException {
+    private ServiceRegistry configureServiceRegistry() throws UnsupportedTenancyException, IOException {
 
-        // Properties properties = configuration.getProperties();
         Properties properties = getProperties();
-
+        String tenantStrategy = properties.getProperty("hibernate.multiTenancy");
         connectionProviderMap = setUpConnectionProviders(properties, tenantDBNames);
-        properties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, new ConfigurableMultiTenantConnectionProvider(connectionProviderMap));
+        properties.put(AvailableSettings.MULTI_TENANT_CONNECTION_PROVIDER, new ConfigurableMultiTenantConnectionProvider(connectionProviderMap, tenantStrategy));
 
         return new StandardServiceRegistryBuilder().applySettings(properties)
             .build();
     }
 
-    private static Properties getProperties() throws IOException {
+    private Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
             .getContextClassLoader()
@@ -76,14 +74,14 @@ public class HibernateMultiTenantUtil {
         return properties;
     }
 
-    private static Map<String, ConnectionProvider> setUpConnectionProviders(Properties properties, String[] tenantNames) throws UnsupportedTenancyException {
+    private Map<String, ConnectionProvider> setUpConnectionProviders(Properties properties, String[] tenantNames) throws UnsupportedTenancyException {
         Map<String, ConnectionProvider> providerMap = new HashMap<>();
         for (String tenant : tenantNames) {
             DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
 
             String tenantStrategy = properties.getProperty("hibernate.multiTenancy");
             System.out.println("Strategy:" + tenantStrategy);
-            properties.put(Environment.URL, tenantUrl(properties.getProperty(Environment.URL), tenant, tenantStrategy));
+            properties.put(Environment.URL, tenantUrl(properties.getProperty(Environment.URL), tenant));
             System.out.println("URL:" + properties.getProperty(Environment.URL));
             connectionProvider.configure(properties);
             System.out.println("Tenant:" + tenant);
@@ -97,19 +95,10 @@ public class HibernateMultiTenantUtil {
         return providerMap;
     }
 
-    private static Object tenantUrl(String originalUrl, String tenant, String tenantStrategy) throws UnsupportedTenancyException {
-        if (tenantStrategy.toUpperCase()
-            .equals("DATABASE")) {
-            return originalUrl.replace(DEFAULT_DB_NAME, tenant);
-        } else if (tenantStrategy.toUpperCase()
-            .equals("SCHEMA")) {
-            return originalUrl + String.format(SCHEMA_TOKEN, tenant);
-        } else {
-            throw new UnsupportedTenancyException("Not yet supported");
-        }
-    }
 
-    public static final String SCHEMA_TOKEN = ";INIT=CREATE SCHEMA IF NOT EXISTS %1$s\\;SET SCHEMA %1$s";
-    public static final String DEFAULT_DB_NAME = "mydb1";
+    
+    public abstract Object tenantUrl(String originalUrl, String tenant) throws UnsupportedTenancyException;
+
+
 
 }

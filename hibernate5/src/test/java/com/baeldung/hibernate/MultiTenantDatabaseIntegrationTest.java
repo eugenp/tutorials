@@ -10,10 +10,11 @@ import com.baeldung.hibernate.pojo.Supplier;
 
 import static org.junit.Assert.assertNull;;
 
-public class MultiTenantDaoHibernateIntegrationTest {
+public class MultiTenantDatabaseIntegrationTest {
     @Test
     public void givenDBMode_whenFetchingSuppliersByName_thenChecking() throws UnsupportedTenancyException, IOException {
-        SessionFactory sessionFactory = HibernateMultiTenantUtil.getSessionFactory();
+        
+        SessionFactory sessionFactory = new DatabaseMultitenantUtil().getSessionFactory();
         
         SupplierDao myDb1Dao = new SupplierDao(sessionFactory, "mydb1");
         Supplier db1SupplierName = myDb1Dao.findByName("John");
@@ -24,6 +25,7 @@ public class MultiTenantDaoHibernateIntegrationTest {
         Supplier db2SupplierName = myDb2Dao.findByName(db1SupplierName.getName());
         
         assertNull(db2SupplierName);
+        
         
     }
 
