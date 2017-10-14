@@ -6,7 +6,6 @@
     <bean id="categoryImporter" class="com.baeldung.dependency_injection_types.runners.CategoryImporter">
         <constructor-arg ref="categoryRepository"/>
     </bean>
-
     <bean id="categoryRepository" class="com.baeldung.dependency_injection_types.repositories.CategoryRepository">
     </bean>
 
