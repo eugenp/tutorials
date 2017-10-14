@@ -3,9 +3,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-
     <bean id="categoryImporter" class="com.baeldung.dependency_injection_types.runners.CategoryImporter">
-        <constructor-arg index="0" ref="categoryRepository"/>
+        <constructor-arg ref="categoryRepository"/>
     </bean>
 
     <bean id="categoryRepository" class="com.baeldung.dependency_injection_types.repositories.CategoryRepository">
