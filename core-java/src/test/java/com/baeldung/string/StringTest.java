@@ -2,10 +2,9 @@ package com.baeldung.string;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.IllegalFormatException;
 import java.util.regex.PatternSyntaxException;
@@ -155,7 +154,7 @@ public class StringTest {
 
         String[] result = s.split("*");
     }
-    
+
     @Test
     public void whenCallSubSequence_thenCorrect() {
         String s = "Welcome to Baeldung";
