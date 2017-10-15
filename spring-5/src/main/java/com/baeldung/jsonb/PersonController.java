@@ -26,12 +26,12 @@ public class PersonController {
     public void init() {
         // @formatter:off
         personRepository = new ArrayList<>(Arrays.asList(
-            new Person("Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)), 
-            new Person("Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
-            new Person("Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),  
-            new Person("Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
-            new Person("Mark", "mark@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1200)), 
-            new Person("Julia", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000))));
+            new Person(1, "Jhon", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)), 
+            new Person(2, "Jhon", "jhon1@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
+            new Person(3, "Jhon", null, 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000)),  
+            new Person(4, "Tom", "tom@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1500)), 
+            new Person(5, "Mark", "mark@test.com", 21, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1200)), 
+            new Person(6, "Julia", "jhon@test.com", 20, LocalDate.of(2019, 9, 9), BigDecimal.valueOf(1000))));
         // @formatter:on
 
     }
