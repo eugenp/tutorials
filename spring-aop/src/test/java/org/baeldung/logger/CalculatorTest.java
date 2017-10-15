@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { AdderConfig.class })
+@ContextConfiguration(value = {"classpath:springAop-applicationContext.xml"})
 public class CalculatorTest {
 
     @Autowired
@@ -19,6 +19,11 @@ public class CalculatorTest {
         final int addedValue = sampleAdder.add(12, 12);
 
         assertEquals(24, addedValue);
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void whenAddInValidValues_throwsException() {
+        sampleAdder.add(12, -12);
     }
 
 }
