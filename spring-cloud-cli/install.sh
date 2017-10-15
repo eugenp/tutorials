@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-@echo off
-mode con: cols=130 lines=60
 echo See: https://howtoprogram.xyz/2016/08/28/install-spring-boot-command-line-interface-on-linux/
 echo
 
