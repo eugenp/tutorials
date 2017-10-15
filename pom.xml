@@ -28,6 +28,9 @@
     </properties>
 
     <modules>
+        <module>asm</module>     
+        <module>atomix</module>
+        <module>apache-cayenne</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -99,7 +102,8 @@
         <module>jws</module>
 
         <module>libraries</module>
-        <module>libraries-data</module>        
+        <module>libraries-data</module>
+        <module>linkrest</module>        
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
@@ -247,6 +251,8 @@
         <module>mockserver</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
+        <module>saas</module>
+        <module>deeplearning4j</module>
     </modules>
 
     <dependencies>
