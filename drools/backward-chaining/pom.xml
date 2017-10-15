@@ -1,58 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.sample</groupId>
-  <artifactId>DroosTest1</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+	<artifactId>drools-backward-chaining</artifactId>
+	<version>1.0</version>
+	<name>drools-backward-chaining</name>
 
-  <name>Drools :: Sample Maven Project</name>
-  <description>A sample Drools Maven project</description>
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-modules</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <properties>
-    <runtime.version>6.4.0.Final</runtime.version>
-  </properties>
+	<properties>
+		<runtime.version>6.4.0.Final</runtime.version>
+	</properties>
 
-  <repositories>
-    <repository>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Repository Group</name>
-      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-      </snapshots>
-    </repository>
-  </repositories>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.kie</groupId>
-      <artifactId>kie-api</artifactId>
-      <version>${runtime.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.drools</groupId>
-      <artifactId>drools-core</artifactId>
-      <version>${runtime.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.drools</groupId>
-      <artifactId>drools-decisiontables</artifactId>
-      <version>${runtime.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.jbpm</groupId>
-      <artifactId>jbpm-test</artifactId>
-      <version>${runtime.version}</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-core</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+	</dependencies>
 </project>
