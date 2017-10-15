@@ -13,8 +13,21 @@ Apache Felix
 
 ### Start
 
-Download Apache Felix, 
-unzip, pay attention to the files not being clipped.
+Download Apache Felix Framework Distribution 
+from <https://felix.apache.org/downloads.cgi>
+org.apache.felix.main.distribution-5.6.8 
+
+No! The Apache Karaf container is best.
+Download it from: <https://karaf.apache.org/download.html>
+
+Download a binary distribution and unzip wherever you prefer.
+
+Then run
+
+    bin\karaf.bat start
+
+
+Unzip, pay attention to the files not being clipped(!).
 
     system:exit 
     
@@ -50,6 +63,12 @@ can be logged to console
 
 
 ### Bundle deploy
+
+
+install mvn:com.baeldung:osgi-intro-sample-activator:1.0-SNAPSHOT
+
+install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT 
+
 
 mvn:org.apache.servicemix.nmr/org.apache.servicemix.nmr.api/1.0.0-m2
 
