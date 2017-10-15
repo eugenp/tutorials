@@ -1,4 +1,4 @@
-package project4;
+package com.baeldung.algorithms.bubblesort;
 
 import static org.junit.Assert.*;
 
