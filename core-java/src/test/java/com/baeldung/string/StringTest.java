@@ -38,7 +38,7 @@ public class StringTest {
     }
 
     @Test
-    public void whenGetBytesUsingUTF16_thenCorrect() {
+    public void whenGetBytesUsingASCII_thenCorrect() {
         byte[] byteArray = "efgh".getBytes(StandardCharsets.US_ASCII);
         byte[] expected = new byte[] { 101, 102, 103, 104 };
 
@@ -154,6 +154,13 @@ public class StringTest {
         String s = "Welcome*to Baeldung";
 
         String[] result = s.split("*");
+    }
+    
+    @Test
+    public void whenCallSubSequence_thenCorrect() {
+        String s = "Welcome to Baeldung";
+
+        assertEquals("Welcome", s.subSequence(0, 7));
     }
 
     @Test
