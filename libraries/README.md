@@ -30,9 +30,18 @@
 - [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Guide to Apache Commons CircularFifoQueue](http://www.baeldung.com/commons-circular-fifo-queue)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
+- [Introduction to NoException](http://www.baeldung.com/intrduction-to-noexception)
+- [Introduction to PCollections](http://www.baeldung.com/java-pcollections)
+- [Introduction to Hoverfly in Java](http://www.baeldung.com/hoverfly)
+- [Apache Commons Chain](http://www.baeldung.com/apache-commons-chain)
+- [Introduction to Eclipse Collections](http://www.baeldung.com/eclipse-collections)
+- [DistinctBy in Java Stream API](http://www.baeldung.com/java-streams-distinct-by)
+- [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
+- [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
+- [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

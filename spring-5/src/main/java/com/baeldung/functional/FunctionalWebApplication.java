@@ -1,5 +1,17 @@
 package com.baeldung.functional;
 
+import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.path;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
+import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
+import static org.springframework.web.reactive.function.server.ServerResponse.ok;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
@@ -12,17 +24,8 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
+
 import reactor.core.publisher.Flux;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
-import static org.springframework.web.reactive.function.server.RequestPredicates.*;
-import static org.springframework.web.reactive.function.server.RouterFunctions.route;
-import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
-import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
 public class FunctionalWebApplication {
 
@@ -50,7 +53,7 @@ public class FunctionalWebApplication {
     WebServer start() throws Exception {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
-            .prependFilter(new IndexRewriteFilter())
+            .filter(new IndexRewriteFilter())
             .build();
 
         Tomcat tomcat = new Tomcat();

@@ -2,15 +2,9 @@ package com.baeldung.hibernate.immutable.entities;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Immutable;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -20,8 +14,6 @@ public class Event {
 
     @Id
     @Column(name = "event_id")
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     private Long id;
 
     @Column(name = "title")
@@ -30,6 +22,14 @@ public class Event {
     @ElementCollection
     @Immutable
     private Set<String> guestList;
+
+    public Event() {}
+
+    public Event(Long id, String title, Set<String> guestList) {
+        this.id = id;
+        this.title = title;
+        this.guestList = guestList;
+    }
 
     public Long getId() {
         return id;
