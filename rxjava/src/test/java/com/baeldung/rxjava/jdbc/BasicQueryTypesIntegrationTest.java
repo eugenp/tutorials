@@ -18,25 +18,25 @@ public class BasicQueryTypesIntegrationTest {
     private ConnectionProvider connectionProvider = Connector.connectionProvider;
     private Database db = Database.from(connectionProvider);
 
-    private Observable<Integer> create, insert1, insert2, insert3, update, delete = null;
+    private Observable<Integer> create;
 
     @Test
     public void whenCreateTableAndInsertRecords_thenCorrect() {
         create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .count();
-        insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
+        Observable<Integer> insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
           .dependsOn(create)
           .count();
-        update = db.update("UPDATE EMPLOYEE SET name = 'Alan' WHERE id = 1")
+        Observable<Integer> update = db.update("UPDATE EMPLOYEE SET name = 'Alan' WHERE id = 1")
           .dependsOn(create)
           .count();
-        insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
+        Observable<Integer> insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
           .dependsOn(create)
           .count();
-        insert3 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(3, 'Mike')")
+        Observable<Integer> insert3 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(3, 'Mike')")
           .dependsOn(create)
           .count();
-        delete = db.update("DELETE FROM EMPLOYEE WHERE id = 2")
+        Observable<Integer> delete = db.update("DELETE FROM EMPLOYEE WHERE id = 2")
           .dependsOn(create)
           .count();
         List<String> names = db.select("select name from EMPLOYEE where id < ?")
