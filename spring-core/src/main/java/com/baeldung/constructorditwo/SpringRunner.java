@@ -18,13 +18,13 @@ public class SpringRunner {
         System.out.println(OnTheRadio);
     }
 
-    private static Music getMusicFromJavaConfig() {
+    public static Music getMusicFromJavaConfig() {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
         return context.getBean(Music.class);
     }
 
-    private static Music getMusicFromXml() {
+    public static Music getMusicFromXml() {
         ApplicationContext context = new ClassPathXmlApplicationContext("constructorditwo.xml");
 
         return context.getBean(Music.class);

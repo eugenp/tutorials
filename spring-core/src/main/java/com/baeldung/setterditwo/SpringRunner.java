@@ -19,13 +19,13 @@ public class SpringRunner {
 
     }
 
-    private static Music getMusicFromJavaConfig() {
+    public static Music getMusicFromJavaConfig() {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
 
         return context.getBean(Music.class);
     }
 
-    private static Music getMusicFromXml() {
+    public static Music getMusicFromXml() {
         ApplicationContext context = new ClassPathXmlApplicationContext("setterditwo.xml");
 
         return context.getBean(Music.class);

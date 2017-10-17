@@ -13,7 +13,7 @@ public class Config {
 
     @Bean
     public Artist artist() {
-        return new Artist("Yo-Ya Ma", 61);
+        return new Artist("Yo-Yo Ma", 61);
     }
 
     @Bean
