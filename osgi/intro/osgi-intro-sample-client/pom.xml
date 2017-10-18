@@ -10,17 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>osgi-intro-sample-client</artifactId>
-    <packaging>bundle</packaging>
+
 
     <dependencies>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>osgi-intro-sample-service</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>5.0.0</version>
         </dependency>
     </dependencies>
 
@@ -29,14 +30,14 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
+                        <Bundle-Activator>com.baeldung.osgi.sample.client.Client</Bundle-Activator>
 
-                        <Private-Package>com.baeldung.osgi.sample.service.implementation</Private-Package>
+                        <Private-Package>com.baeldung.osgi.sample.client</Private-Package>
 
                     </instructions>
                 </configuration>

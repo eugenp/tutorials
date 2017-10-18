@@ -32,11 +32,12 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.name}</Bundle-Name>
+                        <Bundle-Name>${project.artifactId}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
 
                         <Private-Package>com.baeldung.osgi.sample.service.implementation</Private-Package>
-                        <Public-Package>com.baeldung.osgi.sample.service.definition</Public-Package>
+                        <Export-Package>com.baeldung.osgi.sample.service.definition</Export-Package>
+
 
                     </instructions>
                 </configuration>

@@ -32,7 +32,7 @@
     <configuration>
         <instructions>
             <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-            <Bundle-Name>${project.name}</Bundle-Name>
+            <Bundle-Name>${project.artifactId}</Bundle-Name>
             <Bundle-Version>${project.version}</Bundle-Version>
 
             <!-- Qualified name of the class that exposes the activator iface. -->
