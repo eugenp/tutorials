@@ -10,7 +10,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
 @EntityScan(basePackageClasses = Foo.class)
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 public class Application {
     public static void main(String[] args) {
         System.setProperty("spring.config.name", "exception");

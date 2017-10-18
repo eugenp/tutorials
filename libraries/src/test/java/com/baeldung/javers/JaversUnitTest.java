@@ -74,11 +74,11 @@ public class JaversUnitTest {
         Javers javers = JaversBuilder.javers().build();
 
         PersonWithAddress person =
-                new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
+          new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
 
         PersonWithAddress personWithNewAddress =
-                new PersonWithAddress(1, "Tom",
-                        Arrays.asList(new Address("England"), new Address("USA")));
+          new PersonWithAddress(1, "Tom",
+            Arrays.asList(new Address("England"), new Address("USA")));
 
 
         //when
@@ -96,10 +96,10 @@ public class JaversUnitTest {
         Javers javers = JaversBuilder.javers().build();
 
         PersonWithAddress person =
-                new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
+          new PersonWithAddress(1, "Tom", Arrays.asList(new Address("England")));
 
         PersonWithAddress personWithNewAddress =
-                new PersonWithAddress(1, "Tom", Collections.emptyList());
+          new PersonWithAddress(1, "Tom", Collections.emptyList());
 
 
         //when

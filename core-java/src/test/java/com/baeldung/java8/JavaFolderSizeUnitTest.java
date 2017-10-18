@@ -55,7 +55,12 @@ public class JavaFolderSizeUnitTest {
     @Test
     public void whenGetFolderSizeUsingJava8_thenCorrect() throws IOException {
         final Path folder = Paths.get(path);
-        final long size = Files.walk(folder).filter(p -> p.toFile().isFile()).mapToLong(p -> p.toFile().length()).sum();
+        final long size = Files.walk(folder)
+            .filter(p -> p.toFile()
+                .isFile())
+            .mapToLong(p -> p.toFile()
+                .length())
+            .sum();
 
         assertEquals(EXPECTED_SIZE, size);
     }
@@ -72,8 +77,12 @@ public class JavaFolderSizeUnitTest {
     public void whenGetFolderSizeUsingGuava_thenCorrect() {
         final File folder = new File(path);
 
-        final Iterable<File> files = com.google.common.io.Files.fileTreeTraverser().breadthFirstTraversal(folder);
-        final long size = StreamSupport.stream(files.spliterator(), false).filter(File::isFile).mapToLong(File::length).sum();
+        final Iterable<File> files = com.google.common.io.Files.fileTreeTraverser()
+            .breadthFirstTraversal(folder);
+        final long size = StreamSupport.stream(files.spliterator(), false)
+            .filter(File::isFile)
+            .mapToLong(File::length)
+            .sum();
 
         assertEquals(EXPECTED_SIZE, size);
     }
