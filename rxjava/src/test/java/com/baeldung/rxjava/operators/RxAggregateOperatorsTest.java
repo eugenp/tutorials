@@ -185,7 +185,7 @@ public class RxAggregateOperatorsTest {
 
         // when
         Observable multiMapObservable = bookObservable
-          .toMultimap(Book::getYear, Book::getTitle, HashMap::new, (key) -> new ArrayList<>());
+          .toMultimap(Book::getYear, Book::getTitle, () -> new HashMap<>(), (key) -> new ArrayList<>());
 
         multiMapObservable.subscribe(subscriber);
 
