@@ -13,6 +13,8 @@
         <module>osgi-intro-gxyz</module>
         <module>osgi-intro-mapquest</module>
         <module>osgi-intro-sample-activator</module>
+        <module>osgi-intro-sample-service</module>
+        <module>osgi-intro-sample-client</module>
     </modules>
 
     <parent>
@@ -81,19 +83,7 @@
                     <artifactId>maven-bundle-plugin</artifactId>
                     <version>1.4.0</version>
                     <extensions>true</extensions>
-                    <!--
-                    <executions>
-                        <execution>
-                            <id>common</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>bundle</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    -->
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
