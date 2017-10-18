@@ -21,7 +21,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class SchedulersTest {
+public class SchedulersLiveTest {
     private String result = "";
     private String result1 = "";
     private String result2 = "";

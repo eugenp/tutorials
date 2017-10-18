@@ -1,14 +1,14 @@
-package com.baelding.rxjava;
+package com.baeldung.rxjava;
 
 import rx.Observer;
 import rx.subjects.PublishSubject;
 
 public class SubjectImpl {
 
-    public static Integer subscriber1 = 0;
-    public static Integer subscriber2 = 0;
+    static Integer subscriber1 = 0;
+    static Integer subscriber2 = 0;
 
-    public static Integer subjectMethod() {
+    private static Integer subjectMethod() {
         PublishSubject<Integer> subject = PublishSubject.create();
 
         subject.subscribe(getFirstObserver());
@@ -25,7 +25,7 @@ public class SubjectImpl {
     }
 
 
-    public static Observer<Integer> getFirstObserver() {
+    static Observer<Integer> getFirstObserver() {
         return new Observer<Integer>() {
 
             @Override
@@ -46,7 +46,7 @@ public class SubjectImpl {
         };
     }
 
-    public static Observer<Integer> getSecondObserver() {
+    static Observer<Integer> getSecondObserver() {
         return new Observer<Integer>() {
 
             @Override
