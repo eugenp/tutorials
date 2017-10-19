@@ -32,14 +32,11 @@ public class SpringIntegrationTest {
         final ResponseResultErrorHandler errorHandler = new ResponseResultErrorHandler();
 
         restTemplate.setErrorHandler(errorHandler);
-        latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, new ResponseExtractor<ResponseResults>() {
-            @Override
-            public ResponseResults extractData(ClientHttpResponse response) throws IOException {
-                if (errorHandler.hadError) {
-                    return (errorHandler.getResults());
-                } else {
-                    return (new ResponseResults(response));
-                }
+        latestResponse = restTemplate.execute(url, HttpMethod.GET, requestCallback, response -> {
+            if (errorHandler.hadError) {
+                return (errorHandler.getResults());
+            } else {
+                return (new ResponseResults(response));
             }
         });
 
@@ -56,14 +53,11 @@ public class SpringIntegrationTest {
         }
 
         restTemplate.setErrorHandler(errorHandler);
-        latestResponse = restTemplate.execute(url, HttpMethod.POST, requestCallback, new ResponseExtractor<ResponseResults>() {
-            @Override
-            public ResponseResults extractData(ClientHttpResponse response) throws IOException {
-                if (errorHandler.hadError) {
-                    return (errorHandler.getResults());
-                } else {
-                    return (new ResponseResults(response));
-                }
+        latestResponse = restTemplate.execute(url, HttpMethod.POST, requestCallback, response -> {
+            if (errorHandler.hadError) {
+                return (errorHandler.getResults());
+            } else {
+                return (new ResponseResults(response));
             }
         });
 
