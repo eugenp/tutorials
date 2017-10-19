@@ -1,4 +1,4 @@
-package com.baelding.rxjava;
+package com.baeldung.rxjava;
 
 import rx.Observable;
 import rx.observables.BlockingObservable;
@@ -8,13 +8,13 @@ import java.util.List;
 
 public class ObservableImpl {
 
-    static Integer[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    private static Integer[] numbers = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    static String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i"};
-    static String[] titles = {"title"};
-    public static List<String> titleList = Arrays.asList(titles);
+    private static String[] letters = {"a", "b", "c", "d", "e", "f", "g", "h", "i"};
+    private static String[] titles = {"title"};
+    private static List<String> titleList = Arrays.asList(titles);
 
-    public static Observable<String> getTitle() {
+    static Observable<String> getTitle() {
         return Observable.from(titleList);
     }
 

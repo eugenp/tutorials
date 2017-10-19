@@ -1,4 +1,4 @@
-package com.baelding.rxjava;
+package com.baeldung.rxjava;
 
 import rx.Observable;
 import rx.Single;
