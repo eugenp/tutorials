@@ -6,7 +6,9 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>jee7</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<description>JavaEE 7 Arquillian Archetype Sample</description>
+
 
 	<parent>
 		<groupId>com.baeldung</groupId>
@@ -31,6 +33,7 @@
 		<arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
 
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
 	</properties>
 
 	<prerequisites>
@@ -136,6 +139,34 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>javax.mvc</groupId>
+			<artifactId>javax.mvc-api</artifactId>
+			<version>20160715</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.ozark</groupId>
+			<artifactId>ozark</artifactId>
+			<version>20160715</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>${org.springframework.security.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -145,6 +176,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
 				<configuration>
+					<warSourceDirectory>webapp</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
@@ -378,4 +410,18 @@
 			</properties>
 		</profile>
 	</profiles>
+
+	<repositories>
+		<repository>
+			<id>bintray-mvc-spec-maven</id>
+			<name>bintray</name>
+			<url>http://dl.bintray.com/mvc-spec/maven</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>
