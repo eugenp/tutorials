@@ -1,6 +1,7 @@
 package com.baeldung.restassured;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.restassured.RestAssured;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -14,7 +15,8 @@ import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.hasItems;
 
 public class RestAssuredXML2IntegrationTest {
-    private static WireMockServer wireMockServer = new WireMockServer();
+    private static final int PORT = 8082;
+    private static WireMockServer wireMockServer = new WireMockServer(PORT);
 
     private static final String EVENTS_PATH = "/teachers";
     private static final String APPLICATION_XML = "application/xml";
@@ -24,7 +26,8 @@ public class RestAssuredXML2IntegrationTest {
     public static void before() throws Exception {
         System.out.println("Setting up!");
         wireMockServer.start();
-        configureFor("localhost", 8080);
+        RestAssured.port = PORT;
+        configureFor("localhost", PORT);
         stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_XML)
