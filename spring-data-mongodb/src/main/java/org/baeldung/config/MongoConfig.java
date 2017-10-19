@@ -1,8 +1,7 @@
 package org.baeldung.config;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 import org.baeldung.converter.UserWriterConverter;
 import org.baeldung.event.CascadeSaveMongoEventListener;
 import org.baeldung.event.UserCascadeSaveMongoEventListener;
@@ -14,8 +13,8 @@ import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
+import java.util.ArrayList;
+import java.util.List;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "org.baeldung.repository")

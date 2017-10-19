@@ -21,22 +21,22 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
+@SpringBootTest(classes = {MvcConfig.class, SecurityConfig.class, PersistenceConfig.class})
 @WebAppConfiguration
 public class CustomUserDetailsServiceIntegrationTest {
 
-    public static final String USERNAME = "user";
-    public static final String PASSWORD = "pass";
-    public static final String USERNAME2 = "user2";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "pass";
+    private static final String USERNAME2 = "user2";
 
     @Autowired
-    UserRepository myUserRepository;
+    private UserRepository myUserRepository;
 
     @Autowired
-    AuthenticationProvider authenticationProvider;
+    private AuthenticationProvider authenticationProvider;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     //
 

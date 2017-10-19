@@ -30,7 +30,8 @@ public class DetailsServiceClientIntegrationTest {
     @Before
     public void setUp() throws Exception {
         String detailsString = objectMapper.writeValueAsString(new Details("John Smith", "john"));
-        this.server.expect(requestTo("/john/details")).andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
+        this.server.expect(requestTo("/john/details"))
+            .andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
     }
 
     @Test

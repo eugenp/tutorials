@@ -37,7 +37,7 @@ public class JsonAutoDetectUnitTest {
               },
               "internalAudit": 1234567890
             }
-
+        
          Without @JsonAutoDetect
             {
               "id": "c94774d9-de8f-4244-85d5-624bd3a4567a",
