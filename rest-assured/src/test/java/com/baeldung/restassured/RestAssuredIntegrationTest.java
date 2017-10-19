@@ -4,6 +4,7 @@ import com.github.fge.jsonschema.SchemaVersion;
 import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.restassured.RestAssured;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,8 +21,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
 
 public class RestAssuredIntegrationTest {
+    private static final int PORT = 8083;
+    private static WireMockServer wireMockServer = new WireMockServer(PORT);
 
-    private static WireMockServer wireMockServer = new WireMockServer();
     private static final String EVENTS_PATH = "/events?id=390";
     private static final String APPLICATION_JSON = "application/json";
     private static final String GAME_ODDS = getEventJson();
@@ -30,7 +32,8 @@ public class RestAssuredIntegrationTest {
     public static void before() throws Exception {
         System.out.println("Setting up!");
         wireMockServer.start();
-        configureFor("localhost", 8080);
+        RestAssured.port = PORT;
+        configureFor("localhost", PORT);
         stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
           aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_JSON)
