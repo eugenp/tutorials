@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.forketyfork.guest.springmvc.model;
 
 public class LoginData {
 

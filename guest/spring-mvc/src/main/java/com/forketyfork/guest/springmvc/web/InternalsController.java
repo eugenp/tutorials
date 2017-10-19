@@ -1,16 +1,14 @@
-package com.baeldung.web;
+package com.forketyfork.guest.springmvc.web;
 
+import com.forketyfork.guest.springmvc.model.LoginData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import com.baeldung.model.LoginData;
 
 import java.util.Collections;
 
 @Controller
-@RequestMapping("/internals")
 public class InternalsController {
 
     private static final String LOGIN = "jack";
