@@ -28,6 +28,8 @@
     </properties>
 
     <modules>
+        <module>asm</module>     
+        <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
         <module>akka-streams</module>
@@ -47,6 +49,8 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
+		<module>cas-server</module>
+		<module>cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -247,6 +251,8 @@
         <module>mockserver</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
+        <module>saas</module>
+        <module>deeplearning4j</module>
     </modules>
 
     <dependencies>

@@ -11,6 +11,7 @@ import rx.schedulers.Timestamped;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static org.junit.Assert.assertTrue;
 
 public class UtilityOperatorsTest {
@@ -40,9 +41,11 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+              assertTrue(emittedTotal == 1500);
+              assertTrue(receivedTotal == 15000);
+          }
+        );
     }
 
     @Test
@@ -63,9 +66,10 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+            assertTrue(emittedTotal == 1500);
+            assertTrue(receivedTotal == 15000);
+        });
     }
 
     @Test
@@ -86,9 +90,10 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+            assertTrue(emittedTotal == 1500);
+            assertTrue(receivedTotal == 15000);
+        });
     }
 
     @Test
@@ -210,7 +215,7 @@ public class UtilityOperatorsTest {
           value -> System.out.println("delay : " + value),
           t -> System.out.println("delay error"),
           () -> System.out.println("delay completed"));
-        Thread.sleep(8000);
+        //Thread.sleep(8000);
     }
 
     @Test
