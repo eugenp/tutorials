@@ -76,13 +76,10 @@ public class ORMLiteTest {
         library2.setName("My Other Library");
         libraryDao.create(library2);
 
-        CloseableWrappedIterable<Library> wrappedIterable = libraryDao.getWrappedIterable();
-        try {
+        try (CloseableWrappedIterable<Library> wrappedIterable = libraryDao.getWrappedIterable()) {
             wrappedIterable.forEach(lib -> {
                 System.out.println(lib.getName());
             });
-        } finally {
-            wrappedIterable.close();
         }
 
     }

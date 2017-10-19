@@ -107,3 +107,11 @@
 - [CharSequence vs. String in Java](http://www.baeldung.com/java-char-sequence-string)
 - [Period and Duration in Java](http://www.baeldung.com/java-period-duration)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
+- [Singletons in Java](http://www.baeldung.com/java-singleton)
+- [“Sneaky Throws” in Java](http://www.baeldung.com/java-sneaky-throws)
+- [OutOfMemoryError: GC Overhead Limit Exceeded](http://www.baeldung.com/java-gc-overhead-limit-exceeded)
+- [How to Iterate Over a Stream With Indices](http://www.baeldung.com/java-stream-indices)
+- [StringBuilder and StringBuffer in Java](http://www.baeldung.com/java-string-builder-string-buffer)
+- [Number of Digits in an Integer in Java](http://www.baeldung.com/java-number-of-digits-in-int)
+- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
+
