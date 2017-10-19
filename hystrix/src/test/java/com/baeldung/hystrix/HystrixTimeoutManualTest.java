@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-public class HystrixTimeoutIntegrationTest {
+public class HystrixTimeoutManualTest {
 
     @Test
     public void givenInputBobAndDefaultSettings_whenCommandExecuted_thenReturnHelloBob(){
