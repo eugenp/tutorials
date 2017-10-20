@@ -23,11 +23,8 @@ public class HibernateImmutableIntegrationTest {
 
     @Before
     public void before() {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        createEvent();
-        createEventGenerated();
-        session.setCacheMode(CacheMode.REFRESH);
     }
 
     @BeforeClass
@@ -40,8 +37,6 @@ public class HibernateImmutableIntegrationTest {
         HibernateUtil.getSessionFactory().close();
     }
 
-    //
-
     @Test
     public void addEvent() {
         Event event = new Event();
@@ -49,15 +44,18 @@ public class HibernateImmutableIntegrationTest {
         event.setTitle("Public Event");
         session.save(event);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Test
     public void updateEvent() {
+        createEvent();
         Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         event.setTitle("Private Event");
         session.update(event);
         session.flush();
         session.refresh(event);
+        session.close();
 
         assertThat(event.getTitle(), equalTo("New Event"));
         assertThat(event.getId(), equalTo(5L));
@@ -65,13 +63,16 @@ public class HibernateImmutableIntegrationTest {
 
     @Test
     public void deleteEvent() {
+        createEvent();
         Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         session.delete(event);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Test
     public void addGuest() {
+        createEvent();
         Event event = (Event) session.createQuery("FROM Event WHERE title='New Event'").list().get(0);
         String newGuest = "Sara";
         event.getGuestList().add(newGuest);
@@ -79,6 +80,7 @@ public class HibernateImmutableIntegrationTest {
         exception.expect(PersistenceException.class);
         session.save(event);
         session.getTransaction().commit();
+        session.close();
     }
 
     @Test
@@ -94,17 +96,17 @@ public class HibernateImmutableIntegrationTest {
 
     @Test
     public void updateEventGenerated() {
+        createEventGenerated();
         EventGeneratedId eventGeneratedId = (EventGeneratedId) session.createQuery("FROM EventGeneratedId WHERE name LIKE '%John%'").list().get(0);
         eventGeneratedId.setName("Mike");
         session.update(eventGeneratedId);
         session.flush();
         session.refresh(eventGeneratedId);
+        session.close();
 
         assertThat(eventGeneratedId.getName(), equalTo("John"));
         assertThat(eventGeneratedId.getId(), equalTo(1L));
     }
-
-    //
 
     private static void createEvent() {
         Event event = new Event(5L, "New Event", Sets.newHashSet("guest"));
