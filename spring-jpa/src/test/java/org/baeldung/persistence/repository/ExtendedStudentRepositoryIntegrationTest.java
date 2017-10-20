@@ -1,6 +1,6 @@
 package org.baeldung.persistence.repository;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class ExtendedStudentRepositoryIntegrationTest {
     
     @Test
     public void givenStudents_whenFindByName_thenGetOk(){
-        List<Student> students = extendedStudentRepository.findByAttributeContains("name", "john");
-        assertEquals("size incorrect", 2, students.size());        
+        List<Student> students = extendedStudentRepository.findByAttributeContainsText("name", "john");
+        assertThat(students.size()).isEqualTo(2);     
     }
 }

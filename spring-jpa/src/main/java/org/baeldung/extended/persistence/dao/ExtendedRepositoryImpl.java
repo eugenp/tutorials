@@ -23,12 +23,12 @@ public class ExtendedRepositoryImpl<T, ID extends Serializable> extends SimpleJp
     }
 
     @Transactional
-    public List<T> findByAttributeContains(String attributeName, String contains) {
+    public List<T> findByAttributeContainsText(String attributeName, String text) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(getDomainClass());
         Root<T> root = query.from(getDomainClass());
         query.select(root)
-            .where(builder.like(root.<String> get(attributeName), "%" + contains + "%"));
+            .where(builder.like(root.<String> get(attributeName), "%" + text + "%"));
         TypedQuery<T> q = entityManager.createQuery(query);
         return q.getResultList();
     }
