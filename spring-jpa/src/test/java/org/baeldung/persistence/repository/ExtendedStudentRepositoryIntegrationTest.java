@@ -7,8 +7,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.baeldung.config.StudentJPAH2Config;
-import org.baeldung.persistence.dao.ExtendedStudentRepository;
-import org.baeldung.persistence.model.Student;
+import org.baeldung.extended.persistence.dao.ExtendedStudentRepository;
+import org.baeldung.inmemory.persistence.model.Student;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

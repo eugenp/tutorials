@@ -5,7 +5,7 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.baeldung.persistence.dao.ExtendedRepositoryImpl;
+import org.baeldung.extended.persistence.dao.ExtendedRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao", repositoryBaseClass = ExtendedRepositoryImpl.class)
+@EnableJpaRepositories(basePackages = "org.baeldung.extended.persistence.dao", repositoryBaseClass = ExtendedRepositoryImpl.class)
 @PropertySource("persistence-student-h2.properties")
 @EnableTransactionManagement
 public class StudentJPAH2Config {
@@ -42,7 +42,7 @@ public class StudentJPAH2Config {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
+        em.setPackagesToScan(new String[] { "org.baeldung.inmemory.persistence.model" });
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;
