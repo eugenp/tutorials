@@ -2,10 +2,9 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="businessService" class="com.baeldung.bizzkit.service.BusinessService" />
-	<bean id="employeeController" class="com.baeldung.bizzkit.controller.BusinessController">
-		<constructor-arg value="businessService"
-			type="com.baeldung.bizzkit.service.BusinessService">
+	<bean id="businessService" class="com.baeldung.bizzkit.BusinessService" />
+	<bean id="app" class="com.baeldung.bizzkit.BusinessXMLApplication">
+		<constructor-arg value="businessService" type="com.baeldung.bizzkit.BusinessService">
 		</constructor-arg>
 	</bean>
 </beans>

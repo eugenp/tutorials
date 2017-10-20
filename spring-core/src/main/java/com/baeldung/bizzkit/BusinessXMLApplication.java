@@ -1,16 +1,16 @@
 package com.baeldung.bizzkit;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-@Component
-public class BusinessSetterBean {
-
+public class BusinessXMLApplication {
+    
     private long id;
 
     private String name;
 
     private BusinessService service;
+    
+    public BusinessXMLApplication(BusinessService service) {
+        this.service = service;
+    }
 
     public long getId() {
         return id;
@@ -32,13 +32,12 @@ public class BusinessSetterBean {
         return service;
     }
 
-    @Autowired
-    public void setType(BusinessService service) {
+    public void setService(BusinessService service) {
         this.service = service;
     }
 
     public boolean processBusinessInfo(long id, String name) {
         return this.service.showBusiness(id, name);
     }
-
+    
 }
