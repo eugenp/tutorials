@@ -4,23 +4,24 @@ class LuckyNumberGenerator {
 
     public int getLuckyNumber(String name) {
 
-        record(name);
+        saveIntoDatabase(name);
 
         if (name == null) {
             return getDefaultLuckyNumber();
         }
 
-        return getLuckyNumber(name.length() + 1);
+        return getComputedLuckyNumber(name.length());
     }
 
-    private void record(String name) {
+    private void saveIntoDatabase(String name) {
+        // Save the name into the database
     }
 
     private int getDefaultLuckyNumber() {
         return 100;
     }
 
-    private int getLuckyNumber(int length) {
+    private int getComputedLuckyNumber(int length) {
         return length < 5 ? 5 : 10000;
     }
 

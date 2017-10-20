@@ -31,7 +31,7 @@ public class LuckyNumberGeneratorTest {
     public final void givenPrivateMethodWithArgumentAndReturn_whenUsingPowerMockito_thenCorrect() throws Exception {
         LuckyNumberGenerator mock = spy(new LuckyNumberGenerator());
 
-        doReturn(1).when(mock, "getLuckyNumber", ArgumentMatchers.anyInt());
+        doReturn(1).when(mock, "getComputedLuckyNumber", ArgumentMatchers.anyInt());
 
         int result = mock.getLuckyNumber("Jack");
 
@@ -44,7 +44,7 @@ public class LuckyNumberGeneratorTest {
 
         int result = mock.getLuckyNumber("Tyranosorous");
 
-        verifyPrivate(mock).invoke("record", ArgumentMatchers.anyString());
+        verifyPrivate(mock).invoke("saveIntoDatabase", ArgumentMatchers.anyString());
         assertEquals(10000, result);
     }
 
