@@ -114,4 +114,9 @@
 - [StringBuilder and StringBuffer in Java](http://www.baeldung.com/java-string-builder-string-buffer)
 - [Number of Digits in an Integer in Java](http://www.baeldung.com/java-number-of-digits-in-int)
 - [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
-
+- [“Stream has already been operated upon or closed” Exception in Java](http://www.baeldung.com/java-stream-operated-upon-or-closed-exception)
+- [Compact Strings in Java 9](http://www.baeldung.com/java-9-compact-string)
+- [Guide to Volatile Keyword in Java](http://www.baeldung.com/java-volatile)
+- [Java 9 java.util.Objects Additions](http://www.baeldung.com/java-9-objects-new)
+- [Overview of the java.util.concurrent](http://www.baeldung.com/java-util-concurrent)
+- [An Introduction to Atomic Variables in Java](http://www.baeldung.com/java-atomic-variables)
