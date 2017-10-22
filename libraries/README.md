@@ -41,6 +41,18 @@
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
+- [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
+- [Introduction to javax.measure](http://www.baeldung.com/javax-measure)
+- [Spring Yarg Integration](http://www.baeldung.com/spring-yarg)
+- [Delete a Directory Recursively in Java](http://www.baeldung.com/java-delete-directory)
+- [Guide to JDeferred](http://www.baeldung.com/jdeferred)
+- [Integrating Retrofit with RxJava](http://www.baeldung.com/retrofit-rxjava)
+- [Introduction to MBassador](http://www.baeldung.com/mbassador)
+- [Introduction to JCache](http://www.baeldung.com/jcache)
+- [Introduction to Retrofit](http://www.baeldung.com/retrofit)
+- [Using Pairs in Java](http://www.baeldung.com/java-pairs)
+- [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
+- [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
