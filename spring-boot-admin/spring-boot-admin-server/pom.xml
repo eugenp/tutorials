@@ -32,6 +32,7 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- dependencies used to enable admin server and UI-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server</artifactId>
@@ -42,6 +43,22 @@
             <artifactId>spring-boot-admin-server-ui</artifactId>
             <version>${spring-boot-admin-server.version}</version>
         </dependency>
+
+        <!--Add login page and logout feature-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui-login</artifactId>
+            <version>${spring-boot-admin-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+        </dependency>
+        <!--declare the admin server as a client, for self monitoring-->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
