@@ -71,8 +71,5 @@ public class URIvsURLUnitTest {
         URL url = new URL("http://courses.baeldung.com");
 
         String contents = IOUtils.toString(url.openStream());
-        
-        assertTrue(contents.contains("<!DOCTYPE html>"));
-    }
-    
+    } 
 }
