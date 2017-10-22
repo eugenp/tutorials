@@ -6,8 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import javax.servlet.http.HttpSession;
 
 import org.baeldung.security.spring.SecurityWithoutCsrfConfig;
-import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.WebConfig;
+import org.baeldung.spring.MvcConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,13 +19,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@Transactional
-@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, PersistenceConfig.class, WebConfig.class })
+@ContextConfiguration(classes = { SecurityWithoutCsrfConfig.class, MvcConfig.class })
 @WithMockUser(username = "admin", roles = { "USER", "ADMIN" })
 public class SessionTimerInterceptorIntegrationTest {
 
@@ -47,9 +44,14 @@ public class SessionTimerInterceptorIntegrationTest {
      */
     @Test
     public void testInterceptors() throws Exception {
-        HttpSession session = mockMvc.perform(get("/auth/admin")).andExpect(status().is2xxSuccessful()).andReturn().getRequest().getSession();
+        HttpSession session = mockMvc.perform(get("/auth/foos"))
+            .andExpect(status().is2xxSuccessful())
+            .andReturn()
+            .getRequest()
+            .getSession();
         Thread.sleep(51000);
-        mockMvc.perform(get("/auth/admin").session((MockHttpSession) session)).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(get("/auth/foos").session((MockHttpSession) session))
+            .andExpect(status().is2xxSuccessful());
     }
 
 }

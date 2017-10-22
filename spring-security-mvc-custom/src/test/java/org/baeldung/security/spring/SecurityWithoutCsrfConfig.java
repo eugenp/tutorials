@@ -1,8 +1,5 @@
 package org.baeldung.security.spring;
 
-import org.baeldung.web.error.CustomAccessDeniedHandler;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -12,15 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
-@EnableAutoConfiguration
-//
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-// @ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private CustomAccessDeniedHandler accessDeniedHandler;
 
     public SecurityWithoutCsrfConfig() {
         super();
@@ -42,18 +33,15 @@ public class SecurityWithoutCsrfConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-        .csrf().disable()
         .authorizeRequests()
-        .antMatchers("/auth/admin/*").hasRole("ADMIN")
-        .antMatchers("/auth/*").hasAnyRole("ADMIN","USER")
-        .antMatchers("/*").permitAll()
+        .antMatchers("/auth/admin/*").hasAnyRole("ROLE_ADMIN")
+        .anyRequest().authenticated()
         .and()
         .httpBasic()
         .and()
-        // .exceptionHandling().accessDeniedPage("/my-error-page")
-        .exceptionHandling().accessDeniedHandler(accessDeniedHandler)
-        .and()
         .headers().cacheControl().disable()
+        .and()
+        .csrf().disable()
         ;
         // @formatter:on
     }
