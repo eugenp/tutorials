@@ -6,42 +6,36 @@ import org.osgi.framework.*;
 public class Client implements BundleActivator, ServiceListener {
 
     private BundleContext ctx;
-    private Thread thread;
-    private ServiceReference<> serviceReference;
+    private ServiceReference serviceReference;
 
     public void start(BundleContext ctx) {
-        //System.out.println("Hello world.");
         this.ctx = ctx;
-
         try{
             ctx.addServiceListener(this, "(objectclass=" + Greeter.class.getName() + ")");
         }catch (InvalidSyntaxException ise){
-
+            ise.printStackTrace();
         }
-
     }
 
     public void stop(BundleContext bundleContext) {
-
-        //System.out.println("Goodbye world.");
         if(serviceReference!=null) {
-            ctx.ungetService(serviceEvent.getServiceReference());
+            ctx.ungetService(serviceReference);
         }
         this.ctx = null;
     }
 
     public void serviceChanged(ServiceEvent serviceEvent) {
-
         int type = serviceEvent.getType();
         switch (type){
-            case(ServiceEvent.UNREGISTERING):
-                ctx.ungetService(serviceEvent.getServiceReference());
-                break;
             case(ServiceEvent.REGISTERED):
+                System.out.println("Service registered.");
                 serviceReference = serviceEvent.getServiceReference();
-                Greeter service;
-                service = ctx.getService(serviceReference);
+                Greeter service = (Greeter)(ctx.getService(serviceReference));
                 System.out.println( service.sayHiTo("John") );
+                break;
+            case(ServiceEvent.UNREGISTERING):
+                System.out.println("Service unregistered.");
+                ctx.ungetService(serviceEvent.getServiceReference());
                 break;
             default:
                 break;
