@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="brewedOncePerDay" class="com.baeldung.spring.beans.scopes.domain.Coffee">
+        <constructor-arg index="0" value="Dark" />
+    </bean>
+
+    <bean id="freshlyBrewedOnLocalRequest" class="com.baeldung.spring.beans.scopes.domain.Coffee" scope="prototype">
+        <constructor-arg index="0" value="White" />
+    </bean>
+
+    <bean id="onRequestBrewed" class="com.baeldung.spring.beans.scopes.domain.Coffee" scope="request">
+        <constructor-arg index="0" value="Dark" />
+    </bean>
+
+    <bean id="perSessionBrewed" class="com.baeldung.spring.beans.scopes.domain.Coffee" scope="session">
+        <constructor-arg index="0" value="White" />
+    </bean>
+
+    <bean id="perGlobalSessionBrewed" class="com.baeldung.spring.beans.scopes.domain.Coffee" scope="globalSession">
+        <constructor-arg index="0" value="White" />
+    </bean>
+
+</beans>
