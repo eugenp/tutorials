@@ -168,6 +168,7 @@
         <module>spring-hibernate5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
+        <module>spring-jmeter-jenkins</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
