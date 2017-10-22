@@ -14,18 +14,18 @@ import org.apache.spark.api.java.function.PairFunction;
 
 import scala.Tuple2;
 
-public class App {
+public class WordCount {
 
     private static final Pattern SPACE = Pattern.compile(" ");
     
     public static void main(String[] args) throws Exception {
-//    if (args.length < 1) {
-//        System.err.println("Usage: JavaWordCount <file>");
-//        System.exit(1);
-//    }
+    if (args.length < 1) {
+        System.err.println("Usage: JavaWordCount <file>");
+        System.exit(1);
+    }
     SparkConf sparkConf = new SparkConf().setAppName("JavaWordCount").setMaster("local");
     JavaSparkContext ctx = new JavaSparkContext(sparkConf);
-    JavaRDD<String> lines = ctx.textFile("C:/Users/Nikhil/Desktop/spark_example.txt", 1);
+    JavaRDD<String> lines = ctx.textFile(args[0], 1);
 
     JavaRDD<String> words = lines.flatMap(s -> Arrays.asList(SPACE.split(s)).iterator());
     JavaPairRDD<String, Integer> ones = words.mapToPair(
