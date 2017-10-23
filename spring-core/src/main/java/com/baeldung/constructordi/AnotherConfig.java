@@ -11,15 +11,15 @@ import com.baeldung.constructordi.domain.Room;
 @ComponentScan("com.baeldung.constructordi")
 public class AnotherConfig {
 
-  @Bean
-  public Room room() {
-    Room room = new Room(bed());
-    return room;
-  }
-  
-  @Bean
-  public Bed bed() {
-    return new Bed();
-  }
-  
+    @Bean
+    public Room room() {
+        Room room = new Room(bed());
+        return room;
+    }
+
+    @Bean
+    public Bed bed() {
+        return new Bed();
+    }
+
 }

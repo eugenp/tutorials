@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Room {
 
-  private Bed bed;
-  
-  @Autowired
-  public Room(Bed bed) {
-    this.bed = bed;
-  }
+    private Bed bed;
+
+    @Autowired
+    public Room(Bed bed) {
+        this.bed = bed;
+    }
 
 }
