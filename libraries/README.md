@@ -8,9 +8,9 @@
 - [Embedded Jetty Server in Java](http://www.baeldung.com/jetty-embedded)
 - [Introduction to Apache Flink with Java](http://www.baeldung.com/apache-flink)
 - [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
-- [Intro to JaVer](http://www.baeldung.com/javers)
+- [Intro to JaVers](http://www.baeldung.com/javers)
 - [Introduction to Apache Commons Math](http://www.baeldung.com/apache-commons-math)
-- [Intro to JaVer](http://www.baeldung.com/serenity-bdd)
+- [Intro to Serenity BDD](http://www.baeldung.com/serenity-bdd)
 - [Introduction to Netty](http://www.baeldung.com/netty)
 - [Merging Streams in Java](http://www.baeldung.com/java-merge-streams)
 - [Serenity BDD and Screenplay](http://www.baeldung.com/serenity-screenplay)
@@ -53,6 +53,7 @@
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
++-[Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
