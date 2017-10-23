@@ -210,11 +210,7 @@ public class MicrometerAtlasTest {
         timer.record(13, TimeUnit.SECONDS);
 
         Map<String, Integer> quantileMap = extractTagValueMap(registry, Type.Gauge, 1e9);
-
-        assertThat(quantileMap.keySet(), hasItems("quantile=0.3", "quantile=0.5", "quantile=0.95"));
-        assertThat(quantileMap.get("quantile=0.3"), is(2));
-        assertThat(quantileMap.get("quantile=0.5"), is(3));
-        assertThat(quantileMap.get("quantile=0.95"), is(8));
+        assertThat(quantileMap, allOf(hasEntry("quantile=0.3", 2), hasEntry("quantile=0.5", 3), hasEntry("quantile=0.95", 8)));
     }
 
     private Map<String, Integer> extractTagValueMap(MeterRegistry registry, Type meterType, double valueDivisor) {

@@ -5,13 +5,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.baeldung.security.spring.SecurityWithCsrfConfig;
-import org.baeldung.spring.PersistenceConfig;
-import org.baeldung.spring.WebConfig;
+import org.baeldung.spring.MvcConfig;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 
-@ContextConfiguration(classes = { SecurityWithCsrfConfig.class, PersistenceConfig.class, WebConfig.class })
+@ContextConfiguration(classes = { SecurityWithCsrfConfig.class, MvcConfig.class })
 public class CsrfEnabledIntegrationTest extends CsrfAbstractIntegrationTest {
 
     @Test
