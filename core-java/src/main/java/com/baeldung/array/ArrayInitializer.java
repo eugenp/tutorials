@@ -45,4 +45,30 @@ public class ArrayInitializer {
         Arrays.fill(array, 0, 3, -50);
         return array;
     }
+
+    public static int[] initializeArrayUsingArraysCopy() {
+        int array[] = { 1, 2, 3, 4, 5 };
+        int[] copy = Arrays.copyOf(array, 5);
+        return copy;
+    }
+
+    public static int[] initializeLargerArrayUsingArraysCopy() {
+        int array[] = { 1, 2, 3, 4, 5 };
+        int[] copy = Arrays.copyOf(array, 6);
+        return copy;
+    }
+
+    public static int[] initializeArrayUsingArraysSetAll() {
+        int[] array = new int[20];
+
+        for (int i = 0; i < 20; i++) {
+            Arrays.setAll(array, p -> {
+                if (p > 9)
+                    return 0;
+                else
+                    return p;
+            });
+        }
+        return array;
+    }
 }
