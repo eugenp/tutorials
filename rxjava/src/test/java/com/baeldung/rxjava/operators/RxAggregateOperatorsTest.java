@@ -4,7 +4,12 @@ import org.junit.Test;
 import rx.Observable;
 import rx.observers.TestSubscriber;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 public class RxAggregateOperatorsTest {
 
@@ -29,7 +34,6 @@ public class RxAggregateOperatorsTest {
         subscriber.assertNoErrors();
         subscriber.assertValueCount(8);
         subscriber.assertValues(1, 2, 3, 4, 5, 6, 7, 8);
-
     }
 
     @Test
@@ -41,7 +45,7 @@ public class RxAggregateOperatorsTest {
 
         // when
         Observable<Integer> sourceObservable = Observable.from(lettersList)
-            .count();
+          .count();
         sourceObservable.subscribe(subscriber);
 
         // then
@@ -60,7 +64,7 @@ public class RxAggregateOperatorsTest {
 
         // when
         Observable<String> reduceObservable = Observable.from(list)
-            .reduce((letter1, letter2) -> letter2 + letter1);
+          .reduce((letter1, letter2) -> letter2 + letter1);
         reduceObservable.subscribe(subscriber);
 
         // then
@@ -78,15 +82,15 @@ public class RxAggregateOperatorsTest {
         TestSubscriber<HashSet> subscriber = TestSubscriber.create();
 
         // when
-        Observable<HashSet> reduceListObservable = Observable.from(list)
-            .collect(() -> new HashSet(), (set, item) -> set.add(item));
+        Observable<HashSet<String>> reduceListObservable = Observable.from(list)
+          .collect(HashSet::new, HashSet::add);
         reduceListObservable.subscribe(subscriber);
 
         // then
         subscriber.assertCompleted();
         subscriber.assertNoErrors();
         subscriber.assertValueCount(1);
-        subscriber.assertValues(new HashSet(list));
+        subscriber.assertValues(new HashSet<>(list));
     }
 
     @Test
@@ -104,7 +108,6 @@ public class RxAggregateOperatorsTest {
         subscriber.assertNoErrors();
         subscriber.assertValueCount(1);
         subscriber.assertValue(Arrays.asList(1, 2, 3, 4, 5));
-
     }
 
     @Test
@@ -139,17 +142,21 @@ public class RxAggregateOperatorsTest {
         subscriber.assertNoErrors();
         subscriber.assertValueCount(1);
         subscriber.assertValue(Arrays.asList(14, 13, 12, 11, 10));
-
     }
 
     @Test
     public void givenObservable_whenUsingToMap_thenObtainedAMap() {
         // given
-        Observable<Book> bookObservable = Observable.just(new Book("The North Water", 2016), new Book("Origin", 2017), new Book("Sleeping Beauties", 2017));
+        Observable<Book> bookObservable = Observable
+          .just(
+            new Book("The North Water", 2016),
+            new Book("Origin", 2017),
+            new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
 
         // when
-        Observable<Map<String, Integer>> mapObservable = bookObservable.toMap(Book::getTitle, Book::getYear, HashMap::new);
+        Observable<Map<String, Integer>> mapObservable = bookObservable
+          .toMap(Book::getTitle, Book::getYear, HashMap::new);
 
         mapObservable.subscribe(subscriber);
 
@@ -169,11 +176,16 @@ public class RxAggregateOperatorsTest {
     @Test
     public void givenObservable_whenUsingToMultiMap_thenObtainedAMultiMap() {
         // given
-        Observable<Book> bookObservable = Observable.just(new Book("The North Water", 2016), new Book("Origin", 2017), new Book("Sleeping Beauties", 2017));
+        Observable<Book> bookObservable = Observable
+          .just(
+            new Book("The North Water", 2016),
+            new Book("Origin", 2017),
+            new Book("Sleeping Beauties", 2017));
         TestSubscriber<Map> subscriber = TestSubscriber.create();
 
         // when
-        Observable multiMapObservable = bookObservable.toMultimap(Book::getYear, Book::getTitle, () -> new HashMap(), (key) -> new ArrayList());
+        Observable multiMapObservable = bookObservable
+          .toMultimap(Book::getYear, Book::getTitle, () -> new HashMap<>(), (key) -> new ArrayList<>());
 
         multiMapObservable.subscribe(subscriber);
 
@@ -187,7 +199,6 @@ public class RxAggregateOperatorsTest {
                 put(2017, Arrays.asList("Origin", "Sleeping Beauties"));
             }
         });
-
     }
 
     class Book {
