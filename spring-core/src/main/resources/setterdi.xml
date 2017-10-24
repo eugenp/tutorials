@@ -21,4 +21,9 @@
     <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
     </bean>
 
+    <bean id="bar" class="com.example.Bar" />
+    <bean id="foo" class="com.example.Foo">
+        <property name="bar" ref="com.example.Bar" />
+    </bean>
+
 </beans>
