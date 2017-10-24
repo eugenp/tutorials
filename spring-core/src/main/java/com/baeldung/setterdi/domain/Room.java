@@ -13,4 +13,8 @@ public class Room {
         this.bed = bed;
     }
 
+    public Bed getBed() {
+        return bed;
+    }    
+    
 }
