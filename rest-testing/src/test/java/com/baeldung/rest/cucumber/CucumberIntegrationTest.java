@@ -5,6 +5,6 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "classpath:Feature")
+@CucumberOptions(features = "classpath:karate")
 public class CucumberIntegrationTest {
 }
