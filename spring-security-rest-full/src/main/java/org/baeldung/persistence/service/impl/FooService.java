@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,6 +35,7 @@ public class FooService extends AbstractService<Foo> implements IFooService {
 
     // custom methods
 
+    @Override
     public Foo retrieveByName(final String name) {
         return dao.retrieveByName(name);
     }
@@ -44,7 +44,6 @@ public class FooService extends AbstractService<Foo> implements IFooService {
 
     @Override
     @Transactional(readOnly = true)
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<Foo> findAll() {
         return Lists.newArrayList(getDao().findAll());
     }

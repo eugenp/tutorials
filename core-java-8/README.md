@@ -28,5 +28,5 @@
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Java Base64 Encoding and Decoding](http://www.baeldung.com/java-base64-encode-and-decode)
 - [The Difference Between map() and flatMap()](http://www.baeldung.com/java-difference-map-and-flatmap)
-
 - [Merging Streams in Java](http://www.baeldung.com/java-merge-streams)
+- [“Stream has already been operated upon or closed” Exception in Java](http://www.baeldung.com/java-stream-operated-upon-or-closed-exception)
