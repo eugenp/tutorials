@@ -1,16 +1,17 @@
 package com.baeldung.algorithms.editdistance;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class EditDistanceTest extends EditDistanceDataProvider {
 
-    String x;
-    String y;
-    int result;
+    private String x;
+    private String y;
+    private int result;
 
     public EditDistanceTest(String a, String b, int res) {
         super();
@@ -21,11 +22,11 @@ public class EditDistanceTest extends EditDistanceDataProvider {
 
     @Test
     public void testEditDistance_RecursiveImplementation() {
-        Assert.assertEquals(result, EditDistanceRecursive.calculate(x, y));
+        assertEquals(result, EditDistanceRecursive.calculate(x, y));
     }
 
     @Test
     public void testEditDistance_givenDynamicProgrammingImplementation() {
-        Assert.assertEquals(result, EditDistanceDynamicProgramming.calculate(x, y));
+        assertEquals(result, EditDistanceDynamicProgramming.calculate(x, y));
     }
 }

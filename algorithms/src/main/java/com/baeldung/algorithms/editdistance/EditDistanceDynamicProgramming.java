@@ -2,7 +2,7 @@ package com.baeldung.algorithms.editdistance;
 
 public class EditDistanceDynamicProgramming extends EditDistanceBase {
 
-    public static int calculate(String x, String y) {
+    static int calculate(String x, String y) {
         int[][] dp = new int[x.length() + 1][y.length() + 1];
 
         for (int i = 0; i <= x.length(); i++) {
@@ -14,12 +14,13 @@ public class EditDistanceDynamicProgramming extends EditDistanceBase {
                     dp[i][j] = i;
 
                 else {
-                    dp[i][j] = min(dp[i - 1][j - 1] + costOfSubstitution(x.charAt(i - 1), y.charAt(j - 1)), dp[i - 1][j] + 1, dp[i][j - 1] + 1);
+                    dp[i][j] = min(dp[i - 1][j - 1]
+                        + costOfSubstitution(x.charAt(i - 1), y.charAt(j - 1)),
+                      dp[i - 1][j] + 1, dp[i][j - 1] + 1);
                 }
             }
         }
 
         return dp[x.length()][y.length()];
     }
-
 }
