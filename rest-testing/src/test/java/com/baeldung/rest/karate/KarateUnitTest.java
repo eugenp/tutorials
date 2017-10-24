@@ -12,7 +12,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
 @RunWith(Karate.class)
 @CucumberOptions(features = "classpath:karate")
-public class KarateTest {
+public class KarateUnitTest {
 
     private static final WireMockServer wireMockServer = new WireMockServer();
 
