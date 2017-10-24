@@ -17,4 +17,9 @@
         <constructor-arg value="sliding" />
     </bean>
 
+    <bean id="fooService" class="com.service.FooService" />
+    <bean id="fooController" class="com.controller.FooController">
+        <constructor-arg value="fooService" type="com.service.FooService"/>
+    </bean>
+
 </beans>
