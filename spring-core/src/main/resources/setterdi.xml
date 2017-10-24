@@ -20,5 +20,11 @@
 
     <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
     </bean>
+    
+    <bean id="bed" class="com.baeldung.setterdi.domain.Bed" />   
+    
+    <bean id="room" class="com.baeldung.setterdi.domain.Room">
+        <property name="bed" ref="bed" />
+    </bean>
 
 </beans>

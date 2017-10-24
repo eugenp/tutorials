@@ -16,5 +16,11 @@
     <bean id="transmission" class="com.baeldung.constructordi.domain.Transmission">
         <constructor-arg value="sliding" />
     </bean>
+    
+    <bean id="bed" class="com.baeldung.constructordi.domain.Bed" />   
+    
+    <bean id="room" class="com.baeldung.constructordi.domain.Room">
+        <constructor-arg ref="bed" />
+    </bean>
 
 </beans>
