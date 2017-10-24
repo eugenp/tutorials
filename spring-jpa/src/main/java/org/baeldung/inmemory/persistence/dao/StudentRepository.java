@@ -1,8 +1,7 @@
-package org.baeldung.persistence.dao;
+package org.baeldung.inmemory.persistence.dao;
 
+import org.baeldung.inmemory.persistence.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import org.baeldung.persistence.model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 }
