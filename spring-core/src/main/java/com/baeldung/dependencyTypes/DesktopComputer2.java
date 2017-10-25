@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DesktopComputer2 {
-    
+
     private Case caze;
     private Keyboard keyboard;
     private Monitor monitor;
     private Mouse mouse;
-    
+
     @Autowired
     public void setCaze(Case caze) {
         this.caze = caze;
@@ -31,4 +31,20 @@ public class DesktopComputer2 {
         this.mouse = mouse;
     }
 
+    public Case getCaze() {
+        return caze;
+    }
+
+    public Keyboard getKeyboard() {
+        return keyboard;
+    }
+
+    public Monitor getMonitor() {
+        return monitor;
+    }
+
+    public Mouse getMouse() {
+        return mouse;
+    }
+    
 }
