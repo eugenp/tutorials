@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+    <bean id="person" class="com.baeldung.onboarding.Person">
+        <constructor-arg index="0" ref="name" />
+    </bean>
+ 
+    <bean id="name" class="com.baeldung.onboarding.Name">
+        <property name="firstName" value="John" />
+        <property name="lastName" value="Wick" />
+    </bean>
+
+</beans>
