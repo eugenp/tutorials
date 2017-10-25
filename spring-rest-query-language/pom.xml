@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-security-rest-full</artifactId>
+    <artifactId>spring-rest-query-language</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-security-rest-full</name>
+    <name>spring-rest-query-language</name>
     <packaging>war</packaging>
 
     <parent>
@@ -230,7 +230,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-security-rest-full</finalName>
+        <finalName>spring-rest-query-language</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
