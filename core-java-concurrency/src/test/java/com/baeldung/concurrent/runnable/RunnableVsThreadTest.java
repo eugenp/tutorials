@@ -13,10 +13,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RunnableVsThread {
+public class RunnableVsThreadTest {
 
 	private static Logger log = 
-	  LoggerFactory.getLogger(RunnableVsThread.class);
+	  LoggerFactory.getLogger(RunnableVsThreadTest.class);
 
 	@Test
 	public void givenARunnable_whenRunIt_thenResult() throws Exception{
@@ -29,10 +29,10 @@ public class RunnableVsThread {
 		  Executors.newCachedThreadPool();
 		
 		executorService.submit(new SimpleRunnable(
-		  "SimpleRunnable executed using ExecutorService"));
+		  "SimpleRunnable executed using ExecutorService")).get();
 		
 		executorService.submit(()-> 
-		  log.info("Lambda runnable executed!!!"));
+		  log.info("Lambda runnable executed!!!")).get();
 		executorService.shutdown();
 	}
 	
@@ -46,7 +46,7 @@ public class RunnableVsThread {
 		ExecutorService executorService = 
 		  Executors.newCachedThreadPool();
 		executorService.submit(new SimpleThread(
-		  "SimpleThread executed using ExecutorService"));
+		  "SimpleThread executed using ExecutorService")).get();
 	}
 	
 	@Test
