@@ -16,7 +16,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-public class ORMLiteTest {
+public class ORMLiteIntegrationTest {
     private static JdbcPooledConnectionSource connectionSource;
 
     private static Dao<Library, Long> libraryDao;
