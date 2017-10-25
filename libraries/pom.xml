@@ -105,6 +105,24 @@
                 </executions>
             </plugin>
             <!-- /Neuroph -->
+               <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Premain-Class>
+                                com.baeldung.examples.asm.instrumentation.Premain
+                            </Premain-Class>
+                            <Can-Retransform-Classes>
+                                true
+                            </Can-Retransform-Classes>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+ 	    <!--ASM-->
         </plugins>
     </build>
     <dependencies>
@@ -599,6 +617,16 @@
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
+        </dependency>
+	<dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-util</artifactId>
+            <version>5.2</version>
         </dependency>
     </dependencies>
     <repositories>
