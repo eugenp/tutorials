@@ -2,6 +2,8 @@ package com.baeldung.array;
 
 import java.util.Arrays;
 
+import org.apache.commons.lang.ArrayUtils;
+
 public class ArrayInitializer {
 
     public static int[] initializeArrayInLoop() {
@@ -70,5 +72,10 @@ public class ArrayInitializer {
             });
         }
         return array;
+    }
+    
+    public static char[] initializeArrayUsingArraysUtilClone() {
+        char[] array = new char[] {'a', 'b', 'c'};
+        return ArrayUtils.clone(array);
     }
 }
