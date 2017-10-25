@@ -6,11 +6,18 @@
    
    <context:annotation-config/>
 
-	<bean id="articleBean"
-		class="com.baeldung.dependencyinjectiontypes.Article">
+	<bean id="articleWithSetterInjectionBean"
+		class="com.baeldung.dependencyinjectiontypes.ArticleWithSetterInjection">
 		<constructor-arg ref="textFormatterBean" />
 	</bean>
 	
+	<bean id="articleWithConstructorInjectionBean"
+		class="com.baeldung.dependencyinjectiontypes.ArticleWithConstructorInjection">
+		<constructor-arg ref="textFormatterBean" />
+	</bean>
+	
+	
 	<bean id="textFormatterBean" class="com.baeldung.dependencyinjectiontypes.TextFormatter">
 	</bean>
+	
 </beans>
