@@ -9,7 +9,8 @@ public class RAM {
         this.capacity = capacity;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return String.format("id %s capacity %s", id, capacity);
     }
 }

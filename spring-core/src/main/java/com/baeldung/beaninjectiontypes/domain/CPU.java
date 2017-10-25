@@ -9,7 +9,8 @@ public class CPU {
         this.model = model;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return String.format("id %s model %s", id, model);
     }
 }

@@ -18,7 +18,8 @@ public class ComputerSetterInjection {
         this.ram = ram;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
         return String.format("Computer CPU %s RAM %s", cpu, ram);
     }
 }
