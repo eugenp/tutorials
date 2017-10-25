@@ -14,4 +14,9 @@ class MyList extends AbstractList<String> {
         return 1;
     }
 
+    @Override
+    public void add(int index, String element) {
+        // no-op
+    }
+
 }
