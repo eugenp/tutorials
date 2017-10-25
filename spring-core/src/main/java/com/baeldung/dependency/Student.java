@@ -1,8 +1,8 @@
 package com.baeldung.dependency;
 
 import java.util.List;
-import org.springframework.context.annotation.Component;
-import org.springframework.context.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class Student {
