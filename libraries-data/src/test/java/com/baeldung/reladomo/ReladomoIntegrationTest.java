@@ -9,7 +9,7 @@ import org.junit.Test;
 import com.gs.fw.common.mithra.test.ConnectionManagerForTests;
 import com.gs.fw.common.mithra.test.MithraTestResource;
 
-public class ReladomoTest {
+public class ReladomoIntegrationTest {
     private MithraTestResource mithraTestResource;
 
     @Before
