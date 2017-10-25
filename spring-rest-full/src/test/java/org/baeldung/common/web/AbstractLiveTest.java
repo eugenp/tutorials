@@ -1,6 +1,8 @@
 package org.baeldung.common.web;
 
 import static org.baeldung.Consts.APPLICATION_PORT;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 import java.io.Serializable;
 
@@ -9,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public abstract class AbstractLiveTest<T extends Serializable> {
 
@@ -48,20 +47,18 @@ public abstract class AbstractLiveTest<T extends Serializable> {
 
     final Response createAsResponse(final T resource) {
         Preconditions.checkNotNull(resource);
-        final RequestSpecification givenAuthenticated = givenAuth();
 
         final String resourceAsString = marshaller.encode(resource);
-        return givenAuthenticated.contentType(marshaller.getMime()).body(resourceAsString).post(getURL());
+        return RestAssured.given()
+            .contentType(marshaller.getMime())
+            .body(resourceAsString)
+            .post(getURL());
     }
 
     //
 
     protected String getURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/spring-security-rest-full/auth/foos";
-    }
-
-    protected final RequestSpecification givenAuth() {
-        return RestAssured.given().auth().preemptive().basic("user1", "user1Pass");
+        return "http://localhost:" + APPLICATION_PORT + "/spring-rest-full/auth/foos";
     }
 
 }

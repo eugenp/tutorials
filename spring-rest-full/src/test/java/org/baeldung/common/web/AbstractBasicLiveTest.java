@@ -10,6 +10,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +20,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.net.HttpHeaders;
-import io.restassured.response.Response;
 
 public abstract class AbstractBasicLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
@@ -34,7 +35,9 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         final String uriOfResource = createAsUri();
 
         // When
-        final Response findOneResponse = givenAuth().header("Accept", "application/json").get(uriOfResource);
+        final Response findOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .get(uriOfResource);
 
         // Then
         assertNotNull(findOneResponse.getHeader(HttpHeaders.ETAG));
@@ -44,11 +47,16 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     public void givenResourceWasRetrieved_whenRetrievingAgainWithEtag_thenNotModifiedReturned() {
         // Given
         final String uriOfResource = createAsUri();
-        final Response findOneResponse = givenAuth().header("Accept", "application/json").get(uriOfResource);
+        final Response findOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .get(uriOfResource);
         final String etagValue = findOneResponse.getHeader(HttpHeaders.ETAG);
 
         // When
-        final Response secondFindOneResponse = givenAuth().header("Accept", "application/json").headers("If-None-Match", etagValue).get(uriOfResource);
+        final Response secondFindOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .headers("If-None-Match", etagValue)
+            .get(uriOfResource);
 
         // Then
         assertTrue(secondFindOneResponse.getStatusCode() == 304);
@@ -59,14 +67,19 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     public void givenResourceWasRetrievedThenModified_whenRetrievingAgainWithEtag_thenResourceIsReturned() {
         // Given
         final String uriOfResource = createAsUri();
-        final Response findOneResponse = givenAuth().header("Accept", "application/json").get(uriOfResource);
+        final Response findOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .get(uriOfResource);
         final String etagValue = findOneResponse.getHeader(HttpHeaders.ETAG);
 
         // existingResource.setName(randomAlphabetic(6));
         // getApi().update(existingResource.setName("randomString"));
 
         // When
-        final Response secondFindOneResponse = givenAuth().header("Accept", "application/json").headers("If-None-Match", etagValue).get(uriOfResource);
+        final Response secondFindOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .headers("If-None-Match", etagValue)
+            .get(uriOfResource);
 
         // Then
         assertTrue(secondFindOneResponse.getStatusCode() == 200);
@@ -79,7 +92,10 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         final String uriOfResource = createAsUri();
 
         // When
-        final Response findOneResponse = givenAuth().header("Accept", "application/json").headers("If-Match", randomAlphabetic(8)).get(uriOfResource);
+        final Response findOneResponse = RestAssured.given()
+            .header("Accept", "application/json")
+            .headers("If-Match", randomAlphabetic(8))
+            .get(uriOfResource);
 
         // Then
         assertTrue(findOneResponse.getStatusCode() == 412);
@@ -93,7 +109,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
 
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
-        final Response response = givenAuth().get(getURL() + "?page=0&size=10");
+        final Response response = RestAssured.get(getURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
     }
@@ -101,7 +117,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     @Test
     public void whenPageOfResourcesAreRetrievedOutOfBounds_then404IsReceived() {
         final String url = getURL() + "?page=" + randomNumeric(5) + "&size=10";
-        final Response response = givenAuth().get(url);
+        final Response response = RestAssured.get(url);
 
         assertThat(response.getStatusCode(), is(404));
     }
@@ -110,14 +126,14 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
     public void givenResourcesExist_whenFirstPageIsRetrieved_thenPageContainsResources() {
         create();
 
-        final Response response = givenAuth().get(getURL() + "?page=0&size=10");
+        final Response response = RestAssured.get(getURL() + "?page=0&size=10");
 
         assertFalse(response.body().as(List.class).isEmpty());
     }
 
     @Test
     public void whenFirstPageOfResourcesAreRetrieved_thenSecondPageIsNext() {
-        final Response response = givenAuth().get(getURL() + "?page=0&size=2");
+        final Response response = RestAssured.get(getURL() + "?page=0&size=2");
 
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
         assertEquals(getURL() + "?page=1&size=2", uriToNextPage);
@@ -125,7 +141,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
 
     @Test
     public void whenFirstPageOfResourcesAreRetrieved_thenNoPreviousPage() {
-        final Response response = givenAuth().get(getURL() + "?page=0&size=2");
+        final Response response = RestAssured.get(getURL() + "?page=0&size=2");
 
         final String uriToPrevPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "prev");
         assertNull(uriToPrevPage);
@@ -136,7 +152,7 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
         create();
         create();
 
-        final Response response = givenAuth().get(getURL() + "?page=1&size=2");
+        final Response response = RestAssured.get(getURL() + "?page=1&size=2");
 
         final String uriToPrevPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "prev");
         assertEquals(getURL() + "?page=0&size=2", uriToPrevPage);
@@ -144,10 +160,10 @@ public abstract class AbstractBasicLiveTest<T extends Serializable> extends Abst
 
     @Test
     public void whenLastPageOfResourcesIsRetrieved_thenNoNextPageIsDiscoverable() {
-        final Response first = givenAuth().get(getURL() + "?page=0&size=2");
+        final Response first = RestAssured.get(getURL() + "?page=0&size=2");
         final String uriToLastPage = extractURIByRel(first.getHeader(HttpHeaders.LINK), "last");
 
-        final Response response = givenAuth().get(uriToLastPage);
+        final Response response = RestAssured.get(uriToLastPage);
 
         final String uriToNextPage = extractURIByRel(response.getHeader(HttpHeaders.LINK), "next");
         assertNull(uriToNextPage);

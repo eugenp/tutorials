@@ -16,7 +16,7 @@ import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
 /**
  * Main Application Class - uses Spring Boot. Just run this as a normal Java
- * class to run up a Jetty Server (on http://localhost:8082/spring-security-rest-full)
+ * class to run up a Jetty Server (on http://localhost:8082/spring-rest-full)
  *
  */
 @EnableScheduling

@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 import java.io.Serializable;
 
@@ -15,7 +17,6 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 
 import com.google.common.net.HttpHeaders;
-import io.restassured.response.Response;
 
 public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 
@@ -33,7 +34,7 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
         final String uriOfExistingResource = createAsUri();
 
         // When
-        final Response res = givenAuth().post(uriOfExistingResource);
+        final Response res = RestAssured.post(uriOfExistingResource);
 
         // Then
         final String allowHeader = res.getHeader(HttpHeaders.ALLOW);
@@ -44,11 +45,16 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
     public void whenResourceIsCreated_thenUriOfTheNewlyCreatedResourceIsDiscoverable() {
         // When
         final Foo newResource = new Foo(randomAlphabetic(6));
-        final Response createResp = givenAuth().contentType(MediaType.APPLICATION_JSON_VALUE).body(newResource).post(getURL());
+        final Response createResp = RestAssured.given()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(newResource)
+            .post(getURL());
         final String uriOfNewResource = createResp.getHeader(HttpHeaders.LOCATION);
 
         // Then
-        final Response response = givenAuth().header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE).get(uriOfNewResource);
+        final Response response = RestAssured.given()
+            .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
+            .get(uriOfNewResource);
 
         final Foo resourceFromServer = response.body().as(Foo.class);
         assertThat(newResource, equalTo(resourceFromServer));
@@ -60,13 +66,13 @@ public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> ex
         final String uriOfExistingResource = createAsUri();
 
         // When
-        final Response getResponse = givenAuth().get(uriOfExistingResource);
+        final Response getResponse = RestAssured.get(uriOfExistingResource);
 
         // Then
         final String uriToAllResources = HTTPLinkHeaderUtil.extractURIByRel(getResponse.getHeader("Link"), "collection");
 
-        final Response getAllResponse = givenAuth().get(uriToAllResources);
-        assertThat(getAllResponse.getStatusCode(), is(403));
+        final Response getAllResponse = RestAssured.get(uriToAllResources);
+        assertThat(getAllResponse.getStatusCode(), is(200));
     }
 
     // template method

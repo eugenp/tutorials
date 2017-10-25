@@ -5,7 +5,7 @@
       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0"
 >
 
-    <display-name>Spring Security REST Application</display-name>
+    <display-name>Spring REST Application</display-name>
 
     <!-- Spring root -->
     <context-param>
@@ -42,16 +42,6 @@
         <servlet-name>api</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
-    <!-- Spring Security -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
 
     <!-- Metric filter -->
     <filter>

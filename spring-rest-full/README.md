@@ -1,6 +1,6 @@
 =========
 
-## REST Example Project with Spring Security
+## REST Example Project with Spring
 
 ### Courses
 The "REST With Spring" Classes: http://bit.ly/restwithspring
@@ -15,15 +15,9 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/2011/10/16/how-to-set-up-integration-testing-with-the-maven-cargo-plugin/)
 - [Introduction to Spring Data JPA](http://www.baeldung.com/2011/12/22/the-persistence-layer-with-spring-data-jpa/)
 - [Project Configuration with Spring](http://www.baeldung.com/2012/03/12/project-configuration-with-spring/)
-- [REST Query Language with Spring and JPA Criteria](http://www.baeldung.com/rest-search-language-spring-jpa-criteria)
-- [REST Query Language with Spring Data JPA Specifications](http://www.baeldung.com/rest-api-search-language-spring-data-specifications)
-- [REST Query Language with Spring Data JPA and QueryDSL](http://www.baeldung.com/rest-api-search-language-spring-data-querydsl)
-- [REST Query Language – Advanced Search Operations](http://www.baeldung.com/rest-api-query-search-language-more-operations)
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
-- [REST Query Language with RSQL](http://www.baeldung.com/rest-api-search-language-rsql-fiql)
 - [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
 - [Bootstrap a Web Application with Spring 4](http://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
-- [REST Query Language – Implementing OR Operation](http://www.baeldung.com/rest-api-query-search-or-operation)
 
 
 
@@ -46,5 +40,5 @@ mysql -u root -p
 ### Use the REST Service
 
 ```
-curl http://localhost:8080/spring-security-rest-full/foos
+curl http://localhost:8080/spring-rest-full/foos
 ```
