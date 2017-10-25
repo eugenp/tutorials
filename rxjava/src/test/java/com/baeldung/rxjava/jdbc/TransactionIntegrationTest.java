@@ -1,15 +1,21 @@
 package com.baeldung.rxjava.jdbc;
 
-import com.github.davidmoten.rx.jdbc.Database;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Test;
-import rx.Observable;
 
-import static org.junit.Assert.assertEquals;
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
+import com.github.davidmoten.rx.jdbc.Database;
+
+import rx.Observable;
 
 public class TransactionIntegrationTest {
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private Observable<Integer> createStatement = null;
+
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     @Test
     public void whenCommitTransaction_thenRecordUpdated() {
@@ -36,7 +42,8 @@ public class TransactionIntegrationTest {
 
     @After
     public void close() {
-        db.update("DROP TABLE EMPLOYEE");
-        Connector.connectionProvider.close();
+        db.update("DROP TABLE EMPLOYEE")
+          .dependsOn(createStatement);
+        connectionProvider.close();
     }
 }
