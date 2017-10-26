@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="type" class="com.baeldug.beaninjectiontypes.setter.Type">
+		<property name="bodyType" value="Convertible" />
+		<property name="numberOfDoors" value="3" />
+	</bean>
+
+	<bean id="anotherSampleDAO" class="com.baeldung.beaninjectiontypes.setter.Car">
+		<property name="type" ref="type" />
+	</bean>
+
+	<bean id="cpu" class="com.baeldug.beaninjectiontypes.constructor.CPU">
+		<constructor-arg index="0" value="Pentium" />
+		<constructor-arg index="1" value="1.5" />
+	</bean>
+
+	<bean id="pc" class="com.baeldung.beaninjectiontypes.constructor.PC">
+		<constructor-arg name="cpu" ref="cpu" />
+	</bean>
+
+
+</beans>
