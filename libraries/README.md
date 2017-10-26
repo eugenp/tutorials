@@ -52,6 +52,7 @@
 - [Introduction to Retrofit](http://www.baeldung.com/retrofit)
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
+- [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
