@@ -16,14 +16,22 @@ public class Student {
         this.courses = courses;
     }
 
-    @Autowired
+    //@Autowired
     public void setGender(String gender) {
         this.gender = gender;
     }
+    
+    public String getGender() {
+        return gender;
+    }
 
-    @Autowired
+    //@Autowired
     public void setCourses(List courses) {
         this.courses = courses;
+    }
+    
+    public List getCourses() {
+        return courses;
     }
 
 }
