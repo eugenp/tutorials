@@ -13,8 +13,11 @@ public class CheckingAccount {
         this.creditTransaction = creditTransaction;
     }
     
-    public void processTransaction() {
-       System.out.println(this.debitTransaction.process());
-       System.out.println(this.creditTransaction.process());
+    public String processDebitTransaction() {
+       return this.debitTransaction.process();
+    }
+    
+    public String processCreditTransaction() {
+        return this.creditTransaction.process();
     }
 }

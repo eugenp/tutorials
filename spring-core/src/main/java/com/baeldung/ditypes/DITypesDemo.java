@@ -10,6 +10,7 @@ public class DITypesDemo {
         ApplicationContext context = new ClassPathXmlApplicationContext("ditypes-context.xml");
         
         CheckingAccount checkingAccount = (CheckingAccount)context.getBean("checkingAccount");
-        checkingAccount.processTransaction();
+        System.out.println(checkingAccount.processDebitTransaction());
+        System.out.println(checkingAccount.processCreditTransaction());
     }
 }
