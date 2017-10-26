@@ -18,6 +18,14 @@ public class ComputerSetterInjection {
         this.ram = ram;
     }
 
+    public CPU getCpu() {
+        return cpu;
+    }
+
+    public RAM getRam() {
+        return ram;
+    }
+
     @Override
     public String toString() {
         return String.format("Computer CPU %s RAM %s", cpu, ram);
