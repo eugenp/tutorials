@@ -1,22 +1,15 @@
 package com.baeldung.algorithms.editdistance;
 
+import java.util.Arrays;
+
 public class EditDistanceBase {
 
-    public static int costOfSubstitution(char a, char b) {
-        if (a == b) {
-            return 0;
-        }
-        return 1;
+    static int costOfSubstitution(char a, char b) {
+        return a == b ? 0 : 1;
     }
 
-    public static int min(int... numbers) {
-        int min = Integer.MAX_VALUE;
-
-        for (int x : numbers) {
-            if (x < min)
-                min = x;
-        }
-
-        return min;
+    static int min(int... numbers) {
+        return Arrays.stream(numbers)
+          .min().orElse(Integer.MAX_VALUE);
     }
 }
