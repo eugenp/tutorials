@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="checkingAccount" class="com.baeldung.ditypes.CheckingAccount">
+        <constructor-arg>
+            <ref bean="debitTransaction" />    
+        </constructor-arg>
+        <property name="creditTransaction" ref="creditTransaction"></property>
+    </bean>
+    <bean id="debitTransaction" class="com.baeldung.ditypes.DebitTransaction" />
+    <bean id="creditTransaction" class="com.baeldung.ditypes.CreditTransaction" />
+
+</beans>
