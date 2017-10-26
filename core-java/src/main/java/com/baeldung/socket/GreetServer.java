@@ -1,9 +1,15 @@
 package com.baeldung.socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.*;
 import java.io.*;
 
 public class GreetServer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(GreetServer.class);
+
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
@@ -21,7 +27,7 @@ public class GreetServer {
             else
                 out.println("unrecognised greeting");
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
 
     }
@@ -33,7 +39,7 @@ public class GreetServer {
             clientSocket.close();
             serverSocket.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.debug(e.getMessage());
         }
 
     }

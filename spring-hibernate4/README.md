@@ -13,6 +13,7 @@
 - [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
 - [Hibernate Criteria Queries](http://www.baeldung.com/hibernate-criteria-queries)
 - [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
+- [Guide to @Immutable Annotation in Hibernate](http://www.baeldung.com/hibernate-immutable)
 
 ### Quick Start
 

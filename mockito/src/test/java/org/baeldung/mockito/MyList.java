@@ -2,7 +2,7 @@ package org.baeldung.mockito;
 
 import java.util.AbstractList;
 
-public class MyList extends AbstractList<String> {
+class MyList extends AbstractList<String> {
 
     @Override
     public String get(final int index) {

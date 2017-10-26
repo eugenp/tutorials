@@ -1,12 +1,12 @@
 var app = angular.module('app', ['ui.grid','ui.grid.pagination']);
-  
+
 app.controller('StudentCtrl', ['$scope','StudentService', function ($scope,StudentService) {
    var paginationOptions = {
      pageNumber: 1,
 	 pageSize: 5,
 	 sort: null
-   };	
-	
+   };
+
    StudentService.getStudents(paginationOptions.pageNumber,
 		   paginationOptions.pageSize).success(function(data){
 	  $scope.gridOptions.data = data.content;

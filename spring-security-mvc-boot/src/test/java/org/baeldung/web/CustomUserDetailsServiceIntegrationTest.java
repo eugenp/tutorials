@@ -11,7 +11,6 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,24 +18,25 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
+@SpringBootTest(classes = {MvcConfig.class, SecurityConfig.class, PersistenceConfig.class})
 @WebAppConfiguration
 public class CustomUserDetailsServiceIntegrationTest {
 
-    public static final String USERNAME = "user";
-    public static final String PASSWORD = "pass";
-    public static final String USERNAME2 = "user2";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "pass";
+    private static final String USERNAME2 = "user2";
 
     @Autowired
-    UserRepository myUserRepository;
+    private UserRepository myUserRepository;
 
     @Autowired
-    AuthenticationProvider authenticationProvider;
+    private AuthenticationProvider authenticationProvider;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     //
 

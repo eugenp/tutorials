@@ -17,6 +17,12 @@ public class SolrJavaIntegration {
         solrClient.setParser(new XMLResponseParser());
     }
 
+    public void addProductBean(ProductBean pBean) throws IOException, SolrServerException {
+
+        solrClient.addBean(pBean);
+        solrClient.commit();
+    }
+
     public void addSolrDocument(String documentId, String itemName, String itemPrice) throws SolrServerException, IOException {
 
         SolrInputDocument document = new SolrInputDocument();
@@ -27,9 +33,15 @@ public class SolrJavaIntegration {
         solrClient.commit();
     }
 
-    public void deleteSolrDocument(String documentId) throws SolrServerException, IOException {
+    public void deleteSolrDocumentById(String documentId) throws SolrServerException, IOException {
 
         solrClient.deleteById(documentId);
+        solrClient.commit();
+    }
+
+    public void deleteSolrDocumentByQuery(String query) throws SolrServerException, IOException {
+
+        solrClient.deleteByQuery(query);
         solrClient.commit();
     }
 
@@ -40,4 +52,5 @@ public class SolrJavaIntegration {
     protected void setSolrClient(HttpSolrClient solrClient) {
         this.solrClient = solrClient;
     }
+
 }

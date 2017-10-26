@@ -30,7 +30,8 @@ public class CabBookingServiceTest {
         serverThread = serverThread();
         log.info("Starting server.");
         serverThread.start();
-        sleep(4000);
+        // increase this enough to let the server start
+        sleep(6000);
     }
 
     @org.junit.Test

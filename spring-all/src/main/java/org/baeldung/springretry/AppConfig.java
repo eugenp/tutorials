@@ -11,9 +11,9 @@ import org.springframework.retry.support.RetryTemplate;
 @Configuration
 @ComponentScan(basePackages = "org.baeldung.springretry")
 @EnableRetry
-//Uncomment this two lines if we need XML configuration
-//@EnableAspectJAutoProxy
-//@ImportResource("classpath:/retryadvice.xml")
+// Uncomment this two lines if we need XML configuration
+// @EnableAspectJAutoProxy
+// @ImportResource("classpath:/retryadvice.xml")
 public class AppConfig {
 
     @Bean

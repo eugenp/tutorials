@@ -1,0 +1,3 @@
+{
+  "test": "Your {NUM, plural, one{message goes} other{# messages go}} here."
+}

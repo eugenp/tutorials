@@ -13,6 +13,7 @@
 - [Hibernate Second-Level Cache](http://www.baeldung.com/hibernate-second-level-cache)
 - [Spring, Hibernate and a JNDI Datasource](http://www.baeldung.com/spring-persistence-jpa-jndi-datasource)
 - [Deleting Objects with Hibernate](http://www.baeldung.com/delete-with-hibernate)
+- [Self-Contained Testing Using an In-Memory Database](http://www.baeldung.com/spring-jpa-test-in-memory-database)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
