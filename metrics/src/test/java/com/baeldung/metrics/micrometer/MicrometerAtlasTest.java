@@ -16,6 +16,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import static io.micrometer.core.instrument.Meter.Type;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.collection.IsMapContaining.hasEntry;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
@@ -27,7 +28,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class MicrometerAtlasTest {
 
-    AtlasConfig atlasConfig;
+    private AtlasConfig atlasConfig;
 
     @Before
     public void init() {
@@ -208,32 +209,27 @@ public class MicrometerAtlasTest {
         timer.record(8, TimeUnit.SECONDS);
         timer.record(13, TimeUnit.SECONDS);
 
-        List<Gauge> quantileGauges = registry
+        Map<String, Integer> quantileMap = extractTagValueMap(registry, Type.Gauge, 1e9);
+        assertThat(quantileMap, allOf(hasEntry("quantile=0.3", 2), hasEntry("quantile=0.5", 3), hasEntry("quantile=0.95", 8)));
+    }
+
+    private Map<String, Integer> extractTagValueMap(MeterRegistry registry, Type meterType, double valueDivisor) {
+        return registry
           .getMeters()
           .stream()
-          .filter(meter -> meter
-            .getType()
-            .name()
-            .equals("Gauge"))
-          .map(meter -> (Gauge) meter)
-          .collect(Collectors.toList());
-        assert (3 == quantileGauges.size());
-
-        Map<String, Integer> quantileMap = quantileGauges
-          .stream()
-          .collect(Collectors.toMap(gauge -> {
-              Tag tag = gauge
+          .filter(meter -> meter.getType() == meterType)
+          .collect(Collectors.toMap(meter -> {
+              Tag tag = meter
                 .getId()
                 .getTags()
                 .iterator()
                 .next();
               return tag.getKey() + "=" + tag.getValue();
-          }, gauge -> (int) (gauge.value() / 1e9)));
-
-        assertThat(quantileMap.keySet(), hasItems("quantile=0.3", "quantile=0.5", "quantile=0.95"));
-        assertThat(quantileMap.get("quantile=0.3"), is(2));
-        assertThat(quantileMap.get("quantile=0.5"), is(3));
-        assertThat(quantileMap.get("quantile=0.95"), is(8));
+          }, meter -> (int) (meter
+            .measure()
+            .iterator()
+            .next()
+            .getValue() / valueDivisor)));
     }
 
     @Test
@@ -243,6 +239,7 @@ public class MicrometerAtlasTest {
           .builder("summary")
           .histogram(Histogram.linear(0, 10, 5))
           .register(registry);
+
         hist.record(3);
         hist.record(8);
         hist.record(20);
@@ -250,22 +247,7 @@ public class MicrometerAtlasTest {
         hist.record(13);
         hist.record(26);
 
-        Map<String, Integer> histograms = registry
-          .getMeters()
-          .stream()
-          .filter(meter -> meter.getType() == Meter.Type.Counter)
-          .collect(Collectors.toMap(counter -> {
-              Tag tag = counter
-                .getId()
-                .getTags()
-                .iterator()
-                .next();
-              return tag.getKey() + "=" + tag.getValue();
-          }, counter -> (int) counter
-            .measure()
-            .iterator()
-            .next()
-            .getValue()));
+        Map<String, Integer> histograms = extractTagValueMap(registry, Type.Counter, 1.0);
 
         assertThat(histograms, allOf(hasEntry("bucket=0.0", 0), hasEntry("bucket=10.0", 2), hasEntry("bucket=20.0", 2), hasEntry("bucket=30.0", 1), hasEntry("bucket=40.0", 1), hasEntry("bucket=Infinity", 0)));
     }
@@ -284,22 +266,7 @@ public class MicrometerAtlasTest {
         timer.record(341, TimeUnit.MILLISECONDS);
         timer.record(500, TimeUnit.MILLISECONDS);
 
-        Map<String, Integer> histograms = registry
-          .getMeters()
-          .stream()
-          .filter(meter -> meter.getType() == Meter.Type.Counter)
-          .collect(Collectors.toMap(counter -> {
-              Tag tag = counter
-                .getId()
-                .getTags()
-                .iterator()
-                .next();
-              return tag.getKey() + "=" + tag.getValue();
-          }, counter -> (int) counter
-            .measure()
-            .iterator()
-            .next()
-            .getValue()));
+        Map<String, Integer> histograms = extractTagValueMap(registry, Type.Counter, 1.0);
 
         assertThat(histograms, allOf(hasEntry("bucket=0.0", 0), hasEntry("bucket=2.0E8", 1), hasEntry("bucket=4.0E8", 1), hasEntry("bucket=Infinity", 3)));
 
