@@ -66,26 +66,6 @@ public class MyApp {
                 + "com.baeldung.jdo.query.ProductItem WHERE price < :threshold");
         List<ProductItem> implicitParamResults = (List<ProductItem>)query.execute(10);
 
-        if(explicitParamResults.size()>0) {
-            System.out.println("****** Using JDOQL - Explicit parameters *************");
-            System.out.println("product item name: "+explicitParamResults.get(0).getName());
-            System.out.println("size of list :"+ explicitParamResults.size());
-        }
-
-        if(explicitParamResults2.size()>0) {
-            System.out.println("****** Using JDOQL - Explicit parameters 2 *************");
-            System.out.println("product item name: "+explicitParamResults2.get(0).getName());
-            System.out.println("size of list :"+ explicitParamResults2.size());
-        }
-
-        if(implicitParamResults.size()>0) {
-            System.out.println("****** Using JDOQL - Implicit parameters *************");
-            System.out.println("product item name: "+implicitParamResults.get(0).getName());
-            System.out.println("size of list :"+ implicitParamResults.size());
-        }
-
-
-
     }
 
     public static void queryUsingTypedJDOQL(){
@@ -94,12 +74,6 @@ public class MyApp {
         QProductItem cand = QProductItem.candidate();
         tq=tq.filter(cand.price.lt(10).and(cand.name.startsWith("pro")));
         List<ProductItem> results = tq.executeList();
-
-        if(results.size()>0) {
-            System.out.println("****** Using Typed JDOQL ***********************");
-            System.out.println("product item name: "+results.get(0).getName());
-            System.out.println("size of list :"+ results.size());
-        }
 
     }
 
@@ -111,12 +85,6 @@ public class MyApp {
         query.setParameters(10,"InStock");
         List<ProductItem> results = query.executeList();
 
-        if(results.size()>0) {
-            System.out.println("****** Using SQL  **************************");
-            System.out.println("product item name: "+results.get(0).getName());
-            System.out.println("size of list :"+ results.size());
-        }
-
     }
 
     public static void queryUsingJPQL(){
@@ -125,12 +93,6 @@ public class MyApp {
                 + " and i.status = 'InStock'");
         List<ProductItem> results = (List<ProductItem>) query.execute();
 
-        if(results.size()>0) {
-            System.out.println("****** Using JPQL  **************************");
-            System.out.println("product item name: "+results.get(0).getName());
-            System.out.println("size of list :"+ results.size());
-        }
-
     }
 
     public static void namedQuery(){
@@ -138,10 +100,5 @@ public class MyApp {
                 ProductItem.class, "PriceBelow10");
         List<ProductItem> results = query.executeList();
 
-        if(results.size()>0) {
-            System.out.println("****** Using Named Query  **************************");
-            System.out.println("product item name: "+results.get(0).getName());
-            System.out.println("size of list :"+ results.size());
-        }
     }
 }
