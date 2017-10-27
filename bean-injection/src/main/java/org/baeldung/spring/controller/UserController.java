@@ -17,6 +17,7 @@ public class UserController {
 
     private IGeoLocationService locationService;
 
+    @Autowired
     public UserController(IUserService userService){
         this.userService = userService;
     }
