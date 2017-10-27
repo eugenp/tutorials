@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+                			http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <bean id="student" class="com.baeldung.beaninjection.Student">
+                <!-- Use Index when there is type ambiguity -->
+                <!-- 
+                <constructor-arg ref="address"/>
+                <constructor-arg index="1" value="John"/>
+                <constructor-arg index="2" value="10"/>
+                -->
+                
+                <!-- Use Name when there is type ambiguity -->
+                <constructor-arg ref="address"/>
+                <constructor-arg name="name" value="John"/>
+                <constructor-arg name="age" value="10"/>
+
+        		<!-- Use Type when there is type ambiguity -->
+                <!-- 
+                <constructor-arg ref="address"/>
+                <constructor-arg type="java.lang.String" value="John"/>
+                <constructor-arg type="int" value="10"/> 
+                -->
+                
+        </bean>
+
+        <bean id="address" class="com.baeldung.beaninjection.Address">
+        </bean>
+
+        <bean id="school" class="com.baeldung.beaninjection.School">
+                <property name="course" ref="course" />
+        </bean>
+
+        <bean id="course" class="com.baeldung.beaninjection.Course">
+        </bean>
+
+</beans>
