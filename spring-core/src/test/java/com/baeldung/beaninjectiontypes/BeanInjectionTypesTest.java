@@ -25,13 +25,13 @@ public class BeanInjectionTypesTest {
     public Car car;
 
     @Test
-    public void testConstructorInjection() {
+    public void whenInjectedByContructor_thenBeanIsProperlyInitialized() {
         assertNotNull(pc);
         assertNotNull(pc.getCpu());
     }
 
     @Test
-    public void testSetterInjection() {
+    public void whenInjectedBySetter_thenBeanIsProperlyInitialized() {
         assertNotNull(car);
         assertNotNull(car.getType());
     }
