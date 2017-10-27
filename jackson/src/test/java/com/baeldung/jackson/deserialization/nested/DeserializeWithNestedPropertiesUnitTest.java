@@ -15,7 +15,7 @@ public class DeserializeWithNestedPropertiesUnitTest {
     private String SOURCE_JSON = "{\"id\":\"957c43f2-fa2e-42f9-bf75-6e3d5bb6960a\",\"name\":\"The Best Product\",\"brand\":{\"id\":\"9bcd817d-0141-42e6-8f04-e5aaab0980b6\",\"name\":\"ACME Products\",\"owner\":{\"id\":\"b21a80b1-0c09-4be3-9ebd-ea3653511c13\",\"name\":\"Ultimate Corp, Inc.\"}}}";
 
     @Test
-    public void whenUsingJacksonAnnotations_thenOk() throws IOException {
+    public void whenUsingAnnotations_thenOk() throws IOException {
         Product product = new ObjectMapper().readerFor(Product.class)
             .readValue(SOURCE_JSON);
 
@@ -25,7 +25,7 @@ public class DeserializeWithNestedPropertiesUnitTest {
     }
 
     @Test
-    public void whenUsingJacksonJsonNode_thenOk() throws IOException {
+    public void whenUsingJsonNode_thenOk() throws IOException {
         JsonNode productNode = new ObjectMapper().readTree(SOURCE_JSON);
 
         Product product = new Product();
@@ -47,7 +47,7 @@ public class DeserializeWithNestedPropertiesUnitTest {
     }
 
     @Test
-    public void whenUsingJacksonDeserializerManuallyRegistered_thenOk() throws IOException {
+    public void whenUsingDeserializerManuallyRegistered_thenOk() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(Product.class, new ProductDeserializer());
@@ -60,7 +60,7 @@ public class DeserializeWithNestedPropertiesUnitTest {
     }
 
     @Test
-    public void whenUsingJacksonDeserializerAutoRegistered_thenOk() throws IOException {
+    public void whenUsingDeserializerAutoRegistered_thenOk() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Product product = mapper.readValue(SOURCE_JSON, Product.class);
         assertEquals(product.getName(), "The Best Product");
