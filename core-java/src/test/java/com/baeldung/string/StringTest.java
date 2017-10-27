@@ -5,10 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-<<<<<<< HEAD
-=======
 import java.io.UnsupportedEncodingException;
->>>>>>> ef4ee45a18de65b0c81bbe8da16c0b063b2201a5
 import java.nio.charset.StandardCharsets;
 import java.util.IllegalFormatException;
 import java.util.regex.PatternSyntaxException;
@@ -33,13 +30,6 @@ public class StringTest {
     }
 
     @Test
-<<<<<<< HEAD
-    public void whenGetBytes_thenCorrect() {
-        byte[] byteArray = "abcd".getBytes();
-        byte[] expected = new byte[] { 97, 98, 99, 100 };
-
-        assertArrayEquals(expected, byteArray);
-=======
     public void whenGetBytes_thenCorrect() throws UnsupportedEncodingException {
         byte[] byteArray1 = "abcd".getBytes();
         byte[] byteArray2 = "efgh".getBytes(StandardCharsets.US_ASCII);
@@ -51,7 +41,6 @@ public class StringTest {
         assertArrayEquals(expected1, byteArray1);
         assertArrayEquals(expected2, byteArray2);
         assertArrayEquals(expected3, byteArray3);
->>>>>>> ef4ee45a18de65b0c81bbe8da16c0b063b2201a5
     }
 
     @Test
