@@ -49,6 +49,8 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
+		<module>cas-server</module>
+		<module>cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -190,6 +192,8 @@
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
+        <module>spring-rest-full</module>
+        <module>spring-rest-query-language</module>
         <module>spring-rest</module>
         <module>spring-rest-simple</module>
         <module>spring-security-cache-control</module>
@@ -211,7 +215,6 @@
         <module>spring-security-mvc-socket</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
-        <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>
         <module>spring-security-sso</module>
         <module>spring-security-x509</module>

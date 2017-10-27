@@ -2,10 +2,9 @@ package com.baeldung.string;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.IllegalFormatException;
 import java.util.regex.PatternSyntaxException;
@@ -38,7 +37,7 @@ public class StringTest {
     }
 
     @Test
-    public void whenGetBytesUsingUTF16_thenCorrect() {
+    public void whenGetBytesUsingASCII_thenCorrect() {
         byte[] byteArray = "efgh".getBytes(StandardCharsets.US_ASCII);
         byte[] expected = new byte[] { 101, 102, 103, 104 };
 
@@ -154,6 +153,13 @@ public class StringTest {
         String s = "Welcome*to Baeldung";
 
         String[] result = s.split("*");
+    }
+
+    @Test
+    public void whenCallSubSequence_thenCorrect() {
+        String s = "Welcome to Baeldung";
+
+        assertEquals("Welcome", s.subSequence(0, 7));
     }
 
     @Test
