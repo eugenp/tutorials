@@ -20,5 +20,11 @@
 
     <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
     </bean>
+    
+     <!-- Added new setter DI -properties for setting number of students and teachers -->
+    <bean id="bioClass" class="com.baeldung.setterdi.domain.BioClass">
+    	<property name="numberOfStudent" value="20" />
+        <property name="numberOfTeacher" value="5" />
+    </bean>
 
 </beans>
