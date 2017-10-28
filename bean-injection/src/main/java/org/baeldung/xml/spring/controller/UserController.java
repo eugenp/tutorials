@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/api/xml-config/user",method = POST)
-    public String addUser(@RequestBody User user){
+    public String addUserByXmlConfig(@RequestBody User user){
         System.out.println(String.format("Name :: %s",user.getName()));
         System.out.println(String.format("Address :: %s",null != user.getAddress() ? user.getAddress().getAddress() : "No Address"));
         System.out.println(String.format("Details :: %s",null != user.getDetails() ? user.getDetails().getDetails() : "No Details"));
