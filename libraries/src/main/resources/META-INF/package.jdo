@@ -16,6 +16,14 @@
             </field>
         </class>
     </package>
-
+    <package name="com.baeldung.jdo.query">
+        <class name="ProductItem" detachable="true" table="product_item">
+ 
+            <query name="PriceBelow10" language="javax.jdo.query.SQL">
+            <![CDATA[SELECT * FROM PRODUCT_ITEM WHERE PRICE < 10
+            ]]></query>
+ 
+        </class>
+    </package>
 
 </jdo>
