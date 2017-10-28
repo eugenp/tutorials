@@ -26,14 +26,14 @@ public class InjectionApplicationTests {
 	}
 
 	@Test
-	public void getIndex() throws Exception {
+	public void should_return_200_OK_withWelcomeMessage_when_index() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.get("/")
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk());
 	}
 
 	@Test
-	public void test_addUser_success() throws Exception {
+	public void should_return_200_OK_withSuccessMessage_when_addUser() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.post("/api/user")
 				.content("{\n" +
 						"\"name\": \"BaeldungSpring\",\n" +
@@ -46,7 +46,7 @@ public class InjectionApplicationTests {
 	}
 
 	@Test
-	public void test_addUser_xmlConfig_success() throws Exception {
+	public void should_return_200_OK_withSuccessMessage_when_addUserByXmlConfig() throws Exception {
 		mvc.perform(MockMvcRequestBuilders.post("/api/xml-config/user")
 				.content("{\n" +
 						"\"name\": \"BaeldungSpring\",\n" +
