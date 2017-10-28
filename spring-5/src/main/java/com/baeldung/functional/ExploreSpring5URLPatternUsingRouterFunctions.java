@@ -33,7 +33,7 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
     WebServer start() throws Exception {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
-            .prependFilter(new IndexRewriteFilter())
+            .filter(new IndexRewriteFilter())
             .build();
 
         Tomcat tomcat = new Tomcat();

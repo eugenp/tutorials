@@ -6,7 +6,9 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>jee7</artifactId>
 	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<description>JavaEE 7 Arquillian Archetype Sample</description>
+
 
 	<parent>
 		<groupId>com.baeldung</groupId>
@@ -31,7 +33,7 @@
 		<arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
 
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<org.springframework.security.version>4.2.2.RELEASE</org.springframework.security.version>
+		<org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
 	</properties>
 
 	<prerequisites>
@@ -174,6 +176,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
 				<configuration>
+					<warSourceDirectory>webapp</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>

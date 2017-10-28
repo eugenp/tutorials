@@ -42,7 +42,7 @@ public class RestTemplateBasicLiveTest {
     @Before
     public void beforeTest() {
         restTemplate = new RestTemplate();
-        restTemplate.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
+        // restTemplate.setMessageConverters(Arrays.asList(new MappingJackson2HttpMessageConverter()));
     }
 
     // GET
@@ -78,7 +78,6 @@ public class RestTemplateBasicLiveTest {
     @Test
     public void givenFooService_whenCallHeadForHeaders_thenReceiveAllHeadersForThatResource() {
         final HttpHeaders httpHeaders = restTemplate.headForHeaders(fooResourceUrl);
-
         assertTrue(httpHeaders.getContentType()
             .includes(MediaType.APPLICATION_JSON));
     }
@@ -248,4 +247,5 @@ public class RestTemplateBasicLiveTest {
         clientHttpRequestFactory.setConnectTimeout(timeout * 1000);
         return clientHttpRequestFactory;
     }
+
 }
