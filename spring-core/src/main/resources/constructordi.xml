@@ -16,5 +16,11 @@
     <bean id="transmission" class="com.baeldung.constructordi.domain.Transmission">
         <constructor-arg value="sliding" />
     </bean>
-
+    
+    <!-- Added new constructor DI - for Bio class, argument 1, number of students and number 2, teachers -->
+    <bean id="bioClass" class="com.baeldung.constructordi.domain.BioClass">
+        <constructor-arg index="0" value="20" />
+        <constructor-arg index="1" value="5" />
+    </bean>
+    
 </beans>
