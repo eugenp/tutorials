@@ -12,8 +12,7 @@ public class Computer {
         this.disk = disk;
     }
 
-    public void start() {
-        System.out.println("Booting...");
-        System.out.println(disk.read());
+    public String start() {
+        return disk.read();
     }
 }

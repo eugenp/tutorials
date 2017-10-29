@@ -12,8 +12,7 @@ public class Tablet {
         this.disk = disk;
     }
 
-    public void start() {
-        System.out.print("Booting...");
-        System.out.print(disk.read());
+    public String start() {
+        return disk.read();
     }
 }
