@@ -12,9 +12,9 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class DynamicMappingTest {
+public class DynamicMappingIntegrationTest {
 
     private Session session;
 
@@ -34,21 +34,21 @@ public class DynamicMappingTest {
 
     @After
     public void tearDown() {
-        transaction.commit();
+        transaction.rollback();
         session.close();
     }
 
     @Test
     public void givenEntity_whenFieldMappedWithFormula_thenFieldIsCalculated() {
         Employee employee = new Employee(10_000L, 25);
-        assertEquals(2_500L, employee.getTaxJavaWay());
+        assertThat(employee.getTaxJavaWay()).isEqualTo(2_500L);
 
         session.save(employee);
         session.flush();
         session.clear();
 
         employee = session.get(Employee.class, employee.getId());
-        assertEquals(2_500L, employee.getTax());
+        assertThat(employee.getTax()).isEqualTo(2_500L);
     }
 
     @Test
@@ -59,18 +59,18 @@ public class DynamicMappingTest {
         session.clear();
 
         employee = session.find(Employee.class, employee.getId());
-        assertNotNull(employee);
+        assertThat(employee).isNotNull();
 
         employee.setDeleted(true);
         session.flush();
 
         employee = session.find(Employee.class, employee.getId());
-        assertNotNull(employee);
+        assertThat(employee).isNotNull();
 
         session.clear();
 
         employee = session.find(Employee.class, employee.getId());
-        assertNull(employee);
+        assertThat(employee).isNull();
 
     }
 
@@ -89,17 +89,17 @@ public class DynamicMappingTest {
         session.clear();
 
         employee = session.find(Employee.class, employee.getId());
-        assertEquals(employee.getPhones().size(), 2);
+        assertThat(employee.getPhones()).hasSize(2);
 
         employee.getPhones().iterator().next().setDeleted(true);
         session.flush();
         session.clear();
 
         employee = session.find(Employee.class, employee.getId());
-        assertEquals(employee.getPhones().size(), 1);
+        assertThat(employee.getPhones()).hasSize(1);
 
         List<Phone> fullPhoneList = session.createQuery("from Phone").getResultList();
-        assertEquals(2, fullPhoneList.size());
+        assertThat(fullPhoneList).hasSize(2);
 
     }
 
@@ -117,10 +117,10 @@ public class DynamicMappingTest {
 
         List<Employee> employees = session.createQuery("from Employee").getResultList();
 
-        assertEquals(2, employees.size());
+        assertThat(employees).hasSize(2);
 
         Employee employee = session.get(Employee.class, 1);
-        assertEquals(10_000, employee.getGrossIncome());
+        assertThat(employee.getGrossIncome()).isEqualTo(10_000);
 
         session.close();
 
@@ -129,7 +129,7 @@ public class DynamicMappingTest {
 
         employees = session.createQuery("from Employee").getResultList();
 
-        assertEquals(3, employees.size());
+        assertThat(employees).hasSize(3);
 
     }
 
@@ -156,9 +156,9 @@ public class DynamicMappingTest {
 
         List<EntityDescription> descriptions = session.createQuery("from EntityDescription").getResultList();
 
-        assertTrue(Employee.class.isAssignableFrom(descriptions.get(0).getEntity().getClass()));
-        assertTrue(Phone.class.isAssignableFrom(descriptions.get(1).getEntity().getClass()));
-        assertTrue(Phone.class.isAssignableFrom(descriptions.get(2).getEntity().getClass()));
+        assertThat(Employee.class.isAssignableFrom(descriptions.get(0).getEntity().getClass())).isTrue();
+        assertThat(Phone.class.isAssignableFrom(descriptions.get(1).getEntity().getClass())).isTrue();
+        assertThat(Phone.class.isAssignableFrom(descriptions.get(2).getEntity().getClass())).isTrue();
     }
 
 }
