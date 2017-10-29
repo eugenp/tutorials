@@ -44,7 +44,7 @@ public class CustomConverterTest {
     @Test
     public void whenConvertingToBigDecimalUsingGenericConverter_thenSuccess() {
         assertThat(conversionService.convert(Integer.valueOf(11), BigDecimal.class)).
-          isEqualTo(BigDecimal.valueOf(11));
+          isEqualTo(BigDecimal.valueOf(11.00).setScale(2, BigDecimal.ROUND_HALF_EVEN));
         assertThat(conversionService.convert(Double.valueOf(25.23), BigDecimal.class))
           .isEqualByComparingTo(BigDecimal.valueOf(Double.valueOf(25.23)));
         assertThat(conversionService.convert("2.32", BigDecimal.class))
