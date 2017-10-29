@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <bean id="userService" class="com.baeldung.beaninjection.UserService">
+    </bean>
+
+    <bean id="userController" class="com.baeldung.beaninjection.UserController">
+        <constructor-arg value="userService" type="com.baeldung.beaninjection.UserService">
+        </constructor-arg>
+    </bean>
+</beans>

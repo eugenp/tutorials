@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="user" class="com.baeldung.beaninjection.User">
+        <property name="asset" ref="asset" />
+
+    </bean>
+
+    <bean id="asset" class="com.baeldung.beaninjection.Property">
+        <property name="name" value="house" />
+
+    </bean>
+
+</beans>
