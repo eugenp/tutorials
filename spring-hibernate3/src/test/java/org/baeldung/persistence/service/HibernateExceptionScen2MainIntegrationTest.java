@@ -30,7 +30,6 @@ public class HibernateExceptionScen2MainIntegrationTest {
     @Test
     public final void whenEntityIsCreated_thenNoExceptions() {
         service.create(new Event("from AnnotationSessionFactoryBean"));
-        List<Event> events = service.findAll();
     }
     
     @Test
