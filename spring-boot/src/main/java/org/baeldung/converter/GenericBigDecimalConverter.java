@@ -32,8 +32,7 @@ public class GenericBigDecimalConverter implements GenericConverter {
         } else {
             Number number = (Number) source;
             BigDecimal converted = new BigDecimal(number.doubleValue());
-            converted.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-            return converted;
+            return converted.setScale(2, BigDecimal.ROUND_HALF_EVEN);
         }
     }
 }
