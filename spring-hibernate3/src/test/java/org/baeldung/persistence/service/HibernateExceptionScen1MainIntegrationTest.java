@@ -33,7 +33,7 @@ public class HibernateExceptionScen1MainIntegrationTest {
     }
     
     @Test
-    //@Ignore
+    @Ignore
     public final void whenNoTransBoundToSession_thenException() {
         expectedEx.expectCause(IsInstanceOf.<Throwable>instanceOf(HibernateException.class));
         expectedEx.expectMessage("No Hibernate Session bound to thread, "
