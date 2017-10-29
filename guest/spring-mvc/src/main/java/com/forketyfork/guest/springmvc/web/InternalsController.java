@@ -4,6 +4,8 @@ import com.forketyfork.guest.springmvc.model.LoginData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
@@ -26,6 +28,12 @@ public class InternalsController {
         } else {
             return new ModelAndView("failure", Collections.singletonMap("login", loginData.getLogin()));
         }
+    }
+
+    @ResponseBody
+    @PostMapping("/message")
+    public MyOutputResource sendMessage(@RequestBody MyInputResource inputResource) {
+        return new MyOutputResource("Received: " + inputResource.getRequestMessage());
     }
 
 }
