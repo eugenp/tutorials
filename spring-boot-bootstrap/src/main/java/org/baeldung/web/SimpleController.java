@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SimpleController {
+
     @Value("${spring.application.name}")
     String appName;
 
@@ -15,5 +16,4 @@ public class SimpleController {
         model.addAttribute("appName", appName);
         return "home";
     }
-
 }
