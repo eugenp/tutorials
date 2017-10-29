@@ -1,36 +1,48 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
-    <artifactId>java-mongodb</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>cassandra-java-client</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>cassandra-java-client</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>        
      </parent>
      
     <dependencies>
-
+        <!-- Cassandra -->
         <dependency>
-            <groupId>de.flapdoodle.embedmongo</groupId>
-            <artifactId>de.flapdoodle.embedmongo</artifactId>
-            <version>${flapdoodle.version}</version>
-            <scope>test</scope>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>${cassandra-driver-core.version}</version>
+            <optional>true</optional>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.cassandraunit/cassandra-unit -->
         <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>mongo-java-driver</artifactId>
-            <version>${mongo.version}</version>
+            <groupId>org.cassandraunit</groupId>
+            <artifactId>cassandra-unit</artifactId>
+            <version>${cassandra-unit.version}</version>
+        </dependency>
+
+        <!-- This guava version is required for cassandra-unit 3.0.0.1 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>
 
+    <build>
+        <finalName>java-cassandra</finalName>
+    </build>  
+    
     <profiles>
         <profile>
             <id>integration</id>
@@ -47,7 +59,7 @@
                                 </goals>
                                 <configuration>
                                     <excludes>
-                                        <exclude>**/*ManualTest.java</exclude>
+                                        <exclude>**/*LiveTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
@@ -67,10 +79,13 @@
     </profiles>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <mongo.version>3.4.1</mongo.version>
-        <flapdoodle.version>1.11</flapdoodle.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <guava.version>19.0</guava.version>
+
+        <!-- Cassandra -->
+        <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
+        <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
     </properties>
 
 </project>

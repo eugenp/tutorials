@@ -2,15 +2,16 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-hibernate3</artifactId>
+    <artifactId>spring-hibernate-3</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <name>spring-hibernate3</name>
+    <name>spring-hibernate-3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>        
     </parent>
 
     <dependencies>
@@ -87,7 +88,7 @@
     </dependencies>
 
     <build>
-        <finalName>spring-hibernate3</finalName>
+        <finalName>spring-hibernate-3</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
