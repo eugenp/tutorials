@@ -13,6 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.math.BigDecimal;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
@@ -23,23 +25,29 @@ public class CustomConverterTest {
 
     @Test
     public void whenConvertStringToIntegerUsingDefaultConverter_thenSuccess() {
-        System.out.println(conversionService.convert("25", Integer.class));
+        assertThat(conversionService.convert("25", Integer.class)).isEqualTo(25);
     }
 
     @Test
     public void whenConvertStringToEmployee_thenSuccess() {
-        System.out.println(conversionService.convert("1,50000.00", Employee.class));
+        Employee employee = conversionService.convert("1,50000.00", Employee.class);
+        Employee actualEmployee = new Employee(1, 50000.00);
+        assertThat(conversionService.convert("1,50000.00", Employee.class))
+          .isEqualToComparingFieldByField(actualEmployee);
     }
 
     @Test
     public void whenConvertStringToEnum_thenSuccess() {
-        System.out.println(conversionService.convert("ALPHA", Modes.class));
+        assertThat(conversionService.convert("ALPHA", Modes.class)).isEqualTo(Modes.ALPHA);
     }
 
     @Test
     public void whenConvertingToBigDecimalUsingGenericConverter_thenSuccess() {
-        System.out.println(conversionService.convert(Integer.valueOf(11), BigDecimal.class));
-        System.out.println(conversionService.convert(Double.valueOf(25.23), BigDecimal.class));
-        System.out.println(conversionService.convert("2.32", BigDecimal.class));
+        assertThat(conversionService.convert(Integer.valueOf(11), BigDecimal.class)).
+          isEqualTo(BigDecimal.valueOf(11));
+        assertThat(conversionService.convert(Double.valueOf(25.23), BigDecimal.class))
+          .isEqualByComparingTo(BigDecimal.valueOf(Double.valueOf(25.23)));
+        assertThat(conversionService.convert("2.32", BigDecimal.class))
+          .isEqualTo(BigDecimal.valueOf(2.32));
     }
 }

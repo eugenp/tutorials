@@ -5,6 +5,7 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Set;
 
 public class GenericBigDecimalConverter implements GenericConverter {
@@ -30,7 +31,9 @@ public class GenericBigDecimalConverter implements GenericConverter {
             return new BigDecimal(number);
         } else {
             Number number = (Number) source;
-            return new BigDecimal(number.doubleValue());
+            BigDecimal converted = new BigDecimal(number.doubleValue());
+            converted.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+            return converted;
         }
     }
 }
