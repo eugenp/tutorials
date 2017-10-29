@@ -29,7 +29,6 @@ public class HibernateExceptionScen1MainIntegrationTest {
     @Test
     public final void whenEntityIsCreated_thenNoExceptions() {
         service.create(new Event("from LocalSessionFactoryBean"));
-        List<Event> events = service.findAll();
     }
     
     @Test
