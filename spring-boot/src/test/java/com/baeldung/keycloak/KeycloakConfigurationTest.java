@@ -47,4 +47,5 @@ public class KeycloakConfigurationTest {
     public void testGetKeycloakSecurityContext() throws Exception {
         assertNotNull(keycloakPrincipal.getKeycloakSecurityContext());
     }
+
 }
