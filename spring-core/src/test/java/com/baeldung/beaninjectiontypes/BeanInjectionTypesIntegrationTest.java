@@ -25,19 +25,19 @@ public class BeanInjectionTypesIntegrationTest {
 
 
     @Test
-    public void testConstructorBasedInjection() {
+    public void whenConstructorInjection_thenCorrectHorsePower() {
 
         assertEquals(290, coach.getHorsePower());
     }
 
     @Test
-    public void testSetterBasedInjection() {
+    public void whenSetterInjection_thenCorrectHorsePower() {
 
         assertEquals(290, sedan.getHorsePower());
     }
 
     @Test
-    public void testFiedBasedInjection() {
+    public void whenFieldInjection_thenCorrectHorsePower() {
 
         assertEquals(290, truck.getHorsePower());
     }
