@@ -17,7 +17,7 @@ import com.baeldung.spring.cloud.stream.rabbit.processor.MyProcessor;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MultipleOutputsServiceApplication.class)
 @DirtiesContext
-public class MultipleOutputsServiceApplicationTests {
+public class MultipleOutputsServiceApplicationUnitTest {
 
     @Autowired
     private MyProcessor pipe;

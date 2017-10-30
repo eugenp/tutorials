@@ -17,7 +17,7 @@ import com.baeldung.spring.cloud.stream.rabbit.processor.MyProcessor;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MultipleOutputsWithConditionsServiceApplication.class)
 @DirtiesContext
-public class MultipleOutputsWithConditionsServiceApplicationTests {
+public class MultipleOutputsWithConditionsServiceUnitTest {
 
     @Autowired
     private MyProcessor pipe;
@@ -28,7 +28,7 @@ public class MultipleOutputsWithConditionsServiceApplicationTests {
     @Test
     public void whenSendMessage_thenResponseIsInAOutput() {
         whenSendMessage(1);
-        thenPayloadInChannelIs(pipe.anotherOutput(), 1);
+        thenPayloadInChannelIs(pipe.anOutput(), 1);
     }
 
     @Test
