@@ -13,9 +13,9 @@ public class StringFormatterExamples {
         System.out.println(s);
 
         //General Conversions
-        System.out.println(String.format("The correct answer is %B", false));
-        System.out.println(String.format("The correct answer is %B", null));
-        System.out.println(String.format("The correct answer is %b", true));
+        System.out.println(String.format("The correct answer is %s", false));
+        System.out.println(String.format("The correct answer is %b", null));
+        System.out.println(String.format("The correct answer is %B", true));
 
         //Character Conversions
         System.out.println(String.format("The correct answer is %c", 'a'));
