@@ -1,8 +1,11 @@
 package com.baeldung.commons.lang3;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -12,12 +15,15 @@ import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import org.apache.commons.lang3.ArchUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.arch.Processor;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
+import org.apache.commons.lang3.concurrent.ConcurrentException;
 import org.apache.commons.lang3.concurrent.ConcurrentRuntimeException;
 import org.apache.commons.lang3.concurrent.ConcurrentUtils;
 import org.apache.commons.lang3.event.EventUtils;
@@ -97,15 +103,22 @@ public class Lang3UtilsTest {
     public void testAddEventListenerThrowsException() {
         final ExceptionEventSource src = new ExceptionEventSource();
         try {
-            EventUtils.addEventListener(src, PropertyChangeListener.class, new PropertyChangeListener() {
-                @Override
-                public void propertyChange(final PropertyChangeEvent e) {
-                    // Do nothing!
-                }
-            });
+            EventUtils.addEventListener(src, PropertyChangeListener.class, (PropertyChangeEvent e) -> {
+                /* Change event*/});
             fail("Add method should have thrown an exception, so method should fail.");
         } catch (final RuntimeException e) {
 
+        }
+    }
+
+    @Test
+    public void ConcurrentExceptionSample() throws ConcurrentException {
+        final Error err = new AssertionError("Test");
+        try {
+            ConcurrentUtils.handleCause(new ExecutionException(err));
+            fail("Error not thrown!");
+        } catch (final Error e) {
+            assertEquals("Wrong error", err, e);
         }
     }
 
@@ -115,4 +128,22 @@ public class Lang3UtilsTest {
         }
     }
 
+    @Test
+    public void testLazyInitializer() throws Exception {
+        SampleLazyInitializer sampleLazyInitializer = new SampleLazyInitializer();
+        SampleObject sampleObjectOne = sampleLazyInitializer.get();
+        SampleObject sampleObjectTwo = sampleLazyInitializer.get();
+        assertEquals(sampleObjectOne, sampleObjectTwo);
+    }
+
+    @Test
+    public void testBuildDefaults() {
+        BasicThreadFactory.Builder builder = new BasicThreadFactory.Builder();
+        BasicThreadFactory factory = builder.build();
+        assertNull("No naming pattern set Yet", factory.getNamingPattern());
+        BasicThreadFactory factory2 = builder.namingPattern("sampleNamingPattern").daemon(true).priority(Thread.MIN_PRIORITY).build();
+        assertNotNull("Got a naming pattern", factory2.getNamingPattern());
+        assertEquals("sampleNamingPattern", factory2.getNamingPattern());
+
+    }
 }
