@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test
 
 class SimpleTest5 {
     @Test
-    fun testEmpty() {
+    fun whenEmptyList_thenListIsEmpty() {
         val list = listOf<String>()
         Assertions.assertTrue(list::isEmpty)
     }
 
     @Test
     @Disabled
-    fun testMessage() {
+    fun when3equals4_thenTestFails() {
         Assertions.assertEquals(3, 4) {
             "Three does not equal four"
         }
