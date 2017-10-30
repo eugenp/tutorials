@@ -76,7 +76,6 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -178,7 +177,7 @@
     <dependency>
       <groupId>org.keycloak.bom</groupId>
       <artifactId>keycloak-adapter-bom</artifactId>
-      <version>3.3.0.CR2</version>
+      <version>3.3.0.Final</version>
       <type>pom</type>
       <scope>import</scope>
     </dependency>
