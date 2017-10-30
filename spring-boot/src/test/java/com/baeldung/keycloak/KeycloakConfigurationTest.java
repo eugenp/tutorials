@@ -48,6 +48,4 @@ public class KeycloakConfigurationTest {
         assertNotNull(keycloakPrincipal.getKeycloakSecurityContext());
     }
 
- 
-
 }
