@@ -56,9 +56,6 @@ public class RunnableVsThreadTest {
 		  "SimpleThread executed using Thread");
 		thread.start();
 		thread.join();
-		
-		executorService.submit(new SimpleThread(
-		  "SimpleThread executed using ExecutorService")).get();
 	}
 	
 	@Test
