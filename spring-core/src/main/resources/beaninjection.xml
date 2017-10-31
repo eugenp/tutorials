@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="constructorBased" class="com.baeldung.beaninjection.ConstructorBasedInjection">
+		<constructor-arg ref="dependencyBean" />
+	</bean>
+
+	<bean id="setterBased" class="com.baeldung.beaninjection.SetterBasedInjection">
+		<property name="dependencyBean" ref="dependencyBean" />
+	</bean>
+
+	<bean id="dependencyBean" class="com.baeldung.beaninjection.DependencyBean">
+		<constructor-arg value="MyDependency" />
+	</bean>
+
+</beans>
