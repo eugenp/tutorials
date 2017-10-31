@@ -142,5 +142,6 @@ public class WaitingForThreadsToFinishTest {
             e.printStackTrace();
         }
 
+        WORKER_THREAD_POOL.shutdown();
     }
 }
