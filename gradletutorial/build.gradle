@@ -1,0 +1,35 @@
+allprojects {
+    repositories {
+        jcenter() 
+    }
+}
+
+
+subprojects {
+
+    version = '1.0'
+}
+
+apply plugin: 'eclipse'
+
+println 'This will be executed during the configuration phase.'
+
+task configured {
+    println 'This will also be executed during the configuration phase.'
+}
+
+task execFirstTest {
+    doLast {
+        println 'This will be executed during the execution phase.'
+    }
+}
+
+task execSecondTest {
+    doFirst {
+      println 'This will be executed first during the execution phase.'
+    }
+    doLast {
+      println 'This will be executed last during the execution phase.'
+    }
+    println 'This will be executed during the configuration phase as well.'
+}
