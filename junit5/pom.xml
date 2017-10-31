@@ -19,11 +19,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <junit.jupiter.version>5.0.0-RC2</junit.jupiter.version>
-        <junit.platform.version>1.0.0-RC2</junit.platform.version>
-        <junit.vintage.version>4.12.0-RC2</junit.vintage.version>
+        <junit.jupiter.version>5.0.1</junit.jupiter.version>
+        <junit.platform.version>1.0.1</junit.platform.version>
+        <junit.vintage.version>4.12.1</junit.vintage.version>
         <log4j2.version>2.8.2</log4j2.version>
         <h2.version>1.4.196</h2.version>
+        <mockito.version>2.11.0</mockito.version>
 
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
