@@ -1,13 +1,20 @@
 package org.baeldung.persistence.dao;
 
+import org.baeldung.persistence.model.Address_;
 import org.baeldung.persistence.model.User;
+import org.baeldung.persistence.model.User_;
 import org.baeldung.web.util.SearchOperation;
 import org.baeldung.web.util.SpecSearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.toMap;
 
 public final class UserSpecificationsBuilder {
 
@@ -48,6 +55,8 @@ public final class UserSpecificationsBuilder {
         if (params.size() == 0)
             return null;
 
+        Map<String, String> userAtts = entityAttributes(User_.class);
+        Map<String, String> addressAtts = entityAttributes(Address_.class);
         Specification<User> result = new UserSpecification(params.get(0));
 
         for (int i = 1; i < params.size(); i++) {
@@ -71,5 +80,11 @@ public final class UserSpecificationsBuilder {
     public final UserSpecificationsBuilder with(SpecSearchCriteria criteria) {
         params.add(criteria);
         return this;
+    }
+
+    private Map<String, String> entityAttributes(Class class_) {
+        return Arrays.stream(class_.getDeclaredFields())
+                .filter(t -> t.getGenericType() instanceof ParameterizedType)
+                .collect(toMap(f -> f.getName(), f -> ((ParameterizedType) f.getGenericType()).getActualTypeArguments()[1].getTypeName()));
     }
 }

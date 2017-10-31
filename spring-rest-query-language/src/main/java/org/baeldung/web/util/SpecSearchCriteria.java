@@ -51,6 +51,10 @@ public class SpecSearchCriteria {
         return key;
     }
 
+    public String key() {
+        return key;
+    }
+
     public void setKey(final String key) {
         this.key = key;
     }
