@@ -8,8 +8,8 @@ public abstract class Computer {
     protected Map<String, String> computerParts = new HashMap<>();
     
     public final void buildComputer() {
+         addMotherboard();   
          addProcessor();
-         addMotherboard();
          addMemory();
          addHardDrive();
          addGraphicCard();
