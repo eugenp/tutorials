@@ -30,7 +30,8 @@ public class BankAccount {
             this.accountNumber = accountNumber;
         }
 
-        //setters for optional parameters
+        //setters for optional parameters which returns this same builder
+        //to support fluent design
         public BankAccountBuilder withAge(int age) {
             this.age = age;
             return this;

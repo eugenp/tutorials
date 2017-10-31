@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class BuilderPatternTest {
+public class BuilderPatternIntegrationTest {
     @Test
     public void whenCreatingObjectThroughBuilder_thenObjectValid() {
         BankAccount newAccount = new BankAccount

@@ -2,11 +2,17 @@ package com.baeldung.creationaldp.abstractfactory;
 
 public class AbstractPatternDriver {
     public static void main(String[] args) {
+        AbstractFactory abstractFactory;
+        
         //creating a brown toy dog
-        AbstractFactory toyFactory = FactoryProvider.getFactory("Toy");
-        Toy toy = toyFactory.getToy("Dog");
-        AbstractFactory colorFactory = FactoryProvider.getFactory("Color");
-        Color color = colorFactory.getColor("Brown");
-        System.out.println("A " + toy.getToy() + " with " + color.getColor() + " color " + toy.makeSound());
+        abstractFactory = FactoryProvider.getFactory("Toy");
+        Toy toy = abstractFactory.getToy("Dog");
+        
+        abstractFactory = FactoryProvider.getFactory("Color");
+        Color color = abstractFactory.getColor("Brown");
+        
+        String result = "A " + toy.getType() + " with " + color.getColor() + " color " + toy.makeSound();
+        
+        System.out.println(result);
     }
 }

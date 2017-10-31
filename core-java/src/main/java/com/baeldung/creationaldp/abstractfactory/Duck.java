@@ -3,7 +3,7 @@ package com.baeldung.creationaldp.abstractfactory;
 public class Duck implements Toy {
 
     @Override
-    public String getToy() {
+    public String getType() {
         return "Duck";
     }
 
