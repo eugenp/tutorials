@@ -49,8 +49,8 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
-		<module>cas-server</module>
-		<module>cas-secured-app</module>
+		<module>cas/cas-server</module>
+		<module>cas/cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -85,7 +85,7 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <!--         <module>java-cassandra</module> -->
+        <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
@@ -124,11 +124,11 @@
         <module>pdf</module>
         <module>protobuffer</module>
 
-        <module>querydsl</module>
+        <module>persistence-modules/querydsl</module>
 
         <!-- <module>raml</module> -->
         <module>reactor-core</module>
-        <module>redis</module>
+        <module>persistence-modules/redis</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>resteasy</module>
@@ -136,7 +136,7 @@
         <module>spring-swagger-codegen</module>
 
         <module>selenium-junit-testng</module>
-        <module>solr</module>
+        <module>persistence-modules/solr</module>
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
         <module>spring-5-mvc</module>
@@ -149,28 +149,30 @@
         <module>spring-batch</module>
         <module>spring-bom</module>
         <module>spring-boot</module>
+        <module>spring-boot-bootstrap</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
         <module>spring-aop</module>
-        <module>spring-data-cassandra</module>
+        <module>persistence-modules/spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-dynamodb</module>
+        <module>persistence-modules/spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-mongodb</module>
-        <module>spring-data-neo4j</module>
-        <module>spring-data-redis</module>
+        <module>persistence-modules/spring-data-neo4j</module>
+        <module>persistence-modules/spring-data-redis</module>
         <module>spring-data-rest</module>
-        <module>spring-data-solr</module>
+        <module>persistence-modules/spring-data-solr</module>
         <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
-        <module>spring-hibernate3</module>
+        <module>persistence-modules/spring-hibernate-3</module>
         <module>spring-hibernate4</module>
-        <module>spring-hibernate5</module>
+        <module>persistence-modules/spring-hibernate-5</module>
         <module>spring-integration</module>
         <module>spring-jersey</module>
+        <module>spring-jmeter-jenkins</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>spring-jpa</module>
@@ -243,11 +245,11 @@
 
         <module>rabbitmq</module>
         <module>vertx</module>
-        <module>spring-data-gemfire</module>
+        <module>persistence-modules/spring-data-gemfire</module>
         <module>mybatis</module>
         <module>spring-drools</module>
         <module>drools</module>
-        <module>liquibase</module>
+        <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>mockserver</module>
         <module>undertow</module>
