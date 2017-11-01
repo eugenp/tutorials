@@ -1,4 +1,4 @@
-package com.forketyfork.guest.springmvc.model;
+package com.stackify.guest.springmvc.model;
 
 public class LoginData {
 

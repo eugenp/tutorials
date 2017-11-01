@@ -1,4 +1,4 @@
-package com.forketyfork.guest.springmvc.web;
+package com.stackify.guest.springmvc.web;
 
 public class MyOutputResource {
 
