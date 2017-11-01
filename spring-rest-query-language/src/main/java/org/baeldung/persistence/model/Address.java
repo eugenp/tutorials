@@ -2,10 +2,10 @@ package org.baeldung.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.google.common.base.MoreObjects;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -17,6 +17,8 @@ public class Address {
     private String city;
     private String state;
     private String zipcode;
+    private boolean checked;
+    private LocalDate dateOfOccupation;
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonBackReference
     private User user;
@@ -68,13 +70,32 @@ public class Address {
         this.zipcode = zipcode;
     }
 
-    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Column(name = "CHECKED")
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    @Column(name = "DATE_OF_OCCUPATION")
+    public LocalDate getDateOfOccupation() {
+        return dateOfOccupation;
+    }
+
+    public void setDateOfOccupation(LocalDate dateOfOccupation) {
+        this.dateOfOccupation = dateOfOccupation;
     }
 
     @Override
@@ -104,4 +125,5 @@ public class Address {
                 .add("zipcode", zipcode)
                 .toString();
     }
+
 }

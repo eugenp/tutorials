@@ -24,9 +24,7 @@ public class User {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonManagedReference
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ADDRESS_ID")
-    @Fetch(FetchMode.JOIN)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Address address;
 
     public User() {

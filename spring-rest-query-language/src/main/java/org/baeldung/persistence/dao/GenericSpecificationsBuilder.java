@@ -21,11 +21,11 @@ public class GenericSpecificationsBuilder<U> {
         this.params = new ArrayList<>();
     }
 
-    public final GenericSpecificationsBuilder<U> with(final String key, final String operation, final Object value, final String prefix, final String suffix) {
+    public final GenericSpecificationsBuilder<U> with(final String key, final String operation, final Comparable value, final String prefix, final String suffix) {
         return with(null, key, operation, value, prefix, suffix);
     }
 
-    public final GenericSpecificationsBuilder<U> with(final String precedenceIndicator, final String key, final String operation, final Object value, final String prefix, final String suffix) {
+    public final GenericSpecificationsBuilder<U> with(final String precedenceIndicator, final String key, final String operation, final Comparable value, final String prefix, final String suffix) {
         SearchOperation op = SearchOperation.getSimpleOperation(operation.charAt(0));
         if (op != null) {
             if (op == SearchOperation.EQUALITY) // the operation may be complex operation
