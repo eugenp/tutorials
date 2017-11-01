@@ -1,9 +1,8 @@
 package com.baeldung.springbootadminserver.configs;
 
-import de.codecentric.boot.admin.notify.Notifier;
+import de.codecentric.boot.admin.notify.LoggingNotifier;
 import de.codecentric.boot.admin.notify.RemindingNotifier;
 import de.codecentric.boot.admin.notify.filter.FilteringNotifier;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -16,11 +15,16 @@ import java.util.concurrent.TimeUnit;
 @EnableScheduling
 public class NotifierConfiguration {
 
-    @Autowired private Notifier notifier;
+    //    @Autowired private Notifier notifier;
+
+    @Bean
+    public LoggingNotifier notifier() {
+        return new LoggingNotifier();
+    }
 
     @Bean
     public FilteringNotifier filteringNotifier() {
-        return new FilteringNotifier(notifier);
+        return new FilteringNotifier(notifier());
     }
 
     @Bean
