@@ -1,4 +1,4 @@
-package com.forketyfork.guest.springmvc.web;
+package com.stackify.guest.springmvc.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
