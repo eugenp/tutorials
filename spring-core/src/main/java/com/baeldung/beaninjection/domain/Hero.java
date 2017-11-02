@@ -22,4 +22,14 @@ public class Hero {
     }
 
 
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "sword=" + sword +
+                ", shield=" + shield +
+                ", armor=" + armor +
+                '}';
+    }
+
+
 }
