@@ -13,6 +13,8 @@ import java.util.Set;
 
 public class EchoServer {
 
+    private static final String POISON_PILL = "POISON_PILL";
+
     public static void main(String[] args) throws IOException {
         Selector selector = Selector.open();
         ServerSocketChannel serverSocket = ServerSocketChannel.open();
@@ -30,21 +32,34 @@ public class EchoServer {
                 SelectionKey key = iter.next();
 
                 if (key.isAcceptable()) {
-                    SocketChannel client = serverSocket.accept();
-                    client.configureBlocking(false);
-                    client.register(selector, SelectionKey.OP_READ);
+                    register(selector, serverSocket);
                 }
 
                 if (key.isReadable()) {
-                    SocketChannel client = (SocketChannel) key.channel();
-                    client.read(buffer);
-                    buffer.flip();
-                    client.write(buffer);
-                    buffer.clear();
+                    answerWithEcho(buffer, key);
                 }
                 iter.remove();
             }
         }
+    }
+
+    private static void answerWithEcho(ByteBuffer buffer, SelectionKey key) throws IOException {
+        SocketChannel client = (SocketChannel) key.channel();
+        client.read(buffer);
+        if (new String(buffer.array()).trim().equals(POISON_PILL)) {
+            client.close();
+            System.out.println("Not accepting client messages anymore");
+        }
+
+        buffer.flip();
+        client.write(buffer);
+        buffer.clear();
+    }
+
+    private static void register(Selector selector, ServerSocketChannel serverSocket) throws IOException {
+        SocketChannel client = serverSocket.accept();
+        client.configureBlocking(false);
+        client.register(selector, SelectionKey.OP_READ);
     }
 
     public static Process start() throws IOException, InterruptedException {

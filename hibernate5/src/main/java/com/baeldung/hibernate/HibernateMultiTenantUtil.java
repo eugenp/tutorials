@@ -68,7 +68,7 @@ public class HibernateMultiTenantUtil {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
             .getContextClassLoader()
-            .getResource("hibernate.properties");
+            .getResource("hibernate-multitenancy.properties");
         FileInputStream inputStream = new FileInputStream(propertiesURL.getFile());
         properties.load(inputStream);
         System.out.println("LOADED PROPERTIES FROM hibernate.properties");
