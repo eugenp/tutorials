@@ -1,5 +1,6 @@
 package com.baeldung.beaninjection.domain;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +13,12 @@ public class Hero {
     public Hero(Sword sword, Shield shield){
         this.shield = shield;
         this.sword = sword;
+    }
+
+
+    @Autowired(required = false)
+    public void setArmor(Armor armor) {
+        this.armor = armor;
     }
 
 
