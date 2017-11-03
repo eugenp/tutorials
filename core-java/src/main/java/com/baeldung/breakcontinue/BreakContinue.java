@@ -1,123 +1,138 @@
 package com.baeldung.breakcontinue;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * @author Santosh
  *
  */
 public class BreakContinue {
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-        unlabeledBreak();
-        unlabeledBreakMultipleLoops();
-        labeledBreak();
-        unlabeledContinue();
-        labeledContinue();
-    }
-
-    private static void unlabeledBreak() {
-        System.out.println("#### unlabeledBreak");
+    public static int unlabeledBreak() {
         String searchName = "Wilson";
-        boolean foundName = false;
-        String[] names = { "John", "Peter", "Robert", "Wilson", "Anthony", "Donald", "Richard" };
+        int counter = 0;
+        List<String> names = Arrays.asList("John", "Peter", "Robert", "Wilson", "Anthony", "Donald", "Richard");
 
         for (String name : names) {
+            counter++;
             if (name.equalsIgnoreCase(searchName)) {
-                foundName = true;
                 break;
             }
         }
 
-        if (foundName) {
-            System.out.println("Found the name in the array");
-        } else {
-            System.out.println(searchName + " could not be found in the array");
-        }
+        return counter;
     }
 
-    private static void unlabeledBreakMultipleLoops() {
-        System.out.println("#### unlabeledBreakMultipleLoops");
+    public static int unlabeledBreakNestedLoops() {
         String searchName = "Wilson";
-        boolean foundName = false;
-        String[][] names = { { "John", "Peter", "Robert", "Wilson" }, { "Anthony", "Donald", "Richard", "Arnold" }, { "Wilson", "Michael", "Stephen", "Ryan" } };
+        int counter = 0;
+        Map<String, List<String>> nameMap = new HashMap<>();
+        nameMap.put("Grade1", Arrays.asList("John", "Peter", "Robert", "Wilson"));
+        nameMap.put("Grade2", Arrays.asList("Anthony", "Donald", "Richard", "Arnold"));
+        nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Stephen", "Ryan"));
 
-        for (String[] nameRow : names) {
-            for (String name : nameRow) {
+        Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
+            .iterator();
+        Entry<String, List<String>> entry = null;
+        List<String> names = null;
+        while (iterator.hasNext()) {
+            entry = iterator.next();
+            names = entry.getValue();
+            for (String name : names) {
                 if (name.equalsIgnoreCase(searchName)) {
-                    foundName = true;
+                    counter++;
                     break;
                 }
             }
-            if (foundName) {
-                System.out.println("Found the name in the array");
-                foundName = false;
-            } else {
-                System.out.println(searchName + " could not be found in the array");
-            }
         }
+
+        return counter;
     }
 
-    private static void labeledBreak() {
-        System.out.println("#### labeledBreak");
+    public static int labeledBreak() {
         String searchName = "Wilson";
-        boolean foundName = false;
-        String[][] names = { { "John", "Peter", "Robert", "Wilson" }, { "Anthony", "Donald", "Richard", "Arnold" }, { "Wilson", "Michael", "Stephen", "Ryan" } };
+        int counter = 0;
+        Map<String, List<String>> nameMap = new HashMap<>();
+        nameMap.put("Grade1", Arrays.asList("John", "Peter", "Robert", "Wilson"));
+        nameMap.put("Grade2", Arrays.asList("Anthony", "Donald", "Richard", "Arnold"));
+        nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Stephen", "Ryan"));
 
+        Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
+            .iterator();
+        Entry<String, List<String>> entry = null;
+        List<String> names = null;
         compare: 
-        for (String[] nameRow : names) {
-            for (String name : nameRow) {
+        while (iterator.hasNext()) {
+            entry = iterator.next();
+            names = entry.getValue();
+            for (String name : names) {
                 if (name.equalsIgnoreCase(searchName)) {
-                    foundName = true;
+                    counter++;
                     break compare;
                 }
             }
         }
 
-        if (foundName) {
-            System.out.println("Found the name in the array");
-            foundName = false;
-        } else {
-            System.out.println(searchName + " could not be found in the array");
-        }
-
+        return counter;
     }
 
-    private static void unlabeledContinue() {
-        System.out.println("#### unlabeledContinue");
+    public static int unlabeledContinue() {
         String searchName = "Wilson";
-        int totalMatches = 0;
-        String[][] names = { { "John", "Wilson", "Robert", "Wilson" }, { "Anthony", "Donald", "Wilson", "Arnold" }, { "Wilson", "Michael", "Wilson", "Ryan" } };
+        int counter = 0;
+        Map<String, List<String>> nameMap = new HashMap<>();
+        nameMap.put("Grade1", Arrays.asList("John", "Wilson", "Robert", "Wilson"));
+        nameMap.put("Grade2", Arrays.asList("Anthony", "Donald", "Wilson", "Arnold"));
+        nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Wilson", "Ryan"));
 
-        for (String[] nameRow : names) {
-            for (String name : nameRow) {
+        Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
+            .iterator();
+        Entry<String, List<String>> entry = null;
+        List<String> names = null;
+        while (iterator.hasNext()) {
+            entry = iterator.next();
+            names = entry.getValue();
+            for (String name : names) {
                 if (!name.equalsIgnoreCase(searchName)) {
                     continue;
                 }
 
-                totalMatches++;
+                counter++;
             }
         }
 
-        System.out.println("The name " + searchName + " was encountered " + totalMatches + " times");
+        return counter;
     }
 
-    private static void labeledContinue() {
-        System.out.println("#### labeledContinue");
+    public static int labeledContinue() {
         String searchName = "Wilson";
-        int rowNum = 0;
-        String[][] names = { { "John", "Wilson", "Robert", "Wilson" }, { "Anthony", "Donald", "Wilson", "Arnold" }, { "Wilson", "Michael", "Wilson", "Ryan" } };
+        int counter = 0;
+        Map<String, List<String>> nameMap = new HashMap<>();
+        nameMap.put("Grade1", Arrays.asList("John", "Wilson", "Robert", "Wilson"));
+        nameMap.put("Grade2", Arrays.asList("Anthony", "Donald", "Wilson", "Arnold"));
+        nameMap.put("Grade3", Arrays.asList("Wilson", "Michael", "Wilson", "Ryan"));
 
-        compare: for (String[] nameRow : names) {
-            rowNum++;
-            for (String name : nameRow) {
+        Iterator<Entry<String, List<String>>> iterator = nameMap.entrySet()
+            .iterator();
+        Entry<String, List<String>> entry = null;
+        List<String> names = null;
+        compare: 
+        while (iterator.hasNext()) {
+            entry = iterator.next();
+            names = entry.getValue();
+            for (String name : names) {
                 if (name.equalsIgnoreCase(searchName)) {
-                    System.out.println("The name " + searchName + " is present in row number " + rowNum + ", hence skipping the current row.");
+                    counter++;
                     continue compare;
                 }
             }
         }
+
+        return counter;
     }
 
 }
