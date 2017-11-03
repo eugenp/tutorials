@@ -1,11 +1,10 @@
 package com.baeldung.setterdi;
 
+import com.baeldung.setterdi.domain.Car;
+import com.baeldung.setterdi.domain.MotorCycle;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.baeldung.setterdi.Config;
-import com.baeldung.setterdi.domain.Car;
 
 public class SpringRunner {
     public static void main(String[] args) {
@@ -16,6 +15,12 @@ public class SpringRunner {
         toyota = getCarFromJavaConfig();
 
         System.out.println(toyota);
+
+        MotorCycle suzuki = getMotorCycleFromJavaConfig();
+
+        System.out.println(suzuki);
+
+
 
     }
 
@@ -29,5 +34,10 @@ public class SpringRunner {
         ApplicationContext context = new ClassPathXmlApplicationContext("setterdi.xml");
 
         return context.getBean(Car.class);
+    }
+
+    private static MotorCycle getMotorCycleFromJavaConfig() {
+        ApplicationContext context = new AnnotationConfigApplicationContext((Config.class));
+        return context.getBean(MotorCycle.class);
     }
 }
