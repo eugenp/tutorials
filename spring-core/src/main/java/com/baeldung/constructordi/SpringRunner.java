@@ -1,20 +1,22 @@
 package com.baeldung.constructordi;
 
+import com.baeldung.constructordi.domain.Car;
+import com.baeldung.constructordi.domain.MotorCycle;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.constructordi.domain.Car;
-
 public class SpringRunner {
     public static void main(String[] args) {
-        Car toyota = getCarFromXml();
 
-        System.out.println(toyota);
+        MotorCycle suzuki = getMotorCycleFromJavaConfig();
 
-        toyota = getCarFromJavaConfig();
+        System.out.println(suzuki);
+    }
 
-        System.out.println(toyota);
+    private static MotorCycle getMotorCycleFromJavaConfig() {
+        ApplicationContext context = new AnnotationConfigApplicationContext((Config.class));
+        return context.getBean(MotorCycle.class);
     }
 
     private static Car getCarFromJavaConfig() {
@@ -28,4 +30,5 @@ public class SpringRunner {
 
         return context.getBean(Car.class);
     }
+
 }
