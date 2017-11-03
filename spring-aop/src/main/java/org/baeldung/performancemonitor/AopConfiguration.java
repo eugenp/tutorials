@@ -30,7 +30,7 @@ public class AopConfiguration {
     @Bean
     public Advisor performanceMonitorAdvisor() {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("com.baeldung.performancemonitor.AopConfiguration.monitor()");
+        pointcut.setExpression("org.baeldung.performancemonitor.AopConfiguration.monitor()");
         return new DefaultPointcutAdvisor(pointcut, performanceMonitorInterceptor());
     }
     
@@ -52,7 +52,7 @@ public class AopConfiguration {
     @Bean
     public Advisor myPerformanceMonitorAdvisor() {
         AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
-        pointcut.setExpression("com.baeldung.performancemonitor.AopConfiguration.myMonitor()");
+        pointcut.setExpression("org.baeldung.performancemonitor.AopConfiguration.myMonitor()");
         return new DefaultPointcutAdvisor(pointcut, myPerformanceMonitorInterceptor());
     }
     
