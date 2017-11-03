@@ -17,7 +17,7 @@ public class CompactStringDemo {
         startTime = System.currentTimeMillis();
         String appended = (String) strings.stream().limit(100_000)
           .reduce("", (left, right) -> left.toString() + right.toString());
-        totalTime = System.currentTimeMillis() - totalTime;
+        totalTime = System.currentTimeMillis() - startTime;
         System.out.println("Created string of length " + appended.length() 
           + " in " + totalTime + " ms.");
     }

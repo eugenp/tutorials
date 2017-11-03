@@ -5,9 +5,9 @@ import java.util.Set;
 
 public class CycleDetectionByHashing {
 
-    public static <T> boolean detectCycle(Node<T> head) {
+    public static <T> CycleDetectionResult<T> detectCycle(Node<T> head) {
         if (head == null) {
-            return false;
+            return new CycleDetectionResult<>(false, null);
         }
 
         Set<Node<T>> set = new HashSet<>();
@@ -15,13 +15,13 @@ public class CycleDetectionByHashing {
 
         while (node != null) {
             if (set.contains(node)) {
-                return true;
+                return new CycleDetectionResult<>(true, node);
             }
             set.add(node);
             node = node.next;
         }
 
-        return false;
+        return new CycleDetectionResult<>(false, null);
     }
 
 }
