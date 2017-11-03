@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="homeAddress" class="com.baeldung.model.UserAddress">
+        <constructor-arg index="0" value="11 NY city" />
+        <constructor-arg index="1" value="homeAddress" />
+    </bean>
+
+    <bean id="user" class="com.baeldung.model.User">
+         <property name="uid" value="123231xxzzxx12312" />
+         <property name="name" value="testUser" />
+         <property name="userAddress" ref="homeAddress" />
+    </bean>
+</beans>
