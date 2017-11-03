@@ -16,10 +16,10 @@ import java.time.Month;
 @EnableAspectJAutoProxy
 public class AopConfiguration {
     
-    @Pointcut("execution(public String com.baeldung.performancemonitor.PersonService.getFullName(..))")
+    @Pointcut("execution(public String org.baeldung.performancemonitor.PersonService.getFullName(..))")
     public void monitor() { }
     
-    @Pointcut("execution(public int com.baeldung.performancemonitor.PersonService.getAge(..))")
+    @Pointcut("execution(public int org.baeldung.performancemonitor.PersonService.getAge(..))")
     public void myMonitor() { }
     
     @Bean
