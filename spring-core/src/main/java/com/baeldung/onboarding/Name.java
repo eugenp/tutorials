@@ -1,8 +1,5 @@
 package com.baeldung.onboarding;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class Name {
 	private String firstName;
 	private String lastName;
