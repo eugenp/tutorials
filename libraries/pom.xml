@@ -622,6 +622,21 @@
 	    <artifactId>bcpkix-jdk15on</artifactId>
 	    <version>1.58</version>
 	</dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-jackson2</artifactId>
+            <version>1.23.0</version>
+        </dependency>
+        <dependency>
+        <groupId>com.google.http-client</groupId>
+        <artifactId>google-http-client-gson</artifactId>
+        <version>1.23.0</version>
+      </dependency>
     </dependencies>
     <repositories>
         <repository>
