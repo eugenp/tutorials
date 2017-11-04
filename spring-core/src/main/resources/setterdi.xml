@@ -21,4 +21,10 @@
     <bean id="trailer" class="com.baeldung.setterdi.domain.Trailer">
     </bean>
 
+    <bean id="address" class="com.baeldung.setterdi.Address" />
+
+    <bean id="person" class="com.baeldung.setterdi.Person">
+        <property name="address" ref="address" />
+    </bean>
+
 </beans>
