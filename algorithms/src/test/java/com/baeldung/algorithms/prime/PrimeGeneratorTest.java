@@ -1,6 +1,6 @@
 package com.baeldung.algorithms.prime;
 
-import static com.baeldung.prime.PrimeGenerator.*;
+import static com.baeldung.algorithms.prime.PrimeGenerator.*;
 
 import java.util.Arrays;
 import java.util.List;
