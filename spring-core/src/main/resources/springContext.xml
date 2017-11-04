@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd ">
+
+	<bean id="car" class="com.baeldung.spring.beans.Car">
+		<constructor-arg>
+			<ref bean="tyre" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="truck" class="com.baeldung.spring.beans.Truck">
+		<property name="tyre" ref="tyre" />
+	</bean>
+
+	<bean id="tyre" class="com.baeldung.spring.beans.Tyre">
+		<property name="type" value="High Performance" />
+		<property name="width" value="175 mm" />
+	</bean>
+
+</beans>
