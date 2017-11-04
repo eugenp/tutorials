@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
-import com.baeldung.junit5.mockito.Greetings;
+import com.baeldung.junit5.Greetings;
 
 @RunWith(JUnitPlatform.class)
 public class GreetingsTest {
