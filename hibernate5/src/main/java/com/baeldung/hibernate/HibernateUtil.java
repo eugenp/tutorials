@@ -3,6 +3,7 @@ package com.baeldung.hibernate;
 import com.baeldung.hibernate.pojo.Employee;
 import com.baeldung.hibernate.pojo.EntityDescription;
 import com.baeldung.hibernate.pojo.Phone;
+import com.baeldung.hibernate.pojo.TemporalValues;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -31,6 +32,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Employee.class);
         metadataSources.addAnnotatedClass(Phone.class);
         metadataSources.addAnnotatedClass(EntityDescription.class);
+        metadataSources.addAnnotatedClass(TemporalValues.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
