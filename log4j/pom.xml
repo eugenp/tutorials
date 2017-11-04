@@ -26,12 +26,6 @@
             <version>${log4j.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
         <!--log4j2 dependencies -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
