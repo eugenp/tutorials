@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.baeldung.junit5.mockito.Greetings;
+import com.baeldung.junit5.Greetings;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SpringTestConfiguration.class })
