@@ -32,4 +32,15 @@ public class Hero {
     }
 
 
+    public Shield getShield() {
+        return shield;
+    }
+
+    public Sword getSword() {
+        return sword;
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
 }
