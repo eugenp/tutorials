@@ -1,23 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.baeldung.googlehttpclientguide;
 
+import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.Key;
 import java.util.List;
 
-/**
- *
- * @author Hugo
- */
-  public  class Video {
-    @Key public String id;
+public class Video extends GenericJson {
 
-    @Key public List<String> tags;
+    @Key
+    public String id;
 
-    @Key public String title;
+    @Key
+    public List<String> tags;
 
-    @Key public String url;
-  }
+    @Key
+    public String title;
+
+    @Key
+    public String url;
+}
