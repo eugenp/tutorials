@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context.xml"})
-public class AuthenticationServiceXmlConfigTest {
+public class UserServiceXmlConfigUnitTest {
     @Autowired
-    private AuthenticationService authenticationService;
+    private UserService userService;
 
     @Test
-    public void givenApplicationContext_whenAuthenticationServiceIsInstantiated_thenDependenciesShouldNotBeNull() {
-        assertNotNull(authenticationService);
-        assertNotNull(authenticationService.getUserService());
+    public void givenApplicationContext_whenUserServiceIsInstantiated_thenDependenciesShouldNotBeNull() {
+        assertNotNull(userService);
+        assertNotNull(userService.getUserRepository());
     }
 }

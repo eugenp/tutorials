@@ -3,22 +3,23 @@ package com.baeldung.di;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-public class OrderServiceAnnotationConfigTest {
+@TestConfiguration
+public class UserServiceAnnotationConfigUnitTest {
     @Autowired
-    private OrderService orderService;
+    private UserService userService;
 
     @Test
-    public void givenApplicationConfig_whenOrderServiceIsInstantiated_thenDependenciesShouldNotBeNull() {
-        assertNotNull(orderService);
-        assertNotNull(orderService.getUserService());
-        assertNotNull(orderService.getProductService());
+    public void givenApplicationConfig_whenUserServiceIsInstantiated_thenDependenciesShouldNotBeNull() {
+        assertNotNull(userService);
+        assertNotNull(userService.getUserRepository());
     }
 
     @Configuration
