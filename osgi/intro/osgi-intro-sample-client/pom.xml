@@ -9,8 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- mvn:com.baeldung/osgi-intro-sample-client/1.0-SNAPSHOT -->
     <artifactId>osgi-intro-sample-client</artifactId>
 
+    <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
@@ -21,7 +23,6 @@
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>org.osgi.core</artifactId>
-            <version>5.0.0</version>
         </dependency>
     </dependencies>
 

@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT -->
+    <!-- mvn:com.baeldung/osgi-intro-sample-service/1.0-SNAPSHOT -->
     <parent>
         <artifactId>osgi-intro</artifactId>
         <groupId>com.baeldung</groupId>

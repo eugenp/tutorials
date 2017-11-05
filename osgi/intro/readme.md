@@ -64,13 +64,8 @@ can be logged to console
 
 ### Bundle deploy
 
-
-install mvn:com.baeldung:osgi-intro-sample-activator:1.0-SNAPSHOT
-
-install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT 
-
-
-mvn:org.apache.servicemix.nmr/org.apache.servicemix.nmr.api/1.0.0-m2
+    install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT
+    install mvn:com.baeldung/osgi-intro-sample-service/1.0-SNAPSHOT
 
 Eclipse's Equinox
 ====
