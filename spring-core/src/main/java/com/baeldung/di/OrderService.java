@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
-    private final UserService userService;
-    private final ProductService productService;
+    private UserService userService;
+    private ProductService productService;
 
     public OrderService(UserService userService, ProductService productService) {
         this.userService = userService;
