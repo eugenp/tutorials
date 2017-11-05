@@ -10,4 +10,8 @@ public class PersonController {
         this.personService = personService;
     }
 
+    public PersonService getPersonService() {
+        return this.personService;
+    }
+
 }
