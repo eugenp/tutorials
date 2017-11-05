@@ -4,7 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="orderService" class="spring.core.ioc.service.OrderService">
+    <bean id="userRepository" class="com.baeldung.di.UserRepository"/>
+    <bean id="productService" class="com.baeldung.di.ProductService"/>
+
+    <bean id="userService" class="com.baeldung.di.UserService">
+        <constructor-arg ref="userRepository"></constructor-arg>
+    </bean>
+
+    <bean id="orderService" class="com.baeldung.di.OrderService">
         <constructor-arg ref="userService"></constructor-arg>
         <constructor-arg ref="productService"></constructor-arg>
     </bean>
@@ -12,7 +19,4 @@
     <bean id="authenticationService" class="com.baeldung.di.AuthenticationService">
         <property name="userService" ref="userService"/>
     </bean>
-
-    <bean id="userService" class="com.baeldung.di.UserService"/>
-    <bean id="productService" class="com.baeldung.di.ProductService"/>
 </beans>

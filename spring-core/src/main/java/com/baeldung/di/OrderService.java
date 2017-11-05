@@ -11,4 +11,12 @@ public class OrderService {
         this.userService = userService;
         this.productService = productService;
     }
+
+    UserService getUserService() {
+        return userService;
+    }
+
+    ProductService getProductService() {
+        return productService;
+    }
 }
