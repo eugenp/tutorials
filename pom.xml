@@ -49,8 +49,8 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
-		<module>cas-server</module>
-		<module>cas-secured-app</module>
+		<module>cas/cas-server</module>
+		<module>cas/cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -256,6 +256,7 @@
         <module>vertx-and-rxjava</module>
         <module>saas</module>
         <module>deeplearning4j</module>
+        <module>spring-boot-admin</module>
     </modules>
 
     <dependencies>

@@ -88,6 +88,19 @@
             <version>${jbehave.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-apache</artifactId>
+            <version>${karate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-junit4</artifactId>
+            <version>${karate.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -150,6 +163,7 @@
         <rest-assured.version>2.9.0</rest-assured.version>
         <cucumber.version>1.2.5</cucumber.version>
         <wiremock.version>2.4.1</wiremock.version>
+        <karate.version>0.6.1</karate.version>
 
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
