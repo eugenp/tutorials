@@ -1,7 +1,7 @@
 package com.baeldung.stringpool;
 
-import org.junit.Assert;
 import org.junit.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class StringPoolUnitTest {
 
@@ -10,7 +10,7 @@ public class StringPoolUnitTest {
         String constantString1 = "Baeldung";
         String constantString2 = "Baeldung";
 
-        Assert.assertTrue(constantString1 == constantString2);
+        assertThat(constantString1).isSameAs(constantString2);
     }
 
     @Test
@@ -18,7 +18,7 @@ public class StringPoolUnitTest {
         String newString1 = new String("Baeldung");
         String newString2 = new String("Baeldung");
 
-        Assert.assertFalse(newString1 == newString2);
+        assertThat(newString1).isNotSameAs(newString2);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class StringPoolUnitTest {
         String constantString = "Baeldung";
         String newString = new String("Baeldung");
 
-        Assert.assertFalse(constantString == newString);
+        assertThat(constantString).isNotSameAs(newString);
     }
 
     @Test
@@ -34,10 +34,10 @@ public class StringPoolUnitTest {
         String constantString = "interned Baeldung";
         String newString = new String("interned Baeldung");
 
-        Assert.assertFalse(constantString == newString);
+        assertThat(constantString).isNotSameAs(newString);
 
         String internedString = newString.intern();
 
-        Assert.assertTrue(constantString == internedString);
+        assertThat(constantString).isSameAs(internedString);
     }
 }
