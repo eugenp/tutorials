@@ -1,4 +1,4 @@
-package org.baeldung.converter;
+package org.baeldung.boot.converter;
 
 
 import com.baeldung.toggle.Employee;
