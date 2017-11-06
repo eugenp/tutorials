@@ -12,11 +12,11 @@
 	<description>This is a simple application demonstrating integration between Keycloak and Spring Boot.</description>
 
 	<parent>
-        <artifactId>parent-boot-5</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
-    </parent>
+		<groupId>parent-boot-5</groupId>
+		<artifactId>com.baeldung</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-boot-5</relativePath>
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
