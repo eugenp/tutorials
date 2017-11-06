@@ -249,7 +249,7 @@
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                     </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
+
                 </configuration>
             </plugin>
 
