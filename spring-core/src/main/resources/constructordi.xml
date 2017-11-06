@@ -17,4 +17,11 @@
         <constructor-arg value="sliding" />
     </bean>
 
+    <bean id="personService" class="com.baeldung.constructordi.PersonService" />
+
+    <bean id="personController" class="com.baeldung.constructordi.PersonController">
+        <constructor-arg ref="personService" type="com.baeldung.constructordi.PersonService">
+        </constructor-arg>
+    </bean>
+
 </beans>
