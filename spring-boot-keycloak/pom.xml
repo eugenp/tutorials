@@ -12,8 +12,8 @@
 	<description>This is a simple application demonstrating integration between Keycloak and Spring Boot.</description>
 
 	<parent>
-		<groupId>parent-boot-4</groupId>
-		<artifactId>com.baeldung</artifactId>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-4</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-4</relativePath>
 	</parent>
