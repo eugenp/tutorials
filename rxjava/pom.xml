@@ -26,6 +26,12 @@
         </dependency>
 
         <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava-math</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>1.7.0</version>

@@ -15,5 +15,6 @@
 - [Data Classes in Kotlin](http://www.baeldung.com/kotlin-data-classes)
 - [Delegated Properties in Kotlin](http://www.baeldung.com/kotlin-delegated-properties)
 - [Sealed Classes in Kotlin](http://www.baeldung.com/kotlin-sealed-classes)
+- [JUnit 5 for Kotlin Developers](http://www.baeldung.com/junit-5-kotlin)
 
 
