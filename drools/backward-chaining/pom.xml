@@ -4,14 +4,14 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>drools-backward-chaining</artifactId>
-	<version>1.0</version>
-	<name>drools-backward-chaining</name>
-
+	<name>backward-chaining</name>
+	<artifactId>backward-chaining</artifactId>
+	
 	<parent>
 		<groupId>com.baeldung</groupId>
 		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 
 	<properties>
