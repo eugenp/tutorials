@@ -25,21 +25,21 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
-                        <Bundle-Name>${project.artifactId}</Bundle-Name>
-                        <Bundle-Version>${project.version}</Bundle-Version>
-                        <Bundle-Activator>com.baeldung.osgi.sample.service.implementation.GreeterImpl</Bundle-Activator>
-                        <Private-Package>com.baeldung.osgi.sample.service.implementation</Private-Package>
-                        <Export-Package>com.baeldung.osgi.sample.service.definition</Export-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
+<plugin>
+    <groupId>org.apache.felix</groupId>
+    <artifactId>maven-bundle-plugin</artifactId>
+    <extensions>true</extensions>
+    <configuration>
+        <instructions>
+            <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Name>${project.artifactId}</Bundle-Name>
+            <Bundle-Version>${project.version}</Bundle-Version>
+            <Bundle-Activator>com.baeldung.osgi.sample.service.implementation.GreeterImpl</Bundle-Activator>
+            <Private-Package>com.baeldung.osgi.sample.service.implementation</Private-Package>
+            <Export-Package>com.baeldung.osgi.sample.service.definition</Export-Package>
+        </instructions>
+    </configuration>
+</plugin>
         </plugins>
     </build>
 

@@ -26,7 +26,7 @@ public class GreeterImpl implements Greeter, BundleActivator {
     }
 
     @Override public void stop(BundleContext context) throws Exception {
-        System.out.println("Registering service.");
+        System.out.println("Unregistering service.");
         registration.unregister();
     }
 }

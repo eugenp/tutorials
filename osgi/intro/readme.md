@@ -64,7 +64,7 @@ can be logged to console
 
 ### Bundle deploy
 
-    install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT
+    bundle:install mvn:com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT
     install mvn:com.baeldung/osgi-intro-sample-service/1.0-SNAPSHOT
 
 Eclipse's Equinox

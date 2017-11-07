@@ -15,15 +15,15 @@
     <packaging>bundle</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.baeldung</groupId>
-            <artifactId>osgi-intro-sample-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
-        </dependency>
+<dependency>
+    <groupId>com.baeldung</groupId>
+    <artifactId>osgi-intro-sample-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+<dependency>
+    <groupId>org.osgi</groupId>
+    <artifactId>org.osgi.core</artifactId>
+</dependency>
     </dependencies>
 
     <build>
