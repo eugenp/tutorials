@@ -17,12 +17,12 @@ import java.lang.reflect.Type;
  *
  */
 public class MyStompSessionHandler extends StompSessionHandlerAdapter {
-    
+
     private Logger logger = Logger.getLogger(MyStompSessionHandler.class);
-    
+
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
-        logger.info("New session established : "+session.getSessionId());
+        logger.info("New session established : " + session.getSessionId());
         session.subscribe("/topic/messages", this);
         logger.info("Subscribed to /topic/messages");
         session.send("/app/chat", getSampleMessage());
@@ -41,15 +41,15 @@ public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
     @Override
     public void handleFrame(StompHeaders headers, Object payload) {
-        Message msg = (Message)payload;
-        logger.info("Received : "+ msg.getText()+ " from : "+msg.getFrom());
+        Message msg = (Message) payload;
+        logger.info("Received : " + msg.getText() + " from : " + msg.getFrom());
     }
-    
+
     /**
      * A sample message instance.
      * @return instance of <code>Message</code>
      */
-    private Message getSampleMessage(){
+    private Message getSampleMessage() {
         Message msg = new Message();
         msg.setFrom("Nicky");
         msg.setText("Howdy!!");

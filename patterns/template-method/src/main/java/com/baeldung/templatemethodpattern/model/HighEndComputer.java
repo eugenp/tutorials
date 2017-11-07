@@ -18,4 +18,9 @@ public class HighEndComputer extends Computer {
     public void addProcessor() {
          computerParts.put("Processor", "High-end Processor");
     }
+    
+    @Override
+    public void addMotherboard() {
+         computerParts.put("Motherboard", "High End Motherboard");
+    }
 }

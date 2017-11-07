@@ -3,6 +3,7 @@ package com.baeldung.templatemethodpattern.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Computer {
@@ -25,7 +26,7 @@ public abstract class Computer {
     public List<String> getMotherboardSetupStatus() {
         return moterboardSetupStatus;
     }
-    
+        
     public Map<String, String> getComputerParts() {
         return computerParts;
     }   

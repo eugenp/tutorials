@@ -27,7 +27,6 @@
                             <includes>
                                 <include>**/*LiveTest.java</include>
                             </includes>
-                            <testFailureIgnore>false</testFailureIgnore>
                         </configuration>
                     </plugin>
                 </plugins>
