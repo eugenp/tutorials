@@ -100,5 +100,12 @@ public class StringFormatterExampleTests {
         formatter.format("I am writting to a %1$s Instance.", sb.getClass());
         assertEquals("I am writting to a class java.lang.StringBuilder Instance.", sb.toString());
     }
+    
+    @Test
+    public void givenString_whenNoArguments_thenExpected() {
+        //Using String Formatter without arguments
+        String s = String.format("John scored 90%% in Fall semester");
+        assertEquals("John scored 90% in Fall semester", s);
+    }
 
 }
