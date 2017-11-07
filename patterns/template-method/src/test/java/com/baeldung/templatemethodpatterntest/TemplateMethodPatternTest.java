@@ -94,20 +94,6 @@ public class TemplateMethodPatternTest {
     }
     
     @Test
-    public void givenStandardHardDrive_whenAddingHardDrive_thenEqualAssertion() {
-        standardComputer.addHardDrive();
-        Assert.assertEquals("1TB Hard Drive", standardComputer
-          .getComputerParts().get("Hard Drive"));
-    }
-    
-    @Test
-    public void givenStandardGraphicaCard_whenAddingGraphicCard_thenEqualAssertion() {
-        standardComputer.addGraphicCard();
-        Assert.assertEquals("Standard Graphic Card", standardComputer
-          .getComputerParts().get("Graphic Card"));
-    }
-    
-    @Test
     public void givenAllStandardParts_whenBuildingComputer_thenTwoParts() {
         standardComputer.buildComputer();
         Assert.assertEquals(2, standardComputer
