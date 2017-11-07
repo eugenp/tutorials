@@ -14,7 +14,7 @@ public class ColorFactory implements AbstractFactory {
     }
 
     @Override
-    public Toy getToy(String toyType) {
+    public Animal getAnimal(String toyType) {
         throw new UnsupportedOperationException();
     }
 

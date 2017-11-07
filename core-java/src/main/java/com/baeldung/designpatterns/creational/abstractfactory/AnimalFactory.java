@@ -1,12 +1,12 @@
 package com.baeldung.designpatterns.creational.abstractfactory;
 
-public class ToyFactory implements AbstractFactory {
+public class AnimalFactory implements AbstractFactory {
 
     @Override
-    public Toy getToy(String toyType) {
-        if ("Dog".equalsIgnoreCase(toyType)) {
+    public Animal getAnimal(String animalType) {
+        if ("Dog".equalsIgnoreCase(animalType)) {
             return new Dog();
-        } else if ("Duck".equalsIgnoreCase(toyType)) {
+        } else if ("Duck".equalsIgnoreCase(animalType)) {
             return new Duck();
         }
 

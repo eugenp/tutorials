@@ -6,7 +6,7 @@ public class AbstractPatternDriver {
         
         //creating a brown toy dog
         abstractFactory = FactoryProvider.getFactory("Toy");
-        Toy toy = abstractFactory.getToy("Dog");
+        Animal toy = abstractFactory.getAnimal("Dog");
         
         abstractFactory = FactoryProvider.getFactory("Color");
         Color color = abstractFactory.getColor("Brown");

@@ -1,6 +1,6 @@
 package com.baeldung.designpatterns.creational.abstractfactory;
 
-public interface Toy {
+public interface Animal {
     String getType();
     String makeSound();
 }

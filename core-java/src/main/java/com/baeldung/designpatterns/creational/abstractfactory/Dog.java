@@ -1,6 +1,6 @@
 package com.baeldung.designpatterns.creational.abstractfactory;
 
-public class Dog implements Toy {
+public class Dog implements Animal {
 
     @Override
     public String getType() {
