@@ -231,6 +231,8 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
+		
+		<module>spring-rest-embedded-tomcat</module>
         
 
         <module>testing</module>
