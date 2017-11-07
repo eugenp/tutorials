@@ -70,53 +70,5 @@ public class TemplateMethodPatternTest {
     public void givenAllHighEnddParts_whenBuildingComputer_thenTwoParts() {
         highEndComputer.buildComputer();
         assertEquals(2, highEndComputer.getComputerParts().size());
-    }
-    
-    @Test
-    public void givenStandardProcessor_whenAddingProcessor_thenEqualAssertion() {
-        standardComputer.addProcessor();
-        Assert.assertEquals("Standard Processor", standardComputer
-          .getComputerParts().get("Processor"));
-    }
-    
-    @Test
-    public void givenStandardMotherBoard_whenAddingMotherBoard_thenEqualAssertion() {
-        standardComputer.addMotherboard();
-        Assert.assertEquals("Standard Motherboard", standardComputer
-          .getComputerParts().get("Motherboard"));
-    }
-    
-    @Test
-    public void givenStandardMemory_whenAddingMemory_thenEqualAssertion() {
-        standardComputer.addMemory();
-        Assert.assertEquals("8GB", standardComputer
-          .getComputerParts().get("Memory"));
-    }
-    
-    @Test
-    public void givenAllStandardParts_whenBuildingComputer_thenTwoParts() {
-        standardComputer.buildComputer();
-        Assert.assertEquals(2, standardComputer
-          .getComputerParts().size());
-    }
-    
-    @Test
-    public void givenHightEndProcessor_whenAddingProcessor_thenEqualAssertion() {
-        highEndComputer.addProcessor();
-        Assert.assertEquals("High End Processor", highEndComputer
-          .getComputerParts().get("Processor"));
-    }
-    
-    @Test
-    public void givenHighEnddMotherBoard_whenAddingMotherBoard_thenEqualAssertion() {
-        highEndComputer.addMotherboard();
-        Assert.assertEquals("High End Motherboard", highEndComputer
-          .getComputerParts().get("Motherboard"));
-    }
-    
-    @Test
-    public void givenAllHighEndParts_whenBuildingComputer_thenTwoParts() {
-        highEndComputer.buildComputer();
-        Assert.assertEquals(2, highEndComputer.getComputerParts().size());
     }  
 }
