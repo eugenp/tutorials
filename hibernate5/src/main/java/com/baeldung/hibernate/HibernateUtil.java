@@ -7,6 +7,7 @@ import com.baeldung.hibernate.pojo.OrderEntryIdClass;
 import com.baeldung.hibernate.pojo.OrderEntryPK;
 import com.baeldung.hibernate.pojo.Product;
 import com.baeldung.hibernate.pojo.Phone;
+import com.baeldung.hibernate.pojo.TemporalValues;
 import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Student;
 import com.baeldung.hibernate.pojo.User;
@@ -40,6 +41,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Employee.class);
         metadataSources.addAnnotatedClass(Phone.class);
         metadataSources.addAnnotatedClass(EntityDescription.class);
+        metadataSources.addAnnotatedClass(TemporalValues.class);
         metadataSources.addAnnotatedClass(User.class);
         metadataSources.addAnnotatedClass(Student.class);
         metadataSources.addAnnotatedClass(Course.class);
