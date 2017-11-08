@@ -4,14 +4,11 @@ import static org.junit.Assert.assertEquals;
 
 import javax.sql.DataSource;
 
-import org.baeldung.dsrouting.ClientDatabase;
-import org.baeldung.dsrouting.ClientDatabaseContextHolder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,11 +19,14 @@ public class RoutingApplicationTests {
     @Autowired
     DataSource routingDatasource;
 
+    @Autowired
+    ClientService clientService;
+
     @Before
     public void setup() {
         final String SQL_ACME_WIDGETS = "insert into client (id, name) values (1, 'ACME WIDGETS')";
         final String SQL_WIDGETS_ARE_US = "insert into client (id, name) values (2, 'WIDGETS ARE US')";
-        final String SQL_WIDGETS_DEPOT = "insert into client (id, name) values (3, 'WIDGET DEPOT')";
+        final String SQL_WIDGET_DEPOT = "insert into client (id, name) values (3, 'WIDGET DEPOT')";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(routingDatasource);
@@ -40,34 +40,23 @@ public class RoutingApplicationTests {
         ClientDatabaseContextHolder.clear();
 
         ClientDatabaseContextHolder.set(ClientDatabase.WIDGET_DEPOT);
-        jdbcTemplate.execute(SQL_WIDGETS_DEPOT);
+        jdbcTemplate.execute(SQL_WIDGET_DEPOT);
         ClientDatabaseContextHolder.clear();
     }
 
     @Test
-    public void contextSwitchTest() throws Exception {
+    public void whenContextsAreSwitched_thenRouteToCorrectDatabase() throws Exception {
 
-        final String SQL_GET_CLIENT_NAME = "select name from client";
-        
-        JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(routingDatasource);
-
-        // test default (ACME WIDGETS)
-        String clientName = jdbcTemplate.query(SQL_GET_CLIENT_NAME, rowMapper).get(0);
+        // test ACME WIDGETS
+        String clientName = clientService.getClientName(ClientDatabase.ACME_WIDGETS);
         assertEquals(clientName, "ACME WIDGETS");
- 
+
         // test WIDGETS_ARE_US
-        ClientDatabaseContextHolder.set(ClientDatabase.WIDGETS_ARE_US);
-        clientName = jdbcTemplate.query(SQL_GET_CLIENT_NAME, rowMapper).get(0);
+        clientName = clientService.getClientName(ClientDatabase.WIDGETS_ARE_US);
         assertEquals(clientName, "WIDGETS ARE US");
 
-        // test WIDGETS_ARE_US
-        ClientDatabaseContextHolder.set(ClientDatabase.WIDGET_DEPOT);
-        clientName = jdbcTemplate.query(SQL_GET_CLIENT_NAME, rowMapper).get(0);
+        // test WIDGET_DEPOT
+        clientName = clientService.getClientName(ClientDatabase.WIDGET_DEPOT);
         assertEquals(clientName, "WIDGET DEPOT");
     }
-
-    public static RowMapper<String> rowMapper = (rs, rowNum) -> {
-        return rs.getString("name");
-    };
 }
