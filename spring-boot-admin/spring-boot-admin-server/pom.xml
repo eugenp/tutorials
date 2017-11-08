@@ -11,10 +11,10 @@
     <description>Spring Boot Admin Server</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>spring-boot-admin</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-5</relativePath>
+        <relativePath>../../spring-boot-admin</relativePath>
     </parent>
 
     <properties>

@@ -9,22 +9,91 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.fail;
 
 public class WaitingForThreadsToFinishTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(WaitingForThreadsToFinishTest.class);
     private final static ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
 
+    public void awaitTerminationAfterShutdown(ExecutorService threadPool) {
+        threadPool.shutdown();
+        try {
+            if (!threadPool.awaitTermination(60, TimeUnit.SECONDS)) {
+                threadPool.shutdownNow();
+            }
+        } catch (InterruptedException ex) {
+            threadPool.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
+    }
+    
+    @Test
+    public void givenMultipleThreads_whenUsingCountDownLatch_thenMainShoudWaitForAllToFinish() {
+
+        ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
+        
+        try {
+            long startTime = System.currentTimeMillis();
+
+            // create a CountDownLatch that waits for the 2 threads to finish
+            CountDownLatch latch = new CountDownLatch(2);
+            
+            for (int i = 0; i < 2; i++) {
+                WORKER_THREAD_POOL.submit(new Runnable() {                
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                            latch.countDown();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
+                        }
+                    }
+                });
+            }
+
+            // wait for the latch to be decremented by the two threads
+            latch.await();
+
+            long processingTime = System.currentTimeMillis() - startTime;
+            assertTrue(processingTime >= 1000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
+    }
+
     @Test
     public void givenMultipleThreads_whenInvokeAll_thenMainThreadShouldWaitForAllToFinish() {
 
         ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
 
-        List<Callable<String>> callables = Arrays.asList(new DelayedCallable("fast thread", 100), new DelayedCallable("slow thread", 3000));
-        
+        List<Callable<String>> callables = Arrays.asList(
+            new DelayedCallable("fast thread", 100), 
+            new DelayedCallable("slow thread", 3000));
+
         try {
             long startProcessingTime = System.currentTimeMillis();
             List<Future<String>> futures = WORKER_THREAD_POOL.invokeAll(callables);
+            
+            awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
+
+            try {
+                WORKER_THREAD_POOL.submit(new Callable<String>() {
+                    @Override
+                    public String call() throws Exception {
+                        fail("This thread should have been rejected !");
+                        Thread.sleep(1000000);
+                        return null;
+                    }
+                });
+            } catch (RejectedExecutionException ex) {
+                //
+            }
 
             long totalProcessingTime = System.currentTimeMillis() - startProcessingTime;
             assertTrue(totalProcessingTime >= 3000);
@@ -39,9 +108,7 @@ public class WaitingForThreadsToFinishTest {
 
         } catch (ExecutionException | InterruptedException ex) {
             ex.printStackTrace();
-        }
-
-        WORKER_THREAD_POOL.shutdown();
+        }       
     }
 
     @Test
@@ -49,13 +116,13 @@ public class WaitingForThreadsToFinishTest {
 
         CompletionService<String> service = new ExecutorCompletionService<>(WORKER_THREAD_POOL);
 
-        List<Callable<String>> callables = Arrays.asList(new DelayedCallable("fast thread", 100), new DelayedCallable("slow thread", 3000));
+        List<Callable<String>> callables = Arrays.asList(
+            new DelayedCallable("fast thread", 100), 
+            new DelayedCallable("slow thread", 3000));
 
         for (Callable<String> callable : callables) {
             service.submit(callable);
         }
-
-        WORKER_THREAD_POOL.shutdown();
 
         try {
 
@@ -79,8 +146,9 @@ public class WaitingForThreadsToFinishTest {
 
         } catch (ExecutionException | InterruptedException ex) {
             ex.printStackTrace();
+        } finally {
+            awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
         }
-
     }
 
     @Test
@@ -142,6 +210,6 @@ public class WaitingForThreadsToFinishTest {
             e.printStackTrace();
         }
 
-        WORKER_THREAD_POOL.shutdown();
+        awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
     }
 }
