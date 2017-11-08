@@ -13,8 +13,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = RoutingTestConfiguration.class)
-public class RoutingApplicationTests {
+@ContextConfiguration(classes = DataSourceRoutingTestConfiguration.class)
+public class DataSourceRoutingTests {
 
     @Autowired
     DataSource routingDatasource;
@@ -45,7 +45,7 @@ public class RoutingApplicationTests {
     }
 
     @Test
-    public void whenContextsAreSwitched_thenRouteToCorrectDatabase() throws Exception {
+    public void givenClientDbs_whenContextsSwitch_thenRouteToCorrectDatabase() throws Exception {
 
         // test ACME WIDGETS
         String clientName = clientService.getClientName(ClientDatabase.ACME_WIDGETS);
