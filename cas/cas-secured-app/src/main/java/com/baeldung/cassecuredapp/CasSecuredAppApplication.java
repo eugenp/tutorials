@@ -40,14 +40,14 @@ public class CasSecuredAppApplication {
 	@Primary
 	public AuthenticationEntryPoint authenticationEntryPoint(ServiceProperties sP) {
 	  CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
-	  entryPoint.setLoginUrl("https://localhost:8443/cas/login");
+	  entryPoint.setLoginUrl("https://localhost:6443/cas/login");
 	  entryPoint.setServiceProperties(sP);
 	  return entryPoint;
 	}
 
 	@Bean
 	public TicketValidator ticketValidator() {
-	  return new Cas30ServiceTicketValidator("https://localhost:8443/cas");
+	  return new Cas30ServiceTicketValidator("https://localhost:6443/cas");
 	}
 
 	@Bean
@@ -71,7 +71,7 @@ public class CasSecuredAppApplication {
 	@Bean
 	public LogoutFilter logoutFilter() {
 	  LogoutFilter logoutFilter = new LogoutFilter(
-	    "https://localhost:8443/cas/logout", securityContextLogoutHandler());
+	    "https://localhost:6443/cas/logout", securityContextLogoutHandler());
 	  logoutFilter.setFilterProcessesUrl("/logout/cas");
 	  return logoutFilter;
 	}
@@ -79,7 +79,7 @@ public class CasSecuredAppApplication {
 	@Bean
 	public SingleSignOutFilter singleSignOutFilter() {
 	  SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-	  singleSignOutFilter.setCasServerUrlPrefix("https://localhost:8443/cas");
+	  singleSignOutFilter.setCasServerUrlPrefix("https://localhost:6443/cas");
 	  singleSignOutFilter.setIgnoreInitConfiguration(true);
 	  return singleSignOutFilter;
 	}
