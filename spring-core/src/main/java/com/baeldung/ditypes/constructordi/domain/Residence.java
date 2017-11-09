@@ -11,9 +11,9 @@ public class Residence {
     private Restroom restRoom;
 
     @Autowired
-    public Residence(Livingroom livingRoom, Bedroom bedroom, Restroom restroom) {
-        this.bedRoom = bedroom;
-        this.restRoom = restroom;
+    public Residence(Livingroom livingRoom, Bedroom bedRoom, Restroom restRoom) {
+        this.bedRoom = bedRoom;
+        this.restRoom = restRoom;
         this.livingRoom = livingRoom;
     }
 
