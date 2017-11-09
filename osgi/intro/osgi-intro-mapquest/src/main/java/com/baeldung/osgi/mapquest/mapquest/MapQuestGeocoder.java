@@ -32,19 +32,11 @@ public class MapQuestGeocoder implements GeocodingService {
 
         URL url = null;
         try {
-            url = new URL(
-                    String.format("http://www.mapquestapi.com/geocoding/v1/address?"
-                            + "key=%s"
-                            + "&location=%s"
-                            + "&thumbMaps=false&outFormat=json",
-                            URLEncoder.encode("Dt1zZlW5HRrRfGI2nMqEyO0wlayqDozp", "UTF-8"),
-                            URLEncoder.encode(address, "UTF-8")));
+            url = new URL(String.format("http://www.mapquestapi.com/geocoding/v1/address?" + "key=%s" + "&location=%s" + "&thumbMaps=false&outFormat=json", URLEncoder.encode("Dt1zZlW5HRrRfGI2nMqEyO0wlayqDozp", "UTF-8"), URLEncoder.encode(address, "UTF-8")));
         } catch (UnsupportedEncodingException | MalformedURLException e) {
             e.printStackTrace();
         }
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        Request request = new Request.Builder().url(url).build();
 
         Response response = null;
         try {
@@ -57,8 +49,8 @@ public class MapQuestGeocoder implements GeocodingService {
             JsonObject jobj = jsonReader.readObject();
             System.out.println(jobj);
 
-            double latt = Double.parseDouble( jobj.getString("latt") );
-            double longt = Double.parseDouble( jobj.getString("longt") );
+            double latt = Double.parseDouble(jobj.getString("latt"));
+            double longt = Double.parseDouble(jobj.getString("longt"));
             return new Coord(latt, longt);
         } catch (IOException e) {
             throw new GeocodeException(e);

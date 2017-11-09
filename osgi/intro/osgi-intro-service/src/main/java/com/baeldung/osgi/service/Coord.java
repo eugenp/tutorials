@@ -7,8 +7,10 @@ public class Coord {
 
     public Coord(double lat, double lon) {
 
-        if(lat < -90.0 || lat > 90) throw new IllegalArgumentException("Invalid lattude.");
-        if(lon < -180.0 || lon > 180) throw new IllegalArgumentException("Invalid longitude.");
+        if (lat < -90.0 || lat > 90)
+            throw new IllegalArgumentException("Invalid lattude.");
+        if (lon < -180.0 || lon > 180)
+            throw new IllegalArgumentException("Invalid longitude.");
 
         this.lat = lat;
         this.lon = lon;

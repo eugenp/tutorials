@@ -24,6 +24,12 @@ public class Client implements BundleActivator, ServiceListener {
         this.geocodingService = geocodingService;
     }
 
+    public static void main(String[] args) {
+        System.out.println("main");
+        Client client = null; // new Client(new GeocodeXyz());
+        client.run();
+    }
+
     private void run() {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String address = null;
@@ -45,19 +51,13 @@ public class Client implements BundleActivator, ServiceListener {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println("main");
-        Client client = null; // new Client(new GeocodeXyz());
-        client.run();
-    }
-
     @Override public void start(BundleContext bundleContext) throws Exception {
         System.out.println("starting client bundle");
 
         bundleContext.addServiceListener(this);
         this.context = bundleContext;
         ServiceReference<GeocodingService> serviceReference = bundleContext.getServiceReference(GeocodingService.class);
-        if(serviceReference!=null){
+        if (serviceReference != null) {
             geocodingService = bundleContext.getService(serviceReference);
         }
 
@@ -69,24 +69,23 @@ public class Client implements BundleActivator, ServiceListener {
         bundleContext.removeServiceListener(this);
     }
 
-    @Override
-    public void serviceChanged(ServiceEvent serviceEvent) {
+    @Override public void serviceChanged(ServiceEvent serviceEvent) {
 
-        if(!serviceEvent.getServiceReference().getClass().equals(GeocodingService.class)){
+        if (!serviceEvent.getServiceReference().getClass().equals(GeocodingService.class)) {
             System.out.println("Ingoring event on service " + serviceEvent.getServiceReference().getClass());
         }
 
         switch (serviceEvent.getType()) {
-            case REGISTERED:
-                break;
-            case MODIFIED:
-                break;
-            case MODIFIED_ENDMATCH:
-                break;
-            case UNREGISTERING:
-                break;
-            default:
-                throw new IllegalStateException("Unsupported type");
+        case REGISTERED:
+            break;
+        case MODIFIED:
+            break;
+        case MODIFIED_ENDMATCH:
+            break;
+        case UNREGISTERING:
+            break;
+        default:
+            throw new IllegalStateException("Unsupported type");
         }
     }
 }
