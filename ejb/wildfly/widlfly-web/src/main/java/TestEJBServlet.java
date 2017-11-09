@@ -16,7 +16,6 @@ import wildfly.beans.UserBeanLocal;
  * Servlet implementation class TestEJBServlet
  */
 public class TestEJBServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     @EJB
     private UserBeanLocal userBean;
