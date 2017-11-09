@@ -10,10 +10,6 @@ public class Residence {
     private Livingroom livingRoom;
     private Restroom restRoom;
 
-    public Residence() {
-
-    }
-
     @Autowired
     public void setBedRoom(Bedroom bedRoom) {
         this.bedRoom = bedRoom;
