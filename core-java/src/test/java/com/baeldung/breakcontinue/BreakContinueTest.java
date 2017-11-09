@@ -9,16 +9,20 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * @author Santosh
+ *
+ */
 public class BreakContinueTest {
 
     @Test
     public void whenUnlabeledBreak_ThenEqual() {
-        assertEquals(4, unlabeledBreak());
+        assertEquals(3, unlabeledBreak());
     }
 
     @Test
     public void whenUnlabeledBreakNestedLoops_ThenEqual() {
-        assertEquals(2, unlabeledBreakNestedLoops());
+        assertEquals(3, unlabeledBreakNestedLoops());
     }
 
     @Test
@@ -28,7 +32,7 @@ public class BreakContinueTest {
 
     @Test
     public void whenUnlabeledContinue_ThenEqual() {
-        assertEquals(5, unlabeledContinue());
+        assertEquals(3, unlabeledContinue());
     }
 
     @Test
