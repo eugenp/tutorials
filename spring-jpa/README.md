@@ -14,6 +14,7 @@
 - [Spring, Hibernate and a JNDI Datasource](http://www.baeldung.com/spring-persistence-jpa-jndi-datasource)
 - [Deleting Objects with Hibernate](http://www.baeldung.com/delete-with-hibernate)
 - [Self-Contained Testing Using an In-Memory Database](http://www.baeldung.com/spring-jpa-test-in-memory-database)
+- [Spring Data JPA – Adding a Method in All Repositories](http://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

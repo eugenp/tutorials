@@ -39,4 +39,16 @@ public class BackwardChainingTest {
         // Assert Decision one
         assertEquals(result.getValue(), "Decision one taken: Great Wall of China BELONGS TO Planet Earth");
     }
+
+    @Test
+    public void whenChinaIsNotGiven_ThenWallOfChinaDoesNotBelongToPlanetEarth() {
+        ksession.insert(new Fact("Asia", "Planet Earth"));
+        // ksession.insert(new Location("China", "Asia")); // not provided to force Decision two
+        ksession.insert(new Fact("Great Wall of China", "China"));
+        
+        ksession.fireAllRules();
+        
+        // Assert Decision two
+        assertEquals(result.getValue(), "Decision two taken: Great Wall of China DOES NOT BELONG TO Planet Earth");
+    }
 }

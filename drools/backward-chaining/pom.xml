@@ -3,29 +3,33 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>backward-chaining</artifactId>
+	<artifactId>drools-backward-chaining</artifactId>
+	<version>1.0</version>
+	<name>drools-backward-chaining</name>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>drools</artifactId>
+		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
+	<properties>
+		<runtime.version>6.4.0.Final</runtime.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-api</artifactId>
-			<version>${drools-version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
-			<artifactId>drools-core</artifactId>
-			<version>${drools-version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
-			<version>${drools-version}</version>
+			<version>${runtime.version}</version>
 		</dependency>
 	</dependencies>
 </project>
