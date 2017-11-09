@@ -24,7 +24,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -73,7 +72,6 @@
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -269,7 +267,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.boot.DemoApplication</start-class>
+        <start-class>org.baeldung.demo.DemoApplication</start-class>
         <spring.version>4.3.4.RELEASE</spring.version>
         <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
         <jquery.version>3.1.1</jquery.version>

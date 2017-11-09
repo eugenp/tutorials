@@ -6,4 +6,4 @@
 - [Guide to Dynamic Tests in Junit 5](http://www.baeldung.com/junit5-dynamic-tests)
 - [A Guied to JUnit 5 Extensions](http://www.baeldung.com/junit-5-extensions)
 - [Inject Parameters into JUnit Jupiter Unit Tests](http://www.baeldung.com/junit-5-parameters)
-
+- [Mockito and JUnit 5 – Using ExtendWith](http://www.baeldung.com/mockito-junit-5-extension)
