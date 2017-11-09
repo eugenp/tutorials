@@ -10,19 +10,14 @@ public class SingleTest {
 
     @Test
     public void givenSingleObservable_whenSuccess_thenGetMessage() throws InterruptedException {
-        final String[] result = {""};
-        Single<String> single = Observable.just("Hello").toSingle()
-                .doOnSuccess(
-                        (i) -> {
-                            result[0] += i;
-                        })
-                .doOnError(
-                        (error) -> {
-                            throw new RuntimeException(error.getMessage());
-                        });
+        String[] result = {""};
+        Single<String> single = Observable.just("Hello")
+          .toSingle()
+          .doOnSuccess(i -> result[0] += i)
+          .doOnError(error -> {
+              throw new RuntimeException(error.getMessage());
+          });
         single.subscribe();
-
         assertTrue(result[0].equals("Hello"));
     }
-
-  }
+}

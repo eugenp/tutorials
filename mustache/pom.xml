@@ -71,8 +71,94 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<forkCount>3</forkCount>
+					<reuseForks>true</reuseForks>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*LongRunningUnitTest.java</exclude>
+						<exclude>**/*ManualTest.java</exclude>
+						<exclude>**/JdbcTest.java</exclude>
+						<exclude>**/*LiveTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
 		</plugins>
+
 	</build>
+
+	<profiles>
+		<profile>
+			<id>integration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<excludes>
+										<exclude>**/*LiveTest.java</exclude>
+										<exclude>**/AutoconfigurationTest.java</exclude>
+									</excludes>
+									<includes>
+										<include>**/*IntegrationTest.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>autoconfiguration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<excludes>
+										<exclude>**/*LiveTest.java</exclude>
+										<exclude>**/*IntegrationTest.java</exclude>
+									</excludes>
+									<includes>
+										<include>**/AutoconfigurationTest.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 	<properties>
 		<mustache.compiler.api.version>0.9.2</mustache.compiler.api.version>
