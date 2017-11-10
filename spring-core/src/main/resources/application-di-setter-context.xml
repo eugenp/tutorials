@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd
+       	http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+  
+	<!-- Define your application beans here. They will be available to the beans 
+		defined in your web-context because it is a sub-context. Beans defined in 
+		the web-context will not be available in the application context. -->
+
+	<bean id="computer" class="com.baeldung.di.setter.model.xml.Computer">
+		<property name="processor" ref="processor"></property>
+		<property name="memory" ref="memory"></property>
+	</bean>
+
+	<bean id="processor" class="com.baeldung.di.setter.model.xml.Processor" />
+	<bean id="memory" class="com.baeldung.di.setter.model.xml.Memory" />
+
+</beans>
