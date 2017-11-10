@@ -9,7 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.di.setter.model.xml.Computer;
 
-public class XmlInjectionTest {
+public class XmlInjectionUnitTest {
 	
 	 private ApplicationContext applicationContext;
 

@@ -5,18 +5,17 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.di.constructor.config.SpringBeanConstructorContext;
-import com.baeldung.di.constructor.model.bean.Computer;
+import com.baeldung.di.constructor.model.xml.Computer;
 
-public class BeanAnnotationInjectionTest {
-	
+public class XmlInjectionUnitTest {
+
 	private ApplicationContext applicationContext;
 
 	@Before
 	public void setUp() throws Exception {
-		applicationContext = new AnnotationConfigApplicationContext(SpringBeanConstructorContext.class);
+		applicationContext = new ClassPathXmlApplicationContext("application-di-constructor-context.xml");
 	}
 
 	@Test

@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.baeldung.di.setter.config.SpringBeanSetterContext;
 import com.baeldung.di.setter.model.bean.Computer;
 
-public class BeanAnnotationInjectionTest {
+public class BeanAnnotationInjectionUnitTest {
 	
 	private ApplicationContext applicationContext;
 
