@@ -23,4 +23,4 @@ Any IDE can be used to work with the projects, but if you're using Eclipse, cons
 
 CI - Jenkins
 ================================
-This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/github%20projects%20Jobs/job/tutorials/)**
+This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/tutorials-unit/)**

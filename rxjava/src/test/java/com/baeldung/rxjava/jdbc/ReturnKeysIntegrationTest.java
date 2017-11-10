@@ -1,24 +1,28 @@
 package com.baeldung.rxjava.jdbc;
 
-import com.github.davidmoten.rx.jdbc.Database;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import rx.Observable;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.github.davidmoten.rx.jdbc.ConnectionProvider;
+import com.github.davidmoten.rx.jdbc.Database;
+
+import rx.Observable;
 
 public class ReturnKeysIntegrationTest {
 
-    private Observable<Integer> createStatement;
+    private Observable<Boolean> begin = null;
+    private Observable<Integer> createStatement = null;
 
-    private Database db = Database.from(Connector.connectionProvider);
+    private ConnectionProvider connectionProvider = Connector.connectionProvider;
+    private Database db = Database.from(connectionProvider);
 
     @Before
     public void setup() {
-        Observable<Boolean> begin = db.beginTransaction();
-        createStatement = db
-          .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
+        begin = db.beginTransaction();
+        createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
     }
@@ -37,7 +41,8 @@ public class ReturnKeysIntegrationTest {
 
     @After
     public void close() {
-        db.update("DROP TABLE EMPLOYEE");
-        Connector.connectionProvider.close();
+        db.update("DROP TABLE EMPLOYEE")
+          .dependsOn(createStatement);
+        connectionProvider.close();
     }
 }
