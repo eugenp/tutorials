@@ -19,6 +19,6 @@ public interface NoticeMessageRepository extends JpaRepository<NoticeMessage, Lo
     
     @SuppressWarnings("unchecked")
     @PreAuthorize("hasPermission(#noticeMessage, 'WRITE')")
-    NoticeMessage save(@Param("noticeMessage")NoticeMessage chatMessage);
+    NoticeMessage save(@Param("noticeMessage")NoticeMessage noticeMessage);
 
 }
