@@ -1,4 +1,4 @@
-package com.baeldung.di.constructor;
+package com.baeldung.di.setter;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -7,16 +7,16 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.baeldung.di.constructor.config.SpringAutowireConstructorContext;
-import com.baeldung.di.constructor.model.autowire.Computer;
+import com.baeldung.di.setter.config.SpringAutowireSetterContext;
+import com.baeldung.di.setter.model.autowire.Computer;
 
-public class AutowireAnnotationInjectionTest {
+public class AutowireAnnotationInjectionUnitTest {
 	
 	private ApplicationContext applicationContext;
 
 	@Before
 	public void setUp() throws Exception {
-		applicationContext = new AnnotationConfigApplicationContext(SpringAutowireConstructorContext.class);
+		applicationContext = new AnnotationConfigApplicationContext(SpringAutowireSetterContext.class);
 	}
 
 	@Test
