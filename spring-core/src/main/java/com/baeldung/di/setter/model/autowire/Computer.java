@@ -6,25 +6,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class Computer {
 
-	private Processor processor;
-	private Memory memory;
+    private Processor processor;
+    private Memory memory;
 
-	public Processor getProcessor() {
-		return processor;
-	}
-	
-	@Autowired
-	public void setProcessor(Processor processor) {
-		this.processor = processor;
-	}
+    public Processor getProcessor() {
+        return processor;
+    }
 
-	public Memory getMemory() {
-		return memory;
-	}
-	
-	@Autowired
-	public void setMemory(Memory memory) {
-		this.memory = memory;
-	}
+    @Autowired
+    public void setProcessor(Processor processor) {
+        this.processor = processor;
+    }
+
+    public Memory getMemory() {
+        return memory;
+    }
+
+    @Autowired
+    public void setMemory(Memory memory) {
+        this.memory = memory;
+    }
 
 }

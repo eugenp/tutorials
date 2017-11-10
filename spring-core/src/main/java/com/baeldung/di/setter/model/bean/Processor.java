@@ -2,15 +2,15 @@ package com.baeldung.di.setter.model.bean;
 
 public class Processor {
 
-	private Integer cores = 2;
-	private Double frequency = 1.4;
+    private Integer cores = 2;
+    private Double frequency = 1.4;
 
-	public Integer getCores() {
-		return cores;
-	}
+    public Integer getCores() {
+        return cores;
+    }
 
-	public Double getFrequency() {
-		return frequency;
-	}
+    public Double getFrequency() {
+        return frequency;
+    }
 
 }
