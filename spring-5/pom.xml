@@ -49,6 +49,18 @@
 			<artifactId>javax.json.bind-api</artifactId>
 			<version>${jsonb-api.version}</version>
 		</dependency>
+		<!-- Dependencies for Yasson -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.eclipse</groupId> -->
+		<!-- <artifactId>yasson</artifactId> -->
+		<!-- <version>1.0</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.glassfish</groupId> -->
+		<!-- <artifactId>javax.json</artifactId> -->
+		<!-- <version>1.1.2</version> -->
+		<!-- </dependency> -->
+		<!-- Dependencies for Johnzon -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
 			<artifactId>geronimo-json_1.1_spec</artifactId>
@@ -85,6 +97,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.1</version>
 			<scope>test</scope>
 		</dependency>
 
