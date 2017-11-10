@@ -27,8 +27,8 @@ public class MyGenerator implements IdentifierGenerator, Configurable {
             .stream();
 
         Long max = ids.map(o -> o.replace(prefix + "-", ""))
-            .map(o -> Long.parseLong(o))
-            .max(Long::compare)
+            .mapToLong(Long::parseLong)
+            .max()
             .orElse(0L);
 
         return prefix + "-" + (max + 1);
