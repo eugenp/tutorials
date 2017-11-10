@@ -9,20 +9,20 @@ import com.baeldung.di.constructor.model.bean.Processor;
 
 @Configuration
 public class SpringBeanConstructorContext {
-	
-	@Bean
-	public Computer computer(){
-		return new Computer(processor(), memory());
-	}
-	
-	@Bean
-	public Processor processor(){
-		return new Processor();
-	}
-	
-	@Bean
-	public Memory memory(){
-		return new Memory();
-	}
-	
+
+    @Bean
+    public Computer computer() {
+        return new Computer(processor(), memory());
+    }
+
+    @Bean
+    public Processor processor() {
+        return new Processor();
+    }
+
+    @Bean
+    public Memory memory() {
+        return new Memory();
+    }
+
 }

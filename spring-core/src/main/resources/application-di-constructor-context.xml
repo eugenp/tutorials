@@ -6,18 +6,18 @@
         http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd
        	http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
         ">
-  
+
 	<!-- Define your application beans here. They will be available to the beans 
 		defined in your web-context because it is a sub-context. Beans defined in 
 		the web-context will not be available in the application context. -->
 
 
 	<bean id="computer" class="com.baeldung.di.constructor.model.xml.Computer">
-		<constructor-arg ref="processor"/>
+		<constructor-arg ref="processor" />
 		<constructor-arg ref="memory" />
 	</bean>
 
 	<bean id="processor" class="com.baeldung.di.constructor.model.xml.Processor" />
 	<bean id="memory" class="com.baeldung.di.constructor.model.xml.Memory" />
-	
+
 </beans>
