@@ -43,6 +43,8 @@ public class FlattenNestedListUnitTest {
     }
 
     private <T> List<T> flattenListOfListsStream(List<List<T>> list) {
-        return list.stream().flatMap(Collection::stream).collect(Collectors.toList());
+        return list.stream()
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
     }
 }

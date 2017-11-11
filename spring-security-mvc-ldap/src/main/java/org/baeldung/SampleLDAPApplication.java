@@ -1,8 +1,9 @@
 package org.baeldung;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -11,17 +12,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  * class to run up a Jetty Server (on http://localhost:8080)
  *
  */
-@EnableAutoConfiguration
-@ComponentScan("org.baeldung")
-public class SampleLDAPApplication extends WebMvcConfigurerAdapter {
+@SpringBootApplication
+public class SampleLDAPApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SampleLDAPApplication.class, args);
     }
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
+    @Bean
+    public WebMvcConfigurerAdapter adapter() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addViewControllers(ViewControllerRegistry registry) {
+                registry.addViewController("/login")
+                    .setViewName("login");
+            }
+        };
     }
 
 }

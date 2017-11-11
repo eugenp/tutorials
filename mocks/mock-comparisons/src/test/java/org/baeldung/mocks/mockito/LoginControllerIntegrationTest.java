@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatcher;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -120,7 +121,7 @@ public class LoginControllerIntegrationTest {
             .login(userForm);
         // complex matcher
         Mockito.verify(loginService)
-            .setCurrentUser(Mockito.argThat(new ArgumentMatcher<String>() {
+            .setCurrentUser(ArgumentMatchers.argThat(new ArgumentMatcher<String>() {
                 @Override
                 public boolean matches(String argument) {
                     return argument.startsWith("foo");
