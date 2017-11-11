@@ -27,7 +27,7 @@ public class BreakContinueTest {
 
     @Test
     public void whenLabeledBreak_ThenEqual() {
-        assertEquals(1, labeledBreak());
+        assertEquals(4, labeledBreak());
     }
 
     @Test
