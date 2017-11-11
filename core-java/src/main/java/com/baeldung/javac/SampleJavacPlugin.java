@@ -73,14 +73,10 @@ public class SampleJavacPlugin implements Plugin {
     }
 
     private boolean shouldInstrument(VariableTree parameter) {
-        return TARGET_TYPES.contains(parameter.getType()
-            .toString())
-            && parameter.getModifiers()
-                .getAnnotations()
-                .stream()
-                .anyMatch(a -> Positive.class.getSimpleName()
-                    .equals(a.getAnnotationType()
-                        .toString()));
+        return TARGET_TYPES.contains(parameter.getType().toString())
+          && parameter.getModifiers().getAnnotations()
+            .stream()
+            .anyMatch(a -> Positive.class.getSimpleName().equals(a.getAnnotationType().toString()));
     }
 
     private void addCheck(MethodTree method, VariableTree parameter, Context context) {
@@ -94,25 +90,24 @@ public class SampleJavacPlugin implements Plugin {
         Names symbolsTable = Names.instance(context);
         
         return factory.at(((JCTree) parameter).pos)
-            .If(factory.Parens(createIfCondition(factory, symbolsTable, parameter)),
-                createIfBlock(factory, symbolsTable, parameter),
-                null);
+          .If(factory.Parens(createIfCondition(factory, symbolsTable, parameter)),
+            createIfBlock(factory, symbolsTable, parameter),
+            null);
     }
 
     private static JCTree.JCBinary createIfCondition(TreeMaker factory, Names symbolsTable, VariableTree parameter) {
         Name parameterId = symbolsTable.fromString(parameter.getName().toString());
         return factory.Binary(JCTree.Tag.LE, 
-            factory.Ident(parameterId), 
-            factory.Literal(TypeTag.INT, 0));
+          factory.Ident(parameterId), 
+          factory.Literal(TypeTag.INT, 0));
     }
 
     private static JCTree.JCBlock createIfBlock(TreeMaker factory, Names symbolsTable, VariableTree parameter) {
-        String parameterName = parameter.getName()
-            .toString();
+        String parameterName = parameter.getName().toString();
         Name parameterId = symbolsTable.fromString(parameterName);
         
         String errorMessagePrefix = String.format("Argument '%s' of type %s is marked by @%s but got '", 
-            parameterName, parameter.getType(), Positive.class.getSimpleName());
+          parameterName, parameter.getType(), Positive.class.getSimpleName());
         String errorMessageSuffix = "' for it";
         
         return factory.Block(0, com.sun.tools.javac.util.List.of(
@@ -123,7 +118,6 @@ public class SampleJavacPlugin implements Plugin {
                   factory.Binary(JCTree.Tag.PLUS, factory.Literal(TypeTag.CLASS, errorMessagePrefix), 
                     factory.Ident(parameterId)), 
                     factory.Literal(TypeTag.CLASS, errorMessageSuffix))), null))));
-
     }
 
 }
