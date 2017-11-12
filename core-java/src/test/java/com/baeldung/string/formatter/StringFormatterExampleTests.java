@@ -2,7 +2,10 @@ package com.baeldung.string.formatter;
 
 import java.util.Calendar;
 import java.util.Formatter;
+import java.util.GregorianCalendar;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class StringFormatterExampleTests {
@@ -10,18 +13,16 @@ public class StringFormatterExampleTests {
     @Test
     public void givenString_whenFormatSpecifierForCalendar_thenGotExpected() {
         //Syntax of Format Specifiers for Date/Time Representation
-        Calendar c = Calendar.getInstance();
-        String s = String.format("Today's date: %1$tm %1$te,%1$tY", c);
-        assertEquals("Today's date: 11 7,2017", s);
+        Calendar c = new GregorianCalendar(2017, 11, 10);
+        String s = String.format("The date is: %1$tm %1$te,%1$tY", c);
+
+        assertEquals("The date is: 12 10,2017", s);
     }
 
     @Test
-    public void givenString_whenConversion_thenConvertedString() {
+    public void givenString_whenGeneralConversion_thenConvertedString() {
         //General Conversions
         String s = String.format("The correct answer is %s", false);
-        assertEquals("The correct answer is false", s);
-
-        s = String.format("The correct answer is %s", false);
         assertEquals("The correct answer is false", s);
 
         s = String.format("The correct answer is %b", null);
@@ -29,32 +30,60 @@ public class StringFormatterExampleTests {
 
         s = String.format("The correct answer is %B", true);
         assertEquals("The correct answer is TRUE", s);
-
+    }
+    
+    @Test
+    public void givenString_whenCharConversion_thenConvertedString() {        
         //Character Conversions
-        s = String.format("The correct answer is %c", 'a');
+        String s = String.format("The correct answer is %c", 'a');
         assertEquals("The correct answer is a", s);
+
         s = String.format("The correct answer is %c", null);
         assertEquals("The correct answer is null", s);
+
         s = String.format("The correct answer is %C", 'b');
         assertEquals("The correct answer is B", s);
-
+        
+        s = String.format("The valid unicode character: %c", 0x0400);
+        assertTrue(Character.isValidCodePoint(0x0400));
+        assertEquals("The valid unicode character: Ѐ", s);
+    }
+    
+    @Test(expected = java.util.IllegalFormatCodePointException.class)
+    public void givenString_whenIllegalCodePointForConversion_thenError() {        
+        String s = String.format("The valid unicode character: %c", 0x11FFFF);
+        assertFalse(Character.isValidCodePoint(0x11FFFF));
+        assertEquals("The valid unicode character: Ā", s);
+    }
+    
+    @Test
+    public void givenString_whenNumericIntegralConversion_thenConvertedString() {
         //Numeric Integral Conversions
-        s = String.format("The number 25 in decimal = %d", 25);
+        String s = String.format("The number 25 in decimal = %d", 25);
         assertEquals("The number 25 in decimal = 25", s);
+
         s = String.format("The number 25 in octal = %o", 25);
         assertEquals("The number 25 in octal = 31", s);
+
         s = String.format("The number 25 in hexadecimal = %x", 25);
         assertEquals("The number 25 in hexadecimal = 19", s);
-
+    }
+    
+    @Test
+    public void givenString_whenNumericFloatingConversion_thenConvertedString() {        
         //Numeric Floating-point Conversions
-        s = String.format("The computerized scientific format of 10000.00 "
+        String s = String.format("The computerized scientific format of 10000.00 "
                 + "= %e", 10000.00);
         assertEquals("The computerized scientific format of 10000.00 = 1.000000e+04", s);
+
         s = String.format("The decimal format of 10.019 = %f", 10.019);
         assertEquals("The decimal format of 10.019 = 10.019000", s);
-
+    }
+    
+    @Test
+    public void givenString_whenLineSeparatorConversion_thenConvertedString() {        
         //Line Separator Conversion
-        s = String.format("First Line %nSecond Line");
+        String s = String.format("First Line %nSecond Line");
         assertEquals("First Line \n"
                 + "Second Line", s);
     }
@@ -83,13 +112,13 @@ public class StringFormatterExampleTests {
 
     @Test
     public void givenString_whenSpecifyArgumentIndex_thenGotExpected() {
-        Calendar c = Calendar.getInstance();
+        Calendar c = new GregorianCalendar(2017, 11, 10);
         //Argument_Index
-        String s = String.format("Today's date: %1$tm %1$te,%1$tY", c);
-        assertEquals("Today's date: 11 7,2017", s);
+        String s = String.format("The date is: %1$tm %1$te,%1$tY", c);
+        assertEquals("The date is: 12 10,2017", s);
 
-        s = String.format("Today's date: %1$tm %<te,%<tY", c);
-        assertEquals("Today's date: 11 7,2017", s);
+        s = String.format("The date is: %1$tm %<te,%<tY", c);
+        assertEquals("The date is: 12 10,2017", s);
     }
 
     @Test
@@ -98,6 +127,7 @@ public class StringFormatterExampleTests {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
         formatter.format("I am writting to a %1$s Instance.", sb.getClass());
+
         assertEquals("I am writting to a class java.lang.StringBuilder Instance.", sb.toString());
     }
     
