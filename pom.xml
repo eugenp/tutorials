@@ -49,8 +49,8 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
-		<module>cas-server</module>
-		<module>cas-secured-app</module>
+		<module>cas/cas-server</module>
+		<module>cas/cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -149,6 +149,7 @@
         <module>spring-batch</module>
         <module>spring-bom</module>
         <module>spring-boot</module>
+	<module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -230,6 +231,8 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
+		
+		<module>spring-rest-embedded-tomcat</module>
         
 
         <module>testing-modules/testing</module>
@@ -256,6 +259,7 @@
         <module>vertx-and-rxjava</module>
         <module>saas</module>
         <module>deeplearning4j</module>
+        <module>spring-boot-admin</module>
     </modules>
 
     <dependencies>
@@ -338,7 +342,7 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
+
                 </configuration>
             </plugin>
             <plugin>

@@ -3,11 +3,13 @@ package com.baeldung.concurrent.daemon;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DaemonThreadTest {
 
     @Test
+    @Ignore
     public void whenCallIsDaemon_thenCorrect() {
         NewThread daemonThread = new NewThread();
         NewThread userThread = new NewThread();
@@ -20,6 +22,7 @@ public class DaemonThreadTest {
     }
 
     @Test(expected = IllegalThreadStateException.class)
+    @Ignore
     public void givenUserThread_whenSetDaemonWhileRunning_thenIllegalThreadStateException() {
         NewThread daemonThread = new NewThread();
         daemonThread.start();
