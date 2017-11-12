@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean name="userRepository"
+          class="com.baeldung.serviceinjection.UserRepository" />
+
+    <bean name="userServiceA"
+          class="com.baeldung.serviceinjection.UserServiceA">
+        <constructor-arg ref="userRepository" />
+    </bean>
+
+    <bean name="userServiceB"
+          class="com.baeldung.serviceinjection.UserServiceB">
+        <property name="repository"
+                  ref="userRepository" />
+    </bean>
+
+</beans>
