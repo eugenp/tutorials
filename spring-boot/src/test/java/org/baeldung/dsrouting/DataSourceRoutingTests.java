@@ -24,23 +24,18 @@ public class DataSourceRoutingTests {
 
     @Before
     public void setup() {
-        final String SQL_ACME_WIDGETS = "insert into client (id, name) values (1, 'ACME WIDGETS')";
-        final String SQL_WIDGETS_ARE_US = "insert into client (id, name) values (2, 'WIDGETS ARE US')";
-        final String SQL_WIDGET_DEPOT = "insert into client (id, name) values (3, 'WIDGET DEPOT')";
+        final String SQL_CLIENT_A = "insert into client (id, name) values (1, 'CLIENT A')";
+        final String SQL_CLIENT_B = "insert into client (id, name) values (2, 'CLIENT B')";
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
         jdbcTemplate.setDataSource(routingDatasource);
 
-        ClientDatabaseContextHolder.set(ClientDatabase.ACME_WIDGETS);
-        jdbcTemplate.execute(SQL_ACME_WIDGETS);
+        ClientDatabaseContextHolder.set(ClientDatabase.CLIENT_A);
+        jdbcTemplate.execute(SQL_CLIENT_A);
         ClientDatabaseContextHolder.clear();
 
-        ClientDatabaseContextHolder.set(ClientDatabase.WIDGETS_ARE_US);
-        jdbcTemplate.execute(SQL_WIDGETS_ARE_US);
-        ClientDatabaseContextHolder.clear();
-
-        ClientDatabaseContextHolder.set(ClientDatabase.WIDGET_DEPOT);
-        jdbcTemplate.execute(SQL_WIDGET_DEPOT);
+        ClientDatabaseContextHolder.set(ClientDatabase.CLIENT_B);
+        jdbcTemplate.execute(SQL_CLIENT_B);
         ClientDatabaseContextHolder.clear();
     }
 
@@ -48,15 +43,11 @@ public class DataSourceRoutingTests {
     public void givenClientDbs_whenContextsSwitch_thenRouteToCorrectDatabase() throws Exception {
 
         // test ACME WIDGETS
-        String clientName = clientService.getClientName(ClientDatabase.ACME_WIDGETS);
-        assertEquals(clientName, "ACME WIDGETS");
+        String clientName = clientService.getClientName(ClientDatabase.CLIENT_A);
+        assertEquals(clientName, "CLIENT A");
 
         // test WIDGETS_ARE_US
-        clientName = clientService.getClientName(ClientDatabase.WIDGETS_ARE_US);
-        assertEquals(clientName, "WIDGETS ARE US");
-
-        // test WIDGET_DEPOT
-        clientName = clientService.getClientName(ClientDatabase.WIDGET_DEPOT);
-        assertEquals(clientName, "WIDGET DEPOT");
+        clientName = clientService.getClientName(ClientDatabase.CLIENT_B);
+        assertEquals(clientName, "CLIENT B");
     }
 }
