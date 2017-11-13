@@ -2,33 +2,36 @@ package com.baeldung.templatemethodpattern.model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Computer {
+public abstract class ComputerBuilder {
     
     protected Map<String, String> computerParts = new HashMap<>();
+    protected List<String> moterboardSetupStatus = new ArrayList<>();
     
-    public final void buildComputer() {
-         addMotherboard();   
-         addProcessor();
-         addMemory();
-         addHardDrive();
-         addGraphicCard();
-         addSoundCard();        
+    public final Computer buildComputer() {
+        addMotherboard();
+        setupMotherboard();
+        addProcessor();
+        return getComputer();
     }
-    
-    public abstract void addProcessor();
     
     public abstract void addMotherboard();
     
-    public abstract void addMemory();
+     public abstract void setupMotherboard();
     
-    public abstract void addHardDrive();
+    public abstract void addProcessor();
     
-    public abstract void addGraphicCard();
-    
-    public abstract void addSoundCard();
-    
+    public List<String> getMotherboardSetupStatus() {
+        return moterboardSetupStatus;
+    }
+        
     public Map<String, String> getComputerParts() {
         return computerParts;
-    }   
+    }
+     
+    private Computer getComputer() {
+        return new Computer(computerParts);
+    }
 }
