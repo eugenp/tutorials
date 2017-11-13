@@ -1,13 +1,11 @@
 package com.baeldung.dependencyinjectiontypes.email;
 
-/**
- * Created by CodeCouple.pl
- */
-class ViaConstructorEmailExample {
 
-    private final EmailService emailService;
+class ViaSetterEmailExample {
 
-    ViaConstructorEmailExample(EmailService emailService) {
+    private EmailService emailService;
+
+    public void setEmailService(EmailService emailService) {
         this.emailService = emailService;
     }
 
