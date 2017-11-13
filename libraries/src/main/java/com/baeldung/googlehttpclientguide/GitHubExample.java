@@ -3,17 +3,25 @@ package com.baeldung.googlehttpclientguide;
 import com.google.api.client.http.HttpBackOffUnsuccessfulResponseHandler;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
+import com.google.api.client.http.HttpResponse;
 import com.google.api.client.http.HttpResponseException;
 import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-public class DailyMotionExample {
-
+public class GitHubExample {
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+    //static final HttpTransport HTTP_TRANSPORT = new ApacheHttpTransport();
     static final JsonFactory JSON_FACTORY = new JacksonFactory();
     //static final JsonFactory JSON_FACTORY = new GsonFactory();
 
@@ -23,8 +31,9 @@ public class DailyMotionExample {
                         (HttpRequest request) -> {
                             request.setParser(new JsonObjectParser(JSON_FACTORY));
                         });
-        DailyMotionUrl url = new DailyMotionUrl("https://api.dailymotion.com/videos/");
-        url.fields = "id,tags,title,url";
+        GitHubUrl url = new GitHubUrl("https://api.github.com/users");
+        url.per_page = 10;
+        url.page = 1;
         HttpRequest request = requestFactory.buildGetRequest(url);
         ExponentialBackOff backoff = new ExponentialBackOff.Builder()
                 .setInitialIntervalMillis(500)
@@ -34,37 +43,23 @@ public class DailyMotionExample {
                 .setRandomizationFactor(0.5)
                 .build();
         request.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(backoff));
-        VideoFeed videoFeed = request.execute().parseAs(VideoFeed.class);
-        if (videoFeed.list.isEmpty()) {
-            System.out.println("No videos found.");
-        } else {
-            if (videoFeed.hasMore) {
-                System.out.print("First ");
-            }
-            System.out.println(videoFeed.list.size() + " videos found:");
-            for (Video video : videoFeed.list) {
-                System.out.println();
-                System.out.println("-----------------------------------------------");
-                System.out.println("ID: " + video.id);
-                System.out.println("Title: " + video.title);
-                System.out.println("Tags: " + video.tags);
-                System.out.println("URL: " + video.url);
-            }
-        }
+        Type type = new TypeToken<List<User>>() {}.getType();
+        List<User> users = (List<User>)request.execute().parseAs(type);
+        System.out.println(users);
+        url.appendRawPath("/eugenp");
+        request = requestFactory.buildGetRequest(url);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future<HttpResponse> responseFuture = request.executeAsync(executor);
+        User eugen = responseFuture.get().parseAs(User.class);
+        System.out.println(eugen);
+        executor.shutdown();
     }
 
     public static void main(String[] args) {
         try {
-            try {
-                run();
-                return;
-            } catch (HttpResponseException e) {
-                System.err.println(e.getMessage());
-            }
-        } catch (Throwable t) {
-            t.printStackTrace();
+            run();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-        System.exit(1);
     }
-
 }
