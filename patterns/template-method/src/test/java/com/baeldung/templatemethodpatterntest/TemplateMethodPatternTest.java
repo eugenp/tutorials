@@ -31,8 +31,6 @@ public class TemplateMethodPatternTest {
     public void givenStandardMotherBoard_whenAddingMotherBoard_thenEqualAssertion() {
         standardComputerBuilder.addMotherboard();
         assertEquals("Standard Motherboard", standardComputerBuilder.getComputerParts().get("Motherboard"));
-        standardComputer.addMotherboard();
-        assertEquals("Standard Motherboard", standardComputer.getComputerParts().get("Motherboard"));
     }
 
     @Test
