@@ -47,7 +47,6 @@ public class BacktrackingAlgorithm {
     }
     
     public boolean isValid(char[][] board, int r, int c) {
-        //check row
         boolean[] row = new boolean[9];
         for (int i = 0; i < 9; i++) {
             if (board[r][i] >= '1' && board[r][i] <= '9') {
@@ -59,7 +58,6 @@ public class BacktrackingAlgorithm {
             }
         }
 
-        //check column
         boolean[] col = new boolean[9];
         for (int i = 0; i < 9; i++) {
             if (board[i][c] >= '1' && board[i][c] <= '9') {
@@ -70,8 +68,7 @@ public class BacktrackingAlgorithm {
                 }
             }
         }
-
-        //check the 3*3 grid
+        
         boolean[] grid = new boolean[9];
         for (int i = (r / 3) * 3; i < (r / 3) * 3 + 3; i++) {
             for (int j = (c / 3) * 3; j < (c / 3) * 3 + 3; j++) {
