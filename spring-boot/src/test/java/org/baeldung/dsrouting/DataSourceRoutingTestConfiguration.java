@@ -22,41 +22,30 @@ public class DataSourceRoutingTestConfiguration {
     @Bean
     public DataSource clientDatasource() {
         Map<Object, Object> targetDataSources = new HashMap<>();
-        DataSource acmeWidgetsDatasource = acmeWidgetsDatasource();
-        DataSource widgetsAreUsDatasource = widgetsAreUsDatasource();
-        DataSource widgetsDepotDatasource = widgetsDepotDatasource();
-        targetDataSources.put(ClientDatabase.ACME_WIDGETS, acmeWidgetsDatasource);
-        targetDataSources.put(ClientDatabase.WIDGETS_ARE_US, widgetsAreUsDatasource);
-        targetDataSources.put(ClientDatabase.WIDGET_DEPOT, widgetsDepotDatasource);
+        DataSource clientADatasource = clientADatasource();
+        DataSource clientBDatasource = clientBDatasource();
+        targetDataSources.put(ClientDatabase.CLIENT_A, clientADatasource);
+        targetDataSources.put(ClientDatabase.CLIENT_B, clientBDatasource);
 
         ClientDataSourceRouter clientRoutingDatasource = new ClientDataSourceRouter();
         clientRoutingDatasource.setTargetDataSources(targetDataSources);
-        clientRoutingDatasource.setDefaultTargetDataSource(acmeWidgetsDatasource);
+        clientRoutingDatasource.setDefaultTargetDataSource(clientADatasource);
         return clientRoutingDatasource;
     }
 
-    private DataSource acmeWidgetsDatasource() {
+    private DataSource clientADatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase embeddedDb = dbBuilder.setType(EmbeddedDatabaseType.H2)
-            .setName("ACMEWIDGETS")
+            .setName("CLIENT_A")
             .addScript("classpath:dsrouting-db.sql")
             .build();
         return embeddedDb;
     }
 
-    private DataSource widgetsAreUsDatasource() {
+    private DataSource clientBDatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase embeddedDb = dbBuilder.setType(EmbeddedDatabaseType.H2)
-            .setName("WIDGETSAREUS")
-            .addScript("classpath:dsrouting-db.sql")
-            .build();
-        return embeddedDb;
-    }
-
-    private DataSource widgetsDepotDatasource() {
-        EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase embeddedDb = dbBuilder.setType(EmbeddedDatabaseType.H2)
-            .setName("WIDGETDEPOT")
+            .setName("CLIENT_B")
             .addScript("classpath:dsrouting-db.sql")
             .build();
         return embeddedDb;
