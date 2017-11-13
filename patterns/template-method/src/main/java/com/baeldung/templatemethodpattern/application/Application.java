@@ -1,21 +1,18 @@
 package com.baeldung.templatemethodpattern.application;
 
 import com.baeldung.templatemethodpattern.model.Computer;
-import com.baeldung.templatemethodpattern.model.ComputerBuilder;
-import com.baeldung.templatemethodpattern.model.HighEndComputerBuilder;
-import com.baeldung.templatemethodpattern.model.StandardComputerBuilder;
 import com.baeldung.templatemethodpattern.model.HighEndComputer;
 import com.baeldung.templatemethodpattern.model.StandardComputer;
 
 public class Application {
     
     public static void main(String[] args) {
-        ComputerBuilder standardComputerBuilder = new StandardComputerBuilder();
-        Computer standardComputer = standardComputerBuilder.buildComputer();
+        Computer standardComputer = new StandardComputer();
+        standardComputer.buildComputer();
         standardComputer.getComputerParts().forEach((k, v) -> System.out.println("Part : " + k + " Value : " + v));
         
-        ComputerBuilder highEndComputerBuilder = new HighEndComputerBuilder();
-        Computer highEndComputer = highEndComputerBuilder.buildComputer();
+        Computer highEndComputer = new HighEndComputer();
+        highEndComputer.buildComputer();
         highEndComputer.getComputerParts().forEach((k, v) -> System.out.println("Part : " + k + " Value : " + v));
     }
 }
