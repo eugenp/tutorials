@@ -118,6 +118,7 @@
         <module>mustache</module>
         <module>noexception</module>
 
+        <module>osgi</module>
         <module>orika</module>
 
         <module>patterns</module>
