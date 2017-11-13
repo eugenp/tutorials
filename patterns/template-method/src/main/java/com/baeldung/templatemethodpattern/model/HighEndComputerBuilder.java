@@ -17,6 +17,5 @@ public class HighEndComputerBuilder extends ComputerBuilder {
     @Override
     public void addProcessor() {
         computerParts.put("Processor", "High-end Processor");
-        computerParts.put("Processor", "High-end Processor");
     }
 }
