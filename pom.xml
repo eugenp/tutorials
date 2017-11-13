@@ -62,10 +62,10 @@
         <module>feign</module>
         <module>flyway</module>
 
-        <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
+        <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
         <module>geotools</module>
-        <module>groovy-spock</module>
+        <module>testing-modules/groovy-spock</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava18</module>
@@ -98,7 +98,7 @@
         <module>json-path</module>
         <module>json</module>
         <module>jsoup</module>
-        <module>junit5</module>
+        <module>testing-modules/junit-5</module>
         <module>jws</module>
 
         <module>libraries</module>
@@ -112,9 +112,9 @@
         <module>mapstruct</module>
         <module>metrics</module>
         <module>mesos-marathon</module>
-        <module>mockito</module>
-        <module>mockito2</module>
-        <module>mocks</module>
+        <module>testing-modules/mockito</module>
+        <module>testing-modules/mockito-2</module>
+        <module>testing-modules/mocks</module>
         <module>mustache</module>
         <module>noexception</module>
 
@@ -129,13 +129,13 @@
         <!-- <module>raml</module> -->
         <module>reactor-core</module>
         <module>persistence-modules/redis</module>
-        <module>rest-assured</module>
-        <module>rest-testing</module>
+        <module>testing-modules/rest-assured</module>
+        <module>testing-modules/rest-testing</module>
         <module>resteasy</module>
         <module>rxjava</module>
         <module>spring-swagger-codegen</module>
 
-        <module>selenium-junit-testng</module>
+        <module>testing-modules/selenium-junit-testng</module>
         <module>persistence-modules/solr</module>
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
@@ -235,8 +235,8 @@
 		<module>spring-rest-embedded-tomcat</module>
         
 
-        <module>testing</module>
-        <module>testng</module>
+        <module>testing-modules/testing</module>
+        <module>testing-modules/testng</module>
 
         <module>video-tutorials</module>
 
@@ -254,7 +254,7 @@
         <module>drools</module>
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
-        <module>mockserver</module>
+        <module>testing-modules/mockserver</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
