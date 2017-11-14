@@ -1,8 +1,7 @@
 package com.baeldung.templatemethodpattern.model;
  
-public class StandardComputerBuilder extends ComputerBuilder {
-
-    @Override
+public class StandardComputer extends Computer {
+    
     public void addMotherboard() {
         computerParts.put("Motherboard", "Standard Motherboard");
     }
@@ -17,5 +16,10 @@ public class StandardComputerBuilder extends ComputerBuilder {
     @Override
     public void addProcessor() {
         computerParts.put("Processor", "Standard Processor");
+    }
+
+    @Override
+    public void addMotherboard() {
+        computerParts.put("Motherboard", "Standard Motherboard");
     }
 }
