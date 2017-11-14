@@ -25,5 +25,4 @@ public class ConstructorInjectionComponentTest {
         public void whenInjectedWithConstructorAndServiceCalled_ThenProperMessageReceived() {
                 Assert.assertEquals(component.reuseService(), "Operation has been performed with: constructor injection");
         }
-
 }

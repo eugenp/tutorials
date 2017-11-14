@@ -25,5 +25,4 @@ public class FieldInjectionComponentTest {
         public void whenFieldInjectedAndServiceCalled_ThenProperMessageReceived() {
                 Assert.assertEquals(component.reuseService(), "Operation has been performed with: field injection");
         }
-
 }

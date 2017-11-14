@@ -17,5 +17,4 @@ public class ConstructorInjectionComponent {
         public String reuseService() {
                 return injectableService.performComplexOperation("constructor injection");
         }
-
 }

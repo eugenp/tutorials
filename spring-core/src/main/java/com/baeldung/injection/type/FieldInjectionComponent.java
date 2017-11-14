@@ -12,5 +12,4 @@ public class FieldInjectionComponent {
         public String reuseService() {
                 return injectableService.performComplexOperation("field injection");
         }
-
 }
