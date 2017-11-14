@@ -13,18 +13,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = Runner.class)
 public class ConstructorInjectionComponentTest {
 
-    @Autowired
-    private ConstructorInjectionComponent component;
+        @Autowired private ConstructorInjectionComponent component;
 
-    @Test
-    public void whenInjectedWithConstructor_ThenFieldNotNull() {
-        Object injectableService = Whitebox.getInternalState(component, "injectableService");
-        Assert.assertNotNull(injectableService);
-    }
+        @Test
+        public void whenInjectedWithConstructor_ThenFieldNotNull() {
+                Object injectableService = Whitebox.getInternalState(component, "injectableService");
+                Assert.assertNotNull(injectableService);
+        }
 
-    @Test
-    public void whenInjectedWithConstructorAndServiceCalled_ThenProperMessageReceived() {
-        Assert.assertEquals(component.reuseService(), "Operation has been performed with: constructor injection");
-    }
+        @Test
+        public void whenInjectedWithConstructorAndServiceCalled_ThenProperMessageReceived() {
+                Assert.assertEquals(component.reuseService(), "Operation has been performed with: constructor injection");
+        }
 
 }

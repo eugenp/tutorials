@@ -13,17 +13,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = Runner.class)
 public class SetterInjectionComponentTest {
 
-    @Autowired
-    private SetterInjectionComponent component;
+        @Autowired private SetterInjectionComponent component;
 
-    @Test
-    public void whenInjectedWithSetter_ThenFieldNotNull() {
-        Object injectableService = Whitebox.getInternalState(component, "injectableService");
-        Assert.assertNotNull(injectableService);
-    }
+        @Test
+        public void whenInjectedWithSetter_ThenFieldNotNull() {
+                Object injectableService = Whitebox.getInternalState(component, "injectableService");
+                Assert.assertNotNull(injectableService);
+        }
 
-    @Test
-    public void whenInjectedWithSetterAndServiceCalled_ThenProperMessageReceived() {
-        Assert.assertEquals(component.reuseService(), "Operation has been performed with: setter injection");
-    }
+        @Test
+        public void whenInjectedWithSetterAndServiceCalled_ThenProperMessageReceived() {
+                Assert.assertEquals(component.reuseService(), "Operation has been performed with: setter injection");
+        }
 }

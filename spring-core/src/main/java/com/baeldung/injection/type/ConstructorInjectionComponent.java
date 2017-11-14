@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConstructorInjectionComponent {
 
-    private InjectableService injectableService;
+        private InjectableService injectableService;
 
-    @Autowired
-    public ConstructorInjectionComponent(InjectableService injectableService) {
-        this.injectableService = injectableService;
-    }
+        @Autowired
+        public ConstructorInjectionComponent(InjectableService injectableService) {
+                this.injectableService = injectableService;
+        }
 
-    public String reuseService(){
-        return injectableService.performComplexOperation("constructor injection");
-    }
+        public String reuseService() {
+                return injectableService.performComplexOperation("constructor injection");
+        }
 
 }
