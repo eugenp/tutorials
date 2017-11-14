@@ -1,24 +1,21 @@
 package com.baeldung.concurrent.runnable;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.commons.lang3.RandomUtils;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class RunnableVsThreadTest {
+public class RunnableVsThreadLiveTest {
 
 	private static Logger log = 
-	  LoggerFactory.getLogger(RunnableVsThreadTest.class);
+	  LoggerFactory.getLogger(RunnableVsThreadLiveTest.class);
 
 	private static ExecutorService executorService;
 	
@@ -77,9 +74,7 @@ public class RunnableVsThreadTest {
 	public void givenACallableAsLambda_whenSubmitToES_thenResult() 
 	  throws Exception {
 		
-		Future<Integer> future = executorService.submit(() -> {
-		  return RandomUtils.nextInt(0, 100);
-		});
+		Future<Integer> future = executorService.submit(() -> RandomUtils.nextInt(0, 100));
 		
 		log.info("Result from callable: {}", future.get());
 	}
@@ -99,7 +94,7 @@ class SimpleThread extends Thread{
 	
 	private String message;
 	
-	public SimpleThread(String message) {
+	SimpleThread(String message) {
 		this.message = message;
 	}
 	
@@ -116,7 +111,7 @@ class SimpleRunnable implements Runnable {
 	
 	private String message;
 	
-	public SimpleRunnable(String message) {
+	SimpleRunnable(String message) {
 		this.message = message;
 	}
 	
