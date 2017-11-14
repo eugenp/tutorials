@@ -14,7 +14,7 @@ import org.mockito.junit.VerificationCollector;
 public class LazyVerificationTest {
 
     @Test
-    public void whenLazilyVerified_thenThrowsMultipleExceptions() {
+    public void whenLazilyVerified_thenReportsMultipleFailures() {
         VerificationCollector collector = MockitoJUnit.collector()
             .assertLazily();
 
