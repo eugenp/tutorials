@@ -2,12 +2,13 @@ package com.baeldung.comparable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class PlayerSorter {
 
     public static void main(String[] args) {
         
-        ArrayList<Player> footballTeam = new ArrayList<Player>();
+        List<Player> footballTeam = new ArrayList<Player>();
         Player player1 = new Player(59, "John", 20);
         Player player2 = new Player(67, "Roger", 22);
         Player player3 = new Player(45, "Steven", 24);

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class ComparableUnitTest {
     
     @Test
     public void whenUsingComparable_thenSortedList() {
-        ArrayList<Player> footballTeam = new ArrayList<Player>();
+        List<Player> footballTeam = new ArrayList<Player>();
         Player player1 = new Player(59, "John", 20);
         Player player2 = new Player(67, "Roger", 22);
         Player player3 = new Player(45, "Steven", 24);
