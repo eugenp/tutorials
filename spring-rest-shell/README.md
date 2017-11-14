@@ -2,4 +2,4 @@
 
 ### Relevant Articles
 
-- [Spring REST Shell](http://www.baeldung.com/<ARTICLE_URI>)
+- [Spring REST Shell](http://www.baeldung.com/spring-rest-shell)
