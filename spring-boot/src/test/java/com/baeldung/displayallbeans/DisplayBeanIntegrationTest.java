@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = {"management.port=0", "endpoints.beans.id=springbeans", "endpoints.beans.sensitive=false"})
+@TestPropertySource(properties = { "management.port=0", "endpoints.beans.id=springbeans", "endpoints.beans.sensitive=false" })
 public class DisplayBeanIntegrationTest {
 
     @LocalServerPort
@@ -42,8 +42,7 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessServerUrl_thenHttpStatusOK() throws Exception {
-        ResponseEntity<String> entity = this.testRestTemplate.getForEntity(
-          "http://localhost:" + this.port + "/displayallbeans", String.class);
+        ResponseEntity<String> entity = this.testRestTemplate.getForEntity("http://localhost:" + this.port + "/displayallbeans", String.class);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -51,8 +50,7 @@ public class DisplayBeanIntegrationTest {
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenHttpStatusOK() throws Exception {
         @SuppressWarnings("rawtypes")
-        ResponseEntity<List> entity = this.testRestTemplate.getForEntity(
-          "http://localhost:" + this.mgt + "/springbeans", List.class);
+        ResponseEntity<List> entity = this.testRestTemplate.getForEntity("http://localhost:" + this.mgt + "/springbeans", List.class);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
@@ -60,11 +58,13 @@ public class DisplayBeanIntegrationTest {
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenReturnsBeanNames() throws Exception {
         @SuppressWarnings("rawtypes")
-        ResponseEntity<List> entity = this.testRestTemplate.getForEntity(
-          "http://localhost:" + this.mgt + "/springbeans", List.class);
+        ResponseEntity<List> entity = this.testRestTemplate.getForEntity("http://localhost:" + this.mgt + "/springbeans", List.class);
 
-        List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody().get(0)).get("beans");
-        List<String> beanNamesList = allBeans.stream().map(x -> (String) x.get("bean")).collect(Collectors.toList());
+        List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody()
+            .get(0)).get("beans");
+        List<String> beanNamesList = allBeans.stream()
+            .map(x -> (String) x.get("bean"))
+            .collect(Collectors.toList());
 
         assertThat(beanNamesList, hasItem("fooController"));
         assertThat(beanNamesList, hasItem("fooService"));

@@ -9,9 +9,8 @@ public class AttrListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        servletContextEvent
-          .getServletContext()
-          .setAttribute("servlet-context-attr", "test");
+        servletContextEvent.getServletContext()
+            .setAttribute("servlet-context-attr", "test");
         System.out.println("context init");
     }
 

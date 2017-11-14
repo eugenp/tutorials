@@ -3,6 +3,8 @@ package com.baeldung.templatemethodpatterntest;
 import com.baeldung.templatemethodpattern.model.Computer;
 import com.baeldung.templatemethodpattern.model.HighEndComputerBuilder;
 import com.baeldung.templatemethodpattern.model.StandardComputerBuilder;
+import com.baeldung.templatemethodpattern.model.HighEndComputer;
+import com.baeldung.templatemethodpattern.model.StandardComputer;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
@@ -75,12 +77,12 @@ public class TemplateMethodPatternTest {
     }
     
     @Test
-    public void givenAllHighEnddParts_whenBuildingComputer_thenTwoParts() {
+    public void givenAllHighEndParts_whenBuildingComputer_thenTwoParts() {
         highEndComputerBuilder.buildComputer();
         assertEquals(2, highEndComputerBuilder.getComputerParts().size());
     }
     
-     @Test
+    @Test
     public void givenAllHighEndParts_whenComputerisBuilt_thenComputerInstance() {
         assertThat(standardComputerBuilder.buildComputer(), instanceOf(Computer.class));
     }

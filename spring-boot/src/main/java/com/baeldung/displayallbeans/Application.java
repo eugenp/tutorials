@@ -10,13 +10,13 @@ public class Application {
 
     public static void main(String[] args) {
         applicationContext = SpringApplication.run(Application.class, args);
-        
+
         displayAllBeans();
     }
-    
+
     public static void displayAllBeans() {
         String[] allBeanNames = applicationContext.getBeanDefinitionNames();
-        for(String beanName : allBeanNames) {
+        for (String beanName : allBeanNames) {
             System.out.println(beanName);
         }
     }
