@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import org.baeldung.boot.Application;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
