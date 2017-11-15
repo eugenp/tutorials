@@ -1,10 +1,26 @@
 package com.baeldung.templatemethodpattern.model;
 
-import java.util.Map;
-
 public class HighEndComputer extends Computer {
+
+    @Override
+    public void addMotherboard() {
+         computerParts.put("Motherboard", "High-end Motherboard");
+    }
     
-    public HighEndComputer(Map<String, String> computerParts) {
-        super(computerParts);
+    @Override
+    public void setupMotherboard() {
+        moterboardSetupStatus.add("Screwing the high-end motherboard to the case.");
+        moterboardSetupStatus.add("Pluging in the power supply connectors.");
+        moterboardSetupStatus.forEach(step -> System.out.println(step));
+    }
+    
+    @Override
+    public void addProcessor() {
+         computerParts.put("Processor", "High-end Processor");
+    }
+    
+    @Override
+    public void addMotherboard() {
+         computerParts.put("Motherboard", "High End Motherboard");
     }
 }

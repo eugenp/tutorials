@@ -8,7 +8,7 @@ import java.util.Map;
 public abstract class ComputerBuilder {
 
     protected Map<String, String> computerParts = new HashMap<>();
-    protected List<String> motherboardSetupStatus = new ArrayList<>();
+    protected List<String> moterboardSetupStatus = new ArrayList<>();
     
     public final Computer buildComputer() {
         addMotherboard();
@@ -24,9 +24,9 @@ public abstract class ComputerBuilder {
     public abstract void addProcessor();
     
     public List<String> getMotherboardSetupStatus() {
-        return motherboardSetupStatus;
+        return moterboardSetupStatus;
     }
-    
+
     public Map<String, String> getComputerParts() {
         return computerParts;
     }

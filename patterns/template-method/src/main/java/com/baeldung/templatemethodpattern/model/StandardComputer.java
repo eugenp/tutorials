@@ -1,10 +1,25 @@
 package com.baeldung.templatemethodpattern.model;
-
-import java.util.Map;
-
+ 
 public class StandardComputer extends Computer {
     
-    public StandardComputer(Map<String, String> computerParts) {
-        super(computerParts);
+    public void addMotherboard() {
+        computerParts.put("Motherboard", "Standard Motherboard");
+    }
+    
+    @Override
+    public void setupMotherboard() {
+        moterboardSetupStatus.add("Screwing the standard motherboard to the case.");
+        moterboardSetupStatus.add("Pluging in the power supply connectors.");
+        moterboardSetupStatus.forEach(step -> System.out.println(step));
+    }
+    
+    @Override
+    public void addProcessor() {
+        computerParts.put("Processor", "Standard Processor");
+    }
+
+    @Override
+    public void addMotherboard() {
+        computerParts.put("Motherboard", "Standard Motherboard");
     }
 }
