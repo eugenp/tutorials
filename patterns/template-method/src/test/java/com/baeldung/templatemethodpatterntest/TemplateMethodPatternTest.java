@@ -77,7 +77,7 @@ public class TemplateMethodPatternTest {
     }
     
     @Test
-    public void givenAllHighEnddParts_whenBuildingComputer_thenTwoParts() {
+    public void givenAllHighEndParts_whenBuildingComputer_thenTwoParts() {
         highEndComputerBuilder.buildComputer();
         assertEquals(2, highEndComputerBuilder.getComputerParts().size());
     }
