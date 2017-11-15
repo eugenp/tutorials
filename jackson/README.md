@@ -35,3 +35,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Jackson – Unmarshall to Collection/Array](http://www.baeldung.com/jackson-collection-array)
 - [Jackson – Change Name of Field](http://www.baeldung.com/jackson-name-of-property)
 - [Serialize Only Fields that meet a Custom Criteria with Jackson](http://www.baeldung.com/jackson-serialize-field-custom-criteria)
+- [Mapping Nested Values with Jackson](http://www.baeldung.com/jackson-nested-values)

@@ -8,6 +8,7 @@ import static com.baeldung.array.ArrayInitializer.initializeArrayRangeUsingArray
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysCopy;
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysFill;
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysSetAll;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysUtilClone;
 import static com.baeldung.array.ArrayInitializer.initializeLargerArrayUsingArraysCopy;
 import static com.baeldung.array.ArrayInitializer.initializeMultiDimensionalArrayInLoop;
 import static org.junit.Assert.assertArrayEquals;
@@ -64,5 +65,10 @@ public class ArrayInitializerTest {
     @Test
     public void whenInitializeLargerArrayRangeUsingArraysSetAll_thenCorrect() {
         assertArrayEquals(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, initializeArrayUsingArraysSetAll());
+    }
+
+    @Test
+    public void whenInitializeArrayUsingArraysUtilClone_thenCorrect() {
+        assertArrayEquals(new char[] { 'a', 'b', 'c' }, initializeArrayUsingArraysUtilClone());
     }
 }
