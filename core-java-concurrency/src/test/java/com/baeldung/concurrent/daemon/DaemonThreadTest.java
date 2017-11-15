@@ -25,9 +25,4 @@ public class DaemonThreadTest {
         daemonThread.start();
         daemonThread.setDaemon(true);
     }
-
-    @Test
-    public void givenUserThread_whenStartThread_thenFalse() {
-        NewThread daemonThread = new NewThread();
-    }
 }
