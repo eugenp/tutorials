@@ -13,7 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = Runner.class)
 public class ConstructorInjectionComponentTest {
 
-        @Autowired private ConstructorInjectionComponent component;
+        @Autowired
+        private ConstructorInjectionComponent component;
 
         @Test
         public void whenInjectedWithConstructor_ThenFieldNotNull() {

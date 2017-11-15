@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class FieldInjectionComponent {
 
-        @Autowired private InjectableService injectableService;
+        @Autowired
+        private InjectableService injectableService;
 
         public String reuseService() {
                 return injectableService.performComplexOperation("field injection");

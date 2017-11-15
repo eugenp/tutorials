@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SetterInjectionComponent {
+
         private InjectableService injectableService;
 
         public String reuseService() {
