@@ -17,7 +17,7 @@ import com.baeldung.spring.cloud.stream.rabbit.model.LogMessage;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MyLoggerServiceApplication.class)
 @DirtiesContext
-public class MyLoggerApplicationUnitTest {
+public class MyLoggerApplicationIntegrationTest {
 
     @Autowired
     private Processor pipe;
