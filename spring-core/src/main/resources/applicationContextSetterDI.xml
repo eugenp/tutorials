@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="hobby" class="com.baeldung.beaninjection.setter.Hobby">
+        <property name="hobbyId" value="H200"></property>
+        <property name="hobbyName" value="Painting"></property>
+    </bean>
+
+    <bean id="person" class="com.baeldung.beaninjection.setter.Person">
+        <property name="name" value="Phillip"></property>
+        <property name="age" value="30"></property>
+        <property name="hobby" ref="hobby"></property>
+    </bean>
+
+</beans>
