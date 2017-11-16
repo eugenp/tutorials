@@ -1,10 +1,10 @@
 package com.baeldung.templatemethodpattern.model;
 
-public class HighEndComputerBuilder extends ComputerBuilder {
+public class HighEndComputer extends Computer {
 
     @Override
     public void addMotherboard() {
-        computerParts.put("Motherboard", "High-end Motherboard");
+         computerParts.put("Motherboard", "High-end Motherboard");
     }
     
     @Override
@@ -17,5 +17,10 @@ public class HighEndComputerBuilder extends ComputerBuilder {
     @Override
     public void addProcessor() {
          computerParts.put("Processor", "High-end Processor");
+    }
+    
+    @Override
+    public void addMotherboard() {
+         computerParts.put("Motherboard", "High End Motherboard");
     }
 }
