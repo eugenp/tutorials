@@ -28,7 +28,7 @@ public class FileWriterTest {
         assertThat(
           StreamUtils.getStringFromInputStream(
           new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\n");
     }
 
     @After
