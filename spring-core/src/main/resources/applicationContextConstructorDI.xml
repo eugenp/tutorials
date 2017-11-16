@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="hobby" class="com.baeldung.beaninjection.constructor.Hobby">
+        <constructor-arg value="H100" type="java.lang.String"></constructor-arg>
+        <constructor-arg value="Singing" type="java.lang.String"></constructor-arg>
+    </bean>
+
+    <bean id="person" class="com.baeldung.beaninjection.constructor.Person">
+        <constructor-arg type="java.lang.String" value="Mark"></constructor-arg>
+        <constructor-arg type="java.lang.Integer" value="21"></constructor-arg>
+        <constructor-arg type="com.baeldung.beaninjection.constructor.Hobby" ref="hobby"></constructor-arg>
+    </bean>
+
+</beans>
