@@ -53,7 +53,8 @@
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
-+-[Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
+- [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
+- [Introduction To Docx4J](http://www.baeldung.com/docx4j)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
