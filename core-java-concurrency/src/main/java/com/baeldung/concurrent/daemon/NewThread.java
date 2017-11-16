@@ -3,7 +3,6 @@ package com.baeldung.concurrent.daemon;
 public class NewThread extends Thread {
 
     public void run() {
-    	
     	long startTime = System.currentTimeMillis();
         while (true) {
             for (int i = 0; i < 10; i++) {
