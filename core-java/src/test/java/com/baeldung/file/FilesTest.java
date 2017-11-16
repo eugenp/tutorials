@@ -30,7 +30,6 @@ public class FilesTest {
     @After
     public void revertFile() throws IOException {
         PrintWriter writer = new PrintWriter(fileName);
-        writer.print("");
         writer.print("UK\r\n" + "US\r\n" + "Germany\r\n");
         writer.close();
     }
