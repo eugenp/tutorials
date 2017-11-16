@@ -15,4 +15,8 @@ public class Vehicle {
     public void setEngine(Engine engine) {
         this.engine = engine;
     }
+
+    public Engine getEngine() {
+        return engine;
+    }
 }
