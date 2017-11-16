@@ -1,6 +1,8 @@
 package com.baeldung.templatemethodpattern.application;
 
 import com.baeldung.templatemethodpattern.model.Computer;
+import com.baeldung.templatemethodpattern.model.StandardComputer;
+import com.baeldung.templatemethodpattern.model.HighEndComputer;
 import com.baeldung.templatemethodpattern.model.ComputerBuilder;
 import com.baeldung.templatemethodpattern.model.HighEndComputerBuilder;
 import com.baeldung.templatemethodpattern.model.StandardComputerBuilder;
