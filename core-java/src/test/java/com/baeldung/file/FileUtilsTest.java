@@ -16,7 +16,7 @@ import com.baeldung.util.StreamUtils;
 
 public class FileUtilsTest {
 
-    public static final String fileName = "src/main/resources/countries.txt";
+    public static final String fileName = "src/main/resources/countries.properties";
 
     @Test
     public void whenAppendToFileUsingFiles_thenCorrect() throws IOException {

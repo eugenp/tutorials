@@ -18,7 +18,7 @@ import com.google.common.io.Files;
 
 public class GuavaTest {
 
-    public static final String fileName = "src/main/resources/countries.txt";
+    public static final String fileName = "src/main/resources/countries.properties";
 
     @Test
     public void whenAppendToFileUsingGuava_thenCorrect() throws IOException {
