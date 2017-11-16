@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = DataSourceRoutingTestConfiguration.class)
-public class DataSourceRoutingTests {
+public class DataSourceRoutingIntegrationTest {
 
     @Autowired
     DataSource routingDatasource;
