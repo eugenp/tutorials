@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.util.StreamUtils;
@@ -19,6 +20,13 @@ import com.google.common.io.Files;
 public class GuavaTest {
 
     public static final String fileName = "src/main/resources/countries.properties";
+    
+    @Before
+    public void setup() throws Exception {
+        PrintWriter writer = new PrintWriter(fileName);
+        writer.print("UK\r\n" + "US\r\n" + "Germany\r\n");
+        writer.close();
+    }
 
     @Test
     public void whenAppendToFileUsingGuava_thenCorrect() throws IOException {
