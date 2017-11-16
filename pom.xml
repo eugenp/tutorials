@@ -261,6 +261,7 @@
         <module>saas</module>
         <module>deeplearning4j</module>
         <module>spring-boot-admin</module>
+        <module>lucene</module>
     </modules>
 
     <dependencies>
