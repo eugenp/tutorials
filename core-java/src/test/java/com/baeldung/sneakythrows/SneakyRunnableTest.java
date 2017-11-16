@@ -6,8 +6,12 @@ import static junit.framework.TestCase.assertEquals;
 
 public class SneakyRunnableTest {
 
-    @Test(expected = InterruptedException.class)
+    @Test
     public void whenCallSneakyRunnableMethod_thenThrowException() {
-        new SneakyRunnable().run();
+        try {
+            new SneakyRunnable().run();
+        } catch (Exception e) {
+            assertEquals(InterruptedException.class, e.getStackTrace());
+        }
     }
 }
