@@ -13,7 +13,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { HazelcastConfig.class }, webEnvironment = NONE)
-public class HazelcastConfigTest {
+public class HazelcastConfigIntegrationTest {
 
     @Autowired private ApplicationContext applicationContext;
 
