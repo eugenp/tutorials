@@ -24,11 +24,11 @@ public class GuavaTest {
     public void whenAppendToFileUsingGuava_thenCorrect() throws IOException {
         File file = new File(fileName);
         CharSink chs = Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND);
-        chs.write("Spain");
+        chs.write("Spain\r\n");
         
         assertThat(StreamUtils.getStringFromInputStream(
           new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain");
+          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
     
     @After
