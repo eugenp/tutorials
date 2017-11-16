@@ -34,7 +34,7 @@ public class TemplateMethodPatternTest {
     }
 
     @Test
-    public void givenStandardMotheroboard_whenSetup_thenTwoEqualAssertions() {
+    public void givenStandardMotherboard_whenSetup_thenTwoEqualAssertions() {
         standardComputerBuilder.setupMotherboard();
         assertEquals("Screwing the standard motherboard to the case.", standardComputerBuilder.getMotherboardSetupStatus().get(0));
         assertEquals("Pluging in the power supply connectors.", standardComputerBuilder.getMotherboardSetupStatus().get(1));
