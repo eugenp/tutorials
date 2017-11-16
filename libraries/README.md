@@ -55,6 +55,9 @@
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
 - [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
 - [Introduction To Docx4J](http://www.baeldung.com/docx4j)
+- [Introduction to StreamEx](http://www.baeldung.com/streamex)
+- [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
+- [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
