@@ -19,7 +19,6 @@ public class FileWriterTest {
 
     @Test
     public void whenAppendToFileUsingFileWriter_thenCorrect() throws IOException {
-        String fileName = "src/main/resources/countries.txt";
         FileWriter fw = new FileWriter(fileName, true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("Spain");
