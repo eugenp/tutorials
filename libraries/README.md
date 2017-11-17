@@ -39,7 +39,6 @@
 - [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
 - [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
-- [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 - [Introduction to javax.measure](http://www.baeldung.com/javax-measure)
