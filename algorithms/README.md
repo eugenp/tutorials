@@ -14,3 +14,4 @@
 - [Bubble Sort in Java](http://www.baeldung.com/java-bubble-sort)
 - [Introduction to JGraphT](http://www.baeldung.com/jgrapht)
 - [Introduction to Minimax Algorithm](http://www.baeldung.com/java-minimax-algorithm)
+- [How to Calculate Levenshtein Distance in Java?](http://www.baeldung.com/java-levenshtein-distance)

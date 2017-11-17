@@ -35,19 +35,17 @@ public class DataSourceRoutingTestConfiguration {
 
     private DataSource clientADatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase embeddedDb = dbBuilder.setType(EmbeddedDatabaseType.H2)
+        return dbBuilder.setType(EmbeddedDatabaseType.H2)
             .setName("CLIENT_A")
             .addScript("classpath:dsrouting-db.sql")
             .build();
-        return embeddedDb;
     }
 
     private DataSource clientBDatasource() {
         EmbeddedDatabaseBuilder dbBuilder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase embeddedDb = dbBuilder.setType(EmbeddedDatabaseType.H2)
+        return dbBuilder.setType(EmbeddedDatabaseType.H2)
             .setName("CLIENT_B")
             .addScript("classpath:dsrouting-db.sql")
             .build();
-        return embeddedDb;
     }
 }
