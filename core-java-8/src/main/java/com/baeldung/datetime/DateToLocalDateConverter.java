@@ -27,8 +27,9 @@ public class DateToLocalDateConverter {
     }
 
     public static LocalDate convertToLocalDateViaMilisecond(Date dateToConvert) {
-        return LocalDate.from(Instant.ofEpochMilli(dateToConvert.getTime())
-            .atZone(ZoneId.systemDefault()));
+        return Instant.ofEpochMilli(dateToConvert.getTime())
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
     }
 
 }
