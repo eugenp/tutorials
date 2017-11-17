@@ -13,6 +13,14 @@ public class Vehicle {
 
     private String manufacturer;
 
+    public Vehicle() {
+    }
+
+    public Vehicle(long vehicleId, String manufacturer) {
+        this.vehicleId = vehicleId;
+        this.manufacturer = manufacturer;
+    }
+
     public long getVehicleId() {
         return vehicleId;
     }

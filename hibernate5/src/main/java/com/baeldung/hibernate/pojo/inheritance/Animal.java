@@ -13,6 +13,13 @@ public class Animal {
     private long animalId;
 
     private String species;
+    
+    public Animal() {}    
+
+    public Animal(long animalId, String species) {
+        this.animalId = animalId;
+        this.species = species;
+    }
 
     public long getAnimalId() {
         return animalId;

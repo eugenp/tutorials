@@ -1,6 +1,5 @@
 package com.baeldung.hibernate.pojo.inheritance;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -11,6 +10,14 @@ public class Person {
     private long personId;
 
     private String name;
+
+    public Person() {
+    }
+
+    public Person(long personId, String name) {
+        this.personId = personId;
+        this.name = name;
+    }
 
     public long getPersonId() {
         return personId;
