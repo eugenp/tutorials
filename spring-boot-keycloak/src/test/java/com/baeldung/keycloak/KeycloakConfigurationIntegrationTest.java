@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringBoot.class)
-public class KeycloakConfigurationTest {
+public class KeycloakConfigurationIntegrationTest {
 
     @Spy
     private KeycloakSecurityContextClientRequestInterceptor factory;
