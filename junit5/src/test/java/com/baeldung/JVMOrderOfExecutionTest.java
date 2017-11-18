@@ -1,32 +1,25 @@
 package com.baeldung;
 
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class JVMOrderOfExecutionTest {
-    @Rule
-    public TestName testName = new TestName();
+    private static StringBuilder output = new StringBuilder("");
 
     @Test
     public void secondTest() {
-        printMethodName();
+        output.append("b");
     }
 
     @Test
     public void thirdTest() {
-        printMethodName();
+        output.append("c");
     }
 
     @Test
     public void firstTest() {
-        printMethodName();
-    }
-
-    private void printMethodName() {
-        System.out.println(testName.getMethodName());
+        output.append("a");
     }
 }
