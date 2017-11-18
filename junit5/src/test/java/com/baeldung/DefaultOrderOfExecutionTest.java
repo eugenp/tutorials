@@ -1,33 +1,33 @@
 package com.baeldung;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.AfterClass;
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.DEFAULT)
 public class DefaultOrderOfExecutionTest {
-    @Rule
-    public TestName testName = new TestName();
+    private static StringBuilder output = new StringBuilder("");
 
     @Test
     public void secondTest() {
-        printHashCode();
+        output.append("b");
     }
 
     @Test
     public void thirdTest() {
-        printHashCode();
+        output.append("c");
     }
 
     @Test
     public void firstTest() {
-        printHashCode();
+        output.append("a");
     }
 
-    private void printHashCode() {
-        System.out.println(testName.getMethodName() + ", hash = " + testName.getMethodName()
-            .hashCode());
+    @AfterClass
+    public static void assertOutput() {
+        assertEquals(output.toString(), "cab");
     }
 }
