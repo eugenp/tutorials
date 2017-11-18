@@ -1,32 +1,33 @@
 package com.baeldung;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.AfterClass;
 import org.junit.FixMethodOrder;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class NameAscendingOrderOfExecutionTest {
-    @Rule
-    public TestName testName = new TestName();
+    private static StringBuilder output = new StringBuilder("");
 
     @Test
     public void secondTest() {
-        printMethodName();
+        output.append("b");
     }
 
     @Test
     public void thirdTest() {
-        printMethodName();
+        output.append("c");
     }
 
     @Test
     public void firstTest() {
-        printMethodName();
+        output.append("a");
     }
 
-    private void printMethodName() {
-        System.out.println(testName.getMethodName());
+    @AfterClass
+    public static void assertOutput() {
+        assertEquals(output.toString(), "abc");
     }
 }
