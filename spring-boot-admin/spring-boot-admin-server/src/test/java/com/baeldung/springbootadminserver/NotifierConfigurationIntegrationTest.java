@@ -16,7 +16,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { NotifierConfiguration.class }, webEnvironment = NONE)
-public class NotifierConfigurationTest {
+public class NotifierConfigurationIntegrationTest {
 
     @Autowired private ApplicationContext applicationContext;
 
