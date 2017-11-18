@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.DEFAULT)
+@FixMethodOrder(MethodSorters.JVM)
 public class JVMOrderOfExecutionTest {
     @Rule
     public TestName testName = new TestName();
