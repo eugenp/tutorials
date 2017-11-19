@@ -1,13 +1,11 @@
 package com.baeldung.timezonedisplay;
 
-import sun.util.calendar.ZoneInfo;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
-import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 public class TimezoneDisplay {
@@ -40,10 +38,17 @@ public class TimezoneDisplay {
 
         @Override
         public int compare(ZoneId zoneId1, ZoneId zoneId2) {
-            TimeZone tz1 = ZoneInfo.getTimeZone(zoneId1);
-            TimeZone tz2 = ZoneInfo.getTimeZone(zoneId2);
+            LocalDateTime now = LocalDateTime.now();
 
-            return Integer.compare(tz1.getRawOffset(), tz2.getRawOffset());
+            ZoneOffset offset1 = now
+              .atZone(zoneId1)
+              .getOffset();
+
+            ZoneOffset offset2 = now
+              .atZone(zoneId2)
+              .getOffset();
+
+            return offset1.compareTo(offset2);
         }
     }
 
