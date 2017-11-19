@@ -31,3 +31,4 @@ public class DefaultOrderOfExecutionTest {
         assertEquals(output.toString(), "cab");
     }
 }
+
