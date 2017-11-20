@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userService" class="com.baeldung.dependencyinjectiontypes.UserService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="userManager" class="com.baeldung.dependencyinjectiontypes.UserManager">
+        <constructor-arg ref="userDao"/>
+    </bean>
+
+    <bean id="userDao" class="com.baeldung.dependencyinjectiontypes.UserDao"/>
+</beans>
