@@ -15,5 +15,4 @@ public class TimezoneDisplayApp {
         List<String> gmt = display.getTimeZoneList(TimezoneDisplay.OffsetBase.GMT);
         gmt.forEach(System.out::println);
     }
-
 }
