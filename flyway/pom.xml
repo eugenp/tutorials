@@ -13,6 +13,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>spring-flyway</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -20,6 +24,17 @@
             <version>${mysql.version}</version>
         </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <plugins>
             <plugin>
@@ -32,5 +47,6 @@
     <properties>
         <mysql.version>6.0.5</mysql.version>
         <flyway-maven-plugin.version>4.0.3</flyway-maven-plugin.version>
+        <spring.boot.version>1.5.8.RELEASE</spring.boot.version>
     </properties>
 </project>
