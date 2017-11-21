@@ -14,7 +14,7 @@ public class TimezoneDisplay {
         GMT, UTC
     }
 
-    public List<String> compileListFor(OffsetBase base) {
+    public List<String> getTimeZoneList(OffsetBase base) {
         Set<String> availableZoneIds = ZoneId.getAvailableZoneIds();
 
         LocalDateTime now = LocalDateTime.now();

@@ -8,11 +8,11 @@ public class TimezoneDisplayApp {
         TimezoneDisplay display = new TimezoneDisplay();
 
         System.out.println("Time zones in UTC:");
-        List<String> utc = display.compileListFor(TimezoneDisplay.OffsetBase.UTC);
+        List<String> utc = display.getTimeZoneList(TimezoneDisplay.OffsetBase.UTC);
         utc.forEach(System.out::println);
 
         System.out.println("Time zones in GMT:");
-        List<String> gmt = display.compileListFor(TimezoneDisplay.OffsetBase.GMT);
+        List<String> gmt = display.getTimeZoneList(TimezoneDisplay.OffsetBase.GMT);
         gmt.forEach(System.out::println);
     }
 
