@@ -12,7 +12,7 @@ public class TimezoneDisplayJava7 {
         GMT, UTC
     }
 
-    public List<String> compileListFor(TimezoneDisplayJava7.OffsetBase base) {
+    public List<String> getTimeZoneList(TimezoneDisplayJava7.OffsetBase base) {
         String[] availableZoneIds = TimeZone.getAvailableIDs();
         List<String> result = new ArrayList<>(availableZoneIds.length);
 

@@ -8,13 +8,13 @@ public class TimezoneDisplayJava7App {
         TimezoneDisplayJava7 display = new TimezoneDisplayJava7();
 
         System.out.println("Time zones in UTC:");
-        List<String> utc = display.compileListFor(TimezoneDisplayJava7.OffsetBase.UTC);
+        List<String> utc = display.getTimeZoneList(TimezoneDisplayJava7.OffsetBase.UTC);
         for (String timeZone : utc) {
             System.out.println(timeZone);
         }
 
         System.out.println("Time zones in GMT:");
-        List<String> gmt = display.compileListFor(TimezoneDisplayJava7.OffsetBase.GMT);
+        List<String> gmt = display.getTimeZoneList(TimezoneDisplayJava7.OffsetBase.GMT);
         for (String timeZone : gmt) {
             System.out.println(timeZone);
         }
