@@ -46,6 +46,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.flywaydb.flyway-test-extensions</groupId>-->
+			<!--<artifactId>flyway-spring-test</artifactId>-->
+            <!--<version>4.2.0.1</version>-->
+			<!--<scope>test</scope>-->
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<groupId>org.springframework</groupId>-->
+					<!--<artifactId>spring-test</artifactId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
+		<!--</dependency>-->
 	</dependencies>
 
 	<build>
