@@ -8,6 +8,10 @@ import java.util.concurrent.TimeUnit;
 
 public class TimezoneDisplayJava7 {
 
+    public enum OffsetBase {
+        GMT, UTC
+    }
+
     public List<String> compileListFor(TimezoneDisplayJava7.OffsetBase base) {
         String[] availableZoneIds = TimeZone.getAvailableIDs();
         List<String> result = new ArrayList<>(availableZoneIds.length);
@@ -34,10 +38,6 @@ public class TimezoneDisplayJava7 {
         minutes = Math.abs(minutes - TimeUnit.HOURS.toMinutes(hours));
 
         return String.format("%+03d:%02d", hours, Math.abs(minutes));
-    }
-
-    public enum OffsetBase {
-        GMT, UTC
     }
 
 }
