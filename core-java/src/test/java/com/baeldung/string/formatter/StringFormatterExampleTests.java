@@ -16,6 +16,7 @@ public class StringFormatterExampleTests {
         Calendar c = new GregorianCalendar(2017, 11, 10);
         String s = String.format("The date is: %tm %1$te,%1$tY", c);
 
+
         assertEquals("The date is: 12 10,2017", s);
     }
 
@@ -116,7 +117,7 @@ public class StringFormatterExampleTests {
         //Argument_Index
         String s = String.format("The date is: %tm %1$te,%1$tY", c);
         assertEquals("The date is: 12 10,2017", s);
-
+       
         s = String.format("The date is: %tm %<te,%<tY", c);
         assertEquals("The date is: 12 10,2017", s);
     }
@@ -127,7 +128,6 @@ public class StringFormatterExampleTests {
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
         formatter.format("I am writting to a %s Instance.", sb.getClass());
-
         assertEquals("I am writting to a class java.lang.StringBuilder Instance.", sb.toString());
     }
     
