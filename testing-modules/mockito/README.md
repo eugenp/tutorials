@@ -11,3 +11,4 @@
 - [Mockito’s Mock Methods](http://www.baeldung.com/mockito-mock-methods)
 - [Introduction to PowerMock](http://www.baeldung.com/intro-to-powermock)
 - [Mocking Exception Throwing using Mockito](http://www.baeldung.com/mockito-exceptions)
+- [Mocking Void Methods with Mockito](http://www.baeldung.com/mockito-void-methods)
