@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Student {
-    private int id;
-    private String name;
+    private int id = 1;
+    private String name = "Albert Einstein";
 
     public int getId() {
         return id;
