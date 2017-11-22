@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class PrimitiveStreamsTest {
+public class PrimitiveStreamsUnitTest {
 
     private PrimitiveStreams streams = new PrimitiveStreams();
 
