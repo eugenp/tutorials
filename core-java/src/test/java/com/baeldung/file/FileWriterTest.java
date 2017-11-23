@@ -15,11 +15,10 @@ import com.baeldung.util.StreamUtils;
 
 public class FileWriterTest {
     
-    public static final String fileName = "src/main/resources/countries.txt";
+    public static final String fileName = "src/main/resources/countries.properties";
 
     @Test
     public void whenAppendToFileUsingFileWriter_thenCorrect() throws IOException {
-        String fileName = "src/main/resources/countries.txt";
         FileWriter fw = new FileWriter(fileName, true);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("Spain");
@@ -29,13 +28,12 @@ public class FileWriterTest {
         assertThat(
           StreamUtils.getStringFromInputStream(
           new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\n");
     }
 
     @After
     public void revertFile() throws IOException {
         PrintWriter writer = new PrintWriter(fileName);
-        writer.print("");
         writer.print("UK\r\n" + "US\r\n" + "Germany\r\n");
         writer.close();
     }
