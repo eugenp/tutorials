@@ -30,3 +30,4 @@
 - [Guide to Volatile Keyword in Java](http://www.baeldung.com/java-volatile)
 - [Overview of the java.util.concurrent](http://www.baeldung.com/java-util-concurrent)
 - [Semaphores in Java](http://www.baeldung.com/java-semaphore)
+- [Daemon Threads in Java](http://www.baeldung.com/java-daemon-thread)
