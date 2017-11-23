@@ -5,33 +5,15 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ComputerBuilder {
+public class Computer {
     
-    protected Map<String, String> computerParts = new HashMap<>();
-    protected List<String> moterboardSetupStatus = new ArrayList<>();
+    private Map<String, String> computerParts = new HashMap<>();
     
-    public final Computer buildComputer() {
-        addMotherboard();
-        setupMotherboard();
-        addProcessor();
-        return getComputer();
+    public Computer(Map<String, String> computerParts) {
+        this.computerParts = computerParts;
     }
     
-    public abstract void addMotherboard();
-    
-     public abstract void setupMotherboard();
-    
-    public abstract void addProcessor();
-    
-    public List<String> getMotherboardSetupStatus() {
-        return moterboardSetupStatus;
-    }
-        
     public Map<String, String> getComputerParts() {
         return computerParts;
-    }
-     
-    private Computer getComputer() {
-        return new Computer(computerParts);
     }
 }
