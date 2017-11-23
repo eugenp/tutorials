@@ -85,7 +85,7 @@ public class StringFormatterExampleTests {
     public void givenString_whenLineSeparatorConversion_thenConvertedString() {        
         //Line Separator Conversion
         String s = String.format("First Line %nSecond Line");
-        assertEquals("First Line \n"
+        assertEquals("First Line " + System.getProperty("line.separator")
                 + "Second Line", s);
     }
 
