@@ -3,12 +3,12 @@ package com.baeldung.rxjava;
 import org.junit.Test;
 import rx.Observable;
 
-import static com.baelding.rxjava.ObservableImpl.getTitle;
+import static com.baeldung.rxjava.ObservableImpl.getTitle;
 import static junit.framework.Assert.assertTrue;
 
 public class ObservableTest {
 
-    String result = "";
+    private String result = "";
 
     @Test
     public void givenString_whenJustAndSubscribe_thenEmitsSingleItem() {
@@ -85,7 +85,7 @@ public class ObservableTest {
           .groupBy(i -> 0 == (i % 2) ? "EVEN" : "ODD")
           .subscribe(group ->
             group.subscribe((number) -> {
-                if (group.getKey().toString().equals("EVEN")) {
+                if (group.getKey().equals("EVEN")) {
                     EVEN[0] += number;
                 } else {
                     ODD[0] += number;
@@ -141,5 +141,4 @@ public class ObservableTest {
 
         assertTrue(sum[0] == 10);
     }
-
 }
