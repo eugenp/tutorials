@@ -1,14 +1,11 @@
 # Git spring-cloud-stream-app-starters
-git clone https://github.com/spring-cloud/spring-cloud-stream-app-starters.git
+# https://github.com/spring-cloud-stream-app-starters/hdfs/blob/master/spring-cloud-starter-stream-sink-hdfs/README.adoc
+git clone https://github.com/spring-cloud-stream-app-starters/hdfs.git
 
-# Navigate to HDFS
-cd /hdfs
+# Build it
+./mvnw clean install -PgenerateApps
 
-# Navigate to the the app configuration settings
-cd /spring-cloud-starter-stream-sink-hdfs/src/main/java/org/springframework/cloud/stream/app/hdfs/sink/HdfsSinkProperties.java
-# Specify the properties you want there
-# or inject the application.properties file before building the app
-
-# Then build the customized starter app
-cd ../../../../../../../../../../../../../
-mvn clean install
+# RUn it
+cd apps
+# Optionally inject application.properties prior to build
+java -jar hdfs-sink.jar --fsUri=http://osboxes:50075
