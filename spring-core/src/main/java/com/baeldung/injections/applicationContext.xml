@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- single -->
+	<context:component-scan base-package="com.baeldung.injections" />
+	
+	<!-- multiple -->
+	<context:component-scan
+		base-package="com.baeldung.injections, com.baeldung.tutorials" />
+
+
+	<bean id="JavaBuilder" class="com.baeldung.injections.JavaBuilder">
+		<property name="stringProperty" value="baeldung" />
+		<property name="listProperty">
+			<list>
+				<value>Annotation</value>
+				<value>Interface</value>
+			</list>
+		</property>
+		<property name="mapProperty">
+			<map>
+				<entry key="1" value="A" />
+				<entry key="2" value="B" />
+				<entry key="3" value="C" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="annotationBean" class="com.baeldung.injections.BadPython" />
+
+	<bean id="pythonBuilder" class="com.baeldung.injections.PythonBuilder">
+		<property name="listProperty">
+			<list>
+				<ref bean="annotationBean" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
