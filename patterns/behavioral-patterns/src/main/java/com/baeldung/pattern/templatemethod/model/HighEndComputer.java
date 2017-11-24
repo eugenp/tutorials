@@ -1,4 +1,5 @@
 package com.baeldung.pattern.templatemethod.model;
+
 import com.baeldung.pattern.templatemethod.model.Computer;
 import java.util.Map;
 
