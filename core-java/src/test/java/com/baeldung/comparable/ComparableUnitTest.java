@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.Test;
 
 public class ComparableUnitTest {
-    
+
     @Test
     public void whenUsingComparable_thenSortedList() {
         List<Player> footballTeam = new ArrayList<Player>();
@@ -20,8 +20,10 @@ public class ComparableUnitTest {
         footballTeam.add(player2);
         footballTeam.add(player3);
         Collections.sort(footballTeam);
-        assertEquals(footballTeam.get(0).getName(), "Steven");
-        assertEquals(footballTeam.get(2).getRanking(), 67);
+        assertEquals(footballTeam.get(0)
+            .getName(), "Steven");
+        assertEquals(footballTeam.get(2)
+            .getRanking(), 67);
     }
 
 }
