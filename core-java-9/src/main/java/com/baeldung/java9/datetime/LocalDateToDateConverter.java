@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.datetime;
+package com.baeldung.java9.datetime;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
