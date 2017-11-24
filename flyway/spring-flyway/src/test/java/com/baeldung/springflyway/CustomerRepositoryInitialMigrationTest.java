@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
@@ -23,6 +24,15 @@ public class CustomerRepositoryInitialMigrationTest {
         Optional<Customer> customerOptional = customerRepository.findByEmail("email@email.com");
         assertTrue(customerOptional.isPresent());
 
+    }
+
+    @Test
+    public void givenSchemaCreationMigration_whenTryingToCreateACustomer_thenSuccess() {
+        Customer customer = customerRepository.save(Customer
+          .builder()
+          .email("customer@email.com")
+          .build());
+        assertNotNull(customer.getId());
     }
 
 }
