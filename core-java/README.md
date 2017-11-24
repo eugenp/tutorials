@@ -117,3 +117,6 @@
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
 - [A Guide to the Static Keyword in Java](http://www.baeldung.com/java-static)
 - [Initializing Arrays in Java](http://www.baeldung.com/java-initialize-array)
+- [Guide to Java String Pool](http://www.baeldung.com/java-string-pool)
+- [Copy a File with Java](http://www.baeldung.com/java-copy-file)
+

@@ -12,6 +12,16 @@ import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Student;
 import com.baeldung.hibernate.pojo.User;
 import com.baeldung.hibernate.pojo.UserProfile;
+import com.baeldung.hibernate.pojo.inheritance.Animal;
+import com.baeldung.hibernate.pojo.inheritance.Bag;
+import com.baeldung.hibernate.pojo.inheritance.Book;
+import com.baeldung.hibernate.pojo.inheritance.Car;
+import com.baeldung.hibernate.pojo.inheritance.MyEmployee;
+import com.baeldung.hibernate.pojo.inheritance.MyProduct;
+import com.baeldung.hibernate.pojo.inheritance.Pen;
+import com.baeldung.hibernate.pojo.inheritance.Person;
+import com.baeldung.hibernate.pojo.inheritance.Pet;
+import com.baeldung.hibernate.pojo.inheritance.Vehicle;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -50,6 +60,16 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(OrderEntry.class);
         metadataSources.addAnnotatedClass(OrderEntryIdClass.class);
         metadataSources.addAnnotatedClass(UserProfile.class);
+        metadataSources.addAnnotatedClass(Book.class);
+        metadataSources.addAnnotatedClass(MyEmployee.class);
+        metadataSources.addAnnotatedClass(MyProduct.class);
+        metadataSources.addAnnotatedClass(Pen.class);
+        metadataSources.addAnnotatedClass(Person.class);
+        metadataSources.addAnnotatedClass(Animal.class);
+        metadataSources.addAnnotatedClass(Pet.class);
+        metadataSources.addAnnotatedClass(Vehicle.class);
+        metadataSources.addAnnotatedClass(Car.class);
+        metadataSources.addAnnotatedClass(Bag.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
