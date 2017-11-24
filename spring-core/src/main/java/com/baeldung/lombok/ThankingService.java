@@ -7,8 +7,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ThankingService {
 
-    private final Translator translator;
+    private Translator translator;
 
+    public ThankingService(Translator translator) {
+    	this.translator = translator;
+    }
+    
     public String thank() {
         return translator.translate("thank you");
     }
