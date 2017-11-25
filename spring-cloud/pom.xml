@@ -18,6 +18,7 @@
         <module>spring-cloud-gateway</module>
         <module>spring-cloud-stream</module>
         <module>spring-cloud-connectors-heroku</module>
+        <module>spring-cloud-aws</module>
     </modules>
     <packaging>pom</packaging>
 
