@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
@@ -72,6 +73,14 @@ public class PrimitiveStreamsUnitTest {
         int sum = persons.stream().mapToInt(Person::getAge).sum();
 
         assertEquals(78, sum);
+    }
+
+    @Test
+    public void givenAnIntStreamThenGetTheEvenIntegers() {
+        List<Integer> evenInts = IntStream.rangeClosed(1, 10)
+          .filter(i -> i % 2 == 0)
+          .boxed()
+          .collect(Collectors.toList());
     }
 
     class Person {
