@@ -34,7 +34,7 @@ public class TemplateMethodPatternTest {
     }
 
     @Test
-    public void givenStandardMotheroboard_whenSetup_thenTwoEqualAssertions() {
+    public void givenStandardMotherboard_whenSetup_thenTwoEqualAssertions() {
         standardComputerBuilder.setupMotherboard();
         assertEquals("Screwing the standard motherboard to the case.", standardComputerBuilder.getMotherboardSetupStatus().get(0));
         assertEquals("Pluging in the power supply connectors.", standardComputerBuilder.getMotherboardSetupStatus().get(1));
@@ -81,6 +81,7 @@ public class TemplateMethodPatternTest {
         highEndComputerBuilder.buildComputer();
         assertEquals(2, highEndComputerBuilder.getComputerParts().size());
     }
+    
     @Test
     public void givenAllHighEndParts_whenComputerisBuilt_thenComputerInstance() {
         assertThat(standardComputerBuilder.buildComputer(), instanceOf(Computer.class));

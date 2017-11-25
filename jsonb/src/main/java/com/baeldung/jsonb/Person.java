@@ -22,10 +22,10 @@ public class Person {
     private BigDecimal salary;
 
     public Person() {
+        this(0, "", "", 0, LocalDate.now(), new BigDecimal(0));
     }
 
     public Person(int id, String name, String email, int age, LocalDate registeredDate, BigDecimal salary) {
-        super();
         this.id = id;
         this.name = name;
         this.email = email;
