@@ -81,6 +81,10 @@ public class PrimitiveStreamsUnitTest {
           .filter(i -> i % 2 == 0)
           .boxed()
           .collect(Collectors.toList());
+
+        List<Integer> expected = IntStream.of(2, 4, 6, 8, 10).boxed().collect(Collectors.toList());
+        
+        assertEquals(expected, evenInts);
     }
 
     class Person {
