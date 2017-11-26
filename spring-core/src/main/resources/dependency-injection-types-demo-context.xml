@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Enables annotations -->
+	<context:component-scan base-package="com.baeldung.di.types" />
+
+	<bean name="xmlConstructorInjectionExample" class="com.baeldung.di.types.XmlInjectionExample">
+		<constructor-arg value="blue" />
+	</bean>
+
+	<bean name="xmlSetterInjectionExample" class="com.baeldung.di.types.XmlInjectionExample">
+		<property name="setterInjection" value="yellow" />
+	</bean>
+
+	<!-- String beans used for injections -->
+	<bean name="colorOne" class="java.lang.String">
+		<constructor-arg value="green" />
+	</bean>
+
+	<bean name="colorTwo" class="java.lang.String">
+		<constructor-arg value="black" />
+	</bean>
+
+	<bean name="colorThree" class="java.lang.String">
+		<constructor-arg value="white" />
+	</bean>
+
+</beans>
