@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="person" class="com.baeldung.spring.tutorial.Person">
+		<constructor-arg value="6012" name="id" type="int">
+		</constructor-arg>
+		<constructor-arg value="Eugen" name="name" type="String"></constructor-arg>
+		<property value="224498" name="nationalId">
+		</property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+	<bean id="address" class="com.baeldung.spring.tutorial.Address">
+		<constructor-arg name="street" value="1 Jessore Benapole Lane"></constructor-arg>
+		<constructor-arg name="postcode" value="7432"></constructor-arg>
+	</bean>
+
+</beans>
