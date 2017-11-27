@@ -36,16 +36,4 @@ public class RecursionExample {
         return a>b ? a:b;
     }
     
-    public void solveHanoiTower(String c1,String c2,String c3,int n){
-        
-        if (n == 1){
-            System.out.println("Move 1 disk from "+c1+" to "+c3);
-            return;
-        }
-        
-        solveHanoiTower(c1, c3, c2, n-1);
-        solveHanoiTower(c1, c2, c3, 1);
-        solveHanoiTower(c2, c1, c3, n-1);
-    }
-    
 }
