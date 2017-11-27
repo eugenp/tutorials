@@ -588,6 +588,11 @@
             <version>${hazelcast.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>com.netopyr.wurmloch</groupId>
             <artifactId>wurmloch-crdt</artifactId>
             <version>${crdt.version}</version>
