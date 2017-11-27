@@ -20,7 +20,6 @@ public class CustomerRepositoryNotNullConstraintMigrationTest {
         customerRepository.save(Customer
           .builder()
           .build());
-
     }
 
 }
