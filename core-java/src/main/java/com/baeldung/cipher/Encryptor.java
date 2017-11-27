@@ -1,20 +1,14 @@
 package com.baeldung.cipher;
 
-import jdk.internal.instrumentation.Logger;
-
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
 
-/**
- * Created by Victor Ikoro on 11/25/2017.
- */
 public class Encryptor {
 
-    public byte[] encryptMessage(byte[] message, byte[] keyBytes)
-            throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException {
+    public byte[] encryptMessage(byte[] message, byte[] keyBytes) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         SecretKey secretKey = new SecretKeySpec(keyBytes, "AES");
         cipher.init(Cipher.ENCRYPT_MODE, secretKey);
