@@ -5,7 +5,9 @@ import static org.junit.Assert.assertFalse;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.baeldung.configuration.ApplicationContextTestMusic;
 
 public class DependencyInjectionMusicTest {
 
@@ -13,7 +15,7 @@ public class DependencyInjectionMusicTest {
 
     @Before
     public void initialTestConfig() {
-        context = new ClassPathXmlApplicationContext("dependencyinjectiontypes-music-ctx.xml");
+        context = new AnnotationConfigApplicationContext(ApplicationContextTestMusic.class);
     }
 
     @Test
