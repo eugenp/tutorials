@@ -8,12 +8,13 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ApologizeService {
 
-    private final Translator translator;
-    private final String message;
+    private Translator translator;
+    private String message;
 
     @Autowired
-    public ApologizeService(Translator translator) {
-        this(translator, "sorry");
+    public ApologizeService(Translator translator, String message) {
+        this.translator = translator;
+        this.message = message;
     }
 
     public String apologize() {
