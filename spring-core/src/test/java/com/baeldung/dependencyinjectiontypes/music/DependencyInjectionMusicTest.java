@@ -23,8 +23,7 @@ public class DependencyInjectionMusicTest {
 
         ConstructorMusicPlayer musicPlayer = (ConstructorMusicPlayer) context.getBean("constructorMusicPlayerBean");
 
-        assertFalse(musicPlayer.play()
-            .isEmpty());
+        assertFalse(musicPlayer.play().isEmpty());
     }
 
     @Test
@@ -32,8 +31,7 @@ public class DependencyInjectionMusicTest {
 
         SetterMusicPlayer musicPlayer = (SetterMusicPlayer) context.getBean("setterMusicPlayerBean");
 
-        assertFalse(musicPlayer.play()
-            .isEmpty());
+        assertFalse(musicPlayer.play().isEmpty());
     }
 
     @Test
@@ -41,7 +39,6 @@ public class DependencyInjectionMusicTest {
 
         AutowiredMusicPlayer musicPlayer = (AutowiredMusicPlayer) context.getBean("autowiredMusicPlayerBean");
 
-        assertFalse(musicPlayer.play()
-            .isEmpty());
+        assertFalse(musicPlayer.play().isEmpty());
     }
 }
