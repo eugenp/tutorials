@@ -1,73 +1,65 @@
-package com.baeldung.hibernate.spatial;
+package com.baeldung.hibernate;
 
+import com.baeldung.hibernate.pojo.PointEntity;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.FlushModeType;
 import javax.persistence.Query;
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class HibernateSpatialTest {
 
-    private static EntityManager entityManager;
-
-    @BeforeClass
-    public static void setup() {
-        entityManager = JpaUtil.createEntityManager();
-        entityManager.setFlushMode(FlushModeType.AUTO);
-    }
-
-    @AfterClass
-    public static void tearDown() {
-        JpaUtil.close();
-    }
+    private Session session;
+    private Transaction transaction;
 
     @Before
-    public void beginTransaction() {
-        entityManager.getTransaction().begin();
+    public void setUp() throws IOException {
+        session = HibernateUtil.getSessionFactory("hibernate-spatial.properties")
+          .openSession();
+        transaction = session.beginTransaction();
     }
 
     @After
-    public void deleteTestData() {
-        entityManager.createQuery("delete from PointEntity").executeUpdate();
-        entityManager.getTransaction().commit();
+    public void tearDown() {
+        transaction.rollback();
+        session.close();
     }
 
     @Test
-    public void shouldConvertWktToGeometry() {
+    public void shouldConvertWktToGeometry() throws ParseException {
         Geometry geometry = wktToGeometry("POINT (2 5)");
         assertEquals("Point", geometry.getGeometryType());
         assertTrue(geometry instanceof Point);
     }
 
     @Test
-    public void shouldInsertAndSelectPoints() {
+    public void shouldInsertAndSelectPoints() throws ParseException {
         PointEntity entity = new PointEntity();
         entity.setPoint((Point) wktToGeometry("POINT (1 1)"));
 
-        entityManager.persist(entity);
-        PointEntity fromDb = entityManager.find(PointEntity.class, entity.getId());
+        session.persist(entity);
+        PointEntity fromDb = session.find(PointEntity.class, entity.getId());
         assertEquals("POINT (1 1)", fromDb.getPoint().toString());
     }
 
     @Test
-    public void shouldSelectDisjointPoints() {
+    public void shouldSelectDisjointPoints() throws ParseException {
         insertPoint("POINT (1 2)");
         insertPoint("POINT (3 4)");
         insertPoint("POINT (5 6)");
 
         Point point = (Point) wktToGeometry("POINT (3 4)");
-        Query query = entityManager.createQuery("select p from PointEntity p "
+        Query query = session.createQuery("select p from PointEntity p "
           + "where disjoint(p.point, :point) = true", PointEntity.class);
         query.setParameter("point", point);
         assertEquals("POINT (1 2)", ((PointEntity) query.getResultList().get(0)).getPoint().toString());
@@ -75,35 +67,31 @@ public class HibernateSpatialTest {
     }
 
     @Test
-    public void shouldSelectAllPointsWithinPolygon() {
+    public void shouldSelectAllPointsWithinPolygon() throws ParseException {
         insertPoint("POINT (1 1)");
         insertPoint("POINT (1 2)");
         insertPoint("POINT (3 4)");
         insertPoint("POINT (5 6)");
 
-        Query query = entityManager.createQuery("select p from PointEntity p where within(p.point, :area) = true",
+        Query query = session.createQuery("select p from PointEntity p where within(p.point, :area) = true",
           PointEntity.class);
         query.setParameter("area", wktToGeometry("POLYGON((0 0, 0 5, 5 5, 5 0, 0 0))"));
-        assertEquals(query.getResultList().size(), 3);
+        assertEquals(3, query.getResultList().size());
         assertEquals("POINT (1 1)", ((PointEntity) query.getResultList().get(0)).getPoint().toString());
         assertEquals("POINT (1 2)", ((PointEntity) query.getResultList().get(1)).getPoint().toString());
         assertEquals("POINT (3 4)", ((PointEntity) query.getResultList().get(2)).getPoint().toString());
     }
 
-    private void insertPoint(String point) {
+    private void insertPoint(String point) throws ParseException {
         PointEntity entity = new PointEntity();
         entity.setPoint((Point) wktToGeometry(point));
-        entityManager.persist(entity);
+        session.persist(entity);
     }
 
-    private Geometry wktToGeometry(String wellKnownText) {
+    private Geometry wktToGeometry(String wellKnownText) throws ParseException {
         WKTReader fromText = new WKTReader();
         Geometry geom = null;
-        try {
-            geom = fromText.read(wellKnownText);
-        } catch (ParseException e) {
-            throw new RuntimeException("Not a WKT string:" + wellKnownText);
-        }
+        geom = fromText.read(wellKnownText);
         return geom;
     }
 }

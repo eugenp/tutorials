@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.spatial;
+package com.baeldung.hibernate.pojo;
 
 import com.vividsolutions.jts.geom.Point;
 
