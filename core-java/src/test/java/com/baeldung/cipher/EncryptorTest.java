@@ -45,6 +45,7 @@ public class EncryptorTest {
     @Test
     public void givenEncryptionKey_thenMessageCanBeEncrypted() throws Exception {
         byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
+        
         Assert.assertNotNull(encryptedMessage);
         Assert.assertEquals(encryptedMessage.length  % 32, 0);
     }
@@ -56,6 +57,7 @@ public class EncryptorTest {
         X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);
 
         byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),certificate);
+        
         Assert.assertNotNull(encryptedMessage);
         Assert.assertEquals(encryptedMessage.length  % 128, 0);
     }
@@ -63,7 +65,9 @@ public class EncryptorTest {
     @Test
     public void givenEncryptionKey_whenMessageEncrypted_thenDecryptMessage() throws Exception{
         byte[] encryptedMessageBytes = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
+        
         byte[] clearMessageBytes = encryptor.decryptMessage(encryptedMessageBytes, encKeyString.getBytes());
+        
         Assert.assertEquals(message, new String(clearMessageBytes));
     }
 }
