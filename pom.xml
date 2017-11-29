@@ -262,6 +262,7 @@
         <module>deeplearning4j</module>
         <module>spring-boot-admin</module>
         <module>lucene</module>
+        <module>spring-data-reactive-mongodb</module>
     </modules>
 
     <dependencies>
