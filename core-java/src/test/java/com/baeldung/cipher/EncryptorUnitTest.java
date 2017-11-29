@@ -14,7 +14,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 
-public class EncryptorTest {
+public class EncryptorUnitTest {
     private String encKeyString;
     private String message;
     private String  certificateString;
@@ -43,7 +43,7 @@ public class EncryptorTest {
     }
 
     @Test
-    public void givenEncryptionKey_thenMessageCanBeEncrypted() throws Exception {
+    public void givenEncryptionKey_whenMessageIsPassedToEncryptor_thenMessageIseEncrypted() throws Exception {
         byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
         
         Assert.assertNotNull(encryptedMessage);
@@ -51,7 +51,7 @@ public class EncryptorTest {
     }
 
     @Test
-    public void givenCertificateWithPublicKey_thenMessageCanBeEncrypted() throws Exception {
+    public void givenCertificateWithPublicKey_whenMessageIsPassedToEncryptor_thenMessageIsEncrypted() throws Exception {
         CertificateFactory factory = CertificateFactory.getInstance("X.509");
         InputStream is = new ByteArrayInputStream(certificateString.getBytes());
         X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);
@@ -63,7 +63,7 @@ public class EncryptorTest {
     }
 
     @Test
-    public void givenEncryptionKey_whenMessageEncrypted_thenDecryptMessage() throws Exception{
+    public void givenEncryptionKey_whenMessageIsEncrypted_thenDecryptMessage() throws Exception{
         byte[] encryptedMessageBytes = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
         
         byte[] clearMessageBytes = encryptor.decryptMessage(encryptedMessageBytes, encKeyString.getBytes());
