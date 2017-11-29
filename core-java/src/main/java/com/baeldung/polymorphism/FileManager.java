@@ -28,5 +28,11 @@ public class FileManager {
         logger.info("File 1 Info: \n" + file1.getFileInfo() + "\n");
         return file1;
     }
+    
+    public static TextFile createTextFile2(String name, String content, String version) {
+        TextFile file1 = new TextFile(name, content, version);
+        logger.info("File 1 Info: \n" + file1.getFileInfo() + "\n");
+        return file1;
+    }
 
 }
