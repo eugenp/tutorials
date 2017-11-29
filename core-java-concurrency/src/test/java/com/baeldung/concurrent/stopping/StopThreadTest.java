@@ -1,7 +1,11 @@
 package com.baeldung.concurrent.stopping;
 
+import com.jayway.awaitility.Awaitility;
 import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+
+import static com.jayway.awaitility.Awaitility.await;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -22,10 +26,9 @@ public class StopThreadTest {
 
         // Stop it and make sure the flags have been reversed
         controlSubThread.stop();
-        Thread.sleep(interval);
-        assertTrue(controlSubThread.isStopped());
+        await()
+          .until(() -> assertTrue(controlSubThread.isStopped()));
     }
-
 
     @Test
     public void whenInterruptedThreadIsStopped() throws InterruptedException {
@@ -44,7 +47,8 @@ public class StopThreadTest {
         controlSubThread.interrupt();
 
         // Wait less than the time we would normally sleep, and make sure we exited.
-        Thread.sleep(interval/10);
-        assertTrue(controlSubThread.isStopped());
+        Awaitility.await()
+          .atMost(interval/ 10, TimeUnit.MILLISECONDS)
+          .until(controlSubThread::isStopped);
     }
 }
