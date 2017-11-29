@@ -1,20 +1,7 @@
 BASIC CRUD API with Spring Boot
 ================================
 
-This is the code of a simple API for some CRUD operations realised for a seminar at [FGI](www.fgi-ud.org) using Spring Boot.
-
-### Demo
-* API:  The online version **is**/**will be** hosted here: https://fgi-tcheck.herokuapp.com
-* Mobile version is also opensource and located here: https://github.com/valdesekamdem/tcheck-mobile
-
-### Features
-#### Currently Implemented
-* CRUD
-  * Student
-  
-#### To DO
-* Validations of input with: [Spring Data Rest Validators](http://docs.spring.io/spring-data/rest/docs/2.1.0.RELEASE/reference/html/validation-chapter.html)
-
+This is the code of a simple API for some CRUD operations build using Spring Boot.
 
 ### Requirements
 
@@ -48,7 +35,6 @@ Or create a new one via a POST:
 ```bash
 $ curl -X POST -H "Content-Type:application/json" -d '{ "firstName" : "Dassi", "lastName" : "Orleando", "phoneNumber": "+237 545454545", "email": "mymail@yahoo.fr" }' localhost:8080/students
 ```
-
 
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
 
