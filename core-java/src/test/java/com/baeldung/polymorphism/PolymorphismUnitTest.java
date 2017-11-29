@@ -1,5 +1,7 @@
 package com.baeldung.polymorphism;
 
+import static org.junit.Assert.*;
+
 import java.awt.image.BufferedImage;
 
 import org.junit.Test;
@@ -8,13 +10,30 @@ public class PolymorphismUnitTest {
 
     @Test
     public void givenImageFile_whenFileCreated_shouldSucceed() {
-        FileManager.createImageFile("SampleImageFile", 200, 100, new BufferedImage(100, 200, BufferedImage.TYPE_INT_RGB).toString()
+        ImageFile imageFile = FileManager.createImageFile("SampleImageFile", 200, 100, new BufferedImage(100, 200, BufferedImage.TYPE_INT_RGB).toString()
             .getBytes(), "v1.0.0");
+        assertEquals(200, imageFile.getHeight());
     }
 
+    // Upcasting
+    @Test(expected = Error.class)
+    public void givenTextFile_whenTextFileCreatedAndAssignedToGenericFileAndOnGetWordCount_shouldFail() {
+        GenericFile textFile = FileManager.createTextFile("SampleTextFile", "This is a sample text content", "v1.0.0");
+        textFile.getWordCount();
+    }
+
+    // Downcasting then Upcasting
     @Test
-    public void givenTextFile_whenTextFileCreatedAndAssignedToGenericFile_shouldSucceed() {
-        FileManager.createTextFile("SampleTextFile", "This is a sample text content", "v1.0.0");
+    public void givenTextFile_whenTextFileCreatedAndAssignedToGenericFileAndCastBackToTextFileOnGetWordCount_shouldSucceed() {
+        GenericFile textFile = FileManager.createTextFile("SampleTextFile", "This is a sample text content", "v1.0.0");
+        TextFile textFile2 = (TextFile) textFile;
+        assertEquals(6, textFile2.getWordCount());
     }
 
+    // Downcasting
+    @Test(expected = ClassCastException.class)
+    public void givenGenericFile_whenCastToTextFileAndInvokeGetWordCount_shouldFail() {
+        GenericFile genericFile = new GenericFile();
+        TextFile textFile = (TextFile) genericFile;
+    }
 }
