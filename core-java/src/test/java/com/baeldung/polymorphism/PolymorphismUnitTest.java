@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.awt.image.BufferedImage;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class PolymorphismUnitTest {
@@ -16,11 +17,13 @@ public class PolymorphismUnitTest {
     }
 
     // Upcasting
+    /* Fails to compile
     @Test(expected = Error.class)
     public void givenTextFile_whenTextFileCreatedAndAssignedToGenericFileAndOnGetWordCount_shouldFail() {
         GenericFile textFile = FileManager.createTextFile("SampleTextFile", "This is a sample text content", "v1.0.0");
         textFile.getWordCount();
     }
+    */
 
     // Downcasting then Upcasting
     @Test
@@ -35,5 +38,6 @@ public class PolymorphismUnitTest {
     public void givenGenericFile_whenCastToTextFileAndInvokeGetWordCount_shouldFail() {
         GenericFile genericFile = new GenericFile();
         TextFile textFile = (TextFile) genericFile;
+        System.out.println(textFile.getWordCount());
     }
 }
