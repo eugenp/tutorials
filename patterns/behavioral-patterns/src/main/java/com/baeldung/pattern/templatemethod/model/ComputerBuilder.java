@@ -1,5 +1,6 @@
-package com.baeldung.templatemethodpattern.model;
+package com.baeldung.pattern.templatemethod.model;
 
+import com.baeldung.pattern.templatemethod.model.Computer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
