@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.baeldung.java9.httpclient;
+package com.baeldung.httpclient;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,8 +25,15 @@ import jdk.incubator.http.HttpResponse.BodyHandler;
  * @author pkaria
  */
 public class HttpClientExample {
+    
+    public static void main(String[] args) throws Exception {
+        httpGetRequest();
+        httpPosttRequest();
+        asynchronousRequest();
+        asynchronousMultipleRequests();
+    }
 
-    public void httpGetRequest() throws URISyntaxException, IOException, InterruptedException {
+    public static void httpGetRequest() throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         URI httpURI = new URI("http://jsonplaceholder.typicode.com/posts/1");
         HttpRequest request = HttpRequest.newBuilder(httpURI).GET().build();
@@ -36,7 +43,7 @@ public class HttpClientExample {
         System.out.println(responseBody);
     }
 
-    public void httpPosttRequest() throws URISyntaxException, IOException, InterruptedException {
+    public static void httpPosttRequest() throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient
                 .newBuilder()
                 .build();
@@ -50,7 +57,7 @@ public class HttpClientExample {
         System.out.println(responseBody);
     }
 
-    public void asynchronousRequest() throws URISyntaxException {
+    public static void asynchronousRequest() throws URISyntaxException {
         HttpClient client = HttpClient.newHttpClient();
         URI httpURI = new URI("http://jsonplaceholder.typicode.com/posts/1");
         HttpRequest request = HttpRequest.newBuilder(httpURI).GET().build();
@@ -58,7 +65,7 @@ public class HttpClientExample {
                 HttpResponse.BodyHandler.asString());
     }
 
-    public void asynchronousMultipleRequests() throws URISyntaxException {
+    public static void asynchronousMultipleRequests() throws URISyntaxException {
         List<URI> targets = Arrays.asList(new URI("http://jsonplaceholder.typicode.com/posts/1"), new URI("http://jsonplaceholder.typicode.com/posts/2"));
         HttpClient client = HttpClient.newHttpClient();
         List<CompletableFuture<File>> futures = targets
