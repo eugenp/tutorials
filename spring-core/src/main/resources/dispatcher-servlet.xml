@@ -1,0 +1,17 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+
+	<bean id="book" class="com.baeldung.controller.Book">
+		<constructor-arg ref="bookdetails" />
+	</bean>
+
+	<bean id="bookdetails" class="com.baeldung.controller.BookDetails">
+		<property name="nameOfTheBook" value="HarryPotter" />
+		<property name="authorOfTheBook" value="J K Rowling" />
+	</bean>
+
+</beans>
