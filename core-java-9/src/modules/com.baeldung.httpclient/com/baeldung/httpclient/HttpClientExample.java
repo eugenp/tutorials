@@ -28,7 +28,7 @@ public class HttpClientExample {
     
     public static void main(String[] args) throws Exception {
         httpGetRequest();
-        httpPosttRequest();
+        httpPostRequest();
         asynchronousRequest();
         asynchronousMultipleRequests();
     }
@@ -36,14 +36,15 @@ public class HttpClientExample {
     public static void httpGetRequest() throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         URI httpURI = new URI("http://jsonplaceholder.typicode.com/posts/1");
-        HttpRequest request = HttpRequest.newBuilder(httpURI).GET().build();
+        HttpRequest request = HttpRequest.newBuilder(httpURI).GET()
+          .headers("Accept-Enconding", "gzip, deflate").build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
         String responseBody = response.body();
         int responseStatusCode = response.statusCode();
         System.out.println(responseBody);
     }
 
-    public static void httpPosttRequest() throws URISyntaxException, IOException, InterruptedException {
+    public static void httpPostRequest() throws URISyntaxException, IOException, InterruptedException {
         HttpClient client = HttpClient
                 .newBuilder()
                 .build();
