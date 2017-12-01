@@ -2,10 +2,14 @@ package com.baeldung.nestedclass;
 
 import org.junit.Test;
 
-public class AnonymousInnerTest {
+abstract class SimpleAbstractClass {
+    abstract void run();
+}
+
+public class AnonymousInner {
 
     @Test
-    public void whenRunAnonymousClass_thenCorrect() {
+    public void run() {
         SimpleAbstractClass simpleAbstractClass = new SimpleAbstractClass() {
             void run() {
                 System.out.println("Running Anonymous Class...");
