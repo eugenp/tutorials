@@ -6,7 +6,6 @@
 
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-stream</artifactId>
-
     <packaging>pom</packaging>
 
     <name>spring-cloud-stream</name>
