@@ -17,11 +17,11 @@ import org.springframework.context.annotation.Configuration;
 public class DatabaseConfiguration {
  
     
-    public static Connection getMySQLConnection() throws Exception {
-        Class.forName("com.mysql.jdbc.Driver");
+    public static Connection geth2Connection() throws Exception {
+        Class.forName("org.h2.Driver");
         System.out.println("Driver Loaded.");
-        String url = "jdbc:mysql://localhost/jdbcrowset";
-        return DriverManager.getConnection(url, "root", "");
+        String url = "jdbc:h2:mem:testdb";
+        return DriverManager.getConnection(url, "sa", "");
       }
     
     public static void initDatabase(Statement stmt) throws SQLException{

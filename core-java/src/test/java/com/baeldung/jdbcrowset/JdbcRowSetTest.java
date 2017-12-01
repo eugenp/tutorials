@@ -26,14 +26,14 @@ import com.sun.rowset.WebRowSetImpl;
 
 public class JdbcRowSetTest {
     Statement stmt = null;
-    String username = "root";
+    String username = "sa";
     String password = "";
-    String url = "jdbc:mysql://localhost/jdbcrowset";
+    String url = "jdbc:h2:mem:testdb";
     String sql = "SELECT * FROM customers";
 
     @Before
     public void setup() throws Exception {
-        Connection conn = DatabaseConfiguration.getMySQLConnection();
+        Connection conn = DatabaseConfiguration.geth2Connection();
 
         String drop = "DROP TABLE IF EXISTS customers, associates;";
         String schema = "CREATE TABLE customers (id INT NOT NULL, name VARCHAR(50) NOT NULL, PRIMARY KEY (id)); ";
@@ -52,7 +52,7 @@ public class JdbcRowSetTest {
 
         String sql = "SELECT * FROM customers";
         JdbcRowSet jdbcRS;
-        Connection conn = DatabaseConfiguration.getMySQLConnection();
+        Connection conn = DatabaseConfiguration.geth2Connection();
         jdbcRS = new JdbcRowSetImpl(conn);
         jdbcRS.setType(ResultSet.TYPE_SCROLL_INSENSITIVE);
         jdbcRS.setCommand(sql);
@@ -142,7 +142,7 @@ public class JdbcRowSetTest {
         RowSetFactory rsf = RowSetProvider.newFactory();
         FilteredRowSet frs = rsf.createFilteredRowSet();
         frs.setCommand("select * from customers");
-        Connection conn = DatabaseConfiguration.getMySQLConnection();
+        Connection conn = DatabaseConfiguration.geth2Connection();
         frs.execute(conn);
         frs.setFilter(new FilterExample("^[A-C].*"));
 

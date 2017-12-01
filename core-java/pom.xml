@@ -181,10 +181,11 @@
 			<version>2.1.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.44</version>
-		</dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.196</version>
+			<scope>runtime</scope>
+		</dependency>		
 		<dependency>
 			<groupId>com.sun.messaging.mq</groupId>
 			<artifactId>fscontext</artifactId>
