@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Bean -->
+	<bean id="message" class="com.baeldung.dependencyinjections.Message">
+		<property name="content"
+			value="Demonstrating Constructer Based Injection...." />
+	</bean>
+
+	<bean id="phonedetails" class="com.baeldung.dependencyinjections.CellPhone">
+		<property name="number" value="911"></property>
+		<property name="provider" value="Verizon"></property>
+	</bean>
+	<!-- Constructor Based Injected Bean -->
+
+	<bean id="mailBox" class="com.baeldung.dependencyinjections.MailBox">
+		
+		<!-- Pass By Reference -->
+		<constructor-arg ref="message" />
+
+		<!-- Pass By Value -->
+		<!--constructor-arg value="Constructor invoked by value" /-->
+
+	</bean>
+	<!-- Constructor Based Injected Bean -->
+
+	<!-- Start - Setter Based Injected Bean -->
+	<bean id="telephoneDirectory" class="com.baeldung.dependencyinjections.TelephoneDirectory">
+		<property name="cellPhone" ref="phonedetails"></property>
+	</bean>
+	<!-- End - Setter Based Injected Bean -->
+</beans>
