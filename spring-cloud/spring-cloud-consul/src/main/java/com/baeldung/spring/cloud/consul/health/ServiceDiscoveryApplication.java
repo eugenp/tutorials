@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.consul;
+package com.baeldung.spring.cloud.consul.health;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
