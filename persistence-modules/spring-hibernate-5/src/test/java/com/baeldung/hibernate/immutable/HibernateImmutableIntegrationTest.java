@@ -13,6 +13,9 @@ import javax.persistence.PersistenceException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+/**
+ * Configured in: immutable.cfg.xml
+ */
 public class HibernateImmutableIntegrationTest {
 
     private static Session session;
