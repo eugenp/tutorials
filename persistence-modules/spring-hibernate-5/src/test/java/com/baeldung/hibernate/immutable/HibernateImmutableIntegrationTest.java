@@ -115,7 +115,6 @@ public class HibernateImmutableIntegrationTest {
 
     private static void createEventGenerated() {
         EventGeneratedId eventGeneratedId = new EventGeneratedId("John", "Doe");
-        eventGeneratedId.setId(4L);
         session.save(eventGeneratedId);
     }
 
