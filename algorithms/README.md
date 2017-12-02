@@ -11,3 +11,7 @@
 - [String Search Algorithms for Large Texts](http://www.baeldung.com/java-full-text-search-algorithms)
 - [Test a Linked List for Cyclicity](http://www.baeldung.com/java-linked-list-cyclicity)
 - [Binary Search Algorithm in Java](http://www.baeldung.com/java-binary-search)
+- [Bubble Sort in Java](http://www.baeldung.com/java-bubble-sort)
+- [Introduction to JGraphT](http://www.baeldung.com/jgrapht)
+- [Introduction to Minimax Algorithm](http://www.baeldung.com/java-minimax-algorithm)
+- [How to Calculate Levenshtein Distance in Java?](http://www.baeldung.com/java-levenshtein-distance)

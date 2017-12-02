@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -105,6 +105,13 @@
                 </executions>
             </plugin>
             <!-- /Neuroph -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -327,6 +334,11 @@
             <version>5.0.0-release</version>
         </dependency>
         <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-jdo-query</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>chronicle</artifactId>
             <version>3.6.4</version>
@@ -546,29 +558,29 @@
             <version>${protonpack.version}</version>
         </dependency>
         <dependency>
-	          <groupId>org.functionaljava</groupId>
-	          <artifactId>functionaljava</artifactId>
-	          <version>4.7</version>
-	      </dependency>
-	      <dependency>
-	          <groupId>org.functionaljava</groupId>
-	          <artifactId>functionaljava-java8</artifactId>
-	          <version>4.7</version>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava</artifactId>
+            <version>4.7</version>
         </dependency>
         <dependency>
-	          <groupId>org.functionaljava</groupId>
-	          <artifactId>functionaljava-quickcheck</artifactId>
-	          <version>4.7</version>
-	      </dependency>
-	      <dependency>
-	          <groupId>org.functionaljava</groupId>
-	          <artifactId>functionaljava-java-core</artifactId>
-	          <version>4.7</version>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java8</artifactId>
+            <version>4.7</version>
         </dependency>
         <dependency>
-   			    <groupId>javax.cache</groupId>
-   			    <artifactId>cache-api</artifactId>
-   			    <version>${cache.version}</version>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-quickcheck</artifactId>
+            <version>4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java-core</artifactId>
+            <version>4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${cache.version}</version>
         </dependency>
         <dependency>
             <groupId>com.hazelcast</groupId>
@@ -581,7 +593,7 @@
             <version>1.0.1</version>
         </dependency>
         <dependency>
-           <groupId>com.netopyr.wurmloch</groupId>
+            <groupId>com.netopyr.wurmloch</groupId>
             <artifactId>wurmloch-crdt</artifactId>
             <version>${crdt.version}</version>
         </dependency>
@@ -600,6 +612,31 @@
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
         </dependency>
+	<dependency>
+	    <groupId>org.bouncycastle</groupId>
+	    <artifactId>bcprov-jdk15on</artifactId>
+	    <version>1.58</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.bouncycastle</groupId>
+	    <artifactId>bcpkix-jdk15on</artifactId>
+	    <version>1.58</version>
+	</dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>com.google.http-client</groupId>
+        <artifactId>google-http-client-gson</artifactId>
+        <version>${googleclient.version}</version>
+      </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -617,6 +654,7 @@
         </repository>
     </repositories>
     <properties>
+        <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>

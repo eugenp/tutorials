@@ -8,9 +8,9 @@
 - [Embedded Jetty Server in Java](http://www.baeldung.com/jetty-embedded)
 - [Introduction to Apache Flink with Java](http://www.baeldung.com/apache-flink)
 - [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
-- [Intro to JaVer](http://www.baeldung.com/javers)
+- [Intro to JaVers](http://www.baeldung.com/javers)
 - [Introduction to Apache Commons Math](http://www.baeldung.com/apache-commons-math)
-- [Intro to JaVer](http://www.baeldung.com/serenity-bdd)
+- [Intro to Serenity BDD](http://www.baeldung.com/serenity-bdd)
 - [Introduction to Netty](http://www.baeldung.com/netty)
 - [Merging Streams in Java](http://www.baeldung.com/java-merge-streams)
 - [Serenity BDD and Screenplay](http://www.baeldung.com/serenity-screenplay)
@@ -39,7 +39,6 @@
 - [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
 - [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
-- [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 - [Introduction to javax.measure](http://www.baeldung.com/javax-measure)
@@ -53,6 +52,13 @@
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
+- [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
+- [Introduction To Docx4J](http://www.baeldung.com/docx4j)
+- [Introduction to StreamEx](http://www.baeldung.com/streamex)
+- [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
+- [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
+- [Guide to google-http-client](http://www.baeldung.com/google-http-client)
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
