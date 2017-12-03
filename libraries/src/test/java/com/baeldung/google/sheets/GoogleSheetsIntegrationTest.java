@@ -26,7 +26,7 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class GoogleSheetsTest {
+public class GoogleSheetsIntegrationTest {
 
     private static Sheets sheetsService;
 
