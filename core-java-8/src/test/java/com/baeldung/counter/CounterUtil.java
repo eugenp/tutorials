@@ -8,21 +8,16 @@ public class CounterUtil {
 
     private final static String[] COUNTRY_NAMES = { "China", "Australia", "India", "USA", "USSR", "UK", "China", "France", "Poland", "Austria", "India", "USA", "Egypt", "China" };
 
-    public static void mapWithWrapper(Map<String, Integer> counterMap) {
+    public static void counterWithWrapperObject(Map<String, Integer> counterMap) {
         for (String country : COUNTRY_NAMES) {
-            Integer occuranceCount = counterMap.get(country);
-            if (occuranceCount == null) {
-                counterMap.put(country, 1);
-            } else {
-                counterMap.put(country, occuranceCount + 1);
-            }
+            counterMap.compute(country, (k, v) -> v == null ? 1 : v + 1);
         }
     }
 
-    public static Map<String, Long> mapWithLambda() {
-        return Stream.of(COUNTRY_NAMES)
+    public static void counterWithLambdaAndWrapper(Map<String, Long> counterMap) {
+        counterMap.putAll(Stream.of(COUNTRY_NAMES)
             .parallel()
-            .collect(Collectors.groupingBy(String::toString, Collectors.counting()));
+            .collect(Collectors.groupingBy(k -> k, Collectors.counting())));
     }
 
     public static class MutableInteger {
@@ -41,7 +36,7 @@ public class CounterUtil {
         }
     }
 
-    public static void mapWithMutableInteger(Map<String, MutableInteger> counterMap) {
+    public static void counterWithMutableInteger(Map<String, MutableInteger> counterMap) {
         for (String country : COUNTRY_NAMES) {
             MutableInteger oldValue = counterMap.get(country);
             if (oldValue != null) {
@@ -52,7 +47,7 @@ public class CounterUtil {
         }
     }
 
-    public static void mapWithPrimitiveArray(Map<String, int[]> counterMap) {
+    public static void counterWithPrimitiveArray(Map<String, int[]> counterMap) {
         for (String country : COUNTRY_NAMES) {
             int[] oldCounter = counterMap.get(country);
             if (oldCounter != null) {

@@ -10,38 +10,33 @@ import org.openjdk.jmh.annotations.Mode;
 
 import com.baeldung.counter.CounterUtil.MutableInteger;
 
+@Fork(value = 1, warmups = 3)
+@BenchmarkMode(Mode.All)
 public class CounterStatistics {
 
     private static final Map<String, Integer> counterMap = new HashMap<>();
     private static final Map<String, MutableInteger> counterWithMutableIntMap = new HashMap<>();
     private static final Map<String, int[]> counterWithIntArrayMap = new HashMap<>();
-    
+    private static final Map<String, Long> counterWithLongWrapperMap = new HashMap<>();
+
     @Benchmark
-    @Fork(value = 1, warmups = 3)
-    @BenchmarkMode(Mode.All)
-    public void mapWithWrapper() {
-        CounterUtil.mapWithWrapper(counterMap);
+    public void wrapperAsCounter() {
+        CounterUtil.counterWithWrapperObject(counterMap);
     }
-    
+
     @Benchmark
-    @Fork(value = 1, warmups = 3)
-    @BenchmarkMode(Mode.All)
-    public void mapWithLambda() {
-        CounterUtil.mapWithLambda();
+    public void lambdaExpressionWithWrapper() {
+        CounterUtil.counterWithLambdaAndWrapper(counterWithLongWrapperMap);
     }
-    
+
     @Benchmark
-    @Fork(value = 1, warmups = 3)
-    @BenchmarkMode(Mode.All)
-    public void mapWithMutableInteger() {
-        CounterUtil.mapWithMutableInteger(counterWithMutableIntMap);
+    public void mutableIntegerAsCounter() {
+        CounterUtil.counterWithMutableInteger(counterWithMutableIntMap);
     }
-    
+
     @Benchmark
-    @Fork(value = 1, warmups = 3)
-    @BenchmarkMode(Mode.All)
-    public void mapWithPrimitiveArray() {
-        CounterUtil.mapWithPrimitiveArray(counterWithIntArrayMap);
+    public void primitiveArrayAsCounter() {
+        CounterUtil.counterWithPrimitiveArray(counterWithIntArrayMap);
     }
 
     public static void main(String[] args) throws Exception {
