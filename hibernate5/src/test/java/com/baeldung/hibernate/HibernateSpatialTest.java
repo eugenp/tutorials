@@ -14,7 +14,9 @@ import org.junit.Test;
 import javax.persistence.Query;
 import java.io.IOException;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 public class HibernateSpatialTest {
@@ -76,10 +78,8 @@ public class HibernateSpatialTest {
         Query query = session.createQuery("select p from PointEntity p where within(p.point, :area) = true",
           PointEntity.class);
         query.setParameter("area", wktToGeometry("POLYGON((0 0, 0 5, 5 5, 5 0, 0 0))"));
-        assertEquals(3, query.getResultList().size());
-        assertEquals("POINT (1 1)", ((PointEntity) query.getResultList().get(0)).getPoint().toString());
-        assertEquals("POINT (1 2)", ((PointEntity) query.getResultList().get(1)).getPoint().toString());
-        assertEquals("POINT (3 4)", ((PointEntity) query.getResultList().get(2)).getPoint().toString());
+        assertThat(query.getResultList().stream().map(p -> ((PointEntity) p).getPoint().toString()))
+          .containsOnly("POINT (1 1)", "POINT (1 2)", "POINT (3 4)");
     }
 
     private void insertPoint(String point) throws ParseException {
