@@ -1,18 +1,15 @@
 package com.baeldung.cipher;
 
 
-import com.baeldung.cipher.Encryptor;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.InputStream;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EncryptorUnitTest {
     private String encKeyString;
@@ -43,11 +40,11 @@ public class EncryptorUnitTest {
     }
 
     @Test
-    public void givenEncryptionKey_whenMessageIsPassedToEncryptor_thenMessageIseEncrypted() throws Exception {
+    public void givenEncryptionKey_whenMessageIsPassedToEncryptor_thenMessageIsEncrypted() throws Exception {
         byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
-        
-        Assert.assertNotNull(encryptedMessage);
-        Assert.assertEquals(encryptedMessage.length  % 32, 0);
+
+        assertThat(encryptedMessage).isNotNull();
+        assertThat(encryptedMessage.length  % 32).isEqualTo(0);
     }
 
     @Test
@@ -57,17 +54,17 @@ public class EncryptorUnitTest {
         X509Certificate certificate = (X509Certificate) factory.generateCertificate(is);
 
         byte[] encryptedMessage = encryptor.encryptMessage(message.getBytes(),certificate);
-        
-        Assert.assertNotNull(encryptedMessage);
-        Assert.assertEquals(encryptedMessage.length  % 128, 0);
+
+        assertThat(encryptedMessage).isNotNull();
+        assertThat(encryptedMessage.length  % 128).isEqualTo(0);
     }
 
     @Test
     public void givenEncryptionKey_whenMessageIsEncrypted_thenDecryptMessage() throws Exception{
         byte[] encryptedMessageBytes = encryptor.encryptMessage(message.getBytes(),encKeyString.getBytes());
-        
+
         byte[] clearMessageBytes = encryptor.decryptMessage(encryptedMessageBytes, encKeyString.getBytes());
-        
-        Assert.assertEquals(message, new String(clearMessageBytes));
+
+        assertThat(message).isEqualTo(new String(clearMessageBytes));
     }
 }
