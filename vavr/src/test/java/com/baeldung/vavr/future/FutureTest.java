@@ -1,4 +1,4 @@
-package com.vavr.future;
+package com.baeldung.vavr.future;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
