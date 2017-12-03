@@ -2,23 +2,25 @@ package com.baeldung.algorithms.sudoku;
 
 public class BacktrackingAlgorithm {
 
-    public static void main(String[] args) {
-        
-        char[][] board = { 
-            { '8', '.', '.', '.', '.', '.', '.', '.', '.' }, 
-            { '.', '.', '3', '6', '.', '.', '.', '.', '.' }, 
-            { '.', '7', '.', '.', '9', '.', '2', '.', '.' }, 
+    static char[][] board = { 
+            { '8', '.', '.', '.', '.', '.', '.', '.', '.' },
+            { '.', '.', '3', '6', '.', '.', '.', '.', '.' },
+            { '.', '7', '.', '.', '9', '.', '2', '.', '.' },
             { '.', '5', '.', '.', '.', '7', '.', '.', '.' },
-            { '.', '.', '.', '.', '4', '5', '7', '.', '.' }, 
-            { '.', '.', '.', '1', '.', '.', '.', '3', '.' }, 
-            { '.', '.', '1', '.', '.', '.', '.', '6', '8' }, 
+            { '.', '.', '.', '.', '4', '5', '7', '.', '.' },
+            { '.', '.', '.', '1', '.', '.', '.', '3', '.' },
+            { '.', '.', '1', '.', '.', '.', '.', '6', '8' },
             { '.', '.', '8', '5', '.', '.', '.', '1', '.' },
-            { '.', '9', '.', '.', '.', '.', '4', '.', '.' }
+            { '.', '9', '.', '.', '.', '.', '4', '.', '.' } 
         };
-        
+
+    public static void main(String[] args) {
         BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
         solver.solve(board);
+        solver.printBoard();
+    }
 
+    public void printBoard() {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 System.out.print(board[i][j] + " ");
@@ -26,7 +28,7 @@ public class BacktrackingAlgorithm {
             System.out.println();
         }
     }
-    
+
     public boolean solve(char[][] board) {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[0].length; c++) {
@@ -45,7 +47,7 @@ public class BacktrackingAlgorithm {
         }
         return true;
     }
-    
+
     public boolean isValid(char[][] board, int r, int c) {
         boolean[] row = new boolean[9];
         for (int i = 0; i < 9; i++) {
@@ -68,7 +70,7 @@ public class BacktrackingAlgorithm {
                 }
             }
         }
-        
+
         boolean[] grid = new boolean[9];
         for (int i = (r / 3) * 3; i < (r / 3) * 3 + 3; i++) {
             for (int j = (c / 3) * 3; j < (c / 3) * 3 + 3; j++) {
@@ -79,7 +81,7 @@ public class BacktrackingAlgorithm {
                         return false;
                     }
                 }
-             }
+            }
         }
         return true;
     }
