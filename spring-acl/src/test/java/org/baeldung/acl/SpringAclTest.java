@@ -49,7 +49,7 @@ public class SpringAclTest extends AbstractJUnit4SpringContextTests{
     
     @Test
     @WithMockUser(username="manager")
-    public void givenUsernameManager_whenFindAllMessage_thenReturnFirstMessage(){
+    public void givenUserManager_whenFindAllMessage_thenReturnFirstMessage(){
         List<NoticeMessage> details = repo.findAll();
         assertNotNull(details);
         assertEquals(1,details.size());
@@ -58,7 +58,7 @@ public class SpringAclTest extends AbstractJUnit4SpringContextTests{
     
     @Test
     @WithMockUser(username="manager")
-    public void givenUsernameManager_whenFindFirstMessageByIdAndUpdateFirstMessageContent_thenOK(){
+    public void givenUserManager_whenFind1stMessageByIdAndUpdateItsContent_thenOK(){
         NoticeMessage firstMessage = repo.findById(FIRST_MESSAGE_ID);
         assertNotNull(firstMessage);
         assertEquals(FIRST_MESSAGE_ID,firstMessage.getId());
@@ -91,7 +91,7 @@ public class SpringAclTest extends AbstractJUnit4SpringContextTests{
     
     @Test
     @WithMockUser(roles={"EDITOR"})
-    public void givenRoleEditor_whenFindAllMessage_thenReturnThreeMessage(){
+    public void givenRoleEditor_whenFindAllMessage_thenReturn3Message(){
         List<NoticeMessage> details = repo.findAll();
         assertNotNull(details);
         assertEquals(3,details.size());
@@ -108,7 +108,7 @@ public class SpringAclTest extends AbstractJUnit4SpringContextTests{
     
     @Test(expected=AccessDeniedException.class)
     @WithMockUser(roles={"EDITOR"})
-    public void givenRoleEditor_whenFindFirstMessageByIdAndUpdateFirstMessageContent_thenFail(){
+    public void givenRoleEditor_whenFind1stMessageByIdAndUpdateContent_thenFail(){
         NoticeMessage firstMessage = repo.findById(FIRST_MESSAGE_ID);
         assertNotNull(firstMessage);
         assertEquals(FIRST_MESSAGE_ID,firstMessage.getId());
