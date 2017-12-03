@@ -107,6 +107,7 @@
         <module>log-mdc</module>
         <module>log4j</module>
         <module>log4j2</module>
+        <module>logback</module>
         <module>lombok</module>
        <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
