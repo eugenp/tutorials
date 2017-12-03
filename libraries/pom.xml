@@ -637,11 +637,6 @@
             <artifactId>google-http-client-gson</artifactId>
             <version>${googleclient.version}</version>
         </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commonsfileupload.version}</version>
-        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -659,7 +654,6 @@
         </repository>
     </repositories>
     <properties>
-        <commonsfileupload.version>1.3.3</commonsfileupload.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
