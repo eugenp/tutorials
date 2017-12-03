@@ -1,4 +1,4 @@
-package com.vavr.future;
+package com.baeldung.vavr.future;
 
 public class Util {
 
