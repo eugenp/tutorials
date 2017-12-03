@@ -1,6 +1,7 @@
 package com.baeldung.cassecuredapp.controllers;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.CookieClearingLogoutHandler;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class AuthController {
 
-    private Logger logger = Logger.getLogger(AuthController.class);
+    private Logger logger = LogManager.getLogger(AuthController.class);
 
     @GetMapping("/logout")
     public String logout(
