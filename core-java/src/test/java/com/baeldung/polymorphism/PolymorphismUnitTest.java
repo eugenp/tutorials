@@ -14,7 +14,6 @@ public class PolymorphismUnitTest {
         assertEquals(200, imageFile.getHeight());
     }
 
-
     // Downcasting then Upcasting
     @Test
     public void givenTextFile_whenTextFileCreatedAndAssignedToGenericFileAndCastBackToTextFileOnGetWordCount_shouldSucceed() {
