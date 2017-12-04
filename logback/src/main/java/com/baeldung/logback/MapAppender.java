@@ -3,12 +3,12 @@ package com.baeldung.logback;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapAppender extends AppenderBase<ILoggingEvent> {
 
-    private final ConcurrentMap<String, ILoggingEvent> loggingMap = new ConcurrentHashMap<>();
+    private final Map<String, ILoggingEvent> eventMap = new HashMap<>();
 
     private String prefix;
 
@@ -19,7 +19,7 @@ public class MapAppender extends AppenderBase<ILoggingEvent> {
             return;
         }
 
-        loggingMap.put(prefix + System.currentTimeMillis(), event);
+        eventMap.put(prefix + System.currentTimeMillis(), event);
     }
 
     public String getPrefix() {
@@ -30,8 +30,8 @@ public class MapAppender extends AppenderBase<ILoggingEvent> {
         this.prefix = prefix;
     }
 
-    public ConcurrentMap<String, ILoggingEvent> getLoggingMap() {
-        return loggingMap;
+    public Map<String, ILoggingEvent> getEventMap() {
+        return eventMap;
     }
 
 }

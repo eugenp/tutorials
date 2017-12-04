@@ -40,21 +40,21 @@ public class MapAppenderTest {
     public void whenPrefixIsNull_thenMapAppenderDoesNotLog() throws Exception {
         mapAppender.setPrefix(null);
         mapAppender.append(event);
-        assertTrue(mapAppender.getLoggingMap().isEmpty());
+        assertTrue(mapAppender.getEventMap().isEmpty());
     }
 
     @Test
     public void whenPrefixIsEmpty_thenMapAppenderDoesNotLog() throws Exception {
         mapAppender.setPrefix("");
         mapAppender.append(event);
-        assertTrue(mapAppender.getLoggingMap().isEmpty());
+        assertTrue(mapAppender.getEventMap().isEmpty());
     }
 
     @Test
     public void whenLogMessageIsEmitted_thenMapAppenderReceivesMessage() throws Exception {
-        LoggingEvent event = new LoggingEvent("fqcn", ctx.getLogger("logger"), Level.INFO, "Test message for logback appender", null, new Object[0]);
         mapAppender.append(event);
-        assertEquals(mapAppender.getLoggingMap().size(), 1);
+        assertEquals(mapAppender.getEventMap().size(), 1);
+        mapAppender.getEventMap().forEach((k, v) -> assertTrue(k.startsWith("prefix")));
     }
 
 }

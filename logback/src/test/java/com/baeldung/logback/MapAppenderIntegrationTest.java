@@ -1,28 +1,33 @@
 package com.baeldung.logback;
 
+import ch.qos.logback.classic.Logger;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
 
 public class MapAppenderIntegrationTest {
 
-    private Logger logger;
+    private Logger rootLogger;
 
     @Before
     public void setUp() throws Exception {
-        logger = LoggerFactory.getLogger("integrationTest");
+        rootLogger = (Logger) LoggerFactory.getLogger("ROOT");
     }
 
     @Test
-    public void name() throws Exception {
-        logger.info("Test from {}", this.getClass().getSimpleName());
-        ch.qos.logback.classic.Logger rootLogger = 
-          (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("ROOT");
+    public void whenLoggerEmitsLoggingEvent_thenAppenderReceivesEvent() throws Exception {
+        rootLogger.info("Test from {}", this.getClass().getSimpleName());
         MapAppender appender = (MapAppender) rootLogger.getAppender("map");
-        assertEquals(appender.getLoggingMap().size(), 1);
+        assertEquals(appender.getEventMap().size(), 1);
+    }
+
+    @Test
+    public void givenNoPrefixSet_whenLoggerEmitsEvent_thenAppenderReceivesNoEvent() throws Exception {
+        rootLogger.info("Test from {}", this.getClass().getSimpleName());
+        MapAppender appender = (MapAppender) rootLogger.getAppender("badMap");
+        assertEquals(appender.getEventMap().size(), 0);
     }
 
 }
