@@ -10,7 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class RxJavaUnitTest {
@@ -19,7 +21,8 @@ public class RxJavaUnitTest {
         // given
         List<String> letters = Arrays.asList("A", "B", "C", "D", "E");
         List<String> results = new ArrayList<>();
-        Observable<String> observable = Observable.from(letters).zipWith(Observable.range(1, Integer.MAX_VALUE), (string, index) -> index + "-" + string);
+        Observable<String> observable = Observable.from(letters)
+          .zipWith(Observable.range(1, Integer.MAX_VALUE), (string, index) -> index + "-" + string);
 
         // when
         observable.subscribe(results::add);
@@ -36,7 +39,8 @@ public class RxJavaUnitTest {
         List<String> letters = Arrays.asList("A", "B", "C", "D", "E");
         TestSubscriber<String> subscriber = new TestSubscriber<>();
 
-        Observable<String> observable = Observable.from(letters).zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string));
+        Observable<String> observable = Observable.from(letters)
+          .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string));
 
         // when
         observable.subscribe(subscriber);
@@ -54,7 +58,9 @@ public class RxJavaUnitTest {
         List<String> letters = Arrays.asList("A", "B", "C", "D", "E");
         TestSubscriber<String> subscriber = new TestSubscriber<>();
 
-        Observable<String> observable = Observable.from(letters).zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string)).concatWith(Observable.error(new RuntimeException("error in Observable")));
+        Observable<String> observable = Observable.from(letters)
+          .zipWith(Observable.range(1, Integer.MAX_VALUE), ((string, index) -> index + "-" + string))
+          .concatWith(Observable.error(new RuntimeException("error in Observable")));
 
         // when
         observable.subscribe(subscriber);

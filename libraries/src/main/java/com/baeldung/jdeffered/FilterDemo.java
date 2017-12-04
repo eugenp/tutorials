@@ -4,25 +4,21 @@ import org.jdeferred.Deferred;
 import org.jdeferred.Promise;
 import org.jdeferred.impl.DeferredObject;
 
-public class FilterDemo {
+class FilterDemo {
 
-    static String modifiedMsg;
+    private static String modifiedMsg;
     
-    public static String filter(String msg) {
+    static String filter(String msg) {
         
-        Deferred<String, ?, ?> d = new DeferredObject<String, Object, Object>();
+        Deferred<String, ?, ?> d = new DeferredObject<>();
         Promise<String, ?, ?> p = d.promise();
         Promise<String, ?, ?> filtered = p.then((result) -> {
             modifiedMsg = "Hello " + result;
         });
 
-        filtered.done((result) -> {
-            System.out.println("filtering done");
-        });
+        filtered.done(r -> System.out.println("filtering done"));
 
         d.resolve(msg);
         return modifiedMsg;
-        
     }
-
 }

@@ -21,38 +21,40 @@ public class WebTestClientTest {
     @LocalServerPort
     private int port;
 
-    private final RouterFunction ROUTER_FUNCTION = RouterFunctions.route(
-            RequestPredicates.GET("/resource"),
-            request -> ServerResponse.ok().build()
-    );
+    private final RouterFunction ROUTER_FUNCTION = RouterFunctions.route(RequestPredicates.GET("/resource"), request -> ServerResponse.ok()
+        .build());
     private final WebHandler WEB_HANDLER = exchange -> Mono.empty();
 
     @Test
     public void testWebTestClientWithServerWebHandler() {
-        WebTestClient.bindToWebHandler(WEB_HANDLER).build();
+        WebTestClient.bindToWebHandler(WEB_HANDLER)
+            .build();
     }
 
     @Test
     public void testWebTestClientWithRouterFunction() {
-        WebTestClient
-                .bindToRouterFunction(ROUTER_FUNCTION)
-                .build().get().uri("/resource")
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody().isEmpty();
+        WebTestClient.bindToRouterFunction(ROUTER_FUNCTION)
+            .build()
+            .get()
+            .uri("/resource")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody()
+            .isEmpty();
     }
 
     @Test
     public void testWebTestClientWithServerURL() {
-        WebTestClient
-                .bindToServer()
-                .baseUrl("http://localhost:" + port)
-                .build()
-                .get()
-                .uri("/resource")
-                .exchange()
-                .expectStatus().is4xxClientError()
-                .expectBody();
+        WebTestClient.bindToServer()
+            .baseUrl("http://localhost:" + port)
+            .build()
+            .get()
+            .uri("/resource")
+            .exchange()
+            .expectStatus()
+            .is3xxRedirection()
+            .expectBody();
     }
 
 }

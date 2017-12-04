@@ -1,4 +1,5 @@
 ## Spring REST Angular Example Project
 
 ### Relevant Articles:
-- [RequestBody and ResponseBody Annotations](http://www.baeldung.com/requestbody-and-responsebody-annotations)
+
+- [Spring’s RequestBody and ResponseBody Annotations](http://www.baeldung.com/spring-request-response-body)

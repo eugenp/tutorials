@@ -27,7 +27,6 @@ public class RxJavaBackpressureLongRunningUnitTest {
         // then
         testSubscriber.awaitTerminalEvent();
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 
     @Test
@@ -60,7 +59,6 @@ public class RxJavaBackpressureLongRunningUnitTest {
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 
     @Test
@@ -77,7 +75,6 @@ public class RxJavaBackpressureLongRunningUnitTest {
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 
     @Test
@@ -88,15 +85,14 @@ public class RxJavaBackpressureLongRunningUnitTest {
 
         // when
         source.sample(100, TimeUnit.MILLISECONDS)
-                // .throttleFirst(100, TimeUnit.MILLISECONDS)
-                .observeOn(Schedulers.computation()).subscribe(testSubscriber);
+          // .throttleFirst(100, TimeUnit.MILLISECONDS)
+          .observeOn(Schedulers.computation()).subscribe(testSubscriber);
 
         IntStream.range(0, 1_000).forEach(source::onNext);
 
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 
     @Test
@@ -111,7 +107,6 @@ public class RxJavaBackpressureLongRunningUnitTest {
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 
     @Test
@@ -120,11 +115,11 @@ public class RxJavaBackpressureLongRunningUnitTest {
         TestSubscriber<Integer> testSubscriber = new TestSubscriber<>();
 
         // when
-        Observable.range(1, 1_000_000).onBackpressureDrop().observeOn(Schedulers.computation()).subscribe(testSubscriber);
+        Observable.range(1, 1_000_000).onBackpressureDrop().observeOn(Schedulers.computation())
+          .subscribe(testSubscriber);
 
         // then
         testSubscriber.awaitTerminalEvent(2, TimeUnit.SECONDS);
         assertTrue(testSubscriber.getOnErrorEvents().size() == 0);
-
     }
 }

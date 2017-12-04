@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class MBassadorHierarchyTest {
 
-    private MBassador dispatcher = new MBassador();
+    private MBassador dispatcher = new MBassador<Message>();
 
     private Message message;
     private AckMessage ackMessage;
