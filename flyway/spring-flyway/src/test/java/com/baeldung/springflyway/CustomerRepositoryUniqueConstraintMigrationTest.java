@@ -11,8 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {
-  "flyway.locations[0]=db/migration", "flyway.locations[1]=db/constraint_migration",
-  "flyway.locations[2]=db/unique_constraint_migration", "flyway.locations[3]=db/insert_data_migration"
+  "flyway.locations[0]=db/migration", "flyway.locations[1]=db/unique_constraint_migration"
 })
 public class CustomerRepositoryUniqueConstraintMigrationTest {
 

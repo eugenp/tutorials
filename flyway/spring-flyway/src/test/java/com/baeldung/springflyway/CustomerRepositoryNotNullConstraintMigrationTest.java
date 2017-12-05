@@ -10,7 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = { "flyway.locations[0]=db/migration","flyway.locations[1]=db/constraint_migration" })
+@SpringBootTest
 public class CustomerRepositoryNotNullConstraintMigrationTest {
 
     @Autowired CustomerRepository customerRepository;

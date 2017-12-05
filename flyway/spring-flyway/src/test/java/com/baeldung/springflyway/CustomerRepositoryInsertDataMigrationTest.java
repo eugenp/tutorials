@@ -14,10 +14,7 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = {
-  "flyway.locations[0]=db/migration",
-  "flyway.locations[1]=db/insert_data_migration"
-})
+@SpringBootTest
 public class CustomerRepositoryInsertDataMigrationTest {
 
     @Autowired CustomerRepository customerRepository;
