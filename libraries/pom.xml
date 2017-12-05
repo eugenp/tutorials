@@ -622,6 +622,21 @@
 	    <artifactId>bcpkix-jdk15on</artifactId>
 	    <version>1.58</version>
 	</dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>com.google.http-client</groupId>
+        <artifactId>google-http-client-gson</artifactId>
+        <version>${googleclient.version}</version>
+      </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -639,6 +654,7 @@
         </repository>
     </repositories>
     <properties>
+        <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
