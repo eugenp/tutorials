@@ -10,16 +10,18 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class CustomerRepositoryUniqueConstraintMigrationTest {
+@SpringBootTest(properties = {
+  "flyway.locations[0]=db/migration", "flyway.locations[1]=com/baeldung/springflyway/migration"
+})
+public class CustomerRepositoryUniqueConstraintJavaMigrationTest {
 
     @Autowired CustomerRepository customerRepository;
 
     @Test(expected = DataIntegrityViolationException.class)
-    public void givenTheUniqueConstraintMigrations_whenInsertingAnExistingEmailCustomer_thenThrowException() {
+    public void givenTheUniqueConstraintMigrations_whenInsertingAnExistingLastNameCustomer_thenThrowException() {
         customerRepository.save(Customer
           .builder()
-          .email("email@email.com")
+          .lastName("LastName")
           .build());
 
     }
