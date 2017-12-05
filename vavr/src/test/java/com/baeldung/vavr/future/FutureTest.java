@@ -1,8 +1,6 @@
 package com.baeldung.vavr.future;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -23,7 +21,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
         String result = resultFuture.get();
 
-        assertEquals("Welcome to Baeldung!", result);
+        assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -35,7 +33,7 @@ public class FutureTest {
         Try<String> futureTry = futureOption.get();
         String result = futureTry.get();
 
-        assertEquals("Welcome to Baeldung!", result);
+        assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -46,7 +44,7 @@ public class FutureTest {
             .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult));
         String result = resultFuture.get();
 
-        assertEquals("Welcome to Baeldung!", result);
+        assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -57,7 +55,7 @@ public class FutureTest {
             .andThen(finalResult -> System.out.println("Completed - 2: " + finalResult));
         String result = resultFuture.get();
 
-        assertEquals("Welcome to Baeldung!", result);
+        assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -67,7 +65,7 @@ public class FutureTest {
         resultFuture = resultFuture.await();
         String result = resultFuture.get();
 
-        assertEquals("Welcome to Baeldung!", result);
+        assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -76,7 +74,7 @@ public class FutureTest {
         Future<Throwable> throwableFuture = resultFuture.failed();
         Throwable throwable = throwableFuture.get();
 
-        assertEquals("/ by zero", throwable.getMessage());
+        assertThat(throwable.getMessage()).isEqualTo("/ by zero");
     }
 
     @Test
@@ -86,7 +84,7 @@ public class FutureTest {
         Option<Throwable> throwableOption = resultFuture.getCause();
         Throwable throwable = throwableOption.get();
 
-        assertEquals("/ by zero", throwable.getMessage());
+        assertThat(throwable.getMessage()).isEqualTo("/ by zero");
     }
 
     @Test
@@ -94,9 +92,9 @@ public class FutureTest {
         Future<Integer> resultFuture = Future.of(() -> Util.divideByZero(10));
         resultFuture.await();
 
-        assertTrue(resultFuture.isCompleted());
-        assertFalse(resultFuture.isSuccess());
-        assertTrue(resultFuture.isFailure());
+        assertThat(resultFuture.isCompleted()).isTrue();
+        assertThat(resultFuture.isSuccess()).isFalse();
+        assertThat(resultFuture.isFailure()).isTrue();
     }
 
     @Test
@@ -105,7 +103,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
         resultFuture.await();
 
-        assertFalse(resultFuture.isEmpty());
+        assertThat(resultFuture.isEmpty()).isFalse();
     }
 
     @Test
@@ -114,7 +112,7 @@ public class FutureTest {
             .zip(Future.of(() -> new Integer(5)));
         future.await();
 
-        assertEquals(Tuple.of("John", new Integer(5)), future.get());
+        assertThat(future.get()).isEqualTo(Tuple.of("John", new Integer(5)));
     }
 
     @Test
@@ -123,7 +121,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
         CompletableFuture<String> convertedFuture = resultFuture.toCompletableFuture();
 
-        assertEquals("Welcome to Baeldung!", convertedFuture.get());
+        assertThat(convertedFuture.get()).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
@@ -132,6 +130,6 @@ public class FutureTest {
             .map(a -> "Hello " + a);
         futureResult.await();
 
-        assertEquals("Hello from Baeldung", futureResult.get());
+        assertThat(futureResult.get()).isEqualTo("Hello from Baeldung");
     }
 }
