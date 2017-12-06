@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConfigurationProperties("my")
 public class MyProperties {
+
     private String prop;
 
     public String getProp() {
@@ -17,4 +18,5 @@ public class MyProperties {
     public void setProp(String prop) {
         this.prop = prop;
     }
+
 }
