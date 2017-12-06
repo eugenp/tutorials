@@ -23,7 +23,7 @@ public class NumbersBeanUnitTest {
 	 * {@link NumbersBean#isNumberEven(int)}, true is returned.
 	 */
 	@Test
-	public void givenEvenNumber_whenCheckingIsNumberEven_thenTrue() {
+	void givenEvenNumber_whenCheckingIsNumberEven_thenTrue() {
 		boolean result = bean.isNumberEven(8);
 
 		Assertions.assertTrue(result);
@@ -34,7 +34,7 @@ public class NumbersBeanUnitTest {
 	 * {@link NumbersBean#isNumberEven(int)}, false is returned.
 	 */
 	@Test
-	public void givenOddNumber_whenCheckingIsNumberEven_thenFalse() {
+	void givenOddNumber_whenCheckingIsNumberEven_thenFalse() {
 		boolean result = bean.isNumberEven(3);
 
 		Assertions.assertFalse(result);
