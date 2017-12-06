@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>spring-acl</name>
-    <description>Spring ACL</description>
+    <name>spring-security-acl</name>
+    <description>Spring Security ACL</description>
 
     <parent>
         <artifactId>parent-boot-5</artifactId>
