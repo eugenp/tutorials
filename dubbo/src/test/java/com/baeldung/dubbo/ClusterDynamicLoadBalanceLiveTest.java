@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -31,12 +32,10 @@ public class ClusterDynamicLoadBalanceLiveTest {
             remoteContext.start();
         });
         executorService.submit(() -> {
-            try {
-                SECONDS.sleep(2);
-            } catch (Exception ignored) {
-            }
+            SECONDS.sleep(2);
             ClassPathXmlApplicationContext backupRemoteContext = new ClassPathXmlApplicationContext("cluster/provider-app-special.xml");
             backupRemoteContext.start();
+            return null;
         });
     }
 
