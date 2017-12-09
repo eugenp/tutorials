@@ -8,7 +8,7 @@ import org.junit.Test;
 public class BinaryTreeTest {
 
     @Test
-    public void givenABinaryTree_WhenAddElements_ThenTreeNotEmpty() {
+    public void givenABinaryTree_WhenAddingElements_ThenTreeNotEmpty() {
 
         BinaryTree bt = new BinaryTree();
 
@@ -24,7 +24,7 @@ public class BinaryTreeTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenAddElements_ThenTreeContainsThoseElements() {
+    public void givenABinaryTree_WhenAddingElements_ThenTreeContainsThoseElements() {
 
         BinaryTree bt = new BinaryTree();
 
