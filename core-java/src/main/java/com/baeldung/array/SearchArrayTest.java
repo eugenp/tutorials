@@ -1,78 +1,92 @@
 package com.baeldung.array;
 
-import org.junit.Test;
+import org.openjdk.jmh.annotations.*;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class SearchArrayTest {
 
-
-    @Test
-    public void searchArrayAllocNewCollections() {
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void searchArrayLoop() {
 
         int count = 1000;
-
         String[] strings = seedArray(count);
+        for (int i = 0; i < count; i++) {
+            searchLoop(strings, "T");
+        }
+    }
 
-        long startTime = System.nanoTime();
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void searchArrayAllocNewList() {
+
+        int count = 1000;
+        String[] strings = seedArray(count);
         for (int i = 0; i < count; i++) {
             searchList(strings, "W");
         }
-        long duration = System.nanoTime() - startTime;
-        System.out.println("SearchList:  " + duration / 10000);
 
-        startTime = System.nanoTime();
-        for (int i = 0; i < count; i++) {
-            searchSet(strings,"S");
-        }
-        duration = System.nanoTime() - startTime;
-        System.out.println("SearchSet:  " + duration / 10000);
-
-        startTime = System.nanoTime();
-        for (int i = 0; i < count; i++) {
-            searchLoop(strings, "T");
-        }
-        duration = System.nanoTime() - startTime;
-        System.out.println("SearchLoop:  " + duration / 10000);
     }
 
-    @Test
-    public void searchArrayReuseCollections() {
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void searchArrayAllocNewSet() {
 
-        int count = 10000;
+        int count = 1000;
+        String[] strings = seedArray(count);
+        for (int i = 0; i < count; i++) {
+            searchSet(strings, "S");
+        }
+    }
+
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void searchArrayReuseList() {
+
+        int count = 1000;
         String[] strings = seedArray(count);
 
         List<String> asList = Arrays.asList(strings);
-        Set<String> asSet = new HashSet<>(Arrays.asList(strings));
 
-        long startTime = System.nanoTime();
         for (int i = 0; i < count; i++) {
             asList.contains("W");
         }
-        long duration = System.nanoTime() - startTime;
-        System.out.println("List:  " + duration / 10000);
-
-        startTime = System.nanoTime();
-        for (int i = 0; i < count; i++) {
-            asSet.contains("S");
-        }
-        duration = System.nanoTime() - startTime;
-        System.out.println("Set:  " + duration / 10000);
-
-        startTime = System.nanoTime();
-        for (int i = 0; i < count; i++) {
-            searchLoop(strings, "T");
-        }
-        duration = System.nanoTime() - startTime;
-        System.out.println("Loop:  " + duration / 10000);
-
     }
 
 
-    @Test
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
+    public void searchArrayReuseSet() {
+
+        int count = 1000;
+        String[] strings = seedArray(count);
+        Set<String> asSet = new HashSet<>(Arrays.asList(strings));
+        for (int i = 0; i < count; i++) {
+            asSet.contains("S");
+        }
+    }
+
+
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @Warmup(iterations = 5)
+    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayBinarySearch() {
 
-        int count = 10000;
+        int count = 1000;
         String[] strings = seedArray(count);
         Arrays.sort(strings);
 
@@ -81,7 +95,7 @@ public class SearchArrayTest {
             Arrays.binarySearch(strings, "A");
         }
         long duration = System.nanoTime() - startTime;
-        System.out.println("Binary search:  " + duration / 10000);
+        //System.out.println("Binary search:  " + duration / 10000);
 
     }
 
