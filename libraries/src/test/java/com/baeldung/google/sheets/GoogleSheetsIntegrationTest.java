@@ -30,6 +30,8 @@ public class GoogleSheetsIntegrationTest {
 
     private static Sheets sheetsService;
 
+    // this id can be replaced with your spreadsheet id 
+	// otherwise be advised that multiple people may run this test and update the public spreadsheet
     private static final String SPREADSHEET_ID = "1sILuxZUnyl_7-MlNThjt765oWshN3Xs-PPLfqYe4DhI";
 
     @BeforeClass
