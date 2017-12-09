@@ -31,7 +31,7 @@ public class GoogleSheetsIntegrationTest {
     private static Sheets sheetsService;
 
     // this id can be replaced with your spreadsheet id 
-	// otherwise be advised that multiple people may run this test and update the public spreadsheet
+    // otherwise be advised that multiple people may run this test and update the public spreadsheet
     private static final String SPREADSHEET_ID = "1sILuxZUnyl_7-MlNThjt765oWshN3Xs-PPLfqYe4DhI";
 
     @BeforeClass
@@ -42,36 +42,42 @@ public class GoogleSheetsIntegrationTest {
     @Test
     public void whenWriteSheet_thenReadSheetOk() throws IOException {
         ValueRange body = new ValueRange()
-                .setValues(Arrays.asList(
-                        Arrays.asList("Expenses January"), 
-                        Arrays.asList("books", "30"), 
-                        Arrays.asList("pens", "10"),
-                        Arrays.asList("Expenses February"), 
-                        Arrays.asList("clothes", "20"),
-                        Arrays.asList("shoes", "5")));
+          .setValues(Arrays.asList(
+                       Arrays.asList("Expenses January"), 
+                       Arrays.asList("books", "30"), 
+                       Arrays.asList("pens", "10"),
+                       Arrays.asList("Expenses February"), 
+                       Arrays.asList("clothes", "20"),
+                       Arrays.asList("shoes", "5")));
         UpdateValuesResponse result = sheetsService.spreadsheets().values()
-                .update(SPREADSHEET_ID, "A1", body)
-                .setValueInputOption("RAW")
-                .execute();
+          .update(SPREADSHEET_ID, "A1", body)
+          .setValueInputOption("RAW")
+          .execute();
         
         List<ValueRange> data = new ArrayList<>();
         data.add(new ValueRange()
-                .setRange("D1")
-                .setValues(Arrays.asList(Arrays.asList("January Total", "=B2+B3")
-                        )));
-             data.add(new ValueRange().setRange("D4")
-                .setValues(Arrays.asList(
-                        Arrays.asList("February Total", "=B5+B6"))));
+          .setRange("D1")
+          .setValues(Arrays.asList(
+	               Arrays.asList("January Total", "=B2+B3"))));
+        data.add(new ValueRange()
+	  .setRange("D4")
+          .setValues(Arrays.asList(
+                       Arrays.asList("February Total", "=B5+B6"))));
+
         BatchUpdateValuesRequest batchBody = new BatchUpdateValuesRequest()
-                     .setValueInputOption("USER_ENTERED")
-                     .setData(data);
+          .setValueInputOption("USER_ENTERED")
+          .setData(data);
         BatchUpdateValuesResponse batchResult =
-                     sheetsService.spreadsheets().values()
-                     .batchUpdate(SPREADSHEET_ID, batchBody).execute();
+          sheetsService.spreadsheets().values()
+            .batchUpdate(SPREADSHEET_ID, batchBody)
+	    .execute();
         
         List<String> ranges = Arrays.asList("E1","E4");
-        BatchGetValuesResponse readResult = sheetsService.spreadsheets().values().batchGet(SPREADSHEET_ID)
-                .setRanges(ranges).execute();
+        BatchGetValuesResponse readResult = 
+	  sheetsService.spreadsheets().values()
+	    .batchGet(SPREADSHEET_ID)
+            .setRanges(ranges)
+	    .execute();
         
         ValueRange januaryTotal = readResult.getValueRanges().get(0);
         assertThat(januaryTotal.getValues().get(0).get(0)).isEqualTo("40");
@@ -80,13 +86,15 @@ public class GoogleSheetsIntegrationTest {
         assertThat(febTotal.getValues().get(0).get(0)).isEqualTo("25");
         
         ValueRange appendBody = new ValueRange()
-                .setValues(Arrays.asList(Arrays.asList("Total", "=E1+E4")));
+          .setValues(Arrays.asList(
+	    Arrays.asList("Total", "=E1+E4")));
         AppendValuesResponse appendResult =
-                sheetsService.spreadsheets().values().append(SPREADSHEET_ID, "A1", appendBody)
-                        .setValueInputOption("USER_ENTERED")
-                        .setInsertDataOption("INSERT_ROWS")
-                        .setIncludeValuesInResponse(true)
-                        .execute();
+          sheetsService.spreadsheets().values()
+	    .append(SPREADSHEET_ID, "A1", appendBody)
+            .setValueInputOption("USER_ENTERED")
+            .setInsertDataOption("INSERT_ROWS")
+            .setIncludeValuesInResponse(true)
+            .execute();
         
         ValueRange total = appendResult.getUpdates().getUpdatedData();
         assertThat(total.getValues().get(0).get(1)).isEqualTo("65");
@@ -96,21 +104,23 @@ public class GoogleSheetsIntegrationTest {
     @Test
     public void whenUpdateSpreadSheetTitle_thenOk() throws IOException {
         
-        UpdateSpreadsheetPropertiesRequest updateSpreadSheetRequest = new UpdateSpreadsheetPropertiesRequest()
-                .setFields("*")
-                .setProperties(new SpreadsheetProperties().setTitle("Expenses"));
+        UpdateSpreadsheetPropertiesRequest updateRequest = new UpdateSpreadsheetPropertiesRequest()
+          .setFields("*")
+          .setProperties(new SpreadsheetProperties().setTitle("Expenses"));
                 
         CopyPasteRequest copyRequest = new CopyPasteRequest()
-                .setSource(new GridRange().setSheetId(0).setStartColumnIndex(0).setEndColumnIndex(2)
-                        .setStartRowIndex(0).setEndRowIndex(1))
-                .setDestination(new GridRange().setSheetId(1).setStartColumnIndex(0).setEndColumnIndex(2)
-                        .setStartRowIndex(0).setEndRowIndex(1))
-                .setPasteType("PASTE_VALUES");
+          .setSource(new GridRange().setSheetId(0)
+	    .setStartColumnIndex(0).setEndColumnIndex(2)
+            .setStartRowIndex(0).setEndRowIndex(1))
+          .setDestination(new GridRange().setSheetId(1)
+	    .setStartColumnIndex(0).setEndColumnIndex(2)
+            .setStartRowIndex(0).setEndRowIndex(1))
+          .setPasteType("PASTE_VALUES");
         
         List<Request> requests = new ArrayList<>();
      
         requests.add(new Request().setCopyPaste(copyRequest));
-        requests.add(new Request().setUpdateSpreadsheetProperties(updateSpreadSheetRequest));
+        requests.add(new Request().setUpdateSpreadsheetProperties(updateRequest));
         
         BatchUpdateSpreadsheetRequest body =
                 new BatchUpdateSpreadsheetRequest().setRequests(requests);
@@ -120,7 +130,8 @@ public class GoogleSheetsIntegrationTest {
     
     @Test
     public void whenCreateSpreadSheet_thenIdOk() throws IOException {
-        Spreadsheet spreadSheet = new Spreadsheet().setProperties(new SpreadsheetProperties().setTitle("My Spreadsheet"));
+        Spreadsheet spreadSheet = new Spreadsheet()
+	  .setProperties(new SpreadsheetProperties().setTitle("My Spreadsheet"));
         Spreadsheet result = sheetsService.spreadsheets().create(spreadSheet).execute();
         
         assertThat(result.getSpreadsheetId()).isNotNull();   
