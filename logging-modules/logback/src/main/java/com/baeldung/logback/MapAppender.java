@@ -3,12 +3,14 @@ package com.baeldung.logback;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class MapAppender extends AppenderBase<ILoggingEvent> {
 
-    private final Map<String, ILoggingEvent> eventMap = new HashMap<>();
+    private final ConcurrentMap<String, ILoggingEvent> eventMap
+      = new ConcurrentHashMap<>();
 
     private String prefix;
 
