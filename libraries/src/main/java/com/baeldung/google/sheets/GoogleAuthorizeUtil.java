@@ -21,17 +21,20 @@ public class GoogleAuthorizeUtil {
     public static Credential authorize() throws IOException, GeneralSecurityException {
         InputStream in = GoogleAuthorizeUtil.class.getResourceAsStream("/google-sheets-client-secret.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets
-                .load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
+          .load(JacksonFactory.getDefaultInstance(), new InputStreamReader(in));
 
         List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow
-                .Builder(GoogleNetHttpTransport.newTrustedTransport(), 
-                        JacksonFactory.getDefaultInstance(), clientSecrets, scopes)
-                .setDataStoreFactory(new MemoryDataStoreFactory())
-                .setAccessType("offline").build();
+          .Builder(GoogleNetHttpTransport.newTrustedTransport(), 
+                   JacksonFactory.getDefaultInstance(),
+                   clientSecrets,
+                   scopes)
+          .setDataStoreFactory(new MemoryDataStoreFactory())
+          .setAccessType("offline")
+          .build();
         Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver())
-                .authorize("user");
+          .authorize("user");
 
         return credential;
     }
