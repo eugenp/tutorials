@@ -58,9 +58,9 @@ public class GoogleSheetsIntegrationTest {
         data.add(new ValueRange()
           .setRange("D1")
           .setValues(Arrays.asList(
-	               Arrays.asList("January Total", "=B2+B3"))));
+                       Arrays.asList("January Total", "=B2+B3"))));
         data.add(new ValueRange()
-	  .setRange("D4")
+          .setRange("D4")
           .setValues(Arrays.asList(
                        Arrays.asList("February Total", "=B5+B6"))));
 
@@ -70,32 +70,32 @@ public class GoogleSheetsIntegrationTest {
         BatchUpdateValuesResponse batchResult =
           sheetsService.spreadsheets().values()
             .batchUpdate(SPREADSHEET_ID, batchBody)
-	    .execute();
+            .execute();
         
         List<String> ranges = Arrays.asList("E1","E4");
         BatchGetValuesResponse readResult = 
-	  sheetsService.spreadsheets().values()
-	    .batchGet(SPREADSHEET_ID)
+          sheetsService.spreadsheets().values()
+            .batchGet(SPREADSHEET_ID)
             .setRanges(ranges)
-	    .execute();
-        
+            .execute();
+      
         ValueRange januaryTotal = readResult.getValueRanges().get(0);
         assertThat(januaryTotal.getValues().get(0).get(0)).isEqualTo("40");
 
         ValueRange febTotal = readResult.getValueRanges().get(1);
         assertThat(febTotal.getValues().get(0).get(0)).isEqualTo("25");
-        
+
         ValueRange appendBody = new ValueRange()
           .setValues(Arrays.asList(
-	    Arrays.asList("Total", "=E1+E4")));
+            Arrays.asList("Total", "=E1+E4")));
         AppendValuesResponse appendResult =
           sheetsService.spreadsheets().values()
-	    .append(SPREADSHEET_ID, "A1", appendBody)
+            .append(SPREADSHEET_ID, "A1", appendBody)
             .setValueInputOption("USER_ENTERED")
             .setInsertDataOption("INSERT_ROWS")
             .setIncludeValuesInResponse(true)
             .execute();
-        
+
         ValueRange total = appendResult.getUpdates().getUpdatedData();
         assertThat(total.getValues().get(0).get(1)).isEqualTo("65");
     }
@@ -110,10 +110,10 @@ public class GoogleSheetsIntegrationTest {
                 
         CopyPasteRequest copyRequest = new CopyPasteRequest()
           .setSource(new GridRange().setSheetId(0)
-	    .setStartColumnIndex(0).setEndColumnIndex(2)
+            .setStartColumnIndex(0).setEndColumnIndex(2)
             .setStartRowIndex(0).setEndRowIndex(1))
           .setDestination(new GridRange().setSheetId(1)
-	    .setStartColumnIndex(0).setEndColumnIndex(2)
+            .setStartColumnIndex(0).setEndColumnIndex(2)
             .setStartRowIndex(0).setEndRowIndex(1))
           .setPasteType("PASTE_VALUES");
         
@@ -121,19 +121,19 @@ public class GoogleSheetsIntegrationTest {
      
         requests.add(new Request().setCopyPaste(copyRequest));
         requests.add(new Request().setUpdateSpreadsheetProperties(updateRequest));
-        
+
         BatchUpdateSpreadsheetRequest body =
                 new BatchUpdateSpreadsheetRequest().setRequests(requests);
-        
+
         sheetsService.spreadsheets().batchUpdate(SPREADSHEET_ID, body).execute();
     }
     
     @Test
     public void whenCreateSpreadSheet_thenIdOk() throws IOException {
         Spreadsheet spreadSheet = new Spreadsheet()
-	  .setProperties(new SpreadsheetProperties().setTitle("My Spreadsheet"));
+          .setProperties(new SpreadsheetProperties().setTitle("My Spreadsheet"));
         Spreadsheet result = sheetsService.spreadsheets().create(spreadSheet).execute();
-        
+
         assertThat(result.getSpreadsheetId()).isNotNull();   
     }
 	
