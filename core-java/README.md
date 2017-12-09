@@ -120,4 +120,5 @@
 - [Guide to Java String Pool](http://www.baeldung.com/java-string-pool)
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
 - [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
+- [Quick Example - Comparator vs Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
 
