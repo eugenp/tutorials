@@ -100,9 +100,9 @@ public class GoogleSheetsIntegrationTest {
                 
         CopyPasteRequest copyRequest = new CopyPasteRequest()
                 .setSource(new GridRange().setSheetId(0).setStartColumnIndex(0).setEndColumnIndex(2)
-                        .setStartRowIndex(8).setEndRowIndex(9))
-                .setDestination(new GridRange().setSheetId(1).setStartColumnIndex(0).setStartRowIndex(0)
-                        .setEndColumnIndex(2).setEndRowIndex(1))
+                        .setStartRowIndex(0).setEndRowIndex(1))
+                .setDestination(new GridRange().setSheetId(1).setStartColumnIndex(0).setEndColumnIndex(2)
+                        .setStartRowIndex(0).setEndRowIndex(1))
                 .setPasteType("PASTE_VALUES");
         
         List<Request> requests = new ArrayList<>();
