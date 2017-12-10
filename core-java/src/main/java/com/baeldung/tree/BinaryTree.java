@@ -39,7 +39,6 @@ public class BinaryTree {
 
             parent = current;
         }
-
     }
 
     public boolean isEmpty() {
