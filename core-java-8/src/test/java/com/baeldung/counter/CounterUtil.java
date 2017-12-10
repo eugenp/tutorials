@@ -15,9 +15,8 @@ public class CounterUtil {
     }
 
     public static void counterWithLambdaAndWrapper(Map<String, Long> counterMap) {
-        counterMap.putAll(Stream.of(COUNTRY_NAMES)
-            .parallel()
-            .collect(Collectors.groupingBy(k -> k, Collectors.counting())));
+        Stream.of(COUNTRY_NAMES)
+            .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
     }
 
     public static class MutableInteger {
