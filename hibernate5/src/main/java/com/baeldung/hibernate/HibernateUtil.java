@@ -6,6 +6,7 @@ import com.baeldung.hibernate.pojo.OrderEntry;
 import com.baeldung.hibernate.pojo.OrderEntryIdClass;
 import com.baeldung.hibernate.pojo.OrderEntryPK;
 import com.baeldung.hibernate.pojo.PointEntity;
+import com.baeldung.hibernate.pojo.PolygonEntity;
 import com.baeldung.hibernate.pojo.Product;
 import com.baeldung.hibernate.pojo.Phone;
 import com.baeldung.hibernate.pojo.TemporalValues;
@@ -79,6 +80,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Car.class);
         metadataSources.addAnnotatedClass(Bag.class);
         metadataSources.addAnnotatedClass(PointEntity.class);
+        metadataSources.addAnnotatedClass(PolygonEntity.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
