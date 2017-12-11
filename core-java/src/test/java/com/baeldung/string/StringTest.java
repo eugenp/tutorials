@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.IllegalFormatException;
 import java.util.regex.PatternSyntaxException;
@@ -29,11 +30,17 @@ public class StringTest {
     }
 
     @Test
-    public void whenGetBytes_thenCorrect() {
-        byte[] byteArray = "abcd".getBytes();
-        byte[] expected = new byte[] { 97, 98, 99, 100 };
+    public void whenGetBytes_thenCorrect() throws UnsupportedEncodingException {
+        byte[] byteArray1 = "abcd".getBytes();
+        byte[] byteArray2 = "efgh".getBytes(StandardCharsets.US_ASCII);
+        byte[] byteArray3 = "ijkl".getBytes("UTF-8");
+        byte[] expected1 = new byte[] { 97, 98, 99, 100 };
+        byte[] expected2 = new byte[] { 101, 102, 103, 104 };
+        byte[] expected3 = new byte[] { 105, 106, 107, 108 };
 
-        assertArrayEquals(expected, byteArray);
+        assertArrayEquals(expected1, byteArray1);
+        assertArrayEquals(expected2, byteArray2);
+        assertArrayEquals(expected3, byteArray3);
     }
 
     @Test
@@ -123,6 +130,7 @@ public class StringTest {
     @Test
     public void whenCallLastIndexOf_thenCorrect() {
         assertEquals(2, "foo".lastIndexOf("o"));
+        assertEquals(2, "foo".lastIndexOf(111));
     }
 
     @Test

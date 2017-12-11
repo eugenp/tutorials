@@ -1,0 +1,1 @@
+ALTER TABLE customer ALTER email SET NOT NULL;
