@@ -73,7 +73,7 @@ public class CageUnitTest {
     }
     
     @Test
-    public void puttingCatsOnly() {
+    public void puttingCatsOnly_shouldLetCageAnimalsToContainCats() {
         // When
         cage.put(tomCat, felixCat);
         
@@ -85,7 +85,7 @@ public class CageUnitTest {
     }
     
     @Test
-    public void puttingCatsOnly2() {
+    public void puttingCatsOnly_shouldLetCageToContainCats() {
         // When
         cage.put(tomCat, felixCat);
         
