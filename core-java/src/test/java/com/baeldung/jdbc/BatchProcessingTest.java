@@ -12,9 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.UUID;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BatchProcessingTest {
@@ -25,9 +23,6 @@ public class BatchProcessingTest {
 
     @Mock
     private Connection connection;
-
-    @Mock
-    private ResultSet resultSet;
 
     @Mock
     private Statement statement;
