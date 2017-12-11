@@ -5,6 +5,8 @@ import com.baeldung.hibernate.pojo.EntityDescription;
 import com.baeldung.hibernate.pojo.OrderEntry;
 import com.baeldung.hibernate.pojo.OrderEntryIdClass;
 import com.baeldung.hibernate.pojo.OrderEntryPK;
+import com.baeldung.hibernate.pojo.PointEntity;
+import com.baeldung.hibernate.pojo.PolygonEntity;
 import com.baeldung.hibernate.pojo.Product;
 import com.baeldung.hibernate.pojo.Phone;
 import com.baeldung.hibernate.pojo.TemporalValues;
@@ -12,7 +14,18 @@ import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Student;
 import com.baeldung.hibernate.pojo.User;
 import com.baeldung.hibernate.pojo.UserProfile;
+import com.baeldung.hibernate.pojo.inheritance.Animal;
+import com.baeldung.hibernate.pojo.inheritance.Bag;
+import com.baeldung.hibernate.pojo.inheritance.Book;
+import com.baeldung.hibernate.pojo.inheritance.Car;
+import com.baeldung.hibernate.pojo.inheritance.MyEmployee;
+import com.baeldung.hibernate.pojo.inheritance.MyProduct;
+import com.baeldung.hibernate.pojo.inheritance.Pen;
+import com.baeldung.hibernate.pojo.inheritance.Person;
+import com.baeldung.hibernate.pojo.inheritance.Pet;
+import com.baeldung.hibernate.pojo.inheritance.Vehicle;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -26,8 +39,14 @@ import java.util.Properties;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
+    private static String PROPERTY_FILE_NAME;
 
     public static SessionFactory getSessionFactory() throws IOException {
+        return getSessionFactory(null);
+    }
+
+    public static SessionFactory getSessionFactory(String propertyFileName) throws IOException {
+        PROPERTY_FILE_NAME = propertyFileName;
         if (sessionFactory == null) {
             ServiceRegistry serviceRegistry = configureServiceRegistry();
             sessionFactory = makeSessionFactory(serviceRegistry);
@@ -50,6 +69,18 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(OrderEntry.class);
         metadataSources.addAnnotatedClass(OrderEntryIdClass.class);
         metadataSources.addAnnotatedClass(UserProfile.class);
+        metadataSources.addAnnotatedClass(Book.class);
+        metadataSources.addAnnotatedClass(MyEmployee.class);
+        metadataSources.addAnnotatedClass(MyProduct.class);
+        metadataSources.addAnnotatedClass(Pen.class);
+        metadataSources.addAnnotatedClass(Person.class);
+        metadataSources.addAnnotatedClass(Animal.class);
+        metadataSources.addAnnotatedClass(Pet.class);
+        metadataSources.addAnnotatedClass(Vehicle.class);
+        metadataSources.addAnnotatedClass(Car.class);
+        metadataSources.addAnnotatedClass(Bag.class);
+        metadataSources.addAnnotatedClass(PointEntity.class);
+        metadataSources.addAnnotatedClass(PolygonEntity.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
@@ -66,12 +97,11 @@ public class HibernateUtil {
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("hibernate.properties");
+          .getContextClassLoader()
+          .getResource(StringUtils.defaultString(PROPERTY_FILE_NAME, "hibernate.properties"));
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
             properties.load(inputStream);
         }
         return properties;
     }
-
 }

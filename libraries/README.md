@@ -57,6 +57,8 @@
 - [Introduction to StreamEx](http://www.baeldung.com/streamex)
 - [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
 - [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
+- [Guide to google-http-client](http://www.baeldung.com/google-http-client)
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
