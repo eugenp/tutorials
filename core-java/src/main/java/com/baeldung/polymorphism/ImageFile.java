@@ -30,7 +30,7 @@ public class ImageFile extends GenericFile {
     }
 
     public String getFileInfo() {
-        return super.getFileInfo() + "Height: " + this.getHeight() + "\n" + "Width: " + this.getWidth();
+        return String.format(" %s Height: %d\n Width: %d", super.getFileInfo(), this.getHeight(), this.getWidth());
     }
 
     public String read() {
