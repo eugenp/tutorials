@@ -24,7 +24,6 @@ public class KafkaStreamsLiveTest {
     public void shouldTestKafkaStreams() throws InterruptedException {
         //given
         String inputTopic = "inputTopic";
-        String outputTopic = "outputTopic";
 
         Properties streamsConfiguration = new Properties();
         streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-live-test");
@@ -48,6 +47,7 @@ public class KafkaStreamsLiveTest {
 
         wordCounts.foreach((word, count) -> System.out.println("word: " + word + " -> " + count));
 
+        String outputTopic = "outputTopic";
         final Serde<String> stringSerde = Serdes.String();
         final Serde<Long> longSerde = Serdes.Long();
         wordCounts.to(stringSerde, longSerde, outputTopic);
