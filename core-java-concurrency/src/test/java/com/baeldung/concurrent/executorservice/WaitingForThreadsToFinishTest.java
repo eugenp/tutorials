@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.fail;
 
 public class WaitingForThreadsToFinishTest {
 
@@ -40,16 +39,13 @@ public class WaitingForThreadsToFinishTest {
             CountDownLatch latch = new CountDownLatch(2);
             
             for (int i = 0; i < 2; i++) {
-                WORKER_THREAD_POOL.submit(new Runnable() {                
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(1000);
-                            latch.countDown();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                            Thread.currentThread().interrupt();
-                        }
+                WORKER_THREAD_POOL.submit(() -> {
+                    try {
+                        Thread.sleep(1000);
+                        latch.countDown();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 });
             }
@@ -83,13 +79,9 @@ public class WaitingForThreadsToFinishTest {
             awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
 
             try {
-                WORKER_THREAD_POOL.submit(new Callable<String>() {
-                    @Override
-                    public String call() throws Exception {
-                        fail("This thread should have been rejected !");
-                        Thread.sleep(1000000);
-                        return null;
-                    }
+                WORKER_THREAD_POOL.submit((Callable<String>) () -> {
+                    Thread.sleep(1000000);
+                    return null;
                 });
             } catch (RejectedExecutionException ex) {
                 //
