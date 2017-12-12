@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class CounterUtil {
 
-    private final static String[] COUNTRY_NAMES = { "China", "Australia", "India", "USA", "USSR", "UK", "China", "France", "Poland", "Austria", "India", "USA", "Egypt", "China" };
+    public static String[] COUNTRY_NAMES = { "China", "Australia", "India", "USA", "USSR", "UK", "China", "France", "Poland", "Austria", "India", "USA", "Egypt", "China" };
 
     public static void counterWithWrapperObject(Map<String, Integer> counterMap) {
         for (String country : COUNTRY_NAMES) {
@@ -16,6 +16,12 @@ public class CounterUtil {
 
     public static void counterWithLambdaAndWrapper(Map<String, Long> counterMap) {
         Stream.of(COUNTRY_NAMES)
+            .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
+    }
+
+    public static void counterWithParallelStreamAndWrapper(Map<String, Long> counterMap) {
+        Stream.of(COUNTRY_NAMES)
+            .parallel()
             .collect(Collectors.groupingBy(k -> k, () -> counterMap, Collectors.counting()));
     }
 
