@@ -10,4 +10,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Exploring the Spring 5 MVC URL Matching Improvements](http://www.baeldung.com/spring-5-mvc-url-matching)
 - [Spring 5 WebClient](http://www.baeldung.com/spring-5-webclient)
 - [Spring 5 Functional Bean Registration](http://www.baeldung.com/spring-5-functional-beans)
-
+- [The SpringJUnitConfig and SpringJUnitWebConfig Annotations in Spring 5](http://www.baeldung.com/spring-5-junit-config)
+- [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
+- [Spring 5 Testing with @EnabledIf Annotation](https://github.com/eugenp/tutorials/tree/master/spring-5)

@@ -9,7 +9,7 @@
     <modules>
         <module>front-controller</module>
         <module>intercepting-filter</module>
-        <module>template-method</module>
+        <module>behavioral-patterns</module>
     </modules>
 
     <parent>

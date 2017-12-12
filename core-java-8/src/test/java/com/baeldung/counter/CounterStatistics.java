@@ -30,7 +30,7 @@ public class CounterStatistics {
         }
     }
 
-    @Benchmark
+  @Benchmark
     public void wrapperAsCounter() {
         CounterUtil.counterWithWrapperObject(counterMap);
     }
