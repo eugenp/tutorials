@@ -5,12 +5,12 @@ import org.openjdk.jmh.annotations.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+@BenchmarkMode(Mode.AverageTime)
+@Warmup(iterations = 5)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class SearchArrayTest {
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayLoop() {
 
         int count = 1000;
@@ -21,9 +21,6 @@ public class SearchArrayTest {
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayAllocNewList() {
 
         int count = 1000;
@@ -35,9 +32,6 @@ public class SearchArrayTest {
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayAllocNewSet() {
 
         int count = 1000;
@@ -49,9 +43,6 @@ public class SearchArrayTest {
 
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayReuseList() {
 
         int count = 1000;
@@ -66,9 +57,6 @@ public class SearchArrayTest {
 
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayReuseSet() {
 
         int count = 1000;
@@ -81,9 +69,6 @@ public class SearchArrayTest {
 
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @Warmup(iterations = 5)
-    @OutputTimeUnit(TimeUnit.MICROSECONDS)
     public void searchArrayBinarySearch() {
 
         int count = 1000;
