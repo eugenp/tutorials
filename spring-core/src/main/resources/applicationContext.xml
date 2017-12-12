@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- Constructor-Based Injection configuration -->
+	<bean id="address1" class="com.baeldung.Address">
+		<constructor-arg value="ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	<bean id="empBean" class="com.baeldung.Employee">
+		<constructor-arg>
+			<ref bean="address1" />
+		</constructor-arg>
+	</bean>
+	
+	<!-- Setter-Based Injection configuration -->
+	<bean id="address2" class="com.baeldung.Address">
+		<constructor-arg value="Haryana"></constructor-arg>
+		<constructor-arg value="Gurugram"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	
+	<bean id="empBeanSetterInjection" class="com.baeldung.Employee">
+		<property name="address" ref="address2"></property>  
+	</bean>
+	
+</beans>
