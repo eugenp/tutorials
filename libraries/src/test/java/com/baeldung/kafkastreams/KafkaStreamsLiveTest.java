@@ -26,10 +26,6 @@ public class KafkaStreamsLiveTest {
         String inputTopic = "inputTopic";
         String outputTopic = "outputTopic";
 
-        final Serde<String> stringSerde = Serdes.String();
-        final Serde<Long> longSerde = Serdes.Long();
-
-
         Properties streamsConfiguration = new Properties();
         streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, "wordcount-live-test");
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -51,6 +47,9 @@ public class KafkaStreamsLiveTest {
                 .count();
 
         wordCounts.foreach((word, count) -> System.out.println("word: " + word + " -> " + count));
+
+        final Serde<String> stringSerde = Serdes.String();
+        final Serde<Long> longSerde = Serdes.Long();
         wordCounts.to(stringSerde, longSerde, outputTopic);
 
         KafkaStreams streams = new KafkaStreams(builder, streamsConfiguration);
