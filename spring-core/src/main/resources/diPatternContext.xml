@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean class="com.baeldung.dipattern.Student" id="student">
+<constructor-arg value="1"></constructor-arg>
+<constructor-arg value="abc"></constructor-arg>
+</bean>
+
+<bean class="com.baeldung.dipattern.Employee" id="employee">
+<property name="id">
+<value>1</value>
+</property>
+<property name="name">
+<value>def</value>
+</property>
+</bean>
+
+</beans>
