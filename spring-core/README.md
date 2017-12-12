@@ -8,3 +8,5 @@
 - [Spring YAML Configuration](http://www.baeldung.com/spring-yaml)
 - [Introduction to Spring’s StreamUtils](http://www.baeldung.com/spring-stream-utils)
 - [Using Spring @Value with Defaults](http://www.baeldung.com/spring-value-defaults)
+- [Groovy Bean Definitions](http://www.baeldung.com/spring-groovy-beans)
+- [XML-Based Injection in Spring](http://www.baeldung.com/spring-xml-injection)
