@@ -3,6 +3,7 @@ package com.baeldung.stream;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -63,14 +64,9 @@ public class PrimitiveStreamsUnitTest {
     }
 
     @Test
-    public void givenAListOfPersonsWhenSumIsCalledThenTheCorrectSumIsReturned() {
-        Person p1 = new Person(23);
-        Person p2 = new Person(55);
-        List<Person> persons = new ArrayList<>();
-        persons.add(p1);
-        persons.add(p2);
+    public void givenAnArrayWhenSumIsCalledThenTheCorrectSumIsReturned() {
 
-        int sum = persons.stream().mapToInt(Person::getAge).sum();
+        int sum = Arrays.asList(33,45).stream().mapToInt(a -> a).sum();
 
         assertEquals(78, sum);
     }
@@ -83,7 +79,7 @@ public class PrimitiveStreamsUnitTest {
           .collect(Collectors.toList());
 
         List<Integer> expected = IntStream.of(2, 4, 6, 8, 10).boxed().collect(Collectors.toList());
-        
+
         assertEquals(expected, evenInts);
     }
 
