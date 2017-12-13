@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerRepositoryInsertDataMigrationTest {
+public class CustomerRepositoryInsertDataIntegrationTest {
 
     @Autowired CustomerRepository customerRepository;
 

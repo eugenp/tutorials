@@ -7,7 +7,7 @@ import org.neuroph.core.NeuralNetwork;
 
 import static org.junit.Assert.*;
 
-public class XORTest {
+public class XORIntegrationTest {
     private NeuralNetwork ann = null;
 
      private void print(String input, double output, double actual) {
