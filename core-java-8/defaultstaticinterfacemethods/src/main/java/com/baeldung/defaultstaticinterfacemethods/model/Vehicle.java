@@ -2,11 +2,11 @@ package com.baeldung.defaultstaticinterfacemethods.model;
 
 public interface Vehicle {
     
-    public String getBrand();
+    String getBrand();
     
-    public String speedUp();
+    String speedUp();
     
-    public String slowDown();
+    String slowDown();
     
     default String turnAlarmOn() {
         return "Turning the vehice alarm on.";
