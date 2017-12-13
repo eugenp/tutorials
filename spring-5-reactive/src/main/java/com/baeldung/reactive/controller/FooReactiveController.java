@@ -8,25 +8,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@RestController("/foos")
+@RestController
 public class FooReactiveController {
 
-    @GetMapping("/{id}")
+    @GetMapping("/foos/{id}")
     public Mono<Foo> getFoo(@PathVariable("id") long id) {
         return Mono.just(new Foo(id, randomAlphabetic(6)));
     }
 
-    @GetMapping("/")
+    @GetMapping("/foos")
     public Flux<Foo> getAllFoos() {
-        final ConnectableFlux<Foo> flux = Flux.<Foo> create(fluxSink -> {
+        final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
             while (true) {
                 fluxSink.next(new Foo(System.currentTimeMillis(), randomAlphabetic(6)));
             }
-        }).sample(Duration.ofSeconds(1)).publish();
+        }).sample(Duration.ofSeconds(1)).log();
 
         return flux;
     }
