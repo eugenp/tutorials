@@ -1,4 +1,4 @@
-package com.baeldung.reactive.controller;
+package com.baeldung.reactive.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
