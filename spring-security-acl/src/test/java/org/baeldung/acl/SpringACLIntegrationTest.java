@@ -31,7 +31,7 @@ import org.springframework.test.context.web.ServletTestExecutionListener;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         WithSecurityContextTestExecutionListener.class})
-public class SpringAclTest extends AbstractJUnit4SpringContextTests{
+public class SpringACLIntegrationTest extends AbstractJUnit4SpringContextTests{
     
     private static Integer FIRST_MESSAGE_ID = 1;
     private static Integer SECOND_MESSAGE_ID = 2;

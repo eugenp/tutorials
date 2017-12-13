@@ -6,23 +6,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerRepositoryInitialMigrationTest {
+public class CustomerRepositoryUniqueConstraintMigrationIntegrationTest {
 
     @Autowired CustomerRepository customerRepository;
 
-    @Test
-    public void givenSchemaCreationMigration_whenTryingToCreateACustomer_thenSuccess() {
-        Customer customer = customerRepository.save(Customer
+    @Test(expected = DataIntegrityViolationException.class)
+    public void givenTheUniqueConstraintMigrations_whenInsertingAnExistingEmailCustomer_thenThrowException() {
+        customerRepository.save(Customer
           .builder()
-          .email("customer@email.com")
+          .email("email@email.com")
           .build());
-        assertNotNull(customer.getId());
+
     }
 
 }

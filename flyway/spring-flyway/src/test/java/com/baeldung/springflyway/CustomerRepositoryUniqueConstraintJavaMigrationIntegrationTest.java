@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(properties = {
   "flyway.locations[0]=db/migration", "flyway.locations[1]=com/baeldung/springflyway/migration"
 })
-public class CustomerRepositoryUniqueConstraintJavaMigrationTest {
+public class CustomerRepositoryUniqueConstraintJavaMigrationIntegrationTest {
 
     @Autowired CustomerRepository customerRepository;
 
