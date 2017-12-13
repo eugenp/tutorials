@@ -11,17 +11,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerRepositoryUniqueConstraintMigrationTest {
+public class CustomerRepositoryNotNullConstraintMigrationIntegrationTest {
 
     @Autowired CustomerRepository customerRepository;
 
     @Test(expected = DataIntegrityViolationException.class)
-    public void givenTheUniqueConstraintMigrations_whenInsertingAnExistingEmailCustomer_thenThrowException() {
+    public void givenTheNotNullConstraintMigrations_whenInsertingACustomerWithNullEmail_thenThrowException() {
         customerRepository.save(Customer
           .builder()
-          .email("email@email.com")
           .build());
-
     }
 
 }
