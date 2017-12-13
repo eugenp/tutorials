@@ -1,0 +1,48 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://baeldung.com/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CodeFirstServiceService" targetNamespace="http://baeldung.com/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://baeldung.com/" elementFormDefault="unqualified" targetNamespace="http://baeldung.com/" version="1.0">
+<xs:element name="showPersonDetail" type="tns:showPersonDetail"/>
+<xs:element name="showPersonDetailResponse" type="tns:showPersonDetailResponse"/>
+<xs:complexType name="showPersonDetail">
+<xs:sequence>
+<xs:element minOccurs="0" name="arg0" type="xs:string"/>
+<xs:element minOccurs="0" name="arg1" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="showPersonDetailResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="showPersonDetailResponse">
+<wsdl:part element="tns:showPersonDetailResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="showPersonDetail">
+<wsdl:part element="tns:showPersonDetail" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="CodeFirstService">
+<wsdl:operation name="showPersonDetail">
+<wsdl:input message="tns:showPersonDetail" name="showPersonDetail"></wsdl:input>
+<wsdl:output message="tns:showPersonDetailResponse" name="showPersonDetailResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="CodeFirstServiceServiceSoapBinding" type="tns:CodeFirstService">
+<soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="showPersonDetail">
+<soap12:operation soapAction="" style="document"/>
+<wsdl:input name="showPersonDetail">
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="showPersonDetailResponse">
+<soap12:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="CodeFirstServiceService">
+<wsdl:port binding="tns:CodeFirstServiceServiceSoapBinding" name="CodeFirstServicePort">
+<soap12:address location="http://localhost:61081/hello"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
