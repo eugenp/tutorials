@@ -75,13 +75,8 @@ node {
                     withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
                         if (isUnix()) {
                             sh 'nohup ./mvnw spring-boot:run -Dserver.port=8989 &'
-                            sh "while ! httping -qc1 http://localhost:8989 ; do sleep 1 ; done"
-                            sh "curl http://localhost:8989"
                         } else {
                             bat 'start ./mvnw.cmd spring-boot:run -Dserver.port=8989'
-                            // Here we need to check(loop) if localhost:8989 is up
-                            // Once it's we continue de script
-                            bat "curl.exe http://localhost:8989"
                         }
                     }
                 }
