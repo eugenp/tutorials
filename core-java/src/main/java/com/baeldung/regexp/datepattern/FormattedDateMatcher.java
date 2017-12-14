@@ -8,7 +8,7 @@ class FormattedDateMatcher implements DateMatcher {
             "^\\d{4}-\\d{2}-\\d{2}$");
 
     @Override
-    public boolean match(String date) {
+    public boolean matches(String date) {
         return DATE_PATTERN.matcher(date).matches();
     }
 }
