@@ -5,9 +5,9 @@ import com.baeldung.defaultstaticinterfacemethods.model.Motorbike;
 import com.baeldung.defaultstaticinterfacemethods.model.Vehicle;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.*;
 
-public class StaticDefaulInterfaceMethodTest {
+public class StaticDefaulInterfaceMethodUnitTest {
     
     private static Car car;
     private static Motorbike motorbike;
@@ -24,56 +24,56 @@ public class StaticDefaulInterfaceMethodTest {
     
     @Test
     public void givenCarInstace_whenBrandisBMW_thenOneAssertion() {
-        assertEquals("BMW", car.getBrand());
+        assertThat(car.getBrand()).isEqualTo("BMW");
     }
     
     @Test
     public void givenCarInstance_whenCallingSpeedUp_thenOneAssertion() {
-        assertEquals("The car is speeding up.", car.speedUp());
+        assertThat(car.speedUp()).isEqualTo("The car is speeding up.");
     }
     
     @Test
     public void givenCarInstance_whenCallingSlowDown_thenOneAssertion() {
-        assertEquals("The car is slowing down.", car.slowDown());
+        assertThat(car.slowDown()).isEqualTo("The car is slowing down.");
     }
     
     @Test
     public void givenCarInstance_whenCallingTurnAlarmOn_thenOneAssertion() {
-        assertEquals("Turning the vehice alarm on.", car.turnAlarmOn());
+        assertThat(car.turnAlarmOn()).isEqualTo("Turning the vehice alarm on.");
     }
     
     @Test
     public void givenCarInstance_whenCallingTurnAlarmOff_thenOneAssertion() {
-        assertEquals("Turning the vehicle alarm off.", car.turnAlarmOff());
+        assertThat(car.turnAlarmOff()).isEqualTo("Turning the vehicle alarm off.");
     }
     
     @Test
     public void givenVehicleInterface_whenCallinggetHorsePower_thenOneAssertion() {
-        assertEquals(228, Vehicle.getHorsePower(2500, 480));
+        assertThat(Vehicle.getHorsePower(2500, 480)).isEqualTo(228);
     }
     
     @Test
     public void givenMooorbikeInstace_whenBrandisYamaha_thenOneAssertion() {
-        assertEquals("Yamaha", motorbike.getBrand());
+        assertThat(motorbike.getBrand()).isEqualTo("Yamaha");
     }
     
     @Test
     public void givenMotorbikeInstance_whenCallingSpeedUp_thenOneAssertion() {
-        assertEquals("The motorbike is speeding up.", motorbike.speedUp());
+        assertThat(motorbike.speedUp()).isEqualTo("The motorbike is speeding up.");
     }
     
     @Test
     public void givenMotorbikeInstance_whenCallingSlowDown_thenOneAssertion() {
-        assertEquals("The motorbike is slowing down.", motorbike.slowDown());
+        assertThat(motorbike.slowDown()).isEqualTo("The motorbike is slowing down.");
     }
     
     @Test
     public void givenMotorbikeInstance_whenCallingTurnAlarmOn_thenOneAssertion() {
-        assertEquals("Turning the vehice alarm on.", motorbike.turnAlarmOn());
+        assertThat(motorbike.turnAlarmOn()).isEqualTo("Turning the vehice alarm on.");
     }
     
     @Test
     public void givenMotorbikeInstance_whenCallingTurnAlarmOff_thenOneAssertion() {
-        assertEquals("Turning the vehicle alarm off.", motorbike.turnAlarmOff());
+        assertThat(motorbike.turnAlarmOff()).isEqualTo("Turning the vehicle alarm off.");
     }
 }
