@@ -10,9 +10,9 @@ import java.util.concurrent.*;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class WaitingForThreadsToFinishTest {
+public class WaitingForThreadsToFinishManualTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WaitingForThreadsToFinishTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WaitingForThreadsToFinishManualTest.class);
     private final static ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
 
     public void awaitTerminationAfterShutdown(ExecutorService threadPool) {
@@ -141,67 +141,5 @@ public class WaitingForThreadsToFinishTest {
         } finally {
             awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
         }
-    }
-
-    @Test
-    public void givenMultipleThreads_whenUsingCompletableFutures_thenMainThreadShouldWaitForAllToFinish() {
-
-        CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return "Hello";
-        });
-
-        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
-
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return "Beautiful";
-        });
-
-        CompletableFuture<String> future3 = CompletableFuture.supplyAsync(() -> {
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            return "World";
-        });
-
-        long startProcessingTime = System.currentTimeMillis();
-        CompletableFuture<Void> combinedFuture = CompletableFuture.allOf(future1, future2, future3);
-        combinedFuture.join();
-
-        long totalProcessingTime = System.currentTimeMillis() - startProcessingTime;
-        assertTrue(totalProcessingTime >= 5000 && totalProcessingTime < 6000);
-
-        LOG.debug("Responses from all threads are available after " + totalProcessingTime + " milliseconds");
-
-        try {
-            String thread1Response = future1.get();
-            assertTrue(thread1Response.equals("Hello"));
-
-            String thread2Response = future2.get();
-            assertTrue(thread2Response.equals("Beautiful"));
-
-            String thread3Response = future3.get();
-            assertTrue(thread3Response.equals("World"));
-
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-
-        awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
     }
 }
