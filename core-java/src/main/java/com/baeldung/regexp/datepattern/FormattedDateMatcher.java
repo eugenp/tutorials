@@ -1,13 +1,13 @@
-package com.baeldung.regexp.datepattern.validator;
+package com.baeldung.regexp.datepattern;
 
 import java.util.regex.Pattern;
 
-class SimpleDateValidator implements DateValidator {
+class FormattedDateMatcher implements DateMatcher {
 
     private static final Pattern DATE_PATTERN = Pattern.compile(
             "^\\d{4}-\\d{2}-\\d{2}$");
 
-    public boolean validate(String date) {
+    public boolean match(String date) {
         return DATE_PATTERN.matcher(date).matches();
     }
 }

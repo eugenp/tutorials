@@ -1,8 +1,8 @@
-package com.baeldung.regexp.datepattern.validator;
+package com.baeldung.regexp.datepattern;
 
 import java.util.regex.Pattern;
 
-class PreciseDateValidator implements DateValidator {
+class GregorianDateMatcher implements DateMatcher {
 
     private static final Pattern DATE_PATTERN = Pattern.compile(
             "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$" 
@@ -10,7 +10,7 @@ class PreciseDateValidator implements DateValidator {
             + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$" 
             + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$");
 
-    public boolean validate(String date) {
+    public boolean match(String date) {
         return DATE_PATTERN.matcher(date).matches();
     }
 }
