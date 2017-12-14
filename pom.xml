@@ -49,8 +49,6 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
-		<module>cas/cas-server</module>
-		<module>cas/cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -107,6 +105,7 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
+        <module>logging-modules/logback</module>
         <module>lombok</module>
        <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
@@ -140,6 +139,7 @@
         <module>persistence-modules/solr</module>
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
+        <module>spring-5-reactive</module>
         <module>spring-5-mvc</module>
         <module>spring-activiti</module>
         <module>spring-akka</module>
@@ -150,7 +150,7 @@
         <module>spring-batch</module>
         <module>spring-bom</module>
         <module>spring-boot</module>
-	<module>spring-boot-keycloak</module>
+	    <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -177,7 +177,7 @@
         <module>spring-jmeter-jenkins</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
-        <module>spring-jpa</module>
+        <module>persistence-modules/spring-jpa</module>
         <module>spring-kafka</module>
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
@@ -200,6 +200,7 @@
         <module>spring-rest-query-language</module>
         <module>spring-rest</module>
         <module>spring-rest-simple</module>
+        <module>spring-security-acl</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
