@@ -33,4 +33,8 @@
         </authentication-provider>
     </authentication-manager>
 
+<!--     <mvc:interceptors>
+        <bean id="loggerInterceptor" class="org.baeldung.web.interceptor.LoggerInterceptor" />
+    </mvc:interceptors> -->
+    
 </beans:beans>
