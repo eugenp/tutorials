@@ -263,6 +263,7 @@
         <module>deeplearning4j</module>
         <module>spring-boot-admin</module>
         <module>lucene</module>
+		<module>vraptor</module>
     </modules>
 
     <dependencies>
