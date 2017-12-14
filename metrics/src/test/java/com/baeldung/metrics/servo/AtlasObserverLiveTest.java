@@ -27,9 +27,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author aiet
- */
 public class AtlasObserverLiveTest {
 
     private final String atlasUri = "http://localhost:7101/api/v1";

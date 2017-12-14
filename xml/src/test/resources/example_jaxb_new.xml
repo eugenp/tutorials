@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tutorials>
+    <tutorial tutId="01" type="XML">
+        <author>Jaxb author</author>
+        <date>04/02/2015</date>
+        <description>XML Binding with Jaxb</description>
+        <title>XML with Jaxb</title>
+    </tutorial>
+</tutorials>
