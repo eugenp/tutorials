@@ -10,6 +10,7 @@ class GregorianDateMatcher implements DateMatcher {
             + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$" 
             + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$");
 
+    @Override
     public boolean match(String date) {
         return DATE_PATTERN.matcher(date).matches();
     }
