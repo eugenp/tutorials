@@ -53,12 +53,14 @@ public class PolymorphismUnitTest {
         String orderJson = "{\"type\":{\"ordertype\":\"internal\",\"id\":100,\"name\":\"directors\"}}";
 
         // act
-        Order order = new ObjectMapper().readerFor(Order.class).readValue(orderJson);
+        Order order = new ObjectMapper().readerFor(Order.class)
+            .readValue(orderJson);
 
-         // assert
+        // assert
         assertThat(from(orderJson).getString("type.ordertype")).isEqualTo("internal");
         assertThat(((Order.InternalType) order.getType()).name).isEqualTo("directors");
         assertThat(((Order.InternalType) order.getType()).id).isEqualTo(100);
-        assertThat(order.getType().getClass()).isEqualTo(Order.InternalType.class);
+        assertThat(order.getType()
+            .getClass()).isEqualTo(Order.InternalType.class);
     }
 }
