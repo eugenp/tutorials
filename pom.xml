@@ -172,8 +172,9 @@
         <module>spring-hibernate4</module>
         <module>persistence-modules/spring-hibernate-5</module>
         <module>spring-integration</module>
+        <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
-        <module>spring-jmeter-jenkins</module>
+        <module>jmeter</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>persistence-modules/spring-jpa</module>
