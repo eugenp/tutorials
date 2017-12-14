@@ -11,7 +11,7 @@ public class DateValidatorUnitTest {
     private DateValidator validator = new PreciseDateValidator();
 
     @Test
-    public void whenDateHasInvalidTokens_thenValidationFails() {
+    public void whenDateHasInvalidFormat_thenValidationFails() {
         Assert.assertFalse(validator.validate("2018-01"));
         Assert.assertFalse(validator.validate("2018-01-01-01"));
         Assert.assertFalse(validator.validate("2018-01-XX"));
@@ -20,14 +20,14 @@ public class DateValidatorUnitTest {
     }
 
     @Test
-    public void whenDateIsInBoundsOfAllowedScope_thenValidationPasses() {
+    public void whenDateIsInRestrictedRange_thenValidationPasses() {
         Assert.assertTrue(validator.validate("1900-01-01"));
         Assert.assertTrue(validator.validate("2017-12-31"));
         Assert.assertTrue(validator.validate("2999-12-31"));
     }
 
     @Test
-    public void whenDateIsOutOfBoundsOfAllowedScope_thenValidationFails() {
+    public void whenDateIsOutOfRestrictedRange_thenValidationFails() {
         Assert.assertFalse(validator.validate("1899-12-31"));
         Assert.assertFalse(validator.validate("3000-01-01"));
     }
