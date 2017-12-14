@@ -14,7 +14,7 @@ public class FormattedDateMatcherUnitTest {
         Assert.assertTrue(matcher.match("2017-12-31"));
         Assert.assertTrue(matcher.match("2018-01-01"));
     }
-    
+
     @Test
     public void whenDateHasInvalidFormat_thenNoMatch() {
         Assert.assertFalse(matcher.match("2018-01"));
