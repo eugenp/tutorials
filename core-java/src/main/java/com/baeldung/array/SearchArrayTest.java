@@ -26,7 +26,7 @@ public class SearchArrayTest {
         int count = 1000;
         String[] strings = seedArray(count);
         for (int i = 0; i < count; i++) {
-            searchList(strings, "W");
+            searchList(strings, "T");
         }
 
     }
@@ -37,7 +37,7 @@ public class SearchArrayTest {
         int count = 1000;
         String[] strings = seedArray(count);
         for (int i = 0; i < count; i++) {
-            searchSet(strings, "S");
+            searchSet(strings, "T");
         }
     }
 
@@ -51,7 +51,7 @@ public class SearchArrayTest {
         List<String> asList = Arrays.asList(strings);
 
         for (int i = 0; i < count; i++) {
-            asList.contains("W");
+            asList.contains("T");
         }
     }
 
@@ -63,7 +63,7 @@ public class SearchArrayTest {
         String[] strings = seedArray(count);
         Set<String> asSet = new HashSet<>(Arrays.asList(strings));
         for (int i = 0; i < count; i++) {
-            asSet.contains("S");
+            asSet.contains("T");
         }
     }
 
@@ -77,7 +77,7 @@ public class SearchArrayTest {
 
         long startTime = System.nanoTime();
         for (int i = 0; i < count; i++) {
-            Arrays.binarySearch(strings, "A");
+            Arrays.binarySearch(strings, "T");
         }
         long duration = System.nanoTime() - startTime;
         //System.out.println("Binary search:  " + duration / 10000);
