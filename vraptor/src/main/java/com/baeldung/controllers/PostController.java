@@ -34,42 +34,35 @@ public class PostController {
         this.validator = validator;
     }
 
-
-    @Path(value = "/post/add")
-    public void add(Post post, HttpServletRequest request) {
-
-      if(request.getMethod().equals("GET")) {
+    @Get("/post/add")
+    public void addForm() {
 
         if(Objects.isNull(userInfo.getUser())) {
-          result.include("error", "Please Login to Proceed");
-          result.redirectTo(AuthController.class).login(request);
-          return;
+            result.include("error", "Please Login to Proceed");
+            result.redirectTo(AuthController.class).loginForm();
+            return;
         }
 
         result.use(FreemarkerView.class).withTemplate("posts/add");
-      }
-      else if(request.getMethod().equals("POST")) {
+    }
 
-        post.setAuthor(userInfo.getUser());
+    @br.com.caelum.vraptor.Post("/post/add")
+    public void add(Post post) {
 
-        validator.validate(post);
-        if(validator.hasErrors())
-          result.include("error", "Post's Title (min of 5 chars) and Body (min of 10 chars) is Required");
-        validator.onErrorRedirectTo(this).add(post, request);
+      post.setAuthor(userInfo.getUser());
+      validator.validate(post);
+      if(validator.hasErrors())
+          result.include("errors", validator.getErrors());
+      validator.onErrorRedirectTo(this).addForm();
 
-        Object id = postDao.add(post);
+      Object id = postDao.add(post);
 
-        if(Objects.nonNull(id)) {
-          result.include("status", "Post Added Successfully");
-          result.redirectTo(IndexController.class).index();
-        } else {
-            result.include("error", "There was an error creating the post. Try Again");
-            result.redirectTo(this).add(post, request);
-        }
-      }
-      else {
-        result.include("error", "Invalid Request Type");
+      if(Objects.nonNull(id)) {
+        result.include("status", "Post Added Successfully");
         result.redirectTo(IndexController.class).index();
+      } else {
+        result.include("error", "There was an error creating the post. Try Again");
+        result.redirectTo(this).addForm();
       }
     }
 

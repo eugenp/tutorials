@@ -87,6 +87,13 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <p>Register</p>
             <h5 style="color:darkred;">${error!""} ${status!""}</h5>
+        <#if errors??>
+            <#list errors as error>
+                <h5 style="color:darkred">${error.category?upper_case}: ${error.message}</h5>
+            <#else>
+            </#list>
+        <#else>
+        </#if>
             <form name="sentM" id="contactFo" action="/register" method="POST">
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">

@@ -73,7 +73,14 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <p>Compose the Next Viral Message!</p>
             <h5 style="color:darkred;">${error!""} ${status!""}</h5>
-             <form action="/post/add" method="POST">
+        <#if errors??>
+            <#list errors as error>
+                <h5 style="color:darkred">${error.category?upper_case}: ${error.message}</h5>
+            <#else>
+            </#list>
+        <#else>
+        </#if>
+            <form action="/post/add" method="POST">
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
                         <label>Title</label>
@@ -95,7 +102,7 @@
                         <button type="submit" class="btn btn-default">Send</button>
                     </div>
                 </div>
-             </form>
+            </form>
         </div>
     </div>
 </div>
