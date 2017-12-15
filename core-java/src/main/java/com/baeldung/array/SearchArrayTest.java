@@ -10,47 +10,40 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class SearchArrayTest {
 
+    @State(Scope.Benchmark)
+    public static class SearchData {
+        static int count = 1000;
+        static String[] strings = seedArray(1000);
+    }
+
+
     @Benchmark
     public void searchArrayLoop() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-        for (int i = 0; i < count; i++) {
-            searchLoop(strings, "T");
+        for (int i = 0; i < SearchData.count; i++) {
+            searchLoop(SearchData.strings, "T");
         }
     }
 
     @Benchmark
     public void searchArrayAllocNewList() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-        for (int i = 0; i < count; i++) {
-            searchList(strings, "T");
+        for (int i = 0; i < SearchData.count; i++) {
+            searchList(SearchData.strings, "T");
         }
 
     }
 
     @Benchmark
     public void searchArrayAllocNewSet() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-        for (int i = 0; i < count; i++) {
-            searchSet(strings, "T");
+        for (int i = 0; i < SearchData.count; i++) {
+            searchSet(SearchData.strings, "T");
         }
     }
 
 
     @Benchmark
     public void searchArrayReuseList() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-
-        List<String> asList = Arrays.asList(strings);
-
-        for (int i = 0; i < count; i++) {
+        List<String> asList = Arrays.asList(SearchData.strings);
+        for (int i = 0; i < SearchData.count; i++) {
             asList.contains("T");
         }
     }
@@ -58,11 +51,8 @@ public class SearchArrayTest {
 
     @Benchmark
     public void searchArrayReuseSet() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-        Set<String> asSet = new HashSet<>(Arrays.asList(strings));
-        for (int i = 0; i < count; i++) {
+        Set<String> asSet = new HashSet<>(Arrays.asList(SearchData.strings));
+        for (int i = 0; i < SearchData.count; i++) {
             asSet.contains("T");
         }
     }
@@ -70,18 +60,10 @@ public class SearchArrayTest {
 
     @Benchmark
     public void searchArrayBinarySearch() {
-
-        int count = 1000;
-        String[] strings = seedArray(count);
-        Arrays.sort(strings);
-
-        long startTime = System.nanoTime();
-        for (int i = 0; i < count; i++) {
-            Arrays.binarySearch(strings, "T");
+        Arrays.sort(SearchData.strings);
+        for (int i = 0; i < SearchData.count; i++) {
+            Arrays.binarySearch(SearchData.strings, "T");
         }
-        long duration = System.nanoTime() - startTime;
-        //System.out.println("Binary search:  " + duration / 10000);
-
     }
 
     private boolean searchList(String[] strings, String searchString) {
@@ -101,8 +83,7 @@ public class SearchArrayTest {
         return false;
     }
 
-    private String[] seedArray(int length) {
-
+    private static String[] seedArray(int length) {
         String[] strings = new String[length];
         Random random = new Random();
         for (int i = 0; i < length; i++)
