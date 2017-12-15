@@ -49,8 +49,6 @@
         <module>core-java-8</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
-		<module>cas/cas-server</module>
-		<module>cas/cas-secured-app</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
@@ -60,7 +58,6 @@
         <!--<module>ejb</module>-->
 
         <module>feign</module>
-        <module>flyway</module>
 
         <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
@@ -141,8 +138,8 @@
         <module>persistence-modules/solr</module>
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
+        <module>spring-5-reactive</module>
         <module>spring-5-mvc</module>
-        <module>spring-acl</module>
         <module>spring-activiti</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
@@ -152,7 +149,7 @@
         <module>spring-batch</module>
         <module>spring-bom</module>
         <module>spring-boot</module>
-	<module>spring-boot-keycloak</module>
+	    <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -175,8 +172,9 @@
         <module>spring-hibernate4</module>
         <module>persistence-modules/spring-hibernate-5</module>
         <module>spring-integration</module>
+        <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
-        <module>spring-jmeter-jenkins</module>
+        <module>jmeter</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>persistence-modules/spring-jpa</module>

@@ -12,3 +12,5 @@
 - [Introduction to PowerMock](http://www.baeldung.com/intro-to-powermock)
 - [Mocking Exception Throwing using Mockito](http://www.baeldung.com/mockito-exceptions)
 - [Mocking Void Methods with Mockito](http://www.baeldung.com/mockito-void-methods)
+- [Mocking of Private Methods Using PowerMock](http://www.baeldung.com/powermock-private-method)
+- [Mock Final Classes and Methods with Mockito](http://www.baeldung.com/mockito-final)
