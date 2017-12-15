@@ -2,6 +2,20 @@ package com.baeldung.recursion;
 
 public class RecursionExample {
     
+    public int sum(int n){
+        if (n >= 1){
+            return sum(n - 1) + n;
+        }
+        return n;
+    }
+    
+    public int tailSum(int currentSum, int n){
+        if (n <= 1) {
+            return currentSum + n;
+        }
+        return tailSum(currentSum + n, n - 1);
+    }
+    
     public int powerOf10(int n){
         if (n == 0){
             return 1;
