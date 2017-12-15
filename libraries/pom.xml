@@ -630,13 +630,30 @@
         <dependency>
           <groupId>com.google.http-client</groupId>
           <artifactId>google-http-client-jackson2</artifactId>
-            <version>${googleclient.version}</version>
+          <version>${googleclient.version}</version>
         </dependency>
         <dependency>
-        <groupId>com.google.http-client</groupId>
-        <artifactId>google-http-client-gson</artifactId>
-        <version>${googleclient.version}</version>
-      </dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-gson</artifactId>
+          <version>${googleclient.version}</version>
+        </dependency>
+
+        <!-- google api -->
+        <dependency>
+          <groupId>com.google.api-client</groupId>
+          <artifactId>google-api-client</artifactId>
+          <version>${google-api.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.oauth-client</groupId>
+          <artifactId>google-oauth-client-jetty</artifactId>
+          <version>${google-api.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.apis</groupId>
+          <artifactId>google-api-services-sheets</artifactId>
+          <version>${google-sheets.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -710,5 +727,7 @@
         <cache.version>1.0.0</cache.version>
         <hazelcast.version>3.8.4</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
+        <google-api.version>1.23.0</google-api.version>
+        <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
     </properties>
 </project>
