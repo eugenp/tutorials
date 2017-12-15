@@ -59,49 +59,49 @@ public class BinaryTree {
 
     public void delete(int value) {
 
-        NodeVO nodeToDeleteAux = findNodeToDelete(root, root, false, value);
+        NodeVO nodeToDeleteVO = findNodeToDelete(root, root, false, value);
 
-        if (nodeToDeleteAux == null) {
+        if (nodeToDeleteVO == null) {
             return;
         }
 
         // Case 1: no children
-        if (nodeToDeleteAux.node.left == null && nodeToDeleteAux.node.right == null) {
-            if (nodeToDeleteAux.node == root) {
+        if (nodeToDeleteVO.node.left == null && nodeToDeleteVO.node.right == null) {
+            if (nodeToDeleteVO.node == root) {
                 root = null;
-            } else if (nodeToDeleteAux.isLeftChild) {
-                nodeToDeleteAux.parent.left = null;
+            } else if (nodeToDeleteVO.isLeftChild) {
+                nodeToDeleteVO.parent.left = null;
             } else {
-                nodeToDeleteAux.parent.right = null;
+                nodeToDeleteVO.parent.right = null;
             }
         }
         // Case 2: only 1 child
-        else if (nodeToDeleteAux.node.right == null) {
-            if (nodeToDeleteAux.node == root) {
-                root = nodeToDeleteAux.node.left;
-            } else if (nodeToDeleteAux.isLeftChild) {
-                nodeToDeleteAux.parent.left = nodeToDeleteAux.node.left;
+        else if (nodeToDeleteVO.node.right == null) {
+            if (nodeToDeleteVO.node == root) {
+                root = nodeToDeleteVO.node.left;
+            } else if (nodeToDeleteVO.isLeftChild) {
+                nodeToDeleteVO.parent.left = nodeToDeleteVO.node.left;
             } else {
-                nodeToDeleteAux.parent.right = nodeToDeleteAux.node.left;
+                nodeToDeleteVO.parent.right = nodeToDeleteVO.node.left;
             }
-        } else if (nodeToDeleteAux.node.left == null) {
-            if (nodeToDeleteAux.node == root) {
-                root = nodeToDeleteAux.node.right;
-            } else if (nodeToDeleteAux.isLeftChild) {
-                nodeToDeleteAux.parent.left = nodeToDeleteAux.node.right;
+        } else if (nodeToDeleteVO.node.left == null) {
+            if (nodeToDeleteVO.node == root) {
+                root = nodeToDeleteVO.node.right;
+            } else if (nodeToDeleteVO.isLeftChild) {
+                nodeToDeleteVO.parent.left = nodeToDeleteVO.node.right;
             } else {
-                nodeToDeleteAux.parent.right = nodeToDeleteAux.node.right;
+                nodeToDeleteVO.parent.right = nodeToDeleteVO.node.right;
             }
         }
         // Case 3: 2 children
-        else if (nodeToDeleteAux.node.left != null && nodeToDeleteAux.node.right != null) {
-            Node replacement = findReplacement(nodeToDeleteAux.node);
-            if (nodeToDeleteAux.node == root) {
+        else if (nodeToDeleteVO.node.left != null && nodeToDeleteVO.node.right != null) {
+            Node replacement = findReplacement(nodeToDeleteVO.node);
+            if (nodeToDeleteVO.node == root) {
                 root = replacement;
-            } else if (nodeToDeleteAux.isLeftChild) {
-                nodeToDeleteAux.parent.left = replacement;
+            } else if (nodeToDeleteVO.isLeftChild) {
+                nodeToDeleteVO.parent.left = replacement;
             } else {
-                nodeToDeleteAux.parent.right = replacement;
+                nodeToDeleteVO.parent.right = replacement;
             }
         }
 
