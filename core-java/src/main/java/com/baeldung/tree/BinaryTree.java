@@ -16,29 +16,23 @@ public class BinaryTree {
             return;
         }
 
-        Node parent = root;
-        Node current = root;
+        addRecursive(root, value);
+    }
 
-        while (true) {
+    private Node addRecursive(Node current, int value) {
 
-            if (newNode.value < parent.value) {
-                current = parent.left;
-
-                if (current == null) {
-                    parent.left = newNode;
-                    break;
-                }
-            } else {
-                current = parent.right;
-
-                if (current == null) {
-                    parent.right = newNode;
-                    break;
-                }
-            }
-
-            parent = current;
+        if (current == null) {
+            return new Node(value);
         }
+
+        if (value < current.value) {
+            current.left = addRecursive(current.left, value);
+        } else {
+            current.right = addRecursive(current.right, value);
+        }
+
+        return current;
+
     }
 
     public boolean isEmpty() {
@@ -46,115 +40,107 @@ public class BinaryTree {
     }
 
     public boolean containsNode(int value) {
+        return containsNodeRecursive(root, value);
+    }
 
-        Node current = root;
+    private boolean containsNodeRecursive(Node current, int value) {
 
-        while (current != null) {
-
-            if (value == current.value) {
-                return true;
-            }
-
-            if (value < current.value) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-
+        if (current == null) {
+            return false;
+        } else if (value == current.value) {
+            return true;
+        } else if (value < current.value) {
+            return containsNodeRecursive(current.left, value);
+        } else {
+            return containsNodeRecursive(current.right, value);
         }
 
-        return false;
     }
 
     public void delete(int value) {
 
-        Node current = root;
-        Node parent = root;
-        Node nodeToDelete = null;
-        boolean isLeftChild = false;
+        NodeVO nodeToDeleteAux = findNodeToDelete(root, root, false, value);
 
-        while (nodeToDelete == null && current != null) {
-
-            if (value == current.value) {
-                nodeToDelete = current;
-            } else if (value < current.value) {
-                parent = current;
-                current = current.left;
-                isLeftChild = true;
-            } else {
-                parent = current;
-                current = current.right;
-                isLeftChild = false;
-            }
-
-        }
-
-        if (nodeToDelete == null) {
+        if (nodeToDeleteAux == null) {
             return;
         }
 
         // Case 1: no children
-        if (nodeToDelete.left == null && nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
+        if (nodeToDeleteAux.node.left == null && nodeToDeleteAux.node.right == null) {
+            if (nodeToDeleteAux.node == root) {
                 root = null;
-            } else if (isLeftChild) {
-                parent.left = null;
+            } else if (nodeToDeleteAux.isLeftChild) {
+                nodeToDeleteAux.parent.left = null;
             } else {
-                parent.right = null;
+                nodeToDeleteAux.parent.right = null;
             }
         }
         // Case 2: only 1 child
-        else if (nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.left;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.left;
+        else if (nodeToDeleteAux.node.right == null) {
+            if (nodeToDeleteAux.node == root) {
+                root = nodeToDeleteAux.node.left;
+            } else if (nodeToDeleteAux.isLeftChild) {
+                nodeToDeleteAux.parent.left = nodeToDeleteAux.node.left;
             } else {
-                parent.right = nodeToDelete.left;
+                nodeToDeleteAux.parent.right = nodeToDeleteAux.node.left;
             }
-        } else if (nodeToDelete.left == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.right;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.right;
+        } else if (nodeToDeleteAux.node.left == null) {
+            if (nodeToDeleteAux.node == root) {
+                root = nodeToDeleteAux.node.right;
+            } else if (nodeToDeleteAux.isLeftChild) {
+                nodeToDeleteAux.parent.left = nodeToDeleteAux.node.right;
             } else {
-                parent.right = nodeToDelete.right;
+                nodeToDeleteAux.parent.right = nodeToDeleteAux.node.right;
             }
         }
         // Case 3: 2 children
-        else if (nodeToDelete.left != null && nodeToDelete.right != null) {
-            Node replacement = findReplacement(nodeToDelete);
-            if (nodeToDelete == root) {
+        else if (nodeToDeleteAux.node.left != null && nodeToDeleteAux.node.right != null) {
+            Node replacement = findReplacement(nodeToDeleteAux.node);
+            if (nodeToDeleteAux.node == root) {
                 root = replacement;
-            } else if (isLeftChild) {
-                parent.left = replacement;
+            } else if (nodeToDeleteAux.isLeftChild) {
+                nodeToDeleteAux.parent.left = replacement;
             } else {
-                parent.right = replacement;
+                nodeToDeleteAux.parent.right = replacement;
             }
         }
 
     }
 
+    private NodeVO findNodeToDelete(Node current, Node parent, boolean isLeftChild, int value) {
+
+        if (current == null) {
+            return null;
+        } else if (value == current.value) {
+            return new NodeVO(current, parent, isLeftChild);
+        } else if (value < current.value) {
+            return findNodeToDelete(current.left, current, true, value);
+        } else {
+            return findNodeToDelete(current.right, current, false, value);
+        }
+    }
+
     private Node findReplacement(Node nodeToDelete) {
 
-        Node replacement = nodeToDelete;
-        Node parentReplacement = nodeToDelete;
-        Node current = nodeToDelete.right;
+        NodeVO replacementNodeVO = findSmallestNode(nodeToDelete, nodeToDelete);
 
-        while (current != null) {
-            parentReplacement = replacement;
-            replacement = current;
-            current = current.left;
+        if (replacementNodeVO.node != nodeToDelete.right) {
+            replacementNodeVO.parent.left = replacementNodeVO.node.right;
+            replacementNodeVO.node.right = nodeToDelete.right;
         }
 
-        if (replacement != nodeToDelete.right) {
-            parentReplacement.left = replacement.right;
-            replacement.right = nodeToDelete.right;
+        replacementNodeVO.node.left = nodeToDelete.left;
+
+        return replacementNodeVO.node;
+    }
+
+    private NodeVO findSmallestNode(Node root, Node parent) {
+
+        if (root.left == null) {
+            return new NodeVO(root, parent);
         }
 
-        replacement.left = nodeToDelete.left;
-
-        return replacement;
+        return findSmallestNode(root.left, root);
     }
 
     public void traverseInOrder(Node node) {
@@ -199,6 +185,23 @@ public class BinaryTree {
             if (node.left != null) {
                 nodes.add(node.right);
             }
+        }
+    }
+
+    class NodeVO {
+        Node node;
+        Node parent;
+        boolean isLeftChild;
+
+        NodeVO(Node node, Node parent) {
+            this.node = node;
+            this.parent = parent;
+        }
+
+        NodeVO(Node node, Node parent, boolean isLeftChild) {
+            this.node = node;
+            this.parent = parent;
+            this.isLeftChild = isLeftChild;
         }
     }
 
