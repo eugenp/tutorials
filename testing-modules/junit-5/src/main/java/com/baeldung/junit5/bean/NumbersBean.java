@@ -15,7 +15,7 @@ public class NumbersBean {
      *            the number to check
      * @return true if the argument is even, false otherwise
      */
-    public boolean isNumberEven(int number) {
+    public boolean isNumberEven(Integer number) {
         return number % 2 == 0;
     }
 
