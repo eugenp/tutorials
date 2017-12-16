@@ -16,29 +16,23 @@ public class BinaryTree {
             return;
         }
 
-        Node parent = root;
-        Node current = root;
+        addRecursive(root, value);
+    }
 
-        while (true) {
+    private Node addRecursive(Node current, int value) {
 
-            if (newNode.value < parent.value) {
-                current = parent.left;
-
-                if (current == null) {
-                    parent.left = newNode;
-                    break;
-                }
-            } else {
-                current = parent.right;
-
-                if (current == null) {
-                    parent.right = newNode;
-                    break;
-                }
-            }
-
-            parent = current;
+        if (current == null) {
+            return new Node(value);
         }
+
+        if (value < current.value) {
+            current.left = addRecursive(current.left, value);
+        } else {
+            current.right = addRecursive(current.right, value);
+        }
+
+        return current;
+
     }
 
     public boolean isEmpty() {
@@ -46,115 +40,69 @@ public class BinaryTree {
     }
 
     public boolean containsNode(int value) {
-
-        Node current = root;
-
-        while (current != null) {
-
-            if (value == current.value) {
-                return true;
-            }
-
-            if (value < current.value) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-
-        }
-
-        return false;
+        return containsNodeRecursive(root, value);
     }
 
-    public void delete(int value) {
+    private boolean containsNodeRecursive(Node current, int value) {
 
-        Node current = root;
-        Node parent = root;
-        Node nodeToDelete = null;
-        boolean isLeftChild = false;
-
-        while (nodeToDelete == null && current != null) {
-
-            if (value == current.value) {
-                nodeToDelete = current;
-            } else if (value < current.value) {
-                parent = current;
-                current = current.left;
-                isLeftChild = true;
-            } else {
-                parent = current;
-                current = current.right;
-                isLeftChild = false;
-            }
-
-        }
-
-        if (nodeToDelete == null) {
-            return;
-        }
-
-        // Case 1: no children
-        if (nodeToDelete.left == null && nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
-                root = null;
-            } else if (isLeftChild) {
-                parent.left = null;
-            } else {
-                parent.right = null;
-            }
-        }
-        // Case 2: only 1 child
-        else if (nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.left;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.left;
-            } else {
-                parent.right = nodeToDelete.left;
-            }
-        } else if (nodeToDelete.left == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.right;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.right;
-            } else {
-                parent.right = nodeToDelete.right;
-            }
-        }
-        // Case 3: 2 children
-        else if (nodeToDelete.left != null && nodeToDelete.right != null) {
-            Node replacement = findReplacement(nodeToDelete);
-            if (nodeToDelete == root) {
-                root = replacement;
-            } else if (isLeftChild) {
-                parent.left = replacement;
-            } else {
-                parent.right = replacement;
-            }
+        if (current == null) {
+            return false;
+        } else if (value == current.value) {
+            return true;
+        } else if (value < current.value) {
+            return containsNodeRecursive(current.left, value);
+        } else {
+            return containsNodeRecursive(current.right, value);
         }
 
     }
 
-    private Node findReplacement(Node nodeToDelete) {
+    public void delete(int value) {
+        deleteRecursive(root, value);
+    }
 
-        Node replacement = nodeToDelete;
-        Node parentReplacement = nodeToDelete;
-        Node current = nodeToDelete.right;
-
-        while (current != null) {
-            parentReplacement = replacement;
-            replacement = current;
-            current = current.left;
+    private Node deleteRecursive(Node current, int value) {
+        if (current == null) {
+            return null;
         }
 
-        if (replacement != nodeToDelete.right) {
-            parentReplacement.left = replacement.right;
-            replacement.right = nodeToDelete.right;
+        if (value == current.value) {
+            // Case 1: no children
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+
+            // Case 2: only 1 child
+            if (current.right == null) {
+                return current.left;
+            }
+
+            if (current.left == null) {
+                return current.right;
+            }
+
+            // Case 3: 2 children
+            int smallestValue = findSmallestValue(current.right);
+            current.value = smallestValue;
+            current.right = deleteRecursive(current.right, smallestValue);
+            return current;
+
+        } else if (value < current.value) {
+            current.left = deleteRecursive(current.left, value);
+            return current;
+        } else {
+            current.right = deleteRecursive(current.right, value);
+            return current;
+        }
+    }
+
+    private int findSmallestValue(Node root) {
+
+        if (root.left == null) {
+            return root.value;
         }
 
-        replacement.left = nodeToDelete.left;
-
-        return replacement;
+        return findSmallestValue(root.left);
     }
 
     public void traverseInOrder(Node node) {
