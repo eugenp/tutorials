@@ -26,7 +26,6 @@ public class WhenUsingTreeSet {
 
         @Override
         public String toString() {
-            // TODO Auto-generated method stub
             return id.toString();
         }
     }
@@ -189,8 +188,14 @@ public class WhenUsingTreeSet {
         treeSet.add(5);
         treeSet.add(6);
 
+        Set<Integer> expectedSet = new TreeSet<>();
+        expectedSet.add(2);
+        expectedSet.add(3);
+        expectedSet.add(4);
+        expectedSet.add(5);
+
         Set<Integer> subSet = treeSet.subSet(2, 6);
-        System.out.println(subSet);
+        Assert.assertEquals(expectedSet, subSet);
     }
 
     @Test
