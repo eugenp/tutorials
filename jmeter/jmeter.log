@@ -1,0 +1,68 @@
+2017-12-13 04:50:16,291 INFO o.a.j.u.JMeterUtils: Setting Locale to en_US
+2017-12-13 04:50:16,319 INFO o.a.j.JMeter: Loading user properties from: /Users/dassiorleando/projects/biz/baeldung/jmeter/apache-jmeter-3.3/bin/user.properties
+2017-12-13 04:50:16,392 INFO o.a.j.JMeter: Loading system properties from: /Users/dassiorleando/projects/biz/baeldung/jmeter/apache-jmeter-3.3/bin/system.properties
+2017-12-13 04:50:16,406 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.output_format=xml
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: Copyright (c) 1998-2017 The Apache Software Foundation
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: Version 3.3 r1808647
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: java.version=1.8.0_152
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: os.name=Mac OS X
+2017-12-13 04:50:16,451 INFO o.a.j.JMeter: os.arch=x86_64
+2017-12-13 04:50:16,452 INFO o.a.j.JMeter: os.version=10.12.6
+2017-12-13 04:50:16,452 INFO o.a.j.JMeter: file.encoding=UTF-8
+2017-12-13 04:50:16,452 INFO o.a.j.JMeter: Max memory     =536870912
+2017-12-13 04:50:16,452 INFO o.a.j.JMeter: Available Processors =4
+2017-12-13 04:50:16,461 INFO o.a.j.JMeter: Default Locale=English (United States)
+2017-12-13 04:50:16,462 INFO o.a.j.JMeter: JMeter  Locale=English (United States)
+2017-12-13 04:50:16,462 INFO o.a.j.JMeter: JMeterHome=/Users/dassiorleando/projects/biz/baeldung/jmeter/apache-jmeter-3.3
+2017-12-13 04:50:16,462 INFO o.a.j.JMeter: user.dir  =/Users/dassiorleando/projects/biz/baeldung/tutorials/jmeter
+2017-12-13 04:50:16,462 INFO o.a.j.JMeter: PWD       =/Users/dassiorleando/projects/biz/baeldung/tutorials/jmeter
+2017-12-13 04:50:16,466 INFO o.a.j.JMeter: IP: 192.168.10.100 Name: MBP FullName: 192.168.10.100
+2017-12-13 04:50:16,472 INFO o.a.j.s.FileServer: Default base='/Users/dassiorleando/projects/biz/baeldung/tutorials/jmeter'
+2017-12-13 04:50:16,473 INFO o.a.j.s.FileServer: Set new base='/Users/dassiorleando/projects/biz/baeldung/tutorials/jmeter/src/main/resources'
+2017-12-13 04:50:17,022 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2017-12-13 04:50:17,134 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2017-12-13 04:50:17,142 INFO o.a.j.s.SaveService: Using SaveService properties version 3.2
+2017-12-13 04:50:17,168 INFO o.a.j.s.SaveService: Loading file: src/main/resources/JMeter.jmx
+2017-12-13 04:50:17,340 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2017-12-13 04:50:17,351 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2017-12-13 04:50:17,352 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2017-12-13 04:50:17,352 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2017-12-13 04:50:17,353 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2017-12-13 04:50:17,353 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2017-12-13 04:50:17,552 INFO o.a.j.JMeter: Creating summariser <summary>
+2017-12-13 04:50:17,580 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2017-12-13 04:50:17,581 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2017-12-13 04:50:17,582 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2017-12-13 04:50:17,590 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2017-12-13 04:50:17,590 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2017-12-13 04:50:18,640 INFO o.a.j.JMeter: Running test (1513137018640)
+2017-12-13 04:50:18,728 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Thread Group
+2017-12-13 04:50:18,737 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group Thread Group.
+2017-12-13 04:50:18,737 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2017-12-13 04:50:18,738 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=5 ramp-up=1 perThread=200.0 delayedStart=false
+2017-12-13 04:50:18,751 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-1
+2017-12-13 04:50:18,753 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2017-12-13 04:50:18,753 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2017-12-13 04:50:18,786 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = MBP
+2017-12-13 04:50:18,797 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2017-12-13 04:50:18,812 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2017-12-13 04:50:18,812 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2017-12-13 04:50:18,812 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2017-12-13 04:50:18,812 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2017-12-13 04:50:18,954 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-2
+2017-12-13 04:50:19,152 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-3
+2017-12-13 04:50:19,257 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-3
+2017-12-13 04:50:19,257 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-3
+2017-12-13 04:50:19,264 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-2
+2017-12-13 04:50:19,264 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-1
+2017-12-13 04:50:19,264 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-2
+2017-12-13 04:50:19,265 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-1
+2017-12-13 04:50:19,353 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-4
+2017-12-13 04:50:19,365 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-4
+2017-12-13 04:50:19,365 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-4
+2017-12-13 04:50:19,557 INFO o.a.j.t.JMeterThread: Thread started: Thread Group 1-5
+2017-12-13 04:50:19,573 INFO o.a.j.t.JMeterThread: Thread is done: Thread Group 1-5
+2017-12-13 04:50:19,573 INFO o.a.j.t.JMeterThread: Thread finished: Thread Group 1-5
+2017-12-13 04:50:19,573 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2017-12-13 04:50:19,575 INFO o.a.j.r.Summariser: summary =      5 in 00:00:01 =    5.4/s Avg:   155 Min:    10 Max:   388 Err:     4 (80.00%)
