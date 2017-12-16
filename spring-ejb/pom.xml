@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.ejb</groupId>
-    <artifactId>ejb</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.baeldung.spring.ejb</groupId>
+    <artifactId>ejb-for-spring</artifactId>
+    <version>1.0.1</version>
     <packaging>pom</packaging>
     <name>ejb</name>
-    <description>EJB Tutorial</description>
+    <description>Spring EJB Tutorial</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -35,9 +35,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.baeldung.ejb</groupId>
-                <artifactId>ejb-remote</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <groupId>com.baeldung.spring.ejb</groupId>
+                <artifactId>ejb-remote-for-spring</artifactId>
+                <version>1.0.1</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
@@ -71,6 +71,6 @@
     </build>
 
     <modules>
-        <module>ejb-remote</module>
+        <module>ejb-remote-for-spring</module>
     </modules>
 </project>
