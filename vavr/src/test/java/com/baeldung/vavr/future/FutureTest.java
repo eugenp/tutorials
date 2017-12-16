@@ -17,29 +17,32 @@ import io.vavr.control.Try;
 public class FutureTest {
 
     @Test
-    public void whenChangeExecutorService_thenCorrect() {
+    public void whenChangeExecutorService_thenCorrect() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(
           Executors.newSingleThreadExecutor(),
           () -> Util.appendData(initialValue));
+        Thread.sleep(20);
         String result = resultFuture.get();
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
-    public void whenAppendData_thenCorrect1() {
+    public void whenAppendData_thenCorrect1() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
+        Thread.sleep(20);
         String result = resultFuture.get();
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
-    public void whenAppendData_thenCorrect2() {
+    public void whenAppendData_thenCorrect2() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
+        Thread.sleep(20);
         resultFuture.await();
         Option<Try<String>> futureOption = resultFuture.getValue();
         Try<String> futureTry = futureOption.get();
@@ -49,31 +52,34 @@ public class FutureTest {
     }
 
     @Test
-    public void whenAppendData_thenSuccess() {
+    public void whenAppendData_thenSuccess() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue))
           .onSuccess(finalResult -> System.out.println("Successfully Completed - Result: " + finalResult))
           .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult));
+        Thread.sleep(20);
         String result = resultFuture.get();
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
-    public void whenChainingCallbacks_thenCorrect() {
+    public void whenChainingCallbacks_thenCorrect() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue))
           .andThen(finalResult -> System.out.println("Completed - 1: " + finalResult))
           .andThen(finalResult -> System.out.println("Completed - 2: " + finalResult));
+        Thread.sleep(20);
         String result = resultFuture.get();
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
-    public void whenCallAwait_thenCorrect() {
+    public void whenCallAwait_thenCorrect() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
+        Thread.sleep(20);
         resultFuture = resultFuture.await();
         String result = resultFuture.get();
 
@@ -81,8 +87,9 @@ public class FutureTest {
     }
 
     @Test
-    public void whenDivideByZero_thenGetThrowable1() {
+    public void whenDivideByZero_thenGetThrowable1() throws InterruptedException {
         Future<Integer> resultFuture = Future.of(() -> Util.divideByZero(10));
+        Thread.sleep(20);
         Future<Throwable> throwableFuture = resultFuture.failed();
         Throwable throwable = throwableFuture.get();
 
@@ -90,8 +97,9 @@ public class FutureTest {
     }
 
     @Test
-    public void whenDivideByZero_thenGetThrowable2() {
+    public void whenDivideByZero_thenGetThrowable2() throws InterruptedException {
         Future<Integer> resultFuture = Future.of(() -> Util.divideByZero(10));
+        Thread.sleep(20);
         resultFuture.await();
         Option<Throwable> throwableOption = resultFuture.getCause();
         Throwable throwable = throwableOption.get();
@@ -102,6 +110,7 @@ public class FutureTest {
     @Test
     public void whenDivideByZero_thenCorrect() throws InterruptedException {
         Future<Integer> resultFuture = Future.of(() -> Util.divideByZero(10));
+        Thread.sleep(20);
         resultFuture.await();
 
         assertThat(resultFuture.isCompleted()).isTrue();
@@ -110,18 +119,20 @@ public class FutureTest {
     }
 
     @Test
-    public void whenAppendData_thenFutureNotEmpty() {
+    public void whenAppendData_thenFutureNotEmpty() throws InterruptedException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
+        Thread.sleep(20);
         resultFuture.await();
 
         assertThat(resultFuture.isEmpty()).isFalse();
     }
 
     @Test
-    public void whenCallZip_thenCorrect() {
+    public void whenCallZip_thenCorrect() throws InterruptedException {
         Future<Tuple2<String, Integer>> future = Future.of(() -> "John")
           .zip(Future.of(() -> new Integer(5)));
+        Thread.sleep(20);
         future.await();
 
         assertThat(future.get()).isEqualTo(Tuple.of("John", new Integer(5)));
@@ -131,23 +142,26 @@ public class FutureTest {
     public void whenConvertToCompletableFuture_thenCorrect() throws InterruptedException, ExecutionException {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
+        Thread.sleep(20);
         CompletableFuture<String> convertedFuture = resultFuture.toCompletableFuture();
 
         assertThat(convertedFuture.get()).isEqualTo("Welcome to Baeldung!");
     }
 
     @Test
-    public void whenCallMap_thenCorrect() {
+    public void whenCallMap_thenCorrect() throws InterruptedException {
         Future<String> futureResult = Future.of(() -> new StringBuilder("from Baeldung"))
           .map(a -> "Hello " + a);
+        Thread.sleep(20);
         futureResult.await();
 
         assertThat(futureResult.get()).isEqualTo("Hello from Baeldung");
     }
 
     @Test
-    public void whenFutureFails_thenGetErrorMessage() {
+    public void whenFutureFails_thenGetErrorMessage() throws InterruptedException {
         Future<String> resultFuture = Future.of(() -> Util.getSubstringMinusOne("Hello"));
+        Thread.sleep(20);
         Future<String> errorMessageFuture = resultFuture.recover(Throwable::getMessage);
         String errorMessage = errorMessageFuture.get();
 
@@ -155,8 +169,9 @@ public class FutureTest {
     }
 
     @Test
-    public void whenFutureFails_thenGetAnotherFuture() {
+    public void whenFutureFails_thenGetAnotherFuture() throws InterruptedException {
         Future<String> resultFuture = Future.of(() -> Util.getSubstringMinusOne("Hello"));
+        Thread.sleep(20);
         Future<String> errorMessageFuture = resultFuture.recoverWith(a -> Future.of(a::getMessage));
         String errorMessage = errorMessageFuture.get();
 
@@ -164,9 +179,10 @@ public class FutureTest {
     }
 
     @Test
-    public void whenBothFuturesFail_thenGetErrorMessage() {
+    public void whenBothFuturesFail_thenGetErrorMessage() throws InterruptedException {
         Future<String> future1 = Future.of(() -> Util.getSubstringMinusOne("Hello"));
         Future<String> future2 = Future.of(() -> Util.getSubstringMinusTwo("Hello"));
+        Thread.sleep(20);
         Future<String> errorMessageFuture = future1.fallbackTo(future2);
         Future<Throwable> errorMessage = errorMessageFuture.failed();
         
