@@ -32,7 +32,7 @@ public class PersonsRepositoryTest {
 	}
 
 	@Test
-	public void givenPersonsAdamAndDaveInDB_whenSearchForPersonWithNameAdam_thenFindOnePerson() {
+	public void givenPersons_whenSearch_thenFindOk() {
 		Person person1 = new Person();
 		person1.setFirstName("Adam");
 
