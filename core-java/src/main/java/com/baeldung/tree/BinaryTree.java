@@ -82,7 +82,7 @@ public class BinaryTree {
             }
 
             // Case 3: 2 children
-            int smallestValue = findSmallestNode(current.right);
+            int smallestValue = findSmallestValue(current.right);
             current.value = smallestValue;
             current.right = deleteRecursive(current.right, smallestValue);
             return current;
@@ -96,13 +96,13 @@ public class BinaryTree {
         }
     }
 
-    private int findSmallestNode(Node root) {
+    private int findSmallestValue(Node root) {
 
         if (root.left == null) {
             return root.value;
         }
 
-        return findSmallestNode(root.left);
+        return findSmallestValue(root.left);
     }
 
     public void traverseInOrder(Node node) {
