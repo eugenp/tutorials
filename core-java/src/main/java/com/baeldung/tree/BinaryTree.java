@@ -58,89 +58,51 @@ public class BinaryTree {
     }
 
     public void delete(int value) {
-
-        NodeVO nodeToDeleteVO = findNodeToDelete(root, root, false, value);
-
-        if (nodeToDeleteVO == null) {
-            return;
-        }
-
-        // Case 1: no children
-        if (nodeToDeleteVO.node.left == null && nodeToDeleteVO.node.right == null) {
-            if (nodeToDeleteVO.node == root) {
-                root = null;
-            } else if (nodeToDeleteVO.isLeftChild) {
-                nodeToDeleteVO.parent.left = null;
-            } else {
-                nodeToDeleteVO.parent.right = null;
-            }
-        }
-        // Case 2: only 1 child
-        else if (nodeToDeleteVO.node.right == null) {
-            if (nodeToDeleteVO.node == root) {
-                root = nodeToDeleteVO.node.left;
-            } else if (nodeToDeleteVO.isLeftChild) {
-                nodeToDeleteVO.parent.left = nodeToDeleteVO.node.left;
-            } else {
-                nodeToDeleteVO.parent.right = nodeToDeleteVO.node.left;
-            }
-        } else if (nodeToDeleteVO.node.left == null) {
-            if (nodeToDeleteVO.node == root) {
-                root = nodeToDeleteVO.node.right;
-            } else if (nodeToDeleteVO.isLeftChild) {
-                nodeToDeleteVO.parent.left = nodeToDeleteVO.node.right;
-            } else {
-                nodeToDeleteVO.parent.right = nodeToDeleteVO.node.right;
-            }
-        }
-        // Case 3: 2 children
-        else if (nodeToDeleteVO.node.left != null && nodeToDeleteVO.node.right != null) {
-            Node replacement = findReplacement(nodeToDeleteVO.node);
-            if (nodeToDeleteVO.node == root) {
-                root = replacement;
-            } else if (nodeToDeleteVO.isLeftChild) {
-                nodeToDeleteVO.parent.left = replacement;
-            } else {
-                nodeToDeleteVO.parent.right = replacement;
-            }
-        }
-
+        deleteRecursive(root, value);
     }
 
-    private NodeVO findNodeToDelete(Node current, Node parent, boolean isLeftChild, int value) {
-
+    private Node deleteRecursive(Node current, int value) {
         if (current == null) {
             return null;
-        } else if (value == current.value) {
-            return new NodeVO(current, parent, isLeftChild);
+        }
+
+        if (value == current.value) {
+            // Case 1: no children
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+
+            // Case 2: only 1 child
+            if (current.right == null) {
+                return current.left;
+            }
+
+            if (current.left == null) {
+                return current.right;
+            }
+
+            // Case 3: 2 children
+            int smallestValue = findSmallestNode(current.right);
+            current.value = smallestValue;
+            current.right = deleteRecursive(current.right, smallestValue);
+            return current;
+
         } else if (value < current.value) {
-            return findNodeToDelete(current.left, current, true, value);
+            current.left = deleteRecursive(current.left, value);
+            return current;
         } else {
-            return findNodeToDelete(current.right, current, false, value);
+            current.right = deleteRecursive(current.right, value);
+            return current;
         }
     }
 
-    private Node findReplacement(Node nodeToDelete) {
-
-        NodeVO replacementNodeVO = findSmallestNode(nodeToDelete, nodeToDelete);
-
-        if (replacementNodeVO.node != nodeToDelete.right) {
-            replacementNodeVO.parent.left = replacementNodeVO.node.right;
-            replacementNodeVO.node.right = nodeToDelete.right;
-        }
-
-        replacementNodeVO.node.left = nodeToDelete.left;
-
-        return replacementNodeVO.node;
-    }
-
-    private NodeVO findSmallestNode(Node root, Node parent) {
+    private int findSmallestNode(Node root) {
 
         if (root.left == null) {
-            return new NodeVO(root, parent);
+            return root.value;
         }
 
-        return findSmallestNode(root.left, root);
+        return findSmallestNode(root.left);
     }
 
     public void traverseInOrder(Node node) {
@@ -185,23 +147,6 @@ public class BinaryTree {
             if (node.left != null) {
                 nodes.add(node.right);
             }
-        }
-    }
-
-    class NodeVO {
-        Node node;
-        Node parent;
-        boolean isLeftChild;
-
-        NodeVO(Node node, Node parent) {
-            this.node = node;
-            this.parent = parent;
-        }
-
-        NodeVO(Node node, Node parent, boolean isLeftChild) {
-            this.node = node;
-            this.parent = parent;
-            this.isLeftChild = isLeftChild;
         }
     }
 
