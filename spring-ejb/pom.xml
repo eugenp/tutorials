@@ -72,5 +72,6 @@
 
     <modules>
         <module>ejb-remote-for-spring</module>
+        <module>spring-ejb-client</module>
     </modules>
 </project>
