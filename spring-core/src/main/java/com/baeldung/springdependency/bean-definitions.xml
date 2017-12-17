@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+     "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="tutorial" class="com.baeldung.Tutorial" />
+
+	<bean id="tutorialConstructor"
+		class="com.baeldung.TutorialServiceImpl">
+		<constructor-arg>
+    			<ref bean="tutorial"/>
+		</constructor-arg>
+	</bean>
+
+	<bean id="tutorialSetter"
+		class="com.baeldung.TutorialServiceImpl">
+		<property name="tutorial">
+    			<ref bean="tutorial"/>
+		</property>
+	</bean>
+
+</beans>
