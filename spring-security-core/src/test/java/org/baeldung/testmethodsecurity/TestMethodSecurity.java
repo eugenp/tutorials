@@ -29,28 +29,28 @@ public class TestMethodSecurity{
     
     @Test
     @WithMockUser(username="john",roles={"VIEWER"})
-    public void whenRoleViewer_callGetUserName_thenOK(){
-        String userName = userRoleService.getUserName();
+    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername(){
+        String userName = userRoleService.getUsername();
         assertEquals("john", userName);
     }
     
     @Test
     @WithMockUser(username="john",authorities={"SYS_ADMIN"})
-    public void whenSysAdmin_callGetUserName_thenOK(){
-        String userName = userRoleService.getUserName();
+    public void givenAuthoritySysAdmin_whenCallGetUsername_thenReturnUsername(){
+        String userName = userRoleService.getUsername();
         assertEquals("john", userName);
     }
     
     @Test(expected=AccessDeniedException.class)
     @WithAnonymousUser
-    public void whenAnomynous_callGetUserName_thenFail(){
-        userRoleService.getUserName();
+    public void givenAnomynousUser_whenCallGetUsername_thenAccessDenied(){
+        userRoleService.getUsername();
     }
     
     @Test
     @WithMockJohnViewer
-    public void whenJohnViewer_callGetUserName_thenOK(){
-        String userName = userRoleService.getUserName();
+    public void givenMockedJohnViewer_whenCallGetUsername_thenReturnUsername(){
+        String userName = userRoleService.getUsername();
         assertEquals("john", userName);
     }
     

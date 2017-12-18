@@ -18,8 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class TestWithMockUserAtClassLevel {
     
     @Test
-    public void whenRoleViewerLogged_callGetUserName_thenOK(){
-        String currentUserName = userService.getUserName();
+    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername(){
+        String currentUserName = userService.getUsername();
         assertEquals("john",currentUserName);
     }
     
