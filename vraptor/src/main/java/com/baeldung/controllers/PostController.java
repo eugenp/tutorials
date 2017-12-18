@@ -48,28 +48,28 @@ public class PostController {
 
     @br.com.caelum.vraptor.Post("/post/add")
     public void add(Post post) {
+        post.setAuthor(userInfo.getUser());
+        validator.validate(post);
+        if(validator.hasErrors())
+            result.include("errors", validator.getErrors());
+        validator.onErrorRedirectTo(this).addForm();
 
-      post.setAuthor(userInfo.getUser());
-      validator.validate(post);
-      if(validator.hasErrors())
-          result.include("errors", validator.getErrors());
-      validator.onErrorRedirectTo(this).addForm();
+        Object id = postDao.add(post);
 
-      Object id = postDao.add(post);
-
-      if(Objects.nonNull(id)) {
-        result.include("status", "Post Added Successfully");
-        result.redirectTo(IndexController.class).index();
-      } else {
-        result.include("error", "There was an error creating the post. Try Again");
-        result.redirectTo(this).addForm();
-      }
+        if(Objects.nonNull(id)) {
+            result.include("status", "Post Added Successfully");
+            result.redirectTo(IndexController.class).index();
+        } else {
+            result.include(
+              "error", "There was an error creating the post. Try Again");
+            result.redirectTo(this).addForm();
+        }
     }
 
     @Get("/posts/{id}")
     public void view(int id) {
-      result.include("post", postDao.findById(id));
-      result.use(FreemarkerView.class).withTemplate("view");
+        result.include("post", postDao.findById(id));
+        result.use(FreemarkerView.class).withTemplate("view");
     }
 
 

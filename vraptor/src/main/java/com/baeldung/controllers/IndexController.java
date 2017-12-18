@@ -23,14 +23,14 @@ public class IndexController {
 
 	@Inject
 	public IndexController(Result result, PostDao postDao) {
-		this.result = result;
-		this.postDao = postDao;
+	    this.result = result;
+	    this.postDao = postDao;
 	}
 
 	@Path("/")
 	public void index() {
 		result.include("posts", postDao.all());
-	  result.use(FreemarkerView.class).withTemplate("index");
+	    result.use(FreemarkerView.class).withTemplate("index");
 	}
 
 

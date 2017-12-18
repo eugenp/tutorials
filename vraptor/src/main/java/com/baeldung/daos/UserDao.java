@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class UserDao {
 
     SessionFactory sessionFactory;
-    Logger logger = Logger.getLogger(getClass().getName());
 
     public UserDao() {
         this(null);
