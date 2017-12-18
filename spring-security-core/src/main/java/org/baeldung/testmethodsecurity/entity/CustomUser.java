@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.User;
 public class CustomUser extends User{
     
     private String nickName;
-    private int age;
 
     public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
@@ -26,14 +25,6 @@ public class CustomUser extends User{
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
 }
