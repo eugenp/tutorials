@@ -16,7 +16,7 @@ public class UserRoleService {
     UserRoleRepository userRoleRepository;
     
     @PreAuthorize("hasRole('ROLE_VIEWER') or hasAuthority('SYS_ADMIN')")
-    public String getUserName(){
+    public String getUsername(){
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return securityContext.getAuthentication().getName();
     }
