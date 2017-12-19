@@ -16,6 +16,17 @@ public class RecursionExample {
         return tailSum(currentSum + n, n - 1);
     }
     
+    public int iterativeSum(int n){
+        int sum = 0;
+        if(n < 0){
+            return -1;
+        }
+        for(int i=0; i<=n; i++){
+            sum += i;
+        }
+        return sum;
+    }
+    
     public int powerOf10(int n){
         if (n == 0){
             return 1;
