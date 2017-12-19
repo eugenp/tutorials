@@ -6,7 +6,6 @@ import java.util.Comparator;
 import org.junit.Before;
 import org.junit.Test;
 
-import lombok.Data;
 import static org.junit.Assert.assertTrue;
 
 public class Java8ComparatorUnitTest {
@@ -134,8 +133,7 @@ public class Java8ComparatorUnitTest {
 
     @Test
     public void whenThenComparing_thenSortedByAgeName() {
-        Comparator<Employee> employee_Age_Name_Comparator = Comparator.comparing(Employee::getAge)
-            .thenComparing(Employee::getName);
+        Comparator<Employee> employee_Age_Name_Comparator = Comparator.comparing(Employee::getAge).thenComparing(Employee::getName);
 
         Arrays.sort(someMoreEmployees, employee_Age_Name_Comparator);
         // System.out.println(Arrays.toString(someMoreEmployees));
@@ -144,8 +142,7 @@ public class Java8ComparatorUnitTest {
 
     @Test
     public void whenThenComparing_thenSortedByNameAge() {
-        Comparator<Employee> employee_Name_Age_Comparator = Comparator.comparing(Employee::getName)
-            .thenComparingInt(Employee::getAge);
+        Comparator<Employee> employee_Name_Age_Comparator = Comparator.comparing(Employee::getName).thenComparingInt(Employee::getAge);
 
         Arrays.sort(someMoreEmployees, employee_Name_Age_Comparator);
         // System.out.println(Arrays.toString(someMoreEmployees));
