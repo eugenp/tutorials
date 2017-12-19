@@ -1,7 +1,6 @@
 package com.baeldung.temporaladjusters;
 
 import com.baeldung.temporaladjuster.CustomTemporalAdjuster;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;

@@ -94,6 +94,11 @@
             <version>1.5</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>javalite-common</artifactId>
+            <version>${javalite.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -162,5 +167,6 @@
         <truth.version>0.32</truth.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <jgotesting.version>0.12</jgotesting.version>
+        <javalite.version>1.4.13</javalite.version>
     </properties>
 </project>
