@@ -6,24 +6,42 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class WhenComparingTreeMapVsHashMap {
 
     @Test
-    public void givenTree_whenRetrievesObjects_thenNaturalOrder() {
-        Map<Integer, String> tree = new TreeMap<>();
-        tree.put(3, "Awesome");
-        tree.put(2, "is");
-        tree.put(1, "Baeldung");
-        Assert.assertEquals(3, tree.size());
-        Assert.assertTrue(tree.entrySet()
-            .iterator()
-            .next()
-            .getValue()
-            .equals("Baeldung"));
+    public void whenInsertObjects_thenNaturalOrder() {
+        Map<Integer, String> treemap = new TreeMap<>();
+        treemap.put(3, "TreeMap");
+        treemap.put(2, "vs");
+        treemap.put(1, "HashMap");
+        Assert.assertThat(treemap.keySet(), Matchers.contains(1, 2, 3));
     }
+
+    @Test(expected = NullPointerException.class)
+    public void whenInsertNullInTreeMap_thenException() {
+        Map<Integer, String> treemap = new TreeMap<>();
+        treemap.put(null, "NullPointerException");
+    }
+
+    @Test
+    public void whenInsertObjects_thenRandomOrder() {
+        Map<Integer, String> treemap = new TreeMap<>();
+        treemap.put(3, "TreeMap");
+        treemap.put(2, "vs");
+        treemap.put(1, "HashMap");
+        Assert.assertThat(treemap.keySet(), Matchers.contains(1, 2, 3));
+    }
+
+@Test
+public void whenInsertNullInHashMap_thenInsertsNull() {
+    Map<Integer, String> hashmap = new HashMap<>();
+    hashmap.put(null, null);
+    Assert.assertNull(hashmap.get(null));
+}
 
     @Test(expected = NullPointerException.class)
     public void givenTree_whenputNullKeyValue_thenNullPointer() {
