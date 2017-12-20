@@ -13,7 +13,7 @@ import org.junit.Test;
 public class WhenComparingTreeMapVsHashMap {
 
     @Test
-    public void whenInsertObjects_thenNaturalOrder() {
+    public void whenInsertObjectsTreeMap_thenNaturalOrder() {
         Map<Integer, String> treemap = new TreeMap<>();
         treemap.put(3, "TreeMap");
         treemap.put(2, "vs");
@@ -28,36 +28,19 @@ public class WhenComparingTreeMapVsHashMap {
     }
 
     @Test
-    public void whenInsertObjects_thenRandomOrder() {
-        Map<Integer, String> treemap = new TreeMap<>();
-        treemap.put(3, "TreeMap");
-        treemap.put(2, "vs");
-        treemap.put(1, "HashMap");
-        Assert.assertThat(treemap.keySet(), Matchers.contains(1, 2, 3));
-    }
-
-@Test
-public void whenInsertNullInHashMap_thenInsertsNull() {
-    Map<Integer, String> hashmap = new HashMap<>();
-    hashmap.put(null, null);
-    Assert.assertNull(hashmap.get(null));
-}
-
-    @Test(expected = NullPointerException.class)
-    public void givenTree_whenputNullKeyValue_thenNullPointer() {
-        Map<Integer, String> tree = new TreeMap<>();
-        tree.put(1, "Baeldung");
-        tree.put(2, "is");
-        tree.put(null, null);
+    public void whenInsertObjectsHashMap_thenRandomOrder() {
+        Map<Integer, String> hashmap = new HashMap<>();
+        hashmap.put(3, "TreeMap");
+        hashmap.put(2, "vs");
+        hashmap.put(1, "HashMap");
+        hashmap.forEach((key, value) -> System.out.println("key:" + key + " - " + "value:" + value));
     }
 
     @Test
-    public void givenHash_whenputNullKeyValue_thenOK() {
-        Map<Integer, String> hash = new HashMap<>();
-        hash.put(1, "Baeldung");
-        hash.put(2, "is");
-        hash.put(null, null);
-        Assert.assertEquals(3, hash.size());
+    public void whenInsertNullInHashMap_thenInsertsNull() {
+        Map<Integer, String> hashmap = new HashMap<>();
+        hashmap.put(null, null);
+        Assert.assertNull(hashmap.get(null));
     }
 
     @Test
@@ -78,8 +61,9 @@ public void whenInsertNullInHashMap_thenInsertsNull() {
     @Test(expected = ConcurrentModificationException.class)
     public void givenHashMap_whenModifyWhenIterator_thenFailFast() {
         Map<Integer, String> hashMap = new HashMap<>();
-        hashMap.put(1, "Baeldung");
-        hashMap.put(2, "Baeldung");
+        hashMap.put(1, "TreeMap");
+        hashMap.put(2, "vs");
+        hashMap.put(3, "HashMap");
         Iterator<Integer> it = hashMap.keySet()
             .iterator();
 
