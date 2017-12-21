@@ -33,7 +33,7 @@ public class WhenComparingTreeMapVsHashMap {
         hashmap.put(3, "TreeMap");
         hashmap.put(2, "vs");
         hashmap.put(1, "HashMap");
-        hashmap.forEach((key, value) -> System.out.println("key:" + key + " - " + "value:" + value));
+        Assert.assertThat(hashmap.keySet(), Matchers.containsInAnyOrder(1, 2, 3));
     }
 
     @Test
@@ -56,20 +56,5 @@ public class WhenComparingTreeMapVsHashMap {
         treeMap2.put(1, "Baeldung");
 
         Assert.assertTrue(treeMap2.size() == 1);
-    }
-
-    @Test(expected = ConcurrentModificationException.class)
-    public void givenHashMap_whenModifyWhenIterator_thenFailFast() {
-        Map<Integer, String> hashMap = new HashMap<>();
-        hashMap.put(1, "TreeMap");
-        hashMap.put(2, "vs");
-        hashMap.put(3, "HashMap");
-        Iterator<Integer> it = hashMap.keySet()
-            .iterator();
-
-        while (it.hasNext()) {
-            hashMap.remove(it.next());
-            it.next();
-        }
     }
 }
