@@ -120,4 +120,10 @@
 - [Guide to Java String Pool](http://www.baeldung.com/java-string-pool)
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
 - [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
-
+- [Quick Example - Comparator vs Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
+- [Quick Guide to Java Stack](http://www.baeldung.com/java-stack)
+- [The Java continue and break Keywords](http://www.baeldung.com/java-continue-and-break)
+- [Java – Append Data to a File](http://www.baeldung.com/java-append-to-file)
+- [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)
+- [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
+- [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)
