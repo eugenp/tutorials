@@ -20,13 +20,13 @@ import static org.junit.Assert.assertTrue;
 public class InfluxDBConnectionLiveTest {
 
     @Test
-    public void whenCorrectInfoDatabaseConnects() throws Exception {
+    public void whenCorrectInfoDatabaseConnects() {
 
         InfluxDB connection = connectDatabase();
         assertTrue(pingServer(connection));
     }
 
-    private InfluxDB connectDatabase() throws IOException {
+    private InfluxDB connectDatabase() {
 
         // Connect to database assumed on localhost with default credentials.
         return  InfluxDBFactory.connect("http://127.0.0.1:8086", "admin", "admin");
@@ -51,7 +51,7 @@ public class InfluxDBConnectionLiveTest {
     }
 
     @Test
-    public void whenDatabaseCreatedDatabaseChecksOk() throws Exception {
+    public void whenDatabaseCreatedDatabaseChecksOk() {
 
         InfluxDB connection = connectDatabase();
 
@@ -82,7 +82,7 @@ public class InfluxDBConnectionLiveTest {
         connection.setRetentionPolicy("defaultPolicy");
 
         // Enable batch mode
-        connection.enableBatch(10, 20, TimeUnit.MILLISECONDS);
+        connection.enableBatch(10, 10, TimeUnit.MILLISECONDS);
 
         for (int i = 0; i < 10; i++) {
             Point point = Point.measurement("memory")
@@ -128,7 +128,7 @@ public class InfluxDBConnectionLiveTest {
 
 
     @Test
-    public void whenBatchWrittenBatchExists() throws Exception {
+    public void whenBatchWrittenBatchExists() {
 
         InfluxDB connection = connectDatabase();
 
