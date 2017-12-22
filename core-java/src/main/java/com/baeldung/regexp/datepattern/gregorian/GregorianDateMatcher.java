@@ -1,4 +1,6 @@
-package com.baeldung.regexp.datepattern;
+package com.baeldung.regexp.datepattern.gregorian;
+
+import com.baeldung.regexp.datepattern.DateMatcher;
 
 import java.util.regex.Pattern;
 
