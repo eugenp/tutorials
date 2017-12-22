@@ -69,7 +69,7 @@ public class GregorianDateMatcherUnitTest {
     }
 
     @Test
-    public void whenMonthIsJanMarMayJulAugOctDec_thenMonthHas31Days() {
+    public void whenMonthIsLong_thenMonthHas31Days() {
         Assert.assertTrue(matcher.matches("2018-01-31"));
         Assert.assertTrue(matcher.matches("2018-03-31"));
         Assert.assertTrue(matcher.matches("2018-05-31"));
@@ -80,7 +80,7 @@ public class GregorianDateMatcherUnitTest {
     }
 
     @Test
-    public void whenMonthIsFebAprJunSepNov_thenMonthHasNo31Days() {
+    public void whenMonthIsShort_thenMonthHasNo31Days() {
         Assert.assertFalse(matcher.matches("2018-02-31"));
         Assert.assertFalse(matcher.matches("2018-04-31"));
         Assert.assertFalse(matcher.matches("2018-06-31"));
