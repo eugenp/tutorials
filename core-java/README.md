@@ -126,3 +126,4 @@
 - [Java – Append Data to a File](http://www.baeldung.com/java-append-to-file)
 - [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)
 - [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
+- [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)

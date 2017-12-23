@@ -38,23 +38,14 @@ public class CounterUtil {
 
     public static void counterWithMutableInteger(Map<String, MutableInteger> counterMap) {
         for (String country : COUNTRY_NAMES) {
-            MutableInteger oldValue = counterMap.get(country);
-            if (oldValue != null) {
-                oldValue.increment();
-            } else {
-                counterMap.put(country, new MutableInteger(1));
-            }
+            counterMap.compute(country, (k, v) -> v == null ? new MutableInteger(0) : v)
+                .increment();
         }
     }
 
     public static void counterWithPrimitiveArray(Map<String, int[]> counterMap) {
         for (String country : COUNTRY_NAMES) {
-            int[] oldCounter = counterMap.get(country);
-            if (oldCounter != null) {
-                oldCounter[0] += 1;
-            } else {
-                counterMap.put(country, new int[] { 1 });
-            }
+            counterMap.compute(country, (k, v) -> v == null ? new int[] { 0 } : v)[0]++;
         }
     }
 
