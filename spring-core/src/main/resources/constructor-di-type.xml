@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="doctor" class="com.baeldung.di.types.xml.Doctor">
+        <constructor-arg index="1" value="Cardiologist"/>
+        <constructor-arg index="0" value="Paul"/>
+    </bean>
+
+    <bean id="patient" class="com.baeldung.di.types.xml.Patient">
+        <constructor-arg value="1"/>
+        <constructor-arg value="Raul"/>
+    </bean>
+
+    <bean id="reservation" class="com.baeldung.di.types.xml.Appointment">
+        <constructor-arg ref="doctor"/>
+        <constructor-arg ref="patient"/>
+    </bean>
+
+    <bean id="department" class="com.baeldung.di.types.xml.Department">
+        <constructor-arg value="123"/>
+        <constructor-arg>
+            <bean class="com.baeldung.di.types.xml.Secretary">
+                <constructor-arg value="4"/>
+                <constructor-arg>
+                    <bean class="com.baeldung.di.types.xml.Employee">
+                        <constructor-arg value="Sophie"/>
+                        <constructor-arg value="Mark"/>
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <bean id="employeeAliBaba" class="com.baeldung.di.types.xml.Employee"
+          c:name="Ali"
+          c:surname="Baba"/>
+
+    <bean id="secretary" class="com.baeldung.di.types.xml.Secretary"
+          c:_0="3"
+          c:employee-ref="employeeAliBaba"/>
+
+</beans>
