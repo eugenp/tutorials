@@ -1,7 +1,7 @@
-package com.baeldung.model;
+package com.baeldung.beaninjection.model;
 
 public class Customer {
-    
+
     private long customerId;
     private String name;
     private String email;

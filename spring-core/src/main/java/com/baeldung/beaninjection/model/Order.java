@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.beaninjection.model;
 
 public class Order {
     private String orderNumber;

@@ -1,9 +1,9 @@
-package com.baeldung.service;
+package com.baeldung.beaninjection.service;
 
 import org.springframework.stereotype.Component;
 
-import com.baeldung.builder.OffersBuilder;
-import com.baeldung.model.Offers;
+import com.baeldung.beaninjection.builder.OffersBuilder;
+import com.baeldung.beaninjection.model.Offers;
 
 @Component
 public class OffersService {

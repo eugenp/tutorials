@@ -1,11 +1,11 @@
-package com.baeldung.config;
+package com.baeldung.beaninjection;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.baeldung.service.CustomerService;
-import com.baeldung.service.OffersService;
-import com.baeldung.service.OrderService;
+import com.baeldung.beaninjection.service.CustomerService;
+import com.baeldung.beaninjection.service.OffersService;
+import com.baeldung.beaninjection.service.OrderService;
 
 @Configuration
 public class BeanConfig {
@@ -23,7 +23,7 @@ public class BeanConfig {
     @Bean
     public OrderService orderService(CustomerService customerService, OffersService offersService) {
         OrderService orderService = new OrderService(customerService);// constructor injection
-        orderService.setOffersService(offersService);//setter injection
+        orderService.setOffersService(offersService);// setter injection
         return orderService;
     }
 

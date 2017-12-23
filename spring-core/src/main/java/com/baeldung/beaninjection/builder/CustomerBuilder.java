@@ -1,6 +1,6 @@
-package com.baeldung.builder;
+package com.baeldung.beaninjection.builder;
 
-import com.baeldung.model.Customer;
+import com.baeldung.beaninjection.model.Customer;
 
 public class CustomerBuilder {
     public Customer getCustomer(int customerId) {
