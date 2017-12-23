@@ -74,6 +74,16 @@
 			<artifactId>commons-io</artifactId>
 			<version>${commons.io.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -135,6 +145,7 @@
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>
 		<lombok.version>1.16.12</lombok.version>
 		<commons.io.version>2.5</commons.io.version>
+		<jackson.version>2.9.0</jackson.version>
 	</properties>
 
 	<repositories>
