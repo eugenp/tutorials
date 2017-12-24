@@ -30,7 +30,7 @@
 - [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Guide to Apache Commons CircularFifoQueue](http://www.baeldung.com/commons-circular-fifo-queue)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
-- [Introduction to NoException](http://www.baeldung.com/intrduction-to-noexception)
+- [Introduction to NoException](http://www.baeldung.com/introduction-to-noexception)
 - [Introduction to PCollections](http://www.baeldung.com/java-pcollections)
 - [Introduction to Hoverfly in Java](http://www.baeldung.com/hoverfly)
 - [Apache Commons Chain](http://www.baeldung.com/apache-commons-chain)
