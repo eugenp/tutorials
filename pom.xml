@@ -115,7 +115,7 @@
         <module>testing-modules/mocks</module>
         <module>mustache</module>
         <module>noexception</module>
-
+        <module>orientdb</module>
         <module>osgi</module>
         <module>orika</module>
 
