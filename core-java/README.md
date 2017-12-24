@@ -127,3 +127,4 @@
 - [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)
 - [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
 - [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)
+- [Check if a Java Array Contains a Value](http://www.baeldung.com/java-array-contains-value)
