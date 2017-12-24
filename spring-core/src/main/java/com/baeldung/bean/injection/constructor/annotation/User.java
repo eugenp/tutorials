@@ -13,6 +13,14 @@ public class User {
         this.organization = organization;
     }
 
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+
     @Override
     public String toString() {
         return "User [organization=" + organization + "]";
