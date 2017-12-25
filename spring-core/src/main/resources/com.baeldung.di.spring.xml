@@ -5,7 +5,7 @@
 
     <bean id="indexService" class="com.baeldung.di.spring.IndexService" />
     
-    <bean id="messageService" class="com.baeldung.di.spring.MessageService" scope="prototype">
+    <bean id="messageService" class="com.baeldung.di.spring.MessageService">
     	<constructor-arg value="${message.value}" />
     </bean>
     
@@ -29,15 +29,15 @@
     	<property name="service" ref="indexService" />
     </bean>
     
-    <bean id="indexAppWithStaticFactory" class="com.baeldung.di.spring.IndexApp" scope="prototype">
+    <bean id="indexAppWithStaticFactory" class="com.baeldung.di.spring.IndexApp">
     	<property name="service" ref="messageServiceFromStaticFactory" />
     </bean>
     
-    <bean id="indexAppWithFactoryMethod" class="com.baeldung.di.spring.IndexApp" scope="prototype">
+    <bean id="indexAppWithFactoryMethod" class="com.baeldung.di.spring.IndexApp">
     	<property name="service" ref="messageServiceFromInstanceFactory" />
     </bean>
     
-    <bean id="messageWorldApp" class="com.baeldung.di.spring.MessageApp" scope="prototype">
+    <bean id="messageWorldApp" class="com.baeldung.di.spring.MessageApp">
     	<constructor-arg ref="messageService" />
     </bean>
 </beans>

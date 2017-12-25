@@ -9,30 +9,26 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-/**
- * @author Santosh
- *
- */
 public class BreakContinueTest {
 
     @Test
     public void whenUnlabeledBreak_ThenEqual() {
-        assertEquals(3, unlabeledBreak());
+        assertEquals(4, unlabeledBreak());
     }
 
     @Test
     public void whenUnlabeledBreakNestedLoops_ThenEqual() {
-        assertEquals(3, unlabeledBreakNestedLoops());
+        assertEquals(2, unlabeledBreakNestedLoops());
     }
 
     @Test
     public void whenLabeledBreak_ThenEqual() {
-        assertEquals(4, labeledBreak());
+        assertEquals(1, labeledBreak());
     }
 
     @Test
     public void whenUnlabeledContinue_ThenEqual() {
-        assertEquals(3, unlabeledContinue());
+        assertEquals(5, unlabeledContinue());
     }
 
     @Test

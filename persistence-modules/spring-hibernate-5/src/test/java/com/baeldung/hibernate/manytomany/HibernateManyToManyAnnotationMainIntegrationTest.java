@@ -17,6 +17,9 @@ import com.baeldung.hibernate.manytomany.util.HibernateUtil;
 import com.baeldung.hibernate.manytomany.model.Employee;
 import com.baeldung.hibernate.manytomany.model.Project;
 
+/**
+ * Configured in: manytomany.cfg.xml
+ */
 public class HibernateManyToManyAnnotationMainIntegrationTest {
     private static SessionFactory sessionFactory;
 
