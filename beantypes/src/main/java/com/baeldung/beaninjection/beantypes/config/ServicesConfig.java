@@ -1,7 +1,6 @@
 package com.baeldung.beaninjection.beantypes.config;
 
-import com.baeldung.beaninjection.beantypes.Services.CustomerService;
-import com.baeldung.beaninjection.beantypes.Services.ProductService;
+import com.baeldung.beaninjection.beantypes.Services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,9 +16,18 @@ public class ServicesConfig {
         return new CustomerService();
     }
 
+    @Bean
+    public PriceListService priceList() {
+        return new PriceListService("clothes");
+    }
 
     @Bean
-    public PriceList priceList() {
-        return new PriceList("medium");
+    public OrderService orderService() {
+        return new OrderService();
+    }
+
+    @Bean
+    public ShoppingCartService shoppingCartService(ProductService productService, OrderService orderService) {
+        return new ShoppingCartService(productService, orderService);
     }
 }

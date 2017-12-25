@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("vipCustomerService")
-public class CustomerService implements ICustomerService {
-    @Override
-    public Customer GetCustomer(int id) {
-        return new Customer(1, "tal", "avissar", "VIP");
+@Qualifier("businessCustomerService")
+public class BusinessCustomerService implements ICustomerService {
+
+        @Override
+        public Customer GetCustomer(int id) {
+        return new Customer(2, "John", "herold", "BUSINESS");
     }
 }
