@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "evictStrategy": "PER_CLUSTER",
+  "minExecutionTime": 10,
+  "maxResultsetSize": 500
+}
