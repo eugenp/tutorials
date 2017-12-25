@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Qualifier("vipCustomerService")
 public class CustomerService implements ICustomerService {
     @Override
-    public Customer GetCustomer(int id) {
+    public Customer getCustomer(int id) {
         return new Customer(1, "tal", "avissar", "VIP");
     }
 }

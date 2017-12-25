@@ -24,7 +24,7 @@ public class OrderServiceTest {
 
     @Test
     public void whenSetterInjectionTypeWork_thenRetrieveCustomer_withfirstname(){
-        Customer customer = orderService.getOrderRelatedCustomer();
+        Customer customer = orderService.getRelatedCustomer();
         assertNotNull(customer!=null);
         assertTrue(customer.getFirstName().equals("tal"));
         assertTrue(customer.getLastName().equals("avissar"));

@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 public class ProductService implements IProductService {
     @Override
-    public List<Product> GetProducts() {
+    public List<Product> getProducts() {
         List<Product> lst = new ArrayList<>();
         lst.add(new Product(1, "IPhone"));
         lst.add(new Product(1, "LG"));

@@ -17,6 +17,6 @@ public class ShoppingCartService {
 
     public Customer GetRelatedCustomer()
     {
-        return orderService.getOrderRelatedCustomer();
+        return orderService.getRelatedCustomer();
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 public class PriceListService {
     private String typeOfPrices;
 
-    public PriceListService(String type) {
-        this.typeOfPrices = type;
+    public PriceListService(String pricesType) {
+        this.typeOfPrices = pricesType;
     }
 }

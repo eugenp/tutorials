@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class BusinessCustomerService implements ICustomerService {
 
         @Override
-        public Customer GetCustomer(int id) {
+        public Customer getCustomer(int id) {
         return new Customer(2, "John", "herold", "BUSINESS");
     }
 }

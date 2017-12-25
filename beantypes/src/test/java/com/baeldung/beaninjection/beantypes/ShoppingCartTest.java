@@ -19,11 +19,11 @@ import static org.junit.Assert.assertTrue;
 public class ShoppingCartTest {
 
     @Autowired
-    private ShoppingCartService cartService;
+    private ShoppingCartService shoppingCartService;
 
     @Test
     public void whenConstructorInjectionTypeCustomerInjected_thenRetrieveCustomer_withname(){
-        Customer customer = cartService.GetRelatedCustomer();
+        Customer customer = shoppingCartService.GetRelatedCustomer();
         assertNotNull(customer!=null);
         assertTrue(customer.getFirstName().equals("tal"));
         assertTrue(customer.getLastName().equals("avissar"));

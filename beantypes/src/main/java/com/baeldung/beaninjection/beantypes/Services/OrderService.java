@@ -19,7 +19,7 @@ public class OrderService {
         this.productService = productService;
     }
 
-    public Customer getOrderRelatedCustomer() {
-        return this.customerService.GetCustomer(1);
+    public Customer getRelatedCustomer() {
+        return this.customerService.getCustomer(1);
     }
 }
