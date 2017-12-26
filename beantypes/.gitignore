@@ -23,4 +23,5 @@ dist/
 nbdist/
 .nb-gradle/
 mvnw
+maven-wrapper.*
 mvnw.cmd
