@@ -52,12 +52,9 @@ public class BinaryTreeTest {
 
         BinaryTree bt = createBinaryTree();
 
-        int initialSize = bt.getSize();
-
         assertTrue(bt.containsNode(9));
         bt.delete(9);
         assertFalse(bt.containsNode(9));
-        assertEquals(initialSize - 1, bt.getSize());
     }
 
     @Test

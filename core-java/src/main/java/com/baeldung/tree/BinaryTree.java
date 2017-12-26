@@ -27,7 +27,6 @@ public class BinaryTree {
         }
 
         return current;
-
     }
 
     public boolean isEmpty() {
@@ -132,7 +131,6 @@ public class BinaryTree {
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
-
             System.out.print(" " + node.value);
         }
     }
