@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class LogLayoutsTest {
+public class JSONLayoutTest {
 
     private static Logger logger;
     private ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
