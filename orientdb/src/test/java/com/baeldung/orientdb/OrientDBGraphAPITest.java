@@ -81,7 +81,7 @@ public class OrientDBGraphAPITest {
     @Test
     public void givenBaeldungDB_getEditorWithLevelSeven() {
         String onlyEditor = "";
-        for( Vertex v : graph.getVertices("Editor.level", 7) ) {
+        for(Vertex v : graph.getVertices("Editor.level", 7)) {
             onlyEditor = v.getProperty("firstName").toString();
         }
 
