@@ -129,3 +129,4 @@
 - [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)
 - [Check if a Java Array Contains a Value](http://www.baeldung.com/java-array-contains-value)
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
+- [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
