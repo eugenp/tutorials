@@ -1,6 +1,6 @@
 node {
     stage 'Clone the project'
-    git 'https://github.com/dassiorleando/tutorials.git'
+    git 'https://github.com/eugenp/tutorials.git'
 
     dir('spring-jenkins-pipeline') {
         stage("Compilation and Analysis") {
