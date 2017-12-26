@@ -128,3 +128,4 @@
 - [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
 - [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
+- [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
