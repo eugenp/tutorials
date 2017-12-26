@@ -1,0 +1,13 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="fooCollaborator1" class="com.baeldung.beaninjectiontypes.FooCollaborator1" />
+    <bean id="fooCollaborator2" class="com.baeldung.beaninjectiontypes.FooCollaborator2" />
+    <bean id="fooService" class="com.baeldung.beaninjectiontypes.FooService">
+      <constructor-arg ref="fooCollaborator1" />
+      <property name="fooCollaborator2" ref="fooCollaborator2" />
+    </bean>
+
+</beans>
