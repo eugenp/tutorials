@@ -17,11 +17,6 @@ public class ServicesConfig {
     }
 
     @Bean
-    public PriceListService priceList() {
-        return new PriceListService("clothes");
-    }
-
-    @Bean
     public OrderService orderService() {
         return new OrderService();
     }
