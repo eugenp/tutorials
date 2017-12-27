@@ -19,8 +19,7 @@ $ mvn clean install
 
 ### Tests
 
-To run unit tests
-
-```bash
-$ mvn test
-```
+Before runing unit tests:
+- Install OrientDB
+- Create BaeldungDB, BaeldungDBTwo and BaeldungDBThree databases
+- Uncomment the test annotations on the source code

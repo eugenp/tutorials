@@ -13,7 +13,7 @@ import static junit.framework.Assert.assertEquals;
 public class OrientDBObjectAPITest {
     private static OObjectDatabaseTx db = null;
 
-    @BeforeClass
+    // @BeforeClass
     public static void setup() {
         String orientDBFolder = System.getenv("ORIENTDB_HOME");
         db = new OObjectDatabaseTx("plocal:" + orientDBFolder + "/databases/BaeldungDBThree").open("admin", "admin");
@@ -21,7 +21,7 @@ public class OrientDBObjectAPITest {
         db.getEntityManager().registerEntityClass(Author.class);
     }
 
-    @Test
+    // @Test
     public void givenDB_whenSavingObject_thenHisIdExists() {
         Author author = db.newInstance(Author.class);
         author.setFirstName("Luke");
@@ -33,7 +33,7 @@ public class OrientDBObjectAPITest {
         db.save(author);
     }
 
-    @Test
+    // @Test
     public void givenDB_whenSavingAuthors_thenWeGetOnesWithLevelSeven() {
         for (Author author : db.browseClass(Author.class)) db.delete(author);
 
@@ -49,7 +49,7 @@ public class OrientDBObjectAPITest {
         assertEquals(1, result.size());
     }
 
-    @AfterClass
+    // @AfterClass
     public static void closeDB() {
         db.close();
     }
