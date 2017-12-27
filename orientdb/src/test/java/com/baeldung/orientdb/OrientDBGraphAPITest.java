@@ -1,12 +1,10 @@
 package com.baeldung.orientdb;
 
-import com.orientechnologies.orient.core.exception.OSchemaException;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertexType;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,15 +13,22 @@ import static junit.framework.Assert.assertEquals;
 public class OrientDBGraphAPITest {
     private static OrientGraphNoTx graph = null;
 
-    @BeforeClass
+    // @BeforeClass
     public static void setup() {
         String orientDBFolder = System.getenv("ORIENTDB_HOME");
         graph = new OrientGraphNoTx("plocal:" + orientDBFolder + "/databases/BaeldungDB", "admin", "admin");
     }
 
-    @Before
-    public void init() throws OSchemaException {
-        try {
+    // @BeforeClass
+    public static void init() {
+        boolean articleExists = graph.getVertexType("Article") != null;
+        boolean writerExists = graph.getVertexType("Writer") != null;
+        boolean authorExists = graph.getVertexType("Author") != null;
+        boolean editorExists = graph.getVertexType("Editor") != null;
+
+        boolean classesExist = articleExists && writerExists && authorExists && editorExists;
+
+        if(!classesExist) {
             graph.createVertexType("Article");
 
             OrientVertexType writerType = graph.createVertexType("Writer");
@@ -59,26 +64,24 @@ public class OrientDBGraphAPITest {
 
             graph.addEdge(null, vAuthor, vEditor, "has");
             graph.addEdge(null, vAuthor, vArticle, "wrote");
-        } catch (OSchemaException e) {
-            e.printStackTrace();
         }
     }
 
-    @Test
+    // @Test
     public void givenBaeldungDB_checkWeHaveThreeRecords() {
         long size = graph.countVertices();
 
         assertEquals(3, size);
     }
 
-    @Test
+    // @Test
     public void givenBaeldungDB_checkWeHaveTwoWriters() {
         long size = graph.countVertices("Writer");
 
         assertEquals(2, size);
     }
 
-    @Test
+    // @Test
     public void givenBaeldungDB_getEditorWithLevelSeven() {
         String onlyEditor = "";
         for(Vertex v : graph.getVertices("Editor.level", 7)) {
@@ -88,7 +91,7 @@ public class OrientDBGraphAPITest {
         assertEquals("Maxim", onlyEditor);
     }
 
-    @AfterClass
+    // @AfterClass
     public static void closeDB() {
         graph.getRawGraph().getStorage().close(true, false);
     }

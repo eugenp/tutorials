@@ -14,13 +14,13 @@ import static junit.framework.Assert.assertEquals;
 public class OrientDBDocumentAPITest {
     private static ODatabaseDocumentTx db = null;
 
-    @BeforeClass
+    // @BeforeClass
     public static void setup() {
         String orientDBFolder = System.getenv("ORIENTDB_HOME");
         db = new ODatabaseDocumentTx("plocal:" + orientDBFolder + "/databases/BaeldungDBTwo").open("admin", "admin");
     }
 
-    @Test
+    // @Test
     public void givenDB_whenSavingDocument_thenClassIsAutoCreated() {
         ODocument author = new ODocument("Author");
         author.field("firstName", "Paul");
@@ -33,7 +33,7 @@ public class OrientDBDocumentAPITest {
         assertEquals("Author", author.getSchemaClass().getName());
     }
 
-    @Test
+    // @Test
     public void givenDB_whenSavingAuthors_thenWeGetOnesWithLevelSeven() {
         for (ODocument author : db.browseClass("Author")) author.delete();
 
@@ -53,7 +53,7 @@ public class OrientDBDocumentAPITest {
         assertEquals(1, result.size());
     }
 
-    @AfterClass
+    // @AfterClass
     public static void closeDB() {
         db.close();
     }
