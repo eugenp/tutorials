@@ -7,9 +7,33 @@
 		<constructor-arg value="localhost" />
 		<constructor-arg value="21" />
 	</bean>
-	
+
 	<bean name="readerService" class="com.baeldung.beaninjection.ReaderService">
 		<property name="ftpReader" ref="ftpReader" />
 	</bean>
-	
+
+	<bean id="stockByType" class="com.baeldung.constructordi.Stock">
+		<constructor-arg type="java.lang.String" value="Engine Oil" />
+		<constructor-arg type="int" value="1000" />
+		<constructor-arg type="float" value="92.50" />
+	</bean>
+
+	<bean id="stockByIndex" class="com.baeldung.constructordi.Stock">
+		<constructor-arg index="0" value="Engine Oil" />
+		<constructor-arg index="1" value="2000" />
+		<constructor-arg index="2" value="92.50" />
+	</bean>
+
+	<bean id="stockByName" class="com.baeldung.constructordi.Stock">
+		<constructor-arg name="item" value="Engine Oil" />
+		<constructor-arg name="quantity" value="3000" />
+		<constructor-arg name="price" value="92.50" />
+	</bean>
+
+	<bean id="stock" class="com.baeldung.setterdi.Stock">
+		<property name="item" value="Engine Oil" />
+		<property name="quantity" value="5000" />
+		<property name="price" value="92.50" />
+	</bean>
+
 </beans>
