@@ -1,6 +1,6 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.RequestParams;
+import io.katharsis.queryParams.QueryParams;
 import io.katharsis.repository.RelationshipRepository;
 
 import java.util.HashSet;
@@ -52,13 +52,13 @@ public class UserToRoleRelationshipRepository implements RelationshipRepository<
     }
 
     @Override
-    public Role findOneTarget(Long sourceId, String fieldName, RequestParams requestParams) {
+    public Role findOneTarget(Long sourceId, String fieldName, QueryParams QueryParams) {
         // not for many-to-many
         return null;
     }
 
     @Override
-    public Iterable<Role> findManyTargets(Long sourceId, String fieldName, RequestParams requestParams) {
+    public Iterable<Role> findManyTargets(Long sourceId, String fieldName, QueryParams QueryParams) {
         final User user = userRepository.findOne(sourceId);
         return user.getRoles();
     }
