@@ -1,7 +1,7 @@
 Introduction to the OrientDB Java APIs
 ======================================
 
-This is a simple maven project that shows how to do OrientDB operations using the Java API.
+This is a simple maven project that shows how to use OrientDB's Java APIs.
 
 ### Requirements
 
@@ -17,9 +17,9 @@ To build and start the server simply type
 $ mvn clean install
 ```
 
-### Tests
+### Run Tests
 
-Before runing unit tests:
+Before launching unit tests:
 - Install OrientDB
 - Create BaeldungDB, BaeldungDBTwo and BaeldungDBThree databases
-- Uncomment the test annotations on the source code
+- Uncomment annotations on the test files
