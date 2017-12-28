@@ -21,9 +21,6 @@ public class BinaryTree {
             current.left = addRecursive(current.left, value);
         } else if (value > current.value) {
             current.right = addRecursive(current.right, value);
-        } else {
-            // value already exists
-            return current;
         }
 
         return current;
@@ -38,11 +35,7 @@ public class BinaryTree {
     }
 
     private int getSizeRecursive(Node current) {
-        if (current == null) {
-            return 0;
-        }
-
-        return getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
+        return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
     }
 
     public boolean containsNode(int value) {
@@ -50,17 +43,17 @@ public class BinaryTree {
     }
 
     private boolean containsNodeRecursive(Node current, int value) {
-
         if (current == null) {
             return false;
-        } else if (value == current.value) {
-            return true;
-        } else if (value < current.value) {
-            return containsNodeRecursive(current.left, value);
-        } else {
-            return containsNodeRecursive(current.right, value);
         }
 
+        if (value == current.value) {
+            return true;
+        }
+
+        return value < current.value
+          ? containsNodeRecursive(current.left, value)
+          : containsNodeRecursive(current.right, value);
     }
 
     public void delete(int value) {
@@ -92,23 +85,18 @@ public class BinaryTree {
             current.value = smallestValue;
             current.right = deleteRecursive(current.right, smallestValue);
             return current;
-
-        } else if (value < current.value) {
+        }
+        if (value < current.value) {
             current.left = deleteRecursive(current.left, value);
             return current;
-        } else {
-            current.right = deleteRecursive(current.right, value);
-            return current;
         }
+
+        current.right = deleteRecursive(current.right, value);
+        return current;
     }
 
     private int findSmallestValue(Node root) {
-
-        if (root.left == null) {
-            return root.value;
-        }
-
-        return findSmallestValue(root.left);
+        return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
     public void traverseInOrder(Node node) {
