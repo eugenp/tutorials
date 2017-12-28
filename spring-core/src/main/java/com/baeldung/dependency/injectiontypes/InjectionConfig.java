@@ -8,29 +8,29 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("com.baeldung.dependency.injectiontypes")
 class InjectionConfig {
 
-	@Bean
-	DaoFactoryWithSetterInjection daoFactoryWithSetterInjection() {
-		return new DaoFactoryWithSetterInjection();
-	}
+    @Bean
+    DaoFactoryWithSetterInjection daoFactoryWithSetterInjection() {
+        return new DaoFactoryWithSetterInjection();
+    }
 
-	@Bean
-	DaoFactoryWithConstructorInjection daoFactoryWithConstructorInjection() {
-		return new DaoFactoryWithConstructorInjection(databaseDao(), fileDao());
-	}
+    @Bean
+    DaoFactoryWithConstructorInjection daoFactoryWithConstructorInjection() {
+        return new DaoFactoryWithConstructorInjection(databaseDao(), fileDao());
+    }
 
-	@Bean
-	DaoFactoryWithFieldInjection daoFactoryWithFieldInjection() {
-		return new DaoFactoryWithFieldInjection();
-	}
+    @Bean
+    DaoFactoryWithFieldInjection daoFactoryWithFieldInjection() {
+        return new DaoFactoryWithFieldInjection();
+    }
 
-	@Bean
-	Dao fileDao() {
-		return new FileDao();
-	}
+    @Bean
+    Dao fileDao() {
+        return new FileDao();
+    }
 
-	@Bean
-	Dao databaseDao() {
-		return new DatabaseDao();
-	}
+    @Bean
+    Dao databaseDao() {
+        return new DatabaseDao();
+    }
 
 }
