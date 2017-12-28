@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+
+	<bean id="userService"
+		class="com.baeldung.beaninjectiontypes.constructorbased.UserServiceXML">
+		<constructor-arg>
+			<bean class="com.baeldung.beaninjectiontypes.services.MessageService" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="messageService" class="com.baeldung.beaninjectiontypes.services.MessageService"></bean>
+	<bean id="user-service" class="com.baeldung.beaninjectiontypes.setterbased.UserServiceXML">
+		<property name="service" ref="messageService"></property>
+	</bean>
+
+</beans>
