@@ -1,8 +1,8 @@
-package org.baeldung.testmethodsecurity;
+package org.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
 
-import org.baeldung.testmethodsecurity.service.UserRoleService;
+import org.baeldung.methodsecurity.service.UserRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class TestWithMockUserAtClassLevel {
     UserRoleService userService;
     
     @Configuration
-    @ComponentScan("org.baeldung.testmethodsecurity.*")
+    @ComponentScan("org.baeldung.methodsecurity.*")
     public static class SpringConfig {
 
     }

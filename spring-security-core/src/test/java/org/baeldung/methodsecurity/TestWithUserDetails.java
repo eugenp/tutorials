@@ -1,9 +1,9 @@
-package org.baeldung.testmethodsecurity;
+package org.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
 
-import org.baeldung.testmethodsecurity.entity.CustomUser;
-import org.baeldung.testmethodsecurity.service.UserRoleService;
+import org.baeldung.methodsecurity.entity.CustomUser;
+import org.baeldung.methodsecurity.service.UserRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class TestWithUserDetails {
     UserRoleService userService;
     
     @Configuration
-    @ComponentScan("org.baeldung.testmethodsecurity.*")
+    @ComponentScan("org.baeldung.methodsecurity.*")
     public static class SpringConfig {
 
     }
@@ -30,6 +30,13 @@ public class TestWithUserDetails {
     @WithUserDetails(value="john",userDetailsServiceBeanName="userDetailService")
     public void whenJohn_callLoadUserDetail_thenOK(){
         CustomUser user = userService.loadUserDetail("jane");
+        assertEquals("jane",user.getNickName());
+    }
+    
+    @Test
+    @WithUserDetails(value="jane",userDetailsServiceBeanName="userDetailService")
+    public void whenJohn_callSecuredLoadUserDetail_thenOK(){
+        CustomUser user = userService.securedLoadUserDetail("john");
         assertEquals("jane",user.getNickName());
     }
 }

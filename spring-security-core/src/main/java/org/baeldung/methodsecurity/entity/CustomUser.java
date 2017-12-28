@@ -1,4 +1,4 @@
-package org.baeldung.testmethodsecurity.entity;
+package org.baeldung.methodsecurity.entity;
 
 import java.util.Collection;
 

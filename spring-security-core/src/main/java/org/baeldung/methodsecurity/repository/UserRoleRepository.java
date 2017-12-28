@@ -1,11 +1,11 @@
-package org.baeldung.testmethodsecurity.repository;
+package org.baeldung.methodsecurity.repository;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.baeldung.testmethodsecurity.entity.CustomUser;
+import org.baeldung.methodsecurity.entity.CustomUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,6 +36,22 @@ public class UserRoleRepository {
             return DB_BASED_USER_MAPPING.get(username);
         }
        throw new UsernameNotFoundException("User "+username+" cannot be found");
+    }
+    
+    public boolean isValidUsername(String username){
+        return DB_BASED_USER_MAPPING.containsKey(username);
+    }
+    
+    public boolean isValidRole(String roleName){
+        return roleName.startsWith("ROLE_");
+    }
+    
+    public List<String> getAllUsernames(){
+        List<String> usernames = new ArrayList<>();
+        usernames.add("jane");
+        usernames.add("john");
+        usernames.add("jack");
+        return usernames;
     }
     
 }
