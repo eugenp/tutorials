@@ -13,7 +13,7 @@ import com.baeldung.mvc.helper.LoginHelper;
 
 public class LoginServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userId = request.getParameter("userid");
         String password = request.getParameter("password");
         RequestDispatcher rd = null;
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
     /**
      * Redirect to Login page
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
         rd.forward(request, response);
     }
