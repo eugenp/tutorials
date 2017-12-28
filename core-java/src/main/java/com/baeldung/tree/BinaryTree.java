@@ -8,15 +8,7 @@ public class BinaryTree {
     Node root;
 
     public void add(int value) {
-
-        Node newNode = new Node(value);
-
-        if (root == null) {
-            root = newNode;
-            return;
-        }
-
-        addRecursive(root, value);
+        root = addRecursive(root, value);
     }
 
     private Node addRecursive(Node current, int value) {
@@ -27,16 +19,30 @@ public class BinaryTree {
 
         if (value < current.value) {
             current.left = addRecursive(current.left, value);
-        } else {
+        } else if (value > current.value) {
             current.right = addRecursive(current.right, value);
+        } else {
+            // value already exists
+            return current;
         }
 
         return current;
-
     }
 
     public boolean isEmpty() {
         return root == null;
+    }
+
+    public int getSize() {
+        return getSizeRecursive(root);
+    }
+
+    private int getSizeRecursive(Node current) {
+        if (current == null) {
+            return 0;
+        }
+
+        return getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
     }
 
     public boolean containsNode(int value) {
@@ -125,12 +131,15 @@ public class BinaryTree {
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
-
             System.out.print(" " + node.value);
         }
     }
 
     public void traverseLevelOrder() {
+        if (root == null) {
+            return;
+        }
+
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(root);
 
