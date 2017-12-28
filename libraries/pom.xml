@@ -669,10 +669,6 @@
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
         </repository>
-        <repository>
-            <id>Apache Staging</id>
-            <url>https://repository.apache.org/content/groups/staging</url>
-        </repository>
     </repositories>
     <properties>
         <googleclient.version>1.23.0</googleclient.version>
