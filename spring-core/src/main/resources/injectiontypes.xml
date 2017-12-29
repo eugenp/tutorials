@@ -12,28 +12,34 @@
 		<property name="ftpReader" ref="ftpReader" />
 	</bean>
 
-	<bean id="stockByType" class="com.baeldung.constructordi.Stock">
-		<constructor-arg type="java.lang.String" value="Engine Oil" />
-		<constructor-arg type="int" value="1000" />
-		<constructor-arg type="float" value="92.50" />
+	<bean id="stockService" class="com.baeldung.spring.core.di.StockService" />
+
+	<bean id="stockController" class="com.baeldung.spring.core.di.StockController">
+		<constructor-arg ref="stockService" />
 	</bean>
 
-	<bean id="stockByIndex" class="com.baeldung.constructordi.Stock">
-		<constructor-arg index="0" value="Engine Oil" />
-		<constructor-arg index="1" value="2000" />
-		<constructor-arg index="2" value="92.50" />
+	<bean id="stockConfigByType" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg type="int" value="10" />
+		<constructor-arg type="int" value="10000" />
+		<constructor-arg type="int" value="5000" />
 	</bean>
 
-	<bean id="stockByName" class="com.baeldung.constructordi.Stock">
-		<constructor-arg name="item" value="Engine Oil" />
-		<constructor-arg name="quantity" value="3000" />
-		<constructor-arg name="price" value="92.50" />
+	<bean id="stockConfigByIndex" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg index="0" value="10" />
+		<constructor-arg index="1" value="10000" />
+		<constructor-arg index="2" value="5000" />
 	</bean>
 
-	<bean id="stock" class="com.baeldung.setterdi.Stock">
-		<property name="item" value="Engine Oil" />
-		<property name="quantity" value="5000" />
-		<property name="price" value="92.50" />
+	<bean id="stockConfigByName" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg name="maxStocks" value="10" />
+		<constructor-arg name="maxPrice" value="10000" />
+		<constructor-arg name="maxQuantity" value="5000" />
+	</bean>
+
+	<bean id="stockConfigBySetter" class="com.baeldung.spring.core.di.StockConfigBySetter">
+		<property name="maxStocks" value="10" />
+		<property name="maxPrice" value="10000" />
+		<property name="maxQuantity" value="5000" />
 	</bean>
 
 </beans>
