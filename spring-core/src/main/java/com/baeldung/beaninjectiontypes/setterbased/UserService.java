@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.baeldung.beaninjectiontypes.services.MessageService;
 
-@Component("setter-service")
+@Component("setterbased-service")
 public class UserService {
 
 	private MessageService service;

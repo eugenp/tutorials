@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.baeldung.beaninjectiontypes.services.MessageService;
 
-@Component("constructor-service")
+@Component("constructorbased-service")
 public class UserService {
 
 	private MessageService service;

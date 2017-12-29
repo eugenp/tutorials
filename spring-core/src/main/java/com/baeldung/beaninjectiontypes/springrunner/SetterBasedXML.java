@@ -1,10 +1,10 @@
-package com.baeldung.beaninjectiontypes.test;
+package com.baeldung.beaninjectiontypes.springrunner;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.beaninjectiontypes.setterbased.UserServiceXML;
 
-public class TestSetterBasedXML {
+public class SetterBasedXML {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");

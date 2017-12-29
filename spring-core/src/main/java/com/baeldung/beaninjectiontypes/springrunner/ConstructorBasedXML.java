@@ -1,10 +1,10 @@
-package com.baeldung.beaninjectiontypes.test;
+package com.baeldung.beaninjectiontypes.springrunner;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.baeldung.beaninjectiontypes.constructorbased.UserServiceXML;
 
-public class TestConstructorBasedXML {
+public class ConstructorBasedXML {
 
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");

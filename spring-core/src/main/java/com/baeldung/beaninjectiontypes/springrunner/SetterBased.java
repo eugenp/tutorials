@@ -1,11 +1,11 @@
-package com.baeldung.beaninjectiontypes.test;
+package com.baeldung.beaninjectiontypes.springrunner;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.baeldung.beaninjectiontypes.config.Config;
 import com.baeldung.beaninjectiontypes.setterbased.UserService;
 
-public class TestSetterBased {
+public class SetterBased {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
