@@ -25,7 +25,7 @@ public class PushController {
     }
 
     @RequestMapping(value = "/demoWithoutPush")
-    public String demoWithoutPush(PushBuilder pushBuilder) {
+    public String demoWithoutPush() {
         return "demo";
     }
 }
